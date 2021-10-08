@@ -91,7 +91,7 @@ class ManagedShortLinksResource {
     CreateManagedShortLinkRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -140,7 +140,7 @@ class ShortLinksResource {
     CreateShortDynamicLinkRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -230,7 +230,7 @@ class V1Resource {
     GetIosPostInstallAttributionRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -267,7 +267,7 @@ class V1Resource {
     GetIosReopenAttributionRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -312,9 +312,9 @@ class AnalyticsInfo {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (googlePlayAnalytics != null)
-          'googlePlayAnalytics': googlePlayAnalytics!.toJson(),
+          'googlePlayAnalytics': googlePlayAnalytics!,
         if (itunesConnectAnalytics != null)
-          'itunesConnectAnalytics': itunesConnectAnalytics!.toJson(),
+          'itunesConnectAnalytics': itunesConnectAnalytics!,
       };
 }
 
@@ -429,12 +429,11 @@ class CreateManagedShortLinkRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dynamicLinkInfo != null)
-          'dynamicLinkInfo': dynamicLinkInfo!.toJson(),
+        if (dynamicLinkInfo != null) 'dynamicLinkInfo': dynamicLinkInfo!,
         if (longDynamicLink != null) 'longDynamicLink': longDynamicLink!,
         if (name != null) 'name': name!,
         if (sdkVersion != null) 'sdkVersion': sdkVersion!,
-        if (suffix != null) 'suffix': suffix!.toJson(),
+        if (suffix != null) 'suffix': suffix!,
       };
 }
 
@@ -477,11 +476,9 @@ class CreateManagedShortLinkResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (managedShortLink != null)
-          'managedShortLink': managedShortLink!.toJson(),
+        if (managedShortLink != null) 'managedShortLink': managedShortLink!,
         if (previewLink != null) 'previewLink': previewLink!,
-        if (warning != null)
-          'warning': warning!.map((value) => value.toJson()).toList(),
+        if (warning != null) 'warning': warning!,
       };
 }
 
@@ -535,11 +532,10 @@ class CreateShortDynamicLinkRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dynamicLinkInfo != null)
-          'dynamicLinkInfo': dynamicLinkInfo!.toJson(),
+        if (dynamicLinkInfo != null) 'dynamicLinkInfo': dynamicLinkInfo!,
         if (longDynamicLink != null) 'longDynamicLink': longDynamicLink!,
         if (sdkVersion != null) 'sdkVersion': sdkVersion!,
-        if (suffix != null) 'suffix': suffix!.toJson(),
+        if (suffix != null) 'suffix': suffix!,
       };
 }
 
@@ -583,8 +579,7 @@ class CreateShortDynamicLinkResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (previewLink != null) 'previewLink': previewLink!,
         if (shortLink != null) 'shortLink': shortLink!,
-        if (warning != null)
-          'warning': warning!.map((value) => value.toJson()).toList(),
+        if (warning != null) 'warning': warning!,
       };
 }
 
@@ -845,16 +840,15 @@ class DynamicLinkInfo {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (analyticsInfo != null) 'analyticsInfo': analyticsInfo!.toJson(),
-        if (androidInfo != null) 'androidInfo': androidInfo!.toJson(),
-        if (desktopInfo != null) 'desktopInfo': desktopInfo!.toJson(),
+        if (analyticsInfo != null) 'analyticsInfo': analyticsInfo!,
+        if (androidInfo != null) 'androidInfo': androidInfo!,
+        if (desktopInfo != null) 'desktopInfo': desktopInfo!,
         if (domainUriPrefix != null) 'domainUriPrefix': domainUriPrefix!,
         if (dynamicLinkDomain != null) 'dynamicLinkDomain': dynamicLinkDomain!,
-        if (iosInfo != null) 'iosInfo': iosInfo!.toJson(),
+        if (iosInfo != null) 'iosInfo': iosInfo!,
         if (link != null) 'link': link!,
-        if (navigationInfo != null) 'navigationInfo': navigationInfo!.toJson(),
-        if (socialMetaTagInfo != null)
-          'socialMetaTagInfo': socialMetaTagInfo!.toJson(),
+        if (navigationInfo != null) 'navigationInfo': navigationInfo!,
+        if (socialMetaTagInfo != null) 'socialMetaTagInfo': socialMetaTagInfo!,
       };
 }
 
@@ -878,9 +872,7 @@ class DynamicLinkStats {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (linkEventStats != null)
-          'linkEventStats':
-              linkEventStats!.map((value) => value.toJson()).toList(),
+        if (linkEventStats != null) 'linkEventStats': linkEventStats!,
       };
 }
 
@@ -1069,7 +1061,7 @@ class GetIosPostInstallAttributionRequest {
         if (appInstallationTime != null)
           'appInstallationTime': appInstallationTime!,
         if (bundleId != null) 'bundleId': bundleId!,
-        if (device != null) 'device': device!.toJson(),
+        if (device != null) 'device': device!,
         if (iosVersion != null) 'iosVersion': iosVersion!,
         if (retrievalMethod != null) 'retrievalMethod': retrievalMethod!,
         if (sdkVersion != null) 'sdkVersion': sdkVersion!,
@@ -1645,7 +1637,7 @@ class ManagedShortLink {
   core.Map<core.String, core.dynamic> toJson() => {
         if (creationTime != null) 'creationTime': creationTime!,
         if (flaggedAttribute != null) 'flaggedAttribute': flaggedAttribute!,
-        if (info != null) 'info': info!.toJson(),
+        if (info != null) 'info': info!,
         if (link != null) 'link': link!,
         if (linkName != null) 'linkName': linkName!,
         if (visibility != null) 'visibility': visibility!,

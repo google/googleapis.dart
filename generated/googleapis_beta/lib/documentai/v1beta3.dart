@@ -402,7 +402,7 @@ class ProjectsLocationsProcessorsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -446,7 +446,7 @@ class ProjectsLocationsProcessorsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -526,7 +526,7 @@ class ProjectsLocationsProcessorsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -568,7 +568,7 @@ class ProjectsLocationsProcessorsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -662,7 +662,7 @@ class ProjectsLocationsProcessorsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -715,7 +715,7 @@ class ProjectsLocationsProcessorsHumanReviewConfigResource {
     core.String humanReviewConfig, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -771,7 +771,7 @@ class ProjectsLocationsProcessorsProcessorVersionsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -817,7 +817,7 @@ class ProjectsLocationsProcessorsProcessorVersionsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -854,7 +854,7 @@ class GoogleCloudDocumentaiUiv1beta3BatchDeleteDocumentsMetadata {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (commonMetadata != null) 'commonMetadata': commonMetadata!.toJson(),
+        if (commonMetadata != null) 'commonMetadata': commonMetadata!,
       };
 }
 
@@ -880,7 +880,7 @@ class GoogleCloudDocumentaiUiv1beta3BatchMoveDocumentsMetadata {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (commonMetadata != null) 'commonMetadata': commonMetadata!.toJson(),
+        if (commonMetadata != null) 'commonMetadata': commonMetadata!,
       };
 }
 
@@ -958,7 +958,7 @@ class GoogleCloudDocumentaiUiv1beta3CreateLabelerPoolOperationMetadata {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (commonMetadata != null) 'commonMetadata': commonMetadata!.toJson(),
+        if (commonMetadata != null) 'commonMetadata': commonMetadata!,
       };
 }
 
@@ -982,7 +982,7 @@ class GoogleCloudDocumentaiUiv1beta3DeleteLabelerPoolOperationMetadata {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (commonMetadata != null) 'commonMetadata': commonMetadata!.toJson(),
+        if (commonMetadata != null) 'commonMetadata': commonMetadata!,
       };
 }
 
@@ -1005,7 +1005,7 @@ class GoogleCloudDocumentaiUiv1beta3DeleteProcessorMetadata {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (commonMetadata != null) 'commonMetadata': commonMetadata!.toJson(),
+        if (commonMetadata != null) 'commonMetadata': commonMetadata!,
       };
 }
 
@@ -1029,7 +1029,7 @@ class GoogleCloudDocumentaiUiv1beta3DeleteProcessorVersionMetadata {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (commonMetadata != null) 'commonMetadata': commonMetadata!.toJson(),
+        if (commonMetadata != null) 'commonMetadata': commonMetadata!,
       };
 }
 
@@ -1053,7 +1053,7 @@ class GoogleCloudDocumentaiUiv1beta3DeployProcessorVersionMetadata {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (commonMetadata != null) 'commonMetadata': commonMetadata!.toJson(),
+        if (commonMetadata != null) 'commonMetadata': commonMetadata!,
       };
 }
 
@@ -1080,7 +1080,7 @@ class GoogleCloudDocumentaiUiv1beta3DisableProcessorMetadata {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (commonMetadata != null) 'commonMetadata': commonMetadata!.toJson(),
+        if (commonMetadata != null) 'commonMetadata': commonMetadata!,
       };
 }
 
@@ -1108,7 +1108,7 @@ class GoogleCloudDocumentaiUiv1beta3EnableProcessorMetadata {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (commonMetadata != null) 'commonMetadata': commonMetadata!.toJson(),
+        if (commonMetadata != null) 'commonMetadata': commonMetadata!,
       };
 }
 
@@ -1137,7 +1137,7 @@ class GoogleCloudDocumentaiUiv1beta3EvaluateProcessorVersionMetadata {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (commonMetadata != null) 'commonMetadata': commonMetadata!.toJson(),
+        if (commonMetadata != null) 'commonMetadata': commonMetadata!,
       };
 }
 
@@ -1183,7 +1183,7 @@ class GoogleCloudDocumentaiUiv1beta3ExportProcessorVersionMetadata {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (commonMetadata != null) 'commonMetadata': commonMetadata!.toJson(),
+        if (commonMetadata != null) 'commonMetadata': commonMetadata!,
       };
 }
 
@@ -1228,7 +1228,7 @@ class GoogleCloudDocumentaiUiv1beta3ImportDocumentsMetadata {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (commonMetadata != null) 'commonMetadata': commonMetadata!.toJson(),
+        if (commonMetadata != null) 'commonMetadata': commonMetadata!,
       };
 }
 
@@ -1256,7 +1256,7 @@ class GoogleCloudDocumentaiUiv1beta3SetDefaultProcessorVersionMetadata {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (commonMetadata != null) 'commonMetadata': commonMetadata!.toJson(),
+        if (commonMetadata != null) 'commonMetadata': commonMetadata!,
       };
 }
 
@@ -1305,11 +1305,11 @@ class GoogleCloudDocumentaiUiv1beta3TrainProcessorVersionMetadata {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (commonMetadata != null) 'commonMetadata': commonMetadata!.toJson(),
+        if (commonMetadata != null) 'commonMetadata': commonMetadata!,
         if (testDatasetValidation != null)
-          'testDatasetValidation': testDatasetValidation!.toJson(),
+          'testDatasetValidation': testDatasetValidation!,
         if (trainingDatasetValidation != null)
-          'trainingDatasetValidation': trainingDatasetValidation!.toJson(),
+          'trainingDatasetValidation': trainingDatasetValidation!,
       };
 }
 
@@ -1367,14 +1367,10 @@ class GoogleCloudDocumentaiUiv1beta3TrainProcessorVersionMetadataDatasetValidati
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (datasetErrorCount != null) 'datasetErrorCount': datasetErrorCount!,
-        if (datasetErrors != null)
-          'datasetErrors':
-              datasetErrors!.map((value) => value.toJson()).toList(),
+        if (datasetErrors != null) 'datasetErrors': datasetErrors!,
         if (documentErrorCount != null)
           'documentErrorCount': documentErrorCount!,
-        if (documentErrors != null)
-          'documentErrors':
-              documentErrors!.map((value) => value.toJson()).toList(),
+        if (documentErrors != null) 'documentErrors': documentErrors!,
       };
 }
 
@@ -1421,7 +1417,7 @@ class GoogleCloudDocumentaiUiv1beta3UndeployProcessorVersionMetadata {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (commonMetadata != null) 'commonMetadata': commonMetadata!.toJson(),
+        if (commonMetadata != null) 'commonMetadata': commonMetadata!,
       };
 }
 
@@ -1447,7 +1443,7 @@ class GoogleCloudDocumentaiUiv1beta3UpdateDatasetOperationMetadata {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (commonMetadata != null) 'commonMetadata': commonMetadata!.toJson(),
+        if (commonMetadata != null) 'commonMetadata': commonMetadata!,
       };
 }
 
@@ -1472,7 +1468,7 @@ class GoogleCloudDocumentaiUiv1beta3UpdateHumanReviewConfigMetadata {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (commonMetadata != null) 'commonMetadata': commonMetadata!.toJson(),
+        if (commonMetadata != null) 'commonMetadata': commonMetadata!,
       };
 }
 
@@ -1496,7 +1492,7 @@ class GoogleCloudDocumentaiUiv1beta3UpdateLabelerPoolOperationMetadata {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (commonMetadata != null) 'commonMetadata': commonMetadata!.toJson(),
+        if (commonMetadata != null) 'commonMetadata': commonMetadata!,
       };
 }
 
@@ -1564,9 +1560,7 @@ class GoogleCloudDocumentaiV1BatchProcessMetadata {
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
         if (individualProcessStatuses != null)
-          'individualProcessStatuses': individualProcessStatuses!
-              .map((value) => value.toJson())
-              .toList(),
+          'individualProcessStatuses': individualProcessStatuses!,
         if (state != null) 'state': state!,
         if (stateMessage != null) 'stateMessage': stateMessage!,
         if (updateTime != null) 'updateTime': updateTime!,
@@ -1620,12 +1614,11 @@ class GoogleCloudDocumentaiV1BatchProcessMetadataIndividualProcessStatus {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (humanReviewStatus != null)
-          'humanReviewStatus': humanReviewStatus!.toJson(),
+        if (humanReviewStatus != null) 'humanReviewStatus': humanReviewStatus!,
         if (inputGcsSource != null) 'inputGcsSource': inputGcsSource!,
         if (outputGcsDestination != null)
           'outputGcsDestination': outputGcsDestination!,
-        if (status != null) 'status': status!.toJson(),
+        if (status != null) 'status': status!,
       };
 }
 
@@ -1756,7 +1749,7 @@ class GoogleCloudDocumentaiV1ReviewDocumentOperationMetadata {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (commonMetadata != null) 'commonMetadata': commonMetadata!.toJson(),
+        if (commonMetadata != null) 'commonMetadata': commonMetadata!,
       };
 }
 
@@ -1806,8 +1799,7 @@ class GoogleCloudDocumentaiV1beta1BatchProcessDocumentsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (responses != null)
-          'responses': responses!.map((value) => value.toJson()).toList(),
+        if (responses != null) 'responses': responses!,
       };
 }
 
@@ -1843,10 +1835,8 @@ class GoogleCloudDocumentaiV1beta1BoundingPoly {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (normalizedVertices != null)
-          'normalizedVertices':
-              normalizedVertices!.map((value) => value.toJson()).toList(),
-        if (vertices != null)
-          'vertices': vertices!.map((value) => value.toJson()).toList(),
+          'normalizedVertices': normalizedVertices!,
+        if (vertices != null) 'vertices': vertices!,
       };
 }
 
@@ -2005,23 +1995,16 @@ class GoogleCloudDocumentaiV1beta1Document {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (content != null) 'content': content!,
-        if (entities != null)
-          'entities': entities!.map((value) => value.toJson()).toList(),
-        if (entityRelations != null)
-          'entityRelations':
-              entityRelations!.map((value) => value.toJson()).toList(),
-        if (error != null) 'error': error!.toJson(),
+        if (entities != null) 'entities': entities!,
+        if (entityRelations != null) 'entityRelations': entityRelations!,
+        if (error != null) 'error': error!,
         if (mimeType != null) 'mimeType': mimeType!,
-        if (pages != null)
-          'pages': pages!.map((value) => value.toJson()).toList(),
-        if (revisions != null)
-          'revisions': revisions!.map((value) => value.toJson()).toList(),
-        if (shardInfo != null) 'shardInfo': shardInfo!.toJson(),
+        if (pages != null) 'pages': pages!,
+        if (revisions != null) 'revisions': revisions!,
+        if (shardInfo != null) 'shardInfo': shardInfo!,
         if (text != null) 'text': text!,
-        if (textChanges != null)
-          'textChanges': textChanges!.map((value) => value.toJson()).toList(),
-        if (textStyles != null)
-          'textStyles': textStyles!.map((value) => value.toJson()).toList(),
+        if (textChanges != null) 'textChanges': textChanges!,
+        if (textStyles != null) 'textStyles': textStyles!,
         if (uri != null) 'uri': uri!,
       };
 }
@@ -2160,14 +2143,12 @@ class GoogleCloudDocumentaiV1beta1DocumentEntity {
         if (id != null) 'id': id!,
         if (mentionId != null) 'mentionId': mentionId!,
         if (mentionText != null) 'mentionText': mentionText!,
-        if (normalizedValue != null)
-          'normalizedValue': normalizedValue!.toJson(),
-        if (pageAnchor != null) 'pageAnchor': pageAnchor!.toJson(),
-        if (properties != null)
-          'properties': properties!.map((value) => value.toJson()).toList(),
-        if (provenance != null) 'provenance': provenance!.toJson(),
+        if (normalizedValue != null) 'normalizedValue': normalizedValue!,
+        if (pageAnchor != null) 'pageAnchor': pageAnchor!,
+        if (properties != null) 'properties': properties!,
+        if (provenance != null) 'provenance': provenance!,
         if (redacted != null) 'redacted': redacted!,
-        if (textAnchor != null) 'textAnchor': textAnchor!.toJson(),
+        if (textAnchor != null) 'textAnchor': textAnchor!,
         if (type != null) 'type': type!,
       };
 }
@@ -2265,13 +2246,13 @@ class GoogleCloudDocumentaiV1beta1DocumentEntityNormalizedValue {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (addressValue != null) 'addressValue': addressValue!.toJson(),
+        if (addressValue != null) 'addressValue': addressValue!,
         if (booleanValue != null) 'booleanValue': booleanValue!,
-        if (dateValue != null) 'dateValue': dateValue!.toJson(),
-        if (datetimeValue != null) 'datetimeValue': datetimeValue!.toJson(),
+        if (dateValue != null) 'dateValue': dateValue!,
+        if (datetimeValue != null) 'datetimeValue': datetimeValue!,
         if (floatValue != null) 'floatValue': floatValue!,
         if (integerValue != null) 'integerValue': integerValue!,
-        if (moneyValue != null) 'moneyValue': moneyValue!.toJson(),
+        if (moneyValue != null) 'moneyValue': moneyValue!,
         if (text != null) 'text': text!,
       };
 }
@@ -2482,31 +2463,20 @@ class GoogleCloudDocumentaiV1beta1DocumentPage {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (blocks != null)
-          'blocks': blocks!.map((value) => value.toJson()).toList(),
-        if (detectedLanguages != null)
-          'detectedLanguages':
-              detectedLanguages!.map((value) => value.toJson()).toList(),
-        if (dimension != null) 'dimension': dimension!.toJson(),
-        if (formFields != null)
-          'formFields': formFields!.map((value) => value.toJson()).toList(),
-        if (image != null) 'image': image!.toJson(),
-        if (layout != null) 'layout': layout!.toJson(),
-        if (lines != null)
-          'lines': lines!.map((value) => value.toJson()).toList(),
+        if (blocks != null) 'blocks': blocks!,
+        if (detectedLanguages != null) 'detectedLanguages': detectedLanguages!,
+        if (dimension != null) 'dimension': dimension!,
+        if (formFields != null) 'formFields': formFields!,
+        if (image != null) 'image': image!,
+        if (layout != null) 'layout': layout!,
+        if (lines != null) 'lines': lines!,
         if (pageNumber != null) 'pageNumber': pageNumber!,
-        if (paragraphs != null)
-          'paragraphs': paragraphs!.map((value) => value.toJson()).toList(),
-        if (provenance != null) 'provenance': provenance!.toJson(),
-        if (tables != null)
-          'tables': tables!.map((value) => value.toJson()).toList(),
-        if (tokens != null)
-          'tokens': tokens!.map((value) => value.toJson()).toList(),
-        if (transforms != null)
-          'transforms': transforms!.map((value) => value.toJson()).toList(),
-        if (visualElements != null)
-          'visualElements':
-              visualElements!.map((value) => value.toJson()).toList(),
+        if (paragraphs != null) 'paragraphs': paragraphs!,
+        if (provenance != null) 'provenance': provenance!,
+        if (tables != null) 'tables': tables!,
+        if (tokens != null) 'tokens': tokens!,
+        if (transforms != null) 'transforms': transforms!,
+        if (visualElements != null) 'visualElements': visualElements!,
       };
 }
 
@@ -2535,8 +2505,7 @@ class GoogleCloudDocumentaiV1beta1DocumentPageAnchor {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (pageRefs != null)
-          'pageRefs': pageRefs!.map((value) => value.toJson()).toList(),
+        if (pageRefs != null) 'pageRefs': pageRefs!,
       };
 }
 
@@ -2609,7 +2578,7 @@ class GoogleCloudDocumentaiV1beta1DocumentPageAnchorPageRef {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (boundingPoly != null) 'boundingPoly': boundingPoly!.toJson(),
+        if (boundingPoly != null) 'boundingPoly': boundingPoly!,
         if (confidence != null) 'confidence': confidence!,
         if (layoutId != null) 'layoutId': layoutId!,
         if (layoutType != null) 'layoutType': layoutType!,
@@ -2657,11 +2626,9 @@ class GoogleCloudDocumentaiV1beta1DocumentPageBlock {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (detectedLanguages != null)
-          'detectedLanguages':
-              detectedLanguages!.map((value) => value.toJson()).toList(),
-        if (layout != null) 'layout': layout!.toJson(),
-        if (provenance != null) 'provenance': provenance!.toJson(),
+        if (detectedLanguages != null) 'detectedLanguages': detectedLanguages!,
+        if (layout != null) 'layout': layout!,
+        if (provenance != null) 'provenance': provenance!,
       };
 }
 
@@ -2830,15 +2797,13 @@ class GoogleCloudDocumentaiV1beta1DocumentPageFormField {
         if (correctedKeyText != null) 'correctedKeyText': correctedKeyText!,
         if (correctedValueText != null)
           'correctedValueText': correctedValueText!,
-        if (fieldName != null) 'fieldName': fieldName!.toJson(),
-        if (fieldValue != null) 'fieldValue': fieldValue!.toJson(),
+        if (fieldName != null) 'fieldName': fieldName!,
+        if (fieldValue != null) 'fieldValue': fieldValue!,
         if (nameDetectedLanguages != null)
-          'nameDetectedLanguages':
-              nameDetectedLanguages!.map((value) => value.toJson()).toList(),
-        if (provenance != null) 'provenance': provenance!.toJson(),
+          'nameDetectedLanguages': nameDetectedLanguages!,
+        if (provenance != null) 'provenance': provenance!,
         if (valueDetectedLanguages != null)
-          'valueDetectedLanguages':
-              valueDetectedLanguages!.map((value) => value.toJson()).toList(),
+          'valueDetectedLanguages': valueDetectedLanguages!,
         if (valueType != null) 'valueType': valueType!,
       };
 }
@@ -2944,10 +2909,10 @@ class GoogleCloudDocumentaiV1beta1DocumentPageLayout {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (boundingPoly != null) 'boundingPoly': boundingPoly!.toJson(),
+        if (boundingPoly != null) 'boundingPoly': boundingPoly!,
         if (confidence != null) 'confidence': confidence!,
         if (orientation != null) 'orientation': orientation!,
-        if (textAnchor != null) 'textAnchor': textAnchor!.toJson(),
+        if (textAnchor != null) 'textAnchor': textAnchor!,
       };
 }
 
@@ -2992,11 +2957,9 @@ class GoogleCloudDocumentaiV1beta1DocumentPageLine {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (detectedLanguages != null)
-          'detectedLanguages':
-              detectedLanguages!.map((value) => value.toJson()).toList(),
-        if (layout != null) 'layout': layout!.toJson(),
-        if (provenance != null) 'provenance': provenance!.toJson(),
+        if (detectedLanguages != null) 'detectedLanguages': detectedLanguages!,
+        if (layout != null) 'layout': layout!,
+        if (provenance != null) 'provenance': provenance!,
       };
 }
 
@@ -3087,11 +3050,9 @@ class GoogleCloudDocumentaiV1beta1DocumentPageParagraph {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (detectedLanguages != null)
-          'detectedLanguages':
-              detectedLanguages!.map((value) => value.toJson()).toList(),
-        if (layout != null) 'layout': layout!.toJson(),
-        if (provenance != null) 'provenance': provenance!.toJson(),
+        if (detectedLanguages != null) 'detectedLanguages': detectedLanguages!,
+        if (layout != null) 'layout': layout!,
+        if (provenance != null) 'provenance': provenance!,
       };
 }
 
@@ -3150,14 +3111,10 @@ class GoogleCloudDocumentaiV1beta1DocumentPageTable {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bodyRows != null)
-          'bodyRows': bodyRows!.map((value) => value.toJson()).toList(),
-        if (detectedLanguages != null)
-          'detectedLanguages':
-              detectedLanguages!.map((value) => value.toJson()).toList(),
-        if (headerRows != null)
-          'headerRows': headerRows!.map((value) => value.toJson()).toList(),
-        if (layout != null) 'layout': layout!.toJson(),
+        if (bodyRows != null) 'bodyRows': bodyRows!,
+        if (detectedLanguages != null) 'detectedLanguages': detectedLanguages!,
+        if (headerRows != null) 'headerRows': headerRows!,
+        if (layout != null) 'layout': layout!,
       };
 }
 
@@ -3208,10 +3165,8 @@ class GoogleCloudDocumentaiV1beta1DocumentPageTableTableCell {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (colSpan != null) 'colSpan': colSpan!,
-        if (detectedLanguages != null)
-          'detectedLanguages':
-              detectedLanguages!.map((value) => value.toJson()).toList(),
-        if (layout != null) 'layout': layout!.toJson(),
+        if (detectedLanguages != null) 'detectedLanguages': detectedLanguages!,
+        if (layout != null) 'layout': layout!,
         if (rowSpan != null) 'rowSpan': rowSpan!,
       };
 }
@@ -3238,8 +3193,7 @@ class GoogleCloudDocumentaiV1beta1DocumentPageTableTableRow {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cells != null)
-          'cells': cells!.map((value) => value.toJson()).toList(),
+        if (cells != null) 'cells': cells!,
       };
 }
 
@@ -3291,12 +3245,10 @@ class GoogleCloudDocumentaiV1beta1DocumentPageToken {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (detectedBreak != null) 'detectedBreak': detectedBreak!.toJson(),
-        if (detectedLanguages != null)
-          'detectedLanguages':
-              detectedLanguages!.map((value) => value.toJson()).toList(),
-        if (layout != null) 'layout': layout!.toJson(),
-        if (provenance != null) 'provenance': provenance!.toJson(),
+        if (detectedBreak != null) 'detectedBreak': detectedBreak!,
+        if (detectedLanguages != null) 'detectedLanguages': detectedLanguages!,
+        if (layout != null) 'layout': layout!,
+        if (provenance != null) 'provenance': provenance!,
       };
 }
 
@@ -3364,10 +3316,8 @@ class GoogleCloudDocumentaiV1beta1DocumentPageVisualElement {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (detectedLanguages != null)
-          'detectedLanguages':
-              detectedLanguages!.map((value) => value.toJson()).toList(),
-        if (layout != null) 'layout': layout!.toJson(),
+        if (detectedLanguages != null) 'detectedLanguages': detectedLanguages!,
+        if (layout != null) 'layout': layout!,
         if (type != null) 'type': type!,
       };
 }
@@ -3425,8 +3375,7 @@ class GoogleCloudDocumentaiV1beta1DocumentProvenance {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (id != null) 'id': id!,
-        if (parents != null)
-          'parents': parents!.map((value) => value.toJson()).toList(),
+        if (parents != null) 'parents': parents!,
         if (revision != null) 'revision': revision!,
         if (type != null) 'type': type!,
       };
@@ -3531,7 +3480,7 @@ class GoogleCloudDocumentaiV1beta1DocumentRevision {
   core.Map<core.String, core.dynamic> toJson() => {
         if (agent != null) 'agent': agent!,
         if (createTime != null) 'createTime': createTime!,
-        if (humanReview != null) 'humanReview': humanReview!.toJson(),
+        if (humanReview != null) 'humanReview': humanReview!,
         if (id != null) 'id': id!,
         if (parent != null) 'parent': parent!,
         if (processor != null) 'processor': processor!,
@@ -3686,12 +3635,11 @@ class GoogleCloudDocumentaiV1beta1DocumentStyle {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (backgroundColor != null)
-          'backgroundColor': backgroundColor!.toJson(),
-        if (color != null) 'color': color!.toJson(),
-        if (fontSize != null) 'fontSize': fontSize!.toJson(),
+        if (backgroundColor != null) 'backgroundColor': backgroundColor!,
+        if (color != null) 'color': color!,
+        if (fontSize != null) 'fontSize': fontSize!,
         if (fontWeight != null) 'fontWeight': fontWeight!,
-        if (textAnchor != null) 'textAnchor': textAnchor!.toJson(),
+        if (textAnchor != null) 'textAnchor': textAnchor!,
         if (textDecoration != null) 'textDecoration': textDecoration!,
         if (textStyle != null) 'textStyle': textStyle!,
       };
@@ -3758,8 +3706,7 @@ class GoogleCloudDocumentaiV1beta1DocumentTextAnchor {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (content != null) 'content': content!,
-        if (textSegments != null)
-          'textSegments': textSegments!.map((value) => value.toJson()).toList(),
+        if (textSegments != null) 'textSegments': textSegments!,
       };
 }
 
@@ -3840,9 +3787,8 @@ class GoogleCloudDocumentaiV1beta1DocumentTextChange {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (changedText != null) 'changedText': changedText!,
-        if (provenance != null)
-          'provenance': provenance!.map((value) => value.toJson()).toList(),
-        if (textAnchor != null) 'textAnchor': textAnchor!.toJson(),
+        if (provenance != null) 'provenance': provenance!,
+        if (textAnchor != null) 'textAnchor': textAnchor!,
       };
 }
 
@@ -3916,7 +3862,7 @@ class GoogleCloudDocumentaiV1beta1InputConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (gcsSource != null) 'gcsSource': gcsSource!.toJson(),
+        if (gcsSource != null) 'gcsSource': gcsSource!,
         if (mimeType != null) 'mimeType': mimeType!,
       };
 }
@@ -4042,7 +3988,7 @@ class GoogleCloudDocumentaiV1beta1OutputConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (gcsDestination != null) 'gcsDestination': gcsDestination!.toJson(),
+        if (gcsDestination != null) 'gcsDestination': gcsDestination!,
         if (pagesPerShard != null) 'pagesPerShard': pagesPerShard!,
       };
 }
@@ -4078,8 +4024,8 @@ class GoogleCloudDocumentaiV1beta1ProcessDocumentResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (inputConfig != null) 'inputConfig': inputConfig!.toJson(),
-        if (outputConfig != null) 'outputConfig': outputConfig!.toJson(),
+        if (inputConfig != null) 'inputConfig': inputConfig!,
+        if (outputConfig != null) 'outputConfig': outputConfig!,
       };
 }
 
@@ -4135,8 +4081,7 @@ class GoogleCloudDocumentaiV1beta2BatchProcessDocumentsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (responses != null)
-          'responses': responses!.map((value) => value.toJson()).toList(),
+        if (responses != null) 'responses': responses!,
       };
 }
 
@@ -4172,10 +4117,8 @@ class GoogleCloudDocumentaiV1beta2BoundingPoly {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (normalizedVertices != null)
-          'normalizedVertices':
-              normalizedVertices!.map((value) => value.toJson()).toList(),
-        if (vertices != null)
-          'vertices': vertices!.map((value) => value.toJson()).toList(),
+          'normalizedVertices': normalizedVertices!,
+        if (vertices != null) 'vertices': vertices!,
       };
 }
 
@@ -4345,25 +4288,17 @@ class GoogleCloudDocumentaiV1beta2Document {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (content != null) 'content': content!,
-        if (entities != null)
-          'entities': entities!.map((value) => value.toJson()).toList(),
-        if (entityRelations != null)
-          'entityRelations':
-              entityRelations!.map((value) => value.toJson()).toList(),
-        if (error != null) 'error': error!.toJson(),
-        if (labels != null)
-          'labels': labels!.map((value) => value.toJson()).toList(),
+        if (entities != null) 'entities': entities!,
+        if (entityRelations != null) 'entityRelations': entityRelations!,
+        if (error != null) 'error': error!,
+        if (labels != null) 'labels': labels!,
         if (mimeType != null) 'mimeType': mimeType!,
-        if (pages != null)
-          'pages': pages!.map((value) => value.toJson()).toList(),
-        if (revisions != null)
-          'revisions': revisions!.map((value) => value.toJson()).toList(),
-        if (shardInfo != null) 'shardInfo': shardInfo!.toJson(),
+        if (pages != null) 'pages': pages!,
+        if (revisions != null) 'revisions': revisions!,
+        if (shardInfo != null) 'shardInfo': shardInfo!,
         if (text != null) 'text': text!,
-        if (textChanges != null)
-          'textChanges': textChanges!.map((value) => value.toJson()).toList(),
-        if (textStyles != null)
-          'textStyles': textStyles!.map((value) => value.toJson()).toList(),
+        if (textChanges != null) 'textChanges': textChanges!,
+        if (textStyles != null) 'textStyles': textStyles!,
         if (uri != null) 'uri': uri!,
       };
 }
@@ -4502,14 +4437,12 @@ class GoogleCloudDocumentaiV1beta2DocumentEntity {
         if (id != null) 'id': id!,
         if (mentionId != null) 'mentionId': mentionId!,
         if (mentionText != null) 'mentionText': mentionText!,
-        if (normalizedValue != null)
-          'normalizedValue': normalizedValue!.toJson(),
-        if (pageAnchor != null) 'pageAnchor': pageAnchor!.toJson(),
-        if (properties != null)
-          'properties': properties!.map((value) => value.toJson()).toList(),
-        if (provenance != null) 'provenance': provenance!.toJson(),
+        if (normalizedValue != null) 'normalizedValue': normalizedValue!,
+        if (pageAnchor != null) 'pageAnchor': pageAnchor!,
+        if (properties != null) 'properties': properties!,
+        if (provenance != null) 'provenance': provenance!,
         if (redacted != null) 'redacted': redacted!,
-        if (textAnchor != null) 'textAnchor': textAnchor!.toJson(),
+        if (textAnchor != null) 'textAnchor': textAnchor!,
         if (type != null) 'type': type!,
       };
 }
@@ -4607,13 +4540,13 @@ class GoogleCloudDocumentaiV1beta2DocumentEntityNormalizedValue {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (addressValue != null) 'addressValue': addressValue!.toJson(),
+        if (addressValue != null) 'addressValue': addressValue!,
         if (booleanValue != null) 'booleanValue': booleanValue!,
-        if (dateValue != null) 'dateValue': dateValue!.toJson(),
-        if (datetimeValue != null) 'datetimeValue': datetimeValue!.toJson(),
+        if (dateValue != null) 'dateValue': dateValue!,
+        if (datetimeValue != null) 'datetimeValue': datetimeValue!,
         if (floatValue != null) 'floatValue': floatValue!,
         if (integerValue != null) 'integerValue': integerValue!,
-        if (moneyValue != null) 'moneyValue': moneyValue!.toJson(),
+        if (moneyValue != null) 'moneyValue': moneyValue!,
         if (text != null) 'text': text!,
       };
 }
@@ -4870,31 +4803,20 @@ class GoogleCloudDocumentaiV1beta2DocumentPage {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (blocks != null)
-          'blocks': blocks!.map((value) => value.toJson()).toList(),
-        if (detectedLanguages != null)
-          'detectedLanguages':
-              detectedLanguages!.map((value) => value.toJson()).toList(),
-        if (dimension != null) 'dimension': dimension!.toJson(),
-        if (formFields != null)
-          'formFields': formFields!.map((value) => value.toJson()).toList(),
-        if (image != null) 'image': image!.toJson(),
-        if (layout != null) 'layout': layout!.toJson(),
-        if (lines != null)
-          'lines': lines!.map((value) => value.toJson()).toList(),
+        if (blocks != null) 'blocks': blocks!,
+        if (detectedLanguages != null) 'detectedLanguages': detectedLanguages!,
+        if (dimension != null) 'dimension': dimension!,
+        if (formFields != null) 'formFields': formFields!,
+        if (image != null) 'image': image!,
+        if (layout != null) 'layout': layout!,
+        if (lines != null) 'lines': lines!,
         if (pageNumber != null) 'pageNumber': pageNumber!,
-        if (paragraphs != null)
-          'paragraphs': paragraphs!.map((value) => value.toJson()).toList(),
-        if (provenance != null) 'provenance': provenance!.toJson(),
-        if (tables != null)
-          'tables': tables!.map((value) => value.toJson()).toList(),
-        if (tokens != null)
-          'tokens': tokens!.map((value) => value.toJson()).toList(),
-        if (transforms != null)
-          'transforms': transforms!.map((value) => value.toJson()).toList(),
-        if (visualElements != null)
-          'visualElements':
-              visualElements!.map((value) => value.toJson()).toList(),
+        if (paragraphs != null) 'paragraphs': paragraphs!,
+        if (provenance != null) 'provenance': provenance!,
+        if (tables != null) 'tables': tables!,
+        if (tokens != null) 'tokens': tokens!,
+        if (transforms != null) 'transforms': transforms!,
+        if (visualElements != null) 'visualElements': visualElements!,
       };
 }
 
@@ -4923,8 +4845,7 @@ class GoogleCloudDocumentaiV1beta2DocumentPageAnchor {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (pageRefs != null)
-          'pageRefs': pageRefs!.map((value) => value.toJson()).toList(),
+        if (pageRefs != null) 'pageRefs': pageRefs!,
       };
 }
 
@@ -4997,7 +4918,7 @@ class GoogleCloudDocumentaiV1beta2DocumentPageAnchorPageRef {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (boundingPoly != null) 'boundingPoly': boundingPoly!.toJson(),
+        if (boundingPoly != null) 'boundingPoly': boundingPoly!,
         if (confidence != null) 'confidence': confidence!,
         if (layoutId != null) 'layoutId': layoutId!,
         if (layoutType != null) 'layoutType': layoutType!,
@@ -5045,11 +4966,9 @@ class GoogleCloudDocumentaiV1beta2DocumentPageBlock {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (detectedLanguages != null)
-          'detectedLanguages':
-              detectedLanguages!.map((value) => value.toJson()).toList(),
-        if (layout != null) 'layout': layout!.toJson(),
-        if (provenance != null) 'provenance': provenance!.toJson(),
+        if (detectedLanguages != null) 'detectedLanguages': detectedLanguages!,
+        if (layout != null) 'layout': layout!,
+        if (provenance != null) 'provenance': provenance!,
       };
 }
 
@@ -5218,15 +5137,13 @@ class GoogleCloudDocumentaiV1beta2DocumentPageFormField {
         if (correctedKeyText != null) 'correctedKeyText': correctedKeyText!,
         if (correctedValueText != null)
           'correctedValueText': correctedValueText!,
-        if (fieldName != null) 'fieldName': fieldName!.toJson(),
-        if (fieldValue != null) 'fieldValue': fieldValue!.toJson(),
+        if (fieldName != null) 'fieldName': fieldName!,
+        if (fieldValue != null) 'fieldValue': fieldValue!,
         if (nameDetectedLanguages != null)
-          'nameDetectedLanguages':
-              nameDetectedLanguages!.map((value) => value.toJson()).toList(),
-        if (provenance != null) 'provenance': provenance!.toJson(),
+          'nameDetectedLanguages': nameDetectedLanguages!,
+        if (provenance != null) 'provenance': provenance!,
         if (valueDetectedLanguages != null)
-          'valueDetectedLanguages':
-              valueDetectedLanguages!.map((value) => value.toJson()).toList(),
+          'valueDetectedLanguages': valueDetectedLanguages!,
         if (valueType != null) 'valueType': valueType!,
       };
 }
@@ -5332,10 +5249,10 @@ class GoogleCloudDocumentaiV1beta2DocumentPageLayout {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (boundingPoly != null) 'boundingPoly': boundingPoly!.toJson(),
+        if (boundingPoly != null) 'boundingPoly': boundingPoly!,
         if (confidence != null) 'confidence': confidence!,
         if (orientation != null) 'orientation': orientation!,
-        if (textAnchor != null) 'textAnchor': textAnchor!.toJson(),
+        if (textAnchor != null) 'textAnchor': textAnchor!,
       };
 }
 
@@ -5380,11 +5297,9 @@ class GoogleCloudDocumentaiV1beta2DocumentPageLine {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (detectedLanguages != null)
-          'detectedLanguages':
-              detectedLanguages!.map((value) => value.toJson()).toList(),
-        if (layout != null) 'layout': layout!.toJson(),
-        if (provenance != null) 'provenance': provenance!.toJson(),
+        if (detectedLanguages != null) 'detectedLanguages': detectedLanguages!,
+        if (layout != null) 'layout': layout!,
+        if (provenance != null) 'provenance': provenance!,
       };
 }
 
@@ -5475,11 +5390,9 @@ class GoogleCloudDocumentaiV1beta2DocumentPageParagraph {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (detectedLanguages != null)
-          'detectedLanguages':
-              detectedLanguages!.map((value) => value.toJson()).toList(),
-        if (layout != null) 'layout': layout!.toJson(),
-        if (provenance != null) 'provenance': provenance!.toJson(),
+        if (detectedLanguages != null) 'detectedLanguages': detectedLanguages!,
+        if (layout != null) 'layout': layout!,
+        if (provenance != null) 'provenance': provenance!,
       };
 }
 
@@ -5538,14 +5451,10 @@ class GoogleCloudDocumentaiV1beta2DocumentPageTable {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bodyRows != null)
-          'bodyRows': bodyRows!.map((value) => value.toJson()).toList(),
-        if (detectedLanguages != null)
-          'detectedLanguages':
-              detectedLanguages!.map((value) => value.toJson()).toList(),
-        if (headerRows != null)
-          'headerRows': headerRows!.map((value) => value.toJson()).toList(),
-        if (layout != null) 'layout': layout!.toJson(),
+        if (bodyRows != null) 'bodyRows': bodyRows!,
+        if (detectedLanguages != null) 'detectedLanguages': detectedLanguages!,
+        if (headerRows != null) 'headerRows': headerRows!,
+        if (layout != null) 'layout': layout!,
       };
 }
 
@@ -5596,10 +5505,8 @@ class GoogleCloudDocumentaiV1beta2DocumentPageTableTableCell {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (colSpan != null) 'colSpan': colSpan!,
-        if (detectedLanguages != null)
-          'detectedLanguages':
-              detectedLanguages!.map((value) => value.toJson()).toList(),
-        if (layout != null) 'layout': layout!.toJson(),
+        if (detectedLanguages != null) 'detectedLanguages': detectedLanguages!,
+        if (layout != null) 'layout': layout!,
         if (rowSpan != null) 'rowSpan': rowSpan!,
       };
 }
@@ -5626,8 +5533,7 @@ class GoogleCloudDocumentaiV1beta2DocumentPageTableTableRow {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cells != null)
-          'cells': cells!.map((value) => value.toJson()).toList(),
+        if (cells != null) 'cells': cells!,
       };
 }
 
@@ -5679,12 +5585,10 @@ class GoogleCloudDocumentaiV1beta2DocumentPageToken {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (detectedBreak != null) 'detectedBreak': detectedBreak!.toJson(),
-        if (detectedLanguages != null)
-          'detectedLanguages':
-              detectedLanguages!.map((value) => value.toJson()).toList(),
-        if (layout != null) 'layout': layout!.toJson(),
-        if (provenance != null) 'provenance': provenance!.toJson(),
+        if (detectedBreak != null) 'detectedBreak': detectedBreak!,
+        if (detectedLanguages != null) 'detectedLanguages': detectedLanguages!,
+        if (layout != null) 'layout': layout!,
+        if (provenance != null) 'provenance': provenance!,
       };
 }
 
@@ -5752,10 +5656,8 @@ class GoogleCloudDocumentaiV1beta2DocumentPageVisualElement {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (detectedLanguages != null)
-          'detectedLanguages':
-              detectedLanguages!.map((value) => value.toJson()).toList(),
-        if (layout != null) 'layout': layout!.toJson(),
+        if (detectedLanguages != null) 'detectedLanguages': detectedLanguages!,
+        if (layout != null) 'layout': layout!,
         if (type != null) 'type': type!,
       };
 }
@@ -5813,8 +5715,7 @@ class GoogleCloudDocumentaiV1beta2DocumentProvenance {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (id != null) 'id': id!,
-        if (parents != null)
-          'parents': parents!.map((value) => value.toJson()).toList(),
+        if (parents != null) 'parents': parents!,
         if (revision != null) 'revision': revision!,
         if (type != null) 'type': type!,
       };
@@ -5919,7 +5820,7 @@ class GoogleCloudDocumentaiV1beta2DocumentRevision {
   core.Map<core.String, core.dynamic> toJson() => {
         if (agent != null) 'agent': agent!,
         if (createTime != null) 'createTime': createTime!,
-        if (humanReview != null) 'humanReview': humanReview!.toJson(),
+        if (humanReview != null) 'humanReview': humanReview!,
         if (id != null) 'id': id!,
         if (parent != null) 'parent': parent!,
         if (processor != null) 'processor': processor!,
@@ -6074,12 +5975,11 @@ class GoogleCloudDocumentaiV1beta2DocumentStyle {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (backgroundColor != null)
-          'backgroundColor': backgroundColor!.toJson(),
-        if (color != null) 'color': color!.toJson(),
-        if (fontSize != null) 'fontSize': fontSize!.toJson(),
+        if (backgroundColor != null) 'backgroundColor': backgroundColor!,
+        if (color != null) 'color': color!,
+        if (fontSize != null) 'fontSize': fontSize!,
         if (fontWeight != null) 'fontWeight': fontWeight!,
-        if (textAnchor != null) 'textAnchor': textAnchor!.toJson(),
+        if (textAnchor != null) 'textAnchor': textAnchor!,
         if (textDecoration != null) 'textDecoration': textDecoration!,
         if (textStyle != null) 'textStyle': textStyle!,
       };
@@ -6146,8 +6046,7 @@ class GoogleCloudDocumentaiV1beta2DocumentTextAnchor {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (content != null) 'content': content!,
-        if (textSegments != null)
-          'textSegments': textSegments!.map((value) => value.toJson()).toList(),
+        if (textSegments != null) 'textSegments': textSegments!,
       };
 }
 
@@ -6228,9 +6127,8 @@ class GoogleCloudDocumentaiV1beta2DocumentTextChange {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (changedText != null) 'changedText': changedText!,
-        if (provenance != null)
-          'provenance': provenance!.map((value) => value.toJson()).toList(),
-        if (textAnchor != null) 'textAnchor': textAnchor!.toJson(),
+        if (provenance != null) 'provenance': provenance!,
+        if (textAnchor != null) 'textAnchor': textAnchor!,
       };
 }
 
@@ -6322,7 +6220,7 @@ class GoogleCloudDocumentaiV1beta2InputConfig {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (contents != null) 'contents': contents!,
-        if (gcsSource != null) 'gcsSource': gcsSource!.toJson(),
+        if (gcsSource != null) 'gcsSource': gcsSource!,
         if (mimeType != null) 'mimeType': mimeType!,
       };
 }
@@ -6448,7 +6346,7 @@ class GoogleCloudDocumentaiV1beta2OutputConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (gcsDestination != null) 'gcsDestination': gcsDestination!.toJson(),
+        if (gcsDestination != null) 'gcsDestination': gcsDestination!,
         if (pagesPerShard != null) 'pagesPerShard': pagesPerShard!,
       };
 }
@@ -6484,8 +6382,8 @@ class GoogleCloudDocumentaiV1beta2ProcessDocumentResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (inputConfig != null) 'inputConfig': inputConfig!.toJson(),
-        if (outputConfig != null) 'outputConfig': outputConfig!.toJson(),
+        if (inputConfig != null) 'inputConfig': inputConfig!,
+        if (outputConfig != null) 'outputConfig': outputConfig!,
       };
 }
 
@@ -6543,8 +6441,8 @@ class GoogleCloudDocumentaiV1beta3BatchDocumentsInputConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (gcsDocuments != null) 'gcsDocuments': gcsDocuments!.toJson(),
-        if (gcsPrefix != null) 'gcsPrefix': gcsPrefix!.toJson(),
+        if (gcsDocuments != null) 'gcsDocuments': gcsDocuments!,
+        if (gcsPrefix != null) 'gcsPrefix': gcsPrefix!,
       };
 }
 
@@ -6613,9 +6511,7 @@ class GoogleCloudDocumentaiV1beta3BatchProcessMetadata {
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
         if (individualProcessStatuses != null)
-          'individualProcessStatuses': individualProcessStatuses!
-              .map((value) => value.toJson())
-              .toList(),
+          'individualProcessStatuses': individualProcessStatuses!,
         if (state != null) 'state': state!,
         if (stateMessage != null) 'stateMessage': stateMessage!,
         if (updateTime != null) 'updateTime': updateTime!,
@@ -6682,12 +6578,11 @@ class GoogleCloudDocumentaiV1beta3BatchProcessMetadataIndividualProcessStatus {
   core.Map<core.String, core.dynamic> toJson() => {
         if (humanReviewOperation != null)
           'humanReviewOperation': humanReviewOperation!,
-        if (humanReviewStatus != null)
-          'humanReviewStatus': humanReviewStatus!.toJson(),
+        if (humanReviewStatus != null) 'humanReviewStatus': humanReviewStatus!,
         if (inputGcsSource != null) 'inputGcsSource': inputGcsSource!,
         if (outputGcsDestination != null)
           'outputGcsDestination': outputGcsDestination!,
-        if (status != null) 'status': status!.toJson(),
+        if (status != null) 'status': status!,
       };
 }
 
@@ -6752,11 +6647,10 @@ class GoogleCloudDocumentaiV1beta3BatchProcessRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (documentOutputConfig != null)
-          'documentOutputConfig': documentOutputConfig!.toJson(),
-        if (inputConfigs != null)
-          'inputConfigs': inputConfigs!.map((value) => value.toJson()).toList(),
-        if (inputDocuments != null) 'inputDocuments': inputDocuments!.toJson(),
-        if (outputConfig != null) 'outputConfig': outputConfig!.toJson(),
+          'documentOutputConfig': documentOutputConfig!,
+        if (inputConfigs != null) 'inputConfigs': inputConfigs!,
+        if (inputDocuments != null) 'inputDocuments': inputDocuments!,
+        if (outputConfig != null) 'outputConfig': outputConfig!,
         if (skipHumanReview != null) 'skipHumanReview': skipHumanReview!,
       };
 }
@@ -6852,10 +6746,8 @@ class GoogleCloudDocumentaiV1beta3BoundingPoly {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (normalizedVertices != null)
-          'normalizedVertices':
-              normalizedVertices!.map((value) => value.toJson()).toList(),
-        if (vertices != null)
-          'vertices': vertices!.map((value) => value.toJson()).toList(),
+          'normalizedVertices': normalizedVertices!,
+        if (vertices != null) 'vertices': vertices!,
       };
 }
 
@@ -6929,7 +6821,7 @@ class GoogleCloudDocumentaiV1beta3DeleteProcessorMetadata {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (commonMetadata != null) 'commonMetadata': commonMetadata!.toJson(),
+        if (commonMetadata != null) 'commonMetadata': commonMetadata!,
       };
 }
 
@@ -6952,7 +6844,7 @@ class GoogleCloudDocumentaiV1beta3DisableProcessorMetadata {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (commonMetadata != null) 'commonMetadata': commonMetadata!.toJson(),
+        if (commonMetadata != null) 'commonMetadata': commonMetadata!,
       };
 }
 
@@ -7119,23 +7011,16 @@ class GoogleCloudDocumentaiV1beta3Document {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (content != null) 'content': content!,
-        if (entities != null)
-          'entities': entities!.map((value) => value.toJson()).toList(),
-        if (entityRelations != null)
-          'entityRelations':
-              entityRelations!.map((value) => value.toJson()).toList(),
-        if (error != null) 'error': error!.toJson(),
+        if (entities != null) 'entities': entities!,
+        if (entityRelations != null) 'entityRelations': entityRelations!,
+        if (error != null) 'error': error!,
         if (mimeType != null) 'mimeType': mimeType!,
-        if (pages != null)
-          'pages': pages!.map((value) => value.toJson()).toList(),
-        if (revisions != null)
-          'revisions': revisions!.map((value) => value.toJson()).toList(),
-        if (shardInfo != null) 'shardInfo': shardInfo!.toJson(),
+        if (pages != null) 'pages': pages!,
+        if (revisions != null) 'revisions': revisions!,
+        if (shardInfo != null) 'shardInfo': shardInfo!,
         if (text != null) 'text': text!,
-        if (textChanges != null)
-          'textChanges': textChanges!.map((value) => value.toJson()).toList(),
-        if (textStyles != null)
-          'textStyles': textStyles!.map((value) => value.toJson()).toList(),
+        if (textChanges != null) 'textChanges': textChanges!,
+        if (textStyles != null) 'textStyles': textStyles!,
         if (uri != null) 'uri': uri!,
       };
 }
@@ -7274,14 +7159,12 @@ class GoogleCloudDocumentaiV1beta3DocumentEntity {
         if (id != null) 'id': id!,
         if (mentionId != null) 'mentionId': mentionId!,
         if (mentionText != null) 'mentionText': mentionText!,
-        if (normalizedValue != null)
-          'normalizedValue': normalizedValue!.toJson(),
-        if (pageAnchor != null) 'pageAnchor': pageAnchor!.toJson(),
-        if (properties != null)
-          'properties': properties!.map((value) => value.toJson()).toList(),
-        if (provenance != null) 'provenance': provenance!.toJson(),
+        if (normalizedValue != null) 'normalizedValue': normalizedValue!,
+        if (pageAnchor != null) 'pageAnchor': pageAnchor!,
+        if (properties != null) 'properties': properties!,
+        if (provenance != null) 'provenance': provenance!,
         if (redacted != null) 'redacted': redacted!,
-        if (textAnchor != null) 'textAnchor': textAnchor!.toJson(),
+        if (textAnchor != null) 'textAnchor': textAnchor!,
         if (type != null) 'type': type!,
       };
 }
@@ -7379,13 +7262,13 @@ class GoogleCloudDocumentaiV1beta3DocumentEntityNormalizedValue {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (addressValue != null) 'addressValue': addressValue!.toJson(),
+        if (addressValue != null) 'addressValue': addressValue!,
         if (booleanValue != null) 'booleanValue': booleanValue!,
-        if (dateValue != null) 'dateValue': dateValue!.toJson(),
-        if (datetimeValue != null) 'datetimeValue': datetimeValue!.toJson(),
+        if (dateValue != null) 'dateValue': dateValue!,
+        if (datetimeValue != null) 'datetimeValue': datetimeValue!,
         if (floatValue != null) 'floatValue': floatValue!,
         if (integerValue != null) 'integerValue': integerValue!,
-        if (moneyValue != null) 'moneyValue': moneyValue!.toJson(),
+        if (moneyValue != null) 'moneyValue': moneyValue!,
         if (text != null) 'text': text!,
       };
 }
@@ -7449,8 +7332,7 @@ class GoogleCloudDocumentaiV1beta3DocumentOutputConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (gcsOutputConfig != null)
-          'gcsOutputConfig': gcsOutputConfig!.toJson(),
+        if (gcsOutputConfig != null) 'gcsOutputConfig': gcsOutputConfig!,
       };
 }
 
@@ -7645,31 +7527,20 @@ class GoogleCloudDocumentaiV1beta3DocumentPage {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (blocks != null)
-          'blocks': blocks!.map((value) => value.toJson()).toList(),
-        if (detectedLanguages != null)
-          'detectedLanguages':
-              detectedLanguages!.map((value) => value.toJson()).toList(),
-        if (dimension != null) 'dimension': dimension!.toJson(),
-        if (formFields != null)
-          'formFields': formFields!.map((value) => value.toJson()).toList(),
-        if (image != null) 'image': image!.toJson(),
-        if (layout != null) 'layout': layout!.toJson(),
-        if (lines != null)
-          'lines': lines!.map((value) => value.toJson()).toList(),
+        if (blocks != null) 'blocks': blocks!,
+        if (detectedLanguages != null) 'detectedLanguages': detectedLanguages!,
+        if (dimension != null) 'dimension': dimension!,
+        if (formFields != null) 'formFields': formFields!,
+        if (image != null) 'image': image!,
+        if (layout != null) 'layout': layout!,
+        if (lines != null) 'lines': lines!,
         if (pageNumber != null) 'pageNumber': pageNumber!,
-        if (paragraphs != null)
-          'paragraphs': paragraphs!.map((value) => value.toJson()).toList(),
-        if (provenance != null) 'provenance': provenance!.toJson(),
-        if (tables != null)
-          'tables': tables!.map((value) => value.toJson()).toList(),
-        if (tokens != null)
-          'tokens': tokens!.map((value) => value.toJson()).toList(),
-        if (transforms != null)
-          'transforms': transforms!.map((value) => value.toJson()).toList(),
-        if (visualElements != null)
-          'visualElements':
-              visualElements!.map((value) => value.toJson()).toList(),
+        if (paragraphs != null) 'paragraphs': paragraphs!,
+        if (provenance != null) 'provenance': provenance!,
+        if (tables != null) 'tables': tables!,
+        if (tokens != null) 'tokens': tokens!,
+        if (transforms != null) 'transforms': transforms!,
+        if (visualElements != null) 'visualElements': visualElements!,
       };
 }
 
@@ -7698,8 +7569,7 @@ class GoogleCloudDocumentaiV1beta3DocumentPageAnchor {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (pageRefs != null)
-          'pageRefs': pageRefs!.map((value) => value.toJson()).toList(),
+        if (pageRefs != null) 'pageRefs': pageRefs!,
       };
 }
 
@@ -7772,7 +7642,7 @@ class GoogleCloudDocumentaiV1beta3DocumentPageAnchorPageRef {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (boundingPoly != null) 'boundingPoly': boundingPoly!.toJson(),
+        if (boundingPoly != null) 'boundingPoly': boundingPoly!,
         if (confidence != null) 'confidence': confidence!,
         if (layoutId != null) 'layoutId': layoutId!,
         if (layoutType != null) 'layoutType': layoutType!,
@@ -7820,11 +7690,9 @@ class GoogleCloudDocumentaiV1beta3DocumentPageBlock {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (detectedLanguages != null)
-          'detectedLanguages':
-              detectedLanguages!.map((value) => value.toJson()).toList(),
-        if (layout != null) 'layout': layout!.toJson(),
-        if (provenance != null) 'provenance': provenance!.toJson(),
+        if (detectedLanguages != null) 'detectedLanguages': detectedLanguages!,
+        if (layout != null) 'layout': layout!,
+        if (provenance != null) 'provenance': provenance!,
       };
 }
 
@@ -7993,15 +7861,13 @@ class GoogleCloudDocumentaiV1beta3DocumentPageFormField {
         if (correctedKeyText != null) 'correctedKeyText': correctedKeyText!,
         if (correctedValueText != null)
           'correctedValueText': correctedValueText!,
-        if (fieldName != null) 'fieldName': fieldName!.toJson(),
-        if (fieldValue != null) 'fieldValue': fieldValue!.toJson(),
+        if (fieldName != null) 'fieldName': fieldName!,
+        if (fieldValue != null) 'fieldValue': fieldValue!,
         if (nameDetectedLanguages != null)
-          'nameDetectedLanguages':
-              nameDetectedLanguages!.map((value) => value.toJson()).toList(),
-        if (provenance != null) 'provenance': provenance!.toJson(),
+          'nameDetectedLanguages': nameDetectedLanguages!,
+        if (provenance != null) 'provenance': provenance!,
         if (valueDetectedLanguages != null)
-          'valueDetectedLanguages':
-              valueDetectedLanguages!.map((value) => value.toJson()).toList(),
+          'valueDetectedLanguages': valueDetectedLanguages!,
         if (valueType != null) 'valueType': valueType!,
       };
 }
@@ -8107,10 +7973,10 @@ class GoogleCloudDocumentaiV1beta3DocumentPageLayout {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (boundingPoly != null) 'boundingPoly': boundingPoly!.toJson(),
+        if (boundingPoly != null) 'boundingPoly': boundingPoly!,
         if (confidence != null) 'confidence': confidence!,
         if (orientation != null) 'orientation': orientation!,
-        if (textAnchor != null) 'textAnchor': textAnchor!.toJson(),
+        if (textAnchor != null) 'textAnchor': textAnchor!,
       };
 }
 
@@ -8155,11 +8021,9 @@ class GoogleCloudDocumentaiV1beta3DocumentPageLine {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (detectedLanguages != null)
-          'detectedLanguages':
-              detectedLanguages!.map((value) => value.toJson()).toList(),
-        if (layout != null) 'layout': layout!.toJson(),
-        if (provenance != null) 'provenance': provenance!.toJson(),
+        if (detectedLanguages != null) 'detectedLanguages': detectedLanguages!,
+        if (layout != null) 'layout': layout!,
+        if (provenance != null) 'provenance': provenance!,
       };
 }
 
@@ -8250,11 +8114,9 @@ class GoogleCloudDocumentaiV1beta3DocumentPageParagraph {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (detectedLanguages != null)
-          'detectedLanguages':
-              detectedLanguages!.map((value) => value.toJson()).toList(),
-        if (layout != null) 'layout': layout!.toJson(),
-        if (provenance != null) 'provenance': provenance!.toJson(),
+        if (detectedLanguages != null) 'detectedLanguages': detectedLanguages!,
+        if (layout != null) 'layout': layout!,
+        if (provenance != null) 'provenance': provenance!,
       };
 }
 
@@ -8313,14 +8175,10 @@ class GoogleCloudDocumentaiV1beta3DocumentPageTable {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bodyRows != null)
-          'bodyRows': bodyRows!.map((value) => value.toJson()).toList(),
-        if (detectedLanguages != null)
-          'detectedLanguages':
-              detectedLanguages!.map((value) => value.toJson()).toList(),
-        if (headerRows != null)
-          'headerRows': headerRows!.map((value) => value.toJson()).toList(),
-        if (layout != null) 'layout': layout!.toJson(),
+        if (bodyRows != null) 'bodyRows': bodyRows!,
+        if (detectedLanguages != null) 'detectedLanguages': detectedLanguages!,
+        if (headerRows != null) 'headerRows': headerRows!,
+        if (layout != null) 'layout': layout!,
       };
 }
 
@@ -8371,10 +8229,8 @@ class GoogleCloudDocumentaiV1beta3DocumentPageTableTableCell {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (colSpan != null) 'colSpan': colSpan!,
-        if (detectedLanguages != null)
-          'detectedLanguages':
-              detectedLanguages!.map((value) => value.toJson()).toList(),
-        if (layout != null) 'layout': layout!.toJson(),
+        if (detectedLanguages != null) 'detectedLanguages': detectedLanguages!,
+        if (layout != null) 'layout': layout!,
         if (rowSpan != null) 'rowSpan': rowSpan!,
       };
 }
@@ -8401,8 +8257,7 @@ class GoogleCloudDocumentaiV1beta3DocumentPageTableTableRow {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cells != null)
-          'cells': cells!.map((value) => value.toJson()).toList(),
+        if (cells != null) 'cells': cells!,
       };
 }
 
@@ -8454,12 +8309,10 @@ class GoogleCloudDocumentaiV1beta3DocumentPageToken {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (detectedBreak != null) 'detectedBreak': detectedBreak!.toJson(),
-        if (detectedLanguages != null)
-          'detectedLanguages':
-              detectedLanguages!.map((value) => value.toJson()).toList(),
-        if (layout != null) 'layout': layout!.toJson(),
-        if (provenance != null) 'provenance': provenance!.toJson(),
+        if (detectedBreak != null) 'detectedBreak': detectedBreak!,
+        if (detectedLanguages != null) 'detectedLanguages': detectedLanguages!,
+        if (layout != null) 'layout': layout!,
+        if (provenance != null) 'provenance': provenance!,
       };
 }
 
@@ -8527,10 +8380,8 @@ class GoogleCloudDocumentaiV1beta3DocumentPageVisualElement {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (detectedLanguages != null)
-          'detectedLanguages':
-              detectedLanguages!.map((value) => value.toJson()).toList(),
-        if (layout != null) 'layout': layout!.toJson(),
+        if (detectedLanguages != null) 'detectedLanguages': detectedLanguages!,
+        if (layout != null) 'layout': layout!,
         if (type != null) 'type': type!,
       };
 }
@@ -8588,8 +8439,7 @@ class GoogleCloudDocumentaiV1beta3DocumentProvenance {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (id != null) 'id': id!,
-        if (parents != null)
-          'parents': parents!.map((value) => value.toJson()).toList(),
+        if (parents != null) 'parents': parents!,
         if (revision != null) 'revision': revision!,
         if (type != null) 'type': type!,
       };
@@ -8694,7 +8544,7 @@ class GoogleCloudDocumentaiV1beta3DocumentRevision {
   core.Map<core.String, core.dynamic> toJson() => {
         if (agent != null) 'agent': agent!,
         if (createTime != null) 'createTime': createTime!,
-        if (humanReview != null) 'humanReview': humanReview!.toJson(),
+        if (humanReview != null) 'humanReview': humanReview!,
         if (id != null) 'id': id!,
         if (parent != null) 'parent': parent!,
         if (processor != null) 'processor': processor!,
@@ -8849,12 +8699,11 @@ class GoogleCloudDocumentaiV1beta3DocumentStyle {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (backgroundColor != null)
-          'backgroundColor': backgroundColor!.toJson(),
-        if (color != null) 'color': color!.toJson(),
-        if (fontSize != null) 'fontSize': fontSize!.toJson(),
+        if (backgroundColor != null) 'backgroundColor': backgroundColor!,
+        if (color != null) 'color': color!,
+        if (fontSize != null) 'fontSize': fontSize!,
         if (fontWeight != null) 'fontWeight': fontWeight!,
-        if (textAnchor != null) 'textAnchor': textAnchor!.toJson(),
+        if (textAnchor != null) 'textAnchor': textAnchor!,
         if (textDecoration != null) 'textDecoration': textDecoration!,
         if (textStyle != null) 'textStyle': textStyle!,
       };
@@ -8921,8 +8770,7 @@ class GoogleCloudDocumentaiV1beta3DocumentTextAnchor {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (content != null) 'content': content!,
-        if (textSegments != null)
-          'textSegments': textSegments!.map((value) => value.toJson()).toList(),
+        if (textSegments != null) 'textSegments': textSegments!,
       };
 }
 
@@ -9003,9 +8851,8 @@ class GoogleCloudDocumentaiV1beta3DocumentTextChange {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (changedText != null) 'changedText': changedText!,
-        if (provenance != null)
-          'provenance': provenance!.map((value) => value.toJson()).toList(),
-        if (textAnchor != null) 'textAnchor': textAnchor!.toJson(),
+        if (provenance != null) 'provenance': provenance!,
+        if (textAnchor != null) 'textAnchor': textAnchor!,
       };
 }
 
@@ -9028,7 +8875,7 @@ class GoogleCloudDocumentaiV1beta3EnableProcessorMetadata {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (commonMetadata != null) 'commonMetadata': commonMetadata!.toJson(),
+        if (commonMetadata != null) 'commonMetadata': commonMetadata!,
       };
 }
 
@@ -9062,9 +8909,7 @@ class GoogleCloudDocumentaiV1beta3FetchProcessorTypesResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (processorTypes != null)
-          'processorTypes':
-              processorTypes!.map((value) => value.toJson()).toList(),
+        if (processorTypes != null) 'processorTypes': processorTypes!,
       };
 }
 
@@ -9118,8 +8963,7 @@ class GoogleCloudDocumentaiV1beta3GcsDocuments {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (documents != null)
-          'documents': documents!.map((value) => value.toJson()).toList(),
+        if (documents != null) 'documents': documents!,
       };
 }
 
@@ -9226,8 +9070,7 @@ class GoogleCloudDocumentaiV1beta3ListProcessorsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (processors != null)
-          'processors': processors!.map((value) => value.toJson()).toList(),
+        if (processors != null) 'processors': processors!,
       };
 }
 
@@ -9308,9 +9151,9 @@ class GoogleCloudDocumentaiV1beta3ProcessRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (document != null) 'document': document!.toJson(),
-        if (inlineDocument != null) 'inlineDocument': inlineDocument!.toJson(),
-        if (rawDocument != null) 'rawDocument': rawDocument!.toJson(),
+        if (document != null) 'document': document!,
+        if (inlineDocument != null) 'inlineDocument': inlineDocument!,
+        if (rawDocument != null) 'rawDocument': rawDocument!,
         if (skipHumanReview != null) 'skipHumanReview': skipHumanReview!,
       };
 }
@@ -9354,11 +9197,10 @@ class GoogleCloudDocumentaiV1beta3ProcessResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (document != null) 'document': document!.toJson(),
+        if (document != null) 'document': document!,
         if (humanReviewOperation != null)
           'humanReviewOperation': humanReviewOperation!,
-        if (humanReviewStatus != null)
-          'humanReviewStatus': humanReviewStatus!.toJson(),
+        if (humanReviewStatus != null) 'humanReviewStatus': humanReviewStatus!,
       };
 }
 
@@ -9538,8 +9380,7 @@ class GoogleCloudDocumentaiV1beta3ProcessorType {
   core.Map<core.String, core.dynamic> toJson() => {
         if (allowCreation != null) 'allowCreation': allowCreation!,
         if (availableLocations != null)
-          'availableLocations':
-              availableLocations!.map((value) => value.toJson()).toList(),
+          'availableLocations': availableLocations!,
         if (category != null) 'category': category!,
         if (name != null) 'name': name!,
         if (type != null) 'type': type!,
@@ -9659,7 +9500,7 @@ class GoogleCloudDocumentaiV1beta3ReviewDocumentOperationMetadata {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (commonMetadata != null) 'commonMetadata': commonMetadata!.toJson(),
+        if (commonMetadata != null) 'commonMetadata': commonMetadata!,
         if (createTime != null) 'createTime': createTime!,
         if (state != null) 'state': state!,
         if (stateMessage != null) 'stateMessage': stateMessage!,
@@ -9715,10 +9556,10 @@ class GoogleCloudDocumentaiV1beta3ReviewDocumentRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (document != null) 'document': document!.toJson(),
+        if (document != null) 'document': document!,
         if (enableSchemaValidation != null)
           'enableSchemaValidation': enableSchemaValidation!,
-        if (inlineDocument != null) 'inlineDocument': inlineDocument!.toJson(),
+        if (inlineDocument != null) 'inlineDocument': inlineDocument!,
         if (priority != null) 'priority': priority!,
       };
 }
@@ -9798,8 +9639,7 @@ class GoogleCloudLocationListLocationsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (locations != null)
-          'locations': locations!.map((value) => value.toJson()).toList(),
+        if (locations != null) 'locations': locations!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -9901,8 +9741,7 @@ class GoogleLongrunningListOperationsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (operations != null)
-          'operations': operations!.map((value) => value.toJson()).toList(),
+        if (operations != null) 'operations': operations!,
       };
 }
 
@@ -9975,7 +9814,7 @@ class GoogleLongrunningOperation {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (done != null) 'done': done!,
-        if (error != null) 'error': error!.toJson(),
+        if (error != null) 'error': error!,
         if (metadata != null) 'metadata': metadata!,
         if (name != null) 'name': name!,
         if (response != null) 'response': response!,
@@ -10308,7 +10147,7 @@ class GoogleTypeDateTime {
         if (month != null) 'month': month!,
         if (nanos != null) 'nanos': nanos!,
         if (seconds != null) 'seconds': seconds!,
-        if (timeZone != null) 'timeZone': timeZone!.toJson(),
+        if (timeZone != null) 'timeZone': timeZone!,
         if (utcOffset != null) 'utcOffset': utcOffset!,
         if (year != null) 'year': year!,
       };

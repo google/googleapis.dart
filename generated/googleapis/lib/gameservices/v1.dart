@@ -213,7 +213,7 @@ class ProjectsLocationsGameServerDeploymentsResource {
     core.String? deploymentId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (deploymentId != null) 'deploymentId': [deploymentId],
       if ($fields != null) 'fields': [$fields],
@@ -300,7 +300,7 @@ class ProjectsLocationsGameServerDeploymentsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -541,7 +541,7 @@ class ProjectsLocationsGameServerDeploymentsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -598,7 +598,7 @@ class ProjectsLocationsGameServerDeploymentsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (previewTime != null) 'previewTime': [previewTime],
       if (updateMask != null) 'updateMask': [updateMask],
@@ -647,7 +647,7 @@ class ProjectsLocationsGameServerDeploymentsResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -695,7 +695,7 @@ class ProjectsLocationsGameServerDeploymentsResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -753,7 +753,7 @@ class ProjectsLocationsGameServerDeploymentsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -812,7 +812,7 @@ class ProjectsLocationsGameServerDeploymentsConfigsResource {
     core.String? configId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (configId != null) 'configId': [configId],
       if ($fields != null) 'fields': [$fields],
@@ -1012,7 +1012,7 @@ class ProjectsLocationsOperationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1202,7 +1202,7 @@ class ProjectsLocationsRealmsResource {
     core.String? realmId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (realmId != null) 'realmId': [realmId],
       if ($fields != null) 'fields': [$fields],
@@ -1383,7 +1383,7 @@ class ProjectsLocationsRealmsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -1435,7 +1435,7 @@ class ProjectsLocationsRealmsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (previewTime != null) 'previewTime': [previewTime],
       if (updateMask != null) 'updateMask': [updateMask],
@@ -1491,7 +1491,7 @@ class ProjectsLocationsRealmsGameServerClustersResource {
     core.String? gameServerClusterId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (gameServerClusterId != null)
         'gameServerClusterId': [gameServerClusterId],
@@ -1714,7 +1714,7 @@ class ProjectsLocationsRealmsGameServerClustersResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -1777,7 +1777,7 @@ class ProjectsLocationsRealmsGameServerClustersResource {
     core.String? view,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (gameServerClusterId != null)
         'gameServerClusterId': [gameServerClusterId],
@@ -1880,7 +1880,7 @@ class ProjectsLocationsRealmsGameServerClustersResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (previewTime != null) 'previewTime': [previewTime],
       if (updateMask != null) 'updateMask': [updateMask],
@@ -1953,9 +1953,7 @@ class AuditConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (auditLogConfigs != null)
-          'auditLogConfigs':
-              auditLogConfigs!.map((value) => value.toJson()).toList(),
+        if (auditLogConfigs != null) 'auditLogConfigs': auditLogConfigs!,
         if (exemptedMembers != null) 'exemptedMembers': exemptedMembers!,
         if (service != null) 'service': service!,
       };
@@ -2116,7 +2114,7 @@ class Binding {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (bindingId != null) 'bindingId': bindingId!,
-        if (condition != null) 'condition': condition!.toJson(),
+        if (condition != null) 'condition': condition!,
         if (members != null) 'members': members!,
         if (role != null) 'role': role!,
       };
@@ -2157,7 +2155,7 @@ class CloudAuditOptions {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (authorizationLoggingOptions != null)
-          'authorizationLoggingOptions': authorizationLoggingOptions!.toJson(),
+          'authorizationLoggingOptions': authorizationLoggingOptions!,
         if (logName != null) 'logName': logName!,
       };
 }
@@ -2314,8 +2312,7 @@ class CounterOptions {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (customFields != null)
-          'customFields': customFields!.map((value) => value.toJson()).toList(),
+        if (customFields != null) 'customFields': customFields!,
         if (field != null) 'field': field!,
         if (metric != null) 'metric': metric!,
       };
@@ -2416,8 +2413,7 @@ class DeployedClusterState {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (cluster != null) 'cluster': cluster!,
-        if (fleetDetails != null)
-          'fleetDetails': fleetDetails!.map((value) => value.toJson()).toList(),
+        if (fleetDetails != null) 'fleetDetails': fleetDetails!,
       };
 }
 
@@ -2466,8 +2462,8 @@ class DeployedFleet {
   core.Map<core.String, core.dynamic> toJson() => {
         if (fleet != null) 'fleet': fleet!,
         if (fleetSpec != null) 'fleetSpec': fleetSpec!,
-        if (specSource != null) 'specSource': specSource!.toJson(),
-        if (status != null) 'status': status!.toJson(),
+        if (specSource != null) 'specSource': specSource!,
+        if (status != null) 'status': status!,
       };
 }
 
@@ -2508,7 +2504,7 @@ class DeployedFleetAutoscaler {
         if (autoscaler != null) 'autoscaler': autoscaler!,
         if (fleetAutoscalerSpec != null)
           'fleetAutoscalerSpec': fleetAutoscalerSpec!,
-        if (specSource != null) 'specSource': specSource!.toJson(),
+        if (specSource != null) 'specSource': specSource!,
       };
 }
 
@@ -2539,8 +2535,8 @@ class DeployedFleetDetails {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (deployedAutoscaler != null)
-          'deployedAutoscaler': deployedAutoscaler!.toJson(),
-        if (deployedFleet != null) 'deployedFleet': deployedFleet!.toJson(),
+          'deployedAutoscaler': deployedAutoscaler!,
+        if (deployedFleet != null) 'deployedFleet': deployedFleet!,
       };
 }
 
@@ -2708,8 +2704,7 @@ class FetchDeploymentStateResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (clusterState != null)
-          'clusterState': clusterState!.map((value) => value.toJson()).toList(),
+        if (clusterState != null) 'clusterState': clusterState!,
         if (unavailable != null) 'unavailable': unavailable!,
       };
 }
@@ -2829,8 +2824,8 @@ class GameServerCluster {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (clusterState != null) 'clusterState': clusterState!.toJson(),
-        if (connectionInfo != null) 'connectionInfo': connectionInfo!.toJson(),
+        if (clusterState != null) 'clusterState': clusterState!,
+        if (connectionInfo != null) 'connectionInfo': connectionInfo!,
         if (createTime != null) 'createTime': createTime!,
         if (description != null) 'description': description!,
         if (etag != null) 'etag': etag!,
@@ -2869,7 +2864,7 @@ class GameServerClusterConnectionInfo {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (gkeClusterReference != null)
-          'gkeClusterReference': gkeClusterReference!.toJson(),
+          'gkeClusterReference': gkeClusterReference!,
         if (namespace != null) 'namespace': namespace!,
       };
 }
@@ -2956,13 +2951,10 @@ class GameServerConfig {
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
         if (description != null) 'description': description!,
-        if (fleetConfigs != null)
-          'fleetConfigs': fleetConfigs!.map((value) => value.toJson()).toList(),
+        if (fleetConfigs != null) 'fleetConfigs': fleetConfigs!,
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
-        if (scalingConfigs != null)
-          'scalingConfigs':
-              scalingConfigs!.map((value) => value.toJson()).toList(),
+        if (scalingConfigs != null) 'scalingConfigs': scalingConfigs!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
 }
@@ -2993,7 +2985,7 @@ class GameServerConfigOverride {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (configVersion != null) 'configVersion': configVersion!,
-        if (realmsSelector != null) 'realmsSelector': realmsSelector!.toJson(),
+        if (realmsSelector != null) 'realmsSelector': realmsSelector!,
       };
 }
 
@@ -3143,9 +3135,7 @@ class GameServerDeploymentRollout {
           'defaultGameServerConfig': defaultGameServerConfig!,
         if (etag != null) 'etag': etag!,
         if (gameServerConfigOverrides != null)
-          'gameServerConfigOverrides': gameServerConfigOverrides!
-              .map((value) => value.toJson())
-              .toList(),
+          'gameServerConfigOverrides': gameServerConfigOverrides!,
         if (name != null) 'name': name!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
@@ -3347,8 +3337,7 @@ class ListGameServerClustersResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (gameServerClusters != null)
-          'gameServerClusters':
-              gameServerClusters!.map((value) => value.toJson()).toList(),
+          'gameServerClusters': gameServerClusters!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (unreachable != null) 'unreachable': unreachable!,
       };
@@ -3391,9 +3380,7 @@ class ListGameServerConfigsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (gameServerConfigs != null)
-          'gameServerConfigs':
-              gameServerConfigs!.map((value) => value.toJson()).toList(),
+        if (gameServerConfigs != null) 'gameServerConfigs': gameServerConfigs!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (unreachable != null) 'unreachable': unreachable!,
       };
@@ -3437,8 +3424,7 @@ class ListGameServerDeploymentsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (gameServerDeployments != null)
-          'gameServerDeployments':
-              gameServerDeployments!.map((value) => value.toJson()).toList(),
+          'gameServerDeployments': gameServerDeployments!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (unreachable != null) 'unreachable': unreachable!,
       };
@@ -3471,8 +3457,7 @@ class ListLocationsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (locations != null)
-          'locations': locations!.map((value) => value.toJson()).toList(),
+        if (locations != null) 'locations': locations!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -3505,8 +3490,7 @@ class ListOperationsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (operations != null)
-          'operations': operations!.map((value) => value.toJson()).toList(),
+        if (operations != null) 'operations': operations!,
       };
 }
 
@@ -3548,8 +3532,7 @@ class ListRealmsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (realms != null)
-          'realms': realms!.map((value) => value.toJson()).toList(),
+        if (realms != null) 'realms': realms!,
         if (unreachable != null) 'unreachable': unreachable!,
       };
 }
@@ -3657,9 +3640,9 @@ class LogConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cloudAudit != null) 'cloudAudit': cloudAudit!.toJson(),
-        if (counter != null) 'counter': counter!.toJson(),
-        if (dataAccess != null) 'dataAccess': dataAccess!.toJson(),
+        if (cloudAudit != null) 'cloudAudit': cloudAudit!,
+        if (counter != null) 'counter': counter!,
+        if (dataAccess != null) 'dataAccess': dataAccess!,
       };
 }
 
@@ -3732,7 +3715,7 @@ class Operation {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (done != null) 'done': done!,
-        if (error != null) 'error': error!.toJson(),
+        if (error != null) 'error': error!,
         if (metadata != null) 'metadata': metadata!,
         if (name != null) 'name': name!,
         if (response != null) 'response': response!,
@@ -3849,9 +3832,7 @@ class OperationMetadata {
         if (apiVersion != null) 'apiVersion': apiVersion!,
         if (createTime != null) 'createTime': createTime!,
         if (endTime != null) 'endTime': endTime!,
-        if (operationStatus != null)
-          'operationStatus': operationStatus!
-              .map((key, item) => core.MapEntry(key, item.toJson())),
+        if (operationStatus != null) 'operationStatus': operationStatus!,
         if (requestedCancellation != null)
           'requestedCancellation': requestedCancellation!,
         if (statusMessage != null) 'statusMessage': statusMessage!,
@@ -4034,14 +4015,11 @@ class Policy {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (auditConfigs != null)
-          'auditConfigs': auditConfigs!.map((value) => value.toJson()).toList(),
-        if (bindings != null)
-          'bindings': bindings!.map((value) => value.toJson()).toList(),
+        if (auditConfigs != null) 'auditConfigs': auditConfigs!,
+        if (bindings != null) 'bindings': bindings!,
         if (etag != null) 'etag': etag!,
         if (iamOwned != null) 'iamOwned': iamOwned!,
-        if (rules != null)
-          'rules': rules!.map((value) => value.toJson()).toList(),
+        if (rules != null) 'rules': rules!,
         if (version != null) 'version': version!,
       };
 }
@@ -4081,9 +4059,9 @@ class PreviewCreateGameServerClusterResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (clusterState != null) 'clusterState': clusterState!.toJson(),
+        if (clusterState != null) 'clusterState': clusterState!,
         if (etag != null) 'etag': etag!,
-        if (targetState != null) 'targetState': targetState!.toJson(),
+        if (targetState != null) 'targetState': targetState!,
       };
 }
 
@@ -4112,7 +4090,7 @@ class PreviewDeleteGameServerClusterResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
-        if (targetState != null) 'targetState': targetState!.toJson(),
+        if (targetState != null) 'targetState': targetState!,
       };
 }
 
@@ -4151,7 +4129,7 @@ class PreviewGameServerDeploymentRolloutResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
-        if (targetState != null) 'targetState': targetState!.toJson(),
+        if (targetState != null) 'targetState': targetState!,
         if (unavailable != null) 'unavailable': unavailable!,
       };
 }
@@ -4180,7 +4158,7 @@ class PreviewRealmUpdateResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
-        if (targetState != null) 'targetState': targetState!.toJson(),
+        if (targetState != null) 'targetState': targetState!,
       };
 }
 
@@ -4209,7 +4187,7 @@ class PreviewUpdateGameServerClusterResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
-        if (targetState != null) 'targetState': targetState!.toJson(),
+        if (targetState != null) 'targetState': targetState!,
       };
 }
 
@@ -4412,12 +4390,10 @@ class Rule {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (action != null) 'action': action!,
-        if (conditions != null)
-          'conditions': conditions!.map((value) => value.toJson()).toList(),
+        if (conditions != null) 'conditions': conditions!,
         if (description != null) 'description': description!,
         if (in_ != null) 'in': in_!,
-        if (logConfig != null)
-          'logConfig': logConfig!.map((value) => value.toJson()).toList(),
+        if (logConfig != null) 'logConfig': logConfig!,
         if (notIn != null) 'notIn': notIn!,
         if (permissions != null) 'permissions': permissions!,
       };
@@ -4478,10 +4454,8 @@ class ScalingConfig {
         if (fleetAutoscalerSpec != null)
           'fleetAutoscalerSpec': fleetAutoscalerSpec!,
         if (name != null) 'name': name!,
-        if (schedules != null)
-          'schedules': schedules!.map((value) => value.toJson()).toList(),
-        if (selectors != null)
-          'selectors': selectors!.map((value) => value.toJson()).toList(),
+        if (schedules != null) 'schedules': schedules!,
+        if (selectors != null) 'selectors': selectors!,
       };
 }
 
@@ -4575,7 +4549,7 @@ class SetIamPolicyRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (policy != null) 'policy': policy!.toJson(),
+        if (policy != null) 'policy': policy!,
         if (updateMask != null) 'updateMask': updateMask!,
       };
 }
@@ -4704,8 +4678,7 @@ class TargetDetails {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (fleetDetails != null)
-          'fleetDetails': fleetDetails!.map((value) => value.toJson()).toList(),
+        if (fleetDetails != null) 'fleetDetails': fleetDetails!,
         if (gameServerClusterName != null)
           'gameServerClusterName': gameServerClusterName!,
         if (gameServerDeploymentName != null)
@@ -4739,7 +4712,7 @@ class TargetFleet {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
-        if (specSource != null) 'specSource': specSource!.toJson(),
+        if (specSource != null) 'specSource': specSource!,
       };
 }
 
@@ -4769,7 +4742,7 @@ class TargetFleetAutoscaler {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
-        if (specSource != null) 'specSource': specSource!.toJson(),
+        if (specSource != null) 'specSource': specSource!,
       };
 }
 
@@ -4799,8 +4772,8 @@ class TargetFleetDetails {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (autoscaler != null) 'autoscaler': autoscaler!.toJson(),
-        if (fleet != null) 'fleet': fleet!.toJson(),
+        if (autoscaler != null) 'autoscaler': autoscaler!,
+        if (fleet != null) 'fleet': fleet!,
       };
 }
 
@@ -4824,8 +4797,7 @@ class TargetState {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (details != null)
-          'details': details!.map((value) => value.toJson()).toList(),
+        if (details != null) 'details': details!,
       };
 }
 

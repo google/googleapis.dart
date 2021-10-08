@@ -99,7 +99,7 @@ class PhotoResource {
     Photo request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -244,7 +244,7 @@ class PhotoResource {
     Empty request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -306,7 +306,7 @@ class PhotoResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -356,7 +356,7 @@ class PhotosResource {
     BatchDeletePhotosRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -467,7 +467,7 @@ class PhotosResource {
     BatchUpdatePhotosRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -606,8 +606,7 @@ class BatchDeletePhotosResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (status != null)
-          'status': status!.map((value) => value.toJson()).toList(),
+        if (status != null) 'status': status!,
       };
 }
 
@@ -632,8 +631,7 @@ class BatchGetPhotosResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (results != null)
-          'results': results!.map((value) => value.toJson()).toList(),
+        if (results != null) 'results': results!,
       };
 }
 
@@ -662,8 +660,7 @@ class BatchUpdatePhotosRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (updatePhotoRequests != null)
-          'updatePhotoRequests':
-              updatePhotoRequests!.map((value) => value.toJson()).toList(),
+          'updatePhotoRequests': updatePhotoRequests!,
       };
 }
 
@@ -688,8 +685,7 @@ class BatchUpdatePhotosResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (results != null)
-          'results': results!.map((value) => value.toJson()).toList(),
+        if (results != null) 'results': results!,
       };
 }
 
@@ -714,7 +710,7 @@ class Connection {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (target != null) 'target': target!.toJson(),
+        if (target != null) 'target': target!,
       };
 }
 
@@ -831,8 +827,7 @@ class ListPhotosResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (photos != null)
-          'photos': photos!.map((value) => value.toJson()).toList(),
+        if (photos != null) 'photos': photos!,
       };
 }
 
@@ -905,7 +900,7 @@ class Operation {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (done != null) 'done': done!,
-        if (error != null) 'error': error!.toJson(),
+        if (error != null) 'error': error!,
         if (metadata != null) 'metadata': metadata!,
         if (name != null) 'name': name!,
         if (response != null) 'response': response!,
@@ -1060,19 +1055,16 @@ class Photo {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (captureTime != null) 'captureTime': captureTime!,
-        if (connections != null)
-          'connections': connections!.map((value) => value.toJson()).toList(),
+        if (connections != null) 'connections': connections!,
         if (downloadUrl != null) 'downloadUrl': downloadUrl!,
         if (mapsPublishStatus != null) 'mapsPublishStatus': mapsPublishStatus!,
-        if (photoId != null) 'photoId': photoId!.toJson(),
-        if (places != null)
-          'places': places!.map((value) => value.toJson()).toList(),
-        if (pose != null) 'pose': pose!.toJson(),
+        if (photoId != null) 'photoId': photoId!,
+        if (places != null) 'places': places!,
+        if (pose != null) 'pose': pose!,
         if (shareLink != null) 'shareLink': shareLink!,
         if (thumbnailUrl != null) 'thumbnailUrl': thumbnailUrl!,
         if (transferStatus != null) 'transferStatus': transferStatus!,
-        if (uploadReference != null)
-          'uploadReference': uploadReference!.toJson(),
+        if (uploadReference != null) 'uploadReference': uploadReference!,
         if (viewCount != null) 'viewCount': viewCount!,
       };
 }
@@ -1126,8 +1118,8 @@ class PhotoResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (photo != null) 'photo': photo!.toJson(),
-        if (status != null) 'status': status!.toJson(),
+        if (photo != null) 'photo': photo!,
+        if (status != null) 'status': status!,
       };
 }
 
@@ -1260,8 +1252,8 @@ class Pose {
         if (accuracyMeters != null) 'accuracyMeters': accuracyMeters!,
         if (altitude != null) 'altitude': altitude!,
         if (heading != null) 'heading': heading!,
-        if (latLngPair != null) 'latLngPair': latLngPair!.toJson(),
-        if (level != null) 'level': level!.toJson(),
+        if (latLngPair != null) 'latLngPair': latLngPair!,
+        if (level != null) 'level': level!,
         if (pitch != null) 'pitch': pitch!,
         if (roll != null) 'roll': roll!,
       };
@@ -1360,7 +1352,7 @@ class UpdatePhotoRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (photo != null) 'photo': photo!.toJson(),
+        if (photo != null) 'photo': photo!,
         if (updateMask != null) 'updateMask': updateMask!,
       };
 }

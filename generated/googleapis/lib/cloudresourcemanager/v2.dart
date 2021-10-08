@@ -110,7 +110,7 @@ class FoldersResource {
     core.String? parent,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (parent != null) 'parent': [parent],
       if ($fields != null) 'fields': [$fields],
@@ -241,7 +241,7 @@ class FoldersResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -356,7 +356,7 @@ class FoldersResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -412,7 +412,7 @@ class FoldersResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -454,7 +454,7 @@ class FoldersResource {
     SearchFoldersRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -502,7 +502,7 @@ class FoldersResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -548,7 +548,7 @@ class FoldersResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -598,7 +598,7 @@ class FoldersResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -705,9 +705,7 @@ class AuditConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (auditLogConfigs != null)
-          'auditLogConfigs':
-              auditLogConfigs!.map((value) => value.toJson()).toList(),
+        if (auditLogConfigs != null) 'auditLogConfigs': auditLogConfigs!,
         if (service != null) 'service': service!,
       };
 }
@@ -826,7 +824,7 @@ class Binding {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (condition != null) 'condition': condition!.toJson(),
+        if (condition != null) 'condition': condition!,
         if (members != null) 'members': members!,
         if (role != null) 'role': role!,
       };
@@ -1309,7 +1307,7 @@ class GetIamPolicyRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (options != null) 'options': options!.toJson(),
+        if (options != null) 'options': options!,
       };
 }
 
@@ -1373,8 +1371,7 @@ class ListFoldersResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (folders != null)
-          'folders': folders!.map((value) => value.toJson()).toList(),
+        if (folders != null) 'folders': folders!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -1515,7 +1512,7 @@ class Operation {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (done != null) 'done': done!,
-        if (error != null) 'error': error!.toJson(),
+        if (error != null) 'error': error!,
         if (metadata != null) 'metadata': metadata!,
         if (name != null) 'name': name!,
         if (response != null) 'response': response!,
@@ -1631,10 +1628,8 @@ class Policy {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (auditConfigs != null)
-          'auditConfigs': auditConfigs!.map((value) => value.toJson()).toList(),
-        if (bindings != null)
-          'bindings': bindings!.map((value) => value.toJson()).toList(),
+        if (auditConfigs != null) 'auditConfigs': auditConfigs!,
+        if (bindings != null) 'bindings': bindings!,
         if (etag != null) 'etag': etag!,
         if (version != null) 'version': version!,
       };
@@ -1772,8 +1767,7 @@ class SearchFoldersResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (folders != null)
-          'folders': folders!.map((value) => value.toJson()).toList(),
+        if (folders != null) 'folders': folders!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -1810,7 +1804,7 @@ class SetIamPolicyRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (policy != null) 'policy': policy!.toJson(),
+        if (policy != null) 'policy': policy!,
         if (updateMask != null) 'updateMask': updateMask!,
       };
 }

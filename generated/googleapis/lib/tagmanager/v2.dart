@@ -202,7 +202,7 @@ class AccountsResource {
     core.String? fingerprint,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (fingerprint != null) 'fingerprint': [fingerprint],
       if ($fields != null) 'fields': [$fields],
@@ -259,7 +259,7 @@ class AccountsContainersResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -417,7 +417,7 @@ class AccountsContainersResource {
     core.String? fingerprint,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (fingerprint != null) 'fingerprint': [fingerprint],
       if ($fields != null) 'fields': [$fields],
@@ -466,7 +466,7 @@ class AccountsContainersEnvironmentsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -625,7 +625,7 @@ class AccountsContainersEnvironmentsResource {
     core.String path, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -673,7 +673,7 @@ class AccountsContainersEnvironmentsResource {
     core.String? fingerprint,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (fingerprint != null) 'fingerprint': [fingerprint],
       if ($fields != null) 'fields': [$fields],
@@ -1058,7 +1058,7 @@ class AccountsContainersVersionsResource {
     core.String? fingerprint,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (fingerprint != null) 'fingerprint': [fingerprint],
       if ($fields != null) 'fields': [$fields],
@@ -1125,7 +1125,7 @@ class AccountsContainersWorkspacesResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1170,7 +1170,7 @@ class AccountsContainersWorkspacesResource {
     core.String path, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1409,7 +1409,7 @@ class AccountsContainersWorkspacesResource {
     core.String? fingerprint,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (fingerprint != null) 'fingerprint': [fingerprint],
       if ($fields != null) 'fields': [$fields],
@@ -1497,7 +1497,7 @@ class AccountsContainersWorkspacesResource {
     core.String? fingerprint,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (fingerprint != null) 'fingerprint': [fingerprint],
       if ($fields != null) 'fields': [$fields],
@@ -1840,7 +1840,7 @@ class AccountsContainersWorkspacesClientsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2043,7 +2043,7 @@ class AccountsContainersWorkspacesClientsResource {
     core.String? fingerprint,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (fingerprint != null) 'fingerprint': [fingerprint],
       if ($fields != null) 'fields': [$fields],
@@ -2093,7 +2093,7 @@ class AccountsContainersWorkspacesFoldersResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2298,7 +2298,7 @@ class AccountsContainersWorkspacesFoldersResource {
     core.List<core.String>? variableId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (tagId != null) 'tagId': tagId,
       if (triggerId != null) 'triggerId': triggerId,
@@ -2392,7 +2392,7 @@ class AccountsContainersWorkspacesFoldersResource {
     core.String? fingerprint,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (fingerprint != null) 'fingerprint': [fingerprint],
       if ($fields != null) 'fields': [$fields],
@@ -2442,7 +2442,7 @@ class AccountsContainersWorkspacesTagsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2645,7 +2645,7 @@ class AccountsContainersWorkspacesTagsResource {
     core.String? fingerprint,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (fingerprint != null) 'fingerprint': [fingerprint],
       if ($fields != null) 'fields': [$fields],
@@ -2695,7 +2695,7 @@ class AccountsContainersWorkspacesTemplatesResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2902,7 +2902,7 @@ class AccountsContainersWorkspacesTemplatesResource {
     core.String? fingerprint,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (fingerprint != null) 'fingerprint': [fingerprint],
       if ($fields != null) 'fields': [$fields],
@@ -2953,7 +2953,7 @@ class AccountsContainersWorkspacesTriggersResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3158,7 +3158,7 @@ class AccountsContainersWorkspacesTriggersResource {
     core.String? fingerprint,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (fingerprint != null) 'fingerprint': [fingerprint],
       if ($fields != null) 'fields': [$fields],
@@ -3208,7 +3208,7 @@ class AccountsContainersWorkspacesVariablesResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3413,7 +3413,7 @@ class AccountsContainersWorkspacesVariablesResource {
     core.String? fingerprint,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (fingerprint != null) 'fingerprint': [fingerprint],
       if ($fields != null) 'fields': [$fields],
@@ -3463,7 +3463,7 @@ class AccountsContainersWorkspacesZonesResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3666,7 +3666,7 @@ class AccountsContainersWorkspacesZonesResource {
     core.String? fingerprint,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (fingerprint != null) 'fingerprint': [fingerprint],
       if ($fields != null) 'fields': [$fields],
@@ -3714,7 +3714,7 @@ class AccountsUserPermissionsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3872,7 +3872,7 @@ class AccountsUserPermissionsResource {
     core.String path, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4284,8 +4284,7 @@ class Client {
         if (fingerprint != null) 'fingerprint': fingerprint!,
         if (name != null) 'name': name!,
         if (notes != null) 'notes': notes!,
-        if (parameter != null)
-          'parameter': parameter!.map((value) => value.toJson()).toList(),
+        if (parameter != null) 'parameter': parameter!,
         if (parentFolderId != null) 'parentFolderId': parentFolderId!,
         if (path != null) 'path': path!,
         if (priority != null) 'priority': priority!,
@@ -4347,8 +4346,7 @@ class Condition {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (parameter != null)
-          'parameter': parameter!.map((value) => value.toJson()).toList(),
+        if (parameter != null) 'parameter': parameter!,
         if (type != null) 'type': type!,
       };
 }
@@ -4667,32 +4665,24 @@ class ContainerVersion {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accountId != null) 'accountId': accountId!,
-        if (builtInVariable != null)
-          'builtInVariable':
-              builtInVariable!.map((value) => value.toJson()).toList(),
-        if (client != null)
-          'client': client!.map((value) => value.toJson()).toList(),
-        if (container != null) 'container': container!.toJson(),
+        if (builtInVariable != null) 'builtInVariable': builtInVariable!,
+        if (client != null) 'client': client!,
+        if (container != null) 'container': container!,
         if (containerId != null) 'containerId': containerId!,
         if (containerVersionId != null)
           'containerVersionId': containerVersionId!,
-        if (customTemplate != null)
-          'customTemplate':
-              customTemplate!.map((value) => value.toJson()).toList(),
+        if (customTemplate != null) 'customTemplate': customTemplate!,
         if (deleted != null) 'deleted': deleted!,
         if (description != null) 'description': description!,
         if (fingerprint != null) 'fingerprint': fingerprint!,
-        if (folder != null)
-          'folder': folder!.map((value) => value.toJson()).toList(),
+        if (folder != null) 'folder': folder!,
         if (name != null) 'name': name!,
         if (path != null) 'path': path!,
-        if (tag != null) 'tag': tag!.map((value) => value.toJson()).toList(),
+        if (tag != null) 'tag': tag!,
         if (tagManagerUrl != null) 'tagManagerUrl': tagManagerUrl!,
-        if (trigger != null)
-          'trigger': trigger!.map((value) => value.toJson()).toList(),
-        if (variable != null)
-          'variable': variable!.map((value) => value.toJson()).toList(),
-        if (zone != null) 'zone': zone!.map((value) => value.toJson()).toList(),
+        if (trigger != null) 'trigger': trigger!,
+        if (variable != null) 'variable': variable!,
+        if (zone != null) 'zone': zone!,
       };
 }
 
@@ -4838,9 +4828,7 @@ class CreateBuiltInVariableResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (builtInVariable != null)
-          'builtInVariable':
-              builtInVariable!.map((value) => value.toJson()).toList(),
+        if (builtInVariable != null) 'builtInVariable': builtInVariable!,
       };
 }
 
@@ -4915,10 +4903,9 @@ class CreateContainerVersionResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (compilerError != null) 'compilerError': compilerError!,
-        if (containerVersion != null)
-          'containerVersion': containerVersion!.toJson(),
+        if (containerVersion != null) 'containerVersion': containerVersion!,
         if (newWorkspacePath != null) 'newWorkspacePath': newWorkspacePath!,
-        if (syncStatus != null) 'syncStatus': syncStatus!.toJson(),
+        if (syncStatus != null) 'syncStatus': syncStatus!,
       };
 }
 
@@ -5004,8 +4991,7 @@ class CustomTemplate {
         if (accountId != null) 'accountId': accountId!,
         if (containerId != null) 'containerId': containerId!,
         if (fingerprint != null) 'fingerprint': fingerprint!,
-        if (galleryReference != null)
-          'galleryReference': galleryReference!.toJson(),
+        if (galleryReference != null) 'galleryReference': galleryReference!,
         if (name != null) 'name': name!,
         if (path != null) 'path': path!,
         if (tagManagerUrl != null) 'tagManagerUrl': tagManagerUrl!,
@@ -5080,11 +5066,11 @@ class Entity {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (changeStatus != null) 'changeStatus': changeStatus!,
-        if (client != null) 'client': client!.toJson(),
-        if (folder != null) 'folder': folder!.toJson(),
-        if (tag != null) 'tag': tag!.toJson(),
-        if (trigger != null) 'trigger': trigger!.toJson(),
-        if (variable != null) 'variable': variable!.toJson(),
+        if (client != null) 'client': client!,
+        if (folder != null) 'folder': folder!,
+        if (tag != null) 'tag': tag!,
+        if (trigger != null) 'trigger': trigger!,
+        if (variable != null) 'variable': variable!,
       };
 }
 
@@ -5377,11 +5363,9 @@ class FolderEntities {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (tag != null) 'tag': tag!.map((value) => value.toJson()).toList(),
-        if (trigger != null)
-          'trigger': trigger!.map((value) => value.toJson()).toList(),
-        if (variable != null)
-          'variable': variable!.map((value) => value.toJson()).toList(),
+        if (tag != null) 'tag': tag!,
+        if (trigger != null) 'trigger': trigger!,
+        if (variable != null) 'variable': variable!,
       };
 }
 
@@ -5479,12 +5463,8 @@ class GetWorkspaceStatusResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (mergeConflict != null)
-          'mergeConflict':
-              mergeConflict!.map((value) => value.toJson()).toList(),
-        if (workspaceChange != null)
-          'workspaceChange':
-              workspaceChange!.map((value) => value.toJson()).toList(),
+        if (mergeConflict != null) 'mergeConflict': mergeConflict!,
+        if (workspaceChange != null) 'workspaceChange': workspaceChange!,
       };
 }
 
@@ -5515,8 +5495,7 @@ class ListAccountsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (account != null)
-          'account': account!.map((value) => value.toJson()).toList(),
+        if (account != null) 'account': account!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -5547,8 +5526,7 @@ class ListClientsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (client != null)
-          'client': client!.map((value) => value.toJson()).toList(),
+        if (client != null) 'client': client!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -5581,8 +5559,7 @@ class ListContainerVersionsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (containerVersionHeader != null)
-          'containerVersionHeader':
-              containerVersionHeader!.map((value) => value.toJson()).toList(),
+          'containerVersionHeader': containerVersionHeader!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -5614,8 +5591,7 @@ class ListContainersResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (container != null)
-          'container': container!.map((value) => value.toJson()).toList(),
+        if (container != null) 'container': container!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -5647,9 +5623,7 @@ class ListEnabledBuiltInVariablesResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (builtInVariable != null)
-          'builtInVariable':
-              builtInVariable!.map((value) => value.toJson()).toList(),
+        if (builtInVariable != null) 'builtInVariable': builtInVariable!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -5681,8 +5655,7 @@ class ListEnvironmentsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (environment != null)
-          'environment': environment!.map((value) => value.toJson()).toList(),
+        if (environment != null) 'environment': environment!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -5714,8 +5687,7 @@ class ListFoldersResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (folder != null)
-          'folder': folder!.map((value) => value.toJson()).toList(),
+        if (folder != null) 'folder': folder!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -5748,7 +5720,7 @@ class ListTagsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (tag != null) 'tag': tag!.map((value) => value.toJson()).toList(),
+        if (tag != null) 'tag': tag!,
       };
 }
 
@@ -5779,8 +5751,7 @@ class ListTemplatesResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (template != null)
-          'template': template!.map((value) => value.toJson()).toList(),
+        if (template != null) 'template': template!,
       };
 }
 
@@ -5812,8 +5783,7 @@ class ListTriggersResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (trigger != null)
-          'trigger': trigger!.map((value) => value.toJson()).toList(),
+        if (trigger != null) 'trigger': trigger!,
       };
 }
 
@@ -5845,9 +5815,7 @@ class ListUserPermissionsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (userPermission != null)
-          'userPermission':
-              userPermission!.map((value) => value.toJson()).toList(),
+        if (userPermission != null) 'userPermission': userPermission!,
       };
 }
 
@@ -5879,8 +5847,7 @@ class ListVariablesResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (variable != null)
-          'variable': variable!.map((value) => value.toJson()).toList(),
+        if (variable != null) 'variable': variable!,
       };
 }
 
@@ -5912,8 +5879,7 @@ class ListWorkspacesResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (workspace != null)
-          'workspace': workspace!.map((value) => value.toJson()).toList(),
+        if (workspace != null) 'workspace': workspace!,
       };
 }
 
@@ -5944,7 +5910,7 @@ class ListZonesResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (zone != null) 'zone': zone!.map((value) => value.toJson()).toList(),
+        if (zone != null) 'zone': zone!,
       };
 }
 
@@ -5983,9 +5949,8 @@ class MergeConflict {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (entityInBaseVersion != null)
-          'entityInBaseVersion': entityInBaseVersion!.toJson(),
-        if (entityInWorkspace != null)
-          'entityInWorkspace': entityInWorkspace!.toJson(),
+          'entityInBaseVersion': entityInBaseVersion!,
+        if (entityInWorkspace != null) 'entityInWorkspace': entityInWorkspace!,
       };
 }
 
@@ -6091,8 +6056,8 @@ class Parameter {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (key != null) 'key': key!,
-        if (list != null) 'list': list!.map((value) => value.toJson()).toList(),
-        if (map != null) 'map': map!.map((value) => value.toJson()).toList(),
+        if (list != null) 'list': list!,
+        if (map != null) 'map': map!,
         if (type != null) 'type': type!,
         if (value != null) 'value': value!,
       };
@@ -6124,8 +6089,7 @@ class PublishContainerVersionResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (compilerError != null) 'compilerError': compilerError!,
-        if (containerVersion != null)
-          'containerVersion': containerVersion!.toJson(),
+        if (containerVersion != null) 'containerVersion': containerVersion!,
       };
 }
 
@@ -6164,9 +6128,8 @@ class QuickPreviewResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (compilerError != null) 'compilerError': compilerError!,
-        if (containerVersion != null)
-          'containerVersion': containerVersion!.toJson(),
-        if (syncStatus != null) 'syncStatus': syncStatus!.toJson(),
+        if (containerVersion != null) 'containerVersion': containerVersion!,
+        if (syncStatus != null) 'syncStatus': syncStatus!,
       };
 }
 
@@ -6213,7 +6176,7 @@ class RevertClientResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (client != null) 'client': client!.toJson(),
+        if (client != null) 'client': client!,
       };
 }
 
@@ -6239,7 +6202,7 @@ class RevertFolderResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (folder != null) 'folder': folder!.toJson(),
+        if (folder != null) 'folder': folder!,
       };
 }
 
@@ -6265,7 +6228,7 @@ class RevertTagResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (tag != null) 'tag': tag!.toJson(),
+        if (tag != null) 'tag': tag!,
       };
 }
 
@@ -6291,7 +6254,7 @@ class RevertTemplateResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (template != null) 'template': template!.toJson(),
+        if (template != null) 'template': template!,
       };
 }
 
@@ -6317,7 +6280,7 @@ class RevertTriggerResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (trigger != null) 'trigger': trigger!.toJson(),
+        if (trigger != null) 'trigger': trigger!,
       };
 }
 
@@ -6343,7 +6306,7 @@ class RevertVariableResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (variable != null) 'variable': variable!.toJson(),
+        if (variable != null) 'variable': variable!,
       };
 }
 
@@ -6369,7 +6332,7 @@ class RevertZoneResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (zone != null) 'zone': zone!.toJson(),
+        if (zone != null) 'zone': zone!,
       };
 }
 
@@ -6468,10 +6431,8 @@ class SyncWorkspaceResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (mergeConflict != null)
-          'mergeConflict':
-              mergeConflict!.map((value) => value.toJson()).toList(),
-        if (syncStatus != null) 'syncStatus': syncStatus!.toJson(),
+        if (mergeConflict != null) 'mergeConflict': mergeConflict!,
+        if (syncStatus != null) 'syncStatus': syncStatus!,
       };
 }
 
@@ -6764,34 +6725,30 @@ class Tag {
         if (accountId != null) 'accountId': accountId!,
         if (blockingRuleId != null) 'blockingRuleId': blockingRuleId!,
         if (blockingTriggerId != null) 'blockingTriggerId': blockingTriggerId!,
-        if (consentSettings != null)
-          'consentSettings': consentSettings!.toJson(),
+        if (consentSettings != null) 'consentSettings': consentSettings!,
         if (containerId != null) 'containerId': containerId!,
         if (fingerprint != null) 'fingerprint': fingerprint!,
         if (firingRuleId != null) 'firingRuleId': firingRuleId!,
         if (firingTriggerId != null) 'firingTriggerId': firingTriggerId!,
         if (liveOnly != null) 'liveOnly': liveOnly!,
         if (monitoringMetadata != null)
-          'monitoringMetadata': monitoringMetadata!.toJson(),
+          'monitoringMetadata': monitoringMetadata!,
         if (monitoringMetadataTagNameKey != null)
           'monitoringMetadataTagNameKey': monitoringMetadataTagNameKey!,
         if (name != null) 'name': name!,
         if (notes != null) 'notes': notes!,
-        if (parameter != null)
-          'parameter': parameter!.map((value) => value.toJson()).toList(),
+        if (parameter != null) 'parameter': parameter!,
         if (parentFolderId != null) 'parentFolderId': parentFolderId!,
         if (path != null) 'path': path!,
         if (paused != null) 'paused': paused!,
-        if (priority != null) 'priority': priority!.toJson(),
+        if (priority != null) 'priority': priority!,
         if (scheduleEndMs != null) 'scheduleEndMs': scheduleEndMs!,
         if (scheduleStartMs != null) 'scheduleStartMs': scheduleStartMs!,
-        if (setupTag != null)
-          'setupTag': setupTag!.map((value) => value.toJson()).toList(),
+        if (setupTag != null) 'setupTag': setupTag!,
         if (tagFiringOption != null) 'tagFiringOption': tagFiringOption!,
         if (tagId != null) 'tagId': tagId!,
         if (tagManagerUrl != null) 'tagManagerUrl': tagManagerUrl!,
-        if (teardownTag != null)
-          'teardownTag': teardownTag!.map((value) => value.toJson()).toList(),
+        if (teardownTag != null) 'teardownTag': teardownTag!,
         if (type != null) 'type': type!,
         if (workspaceId != null) 'workspaceId': workspaceId!,
       };
@@ -6833,7 +6790,7 @@ class TagConsentSetting {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (consentStatus != null) 'consentStatus': consentStatus!,
-        if (consentType != null) 'consentType': consentType!.toJson(),
+        if (consentType != null) 'consentType': consentType!,
       };
 }
 
@@ -7272,57 +7229,45 @@ class Trigger {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accountId != null) 'accountId': accountId!,
-        if (autoEventFilter != null)
-          'autoEventFilter':
-              autoEventFilter!.map((value) => value.toJson()).toList(),
-        if (checkValidation != null)
-          'checkValidation': checkValidation!.toJson(),
+        if (autoEventFilter != null) 'autoEventFilter': autoEventFilter!,
+        if (checkValidation != null) 'checkValidation': checkValidation!,
         if (containerId != null) 'containerId': containerId!,
         if (continuousTimeMinMilliseconds != null)
-          'continuousTimeMinMilliseconds':
-              continuousTimeMinMilliseconds!.toJson(),
-        if (customEventFilter != null)
-          'customEventFilter':
-              customEventFilter!.map((value) => value.toJson()).toList(),
-        if (eventName != null) 'eventName': eventName!.toJson(),
-        if (filter != null)
-          'filter': filter!.map((value) => value.toJson()).toList(),
+          'continuousTimeMinMilliseconds': continuousTimeMinMilliseconds!,
+        if (customEventFilter != null) 'customEventFilter': customEventFilter!,
+        if (eventName != null) 'eventName': eventName!,
+        if (filter != null) 'filter': filter!,
         if (fingerprint != null) 'fingerprint': fingerprint!,
         if (horizontalScrollPercentageList != null)
-          'horizontalScrollPercentageList':
-              horizontalScrollPercentageList!.toJson(),
-        if (interval != null) 'interval': interval!.toJson(),
-        if (intervalSeconds != null)
-          'intervalSeconds': intervalSeconds!.toJson(),
-        if (limit != null) 'limit': limit!.toJson(),
+          'horizontalScrollPercentageList': horizontalScrollPercentageList!,
+        if (interval != null) 'interval': interval!,
+        if (intervalSeconds != null) 'intervalSeconds': intervalSeconds!,
+        if (limit != null) 'limit': limit!,
         if (maxTimerLengthSeconds != null)
-          'maxTimerLengthSeconds': maxTimerLengthSeconds!.toJson(),
+          'maxTimerLengthSeconds': maxTimerLengthSeconds!,
         if (name != null) 'name': name!,
         if (notes != null) 'notes': notes!,
-        if (parameter != null)
-          'parameter': parameter!.map((value) => value.toJson()).toList(),
+        if (parameter != null) 'parameter': parameter!,
         if (parentFolderId != null) 'parentFolderId': parentFolderId!,
         if (path != null) 'path': path!,
-        if (selector != null) 'selector': selector!.toJson(),
+        if (selector != null) 'selector': selector!,
         if (tagManagerUrl != null) 'tagManagerUrl': tagManagerUrl!,
         if (totalTimeMinMilliseconds != null)
-          'totalTimeMinMilliseconds': totalTimeMinMilliseconds!.toJson(),
+          'totalTimeMinMilliseconds': totalTimeMinMilliseconds!,
         if (triggerId != null) 'triggerId': triggerId!,
         if (type != null) 'type': type!,
-        if (uniqueTriggerId != null)
-          'uniqueTriggerId': uniqueTriggerId!.toJson(),
+        if (uniqueTriggerId != null) 'uniqueTriggerId': uniqueTriggerId!,
         if (verticalScrollPercentageList != null)
-          'verticalScrollPercentageList':
-              verticalScrollPercentageList!.toJson(),
+          'verticalScrollPercentageList': verticalScrollPercentageList!,
         if (visibilitySelector != null)
-          'visibilitySelector': visibilitySelector!.toJson(),
+          'visibilitySelector': visibilitySelector!,
         if (visiblePercentageMax != null)
-          'visiblePercentageMax': visiblePercentageMax!.toJson(),
+          'visiblePercentageMax': visiblePercentageMax!,
         if (visiblePercentageMin != null)
-          'visiblePercentageMin': visiblePercentageMin!.toJson(),
-        if (waitForTags != null) 'waitForTags': waitForTags!.toJson(),
+          'visiblePercentageMin': visiblePercentageMin!,
+        if (waitForTags != null) 'waitForTags': waitForTags!,
         if (waitForTagsTimeout != null)
-          'waitForTagsTimeout': waitForTagsTimeout!.toJson(),
+          'waitForTagsTimeout': waitForTagsTimeout!,
         if (workspaceId != null) 'workspaceId': workspaceId!,
       };
 }
@@ -7382,11 +7327,9 @@ class UserPermission {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (accountAccess != null) 'accountAccess': accountAccess!.toJson(),
+        if (accountAccess != null) 'accountAccess': accountAccess!,
         if (accountId != null) 'accountId': accountId!,
-        if (containerAccess != null)
-          'containerAccess':
-              containerAccess!.map((value) => value.toJson()).toList(),
+        if (containerAccess != null) 'containerAccess': containerAccess!,
         if (emailAddress != null) 'emailAddress': emailAddress!,
         if (path != null) 'path': path!,
       };
@@ -7560,11 +7503,10 @@ class Variable {
           'disablingTriggerId': disablingTriggerId!,
         if (enablingTriggerId != null) 'enablingTriggerId': enablingTriggerId!,
         if (fingerprint != null) 'fingerprint': fingerprint!,
-        if (formatValue != null) 'formatValue': formatValue!.toJson(),
+        if (formatValue != null) 'formatValue': formatValue!,
         if (name != null) 'name': name!,
         if (notes != null) 'notes': notes!,
-        if (parameter != null)
-          'parameter': parameter!.map((value) => value.toJson()).toList(),
+        if (parameter != null) 'parameter': parameter!,
         if (parentFolderId != null) 'parentFolderId': parentFolderId!,
         if (path != null) 'path': path!,
         if (scheduleEndMs != null) 'scheduleEndMs': scheduleEndMs!,
@@ -7632,13 +7574,13 @@ class VariableFormatValue {
         if (caseConversionType != null)
           'caseConversionType': caseConversionType!,
         if (convertFalseToValue != null)
-          'convertFalseToValue': convertFalseToValue!.toJson(),
+          'convertFalseToValue': convertFalseToValue!,
         if (convertNullToValue != null)
-          'convertNullToValue': convertNullToValue!.toJson(),
+          'convertNullToValue': convertNullToValue!,
         if (convertTrueToValue != null)
-          'convertTrueToValue': convertTrueToValue!.toJson(),
+          'convertTrueToValue': convertTrueToValue!,
         if (convertUndefinedToValue != null)
-          'convertUndefinedToValue': convertUndefinedToValue!.toJson(),
+          'convertUndefinedToValue': convertUndefinedToValue!,
       };
 }
 
@@ -7820,18 +7762,15 @@ class Zone {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accountId != null) 'accountId': accountId!,
-        if (boundary != null) 'boundary': boundary!.toJson(),
-        if (childContainer != null)
-          'childContainer':
-              childContainer!.map((value) => value.toJson()).toList(),
+        if (boundary != null) 'boundary': boundary!,
+        if (childContainer != null) 'childContainer': childContainer!,
         if (containerId != null) 'containerId': containerId!,
         if (fingerprint != null) 'fingerprint': fingerprint!,
         if (name != null) 'name': name!,
         if (notes != null) 'notes': notes!,
         if (path != null) 'path': path!,
         if (tagManagerUrl != null) 'tagManagerUrl': tagManagerUrl!,
-        if (typeRestriction != null)
-          'typeRestriction': typeRestriction!.toJson(),
+        if (typeRestriction != null) 'typeRestriction': typeRestriction!,
         if (workspaceId != null) 'workspaceId': workspaceId!,
         if (zoneId != null) 'zoneId': zoneId!,
       };
@@ -7870,8 +7809,7 @@ class ZoneBoundary {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (condition != null)
-          'condition': condition!.map((value) => value.toJson()).toList(),
+        if (condition != null) 'condition': condition!,
         if (customEvaluationTriggerId != null)
           'customEvaluationTriggerId': customEvaluationTriggerId!,
       };

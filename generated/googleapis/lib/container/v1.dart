@@ -253,7 +253,7 @@ class ProjectsLocationsClustersResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -303,7 +303,7 @@ class ProjectsLocationsClustersResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -556,7 +556,7 @@ class ProjectsLocationsClustersResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -599,7 +599,7 @@ class ProjectsLocationsClustersResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -646,7 +646,7 @@ class ProjectsLocationsClustersResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -689,7 +689,7 @@ class ProjectsLocationsClustersResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -732,7 +732,7 @@ class ProjectsLocationsClustersResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -777,7 +777,7 @@ class ProjectsLocationsClustersResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -820,7 +820,7 @@ class ProjectsLocationsClustersResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -863,7 +863,7 @@ class ProjectsLocationsClustersResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -906,7 +906,7 @@ class ProjectsLocationsClustersResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -949,7 +949,7 @@ class ProjectsLocationsClustersResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -991,7 +991,7 @@ class ProjectsLocationsClustersResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1033,7 +1033,7 @@ class ProjectsLocationsClustersResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1083,7 +1083,7 @@ class ProjectsLocationsClustersNodePoolsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1307,7 +1307,7 @@ class ProjectsLocationsClustersNodePoolsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1350,7 +1350,7 @@ class ProjectsLocationsClustersNodePoolsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1393,7 +1393,7 @@ class ProjectsLocationsClustersNodePoolsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1439,7 +1439,7 @@ class ProjectsLocationsClustersNodePoolsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1482,7 +1482,7 @@ class ProjectsLocationsClustersNodePoolsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1585,7 +1585,7 @@ class ProjectsLocationsOperationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1816,7 +1816,7 @@ class ProjectsZonesClustersResource {
     core.String clusterId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1873,7 +1873,7 @@ class ProjectsZonesClustersResource {
     core.String clusterId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1935,7 +1935,7 @@ class ProjectsZonesClustersResource {
     core.String zone, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2108,7 +2108,7 @@ class ProjectsZonesClustersResource {
     core.String clusterId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2223,7 +2223,7 @@ class ProjectsZonesClustersResource {
     core.String clusterId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2280,7 +2280,7 @@ class ProjectsZonesClustersResource {
     core.String clusterId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2337,7 +2337,7 @@ class ProjectsZonesClustersResource {
     core.String clusterId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2394,7 +2394,7 @@ class ProjectsZonesClustersResource {
     core.String clusterId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2451,7 +2451,7 @@ class ProjectsZonesClustersResource {
     core.String clusterId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2505,7 +2505,7 @@ class ProjectsZonesClustersResource {
     core.String clusterId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2565,7 +2565,7 @@ class ProjectsZonesClustersResource {
     core.String clusterId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2622,7 +2622,7 @@ class ProjectsZonesClustersResource {
     core.String clusterId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2679,7 +2679,7 @@ class ProjectsZonesClustersResource {
     core.String clusterId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2736,7 +2736,7 @@ class ProjectsZonesClustersResource {
     core.String clusterId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2803,7 +2803,7 @@ class ProjectsZonesClustersNodePoolsResource {
     core.String nodePoolId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2862,7 +2862,7 @@ class ProjectsZonesClustersNodePoolsResource {
     core.String clusterId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3110,7 +3110,7 @@ class ProjectsZonesClustersNodePoolsResource {
     core.String nodePoolId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3173,7 +3173,7 @@ class ProjectsZonesClustersNodePoolsResource {
     core.String nodePoolId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3239,7 +3239,7 @@ class ProjectsZonesClustersNodePoolsResource {
     core.String nodePoolId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3302,7 +3302,7 @@ class ProjectsZonesClustersNodePoolsResource {
     core.String nodePoolId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3368,7 +3368,7 @@ class ProjectsZonesOperationsResource {
     core.String operationId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3646,23 +3646,21 @@ class AddonsConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cloudRunConfig != null) 'cloudRunConfig': cloudRunConfig!.toJson(),
+        if (cloudRunConfig != null) 'cloudRunConfig': cloudRunConfig!,
         if (configConnectorConfig != null)
-          'configConnectorConfig': configConnectorConfig!.toJson(),
-        if (dnsCacheConfig != null) 'dnsCacheConfig': dnsCacheConfig!.toJson(),
+          'configConnectorConfig': configConnectorConfig!,
+        if (dnsCacheConfig != null) 'dnsCacheConfig': dnsCacheConfig!,
         if (gcePersistentDiskCsiDriverConfig != null)
-          'gcePersistentDiskCsiDriverConfig':
-              gcePersistentDiskCsiDriverConfig!.toJson(),
+          'gcePersistentDiskCsiDriverConfig': gcePersistentDiskCsiDriverConfig!,
         if (gcpFilestoreCsiDriverConfig != null)
-          'gcpFilestoreCsiDriverConfig': gcpFilestoreCsiDriverConfig!.toJson(),
+          'gcpFilestoreCsiDriverConfig': gcpFilestoreCsiDriverConfig!,
         if (horizontalPodAutoscaling != null)
-          'horizontalPodAutoscaling': horizontalPodAutoscaling!.toJson(),
-        if (httpLoadBalancing != null)
-          'httpLoadBalancing': httpLoadBalancing!.toJson(),
+          'horizontalPodAutoscaling': horizontalPodAutoscaling!,
+        if (httpLoadBalancing != null) 'httpLoadBalancing': httpLoadBalancing!,
         if (kubernetesDashboard != null)
-          'kubernetesDashboard': kubernetesDashboard!.toJson(),
+          'kubernetesDashboard': kubernetesDashboard!,
         if (networkPolicyConfig != null)
-          'networkPolicyConfig': networkPolicyConfig!.toJson(),
+          'networkPolicyConfig': networkPolicyConfig!,
       };
 }
 
@@ -3865,14 +3863,13 @@ class AutoprovisioningNodePoolDefaults {
         if (diskSizeGb != null) 'diskSizeGb': diskSizeGb!,
         if (diskType != null) 'diskType': diskType!,
         if (imageType != null) 'imageType': imageType!,
-        if (management != null) 'management': management!.toJson(),
+        if (management != null) 'management': management!,
         if (minCpuPlatform != null) 'minCpuPlatform': minCpuPlatform!,
         if (oauthScopes != null) 'oauthScopes': oauthScopes!,
         if (serviceAccount != null) 'serviceAccount': serviceAccount!,
         if (shieldedInstanceConfig != null)
-          'shieldedInstanceConfig': shieldedInstanceConfig!.toJson(),
-        if (upgradeSettings != null)
-          'upgradeSettings': upgradeSettings!.toJson(),
+          'shieldedInstanceConfig': shieldedInstanceConfig!,
+        if (upgradeSettings != null) 'upgradeSettings': upgradeSettings!,
       };
 }
 
@@ -4687,18 +4684,16 @@ class Cluster {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (addonsConfig != null) 'addonsConfig': addonsConfig!.toJson(),
+        if (addonsConfig != null) 'addonsConfig': addonsConfig!,
         if (authenticatorGroupsConfig != null)
-          'authenticatorGroupsConfig': authenticatorGroupsConfig!.toJson(),
-        if (autopilot != null) 'autopilot': autopilot!.toJson(),
-        if (autoscaling != null) 'autoscaling': autoscaling!.toJson(),
+          'authenticatorGroupsConfig': authenticatorGroupsConfig!,
+        if (autopilot != null) 'autopilot': autopilot!,
+        if (autoscaling != null) 'autoscaling': autoscaling!,
         if (binaryAuthorization != null)
-          'binaryAuthorization': binaryAuthorization!.toJson(),
+          'binaryAuthorization': binaryAuthorization!,
         if (clusterIpv4Cidr != null) 'clusterIpv4Cidr': clusterIpv4Cidr!,
-        if (conditions != null)
-          'conditions': conditions!.map((value) => value.toJson()).toList(),
-        if (confidentialNodes != null)
-          'confidentialNodes': confidentialNodes!.toJson(),
+        if (conditions != null) 'conditions': conditions!,
+        if (confidentialNodes != null) 'confidentialNodes': confidentialNodes!,
         if (createTime != null) 'createTime': createTime!,
         if (currentMasterVersion != null)
           'currentMasterVersion': currentMasterVersion!,
@@ -4706,9 +4701,9 @@ class Cluster {
         if (currentNodeVersion != null)
           'currentNodeVersion': currentNodeVersion!,
         if (databaseEncryption != null)
-          'databaseEncryption': databaseEncryption!.toJson(),
+          'databaseEncryption': databaseEncryption!,
         if (defaultMaxPodsConstraint != null)
-          'defaultMaxPodsConstraint': defaultMaxPodsConstraint!.toJson(),
+          'defaultMaxPodsConstraint': defaultMaxPodsConstraint!,
         if (description != null) 'description': description!,
         if (enableKubernetesAlpha != null)
           'enableKubernetesAlpha': enableKubernetesAlpha!,
@@ -4721,49 +4716,45 @@ class Cluster {
         if (initialNodeCount != null) 'initialNodeCount': initialNodeCount!,
         if (instanceGroupUrls != null) 'instanceGroupUrls': instanceGroupUrls!,
         if (ipAllocationPolicy != null)
-          'ipAllocationPolicy': ipAllocationPolicy!.toJson(),
+          'ipAllocationPolicy': ipAllocationPolicy!,
         if (labelFingerprint != null) 'labelFingerprint': labelFingerprint!,
-        if (legacyAbac != null) 'legacyAbac': legacyAbac!.toJson(),
+        if (legacyAbac != null) 'legacyAbac': legacyAbac!,
         if (location != null) 'location': location!,
         if (locations != null) 'locations': locations!,
-        if (loggingConfig != null) 'loggingConfig': loggingConfig!.toJson(),
+        if (loggingConfig != null) 'loggingConfig': loggingConfig!,
         if (loggingService != null) 'loggingService': loggingService!,
-        if (maintenancePolicy != null)
-          'maintenancePolicy': maintenancePolicy!.toJson(),
-        if (masterAuth != null) 'masterAuth': masterAuth!.toJson(),
+        if (maintenancePolicy != null) 'maintenancePolicy': maintenancePolicy!,
+        if (masterAuth != null) 'masterAuth': masterAuth!,
         if (masterAuthorizedNetworksConfig != null)
-          'masterAuthorizedNetworksConfig':
-              masterAuthorizedNetworksConfig!.toJson(),
-        if (monitoringConfig != null)
-          'monitoringConfig': monitoringConfig!.toJson(),
+          'masterAuthorizedNetworksConfig': masterAuthorizedNetworksConfig!,
+        if (monitoringConfig != null) 'monitoringConfig': monitoringConfig!,
         if (monitoringService != null) 'monitoringService': monitoringService!,
         if (name != null) 'name': name!,
         if (network != null) 'network': network!,
-        if (networkConfig != null) 'networkConfig': networkConfig!.toJson(),
-        if (networkPolicy != null) 'networkPolicy': networkPolicy!.toJson(),
-        if (nodeConfig != null) 'nodeConfig': nodeConfig!.toJson(),
+        if (networkConfig != null) 'networkConfig': networkConfig!,
+        if (networkPolicy != null) 'networkPolicy': networkPolicy!,
+        if (nodeConfig != null) 'nodeConfig': nodeConfig!,
         if (nodeIpv4CidrSize != null) 'nodeIpv4CidrSize': nodeIpv4CidrSize!,
-        if (nodePools != null)
-          'nodePools': nodePools!.map((value) => value.toJson()).toList(),
+        if (nodePools != null) 'nodePools': nodePools!,
         if (notificationConfig != null)
-          'notificationConfig': notificationConfig!.toJson(),
+          'notificationConfig': notificationConfig!,
         if (privateClusterConfig != null)
-          'privateClusterConfig': privateClusterConfig!.toJson(),
-        if (releaseChannel != null) 'releaseChannel': releaseChannel!.toJson(),
+          'privateClusterConfig': privateClusterConfig!,
+        if (releaseChannel != null) 'releaseChannel': releaseChannel!,
         if (resourceLabels != null) 'resourceLabels': resourceLabels!,
         if (resourceUsageExportConfig != null)
-          'resourceUsageExportConfig': resourceUsageExportConfig!.toJson(),
+          'resourceUsageExportConfig': resourceUsageExportConfig!,
         if (selfLink != null) 'selfLink': selfLink!,
         if (servicesIpv4Cidr != null) 'servicesIpv4Cidr': servicesIpv4Cidr!,
-        if (shieldedNodes != null) 'shieldedNodes': shieldedNodes!.toJson(),
+        if (shieldedNodes != null) 'shieldedNodes': shieldedNodes!,
         if (status != null) 'status': status!,
         if (statusMessage != null) 'statusMessage': statusMessage!,
         if (subnetwork != null) 'subnetwork': subnetwork!,
         if (tpuIpv4CidrBlock != null) 'tpuIpv4CidrBlock': tpuIpv4CidrBlock!,
         if (verticalPodAutoscaling != null)
-          'verticalPodAutoscaling': verticalPodAutoscaling!.toJson(),
+          'verticalPodAutoscaling': verticalPodAutoscaling!,
         if (workloadIdentityConfig != null)
-          'workloadIdentityConfig': workloadIdentityConfig!.toJson(),
+          'workloadIdentityConfig': workloadIdentityConfig!,
         if (zone != null) 'zone': zone!,
       };
 }
@@ -4836,15 +4827,12 @@ class ClusterAutoscaling {
         if (autoprovisioningLocations != null)
           'autoprovisioningLocations': autoprovisioningLocations!,
         if (autoprovisioningNodePoolDefaults != null)
-          'autoprovisioningNodePoolDefaults':
-              autoprovisioningNodePoolDefaults!.toJson(),
+          'autoprovisioningNodePoolDefaults': autoprovisioningNodePoolDefaults!,
         if (autoscalingProfile != null)
           'autoscalingProfile': autoscalingProfile!,
         if (enableNodeAutoprovisioning != null)
           'enableNodeAutoprovisioning': enableNodeAutoprovisioning!,
-        if (resourceLimits != null)
-          'resourceLimits':
-              resourceLimits!.map((value) => value.toJson()).toList(),
+        if (resourceLimits != null) 'resourceLimits': resourceLimits!,
       };
 }
 
@@ -5173,67 +5161,60 @@ class ClusterUpdate {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (desiredAddonsConfig != null)
-          'desiredAddonsConfig': desiredAddonsConfig!.toJson(),
+          'desiredAddonsConfig': desiredAddonsConfig!,
         if (desiredAuthenticatorGroupsConfig != null)
-          'desiredAuthenticatorGroupsConfig':
-              desiredAuthenticatorGroupsConfig!.toJson(),
-        if (desiredAutopilot != null)
-          'desiredAutopilot': desiredAutopilot!.toJson(),
+          'desiredAuthenticatorGroupsConfig': desiredAuthenticatorGroupsConfig!,
+        if (desiredAutopilot != null) 'desiredAutopilot': desiredAutopilot!,
         if (desiredBinaryAuthorization != null)
-          'desiredBinaryAuthorization': desiredBinaryAuthorization!.toJson(),
+          'desiredBinaryAuthorization': desiredBinaryAuthorization!,
         if (desiredClusterAutoscaling != null)
-          'desiredClusterAutoscaling': desiredClusterAutoscaling!.toJson(),
+          'desiredClusterAutoscaling': desiredClusterAutoscaling!,
         if (desiredDatabaseEncryption != null)
-          'desiredDatabaseEncryption': desiredDatabaseEncryption!.toJson(),
+          'desiredDatabaseEncryption': desiredDatabaseEncryption!,
         if (desiredDatapathProvider != null)
           'desiredDatapathProvider': desiredDatapathProvider!,
         if (desiredDefaultSnatStatus != null)
-          'desiredDefaultSnatStatus': desiredDefaultSnatStatus!.toJson(),
+          'desiredDefaultSnatStatus': desiredDefaultSnatStatus!,
         if (desiredImageType != null) 'desiredImageType': desiredImageType!,
         if (desiredIntraNodeVisibilityConfig != null)
-          'desiredIntraNodeVisibilityConfig':
-              desiredIntraNodeVisibilityConfig!.toJson(),
+          'desiredIntraNodeVisibilityConfig': desiredIntraNodeVisibilityConfig!,
         if (desiredL4ilbSubsettingConfig != null)
-          'desiredL4ilbSubsettingConfig':
-              desiredL4ilbSubsettingConfig!.toJson(),
+          'desiredL4ilbSubsettingConfig': desiredL4ilbSubsettingConfig!,
         if (desiredLocations != null) 'desiredLocations': desiredLocations!,
         if (desiredLoggingConfig != null)
-          'desiredLoggingConfig': desiredLoggingConfig!.toJson(),
+          'desiredLoggingConfig': desiredLoggingConfig!,
         if (desiredLoggingService != null)
           'desiredLoggingService': desiredLoggingService!,
         if (desiredMasterAuthorizedNetworksConfig != null)
           'desiredMasterAuthorizedNetworksConfig':
-              desiredMasterAuthorizedNetworksConfig!.toJson(),
+              desiredMasterAuthorizedNetworksConfig!,
         if (desiredMasterVersion != null)
           'desiredMasterVersion': desiredMasterVersion!,
         if (desiredMonitoringConfig != null)
-          'desiredMonitoringConfig': desiredMonitoringConfig!.toJson(),
+          'desiredMonitoringConfig': desiredMonitoringConfig!,
         if (desiredMonitoringService != null)
           'desiredMonitoringService': desiredMonitoringService!,
         if (desiredNodePoolAutoscaling != null)
-          'desiredNodePoolAutoscaling': desiredNodePoolAutoscaling!.toJson(),
+          'desiredNodePoolAutoscaling': desiredNodePoolAutoscaling!,
         if (desiredNodePoolId != null) 'desiredNodePoolId': desiredNodePoolId!,
         if (desiredNodeVersion != null)
           'desiredNodeVersion': desiredNodeVersion!,
         if (desiredNotificationConfig != null)
-          'desiredNotificationConfig': desiredNotificationConfig!.toJson(),
+          'desiredNotificationConfig': desiredNotificationConfig!,
         if (desiredPrivateClusterConfig != null)
-          'desiredPrivateClusterConfig': desiredPrivateClusterConfig!.toJson(),
+          'desiredPrivateClusterConfig': desiredPrivateClusterConfig!,
         if (desiredPrivateIpv6GoogleAccess != null)
           'desiredPrivateIpv6GoogleAccess': desiredPrivateIpv6GoogleAccess!,
         if (desiredReleaseChannel != null)
-          'desiredReleaseChannel': desiredReleaseChannel!.toJson(),
+          'desiredReleaseChannel': desiredReleaseChannel!,
         if (desiredResourceUsageExportConfig != null)
-          'desiredResourceUsageExportConfig':
-              desiredResourceUsageExportConfig!.toJson(),
+          'desiredResourceUsageExportConfig': desiredResourceUsageExportConfig!,
         if (desiredShieldedNodes != null)
-          'desiredShieldedNodes': desiredShieldedNodes!.toJson(),
+          'desiredShieldedNodes': desiredShieldedNodes!,
         if (desiredVerticalPodAutoscaling != null)
-          'desiredVerticalPodAutoscaling':
-              desiredVerticalPodAutoscaling!.toJson(),
+          'desiredVerticalPodAutoscaling': desiredVerticalPodAutoscaling!,
         if (desiredWorkloadIdentityConfig != null)
-          'desiredWorkloadIdentityConfig':
-              desiredWorkloadIdentityConfig!.toJson(),
+          'desiredWorkloadIdentityConfig': desiredWorkloadIdentityConfig!,
       };
 }
 
@@ -5417,7 +5398,7 @@ class CreateClusterRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cluster != null) 'cluster': cluster!.toJson(),
+        if (cluster != null) 'cluster': cluster!,
         if (parent != null) 'parent': parent!,
         if (projectId != null) 'projectId': projectId!,
         if (zone != null) 'zone': zone!,
@@ -5489,7 +5470,7 @@ class CreateNodePoolRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (clusterId != null) 'clusterId': clusterId!,
-        if (nodePool != null) 'nodePool': nodePool!.toJson(),
+        if (nodePool != null) 'nodePool': nodePool!,
         if (parent != null) 'parent': parent!,
         if (projectId != null) 'projectId': projectId!,
         if (zone != null) 'zone': zone!,
@@ -5694,8 +5675,8 @@ class GetJSONWebKeysResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cacheHeader != null) 'cacheHeader': cacheHeader!.toJson(),
-        if (keys != null) 'keys': keys!.map((value) => value.toJson()).toList(),
+        if (cacheHeader != null) 'cacheHeader': cacheHeader!,
+        if (keys != null) 'keys': keys!,
       };
 }
 
@@ -5780,7 +5761,7 @@ class GetOpenIDConfigResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cacheHeader != null) 'cacheHeader': cacheHeader!.toJson(),
+        if (cacheHeader != null) 'cacheHeader': cacheHeader!,
         if (claimsSupported != null) 'claims_supported': claimsSupported!,
         if (grantTypes != null) 'grant_types': grantTypes!,
         if (idTokenSigningAlgValuesSupported != null)
@@ -6283,8 +6264,7 @@ class ListClustersResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (clusters != null)
-          'clusters': clusters!.map((value) => value.toJson()).toList(),
+        if (clusters != null) 'clusters': clusters!,
         if (missingZones != null) 'missingZones': missingZones!,
       };
 }
@@ -6309,8 +6289,7 @@ class ListNodePoolsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nodePools != null)
-          'nodePools': nodePools!.map((value) => value.toJson()).toList(),
+        if (nodePools != null) 'nodePools': nodePools!,
       };
 }
 
@@ -6345,8 +6324,7 @@ class ListOperationsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (missingZones != null) 'missingZones': missingZones!,
-        if (operations != null)
-          'operations': operations!.map((value) => value.toJson()).toList(),
+        if (operations != null) 'operations': operations!,
       };
 }
 
@@ -6383,8 +6361,7 @@ class ListUsableSubnetworksResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (subnetworks != null)
-          'subnetworks': subnetworks!.map((value) => value.toJson()).toList(),
+        if (subnetworks != null) 'subnetworks': subnetworks!,
       };
 }
 
@@ -6431,8 +6408,7 @@ class LoggingConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (componentConfig != null)
-          'componentConfig': componentConfig!.toJson(),
+        if (componentConfig != null) 'componentConfig': componentConfig!,
       };
 }
 
@@ -6468,7 +6444,7 @@ class MaintenancePolicy {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (resourceVersion != null) 'resourceVersion': resourceVersion!,
-        if (window != null) 'window': window!.toJson(),
+        if (window != null) 'window': window!,
       };
 }
 
@@ -6520,12 +6496,10 @@ class MaintenanceWindow {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (dailyMaintenanceWindow != null)
-          'dailyMaintenanceWindow': dailyMaintenanceWindow!.toJson(),
+          'dailyMaintenanceWindow': dailyMaintenanceWindow!,
         if (maintenanceExclusions != null)
-          'maintenanceExclusions': maintenanceExclusions!
-              .map((key, item) => core.MapEntry(key, item.toJson())),
-        if (recurringWindow != null)
-          'recurringWindow': recurringWindow!.toJson(),
+          'maintenanceExclusions': maintenanceExclusions!,
+        if (recurringWindow != null) 'recurringWindow': recurringWindow!,
       };
 }
 
@@ -6614,7 +6588,7 @@ class MasterAuth {
   core.Map<core.String, core.dynamic> toJson() => {
         if (clientCertificate != null) 'clientCertificate': clientCertificate!,
         if (clientCertificateConfig != null)
-          'clientCertificateConfig': clientCertificateConfig!.toJson(),
+          'clientCertificateConfig': clientCertificateConfig!,
         if (clientKey != null) 'clientKey': clientKey!,
         if (clusterCaCertificate != null)
           'clusterCaCertificate': clusterCaCertificate!,
@@ -6655,8 +6629,7 @@ class MasterAuthorizedNetworksConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cidrBlocks != null)
-          'cidrBlocks': cidrBlocks!.map((value) => value.toJson()).toList(),
+        if (cidrBlocks != null) 'cidrBlocks': cidrBlocks!,
         if (enabled != null) 'enabled': enabled!,
       };
 }
@@ -6770,8 +6743,7 @@ class MonitoringConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (componentConfig != null)
-          'componentConfig': componentConfig!.toJson(),
+        if (componentConfig != null) 'componentConfig': componentConfig!,
       };
 }
 
@@ -6876,8 +6848,7 @@ class NetworkConfig {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (datapathProvider != null) 'datapathProvider': datapathProvider!,
-        if (defaultSnatStatus != null)
-          'defaultSnatStatus': defaultSnatStatus!.toJson(),
+        if (defaultSnatStatus != null) 'defaultSnatStatus': defaultSnatStatus!,
         if (enableIntraNodeVisibility != null)
           'enableIntraNodeVisibility': enableIntraNodeVisibility!,
         if (enableL4ilbSubsetting != null)
@@ -7227,17 +7198,15 @@ class NodeConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (accelerators != null)
-          'accelerators': accelerators!.map((value) => value.toJson()).toList(),
+        if (accelerators != null) 'accelerators': accelerators!,
         if (bootDiskKmsKey != null) 'bootDiskKmsKey': bootDiskKmsKey!,
         if (diskSizeGb != null) 'diskSizeGb': diskSizeGb!,
         if (diskType != null) 'diskType': diskType!,
-        if (gvnic != null) 'gvnic': gvnic!.toJson(),
+        if (gvnic != null) 'gvnic': gvnic!,
         if (imageType != null) 'imageType': imageType!,
-        if (kubeletConfig != null) 'kubeletConfig': kubeletConfig!.toJson(),
+        if (kubeletConfig != null) 'kubeletConfig': kubeletConfig!,
         if (labels != null) 'labels': labels!,
-        if (linuxNodeConfig != null)
-          'linuxNodeConfig': linuxNodeConfig!.toJson(),
+        if (linuxNodeConfig != null) 'linuxNodeConfig': linuxNodeConfig!,
         if (localSsdCount != null) 'localSsdCount': localSsdCount!,
         if (machineType != null) 'machineType': machineType!,
         if (metadata != null) 'metadata': metadata!,
@@ -7246,16 +7215,15 @@ class NodeConfig {
         if (oauthScopes != null) 'oauthScopes': oauthScopes!,
         if (preemptible != null) 'preemptible': preemptible!,
         if (reservationAffinity != null)
-          'reservationAffinity': reservationAffinity!.toJson(),
-        if (sandboxConfig != null) 'sandboxConfig': sandboxConfig!.toJson(),
+          'reservationAffinity': reservationAffinity!,
+        if (sandboxConfig != null) 'sandboxConfig': sandboxConfig!,
         if (serviceAccount != null) 'serviceAccount': serviceAccount!,
         if (shieldedInstanceConfig != null)
-          'shieldedInstanceConfig': shieldedInstanceConfig!.toJson(),
+          'shieldedInstanceConfig': shieldedInstanceConfig!,
         if (tags != null) 'tags': tags!,
-        if (taints != null)
-          'taints': taints!.map((value) => value.toJson()).toList(),
+        if (taints != null) 'taints': taints!,
         if (workloadMetadataConfig != null)
-          'workloadMetadataConfig': workloadMetadataConfig!.toJson(),
+          'workloadMetadataConfig': workloadMetadataConfig!,
       };
 }
 
@@ -7359,7 +7327,7 @@ class NodeManagement {
   core.Map<core.String, core.dynamic> toJson() => {
         if (autoRepair != null) 'autoRepair': autoRepair!,
         if (autoUpgrade != null) 'autoUpgrade': autoUpgrade!,
-        if (upgradeOptions != null) 'upgradeOptions': upgradeOptions!.toJson(),
+        if (upgradeOptions != null) 'upgradeOptions': upgradeOptions!,
       };
 }
 
@@ -7608,24 +7576,21 @@ class NodePool {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (autoscaling != null) 'autoscaling': autoscaling!.toJson(),
-        if (conditions != null)
-          'conditions': conditions!.map((value) => value.toJson()).toList(),
-        if (config != null) 'config': config!.toJson(),
+        if (autoscaling != null) 'autoscaling': autoscaling!,
+        if (conditions != null) 'conditions': conditions!,
+        if (config != null) 'config': config!,
         if (initialNodeCount != null) 'initialNodeCount': initialNodeCount!,
         if (instanceGroupUrls != null) 'instanceGroupUrls': instanceGroupUrls!,
         if (locations != null) 'locations': locations!,
-        if (management != null) 'management': management!.toJson(),
-        if (maxPodsConstraint != null)
-          'maxPodsConstraint': maxPodsConstraint!.toJson(),
+        if (management != null) 'management': management!,
+        if (maxPodsConstraint != null) 'maxPodsConstraint': maxPodsConstraint!,
         if (name != null) 'name': name!,
-        if (networkConfig != null) 'networkConfig': networkConfig!.toJson(),
+        if (networkConfig != null) 'networkConfig': networkConfig!,
         if (podIpv4CidrSize != null) 'podIpv4CidrSize': podIpv4CidrSize!,
         if (selfLink != null) 'selfLink': selfLink!,
         if (status != null) 'status': status!,
         if (statusMessage != null) 'statusMessage': statusMessage!,
-        if (upgradeSettings != null)
-          'upgradeSettings': upgradeSettings!.toJson(),
+        if (upgradeSettings != null) 'upgradeSettings': upgradeSettings!,
         if (version != null) 'version': version!,
       };
 }
@@ -7743,7 +7708,7 @@ class NotificationConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (pubsub != null) 'pubsub': pubsub!.toJson(),
+        if (pubsub != null) 'pubsub': pubsub!,
       };
 }
 
@@ -7919,19 +7884,16 @@ class Operation {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (clusterConditions != null)
-          'clusterConditions':
-              clusterConditions!.map((value) => value.toJson()).toList(),
+        if (clusterConditions != null) 'clusterConditions': clusterConditions!,
         if (detail != null) 'detail': detail!,
         if (endTime != null) 'endTime': endTime!,
-        if (error != null) 'error': error!.toJson(),
+        if (error != null) 'error': error!,
         if (location != null) 'location': location!,
         if (name != null) 'name': name!,
         if (nodepoolConditions != null)
-          'nodepoolConditions':
-              nodepoolConditions!.map((value) => value.toJson()).toList(),
+          'nodepoolConditions': nodepoolConditions!,
         if (operationType != null) 'operationType': operationType!,
-        if (progress != null) 'progress': progress!.toJson(),
+        if (progress != null) 'progress': progress!,
         if (selfLink != null) 'selfLink': selfLink!,
         if (startTime != null) 'startTime': startTime!,
         if (status != null) 'status': status!,
@@ -7996,11 +7958,9 @@ class OperationProgress {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (metrics != null)
-          'metrics': metrics!.map((value) => value.toJson()).toList(),
+        if (metrics != null) 'metrics': metrics!,
         if (name != null) 'name': name!,
-        if (stages != null)
-          'stages': stages!.map((value) => value.toJson()).toList(),
+        if (stages != null) 'stages': stages!,
         if (status != null) 'status': status!,
       };
 }
@@ -8085,7 +8045,7 @@ class PrivateClusterConfig {
         if (enablePrivateNodes != null)
           'enablePrivateNodes': enablePrivateNodes!,
         if (masterGlobalAccessConfig != null)
-          'masterGlobalAccessConfig': masterGlobalAccessConfig!.toJson(),
+          'masterGlobalAccessConfig': masterGlobalAccessConfig!,
         if (masterIpv4CidrBlock != null)
           'masterIpv4CidrBlock': masterIpv4CidrBlock!,
         if (peeringName != null) 'peeringName': peeringName!,
@@ -8188,7 +8148,7 @@ class RecurringTimeWindow {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (recurrence != null) 'recurrence': recurrence!,
-        if (window != null) 'window': window!.toJson(),
+        if (window != null) 'window': window!,
       };
 }
 
@@ -8407,9 +8367,9 @@ class ResourceUsageExportConfig {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (bigqueryDestination != null)
-          'bigqueryDestination': bigqueryDestination!.toJson(),
+          'bigqueryDestination': bigqueryDestination!,
         if (consumptionMeteringConfig != null)
-          'consumptionMeteringConfig': consumptionMeteringConfig!.toJson(),
+          'consumptionMeteringConfig': consumptionMeteringConfig!,
         if (enableNetworkEgressMetering != null)
           'enableNetworkEgressMetering': enableNetworkEgressMetering!,
       };
@@ -8573,8 +8533,7 @@ class ServerConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (channels != null)
-          'channels': channels!.map((value) => value.toJson()).toList(),
+        if (channels != null) 'channels': channels!,
         if (defaultClusterVersion != null)
           'defaultClusterVersion': defaultClusterVersion!,
         if (defaultImageType != null) 'defaultImageType': defaultImageType!,
@@ -8647,7 +8606,7 @@ class SetAddonsConfigRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (addonsConfig != null) 'addonsConfig': addonsConfig!.toJson(),
+        if (addonsConfig != null) 'addonsConfig': addonsConfig!,
         if (clusterId != null) 'clusterId': clusterId!,
         if (name != null) 'name': name!,
         if (projectId != null) 'projectId': projectId!,
@@ -9029,8 +8988,7 @@ class SetMaintenancePolicyRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (clusterId != null) 'clusterId': clusterId!,
-        if (maintenancePolicy != null)
-          'maintenancePolicy': maintenancePolicy!.toJson(),
+        if (maintenancePolicy != null) 'maintenancePolicy': maintenancePolicy!,
         if (name != null) 'name': name!,
         if (projectId != null) 'projectId': projectId!,
         if (zone != null) 'zone': zone!,
@@ -9119,7 +9077,7 @@ class SetMasterAuthRequest {
         if (clusterId != null) 'clusterId': clusterId!,
         if (name != null) 'name': name!,
         if (projectId != null) 'projectId': projectId!,
-        if (update != null) 'update': update!.toJson(),
+        if (update != null) 'update': update!,
         if (zone != null) 'zone': zone!,
       };
 }
@@ -9264,7 +9222,7 @@ class SetNetworkPolicyRequest {
   core.Map<core.String, core.dynamic> toJson() => {
         if (clusterId != null) 'clusterId': clusterId!,
         if (name != null) 'name': name!,
-        if (networkPolicy != null) 'networkPolicy': networkPolicy!.toJson(),
+        if (networkPolicy != null) 'networkPolicy': networkPolicy!,
         if (projectId != null) 'projectId': projectId!,
         if (zone != null) 'zone': zone!,
       };
@@ -9344,7 +9302,7 @@ class SetNodePoolAutoscalingRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (autoscaling != null) 'autoscaling': autoscaling!.toJson(),
+        if (autoscaling != null) 'autoscaling': autoscaling!,
         if (clusterId != null) 'clusterId': clusterId!,
         if (name != null) 'name': name!,
         if (nodePoolId != null) 'nodePoolId': nodePoolId!,
@@ -9429,7 +9387,7 @@ class SetNodePoolManagementRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (clusterId != null) 'clusterId': clusterId!,
-        if (management != null) 'management': management!.toJson(),
+        if (management != null) 'management': management!,
         if (name != null) 'name': name!,
         if (nodePoolId != null) 'nodePoolId': nodePoolId!,
         if (projectId != null) 'projectId': projectId!,
@@ -9924,7 +9882,7 @@ class UpdateClusterRequest {
         if (clusterId != null) 'clusterId': clusterId!,
         if (name != null) 'name': name!,
         if (projectId != null) 'projectId': projectId!,
-        if (update != null) 'update': update!.toJson(),
+        if (update != null) 'update': update!,
         if (zone != null) 'zone': zone!,
       };
 }
@@ -10149,20 +10107,18 @@ class UpdateNodePoolRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (clusterId != null) 'clusterId': clusterId!,
-        if (gvnic != null) 'gvnic': gvnic!.toJson(),
+        if (gvnic != null) 'gvnic': gvnic!,
         if (imageType != null) 'imageType': imageType!,
-        if (kubeletConfig != null) 'kubeletConfig': kubeletConfig!.toJson(),
-        if (linuxNodeConfig != null)
-          'linuxNodeConfig': linuxNodeConfig!.toJson(),
+        if (kubeletConfig != null) 'kubeletConfig': kubeletConfig!,
+        if (linuxNodeConfig != null) 'linuxNodeConfig': linuxNodeConfig!,
         if (locations != null) 'locations': locations!,
         if (name != null) 'name': name!,
         if (nodePoolId != null) 'nodePoolId': nodePoolId!,
         if (nodeVersion != null) 'nodeVersion': nodeVersion!,
         if (projectId != null) 'projectId': projectId!,
-        if (upgradeSettings != null)
-          'upgradeSettings': upgradeSettings!.toJson(),
+        if (upgradeSettings != null) 'upgradeSettings': upgradeSettings!,
         if (workloadMetadataConfig != null)
-          'workloadMetadataConfig': workloadMetadataConfig!.toJson(),
+          'workloadMetadataConfig': workloadMetadataConfig!,
         if (zone != null) 'zone': zone!,
       };
 }
@@ -10216,7 +10172,7 @@ class UpgradeAvailableEvent {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (releaseChannel != null) 'releaseChannel': releaseChannel!.toJson(),
+        if (releaseChannel != null) 'releaseChannel': releaseChannel!,
         if (resource != null) 'resource': resource!,
         if (resourceType != null) 'resourceType': resourceType!,
         if (version != null) 'version': version!,
@@ -10400,9 +10356,7 @@ class UsableSubnetwork {
   core.Map<core.String, core.dynamic> toJson() => {
         if (ipCidrRange != null) 'ipCidrRange': ipCidrRange!,
         if (network != null) 'network': network!,
-        if (secondaryIpRanges != null)
-          'secondaryIpRanges':
-              secondaryIpRanges!.map((value) => value.toJson()).toList(),
+        if (secondaryIpRanges != null) 'secondaryIpRanges': secondaryIpRanges!,
         if (statusMessage != null) 'statusMessage': statusMessage!,
         if (subnetwork != null) 'subnetwork': subnetwork!,
       };

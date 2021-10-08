@@ -225,7 +225,7 @@ class ProjectsLocationsGlobalConnectivityTestsResource {
     core.String? testId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (testId != null) 'testId': [testId],
       if ($fields != null) 'fields': [$fields],
@@ -473,7 +473,7 @@ class ProjectsLocationsGlobalConnectivityTestsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -525,7 +525,7 @@ class ProjectsLocationsGlobalConnectivityTestsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -571,7 +571,7 @@ class ProjectsLocationsGlobalConnectivityTestsResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -619,7 +619,7 @@ class ProjectsLocationsGlobalConnectivityTestsResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -678,7 +678,7 @@ class ProjectsLocationsGlobalOperationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -939,9 +939,7 @@ class AuditConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (auditLogConfigs != null)
-          'auditLogConfigs':
-              auditLogConfigs!.map((value) => value.toJson()).toList(),
+        if (auditLogConfigs != null) 'auditLogConfigs': auditLogConfigs!,
         if (service != null) 'service': service!,
       };
 }
@@ -1060,7 +1058,7 @@ class Binding {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (condition != null) 'condition': condition!.toJson(),
+        if (condition != null) 'condition': condition!,
         if (members != null) 'members': members!,
         if (role != null) 'role': role!,
       };
@@ -1277,15 +1275,15 @@ class ConnectivityTest {
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
         if (description != null) 'description': description!,
-        if (destination != null) 'destination': destination!.toJson(),
+        if (destination != null) 'destination': destination!,
         if (displayName != null) 'displayName': displayName!,
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
         if (protocol != null) 'protocol': protocol!,
         if (reachabilityDetails != null)
-          'reachabilityDetails': reachabilityDetails!.toJson(),
+          'reachabilityDetails': reachabilityDetails!,
         if (relatedProjects != null) 'relatedProjects': relatedProjects!,
-        if (source != null) 'source': source!.toJson(),
+        if (source != null) 'source': source!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
 }
@@ -2067,8 +2065,7 @@ class ListConnectivityTestsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (resources != null)
-          'resources': resources!.map((value) => value.toJson()).toList(),
+        if (resources != null) 'resources': resources!,
         if (unreachable != null) 'unreachable': unreachable!,
       };
 }
@@ -2100,8 +2097,7 @@ class ListLocationsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (locations != null)
-          'locations': locations!.map((value) => value.toJson()).toList(),
+        if (locations != null) 'locations': locations!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -2134,8 +2130,7 @@ class ListOperationsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (operations != null)
-          'operations': operations!.map((value) => value.toJson()).toList(),
+        if (operations != null) 'operations': operations!,
       };
 }
 
@@ -2275,8 +2270,7 @@ class LoadBalancerInfo {
   core.Map<core.String, core.dynamic> toJson() => {
         if (backendType != null) 'backendType': backendType!,
         if (backendUri != null) 'backendUri': backendUri!,
-        if (backends != null)
-          'backends': backends!.map((value) => value.toJson()).toList(),
+        if (backends != null) 'backends': backends!,
         if (healthCheckUri != null) 'healthCheckUri': healthCheckUri!,
         if (loadBalancerType != null) 'loadBalancerType': loadBalancerType!,
       };
@@ -2457,7 +2451,7 @@ class Operation {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (done != null) 'done': done!,
-        if (error != null) 'error': error!.toJson(),
+        if (error != null) 'error': error!,
         if (metadata != null) 'metadata': metadata!,
         if (name != null) 'name': name!,
         if (response != null) 'response': response!,
@@ -2641,10 +2635,8 @@ class Policy {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (auditConfigs != null)
-          'auditConfigs': auditConfigs!.map((value) => value.toJson()).toList(),
-        if (bindings != null)
-          'bindings': bindings!.map((value) => value.toJson()).toList(),
+        if (auditConfigs != null) 'auditConfigs': auditConfigs!,
+        if (bindings != null) 'bindings': bindings!,
         if (etag != null) 'etag': etag!,
         if (version != null) 'version': version!,
       };
@@ -2713,10 +2705,9 @@ class ReachabilityDetails {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (error != null) 'error': error!.toJson(),
+        if (error != null) 'error': error!,
         if (result != null) 'result': result!,
-        if (traces != null)
-          'traces': traces!.map((value) => value.toJson()).toList(),
+        if (traces != null) 'traces': traces!,
         if (verifyTime != null) 'verifyTime': verifyTime!,
       };
 }
@@ -2875,7 +2866,7 @@ class SetIamPolicyRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (policy != null) 'policy': policy!.toJson(),
+        if (policy != null) 'policy': policy!,
         if (updateMask != null) 'updateMask': updateMask!,
       };
 }
@@ -3141,26 +3132,25 @@ class Step {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (abort != null) 'abort': abort!.toJson(),
+        if (abort != null) 'abort': abort!,
         if (causesDrop != null) 'causesDrop': causesDrop!,
-        if (cloudSqlInstance != null)
-          'cloudSqlInstance': cloudSqlInstance!.toJson(),
-        if (deliver != null) 'deliver': deliver!.toJson(),
+        if (cloudSqlInstance != null) 'cloudSqlInstance': cloudSqlInstance!,
+        if (deliver != null) 'deliver': deliver!,
         if (description != null) 'description': description!,
-        if (drop != null) 'drop': drop!.toJson(),
-        if (endpoint != null) 'endpoint': endpoint!.toJson(),
-        if (firewall != null) 'firewall': firewall!.toJson(),
-        if (forward != null) 'forward': forward!.toJson(),
-        if (forwardingRule != null) 'forwardingRule': forwardingRule!.toJson(),
-        if (gkeMaster != null) 'gkeMaster': gkeMaster!.toJson(),
-        if (instance != null) 'instance': instance!.toJson(),
-        if (loadBalancer != null) 'loadBalancer': loadBalancer!.toJson(),
-        if (network != null) 'network': network!.toJson(),
+        if (drop != null) 'drop': drop!,
+        if (endpoint != null) 'endpoint': endpoint!,
+        if (firewall != null) 'firewall': firewall!,
+        if (forward != null) 'forward': forward!,
+        if (forwardingRule != null) 'forwardingRule': forwardingRule!,
+        if (gkeMaster != null) 'gkeMaster': gkeMaster!,
+        if (instance != null) 'instance': instance!,
+        if (loadBalancer != null) 'loadBalancer': loadBalancer!,
+        if (network != null) 'network': network!,
         if (projectId != null) 'projectId': projectId!,
-        if (route != null) 'route': route!.toJson(),
+        if (route != null) 'route': route!,
         if (state != null) 'state': state!,
-        if (vpnGateway != null) 'vpnGateway': vpnGateway!.toJson(),
-        if (vpnTunnel != null) 'vpnTunnel': vpnTunnel!.toJson(),
+        if (vpnGateway != null) 'vpnGateway': vpnGateway!,
+        if (vpnTunnel != null) 'vpnTunnel': vpnTunnel!,
       };
 }
 
@@ -3259,9 +3249,8 @@ class Trace {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (endpointInfo != null) 'endpointInfo': endpointInfo!.toJson(),
-        if (steps != null)
-          'steps': steps!.map((value) => value.toJson()).toList(),
+        if (endpointInfo != null) 'endpointInfo': endpointInfo!,
+        if (steps != null) 'steps': steps!,
       };
 }
 

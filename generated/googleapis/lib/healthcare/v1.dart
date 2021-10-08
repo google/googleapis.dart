@@ -225,7 +225,7 @@ class ProjectsLocationsDatasetsResource {
     core.String? datasetId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (datasetId != null) 'datasetId': [datasetId],
       if ($fields != null) 'fields': [$fields],
@@ -278,7 +278,7 @@ class ProjectsLocationsDatasetsResource {
     core.String sourceDataset, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -502,7 +502,7 @@ class ProjectsLocationsDatasetsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -549,7 +549,7 @@ class ProjectsLocationsDatasetsResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -597,7 +597,7 @@ class ProjectsLocationsDatasetsResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -665,7 +665,7 @@ class ProjectsLocationsDatasetsConsentStoresResource {
     core.String consentStore, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -717,7 +717,7 @@ class ProjectsLocationsDatasetsConsentStoresResource {
     core.String? consentStoreId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (consentStoreId != null) 'consentStoreId': [consentStoreId],
       if ($fields != null) 'fields': [$fields],
@@ -802,7 +802,7 @@ class ProjectsLocationsDatasetsConsentStoresResource {
     core.String consentStore, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -997,7 +997,7 @@ class ProjectsLocationsDatasetsConsentStoresResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -1067,7 +1067,7 @@ class ProjectsLocationsDatasetsConsentStoresResource {
     core.String consentStore, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1114,7 +1114,7 @@ class ProjectsLocationsDatasetsConsentStoresResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1162,7 +1162,7 @@ class ProjectsLocationsDatasetsConsentStoresResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1220,7 +1220,7 @@ class ProjectsLocationsDatasetsConsentStoresAttributeDefinitionsResource {
     core.String? attributeDefinitionId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (attributeDefinitionId != null)
         'attributeDefinitionId': [attributeDefinitionId],
@@ -1411,7 +1411,7 @@ class ProjectsLocationsDatasetsConsentStoresAttributeDefinitionsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -1463,7 +1463,7 @@ class ProjectsLocationsDatasetsConsentStoresConsentArtifactsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1679,7 +1679,7 @@ class ProjectsLocationsDatasetsConsentStoresConsentsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1720,7 +1720,7 @@ class ProjectsLocationsDatasetsConsentStoresConsentsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2062,7 +2062,7 @@ class ProjectsLocationsDatasetsConsentStoresConsentsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -2113,7 +2113,7 @@ class ProjectsLocationsDatasetsConsentStoresConsentsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2162,7 +2162,7 @@ class ProjectsLocationsDatasetsConsentStoresConsentsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2211,7 +2211,7 @@ class ProjectsLocationsDatasetsConsentStoresUserDataMappingsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2253,7 +2253,7 @@ class ProjectsLocationsDatasetsConsentStoresUserDataMappingsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2453,7 +2453,7 @@ class ProjectsLocationsDatasetsConsentStoresUserDataMappingsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -2510,7 +2510,7 @@ class ProjectsLocationsDatasetsDicomStoresResource {
     core.String? dicomStoreId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (dicomStoreId != null) 'dicomStoreId': [dicomStoreId],
       if ($fields != null) 'fields': [$fields],
@@ -2564,7 +2564,7 @@ class ProjectsLocationsDatasetsDicomStoresResource {
     core.String sourceStore, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2649,7 +2649,7 @@ class ProjectsLocationsDatasetsDicomStoresResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2785,7 +2785,7 @@ class ProjectsLocationsDatasetsDicomStoresResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2906,7 +2906,7 @@ class ProjectsLocationsDatasetsDicomStoresResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -3117,7 +3117,7 @@ class ProjectsLocationsDatasetsDicomStoresResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3174,7 +3174,7 @@ class ProjectsLocationsDatasetsDicomStoresResource {
     core.String dicomWebPath, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3225,7 +3225,7 @@ class ProjectsLocationsDatasetsDicomStoresResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3564,7 +3564,7 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResource {
     core.String dicomWebPath, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4216,7 +4216,7 @@ class ProjectsLocationsDatasetsFhirStoresResource {
     core.String? fhirStoreId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (fhirStoreId != null) 'fhirStoreId': [fhirStoreId],
       if ($fields != null) 'fields': [$fields],
@@ -4266,7 +4266,7 @@ class ProjectsLocationsDatasetsFhirStoresResource {
     core.String sourceStore, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4353,7 +4353,7 @@ class ProjectsLocationsDatasetsFhirStoresResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4541,7 +4541,7 @@ class ProjectsLocationsDatasetsFhirStoresResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4661,7 +4661,7 @@ class ProjectsLocationsDatasetsFhirStoresResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -4708,7 +4708,7 @@ class ProjectsLocationsDatasetsFhirStoresResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4756,7 +4756,7 @@ class ProjectsLocationsDatasetsFhirStoresResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -5018,7 +5018,7 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
     core.String type, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -5136,7 +5136,7 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -5274,7 +5274,7 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -5417,7 +5417,7 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -5513,7 +5513,7 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
     core.String resourceType, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -5580,7 +5580,7 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -5684,7 +5684,7 @@ class ProjectsLocationsDatasetsHl7V2StoresResource {
     core.String? hl7V2StoreId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (hl7V2StoreId != null) 'hl7V2StoreId': [hl7V2StoreId],
       if ($fields != null) 'fields': [$fields],
@@ -5933,7 +5933,7 @@ class ProjectsLocationsDatasetsHl7V2StoresResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -5981,7 +5981,7 @@ class ProjectsLocationsDatasetsHl7V2StoresResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -6029,7 +6029,7 @@ class ProjectsLocationsDatasetsHl7V2StoresResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -6085,7 +6085,7 @@ class ProjectsLocationsDatasetsHl7V2StoresMessagesResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -6223,7 +6223,7 @@ class ProjectsLocationsDatasetsHl7V2StoresMessagesResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -6396,7 +6396,7 @@ class ProjectsLocationsDatasetsHl7V2StoresMessagesResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -6454,7 +6454,7 @@ class ProjectsLocationsDatasetsOperationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -6804,9 +6804,7 @@ class AuditConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (auditLogConfigs != null)
-          'auditLogConfigs':
-              auditLogConfigs!.map((value) => value.toJson()).toList(),
+        if (auditLogConfigs != null) 'auditLogConfigs': auditLogConfigs!,
         if (service != null) 'service': service!,
       };
 }
@@ -6925,7 +6923,7 @@ class Binding {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (condition != null) 'condition': condition!.toJson(),
+        if (condition != null) 'condition': condition!,
         if (members != null) 'members': members!,
         if (role != null) 'role': role!,
       };
@@ -7031,7 +7029,7 @@ class CheckDataAccessRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (consentList != null) 'consentList': consentList!.toJson(),
+        if (consentList != null) 'consentList': consentList!,
         if (dataId != null) 'dataId': dataId!,
         if (requestAttributes != null) 'requestAttributes': requestAttributes!,
         if (responseView != null) 'responseView': responseView!,
@@ -7070,9 +7068,7 @@ class CheckDataAccessResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (consentDetails != null)
-          'consentDetails': consentDetails!
-              .map((key, item) => core.MapEntry(key, item.toJson())),
+        if (consentDetails != null) 'consentDetails': consentDetails!,
         if (consented != null) 'consented': consented!,
       };
 }
@@ -7214,8 +7210,7 @@ class Consent {
         if (expireTime != null) 'expireTime': expireTime!,
         if (metadata != null) 'metadata': metadata!,
         if (name != null) 'name': name!,
-        if (policies != null)
-          'policies': policies!.map((value) => value.toJson()).toList(),
+        if (policies != null) 'policies': policies!,
         if (revisionCreateTime != null)
           'revisionCreateTime': revisionCreateTime!,
         if (revisionId != null) 'revisionId': revisionId!,
@@ -7323,19 +7318,15 @@ class ConsentArtifact {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (consentContentScreenshots != null)
-          'consentContentScreenshots': consentContentScreenshots!
-              .map((value) => value.toJson())
-              .toList(),
+          'consentContentScreenshots': consentContentScreenshots!,
         if (consentContentVersion != null)
           'consentContentVersion': consentContentVersion!,
-        if (guardianSignature != null)
-          'guardianSignature': guardianSignature!.toJson(),
+        if (guardianSignature != null) 'guardianSignature': guardianSignature!,
         if (metadata != null) 'metadata': metadata!,
         if (name != null) 'name': name!,
         if (userId != null) 'userId': userId!,
-        if (userSignature != null) 'userSignature': userSignature!.toJson(),
-        if (witnessSignature != null)
-          'witnessSignature': witnessSignature!.toJson(),
+        if (userSignature != null) 'userSignature': userSignature!,
+        if (witnessSignature != null) 'witnessSignature': witnessSignature!,
       };
 }
 
@@ -7490,7 +7481,7 @@ class CreateMessageRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (message != null) 'message': message!.toJson(),
+        if (message != null) 'message': message!,
       };
 }
 
@@ -7644,10 +7635,10 @@ class DeidentifyConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dicom != null) 'dicom': dicom!.toJson(),
-        if (fhir != null) 'fhir': fhir!.toJson(),
-        if (image != null) 'image': image!.toJson(),
-        if (text != null) 'text': text!.toJson(),
+        if (dicom != null) 'dicom': dicom!,
+        if (fhir != null) 'fhir': fhir!,
+        if (image != null) 'image': image!,
+        if (text != null) 'text': text!,
       };
 }
 
@@ -7680,7 +7671,7 @@ class DeidentifyDatasetRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (config != null) 'config': config!.toJson(),
+        if (config != null) 'config': config!,
         if (destinationDataset != null)
           'destinationDataset': destinationDataset!,
       };
@@ -7727,9 +7718,9 @@ class DeidentifyDicomStoreRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (config != null) 'config': config!.toJson(),
+        if (config != null) 'config': config!,
         if (destinationStore != null) 'destinationStore': destinationStore!,
-        if (filterConfig != null) 'filterConfig': filterConfig!.toJson(),
+        if (filterConfig != null) 'filterConfig': filterConfig!,
       };
 }
 
@@ -7776,9 +7767,9 @@ class DeidentifyFhirStoreRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (config != null) 'config': config!.toJson(),
+        if (config != null) 'config': config!,
         if (destinationStore != null) 'destinationStore': destinationStore!,
-        if (resourceFilter != null) 'resourceFilter': resourceFilter!.toJson(),
+        if (resourceFilter != null) 'resourceFilter': resourceFilter!,
       };
 }
 
@@ -7852,8 +7843,8 @@ class DicomConfig {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (filterProfile != null) 'filterProfile': filterProfile!,
-        if (keepList != null) 'keepList': keepList!.toJson(),
-        if (removeList != null) 'removeList': removeList!.toJson(),
+        if (keepList != null) 'keepList': keepList!,
+        if (removeList != null) 'removeList': removeList!,
         if (skipIdRedaction != null) 'skipIdRedaction': skipIdRedaction!,
       };
 }
@@ -7938,7 +7929,7 @@ class DicomStore {
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
         if (notificationConfig != null)
-          'notificationConfig': notificationConfig!.toJson(),
+          'notificationConfig': notificationConfig!,
       };
 }
 
@@ -8066,7 +8057,7 @@ class EvaluateUserConsentsRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (consentList != null) 'consentList': consentList!.toJson(),
+        if (consentList != null) 'consentList': consentList!,
         if (pageSize != null) 'pageSize': pageSize!,
         if (pageToken != null) 'pageToken': pageToken!,
         if (requestAttributes != null) 'requestAttributes': requestAttributes!,
@@ -8107,8 +8098,7 @@ class EvaluateUserConsentsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (results != null)
-          'results': results!.map((value) => value.toJson()).toList(),
+        if (results != null) 'results': results!,
       };
 }
 
@@ -8154,8 +8144,8 @@ class ExportDicomDataRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (bigqueryDestination != null)
-          'bigqueryDestination': bigqueryDestination!.toJson(),
-        if (gcsDestination != null) 'gcsDestination': gcsDestination!.toJson(),
+          'bigqueryDestination': bigqueryDestination!,
+        if (gcsDestination != null) 'gcsDestination': gcsDestination!,
       };
 }
 
@@ -8203,8 +8193,8 @@ class ExportResourcesRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (bigqueryDestination != null)
-          'bigqueryDestination': bigqueryDestination!.toJson(),
-        if (gcsDestination != null) 'gcsDestination': gcsDestination!.toJson(),
+          'bigqueryDestination': bigqueryDestination!,
+        if (gcsDestination != null) 'gcsDestination': gcsDestination!,
       };
 }
 
@@ -8311,9 +8301,7 @@ class FhirConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (fieldMetadataList != null)
-          'fieldMetadataList':
-              fieldMetadataList!.map((value) => value.toJson()).toList(),
+        if (fieldMetadataList != null) 'fieldMetadataList': fieldMetadataList!,
       };
 }
 
@@ -8338,7 +8326,7 @@ class FhirFilter {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (resources != null) 'resources': resources!.toJson(),
+        if (resources != null) 'resources': resources!,
       };
 }
 
@@ -8514,10 +8502,8 @@ class FhirStore {
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
         if (notificationConfig != null)
-          'notificationConfig': notificationConfig!.toJson(),
-        if (streamConfigs != null)
-          'streamConfigs':
-              streamConfigs!.map((value) => value.toJson()).toList(),
+          'notificationConfig': notificationConfig!,
+        if (streamConfigs != null) 'streamConfigs': streamConfigs!,
         if (version != null) 'version': version!,
       };
 }
@@ -8689,11 +8675,9 @@ class GoogleCloudHealthcareV1ConsentPolicy {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (authorizationRule != null)
-          'authorizationRule': authorizationRule!.toJson(),
+        if (authorizationRule != null) 'authorizationRule': authorizationRule!,
         if (resourceAttributes != null)
-          'resourceAttributes':
-              resourceAttributes!.map((value) => value.toJson()).toList(),
+          'resourceAttributes': resourceAttributes!,
       };
 }
 
@@ -8884,7 +8868,7 @@ class GoogleCloudHealthcareV1FhirBigQueryDestination {
   core.Map<core.String, core.dynamic> toJson() => {
         if (datasetUri != null) 'datasetUri': datasetUri!,
         if (force != null) 'force': force!,
-        if (schemaConfig != null) 'schemaConfig': schemaConfig!.toJson(),
+        if (schemaConfig != null) 'schemaConfig': schemaConfig!,
         if (writeDisposition != null) 'writeDisposition': writeDisposition!,
       };
 }
@@ -8969,8 +8953,8 @@ class GroupOrSegment {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (group != null) 'group': group!.toJson(),
-        if (segment != null) 'segment': segment!.toJson(),
+        if (group != null) 'group': group!,
+        if (segment != null) 'segment': segment!,
       };
 }
 
@@ -9015,10 +8999,8 @@ class Hl7SchemaConfig {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (messageSchemaConfigs != null)
-          'messageSchemaConfigs': messageSchemaConfigs!
-              .map((key, item) => core.MapEntry(key, item.toJson())),
-        if (version != null)
-          'version': version!.map((value) => value.toJson()).toList(),
+          'messageSchemaConfigs': messageSchemaConfigs!,
+        if (version != null) 'version': version!,
       };
 }
 
@@ -9054,9 +9036,8 @@ class Hl7TypesConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (type != null) 'type': type!.map((value) => value.toJson()).toList(),
-        if (version != null)
-          'version': version!.map((value) => value.toJson()).toList(),
+        if (type != null) 'type': type!,
+        if (version != null) 'version': version!,
       };
 }
 
@@ -9226,9 +9207,8 @@ class Hl7V2Store {
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
         if (notificationConfigs != null)
-          'notificationConfigs':
-              notificationConfigs!.map((value) => value.toJson()).toList(),
-        if (parserConfig != null) 'parserConfig': parserConfig!.toJson(),
+          'notificationConfigs': notificationConfigs!,
+        if (parserConfig != null) 'parserConfig': parserConfig!,
         if (rejectDuplicateMessage != null)
           'rejectDuplicateMessage': rejectDuplicateMessage!,
       };
@@ -9399,7 +9379,7 @@ class ImportDicomDataRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (gcsSource != null) 'gcsSource': gcsSource!.toJson(),
+        if (gcsSource != null) 'gcsSource': gcsSource!,
       };
 }
 
@@ -9451,7 +9431,7 @@ class ImportResourcesRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (contentStructure != null) 'contentStructure': contentStructure!,
-        if (gcsSource != null) 'gcsSource': gcsSource!.toJson(),
+        if (gcsSource != null) 'gcsSource': gcsSource!,
       };
 }
 
@@ -9526,15 +9506,13 @@ class InfoTypeTransformation {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (characterMaskConfig != null)
-          'characterMaskConfig': characterMaskConfig!.toJson(),
-        if (cryptoHashConfig != null)
-          'cryptoHashConfig': cryptoHashConfig!.toJson(),
-        if (dateShiftConfig != null)
-          'dateShiftConfig': dateShiftConfig!.toJson(),
+          'characterMaskConfig': characterMaskConfig!,
+        if (cryptoHashConfig != null) 'cryptoHashConfig': cryptoHashConfig!,
+        if (dateShiftConfig != null) 'dateShiftConfig': dateShiftConfig!,
         if (infoTypes != null) 'infoTypes': infoTypes!,
-        if (redactConfig != null) 'redactConfig': redactConfig!.toJson(),
+        if (redactConfig != null) 'redactConfig': redactConfig!,
         if (replaceWithInfoTypeConfig != null)
-          'replaceWithInfoTypeConfig': replaceWithInfoTypeConfig!.toJson(),
+          'replaceWithInfoTypeConfig': replaceWithInfoTypeConfig!,
       };
 }
 
@@ -9556,7 +9534,7 @@ class IngestMessageRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (message != null) 'message': message!.toJson(),
+        if (message != null) 'message': message!,
       };
 }
 
@@ -9593,7 +9571,7 @@ class IngestMessageResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (hl7Ack != null) 'hl7Ack': hl7Ack!,
-        if (message != null) 'message': message!.toJson(),
+        if (message != null) 'message': message!,
       };
 }
 
@@ -9628,8 +9606,7 @@ class ListAttributeDefinitionsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (attributeDefinitions != null)
-          'attributeDefinitions':
-              attributeDefinitions!.map((value) => value.toJson()).toList(),
+          'attributeDefinitions': attributeDefinitions!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -9664,9 +9641,7 @@ class ListConsentArtifactsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (consentArtifacts != null)
-          'consentArtifacts':
-              consentArtifacts!.map((value) => value.toJson()).toList(),
+        if (consentArtifacts != null) 'consentArtifacts': consentArtifacts!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -9701,8 +9676,7 @@ class ListConsentRevisionsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (consents != null)
-          'consents': consents!.map((value) => value.toJson()).toList(),
+        if (consents != null) 'consents': consents!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -9737,9 +9711,7 @@ class ListConsentStoresResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (consentStores != null)
-          'consentStores':
-              consentStores!.map((value) => value.toJson()).toList(),
+        if (consentStores != null) 'consentStores': consentStores!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -9774,8 +9746,7 @@ class ListConsentsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (consents != null)
-          'consents': consents!.map((value) => value.toJson()).toList(),
+        if (consents != null) 'consents': consents!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -9808,8 +9779,7 @@ class ListDatasetsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (datasets != null)
-          'datasets': datasets!.map((value) => value.toJson()).toList(),
+        if (datasets != null) 'datasets': datasets!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -9844,8 +9814,7 @@ class ListDicomStoresResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dicomStores != null)
-          'dicomStores': dicomStores!.map((value) => value.toJson()).toList(),
+        if (dicomStores != null) 'dicomStores': dicomStores!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -9880,8 +9849,7 @@ class ListFhirStoresResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (fhirStores != null)
-          'fhirStores': fhirStores!.map((value) => value.toJson()).toList(),
+        if (fhirStores != null) 'fhirStores': fhirStores!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -9916,8 +9884,7 @@ class ListHl7V2StoresResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (hl7V2Stores != null)
-          'hl7V2Stores': hl7V2Stores!.map((value) => value.toJson()).toList(),
+        if (hl7V2Stores != null) 'hl7V2Stores': hl7V2Stores!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -9949,8 +9916,7 @@ class ListLocationsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (locations != null)
-          'locations': locations!.map((value) => value.toJson()).toList(),
+        if (locations != null) 'locations': locations!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -9986,9 +9952,7 @@ class ListMessagesResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (hl7V2Messages != null)
-          'hl7V2Messages':
-              hl7V2Messages!.map((value) => value.toJson()).toList(),
+        if (hl7V2Messages != null) 'hl7V2Messages': hl7V2Messages!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -10021,8 +9985,7 @@ class ListOperationsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (operations != null)
-          'operations': operations!.map((value) => value.toJson()).toList(),
+        if (operations != null) 'operations': operations!,
       };
 }
 
@@ -10057,9 +10020,7 @@ class ListUserDataMappingsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (userDataMappings != null)
-          'userDataMappings':
-              userDataMappings!.map((value) => value.toJson()).toList(),
+        if (userDataMappings != null) 'userDataMappings': userDataMappings!,
       };
 }
 
@@ -10258,11 +10219,9 @@ class Message {
         if (labels != null) 'labels': labels!,
         if (messageType != null) 'messageType': messageType!,
         if (name != null) 'name': name!,
-        if (parsedData != null) 'parsedData': parsedData!.toJson(),
-        if (patientIds != null)
-          'patientIds': patientIds!.map((value) => value.toJson()).toList(),
-        if (schematizedData != null)
-          'schematizedData': schematizedData!.toJson(),
+        if (parsedData != null) 'parsedData': parsedData!,
+        if (patientIds != null) 'patientIds': patientIds!,
+        if (schematizedData != null) 'schematizedData': schematizedData!,
         if (sendFacility != null) 'sendFacility': sendFacility!,
         if (sendTime != null) 'sendTime': sendTime!,
       };
@@ -10376,7 +10335,7 @@ class Operation {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (done != null) 'done': done!,
-        if (error != null) 'error': error!.toJson(),
+        if (error != null) 'error': error!,
         if (metadata != null) 'metadata': metadata!,
         if (name != null) 'name': name!,
         if (response != null) 'response': response!,
@@ -10441,7 +10400,7 @@ class OperationMetadata {
   core.Map<core.String, core.dynamic> toJson() => {
         if (apiMethodName != null) 'apiMethodName': apiMethodName!,
         if (cancelRequested != null) 'cancelRequested': cancelRequested!,
-        if (counter != null) 'counter': counter!.toJson(),
+        if (counter != null) 'counter': counter!,
         if (createTime != null) 'createTime': createTime!,
         if (endTime != null) 'endTime': endTime!,
         if (logsUrl != null) 'logsUrl': logsUrl!,
@@ -10467,8 +10426,7 @@ class ParsedData {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (segments != null)
-          'segments': segments!.map((value) => value.toJson()).toList(),
+        if (segments != null) 'segments': segments!,
       };
 }
 
@@ -10518,7 +10476,7 @@ class ParserConfig {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (allowNullHeader != null) 'allowNullHeader': allowNullHeader!,
-        if (schema != null) 'schema': schema!.toJson(),
+        if (schema != null) 'schema': schema!,
         if (segmentTerminator != null) 'segmentTerminator': segmentTerminator!,
       };
 }
@@ -10660,10 +10618,8 @@ class Policy {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (auditConfigs != null)
-          'auditConfigs': auditConfigs!.map((value) => value.toJson()).toList(),
-        if (bindings != null)
-          'bindings': bindings!.map((value) => value.toJson()).toList(),
+        if (auditConfigs != null) 'auditConfigs': auditConfigs!,
+        if (bindings != null) 'bindings': bindings!,
         if (etag != null) 'etag': etag!,
         if (version != null) 'version': version!,
       };
@@ -10769,7 +10725,7 @@ class QueryAccessibleDataRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (gcsDestination != null) 'gcsDestination': gcsDestination!.toJson(),
+        if (gcsDestination != null) 'gcsDestination': gcsDestination!,
         if (requestAttributes != null) 'requestAttributes': requestAttributes!,
         if (resourceAttributes != null)
           'resourceAttributes': resourceAttributes!,
@@ -10910,9 +10866,7 @@ class Result {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (consentDetails != null)
-          'consentDetails': consentDetails!
-              .map((key, item) => core.MapEntry(key, item.toJson())),
+        if (consentDetails != null) 'consentDetails': consentDetails!,
         if (consented != null) 'consented': consented!,
         if (dataId != null) 'dataId': dataId!,
       };
@@ -11049,8 +11003,7 @@ class SchemaGroup {
   core.Map<core.String, core.dynamic> toJson() => {
         if (choice != null) 'choice': choice!,
         if (maxOccurs != null) 'maxOccurs': maxOccurs!,
-        if (members != null)
-          'members': members!.map((value) => value.toJson()).toList(),
+        if (members != null) 'members': members!,
         if (minOccurs != null) 'minOccurs': minOccurs!,
         if (name != null) 'name': name!,
       };
@@ -11121,12 +11074,10 @@ class SchemaPackage {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (ignoreMinOccurs != null) 'ignoreMinOccurs': ignoreMinOccurs!,
-        if (schemas != null)
-          'schemas': schemas!.map((value) => value.toJson()).toList(),
+        if (schemas != null) 'schemas': schemas!,
         if (schematizedParsingType != null)
           'schematizedParsingType': schematizedParsingType!,
-        if (types != null)
-          'types': types!.map((value) => value.toJson()).toList(),
+        if (types != null) 'types': types!,
       };
 }
 
@@ -11309,7 +11260,7 @@ class SetIamPolicyRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (policy != null) 'policy': policy!.toJson(),
+        if (policy != null) 'policy': policy!,
         if (updateMask != null) 'updateMask': updateMask!,
       };
 }
@@ -11368,7 +11319,7 @@ class Signature {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (image != null) 'image': image!.toJson(),
+        if (image != null) 'image': image!,
         if (metadata != null) 'metadata': metadata!,
         if (signatureTime != null) 'signatureTime': signatureTime!,
         if (userId != null) 'userId': userId!,
@@ -11488,7 +11439,7 @@ class StreamConfig {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (bigqueryDestination != null)
-          'bigqueryDestination': bigqueryDestination!.toJson(),
+          'bigqueryDestination': bigqueryDestination!,
         if (resourceTypes != null) 'resourceTypes': resourceTypes!,
       };
 }
@@ -11592,9 +11543,7 @@ class TextConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (transformations != null)
-          'transformations':
-              transformations!.map((value) => value.toJson()).toList(),
+        if (transformations != null) 'transformations': transformations!,
       };
 }
 
@@ -11643,8 +11592,7 @@ class Type {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (fields != null)
-          'fields': fields!.map((value) => value.toJson()).toList(),
+        if (fields != null) 'fields': fields!,
         if (name != null) 'name': name!,
         if (primitive != null) 'primitive': primitive!,
       };
@@ -11722,8 +11670,7 @@ class UserDataMapping {
         if (dataId != null) 'dataId': dataId!,
         if (name != null) 'name': name!,
         if (resourceAttributes != null)
-          'resourceAttributes':
-              resourceAttributes!.map((value) => value.toJson()).toList(),
+          'resourceAttributes': resourceAttributes!,
         if (userId != null) 'userId': userId!,
       };
 }

@@ -585,7 +585,7 @@ class ManagementAccountUserLinksResource {
     core.String accountId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -678,7 +678,7 @@ class ManagementAccountUserLinksResource {
     core.String linkId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -770,7 +770,7 @@ class ManagementClientIdResource {
     HashClientIdRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -928,7 +928,7 @@ class ManagementCustomDimensionsResource {
     core.String webPropertyId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1038,7 +1038,7 @@ class ManagementCustomDimensionsResource {
     core.bool? ignoreCustomDataSourceLinks,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (ignoreCustomDataSourceLinks != null)
         'ignoreCustomDataSourceLinks': ['${ignoreCustomDataSourceLinks}'],
@@ -1097,7 +1097,7 @@ class ManagementCustomDimensionsResource {
     core.bool? ignoreCustomDataSourceLinks,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (ignoreCustomDataSourceLinks != null)
         'ignoreCustomDataSourceLinks': ['${ignoreCustomDataSourceLinks}'],
@@ -1200,7 +1200,7 @@ class ManagementCustomMetricsResource {
     core.String webPropertyId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1309,7 +1309,7 @@ class ManagementCustomMetricsResource {
     core.bool? ignoreCustomDataSourceLinks,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (ignoreCustomDataSourceLinks != null)
         'ignoreCustomDataSourceLinks': ['${ignoreCustomDataSourceLinks}'],
@@ -1367,7 +1367,7 @@ class ManagementCustomMetricsResource {
     core.bool? ignoreCustomDataSourceLinks,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (ignoreCustomDataSourceLinks != null)
         'ignoreCustomDataSourceLinks': ['${ignoreCustomDataSourceLinks}'],
@@ -1526,7 +1526,7 @@ class ManagementExperimentsResource {
     core.String profileId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1643,7 +1643,7 @@ class ManagementExperimentsResource {
     core.String experimentId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1699,7 +1699,7 @@ class ManagementExperimentsResource {
     core.String experimentId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1832,7 +1832,7 @@ class ManagementFiltersResource {
     core.String accountId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1924,7 +1924,7 @@ class ManagementFiltersResource {
     core.String filterId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1969,7 +1969,7 @@ class ManagementFiltersResource {
     core.String filterId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2073,7 +2073,7 @@ class ManagementGoalsResource {
     core.String profileId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2190,7 +2190,7 @@ class ManagementGoalsResource {
     core.String goalId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2245,7 +2245,7 @@ class ManagementGoalsResource {
     core.String goalId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2415,7 +2415,7 @@ class ManagementProfileFilterLinksResource {
     core.String profileId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2538,7 +2538,7 @@ class ManagementProfileFilterLinksResource {
     core.String linkId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2598,7 +2598,7 @@ class ManagementProfileFilterLinksResource {
     core.String linkId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2706,7 +2706,7 @@ class ManagementProfileUserLinksResource {
     core.String profileId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2823,7 +2823,7 @@ class ManagementProfileUserLinksResource {
     core.String linkId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2970,7 +2970,7 @@ class ManagementProfilesResource {
     core.String webPropertyId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3076,7 +3076,7 @@ class ManagementProfilesResource {
     core.String profileId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3126,7 +3126,7 @@ class ManagementProfilesResource {
     core.String profileId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3272,7 +3272,7 @@ class ManagementRemarketingAudienceResource {
     core.String webPropertyId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3382,7 +3382,7 @@ class ManagementRemarketingAudienceResource {
     core.String remarketingAudienceId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3434,7 +3434,7 @@ class ManagementRemarketingAudienceResource {
     core.String remarketingAudienceId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3637,7 +3637,7 @@ class ManagementUnsampledReportsResource {
     core.String profileId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3758,7 +3758,7 @@ class ManagementUploadsResource {
     core.String customDataSourceId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4092,7 +4092,7 @@ class ManagementWebPropertyAdWordsLinksResource {
     core.String webPropertyId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4198,7 +4198,7 @@ class ManagementWebPropertyAdWordsLinksResource {
     core.String webPropertyAdWordsLinkId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4249,7 +4249,7 @@ class ManagementWebPropertyAdWordsLinksResource {
     core.String webPropertyAdWordsLinkId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4347,7 +4347,7 @@ class ManagementWebpropertiesResource {
     core.String accountId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4443,7 +4443,7 @@ class ManagementWebpropertiesResource {
     core.String webPropertyId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4489,7 +4489,7 @@ class ManagementWebpropertiesResource {
     core.String webPropertyId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4585,7 +4585,7 @@ class ManagementWebpropertyUserLinksResource {
     core.String webPropertyId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4690,7 +4690,7 @@ class ManagementWebpropertyUserLinksResource {
     core.String linkId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4789,7 +4789,7 @@ class ProvisioningResource {
     AccountTicket request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4826,7 +4826,7 @@ class ProvisioningResource {
     AccountTreeRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4879,7 +4879,7 @@ class UserDeletionUserDeletionRequestResource {
     UserDeletionRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -5022,12 +5022,12 @@ class Account {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (childLink != null) 'childLink': childLink!.toJson(),
+        if (childLink != null) 'childLink': childLink!,
         if (created != null) 'created': created!.toIso8601String(),
         if (id != null) 'id': id!,
         if (kind != null) 'kind': kind!,
         if (name != null) 'name': name!,
-        if (permissions != null) 'permissions': permissions!.toJson(),
+        if (permissions != null) 'permissions': permissions!,
         if (selfLink != null) 'selfLink': selfLink!,
         if (starred != null) 'starred': starred!,
         if (updated != null) 'updated': updated!.toIso8601String(),
@@ -5147,8 +5147,7 @@ class AccountSummaries {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (items != null)
-          'items': items!.map((value) => value.toJson()).toList(),
+        if (items != null) 'items': items!,
         if (itemsPerPage != null) 'itemsPerPage': itemsPerPage!,
         if (kind != null) 'kind': kind!,
         if (nextLink != null) 'nextLink': nextLink!,
@@ -5207,9 +5206,7 @@ class AccountSummary {
         if (kind != null) 'kind': kind!,
         if (name != null) 'name': name!,
         if (starred != null) 'starred': starred!,
-        if (webProperties != null)
-          'webProperties':
-              webProperties!.map((value) => value.toJson()).toList(),
+        if (webProperties != null) 'webProperties': webProperties!,
       };
 }
 
@@ -5269,12 +5266,12 @@ class AccountTicket {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (account != null) 'account': account!.toJson(),
+        if (account != null) 'account': account!,
         if (id != null) 'id': id!,
         if (kind != null) 'kind': kind!,
-        if (profile != null) 'profile': profile!.toJson(),
+        if (profile != null) 'profile': profile!,
         if (redirectUri != null) 'redirectUri': redirectUri!,
-        if (webproperty != null) 'webproperty': webproperty!.toJson(),
+        if (webproperty != null) 'webproperty': webproperty!,
       };
 }
 
@@ -5374,10 +5371,10 @@ class AccountTreeResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (account != null) 'account': account!.toJson(),
+        if (account != null) 'account': account!,
         if (kind != null) 'kind': kind!,
-        if (profile != null) 'profile': profile!.toJson(),
-        if (webproperty != null) 'webproperty': webproperty!.toJson(),
+        if (profile != null) 'profile': profile!,
+        if (webproperty != null) 'webproperty': webproperty!,
       };
 }
 
@@ -5458,8 +5455,7 @@ class Accounts {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (items != null)
-          'items': items!.map((value) => value.toJson()).toList(),
+        if (items != null) 'items': items!,
         if (itemsPerPage != null) 'itemsPerPage': itemsPerPage!,
         if (kind != null) 'kind': kind!,
         if (nextLink != null) 'nextLink': nextLink!,
@@ -5624,8 +5620,7 @@ class Columns {
   core.Map<core.String, core.dynamic> toJson() => {
         if (attributeNames != null) 'attributeNames': attributeNames!,
         if (etag != null) 'etag': etag!,
-        if (items != null)
-          'items': items!.map((value) => value.toJson()).toList(),
+        if (items != null) 'items': items!,
         if (kind != null) 'kind': kind!,
         if (totalResults != null) 'totalResults': totalResults!,
       };
@@ -5806,14 +5801,14 @@ class CustomDataSource {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accountId != null) 'accountId': accountId!,
-        if (childLink != null) 'childLink': childLink!.toJson(),
+        if (childLink != null) 'childLink': childLink!,
         if (created != null) 'created': created!.toIso8601String(),
         if (description != null) 'description': description!,
         if (id != null) 'id': id!,
         if (importBehavior != null) 'importBehavior': importBehavior!,
         if (kind != null) 'kind': kind!,
         if (name != null) 'name': name!,
-        if (parentLink != null) 'parentLink': parentLink!.toJson(),
+        if (parentLink != null) 'parentLink': parentLink!,
         if (profilesLinked != null) 'profilesLinked': profilesLinked!,
         if (schema != null) 'schema': schema!,
         if (selfLink != null) 'selfLink': selfLink!,
@@ -5900,8 +5895,7 @@ class CustomDataSources {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (items != null)
-          'items': items!.map((value) => value.toJson()).toList(),
+        if (items != null) 'items': items!,
         if (itemsPerPage != null) 'itemsPerPage': itemsPerPage!,
         if (kind != null) 'kind': kind!,
         if (nextLink != null) 'nextLink': nextLink!,
@@ -6037,7 +6031,7 @@ class CustomDimension {
         if (index != null) 'index': index!,
         if (kind != null) 'kind': kind!,
         if (name != null) 'name': name!,
-        if (parentLink != null) 'parentLink': parentLink!.toJson(),
+        if (parentLink != null) 'parentLink': parentLink!,
         if (scope != null) 'scope': scope!,
         if (selfLink != null) 'selfLink': selfLink!,
         if (updated != null) 'updated': updated!.toIso8601String(),
@@ -6122,8 +6116,7 @@ class CustomDimensions {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (items != null)
-          'items': items!.map((value) => value.toJson()).toList(),
+        if (items != null) 'items': items!,
         if (itemsPerPage != null) 'itemsPerPage': itemsPerPage!,
         if (kind != null) 'kind': kind!,
         if (nextLink != null) 'nextLink': nextLink!,
@@ -6280,7 +6273,7 @@ class CustomMetric {
         if (maxValue != null) 'max_value': maxValue!,
         if (minValue != null) 'min_value': minValue!,
         if (name != null) 'name': name!,
-        if (parentLink != null) 'parentLink': parentLink!.toJson(),
+        if (parentLink != null) 'parentLink': parentLink!,
         if (scope != null) 'scope': scope!,
         if (selfLink != null) 'selfLink': selfLink!,
         if (type != null) 'type': type!,
@@ -6366,8 +6359,7 @@ class CustomMetrics {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (items != null)
-          'items': items!.map((value) => value.toJson()).toList(),
+        if (items != null) 'items': items!,
         if (itemsPerPage != null) 'itemsPerPage': itemsPerPage!,
         if (kind != null) 'kind': kind!,
         if (nextLink != null) 'nextLink': nextLink!,
@@ -6395,7 +6387,7 @@ class EntityAdWordsLinkEntity {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (webPropertyRef != null) 'webPropertyRef': webPropertyRef!.toJson(),
+        if (webPropertyRef != null) 'webPropertyRef': webPropertyRef!,
       };
 }
 
@@ -6463,10 +6455,8 @@ class EntityAdWordsLink {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (adWordsAccounts != null)
-          'adWordsAccounts':
-              adWordsAccounts!.map((value) => value.toJson()).toList(),
-        if (entity != null) 'entity': entity!.toJson(),
+        if (adWordsAccounts != null) 'adWordsAccounts': adWordsAccounts!,
+        if (entity != null) 'entity': entity!,
         if (id != null) 'id': id!,
         if (kind != null) 'kind': kind!,
         if (name != null) 'name': name!,
@@ -6542,8 +6532,7 @@ class EntityAdWordsLinks {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (items != null)
-          'items': items!.map((value) => value.toJson()).toList(),
+        if (items != null) 'items': items!,
         if (itemsPerPage != null) 'itemsPerPage': itemsPerPage!,
         if (kind != null) 'kind': kind!,
         if (nextLink != null) 'nextLink': nextLink!,
@@ -6589,9 +6578,9 @@ class EntityUserLinkEntity {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (accountRef != null) 'accountRef': accountRef!.toJson(),
-        if (profileRef != null) 'profileRef': profileRef!.toJson(),
-        if (webPropertyRef != null) 'webPropertyRef': webPropertyRef!.toJson(),
+        if (accountRef != null) 'accountRef': accountRef!,
+        if (profileRef != null) 'profileRef': profileRef!,
+        if (webPropertyRef != null) 'webPropertyRef': webPropertyRef!,
       };
 }
 
@@ -6691,12 +6680,12 @@ class EntityUserLink {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (entity != null) 'entity': entity!.toJson(),
+        if (entity != null) 'entity': entity!,
         if (id != null) 'id': id!,
         if (kind != null) 'kind': kind!,
-        if (permissions != null) 'permissions': permissions!.toJson(),
+        if (permissions != null) 'permissions': permissions!,
         if (selfLink != null) 'selfLink': selfLink!,
-        if (userRef != null) 'userRef': userRef!.toJson(),
+        if (userRef != null) 'userRef': userRef!,
       };
 }
 
@@ -6767,8 +6756,7 @@ class EntityUserLinks {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (items != null)
-          'items': items!.map((value) => value.toJson()).toList(),
+        if (items != null) 'items': items!,
         if (itemsPerPage != null) 'itemsPerPage': itemsPerPage!,
         if (kind != null) 'kind': kind!,
         if (nextLink != null) 'nextLink': nextLink!,
@@ -7181,7 +7169,7 @@ class Experiment {
         if (name != null) 'name': name!,
         if (objectiveMetric != null) 'objectiveMetric': objectiveMetric!,
         if (optimizationType != null) 'optimizationType': optimizationType!,
-        if (parentLink != null) 'parentLink': parentLink!.toJson(),
+        if (parentLink != null) 'parentLink': parentLink!,
         if (profileId != null) 'profileId': profileId!,
         if (reasonExperimentEnded != null)
           'reasonExperimentEnded': reasonExperimentEnded!,
@@ -7194,8 +7182,7 @@ class Experiment {
         if (status != null) 'status': status!,
         if (trafficCoverage != null) 'trafficCoverage': trafficCoverage!,
         if (updated != null) 'updated': updated!.toIso8601String(),
-        if (variations != null)
-          'variations': variations!.map((value) => value.toJson()).toList(),
+        if (variations != null) 'variations': variations!,
         if (webPropertyId != null) 'webPropertyId': webPropertyId!,
         if (winnerConfidenceLevel != null)
           'winnerConfidenceLevel': winnerConfidenceLevel!,
@@ -7280,8 +7267,7 @@ class Experiments {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (items != null)
-          'items': items!.map((value) => value.toJson()).toList(),
+        if (items != null) 'items': items!,
         if (itemsPerPage != null) 'itemsPerPage': itemsPerPage!,
         if (kind != null) 'kind': kind!,
         if (nextLink != null) 'nextLink': nextLink!,
@@ -7680,24 +7666,21 @@ class Filter {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accountId != null) 'accountId': accountId!,
-        if (advancedDetails != null)
-          'advancedDetails': advancedDetails!.toJson(),
+        if (advancedDetails != null) 'advancedDetails': advancedDetails!,
         if (created != null) 'created': created!.toIso8601String(),
-        if (excludeDetails != null) 'excludeDetails': excludeDetails!.toJson(),
+        if (excludeDetails != null) 'excludeDetails': excludeDetails!,
         if (id != null) 'id': id!,
-        if (includeDetails != null) 'includeDetails': includeDetails!.toJson(),
+        if (includeDetails != null) 'includeDetails': includeDetails!,
         if (kind != null) 'kind': kind!,
-        if (lowercaseDetails != null)
-          'lowercaseDetails': lowercaseDetails!.toJson(),
+        if (lowercaseDetails != null) 'lowercaseDetails': lowercaseDetails!,
         if (name != null) 'name': name!,
-        if (parentLink != null) 'parentLink': parentLink!.toJson(),
+        if (parentLink != null) 'parentLink': parentLink!,
         if (searchAndReplaceDetails != null)
-          'searchAndReplaceDetails': searchAndReplaceDetails!.toJson(),
+          'searchAndReplaceDetails': searchAndReplaceDetails!,
         if (selfLink != null) 'selfLink': selfLink!,
         if (type != null) 'type': type!,
         if (updated != null) 'updated': updated!.toIso8601String(),
-        if (uppercaseDetails != null)
-          'uppercaseDetails': uppercaseDetails!.toJson(),
+        if (uppercaseDetails != null) 'uppercaseDetails': uppercaseDetails!,
       };
 }
 
@@ -7973,8 +7956,7 @@ class Filters {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (items != null)
-          'items': items!.map((value) => value.toJson()).toList(),
+        if (items != null) 'items': items!,
         if (itemsPerPage != null) 'itemsPerPage': itemsPerPage!,
         if (kind != null) 'kind': kind!,
         if (nextLink != null) 'nextLink': nextLink!,
@@ -8086,7 +8068,7 @@ class GaDataDataTableRows {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (c != null) 'c': c!.map((value) => value.toJson()).toList(),
+        if (c != null) 'c': c!,
       };
 }
 
@@ -8116,8 +8098,8 @@ class GaDataDataTable {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cols != null) 'cols': cols!.map((value) => value.toJson()).toList(),
-        if (rows != null) 'rows': rows!.map((value) => value.toJson()).toList(),
+        if (cols != null) 'cols': cols!,
+        if (rows != null) 'rows': rows!,
       };
 }
 
@@ -8442,20 +8424,18 @@ class GaData {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (columnHeaders != null)
-          'columnHeaders':
-              columnHeaders!.map((value) => value.toJson()).toList(),
+        if (columnHeaders != null) 'columnHeaders': columnHeaders!,
         if (containsSampledData != null)
           'containsSampledData': containsSampledData!,
         if (dataLastRefreshed != null) 'dataLastRefreshed': dataLastRefreshed!,
-        if (dataTable != null) 'dataTable': dataTable!.toJson(),
+        if (dataTable != null) 'dataTable': dataTable!,
         if (id != null) 'id': id!,
         if (itemsPerPage != null) 'itemsPerPage': itemsPerPage!,
         if (kind != null) 'kind': kind!,
         if (nextLink != null) 'nextLink': nextLink!,
         if (previousLink != null) 'previousLink': previousLink!,
-        if (profileInfo != null) 'profileInfo': profileInfo!.toJson(),
-        if (query != null) 'query': query!.toJson(),
+        if (profileInfo != null) 'profileInfo': profileInfo!,
+        if (query != null) 'query': query!,
         if (rows != null) 'rows': rows!,
         if (sampleSize != null) 'sampleSize': sampleSize!,
         if (sampleSpace != null) 'sampleSpace': sampleSpace!,
@@ -8549,9 +8529,7 @@ class GoalEventDetails {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (eventConditions != null)
-          'eventConditions':
-              eventConditions!.map((value) => value.toJson()).toList(),
+        if (eventConditions != null) 'eventConditions': eventConditions!,
         if (useEventValue != null) 'useEventValue': useEventValue!,
       };
 }
@@ -8666,8 +8644,7 @@ class GoalUrlDestinationDetails {
         if (caseSensitive != null) 'caseSensitive': caseSensitive!,
         if (firstStepRequired != null) 'firstStepRequired': firstStepRequired!,
         if (matchType != null) 'matchType': matchType!,
-        if (steps != null)
-          'steps': steps!.map((value) => value.toJson()).toList(),
+        if (steps != null) 'steps': steps!,
         if (url != null) 'url': url!,
       };
 }
@@ -8878,24 +8855,24 @@ class Goal {
         if (accountId != null) 'accountId': accountId!,
         if (active != null) 'active': active!,
         if (created != null) 'created': created!.toIso8601String(),
-        if (eventDetails != null) 'eventDetails': eventDetails!.toJson(),
+        if (eventDetails != null) 'eventDetails': eventDetails!,
         if (id != null) 'id': id!,
         if (internalWebPropertyId != null)
           'internalWebPropertyId': internalWebPropertyId!,
         if (kind != null) 'kind': kind!,
         if (name != null) 'name': name!,
-        if (parentLink != null) 'parentLink': parentLink!.toJson(),
+        if (parentLink != null) 'parentLink': parentLink!,
         if (profileId != null) 'profileId': profileId!,
         if (selfLink != null) 'selfLink': selfLink!,
         if (type != null) 'type': type!,
         if (updated != null) 'updated': updated!.toIso8601String(),
         if (urlDestinationDetails != null)
-          'urlDestinationDetails': urlDestinationDetails!.toJson(),
+          'urlDestinationDetails': urlDestinationDetails!,
         if (value != null) 'value': value!,
         if (visitNumPagesDetails != null)
-          'visitNumPagesDetails': visitNumPagesDetails!.toJson(),
+          'visitNumPagesDetails': visitNumPagesDetails!,
         if (visitTimeOnSiteDetails != null)
-          'visitTimeOnSiteDetails': visitTimeOnSiteDetails!.toJson(),
+          'visitTimeOnSiteDetails': visitTimeOnSiteDetails!,
         if (webPropertyId != null) 'webPropertyId': webPropertyId!,
       };
 }
@@ -8976,8 +8953,7 @@ class Goals {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (items != null)
-          'items': items!.map((value) => value.toJson()).toList(),
+        if (items != null) 'items': items!,
         if (itemsPerPage != null) 'itemsPerPage': itemsPerPage!,
         if (kind != null) 'kind': kind!,
         if (nextLink != null) 'nextLink': nextLink!,
@@ -9481,8 +9457,7 @@ class McfDataRows {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (conversionPathValue != null)
-          'conversionPathValue':
-              conversionPathValue!.map((value) => value.toJson()).toList(),
+          'conversionPathValue': conversionPathValue!,
         if (primitiveValue != null) 'primitiveValue': primitiveValue!,
       };
 }
@@ -9630,9 +9605,7 @@ class McfData {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (columnHeaders != null)
-          'columnHeaders':
-              columnHeaders!.map((value) => value.toJson()).toList(),
+        if (columnHeaders != null) 'columnHeaders': columnHeaders!,
         if (containsSampledData != null)
           'containsSampledData': containsSampledData!,
         if (id != null) 'id': id!,
@@ -9640,12 +9613,9 @@ class McfData {
         if (kind != null) 'kind': kind!,
         if (nextLink != null) 'nextLink': nextLink!,
         if (previousLink != null) 'previousLink': previousLink!,
-        if (profileInfo != null) 'profileInfo': profileInfo!.toJson(),
-        if (query != null) 'query': query!.toJson(),
-        if (rows != null)
-          'rows': rows!
-              .map((value) => value.map((value) => value.toJson()).toList())
-              .toList(),
+        if (profileInfo != null) 'profileInfo': profileInfo!,
+        if (query != null) 'query': query!,
+        if (rows != null) 'rows': rows!,
         if (sampleSize != null) 'sampleSize': sampleSize!,
         if (sampleSpace != null) 'sampleSpace': sampleSpace!,
         if (selfLink != null) 'selfLink': selfLink!,
@@ -9950,7 +9920,7 @@ class Profile {
         if (accountId != null) 'accountId': accountId!,
         if (botFilteringEnabled != null)
           'botFilteringEnabled': botFilteringEnabled!,
-        if (childLink != null) 'childLink': childLink!.toJson(),
+        if (childLink != null) 'childLink': childLink!,
         if (created != null) 'created': created!.toIso8601String(),
         if (currency != null) 'currency': currency!,
         if (defaultPage != null) 'defaultPage': defaultPage!,
@@ -9964,8 +9934,8 @@ class Profile {
           'internalWebPropertyId': internalWebPropertyId!,
         if (kind != null) 'kind': kind!,
         if (name != null) 'name': name!,
-        if (parentLink != null) 'parentLink': parentLink!.toJson(),
-        if (permissions != null) 'permissions': permissions!.toJson(),
+        if (parentLink != null) 'parentLink': parentLink!,
+        if (permissions != null) 'permissions': permissions!,
         if (selfLink != null) 'selfLink': selfLink!,
         if (siteSearchCategoryParameters != null)
           'siteSearchCategoryParameters': siteSearchCategoryParameters!,
@@ -10045,10 +10015,10 @@ class ProfileFilterLink {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (filterRef != null) 'filterRef': filterRef!.toJson(),
+        if (filterRef != null) 'filterRef': filterRef!,
         if (id != null) 'id': id!,
         if (kind != null) 'kind': kind!,
-        if (profileRef != null) 'profileRef': profileRef!.toJson(),
+        if (profileRef != null) 'profileRef': profileRef!,
         if (rank != null) 'rank': rank!,
         if (selfLink != null) 'selfLink': selfLink!,
       };
@@ -10130,8 +10100,7 @@ class ProfileFilterLinks {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (items != null)
-          'items': items!.map((value) => value.toJson()).toList(),
+        if (items != null) 'items': items!,
         if (itemsPerPage != null) 'itemsPerPage': itemsPerPage!,
         if (kind != null) 'kind': kind!,
         if (nextLink != null) 'nextLink': nextLink!,
@@ -10331,8 +10300,7 @@ class Profiles {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (items != null)
-          'items': items!.map((value) => value.toJson()).toList(),
+        if (items != null) 'items': items!,
         if (itemsPerPage != null) 'itemsPerPage': itemsPerPage!,
         if (kind != null) 'kind': kind!,
         if (nextLink != null) 'nextLink': nextLink!,
@@ -10605,13 +10573,11 @@ class RealtimeData {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (columnHeaders != null)
-          'columnHeaders':
-              columnHeaders!.map((value) => value.toJson()).toList(),
+        if (columnHeaders != null) 'columnHeaders': columnHeaders!,
         if (id != null) 'id': id!,
         if (kind != null) 'kind': kind!,
-        if (profileInfo != null) 'profileInfo': profileInfo!.toJson(),
-        if (query != null) 'query': query!.toJson(),
+        if (profileInfo != null) 'profileInfo': profileInfo!,
+        if (query != null) 'query': query!,
         if (rows != null) 'rows': rows!,
         if (selfLink != null) 'selfLink': selfLink!,
         if (totalResults != null) 'totalResults': totalResults!,
@@ -10639,8 +10605,7 @@ class RemarketingAudienceAudienceDefinition {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (includeConditions != null)
-          'includeConditions': includeConditions!.toJson(),
+        if (includeConditions != null) 'includeConditions': includeConditions!,
       };
 }
 
@@ -10704,10 +10669,8 @@ class RemarketingAudienceStateBasedAudienceDefinition {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (excludeConditions != null)
-          'excludeConditions': excludeConditions!.toJson(),
-        if (includeConditions != null)
-          'includeConditions': includeConditions!.toJson(),
+        if (excludeConditions != null) 'excludeConditions': excludeConditions!,
+        if (includeConditions != null) 'includeConditions': includeConditions!,
       };
 }
 
@@ -10831,7 +10794,7 @@ class RemarketingAudience {
   core.Map<core.String, core.dynamic> toJson() => {
         if (accountId != null) 'accountId': accountId!,
         if (audienceDefinition != null)
-          'audienceDefinition': audienceDefinition!.toJson(),
+          'audienceDefinition': audienceDefinition!,
         if (audienceType != null) 'audienceType': audienceType!,
         if (created != null) 'created': created!.toIso8601String(),
         if (description != null) 'description': description!,
@@ -10839,14 +10802,11 @@ class RemarketingAudience {
         if (internalWebPropertyId != null)
           'internalWebPropertyId': internalWebPropertyId!,
         if (kind != null) 'kind': kind!,
-        if (linkedAdAccounts != null)
-          'linkedAdAccounts':
-              linkedAdAccounts!.map((value) => value.toJson()).toList(),
+        if (linkedAdAccounts != null) 'linkedAdAccounts': linkedAdAccounts!,
         if (linkedViews != null) 'linkedViews': linkedViews!,
         if (name != null) 'name': name!,
         if (stateBasedAudienceDefinition != null)
-          'stateBasedAudienceDefinition':
-              stateBasedAudienceDefinition!.toJson(),
+          'stateBasedAudienceDefinition': stateBasedAudienceDefinition!,
         if (updated != null) 'updated': updated!.toIso8601String(),
         if (webPropertyId != null) 'webPropertyId': webPropertyId!,
       };
@@ -10929,8 +10889,7 @@ class RemarketingAudiences {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (items != null)
-          'items': items!.map((value) => value.toJson()).toList(),
+        if (items != null) 'items': items!,
         if (itemsPerPage != null) 'itemsPerPage': itemsPerPage!,
         if (kind != null) 'kind': kind!,
         if (nextLink != null) 'nextLink': nextLink!,
@@ -11097,8 +11056,7 @@ class Segments {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (items != null)
-          'items': items!.map((value) => value.toJson()).toList(),
+        if (items != null) 'items': items!,
         if (itemsPerPage != null) 'itemsPerPage': itemsPerPage!,
         if (kind != null) 'kind': kind!,
         if (nextLink != null) 'nextLink': nextLink!,
@@ -11313,12 +11271,12 @@ class UnsampledReport {
   core.Map<core.String, core.dynamic> toJson() => {
         if (accountId != null) 'accountId': accountId!,
         if (cloudStorageDownloadDetails != null)
-          'cloudStorageDownloadDetails': cloudStorageDownloadDetails!.toJson(),
+          'cloudStorageDownloadDetails': cloudStorageDownloadDetails!,
         if (created != null) 'created': created!.toIso8601String(),
         if (dimensions != null) 'dimensions': dimensions!,
         if (downloadType != null) 'downloadType': downloadType!,
         if (driveDownloadDetails != null)
-          'driveDownloadDetails': driveDownloadDetails!.toJson(),
+          'driveDownloadDetails': driveDownloadDetails!,
         if (endDate != null) 'end-date': endDate!,
         if (filters != null) 'filters': filters!,
         if (id != null) 'id': id!,
@@ -11413,8 +11371,7 @@ class UnsampledReports {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (items != null)
-          'items': items!.map((value) => value.toJson()).toList(),
+        if (items != null) 'items': items!,
         if (itemsPerPage != null) 'itemsPerPage': itemsPerPage!,
         if (kind != null) 'kind': kind!,
         if (nextLink != null) 'nextLink': nextLink!,
@@ -11564,8 +11521,7 @@ class Uploads {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (items != null)
-          'items': items!.map((value) => value.toJson()).toList(),
+        if (items != null) 'items': items!,
         if (itemsPerPage != null) 'itemsPerPage': itemsPerPage!,
         if (kind != null) 'kind': kind!,
         if (nextLink != null) 'nextLink': nextLink!,
@@ -11657,7 +11613,7 @@ class UserDeletionRequest {
         if (deletionRequestTime != null)
           'deletionRequestTime': deletionRequestTime!.toIso8601String(),
         if (firebaseProjectId != null) 'firebaseProjectId': firebaseProjectId!,
-        if (id != null) 'id': id!.toJson(),
+        if (id != null) 'id': id!,
         if (kind != null) 'kind': kind!,
         if (propertyId != null) 'propertyId': propertyId!,
         if (webPropertyId != null) 'webPropertyId': webPropertyId!,
@@ -11821,8 +11777,7 @@ class WebPropertySummary {
         if (kind != null) 'kind': kind!,
         if (level != null) 'level': level!,
         if (name != null) 'name': name!,
-        if (profiles != null)
-          'profiles': profiles!.map((value) => value.toJson()).toList(),
+        if (profiles != null) 'profiles': profiles!,
         if (starred != null) 'starred': starred!,
         if (websiteUrl != null) 'websiteUrl': websiteUrl!,
       };
@@ -11905,8 +11860,7 @@ class Webproperties {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (items != null)
-          'items': items!.map((value) => value.toJson()).toList(),
+        if (items != null) 'items': items!,
         if (itemsPerPage != null) 'itemsPerPage': itemsPerPage!,
         if (kind != null) 'kind': kind!,
         if (nextLink != null) 'nextLink': nextLink!,
@@ -12154,7 +12108,7 @@ class Webproperty {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accountId != null) 'accountId': accountId!,
-        if (childLink != null) 'childLink': childLink!.toJson(),
+        if (childLink != null) 'childLink': childLink!,
         if (created != null) 'created': created!.toIso8601String(),
         if (dataRetentionResetOnNewActivity != null)
           'dataRetentionResetOnNewActivity': dataRetentionResetOnNewActivity!,
@@ -12167,8 +12121,8 @@ class Webproperty {
         if (kind != null) 'kind': kind!,
         if (level != null) 'level': level!,
         if (name != null) 'name': name!,
-        if (parentLink != null) 'parentLink': parentLink!.toJson(),
-        if (permissions != null) 'permissions': permissions!.toJson(),
+        if (parentLink != null) 'parentLink': parentLink!,
+        if (permissions != null) 'permissions': permissions!,
         if (profileCount != null) 'profileCount': profileCount!,
         if (selfLink != null) 'selfLink': selfLink!,
         if (starred != null) 'starred': starred!,

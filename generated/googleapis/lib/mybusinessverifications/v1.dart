@@ -89,7 +89,7 @@ class LocationsResource {
     core.String location, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -167,7 +167,7 @@ class LocationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -218,7 +218,7 @@ class LocationsVerificationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -311,7 +311,7 @@ class VerificationTokensResource {
     GenerateVerificationTokenRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -363,7 +363,7 @@ class AddressVerificationData {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (address != null) 'address': address!.toJson(),
+        if (address != null) 'address': address!,
         if (business != null) 'business': business!,
         if (expectedDeliveryDaysRegion != null)
           'expectedDeliveryDaysRegion': expectedDeliveryDaysRegion!,
@@ -409,7 +409,7 @@ class CompleteVerificationResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (verification != null) 'verification': verification!.toJson(),
+        if (verification != null) 'verification': verification!,
       };
 }
 
@@ -497,7 +497,7 @@ class FetchVerificationOptionsRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (context != null) 'context': context!.toJson(),
+        if (context != null) 'context': context!,
         if (languageCode != null) 'languageCode': languageCode!,
       };
 }
@@ -522,8 +522,7 @@ class FetchVerificationOptionsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (options != null)
-          'options': options!.map((value) => value.toJson()).toList(),
+        if (options != null) 'options': options!,
       };
 }
 
@@ -547,7 +546,7 @@ class GenerateVerificationTokenRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (location != null) 'location': location!.toJson(),
+        if (location != null) 'location': location!,
       };
 }
 
@@ -569,7 +568,7 @@ class GenerateVerificationTokenResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (token != null) 'token': token!.toJson(),
+        if (token != null) 'token': token!,
       };
 }
 
@@ -606,9 +605,7 @@ class ListVerificationsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (verifications != null)
-          'verifications':
-              verifications!.map((value) => value.toJson()).toList(),
+        if (verifications != null) 'verifications': verifications!,
       };
 }
 
@@ -696,7 +693,7 @@ class Location {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (address != null) 'address': address!.toJson(),
+        if (address != null) 'address': address!,
         if (name != null) 'name': name!,
         if (primaryCategoryId != null) 'primaryCategoryId': primaryCategoryId!,
         if (primaryPhone != null) 'primaryPhone': primaryPhone!,
@@ -920,7 +917,7 @@ class ServiceBusinessContext {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (address != null) 'address': address!.toJson(),
+        if (address != null) 'address': address!,
       };
 }
 
@@ -1047,8 +1044,8 @@ class VerificationOption {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (addressData != null) 'addressData': addressData!.toJson(),
-        if (emailData != null) 'emailData': emailData!.toJson(),
+        if (addressData != null) 'addressData': addressData!,
+        if (emailData != null) 'emailData': emailData!,
         if (phoneNumber != null) 'phoneNumber': phoneNumber!,
         if (verificationMethod != null)
           'verificationMethod': verificationMethod!,
@@ -1217,13 +1214,13 @@ class VerifyLocationRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (context != null) 'context': context!.toJson(),
+        if (context != null) 'context': context!,
         if (emailAddress != null) 'emailAddress': emailAddress!,
         if (languageCode != null) 'languageCode': languageCode!,
         if (mailerContact != null) 'mailerContact': mailerContact!,
         if (method != null) 'method': method!,
         if (phoneNumber != null) 'phoneNumber': phoneNumber!,
-        if (token != null) 'token': token!.toJson(),
+        if (token != null) 'token': token!,
       };
 }
 
@@ -1245,7 +1242,7 @@ class VerifyLocationResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (verification != null) 'verification': verification!.toJson(),
+        if (verification != null) 'verification': verification!,
       };
 }
 
@@ -1328,16 +1325,16 @@ class VoiceOfMerchantState {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (complyWithGuidelines != null)
-          'complyWithGuidelines': complyWithGuidelines!.toJson(),
+          'complyWithGuidelines': complyWithGuidelines!,
         if (hasBusinessAuthority != null)
           'hasBusinessAuthority': hasBusinessAuthority!,
         if (hasVoiceOfMerchant != null)
           'hasVoiceOfMerchant': hasVoiceOfMerchant!,
         if (resolveOwnershipConflict != null)
-          'resolveOwnershipConflict': resolveOwnershipConflict!.toJson(),
-        if (verify != null) 'verify': verify!.toJson(),
+          'resolveOwnershipConflict': resolveOwnershipConflict!,
+        if (verify != null) 'verify': verify!,
         if (waitForVoiceOfMerchant != null)
-          'waitForVoiceOfMerchant': waitForVoiceOfMerchant!.toJson(),
+          'waitForVoiceOfMerchant': waitForVoiceOfMerchant!,
       };
 }
 

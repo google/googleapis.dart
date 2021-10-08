@@ -151,7 +151,7 @@ class TasklistsResource {
     TaskList request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -232,7 +232,7 @@ class TasklistsResource {
     core.String tasklist, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -272,7 +272,7 @@ class TasklistsResource {
     core.String tasklist, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -441,7 +441,7 @@ class TasksResource {
     core.String? previous,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (parent != null) 'parent': [parent],
       if (previous != null) 'previous': [previous],
@@ -632,7 +632,7 @@ class TasksResource {
     core.String task, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -677,7 +677,7 @@ class TasksResource {
     core.String task, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -876,8 +876,7 @@ class Task {
         if (hidden != null) 'hidden': hidden!,
         if (id != null) 'id': id!,
         if (kind != null) 'kind': kind!,
-        if (links != null)
-          'links': links!.map((value) => value.toJson()).toList(),
+        if (links != null) 'links': links!,
         if (notes != null) 'notes': notes!,
         if (parent != null) 'parent': parent!,
         if (position != null) 'position': position!,
@@ -984,8 +983,7 @@ class TaskLists {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
-        if (items != null)
-          'items': items!.map((value) => value.toJson()).toList(),
+        if (items != null) 'items': items!,
         if (kind != null) 'kind': kind!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
@@ -1030,8 +1028,7 @@ class Tasks {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
-        if (items != null)
-          'items': items!.map((value) => value.toJson()).toList(),
+        if (items != null) 'items': items!,
         if (kind != null) 'kind': kind!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };

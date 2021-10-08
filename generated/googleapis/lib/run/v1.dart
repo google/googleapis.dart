@@ -301,7 +301,7 @@ class NamespacesDomainmappingsResource {
     core.String? dryRun,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (dryRun != null) 'dryRun': [dryRun],
       if ($fields != null) 'fields': [$fields],
@@ -814,7 +814,7 @@ class NamespacesServicesResource {
     core.String? dryRun,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (dryRun != null) 'dryRun': [dryRun],
       if ($fields != null) 'fields': [$fields],
@@ -1038,7 +1038,7 @@ class NamespacesServicesResource {
     core.String? dryRun,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (dryRun != null) 'dryRun': [dryRun],
       if ($fields != null) 'fields': [$fields],
@@ -1396,7 +1396,7 @@ class ProjectsLocationsDomainmappingsResource {
     core.String? dryRun,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (dryRun != null) 'dryRun': [dryRun],
       if ($fields != null) 'fields': [$fields],
@@ -1908,7 +1908,7 @@ class ProjectsLocationsServicesResource {
     core.String? dryRun,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (dryRun != null) 'dryRun': [dryRun],
       if ($fields != null) 'fields': [$fields],
@@ -2183,7 +2183,7 @@ class ProjectsLocationsServicesResource {
     core.String? dryRun,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (dryRun != null) 'dryRun': [dryRun],
       if ($fields != null) 'fields': [$fields],
@@ -2229,7 +2229,7 @@ class ProjectsLocationsServicesResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2274,7 +2274,7 @@ class ProjectsLocationsServicesResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2357,9 +2357,7 @@ class AuditConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (auditLogConfigs != null)
-          'auditLogConfigs':
-              auditLogConfigs!.map((value) => value.toJson()).toList(),
+        if (auditLogConfigs != null) 'auditLogConfigs': auditLogConfigs!,
         if (service != null) 'service': service!,
       };
 }
@@ -2511,7 +2509,7 @@ class Binding {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (condition != null) 'condition': condition!.toJson(),
+        if (condition != null) 'condition': condition!,
         if (members != null) 'members': members!,
         if (role != null) 'role': role!,
       };
@@ -2555,7 +2553,7 @@ class ConfigMapEnvSource {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (localObjectReference != null)
-          'localObjectReference': localObjectReference!.toJson(),
+          'localObjectReference': localObjectReference!,
         if (name != null) 'name': name!,
         if (optional != null) 'optional': optional!,
       };
@@ -2601,7 +2599,7 @@ class ConfigMapKeySelector {
   core.Map<core.String, core.dynamic> toJson() => {
         if (key != null) 'key': key!,
         if (localObjectReference != null)
-          'localObjectReference': localObjectReference!.toJson(),
+          'localObjectReference': localObjectReference!,
         if (name != null) 'name': name!,
         if (optional != null) 'optional': optional!,
       };
@@ -2663,8 +2661,7 @@ class ConfigMapVolumeSource {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (defaultMode != null) 'defaultMode': defaultMode!,
-        if (items != null)
-          'items': items!.map((value) => value.toJson()).toList(),
+        if (items != null) 'items': items!,
         if (name != null) 'name': name!,
         if (optional != null) 'optional': optional!,
       };
@@ -2727,9 +2724,9 @@ class Configuration {
   core.Map<core.String, core.dynamic> toJson() => {
         if (apiVersion != null) 'apiVersion': apiVersion!,
         if (kind != null) 'kind': kind!,
-        if (metadata != null) 'metadata': metadata!.toJson(),
-        if (spec != null) 'spec': spec!.toJson(),
-        if (status != null) 'status': status!.toJson(),
+        if (metadata != null) 'metadata': metadata!,
+        if (spec != null) 'spec': spec!,
+        if (status != null) 'status': status!,
       };
 }
 
@@ -2753,7 +2750,7 @@ class ConfigurationSpec {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (template != null) 'template': template!.toJson(),
+        if (template != null) 'template': template!,
       };
 }
 
@@ -2812,8 +2809,7 @@ class ConfigurationStatus {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (conditions != null)
-          'conditions': conditions!.map((value) => value.toJson()).toList(),
+        if (conditions != null) 'conditions': conditions!,
         if (latestCreatedRevisionName != null)
           'latestCreatedRevisionName': latestCreatedRevisionName!,
         if (latestReadyRevisionName != null)
@@ -3043,26 +3039,22 @@ class Container {
   core.Map<core.String, core.dynamic> toJson() => {
         if (args != null) 'args': args!,
         if (command != null) 'command': command!,
-        if (env != null) 'env': env!.map((value) => value.toJson()).toList(),
-        if (envFrom != null)
-          'envFrom': envFrom!.map((value) => value.toJson()).toList(),
+        if (env != null) 'env': env!,
+        if (envFrom != null) 'envFrom': envFrom!,
         if (image != null) 'image': image!,
         if (imagePullPolicy != null) 'imagePullPolicy': imagePullPolicy!,
-        if (livenessProbe != null) 'livenessProbe': livenessProbe!.toJson(),
+        if (livenessProbe != null) 'livenessProbe': livenessProbe!,
         if (name != null) 'name': name!,
-        if (ports != null)
-          'ports': ports!.map((value) => value.toJson()).toList(),
-        if (readinessProbe != null) 'readinessProbe': readinessProbe!.toJson(),
-        if (resources != null) 'resources': resources!.toJson(),
-        if (securityContext != null)
-          'securityContext': securityContext!.toJson(),
-        if (startupProbe != null) 'startupProbe': startupProbe!.toJson(),
+        if (ports != null) 'ports': ports!,
+        if (readinessProbe != null) 'readinessProbe': readinessProbe!,
+        if (resources != null) 'resources': resources!,
+        if (securityContext != null) 'securityContext': securityContext!,
+        if (startupProbe != null) 'startupProbe': startupProbe!,
         if (terminationMessagePath != null)
           'terminationMessagePath': terminationMessagePath!,
         if (terminationMessagePolicy != null)
           'terminationMessagePolicy': terminationMessagePolicy!,
-        if (volumeMounts != null)
-          'volumeMounts': volumeMounts!.map((value) => value.toJson()).toList(),
+        if (volumeMounts != null) 'volumeMounts': volumeMounts!,
         if (workingDir != null) 'workingDir': workingDir!,
       };
 }
@@ -3158,9 +3150,9 @@ class DomainMapping {
   core.Map<core.String, core.dynamic> toJson() => {
         if (apiVersion != null) 'apiVersion': apiVersion!,
         if (kind != null) 'kind': kind!,
-        if (metadata != null) 'metadata': metadata!.toJson(),
-        if (spec != null) 'spec': spec!.toJson(),
-        if (status != null) 'status': status!.toJson(),
+        if (metadata != null) 'metadata': metadata!,
+        if (spec != null) 'spec': spec!,
+        if (status != null) 'status': status!,
       };
 }
 
@@ -3274,14 +3266,11 @@ class DomainMappingStatus {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (conditions != null)
-          'conditions': conditions!.map((value) => value.toJson()).toList(),
+        if (conditions != null) 'conditions': conditions!,
         if (mappedRouteName != null) 'mappedRouteName': mappedRouteName!,
         if (observedGeneration != null)
           'observedGeneration': observedGeneration!,
-        if (resourceRecords != null)
-          'resourceRecords':
-              resourceRecords!.map((value) => value.toJson()).toList(),
+        if (resourceRecords != null) 'resourceRecords': resourceRecords!,
         if (url != null) 'url': url!,
       };
 }
@@ -3322,9 +3311,9 @@ class EnvFromSource {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (configMapRef != null) 'configMapRef': configMapRef!.toJson(),
+        if (configMapRef != null) 'configMapRef': configMapRef!,
         if (prefix != null) 'prefix': prefix!,
-        if (secretRef != null) 'secretRef': secretRef!.toJson(),
+        if (secretRef != null) 'secretRef': secretRef!,
       };
 }
 
@@ -3371,7 +3360,7 @@ class EnvVar {
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
         if (value != null) 'value': value!,
-        if (valueFrom != null) 'valueFrom': valueFrom!.toJson(),
+        if (valueFrom != null) 'valueFrom': valueFrom!,
       };
 }
 
@@ -3401,9 +3390,8 @@ class EnvVarSource {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (configMapKeyRef != null)
-          'configMapKeyRef': configMapKeyRef!.toJson(),
-        if (secretKeyRef != null) 'secretKeyRef': secretKeyRef!.toJson(),
+        if (configMapKeyRef != null) 'configMapKeyRef': configMapKeyRef!,
+        if (secretKeyRef != null) 'secretKeyRef': secretKeyRef!,
       };
 }
 
@@ -3629,8 +3617,7 @@ class HTTPGetAction {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (host != null) 'host': host!,
-        if (httpHeaders != null)
-          'httpHeaders': httpHeaders!.map((value) => value.toJson()).toList(),
+        if (httpHeaders != null) 'httpHeaders': httpHeaders!,
         if (path != null) 'path': path!,
         if (scheme != null) 'scheme': scheme!,
       };
@@ -3732,8 +3719,7 @@ class ListAuthorizedDomainsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (domains != null)
-          'domains': domains!.map((value) => value.toJson()).toList(),
+        if (domains != null) 'domains': domains!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -3788,10 +3774,9 @@ class ListConfigurationsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (apiVersion != null) 'apiVersion': apiVersion!,
-        if (items != null)
-          'items': items!.map((value) => value.toJson()).toList(),
+        if (items != null) 'items': items!,
         if (kind != null) 'kind': kind!,
-        if (metadata != null) 'metadata': metadata!.toJson(),
+        if (metadata != null) 'metadata': metadata!,
         if (unreachable != null) 'unreachable': unreachable!,
       };
 }
@@ -3846,10 +3831,9 @@ class ListDomainMappingsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (apiVersion != null) 'apiVersion': apiVersion!,
-        if (items != null)
-          'items': items!.map((value) => value.toJson()).toList(),
+        if (items != null) 'items': items!,
         if (kind != null) 'kind': kind!,
-        if (metadata != null) 'metadata': metadata!.toJson(),
+        if (metadata != null) 'metadata': metadata!,
         if (unreachable != null) 'unreachable': unreachable!,
       };
 }
@@ -3881,8 +3865,7 @@ class ListLocationsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (locations != null)
-          'locations': locations!.map((value) => value.toJson()).toList(),
+        if (locations != null) 'locations': locations!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -3993,10 +3976,9 @@ class ListRevisionsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (apiVersion != null) 'apiVersion': apiVersion!,
-        if (items != null)
-          'items': items!.map((value) => value.toJson()).toList(),
+        if (items != null) 'items': items!,
         if (kind != null) 'kind': kind!,
-        if (metadata != null) 'metadata': metadata!.toJson(),
+        if (metadata != null) 'metadata': metadata!,
         if (unreachable != null) 'unreachable': unreachable!,
       };
 }
@@ -4051,10 +4033,9 @@ class ListRoutesResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (apiVersion != null) 'apiVersion': apiVersion!,
-        if (items != null)
-          'items': items!.map((value) => value.toJson()).toList(),
+        if (items != null) 'items': items!,
         if (kind != null) 'kind': kind!,
-        if (metadata != null) 'metadata': metadata!.toJson(),
+        if (metadata != null) 'metadata': metadata!,
         if (unreachable != null) 'unreachable': unreachable!,
       };
 }
@@ -4109,10 +4090,9 @@ class ListServicesResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (apiVersion != null) 'apiVersion': apiVersion!,
-        if (items != null)
-          'items': items!.map((value) => value.toJson()).toList(),
+        if (items != null) 'items': items!,
         if (kind != null) 'kind': kind!,
-        if (metadata != null) 'metadata': metadata!.toJson(),
+        if (metadata != null) 'metadata': metadata!,
         if (unreachable != null) 'unreachable': unreachable!,
       };
 }
@@ -4451,9 +4431,7 @@ class ObjectMeta {
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
         if (namespace != null) 'namespace': namespace!,
-        if (ownerReferences != null)
-          'ownerReferences':
-              ownerReferences!.map((value) => value.toJson()).toList(),
+        if (ownerReferences != null) 'ownerReferences': ownerReferences!,
         if (resourceVersion != null) 'resourceVersion': resourceVersion!,
         if (selfLink != null) 'selfLink': selfLink!,
         if (uid != null) 'uid': uid!,
@@ -4644,10 +4622,8 @@ class Policy {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (auditConfigs != null)
-          'auditConfigs': auditConfigs!.map((value) => value.toJson()).toList(),
-        if (bindings != null)
-          'bindings': bindings!.map((value) => value.toJson()).toList(),
+        if (auditConfigs != null) 'auditConfigs': auditConfigs!,
+        if (bindings != null) 'bindings': bindings!,
         if (etag != null) 'etag': etag!,
         if (version != null) 'version': version!,
       };
@@ -4746,14 +4722,14 @@ class Probe {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (exec != null) 'exec': exec!.toJson(),
+        if (exec != null) 'exec': exec!,
         if (failureThreshold != null) 'failureThreshold': failureThreshold!,
-        if (httpGet != null) 'httpGet': httpGet!.toJson(),
+        if (httpGet != null) 'httpGet': httpGet!,
         if (initialDelaySeconds != null)
           'initialDelaySeconds': initialDelaySeconds!,
         if (periodSeconds != null) 'periodSeconds': periodSeconds!,
         if (successThreshold != null) 'successThreshold': successThreshold!,
-        if (tcpSocket != null) 'tcpSocket': tcpSocket!.toJson(),
+        if (tcpSocket != null) 'tcpSocket': tcpSocket!,
         if (timeoutSeconds != null) 'timeoutSeconds': timeoutSeconds!,
       };
 }
@@ -4909,9 +4885,9 @@ class Revision {
   core.Map<core.String, core.dynamic> toJson() => {
         if (apiVersion != null) 'apiVersion': apiVersion!,
         if (kind != null) 'kind': kind!,
-        if (metadata != null) 'metadata': metadata!.toJson(),
-        if (spec != null) 'spec': spec!.toJson(),
-        if (status != null) 'status': status!.toJson(),
+        if (metadata != null) 'metadata': metadata!,
+        if (spec != null) 'spec': spec!,
+        if (status != null) 'status': status!,
       };
 }
 
@@ -4991,13 +4967,11 @@ class RevisionSpec {
   core.Map<core.String, core.dynamic> toJson() => {
         if (containerConcurrency != null)
           'containerConcurrency': containerConcurrency!,
-        if (containers != null)
-          'containers': containers!.map((value) => value.toJson()).toList(),
+        if (containers != null) 'containers': containers!,
         if (serviceAccountName != null)
           'serviceAccountName': serviceAccountName!,
         if (timeoutSeconds != null) 'timeoutSeconds': timeoutSeconds!,
-        if (volumes != null)
-          'volumes': volumes!.map((value) => value.toJson()).toList(),
+        if (volumes != null) 'volumes': volumes!,
       };
 }
 
@@ -5071,8 +5045,7 @@ class RevisionStatus {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (conditions != null)
-          'conditions': conditions!.map((value) => value.toJson()).toList(),
+        if (conditions != null) 'conditions': conditions!,
         if (imageDigest != null) 'imageDigest': imageDigest!,
         if (logUrl != null) 'logUrl': logUrl!,
         if (observedGeneration != null)
@@ -5124,8 +5097,8 @@ class RevisionTemplate {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (metadata != null) 'metadata': metadata!.toJson(),
-        if (spec != null) 'spec': spec!.toJson(),
+        if (metadata != null) 'metadata': metadata!,
+        if (spec != null) 'spec': spec!,
       };
 }
 
@@ -5187,9 +5160,9 @@ class Route {
   core.Map<core.String, core.dynamic> toJson() => {
         if (apiVersion != null) 'apiVersion': apiVersion!,
         if (kind != null) 'kind': kind!,
-        if (metadata != null) 'metadata': metadata!.toJson(),
-        if (spec != null) 'spec': spec!.toJson(),
-        if (status != null) 'status': status!.toJson(),
+        if (metadata != null) 'metadata': metadata!,
+        if (spec != null) 'spec': spec!,
+        if (status != null) 'status': status!,
       };
 }
 
@@ -5216,8 +5189,7 @@ class RouteSpec {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (traffic != null)
-          'traffic': traffic!.map((value) => value.toJson()).toList(),
+        if (traffic != null) 'traffic': traffic!,
       };
 }
 
@@ -5291,13 +5263,11 @@ class RouteStatus {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (address != null) 'address': address!.toJson(),
-        if (conditions != null)
-          'conditions': conditions!.map((value) => value.toJson()).toList(),
+        if (address != null) 'address': address!,
+        if (conditions != null) 'conditions': conditions!,
         if (observedGeneration != null)
           'observedGeneration': observedGeneration!,
-        if (traffic != null)
-          'traffic': traffic!.map((value) => value.toJson()).toList(),
+        if (traffic != null) 'traffic': traffic!,
         if (url != null) 'url': url!,
       };
 }
@@ -5340,7 +5310,7 @@ class SecretEnvSource {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (localObjectReference != null)
-          'localObjectReference': localObjectReference!.toJson(),
+          'localObjectReference': localObjectReference!,
         if (name != null) 'name': name!,
         if (optional != null) 'optional': optional!,
       };
@@ -5396,7 +5366,7 @@ class SecretKeySelector {
   core.Map<core.String, core.dynamic> toJson() => {
         if (key != null) 'key': key!,
         if (localObjectReference != null)
-          'localObjectReference': localObjectReference!.toJson(),
+          'localObjectReference': localObjectReference!,
         if (name != null) 'name': name!,
         if (optional != null) 'optional': optional!,
       };
@@ -5475,8 +5445,7 @@ class SecretVolumeSource {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (defaultMode != null) 'defaultMode': defaultMode!,
-        if (items != null)
-          'items': items!.map((value) => value.toJson()).toList(),
+        if (items != null) 'items': items!,
         if (optional != null) 'optional': optional!,
         if (secretName != null) 'secretName': secretName!,
       };
@@ -5585,9 +5554,9 @@ class Service {
   core.Map<core.String, core.dynamic> toJson() => {
         if (apiVersion != null) 'apiVersion': apiVersion!,
         if (kind != null) 'kind': kind!,
-        if (metadata != null) 'metadata': metadata!.toJson(),
-        if (spec != null) 'spec': spec!.toJson(),
-        if (status != null) 'status': status!.toJson(),
+        if (metadata != null) 'metadata': metadata!,
+        if (spec != null) 'spec': spec!,
+        if (status != null) 'status': status!,
       };
 }
 
@@ -5622,9 +5591,8 @@ class ServiceSpec {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (template != null) 'template': template!.toJson(),
-        if (traffic != null)
-          'traffic': traffic!.map((value) => value.toJson()).toList(),
+        if (template != null) 'template': template!,
+        if (traffic != null) 'traffic': traffic!,
       };
 }
 
@@ -5726,17 +5694,15 @@ class ServiceStatus {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (address != null) 'address': address!.toJson(),
-        if (conditions != null)
-          'conditions': conditions!.map((value) => value.toJson()).toList(),
+        if (address != null) 'address': address!,
+        if (conditions != null) 'conditions': conditions!,
         if (latestCreatedRevisionName != null)
           'latestCreatedRevisionName': latestCreatedRevisionName!,
         if (latestReadyRevisionName != null)
           'latestReadyRevisionName': latestReadyRevisionName!,
         if (observedGeneration != null)
           'observedGeneration': observedGeneration!,
-        if (traffic != null)
-          'traffic': traffic!.map((value) => value.toJson()).toList(),
+        if (traffic != null) 'traffic': traffic!,
         if (url != null) 'url': url!,
       };
 }
@@ -5773,7 +5739,7 @@ class SetIamPolicyRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (policy != null) 'policy': policy!.toJson(),
+        if (policy != null) 'policy': policy!,
         if (updateMask != null) 'updateMask': updateMask!,
       };
 }
@@ -5851,9 +5817,9 @@ class Status {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (code != null) 'code': code!,
-        if (details != null) 'details': details!.toJson(),
+        if (details != null) 'details': details!,
         if (message != null) 'message': message!,
-        if (metadata != null) 'metadata': metadata!.toJson(),
+        if (metadata != null) 'metadata': metadata!,
         if (reason != null) 'reason': reason!,
         if (status != null) 'status': status!,
       };
@@ -5982,8 +5948,7 @@ class StatusDetails {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (causes != null)
-          'causes': causes!.map((value) => value.toJson()).toList(),
+        if (causes != null) 'causes': causes!,
         if (group != null) 'group': group!,
         if (kind != null) 'kind': kind!,
         if (name != null) 'name': name!,
@@ -6190,9 +6155,9 @@ class Volume {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (configMap != null) 'configMap': configMap!.toJson(),
+        if (configMap != null) 'configMap': configMap!,
         if (name != null) 'name': name!,
-        if (secret != null) 'secret': secret!.toJson(),
+        if (secret != null) 'secret': secret!,
       };
 }
 

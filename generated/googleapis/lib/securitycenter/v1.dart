@@ -112,7 +112,7 @@ class FoldersAssetsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -304,7 +304,7 @@ class FoldersAssetsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (startTime != null) 'startTime': [startTime],
       if (updateMask != null) 'updateMask': [updateMask],
@@ -424,7 +424,7 @@ class FoldersSourcesFindingsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -613,7 +613,7 @@ class FoldersSourcesFindingsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -658,7 +658,7 @@ class FoldersSourcesFindingsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -714,7 +714,7 @@ class FoldersSourcesFindingsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (startTime != null) 'startTime': [startTime],
       if (updateMask != null) 'updateMask': [updateMask],
@@ -816,7 +816,7 @@ class OrganizationsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -868,7 +868,7 @@ class OrganizationsAssetsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1050,7 +1050,7 @@ class OrganizationsAssetsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1107,7 +1107,7 @@ class OrganizationsAssetsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (startTime != null) 'startTime': [startTime],
       if (updateMask != null) 'updateMask': [updateMask],
@@ -1163,7 +1163,7 @@ class OrganizationsNotificationConfigsResource {
     core.String? configId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (configId != null) 'configId': [configId],
       if ($fields != null) 'fields': [$fields],
@@ -1342,7 +1342,7 @@ class OrganizationsNotificationConfigsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -1580,7 +1580,7 @@ class OrganizationsSourcesResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1658,7 +1658,7 @@ class OrganizationsSourcesResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1753,7 +1753,7 @@ class OrganizationsSourcesResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -1796,7 +1796,7 @@ class OrganizationsSourcesResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1838,7 +1838,7 @@ class OrganizationsSourcesResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1895,7 +1895,7 @@ class OrganizationsSourcesFindingsResource {
     core.String? findingId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (findingId != null) 'findingId': [findingId],
       if ($fields != null) 'fields': [$fields],
@@ -1948,7 +1948,7 @@ class OrganizationsSourcesFindingsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2137,7 +2137,7 @@ class OrganizationsSourcesFindingsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -2182,7 +2182,7 @@ class OrganizationsSourcesFindingsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2238,7 +2238,7 @@ class OrganizationsSourcesFindingsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (startTime != null) 'startTime': [startTime],
       if (updateMask != null) 'updateMask': [updateMask],
@@ -2299,7 +2299,7 @@ class ProjectsAssetsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2491,7 +2491,7 @@ class ProjectsAssetsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (startTime != null) 'startTime': [startTime],
       if (updateMask != null) 'updateMask': [updateMask],
@@ -2611,7 +2611,7 @@ class ProjectsSourcesFindingsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2800,7 +2800,7 @@ class ProjectsSourcesFindingsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -2845,7 +2845,7 @@ class ProjectsSourcesFindingsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2901,7 +2901,7 @@ class ProjectsSourcesFindingsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (startTime != null) 'startTime': [startTime],
       if (updateMask != null) 'updateMask': [updateMask],
@@ -3023,13 +3023,13 @@ class Asset {
   core.Map<core.String, core.dynamic> toJson() => {
         if (canonicalName != null) 'canonicalName': canonicalName!,
         if (createTime != null) 'createTime': createTime!,
-        if (iamPolicy != null) 'iamPolicy': iamPolicy!.toJson(),
+        if (iamPolicy != null) 'iamPolicy': iamPolicy!,
         if (name != null) 'name': name!,
         if (resourceProperties != null)
           'resourceProperties': resourceProperties!,
         if (securityCenterProperties != null)
-          'securityCenterProperties': securityCenterProperties!.toJson(),
-        if (securityMarks != null) 'securityMarks': securityMarks!.toJson(),
+          'securityCenterProperties': securityCenterProperties!,
+        if (securityMarks != null) 'securityMarks': securityMarks!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
 }
@@ -3130,9 +3130,7 @@ class AuditConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (auditLogConfigs != null)
-          'auditLogConfigs':
-              auditLogConfigs!.map((value) => value.toJson()).toList(),
+        if (auditLogConfigs != null) 'auditLogConfigs': auditLogConfigs!,
         if (service != null) 'service': service!,
       };
 }
@@ -3251,7 +3249,7 @@ class Binding {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (condition != null) 'condition': condition!.toJson(),
+        if (condition != null) 'condition': condition!,
         if (members != null) 'members': members!,
         if (role != null) 'role': role!,
       };
@@ -3297,10 +3295,9 @@ class Cve {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cvssv3 != null) 'cvssv3': cvssv3!.toJson(),
+        if (cvssv3 != null) 'cvssv3': cvssv3!,
         if (id != null) 'id': id!,
-        if (references != null)
-          'references': references!.map((value) => value.toJson()).toList(),
+        if (references != null) 'references': references!,
       };
 }
 
@@ -3791,15 +3788,15 @@ class Finding {
         if (eventTime != null) 'eventTime': eventTime!,
         if (externalUri != null) 'externalUri': externalUri!,
         if (findingClass != null) 'findingClass': findingClass!,
-        if (indicator != null) 'indicator': indicator!.toJson(),
+        if (indicator != null) 'indicator': indicator!,
         if (name != null) 'name': name!,
         if (parent != null) 'parent': parent!,
         if (resourceName != null) 'resourceName': resourceName!,
-        if (securityMarks != null) 'securityMarks': securityMarks!.toJson(),
+        if (securityMarks != null) 'securityMarks': securityMarks!,
         if (severity != null) 'severity': severity!,
         if (sourceProperties != null) 'sourceProperties': sourceProperties!,
         if (state != null) 'state': state!,
-        if (vulnerability != null) 'vulnerability': vulnerability!.toJson(),
+        if (vulnerability != null) 'vulnerability': vulnerability!,
       };
 }
 
@@ -3857,7 +3854,7 @@ class GetIamPolicyRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (options != null) 'options': options!.toJson(),
+        if (options != null) 'options': options!,
       };
 }
 
@@ -3925,10 +3922,10 @@ class GoogleCloudSecuritycenterV1NotificationMessage {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (finding != null) 'finding': finding!.toJson(),
+        if (finding != null) 'finding': finding!,
         if (notificationConfigName != null)
           'notificationConfigName': notificationConfigName!,
-        if (resource != null) 'resource': resource!.toJson(),
+        if (resource != null) 'resource': resource!,
       };
 }
 
@@ -3998,8 +3995,7 @@ class GoogleCloudSecuritycenterV1Resource {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (folders != null)
-          'folders': folders!.map((value) => value.toJson()).toList(),
+        if (folders != null) 'folders': folders!,
         if (name != null) 'name': name!,
         if (parent != null) 'parent': parent!,
         if (parentDisplayName != null) 'parentDisplayName': parentDisplayName!,
@@ -4251,7 +4247,7 @@ class GoogleCloudSecuritycenterV1p1beta1Finding {
         if (name != null) 'name': name!,
         if (parent != null) 'parent': parent!,
         if (resourceName != null) 'resourceName': resourceName!,
-        if (securityMarks != null) 'securityMarks': securityMarks!.toJson(),
+        if (securityMarks != null) 'securityMarks': securityMarks!,
         if (severity != null) 'severity': severity!,
         if (sourceProperties != null) 'sourceProperties': sourceProperties!,
         if (state != null) 'state': state!,
@@ -4326,10 +4322,10 @@ class GoogleCloudSecuritycenterV1p1beta1NotificationMessage {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (finding != null) 'finding': finding!.toJson(),
+        if (finding != null) 'finding': finding!,
         if (notificationConfigName != null)
           'notificationConfigName': notificationConfigName!,
-        if (resource != null) 'resource': resource!.toJson(),
+        if (resource != null) 'resource': resource!,
       };
 }
 
@@ -4395,8 +4391,7 @@ class GoogleCloudSecuritycenterV1p1beta1Resource {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (folders != null)
-          'folders': folders!.map((value) => value.toJson()).toList(),
+        if (folders != null) 'folders': folders!,
         if (name != null) 'name': name!,
         if (parent != null) 'parent': parent!,
         if (parentDisplayName != null) 'parentDisplayName': parentDisplayName!,
@@ -4689,9 +4684,7 @@ class GroupAssetsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (groupByResults != null)
-          'groupByResults':
-              groupByResults!.map((value) => value.toJson()).toList(),
+        if (groupByResults != null) 'groupByResults': groupByResults!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (readTime != null) 'readTime': readTime!,
         if (totalSize != null) 'totalSize': totalSize!,
@@ -4868,9 +4861,7 @@ class GroupFindingsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (groupByResults != null)
-          'groupByResults':
-              groupByResults!.map((value) => value.toJson()).toList(),
+        if (groupByResults != null) 'groupByResults': groupByResults!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (readTime != null) 'readTime': readTime!,
         if (totalSize != null) 'totalSize': totalSize!,
@@ -5016,9 +5007,7 @@ class ListAssetsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (listAssetsResults != null)
-          'listAssetsResults':
-              listAssetsResults!.map((value) => value.toJson()).toList(),
+        if (listAssetsResults != null) 'listAssetsResults': listAssetsResults!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (readTime != null) 'readTime': readTime!,
         if (totalSize != null) 'totalSize': totalSize!,
@@ -5056,7 +5045,7 @@ class ListAssetsResult {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (asset != null) 'asset': asset!.toJson(),
+        if (asset != null) 'asset': asset!,
         if (stateChange != null) 'stateChange': stateChange!,
       };
 }
@@ -5104,8 +5093,7 @@ class ListFindingsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (listFindingsResults != null)
-          'listFindingsResults':
-              listFindingsResults!.map((value) => value.toJson()).toList(),
+          'listFindingsResults': listFindingsResults!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (readTime != null) 'readTime': readTime!,
         if (totalSize != null) 'totalSize': totalSize!,
@@ -5157,8 +5145,8 @@ class ListFindingsResult {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (finding != null) 'finding': finding!.toJson(),
-        if (resource != null) 'resource': resource!.toJson(),
+        if (finding != null) 'finding': finding!,
+        if (resource != null) 'resource': resource!,
         if (stateChange != null) 'stateChange': stateChange!,
       };
 }
@@ -5193,8 +5181,7 @@ class ListNotificationConfigsResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (notificationConfigs != null)
-          'notificationConfigs':
-              notificationConfigs!.map((value) => value.toJson()).toList(),
+          'notificationConfigs': notificationConfigs!,
       };
 }
 
@@ -5226,8 +5213,7 @@ class ListOperationsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (operations != null)
-          'operations': operations!.map((value) => value.toJson()).toList(),
+        if (operations != null) 'operations': operations!,
       };
 }
 
@@ -5260,8 +5246,7 @@ class ListSourcesResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (sources != null)
-          'sources': sources!.map((value) => value.toJson()).toList(),
+        if (sources != null) 'sources': sources!,
       };
 }
 
@@ -5327,8 +5312,7 @@ class NotificationConfig {
         if (name != null) 'name': name!,
         if (pubsubTopic != null) 'pubsubTopic': pubsubTopic!,
         if (serviceAccount != null) 'serviceAccount': serviceAccount!,
-        if (streamingConfig != null)
-          'streamingConfig': streamingConfig!.toJson(),
+        if (streamingConfig != null) 'streamingConfig': streamingConfig!,
       };
 }
 
@@ -5401,7 +5385,7 @@ class Operation {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (done != null) 'done': done!,
-        if (error != null) 'error': error!.toJson(),
+        if (error != null) 'error': error!,
         if (metadata != null) 'metadata': metadata!,
         if (name != null) 'name': name!,
         if (response != null) 'response': response!,
@@ -5448,7 +5432,7 @@ class OrganizationSettings {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (assetDiscoveryConfig != null)
-          'assetDiscoveryConfig': assetDiscoveryConfig!.toJson(),
+          'assetDiscoveryConfig': assetDiscoveryConfig!,
         if (enableAssetDiscovery != null)
           'enableAssetDiscovery': enableAssetDiscovery!,
         if (name != null) 'name': name!,
@@ -5564,10 +5548,8 @@ class Policy {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (auditConfigs != null)
-          'auditConfigs': auditConfigs!.map((value) => value.toJson()).toList(),
-        if (bindings != null)
-          'bindings': bindings!.map((value) => value.toJson()).toList(),
+        if (auditConfigs != null) 'auditConfigs': auditConfigs!,
+        if (bindings != null) 'bindings': bindings!,
         if (etag != null) 'etag': etag!,
         if (version != null) 'version': version!,
       };
@@ -5661,8 +5643,7 @@ class Resource {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (folders != null)
-          'folders': folders!.map((value) => value.toJson()).toList(),
+        if (folders != null) 'folders': folders!,
         if (name != null) 'name': name!,
         if (parentDisplayName != null) 'parentDisplayName': parentDisplayName!,
         if (parentName != null) 'parentName': parentName!,
@@ -5774,8 +5755,7 @@ class SecurityCenterProperties {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (folders != null)
-          'folders': folders!.map((value) => value.toJson()).toList(),
+        if (folders != null) 'folders': folders!,
         if (resourceDisplayName != null)
           'resourceDisplayName': resourceDisplayName!,
         if (resourceName != null) 'resourceName': resourceName!,
@@ -5925,7 +5905,7 @@ class SetIamPolicyRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (policy != null) 'policy': policy!.toJson(),
+        if (policy != null) 'policy': policy!,
         if (updateMask != null) 'updateMask': updateMask!,
       };
 }
@@ -6150,6 +6130,6 @@ class Vulnerability {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cve != null) 'cve': cve!.toJson(),
+        if (cve != null) 'cve': cve!,
       };
 }

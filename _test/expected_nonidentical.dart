@@ -149,7 +149,7 @@ class ToyApi {
     ListOfToyRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -184,7 +184,7 @@ class ToyApi {
     ListOfListOfToyRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -295,7 +295,7 @@ class ToyApi {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -539,7 +539,7 @@ class ToyApi {
     ToyRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -898,10 +898,6 @@ class ListOfAny extends collection.ListBase<core.Object?> {
   ListOfAny.fromJson(core.List json)
       : _inner = json.map((value) => value).toList();
 
-  core.List<core.dynamic> toJson() {
-    return _inner.map((value) => value).toList();
-  }
-
   @core.override
   core.Object? operator [](core.int key) => _inner[key];
 
@@ -935,10 +931,6 @@ class ListOfListOfString extends collection.ListBase<core.List<core.String>> {
                 .map((value) => value as core.String)
                 .toList())
             .toList();
-
-  core.List<core.List<core.String>> toJson() {
-    return _inner.map((value) => value).toList();
-  }
 
   @core.override
   core.List<core.String> operator [](core.int key) => _inner[key];
@@ -976,12 +968,6 @@ class ListOfListOfToyRequest
                 .toList())
             .toList();
 
-  core.List<core.List<core.Map<core.String, core.dynamic>>> toJson() {
-    return _inner
-        .map((value) => value.map((value) => value.toJson()).toList())
-        .toList();
-  }
-
   @core.override
   core.List<ToyRequest> operator [](core.int key) => _inner[key];
 
@@ -1014,10 +1000,6 @@ class ListOfListOfint extends collection.ListBase<core.List<core.int>> {
             .map((value) =>
                 (value as core.List).map((value) => value as core.int).toList())
             .toList();
-
-  core.List<core.List<core.int>> toJson() {
-    return _inner.map((value) => value).toList();
-  }
 
   @core.override
   core.List<core.int> operator [](core.int key) => _inner[key];
@@ -1058,10 +1040,6 @@ class ListOfMapOfListOfString
                   ),
                 ))
             .toList();
-
-  core.List<core.Map<core.String, core.List<core.String>>> toJson() {
-    return _inner.map((value) => value).toList();
-  }
 
   @core.override
   core.Map<core.String, core.List<core.String>> operator [](core.int key) =>
@@ -1105,10 +1083,6 @@ class ListOfMapOfListOfint
                 ))
             .toList();
 
-  core.List<core.Map<core.String, core.List<core.int>>> toJson() {
-    return _inner.map((value) => value).toList();
-  }
-
   @core.override
   core.Map<core.String, core.List<core.int>> operator [](core.int key) =>
       _inner[key];
@@ -1140,10 +1114,6 @@ class ListOfString extends collection.ListBase<core.String> {
 
   ListOfString.fromJson(core.List json)
       : _inner = json.map((value) => value as core.String).toList();
-
-  core.List<core.String> toJson() {
-    return _inner.map((value) => value).toList();
-  }
 
   @core.override
   core.String operator [](core.int key) => _inner[key];
@@ -1178,10 +1148,6 @@ class ListOfToyRequest extends collection.ListBase<ToyRequest> {
                 value as core.Map<core.String, core.dynamic>))
             .toList();
 
-  core.List<core.Map<core.String, core.dynamic>> toJson() {
-    return _inner.map((value) => value.toJson()).toList();
-  }
-
   @core.override
   ToyRequest operator [](core.int key) => _inner[key];
 
@@ -1214,9 +1180,6 @@ class MapOfAny extends collection.MapBase<core.String, core.Object?> {
       this[key] = value;
     });
   }
-
-  core.Map<core.String, core.dynamic> toJson() =>
-      core.Map<core.String, core.dynamic>.of(this);
 
   @core.override
   core.Object? operator [](core.Object? key) => _innerMap[key];
@@ -1257,9 +1220,6 @@ class MapOfListOfMapOfbool extends collection
           .toList();
     });
   }
-
-  core.Map<core.String, core.dynamic> toJson() =>
-      core.Map<core.String, core.dynamic>.of(this);
 
   @core.override
   core.List<core.Map<core.String, core.bool>>? operator [](core.Object? key) =>
@@ -1303,9 +1263,6 @@ class MapOfListOfMapOfint extends collection
     });
   }
 
-  core.Map<core.String, core.dynamic> toJson() =>
-      core.Map<core.String, core.dynamic>.of(this);
-
   @core.override
   core.List<core.Map<core.String, core.int>>? operator [](core.Object? key) =>
       _innerMap[key];
@@ -1346,9 +1303,6 @@ class MapOfMapOfbool
     });
   }
 
-  core.Map<core.String, core.dynamic> toJson() =>
-      core.Map<core.String, core.dynamic>.of(this);
-
   @core.override
   core.Map<core.String, core.bool>? operator [](core.Object? key) =>
       _innerMap[key];
@@ -1388,9 +1342,6 @@ class MapOfMapOfint
     });
   }
 
-  core.Map<core.String, core.dynamic> toJson() =>
-      core.Map<core.String, core.dynamic>.of(this);
-
   @core.override
   core.Map<core.String, core.int>? operator [](core.Object? key) =>
       _innerMap[key];
@@ -1425,9 +1376,6 @@ class MapOfToyResponse extends collection.MapBase<core.String, ToyResponse> {
     });
   }
 
-  core.Map<core.String, core.dynamic> toJson() =>
-      core.Map<core.String, core.dynamic>.of(this);
-
   @core.override
   ToyResponse? operator [](core.Object? key) => _innerMap[key];
 
@@ -1458,9 +1406,6 @@ class MapOfint extends collection.MapBase<core.String, core.int> {
       this[key] = value as core.int;
     });
   }
-
-  core.Map<core.String, core.dynamic> toJson() =>
-      core.Map<core.String, core.dynamic>.of(this);
 
   @core.override
   core.int? operator [](core.Object? key) => _innerMap[key];
@@ -1587,9 +1532,7 @@ class ToyMapResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (mapResult != null)
-          'mapResult':
-              mapResult!.map((key, item) => core.MapEntry(key, item.toJson())),
+        if (mapResult != null) 'mapResult': mapResult!,
         if (msgValue != null) 'msgValue': msgValue!,
         if (nullValue != null) 'nullValue': nullValue!,
         if (properties != null) 'properties': properties!,

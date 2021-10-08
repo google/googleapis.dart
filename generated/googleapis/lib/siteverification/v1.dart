@@ -148,7 +148,7 @@ class WebResourceResource {
     SiteVerificationWebResourceGettokenRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -188,7 +188,7 @@ class WebResourceResource {
     core.String verificationMethod, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       'verificationMethod': [verificationMethod],
       if ($fields != null) 'fields': [$fields],
@@ -263,7 +263,7 @@ class WebResourceResource {
     core.String id, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -303,7 +303,7 @@ class WebResourceResource {
     core.String id, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -380,7 +380,7 @@ class SiteVerificationWebResourceGettokenRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (site != null) 'site': site!.toJson(),
+        if (site != null) 'site': site!,
         if (verificationMethod != null)
           'verificationMethod': verificationMethod!,
       };
@@ -440,8 +440,7 @@ class SiteVerificationWebResourceListResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (items != null)
-          'items': items!.map((value) => value.toJson()).toList(),
+        if (items != null) 'items': items!,
       };
 }
 
@@ -513,6 +512,6 @@ class SiteVerificationWebResourceResource {
   core.Map<core.String, core.dynamic> toJson() => {
         if (id != null) 'id': id!,
         if (owners != null) 'owners': owners!,
-        if (site != null) 'site': site!.toJson(),
+        if (site != null) 'site': site!,
       };
 }

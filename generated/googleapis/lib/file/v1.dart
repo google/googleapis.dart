@@ -214,7 +214,7 @@ class ProjectsLocationsBackupsResource {
     core.String? backupId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (backupId != null) 'backupId': [backupId],
       if ($fields != null) 'fields': [$fields],
@@ -394,7 +394,7 @@ class ProjectsLocationsBackupsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -452,7 +452,7 @@ class ProjectsLocationsInstancesResource {
     core.String? instanceId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (instanceId != null) 'instanceId': [instanceId],
       if ($fields != null) 'fields': [$fields],
@@ -634,7 +634,7 @@ class ProjectsLocationsInstancesResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -681,7 +681,7 @@ class ProjectsLocationsInstancesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -738,7 +738,7 @@ class ProjectsLocationsOperationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1083,7 +1083,7 @@ class DailyCycle {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (duration != null) 'duration': duration!,
-        if (startTime != null) 'startTime': startTime!.toJson(),
+        if (startTime != null) 'startTime': startTime!,
       };
 }
 
@@ -1182,9 +1182,9 @@ class DenyMaintenancePeriod {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (endDate != null) 'endDate': endDate!.toJson(),
-        if (startDate != null) 'startDate': startDate!.toJson(),
-        if (time != null) 'time': time!.toJson(),
+        if (endDate != null) 'endDate': endDate!,
+        if (startDate != null) 'startDate': startDate!,
+        if (time != null) 'time': time!,
       };
 }
 
@@ -1244,9 +1244,7 @@ class FileShareConfig {
   core.Map<core.String, core.dynamic> toJson() => {
         if (capacityGb != null) 'capacityGb': capacityGb!,
         if (name != null) 'name': name!,
-        if (nfsExportOptions != null)
-          'nfsExportOptions':
-              nfsExportOptions!.map((value) => value.toJson()).toList(),
+        if (nfsExportOptions != null) 'nfsExportOptions': nfsExportOptions!,
         if (sourceBackup != null) 'sourceBackup': sourceBackup!,
       };
 }
@@ -1483,18 +1481,16 @@ class GoogleCloudSaasacceleratorManagementProvidersV1Instance {
         if (maintenancePolicyNames != null)
           'maintenancePolicyNames': maintenancePolicyNames!,
         if (maintenanceSchedules != null)
-          'maintenanceSchedules': maintenanceSchedules!
-              .map((key, item) => core.MapEntry(key, item.toJson())),
+          'maintenanceSchedules': maintenanceSchedules!,
         if (maintenanceSettings != null)
-          'maintenanceSettings': maintenanceSettings!.toJson(),
+          'maintenanceSettings': maintenanceSettings!,
         if (name != null) 'name': name!,
         if (producerMetadata != null) 'producerMetadata': producerMetadata!,
         if (provisionedResources != null)
-          'provisionedResources':
-              provisionedResources!.map((value) => value.toJson()).toList(),
+          'provisionedResources': provisionedResources!,
         if (slmInstanceTemplate != null)
           'slmInstanceTemplate': slmInstanceTemplate!,
-        if (sloMetadata != null) 'sloMetadata': sloMetadata!.toJson(),
+        if (sloMetadata != null) 'sloMetadata': sloMetadata!,
         if (softwareVersions != null) 'softwareVersions': softwareVersions!,
         if (state != null) 'state': state!,
         if (tenantProjectId != null) 'tenantProjectId': tenantProjectId!,
@@ -1635,8 +1631,7 @@ class GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings {
         if (exclude != null) 'exclude': exclude!,
         if (isRollback != null) 'isRollback': isRollback!,
         if (maintenancePolicies != null)
-          'maintenancePolicies': maintenancePolicies!
-              .map((key, item) => core.MapEntry(key, item.toJson())),
+          'maintenancePolicies': maintenancePolicies!,
       };
 }
 
@@ -1684,8 +1679,7 @@ class GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata {
   core.Map<core.String, core.dynamic> toJson() => {
         if (location != null) 'location': location!,
         if (nodeId != null) 'nodeId': nodeId!,
-        if (perSliEligibility != null)
-          'perSliEligibility': perSliEligibility!.toJson(),
+        if (perSliEligibility != null) 'perSliEligibility': perSliEligibility!,
       };
 }
 
@@ -1729,9 +1723,7 @@ class GoogleCloudSaasacceleratorManagementProvidersV1PerSliSloEligibility {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (eligibilities != null)
-          'eligibilities': eligibilities!
-              .map((key, item) => core.MapEntry(key, item.toJson())),
+        if (eligibilities != null) 'eligibilities': eligibilities!,
       };
 }
 
@@ -1860,10 +1852,8 @@ class GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nodes != null)
-          'nodes': nodes!.map((value) => value.toJson()).toList(),
-        if (perSliEligibility != null)
-          'perSliEligibility': perSliEligibility!.toJson(),
+        if (nodes != null) 'nodes': nodes!,
+        if (perSliEligibility != null) 'perSliEligibility': perSliEligibility!,
         if (tier != null) 'tier': tier!,
       };
 }
@@ -2002,12 +1992,10 @@ class Instance {
         if (createTime != null) 'createTime': createTime!,
         if (description != null) 'description': description!,
         if (etag != null) 'etag': etag!,
-        if (fileShares != null)
-          'fileShares': fileShares!.map((value) => value.toJson()).toList(),
+        if (fileShares != null) 'fileShares': fileShares!,
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
-        if (networks != null)
-          'networks': networks!.map((value) => value.toJson()).toList(),
+        if (networks != null) 'networks': networks!,
         if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
         if (state != null) 'state': state!,
         if (statusMessage != null) 'statusMessage': statusMessage!,
@@ -2059,8 +2047,7 @@ class ListBackupsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (backups != null)
-          'backups': backups!.map((value) => value.toJson()).toList(),
+        if (backups != null) 'backups': backups!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (unreachable != null) 'unreachable': unreachable!,
       };
@@ -2110,8 +2097,7 @@ class ListInstancesResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (instances != null)
-          'instances': instances!.map((value) => value.toJson()).toList(),
+        if (instances != null) 'instances': instances!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (unreachable != null) 'unreachable': unreachable!,
       };
@@ -2144,8 +2130,7 @@ class ListLocationsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (locations != null)
-          'locations': locations!.map((value) => value.toJson()).toList(),
+        if (locations != null) 'locations': locations!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -2178,8 +2163,7 @@ class ListOperationsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (operations != null)
-          'operations': operations!.map((value) => value.toJson()).toList(),
+        if (operations != null) 'operations': operations!,
       };
 }
 
@@ -2347,7 +2331,7 @@ class MaintenancePolicy {
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
         if (state != null) 'state': state!,
-        if (updatePolicy != null) 'updatePolicy': updatePolicy!.toJson(),
+        if (updatePolicy != null) 'updatePolicy': updatePolicy!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
 }
@@ -2378,8 +2362,8 @@ class MaintenanceWindow {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dailyCycle != null) 'dailyCycle': dailyCycle!.toJson(),
-        if (weeklyCycle != null) 'weeklyCycle': weeklyCycle!.toJson(),
+        if (dailyCycle != null) 'dailyCycle': dailyCycle!,
+        if (weeklyCycle != null) 'weeklyCycle': weeklyCycle!,
       };
 }
 
@@ -2602,7 +2586,7 @@ class Operation {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (done != null) 'done': done!,
-        if (error != null) 'error': error!.toJson(),
+        if (error != null) 'error': error!,
         if (metadata != null) 'metadata': metadata!,
         if (name != null) 'name': name!,
         if (response != null) 'response': response!,
@@ -2771,7 +2755,7 @@ class Schedule {
   core.Map<core.String, core.dynamic> toJson() => {
         if (day != null) 'day': day!,
         if (duration != null) 'duration': duration!,
-        if (startTime != null) 'startTime': startTime!.toJson(),
+        if (startTime != null) 'startTime': startTime!,
       };
 }
 
@@ -2930,9 +2914,8 @@ class UpdatePolicy {
   core.Map<core.String, core.dynamic> toJson() => {
         if (channel != null) 'channel': channel!,
         if (denyMaintenancePeriods != null)
-          'denyMaintenancePeriods':
-              denyMaintenancePeriods!.map((value) => value.toJson()).toList(),
-        if (window != null) 'window': window!.toJson(),
+          'denyMaintenancePeriods': denyMaintenancePeriods!,
+        if (window != null) 'window': window!,
       };
 }
 
@@ -2958,7 +2941,6 @@ class WeeklyCycle {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (schedule != null)
-          'schedule': schedule!.map((value) => value.toJson()).toList(),
+        if (schedule != null) 'schedule': schedule!,
       };
 }

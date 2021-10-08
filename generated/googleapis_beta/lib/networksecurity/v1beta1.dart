@@ -204,7 +204,7 @@ class ProjectsLocationsAuthorizationPoliciesResource {
     core.String? authorizationPolicyId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (authorizationPolicyId != null)
         'authorizationPolicyId': [authorizationPolicyId],
@@ -437,7 +437,7 @@ class ProjectsLocationsAuthorizationPoliciesResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -484,7 +484,7 @@ class ProjectsLocationsAuthorizationPoliciesResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -534,7 +534,7 @@ class ProjectsLocationsAuthorizationPoliciesResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -590,7 +590,7 @@ class ProjectsLocationsClientTlsPoliciesResource {
     core.String? clientTlsPolicyId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (clientTlsPolicyId != null) 'clientTlsPolicyId': [clientTlsPolicyId],
       if ($fields != null) 'fields': [$fields],
@@ -821,7 +821,7 @@ class ProjectsLocationsClientTlsPoliciesResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -868,7 +868,7 @@ class ProjectsLocationsClientTlsPoliciesResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -918,7 +918,7 @@ class ProjectsLocationsClientTlsPoliciesResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -977,7 +977,7 @@ class ProjectsLocationsOperationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1167,7 +1167,7 @@ class ProjectsLocationsServerTlsPoliciesResource {
     core.String? serverTlsPolicyId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (serverTlsPolicyId != null) 'serverTlsPolicyId': [serverTlsPolicyId],
       if ($fields != null) 'fields': [$fields],
@@ -1398,7 +1398,7 @@ class ProjectsLocationsServerTlsPoliciesResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -1445,7 +1445,7 @@ class ProjectsLocationsServerTlsPoliciesResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1495,7 +1495,7 @@ class ProjectsLocationsServerTlsPoliciesResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1616,8 +1616,7 @@ class AuthorizationPolicy {
         if (description != null) 'description': description!,
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
-        if (rules != null)
-          'rules': rules!.map((value) => value.toJson()).toList(),
+        if (rules != null) 'rules': rules!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
 }
@@ -1761,15 +1760,13 @@ class ClientTlsPolicy {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (clientCertificate != null)
-          'clientCertificate': clientCertificate!.toJson(),
+        if (clientCertificate != null) 'clientCertificate': clientCertificate!,
         if (createTime != null) 'createTime': createTime!,
         if (description != null) 'description': description!,
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
         if (serverValidationCa != null)
-          'serverValidationCa':
-              serverValidationCa!.map((value) => value.toJson()).toList(),
+          'serverValidationCa': serverValidationCa!,
         if (sni != null) 'sni': sni!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
@@ -1841,8 +1838,7 @@ class Destination {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (hosts != null) 'hosts': hosts!,
-        if (httpHeaderMatch != null)
-          'httpHeaderMatch': httpHeaderMatch!.toJson(),
+        if (httpHeaderMatch != null) 'httpHeaderMatch': httpHeaderMatch!,
         if (methods != null) 'methods': methods!,
         if (ports != null) 'ports': ports!,
       };
@@ -1965,8 +1961,8 @@ class GoogleCloudNetworksecurityV1beta1CertificateProvider {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (certificateProviderInstance != null)
-          'certificateProviderInstance': certificateProviderInstance!.toJson(),
-        if (grpcEndpoint != null) 'grpcEndpoint': grpcEndpoint!.toJson(),
+          'certificateProviderInstance': certificateProviderInstance!,
+        if (grpcEndpoint != null) 'grpcEndpoint': grpcEndpoint!,
       };
 }
 
@@ -2041,9 +2037,7 @@ class GoogleIamV1AuditConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (auditLogConfigs != null)
-          'auditLogConfigs':
-              auditLogConfigs!.map((value) => value.toJson()).toList(),
+        if (auditLogConfigs != null) 'auditLogConfigs': auditLogConfigs!,
         if (service != null) 'service': service!,
       };
 }
@@ -2162,7 +2156,7 @@ class GoogleIamV1Binding {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (condition != null) 'condition': condition!.toJson(),
+        if (condition != null) 'condition': condition!,
         if (members != null) 'members': members!,
         if (role != null) 'role': role!,
       };
@@ -2277,10 +2271,8 @@ class GoogleIamV1Policy {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (auditConfigs != null)
-          'auditConfigs': auditConfigs!.map((value) => value.toJson()).toList(),
-        if (bindings != null)
-          'bindings': bindings!.map((value) => value.toJson()).toList(),
+        if (auditConfigs != null) 'auditConfigs': auditConfigs!,
+        if (bindings != null) 'bindings': bindings!,
         if (etag != null) 'etag': etag!,
         if (version != null) 'version': version!,
       };
@@ -2318,7 +2310,7 @@ class GoogleIamV1SetIamPolicyRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (policy != null) 'policy': policy!.toJson(),
+        if (policy != null) 'policy': policy!,
         if (updateMask != null) 'updateMask': updateMask!,
       };
 }
@@ -2450,8 +2442,7 @@ class ListAuthorizationPoliciesResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (authorizationPolicies != null)
-          'authorizationPolicies':
-              authorizationPolicies!.map((value) => value.toJson()).toList(),
+          'authorizationPolicies': authorizationPolicies!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -2487,9 +2478,7 @@ class ListClientTlsPoliciesResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (clientTlsPolicies != null)
-          'clientTlsPolicies':
-              clientTlsPolicies!.map((value) => value.toJson()).toList(),
+        if (clientTlsPolicies != null) 'clientTlsPolicies': clientTlsPolicies!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -2521,8 +2510,7 @@ class ListLocationsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (locations != null)
-          'locations': locations!.map((value) => value.toJson()).toList(),
+        if (locations != null) 'locations': locations!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -2555,8 +2543,7 @@ class ListOperationsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (operations != null)
-          'operations': operations!.map((value) => value.toJson()).toList(),
+        if (operations != null) 'operations': operations!,
       };
 }
 
@@ -2592,9 +2579,7 @@ class ListServerTlsPoliciesResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (serverTlsPolicies != null)
-          'serverTlsPolicies':
-              serverTlsPolicies!.map((value) => value.toJson()).toList(),
+        if (serverTlsPolicies != null) 'serverTlsPolicies': serverTlsPolicies!,
       };
 }
 
@@ -2689,8 +2674,7 @@ class MTLSPolicy {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (clientValidationCa != null)
-          'clientValidationCa':
-              clientValidationCa!.map((value) => value.toJson()).toList(),
+          'clientValidationCa': clientValidationCa!,
       };
 }
 
@@ -2763,7 +2747,7 @@ class Operation {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (done != null) 'done': done!,
-        if (error != null) 'error': error!.toJson(),
+        if (error != null) 'error': error!,
         if (metadata != null) 'metadata': metadata!,
         if (name != null) 'name': name!,
         if (response != null) 'response': response!,
@@ -2899,10 +2883,8 @@ class Rule {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (destinations != null)
-          'destinations': destinations!.map((value) => value.toJson()).toList(),
-        if (sources != null)
-          'sources': sources!.map((value) => value.toJson()).toList(),
+        if (destinations != null) 'destinations': destinations!,
+        if (sources != null) 'sources': sources!,
       };
 }
 
@@ -3010,10 +2992,9 @@ class ServerTlsPolicy {
         if (createTime != null) 'createTime': createTime!,
         if (description != null) 'description': description!,
         if (labels != null) 'labels': labels!,
-        if (mtlsPolicy != null) 'mtlsPolicy': mtlsPolicy!.toJson(),
+        if (mtlsPolicy != null) 'mtlsPolicy': mtlsPolicy!,
         if (name != null) 'name': name!,
-        if (serverCertificate != null)
-          'serverCertificate': serverCertificate!.toJson(),
+        if (serverCertificate != null) 'serverCertificate': serverCertificate!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
 }
@@ -3147,7 +3128,7 @@ class ValidationCA {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (certificateProviderInstance != null)
-          'certificateProviderInstance': certificateProviderInstance!.toJson(),
-        if (grpcEndpoint != null) 'grpcEndpoint': grpcEndpoint!.toJson(),
+          'certificateProviderInstance': certificateProviderInstance!,
+        if (grpcEndpoint != null) 'grpcEndpoint': grpcEndpoint!,
       };
 }

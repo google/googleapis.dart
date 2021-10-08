@@ -207,7 +207,7 @@ class FeedsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -365,7 +365,7 @@ class FeedsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -664,7 +664,7 @@ class V1Resource {
     core.String scope, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -877,7 +877,7 @@ class V1Resource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1252,8 +1252,8 @@ class AnalyzeIamPolicyLongrunningRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (analysisQuery != null) 'analysisQuery': analysisQuery!.toJson(),
-        if (outputConfig != null) 'outputConfig': outputConfig!.toJson(),
+        if (analysisQuery != null) 'analysisQuery': analysisQuery!,
+        if (outputConfig != null) 'outputConfig': outputConfig!,
       };
 }
 
@@ -1300,12 +1300,10 @@ class AnalyzeIamPolicyResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (fullyExplored != null) 'fullyExplored': fullyExplored!,
-        if (mainAnalysis != null) 'mainAnalysis': mainAnalysis!.toJson(),
+        if (mainAnalysis != null) 'mainAnalysis': mainAnalysis!,
         if (serviceAccountImpersonationAnalysis != null)
           'serviceAccountImpersonationAnalysis':
-              serviceAccountImpersonationAnalysis!
-                  .map((value) => value.toJson())
-                  .toList(),
+              serviceAccountImpersonationAnalysis!,
       };
 }
 
@@ -1332,8 +1330,7 @@ class AnalyzeMoveResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (moveAnalysis != null)
-          'moveAnalysis': moveAnalysis!.map((value) => value.toJson()).toList(),
+        if (moveAnalysis != null) 'moveAnalysis': moveAnalysis!,
       };
 }
 
@@ -1492,19 +1489,17 @@ class Asset {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (accessLevel != null) 'accessLevel': accessLevel!.toJson(),
-        if (accessPolicy != null) 'accessPolicy': accessPolicy!.toJson(),
+        if (accessLevel != null) 'accessLevel': accessLevel!,
+        if (accessPolicy != null) 'accessPolicy': accessPolicy!,
         if (ancestors != null) 'ancestors': ancestors!,
         if (assetType != null) 'assetType': assetType!,
-        if (iamPolicy != null) 'iamPolicy': iamPolicy!.toJson(),
+        if (iamPolicy != null) 'iamPolicy': iamPolicy!,
         if (name != null) 'name': name!,
-        if (orgPolicy != null)
-          'orgPolicy': orgPolicy!.map((value) => value.toJson()).toList(),
-        if (osInventory != null) 'osInventory': osInventory!.toJson(),
-        if (relatedAssets != null) 'relatedAssets': relatedAssets!.toJson(),
-        if (resource != null) 'resource': resource!.toJson(),
-        if (servicePerimeter != null)
-          'servicePerimeter': servicePerimeter!.toJson(),
+        if (orgPolicy != null) 'orgPolicy': orgPolicy!,
+        if (osInventory != null) 'osInventory': osInventory!,
+        if (relatedAssets != null) 'relatedAssets': relatedAssets!,
+        if (resource != null) 'resource': resource!,
+        if (servicePerimeter != null) 'servicePerimeter': servicePerimeter!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
 }
@@ -1548,8 +1543,7 @@ class AttachedResource {
   core.Map<core.String, core.dynamic> toJson() => {
         if (assetType != null) 'assetType': assetType!,
         if (versionedResources != null)
-          'versionedResources':
-              versionedResources!.map((value) => value.toJson()).toList(),
+          'versionedResources': versionedResources!,
       };
 }
 
@@ -1599,9 +1593,7 @@ class AuditConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (auditLogConfigs != null)
-          'auditLogConfigs':
-              auditLogConfigs!.map((value) => value.toJson()).toList(),
+        if (auditLogConfigs != null) 'auditLogConfigs': auditLogConfigs!,
         if (service != null) 'service': service!,
       };
 }
@@ -1670,8 +1662,7 @@ class BatchGetAssetsHistoryResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (assets != null)
-          'assets': assets!.map((value) => value.toJson()).toList(),
+        if (assets != null) 'assets': assets!,
       };
 }
 
@@ -1775,7 +1766,7 @@ class BigQueryDestination {
   core.Map<core.String, core.dynamic> toJson() => {
         if (dataset != null) 'dataset': dataset!,
         if (force != null) 'force': force!,
-        if (partitionSpec != null) 'partitionSpec': partitionSpec!.toJson(),
+        if (partitionSpec != null) 'partitionSpec': partitionSpec!,
         if (separateTablesPerAssetType != null)
           'separateTablesPerAssetType': separateTablesPerAssetType!,
         if (table != null) 'table': table!,
@@ -1852,7 +1843,7 @@ class Binding {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (condition != null) 'condition': condition!.toJson(),
+        if (condition != null) 'condition': condition!,
         if (members != null) 'members': members!,
         if (role != null) 'role': role!,
       };
@@ -1944,7 +1935,7 @@ class CreateFeedRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (feed != null) 'feed': feed!.toJson(),
+        if (feed != null) 'feed': feed!,
         if (feedId != null) 'feedId': feedId!,
       };
 }
@@ -2037,8 +2028,7 @@ class Explanation {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (matchedPermissions != null)
-          'matchedPermissions': matchedPermissions!
-              .map((key, item) => core.MapEntry(key, item.toJson())),
+          'matchedPermissions': matchedPermissions!,
       };
 }
 
@@ -2139,7 +2129,7 @@ class ExportAssetsRequest {
   core.Map<core.String, core.dynamic> toJson() => {
         if (assetTypes != null) 'assetTypes': assetTypes!,
         if (contentType != null) 'contentType': contentType!,
-        if (outputConfig != null) 'outputConfig': outputConfig!.toJson(),
+        if (outputConfig != null) 'outputConfig': outputConfig!,
         if (readTime != null) 'readTime': readTime!,
         if (relationshipTypes != null) 'relationshipTypes': relationshipTypes!,
       };
@@ -2348,10 +2338,9 @@ class Feed {
   core.Map<core.String, core.dynamic> toJson() => {
         if (assetNames != null) 'assetNames': assetNames!,
         if (assetTypes != null) 'assetTypes': assetTypes!,
-        if (condition != null) 'condition': condition!.toJson(),
+        if (condition != null) 'condition': condition!,
         if (contentType != null) 'contentType': contentType!,
-        if (feedOutputConfig != null)
-          'feedOutputConfig': feedOutputConfig!.toJson(),
+        if (feedOutputConfig != null) 'feedOutputConfig': feedOutputConfig!,
         if (name != null) 'name': name!,
         if (relationshipTypes != null) 'relationshipTypes': relationshipTypes!,
       };
@@ -2375,8 +2364,7 @@ class FeedOutputConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (pubsubDestination != null)
-          'pubsubDestination': pubsubDestination!.toJson(),
+        if (pubsubDestination != null) 'pubsubDestination': pubsubDestination!,
       };
 }
 
@@ -2453,7 +2441,7 @@ class GoogleCloudAssetV1Access {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (analysisState != null) 'analysisState': analysisState!.toJson(),
+        if (analysisState != null) 'analysisState': analysisState!,
         if (permission != null) 'permission': permission!,
         if (role != null) 'role': role!,
       };
@@ -2528,15 +2516,11 @@ class GoogleCloudAssetV1AccessControlList {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (accesses != null)
-          'accesses': accesses!.map((value) => value.toJson()).toList(),
+        if (accesses != null) 'accesses': accesses!,
         if (conditionEvaluation != null)
-          'conditionEvaluation': conditionEvaluation!.toJson(),
-        if (resourceEdges != null)
-          'resourceEdges':
-              resourceEdges!.map((value) => value.toJson()).toList(),
-        if (resources != null)
-          'resources': resources!.map((value) => value.toJson()).toList(),
+          'conditionEvaluation': conditionEvaluation!,
+        if (resourceEdges != null) 'resourceEdges': resourceEdges!,
+        if (resources != null) 'resources': resources!,
       };
 }
 
@@ -2711,7 +2695,7 @@ class GoogleCloudAssetV1Identity {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (analysisState != null) 'analysisState': analysisState!.toJson(),
+        if (analysisState != null) 'analysisState': analysisState!,
         if (name != null) 'name': name!,
       };
 }
@@ -2754,10 +2738,8 @@ class GoogleCloudAssetV1IdentityList {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (groupEdges != null)
-          'groupEdges': groupEdges!.map((value) => value.toJson()).toList(),
-        if (identities != null)
-          'identities': identities!.map((value) => value.toJson()).toList(),
+        if (groupEdges != null) 'groupEdges': groupEdges!,
+        if (identities != null) 'identities': identities!,
       };
 }
 
@@ -2787,7 +2769,7 @@ class GoogleCloudAssetV1Resource {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (analysisState != null) 'analysisState': analysisState!.toJson(),
+        if (analysisState != null) 'analysisState': analysisState!,
         if (fullResourceName != null) 'fullResourceName': fullResourceName!,
       };
 }
@@ -2934,18 +2916,16 @@ class GoogleCloudAssetV1p7beta1Asset {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (accessLevel != null) 'accessLevel': accessLevel!.toJson(),
-        if (accessPolicy != null) 'accessPolicy': accessPolicy!.toJson(),
+        if (accessLevel != null) 'accessLevel': accessLevel!,
+        if (accessPolicy != null) 'accessPolicy': accessPolicy!,
         if (ancestors != null) 'ancestors': ancestors!,
         if (assetType != null) 'assetType': assetType!,
-        if (iamPolicy != null) 'iamPolicy': iamPolicy!.toJson(),
+        if (iamPolicy != null) 'iamPolicy': iamPolicy!,
         if (name != null) 'name': name!,
-        if (orgPolicy != null)
-          'orgPolicy': orgPolicy!.map((value) => value.toJson()).toList(),
-        if (relatedAssets != null) 'relatedAssets': relatedAssets!.toJson(),
-        if (resource != null) 'resource': resource!.toJson(),
-        if (servicePerimeter != null)
-          'servicePerimeter': servicePerimeter!.toJson(),
+        if (orgPolicy != null) 'orgPolicy': orgPolicy!,
+        if (relatedAssets != null) 'relatedAssets': relatedAssets!,
+        if (resource != null) 'resource': resource!,
+        if (servicePerimeter != null) 'servicePerimeter': servicePerimeter!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
 }
@@ -3043,10 +3023,9 @@ class GoogleCloudAssetV1p7beta1RelatedAssets {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (assets != null)
-          'assets': assets!.map((value) => value.toJson()).toList(),
+        if (assets != null) 'assets': assets!,
         if (relationshipAttributes != null)
-          'relationshipAttributes': relationshipAttributes!.toJson(),
+          'relationshipAttributes': relationshipAttributes!,
       };
 }
 
@@ -3486,11 +3465,11 @@ class GoogleCloudOrgpolicyV1Policy {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (booleanPolicy != null) 'booleanPolicy': booleanPolicy!.toJson(),
+        if (booleanPolicy != null) 'booleanPolicy': booleanPolicy!,
         if (constraint != null) 'constraint': constraint!,
         if (etag != null) 'etag': etag!,
-        if (listPolicy != null) 'listPolicy': listPolicy!.toJson(),
-        if (restoreDefault != null) 'restoreDefault': restoreDefault!.toJson(),
+        if (listPolicy != null) 'listPolicy': listPolicy!,
+        if (restoreDefault != null) 'restoreDefault': restoreDefault!,
         if (updateTime != null) 'updateTime': updateTime!,
         if (version != null) 'version': version!,
       };
@@ -3567,8 +3546,8 @@ class GoogleIdentityAccesscontextmanagerV1AccessLevel {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (basic != null) 'basic': basic!.toJson(),
-        if (custom != null) 'custom': custom!.toJson(),
+        if (basic != null) 'basic': basic!,
+        if (custom != null) 'custom': custom!,
         if (description != null) 'description': description!,
         if (name != null) 'name': name!,
         if (title != null) 'title': title!,
@@ -3678,9 +3657,7 @@ class GoogleIdentityAccesscontextmanagerV1ApiOperation {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (methodSelectors != null)
-          'methodSelectors':
-              methodSelectors!.map((value) => value.toJson()).toList(),
+        if (methodSelectors != null) 'methodSelectors': methodSelectors!,
         if (serviceName != null) 'serviceName': serviceName!,
       };
 }
@@ -3726,8 +3703,7 @@ class GoogleIdentityAccesscontextmanagerV1BasicLevel {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (combiningFunction != null) 'combiningFunction': combiningFunction!,
-        if (conditions != null)
-          'conditions': conditions!.map((value) => value.toJson()).toList(),
+        if (conditions != null) 'conditions': conditions!,
       };
 }
 
@@ -3823,7 +3799,7 @@ class GoogleIdentityAccesscontextmanagerV1Condition {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (devicePolicy != null) 'devicePolicy': devicePolicy!.toJson(),
+        if (devicePolicy != null) 'devicePolicy': devicePolicy!,
         if (ipSubnetworks != null) 'ipSubnetworks': ipSubnetworks!,
         if (members != null) 'members': members!,
         if (negate != null) 'negate': negate!,
@@ -3856,7 +3832,7 @@ class GoogleIdentityAccesscontextmanagerV1CustomLevel {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (expr != null) 'expr': expr!.toJson(),
+        if (expr != null) 'expr': expr!,
       };
 }
 
@@ -3939,9 +3915,7 @@ class GoogleIdentityAccesscontextmanagerV1DevicePolicy {
           'allowedDeviceManagementLevels': allowedDeviceManagementLevels!,
         if (allowedEncryptionStatuses != null)
           'allowedEncryptionStatuses': allowedEncryptionStatuses!,
-        if (osConstraints != null)
-          'osConstraints':
-              osConstraints!.map((value) => value.toJson()).toList(),
+        if (osConstraints != null) 'osConstraints': osConstraints!,
         if (requireAdminApproval != null)
           'requireAdminApproval': requireAdminApproval!,
         if (requireCorpOwned != null) 'requireCorpOwned': requireCorpOwned!,
@@ -4042,8 +4016,8 @@ class GoogleIdentityAccesscontextmanagerV1EgressPolicy {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (egressFrom != null) 'egressFrom': egressFrom!.toJson(),
-        if (egressTo != null) 'egressTo': egressTo!.toJson(),
+        if (egressFrom != null) 'egressFrom': egressFrom!,
+        if (egressTo != null) 'egressTo': egressTo!,
       };
 }
 
@@ -4093,8 +4067,7 @@ class GoogleIdentityAccesscontextmanagerV1EgressTo {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (operations != null)
-          'operations': operations!.map((value) => value.toJson()).toList(),
+        if (operations != null) 'operations': operations!,
         if (resources != null) 'resources': resources!,
       };
 }
@@ -4158,8 +4131,7 @@ class GoogleIdentityAccesscontextmanagerV1IngressFrom {
   core.Map<core.String, core.dynamic> toJson() => {
         if (identities != null) 'identities': identities!,
         if (identityType != null) 'identityType': identityType!,
-        if (sources != null)
-          'sources': sources!.map((value) => value.toJson()).toList(),
+        if (sources != null) 'sources': sources!,
       };
 }
 
@@ -4202,8 +4174,8 @@ class GoogleIdentityAccesscontextmanagerV1IngressPolicy {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (ingressFrom != null) 'ingressFrom': ingressFrom!.toJson(),
-        if (ingressTo != null) 'ingressTo': ingressTo!.toJson(),
+        if (ingressFrom != null) 'ingressFrom': ingressFrom!,
+        if (ingressTo != null) 'ingressTo': ingressTo!,
       };
 }
 
@@ -4290,8 +4262,7 @@ class GoogleIdentityAccesscontextmanagerV1IngressTo {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (operations != null)
-          'operations': operations!.map((value) => value.toJson()).toList(),
+        if (operations != null) 'operations': operations!,
         if (resources != null) 'resources': resources!,
       };
 }
@@ -4497,8 +4468,8 @@ class GoogleIdentityAccesscontextmanagerV1ServicePerimeter {
         if (description != null) 'description': description!,
         if (name != null) 'name': name!,
         if (perimeterType != null) 'perimeterType': perimeterType!,
-        if (spec != null) 'spec': spec!.toJson(),
-        if (status != null) 'status': status!.toJson(),
+        if (spec != null) 'spec': spec!,
+        if (status != null) 'status': status!,
         if (title != null) 'title': title!,
         if (useExplicitDryRunSpec != null)
           'useExplicitDryRunSpec': useExplicitDryRunSpec!,
@@ -4602,17 +4573,13 @@ class GoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accessLevels != null) 'accessLevels': accessLevels!,
-        if (egressPolicies != null)
-          'egressPolicies':
-              egressPolicies!.map((value) => value.toJson()).toList(),
-        if (ingressPolicies != null)
-          'ingressPolicies':
-              ingressPolicies!.map((value) => value.toJson()).toList(),
+        if (egressPolicies != null) 'egressPolicies': egressPolicies!,
+        if (ingressPolicies != null) 'ingressPolicies': ingressPolicies!,
         if (resources != null) 'resources': resources!,
         if (restrictedServices != null)
           'restrictedServices': restrictedServices!,
         if (vpcAccessibleServices != null)
-          'vpcAccessibleServices': vpcAccessibleServices!.toJson(),
+          'vpcAccessibleServices': vpcAccessibleServices!,
       };
 }
 
@@ -4701,14 +4668,10 @@ class IamPolicyAnalysis {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (analysisQuery != null) 'analysisQuery': analysisQuery!.toJson(),
-        if (analysisResults != null)
-          'analysisResults':
-              analysisResults!.map((value) => value.toJson()).toList(),
+        if (analysisQuery != null) 'analysisQuery': analysisQuery!,
+        if (analysisResults != null) 'analysisResults': analysisResults!,
         if (fullyExplored != null) 'fullyExplored': fullyExplored!,
-        if (nonCriticalErrors != null)
-          'nonCriticalErrors':
-              nonCriticalErrors!.map((value) => value.toJson()).toList(),
+        if (nonCriticalErrors != null) 'nonCriticalErrors': nonCriticalErrors!,
       };
 }
 
@@ -4741,8 +4704,8 @@ class IamPolicyAnalysisOutputConfig {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (bigqueryDestination != null)
-          'bigqueryDestination': bigqueryDestination!.toJson(),
-        if (gcsDestination != null) 'gcsDestination': gcsDestination!.toJson(),
+          'bigqueryDestination': bigqueryDestination!,
+        if (gcsDestination != null) 'gcsDestination': gcsDestination!,
       };
 }
 
@@ -4825,14 +4788,11 @@ class IamPolicyAnalysisQuery {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (accessSelector != null) 'accessSelector': accessSelector!.toJson(),
-        if (conditionContext != null)
-          'conditionContext': conditionContext!.toJson(),
-        if (identitySelector != null)
-          'identitySelector': identitySelector!.toJson(),
-        if (options != null) 'options': options!.toJson(),
-        if (resourceSelector != null)
-          'resourceSelector': resourceSelector!.toJson(),
+        if (accessSelector != null) 'accessSelector': accessSelector!,
+        if (conditionContext != null) 'conditionContext': conditionContext!,
+        if (identitySelector != null) 'identitySelector': identitySelector!,
+        if (options != null) 'options': options!,
+        if (resourceSelector != null) 'resourceSelector': resourceSelector!,
         if (scope != null) 'scope': scope!,
       };
 }
@@ -4895,13 +4855,12 @@ class IamPolicyAnalysisResult {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accessControlLists != null)
-          'accessControlLists':
-              accessControlLists!.map((value) => value.toJson()).toList(),
+          'accessControlLists': accessControlLists!,
         if (attachedResourceFullName != null)
           'attachedResourceFullName': attachedResourceFullName!,
         if (fullyExplored != null) 'fullyExplored': fullyExplored!,
-        if (iamBinding != null) 'iamBinding': iamBinding!.toJson(),
-        if (identityList != null) 'identityList': identityList!.toJson(),
+        if (iamBinding != null) 'iamBinding': iamBinding!,
+        if (identityList != null) 'identityList': identityList!,
       };
 }
 
@@ -5123,10 +5082,10 @@ class IamPolicySearchResult {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (assetType != null) 'assetType': assetType!,
-        if (explanation != null) 'explanation': explanation!.toJson(),
+        if (explanation != null) 'explanation': explanation!,
         if (folders != null) 'folders': folders!,
         if (organization != null) 'organization': organization!,
-        if (policy != null) 'policy': policy!.toJson(),
+        if (policy != null) 'policy': policy!,
         if (project != null) 'project': project!,
         if (resource != null) 'resource': resource!,
       };
@@ -5222,10 +5181,9 @@ class Inventory {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (items != null)
-          'items': items!.map((key, item) => core.MapEntry(key, item.toJson())),
+        if (items != null) 'items': items!,
         if (name != null) 'name': name!,
-        if (osInfo != null) 'osInfo': osInfo!.toJson(),
+        if (osInfo != null) 'osInfo': osInfo!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
 }
@@ -5297,12 +5255,10 @@ class Item {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (availablePackage != null)
-          'availablePackage': availablePackage!.toJson(),
+        if (availablePackage != null) 'availablePackage': availablePackage!,
         if (createTime != null) 'createTime': createTime!,
         if (id != null) 'id': id!,
-        if (installedPackage != null)
-          'installedPackage': installedPackage!.toJson(),
+        if (installedPackage != null) 'installedPackage': installedPackage!,
         if (originType != null) 'originType': originType!,
         if (type != null) 'type': type!,
         if (updateTime != null) 'updateTime': updateTime!,
@@ -5346,8 +5302,7 @@ class ListAssetsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (assets != null)
-          'assets': assets!.map((value) => value.toJson()).toList(),
+        if (assets != null) 'assets': assets!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (readTime != null) 'readTime': readTime!,
       };
@@ -5372,8 +5327,7 @@ class ListFeedsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (feeds != null)
-          'feeds': feeds!.map((value) => value.toJson()).toList(),
+        if (feeds != null) 'feeds': feeds!,
       };
 }
 
@@ -5412,9 +5366,9 @@ class MoveAnalysis {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (analysis != null) 'analysis': analysis!.toJson(),
+        if (analysis != null) 'analysis': analysis!,
         if (displayName != null) 'displayName': displayName!,
-        if (error != null) 'error': error!.toJson(),
+        if (error != null) 'error': error!,
       };
 }
 
@@ -5453,10 +5407,8 @@ class MoveAnalysisResult {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (blockers != null)
-          'blockers': blockers!.map((value) => value.toJson()).toList(),
-        if (warnings != null)
-          'warnings': warnings!.map((value) => value.toJson()).toList(),
+        if (blockers != null) 'blockers': blockers!,
+        if (warnings != null) 'warnings': warnings!,
       };
 }
 
@@ -5550,7 +5502,7 @@ class Operation {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (done != null) 'done': done!,
-        if (error != null) 'error': error!.toJson(),
+        if (error != null) 'error': error!,
         if (metadata != null) 'metadata': metadata!,
         if (name != null) 'name': name!,
         if (response != null) 'response': response!,
@@ -5796,8 +5748,8 @@ class OutputConfig {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (bigqueryDestination != null)
-          'bigqueryDestination': bigqueryDestination!.toJson(),
-        if (gcsDestination != null) 'gcsDestination': gcsDestination!.toJson(),
+          'bigqueryDestination': bigqueryDestination!,
+        if (gcsDestination != null) 'gcsDestination': gcsDestination!,
       };
 }
 
@@ -5968,10 +5920,8 @@ class Policy {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (auditConfigs != null)
-          'auditConfigs': auditConfigs!.map((value) => value.toJson()).toList(),
-        if (bindings != null)
-          'bindings': bindings!.map((value) => value.toJson()).toList(),
+        if (auditConfigs != null) 'auditConfigs': auditConfigs!,
+        if (bindings != null) 'bindings': bindings!,
         if (etag != null) 'etag': etag!,
         if (version != null) 'version': version!,
       };
@@ -6090,10 +6040,9 @@ class RelatedAssets {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (assets != null)
-          'assets': assets!.map((value) => value.toJson()).toList(),
+        if (assets != null) 'assets': assets!,
         if (relationshipAttributes != null)
-          'relationshipAttributes': relationshipAttributes!.toJson(),
+          'relationshipAttributes': relationshipAttributes!,
       };
 }
 
@@ -6151,9 +6100,7 @@ class RelatedResources {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (relatedResources != null)
-          'relatedResources':
-              relatedResources!.map((value) => value.toJson()).toList(),
+        if (relatedResources != null) 'relatedResources': relatedResources!,
       };
 }
 
@@ -6619,9 +6566,7 @@ class ResourceSearchResult {
         if (additionalAttributes != null)
           'additionalAttributes': additionalAttributes!,
         if (assetType != null) 'assetType': assetType!,
-        if (attachedResources != null)
-          'attachedResources':
-              attachedResources!.map((value) => value.toJson()).toList(),
+        if (attachedResources != null) 'attachedResources': attachedResources!,
         if (createTime != null) 'createTime': createTime!,
         if (description != null) 'description': description!,
         if (displayName != null) 'displayName': displayName!,
@@ -6636,14 +6581,11 @@ class ResourceSearchResult {
         if (parentFullResourceName != null)
           'parentFullResourceName': parentFullResourceName!,
         if (project != null) 'project': project!,
-        if (relationships != null)
-          'relationships': relationships!
-              .map((key, item) => core.MapEntry(key, item.toJson())),
+        if (relationships != null) 'relationships': relationships!,
         if (state != null) 'state': state!,
         if (updateTime != null) 'updateTime': updateTime!,
         if (versionedResources != null)
-          'versionedResources':
-              versionedResources!.map((value) => value.toJson()).toList(),
+          'versionedResources': versionedResources!,
       };
 }
 
@@ -6708,8 +6650,7 @@ class SearchAllIamPoliciesResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (results != null)
-          'results': results!.map((value) => value.toJson()).toList(),
+        if (results != null) 'results': results!,
       };
 }
 
@@ -6747,8 +6688,7 @@ class SearchAllResourcesResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (results != null)
-          'results': results!.map((value) => value.toJson()).toList(),
+        if (results != null) 'results': results!,
       };
 }
 
@@ -6856,16 +6796,16 @@ class SoftwarePackage {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (aptPackage != null) 'aptPackage': aptPackage!.toJson(),
-        if (cosPackage != null) 'cosPackage': cosPackage!.toJson(),
-        if (googetPackage != null) 'googetPackage': googetPackage!.toJson(),
-        if (qfePackage != null) 'qfePackage': qfePackage!.toJson(),
+        if (aptPackage != null) 'aptPackage': aptPackage!,
+        if (cosPackage != null) 'cosPackage': cosPackage!,
+        if (googetPackage != null) 'googetPackage': googetPackage!,
+        if (qfePackage != null) 'qfePackage': qfePackage!,
         if (windowsApplication != null)
-          'windowsApplication': windowsApplication!.toJson(),
-        if (wuaPackage != null) 'wuaPackage': wuaPackage!.toJson(),
-        if (yumPackage != null) 'yumPackage': yumPackage!.toJson(),
-        if (zypperPackage != null) 'zypperPackage': zypperPackage!.toJson(),
-        if (zypperPatch != null) 'zypperPatch': zypperPatch!.toJson(),
+          'windowsApplication': windowsApplication!,
+        if (wuaPackage != null) 'wuaPackage': wuaPackage!,
+        if (yumPackage != null) 'yumPackage': yumPackage!,
+        if (zypperPackage != null) 'zypperPackage': zypperPackage!,
+        if (zypperPatch != null) 'zypperPatch': zypperPatch!,
       };
 }
 
@@ -6979,11 +6919,11 @@ class TemporalAsset {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (asset != null) 'asset': asset!.toJson(),
+        if (asset != null) 'asset': asset!,
         if (deleted != null) 'deleted': deleted!,
-        if (priorAsset != null) 'priorAsset': priorAsset!.toJson(),
+        if (priorAsset != null) 'priorAsset': priorAsset!,
         if (priorAssetState != null) 'priorAssetState': priorAssetState!,
-        if (window != null) 'window': window!.toJson(),
+        if (window != null) 'window': window!,
       };
 }
 
@@ -7055,7 +6995,7 @@ class UpdateFeedRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (feed != null) 'feed': feed!.toJson(),
+        if (feed != null) 'feed': feed!,
         if (updateMask != null) 'updateMask': updateMask!,
       };
 }
@@ -7205,7 +7145,7 @@ class WindowsApplication {
         if (displayName != null) 'displayName': displayName!,
         if (displayVersion != null) 'displayVersion': displayVersion!,
         if (helpLink != null) 'helpLink': helpLink!,
-        if (installDate != null) 'installDate': installDate!.toJson(),
+        if (installDate != null) 'installDate': installDate!,
         if (publisher != null) 'publisher': publisher!,
       };
 }
@@ -7375,8 +7315,7 @@ class WindowsUpdatePackage {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (categories != null)
-          'categories': categories!.map((value) => value.toJson()).toList(),
+        if (categories != null) 'categories': categories!,
         if (description != null) 'description': description!,
         if (kbArticleIds != null) 'kbArticleIds': kbArticleIds!,
         if (lastDeploymentChangeTime != null)

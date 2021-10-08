@@ -97,7 +97,7 @@ class ServicesResource {
     core.String serviceName, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -154,7 +154,7 @@ class ServicesResource {
     core.String serviceName, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -209,7 +209,7 @@ class ServicesResource {
     core.String serviceName, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -285,8 +285,7 @@ class AllocateQuotaRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (allocateOperation != null)
-          'allocateOperation': allocateOperation!.toJson(),
+        if (allocateOperation != null) 'allocateOperation': allocateOperation!,
         if (serviceConfigId != null) 'serviceConfigId': serviceConfigId!,
       };
 }
@@ -352,13 +351,10 @@ class AllocateQuotaResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (allocateErrors != null)
-          'allocateErrors':
-              allocateErrors!.map((value) => value.toJson()).toList(),
-        if (allocateInfo != null) 'allocateInfo': allocateInfo!.toJson(),
+        if (allocateErrors != null) 'allocateErrors': allocateErrors!,
+        if (allocateInfo != null) 'allocateInfo': allocateInfo!,
         if (operationId != null) 'operationId': operationId!,
-        if (quotaMetrics != null)
-          'quotaMetrics': quotaMetrics!.map((value) => value.toJson()).toList(),
+        if (quotaMetrics != null) 'quotaMetrics': quotaMetrics!,
         if (serviceConfigId != null) 'serviceConfigId': serviceConfigId!,
       };
 }
@@ -397,7 +393,7 @@ class AttributeValue {
   core.Map<core.String, core.dynamic> toJson() => {
         if (boolValue != null) 'boolValue': boolValue!,
         if (intValue != null) 'intValue': intValue!,
-        if (stringValue != null) 'stringValue': stringValue!.toJson(),
+        if (stringValue != null) 'stringValue': stringValue!,
       };
 }
 
@@ -442,9 +438,7 @@ class Attributes {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (attributeMap != null)
-          'attributeMap': attributeMap!
-              .map((key, item) => core.MapEntry(key, item.toJson())),
+        if (attributeMap != null) 'attributeMap': attributeMap!,
         if (droppedAttributesCount != null)
           'droppedAttributesCount': droppedAttributesCount!,
       };
@@ -621,25 +615,21 @@ class AuditLog {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (authenticationInfo != null)
-          'authenticationInfo': authenticationInfo!.toJson(),
-        if (authorizationInfo != null)
-          'authorizationInfo':
-              authorizationInfo!.map((value) => value.toJson()).toList(),
+          'authenticationInfo': authenticationInfo!,
+        if (authorizationInfo != null) 'authorizationInfo': authorizationInfo!,
         if (metadata != null) 'metadata': metadata!,
         if (methodName != null) 'methodName': methodName!,
         if (numResponseItems != null) 'numResponseItems': numResponseItems!,
         if (request != null) 'request': request!,
-        if (requestMetadata != null)
-          'requestMetadata': requestMetadata!.toJson(),
-        if (resourceLocation != null)
-          'resourceLocation': resourceLocation!.toJson(),
+        if (requestMetadata != null) 'requestMetadata': requestMetadata!,
+        if (resourceLocation != null) 'resourceLocation': resourceLocation!,
         if (resourceName != null) 'resourceName': resourceName!,
         if (resourceOriginalState != null)
           'resourceOriginalState': resourceOriginalState!,
         if (response != null) 'response': response!,
         if (serviceData != null) 'serviceData': serviceData!,
         if (serviceName != null) 'serviceName': serviceName!,
-        if (status != null) 'status': status!.toJson(),
+        if (status != null) 'status': status!,
       };
 }
 
@@ -829,9 +819,7 @@ class AuthenticationInfo {
         if (principalEmail != null) 'principalEmail': principalEmail!,
         if (principalSubject != null) 'principalSubject': principalSubject!,
         if (serviceAccountDelegationInfo != null)
-          'serviceAccountDelegationInfo': serviceAccountDelegationInfo!
-              .map((value) => value.toJson())
-              .toList(),
+          'serviceAccountDelegationInfo': serviceAccountDelegationInfo!,
         if (serviceAccountKeyName != null)
           'serviceAccountKeyName': serviceAccountKeyName!,
         if (thirdPartyPrincipal != null)
@@ -890,7 +878,7 @@ class AuthorizationInfo {
         if (permission != null) 'permission': permission!,
         if (resource != null) 'resource': resource!,
         if (resourceAttributes != null)
-          'resourceAttributes': resourceAttributes!.toJson(),
+          'resourceAttributes': resourceAttributes!,
       };
 }
 
@@ -1007,7 +995,7 @@ class CheckError {
   core.Map<core.String, core.dynamic> toJson() => {
         if (code != null) 'code': code!,
         if (detail != null) 'detail': detail!,
-        if (status != null) 'status': status!.toJson(),
+        if (status != null) 'status': status!,
         if (subject != null) 'subject': subject!,
       };
 }
@@ -1042,7 +1030,7 @@ class CheckInfo {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (consumerInfo != null) 'consumerInfo': consumerInfo!.toJson(),
+        if (consumerInfo != null) 'consumerInfo': consumerInfo!,
         if (unusedArguments != null) 'unusedArguments': unusedArguments!,
       };
 }
@@ -1094,7 +1082,7 @@ class CheckRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (operation != null) 'operation': operation!.toJson(),
+        if (operation != null) 'operation': operation!,
         if (requestProjectSettings != null)
           'requestProjectSettings': requestProjectSettings!,
         if (serviceConfigId != null) 'serviceConfigId': serviceConfigId!,
@@ -1166,11 +1154,10 @@ class CheckResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (checkErrors != null)
-          'checkErrors': checkErrors!.map((value) => value.toJson()).toList(),
-        if (checkInfo != null) 'checkInfo': checkInfo!.toJson(),
+        if (checkErrors != null) 'checkErrors': checkErrors!,
+        if (checkInfo != null) 'checkInfo': checkInfo!,
         if (operationId != null) 'operationId': operationId!,
-        if (quotaInfo != null) 'quotaInfo': quotaInfo!.toJson(),
+        if (quotaInfo != null) 'quotaInfo': quotaInfo!,
         if (serviceConfigId != null) 'serviceConfigId': serviceConfigId!,
         if (serviceRolloutId != null) 'serviceRolloutId': serviceRolloutId!,
       };
@@ -1346,13 +1333,11 @@ class Distribution {
   core.Map<core.String, core.dynamic> toJson() => {
         if (bucketCounts != null) 'bucketCounts': bucketCounts!,
         if (count != null) 'count': count!,
-        if (exemplars != null)
-          'exemplars': exemplars!.map((value) => value.toJson()).toList(),
-        if (explicitBuckets != null)
-          'explicitBuckets': explicitBuckets!.toJson(),
+        if (exemplars != null) 'exemplars': exemplars!,
+        if (explicitBuckets != null) 'explicitBuckets': explicitBuckets!,
         if (exponentialBuckets != null)
-          'exponentialBuckets': exponentialBuckets!.toJson(),
-        if (linearBuckets != null) 'linearBuckets': linearBuckets!.toJson(),
+          'exponentialBuckets': exponentialBuckets!,
+        if (linearBuckets != null) 'linearBuckets': linearBuckets!,
         if (maximum != null) 'maximum': maximum!,
         if (mean != null) 'mean': mean!,
         if (minimum != null) 'minimum': minimum!,
@@ -1890,14 +1875,14 @@ class LogEntry {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (httpRequest != null) 'httpRequest': httpRequest!.toJson(),
+        if (httpRequest != null) 'httpRequest': httpRequest!,
         if (insertId != null) 'insertId': insertId!,
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
-        if (operation != null) 'operation': operation!.toJson(),
+        if (operation != null) 'operation': operation!,
         if (protoPayload != null) 'protoPayload': protoPayload!,
         if (severity != null) 'severity': severity!,
-        if (sourceLocation != null) 'sourceLocation': sourceLocation!.toJson(),
+        if (sourceLocation != null) 'sourceLocation': sourceLocation!,
         if (structPayload != null) 'structPayload': structPayload!,
         if (textPayload != null) 'textPayload': textPayload!,
         if (timestamp != null) 'timestamp': timestamp!,
@@ -2107,13 +2092,12 @@ class MetricValue {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (boolValue != null) 'boolValue': boolValue!,
-        if (distributionValue != null)
-          'distributionValue': distributionValue!.toJson(),
+        if (distributionValue != null) 'distributionValue': distributionValue!,
         if (doubleValue != null) 'doubleValue': doubleValue!,
         if (endTime != null) 'endTime': endTime!,
         if (int64Value != null) 'int64Value': int64Value!,
         if (labels != null) 'labels': labels!,
-        if (moneyValue != null) 'moneyValue': moneyValue!.toJson(),
+        if (moneyValue != null) 'moneyValue': moneyValue!,
         if (startTime != null) 'startTime': startTime!,
         if (stringValue != null) 'stringValue': stringValue!,
       };
@@ -2150,8 +2134,7 @@ class MetricValueSet {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (metricName != null) 'metricName': metricName!,
-        if (metricValues != null)
-          'metricValues': metricValues!.map((value) => value.toJson()).toList(),
+        if (metricValues != null) 'metricValues': metricValues!,
       };
 }
 
@@ -2406,20 +2389,14 @@ class Operation {
         if (extensions != null) 'extensions': extensions!,
         if (importance != null) 'importance': importance!,
         if (labels != null) 'labels': labels!,
-        if (logEntries != null)
-          'logEntries': logEntries!.map((value) => value.toJson()).toList(),
-        if (metricValueSets != null)
-          'metricValueSets':
-              metricValueSets!.map((value) => value.toJson()).toList(),
+        if (logEntries != null) 'logEntries': logEntries!,
+        if (metricValueSets != null) 'metricValueSets': metricValueSets!,
         if (operationId != null) 'operationId': operationId!,
         if (operationName != null) 'operationName': operationName!,
-        if (quotaProperties != null)
-          'quotaProperties': quotaProperties!.toJson(),
-        if (resources != null)
-          'resources': resources!.map((value) => value.toJson()).toList(),
+        if (quotaProperties != null) 'quotaProperties': quotaProperties!,
+        if (resources != null) 'resources': resources!,
         if (startTime != null) 'startTime': startTime!,
-        if (traceSpans != null)
-          'traceSpans': traceSpans!.map((value) => value.toJson()).toList(),
+        if (traceSpans != null) 'traceSpans': traceSpans!,
         if (userLabels != null) 'userLabels': userLabels!,
       };
 }
@@ -2561,7 +2538,7 @@ class QuotaError {
   core.Map<core.String, core.dynamic> toJson() => {
         if (code != null) 'code': code!,
         if (description != null) 'description': description!,
-        if (status != null) 'status': status!.toJson(),
+        if (status != null) 'status': status!,
         if (subject != null) 'subject': subject!,
       };
 }
@@ -2632,8 +2609,7 @@ class QuotaInfo {
   core.Map<core.String, core.dynamic> toJson() => {
         if (limitExceeded != null) 'limitExceeded': limitExceeded!,
         if (quotaConsumed != null) 'quotaConsumed': quotaConsumed!,
-        if (quotaMetrics != null)
-          'quotaMetrics': quotaMetrics!.map((value) => value.toJson()).toList(),
+        if (quotaMetrics != null) 'quotaMetrics': quotaMetrics!,
       };
 }
 
@@ -2757,8 +2733,7 @@ class QuotaOperation {
         if (labels != null) 'labels': labels!,
         if (methodName != null) 'methodName': methodName!,
         if (operationId != null) 'operationId': operationId!,
-        if (quotaMetrics != null)
-          'quotaMetrics': quotaMetrics!.map((value) => value.toJson()).toList(),
+        if (quotaMetrics != null) 'quotaMetrics': quotaMetrics!,
         if (quotaMode != null) 'quotaMode': quotaMode!,
       };
 }
@@ -2821,7 +2796,7 @@ class ReportError {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (operationId != null) 'operationId': operationId!,
-        if (status != null) 'status': status!.toJson(),
+        if (status != null) 'status': status!,
       };
 }
 
@@ -2863,8 +2838,7 @@ class ReportRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (operations != null)
-          'operations': operations!.map((value) => value.toJson()).toList(),
+        if (operations != null) 'operations': operations!,
         if (serviceConfigId != null) 'serviceConfigId': serviceConfigId!,
       };
 }
@@ -2915,8 +2889,7 @@ class ReportResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (reportErrors != null)
-          'reportErrors': reportErrors!.map((value) => value.toJson()).toList(),
+        if (reportErrors != null) 'reportErrors': reportErrors!,
         if (serviceConfigId != null) 'serviceConfigId': serviceConfigId!,
         if (serviceRolloutId != null) 'serviceRolloutId': serviceRolloutId!,
       };
@@ -3039,7 +3012,7 @@ class Request {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (auth != null) 'auth': auth!.toJson(),
+        if (auth != null) 'auth': auth!,
         if (headers != null) 'headers': headers!,
         if (host != null) 'host': host!,
         if (id != null) 'id': id!,
@@ -3138,9 +3111,8 @@ class RequestMetadata {
         if (callerSuppliedUserAgent != null)
           'callerSuppliedUserAgent': callerSuppliedUserAgent!,
         if (destinationAttributes != null)
-          'destinationAttributes': destinationAttributes!.toJson(),
-        if (requestAttributes != null)
-          'requestAttributes': requestAttributes!.toJson(),
+          'destinationAttributes': destinationAttributes!,
+        if (requestAttributes != null) 'requestAttributes': requestAttributes!,
       };
 }
 
@@ -3445,10 +3417,10 @@ class ServiceAccountDelegationInfo {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (firstPartyPrincipal != null)
-          'firstPartyPrincipal': firstPartyPrincipal!.toJson(),
+          'firstPartyPrincipal': firstPartyPrincipal!,
         if (principalSubject != null) 'principalSubject': principalSubject!,
         if (thirdPartyPrincipal != null)
-          'thirdPartyPrincipal': thirdPartyPrincipal!.toJson(),
+          'thirdPartyPrincipal': thirdPartyPrincipal!,
       };
 }
 
@@ -3703,9 +3675,9 @@ class TraceSpan {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (attributes != null) 'attributes': attributes!.toJson(),
+        if (attributes != null) 'attributes': attributes!,
         if (childSpanCount != null) 'childSpanCount': childSpanCount!,
-        if (displayName != null) 'displayName': displayName!.toJson(),
+        if (displayName != null) 'displayName': displayName!,
         if (endTime != null) 'endTime': endTime!,
         if (name != null) 'name': name!,
         if (parentSpanId != null) 'parentSpanId': parentSpanId!,
@@ -3714,7 +3686,7 @@ class TraceSpan {
         if (spanId != null) 'spanId': spanId!,
         if (spanKind != null) 'spanKind': spanKind!,
         if (startTime != null) 'startTime': startTime!,
-        if (status != null) 'status': status!.toJson(),
+        if (status != null) 'status': status!,
       };
 }
 

@@ -243,8 +243,6 @@ class ViolatingSitesResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (violatingSites != null)
-          'violatingSites':
-              violatingSites!.map((value) => value.toJson()).toList(),
+        if (violatingSites != null) 'violatingSites': violatingSites!,
       };
 }

@@ -648,8 +648,7 @@ class Notice {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
-        if (links != null)
-          'links': links!.map((value) => value.toJson()).toList(),
+        if (links != null) 'links': links!,
         if (title != null) 'title': title!,
         if (type != null) 'type': type!,
       };
@@ -726,10 +725,9 @@ class RdapResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
         if (errorCode != null) 'errorCode': errorCode!,
-        if (jsonResponse != null) 'jsonResponse': jsonResponse!.toJson(),
+        if (jsonResponse != null) 'jsonResponse': jsonResponse!,
         if (lang != null) 'lang': lang!,
-        if (notices != null)
-          'notices': notices!.map((value) => value.toJson()).toList(),
+        if (notices != null) 'notices': notices!,
         if (rdapConformance != null) 'rdapConformance': rdapConformance!,
         if (title != null) 'title': title!,
       };

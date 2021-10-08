@@ -120,7 +120,7 @@ class ProjectsLocationsAutoscalingPoliciesResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -258,7 +258,7 @@ class ProjectsLocationsAutoscalingPoliciesResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -357,7 +357,7 @@ class ProjectsLocationsAutoscalingPoliciesResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -405,7 +405,7 @@ class ProjectsLocationsAutoscalingPoliciesResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -456,7 +456,7 @@ class ProjectsLocationsAutoscalingPoliciesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -510,7 +510,7 @@ class ProjectsLocationsWorkflowTemplatesResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -659,7 +659,7 @@ class ProjectsLocationsWorkflowTemplatesResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -717,7 +717,7 @@ class ProjectsLocationsWorkflowTemplatesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -785,7 +785,7 @@ class ProjectsLocationsWorkflowTemplatesResource {
     core.String? requestId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (requestId != null) 'requestId': [requestId],
       if ($fields != null) 'fields': [$fields],
@@ -886,7 +886,7 @@ class ProjectsLocationsWorkflowTemplatesResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -934,7 +934,7 @@ class ProjectsLocationsWorkflowTemplatesResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -987,7 +987,7 @@ class ProjectsLocationsWorkflowTemplatesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1058,7 +1058,7 @@ class ProjectsRegionsAutoscalingPoliciesResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1196,7 +1196,7 @@ class ProjectsRegionsAutoscalingPoliciesResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1295,7 +1295,7 @@ class ProjectsRegionsAutoscalingPoliciesResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1343,7 +1343,7 @@ class ProjectsRegionsAutoscalingPoliciesResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1394,7 +1394,7 @@ class ProjectsRegionsAutoscalingPoliciesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1469,7 +1469,7 @@ class ProjectsRegionsClustersResource {
     core.String? requestId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (actionOnFailedPrimaryWorkers != null)
         'actionOnFailedPrimaryWorkers': [actionOnFailedPrimaryWorkers],
@@ -1594,7 +1594,7 @@ class ProjectsRegionsClustersResource {
     core.String clusterName, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1692,7 +1692,7 @@ class ProjectsRegionsClustersResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1744,7 +1744,7 @@ class ProjectsRegionsClustersResource {
     core.String cluster, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1905,7 +1905,7 @@ class ProjectsRegionsClustersResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (gracefulDecommissionTimeout != null)
         'gracefulDecommissionTimeout': [gracefulDecommissionTimeout],
@@ -1960,7 +1960,7 @@ class ProjectsRegionsClustersResource {
     core.String clusterName, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2012,7 +2012,7 @@ class ProjectsRegionsClustersResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2058,7 +2058,7 @@ class ProjectsRegionsClustersResource {
     core.String clusterName, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2110,7 +2110,7 @@ class ProjectsRegionsClustersResource {
     core.String clusterName, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2164,7 +2164,7 @@ class ProjectsRegionsClustersResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2225,7 +2225,7 @@ class ProjectsRegionsJobsResource {
     core.String jobId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2371,7 +2371,7 @@ class ProjectsRegionsJobsResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2504,7 +2504,7 @@ class ProjectsRegionsJobsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -2555,7 +2555,7 @@ class ProjectsRegionsJobsResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2598,7 +2598,7 @@ class ProjectsRegionsJobsResource {
     core.String region, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2645,7 +2645,7 @@ class ProjectsRegionsJobsResource {
     core.String region, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2696,7 +2696,7 @@ class ProjectsRegionsJobsResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2875,7 +2875,7 @@ class ProjectsRegionsOperationsResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2978,7 +2978,7 @@ class ProjectsRegionsOperationsResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3026,7 +3026,7 @@ class ProjectsRegionsOperationsResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3081,7 +3081,7 @@ class ProjectsRegionsWorkflowTemplatesResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3230,7 +3230,7 @@ class ProjectsRegionsWorkflowTemplatesResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3288,7 +3288,7 @@ class ProjectsRegionsWorkflowTemplatesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3356,7 +3356,7 @@ class ProjectsRegionsWorkflowTemplatesResource {
     core.String? requestId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (requestId != null) 'requestId': [requestId],
       if ($fields != null) 'fields': [$fields],
@@ -3457,7 +3457,7 @@ class ProjectsRegionsWorkflowTemplatesResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3505,7 +3505,7 @@ class ProjectsRegionsWorkflowTemplatesResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3558,7 +3558,7 @@ class ProjectsRegionsWorkflowTemplatesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3713,12 +3713,12 @@ class AutoscalingPolicy {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (basicAlgorithm != null) 'basicAlgorithm': basicAlgorithm!.toJson(),
+        if (basicAlgorithm != null) 'basicAlgorithm': basicAlgorithm!,
         if (id != null) 'id': id!,
         if (name != null) 'name': name!,
         if (secondaryWorkerConfig != null)
-          'secondaryWorkerConfig': secondaryWorkerConfig!.toJson(),
-        if (workerConfig != null) 'workerConfig': workerConfig!.toJson(),
+          'secondaryWorkerConfig': secondaryWorkerConfig!,
+        if (workerConfig != null) 'workerConfig': workerConfig!,
       };
 }
 
@@ -3755,7 +3755,7 @@ class BasicAutoscalingAlgorithm {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (cooldownPeriod != null) 'cooldownPeriod': cooldownPeriod!,
-        if (yarnConfig != null) 'yarnConfig': yarnConfig!.toJson(),
+        if (yarnConfig != null) 'yarnConfig': yarnConfig!,
       };
 }
 
@@ -4017,7 +4017,7 @@ class Binding {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (condition != null) 'condition': condition!.toJson(),
+        if (condition != null) 'condition': condition!,
         if (members != null) 'members': members!,
         if (role != null) 'role': role!,
       };
@@ -4139,14 +4139,12 @@ class Cluster {
   core.Map<core.String, core.dynamic> toJson() => {
         if (clusterName != null) 'clusterName': clusterName!,
         if (clusterUuid != null) 'clusterUuid': clusterUuid!,
-        if (config != null) 'config': config!.toJson(),
+        if (config != null) 'config': config!,
         if (labels != null) 'labels': labels!,
-        if (metrics != null) 'metrics': metrics!.toJson(),
+        if (metrics != null) 'metrics': metrics!,
         if (projectId != null) 'projectId': projectId!,
-        if (status != null) 'status': status!.toJson(),
-        if (statusHistory != null)
-          'statusHistory':
-              statusHistory!.map((value) => value.toJson()).toList(),
+        if (status != null) 'status': status!,
+        if (statusHistory != null) 'statusHistory': statusHistory!,
       };
 }
 
@@ -4347,30 +4345,23 @@ class ClusterConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (autoscalingConfig != null)
-          'autoscalingConfig': autoscalingConfig!.toJson(),
+        if (autoscalingConfig != null) 'autoscalingConfig': autoscalingConfig!,
         if (configBucket != null) 'configBucket': configBucket!,
-        if (encryptionConfig != null)
-          'encryptionConfig': encryptionConfig!.toJson(),
-        if (endpointConfig != null) 'endpointConfig': endpointConfig!.toJson(),
-        if (gceClusterConfig != null)
-          'gceClusterConfig': gceClusterConfig!.toJson(),
-        if (gkeClusterConfig != null)
-          'gkeClusterConfig': gkeClusterConfig!.toJson(),
+        if (encryptionConfig != null) 'encryptionConfig': encryptionConfig!,
+        if (endpointConfig != null) 'endpointConfig': endpointConfig!,
+        if (gceClusterConfig != null) 'gceClusterConfig': gceClusterConfig!,
+        if (gkeClusterConfig != null) 'gkeClusterConfig': gkeClusterConfig!,
         if (initializationActions != null)
-          'initializationActions':
-              initializationActions!.map((value) => value.toJson()).toList(),
-        if (lifecycleConfig != null)
-          'lifecycleConfig': lifecycleConfig!.toJson(),
-        if (masterConfig != null) 'masterConfig': masterConfig!.toJson(),
-        if (metastoreConfig != null)
-          'metastoreConfig': metastoreConfig!.toJson(),
+          'initializationActions': initializationActions!,
+        if (lifecycleConfig != null) 'lifecycleConfig': lifecycleConfig!,
+        if (masterConfig != null) 'masterConfig': masterConfig!,
+        if (metastoreConfig != null) 'metastoreConfig': metastoreConfig!,
         if (secondaryWorkerConfig != null)
-          'secondaryWorkerConfig': secondaryWorkerConfig!.toJson(),
-        if (securityConfig != null) 'securityConfig': securityConfig!.toJson(),
-        if (softwareConfig != null) 'softwareConfig': softwareConfig!.toJson(),
+          'secondaryWorkerConfig': secondaryWorkerConfig!,
+        if (securityConfig != null) 'securityConfig': securityConfig!,
+        if (softwareConfig != null) 'softwareConfig': softwareConfig!,
         if (tempBucket != null) 'tempBucket': tempBucket!,
-        if (workerConfig != null) 'workerConfig': workerConfig!.toJson(),
+        if (workerConfig != null) 'workerConfig': workerConfig!,
       };
 }
 
@@ -4556,10 +4547,8 @@ class ClusterOperationMetadata {
         if (description != null) 'description': description!,
         if (labels != null) 'labels': labels!,
         if (operationType != null) 'operationType': operationType!,
-        if (status != null) 'status': status!.toJson(),
-        if (statusHistory != null)
-          'statusHistory':
-              statusHistory!.map((value) => value.toJson()).toList(),
+        if (status != null) 'status': status!,
+        if (statusHistory != null) 'statusHistory': statusHistory!,
         if (warnings != null) 'warnings': warnings!,
       };
 }
@@ -5199,21 +5188,20 @@ class GceClusterConfig {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (confidentialInstanceConfig != null)
-          'confidentialInstanceConfig': confidentialInstanceConfig!.toJson(),
+          'confidentialInstanceConfig': confidentialInstanceConfig!,
         if (internalIpOnly != null) 'internalIpOnly': internalIpOnly!,
         if (metadata != null) 'metadata': metadata!,
         if (networkUri != null) 'networkUri': networkUri!,
-        if (nodeGroupAffinity != null)
-          'nodeGroupAffinity': nodeGroupAffinity!.toJson(),
+        if (nodeGroupAffinity != null) 'nodeGroupAffinity': nodeGroupAffinity!,
         if (privateIpv6GoogleAccess != null)
           'privateIpv6GoogleAccess': privateIpv6GoogleAccess!,
         if (reservationAffinity != null)
-          'reservationAffinity': reservationAffinity!.toJson(),
+          'reservationAffinity': reservationAffinity!,
         if (serviceAccount != null) 'serviceAccount': serviceAccount!,
         if (serviceAccountScopes != null)
           'serviceAccountScopes': serviceAccountScopes!,
         if (shieldedInstanceConfig != null)
-          'shieldedInstanceConfig': shieldedInstanceConfig!.toJson(),
+          'shieldedInstanceConfig': shieldedInstanceConfig!,
         if (subnetworkUri != null) 'subnetworkUri': subnetworkUri!,
         if (tags != null) 'tags': tags!,
         if (zoneUri != null) 'zoneUri': zoneUri!,
@@ -5239,7 +5227,7 @@ class GetIamPolicyRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (options != null) 'options': options!.toJson(),
+        if (options != null) 'options': options!,
       };
 }
 
@@ -5297,8 +5285,7 @@ class GkeClusterConfig {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (namespacedGkeDeploymentTarget != null)
-          'namespacedGkeDeploymentTarget':
-              namespacedGkeDeploymentTarget!.toJson(),
+          'namespacedGkeDeploymentTarget': namespacedGkeDeploymentTarget!,
       };
 }
 
@@ -5424,7 +5411,7 @@ class HadoopJob {
         if (args != null) 'args': args!,
         if (fileUris != null) 'fileUris': fileUris!,
         if (jarFileUris != null) 'jarFileUris': jarFileUris!,
-        if (loggingConfig != null) 'loggingConfig': loggingConfig!.toJson(),
+        if (loggingConfig != null) 'loggingConfig': loggingConfig!,
         if (mainClass != null) 'mainClass': mainClass!,
         if (mainJarFileUri != null) 'mainJarFileUri': mainJarFileUri!,
         if (properties != null) 'properties': properties!,
@@ -5523,7 +5510,7 @@ class HiveJob {
         if (jarFileUris != null) 'jarFileUris': jarFileUris!,
         if (properties != null) 'properties': properties!,
         if (queryFileUri != null) 'queryFileUri': queryFileUri!,
-        if (queryList != null) 'queryList': queryList!.toJson(),
+        if (queryList != null) 'queryList': queryList!,
         if (scriptVariables != null) 'scriptVariables': scriptVariables!,
       };
 }
@@ -5828,18 +5815,16 @@ class InstanceGroupConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (accelerators != null)
-          'accelerators': accelerators!.map((value) => value.toJson()).toList(),
-        if (diskConfig != null) 'diskConfig': diskConfig!.toJson(),
+        if (accelerators != null) 'accelerators': accelerators!,
+        if (diskConfig != null) 'diskConfig': diskConfig!,
         if (imageUri != null) 'imageUri': imageUri!,
         if (instanceNames != null) 'instanceNames': instanceNames!,
         if (instanceReferences != null)
-          'instanceReferences':
-              instanceReferences!.map((value) => value.toJson()).toList(),
+          'instanceReferences': instanceReferences!,
         if (isPreemptible != null) 'isPreemptible': isPreemptible!,
         if (machineTypeUri != null) 'machineTypeUri': machineTypeUri!,
         if (managedGroupConfig != null)
-          'managedGroupConfig': managedGroupConfig!.toJson(),
+          'managedGroupConfig': managedGroupConfig!,
         if (minCpuPlatform != null) 'minCpuPlatform': minCpuPlatform!,
         if (numInstances != null) 'numInstances': numInstances!,
         if (preemptibility != null) 'preemptibility': preemptibility!,
@@ -6188,26 +6173,22 @@ class Job {
           'driverControlFilesUri': driverControlFilesUri!,
         if (driverOutputResourceUri != null)
           'driverOutputResourceUri': driverOutputResourceUri!,
-        if (hadoopJob != null) 'hadoopJob': hadoopJob!.toJson(),
-        if (hiveJob != null) 'hiveJob': hiveJob!.toJson(),
+        if (hadoopJob != null) 'hadoopJob': hadoopJob!,
+        if (hiveJob != null) 'hiveJob': hiveJob!,
         if (jobUuid != null) 'jobUuid': jobUuid!,
         if (labels != null) 'labels': labels!,
-        if (pigJob != null) 'pigJob': pigJob!.toJson(),
-        if (placement != null) 'placement': placement!.toJson(),
-        if (prestoJob != null) 'prestoJob': prestoJob!.toJson(),
-        if (pysparkJob != null) 'pysparkJob': pysparkJob!.toJson(),
-        if (reference != null) 'reference': reference!.toJson(),
-        if (scheduling != null) 'scheduling': scheduling!.toJson(),
-        if (sparkJob != null) 'sparkJob': sparkJob!.toJson(),
-        if (sparkRJob != null) 'sparkRJob': sparkRJob!.toJson(),
-        if (sparkSqlJob != null) 'sparkSqlJob': sparkSqlJob!.toJson(),
-        if (status != null) 'status': status!.toJson(),
-        if (statusHistory != null)
-          'statusHistory':
-              statusHistory!.map((value) => value.toJson()).toList(),
-        if (yarnApplications != null)
-          'yarnApplications':
-              yarnApplications!.map((value) => value.toJson()).toList(),
+        if (pigJob != null) 'pigJob': pigJob!,
+        if (placement != null) 'placement': placement!,
+        if (prestoJob != null) 'prestoJob': prestoJob!,
+        if (pysparkJob != null) 'pysparkJob': pysparkJob!,
+        if (reference != null) 'reference': reference!,
+        if (scheduling != null) 'scheduling': scheduling!,
+        if (sparkJob != null) 'sparkJob': sparkJob!,
+        if (sparkRJob != null) 'sparkRJob': sparkRJob!,
+        if (sparkSqlJob != null) 'sparkSqlJob': sparkSqlJob!,
+        if (status != null) 'status': status!,
+        if (statusHistory != null) 'statusHistory': statusHistory!,
+        if (yarnApplications != null) 'yarnApplications': yarnApplications!,
       };
 }
 
@@ -6260,7 +6241,7 @@ class JobMetadata {
         if (jobId != null) 'jobId': jobId!,
         if (operationType != null) 'operationType': operationType!,
         if (startTime != null) 'startTime': startTime!,
-        if (status != null) 'status': status!.toJson(),
+        if (status != null) 'status': status!,
       };
 }
 
@@ -6770,8 +6751,7 @@ class ListAutoscalingPoliciesResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (policies != null)
-          'policies': policies!.map((value) => value.toJson()).toList(),
+        if (policies != null) 'policies': policies!,
       };
 }
 
@@ -6809,8 +6789,7 @@ class ListClustersResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (clusters != null)
-          'clusters': clusters!.map((value) => value.toJson()).toList(),
+        if (clusters != null) 'clusters': clusters!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -6849,7 +6828,7 @@ class ListJobsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (jobs != null) 'jobs': jobs!.map((value) => value.toJson()).toList(),
+        if (jobs != null) 'jobs': jobs!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -6882,8 +6861,7 @@ class ListOperationsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (operations != null)
-          'operations': operations!.map((value) => value.toJson()).toList(),
+        if (operations != null) 'operations': operations!,
       };
 }
 
@@ -6922,8 +6900,7 @@ class ListWorkflowTemplatesResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (templates != null)
-          'templates': templates!.map((value) => value.toJson()).toList(),
+        if (templates != null) 'templates': templates!,
       };
 }
 
@@ -7012,7 +6989,7 @@ class ManagedCluster {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (clusterName != null) 'clusterName': clusterName!,
-        if (config != null) 'config': config!.toJson(),
+        if (config != null) 'config': config!,
         if (labels != null) 'labels': labels!,
       };
 }
@@ -7254,7 +7231,7 @@ class Operation {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (done != null) 'done': done!,
-        if (error != null) 'error': error!.toJson(),
+        if (error != null) 'error': error!,
         if (metadata != null) 'metadata': metadata!,
         if (name != null) 'name': name!,
         if (response != null) 'response': response!,
@@ -7409,18 +7386,18 @@ class OrderedJob {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (hadoopJob != null) 'hadoopJob': hadoopJob!.toJson(),
-        if (hiveJob != null) 'hiveJob': hiveJob!.toJson(),
+        if (hadoopJob != null) 'hadoopJob': hadoopJob!,
+        if (hiveJob != null) 'hiveJob': hiveJob!,
         if (labels != null) 'labels': labels!,
-        if (pigJob != null) 'pigJob': pigJob!.toJson(),
+        if (pigJob != null) 'pigJob': pigJob!,
         if (prerequisiteStepIds != null)
           'prerequisiteStepIds': prerequisiteStepIds!,
-        if (prestoJob != null) 'prestoJob': prestoJob!.toJson(),
-        if (pysparkJob != null) 'pysparkJob': pysparkJob!.toJson(),
-        if (scheduling != null) 'scheduling': scheduling!.toJson(),
-        if (sparkJob != null) 'sparkJob': sparkJob!.toJson(),
-        if (sparkRJob != null) 'sparkRJob': sparkRJob!.toJson(),
-        if (sparkSqlJob != null) 'sparkSqlJob': sparkSqlJob!.toJson(),
+        if (prestoJob != null) 'prestoJob': prestoJob!,
+        if (pysparkJob != null) 'pysparkJob': pysparkJob!,
+        if (scheduling != null) 'scheduling': scheduling!,
+        if (sparkJob != null) 'sparkJob': sparkJob!,
+        if (sparkRJob != null) 'sparkRJob': sparkRJob!,
+        if (sparkSqlJob != null) 'sparkSqlJob': sparkSqlJob!,
         if (stepId != null) 'stepId': stepId!,
       };
 }
@@ -7451,8 +7428,8 @@ class ParameterValidation {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (regex != null) 'regex': regex!.toJson(),
-        if (values != null) 'values': values!.toJson(),
+        if (regex != null) 'regex': regex!,
+        if (values != null) 'values': values!,
       };
 }
 
@@ -7556,10 +7533,10 @@ class PigJob {
   core.Map<core.String, core.dynamic> toJson() => {
         if (continueOnFailure != null) 'continueOnFailure': continueOnFailure!,
         if (jarFileUris != null) 'jarFileUris': jarFileUris!,
-        if (loggingConfig != null) 'loggingConfig': loggingConfig!.toJson(),
+        if (loggingConfig != null) 'loggingConfig': loggingConfig!,
         if (properties != null) 'properties': properties!,
         if (queryFileUri != null) 'queryFileUri': queryFileUri!,
-        if (queryList != null) 'queryList': queryList!.toJson(),
+        if (queryList != null) 'queryList': queryList!,
         if (scriptVariables != null) 'scriptVariables': scriptVariables!,
       };
 }
@@ -7661,8 +7638,7 @@ class Policy {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bindings != null)
-          'bindings': bindings!.map((value) => value.toJson()).toList(),
+        if (bindings != null) 'bindings': bindings!,
         if (etag != null) 'etag': etag!,
         if (version != null) 'version': version!,
       };
@@ -7762,11 +7738,11 @@ class PrestoJob {
   core.Map<core.String, core.dynamic> toJson() => {
         if (clientTags != null) 'clientTags': clientTags!,
         if (continueOnFailure != null) 'continueOnFailure': continueOnFailure!,
-        if (loggingConfig != null) 'loggingConfig': loggingConfig!.toJson(),
+        if (loggingConfig != null) 'loggingConfig': loggingConfig!,
         if (outputFormat != null) 'outputFormat': outputFormat!,
         if (properties != null) 'properties': properties!,
         if (queryFileUri != null) 'queryFileUri': queryFileUri!,
-        if (queryList != null) 'queryList': queryList!.toJson(),
+        if (queryList != null) 'queryList': queryList!,
       };
 }
 
@@ -7893,7 +7869,7 @@ class PySparkJob {
         if (args != null) 'args': args!,
         if (fileUris != null) 'fileUris': fileUris!,
         if (jarFileUris != null) 'jarFileUris': jarFileUris!,
-        if (loggingConfig != null) 'loggingConfig': loggingConfig!.toJson(),
+        if (loggingConfig != null) 'loggingConfig': loggingConfig!,
         if (mainPythonFileUri != null) 'mainPythonFileUri': mainPythonFileUri!,
         if (properties != null) 'properties': properties!,
         if (pythonFileUris != null) 'pythonFileUris': pythonFileUris!,
@@ -8082,8 +8058,8 @@ class SecurityConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (identityConfig != null) 'identityConfig': identityConfig!.toJson(),
-        if (kerberosConfig != null) 'kerberosConfig': kerberosConfig!.toJson(),
+        if (identityConfig != null) 'identityConfig': identityConfig!,
+        if (kerberosConfig != null) 'kerberosConfig': kerberosConfig!,
       };
 }
 
@@ -8109,7 +8085,7 @@ class SetIamPolicyRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (policy != null) 'policy': policy!.toJson(),
+        if (policy != null) 'policy': policy!,
       };
 }
 
@@ -8341,7 +8317,7 @@ class SparkJob {
         if (args != null) 'args': args!,
         if (fileUris != null) 'fileUris': fileUris!,
         if (jarFileUris != null) 'jarFileUris': jarFileUris!,
-        if (loggingConfig != null) 'loggingConfig': loggingConfig!.toJson(),
+        if (loggingConfig != null) 'loggingConfig': loggingConfig!,
         if (mainClass != null) 'mainClass': mainClass!,
         if (mainJarFileUri != null) 'mainJarFileUri': mainJarFileUri!,
         if (properties != null) 'properties': properties!,
@@ -8444,7 +8420,7 @@ class SparkRJob {
         if (archiveUris != null) 'archiveUris': archiveUris!,
         if (args != null) 'args': args!,
         if (fileUris != null) 'fileUris': fileUris!,
-        if (loggingConfig != null) 'loggingConfig': loggingConfig!.toJson(),
+        if (loggingConfig != null) 'loggingConfig': loggingConfig!,
         if (mainRFileUri != null) 'mainRFileUri': mainRFileUri!,
         if (properties != null) 'properties': properties!,
       };
@@ -8534,10 +8510,10 @@ class SparkSqlJob {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (jarFileUris != null) 'jarFileUris': jarFileUris!,
-        if (loggingConfig != null) 'loggingConfig': loggingConfig!.toJson(),
+        if (loggingConfig != null) 'loggingConfig': loggingConfig!,
         if (properties != null) 'properties': properties!,
         if (queryFileUri != null) 'queryFileUri': queryFileUri!,
-        if (queryList != null) 'queryList': queryList!.toJson(),
+        if (queryList != null) 'queryList': queryList!,
         if (scriptVariables != null) 'scriptVariables': scriptVariables!,
       };
 }
@@ -8717,7 +8693,7 @@ class SubmitJobRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (job != null) 'job': job!.toJson(),
+        if (job != null) 'job': job!,
         if (requestId != null) 'requestId': requestId!,
       };
 }
@@ -8809,7 +8785,7 @@ class TemplateParameter {
         if (description != null) 'description': description!,
         if (fields != null) 'fields': fields!,
         if (name != null) 'name': name!,
-        if (validation != null) 'validation': validation!.toJson(),
+        if (validation != null) 'validation': validation!,
       };
 }
 
@@ -8910,8 +8886,7 @@ class WorkflowGraph {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nodes != null)
-          'nodes': nodes!.map((value) => value.toJson()).toList(),
+        if (nodes != null) 'nodes': nodes!,
       };
 }
 
@@ -9074,13 +9049,13 @@ class WorkflowMetadata {
   core.Map<core.String, core.dynamic> toJson() => {
         if (clusterName != null) 'clusterName': clusterName!,
         if (clusterUuid != null) 'clusterUuid': clusterUuid!,
-        if (createCluster != null) 'createCluster': createCluster!.toJson(),
+        if (createCluster != null) 'createCluster': createCluster!,
         if (dagEndTime != null) 'dagEndTime': dagEndTime!,
         if (dagStartTime != null) 'dagStartTime': dagStartTime!,
         if (dagTimeout != null) 'dagTimeout': dagTimeout!,
-        if (deleteCluster != null) 'deleteCluster': deleteCluster!.toJson(),
+        if (deleteCluster != null) 'deleteCluster': deleteCluster!,
         if (endTime != null) 'endTime': endTime!,
-        if (graph != null) 'graph': graph!.toJson(),
+        if (graph != null) 'graph': graph!,
         if (parameters != null) 'parameters': parameters!,
         if (startTime != null) 'startTime': startTime!,
         if (state != null) 'state': state!,
@@ -9300,12 +9275,11 @@ class WorkflowTemplate {
         if (createTime != null) 'createTime': createTime!,
         if (dagTimeout != null) 'dagTimeout': dagTimeout!,
         if (id != null) 'id': id!,
-        if (jobs != null) 'jobs': jobs!.map((value) => value.toJson()).toList(),
+        if (jobs != null) 'jobs': jobs!,
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
-        if (parameters != null)
-          'parameters': parameters!.map((value) => value.toJson()).toList(),
-        if (placement != null) 'placement': placement!.toJson(),
+        if (parameters != null) 'parameters': parameters!,
+        if (placement != null) 'placement': placement!,
         if (updateTime != null) 'updateTime': updateTime!,
         if (version != null) 'version': version!,
       };
@@ -9341,9 +9315,8 @@ class WorkflowTemplatePlacement {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (clusterSelector != null)
-          'clusterSelector': clusterSelector!.toJson(),
-        if (managedCluster != null) 'managedCluster': managedCluster!.toJson(),
+        if (clusterSelector != null) 'clusterSelector': clusterSelector!,
+        if (managedCluster != null) 'managedCluster': managedCluster!,
       };
 }
 

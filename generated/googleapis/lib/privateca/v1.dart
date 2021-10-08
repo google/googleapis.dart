@@ -232,7 +232,7 @@ class ProjectsLocationsCaPoolsResource {
     core.String? requestId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (caPoolId != null) 'caPoolId': [caPoolId],
       if (requestId != null) 'requestId': [requestId],
@@ -330,7 +330,7 @@ class ProjectsLocationsCaPoolsResource {
     core.String caPool, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -535,7 +535,7 @@ class ProjectsLocationsCaPoolsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (requestId != null) 'requestId': [requestId],
       if (updateMask != null) 'updateMask': [updateMask],
@@ -583,7 +583,7 @@ class ProjectsLocationsCaPoolsResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -631,7 +631,7 @@ class ProjectsLocationsCaPoolsResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -694,7 +694,7 @@ class ProjectsLocationsCaPoolsCertificateAuthoritiesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -754,7 +754,7 @@ class ProjectsLocationsCaPoolsCertificateAuthoritiesResource {
     core.String? requestId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (certificateAuthorityId != null)
         'certificateAuthorityId': [certificateAuthorityId],
@@ -860,7 +860,7 @@ class ProjectsLocationsCaPoolsCertificateAuthoritiesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -903,7 +903,7 @@ class ProjectsLocationsCaPoolsCertificateAuthoritiesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1105,7 +1105,7 @@ class ProjectsLocationsCaPoolsCertificateAuthoritiesResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (requestId != null) 'requestId': [requestId],
       if (updateMask != null) 'updateMask': [updateMask],
@@ -1150,7 +1150,7 @@ class ProjectsLocationsCaPoolsCertificateAuthoritiesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1368,7 +1368,7 @@ class ProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsRe
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (requestId != null) 'requestId': [requestId],
       if (updateMask != null) 'updateMask': [updateMask],
@@ -1416,7 +1416,7 @@ class ProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsRe
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1464,7 +1464,7 @@ class ProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsRe
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1554,7 +1554,7 @@ class ProjectsLocationsCaPoolsCertificatesResource {
     core.bool? validateOnly,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (certificateId != null) 'certificateId': [certificateId],
       if (issuingCertificateAuthorityId != null)
@@ -1719,7 +1719,7 @@ class ProjectsLocationsCaPoolsCertificatesResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (requestId != null) 'requestId': [requestId],
       if (updateMask != null) 'updateMask': [updateMask],
@@ -1764,7 +1764,7 @@ class ProjectsLocationsCaPoolsCertificatesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1830,7 +1830,7 @@ class ProjectsLocationsCertificateTemplatesResource {
     core.String? requestId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (certificateTemplateId != null)
         'certificateTemplateId': [certificateTemplateId],
@@ -2092,7 +2092,7 @@ class ProjectsLocationsCertificateTemplatesResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (requestId != null) 'requestId': [requestId],
       if (updateMask != null) 'updateMask': [updateMask],
@@ -2140,7 +2140,7 @@ class ProjectsLocationsCertificateTemplatesResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2188,7 +2188,7 @@ class ProjectsLocationsCertificateTemplatesResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2247,7 +2247,7 @@ class ProjectsLocationsOperationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2490,8 +2490,7 @@ class ActivateCertificateAuthorityRequest {
   core.Map<core.String, core.dynamic> toJson() => {
         if (pemCaCertificate != null) 'pemCaCertificate': pemCaCertificate!,
         if (requestId != null) 'requestId': requestId!,
-        if (subordinateConfig != null)
-          'subordinateConfig': subordinateConfig!.toJson(),
+        if (subordinateConfig != null) 'subordinateConfig': subordinateConfig!,
       };
 }
 
@@ -2526,8 +2525,8 @@ class AllowedKeyType {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (ellipticCurve != null) 'ellipticCurve': ellipticCurve!.toJson(),
-        if (rsa != null) 'rsa': rsa!.toJson(),
+        if (ellipticCurve != null) 'ellipticCurve': ellipticCurve!,
+        if (rsa != null) 'rsa': rsa!,
       };
 }
 
@@ -2577,9 +2576,7 @@ class AuditConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (auditLogConfigs != null)
-          'auditLogConfigs':
-              auditLogConfigs!.map((value) => value.toJson()).toList(),
+        if (auditLogConfigs != null) 'auditLogConfigs': auditLogConfigs!,
         if (service != null) 'service': service!,
       };
 }
@@ -2698,7 +2695,7 @@ class Binding {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (condition != null) 'condition': condition!.toJson(),
+        if (condition != null) 'condition': condition!,
         if (members != null) 'members': members!,
         if (role != null) 'role': role!,
       };
@@ -2814,11 +2811,10 @@ class CaPool {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (issuancePolicy != null) 'issuancePolicy': issuancePolicy!.toJson(),
+        if (issuancePolicy != null) 'issuancePolicy': issuancePolicy!,
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
-        if (publishingOptions != null)
-          'publishingOptions': publishingOptions!.toJson(),
+        if (publishingOptions != null) 'publishingOptions': publishingOptions!,
         if (tier != null) 'tier': tier!,
       };
 }
@@ -3027,10 +3023,10 @@ class Certificate {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (certificateDescription != null)
-          'certificateDescription': certificateDescription!.toJson(),
+          'certificateDescription': certificateDescription!,
         if (certificateTemplate != null)
           'certificateTemplate': certificateTemplate!,
-        if (config != null) 'config': config!.toJson(),
+        if (config != null) 'config': config!,
         if (createTime != null) 'createTime': createTime!,
         if (issuerCertificateAuthority != null)
           'issuerCertificateAuthority': issuerCertificateAuthority!,
@@ -3041,8 +3037,7 @@ class Certificate {
         if (pemCertificateChain != null)
           'pemCertificateChain': pemCertificateChain!,
         if (pemCsr != null) 'pemCsr': pemCsr!,
-        if (revocationDetails != null)
-          'revocationDetails': revocationDetails!.toJson(),
+        if (revocationDetails != null) 'revocationDetails': revocationDetails!,
         if (subjectMode != null) 'subjectMode': subjectMode!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
@@ -3278,24 +3273,21 @@ class CertificateAuthority {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (accessUrls != null) 'accessUrls': accessUrls!.toJson(),
+        if (accessUrls != null) 'accessUrls': accessUrls!,
         if (caCertificateDescriptions != null)
-          'caCertificateDescriptions': caCertificateDescriptions!
-              .map((value) => value.toJson())
-              .toList(),
-        if (config != null) 'config': config!.toJson(),
+          'caCertificateDescriptions': caCertificateDescriptions!,
+        if (config != null) 'config': config!,
         if (createTime != null) 'createTime': createTime!,
         if (deleteTime != null) 'deleteTime': deleteTime!,
         if (expireTime != null) 'expireTime': expireTime!,
         if (gcsBucket != null) 'gcsBucket': gcsBucket!,
-        if (keySpec != null) 'keySpec': keySpec!.toJson(),
+        if (keySpec != null) 'keySpec': keySpec!,
         if (labels != null) 'labels': labels!,
         if (lifetime != null) 'lifetime': lifetime!,
         if (name != null) 'name': name!,
         if (pemCaCertificates != null) 'pemCaCertificates': pemCaCertificates!,
         if (state != null) 'state': state!,
-        if (subordinateConfig != null)
-          'subordinateConfig': subordinateConfig!.toJson(),
+        if (subordinateConfig != null) 'subordinateConfig': subordinateConfig!,
         if (tier != null) 'tier': tier!,
         if (type != null) 'type': type!,
         if (updateTime != null) 'updateTime': updateTime!,
@@ -3348,9 +3340,9 @@ class CertificateConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (publicKey != null) 'publicKey': publicKey!.toJson(),
-        if (subjectConfig != null) 'subjectConfig': subjectConfig!.toJson(),
-        if (x509Config != null) 'x509Config': x509Config!.toJson(),
+        if (publicKey != null) 'publicKey': publicKey!,
+        if (subjectConfig != null) 'subjectConfig': subjectConfig!,
+        if (x509Config != null) 'x509Config': x509Config!,
       };
 }
 
@@ -3440,17 +3432,15 @@ class CertificateDescription {
   core.Map<core.String, core.dynamic> toJson() => {
         if (aiaIssuingCertificateUrls != null)
           'aiaIssuingCertificateUrls': aiaIssuingCertificateUrls!,
-        if (authorityKeyId != null) 'authorityKeyId': authorityKeyId!.toJson(),
-        if (certFingerprint != null)
-          'certFingerprint': certFingerprint!.toJson(),
+        if (authorityKeyId != null) 'authorityKeyId': authorityKeyId!,
+        if (certFingerprint != null) 'certFingerprint': certFingerprint!,
         if (crlDistributionPoints != null)
           'crlDistributionPoints': crlDistributionPoints!,
-        if (publicKey != null) 'publicKey': publicKey!.toJson(),
+        if (publicKey != null) 'publicKey': publicKey!,
         if (subjectDescription != null)
-          'subjectDescription': subjectDescription!.toJson(),
-        if (subjectKeyId != null) 'subjectKeyId': subjectKeyId!.toJson(),
-        if (x509Description != null)
-          'x509Description': x509Description!.toJson(),
+          'subjectDescription': subjectDescription!,
+        if (subjectKeyId != null) 'subjectKeyId': subjectKeyId!,
+        if (x509Description != null) 'x509Description': x509Description!,
       };
 }
 
@@ -3495,8 +3485,7 @@ class CertificateExtensionConstraints {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (additionalExtensions != null)
-          'additionalExtensions':
-              additionalExtensions!.map((value) => value.toJson()).toList(),
+          'additionalExtensions': additionalExtensions!,
         if (knownExtensions != null) 'knownExtensions': knownExtensions!,
       };
 }
@@ -3575,7 +3564,7 @@ class CertificateIdentityConstraints {
           'allowSubjectAltNamesPassthrough': allowSubjectAltNamesPassthrough!,
         if (allowSubjectPassthrough != null)
           'allowSubjectPassthrough': allowSubjectPassthrough!,
-        if (celExpression != null) 'celExpression': celExpression!.toJson(),
+        if (celExpression != null) 'celExpression': celExpression!,
       };
 }
 
@@ -3704,8 +3693,7 @@ class CertificateRevocationList {
         if (pemCrl != null) 'pemCrl': pemCrl!,
         if (revisionId != null) 'revisionId': revisionId!,
         if (revokedCertificates != null)
-          'revokedCertificates':
-              revokedCertificates!.map((value) => value.toJson()).toList(),
+          'revokedCertificates': revokedCertificates!,
         if (sequenceNumber != null) 'sequenceNumber': sequenceNumber!,
         if (state != null) 'state': state!,
         if (updateTime != null) 'updateTime': updateTime!,
@@ -3825,13 +3813,12 @@ class CertificateTemplate {
         if (createTime != null) 'createTime': createTime!,
         if (description != null) 'description': description!,
         if (identityConstraints != null)
-          'identityConstraints': identityConstraints!.toJson(),
+          'identityConstraints': identityConstraints!,
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
         if (passthroughExtensions != null)
-          'passthroughExtensions': passthroughExtensions!.toJson(),
-        if (predefinedValues != null)
-          'predefinedValues': predefinedValues!.toJson(),
+          'passthroughExtensions': passthroughExtensions!,
+        if (predefinedValues != null) 'predefinedValues': predefinedValues!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
 }
@@ -4155,8 +4142,7 @@ class FetchCaCertsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (caCerts != null)
-          'caCerts': caCerts!.map((value) => value.toJson()).toList(),
+        if (caCerts != null) 'caCerts': caCerts!,
       };
 }
 
@@ -4324,16 +4310,14 @@ class IssuancePolicy {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (allowedIssuanceModes != null)
-          'allowedIssuanceModes': allowedIssuanceModes!.toJson(),
-        if (allowedKeyTypes != null)
-          'allowedKeyTypes':
-              allowedKeyTypes!.map((value) => value.toJson()).toList(),
-        if (baselineValues != null) 'baselineValues': baselineValues!.toJson(),
+          'allowedIssuanceModes': allowedIssuanceModes!,
+        if (allowedKeyTypes != null) 'allowedKeyTypes': allowedKeyTypes!,
+        if (baselineValues != null) 'baselineValues': baselineValues!,
         if (identityConstraints != null)
-          'identityConstraints': identityConstraints!.toJson(),
+          'identityConstraints': identityConstraints!,
         if (maximumLifetime != null) 'maximumLifetime': maximumLifetime!,
         if (passthroughExtensions != null)
-          'passthroughExtensions': passthroughExtensions!.toJson(),
+          'passthroughExtensions': passthroughExtensions!,
       };
 }
 
@@ -4400,12 +4384,10 @@ class KeyUsage {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (baseKeyUsage != null) 'baseKeyUsage': baseKeyUsage!.toJson(),
-        if (extendedKeyUsage != null)
-          'extendedKeyUsage': extendedKeyUsage!.toJson(),
+        if (baseKeyUsage != null) 'baseKeyUsage': baseKeyUsage!,
+        if (extendedKeyUsage != null) 'extendedKeyUsage': extendedKeyUsage!,
         if (unknownExtendedKeyUsages != null)
-          'unknownExtendedKeyUsages':
-              unknownExtendedKeyUsages!.map((value) => value.toJson()).toList(),
+          'unknownExtendedKeyUsages': unknownExtendedKeyUsages!,
       };
 }
 
@@ -4590,8 +4572,7 @@ class ListCaPoolsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (caPools != null)
-          'caPools': caPools!.map((value) => value.toJson()).toList(),
+        if (caPools != null) 'caPools': caPools!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (unreachable != null) 'unreachable': unreachable!,
       };
@@ -4637,8 +4618,7 @@ class ListCertificateAuthoritiesResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (certificateAuthorities != null)
-          'certificateAuthorities':
-              certificateAuthorities!.map((value) => value.toJson()).toList(),
+          'certificateAuthorities': certificateAuthorities!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (unreachable != null) 'unreachable': unreachable!,
       };
@@ -4686,9 +4666,7 @@ class ListCertificateRevocationListsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (certificateRevocationLists != null)
-          'certificateRevocationLists': certificateRevocationLists!
-              .map((value) => value.toJson())
-              .toList(),
+          'certificateRevocationLists': certificateRevocationLists!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (unreachable != null) 'unreachable': unreachable!,
       };
@@ -4734,8 +4712,7 @@ class ListCertificateTemplatesResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (certificateTemplates != null)
-          'certificateTemplates':
-              certificateTemplates!.map((value) => value.toJson()).toList(),
+          'certificateTemplates': certificateTemplates!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (unreachable != null) 'unreachable': unreachable!,
       };
@@ -4780,8 +4757,7 @@ class ListCertificatesResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (certificates != null)
-          'certificates': certificates!.map((value) => value.toJson()).toList(),
+        if (certificates != null) 'certificates': certificates!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (unreachable != null) 'unreachable': unreachable!,
       };
@@ -4814,8 +4790,7 @@ class ListLocationsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (locations != null)
-          'locations': locations!.map((value) => value.toJson()).toList(),
+        if (locations != null) 'locations': locations!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -4848,8 +4823,7 @@ class ListOperationsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (operations != null)
-          'operations': operations!.map((value) => value.toJson()).toList(),
+        if (operations != null) 'operations': operations!,
       };
 }
 
@@ -5020,7 +4994,7 @@ class Operation {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (done != null) 'done': done!,
-        if (error != null) 'error': error!.toJson(),
+        if (error != null) 'error': error!,
         if (metadata != null) 'metadata': metadata!,
         if (name != null) 'name': name!,
         if (response != null) 'response': response!,
@@ -5222,10 +5196,8 @@ class Policy {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (auditConfigs != null)
-          'auditConfigs': auditConfigs!.map((value) => value.toJson()).toList(),
-        if (bindings != null)
-          'bindings': bindings!.map((value) => value.toJson()).toList(),
+        if (auditConfigs != null) 'auditConfigs': auditConfigs!,
+        if (bindings != null) 'bindings': bindings!,
         if (etag != null) 'etag': etag!,
         if (version != null) 'version': version!,
       };
@@ -5611,7 +5583,7 @@ class SetIamPolicyRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (policy != null) 'policy': policy!.toJson(),
+        if (policy != null) 'policy': policy!,
         if (updateMask != null) 'updateMask': updateMask!,
       };
 }
@@ -5804,8 +5776,7 @@ class SubjectAltNames {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (customSans != null)
-          'customSans': customSans!.map((value) => value.toJson()).toList(),
+        if (customSans != null) 'customSans': customSans!,
         if (dnsNames != null) 'dnsNames': dnsNames!,
         if (emailAddresses != null) 'emailAddresses': emailAddresses!,
         if (ipAddresses != null) 'ipAddresses': ipAddresses!,
@@ -5845,8 +5816,8 @@ class SubjectConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (subject != null) 'subject': subject!.toJson(),
-        if (subjectAltName != null) 'subjectAltName': subjectAltName!.toJson(),
+        if (subject != null) 'subject': subject!,
+        if (subjectAltName != null) 'subjectAltName': subjectAltName!,
       };
 }
 
@@ -5914,8 +5885,8 @@ class SubjectDescription {
         if (lifetime != null) 'lifetime': lifetime!,
         if (notAfterTime != null) 'notAfterTime': notAfterTime!,
         if (notBeforeTime != null) 'notBeforeTime': notBeforeTime!,
-        if (subject != null) 'subject': subject!.toJson(),
-        if (subjectAltName != null) 'subjectAltName': subjectAltName!.toJson(),
+        if (subject != null) 'subject': subject!,
+        if (subjectAltName != null) 'subjectAltName': subjectAltName!,
       };
 }
 
@@ -5959,7 +5930,7 @@ class SubordinateConfig {
   core.Map<core.String, core.dynamic> toJson() => {
         if (certificateAuthority != null)
           'certificateAuthority': certificateAuthority!,
-        if (pemIssuerChain != null) 'pemIssuerChain': pemIssuerChain!.toJson(),
+        if (pemIssuerChain != null) 'pemIssuerChain': pemIssuerChain!,
       };
 }
 
@@ -6123,7 +6094,7 @@ class X509Extension {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (critical != null) 'critical': critical!,
-        if (objectId != null) 'objectId': objectId!.toJson(),
+        if (objectId != null) 'objectId': objectId!,
         if (value != null) 'value': value!,
       };
 }
@@ -6200,12 +6171,10 @@ class X509Parameters {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (additionalExtensions != null)
-          'additionalExtensions':
-              additionalExtensions!.map((value) => value.toJson()).toList(),
+          'additionalExtensions': additionalExtensions!,
         if (aiaOcspServers != null) 'aiaOcspServers': aiaOcspServers!,
-        if (caOptions != null) 'caOptions': caOptions!.toJson(),
-        if (keyUsage != null) 'keyUsage': keyUsage!.toJson(),
-        if (policyIds != null)
-          'policyIds': policyIds!.map((value) => value.toJson()).toList(),
+        if (caOptions != null) 'caOptions': caOptions!,
+        if (keyUsage != null) 'keyUsage': keyUsage!,
+        if (policyIds != null) 'policyIds': policyIds!,
       };
 }

@@ -100,7 +100,7 @@ class LocationsPlaceActionLinksResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -279,7 +279,7 @@ class LocationsPlaceActionLinksResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -404,9 +404,7 @@ class ListPlaceActionLinksResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (placeActionLinks != null)
-          'placeActionLinks':
-              placeActionLinks!.map((value) => value.toJson()).toList(),
+        if (placeActionLinks != null) 'placeActionLinks': placeActionLinks!,
       };
 }
 
@@ -444,8 +442,7 @@ class ListPlaceActionTypeMetadataResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (placeActionTypeMetadata != null)
-          'placeActionTypeMetadata':
-              placeActionTypeMetadata!.map((value) => value.toJson()).toList(),
+          'placeActionTypeMetadata': placeActionTypeMetadata!,
       };
 }
 

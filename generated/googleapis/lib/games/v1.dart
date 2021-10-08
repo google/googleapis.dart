@@ -392,7 +392,7 @@ class AchievementsResource {
     AchievementUpdateMultipleRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -710,7 +710,7 @@ class EventsResource {
     core.String? language,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (language != null) 'language': [language],
       if ($fields != null) 'fields': [$fields],
@@ -1405,7 +1405,7 @@ class ScoresResource {
     core.String? language,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (language != null) 'language': [language],
       if ($fields != null) 'fields': [$fields],
@@ -1726,8 +1726,7 @@ class AchievementDefinitionsListResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (items != null)
-          'items': items!.map((value) => value.toJson()).toList(),
+        if (items != null) 'items': items!,
         if (kind != null) 'kind': kind!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
@@ -1903,8 +1902,7 @@ class AchievementUpdateMultipleRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
-        if (updates != null)
-          'updates': updates!.map((value) => value.toJson()).toList(),
+        if (updates != null) 'updates': updates!,
       };
 }
 
@@ -1938,8 +1936,7 @@ class AchievementUpdateMultipleResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
         if (updatedAchievements != null)
-          'updatedAchievements':
-              updatedAchievements!.map((value) => value.toJson()).toList(),
+          'updatedAchievements': updatedAchievements!,
       };
 }
 
@@ -2001,11 +1998,10 @@ class AchievementUpdateRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (achievementId != null) 'achievementId': achievementId!,
-        if (incrementPayload != null)
-          'incrementPayload': incrementPayload!.toJson(),
+        if (incrementPayload != null) 'incrementPayload': incrementPayload!,
         if (kind != null) 'kind': kind!,
         if (setStepsAtLeastPayload != null)
-          'setStepsAtLeastPayload': setStepsAtLeastPayload!.toJson(),
+          'setStepsAtLeastPayload': setStepsAtLeastPayload!,
         if (updateType != null) 'updateType': updateType!,
       };
 }
@@ -2186,15 +2182,13 @@ class Application {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (achievementCount != null) 'achievement_count': achievementCount!,
-        if (assets != null)
-          'assets': assets!.map((value) => value.toJson()).toList(),
+        if (assets != null) 'assets': assets!,
         if (author != null) 'author': author!,
-        if (category != null) 'category': category!.toJson(),
+        if (category != null) 'category': category!,
         if (description != null) 'description': description!,
         if (enabledFeatures != null) 'enabledFeatures': enabledFeatures!,
         if (id != null) 'id': id!,
-        if (instances != null)
-          'instances': instances!.map((value) => value.toJson()).toList(),
+        if (instances != null) 'instances': instances!,
         if (kind != null) 'kind': kind!,
         if (lastUpdatedTimestamp != null)
           'lastUpdatedTimestamp': lastUpdatedTimestamp!,
@@ -2353,8 +2347,7 @@ class CategoryListResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (items != null)
-          'items': items!.map((value) => value.toJson()).toList(),
+        if (items != null) 'items': items!,
         if (kind != null) 'kind': kind!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
@@ -2427,7 +2420,7 @@ class EventBatchRecordFailure {
   core.Map<core.String, core.dynamic> toJson() => {
         if (failureCause != null) 'failureCause': failureCause!,
         if (kind != null) 'kind': kind!,
-        if (range != null) 'range': range!.toJson(),
+        if (range != null) 'range': range!,
       };
 }
 
@@ -2533,8 +2526,7 @@ class EventDefinition {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (childEvents != null)
-          'childEvents': childEvents!.map((value) => value.toJson()).toList(),
+        if (childEvents != null) 'childEvents': childEvents!,
         if (description != null) 'description': description!,
         if (displayName != null) 'displayName': displayName!,
         if (id != null) 'id': id!,
@@ -2579,8 +2571,7 @@ class EventDefinitionListResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (items != null)
-          'items': items!.map((value) => value.toJson()).toList(),
+        if (items != null) 'items': items!,
         if (kind != null) 'kind': kind!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
@@ -2661,9 +2652,8 @@ class EventPeriodUpdate {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
-        if (timePeriod != null) 'timePeriod': timePeriod!.toJson(),
-        if (updates != null)
-          'updates': updates!.map((value) => value.toJson()).toList(),
+        if (timePeriod != null) 'timePeriod': timePeriod!,
+        if (updates != null) 'updates': updates!,
       };
 }
 
@@ -2755,8 +2745,7 @@ class EventRecordRequest {
         if (currentTimeMillis != null) 'currentTimeMillis': currentTimeMillis!,
         if (kind != null) 'kind': kind!,
         if (requestId != null) 'requestId': requestId!,
-        if (timePeriods != null)
-          'timePeriods': timePeriods!.map((value) => value.toJson()).toList(),
+        if (timePeriods != null) 'timePeriods': timePeriods!,
       };
 }
 
@@ -2844,15 +2833,10 @@ class EventUpdateResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (batchFailures != null)
-          'batchFailures':
-              batchFailures!.map((value) => value.toJson()).toList(),
-        if (eventFailures != null)
-          'eventFailures':
-              eventFailures!.map((value) => value.toJson()).toList(),
+        if (batchFailures != null) 'batchFailures': batchFailures!,
+        if (eventFailures != null) 'eventFailures': eventFailures!,
         if (kind != null) 'kind': kind!,
-        if (playerEvents != null)
-          'playerEvents': playerEvents!.map((value) => value.toJson()).toList(),
+        if (playerEvents != null) 'playerEvents': playerEvents!,
       };
 }
 
@@ -3044,15 +3028,14 @@ class Instance {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (acquisitionUri != null) 'acquisitionUri': acquisitionUri!,
-        if (androidInstance != null)
-          'androidInstance': androidInstance!.toJson(),
-        if (iosInstance != null) 'iosInstance': iosInstance!.toJson(),
+        if (androidInstance != null) 'androidInstance': androidInstance!,
+        if (iosInstance != null) 'iosInstance': iosInstance!,
         if (kind != null) 'kind': kind!,
         if (name != null) 'name': name!,
         if (platformType != null) 'platformType': platformType!,
         if (realtimePlay != null) 'realtimePlay': realtimePlay!,
         if (turnBasedPlay != null) 'turnBasedPlay': turnBasedPlay!,
-        if (webInstance != null) 'webInstance': webInstance!.toJson(),
+        if (webInstance != null) 'webInstance': webInstance!,
       };
 }
 
@@ -3360,7 +3343,7 @@ class LeaderboardEntry {
         if (formattedScoreRank != null)
           'formattedScoreRank': formattedScoreRank!,
         if (kind != null) 'kind': kind!,
-        if (player != null) 'player': player!.toJson(),
+        if (player != null) 'player': player!,
         if (scoreRank != null) 'scoreRank': scoreRank!,
         if (scoreTag != null) 'scoreTag': scoreTag!,
         if (scoreValue != null) 'scoreValue': scoreValue!,
@@ -3404,8 +3387,7 @@ class LeaderboardListResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (items != null)
-          'items': items!.map((value) => value.toJson()).toList(),
+        if (items != null) 'items': items!,
         if (kind != null) 'kind': kind!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
@@ -3524,12 +3506,11 @@ class LeaderboardScores {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (items != null)
-          'items': items!.map((value) => value.toJson()).toList(),
+        if (items != null) 'items': items!,
         if (kind != null) 'kind': kind!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (numScores != null) 'numScores': numScores!,
-        if (playerScore != null) 'playerScore': playerScore!.toJson(),
+        if (playerScore != null) 'playerScore': playerScore!,
         if (prevPageToken != null) 'prevPageToken': prevPageToken!,
       };
 }
@@ -3572,8 +3553,7 @@ class MetagameConfig {
   core.Map<core.String, core.dynamic> toJson() => {
         if (currentVersion != null) 'currentVersion': currentVersion!,
         if (kind != null) 'kind': kind!,
-        if (playerLevels != null)
-          'playerLevels': playerLevels!.map((value) => value.toJson()).toList(),
+        if (playerLevels != null) 'playerLevels': playerLevels!,
       };
 }
 
@@ -3725,14 +3705,13 @@ class Player {
           'bannerUrlLandscape': bannerUrlLandscape!,
         if (bannerUrlPortrait != null) 'bannerUrlPortrait': bannerUrlPortrait!,
         if (displayName != null) 'displayName': displayName!,
-        if (experienceInfo != null) 'experienceInfo': experienceInfo!.toJson(),
+        if (experienceInfo != null) 'experienceInfo': experienceInfo!,
         if (friendStatus != null) 'friendStatus': friendStatus!,
         if (kind != null) 'kind': kind!,
-        if (name != null) 'name': name!.toJson(),
+        if (name != null) 'name': name!,
         if (originalPlayerId != null) 'originalPlayerId': originalPlayerId!,
         if (playerId != null) 'playerId': playerId!,
-        if (profileSettings != null)
-          'profileSettings': profileSettings!.toJson(),
+        if (profileSettings != null) 'profileSettings': profileSettings!,
         if (title != null) 'title': title!,
       };
 }
@@ -3850,8 +3829,7 @@ class PlayerAchievementListResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (items != null)
-          'items': items!.map((value) => value.toJson()).toList(),
+        if (items != null) 'items': items!,
         if (kind != null) 'kind': kind!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
@@ -3948,8 +3926,7 @@ class PlayerEventListResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (items != null)
-          'items': items!.map((value) => value.toJson()).toList(),
+        if (items != null) 'items': items!,
         if (kind != null) 'kind': kind!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
@@ -4009,11 +3986,11 @@ class PlayerExperienceInfo {
   core.Map<core.String, core.dynamic> toJson() => {
         if (currentExperiencePoints != null)
           'currentExperiencePoints': currentExperiencePoints!,
-        if (currentLevel != null) 'currentLevel': currentLevel!.toJson(),
+        if (currentLevel != null) 'currentLevel': currentLevel!,
         if (kind != null) 'kind': kind!,
         if (lastLevelUpTimestampMillis != null)
           'lastLevelUpTimestampMillis': lastLevelUpTimestampMillis!,
-        if (nextLevel != null) 'nextLevel': nextLevel!.toJson(),
+        if (nextLevel != null) 'nextLevel': nextLevel!,
       };
 }
 
@@ -4112,14 +4089,14 @@ class PlayerLeaderboardScore {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (friendsRank != null) 'friendsRank': friendsRank!.toJson(),
+        if (friendsRank != null) 'friendsRank': friendsRank!,
         if (kind != null) 'kind': kind!,
         if (leaderboardId != null) 'leaderboard_id': leaderboardId!,
-        if (publicRank != null) 'publicRank': publicRank!.toJson(),
+        if (publicRank != null) 'publicRank': publicRank!,
         if (scoreString != null) 'scoreString': scoreString!,
         if (scoreTag != null) 'scoreTag': scoreTag!,
         if (scoreValue != null) 'scoreValue': scoreValue!,
-        if (socialRank != null) 'socialRank': socialRank!.toJson(),
+        if (socialRank != null) 'socialRank': socialRank!,
         if (timeSpan != null) 'timeSpan': timeSpan!,
         if (writeTimestamp != null) 'writeTimestamp': writeTimestamp!,
       };
@@ -4168,11 +4145,10 @@ class PlayerLeaderboardScoreListResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (items != null)
-          'items': items!.map((value) => value.toJson()).toList(),
+        if (items != null) 'items': items!,
         if (kind != null) 'kind': kind!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (player != null) 'player': player!.toJson(),
+        if (player != null) 'player': player!,
       };
 }
 
@@ -4255,8 +4231,7 @@ class PlayerListResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (items != null)
-          'items': items!.map((value) => value.toJson()).toList(),
+        if (items != null) 'items': items!,
         if (kind != null) 'kind': kind!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
@@ -4350,9 +4325,7 @@ class PlayerScoreListResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
-        if (submittedScores != null)
-          'submittedScores':
-              submittedScores!.map((value) => value.toJson()).toList(),
+        if (submittedScores != null) 'submittedScores': submittedScores!,
       };
 }
 
@@ -4427,9 +4400,7 @@ class PlayerScoreResponse {
         if (kind != null) 'kind': kind!,
         if (leaderboardId != null) 'leaderboardId': leaderboardId!,
         if (scoreTag != null) 'scoreTag': scoreTag!,
-        if (unbeatenScores != null)
-          'unbeatenScores':
-              unbeatenScores!.map((value) => value.toJson()).toList(),
+        if (unbeatenScores != null) 'unbeatenScores': unbeatenScores!,
       };
 }
 
@@ -4461,8 +4432,7 @@ class PlayerScoreSubmissionList {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
-        if (scores != null)
-          'scores': scores!.map((value) => value.toJson()).toList(),
+        if (scores != null) 'scores': scores!,
       };
 }
 
@@ -4708,7 +4678,7 @@ class Snapshot {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (coverImage != null) 'coverImage': coverImage!.toJson(),
+        if (coverImage != null) 'coverImage': coverImage!,
         if (description != null) 'description': description!,
         if (driveId != null) 'driveId': driveId!,
         if (durationMillis != null) 'durationMillis': durationMillis!,
@@ -4809,8 +4779,7 @@ class SnapshotListResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (items != null)
-          'items': items!.map((value) => value.toJson()).toList(),
+        if (items != null) 'items': items!,
         if (kind != null) 'kind': kind!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };

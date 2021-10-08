@@ -118,7 +118,7 @@ class ProjectsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -173,7 +173,7 @@ class ProjectsDataSourcesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -323,7 +323,7 @@ class ProjectsLocationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -466,7 +466,7 @@ class ProjectsLocationsDataSourcesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -642,7 +642,7 @@ class ProjectsLocationsTransferConfigsResource {
     core.String? versionInfo,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (authorizationCode != null) 'authorizationCode': [authorizationCode],
       if (serviceAccountName != null)
@@ -863,7 +863,7 @@ class ProjectsLocationsTransferConfigsResource {
     core.String? versionInfo,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (authorizationCode != null) 'authorizationCode': [authorizationCode],
       if (serviceAccountName != null)
@@ -916,7 +916,7 @@ class ProjectsLocationsTransferConfigsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -965,7 +965,7 @@ class ProjectsLocationsTransferConfigsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1267,7 +1267,7 @@ class ProjectsTransferConfigsResource {
     core.String? versionInfo,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (authorizationCode != null) 'authorizationCode': [authorizationCode],
       if (serviceAccountName != null)
@@ -1485,7 +1485,7 @@ class ProjectsTransferConfigsResource {
     core.String? versionInfo,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (authorizationCode != null) 'authorizationCode': [authorizationCode],
       if (serviceAccountName != null)
@@ -1537,7 +1537,7 @@ class ProjectsTransferConfigsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1585,7 +1585,7 @@ class ProjectsTransferConfigsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2051,8 +2051,7 @@ class DataSource {
         if (minimumScheduleInterval != null)
           'minimumScheduleInterval': minimumScheduleInterval!,
         if (name != null) 'name': name!,
-        if (parameters != null)
-          'parameters': parameters!.map((value) => value.toJson()).toList(),
+        if (parameters != null) 'parameters': parameters!,
         if (scopes != null) 'scopes': scopes!,
         if (supportsCustomSchedule != null)
           'supportsCustomSchedule': supportsCustomSchedule!,
@@ -2216,8 +2215,7 @@ class DataSourceParameter {
         if (deprecated != null) 'deprecated': deprecated!,
         if (description != null) 'description': description!,
         if (displayName != null) 'displayName': displayName!,
-        if (fields != null)
-          'fields': fields!.map((value) => value.toJson()).toList(),
+        if (fields != null) 'fields': fields!,
         if (immutable != null) 'immutable': immutable!,
         if (maxValue != null) 'maxValue': maxValue!,
         if (minValue != null) 'minValue': minValue!,
@@ -2324,8 +2322,7 @@ class ListDataSourcesResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dataSources != null)
-          'dataSources': dataSources!.map((value) => value.toJson()).toList(),
+        if (dataSources != null) 'dataSources': dataSources!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -2357,8 +2354,7 @@ class ListLocationsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (locations != null)
-          'locations': locations!.map((value) => value.toJson()).toList(),
+        if (locations != null) 'locations': locations!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -2399,9 +2395,7 @@ class ListTransferConfigsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (transferConfigs != null)
-          'transferConfigs':
-              transferConfigs!.map((value) => value.toJson()).toList(),
+        if (transferConfigs != null) 'transferConfigs': transferConfigs!,
       };
 }
 
@@ -2441,9 +2435,7 @@ class ListTransferLogsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (transferMessages != null)
-          'transferMessages':
-              transferMessages!.map((value) => value.toJson()).toList(),
+        if (transferMessages != null) 'transferMessages': transferMessages!,
       };
 }
 
@@ -2483,8 +2475,7 @@ class ListTransferRunsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (transferRuns != null)
-          'transferRuns': transferRuns!.map((value) => value.toJson()).toList(),
+        if (transferRuns != null) 'transferRuns': transferRuns!,
       };
 }
 
@@ -2666,7 +2657,7 @@ class ScheduleTransferRunsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (runs != null) 'runs': runs!.map((value) => value.toJson()).toList(),
+        if (runs != null) 'runs': runs!,
       };
 }
 
@@ -2699,7 +2690,7 @@ class StartManualTransferRunsRequest {
   core.Map<core.String, core.dynamic> toJson() => {
         if (requestedRunTime != null) 'requestedRunTime': requestedRunTime!,
         if (requestedTimeRange != null)
-          'requestedTimeRange': requestedTimeRange!.toJson(),
+          'requestedTimeRange': requestedTimeRange!,
       };
 }
 
@@ -2723,7 +2714,7 @@ class StartManualTransferRunsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (runs != null) 'runs': runs!.map((value) => value.toJson()).toList(),
+        if (runs != null) 'runs': runs!,
       };
 }
 
@@ -3019,17 +3010,15 @@ class TransferConfig {
           'destinationDatasetId': destinationDatasetId!,
         if (disabled != null) 'disabled': disabled!,
         if (displayName != null) 'displayName': displayName!,
-        if (emailPreferences != null)
-          'emailPreferences': emailPreferences!.toJson(),
+        if (emailPreferences != null) 'emailPreferences': emailPreferences!,
         if (name != null) 'name': name!,
         if (nextRunTime != null) 'nextRunTime': nextRunTime!,
         if (notificationPubsubTopic != null)
           'notificationPubsubTopic': notificationPubsubTopic!,
-        if (ownerInfo != null) 'ownerInfo': ownerInfo!.toJson(),
+        if (ownerInfo != null) 'ownerInfo': ownerInfo!,
         if (params != null) 'params': params!,
         if (schedule != null) 'schedule': schedule!,
-        if (scheduleOptions != null)
-          'scheduleOptions': scheduleOptions!.toJson(),
+        if (scheduleOptions != null) 'scheduleOptions': scheduleOptions!,
         if (state != null) 'state': state!,
         if (updateTime != null) 'updateTime': updateTime!,
         if (userId != null) 'userId': userId!,
@@ -3253,10 +3242,9 @@ class TransferRun {
         if (dataSourceId != null) 'dataSourceId': dataSourceId!,
         if (destinationDatasetId != null)
           'destinationDatasetId': destinationDatasetId!,
-        if (emailPreferences != null)
-          'emailPreferences': emailPreferences!.toJson(),
+        if (emailPreferences != null) 'emailPreferences': emailPreferences!,
         if (endTime != null) 'endTime': endTime!,
-        if (errorStatus != null) 'errorStatus': errorStatus!.toJson(),
+        if (errorStatus != null) 'errorStatus': errorStatus!,
         if (name != null) 'name': name!,
         if (notificationPubsubTopic != null)
           'notificationPubsubTopic': notificationPubsubTopic!,

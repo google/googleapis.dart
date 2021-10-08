@@ -117,7 +117,7 @@ class ProjectsLocationsWorkflowsExecutionsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -161,7 +161,7 @@ class ProjectsLocationsWorkflowsExecutionsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -332,7 +332,7 @@ class Error {
   core.Map<core.String, core.dynamic> toJson() => {
         if (context != null) 'context': context!,
         if (payload != null) 'payload': payload!,
-        if (stackTrace != null) 'stackTrace': stackTrace!.toJson(),
+        if (stackTrace != null) 'stackTrace': stackTrace!,
       };
 }
 
@@ -450,7 +450,7 @@ class Execution {
         if (argument != null) 'argument': argument!,
         if (callLogLevel != null) 'callLogLevel': callLogLevel!,
         if (endTime != null) 'endTime': endTime!,
-        if (error != null) 'error': error!.toJson(),
+        if (error != null) 'error': error!,
         if (name != null) 'name': name!,
         if (result != null) 'result': result!,
         if (startTime != null) 'startTime': startTime!,
@@ -489,8 +489,7 @@ class ListExecutionsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (executions != null)
-          'executions': executions!.map((value) => value.toJson()).toList(),
+        if (executions != null) 'executions': executions!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -553,8 +552,7 @@ class StackTrace {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (elements != null)
-          'elements': elements!.map((value) => value.toJson()).toList(),
+        if (elements != null) 'elements': elements!,
       };
 }
 
@@ -588,7 +586,7 @@ class StackTraceElement {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (position != null) 'position': position!.toJson(),
+        if (position != null) 'position': position!,
         if (routine != null) 'routine': routine!,
         if (step != null) 'step': step!,
       };

@@ -136,7 +136,7 @@ class FoldersLocationsReplaysResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -417,7 +417,7 @@ class OrganizationsLocationsReplaysResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -595,7 +595,7 @@ class ProjectsLocationsReplaysResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -778,9 +778,9 @@ class GoogleCloudPolicysimulatorV1Replay {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (config != null) 'config': config!.toJson(),
+        if (config != null) 'config': config!,
         if (name != null) 'name': name!,
-        if (resultsSummary != null) 'resultsSummary': resultsSummary!.toJson(),
+        if (resultsSummary != null) 'resultsSummary': resultsSummary!,
         if (state != null) 'state': state!,
       };
 }
@@ -833,9 +833,7 @@ class GoogleCloudPolicysimulatorV1ReplayConfig {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (logSource != null) 'logSource': logSource!,
-        if (policyOverlay != null)
-          'policyOverlay': policyOverlay!
-              .map((key, item) => core.MapEntry(key, item.toJson())),
+        if (policyOverlay != null) 'policyOverlay': policyOverlay!,
       };
 }
 
@@ -919,8 +917,8 @@ class GoogleCloudPolicysimulatorV1ReplayResultsSummary {
         if (differenceCount != null) 'differenceCount': differenceCount!,
         if (errorCount != null) 'errorCount': errorCount!,
         if (logCount != null) 'logCount': logCount!,
-        if (newestDate != null) 'newestDate': newestDate!.toJson(),
-        if (oldestDate != null) 'oldestDate': oldestDate!.toJson(),
+        if (newestDate != null) 'newestDate': newestDate!,
+        if (oldestDate != null) 'oldestDate': oldestDate!,
         if (unchangedCount != null) 'unchangedCount': unchangedCount!,
       };
 }
@@ -991,8 +989,8 @@ class GoogleCloudPolicysimulatorV1beta1AccessStateDiff {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accessChange != null) 'accessChange': accessChange!,
-        if (baseline != null) 'baseline': baseline!.toJson(),
-        if (simulated != null) 'simulated': simulated!.toJson(),
+        if (baseline != null) 'baseline': baseline!,
+        if (simulated != null) 'simulated': simulated!,
       };
 }
 
@@ -1183,10 +1181,8 @@ class GoogleCloudPolicysimulatorV1beta1BindingExplanation {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (access != null) 'access': access!,
-        if (condition != null) 'condition': condition!.toJson(),
-        if (memberships != null)
-          'memberships': memberships!
-              .map((key, item) => core.MapEntry(key, item.toJson())),
+        if (condition != null) 'condition': condition!,
+        if (memberships != null) 'memberships': memberships!,
         if (relevance != null) 'relevance': relevance!,
         if (role != null) 'role': role!,
         if (rolePermission != null) 'rolePermission': rolePermission!,
@@ -1299,10 +1295,8 @@ class GoogleCloudPolicysimulatorV1beta1ExplainedAccess {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accessState != null) 'accessState': accessState!,
-        if (errors != null)
-          'errors': errors!.map((value) => value.toJson()).toList(),
-        if (policies != null)
-          'policies': policies!.map((value) => value.toJson()).toList(),
+        if (errors != null) 'errors': errors!,
+        if (policies != null) 'policies': policies!,
       };
 }
 
@@ -1398,10 +1392,9 @@ class GoogleCloudPolicysimulatorV1beta1ExplainedPolicy {
   core.Map<core.String, core.dynamic> toJson() => {
         if (access != null) 'access': access!,
         if (bindingExplanations != null)
-          'bindingExplanations':
-              bindingExplanations!.map((value) => value.toJson()).toList(),
+          'bindingExplanations': bindingExplanations!,
         if (fullResourceName != null) 'fullResourceName': fullResourceName!,
-        if (policy != null) 'policy': policy!.toJson(),
+        if (policy != null) 'policy': policy!,
         if (relevance != null) 'relevance': relevance!,
       };
 }
@@ -1439,9 +1432,7 @@ class GoogleCloudPolicysimulatorV1beta1ListReplayResultsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (replayResults != null)
-          'replayResults':
-              replayResults!.map((value) => value.toJson()).toList(),
+        if (replayResults != null) 'replayResults': replayResults!,
       };
 }
 
@@ -1503,9 +1494,9 @@ class GoogleCloudPolicysimulatorV1beta1Replay {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (config != null) 'config': config!.toJson(),
+        if (config != null) 'config': config!,
         if (name != null) 'name': name!,
-        if (resultsSummary != null) 'resultsSummary': resultsSummary!.toJson(),
+        if (resultsSummary != null) 'resultsSummary': resultsSummary!,
         if (state != null) 'state': state!,
       };
 }
@@ -1558,9 +1549,7 @@ class GoogleCloudPolicysimulatorV1beta1ReplayConfig {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (logSource != null) 'logSource': logSource!,
-        if (policyOverlay != null)
-          'policyOverlay': policyOverlay!
-              .map((key, item) => core.MapEntry(key, item.toJson())),
+        if (policyOverlay != null) 'policyOverlay': policyOverlay!,
       };
 }
 
@@ -1591,7 +1580,7 @@ class GoogleCloudPolicysimulatorV1beta1ReplayDiff {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (accessDiff != null) 'accessDiff': accessDiff!.toJson(),
+        if (accessDiff != null) 'accessDiff': accessDiff!,
       };
 }
 
@@ -1688,10 +1677,10 @@ class GoogleCloudPolicysimulatorV1beta1ReplayResult {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (accessTuple != null) 'accessTuple': accessTuple!.toJson(),
-        if (diff != null) 'diff': diff!.toJson(),
-        if (error != null) 'error': error!.toJson(),
-        if (lastSeenDate != null) 'lastSeenDate': lastSeenDate!.toJson(),
+        if (accessTuple != null) 'accessTuple': accessTuple!,
+        if (diff != null) 'diff': diff!,
+        if (error != null) 'error': error!,
+        if (lastSeenDate != null) 'lastSeenDate': lastSeenDate!,
         if (name != null) 'name': name!,
         if (parent != null) 'parent': parent!,
       };
@@ -1756,8 +1745,8 @@ class GoogleCloudPolicysimulatorV1beta1ReplayResultsSummary {
         if (differenceCount != null) 'differenceCount': differenceCount!,
         if (errorCount != null) 'errorCount': errorCount!,
         if (logCount != null) 'logCount': logCount!,
-        if (newestDate != null) 'newestDate': newestDate!.toJson(),
-        if (oldestDate != null) 'oldestDate': oldestDate!.toJson(),
+        if (newestDate != null) 'newestDate': newestDate!,
+        if (oldestDate != null) 'oldestDate': oldestDate!,
         if (unchangedCount != null) 'unchangedCount': unchangedCount!,
       };
 }
@@ -1808,9 +1797,7 @@ class GoogleIamV1AuditConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (auditLogConfigs != null)
-          'auditLogConfigs':
-              auditLogConfigs!.map((value) => value.toJson()).toList(),
+        if (auditLogConfigs != null) 'auditLogConfigs': auditLogConfigs!,
         if (service != null) 'service': service!,
       };
 }
@@ -1929,7 +1916,7 @@ class GoogleIamV1Binding {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (condition != null) 'condition': condition!.toJson(),
+        if (condition != null) 'condition': condition!,
         if (members != null) 'members': members!,
         if (role != null) 'role': role!,
       };
@@ -2044,10 +2031,8 @@ class GoogleIamV1Policy {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (auditConfigs != null)
-          'auditConfigs': auditConfigs!.map((value) => value.toJson()).toList(),
-        if (bindings != null)
-          'bindings': bindings!.map((value) => value.toJson()).toList(),
+        if (auditConfigs != null) 'auditConfigs': auditConfigs!,
+        if (bindings != null) 'bindings': bindings!,
         if (etag != null) 'etag': etag!,
         if (version != null) 'version': version!,
       };
@@ -2081,8 +2066,7 @@ class GoogleLongrunningListOperationsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (operations != null)
-          'operations': operations!.map((value) => value.toJson()).toList(),
+        if (operations != null) 'operations': operations!,
       };
 }
 
@@ -2155,7 +2139,7 @@ class GoogleLongrunningOperation {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (done != null) 'done': done!,
-        if (error != null) 'error': error!.toJson(),
+        if (error != null) 'error': error!,
         if (metadata != null) 'metadata': metadata!,
         if (name != null) 'name': name!,
         if (response != null) 'response': response!,

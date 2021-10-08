@@ -508,7 +508,7 @@ class ActivitiesResource {
     core.String? startTime,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (actorIpAddress != null) 'actorIpAddress': [actorIpAddress],
       if (customerId != null) 'customerId': [customerId],
@@ -562,7 +562,7 @@ class ChannelsResource {
     Channel request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -968,8 +968,7 @@ class Activities {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
-        if (items != null)
-          'items': items!.map((value) => value.toJson()).toList(),
+        if (items != null) 'items': items!,
         if (kind != null) 'kind': kind!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
@@ -1048,8 +1047,7 @@ class ActivityEventsParametersMessageValue {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (parameter != null)
-          'parameter': parameter!.map((value) => value.toJson()).toList(),
+        if (parameter != null) 'parameter': parameter!,
       };
 }
 
@@ -1072,8 +1070,7 @@ class ActivityEventsParametersMultiMessageValue {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (parameter != null)
-          'parameter': parameter!.map((value) => value.toJson()).toList(),
+        if (parameter != null) 'parameter': parameter!,
       };
 }
 
@@ -1154,11 +1151,9 @@ class ActivityEventsParameters {
   core.Map<core.String, core.dynamic> toJson() => {
         if (boolValue != null) 'boolValue': boolValue!,
         if (intValue != null) 'intValue': intValue!,
-        if (messageValue != null) 'messageValue': messageValue!.toJson(),
+        if (messageValue != null) 'messageValue': messageValue!,
         if (multiIntValue != null) 'multiIntValue': multiIntValue!,
-        if (multiMessageValue != null)
-          'multiMessageValue':
-              multiMessageValue!.map((value) => value.toJson()).toList(),
+        if (multiMessageValue != null) 'multiMessageValue': multiMessageValue!,
         if (multiValue != null) 'multiValue': multiValue!,
         if (name != null) 'name': name!,
         if (value != null) 'value': value!,
@@ -1215,8 +1210,7 @@ class ActivityEvents {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
-        if (parameters != null)
-          'parameters': parameters!.map((value) => value.toJson()).toList(),
+        if (parameters != null) 'parameters': parameters!,
         if (type != null) 'type': type!,
       };
 }
@@ -1342,11 +1336,10 @@ class Activity {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (actor != null) 'actor': actor!.toJson(),
+        if (actor != null) 'actor': actor!,
         if (etag != null) 'etag': etag!,
-        if (events != null)
-          'events': events!.map((value) => value.toJson()).toList(),
-        if (id != null) 'id': id!.toJson(),
+        if (events != null) 'events': events!,
+        if (id != null) 'id': id!,
         if (ipAddress != null) 'ipAddress': ipAddress!,
         if (kind != null) 'kind': kind!,
         if (ownerDomain != null) 'ownerDomain': ownerDomain!,
@@ -1733,11 +1726,10 @@ class UsageReport {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (date != null) 'date': date!,
-        if (entity != null) 'entity': entity!.toJson(),
+        if (entity != null) 'entity': entity!,
         if (etag != null) 'etag': etag!,
         if (kind != null) 'kind': kind!,
-        if (parameters != null)
-          'parameters': parameters!.map((value) => value.toJson()).toList(),
+        if (parameters != null) 'parameters': parameters!,
       };
 }
 
@@ -1808,7 +1800,7 @@ class UsageReportsWarnings {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (code != null) 'code': code!,
-        if (data != null) 'data': data!.map((value) => value.toJson()).toList(),
+        if (data != null) 'data': data!,
         if (message != null) 'message': message!,
       };
 }
@@ -1868,9 +1860,7 @@ class UsageReports {
         if (etag != null) 'etag': etag!,
         if (kind != null) 'kind': kind!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (usageReports != null)
-          'usageReports': usageReports!.map((value) => value.toJson()).toList(),
-        if (warnings != null)
-          'warnings': warnings!.map((value) => value.toJson()).toList(),
+        if (usageReports != null) 'usageReports': usageReports!,
+        if (warnings != null) 'warnings': warnings!,
       };
 }

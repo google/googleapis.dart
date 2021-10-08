@@ -216,7 +216,7 @@ class OrganizationsLocationsWorkloadsResource {
     core.String? externalId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (externalId != null) 'externalId': [externalId],
       if ($fields != null) 'fields': [$fields],
@@ -408,7 +408,7 @@ class OrganizationsLocationsWorkloadsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -527,8 +527,7 @@ class GoogleCloudAssuredworkloadsV1ListWorkloadsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (workloads != null)
-          'workloads': workloads!.map((value) => value.toJson()).toList(),
+        if (workloads != null) 'workloads': workloads!,
       };
 }
 
@@ -703,16 +702,13 @@ class GoogleCloudAssuredworkloadsV1Workload {
         if (createTime != null) 'createTime': createTime!,
         if (displayName != null) 'displayName': displayName!,
         if (etag != null) 'etag': etag!,
-        if (kmsSettings != null) 'kmsSettings': kmsSettings!.toJson(),
+        if (kmsSettings != null) 'kmsSettings': kmsSettings!,
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
         if (provisionedResourcesParent != null)
           'provisionedResourcesParent': provisionedResourcesParent!,
-        if (resourceSettings != null)
-          'resourceSettings':
-              resourceSettings!.map((value) => value.toJson()).toList(),
-        if (resources != null)
-          'resources': resources!.map((value) => value.toJson()).toList(),
+        if (resourceSettings != null) 'resourceSettings': resourceSettings!,
+        if (resources != null) 'resources': resources!,
       };
 }
 
@@ -924,9 +920,7 @@ class GoogleCloudAssuredworkloadsV1beta1CreateWorkloadOperationMetadata {
         if (createTime != null) 'createTime': createTime!,
         if (displayName != null) 'displayName': displayName!,
         if (parent != null) 'parent': parent!,
-        if (resourceSettings != null)
-          'resourceSettings':
-              resourceSettings!.map((value) => value.toJson()).toList(),
+        if (resourceSettings != null) 'resourceSettings': resourceSettings!,
       };
 }
 
@@ -1147,26 +1141,23 @@ class GoogleCloudAssuredworkloadsV1beta1Workload {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (billingAccount != null) 'billingAccount': billingAccount!,
-        if (cjisSettings != null) 'cjisSettings': cjisSettings!.toJson(),
+        if (cjisSettings != null) 'cjisSettings': cjisSettings!,
         if (complianceRegime != null) 'complianceRegime': complianceRegime!,
         if (createTime != null) 'createTime': createTime!,
         if (displayName != null) 'displayName': displayName!,
         if (etag != null) 'etag': etag!,
         if (fedrampHighSettings != null)
-          'fedrampHighSettings': fedrampHighSettings!.toJson(),
+          'fedrampHighSettings': fedrampHighSettings!,
         if (fedrampModerateSettings != null)
-          'fedrampModerateSettings': fedrampModerateSettings!.toJson(),
-        if (il4Settings != null) 'il4Settings': il4Settings!.toJson(),
-        if (kmsSettings != null) 'kmsSettings': kmsSettings!.toJson(),
+          'fedrampModerateSettings': fedrampModerateSettings!,
+        if (il4Settings != null) 'il4Settings': il4Settings!,
+        if (kmsSettings != null) 'kmsSettings': kmsSettings!,
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
         if (provisionedResourcesParent != null)
           'provisionedResourcesParent': provisionedResourcesParent!,
-        if (resourceSettings != null)
-          'resourceSettings':
-              resourceSettings!.map((value) => value.toJson()).toList(),
-        if (resources != null)
-          'resources': resources!.map((value) => value.toJson()).toList(),
+        if (resourceSettings != null) 'resourceSettings': resourceSettings!,
+        if (resources != null) 'resources': resources!,
       };
 }
 
@@ -1193,7 +1184,7 @@ class GoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettings {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (kmsSettings != null) 'kmsSettings': kmsSettings!.toJson(),
+        if (kmsSettings != null) 'kmsSettings': kmsSettings!,
       };
 }
 
@@ -1220,7 +1211,7 @@ class GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampHighSettings {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (kmsSettings != null) 'kmsSettings': kmsSettings!.toJson(),
+        if (kmsSettings != null) 'kmsSettings': kmsSettings!,
       };
 }
 
@@ -1247,7 +1238,7 @@ class GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampModerateSettings {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (kmsSettings != null) 'kmsSettings': kmsSettings!.toJson(),
+        if (kmsSettings != null) 'kmsSettings': kmsSettings!,
       };
 }
 
@@ -1273,7 +1264,7 @@ class GoogleCloudAssuredworkloadsV1beta1WorkloadIL4Settings {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (kmsSettings != null) 'kmsSettings': kmsSettings!.toJson(),
+        if (kmsSettings != null) 'kmsSettings': kmsSettings!,
       };
 }
 
@@ -1439,8 +1430,7 @@ class GoogleLongrunningListOperationsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (operations != null)
-          'operations': operations!.map((value) => value.toJson()).toList(),
+        if (operations != null) 'operations': operations!,
       };
 }
 
@@ -1513,7 +1503,7 @@ class GoogleLongrunningOperation {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (done != null) 'done': done!,
-        if (error != null) 'error': error!.toJson(),
+        if (error != null) 'error': error!,
         if (metadata != null) 'metadata': metadata!,
         if (name != null) 'name': name!,
         if (response != null) 'response': response!,

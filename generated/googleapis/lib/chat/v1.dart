@@ -118,7 +118,7 @@ class DmsResource {
     core.String? threadKey,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (threadKey != null) 'threadKey': [threadKey],
       if ($fields != null) 'fields': [$fields],
@@ -172,7 +172,7 @@ class DmsResource {
     core.String? threadKey,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (threadKey != null) 'threadKey': [threadKey],
       if ($fields != null) 'fields': [$fields],
@@ -232,7 +232,7 @@ class DmsConversationsResource {
     core.String? threadKey,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (threadKey != null) 'threadKey': [threadKey],
       if ($fields != null) 'fields': [$fields],
@@ -353,7 +353,7 @@ class RoomsResource {
     core.String? threadKey,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (threadKey != null) 'threadKey': [threadKey],
       if ($fields != null) 'fields': [$fields],
@@ -407,7 +407,7 @@ class RoomsResource {
     core.String? threadKey,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (threadKey != null) 'threadKey': [threadKey],
       if ($fields != null) 'fields': [$fields],
@@ -467,7 +467,7 @@ class RoomsConversationsResource {
     core.String? threadKey,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (threadKey != null) 'threadKey': [threadKey],
       if ($fields != null) 'fields': [$fields],
@@ -609,7 +609,7 @@ class SpacesResource {
     core.String? threadKey,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (threadKey != null) 'threadKey': [threadKey],
       if ($fields != null) 'fields': [$fields],
@@ -763,7 +763,7 @@ class SpacesMessagesResource {
     core.String? threadKey,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (threadKey != null) 'threadKey': [threadKey],
       if ($fields != null) 'fields': [$fields],
@@ -882,7 +882,7 @@ class SpacesMessagesResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -1016,7 +1016,7 @@ class ActionResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dialogAction != null) 'dialogAction': dialogAction!.toJson(),
+        if (dialogAction != null) 'dialogAction': dialogAction!,
         if (type != null) 'type': type!,
         if (url != null) 'url': url!,
       };
@@ -1197,10 +1197,10 @@ class Annotation {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (length != null) 'length': length!,
-        if (slashCommand != null) 'slashCommand': slashCommand!.toJson(),
+        if (slashCommand != null) 'slashCommand': slashCommand!,
         if (startIndex != null) 'startIndex': startIndex!,
         if (type != null) 'type': type!,
-        if (userMention != null) 'userMention': userMention!.toJson(),
+        if (userMention != null) 'userMention': userMention!,
       };
 }
 
@@ -1289,12 +1289,11 @@ class Attachment {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (attachmentDataRef != null)
-          'attachmentDataRef': attachmentDataRef!.toJson(),
+        if (attachmentDataRef != null) 'attachmentDataRef': attachmentDataRef!,
         if (contentName != null) 'contentName': contentName!,
         if (contentType != null) 'contentType': contentType!,
         if (downloadUri != null) 'downloadUri': downloadUri!,
-        if (driveDataRef != null) 'driveDataRef': driveDataRef!.toJson(),
+        if (driveDataRef != null) 'driveDataRef': driveDataRef!,
         if (name != null) 'name': name!,
         if (source != null) 'source': source!,
         if (thumbnailUri != null) 'thumbnailUri': thumbnailUri!,
@@ -1352,8 +1351,8 @@ class Button {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (imageButton != null) 'imageButton': imageButton!.toJson(),
-        if (textButton != null) 'textButton': textButton!.toJson(),
+        if (imageButton != null) 'imageButton': imageButton!,
+        if (textButton != null) 'textButton': textButton!,
       };
 }
 
@@ -1402,12 +1401,10 @@ class Card {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cardActions != null)
-          'cardActions': cardActions!.map((value) => value.toJson()).toList(),
-        if (header != null) 'header': header!.toJson(),
+        if (cardActions != null) 'cardActions': cardActions!,
+        if (header != null) 'header': header!,
         if (name != null) 'name': name!,
-        if (sections != null)
-          'sections': sections!.map((value) => value.toJson()).toList(),
+        if (sections != null) 'sections': sections!,
       };
 }
 
@@ -1440,7 +1437,7 @@ class CardAction {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (actionLabel != null) 'actionLabel': actionLabel!,
-        if (onClick != null) 'onClick': onClick!.toJson(),
+        if (onClick != null) 'onClick': onClick!,
       };
 }
 
@@ -1691,14 +1688,12 @@ class CommonEventObject {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (formInputs != null)
-          'formInputs':
-              formInputs!.map((key, item) => core.MapEntry(key, item.toJson())),
+        if (formInputs != null) 'formInputs': formInputs!,
         if (hostApp != null) 'hostApp': hostApp!,
         if (invokedFunction != null) 'invokedFunction': invokedFunction!,
         if (parameters != null) 'parameters': parameters!,
         if (platform != null) 'platform': platform!,
-        if (timeZone != null) 'timeZone': timeZone!.toJson(),
+        if (timeZone != null) 'timeZone': timeZone!,
         if (userLocale != null) 'userLocale': userLocale!,
       };
 }
@@ -1882,19 +1877,19 @@ class DeprecatedEvent {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (action != null) 'action': action!.toJson(),
-        if (common != null) 'common': common!.toJson(),
+        if (action != null) 'action': action!,
+        if (common != null) 'common': common!,
         if (configCompleteRedirectUrl != null)
           'configCompleteRedirectUrl': configCompleteRedirectUrl!,
         if (dialogEventType != null) 'dialogEventType': dialogEventType!,
         if (eventTime != null) 'eventTime': eventTime!,
         if (isDialogEvent != null) 'isDialogEvent': isDialogEvent!,
-        if (message != null) 'message': message!.toJson(),
-        if (space != null) 'space': space!.toJson(),
+        if (message != null) 'message': message!,
+        if (space != null) 'space': space!,
         if (threadKey != null) 'threadKey': threadKey!,
         if (token != null) 'token': token!,
         if (type != null) 'type': type!,
-        if (user != null) 'user': user!.toJson(),
+        if (user != null) 'user': user!,
       };
 }
 
@@ -1924,7 +1919,7 @@ class Dialog {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (body != null) 'body': body!.toJson(),
+        if (body != null) 'body': body!,
       };
 }
 
@@ -1958,8 +1953,8 @@ class DialogAction {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (actionStatus != null) 'actionStatus': actionStatus!.toJson(),
-        if (dialog != null) 'dialog': dialog!.toJson(),
+        if (actionStatus != null) 'actionStatus': actionStatus!,
+        if (dialog != null) 'dialog': dialog!,
       };
 }
 
@@ -2028,8 +2023,7 @@ class FormAction {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (actionMethodName != null) 'actionMethodName': actionMethodName!,
-        if (parameters != null)
-          'parameters': parameters!.map((value) => value.toJson()).toList(),
+        if (parameters != null) 'parameters': parameters!,
       };
 }
 
@@ -2094,8 +2088,7 @@ class GoogleAppsCardV1Action {
   core.Map<core.String, core.dynamic> toJson() => {
         if (function != null) 'function': function!,
         if (loadIndicator != null) 'loadIndicator': loadIndicator!,
-        if (parameters != null)
-          'parameters': parameters!.map((value) => value.toJson()).toList(),
+        if (parameters != null) 'parameters': parameters!,
         if (persistValues != null) 'persistValues': persistValues!,
       };
 }
@@ -2165,7 +2158,7 @@ class GoogleAppsCardV1BorderStyle {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (cornerRadius != null) 'cornerRadius': cornerRadius!,
-        if (strokeColor != null) 'strokeColor': strokeColor!.toJson(),
+        if (strokeColor != null) 'strokeColor': strokeColor!,
         if (type != null) 'type': type!,
       };
 }
@@ -2229,10 +2222,10 @@ class GoogleAppsCardV1Button {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (altText != null) 'altText': altText!,
-        if (color != null) 'color': color!.toJson(),
+        if (color != null) 'color': color!,
         if (disabled != null) 'disabled': disabled!,
-        if (icon != null) 'icon': icon!.toJson(),
-        if (onClick != null) 'onClick': onClick!.toJson(),
+        if (icon != null) 'icon': icon!,
+        if (onClick != null) 'onClick': onClick!,
         if (text != null) 'text': text!,
       };
 }
@@ -2256,8 +2249,7 @@ class GoogleAppsCardV1ButtonList {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (buttons != null)
-          'buttons': buttons!.map((value) => value.toJson()).toList(),
+        if (buttons != null) 'buttons': buttons!,
       };
 }
 
@@ -2369,15 +2361,13 @@ class GoogleAppsCardV1Card {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cardActions != null)
-          'cardActions': cardActions!.map((value) => value.toJson()).toList(),
+        if (cardActions != null) 'cardActions': cardActions!,
         if (displayStyle != null) 'displayStyle': displayStyle!,
-        if (fixedFooter != null) 'fixedFooter': fixedFooter!.toJson(),
-        if (header != null) 'header': header!.toJson(),
+        if (fixedFooter != null) 'fixedFooter': fixedFooter!,
+        if (header != null) 'header': header!,
         if (name != null) 'name': name!,
-        if (peekCardHeader != null) 'peekCardHeader': peekCardHeader!.toJson(),
-        if (sections != null)
-          'sections': sections!.map((value) => value.toJson()).toList(),
+        if (peekCardHeader != null) 'peekCardHeader': peekCardHeader!,
+        if (sections != null) 'sections': sections!,
       };
 }
 
@@ -2410,7 +2400,7 @@ class GoogleAppsCardV1CardAction {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (actionLabel != null) 'actionLabel': actionLabel!,
-        if (onClick != null) 'onClick': onClick!.toJson(),
+        if (onClick != null) 'onClick': onClick!,
       };
 }
 
@@ -2445,9 +2435,8 @@ class GoogleAppsCardV1CardFixedFooter {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (primaryButton != null) 'primaryButton': primaryButton!.toJson(),
-        if (secondaryButton != null)
-          'secondaryButton': secondaryButton!.toJson(),
+        if (primaryButton != null) 'primaryButton': primaryButton!,
+        if (secondaryButton != null) 'secondaryButton': secondaryButton!,
       };
 }
 
@@ -2578,7 +2567,7 @@ class GoogleAppsCardV1DateTimePicker {
   core.Map<core.String, core.dynamic> toJson() => {
         if (label != null) 'label': label!,
         if (name != null) 'name': name!,
-        if (onChangeAction != null) 'onChangeAction': onChangeAction!.toJson(),
+        if (onChangeAction != null) 'onChangeAction': onChangeAction!,
         if (timezoneOffsetDate != null)
           'timezoneOffsetDate': timezoneOffsetDate!,
         if (type != null) 'type': type!,
@@ -2680,12 +2669,12 @@ class GoogleAppsCardV1DecoratedText {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (bottomLabel != null) 'bottomLabel': bottomLabel!,
-        if (button != null) 'button': button!.toJson(),
-        if (endIcon != null) 'endIcon': endIcon!.toJson(),
-        if (icon != null) 'icon': icon!.toJson(),
-        if (onClick != null) 'onClick': onClick!.toJson(),
-        if (startIcon != null) 'startIcon': startIcon!.toJson(),
-        if (switchControl != null) 'switchControl': switchControl!.toJson(),
+        if (button != null) 'button': button!,
+        if (endIcon != null) 'endIcon': endIcon!,
+        if (icon != null) 'icon': icon!,
+        if (onClick != null) 'onClick': onClick!,
+        if (startIcon != null) 'startIcon': startIcon!,
+        if (switchControl != null) 'switchControl': switchControl!,
         if (text != null) 'text': text!,
         if (topLabel != null) 'topLabel': topLabel!,
         if (wrapText != null) 'wrapText': wrapText!,
@@ -2749,11 +2738,10 @@ class GoogleAppsCardV1Grid {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (borderStyle != null) 'borderStyle': borderStyle!.toJson(),
+        if (borderStyle != null) 'borderStyle': borderStyle!,
         if (columnCount != null) 'columnCount': columnCount!,
-        if (items != null)
-          'items': items!.map((value) => value.toJson()).toList(),
-        if (onClick != null) 'onClick': onClick!.toJson(),
+        if (items != null) 'items': items!,
+        if (onClick != null) 'onClick': onClick!,
         if (title != null) 'title': title!,
       };
 }
@@ -2823,7 +2811,7 @@ class GoogleAppsCardV1GridItem {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (id != null) 'id': id!,
-        if (image != null) 'image': image!.toJson(),
+        if (image != null) 'image': image!,
         if (layout != null) 'layout': layout!,
         if (subtitle != null) 'subtitle': subtitle!,
         if (textAlignment != null) 'textAlignment': textAlignment!,
@@ -2915,7 +2903,7 @@ class GoogleAppsCardV1Image {
   core.Map<core.String, core.dynamic> toJson() => {
         if (altText != null) 'altText': altText!,
         if (imageUrl != null) 'imageUrl': imageUrl!,
-        if (onClick != null) 'onClick': onClick!.toJson(),
+        if (onClick != null) 'onClick': onClick!,
       };
 }
 
@@ -2959,8 +2947,8 @@ class GoogleAppsCardV1ImageComponent {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (altText != null) 'altText': altText!,
-        if (borderStyle != null) 'borderStyle': borderStyle!.toJson(),
-        if (cropStyle != null) 'cropStyle': cropStyle!.toJson(),
+        if (borderStyle != null) 'borderStyle': borderStyle!,
+        if (cropStyle != null) 'cropStyle': cropStyle!,
         if (imageUri != null) 'imageUri': imageUri!,
       };
 }
@@ -3044,11 +3032,11 @@ class GoogleAppsCardV1OnClick {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (action != null) 'action': action!.toJson(),
-        if (card != null) 'card': card!.toJson(),
+        if (action != null) 'action': action!,
+        if (card != null) 'card': card!,
         if (openDynamicLinkAction != null)
-          'openDynamicLinkAction': openDynamicLinkAction!.toJson(),
-        if (openLink != null) 'openLink': openLink!.toJson(),
+          'openDynamicLinkAction': openDynamicLinkAction!,
+        if (openLink != null) 'openLink': openLink!,
       };
 }
 
@@ -3158,8 +3146,7 @@ class GoogleAppsCardV1Section {
         if (header != null) 'header': header!,
         if (uncollapsibleWidgetsCount != null)
           'uncollapsibleWidgetsCount': uncollapsibleWidgetsCount!,
-        if (widgets != null)
-          'widgets': widgets!.map((value) => value.toJson()).toList(),
+        if (widgets != null) 'widgets': widgets!,
       };
 }
 
@@ -3214,11 +3201,10 @@ class GoogleAppsCardV1SelectionInput {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (items != null)
-          'items': items!.map((value) => value.toJson()).toList(),
+        if (items != null) 'items': items!,
         if (label != null) 'label': label!,
         if (name != null) 'name': name!,
-        if (onChangeAction != null) 'onChangeAction': onChangeAction!.toJson(),
+        if (onChangeAction != null) 'onChangeAction': onChangeAction!,
         if (type != null) 'type': type!,
       };
 }
@@ -3304,8 +3290,7 @@ class GoogleAppsCardV1Suggestions {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (items != null)
-          'items': items!.map((value) => value.toJson()).toList(),
+        if (items != null) 'items': items!,
       };
 }
 
@@ -3357,7 +3342,7 @@ class GoogleAppsCardV1SwitchControl {
   core.Map<core.String, core.dynamic> toJson() => {
         if (controlType != null) 'controlType': controlType!,
         if (name != null) 'name': name!,
-        if (onChangeAction != null) 'onChangeAction': onChangeAction!.toJson(),
+        if (onChangeAction != null) 'onChangeAction': onChangeAction!,
         if (selected != null) 'selected': selected!,
         if (value != null) 'value': value!,
       };
@@ -3436,13 +3421,13 @@ class GoogleAppsCardV1TextInput {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (autoCompleteAction != null)
-          'autoCompleteAction': autoCompleteAction!.toJson(),
+          'autoCompleteAction': autoCompleteAction!,
         if (hintText != null) 'hintText': hintText!,
         if (initialSuggestions != null)
-          'initialSuggestions': initialSuggestions!.toJson(),
+          'initialSuggestions': initialSuggestions!,
         if (label != null) 'label': label!,
         if (name != null) 'name': name!,
-        if (onChangeAction != null) 'onChangeAction': onChangeAction!.toJson(),
+        if (onChangeAction != null) 'onChangeAction': onChangeAction!,
         if (type != null) 'type': type!,
         if (value != null) 'value': value!,
       };
@@ -3615,17 +3600,17 @@ class GoogleAppsCardV1Widget {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (buttonList != null) 'buttonList': buttonList!.toJson(),
-        if (dateTimePicker != null) 'dateTimePicker': dateTimePicker!.toJson(),
-        if (decoratedText != null) 'decoratedText': decoratedText!.toJson(),
-        if (divider != null) 'divider': divider!.toJson(),
-        if (grid != null) 'grid': grid!.toJson(),
+        if (buttonList != null) 'buttonList': buttonList!,
+        if (dateTimePicker != null) 'dateTimePicker': dateTimePicker!,
+        if (decoratedText != null) 'decoratedText': decoratedText!,
+        if (divider != null) 'divider': divider!,
+        if (grid != null) 'grid': grid!,
         if (horizontalAlignment != null)
           'horizontalAlignment': horizontalAlignment!,
-        if (image != null) 'image': image!.toJson(),
-        if (selectionInput != null) 'selectionInput': selectionInput!.toJson(),
-        if (textInput != null) 'textInput': textInput!.toJson(),
-        if (textParagraph != null) 'textParagraph': textParagraph!.toJson(),
+        if (image != null) 'image': image!,
+        if (selectionInput != null) 'selectionInput': selectionInput!,
+        if (textInput != null) 'textInput': textInput!,
+        if (textParagraph != null) 'textParagraph': textParagraph!,
       };
 }
 
@@ -3667,7 +3652,7 @@ class Image {
   core.Map<core.String, core.dynamic> toJson() => {
         if (aspectRatio != null) 'aspectRatio': aspectRatio!,
         if (imageUrl != null) 'imageUrl': imageUrl!,
-        if (onClick != null) 'onClick': onClick!.toJson(),
+        if (onClick != null) 'onClick': onClick!,
       };
 }
 
@@ -3744,7 +3729,7 @@ class ImageButton {
         if (icon != null) 'icon': icon!,
         if (iconUrl != null) 'iconUrl': iconUrl!,
         if (name != null) 'name': name!,
-        if (onClick != null) 'onClick': onClick!.toJson(),
+        if (onClick != null) 'onClick': onClick!,
       };
 }
 
@@ -3783,10 +3768,10 @@ class Inputs {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dateInput != null) 'dateInput': dateInput!.toJson(),
-        if (dateTimeInput != null) 'dateTimeInput': dateTimeInput!.toJson(),
-        if (stringInputs != null) 'stringInputs': stringInputs!.toJson(),
-        if (timeInput != null) 'timeInput': timeInput!.toJson(),
+        if (dateInput != null) 'dateInput': dateInput!,
+        if (dateTimeInput != null) 'dateTimeInput': dateTimeInput!,
+        if (stringInputs != null) 'stringInputs': stringInputs!,
+        if (timeInput != null) 'timeInput': timeInput!,
       };
 }
 
@@ -3900,12 +3885,12 @@ class KeyValue {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (bottomLabel != null) 'bottomLabel': bottomLabel!,
-        if (button != null) 'button': button!.toJson(),
+        if (button != null) 'button': button!,
         if (content != null) 'content': content!,
         if (contentMultiline != null) 'contentMultiline': contentMultiline!,
         if (icon != null) 'icon': icon!,
         if (iconUrl != null) 'iconUrl': iconUrl!,
-        if (onClick != null) 'onClick': onClick!.toJson(),
+        if (onClick != null) 'onClick': onClick!,
         if (topLabel != null) 'topLabel': topLabel!,
       };
 }
@@ -3938,8 +3923,7 @@ class ListMembershipsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (memberships != null)
-          'memberships': memberships!.map((value) => value.toJson()).toList(),
+        if (memberships != null) 'memberships': memberships!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -3974,8 +3958,7 @@ class ListSpacesResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (spaces != null)
-          'spaces': spaces!.map((value) => value.toJson()).toList(),
+        if (spaces != null) 'spaces': spaces!,
       };
 }
 
@@ -4043,7 +4026,7 @@ class Membership {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
-        if (member != null) 'member': member!.toJson(),
+        if (member != null) 'member': member!,
         if (name != null) 'name': name!,
         if (state != null) 'state': state!,
       };
@@ -4189,24 +4172,21 @@ class Message {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (actionResponse != null) 'actionResponse': actionResponse!.toJson(),
-        if (annotations != null)
-          'annotations': annotations!.map((value) => value.toJson()).toList(),
+        if (actionResponse != null) 'actionResponse': actionResponse!,
+        if (annotations != null) 'annotations': annotations!,
         if (argumentText != null) 'argumentText': argumentText!,
-        if (attachment != null)
-          'attachment': attachment!.map((value) => value.toJson()).toList(),
-        if (cards != null)
-          'cards': cards!.map((value) => value.toJson()).toList(),
+        if (attachment != null) 'attachment': attachment!,
+        if (cards != null) 'cards': cards!,
         if (createTime != null) 'createTime': createTime!,
         if (fallbackText != null) 'fallbackText': fallbackText!,
         if (lastUpdateTime != null) 'lastUpdateTime': lastUpdateTime!,
         if (name != null) 'name': name!,
         if (previewText != null) 'previewText': previewText!,
-        if (sender != null) 'sender': sender!.toJson(),
-        if (slashCommand != null) 'slashCommand': slashCommand!.toJson(),
-        if (space != null) 'space': space!.toJson(),
+        if (sender != null) 'sender': sender!,
+        if (slashCommand != null) 'slashCommand': slashCommand!,
+        if (space != null) 'space': space!,
         if (text != null) 'text': text!,
-        if (thread != null) 'thread': thread!.toJson(),
+        if (thread != null) 'thread': thread!,
       };
 }
 
@@ -4236,8 +4216,8 @@ class OnClick {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (action != null) 'action': action!.toJson(),
-        if (openLink != null) 'openLink': openLink!.toJson(),
+        if (action != null) 'action': action!,
+        if (openLink != null) 'openLink': openLink!,
       };
 }
 
@@ -4292,8 +4272,7 @@ class Section {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (header != null) 'header': header!,
-        if (widgets != null)
-          'widgets': widgets!.map((value) => value.toJson()).toList(),
+        if (widgets != null) 'widgets': widgets!,
       };
 }
 
@@ -4366,7 +4345,7 @@ class SlashCommandMetadata {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bot != null) 'bot': bot!.toJson(),
+        if (bot != null) 'bot': bot!,
         if (commandId != null) 'commandId': commandId!,
         if (commandName != null) 'commandName': commandName!,
         if (triggersDialog != null) 'triggersDialog': triggersDialog!,
@@ -4487,7 +4466,7 @@ class TextButton {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (onClick != null) 'onClick': onClick!.toJson(),
+        if (onClick != null) 'onClick': onClick!,
         if (text != null) 'text': text!,
       };
 }
@@ -4664,7 +4643,7 @@ class UserMentionMetadata {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (type != null) 'type': type!,
-        if (user != null) 'user': user!.toJson(),
+        if (user != null) 'user': user!,
       };
 }
 
@@ -4714,10 +4693,9 @@ class WidgetMarkup {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (buttons != null)
-          'buttons': buttons!.map((value) => value.toJson()).toList(),
-        if (image != null) 'image': image!.toJson(),
-        if (keyValue != null) 'keyValue': keyValue!.toJson(),
-        if (textParagraph != null) 'textParagraph': textParagraph!.toJson(),
+        if (buttons != null) 'buttons': buttons!,
+        if (image != null) 'image': image!,
+        if (keyValue != null) 'keyValue': keyValue!,
+        if (textParagraph != null) 'textParagraph': textParagraph!,
       };
 }

@@ -181,8 +181,8 @@ class GoogleFirebaseFcmDataV1beta1AndroidDeliveryData {
   core.Map<core.String, core.dynamic> toJson() => {
         if (analyticsLabel != null) 'analyticsLabel': analyticsLabel!,
         if (appId != null) 'appId': appId!,
-        if (data != null) 'data': data!.toJson(),
-        if (date != null) 'date': date!.toJson(),
+        if (data != null) 'data': data!,
+        if (date != null) 'date': date!,
       };
 }
 
@@ -239,11 +239,11 @@ class GoogleFirebaseFcmDataV1beta1Data {
         if (countMessagesAccepted != null)
           'countMessagesAccepted': countMessagesAccepted!,
         if (deliveryPerformancePercents != null)
-          'deliveryPerformancePercents': deliveryPerformancePercents!.toJson(),
+          'deliveryPerformancePercents': deliveryPerformancePercents!,
         if (messageInsightPercents != null)
-          'messageInsightPercents': messageInsightPercents!.toJson(),
+          'messageInsightPercents': messageInsightPercents!,
         if (messageOutcomePercents != null)
-          'messageOutcomePercents': messageOutcomePercents!.toJson(),
+          'messageOutcomePercents': messageOutcomePercents!,
       };
 }
 
@@ -363,8 +363,7 @@ class GoogleFirebaseFcmDataV1beta1ListAndroidDeliveryDataResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (androidDeliveryData != null)
-          'androidDeliveryData':
-              androidDeliveryData!.map((value) => value.toJson()).toList(),
+          'androidDeliveryData': androidDeliveryData!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }

@@ -793,11 +793,10 @@ class Promotion {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bodyLines != null)
-          'bodyLines': bodyLines!.map((value) => value.toJson()).toList(),
+        if (bodyLines != null) 'bodyLines': bodyLines!,
         if (displayLink != null) 'displayLink': displayLink!,
         if (htmlTitle != null) 'htmlTitle': htmlTitle!,
-        if (image != null) 'image': image!.toJson(),
+        if (image != null) 'image': image!,
         if (link != null) 'link': link!,
         if (title != null) 'title': title!,
       };
@@ -1036,10 +1035,9 @@ class Result {
         if (htmlFormattedUrl != null) 'htmlFormattedUrl': htmlFormattedUrl!,
         if (htmlSnippet != null) 'htmlSnippet': htmlSnippet!,
         if (htmlTitle != null) 'htmlTitle': htmlTitle!,
-        if (image != null) 'image': image!.toJson(),
+        if (image != null) 'image': image!,
         if (kind != null) 'kind': kind!,
-        if (labels != null)
-          'labels': labels!.map((value) => value.toJson()).toList(),
+        if (labels != null) 'labels': labels!,
         if (link != null) 'link': link!,
         if (mime != null) 'mime': mime!,
         if (pagemap != null) 'pagemap': pagemap!,
@@ -2267,12 +2265,9 @@ class SearchQueries {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPage != null)
-          'nextPage': nextPage!.map((value) => value.toJson()).toList(),
-        if (previousPage != null)
-          'previousPage': previousPage!.map((value) => value.toJson()).toList(),
-        if (request != null)
-          'request': request!.map((value) => value.toJson()).toList(),
+        if (nextPage != null) 'nextPage': nextPage!,
+        if (previousPage != null) 'previousPage': previousPage!,
+        if (request != null) 'request': request!,
       };
 }
 
@@ -2473,15 +2468,12 @@ class Search {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (context != null) 'context': context!,
-        if (items != null)
-          'items': items!.map((value) => value.toJson()).toList(),
+        if (items != null) 'items': items!,
         if (kind != null) 'kind': kind!,
-        if (promotions != null)
-          'promotions': promotions!.map((value) => value.toJson()).toList(),
-        if (queries != null) 'queries': queries!.toJson(),
-        if (searchInformation != null)
-          'searchInformation': searchInformation!.toJson(),
-        if (spelling != null) 'spelling': spelling!.toJson(),
-        if (url != null) 'url': url!.toJson(),
+        if (promotions != null) 'promotions': promotions!,
+        if (queries != null) 'queries': queries!,
+        if (searchInformation != null) 'searchInformation': searchInformation!,
+        if (spelling != null) 'spelling': spelling!,
+        if (url != null) 'url': url!,
       };
 }

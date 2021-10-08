@@ -135,7 +135,7 @@ class ProjectsLocationsInstancesResource {
     core.bool? validateOnly,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (databaseId != null) 'databaseId': [databaseId],
       if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
@@ -229,7 +229,7 @@ class ProjectsLocationsInstancesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -379,7 +379,7 @@ class ProjectsLocationsInstancesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -509,8 +509,7 @@ class ListDatabaseInstancesResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (instances != null)
-          'instances': instances!.map((value) => value.toJson()).toList(),
+        if (instances != null) 'instances': instances!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }

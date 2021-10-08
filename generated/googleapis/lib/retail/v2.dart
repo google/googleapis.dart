@@ -323,7 +323,7 @@ class ProjectsLocationsCatalogsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -390,7 +390,7 @@ class ProjectsLocationsCatalogsResource {
     core.String catalog, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -511,7 +511,7 @@ class ProjectsLocationsCatalogsBranchesProductsResource {
     core.String product, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -564,7 +564,7 @@ class ProjectsLocationsCatalogsBranchesProductsResource {
     core.String? productId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (productId != null) 'productId': [productId],
       if ($fields != null) 'fields': [$fields],
@@ -700,7 +700,7 @@ class ProjectsLocationsCatalogsBranchesProductsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -836,7 +836,7 @@ class ProjectsLocationsCatalogsBranchesProductsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (allowMissing != null) 'allowMissing': ['${allowMissing}'],
       if (updateMask != null) 'updateMask': [updateMask],
@@ -892,7 +892,7 @@ class ProjectsLocationsCatalogsBranchesProductsResource {
     core.String product, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -958,7 +958,7 @@ class ProjectsLocationsCatalogsBranchesProductsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1013,7 +1013,7 @@ class ProjectsLocationsCatalogsCompletionDataResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1175,7 +1175,7 @@ class ProjectsLocationsCatalogsPlacementsResource {
     core.String placement, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1226,7 +1226,7 @@ class ProjectsLocationsCatalogsPlacementsResource {
     core.String placement, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1342,7 +1342,7 @@ class ProjectsLocationsCatalogsUserEventsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1390,7 +1390,7 @@ class ProjectsLocationsCatalogsUserEventsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1440,7 +1440,7 @@ class ProjectsLocationsCatalogsUserEventsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1483,7 +1483,7 @@ class ProjectsLocationsCatalogsUserEventsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1699,8 +1699,8 @@ class GoogleCloudRetailLoggingErrorContext {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (httpRequest != null) 'httpRequest': httpRequest!.toJson(),
-        if (reportLocation != null) 'reportLocation': reportLocation!.toJson(),
+        if (httpRequest != null) 'httpRequest': httpRequest!,
+        if (reportLocation != null) 'reportLocation': reportLocation!,
       };
 }
 
@@ -1788,13 +1788,13 @@ class GoogleCloudRetailLoggingErrorLog {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (context != null) 'context': context!.toJson(),
-        if (importPayload != null) 'importPayload': importPayload!.toJson(),
+        if (context != null) 'context': context!,
+        if (importPayload != null) 'importPayload': importPayload!,
         if (message != null) 'message': message!,
         if (requestPayload != null) 'requestPayload': requestPayload!,
         if (responsePayload != null) 'responsePayload': responsePayload!,
-        if (serviceContext != null) 'serviceContext': serviceContext!.toJson(),
-        if (status != null) 'status': status!.toJson(),
+        if (serviceContext != null) 'serviceContext': serviceContext!,
+        if (status != null) 'status': status!,
       };
 }
 
@@ -2152,7 +2152,7 @@ class GoogleCloudRetailV2BigQuerySource {
         if (dataSchema != null) 'dataSchema': dataSchema!,
         if (datasetId != null) 'datasetId': datasetId!,
         if (gcsStagingDir != null) 'gcsStagingDir': gcsStagingDir!,
-        if (partitionDate != null) 'partitionDate': partitionDate!.toJson(),
+        if (partitionDate != null) 'partitionDate': partitionDate!,
         if (projectId != null) 'projectId': projectId!,
         if (tableId != null) 'tableId': tableId!,
       };
@@ -2201,7 +2201,7 @@ class GoogleCloudRetailV2Catalog {
         if (displayName != null) 'displayName': displayName!,
         if (name != null) 'name': name!,
         if (productLevelConfig != null)
-          'productLevelConfig': productLevelConfig!.toJson(),
+          'productLevelConfig': productLevelConfig!,
       };
 }
 
@@ -2317,12 +2317,9 @@ class GoogleCloudRetailV2CompleteQueryResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (attributionToken != null) 'attributionToken': attributionToken!,
-        if (completionResults != null)
-          'completionResults':
-              completionResults!.map((value) => value.toJson()).toList(),
+        if (completionResults != null) 'completionResults': completionResults!,
         if (recentSearchResults != null)
-          'recentSearchResults':
-              recentSearchResults!.map((value) => value.toJson()).toList(),
+          'recentSearchResults': recentSearchResults!,
       };
 }
 
@@ -2358,9 +2355,7 @@ class GoogleCloudRetailV2CompleteQueryResponseCompletionResult {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (attributes != null)
-          'attributes':
-              attributes!.map((key, item) => core.MapEntry(key, item.toJson())),
+        if (attributes != null) 'attributes': attributes!,
         if (suggestion != null) 'suggestion': suggestion!,
       };
 }
@@ -2412,7 +2407,7 @@ class GoogleCloudRetailV2CompletionDataInputConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bigQuerySource != null) 'bigQuerySource': bigQuerySource!.toJson(),
+        if (bigQuerySource != null) 'bigQuerySource': bigQuerySource!,
       };
 }
 
@@ -2735,7 +2730,7 @@ class GoogleCloudRetailV2ImportCompletionDataRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (inputConfig != null) 'inputConfig': inputConfig!.toJson(),
+        if (inputConfig != null) 'inputConfig': inputConfig!,
         if (notificationPubsubTopic != null)
           'notificationPubsubTopic': notificationPubsubTopic!,
       };
@@ -2764,8 +2759,7 @@ class GoogleCloudRetailV2ImportCompletionDataResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (errorSamples != null)
-          'errorSamples': errorSamples!.map((value) => value.toJson()).toList(),
+        if (errorSamples != null) 'errorSamples': errorSamples!,
       };
 }
 
@@ -2952,8 +2946,8 @@ class GoogleCloudRetailV2ImportProductsRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (errorsConfig != null) 'errorsConfig': errorsConfig!.toJson(),
-        if (inputConfig != null) 'inputConfig': inputConfig!.toJson(),
+        if (errorsConfig != null) 'errorsConfig': errorsConfig!,
+        if (inputConfig != null) 'inputConfig': inputConfig!,
         if (notificationPubsubTopic != null)
           'notificationPubsubTopic': notificationPubsubTopic!,
         if (reconciliationMode != null)
@@ -2995,9 +2989,8 @@ class GoogleCloudRetailV2ImportProductsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (errorSamples != null)
-          'errorSamples': errorSamples!.map((value) => value.toJson()).toList(),
-        if (errorsConfig != null) 'errorsConfig': errorsConfig!.toJson(),
+        if (errorSamples != null) 'errorSamples': errorSamples!,
+        if (errorsConfig != null) 'errorsConfig': errorsConfig!,
       };
 }
 
@@ -3031,8 +3024,8 @@ class GoogleCloudRetailV2ImportUserEventsRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (errorsConfig != null) 'errorsConfig': errorsConfig!.toJson(),
-        if (inputConfig != null) 'inputConfig': inputConfig!.toJson(),
+        if (errorsConfig != null) 'errorsConfig': errorsConfig!,
+        if (inputConfig != null) 'inputConfig': inputConfig!,
       };
 }
 
@@ -3077,10 +3070,9 @@ class GoogleCloudRetailV2ImportUserEventsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (errorSamples != null)
-          'errorSamples': errorSamples!.map((value) => value.toJson()).toList(),
-        if (errorsConfig != null) 'errorsConfig': errorsConfig!.toJson(),
-        if (importSummary != null) 'importSummary': importSummary!.toJson(),
+        if (errorSamples != null) 'errorSamples': errorSamples!,
+        if (errorsConfig != null) 'errorsConfig': errorsConfig!,
+        if (importSummary != null) 'importSummary': importSummary!,
       };
 }
 
@@ -3159,8 +3151,7 @@ class GoogleCloudRetailV2ListCatalogsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (catalogs != null)
-          'catalogs': catalogs!.map((value) => value.toJson()).toList(),
+        if (catalogs != null) 'catalogs': catalogs!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -3196,8 +3187,7 @@ class GoogleCloudRetailV2ListProductsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (products != null)
-          'products': products!.map((value) => value.toJson()).toList(),
+        if (products != null) 'products': products!,
       };
 }
 
@@ -3336,7 +3326,7 @@ class GoogleCloudRetailV2PredictRequest {
         if (pageSize != null) 'pageSize': pageSize!,
         if (pageToken != null) 'pageToken': pageToken!,
         if (params != null) 'params': params!,
-        if (userEvent != null) 'userEvent': userEvent!.toJson(),
+        if (userEvent != null) 'userEvent': userEvent!,
         if (validateOnly != null) 'validateOnly': validateOnly!,
       };
 }
@@ -3395,8 +3385,7 @@ class GoogleCloudRetailV2PredictResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (attributionToken != null) 'attributionToken': attributionToken!,
         if (missingIds != null) 'missingIds': missingIds!,
-        if (results != null)
-          'results': results!.map((value) => value.toJson()).toList(),
+        if (results != null) 'results': results!,
         if (validateOnly != null) 'validateOnly': validateOnly!,
       };
 }
@@ -3538,7 +3527,7 @@ class GoogleCloudRetailV2PriceInfo {
         if (priceEffectiveTime != null)
           'priceEffectiveTime': priceEffectiveTime!,
         if (priceExpireTime != null) 'priceExpireTime': priceExpireTime!,
-        if (priceRange != null) 'priceRange': priceRange!.toJson(),
+        if (priceRange != null) 'priceRange': priceRange!,
       };
 }
 
@@ -3571,8 +3560,8 @@ class GoogleCloudRetailV2PriceInfoPriceRange {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (originalPrice != null) 'originalPrice': originalPrice!.toJson(),
-        if (price != null) 'price': price!.toJson(),
+        if (originalPrice != null) 'originalPrice': originalPrice!,
+        if (price != null) 'price': price!,
       };
 }
 
@@ -4087,10 +4076,8 @@ class GoogleCloudRetailV2Product {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (attributes != null)
-          'attributes':
-              attributes!.map((key, item) => core.MapEntry(key, item.toJson())),
-        if (audience != null) 'audience': audience!.toJson(),
+        if (attributes != null) 'attributes': attributes!,
+        if (audience != null) 'audience': audience!,
         if (availability != null) 'availability': availability!,
         if (availableQuantity != null) 'availableQuantity': availableQuantity!,
         if (availableTime != null) 'availableTime': availableTime!,
@@ -4098,27 +4085,23 @@ class GoogleCloudRetailV2Product {
         if (categories != null) 'categories': categories!,
         if (collectionMemberIds != null)
           'collectionMemberIds': collectionMemberIds!,
-        if (colorInfo != null) 'colorInfo': colorInfo!.toJson(),
+        if (colorInfo != null) 'colorInfo': colorInfo!,
         if (conditions != null) 'conditions': conditions!,
         if (description != null) 'description': description!,
         if (expireTime != null) 'expireTime': expireTime!,
-        if (fulfillmentInfo != null)
-          'fulfillmentInfo':
-              fulfillmentInfo!.map((value) => value.toJson()).toList(),
+        if (fulfillmentInfo != null) 'fulfillmentInfo': fulfillmentInfo!,
         if (gtin != null) 'gtin': gtin!,
         if (id != null) 'id': id!,
-        if (images != null)
-          'images': images!.map((value) => value.toJson()).toList(),
+        if (images != null) 'images': images!,
         if (languageCode != null) 'languageCode': languageCode!,
         if (materials != null) 'materials': materials!,
         if (name != null) 'name': name!,
         if (patterns != null) 'patterns': patterns!,
-        if (priceInfo != null) 'priceInfo': priceInfo!.toJson(),
+        if (priceInfo != null) 'priceInfo': priceInfo!,
         if (primaryProductId != null) 'primaryProductId': primaryProductId!,
-        if (promotions != null)
-          'promotions': promotions!.map((value) => value.toJson()).toList(),
+        if (promotions != null) 'promotions': promotions!,
         if (publishTime != null) 'publishTime': publishTime!,
-        if (rating != null) 'rating': rating!.toJson(),
+        if (rating != null) 'rating': rating!,
         if (retrievableFields != null) 'retrievableFields': retrievableFields!,
         if (sizes != null) 'sizes': sizes!,
         if (tags != null) 'tags': tags!,
@@ -4126,8 +4109,7 @@ class GoogleCloudRetailV2Product {
         if (ttl != null) 'ttl': ttl!,
         if (type != null) 'type': type!,
         if (uri != null) 'uri': uri!,
-        if (variants != null)
-          'variants': variants!.map((value) => value.toJson()).toList(),
+        if (variants != null) 'variants': variants!,
       };
 }
 
@@ -4169,7 +4151,7 @@ class GoogleCloudRetailV2ProductDetail {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (product != null) 'product': product!.toJson(),
+        if (product != null) 'product': product!,
         if (quantity != null) 'quantity': quantity!,
       };
 }
@@ -4198,8 +4180,7 @@ class GoogleCloudRetailV2ProductInlineSource {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (products != null)
-          'products': products!.map((value) => value.toJson()).toList(),
+        if (products != null) 'products': products!,
       };
 }
 
@@ -4239,10 +4220,10 @@ class GoogleCloudRetailV2ProductInputConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bigQuerySource != null) 'bigQuerySource': bigQuerySource!.toJson(),
-        if (gcsSource != null) 'gcsSource': gcsSource!.toJson(),
+        if (bigQuerySource != null) 'bigQuerySource': bigQuerySource!,
+        if (gcsSource != null) 'gcsSource': gcsSource!,
         if (productInlineSource != null)
-          'productInlineSource': productInlineSource!.toJson(),
+          'productInlineSource': productInlineSource!,
       };
 }
 
@@ -4882,13 +4863,11 @@ class GoogleCloudRetailV2SearchRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (boostSpec != null) 'boostSpec': boostSpec!.toJson(),
+        if (boostSpec != null) 'boostSpec': boostSpec!,
         if (branch != null) 'branch': branch!,
         if (canonicalFilter != null) 'canonicalFilter': canonicalFilter!,
-        if (dynamicFacetSpec != null)
-          'dynamicFacetSpec': dynamicFacetSpec!.toJson(),
-        if (facetSpecs != null)
-          'facetSpecs': facetSpecs!.map((value) => value.toJson()).toList(),
+        if (dynamicFacetSpec != null) 'dynamicFacetSpec': dynamicFacetSpec!,
+        if (facetSpecs != null) 'facetSpecs': facetSpecs!,
         if (filter != null) 'filter': filter!,
         if (offset != null) 'offset': offset!,
         if (orderBy != null) 'orderBy': orderBy!,
@@ -4897,8 +4876,8 @@ class GoogleCloudRetailV2SearchRequest {
         if (pageToken != null) 'pageToken': pageToken!,
         if (query != null) 'query': query!,
         if (queryExpansionSpec != null)
-          'queryExpansionSpec': queryExpansionSpec!.toJson(),
-        if (userInfo != null) 'userInfo': userInfo!.toJson(),
+          'queryExpansionSpec': queryExpansionSpec!,
+        if (userInfo != null) 'userInfo': userInfo!,
         if (variantRollupKeys != null) 'variantRollupKeys': variantRollupKeys!,
         if (visitorId != null) 'visitorId': visitorId!,
       };
@@ -4932,8 +4911,7 @@ class GoogleCloudRetailV2SearchRequestBoostSpec {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (conditionBoostSpecs != null)
-          'conditionBoostSpecs':
-              conditionBoostSpecs!.map((value) => value.toJson()).toList(),
+          'conditionBoostSpecs': conditionBoostSpecs!,
       };
 }
 
@@ -5089,7 +5067,7 @@ class GoogleCloudRetailV2SearchRequestFacetSpec {
           'enableDynamicPosition': enableDynamicPosition!,
         if (excludedFilterKeys != null)
           'excludedFilterKeys': excludedFilterKeys!,
-        if (facetKey != null) 'facetKey': facetKey!.toJson(),
+        if (facetKey != null) 'facetKey': facetKey!,
         if (limit != null) 'limit': limit!,
       };
 }
@@ -5213,8 +5191,7 @@ class GoogleCloudRetailV2SearchRequestFacetSpecFacetKey {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (contains != null) 'contains': contains!,
-        if (intervals != null)
-          'intervals': intervals!.map((value) => value.toJson()).toList(),
+        if (intervals != null) 'intervals': intervals!,
         if (key != null) 'key': key!,
         if (orderBy != null) 'orderBy': orderBy!,
         if (prefixes != null) 'prefixes': prefixes!,
@@ -5359,14 +5336,12 @@ class GoogleCloudRetailV2SearchResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (attributionToken != null) 'attributionToken': attributionToken!,
         if (correctedQuery != null) 'correctedQuery': correctedQuery!,
-        if (facets != null)
-          'facets': facets!.map((value) => value.toJson()).toList(),
+        if (facets != null) 'facets': facets!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (queryExpansionInfo != null)
-          'queryExpansionInfo': queryExpansionInfo!.toJson(),
+          'queryExpansionInfo': queryExpansionInfo!,
         if (redirectUri != null) 'redirectUri': redirectUri!,
-        if (results != null)
-          'results': results!.map((value) => value.toJson()).toList(),
+        if (results != null) 'results': results!,
         if (totalSize != null) 'totalSize': totalSize!,
       };
 }
@@ -5408,8 +5383,7 @@ class GoogleCloudRetailV2SearchResponseFacet {
   core.Map<core.String, core.dynamic> toJson() => {
         if (dynamicFacet != null) 'dynamicFacet': dynamicFacet!,
         if (key != null) 'key': key!,
-        if (values != null)
-          'values': values!.map((value) => value.toJson()).toList(),
+        if (values != null) 'values': values!,
       };
 }
 
@@ -5444,7 +5418,7 @@ class GoogleCloudRetailV2SearchResponseFacetFacetValue {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (count != null) 'count': count!,
-        if (interval != null) 'interval': interval!.toJson(),
+        if (interval != null) 'interval': interval!,
         if (value != null) 'value': value!,
       };
 }
@@ -5571,7 +5545,7 @@ class GoogleCloudRetailV2SearchResponseSearchResult {
           'matchingVariantCount': matchingVariantCount!,
         if (matchingVariantFields != null)
           'matchingVariantFields': matchingVariantFields!,
-        if (product != null) 'product': product!.toJson(),
+        if (product != null) 'product': product!,
         if (variantRollupValues != null)
           'variantRollupValues': variantRollupValues!,
       };
@@ -5690,7 +5664,7 @@ class GoogleCloudRetailV2SetInventoryRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (allowMissing != null) 'allowMissing': allowMissing!,
-        if (inventory != null) 'inventory': inventory!.toJson(),
+        if (inventory != null) 'inventory': inventory!,
         if (setMask != null) 'setMask': setMask!,
         if (setTime != null) 'setTime': setTime!,
       };
@@ -5988,13 +5962,10 @@ class GoogleCloudRetailV2UserEvent {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (attributes != null)
-          'attributes':
-              attributes!.map((key, item) => core.MapEntry(key, item.toJson())),
+        if (attributes != null) 'attributes': attributes!,
         if (attributionToken != null) 'attributionToken': attributionToken!,
         if (cartId != null) 'cartId': cartId!,
-        if (completionDetail != null)
-          'completionDetail': completionDetail!.toJson(),
+        if (completionDetail != null) 'completionDetail': completionDetail!,
         if (eventTime != null) 'eventTime': eventTime!,
         if (eventType != null) 'eventType': eventType!,
         if (experimentIds != null) 'experimentIds': experimentIds!,
@@ -6003,16 +5974,14 @@ class GoogleCloudRetailV2UserEvent {
         if (orderBy != null) 'orderBy': orderBy!,
         if (pageCategories != null) 'pageCategories': pageCategories!,
         if (pageViewId != null) 'pageViewId': pageViewId!,
-        if (productDetails != null)
-          'productDetails':
-              productDetails!.map((value) => value.toJson()).toList(),
+        if (productDetails != null) 'productDetails': productDetails!,
         if (purchaseTransaction != null)
-          'purchaseTransaction': purchaseTransaction!.toJson(),
+          'purchaseTransaction': purchaseTransaction!,
         if (referrerUri != null) 'referrerUri': referrerUri!,
         if (searchQuery != null) 'searchQuery': searchQuery!,
         if (sessionId != null) 'sessionId': sessionId!,
         if (uri != null) 'uri': uri!,
-        if (userInfo != null) 'userInfo': userInfo!.toJson(),
+        if (userInfo != null) 'userInfo': userInfo!,
         if (visitorId != null) 'visitorId': visitorId!,
       };
 }
@@ -6074,8 +6043,7 @@ class GoogleCloudRetailV2UserEventInlineSource {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (userEvents != null)
-          'userEvents': userEvents!.map((value) => value.toJson()).toList(),
+        if (userEvents != null) 'userEvents': userEvents!,
       };
 }
 
@@ -6121,10 +6089,10 @@ class GoogleCloudRetailV2UserEventInputConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bigQuerySource != null) 'bigQuerySource': bigQuerySource!.toJson(),
-        if (gcsSource != null) 'gcsSource': gcsSource!.toJson(),
+        if (bigQuerySource != null) 'bigQuerySource': bigQuerySource!,
+        if (gcsSource != null) 'gcsSource': gcsSource!,
         if (userEventInlineSource != null)
-          'userEventInlineSource': userEventInlineSource!.toJson(),
+          'userEventInlineSource': userEventInlineSource!,
       };
 }
 
@@ -6298,9 +6266,8 @@ class GoogleCloudRetailV2alphaExportProductsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (errorSamples != null)
-          'errorSamples': errorSamples!.map((value) => value.toJson()).toList(),
-        if (errorsConfig != null) 'errorsConfig': errorsConfig!.toJson(),
+        if (errorSamples != null) 'errorSamples': errorSamples!,
+        if (errorsConfig != null) 'errorsConfig': errorsConfig!,
       };
 }
 
@@ -6337,9 +6304,8 @@ class GoogleCloudRetailV2alphaExportUserEventsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (errorSamples != null)
-          'errorSamples': errorSamples!.map((value) => value.toJson()).toList(),
-        if (errorsConfig != null) 'errorsConfig': errorsConfig!.toJson(),
+        if (errorSamples != null) 'errorSamples': errorSamples!,
+        if (errorsConfig != null) 'errorsConfig': errorsConfig!,
       };
 }
 
@@ -6366,8 +6332,7 @@ class GoogleCloudRetailV2alphaImportCompletionDataResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (errorSamples != null)
-          'errorSamples': errorSamples!.map((value) => value.toJson()).toList(),
+        if (errorSamples != null) 'errorSamples': errorSamples!,
       };
 }
 
@@ -6501,9 +6466,8 @@ class GoogleCloudRetailV2alphaImportProductsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (errorSamples != null)
-          'errorSamples': errorSamples!.map((value) => value.toJson()).toList(),
-        if (errorsConfig != null) 'errorsConfig': errorsConfig!.toJson(),
+        if (errorSamples != null) 'errorSamples': errorSamples!,
+        if (errorsConfig != null) 'errorsConfig': errorsConfig!,
       };
 }
 
@@ -6548,10 +6512,9 @@ class GoogleCloudRetailV2alphaImportUserEventsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (errorSamples != null)
-          'errorSamples': errorSamples!.map((value) => value.toJson()).toList(),
-        if (errorsConfig != null) 'errorsConfig': errorsConfig!.toJson(),
-        if (importSummary != null) 'importSummary': importSummary!.toJson(),
+        if (errorSamples != null) 'errorSamples': errorSamples!,
+        if (errorsConfig != null) 'errorsConfig': errorsConfig!,
+        if (importSummary != null) 'importSummary': importSummary!,
       };
 }
 
@@ -6768,9 +6731,8 @@ class GoogleCloudRetailV2betaExportProductsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (errorSamples != null)
-          'errorSamples': errorSamples!.map((value) => value.toJson()).toList(),
-        if (errorsConfig != null) 'errorsConfig': errorsConfig!.toJson(),
+        if (errorSamples != null) 'errorSamples': errorSamples!,
+        if (errorsConfig != null) 'errorsConfig': errorsConfig!,
       };
 }
 
@@ -6807,9 +6769,8 @@ class GoogleCloudRetailV2betaExportUserEventsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (errorSamples != null)
-          'errorSamples': errorSamples!.map((value) => value.toJson()).toList(),
-        if (errorsConfig != null) 'errorsConfig': errorsConfig!.toJson(),
+        if (errorSamples != null) 'errorSamples': errorSamples!,
+        if (errorsConfig != null) 'errorsConfig': errorsConfig!,
       };
 }
 
@@ -6836,8 +6797,7 @@ class GoogleCloudRetailV2betaImportCompletionDataResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (errorSamples != null)
-          'errorSamples': errorSamples!.map((value) => value.toJson()).toList(),
+        if (errorSamples != null) 'errorSamples': errorSamples!,
       };
 }
 
@@ -6971,9 +6931,8 @@ class GoogleCloudRetailV2betaImportProductsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (errorSamples != null)
-          'errorSamples': errorSamples!.map((value) => value.toJson()).toList(),
-        if (errorsConfig != null) 'errorsConfig': errorsConfig!.toJson(),
+        if (errorSamples != null) 'errorSamples': errorSamples!,
+        if (errorsConfig != null) 'errorsConfig': errorsConfig!,
       };
 }
 
@@ -7018,10 +6977,9 @@ class GoogleCloudRetailV2betaImportUserEventsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (errorSamples != null)
-          'errorSamples': errorSamples!.map((value) => value.toJson()).toList(),
-        if (errorsConfig != null) 'errorsConfig': errorsConfig!.toJson(),
-        if (importSummary != null) 'importSummary': importSummary!.toJson(),
+        if (errorSamples != null) 'errorSamples': errorSamples!,
+        if (errorsConfig != null) 'errorsConfig': errorsConfig!,
+        if (importSummary != null) 'importSummary': importSummary!,
       };
 }
 
@@ -7164,8 +7122,7 @@ class GoogleLongrunningListOperationsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (operations != null)
-          'operations': operations!.map((value) => value.toJson()).toList(),
+        if (operations != null) 'operations': operations!,
       };
 }
 
@@ -7238,7 +7195,7 @@ class GoogleLongrunningOperation {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (done != null) 'done': done!,
-        if (error != null) 'error': error!.toJson(),
+        if (error != null) 'error': error!,
         if (metadata != null) 'metadata': metadata!,
         if (name != null) 'name': name!,
         if (response != null) 'response': response!,

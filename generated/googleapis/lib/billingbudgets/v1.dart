@@ -106,7 +106,7 @@ class BillingAccountsBudgetsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -296,7 +296,7 @@ class BillingAccountsBudgetsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -409,16 +409,13 @@ class GoogleCloudBillingBudgetsV1Budget {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (amount != null) 'amount': amount!.toJson(),
-        if (budgetFilter != null) 'budgetFilter': budgetFilter!.toJson(),
+        if (amount != null) 'amount': amount!,
+        if (budgetFilter != null) 'budgetFilter': budgetFilter!,
         if (displayName != null) 'displayName': displayName!,
         if (etag != null) 'etag': etag!,
         if (name != null) 'name': name!,
-        if (notificationsRule != null)
-          'notificationsRule': notificationsRule!.toJson(),
-        if (thresholdRules != null)
-          'thresholdRules':
-              thresholdRules!.map((value) => value.toJson()).toList(),
+        if (notificationsRule != null) 'notificationsRule': notificationsRule!,
+        if (thresholdRules != null) 'thresholdRules': thresholdRules!,
       };
 }
 
@@ -458,10 +455,8 @@ class GoogleCloudBillingBudgetsV1BudgetAmount {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (lastPeriodAmount != null)
-          'lastPeriodAmount': lastPeriodAmount!.toJson(),
-        if (specifiedAmount != null)
-          'specifiedAmount': specifiedAmount!.toJson(),
+        if (lastPeriodAmount != null) 'lastPeriodAmount': lastPeriodAmount!,
+        if (specifiedAmount != null) 'specifiedAmount': specifiedAmount!,
       };
 }
 
@@ -498,8 +493,8 @@ class GoogleCloudBillingBudgetsV1CustomPeriod {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (endDate != null) 'endDate': endDate!.toJson(),
-        if (startDate != null) 'startDate': startDate!.toJson(),
+        if (endDate != null) 'endDate': endDate!,
+        if (startDate != null) 'startDate': startDate!,
       };
 }
 
@@ -660,7 +655,7 @@ class GoogleCloudBillingBudgetsV1Filter {
         if (creditTypes != null) 'creditTypes': creditTypes!,
         if (creditTypesTreatment != null)
           'creditTypesTreatment': creditTypesTreatment!,
-        if (customPeriod != null) 'customPeriod': customPeriod!.toJson(),
+        if (customPeriod != null) 'customPeriod': customPeriod!,
         if (labels != null) 'labels': labels!,
         if (projects != null) 'projects': projects!,
         if (services != null) 'services': services!,
@@ -703,8 +698,7 @@ class GoogleCloudBillingBudgetsV1ListBudgetsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (budgets != null)
-          'budgets': budgets!.map((value) => value.toJson()).toList(),
+        if (budgets != null) 'budgets': budgets!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }

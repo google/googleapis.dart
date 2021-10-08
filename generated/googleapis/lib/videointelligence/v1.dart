@@ -289,7 +289,7 @@ class ProjectsLocationsOperationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -475,7 +475,7 @@ class VideosResource {
     GoogleCloudVideointelligenceV1AnnotateVideoRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -520,8 +520,7 @@ class GoogleCloudVideointelligenceV1AnnotateVideoProgress {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (annotationProgress != null)
-          'annotationProgress':
-              annotationProgress!.map((value) => value.toJson()).toList(),
+          'annotationProgress': annotationProgress!,
       };
 }
 
@@ -621,7 +620,7 @@ class GoogleCloudVideointelligenceV1AnnotateVideoRequest {
         if (inputUri != null) 'inputUri': inputUri!,
         if (locationId != null) 'locationId': locationId!,
         if (outputUri != null) 'outputUri': outputUri!,
-        if (videoContext != null) 'videoContext': videoContext!.toJson(),
+        if (videoContext != null) 'videoContext': videoContext!,
       };
 }
 
@@ -651,9 +650,7 @@ class GoogleCloudVideointelligenceV1AnnotateVideoResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (annotationResults != null)
-          'annotationResults':
-              annotationResults!.map((value) => value.toJson()).toList(),
+        if (annotationResults != null) 'annotationResults': annotationResults!,
       };
 }
 
@@ -735,7 +732,7 @@ class GoogleCloudVideointelligenceV1DetectedLandmark {
   core.Map<core.String, core.dynamic> toJson() => {
         if (confidence != null) 'confidence': confidence!,
         if (name != null) 'name': name!,
-        if (point != null) 'point': point!.toJson(),
+        if (point != null) 'point': point!,
       };
 }
 
@@ -812,8 +809,7 @@ class GoogleCloudVideointelligenceV1ExplicitContentAnnotation {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (frames != null)
-          'frames': frames!.map((value) => value.toJson()).toList(),
+        if (frames != null) 'frames': frames!,
         if (version != null) 'version': version!,
       };
 }
@@ -927,10 +923,8 @@ class GoogleCloudVideointelligenceV1FaceAnnotation {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (frames != null)
-          'frames': frames!.map((value) => value.toJson()).toList(),
-        if (segments != null)
-          'segments': segments!.map((value) => value.toJson()).toList(),
+        if (frames != null) 'frames': frames!,
+        if (segments != null) 'segments': segments!,
         if (thumbnail != null) 'thumbnail': thumbnail!,
       };
 }
@@ -976,8 +970,7 @@ class GoogleCloudVideointelligenceV1FaceDetectionAnnotation {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (thumbnail != null) 'thumbnail': thumbnail!,
-        if (tracks != null)
-          'tracks': tracks!.map((value) => value.toJson()).toList(),
+        if (tracks != null) 'tracks': tracks!,
         if (version != null) 'version': version!,
       };
 }
@@ -1062,8 +1055,7 @@ class GoogleCloudVideointelligenceV1FaceFrame {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (normalizedBoundingBoxes != null)
-          'normalizedBoundingBoxes':
-              normalizedBoundingBoxes!.map((value) => value.toJson()).toList(),
+          'normalizedBoundingBoxes': normalizedBoundingBoxes!,
         if (timeOffset != null) 'timeOffset': timeOffset!,
       };
 }
@@ -1086,7 +1078,7 @@ class GoogleCloudVideointelligenceV1FaceSegment {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (segment != null) 'segment': segment!.toJson(),
+        if (segment != null) 'segment': segment!,
       };
 }
 
@@ -1151,14 +1143,10 @@ class GoogleCloudVideointelligenceV1LabelAnnotation {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (categoryEntities != null)
-          'categoryEntities':
-              categoryEntities!.map((value) => value.toJson()).toList(),
-        if (entity != null) 'entity': entity!.toJson(),
-        if (frames != null)
-          'frames': frames!.map((value) => value.toJson()).toList(),
-        if (segments != null)
-          'segments': segments!.map((value) => value.toJson()).toList(),
+        if (categoryEntities != null) 'categoryEntities': categoryEntities!,
+        if (entity != null) 'entity': entity!,
+        if (frames != null) 'frames': frames!,
+        if (segments != null) 'segments': segments!,
         if (version != null) 'version': version!,
       };
 }
@@ -1307,7 +1295,7 @@ class GoogleCloudVideointelligenceV1LabelSegment {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (confidence != null) 'confidence': confidence!,
-        if (segment != null) 'segment': segment!.toJson(),
+        if (segment != null) 'segment': segment!,
       };
 }
 
@@ -1358,11 +1346,9 @@ class GoogleCloudVideointelligenceV1LogoRecognitionAnnotation {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (entity != null) 'entity': entity!.toJson(),
-        if (segments != null)
-          'segments': segments!.map((value) => value.toJson()).toList(),
-        if (tracks != null)
-          'tracks': tracks!.map((value) => value.toJson()).toList(),
+        if (entity != null) 'entity': entity!,
+        if (segments != null) 'segments': segments!,
+        if (tracks != null) 'tracks': tracks!,
       };
 }
 
@@ -1443,8 +1429,7 @@ class GoogleCloudVideointelligenceV1NormalizedBoundingPoly {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (vertices != null)
-          'vertices': vertices!.map((value) => value.toJson()).toList(),
+        if (vertices != null) 'vertices': vertices!,
       };
 }
 
@@ -1553,10 +1538,9 @@ class GoogleCloudVideointelligenceV1ObjectTrackingAnnotation {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (confidence != null) 'confidence': confidence!,
-        if (entity != null) 'entity': entity!.toJson(),
-        if (frames != null)
-          'frames': frames!.map((value) => value.toJson()).toList(),
-        if (segment != null) 'segment': segment!.toJson(),
+        if (entity != null) 'entity': entity!,
+        if (frames != null) 'frames': frames!,
+        if (segment != null) 'segment': segment!,
         if (trackId != null) 'trackId': trackId!,
         if (version != null) 'version': version!,
       };
@@ -1614,7 +1598,7 @@ class GoogleCloudVideointelligenceV1ObjectTrackingFrame {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (normalizedBoundingBox != null)
-          'normalizedBoundingBox': normalizedBoundingBox!.toJson(),
+          'normalizedBoundingBox': normalizedBoundingBox!,
         if (timeOffset != null) 'timeOffset': timeOffset!,
       };
 }
@@ -1647,8 +1631,7 @@ class GoogleCloudVideointelligenceV1PersonDetectionAnnotation {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (tracks != null)
-          'tracks': tracks!.map((value) => value.toJson()).toList(),
+        if (tracks != null) 'tracks': tracks!,
         if (version != null) 'version': version!,
       };
 }
@@ -1807,8 +1790,7 @@ class GoogleCloudVideointelligenceV1SpeechRecognitionAlternative {
   core.Map<core.String, core.dynamic> toJson() => {
         if (confidence != null) 'confidence': confidence!,
         if (transcript != null) 'transcript': transcript!,
-        if (words != null)
-          'words': words!.map((value) => value.toJson()).toList(),
+        if (words != null) 'words': words!,
       };
 }
 
@@ -1852,8 +1834,7 @@ class GoogleCloudVideointelligenceV1SpeechTranscription {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (alternatives != null)
-          'alternatives': alternatives!.map((value) => value.toJson()).toList(),
+        if (alternatives != null) 'alternatives': alternatives!,
         if (languageCode != null) 'languageCode': languageCode!,
       };
 }
@@ -2007,9 +1988,7 @@ class GoogleCloudVideointelligenceV1SpeechTranscriptionConfig {
         if (filterProfanity != null) 'filterProfanity': filterProfanity!,
         if (languageCode != null) 'languageCode': languageCode!,
         if (maxAlternatives != null) 'maxAlternatives': maxAlternatives!,
-        if (speechContexts != null)
-          'speechContexts':
-              speechContexts!.map((value) => value.toJson()).toList(),
+        if (speechContexts != null) 'speechContexts': speechContexts!,
       };
 }
 
@@ -2049,8 +2028,7 @@ class GoogleCloudVideointelligenceV1TextAnnotation {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (segments != null)
-          'segments': segments!.map((value) => value.toJson()).toList(),
+        if (segments != null) 'segments': segments!,
         if (text != null) 'text': text!,
         if (version != null) 'version': version!,
       };
@@ -2124,7 +2102,7 @@ class GoogleCloudVideointelligenceV1TextFrame {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (rotatedBoundingBox != null)
-          'rotatedBoundingBox': rotatedBoundingBox!.toJson(),
+          'rotatedBoundingBox': rotatedBoundingBox!,
         if (timeOffset != null) 'timeOffset': timeOffset!,
       };
 }
@@ -2169,9 +2147,8 @@ class GoogleCloudVideointelligenceV1TextSegment {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (confidence != null) 'confidence': confidence!,
-        if (frames != null)
-          'frames': frames!.map((value) => value.toJson()).toList(),
-        if (segment != null) 'segment': segment!.toJson(),
+        if (frames != null) 'frames': frames!,
+        if (segment != null) 'segment': segment!,
       };
 }
 
@@ -2231,12 +2208,10 @@ class GoogleCloudVideointelligenceV1TimestampedObject {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (attributes != null)
-          'attributes': attributes!.map((value) => value.toJson()).toList(),
-        if (landmarks != null)
-          'landmarks': landmarks!.map((value) => value.toJson()).toList(),
+        if (attributes != null) 'attributes': attributes!,
+        if (landmarks != null) 'landmarks': landmarks!,
         if (normalizedBoundingBox != null)
-          'normalizedBoundingBox': normalizedBoundingBox!.toJson(),
+          'normalizedBoundingBox': normalizedBoundingBox!,
         if (timeOffset != null) 'timeOffset': timeOffset!,
       };
 }
@@ -2293,13 +2268,11 @@ class GoogleCloudVideointelligenceV1Track {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (attributes != null)
-          'attributes': attributes!.map((value) => value.toJson()).toList(),
+        if (attributes != null) 'attributes': attributes!,
         if (confidence != null) 'confidence': confidence!,
-        if (segment != null) 'segment': segment!.toJson(),
+        if (segment != null) 'segment': segment!,
         if (timestampedObjects != null)
-          'timestampedObjects':
-              timestampedObjects!.map((value) => value.toJson()).toList(),
+          'timestampedObjects': timestampedObjects!,
       };
 }
 
@@ -2375,7 +2348,7 @@ class GoogleCloudVideointelligenceV1VideoAnnotationProgress {
         if (feature != null) 'feature': feature!,
         if (inputUri != null) 'inputUri': inputUri!,
         if (progressPercent != null) 'progressPercent': progressPercent!,
-        if (segment != null) 'segment': segment!.toJson(),
+        if (segment != null) 'segment': segment!,
         if (startTime != null) 'startTime': startTime!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
@@ -2614,54 +2587,33 @@ class GoogleCloudVideointelligenceV1VideoAnnotationResults {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (error != null) 'error': error!.toJson(),
+        if (error != null) 'error': error!,
         if (explicitAnnotation != null)
-          'explicitAnnotation': explicitAnnotation!.toJson(),
-        if (faceAnnotations != null)
-          'faceAnnotations':
-              faceAnnotations!.map((value) => value.toJson()).toList(),
+          'explicitAnnotation': explicitAnnotation!,
+        if (faceAnnotations != null) 'faceAnnotations': faceAnnotations!,
         if (faceDetectionAnnotations != null)
-          'faceDetectionAnnotations':
-              faceDetectionAnnotations!.map((value) => value.toJson()).toList(),
+          'faceDetectionAnnotations': faceDetectionAnnotations!,
         if (frameLabelAnnotations != null)
-          'frameLabelAnnotations':
-              frameLabelAnnotations!.map((value) => value.toJson()).toList(),
+          'frameLabelAnnotations': frameLabelAnnotations!,
         if (inputUri != null) 'inputUri': inputUri!,
         if (logoRecognitionAnnotations != null)
-          'logoRecognitionAnnotations': logoRecognitionAnnotations!
-              .map((value) => value.toJson())
-              .toList(),
-        if (objectAnnotations != null)
-          'objectAnnotations':
-              objectAnnotations!.map((value) => value.toJson()).toList(),
+          'logoRecognitionAnnotations': logoRecognitionAnnotations!,
+        if (objectAnnotations != null) 'objectAnnotations': objectAnnotations!,
         if (personDetectionAnnotations != null)
-          'personDetectionAnnotations': personDetectionAnnotations!
-              .map((value) => value.toJson())
-              .toList(),
-        if (segment != null) 'segment': segment!.toJson(),
+          'personDetectionAnnotations': personDetectionAnnotations!,
+        if (segment != null) 'segment': segment!,
         if (segmentLabelAnnotations != null)
-          'segmentLabelAnnotations':
-              segmentLabelAnnotations!.map((value) => value.toJson()).toList(),
+          'segmentLabelAnnotations': segmentLabelAnnotations!,
         if (segmentPresenceLabelAnnotations != null)
-          'segmentPresenceLabelAnnotations': segmentPresenceLabelAnnotations!
-              .map((value) => value.toJson())
-              .toList(),
-        if (shotAnnotations != null)
-          'shotAnnotations':
-              shotAnnotations!.map((value) => value.toJson()).toList(),
+          'segmentPresenceLabelAnnotations': segmentPresenceLabelAnnotations!,
+        if (shotAnnotations != null) 'shotAnnotations': shotAnnotations!,
         if (shotLabelAnnotations != null)
-          'shotLabelAnnotations':
-              shotLabelAnnotations!.map((value) => value.toJson()).toList(),
+          'shotLabelAnnotations': shotLabelAnnotations!,
         if (shotPresenceLabelAnnotations != null)
-          'shotPresenceLabelAnnotations': shotPresenceLabelAnnotations!
-              .map((value) => value.toJson())
-              .toList(),
+          'shotPresenceLabelAnnotations': shotPresenceLabelAnnotations!,
         if (speechTranscriptions != null)
-          'speechTranscriptions':
-              speechTranscriptions!.map((value) => value.toJson()).toList(),
-        if (textAnnotations != null)
-          'textAnnotations':
-              textAnnotations!.map((value) => value.toJson()).toList(),
+          'speechTranscriptions': speechTranscriptions!,
+        if (textAnnotations != null) 'textAnnotations': textAnnotations!,
       };
 }
 
@@ -2768,24 +2720,22 @@ class GoogleCloudVideointelligenceV1VideoContext {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (explicitContentDetectionConfig != null)
-          'explicitContentDetectionConfig':
-              explicitContentDetectionConfig!.toJson(),
+          'explicitContentDetectionConfig': explicitContentDetectionConfig!,
         if (faceDetectionConfig != null)
-          'faceDetectionConfig': faceDetectionConfig!.toJson(),
+          'faceDetectionConfig': faceDetectionConfig!,
         if (labelDetectionConfig != null)
-          'labelDetectionConfig': labelDetectionConfig!.toJson(),
+          'labelDetectionConfig': labelDetectionConfig!,
         if (objectTrackingConfig != null)
-          'objectTrackingConfig': objectTrackingConfig!.toJson(),
+          'objectTrackingConfig': objectTrackingConfig!,
         if (personDetectionConfig != null)
-          'personDetectionConfig': personDetectionConfig!.toJson(),
-        if (segments != null)
-          'segments': segments!.map((value) => value.toJson()).toList(),
+          'personDetectionConfig': personDetectionConfig!,
+        if (segments != null) 'segments': segments!,
         if (shotChangeDetectionConfig != null)
-          'shotChangeDetectionConfig': shotChangeDetectionConfig!.toJson(),
+          'shotChangeDetectionConfig': shotChangeDetectionConfig!,
         if (speechTranscriptionConfig != null)
-          'speechTranscriptionConfig': speechTranscriptionConfig!.toJson(),
+          'speechTranscriptionConfig': speechTranscriptionConfig!,
         if (textDetectionConfig != null)
-          'textDetectionConfig': textDetectionConfig!.toJson(),
+          'textDetectionConfig': textDetectionConfig!,
       };
 }
 
@@ -2926,8 +2876,7 @@ class GoogleCloudVideointelligenceV1beta2AnnotateVideoProgress {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (annotationProgress != null)
-          'annotationProgress':
-              annotationProgress!.map((value) => value.toJson()).toList(),
+          'annotationProgress': annotationProgress!,
       };
 }
 
@@ -2958,9 +2907,7 @@ class GoogleCloudVideointelligenceV1beta2AnnotateVideoResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (annotationResults != null)
-          'annotationResults':
-              annotationResults!.map((value) => value.toJson()).toList(),
+        if (annotationResults != null) 'annotationResults': annotationResults!,
       };
 }
 
@@ -3042,7 +2989,7 @@ class GoogleCloudVideointelligenceV1beta2DetectedLandmark {
   core.Map<core.String, core.dynamic> toJson() => {
         if (confidence != null) 'confidence': confidence!,
         if (name != null) 'name': name!,
-        if (point != null) 'point': point!.toJson(),
+        if (point != null) 'point': point!,
       };
 }
 
@@ -3119,8 +3066,7 @@ class GoogleCloudVideointelligenceV1beta2ExplicitContentAnnotation {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (frames != null)
-          'frames': frames!.map((value) => value.toJson()).toList(),
+        if (frames != null) 'frames': frames!,
         if (version != null) 'version': version!,
       };
 }
@@ -3211,10 +3157,8 @@ class GoogleCloudVideointelligenceV1beta2FaceAnnotation {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (frames != null)
-          'frames': frames!.map((value) => value.toJson()).toList(),
-        if (segments != null)
-          'segments': segments!.map((value) => value.toJson()).toList(),
+        if (frames != null) 'frames': frames!,
+        if (segments != null) 'segments': segments!,
         if (thumbnail != null) 'thumbnail': thumbnail!,
       };
 }
@@ -3262,8 +3206,7 @@ class GoogleCloudVideointelligenceV1beta2FaceDetectionAnnotation {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (thumbnail != null) 'thumbnail': thumbnail!,
-        if (tracks != null)
-          'tracks': tracks!.map((value) => value.toJson()).toList(),
+        if (tracks != null) 'tracks': tracks!,
         if (version != null) 'version': version!,
       };
 }
@@ -3305,8 +3248,7 @@ class GoogleCloudVideointelligenceV1beta2FaceFrame {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (normalizedBoundingBoxes != null)
-          'normalizedBoundingBoxes':
-              normalizedBoundingBoxes!.map((value) => value.toJson()).toList(),
+          'normalizedBoundingBoxes': normalizedBoundingBoxes!,
         if (timeOffset != null) 'timeOffset': timeOffset!,
       };
 }
@@ -3329,7 +3271,7 @@ class GoogleCloudVideointelligenceV1beta2FaceSegment {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (segment != null) 'segment': segment!.toJson(),
+        if (segment != null) 'segment': segment!,
       };
 }
 
@@ -3395,14 +3337,10 @@ class GoogleCloudVideointelligenceV1beta2LabelAnnotation {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (categoryEntities != null)
-          'categoryEntities':
-              categoryEntities!.map((value) => value.toJson()).toList(),
-        if (entity != null) 'entity': entity!.toJson(),
-        if (frames != null)
-          'frames': frames!.map((value) => value.toJson()).toList(),
-        if (segments != null)
-          'segments': segments!.map((value) => value.toJson()).toList(),
+        if (categoryEntities != null) 'categoryEntities': categoryEntities!,
+        if (entity != null) 'entity': entity!,
+        if (frames != null) 'frames': frames!,
+        if (segments != null) 'segments': segments!,
         if (version != null) 'version': version!,
       };
 }
@@ -3467,7 +3405,7 @@ class GoogleCloudVideointelligenceV1beta2LabelSegment {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (confidence != null) 'confidence': confidence!,
-        if (segment != null) 'segment': segment!.toJson(),
+        if (segment != null) 'segment': segment!,
       };
 }
 
@@ -3519,11 +3457,9 @@ class GoogleCloudVideointelligenceV1beta2LogoRecognitionAnnotation {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (entity != null) 'entity': entity!.toJson(),
-        if (segments != null)
-          'segments': segments!.map((value) => value.toJson()).toList(),
-        if (tracks != null)
-          'tracks': tracks!.map((value) => value.toJson()).toList(),
+        if (entity != null) 'entity': entity!,
+        if (segments != null) 'segments': segments!,
+        if (tracks != null) 'tracks': tracks!,
       };
 }
 
@@ -3607,8 +3543,7 @@ class GoogleCloudVideointelligenceV1beta2NormalizedBoundingPoly {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (vertices != null)
-          'vertices': vertices!.map((value) => value.toJson()).toList(),
+        if (vertices != null) 'vertices': vertices!,
       };
 }
 
@@ -3717,10 +3652,9 @@ class GoogleCloudVideointelligenceV1beta2ObjectTrackingAnnotation {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (confidence != null) 'confidence': confidence!,
-        if (entity != null) 'entity': entity!.toJson(),
-        if (frames != null)
-          'frames': frames!.map((value) => value.toJson()).toList(),
-        if (segment != null) 'segment': segment!.toJson(),
+        if (entity != null) 'entity': entity!,
+        if (frames != null) 'frames': frames!,
+        if (segment != null) 'segment': segment!,
         if (trackId != null) 'trackId': trackId!,
         if (version != null) 'version': version!,
       };
@@ -3757,7 +3691,7 @@ class GoogleCloudVideointelligenceV1beta2ObjectTrackingFrame {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (normalizedBoundingBox != null)
-          'normalizedBoundingBox': normalizedBoundingBox!.toJson(),
+          'normalizedBoundingBox': normalizedBoundingBox!,
         if (timeOffset != null) 'timeOffset': timeOffset!,
       };
 }
@@ -3791,8 +3725,7 @@ class GoogleCloudVideointelligenceV1beta2PersonDetectionAnnotation {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (tracks != null)
-          'tracks': tracks!.map((value) => value.toJson()).toList(),
+        if (tracks != null) 'tracks': tracks!,
         if (version != null) 'version': version!,
       };
 }
@@ -3848,8 +3781,7 @@ class GoogleCloudVideointelligenceV1beta2SpeechRecognitionAlternative {
   core.Map<core.String, core.dynamic> toJson() => {
         if (confidence != null) 'confidence': confidence!,
         if (transcript != null) 'transcript': transcript!,
-        if (words != null)
-          'words': words!.map((value) => value.toJson()).toList(),
+        if (words != null) 'words': words!,
       };
 }
 
@@ -3894,8 +3826,7 @@ class GoogleCloudVideointelligenceV1beta2SpeechTranscription {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (alternatives != null)
-          'alternatives': alternatives!.map((value) => value.toJson()).toList(),
+        if (alternatives != null) 'alternatives': alternatives!,
         if (languageCode != null) 'languageCode': languageCode!,
       };
 }
@@ -3936,8 +3867,7 @@ class GoogleCloudVideointelligenceV1beta2TextAnnotation {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (segments != null)
-          'segments': segments!.map((value) => value.toJson()).toList(),
+        if (segments != null) 'segments': segments!,
         if (text != null) 'text': text!,
         if (version != null) 'version': version!,
       };
@@ -3973,7 +3903,7 @@ class GoogleCloudVideointelligenceV1beta2TextFrame {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (rotatedBoundingBox != null)
-          'rotatedBoundingBox': rotatedBoundingBox!.toJson(),
+          'rotatedBoundingBox': rotatedBoundingBox!,
         if (timeOffset != null) 'timeOffset': timeOffset!,
       };
 }
@@ -4018,9 +3948,8 @@ class GoogleCloudVideointelligenceV1beta2TextSegment {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (confidence != null) 'confidence': confidence!,
-        if (frames != null)
-          'frames': frames!.map((value) => value.toJson()).toList(),
-        if (segment != null) 'segment': segment!.toJson(),
+        if (frames != null) 'frames': frames!,
+        if (segment != null) 'segment': segment!,
       };
 }
 
@@ -4083,12 +4012,10 @@ class GoogleCloudVideointelligenceV1beta2TimestampedObject {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (attributes != null)
-          'attributes': attributes!.map((value) => value.toJson()).toList(),
-        if (landmarks != null)
-          'landmarks': landmarks!.map((value) => value.toJson()).toList(),
+        if (attributes != null) 'attributes': attributes!,
+        if (landmarks != null) 'landmarks': landmarks!,
         if (normalizedBoundingBox != null)
-          'normalizedBoundingBox': normalizedBoundingBox!.toJson(),
+          'normalizedBoundingBox': normalizedBoundingBox!,
         if (timeOffset != null) 'timeOffset': timeOffset!,
       };
 }
@@ -4147,13 +4074,11 @@ class GoogleCloudVideointelligenceV1beta2Track {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (attributes != null)
-          'attributes': attributes!.map((value) => value.toJson()).toList(),
+        if (attributes != null) 'attributes': attributes!,
         if (confidence != null) 'confidence': confidence!,
-        if (segment != null) 'segment': segment!.toJson(),
+        if (segment != null) 'segment': segment!,
         if (timestampedObjects != null)
-          'timestampedObjects':
-              timestampedObjects!.map((value) => value.toJson()).toList(),
+          'timestampedObjects': timestampedObjects!,
       };
 }
 
@@ -4230,7 +4155,7 @@ class GoogleCloudVideointelligenceV1beta2VideoAnnotationProgress {
         if (feature != null) 'feature': feature!,
         if (inputUri != null) 'inputUri': inputUri!,
         if (progressPercent != null) 'progressPercent': progressPercent!,
-        if (segment != null) 'segment': segment!.toJson(),
+        if (segment != null) 'segment': segment!,
         if (startTime != null) 'startTime': startTime!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
@@ -4478,54 +4403,33 @@ class GoogleCloudVideointelligenceV1beta2VideoAnnotationResults {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (error != null) 'error': error!.toJson(),
+        if (error != null) 'error': error!,
         if (explicitAnnotation != null)
-          'explicitAnnotation': explicitAnnotation!.toJson(),
-        if (faceAnnotations != null)
-          'faceAnnotations':
-              faceAnnotations!.map((value) => value.toJson()).toList(),
+          'explicitAnnotation': explicitAnnotation!,
+        if (faceAnnotations != null) 'faceAnnotations': faceAnnotations!,
         if (faceDetectionAnnotations != null)
-          'faceDetectionAnnotations':
-              faceDetectionAnnotations!.map((value) => value.toJson()).toList(),
+          'faceDetectionAnnotations': faceDetectionAnnotations!,
         if (frameLabelAnnotations != null)
-          'frameLabelAnnotations':
-              frameLabelAnnotations!.map((value) => value.toJson()).toList(),
+          'frameLabelAnnotations': frameLabelAnnotations!,
         if (inputUri != null) 'inputUri': inputUri!,
         if (logoRecognitionAnnotations != null)
-          'logoRecognitionAnnotations': logoRecognitionAnnotations!
-              .map((value) => value.toJson())
-              .toList(),
-        if (objectAnnotations != null)
-          'objectAnnotations':
-              objectAnnotations!.map((value) => value.toJson()).toList(),
+          'logoRecognitionAnnotations': logoRecognitionAnnotations!,
+        if (objectAnnotations != null) 'objectAnnotations': objectAnnotations!,
         if (personDetectionAnnotations != null)
-          'personDetectionAnnotations': personDetectionAnnotations!
-              .map((value) => value.toJson())
-              .toList(),
-        if (segment != null) 'segment': segment!.toJson(),
+          'personDetectionAnnotations': personDetectionAnnotations!,
+        if (segment != null) 'segment': segment!,
         if (segmentLabelAnnotations != null)
-          'segmentLabelAnnotations':
-              segmentLabelAnnotations!.map((value) => value.toJson()).toList(),
+          'segmentLabelAnnotations': segmentLabelAnnotations!,
         if (segmentPresenceLabelAnnotations != null)
-          'segmentPresenceLabelAnnotations': segmentPresenceLabelAnnotations!
-              .map((value) => value.toJson())
-              .toList(),
-        if (shotAnnotations != null)
-          'shotAnnotations':
-              shotAnnotations!.map((value) => value.toJson()).toList(),
+          'segmentPresenceLabelAnnotations': segmentPresenceLabelAnnotations!,
+        if (shotAnnotations != null) 'shotAnnotations': shotAnnotations!,
         if (shotLabelAnnotations != null)
-          'shotLabelAnnotations':
-              shotLabelAnnotations!.map((value) => value.toJson()).toList(),
+          'shotLabelAnnotations': shotLabelAnnotations!,
         if (shotPresenceLabelAnnotations != null)
-          'shotPresenceLabelAnnotations': shotPresenceLabelAnnotations!
-              .map((value) => value.toJson())
-              .toList(),
+          'shotPresenceLabelAnnotations': shotPresenceLabelAnnotations!,
         if (speechTranscriptions != null)
-          'speechTranscriptions':
-              speechTranscriptions!.map((value) => value.toJson()).toList(),
-        if (textAnnotations != null)
-          'textAnnotations':
-              textAnnotations!.map((value) => value.toJson()).toList(),
+          'speechTranscriptions': speechTranscriptions!,
+        if (textAnnotations != null) 'textAnnotations': textAnnotations!,
       };
 }
 
@@ -4666,8 +4570,7 @@ class GoogleCloudVideointelligenceV1p1beta1AnnotateVideoProgress {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (annotationProgress != null)
-          'annotationProgress':
-              annotationProgress!.map((value) => value.toJson()).toList(),
+          'annotationProgress': annotationProgress!,
       };
 }
 
@@ -4698,9 +4601,7 @@ class GoogleCloudVideointelligenceV1p1beta1AnnotateVideoResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (annotationResults != null)
-          'annotationResults':
-              annotationResults!.map((value) => value.toJson()).toList(),
+        if (annotationResults != null) 'annotationResults': annotationResults!,
       };
 }
 
@@ -4783,7 +4684,7 @@ class GoogleCloudVideointelligenceV1p1beta1DetectedLandmark {
   core.Map<core.String, core.dynamic> toJson() => {
         if (confidence != null) 'confidence': confidence!,
         if (name != null) 'name': name!,
-        if (point != null) 'point': point!.toJson(),
+        if (point != null) 'point': point!,
       };
 }
 
@@ -4860,8 +4761,7 @@ class GoogleCloudVideointelligenceV1p1beta1ExplicitContentAnnotation {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (frames != null)
-          'frames': frames!.map((value) => value.toJson()).toList(),
+        if (frames != null) 'frames': frames!,
         if (version != null) 'version': version!,
       };
 }
@@ -4952,10 +4852,8 @@ class GoogleCloudVideointelligenceV1p1beta1FaceAnnotation {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (frames != null)
-          'frames': frames!.map((value) => value.toJson()).toList(),
-        if (segments != null)
-          'segments': segments!.map((value) => value.toJson()).toList(),
+        if (frames != null) 'frames': frames!,
+        if (segments != null) 'segments': segments!,
         if (thumbnail != null) 'thumbnail': thumbnail!,
       };
 }
@@ -5003,8 +4901,7 @@ class GoogleCloudVideointelligenceV1p1beta1FaceDetectionAnnotation {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (thumbnail != null) 'thumbnail': thumbnail!,
-        if (tracks != null)
-          'tracks': tracks!.map((value) => value.toJson()).toList(),
+        if (tracks != null) 'tracks': tracks!,
         if (version != null) 'version': version!,
       };
 }
@@ -5046,8 +4943,7 @@ class GoogleCloudVideointelligenceV1p1beta1FaceFrame {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (normalizedBoundingBoxes != null)
-          'normalizedBoundingBoxes':
-              normalizedBoundingBoxes!.map((value) => value.toJson()).toList(),
+          'normalizedBoundingBoxes': normalizedBoundingBoxes!,
         if (timeOffset != null) 'timeOffset': timeOffset!,
       };
 }
@@ -5070,7 +4966,7 @@ class GoogleCloudVideointelligenceV1p1beta1FaceSegment {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (segment != null) 'segment': segment!.toJson(),
+        if (segment != null) 'segment': segment!,
       };
 }
 
@@ -5137,14 +5033,10 @@ class GoogleCloudVideointelligenceV1p1beta1LabelAnnotation {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (categoryEntities != null)
-          'categoryEntities':
-              categoryEntities!.map((value) => value.toJson()).toList(),
-        if (entity != null) 'entity': entity!.toJson(),
-        if (frames != null)
-          'frames': frames!.map((value) => value.toJson()).toList(),
-        if (segments != null)
-          'segments': segments!.map((value) => value.toJson()).toList(),
+        if (categoryEntities != null) 'categoryEntities': categoryEntities!,
+        if (entity != null) 'entity': entity!,
+        if (frames != null) 'frames': frames!,
+        if (segments != null) 'segments': segments!,
         if (version != null) 'version': version!,
       };
 }
@@ -5209,7 +5101,7 @@ class GoogleCloudVideointelligenceV1p1beta1LabelSegment {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (confidence != null) 'confidence': confidence!,
-        if (segment != null) 'segment': segment!.toJson(),
+        if (segment != null) 'segment': segment!,
       };
 }
 
@@ -5262,11 +5154,9 @@ class GoogleCloudVideointelligenceV1p1beta1LogoRecognitionAnnotation {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (entity != null) 'entity': entity!.toJson(),
-        if (segments != null)
-          'segments': segments!.map((value) => value.toJson()).toList(),
-        if (tracks != null)
-          'tracks': tracks!.map((value) => value.toJson()).toList(),
+        if (entity != null) 'entity': entity!,
+        if (segments != null) 'segments': segments!,
+        if (tracks != null) 'tracks': tracks!,
       };
 }
 
@@ -5350,8 +5240,7 @@ class GoogleCloudVideointelligenceV1p1beta1NormalizedBoundingPoly {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (vertices != null)
-          'vertices': vertices!.map((value) => value.toJson()).toList(),
+        if (vertices != null) 'vertices': vertices!,
       };
 }
 
@@ -5460,10 +5349,9 @@ class GoogleCloudVideointelligenceV1p1beta1ObjectTrackingAnnotation {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (confidence != null) 'confidence': confidence!,
-        if (entity != null) 'entity': entity!.toJson(),
-        if (frames != null)
-          'frames': frames!.map((value) => value.toJson()).toList(),
-        if (segment != null) 'segment': segment!.toJson(),
+        if (entity != null) 'entity': entity!,
+        if (frames != null) 'frames': frames!,
+        if (segment != null) 'segment': segment!,
         if (trackId != null) 'trackId': trackId!,
         if (version != null) 'version': version!,
       };
@@ -5500,7 +5388,7 @@ class GoogleCloudVideointelligenceV1p1beta1ObjectTrackingFrame {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (normalizedBoundingBox != null)
-          'normalizedBoundingBox': normalizedBoundingBox!.toJson(),
+          'normalizedBoundingBox': normalizedBoundingBox!,
         if (timeOffset != null) 'timeOffset': timeOffset!,
       };
 }
@@ -5534,8 +5422,7 @@ class GoogleCloudVideointelligenceV1p1beta1PersonDetectionAnnotation {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (tracks != null)
-          'tracks': tracks!.map((value) => value.toJson()).toList(),
+        if (tracks != null) 'tracks': tracks!,
         if (version != null) 'version': version!,
       };
 }
@@ -5591,8 +5478,7 @@ class GoogleCloudVideointelligenceV1p1beta1SpeechRecognitionAlternative {
   core.Map<core.String, core.dynamic> toJson() => {
         if (confidence != null) 'confidence': confidence!,
         if (transcript != null) 'transcript': transcript!,
-        if (words != null)
-          'words': words!.map((value) => value.toJson()).toList(),
+        if (words != null) 'words': words!,
       };
 }
 
@@ -5637,8 +5523,7 @@ class GoogleCloudVideointelligenceV1p1beta1SpeechTranscription {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (alternatives != null)
-          'alternatives': alternatives!.map((value) => value.toJson()).toList(),
+        if (alternatives != null) 'alternatives': alternatives!,
         if (languageCode != null) 'languageCode': languageCode!,
       };
 }
@@ -5679,8 +5564,7 @@ class GoogleCloudVideointelligenceV1p1beta1TextAnnotation {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (segments != null)
-          'segments': segments!.map((value) => value.toJson()).toList(),
+        if (segments != null) 'segments': segments!,
         if (text != null) 'text': text!,
         if (version != null) 'version': version!,
       };
@@ -5717,7 +5601,7 @@ class GoogleCloudVideointelligenceV1p1beta1TextFrame {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (rotatedBoundingBox != null)
-          'rotatedBoundingBox': rotatedBoundingBox!.toJson(),
+          'rotatedBoundingBox': rotatedBoundingBox!,
         if (timeOffset != null) 'timeOffset': timeOffset!,
       };
 }
@@ -5762,9 +5646,8 @@ class GoogleCloudVideointelligenceV1p1beta1TextSegment {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (confidence != null) 'confidence': confidence!,
-        if (frames != null)
-          'frames': frames!.map((value) => value.toJson()).toList(),
-        if (segment != null) 'segment': segment!.toJson(),
+        if (frames != null) 'frames': frames!,
+        if (segment != null) 'segment': segment!,
       };
 }
 
@@ -5828,12 +5711,10 @@ class GoogleCloudVideointelligenceV1p1beta1TimestampedObject {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (attributes != null)
-          'attributes': attributes!.map((value) => value.toJson()).toList(),
-        if (landmarks != null)
-          'landmarks': landmarks!.map((value) => value.toJson()).toList(),
+        if (attributes != null) 'attributes': attributes!,
+        if (landmarks != null) 'landmarks': landmarks!,
         if (normalizedBoundingBox != null)
-          'normalizedBoundingBox': normalizedBoundingBox!.toJson(),
+          'normalizedBoundingBox': normalizedBoundingBox!,
         if (timeOffset != null) 'timeOffset': timeOffset!,
       };
 }
@@ -5892,13 +5773,11 @@ class GoogleCloudVideointelligenceV1p1beta1Track {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (attributes != null)
-          'attributes': attributes!.map((value) => value.toJson()).toList(),
+        if (attributes != null) 'attributes': attributes!,
         if (confidence != null) 'confidence': confidence!,
-        if (segment != null) 'segment': segment!.toJson(),
+        if (segment != null) 'segment': segment!,
         if (timestampedObjects != null)
-          'timestampedObjects':
-              timestampedObjects!.map((value) => value.toJson()).toList(),
+          'timestampedObjects': timestampedObjects!,
       };
 }
 
@@ -5975,7 +5854,7 @@ class GoogleCloudVideointelligenceV1p1beta1VideoAnnotationProgress {
         if (feature != null) 'feature': feature!,
         if (inputUri != null) 'inputUri': inputUri!,
         if (progressPercent != null) 'progressPercent': progressPercent!,
-        if (segment != null) 'segment': segment!.toJson(),
+        if (segment != null) 'segment': segment!,
         if (startTime != null) 'startTime': startTime!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
@@ -6226,54 +6105,33 @@ class GoogleCloudVideointelligenceV1p1beta1VideoAnnotationResults {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (error != null) 'error': error!.toJson(),
+        if (error != null) 'error': error!,
         if (explicitAnnotation != null)
-          'explicitAnnotation': explicitAnnotation!.toJson(),
-        if (faceAnnotations != null)
-          'faceAnnotations':
-              faceAnnotations!.map((value) => value.toJson()).toList(),
+          'explicitAnnotation': explicitAnnotation!,
+        if (faceAnnotations != null) 'faceAnnotations': faceAnnotations!,
         if (faceDetectionAnnotations != null)
-          'faceDetectionAnnotations':
-              faceDetectionAnnotations!.map((value) => value.toJson()).toList(),
+          'faceDetectionAnnotations': faceDetectionAnnotations!,
         if (frameLabelAnnotations != null)
-          'frameLabelAnnotations':
-              frameLabelAnnotations!.map((value) => value.toJson()).toList(),
+          'frameLabelAnnotations': frameLabelAnnotations!,
         if (inputUri != null) 'inputUri': inputUri!,
         if (logoRecognitionAnnotations != null)
-          'logoRecognitionAnnotations': logoRecognitionAnnotations!
-              .map((value) => value.toJson())
-              .toList(),
-        if (objectAnnotations != null)
-          'objectAnnotations':
-              objectAnnotations!.map((value) => value.toJson()).toList(),
+          'logoRecognitionAnnotations': logoRecognitionAnnotations!,
+        if (objectAnnotations != null) 'objectAnnotations': objectAnnotations!,
         if (personDetectionAnnotations != null)
-          'personDetectionAnnotations': personDetectionAnnotations!
-              .map((value) => value.toJson())
-              .toList(),
-        if (segment != null) 'segment': segment!.toJson(),
+          'personDetectionAnnotations': personDetectionAnnotations!,
+        if (segment != null) 'segment': segment!,
         if (segmentLabelAnnotations != null)
-          'segmentLabelAnnotations':
-              segmentLabelAnnotations!.map((value) => value.toJson()).toList(),
+          'segmentLabelAnnotations': segmentLabelAnnotations!,
         if (segmentPresenceLabelAnnotations != null)
-          'segmentPresenceLabelAnnotations': segmentPresenceLabelAnnotations!
-              .map((value) => value.toJson())
-              .toList(),
-        if (shotAnnotations != null)
-          'shotAnnotations':
-              shotAnnotations!.map((value) => value.toJson()).toList(),
+          'segmentPresenceLabelAnnotations': segmentPresenceLabelAnnotations!,
+        if (shotAnnotations != null) 'shotAnnotations': shotAnnotations!,
         if (shotLabelAnnotations != null)
-          'shotLabelAnnotations':
-              shotLabelAnnotations!.map((value) => value.toJson()).toList(),
+          'shotLabelAnnotations': shotLabelAnnotations!,
         if (shotPresenceLabelAnnotations != null)
-          'shotPresenceLabelAnnotations': shotPresenceLabelAnnotations!
-              .map((value) => value.toJson())
-              .toList(),
+          'shotPresenceLabelAnnotations': shotPresenceLabelAnnotations!,
         if (speechTranscriptions != null)
-          'speechTranscriptions':
-              speechTranscriptions!.map((value) => value.toJson()).toList(),
-        if (textAnnotations != null)
-          'textAnnotations':
-              textAnnotations!.map((value) => value.toJson()).toList(),
+          'speechTranscriptions': speechTranscriptions!,
+        if (textAnnotations != null) 'textAnnotations': textAnnotations!,
       };
 }
 
@@ -6414,8 +6272,7 @@ class GoogleCloudVideointelligenceV1p2beta1AnnotateVideoProgress {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (annotationProgress != null)
-          'annotationProgress':
-              annotationProgress!.map((value) => value.toJson()).toList(),
+          'annotationProgress': annotationProgress!,
       };
 }
 
@@ -6446,9 +6303,7 @@ class GoogleCloudVideointelligenceV1p2beta1AnnotateVideoResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (annotationResults != null)
-          'annotationResults':
-              annotationResults!.map((value) => value.toJson()).toList(),
+        if (annotationResults != null) 'annotationResults': annotationResults!,
       };
 }
 
@@ -6531,7 +6386,7 @@ class GoogleCloudVideointelligenceV1p2beta1DetectedLandmark {
   core.Map<core.String, core.dynamic> toJson() => {
         if (confidence != null) 'confidence': confidence!,
         if (name != null) 'name': name!,
-        if (point != null) 'point': point!.toJson(),
+        if (point != null) 'point': point!,
       };
 }
 
@@ -6608,8 +6463,7 @@ class GoogleCloudVideointelligenceV1p2beta1ExplicitContentAnnotation {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (frames != null)
-          'frames': frames!.map((value) => value.toJson()).toList(),
+        if (frames != null) 'frames': frames!,
         if (version != null) 'version': version!,
       };
 }
@@ -6700,10 +6554,8 @@ class GoogleCloudVideointelligenceV1p2beta1FaceAnnotation {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (frames != null)
-          'frames': frames!.map((value) => value.toJson()).toList(),
-        if (segments != null)
-          'segments': segments!.map((value) => value.toJson()).toList(),
+        if (frames != null) 'frames': frames!,
+        if (segments != null) 'segments': segments!,
         if (thumbnail != null) 'thumbnail': thumbnail!,
       };
 }
@@ -6751,8 +6603,7 @@ class GoogleCloudVideointelligenceV1p2beta1FaceDetectionAnnotation {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (thumbnail != null) 'thumbnail': thumbnail!,
-        if (tracks != null)
-          'tracks': tracks!.map((value) => value.toJson()).toList(),
+        if (tracks != null) 'tracks': tracks!,
         if (version != null) 'version': version!,
       };
 }
@@ -6794,8 +6645,7 @@ class GoogleCloudVideointelligenceV1p2beta1FaceFrame {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (normalizedBoundingBoxes != null)
-          'normalizedBoundingBoxes':
-              normalizedBoundingBoxes!.map((value) => value.toJson()).toList(),
+          'normalizedBoundingBoxes': normalizedBoundingBoxes!,
         if (timeOffset != null) 'timeOffset': timeOffset!,
       };
 }
@@ -6818,7 +6668,7 @@ class GoogleCloudVideointelligenceV1p2beta1FaceSegment {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (segment != null) 'segment': segment!.toJson(),
+        if (segment != null) 'segment': segment!,
       };
 }
 
@@ -6885,14 +6735,10 @@ class GoogleCloudVideointelligenceV1p2beta1LabelAnnotation {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (categoryEntities != null)
-          'categoryEntities':
-              categoryEntities!.map((value) => value.toJson()).toList(),
-        if (entity != null) 'entity': entity!.toJson(),
-        if (frames != null)
-          'frames': frames!.map((value) => value.toJson()).toList(),
-        if (segments != null)
-          'segments': segments!.map((value) => value.toJson()).toList(),
+        if (categoryEntities != null) 'categoryEntities': categoryEntities!,
+        if (entity != null) 'entity': entity!,
+        if (frames != null) 'frames': frames!,
+        if (segments != null) 'segments': segments!,
         if (version != null) 'version': version!,
       };
 }
@@ -6957,7 +6803,7 @@ class GoogleCloudVideointelligenceV1p2beta1LabelSegment {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (confidence != null) 'confidence': confidence!,
-        if (segment != null) 'segment': segment!.toJson(),
+        if (segment != null) 'segment': segment!,
       };
 }
 
@@ -7010,11 +6856,9 @@ class GoogleCloudVideointelligenceV1p2beta1LogoRecognitionAnnotation {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (entity != null) 'entity': entity!.toJson(),
-        if (segments != null)
-          'segments': segments!.map((value) => value.toJson()).toList(),
-        if (tracks != null)
-          'tracks': tracks!.map((value) => value.toJson()).toList(),
+        if (entity != null) 'entity': entity!,
+        if (segments != null) 'segments': segments!,
+        if (tracks != null) 'tracks': tracks!,
       };
 }
 
@@ -7098,8 +6942,7 @@ class GoogleCloudVideointelligenceV1p2beta1NormalizedBoundingPoly {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (vertices != null)
-          'vertices': vertices!.map((value) => value.toJson()).toList(),
+        if (vertices != null) 'vertices': vertices!,
       };
 }
 
@@ -7208,10 +7051,9 @@ class GoogleCloudVideointelligenceV1p2beta1ObjectTrackingAnnotation {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (confidence != null) 'confidence': confidence!,
-        if (entity != null) 'entity': entity!.toJson(),
-        if (frames != null)
-          'frames': frames!.map((value) => value.toJson()).toList(),
-        if (segment != null) 'segment': segment!.toJson(),
+        if (entity != null) 'entity': entity!,
+        if (frames != null) 'frames': frames!,
+        if (segment != null) 'segment': segment!,
         if (trackId != null) 'trackId': trackId!,
         if (version != null) 'version': version!,
       };
@@ -7248,7 +7090,7 @@ class GoogleCloudVideointelligenceV1p2beta1ObjectTrackingFrame {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (normalizedBoundingBox != null)
-          'normalizedBoundingBox': normalizedBoundingBox!.toJson(),
+          'normalizedBoundingBox': normalizedBoundingBox!,
         if (timeOffset != null) 'timeOffset': timeOffset!,
       };
 }
@@ -7282,8 +7124,7 @@ class GoogleCloudVideointelligenceV1p2beta1PersonDetectionAnnotation {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (tracks != null)
-          'tracks': tracks!.map((value) => value.toJson()).toList(),
+        if (tracks != null) 'tracks': tracks!,
         if (version != null) 'version': version!,
       };
 }
@@ -7339,8 +7180,7 @@ class GoogleCloudVideointelligenceV1p2beta1SpeechRecognitionAlternative {
   core.Map<core.String, core.dynamic> toJson() => {
         if (confidence != null) 'confidence': confidence!,
         if (transcript != null) 'transcript': transcript!,
-        if (words != null)
-          'words': words!.map((value) => value.toJson()).toList(),
+        if (words != null) 'words': words!,
       };
 }
 
@@ -7385,8 +7225,7 @@ class GoogleCloudVideointelligenceV1p2beta1SpeechTranscription {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (alternatives != null)
-          'alternatives': alternatives!.map((value) => value.toJson()).toList(),
+        if (alternatives != null) 'alternatives': alternatives!,
         if (languageCode != null) 'languageCode': languageCode!,
       };
 }
@@ -7427,8 +7266,7 @@ class GoogleCloudVideointelligenceV1p2beta1TextAnnotation {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (segments != null)
-          'segments': segments!.map((value) => value.toJson()).toList(),
+        if (segments != null) 'segments': segments!,
         if (text != null) 'text': text!,
         if (version != null) 'version': version!,
       };
@@ -7465,7 +7303,7 @@ class GoogleCloudVideointelligenceV1p2beta1TextFrame {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (rotatedBoundingBox != null)
-          'rotatedBoundingBox': rotatedBoundingBox!.toJson(),
+          'rotatedBoundingBox': rotatedBoundingBox!,
         if (timeOffset != null) 'timeOffset': timeOffset!,
       };
 }
@@ -7510,9 +7348,8 @@ class GoogleCloudVideointelligenceV1p2beta1TextSegment {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (confidence != null) 'confidence': confidence!,
-        if (frames != null)
-          'frames': frames!.map((value) => value.toJson()).toList(),
-        if (segment != null) 'segment': segment!.toJson(),
+        if (frames != null) 'frames': frames!,
+        if (segment != null) 'segment': segment!,
       };
 }
 
@@ -7576,12 +7413,10 @@ class GoogleCloudVideointelligenceV1p2beta1TimestampedObject {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (attributes != null)
-          'attributes': attributes!.map((value) => value.toJson()).toList(),
-        if (landmarks != null)
-          'landmarks': landmarks!.map((value) => value.toJson()).toList(),
+        if (attributes != null) 'attributes': attributes!,
+        if (landmarks != null) 'landmarks': landmarks!,
         if (normalizedBoundingBox != null)
-          'normalizedBoundingBox': normalizedBoundingBox!.toJson(),
+          'normalizedBoundingBox': normalizedBoundingBox!,
         if (timeOffset != null) 'timeOffset': timeOffset!,
       };
 }
@@ -7640,13 +7475,11 @@ class GoogleCloudVideointelligenceV1p2beta1Track {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (attributes != null)
-          'attributes': attributes!.map((value) => value.toJson()).toList(),
+        if (attributes != null) 'attributes': attributes!,
         if (confidence != null) 'confidence': confidence!,
-        if (segment != null) 'segment': segment!.toJson(),
+        if (segment != null) 'segment': segment!,
         if (timestampedObjects != null)
-          'timestampedObjects':
-              timestampedObjects!.map((value) => value.toJson()).toList(),
+          'timestampedObjects': timestampedObjects!,
       };
 }
 
@@ -7723,7 +7556,7 @@ class GoogleCloudVideointelligenceV1p2beta1VideoAnnotationProgress {
         if (feature != null) 'feature': feature!,
         if (inputUri != null) 'inputUri': inputUri!,
         if (progressPercent != null) 'progressPercent': progressPercent!,
-        if (segment != null) 'segment': segment!.toJson(),
+        if (segment != null) 'segment': segment!,
         if (startTime != null) 'startTime': startTime!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
@@ -7974,54 +7807,33 @@ class GoogleCloudVideointelligenceV1p2beta1VideoAnnotationResults {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (error != null) 'error': error!.toJson(),
+        if (error != null) 'error': error!,
         if (explicitAnnotation != null)
-          'explicitAnnotation': explicitAnnotation!.toJson(),
-        if (faceAnnotations != null)
-          'faceAnnotations':
-              faceAnnotations!.map((value) => value.toJson()).toList(),
+          'explicitAnnotation': explicitAnnotation!,
+        if (faceAnnotations != null) 'faceAnnotations': faceAnnotations!,
         if (faceDetectionAnnotations != null)
-          'faceDetectionAnnotations':
-              faceDetectionAnnotations!.map((value) => value.toJson()).toList(),
+          'faceDetectionAnnotations': faceDetectionAnnotations!,
         if (frameLabelAnnotations != null)
-          'frameLabelAnnotations':
-              frameLabelAnnotations!.map((value) => value.toJson()).toList(),
+          'frameLabelAnnotations': frameLabelAnnotations!,
         if (inputUri != null) 'inputUri': inputUri!,
         if (logoRecognitionAnnotations != null)
-          'logoRecognitionAnnotations': logoRecognitionAnnotations!
-              .map((value) => value.toJson())
-              .toList(),
-        if (objectAnnotations != null)
-          'objectAnnotations':
-              objectAnnotations!.map((value) => value.toJson()).toList(),
+          'logoRecognitionAnnotations': logoRecognitionAnnotations!,
+        if (objectAnnotations != null) 'objectAnnotations': objectAnnotations!,
         if (personDetectionAnnotations != null)
-          'personDetectionAnnotations': personDetectionAnnotations!
-              .map((value) => value.toJson())
-              .toList(),
-        if (segment != null) 'segment': segment!.toJson(),
+          'personDetectionAnnotations': personDetectionAnnotations!,
+        if (segment != null) 'segment': segment!,
         if (segmentLabelAnnotations != null)
-          'segmentLabelAnnotations':
-              segmentLabelAnnotations!.map((value) => value.toJson()).toList(),
+          'segmentLabelAnnotations': segmentLabelAnnotations!,
         if (segmentPresenceLabelAnnotations != null)
-          'segmentPresenceLabelAnnotations': segmentPresenceLabelAnnotations!
-              .map((value) => value.toJson())
-              .toList(),
-        if (shotAnnotations != null)
-          'shotAnnotations':
-              shotAnnotations!.map((value) => value.toJson()).toList(),
+          'segmentPresenceLabelAnnotations': segmentPresenceLabelAnnotations!,
+        if (shotAnnotations != null) 'shotAnnotations': shotAnnotations!,
         if (shotLabelAnnotations != null)
-          'shotLabelAnnotations':
-              shotLabelAnnotations!.map((value) => value.toJson()).toList(),
+          'shotLabelAnnotations': shotLabelAnnotations!,
         if (shotPresenceLabelAnnotations != null)
-          'shotPresenceLabelAnnotations': shotPresenceLabelAnnotations!
-              .map((value) => value.toJson())
-              .toList(),
+          'shotPresenceLabelAnnotations': shotPresenceLabelAnnotations!,
         if (speechTranscriptions != null)
-          'speechTranscriptions':
-              speechTranscriptions!.map((value) => value.toJson()).toList(),
-        if (textAnnotations != null)
-          'textAnnotations':
-              textAnnotations!.map((value) => value.toJson()).toList(),
+          'speechTranscriptions': speechTranscriptions!,
+        if (textAnnotations != null) 'textAnnotations': textAnnotations!,
       };
 }
 
@@ -8162,8 +7974,7 @@ class GoogleCloudVideointelligenceV1p3beta1AnnotateVideoProgress {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (annotationProgress != null)
-          'annotationProgress':
-              annotationProgress!.map((value) => value.toJson()).toList(),
+          'annotationProgress': annotationProgress!,
       };
 }
 
@@ -8194,9 +8005,7 @@ class GoogleCloudVideointelligenceV1p3beta1AnnotateVideoResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (annotationResults != null)
-          'annotationResults':
-              annotationResults!.map((value) => value.toJson()).toList(),
+        if (annotationResults != null) 'annotationResults': annotationResults!,
       };
 }
 
@@ -8272,9 +8081,7 @@ class GoogleCloudVideointelligenceV1p3beta1CelebrityRecognitionAnnotation {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (celebrityTracks != null)
-          'celebrityTracks':
-              celebrityTracks!.map((value) => value.toJson()).toList(),
+        if (celebrityTracks != null) 'celebrityTracks': celebrityTracks!,
         if (version != null) 'version': version!,
       };
 }
@@ -8313,9 +8120,8 @@ class GoogleCloudVideointelligenceV1p3beta1CelebrityTrack {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (celebrities != null)
-          'celebrities': celebrities!.map((value) => value.toJson()).toList(),
-        if (faceTrack != null) 'faceTrack': faceTrack!.toJson(),
+        if (celebrities != null) 'celebrities': celebrities!,
+        if (faceTrack != null) 'faceTrack': faceTrack!,
       };
 }
 
@@ -8398,7 +8204,7 @@ class GoogleCloudVideointelligenceV1p3beta1DetectedLandmark {
   core.Map<core.String, core.dynamic> toJson() => {
         if (confidence != null) 'confidence': confidence!,
         if (name != null) 'name': name!,
-        if (point != null) 'point': point!.toJson(),
+        if (point != null) 'point': point!,
       };
 }
 
@@ -8475,8 +8281,7 @@ class GoogleCloudVideointelligenceV1p3beta1ExplicitContentAnnotation {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (frames != null)
-          'frames': frames!.map((value) => value.toJson()).toList(),
+        if (frames != null) 'frames': frames!,
         if (version != null) 'version': version!,
       };
 }
@@ -8567,10 +8372,8 @@ class GoogleCloudVideointelligenceV1p3beta1FaceAnnotation {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (frames != null)
-          'frames': frames!.map((value) => value.toJson()).toList(),
-        if (segments != null)
-          'segments': segments!.map((value) => value.toJson()).toList(),
+        if (frames != null) 'frames': frames!,
+        if (segments != null) 'segments': segments!,
         if (thumbnail != null) 'thumbnail': thumbnail!,
       };
 }
@@ -8618,8 +8421,7 @@ class GoogleCloudVideointelligenceV1p3beta1FaceDetectionAnnotation {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (thumbnail != null) 'thumbnail': thumbnail!,
-        if (tracks != null)
-          'tracks': tracks!.map((value) => value.toJson()).toList(),
+        if (tracks != null) 'tracks': tracks!,
         if (version != null) 'version': version!,
       };
 }
@@ -8661,8 +8463,7 @@ class GoogleCloudVideointelligenceV1p3beta1FaceFrame {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (normalizedBoundingBoxes != null)
-          'normalizedBoundingBoxes':
-              normalizedBoundingBoxes!.map((value) => value.toJson()).toList(),
+          'normalizedBoundingBoxes': normalizedBoundingBoxes!,
         if (timeOffset != null) 'timeOffset': timeOffset!,
       };
 }
@@ -8685,7 +8486,7 @@ class GoogleCloudVideointelligenceV1p3beta1FaceSegment {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (segment != null) 'segment': segment!.toJson(),
+        if (segment != null) 'segment': segment!,
       };
 }
 
@@ -8752,14 +8553,10 @@ class GoogleCloudVideointelligenceV1p3beta1LabelAnnotation {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (categoryEntities != null)
-          'categoryEntities':
-              categoryEntities!.map((value) => value.toJson()).toList(),
-        if (entity != null) 'entity': entity!.toJson(),
-        if (frames != null)
-          'frames': frames!.map((value) => value.toJson()).toList(),
-        if (segments != null)
-          'segments': segments!.map((value) => value.toJson()).toList(),
+        if (categoryEntities != null) 'categoryEntities': categoryEntities!,
+        if (entity != null) 'entity': entity!,
+        if (frames != null) 'frames': frames!,
+        if (segments != null) 'segments': segments!,
         if (version != null) 'version': version!,
       };
 }
@@ -8824,7 +8621,7 @@ class GoogleCloudVideointelligenceV1p3beta1LabelSegment {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (confidence != null) 'confidence': confidence!,
-        if (segment != null) 'segment': segment!.toJson(),
+        if (segment != null) 'segment': segment!,
       };
 }
 
@@ -8877,11 +8674,9 @@ class GoogleCloudVideointelligenceV1p3beta1LogoRecognitionAnnotation {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (entity != null) 'entity': entity!.toJson(),
-        if (segments != null)
-          'segments': segments!.map((value) => value.toJson()).toList(),
-        if (tracks != null)
-          'tracks': tracks!.map((value) => value.toJson()).toList(),
+        if (entity != null) 'entity': entity!,
+        if (segments != null) 'segments': segments!,
+        if (tracks != null) 'tracks': tracks!,
       };
 }
 
@@ -8965,8 +8760,7 @@ class GoogleCloudVideointelligenceV1p3beta1NormalizedBoundingPoly {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (vertices != null)
-          'vertices': vertices!.map((value) => value.toJson()).toList(),
+        if (vertices != null) 'vertices': vertices!,
       };
 }
 
@@ -9075,10 +8869,9 @@ class GoogleCloudVideointelligenceV1p3beta1ObjectTrackingAnnotation {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (confidence != null) 'confidence': confidence!,
-        if (entity != null) 'entity': entity!.toJson(),
-        if (frames != null)
-          'frames': frames!.map((value) => value.toJson()).toList(),
-        if (segment != null) 'segment': segment!.toJson(),
+        if (entity != null) 'entity': entity!,
+        if (frames != null) 'frames': frames!,
+        if (segment != null) 'segment': segment!,
         if (trackId != null) 'trackId': trackId!,
         if (version != null) 'version': version!,
       };
@@ -9115,7 +8908,7 @@ class GoogleCloudVideointelligenceV1p3beta1ObjectTrackingFrame {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (normalizedBoundingBox != null)
-          'normalizedBoundingBox': normalizedBoundingBox!.toJson(),
+          'normalizedBoundingBox': normalizedBoundingBox!,
         if (timeOffset != null) 'timeOffset': timeOffset!,
       };
 }
@@ -9149,8 +8942,7 @@ class GoogleCloudVideointelligenceV1p3beta1PersonDetectionAnnotation {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (tracks != null)
-          'tracks': tracks!.map((value) => value.toJson()).toList(),
+        if (tracks != null) 'tracks': tracks!,
         if (version != null) 'version': version!,
       };
 }
@@ -9183,7 +8975,7 @@ class GoogleCloudVideointelligenceV1p3beta1RecognizedCelebrity {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (celebrity != null) 'celebrity': celebrity!.toJson(),
+        if (celebrity != null) 'celebrity': celebrity!,
         if (confidence != null) 'confidence': confidence!,
       };
 }
@@ -9239,8 +9031,7 @@ class GoogleCloudVideointelligenceV1p3beta1SpeechRecognitionAlternative {
   core.Map<core.String, core.dynamic> toJson() => {
         if (confidence != null) 'confidence': confidence!,
         if (transcript != null) 'transcript': transcript!,
-        if (words != null)
-          'words': words!.map((value) => value.toJson()).toList(),
+        if (words != null) 'words': words!,
       };
 }
 
@@ -9285,8 +9076,7 @@ class GoogleCloudVideointelligenceV1p3beta1SpeechTranscription {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (alternatives != null)
-          'alternatives': alternatives!.map((value) => value.toJson()).toList(),
+        if (alternatives != null) 'alternatives': alternatives!,
         if (languageCode != null) 'languageCode': languageCode!,
       };
 }
@@ -9336,11 +9126,10 @@ class GoogleCloudVideointelligenceV1p3beta1StreamingAnnotateVideoResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (annotationResults != null)
-          'annotationResults': annotationResults!.toJson(),
+        if (annotationResults != null) 'annotationResults': annotationResults!,
         if (annotationResultsUri != null)
           'annotationResultsUri': annotationResultsUri!,
-        if (error != null) 'error': error!.toJson(),
+        if (error != null) 'error': error!,
       };
 }
 
@@ -9416,17 +9205,11 @@ class GoogleCloudVideointelligenceV1p3beta1StreamingVideoAnnotationResults {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (explicitAnnotation != null)
-          'explicitAnnotation': explicitAnnotation!.toJson(),
+          'explicitAnnotation': explicitAnnotation!,
         if (frameTimestamp != null) 'frameTimestamp': frameTimestamp!,
-        if (labelAnnotations != null)
-          'labelAnnotations':
-              labelAnnotations!.map((value) => value.toJson()).toList(),
-        if (objectAnnotations != null)
-          'objectAnnotations':
-              objectAnnotations!.map((value) => value.toJson()).toList(),
-        if (shotAnnotations != null)
-          'shotAnnotations':
-              shotAnnotations!.map((value) => value.toJson()).toList(),
+        if (labelAnnotations != null) 'labelAnnotations': labelAnnotations!,
+        if (objectAnnotations != null) 'objectAnnotations': objectAnnotations!,
+        if (shotAnnotations != null) 'shotAnnotations': shotAnnotations!,
       };
 }
 
@@ -9466,8 +9249,7 @@ class GoogleCloudVideointelligenceV1p3beta1TextAnnotation {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (segments != null)
-          'segments': segments!.map((value) => value.toJson()).toList(),
+        if (segments != null) 'segments': segments!,
         if (text != null) 'text': text!,
         if (version != null) 'version': version!,
       };
@@ -9504,7 +9286,7 @@ class GoogleCloudVideointelligenceV1p3beta1TextFrame {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (rotatedBoundingBox != null)
-          'rotatedBoundingBox': rotatedBoundingBox!.toJson(),
+          'rotatedBoundingBox': rotatedBoundingBox!,
         if (timeOffset != null) 'timeOffset': timeOffset!,
       };
 }
@@ -9549,9 +9331,8 @@ class GoogleCloudVideointelligenceV1p3beta1TextSegment {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (confidence != null) 'confidence': confidence!,
-        if (frames != null)
-          'frames': frames!.map((value) => value.toJson()).toList(),
-        if (segment != null) 'segment': segment!.toJson(),
+        if (frames != null) 'frames': frames!,
+        if (segment != null) 'segment': segment!,
       };
 }
 
@@ -9615,12 +9396,10 @@ class GoogleCloudVideointelligenceV1p3beta1TimestampedObject {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (attributes != null)
-          'attributes': attributes!.map((value) => value.toJson()).toList(),
-        if (landmarks != null)
-          'landmarks': landmarks!.map((value) => value.toJson()).toList(),
+        if (attributes != null) 'attributes': attributes!,
+        if (landmarks != null) 'landmarks': landmarks!,
         if (normalizedBoundingBox != null)
-          'normalizedBoundingBox': normalizedBoundingBox!.toJson(),
+          'normalizedBoundingBox': normalizedBoundingBox!,
         if (timeOffset != null) 'timeOffset': timeOffset!,
       };
 }
@@ -9679,13 +9458,11 @@ class GoogleCloudVideointelligenceV1p3beta1Track {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (attributes != null)
-          'attributes': attributes!.map((value) => value.toJson()).toList(),
+        if (attributes != null) 'attributes': attributes!,
         if (confidence != null) 'confidence': confidence!,
-        if (segment != null) 'segment': segment!.toJson(),
+        if (segment != null) 'segment': segment!,
         if (timestampedObjects != null)
-          'timestampedObjects':
-              timestampedObjects!.map((value) => value.toJson()).toList(),
+          'timestampedObjects': timestampedObjects!,
       };
 }
 
@@ -9763,7 +9540,7 @@ class GoogleCloudVideointelligenceV1p3beta1VideoAnnotationProgress {
         if (feature != null) 'feature': feature!,
         if (inputUri != null) 'inputUri': inputUri!,
         if (progressPercent != null) 'progressPercent': progressPercent!,
-        if (segment != null) 'segment': segment!.toJson(),
+        if (segment != null) 'segment': segment!,
         if (startTime != null) 'startTime': startTime!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
@@ -10026,56 +9803,34 @@ class GoogleCloudVideointelligenceV1p3beta1VideoAnnotationResults {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (celebrityRecognitionAnnotations != null)
-          'celebrityRecognitionAnnotations':
-              celebrityRecognitionAnnotations!.toJson(),
-        if (error != null) 'error': error!.toJson(),
+          'celebrityRecognitionAnnotations': celebrityRecognitionAnnotations!,
+        if (error != null) 'error': error!,
         if (explicitAnnotation != null)
-          'explicitAnnotation': explicitAnnotation!.toJson(),
-        if (faceAnnotations != null)
-          'faceAnnotations':
-              faceAnnotations!.map((value) => value.toJson()).toList(),
+          'explicitAnnotation': explicitAnnotation!,
+        if (faceAnnotations != null) 'faceAnnotations': faceAnnotations!,
         if (faceDetectionAnnotations != null)
-          'faceDetectionAnnotations':
-              faceDetectionAnnotations!.map((value) => value.toJson()).toList(),
+          'faceDetectionAnnotations': faceDetectionAnnotations!,
         if (frameLabelAnnotations != null)
-          'frameLabelAnnotations':
-              frameLabelAnnotations!.map((value) => value.toJson()).toList(),
+          'frameLabelAnnotations': frameLabelAnnotations!,
         if (inputUri != null) 'inputUri': inputUri!,
         if (logoRecognitionAnnotations != null)
-          'logoRecognitionAnnotations': logoRecognitionAnnotations!
-              .map((value) => value.toJson())
-              .toList(),
-        if (objectAnnotations != null)
-          'objectAnnotations':
-              objectAnnotations!.map((value) => value.toJson()).toList(),
+          'logoRecognitionAnnotations': logoRecognitionAnnotations!,
+        if (objectAnnotations != null) 'objectAnnotations': objectAnnotations!,
         if (personDetectionAnnotations != null)
-          'personDetectionAnnotations': personDetectionAnnotations!
-              .map((value) => value.toJson())
-              .toList(),
-        if (segment != null) 'segment': segment!.toJson(),
+          'personDetectionAnnotations': personDetectionAnnotations!,
+        if (segment != null) 'segment': segment!,
         if (segmentLabelAnnotations != null)
-          'segmentLabelAnnotations':
-              segmentLabelAnnotations!.map((value) => value.toJson()).toList(),
+          'segmentLabelAnnotations': segmentLabelAnnotations!,
         if (segmentPresenceLabelAnnotations != null)
-          'segmentPresenceLabelAnnotations': segmentPresenceLabelAnnotations!
-              .map((value) => value.toJson())
-              .toList(),
-        if (shotAnnotations != null)
-          'shotAnnotations':
-              shotAnnotations!.map((value) => value.toJson()).toList(),
+          'segmentPresenceLabelAnnotations': segmentPresenceLabelAnnotations!,
+        if (shotAnnotations != null) 'shotAnnotations': shotAnnotations!,
         if (shotLabelAnnotations != null)
-          'shotLabelAnnotations':
-              shotLabelAnnotations!.map((value) => value.toJson()).toList(),
+          'shotLabelAnnotations': shotLabelAnnotations!,
         if (shotPresenceLabelAnnotations != null)
-          'shotPresenceLabelAnnotations': shotPresenceLabelAnnotations!
-              .map((value) => value.toJson())
-              .toList(),
+          'shotPresenceLabelAnnotations': shotPresenceLabelAnnotations!,
         if (speechTranscriptions != null)
-          'speechTranscriptions':
-              speechTranscriptions!.map((value) => value.toJson()).toList(),
-        if (textAnnotations != null)
-          'textAnnotations':
-              textAnnotations!.map((value) => value.toJson()).toList(),
+          'speechTranscriptions': speechTranscriptions!,
+        if (textAnnotations != null) 'textAnnotations': textAnnotations!,
       };
 }
 
@@ -10219,8 +9974,7 @@ class GoogleLongrunningListOperationsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (operations != null)
-          'operations': operations!.map((value) => value.toJson()).toList(),
+        if (operations != null) 'operations': operations!,
       };
 }
 
@@ -10293,7 +10047,7 @@ class GoogleLongrunningOperation {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (done != null) 'done': done!,
-        if (error != null) 'error': error!.toJson(),
+        if (error != null) 'error': error!,
         if (metadata != null) 'metadata': metadata!,
         if (name != null) 'name': name!,
         if (response != null) 'response': response!,

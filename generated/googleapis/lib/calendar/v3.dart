@@ -199,7 +199,7 @@ class AclResource {
     core.bool? sendNotifications,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (sendNotifications != null)
         'sendNotifications': ['${sendNotifications}'],
@@ -317,7 +317,7 @@ class AclResource {
     core.bool? sendNotifications,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (sendNotifications != null)
         'sendNotifications': ['${sendNotifications}'],
@@ -371,7 +371,7 @@ class AclResource {
     core.bool? sendNotifications,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (sendNotifications != null)
         'sendNotifications': ['${sendNotifications}'],
@@ -442,7 +442,7 @@ class AclResource {
     core.String? syncToken,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (maxResults != null) 'maxResults': ['${maxResults}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -568,7 +568,7 @@ class CalendarListResource {
     core.bool? colorRgbFormat,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (colorRgbFormat != null) 'colorRgbFormat': ['${colorRgbFormat}'],
       if ($fields != null) 'fields': [$fields],
@@ -698,7 +698,7 @@ class CalendarListResource {
     core.bool? colorRgbFormat,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (colorRgbFormat != null) 'colorRgbFormat': ['${colorRgbFormat}'],
       if ($fields != null) 'fields': [$fields],
@@ -748,7 +748,7 @@ class CalendarListResource {
     core.bool? colorRgbFormat,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (colorRgbFormat != null) 'colorRgbFormat': ['${colorRgbFormat}'],
       if ($fields != null) 'fields': [$fields],
@@ -828,7 +828,7 @@ class CalendarListResource {
     core.String? syncToken,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (maxResults != null) 'maxResults': ['${maxResults}'],
       if (minAccessRole != null) 'minAccessRole': [minAccessRole],
@@ -986,7 +986,7 @@ class CalendarsResource {
     Calendar request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1029,7 +1029,7 @@ class CalendarsResource {
     core.String calendarId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1070,7 +1070,7 @@ class CalendarsResource {
     core.String calendarId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1110,7 +1110,7 @@ class ChannelsResource {
     Channel request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1330,7 +1330,7 @@ class EventsResource {
     core.bool? supportsAttachments,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (conferenceDataVersion != null)
         'conferenceDataVersion': ['${conferenceDataVersion}'],
@@ -1411,7 +1411,7 @@ class EventsResource {
     core.bool? supportsAttachments,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (conferenceDataVersion != null)
         'conferenceDataVersion': ['${conferenceDataVersion}'],
@@ -1845,7 +1845,7 @@ class EventsResource {
     core.bool? supportsAttachments,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (alwaysIncludeEmail != null)
         'alwaysIncludeEmail': ['${alwaysIncludeEmail}'],
@@ -2004,7 +2004,7 @@ class EventsResource {
     core.bool? supportsAttachments,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (alwaysIncludeEmail != null)
         'alwaysIncludeEmail': ['${alwaysIncludeEmail}'],
@@ -2176,7 +2176,7 @@ class EventsResource {
     core.DateTime? updatedMin,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (alwaysIncludeEmail != null)
         'alwaysIncludeEmail': ['${alwaysIncludeEmail}'],
@@ -2240,7 +2240,7 @@ class FreebusyResource {
     FreeBusyRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2387,7 +2387,7 @@ class SettingsResource {
     core.String? syncToken,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (maxResults != null) 'maxResults': ['${maxResults}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -2458,8 +2458,7 @@ class Acl {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
-        if (items != null)
-          'items': items!.map((value) => value.toJson()).toList(),
+        if (items != null) 'items': items!,
         if (kind != null) 'kind': kind!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (nextSyncToken != null) 'nextSyncToken': nextSyncToken!,
@@ -2558,7 +2557,7 @@ class AclRule {
         if (id != null) 'id': id!,
         if (kind != null) 'kind': kind!,
         if (role != null) 'role': role!,
-        if (scope != null) 'scope': scope!.toJson(),
+        if (scope != null) 'scope': scope!,
       };
 }
 
@@ -2633,7 +2632,7 @@ class Calendar {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (conferenceProperties != null)
-          'conferenceProperties': conferenceProperties!.toJson(),
+          'conferenceProperties': conferenceProperties!,
         if (description != null) 'description': description!,
         if (etag != null) 'etag': etag!,
         if (id != null) 'id': id!,
@@ -2695,8 +2694,7 @@ class CalendarList {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
-        if (items != null)
-          'items': items!.map((value) => value.toJson()).toList(),
+        if (items != null) 'items': items!,
         if (kind != null) 'kind': kind!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (nextSyncToken != null) 'nextSyncToken': nextSyncToken!,
@@ -2724,9 +2722,7 @@ class CalendarListEntryNotificationSettings {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (notifications != null)
-          'notifications':
-              notifications!.map((value) => value.toJson()).toList(),
+        if (notifications != null) 'notifications': notifications!,
       };
 }
 
@@ -2920,10 +2916,8 @@ class CalendarListEntry {
         if (backgroundColor != null) 'backgroundColor': backgroundColor!,
         if (colorId != null) 'colorId': colorId!,
         if (conferenceProperties != null)
-          'conferenceProperties': conferenceProperties!.toJson(),
-        if (defaultReminders != null)
-          'defaultReminders':
-              defaultReminders!.map((value) => value.toJson()).toList(),
+          'conferenceProperties': conferenceProperties!,
+        if (defaultReminders != null) 'defaultReminders': defaultReminders!,
         if (deleted != null) 'deleted': deleted!,
         if (description != null) 'description': description!,
         if (etag != null) 'etag': etag!,
@@ -2933,7 +2927,7 @@ class CalendarListEntry {
         if (kind != null) 'kind': kind!,
         if (location != null) 'location': location!,
         if (notificationSettings != null)
-          'notificationSettings': notificationSettings!.toJson(),
+          'notificationSettings': notificationSettings!,
         if (primary != null) 'primary': primary!,
         if (selected != null) 'selected': selected!,
         if (summary != null) 'summary': summary!,
@@ -3175,11 +3169,8 @@ class Colors {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (calendar != null)
-          'calendar':
-              calendar!.map((key, item) => core.MapEntry(key, item.toJson())),
-        if (event != null)
-          'event': event!.map((key, item) => core.MapEntry(key, item.toJson())),
+        if (calendar != null) 'calendar': calendar!,
+        if (event != null) 'event': event!,
         if (kind != null) 'kind': kind!,
         if (updated != null) 'updated': updated!.toIso8601String(),
       };
@@ -3285,12 +3276,11 @@ class ConferenceData {
   core.Map<core.String, core.dynamic> toJson() => {
         if (conferenceId != null) 'conferenceId': conferenceId!,
         if (conferenceSolution != null)
-          'conferenceSolution': conferenceSolution!.toJson(),
-        if (createRequest != null) 'createRequest': createRequest!.toJson(),
-        if (entryPoints != null)
-          'entryPoints': entryPoints!.map((value) => value.toJson()).toList(),
+          'conferenceSolution': conferenceSolution!,
+        if (createRequest != null) 'createRequest': createRequest!,
+        if (entryPoints != null) 'entryPoints': entryPoints!,
         if (notes != null) 'notes': notes!,
-        if (parameters != null) 'parameters': parameters!.toJson(),
+        if (parameters != null) 'parameters': parameters!,
         if (signature != null) 'signature': signature!,
       };
 }
@@ -3313,8 +3303,7 @@ class ConferenceParameters {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (addOnParameters != null)
-          'addOnParameters': addOnParameters!.toJson(),
+        if (addOnParameters != null) 'addOnParameters': addOnParameters!,
       };
 }
 
@@ -3432,7 +3421,7 @@ class ConferenceSolution {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (iconUri != null) 'iconUri': iconUri!,
-        if (key != null) 'key': key!.toJson(),
+        if (key != null) 'key': key!,
         if (name != null) 'name': name!,
       };
 }
@@ -3505,9 +3494,9 @@ class CreateConferenceRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (conferenceSolutionKey != null)
-          'conferenceSolutionKey': conferenceSolutionKey!.toJson(),
+          'conferenceSolutionKey': conferenceSolutionKey!,
         if (requestId != null) 'requestId': requestId!,
-        if (status != null) 'status': status!.toJson(),
+        if (status != null) 'status': status!,
       };
 }
 
@@ -3969,8 +3958,7 @@ class EventReminders {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (overrides != null)
-          'overrides': overrides!.map((value) => value.toJson()).toList(),
+        if (overrides != null) 'overrides': overrides!,
         if (useDefault != null) 'useDefault': useDefault!,
       };
 }
@@ -4457,24 +4445,22 @@ class Event {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (anyoneCanAddSelf != null) 'anyoneCanAddSelf': anyoneCanAddSelf!,
-        if (attachments != null)
-          'attachments': attachments!.map((value) => value.toJson()).toList(),
-        if (attendees != null)
-          'attendees': attendees!.map((value) => value.toJson()).toList(),
+        if (attachments != null) 'attachments': attachments!,
+        if (attendees != null) 'attendees': attendees!,
         if (attendeesOmitted != null) 'attendeesOmitted': attendeesOmitted!,
         if (colorId != null) 'colorId': colorId!,
-        if (conferenceData != null) 'conferenceData': conferenceData!.toJson(),
+        if (conferenceData != null) 'conferenceData': conferenceData!,
         if (created != null) 'created': created!.toIso8601String(),
-        if (creator != null) 'creator': creator!.toJson(),
+        if (creator != null) 'creator': creator!,
         if (description != null) 'description': description!,
-        if (end != null) 'end': end!.toJson(),
+        if (end != null) 'end': end!,
         if (endTimeUnspecified != null)
           'endTimeUnspecified': endTimeUnspecified!,
         if (etag != null) 'etag': etag!,
         if (eventType != null) 'eventType': eventType!,
         if (extendedProperties != null)
-          'extendedProperties': extendedProperties!.toJson(),
-        if (gadget != null) 'gadget': gadget!.toJson(),
+          'extendedProperties': extendedProperties!,
+        if (gadget != null) 'gadget': gadget!,
         if (guestsCanInviteOthers != null)
           'guestsCanInviteOthers': guestsCanInviteOthers!,
         if (guestsCanModify != null) 'guestsCanModify': guestsCanModify!,
@@ -4487,16 +4473,15 @@ class Event {
         if (kind != null) 'kind': kind!,
         if (location != null) 'location': location!,
         if (locked != null) 'locked': locked!,
-        if (organizer != null) 'organizer': organizer!.toJson(),
-        if (originalStartTime != null)
-          'originalStartTime': originalStartTime!.toJson(),
+        if (organizer != null) 'organizer': organizer!,
+        if (originalStartTime != null) 'originalStartTime': originalStartTime!,
         if (privateCopy != null) 'privateCopy': privateCopy!,
         if (recurrence != null) 'recurrence': recurrence!,
         if (recurringEventId != null) 'recurringEventId': recurringEventId!,
-        if (reminders != null) 'reminders': reminders!.toJson(),
+        if (reminders != null) 'reminders': reminders!,
         if (sequence != null) 'sequence': sequence!,
-        if (source != null) 'source': source!.toJson(),
-        if (start != null) 'start': start!.toJson(),
+        if (source != null) 'source': source!,
+        if (start != null) 'start': start!,
         if (status != null) 'status': status!,
         if (summary != null) 'summary': summary!,
         if (transparency != null) 'transparency': transparency!,
@@ -4882,13 +4867,10 @@ class Events {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accessRole != null) 'accessRole': accessRole!,
-        if (defaultReminders != null)
-          'defaultReminders':
-              defaultReminders!.map((value) => value.toJson()).toList(),
+        if (defaultReminders != null) 'defaultReminders': defaultReminders!,
         if (description != null) 'description': description!,
         if (etag != null) 'etag': etag!,
-        if (items != null)
-          'items': items!.map((value) => value.toJson()).toList(),
+        if (items != null) 'items': items!,
         if (kind != null) 'kind': kind!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (nextSyncToken != null) 'nextSyncToken': nextSyncToken!,
@@ -4927,9 +4909,8 @@ class FreeBusyCalendar {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (busy != null) 'busy': busy!.map((value) => value.toJson()).toList(),
-        if (errors != null)
-          'errors': errors!.map((value) => value.toJson()).toList(),
+        if (busy != null) 'busy': busy!,
+        if (errors != null) 'errors': errors!,
       };
 }
 
@@ -4962,8 +4943,7 @@ class FreeBusyGroup {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (calendars != null) 'calendars': calendars!,
-        if (errors != null)
-          'errors': errors!.map((value) => value.toJson()).toList(),
+        if (errors != null) 'errors': errors!,
       };
 }
 
@@ -5032,8 +5012,7 @@ class FreeBusyRequest {
         if (calendarExpansionMax != null)
           'calendarExpansionMax': calendarExpansionMax!,
         if (groupExpansionMax != null) 'groupExpansionMax': groupExpansionMax!,
-        if (items != null)
-          'items': items!.map((value) => value.toJson()).toList(),
+        if (items != null) 'items': items!,
         if (timeMax != null) 'timeMax': timeMax!.toIso8601String(),
         if (timeMin != null) 'timeMin': timeMin!.toIso8601String(),
         if (timeZone != null) 'timeZone': timeZone!,
@@ -5112,12 +5091,8 @@ class FreeBusyResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (calendars != null)
-          'calendars':
-              calendars!.map((key, item) => core.MapEntry(key, item.toJson())),
-        if (groups != null)
-          'groups':
-              groups!.map((key, item) => core.MapEntry(key, item.toJson())),
+        if (calendars != null) 'calendars': calendars!,
+        if (groups != null) 'groups': groups!,
         if (kind != null) 'kind': kind!,
         if (timeMax != null) 'timeMax': timeMax!.toIso8601String(),
         if (timeMin != null) 'timeMin': timeMin!.toIso8601String(),
@@ -5215,8 +5190,7 @@ class Settings {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
-        if (items != null)
-          'items': items!.map((value) => value.toJson()).toList(),
+        if (items != null) 'items': items!,
         if (kind != null) 'kind': kind!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (nextSyncToken != null) 'nextSyncToken': nextSyncToken!,

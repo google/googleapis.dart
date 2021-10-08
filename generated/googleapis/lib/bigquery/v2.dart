@@ -219,7 +219,7 @@ class DatasetsResource {
     core.String projectId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -324,7 +324,7 @@ class DatasetsResource {
     core.String datasetId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -373,7 +373,7 @@ class DatasetsResource {
     core.String datasetId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -650,7 +650,7 @@ class JobsResource {
     commons.UploadOptions uploadOptions = commons.UploadOptions.defaultOptions,
     commons.Media? uploadMedia,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -784,7 +784,7 @@ class JobsResource {
     core.String projectId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -993,7 +993,7 @@ class ModelsResource {
     core.String modelId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1231,7 +1231,7 @@ class RoutinesResource {
     core.String datasetId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1357,7 +1357,7 @@ class RoutinesResource {
     core.String routineId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1414,7 +1414,7 @@ class RowAccessPoliciesResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1520,7 +1520,7 @@ class RowAccessPoliciesResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1568,7 +1568,7 @@ class RowAccessPoliciesResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1623,7 +1623,7 @@ class TabledataResource {
     core.String tableId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1847,7 +1847,7 @@ class TablesResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1889,7 +1889,7 @@ class TablesResource {
     core.String datasetId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1994,7 +1994,7 @@ class TablesResource {
     core.String tableId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2045,7 +2045,7 @@ class TablesResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2093,7 +2093,7 @@ class TablesResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2143,7 +2143,7 @@ class TablesResource {
     core.String tableId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2315,7 +2315,7 @@ class Argument {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (argumentKind != null) 'argumentKind': argumentKind!,
-        if (dataType != null) 'dataType': dataType!.toJson(),
+        if (dataType != null) 'dataType': dataType!,
         if (mode != null) 'mode': mode!,
         if (name != null) 'name': name!,
       };
@@ -2479,17 +2479,12 @@ class ArimaForecastingMetrics {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (arimaFittingMetrics != null)
-          'arimaFittingMetrics':
-              arimaFittingMetrics!.map((value) => value.toJson()).toList(),
+          'arimaFittingMetrics': arimaFittingMetrics!,
         if (arimaSingleModelForecastingMetrics != null)
           'arimaSingleModelForecastingMetrics':
-              arimaSingleModelForecastingMetrics!
-                  .map((value) => value.toJson())
-                  .toList(),
+              arimaSingleModelForecastingMetrics!,
         if (hasDrift != null) 'hasDrift': hasDrift!,
-        if (nonSeasonalOrder != null)
-          'nonSeasonalOrder':
-              nonSeasonalOrder!.map((value) => value.toJson()).toList(),
+        if (nonSeasonalOrder != null) 'nonSeasonalOrder': nonSeasonalOrder!,
         if (seasonalPeriods != null) 'seasonalPeriods': seasonalPeriods!,
         if (timeSeriesId != null) 'timeSeriesId': timeSeriesId!,
       };
@@ -2595,16 +2590,14 @@ class ArimaModelInfo {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (arimaCoefficients != null)
-          'arimaCoefficients': arimaCoefficients!.toJson(),
+        if (arimaCoefficients != null) 'arimaCoefficients': arimaCoefficients!,
         if (arimaFittingMetrics != null)
-          'arimaFittingMetrics': arimaFittingMetrics!.toJson(),
+          'arimaFittingMetrics': arimaFittingMetrics!,
         if (hasDrift != null) 'hasDrift': hasDrift!,
         if (hasHolidayEffect != null) 'hasHolidayEffect': hasHolidayEffect!,
         if (hasSpikesAndDips != null) 'hasSpikesAndDips': hasSpikesAndDips!,
         if (hasStepChanges != null) 'hasStepChanges': hasStepChanges!,
-        if (nonSeasonalOrder != null)
-          'nonSeasonalOrder': nonSeasonalOrder!.toJson(),
+        if (nonSeasonalOrder != null) 'nonSeasonalOrder': nonSeasonalOrder!,
         if (seasonalPeriods != null) 'seasonalPeriods': seasonalPeriods!,
         if (timeSeriesId != null) 'timeSeriesId': timeSeriesId!,
         if (timeSeriesIds != null) 'timeSeriesIds': timeSeriesIds!,
@@ -2679,9 +2672,7 @@ class ArimaResult {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (arimaModelInfo != null)
-          'arimaModelInfo':
-              arimaModelInfo!.map((value) => value.toJson()).toList(),
+        if (arimaModelInfo != null) 'arimaModelInfo': arimaModelInfo!,
         if (seasonalPeriods != null) 'seasonalPeriods': seasonalPeriods!,
       };
 }
@@ -2779,13 +2770,12 @@ class ArimaSingleModelForecastingMetrics {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (arimaFittingMetrics != null)
-          'arimaFittingMetrics': arimaFittingMetrics!.toJson(),
+          'arimaFittingMetrics': arimaFittingMetrics!,
         if (hasDrift != null) 'hasDrift': hasDrift!,
         if (hasHolidayEffect != null) 'hasHolidayEffect': hasHolidayEffect!,
         if (hasSpikesAndDips != null) 'hasSpikesAndDips': hasSpikesAndDips!,
         if (hasStepChanges != null) 'hasStepChanges': hasStepChanges!,
-        if (nonSeasonalOrder != null)
-          'nonSeasonalOrder': nonSeasonalOrder!.toJson(),
+        if (nonSeasonalOrder != null) 'nonSeasonalOrder': nonSeasonalOrder!,
         if (seasonalPeriods != null) 'seasonalPeriods': seasonalPeriods!,
         if (timeSeriesId != null) 'timeSeriesId': timeSeriesId!,
         if (timeSeriesIds != null) 'timeSeriesIds': timeSeriesIds!,
@@ -2838,9 +2828,7 @@ class AuditConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (auditLogConfigs != null)
-          'auditLogConfigs':
-              auditLogConfigs!.map((value) => value.toJson()).toList(),
+        if (auditLogConfigs != null) 'auditLogConfigs': auditLogConfigs!,
         if (service != null) 'service': service!,
       };
 }
@@ -2974,9 +2962,7 @@ class BiEngineStatistics {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (biEngineMode != null) 'biEngineMode': biEngineMode!,
-        if (biEngineReasons != null)
-          'biEngineReasons':
-              biEngineReasons!.map((value) => value.toJson()).toList(),
+        if (biEngineReasons != null) 'biEngineReasons': biEngineReasons!,
       };
 }
 
@@ -3190,8 +3176,7 @@ class BigtableColumnFamily {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (columns != null)
-          'columns': columns!.map((value) => value.toJson()).toList(),
+        if (columns != null) 'columns': columns!,
         if (encoding != null) 'encoding': encoding!,
         if (familyId != null) 'familyId': familyId!,
         if (onlyReadLatest != null) 'onlyReadLatest': onlyReadLatest!,
@@ -3255,9 +3240,7 @@ class BigtableOptions {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (columnFamilies != null)
-          'columnFamilies':
-              columnFamilies!.map((value) => value.toJson()).toList(),
+        if (columnFamilies != null) 'columnFamilies': columnFamilies!,
         if (ignoreUnspecifiedColumnFamilies != null)
           'ignoreUnspecifiedColumnFamilies': ignoreUnspecifiedColumnFamilies!,
         if (readRowkeyAsString != null)
@@ -3311,12 +3294,9 @@ class BinaryClassificationMetrics {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (aggregateClassificationMetrics != null)
-          'aggregateClassificationMetrics':
-              aggregateClassificationMetrics!.toJson(),
+          'aggregateClassificationMetrics': aggregateClassificationMetrics!,
         if (binaryConfusionMatrixList != null)
-          'binaryConfusionMatrixList': binaryConfusionMatrixList!
-              .map((value) => value.toJson())
-              .toList(),
+          'binaryConfusionMatrixList': binaryConfusionMatrixList!,
         if (negativeLabel != null) 'negativeLabel': negativeLabel!,
         if (positiveLabel != null) 'positiveLabel': positiveLabel!,
       };
@@ -3480,7 +3460,7 @@ class Binding {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (condition != null) 'condition': condition!.toJson(),
+        if (condition != null) 'condition': condition!,
         if (members != null) 'members': members!,
         if (role != null) 'role': role!,
       };
@@ -3673,13 +3653,10 @@ class BqmlTrainingRun {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (iterationResults != null)
-          'iterationResults':
-              iterationResults!.map((value) => value.toJson()).toList(),
+        if (iterationResults != null) 'iterationResults': iterationResults!,
         if (startTime != null) 'startTime': startTime!.toIso8601String(),
         if (state != null) 'state': state!,
-        if (trainingOptions != null)
-          'trainingOptions': trainingOptions!.toJson(),
+        if (trainingOptions != null) 'trainingOptions': trainingOptions!,
       };
 }
 
@@ -3707,9 +3684,7 @@ class CategoricalValue {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (categoryCounts != null)
-          'categoryCounts':
-              categoryCounts!.map((value) => value.toJson()).toList(),
+        if (categoryCounts != null) 'categoryCounts': categoryCounts!,
       };
 }
 
@@ -3776,9 +3751,7 @@ class Cluster {
   core.Map<core.String, core.dynamic> toJson() => {
         if (centroidId != null) 'centroidId': centroidId!,
         if (count != null) 'count': count!,
-        if (featureValues != null)
-          'featureValues':
-              featureValues!.map((value) => value.toJson()).toList(),
+        if (featureValues != null) 'featureValues': featureValues!,
       };
 }
 
@@ -3881,8 +3854,7 @@ class ClusteringMetrics {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (clusters != null)
-          'clusters': clusters!.map((value) => value.toJson()).toList(),
+        if (clusters != null) 'clusters': clusters!,
         if (daviesBouldinIndex != null)
           'daviesBouldinIndex': daviesBouldinIndex!,
         if (meanSquaredDistance != null)
@@ -3920,7 +3892,7 @@ class ConfusionMatrix {
   core.Map<core.String, core.dynamic> toJson() => {
         if (confidenceThreshold != null)
           'confidenceThreshold': confidenceThreshold!,
-        if (rows != null) 'rows': rows!.map((value) => value.toJson()).toList(),
+        if (rows != null) 'rows': rows!,
       };
 }
 
@@ -4101,9 +4073,8 @@ class DataSplitResult {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (evaluationTable != null)
-          'evaluationTable': evaluationTable!.toJson(),
-        if (trainingTable != null) 'trainingTable': trainingTable!.toJson(),
+        if (evaluationTable != null) 'evaluationTable': evaluationTable!,
+        if (trainingTable != null) 'trainingTable': trainingTable!,
       };
 }
 
@@ -4220,15 +4191,15 @@ class DatasetAccess {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dataset != null) 'dataset': dataset!.toJson(),
+        if (dataset != null) 'dataset': dataset!,
         if (domain != null) 'domain': domain!,
         if (groupByEmail != null) 'groupByEmail': groupByEmail!,
         if (iamMember != null) 'iamMember': iamMember!,
         if (role != null) 'role': role!,
-        if (routine != null) 'routine': routine!.toJson(),
+        if (routine != null) 'routine': routine!,
         if (specialGroup != null) 'specialGroup': specialGroup!,
         if (userByEmail != null) 'userByEmail': userByEmail!,
-        if (view != null) 'view': view!.toJson(),
+        if (view != null) 'view': view!,
       };
 }
 
@@ -4427,14 +4398,11 @@ class Dataset {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (access != null)
-          'access': access!.map((value) => value.toJson()).toList(),
+        if (access != null) 'access': access!,
         if (creationTime != null) 'creationTime': creationTime!,
-        if (datasetReference != null)
-          'datasetReference': datasetReference!.toJson(),
+        if (datasetReference != null) 'datasetReference': datasetReference!,
         if (defaultEncryptionConfiguration != null)
-          'defaultEncryptionConfiguration':
-              defaultEncryptionConfiguration!.toJson(),
+          'defaultEncryptionConfiguration': defaultEncryptionConfiguration!,
         if (defaultPartitionExpirationMs != null)
           'defaultPartitionExpirationMs': defaultPartitionExpirationMs!,
         if (defaultTableExpirationMs != null)
@@ -4506,9 +4474,8 @@ class DatasetAccessEntry {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dataset != null) 'dataset': dataset!.toJson(),
-        if (targetTypes != null)
-          'target_types': targetTypes!.map((value) => value.toJson()).toList(),
+        if (dataset != null) 'dataset': dataset!,
+        if (targetTypes != null) 'target_types': targetTypes!,
       };
 }
 
@@ -4572,8 +4539,7 @@ class DatasetListDatasets {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (datasetReference != null)
-          'datasetReference': datasetReference!.toJson(),
+        if (datasetReference != null) 'datasetReference': datasetReference!,
         if (friendlyName != null) 'friendlyName': friendlyName!,
         if (id != null) 'id': id!,
         if (kind != null) 'kind': kind!,
@@ -4629,8 +4595,7 @@ class DatasetList {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (datasets != null)
-          'datasets': datasets!.map((value) => value.toJson()).toList(),
+        if (datasets != null) 'datasets': datasets!,
         if (etag != null) 'etag': etag!,
         if (kind != null) 'kind': kind!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -4947,17 +4912,14 @@ class EvaluationMetrics {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (arimaForecastingMetrics != null)
-          'arimaForecastingMetrics': arimaForecastingMetrics!.toJson(),
+          'arimaForecastingMetrics': arimaForecastingMetrics!,
         if (binaryClassificationMetrics != null)
-          'binaryClassificationMetrics': binaryClassificationMetrics!.toJson(),
-        if (clusteringMetrics != null)
-          'clusteringMetrics': clusteringMetrics!.toJson(),
+          'binaryClassificationMetrics': binaryClassificationMetrics!,
+        if (clusteringMetrics != null) 'clusteringMetrics': clusteringMetrics!,
         if (multiClassClassificationMetrics != null)
-          'multiClassClassificationMetrics':
-              multiClassClassificationMetrics!.toJson(),
-        if (rankingMetrics != null) 'rankingMetrics': rankingMetrics!.toJson(),
-        if (regressionMetrics != null)
-          'regressionMetrics': regressionMetrics!.toJson(),
+          'multiClassClassificationMetrics': multiClassClassificationMetrics!,
+        if (rankingMetrics != null) 'rankingMetrics': rankingMetrics!,
+        if (regressionMetrics != null) 'regressionMetrics': regressionMetrics!,
       };
 }
 
@@ -5206,8 +5168,7 @@ class ExplainQueryStage {
         if (slotMs != null) 'slotMs': slotMs!,
         if (startMs != null) 'startMs': startMs!,
         if (status != null) 'status': status!,
-        if (steps != null)
-          'steps': steps!.map((value) => value.toJson()).toList(),
+        if (steps != null) 'steps': steps!,
         if (waitMsAvg != null) 'waitMsAvg': waitMsAvg!,
         if (waitMsMax != null) 'waitMsMax': waitMsMax!,
         if (waitRatioAvg != null) 'waitRatioAvg': waitRatioAvg!,
@@ -5526,23 +5487,22 @@ class ExternalDataConfiguration {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (autodetect != null) 'autodetect': autodetect!,
-        if (avroOptions != null) 'avroOptions': avroOptions!.toJson(),
-        if (bigtableOptions != null)
-          'bigtableOptions': bigtableOptions!.toJson(),
+        if (avroOptions != null) 'avroOptions': avroOptions!,
+        if (bigtableOptions != null) 'bigtableOptions': bigtableOptions!,
         if (compression != null) 'compression': compression!,
         if (connectionId != null) 'connectionId': connectionId!,
-        if (csvOptions != null) 'csvOptions': csvOptions!.toJson(),
+        if (csvOptions != null) 'csvOptions': csvOptions!,
         if (decimalTargetTypes != null)
           'decimalTargetTypes': decimalTargetTypes!,
         if (googleSheetsOptions != null)
-          'googleSheetsOptions': googleSheetsOptions!.toJson(),
+          'googleSheetsOptions': googleSheetsOptions!,
         if (hivePartitioningOptions != null)
-          'hivePartitioningOptions': hivePartitioningOptions!.toJson(),
+          'hivePartitioningOptions': hivePartitioningOptions!,
         if (ignoreUnknownValues != null)
           'ignoreUnknownValues': ignoreUnknownValues!,
         if (maxBadRecords != null) 'maxBadRecords': maxBadRecords!,
-        if (parquetOptions != null) 'parquetOptions': parquetOptions!.toJson(),
-        if (schema != null) 'schema': schema!.toJson(),
+        if (parquetOptions != null) 'parquetOptions': parquetOptions!,
+        if (schema != null) 'schema': schema!,
         if (sourceFormat != null) 'sourceFormat': sourceFormat!,
         if (sourceUris != null) 'sourceUris': sourceUris!,
       };
@@ -5582,8 +5542,7 @@ class FeatureValue {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (categoricalValue != null)
-          'categoricalValue': categoricalValue!.toJson(),
+        if (categoricalValue != null) 'categoricalValue': categoricalValue!,
         if (featureColumn != null) 'featureColumn': featureColumn!,
         if (numericalValue != null) 'numericalValue': numericalValue!,
       };
@@ -5608,7 +5567,7 @@ class GetIamPolicyRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (options != null) 'options': options!.toJson(),
+        if (options != null) 'options': options!,
       };
 }
 
@@ -5766,17 +5725,16 @@ class GetQueryResultsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (cacheHit != null) 'cacheHit': cacheHit!,
-        if (errors != null)
-          'errors': errors!.map((value) => value.toJson()).toList(),
+        if (errors != null) 'errors': errors!,
         if (etag != null) 'etag': etag!,
         if (jobComplete != null) 'jobComplete': jobComplete!,
-        if (jobReference != null) 'jobReference': jobReference!.toJson(),
+        if (jobReference != null) 'jobReference': jobReference!,
         if (kind != null) 'kind': kind!,
         if (numDmlAffectedRows != null)
           'numDmlAffectedRows': numDmlAffectedRows!,
         if (pageToken != null) 'pageToken': pageToken!,
-        if (rows != null) 'rows': rows!.map((value) => value.toJson()).toList(),
-        if (schema != null) 'schema': schema!.toJson(),
+        if (rows != null) 'rows': rows!,
+        if (schema != null) 'schema': schema!,
         if (totalBytesProcessed != null)
           'totalBytesProcessed': totalBytesProcessed!,
         if (totalRows != null) 'totalRows': totalRows!,
@@ -5978,9 +5936,8 @@ class IterationResult {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (arimaResult != null) 'arimaResult': arimaResult!.toJson(),
-        if (clusterInfos != null)
-          'clusterInfos': clusterInfos!.map((value) => value.toJson()).toList(),
+        if (arimaResult != null) 'arimaResult': arimaResult!,
+        if (clusterInfos != null) 'clusterInfos': clusterInfos!,
         if (durationMs != null) 'durationMs': durationMs!,
         if (evalLoss != null) 'evalLoss': evalLoss!,
         if (index != null) 'index': index!,
@@ -6067,14 +6024,14 @@ class Job {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (configuration != null) 'configuration': configuration!.toJson(),
+        if (configuration != null) 'configuration': configuration!,
         if (etag != null) 'etag': etag!,
         if (id != null) 'id': id!,
-        if (jobReference != null) 'jobReference': jobReference!.toJson(),
+        if (jobReference != null) 'jobReference': jobReference!,
         if (kind != null) 'kind': kind!,
         if (selfLink != null) 'selfLink': selfLink!,
-        if (statistics != null) 'statistics': statistics!.toJson(),
-        if (status != null) 'status': status!.toJson(),
+        if (statistics != null) 'statistics': statistics!,
+        if (status != null) 'status': status!,
         if (userEmail != null) 'user_email': userEmail!,
       };
 }
@@ -6101,7 +6058,7 @@ class JobCancelResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (job != null) 'job': job!.toJson(),
+        if (job != null) 'job': job!,
         if (kind != null) 'kind': kind!,
       };
 }
@@ -6197,14 +6154,14 @@ class JobConfiguration {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (copy != null) 'copy': copy!.toJson(),
+        if (copy != null) 'copy': copy!,
         if (dryRun != null) 'dryRun': dryRun!,
-        if (extract != null) 'extract': extract!.toJson(),
+        if (extract != null) 'extract': extract!,
         if (jobTimeoutMs != null) 'jobTimeoutMs': jobTimeoutMs!,
         if (jobType != null) 'jobType': jobType!,
         if (labels != null) 'labels': labels!,
-        if (load != null) 'load': load!.toJson(),
-        if (query != null) 'query': query!.toJson(),
+        if (load != null) 'load': load!,
+        if (query != null) 'query': query!,
       };
 }
 
@@ -6323,8 +6280,8 @@ class JobConfigurationExtract {
         if (destinationUris != null) 'destinationUris': destinationUris!,
         if (fieldDelimiter != null) 'fieldDelimiter': fieldDelimiter!,
         if (printHeader != null) 'printHeader': printHeader!,
-        if (sourceModel != null) 'sourceModel': sourceModel!.toJson(),
-        if (sourceTable != null) 'sourceTable': sourceTable!.toJson(),
+        if (sourceModel != null) 'sourceModel': sourceModel!,
+        if (sourceTable != null) 'sourceTable': sourceTable!,
         if (useAvroLogicalTypes != null)
           'useAvroLogicalTypes': useAvroLogicalTypes!,
       };
@@ -6754,32 +6711,30 @@ class JobConfigurationLoad {
         if (allowQuotedNewlines != null)
           'allowQuotedNewlines': allowQuotedNewlines!,
         if (autodetect != null) 'autodetect': autodetect!,
-        if (clustering != null) 'clustering': clustering!.toJson(),
+        if (clustering != null) 'clustering': clustering!,
         if (createDisposition != null) 'createDisposition': createDisposition!,
         if (decimalTargetTypes != null)
           'decimalTargetTypes': decimalTargetTypes!,
         if (destinationEncryptionConfiguration != null)
           'destinationEncryptionConfiguration':
-              destinationEncryptionConfiguration!.toJson(),
-        if (destinationTable != null)
-          'destinationTable': destinationTable!.toJson(),
+              destinationEncryptionConfiguration!,
+        if (destinationTable != null) 'destinationTable': destinationTable!,
         if (destinationTableProperties != null)
-          'destinationTableProperties': destinationTableProperties!.toJson(),
+          'destinationTableProperties': destinationTableProperties!,
         if (encoding != null) 'encoding': encoding!,
         if (fieldDelimiter != null) 'fieldDelimiter': fieldDelimiter!,
         if (hivePartitioningOptions != null)
-          'hivePartitioningOptions': hivePartitioningOptions!.toJson(),
+          'hivePartitioningOptions': hivePartitioningOptions!,
         if (ignoreUnknownValues != null)
           'ignoreUnknownValues': ignoreUnknownValues!,
         if (jsonExtension != null) 'jsonExtension': jsonExtension!,
         if (maxBadRecords != null) 'maxBadRecords': maxBadRecords!,
         if (nullMarker != null) 'nullMarker': nullMarker!,
-        if (parquetOptions != null) 'parquetOptions': parquetOptions!.toJson(),
+        if (parquetOptions != null) 'parquetOptions': parquetOptions!,
         if (projectionFields != null) 'projectionFields': projectionFields!,
         if (quote != null) 'quote': quote!,
-        if (rangePartitioning != null)
-          'rangePartitioning': rangePartitioning!.toJson(),
-        if (schema != null) 'schema': schema!.toJson(),
+        if (rangePartitioning != null) 'rangePartitioning': rangePartitioning!,
+        if (schema != null) 'schema': schema!,
         if (schemaInline != null) 'schemaInline': schemaInline!,
         if (schemaInlineFormat != null)
           'schemaInlineFormat': schemaInlineFormat!,
@@ -6788,8 +6743,7 @@ class JobConfigurationLoad {
         if (skipLeadingRows != null) 'skipLeadingRows': skipLeadingRows!,
         if (sourceFormat != null) 'sourceFormat': sourceFormat!,
         if (sourceUris != null) 'sourceUris': sourceUris!,
-        if (timePartitioning != null)
-          'timePartitioning': timePartitioning!.toJson(),
+        if (timePartitioning != null) 'timePartitioning': timePartitioning!,
         if (useAvroLogicalTypes != null)
           'useAvroLogicalTypes': useAvroLogicalTypes!,
         if (writeDisposition != null) 'writeDisposition': writeDisposition!,
@@ -7110,18 +7064,16 @@ class JobConfigurationQuery {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (allowLargeResults != null) 'allowLargeResults': allowLargeResults!,
-        if (clustering != null) 'clustering': clustering!.toJson(),
+        if (clustering != null) 'clustering': clustering!,
         if (connectionProperties != null)
-          'connectionProperties':
-              connectionProperties!.map((value) => value.toJson()).toList(),
+          'connectionProperties': connectionProperties!,
         if (createDisposition != null) 'createDisposition': createDisposition!,
         if (createSession != null) 'createSession': createSession!,
-        if (defaultDataset != null) 'defaultDataset': defaultDataset!.toJson(),
+        if (defaultDataset != null) 'defaultDataset': defaultDataset!,
         if (destinationEncryptionConfiguration != null)
           'destinationEncryptionConfiguration':
-              destinationEncryptionConfiguration!.toJson(),
-        if (destinationTable != null)
-          'destinationTable': destinationTable!.toJson(),
+              destinationEncryptionConfiguration!,
+        if (destinationTable != null) 'destinationTable': destinationTable!,
         if (flattenResults != null) 'flattenResults': flattenResults!,
         if (maximumBillingTier != null)
           'maximumBillingTier': maximumBillingTier!,
@@ -7131,24 +7083,16 @@ class JobConfigurationQuery {
         if (preserveNulls != null) 'preserveNulls': preserveNulls!,
         if (priority != null) 'priority': priority!,
         if (query != null) 'query': query!,
-        if (queryParameters != null)
-          'queryParameters':
-              queryParameters!.map((value) => value.toJson()).toList(),
-        if (rangePartitioning != null)
-          'rangePartitioning': rangePartitioning!.toJson(),
+        if (queryParameters != null) 'queryParameters': queryParameters!,
+        if (rangePartitioning != null) 'rangePartitioning': rangePartitioning!,
         if (schemaUpdateOptions != null)
           'schemaUpdateOptions': schemaUpdateOptions!,
-        if (tableDefinitions != null)
-          'tableDefinitions': tableDefinitions!
-              .map((key, item) => core.MapEntry(key, item.toJson())),
-        if (timePartitioning != null)
-          'timePartitioning': timePartitioning!.toJson(),
+        if (tableDefinitions != null) 'tableDefinitions': tableDefinitions!,
+        if (timePartitioning != null) 'timePartitioning': timePartitioning!,
         if (useLegacySql != null) 'useLegacySql': useLegacySql!,
         if (useQueryCache != null) 'useQueryCache': useQueryCache!,
         if (userDefinedFunctionResources != null)
-          'userDefinedFunctionResources': userDefinedFunctionResources!
-              .map((value) => value.toJson())
-              .toList(),
+          'userDefinedFunctionResources': userDefinedFunctionResources!,
         if (writeDisposition != null) 'writeDisposition': writeDisposition!,
       };
 }
@@ -7260,15 +7204,13 @@ class JobConfigurationTableCopy {
         if (createDisposition != null) 'createDisposition': createDisposition!,
         if (destinationEncryptionConfiguration != null)
           'destinationEncryptionConfiguration':
-              destinationEncryptionConfiguration!.toJson(),
+              destinationEncryptionConfiguration!,
         if (destinationExpirationTime != null)
           'destinationExpirationTime': destinationExpirationTime!,
-        if (destinationTable != null)
-          'destinationTable': destinationTable!.toJson(),
+        if (destinationTable != null) 'destinationTable': destinationTable!,
         if (operationType != null) 'operationType': operationType!,
-        if (sourceTable != null) 'sourceTable': sourceTable!.toJson(),
-        if (sourceTables != null)
-          'sourceTables': sourceTables!.map((value) => value.toJson()).toList(),
+        if (sourceTable != null) 'sourceTable': sourceTable!,
+        if (sourceTables != null) 'sourceTables': sourceTables!,
         if (writeDisposition != null) 'writeDisposition': writeDisposition!,
       };
 }
@@ -7349,14 +7291,14 @@ class JobListJobs {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (configuration != null) 'configuration': configuration!.toJson(),
-        if (errorResult != null) 'errorResult': errorResult!.toJson(),
+        if (configuration != null) 'configuration': configuration!,
+        if (errorResult != null) 'errorResult': errorResult!,
         if (id != null) 'id': id!,
-        if (jobReference != null) 'jobReference': jobReference!.toJson(),
+        if (jobReference != null) 'jobReference': jobReference!,
         if (kind != null) 'kind': kind!,
         if (state != null) 'state': state!,
-        if (statistics != null) 'statistics': statistics!.toJson(),
-        if (status != null) 'status': status!.toJson(),
+        if (statistics != null) 'statistics': statistics!,
+        if (status != null) 'status': status!,
         if (userEmail != null) 'user_email': userEmail!,
       };
 }
@@ -7398,7 +7340,7 @@ class JobList {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
-        if (jobs != null) 'jobs': jobs!.map((value) => value.toJson()).toList(),
+        if (jobs != null) 'jobs': jobs!,
         if (kind != null) 'kind': kind!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
@@ -7646,27 +7588,23 @@ class JobStatistics {
         if (completionRatio != null) 'completionRatio': completionRatio!,
         if (creationTime != null) 'creationTime': creationTime!,
         if (endTime != null) 'endTime': endTime!,
-        if (extract != null) 'extract': extract!.toJson(),
-        if (load != null) 'load': load!.toJson(),
+        if (extract != null) 'extract': extract!,
+        if (load != null) 'load': load!,
         if (numChildJobs != null) 'numChildJobs': numChildJobs!,
         if (parentJobId != null) 'parentJobId': parentJobId!,
-        if (query != null) 'query': query!.toJson(),
+        if (query != null) 'query': query!,
         if (quotaDeferments != null) 'quotaDeferments': quotaDeferments!,
-        if (reservationUsage != null)
-          'reservationUsage':
-              reservationUsage!.map((value) => value.toJson()).toList(),
+        if (reservationUsage != null) 'reservationUsage': reservationUsage!,
         if (reservationId != null) 'reservation_id': reservationId!,
         if (rowLevelSecurityStatistics != null)
-          'rowLevelSecurityStatistics': rowLevelSecurityStatistics!.toJson(),
-        if (scriptStatistics != null)
-          'scriptStatistics': scriptStatistics!.toJson(),
-        if (sessionInfo != null) 'sessionInfo': sessionInfo!.toJson(),
+          'rowLevelSecurityStatistics': rowLevelSecurityStatistics!,
+        if (scriptStatistics != null) 'scriptStatistics': scriptStatistics!,
+        if (sessionInfo != null) 'sessionInfo': sessionInfo!,
         if (startTime != null) 'startTime': startTime!,
         if (totalBytesProcessed != null)
           'totalBytesProcessed': totalBytesProcessed!,
         if (totalSlotMs != null) 'totalSlotMs': totalSlotMs!,
-        if (transactionInfo != null)
-          'transactionInfo': transactionInfo!.toJson(),
+        if (transactionInfo != null) 'transactionInfo': transactionInfo!,
       };
 }
 
@@ -8006,26 +7944,24 @@ class JobStatistics2 {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (biEngineStatistics != null)
-          'biEngineStatistics': biEngineStatistics!.toJson(),
+          'biEngineStatistics': biEngineStatistics!,
         if (billingTier != null) 'billingTier': billingTier!,
         if (cacheHit != null) 'cacheHit': cacheHit!,
         if (ddlAffectedRowAccessPolicyCount != null)
           'ddlAffectedRowAccessPolicyCount': ddlAffectedRowAccessPolicyCount!,
         if (ddlDestinationTable != null)
-          'ddlDestinationTable': ddlDestinationTable!.toJson(),
+          'ddlDestinationTable': ddlDestinationTable!,
         if (ddlOperationPerformed != null)
           'ddlOperationPerformed': ddlOperationPerformed!,
-        if (ddlTargetDataset != null)
-          'ddlTargetDataset': ddlTargetDataset!.toJson(),
-        if (ddlTargetRoutine != null)
-          'ddlTargetRoutine': ddlTargetRoutine!.toJson(),
+        if (ddlTargetDataset != null) 'ddlTargetDataset': ddlTargetDataset!,
+        if (ddlTargetRoutine != null) 'ddlTargetRoutine': ddlTargetRoutine!,
         if (ddlTargetRowAccessPolicy != null)
-          'ddlTargetRowAccessPolicy': ddlTargetRowAccessPolicy!.toJson(),
-        if (ddlTargetTable != null) 'ddlTargetTable': ddlTargetTable!.toJson(),
-        if (dmlStats != null) 'dmlStats': dmlStats!.toJson(),
+          'ddlTargetRowAccessPolicy': ddlTargetRowAccessPolicy!,
+        if (ddlTargetTable != null) 'ddlTargetTable': ddlTargetTable!,
+        if (dmlStats != null) 'dmlStats': dmlStats!,
         if (estimatedBytesProcessed != null)
           'estimatedBytesProcessed': estimatedBytesProcessed!,
-        if (modelTraining != null) 'modelTraining': modelTraining!.toJson(),
+        if (modelTraining != null) 'modelTraining': modelTraining!,
         if (modelTrainingCurrentIteration != null)
           'modelTrainingCurrentIteration': modelTrainingCurrentIteration!,
         if (modelTrainingExpectedTotalIteration != null)
@@ -8033,21 +7969,14 @@ class JobStatistics2 {
               modelTrainingExpectedTotalIteration!,
         if (numDmlAffectedRows != null)
           'numDmlAffectedRows': numDmlAffectedRows!,
-        if (queryPlan != null)
-          'queryPlan': queryPlan!.map((value) => value.toJson()).toList(),
+        if (queryPlan != null) 'queryPlan': queryPlan!,
         if (referencedRoutines != null)
-          'referencedRoutines':
-              referencedRoutines!.map((value) => value.toJson()).toList(),
-        if (referencedTables != null)
-          'referencedTables':
-              referencedTables!.map((value) => value.toJson()).toList(),
-        if (reservationUsage != null)
-          'reservationUsage':
-              reservationUsage!.map((value) => value.toJson()).toList(),
-        if (schema != null) 'schema': schema!.toJson(),
+          'referencedRoutines': referencedRoutines!,
+        if (referencedTables != null) 'referencedTables': referencedTables!,
+        if (reservationUsage != null) 'reservationUsage': reservationUsage!,
+        if (schema != null) 'schema': schema!,
         if (statementType != null) 'statementType': statementType!,
-        if (timeline != null)
-          'timeline': timeline!.map((value) => value.toJson()).toList(),
+        if (timeline != null) 'timeline': timeline!,
         if (totalBytesBilled != null) 'totalBytesBilled': totalBytesBilled!,
         if (totalBytesProcessed != null)
           'totalBytesProcessed': totalBytesProcessed!,
@@ -8057,9 +7986,7 @@ class JobStatistics2 {
           'totalPartitionsProcessed': totalPartitionsProcessed!,
         if (totalSlotMs != null) 'totalSlotMs': totalSlotMs!,
         if (undeclaredQueryParameters != null)
-          'undeclaredQueryParameters': undeclaredQueryParameters!
-              .map((value) => value.toJson())
-              .toList(),
+          'undeclaredQueryParameters': undeclaredQueryParameters!,
       };
 }
 
@@ -8203,9 +8130,8 @@ class JobStatus {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (errorResult != null) 'errorResult': errorResult!.toJson(),
-        if (errors != null)
-          'errors': errors!.map((value) => value.toJson()).toList(),
+        if (errorResult != null) 'errorResult': errorResult!,
+        if (errors != null) 'errors': errors!,
         if (state != null) 'state': state!,
       };
 }
@@ -8221,9 +8147,6 @@ class JsonObject extends collection.MapBase<core.String, core.Object?> {
       this[key] = value;
     });
   }
-
-  core.Map<core.String, core.dynamic> toJson() =>
-      core.Map<core.String, core.dynamic>.of(this);
 
   @core.override
   core.Object? operator [](core.Object? key) => _innerMap[key];
@@ -8274,8 +8197,7 @@ class ListModelsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (models != null)
-          'models': models!.map((value) => value.toJson()).toList(),
+        if (models != null) 'models': models!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -8311,8 +8233,7 @@ class ListRoutinesResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (routines != null)
-          'routines': routines!.map((value) => value.toJson()).toList(),
+        if (routines != null) 'routines': routines!,
       };
 }
 
@@ -8344,9 +8265,7 @@ class ListRowAccessPoliciesResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (rowAccessPolicies != null)
-          'rowAccessPolicies':
-              rowAccessPolicies!.map((value) => value.toJson()).toList(),
+        if (rowAccessPolicies != null) 'rowAccessPolicies': rowAccessPolicies!,
       };
 }
 
@@ -8624,22 +8543,18 @@ class Model {
         if (creationTime != null) 'creationTime': creationTime!,
         if (description != null) 'description': description!,
         if (encryptionConfiguration != null)
-          'encryptionConfiguration': encryptionConfiguration!.toJson(),
+          'encryptionConfiguration': encryptionConfiguration!,
         if (etag != null) 'etag': etag!,
         if (expirationTime != null) 'expirationTime': expirationTime!,
-        if (featureColumns != null)
-          'featureColumns':
-              featureColumns!.map((value) => value.toJson()).toList(),
+        if (featureColumns != null) 'featureColumns': featureColumns!,
         if (friendlyName != null) 'friendlyName': friendlyName!,
-        if (labelColumns != null)
-          'labelColumns': labelColumns!.map((value) => value.toJson()).toList(),
+        if (labelColumns != null) 'labelColumns': labelColumns!,
         if (labels != null) 'labels': labels!,
         if (lastModifiedTime != null) 'lastModifiedTime': lastModifiedTime!,
         if (location != null) 'location': location!,
-        if (modelReference != null) 'modelReference': modelReference!.toJson(),
+        if (modelReference != null) 'modelReference': modelReference!,
         if (modelType != null) 'modelType': modelType!,
-        if (trainingRuns != null)
-          'trainingRuns': trainingRuns!.map((value) => value.toJson()).toList(),
+        if (trainingRuns != null) 'trainingRuns': trainingRuns!,
       };
 }
 
@@ -8713,9 +8628,8 @@ class ModelDefinition {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (modelOptions != null) 'modelOptions': modelOptions!.toJson(),
-        if (trainingRuns != null)
-          'trainingRuns': trainingRuns!.map((value) => value.toJson()).toList(),
+        if (modelOptions != null) 'modelOptions': modelOptions!,
+        if (trainingRuns != null) 'trainingRuns': trainingRuns!,
       };
 }
 
@@ -8795,11 +8709,9 @@ class MultiClassClassificationMetrics {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (aggregateClassificationMetrics != null)
-          'aggregateClassificationMetrics':
-              aggregateClassificationMetrics!.toJson(),
+          'aggregateClassificationMetrics': aggregateClassificationMetrics!,
         if (confusionMatrixList != null)
-          'confusionMatrixList':
-              confusionMatrixList!.map((value) => value.toJson()).toList(),
+          'confusionMatrixList': confusionMatrixList!,
       };
 }
 
@@ -8947,10 +8859,8 @@ class Policy {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (auditConfigs != null)
-          'auditConfigs': auditConfigs!.map((value) => value.toJson()).toList(),
-        if (bindings != null)
-          'bindings': bindings!.map((value) => value.toJson()).toList(),
+        if (auditConfigs != null) 'auditConfigs': auditConfigs!,
+        if (bindings != null) 'bindings': bindings!,
         if (etag != null) 'etag': etag!,
         if (version != null) 'version': version!,
       };
@@ -9001,8 +8911,7 @@ class ProjectListProjects {
         if (id != null) 'id': id!,
         if (kind != null) 'kind': kind!,
         if (numericId != null) 'numericId': numericId!,
-        if (projectReference != null)
-          'projectReference': projectReference!.toJson(),
+        if (projectReference != null) 'projectReference': projectReference!,
       };
 }
 
@@ -9052,8 +8961,7 @@ class ProjectList {
         if (etag != null) 'etag': etag!,
         if (kind != null) 'kind': kind!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (projects != null)
-          'projects': projects!.map((value) => value.toJson()).toList(),
+        if (projects != null) 'projects': projects!,
         if (totalItems != null) 'totalItems': totalItems!,
       };
 }
@@ -9121,8 +9029,8 @@ class QueryParameter {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
-        if (parameterType != null) 'parameterType': parameterType!.toJson(),
-        if (parameterValue != null) 'parameterValue': parameterValue!.toJson(),
+        if (parameterType != null) 'parameterType': parameterType!,
+        if (parameterValue != null) 'parameterValue': parameterValue!,
       };
 }
 
@@ -9163,7 +9071,7 @@ class QueryParameterTypeStructTypes {
   core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
         if (name != null) 'name': name!,
-        if (type != null) 'type': type!.toJson(),
+        if (type != null) 'type': type!,
       };
 }
 
@@ -9205,9 +9113,8 @@ class QueryParameterType {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (arrayType != null) 'arrayType': arrayType!.toJson(),
-        if (structTypes != null)
-          'structTypes': structTypes!.map((value) => value.toJson()).toList(),
+        if (arrayType != null) 'arrayType': arrayType!,
+        if (structTypes != null) 'structTypes': structTypes!,
         if (type != null) 'type': type!,
       };
 }
@@ -9257,11 +9164,8 @@ class QueryParameterValue {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (arrayValues != null)
-          'arrayValues': arrayValues!.map((value) => value.toJson()).toList(),
-        if (structValues != null)
-          'structValues': structValues!
-              .map((key, item) => core.MapEntry(key, item.toJson())),
+        if (arrayValues != null) 'arrayValues': arrayValues!,
+        if (structValues != null) 'structValues': structValues!,
         if (value != null) 'value': value!,
       };
 }
@@ -9491,10 +9395,9 @@ class QueryRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (connectionProperties != null)
-          'connectionProperties':
-              connectionProperties!.map((value) => value.toJson()).toList(),
+          'connectionProperties': connectionProperties!,
         if (createSession != null) 'createSession': createSession!,
-        if (defaultDataset != null) 'defaultDataset': defaultDataset!.toJson(),
+        if (defaultDataset != null) 'defaultDataset': defaultDataset!,
         if (dryRun != null) 'dryRun': dryRun!,
         if (kind != null) 'kind': kind!,
         if (labels != null) 'labels': labels!,
@@ -9505,9 +9408,7 @@ class QueryRequest {
         if (parameterMode != null) 'parameterMode': parameterMode!,
         if (preserveNulls != null) 'preserveNulls': preserveNulls!,
         if (query != null) 'query': query!,
-        if (queryParameters != null)
-          'queryParameters':
-              queryParameters!.map((value) => value.toJson()).toList(),
+        if (queryParameters != null) 'queryParameters': queryParameters!,
         if (requestId != null) 'requestId': requestId!,
         if (timeoutMs != null) 'timeoutMs': timeoutMs!,
         if (useLegacySql != null) 'useLegacySql': useLegacySql!,
@@ -9651,18 +9552,17 @@ class QueryResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (cacheHit != null) 'cacheHit': cacheHit!,
-        if (dmlStats != null) 'dmlStats': dmlStats!.toJson(),
-        if (errors != null)
-          'errors': errors!.map((value) => value.toJson()).toList(),
+        if (dmlStats != null) 'dmlStats': dmlStats!,
+        if (errors != null) 'errors': errors!,
         if (jobComplete != null) 'jobComplete': jobComplete!,
-        if (jobReference != null) 'jobReference': jobReference!.toJson(),
+        if (jobReference != null) 'jobReference': jobReference!,
         if (kind != null) 'kind': kind!,
         if (numDmlAffectedRows != null)
           'numDmlAffectedRows': numDmlAffectedRows!,
         if (pageToken != null) 'pageToken': pageToken!,
-        if (rows != null) 'rows': rows!.map((value) => value.toJson()).toList(),
-        if (schema != null) 'schema': schema!.toJson(),
-        if (sessionInfo != null) 'sessionInfo': sessionInfo!.toJson(),
+        if (rows != null) 'rows': rows!,
+        if (schema != null) 'schema': schema!,
+        if (sessionInfo != null) 'sessionInfo': sessionInfo!,
         if (totalBytesProcessed != null)
           'totalBytesProcessed': totalBytesProcessed!,
         if (totalRows != null) 'totalRows': totalRows!,
@@ -9785,7 +9685,7 @@ class RangePartitioning {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (field != null) 'field': field!,
-        if (range != null) 'range': range!.toJson(),
+        if (range != null) 'range': range!,
       };
 }
 
@@ -10096,8 +9996,7 @@ class Routine {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (arguments != null)
-          'arguments': arguments!.map((value) => value.toJson()).toList(),
+        if (arguments != null) 'arguments': arguments!,
         if (creationTime != null) 'creationTime': creationTime!,
         if (definitionBody != null) 'definitionBody': definitionBody!,
         if (description != null) 'description': description!,
@@ -10106,11 +10005,9 @@ class Routine {
         if (importedLibraries != null) 'importedLibraries': importedLibraries!,
         if (language != null) 'language': language!,
         if (lastModifiedTime != null) 'lastModifiedTime': lastModifiedTime!,
-        if (returnTableType != null)
-          'returnTableType': returnTableType!.toJson(),
-        if (returnType != null) 'returnType': returnType!.toJson(),
-        if (routineReference != null)
-          'routineReference': routineReference!.toJson(),
+        if (returnTableType != null) 'returnTableType': returnTableType!,
+        if (returnType != null) 'returnType': returnType!,
+        if (routineReference != null) 'routineReference': routineReference!,
         if (routineType != null) 'routineType': routineType!,
         if (strictMode != null) 'strictMode': strictMode!,
       };
@@ -10189,8 +10086,7 @@ class Row {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (actualLabel != null) 'actualLabel': actualLabel!,
-        if (entries != null)
-          'entries': entries!.map((value) => value.toJson()).toList(),
+        if (entries != null) 'entries': entries!,
       };
 }
 
@@ -10266,7 +10162,7 @@ class RowAccessPolicy {
         if (filterPredicate != null) 'filterPredicate': filterPredicate!,
         if (lastModifiedTime != null) 'lastModifiedTime': lastModifiedTime!,
         if (rowAccessPolicyReference != null)
-          'rowAccessPolicyReference': rowAccessPolicyReference!.toJson(),
+          'rowAccessPolicyReference': rowAccessPolicyReference!,
       };
 }
 
@@ -10436,8 +10332,7 @@ class ScriptStatistics {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (evaluationKind != null) 'evaluationKind': evaluationKind!,
-        if (stackFrames != null)
-          'stackFrames': stackFrames!.map((value) => value.toJson()).toList(),
+        if (stackFrames != null) 'stackFrames': stackFrames!,
       };
 }
 
@@ -10493,7 +10388,7 @@ class SetIamPolicyRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (policy != null) 'policy': policy!.toJson(),
+        if (policy != null) 'policy': policy!,
         if (updateMask != null) 'updateMask': updateMask!,
       };
 }
@@ -10529,7 +10424,7 @@ class SnapshotDefinition {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (baseTableReference != null)
-          'baseTableReference': baseTableReference!.toJson(),
+          'baseTableReference': baseTableReference!,
         if (snapshotTime != null)
           'snapshotTime': snapshotTime!.toIso8601String(),
       };
@@ -10599,9 +10494,8 @@ class StandardSqlDataType {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (arrayElementType != null)
-          'arrayElementType': arrayElementType!.toJson(),
-        if (structType != null) 'structType': structType!.toJson(),
+        if (arrayElementType != null) 'arrayElementType': arrayElementType!,
+        if (structType != null) 'structType': structType!,
         if (typeKind != null) 'typeKind': typeKind!,
       };
 }
@@ -10640,7 +10534,7 @@ class StandardSqlField {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
-        if (type != null) 'type': type!.toJson(),
+        if (type != null) 'type': type!,
       };
 }
 
@@ -10662,8 +10556,7 @@ class StandardSqlStructType {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (fields != null)
-          'fields': fields!.map((value) => value.toJson()).toList(),
+        if (fields != null) 'fields': fields!,
       };
 }
 
@@ -10687,8 +10580,7 @@ class StandardSqlTableType {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (columns != null)
-          'columns': columns!.map((value) => value.toJson()).toList(),
+        if (columns != null) 'columns': columns!,
       };
 }
 
@@ -11025,43 +10917,39 @@ class Table {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (clustering != null) 'clustering': clustering!.toJson(),
+        if (clustering != null) 'clustering': clustering!,
         if (creationTime != null) 'creationTime': creationTime!,
         if (description != null) 'description': description!,
         if (encryptionConfiguration != null)
-          'encryptionConfiguration': encryptionConfiguration!.toJson(),
+          'encryptionConfiguration': encryptionConfiguration!,
         if (etag != null) 'etag': etag!,
         if (expirationTime != null) 'expirationTime': expirationTime!,
         if (externalDataConfiguration != null)
-          'externalDataConfiguration': externalDataConfiguration!.toJson(),
+          'externalDataConfiguration': externalDataConfiguration!,
         if (friendlyName != null) 'friendlyName': friendlyName!,
         if (id != null) 'id': id!,
         if (kind != null) 'kind': kind!,
         if (labels != null) 'labels': labels!,
         if (lastModifiedTime != null) 'lastModifiedTime': lastModifiedTime!,
         if (location != null) 'location': location!,
-        if (materializedView != null)
-          'materializedView': materializedView!.toJson(),
-        if (model != null) 'model': model!.toJson(),
+        if (materializedView != null) 'materializedView': materializedView!,
+        if (model != null) 'model': model!,
         if (numBytes != null) 'numBytes': numBytes!,
         if (numLongTermBytes != null) 'numLongTermBytes': numLongTermBytes!,
         if (numPhysicalBytes != null) 'numPhysicalBytes': numPhysicalBytes!,
         if (numRows != null) 'numRows': numRows!,
-        if (rangePartitioning != null)
-          'rangePartitioning': rangePartitioning!.toJson(),
+        if (rangePartitioning != null) 'rangePartitioning': rangePartitioning!,
         if (requirePartitionFilter != null)
           'requirePartitionFilter': requirePartitionFilter!,
-        if (schema != null) 'schema': schema!.toJson(),
+        if (schema != null) 'schema': schema!,
         if (selfLink != null) 'selfLink': selfLink!,
         if (snapshotDefinition != null)
-          'snapshotDefinition': snapshotDefinition!.toJson(),
-        if (streamingBuffer != null)
-          'streamingBuffer': streamingBuffer!.toJson(),
-        if (tableReference != null) 'tableReference': tableReference!.toJson(),
-        if (timePartitioning != null)
-          'timePartitioning': timePartitioning!.toJson(),
+          'snapshotDefinition': snapshotDefinition!,
+        if (streamingBuffer != null) 'streamingBuffer': streamingBuffer!,
+        if (tableReference != null) 'tableReference': tableReference!,
+        if (timePartitioning != null) 'timePartitioning': timePartitioning!,
         if (type != null) 'type': type!,
-        if (view != null) 'view': view!.toJson(),
+        if (view != null) 'view': view!,
       };
 }
 
@@ -11189,7 +11077,7 @@ class TableDataInsertAllRequest {
         if (ignoreUnknownValues != null)
           'ignoreUnknownValues': ignoreUnknownValues!,
         if (kind != null) 'kind': kind!,
-        if (rows != null) 'rows': rows!.map((value) => value.toJson()).toList(),
+        if (rows != null) 'rows': rows!,
         if (skipInvalidRows != null) 'skipInvalidRows': skipInvalidRows!,
         if (templateSuffix != null) 'templateSuffix': templateSuffix!,
       };
@@ -11219,8 +11107,7 @@ class TableDataInsertAllResponseInsertErrors {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (errors != null)
-          'errors': errors!.map((value) => value.toJson()).toList(),
+        if (errors != null) 'errors': errors!,
         if (index != null) 'index': index!,
       };
 }
@@ -11250,8 +11137,7 @@ class TableDataInsertAllResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (insertErrors != null)
-          'insertErrors': insertErrors!.map((value) => value.toJson()).toList(),
+        if (insertErrors != null) 'insertErrors': insertErrors!,
         if (kind != null) 'kind': kind!,
       };
 }
@@ -11305,7 +11191,7 @@ class TableDataList {
         if (etag != null) 'etag': etag!,
         if (kind != null) 'kind': kind!,
         if (pageToken != null) 'pageToken': pageToken!,
-        if (rows != null) 'rows': rows!.map((value) => value.toJson()).toList(),
+        if (rows != null) 'rows': rows!,
         if (totalRows != null) 'totalRows': totalRows!,
       };
 }
@@ -11506,15 +11392,14 @@ class TableFieldSchema {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (categories != null) 'categories': categories!.toJson(),
+        if (categories != null) 'categories': categories!,
         if (collationSpec != null) 'collationSpec': collationSpec!,
         if (description != null) 'description': description!,
-        if (fields != null)
-          'fields': fields!.map((value) => value.toJson()).toList(),
+        if (fields != null) 'fields': fields!,
         if (maxLength != null) 'maxLength': maxLength!,
         if (mode != null) 'mode': mode!,
         if (name != null) 'name': name!,
-        if (policyTags != null) 'policyTags': policyTags!.toJson(),
+        if (policyTags != null) 'policyTags': policyTags!,
         if (precision != null) 'precision': precision!,
         if (scale != null) 'scale': scale!,
         if (type != null) 'type': type!,
@@ -11648,20 +11533,18 @@ class TableListTables {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (clustering != null) 'clustering': clustering!.toJson(),
+        if (clustering != null) 'clustering': clustering!,
         if (creationTime != null) 'creationTime': creationTime!,
         if (expirationTime != null) 'expirationTime': expirationTime!,
         if (friendlyName != null) 'friendlyName': friendlyName!,
         if (id != null) 'id': id!,
         if (kind != null) 'kind': kind!,
         if (labels != null) 'labels': labels!,
-        if (rangePartitioning != null)
-          'rangePartitioning': rangePartitioning!.toJson(),
-        if (tableReference != null) 'tableReference': tableReference!.toJson(),
-        if (timePartitioning != null)
-          'timePartitioning': timePartitioning!.toJson(),
+        if (rangePartitioning != null) 'rangePartitioning': rangePartitioning!,
+        if (tableReference != null) 'tableReference': tableReference!,
+        if (timePartitioning != null) 'timePartitioning': timePartitioning!,
         if (type != null) 'type': type!,
-        if (view != null) 'view': view!.toJson(),
+        if (view != null) 'view': view!,
       };
 }
 
@@ -11711,8 +11594,7 @@ class TableList {
         if (etag != null) 'etag': etag!,
         if (kind != null) 'kind': kind!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (tables != null)
-          'tables': tables!.map((value) => value.toJson()).toList(),
+        if (tables != null) 'tables': tables!,
         if (totalItems != null) 'totalItems': totalItems!,
       };
 }
@@ -11782,7 +11664,7 @@ class TableRow {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (f != null) 'f': f!.map((value) => value.toJson()).toList(),
+        if (f != null) 'f': f!,
       };
 }
 
@@ -11805,8 +11687,7 @@ class TableSchema {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (fields != null)
-          'fields': fields!.map((value) => value.toJson()).toList(),
+        if (fields != null) 'fields': fields!,
       };
 }
 
@@ -12473,8 +12354,7 @@ class TrainingOptions {
           'minRelativeProgress': minRelativeProgress!,
         if (minSplitLoss != null) 'minSplitLoss': minSplitLoss!,
         if (modelUri != null) 'modelUri': modelUri!,
-        if (nonSeasonalOrder != null)
-          'nonSeasonalOrder': nonSeasonalOrder!.toJson(),
+        if (nonSeasonalOrder != null) 'nonSeasonalOrder': nonSeasonalOrder!,
         if (numClusters != null) 'numClusters': numClusters!,
         if (numFactors != null) 'numFactors': numFactors!,
         if (optimizationStrategy != null)
@@ -12551,15 +12431,11 @@ class TrainingRun {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dataSplitResult != null)
-          'dataSplitResult': dataSplitResult!.toJson(),
-        if (evaluationMetrics != null)
-          'evaluationMetrics': evaluationMetrics!.toJson(),
-        if (results != null)
-          'results': results!.map((value) => value.toJson()).toList(),
+        if (dataSplitResult != null) 'dataSplitResult': dataSplitResult!,
+        if (evaluationMetrics != null) 'evaluationMetrics': evaluationMetrics!,
+        if (results != null) 'results': results!,
         if (startTime != null) 'startTime': startTime!,
-        if (trainingOptions != null)
-          'trainingOptions': trainingOptions!.toJson(),
+        if (trainingOptions != null) 'trainingOptions': trainingOptions!,
       };
 }
 
@@ -12678,8 +12554,6 @@ class ViewDefinition {
           'useExplicitColumnNames': useExplicitColumnNames!,
         if (useLegacySql != null) 'useLegacySql': useLegacySql!,
         if (userDefinedFunctionResources != null)
-          'userDefinedFunctionResources': userDefinedFunctionResources!
-              .map((value) => value.toJson())
-              .toList(),
+          'userDefinedFunctionResources': userDefinedFunctionResources!,
       };
 }

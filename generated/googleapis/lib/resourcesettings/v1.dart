@@ -229,7 +229,7 @@ class FoldersSettingsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -413,7 +413,7 @@ class OrganizationsSettingsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -595,7 +595,7 @@ class ProjectsSettingsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -643,8 +643,7 @@ class GoogleCloudResourcesettingsV1ListSettingsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (settings != null)
-          'settings': settings!.map((value) => value.toJson()).toList(),
+        if (settings != null) 'settings': settings!,
       };
 }
 
@@ -719,10 +718,10 @@ class GoogleCloudResourcesettingsV1Setting {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (effectiveValue != null) 'effectiveValue': effectiveValue!.toJson(),
+        if (effectiveValue != null) 'effectiveValue': effectiveValue!,
         if (etag != null) 'etag': etag!,
-        if (localValue != null) 'localValue': localValue!.toJson(),
-        if (metadata != null) 'metadata': metadata!.toJson(),
+        if (localValue != null) 'localValue': localValue!,
+        if (metadata != null) 'metadata': metadata!,
         if (name != null) 'name': name!,
       };
 }
@@ -787,7 +786,7 @@ class GoogleCloudResourcesettingsV1SettingMetadata {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (dataType != null) 'dataType': dataType!,
-        if (defaultValue != null) 'defaultValue': defaultValue!.toJson(),
+        if (defaultValue != null) 'defaultValue': defaultValue!,
         if (description != null) 'description': description!,
         if (displayName != null) 'displayName': displayName!,
         if (readOnly != null) 'readOnly': readOnly!,
@@ -853,9 +852,9 @@ class GoogleCloudResourcesettingsV1Value {
   core.Map<core.String, core.dynamic> toJson() => {
         if (booleanValue != null) 'booleanValue': booleanValue!,
         if (durationValue != null) 'durationValue': durationValue!,
-        if (enumValue != null) 'enumValue': enumValue!.toJson(),
-        if (stringMapValue != null) 'stringMapValue': stringMapValue!.toJson(),
-        if (stringSetValue != null) 'stringSetValue': stringSetValue!.toJson(),
+        if (enumValue != null) 'enumValue': enumValue!,
+        if (stringMapValue != null) 'stringMapValue': stringMapValue!,
+        if (stringSetValue != null) 'stringSetValue': stringSetValue!,
         if (stringValue != null) 'stringValue': stringValue!,
       };
 }

@@ -284,7 +284,7 @@ class ProjectsLocationsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -345,7 +345,7 @@ class ProjectsLocationsCapacityCommitmentsResource {
     core.bool? enforceSingleAdminProjectPerOrg,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (capacityCommitmentId != null)
         'capacityCommitmentId': [capacityCommitmentId],
@@ -530,7 +530,7 @@ class ProjectsLocationsCapacityCommitmentsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -582,7 +582,7 @@ class ProjectsLocationsCapacityCommitmentsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -632,7 +632,7 @@ class ProjectsLocationsCapacityCommitmentsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -688,7 +688,7 @@ class ProjectsLocationsReservationsResource {
     core.String? reservationId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (reservationId != null) 'reservationId': [reservationId],
       if ($fields != null) 'fields': [$fields],
@@ -859,7 +859,7 @@ class ProjectsLocationsReservationsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -937,7 +937,7 @@ class ProjectsLocationsReservationsAssignmentsResource {
     core.String? assignmentId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (assignmentId != null) 'assignmentId': [assignmentId],
       if ($fields != null) 'fields': [$fields],
@@ -1089,7 +1089,7 @@ class ProjectsLocationsReservationsAssignmentsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1340,7 +1340,7 @@ class CapacityCommitment {
         if (commitmentEndTime != null) 'commitmentEndTime': commitmentEndTime!,
         if (commitmentStartTime != null)
           'commitmentStartTime': commitmentStartTime!,
-        if (failureStatus != null) 'failureStatus': failureStatus!.toJson(),
+        if (failureStatus != null) 'failureStatus': failureStatus!,
         if (name != null) 'name': name!,
         if (plan != null) 'plan': plan!,
         if (renewalPlan != null) 'renewalPlan': renewalPlan!,
@@ -1386,8 +1386,7 @@ class ListAssignmentsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (assignments != null)
-          'assignments': assignments!.map((value) => value.toJson()).toList(),
+        if (assignments != null) 'assignments': assignments!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -1421,8 +1420,7 @@ class ListCapacityCommitmentsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (capacityCommitments != null)
-          'capacityCommitments':
-              capacityCommitments!.map((value) => value.toJson()).toList(),
+          'capacityCommitments': capacityCommitments!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -1456,8 +1454,7 @@ class ListReservationsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (reservations != null)
-          'reservations': reservations!.map((value) => value.toJson()).toList(),
+        if (reservations != null) 'reservations': reservations!,
       };
 }
 
@@ -1613,8 +1610,7 @@ class SearchAllAssignmentsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (assignments != null)
-          'assignments': assignments!.map((value) => value.toJson()).toList(),
+        if (assignments != null) 'assignments': assignments!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -1647,8 +1643,7 @@ class SearchAssignmentsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (assignments != null)
-          'assignments': assignments!.map((value) => value.toJson()).toList(),
+        if (assignments != null) 'assignments': assignments!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -1700,8 +1695,8 @@ class SplitCapacityCommitmentResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (first != null) 'first': first!.toJson(),
-        if (second != null) 'second': second!.toJson(),
+        if (first != null) 'first': first!,
+        if (second != null) 'second': second!,
       };
 }
 

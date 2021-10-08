@@ -105,7 +105,7 @@ class OperationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -206,7 +206,7 @@ class ProjectsBuildsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -248,7 +248,7 @@ class ProjectsBuildsResource {
     core.String id, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -299,7 +299,7 @@ class ProjectsBuildsResource {
     core.String? parent,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (parent != null) 'parent': [parent],
       if ($fields != null) 'fields': [$fields],
@@ -468,7 +468,7 @@ class ProjectsBuildsResource {
     core.String id, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -526,7 +526,7 @@ class ProjectsGithubEnterpriseConfigsResource {
     core.String? projectId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (projectId != null) 'projectId': [projectId],
       if ($fields != null) 'fields': [$fields],
@@ -720,7 +720,7 @@ class ProjectsGithubEnterpriseConfigsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -791,7 +791,7 @@ class ProjectsLocationsBuildsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -833,7 +833,7 @@ class ProjectsLocationsBuildsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -881,7 +881,7 @@ class ProjectsLocationsBuildsResource {
     core.String? projectId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (projectId != null) 'projectId': [projectId],
       if ($fields != null) 'fields': [$fields],
@@ -1049,7 +1049,7 @@ class ProjectsLocationsBuildsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1103,7 +1103,7 @@ class ProjectsLocationsGithubEnterpriseConfigsResource {
     core.String? projectId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (projectId != null) 'projectId': [projectId],
       if ($fields != null) 'fields': [$fields],
@@ -1297,7 +1297,7 @@ class ProjectsLocationsGithubEnterpriseConfigsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -1355,7 +1355,7 @@ class ProjectsLocationsOperationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1448,7 +1448,7 @@ class ProjectsLocationsTriggersResource {
     core.String? projectId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (projectId != null) 'projectId': [projectId],
       if ($fields != null) 'fields': [$fields],
@@ -1648,7 +1648,7 @@ class ProjectsLocationsTriggersResource {
     core.String? triggerId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (projectId != null) 'projectId': [projectId],
       if (triggerId != null) 'triggerId': [triggerId],
@@ -1693,7 +1693,7 @@ class ProjectsLocationsTriggersResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1746,7 +1746,7 @@ class ProjectsLocationsTriggersResource {
     core.String? trigger,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (projectId != null) 'projectId': [projectId],
       if (secret != null) 'secret': [secret],
@@ -1807,7 +1807,7 @@ class ProjectsLocationsWorkerPoolsResource {
     core.String? workerPoolId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
       if (workerPoolId != null) 'workerPoolId': [workerPoolId],
@@ -1999,7 +1999,7 @@ class ProjectsLocationsWorkerPoolsResource {
     core.bool? validateOnly,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
@@ -2053,7 +2053,7 @@ class ProjectsTriggersResource {
     core.String? parent,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (parent != null) 'parent': [parent],
       if ($fields != null) 'fields': [$fields],
@@ -2247,7 +2247,7 @@ class ProjectsTriggersResource {
     core.String triggerId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2297,7 +2297,7 @@ class ProjectsTriggersResource {
     core.String? name,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (name != null) 'name': [name],
       if ($fields != null) 'fields': [$fields],
@@ -2353,7 +2353,7 @@ class ProjectsTriggersResource {
     core.String? secret,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (name != null) 'name': [name],
       if (secret != null) 'secret': [secret],
@@ -2407,7 +2407,7 @@ class V1Resource {
     core.String? webhookKey,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (webhookKey != null) 'webhookKey': [webhookKey],
       if ($fields != null) 'fields': [$fields],
@@ -2538,7 +2538,7 @@ class ApproveBuildRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (approvalResult != null) 'approvalResult': approvalResult!.toJson(),
+        if (approvalResult != null) 'approvalResult': approvalResult!,
       };
 }
 
@@ -2587,7 +2587,7 @@ class ArtifactObjects {
   core.Map<core.String, core.dynamic> toJson() => {
         if (location != null) 'location': location!,
         if (paths != null) 'paths': paths!,
-        if (timing != null) 'timing': timing!.toJson(),
+        if (timing != null) 'timing': timing!,
       };
 }
 
@@ -2623,8 +2623,7 @@ class ArtifactResult {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (fileHash != null)
-          'fileHash': fileHash!.map((value) => value.toJson()).toList(),
+        if (fileHash != null) 'fileHash': fileHash!,
         if (location != null) 'location': location!,
       };
 }
@@ -2671,7 +2670,7 @@ class Artifacts {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (images != null) 'images': images!,
-        if (objects != null) 'objects': objects!.toJson(),
+        if (objects != null) 'objects': objects!,
       };
 }
 
@@ -3016,42 +3015,35 @@ class Build {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (approval != null) 'approval': approval!.toJson(),
-        if (artifacts != null) 'artifacts': artifacts!.toJson(),
-        if (availableSecrets != null)
-          'availableSecrets': availableSecrets!.toJson(),
+        if (approval != null) 'approval': approval!,
+        if (artifacts != null) 'artifacts': artifacts!,
+        if (availableSecrets != null) 'availableSecrets': availableSecrets!,
         if (buildTriggerId != null) 'buildTriggerId': buildTriggerId!,
         if (createTime != null) 'createTime': createTime!,
-        if (failureInfo != null) 'failureInfo': failureInfo!.toJson(),
+        if (failureInfo != null) 'failureInfo': failureInfo!,
         if (finishTime != null) 'finishTime': finishTime!,
         if (id != null) 'id': id!,
         if (images != null) 'images': images!,
         if (logUrl != null) 'logUrl': logUrl!,
         if (logsBucket != null) 'logsBucket': logsBucket!,
         if (name != null) 'name': name!,
-        if (options != null) 'options': options!.toJson(),
+        if (options != null) 'options': options!,
         if (projectId != null) 'projectId': projectId!,
         if (queueTtl != null) 'queueTtl': queueTtl!,
-        if (results != null) 'results': results!.toJson(),
-        if (secrets != null)
-          'secrets': secrets!.map((value) => value.toJson()).toList(),
+        if (results != null) 'results': results!,
+        if (secrets != null) 'secrets': secrets!,
         if (serviceAccount != null) 'serviceAccount': serviceAccount!,
-        if (source != null) 'source': source!.toJson(),
-        if (sourceProvenance != null)
-          'sourceProvenance': sourceProvenance!.toJson(),
+        if (source != null) 'source': source!,
+        if (sourceProvenance != null) 'sourceProvenance': sourceProvenance!,
         if (startTime != null) 'startTime': startTime!,
         if (status != null) 'status': status!,
         if (statusDetail != null) 'statusDetail': statusDetail!,
-        if (steps != null)
-          'steps': steps!.map((value) => value.toJson()).toList(),
+        if (steps != null) 'steps': steps!,
         if (substitutions != null) 'substitutions': substitutions!,
         if (tags != null) 'tags': tags!,
         if (timeout != null) 'timeout': timeout!,
-        if (timing != null)
-          'timing':
-              timing!.map((key, item) => core.MapEntry(key, item.toJson())),
-        if (warnings != null)
-          'warnings': warnings!.map((value) => value.toJson()).toList(),
+        if (timing != null) 'timing': timing!,
+        if (warnings != null) 'warnings': warnings!,
       };
 }
 
@@ -3099,8 +3091,8 @@ class BuildApproval {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (config != null) 'config': config!.toJson(),
-        if (result != null) 'result': result!.toJson(),
+        if (config != null) 'config': config!,
+        if (result != null) 'result': result!,
         if (state != null) 'state': state!,
       };
 }
@@ -3123,7 +3115,7 @@ class BuildOperationMetadata {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (build != null) 'build': build!.toJson(),
+        if (build != null) 'build': build!,
       };
 }
 
@@ -3314,7 +3306,7 @@ class BuildOptions {
           'logStreamingOption': logStreamingOption!,
         if (logging != null) 'logging': logging!,
         if (machineType != null) 'machineType': machineType!,
-        if (pool != null) 'pool': pool!.toJson(),
+        if (pool != null) 'pool': pool!,
         if (requestedVerifyOption != null)
           'requestedVerifyOption': requestedVerifyOption!,
         if (secretEnv != null) 'secretEnv': secretEnv!,
@@ -3322,8 +3314,7 @@ class BuildOptions {
           'sourceProvenanceHash': sourceProvenanceHash!,
         if (substitutionOption != null)
           'substitutionOption': substitutionOption!,
-        if (volumes != null)
-          'volumes': volumes!.map((value) => value.toJson()).toList(),
+        if (volumes != null) 'volumes': volumes!,
         if (workerPool != null) 'workerPool': workerPool!,
       };
 }
@@ -3523,14 +3514,13 @@ class BuildStep {
         if (env != null) 'env': env!,
         if (id != null) 'id': id!,
         if (name != null) 'name': name!,
-        if (pullTiming != null) 'pullTiming': pullTiming!.toJson(),
+        if (pullTiming != null) 'pullTiming': pullTiming!,
         if (script != null) 'script': script!,
         if (secretEnv != null) 'secretEnv': secretEnv!,
         if (status != null) 'status': status!,
         if (timeout != null) 'timeout': timeout!,
-        if (timing != null) 'timing': timing!.toJson(),
-        if (volumes != null)
-          'volumes': volumes!.map((value) => value.toJson()).toList(),
+        if (timing != null) 'timing': timing!,
+        if (volumes != null) 'volumes': volumes!,
         if (waitFor != null) 'waitFor': waitFor!,
       };
 }
@@ -3769,29 +3759,28 @@ class BuildTrigger {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (approvalConfig != null) 'approvalConfig': approvalConfig!.toJson(),
+        if (approvalConfig != null) 'approvalConfig': approvalConfig!,
         if (autodetect != null) 'autodetect': autodetect!,
-        if (build != null) 'build': build!.toJson(),
+        if (build != null) 'build': build!,
         if (createTime != null) 'createTime': createTime!,
         if (description != null) 'description': description!,
         if (disabled != null) 'disabled': disabled!,
         if (filename != null) 'filename': filename!,
         if (filter != null) 'filter': filter!,
-        if (gitFileSource != null) 'gitFileSource': gitFileSource!.toJson(),
-        if (github != null) 'github': github!.toJson(),
+        if (gitFileSource != null) 'gitFileSource': gitFileSource!,
+        if (github != null) 'github': github!,
         if (id != null) 'id': id!,
         if (ignoredFiles != null) 'ignoredFiles': ignoredFiles!,
         if (includedFiles != null) 'includedFiles': includedFiles!,
         if (name != null) 'name': name!,
-        if (pubsubConfig != null) 'pubsubConfig': pubsubConfig!.toJson(),
+        if (pubsubConfig != null) 'pubsubConfig': pubsubConfig!,
         if (resourceName != null) 'resourceName': resourceName!,
         if (serviceAccount != null) 'serviceAccount': serviceAccount!,
-        if (sourceToBuild != null) 'sourceToBuild': sourceToBuild!.toJson(),
+        if (sourceToBuild != null) 'sourceToBuild': sourceToBuild!,
         if (substitutions != null) 'substitutions': substitutions!,
         if (tags != null) 'tags': tags!,
-        if (triggerTemplate != null)
-          'triggerTemplate': triggerTemplate!.toJson(),
-        if (webhookConfig != null) 'webhookConfig': webhookConfig!.toJson(),
+        if (triggerTemplate != null) 'triggerTemplate': triggerTemplate!,
+        if (webhookConfig != null) 'webhookConfig': webhookConfig!,
       };
 }
 
@@ -3830,7 +3819,7 @@ class BuiltImage {
   core.Map<core.String, core.dynamic> toJson() => {
         if (digest != null) 'digest': digest!,
         if (name != null) 'name': name!,
-        if (pushTiming != null) 'pushTiming': pushTiming!.toJson(),
+        if (pushTiming != null) 'pushTiming': pushTiming!,
       };
 }
 
@@ -4103,8 +4092,7 @@ class FileHashes {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (fileHash != null)
-          'fileHash': fileHash!.map((value) => value.toJson()).toList(),
+        if (fileHash != null) 'fileHash': fileHash!,
       };
 }
 
@@ -4262,7 +4250,7 @@ class GitHubEnterpriseConfig {
         if (hostUrl != null) 'hostUrl': hostUrl!,
         if (name != null) 'name': name!,
         if (peeredNetwork != null) 'peeredNetwork': peeredNetwork!,
-        if (secrets != null) 'secrets': secrets!.toJson(),
+        if (secrets != null) 'secrets': secrets!,
         if (sslCa != null) 'sslCa': sslCa!,
         if (webhookKey != null) 'webhookKey': webhookKey!,
       };
@@ -4425,8 +4413,8 @@ class GitHubEventsConfig {
         if (installationId != null) 'installationId': installationId!,
         if (name != null) 'name': name!,
         if (owner != null) 'owner': owner!,
-        if (pullRequest != null) 'pullRequest': pullRequest!.toJson(),
-        if (push != null) 'push': push!.toJson(),
+        if (pullRequest != null) 'pullRequest': pullRequest!,
+        if (push != null) 'push': push!,
       };
 }
 
@@ -4748,8 +4736,7 @@ class ListBuildTriggersResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (triggers != null)
-          'triggers': triggers!.map((value) => value.toJson()).toList(),
+        if (triggers != null) 'triggers': triggers!,
       };
 }
 
@@ -4782,8 +4769,7 @@ class ListBuildsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (builds != null)
-          'builds': builds!.map((value) => value.toJson()).toList(),
+        if (builds != null) 'builds': builds!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -4808,8 +4794,7 @@ class ListGithubEnterpriseConfigsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (configs != null)
-          'configs': configs!.map((value) => value.toJson()).toList(),
+        if (configs != null) 'configs': configs!,
       };
 }
 
@@ -4844,8 +4829,7 @@ class ListWorkerPoolsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (workerPools != null)
-          'workerPools': workerPools!.map((value) => value.toJson()).toList(),
+        if (workerPools != null) 'workerPools': workerPools!,
       };
 }
 
@@ -4950,9 +4934,9 @@ class Notification {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (filter != null) 'filter': filter!,
-        if (httpDelivery != null) 'httpDelivery': httpDelivery!.toJson(),
-        if (slackDelivery != null) 'slackDelivery': slackDelivery!.toJson(),
-        if (smtpDelivery != null) 'smtpDelivery': smtpDelivery!.toJson(),
+        if (httpDelivery != null) 'httpDelivery': httpDelivery!,
+        if (slackDelivery != null) 'slackDelivery': slackDelivery!,
+        if (smtpDelivery != null) 'smtpDelivery': smtpDelivery!,
         if (structDelivery != null) 'structDelivery': structDelivery!,
       };
 }
@@ -4997,8 +4981,8 @@ class NotifierConfig {
   core.Map<core.String, core.dynamic> toJson() => {
         if (apiVersion != null) 'apiVersion': apiVersion!,
         if (kind != null) 'kind': kind!,
-        if (metadata != null) 'metadata': metadata!.toJson(),
-        if (spec != null) 'spec': spec!.toJson(),
+        if (metadata != null) 'metadata': metadata!,
+        if (spec != null) 'spec': spec!,
       };
 }
 
@@ -5119,9 +5103,8 @@ class NotifierSpec {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (notification != null) 'notification': notification!.toJson(),
-        if (secrets != null)
-          'secrets': secrets!.map((value) => value.toJson()).toList(),
+        if (notification != null) 'notification': notification!,
+        if (secrets != null) 'secrets': secrets!,
       };
 }
 
@@ -5194,7 +5177,7 @@ class Operation {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (done != null) 'done': done!,
-        if (error != null) 'error': error!.toJson(),
+        if (error != null) 'error': error!,
         if (metadata != null) 'metadata': metadata!,
         if (name != null) 'name': name!,
         if (response != null) 'response': response!,
@@ -5339,8 +5322,8 @@ class PrivatePoolV1Config {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (networkConfig != null) 'networkConfig': networkConfig!.toJson(),
-        if (workerConfig != null) 'workerConfig': workerConfig!.toJson(),
+        if (networkConfig != null) 'networkConfig': networkConfig!,
+        if (workerConfig != null) 'workerConfig': workerConfig!,
       };
 }
 
@@ -5708,11 +5691,10 @@ class Results {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (artifactManifest != null) 'artifactManifest': artifactManifest!,
-        if (artifactTiming != null) 'artifactTiming': artifactTiming!.toJson(),
+        if (artifactTiming != null) 'artifactTiming': artifactTiming!,
         if (buildStepImages != null) 'buildStepImages': buildStepImages!,
         if (buildStepOutputs != null) 'buildStepOutputs': buildStepOutputs!,
-        if (images != null)
-          'images': images!.map((value) => value.toJson()).toList(),
+        if (images != null) 'images': images!,
         if (numArtifacts != null) 'numArtifacts': numArtifacts!,
       };
 }
@@ -5793,7 +5775,7 @@ class RunBuildTriggerRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (projectId != null) 'projectId': projectId!,
-        if (source != null) 'source': source!.toJson(),
+        if (source != null) 'source': source!,
         if (triggerId != null) 'triggerId': triggerId!,
       };
 }
@@ -5855,7 +5837,7 @@ class SMTPDelivery {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (fromAddress != null) 'fromAddress': fromAddress!,
-        if (password != null) 'password': password!.toJson(),
+        if (password != null) 'password': password!,
         if (port != null) 'port': port!,
         if (recipientAddresses != null)
           'recipientAddresses': recipientAddresses!,
@@ -5971,11 +5953,8 @@ class Secrets {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (inline != null)
-          'inline': inline!.map((value) => value.toJson()).toList(),
-        if (secretManager != null)
-          'secretManager':
-              secretManager!.map((value) => value.toJson()).toList(),
+        if (inline != null) 'inline': inline!,
+        if (secretManager != null) 'secretManager': secretManager!,
       };
 }
 
@@ -6002,7 +5981,7 @@ class SlackDelivery {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (webhookUri != null) 'webhookUri': webhookUri!.toJson(),
+        if (webhookUri != null) 'webhookUri': webhookUri!,
       };
 }
 
@@ -6044,10 +6023,10 @@ class Source {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (repoSource != null) 'repoSource': repoSource!.toJson(),
-        if (storageSource != null) 'storageSource': storageSource!.toJson(),
+        if (repoSource != null) 'repoSource': repoSource!,
+        if (storageSource != null) 'storageSource': storageSource!,
         if (storageSourceManifest != null)
-          'storageSourceManifest': storageSourceManifest!.toJson(),
+          'storageSourceManifest': storageSourceManifest!,
       };
 }
 
@@ -6119,16 +6098,13 @@ class SourceProvenance {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (fileHashes != null)
-          'fileHashes':
-              fileHashes!.map((key, item) => core.MapEntry(key, item.toJson())),
+        if (fileHashes != null) 'fileHashes': fileHashes!,
         if (resolvedRepoSource != null)
-          'resolvedRepoSource': resolvedRepoSource!.toJson(),
+          'resolvedRepoSource': resolvedRepoSource!,
         if (resolvedStorageSource != null)
-          'resolvedStorageSource': resolvedStorageSource!.toJson(),
+          'resolvedStorageSource': resolvedStorageSource!,
         if (resolvedStorageSourceManifest != null)
-          'resolvedStorageSourceManifest':
-              resolvedStorageSourceManifest!.toJson(),
+          'resolvedStorageSourceManifest': resolvedStorageSourceManifest!,
       };
 }
 
@@ -6652,7 +6628,7 @@ class WorkerPool {
         if (etag != null) 'etag': etag!,
         if (name != null) 'name': name!,
         if (privatePoolV1Config != null)
-          'privatePoolV1Config': privatePoolV1Config!.toJson(),
+          'privatePoolV1Config': privatePoolV1Config!,
         if (state != null) 'state': state!,
         if (uid != null) 'uid': uid!,
         if (updateTime != null) 'updateTime': updateTime!,

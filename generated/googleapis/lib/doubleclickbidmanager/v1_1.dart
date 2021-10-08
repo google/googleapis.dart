@@ -85,7 +85,7 @@ class QueriesResource {
     core.bool? asynchronous,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (asynchronous != null) 'asynchronous': ['${asynchronous}'],
       if ($fields != null) 'fields': [$fields],
@@ -233,7 +233,7 @@ class QueriesResource {
     core.bool? asynchronous,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (asynchronous != null) 'asynchronous': ['${asynchronous}'],
       if ($fields != null) 'fields': [$fields],
@@ -339,8 +339,7 @@ class ChannelGrouping {
   core.Map<core.String, core.dynamic> toJson() => {
         if (fallbackName != null) 'fallbackName': fallbackName!,
         if (name != null) 'name': name!,
-        if (rules != null)
-          'rules': rules!.map((value) => value.toJson()).toList(),
+        if (rules != null) 'rules': rules!,
       };
 }
 
@@ -367,8 +366,7 @@ class DisjunctiveMatchStatement {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (eventFilters != null)
-          'eventFilters': eventFilters!.map((value) => value.toJson()).toList(),
+        if (eventFilters != null) 'eventFilters': eventFilters!,
       };
 }
 
@@ -391,8 +389,7 @@ class EventFilter {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dimensionFilter != null)
-          'dimensionFilter': dimensionFilter!.toJson(),
+        if (dimensionFilter != null) 'dimensionFilter': dimensionFilter!,
       };
 }
 
@@ -741,8 +738,7 @@ class ListQueriesResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (queries != null)
-          'queries': queries!.map((value) => value.toJson()).toList(),
+        if (queries != null) 'queries': queries!,
       };
 }
 
@@ -782,8 +778,7 @@ class ListReportsResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (reports != null)
-          'reports': reports!.map((value) => value.toJson()).toList(),
+        if (reports != null) 'reports': reports!,
       };
 }
 
@@ -817,8 +812,7 @@ class Options {
   core.Map<core.String, core.dynamic> toJson() => {
         if (includeOnlyTargetedUserLists != null)
           'includeOnlyTargetedUserLists': includeOnlyTargetedUserLists!,
-        if (pathQueryOptions != null)
-          'pathQueryOptions': pathQueryOptions!.toJson(),
+        if (pathQueryOptions != null) 'pathQueryOptions': pathQueryOptions!,
       };
 }
 
@@ -917,12 +911,11 @@ class Parameters {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (filters != null)
-          'filters': filters!.map((value) => value.toJson()).toList(),
+        if (filters != null) 'filters': filters!,
         if (groupBys != null) 'groupBys': groupBys!,
         if (includeInviteData != null) 'includeInviteData': includeInviteData!,
         if (metrics != null) 'metrics': metrics!,
-        if (options != null) 'options': options!.toJson(),
+        if (options != null) 'options': options!,
         if (type != null) 'type': type!,
       };
 }
@@ -964,8 +957,7 @@ class PathFilter {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (eventFilters != null)
-          'eventFilters': eventFilters!.map((value) => value.toJson()).toList(),
+        if (eventFilters != null) 'eventFilters': eventFilters!,
         if (pathMatchPosition != null) 'pathMatchPosition': pathMatchPosition!,
       };
 }
@@ -1000,10 +992,8 @@ class PathQueryOptions {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (channelGrouping != null)
-          'channelGrouping': channelGrouping!.toJson(),
-        if (pathFilters != null)
-          'pathFilters': pathFilters!.map((value) => value.toJson()).toList(),
+        if (channelGrouping != null) 'channelGrouping': channelGrouping!,
+        if (pathFilters != null) 'pathFilters': pathFilters!,
       };
 }
 
@@ -1412,14 +1402,14 @@ class Query {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
-        if (metadata != null) 'metadata': metadata!.toJson(),
-        if (params != null) 'params': params!.toJson(),
+        if (metadata != null) 'metadata': metadata!,
+        if (params != null) 'params': params!,
         if (queryId != null) 'queryId': queryId!,
         if (reportDataEndTimeMs != null)
           'reportDataEndTimeMs': reportDataEndTimeMs!,
         if (reportDataStartTimeMs != null)
           'reportDataStartTimeMs': reportDataStartTimeMs!,
-        if (schedule != null) 'schedule': schedule!.toJson(),
+        if (schedule != null) 'schedule': schedule!,
         if (timezoneCode != null) 'timezoneCode': timezoneCode!,
       };
 }
@@ -1674,9 +1664,9 @@ class Report {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (key != null) 'key': key!.toJson(),
-        if (metadata != null) 'metadata': metadata!.toJson(),
-        if (params != null) 'params': params!.toJson(),
+        if (key != null) 'key': key!,
+        if (metadata != null) 'metadata': metadata!,
+        if (params != null) 'params': params!,
       };
 }
 
@@ -1795,7 +1785,7 @@ class ReportMetadata {
           'reportDataEndTimeMs': reportDataEndTimeMs!,
         if (reportDataStartTimeMs != null)
           'reportDataStartTimeMs': reportDataStartTimeMs!,
-        if (status != null) 'status': status!.toJson(),
+        if (status != null) 'status': status!,
       };
 }
 
@@ -1845,7 +1835,7 @@ class ReportStatus {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (failure != null) 'failure': failure!.toJson(),
+        if (failure != null) 'failure': failure!,
         if (finishTimeMs != null) 'finishTimeMs': finishTimeMs!,
         if (format != null) 'format': format!,
         if (state != null) 'state': state!,
@@ -1881,9 +1871,7 @@ class Rule {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (disjunctiveMatchStatements != null)
-          'disjunctiveMatchStatements': disjunctiveMatchStatements!
-              .map((value) => value.toJson())
-              .toList(),
+          'disjunctiveMatchStatements': disjunctiveMatchStatements!,
         if (name != null) 'name': name!,
       };
 }

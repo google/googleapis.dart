@@ -149,7 +149,7 @@ class ProjectsLocationsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -254,7 +254,7 @@ class ProjectsLocationsConversationsResource {
     core.String? conversationId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (conversationId != null) 'conversationId': [conversationId],
       if ($fields != null) 'fields': [$fields],
@@ -456,7 +456,7 @@ class ProjectsLocationsConversationsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -508,7 +508,7 @@ class ProjectsLocationsConversationsAnalysesResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -685,7 +685,7 @@ class ProjectsLocationsInsightsdataResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -780,7 +780,7 @@ class ProjectsLocationsIssueModelsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -862,7 +862,7 @@ class ProjectsLocationsIssueModelsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -982,7 +982,7 @@ class ProjectsLocationsIssueModelsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -1027,7 +1027,7 @@ class ProjectsLocationsIssueModelsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1154,7 +1154,7 @@ class ProjectsLocationsIssueModelsIssuesResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -1355,7 +1355,7 @@ class ProjectsLocationsPhraseMatchersResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1554,7 +1554,7 @@ class GoogleCloudContactcenterinsightsV1Analysis {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (analysisResult != null) 'analysisResult': analysisResult!.toJson(),
+        if (analysisResult != null) 'analysisResult': analysisResult!,
         if (createTime != null) 'createTime': createTime!,
         if (name != null) 'name': name!,
         if (requestTime != null) 'requestTime': requestTime!,
@@ -1589,7 +1589,7 @@ class GoogleCloudContactcenterinsightsV1AnalysisResult {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (callAnalysisMetadata != null)
-          'callAnalysisMetadata': callAnalysisMetadata!.toJson(),
+          'callAnalysisMetadata': callAnalysisMetadata!,
         if (endTime != null) 'endTime': endTime!,
       };
 }
@@ -1679,21 +1679,12 @@ class GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadata {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (annotations != null)
-          'annotations': annotations!.map((value) => value.toJson()).toList(),
-        if (entities != null)
-          'entities':
-              entities!.map((key, item) => core.MapEntry(key, item.toJson())),
-        if (intents != null)
-          'intents':
-              intents!.map((key, item) => core.MapEntry(key, item.toJson())),
-        if (issueModelResult != null)
-          'issueModelResult': issueModelResult!.toJson(),
-        if (phraseMatchers != null)
-          'phraseMatchers': phraseMatchers!
-              .map((key, item) => core.MapEntry(key, item.toJson())),
-        if (sentiments != null)
-          'sentiments': sentiments!.map((value) => value.toJson()).toList(),
+        if (annotations != null) 'annotations': annotations!,
+        if (entities != null) 'entities': entities!,
+        if (intents != null) 'intents': intents!,
+        if (issueModelResult != null) 'issueModelResult': issueModelResult!,
+        if (phraseMatchers != null) 'phraseMatchers': phraseMatchers!,
+        if (sentiments != null) 'sentiments': sentiments!,
       };
 }
 
@@ -1870,7 +1861,7 @@ class GoogleCloudContactcenterinsightsV1CalculateIssueModelStatsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (currentStats != null) 'currentStats': currentStats!.toJson(),
+        if (currentStats != null) 'currentStats': currentStats!,
       };
 }
 
@@ -1972,7 +1963,7 @@ class GoogleCloudContactcenterinsightsV1CalculateStatsResponse {
         if (averageTurnCount != null) 'averageTurnCount': averageTurnCount!,
         if (conversationCount != null) 'conversationCount': conversationCount!,
         if (conversationCountTimeSeries != null)
-          'conversationCountTimeSeries': conversationCountTimeSeries!.toJson(),
+          'conversationCountTimeSeries': conversationCountTimeSeries!,
         if (customHighlighterMatches != null)
           'customHighlighterMatches': customHighlighterMatches!,
         if (issueMatches != null) 'issueMatches': issueMatches!,
@@ -2016,8 +2007,7 @@ class GoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSeries {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (intervalDuration != null) 'intervalDuration': intervalDuration!,
-        if (points != null)
-          'points': points!.map((value) => value.toJson()).toList(),
+        if (points != null) 'points': points!,
       };
 }
 
@@ -2149,21 +2139,17 @@ class GoogleCloudContactcenterinsightsV1CallAnnotation {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (annotationEndBoundary != null)
-          'annotationEndBoundary': annotationEndBoundary!.toJson(),
+          'annotationEndBoundary': annotationEndBoundary!,
         if (annotationStartBoundary != null)
-          'annotationStartBoundary': annotationStartBoundary!.toJson(),
+          'annotationStartBoundary': annotationStartBoundary!,
         if (channelTag != null) 'channelTag': channelTag!,
-        if (entityMentionData != null)
-          'entityMentionData': entityMentionData!.toJson(),
-        if (holdData != null) 'holdData': holdData!.toJson(),
-        if (intentMatchData != null)
-          'intentMatchData': intentMatchData!.toJson(),
-        if (interruptionData != null)
-          'interruptionData': interruptionData!.toJson(),
-        if (phraseMatchData != null)
-          'phraseMatchData': phraseMatchData!.toJson(),
-        if (sentimentData != null) 'sentimentData': sentimentData!.toJson(),
-        if (silenceData != null) 'silenceData': silenceData!.toJson(),
+        if (entityMentionData != null) 'entityMentionData': entityMentionData!,
+        if (holdData != null) 'holdData': holdData!,
+        if (intentMatchData != null) 'intentMatchData': intentMatchData!,
+        if (interruptionData != null) 'interruptionData': interruptionData!,
+        if (phraseMatchData != null) 'phraseMatchData': phraseMatchData!,
+        if (sentimentData != null) 'sentimentData': sentimentData!,
+        if (silenceData != null) 'silenceData': silenceData!,
       };
 }
 
@@ -2370,24 +2356,21 @@ class GoogleCloudContactcenterinsightsV1Conversation {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (agentId != null) 'agentId': agentId!,
-        if (callMetadata != null) 'callMetadata': callMetadata!.toJson(),
+        if (callMetadata != null) 'callMetadata': callMetadata!,
         if (createTime != null) 'createTime': createTime!,
-        if (dataSource != null) 'dataSource': dataSource!.toJson(),
-        if (dialogflowIntents != null)
-          'dialogflowIntents': dialogflowIntents!
-              .map((key, item) => core.MapEntry(key, item.toJson())),
+        if (dataSource != null) 'dataSource': dataSource!,
+        if (dialogflowIntents != null) 'dialogflowIntents': dialogflowIntents!,
         if (duration != null) 'duration': duration!,
         if (expireTime != null) 'expireTime': expireTime!,
         if (labels != null) 'labels': labels!,
         if (languageCode != null) 'languageCode': languageCode!,
-        if (latestAnalysis != null) 'latestAnalysis': latestAnalysis!.toJson(),
+        if (latestAnalysis != null) 'latestAnalysis': latestAnalysis!,
         if (medium != null) 'medium': medium!,
         if (name != null) 'name': name!,
         if (runtimeAnnotations != null)
-          'runtimeAnnotations':
-              runtimeAnnotations!.map((value) => value.toJson()).toList(),
+          'runtimeAnnotations': runtimeAnnotations!,
         if (startTime != null) 'startTime': startTime!,
-        if (transcript != null) 'transcript': transcript!.toJson(),
+        if (transcript != null) 'transcript': transcript!,
         if (ttl != null) 'ttl': ttl!,
         if (turnCount != null) 'turnCount': turnCount!,
         if (updateTime != null) 'updateTime': updateTime!,
@@ -2452,9 +2435,8 @@ class GoogleCloudContactcenterinsightsV1ConversationDataSource {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dialogflowSource != null)
-          'dialogflowSource': dialogflowSource!.toJson(),
-        if (gcsSource != null) 'gcsSource': gcsSource!.toJson(),
+        if (dialogflowSource != null) 'dialogflowSource': dialogflowSource!,
+        if (gcsSource != null) 'gcsSource': gcsSource!,
       };
 }
 
@@ -2485,7 +2467,7 @@ class GoogleCloudContactcenterinsightsV1ConversationLevelSentiment {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (channelTag != null) 'channelTag': channelTag!,
-        if (sentimentData != null) 'sentimentData': sentimentData!.toJson(),
+        if (sentimentData != null) 'sentimentData': sentimentData!,
       };
 }
 
@@ -2577,8 +2559,7 @@ class GoogleCloudContactcenterinsightsV1ConversationTranscript {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (transcriptSegments != null)
-          'transcriptSegments':
-              transcriptSegments!.map((value) => value.toJson()).toList(),
+          'transcriptSegments': transcriptSegments!,
       };
 }
 
@@ -2655,10 +2636,9 @@ class GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegment 
         if (confidence != null) 'confidence': confidence!,
         if (languageCode != null) 'languageCode': languageCode!,
         if (segmentParticipant != null)
-          'segmentParticipant': segmentParticipant!.toJson(),
+          'segmentParticipant': segmentParticipant!,
         if (text != null) 'text': text!,
-        if (words != null)
-          'words': words!.map((value) => value.toJson()).toList(),
+        if (words != null) 'words': words!,
       };
 }
 
@@ -2796,7 +2776,7 @@ class GoogleCloudContactcenterinsightsV1CreateIssueModelMetadata {
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
         if (endTime != null) 'endTime': endTime!,
-        if (request != null) 'request': request!.toJson(),
+        if (request != null) 'request': request!,
       };
 }
 
@@ -2830,7 +2810,7 @@ class GoogleCloudContactcenterinsightsV1CreateIssueModelRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (issueModel != null) 'issueModel': issueModel!.toJson(),
+        if (issueModel != null) 'issueModel': issueModel!,
         if (parent != null) 'parent': parent!,
       };
 }
@@ -2875,7 +2855,7 @@ class GoogleCloudContactcenterinsightsV1DeleteIssueModelMetadata {
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
         if (endTime != null) 'endTime': endTime!,
-        if (request != null) 'request': request!.toJson(),
+        if (request != null) 'request': request!,
       };
 }
 
@@ -2941,7 +2921,7 @@ class GoogleCloudContactcenterinsightsV1DeployIssueModelMetadata {
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
         if (endTime != null) 'endTime': endTime!,
-        if (request != null) 'request': request!.toJson(),
+        if (request != null) 'request': request!,
       };
 }
 
@@ -3156,7 +3136,7 @@ class GoogleCloudContactcenterinsightsV1Entity {
         if (displayName != null) 'displayName': displayName!,
         if (metadata != null) 'metadata': metadata!,
         if (salience != null) 'salience': salience!,
-        if (sentiment != null) 'sentiment': sentiment!.toJson(),
+        if (sentiment != null) 'sentiment': sentiment!,
         if (type != null) 'type': type!,
       };
 }
@@ -3200,7 +3180,7 @@ class GoogleCloudContactcenterinsightsV1EntityMentionData {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (entityUniqueId != null) 'entityUniqueId': entityUniqueId!,
-        if (sentiment != null) 'sentiment': sentiment!.toJson(),
+        if (sentiment != null) 'sentiment': sentiment!,
         if (type != null) 'type': type!,
       };
 }
@@ -3277,10 +3257,8 @@ class GoogleCloudContactcenterinsightsV1ExportInsightsDataMetadata {
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
         if (endTime != null) 'endTime': endTime!,
-        if (partialErrors != null)
-          'partialErrors':
-              partialErrors!.map((value) => value.toJson()).toList(),
-        if (request != null) 'request': request!.toJson(),
+        if (partialErrors != null) 'partialErrors': partialErrors!,
+        if (request != null) 'request': request!,
       };
 }
 
@@ -3334,7 +3312,7 @@ class GoogleCloudContactcenterinsightsV1ExportInsightsDataRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (bigQueryDestination != null)
-          'bigQueryDestination': bigQueryDestination!.toJson(),
+          'bigQueryDestination': bigQueryDestination!,
         if (filter != null) 'filter': filter!,
         if (kmsKey != null) 'kmsKey': kmsKey!,
         if (parent != null) 'parent': parent!,
@@ -3739,11 +3717,10 @@ class GoogleCloudContactcenterinsightsV1IssueModel {
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
         if (displayName != null) 'displayName': displayName!,
-        if (inputDataConfig != null)
-          'inputDataConfig': inputDataConfig!.toJson(),
+        if (inputDataConfig != null) 'inputDataConfig': inputDataConfig!,
         if (name != null) 'name': name!,
         if (state != null) 'state': state!,
-        if (trainingStats != null) 'trainingStats': trainingStats!.toJson(),
+        if (trainingStats != null) 'trainingStats': trainingStats!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
 }
@@ -3840,9 +3817,7 @@ class GoogleCloudContactcenterinsightsV1IssueModelLabelStats {
   core.Map<core.String, core.dynamic> toJson() => {
         if (analyzedConversationsCount != null)
           'analyzedConversationsCount': analyzedConversationsCount!,
-        if (issueStats != null)
-          'issueStats':
-              issueStats!.map((key, item) => core.MapEntry(key, item.toJson())),
+        if (issueStats != null) 'issueStats': issueStats!,
         if (unclassifiedConversationsCount != null)
           'unclassifiedConversationsCount': unclassifiedConversationsCount!,
       };
@@ -3912,8 +3887,7 @@ class GoogleCloudContactcenterinsightsV1IssueModelResult {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (issueModel != null) 'issueModel': issueModel!,
-        if (issues != null)
-          'issues': issues!.map((value) => value.toJson()).toList(),
+        if (issues != null) 'issues': issues!,
       };
 }
 
@@ -3948,8 +3922,7 @@ class GoogleCloudContactcenterinsightsV1ListAnalysesResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (analyses != null)
-          'analyses': analyses!.map((value) => value.toJson()).toList(),
+        if (analyses != null) 'analyses': analyses!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -3986,9 +3959,7 @@ class GoogleCloudContactcenterinsightsV1ListConversationsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (conversations != null)
-          'conversations':
-              conversations!.map((value) => value.toJson()).toList(),
+        if (conversations != null) 'conversations': conversations!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -4015,8 +3986,7 @@ class GoogleCloudContactcenterinsightsV1ListIssueModelsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (issueModels != null)
-          'issueModels': issueModels!.map((value) => value.toJson()).toList(),
+        if (issueModels != null) 'issueModels': issueModels!,
       };
 }
 
@@ -4041,8 +4011,7 @@ class GoogleCloudContactcenterinsightsV1ListIssuesResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (issues != null)
-          'issues': issues!.map((value) => value.toJson()).toList(),
+        if (issues != null) 'issues': issues!,
       };
 }
 
@@ -4078,9 +4047,7 @@ class GoogleCloudContactcenterinsightsV1ListPhraseMatchersResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (phraseMatchers != null)
-          'phraseMatchers':
-              phraseMatchers!.map((value) => value.toJson()).toList(),
+        if (phraseMatchers != null) 'phraseMatchers': phraseMatchers!,
       };
 }
 
@@ -4151,7 +4118,7 @@ class GoogleCloudContactcenterinsightsV1PhraseMatchRule {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (config != null) 'config': config!.toJson(),
+        if (config != null) 'config': config!,
         if (negated != null) 'negated': negated!,
         if (query != null) 'query': query!,
       };
@@ -4177,8 +4144,7 @@ class GoogleCloudContactcenterinsightsV1PhraseMatchRuleConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (exactMatchConfig != null)
-          'exactMatchConfig': exactMatchConfig!.toJson(),
+        if (exactMatchConfig != null) 'exactMatchConfig': exactMatchConfig!,
       };
 }
 
@@ -4217,9 +4183,7 @@ class GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroup {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (phraseMatchRules != null)
-          'phraseMatchRules':
-              phraseMatchRules!.map((value) => value.toJson()).toList(),
+        if (phraseMatchRules != null) 'phraseMatchRules': phraseMatchRules!,
         if (type != null) 'type': type!,
       };
 }
@@ -4345,8 +4309,7 @@ class GoogleCloudContactcenterinsightsV1PhraseMatcher {
         if (displayName != null) 'displayName': displayName!,
         if (name != null) 'name': name!,
         if (phraseMatchRuleGroups != null)
-          'phraseMatchRuleGroups':
-              phraseMatchRuleGroups!.map((value) => value.toJson()).toList(),
+          'phraseMatchRuleGroups': phraseMatchRuleGroups!,
         if (revisionCreateTime != null)
           'revisionCreateTime': revisionCreateTime!,
         if (revisionId != null) 'revisionId': revisionId!,
@@ -4454,18 +4417,17 @@ class GoogleCloudContactcenterinsightsV1RuntimeAnnotation {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (annotationId != null) 'annotationId': annotationId!,
-        if (answerFeedback != null) 'answerFeedback': answerFeedback!.toJson(),
-        if (articleSuggestion != null)
-          'articleSuggestion': articleSuggestion!.toJson(),
+        if (answerFeedback != null) 'answerFeedback': answerFeedback!,
+        if (articleSuggestion != null) 'articleSuggestion': articleSuggestion!,
         if (createTime != null) 'createTime': createTime!,
         if (dialogflowInteraction != null)
-          'dialogflowInteraction': dialogflowInteraction!.toJson(),
-        if (endBoundary != null) 'endBoundary': endBoundary!.toJson(),
-        if (faqAnswer != null) 'faqAnswer': faqAnswer!.toJson(),
+          'dialogflowInteraction': dialogflowInteraction!,
+        if (endBoundary != null) 'endBoundary': endBoundary!,
+        if (faqAnswer != null) 'faqAnswer': faqAnswer!,
         if (smartComposeSuggestion != null)
-          'smartComposeSuggestion': smartComposeSuggestion!.toJson(),
-        if (smartReply != null) 'smartReply': smartReply!.toJson(),
-        if (startBoundary != null) 'startBoundary': startBoundary!.toJson(),
+          'smartComposeSuggestion': smartComposeSuggestion!,
+        if (smartReply != null) 'smartReply': smartReply!,
+        if (startBoundary != null) 'startBoundary': startBoundary!,
       };
 }
 
@@ -4593,7 +4555,7 @@ class GoogleCloudContactcenterinsightsV1Settings {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (analysisConfig != null) 'analysisConfig': analysisConfig!.toJson(),
+        if (analysisConfig != null) 'analysisConfig': analysisConfig!,
         if (conversationTtl != null) 'conversationTtl': conversationTtl!,
         if (createTime != null) 'createTime': createTime!,
         if (languageCode != null) 'languageCode': languageCode!,
@@ -4786,7 +4748,7 @@ class GoogleCloudContactcenterinsightsV1UndeployIssueModelMetadata {
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
         if (endTime != null) 'endTime': endTime!,
-        if (request != null) 'request': request!.toJson(),
+        if (request != null) 'request': request!,
       };
 }
 
@@ -4899,7 +4861,7 @@ class GoogleCloudContactcenterinsightsV1alpha1CreateIssueModelMetadata {
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
         if (endTime != null) 'endTime': endTime!,
-        if (request != null) 'request': request!.toJson(),
+        if (request != null) 'request': request!,
       };
 }
 
@@ -4933,7 +4895,7 @@ class GoogleCloudContactcenterinsightsV1alpha1CreateIssueModelRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (issueModel != null) 'issueModel': issueModel!.toJson(),
+        if (issueModel != null) 'issueModel': issueModel!,
         if (parent != null) 'parent': parent!,
       };
 }
@@ -4978,7 +4940,7 @@ class GoogleCloudContactcenterinsightsV1alpha1DeleteIssueModelMetadata {
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
         if (endTime != null) 'endTime': endTime!,
-        if (request != null) 'request': request!.toJson(),
+        if (request != null) 'request': request!,
       };
 }
 
@@ -5044,7 +5006,7 @@ class GoogleCloudContactcenterinsightsV1alpha1DeployIssueModelMetadata {
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
         if (endTime != null) 'endTime': endTime!,
-        if (request != null) 'request': request!.toJson(),
+        if (request != null) 'request': request!,
       };
 }
 
@@ -5125,10 +5087,8 @@ class GoogleCloudContactcenterinsightsV1alpha1ExportInsightsDataMetadata {
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
         if (endTime != null) 'endTime': endTime!,
-        if (partialErrors != null)
-          'partialErrors':
-              partialErrors!.map((value) => value.toJson()).toList(),
-        if (request != null) 'request': request!.toJson(),
+        if (partialErrors != null) 'partialErrors': partialErrors!,
+        if (request != null) 'request': request!,
       };
 }
 
@@ -5182,7 +5142,7 @@ class GoogleCloudContactcenterinsightsV1alpha1ExportInsightsDataRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (bigQueryDestination != null)
-          'bigQueryDestination': bigQueryDestination!.toJson(),
+          'bigQueryDestination': bigQueryDestination!,
         if (filter != null) 'filter': filter!,
         if (kmsKey != null) 'kmsKey': kmsKey!,
         if (parent != null) 'parent': parent!,
@@ -5326,11 +5286,10 @@ class GoogleCloudContactcenterinsightsV1alpha1IssueModel {
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
         if (displayName != null) 'displayName': displayName!,
-        if (inputDataConfig != null)
-          'inputDataConfig': inputDataConfig!.toJson(),
+        if (inputDataConfig != null) 'inputDataConfig': inputDataConfig!,
         if (name != null) 'name': name!,
         if (state != null) 'state': state!,
-        if (trainingStats != null) 'trainingStats': trainingStats!.toJson(),
+        if (trainingStats != null) 'trainingStats': trainingStats!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
 }
@@ -5427,9 +5386,7 @@ class GoogleCloudContactcenterinsightsV1alpha1IssueModelLabelStats {
   core.Map<core.String, core.dynamic> toJson() => {
         if (analyzedConversationsCount != null)
           'analyzedConversationsCount': analyzedConversationsCount!,
-        if (issueStats != null)
-          'issueStats':
-              issueStats!.map((key, item) => core.MapEntry(key, item.toJson())),
+        if (issueStats != null) 'issueStats': issueStats!,
         if (unclassifiedConversationsCount != null)
           'unclassifiedConversationsCount': unclassifiedConversationsCount!,
       };
@@ -5509,7 +5466,7 @@ class GoogleCloudContactcenterinsightsV1alpha1UndeployIssueModelMetadata {
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
         if (endTime != null) 'endTime': endTime!,
-        if (request != null) 'request': request!.toJson(),
+        if (request != null) 'request': request!,
       };
 }
 
@@ -5567,8 +5524,7 @@ class GoogleLongrunningListOperationsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (operations != null)
-          'operations': operations!.map((value) => value.toJson()).toList(),
+        if (operations != null) 'operations': operations!,
       };
 }
 
@@ -5641,7 +5597,7 @@ class GoogleLongrunningOperation {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (done != null) 'done': done!,
-        if (error != null) 'error': error!.toJson(),
+        if (error != null) 'error': error!,
         if (metadata != null) 'metadata': metadata!,
         if (name != null) 'name': name!,
         if (response != null) 'response': response!,

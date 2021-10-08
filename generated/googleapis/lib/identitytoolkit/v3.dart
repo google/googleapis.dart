@@ -82,7 +82,7 @@ class RelyingpartyResource {
     IdentitytoolkitRelyingpartyCreateAuthUriRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -119,7 +119,7 @@ class RelyingpartyResource {
     IdentitytoolkitRelyingpartyDeleteAccountRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -156,7 +156,7 @@ class RelyingpartyResource {
     IdentitytoolkitRelyingpartyDownloadAccountRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -193,7 +193,7 @@ class RelyingpartyResource {
     IdentitytoolkitRelyingpartyEmailLinkSigninRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -230,7 +230,7 @@ class RelyingpartyResource {
     IdentitytoolkitRelyingpartyGetAccountInfoRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -267,7 +267,7 @@ class RelyingpartyResource {
     Relyingparty request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -410,7 +410,7 @@ class RelyingpartyResource {
     IdentitytoolkitRelyingpartyResetPasswordRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -449,7 +449,7 @@ class RelyingpartyResource {
     IdentitytoolkitRelyingpartySendVerificationCodeRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -486,7 +486,7 @@ class RelyingpartyResource {
     IdentitytoolkitRelyingpartySetAccountInfoRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -524,7 +524,7 @@ class RelyingpartyResource {
     IdentitytoolkitRelyingpartySetProjectConfigRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -561,7 +561,7 @@ class RelyingpartyResource {
     IdentitytoolkitRelyingpartySignOutUserRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -598,7 +598,7 @@ class RelyingpartyResource {
     IdentitytoolkitRelyingpartySignupNewUserRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -635,7 +635,7 @@ class RelyingpartyResource {
     IdentitytoolkitRelyingpartyUploadAccountRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -672,7 +672,7 @@ class RelyingpartyResource {
     IdentitytoolkitRelyingpartyVerifyAssertionRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -709,7 +709,7 @@ class RelyingpartyResource {
     IdentitytoolkitRelyingpartyVerifyCustomTokenRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -746,7 +746,7 @@ class RelyingpartyResource {
     IdentitytoolkitRelyingpartyVerifyPasswordRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -785,7 +785,7 @@ class RelyingpartyResource {
     IdentitytoolkitRelyingpartyVerifyPhoneNumberRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -947,8 +947,7 @@ class DownloadAccountResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (users != null)
-          'users': users!.map((value) => value.toJson()).toList(),
+        if (users != null) 'users': users!,
       };
 }
 
@@ -1101,8 +1100,7 @@ class GetAccountInfoResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
-        if (users != null)
-          'users': users!.map((value) => value.toJson()).toList(),
+        if (users != null) 'users': users!,
       };
 }
 
@@ -1641,21 +1639,20 @@ class IdentitytoolkitRelyingpartyGetProjectConfigResponse {
         if (apiKey != null) 'apiKey': apiKey!,
         if (authorizedDomains != null) 'authorizedDomains': authorizedDomains!,
         if (changeEmailTemplate != null)
-          'changeEmailTemplate': changeEmailTemplate!.toJson(),
+          'changeEmailTemplate': changeEmailTemplate!,
         if (dynamicLinksDomain != null)
           'dynamicLinksDomain': dynamicLinksDomain!,
         if (enableAnonymousUser != null)
           'enableAnonymousUser': enableAnonymousUser!,
-        if (idpConfig != null)
-          'idpConfig': idpConfig!.map((value) => value.toJson()).toList(),
+        if (idpConfig != null) 'idpConfig': idpConfig!,
         if (legacyResetPasswordTemplate != null)
-          'legacyResetPasswordTemplate': legacyResetPasswordTemplate!.toJson(),
+          'legacyResetPasswordTemplate': legacyResetPasswordTemplate!,
         if (projectId != null) 'projectId': projectId!,
         if (resetPasswordTemplate != null)
-          'resetPasswordTemplate': resetPasswordTemplate!.toJson(),
+          'resetPasswordTemplate': resetPasswordTemplate!,
         if (useEmailSending != null) 'useEmailSending': useEmailSending!,
         if (verifyEmailTemplate != null)
-          'verifyEmailTemplate': verifyEmailTemplate!.toJson(),
+          'verifyEmailTemplate': verifyEmailTemplate!,
       };
 }
 
@@ -1672,9 +1669,6 @@ class IdentitytoolkitRelyingpartyGetPublicKeysResponse
       this[key] = value as core.String;
     });
   }
-
-  core.Map<core.String, core.dynamic> toJson() =>
-      core.Map<core.String, core.dynamic>.of(this);
 
   @core.override
   core.String? operator [](core.Object? key) => _innerMap[key];
@@ -2117,20 +2111,19 @@ class IdentitytoolkitRelyingpartySetProjectConfigRequest {
         if (apiKey != null) 'apiKey': apiKey!,
         if (authorizedDomains != null) 'authorizedDomains': authorizedDomains!,
         if (changeEmailTemplate != null)
-          'changeEmailTemplate': changeEmailTemplate!.toJson(),
+          'changeEmailTemplate': changeEmailTemplate!,
         if (delegatedProjectNumber != null)
           'delegatedProjectNumber': delegatedProjectNumber!,
         if (enableAnonymousUser != null)
           'enableAnonymousUser': enableAnonymousUser!,
-        if (idpConfig != null)
-          'idpConfig': idpConfig!.map((value) => value.toJson()).toList(),
+        if (idpConfig != null) 'idpConfig': idpConfig!,
         if (legacyResetPasswordTemplate != null)
-          'legacyResetPasswordTemplate': legacyResetPasswordTemplate!.toJson(),
+          'legacyResetPasswordTemplate': legacyResetPasswordTemplate!,
         if (resetPasswordTemplate != null)
-          'resetPasswordTemplate': resetPasswordTemplate!.toJson(),
+          'resetPasswordTemplate': resetPasswordTemplate!,
         if (useEmailSending != null) 'useEmailSending': useEmailSending!,
         if (verifyEmailTemplate != null)
-          'verifyEmailTemplate': verifyEmailTemplate!.toJson(),
+          'verifyEmailTemplate': verifyEmailTemplate!,
       };
 }
 
@@ -2474,8 +2467,7 @@ class IdentitytoolkitRelyingpartyUploadAccountRequest {
         if (sanityCheck != null) 'sanityCheck': sanityCheck!,
         if (signerKey != null) 'signerKey': signerKey!,
         if (targetProjectId != null) 'targetProjectId': targetProjectId!,
-        if (users != null)
-          'users': users!.map((value) => value.toJson()).toList(),
+        if (users != null) 'users': users!,
       };
 }
 
@@ -3307,9 +3299,7 @@ class SetAccountInfoResponse {
         if (newEmail != null) 'newEmail': newEmail!,
         if (passwordHash != null) 'passwordHash': passwordHash!,
         if (photoUrl != null) 'photoUrl': photoUrl!,
-        if (providerUserInfo != null)
-          'providerUserInfo':
-              providerUserInfo!.map((value) => value.toJson()).toList(),
+        if (providerUserInfo != null) 'providerUserInfo': providerUserInfo!,
         if (refreshToken != null) 'refreshToken': refreshToken!,
       };
 }
@@ -3433,8 +3423,7 @@ class UploadAccountResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (error != null)
-          'error': error!.map((value) => value.toJson()).toList(),
+        if (error != null) 'error': error!,
         if (kind != null) 'kind': kind!,
       };
 }
@@ -3685,9 +3674,7 @@ class UserInfo {
         if (passwordUpdatedAt != null) 'passwordUpdatedAt': passwordUpdatedAt!,
         if (phoneNumber != null) 'phoneNumber': phoneNumber!,
         if (photoUrl != null) 'photoUrl': photoUrl!,
-        if (providerUserInfo != null)
-          'providerUserInfo':
-              providerUserInfo!.map((value) => value.toJson()).toList(),
+        if (providerUserInfo != null) 'providerUserInfo': providerUserInfo!,
         if (rawPassword != null) 'rawPassword': rawPassword!,
         if (salt != null) 'salt': salt!,
         if (screenName != null) 'screenName': screenName!,

@@ -160,7 +160,7 @@ class GroupItemsResource {
     core.String? onBehalfOfContentOwner,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (onBehalfOfContentOwner != null)
         'onBehalfOfContentOwner': [onBehalfOfContentOwner],
@@ -318,7 +318,7 @@ class GroupsResource {
     core.String? onBehalfOfContentOwner,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (onBehalfOfContentOwner != null)
         'onBehalfOfContentOwner': [onBehalfOfContentOwner],
@@ -440,7 +440,7 @@ class GroupsResource {
     core.String? onBehalfOfContentOwner,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (onBehalfOfContentOwner != null)
         'onBehalfOfContentOwner': [onBehalfOfContentOwner],
@@ -600,7 +600,7 @@ class EmptyResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (errors != null) 'errors': errors!.toJson(),
+        if (errors != null) 'errors': errors!,
       };
 }
 
@@ -749,8 +749,7 @@ class Errors {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (code != null) 'code': code!,
-        if (error != null)
-          'error': error!.map((value) => value.toJson()).toList(),
+        if (error != null) 'error': error!,
         if (requestId != null) 'requestId': requestId!,
       };
 }
@@ -808,12 +807,12 @@ class Group {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (contentDetails != null) 'contentDetails': contentDetails!.toJson(),
-        if (errors != null) 'errors': errors!.toJson(),
+        if (contentDetails != null) 'contentDetails': contentDetails!,
+        if (errors != null) 'errors': errors!,
         if (etag != null) 'etag': etag!,
         if (id != null) 'id': id!,
         if (kind != null) 'kind': kind!,
-        if (snippet != null) 'snippet': snippet!.toJson(),
+        if (snippet != null) 'snippet': snippet!,
       };
 }
 
@@ -908,12 +907,12 @@ class GroupItem {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (errors != null) 'errors': errors!.toJson(),
+        if (errors != null) 'errors': errors!,
         if (etag != null) 'etag': etag!,
         if (groupId != null) 'groupId': groupId!,
         if (id != null) 'id': id!,
         if (kind != null) 'kind': kind!,
-        if (resource != null) 'resource': resource!.toJson(),
+        if (resource != null) 'resource': resource!,
       };
 }
 
@@ -1019,10 +1018,9 @@ class ListGroupItemsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (errors != null) 'errors': errors!.toJson(),
+        if (errors != null) 'errors': errors!,
         if (etag != null) 'etag': etag!,
-        if (items != null)
-          'items': items!.map((value) => value.toJson()).toList(),
+        if (items != null) 'items': items!,
         if (kind != null) 'kind': kind!,
       };
 }
@@ -1077,10 +1075,9 @@ class ListGroupsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (errors != null) 'errors': errors!.toJson(),
+        if (errors != null) 'errors': errors!,
         if (etag != null) 'etag': etag!,
-        if (items != null)
-          'items': items!.map((value) => value.toJson()).toList(),
+        if (items != null) 'items': items!,
         if (kind != null) 'kind': kind!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
@@ -1152,10 +1149,8 @@ class QueryResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (columnHeaders != null)
-          'columnHeaders':
-              columnHeaders!.map((value) => value.toJson()).toList(),
-        if (errors != null) 'errors': errors!.toJson(),
+        if (columnHeaders != null) 'columnHeaders': columnHeaders!,
+        if (errors != null) 'errors': errors!,
         if (kind != null) 'kind': kind!,
         if (rows != null) 'rows': rows!,
       };

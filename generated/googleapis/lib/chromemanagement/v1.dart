@@ -464,8 +464,7 @@ class GoogleChromeManagementV1AndroidAppInfo {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (permissions != null)
-          'permissions': permissions!.map((value) => value.toJson()).toList(),
+        if (permissions != null) 'permissions': permissions!,
       };
 }
 
@@ -693,9 +692,9 @@ class GoogleChromeManagementV1AppDetails {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (androidAppInfo != null) 'androidAppInfo': androidAppInfo!.toJson(),
+        if (androidAppInfo != null) 'androidAppInfo': androidAppInfo!,
         if (appId != null) 'appId': appId!,
-        if (chromeAppInfo != null) 'chromeAppInfo': chromeAppInfo!.toJson(),
+        if (chromeAppInfo != null) 'chromeAppInfo': chromeAppInfo!,
         if (description != null) 'description': description!,
         if (detailUri != null) 'detailUri': detailUri!,
         if (displayName != null) 'displayName': displayName!,
@@ -710,7 +709,7 @@ class GoogleChromeManagementV1AppDetails {
         if (reviewNumber != null) 'reviewNumber': reviewNumber!,
         if (reviewRating != null) 'reviewRating': reviewRating!,
         if (revisionId != null) 'revisionId': revisionId!,
-        if (serviceError != null) 'serviceError': serviceError!.toJson(),
+        if (serviceError != null) 'serviceError': serviceError!,
         if (type != null) 'type': type!,
       };
 }
@@ -891,10 +890,8 @@ class GoogleChromeManagementV1ChromeAppInfo {
         if (isCwsHosted != null) 'isCwsHosted': isCwsHosted!,
         if (isTheme != null) 'isTheme': isTheme!,
         if (minUserCount != null) 'minUserCount': minUserCount!,
-        if (permissions != null)
-          'permissions': permissions!.map((value) => value.toJson()).toList(),
-        if (siteAccess != null)
-          'siteAccess': siteAccess!.map((value) => value.toJson()).toList(),
+        if (permissions != null) 'permissions': permissions!,
+        if (siteAccess != null) 'siteAccess': siteAccess!,
         if (supportEnabled != null) 'supportEnabled': supportEnabled!,
       };
 }
@@ -1001,9 +998,7 @@ class GoogleChromeManagementV1CountChromeVersionsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (browserVersions != null)
-          'browserVersions':
-              browserVersions!.map((value) => value.toJson()).toList(),
+        if (browserVersions != null) 'browserVersions': browserVersions!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (totalSize != null) 'totalSize': totalSize!,
       };
@@ -1043,9 +1038,7 @@ class GoogleChromeManagementV1CountInstalledAppsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (installedApps != null)
-          'installedApps':
-              installedApps!.map((value) => value.toJson()).toList(),
+        if (installedApps != null) 'installedApps': installedApps!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (totalSize != null) 'totalSize': totalSize!,
       };
@@ -1121,8 +1114,7 @@ class GoogleChromeManagementV1FindInstalledAppDevicesResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (devices != null)
-          'devices': devices!.map((value) => value.toJson()).toList(),
+        if (devices != null) 'devices': devices!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (totalSize != null) 'totalSize': totalSize!,
       };

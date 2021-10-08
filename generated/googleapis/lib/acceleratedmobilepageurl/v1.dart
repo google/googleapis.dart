@@ -77,7 +77,7 @@ class AmpUrlsResource {
     BatchGetAmpUrlsRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -262,9 +262,7 @@ class BatchGetAmpUrlsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (ampUrls != null)
-          'ampUrls': ampUrls!.map((value) => value.toJson()).toList(),
-        if (urlErrors != null)
-          'urlErrors': urlErrors!.map((value) => value.toJson()).toList(),
+        if (ampUrls != null) 'ampUrls': ampUrls!,
+        if (urlErrors != null) 'urlErrors': urlErrors!,
       };
 }

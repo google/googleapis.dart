@@ -102,7 +102,7 @@ class EnterprisesDevicesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -451,9 +451,7 @@ class GoogleHomeEnterpriseSdmV1Device {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
-        if (parentRelations != null)
-          'parentRelations':
-              parentRelations!.map((value) => value.toJson()).toList(),
+        if (parentRelations != null) 'parentRelations': parentRelations!,
         if (traits != null) 'traits': traits!,
         if (type != null) 'type': type!,
       };
@@ -543,8 +541,7 @@ class GoogleHomeEnterpriseSdmV1ListDevicesResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (devices != null)
-          'devices': devices!.map((value) => value.toJson()).toList(),
+        if (devices != null) 'devices': devices!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -579,8 +576,7 @@ class GoogleHomeEnterpriseSdmV1ListRoomsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (rooms != null)
-          'rooms': rooms!.map((value) => value.toJson()).toList(),
+        if (rooms != null) 'rooms': rooms!,
       };
 }
 
@@ -614,8 +610,7 @@ class GoogleHomeEnterpriseSdmV1ListStructuresResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (structures != null)
-          'structures': structures!.map((value) => value.toJson()).toList(),
+        if (structures != null) 'structures': structures!,
       };
 }
 

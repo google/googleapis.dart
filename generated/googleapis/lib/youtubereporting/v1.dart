@@ -106,7 +106,7 @@ class JobsResource {
     core.String? onBehalfOfContentOwner,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (onBehalfOfContentOwner != null)
         'onBehalfOfContentOwner': [onBehalfOfContentOwner],
@@ -715,14 +715,14 @@ class GdataCompositeMedia {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (blobRef != null) 'blobRef': blobRef!,
-        if (blobstore2Info != null) 'blobstore2Info': blobstore2Info!.toJson(),
+        if (blobstore2Info != null) 'blobstore2Info': blobstore2Info!,
         if (cosmoBinaryReference != null)
           'cosmoBinaryReference': cosmoBinaryReference!,
         if (crc32cHash != null) 'crc32cHash': crc32cHash!,
         if (inline != null) 'inline': inline!,
         if (length != null) 'length': length!,
         if (md5Hash != null) 'md5Hash': md5Hash!,
-        if (objectId != null) 'objectId': objectId!.toJson(),
+        if (objectId != null) 'objectId': objectId!,
         if (path != null) 'path': path!,
         if (referenceType != null) 'referenceType': referenceType!,
         if (sha1Hash != null) 'sha1Hash': sha1Hash!,
@@ -829,10 +829,9 @@ class GdataDiffChecksumsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (checksumsLocation != null)
-          'checksumsLocation': checksumsLocation!.toJson(),
+        if (checksumsLocation != null) 'checksumsLocation': checksumsLocation!,
         if (chunkSizeBytes != null) 'chunkSizeBytes': chunkSizeBytes!,
-        if (objectLocation != null) 'objectLocation': objectLocation!.toJson(),
+        if (objectLocation != null) 'objectLocation': objectLocation!,
         if (objectSizeBytes != null) 'objectSizeBytes': objectSizeBytes!,
         if (objectVersion != null) 'objectVersion': objectVersion!,
       };
@@ -856,7 +855,7 @@ class GdataDiffDownloadResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (objectLocation != null) 'objectLocation': objectLocation!.toJson(),
+        if (objectLocation != null) 'objectLocation': objectLocation!,
       };
 }
 
@@ -893,8 +892,8 @@ class GdataDiffUploadRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (checksumsInfo != null) 'checksumsInfo': checksumsInfo!.toJson(),
-        if (objectInfo != null) 'objectInfo': objectInfo!.toJson(),
+        if (checksumsInfo != null) 'checksumsInfo': checksumsInfo!,
+        if (objectInfo != null) 'objectInfo': objectInfo!,
         if (objectVersion != null) 'objectVersion': objectVersion!,
       };
 }
@@ -925,7 +924,7 @@ class GdataDiffUploadResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (objectVersion != null) 'objectVersion': objectVersion!,
-        if (originalObject != null) 'originalObject': originalObject!.toJson(),
+        if (originalObject != null) 'originalObject': originalObject!,
       };
 }
 
@@ -1284,28 +1283,24 @@ class GdataMedia {
         if (algorithm != null) 'algorithm': algorithm!,
         if (bigstoreObjectRef != null) 'bigstoreObjectRef': bigstoreObjectRef!,
         if (blobRef != null) 'blobRef': blobRef!,
-        if (blobstore2Info != null) 'blobstore2Info': blobstore2Info!.toJson(),
-        if (compositeMedia != null)
-          'compositeMedia':
-              compositeMedia!.map((value) => value.toJson()).toList(),
+        if (blobstore2Info != null) 'blobstore2Info': blobstore2Info!,
+        if (compositeMedia != null) 'compositeMedia': compositeMedia!,
         if (contentType != null) 'contentType': contentType!,
-        if (contentTypeInfo != null)
-          'contentTypeInfo': contentTypeInfo!.toJson(),
+        if (contentTypeInfo != null) 'contentTypeInfo': contentTypeInfo!,
         if (cosmoBinaryReference != null)
           'cosmoBinaryReference': cosmoBinaryReference!,
         if (crc32cHash != null) 'crc32cHash': crc32cHash!,
         if (diffChecksumsResponse != null)
-          'diffChecksumsResponse': diffChecksumsResponse!.toJson(),
+          'diffChecksumsResponse': diffChecksumsResponse!,
         if (diffDownloadResponse != null)
-          'diffDownloadResponse': diffDownloadResponse!.toJson(),
-        if (diffUploadRequest != null)
-          'diffUploadRequest': diffUploadRequest!.toJson(),
+          'diffDownloadResponse': diffDownloadResponse!,
+        if (diffUploadRequest != null) 'diffUploadRequest': diffUploadRequest!,
         if (diffUploadResponse != null)
-          'diffUploadResponse': diffUploadResponse!.toJson(),
+          'diffUploadResponse': diffUploadResponse!,
         if (diffVersionResponse != null)
-          'diffVersionResponse': diffVersionResponse!.toJson(),
+          'diffVersionResponse': diffVersionResponse!,
         if (downloadParameters != null)
-          'downloadParameters': downloadParameters!.toJson(),
+          'downloadParameters': downloadParameters!,
         if (filename != null) 'filename': filename!,
         if (hash != null) 'hash': hash!,
         if (hashVerified != null) 'hashVerified': hashVerified!,
@@ -1314,7 +1309,7 @@ class GdataMedia {
         if (length != null) 'length': length!,
         if (md5Hash != null) 'md5Hash': md5Hash!,
         if (mediaId != null) 'mediaId': mediaId!,
-        if (objectId != null) 'objectId': objectId!.toJson(),
+        if (objectId != null) 'objectId': objectId!,
         if (path != null) 'path': path!,
         if (referenceType != null) 'referenceType': referenceType!,
         if (sha1Hash != null) 'sha1Hash': sha1Hash!,
@@ -1457,7 +1452,7 @@ class ListJobsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (jobs != null) 'jobs': jobs!.map((value) => value.toJson()).toList(),
+        if (jobs != null) 'jobs': jobs!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -1494,8 +1489,7 @@ class ListReportTypesResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (reportTypes != null)
-          'reportTypes': reportTypes!.map((value) => value.toJson()).toList(),
+        if (reportTypes != null) 'reportTypes': reportTypes!,
       };
 }
 
@@ -1531,8 +1525,7 @@ class ListReportsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (reports != null)
-          'reports': reports!.map((value) => value.toJson()).toList(),
+        if (reports != null) 'reports': reports!,
       };
 }
 

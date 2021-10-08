@@ -212,7 +212,7 @@ class TransfersResource {
     DataTransfer request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -336,9 +336,7 @@ class Application {
         if (id != null) 'id': id!,
         if (kind != null) 'kind': kind!,
         if (name != null) 'name': name!,
-        if (transferParams != null)
-          'transferParams':
-              transferParams!.map((value) => value.toJson()).toList(),
+        if (transferParams != null) 'transferParams': transferParams!,
       };
 }
 
@@ -385,9 +383,7 @@ class ApplicationDataTransfer {
   core.Map<core.String, core.dynamic> toJson() => {
         if (applicationId != null) 'applicationId': applicationId!,
         if (applicationTransferParams != null)
-          'applicationTransferParams': applicationTransferParams!
-              .map((value) => value.toJson())
-              .toList(),
+          'applicationTransferParams': applicationTransferParams!,
         if (applicationTransferStatus != null)
           'applicationTransferStatus': applicationTransferStatus!,
       };
@@ -464,8 +460,7 @@ class ApplicationsListResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (applications != null)
-          'applications': applications!.map((value) => value.toJson()).toList(),
+        if (applications != null) 'applications': applications!,
         if (etag != null) 'etag': etag!,
         if (kind != null) 'kind': kind!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -544,8 +539,7 @@ class DataTransfer {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (applicationDataTransfers != null)
-          'applicationDataTransfers':
-              applicationDataTransfers!.map((value) => value.toJson()).toList(),
+          'applicationDataTransfers': applicationDataTransfers!,
         if (etag != null) 'etag': etag!,
         if (id != null) 'id': id!,
         if (kind != null) 'kind': kind!,
@@ -594,9 +588,7 @@ class DataTransfersListResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dataTransfers != null)
-          'dataTransfers':
-              dataTransfers!.map((value) => value.toJson()).toList(),
+        if (dataTransfers != null) 'dataTransfers': dataTransfers!,
         if (etag != null) 'etag': etag!,
         if (kind != null) 'kind': kind!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,

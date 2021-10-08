@@ -255,7 +255,7 @@ class DirectoryListItems {
         if (discoveryLink != null) 'discoveryLink': discoveryLink!,
         if (discoveryRestUrl != null) 'discoveryRestUrl': discoveryRestUrl!,
         if (documentationLink != null) 'documentationLink': documentationLink!,
-        if (icons != null) 'icons': icons!.toJson(),
+        if (icons != null) 'icons': icons!,
         if (id != null) 'id': id!,
         if (kind != null) 'kind': kind!,
         if (labels != null) 'labels': labels!,
@@ -300,8 +300,7 @@ class DirectoryList {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (discoveryVersion != null) 'discoveryVersion': discoveryVersion!,
-        if (items != null)
-          'items': items!.map((value) => value.toJson()).toList(),
+        if (items != null) 'items': items!,
         if (kind != null) 'kind': kind!,
       };
 }
@@ -384,7 +383,7 @@ class JsonSchemaVariant {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (discriminant != null) 'discriminant': discriminant!,
-        if (map != null) 'map': map!.map((value) => value.toJson()).toList(),
+        if (map != null) 'map': map!,
       };
 }
 
@@ -571,27 +570,25 @@ class JsonSchema {
   core.Map<core.String, core.dynamic> toJson() => {
         if (P_ref != null) '\$ref': P_ref!,
         if (additionalProperties != null)
-          'additionalProperties': additionalProperties!.toJson(),
-        if (annotations != null) 'annotations': annotations!.toJson(),
+          'additionalProperties': additionalProperties!,
+        if (annotations != null) 'annotations': annotations!,
         if (default_ != null) 'default': default_!,
         if (description != null) 'description': description!,
         if (enum_ != null) 'enum': enum_!,
         if (enumDescriptions != null) 'enumDescriptions': enumDescriptions!,
         if (format != null) 'format': format!,
         if (id != null) 'id': id!,
-        if (items != null) 'items': items!.toJson(),
+        if (items != null) 'items': items!,
         if (location != null) 'location': location!,
         if (maximum != null) 'maximum': maximum!,
         if (minimum != null) 'minimum': minimum!,
         if (pattern != null) 'pattern': pattern!,
-        if (properties != null)
-          'properties':
-              properties!.map((key, item) => core.MapEntry(key, item.toJson())),
+        if (properties != null) 'properties': properties!,
         if (readOnly != null) 'readOnly': readOnly!,
         if (repeated != null) 'repeated': repeated!,
         if (required != null) 'required': required!,
         if (type != null) 'type': type!,
-        if (variant != null) 'variant': variant!.toJson(),
+        if (variant != null) 'variant': variant!,
       };
 }
 
@@ -639,9 +636,7 @@ class RestDescriptionAuthOauth2 {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (scopes != null)
-          'scopes':
-              scopes!.map((key, item) => core.MapEntry(key, item.toJson())),
+        if (scopes != null) 'scopes': scopes!,
       };
 }
 
@@ -663,7 +658,7 @@ class RestDescriptionAuth {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (oauth2 != null) 'oauth2': oauth2!.toJson(),
+        if (oauth2 != null) 'oauth2': oauth2!,
       };
 }
 
@@ -947,7 +942,7 @@ class RestDescription {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (auth != null) 'auth': auth!.toJson(),
+        if (auth != null) 'auth': auth!,
         if (basePath != null) 'basePath': basePath!,
         if (baseUrl != null) 'baseUrl': baseUrl!,
         if (batchPath != null) 'batchPath': batchPath!,
@@ -959,29 +954,21 @@ class RestDescription {
         if (exponentialBackoffDefault != null)
           'exponentialBackoffDefault': exponentialBackoffDefault!,
         if (features != null) 'features': features!,
-        if (icons != null) 'icons': icons!.toJson(),
+        if (icons != null) 'icons': icons!,
         if (id != null) 'id': id!,
         if (kind != null) 'kind': kind!,
         if (labels != null) 'labels': labels!,
-        if (methods != null)
-          'methods':
-              methods!.map((key, item) => core.MapEntry(key, item.toJson())),
+        if (methods != null) 'methods': methods!,
         if (name != null) 'name': name!,
         if (ownerDomain != null) 'ownerDomain': ownerDomain!,
         if (ownerName != null) 'ownerName': ownerName!,
         if (packagePath != null) 'packagePath': packagePath!,
-        if (parameters != null)
-          'parameters':
-              parameters!.map((key, item) => core.MapEntry(key, item.toJson())),
+        if (parameters != null) 'parameters': parameters!,
         if (protocol != null) 'protocol': protocol!,
-        if (resources != null)
-          'resources':
-              resources!.map((key, item) => core.MapEntry(key, item.toJson())),
+        if (resources != null) 'resources': resources!,
         if (revision != null) 'revision': revision!,
         if (rootUrl != null) 'rootUrl': rootUrl!,
-        if (schemas != null)
-          'schemas':
-              schemas!.map((key, item) => core.MapEntry(key, item.toJson())),
+        if (schemas != null) 'schemas': schemas!,
         if (servicePath != null) 'servicePath': servicePath!,
         if (title != null) 'title': title!,
         if (version != null) 'version': version!,
@@ -1073,8 +1060,8 @@ class RestMethodMediaUploadProtocols {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (resumable != null) 'resumable': resumable!.toJson(),
-        if (simple != null) 'simple': simple!.toJson(),
+        if (resumable != null) 'resumable': resumable!,
+        if (simple != null) 'simple': simple!,
       };
 }
 
@@ -1114,7 +1101,7 @@ class RestMethodMediaUpload {
   core.Map<core.String, core.dynamic> toJson() => {
         if (accept != null) 'accept': accept!,
         if (maxSize != null) 'maxSize': maxSize!,
-        if (protocols != null) 'protocols': protocols!.toJson(),
+        if (protocols != null) 'protocols': protocols!,
       };
 }
 
@@ -1319,14 +1306,12 @@ class RestMethod {
         if (flatPath != null) 'flatPath': flatPath!,
         if (httpMethod != null) 'httpMethod': httpMethod!,
         if (id != null) 'id': id!,
-        if (mediaUpload != null) 'mediaUpload': mediaUpload!.toJson(),
+        if (mediaUpload != null) 'mediaUpload': mediaUpload!,
         if (parameterOrder != null) 'parameterOrder': parameterOrder!,
-        if (parameters != null)
-          'parameters':
-              parameters!.map((key, item) => core.MapEntry(key, item.toJson())),
+        if (parameters != null) 'parameters': parameters!,
         if (path != null) 'path': path!,
-        if (request != null) 'request': request!.toJson(),
-        if (response != null) 'response': response!.toJson(),
+        if (request != null) 'request': request!,
+        if (response != null) 'response': response!,
         if (scopes != null) 'scopes': scopes!,
         if (supportsMediaDownload != null)
           'supportsMediaDownload': supportsMediaDownload!,
@@ -1374,11 +1359,7 @@ class RestResource {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (methods != null)
-          'methods':
-              methods!.map((key, item) => core.MapEntry(key, item.toJson())),
-        if (resources != null)
-          'resources':
-              resources!.map((key, item) => core.MapEntry(key, item.toJson())),
+        if (methods != null) 'methods': methods!,
+        if (resources != null) 'resources': resources!,
       };
 }

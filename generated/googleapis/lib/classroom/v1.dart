@@ -202,7 +202,7 @@ class CoursesResource {
     Course request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -409,7 +409,7 @@ class CoursesResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -456,7 +456,7 @@ class CoursesResource {
     core.String id, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -509,7 +509,7 @@ class CoursesAliasesResource {
     core.String courseId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -669,7 +669,7 @@ class CoursesAnnouncementsResource {
     core.String courseId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -891,7 +891,7 @@ class CoursesAnnouncementsResource {
     core.String id, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -956,7 +956,7 @@ class CoursesAnnouncementsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -1023,7 +1023,7 @@ class CoursesCourseWorkResource {
     core.String courseId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1245,7 +1245,7 @@ class CoursesCourseWorkResource {
     core.String id, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1317,7 +1317,7 @@ class CoursesCourseWorkResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -1531,7 +1531,7 @@ class CoursesCourseWorkStudentSubmissionsResource {
     core.String id, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1602,7 +1602,7 @@ class CoursesCourseWorkStudentSubmissionsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -1669,7 +1669,7 @@ class CoursesCourseWorkStudentSubmissionsResource {
     core.String id, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1735,7 +1735,7 @@ class CoursesCourseWorkStudentSubmissionsResource {
     core.String id, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1799,7 +1799,7 @@ class CoursesCourseWorkStudentSubmissionsResource {
     core.String id, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1860,7 +1860,7 @@ class CoursesCourseWorkMaterialsResource {
     core.String courseId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2109,7 +2109,7 @@ class CoursesCourseWorkMaterialsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -2174,7 +2174,7 @@ class CoursesStudentsResource {
     core.String? enrollmentCode,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (enrollmentCode != null) 'enrollmentCode': [enrollmentCode],
       if ($fields != null) 'fields': [$fields],
@@ -2383,7 +2383,7 @@ class CoursesTeachersResource {
     core.String courseId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2592,7 +2592,7 @@ class CoursesTopicsResource {
     core.String courseId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2797,7 +2797,7 @@ class CoursesTopicsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -2895,7 +2895,7 @@ class InvitationsResource {
     Invitation request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3102,7 +3102,7 @@ class RegistrationsResource {
     Registration request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3263,7 +3263,7 @@ class UserProfilesGuardianInvitationsResource {
     core.String studentId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3462,7 +3462,7 @@ class UserProfilesGuardianInvitationsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -3822,9 +3822,8 @@ class Announcement {
         if (creatorUserId != null) 'creatorUserId': creatorUserId!,
         if (id != null) 'id': id!,
         if (individualStudentsOptions != null)
-          'individualStudentsOptions': individualStudentsOptions!.toJson(),
-        if (materials != null)
-          'materials': materials!.map((value) => value.toJson()).toList(),
+          'individualStudentsOptions': individualStudentsOptions!,
+        if (materials != null) 'materials': materials!,
         if (scheduledTime != null) 'scheduledTime': scheduledTime!,
         if (state != null) 'state': state!,
         if (text != null) 'text': text!,
@@ -3852,8 +3851,7 @@ class Assignment {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (studentWorkFolder != null)
-          'studentWorkFolder': studentWorkFolder!.toJson(),
+        if (studentWorkFolder != null) 'studentWorkFolder': studentWorkFolder!,
       };
 }
 
@@ -3883,8 +3881,7 @@ class AssignmentSubmission {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (attachments != null)
-          'attachments': attachments!.map((value) => value.toJson()).toList(),
+        if (attachments != null) 'attachments': attachments!,
       };
 }
 
@@ -3932,10 +3929,10 @@ class Attachment {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (driveFile != null) 'driveFile': driveFile!.toJson(),
-        if (form != null) 'form': form!.toJson(),
-        if (link != null) 'link': link!.toJson(),
-        if (youTubeVideo != null) 'youTubeVideo': youTubeVideo!.toJson(),
+        if (driveFile != null) 'driveFile': driveFile!,
+        if (form != null) 'form': form!,
+        if (link != null) 'link': link!,
+        if (youTubeVideo != null) 'youTubeVideo': youTubeVideo!,
       };
 }
 
@@ -4181,8 +4178,7 @@ class Course {
         if (calendarId != null) 'calendarId': calendarId!,
         if (courseGroupEmail != null) 'courseGroupEmail': courseGroupEmail!,
         if (courseMaterialSets != null)
-          'courseMaterialSets':
-              courseMaterialSets!.map((value) => value.toJson()).toList(),
+          'courseMaterialSets': courseMaterialSets!,
         if (courseState != null) 'courseState': courseState!,
         if (creationTime != null) 'creationTime': creationTime!,
         if (description != null) 'description': description!,
@@ -4195,7 +4191,7 @@ class Course {
         if (ownerId != null) 'ownerId': ownerId!,
         if (room != null) 'room': room!,
         if (section != null) 'section': section!,
-        if (teacherFolder != null) 'teacherFolder': teacherFolder!.toJson(),
+        if (teacherFolder != null) 'teacherFolder': teacherFolder!,
         if (teacherGroupEmail != null) 'teacherGroupEmail': teacherGroupEmail!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
@@ -4280,10 +4276,10 @@ class CourseMaterial {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (driveFile != null) 'driveFile': driveFile!.toJson(),
-        if (form != null) 'form': form!.toJson(),
-        if (link != null) 'link': link!.toJson(),
-        if (youTubeVideo != null) 'youTubeVideo': youTubeVideo!.toJson(),
+        if (driveFile != null) 'driveFile': driveFile!,
+        if (form != null) 'form': form!,
+        if (link != null) 'link': link!,
+        if (youTubeVideo != null) 'youTubeVideo': youTubeVideo!,
       };
 }
 
@@ -4316,8 +4312,7 @@ class CourseMaterialSet {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (materials != null)
-          'materials': materials!.map((value) => value.toJson()).toList(),
+        if (materials != null) 'materials': materials!,
         if (title != null) 'title': title!,
       };
 }
@@ -4595,23 +4590,22 @@ class CourseWork {
   core.Map<core.String, core.dynamic> toJson() => {
         if (alternateLink != null) 'alternateLink': alternateLink!,
         if (assigneeMode != null) 'assigneeMode': assigneeMode!,
-        if (assignment != null) 'assignment': assignment!.toJson(),
+        if (assignment != null) 'assignment': assignment!,
         if (associatedWithDeveloper != null)
           'associatedWithDeveloper': associatedWithDeveloper!,
         if (courseId != null) 'courseId': courseId!,
         if (creationTime != null) 'creationTime': creationTime!,
         if (creatorUserId != null) 'creatorUserId': creatorUserId!,
         if (description != null) 'description': description!,
-        if (dueDate != null) 'dueDate': dueDate!.toJson(),
-        if (dueTime != null) 'dueTime': dueTime!.toJson(),
+        if (dueDate != null) 'dueDate': dueDate!,
+        if (dueTime != null) 'dueTime': dueTime!,
         if (id != null) 'id': id!,
         if (individualStudentsOptions != null)
-          'individualStudentsOptions': individualStudentsOptions!.toJson(),
-        if (materials != null)
-          'materials': materials!.map((value) => value.toJson()).toList(),
+          'individualStudentsOptions': individualStudentsOptions!,
+        if (materials != null) 'materials': materials!,
         if (maxPoints != null) 'maxPoints': maxPoints!,
         if (multipleChoiceQuestion != null)
-          'multipleChoiceQuestion': multipleChoiceQuestion!.toJson(),
+          'multipleChoiceQuestion': multipleChoiceQuestion!,
         if (scheduledTime != null) 'scheduledTime': scheduledTime!,
         if (state != null) 'state': state!,
         if (submissionModificationMode != null)
@@ -4812,9 +4806,8 @@ class CourseWorkMaterial {
         if (description != null) 'description': description!,
         if (id != null) 'id': id!,
         if (individualStudentsOptions != null)
-          'individualStudentsOptions': individualStudentsOptions!.toJson(),
-        if (materials != null)
-          'materials': materials!.map((value) => value.toJson()).toList(),
+          'individualStudentsOptions': individualStudentsOptions!,
+        if (materials != null) 'materials': materials!,
         if (scheduledTime != null) 'scheduledTime': scheduledTime!,
         if (state != null) 'state': state!,
         if (title != null) 'title': title!,
@@ -5024,9 +5017,9 @@ class Feed {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (courseRosterChangesInfo != null)
-          'courseRosterChangesInfo': courseRosterChangesInfo!.toJson(),
+          'courseRosterChangesInfo': courseRosterChangesInfo!,
         if (courseWorkChangesInfo != null)
-          'courseWorkChangesInfo': courseWorkChangesInfo!.toJson(),
+          'courseWorkChangesInfo': courseWorkChangesInfo!,
         if (feedType != null) 'feedType': feedType!,
       };
 }
@@ -5212,8 +5205,7 @@ class Guardian {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (guardianId != null) 'guardianId': guardianId!,
-        if (guardianProfile != null)
-          'guardianProfile': guardianProfile!.toJson(),
+        if (guardianProfile != null) 'guardianProfile': guardianProfile!,
         if (invitedEmailAddress != null)
           'invitedEmailAddress': invitedEmailAddress!,
         if (studentId != null) 'studentId': studentId!,
@@ -5436,9 +5428,7 @@ class ListAnnouncementsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (announcements != null)
-          'announcements':
-              announcements!.map((value) => value.toJson()).toList(),
+        if (announcements != null) 'announcements': announcements!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -5472,8 +5462,7 @@ class ListCourseAliasesResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (aliases != null)
-          'aliases': aliases!.map((value) => value.toJson()).toList(),
+        if (aliases != null) 'aliases': aliases!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -5508,8 +5497,7 @@ class ListCourseWorkMaterialResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (courseWorkMaterial != null)
-          'courseWorkMaterial':
-              courseWorkMaterial!.map((value) => value.toJson()).toList(),
+          'courseWorkMaterial': courseWorkMaterial!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -5543,8 +5531,7 @@ class ListCourseWorkResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (courseWork != null)
-          'courseWork': courseWork!.map((value) => value.toJson()).toList(),
+        if (courseWork != null) 'courseWork': courseWork!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -5578,8 +5565,7 @@ class ListCoursesResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (courses != null)
-          'courses': courses!.map((value) => value.toJson()).toList(),
+        if (courses != null) 'courses': courses!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -5614,8 +5600,7 @@ class ListGuardianInvitationsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (guardianInvitations != null)
-          'guardianInvitations':
-              guardianInvitations!.map((value) => value.toJson()).toList(),
+          'guardianInvitations': guardianInvitations!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -5650,8 +5635,7 @@ class ListGuardiansResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (guardians != null)
-          'guardians': guardians!.map((value) => value.toJson()).toList(),
+        if (guardians != null) 'guardians': guardians!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -5685,8 +5669,7 @@ class ListInvitationsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (invitations != null)
-          'invitations': invitations!.map((value) => value.toJson()).toList(),
+        if (invitations != null) 'invitations': invitations!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -5722,8 +5705,7 @@ class ListStudentSubmissionsResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (studentSubmissions != null)
-          'studentSubmissions':
-              studentSubmissions!.map((value) => value.toJson()).toList(),
+          'studentSubmissions': studentSubmissions!,
       };
 }
 
@@ -5757,8 +5739,7 @@ class ListStudentsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (students != null)
-          'students': students!.map((value) => value.toJson()).toList(),
+        if (students != null) 'students': students!,
       };
 }
 
@@ -5792,8 +5773,7 @@ class ListTeachersResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (teachers != null)
-          'teachers': teachers!.map((value) => value.toJson()).toList(),
+        if (teachers != null) 'teachers': teachers!,
       };
 }
 
@@ -5827,8 +5807,7 @@ class ListTopicResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (topic != null)
-          'topic': topic!.map((value) => value.toJson()).toList(),
+        if (topic != null) 'topic': topic!,
       };
 }
 
@@ -5879,10 +5858,10 @@ class Material {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (driveFile != null) 'driveFile': driveFile!.toJson(),
-        if (form != null) 'form': form!.toJson(),
-        if (link != null) 'link': link!.toJson(),
-        if (youtubeVideo != null) 'youtubeVideo': youtubeVideo!.toJson(),
+        if (driveFile != null) 'driveFile': driveFile!,
+        if (form != null) 'form': form!,
+        if (link != null) 'link': link!,
+        if (youtubeVideo != null) 'youtubeVideo': youtubeVideo!,
       };
 }
 
@@ -5923,8 +5902,7 @@ class ModifyAnnouncementAssigneesRequest {
   core.Map<core.String, core.dynamic> toJson() => {
         if (assigneeMode != null) 'assigneeMode': assigneeMode!,
         if (modifyIndividualStudentsOptions != null)
-          'modifyIndividualStudentsOptions':
-              modifyIndividualStudentsOptions!.toJson(),
+          'modifyIndividualStudentsOptions': modifyIndividualStudentsOptions!,
       };
 }
 
@@ -5951,9 +5929,7 @@ class ModifyAttachmentsRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (addAttachments != null)
-          'addAttachments':
-              addAttachments!.map((value) => value.toJson()).toList(),
+        if (addAttachments != null) 'addAttachments': addAttachments!,
       };
 }
 
@@ -5994,8 +5970,7 @@ class ModifyCourseWorkAssigneesRequest {
   core.Map<core.String, core.dynamic> toJson() => {
         if (assigneeMode != null) 'assigneeMode': assigneeMode!,
         if (modifyIndividualStudentsOptions != null)
-          'modifyIndividualStudentsOptions':
-              modifyIndividualStudentsOptions!.toJson(),
+          'modifyIndividualStudentsOptions': modifyIndividualStudentsOptions!,
       };
 }
 
@@ -6172,10 +6147,9 @@ class Registration {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cloudPubsubTopic != null)
-          'cloudPubsubTopic': cloudPubsubTopic!.toJson(),
+        if (cloudPubsubTopic != null) 'cloudPubsubTopic': cloudPubsubTopic!,
         if (expiryTime != null) 'expiryTime': expiryTime!,
-        if (feed != null) 'feed': feed!.toJson(),
+        if (feed != null) 'feed': feed!,
         if (registrationId != null) 'registrationId': registrationId!,
       };
 }
@@ -6214,7 +6188,7 @@ class SharedDriveFile {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (driveFile != null) 'driveFile': driveFile!.toJson(),
+        if (driveFile != null) 'driveFile': driveFile!,
         if (shareMode != null) 'shareMode': shareMode!,
       };
 }
@@ -6340,9 +6314,8 @@ class Student {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (courseId != null) 'courseId': courseId!,
-        if (profile != null) 'profile': profile!.toJson(),
-        if (studentWorkFolder != null)
-          'studentWorkFolder': studentWorkFolder!.toJson(),
+        if (profile != null) 'profile': profile!,
+        if (studentWorkFolder != null) 'studentWorkFolder': studentWorkFolder!,
         if (userId != null) 'userId': userId!,
       };
 }
@@ -6536,7 +6509,7 @@ class StudentSubmission {
         if (alternateLink != null) 'alternateLink': alternateLink!,
         if (assignedGrade != null) 'assignedGrade': assignedGrade!,
         if (assignmentSubmission != null)
-          'assignmentSubmission': assignmentSubmission!.toJson(),
+          'assignmentSubmission': assignmentSubmission!,
         if (associatedWithDeveloper != null)
           'associatedWithDeveloper': associatedWithDeveloper!,
         if (courseId != null) 'courseId': courseId!,
@@ -6547,13 +6520,11 @@ class StudentSubmission {
         if (id != null) 'id': id!,
         if (late != null) 'late': late!,
         if (multipleChoiceSubmission != null)
-          'multipleChoiceSubmission': multipleChoiceSubmission!.toJson(),
+          'multipleChoiceSubmission': multipleChoiceSubmission!,
         if (shortAnswerSubmission != null)
-          'shortAnswerSubmission': shortAnswerSubmission!.toJson(),
+          'shortAnswerSubmission': shortAnswerSubmission!,
         if (state != null) 'state': state!,
-        if (submissionHistory != null)
-          'submissionHistory':
-              submissionHistory!.map((value) => value.toJson()).toList(),
+        if (submissionHistory != null) 'submissionHistory': submissionHistory!,
         if (updateTime != null) 'updateTime': updateTime!,
         if (userId != null) 'userId': userId!,
       };
@@ -6587,8 +6558,8 @@ class SubmissionHistory {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (gradeHistory != null) 'gradeHistory': gradeHistory!.toJson(),
-        if (stateHistory != null) 'stateHistory': stateHistory!.toJson(),
+        if (gradeHistory != null) 'gradeHistory': gradeHistory!,
+        if (stateHistory != null) 'stateHistory': stateHistory!,
       };
 }
 
@@ -6633,7 +6604,7 @@ class Teacher {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (courseId != null) 'courseId': courseId!,
-        if (profile != null) 'profile': profile!.toJson(),
+        if (profile != null) 'profile': profile!,
         if (userId != null) 'userId': userId!,
       };
 }
@@ -6820,9 +6791,8 @@ class UserProfile {
   core.Map<core.String, core.dynamic> toJson() => {
         if (emailAddress != null) 'emailAddress': emailAddress!,
         if (id != null) 'id': id!,
-        if (name != null) 'name': name!.toJson(),
-        if (permissions != null)
-          'permissions': permissions!.map((value) => value.toJson()).toList(),
+        if (name != null) 'name': name!,
+        if (permissions != null) 'permissions': permissions!,
         if (photoUrl != null) 'photoUrl': photoUrl!,
         if (verifiedTeacher != null) 'verifiedTeacher': verifiedTeacher!,
       };

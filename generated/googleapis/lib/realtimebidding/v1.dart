@@ -281,7 +281,7 @@ class BiddersCreativesResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -421,7 +421,7 @@ class BiddersPretargetingConfigsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -464,7 +464,7 @@ class BiddersPretargetingConfigsResource {
     core.String pretargetingConfig, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -508,7 +508,7 @@ class BiddersPretargetingConfigsResource {
     core.String pretargetingConfig, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -553,7 +553,7 @@ class BiddersPretargetingConfigsResource {
     core.String pretargetingConfig, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -602,7 +602,7 @@ class BiddersPretargetingConfigsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -772,7 +772,7 @@ class BiddersPretargetingConfigsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -816,7 +816,7 @@ class BiddersPretargetingConfigsResource {
     core.String pretargetingConfig, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -861,7 +861,7 @@ class BiddersPretargetingConfigsResource {
     core.String pretargetingConfig, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -906,7 +906,7 @@ class BiddersPretargetingConfigsResource {
     core.String pretargetingConfig, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -950,7 +950,7 @@ class BiddersPretargetingConfigsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1137,7 +1137,7 @@ class BuyersCreativesResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1315,7 +1315,7 @@ class BuyersCreativesResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -1364,7 +1364,7 @@ class BuyersUserListsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1409,7 +1409,7 @@ class BuyersUserListsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1583,7 +1583,7 @@ class BuyersUserListsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1630,7 +1630,7 @@ class BuyersUserListsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1972,9 +1972,9 @@ class AppTargeting {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (mobileAppCategoryTargeting != null)
-          'mobileAppCategoryTargeting': mobileAppCategoryTargeting!.toJson(),
+          'mobileAppCategoryTargeting': mobileAppCategoryTargeting!,
         if (mobileAppTargeting != null)
-          'mobileAppTargeting': mobileAppTargeting!.toJson(),
+          'mobileAppTargeting': mobileAppTargeting!,
       };
 }
 
@@ -2404,7 +2404,7 @@ class Creative {
         if (creativeFormat != null) 'creativeFormat': creativeFormat!,
         if (creativeId != null) 'creativeId': creativeId!,
         if (creativeServingDecision != null)
-          'creativeServingDecision': creativeServingDecision!.toJson(),
+          'creativeServingDecision': creativeServingDecision!,
         if (dealIds != null) 'dealIds': dealIds!,
         if (declaredAttributes != null)
           'declaredAttributes': declaredAttributes!,
@@ -2413,15 +2413,15 @@ class Creative {
         if (declaredRestrictedCategories != null)
           'declaredRestrictedCategories': declaredRestrictedCategories!,
         if (declaredVendorIds != null) 'declaredVendorIds': declaredVendorIds!,
-        if (html != null) 'html': html!.toJson(),
+        if (html != null) 'html': html!,
         if (impressionTrackingUrls != null)
           'impressionTrackingUrls': impressionTrackingUrls!,
         if (name != null) 'name': name!,
-        if (native != null) 'native': native!.toJson(),
+        if (native != null) 'native': native!,
         if (restrictedCategories != null)
           'restrictedCategories': restrictedCategories!,
         if (version != null) 'version': version!,
-        if (video != null) 'video': video!.toJson(),
+        if (video != null) 'video': video!,
       };
 }
 
@@ -2645,14 +2645,13 @@ class CreativeServingDecision {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (adTechnologyProviders != null)
-          'adTechnologyProviders': adTechnologyProviders!.toJson(),
+          'adTechnologyProviders': adTechnologyProviders!,
         if (chinaPolicyCompliance != null)
-          'chinaPolicyCompliance': chinaPolicyCompliance!.toJson(),
+          'chinaPolicyCompliance': chinaPolicyCompliance!,
         if (dealsPolicyCompliance != null)
-          'dealsPolicyCompliance': dealsPolicyCompliance!.toJson(),
+          'dealsPolicyCompliance': dealsPolicyCompliance!,
         if (detectedAdvertisers != null)
-          'detectedAdvertisers':
-              detectedAdvertisers!.map((value) => value.toJson()).toList(),
+          'detectedAdvertisers': detectedAdvertisers!,
         if (detectedAttributes != null)
           'detectedAttributes': detectedAttributes!,
         if (detectedClickThroughUrls != null)
@@ -2666,11 +2665,11 @@ class CreativeServingDecision {
         if (detectedVendorIds != null) 'detectedVendorIds': detectedVendorIds!,
         if (lastStatusUpdate != null) 'lastStatusUpdate': lastStatusUpdate!,
         if (networkPolicyCompliance != null)
-          'networkPolicyCompliance': networkPolicyCompliance!.toJson(),
+          'networkPolicyCompliance': networkPolicyCompliance!,
         if (platformPolicyCompliance != null)
-          'platformPolicyCompliance': platformPolicyCompliance!.toJson(),
+          'platformPolicyCompliance': platformPolicyCompliance!,
         if (russiaPolicyCompliance != null)
-          'russiaPolicyCompliance': russiaPolicyCompliance!.toJson(),
+          'russiaPolicyCompliance': russiaPolicyCompliance!,
       };
 }
 
@@ -2921,8 +2920,7 @@ class DomainCallEvidence {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (topHttpCallDomains != null)
-          'topHttpCallDomains':
-              topHttpCallDomains!.map((value) => value.toJson()).toList(),
+          'topHttpCallDomains': topHttpCallDomains!,
         if (totalHttpCallCount != null)
           'totalHttpCallCount': totalHttpCallCount!,
       };
@@ -2987,9 +2985,7 @@ class DownloadSizeEvidence {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (topUrlDownloadSizeBreakdowns != null)
-          'topUrlDownloadSizeBreakdowns': topUrlDownloadSizeBreakdowns!
-              .map((value) => value.toJson())
-              .toList(),
+          'topUrlDownloadSizeBreakdowns': topUrlDownloadSizeBreakdowns!,
         if (totalDownloadSizeKb != null)
           'totalDownloadSizeKb': totalDownloadSizeKb!,
       };
@@ -3276,8 +3272,7 @@ class ListBiddersResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bidders != null)
-          'bidders': bidders!.map((value) => value.toJson()).toList(),
+        if (bidders != null) 'bidders': bidders!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -3311,8 +3306,7 @@ class ListBuyersResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (buyers != null)
-          'buyers': buyers!.map((value) => value.toJson()).toList(),
+        if (buyers != null) 'buyers': buyers!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -3348,8 +3342,7 @@ class ListCreativesResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (creatives != null)
-          'creatives': creatives!.map((value) => value.toJson()).toList(),
+        if (creatives != null) 'creatives': creatives!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -3383,8 +3376,7 @@ class ListEndpointsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (endpoints != null)
-          'endpoints': endpoints!.map((value) => value.toJson()).toList(),
+        if (endpoints != null) 'endpoints': endpoints!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -3420,8 +3412,7 @@ class ListPretargetingConfigsResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (pretargetingConfigs != null)
-          'pretargetingConfigs':
-              pretargetingConfigs!.map((value) => value.toJson()).toList(),
+          'pretargetingConfigs': pretargetingConfigs!,
       };
 }
 
@@ -3458,8 +3449,7 @@ class ListUserListsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (userLists != null)
-          'userLists': userLists!.map((value) => value.toJson()).toList(),
+        if (userLists != null) 'userLists': userLists!,
       };
 }
 
@@ -3621,14 +3611,14 @@ class NativeContent {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (advertiserName != null) 'advertiserName': advertiserName!,
-        if (appIcon != null) 'appIcon': appIcon!.toJson(),
+        if (appIcon != null) 'appIcon': appIcon!,
         if (body != null) 'body': body!,
         if (callToAction != null) 'callToAction': callToAction!,
         if (clickLinkUrl != null) 'clickLinkUrl': clickLinkUrl!,
         if (clickTrackingUrl != null) 'clickTrackingUrl': clickTrackingUrl!,
         if (headline != null) 'headline': headline!,
-        if (image != null) 'image': image!.toJson(),
-        if (logo != null) 'logo': logo!.toJson(),
+        if (image != null) 'image': image!,
+        if (logo != null) 'logo': logo!,
         if (priceDisplayText != null) 'priceDisplayText': priceDisplayText!,
         if (starRating != null) 'starRating': starRating!,
         if (videoUrl != null) 'videoUrl': videoUrl!,
@@ -3713,8 +3703,7 @@ class PolicyCompliance {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (status != null) 'status': status!,
-        if (topics != null)
-          'topics': topics!.map((value) => value.toJson()).toList(),
+        if (topics != null) 'topics': topics!,
       };
 }
 
@@ -3759,8 +3748,7 @@ class PolicyTopicEntry {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (evidences != null)
-          'evidences': evidences!.map((value) => value.toJson()).toList(),
+        if (evidences != null) 'evidences': evidences!,
         if (helpCenterUrl != null) 'helpCenterUrl': helpCenterUrl!,
         if (policyTopic != null) 'policyTopic': policyTopic!,
       };
@@ -3837,14 +3825,14 @@ class PolicyTopicEvidence {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (destinationNotCrawlable != null)
-          'destinationNotCrawlable': destinationNotCrawlable!.toJson(),
+          'destinationNotCrawlable': destinationNotCrawlable!,
         if (destinationNotWorking != null)
-          'destinationNotWorking': destinationNotWorking!.toJson(),
-        if (destinationUrl != null) 'destinationUrl': destinationUrl!.toJson(),
-        if (domainCall != null) 'domainCall': domainCall!.toJson(),
-        if (downloadSize != null) 'downloadSize': downloadSize!.toJson(),
-        if (httpCall != null) 'httpCall': httpCall!.toJson(),
-        if (httpCookie != null) 'httpCookie': httpCookie!.toJson(),
+          'destinationNotWorking': destinationNotWorking!,
+        if (destinationUrl != null) 'destinationUrl': destinationUrl!,
+        if (domainCall != null) 'domainCall': domainCall!,
+        if (downloadSize != null) 'downloadSize': downloadSize!,
+        if (httpCall != null) 'httpCall': httpCall!,
+        if (httpCookie != null) 'httpCookie': httpCookie!,
       };
 }
 
@@ -4160,16 +4148,14 @@ class PretargetingConfig {
   core.Map<core.String, core.dynamic> toJson() => {
         if (allowedUserTargetingModes != null)
           'allowedUserTargetingModes': allowedUserTargetingModes!,
-        if (appTargeting != null) 'appTargeting': appTargeting!.toJson(),
+        if (appTargeting != null) 'appTargeting': appTargeting!,
         if (billingId != null) 'billingId': billingId!,
         if (displayName != null) 'displayName': displayName!,
         if (excludedContentLabelIds != null)
           'excludedContentLabelIds': excludedContentLabelIds!,
-        if (geoTargeting != null) 'geoTargeting': geoTargeting!.toJson(),
+        if (geoTargeting != null) 'geoTargeting': geoTargeting!,
         if (includedCreativeDimensions != null)
-          'includedCreativeDimensions': includedCreativeDimensions!
-              .map((value) => value.toJson())
-              .toList(),
+          'includedCreativeDimensions': includedCreativeDimensions!,
         if (includedEnvironments != null)
           'includedEnvironments': includedEnvironments!,
         if (includedFormats != null) 'includedFormats': includedFormats!,
@@ -4187,13 +4173,11 @@ class PretargetingConfig {
           'minimumViewabilityDecile': minimumViewabilityDecile!,
         if (name != null) 'name': name!,
         if (publisherTargeting != null)
-          'publisherTargeting': publisherTargeting!.toJson(),
+          'publisherTargeting': publisherTargeting!,
         if (state != null) 'state': state!,
-        if (userListTargeting != null)
-          'userListTargeting': userListTargeting!.toJson(),
-        if (verticalTargeting != null)
-          'verticalTargeting': verticalTargeting!.toJson(),
-        if (webTargeting != null) 'webTargeting': webTargeting!.toJson(),
+        if (userListTargeting != null) 'userListTargeting': userListTargeting!,
+        if (verticalTargeting != null) 'verticalTargeting': verticalTargeting!,
+        if (webTargeting != null) 'webTargeting': webTargeting!,
       };
 }
 
@@ -4424,9 +4408,9 @@ class UrlRestriction {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (endDate != null) 'endDate': endDate!.toJson(),
+        if (endDate != null) 'endDate': endDate!,
         if (restrictionType != null) 'restrictionType': restrictionType!,
-        if (startDate != null) 'startDate': startDate!.toJson(),
+        if (startDate != null) 'startDate': startDate!,
         if (url != null) 'url': url!,
       };
 }
@@ -4520,7 +4504,7 @@ class UserList {
           'membershipDurationDays': membershipDurationDays!,
         if (name != null) 'name': name!,
         if (status != null) 'status': status!,
-        if (urlRestriction != null) 'urlRestriction': urlRestriction!.toJson(),
+        if (urlRestriction != null) 'urlRestriction': urlRestriction!,
       };
 }
 
@@ -4560,7 +4544,7 @@ class VideoContent {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (videoMetadata != null) 'videoMetadata': videoMetadata!.toJson(),
+        if (videoMetadata != null) 'videoMetadata': videoMetadata!,
         if (videoUrl != null) 'videoUrl': videoUrl!,
         if (videoVastXml != null) 'videoVastXml': videoVastXml!,
       };
@@ -4644,8 +4628,7 @@ class VideoMetadata {
         if (duration != null) 'duration': duration!,
         if (isValidVast != null) 'isValidVast': isValidVast!,
         if (isVpaid != null) 'isVpaid': isVpaid!,
-        if (mediaFiles != null)
-          'mediaFiles': mediaFiles!.map((value) => value.toJson()).toList(),
+        if (mediaFiles != null) 'mediaFiles': mediaFiles!,
         if (skipOffset != null) 'skipOffset': skipOffset!,
         if (vastVersion != null) 'vastVersion': vastVersion!,
       };

@@ -102,7 +102,7 @@ class SearchanalyticsResource {
     core.String siteUrl, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -469,7 +469,7 @@ class UrlTestingToolsMobileFriendlyTestResource {
     RunMobileFriendlyTestRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -616,8 +616,7 @@ class ApiDimensionFilterGroup {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (filters != null)
-          'filters': filters!.map((value) => value.toJson()).toList(),
+        if (filters != null) 'filters': filters!,
         if (groupType != null) 'groupType': groupType!,
       };
 }
@@ -732,8 +731,7 @@ class ResourceIssue {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (blockedResource != null)
-          'blockedResource': blockedResource!.toJson(),
+        if (blockedResource != null) 'blockedResource': blockedResource!,
       };
 }
 
@@ -828,13 +826,10 @@ class RunMobileFriendlyTestResponse {
         if (mobileFriendliness != null)
           'mobileFriendliness': mobileFriendliness!,
         if (mobileFriendlyIssues != null)
-          'mobileFriendlyIssues':
-              mobileFriendlyIssues!.map((value) => value.toJson()).toList(),
-        if (resourceIssues != null)
-          'resourceIssues':
-              resourceIssues!.map((value) => value.toJson()).toList(),
-        if (screenshot != null) 'screenshot': screenshot!.toJson(),
-        if (testStatus != null) 'testStatus': testStatus!.toJson(),
+          'mobileFriendlyIssues': mobileFriendlyIssues!,
+        if (resourceIssues != null) 'resourceIssues': resourceIssues!,
+        if (screenshot != null) 'screenshot': screenshot!,
+        if (testStatus != null) 'testStatus': testStatus!,
       };
 }
 
@@ -970,8 +965,7 @@ class SearchAnalyticsQueryRequest {
         if (aggregationType != null) 'aggregationType': aggregationType!,
         if (dataState != null) 'dataState': dataState!,
         if (dimensionFilterGroups != null)
-          'dimensionFilterGroups':
-              dimensionFilterGroups!.map((value) => value.toJson()).toList(),
+          'dimensionFilterGroups': dimensionFilterGroups!,
         if (dimensions != null) 'dimensions': dimensions!,
         if (endDate != null) 'endDate': endDate!,
         if (rowLimit != null) 'rowLimit': rowLimit!,
@@ -1017,7 +1011,7 @@ class SearchAnalyticsQueryResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (responseAggregationType != null)
           'responseAggregationType': responseAggregationType!,
-        if (rows != null) 'rows': rows!.map((value) => value.toJson()).toList(),
+        if (rows != null) 'rows': rows!,
       };
 }
 
@@ -1042,8 +1036,7 @@ class SitemapsListResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (sitemap != null)
-          'sitemap': sitemap!.map((value) => value.toJson()).toList(),
+        if (sitemap != null) 'sitemap': sitemap!,
       };
 }
 
@@ -1070,8 +1063,7 @@ class SitesListResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (siteEntry != null)
-          'siteEntry': siteEntry!.map((value) => value.toJson()).toList(),
+        if (siteEntry != null) 'siteEntry': siteEntry!,
       };
 }
 
@@ -1247,8 +1239,7 @@ class WmxSitemap {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (contents != null)
-          'contents': contents!.map((value) => value.toJson()).toList(),
+        if (contents != null) 'contents': contents!,
         if (errors != null) 'errors': errors!,
         if (isPending != null) 'isPending': isPending!,
         if (isSitemapsIndex != null) 'isSitemapsIndex': isSitemapsIndex!,

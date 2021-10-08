@@ -81,7 +81,7 @@ class ChallengeResource {
     Empty request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -117,7 +117,7 @@ class ChallengeResource {
     VerifyChallengeResponseRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -163,8 +163,8 @@ class Challenge {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (alternativeChallenge != null)
-          'alternativeChallenge': alternativeChallenge!.toJson(),
-        if (challenge != null) 'challenge': challenge!.toJson(),
+          'alternativeChallenge': alternativeChallenge!,
+        if (challenge != null) 'challenge': challenge!,
       };
 }
 
@@ -246,8 +246,7 @@ class VerifyChallengeResponseRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (challengeResponse != null)
-          'challengeResponse': challengeResponse!.toJson(),
+        if (challengeResponse != null) 'challengeResponse': challengeResponse!,
         if (expectedIdentity != null) 'expectedIdentity': expectedIdentity!,
       };
 }

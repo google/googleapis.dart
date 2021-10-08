@@ -171,7 +171,7 @@ class FoldersPoliciesResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -403,7 +403,7 @@ class FoldersPoliciesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -528,7 +528,7 @@ class OrganizationsPoliciesResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -760,7 +760,7 @@ class OrganizationsPoliciesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -883,7 +883,7 @@ class ProjectsPoliciesResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1115,7 +1115,7 @@ class ProjectsPoliciesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1220,12 +1220,11 @@ class GoogleCloudOrgpolicyV2Constraint {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (booleanConstraint != null)
-          'booleanConstraint': booleanConstraint!.toJson(),
+        if (booleanConstraint != null) 'booleanConstraint': booleanConstraint!,
         if (constraintDefault != null) 'constraintDefault': constraintDefault!,
         if (description != null) 'description': description!,
         if (displayName != null) 'displayName': displayName!,
-        if (listConstraint != null) 'listConstraint': listConstraint!.toJson(),
+        if (listConstraint != null) 'listConstraint': listConstraint!,
         if (name != null) 'name': name!,
       };
 }
@@ -1303,8 +1302,7 @@ class GoogleCloudOrgpolicyV2ListConstraintsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (constraints != null)
-          'constraints': constraints!.map((value) => value.toJson()).toList(),
+        if (constraints != null) 'constraints': constraints!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -1344,8 +1342,7 @@ class GoogleCloudOrgpolicyV2ListPoliciesResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (policies != null)
-          'policies': policies!.map((value) => value.toJson()).toList(),
+        if (policies != null) 'policies': policies!,
       };
 }
 
@@ -1386,7 +1383,7 @@ class GoogleCloudOrgpolicyV2Policy {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
-        if (spec != null) 'spec': spec!.toJson(),
+        if (spec != null) 'spec': spec!,
       };
 }
 
@@ -1471,8 +1468,7 @@ class GoogleCloudOrgpolicyV2PolicySpec {
         if (etag != null) 'etag': etag!,
         if (inheritFromParent != null) 'inheritFromParent': inheritFromParent!,
         if (reset != null) 'reset': reset!,
-        if (rules != null)
-          'rules': rules!.map((value) => value.toJson()).toList(),
+        if (rules != null) 'rules': rules!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
 }
@@ -1545,10 +1541,10 @@ class GoogleCloudOrgpolicyV2PolicySpecPolicyRule {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (allowAll != null) 'allowAll': allowAll!,
-        if (condition != null) 'condition': condition!.toJson(),
+        if (condition != null) 'condition': condition!,
         if (denyAll != null) 'denyAll': denyAll!,
         if (enforce != null) 'enforce': enforce!,
-        if (values != null) 'values': values!.toJson(),
+        if (values != null) 'values': values!,
       };
 }
 

@@ -111,7 +111,7 @@ class PlatformsPropertiesIdeaStatesResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -295,7 +295,7 @@ class PlatformsPropertiesTopicStatesResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -378,8 +378,7 @@ class GoogleSearchIdeahubV1betaIdea {
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
         if (text != null) 'text': text!,
-        if (topics != null)
-          'topics': topics!.map((value) => value.toJson()).toList(),
+        if (topics != null) 'topics': topics!,
       };
 }
 
@@ -450,9 +449,7 @@ class GoogleSearchIdeahubV1betaListAvailableLocalesResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (availableLocales != null)
-          'availableLocales':
-              availableLocales!.map((value) => value.toJson()).toList(),
+        if (availableLocales != null) 'availableLocales': availableLocales!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -483,8 +480,7 @@ class GoogleSearchIdeahubV1betaListIdeasResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (ideas != null)
-          'ideas': ideas!.map((value) => value.toJson()).toList(),
+        if (ideas != null) 'ideas': ideas!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }

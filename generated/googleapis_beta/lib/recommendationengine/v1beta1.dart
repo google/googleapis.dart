@@ -186,7 +186,7 @@ class ProjectsLocationsCatalogsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -237,7 +237,7 @@ class ProjectsLocationsCatalogsCatalogItemsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -365,7 +365,7 @@ class ProjectsLocationsCatalogsCatalogItemsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -470,7 +470,7 @@ class ProjectsLocationsCatalogsCatalogItemsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -669,7 +669,7 @@ class ProjectsLocationsCatalogsEventStoresPlacementsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -724,7 +724,7 @@ class ProjectsLocationsCatalogsEventStoresPredictionApiKeyRegistrationsResource 
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -935,7 +935,7 @@ class ProjectsLocationsCatalogsEventStoresUserEventsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1065,7 +1065,7 @@ class ProjectsLocationsCatalogsEventStoresUserEventsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1117,7 +1117,7 @@ class ProjectsLocationsCatalogsEventStoresUserEventsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1161,7 +1161,7 @@ class ProjectsLocationsCatalogsEventStoresUserEventsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1531,7 +1531,7 @@ class GoogleCloudRecommendationengineV1beta1Catalog {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (catalogItemLevelConfig != null)
-          'catalogItemLevelConfig': catalogItemLevelConfig!.toJson(),
+          'catalogItemLevelConfig': catalogItemLevelConfig!,
         if (defaultEventStoreId != null)
           'defaultEventStoreId': defaultEventStoreId!,
         if (displayName != null) 'displayName': displayName!,
@@ -1566,8 +1566,7 @@ class GoogleCloudRecommendationengineV1beta1CatalogInlineSource {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (catalogItems != null)
-          'catalogItems': catalogItems!.map((value) => value.toJson()).toList(),
+        if (catalogItems != null) 'catalogItems': catalogItems!,
       };
 }
 
@@ -1707,15 +1706,13 @@ class GoogleCloudRecommendationengineV1beta1CatalogItem {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (categoryHierarchies != null)
-          'categoryHierarchies':
-              categoryHierarchies!.map((value) => value.toJson()).toList(),
+          'categoryHierarchies': categoryHierarchies!,
         if (description != null) 'description': description!,
         if (id != null) 'id': id!,
-        if (itemAttributes != null) 'itemAttributes': itemAttributes!.toJson(),
+        if (itemAttributes != null) 'itemAttributes': itemAttributes!,
         if (itemGroupId != null) 'itemGroupId': itemGroupId!,
         if (languageCode != null) 'languageCode': languageCode!,
-        if (productMetadata != null)
-          'productMetadata': productMetadata!.toJson(),
+        if (productMetadata != null) 'productMetadata': productMetadata!,
         if (tags != null) 'tags': tags!,
         if (title != null) 'title': title!,
       };
@@ -1827,8 +1824,7 @@ class GoogleCloudRecommendationengineV1beta1CreatePredictionApiKeyRegistrationRe
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (predictionApiKeyRegistration != null)
-          'predictionApiKeyRegistration':
-              predictionApiKeyRegistration!.toJson(),
+          'predictionApiKeyRegistration': predictionApiKeyRegistration!,
       };
 }
 
@@ -1930,8 +1926,7 @@ class GoogleCloudRecommendationengineV1beta1EventDetail {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (eventAttributes != null)
-          'eventAttributes': eventAttributes!.toJson(),
+        if (eventAttributes != null) 'eventAttributes': eventAttributes!,
         if (experimentIds != null) 'experimentIds': experimentIds!,
         if (pageViewId != null) 'pageViewId': pageViewId!,
         if (recommendationToken != null)
@@ -1998,11 +1993,8 @@ class GoogleCloudRecommendationengineV1beta1FeatureMap {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (categoricalFeatures != null)
-          'categoricalFeatures': categoricalFeatures!
-              .map((key, item) => core.MapEntry(key, item.toJson())),
-        if (numericalFeatures != null)
-          'numericalFeatures': numericalFeatures!
-              .map((key, item) => core.MapEntry(key, item.toJson())),
+          'categoricalFeatures': categoricalFeatures!,
+        if (numericalFeatures != null) 'numericalFeatures': numericalFeatures!,
       };
 }
 
@@ -2202,8 +2194,8 @@ class GoogleCloudRecommendationengineV1beta1ImportCatalogItemsRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (errorsConfig != null) 'errorsConfig': errorsConfig!.toJson(),
-        if (inputConfig != null) 'inputConfig': inputConfig!.toJson(),
+        if (errorsConfig != null) 'errorsConfig': errorsConfig!,
+        if (inputConfig != null) 'inputConfig': inputConfig!,
         if (requestId != null) 'requestId': requestId!,
         if (updateMask != null) 'updateMask': updateMask!,
       };
@@ -2243,9 +2235,8 @@ class GoogleCloudRecommendationengineV1beta1ImportCatalogItemsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (errorSamples != null)
-          'errorSamples': errorSamples!.map((value) => value.toJson()).toList(),
-        if (errorsConfig != null) 'errorsConfig': errorsConfig!.toJson(),
+        if (errorSamples != null) 'errorSamples': errorSamples!,
+        if (errorsConfig != null) 'errorsConfig': errorsConfig!,
       };
 }
 
@@ -2389,8 +2380,8 @@ class GoogleCloudRecommendationengineV1beta1ImportUserEventsRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (errorsConfig != null) 'errorsConfig': errorsConfig!.toJson(),
-        if (inputConfig != null) 'inputConfig': inputConfig!.toJson(),
+        if (errorsConfig != null) 'errorsConfig': errorsConfig!,
+        if (inputConfig != null) 'inputConfig': inputConfig!,
         if (requestId != null) 'requestId': requestId!,
       };
 }
@@ -2439,10 +2430,9 @@ class GoogleCloudRecommendationengineV1beta1ImportUserEventsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (errorSamples != null)
-          'errorSamples': errorSamples!.map((value) => value.toJson()).toList(),
-        if (errorsConfig != null) 'errorsConfig': errorsConfig!.toJson(),
-        if (importSummary != null) 'importSummary': importSummary!.toJson(),
+        if (errorSamples != null) 'errorSamples': errorSamples!,
+        if (errorsConfig != null) 'errorsConfig': errorsConfig!,
+        if (importSummary != null) 'importSummary': importSummary!,
       };
 }
 
@@ -2493,12 +2483,12 @@ class GoogleCloudRecommendationengineV1beta1InputConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bigQuerySource != null) 'bigQuerySource': bigQuerySource!.toJson(),
+        if (bigQuerySource != null) 'bigQuerySource': bigQuerySource!,
         if (catalogInlineSource != null)
-          'catalogInlineSource': catalogInlineSource!.toJson(),
-        if (gcsSource != null) 'gcsSource': gcsSource!.toJson(),
+          'catalogInlineSource': catalogInlineSource!,
+        if (gcsSource != null) 'gcsSource': gcsSource!,
         if (userEventInlineSource != null)
-          'userEventInlineSource': userEventInlineSource!.toJson(),
+          'userEventInlineSource': userEventInlineSource!,
       };
 }
 
@@ -2535,8 +2525,7 @@ class GoogleCloudRecommendationengineV1beta1ListCatalogItemsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (catalogItems != null)
-          'catalogItems': catalogItems!.map((value) => value.toJson()).toList(),
+        if (catalogItems != null) 'catalogItems': catalogItems!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -2572,8 +2561,7 @@ class GoogleCloudRecommendationengineV1beta1ListCatalogsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (catalogs != null)
-          'catalogs': catalogs!.map((value) => value.toJson()).toList(),
+        if (catalogs != null) 'catalogs': catalogs!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -2615,9 +2603,7 @@ class GoogleCloudRecommendationengineV1beta1ListPredictionApiKeyRegistrationsRes
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (predictionApiKeyRegistrations != null)
-          'predictionApiKeyRegistrations': predictionApiKeyRegistrations!
-              .map((value) => value.toJson())
-              .toList(),
+          'predictionApiKeyRegistrations': predictionApiKeyRegistrations!,
       };
 }
 
@@ -2654,8 +2640,7 @@ class GoogleCloudRecommendationengineV1beta1ListUserEventsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (userEvents != null)
-          'userEvents': userEvents!.map((value) => value.toJson()).toList(),
+        if (userEvents != null) 'userEvents': userEvents!,
       };
 }
 
@@ -2797,7 +2782,7 @@ class GoogleCloudRecommendationengineV1beta1PredictRequest {
         if (pageSize != null) 'pageSize': pageSize!,
         if (pageToken != null) 'pageToken': pageToken!,
         if (params != null) 'params': params!,
-        if (userEvent != null) 'userEvent': userEvent!.toJson(),
+        if (userEvent != null) 'userEvent': userEvent!,
       };
 }
 
@@ -2881,8 +2866,7 @@ class GoogleCloudRecommendationengineV1beta1PredictResponse {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (recommendationToken != null)
           'recommendationToken': recommendationToken!,
-        if (results != null)
-          'results': results!.map((value) => value.toJson()).toList(),
+        if (results != null) 'results': results!,
       };
 }
 
@@ -3063,10 +3047,9 @@ class GoogleCloudRecommendationengineV1beta1ProductCatalogItem {
           'canonicalProductUri': canonicalProductUri!,
         if (costs != null) 'costs': costs!,
         if (currencyCode != null) 'currencyCode': currencyCode!,
-        if (exactPrice != null) 'exactPrice': exactPrice!.toJson(),
-        if (images != null)
-          'images': images!.map((value) => value.toJson()).toList(),
-        if (priceRange != null) 'priceRange': priceRange!.toJson(),
+        if (exactPrice != null) 'exactPrice': exactPrice!,
+        if (images != null) 'images': images!,
+        if (priceRange != null) 'priceRange': priceRange!,
         if (stockState != null) 'stockState': stockState!,
       };
 }
@@ -3260,7 +3243,7 @@ class GoogleCloudRecommendationengineV1beta1ProductDetail {
         if (currencyCode != null) 'currencyCode': currencyCode!,
         if (displayPrice != null) 'displayPrice': displayPrice!,
         if (id != null) 'id': id!,
-        if (itemAttributes != null) 'itemAttributes': itemAttributes!.toJson(),
+        if (itemAttributes != null) 'itemAttributes': itemAttributes!,
         if (originalPrice != null) 'originalPrice': originalPrice!,
         if (quantity != null) 'quantity': quantity!,
         if (stockState != null) 'stockState': stockState!,
@@ -3377,14 +3360,10 @@ class GoogleCloudRecommendationengineV1beta1ProductEventDetail {
   core.Map<core.String, core.dynamic> toJson() => {
         if (cartId != null) 'cartId': cartId!,
         if (listId != null) 'listId': listId!,
-        if (pageCategories != null)
-          'pageCategories':
-              pageCategories!.map((value) => value.toJson()).toList(),
-        if (productDetails != null)
-          'productDetails':
-              productDetails!.map((value) => value.toJson()).toList(),
+        if (pageCategories != null) 'pageCategories': pageCategories!,
+        if (productDetails != null) 'productDetails': productDetails!,
         if (purchaseTransaction != null)
-          'purchaseTransaction': purchaseTransaction!.toJson(),
+          'purchaseTransaction': purchaseTransaction!,
         if (searchQuery != null) 'searchQuery': searchQuery!,
       };
 }
@@ -3591,9 +3570,7 @@ class GoogleCloudRecommendationengineV1beta1PurgeUserEventsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (purgedEventsCount != null) 'purgedEventsCount': purgedEventsCount!,
-        if (userEventsSample != null)
-          'userEventsSample':
-              userEventsSample!.map((value) => value.toJson()).toList(),
+        if (userEventsSample != null) 'userEventsSample': userEventsSample!,
       };
 }
 
@@ -3758,13 +3735,13 @@ class GoogleCloudRecommendationengineV1beta1UserEvent {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (eventDetail != null) 'eventDetail': eventDetail!.toJson(),
+        if (eventDetail != null) 'eventDetail': eventDetail!,
         if (eventSource != null) 'eventSource': eventSource!,
         if (eventTime != null) 'eventTime': eventTime!,
         if (eventType != null) 'eventType': eventType!,
         if (productEventDetail != null)
-          'productEventDetail': productEventDetail!.toJson(),
-        if (userInfo != null) 'userInfo': userInfo!.toJson(),
+          'productEventDetail': productEventDetail!,
+        if (userInfo != null) 'userInfo': userInfo!,
       };
 }
 
@@ -3828,8 +3805,7 @@ class GoogleCloudRecommendationengineV1beta1UserEventInlineSource {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (userEvents != null)
-          'userEvents': userEvents!.map((value) => value.toJson()).toList(),
+        if (userEvents != null) 'userEvents': userEvents!,
       };
 }
 
@@ -3947,8 +3923,7 @@ class GoogleLongrunningListOperationsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (operations != null)
-          'operations': operations!.map((value) => value.toJson()).toList(),
+        if (operations != null) 'operations': operations!,
       };
 }
 
@@ -4021,7 +3996,7 @@ class GoogleLongrunningOperation {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (done != null) 'done': done!,
-        if (error != null) 'error': error!.toJson(),
+        if (error != null) 'error': error!,
         if (metadata != null) 'metadata': metadata!,
         if (name != null) 'name': name!,
         if (response != null) 'response': response!,

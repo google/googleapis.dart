@@ -399,7 +399,7 @@ class GoogleAdsHomeservicesLocalservicesV1AccountReport {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accountId != null) 'accountId': accountId!,
-        if (aggregatorInfo != null) 'aggregatorInfo': aggregatorInfo!.toJson(),
+        if (aggregatorInfo != null) 'aggregatorInfo': aggregatorInfo!,
         if (averageFiveStarRating != null)
           'averageFiveStarRating': averageFiveStarRating!,
         if (averageWeeklyBudget != null)
@@ -584,7 +584,7 @@ class GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accountId != null) 'accountId': accountId!,
-        if (aggregatorInfo != null) 'aggregatorInfo': aggregatorInfo!.toJson(),
+        if (aggregatorInfo != null) 'aggregatorInfo': aggregatorInfo!,
         if (businessName != null) 'businessName': businessName!,
         if (chargeStatus != null) 'chargeStatus': chargeStatus!,
         if (currencyCode != null) 'currencyCode': currencyCode!,
@@ -596,9 +596,9 @@ class GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport {
         if (leadId != null) 'leadId': leadId!,
         if (leadPrice != null) 'leadPrice': leadPrice!,
         if (leadType != null) 'leadType': leadType!,
-        if (messageLead != null) 'messageLead': messageLead!.toJson(),
-        if (phoneLead != null) 'phoneLead': phoneLead!.toJson(),
-        if (timezone != null) 'timezone': timezone!.toJson(),
+        if (messageLead != null) 'messageLead': messageLead!,
+        if (phoneLead != null) 'phoneLead': phoneLead!,
+        if (timezone != null) 'timezone': timezone!,
       };
 }
 
@@ -727,9 +727,7 @@ class GoogleAdsHomeservicesLocalservicesV1SearchAccountReportsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (accountReports != null)
-          'accountReports':
-              accountReports!.map((value) => value.toJson()).toList(),
+        if (accountReports != null) 'accountReports': accountReports!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -773,8 +771,7 @@ class GoogleAdsHomeservicesLocalservicesV1SearchDetailedLeadReportsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (detailedLeadReports != null)
-          'detailedLeadReports':
-              detailedLeadReports!.map((value) => value.toJson()).toList(),
+          'detailedLeadReports': detailedLeadReports!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }

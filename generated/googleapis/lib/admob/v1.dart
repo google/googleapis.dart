@@ -304,7 +304,7 @@ class AccountsMediationReportResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -358,7 +358,7 @@ class AccountsNetworkReportResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -523,8 +523,8 @@ class App {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (appId != null) 'appId': appId!,
-        if (linkedAppInfo != null) 'linkedAppInfo': linkedAppInfo!.toJson(),
-        if (manualAppInfo != null) 'manualAppInfo': manualAppInfo!.toJson(),
+        if (linkedAppInfo != null) 'linkedAppInfo': linkedAppInfo!,
+        if (manualAppInfo != null) 'manualAppInfo': manualAppInfo!,
         if (name != null) 'name': name!,
         if (platform != null) 'platform': platform!,
       };
@@ -675,8 +675,8 @@ class DateRange {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (endDate != null) 'endDate': endDate!.toJson(),
-        if (startDate != null) 'startDate': startDate!.toJson(),
+        if (endDate != null) 'endDate': endDate!,
+        if (startDate != null) 'startDate': startDate!,
       };
 }
 
@@ -698,7 +698,7 @@ class GenerateMediationReportRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (reportSpec != null) 'reportSpec': reportSpec!.toJson(),
+        if (reportSpec != null) 'reportSpec': reportSpec!,
       };
 }
 
@@ -749,9 +749,9 @@ class GenerateMediationReportResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (footer != null) 'footer': footer!.toJson(),
-        if (header != null) 'header': header!.toJson(),
-        if (row != null) 'row': row!.toJson(),
+        if (footer != null) 'footer': footer!,
+        if (header != null) 'header': header!,
+        if (row != null) 'row': row!,
       };
 }
 
@@ -773,7 +773,7 @@ class GenerateNetworkReportRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (reportSpec != null) 'reportSpec': reportSpec!.toJson(),
+        if (reportSpec != null) 'reportSpec': reportSpec!,
       };
 }
 
@@ -823,9 +823,9 @@ class GenerateNetworkReportResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (footer != null) 'footer': footer!.toJson(),
-        if (header != null) 'header': header!.toJson(),
-        if (row != null) 'row': row!.toJson(),
+        if (footer != null) 'footer': footer!,
+        if (header != null) 'header': header!,
+        if (row != null) 'row': row!,
       };
 }
 
@@ -857,8 +857,7 @@ class ListAdUnitsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (adUnits != null)
-          'adUnits': adUnits!.map((value) => value.toJson()).toList(),
+        if (adUnits != null) 'adUnits': adUnits!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -891,7 +890,7 @@ class ListAppsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (apps != null) 'apps': apps!.map((value) => value.toJson()).toList(),
+        if (apps != null) 'apps': apps!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -924,8 +923,7 @@ class ListPublisherAccountsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (account != null)
-          'account': account!.map((value) => value.toJson()).toList(),
+        if (account != null) 'account': account!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -1080,18 +1078,14 @@ class MediationReportSpec {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dateRange != null) 'dateRange': dateRange!.toJson(),
-        if (dimensionFilters != null)
-          'dimensionFilters':
-              dimensionFilters!.map((value) => value.toJson()).toList(),
+        if (dateRange != null) 'dateRange': dateRange!,
+        if (dimensionFilters != null) 'dimensionFilters': dimensionFilters!,
         if (dimensions != null) 'dimensions': dimensions!,
         if (localizationSettings != null)
-          'localizationSettings': localizationSettings!.toJson(),
+          'localizationSettings': localizationSettings!,
         if (maxReportRows != null) 'maxReportRows': maxReportRows!,
         if (metrics != null) 'metrics': metrics!,
-        if (sortConditions != null)
-          'sortConditions':
-              sortConditions!.map((value) => value.toJson()).toList(),
+        if (sortConditions != null) 'sortConditions': sortConditions!,
         if (timeZone != null) 'timeZone': timeZone!,
       };
 }
@@ -1165,7 +1159,7 @@ class MediationReportSpecDimensionFilter {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (dimension != null) 'dimension': dimension!,
-        if (matchesAny != null) 'matchesAny': matchesAny!.toJson(),
+        if (matchesAny != null) 'matchesAny': matchesAny!,
       };
 }
 
@@ -1390,18 +1384,14 @@ class NetworkReportSpec {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dateRange != null) 'dateRange': dateRange!.toJson(),
-        if (dimensionFilters != null)
-          'dimensionFilters':
-              dimensionFilters!.map((value) => value.toJson()).toList(),
+        if (dateRange != null) 'dateRange': dateRange!,
+        if (dimensionFilters != null) 'dimensionFilters': dimensionFilters!,
         if (dimensions != null) 'dimensions': dimensions!,
         if (localizationSettings != null)
-          'localizationSettings': localizationSettings!.toJson(),
+          'localizationSettings': localizationSettings!,
         if (maxReportRows != null) 'maxReportRows': maxReportRows!,
         if (metrics != null) 'metrics': metrics!,
-        if (sortConditions != null)
-          'sortConditions':
-              sortConditions!.map((value) => value.toJson()).toList(),
+        if (sortConditions != null) 'sortConditions': sortConditions!,
         if (timeZone != null) 'timeZone': timeZone!,
       };
 }
@@ -1465,7 +1455,7 @@ class NetworkReportSpecDimensionFilter {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (dimension != null) 'dimension': dimension!,
-        if (matchesAny != null) 'matchesAny': matchesAny!.toJson(),
+        if (matchesAny != null) 'matchesAny': matchesAny!,
       };
 }
 
@@ -1656,8 +1646,7 @@ class ReportFooter {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (matchingRowCount != null) 'matchingRowCount': matchingRowCount!,
-        if (warnings != null)
-          'warnings': warnings!.map((value) => value.toJson()).toList(),
+        if (warnings != null) 'warnings': warnings!,
       };
 }
 
@@ -1703,9 +1692,9 @@ class ReportHeader {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dateRange != null) 'dateRange': dateRange!.toJson(),
+        if (dateRange != null) 'dateRange': dateRange!,
         if (localizationSettings != null)
-          'localizationSettings': localizationSettings!.toJson(),
+          'localizationSettings': localizationSettings!,
         if (reportingTimeZone != null) 'reportingTimeZone': reportingTimeZone!,
       };
 }
@@ -1753,12 +1742,8 @@ class ReportRow {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dimensionValues != null)
-          'dimensionValues': dimensionValues!
-              .map((key, item) => core.MapEntry(key, item.toJson())),
-        if (metricValues != null)
-          'metricValues': metricValues!
-              .map((key, item) => core.MapEntry(key, item.toJson())),
+        if (dimensionValues != null) 'dimensionValues': dimensionValues!,
+        if (metricValues != null) 'metricValues': metricValues!,
       };
 }
 

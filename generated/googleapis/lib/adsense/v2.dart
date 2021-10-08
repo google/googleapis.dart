@@ -1549,7 +1549,7 @@ class Account {
         if (name != null) 'name': name!,
         if (pendingTasks != null) 'pendingTasks': pendingTasks!,
         if (premium != null) 'premium': premium!,
-        if (timeZone != null) 'timeZone': timeZone!.toJson(),
+        if (timeZone != null) 'timeZone': timeZone!,
       };
 }
 
@@ -1705,7 +1705,7 @@ class AdUnit {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (contentAdsSettings != null)
-          'contentAdsSettings': contentAdsSettings!.toJson(),
+          'contentAdsSettings': contentAdsSettings!,
         if (displayName != null) 'displayName': displayName!,
         if (name != null) 'name': name!,
         if (reportingDimensionId != null)
@@ -2086,8 +2086,7 @@ class ListAccountsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (accounts != null)
-          'accounts': accounts!.map((value) => value.toJson()).toList(),
+        if (accounts != null) 'accounts': accounts!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -2122,8 +2121,7 @@ class ListAdClientsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (adClients != null)
-          'adClients': adClients!.map((value) => value.toJson()).toList(),
+        if (adClients != null) 'adClients': adClients!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -2158,8 +2156,7 @@ class ListAdUnitsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (adUnits != null)
-          'adUnits': adUnits!.map((value) => value.toJson()).toList(),
+        if (adUnits != null) 'adUnits': adUnits!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -2184,8 +2181,7 @@ class ListAlertsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (alerts != null)
-          'alerts': alerts!.map((value) => value.toJson()).toList(),
+        if (alerts != null) 'alerts': alerts!,
       };
 }
 
@@ -2219,8 +2215,7 @@ class ListChildAccountsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (accounts != null)
-          'accounts': accounts!.map((value) => value.toJson()).toList(),
+        if (accounts != null) 'accounts': accounts!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -2255,9 +2250,7 @@ class ListCustomChannelsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (customChannels != null)
-          'customChannels':
-              customChannels!.map((value) => value.toJson()).toList(),
+        if (customChannels != null) 'customChannels': customChannels!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -2292,8 +2285,7 @@ class ListLinkedAdUnitsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (adUnits != null)
-          'adUnits': adUnits!.map((value) => value.toJson()).toList(),
+        if (adUnits != null) 'adUnits': adUnits!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -2328,9 +2320,7 @@ class ListLinkedCustomChannelsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (customChannels != null)
-          'customChannels':
-              customChannels!.map((value) => value.toJson()).toList(),
+        if (customChannels != null) 'customChannels': customChannels!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -2355,8 +2345,7 @@ class ListPaymentsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (payments != null)
-          'payments': payments!.map((value) => value.toJson()).toList(),
+        if (payments != null) 'payments': payments!,
       };
 }
 
@@ -2391,8 +2380,7 @@ class ListSavedReportsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (savedReports != null)
-          'savedReports': savedReports!.map((value) => value.toJson()).toList(),
+        if (savedReports != null) 'savedReports': savedReports!,
       };
 }
 
@@ -2427,8 +2415,7 @@ class ListSitesResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (sites != null)
-          'sites': sites!.map((value) => value.toJson()).toList(),
+        if (sites != null) 'sites': sites!,
       };
 }
 
@@ -2463,8 +2450,7 @@ class ListUrlChannelsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (urlChannels != null)
-          'urlChannels': urlChannels!.map((value) => value.toJson()).toList(),
+        if (urlChannels != null) 'urlChannels': urlChannels!,
       };
 }
 
@@ -2516,7 +2502,7 @@ class Payment {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (amount != null) 'amount': amount!,
-        if (date != null) 'date': date!.toJson(),
+        if (date != null) 'date': date!,
         if (name != null) 'name': name!,
       };
 }
@@ -2615,14 +2601,13 @@ class ReportResult {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (averages != null) 'averages': averages!.toJson(),
-        if (endDate != null) 'endDate': endDate!.toJson(),
-        if (headers != null)
-          'headers': headers!.map((value) => value.toJson()).toList(),
-        if (rows != null) 'rows': rows!.map((value) => value.toJson()).toList(),
-        if (startDate != null) 'startDate': startDate!.toJson(),
+        if (averages != null) 'averages': averages!,
+        if (endDate != null) 'endDate': endDate!,
+        if (headers != null) 'headers': headers!,
+        if (rows != null) 'rows': rows!,
+        if (startDate != null) 'startDate': startDate!,
         if (totalMatchedRows != null) 'totalMatchedRows': totalMatchedRows!,
-        if (totals != null) 'totals': totals!.toJson(),
+        if (totals != null) 'totals': totals!,
         if (warnings != null) 'warnings': warnings!,
       };
 }
@@ -2647,8 +2632,7 @@ class Row {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cells != null)
-          'cells': cells!.map((value) => value.toJson()).toList(),
+        if (cells != null) 'cells': cells!,
       };
 }
 

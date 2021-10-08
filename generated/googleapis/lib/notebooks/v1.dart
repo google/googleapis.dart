@@ -212,7 +212,7 @@ class ProjectsLocationsEnvironmentsResource {
     core.String? environmentId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (environmentId != null) 'environmentId': [environmentId],
       if ($fields != null) 'fields': [$fields],
@@ -384,7 +384,7 @@ class ProjectsLocationsExecutionsResource {
     core.String? executionId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (executionId != null) 'executionId': [executionId],
       if ($fields != null) 'fields': [$fields],
@@ -565,7 +565,7 @@ class ProjectsLocationsInstancesResource {
     core.String? instanceId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (instanceId != null) 'instanceId': [instanceId],
       if ($fields != null) 'fields': [$fields],
@@ -861,7 +861,7 @@ class ProjectsLocationsInstancesResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -907,7 +907,7 @@ class ProjectsLocationsInstancesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -949,7 +949,7 @@ class ProjectsLocationsInstancesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -991,7 +991,7 @@ class ProjectsLocationsInstancesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1033,7 +1033,7 @@ class ProjectsLocationsInstancesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1079,7 +1079,7 @@ class ProjectsLocationsInstancesResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1121,7 +1121,7 @@ class ProjectsLocationsInstancesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1163,7 +1163,7 @@ class ProjectsLocationsInstancesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1205,7 +1205,7 @@ class ProjectsLocationsInstancesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1247,7 +1247,7 @@ class ProjectsLocationsInstancesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1295,7 +1295,7 @@ class ProjectsLocationsInstancesResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1339,7 +1339,7 @@ class ProjectsLocationsInstancesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1381,7 +1381,7 @@ class ProjectsLocationsInstancesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1424,7 +1424,7 @@ class ProjectsLocationsInstancesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1468,7 +1468,7 @@ class ProjectsLocationsInstancesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1525,7 +1525,7 @@ class ProjectsLocationsOperationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1712,7 +1712,7 @@ class ProjectsLocationsRuntimesResource {
     core.String? runtimeId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (runtimeId != null) 'runtimeId': [runtimeId],
       if ($fields != null) 'fields': [$fields],
@@ -1877,7 +1877,7 @@ class ProjectsLocationsRuntimesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1919,7 +1919,7 @@ class ProjectsLocationsRuntimesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1965,7 +1965,7 @@ class ProjectsLocationsRuntimesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2011,7 +2011,7 @@ class ProjectsLocationsRuntimesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2053,7 +2053,7 @@ class ProjectsLocationsRuntimesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2104,7 +2104,7 @@ class ProjectsLocationsSchedulesResource {
     core.String? scheduleId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (scheduleId != null) 'scheduleId': [scheduleId],
       if ($fields != null) 'fields': [$fields],
@@ -2275,7 +2275,7 @@ class ProjectsLocationsSchedulesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2409,7 +2409,7 @@ class Binding {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (condition != null) 'condition': condition!.toJson(),
+        if (condition != null) 'condition': condition!,
         if (members != null) 'members': members!,
         if (role != null) 'role': role!,
       };
@@ -2605,9 +2605,7 @@ class Disk {
         if (boot != null) 'boot': boot!,
         if (deviceName != null) 'deviceName': deviceName!,
         if (diskSizeGb != null) 'diskSizeGb': diskSizeGb!,
-        if (guestOsFeatures != null)
-          'guestOsFeatures':
-              guestOsFeatures!.map((value) => value.toJson()).toList(),
+        if (guestOsFeatures != null) 'guestOsFeatures': guestOsFeatures!,
         if (index != null) 'index': index!,
         if (interface != null) 'interface': interface!,
         if (kind != null) 'kind': kind!,
@@ -2726,13 +2724,13 @@ class Environment {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (containerImage != null) 'containerImage': containerImage!.toJson(),
+        if (containerImage != null) 'containerImage': containerImage!,
         if (createTime != null) 'createTime': createTime!,
         if (description != null) 'description': description!,
         if (displayName != null) 'displayName': displayName!,
         if (name != null) 'name': name!,
         if (postStartupScript != null) 'postStartupScript': postStartupScript!,
-        if (vmImage != null) 'vmImage': vmImage!.toJson(),
+        if (vmImage != null) 'vmImage': vmImage!,
       };
 }
 
@@ -2873,8 +2871,7 @@ class Execution {
         if (createTime != null) 'createTime': createTime!,
         if (description != null) 'description': description!,
         if (displayName != null) 'displayName': displayName!,
-        if (executionTemplate != null)
-          'executionTemplate': executionTemplate!.toJson(),
+        if (executionTemplate != null) 'executionTemplate': executionTemplate!,
         if (jobUri != null) 'jobUri': jobUri!,
         if (name != null) 'name': name!,
         if (outputNotebookFile != null)
@@ -3060,11 +3057,10 @@ class ExecutionTemplate {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (acceleratorConfig != null)
-          'acceleratorConfig': acceleratorConfig!.toJson(),
+        if (acceleratorConfig != null) 'acceleratorConfig': acceleratorConfig!,
         if (containerImageUri != null) 'containerImageUri': containerImageUri!,
         if (dataprocParameters != null)
-          'dataprocParameters': dataprocParameters!.toJson(),
+          'dataprocParameters': dataprocParameters!,
         if (inputNotebookFile != null) 'inputNotebookFile': inputNotebookFile!,
         if (jobType != null) 'jobType': jobType!,
         if (labels != null) 'labels': labels!,
@@ -3630,19 +3626,17 @@ class Instance {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (acceleratorConfig != null)
-          'acceleratorConfig': acceleratorConfig!.toJson(),
+        if (acceleratorConfig != null) 'acceleratorConfig': acceleratorConfig!,
         if (bootDiskSizeGb != null) 'bootDiskSizeGb': bootDiskSizeGb!,
         if (bootDiskType != null) 'bootDiskType': bootDiskType!,
-        if (containerImage != null) 'containerImage': containerImage!.toJson(),
+        if (containerImage != null) 'containerImage': containerImage!,
         if (createTime != null) 'createTime': createTime!,
         if (customGpuDriverPath != null)
           'customGpuDriverPath': customGpuDriverPath!,
         if (dataDiskSizeGb != null) 'dataDiskSizeGb': dataDiskSizeGb!,
         if (dataDiskType != null) 'dataDiskType': dataDiskType!,
         if (diskEncryption != null) 'diskEncryption': diskEncryption!,
-        if (disks != null)
-          'disks': disks!.map((value) => value.toJson()).toList(),
+        if (disks != null) 'disks': disks!,
         if (installGpuDriver != null) 'installGpuDriver': installGpuDriver!,
         if (instanceOwners != null) 'instanceOwners': instanceOwners!,
         if (kmsKey != null) 'kmsKey': kmsKey!,
@@ -3658,20 +3652,18 @@ class Instance {
         if (postStartupScript != null) 'postStartupScript': postStartupScript!,
         if (proxyUri != null) 'proxyUri': proxyUri!,
         if (reservationAffinity != null)
-          'reservationAffinity': reservationAffinity!.toJson(),
+          'reservationAffinity': reservationAffinity!,
         if (serviceAccount != null) 'serviceAccount': serviceAccount!,
         if (serviceAccountScopes != null)
           'serviceAccountScopes': serviceAccountScopes!,
         if (shieldedInstanceConfig != null)
-          'shieldedInstanceConfig': shieldedInstanceConfig!.toJson(),
+          'shieldedInstanceConfig': shieldedInstanceConfig!,
         if (state != null) 'state': state!,
         if (subnet != null) 'subnet': subnet!,
         if (tags != null) 'tags': tags!,
         if (updateTime != null) 'updateTime': updateTime!,
-        if (upgradeHistory != null)
-          'upgradeHistory':
-              upgradeHistory!.map((value) => value.toJson()).toList(),
-        if (vmImage != null) 'vmImage': vmImage!.toJson(),
+        if (upgradeHistory != null) 'upgradeHistory': upgradeHistory!,
+        if (vmImage != null) 'vmImage': vmImage!,
       };
 }
 
@@ -3798,8 +3790,7 @@ class ListEnvironmentsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (environments != null)
-          'environments': environments!.map((value) => value.toJson()).toList(),
+        if (environments != null) 'environments': environments!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (unreachable != null) 'unreachable': unreachable!,
       };
@@ -3846,8 +3837,7 @@ class ListExecutionsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (executions != null)
-          'executions': executions!.map((value) => value.toJson()).toList(),
+        if (executions != null) 'executions': executions!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (unreachable != null) 'unreachable': unreachable!,
       };
@@ -3893,8 +3883,7 @@ class ListInstancesResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (instances != null)
-          'instances': instances!.map((value) => value.toJson()).toList(),
+        if (instances != null) 'instances': instances!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (unreachable != null) 'unreachable': unreachable!,
       };
@@ -3927,8 +3916,7 @@ class ListLocationsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (locations != null)
-          'locations': locations!.map((value) => value.toJson()).toList(),
+        if (locations != null) 'locations': locations!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -3961,8 +3949,7 @@ class ListOperationsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (operations != null)
-          'operations': operations!.map((value) => value.toJson()).toList(),
+        if (operations != null) 'operations': operations!,
       };
 }
 
@@ -4007,8 +3994,7 @@ class ListRuntimesResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (runtimes != null)
-          'runtimes': runtimes!.map((value) => value.toJson()).toList(),
+        if (runtimes != null) 'runtimes': runtimes!,
         if (unreachable != null) 'unreachable': unreachable!,
       };
 }
@@ -4055,8 +4041,7 @@ class ListSchedulesResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (schedules != null)
-          'schedules': schedules!.map((value) => value.toJson()).toList(),
+        if (schedules != null) 'schedules': schedules!,
         if (unreachable != null) 'unreachable': unreachable!,
       };
 }
@@ -4208,12 +4193,9 @@ class LocalDisk {
         if (autoDelete != null) 'autoDelete': autoDelete!,
         if (boot != null) 'boot': boot!,
         if (deviceName != null) 'deviceName': deviceName!,
-        if (guestOsFeatures != null)
-          'guestOsFeatures':
-              guestOsFeatures!.map((value) => value.toJson()).toList(),
+        if (guestOsFeatures != null) 'guestOsFeatures': guestOsFeatures!,
         if (index != null) 'index': index!,
-        if (initializeParams != null)
-          'initializeParams': initializeParams!.toJson(),
+        if (initializeParams != null) 'initializeParams': initializeParams!,
         if (interface != null) 'interface': interface!,
         if (kind != null) 'kind': kind!,
         if (licenses != null) 'licenses': licenses!,
@@ -4451,7 +4433,7 @@ class Operation {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (done != null) 'done': done!,
-        if (error != null) 'error': error!.toJson(),
+        if (error != null) 'error': error!,
         if (metadata != null) 'metadata': metadata!,
         if (name != null) 'name': name!,
         if (response != null) 'response': response!,
@@ -4637,8 +4619,7 @@ class Policy {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bindings != null)
-          'bindings': bindings!.map((value) => value.toJson()).toList(),
+        if (bindings != null) 'bindings': bindings!,
         if (etag != null) 'etag': etag!,
         if (version != null) 'version': version!,
       };
@@ -4738,7 +4719,7 @@ class ReportRuntimeEventRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (event != null) 'event': event!.toJson(),
+        if (event != null) 'event': event!,
         if (vmId != null) 'vmId': vmId!,
       };
 }
@@ -4933,15 +4914,15 @@ class Runtime {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (accessConfig != null) 'accessConfig': accessConfig!.toJson(),
+        if (accessConfig != null) 'accessConfig': accessConfig!,
         if (createTime != null) 'createTime': createTime!,
         if (healthState != null) 'healthState': healthState!,
-        if (metrics != null) 'metrics': metrics!.toJson(),
+        if (metrics != null) 'metrics': metrics!,
         if (name != null) 'name': name!,
-        if (softwareConfig != null) 'softwareConfig': softwareConfig!.toJson(),
+        if (softwareConfig != null) 'softwareConfig': softwareConfig!,
         if (state != null) 'state': state!,
         if (updateTime != null) 'updateTime': updateTime!,
-        if (virtualMachine != null) 'virtualMachine': virtualMachine!.toJson(),
+        if (virtualMachine != null) 'virtualMachine': virtualMachine!,
       };
 }
 
@@ -5365,12 +5346,9 @@ class Schedule {
         if (cronSchedule != null) 'cronSchedule': cronSchedule!,
         if (description != null) 'description': description!,
         if (displayName != null) 'displayName': displayName!,
-        if (executionTemplate != null)
-          'executionTemplate': executionTemplate!.toJson(),
+        if (executionTemplate != null) 'executionTemplate': executionTemplate!,
         if (name != null) 'name': name!,
-        if (recentExecutions != null)
-          'recentExecutions':
-              recentExecutions!.map((value) => value.toJson()).toList(),
+        if (recentExecutions != null) 'recentExecutions': recentExecutions!,
         if (state != null) 'state': state!,
         if (timeZone != null) 'timeZone': timeZone!,
         if (updateTime != null) 'updateTime': updateTime!,
@@ -5439,7 +5417,7 @@ class SetIamPolicyRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (policy != null) 'policy': policy!.toJson(),
+        if (policy != null) 'policy': policy!,
       };
 }
 
@@ -5687,8 +5665,7 @@ class SwitchRuntimeRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (acceleratorConfig != null)
-          'acceleratorConfig': acceleratorConfig!.toJson(),
+        if (acceleratorConfig != null) 'acceleratorConfig': acceleratorConfig!,
         if (machineType != null) 'machineType': machineType!,
       };
 }
@@ -5765,7 +5742,7 @@ class UpdateInstanceConfigRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (config != null) 'config': config!.toJson(),
+        if (config != null) 'config': config!,
       };
 }
 
@@ -5790,7 +5767,7 @@ class UpdateShieldedInstanceConfigRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (shieldedInstanceConfig != null)
-          'shieldedInstanceConfig': shieldedInstanceConfig!.toJson(),
+          'shieldedInstanceConfig': shieldedInstanceConfig!,
       };
 }
 
@@ -5964,7 +5941,7 @@ class VirtualMachine {
         if (instanceId != null) 'instanceId': instanceId!,
         if (instanceName != null) 'instanceName': instanceName!,
         if (virtualMachineConfig != null)
-          'virtualMachineConfig': virtualMachineConfig!.toJson(),
+          'virtualMachineConfig': virtualMachineConfig!,
       };
 }
 
@@ -6185,14 +6162,10 @@ class VirtualMachineConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (acceleratorConfig != null)
-          'acceleratorConfig': acceleratorConfig!.toJson(),
-        if (containerImages != null)
-          'containerImages':
-              containerImages!.map((value) => value.toJson()).toList(),
-        if (dataDisk != null) 'dataDisk': dataDisk!.toJson(),
-        if (encryptionConfig != null)
-          'encryptionConfig': encryptionConfig!.toJson(),
+        if (acceleratorConfig != null) 'acceleratorConfig': acceleratorConfig!,
+        if (containerImages != null) 'containerImages': containerImages!,
+        if (dataDisk != null) 'dataDisk': dataDisk!,
+        if (encryptionConfig != null) 'encryptionConfig': encryptionConfig!,
         if (guestAttributes != null) 'guestAttributes': guestAttributes!,
         if (internalIpOnly != null) 'internalIpOnly': internalIpOnly!,
         if (labels != null) 'labels': labels!,
@@ -6201,7 +6174,7 @@ class VirtualMachineConfig {
         if (network != null) 'network': network!,
         if (nicType != null) 'nicType': nicType!,
         if (shieldedInstanceConfig != null)
-          'shieldedInstanceConfig': shieldedInstanceConfig!.toJson(),
+          'shieldedInstanceConfig': shieldedInstanceConfig!,
         if (subnet != null) 'subnet': subnet!,
         if (tags != null) 'tags': tags!,
         if (zone != null) 'zone': zone!,

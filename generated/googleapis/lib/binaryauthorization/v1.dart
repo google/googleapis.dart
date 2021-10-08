@@ -141,7 +141,7 @@ class ProjectsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -193,7 +193,7 @@ class ProjectsAttestorsResource {
     core.String? attestorId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (attestorId != null) 'attestorId': [attestorId],
       if ($fields != null) 'fields': [$fields],
@@ -417,7 +417,7 @@ class ProjectsAttestorsResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -464,7 +464,7 @@ class ProjectsAttestorsResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -509,7 +509,7 @@ class ProjectsAttestorsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -552,7 +552,7 @@ class ProjectsAttestorsResource {
     core.String attestor, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -657,7 +657,7 @@ class ProjectsPolicyResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -704,7 +704,7 @@ class ProjectsPolicyResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -929,10 +929,9 @@ class AttestationOccurrence {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (jwts != null) 'jwts': jwts!.map((value) => value.toJson()).toList(),
+        if (jwts != null) 'jwts': jwts!,
         if (serializedPayload != null) 'serializedPayload': serializedPayload!,
-        if (signatures != null)
-          'signatures': signatures!.map((value) => value.toJson()).toList(),
+        if (signatures != null) 'signatures': signatures!,
       };
 }
 
@@ -990,7 +989,7 @@ class Attestor {
         if (name != null) 'name': name!,
         if (updateTime != null) 'updateTime': updateTime!,
         if (userOwnedGrafeasNote != null)
-          'userOwnedGrafeasNote': userOwnedGrafeasNote!.toJson(),
+          'userOwnedGrafeasNote': userOwnedGrafeasNote!,
       };
 }
 
@@ -1060,7 +1059,7 @@ class AttestorPublicKey {
           'asciiArmoredPgpPublicKey': asciiArmoredPgpPublicKey!,
         if (comment != null) 'comment': comment!,
         if (id != null) 'id': id!,
-        if (pkixPublicKey != null) 'pkixPublicKey': pkixPublicKey!.toJson(),
+        if (pkixPublicKey != null) 'pkixPublicKey': pkixPublicKey!,
       };
 }
 
@@ -1134,7 +1133,7 @@ class Binding {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (condition != null) 'condition': condition!.toJson(),
+        if (condition != null) 'condition': condition!,
         if (members != null) 'members': members!,
         if (role != null) 'role': role!,
       };
@@ -1322,8 +1321,7 @@ class IamPolicy {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bindings != null)
-          'bindings': bindings!.map((value) => value.toJson()).toList(),
+        if (bindings != null) 'bindings': bindings!,
         if (etag != null) 'etag': etag!,
         if (version != null) 'version': version!,
       };
@@ -1383,8 +1381,7 @@ class ListAttestorsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (attestors != null)
-          'attestors': attestors!.map((value) => value.toJson()).toList(),
+        if (attestors != null) 'attestors': attestors!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -1626,29 +1623,23 @@ class Policy {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (admissionWhitelistPatterns != null)
-          'admissionWhitelistPatterns': admissionWhitelistPatterns!
-              .map((value) => value.toJson())
-              .toList(),
+          'admissionWhitelistPatterns': admissionWhitelistPatterns!,
         if (clusterAdmissionRules != null)
-          'clusterAdmissionRules': clusterAdmissionRules!
-              .map((key, item) => core.MapEntry(key, item.toJson())),
+          'clusterAdmissionRules': clusterAdmissionRules!,
         if (defaultAdmissionRule != null)
-          'defaultAdmissionRule': defaultAdmissionRule!.toJson(),
+          'defaultAdmissionRule': defaultAdmissionRule!,
         if (description != null) 'description': description!,
         if (globalPolicyEvaluationMode != null)
           'globalPolicyEvaluationMode': globalPolicyEvaluationMode!,
         if (istioServiceIdentityAdmissionRules != null)
           'istioServiceIdentityAdmissionRules':
-              istioServiceIdentityAdmissionRules!
-                  .map((key, item) => core.MapEntry(key, item.toJson())),
+              istioServiceIdentityAdmissionRules!,
         if (kubernetesNamespaceAdmissionRules != null)
           'kubernetesNamespaceAdmissionRules':
-              kubernetesNamespaceAdmissionRules!
-                  .map((key, item) => core.MapEntry(key, item.toJson())),
+              kubernetesNamespaceAdmissionRules!,
         if (kubernetesServiceAccountAdmissionRules != null)
           'kubernetesServiceAccountAdmissionRules':
-              kubernetesServiceAccountAdmissionRules!
-                  .map((key, item) => core.MapEntry(key, item.toJson())),
+              kubernetesServiceAccountAdmissionRules!,
         if (name != null) 'name': name!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
@@ -1676,7 +1667,7 @@ class SetIamPolicyRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (policy != null) 'policy': policy!.toJson(),
+        if (policy != null) 'policy': policy!,
       };
 }
 
@@ -1864,8 +1855,7 @@ class UserOwnedGrafeasNote {
         if (delegationServiceAccountEmail != null)
           'delegationServiceAccountEmail': delegationServiceAccountEmail!,
         if (noteReference != null) 'noteReference': noteReference!,
-        if (publicKeys != null)
-          'publicKeys': publicKeys!.map((value) => value.toJson()).toList(),
+        if (publicKeys != null) 'publicKeys': publicKeys!,
       };
 }
 
@@ -1913,7 +1903,7 @@ class ValidateAttestationOccurrenceRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (attestation != null) 'attestation': attestation!.toJson(),
+        if (attestation != null) 'attestation': attestation!,
         if (occurrenceNote != null) 'occurrenceNote': occurrenceNote!,
         if (occurrenceResourceUri != null)
           'occurrenceResourceUri': occurrenceResourceUri!,

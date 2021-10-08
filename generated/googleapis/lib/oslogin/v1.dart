@@ -143,7 +143,7 @@ class UsersResource {
     core.String? projectId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (projectId != null) 'projectId': [projectId],
       if ($fields != null) 'fields': [$fields],
@@ -318,7 +318,7 @@ class UsersSshPublicKeysResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -372,7 +372,7 @@ class ImportSshPublicKeyResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (details != null) 'details': details!,
-        if (loginProfile != null) 'loginProfile': loginProfile!.toJson(),
+        if (loginProfile != null) 'loginProfile': loginProfile!,
       };
 }
 
@@ -419,12 +419,8 @@ class LoginProfile {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
-        if (posixAccounts != null)
-          'posixAccounts':
-              posixAccounts!.map((value) => value.toJson()).toList(),
-        if (sshPublicKeys != null)
-          'sshPublicKeys': sshPublicKeys!
-              .map((key, item) => core.MapEntry(key, item.toJson())),
+        if (posixAccounts != null) 'posixAccounts': posixAccounts!,
+        if (sshPublicKeys != null) 'sshPublicKeys': sshPublicKeys!,
       };
 }
 

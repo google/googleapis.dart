@@ -112,7 +112,7 @@ class ControllerDebuggeesResource {
     RegisterDebuggeeRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -236,7 +236,7 @@ class ControllerDebuggeesBreakpointsResource {
     core.String id, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -538,7 +538,7 @@ class DebuggerDebuggeesBreakpointsResource {
     core.String? clientVersion,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (canaryOption != null) 'canaryOption': [canaryOption],
       if (clientVersion != null) 'clientVersion': [clientVersion],
@@ -817,24 +817,20 @@ class Breakpoint {
         if (condition != null) 'condition': condition!,
         if (createTime != null) 'createTime': createTime!,
         if (evaluatedExpressions != null)
-          'evaluatedExpressions':
-              evaluatedExpressions!.map((value) => value.toJson()).toList(),
+          'evaluatedExpressions': evaluatedExpressions!,
         if (expressions != null) 'expressions': expressions!,
         if (finalTime != null) 'finalTime': finalTime!,
         if (id != null) 'id': id!,
         if (isFinalState != null) 'isFinalState': isFinalState!,
         if (labels != null) 'labels': labels!,
-        if (location != null) 'location': location!.toJson(),
+        if (location != null) 'location': location!,
         if (logLevel != null) 'logLevel': logLevel!,
         if (logMessageFormat != null) 'logMessageFormat': logMessageFormat!,
-        if (stackFrames != null)
-          'stackFrames': stackFrames!.map((value) => value.toJson()).toList(),
+        if (stackFrames != null) 'stackFrames': stackFrames!,
         if (state != null) 'state': state!,
-        if (status != null) 'status': status!.toJson(),
+        if (status != null) 'status': status!,
         if (userEmail != null) 'userEmail': userEmail!,
-        if (variableTable != null)
-          'variableTable':
-              variableTable!.map((value) => value.toJson()).toList(),
+        if (variableTable != null) 'variableTable': variableTable!,
       };
 }
 
@@ -879,9 +875,9 @@ class CloudRepoSourceContext {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (aliasContext != null) 'aliasContext': aliasContext!.toJson(),
+        if (aliasContext != null) 'aliasContext': aliasContext!,
         if (aliasName != null) 'aliasName': aliasName!,
-        if (repoId != null) 'repoId': repoId!.toJson(),
+        if (repoId != null) 'repoId': repoId!,
         if (revisionId != null) 'revisionId': revisionId!,
       };
 }
@@ -916,7 +912,7 @@ class CloudWorkspaceId {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
-        if (repoId != null) 'repoId': repoId!.toJson(),
+        if (repoId != null) 'repoId': repoId!,
       };
 }
 
@@ -948,7 +944,7 @@ class CloudWorkspaceSourceContext {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (snapshotId != null) 'snapshotId': snapshotId!,
-        if (workspaceId != null) 'workspaceId': workspaceId!.toJson(),
+        if (workspaceId != null) 'workspaceId': workspaceId!,
       };
 }
 
@@ -1101,18 +1097,14 @@ class Debuggee {
         if (agentVersion != null) 'agentVersion': agentVersion!,
         if (canaryMode != null) 'canaryMode': canaryMode!,
         if (description != null) 'description': description!,
-        if (extSourceContexts != null)
-          'extSourceContexts':
-              extSourceContexts!.map((value) => value.toJson()).toList(),
+        if (extSourceContexts != null) 'extSourceContexts': extSourceContexts!,
         if (id != null) 'id': id!,
         if (isDisabled != null) 'isDisabled': isDisabled!,
         if (isInactive != null) 'isInactive': isInactive!,
         if (labels != null) 'labels': labels!,
         if (project != null) 'project': project!,
-        if (sourceContexts != null)
-          'sourceContexts':
-              sourceContexts!.map((value) => value.toJson()).toList(),
-        if (status != null) 'status': status!.toJson(),
+        if (sourceContexts != null) 'sourceContexts': sourceContexts!,
+        if (status != null) 'status': status!,
         if (uniquifier != null) 'uniquifier': uniquifier!,
       };
 }
@@ -1157,7 +1149,7 @@ class ExtendedSourceContext {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (context != null) 'context': context!.toJson(),
+        if (context != null) 'context': context!,
         if (labels != null) 'labels': labels!,
       };
 }
@@ -1247,7 +1239,7 @@ class GerritSourceContext {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (aliasContext != null) 'aliasContext': aliasContext!.toJson(),
+        if (aliasContext != null) 'aliasContext': aliasContext!,
         if (aliasName != null) 'aliasName': aliasName!,
         if (gerritProject != null) 'gerritProject': gerritProject!,
         if (hostUri != null) 'hostUri': hostUri!,
@@ -1275,7 +1267,7 @@ class GetBreakpointResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (breakpoint != null) 'breakpoint': breakpoint!.toJson(),
+        if (breakpoint != null) 'breakpoint': breakpoint!,
       };
 }
 
@@ -1350,8 +1342,7 @@ class ListActiveBreakpointsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (breakpoints != null)
-          'breakpoints': breakpoints!.map((value) => value.toJson()).toList(),
+        if (breakpoints != null) 'breakpoints': breakpoints!,
         if (nextWaitToken != null) 'nextWaitToken': nextWaitToken!,
         if (waitExpired != null) 'waitExpired': waitExpired!,
       };
@@ -1390,8 +1381,7 @@ class ListBreakpointsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (breakpoints != null)
-          'breakpoints': breakpoints!.map((value) => value.toJson()).toList(),
+        if (breakpoints != null) 'breakpoints': breakpoints!,
         if (nextWaitToken != null) 'nextWaitToken': nextWaitToken!,
       };
 }
@@ -1420,8 +1410,7 @@ class ListDebuggeesResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (debuggees != null)
-          'debuggees': debuggees!.map((value) => value.toJson()).toList(),
+        if (debuggees != null) 'debuggees': debuggees!,
       };
 }
 
@@ -1480,7 +1469,7 @@ class RegisterDebuggeeRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (debuggee != null) 'debuggee': debuggee!.toJson(),
+        if (debuggee != null) 'debuggee': debuggee!,
       };
 }
 
@@ -1517,7 +1506,7 @@ class RegisterDebuggeeResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (agentId != null) 'agentId': agentId!,
-        if (debuggee != null) 'debuggee': debuggee!.toJson(),
+        if (debuggee != null) 'debuggee': debuggee!,
       };
 }
 
@@ -1544,7 +1533,7 @@ class RepoId {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (projectRepoId != null) 'projectRepoId': projectRepoId!.toJson(),
+        if (projectRepoId != null) 'projectRepoId': projectRepoId!,
         if (uid != null) 'uid': uid!,
       };
 }
@@ -1569,7 +1558,7 @@ class SetBreakpointResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (breakpoint != null) 'breakpoint': breakpoint!.toJson(),
+        if (breakpoint != null) 'breakpoint': breakpoint!,
       };
 }
 
@@ -1618,10 +1607,10 @@ class SourceContext {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cloudRepo != null) 'cloudRepo': cloudRepo!.toJson(),
-        if (cloudWorkspace != null) 'cloudWorkspace': cloudWorkspace!.toJson(),
-        if (gerrit != null) 'gerrit': gerrit!.toJson(),
-        if (git != null) 'git': git!.toJson(),
+        if (cloudRepo != null) 'cloudRepo': cloudRepo!,
+        if (cloudWorkspace != null) 'cloudWorkspace': cloudWorkspace!,
+        if (gerrit != null) 'gerrit': gerrit!,
+        if (git != null) 'git': git!,
       };
 }
 
@@ -1711,12 +1700,10 @@ class StackFrame {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (arguments != null)
-          'arguments': arguments!.map((value) => value.toJson()).toList(),
+        if (arguments != null) 'arguments': arguments!,
         if (function != null) 'function': function!,
-        if (locals != null)
-          'locals': locals!.map((value) => value.toJson()).toList(),
-        if (location != null) 'location': location!.toJson(),
+        if (locals != null) 'locals': locals!,
+        if (location != null) 'location': location!,
       };
 }
 
@@ -1772,7 +1759,7 @@ class StatusMessage {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (description != null) 'description': description!.toJson(),
+        if (description != null) 'description': description!,
         if (isError != null) 'isError': isError!,
         if (refersTo != null) 'refersTo': refersTo!,
       };
@@ -1801,7 +1788,7 @@ class UpdateActiveBreakpointRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (breakpoint != null) 'breakpoint': breakpoint!.toJson(),
+        if (breakpoint != null) 'breakpoint': breakpoint!,
       };
 }
 
@@ -1913,10 +1900,9 @@ class Variable {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (members != null)
-          'members': members!.map((value) => value.toJson()).toList(),
+        if (members != null) 'members': members!,
         if (name != null) 'name': name!,
-        if (status != null) 'status': status!.toJson(),
+        if (status != null) 'status': status!,
         if (type != null) 'type': type!,
         if (value != null) 'value': value!,
         if (varTableIndex != null) 'varTableIndex': varTableIndex!,

@@ -418,7 +418,7 @@ class AccountsAdunitsResource {
     core.String adClientId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -526,7 +526,7 @@ class AccountsAdunitsResource {
     core.String adUnitId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       'adUnitId': [adUnitId],
       if ($fields != null) 'fields': [$fields],
@@ -573,7 +573,7 @@ class AccountsAdunitsResource {
     core.String adClientId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -986,7 +986,7 @@ class CustomchannelsResource {
     core.String adClientId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1082,7 +1082,7 @@ class CustomchannelsResource {
     core.String customChannelId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       'customChannelId': [customChannelId],
       if ($fields != null) 'fields': [$fields],
@@ -1125,7 +1125,7 @@ class CustomchannelsResource {
     core.String adClientId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1307,7 +1307,7 @@ class UrlchannelsResource {
     core.String adClientId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1444,8 +1444,7 @@ class Accounts {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
-        if (items != null)
-          'items': items!.map((value) => value.toJson()).toList(),
+        if (items != null) 'items': items!,
         if (kind != null) 'kind': kind!,
       };
 }
@@ -1539,8 +1538,7 @@ class AdClients {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
-        if (items != null)
-          'items': items!.map((value) => value.toJson()).toList(),
+        if (items != null) 'items': items!,
         if (kind != null) 'kind': kind!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
@@ -1696,9 +1694,9 @@ class AdStyle {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (colors != null) 'colors': colors!.toJson(),
+        if (colors != null) 'colors': colors!,
         if (corners != null) 'corners': corners!,
-        if (font != null) 'font': font!.toJson(),
+        if (font != null) 'font': font!,
         if (kind != null) 'kind': kind!,
       };
 }
@@ -1773,7 +1771,7 @@ class AdUnitContentAdsSettings {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (backupOption != null) 'backupOption': backupOption!.toJson(),
+        if (backupOption != null) 'backupOption': backupOption!,
         if (size != null) 'size': size!,
         if (type != null) 'type': type!,
       };
@@ -1898,12 +1896,12 @@ class AdUnit {
   core.Map<core.String, core.dynamic> toJson() => {
         if (code != null) 'code': code!,
         if (contentAdsSettings != null)
-          'contentAdsSettings': contentAdsSettings!.toJson(),
-        if (customStyle != null) 'customStyle': customStyle!.toJson(),
+          'contentAdsSettings': contentAdsSettings!,
+        if (customStyle != null) 'customStyle': customStyle!,
         if (id != null) 'id': id!,
         if (kind != null) 'kind': kind!,
         if (mobileContentAdsSettings != null)
-          'mobileContentAdsSettings': mobileContentAdsSettings!.toJson(),
+          'mobileContentAdsSettings': mobileContentAdsSettings!,
         if (name != null) 'name': name!,
         if (status != null) 'status': status!,
       };
@@ -1949,8 +1947,7 @@ class AdUnits {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
-        if (items != null)
-          'items': items!.map((value) => value.toJson()).toList(),
+        if (items != null) 'items': items!,
         if (kind != null) 'kind': kind!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
@@ -2127,8 +2124,7 @@ class CustomChannels {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
-        if (items != null)
-          'items': items!.map((value) => value.toJson()).toList(),
+        if (items != null) 'items': items!,
         if (kind != null) 'kind': kind!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
@@ -2255,8 +2251,7 @@ class Report {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (averages != null) 'averages': averages!,
-        if (headers != null)
-          'headers': headers!.map((value) => value.toJson()).toList(),
+        if (headers != null) 'headers': headers!,
         if (kind != null) 'kind': kind!,
         if (rows != null) 'rows': rows!,
         if (totalMatchedRows != null) 'totalMatchedRows': totalMatchedRows!,
@@ -2342,8 +2337,7 @@ class UrlChannels {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
-        if (items != null)
-          'items': items!.map((value) => value.toJson()).toList(),
+        if (items != null) 'items': items!,
         if (kind != null) 'kind': kind!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };

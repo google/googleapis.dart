@@ -78,7 +78,7 @@ class IamResource {
     GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -282,10 +282,8 @@ class GoogleCloudPolicytroubleshooterV1BindingExplanation {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (access != null) 'access': access!,
-        if (condition != null) 'condition': condition!.toJson(),
-        if (memberships != null)
-          'memberships': memberships!
-              .map((key, item) => core.MapEntry(key, item.toJson())),
+        if (condition != null) 'condition': condition!,
+        if (memberships != null) 'memberships': memberships!,
         if (relevance != null) 'relevance': relevance!,
         if (role != null) 'role': role!,
         if (rolePermission != null) 'rolePermission': rolePermission!,
@@ -435,10 +433,9 @@ class GoogleCloudPolicytroubleshooterV1ExplainedPolicy {
   core.Map<core.String, core.dynamic> toJson() => {
         if (access != null) 'access': access!,
         if (bindingExplanations != null)
-          'bindingExplanations':
-              bindingExplanations!.map((value) => value.toJson()).toList(),
+          'bindingExplanations': bindingExplanations!,
         if (fullResourceName != null) 'fullResourceName': fullResourceName!,
-        if (policy != null) 'policy': policy!.toJson(),
+        if (policy != null) 'policy': policy!,
         if (relevance != null) 'relevance': relevance!,
       };
 }
@@ -463,7 +460,7 @@ class GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (accessTuple != null) 'accessTuple': accessTuple!.toJson(),
+        if (accessTuple != null) 'accessTuple': accessTuple!,
       };
 }
 
@@ -516,9 +513,7 @@ class GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (access != null) 'access': access!,
-        if (explainedPolicies != null)
-          'explainedPolicies':
-              explainedPolicies!.map((value) => value.toJson()).toList(),
+        if (explainedPolicies != null) 'explainedPolicies': explainedPolicies!,
       };
 }
 
@@ -568,9 +563,7 @@ class GoogleIamV1AuditConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (auditLogConfigs != null)
-          'auditLogConfigs':
-              auditLogConfigs!.map((value) => value.toJson()).toList(),
+        if (auditLogConfigs != null) 'auditLogConfigs': auditLogConfigs!,
         if (service != null) 'service': service!,
       };
 }
@@ -689,7 +682,7 @@ class GoogleIamV1Binding {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (condition != null) 'condition': condition!.toJson(),
+        if (condition != null) 'condition': condition!,
         if (members != null) 'members': members!,
         if (role != null) 'role': role!,
       };
@@ -804,10 +797,8 @@ class GoogleIamV1Policy {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (auditConfigs != null)
-          'auditConfigs': auditConfigs!.map((value) => value.toJson()).toList(),
-        if (bindings != null)
-          'bindings': bindings!.map((value) => value.toJson()).toList(),
+        if (auditConfigs != null) 'auditConfigs': auditConfigs!,
+        if (bindings != null) 'bindings': bindings!,
         if (etag != null) 'etag': etag!,
         if (version != null) 'version': version!,
       };

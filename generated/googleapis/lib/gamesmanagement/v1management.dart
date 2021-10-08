@@ -232,7 +232,7 @@ class AchievementsResource {
     AchievementResetMultipleForAllRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -470,7 +470,7 @@ class EventsResource {
     EventsResetMultipleForAllRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -748,7 +748,7 @@ class ScoresResource {
     ScoresResetMultipleForAllRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -794,8 +794,7 @@ class AchievementResetAllResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
-        if (results != null)
-          'results': results!.map((value) => value.toJson()).toList(),
+        if (results != null) 'results': results!,
       };
 }
 
@@ -959,10 +958,10 @@ class GamesPlayerExperienceInfoResource {
   core.Map<core.String, core.dynamic> toJson() => {
         if (currentExperiencePoints != null)
           'currentExperiencePoints': currentExperiencePoints!,
-        if (currentLevel != null) 'currentLevel': currentLevel!.toJson(),
+        if (currentLevel != null) 'currentLevel': currentLevel!,
         if (lastLevelUpTimestampMillis != null)
           'lastLevelUpTimestampMillis': lastLevelUpTimestampMillis!,
-        if (nextLevel != null) 'nextLevel': nextLevel!.toJson(),
+        if (nextLevel != null) 'nextLevel': nextLevel!,
       };
 }
 
@@ -1043,7 +1042,7 @@ class HiddenPlayer {
   core.Map<core.String, core.dynamic> toJson() => {
         if (hiddenTimeMillis != null) 'hiddenTimeMillis': hiddenTimeMillis!,
         if (kind != null) 'kind': kind!,
-        if (player != null) 'player': player!.toJson(),
+        if (player != null) 'player': player!,
       };
 }
 
@@ -1081,8 +1080,7 @@ class HiddenPlayerList {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (items != null)
-          'items': items!.map((value) => value.toJson()).toList(),
+        if (items != null) 'items': items!,
         if (kind != null) 'kind': kind!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
@@ -1228,13 +1226,12 @@ class Player {
           'bannerUrlLandscape': bannerUrlLandscape!,
         if (bannerUrlPortrait != null) 'bannerUrlPortrait': bannerUrlPortrait!,
         if (displayName != null) 'displayName': displayName!,
-        if (experienceInfo != null) 'experienceInfo': experienceInfo!.toJson(),
+        if (experienceInfo != null) 'experienceInfo': experienceInfo!,
         if (kind != null) 'kind': kind!,
-        if (name != null) 'name': name!.toJson(),
+        if (name != null) 'name': name!,
         if (originalPlayerId != null) 'originalPlayerId': originalPlayerId!,
         if (playerId != null) 'playerId': playerId!,
-        if (profileSettings != null)
-          'profileSettings': profileSettings!.toJson(),
+        if (profileSettings != null) 'profileSettings': profileSettings!,
         if (title != null) 'title': title!,
       };
 }
@@ -1268,8 +1265,7 @@ class PlayerScoreResetAllResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
-        if (results != null)
-          'results': results!.map((value) => value.toJson()).toList(),
+        if (results != null) 'results': results!,
       };
 }
 

@@ -252,7 +252,7 @@ class ProjectsLocationsChannelsResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -300,7 +300,7 @@ class ProjectsLocationsChannelsResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -359,7 +359,7 @@ class ProjectsLocationsOperationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -551,7 +551,7 @@ class ProjectsLocationsTriggersResource {
     core.bool? validateOnly,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (triggerId != null) 'triggerId': [triggerId],
       if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
@@ -806,7 +806,7 @@ class ProjectsLocationsTriggersResource {
     core.bool? validateOnly,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (allowMissing != null) 'allowMissing': ['${allowMissing}'],
       if (updateMask != null) 'updateMask': [updateMask],
@@ -856,7 +856,7 @@ class ProjectsLocationsTriggersResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -904,7 +904,7 @@ class ProjectsLocationsTriggersResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -969,9 +969,7 @@ class AuditConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (auditLogConfigs != null)
-          'auditLogConfigs':
-              auditLogConfigs!.map((value) => value.toJson()).toList(),
+        if (auditLogConfigs != null) 'auditLogConfigs': auditLogConfigs!,
         if (service != null) 'service': service!,
       };
 }
@@ -1090,7 +1088,7 @@ class Binding {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (condition != null) 'condition': condition!.toJson(),
+        if (condition != null) 'condition': condition!,
         if (members != null) 'members': members!,
         if (role != null) 'role': role!,
       };
@@ -1165,7 +1163,7 @@ class Destination {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cloudRun != null) 'cloudRun': cloudRun!.toJson(),
+        if (cloudRun != null) 'cloudRun': cloudRun!,
       };
 }
 
@@ -1318,8 +1316,7 @@ class GoogleLongrunningListOperationsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (operations != null)
-          'operations': operations!.map((value) => value.toJson()).toList(),
+        if (operations != null) 'operations': operations!,
       };
 }
 
@@ -1392,7 +1389,7 @@ class GoogleLongrunningOperation {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (done != null) 'done': done!,
-        if (error != null) 'error': error!.toJson(),
+        if (error != null) 'error': error!,
         if (metadata != null) 'metadata': metadata!,
         if (name != null) 'name': name!,
         if (response != null) 'response': response!,
@@ -1477,8 +1474,7 @@ class ListLocationsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (locations != null)
-          'locations': locations!.map((value) => value.toJson()).toList(),
+        if (locations != null) 'locations': locations!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -1522,8 +1518,7 @@ class ListTriggersResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (triggers != null)
-          'triggers': triggers!.map((value) => value.toJson()).toList(),
+        if (triggers != null) 'triggers': triggers!,
         if (unreachable != null) 'unreachable': unreachable!,
       };
 }
@@ -1792,10 +1787,8 @@ class Policy {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (auditConfigs != null)
-          'auditConfigs': auditConfigs!.map((value) => value.toJson()).toList(),
-        if (bindings != null)
-          'bindings': bindings!.map((value) => value.toJson()).toList(),
+        if (auditConfigs != null) 'auditConfigs': auditConfigs!,
+        if (bindings != null) 'bindings': bindings!,
         if (etag != null) 'etag': etag!,
         if (version != null) 'version': version!,
       };
@@ -1874,7 +1867,7 @@ class SetIamPolicyRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (policy != null) 'policy': policy!.toJson(),
+        if (policy != null) 'policy': policy!,
         if (updateMask != null) 'updateMask': updateMask!,
       };
 }
@@ -1950,7 +1943,7 @@ class Transport {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (pubsub != null) 'pubsub': pubsub!.toJson(),
+        if (pubsub != null) 'pubsub': pubsub!,
       };
 }
 
@@ -2085,14 +2078,13 @@ class Trigger {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
-        if (destination != null) 'destination': destination!.toJson(),
+        if (destination != null) 'destination': destination!,
         if (etag != null) 'etag': etag!,
-        if (eventFilters != null)
-          'eventFilters': eventFilters!.map((value) => value.toJson()).toList(),
+        if (eventFilters != null) 'eventFilters': eventFilters!,
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
         if (serviceAccount != null) 'serviceAccount': serviceAccount!,
-        if (transport != null) 'transport': transport!.toJson(),
+        if (transport != null) 'transport': transport!,
         if (uid != null) 'uid': uid!,
         if (updateTime != null) 'updateTime': updateTime!,
       };

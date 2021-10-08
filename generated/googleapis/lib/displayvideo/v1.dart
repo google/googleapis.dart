@@ -247,7 +247,7 @@ class AdvertisersResource {
     core.String advertiserId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -360,7 +360,7 @@ class AdvertisersResource {
     Advertiser request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -561,7 +561,7 @@ class AdvertisersResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -616,7 +616,7 @@ class AdvertisersAssetsResource {
     core.String? $fields,
     commons.Media? uploadMedia,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -762,7 +762,7 @@ class AdvertisersCampaignsResource {
     core.String advertiserId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -984,7 +984,7 @@ class AdvertisersCampaignsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -1411,7 +1411,7 @@ class AdvertisersChannelsResource {
     core.String? partnerId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (partnerId != null) 'partnerId': [partnerId],
       if ($fields != null) 'fields': [$fields],
@@ -1582,7 +1582,7 @@ class AdvertisersChannelsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (partnerId != null) 'partnerId': [partnerId],
       if (updateMask != null) 'updateMask': [updateMask],
@@ -1642,7 +1642,7 @@ class AdvertisersChannelsSitesResource {
     core.String channelId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1694,7 +1694,7 @@ class AdvertisersChannelsSitesResource {
     core.String? partnerId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (partnerId != null) 'partnerId': [partnerId],
       if ($fields != null) 'fields': [$fields],
@@ -1876,7 +1876,7 @@ class AdvertisersChannelsSitesResource {
     core.String channelId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1931,7 +1931,7 @@ class AdvertisersCreativesResource {
     core.String advertiserId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2167,7 +2167,7 @@ class AdvertisersCreativesResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -2308,7 +2308,7 @@ class AdvertisersInsertionOrdersResource {
     core.String advertiserId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2545,7 +2545,7 @@ class AdvertisersInsertionOrdersResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -3077,7 +3077,7 @@ class AdvertisersLineItemsResource {
     core.String lineItemId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3208,7 +3208,7 @@ class AdvertisersLineItemsResource {
     core.String advertiserId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3302,7 +3302,7 @@ class AdvertisersLineItemsResource {
     core.String advertiserId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3495,7 +3495,7 @@ class AdvertisersLineItemsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -3660,7 +3660,7 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource {
     core.String targetingType, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4189,7 +4189,7 @@ class AdvertisersLocationListsResource {
     core.String advertiserId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4356,7 +4356,7 @@ class AdvertisersLocationListsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -4419,7 +4419,7 @@ class AdvertisersLocationListsAssignedLocationsResource {
     core.String locationListId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4468,7 +4468,7 @@ class AdvertisersLocationListsAssignedLocationsResource {
     core.String locationListId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4650,7 +4650,7 @@ class AdvertisersManualTriggersResource {
     core.String triggerId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4698,7 +4698,7 @@ class AdvertisersManualTriggersResource {
     core.String advertiserId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4746,7 +4746,7 @@ class AdvertisersManualTriggersResource {
     core.String triggerId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4918,7 +4918,7 @@ class AdvertisersManualTriggersResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -4977,7 +4977,7 @@ class AdvertisersNegativeKeywordListsResource {
     core.String advertiserId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -5173,7 +5173,7 @@ class AdvertisersNegativeKeywordListsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -5238,7 +5238,7 @@ class AdvertisersNegativeKeywordListsNegativeKeywordsResource {
     core.String negativeKeywordListId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -5288,7 +5288,7 @@ class AdvertisersNegativeKeywordListsNegativeKeywordsResource {
     core.String negativeKeywordListId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -5466,7 +5466,7 @@ class AdvertisersNegativeKeywordListsNegativeKeywordsResource {
     core.String negativeKeywordListId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -5627,7 +5627,7 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResource {
     core.String targetingType, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -6252,7 +6252,7 @@ class CustomBiddingAlgorithmsResource {
     CustomBiddingAlgorithm request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -6435,7 +6435,7 @@ class CustomBiddingAlgorithmsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -6782,7 +6782,7 @@ class FloodlightGroupsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (partnerId != null) 'partnerId': [partnerId],
       if (updateMask != null) 'updateMask': [updateMask],
@@ -6972,7 +6972,7 @@ class InventorySourceGroupsResource {
     core.String? partnerId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (advertiserId != null) 'advertiserId': [advertiserId],
       if (partnerId != null) 'partnerId': [partnerId],
@@ -7200,7 +7200,7 @@ class InventorySourceGroupsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (advertiserId != null) 'advertiserId': [advertiserId],
       if (partnerId != null) 'partnerId': [partnerId],
@@ -7260,7 +7260,7 @@ class InventorySourceGroupsAssignedInventorySourcesResource {
     core.String inventorySourceGroupId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -7315,7 +7315,7 @@ class InventorySourceGroupsAssignedInventorySourcesResource {
     core.String? partnerId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (advertiserId != null) 'advertiserId': [advertiserId],
       if (partnerId != null) 'partnerId': [partnerId],
@@ -7703,7 +7703,7 @@ class PartnersResource {
     core.String partnerId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -7859,7 +7859,7 @@ class PartnersChannelsResource {
     core.String? advertiserId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (advertiserId != null) 'advertiserId': [advertiserId],
       if ($fields != null) 'fields': [$fields],
@@ -8030,7 +8030,7 @@ class PartnersChannelsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (advertiserId != null) 'advertiserId': [advertiserId],
       if (updateMask != null) 'updateMask': [updateMask],
@@ -8090,7 +8090,7 @@ class PartnersChannelsSitesResource {
     core.String channelId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -8142,7 +8142,7 @@ class PartnersChannelsSitesResource {
     core.String? advertiserId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (advertiserId != null) 'advertiserId': [advertiserId],
       if ($fields != null) 'fields': [$fields],
@@ -8324,7 +8324,7 @@ class PartnersChannelsSitesResource {
     core.String channelId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -8483,7 +8483,7 @@ class PartnersTargetingTypesAssignedTargetingOptionsResource {
     core.String targetingType, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -8983,7 +8983,7 @@ class SdfdownloadtasksResource {
     CreateSdfDownloadTaskRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -9479,7 +9479,7 @@ class TargetingTypesTargetingOptionsResource {
     core.String targetingType, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -9534,7 +9534,7 @@ class UsersResource {
     core.String userId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -9575,7 +9575,7 @@ class UsersResource {
     User request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -9770,7 +9770,7 @@ class UsersResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -10089,20 +10089,19 @@ class Advertiser {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (adServerConfig != null) 'adServerConfig': adServerConfig!.toJson(),
+        if (adServerConfig != null) 'adServerConfig': adServerConfig!,
         if (advertiserId != null) 'advertiserId': advertiserId!,
-        if (creativeConfig != null) 'creativeConfig': creativeConfig!.toJson(),
-        if (dataAccessConfig != null)
-          'dataAccessConfig': dataAccessConfig!.toJson(),
+        if (creativeConfig != null) 'creativeConfig': creativeConfig!,
+        if (dataAccessConfig != null) 'dataAccessConfig': dataAccessConfig!,
         if (displayName != null) 'displayName': displayName!,
         if (entityStatus != null) 'entityStatus': entityStatus!,
-        if (generalConfig != null) 'generalConfig': generalConfig!.toJson(),
+        if (generalConfig != null) 'generalConfig': generalConfig!,
         if (integrationDetails != null)
-          'integrationDetails': integrationDetails!.toJson(),
+          'integrationDetails': integrationDetails!,
         if (name != null) 'name': name!,
         if (partnerId != null) 'partnerId': partnerId!,
         if (prismaEnabled != null) 'prismaEnabled': prismaEnabled!,
-        if (servingConfig != null) 'servingConfig': servingConfig!.toJson(),
+        if (servingConfig != null) 'servingConfig': servingConfig!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
 }
@@ -10134,9 +10133,9 @@ class AdvertiserAdServerConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cmHybridConfig != null) 'cmHybridConfig': cmHybridConfig!.toJson(),
+        if (cmHybridConfig != null) 'cmHybridConfig': cmHybridConfig!,
         if (thirdPartyOnlyConfig != null)
-          'thirdPartyOnlyConfig': thirdPartyOnlyConfig!.toJson(),
+          'thirdPartyOnlyConfig': thirdPartyOnlyConfig!,
       };
 }
 
@@ -10225,7 +10224,7 @@ class AdvertiserDataAccessConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (sdfConfig != null) 'sdfConfig': sdfConfig!.toJson(),
+        if (sdfConfig != null) 'sdfConfig': sdfConfig!,
       };
 }
 
@@ -10333,7 +10332,7 @@ class AdvertiserSdfConfig {
   core.Map<core.String, core.dynamic> toJson() => {
         if (overridePartnerSdfConfig != null)
           'overridePartnerSdfConfig': overridePartnerSdfConfig!,
-        if (sdfConfig != null) 'sdfConfig': sdfConfig!.toJson(),
+        if (sdfConfig != null) 'sdfConfig': sdfConfig!,
       };
 }
 
@@ -10742,7 +10741,7 @@ class AssetAssociation {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (asset != null) 'asset': asset!.toJson(),
+        if (asset != null) 'asset': asset!,
         if (role != null) 'role': role!,
       };
 }
@@ -11516,92 +11515,80 @@ class AssignedTargetingOption {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (ageRangeDetails != null)
-          'ageRangeDetails': ageRangeDetails!.toJson(),
+        if (ageRangeDetails != null) 'ageRangeDetails': ageRangeDetails!,
         if (appCategoryDetails != null)
-          'appCategoryDetails': appCategoryDetails!.toJson(),
-        if (appDetails != null) 'appDetails': appDetails!.toJson(),
+          'appCategoryDetails': appCategoryDetails!,
+        if (appDetails != null) 'appDetails': appDetails!,
         if (assignedTargetingOptionId != null)
           'assignedTargetingOptionId': assignedTargetingOptionId!,
         if (audienceGroupDetails != null)
-          'audienceGroupDetails': audienceGroupDetails!.toJson(),
+          'audienceGroupDetails': audienceGroupDetails!,
         if (authorizedSellerStatusDetails != null)
-          'authorizedSellerStatusDetails':
-              authorizedSellerStatusDetails!.toJson(),
-        if (browserDetails != null) 'browserDetails': browserDetails!.toJson(),
+          'authorizedSellerStatusDetails': authorizedSellerStatusDetails!,
+        if (browserDetails != null) 'browserDetails': browserDetails!,
         if (businessChainDetails != null)
-          'businessChainDetails': businessChainDetails!.toJson(),
+          'businessChainDetails': businessChainDetails!,
         if (carrierAndIspDetails != null)
-          'carrierAndIspDetails': carrierAndIspDetails!.toJson(),
-        if (categoryDetails != null)
-          'categoryDetails': categoryDetails!.toJson(),
-        if (channelDetails != null) 'channelDetails': channelDetails!.toJson(),
+          'carrierAndIspDetails': carrierAndIspDetails!,
+        if (categoryDetails != null) 'categoryDetails': categoryDetails!,
+        if (channelDetails != null) 'channelDetails': channelDetails!,
         if (contentInstreamPositionDetails != null)
-          'contentInstreamPositionDetails':
-              contentInstreamPositionDetails!.toJson(),
+          'contentInstreamPositionDetails': contentInstreamPositionDetails!,
         if (contentOutstreamPositionDetails != null)
-          'contentOutstreamPositionDetails':
-              contentOutstreamPositionDetails!.toJson(),
-        if (dayAndTimeDetails != null)
-          'dayAndTimeDetails': dayAndTimeDetails!.toJson(),
+          'contentOutstreamPositionDetails': contentOutstreamPositionDetails!,
+        if (dayAndTimeDetails != null) 'dayAndTimeDetails': dayAndTimeDetails!,
         if (deviceMakeModelDetails != null)
-          'deviceMakeModelDetails': deviceMakeModelDetails!.toJson(),
-        if (deviceTypeDetails != null)
-          'deviceTypeDetails': deviceTypeDetails!.toJson(),
+          'deviceMakeModelDetails': deviceMakeModelDetails!,
+        if (deviceTypeDetails != null) 'deviceTypeDetails': deviceTypeDetails!,
         if (digitalContentLabelExclusionDetails != null)
           'digitalContentLabelExclusionDetails':
-              digitalContentLabelExclusionDetails!.toJson(),
+              digitalContentLabelExclusionDetails!,
         if (environmentDetails != null)
-          'environmentDetails': environmentDetails!.toJson(),
-        if (exchangeDetails != null)
-          'exchangeDetails': exchangeDetails!.toJson(),
-        if (genderDetails != null) 'genderDetails': genderDetails!.toJson(),
-        if (geoRegionDetails != null)
-          'geoRegionDetails': geoRegionDetails!.toJson(),
+          'environmentDetails': environmentDetails!,
+        if (exchangeDetails != null) 'exchangeDetails': exchangeDetails!,
+        if (genderDetails != null) 'genderDetails': genderDetails!,
+        if (geoRegionDetails != null) 'geoRegionDetails': geoRegionDetails!,
         if (householdIncomeDetails != null)
-          'householdIncomeDetails': householdIncomeDetails!.toJson(),
+          'householdIncomeDetails': householdIncomeDetails!,
         if (inheritance != null) 'inheritance': inheritance!,
         if (inventorySourceDetails != null)
-          'inventorySourceDetails': inventorySourceDetails!.toJson(),
+          'inventorySourceDetails': inventorySourceDetails!,
         if (inventorySourceGroupDetails != null)
-          'inventorySourceGroupDetails': inventorySourceGroupDetails!.toJson(),
-        if (keywordDetails != null) 'keywordDetails': keywordDetails!.toJson(),
-        if (languageDetails != null)
-          'languageDetails': languageDetails!.toJson(),
+          'inventorySourceGroupDetails': inventorySourceGroupDetails!,
+        if (keywordDetails != null) 'keywordDetails': keywordDetails!,
+        if (languageDetails != null) 'languageDetails': languageDetails!,
         if (name != null) 'name': name!,
         if (nativeContentPositionDetails != null)
-          'nativeContentPositionDetails':
-              nativeContentPositionDetails!.toJson(),
+          'nativeContentPositionDetails': nativeContentPositionDetails!,
         if (negativeKeywordListDetails != null)
-          'negativeKeywordListDetails': negativeKeywordListDetails!.toJson(),
-        if (omidDetails != null) 'omidDetails': omidDetails!.toJson(),
+          'negativeKeywordListDetails': negativeKeywordListDetails!,
+        if (omidDetails != null) 'omidDetails': omidDetails!,
         if (onScreenPositionDetails != null)
-          'onScreenPositionDetails': onScreenPositionDetails!.toJson(),
+          'onScreenPositionDetails': onScreenPositionDetails!,
         if (operatingSystemDetails != null)
-          'operatingSystemDetails': operatingSystemDetails!.toJson(),
+          'operatingSystemDetails': operatingSystemDetails!,
         if (parentalStatusDetails != null)
-          'parentalStatusDetails': parentalStatusDetails!.toJson(),
-        if (poiDetails != null) 'poiDetails': poiDetails!.toJson(),
+          'parentalStatusDetails': parentalStatusDetails!,
+        if (poiDetails != null) 'poiDetails': poiDetails!,
         if (proximityLocationListDetails != null)
-          'proximityLocationListDetails':
-              proximityLocationListDetails!.toJson(),
+          'proximityLocationListDetails': proximityLocationListDetails!,
         if (regionalLocationListDetails != null)
-          'regionalLocationListDetails': regionalLocationListDetails!.toJson(),
+          'regionalLocationListDetails': regionalLocationListDetails!,
         if (sensitiveCategoryExclusionDetails != null)
           'sensitiveCategoryExclusionDetails':
-              sensitiveCategoryExclusionDetails!.toJson(),
+              sensitiveCategoryExclusionDetails!,
         if (subExchangeDetails != null)
-          'subExchangeDetails': subExchangeDetails!.toJson(),
+          'subExchangeDetails': subExchangeDetails!,
         if (targetingType != null) 'targetingType': targetingType!,
         if (thirdPartyVerifierDetails != null)
-          'thirdPartyVerifierDetails': thirdPartyVerifierDetails!.toJson(),
-        if (urlDetails != null) 'urlDetails': urlDetails!.toJson(),
+          'thirdPartyVerifierDetails': thirdPartyVerifierDetails!,
+        if (urlDetails != null) 'urlDetails': urlDetails!,
         if (userRewardedContentDetails != null)
-          'userRewardedContentDetails': userRewardedContentDetails!.toJson(),
+          'userRewardedContentDetails': userRewardedContentDetails!,
         if (videoPlayerSizeDetails != null)
-          'videoPlayerSizeDetails': videoPlayerSizeDetails!.toJson(),
+          'videoPlayerSizeDetails': videoPlayerSizeDetails!,
         if (viewabilityDetails != null)
-          'viewabilityDetails': viewabilityDetails!.toJson(),
+          'viewabilityDetails': viewabilityDetails!,
       };
 }
 
@@ -11795,21 +11782,18 @@ class AudienceGroupAssignedTargetingOptionDetails {
   core.Map<core.String, core.dynamic> toJson() => {
         if (excludedFirstAndThirdPartyAudienceGroup != null)
           'excludedFirstAndThirdPartyAudienceGroup':
-              excludedFirstAndThirdPartyAudienceGroup!.toJson(),
+              excludedFirstAndThirdPartyAudienceGroup!,
         if (excludedGoogleAudienceGroup != null)
-          'excludedGoogleAudienceGroup': excludedGoogleAudienceGroup!.toJson(),
+          'excludedGoogleAudienceGroup': excludedGoogleAudienceGroup!,
         if (includedCombinedAudienceGroup != null)
-          'includedCombinedAudienceGroup':
-              includedCombinedAudienceGroup!.toJson(),
+          'includedCombinedAudienceGroup': includedCombinedAudienceGroup!,
         if (includedCustomListGroup != null)
-          'includedCustomListGroup': includedCustomListGroup!.toJson(),
+          'includedCustomListGroup': includedCustomListGroup!,
         if (includedFirstAndThirdPartyAudienceGroups != null)
           'includedFirstAndThirdPartyAudienceGroups':
-              includedFirstAndThirdPartyAudienceGroups!
-                  .map((value) => value.toJson())
-                  .toList(),
+              includedFirstAndThirdPartyAudienceGroups!,
         if (includedGoogleAudienceGroup != null)
-          'includedGoogleAudienceGroup': includedGoogleAudienceGroup!.toJson(),
+          'includedGoogleAudienceGroup': includedGoogleAudienceGroup!,
       };
 }
 
@@ -12105,11 +12089,11 @@ class BiddingStrategy {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (fixedBid != null) 'fixedBid': fixedBid!.toJson(),
+        if (fixedBid != null) 'fixedBid': fixedBid!,
         if (maximizeSpendAutoBid != null)
-          'maximizeSpendAutoBid': maximizeSpendAutoBid!.toJson(),
+          'maximizeSpendAutoBid': maximizeSpendAutoBid!,
         if (performanceGoalAutoBid != null)
-          'performanceGoalAutoBid': performanceGoalAutoBid!.toJson(),
+          'performanceGoalAutoBid': performanceGoalAutoBid!,
       };
 }
 
@@ -12254,7 +12238,7 @@ class BudgetSummary {
         if (externalBudgetId != null) 'externalBudgetId': externalBudgetId!,
         if (preTaxAmountMicros != null)
           'preTaxAmountMicros': preTaxAmountMicros!,
-        if (prismaCpeCode != null) 'prismaCpeCode': prismaCpeCode!.toJson(),
+        if (prismaCpeCode != null) 'prismaCpeCode': prismaCpeCode!,
         if (taxAmountMicros != null) 'taxAmountMicros': taxAmountMicros!,
         if (totalAmountMicros != null) 'totalAmountMicros': totalAmountMicros!,
       };
@@ -12302,12 +12286,8 @@ class BulkEditAdvertiserAssignedTargetingOptionsRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (createRequests != null)
-          'createRequests':
-              createRequests!.map((value) => value.toJson()).toList(),
-        if (deleteRequests != null)
-          'deleteRequests':
-              deleteRequests!.map((value) => value.toJson()).toList(),
+        if (createRequests != null) 'createRequests': createRequests!,
+        if (deleteRequests != null) 'deleteRequests': deleteRequests!,
       };
 }
 
@@ -12335,9 +12315,7 @@ class BulkEditAdvertiserAssignedTargetingOptionsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (createdAssignedTargetingOptions != null)
-          'createdAssignedTargetingOptions': createdAssignedTargetingOptions!
-              .map((value) => value.toJson())
-              .toList(),
+          'createdAssignedTargetingOptions': createdAssignedTargetingOptions!,
       };
 }
 
@@ -12395,9 +12373,7 @@ class BulkEditAssignedInventorySourcesRequest {
   core.Map<core.String, core.dynamic> toJson() => {
         if (advertiserId != null) 'advertiserId': advertiserId!,
         if (createdAssignedInventorySources != null)
-          'createdAssignedInventorySources': createdAssignedInventorySources!
-              .map((value) => value.toJson())
-              .toList(),
+          'createdAssignedInventorySources': createdAssignedInventorySources!,
         if (deletedAssignedInventorySources != null)
           'deletedAssignedInventorySources': deletedAssignedInventorySources!,
         if (partnerId != null) 'partnerId': partnerId!,
@@ -12429,8 +12405,7 @@ class BulkEditAssignedInventorySourcesResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (assignedInventorySources != null)
-          'assignedInventorySources':
-              assignedInventorySources!.map((value) => value.toJson()).toList(),
+          'assignedInventorySources': assignedInventorySources!,
       };
 }
 
@@ -12468,8 +12443,7 @@ class BulkEditAssignedLocationsRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (createdAssignedLocations != null)
-          'createdAssignedLocations':
-              createdAssignedLocations!.map((value) => value.toJson()).toList(),
+          'createdAssignedLocations': createdAssignedLocations!,
         if (deletedAssignedLocations != null)
           'deletedAssignedLocations': deletedAssignedLocations!,
       };
@@ -12497,9 +12471,7 @@ class BulkEditAssignedLocationsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (assignedLocations != null)
-          'assignedLocations':
-              assignedLocations!.map((value) => value.toJson()).toList(),
+        if (assignedLocations != null) 'assignedLocations': assignedLocations!,
       };
 }
 
@@ -12540,8 +12512,7 @@ class BulkEditAssignedUserRolesRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (createdAssignedUserRoles != null)
-          'createdAssignedUserRoles':
-              createdAssignedUserRoles!.map((value) => value.toJson()).toList(),
+          'createdAssignedUserRoles': createdAssignedUserRoles!,
         if (deletedAssignedUserRoles != null)
           'deletedAssignedUserRoles': deletedAssignedUserRoles!,
       };
@@ -12570,8 +12541,7 @@ class BulkEditAssignedUserRolesResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (createdAssignedUserRoles != null)
-          'createdAssignedUserRoles':
-              createdAssignedUserRoles!.map((value) => value.toJson()).toList(),
+          'createdAssignedUserRoles': createdAssignedUserRoles!,
       };
 }
 
@@ -12609,12 +12579,8 @@ class BulkEditLineItemAssignedTargetingOptionsRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (createRequests != null)
-          'createRequests':
-              createRequests!.map((value) => value.toJson()).toList(),
-        if (deleteRequests != null)
-          'deleteRequests':
-              deleteRequests!.map((value) => value.toJson()).toList(),
+        if (createRequests != null) 'createRequests': createRequests!,
+        if (deleteRequests != null) 'deleteRequests': deleteRequests!,
       };
 }
 
@@ -12642,9 +12608,7 @@ class BulkEditLineItemAssignedTargetingOptionsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (createdAssignedTargetingOptions != null)
-          'createdAssignedTargetingOptions': createdAssignedTargetingOptions!
-              .map((value) => value.toJson())
-              .toList(),
+          'createdAssignedTargetingOptions': createdAssignedTargetingOptions!,
       };
 }
 
@@ -12680,8 +12644,7 @@ class BulkEditNegativeKeywordsRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (createdNegativeKeywords != null)
-          'createdNegativeKeywords':
-              createdNegativeKeywords!.map((value) => value.toJson()).toList(),
+          'createdNegativeKeywords': createdNegativeKeywords!,
         if (deletedNegativeKeywords != null)
           'deletedNegativeKeywords': deletedNegativeKeywords!,
       };
@@ -12709,9 +12672,7 @@ class BulkEditNegativeKeywordsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (negativeKeywords != null)
-          'negativeKeywords':
-              negativeKeywords!.map((value) => value.toJson()).toList(),
+        if (negativeKeywords != null) 'negativeKeywords': negativeKeywords!,
       };
 }
 
@@ -12753,12 +12714,8 @@ class BulkEditPartnerAssignedTargetingOptionsRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (createRequests != null)
-          'createRequests':
-              createRequests!.map((value) => value.toJson()).toList(),
-        if (deleteRequests != null)
-          'deleteRequests':
-              deleteRequests!.map((value) => value.toJson()).toList(),
+        if (createRequests != null) 'createRequests': createRequests!,
+        if (deleteRequests != null) 'deleteRequests': deleteRequests!,
       };
 }
 
@@ -12786,9 +12743,7 @@ class BulkEditPartnerAssignedTargetingOptionsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (createdAssignedTargetingOptions != null)
-          'createdAssignedTargetingOptions': createdAssignedTargetingOptions!
-              .map((value) => value.toJson())
-              .toList(),
+          'createdAssignedTargetingOptions': createdAssignedTargetingOptions!,
       };
 }
 
@@ -12836,8 +12791,7 @@ class BulkEditSitesRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (advertiserId != null) 'advertiserId': advertiserId!,
-        if (createdSites != null)
-          'createdSites': createdSites!.map((value) => value.toJson()).toList(),
+        if (createdSites != null) 'createdSites': createdSites!,
         if (deletedSites != null) 'deletedSites': deletedSites!,
         if (partnerId != null) 'partnerId': partnerId!,
       };
@@ -12865,8 +12819,7 @@ class BulkEditSitesResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (sites != null)
-          'sites': sites!.map((value) => value.toJson()).toList(),
+        if (sites != null) 'sites': sites!,
       };
 }
 
@@ -12905,8 +12858,7 @@ class BulkListAdvertiserAssignedTargetingOptionsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (assignedTargetingOptions != null)
-          'assignedTargetingOptions':
-              assignedTargetingOptions!.map((value) => value.toJson()).toList(),
+          'assignedTargetingOptions': assignedTargetingOptions!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -12947,8 +12899,7 @@ class BulkListCampaignAssignedTargetingOptionsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (assignedTargetingOptions != null)
-          'assignedTargetingOptions':
-              assignedTargetingOptions!.map((value) => value.toJson()).toList(),
+          'assignedTargetingOptions': assignedTargetingOptions!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -12990,8 +12941,7 @@ class BulkListInsertionOrderAssignedTargetingOptionsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (assignedTargetingOptions != null)
-          'assignedTargetingOptions':
-              assignedTargetingOptions!.map((value) => value.toJson()).toList(),
+          'assignedTargetingOptions': assignedTargetingOptions!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -13031,8 +12981,7 @@ class BulkListLineItemAssignedTargetingOptionsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (assignedTargetingOptions != null)
-          'assignedTargetingOptions':
-              assignedTargetingOptions!.map((value) => value.toJson()).toList(),
+          'assignedTargetingOptions': assignedTargetingOptions!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -13356,15 +13305,13 @@ class Campaign {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (advertiserId != null) 'advertiserId': advertiserId!,
-        if (campaignBudgets != null)
-          'campaignBudgets':
-              campaignBudgets!.map((value) => value.toJson()).toList(),
-        if (campaignFlight != null) 'campaignFlight': campaignFlight!.toJson(),
-        if (campaignGoal != null) 'campaignGoal': campaignGoal!.toJson(),
+        if (campaignBudgets != null) 'campaignBudgets': campaignBudgets!,
+        if (campaignFlight != null) 'campaignFlight': campaignFlight!,
+        if (campaignGoal != null) 'campaignGoal': campaignGoal!,
         if (campaignId != null) 'campaignId': campaignId!,
         if (displayName != null) 'displayName': displayName!,
         if (entityStatus != null) 'entityStatus': entityStatus!,
-        if (frequencyCap != null) 'frequencyCap': frequencyCap!.toJson(),
+        if (frequencyCap != null) 'frequencyCap': frequencyCap!,
         if (name != null) 'name': name!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
@@ -13498,13 +13445,13 @@ class CampaignBudget {
           'budgetAmountMicros': budgetAmountMicros!,
         if (budgetId != null) 'budgetId': budgetId!,
         if (budgetUnit != null) 'budgetUnit': budgetUnit!,
-        if (dateRange != null) 'dateRange': dateRange!.toJson(),
+        if (dateRange != null) 'dateRange': dateRange!,
         if (displayName != null) 'displayName': displayName!,
         if (externalBudgetId != null) 'externalBudgetId': externalBudgetId!,
         if (externalBudgetSource != null)
           'externalBudgetSource': externalBudgetSource!,
         if (invoiceGroupingId != null) 'invoiceGroupingId': invoiceGroupingId!,
-        if (prismaConfig != null) 'prismaConfig': prismaConfig!.toJson(),
+        if (prismaConfig != null) 'prismaConfig': prismaConfig!,
       };
 }
 
@@ -13548,7 +13495,7 @@ class CampaignFlight {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (plannedDates != null) 'plannedDates': plannedDates!.toJson(),
+        if (plannedDates != null) 'plannedDates': plannedDates!,
         if (plannedSpendAmountMicros != null)
           'plannedSpendAmountMicros': plannedSpendAmountMicros!,
       };
@@ -13598,8 +13545,7 @@ class CampaignGoal {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (campaignGoalType != null) 'campaignGoalType': campaignGoalType!,
-        if (performanceGoal != null)
-          'performanceGoal': performanceGoal!.toJson(),
+        if (performanceGoal != null) 'performanceGoal': performanceGoal!,
       };
 }
 
@@ -14088,8 +14034,7 @@ class CombinedAudienceGroup {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (settings != null)
-          'settings': settings!.map((value) => value.toJson()).toList(),
+        if (settings != null) 'settings': settings!,
       };
 }
 
@@ -14396,9 +14341,7 @@ class ConversionCountingConfig {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (floodlightActivityConfigs != null)
-          'floodlightActivityConfigs': floodlightActivityConfigs!
-              .map((value) => value.toJson())
-              .toList(),
+          'floodlightActivityConfigs': floodlightActivityConfigs!,
         if (postViewCountPercentageMillis != null)
           'postViewCountPercentageMillis': postViewCountPercentageMillis!,
       };
@@ -14478,7 +14421,7 @@ class CreateAssetResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (asset != null) 'asset': asset!.toJson(),
+        if (asset != null) 'asset': asset!,
       };
 }
 
@@ -14604,8 +14547,7 @@ class CreateAssignedTargetingOptionsRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (assignedTargetingOptions != null)
-          'assignedTargetingOptions':
-              assignedTargetingOptions!.map((value) => value.toJson()).toList(),
+          'assignedTargetingOptions': assignedTargetingOptions!,
         if (targetingType != null) 'targetingType': targetingType!,
       };
 }
@@ -14688,11 +14630,11 @@ class CreateSdfDownloadTaskRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (advertiserId != null) 'advertiserId': advertiserId!,
-        if (idFilter != null) 'idFilter': idFilter!.toJson(),
+        if (idFilter != null) 'idFilter': idFilter!,
         if (inventorySourceFilter != null)
-          'inventorySourceFilter': inventorySourceFilter!.toJson(),
+          'inventorySourceFilter': inventorySourceFilter!,
         if (parentEntityFilter != null)
-          'parentEntityFilter': parentEntityFilter!.toJson(),
+          'parentEntityFilter': parentEntityFilter!,
         if (partnerId != null) 'partnerId': partnerId!,
         if (version != null) 'version': version!,
       };
@@ -15417,30 +15359,25 @@ class Creative {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (additionalDimensions != null)
-          'additionalDimensions':
-              additionalDimensions!.map((value) => value.toJson()).toList(),
+          'additionalDimensions': additionalDimensions!,
         if (advertiserId != null) 'advertiserId': advertiserId!,
         if (appendedTag != null) 'appendedTag': appendedTag!,
-        if (assets != null)
-          'assets': assets!.map((value) => value.toJson()).toList(),
+        if (assets != null) 'assets': assets!,
         if (cmPlacementId != null) 'cmPlacementId': cmPlacementId!,
-        if (cmTrackingAd != null) 'cmTrackingAd': cmTrackingAd!.toJson(),
+        if (cmTrackingAd != null) 'cmTrackingAd': cmTrackingAd!,
         if (companionCreativeIds != null)
           'companionCreativeIds': companionCreativeIds!,
-        if (counterEvents != null)
-          'counterEvents':
-              counterEvents!.map((value) => value.toJson()).toList(),
+        if (counterEvents != null) 'counterEvents': counterEvents!,
         if (createTime != null) 'createTime': createTime!,
         if (creativeAttributes != null)
           'creativeAttributes': creativeAttributes!,
         if (creativeId != null) 'creativeId': creativeId!,
         if (creativeType != null) 'creativeType': creativeType!,
-        if (dimensions != null) 'dimensions': dimensions!.toJson(),
+        if (dimensions != null) 'dimensions': dimensions!,
         if (displayName != null) 'displayName': displayName!,
         if (dynamic != null) 'dynamic': dynamic!,
         if (entityStatus != null) 'entityStatus': entityStatus!,
-        if (exitEvents != null)
-          'exitEvents': exitEvents!.map((value) => value.toJson()).toList(),
+        if (exitEvents != null) 'exitEvents': exitEvents!,
         if (expandOnHover != null) 'expandOnHover': expandOnHover!,
         if (expandingDirection != null)
           'expandingDirection': expandingDirection!,
@@ -15455,26 +15392,22 @@ class Creative {
         if (mp3Audio != null) 'mp3Audio': mp3Audio!,
         if (name != null) 'name': name!,
         if (notes != null) 'notes': notes!,
-        if (obaIcon != null) 'obaIcon': obaIcon!.toJson(),
+        if (obaIcon != null) 'obaIcon': obaIcon!,
         if (oggAudio != null) 'oggAudio': oggAudio!,
-        if (progressOffset != null) 'progressOffset': progressOffset!.toJson(),
+        if (progressOffset != null) 'progressOffset': progressOffset!,
         if (requireHtml5 != null) 'requireHtml5': requireHtml5!,
         if (requireMraid != null) 'requireMraid': requireMraid!,
         if (requirePingForAttribution != null)
           'requirePingForAttribution': requirePingForAttribution!,
-        if (reviewStatus != null) 'reviewStatus': reviewStatus!.toJson(),
-        if (skipOffset != null) 'skipOffset': skipOffset!.toJson(),
+        if (reviewStatus != null) 'reviewStatus': reviewStatus!,
+        if (skipOffset != null) 'skipOffset': skipOffset!,
         if (skippable != null) 'skippable': skippable!,
         if (thirdPartyTag != null) 'thirdPartyTag': thirdPartyTag!,
-        if (thirdPartyUrls != null)
-          'thirdPartyUrls':
-              thirdPartyUrls!.map((value) => value.toJson()).toList(),
-        if (timerEvents != null)
-          'timerEvents': timerEvents!.map((value) => value.toJson()).toList(),
+        if (thirdPartyUrls != null) 'thirdPartyUrls': thirdPartyUrls!,
+        if (timerEvents != null) 'timerEvents': timerEvents!,
         if (trackerUrls != null) 'trackerUrls': trackerUrls!,
-        if (transcodes != null)
-          'transcodes': transcodes!.map((value) => value.toJson()).toList(),
-        if (universalAdId != null) 'universalAdId': universalAdId!.toJson(),
+        if (transcodes != null) 'transcodes': transcodes!,
+        if (universalAdId != null) 'universalAdId': universalAdId!,
         if (updateTime != null) 'updateTime': updateTime!,
         if (vastTagUrl != null) 'vastTagUrl': vastTagUrl!,
         if (vpaid != null) 'vpaid': vpaid!,
@@ -15565,9 +15498,9 @@ class CreativeConfig {
   core.Map<core.String, core.dynamic> toJson() => {
         if (creativeType != null) 'creativeType': creativeType!,
         if (displayCreativeConfig != null)
-          'displayCreativeConfig': displayCreativeConfig!.toJson(),
+          'displayCreativeConfig': displayCreativeConfig!,
         if (videoCreativeConfig != null)
-          'videoCreativeConfig': videoCreativeConfig!.toJson(),
+          'videoCreativeConfig': videoCreativeConfig!,
       };
 }
 
@@ -15790,8 +15723,7 @@ class CustomListGroup {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (settings != null)
-          'settings': settings!.map((value) => value.toJson()).toList(),
+        if (settings != null) 'settings': settings!,
       };
 }
 
@@ -15896,8 +15828,8 @@ class DateRange {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (endDate != null) 'endDate': endDate!.toJson(),
-        if (startDate != null) 'startDate': startDate!.toJson(),
+        if (endDate != null) 'endDate': endDate!,
+        if (startDate != null) 'startDate': startDate!,
       };
 }
 
@@ -16450,17 +16382,16 @@ class DoubleVerify {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (appStarRating != null) 'appStarRating': appStarRating!.toJson(),
+        if (appStarRating != null) 'appStarRating': appStarRating!,
         if (avoidedAgeRatings != null) 'avoidedAgeRatings': avoidedAgeRatings!,
         if (brandSafetyCategories != null)
-          'brandSafetyCategories': brandSafetyCategories!.toJson(),
+          'brandSafetyCategories': brandSafetyCategories!,
         if (customSegmentId != null) 'customSegmentId': customSegmentId!,
         if (displayViewability != null)
-          'displayViewability': displayViewability!.toJson(),
+          'displayViewability': displayViewability!,
         if (fraudInvalidTraffic != null)
-          'fraudInvalidTraffic': fraudInvalidTraffic!.toJson(),
-        if (videoViewability != null)
-          'videoViewability': videoViewability!.toJson(),
+          'fraudInvalidTraffic': fraudInvalidTraffic!,
+        if (videoViewability != null) 'videoViewability': videoViewability!,
       };
 }
 
@@ -16885,9 +16816,7 @@ class ExchangeConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (enabledExchanges != null)
-          'enabledExchanges':
-              enabledExchanges!.map((value) => value.toJson()).toList(),
+        if (enabledExchanges != null) 'enabledExchanges': enabledExchanges!,
       };
 }
 
@@ -17550,8 +17479,7 @@ class FirstAndThirdPartyAudienceGroup {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (settings != null)
-          'settings': settings!.map((value) => value.toJson()).toList(),
+        if (settings != null) 'settings': settings!,
       };
 }
 
@@ -17753,12 +17681,11 @@ class FloodlightGroup {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (activeViewConfig != null)
-          'activeViewConfig': activeViewConfig!.toJson(),
+        if (activeViewConfig != null) 'activeViewConfig': activeViewConfig!,
         if (customVariables != null) 'customVariables': customVariables!,
         if (displayName != null) 'displayName': displayName!,
         if (floodlightGroupId != null) 'floodlightGroupId': floodlightGroupId!,
-        if (lookbackWindow != null) 'lookbackWindow': lookbackWindow!.toJson(),
+        if (lookbackWindow != null) 'lookbackWindow': lookbackWindow!,
         if (name != null) 'name': name!,
         if (webTagType != null) 'webTagType': webTagType!,
       };
@@ -17991,7 +17918,7 @@ class GenerateDefaultLineItemRequest {
         if (displayName != null) 'displayName': displayName!,
         if (insertionOrderId != null) 'insertionOrderId': insertionOrderId!,
         if (lineItemType != null) 'lineItemType': lineItemType!,
-        if (mobileApp != null) 'mobileApp': mobileApp!.toJson(),
+        if (mobileApp != null) 'mobileApp': mobileApp!,
       };
 }
 
@@ -18285,8 +18212,7 @@ class GoogleAudienceGroup {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (settings != null)
-          'settings': settings!.map((value) => value.toJson()).toList(),
+        if (settings != null) 'settings': settings!,
       };
 }
 
@@ -18710,23 +18636,21 @@ class InsertionOrder {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (advertiserId != null) 'advertiserId': advertiserId!,
-        if (bidStrategy != null) 'bidStrategy': bidStrategy!.toJson(),
-        if (budget != null) 'budget': budget!.toJson(),
+        if (bidStrategy != null) 'bidStrategy': bidStrategy!,
+        if (budget != null) 'budget': budget!,
         if (campaignId != null) 'campaignId': campaignId!,
         if (displayName != null) 'displayName': displayName!,
         if (entityStatus != null) 'entityStatus': entityStatus!,
-        if (frequencyCap != null) 'frequencyCap': frequencyCap!.toJson(),
+        if (frequencyCap != null) 'frequencyCap': frequencyCap!,
         if (insertionOrderId != null) 'insertionOrderId': insertionOrderId!,
         if (insertionOrderType != null)
           'insertionOrderType': insertionOrderType!,
         if (integrationDetails != null)
-          'integrationDetails': integrationDetails!.toJson(),
+          'integrationDetails': integrationDetails!,
         if (name != null) 'name': name!,
-        if (pacing != null) 'pacing': pacing!.toJson(),
-        if (partnerCosts != null)
-          'partnerCosts': partnerCosts!.map((value) => value.toJson()).toList(),
-        if (performanceGoal != null)
-          'performanceGoal': performanceGoal!.toJson(),
+        if (pacing != null) 'pacing': pacing!,
+        if (partnerCosts != null) 'partnerCosts': partnerCosts!,
+        if (performanceGoal != null) 'performanceGoal': performanceGoal!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
 }
@@ -18796,9 +18720,7 @@ class InsertionOrderBudget {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (automationType != null) 'automationType': automationType!,
-        if (budgetSegments != null)
-          'budgetSegments':
-              budgetSegments!.map((value) => value.toJson()).toList(),
+        if (budgetSegments != null) 'budgetSegments': budgetSegments!,
         if (budgetUnit != null) 'budgetUnit': budgetUnit!,
       };
 }
@@ -18863,7 +18785,7 @@ class InsertionOrderBudgetSegment {
         if (budgetAmountMicros != null)
           'budgetAmountMicros': budgetAmountMicros!,
         if (campaignBudgetId != null) 'campaignBudgetId': campaignBudgetId!,
-        if (dateRange != null) 'dateRange': dateRange!.toJson(),
+        if (dateRange != null) 'dateRange': dateRange!,
         if (description != null) 'description': description!,
       };
 }
@@ -19339,9 +19261,7 @@ class InventorySource {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (commitment != null) 'commitment': commitment!,
-        if (creativeConfigs != null)
-          'creativeConfigs':
-              creativeConfigs!.map((value) => value.toJson()).toList(),
+        if (creativeConfigs != null) 'creativeConfigs': creativeConfigs!,
         if (dealId != null) 'dealId': dealId!,
         if (deliveryMethod != null) 'deliveryMethod': deliveryMethod!,
         if (displayName != null) 'displayName': displayName!,
@@ -19351,9 +19271,9 @@ class InventorySource {
           'inventorySourceType': inventorySourceType!,
         if (name != null) 'name': name!,
         if (publisherName != null) 'publisherName': publisherName!,
-        if (rateDetails != null) 'rateDetails': rateDetails!.toJson(),
-        if (status != null) 'status': status!.toJson(),
-        if (timeRange != null) 'timeRange': timeRange!.toJson(),
+        if (rateDetails != null) 'rateDetails': rateDetails!,
+        if (status != null) 'status': status!,
+        if (timeRange != null) 'timeRange': timeRange!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
 }
@@ -19406,7 +19326,7 @@ class InventorySourceDisplayCreativeConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (creativeSize != null) 'creativeSize': creativeSize!.toJson(),
+        if (creativeSize != null) 'creativeSize': creativeSize!,
       };
 }
 
@@ -19851,17 +19771,15 @@ class Invoice {
   core.Map<core.String, core.dynamic> toJson() => {
         if (budgetInvoiceGroupingId != null)
           'budgetInvoiceGroupingId': budgetInvoiceGroupingId!,
-        if (budgetSummaries != null)
-          'budgetSummaries':
-              budgetSummaries!.map((value) => value.toJson()).toList(),
+        if (budgetSummaries != null) 'budgetSummaries': budgetSummaries!,
         if (correctedInvoiceId != null)
           'correctedInvoiceId': correctedInvoiceId!,
         if (currencyCode != null) 'currencyCode': currencyCode!,
         if (displayName != null) 'displayName': displayName!,
-        if (dueDate != null) 'dueDate': dueDate!.toJson(),
+        if (dueDate != null) 'dueDate': dueDate!,
         if (invoiceId != null) 'invoiceId': invoiceId!,
         if (invoiceType != null) 'invoiceType': invoiceType!,
-        if (issueDate != null) 'issueDate': issueDate!.toJson(),
+        if (issueDate != null) 'issueDate': issueDate!,
         if (name != null) 'name': name!,
         if (nonBudgetMicros != null) 'nonBudgetMicros': nonBudgetMicros!,
         if (paymentsAccountId != null) 'paymentsAccountId': paymentsAccountId!,
@@ -19871,8 +19789,7 @@ class Invoice {
           'purchaseOrderNumber': purchaseOrderNumber!,
         if (replacedInvoiceIds != null)
           'replacedInvoiceIds': replacedInvoiceIds!,
-        if (serviceDateRange != null)
-          'serviceDateRange': serviceDateRange!.toJson(),
+        if (serviceDateRange != null) 'serviceDateRange': serviceDateRange!,
         if (subtotalAmountMicros != null)
           'subtotalAmountMicros': subtotalAmountMicros!,
         if (totalAmountMicros != null) 'totalAmountMicros': totalAmountMicros!,
@@ -20276,32 +20193,31 @@ class LineItem {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (advertiserId != null) 'advertiserId': advertiserId!,
-        if (bidStrategy != null) 'bidStrategy': bidStrategy!.toJson(),
-        if (budget != null) 'budget': budget!.toJson(),
+        if (bidStrategy != null) 'bidStrategy': bidStrategy!,
+        if (budget != null) 'budget': budget!,
         if (campaignId != null) 'campaignId': campaignId!,
         if (conversionCounting != null)
-          'conversionCounting': conversionCounting!.toJson(),
+          'conversionCounting': conversionCounting!,
         if (creativeIds != null) 'creativeIds': creativeIds!,
         if (displayName != null) 'displayName': displayName!,
         if (entityStatus != null) 'entityStatus': entityStatus!,
-        if (flight != null) 'flight': flight!.toJson(),
-        if (frequencyCap != null) 'frequencyCap': frequencyCap!.toJson(),
+        if (flight != null) 'flight': flight!,
+        if (frequencyCap != null) 'frequencyCap': frequencyCap!,
         if (insertionOrderId != null) 'insertionOrderId': insertionOrderId!,
         if (integrationDetails != null)
-          'integrationDetails': integrationDetails!.toJson(),
+          'integrationDetails': integrationDetails!,
         if (inventorySourceIds != null)
           'inventorySourceIds': inventorySourceIds!,
         if (lineItemId != null) 'lineItemId': lineItemId!,
         if (lineItemType != null) 'lineItemType': lineItemType!,
-        if (mobileApp != null) 'mobileApp': mobileApp!.toJson(),
+        if (mobileApp != null) 'mobileApp': mobileApp!,
         if (name != null) 'name': name!,
-        if (pacing != null) 'pacing': pacing!.toJson(),
-        if (partnerCosts != null)
-          'partnerCosts': partnerCosts!.map((value) => value.toJson()).toList(),
+        if (pacing != null) 'pacing': pacing!,
+        if (partnerCosts != null) 'partnerCosts': partnerCosts!,
         if (partnerRevenueModel != null)
-          'partnerRevenueModel': partnerRevenueModel!.toJson(),
+          'partnerRevenueModel': partnerRevenueModel!,
         if (targetingExpansion != null)
-          'targetingExpansion': targetingExpansion!.toJson(),
+          'targetingExpansion': targetingExpansion!,
         if (updateTime != null) 'updateTime': updateTime!,
         if (warningMessages != null) 'warningMessages': warningMessages!,
       };
@@ -20434,7 +20350,7 @@ class LineItemFlight {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dateRange != null) 'dateRange': dateRange!.toJson(),
+        if (dateRange != null) 'dateRange': dateRange!,
         if (flightDateType != null) 'flightDateType': flightDateType!,
         if (triggerId != null) 'triggerId': triggerId!,
       };
@@ -20476,8 +20392,7 @@ class ListAdvertiserAssignedTargetingOptionsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (assignedTargetingOptions != null)
-          'assignedTargetingOptions':
-              assignedTargetingOptions!.map((value) => value.toJson()).toList(),
+          'assignedTargetingOptions': assignedTargetingOptions!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -20513,8 +20428,7 @@ class ListAdvertisersResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (advertisers != null)
-          'advertisers': advertisers!.map((value) => value.toJson()).toList(),
+        if (advertisers != null) 'advertisers': advertisers!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -20555,8 +20469,7 @@ class ListAssignedInventorySourcesResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (assignedInventorySources != null)
-          'assignedInventorySources':
-              assignedInventorySources!.map((value) => value.toJson()).toList(),
+          'assignedInventorySources': assignedInventorySources!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -20593,9 +20506,7 @@ class ListAssignedLocationsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (assignedLocations != null)
-          'assignedLocations':
-              assignedLocations!.map((value) => value.toJson()).toList(),
+        if (assignedLocations != null) 'assignedLocations': assignedLocations!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -20636,8 +20547,7 @@ class ListCampaignAssignedTargetingOptionsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (assignedTargetingOptions != null)
-          'assignedTargetingOptions':
-              assignedTargetingOptions!.map((value) => value.toJson()).toList(),
+          'assignedTargetingOptions': assignedTargetingOptions!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -20673,8 +20583,7 @@ class ListCampaignsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (campaigns != null)
-          'campaigns': campaigns!.map((value) => value.toJson()).toList(),
+        if (campaigns != null) 'campaigns': campaigns!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -20710,8 +20619,7 @@ class ListChannelsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (channels != null)
-          'channels': channels!.map((value) => value.toJson()).toList(),
+        if (channels != null) 'channels': channels!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -20747,9 +20655,7 @@ class ListCombinedAudiencesResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (combinedAudiences != null)
-          'combinedAudiences':
-              combinedAudiences!.map((value) => value.toJson()).toList(),
+        if (combinedAudiences != null) 'combinedAudiences': combinedAudiences!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -20786,8 +20692,7 @@ class ListCreativesResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (creatives != null)
-          'creatives': creatives!.map((value) => value.toJson()).toList(),
+        if (creatives != null) 'creatives': creatives!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -20825,8 +20730,7 @@ class ListCustomBiddingAlgorithmsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (customBiddingAlgorithms != null)
-          'customBiddingAlgorithms':
-              customBiddingAlgorithms!.map((value) => value.toJson()).toList(),
+          'customBiddingAlgorithms': customBiddingAlgorithms!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -20862,8 +20766,7 @@ class ListCustomListsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (customLists != null)
-          'customLists': customLists!.map((value) => value.toJson()).toList(),
+        if (customLists != null) 'customLists': customLists!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -20903,9 +20806,7 @@ class ListFirstAndThirdPartyAudiencesResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (firstAndThirdPartyAudiences != null)
-          'firstAndThirdPartyAudiences': firstAndThirdPartyAudiences!
-              .map((value) => value.toJson())
-              .toList(),
+          'firstAndThirdPartyAudiences': firstAndThirdPartyAudiences!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -20941,9 +20842,7 @@ class ListGoogleAudiencesResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (googleAudiences != null)
-          'googleAudiences':
-              googleAudiences!.map((value) => value.toJson()).toList(),
+        if (googleAudiences != null) 'googleAudiences': googleAudiences!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -20984,8 +20883,7 @@ class ListInsertionOrderAssignedTargetingOptionsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (assignedTargetingOptions != null)
-          'assignedTargetingOptions':
-              assignedTargetingOptions!.map((value) => value.toJson()).toList(),
+          'assignedTargetingOptions': assignedTargetingOptions!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -21021,9 +20919,7 @@ class ListInsertionOrdersResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (insertionOrders != null)
-          'insertionOrders':
-              insertionOrders!.map((value) => value.toJson()).toList(),
+        if (insertionOrders != null) 'insertionOrders': insertionOrders!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -21061,8 +20957,7 @@ class ListInventorySourceGroupsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (inventorySourceGroups != null)
-          'inventorySourceGroups':
-              inventorySourceGroups!.map((value) => value.toJson()).toList(),
+          'inventorySourceGroups': inventorySourceGroups!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -21098,9 +20993,7 @@ class ListInventorySourcesResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (inventorySources != null)
-          'inventorySources':
-              inventorySources!.map((value) => value.toJson()).toList(),
+        if (inventorySources != null) 'inventorySources': inventorySources!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -21137,8 +21030,7 @@ class ListInvoicesResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (invoices != null)
-          'invoices': invoices!.map((value) => value.toJson()).toList(),
+        if (invoices != null) 'invoices': invoices!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -21179,8 +21071,7 @@ class ListLineItemAssignedTargetingOptionsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (assignedTargetingOptions != null)
-          'assignedTargetingOptions':
-              assignedTargetingOptions!.map((value) => value.toJson()).toList(),
+          'assignedTargetingOptions': assignedTargetingOptions!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -21216,8 +21107,7 @@ class ListLineItemsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (lineItems != null)
-          'lineItems': lineItems!.map((value) => value.toJson()).toList(),
+        if (lineItems != null) 'lineItems': lineItems!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -21253,9 +21143,7 @@ class ListLocationListsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (locationLists != null)
-          'locationLists':
-              locationLists!.map((value) => value.toJson()).toList(),
+        if (locationLists != null) 'locationLists': locationLists!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -21291,9 +21179,7 @@ class ListManualTriggersResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (manualTriggers != null)
-          'manualTriggers':
-              manualTriggers!.map((value) => value.toJson()).toList(),
+        if (manualTriggers != null) 'manualTriggers': manualTriggers!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -21331,8 +21217,7 @@ class ListNegativeKeywordListsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (negativeKeywordLists != null)
-          'negativeKeywordLists':
-              negativeKeywordLists!.map((value) => value.toJson()).toList(),
+          'negativeKeywordLists': negativeKeywordLists!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -21369,9 +21254,7 @@ class ListNegativeKeywordsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (negativeKeywords != null)
-          'negativeKeywords':
-              negativeKeywords!.map((value) => value.toJson()).toList(),
+        if (negativeKeywords != null) 'negativeKeywords': negativeKeywords!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -21411,8 +21294,7 @@ class ListPartnerAssignedTargetingOptionsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (assignedTargetingOptions != null)
-          'assignedTargetingOptions':
-              assignedTargetingOptions!.map((value) => value.toJson()).toList(),
+          'assignedTargetingOptions': assignedTargetingOptions!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -21449,8 +21331,7 @@ class ListPartnersResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (partners != null)
-          'partners': partners!.map((value) => value.toJson()).toList(),
+        if (partners != null) 'partners': partners!,
       };
 }
 
@@ -21487,8 +21368,7 @@ class ListSitesResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (sites != null)
-          'sites': sites!.map((value) => value.toJson()).toList(),
+        if (sites != null) 'sites': sites!,
       };
 }
 
@@ -21525,9 +21405,7 @@ class ListTargetingOptionsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (targetingOptions != null)
-          'targetingOptions':
-              targetingOptions!.map((value) => value.toJson()).toList(),
+        if (targetingOptions != null) 'targetingOptions': targetingOptions!,
       };
 }
 
@@ -21564,8 +21442,7 @@ class ListUsersResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (users != null)
-          'users': users!.map((value) => value.toJson()).toList(),
+        if (users != null) 'users': users!,
       };
 }
 
@@ -22323,7 +22200,7 @@ class ObaIcon {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (clickTrackingUrl != null) 'clickTrackingUrl': clickTrackingUrl!,
-        if (dimensions != null) 'dimensions': dimensions!.toJson(),
+        if (dimensions != null) 'dimensions': dimensions!,
         if (landingPageUrl != null) 'landingPageUrl': landingPageUrl!,
         if (position != null) 'position': position!,
         if (program != null) 'program': program!,
@@ -22645,7 +22522,7 @@ class Operation {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (done != null) 'done': done!,
-        if (error != null) 'error': error!.toJson(),
+        if (error != null) 'error': error!,
         if (metadata != null) 'metadata': metadata!,
         if (name != null) 'name': name!,
         if (response != null) 'response': response!,
@@ -22992,13 +22869,12 @@ class Partner {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (adServerConfig != null) 'adServerConfig': adServerConfig!.toJson(),
-        if (dataAccessConfig != null)
-          'dataAccessConfig': dataAccessConfig!.toJson(),
+        if (adServerConfig != null) 'adServerConfig': adServerConfig!,
+        if (dataAccessConfig != null) 'dataAccessConfig': dataAccessConfig!,
         if (displayName != null) 'displayName': displayName!,
         if (entityStatus != null) 'entityStatus': entityStatus!,
-        if (exchangeConfig != null) 'exchangeConfig': exchangeConfig!.toJson(),
-        if (generalConfig != null) 'generalConfig': generalConfig!.toJson(),
+        if (exchangeConfig != null) 'exchangeConfig': exchangeConfig!,
+        if (generalConfig != null) 'generalConfig': generalConfig!,
         if (name != null) 'name': name!,
         if (partnerId != null) 'partnerId': partnerId!,
         if (updateTime != null) 'updateTime': updateTime!,
@@ -23023,8 +22899,7 @@ class PartnerAdServerConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (measurementConfig != null)
-          'measurementConfig': measurementConfig!.toJson(),
+        if (measurementConfig != null) 'measurementConfig': measurementConfig!,
       };
 }
 
@@ -23189,7 +23064,7 @@ class PartnerDataAccessConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (sdfConfig != null) 'sdfConfig': sdfConfig!.toJson(),
+        if (sdfConfig != null) 'sdfConfig': sdfConfig!,
       };
 }
 
@@ -23702,7 +23577,7 @@ class PrismaConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (prismaCpeCode != null) 'prismaCpeCode': prismaCpeCode!.toJson(),
+        if (prismaCpeCode != null) 'prismaCpeCode': prismaCpeCode!,
         if (prismaType != null) 'prismaType': prismaType!,
         if (supplier != null) 'supplier': supplier!,
       };
@@ -23897,8 +23772,8 @@ class RateDetails {
   core.Map<core.String, core.dynamic> toJson() => {
         if (inventorySourceRateType != null)
           'inventorySourceRateType': inventorySourceRateType!,
-        if (minimumSpend != null) 'minimumSpend': minimumSpend!.toJson(),
-        if (rate != null) 'rate': rate!.toJson(),
+        if (minimumSpend != null) 'minimumSpend': minimumSpend!,
+        if (rate != null) 'rate': rate!,
         if (unitsPurchased != null) 'unitsPurchased': unitsPurchased!,
       };
 }
@@ -23963,8 +23838,7 @@ class ReplaceNegativeKeywordsRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (newNegativeKeywords != null)
-          'newNegativeKeywords':
-              newNegativeKeywords!.map((value) => value.toJson()).toList(),
+          'newNegativeKeywords': newNegativeKeywords!,
       };
 }
 
@@ -23989,9 +23863,7 @@ class ReplaceNegativeKeywordsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (negativeKeywords != null)
-          'negativeKeywords':
-              negativeKeywords!.map((value) => value.toJson()).toList(),
+        if (negativeKeywords != null) 'negativeKeywords': negativeKeywords!,
       };
 }
 
@@ -24031,8 +23903,7 @@ class ReplaceSitesRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (advertiserId != null) 'advertiserId': advertiserId!,
-        if (newSites != null)
-          'newSites': newSites!.map((value) => value.toJson()).toList(),
+        if (newSites != null) 'newSites': newSites!,
         if (partnerId != null) 'partnerId': partnerId!,
       };
 }
@@ -24057,8 +23928,7 @@ class ReplaceSitesResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (sites != null)
-          'sites': sites!.map((value) => value.toJson()).toList(),
+        if (sites != null) 'sites': sites!,
       };
 }
 
@@ -24149,11 +24019,9 @@ class ReviewStatusInfo {
           'creativeAndLandingPageReviewStatus':
               creativeAndLandingPageReviewStatus!,
         if (exchangeReviewStatuses != null)
-          'exchangeReviewStatuses':
-              exchangeReviewStatuses!.map((value) => value.toJson()).toList(),
+          'exchangeReviewStatuses': exchangeReviewStatuses!,
         if (publisherReviewStatuses != null)
-          'publisherReviewStatuses':
-              publisherReviewStatuses!.map((value) => value.toJson()).toList(),
+          'publisherReviewStatuses': publisherReviewStatuses!,
       };
 }
 
@@ -24351,12 +24219,12 @@ class SearchTargetingOptionsRequest {
   core.Map<core.String, core.dynamic> toJson() => {
         if (advertiserId != null) 'advertiserId': advertiserId!,
         if (businessChainSearchTerms != null)
-          'businessChainSearchTerms': businessChainSearchTerms!.toJson(),
+          'businessChainSearchTerms': businessChainSearchTerms!,
         if (geoRegionSearchTerms != null)
-          'geoRegionSearchTerms': geoRegionSearchTerms!.toJson(),
+          'geoRegionSearchTerms': geoRegionSearchTerms!,
         if (pageSize != null) 'pageSize': pageSize!,
         if (pageToken != null) 'pageToken': pageToken!,
-        if (poiSearchTerms != null) 'poiSearchTerms': poiSearchTerms!.toJson(),
+        if (poiSearchTerms != null) 'poiSearchTerms': poiSearchTerms!,
       };
 }
 
@@ -24393,9 +24261,7 @@ class SearchTargetingOptionsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (targetingOptions != null)
-          'targetingOptions':
-              targetingOptions!.map((value) => value.toJson()).toList(),
+        if (targetingOptions != null) 'targetingOptions': targetingOptions!,
       };
 }
 
@@ -25147,67 +25013,57 @@ class TargetingOption {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (ageRangeDetails != null)
-          'ageRangeDetails': ageRangeDetails!.toJson(),
+        if (ageRangeDetails != null) 'ageRangeDetails': ageRangeDetails!,
         if (appCategoryDetails != null)
-          'appCategoryDetails': appCategoryDetails!.toJson(),
+          'appCategoryDetails': appCategoryDetails!,
         if (authorizedSellerStatusDetails != null)
-          'authorizedSellerStatusDetails':
-              authorizedSellerStatusDetails!.toJson(),
-        if (browserDetails != null) 'browserDetails': browserDetails!.toJson(),
+          'authorizedSellerStatusDetails': authorizedSellerStatusDetails!,
+        if (browserDetails != null) 'browserDetails': browserDetails!,
         if (businessChainDetails != null)
-          'businessChainDetails': businessChainDetails!.toJson(),
+          'businessChainDetails': businessChainDetails!,
         if (carrierAndIspDetails != null)
-          'carrierAndIspDetails': carrierAndIspDetails!.toJson(),
-        if (categoryDetails != null)
-          'categoryDetails': categoryDetails!.toJson(),
+          'carrierAndIspDetails': carrierAndIspDetails!,
+        if (categoryDetails != null) 'categoryDetails': categoryDetails!,
         if (contentInstreamPositionDetails != null)
-          'contentInstreamPositionDetails':
-              contentInstreamPositionDetails!.toJson(),
+          'contentInstreamPositionDetails': contentInstreamPositionDetails!,
         if (contentOutstreamPositionDetails != null)
-          'contentOutstreamPositionDetails':
-              contentOutstreamPositionDetails!.toJson(),
+          'contentOutstreamPositionDetails': contentOutstreamPositionDetails!,
         if (deviceMakeModelDetails != null)
-          'deviceMakeModelDetails': deviceMakeModelDetails!.toJson(),
-        if (deviceTypeDetails != null)
-          'deviceTypeDetails': deviceTypeDetails!.toJson(),
+          'deviceMakeModelDetails': deviceMakeModelDetails!,
+        if (deviceTypeDetails != null) 'deviceTypeDetails': deviceTypeDetails!,
         if (digitalContentLabelDetails != null)
-          'digitalContentLabelDetails': digitalContentLabelDetails!.toJson(),
+          'digitalContentLabelDetails': digitalContentLabelDetails!,
         if (environmentDetails != null)
-          'environmentDetails': environmentDetails!.toJson(),
-        if (exchangeDetails != null)
-          'exchangeDetails': exchangeDetails!.toJson(),
-        if (genderDetails != null) 'genderDetails': genderDetails!.toJson(),
-        if (geoRegionDetails != null)
-          'geoRegionDetails': geoRegionDetails!.toJson(),
+          'environmentDetails': environmentDetails!,
+        if (exchangeDetails != null) 'exchangeDetails': exchangeDetails!,
+        if (genderDetails != null) 'genderDetails': genderDetails!,
+        if (geoRegionDetails != null) 'geoRegionDetails': geoRegionDetails!,
         if (householdIncomeDetails != null)
-          'householdIncomeDetails': householdIncomeDetails!.toJson(),
-        if (languageDetails != null)
-          'languageDetails': languageDetails!.toJson(),
+          'householdIncomeDetails': householdIncomeDetails!,
+        if (languageDetails != null) 'languageDetails': languageDetails!,
         if (name != null) 'name': name!,
         if (nativeContentPositionDetails != null)
-          'nativeContentPositionDetails':
-              nativeContentPositionDetails!.toJson(),
-        if (omidDetails != null) 'omidDetails': omidDetails!.toJson(),
+          'nativeContentPositionDetails': nativeContentPositionDetails!,
+        if (omidDetails != null) 'omidDetails': omidDetails!,
         if (onScreenPositionDetails != null)
-          'onScreenPositionDetails': onScreenPositionDetails!.toJson(),
+          'onScreenPositionDetails': onScreenPositionDetails!,
         if (operatingSystemDetails != null)
-          'operatingSystemDetails': operatingSystemDetails!.toJson(),
+          'operatingSystemDetails': operatingSystemDetails!,
         if (parentalStatusDetails != null)
-          'parentalStatusDetails': parentalStatusDetails!.toJson(),
-        if (poiDetails != null) 'poiDetails': poiDetails!.toJson(),
+          'parentalStatusDetails': parentalStatusDetails!,
+        if (poiDetails != null) 'poiDetails': poiDetails!,
         if (sensitiveCategoryDetails != null)
-          'sensitiveCategoryDetails': sensitiveCategoryDetails!.toJson(),
+          'sensitiveCategoryDetails': sensitiveCategoryDetails!,
         if (subExchangeDetails != null)
-          'subExchangeDetails': subExchangeDetails!.toJson(),
+          'subExchangeDetails': subExchangeDetails!,
         if (targetingOptionId != null) 'targetingOptionId': targetingOptionId!,
         if (targetingType != null) 'targetingType': targetingType!,
         if (userRewardedContentDetails != null)
-          'userRewardedContentDetails': userRewardedContentDetails!.toJson(),
+          'userRewardedContentDetails': userRewardedContentDetails!,
         if (videoPlayerSizeDetails != null)
-          'videoPlayerSizeDetails': videoPlayerSizeDetails!.toJson(),
+          'videoPlayerSizeDetails': videoPlayerSizeDetails!,
         if (viewabilityDetails != null)
-          'viewabilityDetails': viewabilityDetails!.toJson(),
+          'viewabilityDetails': viewabilityDetails!,
       };
 }
 
@@ -25337,10 +25193,9 @@ class ThirdPartyVerifierAssignedTargetingOptionDetails {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (adloox != null) 'adloox': adloox!.toJson(),
-        if (doubleVerify != null) 'doubleVerify': doubleVerify!.toJson(),
-        if (integralAdScience != null)
-          'integralAdScience': integralAdScience!.toJson(),
+        if (adloox != null) 'adloox': adloox!,
+        if (doubleVerify != null) 'doubleVerify': doubleVerify!,
+        if (integralAdScience != null) 'integralAdScience': integralAdScience!,
       };
 }
 
@@ -25539,7 +25394,7 @@ class Transcode {
         if (audioBitRateKbps != null) 'audioBitRateKbps': audioBitRateKbps!,
         if (audioSampleRateHz != null) 'audioSampleRateHz': audioSampleRateHz!,
         if (bitRateKbps != null) 'bitRateKbps': bitRateKbps!,
-        if (dimensions != null) 'dimensions': dimensions!.toJson(),
+        if (dimensions != null) 'dimensions': dimensions!,
         if (fileSizeBytes != null) 'fileSizeBytes': fileSizeBytes!,
         if (frameRate != null) 'frameRate': frameRate!,
         if (mimeType != null) 'mimeType': mimeType!,
@@ -25687,9 +25542,7 @@ class User {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (assignedUserRoles != null)
-          'assignedUserRoles':
-              assignedUserRoles!.map((value) => value.toJson()).toList(),
+        if (assignedUserRoles != null) 'assignedUserRoles': assignedUserRoles!,
         if (displayName != null) 'displayName': displayName!,
         if (email != null) 'email': email!,
         if (name != null) 'name': name!,

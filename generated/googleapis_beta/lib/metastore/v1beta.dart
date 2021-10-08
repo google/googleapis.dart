@@ -366,7 +366,7 @@ class ProjectsLocationsServicesResource {
     core.String? serviceId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (requestId != null) 'requestId': [requestId],
       if (serviceId != null) 'serviceId': [serviceId],
@@ -461,7 +461,7 @@ class ProjectsLocationsServicesResource {
     core.String service, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -677,7 +677,7 @@ class ProjectsLocationsServicesResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (requestId != null) 'requestId': [requestId],
       if (updateMask != null) 'updateMask': [updateMask],
@@ -722,7 +722,7 @@ class ProjectsLocationsServicesResource {
     core.String service, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -768,7 +768,7 @@ class ProjectsLocationsServicesResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -816,7 +816,7 @@ class ProjectsLocationsServicesResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -885,7 +885,7 @@ class ProjectsLocationsServicesBackupsResource {
     core.String? requestId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (backupId != null) 'backupId': [backupId],
       if (requestId != null) 'requestId': [requestId],
@@ -1139,7 +1139,7 @@ class ProjectsLocationsServicesBackupsResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1187,7 +1187,7 @@ class ProjectsLocationsServicesBackupsResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1257,7 +1257,7 @@ class ProjectsLocationsServicesMetadataImportsResource {
     core.String? requestId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (metadataImportId != null) 'metadataImportId': [metadataImportId],
       if (requestId != null) 'requestId': [requestId],
@@ -1428,7 +1428,7 @@ class ProjectsLocationsServicesMetadataImportsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (requestId != null) 'requestId': [requestId],
       if (updateMask != null) 'updateMask': [updateMask],
@@ -1493,9 +1493,7 @@ class AuditConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (auditLogConfigs != null)
-          'auditLogConfigs':
-              auditLogConfigs!.map((value) => value.toJson()).toList(),
+        if (auditLogConfigs != null) 'auditLogConfigs': auditLogConfigs!,
         if (service != null) 'service': service!,
       };
 }
@@ -1628,8 +1626,7 @@ class Backup {
         if (endTime != null) 'endTime': endTime!,
         if (name != null) 'name': name!,
         if (restoringServices != null) 'restoringServices': restoringServices!,
-        if (serviceRevision != null)
-          'serviceRevision': serviceRevision!.toJson(),
+        if (serviceRevision != null) 'serviceRevision': serviceRevision!,
         if (state != null) 'state': state!,
       };
 }
@@ -1705,7 +1702,7 @@ class Binding {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (condition != null) 'condition': condition!.toJson(),
+        if (condition != null) 'condition': condition!,
         if (members != null) 'members': members!,
         if (role != null) 'role': role!,
       };
@@ -1823,9 +1820,7 @@ class DataplexConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (lakeResources != null)
-          'lakeResources': lakeResources!
-              .map((key, item) => core.MapEntry(key, item.toJson())),
+        if (lakeResources != null) 'lakeResources': lakeResources!,
       };
 }
 
@@ -2061,7 +2056,7 @@ class HiveMetastoreConfig {
   core.Map<core.String, core.dynamic> toJson() => {
         if (configOverrides != null) 'configOverrides': configOverrides!,
         if (endpointProtocol != null) 'endpointProtocol': endpointProtocol!,
-        if (kerberosConfig != null) 'kerberosConfig': kerberosConfig!.toJson(),
+        if (kerberosConfig != null) 'kerberosConfig': kerberosConfig!,
         if (version != null) 'version': version!,
       };
 }
@@ -2136,7 +2131,7 @@ class KerberosConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (keytab != null) 'keytab': keytab!.toJson(),
+        if (keytab != null) 'keytab': keytab!,
         if (krb5ConfigGcsUri != null) 'krb5ConfigGcsUri': krb5ConfigGcsUri!,
         if (principal != null) 'principal': principal!,
       };
@@ -2201,8 +2196,7 @@ class ListBackupsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (backups != null)
-          'backups': backups!.map((value) => value.toJson()).toList(),
+        if (backups != null) 'backups': backups!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (unreachable != null) 'unreachable': unreachable!,
       };
@@ -2235,8 +2229,7 @@ class ListLocationsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (locations != null)
-          'locations': locations!.map((value) => value.toJson()).toList(),
+        if (locations != null) 'locations': locations!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -2279,9 +2272,7 @@ class ListMetadataImportsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (metadataImports != null)
-          'metadataImports':
-              metadataImports!.map((value) => value.toJson()).toList(),
+        if (metadataImports != null) 'metadataImports': metadataImports!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (unreachable != null) 'unreachable': unreachable!,
       };
@@ -2315,8 +2306,7 @@ class ListOperationsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (operations != null)
-          'operations': operations!.map((value) => value.toJson()).toList(),
+        if (operations != null) 'operations': operations!,
       };
 }
 
@@ -2359,8 +2349,7 @@ class ListServicesResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (services != null)
-          'services': services!.map((value) => value.toJson()).toList(),
+        if (services != null) 'services': services!,
         if (unreachable != null) 'unreachable': unreachable!,
       };
 }
@@ -2460,9 +2449,7 @@ class LocationMetadata {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (supportedHiveMetastoreVersions != null)
-          'supportedHiveMetastoreVersions': supportedHiveMetastoreVersions!
-              .map((value) => value.toJson())
-              .toList(),
+          'supportedHiveMetastoreVersions': supportedHiveMetastoreVersions!,
       };
 }
 
@@ -2658,7 +2645,7 @@ class MetadataImport {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
-        if (databaseDump != null) 'databaseDump': databaseDump!.toJson(),
+        if (databaseDump != null) 'databaseDump': databaseDump!,
         if (description != null) 'description': description!,
         if (endTime != null) 'endTime': endTime!,
         if (name != null) 'name': name!,
@@ -2694,9 +2681,8 @@ class MetadataIntegration {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dataCatalogConfig != null)
-          'dataCatalogConfig': dataCatalogConfig!.toJson(),
-        if (dataplexConfig != null) 'dataplexConfig': dataplexConfig!.toJson(),
+        if (dataCatalogConfig != null) 'dataCatalogConfig': dataCatalogConfig!,
+        if (dataplexConfig != null) 'dataplexConfig': dataplexConfig!,
       };
 }
 
@@ -2734,11 +2720,8 @@ class MetadataManagementActivity {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (metadataExports != null)
-          'metadataExports':
-              metadataExports!.map((value) => value.toJson()).toList(),
-        if (restores != null)
-          'restores': restores!.map((value) => value.toJson()).toList(),
+        if (metadataExports != null) 'metadataExports': metadataExports!,
+        if (restores != null) 'restores': restores!,
       };
 }
 
@@ -2811,7 +2794,7 @@ class Operation {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (done != null) 'done': done!,
-        if (error != null) 'error': error!.toJson(),
+        if (error != null) 'error': error!,
         if (metadata != null) 'metadata': metadata!,
         if (name != null) 'name': name!,
         if (response != null) 'response': response!,
@@ -3010,10 +2993,8 @@ class Policy {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (auditConfigs != null)
-          'auditConfigs': auditConfigs!.map((value) => value.toJson()).toList(),
-        if (bindings != null)
-          'bindings': bindings!.map((value) => value.toJson()).toList(),
+        if (auditConfigs != null) 'auditConfigs': auditConfigs!,
+        if (bindings != null) 'bindings': bindings!,
         if (etag != null) 'etag': etag!,
         if (version != null) 'version': version!,
       };
@@ -3398,18 +3379,16 @@ class Service {
   core.Map<core.String, core.dynamic> toJson() => {
         if (artifactGcsUri != null) 'artifactGcsUri': artifactGcsUri!,
         if (createTime != null) 'createTime': createTime!,
-        if (encryptionConfig != null)
-          'encryptionConfig': encryptionConfig!.toJson(),
+        if (encryptionConfig != null) 'encryptionConfig': encryptionConfig!,
         if (endpointUri != null) 'endpointUri': endpointUri!,
         if (hiveMetastoreConfig != null)
-          'hiveMetastoreConfig': hiveMetastoreConfig!.toJson(),
+          'hiveMetastoreConfig': hiveMetastoreConfig!,
         if (labels != null) 'labels': labels!,
-        if (maintenanceWindow != null)
-          'maintenanceWindow': maintenanceWindow!.toJson(),
+        if (maintenanceWindow != null) 'maintenanceWindow': maintenanceWindow!,
         if (metadataIntegration != null)
-          'metadataIntegration': metadataIntegration!.toJson(),
+          'metadataIntegration': metadataIntegration!,
         if (metadataManagementActivity != null)
-          'metadataManagementActivity': metadataManagementActivity!.toJson(),
+          'metadataManagementActivity': metadataManagementActivity!,
         if (name != null) 'name': name!,
         if (network != null) 'network': network!,
         if (port != null) 'port': port!,
@@ -3454,7 +3433,7 @@ class SetIamPolicyRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (policy != null) 'policy': policy!.toJson(),
+        if (policy != null) 'policy': policy!,
         if (updateMask != null) 'updateMask': updateMask!,
       };
 }

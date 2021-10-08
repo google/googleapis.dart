@@ -198,7 +198,7 @@ class BackupRunsResource {
     core.String instance, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -308,7 +308,7 @@ class ConnectResource {
     core.String instance, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -500,7 +500,7 @@ class DatabasesResource {
     core.String instance, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -594,7 +594,7 @@ class DatabasesResource {
     core.String database, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -645,7 +645,7 @@ class DatabasesResource {
     core.String database, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -793,7 +793,7 @@ class InstancesResource {
     core.String instance, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -881,7 +881,7 @@ class InstancesResource {
     core.String instance, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -929,7 +929,7 @@ class InstancesResource {
     core.String instance, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -981,7 +981,7 @@ class InstancesResource {
     core.String instance, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1069,7 +1069,7 @@ class InstancesResource {
     core.String instance, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1113,7 +1113,7 @@ class InstancesResource {
     core.String project, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1264,7 +1264,7 @@ class InstancesResource {
     core.String instance, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1438,7 +1438,7 @@ class InstancesResource {
     core.String instance, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1485,7 +1485,7 @@ class InstancesResource {
     core.String instance, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1613,7 +1613,7 @@ class InstancesResource {
     core.String instance, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1661,7 +1661,7 @@ class InstancesResource {
     core.String instance, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1818,7 +1818,7 @@ class ProjectsInstancesResource {
     core.String instance, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1864,7 +1864,7 @@ class ProjectsInstancesResource {
     core.String instance, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1911,7 +1911,7 @@ class ProjectsInstancesResource {
     core.String instance, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1968,7 +1968,7 @@ class SslCertsResource {
     core.String instance, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2113,7 +2113,7 @@ class SslCertsResource {
     core.String instance, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2302,7 +2302,7 @@ class UsersResource {
     core.String instance, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2396,7 +2396,7 @@ class UsersResource {
     core.String? name,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (host != null) 'host': [host],
       if (name != null) 'name': [name],
@@ -2583,7 +2583,7 @@ class BackupConfiguration {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (backupRetentionSettings != null)
-          'backupRetentionSettings': backupRetentionSettings!.toJson(),
+          'backupRetentionSettings': backupRetentionSettings!,
         if (binaryLogEnabled != null) 'binaryLogEnabled': binaryLogEnabled!,
         if (enabled != null) 'enabled': enabled!,
         if (kind != null) 'kind': kind!,
@@ -2820,12 +2820,12 @@ class BackupRun {
         if (backupKind != null) 'backupKind': backupKind!,
         if (description != null) 'description': description!,
         if (diskEncryptionConfiguration != null)
-          'diskEncryptionConfiguration': diskEncryptionConfiguration!.toJson(),
+          'diskEncryptionConfiguration': diskEncryptionConfiguration!,
         if (diskEncryptionStatus != null)
-          'diskEncryptionStatus': diskEncryptionStatus!.toJson(),
+          'diskEncryptionStatus': diskEncryptionStatus!,
         if (endTime != null) 'endTime': endTime!,
         if (enqueuedTime != null) 'enqueuedTime': enqueuedTime!,
-        if (error != null) 'error': error!.toJson(),
+        if (error != null) 'error': error!,
         if (id != null) 'id': id!,
         if (instance != null) 'instance': instance!,
         if (kind != null) 'kind': kind!,
@@ -2873,8 +2873,7 @@ class BackupRunsListResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (items != null)
-          'items': items!.map((value) => value.toJson()).toList(),
+        if (items != null) 'items': items!,
         if (kind != null) 'kind': kind!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
@@ -2964,8 +2963,7 @@ class CloneContext {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (binLogCoordinates != null)
-          'binLogCoordinates': binLogCoordinates!.toJson(),
+        if (binLogCoordinates != null) 'binLogCoordinates': binLogCoordinates!,
         if (destinationInstanceName != null)
           'destinationInstanceName': destinationInstanceName!,
         if (kind != null) 'kind': kind!,
@@ -3067,10 +3065,9 @@ class ConnectSettings {
   core.Map<core.String, core.dynamic> toJson() => {
         if (backendType != null) 'backendType': backendType!,
         if (databaseVersion != null) 'databaseVersion': databaseVersion!,
-        if (ipAddresses != null)
-          'ipAddresses': ipAddresses!.map((value) => value.toJson()).toList(),
+        if (ipAddresses != null) 'ipAddresses': ipAddresses!,
         if (kind != null) 'kind': kind!,
-        if (serverCaCert != null) 'serverCaCert': serverCaCert!.toJson(),
+        if (serverCaCert != null) 'serverCaCert': serverCaCert!,
       };
 }
 
@@ -3158,7 +3155,7 @@ class Database {
         if (project != null) 'project': project!,
         if (selfLink != null) 'selfLink': selfLink!,
         if (sqlserverDatabaseDetails != null)
-          'sqlserverDatabaseDetails': sqlserverDatabaseDetails!.toJson(),
+          'sqlserverDatabaseDetails': sqlserverDatabaseDetails!,
       };
 }
 
@@ -3613,16 +3610,14 @@ class DatabaseInstance {
         if (currentDiskSize != null) 'currentDiskSize': currentDiskSize!,
         if (databaseVersion != null) 'databaseVersion': databaseVersion!,
         if (diskEncryptionConfiguration != null)
-          'diskEncryptionConfiguration': diskEncryptionConfiguration!.toJson(),
+          'diskEncryptionConfiguration': diskEncryptionConfiguration!,
         if (diskEncryptionStatus != null)
-          'diskEncryptionStatus': diskEncryptionStatus!.toJson(),
+          'diskEncryptionStatus': diskEncryptionStatus!,
         if (etag != null) 'etag': etag!,
-        if (failoverReplica != null)
-          'failoverReplica': failoverReplica!.toJson(),
+        if (failoverReplica != null) 'failoverReplica': failoverReplica!,
         if (gceZone != null) 'gceZone': gceZone!,
         if (instanceType != null) 'instanceType': instanceType!,
-        if (ipAddresses != null)
-          'ipAddresses': ipAddresses!.map((value) => value.toJson()).toList(),
+        if (ipAddresses != null) 'ipAddresses': ipAddresses!,
         if (ipv6Address != null) 'ipv6Address': ipv6Address!,
         if (kind != null) 'kind': kind!,
         if (masterInstanceName != null)
@@ -3630,24 +3625,23 @@ class DatabaseInstance {
         if (maxDiskSize != null) 'maxDiskSize': maxDiskSize!,
         if (name != null) 'name': name!,
         if (onPremisesConfiguration != null)
-          'onPremisesConfiguration': onPremisesConfiguration!.toJson(),
-        if (outOfDiskReport != null)
-          'outOfDiskReport': outOfDiskReport!.toJson(),
+          'onPremisesConfiguration': onPremisesConfiguration!,
+        if (outOfDiskReport != null) 'outOfDiskReport': outOfDiskReport!,
         if (project != null) 'project': project!,
         if (region != null) 'region': region!,
         if (replicaConfiguration != null)
-          'replicaConfiguration': replicaConfiguration!.toJson(),
+          'replicaConfiguration': replicaConfiguration!,
         if (replicaNames != null) 'replicaNames': replicaNames!,
         if (rootPassword != null) 'rootPassword': rootPassword!,
         if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
         if (scheduledMaintenance != null)
-          'scheduledMaintenance': scheduledMaintenance!.toJson(),
+          'scheduledMaintenance': scheduledMaintenance!,
         if (secondaryGceZone != null) 'secondaryGceZone': secondaryGceZone!,
         if (selfLink != null) 'selfLink': selfLink!,
-        if (serverCaCert != null) 'serverCaCert': serverCaCert!.toJson(),
+        if (serverCaCert != null) 'serverCaCert': serverCaCert!,
         if (serviceAccountEmailAddress != null)
           'serviceAccountEmailAddress': serviceAccountEmailAddress!,
-        if (settings != null) 'settings': settings!.toJson(),
+        if (settings != null) 'settings': settings!,
         if (state != null) 'state': state!,
         if (suspensionReason != null) 'suspensionReason': suspensionReason!,
       };
@@ -3678,8 +3672,7 @@ class DatabasesListResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (items != null)
-          'items': items!.map((value) => value.toJson()).toList(),
+        if (items != null) 'items': items!,
         if (kind != null) 'kind': kind!,
       };
 }
@@ -3719,7 +3712,7 @@ class DemoteMasterConfiguration {
   core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
         if (mysqlReplicaConfiguration != null)
-          'mysqlReplicaConfiguration': mysqlReplicaConfiguration!.toJson(),
+          'mysqlReplicaConfiguration': mysqlReplicaConfiguration!,
       };
 }
 
@@ -3780,7 +3773,7 @@ class DemoteMasterContext {
         if (masterInstanceName != null)
           'masterInstanceName': masterInstanceName!,
         if (replicaConfiguration != null)
-          'replicaConfiguration': replicaConfiguration!.toJson(),
+          'replicaConfiguration': replicaConfiguration!,
         if (skipReplicationSetup != null)
           'skipReplicationSetup': skipReplicationSetup!,
         if (verifyGtidConsistency != null)
@@ -4043,7 +4036,7 @@ class ExportContextSqlExportOptions {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (mysqlExportOptions != null)
-          'mysqlExportOptions': mysqlExportOptions!.toJson(),
+          'mysqlExportOptions': mysqlExportOptions!,
         if (schemaOnly != null) 'schemaOnly': schemaOnly!,
         if (tables != null) 'tables': tables!,
       };
@@ -4133,14 +4126,12 @@ class ExportContext {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (csvExportOptions != null)
-          'csvExportOptions': csvExportOptions!.toJson(),
+        if (csvExportOptions != null) 'csvExportOptions': csvExportOptions!,
         if (databases != null) 'databases': databases!,
         if (fileType != null) 'fileType': fileType!,
         if (kind != null) 'kind': kind!,
         if (offload != null) 'offload': offload!,
-        if (sqlExportOptions != null)
-          'sqlExportOptions': sqlExportOptions!.toJson(),
+        if (sqlExportOptions != null) 'sqlExportOptions': sqlExportOptions!,
         if (uri != null) 'uri': uri!,
       };
 }
@@ -4314,8 +4305,7 @@ class FlagsListResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (items != null)
-          'items': items!.map((value) => value.toJson()).toList(),
+        if (items != null) 'items': items!,
         if (kind != null) 'kind': kind!,
       };
 }
@@ -4379,7 +4369,7 @@ class GenerateEphemeralCertResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (ephemeralCert != null) 'ephemeralCert': ephemeralCert!.toJson(),
+        if (ephemeralCert != null) 'ephemeralCert': ephemeralCert!,
       };
 }
 
@@ -4445,8 +4435,7 @@ class ImportContextBakImportOptions {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (encryptionOptions != null)
-          'encryptionOptions': encryptionOptions!.toJson(),
+        if (encryptionOptions != null) 'encryptionOptions': encryptionOptions!,
       };
 }
 
@@ -4560,10 +4549,8 @@ class ImportContext {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bakImportOptions != null)
-          'bakImportOptions': bakImportOptions!.toJson(),
-        if (csvImportOptions != null)
-          'csvImportOptions': csvImportOptions!.toJson(),
+        if (bakImportOptions != null) 'bakImportOptions': bakImportOptions!,
+        if (csvImportOptions != null) 'csvImportOptions': csvImportOptions!,
         if (database != null) 'database': database!,
         if (fileType != null) 'fileType': fileType!,
         if (importUser != null) 'importUser': importUser!,
@@ -4698,7 +4685,7 @@ class InstancesCloneRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cloneContext != null) 'cloneContext': cloneContext!.toJson(),
+        if (cloneContext != null) 'cloneContext': cloneContext!,
       };
 }
 
@@ -4721,7 +4708,7 @@ class InstancesDemoteMasterRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (demoteMasterContext != null)
-          'demoteMasterContext': demoteMasterContext!.toJson(),
+          'demoteMasterContext': demoteMasterContext!,
       };
 }
 
@@ -4743,7 +4730,7 @@ class InstancesExportRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (exportContext != null) 'exportContext': exportContext!.toJson(),
+        if (exportContext != null) 'exportContext': exportContext!,
       };
 }
 
@@ -4765,8 +4752,7 @@ class InstancesFailoverRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (failoverContext != null)
-          'failoverContext': failoverContext!.toJson(),
+        if (failoverContext != null) 'failoverContext': failoverContext!,
       };
 }
 
@@ -4788,7 +4774,7 @@ class InstancesImportRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (importContext != null) 'importContext': importContext!.toJson(),
+        if (importContext != null) 'importContext': importContext!,
       };
 }
 
@@ -4837,12 +4823,10 @@ class InstancesListResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (items != null)
-          'items': items!.map((value) => value.toJson()).toList(),
+        if (items != null) 'items': items!,
         if (kind != null) 'kind': kind!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (warnings != null)
-          'warnings': warnings!.map((value) => value.toJson()).toList(),
+        if (warnings != null) 'warnings': warnings!,
       };
 }
 
@@ -4878,8 +4862,7 @@ class InstancesListServerCasResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (activeVersion != null) 'activeVersion': activeVersion!,
-        if (certs != null)
-          'certs': certs!.map((value) => value.toJson()).toList(),
+        if (certs != null) 'certs': certs!,
         if (kind != null) 'kind': kind!,
       };
 }
@@ -4903,7 +4886,7 @@ class InstancesRestoreBackupRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (restoreBackupContext != null)
-          'restoreBackupContext': restoreBackupContext!.toJson(),
+          'restoreBackupContext': restoreBackupContext!,
       };
 }
 
@@ -4926,7 +4909,7 @@ class InstancesRotateServerCaRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (rotateServerCaContext != null)
-          'rotateServerCaContext': rotateServerCaContext!.toJson(),
+          'rotateServerCaContext': rotateServerCaContext!,
       };
 }
 
@@ -4949,7 +4932,7 @@ class InstancesTruncateLogRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (truncateLogContext != null)
-          'truncateLogContext': truncateLogContext!.toJson(),
+          'truncateLogContext': truncateLogContext!,
       };
 }
 
@@ -5017,8 +5000,7 @@ class IpConfiguration {
   core.Map<core.String, core.dynamic> toJson() => {
         if (allocatedIpRange != null) 'allocatedIpRange': allocatedIpRange!,
         if (authorizedNetworks != null)
-          'authorizedNetworks':
-              authorizedNetworks!.map((value) => value.toJson()).toList(),
+          'authorizedNetworks': authorizedNetworks!,
         if (ipv4Enabled != null) 'ipv4Enabled': ipv4Enabled!,
         if (privateNetwork != null) 'privateNetwork': privateNetwork!,
         if (requireSsl != null) 'requireSsl': requireSsl!,
@@ -5318,9 +5300,7 @@ class MySqlSyncConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (initialSyncFlags != null)
-          'initialSyncFlags':
-              initialSyncFlags!.map((value) => value.toJson()).toList(),
+        if (initialSyncFlags != null) 'initialSyncFlags': initialSyncFlags!,
       };
 }
 
@@ -5405,7 +5385,7 @@ class OnPremisesConfiguration {
         if (hostPort != null) 'hostPort': hostPort!,
         if (kind != null) 'kind': kind!,
         if (password != null) 'password': password!,
-        if (sourceInstance != null) 'sourceInstance': sourceInstance!.toJson(),
+        if (sourceInstance != null) 'sourceInstance': sourceInstance!,
         if (username != null) 'username': username!,
       };
 }
@@ -5595,11 +5575,11 @@ class Operation {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (backupContext != null) 'backupContext': backupContext!.toJson(),
+        if (backupContext != null) 'backupContext': backupContext!,
         if (endTime != null) 'endTime': endTime!,
-        if (error != null) 'error': error!.toJson(),
-        if (exportContext != null) 'exportContext': exportContext!.toJson(),
-        if (importContext != null) 'importContext': importContext!.toJson(),
+        if (error != null) 'error': error!,
+        if (exportContext != null) 'exportContext': exportContext!,
+        if (importContext != null) 'importContext': importContext!,
         if (insertTime != null) 'insertTime': insertTime!,
         if (kind != null) 'kind': kind!,
         if (name != null) 'name': name!,
@@ -5672,8 +5652,7 @@ class OperationErrors {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (errors != null)
-          'errors': errors!.map((value) => value.toJson()).toList(),
+        if (errors != null) 'errors': errors!,
         if (kind != null) 'kind': kind!,
       };
 }
@@ -5713,8 +5692,7 @@ class OperationsListResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (items != null)
-          'items': items!.map((value) => value.toJson()).toList(),
+        if (items != null) 'items': items!,
         if (kind != null) 'kind': kind!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
@@ -5768,7 +5746,7 @@ class ReplicaConfiguration {
         if (failoverTarget != null) 'failoverTarget': failoverTarget!,
         if (kind != null) 'kind': kind!,
         if (mysqlReplicaConfiguration != null)
-          'mysqlReplicaConfiguration': mysqlReplicaConfiguration!.toJson(),
+          'mysqlReplicaConfiguration': mysqlReplicaConfiguration!,
       };
 }
 
@@ -6165,33 +6143,28 @@ class Settings {
   core.Map<core.String, core.dynamic> toJson() => {
         if (activationPolicy != null) 'activationPolicy': activationPolicy!,
         if (activeDirectoryConfig != null)
-          'activeDirectoryConfig': activeDirectoryConfig!.toJson(),
+          'activeDirectoryConfig': activeDirectoryConfig!,
         if (authorizedGaeApplications != null)
           'authorizedGaeApplications': authorizedGaeApplications!,
         if (availabilityType != null) 'availabilityType': availabilityType!,
         if (backupConfiguration != null)
-          'backupConfiguration': backupConfiguration!.toJson(),
+          'backupConfiguration': backupConfiguration!,
         if (collation != null) 'collation': collation!,
         if (crashSafeReplicationEnabled != null)
           'crashSafeReplicationEnabled': crashSafeReplicationEnabled!,
         if (dataDiskSizeGb != null) 'dataDiskSizeGb': dataDiskSizeGb!,
         if (dataDiskType != null) 'dataDiskType': dataDiskType!,
-        if (databaseFlags != null)
-          'databaseFlags':
-              databaseFlags!.map((value) => value.toJson()).toList(),
+        if (databaseFlags != null) 'databaseFlags': databaseFlags!,
         if (databaseReplicationEnabled != null)
           'databaseReplicationEnabled': databaseReplicationEnabled!,
         if (denyMaintenancePeriods != null)
-          'denyMaintenancePeriods':
-              denyMaintenancePeriods!.map((value) => value.toJson()).toList(),
-        if (insightsConfig != null) 'insightsConfig': insightsConfig!.toJson(),
-        if (ipConfiguration != null)
-          'ipConfiguration': ipConfiguration!.toJson(),
+          'denyMaintenancePeriods': denyMaintenancePeriods!,
+        if (insightsConfig != null) 'insightsConfig': insightsConfig!,
+        if (ipConfiguration != null) 'ipConfiguration': ipConfiguration!,
         if (kind != null) 'kind': kind!,
         if (locationPreference != null)
-          'locationPreference': locationPreference!.toJson(),
-        if (maintenanceWindow != null)
-          'maintenanceWindow': maintenanceWindow!.toJson(),
+          'locationPreference': locationPreference!,
+        if (maintenanceWindow != null) 'maintenanceWindow': maintenanceWindow!,
         if (pricingPlan != null) 'pricingPlan': pricingPlan!,
         if (replicationType != null) 'replicationType': replicationType!,
         if (settingsVersion != null) 'settingsVersion': settingsVersion!,
@@ -6324,7 +6297,7 @@ class SqlInstancesRescheduleMaintenanceRequestBody {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (reschedule != null) 'reschedule': reschedule!.toJson(),
+        if (reschedule != null) 'reschedule': reschedule!,
       };
 }
 
@@ -6366,8 +6339,7 @@ class SqlInstancesStartExternalSyncRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (mysqlSyncConfig != null)
-          'mysqlSyncConfig': mysqlSyncConfig!.toJson(),
+        if (mysqlSyncConfig != null) 'mysqlSyncConfig': mysqlSyncConfig!,
         if (skipVerification != null) 'skipVerification': skipVerification!,
         if (syncMode != null) 'syncMode': syncMode!,
       };
@@ -6413,8 +6385,7 @@ class SqlInstancesVerifyExternalSyncSettingsRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (mysqlSyncConfig != null)
-          'mysqlSyncConfig': mysqlSyncConfig!.toJson(),
+        if (mysqlSyncConfig != null) 'mysqlSyncConfig': mysqlSyncConfig!,
         if (syncMode != null) 'syncMode': syncMode!,
         if (verifyConnectionOnly != null)
           'verifyConnectionOnly': verifyConnectionOnly!,
@@ -6456,11 +6427,9 @@ class SqlInstancesVerifyExternalSyncSettingsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (errors != null)
-          'errors': errors!.map((value) => value.toJson()).toList(),
+        if (errors != null) 'errors': errors!,
         if (kind != null) 'kind': kind!,
-        if (warnings != null)
-          'warnings': warnings!.map((value) => value.toJson()).toList(),
+        if (warnings != null) 'warnings': warnings!,
       };
 }
 
@@ -6723,7 +6692,7 @@ class SslCertDetail {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (certInfo != null) 'certInfo': certInfo!.toJson(),
+        if (certInfo != null) 'certInfo': certInfo!,
         if (certPrivateKey != null) 'certPrivateKey': certPrivateKey!,
       };
 }
@@ -6822,10 +6791,10 @@ class SslCertsInsertResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (clientCert != null) 'clientCert': clientCert!.toJson(),
+        if (clientCert != null) 'clientCert': clientCert!,
         if (kind != null) 'kind': kind!,
-        if (operation != null) 'operation': operation!.toJson(),
-        if (serverCaCert != null) 'serverCaCert': serverCaCert!.toJson(),
+        if (operation != null) 'operation': operation!,
+        if (serverCaCert != null) 'serverCaCert': serverCaCert!,
       };
 }
 
@@ -6854,8 +6823,7 @@ class SslCertsListResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (items != null)
-          'items': items!.map((value) => value.toJson()).toList(),
+        if (items != null) 'items': items!,
         if (kind != null) 'kind': kind!,
       };
 }
@@ -6966,8 +6934,7 @@ class TiersListResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (items != null)
-          'items': items!.map((value) => value.toJson()).toList(),
+        if (items != null) 'items': items!,
         if (kind != null) 'kind': kind!,
       };
 }
@@ -7091,7 +7058,7 @@ class User {
         if (password != null) 'password': password!,
         if (project != null) 'project': project!,
         if (sqlserverUserDetails != null)
-          'sqlserverUserDetails': sqlserverUserDetails!.toJson(),
+          'sqlserverUserDetails': sqlserverUserDetails!,
         if (type != null) 'type': type!,
       };
 }
@@ -7131,8 +7098,7 @@ class UsersListResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (items != null)
-          'items': items!.map((value) => value.toJson()).toList(),
+        if (items != null) 'items': items!,
         if (kind != null) 'kind': kind!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };

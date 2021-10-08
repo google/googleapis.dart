@@ -79,7 +79,7 @@ class RecordsResource {
     QueryRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -252,9 +252,8 @@ class Metric {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (histogram != null)
-          'histogram': histogram!.map((value) => value.toJson()).toList(),
-        if (percentiles != null) 'percentiles': percentiles!.toJson(),
+        if (histogram != null) 'histogram': histogram!,
+        if (percentiles != null) 'percentiles': percentiles!,
       };
 }
 
@@ -400,9 +399,9 @@ class QueryResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (record != null) 'record': record!.toJson(),
+        if (record != null) 'record': record!,
         if (urlNormalizationDetails != null)
-          'urlNormalizationDetails': urlNormalizationDetails!.toJson(),
+          'urlNormalizationDetails': urlNormalizationDetails!,
       };
 }
 
@@ -446,10 +445,8 @@ class Record {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (key != null) 'key': key!.toJson(),
-        if (metrics != null)
-          'metrics':
-              metrics!.map((key, item) => core.MapEntry(key, item.toJson())),
+        if (key != null) 'key': key!,
+        if (metrics != null) 'metrics': metrics!,
       };
 }
 

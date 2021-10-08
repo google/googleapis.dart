@@ -318,7 +318,7 @@ class DevicesResource {
     core.String deviceId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -383,7 +383,7 @@ class DevicesResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -519,7 +519,7 @@ class EnterprisesResource {
     core.String enterpriseId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -562,7 +562,7 @@ class EnterprisesResource {
     core.String token, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       'token': [token],
       if ($fields != null) 'fields': [$fields],
@@ -925,7 +925,7 @@ class EnterprisesResource {
     core.String enterpriseId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -975,7 +975,7 @@ class EnterprisesResource {
     core.String enterpriseId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1205,7 +1205,7 @@ class EntitlementsResource {
     core.bool? install,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (install != null) 'install': ['${install}'],
       if ($fields != null) 'fields': [$fields],
@@ -1556,7 +1556,7 @@ class InstallsResource {
     core.String installId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1771,7 +1771,7 @@ class ManagedconfigurationsfordeviceResource {
     core.String managedConfigurationForDeviceId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1975,7 +1975,7 @@ class ManagedconfigurationsforuserResource {
     core.String managedConfigurationForUserId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2130,7 +2130,7 @@ class ProductsResource {
     core.String productId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2532,7 +2532,7 @@ class ServiceaccountkeysResource {
     core.String enterpriseId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2716,7 +2716,7 @@ class StorelayoutclustersResource {
     core.String pageId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2808,7 +2808,7 @@ class StorelayoutclustersResource {
     core.String clusterId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2937,7 +2937,7 @@ class StorelayoutpagesResource {
     core.String enterpriseId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3018,7 +3018,7 @@ class StorelayoutpagesResource {
     core.String pageId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3238,7 +3238,7 @@ class UsersResource {
     core.String enterpriseId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3374,7 +3374,7 @@ class UsersResource {
     core.String userId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3426,7 +3426,7 @@ class UsersResource {
     core.String userId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3552,7 +3552,7 @@ class WebappsResource {
     core.String enterpriseId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3633,7 +3633,7 @@ class WebappsResource {
     core.String webAppId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3778,14 +3778,14 @@ class AdministratorWebTokenSpec {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (managedConfigurations != null)
-          'managedConfigurations': managedConfigurations!.toJson(),
+          'managedConfigurations': managedConfigurations!,
         if (parent != null) 'parent': parent!,
         if (permission != null) 'permission': permission!,
-        if (playSearch != null) 'playSearch': playSearch!.toJson(),
-        if (privateApps != null) 'privateApps': privateApps!.toJson(),
-        if (storeBuilder != null) 'storeBuilder': storeBuilder!.toJson(),
-        if (webApps != null) 'webApps': webApps!.toJson(),
-        if (zeroTouch != null) 'zeroTouch': zeroTouch!.toJson(),
+        if (playSearch != null) 'playSearch': playSearch!,
+        if (privateApps != null) 'privateApps': privateApps!,
+        if (storeBuilder != null) 'storeBuilder': storeBuilder!,
+        if (webApps != null) 'webApps': webApps!,
+        if (zeroTouch != null) 'zeroTouch': zeroTouch!,
       };
 }
 
@@ -3958,8 +3958,7 @@ class AppRestrictionsSchema {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
-        if (restrictions != null)
-          'restrictions': restrictions!.map((value) => value.toJson()).toList(),
+        if (restrictions != null) 'restrictions': restrictions!,
       };
 }
 
@@ -4087,14 +4086,12 @@ class AppRestrictionsSchemaRestriction {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (defaultValue != null) 'defaultValue': defaultValue!.toJson(),
+        if (defaultValue != null) 'defaultValue': defaultValue!,
         if (description != null) 'description': description!,
         if (entry != null) 'entry': entry!,
         if (entryValue != null) 'entryValue': entryValue!,
         if (key != null) 'key': key!,
-        if (nestedRestriction != null)
-          'nestedRestriction':
-              nestedRestriction!.map((value) => value.toJson()).toList(),
+        if (nestedRestriction != null) 'nestedRestriction': nestedRestriction!,
         if (restrictionType != null) 'restrictionType': restrictionType!,
         if (title != null) 'title': title!,
       };
@@ -4197,9 +4194,7 @@ class AppState {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (keyedAppState != null)
-          'keyedAppState':
-              keyedAppState!.map((value) => value.toJson()).toList(),
+        if (keyedAppState != null) 'keyedAppState': keyedAppState!,
         if (packageName != null) 'packageName': packageName!,
       };
 }
@@ -4460,8 +4455,7 @@ class AutoInstallPolicy {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (autoInstallConstraint != null)
-          'autoInstallConstraint':
-              autoInstallConstraint!.map((value) => value.toJson()).toList(),
+          'autoInstallConstraint': autoInstallConstraint!,
         if (autoInstallMode != null) 'autoInstallMode': autoInstallMode!,
         if (autoInstallPriority != null)
           'autoInstallPriority': autoInstallPriority!,
@@ -4502,8 +4496,7 @@ class ConfigurationVariables {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (mcmId != null) 'mcmId': mcmId!,
-        if (variableSet != null)
-          'variableSet': variableSet!.map((value) => value.toJson()).toList(),
+        if (variableSet != null) 'variableSet': variableSet!,
       };
 }
 
@@ -4568,8 +4561,8 @@ class Device {
   core.Map<core.String, core.dynamic> toJson() => {
         if (androidId != null) 'androidId': androidId!,
         if (managementType != null) 'managementType': managementType!,
-        if (policy != null) 'policy': policy!.toJson(),
-        if (report != null) 'report': report!.toJson(),
+        if (policy != null) 'policy': policy!,
+        if (report != null) 'report': report!,
       };
 }
 
@@ -4607,8 +4600,7 @@ class DeviceReport {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (appState != null)
-          'appState': appState!.map((value) => value.toJson()).toList(),
+        if (appState != null) 'appState': appState!,
         if (lastUpdatedTimestampMillis != null)
           'lastUpdatedTimestampMillis': lastUpdatedTimestampMillis!,
       };
@@ -4653,7 +4645,7 @@ class DeviceReportUpdateEvent {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (deviceId != null) 'deviceId': deviceId!,
-        if (report != null) 'report': report!.toJson(),
+        if (report != null) 'report': report!,
         if (userId != null) 'userId': userId!,
       };
 }
@@ -4706,8 +4698,7 @@ class DevicesListResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (device != null)
-          'device': device!.map((value) => value.toJson()).toList(),
+        if (device != null) 'device': device!,
       };
 }
 
@@ -4763,9 +4754,7 @@ class Enterprise {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (administrator != null)
-          'administrator':
-              administrator!.map((value) => value.toJson()).toList(),
+        if (administrator != null) 'administrator': administrator!,
         if (id != null) 'id': id!,
         if (name != null) 'name': name!,
         if (primaryDomain != null) 'primaryDomain': primaryDomain!,
@@ -4813,8 +4802,7 @@ class EnterprisesListResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (enterprise != null)
-          'enterprise': enterprise!.map((value) => value.toJson()).toList(),
+        if (enterprise != null) 'enterprise': enterprise!,
       };
 }
 
@@ -4926,8 +4914,7 @@ class EntitlementsListResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (entitlement != null)
-          'entitlement': entitlement!.map((value) => value.toJson()).toList(),
+        if (entitlement != null) 'entitlement': entitlement!,
       };
 }
 
@@ -5063,7 +5050,7 @@ class GroupLicenseUsersListResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (user != null) 'user': user!.map((value) => value.toJson()).toList(),
+        if (user != null) 'user': user!,
       };
 }
 
@@ -5086,8 +5073,7 @@ class GroupLicensesListResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (groupLicense != null)
-          'groupLicense': groupLicense!.map((value) => value.toJson()).toList(),
+        if (groupLicense != null) 'groupLicense': groupLicense!,
       };
 }
 
@@ -5247,8 +5233,7 @@ class InstallsListResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (install != null)
-          'install': install!.map((value) => value.toJson()).toList(),
+        if (install != null) 'install': install!,
       };
 }
 
@@ -5434,11 +5419,9 @@ class ManagedConfiguration {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (configurationVariables != null)
-          'configurationVariables': configurationVariables!.toJson(),
+          'configurationVariables': configurationVariables!,
         if (kind != null) 'kind': kind!,
-        if (managedProperty != null)
-          'managedProperty':
-              managedProperty!.map((value) => value.toJson()).toList(),
+        if (managedProperty != null) 'managedProperty': managedProperty!,
         if (productId != null) 'productId': productId!,
       };
 }
@@ -5464,9 +5447,7 @@ class ManagedConfigurationsForDeviceListResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (managedConfigurationForDevice != null)
-          'managedConfigurationForDevice': managedConfigurationForDevice!
-              .map((value) => value.toJson())
-              .toList(),
+          'managedConfigurationForDevice': managedConfigurationForDevice!,
       };
 }
 
@@ -5491,9 +5472,7 @@ class ManagedConfigurationsForUserListResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (managedConfigurationForUser != null)
-          'managedConfigurationForUser': managedConfigurationForUser!
-              .map((value) => value.toJson())
-              .toList(),
+          'managedConfigurationForUser': managedConfigurationForUser!,
       };
 }
 
@@ -5561,9 +5540,7 @@ class ManagedConfigurationsSettingsListResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (managedConfigurationsSettings != null)
-          'managedConfigurationsSettings': managedConfigurationsSettings!
-              .map((value) => value.toJson())
-              .toList(),
+          'managedConfigurationsSettings': managedConfigurationsSettings!,
       };
 }
 
@@ -5642,10 +5619,8 @@ class ManagedProperty {
   core.Map<core.String, core.dynamic> toJson() => {
         if (key != null) 'key': key!,
         if (valueBool != null) 'valueBool': valueBool!,
-        if (valueBundle != null) 'valueBundle': valueBundle!.toJson(),
-        if (valueBundleArray != null)
-          'valueBundleArray':
-              valueBundleArray!.map((value) => value.toJson()).toList(),
+        if (valueBundle != null) 'valueBundle': valueBundle!,
+        if (valueBundleArray != null) 'valueBundleArray': valueBundleArray!,
         if (valueInteger != null) 'valueInteger': valueInteger!,
         if (valueString != null) 'valueString': valueString!,
         if (valueStringArray != null) 'valueStringArray': valueStringArray!,
@@ -5672,9 +5647,7 @@ class ManagedPropertyBundle {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (managedProperty != null)
-          'managedProperty':
-              managedProperty!.map((value) => value.toJson()).toList(),
+        if (managedProperty != null) 'managedProperty': managedProperty!,
       };
 }
 
@@ -5908,23 +5881,21 @@ class Notification {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (appRestrictionsSchemaChangeEvent != null)
-          'appRestrictionsSchemaChangeEvent':
-              appRestrictionsSchemaChangeEvent!.toJson(),
-        if (appUpdateEvent != null) 'appUpdateEvent': appUpdateEvent!.toJson(),
+          'appRestrictionsSchemaChangeEvent': appRestrictionsSchemaChangeEvent!,
+        if (appUpdateEvent != null) 'appUpdateEvent': appUpdateEvent!,
         if (deviceReportUpdateEvent != null)
-          'deviceReportUpdateEvent': deviceReportUpdateEvent!.toJson(),
+          'deviceReportUpdateEvent': deviceReportUpdateEvent!,
         if (enterpriseId != null) 'enterpriseId': enterpriseId!,
         if (installFailureEvent != null)
-          'installFailureEvent': installFailureEvent!.toJson(),
-        if (newDeviceEvent != null) 'newDeviceEvent': newDeviceEvent!.toJson(),
+          'installFailureEvent': installFailureEvent!,
+        if (newDeviceEvent != null) 'newDeviceEvent': newDeviceEvent!,
         if (newPermissionsEvent != null)
-          'newPermissionsEvent': newPermissionsEvent!.toJson(),
+          'newPermissionsEvent': newPermissionsEvent!,
         if (notificationType != null) 'notificationType': notificationType!,
         if (productApprovalEvent != null)
-          'productApprovalEvent': productApprovalEvent!.toJson(),
+          'productApprovalEvent': productApprovalEvent!,
         if (productAvailabilityChangeEvent != null)
-          'productAvailabilityChangeEvent':
-              productAvailabilityChangeEvent!.toJson(),
+          'productAvailabilityChangeEvent': productAvailabilityChangeEvent!,
         if (timestampMillis != null) 'timestampMillis': timestampMillis!,
       };
 }
@@ -5961,8 +5932,7 @@ class NotificationSet {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (notification != null)
-          'notification': notification!.map((value) => value.toJson()).toList(),
+        if (notification != null) 'notification': notification!,
         if (notificationSetId != null) 'notificationSetId': notificationSetId!,
       };
 }
@@ -6145,13 +6115,10 @@ class Policy {
         if (autoUpdatePolicy != null) 'autoUpdatePolicy': autoUpdatePolicy!,
         if (deviceReportPolicy != null)
           'deviceReportPolicy': deviceReportPolicy!,
-        if (maintenanceWindow != null)
-          'maintenanceWindow': maintenanceWindow!.toJson(),
+        if (maintenanceWindow != null) 'maintenanceWindow': maintenanceWindow!,
         if (productAvailabilityPolicy != null)
           'productAvailabilityPolicy': productAvailabilityPolicy!,
-        if (productPolicy != null)
-          'productPolicy':
-              productPolicy!.map((value) => value.toJson()).toList(),
+        if (productPolicy != null) 'productPolicy': productPolicy!,
       };
 }
 
@@ -6394,10 +6361,8 @@ class Product {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (appTracks != null)
-          'appTracks': appTracks!.map((value) => value.toJson()).toList(),
-        if (appVersion != null)
-          'appVersion': appVersion!.map((value) => value.toJson()).toList(),
+        if (appTracks != null) 'appTracks': appTracks!,
+        if (appVersion != null) 'appVersion': appVersion!,
         if (authorName != null) 'authorName': authorName!,
         if (availableCountries != null)
           'availableCountries': availableCountries!,
@@ -6414,8 +6379,7 @@ class Product {
           'lastUpdatedTimestampMillis': lastUpdatedTimestampMillis!,
         if (minAndroidSdkVersion != null)
           'minAndroidSdkVersion': minAndroidSdkVersion!,
-        if (permissions != null)
-          'permissions': permissions!.map((value) => value.toJson()).toList(),
+        if (permissions != null) 'permissions': permissions!,
         if (productId != null) 'productId': productId!,
         if (productPricing != null) 'productPricing': productPricing!,
         if (recentChanges != null) 'recentChanges': recentChanges!,
@@ -6423,7 +6387,7 @@ class Product {
           'requiresContainerApp': requiresContainerApp!,
         if (screenshotUrls != null) 'screenshotUrls': screenshotUrls!,
         if (signingCertificate != null)
-          'signingCertificate': signingCertificate!.toJson(),
+          'signingCertificate': signingCertificate!,
         if (smallIconUrl != null) 'smallIconUrl': smallIconUrl!,
         if (title != null) 'title': title!,
         if (workDetailsUrl != null) 'workDetailsUrl': workDetailsUrl!,
@@ -6575,8 +6539,7 @@ class ProductPermissions {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (permission != null)
-          'permission': permission!.map((value) => value.toJson()).toList(),
+        if (permission != null) 'permission': permission!,
         if (productId != null) 'productId': productId!,
       };
 }
@@ -6667,11 +6630,10 @@ class ProductPolicy {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (autoInstallPolicy != null)
-          'autoInstallPolicy': autoInstallPolicy!.toJson(),
+        if (autoInstallPolicy != null) 'autoInstallPolicy': autoInstallPolicy!,
         if (autoUpdateMode != null) 'autoUpdateMode': autoUpdateMode!,
         if (managedConfiguration != null)
-          'managedConfiguration': managedConfiguration!.toJson(),
+          'managedConfiguration': managedConfiguration!,
         if (productId != null) 'productId': productId!,
         if (trackIds != null) 'trackIds': trackIds!,
         if (tracks != null) 'tracks': tracks!,
@@ -6744,9 +6706,7 @@ class ProductSet {
         if (productId != null) 'productId': productId!,
         if (productSetBehavior != null)
           'productSetBehavior': productSetBehavior!,
-        if (productVisibility != null)
-          'productVisibility':
-              productVisibility!.map((value) => value.toJson()).toList(),
+        if (productVisibility != null) 'productVisibility': productVisibility!,
       };
 }
 
@@ -6872,8 +6832,7 @@ class ProductsApproveRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (approvalUrlInfo != null)
-          'approvalUrlInfo': approvalUrlInfo!.toJson(),
+        if (approvalUrlInfo != null) 'approvalUrlInfo': approvalUrlInfo!,
         if (approvedPermissions != null)
           'approvedPermissions': approvedPermissions!,
       };
@@ -6942,11 +6901,9 @@ class ProductsListResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (pageInfo != null) 'pageInfo': pageInfo!.toJson(),
-        if (product != null)
-          'product': product!.map((value) => value.toJson()).toList(),
-        if (tokenPagination != null)
-          'tokenPagination': tokenPagination!.toJson(),
+        if (pageInfo != null) 'pageInfo': pageInfo!,
+        if (product != null) 'product': product!,
+        if (tokenPagination != null) 'tokenPagination': tokenPagination!,
       };
 }
 
@@ -6976,7 +6933,7 @@ class ServiceAccount {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (key != null) 'key': key!.toJson(),
+        if (key != null) 'key': key!,
         if (name != null) 'name': name!,
       };
 }
@@ -7055,9 +7012,7 @@ class ServiceAccountKeysListResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (serviceAccountKey != null)
-          'serviceAccountKey':
-              serviceAccountKey!.map((value) => value.toJson()).toList(),
+        if (serviceAccountKey != null) 'serviceAccountKey': serviceAccountKey!,
       };
 }
 
@@ -7156,7 +7111,7 @@ class StoreCluster {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (id != null) 'id': id!,
-        if (name != null) 'name': name!.map((value) => value.toJson()).toList(),
+        if (name != null) 'name': name!,
         if (orderInPage != null) 'orderInPage': orderInPage!,
         if (productId != null) 'productId': productId!,
       };
@@ -7223,8 +7178,7 @@ class StoreLayoutClustersListResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cluster != null)
-          'cluster': cluster!.map((value) => value.toJson()).toList(),
+        if (cluster != null) 'cluster': cluster!,
       };
 }
 
@@ -7247,7 +7201,7 @@ class StoreLayoutPagesListResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (page != null) 'page': page!.map((value) => value.toJson()).toList(),
+        if (page != null) 'page': page!,
       };
 }
 
@@ -7300,7 +7254,7 @@ class StorePage {
   core.Map<core.String, core.dynamic> toJson() => {
         if (id != null) 'id': id!,
         if (link != null) 'link': link!,
-        if (name != null) 'name': name!.map((value) => value.toJson()).toList(),
+        if (name != null) 'name': name!,
       };
 }
 
@@ -7491,7 +7445,7 @@ class UsersListResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (user != null) 'user': user!.map((value) => value.toJson()).toList(),
+        if (user != null) 'user': user!,
       };
 }
 
@@ -7627,8 +7581,7 @@ class WebApp {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (displayMode != null) 'displayMode': displayMode!,
-        if (icons != null)
-          'icons': icons!.map((value) => value.toJson()).toList(),
+        if (icons != null) 'icons': icons!,
         if (isPublished != null) 'isPublished': isPublished!,
         if (startUrl != null) 'startUrl': startUrl!,
         if (title != null) 'title': title!,
@@ -7681,7 +7634,6 @@ class WebAppsListResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (webApp != null)
-          'webApp': webApp!.map((value) => value.toJson()).toList(),
+        if (webApp != null) 'webApp': webApp!,
       };
 }

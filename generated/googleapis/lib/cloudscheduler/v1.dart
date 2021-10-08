@@ -192,7 +192,7 @@ class ProjectsLocationsJobsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -380,7 +380,7 @@ class ProjectsLocationsJobsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -428,7 +428,7 @@ class ProjectsLocationsJobsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -474,7 +474,7 @@ class ProjectsLocationsJobsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -519,7 +519,7 @@ class ProjectsLocationsJobsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -638,8 +638,7 @@ class AppEngineHttpTarget {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (appEngineRouting != null)
-          'appEngineRouting': appEngineRouting!.toJson(),
+        if (appEngineRouting != null) 'appEngineRouting': appEngineRouting!,
         if (body != null) 'body': body!,
         if (headers != null) 'headers': headers!,
         if (httpMethod != null) 'httpMethod': httpMethod!,
@@ -861,8 +860,8 @@ class HttpTarget {
         if (body != null) 'body': body!,
         if (headers != null) 'headers': headers!,
         if (httpMethod != null) 'httpMethod': httpMethod!,
-        if (oauthToken != null) 'oauthToken': oauthToken!.toJson(),
-        if (oidcToken != null) 'oidcToken': oidcToken!.toJson(),
+        if (oauthToken != null) 'oauthToken': oauthToken!,
+        if (oidcToken != null) 'oidcToken': oidcToken!,
         if (uri != null) 'uri': uri!,
       };
 }
@@ -1046,18 +1045,18 @@ class Job {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (appEngineHttpTarget != null)
-          'appEngineHttpTarget': appEngineHttpTarget!.toJson(),
+          'appEngineHttpTarget': appEngineHttpTarget!,
         if (attemptDeadline != null) 'attemptDeadline': attemptDeadline!,
         if (description != null) 'description': description!,
-        if (httpTarget != null) 'httpTarget': httpTarget!.toJson(),
+        if (httpTarget != null) 'httpTarget': httpTarget!,
         if (lastAttemptTime != null) 'lastAttemptTime': lastAttemptTime!,
         if (name != null) 'name': name!,
-        if (pubsubTarget != null) 'pubsubTarget': pubsubTarget!.toJson(),
-        if (retryConfig != null) 'retryConfig': retryConfig!.toJson(),
+        if (pubsubTarget != null) 'pubsubTarget': pubsubTarget!,
+        if (retryConfig != null) 'retryConfig': retryConfig!,
         if (schedule != null) 'schedule': schedule!,
         if (scheduleTime != null) 'scheduleTime': scheduleTime!,
         if (state != null) 'state': state!,
-        if (status != null) 'status': status!.toJson(),
+        if (status != null) 'status': status!,
         if (timeZone != null) 'timeZone': timeZone!,
         if (userUpdateTime != null) 'userUpdateTime': userUpdateTime!,
       };
@@ -1095,7 +1094,7 @@ class ListJobsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (jobs != null) 'jobs': jobs!.map((value) => value.toJson()).toList(),
+        if (jobs != null) 'jobs': jobs!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -1127,8 +1126,7 @@ class ListLocationsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (locations != null)
-          'locations': locations!.map((value) => value.toJson()).toList(),
+        if (locations != null) 'locations': locations!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }

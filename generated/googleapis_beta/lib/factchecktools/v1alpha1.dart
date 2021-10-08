@@ -163,7 +163,7 @@ class PagesResource {
     GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -357,7 +357,7 @@ class PagesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -421,8 +421,7 @@ class GoogleFactcheckingFactchecktoolsV1alpha1Claim {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (claimDate != null) 'claimDate': claimDate!,
-        if (claimReview != null)
-          'claimReview': claimReview!.map((value) => value.toJson()).toList(),
+        if (claimReview != null) 'claimReview': claimReview!,
         if (claimant != null) 'claimant': claimant!,
         if (text != null) 'text': text!,
       };
@@ -601,7 +600,7 @@ class GoogleFactcheckingFactchecktoolsV1alpha1ClaimReview {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (languageCode != null) 'languageCode': languageCode!,
-        if (publisher != null) 'publisher': publisher!.toJson(),
+        if (publisher != null) 'publisher': publisher!,
         if (reviewDate != null) 'reviewDate': reviewDate!,
         if (textualRating != null) 'textualRating': textualRating!,
         if (title != null) 'title': title!,
@@ -729,13 +728,13 @@ class GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (claimAppearances != null) 'claimAppearances': claimAppearances!,
-        if (claimAuthor != null) 'claimAuthor': claimAuthor!.toJson(),
+        if (claimAuthor != null) 'claimAuthor': claimAuthor!,
         if (claimDate != null) 'claimDate': claimDate!,
         if (claimFirstAppearance != null)
           'claimFirstAppearance': claimFirstAppearance!,
         if (claimLocation != null) 'claimLocation': claimLocation!,
         if (claimReviewed != null) 'claimReviewed': claimReviewed!,
-        if (rating != null) 'rating': rating!.toJson(),
+        if (rating != null) 'rating': rating!,
         if (url != null) 'url': url!,
       };
 }
@@ -820,11 +819,9 @@ class GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (claimReviewAuthor != null)
-          'claimReviewAuthor': claimReviewAuthor!.toJson(),
+        if (claimReviewAuthor != null) 'claimReviewAuthor': claimReviewAuthor!,
         if (claimReviewMarkups != null)
-          'claimReviewMarkups':
-              claimReviewMarkups!.map((value) => value.toJson()).toList(),
+          'claimReviewMarkups': claimReviewMarkups!,
         if (name != null) 'name': name!,
         if (pageUrl != null) 'pageUrl': pageUrl!,
         if (publishDate != null) 'publishDate': publishDate!,
@@ -864,8 +861,7 @@ class GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (claims != null)
-          'claims': claims!.map((value) => value.toJson()).toList(),
+        if (claims != null) 'claims': claims!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -905,8 +901,7 @@ class GoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (claimReviewMarkupPages != null)
-          'claimReviewMarkupPages':
-              claimReviewMarkupPages!.map((value) => value.toJson()).toList(),
+          'claimReviewMarkupPages': claimReviewMarkupPages!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }

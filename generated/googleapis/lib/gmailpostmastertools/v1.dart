@@ -520,8 +520,7 @@ class ListDomainsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (domains != null)
-          'domains': domains!.map((value) => value.toJson()).toList(),
+        if (domains != null) 'domains': domains!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -555,8 +554,7 @@ class ListTrafficStatsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (trafficStats != null)
-          'trafficStats': trafficStats!.map((value) => value.toJson()).toList(),
+        if (trafficStats != null) 'trafficStats': trafficStats!,
       };
 }
 
@@ -705,23 +703,18 @@ class TrafficStats {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (deliveryErrors != null)
-          'deliveryErrors':
-              deliveryErrors!.map((value) => value.toJson()).toList(),
+        if (deliveryErrors != null) 'deliveryErrors': deliveryErrors!,
         if (dkimSuccessRatio != null) 'dkimSuccessRatio': dkimSuccessRatio!,
         if (dmarcSuccessRatio != null) 'dmarcSuccessRatio': dmarcSuccessRatio!,
         if (domainReputation != null) 'domainReputation': domainReputation!,
         if (inboundEncryptionRatio != null)
           'inboundEncryptionRatio': inboundEncryptionRatio!,
-        if (ipReputations != null)
-          'ipReputations':
-              ipReputations!.map((value) => value.toJson()).toList(),
+        if (ipReputations != null) 'ipReputations': ipReputations!,
         if (name != null) 'name': name!,
         if (outboundEncryptionRatio != null)
           'outboundEncryptionRatio': outboundEncryptionRatio!,
         if (spammyFeedbackLoops != null)
-          'spammyFeedbackLoops':
-              spammyFeedbackLoops!.map((value) => value.toJson()).toList(),
+          'spammyFeedbackLoops': spammyFeedbackLoops!,
         if (spfSuccessRatio != null) 'spfSuccessRatio': spfSuccessRatio!,
         if (userReportedSpamRatio != null)
           'userReportedSpamRatio': userReportedSpamRatio!,

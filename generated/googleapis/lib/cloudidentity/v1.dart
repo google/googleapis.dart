@@ -115,7 +115,7 @@ class DevicesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -164,7 +164,7 @@ class DevicesResource {
     core.String? customer,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (customer != null) 'customer': [customer],
       if ($fields != null) 'fields': [$fields],
@@ -388,7 +388,7 @@ class DevicesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -441,7 +441,7 @@ class DevicesDeviceUsersResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -485,7 +485,7 @@ class DevicesDeviceUsersResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -532,7 +532,7 @@ class DevicesDeviceUsersResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -837,7 +837,7 @@ class DevicesDeviceUsersResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1042,7 +1042,7 @@ class DevicesDeviceUsersClientStatesResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (customer != null) 'customer': [customer],
       if (updateMask != null) 'updateMask': [updateMask],
@@ -1099,7 +1099,7 @@ class GroupsResource {
     core.String? initialGroupConfig,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (initialGroupConfig != null)
         'initialGroupConfig': [initialGroupConfig],
@@ -1335,7 +1335,7 @@ class GroupsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -1507,7 +1507,7 @@ class GroupsMembershipsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1805,7 +1805,7 @@ class GroupsMembershipsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2019,9 +2019,8 @@ class DynamicGroupMetadata {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (queries != null)
-          'queries': queries!.map((value) => value.toJson()).toList(),
-        if (status != null) 'status': status!.toJson(),
+        if (queries != null) 'queries': queries!,
+        if (status != null) 'status': status!,
       };
 }
 
@@ -2202,11 +2201,8 @@ class GetMembershipGraphResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (adjacencyList != null)
-          'adjacencyList':
-              adjacencyList!.map((value) => value.toJson()).toList(),
-        if (groups != null)
-          'groups': groups!.map((value) => value.toJson()).toList(),
+        if (adjacencyList != null) 'adjacencyList': adjacencyList!,
+        if (groups != null) 'groups': groups!,
       };
 }
 
@@ -2324,7 +2320,7 @@ class GoogleAppsCloudidentityDevicesV1ApproveDeviceUserResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (deviceUser != null) 'deviceUser': deviceUser!.toJson(),
+        if (deviceUser != null) 'deviceUser': deviceUser!,
       };
 }
 
@@ -2380,7 +2376,7 @@ class GoogleAppsCloudidentityDevicesV1BlockDeviceUserResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (deviceUser != null) 'deviceUser': deviceUser!.toJson(),
+        if (deviceUser != null) 'deviceUser': deviceUser!,
       };
 }
 
@@ -2438,7 +2434,7 @@ class GoogleAppsCloudidentityDevicesV1CancelWipeDeviceResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (device != null) 'device': device!.toJson(),
+        if (device != null) 'device': device!,
       };
 }
 
@@ -2494,7 +2490,7 @@ class GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (deviceUser != null) 'deviceUser': deviceUser!.toJson(),
+        if (deviceUser != null) 'deviceUser': deviceUser!,
       };
 }
 
@@ -2664,9 +2660,7 @@ class GoogleAppsCloudidentityDevicesV1ClientState {
         if (customId != null) 'customId': customId!,
         if (etag != null) 'etag': etag!,
         if (healthScore != null) 'healthScore': healthScore!,
-        if (keyValuePairs != null)
-          'keyValuePairs': keyValuePairs!
-              .map((key, item) => core.MapEntry(key, item.toJson())),
+        if (keyValuePairs != null) 'keyValuePairs': keyValuePairs!,
         if (lastUpdateTime != null) 'lastUpdateTime': lastUpdateTime!,
         if (managed != null) 'managed': managed!,
         if (name != null) 'name': name!,
@@ -3035,7 +3029,7 @@ class GoogleAppsCloudidentityDevicesV1Device {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (androidSpecificAttributes != null)
-          'androidSpecificAttributes': androidSpecificAttributes!.toJson(),
+          'androidSpecificAttributes': androidSpecificAttributes!,
         if (assetTag != null) 'assetTag': assetTag!,
         if (basebandVersion != null) 'basebandVersion': basebandVersion!,
         if (bootloaderVersion != null) 'bootloaderVersion': bootloaderVersion!,
@@ -3225,8 +3219,7 @@ class GoogleAppsCloudidentityDevicesV1ListClientStatesResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (clientStates != null)
-          'clientStates': clientStates!.map((value) => value.toJson()).toList(),
+        if (clientStates != null) 'clientStates': clientStates!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -3262,8 +3255,7 @@ class GoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (deviceUsers != null)
-          'deviceUsers': deviceUsers!.map((value) => value.toJson()).toList(),
+        if (deviceUsers != null) 'deviceUsers': deviceUsers!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -3298,8 +3290,7 @@ class GoogleAppsCloudidentityDevicesV1ListDevicesResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (devices != null)
-          'devices': devices!.map((value) => value.toJson()).toList(),
+        if (devices != null) 'devices': devices!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -3415,7 +3406,7 @@ class GoogleAppsCloudidentityDevicesV1WipeDeviceResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (device != null) 'device': device!.toJson(),
+        if (device != null) 'device': device!,
       };
 }
 
@@ -3470,7 +3461,7 @@ class GoogleAppsCloudidentityDevicesV1WipeDeviceUserResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (deviceUser != null) 'deviceUser': deviceUser!.toJson(),
+        if (deviceUser != null) 'deviceUser': deviceUser!,
       };
 }
 
@@ -3594,8 +3585,8 @@ class Group {
         if (description != null) 'description': description!,
         if (displayName != null) 'displayName': displayName!,
         if (dynamicGroupMetadata != null)
-          'dynamicGroupMetadata': dynamicGroupMetadata!.toJson(),
-        if (groupKey != null) 'groupKey': groupKey!.toJson(),
+          'dynamicGroupMetadata': dynamicGroupMetadata!,
+        if (groupKey != null) 'groupKey': groupKey!,
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
         if (parent != null) 'parent': parent!,
@@ -3677,11 +3668,10 @@ class GroupRelation {
   core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
         if (group != null) 'group': group!,
-        if (groupKey != null) 'groupKey': groupKey!.toJson(),
+        if (groupKey != null) 'groupKey': groupKey!,
         if (labels != null) 'labels': labels!,
         if (relationType != null) 'relationType': relationType!,
-        if (roles != null)
-          'roles': roles!.map((value) => value.toJson()).toList(),
+        if (roles != null) 'roles': roles!,
       };
 }
 
@@ -3715,8 +3705,7 @@ class ListGroupsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (groups != null)
-          'groups': groups!.map((value) => value.toJson()).toList(),
+        if (groups != null) 'groups': groups!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -3749,8 +3738,7 @@ class ListMembershipsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (memberships != null)
-          'memberships': memberships!.map((value) => value.toJson()).toList(),
+        if (memberships != null) 'memberships': memberships!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -3855,11 +3843,9 @@ class MemberRelation {
   core.Map<core.String, core.dynamic> toJson() => {
         if (member != null) 'member': member!,
         if (preferredMemberKey != null)
-          'preferredMemberKey':
-              preferredMemberKey!.map((value) => value.toJson()).toList(),
+          'preferredMemberKey': preferredMemberKey!,
         if (relationType != null) 'relationType': relationType!,
-        if (roles != null)
-          'roles': roles!.map((value) => value.toJson()).toList(),
+        if (roles != null) 'roles': roles!,
       };
 }
 
@@ -3945,9 +3931,8 @@ class Membership {
         if (createTime != null) 'createTime': createTime!,
         if (name != null) 'name': name!,
         if (preferredMemberKey != null)
-          'preferredMemberKey': preferredMemberKey!.toJson(),
-        if (roles != null)
-          'roles': roles!.map((value) => value.toJson()).toList(),
+          'preferredMemberKey': preferredMemberKey!,
+        if (roles != null) 'roles': roles!,
         if (type != null) 'type': type!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
@@ -3984,8 +3969,7 @@ class MembershipAdjacencyList {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (edges != null)
-          'edges': edges!.map((value) => value.toJson()).toList(),
+        if (edges != null) 'edges': edges!,
         if (group != null) 'group': group!,
       };
 }
@@ -4020,7 +4004,7 @@ class MembershipRole {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (expiryDetail != null) 'expiryDetail': expiryDetail!.toJson(),
+        if (expiryDetail != null) 'expiryDetail': expiryDetail!,
         if (name != null) 'name': name!,
       };
 }
@@ -4076,12 +4060,9 @@ class ModifyMembershipRolesRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (addRoles != null)
-          'addRoles': addRoles!.map((value) => value.toJson()).toList(),
+        if (addRoles != null) 'addRoles': addRoles!,
         if (removeRoles != null) 'removeRoles': removeRoles!,
-        if (updateRolesParams != null)
-          'updateRolesParams':
-              updateRolesParams!.map((value) => value.toJson()).toList(),
+        if (updateRolesParams != null) 'updateRolesParams': updateRolesParams!,
       };
 }
 
@@ -4103,7 +4084,7 @@ class ModifyMembershipRolesResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (membership != null) 'membership': membership!.toJson(),
+        if (membership != null) 'membership': membership!,
       };
 }
 
@@ -4176,7 +4157,7 @@ class Operation {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (done != null) 'done': done!,
-        if (error != null) 'error': error!.toJson(),
+        if (error != null) 'error': error!,
         if (metadata != null) 'metadata': metadata!,
         if (name != null) 'name': name!,
         if (response != null) 'response': response!,
@@ -4211,8 +4192,7 @@ class SearchGroupsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (groups != null)
-          'groups': groups!.map((value) => value.toJson()).toList(),
+        if (groups != null) 'groups': groups!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -4245,8 +4225,7 @@ class SearchTransitiveGroupsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (memberships != null)
-          'memberships': memberships!.map((value) => value.toJson()).toList(),
+        if (memberships != null) 'memberships': memberships!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -4279,8 +4258,7 @@ class SearchTransitiveMembershipsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (memberships != null)
-          'memberships': memberships!.map((value) => value.toJson()).toList(),
+        if (memberships != null) 'memberships': memberships!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -4394,7 +4372,7 @@ class UpdateMembershipRolesParams {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (fieldMask != null) 'fieldMask': fieldMask!,
-        if (membershipRole != null) 'membershipRole': membershipRole!.toJson(),
+        if (membershipRole != null) 'membershipRole': membershipRole!,
       };
 }
 

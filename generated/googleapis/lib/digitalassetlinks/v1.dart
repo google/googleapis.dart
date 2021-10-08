@@ -360,7 +360,7 @@ class AndroidAppAsset {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (certificate != null) 'certificate': certificate!.toJson(),
+        if (certificate != null) 'certificate': certificate!,
         if (packageName != null) 'packageName': packageName!,
       };
 }
@@ -395,8 +395,8 @@ class Asset {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (androidApp != null) 'androidApp': androidApp!.toJson(),
-        if (web != null) 'web': web!.toJson(),
+        if (androidApp != null) 'androidApp': androidApp!,
+        if (web != null) 'web': web!,
       };
 }
 
@@ -548,8 +548,7 @@ class ListResponse {
         if (debugString != null) 'debugString': debugString!,
         if (errorCode != null) 'errorCode': errorCode!,
         if (maxAge != null) 'maxAge': maxAge!,
-        if (statements != null)
-          'statements': statements!.map((value) => value.toJson()).toList(),
+        if (statements != null) 'statements': statements!,
       };
 }
 
@@ -606,8 +605,8 @@ class Statement {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (relation != null) 'relation': relation!,
-        if (source != null) 'source': source!.toJson(),
-        if (target != null) 'target': target!.toJson(),
+        if (source != null) 'source': source!,
+        if (target != null) 'target': target!,
       };
 }
 

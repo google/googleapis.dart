@@ -168,7 +168,7 @@ $toJsonString
   String get declaration => '$className';
 
   @override
-  String jsonEncode(String value) => '$value.toJson()';
+  String jsonEncode(String value) => value;
 
   @override
   String jsonDecode(String json) =>
@@ -591,24 +591,20 @@ class NamedArrayType extends ComplexDartSchemaType implements HasInnertype {
 
   @override
   String classDefinition(bool isPackage) {
+    final innerType = this.innerType!;
     final decode = StringBuffer();
-    decode.writeln('  $className.fromJson(${imports.core.ref()}List json)');
+    final core = imports.core.ref();
+    decode.writeln('  $className.fromJson(${core}List json)');
     decode.writeln('      : _inner = json.map((value) => '
-        '${innerType!.jsonDecode('value')}).toList();');
+        '${innerType.jsonDecode('value')}).toList();');
 
     final encode = StringBuffer();
-    encode.writeln('  ${jsonType.declaration} toJson() {');
-    encode.writeln('    return _inner.map((value) => '
-        '${innerType!.jsonEncode('value')}).toList();');
-    encode.write('  }');
 
-    final core = imports.core.ref();
-
-    final type = innerType!.declaration;
+    final type = innerType.declaration;
     return '''
 ${comment.asDartDoc(0)}class $className
     extends ${imports.collection.ref()}ListBase<$type> {
-  final ${imports.core.ref()}List<$type> _inner;
+  final ${core}List<$type> _inner;
 
   $className() : _inner = [];
 
@@ -705,21 +701,20 @@ class UnnamedMapType extends ComplexDartSchemaType {
   @override
   String jsonDecode(String json) {
     final valueType = this.valueType!;
+    final castValue = '$json as $coreMapJsonType';
+
+    if (valueType is AnyType) {
+      return castValue;
+    }
 
     if (valueType.needsJsonDecoding) {
       return '''
-($json as $coreMapJsonType).map(
+($castValue).map(
 (key, item) => ${imports.core.ref()}MapEntry(
 key,
 ${valueType.jsonDecode('item')},
 ),
 )''';
-    }
-
-    final castValue = '$json as $coreMapJsonType';
-
-    if (valueType is AnyType) {
-      return castValue;
     }
 
     // NOTE: The Map returned from JSON.decode() transfers ownership to the
@@ -767,8 +762,6 @@ class NamedMapType extends ComplexDartSchemaType {
     decode.writeln('  }');
 
     final encode = StringBuffer();
-    encode.writeln('  ${imports.coreJsonMap} toJson() =>');
-    encode.writeln('    ${imports.coreJsonMap}.of(this);');
 
     final fromT = fromType!.declaration;
     final toT = toType!.declaration;

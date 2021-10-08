@@ -275,7 +275,7 @@ class AccountsProductsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -692,34 +692,30 @@ class Attributes {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (additionalImageLink != null)
-          'additionalImageLink':
-              additionalImageLink!.map((value) => value.toJson()).toList(),
+          'additionalImageLink': additionalImageLink!,
         if (ageGroup != null) 'ageGroup': ageGroup!,
         if (brand != null) 'brand': brand!,
-        if (capacity != null) 'capacity': capacity!.toJson(),
+        if (capacity != null) 'capacity': capacity!,
         if (color != null) 'color': color!,
-        if (count != null) 'count': count!.toJson(),
+        if (count != null) 'count': count!,
         if (description != null) 'description': description!,
         if (disclosureDate != null) 'disclosureDate': disclosureDate!,
         if (excludedDestination != null)
           'excludedDestination': excludedDestination!,
         if (featureDescription != null)
-          'featureDescription':
-              featureDescription!.map((value) => value.toJson()).toList(),
+          'featureDescription': featureDescription!,
         if (flavor != null) 'flavor': flavor!,
         if (format != null) 'format': format!,
         if (gender != null) 'gender': gender!,
         if (gtin != null) 'gtin': gtin!,
-        if (imageLink != null) 'imageLink': imageLink!.toJson(),
+        if (imageLink != null) 'imageLink': imageLink!,
         if (includedDestination != null)
           'includedDestination': includedDestination!,
         if (itemGroupId != null) 'itemGroupId': itemGroupId!,
         if (material != null) 'material': material!,
         if (mpn != null) 'mpn': mpn!,
         if (pattern != null) 'pattern': pattern!,
-        if (productDetail != null)
-          'productDetail':
-              productDetail!.map((value) => value.toJson()).toList(),
+        if (productDetail != null) 'productDetail': productDetail!,
         if (productHighlight != null) 'productHighlight': productHighlight!,
         if (productLine != null) 'productLine': productLine!,
         if (productName != null) 'productName': productName!,
@@ -733,7 +729,7 @@ class Attributes {
         if (sizeSystem != null) 'sizeSystem': sizeSystem!,
         if (sizeType != null) 'sizeType': sizeType!,
         if (suggestedRetailPrice != null)
-          'suggestedRetailPrice': suggestedRetailPrice!.toJson(),
+          'suggestedRetailPrice': suggestedRetailPrice!,
         if (targetClientId != null) 'targetClientId': targetClientId!,
         if (theme != null) 'theme': theme!,
         if (title != null) 'title': title!,
@@ -876,7 +872,7 @@ class FeatureDescription {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (headline != null) 'headline': headline!,
-        if (image != null) 'image': image!.toJson(),
+        if (image != null) 'image': image!,
         if (text != null) 'text': text!,
       };
 }
@@ -1068,8 +1064,7 @@ class ListProductsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (products != null)
-          'products': products!.map((value) => value.toJson()).toList(),
+        if (products != null) 'products': products!,
       };
 }
 
@@ -1188,13 +1183,11 @@ class Product {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (attributes != null) 'attributes': attributes!.toJson(),
+        if (attributes != null) 'attributes': attributes!,
         if (contentLanguage != null) 'contentLanguage': contentLanguage!,
         if (destinationStatuses != null)
-          'destinationStatuses':
-              destinationStatuses!.map((value) => value.toJson()).toList(),
-        if (issues != null)
-          'issues': issues!.map((value) => value.toJson()).toList(),
+          'destinationStatuses': destinationStatuses!,
+        if (issues != null) 'issues': issues!,
         if (name != null) 'name': name!,
         if (parent != null) 'parent': parent!,
         if (productId != null) 'productId': productId!,
