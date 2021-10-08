@@ -49,16 +49,15 @@ extension ObjectTypeExtention on ObjectType {
     libraryValue.addUsedItem(duplicateItem);
 
     final initialCovertCallCount = imports.convert.callCount;
-    final initialDefinition = classDefinitionCore(
-      duplicateItem.className,
-      includeDescription: false,
-    );
+    final initialDefinition =
+        classDefinitionCore(duplicateItem.className, includeDescription: false);
 
     final convertUsed = imports.convert.callCount > initialCovertCallCount;
     if (convertUsed) {
       imports.convert.callCount = initialCovertCallCount;
     }
-    duplicateItem.usedDartConvert = convertUsed;
+    duplicateItem.usedDartConvert =
+        duplicateItem.usedDartConvert ?? false || convertUsed;
 
     duplicateItem.populateDefinition(initialDefinition);
 
@@ -83,7 +82,7 @@ mixin DedupeMixin {
   List<RestDescription> get descriptions;
 
   Set<_DuplicateItem> wrapPackageDeduplicateLogic(void Function() action) {
-    final dupes = <String, Set<MapEntry<String, String>>>{};
+    final dupes = <String, Set<_Replacement>>{};
 
     for (var api in descriptions) {
       for (var schemaEntry in api.schemas!.entries) {
@@ -95,9 +94,13 @@ mixin DedupeMixin {
 
         final content = _schemaUniqueId(schema);
 
-        final innerMap = dupes.putIfAbsent(content, () => {});
+        final innerMap = dupes.putIfAbsent(content, () => SplayTreeSet());
 
-        innerMap.add(MapEntry(api.id!, schema.id!));
+        final entry = _Replacement(api.id!, schema.id!);
+
+        if (!innerMap.add(entry)) {
+          print('Should not add the same entry twice: $entry');
+        }
       }
     }
 
@@ -109,7 +112,7 @@ mixin DedupeMixin {
         continue;
       }
 
-      final allKeys = dupe.value.map((e) => e.value).toSet();
+      final allKeys = dupe.value.map((e) => e.classname).toSet();
       final shortestKey = _bestName(allKeys);
 
       if (!candidates.containsKey(dupe.key)) {
@@ -127,6 +130,7 @@ mixin DedupeMixin {
           dupe.key,
           () => _DuplicateItem(
             className: className,
+            replacements: dupe.value,
           ),
         );
       }
@@ -162,17 +166,22 @@ class _PackageZoneData {
 
 class _DuplicateItem implements Comparable<_DuplicateItem> {
   final String className;
+  final Set<_Replacement> replacements;
+
   bool? usedDartConvert;
 
   String? _definition;
 
-  String get definition => _definition!;
+  String get definition => '''
+/// Shared implementation type for:
+///
+${replacements.map((e) => '/// - $e').join('\n')}
+$_definition''';
 
   _DuplicateItem({
     required this.className,
-    this.usedDartConvert,
-    String? definition,
-  }) : _definition = definition;
+    required this.replacements,
+  });
 
   void populateDefinition(String value) {
     _definition ??= value;
@@ -190,6 +199,41 @@ class _DuplicateItem implements Comparable<_DuplicateItem> {
 
   @override
   int compareTo(_DuplicateItem other) => className.compareTo(other.className);
+}
+
+class _Replacement implements Comparable<_Replacement> {
+  final String library;
+  final String classname;
+
+  _Replacement(this.library, this.classname);
+
+  @override
+  bool operator ==(Object other) {
+    final value = other is _Replacement &&
+        library == other.library &&
+        classname == other.classname;
+
+    if (value) {
+      print(['same!', this, other]);
+    }
+
+    return value;
+  }
+
+  @override
+  int get hashCode => Object.hash(library, classname);
+
+  @override
+  String toString() => '$library : $classname';
+
+  @override
+  int compareTo(_Replacement other) {
+    var value = library.compareTo(other.library);
+    if (value == 0) {
+      value = classname.compareTo(other.classname);
+    }
+    return value;
+  }
 }
 
 extension on JsonSchema {

@@ -15,6 +15,10 @@ library $shared;
 import 'dart:convert' as convert;
 import 'dart:core' as core;
 
+/// Replacement class for
+///
+/// - alertcenter:v1beta1 : BatchDeleteAlertsRequest
+/// - alertcenter:v1beta1 : BatchUndeleteAlertsRequest
 class $AlertsRequest {
   /// list of alert IDs.
   ///
@@ -50,6 +54,10 @@ class $AlertsRequest {
       };
 }
 
+/// Replacement class for
+///
+/// - containeranalysis:v1beta1 : AliasContext
+/// - ondemandscanning:v1beta1 : AliasContext
 class $AliasContext {
   /// The alias kind.
   /// Possible string values are:
@@ -80,6 +88,10 @@ class $AliasContext {
       };
 }
 
+/// Replacement class for
+///
+/// - containeranalysis:v1beta1 : Artifact
+/// - ondemandscanning:v1beta1 : Artifact
 class $Artifact {
   /// Hash or checksum value of a binary, or Docker Registry 2.0 digest of a
   /// container.
@@ -124,6 +136,15 @@ class $Artifact {
       };
 }
 
+/// Replacement class for
+///
+/// - bigqueryconnection:v1beta1 : AuditLogConfig
+/// - domains:v1beta1 : AuditLogConfig
+/// - metastore:v1beta : AuditLogConfig
+/// - networkconnectivity:v1alpha1 : AuditLogConfig
+/// - networksecurity:v1beta1 : GoogleIamV1AuditLogConfig
+/// - policysimulator:v1beta1 : GoogleIamV1AuditLogConfig
+/// - privateca:v1beta1 : AuditLogConfig
 class $AuditLogConfig {
   /// Specifies the identities that do not cause logging for this type of
   /// permission.
@@ -162,6 +183,11 @@ class $AuditLogConfig {
       };
 }
 
+/// Replacement class for
+///
+/// - privateca:v1beta1 : DisableCertificateAuthorityRequest
+/// - privateca:v1beta1 : EnableCertificateAuthorityRequest
+/// - privateca:v1beta1 : RestoreCertificateAuthorityRequest
 class $CertificateAuthorityRequest {
   /// An ID to identify requests.
   ///
@@ -195,6 +221,10 @@ class $CertificateAuthorityRequest {
       };
 }
 
+/// Replacement class for
+///
+/// - containeranalysis:v1beta1 : Command
+/// - ondemandscanning:v1beta1 : Command
 class $Command {
   /// Command-line arguments used when executing this command.
   core.List<core.String>? args;
@@ -260,6 +290,11 @@ class $Command {
       };
 }
 
+/// Replacement class for
+///
+/// - documentai:v1beta3 : GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata
+/// - documentai:v1beta3 : GoogleCloudDocumentaiV1CommonOperationMetadata
+/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta3CommonOperationMetadata
 class $CommonOperationMetadata {
   /// The creation time of the operation.
   core.String? createTime;
@@ -310,6 +345,10 @@ class $CommonOperationMetadata {
       };
 }
 
+/// Replacement class for
+///
+/// - datalabeling:v1beta1 : GoogleCloudDatalabelingV1beta1BoundingPolyConfig
+/// - datalabeling:v1beta1 : GoogleCloudDatalabelingV1beta1PolylineConfig
 class $Config {
   /// Annotation spec set resource name.
   ///
@@ -343,6 +382,13 @@ class $Config {
       };
 }
 
+/// Replacement class for
+///
+/// - adexchangebuyer2:v2beta1 : Date
+/// - documentai:v1beta3 : GoogleTypeDate
+/// - fcmdata:v1beta1 : GoogleTypeDate
+/// - osconfig:v1alpha : Date
+/// - policysimulator:v1beta1 : GoogleTypeDate
 class $Date {
   /// Day of a month.
   ///
@@ -380,6 +426,11 @@ class $Date {
       };
 }
 
+/// Replacement class for
+///
+/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta1DocumentEntityRelation
+/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta2DocumentEntityRelation
+/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta3DocumentEntityRelation
 class $DocumentEntityRelation {
   /// Object entity id.
   core.String? objectId;
@@ -416,6 +467,11 @@ class $DocumentEntityRelation {
       };
 }
 
+/// Replacement class for
+///
+/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta1DocumentPageDetectedLanguage
+/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta2DocumentPageDetectedLanguage
+/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta3DocumentPageDetectedLanguage
 class $DocumentPageDetectedLanguage {
   /// Confidence of detected language.
   ///
@@ -449,6 +505,11 @@ class $DocumentPageDetectedLanguage {
       };
 }
 
+/// Replacement class for
+///
+/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta1DocumentPageDimension
+/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta2DocumentPageDimension
+/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta3DocumentPageDimension
 class $DocumentPageDimension {
   /// Page height.
   core.double? height;
@@ -483,6 +544,11 @@ class $DocumentPageDimension {
       };
 }
 
+/// Replacement class for
+///
+/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta1DocumentPageImage
+/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta2DocumentPageImage
+/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta3DocumentPageImage
 class $DocumentPageImage {
   /// Raw byte content of the image.
   core.String? content;
@@ -530,6 +596,11 @@ class $DocumentPageImage {
       };
 }
 
+/// Replacement class for
+///
+/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta1DocumentPageMatrix
+/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta2DocumentPageMatrix
+/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta3DocumentPageMatrix
 class $DocumentPageMatrix {
   /// Number of columns in the matrix.
   core.int? cols;
@@ -576,6 +647,11 @@ class $DocumentPageMatrix {
       };
 }
 
+/// Replacement class for
+///
+/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta1DocumentPageTokenDetectedBreak
+/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta2DocumentPageTokenDetectedBreak
+/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta3DocumentPageTokenDetectedBreak
 class $DocumentPageTokenDetectedBreak {
   /// Detected break type.
   /// Possible string values are:
@@ -600,6 +676,11 @@ class $DocumentPageTokenDetectedBreak {
       };
 }
 
+/// Replacement class for
+///
+/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta1DocumentProvenanceParent
+/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta2DocumentProvenanceParent
+/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta3DocumentProvenanceParent
 class $DocumentProvenanceParent {
   /// The id of the parent provenance.
   core.int? id;
@@ -634,6 +715,11 @@ class $DocumentProvenanceParent {
       };
 }
 
+/// Replacement class for
+///
+/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta1DocumentRevisionHumanReview
+/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta2DocumentRevisionHumanReview
+/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta3DocumentRevisionHumanReview
 class $DocumentRevisionHumanReview {
   /// Human review state.
   ///
@@ -665,6 +751,11 @@ class $DocumentRevisionHumanReview {
       };
 }
 
+/// Replacement class for
+///
+/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta1DocumentShardInfo
+/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta2DocumentShardInfo
+/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta3DocumentShardInfo
 class $DocumentShardInfo {
   /// Total number of shards.
   core.String? shardCount;
@@ -702,6 +793,11 @@ class $DocumentShardInfo {
       };
 }
 
+/// Replacement class for
+///
+/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta1DocumentStyleFontSize
+/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta2DocumentStyleFontSize
+/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta3DocumentStyleFontSize
 class $DocumentStyleFontSize {
   /// Font size for the text.
   core.double? size;
@@ -730,6 +826,11 @@ class $DocumentStyleFontSize {
       };
 }
 
+/// Replacement class for
+///
+/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta1DocumentTextAnchorTextSegment
+/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta2DocumentTextAnchorTextSegment
+/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta3DocumentTextAnchorTextSegment
 class $DocumentTextAnchorTextSegment {
   /// TextSegment half open end UTF-8 char index in the Document.text.
   core.String? endIndex;
@@ -758,6 +859,110 @@ class $DocumentTextAnchorTextSegment {
       };
 }
 
+/// Replacement class for
+///
+/// - adexchangebuyer2:v2beta1 : CancelNegotiationRequest
+/// - adexchangebuyer2:v2beta1 : CompleteSetupRequest
+/// - adexchangebuyer2:v2beta1 : Empty
+/// - adexchangebuyer2:v2beta1 : ResumeProposalRequest
+/// - adexchangebuyer2:v2beta1 : StopWatchingCreativeRequest
+/// - alertcenter:v1beta1 : ActionInfo
+/// - alertcenter:v1beta1 : Empty
+/// - analyticsadmin:v1alpha : GoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionResponse
+/// - analyticsadmin:v1alpha : GoogleAnalyticsAdminV1alphaApproveDisplayVideo360AdvertiserLinkProposalRequest
+/// - analyticsadmin:v1alpha : GoogleAnalyticsAdminV1alphaArchiveCustomDimensionRequest
+/// - analyticsadmin:v1alpha : GoogleAnalyticsAdminV1alphaArchiveCustomMetricRequest
+/// - analyticsadmin:v1alpha : GoogleAnalyticsAdminV1alphaCancelDisplayVideo360AdvertiserLinkProposalRequest
+/// - analyticsadmin:v1alpha : GoogleProtobufEmpty
+/// - area120tables:v1alpha1 : Empty
+/// - bigqueryconnection:v1beta1 : Empty
+/// - clouderrorreporting:v1beta1 : DeleteEventsResponse
+/// - clouderrorreporting:v1beta1 : ReportErrorEventResponse
+/// - containeranalysis:v1beta1 : Empty
+/// - containeranalysis:v1beta1 : RelationshipNote
+/// - datacatalog:v1beta1 : Empty
+/// - dataflow:v1b3 : DeleteSnapshotResponse
+/// - dataflow:v1b3 : ResourceUtilizationReportResponse
+/// - dataflow:v1b3 : SendDebugCaptureResponse
+/// - dataflow:v1b3 : WorkerShutdownNoticeResponse
+/// - datalabeling:v1beta1 : GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadata
+/// - datalabeling:v1beta1 : GoogleCloudDatalabelingV1beta1PauseEvaluationJobRequest
+/// - datalabeling:v1beta1 : GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadata
+/// - datalabeling:v1beta1 : GoogleCloudDatalabelingV1beta1ResumeEvaluationJobRequest
+/// - datalabeling:v1beta1 : GoogleProtobufEmpty
+/// - documentai:v1beta3 : GoogleCloudDocumentaiUiv1beta3BatchDeleteDocumentsResponse
+/// - documentai:v1beta3 : GoogleCloudDocumentaiUiv1beta3BatchMoveDocumentsResponse
+/// - documentai:v1beta3 : GoogleCloudDocumentaiUiv1beta3DeployProcessorVersionResponse
+/// - documentai:v1beta3 : GoogleCloudDocumentaiUiv1beta3DisableProcessorResponse
+/// - documentai:v1beta3 : GoogleCloudDocumentaiUiv1beta3EnableProcessorResponse
+/// - documentai:v1beta3 : GoogleCloudDocumentaiUiv1beta3ImportDocumentsResponse
+/// - documentai:v1beta3 : GoogleCloudDocumentaiUiv1beta3SetDefaultProcessorVersionResponse
+/// - documentai:v1beta3 : GoogleCloudDocumentaiUiv1beta3UndeployProcessorVersionResponse
+/// - documentai:v1beta3 : GoogleCloudDocumentaiV1BatchProcessResponse
+/// - documentai:v1beta3 : GoogleCloudDocumentaiV1DeployProcessorVersionResponse
+/// - documentai:v1beta3 : GoogleCloudDocumentaiV1DisableProcessorResponse
+/// - documentai:v1beta3 : GoogleCloudDocumentaiV1EnableProcessorResponse
+/// - documentai:v1beta3 : GoogleCloudDocumentaiV1SetDefaultProcessorVersionResponse
+/// - documentai:v1beta3 : GoogleCloudDocumentaiV1UndeployProcessorVersionResponse
+/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta3BatchProcessResponse
+/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta3DeployProcessorVersionRequest
+/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta3DeployProcessorVersionResponse
+/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta3DisableProcessorRequest
+/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta3DisableProcessorResponse
+/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta3EnableProcessorRequest
+/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta3EnableProcessorResponse
+/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta3SetDefaultProcessorVersionResponse
+/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta3UndeployProcessorVersionRequest
+/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta3UndeployProcessorVersionResponse
+/// - documentai:v1beta3 : GoogleProtobufEmpty
+/// - domains:v1beta1 : ExportRegistrationRequest
+/// - domains:v1beta1 : ResetAuthorizationCodeRequest
+/// - factchecktools:v1alpha1 : GoogleProtobufEmpty
+/// - firebase:v1beta1 : Empty
+/// - firebase:v1beta1 : MessageSet
+/// - firebaseappcheck:v1beta : GoogleFirebaseAppcheckV1betaGenerateAppAttestChallengeRequest
+/// - firebaseappcheck:v1beta : GoogleProtobufEmpty
+/// - firebasedatabase:v1beta : DisableDatabaseInstanceRequest
+/// - firebasedatabase:v1beta : ReenableDatabaseInstanceRequest
+/// - firebasestorage:v1beta : AddFirebaseRequest
+/// - firebasestorage:v1beta : Empty
+/// - firebasestorage:v1beta : RemoveFirebaseRequest
+/// - lifesciences:v2beta : CancelOperationRequest
+/// - lifesciences:v2beta : Empty
+/// - lifesciences:v2beta : RunPipelineResponse
+/// - metastore:v1beta : Empty
+/// - networkconnectivity:v1alpha1 : Empty
+/// - networkconnectivity:v1alpha1 : GoogleLongrunningCancelOperationRequest
+/// - networksecurity:v1beta1 : CancelOperationRequest
+/// - networksecurity:v1beta1 : Empty
+/// - ondemandscanning:v1beta1 : Empty
+/// - osconfig:v1alpha : CancelOperationRequest
+/// - osconfig:v1alpha : Empty
+/// - privateca:v1beta1 : CancelOperationRequest
+/// - privateca:v1beta1 : Empty
+/// - prod_tt_sasportal:v1alpha1 : SasPortalEmpty
+/// - prod_tt_sasportal:v1alpha1 : SasPortalGenerateSecretRequest
+/// - prod_tt_sasportal:v1alpha1 : SasPortalValidateInstallerResponse
+/// - recommendationengine:v1beta1 : GoogleCloudRecommendationengineV1alphaRejoinCatalogMetadata
+/// - recommendationengine:v1beta1 : GoogleCloudRecommendationengineV1alphaTuningResponse
+/// - recommendationengine:v1beta1 : GoogleCloudRecommendationengineV1beta1RejoinUserEventsMetadata
+/// - recommendationengine:v1beta1 : GoogleProtobufEmpty
+/// - sasportal:v1alpha1 : SasPortalEmpty
+/// - sasportal:v1alpha1 : SasPortalGenerateSecretRequest
+/// - sasportal:v1alpha1 : SasPortalValidateInstallerResponse
+/// - toolresults:v1beta3 : AndroidTestLoop
+/// - toolresults:v1beta3 : AvailableDeepLinks
+/// - toolresults:v1beta3 : DeviceOutOfMemory
+/// - toolresults:v1beta3 : FailedToInstall
+/// - toolresults:v1beta3 : InsufficientCoverage
+/// - toolresults:v1beta3 : IosRoboTest
+/// - toolresults:v1beta3 : LauncherActivityNotFound
+/// - toolresults:v1beta3 : LogcatCollectionError
+/// - toolresults:v1beta3 : MatrixDimensionDefinition
+/// - toolresults:v1beta3 : PerformedGoogleLogin
+/// - toolresults:v1beta3 : StepSummary
+/// - toolresults:v1beta3 : UnspecifiedWarning
+/// - transcoder:v1beta1 : Empty
 class $Empty {
   $Empty();
 
@@ -768,6 +973,10 @@ class $Empty {
   core.Map<core.String, core.dynamic> toJson() => {};
 }
 
+/// Replacement class for
+///
+/// - transcoder:v1beta1 : Aes128Encryption
+/// - transcoder:v1beta1 : SampleAesEncryption
 class $Encryption {
   /// URI of the key delivery service.
   ///
@@ -792,6 +1001,11 @@ class $Encryption {
       };
 }
 
+/// Replacement class for
+///
+/// - toolresults:v1beta3 : EnvironmentDimensionValueEntry
+/// - toolresults:v1beta3 : StepDimensionValueEntry
+/// - toolresults:v1beta3 : StepLabelsEntry
 class $Entry {
   core.String? key;
   core.String? value;
@@ -814,6 +1028,10 @@ class $Entry {
       };
 }
 
+/// Replacement class for
+///
+/// - lifesciences:v2beta : PullStartedEvent
+/// - lifesciences:v2beta : PullStoppedEvent
 class $Event {
   /// The URI of the image that was pulled.
   core.String? imageUri;
@@ -834,6 +1052,17 @@ class $Event {
       };
 }
 
+/// Replacement class for
+///
+/// - bigqueryconnection:v1beta1 : Expr
+/// - containeranalysis:v1beta1 : Expr
+/// - datacatalog:v1beta1 : Expr
+/// - domains:v1beta1 : Expr
+/// - metastore:v1beta : Expr
+/// - networkconnectivity:v1alpha1 : Expr
+/// - networksecurity:v1beta1 : Expr
+/// - policysimulator:v1beta1 : GoogleTypeExpr
+/// - privateca:v1beta1 : Expr
 class $Expr {
   /// Description of the expression.
   ///
@@ -890,6 +1119,10 @@ class $Expr {
       };
 }
 
+/// Replacement class for
+///
+/// - containeranalysis:v1beta1 : Fingerprint
+/// - ondemandscanning:v1beta1 : Fingerprint
 class $Fingerprint {
   /// The layer ID of the final layer in the Docker image's v1 representation.
   ///
@@ -936,6 +1169,12 @@ class $Fingerprint {
       };
 }
 
+/// Replacement class for
+///
+/// - datalabeling:v1beta1 : GoogleCloudDatalabelingV1alpha1GcsDestination
+/// - datalabeling:v1beta1 : GoogleCloudDatalabelingV1beta1GcsDestination
+/// - datalabeling:v1beta1 : GoogleCloudDatalabelingV1p1alpha1GcsDestination
+/// - datalabeling:v1beta1 : GoogleCloudDatalabelingV1p2alpha1GcsDestination
 class $GcsDestination {
   /// The format of the gcs destination.
   ///
@@ -970,6 +1209,12 @@ class $GcsDestination {
       };
 }
 
+/// Replacement class for
+///
+/// - datalabeling:v1beta1 : GoogleCloudDatalabelingV1alpha1GcsFolderDestination
+/// - datalabeling:v1beta1 : GoogleCloudDatalabelingV1beta1GcsFolderDestination
+/// - datalabeling:v1beta1 : GoogleCloudDatalabelingV1p1alpha1GcsFolderDestination
+/// - datalabeling:v1beta1 : GoogleCloudDatalabelingV1p2alpha1GcsFolderDestination
 class $GcsFolderDestination {
   /// Cloud Storage directory to export data to.
   ///
@@ -992,6 +1237,11 @@ class $GcsFolderDestination {
       };
 }
 
+/// Replacement class for
+///
+/// - bigqueryconnection:v1beta1 : GetPolicyOptions
+/// - containeranalysis:v1beta1 : GetPolicyOptions
+/// - datacatalog:v1beta1 : GetPolicyOptions
 class $GetPolicyOptions {
   /// The policy format version to be returned.
   ///
@@ -1022,6 +1272,10 @@ class $GetPolicyOptions {
       };
 }
 
+/// Replacement class for
+///
+/// - containeranalysis:v1beta1 : GitSourceContext
+/// - ondemandscanning:v1beta1 : GitSourceContext
 class $GitSourceContext {
   /// Git commit hash.
   core.String? revisionId;
@@ -1048,6 +1302,12 @@ class $GitSourceContext {
       };
 }
 
+/// Replacement class for
+///
+/// - datalabeling:v1beta1 : GoogleCloudDatalabelingV1alpha1HumanAnnotationConfig
+/// - datalabeling:v1beta1 : GoogleCloudDatalabelingV1beta1HumanAnnotationConfig
+/// - datalabeling:v1beta1 : GoogleCloudDatalabelingV1p1alpha1HumanAnnotationConfig
+/// - datalabeling:v1beta1 : GoogleCloudDatalabelingV1p2alpha1HumanAnnotationConfig
 class $HumanAnnotationConfig {
   /// A human-readable description for AnnotatedDataset.
   ///
@@ -1178,6 +1438,10 @@ class $HumanAnnotationConfig {
       };
 }
 
+/// Replacement class for
+///
+/// - documentai:v1beta3 : GoogleCloudDocumentaiV1HumanReviewStatus
+/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta3HumanReviewStatus
 class $HumanReviewStatus {
   /// The name of the operation triggered by the processed document.
   ///
@@ -1230,6 +1494,12 @@ class $HumanReviewStatus {
       };
 }
 
+/// Replacement class for
+///
+/// - datalabeling:v1beta1 : GoogleCloudDatalabelingV1alpha1ImportDataOperationResponse
+/// - datalabeling:v1beta1 : GoogleCloudDatalabelingV1beta1ImportDataOperationResponse
+/// - datalabeling:v1beta1 : GoogleCloudDatalabelingV1p1alpha1ImportDataOperationResponse
+/// - datalabeling:v1beta1 : GoogleCloudDatalabelingV1p2alpha1ImportDataOperationResponse
 class $ImportDataOperationResponse {
   /// Ouptut only.
   ///
@@ -1272,6 +1542,12 @@ class $ImportDataOperationResponse {
       };
 }
 
+/// Replacement class for
+///
+/// - datalabeling:v1beta1 : GoogleCloudDatalabelingV1alpha1LabelStats
+/// - datalabeling:v1beta1 : GoogleCloudDatalabelingV1beta1LabelStats
+/// - datalabeling:v1beta1 : GoogleCloudDatalabelingV1p1alpha1LabelStats
+/// - datalabeling:v1beta1 : GoogleCloudDatalabelingV1p2alpha1LabelStats
 class $LabelStats {
   /// Map of each annotation spec's example count.
   ///
@@ -1303,6 +1579,14 @@ class $LabelStats {
       };
 }
 
+/// Replacement class for
+///
+/// - documentai:v1beta3 : GoogleCloudLocationLocation
+/// - domains:v1beta1 : Location
+/// - lifesciences:v2beta : Location
+/// - networkconnectivity:v1alpha1 : Location
+/// - networksecurity:v1beta1 : Location
+/// - privateca:v1beta1 : Location
 class $Location {
   /// The friendly name for this location, typically a nearby city name.
   ///
@@ -1371,6 +1655,10 @@ class $Location {
       };
 }
 
+/// Replacement class for
+///
+/// - firebasestorage:v1beta : GoogleFirebaseStorageControlplaneV1alphaMigrateLocationDestructivelyMetadata
+/// - firebasestorage:v1beta : GoogleFirebaseStorageControlplaneV1betaMigrateLocationDestructivelyMetadata
 class $MigrateLocationDestructivelyMetadata {
   /// The time the LRO was created.
   core.String? createTime;
@@ -1431,6 +1719,11 @@ class $MigrateLocationDestructivelyMetadata {
       };
 }
 
+/// Replacement class for
+///
+/// - adexchangebuyer2:v2beta1 : Money
+/// - documentai:v1beta3 : GoogleTypeMoney
+/// - domains:v1beta1 : Money
 class $Money {
   /// The three-letter currency code defined in ISO 4217.
   core.String? currencyCode;
@@ -1472,6 +1765,11 @@ class $Money {
       };
 }
 
+/// Replacement class for
+///
+/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta1NormalizedVertex
+/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta2NormalizedVertex
+/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta3NormalizedVertex
 class $NormalizedVertex {
   /// X coordinate.
   core.double? x;
@@ -1500,6 +1798,10 @@ class $NormalizedVertex {
       };
 }
 
+/// Replacement class for
+///
+/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta1OperationMetadata
+/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta2OperationMetadata
 class $OperationMetadata {
   /// The creation time of the operation.
   core.String? createTime;
@@ -1552,6 +1854,11 @@ class $OperationMetadata {
       };
 }
 
+/// Replacement class for
+///
+/// - networkconnectivity:v1alpha1 : OperationMetadata
+/// - networksecurity:v1beta1 : OperationMetadata
+/// - privateca:v1beta1 : OperationMetadata
 class $OperationMetadata01 {
   /// API version used to start the operation.
   ///
@@ -1637,6 +1944,10 @@ class $OperationMetadata01 {
       };
 }
 
+/// Replacement class for
+///
+/// - documentai:v1beta3 : GoogleTypePostalAddress
+/// - domains:v1beta1 : PostalAddress
 class $PostalAddress {
   /// Unstructured address lines describing the lower levels of an address.
   ///
@@ -1818,6 +2129,10 @@ class $PostalAddress {
       };
 }
 
+/// Replacement class for
+///
+/// - containeranalysis:v1beta1 : ProjectRepoId
+/// - ondemandscanning:v1beta1 : ProjectRepoId
 class $ProjectRepoId {
   /// The ID of the project.
   core.String? projectId;
@@ -1848,6 +2163,10 @@ class $ProjectRepoId {
       };
 }
 
+/// Replacement class for
+///
+/// - containeranalysis:v1beta1 : RelatedUrl
+/// - ondemandscanning:v1beta1 : RelatedUrl
 class $RelatedUrl {
   /// Label to describe usage of the URL.
   core.String? label;
@@ -1873,6 +2192,10 @@ class $RelatedUrl {
       };
 }
 
+/// Replacement class for
+///
+/// - policysimulator:v1beta1 : GoogleCloudPolicysimulatorV1ReplayOperationMetadata
+/// - policysimulator:v1beta1 : GoogleCloudPolicysimulatorV1beta1ReplayOperationMetadata
 class $ReplayOperationMetadata {
   /// Time when the request was received.
   core.String? startTime;
@@ -1893,6 +2216,10 @@ class $ReplayOperationMetadata {
       };
 }
 
+/// Replacement class for
+///
+/// - recommendationengine:v1beta1 : GoogleCloudRecommendationengineV1alphaRejoinCatalogResponse
+/// - recommendationengine:v1beta1 : GoogleCloudRecommendationengineV1beta1RejoinUserEventsResponse
 class $Response {
   /// Number of user events that were joined with latest catalog items.
   core.String? rejoinedUserEventsCount;
@@ -1914,6 +2241,10 @@ class $Response {
       };
 }
 
+/// Replacement class for
+///
+/// - documentai:v1beta3 : GoogleCloudDocumentaiV1ReviewDocumentResponse
+/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta3ReviewDocumentResponse
 class $ReviewDocumentResponse {
   /// The Cloud Storage uri for the human reviewed document.
   core.String? gcsDestination;
@@ -1934,6 +2265,10 @@ class $ReviewDocumentResponse {
       };
 }
 
+/// Replacement class for
+///
+/// - prod_tt_sasportal:v1alpha1 : SasPortalAssignment
+/// - sasportal:v1alpha1 : SasPortalAssignment
 class $SasPortalAssignment {
   /// The identities the role is assigned to.
   ///
@@ -1969,6 +2304,10 @@ class $SasPortalAssignment {
       };
 }
 
+/// Replacement class for
+///
+/// - prod_tt_sasportal:v1alpha1 : SasPortalCreateSignedDeviceRequest
+/// - sasportal:v1alpha1 : SasPortalCreateSignedDeviceRequest
 class $SasPortalCreateSignedDeviceRequest {
   /// JSON Web Token signed using a CPI private key.
   ///
@@ -2012,6 +2351,10 @@ class $SasPortalCreateSignedDeviceRequest {
       };
 }
 
+/// Replacement class for
+///
+/// - prod_tt_sasportal:v1alpha1 : SasPortalCustomer
+/// - sasportal:v1alpha1 : SasPortalCustomer
 class $SasPortalCustomer {
   /// Name of the organization that the customer entity represents.
   ///
@@ -2052,6 +2395,10 @@ class $SasPortalCustomer {
       };
 }
 
+/// Replacement class for
+///
+/// - prod_tt_sasportal:v1alpha1 : SasPortalDeployment
+/// - sasportal:v1alpha1 : SasPortalDeployment
 class $SasPortalDeployment {
   /// The allowed billing modes under this deployment.
   core.List<core.String>? allowedBillingModes;
@@ -2129,6 +2476,10 @@ class $SasPortalDeployment {
       };
 }
 
+/// Replacement class for
+///
+/// - prod_tt_sasportal:v1alpha1 : SasPortalDeviceAirInterface
+/// - sasportal:v1alpha1 : SasPortalDeviceAirInterface
 class $SasPortalDeviceAirInterface {
   /// Conditional.
   ///
@@ -2174,6 +2525,10 @@ class $SasPortalDeviceAirInterface {
       };
 }
 
+/// Replacement class for
+///
+/// - prod_tt_sasportal:v1alpha1 : SasPortalDeviceMetadata
+/// - sasportal:v1alpha1 : SasPortalDeviceMetadata
 class $SasPortalDeviceMetadata {
   /// If populated, the Antenna Model Pattern to use.
   ///
@@ -2221,6 +2576,10 @@ class $SasPortalDeviceMetadata {
       };
 }
 
+/// Replacement class for
+///
+/// - prod_tt_sasportal:v1alpha1 : SasPortalDeviceModel
+/// - sasportal:v1alpha1 : SasPortalDeviceModel
 class $SasPortalDeviceModel {
   /// The firmware version of the device.
   core.String? firmwareVersion;
@@ -2271,6 +2630,10 @@ class $SasPortalDeviceModel {
       };
 }
 
+/// Replacement class for
+///
+/// - prod_tt_sasportal:v1alpha1 : SasPortalFrequencyRange
+/// - sasportal:v1alpha1 : SasPortalFrequencyRange
 class $SasPortalFrequencyRange {
   /// The highest frequency of the frequency range in MHz.
   core.double? highFrequencyMhz;
@@ -2299,6 +2662,10 @@ class $SasPortalFrequencyRange {
       };
 }
 
+/// Replacement class for
+///
+/// - prod_tt_sasportal:v1alpha1 : SasPortalGenerateSecretResponse
+/// - sasportal:v1alpha1 : SasPortalGenerateSecretResponse
 class $SasPortalGenerateSecretResponse {
   /// The secret generated by the string and used by ValidateInstaller.
   core.String? secret;
@@ -2319,6 +2686,10 @@ class $SasPortalGenerateSecretResponse {
       };
 }
 
+/// Replacement class for
+///
+/// - prod_tt_sasportal:v1alpha1 : SasPortalGetPolicyRequest
+/// - sasportal:v1alpha1 : SasPortalGetPolicyRequest
 class $SasPortalGetPolicyRequest {
   /// The resource for which the policy is being requested.
   ///
@@ -2341,6 +2712,10 @@ class $SasPortalGetPolicyRequest {
       };
 }
 
+/// Replacement class for
+///
+/// - prod_tt_sasportal:v1alpha1 : SasPortalInstallationParams
+/// - sasportal:v1alpha1 : SasPortalInstallationParams
 class $SasPortalInstallationParams {
   /// Boresight direction of the horizontal plane of the antenna in degrees with
   /// respect to true north.
@@ -2521,6 +2896,10 @@ class $SasPortalInstallationParams {
       };
 }
 
+/// Replacement class for
+///
+/// - prod_tt_sasportal:v1alpha1 : SasPortalMoveDeploymentRequest
+/// - sasportal:v1alpha1 : SasPortalMoveDeploymentRequest
 class $SasPortalMoveDeploymentRequest {
   /// The name of the new parent resource node or customer to reparent the
   /// deployment under.
@@ -2544,6 +2923,10 @@ class $SasPortalMoveDeploymentRequest {
       };
 }
 
+/// Replacement class for
+///
+/// - prod_tt_sasportal:v1alpha1 : SasPortalMoveDeviceRequest
+/// - sasportal:v1alpha1 : SasPortalMoveDeviceRequest
 class $SasPortalMoveDeviceRequest {
   /// The name of the new parent resource node or customer to reparent the
   /// device under.
@@ -2567,6 +2950,10 @@ class $SasPortalMoveDeviceRequest {
       };
 }
 
+/// Replacement class for
+///
+/// - prod_tt_sasportal:v1alpha1 : SasPortalMoveNodeRequest
+/// - sasportal:v1alpha1 : SasPortalMoveNodeRequest
 class $SasPortalMoveNodeRequest {
   /// The name of the new parent resource node or customer to reparent the node
   /// under.
@@ -2590,6 +2977,10 @@ class $SasPortalMoveNodeRequest {
       };
 }
 
+/// Replacement class for
+///
+/// - prod_tt_sasportal:v1alpha1 : SasPortalNode
+/// - sasportal:v1alpha1 : SasPortalNode
 class $SasPortalNode {
   /// The node's display name.
   core.String? displayName;
@@ -2628,6 +3019,10 @@ class $SasPortalNode {
       };
 }
 
+/// Replacement class for
+///
+/// - prod_tt_sasportal:v1alpha1 : SasPortalTestPermissionsRequest
+/// - sasportal:v1alpha1 : SasPortalTestPermissionsRequest
 class $SasPortalTestPermissionsRequest {
   /// The set of permissions to check for the `resource`.
   core.List<core.String>? permissions;
@@ -2660,6 +3055,10 @@ class $SasPortalTestPermissionsRequest {
       };
 }
 
+/// Replacement class for
+///
+/// - prod_tt_sasportal:v1alpha1 : SasPortalTestPermissionsResponse
+/// - sasportal:v1alpha1 : SasPortalTestPermissionsResponse
 class $SasPortalTestPermissionsResponse {
   /// A set of permissions that the caller is allowed.
   core.List<core.String>? permissions;
@@ -2682,6 +3081,10 @@ class $SasPortalTestPermissionsResponse {
       };
 }
 
+/// Replacement class for
+///
+/// - prod_tt_sasportal:v1alpha1 : SasPortalUpdateSignedDeviceRequest
+/// - sasportal:v1alpha1 : SasPortalUpdateSignedDeviceRequest
 class $SasPortalUpdateSignedDeviceRequest {
   /// The JSON Web Token signed using a CPI private key.
   ///
@@ -2725,6 +3128,10 @@ class $SasPortalUpdateSignedDeviceRequest {
       };
 }
 
+/// Replacement class for
+///
+/// - prod_tt_sasportal:v1alpha1 : SasPortalValidateInstallerRequest
+/// - sasportal:v1alpha1 : SasPortalValidateInstallerRequest
 class $SasPortalValidateInstallerRequest {
   /// JSON Web Token signed using a CPI private key.
   ///
@@ -2770,6 +3177,12 @@ class $SasPortalValidateInstallerRequest {
       };
 }
 
+/// Replacement class for
+///
+/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta1GcsDestination
+/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta1GcsSource
+/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta2GcsDestination
+/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta2GcsSource
 class $Shared {
   core.String? uri;
 
@@ -2787,6 +3200,10 @@ class $Shared {
       };
 }
 
+/// Replacement class for
+///
+/// - containeranalysis:v1beta1 : ByProducts
+/// - containeranalysis:v1beta1 : Environment
 class $Shared01 {
   core.Map<core.String, core.String>? customValues;
 
@@ -2812,6 +3229,10 @@ class $Shared01 {
       };
 }
 
+/// Replacement class for
+///
+/// - containeranalysis:v1beta1 : Deployment
+/// - ondemandscanning:v1beta1 : DeploymentOccurrence
 class $Shared02 {
   /// Address of the runtime element hosting this deployment.
   core.String? address;
@@ -2892,6 +3313,10 @@ class $Shared02 {
       };
 }
 
+/// Replacement class for
+///
+/// - osconfig:v1alpha : OSPolicyAssignmentInstanceFilterInventory
+/// - osconfig:v1alpha : OSPolicyInventoryFilter
 class $Shared03 {
   /// The OS short name
   ///
@@ -2927,6 +3352,12 @@ class $Shared03 {
       };
 }
 
+/// Replacement class for
+///
+/// - osconfig:v1alpha : OSPolicyResourcePackageResourceAPT
+/// - osconfig:v1alpha : OSPolicyResourcePackageResourceGooGet
+/// - osconfig:v1alpha : OSPolicyResourcePackageResourceYUM
+/// - osconfig:v1alpha : OSPolicyResourcePackageResourceZypper
 class $Shared04 {
   /// Package name.
   ///
@@ -2947,6 +3378,10 @@ class $Shared04 {
       };
 }
 
+/// Replacement class for
+///
+/// - ondemandscanning:v1beta1 : AnalyzePackagesMetadata
+/// - ondemandscanning:v1beta1 : AnalyzePackagesMetadataV1
 class $Shared05 {
   /// When the scan was created.
   core.String? createTime;
@@ -2975,6 +3410,10 @@ class $Shared05 {
       };
 }
 
+/// Replacement class for
+///
+/// - ondemandscanning:v1beta1 : AnalyzePackagesResponse
+/// - ondemandscanning:v1beta1 : AnalyzePackagesResponseV1
 class $Shared06 {
   /// The name of the scan resource created by this successful scan.
   core.String? scan;
@@ -2993,6 +3432,10 @@ class $Shared06 {
       };
 }
 
+/// Replacement class for
+///
+/// - containeranalysis:v1beta1 : Signature
+/// - ondemandscanning:v1beta1 : Signature
 class $Signature {
   /// The identifier for the public key that verifies this signature.
   ///
@@ -3044,6 +3487,27 @@ class $Signature {
       };
 }
 
+/// Replacement class for
+///
+/// - alertcenter:v1beta1 : Status
+/// - containeranalysis:v1beta1 : Status
+/// - dataflow:v1b3 : Status
+/// - datalabeling:v1beta1 : GoogleRpcStatus
+/// - documentai:v1beta3 : GoogleRpcStatus
+/// - domains:v1beta1 : Status
+/// - firebase:v1beta1 : Status
+/// - lifesciences:v2beta : Status
+/// - metastore:v1beta : Status
+/// - networkconnectivity:v1alpha1 : GoogleRpcStatus
+/// - networksecurity:v1beta1 : Status
+/// - ondemandscanning:v1beta1 : Status
+/// - osconfig:v1alpha : Status
+/// - policysimulator:v1beta1 : GoogleRpcStatus
+/// - privateca:v1beta1 : Status
+/// - prod_tt_sasportal:v1alpha1 : SasPortalStatus
+/// - recommendationengine:v1beta1 : GoogleRpcStatus
+/// - sasportal:v1alpha1 : SasPortalStatus
+/// - toolresults:v1beta3 : Status
 class $Status {
   /// The status code, which should be an enum value of google.rpc.Code.
   core.int? code;
@@ -3088,6 +3552,15 @@ class $Status {
       };
 }
 
+/// Replacement class for
+///
+/// - bigqueryconnection:v1beta1 : TestIamPermissionsRequest
+/// - containeranalysis:v1beta1 : TestIamPermissionsRequest
+/// - datacatalog:v1beta1 : TestIamPermissionsRequest
+/// - domains:v1beta1 : TestIamPermissionsRequest
+/// - networkconnectivity:v1alpha1 : TestIamPermissionsRequest
+/// - networksecurity:v1beta1 : GoogleIamV1TestIamPermissionsRequest
+/// - privateca:v1beta1 : TestIamPermissionsRequest
 class $TestIamPermissionsRequest {
   /// The set of permissions to check for the `resource`.
   ///
@@ -3114,6 +3587,15 @@ class $TestIamPermissionsRequest {
       };
 }
 
+/// Replacement class for
+///
+/// - bigqueryconnection:v1beta1 : TestIamPermissionsResponse
+/// - containeranalysis:v1beta1 : TestIamPermissionsResponse
+/// - datacatalog:v1beta1 : TestIamPermissionsResponse
+/// - domains:v1beta1 : TestIamPermissionsResponse
+/// - networkconnectivity:v1alpha1 : TestIamPermissionsResponse
+/// - networksecurity:v1beta1 : GoogleIamV1TestIamPermissionsResponse
+/// - privateca:v1beta1 : TestIamPermissionsResponse
 class $TestIamPermissionsResponse {
   /// A subset of `TestPermissionsRequest.permissions` that the caller is
   /// allowed.
@@ -3137,6 +3619,11 @@ class $TestIamPermissionsResponse {
       };
 }
 
+/// Replacement class for
+///
+/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta1Vertex
+/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta2Vertex
+/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta3Vertex
 class $Vertex {
   /// X coordinate.
   core.int? x;

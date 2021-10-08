@@ -14,6 +14,10 @@ library $shared;
 
 import 'dart:core' as core;
 
+/// Replacement class for
+///
+/// - toyApi:0.1 : ToyResourceResponse
+/// - toyApi:0.1 : ToyResponse
 class $Response {
   core.String? result;
 

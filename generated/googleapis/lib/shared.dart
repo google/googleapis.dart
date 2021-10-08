@@ -15,6 +15,10 @@ library $shared;
 import 'dart:convert' as convert;
 import 'dart:core' as core;
 
+/// Replacement class for
+///
+/// - accesscontextmanager:v1 : AccessPolicy
+/// - cloudasset:v1 : GoogleIdentityAccesscontextmanagerV1AccessPolicy
 class $AccessPolicy {
   /// An opaque identifier for the current version of the `AccessPolicy`.
   ///
@@ -73,6 +77,10 @@ class $AccessPolicy {
       };
 }
 
+/// Replacement class for
+///
+/// - dfareporting:v3.4 : AccountActiveAdSummary
+/// - dfareporting:v3.5 : AccountActiveAdSummary
 class $AccountActiveAdSummary {
   /// ID of the account.
   core.String? accountId;
@@ -135,6 +143,10 @@ class $AccountActiveAdSummary {
       };
 }
 
+/// Replacement class for
+///
+/// - dfareporting:v3.4 : AccountPermission
+/// - dfareporting:v3.5 : AccountPermission
 class $AccountPermission {
   /// Account profiles associated with this account permission.
   ///
@@ -198,6 +210,10 @@ class $AccountPermission {
       };
 }
 
+/// Replacement class for
+///
+/// - dfareporting:v3.4 : AccountPermissionGroup
+/// - dfareporting:v3.5 : AccountPermissionGroup
 class $AccountPermissionGroup {
   /// ID of this account permission group.
   core.String? id;
@@ -230,6 +246,10 @@ class $AccountPermissionGroup {
       };
 }
 
+/// Replacement class for
+///
+/// - chat:v1 : ActionParameter
+/// - chat:v1 : GoogleAppsCardV1ActionParameter
 class $ActionParameter {
   /// The name of the parameter for the action script.
   core.String? key;
@@ -255,6 +275,10 @@ class $ActionParameter {
       };
 }
 
+/// Replacement class for
+///
+/// - dfareporting:v3.4 : AdSlot
+/// - dfareporting:v3.5 : AdSlot
 class $AdSlot {
   /// Comment for this ad slot.
   core.String? comment;
@@ -345,6 +369,10 @@ class $AdSlot {
       };
 }
 
+/// Replacement class for
+///
+/// - dfareporting:v3.4 : AdvertiserGroup
+/// - dfareporting:v3.5 : AdvertiserGroup
 class $AdvertiserGroup {
   /// Account ID of this advertiser group.
   ///
@@ -392,6 +420,10 @@ class $AdvertiserGroup {
       };
 }
 
+/// Replacement class for
+///
+/// - searchconsole:v1 : ApiDataRow
+/// - webmasters:v3 : ApiDataRow
 class $ApiDataRow {
   core.double? clicks;
   core.double? ctr;
@@ -437,6 +469,10 @@ class $ApiDataRow {
       };
 }
 
+/// Replacement class for
+///
+/// - artifactregistry:v1 : ImportAptArtifactsGcsSource
+/// - artifactregistry:v1 : ImportYumArtifactsGcsSource
 class $ArtifactsGcsSource {
   /// Cloud Storage paths URI (e.g., gs://my_bucket//my_object).
   core.List<core.String>? uris;
@@ -467,6 +503,10 @@ class $ArtifactsGcsSource {
       };
 }
 
+/// Replacement class for
+///
+/// - cloudchannel:v1 : GoogleCloudChannelV1AssociationInfo
+/// - cloudchannel:v1 : GoogleCloudChannelV1alpha1AssociationInfo
 class $AssociationInfo {
   /// The name of the base entitlement, for which this entitlement is an add-on.
   core.String? baseEntitlement;
@@ -487,6 +527,10 @@ class $AssociationInfo {
       };
 }
 
+/// Replacement class for
+///
+/// - ml:v1 : GoogleCloudMlV1__IntegratedGradientsAttribution
+/// - ml:v1 : GoogleCloudMlV1__XraiAttribution
 class $Attribution {
   /// Number of steps for approximating the path integral.
   ///
@@ -510,6 +554,10 @@ class $Attribution {
       };
 }
 
+/// Replacement class for
+///
+/// - dfareporting:v3.4 : AudienceSegment
+/// - dfareporting:v3.5 : AudienceSegment
 class $AudienceSegment {
   /// Weight allocated to this segment.
   ///
@@ -550,6 +598,39 @@ class $AudienceSegment {
       };
 }
 
+/// Replacement class for
+///
+/// - apigateway:v1 : ApigatewayAuditLogConfig
+/// - apigee:v1 : GoogleIamV1AuditLogConfig
+/// - bigquery:v2 : AuditLogConfig
+/// - bigtableadmin:v2 : AuditLogConfig
+/// - cloudasset:v1 : AuditLogConfig
+/// - cloudbilling:v1 : AuditLogConfig
+/// - cloudfunctions:v1 : AuditLogConfig
+/// - cloudkms:v1 : AuditLogConfig
+/// - cloudresourcemanager:v1 : AuditLogConfig
+/// - cloudresourcemanager:v2 : AuditLogConfig
+/// - cloudresourcemanager:v3 : AuditLogConfig
+/// - datafusion:v1 : AuditLogConfig
+/// - datamigration:v1 : AuditLogConfig
+/// - deploymentmanager:v2 : AuditLogConfig
+/// - eventarc:v1 : AuditLogConfig
+/// - gkehub:v1 : AuditLogConfig
+/// - healthcare:v1 : AuditLogConfig
+/// - iam:v1 : AuditLogConfig
+/// - ml:v1 : GoogleIamV1__AuditLogConfig
+/// - networkconnectivity:v1 : AuditLogConfig
+/// - networkmanagement:v1 : AuditLogConfig
+/// - networksecurity:v1 : GoogleIamV1AuditLogConfig
+/// - networkservices:v1 : AuditLogConfig
+/// - policysimulator:v1 : GoogleIamV1AuditLogConfig
+/// - policytroubleshooter:v1 : GoogleIamV1AuditLogConfig
+/// - privateca:v1 : AuditLogConfig
+/// - run:v1 : AuditLogConfig
+/// - secretmanager:v1 : AuditLogConfig
+/// - securitycenter:v1 : AuditLogConfig
+/// - servicemanagement:v1 : AuditLogConfig
+/// - sourcerepo:v1 : AuditLogConfig
 class $AuditLogConfig {
   /// Specifies the identities that do not cause logging for this type of
   /// permission.
@@ -588,6 +669,10 @@ class $AuditLogConfig {
       };
 }
 
+/// Replacement class for
+///
+/// - servicecontrol:v1 : Auth
+/// - servicecontrol:v2 : Auth
 class $Auth {
   /// A list of access level resource names that allow resources to be accessed
   /// by authenticated requester.
@@ -682,6 +767,12 @@ class $Auth {
       };
 }
 
+/// Replacement class for
+///
+/// - serviceconsumermanagement:v1 : AuthRequirement
+/// - servicemanagement:v1 : AuthRequirement
+/// - servicenetworking:v1 : AuthRequirement
+/// - serviceusage:v1 : AuthRequirement
 class $AuthRequirement {
   /// NOTE: This will be deprecated soon, once AuthProvider.audiences is
   /// implemented and accepted in all the runtime components.
@@ -724,6 +815,12 @@ class $AuthRequirement {
       };
 }
 
+/// Replacement class for
+///
+/// - serviceconsumermanagement:v1 : BackendRule
+/// - servicemanagement:v1 : BackendRule
+/// - servicenetworking:v1 : BackendRule
+/// - serviceusage:v1 : BackendRule
 class $BackendRule {
   /// The address of the API backend.
   ///
@@ -857,6 +954,11 @@ class $BackendRule {
       };
 }
 
+/// Replacement class for
+///
+/// - vision:v1 : BatchOperationMetadata
+/// - vision:v1 : GoogleCloudVisionV1p3beta1BatchOperationMetadata
+/// - vision:v1 : GoogleCloudVisionV1p4beta1BatchOperationMetadata
 class $BatchOperationMetadata {
   /// The time when the batch request is finished and
   /// google.longrunning.Operation.done is set to true.
@@ -904,6 +1006,12 @@ class $BatchOperationMetadata {
       };
 }
 
+/// Replacement class for
+///
+/// - serviceconsumermanagement:v1 : BillingDestination
+/// - servicemanagement:v1 : BillingDestination
+/// - servicenetworking:v1 : BillingDestination
+/// - serviceusage:v1 : BillingDestination
 class $BillingDestination {
   /// Names of the metrics to report to this billing destination.
   ///
@@ -938,6 +1046,10 @@ class $BillingDestination {
       };
 }
 
+/// Replacement class for
+///
+/// - cloudasset:v1 : GoogleCloudOrgpolicyV1BooleanPolicy
+/// - cloudresourcemanager:v1 : BooleanPolicy
 class $BooleanPolicy {
   /// If `true`, then the `Policy` is enforced.
   ///
@@ -983,6 +1095,10 @@ class $BooleanPolicy {
       };
 }
 
+/// Replacement class for
+///
+/// - dfareporting:v3.4 : Browser
+/// - dfareporting:v3.5 : Browser
 class $Browser {
   /// ID referring to this grouping of browser and version numbers.
   ///
@@ -1061,6 +1177,10 @@ class $Browser {
       };
 }
 
+/// Replacement class for
+///
+/// - dfareporting:v3.4 : CampaignCreativeAssociation
+/// - dfareporting:v3.5 : CampaignCreativeAssociation
 class $CampaignCreativeAssociation {
   /// ID of the creative associated with the campaign.
   ///
@@ -1091,6 +1211,10 @@ class $CampaignCreativeAssociation {
       };
 }
 
+/// Replacement class for
+///
+/// - compute:v1 : BackendBucketCdnPolicyBypassCacheOnRequestHeader
+/// - compute:v1 : BackendServiceCdnPolicyBypassCacheOnRequestHeader
 class $CdnPolicyBypassCacheOnRequestHeader {
   /// The header field name to match on when bypassing cache.
   ///
@@ -1113,6 +1237,10 @@ class $CdnPolicyBypassCacheOnRequestHeader {
       };
 }
 
+/// Replacement class for
+///
+/// - compute:v1 : BackendBucketCdnPolicyNegativeCachingPolicy
+/// - compute:v1 : BackendServiceCdnPolicyNegativeCachingPolicy
 class $CdnPolicyNegativeCachingPolicy {
   /// The HTTP status code to define a TTL against.
   ///
@@ -1145,6 +1273,10 @@ class $CdnPolicyNegativeCachingPolicy {
       };
 }
 
+/// Replacement class for
+///
+/// - dfareporting:v3.4 : ChangeLog
+/// - dfareporting:v3.5 : ChangeLog
 class $ChangeLog {
   /// Account ID of the modified object.
   core.String? accountId;
@@ -1270,6 +1402,11 @@ class $ChangeLog {
       };
 }
 
+/// Replacement class for
+///
+/// - calendar:v3 : Channel
+/// - drive:v2 : Channel
+/// - drive:v3 : Channel
 class $Channel {
   /// The address where notifications are delivered for this channel.
   core.String? address;
@@ -1376,6 +1513,10 @@ class $Channel {
       };
 }
 
+/// Replacement class for
+///
+/// - safebrowsing:v4 : GoogleSecuritySafebrowsingV4Checksum
+/// - webrisk:v1 : GoogleCloudWebriskV1ComputeThreatListDiffResponseChecksum
 class $Checksum {
   /// The SHA256 hash of the client state; that is, of the sorted list of all
   /// hashes present in the database.
@@ -1403,6 +1544,10 @@ class $Checksum {
       };
 }
 
+/// Replacement class for
+///
+/// - dfareporting:v3.4 : City
+/// - dfareporting:v3.5 : City
 class $City {
   /// Country code of the country to which this city belongs.
   core.String? countryCode;
@@ -1487,6 +1632,10 @@ class $City {
       };
 }
 
+/// Replacement class for
+///
+/// - dfareporting:v3.4 : ClickThroughUrl
+/// - dfareporting:v3.5 : ClickThroughUrl
 class $ClickThroughUrl {
   /// Read-only convenience field representing the actual URL that will be used
   /// for this click-through.
@@ -1547,6 +1696,10 @@ class $ClickThroughUrl {
       };
 }
 
+/// Replacement class for
+///
+/// - dfareporting:v3.4 : ClickThroughUrlSuffixProperties
+/// - dfareporting:v3.5 : ClickThroughUrlSuffixProperties
 class $ClickThroughUrlSuffixProperties {
   /// Click-through URL suffix to apply to all ads in this entity's scope.
   ///
@@ -1580,6 +1733,13 @@ class $ClickThroughUrlSuffixProperties {
       };
 }
 
+/// Replacement class for
+///
+/// - chat:v1 : Color
+/// - documentai:v1 : GoogleTypeColor
+/// - fcm:v1 : Color
+/// - sheets:v4 : Color
+/// - vision:v1 : Color
 class $Color {
   /// The fraction of this color that should be applied to the pixel.
   ///
@@ -1633,6 +1793,11 @@ class $Color {
       };
 }
 
+/// Replacement class for
+///
+/// - documentai:v1 : GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata
+/// - documentai:v1 : GoogleCloudDocumentaiV1CommonOperationMetadata
+/// - documentai:v1 : GoogleCloudDocumentaiV1beta3CommonOperationMetadata
 class $CommonOperationMetadata {
   /// The creation time of the operation.
   core.String? createTime;
@@ -1683,6 +1848,10 @@ class $CommonOperationMetadata {
       };
 }
 
+/// Replacement class for
+///
+/// - dfareporting:v3.4 : ConnectionType
+/// - dfareporting:v3.5 : ConnectionType
 class $ConnectionType {
   /// ID of this connection type.
   core.String? id;
@@ -1715,6 +1884,10 @@ class $ConnectionType {
       };
 }
 
+/// Replacement class for
+///
+/// - dfareporting:v3.4 : ContentCategory
+/// - dfareporting:v3.5 : ContentCategory
 class $ContentCategory {
   /// Account ID of this content category.
   ///
@@ -1762,6 +1935,12 @@ class $ContentCategory {
       };
 }
 
+/// Replacement class for
+///
+/// - serviceconsumermanagement:v1 : ContextRule
+/// - servicemanagement:v1 : ContextRule
+/// - servicenetworking:v1 : ContextRule
+/// - serviceusage:v1 : ContextRule
 class $ContextRule {
   /// A list of full type names or extension IDs of extensions allowed in grpc
   /// side channel from client to backend.
@@ -1830,6 +2009,12 @@ class $ContextRule {
       };
 }
 
+/// Replacement class for
+///
+/// - dialogflow:v2 : GoogleCloudDialogflowCxV3ContinuousTestResult
+/// - dialogflow:v2 : GoogleCloudDialogflowCxV3beta1ContinuousTestResult
+/// - dialogflow:v3 : GoogleCloudDialogflowCxV3ContinuousTestResult
+/// - dialogflow:v3 : GoogleCloudDialogflowCxV3beta1ContinuousTestResult
 class $ContinuousTestResult {
   /// The resource name for the continuous test result.
   ///
@@ -1883,6 +2068,12 @@ class $ContinuousTestResult {
       };
 }
 
+/// Replacement class for
+///
+/// - serviceconsumermanagement:v1 : Control
+/// - servicemanagement:v1 : Control
+/// - servicenetworking:v1 : Control
+/// - serviceusage:v1 : Control
 class $Control {
   /// The service control environment to use.
   ///
@@ -1906,6 +2097,10 @@ class $Control {
       };
 }
 
+/// Replacement class for
+///
+/// - dfareporting:v3.4 : ConversionError
+/// - dfareporting:v3.5 : ConversionError
 class $ConversionError {
   /// The error code.
   /// Possible string values are:
@@ -1945,6 +2140,10 @@ class $ConversionError {
       };
 }
 
+/// Replacement class for
+///
+/// - dfareporting:v3.4 : Country
+/// - dfareporting:v3.5 : Country
 class $Country {
   /// Country code.
   core.String? countryCode;
@@ -1997,6 +2196,10 @@ class $Country {
       };
 }
 
+/// Replacement class for
+///
+/// - contactcenterinsights:v1 : GoogleCloudContactcenterinsightsV1CreateAnalysisOperationMetadata
+/// - contactcenterinsights:v1 : GoogleCloudContactcenterinsightsV1alpha1CreateAnalysisOperationMetadata
 class $CreateAnalysisOperationMetadata {
   /// The Conversation that this Analysis Operation belongs to.
   ///
@@ -2039,6 +2242,11 @@ class $CreateAnalysisOperationMetadata {
       };
 }
 
+/// Replacement class for
+///
+/// - cloudresourcemanager:v1 : CreateFolderMetadata
+/// - cloudresourcemanager:v2 : CreateFolderMetadata
+/// - cloudresourcemanager:v3 : CreateFolderMetadata
 class $CreateFolderMetadata {
   /// The display name of the folder.
   core.String? displayName;
@@ -2068,6 +2276,11 @@ class $CreateFolderMetadata {
       };
 }
 
+/// Replacement class for
+///
+/// - cloudresourcemanager:v1 : CreateProjectMetadata
+/// - cloudresourcemanager:v2 : CreateProjectMetadata
+/// - cloudresourcemanager:v3 : CreateProjectMetadata
 class $CreateProjectMetadata {
   /// Creation time of the project creation workflow.
   core.String? createTime;
@@ -2106,6 +2319,12 @@ class $CreateProjectMetadata {
       };
 }
 
+/// Replacement class for
+///
+/// - dialogflow:v2 : GoogleCloudDialogflowCxV3CreateVersionOperationMetadata
+/// - dialogflow:v2 : GoogleCloudDialogflowCxV3beta1CreateVersionOperationMetadata
+/// - dialogflow:v3 : GoogleCloudDialogflowCxV3CreateVersionOperationMetadata
+/// - dialogflow:v3 : GoogleCloudDialogflowCxV3beta1CreateVersionOperationMetadata
 class $CreateVersionOperationMetadata {
   /// Name of the created version.
   ///
@@ -2128,6 +2347,10 @@ class $CreateVersionOperationMetadata {
       };
 }
 
+/// Replacement class for
+///
+/// - dfareporting:v3.4 : CreativeAssetId
+/// - dfareporting:v3.5 : CreativeAssetId
 class $CreativeAssetId {
   /// Name of the creative asset.
   ///
@@ -2167,6 +2390,10 @@ class $CreativeAssetId {
       };
 }
 
+/// Replacement class for
+///
+/// - dfareporting:v3.4 : CreativeClickThroughUrl
+/// - dfareporting:v3.5 : CreativeClickThroughUrl
 class $CreativeClickThroughUrl {
   /// Read-only convenience field representing the actual URL that will be used
   /// for this click-through.
@@ -2212,6 +2439,10 @@ class $CreativeClickThroughUrl {
       };
 }
 
+/// Replacement class for
+///
+/// - dfareporting:v3.4 : CreativeFieldAssignment
+/// - dfareporting:v3.5 : CreativeFieldAssignment
 class $CreativeFieldAssignment {
   /// ID of the creative field.
   core.String? creativeFieldId;
@@ -2241,6 +2472,10 @@ class $CreativeFieldAssignment {
       };
 }
 
+/// Replacement class for
+///
+/// - dfareporting:v3.4 : CreativeFieldValue
+/// - dfareporting:v3.5 : CreativeFieldValue
 class $CreativeFieldValue {
   /// ID of this creative field value.
   ///
@@ -2279,6 +2514,10 @@ class $CreativeFieldValue {
       };
 }
 
+/// Replacement class for
+///
+/// - dfareporting:v3.4 : CreativeGroupAssignment
+/// - dfareporting:v3.5 : CreativeGroupAssignment
 class $CreativeGroupAssignment {
   /// ID of the creative group to be assigned.
   core.String? creativeGroupId;
@@ -2311,6 +2550,12 @@ class $CreativeGroupAssignment {
       };
 }
 
+/// Replacement class for
+///
+/// - serviceconsumermanagement:v1 : CustomErrorRule
+/// - servicemanagement:v1 : CustomErrorRule
+/// - servicenetworking:v1 : CustomErrorRule
+/// - serviceusage:v1 : CustomErrorRule
 class $CustomErrorRule {
   /// Mark this message as possible payload in error response.
   ///
@@ -2344,6 +2589,10 @@ class $CustomErrorRule {
       };
 }
 
+/// Replacement class for
+///
+/// - dfareporting:v3.4 : CustomFloodlightVariable
+/// - dfareporting:v3.5 : CustomFloodlightVariable
 class $CustomFloodlightVariable {
   /// Identifies what kind of resource this is.
   ///
@@ -2482,6 +2731,12 @@ class $CustomFloodlightVariable {
       };
 }
 
+/// Replacement class for
+///
+/// - serviceconsumermanagement:v1 : CustomHttpPattern
+/// - servicemanagement:v1 : CustomHttpPattern
+/// - servicenetworking:v1 : CustomHttpPattern
+/// - serviceusage:v1 : CustomHttpPattern
 class $CustomHttpPattern {
   /// The name of this custom HTTP verb.
   core.String? kind;
@@ -2506,6 +2761,10 @@ class $CustomHttpPattern {
       };
 }
 
+/// Replacement class for
+///
+/// - dfareporting:v3.4 : CustomViewabilityMetricConfiguration
+/// - dfareporting:v3.5 : CustomViewabilityMetricConfiguration
 class $CustomViewabilityMetricConfiguration {
   /// Whether the video must be audible to count an impression.
   core.bool? audible;
@@ -2560,6 +2819,10 @@ class $CustomViewabilityMetricConfiguration {
       };
 }
 
+/// Replacement class for
+///
+/// - cloudchannel:v1 : GoogleCloudChannelV1CustomerEvent
+/// - cloudchannel:v1 : GoogleCloudChannelV1alpha1CustomerEvent
 class $CustomerEvent {
   /// Resource name of the customer.
   ///
@@ -2596,6 +2859,30 @@ class $CustomerEvent {
       };
 }
 
+/// Replacement class for
+///
+/// - admob:v1 : Date
+/// - adsense:v2 : Date
+/// - androidmanagement:v1 : Date
+/// - billingbudgets:v1 : GoogleTypeDate
+/// - classroom:v1 : Date
+/// - cloudasset:v1 : Date
+/// - composer:v1 : Date
+/// - content:v2.1 : Date
+/// - displayvideo:v1 : Date
+/// - dlp:v2 : GoogleTypeDate
+/// - documentai:v1 : GoogleTypeDate
+/// - file:v1 : Date
+/// - managedidentities:v1 : Date
+/// - memcache:v1 : Date
+/// - mybusinessbusinessinformation:v1 : Date
+/// - osconfig:v1 : Date
+/// - people:v1 : Date
+/// - policysimulator:v1 : GoogleTypeDate
+/// - realtimebidding:v1 : Date
+/// - retail:v2 : GoogleTypeDate
+/// - storagetransfer:v1 : Date
+/// - testing:v1 : Date
 class $Date {
   /// Day of a month.
   ///
@@ -2633,6 +2920,10 @@ class $Date {
       };
 }
 
+/// Replacement class for
+///
+/// - dfareporting:v3.4 : DateRange
+/// - dfareporting:v3.5 : DateRange
 class $DateRange {
   core.DateTime? endDate;
 
@@ -2694,6 +2985,10 @@ class $DateRange {
       };
 }
 
+/// Replacement class for
+///
+/// - dfareporting:v3.4 : DayPartTargeting
+/// - dfareporting:v3.5 : DayPartTargeting
 class $DayPartTargeting {
   /// Days of the week when the ad will serve.
   ///
@@ -2746,6 +3041,10 @@ class $DayPartTargeting {
       };
 }
 
+/// Replacement class for
+///
+/// - cloudsearch:v1 : ResponseDebugInfo
+/// - cloudsearch:v1 : ResultDebugInfo
 class $DebugInfo {
   /// General debug info formatted for display.
   core.String? formattedDebugInfo;
@@ -2767,6 +3066,10 @@ class $DebugInfo {
       };
 }
 
+/// Replacement class for
+///
+/// - dfareporting:v3.4 : DefaultClickThroughEventTagProperties
+/// - dfareporting:v3.5 : DefaultClickThroughEventTagProperties
 class $DefaultClickThroughEventTagProperties {
   /// ID of the click-through event tag to apply to all ads in this entity's
   /// scope.
@@ -2801,6 +3104,10 @@ class $DefaultClickThroughEventTagProperties {
       };
 }
 
+/// Replacement class for
+///
+/// - contactcenterinsights:v1 : GoogleCloudContactcenterinsightsV1DeleteIssueModelRequest
+/// - contactcenterinsights:v1 : GoogleCloudContactcenterinsightsV1alpha1DeleteIssueModelRequest
 class $DeleteIssueModelRequest {
   /// The name of the issue model to delete.
   ///
@@ -2821,6 +3128,10 @@ class $DeleteIssueModelRequest {
       };
 }
 
+/// Replacement class for
+///
+/// - contactcenterinsights:v1 : GoogleCloudContactcenterinsightsV1DeployIssueModelRequest
+/// - contactcenterinsights:v1 : GoogleCloudContactcenterinsightsV1alpha1DeployIssueModelRequest
 class $DeployIssueModelRequest {
   /// The issue model to deploy.
   ///
@@ -2841,6 +3152,13 @@ class $DeployIssueModelRequest {
       };
 }
 
+/// Replacement class for
+///
+/// - videointelligence:v1 : GoogleCloudVideointelligenceV1_DetectedAttribute
+/// - videointelligence:v1 : GoogleCloudVideointelligenceV1beta2_DetectedAttribute
+/// - videointelligence:v1 : GoogleCloudVideointelligenceV1p1beta1_DetectedAttribute
+/// - videointelligence:v1 : GoogleCloudVideointelligenceV1p2beta1_DetectedAttribute
+/// - videointelligence:v1 : GoogleCloudVideointelligenceV1p3beta1_DetectedAttribute
 class $DetectedAttribute {
   /// Detected attribute confidence.
   ///
@@ -2880,6 +3198,13 @@ class $DetectedAttribute {
       };
 }
 
+/// Replacement class for
+///
+/// - vision:v1 : DetectedBreak
+/// - vision:v1 : GoogleCloudVisionV1p1beta1TextAnnotationDetectedBreak
+/// - vision:v1 : GoogleCloudVisionV1p2beta1TextAnnotationDetectedBreak
+/// - vision:v1 : GoogleCloudVisionV1p3beta1TextAnnotationDetectedBreak
+/// - vision:v1 : GoogleCloudVisionV1p4beta1TextAnnotationDetectedBreak
 class $DetectedBreak {
   /// True if break prepends the element.
   core.bool? isPrefix;
@@ -2914,6 +3239,16 @@ class $DetectedBreak {
       };
 }
 
+/// Replacement class for
+///
+/// - documentai:v1 : GoogleCloudDocumentaiV1DocumentPageDetectedLanguage
+/// - documentai:v1 : GoogleCloudDocumentaiV1beta1DocumentPageDetectedLanguage
+/// - documentai:v1 : GoogleCloudDocumentaiV1beta2DocumentPageDetectedLanguage
+/// - vision:v1 : DetectedLanguage
+/// - vision:v1 : GoogleCloudVisionV1p1beta1TextAnnotationDetectedLanguage
+/// - vision:v1 : GoogleCloudVisionV1p2beta1TextAnnotationDetectedLanguage
+/// - vision:v1 : GoogleCloudVisionV1p3beta1TextAnnotationDetectedLanguage
+/// - vision:v1 : GoogleCloudVisionV1p4beta1TextAnnotationDetectedLanguage
 class $DetectedLanguage {
   /// Confidence of detected language.
   ///
@@ -2947,6 +3282,10 @@ class $DetectedLanguage {
       };
 }
 
+/// Replacement class for
+///
+/// - dfareporting:v3.4 : DfpSettings
+/// - dfareporting:v3.5 : DfpSettings
 class $DfpSettings {
   /// Ad Manager network code for this directory site.
   core.String? dfpNetworkCode;
@@ -3004,6 +3343,10 @@ class $DfpSettings {
       };
 }
 
+/// Replacement class for
+///
+/// - dfareporting:v3.4 : Dimension
+/// - dfareporting:v3.5 : Dimension
 class $Dimension {
   /// The kind of resource this is, in this case dfareporting#dimension.
   core.String? kind;
@@ -3028,6 +3371,10 @@ class $Dimension {
       };
 }
 
+/// Replacement class for
+///
+/// - dfareporting:v3.4 : DimensionFilter
+/// - dfareporting:v3.5 : DimensionFilter
 class $DimensionFilter {
   /// The name of the dimension to filter.
   core.String? dimensionName;
@@ -3061,6 +3408,10 @@ class $DimensionFilter {
       };
 }
 
+/// Replacement class for
+///
+/// - dfareporting:v3.4 : DimensionValue
+/// - dfareporting:v3.5 : DimensionValue
 class $DimensionValue {
   /// The name of the dimension.
   core.String? dimensionName;
@@ -3124,6 +3475,10 @@ class $DimensionValue {
       };
 }
 
+/// Replacement class for
+///
+/// - compute:v1 : DisksRemoveResourcePoliciesRequest
+/// - compute:v1 : RegionDisksRemoveResourcePoliciesRequest
 class $DisksRemoveResourcePoliciesRequest {
   /// Resource policies to be removed from this disk.
   core.List<core.String>? resourcePolicies;
@@ -3146,6 +3501,11 @@ class $DisksRemoveResourcePoliciesRequest {
       };
 }
 
+/// Replacement class for
+///
+/// - documentai:v1 : GoogleCloudDocumentaiV1DocumentEntityRelation
+/// - documentai:v1 : GoogleCloudDocumentaiV1beta1DocumentEntityRelation
+/// - documentai:v1 : GoogleCloudDocumentaiV1beta2DocumentEntityRelation
 class $DocumentEntityRelation {
   /// Object entity id.
   core.String? objectId;
@@ -3182,6 +3542,11 @@ class $DocumentEntityRelation {
       };
 }
 
+/// Replacement class for
+///
+/// - documentai:v1 : GoogleCloudDocumentaiV1DocumentPageDimension
+/// - documentai:v1 : GoogleCloudDocumentaiV1beta1DocumentPageDimension
+/// - documentai:v1 : GoogleCloudDocumentaiV1beta2DocumentPageDimension
 class $DocumentPageDimension {
   /// Page height.
   core.double? height;
@@ -3216,6 +3581,11 @@ class $DocumentPageDimension {
       };
 }
 
+/// Replacement class for
+///
+/// - documentai:v1 : GoogleCloudDocumentaiV1DocumentPageImage
+/// - documentai:v1 : GoogleCloudDocumentaiV1beta1DocumentPageImage
+/// - documentai:v1 : GoogleCloudDocumentaiV1beta2DocumentPageImage
 class $DocumentPageImage {
   /// Raw byte content of the image.
   core.String? content;
@@ -3263,6 +3633,11 @@ class $DocumentPageImage {
       };
 }
 
+/// Replacement class for
+///
+/// - documentai:v1 : GoogleCloudDocumentaiV1DocumentPageMatrix
+/// - documentai:v1 : GoogleCloudDocumentaiV1beta1DocumentPageMatrix
+/// - documentai:v1 : GoogleCloudDocumentaiV1beta2DocumentPageMatrix
 class $DocumentPageMatrix {
   /// Number of columns in the matrix.
   core.int? cols;
@@ -3309,6 +3684,11 @@ class $DocumentPageMatrix {
       };
 }
 
+/// Replacement class for
+///
+/// - documentai:v1 : GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreak
+/// - documentai:v1 : GoogleCloudDocumentaiV1beta1DocumentPageTokenDetectedBreak
+/// - documentai:v1 : GoogleCloudDocumentaiV1beta2DocumentPageTokenDetectedBreak
 class $DocumentPageTokenDetectedBreak {
   /// Detected break type.
   /// Possible string values are:
@@ -3333,6 +3713,11 @@ class $DocumentPageTokenDetectedBreak {
       };
 }
 
+/// Replacement class for
+///
+/// - documentai:v1 : GoogleCloudDocumentaiV1DocumentProvenanceParent
+/// - documentai:v1 : GoogleCloudDocumentaiV1beta1DocumentProvenanceParent
+/// - documentai:v1 : GoogleCloudDocumentaiV1beta2DocumentProvenanceParent
 class $DocumentProvenanceParent {
   /// The id of the parent provenance.
   core.int? id;
@@ -3367,6 +3752,11 @@ class $DocumentProvenanceParent {
       };
 }
 
+/// Replacement class for
+///
+/// - documentai:v1 : GoogleCloudDocumentaiV1DocumentRevisionHumanReview
+/// - documentai:v1 : GoogleCloudDocumentaiV1beta1DocumentRevisionHumanReview
+/// - documentai:v1 : GoogleCloudDocumentaiV1beta2DocumentRevisionHumanReview
 class $DocumentRevisionHumanReview {
   /// Human review state.
   ///
@@ -3398,6 +3788,11 @@ class $DocumentRevisionHumanReview {
       };
 }
 
+/// Replacement class for
+///
+/// - documentai:v1 : GoogleCloudDocumentaiV1DocumentShardInfo
+/// - documentai:v1 : GoogleCloudDocumentaiV1beta1DocumentShardInfo
+/// - documentai:v1 : GoogleCloudDocumentaiV1beta2DocumentShardInfo
 class $DocumentShardInfo {
   /// Total number of shards.
   core.String? shardCount;
@@ -3435,6 +3830,11 @@ class $DocumentShardInfo {
       };
 }
 
+/// Replacement class for
+///
+/// - documentai:v1 : GoogleCloudDocumentaiV1DocumentStyleFontSize
+/// - documentai:v1 : GoogleCloudDocumentaiV1beta1DocumentStyleFontSize
+/// - documentai:v1 : GoogleCloudDocumentaiV1beta2DocumentStyleFontSize
 class $DocumentStyleFontSize {
   /// Font size for the text.
   core.double? size;
@@ -3463,6 +3863,11 @@ class $DocumentStyleFontSize {
       };
 }
 
+/// Replacement class for
+///
+/// - documentai:v1 : GoogleCloudDocumentaiV1DocumentTextAnchorTextSegment
+/// - documentai:v1 : GoogleCloudDocumentaiV1beta1DocumentTextAnchorTextSegment
+/// - documentai:v1 : GoogleCloudDocumentaiV1beta2DocumentTextAnchorTextSegment
 class $DocumentTextAnchorTextSegment {
   /// TextSegment half open end UTF-8 char index in the Document.text.
   core.String? endIndex;
@@ -3491,6 +3896,12 @@ class $DocumentTextAnchorTextSegment {
       };
 }
 
+/// Replacement class for
+///
+/// - serviceconsumermanagement:v1 : DocumentationRule
+/// - servicemanagement:v1 : DocumentationRule
+/// - servicenetworking:v1 : DocumentationRule
+/// - serviceusage:v1 : DocumentationRule
 class $DocumentationRule {
   /// Deprecation description of the selected element(s).
   ///
@@ -3542,6 +3953,12 @@ class $DocumentationRule {
       };
 }
 
+/// Replacement class for
+///
+/// - dialogflow:v2 : GoogleCloudDialogflowCxV3DtmfInput
+/// - dialogflow:v2 : GoogleCloudDialogflowCxV3beta1DtmfInput
+/// - dialogflow:v3 : GoogleCloudDialogflowCxV3DtmfInput
+/// - dialogflow:v3 : GoogleCloudDialogflowCxV3beta1DtmfInput
 class $DtmfInput {
   /// The dtmf digits.
   core.String? digits;
@@ -3570,6 +3987,10 @@ class $DtmfInput {
       };
 }
 
+/// Replacement class for
+///
+/// - dfareporting:v3.4 : DynamicTargetingKey
+/// - dfareporting:v3.5 : DynamicTargetingKey
 class $DynamicTargetingKey {
   /// Identifies what kind of resource this is.
   ///
@@ -3624,6 +4045,10 @@ class $DynamicTargetingKey {
       };
 }
 
+/// Replacement class for
+///
+/// - accesscontextmanager:v1 : EgressFrom
+/// - cloudasset:v1 : GoogleIdentityAccesscontextmanagerV1EgressFrom
 class $EgressFrom {
   /// A list of identities that are allowed access through this
   /// \[EgressPolicy\].
@@ -3670,6 +4095,531 @@ class $EgressFrom {
       };
 }
 
+/// Replacement class for
+///
+/// - accessapproval:v1 : DismissApprovalRequestMessage
+/// - accessapproval:v1 : Empty
+/// - accesscontextmanager:v1 : AccessContextManagerOperationMetadata
+/// - accesscontextmanager:v1 : CancelOperationRequest
+/// - accesscontextmanager:v1 : Empty
+/// - accesscontextmanager:v1 : GcpUserAccessBindingOperationMetadata
+/// - admin:directory_v1 : Empty
+/// - androiddeviceprovisioning:v1 : Empty
+/// - androidmanagement:v1 : Empty
+/// - androidmanagement:v1 : IssueCommandResponse
+/// - apigateway:v1 : ApigatewayCancelOperationRequest
+/// - apigateway:v1 : Empty
+/// - apigee:v1 : GoogleCloudApigeeV1ActivateNatAddressRequest
+/// - apigee:v1 : GoogleCloudApigeeV1ExpireDeveloperSubscriptionRequest
+/// - apigee:v1 : GoogleCloudApigeeV1GenerateDownloadUrlRequest
+/// - apigee:v1 : GoogleCloudApigeeV1GenerateUploadUrlRequest
+/// - apigee:v1 : GoogleCloudApigeeV1GetSyncAuthorizationRequest
+/// - apigee:v1 : GoogleCloudApigeeV1ReportInstanceStatusResponse
+/// - apigee:v1 : GoogleProtobufEmpty
+/// - apikeys:v2 : V2UndeleteKeyRequest
+/// - appengine:v1 : Empty
+/// - appengine:v1 : RepairApplicationRequest
+/// - artifactregistry:v1 : CancelOperationRequest
+/// - artifactregistry:v1 : Empty
+/// - assuredworkloads:v1 : GoogleProtobufEmpty
+/// - baremetalsolution:v1 : ResetInstanceRequest
+/// - baremetalsolution:v1 : ResetInstanceResponse
+/// - bigquerydatatransfer:v1 : CheckValidCredsRequest
+/// - bigquerydatatransfer:v1 : Empty
+/// - bigqueryreservation:v1 : Empty
+/// - bigtableadmin:v2 : Empty
+/// - bigtableadmin:v2 : GenerateConsistencyTokenRequest
+/// - bigtableadmin:v2 : UpdateAppProfileMetadata
+/// - billingbudgets:v1 : GoogleCloudBillingBudgetsV1LastPeriodAmount
+/// - billingbudgets:v1 : GoogleProtobufEmpty
+/// - binaryauthorization:v1 : Empty
+/// - books:v1 : Empty
+/// - chat:v1 : Empty
+/// - chat:v1 : GoogleAppsCardV1Divider
+/// - chromepolicy:v1 : GoogleProtobufEmpty
+/// - classroom:v1 : Empty
+/// - classroom:v1 : ReclaimStudentSubmissionRequest
+/// - classroom:v1 : ReturnStudentSubmissionRequest
+/// - classroom:v1 : TurnInStudentSubmissionRequest
+/// - cloudasset:v1 : AnalyzeIamPolicyLongrunningResponse
+/// - cloudasset:v1 : Empty
+/// - cloudasset:v1 : GoogleCloudOrgpolicyV1RestoreDefault
+/// - cloudbuild:v1 : CancelOperationRequest
+/// - cloudbuild:v1 : Empty
+/// - cloudbuild:v1 : ReceiveTriggerWebhookResponse
+/// - cloudchannel:v1 : GoogleLongrunningCancelOperationRequest
+/// - cloudchannel:v1 : GoogleProtobufEmpty
+/// - clouddebugger:v2 : Empty
+/// - clouddebugger:v2 : UpdateActiveBreakpointResponse
+/// - cloudfunctions:v1 : GenerateUploadUrlRequest
+/// - cloudfunctions:v1 : Retry
+/// - cloudidentity:v1 : CreateGroupMetadata
+/// - cloudidentity:v1 : CreateMembershipMetadata
+/// - cloudidentity:v1 : DeleteGroupMetadata
+/// - cloudidentity:v1 : DeleteMembershipMetadata
+/// - cloudidentity:v1 : GetMembershipGraphMetadata
+/// - cloudidentity:v1 : GoogleAppsCloudidentityDevicesV1ApproveDeviceUserMetadata
+/// - cloudidentity:v1 : GoogleAppsCloudidentityDevicesV1BlockDeviceUserMetadata
+/// - cloudidentity:v1 : GoogleAppsCloudidentityDevicesV1CancelWipeDeviceMetadata
+/// - cloudidentity:v1 : GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserMetadata
+/// - cloudidentity:v1 : GoogleAppsCloudidentityDevicesV1CreateDeviceMetadata
+/// - cloudidentity:v1 : GoogleAppsCloudidentityDevicesV1DeleteDeviceMetadata
+/// - cloudidentity:v1 : GoogleAppsCloudidentityDevicesV1DeleteDeviceUserMetadata
+/// - cloudidentity:v1 : GoogleAppsCloudidentityDevicesV1ListEndpointAppsMetadata
+/// - cloudidentity:v1 : GoogleAppsCloudidentityDevicesV1SignoutDeviceUserMetadata
+/// - cloudidentity:v1 : GoogleAppsCloudidentityDevicesV1UpdateClientStateMetadata
+/// - cloudidentity:v1 : GoogleAppsCloudidentityDevicesV1UpdateDeviceMetadata
+/// - cloudidentity:v1 : GoogleAppsCloudidentityDevicesV1WipeDeviceMetadata
+/// - cloudidentity:v1 : GoogleAppsCloudidentityDevicesV1WipeDeviceUserMetadata
+/// - cloudidentity:v1 : UpdateGroupMetadata
+/// - cloudidentity:v1 : UpdateMembershipMetadata
+/// - cloudiot:v1 : BindDeviceToGatewayResponse
+/// - cloudiot:v1 : Empty
+/// - cloudiot:v1 : SendCommandToDeviceResponse
+/// - cloudiot:v1 : UnbindDeviceFromGatewayResponse
+/// - cloudkms:v1 : DestroyCryptoKeyVersionRequest
+/// - cloudkms:v1 : RestoreCryptoKeyVersionRequest
+/// - cloudresourcemanager:v1 : BooleanConstraint
+/// - cloudresourcemanager:v1 : CreateTagBindingMetadata
+/// - cloudresourcemanager:v1 : CreateTagKeyMetadata
+/// - cloudresourcemanager:v1 : CreateTagValueMetadata
+/// - cloudresourcemanager:v1 : DeleteFolderMetadata
+/// - cloudresourcemanager:v1 : DeleteOrganizationMetadata
+/// - cloudresourcemanager:v1 : DeleteProjectMetadata
+/// - cloudresourcemanager:v1 : DeleteTagBindingMetadata
+/// - cloudresourcemanager:v1 : DeleteTagKeyMetadata
+/// - cloudresourcemanager:v1 : DeleteTagValueMetadata
+/// - cloudresourcemanager:v1 : Empty
+/// - cloudresourcemanager:v1 : GetAncestryRequest
+/// - cloudresourcemanager:v1 : MoveProjectMetadata
+/// - cloudresourcemanager:v1 : RestoreDefault
+/// - cloudresourcemanager:v1 : UndeleteFolderMetadata
+/// - cloudresourcemanager:v1 : UndeleteOrganizationMetadata
+/// - cloudresourcemanager:v1 : UndeleteProjectMetadata
+/// - cloudresourcemanager:v1 : UndeleteProjectRequest
+/// - cloudresourcemanager:v1 : UpdateFolderMetadata
+/// - cloudresourcemanager:v1 : UpdateProjectMetadata
+/// - cloudresourcemanager:v1 : UpdateTagKeyMetadata
+/// - cloudresourcemanager:v1 : UpdateTagValueMetadata
+/// - cloudresourcemanager:v2 : CreateTagBindingMetadata
+/// - cloudresourcemanager:v2 : CreateTagKeyMetadata
+/// - cloudresourcemanager:v2 : CreateTagValueMetadata
+/// - cloudresourcemanager:v2 : DeleteFolderMetadata
+/// - cloudresourcemanager:v2 : DeleteOrganizationMetadata
+/// - cloudresourcemanager:v2 : DeleteProjectMetadata
+/// - cloudresourcemanager:v2 : DeleteTagBindingMetadata
+/// - cloudresourcemanager:v2 : DeleteTagKeyMetadata
+/// - cloudresourcemanager:v2 : DeleteTagValueMetadata
+/// - cloudresourcemanager:v2 : MoveProjectMetadata
+/// - cloudresourcemanager:v2 : UndeleteFolderMetadata
+/// - cloudresourcemanager:v2 : UndeleteFolderRequest
+/// - cloudresourcemanager:v2 : UndeleteOrganizationMetadata
+/// - cloudresourcemanager:v2 : UndeleteProjectMetadata
+/// - cloudresourcemanager:v2 : UpdateFolderMetadata
+/// - cloudresourcemanager:v2 : UpdateProjectMetadata
+/// - cloudresourcemanager:v2 : UpdateTagKeyMetadata
+/// - cloudresourcemanager:v2 : UpdateTagValueMetadata
+/// - cloudresourcemanager:v3 : CreateTagBindingMetadata
+/// - cloudresourcemanager:v3 : CreateTagKeyMetadata
+/// - cloudresourcemanager:v3 : CreateTagValueMetadata
+/// - cloudresourcemanager:v3 : DeleteFolderMetadata
+/// - cloudresourcemanager:v3 : DeleteOrganizationMetadata
+/// - cloudresourcemanager:v3 : DeleteProjectMetadata
+/// - cloudresourcemanager:v3 : DeleteTagBindingMetadata
+/// - cloudresourcemanager:v3 : DeleteTagKeyMetadata
+/// - cloudresourcemanager:v3 : DeleteTagValueMetadata
+/// - cloudresourcemanager:v3 : Empty
+/// - cloudresourcemanager:v3 : MoveProjectMetadata
+/// - cloudresourcemanager:v3 : UndeleteFolderMetadata
+/// - cloudresourcemanager:v3 : UndeleteFolderRequest
+/// - cloudresourcemanager:v3 : UndeleteOrganizationMetadata
+/// - cloudresourcemanager:v3 : UndeleteProjectMetadata
+/// - cloudresourcemanager:v3 : UndeleteProjectRequest
+/// - cloudresourcemanager:v3 : UpdateFolderMetadata
+/// - cloudresourcemanager:v3 : UpdateProjectMetadata
+/// - cloudresourcemanager:v3 : UpdateTagKeyMetadata
+/// - cloudresourcemanager:v3 : UpdateTagValueMetadata
+/// - cloudscheduler:v1 : Empty
+/// - cloudscheduler:v1 : PauseJobRequest
+/// - cloudscheduler:v1 : ResumeJobRequest
+/// - cloudscheduler:v1 : RunJobRequest
+/// - cloudsearch:v1 : QuerySuggestion
+/// - cloudshell:v1 : AddPublicKeyMetadata
+/// - cloudshell:v1 : AuthorizeEnvironmentMetadata
+/// - cloudshell:v1 : AuthorizeEnvironmentResponse
+/// - cloudshell:v1 : CancelOperationRequest
+/// - cloudshell:v1 : CreateEnvironmentMetadata
+/// - cloudshell:v1 : DeleteEnvironmentMetadata
+/// - cloudshell:v1 : Empty
+/// - cloudshell:v1 : RemovePublicKeyMetadata
+/// - cloudshell:v1 : RemovePublicKeyResponse
+/// - cloudtasks:v2 : Empty
+/// - cloudtasks:v2 : PauseQueueRequest
+/// - cloudtasks:v2 : PurgeQueueRequest
+/// - cloudtasks:v2 : ResumeQueueRequest
+/// - cloudtrace:v2 : Empty
+/// - composer:v1 : Empty
+/// - contactcenterinsights:v1 : GoogleCloudContactcenterinsightsV1DeployIssueModelResponse
+/// - contactcenterinsights:v1 : GoogleCloudContactcenterinsightsV1ExportInsightsDataResponse
+/// - contactcenterinsights:v1 : GoogleCloudContactcenterinsightsV1HoldData
+/// - contactcenterinsights:v1 : GoogleCloudContactcenterinsightsV1InterruptionData
+/// - contactcenterinsights:v1 : GoogleCloudContactcenterinsightsV1SilenceData
+/// - contactcenterinsights:v1 : GoogleCloudContactcenterinsightsV1UndeployIssueModelResponse
+/// - contactcenterinsights:v1 : GoogleCloudContactcenterinsightsV1alpha1DeployIssueModelResponse
+/// - contactcenterinsights:v1 : GoogleCloudContactcenterinsightsV1alpha1ExportInsightsDataResponse
+/// - contactcenterinsights:v1 : GoogleCloudContactcenterinsightsV1alpha1UndeployIssueModelResponse
+/// - contactcenterinsights:v1 : GoogleProtobufEmpty
+/// - container:v1 : Empty
+/// - container:v1 : MeshCertificates
+/// - content:v2.1 : ActivateBuyOnGoogleProgramRequest
+/// - content:v2.1 : CaptureOrderRequest
+/// - content:v2.1 : PauseBuyOnGoogleProgramRequest
+/// - content:v2.1 : RequestReviewBuyOnGoogleProgramRequest
+/// - datacatalog:v1 : Empty
+/// - datafusion:v1 : CancelOperationRequest
+/// - datafusion:v1 : Empty
+/// - datafusion:v1 : RestartInstanceRequest
+/// - datamigration:v1 : CancelOperationRequest
+/// - datamigration:v1 : Empty
+/// - datamigration:v1 : PromoteMigrationJobRequest
+/// - datamigration:v1 : RestartMigrationJobRequest
+/// - datamigration:v1 : ResumeMigrationJobRequest
+/// - datamigration:v1 : StartMigrationJobRequest
+/// - datamigration:v1 : StaticIpConnectivity
+/// - datamigration:v1 : StopMigrationJobRequest
+/// - datamigration:v1 : VerifyMigrationJobRequest
+/// - dataproc:v1 : CancelJobRequest
+/// - dataproc:v1 : DiagnoseClusterRequest
+/// - dataproc:v1 : Empty
+/// - datastore:v1 : Empty
+/// - datastore:v1 : ReadOnly
+/// - datastore:v1 : ReserveIdsResponse
+/// - datastore:v1 : RollbackResponse
+/// - dialogflow:v2 : GoogleCloudDialogflowCxV3ExportTestCasesMetadata
+/// - dialogflow:v2 : GoogleCloudDialogflowCxV3ResponseMessageEndInteraction
+/// - dialogflow:v2 : GoogleCloudDialogflowCxV3RunTestCaseMetadata
+/// - dialogflow:v2 : GoogleCloudDialogflowCxV3beta1ExportTestCasesMetadata
+/// - dialogflow:v2 : GoogleCloudDialogflowCxV3beta1ResponseMessageEndInteraction
+/// - dialogflow:v2 : GoogleCloudDialogflowCxV3beta1RunTestCaseMetadata
+/// - dialogflow:v2 : GoogleCloudDialogflowV2CompleteConversationRequest
+/// - dialogflow:v2 : GoogleCloudDialogflowV2TrainAgentRequest
+/// - dialogflow:v2 : GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionShareLocation
+/// - dialogflow:v2 : GoogleProtobufEmpty
+/// - dialogflow:v3 : GoogleCloudDialogflowCxV3ExportTestCasesMetadata
+/// - dialogflow:v3 : GoogleCloudDialogflowCxV3ResponseMessageEndInteraction
+/// - dialogflow:v3 : GoogleCloudDialogflowCxV3RunContinuousTestRequest
+/// - dialogflow:v3 : GoogleCloudDialogflowCxV3RunTestCaseMetadata
+/// - dialogflow:v3 : GoogleCloudDialogflowCxV3StartExperimentRequest
+/// - dialogflow:v3 : GoogleCloudDialogflowCxV3StopExperimentRequest
+/// - dialogflow:v3 : GoogleCloudDialogflowCxV3TrainFlowRequest
+/// - dialogflow:v3 : GoogleCloudDialogflowCxV3beta1ExportTestCasesMetadata
+/// - dialogflow:v3 : GoogleCloudDialogflowCxV3beta1ResponseMessageEndInteraction
+/// - dialogflow:v3 : GoogleCloudDialogflowCxV3beta1RunTestCaseMetadata
+/// - dialogflow:v3 : GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionShareLocation
+/// - dialogflow:v3 : GoogleProtobufEmpty
+/// - displayvideo:v1 : ActivateManualTriggerRequest
+/// - displayvideo:v1 : DeactivateManualTriggerRequest
+/// - displayvideo:v1 : Empty
+/// - dlp:v2 : GooglePrivacyDlpV2ActivateJobTriggerRequest
+/// - dlp:v2 : GooglePrivacyDlpV2CancelDlpJobRequest
+/// - dlp:v2 : GooglePrivacyDlpV2FinishDlpJobRequest
+/// - dlp:v2 : GooglePrivacyDlpV2HybridInspectResponse
+/// - dlp:v2 : GooglePrivacyDlpV2JobNotificationEmails
+/// - dlp:v2 : GooglePrivacyDlpV2LeaveUntransformed
+/// - dlp:v2 : GooglePrivacyDlpV2Manual
+/// - dlp:v2 : GooglePrivacyDlpV2PublishFindingsToCloudDataCatalog
+/// - dlp:v2 : GooglePrivacyDlpV2PublishSummaryToCscc
+/// - dlp:v2 : GooglePrivacyDlpV2PublishToStackdriver
+/// - dlp:v2 : GooglePrivacyDlpV2RedactConfig
+/// - dlp:v2 : GooglePrivacyDlpV2ReplaceWithInfoTypeConfig
+/// - dlp:v2 : GooglePrivacyDlpV2SurrogateType
+/// - dlp:v2 : GooglePrivacyDlpV2ThrowError
+/// - dlp:v2 : GoogleProtobufEmpty
+/// - dns:v1 : ResourceRecordSetsDeleteResponse
+/// - docs:v1 : EmbeddedDrawingProperties
+/// - docs:v1 : EmbeddedDrawingPropertiesSuggestionState
+/// - documentai:v1 : GoogleCloudDocumentaiUiv1beta3BatchDeleteDocumentsResponse
+/// - documentai:v1 : GoogleCloudDocumentaiUiv1beta3BatchMoveDocumentsResponse
+/// - documentai:v1 : GoogleCloudDocumentaiUiv1beta3DeployProcessorVersionResponse
+/// - documentai:v1 : GoogleCloudDocumentaiUiv1beta3DisableProcessorResponse
+/// - documentai:v1 : GoogleCloudDocumentaiUiv1beta3EnableProcessorResponse
+/// - documentai:v1 : GoogleCloudDocumentaiUiv1beta3ImportDocumentsResponse
+/// - documentai:v1 : GoogleCloudDocumentaiUiv1beta3SetDefaultProcessorVersionResponse
+/// - documentai:v1 : GoogleCloudDocumentaiUiv1beta3UndeployProcessorVersionResponse
+/// - documentai:v1 : GoogleCloudDocumentaiV1BatchProcessResponse
+/// - documentai:v1 : GoogleCloudDocumentaiV1DeployProcessorVersionRequest
+/// - documentai:v1 : GoogleCloudDocumentaiV1DeployProcessorVersionResponse
+/// - documentai:v1 : GoogleCloudDocumentaiV1DisableProcessorRequest
+/// - documentai:v1 : GoogleCloudDocumentaiV1DisableProcessorResponse
+/// - documentai:v1 : GoogleCloudDocumentaiV1EnableProcessorRequest
+/// - documentai:v1 : GoogleCloudDocumentaiV1EnableProcessorResponse
+/// - documentai:v1 : GoogleCloudDocumentaiV1SetDefaultProcessorVersionResponse
+/// - documentai:v1 : GoogleCloudDocumentaiV1UndeployProcessorVersionRequest
+/// - documentai:v1 : GoogleCloudDocumentaiV1UndeployProcessorVersionResponse
+/// - documentai:v1 : GoogleCloudDocumentaiV1beta3BatchProcessResponse
+/// - documentai:v1 : GoogleCloudDocumentaiV1beta3DeployProcessorVersionResponse
+/// - documentai:v1 : GoogleCloudDocumentaiV1beta3DisableProcessorResponse
+/// - documentai:v1 : GoogleCloudDocumentaiV1beta3EnableProcessorResponse
+/// - documentai:v1 : GoogleCloudDocumentaiV1beta3SetDefaultProcessorVersionResponse
+/// - documentai:v1 : GoogleCloudDocumentaiV1beta3UndeployProcessorVersionResponse
+/// - documentai:v1 : GoogleProtobufEmpty
+/// - driveactivity:v2 : Administrator
+/// - driveactivity:v2 : AnonymousUser
+/// - driveactivity:v2 : Anyone
+/// - driveactivity:v2 : DeletedUser
+/// - driveactivity:v2 : DriveFile
+/// - driveactivity:v2 : Edit
+/// - driveactivity:v2 : File
+/// - driveactivity:v2 : Legacy
+/// - driveactivity:v2 : New
+/// - driveactivity:v2 : NoConsolidation
+/// - driveactivity:v2 : UnknownUser
+/// - driveactivity:v2 : Upload
+/// - essentialcontacts:v1 : GoogleProtobufEmpty
+/// - eventarc:v1 : Empty
+/// - eventarc:v1 : GoogleLongrunningCancelOperationRequest
+/// - file:v1 : CancelOperationRequest
+/// - file:v1 : Empty
+/// - firebasehosting:v1 : CancelOperationRequest
+/// - firebasehosting:v1 : Empty
+/// - firebaseml:v1 : CancelOperationRequest
+/// - firebaseml:v1 : Empty
+/// - firebaserules:v1 : Empty
+/// - firestore:v1 : Empty
+/// - firestore:v1 : GoogleFirestoreAdminV1LocationMetadata
+/// - firestore:v1 : GoogleLongrunningCancelOperationRequest
+/// - gameservices:v1 : CancelOperationRequest
+/// - gameservices:v1 : Empty
+/// - gameservices:v1 : FetchDeploymentStateRequest
+/// - gkehub:v1 : CancelOperationRequest
+/// - gkehub:v1 : Empty
+/// - healthcare:v1 : ArchiveUserDataMappingRequest
+/// - healthcare:v1 : ArchiveUserDataMappingResponse
+/// - healthcare:v1 : CancelOperationRequest
+/// - healthcare:v1 : DeidentifySummary
+/// - healthcare:v1 : Empty
+/// - healthcare:v1 : ExportDicomDataResponse
+/// - healthcare:v1 : ExportMessagesResponse
+/// - healthcare:v1 : ExportResourcesResponse
+/// - healthcare:v1 : GoogleCloudHealthcareV1DeidentifyDeidentifyDicomStoreSummary
+/// - healthcare:v1 : GoogleCloudHealthcareV1DeidentifyDeidentifyFhirStoreSummary
+/// - healthcare:v1 : ImportDicomDataResponse
+/// - healthcare:v1 : ImportMessagesResponse
+/// - healthcare:v1 : ImportResourcesResponse
+/// - healthcare:v1 : RedactConfig
+/// - healthcare:v1 : ReplaceWithInfoTypeConfig
+/// - homegraph:v1 : Empty
+/// - homegraph:v1 : RequestSyncDevicesResponse
+/// - iam:v1 : DisableServiceAccountKeyRequest
+/// - iam:v1 : DisableServiceAccountRequest
+/// - iam:v1 : Empty
+/// - iam:v1 : EnableServiceAccountKeyRequest
+/// - iam:v1 : EnableServiceAccountRequest
+/// - iam:v1 : UndeleteServiceAccountRequest
+/// - iam:v1 : UndeleteWorkloadIdentityPoolProviderRequest
+/// - iam:v1 : UndeleteWorkloadIdentityPoolRequest
+/// - iap:v1 : Empty
+/// - iap:v1 : ResetIdentityAwareProxyClientSecretRequest
+/// - jobs:v3 : Empty
+/// - jobs:v4 : Empty
+/// - keep:v1 : Empty
+/// - keep:v1 : Family
+/// - licensing:v1 : Empty
+/// - logging:v2 : CancelOperationRequest
+/// - logging:v2 : Empty
+/// - logging:v2 : UndeleteBucketRequest
+/// - logging:v2 : WriteLogEntriesResponse
+/// - managedidentities:v1 : CancelOperationRequest
+/// - managedidentities:v1 : Empty
+/// - managedidentities:v1 : ResetAdminPasswordRequest
+/// - manufacturers:v1 : Empty
+/// - memcache:v1 : CancelOperationRequest
+/// - memcache:v1 : Empty
+/// - memcache:v1 : GoogleCloudMemcacheV1ZoneMetadata
+/// - memcache:v1 : ZoneMetadata
+/// - ml:v1 : GoogleCloudMlV1__CancelJobRequest
+/// - ml:v1 : GoogleCloudMlV1__CheckTrialEarlyStoppingStateRequest
+/// - ml:v1 : GoogleCloudMlV1__ListOptimalTrialsRequest
+/// - ml:v1 : GoogleCloudMlV1__SetDefaultVersionRequest
+/// - ml:v1 : GoogleCloudMlV1__StopTrialRequest
+/// - ml:v1 : GoogleProtobuf__Empty
+/// - monitoring:v3 : AvailabilityCriteria
+/// - monitoring:v3 : Custom
+/// - monitoring:v3 : Empty
+/// - monitoring:v3 : SendNotificationChannelVerificationCodeRequest
+/// - mybusinessaccountmanagement:v1 : AcceptInvitationRequest
+/// - mybusinessaccountmanagement:v1 : DeclineInvitationRequest
+/// - mybusinessaccountmanagement:v1 : Empty
+/// - mybusinessbusinessinformation:v1 : ClearLocationAssociationRequest
+/// - mybusinessbusinessinformation:v1 : Empty
+/// - mybusinessplaceactions:v1 : Empty
+/// - mybusinessverifications:v1 : ComplyWithGuidelines
+/// - mybusinessverifications:v1 : ResolveOwnershipConflict
+/// - mybusinessverifications:v1 : WaitForVoiceOfMerchant
+/// - networkconnectivity:v1 : Empty
+/// - networkconnectivity:v1 : GoogleLongrunningCancelOperationRequest
+/// - networkmanagement:v1 : CancelOperationRequest
+/// - networkmanagement:v1 : Empty
+/// - networkmanagement:v1 : RerunConnectivityTestRequest
+/// - networksecurity:v1 : CancelOperationRequest
+/// - networksecurity:v1 : Empty
+/// - networkservices:v1 : CancelOperationRequest
+/// - networkservices:v1 : Empty
+/// - notebooks:v1 : CancelOperationRequest
+/// - notebooks:v1 : Empty
+/// - notebooks:v1 : ResetInstanceRequest
+/// - notebooks:v1 : ResetRuntimeRequest
+/// - notebooks:v1 : StartInstanceRequest
+/// - notebooks:v1 : StartRuntimeRequest
+/// - notebooks:v1 : StopInstanceRequest
+/// - notebooks:v1 : StopRuntimeRequest
+/// - notebooks:v1 : TriggerScheduleRequest
+/// - notebooks:v1 : UpgradeInstanceRequest
+/// - ondemandscanning:v1 : Empty
+/// - orgpolicy:v2 : GoogleCloudOrgpolicyV2ConstraintBooleanConstraint
+/// - orgpolicy:v2 : GoogleProtobufEmpty
+/// - osconfig:v1 : CancelOperationRequest
+/// - osconfig:v1 : CancelPatchJobRequest
+/// - osconfig:v1 : Empty
+/// - osconfig:v1 : GooSettings
+/// - oslogin:v1 : Empty
+/// - paymentsresellersubscription:v1 : GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionRequest
+/// - paymentsresellersubscription:v1 : GoogleCloudPaymentsResellerSubscriptionV1UndoCancelSubscriptionRequest
+/// - people:v1 : Empty
+/// - playablelocations:v3 : GoogleMapsPlayablelocationsV3LogImpressionsResponse
+/// - playablelocations:v3 : GoogleMapsPlayablelocationsV3LogPlayerReportsResponse
+/// - privateca:v1 : CancelOperationRequest
+/// - privateca:v1 : Empty
+/// - pubsub:v1 : DetachSubscriptionResponse
+/// - pubsub:v1 : Empty
+/// - pubsub:v1 : SeekResponse
+/// - pubsub:v1 : ValidateMessageResponse
+/// - pubsub:v1 : ValidateSchemaResponse
+/// - pubsublite:v1 : CancelOperationRequest
+/// - pubsublite:v1 : CommitCursorResponse
+/// - pubsublite:v1 : Empty
+/// - pubsublite:v1 : SeekSubscriptionResponse
+/// - realtimebidding:v1 : ActivatePretargetingConfigRequest
+/// - realtimebidding:v1 : CloseUserListRequest
+/// - realtimebidding:v1 : Empty
+/// - realtimebidding:v1 : OpenUserListRequest
+/// - realtimebidding:v1 : SuspendPretargetingConfigRequest
+/// - realtimebidding:v1 : WatchCreativesRequest
+/// - recaptchaenterprise:v1 : GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentResponse
+/// - recaptchaenterprise:v1 : GoogleCloudRecaptchaenterpriseV1MigrateKeyRequest
+/// - recaptchaenterprise:v1 : GoogleProtobufEmpty
+/// - redis:v1 : Empty
+/// - redis:v1 : GoogleCloudRedisV1ZoneMetadata
+/// - retail:v2 : GoogleCloudRetailV2AddFulfillmentPlacesMetadata
+/// - retail:v2 : GoogleCloudRetailV2AddFulfillmentPlacesResponse
+/// - retail:v2 : GoogleCloudRetailV2PurgeMetadata
+/// - retail:v2 : GoogleCloudRetailV2RejoinUserEventsMetadata
+/// - retail:v2 : GoogleCloudRetailV2RemoveFulfillmentPlacesMetadata
+/// - retail:v2 : GoogleCloudRetailV2RemoveFulfillmentPlacesResponse
+/// - retail:v2 : GoogleCloudRetailV2SetInventoryMetadata
+/// - retail:v2 : GoogleCloudRetailV2SetInventoryResponse
+/// - retail:v2 : GoogleCloudRetailV2alphaAddFulfillmentPlacesMetadata
+/// - retail:v2 : GoogleCloudRetailV2alphaAddFulfillmentPlacesResponse
+/// - retail:v2 : GoogleCloudRetailV2alphaEnrollSolutionMetadata
+/// - retail:v2 : GoogleCloudRetailV2alphaPurgeMetadata
+/// - retail:v2 : GoogleCloudRetailV2alphaRejoinUserEventsMetadata
+/// - retail:v2 : GoogleCloudRetailV2alphaRemoveFulfillmentPlacesMetadata
+/// - retail:v2 : GoogleCloudRetailV2alphaRemoveFulfillmentPlacesResponse
+/// - retail:v2 : GoogleCloudRetailV2alphaSetInventoryMetadata
+/// - retail:v2 : GoogleCloudRetailV2alphaSetInventoryResponse
+/// - retail:v2 : GoogleCloudRetailV2betaAddFulfillmentPlacesMetadata
+/// - retail:v2 : GoogleCloudRetailV2betaAddFulfillmentPlacesResponse
+/// - retail:v2 : GoogleCloudRetailV2betaPurgeMetadata
+/// - retail:v2 : GoogleCloudRetailV2betaRejoinUserEventsMetadata
+/// - retail:v2 : GoogleCloudRetailV2betaRemoveFulfillmentPlacesMetadata
+/// - retail:v2 : GoogleCloudRetailV2betaRemoveFulfillmentPlacesResponse
+/// - retail:v2 : GoogleCloudRetailV2betaSetInventoryMetadata
+/// - retail:v2 : GoogleCloudRetailV2betaSetInventoryResponse
+/// - retail:v2 : GoogleProtobufEmpty
+/// - runtimeconfig:v1 : CancelOperationRequest
+/// - runtimeconfig:v1 : Empty
+/// - safebrowsing:v4 : GoogleProtobufEmpty
+/// - script:v1 : Empty
+/// - secretmanager:v1 : Empty
+/// - securitycenter:v1 : Empty
+/// - securitycenter:v1 : RunAssetDiscoveryRequest
+/// - serviceconsumermanagement:v1 : CancelOperationRequest
+/// - serviceconsumermanagement:v1 : Empty
+/// - serviceconsumermanagement:v1 : V1Beta1DisableConsumerResponse
+/// - serviceconsumermanagement:v1 : V1Beta1EnableConsumerResponse
+/// - serviceconsumermanagement:v1 : V1Beta1RefreshConsumerResponse
+/// - serviceconsumermanagement:v1 : V1DisableConsumerResponse
+/// - serviceconsumermanagement:v1 : V1EnableConsumerResponse
+/// - serviceconsumermanagement:v1 : V1RefreshConsumerResponse
+/// - servicecontrol:v2 : ReportResponse
+/// - servicedirectory:v1 : Empty
+/// - servicemanagement:v1 : DeleteServiceStrategy
+/// - servicemanagement:v1 : EnableServiceResponse
+/// - servicenetworking:v1 : AddDnsRecordSetMetadata
+/// - servicenetworking:v1 : AddDnsZoneMetadata
+/// - servicenetworking:v1 : AddRolesMetadata
+/// - servicenetworking:v1 : CancelOperationRequest
+/// - servicenetworking:v1 : ConsumerConfigMetadata
+/// - servicenetworking:v1 : DeleteConnectionMetadata
+/// - servicenetworking:v1 : DeletePeeredDnsDomainMetadata
+/// - servicenetworking:v1 : Empty
+/// - servicenetworking:v1 : PartialDeleteConnectionMetadata
+/// - servicenetworking:v1 : PeeredDnsDomainMetadata
+/// - servicenetworking:v1 : RemoveDnsRecordSetMetadata
+/// - servicenetworking:v1 : RemoveDnsRecordSetResponse
+/// - servicenetworking:v1 : RemoveDnsZoneMetadata
+/// - servicenetworking:v1 : RemoveDnsZoneResponse
+/// - servicenetworking:v1 : UpdateDnsRecordSetMetadata
+/// - serviceusage:v1 : CancelOperationRequest
+/// - serviceusage:v1 : CreateAdminQuotaPolicyMetadata
+/// - serviceusage:v1 : DeleteAdminQuotaPolicyMetadata
+/// - serviceusage:v1 : Empty
+/// - serviceusage:v1 : EnableServiceRequest
+/// - serviceusage:v1 : GetServiceIdentityMetadata
+/// - serviceusage:v1 : ImportAdminOverridesMetadata
+/// - serviceusage:v1 : ImportAdminQuotaPoliciesMetadata
+/// - serviceusage:v1 : ImportConsumerOverridesMetadata
+/// - serviceusage:v1 : UpdateAdminQuotaPolicyMetadata
+/// - sheets:v4 : ClearValuesRequest
+/// - sourcerepo:v1 : Empty
+/// - sourcerepo:v1 : SyncRepoRequest
+/// - spanner:v1 : Empty
+/// - spanner:v1 : PartitionedDml
+/// - spanner:v1 : ReadWrite
+/// - storagetransfer:v1 : CancelOperationRequest
+/// - storagetransfer:v1 : Empty
+/// - storagetransfer:v1 : PauseTransferOperationRequest
+/// - storagetransfer:v1 : ResumeTransferOperationRequest
+/// - streetviewpublish:v1 : Empty
+/// - testing:v1 : GoogleAuto
+/// - testing:v1 : LauncherActivityIntent
+/// - tpu:v1 : Empty
+/// - tpu:v1 : StartNodeRequest
+/// - tpu:v1 : StopNodeRequest
+/// - trafficdirector:v2 : NullMatch
+/// - translate:v3 : CancelOperationRequest
+/// - translate:v3 : Empty
+/// - vault:v1 : CancelOperationRequest
+/// - vault:v1 : CloseMatterRequest
+/// - vault:v1 : Empty
+/// - vault:v1 : ReopenMatterRequest
+/// - vault:v1 : UndeleteMatterRequest
+/// - verifiedaccess:v1 : Empty
+/// - videointelligence:v1 : GoogleLongrunning_CancelOperationRequest
+/// - videointelligence:v1 : GoogleProtobuf_Empty
+/// - vision:v1 : CancelOperationRequest
+/// - vision:v1 : Empty
+/// - webrisk:v1 : GoogleLongrunningCancelOperationRequest
+/// - webrisk:v1 : GoogleProtobufEmpty
+/// - websecurityscanner:v1 : Empty
+/// - websecurityscanner:v1 : StartScanRunRequest
+/// - websecurityscanner:v1 : StopScanRunRequest
+/// - workflowexecutions:v1 : CancelExecutionRequest
+/// - workflows:v1 : Empty
+/// - youtube:v3 : TestItemTestItemSnippet
+/// - youtube:v3 : TokenPagination
+/// - youtube:v3 : VideoProjectDetails
+/// - youtubereporting:v1 : Empty
 class $Empty {
   $Empty();
 
@@ -3680,6 +4630,10 @@ class $Empty {
   core.Map<core.String, core.dynamic> toJson() => {};
 }
 
+/// Replacement class for
+///
+/// - dfareporting:v3.4 : EncryptionInfo
+/// - dfareporting:v3.5 : EncryptionInfo
 class $EncryptionInfo {
   /// The encryption entity ID.
   ///
@@ -3745,6 +4699,12 @@ class $EncryptionInfo {
       };
 }
 
+/// Replacement class for
+///
+/// - serviceconsumermanagement:v1 : Endpoint
+/// - servicemanagement:v1 : Endpoint
+/// - servicenetworking:v1 : Endpoint
+/// - serviceusage:v1 : Endpoint
 class $Endpoint {
   /// Allowing
   /// [CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing), aka
@@ -3790,6 +4750,10 @@ class $Endpoint {
       };
 }
 
+/// Replacement class for
+///
+/// - cloudchannel:v1 : GoogleCloudChannelV1EntitlementEvent
+/// - cloudchannel:v1 : GoogleCloudChannelV1alpha1EntitlementEvent
 class $EntitlementEvent {
   /// Resource name of an entitlement of the form:
   /// accounts/{account_id}/customers/{customer_id}/entitlements/{entitlement_id}
@@ -3839,6 +4803,13 @@ class $EntitlementEvent {
       };
 }
 
+/// Replacement class for
+///
+/// - videointelligence:v1 : GoogleCloudVideointelligenceV1_Entity
+/// - videointelligence:v1 : GoogleCloudVideointelligenceV1beta2_Entity
+/// - videointelligence:v1 : GoogleCloudVideointelligenceV1p1beta1_Entity
+/// - videointelligence:v1 : GoogleCloudVideointelligenceV1p2beta1_Entity
+/// - videointelligence:v1 : GoogleCloudVideointelligenceV1p3beta1_Entity
 class $Entity {
   /// Textual description, e.g., `Fixed-gear bicycle`.
   core.String? description;
@@ -3878,6 +4849,10 @@ class $Entity {
       };
 }
 
+/// Replacement class for
+///
+/// - datastore:v1 : GoogleDatastoreAdminV1EntityFilter
+/// - datastore:v1 : GoogleDatastoreAdminV1beta1EntityFilter
 class $EntityFilter {
   /// If empty, then this represents all kinds.
   core.List<core.String>? kinds;
@@ -3915,6 +4890,12 @@ class $EntityFilter {
       };
 }
 
+/// Replacement class for
+///
+/// - dialogflow:v2 : GoogleCloudDialogflowV2EntityTypeEntity
+/// - dialogflow:v2 : GoogleCloudDialogflowV2beta1EntityTypeEntity
+/// - dialogflow:v3 : GoogleCloudDialogflowV2EntityTypeEntity
+/// - dialogflow:v3 : GoogleCloudDialogflowV2beta1EntityTypeEntity
 class $EntityTypeEntity {
   /// A collection of value synonyms.
   ///
@@ -3958,6 +4939,12 @@ class $EntityTypeEntity {
       };
 }
 
+/// Replacement class for
+///
+/// - dialogflow:v2 : GoogleCloudDialogflowCxV3EnvironmentTestCasesConfig
+/// - dialogflow:v2 : GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfig
+/// - dialogflow:v3 : GoogleCloudDialogflowCxV3EnvironmentTestCasesConfig
+/// - dialogflow:v3 : GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfig
 class $EnvironmentTestCasesConfig {
   /// Whether to run test cases in TestCasesConfig.test_cases periodically.
   ///
@@ -4006,6 +4993,12 @@ class $EnvironmentTestCasesConfig {
       };
 }
 
+/// Replacement class for
+///
+/// - dialogflow:v2 : GoogleCloudDialogflowCxV3EnvironmentVersionConfig
+/// - dialogflow:v2 : GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfig
+/// - dialogflow:v3 : GoogleCloudDialogflowCxV3EnvironmentVersionConfig
+/// - dialogflow:v3 : GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfig
 class $EnvironmentVersionConfig {
   /// Format: projects//locations//agents//flows//versions/.
   ///
@@ -4028,6 +5021,12 @@ class $EnvironmentVersionConfig {
       };
 }
 
+/// Replacement class for
+///
+/// - dialogflow:v2 : GoogleCloudDialogflowCxV3EventInput
+/// - dialogflow:v2 : GoogleCloudDialogflowCxV3beta1EventInput
+/// - dialogflow:v3 : GoogleCloudDialogflowCxV3EventInput
+/// - dialogflow:v3 : GoogleCloudDialogflowCxV3beta1EventInput
 class $EventInput {
   /// Name of the event.
   core.String? event;
@@ -4047,6 +5046,12 @@ class $EventInput {
       };
 }
 
+/// Replacement class for
+///
+/// - dialogflow:v2 : GoogleCloudDialogflowV2EventInput
+/// - dialogflow:v2 : GoogleCloudDialogflowV2beta1EventInput
+/// - dialogflow:v3 : GoogleCloudDialogflowV2EventInput
+/// - dialogflow:v3 : GoogleCloudDialogflowV2beta1EventInput
 class $EventInput01 {
   /// The language of this query.
   ///
@@ -4102,6 +5107,10 @@ class $EventInput01 {
       };
 }
 
+/// Replacement class for
+///
+/// - dfareporting:v3.4 : EventTagOverride
+/// - dfareporting:v3.5 : EventTagOverride
 class $EventTagOverride {
   /// Whether this override is enabled.
   core.bool? enabled;
@@ -4130,6 +5139,10 @@ class $EventTagOverride {
       };
 }
 
+/// Replacement class for
+///
+/// - logging:v2 : Explicit
+/// - monitoring:v3 : Explicit
 class $Explicit {
   /// The values must be monotonically increasing.
   core.List<core.double>? bounds;
@@ -4152,6 +5165,13 @@ class $Explicit {
       };
 }
 
+/// Replacement class for
+///
+/// - videointelligence:v1 : GoogleCloudVideointelligenceV1_ExplicitContentFrame
+/// - videointelligence:v1 : GoogleCloudVideointelligenceV1beta2_ExplicitContentFrame
+/// - videointelligence:v1 : GoogleCloudVideointelligenceV1p1beta1_ExplicitContentFrame
+/// - videointelligence:v1 : GoogleCloudVideointelligenceV1p2beta1_ExplicitContentFrame
+/// - videointelligence:v1 : GoogleCloudVideointelligenceV1p3beta1_ExplicitContentFrame
 class $ExplicitContentFrame {
   /// Likelihood of the pornography content..
   /// Possible string values are:
@@ -4189,6 +5209,10 @@ class $ExplicitContentFrame {
       };
 }
 
+/// Replacement class for
+///
+/// - logging:v2 : Exponential
+/// - monitoring:v3 : Exponential
 class $Exponential {
   /// Must be greater than 1.
   core.double? growthFactor;
@@ -4225,6 +5249,12 @@ class $Exponential {
       };
 }
 
+/// Replacement class for
+///
+/// - dialogflow:v2 : GoogleCloudDialogflowCxV3ExportAgentResponse
+/// - dialogflow:v2 : GoogleCloudDialogflowCxV3beta1ExportAgentResponse
+/// - dialogflow:v3 : GoogleCloudDialogflowCxV3ExportAgentResponse
+/// - dialogflow:v3 : GoogleCloudDialogflowCxV3beta1ExportAgentResponse
 class $ExportAgentResponse {
   /// Uncompressed raw byte content for agent.
   core.String? agentContent;
@@ -4263,6 +5293,12 @@ class $ExportAgentResponse {
       };
 }
 
+/// Replacement class for
+///
+/// - dialogflow:v2 : GoogleCloudDialogflowV2ExportAgentResponse
+/// - dialogflow:v2 : GoogleCloudDialogflowV2beta1ExportAgentResponse
+/// - dialogflow:v3 : GoogleCloudDialogflowV2ExportAgentResponse
+/// - dialogflow:v3 : GoogleCloudDialogflowV2beta1ExportAgentResponse
 class $ExportAgentResponse01 {
   /// Zip compressed raw byte content for agent.
   core.String? agentContent;
@@ -4301,6 +5337,10 @@ class $ExportAgentResponse01 {
       };
 }
 
+/// Replacement class for
+///
+/// - retail:v2 : GoogleCloudRetailV2alphaExportErrorsConfig
+/// - retail:v2 : GoogleCloudRetailV2betaExportErrorsConfig
 class $ExportErrorsConfig {
   /// Google Cloud Storage path for import errors.
   ///
@@ -4325,6 +5365,12 @@ class $ExportErrorsConfig {
       };
 }
 
+/// Replacement class for
+///
+/// - dialogflow:v2 : GoogleCloudDialogflowCxV3ExportFlowResponse
+/// - dialogflow:v2 : GoogleCloudDialogflowCxV3beta1ExportFlowResponse
+/// - dialogflow:v3 : GoogleCloudDialogflowCxV3ExportFlowResponse
+/// - dialogflow:v3 : GoogleCloudDialogflowCxV3beta1ExportFlowResponse
 class $ExportFlowResponse {
   /// Uncompressed raw byte content for flow.
   core.String? flowContent;
@@ -4363,6 +5409,10 @@ class $ExportFlowResponse {
       };
 }
 
+/// Replacement class for
+///
+/// - contactcenterinsights:v1 : GoogleCloudContactcenterinsightsV1ExportInsightsDataRequestBigQueryDestination
+/// - contactcenterinsights:v1 : GoogleCloudContactcenterinsightsV1alpha1ExportInsightsDataRequestBigQueryDestination
 class $ExportInsightsDataRequestBigQueryDestination {
   /// The name of the BigQuery dataset that the snapshot result should be
   /// exported to.
@@ -4411,6 +5461,10 @@ class $ExportInsightsDataRequestBigQueryDestination {
       };
 }
 
+/// Replacement class for
+///
+/// - retail:v2 : GoogleCloudRetailV2alphaExportMetadata
+/// - retail:v2 : GoogleCloudRetailV2betaExportMetadata
 class $ExportMetadata {
   /// Operation create time.
   core.String? createTime;
@@ -4441,6 +5495,10 @@ class $ExportMetadata {
       };
 }
 
+/// Replacement class for
+///
+/// - vault:v1 : GroupsExportOptions
+/// - vault:v1 : HangoutsChatExportOptions
 class $ExportOptions {
   /// The file format for exported messages.
   /// Possible string values are:
@@ -4465,6 +5523,12 @@ class $ExportOptions {
       };
 }
 
+/// Replacement class for
+///
+/// - dialogflow:v2 : GoogleCloudDialogflowCxV3ExportTestCasesResponse
+/// - dialogflow:v2 : GoogleCloudDialogflowCxV3beta1ExportTestCasesResponse
+/// - dialogflow:v3 : GoogleCloudDialogflowCxV3ExportTestCasesResponse
+/// - dialogflow:v3 : GoogleCloudDialogflowCxV3beta1ExportTestCasesResponse
 class $ExportTestCasesResponse {
   /// Uncompressed raw byte content for test cases.
   core.String? content;
@@ -4502,6 +5566,55 @@ class $ExportTestCasesResponse {
       };
 }
 
+/// Replacement class for
+///
+/// - accesscontextmanager:v1 : Expr
+/// - apigateway:v1 : ApigatewayExpr
+/// - apigee:v1 : GoogleTypeExpr
+/// - bigquery:v2 : Expr
+/// - bigtableadmin:v2 : Expr
+/// - binaryauthorization:v1 : Expr
+/// - cloudasset:v1 : Expr
+/// - cloudbilling:v1 : Expr
+/// - cloudfunctions:v1 : Expr
+/// - cloudiot:v1 : Expr
+/// - cloudkms:v1 : Expr
+/// - cloudresourcemanager:v1 : Expr
+/// - cloudresourcemanager:v2 : Expr
+/// - cloudresourcemanager:v3 : Expr
+/// - cloudtasks:v2 : Expr
+/// - compute:v1 : Expr
+/// - datacatalog:v1 : Expr
+/// - datafusion:v1 : Expr
+/// - datamigration:v1 : Expr
+/// - dataproc:v1 : Expr
+/// - deploymentmanager:v2 : Expr
+/// - eventarc:v1 : Expr
+/// - gameservices:v1 : Expr
+/// - gkehub:v1 : Expr
+/// - healthcare:v1 : Expr
+/// - iam:v1 : Expr
+/// - iap:v1 : Expr
+/// - managedidentities:v1 : Expr
+/// - ml:v1 : GoogleType__Expr
+/// - networkconnectivity:v1 : Expr
+/// - networkmanagement:v1 : Expr
+/// - networksecurity:v1 : Expr
+/// - networkservices:v1 : Expr
+/// - notebooks:v1 : Expr
+/// - orgpolicy:v2 : GoogleTypeExpr
+/// - policysimulator:v1 : GoogleTypeExpr
+/// - policytroubleshooter:v1 : GoogleTypeExpr
+/// - privateca:v1 : Expr
+/// - pubsub:v1 : Expr
+/// - run:v1 : Expr
+/// - secretmanager:v1 : Expr
+/// - securitycenter:v1 : Expr
+/// - servicedirectory:v1 : Expr
+/// - servicemanagement:v1 : Expr
+/// - sourcerepo:v1 : Expr
+/// - spanner:v1 : Expr
+/// - sts:v1 : GoogleTypeExpr
 class $Expr {
   /// Description of the expression.
   ///
@@ -4558,6 +5671,12 @@ class $Expr {
       };
 }
 
+/// Replacement class for
+///
+/// - dialogflow:v2 : GoogleCloudDialogflowV2FaqAnswer
+/// - dialogflow:v2 : GoogleCloudDialogflowV2beta1FaqAnswer
+/// - dialogflow:v3 : GoogleCloudDialogflowV2FaqAnswer
+/// - dialogflow:v3 : GoogleCloudDialogflowV2beta1FaqAnswer
 class $FaqAnswer {
   /// The piece of text from the `source` knowledge base document.
   core.String? answer;
@@ -4629,6 +5748,10 @@ class $FaqAnswer {
       };
 }
 
+/// Replacement class for
+///
+/// - fcm:v1 : AndroidFcmOptions
+/// - fcm:v1 : FcmOptions
 class $FcmOptions {
   /// Label associated with the message's analytics data.
   core.String? analyticsLabel;
@@ -4649,6 +5772,10 @@ class $FcmOptions {
       };
 }
 
+/// Replacement class for
+///
+/// - servicecontrol:v1 : FirstPartyPrincipal
+/// - servicecontrol:v2 : FirstPartyPrincipal
 class $FirstPartyPrincipal {
   /// The email address of a Google account.
   ///
@@ -4684,6 +5811,10 @@ class $FirstPartyPrincipal {
       };
 }
 
+/// Replacement class for
+///
+/// - dfareporting:v3.4 : Flight
+/// - dfareporting:v3.5 : Flight
 class $Flight {
   core.DateTime? endDate;
 
@@ -4728,6 +5859,10 @@ class $Flight {
       };
 }
 
+/// Replacement class for
+///
+/// - dfareporting:v3.4 : FloodlightActivitiesGenerateTagResponse
+/// - dfareporting:v3.5 : FloodlightActivitiesGenerateTagResponse
 class $FloodlightActivitiesGenerateTagResponse {
   /// Generated tag for this Floodlight activity.
   ///
@@ -4774,6 +5909,10 @@ class $FloodlightActivitiesGenerateTagResponse {
       };
 }
 
+/// Replacement class for
+///
+/// - dfareporting:v3.4 : FloodlightActivityDynamicTag
+/// - dfareporting:v3.5 : FloodlightActivityDynamicTag
 class $FloodlightActivityDynamicTag {
   /// ID of this dynamic tag.
   ///
@@ -4806,6 +5945,10 @@ class $FloodlightActivityDynamicTag {
       };
 }
 
+/// Replacement class for
+///
+/// - securitycenter:v1 : Folder
+/// - securitycenter:v1 : GoogleCloudSecuritycenterV1p1beta1Folder
 class $Folder {
   /// Full resource name of this folder.
   ///
@@ -4839,6 +5982,17 @@ class $Folder {
       };
 }
 
+/// Replacement class for
+///
+/// - cloudresourcemanager:v1 : CloudresourcemanagerGoogleCloudResourcemanagerV2alpha1FolderOperation
+/// - cloudresourcemanager:v1 : CloudresourcemanagerGoogleCloudResourcemanagerV2beta1FolderOperation
+/// - cloudresourcemanager:v1 : FolderOperation
+/// - cloudresourcemanager:v2 : CloudresourcemanagerGoogleCloudResourcemanagerV2alpha1FolderOperation
+/// - cloudresourcemanager:v2 : CloudresourcemanagerGoogleCloudResourcemanagerV2beta1FolderOperation
+/// - cloudresourcemanager:v2 : FolderOperation
+/// - cloudresourcemanager:v3 : CloudresourcemanagerGoogleCloudResourcemanagerV2alpha1FolderOperation
+/// - cloudresourcemanager:v3 : CloudresourcemanagerGoogleCloudResourcemanagerV2beta1FolderOperation
+/// - cloudresourcemanager:v3 : FolderOperation
 class $FolderOperation {
   /// The resource name of the folder or organization we are either creating the
   /// folder under or moving the folder to.
@@ -4890,6 +6044,11 @@ class $FolderOperation {
       };
 }
 
+/// Replacement class for
+///
+/// - cloudresourcemanager:v1 : FolderOperationError
+/// - cloudresourcemanager:v2 : FolderOperationError
+/// - cloudresourcemanager:v3 : FolderOperationError
 class $FolderOperationError {
   /// The type of operation error experienced.
   /// Possible string values are:
@@ -4931,6 +6090,10 @@ class $FolderOperationError {
       };
 }
 
+/// Replacement class for
+///
+/// - dfareporting:v3.4 : FrequencyCap
+/// - dfareporting:v3.5 : FrequencyCap
 class $FrequencyCap {
   /// Duration of time, in seconds, for this frequency cap.
   ///
@@ -4965,6 +6128,10 @@ class $FrequencyCap {
       };
 }
 
+/// Replacement class for
+///
+/// - dfareporting:v3.4 : FsCommand
+/// - dfareporting:v3.5 : FsCommand
 class $FsCommand {
   /// Distance from the left of the browser.Applicable when positionOption is
   /// DISTANCE_FROM_TOP_LEFT_CORNER.
@@ -5019,6 +6186,12 @@ class $FsCommand {
       };
 }
 
+/// Replacement class for
+///
+/// - dialogflow:v2 : GoogleCloudDialogflowCxV3FulfillmentSetParameterAction
+/// - dialogflow:v2 : GoogleCloudDialogflowCxV3beta1FulfillmentSetParameterAction
+/// - dialogflow:v3 : GoogleCloudDialogflowCxV3FulfillmentSetParameterAction
+/// - dialogflow:v3 : GoogleCloudDialogflowCxV3beta1FulfillmentSetParameterAction
 class $FulfillmentSetParameterAction {
   /// Display name of the parameter.
   core.String? parameter;
@@ -5050,6 +6223,13 @@ class $FulfillmentSetParameterAction {
       };
 }
 
+/// Replacement class for
+///
+/// - vision:v1 : GcsDestination
+/// - vision:v1 : GoogleCloudVisionV1p1beta1GcsDestination
+/// - vision:v1 : GoogleCloudVisionV1p2beta1GcsDestination
+/// - vision:v1 : GoogleCloudVisionV1p3beta1GcsDestination
+/// - vision:v1 : GoogleCloudVisionV1p4beta1GcsDestination
 class $GcsDestination {
   /// Google Cloud Storage URI prefix where the results will be stored.
   ///
@@ -5083,6 +6263,10 @@ class $GcsDestination {
       };
 }
 
+/// Replacement class for
+///
+/// - healthcare:v1 : GcsSource
+/// - healthcare:v1 : GoogleCloudHealthcareV1FhirGcsSource
 class $GcsSource {
   /// Points to a Cloud Storage URI containing file(s) to import.
   ///
@@ -5113,6 +6297,13 @@ class $GcsSource {
       };
 }
 
+/// Replacement class for
+///
+/// - vision:v1 : GcsSource
+/// - vision:v1 : GoogleCloudVisionV1p1beta1GcsSource
+/// - vision:v1 : GoogleCloudVisionV1p2beta1GcsSource
+/// - vision:v1 : GoogleCloudVisionV1p3beta1GcsSource
+/// - vision:v1 : GoogleCloudVisionV1p4beta1GcsSource
 class $GcsSource01 {
   /// Google Cloud Storage URI for the input file.
   ///
@@ -5134,6 +6325,21 @@ class $GcsSource01 {
       };
 }
 
+/// Replacement class for
+///
+/// - bigquery:v2 : GetPolicyOptions
+/// - bigtableadmin:v2 : GetPolicyOptions
+/// - cloudiot:v1 : GetPolicyOptions
+/// - cloudresourcemanager:v1 : GetPolicyOptions
+/// - cloudresourcemanager:v2 : GetPolicyOptions
+/// - cloudresourcemanager:v3 : GetPolicyOptions
+/// - cloudtasks:v2 : GetPolicyOptions
+/// - datacatalog:v1 : GetPolicyOptions
+/// - iap:v1 : GetPolicyOptions
+/// - securitycenter:v1 : GetPolicyOptions
+/// - servicedirectory:v1 : GetPolicyOptions
+/// - servicemanagement:v1 : GetPolicyOptions
+/// - spanner:v1 : GetPolicyOptions
 class $GetPolicyOptions {
   /// The policy format version to be returned.
   ///
@@ -5164,6 +6370,10 @@ class $GetPolicyOptions {
       };
 }
 
+/// Replacement class for
+///
+/// - dialogflow:v2 : GoogleCloudDialogflowV2AnnotatedMessagePart
+/// - dialogflow:v3 : GoogleCloudDialogflowV2AnnotatedMessagePart
 class $GoogleCloudDialogflowV2AnnotatedMessagePart {
   /// The
   /// [Dialogflow system entity type](https://cloud.google.com/dialogflow/docs/reference/system-entities)
@@ -5211,6 +6421,10 @@ class $GoogleCloudDialogflowV2AnnotatedMessagePart {
       };
 }
 
+/// Replacement class for
+///
+/// - dialogflow:v2 : GoogleCloudDialogflowV2ArticleAnswer
+/// - dialogflow:v3 : GoogleCloudDialogflowV2ArticleAnswer
 class $GoogleCloudDialogflowV2ArticleAnswer {
   /// The name of answer record, in the format of
   /// "projects//locations//answerRecords/"
@@ -5281,6 +6495,10 @@ class $GoogleCloudDialogflowV2ArticleAnswer {
       };
 }
 
+/// Replacement class for
+///
+/// - dialogflow:v2 : GoogleCloudDialogflowV2Context
+/// - dialogflow:v3 : GoogleCloudDialogflowV2Context
 class $GoogleCloudDialogflowV2Context {
   /// The number of conversational query requests after which the context
   /// expires.
@@ -5348,6 +6566,10 @@ class $GoogleCloudDialogflowV2Context {
       };
 }
 
+/// Replacement class for
+///
+/// - dialogflow:v2 : GoogleCloudDialogflowV2IntentMessageImage
+/// - dialogflow:v3 : GoogleCloudDialogflowV2IntentMessageImage
 class $GoogleCloudDialogflowV2IntentMessageImage {
   /// A text description of the image to be used for accessibility, e.g., screen
   /// readers.
@@ -5381,6 +6603,10 @@ class $GoogleCloudDialogflowV2IntentMessageImage {
       };
 }
 
+/// Replacement class for
+///
+/// - dialogflow:v2 : GoogleCloudDialogflowV2KnowledgeOperationMetadata
+/// - dialogflow:v3 : GoogleCloudDialogflowV2KnowledgeOperationMetadata
 class $GoogleCloudDialogflowV2KnowledgeOperationMetadata {
   /// The current state of this operation.
   ///
@@ -5407,6 +6633,10 @@ class $GoogleCloudDialogflowV2KnowledgeOperationMetadata {
       };
 }
 
+/// Replacement class for
+///
+/// - dialogflow:v2 : GoogleCloudDialogflowV2beta1AnnotatedMessagePart
+/// - dialogflow:v3 : GoogleCloudDialogflowV2beta1AnnotatedMessagePart
 class $GoogleCloudDialogflowV2beta1AnnotatedMessagePart {
   /// The
   /// [Dialogflow system entity type](https://cloud.google.com/dialogflow/docs/reference/system-entities)
@@ -5460,6 +6690,10 @@ class $GoogleCloudDialogflowV2beta1AnnotatedMessagePart {
       };
 }
 
+/// Replacement class for
+///
+/// - dialogflow:v2 : GoogleCloudDialogflowV2beta1ArticleAnswer
+/// - dialogflow:v3 : GoogleCloudDialogflowV2beta1ArticleAnswer
 class $GoogleCloudDialogflowV2beta1ArticleAnswer {
   /// The name of answer record, in the format of
   /// "projects//locations//answerRecords/"
@@ -5520,6 +6754,10 @@ class $GoogleCloudDialogflowV2beta1ArticleAnswer {
       };
 }
 
+/// Replacement class for
+///
+/// - dialogflow:v2 : GoogleCloudDialogflowV2beta1Context
+/// - dialogflow:v3 : GoogleCloudDialogflowV2beta1Context
 class $GoogleCloudDialogflowV2beta1Context {
   /// The number of conversational query requests after which the context
   /// expires.
@@ -5589,6 +6827,10 @@ class $GoogleCloudDialogflowV2beta1Context {
       };
 }
 
+/// Replacement class for
+///
+/// - dialogflow:v2 : GoogleCloudDialogflowV2beta1IntentMessageImage
+/// - dialogflow:v3 : GoogleCloudDialogflowV2beta1IntentMessageImage
 class $GoogleCloudDialogflowV2beta1IntentMessageImage {
   /// A text description of the image to be used for accessibility, e.g., screen
   /// readers.
@@ -5622,6 +6864,10 @@ class $GoogleCloudDialogflowV2beta1IntentMessageImage {
       };
 }
 
+/// Replacement class for
+///
+/// - dialogflow:v2 : GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMedia
+/// - dialogflow:v3 : GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMedia
 class $GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMedia {
   /// Publicly reachable URI of the file.
   ///
@@ -5683,6 +6929,10 @@ class $GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMedia {
       };
 }
 
+/// Replacement class for
+///
+/// - dialogflow:v2 : GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionDial
+/// - dialogflow:v3 : GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionDial
 class $GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionDial {
   /// The phone number to fill in the default dialer app.
   ///
@@ -5709,6 +6959,10 @@ class $GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedAc
       };
 }
 
+/// Replacement class for
+///
+/// - dialogflow:v2 : GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionOpenUri
+/// - dialogflow:v3 : GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionOpenUri
 class $GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionOpenUri {
   /// The uri to open on the user device
   ///
@@ -5730,6 +6984,10 @@ class $GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedAc
       };
 }
 
+/// Replacement class for
+///
+/// - dialogflow:v2 : GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedReply
+/// - dialogflow:v3 : GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedReply
 class $GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedReply {
   /// Opaque payload that the Dialogflow receives in a user event when the user
   /// taps the suggested reply.
@@ -5761,6 +7019,10 @@ class $GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedReply {
       };
 }
 
+/// Replacement class for
+///
+/// - dialogflow:v2 : GoogleCloudDialogflowV2beta1IntentMessageTelephonyPlayAudio
+/// - dialogflow:v3 : GoogleCloudDialogflowV2beta1IntentMessageTelephonyPlayAudio
 class $GoogleCloudDialogflowV2beta1IntentMessageTelephonyPlayAudio {
   /// URI to a Google Cloud Storage object containing the audio to play, e.g.,
   /// "gs://bucket/object".
@@ -5794,6 +7056,10 @@ class $GoogleCloudDialogflowV2beta1IntentMessageTelephonyPlayAudio {
       };
 }
 
+/// Replacement class for
+///
+/// - dialogflow:v2 : GoogleCloudDialogflowV2beta1IntentMessageTelephonySynthesizeSpeech
+/// - dialogflow:v3 : GoogleCloudDialogflowV2beta1IntentMessageTelephonySynthesizeSpeech
 class $GoogleCloudDialogflowV2beta1IntentMessageTelephonySynthesizeSpeech {
   /// The SSML to be synthesized.
   ///
@@ -5822,6 +7088,10 @@ class $GoogleCloudDialogflowV2beta1IntentMessageTelephonySynthesizeSpeech {
       };
 }
 
+/// Replacement class for
+///
+/// - dialogflow:v2 : GoogleCloudDialogflowV2beta1IntentMessageTelephonyTransferCall
+/// - dialogflow:v3 : GoogleCloudDialogflowV2beta1IntentMessageTelephonyTransferCall
 class $GoogleCloudDialogflowV2beta1IntentMessageTelephonyTransferCall {
   /// The phone number to transfer the call to in
   /// [E.164 format](https://en.wikipedia.org/wiki/E.164).
@@ -5848,6 +7118,10 @@ class $GoogleCloudDialogflowV2beta1IntentMessageTelephonyTransferCall {
       };
 }
 
+/// Replacement class for
+///
+/// - dialogflow:v2 : GoogleCloudDialogflowV2beta1KnowledgeAnswersAnswer
+/// - dialogflow:v3 : GoogleCloudDialogflowV2beta1KnowledgeAnswersAnswer
 class $GoogleCloudDialogflowV2beta1KnowledgeAnswersAnswer {
   /// The piece of text from the `source` knowledge base document that answers
   /// this conversational query.
@@ -5923,6 +7197,10 @@ class $GoogleCloudDialogflowV2beta1KnowledgeAnswersAnswer {
       };
 }
 
+/// Replacement class for
+///
+/// - dialogflow:v2 : GoogleCloudDialogflowV2beta1SmartReplyAnswer
+/// - dialogflow:v3 : GoogleCloudDialogflowV2beta1SmartReplyAnswer
 class $GoogleCloudDialogflowV2beta1SmartReplyAnswer {
   /// The name of answer record, in the format of
   /// "projects//locations//answerRecords/"
@@ -5963,6 +7241,11 @@ class $GoogleCloudDialogflowV2beta1SmartReplyAnswer {
       };
 }
 
+/// Replacement class for
+///
+/// - file:v1 : GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule
+/// - managedidentities:v1 : GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule
+/// - memcache:v1 : GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule
 class $GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule {
   /// This field is deprecated, and will be always set to true since reschedule
   /// can happen multiple times now.
@@ -6031,6 +7314,11 @@ class $GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule {
       };
 }
 
+/// Replacement class for
+///
+/// - file:v1 : GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource
+/// - managedidentities:v1 : GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource
+/// - memcache:v1 : GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource
 class $GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource {
   /// Type of the resource.
   ///
@@ -6068,6 +7356,11 @@ class $GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource {
       };
 }
 
+/// Replacement class for
+///
+/// - file:v1 : GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility
+/// - managedidentities:v1 : GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility
+/// - memcache:v1 : GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility
 class $GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility {
   /// Whether an instance is eligible or ineligible.
   core.bool? eligible;
@@ -6100,6 +7393,10 @@ class $GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility {
       };
 }
 
+/// Replacement class for
+///
+/// - appengine:v1 : ApiEndpointHandler
+/// - appengine:v1 : ScriptHandler
 class $Handler {
   /// Path to the script from the application root directory.
   core.String? scriptPath;
@@ -6120,6 +7417,10 @@ class $Handler {
       };
 }
 
+/// Replacement class for
+///
+/// - compute:v1 : UrlMapTestHeader
+/// - websecurityscanner:v1 : Header
 class $Header {
   /// Header name.
   core.String? name;
@@ -6145,6 +7446,15 @@ class $Header {
       };
 }
 
+/// Replacement class for
+///
+/// - adsense:v2 : HttpBody
+/// - apigee:v1 : GoogleApiHttpBody
+/// - cloudbuild:v1 : HttpBody
+/// - domainsrdap:v1 : HttpBody
+/// - healthcare:v1 : HttpBody
+/// - ml:v1 : GoogleApi__HttpBody
+/// - retail:v2 : GoogleApiHttpBody
 class $HttpBody {
   /// The HTTP Content-Type header value specifying the content type of the
   /// body.
@@ -6193,6 +7503,10 @@ class $HttpBody {
       };
 }
 
+/// Replacement class for
+///
+/// - documentai:v1 : GoogleCloudDocumentaiV1HumanReviewStatus
+/// - documentai:v1 : GoogleCloudDocumentaiV1beta3HumanReviewStatus
 class $HumanReviewStatus {
   /// The name of the operation triggered by the processed document.
   ///
@@ -6245,6 +7559,13 @@ class $HumanReviewStatus {
       };
 }
 
+/// Replacement class for
+///
+/// - vision:v1 : GoogleCloudVisionV1p1beta1ImageAnnotationContext
+/// - vision:v1 : GoogleCloudVisionV1p2beta1ImageAnnotationContext
+/// - vision:v1 : GoogleCloudVisionV1p3beta1ImageAnnotationContext
+/// - vision:v1 : GoogleCloudVisionV1p4beta1ImageAnnotationContext
+/// - vision:v1 : ImageAnnotationContext
 class $ImageAnnotationContext {
   /// If the file was a PDF or TIFF, this field gives the page number within the
   /// file used to produce the image.
@@ -6272,6 +7593,11 @@ class $ImageAnnotationContext {
       };
 }
 
+/// Replacement class for
+///
+/// - retail:v2 : GoogleCloudRetailV2ImportErrorsConfig
+/// - retail:v2 : GoogleCloudRetailV2alphaImportErrorsConfig
+/// - retail:v2 : GoogleCloudRetailV2betaImportErrorsConfig
 class $ImportErrorsConfig {
   /// Google Cloud Storage path for import errors.
   ///
@@ -6296,6 +7622,12 @@ class $ImportErrorsConfig {
       };
 }
 
+/// Replacement class for
+///
+/// - dialogflow:v2 : GoogleCloudDialogflowCxV3ImportFlowResponse
+/// - dialogflow:v2 : GoogleCloudDialogflowCxV3beta1ImportFlowResponse
+/// - dialogflow:v3 : GoogleCloudDialogflowCxV3ImportFlowResponse
+/// - dialogflow:v3 : GoogleCloudDialogflowCxV3beta1ImportFlowResponse
 class $ImportFlowResponse {
   /// The unique identifier of the new flow.
   ///
@@ -6316,6 +7648,11 @@ class $ImportFlowResponse {
       };
 }
 
+/// Replacement class for
+///
+/// - retail:v2 : GoogleCloudRetailV2ImportMetadata
+/// - retail:v2 : GoogleCloudRetailV2alphaImportMetadata
+/// - retail:v2 : GoogleCloudRetailV2betaImportMetadata
 class $ImportMetadata {
   /// Operation create time.
   core.String? createTime;
@@ -6386,6 +7723,12 @@ class $ImportMetadata {
       };
 }
 
+/// Replacement class for
+///
+/// - dialogflow:v2 : GoogleCloudDialogflowCxV3ImportTestCasesResponse
+/// - dialogflow:v2 : GoogleCloudDialogflowCxV3beta1ImportTestCasesResponse
+/// - dialogflow:v3 : GoogleCloudDialogflowCxV3ImportTestCasesResponse
+/// - dialogflow:v3 : GoogleCloudDialogflowCxV3beta1ImportTestCasesResponse
 class $ImportTestCasesResponse {
   /// The unique identifiers of the new test cases.
   ///
@@ -6410,6 +7753,10 @@ class $ImportTestCasesResponse {
       };
 }
 
+/// Replacement class for
+///
+/// - accesscontextmanager:v1 : IngressSource
+/// - cloudasset:v1 : GoogleIdentityAccesscontextmanagerV1IngressSource
 class $IngressSource {
   /// An AccessLevel resource name that allow resources within the
   /// ServicePerimeters to be accessed from the internet.
@@ -6452,6 +7799,12 @@ class $IngressSource {
       };
 }
 
+/// Replacement class for
+///
+/// - dialogflow:v2 : GoogleCloudDialogflowCxV3InputAudioConfig
+/// - dialogflow:v2 : GoogleCloudDialogflowCxV3beta1InputAudioConfig
+/// - dialogflow:v3 : GoogleCloudDialogflowCxV3InputAudioConfig
+/// - dialogflow:v3 : GoogleCloudDialogflowCxV3beta1InputAudioConfig
 class $InputAudioConfig {
   /// Audio encoding of the audio content to process.
   ///
@@ -6613,6 +7966,10 @@ class $InputAudioConfig {
       };
 }
 
+/// Replacement class for
+///
+/// - compute:v1 : InstanceGroupManagersAbandonInstancesRequest
+/// - compute:v1 : RegionInstanceGroupManagersAbandonInstancesRequest
 class $InstanceGroupManagersAbandonInstancesRequest {
   /// The URLs of one or more instances to abandon.
   ///
@@ -6638,6 +7995,10 @@ class $InstanceGroupManagersAbandonInstancesRequest {
       };
 }
 
+/// Replacement class for
+///
+/// - compute:v1 : InstanceGroupManagersApplyUpdatesRequest
+/// - compute:v1 : RegionInstanceGroupManagersApplyUpdatesRequest
 class $InstanceGroupManagersApplyUpdatesRequest {
   /// Flag to update all instances instead of specified list of “instances”.
   ///
@@ -6719,6 +8080,10 @@ class $InstanceGroupManagersApplyUpdatesRequest {
       };
 }
 
+/// Replacement class for
+///
+/// - compute:v1 : InstanceGroupManagersDeleteInstancesRequest
+/// - compute:v1 : RegionInstanceGroupManagersDeleteInstancesRequest
 class $InstanceGroupManagersDeleteInstancesRequest {
   /// The URLs of one or more instances to delete.
   ///
@@ -6761,6 +8126,12 @@ class $InstanceGroupManagersDeleteInstancesRequest {
       };
 }
 
+/// Replacement class for
+///
+/// - dialogflow:v2 : GoogleCloudDialogflowV2IntentFollowupIntentInfo
+/// - dialogflow:v2 : GoogleCloudDialogflowV2beta1IntentFollowupIntentInfo
+/// - dialogflow:v3 : GoogleCloudDialogflowV2IntentFollowupIntentInfo
+/// - dialogflow:v3 : GoogleCloudDialogflowV2beta1IntentFollowupIntentInfo
 class $IntentFollowupIntentInfo {
   /// The unique identifier of the followup intent.
   ///
@@ -6796,6 +8167,12 @@ class $IntentFollowupIntentInfo {
       };
 }
 
+/// Replacement class for
+///
+/// - dialogflow:v2 : GoogleCloudDialogflowCxV3IntentInput
+/// - dialogflow:v2 : GoogleCloudDialogflowCxV3beta1IntentInput
+/// - dialogflow:v3 : GoogleCloudDialogflowCxV3IntentInput
+/// - dialogflow:v3 : GoogleCloudDialogflowCxV3beta1IntentInput
 class $IntentInput {
   /// The unique identifier of the intent.
   ///
@@ -6820,6 +8197,12 @@ class $IntentInput {
       };
 }
 
+/// Replacement class for
+///
+/// - dialogflow:v2 : GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriAction
+/// - dialogflow:v2 : GoogleCloudDialogflowV2beta1IntentMessageBasicCardButtonOpenUriAction
+/// - dialogflow:v3 : GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriAction
+/// - dialogflow:v3 : GoogleCloudDialogflowV2beta1IntentMessageBasicCardButtonOpenUriAction
 class $IntentMessageBasicCardButtonOpenUriAction {
   /// The HTTP or HTTPS scheme URI.
   ///
@@ -6840,6 +8223,12 @@ class $IntentMessageBasicCardButtonOpenUriAction {
       };
 }
 
+/// Replacement class for
+///
+/// - dialogflow:v2 : GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction
+/// - dialogflow:v2 : GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction
+/// - dialogflow:v3 : GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction
+/// - dialogflow:v3 : GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction
 class $IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction {
   /// URL
   ///
@@ -6878,6 +8267,12 @@ class $IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction {
       };
 }
 
+/// Replacement class for
+///
+/// - dialogflow:v2 : GoogleCloudDialogflowV2IntentMessageCardButton
+/// - dialogflow:v2 : GoogleCloudDialogflowV2beta1IntentMessageCardButton
+/// - dialogflow:v3 : GoogleCloudDialogflowV2IntentMessageCardButton
+/// - dialogflow:v3 : GoogleCloudDialogflowV2beta1IntentMessageCardButton
 class $IntentMessageCardButton {
   /// The text to send back to the Dialogflow API or a URI to open.
   ///
@@ -6908,6 +8303,12 @@ class $IntentMessageCardButton {
       };
 }
 
+/// Replacement class for
+///
+/// - dialogflow:v2 : GoogleCloudDialogflowV2IntentMessageColumnProperties
+/// - dialogflow:v2 : GoogleCloudDialogflowV2beta1IntentMessageColumnProperties
+/// - dialogflow:v3 : GoogleCloudDialogflowV2IntentMessageColumnProperties
+/// - dialogflow:v3 : GoogleCloudDialogflowV2beta1IntentMessageColumnProperties
 class $IntentMessageColumnProperties {
   /// Column heading.
   ///
@@ -6947,6 +8348,12 @@ class $IntentMessageColumnProperties {
       };
 }
 
+/// Replacement class for
+///
+/// - dialogflow:v2 : GoogleCloudDialogflowV2IntentMessageLinkOutSuggestion
+/// - dialogflow:v2 : GoogleCloudDialogflowV2beta1IntentMessageLinkOutSuggestion
+/// - dialogflow:v3 : GoogleCloudDialogflowV2IntentMessageLinkOutSuggestion
+/// - dialogflow:v3 : GoogleCloudDialogflowV2beta1IntentMessageLinkOutSuggestion
 class $IntentMessageLinkOutSuggestion {
   /// The name of the app or site this chip is linking to.
   ///
@@ -6977,6 +8384,12 @@ class $IntentMessageLinkOutSuggestion {
       };
 }
 
+/// Replacement class for
+///
+/// - dialogflow:v2 : GoogleCloudDialogflowV2IntentMessageQuickReplies
+/// - dialogflow:v2 : GoogleCloudDialogflowV2beta1IntentMessageQuickReplies
+/// - dialogflow:v3 : GoogleCloudDialogflowV2IntentMessageQuickReplies
+/// - dialogflow:v3 : GoogleCloudDialogflowV2beta1IntentMessageQuickReplies
 class $IntentMessageQuickReplies {
   /// The collection of quick replies.
   ///
@@ -7010,6 +8423,12 @@ class $IntentMessageQuickReplies {
       };
 }
 
+/// Replacement class for
+///
+/// - dialogflow:v2 : GoogleCloudDialogflowV2IntentMessageSelectItemInfo
+/// - dialogflow:v2 : GoogleCloudDialogflowV2beta1IntentMessageSelectItemInfo
+/// - dialogflow:v3 : GoogleCloudDialogflowV2IntentMessageSelectItemInfo
+/// - dialogflow:v3 : GoogleCloudDialogflowV2beta1IntentMessageSelectItemInfo
 class $IntentMessageSelectItemInfo {
   /// A unique key that will be sent back to the agent if this response is
   /// given.
@@ -7043,6 +8462,12 @@ class $IntentMessageSelectItemInfo {
       };
 }
 
+/// Replacement class for
+///
+/// - dialogflow:v2 : GoogleCloudDialogflowV2IntentMessageSimpleResponse
+/// - dialogflow:v2 : GoogleCloudDialogflowV2beta1IntentMessageSimpleResponse
+/// - dialogflow:v3 : GoogleCloudDialogflowV2IntentMessageSimpleResponse
+/// - dialogflow:v3 : GoogleCloudDialogflowV2beta1IntentMessageSimpleResponse
 class $IntentMessageSimpleResponse {
   /// The text to display.
   ///
@@ -7084,6 +8509,12 @@ class $IntentMessageSimpleResponse {
       };
 }
 
+/// Replacement class for
+///
+/// - dialogflow:v2 : GoogleCloudDialogflowV2IntentMessageSuggestion
+/// - dialogflow:v2 : GoogleCloudDialogflowV2beta1IntentMessageSuggestion
+/// - dialogflow:v3 : GoogleCloudDialogflowV2IntentMessageSuggestion
+/// - dialogflow:v3 : GoogleCloudDialogflowV2beta1IntentMessageSuggestion
 class $IntentMessageSuggestion {
   /// The text shown the in the suggestion chip.
   ///
@@ -7105,6 +8536,12 @@ class $IntentMessageSuggestion {
       };
 }
 
+/// Replacement class for
+///
+/// - dialogflow:v2 : GoogleCloudDialogflowV2IntentMessageTableCardCell
+/// - dialogflow:v2 : GoogleCloudDialogflowV2beta1IntentMessageTableCardCell
+/// - dialogflow:v3 : GoogleCloudDialogflowV2IntentMessageTableCardCell
+/// - dialogflow:v3 : GoogleCloudDialogflowV2beta1IntentMessageTableCardCell
 class $IntentMessageTableCardCell {
   /// Text in this cell.
   ///
@@ -7125,6 +8562,12 @@ class $IntentMessageTableCardCell {
       };
 }
 
+/// Replacement class for
+///
+/// - dialogflow:v2 : GoogleCloudDialogflowV2IntentMessageText
+/// - dialogflow:v2 : GoogleCloudDialogflowV2beta1IntentMessageText
+/// - dialogflow:v3 : GoogleCloudDialogflowV2IntentMessageText
+/// - dialogflow:v3 : GoogleCloudDialogflowV2beta1IntentMessageText
 class $IntentMessageText {
   /// The collection of the agent's responses.
   ///
@@ -7149,6 +8592,12 @@ class $IntentMessageText {
       };
 }
 
+/// Replacement class for
+///
+/// - dialogflow:v2 : GoogleCloudDialogflowCxV3IntentParameter
+/// - dialogflow:v2 : GoogleCloudDialogflowCxV3beta1IntentParameter
+/// - dialogflow:v3 : GoogleCloudDialogflowCxV3IntentParameter
+/// - dialogflow:v3 : GoogleCloudDialogflowCxV3beta1IntentParameter
 class $IntentParameter {
   /// The entity type of the parameter.
   ///
@@ -7205,6 +8654,12 @@ class $IntentParameter {
       };
 }
 
+/// Replacement class for
+///
+/// - dialogflow:v2 : GoogleCloudDialogflowV2IntentParameter
+/// - dialogflow:v2 : GoogleCloudDialogflowV2beta1IntentParameter
+/// - dialogflow:v3 : GoogleCloudDialogflowV2IntentParameter
+/// - dialogflow:v3 : GoogleCloudDialogflowV2beta1IntentParameter
 class $IntentParameter01 {
   /// The default value to use when the `value` yields an empty result.
   ///
@@ -7309,6 +8764,12 @@ class $IntentParameter01 {
       };
 }
 
+/// Replacement class for
+///
+/// - dialogflow:v2 : GoogleCloudDialogflowCxV3IntentTrainingPhrasePart
+/// - dialogflow:v2 : GoogleCloudDialogflowCxV3beta1IntentTrainingPhrasePart
+/// - dialogflow:v3 : GoogleCloudDialogflowCxV3IntentTrainingPhrasePart
+/// - dialogflow:v3 : GoogleCloudDialogflowCxV3beta1IntentTrainingPhrasePart
 class $IntentTrainingPhrasePart {
   /// The parameter used to annotate this part of the training phrase.
   ///
@@ -7339,6 +8800,12 @@ class $IntentTrainingPhrasePart {
       };
 }
 
+/// Replacement class for
+///
+/// - dialogflow:v2 : GoogleCloudDialogflowV2IntentTrainingPhrasePart
+/// - dialogflow:v2 : GoogleCloudDialogflowV2beta1IntentTrainingPhrasePart
+/// - dialogflow:v3 : GoogleCloudDialogflowV2IntentTrainingPhrasePart
+/// - dialogflow:v3 : GoogleCloudDialogflowV2beta1IntentTrainingPhrasePart
 class $IntentTrainingPhrasePart01 {
   /// The parameter name for the value extracted from the annotated part of the
   /// example.
@@ -7397,6 +8864,10 @@ class $IntentTrainingPhrasePart01 {
       };
 }
 
+/// Replacement class for
+///
+/// - contactcenterinsights:v1 : GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig
+/// - contactcenterinsights:v1 : GoogleCloudContactcenterinsightsV1alpha1IssueModelInputDataConfig
 class $IssueModelInputDataConfig {
   /// A filter to reduce the conversations used for training the model to a
   /// specific subset.
@@ -7449,6 +8920,10 @@ class $IssueModelInputDataConfig {
       };
 }
 
+/// Replacement class for
+///
+/// - contactcenterinsights:v1 : GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStats
+/// - contactcenterinsights:v1 : GoogleCloudContactcenterinsightsV1alpha1IssueModelLabelStatsIssueStats
 class $IssueModelLabelStatsIssueStats {
   /// Issue resource.
   ///
@@ -7481,6 +8956,10 @@ class $IssueModelLabelStatsIssueStats {
       };
 }
 
+/// Replacement class for
+///
+/// - binaryauthorization:v1 : Jwt
+/// - ondemandscanning:v1 : Jwt
 class $Jwt {
   /// The compact encoding of a JWS, which is always three base64 encoded
   /// strings joined by periods.
@@ -7504,6 +8983,12 @@ class $Jwt {
       };
 }
 
+/// Replacement class for
+///
+/// - serviceconsumermanagement:v1 : JwtLocation
+/// - servicemanagement:v1 : JwtLocation
+/// - servicenetworking:v1 : JwtLocation
+/// - serviceusage:v1 : JwtLocation
 class $JwtLocation {
   /// Specifies HTTP header name to extract JWT token.
   core.String? header;
@@ -7546,6 +9031,13 @@ class $JwtLocation {
       };
 }
 
+/// Replacement class for
+///
+/// - vision:v1 : GoogleCloudVisionV1p1beta1ProductKeyValue
+/// - vision:v1 : GoogleCloudVisionV1p2beta1ProductKeyValue
+/// - vision:v1 : GoogleCloudVisionV1p3beta1ProductKeyValue
+/// - vision:v1 : GoogleCloudVisionV1p4beta1ProductKeyValue
+/// - vision:v1 : KeyValue
 class $KeyValue {
   /// The key of the label attached to the product.
   ///
@@ -7575,6 +9067,10 @@ class $KeyValue {
       };
 }
 
+/// Replacement class for
+///
+/// - dfareporting:v3.4 : KeyValueTargetingExpression
+/// - dfareporting:v3.5 : KeyValueTargetingExpression
 class $KeyValueTargetingExpression {
   /// Keyword expression being targeted by the ad.
   core.String? expression;
@@ -7595,6 +9091,10 @@ class $KeyValueTargetingExpression {
       };
 }
 
+/// Replacement class for
+///
+/// - datastore:v1 : KindExpression
+/// - dlp:v2 : GooglePrivacyDlpV2KindExpression
 class $KindExpression {
   /// The name of the kind.
   core.String? name;
@@ -7613,6 +9113,16 @@ class $KindExpression {
       };
 }
 
+/// Replacement class for
+///
+/// - dialogflow:v2 : GoogleCloudDialogflowCxV3GenericKnowledgeOperationMetadata
+/// - dialogflow:v2 : GoogleCloudDialogflowCxV3beta1GenericKnowledgeOperationMetadata
+/// - dialogflow:v2 : GoogleCloudDialogflowV2beta1KnowledgeOperationMetadata
+/// - dialogflow:v2 : GoogleCloudDialogflowV3alpha1GenericKnowledgeOperationMetadata
+/// - dialogflow:v3 : GoogleCloudDialogflowCxV3GenericKnowledgeOperationMetadata
+/// - dialogflow:v3 : GoogleCloudDialogflowCxV3beta1GenericKnowledgeOperationMetadata
+/// - dialogflow:v3 : GoogleCloudDialogflowV2beta1KnowledgeOperationMetadata
+/// - dialogflow:v3 : GoogleCloudDialogflowV3alpha1GenericKnowledgeOperationMetadata
 class $KnowledgeOperationMetadata {
   /// The current state of this operation.
   ///
@@ -7639,6 +9149,13 @@ class $KnowledgeOperationMetadata {
       };
 }
 
+/// Replacement class for
+///
+/// - logging:v2 : LabelDescriptor
+/// - serviceconsumermanagement:v1 : LabelDescriptor
+/// - servicemanagement:v1 : LabelDescriptor
+/// - servicenetworking:v1 : LabelDescriptor
+/// - serviceusage:v1 : LabelDescriptor
 class $LabelDescriptor {
   /// A human-readable description for the label.
   core.String? description;
@@ -7677,6 +9194,10 @@ class $LabelDescriptor {
       };
 }
 
+/// Replacement class for
+///
+/// - deploymentmanager:v2 : DeploymentLabelEntry
+/// - deploymentmanager:v2 : DeploymentUpdateLabelEntry
 class $LabelEntry {
   /// Key of the label
   core.String? key;
@@ -7702,6 +9223,13 @@ class $LabelEntry {
       };
 }
 
+/// Replacement class for
+///
+/// - videointelligence:v1 : GoogleCloudVideointelligenceV1_LabelFrame
+/// - videointelligence:v1 : GoogleCloudVideointelligenceV1beta2_LabelFrame
+/// - videointelligence:v1 : GoogleCloudVideointelligenceV1p1beta1_LabelFrame
+/// - videointelligence:v1 : GoogleCloudVideointelligenceV1p2beta1_LabelFrame
+/// - videointelligence:v1 : GoogleCloudVideointelligenceV1p3beta1_LabelFrame
 class $LabelFrame {
   /// Confidence that the label is accurate.
   ///
@@ -7733,6 +9261,10 @@ class $LabelFrame {
       };
 }
 
+/// Replacement class for
+///
+/// - dfareporting:v3.4 : Language
+/// - dfareporting:v3.5 : Language
 class $Language {
   /// Language ID of this language.
   ///
@@ -7778,6 +9310,10 @@ class $Language {
       };
 }
 
+/// Replacement class for
+///
+/// - dfareporting:v3.4 : LastModifiedInfo
+/// - dfareporting:v3.5 : LastModifiedInfo
 class $LastModifiedInfo {
   /// Timestamp of the last change in milliseconds since epoch.
   core.String? time;
@@ -7796,6 +9332,18 @@ class $LastModifiedInfo {
       };
 }
 
+/// Replacement class for
+///
+/// - datastore:v1 : LatLng
+/// - dialogflow:v2 : GoogleTypeLatLng
+/// - dialogflow:v3 : GoogleTypeLatLng
+/// - firestore:v1 : LatLng
+/// - jobs:v3 : LatLng
+/// - jobs:v4 : LatLng
+/// - mybusinessbusinessinformation:v1 : LatLng
+/// - playablelocations:v3 : GoogleTypeLatLng
+/// - streetviewpublish:v1 : LatLng
+/// - vision:v1 : LatLng
 class $LatLng {
   /// The latitude in degrees.
   ///
@@ -7828,6 +9376,10 @@ class $LatLng {
       };
 }
 
+/// Replacement class for
+///
+/// - cloudresourcemanager:v1 : Lien
+/// - cloudresourcemanager:v3 : Lien
 class $Lien {
   /// The creation time of this Lien.
   core.String? createTime;
@@ -7904,6 +9456,10 @@ class $Lien {
       };
 }
 
+/// Replacement class for
+///
+/// - logging:v2 : Linear
+/// - monitoring:v3 : Linear
 class $Linear {
   /// Must be greater than 0.
   core.int? numFiniteBuckets;
@@ -7940,6 +9496,10 @@ class $Linear {
       };
 }
 
+/// Replacement class for
+///
+/// - cloudasset:v1 : GoogleCloudOrgpolicyV1ListPolicy
+/// - cloudresourcemanager:v1 : ListPolicy
 class $ListPolicy {
   /// The policy all_values state.
   /// Possible string values are:
@@ -8071,6 +9631,10 @@ class $ListPolicy {
       };
 }
 
+/// Replacement class for
+///
+/// - dfareporting:v3.4 : ListPopulationTerm
+/// - dfareporting:v3.5 : ListPopulationTerm
 class $ListPopulationTerm {
   /// Will be true if the term should check if the user is in the list and false
   /// if the term should check if the user is not in the list.
@@ -8185,6 +9749,10 @@ class $ListPopulationTerm {
       };
 }
 
+/// Replacement class for
+///
+/// - dfareporting:v3.4 : ListTargetingExpression
+/// - dfareporting:v3.5 : ListTargetingExpression
 class $ListTargetingExpression {
   /// Expression describing which lists are being targeted by the ad.
   core.String? expression;
@@ -8205,6 +9773,10 @@ class $ListTargetingExpression {
       };
 }
 
+/// Replacement class for
+///
+/// - appengine:v1 : Location
+/// - logging:v2 : Location
 class $Location {
   /// The friendly name for this location, typically a nearby city name.
   ///
@@ -8273,6 +9845,40 @@ class $Location {
       };
 }
 
+/// Replacement class for
+///
+/// - apigateway:v1 : ApigatewayLocation
+/// - bigquerydatatransfer:v1 : Location
+/// - bigtableadmin:v2 : Location
+/// - cloudfunctions:v1 : Location
+/// - cloudkms:v1 : Location
+/// - cloudscheduler:v1 : Location
+/// - cloudtasks:v2 : Location
+/// - datafusion:v1 : Location
+/// - datamigration:v1 : Location
+/// - dialogflow:v2 : GoogleCloudLocationLocation
+/// - dialogflow:v3 : GoogleCloudLocationLocation
+/// - documentai:v1 : GoogleCloudLocationLocation
+/// - eventarc:v1 : Location
+/// - file:v1 : Location
+/// - firestore:v1 : Location
+/// - gameservices:v1 : Location
+/// - gkehub:v1 : Location
+/// - healthcare:v1 : Location
+/// - managedidentities:v1 : Location
+/// - memcache:v1 : Location
+/// - networkconnectivity:v1 : Location
+/// - networkmanagement:v1 : Location
+/// - networksecurity:v1 : Location
+/// - networkservices:v1 : Location
+/// - notebooks:v1 : Location
+/// - privateca:v1 : Location
+/// - run:v1 : Location
+/// - secretmanager:v1 : Location
+/// - servicedirectory:v1 : Location
+/// - tpu:v1 : Location
+/// - translate:v3 : Location
+/// - workflows:v1 : Location
 class $Location01 {
   /// The friendly name for this location, typically a nearby city name.
   ///
@@ -8341,6 +9947,10 @@ class $Location01 {
       };
 }
 
+/// Replacement class for
+///
+/// - appengine:v1 : GoogleAppengineV1betaLocationMetadata
+/// - appengine:v1 : LocationMetadata
 class $LocationMetadata {
   /// App Engine flexible environment is available in the given
   /// location.@OutputOnly
@@ -8388,6 +9998,12 @@ class $LocationMetadata {
       };
 }
 
+/// Replacement class for
+///
+/// - serviceconsumermanagement:v1 : LoggingDestination
+/// - servicemanagement:v1 : LoggingDestination
+/// - servicenetworking:v1 : LoggingDestination
+/// - serviceusage:v1 : LoggingDestination
 class $LoggingDestination {
   /// Names of the logs to be sent to this destination.
   ///
@@ -8424,6 +10040,10 @@ class $LoggingDestination {
       };
 }
 
+/// Replacement class for
+///
+/// - dfareporting:v3.4 : LookbackConfiguration
+/// - dfareporting:v3.5 : LookbackConfiguration
 class $LookbackConfiguration {
   /// Lookback window, in days, from the last time a given user clicked on one
   /// of your ads.
@@ -8464,6 +10084,11 @@ class $LookbackConfiguration {
       };
 }
 
+/// Replacement class for
+///
+/// - chat:v1 : Media
+/// - cloudsearch:v1 : Media
+/// - displayvideo:v1 : GoogleBytestreamMedia
 class $Media {
   /// Name of the media resource.
   core.String? resourceName;
@@ -8484,6 +10109,10 @@ class $Media {
       };
 }
 
+/// Replacement class for
+///
+/// - accesscontextmanager:v1 : MethodSelector
+/// - cloudasset:v1 : GoogleIdentityAccesscontextmanagerV1MethodSelector
 class $MethodSelector {
   /// Value for `method` should be a valid method name for the corresponding
   /// `service_name` in ApiOperation.
@@ -8517,6 +10146,10 @@ class $MethodSelector {
       };
 }
 
+/// Replacement class for
+///
+/// - dfareporting:v3.4 : Metric
+/// - dfareporting:v3.5 : Metric
 class $Metric {
   /// The kind of resource this is, in this case dfareporting#metric.
   core.String? kind;
@@ -8541,6 +10174,12 @@ class $Metric {
       };
 }
 
+/// Replacement class for
+///
+/// - serviceconsumermanagement:v1 : MetricDescriptorMetadata
+/// - servicemanagement:v1 : MetricDescriptorMetadata
+/// - servicenetworking:v1 : MetricDescriptorMetadata
+/// - serviceusage:v1 : MetricDescriptorMetadata
 class $MetricDescriptorMetadata {
   /// The delay of data points caused by ingestion.
   ///
@@ -8618,6 +10257,10 @@ class $MetricDescriptorMetadata {
       };
 }
 
+/// Replacement class for
+///
+/// - logging:v2 : MetricDescriptorMetadata
+/// - monitoring:v3 : MetricDescriptorMetadata
 class $MetricDescriptorMetadata01 {
   /// The delay of data points caused by ingestion.
   ///
@@ -8695,6 +10338,12 @@ class $MetricDescriptorMetadata01 {
       };
 }
 
+/// Replacement class for
+///
+/// - serviceconsumermanagement:v1 : MetricRule
+/// - servicemanagement:v1 : MetricRule
+/// - servicenetworking:v1 : MetricRule
+/// - serviceusage:v1 : MetricRule
 class $MetricRule {
   /// Metrics to update when the selected methods are called, and the associated
   /// cost applied to each metric.
@@ -8736,6 +10385,10 @@ class $MetricRule {
       };
 }
 
+/// Replacement class for
+///
+/// - dfareporting:v3.4 : Metro
+/// - dfareporting:v3.5 : Metro
 class $Metro {
   /// Country code of the country to which this metro region belongs.
   core.String? countryCode;
@@ -8806,6 +10459,12 @@ class $Metro {
       };
 }
 
+/// Replacement class for
+///
+/// - serviceconsumermanagement:v1 : Mixin
+/// - servicemanagement:v1 : Mixin
+/// - servicenetworking:v1 : Mixin
+/// - serviceusage:v1 : Mixin
 class $Mixin {
   /// The fully qualified name of the interface which is included.
   core.String? name;
@@ -8830,6 +10489,10 @@ class $Mixin {
       };
 }
 
+/// Replacement class for
+///
+/// - dfareporting:v3.4 : MobileApp
+/// - dfareporting:v3.5 : MobileApp
 class $MobileApp {
   /// Mobile app directory.
   /// Possible string values are:
@@ -8883,6 +10546,10 @@ class $MobileApp {
       };
 }
 
+/// Replacement class for
+///
+/// - dfareporting:v3.4 : MobileCarrier
+/// - dfareporting:v3.5 : MobileCarrier
 class $MobileCarrier {
   /// Country code of the country to which this mobile carrier belongs.
   core.String? countryCode;
@@ -8931,6 +10598,20 @@ class $MobileCarrier {
       };
 }
 
+/// Replacement class for
+///
+/// - androidpublisher:v3 : Money
+/// - apigee:v1 : GoogleTypeMoney
+/// - billingbudgets:v1 : GoogleTypeMoney
+/// - cloudbilling:v1 : Money
+/// - cloudchannel:v1 : GoogleTypeMoney
+/// - displayvideo:v1 : Money
+/// - documentai:v1 : GoogleTypeMoney
+/// - jobs:v3 : Money
+/// - jobs:v4 : Money
+/// - mybusinessbusinessinformation:v1 : Money
+/// - recommender:v1 : GoogleTypeMoney
+/// - servicecontrol:v1 : Money
 class $Money {
   /// The three-letter currency code defined in ISO 4217.
   core.String? currencyCode;
@@ -8972,6 +10653,10 @@ class $Money {
       };
 }
 
+/// Replacement class for
+///
+/// - logging:v2 : MonitoredResourceMetadata
+/// - monitoring:v3 : MonitoredResourceMetadata
 class $MonitoredResourceMetadata {
   /// Values for predefined system metadata labels.
   ///
@@ -9019,6 +10704,12 @@ class $MonitoredResourceMetadata {
       };
 }
 
+/// Replacement class for
+///
+/// - serviceconsumermanagement:v1 : MonitoringDestination
+/// - servicemanagement:v1 : MonitoringDestination
+/// - servicenetworking:v1 : MonitoringDestination
+/// - serviceusage:v1 : MonitoringDestination
 class $MonitoringDestination {
   /// Types of the metrics to report to this monitoring destination.
   ///
@@ -9053,6 +10744,11 @@ class $MonitoringDestination {
       };
 }
 
+/// Replacement class for
+///
+/// - cloudresourcemanager:v1 : MoveFolderMetadata
+/// - cloudresourcemanager:v2 : MoveFolderMetadata
+/// - cloudresourcemanager:v3 : MoveFolderMetadata
 class $MoveFolderMetadata {
   /// The resource name of the folder or organization to move the folder to.
   core.String? destinationParent;
@@ -9089,6 +10785,10 @@ class $MoveFolderMetadata {
       };
 }
 
+/// Replacement class for
+///
+/// - jobs:v3 : NamespacedDebugInput
+/// - jobs:v4 : NamespacedDebugInput
 class $NamespacedDebugInput {
   /// Set of experiment names to be absolutely forced.
   ///
@@ -9311,6 +11011,13 @@ class $NamespacedDebugInput {
       };
 }
 
+/// Replacement class for
+///
+/// - videointelligence:v1 : GoogleCloudVideointelligenceV1_NormalizedBoundingBox
+/// - videointelligence:v1 : GoogleCloudVideointelligenceV1beta2_NormalizedBoundingBox
+/// - videointelligence:v1 : GoogleCloudVideointelligenceV1p1beta1_NormalizedBoundingBox
+/// - videointelligence:v1 : GoogleCloudVideointelligenceV1p2beta1_NormalizedBoundingBox
+/// - videointelligence:v1 : GoogleCloudVideointelligenceV1p3beta1_NormalizedBoundingBox
 class $NormalizedBoundingBox {
   /// Bottom Y coordinate.
   core.double? bottom;
@@ -9355,6 +11062,18 @@ class $NormalizedBoundingBox {
       };
 }
 
+/// Replacement class for
+///
+/// - videointelligence:v1 : GoogleCloudVideointelligenceV1_NormalizedVertex
+/// - videointelligence:v1 : GoogleCloudVideointelligenceV1beta2_NormalizedVertex
+/// - videointelligence:v1 : GoogleCloudVideointelligenceV1p1beta1_NormalizedVertex
+/// - videointelligence:v1 : GoogleCloudVideointelligenceV1p2beta1_NormalizedVertex
+/// - videointelligence:v1 : GoogleCloudVideointelligenceV1p3beta1_NormalizedVertex
+/// - vision:v1 : GoogleCloudVisionV1p1beta1NormalizedVertex
+/// - vision:v1 : GoogleCloudVisionV1p2beta1NormalizedVertex
+/// - vision:v1 : GoogleCloudVisionV1p3beta1NormalizedVertex
+/// - vision:v1 : GoogleCloudVisionV1p4beta1NormalizedVertex
+/// - vision:v1 : NormalizedVertex
 class $NormalizedVertex {
   /// X coordinate.
   core.double? x;
@@ -9383,6 +11102,11 @@ class $NormalizedVertex {
       };
 }
 
+/// Replacement class for
+///
+/// - documentai:v1 : GoogleCloudDocumentaiV1NormalizedVertex
+/// - documentai:v1 : GoogleCloudDocumentaiV1beta1NormalizedVertex
+/// - documentai:v1 : GoogleCloudDocumentaiV1beta2NormalizedVertex
 class $NormalizedVertex01 {
   /// X coordinate.
   core.double? x;
@@ -9411,6 +11135,12 @@ class $NormalizedVertex01 {
       };
 }
 
+/// Replacement class for
+///
+/// - serviceconsumermanagement:v1 : OAuthRequirements
+/// - servicemanagement:v1 : OAuthRequirements
+/// - servicenetworking:v1 : OAuthRequirements
+/// - serviceusage:v1 : OAuthRequirements
 class $OAuthRequirements {
   /// The list of publicly documented OAuth scopes that are allowed access.
   ///
@@ -9435,6 +11165,13 @@ class $OAuthRequirements {
       };
 }
 
+/// Replacement class for
+///
+/// - vision:v1 : GoogleCloudVisionV1p1beta1ProductSearchResultsObjectAnnotation
+/// - vision:v1 : GoogleCloudVisionV1p2beta1ProductSearchResultsObjectAnnotation
+/// - vision:v1 : GoogleCloudVisionV1p3beta1ProductSearchResultsObjectAnnotation
+/// - vision:v1 : GoogleCloudVisionV1p4beta1ProductSearchResultsObjectAnnotation
+/// - vision:v1 : ObjectAnnotation
 class $ObjectAnnotation {
   /// The BCP-47 language code, such as "en-US" or "sr-Latn".
   ///
@@ -9480,6 +11217,10 @@ class $ObjectAnnotation {
       };
 }
 
+/// Replacement class for
+///
+/// - dfareporting:v3.4 : ObjectFilter
+/// - dfareporting:v3.5 : ObjectFilter
 class $ObjectFilter {
   /// Identifies what kind of resource this is.
   ///
@@ -9528,6 +11269,10 @@ class $ObjectFilter {
       };
 }
 
+/// Replacement class for
+///
+/// - dfareporting:v3.4 : OffsetPosition
+/// - dfareporting:v3.5 : OffsetPosition
 class $OffsetPosition {
   /// Offset distance from left side of an asset or a window.
   core.int? left;
@@ -9552,6 +11297,10 @@ class $OffsetPosition {
       };
 }
 
+/// Replacement class for
+///
+/// - dfareporting:v3.4 : OmnitureSettings
+/// - dfareporting:v3.5 : OmnitureSettings
 class $OmnitureSettings {
   /// Whether placement cost data will be sent to Omniture.
   ///
@@ -9588,6 +11337,11 @@ class $OmnitureSettings {
       };
 }
 
+/// Replacement class for
+///
+/// - managedidentities:v1 : GoogleCloudManagedidentitiesV1OpMetadata
+/// - managedidentities:v1 : GoogleCloudManagedidentitiesV1alpha1OpMetadata
+/// - managedidentities:v1 : GoogleCloudManagedidentitiesV1beta1OpMetadata
 class $OpMetadata {
   /// API version used to start the operation.
   ///
@@ -9663,6 +11417,10 @@ class $OpMetadata {
       };
 }
 
+/// Replacement class for
+///
+/// - dfareporting:v3.4 : OperatingSystem
+/// - dfareporting:v3.5 : OperatingSystem
 class $OperatingSystem {
   /// DART ID of this operating system.
   ///
@@ -9714,6 +11472,10 @@ class $OperatingSystem {
       };
 }
 
+/// Replacement class for
+///
+/// - serviceusage:v1 : GoogleApiServiceusageV1OperationMetadata
+/// - serviceusage:v1 : OperationMetadata
 class $OperationMetadata {
   /// The full name of the resources that this operation is directly associated
   /// with.
@@ -9737,6 +11499,14 @@ class $OperationMetadata {
       };
 }
 
+/// Replacement class for
+///
+/// - cloudbuild:v1 : GoogleDevtoolsCloudbuildV2OperationMetadata
+/// - datamigration:v1 : GoogleCloudClouddmsV1OperationMetadata
+/// - eventarc:v1 : OperationMetadata
+/// - networksecurity:v1 : OperationMetadata
+/// - networkservices:v1 : OperationMetadata
+/// - privateca:v1 : OperationMetadata
 class $OperationMetadata01 {
   /// API version used to start the operation.
   ///
@@ -9822,6 +11592,10 @@ class $OperationMetadata01 {
       };
 }
 
+/// Replacement class for
+///
+/// - cloudbuild:v1 : CreateGitHubEnterpriseConfigOperationMetadata
+/// - cloudbuild:v1 : ProcessAppManifestCallbackOperationMetadata
 class $OperationMetadata02 {
   /// Time the operation was completed.
   core.String? completeTime;
@@ -9862,6 +11636,12 @@ class $OperationMetadata02 {
       };
 }
 
+/// Replacement class for
+///
+/// - cloudbuild:v1 : OperationMetadata
+/// - file:v1 : OperationMetadata
+/// - managedidentities:v1 : OperationMetadata
+/// - tpu:v1 : OperationMetadata
 class $OperationMetadata03 {
   /// API version used to start the operation.
   ///
@@ -9946,6 +11726,10 @@ class $OperationMetadata03 {
       };
 }
 
+/// Replacement class for
+///
+/// - documentai:v1 : GoogleCloudDocumentaiV1beta1OperationMetadata
+/// - documentai:v1 : GoogleCloudDocumentaiV1beta2OperationMetadata
 class $OperationMetadata04 {
   /// The creation time of the operation.
   core.String? createTime;
@@ -9998,6 +11782,13 @@ class $OperationMetadata04 {
       };
 }
 
+/// Replacement class for
+///
+/// - vision:v1 : GoogleCloudVisionV1p1beta1OperationMetadata
+/// - vision:v1 : GoogleCloudVisionV1p2beta1OperationMetadata
+/// - vision:v1 : GoogleCloudVisionV1p3beta1OperationMetadata
+/// - vision:v1 : GoogleCloudVisionV1p4beta1OperationMetadata
+/// - vision:v1 : OperationMetadata
 class $OperationMetadata05 {
   /// The time when the batch request was received.
   core.String? createTime;
@@ -10039,6 +11830,10 @@ class $OperationMetadata05 {
       };
 }
 
+/// Replacement class for
+///
+/// - memcache:v1 : GoogleCloudMemcacheV1OperationMetadata
+/// - memcache:v1 : OperationMetadata
 class $OperationMetadata06 {
   /// API version used to start the operation.
   ///
@@ -10123,6 +11918,10 @@ class $OperationMetadata06 {
       };
 }
 
+/// Replacement class for
+///
+/// - bigtableadmin:v2 : OperationProgress
+/// - spanner:v1 : OperationProgress
 class $OperationProgress {
   /// If set, the time at which this operation failed or was completed
   /// successfully.
@@ -10162,6 +11961,12 @@ class $OperationProgress {
       };
 }
 
+/// Replacement class for
+///
+/// - serviceconsumermanagement:v1 : Option
+/// - servicemanagement:v1 : Option
+/// - servicenetworking:v1 : Option
+/// - serviceusage:v1 : Option
 class $Option {
   /// The option's name.
   ///
@@ -10200,6 +12005,10 @@ class $Option {
       };
 }
 
+/// Replacement class for
+///
+/// - content:v2.1 : OrderAddress
+/// - content:v2.1 : TestOrderAddress
 class $OrderAddress {
   /// CLDR country code (e.g. "US").
   core.String? country;
@@ -10288,6 +12097,10 @@ class $OrderAddress {
       };
 }
 
+/// Replacement class for
+///
+/// - dfareporting:v3.4 : OrderContact
+/// - dfareporting:v3.5 : OrderContact
 class $OrderContact {
   /// Free-form information about this contact.
   ///
@@ -10349,6 +12162,12 @@ class $OrderContact {
       };
 }
 
+/// Replacement class for
+///
+/// - dialogflow:v2 : GoogleCloudDialogflowV2OriginalDetectIntentRequest
+/// - dialogflow:v2 : GoogleCloudDialogflowV2beta1OriginalDetectIntentRequest
+/// - dialogflow:v3 : GoogleCloudDialogflowV2OriginalDetectIntentRequest
+/// - dialogflow:v3 : GoogleCloudDialogflowV2beta1OriginalDetectIntentRequest
 class $OriginalDetectIntentRequest {
   /// This field is set to the value of the `QueryParameters.payload` field
   /// passed in the request.
@@ -10405,6 +12224,10 @@ class $OriginalDetectIntentRequest {
       };
 }
 
+/// Replacement class for
+///
+/// - accesscontextmanager:v1 : OsConstraint
+/// - cloudasset:v1 : GoogleIdentityAccesscontextmanagerV1OsConstraint
 class $OsConstraint {
   /// The minimum allowed OS version.
   ///
@@ -10460,6 +12283,10 @@ class $OsConstraint {
       };
 }
 
+/// Replacement class for
+///
+/// - cloudasset:v1 : OsInfo
+/// - osconfig:v1 : InventoryOsInfo
 class $OsInfo {
   /// The system architecture of the operating system.
   core.String? architecture;
@@ -10542,6 +12369,10 @@ class $OsInfo {
       };
 }
 
+/// Replacement class for
+///
+/// - androidenterprise:v1 : PageInfo
+/// - androidpublisher:v3 : PageInfo
 class $PageInfo {
   /// Maximum number of results returned in one page.
   ///
@@ -10581,6 +12412,12 @@ class $PageInfo {
       };
 }
 
+/// Replacement class for
+///
+/// - dialogflow:v2 : GoogleCloudDialogflowCxV3PageInfoFormInfoParameterInfo
+/// - dialogflow:v2 : GoogleCloudDialogflowCxV3beta1PageInfoFormInfoParameterInfo
+/// - dialogflow:v3 : GoogleCloudDialogflowCxV3PageInfoFormInfoParameterInfo
+/// - dialogflow:v3 : GoogleCloudDialogflowCxV3beta1PageInfoFormInfoParameterInfo
 class $PageInfoFormInfoParameterInfo {
   /// Always present for WebhookRequest.
   ///
@@ -10658,6 +12495,10 @@ class $PageInfoFormInfoParameterInfo {
       };
 }
 
+/// Replacement class for
+///
+/// - datastore:v1 : PartitionId
+/// - dlp:v2 : GooglePrivacyDlpV2PartitionId
 class $PartitionId {
   /// If not empty, the ID of the namespace to which the entities belong.
   core.String? namespaceId;
@@ -10686,6 +12527,10 @@ class $PartitionId {
       };
 }
 
+/// Replacement class for
+///
+/// - datastore:v1 : PathElement
+/// - dlp:v2 : GooglePrivacyDlpV2PathElement
 class $PathElement {
   /// The auto-allocated ID of the entity.
   ///
@@ -10725,6 +12570,10 @@ class $PathElement {
       };
 }
 
+/// Replacement class for
+///
+/// - dfareporting:v3.4 : PathReportDimensionValue
+/// - dfareporting:v3.5 : PathReportDimensionValue
 class $PathReportDimensionValue {
   /// The name of the dimension.
   core.String? dimensionName;
@@ -10790,6 +12639,10 @@ class $PathReportDimensionValue {
       };
 }
 
+/// Replacement class for
+///
+/// - servicecontrol:v1 : Peer
+/// - servicecontrol:v2 : Peer
 class $Peer {
   /// The IP address of the peer.
   core.String? ip;
@@ -10850,6 +12703,10 @@ class $Peer {
       };
 }
 
+/// Replacement class for
+///
+/// - cloudchannel:v1 : GoogleCloudChannelV1Period
+/// - cloudchannel:v1 : GoogleCloudChannelV1alpha1Period
 class $Period {
   /// Total duration of Period Type defined.
   core.int? duration;
@@ -10883,6 +12740,48 @@ class $Period {
       };
 }
 
+/// Replacement class for
+///
+/// - apigateway:v1 : ApigatewayTestIamPermissionsResponse
+/// - apigee:v1 : GoogleIamV1TestIamPermissionsResponse
+/// - bigquery:v2 : TestIamPermissionsResponse
+/// - bigtableadmin:v2 : TestIamPermissionsResponse
+/// - binaryauthorization:v1 : TestIamPermissionsResponse
+/// - cloudbilling:v1 : TestIamPermissionsResponse
+/// - cloudfunctions:v1 : TestIamPermissionsResponse
+/// - cloudiot:v1 : TestIamPermissionsResponse
+/// - cloudkms:v1 : TestIamPermissionsResponse
+/// - cloudresourcemanager:v1 : TestIamPermissionsResponse
+/// - cloudresourcemanager:v2 : TestIamPermissionsResponse
+/// - cloudresourcemanager:v3 : TestIamPermissionsResponse
+/// - cloudtasks:v2 : TestIamPermissionsResponse
+/// - compute:v1 : TestPermissionsResponse
+/// - datacatalog:v1 : TestIamPermissionsResponse
+/// - datafusion:v1 : TestIamPermissionsResponse
+/// - datamigration:v1 : TestIamPermissionsResponse
+/// - deploymentmanager:v2 : TestPermissionsResponse
+/// - eventarc:v1 : TestIamPermissionsResponse
+/// - gameservices:v1 : TestIamPermissionsResponse
+/// - gkehub:v1 : TestIamPermissionsResponse
+/// - healthcare:v1 : TestIamPermissionsResponse
+/// - iam:v1 : TestIamPermissionsResponse
+/// - iap:v1 : TestIamPermissionsResponse
+/// - managedidentities:v1 : TestIamPermissionsResponse
+/// - ml:v1 : GoogleIamV1__TestIamPermissionsResponse
+/// - networkconnectivity:v1 : TestIamPermissionsResponse
+/// - networkmanagement:v1 : TestIamPermissionsResponse
+/// - networksecurity:v1 : GoogleIamV1TestIamPermissionsResponse
+/// - networkservices:v1 : TestIamPermissionsResponse
+/// - notebooks:v1 : TestIamPermissionsResponse
+/// - privateca:v1 : TestIamPermissionsResponse
+/// - pubsub:v1 : TestIamPermissionsResponse
+/// - run:v1 : TestIamPermissionsResponse
+/// - secretmanager:v1 : TestIamPermissionsResponse
+/// - securitycenter:v1 : TestIamPermissionsResponse
+/// - servicedirectory:v1 : TestIamPermissionsResponse
+/// - servicemanagement:v1 : TestIamPermissionsResponse
+/// - sourcerepo:v1 : TestIamPermissionsResponse
+/// - spanner:v1 : TestIamPermissionsResponse
 class $PermissionsResponse {
   /// A subset of `TestPermissionsRequest.permissions` that the caller is
   /// allowed.
@@ -10906,6 +12805,10 @@ class $PermissionsResponse {
       };
 }
 
+/// Replacement class for
+///
+/// - dfareporting:v3.4 : PlacementStrategy
+/// - dfareporting:v3.5 : PlacementStrategy
 class $PlacementStrategy {
   /// Account ID of this placement strategy.This is a read-only field that can
   /// be left blank.
@@ -10952,6 +12855,10 @@ class $PlacementStrategy {
       };
 }
 
+/// Replacement class for
+///
+/// - dfareporting:v3.4 : PlatformType
+/// - dfareporting:v3.5 : PlatformType
 class $PlatformType {
   /// ID of this platform type.
   core.String? id;
@@ -10984,6 +12891,13 @@ class $PlatformType {
       };
 }
 
+/// Replacement class for
+///
+/// - vision:v1 : GoogleCloudVisionV1p1beta1Position
+/// - vision:v1 : GoogleCloudVisionV1p2beta1Position
+/// - vision:v1 : GoogleCloudVisionV1p3beta1Position
+/// - vision:v1 : GoogleCloudVisionV1p4beta1Position
+/// - vision:v1 : Position
 class $Position {
   /// X coordinate.
   core.double? x;
@@ -11020,6 +12934,15 @@ class $Position {
       };
 }
 
+/// Replacement class for
+///
+/// - cloudchannel:v1 : GoogleTypePostalAddress
+/// - documentai:v1 : GoogleTypePostalAddress
+/// - jobs:v3 : PostalAddress
+/// - jobs:v4 : PostalAddress
+/// - mybusinessaccountmanagement:v1 : PostalAddress
+/// - mybusinessbusinessinformation:v1 : PostalAddress
+/// - mybusinessverifications:v1 : PostalAddress
 class $PostalAddress {
   /// Unstructured address lines describing the lower levels of an address.
   ///
@@ -11201,6 +13124,10 @@ class $PostalAddress {
       };
 }
 
+/// Replacement class for
+///
+/// - dfareporting:v3.4 : PostalCode
+/// - dfareporting:v3.5 : PostalCode
 class $PostalCode {
   /// Postal code.
   ///
@@ -11251,6 +13178,10 @@ class $PostalCode {
       };
 }
 
+/// Replacement class for
+///
+/// - dfareporting:v3.4 : PricingSchedulePricingPeriod
+/// - dfareporting:v3.5 : PricingSchedulePricingPeriod
 class $PricingSchedulePricingPeriod {
   core.DateTime? endDate;
 
@@ -11308,6 +13239,10 @@ class $PricingSchedulePricingPeriod {
       };
 }
 
+/// Replacement class for
+///
+/// - datastore:v1 : GoogleDatastoreAdminV1Progress
+/// - datastore:v1 : GoogleDatastoreAdminV1beta1Progress
 class $Progress {
   /// The amount of work that has been completed.
   ///
@@ -11340,6 +13275,11 @@ class $Progress {
       };
 }
 
+/// Replacement class for
+///
+/// - cloudresourcemanager:v1 : ProjectCreationStatus
+/// - cloudresourcemanager:v2 : ProjectCreationStatus
+/// - cloudresourcemanager:v3 : ProjectCreationStatus
 class $ProjectCreationStatus {
   /// Creation time of the project creation workflow.
   core.String? createTime;
@@ -11378,6 +13318,10 @@ class $ProjectCreationStatus {
       };
 }
 
+/// Replacement class for
+///
+/// - clouddebugger:v2 : ProjectRepoId
+/// - ondemandscanning:v1 : ProjectRepoId
 class $ProjectRepoId {
   /// The ID of the project.
   core.String? projectId;
@@ -11408,6 +13352,13 @@ class $ProjectRepoId {
       };
 }
 
+/// Replacement class for
+///
+/// - vision:v1 : GoogleCloudVisionV1p1beta1Property
+/// - vision:v1 : GoogleCloudVisionV1p2beta1Property
+/// - vision:v1 : GoogleCloudVisionV1p3beta1Property
+/// - vision:v1 : GoogleCloudVisionV1p4beta1Property
+/// - vision:v1 : Property
 class $Property {
   /// Name of the property.
   core.String? name;
@@ -11441,6 +13392,10 @@ class $Property {
       };
 }
 
+/// Replacement class for
+///
+/// - cloudchannel:v1 : GoogleCloudChannelV1ProvisionedService
+/// - cloudchannel:v1 : GoogleCloudChannelV1alpha1ProvisionedService
 class $ProvisionedService {
   /// The product pertaining to the provisioning resource as specified in the
   /// Offer.
@@ -11485,6 +13440,10 @@ class $ProvisionedService {
       };
 }
 
+/// Replacement class for
+///
+/// - compute:v1 : TargetSslProxiesSetProxyHeaderRequest
+/// - compute:v1 : TargetTcpProxiesSetProxyHeaderRequest
 class $ProxiesSetProxyHeaderRequest {
   /// The new type of proxy header to append before sending data to the backend.
   ///
@@ -11510,6 +13469,10 @@ class $ProxiesSetProxyHeaderRequest {
       };
 }
 
+/// Replacement class for
+///
+/// - cloudscheduler:v1 : PubsubMessage
+/// - pubsub:v1 : PubsubMessage
 class $PubsubMessage {
   /// Attributes for this message.
   ///
@@ -11591,6 +13554,10 @@ class $PubsubMessage {
       };
 }
 
+/// Replacement class for
+///
+/// - androidpublisher:v3 : ProductPurchasesAcknowledgeRequest
+/// - androidpublisher:v3 : SubscriptionPurchasesAcknowledgeRequest
 class $PurchasesAcknowledgeRequest {
   /// Payload to attach to the purchase.
   core.String? developerPayload;
@@ -11611,6 +13578,11 @@ class $PurchasesAcknowledgeRequest {
       };
 }
 
+/// Replacement class for
+///
+/// - retail:v2 : GoogleCloudRetailV2PurgeUserEventsResponse
+/// - retail:v2 : GoogleCloudRetailV2alphaPurgeUserEventsResponse
+/// - retail:v2 : GoogleCloudRetailV2betaPurgeUserEventsResponse
 class $PurgeUserEventsResponse {
   /// The total count of events purged as a result of the operation.
   core.String? purgedEventsCount;
@@ -11631,6 +13603,10 @@ class $PurgeUserEventsResponse {
       };
 }
 
+/// Replacement class for
+///
+/// - vault:v1 : HeldGroupsQuery
+/// - vault:v1 : HeldMailQuery
 class $Query {
   /// The end time for the query.
   ///
@@ -11671,6 +13647,12 @@ class $Query {
       };
 }
 
+/// Replacement class for
+///
+/// - serviceconsumermanagement:v1 : QuotaLimit
+/// - servicemanagement:v1 : QuotaLimit
+/// - servicenetworking:v1 : QuotaLimit
+/// - serviceusage:v1 : QuotaLimit
 class $QuotaLimit {
   /// Default number of tokens that can be consumed during the specified
   /// duration.
@@ -11813,6 +13795,10 @@ class $QuotaLimit {
       };
 }
 
+/// Replacement class for
+///
+/// - safebrowsing:v4 : GoogleSecuritySafebrowsingV4RawIndices
+/// - webrisk:v1 : GoogleCloudWebriskV1RawIndices
 class $RawIndices {
   /// The indices to remove from a lexicographically-sorted local list.
   core.List<core.int>? indices;
@@ -11835,6 +13821,10 @@ class $RawIndices {
       };
 }
 
+/// Replacement class for
+///
+/// - dfareporting:v3.4 : Recipient
+/// - dfareporting:v3.5 : Recipient
 class $Recipient {
   /// The delivery type for the recipient.
   /// Possible string values are:
@@ -11871,6 +13861,10 @@ class $Recipient {
       };
 }
 
+/// Replacement class for
+///
+/// - dfareporting:v3.4 : Region
+/// - dfareporting:v3.5 : Region
 class $Region {
   /// Country code of the country to which this region belongs.
   core.String? countryCode;
@@ -11929,6 +13923,11 @@ class $Region {
       };
 }
 
+/// Replacement class for
+///
+/// - retail:v2 : GoogleCloudRetailV2RejoinUserEventsResponse
+/// - retail:v2 : GoogleCloudRetailV2alphaRejoinUserEventsResponse
+/// - retail:v2 : GoogleCloudRetailV2betaRejoinUserEventsResponse
 class $RejoinUserEventsResponse {
   /// Number of user events that were joined with latest product catalog.
   core.String? rejoinedUserEventsCount;
@@ -11950,6 +13949,10 @@ class $RejoinUserEventsResponse {
       };
 }
 
+/// Replacement class for
+///
+/// - cloudasset:v1 : GoogleCloudAssetV1p7beta1RelatedAsset
+/// - cloudasset:v1 : RelatedAsset
 class $RelatedAsset {
   /// The ancestors of an asset in Google Cloud
   /// [resource hierarchy](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy),
@@ -12003,6 +14006,10 @@ class $RelatedAsset {
       };
 }
 
+/// Replacement class for
+///
+/// - cloudasset:v1 : GoogleCloudAssetV1p7beta1RelationshipAttributes
+/// - cloudasset:v1 : RelationshipAttributes
 class $RelationshipAttributes {
   /// The detail of the relationship, e.g. `contains`, `attaches`
   core.String? action;
@@ -12053,6 +14060,10 @@ class $RelationshipAttributes {
       };
 }
 
+/// Replacement class for
+///
+/// - dfareporting:v3.4 : RemarketingListShare
+/// - dfareporting:v3.5 : RemarketingListShare
 class $RemarketingListShare {
   /// Identifies what kind of resource this is.
   ///
@@ -12104,6 +14115,10 @@ class $RemarketingListShare {
       };
 }
 
+/// Replacement class for
+///
+/// - docs:v1 : ReplaceAllTextResponse
+/// - slides:v1 : ReplaceAllTextResponse
 class $ReplaceAllTextResponse {
   /// The number of occurrences changed by replacing all text.
   core.int? occurrencesChanged;
@@ -12125,6 +14140,10 @@ class $ReplaceAllTextResponse {
       };
 }
 
+/// Replacement class for
+///
+/// - policysimulator:v1 : GoogleCloudPolicysimulatorV1ReplayOperationMetadata
+/// - policysimulator:v1 : GoogleCloudPolicysimulatorV1beta1ReplayOperationMetadata
 class $ReplayOperationMetadata {
   /// Time when the request was received.
   core.String? startTime;
@@ -12145,6 +14164,10 @@ class $ReplayOperationMetadata {
       };
 }
 
+/// Replacement class for
+///
+/// - compute:v1 : InstanceGroupManagersDeletePerInstanceConfigsReq
+/// - compute:v1 : RegionInstanceGroupManagerDeleteInstanceConfigReq
 class $Req {
   /// The list of instance names for which we want to delete per-instance
   /// configs on this managed instance group.
@@ -12168,6 +14191,10 @@ class $Req {
       };
 }
 
+/// Replacement class for
+///
+/// - compute:v1 : InstanceGroupManagersRecreateInstancesRequest
+/// - compute:v1 : RegionInstanceGroupManagersRecreateRequest
 class $Request {
   /// The URLs of one or more instances to recreate.
   ///
@@ -12193,6 +14220,12 @@ class $Request {
       };
 }
 
+/// Replacement class for
+///
+/// - privateca:v1 : DisableCertificateAuthorityRequest
+/// - privateca:v1 : EnableCertificateAuthorityRequest
+/// - privateca:v1 : FetchCaCertsRequest
+/// - privateca:v1 : UndeleteCertificateAuthorityRequest
 class $Request01 {
   /// An ID to identify requests.
   ///
@@ -12226,6 +14259,14 @@ class $Request01 {
       };
 }
 
+/// Replacement class for
+///
+/// - cloudidentity:v1 : GoogleAppsCloudidentityDevicesV1ApproveDeviceUserRequest
+/// - cloudidentity:v1 : GoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest
+/// - cloudidentity:v1 : GoogleAppsCloudidentityDevicesV1CancelWipeDeviceRequest
+/// - cloudidentity:v1 : GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserRequest
+/// - cloudidentity:v1 : GoogleAppsCloudidentityDevicesV1WipeDeviceRequest
+/// - cloudidentity:v1 : GoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest
 class $Request02 {
   /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
   /// the customer.
@@ -12254,6 +14295,12 @@ class $Request02 {
       };
 }
 
+/// Replacement class for
+///
+/// - cloudchannel:v1 : GoogleCloudChannelV1ActivateEntitlementRequest
+/// - cloudchannel:v1 : GoogleCloudChannelV1CancelEntitlementRequest
+/// - cloudchannel:v1 : GoogleCloudChannelV1StartPaidServiceRequest
+/// - cloudchannel:v1 : GoogleCloudChannelV1SuspendEntitlementRequest
 class $Request03 {
   /// You can specify an optional unique request ID, and if you need to retry
   /// your request, the server will know to ignore the request if it's complete.
@@ -12284,6 +14331,10 @@ class $Request03 {
       };
 }
 
+/// Replacement class for
+///
+/// - cloudresourcemanager:v1 : ListAvailableOrgPolicyConstraintsRequest
+/// - cloudresourcemanager:v1 : ListOrgPoliciesRequest
 class $Request04 {
   /// Size of the pages to be returned.
   ///
@@ -12318,6 +14369,10 @@ class $Request04 {
       };
 }
 
+/// Replacement class for
+///
+/// - content:v2.1 : RequestReviewFreeListingsRequest
+/// - content:v2.1 : RequestReviewShoppingAdsRequest
 class $Request05 {
   /// The code \[ISO 3166-1
   /// alpha-2\](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) of the country
@@ -12340,6 +14395,10 @@ class $Request05 {
       };
 }
 
+/// Replacement class for
+///
+/// - dialogflow:v3 : GoogleCloudDialogflowCxV3ValidateAgentRequest
+/// - dialogflow:v3 : GoogleCloudDialogflowCxV3ValidateFlowRequest
 class $Request06 {
   /// If not specified, the agent's default language is used.
   core.String? languageCode;
@@ -12360,6 +14419,11 @@ class $Request06 {
       };
 }
 
+/// Replacement class for
+///
+/// - recommender:v1 : GoogleCloudRecommenderV1MarkRecommendationClaimedRequest
+/// - recommender:v1 : GoogleCloudRecommenderV1MarkRecommendationFailedRequest
+/// - recommender:v1 : GoogleCloudRecommenderV1MarkRecommendationSucceededRequest
 class $Request07 {
   /// Fingerprint of the Recommendation.
   ///
@@ -12400,6 +14464,10 @@ class $Request07 {
       };
 }
 
+/// Replacement class for
+///
+/// - servicecontrol:v1 : Resource
+/// - servicecontrol:v2 : Resource
 class $Resource {
   /// Annotations is an unstructured key-value map stored with a resource that
   /// may be set by external tools to store and retrieve arbitrary metadata.
@@ -12570,6 +14638,10 @@ class $Resource {
       };
 }
 
+/// Replacement class for
+///
+/// - cloudasset:v1 : GoogleCloudAssetV1p7beta1Resource
+/// - cloudasset:v1 : Resource
 class $Resource01 {
   /// The content of the resource, in which some sensitive fields are removed
   /// and may not be present.
@@ -12666,6 +14738,10 @@ class $Resource01 {
       };
 }
 
+/// Replacement class for
+///
+/// - servicecontrol:v1 : ResourceLocation
+/// - servicecontrol:v2 : ResourceLocation
 class $ResourceLocation {
   /// The locations of a resource after the execution of the operation.
   ///
@@ -12706,6 +14782,10 @@ class $ResourceLocation {
       };
 }
 
+/// Replacement class for
+///
+/// - sheets:v4 : BatchClearValuesByDataFilterResponse
+/// - sheets:v4 : BatchClearValuesResponse
 class $Response {
   /// The ranges that were cleared, in A1 notation.
   ///
@@ -12740,6 +14820,12 @@ class $Response {
       };
 }
 
+/// Replacement class for
+///
+/// - dialogflow:v2 : GoogleCloudDialogflowCxV3ResponseMessageConversationSuccess
+/// - dialogflow:v2 : GoogleCloudDialogflowCxV3beta1ResponseMessageConversationSuccess
+/// - dialogflow:v3 : GoogleCloudDialogflowCxV3ResponseMessageConversationSuccess
+/// - dialogflow:v3 : GoogleCloudDialogflowCxV3beta1ResponseMessageConversationSuccess
 class $ResponseMessageConversationSuccess {
   /// Custom metadata.
   ///
@@ -12765,6 +14851,12 @@ class $ResponseMessageConversationSuccess {
       };
 }
 
+/// Replacement class for
+///
+/// - dialogflow:v2 : GoogleCloudDialogflowCxV3ResponseMessageLiveAgentHandoff
+/// - dialogflow:v2 : GoogleCloudDialogflowCxV3beta1ResponseMessageLiveAgentHandoff
+/// - dialogflow:v3 : GoogleCloudDialogflowCxV3ResponseMessageLiveAgentHandoff
+/// - dialogflow:v3 : GoogleCloudDialogflowCxV3beta1ResponseMessageLiveAgentHandoff
 class $ResponseMessageLiveAgentHandoff {
   /// Custom metadata for your handoff procedure.
   ///
@@ -12790,6 +14882,12 @@ class $ResponseMessageLiveAgentHandoff {
       };
 }
 
+/// Replacement class for
+///
+/// - dialogflow:v2 : GoogleCloudDialogflowCxV3ResponseMessageMixedAudioSegment
+/// - dialogflow:v2 : GoogleCloudDialogflowCxV3beta1ResponseMessageMixedAudioSegment
+/// - dialogflow:v3 : GoogleCloudDialogflowCxV3ResponseMessageMixedAudioSegment
+/// - dialogflow:v3 : GoogleCloudDialogflowCxV3beta1ResponseMessageMixedAudioSegment
 class $ResponseMessageMixedAudioSegment {
   /// Whether the playback of this segment can be interrupted by the end user's
   /// speech and the client should then start the next Dialogflow request.
@@ -12837,6 +14935,12 @@ class $ResponseMessageMixedAudioSegment {
       };
 }
 
+/// Replacement class for
+///
+/// - dialogflow:v2 : GoogleCloudDialogflowCxV3ResponseMessageOutputAudioText
+/// - dialogflow:v2 : GoogleCloudDialogflowCxV3beta1ResponseMessageOutputAudioText
+/// - dialogflow:v3 : GoogleCloudDialogflowCxV3ResponseMessageOutputAudioText
+/// - dialogflow:v3 : GoogleCloudDialogflowCxV3beta1ResponseMessageOutputAudioText
 class $ResponseMessageOutputAudioText {
   /// Whether the playback of this message can be interrupted by the end user's
   /// speech and the client can then starts the next Dialogflow request.
@@ -12876,6 +14980,12 @@ class $ResponseMessageOutputAudioText {
       };
 }
 
+/// Replacement class for
+///
+/// - dialogflow:v2 : GoogleCloudDialogflowCxV3ResponseMessagePlayAudio
+/// - dialogflow:v2 : GoogleCloudDialogflowCxV3beta1ResponseMessagePlayAudio
+/// - dialogflow:v3 : GoogleCloudDialogflowCxV3ResponseMessagePlayAudio
+/// - dialogflow:v3 : GoogleCloudDialogflowCxV3beta1ResponseMessagePlayAudio
 class $ResponseMessagePlayAudio {
   /// Whether the playback of this message can be interrupted by the end user's
   /// speech and the client can then starts the next Dialogflow request.
@@ -12914,6 +15024,12 @@ class $ResponseMessagePlayAudio {
       };
 }
 
+/// Replacement class for
+///
+/// - dialogflow:v2 : GoogleCloudDialogflowCxV3ResponseMessageText
+/// - dialogflow:v2 : GoogleCloudDialogflowCxV3beta1ResponseMessageText
+/// - dialogflow:v3 : GoogleCloudDialogflowCxV3ResponseMessageText
+/// - dialogflow:v3 : GoogleCloudDialogflowCxV3beta1ResponseMessageText
 class $ResponseMessageText {
   /// Whether the playback of this message can be interrupted by the end user's
   /// speech and the client can then starts the next Dialogflow request.
@@ -12951,6 +15067,10 @@ class $ResponseMessageText {
       };
 }
 
+/// Replacement class for
+///
+/// - jobs:v3 : ResponseMetadata
+/// - jobs:v4 : ResponseMetadata
 class $ResponseMetadata {
   /// A unique id associated with this call.
   ///
@@ -12973,6 +15093,10 @@ class $ResponseMetadata {
       };
 }
 
+/// Replacement class for
+///
+/// - documentai:v1 : GoogleCloudDocumentaiV1ReviewDocumentResponse
+/// - documentai:v1 : GoogleCloudDocumentaiV1beta3ReviewDocumentResponse
 class $ReviewDocumentResponse {
   /// The Cloud Storage uri for the human reviewed document.
   core.String? gcsDestination;
@@ -12993,6 +15117,10 @@ class $ReviewDocumentResponse {
       };
 }
 
+/// Replacement class for
+///
+/// - docs:v1 : RgbColor
+/// - slides:v1 : RgbColor
 class $RgbColor {
   /// The blue component of the color, from 0.0 to 1.0.
   core.double? blue;
@@ -13029,6 +15157,10 @@ class $RgbColor {
       };
 }
 
+/// Replacement class for
+///
+/// - dfareporting:v3.4 : Rule
+/// - dfareporting:v3.5 : Rule
 class $Rule {
   /// A creativeAssets\[\].id.
   ///
@@ -13072,6 +15204,11 @@ class $Rule {
       };
 }
 
+/// Replacement class for
+///
+/// - securitycenter:v1 : GoogleCloudSecuritycenterV1RunAssetDiscoveryResponse
+/// - securitycenter:v1 : GoogleCloudSecuritycenterV1beta1RunAssetDiscoveryResponse
+/// - securitycenter:v1 : GoogleCloudSecuritycenterV1p1beta1RunAssetDiscoveryResponse
 class $RunAssetDiscoveryResponse {
   /// The duration between asset discovery run start and end
   core.String? duration;
@@ -13106,6 +15243,13 @@ class $RunAssetDiscoveryResponse {
       };
 }
 
+/// Replacement class for
+///
+/// - vision:v1 : GoogleCloudVisionV1p1beta1SafeSearchAnnotation
+/// - vision:v1 : GoogleCloudVisionV1p2beta1SafeSearchAnnotation
+/// - vision:v1 : GoogleCloudVisionV1p3beta1SafeSearchAnnotation
+/// - vision:v1 : GoogleCloudVisionV1p4beta1SafeSearchAnnotation
+/// - vision:v1 : SafeSearchAnnotation
 class $SafeSearchAnnotation {
   /// Represents the adult content likelihood for the image.
   ///
@@ -13199,6 +15343,11 @@ class $SafeSearchAnnotation {
       };
 }
 
+/// Replacement class for
+///
+/// - secretmanager:v1 : DestroySecretVersionRequest
+/// - secretmanager:v1 : DisableSecretVersionRequest
+/// - secretmanager:v1 : EnableSecretVersionRequest
 class $SecretVersionRequest {
   /// Etag of the SecretVersion.
   ///
@@ -13222,6 +15371,10 @@ class $SecretVersionRequest {
       };
 }
 
+/// Replacement class for
+///
+/// - securitycenter:v1 : GoogleCloudSecuritycenterV1p1beta1SecurityMarks
+/// - securitycenter:v1 : SecurityMarks
 class $SecurityMarks {
   /// The canonical name of the marks.
   ///
@@ -13281,6 +15434,10 @@ class $SecurityMarks {
       };
 }
 
+/// Replacement class for
+///
+/// - serviceusage:v1 : GoogleApiServiceusageV1beta1ServiceIdentity
+/// - serviceusage:v1 : ServiceIdentity
 class $ServiceIdentity {
   /// The email address of the service account that a service producer would use
   /// to access consumer resources.
@@ -13311,6 +15468,12 @@ class $ServiceIdentity {
       };
 }
 
+/// Replacement class for
+///
+/// - dialogflow:v2 : GoogleCloudDialogflowCxV3SessionInfo
+/// - dialogflow:v2 : GoogleCloudDialogflowCxV3beta1SessionInfo
+/// - dialogflow:v3 : GoogleCloudDialogflowCxV3SessionInfo
+/// - dialogflow:v3 : GoogleCloudDialogflowCxV3beta1SessionInfo
 class $SessionInfo {
   /// Optional for WebhookRequest.
   ///
@@ -13354,6 +15517,10 @@ class $SessionInfo {
       };
 }
 
+/// Replacement class for
+///
+/// - compute:v1 : RegionSetLabelsRequest
+/// - compute:v1 : ZoneSetLabelsRequest
 class $SetLabelsRequest {
   /// The fingerprint of the previous set of labels for this resource, used to
   /// detect conflicts.
@@ -13400,6 +15567,10 @@ class $SetLabelsRequest {
       };
 }
 
+/// Replacement class for
+///
+/// - tagmanager:v1 : SetupTag
+/// - tagmanager:v2 : SetupTag
 class $SetupTag {
   /// If true, fire the main tag if and only if the setup tag fires
   /// successfully.
@@ -13432,6 +15603,11 @@ class $SetupTag {
       };
 }
 
+/// Replacement class for
+///
+/// - appengine:v1 : CreateVersionMetadataV1
+/// - appengine:v1 : CreateVersionMetadataV1Alpha
+/// - appengine:v1 : CreateVersionMetadataV1Beta
 class $Shared {
   /// The Cloud Build ID if one was created as part of the version create.
   ///
@@ -13454,6 +15630,10 @@ class $Shared {
       };
 }
 
+/// Replacement class for
+///
+/// - ondemandscanning:v1 : AnalyzePackagesMetadata
+/// - ondemandscanning:v1 : AnalyzePackagesMetadataV1
 class $Shared01 {
   /// When the scan was created.
   core.String? createTime;
@@ -13482,6 +15662,10 @@ class $Shared01 {
       };
 }
 
+/// Replacement class for
+///
+/// - ondemandscanning:v1 : AnalyzePackagesResponse
+/// - ondemandscanning:v1 : AnalyzePackagesResponseV1
 class $Shared02 {
   /// The name of the scan resource created by this successful scan.
   core.String? scan;
@@ -13500,6 +15684,10 @@ class $Shared02 {
       };
 }
 
+/// Replacement class for
+///
+/// - ondemandscanning:v1 : BuilderConfig
+/// - youtube:v3 : AbuseType
 class $Shared03 {
   core.String? id;
 
@@ -13517,6 +15705,10 @@ class $Shared03 {
       };
 }
 
+/// Replacement class for
+///
+/// - compute:v1 : InstancesSetServiceAccountRequest
+/// - compute:v1 : ServiceAccount
 class $Shared04 {
   /// Email address of the service account.
   core.String? email;
@@ -13546,6 +15738,12 @@ class $Shared04 {
       };
 }
 
+/// Replacement class for
+///
+/// - documentai:v1 : GoogleCloudDocumentaiV1beta1GcsDestination
+/// - documentai:v1 : GoogleCloudDocumentaiV1beta1GcsSource
+/// - documentai:v1 : GoogleCloudDocumentaiV1beta2GcsDestination
+/// - documentai:v1 : GoogleCloudDocumentaiV1beta2GcsSource
 class $Shared05 {
   core.String? uri;
 
@@ -13563,6 +15761,10 @@ class $Shared05 {
       };
 }
 
+/// Replacement class for
+///
+/// - youtube:v3 : CommentSnippetAuthorChannelId
+/// - youtube:v3 : LanguageTag
 class $Shared06 {
   core.String? value;
 
@@ -13581,6 +15783,10 @@ class $Shared06 {
       };
 }
 
+/// Replacement class for
+///
+/// - osconfig:v1 : OSPolicyAssignmentInstanceFilterInventory
+/// - osconfig:v1 : OSPolicyInventoryFilter
 class $Shared07 {
   /// The OS short name
   ///
@@ -13616,6 +15822,12 @@ class $Shared07 {
       };
 }
 
+/// Replacement class for
+///
+/// - osconfig:v1 : OSPolicyResourcePackageResourceAPT
+/// - osconfig:v1 : OSPolicyResourcePackageResourceGooGet
+/// - osconfig:v1 : OSPolicyResourcePackageResourceYUM
+/// - osconfig:v1 : OSPolicyResourcePackageResourceZypper
 class $Shared08 {
   /// Package name.
   ///
@@ -13636,6 +15848,10 @@ class $Shared08 {
       };
 }
 
+/// Replacement class for
+///
+/// - chat:v1 : GoogleAppsCardV1SuggestionItem
+/// - chat:v1 : TextParagraph
 class $Shared09 {
   core.String? text;
 
@@ -13653,6 +15869,10 @@ class $Shared09 {
       };
 }
 
+/// Replacement class for
+///
+/// - content:v2.1 : Price
+/// - content:v2.1 : PriceAmount
 class $Shared10 {
   /// The currency of the price.
   core.String? currency;
@@ -13680,6 +15900,17 @@ class $Shared10 {
       };
 }
 
+/// Replacement class for
+///
+/// - dialogflow:v2 : GoogleCloudDialogflowCxV3WebhookRequestSentimentAnalysisResult
+/// - dialogflow:v2 : GoogleCloudDialogflowCxV3beta1WebhookRequestSentimentAnalysisResult
+/// - dialogflow:v2 : GoogleCloudDialogflowV2Sentiment
+/// - dialogflow:v2 : GoogleCloudDialogflowV2beta1Sentiment
+/// - dialogflow:v3 : GoogleCloudDialogflowCxV3SentimentAnalysisResult
+/// - dialogflow:v3 : GoogleCloudDialogflowCxV3WebhookRequestSentimentAnalysisResult
+/// - dialogflow:v3 : GoogleCloudDialogflowCxV3beta1WebhookRequestSentimentAnalysisResult
+/// - dialogflow:v3 : GoogleCloudDialogflowV2Sentiment
+/// - dialogflow:v3 : GoogleCloudDialogflowV2beta1Sentiment
 class $Shared11 {
   /// A non-negative number in the \[0, +inf) range, which represents the
   /// absolute magnitude of sentiment, regardless of score (positive or
@@ -13711,6 +15942,10 @@ class $Shared11 {
       };
 }
 
+/// Replacement class for
+///
+/// - notebooks:v1 : RuntimeShieldedInstanceConfig
+/// - notebooks:v1 : ShieldedInstanceConfig
 class $ShieldedInstanceConfig {
   /// Defines whether the instance has integrity monitoring enabled.
   ///
@@ -13760,6 +15995,10 @@ class $ShieldedInstanceConfig {
       };
 }
 
+/// Replacement class for
+///
+/// - binaryauthorization:v1 : Signature
+/// - ondemandscanning:v1 : Signature
 class $Signature {
   /// The identifier for the public key that verifies this signature.
   ///
@@ -13811,6 +16050,10 @@ class $Signature {
       };
 }
 
+/// Replacement class for
+///
+/// - dfareporting:v3.4 : SiteContact
+/// - dfareporting:v3.5 : SiteContact
 class $SiteContact {
   /// Address of this site contact.
   core.String? address;
@@ -13889,6 +16132,10 @@ class $SiteContact {
       };
 }
 
+/// Replacement class for
+///
+/// - dfareporting:v3.4 : SiteTranscodeSetting
+/// - dfareporting:v3.5 : SiteTranscodeSetting
 class $SiteTranscodeSetting {
   /// Allowlist of video formats to be served to this site template.
   ///
@@ -13922,6 +16169,10 @@ class $SiteTranscodeSetting {
       };
 }
 
+/// Replacement class for
+///
+/// - dfareporting:v3.4 : Size
+/// - dfareporting:v3.5 : Size
 class $Size {
   /// Height of this size.
   ///
@@ -13975,6 +16226,10 @@ class $Size {
       };
 }
 
+/// Replacement class for
+///
+/// - dfareporting:v3.4 : SortedDimension
+/// - dfareporting:v3.5 : SortedDimension
 class $SortedDimension {
   /// The kind of resource this is, in this case dfareporting#sortedDimension.
   core.String? kind;
@@ -14010,6 +16265,12 @@ class $SortedDimension {
       };
 }
 
+/// Replacement class for
+///
+/// - serviceconsumermanagement:v1 : SourceContext
+/// - servicemanagement:v1 : SourceContext
+/// - servicenetworking:v1 : SourceContext
+/// - serviceusage:v1 : SourceContext
 class $SourceContext {
   /// The path-qualified name of the .proto file that contained the associated
   /// protobuf element.
@@ -14033,6 +16294,12 @@ class $SourceContext {
       };
 }
 
+/// Replacement class for
+///
+/// - serviceconsumermanagement:v1 : SourceInfo
+/// - servicemanagement:v1 : SourceInfo
+/// - servicenetworking:v1 : SourceInfo
+/// - serviceusage:v1 : SourceInfo
 class $SourceInfo {
   /// All files used during config generation.
   ///
@@ -14058,6 +16325,10 @@ class $SourceInfo {
       };
 }
 
+/// Replacement class for
+///
+/// - servicecontrol:v1 : SpanContext
+/// - servicecontrol:v2 : SpanContext
 class $SpanContext {
   /// The resource name of the span.
   ///
@@ -14085,6 +16356,10 @@ class $SpanContext {
       };
 }
 
+/// Replacement class for
+///
+/// - drive:v2 : StartPageToken
+/// - drive:v3 : StartPageToken
 class $StartPageToken {
   /// Identifies what kind of resource this is.
   ///
@@ -14113,6 +16388,96 @@ class $StartPageToken {
       };
 }
 
+/// Replacement class for
+///
+/// - accesscontextmanager:v1 : Status
+/// - androiddeviceprovisioning:v1 : Status
+/// - androidmanagement:v1 : Status
+/// - apigateway:v1 : ApigatewayStatus
+/// - apigee:v1 : GoogleRpcStatus
+/// - apikeys:v2 : Status
+/// - appengine:v1 : Status
+/// - artifactregistry:v1 : Status
+/// - assuredworkloads:v1 : GoogleRpcStatus
+/// - bigquerydatatransfer:v1 : Status
+/// - bigqueryreservation:v1 : Status
+/// - bigtableadmin:v2 : Status
+/// - chromemanagement:v1 : GoogleRpcStatus
+/// - cloudasset:v1 : Status
+/// - cloudbuild:v1 : Status
+/// - cloudchannel:v1 : GoogleRpcStatus
+/// - cloudfunctions:v1 : Status
+/// - cloudidentity:v1 : Status
+/// - cloudiot:v1 : Status
+/// - cloudresourcemanager:v1 : Status
+/// - cloudresourcemanager:v2 : Status
+/// - cloudresourcemanager:v3 : Status
+/// - cloudscheduler:v1 : Status
+/// - cloudsearch:v1 : Status
+/// - cloudshell:v1 : Status
+/// - cloudtasks:v2 : Status
+/// - cloudtrace:v2 : Status
+/// - composer:v1 : Status
+/// - contactcenterinsights:v1 : GoogleRpcStatus
+/// - container:v1 : Status
+/// - datafusion:v1 : Status
+/// - datamigration:v1 : Status
+/// - dataproc:v1 : Status
+/// - datastore:v1 : Status
+/// - dialogflow:v2 : GoogleRpcStatus
+/// - dialogflow:v3 : GoogleRpcStatus
+/// - displayvideo:v1 : Status
+/// - dlp:v2 : GoogleRpcStatus
+/// - documentai:v1 : GoogleRpcStatus
+/// - eventarc:v1 : GoogleRpcStatus
+/// - file:v1 : Status
+/// - firebasehosting:v1 : Status
+/// - firebaseml:v1 : Status
+/// - firestore:v1 : Status
+/// - gameservices:v1 : Status
+/// - gkehub:v1 : GoogleRpcStatus
+/// - healthcare:v1 : Status
+/// - iam:v1 : Status
+/// - jobs:v4 : Status
+/// - language:v1 : Status
+/// - logging:v2 : Status
+/// - managedidentities:v1 : Status
+/// - memcache:v1 : Status
+/// - ml:v1 : GoogleRpc__Status
+/// - monitoring:v3 : Status
+/// - networkconnectivity:v1 : GoogleRpcStatus
+/// - networkmanagement:v1 : Status
+/// - networksecurity:v1 : Status
+/// - networkservices:v1 : Status
+/// - notebooks:v1 : Status
+/// - ondemandscanning:v1 : Status
+/// - osconfig:v1 : Status
+/// - people:v1 : Status
+/// - policysimulator:v1 : GoogleRpcStatus
+/// - privateca:v1 : Status
+/// - pubsublite:v1 : Status
+/// - redis:v1 : Status
+/// - retail:v2 : GoogleRpcStatus
+/// - runtimeconfig:v1 : Status
+/// - securitycenter:v1 : Status
+/// - serviceconsumermanagement:v1 : Status
+/// - servicecontrol:v1 : Status
+/// - servicecontrol:v2 : Status
+/// - servicemanagement:v1 : Status
+/// - servicenetworking:v1 : Status
+/// - serviceusage:v1 : Status
+/// - sourcerepo:v1 : Status
+/// - spanner:v1 : Status
+/// - speech:v1 : Status
+/// - storagetransfer:v1 : Status
+/// - streetviewpublish:v1 : Status
+/// - tpu:v1 : Status
+/// - translate:v3 : Status
+/// - vault:v1 : Status
+/// - videointelligence:v1 : GoogleRpc_Status
+/// - vision:v1 : Status
+/// - webrisk:v1 : GoogleRpcStatus
+/// - workflows:v1 : Status
 class $Status {
   /// The status code, which should be an enum value of google.rpc.Code.
   core.int? code;
@@ -14157,6 +16522,10 @@ class $Status {
       };
 }
 
+/// Replacement class for
+///
+/// - dfareporting:v3.4 : Subaccount
+/// - dfareporting:v3.5 : Subaccount
 class $Subaccount {
   /// ID of the account that contains this subaccount.
   ///
@@ -14215,6 +16584,12 @@ class $Subaccount {
       };
 }
 
+/// Replacement class for
+///
+/// - serviceconsumermanagement:v1 : SystemParameter
+/// - servicemanagement:v1 : SystemParameter
+/// - servicenetworking:v1 : SystemParameter
+/// - serviceusage:v1 : SystemParameter
 class $SystemParameter {
   /// Define the HTTP header name to use for the parameter.
   ///
@@ -14255,6 +16630,10 @@ class $SystemParameter {
       };
 }
 
+/// Replacement class for
+///
+/// - dfareporting:v3.4 : TagData
+/// - dfareporting:v3.5 : TagData
 class $TagData {
   /// Ad associated with this placement tag.
   ///
@@ -14329,6 +16708,10 @@ class $TagData {
       };
 }
 
+/// Replacement class for
+///
+/// - dfareporting:v3.4 : TagSetting
+/// - dfareporting:v3.5 : TagSetting
 class $TagSetting {
   /// Additional key-values to be included in tags.
   ///
@@ -14390,6 +16773,10 @@ class $TagSetting {
       };
 }
 
+/// Replacement class for
+///
+/// - dfareporting:v3.4 : TagSettings
+/// - dfareporting:v3.5 : TagSettings
 class $TagSettings {
   /// Whether dynamic floodlight tags are enabled.
   core.bool? dynamicTagEnabled;
@@ -14418,6 +16805,10 @@ class $TagSettings {
       };
 }
 
+/// Replacement class for
+///
+/// - dfareporting:v3.4 : TargetWindow
+/// - dfareporting:v3.5 : TargetWindow
 class $TargetWindow {
   /// User-entered value.
   core.String? customHtml;
@@ -14452,6 +16843,10 @@ class $TargetWindow {
       };
 }
 
+/// Replacement class for
+///
+/// - tagmanager:v1 : TeardownTag
+/// - tagmanager:v2 : TeardownTag
 class $TeardownTag {
   /// If true, fire the teardown tag if and only if the main tag fires
   /// successfully.
@@ -14484,6 +16879,11 @@ class $TeardownTag {
       };
 }
 
+/// Replacement class for
+///
+/// - serviceconsumermanagement:v1 : DeleteTenantProjectRequest
+/// - serviceconsumermanagement:v1 : RemoveTenantProjectRequest
+/// - serviceconsumermanagement:v1 : UndeleteTenantProjectRequest
 class $TenantProjectRequest {
   /// Tag of the resource within the tenancy unit.
   ///
@@ -14504,6 +16904,12 @@ class $TenantProjectRequest {
       };
 }
 
+/// Replacement class for
+///
+/// - dialogflow:v2 : GoogleCloudDialogflowCxV3TestConfig
+/// - dialogflow:v2 : GoogleCloudDialogflowCxV3beta1TestConfig
+/// - dialogflow:v3 : GoogleCloudDialogflowCxV3TestConfig
+/// - dialogflow:v3 : GoogleCloudDialogflowCxV3beta1TestConfig
 class $TestConfig {
   /// Flow name.
   ///
@@ -14536,6 +16942,45 @@ class $TestConfig {
       };
 }
 
+/// Replacement class for
+///
+/// - apigateway:v1 : ApigatewayTestIamPermissionsRequest
+/// - apigee:v1 : GoogleIamV1TestIamPermissionsRequest
+/// - bigquery:v2 : TestIamPermissionsRequest
+/// - bigtableadmin:v2 : TestIamPermissionsRequest
+/// - binaryauthorization:v1 : TestIamPermissionsRequest
+/// - cloudbilling:v1 : TestIamPermissionsRequest
+/// - cloudfunctions:v1 : TestIamPermissionsRequest
+/// - cloudiot:v1 : TestIamPermissionsRequest
+/// - cloudkms:v1 : TestIamPermissionsRequest
+/// - cloudresourcemanager:v1 : TestIamPermissionsRequest
+/// - cloudresourcemanager:v2 : TestIamPermissionsRequest
+/// - cloudresourcemanager:v3 : TestIamPermissionsRequest
+/// - cloudtasks:v2 : TestIamPermissionsRequest
+/// - datacatalog:v1 : TestIamPermissionsRequest
+/// - datafusion:v1 : TestIamPermissionsRequest
+/// - datamigration:v1 : TestIamPermissionsRequest
+/// - eventarc:v1 : TestIamPermissionsRequest
+/// - gameservices:v1 : TestIamPermissionsRequest
+/// - gkehub:v1 : TestIamPermissionsRequest
+/// - healthcare:v1 : TestIamPermissionsRequest
+/// - iam:v1 : TestIamPermissionsRequest
+/// - iap:v1 : TestIamPermissionsRequest
+/// - managedidentities:v1 : TestIamPermissionsRequest
+/// - ml:v1 : GoogleIamV1__TestIamPermissionsRequest
+/// - networkconnectivity:v1 : TestIamPermissionsRequest
+/// - networkmanagement:v1 : TestIamPermissionsRequest
+/// - networksecurity:v1 : GoogleIamV1TestIamPermissionsRequest
+/// - networkservices:v1 : TestIamPermissionsRequest
+/// - notebooks:v1 : TestIamPermissionsRequest
+/// - privateca:v1 : TestIamPermissionsRequest
+/// - pubsub:v1 : TestIamPermissionsRequest
+/// - run:v1 : TestIamPermissionsRequest
+/// - secretmanager:v1 : TestIamPermissionsRequest
+/// - securitycenter:v1 : TestIamPermissionsRequest
+/// - servicedirectory:v1 : TestIamPermissionsRequest
+/// - servicemanagement:v1 : TestIamPermissionsRequest
+/// - sourcerepo:v1 : TestIamPermissionsRequest
 class $TestIamPermissionsRequest {
   /// The set of permissions to check for the `resource`.
   ///
@@ -14562,6 +17007,10 @@ class $TestIamPermissionsRequest {
       };
 }
 
+/// Replacement class for
+///
+/// - compute:v1 : TestPermissionsRequest
+/// - deploymentmanager:v2 : TestPermissionsRequest
 class $TestPermissionsRequest {
   /// The set of permissions to check for the 'resource'.
   ///
@@ -14586,6 +17035,12 @@ class $TestPermissionsRequest {
       };
 }
 
+/// Replacement class for
+///
+/// - dialogflow:v2 : GoogleCloudDialogflowCxV3TestRunDifference
+/// - dialogflow:v2 : GoogleCloudDialogflowCxV3beta1TestRunDifference
+/// - dialogflow:v3 : GoogleCloudDialogflowCxV3TestRunDifference
+/// - dialogflow:v3 : GoogleCloudDialogflowCxV3beta1TestRunDifference
 class $TestRunDifference {
   /// A description of the diff, showing the actual output vs expected output.
   core.String? description;
@@ -14618,6 +17073,12 @@ class $TestRunDifference {
       };
 }
 
+/// Replacement class for
+///
+/// - dialogflow:v2 : GoogleCloudDialogflowCxV3TextInput
+/// - dialogflow:v2 : GoogleCloudDialogflowCxV3beta1TextInput
+/// - dialogflow:v3 : GoogleCloudDialogflowCxV3TextInput
+/// - dialogflow:v3 : GoogleCloudDialogflowCxV3beta1TextInput
 class $TextInput {
   /// The UTF-8 encoded natural language text to be processed.
   ///
@@ -14640,6 +17101,10 @@ class $TextInput {
       };
 }
 
+/// Replacement class for
+///
+/// - dfareporting:v3.4 : ThirdPartyAuthenticationToken
+/// - dfareporting:v3.5 : ThirdPartyAuthenticationToken
 class $ThirdPartyAuthenticationToken {
   /// Name of the third-party authentication token.
   core.String? name;
@@ -14667,6 +17132,10 @@ class $ThirdPartyAuthenticationToken {
       };
 }
 
+/// Replacement class for
+///
+/// - servicecontrol:v1 : ThirdPartyPrincipal
+/// - servicecontrol:v2 : ThirdPartyPrincipal
 class $ThirdPartyPrincipal {
   /// Metadata about third party identity.
   ///
@@ -14690,6 +17159,10 @@ class $ThirdPartyPrincipal {
       };
 }
 
+/// Replacement class for
+///
+/// - dfareporting:v3.4 : ThirdPartyTrackingUrl
+/// - dfareporting:v3.5 : ThirdPartyTrackingUrl
 class $ThirdPartyTrackingUrl {
   /// Third-party URL type for in-stream video and in-stream audio creatives.
   /// Possible string values are:
@@ -14736,6 +17209,21 @@ class $ThirdPartyTrackingUrl {
       };
 }
 
+/// Replacement class for
+///
+/// - classroom:v1 : TimeOfDay
+/// - dlp:v2 : GoogleTypeTimeOfDay
+/// - file:v1 : TimeOfDay
+/// - jobs:v3 : TimeOfDay
+/// - jobs:v4 : TimeOfDay
+/// - managedidentities:v1 : TimeOfDay
+/// - memcache:v1 : TimeOfDay
+/// - mybusinessbusinessinformation:v1 : TimeOfDay
+/// - mybusinesslodging:v1 : TimeOfDay
+/// - osconfig:v1 : TimeOfDay
+/// - redis:v1 : TimeOfDay
+/// - sheets:v4 : TimeOfDay
+/// - storagetransfer:v1 : TimeOfDay
 class $TimeOfDay {
   /// Hours of day in 24 hour format.
   ///
@@ -14786,6 +17274,13 @@ class $TimeOfDay {
       };
 }
 
+/// Replacement class for
+///
+/// - adsense:v2 : TimeZone
+/// - content:v2.1 : TimeZone
+/// - documentai:v1 : GoogleTypeTimeZone
+/// - localservices:v1 : GoogleTypeTimeZone
+/// - osconfig:v1 : TimeZone
 class $TimeZone {
   /// IANA Time Zone Database time zone, e.g. "America/New_York".
   core.String? id;
@@ -14814,6 +17309,10 @@ class $TimeZone {
       };
 }
 
+/// Replacement class for
+///
+/// - androidenterprise:v1 : TokenPagination
+/// - androidpublisher:v3 : TokenPagination
 class $TokenPagination {
   /// Tokens to pass to the standard list field 'page_token'.
   ///
@@ -14842,6 +17341,10 @@ class $TokenPagination {
       };
 }
 
+/// Replacement class for
+///
+/// - apigee:v1 : GoogleCloudApigeeV1RuntimeTraceSamplingConfig
+/// - apigee:v1 : GoogleCloudApigeeV1TraceSamplingConfig
 class $TraceSamplingConfig {
   /// Sampler of distributed tracing.
   ///
@@ -14882,6 +17385,10 @@ class $TraceSamplingConfig {
       };
 }
 
+/// Replacement class for
+///
+/// - dfareporting:v3.4 : TranscodeSetting
+/// - dfareporting:v3.5 : TranscodeSetting
 class $TranscodeSetting {
   /// Allowlist of video formats to be served to this placement.
   ///
@@ -14915,6 +17422,10 @@ class $TranscodeSetting {
       };
 }
 
+/// Replacement class for
+///
+/// - cloudchannel:v1 : GoogleCloudChannelV1TrialSettings
+/// - cloudchannel:v1 : GoogleCloudChannelV1alpha1TrialSettings
 class $TrialSettings {
   /// Date when the trial ends.
   ///
@@ -14948,6 +17459,10 @@ class $TrialSettings {
       };
 }
 
+/// Replacement class for
+///
+/// - cloudtrace:v2 : TruncatableString
+/// - servicecontrol:v1 : TruncatableString
 class $TruncatableString {
   /// The number of bytes removed from the original string.
   ///
@@ -14984,6 +17499,10 @@ class $TruncatableString {
       };
 }
 
+/// Replacement class for
+///
+/// - contactcenterinsights:v1 : GoogleCloudContactcenterinsightsV1UndeployIssueModelRequest
+/// - contactcenterinsights:v1 : GoogleCloudContactcenterinsightsV1alpha1UndeployIssueModelRequest
 class $UndeployIssueModelRequest {
   /// The issue model to undeploy.
   ///
@@ -15004,6 +17523,10 @@ class $UndeployIssueModelRequest {
       };
 }
 
+/// Replacement class for
+///
+/// - dfareporting:v3.4 : UniversalAdId
+/// - dfareporting:v3.5 : UniversalAdId
 class $UniversalAdId {
   /// Registry used for the Ad ID value.
   /// Possible string values are:
@@ -15039,6 +17562,12 @@ class $UniversalAdId {
       };
 }
 
+/// Replacement class for
+///
+/// - serviceconsumermanagement:v1 : UsageRule
+/// - servicemanagement:v1 : UsageRule
+/// - servicenetworking:v1 : UsageRule
+/// - serviceusage:v1 : UsageRule
 class $UsageRule {
   /// If true, the selected method allows unregistered calls, e.g. calls that
   /// don't identify any user or application.
@@ -15085,6 +17614,10 @@ class $UsageRule {
       };
 }
 
+/// Replacement class for
+///
+/// - dfareporting:v3.4 : UserDefinedVariableConfiguration
+/// - dfareporting:v3.5 : UserDefinedVariableConfiguration
 class $UserDefinedVariableConfiguration {
   /// Data type for the variable.
   ///
@@ -15232,6 +17765,11 @@ class $UserDefinedVariableConfiguration {
       };
 }
 
+/// Replacement class for
+///
+/// - retail:v2 : GoogleCloudRetailV2UserEventImportSummary
+/// - retail:v2 : GoogleCloudRetailV2alphaUserEventImportSummary
+/// - retail:v2 : GoogleCloudRetailV2betaUserEventImportSummary
 class $UserEventImportSummary {
   /// Count of user events imported with complete existing catalog information.
   core.String? joinedEventsCount;
@@ -15262,6 +17800,10 @@ class $UserEventImportSummary {
       };
 }
 
+/// Replacement class for
+///
+/// - dfareporting:v3.4 : UserProfile
+/// - dfareporting:v3.5 : UserProfile
 class $UserProfile {
   /// The account ID to which this profile belongs.
   core.String? accountId;
@@ -15336,6 +17878,10 @@ class $UserProfile {
       };
 }
 
+/// Replacement class for
+///
+/// - dfareporting:v3.4 : UserRolePermission
+/// - dfareporting:v3.5 : UserRolePermission
 class $UserRolePermission {
   /// Levels of availability for a user role permission.
   /// Possible string values are:
@@ -15391,6 +17937,10 @@ class $UserRolePermission {
       };
 }
 
+/// Replacement class for
+///
+/// - dfareporting:v3.4 : UserRolePermissionGroup
+/// - dfareporting:v3.5 : UserRolePermissionGroup
 class $UserRolePermissionGroup {
   /// ID of this user role permission.
   core.String? id;
@@ -15423,6 +17973,10 @@ class $UserRolePermissionGroup {
       };
 }
 
+/// Replacement class for
+///
+/// - policysimulator:v1 : GoogleCloudPolicysimulatorV1AccessTuple
+/// - policytroubleshooter:v1 : GoogleCloudPolicytroubleshooterV1AccessTuple
 class $V1AccessTuple {
   /// The full resource name that identifies the resource.
   ///
@@ -15481,6 +18035,10 @@ class $V1AccessTuple {
       };
 }
 
+/// Replacement class for
+///
+/// - cloudchannel:v1 : GoogleCloudChannelV1Value
+/// - cloudchannel:v1 : GoogleCloudChannelV1alpha1Value
 class $Value {
   /// Represents a boolean value.
   core.bool? boolValue;
@@ -15536,6 +18094,10 @@ class $Value {
       };
 }
 
+/// Replacement class for
+///
+/// - cloudasset:v1 : VersionedPackage
+/// - osconfig:v1 : InventoryVersionedPackage
 class $VersionedPackage {
   /// The system architecture this package is intended for.
   core.String? architecture;
@@ -15572,6 +18134,11 @@ class $VersionedPackage {
       };
 }
 
+/// Replacement class for
+///
+/// - documentai:v1 : GoogleCloudDocumentaiV1Vertex
+/// - documentai:v1 : GoogleCloudDocumentaiV1beta1Vertex
+/// - documentai:v1 : GoogleCloudDocumentaiV1beta2Vertex
 class $Vertex {
   /// X coordinate.
   core.int? x;
@@ -15596,6 +18163,13 @@ class $Vertex {
       };
 }
 
+/// Replacement class for
+///
+/// - vision:v1 : GoogleCloudVisionV1p1beta1Vertex
+/// - vision:v1 : GoogleCloudVisionV1p2beta1Vertex
+/// - vision:v1 : GoogleCloudVisionV1p3beta1Vertex
+/// - vision:v1 : GoogleCloudVisionV1p4beta1Vertex
+/// - vision:v1 : Vertex
 class $Vertex01 {
   /// X coordinate.
   core.int? x;
@@ -15620,6 +18194,10 @@ class $Vertex01 {
       };
 }
 
+/// Replacement class for
+///
+/// - dfareporting:v3.4 : VideoOffset
+/// - dfareporting:v3.5 : VideoOffset
 class $VideoOffset {
   /// Duration, as a percentage of video duration.
   ///
@@ -15654,6 +18232,13 @@ class $VideoOffset {
       };
 }
 
+/// Replacement class for
+///
+/// - videointelligence:v1 : GoogleCloudVideointelligenceV1_VideoSegment
+/// - videointelligence:v1 : GoogleCloudVideointelligenceV1beta2_VideoSegment
+/// - videointelligence:v1 : GoogleCloudVideointelligenceV1p1beta1_VideoSegment
+/// - videointelligence:v1 : GoogleCloudVideointelligenceV1p2beta1_VideoSegment
+/// - videointelligence:v1 : GoogleCloudVideointelligenceV1p3beta1_VideoSegment
 class $VideoSegment {
   /// Time-offset, relative to the beginning of the video, corresponding to the
   /// end of the segment (inclusive).
@@ -15684,6 +18269,10 @@ class $VideoSegment {
       };
 }
 
+/// Replacement class for
+///
+/// - serviceconsumermanagement:v1 : V1AddVisibilityLabelsResponse
+/// - serviceconsumermanagement:v1 : V1RemoveVisibilityLabelsResponse
 class $VisibilityLabelsResponse {
   /// The updated set of visibility labels for this consumer on this service.
   core.List<core.String>? labels;
@@ -15706,6 +18295,10 @@ class $VisibilityLabelsResponse {
       };
 }
 
+/// Replacement class for
+///
+/// - accesscontextmanager:v1 : VpcAccessibleServices
+/// - cloudasset:v1 : GoogleIdentityAccesscontextmanagerV1VpcAccessibleServices
 class $VpcAccessibleServices {
   /// The list of APIs usable within the Service Perimeter.
   ///
@@ -15742,6 +18335,10 @@ class $VpcAccessibleServices {
       };
 }
 
+/// Replacement class for
+///
+/// - servicenetworking:v1 : DisableVpcServiceControlsRequest
+/// - servicenetworking:v1 : EnableVpcServiceControlsRequest
 class $VpcServiceControlsRequest {
   /// The network that the consumer is using to connect with services.
   ///
@@ -15767,6 +18364,10 @@ class $VpcServiceControlsRequest {
       };
 }
 
+/// Replacement class for
+///
+/// - androidenterprise:v1 : WebAppIcon
+/// - androidmanagement:v1 : WebAppIcon
 class $WebAppIcon {
   /// The actual bytes of the image in a base64url encoded string (c.f. RFC4648,
   /// section 5 "Base 64 Encoding with URL and Filename Safe Alphabet").
@@ -15791,6 +18392,13 @@ class $WebAppIcon {
       };
 }
 
+/// Replacement class for
+///
+/// - vision:v1 : GoogleCloudVisionV1p1beta1WebDetectionWebEntity
+/// - vision:v1 : GoogleCloudVisionV1p2beta1WebDetectionWebEntity
+/// - vision:v1 : GoogleCloudVisionV1p3beta1WebDetectionWebEntity
+/// - vision:v1 : GoogleCloudVisionV1p4beta1WebDetectionWebEntity
+/// - vision:v1 : WebEntity
 class $WebEntity {
   /// Canonical description of the entity, in English.
   core.String? description;
@@ -15829,6 +18437,13 @@ class $WebEntity {
       };
 }
 
+/// Replacement class for
+///
+/// - vision:v1 : GoogleCloudVisionV1p1beta1WebDetectionWebImage
+/// - vision:v1 : GoogleCloudVisionV1p2beta1WebDetectionWebImage
+/// - vision:v1 : GoogleCloudVisionV1p3beta1WebDetectionWebImage
+/// - vision:v1 : GoogleCloudVisionV1p4beta1WebDetectionWebImage
+/// - vision:v1 : WebImage
 class $WebImage {
   /// (Deprecated) Overall relevancy score for the image.
   core.double? score;
@@ -15855,6 +18470,13 @@ class $WebImage {
       };
 }
 
+/// Replacement class for
+///
+/// - vision:v1 : GoogleCloudVisionV1p1beta1WebDetectionWebLabel
+/// - vision:v1 : GoogleCloudVisionV1p2beta1WebDetectionWebLabel
+/// - vision:v1 : GoogleCloudVisionV1p3beta1WebDetectionWebLabel
+/// - vision:v1 : GoogleCloudVisionV1p4beta1WebDetectionWebLabel
+/// - vision:v1 : WebLabel
 class $WebLabel {
   /// Label for extra metadata.
   core.String? label;
@@ -15885,6 +18507,12 @@ class $WebLabel {
       };
 }
 
+/// Replacement class for
+///
+/// - dialogflow:v2 : GoogleCloudDialogflowCxV3WebhookRequestFulfillmentInfo
+/// - dialogflow:v2 : GoogleCloudDialogflowCxV3beta1WebhookRequestFulfillmentInfo
+/// - dialogflow:v3 : GoogleCloudDialogflowCxV3WebhookRequestFulfillmentInfo
+/// - dialogflow:v3 : GoogleCloudDialogflowCxV3beta1WebhookRequestFulfillmentInfo
 class $WebhookRequestFulfillmentInfo {
   /// Always present.
   ///
@@ -15905,6 +18533,12 @@ class $WebhookRequestFulfillmentInfo {
       };
 }
 
+/// Replacement class for
+///
+/// - dialogflow:v2 : GoogleCloudDialogflowCxV3WebhookRequestIntentInfoIntentParameterValue
+/// - dialogflow:v2 : GoogleCloudDialogflowCxV3beta1WebhookRequestIntentInfoIntentParameterValue
+/// - dialogflow:v3 : GoogleCloudDialogflowCxV3WebhookRequestIntentInfoIntentParameterValue
+/// - dialogflow:v3 : GoogleCloudDialogflowCxV3beta1WebhookRequestIntentInfoIntentParameterValue
 class $WebhookRequestIntentInfoIntentParameterValue {
   /// Always present.
   ///
@@ -15940,6 +18574,10 @@ class $WebhookRequestIntentInfoIntentParameterValue {
       };
 }
 
+/// Replacement class for
+///
+/// - cloudasset:v1 : WindowsQuickFixEngineeringPackage
+/// - osconfig:v1 : InventoryWindowsQuickFixEngineeringPackage
 class $WindowsQuickFixEngineeringPackage {
   /// A short textual description of the QFE update.
   core.String? caption;
@@ -15986,6 +18624,10 @@ class $WindowsQuickFixEngineeringPackage {
       };
 }
 
+/// Replacement class for
+///
+/// - cloudasset:v1 : WindowsUpdateCategory
+/// - osconfig:v1 : InventoryWindowsUpdatePackageWindowsUpdateCategory
 class $WindowsUpdateCategory {
   /// The identifier of the windows update category.
   core.String? id;
@@ -16010,6 +18652,13 @@ class $WindowsUpdateCategory {
       };
 }
 
+/// Replacement class for
+///
+/// - videointelligence:v1 : GoogleCloudVideointelligenceV1_WordInfo
+/// - videointelligence:v1 : GoogleCloudVideointelligenceV1beta2_WordInfo
+/// - videointelligence:v1 : GoogleCloudVideointelligenceV1p1beta1_WordInfo
+/// - videointelligence:v1 : GoogleCloudVideointelligenceV1p2beta1_WordInfo
+/// - videointelligence:v1 : GoogleCloudVideointelligenceV1p3beta1_WordInfo
 class $WordInfo {
   /// The confidence estimate between 0.0 and 1.0.
   ///
@@ -16084,6 +18733,10 @@ class $WordInfo {
       };
 }
 
+/// Replacement class for
+///
+/// - assuredworkloads:v1 : GoogleCloudAssuredworkloadsV1WorkloadKMSSettings
+/// - assuredworkloads:v1 : GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings
 class $WorkloadKMSSettings {
   /// Input only.
   ///
@@ -16123,6 +18776,10 @@ class $WorkloadKMSSettings {
       };
 }
 
+/// Replacement class for
+///
+/// - cloudasset:v1 : ZypperPatch
+/// - osconfig:v1 : InventoryZypperPatch
 class $ZypperPatch {
   /// The category of the patch.
   core.String? category;
