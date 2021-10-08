@@ -114,7 +114,7 @@ class AccountsLocationsResource {
     core.bool? validateOnly,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (requestId != null) 'requestId': [requestId],
       if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
@@ -533,7 +533,7 @@ class GoogleLocationsResource {
     SearchGoogleLocationsRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -587,7 +587,7 @@ class LocationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -629,7 +629,7 @@ class LocationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -837,7 +837,7 @@ class LocationsResource {
     core.bool? validateOnly,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
@@ -892,7 +892,7 @@ class LocationsResource {
     core.String? attributeMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (attributeMask != null) 'attributeMask': [attributeMask],
       if ($fields != null) 'fields': [$fields],
@@ -1077,10 +1077,8 @@ class Attribute {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
-        if (repeatedEnumValue != null)
-          'repeatedEnumValue': repeatedEnumValue!.toJson(),
-        if (uriValues != null)
-          'uriValues': uriValues!.map((value) => value.toJson()).toList(),
+        if (repeatedEnumValue != null) 'repeatedEnumValue': repeatedEnumValue!,
+        if (uriValues != null) 'uriValues': uriValues!,
         if (valueType != null) 'valueType': valueType!,
         if (values != null) 'values': values!,
       };
@@ -1178,9 +1176,7 @@ class AttributeMetadata {
         if (groupDisplayName != null) 'groupDisplayName': groupDisplayName!,
         if (parent != null) 'parent': parent!,
         if (repeatable != null) 'repeatable': repeatable!,
-        if (valueMetadata != null)
-          'valueMetadata':
-              valueMetadata!.map((value) => value.toJson()).toList(),
+        if (valueMetadata != null) 'valueMetadata': valueMetadata!,
         if (valueType != null) 'valueType': valueType!,
       };
 }
@@ -1248,8 +1244,7 @@ class Attributes {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (attributes != null)
-          'attributes': attributes!.map((value) => value.toJson()).toList(),
+        if (attributes != null) 'attributes': attributes!,
         if (name != null) 'name': name!,
       };
 }
@@ -1276,8 +1271,7 @@ class BatchGetCategoriesResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (categories != null)
-          'categories': categories!.map((value) => value.toJson()).toList(),
+        if (categories != null) 'categories': categories!,
       };
 }
 
@@ -1308,8 +1302,7 @@ class BusinessHours {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (periods != null)
-          'periods': periods!.map((value) => value.toJson()).toList(),
+        if (periods != null) 'periods': periods!,
       };
 }
 
@@ -1356,10 +1349,8 @@ class Categories {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (additionalCategories != null)
-          'additionalCategories':
-              additionalCategories!.map((value) => value.toJson()).toList(),
-        if (primaryCategory != null)
-          'primaryCategory': primaryCategory!.toJson(),
+          'additionalCategories': additionalCategories!,
+        if (primaryCategory != null) 'primaryCategory': primaryCategory!,
       };
 }
 
@@ -1424,12 +1415,9 @@ class Category {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
-        if (moreHoursTypes != null)
-          'moreHoursTypes':
-              moreHoursTypes!.map((value) => value.toJson()).toList(),
+        if (moreHoursTypes != null) 'moreHoursTypes': moreHoursTypes!,
         if (name != null) 'name': name!,
-        if (serviceTypes != null)
-          'serviceTypes': serviceTypes!.map((value) => value.toJson()).toList(),
+        if (serviceTypes != null) 'serviceTypes': serviceTypes!,
       };
 }
 
@@ -1477,12 +1465,10 @@ class Chain {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (chainNames != null)
-          'chainNames': chainNames!.map((value) => value.toJson()).toList(),
+        if (chainNames != null) 'chainNames': chainNames!,
         if (locationCount != null) 'locationCount': locationCount!,
         if (name != null) 'name': name!,
-        if (websites != null)
-          'websites': websites!.map((value) => value.toJson()).toList(),
+        if (websites != null) 'websites': websites!,
       };
 }
 
@@ -1634,7 +1620,7 @@ class FreeFormServiceItem {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (category != null) 'category': category!,
-        if (label != null) 'label': label!.toJson(),
+        if (label != null) 'label': label!,
       };
 }
 
@@ -1678,7 +1664,7 @@ class GoogleLocation {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (location != null) 'location': location!.toJson(),
+        if (location != null) 'location': location!,
         if (name != null) 'name': name!,
         if (requestAdminRightsUri != null)
           'requestAdminRightsUri': requestAdminRightsUri!,
@@ -1719,7 +1705,7 @@ class GoogleUpdatedLocation {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (diffMask != null) 'diffMask': diffMask!,
-        if (location != null) 'location': location!.toJson(),
+        if (location != null) 'location': location!,
         if (pendingMask != null) 'pendingMask': pendingMask!,
       };
 }
@@ -1838,9 +1824,7 @@ class ListAttributeMetadataResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (attributeMetadata != null)
-          'attributeMetadata':
-              attributeMetadata!.map((value) => value.toJson()).toList(),
+        if (attributeMetadata != null) 'attributeMetadata': attributeMetadata!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -1874,8 +1858,7 @@ class ListCategoriesResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (categories != null)
-          'categories': categories!.map((value) => value.toJson()).toList(),
+        if (categories != null) 'categories': categories!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -1919,8 +1902,7 @@ class ListLocationsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (locations != null)
-          'locations': locations!.map((value) => value.toJson()).toList(),
+        if (locations != null) 'locations': locations!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (totalSize != null) 'totalSize': totalSize!,
       };
@@ -2188,28 +2170,24 @@ class Location {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (adWordsLocationExtensions != null)
-          'adWordsLocationExtensions': adWordsLocationExtensions!.toJson(),
-        if (categories != null) 'categories': categories!.toJson(),
+          'adWordsLocationExtensions': adWordsLocationExtensions!,
+        if (categories != null) 'categories': categories!,
         if (labels != null) 'labels': labels!,
         if (languageCode != null) 'languageCode': languageCode!,
-        if (latlng != null) 'latlng': latlng!.toJson(),
-        if (metadata != null) 'metadata': metadata!.toJson(),
-        if (moreHours != null)
-          'moreHours': moreHours!.map((value) => value.toJson()).toList(),
+        if (latlng != null) 'latlng': latlng!,
+        if (metadata != null) 'metadata': metadata!,
+        if (moreHours != null) 'moreHours': moreHours!,
         if (name != null) 'name': name!,
-        if (openInfo != null) 'openInfo': openInfo!.toJson(),
-        if (phoneNumbers != null) 'phoneNumbers': phoneNumbers!.toJson(),
-        if (profile != null) 'profile': profile!.toJson(),
-        if (regularHours != null) 'regularHours': regularHours!.toJson(),
-        if (relationshipData != null)
-          'relationshipData': relationshipData!.toJson(),
-        if (serviceArea != null) 'serviceArea': serviceArea!.toJson(),
-        if (serviceItems != null)
-          'serviceItems': serviceItems!.map((value) => value.toJson()).toList(),
-        if (specialHours != null) 'specialHours': specialHours!.toJson(),
+        if (openInfo != null) 'openInfo': openInfo!,
+        if (phoneNumbers != null) 'phoneNumbers': phoneNumbers!,
+        if (profile != null) 'profile': profile!,
+        if (regularHours != null) 'regularHours': regularHours!,
+        if (relationshipData != null) 'relationshipData': relationshipData!,
+        if (serviceArea != null) 'serviceArea': serviceArea!,
+        if (serviceItems != null) 'serviceItems': serviceItems!,
+        if (specialHours != null) 'specialHours': specialHours!,
         if (storeCode != null) 'storeCode': storeCode!,
-        if (storefrontAddress != null)
-          'storefrontAddress': storefrontAddress!.toJson(),
+        if (storefrontAddress != null) 'storefrontAddress': storefrontAddress!,
         if (title != null) 'title': title!,
         if (websiteUri != null) 'websiteUri': websiteUri!,
       };
@@ -2443,8 +2421,7 @@ class MoreHours {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (hoursTypeId != null) 'hoursTypeId': hoursTypeId!,
-        if (periods != null)
-          'periods': periods!.map((value) => value.toJson()).toList(),
+        if (periods != null) 'periods': periods!,
       };
 }
 
@@ -2544,7 +2521,7 @@ class OpenInfo {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (canReopen != null) 'canReopen': canReopen!,
-        if (openingDate != null) 'openingDate': openingDate!.toJson(),
+        if (openingDate != null) 'openingDate': openingDate!,
         if (status != null) 'status': status!,
       };
 }
@@ -2654,8 +2631,7 @@ class Places {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (placeInfos != null)
-          'placeInfos': placeInfos!.map((value) => value.toJson()).toList(),
+        if (placeInfos != null) 'placeInfos': placeInfos!,
       };
 }
 
@@ -2912,11 +2888,9 @@ class RelationshipData {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (childrenLocations != null)
-          'childrenLocations':
-              childrenLocations!.map((value) => value.toJson()).toList(),
+        if (childrenLocations != null) 'childrenLocations': childrenLocations!,
         if (parentChain != null) 'parentChain': parentChain!,
-        if (parentLocation != null) 'parentLocation': parentLocation!.toJson(),
+        if (parentLocation != null) 'parentLocation': parentLocation!,
       };
 }
 
@@ -3027,8 +3001,7 @@ class SearchChainsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (chains != null)
-          'chains': chains!.map((value) => value.toJson()).toList(),
+        if (chains != null) 'chains': chains!,
       };
 }
 
@@ -3072,7 +3045,7 @@ class SearchGoogleLocationsRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (location != null) 'location': location!.toJson(),
+        if (location != null) 'location': location!,
         if (pageSize != null) 'pageSize': pageSize!,
         if (query != null) 'query': query!,
       };
@@ -3099,9 +3072,7 @@ class SearchGoogleLocationsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (googleLocations != null)
-          'googleLocations':
-              googleLocations!.map((value) => value.toJson()).toList(),
+        if (googleLocations != null) 'googleLocations': googleLocations!,
       };
 }
 
@@ -3165,7 +3136,7 @@ class ServiceAreaBusiness {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (businessType != null) 'businessType': businessType!,
-        if (places != null) 'places': places!.toJson(),
+        if (places != null) 'places': places!,
         if (regionCode != null) 'regionCode': regionCode!,
       };
 }
@@ -3217,10 +3188,10 @@ class ServiceItem {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (freeFormServiceItem != null)
-          'freeFormServiceItem': freeFormServiceItem!.toJson(),
-        if (price != null) 'price': price!.toJson(),
+          'freeFormServiceItem': freeFormServiceItem!,
+        if (price != null) 'price': price!,
         if (structuredServiceItem != null)
-          'structuredServiceItem': structuredServiceItem!.toJson(),
+          'structuredServiceItem': structuredServiceItem!,
       };
 }
 
@@ -3341,11 +3312,11 @@ class SpecialHourPeriod {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (closeTime != null) 'closeTime': closeTime!.toJson(),
+        if (closeTime != null) 'closeTime': closeTime!,
         if (closed != null) 'closed': closed!,
-        if (endDate != null) 'endDate': endDate!.toJson(),
-        if (openTime != null) 'openTime': openTime!.toJson(),
-        if (startDate != null) 'startDate': startDate!.toJson(),
+        if (endDate != null) 'endDate': endDate!,
+        if (openTime != null) 'openTime': openTime!,
+        if (startDate != null) 'startDate': startDate!,
       };
 }
 
@@ -3373,8 +3344,7 @@ class SpecialHours {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (specialHourPeriods != null)
-          'specialHourPeriods':
-              specialHourPeriods!.map((value) => value.toJson()).toList(),
+          'specialHourPeriods': specialHourPeriods!,
       };
 }
 
@@ -3546,9 +3516,9 @@ class TimePeriod {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (closeDay != null) 'closeDay': closeDay!,
-        if (closeTime != null) 'closeTime': closeTime!.toJson(),
+        if (closeTime != null) 'closeTime': closeTime!,
         if (openDay != null) 'openDay': openDay!,
-        if (openTime != null) 'openTime': openTime!.toJson(),
+        if (openTime != null) 'openTime': openTime!,
       };
 }
 

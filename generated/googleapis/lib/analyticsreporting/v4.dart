@@ -83,7 +83,7 @@ class ReportsResource {
     GetReportsRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -126,7 +126,7 @@ class UserActivityResource {
     SearchUserActivityRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -324,20 +324,18 @@ class Activity {
   core.Map<core.String, core.dynamic> toJson() => {
         if (activityTime != null) 'activityTime': activityTime!,
         if (activityType != null) 'activityType': activityType!,
-        if (appview != null) 'appview': appview!.toJson(),
+        if (appview != null) 'appview': appview!,
         if (campaign != null) 'campaign': campaign!,
         if (channelGrouping != null) 'channelGrouping': channelGrouping!,
-        if (customDimension != null)
-          'customDimension':
-              customDimension!.map((value) => value.toJson()).toList(),
-        if (ecommerce != null) 'ecommerce': ecommerce!.toJson(),
-        if (event != null) 'event': event!.toJson(),
-        if (goals != null) 'goals': goals!.toJson(),
+        if (customDimension != null) 'customDimension': customDimension!,
+        if (ecommerce != null) 'ecommerce': ecommerce!,
+        if (event != null) 'event': event!,
+        if (goals != null) 'goals': goals!,
         if (hostname != null) 'hostname': hostname!,
         if (keyword != null) 'keyword': keyword!,
         if (landingPagePath != null) 'landingPagePath': landingPagePath!,
         if (medium != null) 'medium': medium!,
-        if (pageview != null) 'pageview': pageview!.toJson(),
+        if (pageview != null) 'pageview': pageview!,
         if (source != null) 'source': source!,
       };
 }
@@ -394,7 +392,7 @@ class Cohort {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dateRange != null) 'dateRange': dateRange!.toJson(),
+        if (dateRange != null) 'dateRange': dateRange!,
         if (name != null) 'name': name!,
         if (type != null) 'type': type!,
       };
@@ -452,8 +450,7 @@ class CohortGroup {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cohorts != null)
-          'cohorts': cohorts!.map((value) => value.toJson()).toList(),
+        if (cohorts != null) 'cohorts': cohorts!,
         if (lifetimeValue != null) 'lifetimeValue': lifetimeValue!,
       };
 }
@@ -486,7 +483,7 @@ class ColumnHeader {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (dimensions != null) 'dimensions': dimensions!,
-        if (metricHeader != null) 'metricHeader': metricHeader!.toJson(),
+        if (metricHeader != null) 'metricHeader': metricHeader!,
       };
 }
 
@@ -581,9 +578,7 @@ class DateRangeValues {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (pivotValueRegions != null)
-          'pivotValueRegions':
-              pivotValueRegions!.map((value) => value.toJson()).toList(),
+        if (pivotValueRegions != null) 'pivotValueRegions': pivotValueRegions!,
         if (values != null) 'values': values!,
       };
 }
@@ -772,8 +767,7 @@ class DimensionFilterClause {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (filters != null)
-          'filters': filters!.map((value) => value.toJson()).toList(),
+        if (filters != null) 'filters': filters!,
         if (operator != null) 'operator': operator!,
       };
 }
@@ -812,8 +806,8 @@ class DynamicSegment {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
-        if (sessionSegment != null) 'sessionSegment': sessionSegment!.toJson(),
-        if (userSegment != null) 'userSegment': userSegment!.toJson(),
+        if (sessionSegment != null) 'sessionSegment': sessionSegment!,
+        if (userSegment != null) 'userSegment': userSegment!,
       };
 }
 
@@ -877,9 +871,8 @@ class EcommerceData {
   core.Map<core.String, core.dynamic> toJson() => {
         if (actionType != null) 'actionType': actionType!,
         if (ecommerceType != null) 'ecommerceType': ecommerceType!,
-        if (products != null)
-          'products': products!.map((value) => value.toJson()).toList(),
-        if (transaction != null) 'transaction': transaction!.toJson(),
+        if (products != null) 'products': products!,
+        if (transaction != null) 'transaction': transaction!,
       };
 }
 
@@ -979,9 +972,7 @@ class GetReportsRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (reportRequests != null)
-          'reportRequests':
-              reportRequests!.map((value) => value.toJson()).toList(),
+        if (reportRequests != null) 'reportRequests': reportRequests!,
         if (useResourceQuotas != null) 'useResourceQuotas': useResourceQuotas!,
       };
 }
@@ -1026,10 +1017,9 @@ class GetReportsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (queryCost != null) 'queryCost': queryCost!,
-        if (reports != null)
-          'reports': reports!.map((value) => value.toJson()).toList(),
+        if (reports != null) 'reports': reports!,
         if (resourceQuotasRemaining != null)
-          'resourceQuotasRemaining': resourceQuotasRemaining!.toJson(),
+          'resourceQuotasRemaining': resourceQuotasRemaining!,
       };
 }
 
@@ -1131,8 +1121,7 @@ class GoalSetData {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (goals != null)
-          'goals': goals!.map((value) => value.toJson()).toList(),
+        if (goals != null) 'goals': goals!,
       };
 }
 
@@ -1299,8 +1288,7 @@ class MetricFilterClause {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (filters != null)
-          'filters': filters!.map((value) => value.toJson()).toList(),
+        if (filters != null) 'filters': filters!,
         if (operator != null) 'operator': operator!,
       };
 }
@@ -1336,10 +1324,8 @@ class MetricHeader {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (metricHeaderEntries != null)
-          'metricHeaderEntries':
-              metricHeaderEntries!.map((value) => value.toJson()).toList(),
-        if (pivotHeaders != null)
-          'pivotHeaders': pivotHeaders!.map((value) => value.toJson()).toList(),
+          'metricHeaderEntries': metricHeaderEntries!,
+        if (pivotHeaders != null) 'pivotHeaders': pivotHeaders!,
       };
 }
 
@@ -1397,8 +1383,7 @@ class OrFiltersForSegment {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (segmentFilterClauses != null)
-          'segmentFilterClauses':
-              segmentFilterClauses!.map((value) => value.toJson()).toList(),
+          'segmentFilterClauses': segmentFilterClauses!,
       };
 }
 
@@ -1583,13 +1568,10 @@ class Pivot {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (dimensionFilterClauses != null)
-          'dimensionFilterClauses':
-              dimensionFilterClauses!.map((value) => value.toJson()).toList(),
-        if (dimensions != null)
-          'dimensions': dimensions!.map((value) => value.toJson()).toList(),
+          'dimensionFilterClauses': dimensionFilterClauses!,
+        if (dimensions != null) 'dimensions': dimensions!,
         if (maxGroupCount != null) 'maxGroupCount': maxGroupCount!,
-        if (metrics != null)
-          'metrics': metrics!.map((value) => value.toJson()).toList(),
+        if (metrics != null) 'metrics': metrics!,
         if (startGroup != null) 'startGroup': startGroup!,
       };
 }
@@ -1622,8 +1604,7 @@ class PivotHeader {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (pivotHeaderEntries != null)
-          'pivotHeaderEntries':
-              pivotHeaderEntries!.map((value) => value.toJson()).toList(),
+          'pivotHeaderEntries': pivotHeaderEntries!,
         if (totalPivotGroupsCount != null)
           'totalPivotGroupsCount': totalPivotGroupsCount!,
       };
@@ -1668,7 +1649,7 @@ class PivotHeaderEntry {
   core.Map<core.String, core.dynamic> toJson() => {
         if (dimensionNames != null) 'dimensionNames': dimensionNames!,
         if (dimensionValues != null) 'dimensionValues': dimensionValues!,
-        if (metric != null) 'metric': metric!.toJson(),
+        if (metric != null) 'metric': metric!,
       };
 }
 
@@ -1774,8 +1755,8 @@ class Report {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (columnHeader != null) 'columnHeader': columnHeader!.toJson(),
-        if (data != null) 'data': data!.toJson(),
+        if (columnHeader != null) 'columnHeader': columnHeader!,
+        if (data != null) 'data': data!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -1904,17 +1885,14 @@ class ReportData {
   core.Map<core.String, core.dynamic> toJson() => {
         if (dataLastRefreshed != null) 'dataLastRefreshed': dataLastRefreshed!,
         if (isDataGolden != null) 'isDataGolden': isDataGolden!,
-        if (maximums != null)
-          'maximums': maximums!.map((value) => value.toJson()).toList(),
-        if (minimums != null)
-          'minimums': minimums!.map((value) => value.toJson()).toList(),
+        if (maximums != null) 'maximums': maximums!,
+        if (minimums != null) 'minimums': minimums!,
         if (rowCount != null) 'rowCount': rowCount!,
-        if (rows != null) 'rows': rows!.map((value) => value.toJson()).toList(),
+        if (rows != null) 'rows': rows!,
         if (samplesReadCounts != null) 'samplesReadCounts': samplesReadCounts!,
         if (samplingSpaceSizes != null)
           'samplingSpaceSizes': samplingSpaceSizes!,
-        if (totals != null)
-          'totals': totals!.map((value) => value.toJson()).toList(),
+        if (totals != null) 'totals': totals!,
       };
 }
 
@@ -2159,32 +2137,24 @@ class ReportRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cohortGroup != null) 'cohortGroup': cohortGroup!.toJson(),
-        if (dateRanges != null)
-          'dateRanges': dateRanges!.map((value) => value.toJson()).toList(),
+        if (cohortGroup != null) 'cohortGroup': cohortGroup!,
+        if (dateRanges != null) 'dateRanges': dateRanges!,
         if (dimensionFilterClauses != null)
-          'dimensionFilterClauses':
-              dimensionFilterClauses!.map((value) => value.toJson()).toList(),
-        if (dimensions != null)
-          'dimensions': dimensions!.map((value) => value.toJson()).toList(),
+          'dimensionFilterClauses': dimensionFilterClauses!,
+        if (dimensions != null) 'dimensions': dimensions!,
         if (filtersExpression != null) 'filtersExpression': filtersExpression!,
         if (hideTotals != null) 'hideTotals': hideTotals!,
         if (hideValueRanges != null) 'hideValueRanges': hideValueRanges!,
         if (includeEmptyRows != null) 'includeEmptyRows': includeEmptyRows!,
         if (metricFilterClauses != null)
-          'metricFilterClauses':
-              metricFilterClauses!.map((value) => value.toJson()).toList(),
-        if (metrics != null)
-          'metrics': metrics!.map((value) => value.toJson()).toList(),
-        if (orderBys != null)
-          'orderBys': orderBys!.map((value) => value.toJson()).toList(),
+          'metricFilterClauses': metricFilterClauses!,
+        if (metrics != null) 'metrics': metrics!,
+        if (orderBys != null) 'orderBys': orderBys!,
         if (pageSize != null) 'pageSize': pageSize!,
         if (pageToken != null) 'pageToken': pageToken!,
-        if (pivots != null)
-          'pivots': pivots!.map((value) => value.toJson()).toList(),
+        if (pivots != null) 'pivots': pivots!,
         if (samplingLevel != null) 'samplingLevel': samplingLevel!,
-        if (segments != null)
-          'segments': segments!.map((value) => value.toJson()).toList(),
+        if (segments != null) 'segments': segments!,
         if (viewId != null) 'viewId': viewId!,
       };
 }
@@ -2219,8 +2189,7 @@ class ReportRow {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (dimensions != null) 'dimensions': dimensions!,
-        if (metrics != null)
-          'metrics': metrics!.map((value) => value.toJson()).toList(),
+        if (metrics != null) 'metrics': metrics!,
       };
 }
 
@@ -2390,10 +2359,10 @@ class SearchUserActivityRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (activityTypes != null) 'activityTypes': activityTypes!,
-        if (dateRange != null) 'dateRange': dateRange!.toJson(),
+        if (dateRange != null) 'dateRange': dateRange!,
         if (pageSize != null) 'pageSize': pageSize!,
         if (pageToken != null) 'pageToken': pageToken!,
-        if (user != null) 'user': user!.toJson(),
+        if (user != null) 'user': user!,
         if (viewId != null) 'viewId': viewId!,
       };
 }
@@ -2449,8 +2418,7 @@ class SearchUserActivityResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (sampleRate != null) 'sampleRate': sampleRate!,
-        if (sessions != null)
-          'sessions': sessions!.map((value) => value.toJson()).toList(),
+        if (sessions != null) 'sessions': sessions!,
         if (totalRows != null) 'totalRows': totalRows!,
       };
 }
@@ -2483,7 +2451,7 @@ class Segment {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dynamicSegment != null) 'dynamicSegment': dynamicSegment!.toJson(),
+        if (dynamicSegment != null) 'dynamicSegment': dynamicSegment!,
         if (segmentId != null) 'segmentId': segmentId!,
       };
 }
@@ -2510,9 +2478,7 @@ class SegmentDefinition {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (segmentFilters != null)
-          'segmentFilters':
-              segmentFilters!.map((value) => value.toJson()).toList(),
+        if (segmentFilters != null) 'segmentFilters': segmentFilters!,
       };
 }
 
@@ -2655,9 +2621,8 @@ class SegmentFilter {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (not != null) 'not': not!,
-        if (sequenceSegment != null)
-          'sequenceSegment': sequenceSegment!.toJson(),
-        if (simpleSegment != null) 'simpleSegment': simpleSegment!.toJson(),
+        if (sequenceSegment != null) 'sequenceSegment': sequenceSegment!,
+        if (simpleSegment != null) 'simpleSegment': simpleSegment!,
       };
 }
 
@@ -2693,9 +2658,8 @@ class SegmentFilterClause {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dimensionFilter != null)
-          'dimensionFilter': dimensionFilter!.toJson(),
-        if (metricFilter != null) 'metricFilter': metricFilter!.toJson(),
+        if (dimensionFilter != null) 'dimensionFilter': dimensionFilter!,
+        if (metricFilter != null) 'metricFilter': metricFilter!,
         if (not != null) 'not': not!,
       };
 }
@@ -2819,8 +2783,7 @@ class SegmentSequenceStep {
   core.Map<core.String, core.dynamic> toJson() => {
         if (matchType != null) 'matchType': matchType!,
         if (orFiltersForSegment != null)
-          'orFiltersForSegment':
-              orFiltersForSegment!.map((value) => value.toJson()).toList(),
+          'orFiltersForSegment': orFiltersForSegment!,
       };
 }
 
@@ -2859,8 +2822,7 @@ class SequenceSegment {
         if (firstStepShouldMatchFirstHit != null)
           'firstStepShouldMatchFirstHit': firstStepShouldMatchFirstHit!,
         if (segmentSequenceSteps != null)
-          'segmentSequenceSteps':
-              segmentSequenceSteps!.map((value) => value.toJson()).toList(),
+          'segmentSequenceSteps': segmentSequenceSteps!,
       };
 }
 
@@ -2887,8 +2849,7 @@ class SimpleSegment {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (orFiltersForSegment != null)
-          'orFiltersForSegment':
-              orFiltersForSegment!.map((value) => value.toJson()).toList(),
+          'orFiltersForSegment': orFiltersForSegment!,
       };
 }
 
@@ -3037,8 +2998,7 @@ class UserActivitySession {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (activities != null)
-          'activities': activities!.map((value) => value.toJson()).toList(),
+        if (activities != null) 'activities': activities!,
         if (dataSource != null) 'dataSource': dataSource!,
         if (deviceCategory != null) 'deviceCategory': deviceCategory!,
         if (platform != null) 'platform': platform!,

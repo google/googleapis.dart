@@ -252,7 +252,7 @@ class AccountsResource {
     AccountsCustomBatchRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -385,7 +385,7 @@ class AccountsResource {
     core.String merchantId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -430,7 +430,7 @@ class AccountsResource {
     core.String accountId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -594,7 +594,7 @@ class AccountsResource {
     core.String accountId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -644,7 +644,7 @@ class AccountsResource {
     core.String accountId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -689,7 +689,7 @@ class AccountsResource {
     core.String accountId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -737,7 +737,7 @@ class AccountsResource {
     core.String accountId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -791,7 +791,7 @@ class AccountsCredentialsResource {
     core.String accountId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -838,7 +838,7 @@ class AccountsLabelsResource {
     core.String accountId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -968,7 +968,7 @@ class AccountsLabelsResource {
     core.String labelId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1019,7 +1019,7 @@ class AccountsReturncarrierResource {
     core.String accountId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1142,7 +1142,7 @@ class AccountsReturncarrierResource {
     core.String carrierAccountId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1188,7 +1188,7 @@ class AccountstatusesResource {
     AccountstatusesCustomBatchRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1336,7 +1336,7 @@ class AccounttaxResource {
     AccounttaxCustomBatchRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1473,7 +1473,7 @@ class AccounttaxResource {
     core.String accountId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1528,7 +1528,7 @@ class BuyongoogleprogramsResource {
     core.String regionCode, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1622,7 +1622,7 @@ class BuyongoogleprogramsResource {
     core.String regionCode, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1669,7 +1669,7 @@ class BuyongoogleprogramsResource {
     core.String regionCode, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1718,7 +1718,7 @@ class BuyongoogleprogramsResource {
     core.String regionCode, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1771,7 +1771,7 @@ class CollectionsResource {
     core.String merchantId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2138,7 +2138,7 @@ class CssesResource {
     core.String cssDomainId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2184,7 +2184,7 @@ class DatafeedsResource {
     DatafeedsCustomBatchRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2348,7 +2348,7 @@ class DatafeedsResource {
     core.String merchantId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2438,7 +2438,7 @@ class DatafeedsResource {
     core.String datafeedId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2482,7 +2482,7 @@ class DatafeedstatusesResource {
     DatafeedstatusesCustomBatchRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2664,7 +2664,7 @@ class FreelistingsprogramResource {
     core.String merchantId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2708,7 +2708,7 @@ class LiasettingsResource {
     LiasettingsCustomBatchRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3138,7 +3138,7 @@ class LiasettingsResource {
     core.String accountId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3184,7 +3184,7 @@ class LocalinventoryResource {
     LocalinventoryCustomBatchRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3229,7 +3229,7 @@ class LocalinventoryResource {
     core.String productId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3283,7 +3283,7 @@ class OrderinvoicesResource {
     core.String orderId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3335,7 +3335,7 @@ class OrderinvoicesResource {
     core.String orderId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3520,7 +3520,7 @@ class OrderreturnsResource {
     core.String returnId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3564,7 +3564,7 @@ class OrderreturnsResource {
     core.String merchantId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3762,7 +3762,7 @@ class OrderreturnsResource {
     core.String returnId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3821,7 +3821,7 @@ class OrderreturnsLabelsResource {
     core.String returnId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3874,7 +3874,7 @@ class OrdersResource {
     core.String orderId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3965,7 +3965,7 @@ class OrdersResource {
     core.String orderId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4012,7 +4012,7 @@ class OrdersResource {
     core.String orderId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4062,7 +4062,7 @@ class OrdersResource {
     core.String orderId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4116,7 +4116,7 @@ class OrdersResource {
     core.String orderId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4162,7 +4162,7 @@ class OrdersResource {
     core.String merchantId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4208,7 +4208,7 @@ class OrdersResource {
     core.String orderId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4401,7 +4401,7 @@ class OrdersResource {
     core.String orderId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4525,7 +4525,7 @@ class OrdersResource {
     core.String orderId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4572,7 +4572,7 @@ class OrdersResource {
     core.String orderId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4619,7 +4619,7 @@ class OrdersResource {
     core.String orderId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4673,7 +4673,7 @@ class OrdersResource {
     core.String orderId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4725,7 +4725,7 @@ class OrdersResource {
     core.String orderId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4772,7 +4772,7 @@ class OrdersResource {
     core.String orderId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4820,7 +4820,7 @@ class OrdersResource {
     core.String orderId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4867,7 +4867,7 @@ class OrdersResource {
     core.String orderId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4914,7 +4914,7 @@ class OrdersResource {
     core.String orderId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4965,7 +4965,7 @@ class OrdertrackingsignalsResource {
     core.String merchantId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -5009,7 +5009,7 @@ class PosResource {
     PosCustomBatchRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -5138,7 +5138,7 @@ class PosResource {
     core.String targetMerchantId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -5183,7 +5183,7 @@ class PosResource {
     core.String targetMerchantId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -5270,7 +5270,7 @@ class PosResource {
     core.String targetMerchantId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -5316,7 +5316,7 @@ class ProductsResource {
     ProductsCustomBatchRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -5448,7 +5448,7 @@ class ProductsResource {
     core.String? feedId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (feedId != null) 'feedId': [feedId],
       if ($fields != null) 'fields': [$fields],
@@ -5550,7 +5550,7 @@ class ProductsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -5598,7 +5598,7 @@ class ProductstatusesResource {
     ProductstatusesCustomBatchRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -5826,7 +5826,7 @@ class PromotionsResource {
     core.String merchantId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -5911,7 +5911,7 @@ class PubsubnotificationsettingsResource {
     core.String merchantId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -5956,7 +5956,7 @@ class RegionalinventoryResource {
     RegionalinventoryCustomBatchRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -6005,7 +6005,7 @@ class RegionalinventoryResource {
     core.String productId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -6058,7 +6058,7 @@ class RegionsResource {
     core.String? regionId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (regionId != null) 'regionId': [regionId],
       if ($fields != null) 'fields': [$fields],
@@ -6234,7 +6234,7 @@ class RegionsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -6284,7 +6284,7 @@ class ReportsResource {
     core.String merchantId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -6337,7 +6337,7 @@ class RepricingrulesResource {
     core.String? ruleId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (ruleId != null) 'ruleId': [ruleId],
       if ($fields != null) 'fields': [$fields],
@@ -6527,7 +6527,7 @@ class RepricingrulesResource {
     core.String ruleId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -6646,7 +6646,7 @@ class ReturnaddressResource {
     ReturnaddressCustomBatchRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -6764,7 +6764,7 @@ class ReturnaddressResource {
     core.String merchantId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -6856,7 +6856,7 @@ class ReturnpolicyResource {
     ReturnpolicyCustomBatchRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -6974,7 +6974,7 @@ class ReturnpolicyResource {
     core.String merchantId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -7056,7 +7056,7 @@ class ReturnpolicyonlineResource {
     core.String merchantId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -7215,7 +7215,7 @@ class ReturnpolicyonlineResource {
     core.String returnPolicyId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -7425,7 +7425,7 @@ class ShippingsettingsResource {
     ShippingsettingsCustomBatchRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -7674,7 +7674,7 @@ class ShippingsettingsResource {
     core.String accountId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -7755,7 +7755,7 @@ class ShoppingadsprogramResource {
     core.String merchantId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -7926,26 +7926,23 @@ class Account {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accountManagement != null) 'accountManagement': accountManagement!,
-        if (adsLinks != null)
-          'adsLinks': adsLinks!.map((value) => value.toJson()).toList(),
+        if (adsLinks != null) 'adsLinks': adsLinks!,
         if (adultContent != null) 'adultContent': adultContent!,
         if (automaticLabelIds != null) 'automaticLabelIds': automaticLabelIds!,
         if (businessInformation != null)
-          'businessInformation': businessInformation!.toJson(),
+          'businessInformation': businessInformation!,
         if (cssId != null) 'cssId': cssId!,
         if (googleMyBusinessLink != null)
-          'googleMyBusinessLink': googleMyBusinessLink!.toJson(),
+          'googleMyBusinessLink': googleMyBusinessLink!,
         if (id != null) 'id': id!,
         if (kind != null) 'kind': kind!,
         if (labelIds != null) 'labelIds': labelIds!,
         if (name != null) 'name': name!,
         if (sellerId != null) 'sellerId': sellerId!,
-        if (users != null)
-          'users': users!.map((value) => value.toJson()).toList(),
+        if (users != null) 'users': users!,
         if (websiteUrl != null) 'websiteUrl': websiteUrl!,
         if (youtubeChannelLinks != null)
-          'youtubeChannelLinks':
-              youtubeChannelLinks!.map((value) => value.toJson()).toList(),
+          'youtubeChannelLinks': youtubeChannelLinks!,
       };
 }
 
@@ -8080,9 +8077,8 @@ class AccountBusinessInformation {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (address != null) 'address': address!.toJson(),
-        if (customerService != null)
-          'customerService': customerService!.toJson(),
+        if (address != null) 'address': address!,
+        if (customerService != null) 'customerService': customerService!,
         if (phoneNumber != null) 'phoneNumber': phoneNumber!,
       };
 }
@@ -8421,12 +8417,10 @@ class AccountStatus {
   core.Map<core.String, core.dynamic> toJson() => {
         if (accountId != null) 'accountId': accountId!,
         if (accountLevelIssues != null)
-          'accountLevelIssues':
-              accountLevelIssues!.map((value) => value.toJson()).toList(),
+          'accountLevelIssues': accountLevelIssues!,
         if (accountManagement != null) 'accountManagement': accountManagement!,
         if (kind != null) 'kind': kind!,
-        if (products != null)
-          'products': products!.map((value) => value.toJson()).toList(),
+        if (products != null) 'products': products!,
         if (websiteClaimed != null) 'websiteClaimed': websiteClaimed!,
       };
 }
@@ -8628,10 +8622,8 @@ class AccountStatusProducts {
         if (channel != null) 'channel': channel!,
         if (country != null) 'country': country!,
         if (destination != null) 'destination': destination!,
-        if (itemLevelIssues != null)
-          'itemLevelIssues':
-              itemLevelIssues!.map((value) => value.toJson()).toList(),
-        if (statistics != null) 'statistics': statistics!.toJson(),
+        if (itemLevelIssues != null) 'itemLevelIssues': itemLevelIssues!,
+        if (statistics != null) 'statistics': statistics!,
       };
 }
 
@@ -8722,8 +8714,7 @@ class AccountTax {
   core.Map<core.String, core.dynamic> toJson() => {
         if (accountId != null) 'accountId': accountId!,
         if (kind != null) 'kind': kind!,
-        if (rules != null)
-          'rules': rules!.map((value) => value.toJson()).toList(),
+        if (rules != null) 'rules': rules!,
       };
 }
 
@@ -8908,8 +8899,7 @@ class AccountsAuthInfoResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accountIdentifiers != null)
-          'accountIdentifiers':
-              accountIdentifiers!.map((value) => value.toJson()).toList(),
+          'accountIdentifiers': accountIdentifiers!,
         if (kind != null) 'kind': kind!,
       };
 }
@@ -8953,8 +8943,7 @@ class AccountsCustomBatchRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (entries != null)
-          'entries': entries!.map((value) => value.toJson()).toList(),
+        if (entries != null) 'entries': entries!,
       };
 }
 
@@ -9053,12 +9042,12 @@ class AccountsCustomBatchRequestEntry {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (account != null) 'account': account!.toJson(),
+        if (account != null) 'account': account!,
         if (accountId != null) 'accountId': accountId!,
         if (batchId != null) 'batchId': batchId!,
         if (force != null) 'force': force!,
         if (labelIds != null) 'labelIds': labelIds!,
-        if (linkRequest != null) 'linkRequest': linkRequest!.toJson(),
+        if (linkRequest != null) 'linkRequest': linkRequest!,
         if (merchantId != null) 'merchantId': merchantId!,
         if (method != null) 'method': method!,
         if (overwrite != null) 'overwrite': overwrite!,
@@ -9148,8 +9137,7 @@ class AccountsCustomBatchResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (entries != null)
-          'entries': entries!.map((value) => value.toJson()).toList(),
+        if (entries != null) 'entries': entries!,
         if (kind != null) 'kind': kind!,
       };
 }
@@ -9196,9 +9184,9 @@ class AccountsCustomBatchResponseEntry {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (account != null) 'account': account!.toJson(),
+        if (account != null) 'account': account!,
         if (batchId != null) 'batchId': batchId!,
-        if (errors != null) 'errors': errors!.toJson(),
+        if (errors != null) 'errors': errors!,
         if (kind != null) 'kind': kind!,
       };
 }
@@ -9264,8 +9252,7 @@ class AccountsLinkRequest {
         if (linkType != null) 'linkType': linkType!,
         if (linkedAccountId != null) 'linkedAccountId': linkedAccountId!,
         if (paymentServiceProviderLinkInfo != null)
-          'paymentServiceProviderLinkInfo':
-              paymentServiceProviderLinkInfo!.toJson(),
+          'paymentServiceProviderLinkInfo': paymentServiceProviderLinkInfo!,
         if (services != null) 'services': services!,
       };
 }
@@ -9324,8 +9311,7 @@ class AccountsListLinksResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
-        if (links != null)
-          'links': links!.map((value) => value.toJson()).toList(),
+        if (links != null) 'links': links!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -9363,8 +9349,7 @@ class AccountsListResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (resources != null)
-          'resources': resources!.map((value) => value.toJson()).toList(),
+        if (resources != null) 'resources': resources!,
       };
 }
 
@@ -9430,8 +9415,7 @@ class AccountstatusesCustomBatchRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (entries != null)
-          'entries': entries!.map((value) => value.toJson()).toList(),
+        if (entries != null) 'entries': entries!,
       };
 }
 
@@ -9520,8 +9504,7 @@ class AccountstatusesCustomBatchResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (entries != null)
-          'entries': entries!.map((value) => value.toJson()).toList(),
+        if (entries != null) 'entries': entries!,
         if (kind != null) 'kind': kind!,
       };
 }
@@ -9561,9 +9544,9 @@ class AccountstatusesCustomBatchResponseEntry {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (accountStatus != null) 'accountStatus': accountStatus!.toJson(),
+        if (accountStatus != null) 'accountStatus': accountStatus!,
         if (batchId != null) 'batchId': batchId!,
-        if (errors != null) 'errors': errors!.toJson(),
+        if (errors != null) 'errors': errors!,
       };
 }
 
@@ -9600,8 +9583,7 @@ class AccountstatusesListResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (resources != null)
-          'resources': resources!.map((value) => value.toJson()).toList(),
+        if (resources != null) 'resources': resources!,
       };
 }
 
@@ -9624,8 +9606,7 @@ class AccounttaxCustomBatchRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (entries != null)
-          'entries': entries!.map((value) => value.toJson()).toList(),
+        if (entries != null) 'entries': entries!,
       };
 }
 
@@ -9680,7 +9661,7 @@ class AccounttaxCustomBatchRequestEntry {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accountId != null) 'accountId': accountId!,
-        if (accountTax != null) 'accountTax': accountTax!.toJson(),
+        if (accountTax != null) 'accountTax': accountTax!,
         if (batchId != null) 'batchId': batchId!,
         if (merchantId != null) 'merchantId': merchantId!,
         if (method != null) 'method': method!,
@@ -9713,8 +9694,7 @@ class AccounttaxCustomBatchResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (entries != null)
-          'entries': entries!.map((value) => value.toJson()).toList(),
+        if (entries != null) 'entries': entries!,
         if (kind != null) 'kind': kind!,
       };
 }
@@ -9759,9 +9739,9 @@ class AccounttaxCustomBatchResponseEntry {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (accountTax != null) 'accountTax': accountTax!.toJson(),
+        if (accountTax != null) 'accountTax': accountTax!,
         if (batchId != null) 'batchId': batchId!,
-        if (errors != null) 'errors': errors!.toJson(),
+        if (errors != null) 'errors': errors!,
         if (kind != null) 'kind': kind!,
       };
 }
@@ -9799,8 +9779,7 @@ class AccounttaxListResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (resources != null)
-          'resources': resources!.map((value) => value.toJson()).toList(),
+        if (resources != null) 'resources': resources!,
       };
 }
 
@@ -9836,8 +9815,8 @@ class Amount {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (priceAmount != null) 'priceAmount': priceAmount!.toJson(),
-        if (taxAmount != null) 'taxAmount': taxAmount!.toJson(),
+        if (priceAmount != null) 'priceAmount': priceAmount!,
+        if (taxAmount != null) 'taxAmount': taxAmount!,
       };
 }
 
@@ -10032,7 +10011,7 @@ class CarrierRate {
   core.Map<core.String, core.dynamic> toJson() => {
         if (carrierName != null) 'carrierName': carrierName!,
         if (carrierService != null) 'carrierService': carrierService!,
-        if (flatAdjustment != null) 'flatAdjustment': flatAdjustment!.toJson(),
+        if (flatAdjustment != null) 'flatAdjustment': flatAdjustment!,
         if (name != null) 'name': name!,
         if (originPostalCode != null) 'originPostalCode': originPostalCode!,
         if (percentageAdjustment != null)
@@ -10239,9 +10218,7 @@ class Collection {
         if (customLabel2 != null) 'customLabel2': customLabel2!,
         if (customLabel3 != null) 'customLabel3': customLabel3!,
         if (customLabel4 != null) 'customLabel4': customLabel4!,
-        if (featuredProduct != null)
-          'featuredProduct':
-              featuredProduct!.map((value) => value.toJson()).toList(),
+        if (featuredProduct != null) 'featuredProduct': featuredProduct!,
         if (headline != null) 'headline': headline!,
         if (id != null) 'id': id!,
         if (imageLink != null) 'imageLink': imageLink!,
@@ -10351,12 +10328,10 @@ class CollectionStatus {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (collectionLevelIssuses != null)
-          'collectionLevelIssuses':
-              collectionLevelIssuses!.map((value) => value.toJson()).toList(),
+          'collectionLevelIssuses': collectionLevelIssuses!,
         if (creationDate != null) 'creationDate': creationDate!,
         if (destinationStatuses != null)
-          'destinationStatuses':
-              destinationStatuses!.map((value) => value.toJson()).toList(),
+          'destinationStatuses': destinationStatuses!,
         if (id != null) 'id': id!,
         if (lastUpdateDate != null) 'lastUpdateDate': lastUpdateDate!,
       };
@@ -10577,8 +10552,7 @@ class CustomAttribute {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (groupValues != null)
-          'groupValues': groupValues!.map((value) => value.toJson()).toList(),
+        if (groupValues != null) 'groupValues': groupValues!,
         if (name != null) 'name': name!,
         if (value != null) 'value': value!,
       };
@@ -10751,14 +10725,13 @@ class Datafeed {
   core.Map<core.String, core.dynamic> toJson() => {
         if (attributeLanguage != null) 'attributeLanguage': attributeLanguage!,
         if (contentType != null) 'contentType': contentType!,
-        if (fetchSchedule != null) 'fetchSchedule': fetchSchedule!.toJson(),
+        if (fetchSchedule != null) 'fetchSchedule': fetchSchedule!,
         if (fileName != null) 'fileName': fileName!,
-        if (format != null) 'format': format!.toJson(),
+        if (format != null) 'format': format!,
         if (id != null) 'id': id!,
         if (kind != null) 'kind': kind!,
         if (name != null) 'name': name!,
-        if (targets != null)
-          'targets': targets!.map((value) => value.toJson()).toList(),
+        if (targets != null) 'targets': targets!,
       };
 }
 
@@ -11003,16 +10976,14 @@ class DatafeedStatus {
   core.Map<core.String, core.dynamic> toJson() => {
         if (country != null) 'country': country!,
         if (datafeedId != null) 'datafeedId': datafeedId!,
-        if (errors != null)
-          'errors': errors!.map((value) => value.toJson()).toList(),
+        if (errors != null) 'errors': errors!,
         if (itemsTotal != null) 'itemsTotal': itemsTotal!,
         if (itemsValid != null) 'itemsValid': itemsValid!,
         if (kind != null) 'kind': kind!,
         if (language != null) 'language': language!,
         if (lastUploadDate != null) 'lastUploadDate': lastUploadDate!,
         if (processingStatus != null) 'processingStatus': processingStatus!,
-        if (warnings != null)
-          'warnings': warnings!.map((value) => value.toJson()).toList(),
+        if (warnings != null) 'warnings': warnings!,
       };
 }
 
@@ -11056,8 +11027,7 @@ class DatafeedStatusError {
   core.Map<core.String, core.dynamic> toJson() => {
         if (code != null) 'code': code!,
         if (count != null) 'count': count!,
-        if (examples != null)
-          'examples': examples!.map((value) => value.toJson()).toList(),
+        if (examples != null) 'examples': examples!,
         if (message != null) 'message': message!,
       };
 }
@@ -11177,8 +11147,7 @@ class DatafeedsCustomBatchRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (entries != null)
-          'entries': entries!.map((value) => value.toJson()).toList(),
+        if (entries != null) 'entries': entries!,
       };
 }
 
@@ -11232,7 +11201,7 @@ class DatafeedsCustomBatchRequestEntry {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (batchId != null) 'batchId': batchId!,
-        if (datafeed != null) 'datafeed': datafeed!.toJson(),
+        if (datafeed != null) 'datafeed': datafeed!,
         if (datafeedId != null) 'datafeedId': datafeedId!,
         if (merchantId != null) 'merchantId': merchantId!,
         if (method != null) 'method': method!,
@@ -11265,8 +11234,7 @@ class DatafeedsCustomBatchResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (entries != null)
-          'entries': entries!.map((value) => value.toJson()).toList(),
+        if (entries != null) 'entries': entries!,
         if (kind != null) 'kind': kind!,
       };
 }
@@ -11307,8 +11275,8 @@ class DatafeedsCustomBatchResponseEntry {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (batchId != null) 'batchId': batchId!,
-        if (datafeed != null) 'datafeed': datafeed!.toJson(),
-        if (errors != null) 'errors': errors!.toJson(),
+        if (datafeed != null) 'datafeed': datafeed!,
+        if (errors != null) 'errors': errors!,
       };
 }
 
@@ -11365,8 +11333,7 @@ class DatafeedsListResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (resources != null)
-          'resources': resources!.map((value) => value.toJson()).toList(),
+        if (resources != null) 'resources': resources!,
       };
 }
 
@@ -11390,8 +11357,7 @@ class DatafeedstatusesCustomBatchRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (entries != null)
-          'entries': entries!.map((value) => value.toJson()).toList(),
+        if (entries != null) 'entries': entries!,
       };
 }
 
@@ -11491,8 +11457,7 @@ class DatafeedstatusesCustomBatchResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (entries != null)
-          'entries': entries!.map((value) => value.toJson()).toList(),
+        if (entries != null) 'entries': entries!,
         if (kind != null) 'kind': kind!,
       };
 }
@@ -11533,8 +11498,8 @@ class DatafeedstatusesCustomBatchResponseEntry {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (batchId != null) 'batchId': batchId!,
-        if (datafeedStatus != null) 'datafeedStatus': datafeedStatus!.toJson(),
-        if (errors != null) 'errors': errors!.toJson(),
+        if (datafeedStatus != null) 'datafeedStatus': datafeedStatus!,
+        if (errors != null) 'errors': errors!,
       };
 }
 
@@ -11571,8 +11536,7 @@ class DatafeedstatusesListResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (resources != null)
-          'resources': resources!.map((value) => value.toJson()).toList(),
+        if (resources != null) 'resources': resources!,
       };
 }
 
@@ -11740,7 +11704,7 @@ class DateTime {
         if (month != null) 'month': month!,
         if (nanos != null) 'nanos': nanos!,
         if (seconds != null) 'seconds': seconds!,
-        if (timeZone != null) 'timeZone': timeZone!.toJson(),
+        if (timeZone != null) 'timeZone': timeZone!,
         if (utcOffset != null) 'utcOffset': utcOffset!,
         if (year != null) 'year': year!,
       };
@@ -11867,12 +11831,10 @@ class DeliveryTime {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cutoffTime != null) 'cutoffTime': cutoffTime!.toJson(),
+        if (cutoffTime != null) 'cutoffTime': cutoffTime!,
         if (handlingBusinessDayConfig != null)
-          'handlingBusinessDayConfig': handlingBusinessDayConfig!.toJson(),
-        if (holidayCutoffs != null)
-          'holidayCutoffs':
-              holidayCutoffs!.map((value) => value.toJson()).toList(),
+          'handlingBusinessDayConfig': handlingBusinessDayConfig!,
+        if (holidayCutoffs != null) 'holidayCutoffs': holidayCutoffs!,
         if (maxHandlingTimeInDays != null)
           'maxHandlingTimeInDays': maxHandlingTimeInDays!,
         if (maxTransitTimeInDays != null)
@@ -11882,13 +11844,10 @@ class DeliveryTime {
         if (minTransitTimeInDays != null)
           'minTransitTimeInDays': minTransitTimeInDays!,
         if (transitBusinessDayConfig != null)
-          'transitBusinessDayConfig': transitBusinessDayConfig!.toJson(),
-        if (transitTimeTable != null)
-          'transitTimeTable': transitTimeTable!.toJson(),
+          'transitBusinessDayConfig': transitBusinessDayConfig!,
+        if (transitTimeTable != null) 'transitTimeTable': transitTimeTable!,
         if (warehouseBasedDeliveryTimes != null)
-          'warehouseBasedDeliveryTimes': warehouseBasedDeliveryTimes!
-              .map((value) => value.toJson())
-              .toList(),
+          'warehouseBasedDeliveryTimes': warehouseBasedDeliveryTimes!,
       };
 }
 
@@ -11962,8 +11921,7 @@ class Errors {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (code != null) 'code': code!,
-        if (errors != null)
-          'errors': errors!.map((value) => value.toJson()).toList(),
+        if (errors != null) 'errors': errors!,
         if (message != null) 'message': message!,
       };
 }
@@ -12002,9 +11960,7 @@ class FreeListingsProgramStatus {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (regionStatuses != null)
-          'regionStatuses':
-              regionStatuses!.map((value) => value.toJson()).toList(),
+        if (regionStatuses != null) 'regionStatuses': regionStatuses!,
         if (state != null) 'state': state!,
       };
 }
@@ -12157,8 +12113,7 @@ class GmbAccounts {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accountId != null) 'accountId': accountId!,
-        if (gmbAccounts != null)
-          'gmbAccounts': gmbAccounts!.map((value) => value.toJson()).toList(),
+        if (gmbAccounts != null) 'gmbAccounts': gmbAccounts!,
       };
 }
 
@@ -12286,15 +12241,12 @@ class Headers {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (locations != null)
-          'locations': locations!.map((value) => value.toJson()).toList(),
+        if (locations != null) 'locations': locations!,
         if (numberOfItems != null) 'numberOfItems': numberOfItems!,
         if (postalCodeGroupNames != null)
           'postalCodeGroupNames': postalCodeGroupNames!,
-        if (prices != null)
-          'prices': prices!.map((value) => value.toJson()).toList(),
-        if (weights != null)
-          'weights': weights!.map((value) => value.toJson()).toList(),
+        if (prices != null) 'prices': prices!,
+        if (weights != null) 'weights': weights!,
       };
 }
 
@@ -12511,7 +12463,7 @@ class Installment {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (amount != null) 'amount': amount!.toJson(),
+        if (amount != null) 'amount': amount!,
         if (months != null) 'months': months!,
       };
 }
@@ -12548,10 +12500,8 @@ class InvoiceSummary {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (additionalChargeSummaries != null)
-          'additionalChargeSummaries': additionalChargeSummaries!
-              .map((value) => value.toJson())
-              .toList(),
-        if (productTotal != null) 'productTotal': productTotal!.toJson(),
+          'additionalChargeSummaries': additionalChargeSummaries!,
+        if (productTotal != null) 'productTotal': productTotal!,
       };
 }
 
@@ -12583,7 +12533,7 @@ class InvoiceSummaryAdditionalChargeSummary {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (totalAmount != null) 'totalAmount': totalAmount!.toJson(),
+        if (totalAmount != null) 'totalAmount': totalAmount!,
         if (type != null) 'type': type!,
       };
 }
@@ -12704,15 +12654,13 @@ class LiaCountrySettings {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (about != null) 'about': about!.toJson(),
+        if (about != null) 'about': about!,
         if (country != null) 'country': country!,
         if (hostedLocalStorefrontActive != null)
           'hostedLocalStorefrontActive': hostedLocalStorefrontActive!,
-        if (inventory != null) 'inventory': inventory!.toJson(),
-        if (onDisplayToOrder != null)
-          'onDisplayToOrder': onDisplayToOrder!.toJson(),
-        if (posDataProvider != null)
-          'posDataProvider': posDataProvider!.toJson(),
+        if (inventory != null) 'inventory': inventory!,
+        if (onDisplayToOrder != null) 'onDisplayToOrder': onDisplayToOrder!,
+        if (posDataProvider != null) 'posDataProvider': posDataProvider!,
         if (storePickupActive != null) 'storePickupActive': storePickupActive!,
       };
 }
@@ -12872,9 +12820,7 @@ class LiaSettings {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accountId != null) 'accountId': accountId!,
-        if (countrySettings != null)
-          'countrySettings':
-              countrySettings!.map((value) => value.toJson()).toList(),
+        if (countrySettings != null) 'countrySettings': countrySettings!,
         if (kind != null) 'kind': kind!,
       };
 }
@@ -12898,8 +12844,7 @@ class LiasettingsCustomBatchRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (entries != null)
-          'entries': entries!.map((value) => value.toJson()).toList(),
+        if (entries != null) 'entries': entries!,
       };
 }
 
@@ -13012,7 +12957,7 @@ class LiasettingsCustomBatchRequestEntry {
         if (contactName != null) 'contactName': contactName!,
         if (country != null) 'country': country!,
         if (gmbEmail != null) 'gmbEmail': gmbEmail!,
-        if (liaSettings != null) 'liaSettings': liaSettings!.toJson(),
+        if (liaSettings != null) 'liaSettings': liaSettings!,
         if (merchantId != null) 'merchantId': merchantId!,
         if (method != null) 'method': method!,
         if (posDataProviderId != null) 'posDataProviderId': posDataProviderId!,
@@ -13047,8 +12992,7 @@ class LiasettingsCustomBatchResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (entries != null)
-          'entries': entries!.map((value) => value.toJson()).toList(),
+        if (entries != null) 'entries': entries!,
         if (kind != null) 'kind': kind!,
       };
 }
@@ -13111,13 +13055,11 @@ class LiasettingsCustomBatchResponseEntry {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (batchId != null) 'batchId': batchId!,
-        if (errors != null) 'errors': errors!.toJson(),
-        if (gmbAccounts != null) 'gmbAccounts': gmbAccounts!.toJson(),
+        if (errors != null) 'errors': errors!,
+        if (gmbAccounts != null) 'gmbAccounts': gmbAccounts!,
         if (kind != null) 'kind': kind!,
-        if (liaSettings != null) 'liaSettings': liaSettings!.toJson(),
-        if (posDataProviders != null)
-          'posDataProviders':
-              posDataProviders!.map((value) => value.toJson()).toList(),
+        if (liaSettings != null) 'liaSettings': liaSettings!,
+        if (posDataProviders != null) 'posDataProviders': posDataProviders!,
       };
 }
 
@@ -13156,8 +13098,7 @@ class LiasettingsGetAccessibleGmbAccountsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accountId != null) 'accountId': accountId!,
-        if (gmbAccounts != null)
-          'gmbAccounts': gmbAccounts!.map((value) => value.toJson()).toList(),
+        if (gmbAccounts != null) 'gmbAccounts': gmbAccounts!,
         if (kind != null) 'kind': kind!,
       };
 }
@@ -13190,9 +13131,7 @@ class LiasettingsListPosDataProvidersResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
-        if (posDataProviders != null)
-          'posDataProviders':
-              posDataProviders!.map((value) => value.toJson()).toList(),
+        if (posDataProviders != null) 'posDataProviders': posDataProviders!,
       };
 }
 
@@ -13229,8 +13168,7 @@ class LiasettingsListResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (resources != null)
-          'resources': resources!.map((value) => value.toJson()).toList(),
+        if (resources != null) 'resources': resources!,
       };
 }
 
@@ -13376,8 +13314,7 @@ class LinkedAccount {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (linkedAccountId != null) 'linkedAccountId': linkedAccountId!,
-        if (services != null)
-          'services': services!.map((value) => value.toJson()).toList(),
+        if (services != null) 'services': services!,
       };
 }
 
@@ -13410,9 +13347,7 @@ class ListAccountLabelsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (accountLabels != null)
-          'accountLabels':
-              accountLabels!.map((value) => value.toJson()).toList(),
+        if (accountLabels != null) 'accountLabels': accountLabels!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -13438,8 +13373,7 @@ class ListAccountReturnCarrierResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accountReturnCarriers != null)
-          'accountReturnCarriers':
-              accountReturnCarriers!.map((value) => value.toJson()).toList(),
+          'accountReturnCarriers': accountReturnCarriers!,
       };
 }
 
@@ -13473,8 +13407,7 @@ class ListCollectionStatusesResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (resources != null)
-          'resources': resources!.map((value) => value.toJson()).toList(),
+        if (resources != null) 'resources': resources!,
       };
 }
 
@@ -13508,8 +13441,7 @@ class ListCollectionsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (resources != null)
-          'resources': resources!.map((value) => value.toJson()).toList(),
+        if (resources != null) 'resources': resources!,
       };
 }
 
@@ -13542,8 +13474,7 @@ class ListCssesResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (csses != null)
-          'csses': csses!.map((value) => value.toJson()).toList(),
+        if (csses != null) 'csses': csses!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -13578,8 +13509,7 @@ class ListRegionsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (regions != null)
-          'regions': regions!.map((value) => value.toJson()).toList(),
+        if (regions != null) 'regions': regions!,
       };
 }
 
@@ -13614,8 +13544,7 @@ class ListRepricingProductReportsResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (repricingProductReports != null)
-          'repricingProductReports':
-              repricingProductReports!.map((value) => value.toJson()).toList(),
+          'repricingProductReports': repricingProductReports!,
       };
 }
 
@@ -13650,8 +13579,7 @@ class ListRepricingRuleReportsResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (repricingRuleReports != null)
-          'repricingRuleReports':
-              repricingRuleReports!.map((value) => value.toJson()).toList(),
+          'repricingRuleReports': repricingRuleReports!,
       };
 }
 
@@ -13685,9 +13613,7 @@ class ListRepricingRulesResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (repricingRules != null)
-          'repricingRules':
-              repricingRules!.map((value) => value.toJson()).toList(),
+        if (repricingRules != null) 'repricingRules': repricingRules!,
       };
 }
 
@@ -13711,9 +13637,7 @@ class ListReturnPolicyOnlineResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (returnPolicies != null)
-          'returnPolicies':
-              returnPolicies!.map((value) => value.toJson()).toList(),
+        if (returnPolicies != null) 'returnPolicies': returnPolicies!,
       };
 }
 
@@ -13828,9 +13752,9 @@ class LocalInventory {
         if (kind != null) 'kind': kind!,
         if (pickupMethod != null) 'pickupMethod': pickupMethod!,
         if (pickupSla != null) 'pickupSla': pickupSla!,
-        if (price != null) 'price': price!.toJson(),
+        if (price != null) 'price': price!,
         if (quantity != null) 'quantity': quantity!,
-        if (salePrice != null) 'salePrice': salePrice!.toJson(),
+        if (salePrice != null) 'salePrice': salePrice!,
         if (salePriceEffectiveDate != null)
           'salePriceEffectiveDate': salePriceEffectiveDate!,
         if (storeCode != null) 'storeCode': storeCode!,
@@ -13857,8 +13781,7 @@ class LocalinventoryCustomBatchRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (entries != null)
-          'entries': entries!.map((value) => value.toJson()).toList(),
+        if (entries != null) 'entries': entries!,
       };
 }
 
@@ -13911,7 +13834,7 @@ class LocalinventoryCustomBatchRequestEntry {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (batchId != null) 'batchId': batchId!,
-        if (localInventory != null) 'localInventory': localInventory!.toJson(),
+        if (localInventory != null) 'localInventory': localInventory!,
         if (merchantId != null) 'merchantId': merchantId!,
         if (method != null) 'method': method!,
         if (productId != null) 'productId': productId!,
@@ -13945,8 +13868,7 @@ class LocalinventoryCustomBatchResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (entries != null)
-          'entries': entries!.map((value) => value.toJson()).toList(),
+        if (entries != null) 'entries': entries!,
         if (kind != null) 'kind': kind!,
       };
 }
@@ -13984,7 +13906,7 @@ class LocalinventoryCustomBatchResponseEntry {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (batchId != null) 'batchId': batchId!,
-        if (errors != null) 'errors': errors!.toJson(),
+        if (errors != null) 'errors': errors!,
         if (kind != null) 'kind': kind!,
       };
 }
@@ -14126,13 +14048,9 @@ class MerchantOrderReturn {
         if (merchantOrderId != null) 'merchantOrderId': merchantOrderId!,
         if (orderId != null) 'orderId': orderId!,
         if (orderReturnId != null) 'orderReturnId': orderReturnId!,
-        if (returnItems != null)
-          'returnItems': returnItems!.map((value) => value.toJson()).toList(),
-        if (returnPricingInfo != null)
-          'returnPricingInfo': returnPricingInfo!.toJson(),
-        if (returnShipments != null)
-          'returnShipments':
-              returnShipments!.map((value) => value.toJson()).toList(),
+        if (returnItems != null) 'returnItems': returnItems!,
+        if (returnPricingInfo != null) 'returnPricingInfo': returnPricingInfo!,
+        if (returnShipments != null) 'returnShipments': returnShipments!,
       };
 }
 
@@ -14241,15 +14159,14 @@ class MerchantOrderReturnItem {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (customerReturnReason != null)
-          'customerReturnReason': customerReturnReason!.toJson(),
+          'customerReturnReason': customerReturnReason!,
         if (itemId != null) 'itemId': itemId!,
         if (merchantRejectionReason != null)
-          'merchantRejectionReason': merchantRejectionReason!.toJson(),
+          'merchantRejectionReason': merchantRejectionReason!,
         if (merchantReturnReason != null)
-          'merchantReturnReason': merchantReturnReason!.toJson(),
-        if (product != null) 'product': product!.toJson(),
-        if (refundableAmount != null)
-          'refundableAmount': refundableAmount!.toJson(),
+          'merchantReturnReason': merchantReturnReason!,
+        if (product != null) 'product': product!,
+        if (refundableAmount != null) 'refundableAmount': refundableAmount!,
         if (returnItemId != null) 'returnItemId': returnItemId!,
         if (returnShipmentIds != null) 'returnShipmentIds': returnShipmentIds!,
         if (shipmentGroupId != null) 'shipmentGroupId': shipmentGroupId!,
@@ -14547,8 +14464,7 @@ class MinimumOrderValueTable {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (storeCodeSetWithMovs != null)
-          'storeCodeSetWithMovs':
-              storeCodeSetWithMovs!.map((value) => value.toJson()).toList(),
+          'storeCodeSetWithMovs': storeCodeSetWithMovs!,
       };
 }
 
@@ -14585,7 +14501,7 @@ class MinimumOrderValueTableStoreCodeSetWithMov {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (storeCodes != null) 'storeCodes': storeCodes!,
-        if (value != null) 'value': value!.toJson(),
+        if (value != null) 'value': value!,
       };
 }
 
@@ -14621,8 +14537,8 @@ class MonetaryAmount {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (priceAmount != null) 'priceAmount': priceAmount!.toJson(),
-        if (taxAmount != null) 'taxAmount': taxAmount!.toJson(),
+        if (priceAmount != null) 'priceAmount': priceAmount!,
+        if (taxAmount != null) 'taxAmount': taxAmount!,
       };
 }
 
@@ -14871,32 +14787,25 @@ class Order {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (acknowledged != null) 'acknowledged': acknowledged!,
-        if (annotations != null)
-          'annotations': annotations!.map((value) => value.toJson()).toList(),
-        if (billingAddress != null) 'billingAddress': billingAddress!.toJson(),
-        if (customer != null) 'customer': customer!.toJson(),
-        if (deliveryDetails != null)
-          'deliveryDetails': deliveryDetails!.toJson(),
+        if (annotations != null) 'annotations': annotations!,
+        if (billingAddress != null) 'billingAddress': billingAddress!,
+        if (customer != null) 'customer': customer!,
+        if (deliveryDetails != null) 'deliveryDetails': deliveryDetails!,
         if (id != null) 'id': id!,
         if (kind != null) 'kind': kind!,
-        if (lineItems != null)
-          'lineItems': lineItems!.map((value) => value.toJson()).toList(),
+        if (lineItems != null) 'lineItems': lineItems!,
         if (merchantId != null) 'merchantId': merchantId!,
         if (merchantOrderId != null) 'merchantOrderId': merchantOrderId!,
-        if (netPriceAmount != null) 'netPriceAmount': netPriceAmount!.toJson(),
-        if (netTaxAmount != null) 'netTaxAmount': netTaxAmount!.toJson(),
+        if (netPriceAmount != null) 'netPriceAmount': netPriceAmount!,
+        if (netTaxAmount != null) 'netTaxAmount': netTaxAmount!,
         if (paymentStatus != null) 'paymentStatus': paymentStatus!,
-        if (pickupDetails != null) 'pickupDetails': pickupDetails!.toJson(),
+        if (pickupDetails != null) 'pickupDetails': pickupDetails!,
         if (placedDate != null) 'placedDate': placedDate!,
-        if (promotions != null)
-          'promotions': promotions!.map((value) => value.toJson()).toList(),
-        if (refunds != null)
-          'refunds': refunds!.map((value) => value.toJson()).toList(),
-        if (shipments != null)
-          'shipments': shipments!.map((value) => value.toJson()).toList(),
-        if (shippingCost != null) 'shippingCost': shippingCost!.toJson(),
-        if (shippingCostTax != null)
-          'shippingCostTax': shippingCostTax!.toJson(),
+        if (promotions != null) 'promotions': promotions!,
+        if (refunds != null) 'refunds': refunds!,
+        if (shipments != null) 'shipments': shipments!,
+        if (shippingCost != null) 'shippingCost': shippingCost!,
+        if (shippingCostTax != null) 'shippingCostTax': shippingCostTax!,
         if (status != null) 'status': status!,
         if (taxCollector != null) 'taxCollector': taxCollector!,
       };
@@ -15113,9 +15022,9 @@ class OrderCustomer {
         if (fullName != null) 'fullName': fullName!,
         if (invoiceReceivingEmail != null)
           'invoiceReceivingEmail': invoiceReceivingEmail!,
-        if (loyaltyInfo != null) 'loyaltyInfo': loyaltyInfo!.toJson(),
+        if (loyaltyInfo != null) 'loyaltyInfo': loyaltyInfo!,
         if (marketingRightsInfo != null)
-          'marketingRightsInfo': marketingRightsInfo!.toJson(),
+          'marketingRightsInfo': marketingRightsInfo!,
       };
 }
 
@@ -15221,7 +15130,7 @@ class OrderDeliveryDetails {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (address != null) 'address': address!.toJson(),
+        if (address != null) 'address': address!,
         if (phoneNumber != null) 'phoneNumber': phoneNumber!,
       };
 }
@@ -15385,16 +15294,12 @@ class OrderLineItem {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (adjustments != null)
-          'adjustments': adjustments!.map((value) => value.toJson()).toList(),
-        if (annotations != null)
-          'annotations': annotations!.map((value) => value.toJson()).toList(),
-        if (cancellations != null)
-          'cancellations':
-              cancellations!.map((value) => value.toJson()).toList(),
+        if (adjustments != null) 'adjustments': adjustments!,
+        if (annotations != null) 'annotations': annotations!,
+        if (cancellations != null) 'cancellations': cancellations!,
         if (id != null) 'id': id!,
-        if (price != null) 'price': price!.toJson(),
-        if (product != null) 'product': product!.toJson(),
+        if (price != null) 'price': price!,
+        if (product != null) 'product': product!,
         if (quantityCanceled != null) 'quantityCanceled': quantityCanceled!,
         if (quantityDelivered != null) 'quantityDelivered': quantityDelivered!,
         if (quantityOrdered != null) 'quantityOrdered': quantityOrdered!,
@@ -15405,12 +15310,10 @@ class OrderLineItem {
         if (quantityShipped != null) 'quantityShipped': quantityShipped!,
         if (quantityUndeliverable != null)
           'quantityUndeliverable': quantityUndeliverable!,
-        if (returnInfo != null) 'returnInfo': returnInfo!.toJson(),
-        if (returns != null)
-          'returns': returns!.map((value) => value.toJson()).toList(),
-        if (shippingDetails != null)
-          'shippingDetails': shippingDetails!.toJson(),
-        if (tax != null) 'tax': tax!.toJson(),
+        if (returnInfo != null) 'returnInfo': returnInfo!,
+        if (returns != null) 'returns': returns!,
+        if (shippingDetails != null) 'shippingDetails': shippingDetails!,
+        if (tax != null) 'tax': tax!,
       };
 }
 
@@ -15446,9 +15349,8 @@ class OrderLineItemAdjustment {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (priceAdjustment != null)
-          'priceAdjustment': priceAdjustment!.toJson(),
-        if (taxAdjustment != null) 'taxAdjustment': taxAdjustment!.toJson(),
+        if (priceAdjustment != null) 'priceAdjustment': priceAdjustment!,
+        if (taxAdjustment != null) 'taxAdjustment': taxAdjustment!,
         if (type != null) 'type': type!,
       };
 }
@@ -15575,20 +15477,18 @@ class OrderLineItemProduct {
         if (brand != null) 'brand': brand!,
         if (condition != null) 'condition': condition!,
         if (contentLanguage != null) 'contentLanguage': contentLanguage!,
-        if (fees != null) 'fees': fees!.map((value) => value.toJson()).toList(),
+        if (fees != null) 'fees': fees!,
         if (gtin != null) 'gtin': gtin!,
         if (id != null) 'id': id!,
         if (imageLink != null) 'imageLink': imageLink!,
         if (itemGroupId != null) 'itemGroupId': itemGroupId!,
         if (mpn != null) 'mpn': mpn!,
         if (offerId != null) 'offerId': offerId!,
-        if (price != null) 'price': price!.toJson(),
+        if (price != null) 'price': price!,
         if (shownImage != null) 'shownImage': shownImage!,
         if (targetCountry != null) 'targetCountry': targetCountry!,
         if (title != null) 'title': title!,
-        if (variantAttributes != null)
-          'variantAttributes':
-              variantAttributes!.map((value) => value.toJson()).toList(),
+        if (variantAttributes != null) 'variantAttributes': variantAttributes!,
       };
 }
 
@@ -15614,7 +15514,7 @@ class OrderLineItemProductFee {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (amount != null) 'amount': amount!.toJson(),
+        if (amount != null) 'amount': amount!,
         if (name != null) 'name': name!,
       };
 }
@@ -15743,7 +15643,7 @@ class OrderLineItemShippingDetails {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (deliverByDate != null) 'deliverByDate': deliverByDate!,
-        if (method != null) 'method': method!.toJson(),
+        if (method != null) 'method': method!,
         if (pickupPromiseInMinutes != null)
           'pickupPromiseInMinutes': pickupPromiseInMinutes!,
         if (shipByDate != null) 'shipByDate': shipByDate!,
@@ -15902,9 +15802,8 @@ class OrderPickupDetails {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (address != null) 'address': address!.toJson(),
-        if (collectors != null)
-          'collectors': collectors!.map((value) => value.toJson()).toList(),
+        if (address != null) 'address': address!,
+        if (collectors != null) 'collectors': collectors!,
         if (locationId != null) 'locationId': locationId!,
         if (pickupType != null) 'pickupType': pickupType!,
       };
@@ -16076,20 +15975,17 @@ class OrderPromotion {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (applicableItems != null)
-          'applicableItems':
-              applicableItems!.map((value) => value.toJson()).toList(),
-        if (appliedItems != null)
-          'appliedItems': appliedItems!.map((value) => value.toJson()).toList(),
+        if (applicableItems != null) 'applicableItems': applicableItems!,
+        if (appliedItems != null) 'appliedItems': appliedItems!,
         if (endTime != null) 'endTime': endTime!,
         if (funder != null) 'funder': funder!,
         if (merchantPromotionId != null)
           'merchantPromotionId': merchantPromotionId!,
-        if (priceValue != null) 'priceValue': priceValue!.toJson(),
+        if (priceValue != null) 'priceValue': priceValue!,
         if (shortTitle != null) 'shortTitle': shortTitle!,
         if (startTime != null) 'startTime': startTime!,
         if (subtype != null) 'subtype': subtype!,
-        if (taxValue != null) 'taxValue': taxValue!.toJson(),
+        if (taxValue != null) 'taxValue': taxValue!,
         if (title != null) 'title': title!,
         if (type != null) 'type': type!,
       };
@@ -16216,7 +16112,7 @@ class OrderRefund {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (actor != null) 'actor': actor!,
-        if (amount != null) 'amount': amount!.toJson(),
+        if (amount != null) 'amount': amount!,
         if (creationDate != null) 'creationDate': creationDate!,
         if (reason != null) 'reason': reason!,
         if (reasonText != null) 'reasonText': reasonText!,
@@ -16273,7 +16169,7 @@ class OrderReportDisbursement {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (disbursementAmount != null)
-          'disbursementAmount': disbursementAmount!.toJson(),
+          'disbursementAmount': disbursementAmount!,
         if (disbursementCreationDate != null)
           'disbursementCreationDate': disbursementCreationDate!,
         if (disbursementDate != null) 'disbursementDate': disbursementDate!,
@@ -16358,7 +16254,7 @@ class OrderReportTransaction {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (disbursementAmount != null)
-          'disbursementAmount': disbursementAmount!.toJson(),
+          'disbursementAmount': disbursementAmount!,
         if (disbursementCreationDate != null)
           'disbursementCreationDate': disbursementCreationDate!,
         if (disbursementDate != null) 'disbursementDate': disbursementDate!,
@@ -16366,7 +16262,7 @@ class OrderReportTransaction {
         if (merchantId != null) 'merchantId': merchantId!,
         if (merchantOrderId != null) 'merchantOrderId': merchantOrderId!,
         if (orderId != null) 'orderId': orderId!,
-        if (productAmount != null) 'productAmount': productAmount!.toJson(),
+        if (productAmount != null) 'productAmount': productAmount!,
         if (transactionDate != null) 'transactionDate': transactionDate!,
       };
 }
@@ -16550,10 +16446,9 @@ class OrderShipment {
         if (creationDate != null) 'creationDate': creationDate!,
         if (deliveryDate != null) 'deliveryDate': deliveryDate!,
         if (id != null) 'id': id!,
-        if (lineItems != null)
-          'lineItems': lineItems!.map((value) => value.toJson()).toList(),
+        if (lineItems != null) 'lineItems': lineItems!,
         if (scheduledDeliveryDetails != null)
-          'scheduledDeliveryDetails': scheduledDeliveryDetails!.toJson(),
+          'scheduledDeliveryDetails': scheduledDeliveryDetails!,
         if (shipmentGroupId != null) 'shipmentGroupId': shipmentGroupId!,
         if (status != null) 'status': status!,
         if (trackingId != null) 'trackingId': trackingId!,
@@ -16755,24 +16650,20 @@ class OrderTrackingSignal {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (customerShippingFee != null)
-          'customerShippingFee': customerShippingFee!.toJson(),
+          'customerShippingFee': customerShippingFee!,
         if (deliveryPostalCode != null)
           'deliveryPostalCode': deliveryPostalCode!,
         if (deliveryRegionCode != null)
           'deliveryRegionCode': deliveryRegionCode!,
-        if (lineItems != null)
-          'lineItems': lineItems!.map((value) => value.toJson()).toList(),
+        if (lineItems != null) 'lineItems': lineItems!,
         if (merchantId != null) 'merchantId': merchantId!,
-        if (orderCreatedTime != null)
-          'orderCreatedTime': orderCreatedTime!.toJson(),
+        if (orderCreatedTime != null) 'orderCreatedTime': orderCreatedTime!,
         if (orderId != null) 'orderId': orderId!,
         if (orderTrackingSignalId != null)
           'orderTrackingSignalId': orderTrackingSignalId!,
         if (shipmentLineItemMapping != null)
-          'shipmentLineItemMapping':
-              shipmentLineItemMapping!.map((value) => value.toJson()).toList(),
-        if (shippingInfo != null)
-          'shippingInfo': shippingInfo!.map((value) => value.toJson()).toList(),
+          'shipmentLineItemMapping': shipmentLineItemMapping!,
+        if (shippingInfo != null) 'shippingInfo': shippingInfo!,
       };
 }
 
@@ -17011,18 +16902,18 @@ class OrderTrackingSignalShippingInfo {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (actualDeliveryTime != null)
-          'actualDeliveryTime': actualDeliveryTime!.toJson(),
+          'actualDeliveryTime': actualDeliveryTime!,
         if (carrierName != null) 'carrierName': carrierName!,
         if (carrierServiceName != null)
           'carrierServiceName': carrierServiceName!,
         if (earliestDeliveryPromiseTime != null)
-          'earliestDeliveryPromiseTime': earliestDeliveryPromiseTime!.toJson(),
+          'earliestDeliveryPromiseTime': earliestDeliveryPromiseTime!,
         if (latestDeliveryPromiseTime != null)
-          'latestDeliveryPromiseTime': latestDeliveryPromiseTime!.toJson(),
+          'latestDeliveryPromiseTime': latestDeliveryPromiseTime!,
         if (originPostalCode != null) 'originPostalCode': originPostalCode!,
         if (originRegionCode != null) 'originRegionCode': originRegionCode!,
         if (shipmentId != null) 'shipmentId': shipmentId!,
-        if (shippedTime != null) 'shippedTime': shippedTime!.toJson(),
+        if (shippedTime != null) 'shippedTime': shippedTime!,
         if (shippingStatus != null) 'shippingStatus': shippingStatus!,
         if (trackingId != null) 'trackingId': trackingId!,
       };
@@ -17090,10 +16981,8 @@ class OrderinvoicesCreateChargeInvoiceRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (invoiceId != null) 'invoiceId': invoiceId!,
-        if (invoiceSummary != null) 'invoiceSummary': invoiceSummary!.toJson(),
-        if (lineItemInvoices != null)
-          'lineItemInvoices':
-              lineItemInvoices!.map((value) => value.toJson()).toList(),
+        if (invoiceSummary != null) 'invoiceSummary': invoiceSummary!,
+        if (lineItemInvoices != null) 'lineItemInvoices': lineItemInvoices!,
         if (operationId != null) 'operationId': operationId!,
         if (shipmentGroupId != null) 'shipmentGroupId': shipmentGroupId!,
       };
@@ -17194,12 +17083,9 @@ class OrderinvoicesCreateRefundInvoiceRequest {
   core.Map<core.String, core.dynamic> toJson() => {
         if (invoiceId != null) 'invoiceId': invoiceId!,
         if (operationId != null) 'operationId': operationId!,
-        if (refundOnlyOption != null)
-          'refundOnlyOption': refundOnlyOption!.toJson(),
-        if (returnOption != null) 'returnOption': returnOption!.toJson(),
-        if (shipmentInvoices != null)
-          'shipmentInvoices':
-              shipmentInvoices!.map((value) => value.toJson()).toList(),
+        if (refundOnlyOption != null) 'refundOnlyOption': refundOnlyOption!,
+        if (returnOption != null) 'returnOption': returnOption!,
+        if (shipmentInvoices != null) 'shipmentInvoices': shipmentInvoices!,
       };
 }
 
@@ -17356,9 +17242,7 @@ class OrderreportsListDisbursementsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (disbursements != null)
-          'disbursements':
-              disbursements!.map((value) => value.toJson()).toList(),
+        if (disbursements != null) 'disbursements': disbursements!,
         if (kind != null) 'kind': kind!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
@@ -17399,8 +17283,7 @@ class OrderreportsListTransactionsResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (transactions != null)
-          'transactions': transactions!.map((value) => value.toJson()).toList(),
+        if (transactions != null) 'transactions': transactions!,
       };
 }
 
@@ -17499,8 +17382,7 @@ class OrderreturnsCreateOrderReturnRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (lineItems != null)
-          'lineItems': lineItems!.map((value) => value.toJson()).toList(),
+        if (lineItems != null) 'lineItems': lineItems!,
         if (operationId != null) 'operationId': operationId!,
         if (orderId != null) 'orderId': orderId!,
         if (returnMethodType != null) 'returnMethodType': returnMethodType!,
@@ -17542,7 +17424,7 @@ class OrderreturnsCreateOrderReturnResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (executionStatus != null) 'executionStatus': executionStatus!,
         if (kind != null) 'kind': kind!,
-        if (orderReturn != null) 'orderReturn': orderReturn!.toJson(),
+        if (orderReturn != null) 'orderReturn': orderReturn!,
       };
 }
 
@@ -17621,8 +17503,7 @@ class OrderreturnsListResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (resources != null)
-          'resources': resources!.map((value) => value.toJson()).toList(),
+        if (resources != null) 'resources': resources!,
       };
 }
 
@@ -17654,8 +17535,8 @@ class OrderreturnsPartialRefund {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (priceAmount != null) 'priceAmount': priceAmount!.toJson(),
-        if (taxAmount != null) 'taxAmount': taxAmount!.toJson(),
+        if (priceAmount != null) 'priceAmount': priceAmount!,
+        if (taxAmount != null) 'taxAmount': taxAmount!,
       };
 }
 
@@ -17707,10 +17588,8 @@ class OrderreturnsProcessRequest {
         if (fullChargeReturnShippingCost != null)
           'fullChargeReturnShippingCost': fullChargeReturnShippingCost!,
         if (operationId != null) 'operationId': operationId!,
-        if (refundShippingFee != null)
-          'refundShippingFee': refundShippingFee!.toJson(),
-        if (returnItems != null)
-          'returnItems': returnItems!.map((value) => value.toJson()).toList(),
+        if (refundShippingFee != null) 'refundShippingFee': refundShippingFee!,
+        if (returnItems != null) 'returnItems': returnItems!,
       };
 }
 
@@ -17799,7 +17678,7 @@ class OrderreturnsRefundOperation {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (fullRefund != null) 'fullRefund': fullRefund!,
-        if (partialRefund != null) 'partialRefund': partialRefund!.toJson(),
+        if (partialRefund != null) 'partialRefund': partialRefund!,
         if (paymentType != null) 'paymentType': paymentType!,
         if (reasonText != null) 'reasonText': reasonText!,
         if (returnRefundReason != null)
@@ -17869,8 +17748,8 @@ class OrderreturnsReturnItem {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (refund != null) 'refund': refund!.toJson(),
-        if (reject != null) 'reject': reject!.toJson(),
+        if (refund != null) 'refund': refund!,
+        if (reject != null) 'reject': reject!,
         if (returnItemId != null) 'returnItemId': returnItemId!,
       };
 }
@@ -18208,7 +18087,7 @@ class OrdersCreateTestOrderRequest {
   core.Map<core.String, core.dynamic> toJson() => {
         if (country != null) 'country': country!,
         if (templateName != null) 'templateName': templateName!,
-        if (testOrder != null) 'testOrder': testOrder!.toJson(),
+        if (testOrder != null) 'testOrder': testOrder!,
       };
 }
 
@@ -18261,8 +18140,7 @@ class OrdersCreateTestReturnRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (items != null)
-          'items': items!.map((value) => value.toJson()).toList(),
+        if (items != null) 'items': items!,
       };
 }
 
@@ -18379,7 +18257,7 @@ class OrdersCustomBatchRequestEntryRefundItemItem {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (amount != null) 'amount': amount!.toJson(),
+        if (amount != null) 'amount': amount!,
         if (fullRefund != null) 'fullRefund': fullRefund!,
         if (lineItemId != null) 'lineItemId': lineItemId!,
         if (productId != null) 'productId': productId!,
@@ -18418,7 +18296,7 @@ class OrdersCustomBatchRequestEntryRefundItemShipping {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (amount != null) 'amount': amount!.toJson(),
+        if (amount != null) 'amount': amount!,
         if (fullRefund != null) 'fullRefund': fullRefund!,
       };
 }
@@ -18525,7 +18403,7 @@ class OrdersGetByMerchantOrderIdResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
-        if (order != null) 'order': order!.toJson(),
+        if (order != null) 'order': order!,
       };
 }
 
@@ -18554,7 +18432,7 @@ class OrdersGetTestOrderTemplateResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
-        if (template != null) 'template': template!.toJson(),
+        if (template != null) 'template': template!,
       };
 }
 
@@ -18646,12 +18524,12 @@ class OrdersInStoreRefundLineItemRequest {
   core.Map<core.String, core.dynamic> toJson() => {
         if (lineItemId != null) 'lineItemId': lineItemId!,
         if (operationId != null) 'operationId': operationId!,
-        if (priceAmount != null) 'priceAmount': priceAmount!.toJson(),
+        if (priceAmount != null) 'priceAmount': priceAmount!,
         if (productId != null) 'productId': productId!,
         if (quantity != null) 'quantity': quantity!,
         if (reason != null) 'reason': reason!,
         if (reasonText != null) 'reasonText': reasonText!,
-        if (taxAmount != null) 'taxAmount': taxAmount!.toJson(),
+        if (taxAmount != null) 'taxAmount': taxAmount!,
       };
 }
 
@@ -18718,8 +18596,7 @@ class OrdersListResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (resources != null)
-          'resources': resources!.map((value) => value.toJson()).toList(),
+        if (resources != null) 'resources': resources!,
       };
 }
 
@@ -18785,12 +18662,11 @@ class OrdersRefundItemRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (items != null)
-          'items': items!.map((value) => value.toJson()).toList(),
+        if (items != null) 'items': items!,
         if (operationId != null) 'operationId': operationId!,
         if (reason != null) 'reason': reason!,
         if (reasonText != null) 'reasonText': reasonText!,
-        if (shipping != null) 'shipping': shipping!.toJson(),
+        if (shipping != null) 'shipping': shipping!,
       };
 }
 
@@ -18878,7 +18754,7 @@ class OrdersRefundOrderRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (amount != null) 'amount': amount!.toJson(),
+        if (amount != null) 'amount': amount!,
         if (fullRefund != null) 'fullRefund': fullRefund!,
         if (operationId != null) 'operationId': operationId!,
         if (reason != null) 'reason': reason!,
@@ -19107,12 +18983,12 @@ class OrdersReturnRefundLineItemRequest {
   core.Map<core.String, core.dynamic> toJson() => {
         if (lineItemId != null) 'lineItemId': lineItemId!,
         if (operationId != null) 'operationId': operationId!,
-        if (priceAmount != null) 'priceAmount': priceAmount!.toJson(),
+        if (priceAmount != null) 'priceAmount': priceAmount!,
         if (productId != null) 'productId': productId!,
         if (quantity != null) 'quantity': quantity!,
         if (reason != null) 'reason': reason!,
         if (reasonText != null) 'reasonText': reasonText!,
-        if (taxAmount != null) 'taxAmount': taxAmount!.toJson(),
+        if (taxAmount != null) 'taxAmount': taxAmount!,
       };
 }
 
@@ -19192,8 +19068,7 @@ class OrdersSetLineItemMetadataRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (annotations != null)
-          'annotations': annotations!.map((value) => value.toJson()).toList(),
+        if (annotations != null) 'annotations': annotations!,
         if (lineItemId != null) 'lineItemId': lineItemId!,
         if (operationId != null) 'operationId': operationId!,
         if (productId != null) 'productId': productId!,
@@ -19283,13 +19158,10 @@ class OrdersShipLineItemsRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (lineItems != null)
-          'lineItems': lineItems!.map((value) => value.toJson()).toList(),
+        if (lineItems != null) 'lineItems': lineItems!,
         if (operationId != null) 'operationId': operationId!,
         if (shipmentGroupId != null) 'shipmentGroupId': shipmentGroupId!,
-        if (shipmentInfos != null)
-          'shipmentInfos':
-              shipmentInfos!.map((value) => value.toJson()).toList(),
+        if (shipmentInfos != null) 'shipmentInfos': shipmentInfos!,
       };
 }
 
@@ -19589,7 +19461,7 @@ class OrdersUpdateShipmentRequest {
         if (operationId != null) 'operationId': operationId!,
         if (readyPickupDate != null) 'readyPickupDate': readyPickupDate!,
         if (scheduledDeliveryDetails != null)
-          'scheduledDeliveryDetails': scheduledDeliveryDetails!.toJson(),
+          'scheduledDeliveryDetails': scheduledDeliveryDetails!,
         if (shipmentId != null) 'shipmentId': shipmentId!,
         if (status != null) 'status': status!,
         if (trackingId != null) 'trackingId': trackingId!,
@@ -19755,8 +19627,7 @@ class PosCustomBatchRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (entries != null)
-          'entries': entries!.map((value) => value.toJson()).toList(),
+        if (entries != null) 'entries': entries!,
       };
 }
 
@@ -19840,11 +19711,11 @@ class PosCustomBatchRequestEntry {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (batchId != null) 'batchId': batchId!,
-        if (inventory != null) 'inventory': inventory!.toJson(),
+        if (inventory != null) 'inventory': inventory!,
         if (merchantId != null) 'merchantId': merchantId!,
         if (method != null) 'method': method!,
-        if (sale != null) 'sale': sale!.toJson(),
-        if (store != null) 'store': store!.toJson(),
+        if (sale != null) 'sale': sale!,
+        if (store != null) 'store': store!,
         if (storeCode != null) 'storeCode': storeCode!,
         if (targetMerchantId != null) 'targetMerchantId': targetMerchantId!,
       };
@@ -19876,8 +19747,7 @@ class PosCustomBatchResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (entries != null)
-          'entries': entries!.map((value) => value.toJson()).toList(),
+        if (entries != null) 'entries': entries!,
         if (kind != null) 'kind': kind!,
       };
 }
@@ -19938,11 +19808,11 @@ class PosCustomBatchResponseEntry {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (batchId != null) 'batchId': batchId!,
-        if (errors != null) 'errors': errors!.toJson(),
-        if (inventory != null) 'inventory': inventory!.toJson(),
+        if (errors != null) 'errors': errors!,
+        if (inventory != null) 'inventory': inventory!,
         if (kind != null) 'kind': kind!,
-        if (sale != null) 'sale': sale!.toJson(),
-        if (store != null) 'store': store!.toJson(),
+        if (sale != null) 'sale': sale!,
+        if (store != null) 'store': store!,
       };
 }
 
@@ -19973,9 +19843,7 @@ class PosDataProviders {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (country != null) 'country': country!,
-        if (posDataProviders != null)
-          'posDataProviders':
-              posDataProviders!.map((value) => value.toJson()).toList(),
+        if (posDataProviders != null) 'posDataProviders': posDataProviders!,
       };
 }
 
@@ -20108,7 +19976,7 @@ class PosInventory {
         if (gtin != null) 'gtin': gtin!,
         if (itemId != null) 'itemId': itemId!,
         if (kind != null) 'kind': kind!,
-        if (price != null) 'price': price!.toJson(),
+        if (price != null) 'price': price!,
         if (quantity != null) 'quantity': quantity!,
         if (storeCode != null) 'storeCode': storeCode!,
         if (targetCountry != null) 'targetCountry': targetCountry!,
@@ -20200,7 +20068,7 @@ class PosInventoryRequest {
         if (contentLanguage != null) 'contentLanguage': contentLanguage!,
         if (gtin != null) 'gtin': gtin!,
         if (itemId != null) 'itemId': itemId!,
-        if (price != null) 'price': price!.toJson(),
+        if (price != null) 'price': price!,
         if (quantity != null) 'quantity': quantity!,
         if (storeCode != null) 'storeCode': storeCode!,
         if (targetCountry != null) 'targetCountry': targetCountry!,
@@ -20300,7 +20168,7 @@ class PosInventoryResponse {
         if (gtin != null) 'gtin': gtin!,
         if (itemId != null) 'itemId': itemId!,
         if (kind != null) 'kind': kind!,
-        if (price != null) 'price': price!.toJson(),
+        if (price != null) 'price': price!,
         if (quantity != null) 'quantity': quantity!,
         if (storeCode != null) 'storeCode': storeCode!,
         if (targetCountry != null) 'targetCountry': targetCountry!,
@@ -20333,8 +20201,7 @@ class PosListResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
-        if (resources != null)
-          'resources': resources!.map((value) => value.toJson()).toList(),
+        if (resources != null) 'resources': resources!,
       };
 }
 
@@ -20440,7 +20307,7 @@ class PosSale {
         if (gtin != null) 'gtin': gtin!,
         if (itemId != null) 'itemId': itemId!,
         if (kind != null) 'kind': kind!,
-        if (price != null) 'price': price!.toJson(),
+        if (price != null) 'price': price!,
         if (quantity != null) 'quantity': quantity!,
         if (saleId != null) 'saleId': saleId!,
         if (storeCode != null) 'storeCode': storeCode!,
@@ -20542,7 +20409,7 @@ class PosSaleRequest {
         if (contentLanguage != null) 'contentLanguage': contentLanguage!,
         if (gtin != null) 'gtin': gtin!,
         if (itemId != null) 'itemId': itemId!,
-        if (price != null) 'price': price!.toJson(),
+        if (price != null) 'price': price!,
         if (quantity != null) 'quantity': quantity!,
         if (saleId != null) 'saleId': saleId!,
         if (storeCode != null) 'storeCode': storeCode!,
@@ -20652,7 +20519,7 @@ class PosSaleResponse {
         if (gtin != null) 'gtin': gtin!,
         if (itemId != null) 'itemId': itemId!,
         if (kind != null) 'kind': kind!,
-        if (price != null) 'price': price!.toJson(),
+        if (price != null) 'price': price!,
         if (quantity != null) 'quantity': quantity!,
         if (saleId != null) 'saleId': saleId!,
         if (storeCode != null) 'storeCode': storeCode!,
@@ -20741,9 +20608,7 @@ class PostalCodeGroup {
   core.Map<core.String, core.dynamic> toJson() => {
         if (country != null) 'country': country!,
         if (name != null) 'name': name!,
-        if (postalCodeRanges != null)
-          'postalCodeRanges':
-              postalCodeRanges!.map((value) => value.toJson()).toList(),
+        if (postalCodeRanges != null) 'postalCodeRanges': postalCodeRanges!,
       };
 }
 
@@ -21634,11 +21499,8 @@ class Product {
         if (color != null) 'color': color!,
         if (condition != null) 'condition': condition!,
         if (contentLanguage != null) 'contentLanguage': contentLanguage!,
-        if (costOfGoodsSold != null)
-          'costOfGoodsSold': costOfGoodsSold!.toJson(),
-        if (customAttributes != null)
-          'customAttributes':
-              customAttributes!.map((value) => value.toJson()).toList(),
+        if (costOfGoodsSold != null) 'costOfGoodsSold': costOfGoodsSold!,
+        if (customAttributes != null) 'customAttributes': customAttributes!,
         if (customLabel0 != null) 'customLabel0': customLabel0!,
         if (customLabel1 != null) 'customLabel1': customLabel1!,
         if (customLabel2 != null) 'customLabel2': customLabel2!,
@@ -21665,13 +21527,13 @@ class Product {
         if (imageLink != null) 'imageLink': imageLink!,
         if (includedDestinations != null)
           'includedDestinations': includedDestinations!,
-        if (installment != null) 'installment': installment!.toJson(),
+        if (installment != null) 'installment': installment!,
         if (isBundle != null) 'isBundle': isBundle!,
         if (itemGroupId != null) 'itemGroupId': itemGroupId!,
         if (kind != null) 'kind': kind!,
         if (link != null) 'link': link!,
         if (linkTemplate != null) 'linkTemplate': linkTemplate!,
-        if (loyaltyPoints != null) 'loyaltyPoints': loyaltyPoints!.toJson(),
+        if (loyaltyPoints != null) 'loyaltyPoints': loyaltyPoints!,
         if (material != null) 'material': material!,
         if (maxEnergyEfficiencyClass != null)
           'maxEnergyEfficiencyClass': maxEnergyEfficiencyClass!,
@@ -21688,47 +21550,42 @@ class Product {
         if (pattern != null) 'pattern': pattern!,
         if (pickupMethod != null) 'pickupMethod': pickupMethod!,
         if (pickupSla != null) 'pickupSla': pickupSla!,
-        if (price != null) 'price': price!.toJson(),
-        if (productDetails != null)
-          'productDetails':
-              productDetails!.map((value) => value.toJson()).toList(),
-        if (productHeight != null) 'productHeight': productHeight!.toJson(),
+        if (price != null) 'price': price!,
+        if (productDetails != null) 'productDetails': productDetails!,
+        if (productHeight != null) 'productHeight': productHeight!,
         if (productHighlights != null) 'productHighlights': productHighlights!,
-        if (productLength != null) 'productLength': productLength!.toJson(),
+        if (productLength != null) 'productLength': productLength!,
         if (productTypes != null) 'productTypes': productTypes!,
-        if (productWeight != null) 'productWeight': productWeight!.toJson(),
-        if (productWidth != null) 'productWidth': productWidth!.toJson(),
+        if (productWeight != null) 'productWeight': productWeight!,
+        if (productWidth != null) 'productWidth': productWidth!,
         if (promotionIds != null) 'promotionIds': promotionIds!,
-        if (salePrice != null) 'salePrice': salePrice!.toJson(),
+        if (salePrice != null) 'salePrice': salePrice!,
         if (salePriceEffectiveDate != null)
           'salePriceEffectiveDate': salePriceEffectiveDate!,
         if (sellOnGoogleQuantity != null)
           'sellOnGoogleQuantity': sellOnGoogleQuantity!,
-        if (shipping != null)
-          'shipping': shipping!.map((value) => value.toJson()).toList(),
-        if (shippingHeight != null) 'shippingHeight': shippingHeight!.toJson(),
+        if (shipping != null) 'shipping': shipping!,
+        if (shippingHeight != null) 'shippingHeight': shippingHeight!,
         if (shippingLabel != null) 'shippingLabel': shippingLabel!,
-        if (shippingLength != null) 'shippingLength': shippingLength!.toJson(),
-        if (shippingWeight != null) 'shippingWeight': shippingWeight!.toJson(),
-        if (shippingWidth != null) 'shippingWidth': shippingWidth!.toJson(),
+        if (shippingLength != null) 'shippingLength': shippingLength!,
+        if (shippingWeight != null) 'shippingWeight': shippingWeight!,
+        if (shippingWidth != null) 'shippingWidth': shippingWidth!,
         if (shoppingAdsExcludedCountries != null)
           'shoppingAdsExcludedCountries': shoppingAdsExcludedCountries!,
         if (sizeSystem != null) 'sizeSystem': sizeSystem!,
         if (sizeType != null) 'sizeType': sizeType!,
         if (sizes != null) 'sizes': sizes!,
         if (source != null) 'source': source!,
-        if (subscriptionCost != null)
-          'subscriptionCost': subscriptionCost!.toJson(),
+        if (subscriptionCost != null) 'subscriptionCost': subscriptionCost!,
         if (targetCountry != null) 'targetCountry': targetCountry!,
         if (taxCategory != null) 'taxCategory': taxCategory!,
-        if (taxes != null)
-          'taxes': taxes!.map((value) => value.toJson()).toList(),
+        if (taxes != null) 'taxes': taxes!,
         if (title != null) 'title': title!,
         if (transitTimeLabel != null) 'transitTimeLabel': transitTimeLabel!,
         if (unitPricingBaseMeasure != null)
-          'unitPricingBaseMeasure': unitPricingBaseMeasure!.toJson(),
+          'unitPricingBaseMeasure': unitPricingBaseMeasure!,
         if (unitPricingMeasure != null)
-          'unitPricingMeasure': unitPricingMeasure!.toJson(),
+          'unitPricingMeasure': unitPricingMeasure!,
       };
 }
 
@@ -21765,10 +21622,9 @@ class ProductAmount {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (priceAmount != null) 'priceAmount': priceAmount!.toJson(),
-        if (remittedTaxAmount != null)
-          'remittedTaxAmount': remittedTaxAmount!.toJson(),
-        if (taxAmount != null) 'taxAmount': taxAmount!.toJson(),
+        if (priceAmount != null) 'priceAmount': priceAmount!,
+        if (remittedTaxAmount != null) 'remittedTaxAmount': remittedTaxAmount!,
+        if (taxAmount != null) 'taxAmount': taxAmount!,
       };
 }
 
@@ -21962,7 +21818,7 @@ class ProductShipping {
         if (minHandlingTime != null) 'minHandlingTime': minHandlingTime!,
         if (minTransitTime != null) 'minTransitTime': minTransitTime!,
         if (postalCode != null) 'postalCode': postalCode!,
-        if (price != null) 'price': price!.toJson(),
+        if (price != null) 'price': price!,
         if (region != null) 'region': region!,
         if (service != null) 'service': service!,
       };
@@ -22100,13 +21956,10 @@ class ProductStatus {
   core.Map<core.String, core.dynamic> toJson() => {
         if (creationDate != null) 'creationDate': creationDate!,
         if (destinationStatuses != null)
-          'destinationStatuses':
-              destinationStatuses!.map((value) => value.toJson()).toList(),
+          'destinationStatuses': destinationStatuses!,
         if (googleExpirationDate != null)
           'googleExpirationDate': googleExpirationDate!,
-        if (itemLevelIssues != null)
-          'itemLevelIssues':
-              itemLevelIssues!.map((value) => value.toJson()).toList(),
+        if (itemLevelIssues != null) 'itemLevelIssues': itemLevelIssues!,
         if (kind != null) 'kind': kind!,
         if (lastUpdateDate != null) 'lastUpdateDate': lastUpdateDate!,
         if (link != null) 'link': link!,
@@ -22292,7 +22145,7 @@ class ProductSubscriptionCost {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (amount != null) 'amount': amount!.toJson(),
+        if (amount != null) 'amount': amount!,
         if (period != null) 'period': period!,
         if (periodLength != null) 'periodLength': periodLength!,
       };
@@ -22468,8 +22321,7 @@ class ProductsCustomBatchRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (entries != null)
-          'entries': entries!.map((value) => value.toJson()).toList(),
+        if (entries != null) 'entries': entries!,
       };
 }
 
@@ -22556,7 +22408,7 @@ class ProductsCustomBatchRequestEntry {
         if (feedId != null) 'feedId': feedId!,
         if (merchantId != null) 'merchantId': merchantId!,
         if (method != null) 'method': method!,
-        if (product != null) 'product': product!.toJson(),
+        if (product != null) 'product': product!,
         if (productId != null) 'productId': productId!,
         if (updateMask != null) 'updateMask': updateMask!,
       };
@@ -22588,8 +22440,7 @@ class ProductsCustomBatchResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (entries != null)
-          'entries': entries!.map((value) => value.toJson()).toList(),
+        if (entries != null) 'entries': entries!,
         if (kind != null) 'kind': kind!,
       };
 }
@@ -22637,9 +22488,9 @@ class ProductsCustomBatchResponseEntry {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (batchId != null) 'batchId': batchId!,
-        if (errors != null) 'errors': errors!.toJson(),
+        if (errors != null) 'errors': errors!,
         if (kind != null) 'kind': kind!,
-        if (product != null) 'product': product!.toJson(),
+        if (product != null) 'product': product!,
       };
 }
 
@@ -22676,8 +22527,7 @@ class ProductsListResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (resources != null)
-          'resources': resources!.map((value) => value.toJson()).toList(),
+        if (resources != null) 'resources': resources!,
       };
 }
 
@@ -22701,8 +22551,7 @@ class ProductstatusesCustomBatchRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (entries != null)
-          'entries': entries!.map((value) => value.toJson()).toList(),
+        if (entries != null) 'entries': entries!,
       };
 }
 
@@ -22797,8 +22646,7 @@ class ProductstatusesCustomBatchResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (entries != null)
-          'entries': entries!.map((value) => value.toJson()).toList(),
+        if (entries != null) 'entries': entries!,
         if (kind != null) 'kind': kind!,
       };
 }
@@ -22847,9 +22695,9 @@ class ProductstatusesCustomBatchResponseEntry {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (batchId != null) 'batchId': batchId!,
-        if (errors != null) 'errors': errors!.toJson(),
+        if (errors != null) 'errors': errors!,
         if (kind != null) 'kind': kind!,
-        if (productStatus != null) 'productStatus': productStatus!.toJson(),
+        if (productStatus != null) 'productStatus': productStatus!,
       };
 }
 
@@ -22886,8 +22734,7 @@ class ProductstatusesListResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (resources != null)
-          'resources': resources!.map((value) => value.toJson()).toList(),
+        if (resources != null) 'resources': resources!,
       };
 }
 
@@ -23215,7 +23062,7 @@ class Promotion {
         if (freeGiftDescription != null)
           'freeGiftDescription': freeGiftDescription!,
         if (freeGiftItemId != null) 'freeGiftItemId': freeGiftItemId!,
-        if (freeGiftValue != null) 'freeGiftValue': freeGiftValue!.toJson(),
+        if (freeGiftValue != null) 'freeGiftValue': freeGiftValue!,
         if (genericRedemptionCode != null)
           'genericRedemptionCode': genericRedemptionCode!,
         if (getThisQuantityDiscounted != null)
@@ -23227,14 +23074,14 @@ class Promotion {
         if (itemId != null) 'itemId': itemId!,
         if (itemIdExclusion != null) 'itemIdExclusion': itemIdExclusion!,
         if (limitQuantity != null) 'limitQuantity': limitQuantity!,
-        if (limitValue != null) 'limitValue': limitValue!.toJson(),
+        if (limitValue != null) 'limitValue': limitValue!,
         if (longTitle != null) 'longTitle': longTitle!,
         if (minimumPurchaseAmount != null)
-          'minimumPurchaseAmount': minimumPurchaseAmount!.toJson(),
+          'minimumPurchaseAmount': minimumPurchaseAmount!,
         if (minimumPurchaseQuantity != null)
           'minimumPurchaseQuantity': minimumPurchaseQuantity!,
-        if (moneyBudget != null) 'moneyBudget': moneyBudget!.toJson(),
-        if (moneyOffAmount != null) 'moneyOffAmount': moneyOffAmount!.toJson(),
+        if (moneyBudget != null) 'moneyBudget': moneyBudget!,
+        if (moneyOffAmount != null) 'moneyOffAmount': moneyOffAmount!,
         if (offerType != null) 'offerType': offerType!,
         if (orderLimit != null) 'orderLimit': orderLimit!,
         if (percentOff != null) 'percentOff': percentOff!,
@@ -23373,13 +23220,11 @@ class RateGroup {
   core.Map<core.String, core.dynamic> toJson() => {
         if (applicableShippingLabels != null)
           'applicableShippingLabels': applicableShippingLabels!,
-        if (carrierRates != null)
-          'carrierRates': carrierRates!.map((value) => value.toJson()).toList(),
-        if (mainTable != null) 'mainTable': mainTable!.toJson(),
+        if (carrierRates != null) 'carrierRates': carrierRates!,
+        if (mainTable != null) 'mainTable': mainTable!,
         if (name != null) 'name': name!,
-        if (singleValue != null) 'singleValue': singleValue!.toJson(),
-        if (subtables != null)
-          'subtables': subtables!.map((value) => value.toJson()).toList(),
+        if (singleValue != null) 'singleValue': singleValue!,
+        if (subtables != null) 'subtables': subtables!,
       };
 }
 
@@ -23508,9 +23353,9 @@ class Region {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
-        if (geotargetArea != null) 'geotargetArea': geotargetArea!.toJson(),
+        if (geotargetArea != null) 'geotargetArea': geotargetArea!,
         if (merchantId != null) 'merchantId': merchantId!,
-        if (postalCodeArea != null) 'postalCodeArea': postalCodeArea!.toJson(),
+        if (postalCodeArea != null) 'postalCodeArea': postalCodeArea!,
         if (regionId != null) 'regionId': regionId!,
         if (regionalInventoryEligible != null)
           'regionalInventoryEligible': regionalInventoryEligible!,
@@ -23581,8 +23426,7 @@ class RegionPostalCodeArea {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (postalCodes != null)
-          'postalCodes': postalCodes!.map((value) => value.toJson()).toList(),
+        if (postalCodes != null) 'postalCodes': postalCodes!,
         if (regionCode != null) 'regionCode': regionCode!,
       };
 }
@@ -23704,13 +23548,11 @@ class RegionalInventory {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (availability != null) 'availability': availability!,
-        if (customAttributes != null)
-          'customAttributes':
-              customAttributes!.map((value) => value.toJson()).toList(),
+        if (customAttributes != null) 'customAttributes': customAttributes!,
         if (kind != null) 'kind': kind!,
-        if (price != null) 'price': price!.toJson(),
+        if (price != null) 'price': price!,
         if (regionId != null) 'regionId': regionId!,
-        if (salePrice != null) 'salePrice': salePrice!.toJson(),
+        if (salePrice != null) 'salePrice': salePrice!,
         if (salePriceEffectiveDate != null)
           'salePriceEffectiveDate': salePriceEffectiveDate!,
       };
@@ -23736,8 +23578,7 @@ class RegionalinventoryCustomBatchRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (entries != null)
-          'entries': entries!.map((value) => value.toJson()).toList(),
+        if (entries != null) 'entries': entries!,
       };
 }
 
@@ -23793,8 +23634,7 @@ class RegionalinventoryCustomBatchRequestEntry {
         if (merchantId != null) 'merchantId': merchantId!,
         if (method != null) 'method': method!,
         if (productId != null) 'productId': productId!,
-        if (regionalInventory != null)
-          'regionalInventory': regionalInventory!.toJson(),
+        if (regionalInventory != null) 'regionalInventory': regionalInventory!,
       };
 }
 
@@ -23825,8 +23665,7 @@ class RegionalinventoryCustomBatchResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (entries != null)
-          'entries': entries!.map((value) => value.toJson()).toList(),
+        if (entries != null) 'entries': entries!,
         if (kind != null) 'kind': kind!,
       };
 }
@@ -23873,10 +23712,9 @@ class RegionalinventoryCustomBatchResponseEntry {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (batchId != null) 'batchId': batchId!,
-        if (errors != null) 'errors': errors!.toJson(),
+        if (errors != null) 'errors': errors!,
         if (kind != null) 'kind': kind!,
-        if (regionalInventory != null)
-          'regionalInventory': regionalInventory!.toJson(),
+        if (regionalInventory != null) 'regionalInventory': regionalInventory!,
       };
 }
 
@@ -23911,8 +23749,8 @@ class ReportRow {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (metrics != null) 'metrics': metrics!.toJson(),
-        if (segments != null) 'segments': segments!.toJson(),
+        if (metrics != null) 'metrics': metrics!,
+        if (segments != null) 'segments': segments!,
       };
 }
 
@@ -24046,16 +23884,15 @@ class RepricingProductReport {
   core.Map<core.String, core.dynamic> toJson() => {
         if (applicationCount != null) 'applicationCount': applicationCount!,
         if (buyboxWinningProductStats != null)
-          'buyboxWinningProductStats': buyboxWinningProductStats!.toJson(),
-        if (date != null) 'date': date!.toJson(),
-        if (highWatermark != null) 'highWatermark': highWatermark!.toJson(),
+          'buyboxWinningProductStats': buyboxWinningProductStats!,
+        if (date != null) 'date': date!,
+        if (highWatermark != null) 'highWatermark': highWatermark!,
         if (inapplicabilityDetails != null)
-          'inapplicabilityDetails':
-              inapplicabilityDetails!.map((value) => value.toJson()).toList(),
-        if (lowWatermark != null) 'lowWatermark': lowWatermark!.toJson(),
+          'inapplicabilityDetails': inapplicabilityDetails!,
+        if (lowWatermark != null) 'lowWatermark': lowWatermark!,
         if (orderItemCount != null) 'orderItemCount': orderItemCount!,
         if (ruleIds != null) 'ruleIds': ruleIds!,
-        if (totalGmv != null) 'totalGmv': totalGmv!.toJson(),
+        if (totalGmv != null) 'totalGmv': totalGmv!,
         if (type != null) 'type': type!,
       };
 }
@@ -24222,18 +24059,18 @@ class RepricingRule {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cogsBasedRule != null) 'cogsBasedRule': cogsBasedRule!.toJson(),
+        if (cogsBasedRule != null) 'cogsBasedRule': cogsBasedRule!,
         if (countryCode != null) 'countryCode': countryCode!,
         if (effectiveTimePeriod != null)
-          'effectiveTimePeriod': effectiveTimePeriod!.toJson(),
+          'effectiveTimePeriod': effectiveTimePeriod!,
         if (eligibleOfferMatcher != null)
-          'eligibleOfferMatcher': eligibleOfferMatcher!.toJson(),
+          'eligibleOfferMatcher': eligibleOfferMatcher!,
         if (languageCode != null) 'languageCode': languageCode!,
         if (merchantId != null) 'merchantId': merchantId!,
         if (paused != null) 'paused': paused!,
-        if (restriction != null) 'restriction': restriction!.toJson(),
+        if (restriction != null) 'restriction': restriction!,
         if (ruleId != null) 'ruleId': ruleId!,
-        if (statsBasedRule != null) 'statsBasedRule': statsBasedRule!.toJson(),
+        if (statsBasedRule != null) 'statsBasedRule': statsBasedRule!,
         if (title != null) 'title': title!,
         if (type != null) 'type': type!,
       };
@@ -24294,9 +24131,7 @@ class RepricingRuleEffectiveTime {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (fixedTimePeriods != null)
-          'fixedTimePeriods':
-              fixedTimePeriods!.map((value) => value.toJson()).toList(),
+        if (fixedTimePeriods != null) 'fixedTimePeriods': fixedTimePeriods!,
       };
 }
 
@@ -24399,11 +24234,11 @@ class RepricingRuleEligibleOfferMatcher {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (brandMatcher != null) 'brandMatcher': brandMatcher!.toJson(),
+        if (brandMatcher != null) 'brandMatcher': brandMatcher!,
         if (itemGroupIdMatcher != null)
-          'itemGroupIdMatcher': itemGroupIdMatcher!.toJson(),
+          'itemGroupIdMatcher': itemGroupIdMatcher!,
         if (matcherOption != null) 'matcherOption': matcherOption!,
-        if (offerIdMatcher != null) 'offerIdMatcher': offerIdMatcher!.toJson(),
+        if (offerIdMatcher != null) 'offerIdMatcher': offerIdMatcher!,
         if (skipWhenOnPromotion != null)
           'skipWhenOnPromotion': skipWhenOnPromotion!,
       };
@@ -24559,17 +24394,16 @@ class RepricingRuleReport {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (buyboxWinningRuleStats != null)
-          'buyboxWinningRuleStats': buyboxWinningRuleStats!.toJson(),
-        if (date != null) 'date': date!.toJson(),
+          'buyboxWinningRuleStats': buyboxWinningRuleStats!,
+        if (date != null) 'date': date!,
         if (impactedProducts != null) 'impactedProducts': impactedProducts!,
         if (inapplicabilityDetails != null)
-          'inapplicabilityDetails':
-              inapplicabilityDetails!.map((value) => value.toJson()).toList(),
+          'inapplicabilityDetails': inapplicabilityDetails!,
         if (inapplicableProducts != null)
           'inapplicableProducts': inapplicableProducts!,
         if (orderItemCount != null) 'orderItemCount': orderItemCount!,
         if (ruleId != null) 'ruleId': ruleId!,
-        if (totalGmv != null) 'totalGmv': totalGmv!.toJson(),
+        if (totalGmv != null) 'totalGmv': totalGmv!,
         if (type != null) 'type': type!,
       };
 }
@@ -24639,7 +24473,7 @@ class RepricingRuleRestriction {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (floor != null) 'floor': floor!.toJson(),
+        if (floor != null) 'floor': floor!,
         if (useAutoPricingMinPrice != null)
           'useAutoPricingMinPrice': useAutoPricingMinPrice!,
       };
@@ -24911,7 +24745,7 @@ class ReturnAddress {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (address != null) 'address': address!.toJson(),
+        if (address != null) 'address': address!,
         if (country != null) 'country': country!,
         if (kind != null) 'kind': kind!,
         if (label != null) 'label': label!,
@@ -25083,13 +24917,10 @@ class ReturnPolicy {
         if (name != null) 'name': name!,
         if (nonFreeReturnReasons != null)
           'nonFreeReturnReasons': nonFreeReturnReasons!,
-        if (policy != null) 'policy': policy!.toJson(),
+        if (policy != null) 'policy': policy!,
         if (returnPolicyId != null) 'returnPolicyId': returnPolicyId!,
-        if (returnShippingFee != null)
-          'returnShippingFee': returnShippingFee!.toJson(),
-        if (seasonalOverrides != null)
-          'seasonalOverrides':
-              seasonalOverrides!.map((value) => value.toJson()).toList(),
+        if (returnShippingFee != null) 'returnShippingFee': returnShippingFee!,
+        if (seasonalOverrides != null) 'seasonalOverrides': seasonalOverrides!,
       };
 }
 
@@ -25212,14 +25043,13 @@ class ReturnPolicyOnline {
         if (itemConditions != null) 'itemConditions': itemConditions!,
         if (label != null) 'label': label!,
         if (name != null) 'name': name!,
-        if (policy != null) 'policy': policy!.toJson(),
-        if (restockingFee != null) 'restockingFee': restockingFee!.toJson(),
+        if (policy != null) 'policy': policy!,
+        if (restockingFee != null) 'restockingFee': restockingFee!,
         if (returnMethods != null) 'returnMethods': returnMethods!,
         if (returnPolicyId != null) 'returnPolicyId': returnPolicyId!,
         if (returnPolicyUri != null) 'returnPolicyUri': returnPolicyUri!,
         if (returnReasonCategoryInfo != null)
-          'returnReasonCategoryInfo':
-              returnReasonCategoryInfo!.map((value) => value.toJson()).toList(),
+          'returnReasonCategoryInfo': returnReasonCategoryInfo!,
       };
 }
 
@@ -25286,7 +25116,7 @@ class ReturnPolicyOnlineRestockingFee {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (fixedFee != null) 'fixedFee': fixedFee!.toJson(),
+        if (fixedFee != null) 'fixedFee': fixedFee!,
         if (microPercent != null) 'microPercent': microPercent!,
       };
 }
@@ -25340,8 +25170,7 @@ class ReturnPolicyOnlineReturnReasonCategoryInfo {
         if (returnLabelSource != null) 'returnLabelSource': returnLabelSource!,
         if (returnReasonCategory != null)
           'returnReasonCategory': returnReasonCategory!,
-        if (returnShippingFee != null)
-          'returnShippingFee': returnShippingFee!.toJson(),
+        if (returnShippingFee != null) 'returnShippingFee': returnShippingFee!,
       };
 }
 
@@ -25379,7 +25208,7 @@ class ReturnPolicyOnlineReturnShippingFee {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (fixedFee != null) 'fixedFee': fixedFee!.toJson(),
+        if (fixedFee != null) 'fixedFee': fixedFee!,
         if (type != null) 'type': type!,
       };
 }
@@ -25488,7 +25317,7 @@ class ReturnPolicySeasonalOverride {
   core.Map<core.String, core.dynamic> toJson() => {
         if (endDate != null) 'endDate': endDate!,
         if (name != null) 'name': name!,
-        if (policy != null) 'policy': policy!.toJson(),
+        if (policy != null) 'policy': policy!,
         if (startDate != null) 'startDate': startDate!,
       };
 }
@@ -25556,13 +25385,13 @@ class ReturnPricingInfo {
         if (chargeReturnShippingFee != null)
           'chargeReturnShippingFee': chargeReturnShippingFee!,
         if (maxReturnShippingFee != null)
-          'maxReturnShippingFee': maxReturnShippingFee!.toJson(),
+          'maxReturnShippingFee': maxReturnShippingFee!,
         if (refundableItemsTotalAmount != null)
-          'refundableItemsTotalAmount': refundableItemsTotalAmount!.toJson(),
+          'refundableItemsTotalAmount': refundableItemsTotalAmount!,
         if (refundableShippingAmount != null)
-          'refundableShippingAmount': refundableShippingAmount!.toJson(),
+          'refundableShippingAmount': refundableShippingAmount!,
         if (totalRefundedAmount != null)
-          'totalRefundedAmount': totalRefundedAmount!.toJson(),
+          'totalRefundedAmount': totalRefundedAmount!,
       };
 }
 
@@ -25640,8 +25469,7 @@ class ReturnShipment {
         if (returnMethodType != null) 'returnMethodType': returnMethodType!,
         if (shipmentId != null) 'shipmentId': shipmentId!,
         if (shipmentTrackingInfos != null)
-          'shipmentTrackingInfos':
-              shipmentTrackingInfos!.map((value) => value.toJson()).toList(),
+          'shipmentTrackingInfos': shipmentTrackingInfos!,
         if (shippingDate != null) 'shippingDate': shippingDate!,
         if (state != null) 'state': state!,
       };
@@ -25703,8 +25531,7 @@ class ReturnaddressCustomBatchRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (entries != null)
-          'entries': entries!.map((value) => value.toJson()).toList(),
+        if (entries != null) 'entries': entries!,
       };
 }
 
@@ -25762,7 +25589,7 @@ class ReturnaddressCustomBatchRequestEntry {
         if (batchId != null) 'batchId': batchId!,
         if (merchantId != null) 'merchantId': merchantId!,
         if (method != null) 'method': method!,
-        if (returnAddress != null) 'returnAddress': returnAddress!.toJson(),
+        if (returnAddress != null) 'returnAddress': returnAddress!,
         if (returnAddressId != null) 'returnAddressId': returnAddressId!,
       };
 }
@@ -25794,8 +25621,7 @@ class ReturnaddressCustomBatchResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (entries != null)
-          'entries': entries!.map((value) => value.toJson()).toList(),
+        if (entries != null) 'entries': entries!,
         if (kind != null) 'kind': kind!,
       };
 }
@@ -25840,9 +25666,9 @@ class ReturnaddressCustomBatchResponseEntry {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (batchId != null) 'batchId': batchId!,
-        if (errors != null) 'errors': errors!.toJson(),
+        if (errors != null) 'errors': errors!,
         if (kind != null) 'kind': kind!,
-        if (returnAddress != null) 'returnAddress': returnAddress!.toJson(),
+        if (returnAddress != null) 'returnAddress': returnAddress!,
       };
 }
 
@@ -25879,8 +25705,7 @@ class ReturnaddressListResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (resources != null)
-          'resources': resources!.map((value) => value.toJson()).toList(),
+        if (resources != null) 'resources': resources!,
       };
 }
 
@@ -25903,8 +25728,7 @@ class ReturnpolicyCustomBatchRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (entries != null)
-          'entries': entries!.map((value) => value.toJson()).toList(),
+        if (entries != null) 'entries': entries!,
       };
 }
 
@@ -25962,7 +25786,7 @@ class ReturnpolicyCustomBatchRequestEntry {
         if (batchId != null) 'batchId': batchId!,
         if (merchantId != null) 'merchantId': merchantId!,
         if (method != null) 'method': method!,
-        if (returnPolicy != null) 'returnPolicy': returnPolicy!.toJson(),
+        if (returnPolicy != null) 'returnPolicy': returnPolicy!,
         if (returnPolicyId != null) 'returnPolicyId': returnPolicyId!,
       };
 }
@@ -25993,8 +25817,7 @@ class ReturnpolicyCustomBatchResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (entries != null)
-          'entries': entries!.map((value) => value.toJson()).toList(),
+        if (entries != null) 'entries': entries!,
         if (kind != null) 'kind': kind!,
       };
 }
@@ -26039,9 +25862,9 @@ class ReturnpolicyCustomBatchResponseEntry {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (batchId != null) 'batchId': batchId!,
-        if (errors != null) 'errors': errors!.toJson(),
+        if (errors != null) 'errors': errors!,
         if (kind != null) 'kind': kind!,
-        if (returnPolicy != null) 'returnPolicy': returnPolicy!.toJson(),
+        if (returnPolicy != null) 'returnPolicy': returnPolicy!,
       };
 }
 
@@ -26070,8 +25893,7 @@ class ReturnpolicyListResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
-        if (resources != null)
-          'resources': resources!.map((value) => value.toJson()).toList(),
+        if (resources != null) 'resources': resources!,
       };
 }
 
@@ -26097,8 +25919,7 @@ class Row {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cells != null)
-          'cells': cells!.map((value) => value.toJson()).toList(),
+        if (cells != null) 'cells': cells!,
       };
 }
 
@@ -26180,8 +26001,7 @@ class SearchResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (results != null)
-          'results': results!.map((value) => value.toJson()).toList(),
+        if (results != null) 'results': results!,
       };
 }
 
@@ -26396,7 +26216,7 @@ class Segments {
         if (customLabel2 != null) 'customLabel2': customLabel2!,
         if (customLabel3 != null) 'customLabel3': customLabel3!,
         if (customLabel4 != null) 'customLabel4': customLabel4!,
-        if (date != null) 'date': date!.toJson(),
+        if (date != null) 'date': date!,
         if (offerId != null) 'offerId': offerId!,
         if (productTypeL1 != null) 'productTypeL1': productTypeL1!,
         if (productTypeL2 != null) 'productTypeL2': productTypeL2!,
@@ -26405,7 +26225,7 @@ class Segments {
         if (productTypeL5 != null) 'productTypeL5': productTypeL5!,
         if (program != null) 'program': program!,
         if (title != null) 'title': title!,
-        if (week != null) 'week': week!.toJson(),
+        if (week != null) 'week': week!,
       };
 }
 
@@ -26531,16 +26351,14 @@ class Service {
         if (active != null) 'active': active!,
         if (currency != null) 'currency': currency!,
         if (deliveryCountry != null) 'deliveryCountry': deliveryCountry!,
-        if (deliveryTime != null) 'deliveryTime': deliveryTime!.toJson(),
+        if (deliveryTime != null) 'deliveryTime': deliveryTime!,
         if (eligibility != null) 'eligibility': eligibility!,
-        if (minimumOrderValue != null)
-          'minimumOrderValue': minimumOrderValue!.toJson(),
+        if (minimumOrderValue != null) 'minimumOrderValue': minimumOrderValue!,
         if (minimumOrderValueTable != null)
-          'minimumOrderValueTable': minimumOrderValueTable!.toJson(),
+          'minimumOrderValueTable': minimumOrderValueTable!,
         if (name != null) 'name': name!,
-        if (pickupService != null) 'pickupService': pickupService!.toJson(),
-        if (rateGroups != null)
-          'rateGroups': rateGroups!.map((value) => value.toJson()).toList(),
+        if (pickupService != null) 'pickupService': pickupService!,
+        if (rateGroups != null) 'rateGroups': rateGroups!,
         if (shipmentType != null) 'shipmentType': shipmentType!,
       };
 }
@@ -26627,11 +26445,10 @@ class SettlementReport {
   core.Map<core.String, core.dynamic> toJson() => {
         if (endDate != null) 'endDate': endDate!,
         if (kind != null) 'kind': kind!,
-        if (previousBalance != null)
-          'previousBalance': previousBalance!.toJson(),
+        if (previousBalance != null) 'previousBalance': previousBalance!,
         if (settlementId != null) 'settlementId': settlementId!,
         if (startDate != null) 'startDate': startDate!,
-        if (transferAmount != null) 'transferAmount': transferAmount!.toJson(),
+        if (transferAmount != null) 'transferAmount': transferAmount!,
         if (transferDate != null) 'transferDate': transferDate!,
         if (transferIds != null) 'transferIds': transferIds!,
       };
@@ -26678,10 +26495,10 @@ class SettlementTransaction {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (amount != null) 'amount': amount!.toJson(),
-        if (identifiers != null) 'identifiers': identifiers!.toJson(),
+        if (amount != null) 'amount': amount!,
+        if (identifiers != null) 'identifiers': identifiers!,
         if (kind != null) 'kind': kind!,
-        if (transaction != null) 'transaction': transaction!.toJson(),
+        if (transaction != null) 'transaction': transaction!,
       };
 }
 
@@ -26751,10 +26568,9 @@ class SettlementTransactionAmount {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (commission != null) 'commission': commission!.toJson(),
+        if (commission != null) 'commission': commission!,
         if (description != null) 'description': description!,
-        if (transactionAmount != null)
-          'transactionAmount': transactionAmount!.toJson(),
+        if (transactionAmount != null) 'transactionAmount': transactionAmount!,
         if (type != null) 'type': type!,
       };
 }
@@ -26931,8 +26747,7 @@ class SettlementreportsListResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (resources != null)
-          'resources': resources!.map((value) => value.toJson()).toList(),
+        if (resources != null) 'resources': resources!,
       };
 }
 
@@ -26969,8 +26784,7 @@ class SettlementtransactionsListResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (resources != null)
-          'resources': resources!.map((value) => value.toJson()).toList(),
+        if (resources != null) 'resources': resources!,
       };
 }
 
@@ -27017,10 +26831,8 @@ class ShipmentInvoice {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (invoiceSummary != null) 'invoiceSummary': invoiceSummary!.toJson(),
-        if (lineItemInvoices != null)
-          'lineItemInvoices':
-              lineItemInvoices!.map((value) => value.toJson()).toList(),
+        if (invoiceSummary != null) 'invoiceSummary': invoiceSummary!,
+        if (lineItemInvoices != null) 'lineItemInvoices': lineItemInvoices!,
         if (shipmentGroupId != null) 'shipmentGroupId': shipmentGroupId!,
       };
 }
@@ -27082,7 +26894,7 @@ class ShipmentInvoiceLineItemInvoice {
         if (lineItemId != null) 'lineItemId': lineItemId!,
         if (productId != null) 'productId': productId!,
         if (shipmentUnitIds != null) 'shipmentUnitIds': shipmentUnitIds!,
-        if (unitInvoice != null) 'unitInvoice': unitInvoice!.toJson(),
+        if (unitInvoice != null) 'unitInvoice': unitInvoice!,
       };
 }
 
@@ -27168,11 +26980,8 @@ class ShippingSettings {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accountId != null) 'accountId': accountId!,
-        if (postalCodeGroups != null)
-          'postalCodeGroups':
-              postalCodeGroups!.map((value) => value.toJson()).toList(),
-        if (services != null)
-          'services': services!.map((value) => value.toJson()).toList(),
+        if (postalCodeGroups != null) 'postalCodeGroups': postalCodeGroups!,
+        if (services != null) 'services': services!,
       };
 }
 
@@ -27196,8 +27005,7 @@ class ShippingsettingsCustomBatchRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (entries != null)
-          'entries': entries!.map((value) => value.toJson()).toList(),
+        if (entries != null) 'entries': entries!,
       };
 }
 
@@ -27255,8 +27063,7 @@ class ShippingsettingsCustomBatchRequestEntry {
         if (batchId != null) 'batchId': batchId!,
         if (merchantId != null) 'merchantId': merchantId!,
         if (method != null) 'method': method!,
-        if (shippingSettings != null)
-          'shippingSettings': shippingSettings!.toJson(),
+        if (shippingSettings != null) 'shippingSettings': shippingSettings!,
       };
 }
 
@@ -27287,8 +27094,7 @@ class ShippingsettingsCustomBatchResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (entries != null)
-          'entries': entries!.map((value) => value.toJson()).toList(),
+        if (entries != null) 'entries': entries!,
         if (kind != null) 'kind': kind!,
       };
 }
@@ -27335,10 +27141,9 @@ class ShippingsettingsCustomBatchResponseEntry {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (batchId != null) 'batchId': batchId!,
-        if (errors != null) 'errors': errors!.toJson(),
+        if (errors != null) 'errors': errors!,
         if (kind != null) 'kind': kind!,
-        if (shippingSettings != null)
-          'shippingSettings': shippingSettings!.toJson(),
+        if (shippingSettings != null) 'shippingSettings': shippingSettings!,
       };
 }
 
@@ -27371,8 +27176,7 @@ class ShippingsettingsGetSupportedCarriersResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (carriers != null)
-          'carriers': carriers!.map((value) => value.toJson()).toList(),
+        if (carriers != null) 'carriers': carriers!,
         if (kind != null) 'kind': kind!,
       };
 }
@@ -27406,8 +27210,7 @@ class ShippingsettingsGetSupportedHolidaysResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (holidays != null)
-          'holidays': holidays!.map((value) => value.toJson()).toList(),
+        if (holidays != null) 'holidays': holidays!,
         if (kind != null) 'kind': kind!,
       };
 }
@@ -27442,9 +27245,7 @@ class ShippingsettingsGetSupportedPickupServicesResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
-        if (pickupServices != null)
-          'pickupServices':
-              pickupServices!.map((value) => value.toJson()).toList(),
+        if (pickupServices != null) 'pickupServices': pickupServices!,
       };
 }
 
@@ -27481,8 +27282,7 @@ class ShippingsettingsListResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (resources != null)
-          'resources': resources!.map((value) => value.toJson()).toList(),
+        if (resources != null) 'resources': resources!,
       };
 }
 
@@ -27519,9 +27319,7 @@ class ShoppingAdsProgramStatus {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (regionStatuses != null)
-          'regionStatuses':
-              regionStatuses!.map((value) => value.toJson()).toList(),
+        if (regionStatuses != null) 'regionStatuses': regionStatuses!,
         if (state != null) 'state': state!,
       };
 }
@@ -27672,10 +27470,10 @@ class Table {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (columnHeaders != null) 'columnHeaders': columnHeaders!.toJson(),
+        if (columnHeaders != null) 'columnHeaders': columnHeaders!,
         if (name != null) 'name': name!,
-        if (rowHeaders != null) 'rowHeaders': rowHeaders!.toJson(),
-        if (rows != null) 'rows': rows!.map((value) => value.toJson()).toList(),
+        if (rowHeaders != null) 'rowHeaders': rowHeaders!,
+        if (rows != null) 'rows': rows!,
       };
 }
 
@@ -27823,15 +27621,13 @@ class TestOrder {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (deliveryDetails != null)
-          'deliveryDetails': deliveryDetails!.toJson(),
+        if (deliveryDetails != null) 'deliveryDetails': deliveryDetails!,
         if (enableOrderinvoices != null)
           'enableOrderinvoices': enableOrderinvoices!,
         if (kind != null) 'kind': kind!,
-        if (lineItems != null)
-          'lineItems': lineItems!.map((value) => value.toJson()).toList(),
+        if (lineItems != null) 'lineItems': lineItems!,
         if (notificationMode != null) 'notificationMode': notificationMode!,
-        if (pickupDetails != null) 'pickupDetails': pickupDetails!.toJson(),
+        if (pickupDetails != null) 'pickupDetails': pickupDetails!,
         if (predefinedBillingAddress != null)
           'predefinedBillingAddress': predefinedBillingAddress!,
         if (predefinedDeliveryAddress != null)
@@ -27839,9 +27635,8 @@ class TestOrder {
         if (predefinedEmail != null) 'predefinedEmail': predefinedEmail!,
         if (predefinedPickupDetails != null)
           'predefinedPickupDetails': predefinedPickupDetails!,
-        if (promotions != null)
-          'promotions': promotions!.map((value) => value.toJson()).toList(),
-        if (shippingCost != null) 'shippingCost': shippingCost!.toJson(),
+        if (promotions != null) 'promotions': promotions!,
+        if (shippingCost != null) 'shippingCost': shippingCost!,
         if (shippingOption != null) 'shippingOption': shippingOption!,
       };
 }
@@ -27965,7 +27760,7 @@ class TestOrderDeliveryDetails {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (address != null) 'address': address!.toJson(),
+        if (address != null) 'address': address!,
         if (isScheduledDelivery != null)
           'isScheduledDelivery': isScheduledDelivery!,
         if (phoneNumber != null) 'phoneNumber': phoneNumber!,
@@ -28020,11 +27815,10 @@ class TestOrderLineItem {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (product != null) 'product': product!.toJson(),
+        if (product != null) 'product': product!,
         if (quantityOrdered != null) 'quantityOrdered': quantityOrdered!,
-        if (returnInfo != null) 'returnInfo': returnInfo!.toJson(),
-        if (shippingDetails != null)
-          'shippingDetails': shippingDetails!.toJson(),
+        if (returnInfo != null) 'returnInfo': returnInfo!,
+        if (shippingDetails != null) 'shippingDetails': shippingDetails!,
       };
 }
 
@@ -28166,18 +27960,16 @@ class TestOrderLineItemProduct {
         if (brand != null) 'brand': brand!,
         if (condition != null) 'condition': condition!,
         if (contentLanguage != null) 'contentLanguage': contentLanguage!,
-        if (fees != null) 'fees': fees!.map((value) => value.toJson()).toList(),
+        if (fees != null) 'fees': fees!,
         if (gtin != null) 'gtin': gtin!,
         if (imageLink != null) 'imageLink': imageLink!,
         if (itemGroupId != null) 'itemGroupId': itemGroupId!,
         if (mpn != null) 'mpn': mpn!,
         if (offerId != null) 'offerId': offerId!,
-        if (price != null) 'price': price!.toJson(),
+        if (price != null) 'price': price!,
         if (targetCountry != null) 'targetCountry': targetCountry!,
         if (title != null) 'title': title!,
-        if (variantAttributes != null)
-          'variantAttributes':
-              variantAttributes!.map((value) => value.toJson()).toList(),
+        if (variantAttributes != null) 'variantAttributes': variantAttributes!,
       };
 }
 
@@ -28232,12 +28024,10 @@ class TestOrderPickupDetails {
   core.Map<core.String, core.dynamic> toJson() => {
         if (locationCode != null) 'locationCode': locationCode!,
         if (pickupLocationAddress != null)
-          'pickupLocationAddress': pickupLocationAddress!.toJson(),
+          'pickupLocationAddress': pickupLocationAddress!,
         if (pickupLocationType != null)
           'pickupLocationType': pickupLocationType!,
-        if (pickupPersons != null)
-          'pickupPersons':
-              pickupPersons!.map((value) => value.toJson()).toList(),
+        if (pickupPersons != null) 'pickupPersons': pickupPersons!,
       };
 }
 
@@ -28345,7 +28135,7 @@ class TransitTable {
   core.Map<core.String, core.dynamic> toJson() => {
         if (postalCodeGroupNames != null)
           'postalCodeGroupNames': postalCodeGroupNames!,
-        if (rows != null) 'rows': rows!.map((value) => value.toJson()).toList(),
+        if (rows != null) 'rows': rows!,
         if (transitTimeLabels != null) 'transitTimeLabels': transitTimeLabels!,
       };
 }
@@ -28369,8 +28159,7 @@ class TransitTableTransitTimeRow {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (values != null)
-          'values': values!.map((value) => value.toJson()).toList(),
+        if (values != null) 'values': values!,
       };
 }
 
@@ -28450,13 +28239,9 @@ class UnitInvoice {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (additionalCharges != null)
-          'additionalCharges':
-              additionalCharges!.map((value) => value.toJson()).toList(),
-        if (unitPrice != null) 'unitPrice': unitPrice!.toJson(),
-        if (unitPriceTaxes != null)
-          'unitPriceTaxes':
-              unitPriceTaxes!.map((value) => value.toJson()).toList(),
+        if (additionalCharges != null) 'additionalCharges': additionalCharges!,
+        if (unitPrice != null) 'unitPrice': unitPrice!,
+        if (unitPriceTaxes != null) 'unitPriceTaxes': unitPriceTaxes!,
       };
 }
 
@@ -28493,7 +28278,7 @@ class UnitInvoiceAdditionalCharge {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (additionalChargeAmount != null)
-          'additionalChargeAmount': additionalChargeAmount!.toJson(),
+          'additionalChargeAmount': additionalChargeAmount!,
         if (type != null) 'type': type!,
       };
 }
@@ -28537,7 +28322,7 @@ class UnitInvoiceTaxLine {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (taxAmount != null) 'taxAmount': taxAmount!.toJson(),
+        if (taxAmount != null) 'taxAmount': taxAmount!,
         if (taxName != null) 'taxName': taxName!,
         if (taxType != null) 'taxType': taxType!,
       };
@@ -28606,7 +28391,7 @@ class Value {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (carrierRateName != null) 'carrierRateName': carrierRateName!,
-        if (flatRate != null) 'flatRate': flatRate!.toJson(),
+        if (flatRate != null) 'flatRate': flatRate!,
         if (noShipping != null) 'noShipping': noShipping!,
         if (pricePercentage != null) 'pricePercentage': pricePercentage!,
         if (subtableName != null) 'subtableName': subtableName!,

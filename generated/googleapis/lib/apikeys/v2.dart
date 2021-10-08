@@ -210,7 +210,7 @@ class ProjectsLocationsKeysResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -261,7 +261,7 @@ class ProjectsLocationsKeysResource {
     core.String? keyId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (keyId != null) 'keyId': [keyId],
       if ($fields != null) 'fields': [$fields],
@@ -499,7 +499,7 @@ class ProjectsLocationsKeysResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -544,7 +544,7 @@ class ProjectsLocationsKeysResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -630,7 +630,7 @@ class Operation {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (done != null) 'done': done!,
-        if (error != null) 'error': error!.toJson(),
+        if (error != null) 'error': error!,
         if (metadata != null) 'metadata': metadata!,
         if (name != null) 'name': name!,
         if (response != null) 'response': response!,
@@ -743,8 +743,7 @@ class V2AndroidKeyRestrictions {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (allowedApplications != null)
-          'allowedApplications':
-              allowedApplications!.map((value) => value.toJson()).toList(),
+          'allowedApplications': allowedApplications!,
       };
 }
 
@@ -991,7 +990,7 @@ class V2Key {
         if (etag != null) 'etag': etag!,
         if (keyString != null) 'keyString': keyString!,
         if (name != null) 'name': name!,
-        if (restrictions != null) 'restrictions': restrictions!.toJson(),
+        if (restrictions != null) 'restrictions': restrictions!,
         if (uid != null) 'uid': uid!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
@@ -1024,7 +1023,7 @@ class V2ListKeysResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (keys != null) 'keys': keys!.map((value) => value.toJson()).toList(),
+        if (keys != null) 'keys': keys!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -1117,15 +1116,14 @@ class V2Restrictions {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (androidKeyRestrictions != null)
-          'androidKeyRestrictions': androidKeyRestrictions!.toJson(),
-        if (apiTargets != null)
-          'apiTargets': apiTargets!.map((value) => value.toJson()).toList(),
+          'androidKeyRestrictions': androidKeyRestrictions!,
+        if (apiTargets != null) 'apiTargets': apiTargets!,
         if (browserKeyRestrictions != null)
-          'browserKeyRestrictions': browserKeyRestrictions!.toJson(),
+          'browserKeyRestrictions': browserKeyRestrictions!,
         if (iosKeyRestrictions != null)
-          'iosKeyRestrictions': iosKeyRestrictions!.toJson(),
+          'iosKeyRestrictions': iosKeyRestrictions!,
         if (serverKeyRestrictions != null)
-          'serverKeyRestrictions': serverKeyRestrictions!.toJson(),
+          'serverKeyRestrictions': serverKeyRestrictions!,
       };
 }
 

@@ -129,7 +129,7 @@ class LocationsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -1768,7 +1768,7 @@ class GetGoogleUpdatedLodgingResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (diffMask != null) 'diffMask': diffMask!,
-        if (lodging != null) 'lodging': lodging!.toJson(),
+        if (lodging != null) 'lodging': lodging!,
       };
 }
 
@@ -2075,9 +2075,8 @@ class GuestUnitFeatures {
         if (suiteException != null) 'suiteException': suiteException!,
         if (tier != null) 'tier': tier!,
         if (tierException != null) 'tierException': tierException!,
-        if (totalLivingAreas != null)
-          'totalLivingAreas': totalLivingAreas!.toJson(),
-        if (views != null) 'views': views!.toJson(),
+        if (totalLivingAreas != null) 'totalLivingAreas': totalLivingAreas!,
+        if (views != null) 'views': views!,
       };
 }
 
@@ -2123,7 +2122,7 @@ class GuestUnitType {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (codes != null) 'codes': codes!,
-        if (features != null) 'features': features!.toJson(),
+        if (features != null) 'features': features!,
         if (label != null) 'label': label!,
       };
 }
@@ -2178,16 +2177,14 @@ class HealthAndSafety {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (enhancedCleaning != null)
-          'enhancedCleaning': enhancedCleaning!.toJson(),
+        if (enhancedCleaning != null) 'enhancedCleaning': enhancedCleaning!,
         if (increasedFoodSafety != null)
-          'increasedFoodSafety': increasedFoodSafety!.toJson(),
-        if (minimizedContact != null)
-          'minimizedContact': minimizedContact!.toJson(),
+          'increasedFoodSafety': increasedFoodSafety!,
+        if (minimizedContact != null) 'minimizedContact': minimizedContact!,
         if (personalProtection != null)
-          'personalProtection': personalProtection!.toJson(),
+          'personalProtection': personalProtection!,
         if (physicalDistancing != null)
-          'physicalDistancing': physicalDistancing!.toJson(),
+          'physicalDistancing': physicalDistancing!,
       };
 }
 
@@ -2547,11 +2544,11 @@ class LivingArea {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (accessibility != null) 'accessibility': accessibility!.toJson(),
-        if (eating != null) 'eating': eating!.toJson(),
-        if (features != null) 'features': features!.toJson(),
-        if (layout != null) 'layout': layout!.toJson(),
-        if (sleeping != null) 'sleeping': sleeping!.toJson(),
+        if (accessibility != null) 'accessibility': accessibility!,
+        if (eating != null) 'eating': eating!,
+        if (features != null) 'features': features!,
+        if (layout != null) 'layout': layout!,
+        if (sleeping != null) 'sleeping': sleeping!,
       };
 }
 
@@ -4648,31 +4645,28 @@ class Lodging {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (accessibility != null) 'accessibility': accessibility!.toJson(),
-        if (activities != null) 'activities': activities!.toJson(),
-        if (allUnits != null) 'allUnits': allUnits!.toJson(),
-        if (business != null) 'business': business!.toJson(),
-        if (commonLivingArea != null)
-          'commonLivingArea': commonLivingArea!.toJson(),
-        if (connectivity != null) 'connectivity': connectivity!.toJson(),
-        if (families != null) 'families': families!.toJson(),
-        if (foodAndDrink != null) 'foodAndDrink': foodAndDrink!.toJson(),
-        if (guestUnits != null)
-          'guestUnits': guestUnits!.map((value) => value.toJson()).toList(),
-        if (healthAndSafety != null)
-          'healthAndSafety': healthAndSafety!.toJson(),
-        if (housekeeping != null) 'housekeeping': housekeeping!.toJson(),
-        if (metadata != null) 'metadata': metadata!.toJson(),
+        if (accessibility != null) 'accessibility': accessibility!,
+        if (activities != null) 'activities': activities!,
+        if (allUnits != null) 'allUnits': allUnits!,
+        if (business != null) 'business': business!,
+        if (commonLivingArea != null) 'commonLivingArea': commonLivingArea!,
+        if (connectivity != null) 'connectivity': connectivity!,
+        if (families != null) 'families': families!,
+        if (foodAndDrink != null) 'foodAndDrink': foodAndDrink!,
+        if (guestUnits != null) 'guestUnits': guestUnits!,
+        if (healthAndSafety != null) 'healthAndSafety': healthAndSafety!,
+        if (housekeeping != null) 'housekeeping': housekeeping!,
+        if (metadata != null) 'metadata': metadata!,
         if (name != null) 'name': name!,
-        if (parking != null) 'parking': parking!.toJson(),
-        if (pets != null) 'pets': pets!.toJson(),
-        if (policies != null) 'policies': policies!.toJson(),
-        if (pools != null) 'pools': pools!.toJson(),
-        if (property != null) 'property': property!.toJson(),
-        if (services != null) 'services': services!.toJson(),
-        if (someUnits != null) 'someUnits': someUnits!.toJson(),
-        if (transportation != null) 'transportation': transportation!.toJson(),
-        if (wellness != null) 'wellness': wellness!.toJson(),
+        if (parking != null) 'parking': parking!,
+        if (pets != null) 'pets': pets!,
+        if (policies != null) 'policies': policies!,
+        if (pools != null) 'pools': pools!,
+        if (property != null) 'property': property!,
+        if (services != null) 'services': services!,
+        if (someUnits != null) 'someUnits': someUnits!,
+        if (transportation != null) 'transportation': transportation!,
+        if (wellness != null) 'wellness': wellness!,
       };
 }
 
@@ -5940,10 +5934,10 @@ class Policies {
         if (allInclusiveOnly != null) 'allInclusiveOnly': allInclusiveOnly!,
         if (allInclusiveOnlyException != null)
           'allInclusiveOnlyException': allInclusiveOnlyException!,
-        if (checkinTime != null) 'checkinTime': checkinTime!.toJson(),
+        if (checkinTime != null) 'checkinTime': checkinTime!,
         if (checkinTimeException != null)
           'checkinTimeException': checkinTimeException!,
-        if (checkoutTime != null) 'checkoutTime': checkoutTime!.toJson(),
+        if (checkoutTime != null) 'checkoutTime': checkoutTime!,
         if (checkoutTimeException != null)
           'checkoutTimeException': checkoutTimeException!,
         if (kidsStayFree != null) 'kidsStayFree': kidsStayFree!,
@@ -5956,7 +5950,7 @@ class Policies {
           'maxKidsStayFreeCount': maxKidsStayFreeCount!,
         if (maxKidsStayFreeCountException != null)
           'maxKidsStayFreeCountException': maxKidsStayFreeCountException!,
-        if (paymentOptions != null) 'paymentOptions': paymentOptions!.toJson(),
+        if (paymentOptions != null) 'paymentOptions': paymentOptions!,
         if (smokeFreeProperty != null) 'smokeFreeProperty': smokeFreeProperty!,
         if (smokeFreePropertyException != null)
           'smokeFreePropertyException': smokeFreePropertyException!,
@@ -6859,9 +6853,7 @@ class Services {
           'fullServiceLaundryException': fullServiceLaundryException!,
         if (giftShop != null) 'giftShop': giftShop!,
         if (giftShopException != null) 'giftShopException': giftShopException!,
-        if (languagesSpoken != null)
-          'languagesSpoken':
-              languagesSpoken!.map((value) => value.toJson()).toList(),
+        if (languagesSpoken != null) 'languagesSpoken': languagesSpoken!,
         if (selfServiceLaundry != null)
           'selfServiceLaundry': selfServiceLaundry!,
         if (selfServiceLaundryException != null)

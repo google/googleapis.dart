@@ -134,7 +134,7 @@ class DevicesResource {
     QueryRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -183,7 +183,7 @@ class DevicesResource {
     ReportStateAndNotificationRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -226,7 +226,7 @@ class DevicesResource {
     RequestSyncDevicesRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -267,7 +267,7 @@ class DevicesResource {
     SyncRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -467,14 +467,12 @@ class Device {
   core.Map<core.String, core.dynamic> toJson() => {
         if (attributes != null) 'attributes': attributes!,
         if (customData != null) 'customData': customData!,
-        if (deviceInfo != null) 'deviceInfo': deviceInfo!.toJson(),
+        if (deviceInfo != null) 'deviceInfo': deviceInfo!,
         if (id != null) 'id': id!,
-        if (name != null) 'name': name!.toJson(),
+        if (name != null) 'name': name!,
         if (notificationSupportedByAgent != null)
           'notificationSupportedByAgent': notificationSupportedByAgent!,
-        if (otherDeviceIds != null)
-          'otherDeviceIds':
-              otherDeviceIds!.map((value) => value.toJson()).toList(),
+        if (otherDeviceIds != null) 'otherDeviceIds': otherDeviceIds!,
         if (roomHint != null) 'roomHint': roomHint!,
         if (structureHint != null) 'structureHint': structureHint!,
         if (traits != null) 'traits': traits!,
@@ -617,8 +615,7 @@ class QueryRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (agentUserId != null) 'agentUserId': agentUserId!,
-        if (inputs != null)
-          'inputs': inputs!.map((value) => value.toJson()).toList(),
+        if (inputs != null) 'inputs': inputs!,
         if (requestId != null) 'requestId': requestId!,
       };
 }
@@ -641,7 +638,7 @@ class QueryRequestInput {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (payload != null) 'payload': payload!.toJson(),
+        if (payload != null) 'payload': payload!,
       };
 }
 
@@ -665,8 +662,7 @@ class QueryRequestPayload {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (devices != null)
-          'devices': devices!.map((value) => value.toJson()).toList(),
+        if (devices != null) 'devices': devices!,
       };
 }
 
@@ -706,7 +702,7 @@ class QueryResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (payload != null) 'payload': payload!.toJson(),
+        if (payload != null) 'payload': payload!,
         if (requestId != null) 'requestId': requestId!,
       };
 }
@@ -845,7 +841,7 @@ class ReportStateAndNotificationRequest {
         if (agentUserId != null) 'agentUserId': agentUserId!,
         if (eventId != null) 'eventId': eventId!,
         if (followUpToken != null) 'followUpToken': followUpToken!,
-        if (payload != null) 'payload': payload!.toJson(),
+        if (payload != null) 'payload': payload!,
         if (requestId != null) 'requestId': requestId!,
       };
 }
@@ -937,7 +933,7 @@ class StateAndNotificationPayload {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (devices != null) 'devices': devices!.toJson(),
+        if (devices != null) 'devices': devices!,
       };
 }
 
@@ -1013,7 +1009,7 @@ class SyncResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (payload != null) 'payload': payload!.toJson(),
+        if (payload != null) 'payload': payload!,
         if (requestId != null) 'requestId': requestId!,
       };
 }
@@ -1046,7 +1042,6 @@ class SyncResponsePayload {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (agentUserId != null) 'agentUserId': agentUserId!,
-        if (devices != null)
-          'devices': devices!.map((value) => value.toJson()).toList(),
+        if (devices != null) 'devices': devices!,
       };
 }

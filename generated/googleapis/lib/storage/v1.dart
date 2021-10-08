@@ -239,7 +239,7 @@ class BucketAccessControlsResource {
     core.String? userProject,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (provisionalUserProject != null)
         'provisionalUserProject': [provisionalUserProject],
@@ -341,7 +341,7 @@ class BucketAccessControlsResource {
     core.String? userProject,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (provisionalUserProject != null)
         'provisionalUserProject': [provisionalUserProject],
@@ -400,7 +400,7 @@ class BucketAccessControlsResource {
     core.String? userProject,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (provisionalUserProject != null)
         'provisionalUserProject': [provisionalUserProject],
@@ -670,7 +670,7 @@ class BucketsResource {
     core.String? userProject,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       'project': [project],
       if (predefinedAcl != null) 'predefinedAcl': [predefinedAcl],
@@ -891,7 +891,7 @@ class BucketsResource {
     core.String? userProject,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (ifMetagenerationMatch != null)
         'ifMetagenerationMatch': [ifMetagenerationMatch],
@@ -949,7 +949,7 @@ class BucketsResource {
     core.String? userProject,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (provisionalUserProject != null)
         'provisionalUserProject': [provisionalUserProject],
@@ -1103,7 +1103,7 @@ class BucketsResource {
     core.String? userProject,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (ifMetagenerationMatch != null)
         'ifMetagenerationMatch': [ifMetagenerationMatch],
@@ -1154,7 +1154,7 @@ class ChannelsResource {
     Channel request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1315,7 +1315,7 @@ class DefaultObjectAccessControlsResource {
     core.String? userProject,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (provisionalUserProject != null)
         'provisionalUserProject': [provisionalUserProject],
@@ -1429,7 +1429,7 @@ class DefaultObjectAccessControlsResource {
     core.String? userProject,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (provisionalUserProject != null)
         'provisionalUserProject': [provisionalUserProject],
@@ -1488,7 +1488,7 @@ class DefaultObjectAccessControlsResource {
     core.String? userProject,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (provisionalUserProject != null)
         'provisionalUserProject': [provisionalUserProject],
@@ -1649,7 +1649,7 @@ class NotificationsResource {
     core.String? userProject,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (provisionalUserProject != null)
         'provisionalUserProject': [provisionalUserProject],
@@ -1891,7 +1891,7 @@ class ObjectAccessControlsResource {
     core.String? userProject,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (generation != null) 'generation': [generation],
       if (provisionalUserProject != null)
@@ -2019,7 +2019,7 @@ class ObjectAccessControlsResource {
     core.String? userProject,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (generation != null) 'generation': [generation],
       if (provisionalUserProject != null)
@@ -2089,7 +2089,7 @@ class ObjectAccessControlsResource {
     core.String? userProject,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (generation != null) 'generation': [generation],
       if (provisionalUserProject != null)
@@ -2189,7 +2189,7 @@ class ObjectsResource {
     core.String? userProject,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (destinationPredefinedAcl != null)
         'destinationPredefinedAcl': [destinationPredefinedAcl],
@@ -2337,7 +2337,7 @@ class ObjectsResource {
     core.String? userProject,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (destinationKmsKeyName != null)
         'destinationKmsKeyName': [destinationKmsKeyName],
@@ -2731,7 +2731,7 @@ class ObjectsResource {
     commons.UploadOptions uploadOptions = commons.UploadOptions.defaultOptions,
     commons.Media? uploadMedia,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (contentEncoding != null) 'contentEncoding': [contentEncoding],
       if (ifGenerationMatch != null) 'ifGenerationMatch': [ifGenerationMatch],
@@ -2954,7 +2954,7 @@ class ObjectsResource {
     core.String? userProject,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (generation != null) 'generation': [generation],
       if (ifGenerationMatch != null) 'ifGenerationMatch': [ifGenerationMatch],
@@ -3119,7 +3119,7 @@ class ObjectsResource {
     core.String? userProject,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (destinationKmsKeyName != null)
         'destinationKmsKeyName': [destinationKmsKeyName],
@@ -3209,7 +3209,7 @@ class ObjectsResource {
     core.String? userProject,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (generation != null) 'generation': [generation],
       if (provisionalUserProject != null)
@@ -3380,7 +3380,7 @@ class ObjectsResource {
     core.String? userProject,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (generation != null) 'generation': [generation],
       if (ifGenerationMatch != null) 'ifGenerationMatch': [ifGenerationMatch],
@@ -3489,7 +3489,7 @@ class ObjectsResource {
     core.bool? versions,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (delimiter != null) 'delimiter': [delimiter],
       if (endOffset != null) 'endOffset': [endOffset],
@@ -3759,7 +3759,7 @@ class ProjectsHmacKeysResource {
     core.String? userProject,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (userProject != null) 'userProject': [userProject],
       if ($fields != null) 'fields': [$fields],
@@ -4049,12 +4049,11 @@ class BucketIamConfiguration {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bucketPolicyOnly != null)
-          'bucketPolicyOnly': bucketPolicyOnly!.toJson(),
+        if (bucketPolicyOnly != null) 'bucketPolicyOnly': bucketPolicyOnly!,
         if (publicAccessPrevention != null)
           'publicAccessPrevention': publicAccessPrevention!,
         if (uniformBucketLevelAccess != null)
-          'uniformBucketLevelAccess': uniformBucketLevelAccess!.toJson(),
+          'uniformBucketLevelAccess': uniformBucketLevelAccess!,
       };
 }
 
@@ -4258,8 +4257,8 @@ class BucketLifecycleRule {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (action != null) 'action': action!.toJson(),
-        if (condition != null) 'condition': condition!.toJson(),
+        if (action != null) 'action': action!,
+        if (condition != null) 'condition': condition!,
       };
 }
 
@@ -4286,7 +4285,7 @@ class BucketLifecycle {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (rule != null) 'rule': rule!.map((value) => value.toJson()).toList(),
+        if (rule != null) 'rule': rule!,
       };
 }
 
@@ -4739,38 +4738,34 @@ class Bucket {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (acl != null) 'acl': acl!.map((value) => value.toJson()).toList(),
-        if (billing != null) 'billing': billing!.toJson(),
-        if (cors != null) 'cors': cors!.map((value) => value.toJson()).toList(),
+        if (acl != null) 'acl': acl!,
+        if (billing != null) 'billing': billing!,
+        if (cors != null) 'cors': cors!,
         if (defaultEventBasedHold != null)
           'defaultEventBasedHold': defaultEventBasedHold!,
-        if (defaultObjectAcl != null)
-          'defaultObjectAcl':
-              defaultObjectAcl!.map((value) => value.toJson()).toList(),
-        if (encryption != null) 'encryption': encryption!.toJson(),
+        if (defaultObjectAcl != null) 'defaultObjectAcl': defaultObjectAcl!,
+        if (encryption != null) 'encryption': encryption!,
         if (etag != null) 'etag': etag!,
-        if (iamConfiguration != null)
-          'iamConfiguration': iamConfiguration!.toJson(),
+        if (iamConfiguration != null) 'iamConfiguration': iamConfiguration!,
         if (id != null) 'id': id!,
         if (kind != null) 'kind': kind!,
         if (labels != null) 'labels': labels!,
-        if (lifecycle != null) 'lifecycle': lifecycle!.toJson(),
+        if (lifecycle != null) 'lifecycle': lifecycle!,
         if (location != null) 'location': location!,
         if (locationType != null) 'locationType': locationType!,
-        if (logging != null) 'logging': logging!.toJson(),
+        if (logging != null) 'logging': logging!,
         if (metageneration != null) 'metageneration': metageneration!,
         if (name != null) 'name': name!,
-        if (owner != null) 'owner': owner!.toJson(),
+        if (owner != null) 'owner': owner!,
         if (projectNumber != null) 'projectNumber': projectNumber!,
-        if (retentionPolicy != null)
-          'retentionPolicy': retentionPolicy!.toJson(),
+        if (retentionPolicy != null) 'retentionPolicy': retentionPolicy!,
         if (satisfiesPZS != null) 'satisfiesPZS': satisfiesPZS!,
         if (selfLink != null) 'selfLink': selfLink!,
         if (storageClass != null) 'storageClass': storageClass!,
         if (timeCreated != null) 'timeCreated': timeCreated!.toIso8601String(),
         if (updated != null) 'updated': updated!.toIso8601String(),
-        if (versioning != null) 'versioning': versioning!.toJson(),
-        if (website != null) 'website': website!.toJson(),
+        if (versioning != null) 'versioning': versioning!,
+        if (website != null) 'website': website!,
         if (zoneAffinity != null) 'zoneAffinity': zoneAffinity!,
       };
 }
@@ -4907,7 +4902,7 @@ class BucketAccessControl {
         if (etag != null) 'etag': etag!,
         if (id != null) 'id': id!,
         if (kind != null) 'kind': kind!,
-        if (projectTeam != null) 'projectTeam': projectTeam!.toJson(),
+        if (projectTeam != null) 'projectTeam': projectTeam!,
         if (role != null) 'role': role!,
         if (selfLink != null) 'selfLink': selfLink!,
       };
@@ -4941,8 +4936,7 @@ class BucketAccessControls {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (items != null)
-          'items': items!.map((value) => value.toJson()).toList(),
+        if (items != null) 'items': items!,
         if (kind != null) 'kind': kind!,
       };
 }
@@ -4984,8 +4978,7 @@ class Buckets {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (items != null)
-          'items': items!.map((value) => value.toJson()).toList(),
+        if (items != null) 'items': items!,
         if (kind != null) 'kind': kind!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
@@ -5155,7 +5148,7 @@ class ComposeRequestSourceObjects {
         if (generation != null) 'generation': generation!,
         if (name != null) 'name': name!,
         if (objectPreconditions != null)
-          'objectPreconditions': objectPreconditions!.toJson(),
+          'objectPreconditions': objectPreconditions!,
       };
 }
 
@@ -5192,11 +5185,9 @@ class ComposeRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (destination != null) 'destination': destination!.toJson(),
+        if (destination != null) 'destination': destination!,
         if (kind != null) 'kind': kind!,
-        if (sourceObjects != null)
-          'sourceObjects':
-              sourceObjects!.map((value) => value.toJson()).toList(),
+        if (sourceObjects != null) 'sourceObjects': sourceObjects!,
       };
 }
 
@@ -5292,7 +5283,7 @@ class HmacKey {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
-        if (metadata != null) 'metadata': metadata!.toJson(),
+        if (metadata != null) 'metadata': metadata!,
         if (secret != null) 'secret': secret!,
       };
 }
@@ -5425,8 +5416,7 @@ class HmacKeysMetadata {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (items != null)
-          'items': items!.map((value) => value.toJson()).toList(),
+        if (items != null) 'items': items!,
         if (kind != null) 'kind': kind!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
@@ -5555,8 +5545,7 @@ class Notifications {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (items != null)
-          'items': items!.map((value) => value.toJson()).toList(),
+        if (items != null) 'items': items!,
         if (kind != null) 'kind': kind!,
       };
 }
@@ -5921,7 +5910,7 @@ class Object {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (acl != null) 'acl': acl!.map((value) => value.toJson()).toList(),
+        if (acl != null) 'acl': acl!,
         if (bucket != null) 'bucket': bucket!,
         if (cacheControl != null) 'cacheControl': cacheControl!,
         if (componentCount != null) 'componentCount': componentCount!,
@@ -5933,7 +5922,7 @@ class Object {
         if (crc32c != null) 'crc32c': crc32c!,
         if (customTime != null) 'customTime': customTime!.toIso8601String(),
         if (customerEncryption != null)
-          'customerEncryption': customerEncryption!.toJson(),
+          'customerEncryption': customerEncryption!,
         if (etag != null) 'etag': etag!,
         if (eventBasedHold != null) 'eventBasedHold': eventBasedHold!,
         if (generation != null) 'generation': generation!,
@@ -5945,7 +5934,7 @@ class Object {
         if (metadata != null) 'metadata': metadata!,
         if (metageneration != null) 'metageneration': metageneration!,
         if (name != null) 'name': name!,
-        if (owner != null) 'owner': owner!.toJson(),
+        if (owner != null) 'owner': owner!,
         if (retentionExpirationTime != null)
           'retentionExpirationTime': retentionExpirationTime!.toIso8601String(),
         if (selfLink != null) 'selfLink': selfLink!,
@@ -6108,7 +6097,7 @@ class ObjectAccessControl {
         if (id != null) 'id': id!,
         if (kind != null) 'kind': kind!,
         if (object != null) 'object': object!,
-        if (projectTeam != null) 'projectTeam': projectTeam!.toJson(),
+        if (projectTeam != null) 'projectTeam': projectTeam!,
         if (role != null) 'role': role!,
         if (selfLink != null) 'selfLink': selfLink!,
       };
@@ -6142,8 +6131,7 @@ class ObjectAccessControls {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (items != null)
-          'items': items!.map((value) => value.toJson()).toList(),
+        if (items != null) 'items': items!,
         if (kind != null) 'kind': kind!,
       };
 }
@@ -6195,8 +6183,7 @@ class Objects {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (items != null)
-          'items': items!.map((value) => value.toJson()).toList(),
+        if (items != null) 'items': items!,
         if (kind != null) 'kind': kind!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (prefixes != null) 'prefixes': prefixes!,
@@ -6285,7 +6272,7 @@ class PolicyBindings {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (condition != null) 'condition': condition!.toJson(),
+        if (condition != null) 'condition': condition!,
         if (members != null) 'members': members!,
         if (role != null) 'role': role!,
       };
@@ -6352,8 +6339,7 @@ class Policy {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bindings != null)
-          'bindings': bindings!.map((value) => value.toJson()).toList(),
+        if (bindings != null) 'bindings': bindings!,
         if (etag != null) 'etag': etag!,
         if (kind != null) 'kind': kind!,
         if (resourceId != null) 'resourceId': resourceId!,
@@ -6425,7 +6411,7 @@ class RewriteResponse {
         if (done != null) 'done': done!,
         if (kind != null) 'kind': kind!,
         if (objectSize != null) 'objectSize': objectSize!,
-        if (resource != null) 'resource': resource!.toJson(),
+        if (resource != null) 'resource': resource!,
         if (rewriteToken != null) 'rewriteToken': rewriteToken!,
         if (totalBytesRewritten != null)
           'totalBytesRewritten': totalBytesRewritten!,

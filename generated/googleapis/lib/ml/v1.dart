@@ -108,7 +108,7 @@ class ProjectsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -193,7 +193,7 @@ class ProjectsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -240,7 +240,7 @@ class ProjectsJobsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -281,7 +281,7 @@ class ProjectsJobsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -486,7 +486,7 @@ class ProjectsJobsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -533,7 +533,7 @@ class ProjectsJobsResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -581,7 +581,7 @@ class ProjectsJobsResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -830,7 +830,7 @@ class ProjectsLocationsStudiesResource {
     core.String? studyId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (studyId != null) 'studyId': [studyId],
       if ($fields != null) 'fields': [$fields],
@@ -994,7 +994,7 @@ class ProjectsLocationsStudiesTrialsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1039,7 +1039,7 @@ class ProjectsLocationsStudiesTrialsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1082,7 +1082,7 @@ class ProjectsLocationsStudiesTrialsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1124,7 +1124,7 @@ class ProjectsLocationsStudiesTrialsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1282,7 +1282,7 @@ class ProjectsLocationsStudiesTrialsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1325,7 +1325,7 @@ class ProjectsLocationsStudiesTrialsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1372,7 +1372,7 @@ class ProjectsLocationsStudiesTrialsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1425,7 +1425,7 @@ class ProjectsModelsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1665,7 +1665,7 @@ class ProjectsModelsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -1712,7 +1712,7 @@ class ProjectsModelsResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1760,7 +1760,7 @@ class ProjectsModelsResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1816,7 +1816,7 @@ class ProjectsModelsVersionsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2015,7 +2015,7 @@ class ProjectsModelsVersionsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -2065,7 +2065,7 @@ class ProjectsModelsVersionsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2775,23 +2775,18 @@ class GoogleCloudMlV1StudyConfigParameterSpec {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (categoricalValueSpec != null)
-          'categoricalValueSpec': categoricalValueSpec!.toJson(),
+          'categoricalValueSpec': categoricalValueSpec!,
         if (childParameterSpecs != null)
-          'childParameterSpecs':
-              childParameterSpecs!.map((value) => value.toJson()).toList(),
-        if (discreteValueSpec != null)
-          'discreteValueSpec': discreteValueSpec!.toJson(),
-        if (doubleValueSpec != null)
-          'doubleValueSpec': doubleValueSpec!.toJson(),
-        if (integerValueSpec != null)
-          'integerValueSpec': integerValueSpec!.toJson(),
+          'childParameterSpecs': childParameterSpecs!,
+        if (discreteValueSpec != null) 'discreteValueSpec': discreteValueSpec!,
+        if (doubleValueSpec != null) 'doubleValueSpec': doubleValueSpec!,
+        if (integerValueSpec != null) 'integerValueSpec': integerValueSpec!,
         if (parameter != null) 'parameter': parameter!,
         if (parentCategoricalValues != null)
-          'parentCategoricalValues': parentCategoricalValues!.toJson(),
+          'parentCategoricalValues': parentCategoricalValues!,
         if (parentDiscreteValues != null)
-          'parentDiscreteValues': parentDiscreteValues!.toJson(),
-        if (parentIntValues != null)
-          'parentIntValues': parentIntValues!.toJson(),
+          'parentDiscreteValues': parentDiscreteValues!,
+        if (parentIntValues != null) 'parentIntValues': parentIntValues!,
         if (scaleType != null) 'scaleType': scaleType!,
         if (type != null) 'type': type!,
       };
@@ -2909,7 +2904,7 @@ class GoogleCloudMlV1AddTrialMeasurementRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (measurement != null) 'measurement': measurement!.toJson(),
+        if (measurement != null) 'measurement': measurement!,
       };
 }
 
@@ -2977,8 +2972,7 @@ class GoogleCloudMlV1AutoScaling {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (maxNodes != null) 'maxNodes': maxNodes!,
-        if (metrics != null)
-          'metrics': metrics!.map((value) => value.toJson()).toList(),
+        if (metrics != null) 'metrics': metrics!,
         if (minNodes != null) 'minNodes': minNodes!,
       };
 }
@@ -3016,10 +3010,9 @@ class GoogleCloudMlV1AutomatedStoppingConfig {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (decayCurveStoppingConfig != null)
-          'decayCurveStoppingConfig': decayCurveStoppingConfig!.toJson(),
+          'decayCurveStoppingConfig': decayCurveStoppingConfig!,
         if (medianAutomatedStoppingConfig != null)
-          'medianAutomatedStoppingConfig':
-              medianAutomatedStoppingConfig!.toJson(),
+          'medianAutomatedStoppingConfig': medianAutomatedStoppingConfig!,
       };
 }
 
@@ -3230,8 +3223,7 @@ class GoogleCloudMlV1CompleteTrialRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (finalMeasurement != null)
-          'finalMeasurement': finalMeasurement!.toJson(),
+        if (finalMeasurement != null) 'finalMeasurement': finalMeasurement!,
         if (infeasibleReason != null) 'infeasibleReason': infeasibleReason!,
         if (trialInfeasible != null) 'trialInfeasible': trialInfeasible!,
       };
@@ -3453,10 +3445,9 @@ class GoogleCloudMlV1ContainerSpec {
   core.Map<core.String, core.dynamic> toJson() => {
         if (args != null) 'args': args!,
         if (command != null) 'command': command!,
-        if (env != null) 'env': env!.map((value) => value.toJson()).toList(),
+        if (env != null) 'env': env!,
         if (image != null) 'image': image!,
-        if (ports != null)
-          'ports': ports!.map((value) => value.toJson()).toList(),
+        if (ports != null) 'ports': ports!,
       };
 }
 
@@ -3583,7 +3574,7 @@ class GoogleCloudMlV1ExplainRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (httpBody != null) 'httpBody': httpBody!.toJson(),
+        if (httpBody != null) 'httpBody': httpBody!,
       };
 }
 
@@ -3641,12 +3632,10 @@ class GoogleCloudMlV1ExplanationConfig {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (integratedGradientsAttribution != null)
-          'integratedGradientsAttribution':
-              integratedGradientsAttribution!.toJson(),
+          'integratedGradientsAttribution': integratedGradientsAttribution!,
         if (sampledShapleyAttribution != null)
-          'sampledShapleyAttribution': sampledShapleyAttribution!.toJson(),
-        if (xraiAttribution != null)
-          'xraiAttribution': xraiAttribution!.toJson(),
+          'sampledShapleyAttribution': sampledShapleyAttribution!,
+        if (xraiAttribution != null) 'xraiAttribution': xraiAttribution!,
       };
 }
 
@@ -3681,7 +3670,7 @@ class GoogleCloudMlV1GetConfigResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (config != null) 'config': config!.toJson(),
+        if (config != null) 'config': config!,
         if (serviceAccount != null) 'serviceAccount': serviceAccount!,
         if (serviceAccountProject != null)
           'serviceAccountProject': serviceAccountProject!,
@@ -3827,12 +3816,11 @@ class GoogleCloudMlV1HyperparameterOutput {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (allMetrics != null)
-          'allMetrics': allMetrics!.map((value) => value.toJson()).toList(),
+        if (allMetrics != null) 'allMetrics': allMetrics!,
         if (builtInAlgorithmOutput != null)
-          'builtInAlgorithmOutput': builtInAlgorithmOutput!.toJson(),
+          'builtInAlgorithmOutput': builtInAlgorithmOutput!,
         if (endTime != null) 'endTime': endTime!,
-        if (finalMetric != null) 'finalMetric': finalMetric!.toJson(),
+        if (finalMetric != null) 'finalMetric': finalMetric!,
         if (hyperparameters != null) 'hyperparameters': hyperparameters!,
         if (isTrialStoppedEarly != null)
           'isTrialStoppedEarly': isTrialStoppedEarly!,
@@ -3985,8 +3973,7 @@ class GoogleCloudMlV1HyperparameterSpec {
         if (maxFailedTrials != null) 'maxFailedTrials': maxFailedTrials!,
         if (maxParallelTrials != null) 'maxParallelTrials': maxParallelTrials!,
         if (maxTrials != null) 'maxTrials': maxTrials!,
-        if (params != null)
-          'params': params!.map((value) => value.toJson()).toList(),
+        if (params != null) 'params': params!,
         if (resumePreviousJobId != null)
           'resumePreviousJobId': resumePreviousJobId!,
       };
@@ -4169,14 +4156,12 @@ class GoogleCloudMlV1Job {
         if (etag != null) 'etag': etag!,
         if (jobId != null) 'jobId': jobId!,
         if (labels != null) 'labels': labels!,
-        if (predictionInput != null)
-          'predictionInput': predictionInput!.toJson(),
-        if (predictionOutput != null)
-          'predictionOutput': predictionOutput!.toJson(),
+        if (predictionInput != null) 'predictionInput': predictionInput!,
+        if (predictionOutput != null) 'predictionOutput': predictionOutput!,
         if (startTime != null) 'startTime': startTime!,
         if (state != null) 'state': state!,
-        if (trainingInput != null) 'trainingInput': trainingInput!.toJson(),
-        if (trainingOutput != null) 'trainingOutput': trainingOutput!.toJson(),
+        if (trainingInput != null) 'trainingInput': trainingInput!,
+        if (trainingOutput != null) 'trainingOutput': trainingOutput!,
       };
 }
 
@@ -4210,7 +4195,7 @@ class GoogleCloudMlV1ListJobsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (jobs != null) 'jobs': jobs!.map((value) => value.toJson()).toList(),
+        if (jobs != null) 'jobs': jobs!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -4244,8 +4229,7 @@ class GoogleCloudMlV1ListLocationsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (locations != null)
-          'locations': locations!.map((value) => value.toJson()).toList(),
+        if (locations != null) 'locations': locations!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -4280,8 +4264,7 @@ class GoogleCloudMlV1ListModelsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (models != null)
-          'models': models!.map((value) => value.toJson()).toList(),
+        if (models != null) 'models': models!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -4313,8 +4296,7 @@ class GoogleCloudMlV1ListOptimalTrialsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (trials != null)
-          'trials': trials!.map((value) => value.toJson()).toList(),
+        if (trials != null) 'trials': trials!,
       };
 }
 
@@ -4337,8 +4319,7 @@ class GoogleCloudMlV1ListStudiesResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (studies != null)
-          'studies': studies!.map((value) => value.toJson()).toList(),
+        if (studies != null) 'studies': studies!,
       };
 }
 
@@ -4362,8 +4343,7 @@ class GoogleCloudMlV1ListTrialsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (trials != null)
-          'trials': trials!.map((value) => value.toJson()).toList(),
+        if (trials != null) 'trials': trials!,
       };
 }
 
@@ -4398,8 +4378,7 @@ class GoogleCloudMlV1ListVersionsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (versions != null)
-          'versions': versions!.map((value) => value.toJson()).toList(),
+        if (versions != null) 'versions': versions!,
       };
 }
 
@@ -4425,8 +4404,7 @@ class GoogleCloudMlV1Location {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (capabilities != null)
-          'capabilities': capabilities!.map((value) => value.toJson()).toList(),
+        if (capabilities != null) 'capabilities': capabilities!,
         if (name != null) 'name': name!,
       };
 }
@@ -4494,8 +4472,7 @@ class GoogleCloudMlV1Measurement {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (elapsedTime != null) 'elapsedTime': elapsedTime!,
-        if (metrics != null)
-          'metrics': metrics!.map((value) => value.toJson()).toList(),
+        if (metrics != null) 'metrics': metrics!,
         if (stepCount != null) 'stepCount': stepCount!,
       };
 }
@@ -4666,7 +4643,7 @@ class GoogleCloudMlV1Model {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (defaultVersion != null) 'defaultVersion': defaultVersion!.toJson(),
+        if (defaultVersion != null) 'defaultVersion': defaultVersion!,
         if (description != null) 'description': description!,
         if (etag != null) 'etag': etag!,
         if (labels != null) 'labels': labels!,
@@ -4776,7 +4753,7 @@ class GoogleCloudMlV1OperationMetadata {
         if (operationType != null) 'operationType': operationType!,
         if (projectNumber != null) 'projectNumber': projectNumber!,
         if (startTime != null) 'startTime': startTime!,
-        if (version != null) 'version': version!.toJson(),
+        if (version != null) 'version': version!,
       };
 }
 
@@ -4916,7 +4893,7 @@ class GoogleCloudMlV1PredictRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (httpBody != null) 'httpBody': httpBody!.toJson(),
+        if (httpBody != null) 'httpBody': httpBody!,
       };
 }
 
@@ -5242,11 +5219,10 @@ class GoogleCloudMlV1ReplicaConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (acceleratorConfig != null)
-          'acceleratorConfig': acceleratorConfig!.toJson(),
+        if (acceleratorConfig != null) 'acceleratorConfig': acceleratorConfig!,
         if (containerArgs != null) 'containerArgs': containerArgs!,
         if (containerCommand != null) 'containerCommand': containerCommand!,
-        if (diskConfig != null) 'diskConfig': diskConfig!.toJson(),
+        if (diskConfig != null) 'diskConfig': diskConfig!,
         if (imageUri != null) 'imageUri': imageUri!,
         if (tpuTfVersion != null) 'tpuTfVersion': tpuTfVersion!,
       };
@@ -5550,7 +5526,7 @@ class GoogleCloudMlV1Study {
         if (inactiveReason != null) 'inactiveReason': inactiveReason!,
         if (name != null) 'name': name!,
         if (state != null) 'state': state!,
-        if (studyConfig != null) 'studyConfig': studyConfig!.toJson(),
+        if (studyConfig != null) 'studyConfig': studyConfig!,
       };
 }
 
@@ -5613,11 +5589,9 @@ class GoogleCloudMlV1StudyConfig {
   core.Map<core.String, core.dynamic> toJson() => {
         if (algorithm != null) 'algorithm': algorithm!,
         if (automatedStoppingConfig != null)
-          'automatedStoppingConfig': automatedStoppingConfig!.toJson(),
-        if (metrics != null)
-          'metrics': metrics!.map((value) => value.toJson()).toList(),
-        if (parameters != null)
-          'parameters': parameters!.map((value) => value.toJson()).toList(),
+          'automatedStoppingConfig': automatedStoppingConfig!,
+        if (metrics != null) 'metrics': metrics!,
+        if (parameters != null) 'parameters': parameters!,
       };
 }
 
@@ -5754,8 +5728,7 @@ class GoogleCloudMlV1SuggestTrialsResponse {
         if (endTime != null) 'endTime': endTime!,
         if (startTime != null) 'startTime': startTime!,
         if (studyState != null) 'studyState': studyState!,
-        if (trials != null)
-          'trials': trials!.map((value) => value.toJson()).toList(),
+        if (trials != null) 'trials': trials!,
       };
 }
 
@@ -6207,21 +6180,18 @@ class GoogleCloudMlV1TrainingInput {
   core.Map<core.String, core.dynamic> toJson() => {
         if (args != null) 'args': args!,
         if (enableWebAccess != null) 'enableWebAccess': enableWebAccess!,
-        if (encryptionConfig != null)
-          'encryptionConfig': encryptionConfig!.toJson(),
-        if (evaluatorConfig != null)
-          'evaluatorConfig': evaluatorConfig!.toJson(),
+        if (encryptionConfig != null) 'encryptionConfig': encryptionConfig!,
+        if (evaluatorConfig != null) 'evaluatorConfig': evaluatorConfig!,
         if (evaluatorCount != null) 'evaluatorCount': evaluatorCount!,
         if (evaluatorType != null) 'evaluatorType': evaluatorType!,
-        if (hyperparameters != null)
-          'hyperparameters': hyperparameters!.toJson(),
+        if (hyperparameters != null) 'hyperparameters': hyperparameters!,
         if (jobDir != null) 'jobDir': jobDir!,
-        if (masterConfig != null) 'masterConfig': masterConfig!.toJson(),
+        if (masterConfig != null) 'masterConfig': masterConfig!,
         if (masterType != null) 'masterType': masterType!,
         if (network != null) 'network': network!,
         if (packageUris != null) 'packageUris': packageUris!,
         if (parameterServerConfig != null)
-          'parameterServerConfig': parameterServerConfig!.toJson(),
+          'parameterServerConfig': parameterServerConfig!,
         if (parameterServerCount != null)
           'parameterServerCount': parameterServerCount!,
         if (parameterServerType != null)
@@ -6231,11 +6201,11 @@ class GoogleCloudMlV1TrainingInput {
         if (region != null) 'region': region!,
         if (runtimeVersion != null) 'runtimeVersion': runtimeVersion!,
         if (scaleTier != null) 'scaleTier': scaleTier!,
-        if (scheduling != null) 'scheduling': scheduling!.toJson(),
+        if (scheduling != null) 'scheduling': scheduling!,
         if (serviceAccount != null) 'serviceAccount': serviceAccount!,
         if (useChiefInTfConfig != null)
           'useChiefInTfConfig': useChiefInTfConfig!,
-        if (workerConfig != null) 'workerConfig': workerConfig!.toJson(),
+        if (workerConfig != null) 'workerConfig': workerConfig!,
         if (workerCount != null) 'workerCount': workerCount!,
         if (workerType != null) 'workerType': workerType!,
       };
@@ -6343,7 +6313,7 @@ class GoogleCloudMlV1TrainingOutput {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (builtInAlgorithmOutput != null)
-          'builtInAlgorithmOutput': builtInAlgorithmOutput!.toJson(),
+          'builtInAlgorithmOutput': builtInAlgorithmOutput!,
         if (completedTrialCount != null)
           'completedTrialCount': completedTrialCount!,
         if (consumedMLUnits != null) 'consumedMLUnits': consumedMLUnits!,
@@ -6353,8 +6323,7 @@ class GoogleCloudMlV1TrainingOutput {
           'isBuiltInAlgorithmJob': isBuiltInAlgorithmJob!,
         if (isHyperparameterTuningJob != null)
           'isHyperparameterTuningJob': isHyperparameterTuningJob!,
-        if (trials != null)
-          'trials': trials!.map((value) => value.toJson()).toList(),
+        if (trials != null) 'trials': trials!,
         if (webAccessUris != null) 'webAccessUris': webAccessUris!,
       };
 }
@@ -6471,14 +6440,11 @@ class GoogleCloudMlV1Trial {
   core.Map<core.String, core.dynamic> toJson() => {
         if (clientId != null) 'clientId': clientId!,
         if (endTime != null) 'endTime': endTime!,
-        if (finalMeasurement != null)
-          'finalMeasurement': finalMeasurement!.toJson(),
+        if (finalMeasurement != null) 'finalMeasurement': finalMeasurement!,
         if (infeasibleReason != null) 'infeasibleReason': infeasibleReason!,
-        if (measurements != null)
-          'measurements': measurements!.map((value) => value.toJson()).toList(),
+        if (measurements != null) 'measurements': measurements!,
         if (name != null) 'name': name!,
-        if (parameters != null)
-          'parameters': parameters!.map((value) => value.toJson()).toList(),
+        if (parameters != null) 'parameters': parameters!,
         if (startTime != null) 'startTime': startTime!,
         if (state != null) 'state': state!,
         if (trialInfeasible != null) 'trialInfeasible': trialInfeasible!,
@@ -6903,17 +6869,15 @@ class GoogleCloudMlV1Version {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (acceleratorConfig != null)
-          'acceleratorConfig': acceleratorConfig!.toJson(),
-        if (autoScaling != null) 'autoScaling': autoScaling!.toJson(),
-        if (container != null) 'container': container!.toJson(),
+        if (acceleratorConfig != null) 'acceleratorConfig': acceleratorConfig!,
+        if (autoScaling != null) 'autoScaling': autoScaling!,
+        if (container != null) 'container': container!,
         if (createTime != null) 'createTime': createTime!,
         if (deploymentUri != null) 'deploymentUri': deploymentUri!,
         if (description != null) 'description': description!,
         if (errorMessage != null) 'errorMessage': errorMessage!,
         if (etag != null) 'etag': etag!,
-        if (explanationConfig != null)
-          'explanationConfig': explanationConfig!.toJson(),
+        if (explanationConfig != null) 'explanationConfig': explanationConfig!,
         if (framework != null) 'framework': framework!,
         if (isDefault != null) 'isDefault': isDefault!,
         if (labels != null) 'labels': labels!,
@@ -6922,14 +6886,14 @@ class GoogleCloudMlV1Version {
         if (lastMigrationTime != null) 'lastMigrationTime': lastMigrationTime!,
         if (lastUseTime != null) 'lastUseTime': lastUseTime!,
         if (machineType != null) 'machineType': machineType!,
-        if (manualScaling != null) 'manualScaling': manualScaling!.toJson(),
+        if (manualScaling != null) 'manualScaling': manualScaling!,
         if (name != null) 'name': name!,
         if (packageUris != null) 'packageUris': packageUris!,
         if (predictionClass != null) 'predictionClass': predictionClass!,
         if (pythonVersion != null) 'pythonVersion': pythonVersion!,
         if (requestLoggingConfig != null)
-          'requestLoggingConfig': requestLoggingConfig!.toJson(),
-        if (routes != null) 'routes': routes!.toJson(),
+          'requestLoggingConfig': requestLoggingConfig!,
+        if (routes != null) 'routes': routes!,
         if (runtimeVersion != null) 'runtimeVersion': runtimeVersion!,
         if (serviceAccount != null) 'serviceAccount': serviceAccount!,
         if (state != null) 'state': state!,
@@ -7010,9 +6974,7 @@ class GoogleIamV1AuditConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (auditLogConfigs != null)
-          'auditLogConfigs':
-              auditLogConfigs!.map((value) => value.toJson()).toList(),
+        if (auditLogConfigs != null) 'auditLogConfigs': auditLogConfigs!,
         if (service != null) 'service': service!,
       };
 }
@@ -7131,7 +7093,7 @@ class GoogleIamV1Binding {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (condition != null) 'condition': condition!.toJson(),
+        if (condition != null) 'condition': condition!,
         if (members != null) 'members': members!,
         if (role != null) 'role': role!,
       };
@@ -7246,10 +7208,8 @@ class GoogleIamV1Policy {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (auditConfigs != null)
-          'auditConfigs': auditConfigs!.map((value) => value.toJson()).toList(),
-        if (bindings != null)
-          'bindings': bindings!.map((value) => value.toJson()).toList(),
+        if (auditConfigs != null) 'auditConfigs': auditConfigs!,
+        if (bindings != null) 'bindings': bindings!,
         if (etag != null) 'etag': etag!,
         if (version != null) 'version': version!,
       };
@@ -7287,7 +7247,7 @@ class GoogleIamV1SetIamPolicyRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (policy != null) 'policy': policy!.toJson(),
+        if (policy != null) 'policy': policy!,
         if (updateMask != null) 'updateMask': updateMask!,
       };
 }
@@ -7371,8 +7331,7 @@ class GoogleLongrunningListOperationsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (operations != null)
-          'operations': operations!.map((value) => value.toJson()).toList(),
+        if (operations != null) 'operations': operations!,
       };
 }
 
@@ -7445,7 +7404,7 @@ class GoogleLongrunningOperation {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (done != null) 'done': done!,
-        if (error != null) 'error': error!.toJson(),
+        if (error != null) 'error': error!,
         if (metadata != null) 'metadata': metadata!,
         if (name != null) 'name': name!,
         if (response != null) 'response': response!,

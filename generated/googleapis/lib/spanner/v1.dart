@@ -238,7 +238,7 @@ class ProjectsInstancesResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -366,7 +366,7 @@ class ProjectsInstancesResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -498,7 +498,7 @@ class ProjectsInstancesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -543,7 +543,7 @@ class ProjectsInstancesResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -591,7 +591,7 @@ class ProjectsInstancesResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -771,7 +771,7 @@ class ProjectsInstancesBackupsResource {
     core.String? encryptionConfig_kmsKeyName,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (backupId != null) 'backupId': [backupId],
       if (encryptionConfig_encryptionType != null)
@@ -898,7 +898,7 @@ class ProjectsInstancesBackupsResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1028,7 +1028,7 @@ class ProjectsInstancesBackupsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -1077,7 +1077,7 @@ class ProjectsInstancesBackupsResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1128,7 +1128,7 @@ class ProjectsInstancesBackupsResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1468,7 +1468,7 @@ class ProjectsInstancesDatabasesResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1634,7 +1634,7 @@ class ProjectsInstancesDatabasesResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1798,7 +1798,7 @@ class ProjectsInstancesDatabasesResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1846,7 +1846,7 @@ class ProjectsInstancesDatabasesResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1897,7 +1897,7 @@ class ProjectsInstancesDatabasesResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1946,7 +1946,7 @@ class ProjectsInstancesDatabasesResource {
     core.String database, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2186,7 +2186,7 @@ class ProjectsInstancesDatabasesSessionsResource {
     core.String database, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2232,7 +2232,7 @@ class ProjectsInstancesDatabasesSessionsResource {
     core.String session, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2286,7 +2286,7 @@ class ProjectsInstancesDatabasesSessionsResource {
     core.String session, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2341,7 +2341,7 @@ class ProjectsInstancesDatabasesSessionsResource {
     core.String database, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2430,7 +2430,7 @@ class ProjectsInstancesDatabasesSessionsResource {
     core.String session, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2481,7 +2481,7 @@ class ProjectsInstancesDatabasesSessionsResource {
     core.String session, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2527,7 +2527,7 @@ class ProjectsInstancesDatabasesSessionsResource {
     core.String session, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2675,7 +2675,7 @@ class ProjectsInstancesDatabasesSessionsResource {
     core.String session, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2730,7 +2730,7 @@ class ProjectsInstancesDatabasesSessionsResource {
     core.String session, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2781,7 +2781,7 @@ class ProjectsInstancesDatabasesSessionsResource {
     core.String session, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2829,7 +2829,7 @@ class ProjectsInstancesDatabasesSessionsResource {
     core.String session, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2874,7 +2874,7 @@ class ProjectsInstancesDatabasesSessionsResource {
     core.String session, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3272,7 +3272,7 @@ class Backup {
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
         if (database != null) 'database': database!,
-        if (encryptionInfo != null) 'encryptionInfo': encryptionInfo!.toJson(),
+        if (encryptionInfo != null) 'encryptionInfo': encryptionInfo!,
         if (expireTime != null) 'expireTime': expireTime!,
         if (name != null) 'name': name!,
         if (referencingDatabases != null)
@@ -3364,8 +3364,7 @@ class BatchCreateSessionsRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (sessionCount != null) 'sessionCount': sessionCount!,
-        if (sessionTemplate != null)
-          'sessionTemplate': sessionTemplate!.toJson(),
+        if (sessionTemplate != null) 'sessionTemplate': sessionTemplate!,
       };
 }
 
@@ -3389,8 +3388,7 @@ class BatchCreateSessionsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (session != null)
-          'session': session!.map((value) => value.toJson()).toList(),
+        if (session != null) 'session': session!,
       };
 }
 
@@ -3427,8 +3425,8 @@ class BeginTransactionRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (options != null) 'options': options!.toJson(),
-        if (requestOptions != null) 'requestOptions': requestOptions!.toJson(),
+        if (options != null) 'options': options!,
+        if (requestOptions != null) 'requestOptions': requestOptions!,
       };
 }
 
@@ -3502,7 +3500,7 @@ class Binding {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (condition != null) 'condition': condition!.toJson(),
+        if (condition != null) 'condition': condition!,
         if (members != null) 'members': members!,
         if (role != null) 'role': role!,
       };
@@ -3625,12 +3623,11 @@ class CommitRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (mutations != null)
-          'mutations': mutations!.map((value) => value.toJson()).toList(),
-        if (requestOptions != null) 'requestOptions': requestOptions!.toJson(),
+        if (mutations != null) 'mutations': mutations!,
+        if (requestOptions != null) 'requestOptions': requestOptions!,
         if (returnCommitStats != null) 'returnCommitStats': returnCommitStats!,
         if (singleUseTransaction != null)
-          'singleUseTransaction': singleUseTransaction!.toJson(),
+          'singleUseTransaction': singleUseTransaction!,
         if (transactionId != null) 'transactionId': transactionId!,
       };
 }
@@ -3663,7 +3660,7 @@ class CommitResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (commitStats != null) 'commitStats': commitStats!.toJson(),
+        if (commitStats != null) 'commitStats': commitStats!,
         if (commitTimestamp != null) 'commitTimestamp': commitTimestamp!,
       };
 }
@@ -3743,7 +3740,7 @@ class ContextValue {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (label != null) 'label': label!.toJson(),
+        if (label != null) 'label': label!,
         if (severity != null) 'severity': severity!,
         if (unit != null) 'unit': unit!,
         if (value != null) 'value': value!,
@@ -3799,7 +3796,7 @@ class CreateBackupMetadata {
         if (cancelTime != null) 'cancelTime': cancelTime!,
         if (database != null) 'database': database!,
         if (name != null) 'name': name!,
-        if (progress != null) 'progress': progress!.toJson(),
+        if (progress != null) 'progress': progress!,
       };
 }
 
@@ -3878,8 +3875,7 @@ class CreateDatabaseRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (createStatement != null) 'createStatement': createStatement!,
-        if (encryptionConfig != null)
-          'encryptionConfig': encryptionConfig!.toJson(),
+        if (encryptionConfig != null) 'encryptionConfig': encryptionConfig!,
         if (extraStatements != null) 'extraStatements': extraStatements!,
       };
 }
@@ -3928,7 +3924,7 @@ class CreateInstanceMetadata {
   core.Map<core.String, core.dynamic> toJson() => {
         if (cancelTime != null) 'cancelTime': cancelTime!,
         if (endTime != null) 'endTime': endTime!,
-        if (instance != null) 'instance': instance!.toJson(),
+        if (instance != null) 'instance': instance!,
         if (startTime != null) 'startTime': startTime!,
       };
 }
@@ -3967,7 +3963,7 @@ class CreateInstanceRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (instance != null) 'instance': instance!.toJson(),
+        if (instance != null) 'instance': instance!,
         if (instanceId != null) 'instanceId': instanceId!,
       };
 }
@@ -3992,7 +3988,7 @@ class CreateSessionRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (session != null) 'session': session!.toJson(),
+        if (session != null) 'session': session!,
       };
 }
 
@@ -4134,13 +4130,10 @@ class Database {
         if (defaultLeader != null) 'defaultLeader': defaultLeader!,
         if (earliestVersionTime != null)
           'earliestVersionTime': earliestVersionTime!,
-        if (encryptionConfig != null)
-          'encryptionConfig': encryptionConfig!.toJson(),
-        if (encryptionInfo != null)
-          'encryptionInfo':
-              encryptionInfo!.map((value) => value.toJson()).toList(),
+        if (encryptionConfig != null) 'encryptionConfig': encryptionConfig!,
+        if (encryptionInfo != null) 'encryptionInfo': encryptionInfo!,
         if (name != null) 'name': name!,
-        if (restoreInfo != null) 'restoreInfo': restoreInfo!.toJson(),
+        if (restoreInfo != null) 'restoreInfo': restoreInfo!,
         if (state != null) 'state': state!,
         if (versionRetentionPeriod != null)
           'versionRetentionPeriod': versionRetentionPeriod!,
@@ -4180,7 +4173,7 @@ class Delete {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (keySet != null) 'keySet': keySet!.toJson(),
+        if (keySet != null) 'keySet': keySet!,
         if (table != null) 'table': table!,
       };
 }
@@ -4215,8 +4208,8 @@ class DerivedMetric {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (denominator != null) 'denominator': denominator!.toJson(),
-        if (numerator != null) 'numerator': numerator!.toJson(),
+        if (denominator != null) 'denominator': denominator!,
+        if (numerator != null) 'numerator': numerator!,
       };
 }
 
@@ -4280,11 +4273,11 @@ class DiagnosticMessage {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (info != null) 'info': info!.toJson(),
-        if (metric != null) 'metric': metric!.toJson(),
+        if (info != null) 'info': info!,
+        if (metric != null) 'metric': metric!,
         if (metricSpecific != null) 'metricSpecific': metricSpecific!,
         if (severity != null) 'severity': severity!,
-        if (shortMessage != null) 'shortMessage': shortMessage!.toJson(),
+        if (shortMessage != null) 'shortMessage': shortMessage!,
       };
 }
 
@@ -4372,8 +4365,7 @@ class EncryptionInfo {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (encryptionStatus != null)
-          'encryptionStatus': encryptionStatus!.toJson(),
+        if (encryptionStatus != null) 'encryptionStatus': encryptionStatus!,
         if (encryptionType != null) 'encryptionType': encryptionType!,
         if (kmsKeyVersion != null) 'kmsKeyVersion': kmsKeyVersion!,
       };
@@ -4443,11 +4435,10 @@ class ExecuteBatchDmlRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (requestOptions != null) 'requestOptions': requestOptions!.toJson(),
+        if (requestOptions != null) 'requestOptions': requestOptions!,
         if (seqno != null) 'seqno': seqno!,
-        if (statements != null)
-          'statements': statements!.map((value) => value.toJson()).toList(),
-        if (transaction != null) 'transaction': transaction!.toJson(),
+        if (statements != null) 'statements': statements!,
+        if (transaction != null) 'transaction': transaction!,
       };
 }
 
@@ -4502,9 +4493,8 @@ class ExecuteBatchDmlResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (resultSets != null)
-          'resultSets': resultSets!.map((value) => value.toJson()).toList(),
-        if (status != null) 'status': status!.toJson(),
+        if (resultSets != null) 'resultSets': resultSets!,
+        if (status != null) 'status': status!,
       };
 }
 
@@ -4664,18 +4654,16 @@ class ExecuteSqlRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (paramTypes != null)
-          'paramTypes':
-              paramTypes!.map((key, item) => core.MapEntry(key, item.toJson())),
+        if (paramTypes != null) 'paramTypes': paramTypes!,
         if (params != null) 'params': params!,
         if (partitionToken != null) 'partitionToken': partitionToken!,
         if (queryMode != null) 'queryMode': queryMode!,
-        if (queryOptions != null) 'queryOptions': queryOptions!.toJson(),
-        if (requestOptions != null) 'requestOptions': requestOptions!.toJson(),
+        if (queryOptions != null) 'queryOptions': queryOptions!,
+        if (requestOptions != null) 'requestOptions': requestOptions!,
         if (resumeToken != null) 'resumeToken': resumeToken!,
         if (seqno != null) 'seqno': seqno!,
         if (sql != null) 'sql': sql!,
-        if (transaction != null) 'transaction': transaction!.toJson(),
+        if (transaction != null) 'transaction': transaction!,
       };
 }
 
@@ -4784,7 +4772,7 @@ class Field {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
-        if (type != null) 'type': type!.toJson(),
+        if (type != null) 'type': type!,
       };
 }
 
@@ -4831,7 +4819,7 @@ class GetIamPolicyRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (options != null) 'options': options!.toJson(),
+        if (options != null) 'options': options!,
       };
 }
 
@@ -4924,9 +4912,7 @@ class IndexedKeyRangeInfos {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (keyRangeInfos != null)
-          'keyRangeInfos': keyRangeInfos!
-              .map((key, item) => core.MapEntry(key, item.toJson())),
+        if (keyRangeInfos != null) 'keyRangeInfos': keyRangeInfos!,
       };
 }
 
@@ -5120,8 +5106,7 @@ class InstanceConfig {
         if (displayName != null) 'displayName': displayName!,
         if (leaderOptions != null) 'leaderOptions': leaderOptions!,
         if (name != null) 'name': name!,
-        if (replicas != null)
-          'replicas': replicas!.map((value) => value.toJson()).toList(),
+        if (replicas != null) 'replicas': replicas!,
       };
 }
 
@@ -5306,16 +5291,14 @@ class KeyRangeInfo {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (contextValues != null)
-          'contextValues':
-              contextValues!.map((value) => value.toJson()).toList(),
+        if (contextValues != null) 'contextValues': contextValues!,
         if (endKeyIndex != null) 'endKeyIndex': endKeyIndex!,
-        if (info != null) 'info': info!.toJson(),
+        if (info != null) 'info': info!,
         if (keysCount != null) 'keysCount': keysCount!,
-        if (metric != null) 'metric': metric!.toJson(),
+        if (metric != null) 'metric': metric!,
         if (startKeyIndex != null) 'startKeyIndex': startKeyIndex!,
         if (timeOffset != null) 'timeOffset': timeOffset!,
-        if (unit != null) 'unit': unit!.toJson(),
+        if (unit != null) 'unit': unit!,
         if (value != null) 'value': value!,
       };
 }
@@ -5352,8 +5335,7 @@ class KeyRangeInfos {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (infos != null)
-          'infos': infos!.map((value) => value.toJson()).toList(),
+        if (infos != null) 'infos': infos!,
         if (totalSize != null) 'totalSize': totalSize!,
       };
 }
@@ -5411,8 +5393,7 @@ class KeySet {
   core.Map<core.String, core.dynamic> toJson() => {
         if (all != null) 'all': all!,
         if (keys != null) 'keys': keys!,
-        if (ranges != null)
-          'ranges': ranges!.map((value) => value.toJson()).toList(),
+        if (ranges != null) 'ranges': ranges!,
       };
 }
 
@@ -5452,8 +5433,7 @@ class ListBackupOperationsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (operations != null)
-          'operations': operations!.map((value) => value.toJson()).toList(),
+        if (operations != null) 'operations': operations!,
       };
 }
 
@@ -5488,8 +5468,7 @@ class ListBackupsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (backups != null)
-          'backups': backups!.map((value) => value.toJson()).toList(),
+        if (backups != null) 'backups': backups!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -5527,8 +5506,7 @@ class ListDatabaseOperationsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (operations != null)
-          'operations': operations!.map((value) => value.toJson()).toList(),
+        if (operations != null) 'operations': operations!,
       };
 }
 
@@ -5560,8 +5538,7 @@ class ListDatabasesResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (databases != null)
-          'databases': databases!.map((value) => value.toJson()).toList(),
+        if (databases != null) 'databases': databases!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -5594,9 +5571,7 @@ class ListInstanceConfigsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (instanceConfigs != null)
-          'instanceConfigs':
-              instanceConfigs!.map((value) => value.toJson()).toList(),
+        if (instanceConfigs != null) 'instanceConfigs': instanceConfigs!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -5641,8 +5616,7 @@ class ListInstancesResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (instances != null)
-          'instances': instances!.map((value) => value.toJson()).toList(),
+        if (instances != null) 'instances': instances!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (unreachable != null) 'unreachable': unreachable!,
       };
@@ -5676,8 +5650,7 @@ class ListOperationsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (operations != null)
-          'operations': operations!.map((value) => value.toJson()).toList(),
+        if (operations != null) 'operations': operations!,
       };
 }
 
@@ -5710,8 +5683,7 @@ class ListScansResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (scans != null)
-          'scans': scans!.map((value) => value.toJson()).toList(),
+        if (scans != null) 'scans': scans!,
       };
 }
 
@@ -5744,8 +5716,7 @@ class ListSessionsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (sessions != null)
-          'sessions': sessions!.map((value) => value.toJson()).toList(),
+        if (sessions != null) 'sessions': sessions!,
       };
 }
 
@@ -5927,20 +5898,17 @@ class Metric {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (aggregation != null) 'aggregation': aggregation!,
-        if (category != null) 'category': category!.toJson(),
-        if (derived != null) 'derived': derived!.toJson(),
-        if (displayLabel != null) 'displayLabel': displayLabel!.toJson(),
+        if (category != null) 'category': category!,
+        if (derived != null) 'derived': derived!,
+        if (displayLabel != null) 'displayLabel': displayLabel!,
         if (hasNonzeroData != null) 'hasNonzeroData': hasNonzeroData!,
         if (hotValue != null) 'hotValue': hotValue!,
-        if (indexedHotKeys != null)
-          'indexedHotKeys': indexedHotKeys!
-              .map((key, item) => core.MapEntry(key, item.toJson())),
+        if (indexedHotKeys != null) 'indexedHotKeys': indexedHotKeys!,
         if (indexedKeyRangeInfos != null)
-          'indexedKeyRangeInfos': indexedKeyRangeInfos!
-              .map((key, item) => core.MapEntry(key, item.toJson())),
-        if (info != null) 'info': info!.toJson(),
-        if (matrix != null) 'matrix': matrix!.toJson(),
-        if (unit != null) 'unit': unit!.toJson(),
+          'indexedKeyRangeInfos': indexedKeyRangeInfos!,
+        if (info != null) 'info': info!,
+        if (matrix != null) 'matrix': matrix!,
+        if (unit != null) 'unit': unit!,
         if (visible != null) 'visible': visible!,
       };
 }
@@ -5965,7 +5933,7 @@ class MetricMatrix {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (rows != null) 'rows': rows!.map((value) => value.toJson()).toList(),
+        if (rows != null) 'rows': rows!,
       };
 }
 
@@ -6066,11 +6034,11 @@ class Mutation {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (delete != null) 'delete': delete!.toJson(),
-        if (insert != null) 'insert': insert!.toJson(),
-        if (insertOrUpdate != null) 'insertOrUpdate': insertOrUpdate!.toJson(),
-        if (replace != null) 'replace': replace!.toJson(),
-        if (update != null) 'update': update!.toJson(),
+        if (delete != null) 'delete': delete!,
+        if (insert != null) 'insert': insert!,
+        if (insertOrUpdate != null) 'insertOrUpdate': insertOrUpdate!,
+        if (replace != null) 'replace': replace!,
+        if (update != null) 'update': update!,
       };
 }
 
@@ -6143,7 +6111,7 @@ class Operation {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (done != null) 'done': done!,
-        if (error != null) 'error': error!.toJson(),
+        if (error != null) 'error': error!,
         if (metadata != null) 'metadata': metadata!,
         if (name != null) 'name': name!,
         if (response != null) 'response': response!,
@@ -6219,7 +6187,7 @@ class OptimizeRestoredDatabaseMetadata {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
-        if (progress != null) 'progress': progress!.toJson(),
+        if (progress != null) 'progress': progress!,
       };
 }
 
@@ -6332,9 +6300,9 @@ class PartialResultSet {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (chunkedValue != null) 'chunkedValue': chunkedValue!,
-        if (metadata != null) 'metadata': metadata!.toJson(),
+        if (metadata != null) 'metadata': metadata!,
         if (resumeToken != null) 'resumeToken': resumeToken!,
-        if (stats != null) 'stats': stats!.toJson(),
+        if (stats != null) 'stats': stats!,
         if (values != null) 'values': values!,
       };
 }
@@ -6490,14 +6458,11 @@ class PartitionQueryRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (paramTypes != null)
-          'paramTypes':
-              paramTypes!.map((key, item) => core.MapEntry(key, item.toJson())),
+        if (paramTypes != null) 'paramTypes': paramTypes!,
         if (params != null) 'params': params!,
-        if (partitionOptions != null)
-          'partitionOptions': partitionOptions!.toJson(),
+        if (partitionOptions != null) 'partitionOptions': partitionOptions!,
         if (sql != null) 'sql': sql!,
-        if (transaction != null) 'transaction': transaction!.toJson(),
+        if (transaction != null) 'transaction': transaction!,
       };
 }
 
@@ -6572,11 +6537,10 @@ class PartitionReadRequest {
   core.Map<core.String, core.dynamic> toJson() => {
         if (columns != null) 'columns': columns!,
         if (index != null) 'index': index!,
-        if (keySet != null) 'keySet': keySet!.toJson(),
-        if (partitionOptions != null)
-          'partitionOptions': partitionOptions!.toJson(),
+        if (keySet != null) 'keySet': keySet!,
+        if (partitionOptions != null) 'partitionOptions': partitionOptions!,
         if (table != null) 'table': table!,
-        if (transaction != null) 'transaction': transaction!.toJson(),
+        if (transaction != null) 'transaction': transaction!,
       };
 }
 
@@ -6608,9 +6572,8 @@ class PartitionResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (partitions != null)
-          'partitions': partitions!.map((value) => value.toJson()).toList(),
-        if (transaction != null) 'transaction': transaction!.toJson(),
+        if (partitions != null) 'partitions': partitions!,
+        if (transaction != null) 'transaction': transaction!,
       };
 }
 
@@ -6705,15 +6668,14 @@ class PlanNode {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (childLinks != null)
-          'childLinks': childLinks!.map((value) => value.toJson()).toList(),
+        if (childLinks != null) 'childLinks': childLinks!,
         if (displayName != null) 'displayName': displayName!,
         if (executionStats != null) 'executionStats': executionStats!,
         if (index != null) 'index': index!,
         if (kind != null) 'kind': kind!,
         if (metadata != null) 'metadata': metadata!,
         if (shortRepresentation != null)
-          'shortRepresentation': shortRepresentation!.toJson(),
+          'shortRepresentation': shortRepresentation!,
       };
 }
 
@@ -6816,8 +6778,7 @@ class Policy {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bindings != null)
-          'bindings': bindings!.map((value) => value.toJson()).toList(),
+        if (bindings != null) 'bindings': bindings!,
         if (etag != null) 'etag': etag!,
         if (version != null) 'version': version!,
       };
@@ -6958,8 +6919,7 @@ class QueryPlan {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (planNodes != null)
-          'planNodes': planNodes!.map((value) => value.toJson()).toList(),
+        if (planNodes != null) 'planNodes': planNodes!,
       };
 }
 
@@ -7182,13 +7142,13 @@ class ReadRequest {
   core.Map<core.String, core.dynamic> toJson() => {
         if (columns != null) 'columns': columns!,
         if (index != null) 'index': index!,
-        if (keySet != null) 'keySet': keySet!.toJson(),
+        if (keySet != null) 'keySet': keySet!,
         if (limit != null) 'limit': limit!,
         if (partitionToken != null) 'partitionToken': partitionToken!,
-        if (requestOptions != null) 'requestOptions': requestOptions!.toJson(),
+        if (requestOptions != null) 'requestOptions': requestOptions!,
         if (resumeToken != null) 'resumeToken': resumeToken!,
         if (table != null) 'table': table!,
-        if (transaction != null) 'transaction': transaction!.toJson(),
+        if (transaction != null) 'transaction': transaction!,
       };
 }
 
@@ -7432,12 +7392,12 @@ class RestoreDatabaseMetadata {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (backupInfo != null) 'backupInfo': backupInfo!.toJson(),
+        if (backupInfo != null) 'backupInfo': backupInfo!,
         if (cancelTime != null) 'cancelTime': cancelTime!,
         if (name != null) 'name': name!,
         if (optimizeDatabaseOperationName != null)
           'optimizeDatabaseOperationName': optimizeDatabaseOperationName!,
-        if (progress != null) 'progress': progress!.toJson(),
+        if (progress != null) 'progress': progress!,
         if (sourceType != null) 'sourceType': sourceType!,
       };
 }
@@ -7492,8 +7452,7 @@ class RestoreDatabaseRequest {
   core.Map<core.String, core.dynamic> toJson() => {
         if (backup != null) 'backup': backup!,
         if (databaseId != null) 'databaseId': databaseId!,
-        if (encryptionConfig != null)
-          'encryptionConfig': encryptionConfig!.toJson(),
+        if (encryptionConfig != null) 'encryptionConfig': encryptionConfig!,
       };
 }
 
@@ -7527,7 +7486,7 @@ class RestoreInfo {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (backupInfo != null) 'backupInfo': backupInfo!.toJson(),
+        if (backupInfo != null) 'backupInfo': backupInfo!,
         if (sourceType != null) 'sourceType': sourceType!,
       };
 }
@@ -7581,9 +7540,9 @@ class ResultSet {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (metadata != null) 'metadata': metadata!.toJson(),
+        if (metadata != null) 'metadata': metadata!,
         if (rows != null) 'rows': rows!,
-        if (stats != null) 'stats': stats!.toJson(),
+        if (stats != null) 'stats': stats!,
       };
 }
 
@@ -7619,8 +7578,8 @@ class ResultSetMetadata {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (rowType != null) 'rowType': rowType!.toJson(),
-        if (transaction != null) 'transaction': transaction!.toJson(),
+        if (rowType != null) 'rowType': rowType!,
+        if (transaction != null) 'transaction': transaction!,
       };
 }
 
@@ -7671,7 +7630,7 @@ class ResultSetStats {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (queryPlan != null) 'queryPlan': queryPlan!.toJson(),
+        if (queryPlan != null) 'queryPlan': queryPlan!,
         if (queryStats != null) 'queryStats': queryStats!,
         if (rowCountExact != null) 'rowCountExact': rowCountExact!,
         if (rowCountLowerBound != null)
@@ -7766,7 +7725,7 @@ class Scan {
         if (details != null) 'details': details!,
         if (endTime != null) 'endTime': endTime!,
         if (name != null) 'name': name!,
-        if (scanData != null) 'scanData': scanData!.toJson(),
+        if (scanData != null) 'scanData': scanData!,
         if (startTime != null) 'startTime': startTime!,
       };
 }
@@ -7809,7 +7768,7 @@ class ScanData {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (data != null) 'data': data!.toJson(),
+        if (data != null) 'data': data!,
         if (endTime != null) 'endTime': endTime!,
         if (startTime != null) 'startTime': startTime!,
       };
@@ -7903,7 +7862,7 @@ class SetIamPolicyRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (policy != null) 'policy': policy!.toJson(),
+        if (policy != null) 'policy': policy!,
       };
 }
 
@@ -8003,9 +7962,7 @@ class Statement {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (paramTypes != null)
-          'paramTypes':
-              paramTypes!.map((key, item) => core.MapEntry(key, item.toJson())),
+        if (paramTypes != null) 'paramTypes': paramTypes!,
         if (params != null) 'params': params!,
         if (sql != null) 'sql': sql!,
       };
@@ -8088,8 +8045,7 @@ class StructType {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (fields != null)
-          'fields': fields!.map((value) => value.toJson()).toList(),
+        if (fields != null) 'fields': fields!,
       };
 }
 
@@ -8397,9 +8353,9 @@ class TransactionOptions {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (partitionedDml != null) 'partitionedDml': partitionedDml!.toJson(),
-        if (readOnly != null) 'readOnly': readOnly!.toJson(),
-        if (readWrite != null) 'readWrite': readWrite!.toJson(),
+        if (partitionedDml != null) 'partitionedDml': partitionedDml!,
+        if (readOnly != null) 'readOnly': readOnly!,
+        if (readWrite != null) 'readWrite': readWrite!,
       };
 }
 
@@ -8449,9 +8405,9 @@ class TransactionSelector {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (begin != null) 'begin': begin!.toJson(),
+        if (begin != null) 'begin': begin!,
         if (id != null) 'id': id!,
-        if (singleUse != null) 'singleUse': singleUse!.toJson(),
+        if (singleUse != null) 'singleUse': singleUse!,
       };
 }
 
@@ -8522,10 +8478,9 @@ class Type {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (arrayElementType != null)
-          'arrayElementType': arrayElementType!.toJson(),
+        if (arrayElementType != null) 'arrayElementType': arrayElementType!,
         if (code != null) 'code': code!,
-        if (structType != null) 'structType': structType!.toJson(),
+        if (structType != null) 'structType': structType!,
       };
 }
 
@@ -8599,8 +8554,7 @@ class UpdateDatabaseDdlMetadata {
   core.Map<core.String, core.dynamic> toJson() => {
         if (commitTimestamps != null) 'commitTimestamps': commitTimestamps!,
         if (database != null) 'database': database!,
-        if (progress != null)
-          'progress': progress!.map((value) => value.toJson()).toList(),
+        if (progress != null) 'progress': progress!,
         if (statements != null) 'statements': statements!,
         if (throttled != null) 'throttled': throttled!,
       };
@@ -8707,7 +8661,7 @@ class UpdateInstanceMetadata {
   core.Map<core.String, core.dynamic> toJson() => {
         if (cancelTime != null) 'cancelTime': cancelTime!,
         if (endTime != null) 'endTime': endTime!,
-        if (instance != null) 'instance': instance!.toJson(),
+        if (instance != null) 'instance': instance!,
         if (startTime != null) 'startTime': startTime!,
       };
 }
@@ -8748,7 +8702,7 @@ class UpdateInstanceRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (fieldMask != null) 'fieldMask': fieldMask!,
-        if (instance != null) 'instance': instance!.toJson(),
+        if (instance != null) 'instance': instance!,
       };
 }
 
@@ -8859,17 +8813,14 @@ class VisualizationData {
         if (dataSourceSeparatorToken != null)
           'dataSourceSeparatorToken': dataSourceSeparatorToken!,
         if (diagnosticMessages != null)
-          'diagnosticMessages':
-              diagnosticMessages!.map((value) => value.toJson()).toList(),
+          'diagnosticMessages': diagnosticMessages!,
         if (endKeyStrings != null) 'endKeyStrings': endKeyStrings!,
         if (hasPii != null) 'hasPii': hasPii!,
         if (indexedKeys != null) 'indexedKeys': indexedKeys!,
         if (keySeparator != null) 'keySeparator': keySeparator!,
         if (keyUnit != null) 'keyUnit': keyUnit!,
-        if (metrics != null)
-          'metrics': metrics!.map((value) => value.toJson()).toList(),
-        if (prefixNodes != null)
-          'prefixNodes': prefixNodes!.map((value) => value.toJson()).toList(),
+        if (metrics != null) 'metrics': metrics!,
+        if (prefixNodes != null) 'prefixNodes': prefixNodes!,
       };
 }
 

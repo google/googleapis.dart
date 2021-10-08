@@ -487,7 +487,7 @@ class ProjectsLocationsOsPolicyAssignmentsResource {
     core.String? osPolicyAssignmentId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (osPolicyAssignmentId != null)
         'osPolicyAssignmentId': [osPolicyAssignmentId],
@@ -725,7 +725,7 @@ class ProjectsLocationsOsPolicyAssignmentsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -784,7 +784,7 @@ class ProjectsLocationsOsPolicyAssignmentsOperationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1238,8 +1238,7 @@ class InstanceOSPoliciesCompliance {
           'lastComplianceRunId': lastComplianceRunId!,
         if (name != null) 'name': name!,
         if (osPolicyCompliances != null)
-          'osPolicyCompliances':
-              osPolicyCompliances!.map((value) => value.toJson()).toList(),
+          'osPolicyCompliances': osPolicyCompliances!,
         if (state != null) 'state': state!,
       };
 }
@@ -1301,9 +1300,7 @@ class InstanceOSPoliciesComplianceOSPolicyCompliance {
           'osPolicyAssignment': osPolicyAssignment!,
         if (osPolicyId != null) 'osPolicyId': osPolicyId!,
         if (osPolicyResourceCompliances != null)
-          'osPolicyResourceCompliances': osPolicyResourceCompliances!
-              .map((value) => value.toJson())
-              .toList(),
+          'osPolicyResourceCompliances': osPolicyResourceCompliances!,
         if (state != null) 'state': state!,
       };
 }
@@ -1371,10 +1368,9 @@ class Inventory {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (items != null)
-          'items': items!.map((key, item) => core.MapEntry(key, item.toJson())),
+        if (items != null) 'items': items!,
         if (name != null) 'name': name!,
-        if (osInfo != null) 'osInfo': osInfo!.toJson(),
+        if (osInfo != null) 'osInfo': osInfo!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
 }
@@ -1446,12 +1442,10 @@ class InventoryItem {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (availablePackage != null)
-          'availablePackage': availablePackage!.toJson(),
+        if (availablePackage != null) 'availablePackage': availablePackage!,
         if (createTime != null) 'createTime': createTime!,
         if (id != null) 'id': id!,
-        if (installedPackage != null)
-          'installedPackage': installedPackage!.toJson(),
+        if (installedPackage != null) 'installedPackage': installedPackage!,
         if (originType != null) 'originType': originType!,
         if (type != null) 'type': type!,
         if (updateTime != null) 'updateTime': updateTime!,
@@ -1645,16 +1639,16 @@ class InventorySoftwarePackage {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (aptPackage != null) 'aptPackage': aptPackage!.toJson(),
-        if (cosPackage != null) 'cosPackage': cosPackage!.toJson(),
-        if (googetPackage != null) 'googetPackage': googetPackage!.toJson(),
-        if (qfePackage != null) 'qfePackage': qfePackage!.toJson(),
+        if (aptPackage != null) 'aptPackage': aptPackage!,
+        if (cosPackage != null) 'cosPackage': cosPackage!,
+        if (googetPackage != null) 'googetPackage': googetPackage!,
+        if (qfePackage != null) 'qfePackage': qfePackage!,
         if (windowsApplication != null)
-          'windowsApplication': windowsApplication!.toJson(),
-        if (wuaPackage != null) 'wuaPackage': wuaPackage!.toJson(),
-        if (yumPackage != null) 'yumPackage': yumPackage!.toJson(),
-        if (zypperPackage != null) 'zypperPackage': zypperPackage!.toJson(),
-        if (zypperPatch != null) 'zypperPatch': zypperPatch!.toJson(),
+          'windowsApplication': windowsApplication!,
+        if (wuaPackage != null) 'wuaPackage': wuaPackage!,
+        if (yumPackage != null) 'yumPackage': yumPackage!,
+        if (zypperPackage != null) 'zypperPackage': zypperPackage!,
+        if (zypperPatch != null) 'zypperPatch': zypperPatch!,
       };
 }
 
@@ -1756,7 +1750,7 @@ class InventoryWindowsApplication {
         if (displayName != null) 'displayName': displayName!,
         if (displayVersion != null) 'displayVersion': displayVersion!,
         if (helpLink != null) 'helpLink': helpLink!,
-        if (installDate != null) 'installDate': installDate!.toJson(),
+        if (installDate != null) 'installDate': installDate!,
         if (publisher != null) 'publisher': publisher!,
       };
 }
@@ -1903,8 +1897,7 @@ class InventoryWindowsUpdatePackage {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (categories != null)
-          'categories': categories!.map((value) => value.toJson()).toList(),
+        if (categories != null) 'categories': categories!,
         if (description != null) 'description': description!,
         if (kbArticleIds != null) 'kbArticleIds': kbArticleIds!,
         if (lastDeploymentChangeTime != null)
@@ -2018,9 +2011,7 @@ class ListInstanceOSPoliciesCompliancesResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (instanceOsPoliciesCompliances != null)
-          'instanceOsPoliciesCompliances': instanceOsPoliciesCompliances!
-              .map((value) => value.toJson())
-              .toList(),
+          'instanceOsPoliciesCompliances': instanceOsPoliciesCompliances!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -2053,8 +2044,7 @@ class ListInventoriesResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (inventories != null)
-          'inventories': inventories!.map((value) => value.toJson()).toList(),
+        if (inventories != null) 'inventories': inventories!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -2089,8 +2079,7 @@ class ListOSPolicyAssignmentRevisionsResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (osPolicyAssignments != null)
-          'osPolicyAssignments':
-              osPolicyAssignments!.map((value) => value.toJson()).toList(),
+          'osPolicyAssignments': osPolicyAssignments!,
       };
 }
 
@@ -2123,8 +2112,7 @@ class ListOSPolicyAssignmentsResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (osPolicyAssignments != null)
-          'osPolicyAssignments':
-              osPolicyAssignments!.map((value) => value.toJson()).toList(),
+          'osPolicyAssignments': osPolicyAssignments!,
       };
 }
 
@@ -2159,8 +2147,7 @@ class ListVulnerabilityReportsResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (vulnerabilityReports != null)
-          'vulnerabilityReports':
-              vulnerabilityReports!.map((value) => value.toJson()).toList(),
+          'vulnerabilityReports': vulnerabilityReports!,
       };
 }
 
@@ -2243,9 +2230,7 @@ class OSPolicy {
         if (description != null) 'description': description!,
         if (id != null) 'id': id!,
         if (mode != null) 'mode': mode!,
-        if (resourceGroups != null)
-          'resourceGroups':
-              resourceGroups!.map((value) => value.toJson()).toList(),
+        if (resourceGroups != null) 'resourceGroups': resourceGroups!,
       };
 }
 
@@ -2408,15 +2393,14 @@ class OSPolicyAssignment {
         if (deleted != null) 'deleted': deleted!,
         if (description != null) 'description': description!,
         if (etag != null) 'etag': etag!,
-        if (instanceFilter != null) 'instanceFilter': instanceFilter!.toJson(),
+        if (instanceFilter != null) 'instanceFilter': instanceFilter!,
         if (name != null) 'name': name!,
-        if (osPolicies != null)
-          'osPolicies': osPolicies!.map((value) => value.toJson()).toList(),
+        if (osPolicies != null) 'osPolicies': osPolicies!,
         if (reconciling != null) 'reconciling': reconciling!,
         if (revisionCreateTime != null)
           'revisionCreateTime': revisionCreateTime!,
         if (revisionId != null) 'revisionId': revisionId!,
-        if (rollout != null) 'rollout': rollout!.toJson(),
+        if (rollout != null) 'rollout': rollout!,
         if (rolloutState != null) 'rolloutState': rolloutState!,
         if (uid != null) 'uid': uid!,
       };
@@ -2497,14 +2481,9 @@ class OSPolicyAssignmentInstanceFilter {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (all != null) 'all': all!,
-        if (exclusionLabels != null)
-          'exclusionLabels':
-              exclusionLabels!.map((value) => value.toJson()).toList(),
-        if (inclusionLabels != null)
-          'inclusionLabels':
-              inclusionLabels!.map((value) => value.toJson()).toList(),
-        if (inventories != null)
-          'inventories': inventories!.map((value) => value.toJson()).toList(),
+        if (exclusionLabels != null) 'exclusionLabels': exclusionLabels!,
+        if (inclusionLabels != null) 'inclusionLabels': inclusionLabels!,
+        if (inventories != null) 'inventories': inventories!,
         if (osShortNames != null) 'osShortNames': osShortNames!,
       };
 }
@@ -2684,8 +2663,7 @@ class OSPolicyAssignmentRollout {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (disruptionBudget != null)
-          'disruptionBudget': disruptionBudget!.toJson(),
+        if (disruptionBudget != null) 'disruptionBudget': disruptionBudget!,
         if (minWaitDuration != null) 'minWaitDuration': minWaitDuration!,
       };
 }
@@ -2819,11 +2797,11 @@ class OSPolicyResource {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (exec != null) 'exec': exec!.toJson(),
-        if (file != null) 'file': file!.toJson(),
+        if (exec != null) 'exec': exec!,
+        if (file != null) 'file': file!,
         if (id != null) 'id': id!,
-        if (pkg != null) 'pkg': pkg!.toJson(),
-        if (repository != null) 'repository': repository!.toJson(),
+        if (pkg != null) 'pkg': pkg!,
+        if (repository != null) 'repository': repository!,
       };
 }
 
@@ -2878,10 +2856,9 @@ class OSPolicyResourceCompliance {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (configSteps != null)
-          'configSteps': configSteps!.map((value) => value.toJson()).toList(),
+        if (configSteps != null) 'configSteps': configSteps!,
         if (execResourceOutput != null)
-          'execResourceOutput': execResourceOutput!.toJson(),
+          'execResourceOutput': execResourceOutput!,
         if (osPolicyResourceId != null)
           'osPolicyResourceId': osPolicyResourceId!,
         if (state != null) 'state': state!,
@@ -3028,8 +3005,8 @@ class OSPolicyResourceExecResource {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (enforce != null) 'enforce': enforce!.toJson(),
-        if (validate != null) 'validate': validate!.toJson(),
+        if (enforce != null) 'enforce': enforce!,
+        if (validate != null) 'validate': validate!,
       };
 }
 
@@ -3099,7 +3076,7 @@ class OSPolicyResourceExecResourceExec {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (args != null) 'args': args!,
-        if (file != null) 'file': file!.toJson(),
+        if (file != null) 'file': file!,
         if (interpreter != null) 'interpreter': interpreter!,
         if (outputFilePath != null) 'outputFilePath': outputFilePath!,
         if (script != null) 'script': script!,
@@ -3151,9 +3128,9 @@ class OSPolicyResourceFile {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (allowInsecure != null) 'allowInsecure': allowInsecure!,
-        if (gcs != null) 'gcs': gcs!.toJson(),
+        if (gcs != null) 'gcs': gcs!,
         if (localPath != null) 'localPath': localPath!,
-        if (remote != null) 'remote': remote!.toJson(),
+        if (remote != null) 'remote': remote!,
       };
 }
 
@@ -3294,7 +3271,7 @@ class OSPolicyResourceFileResource {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (content != null) 'content': content!,
-        if (file != null) 'file': file!.toJson(),
+        if (file != null) 'file': file!,
         if (path != null) 'path': path!,
         if (permissions != null) 'permissions': permissions!,
         if (state != null) 'state': state!,
@@ -3360,12 +3337,9 @@ class OSPolicyResourceGroup {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (inventoryFilters != null)
-          'inventoryFilters':
-              inventoryFilters!.map((value) => value.toJson()).toList(),
-        if (osFilter != null) 'osFilter': osFilter!.toJson(),
-        if (resources != null)
-          'resources': resources!.map((value) => value.toJson()).toList(),
+        if (inventoryFilters != null) 'inventoryFilters': inventoryFilters!,
+        if (osFilter != null) 'osFilter': osFilter!,
+        if (resources != null) 'resources': resources!,
       };
 }
 
@@ -3449,14 +3423,14 @@ class OSPolicyResourcePackageResource {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (apt != null) 'apt': apt!.toJson(),
-        if (deb != null) 'deb': deb!.toJson(),
+        if (apt != null) 'apt': apt!,
+        if (deb != null) 'deb': deb!,
         if (desiredState != null) 'desiredState': desiredState!,
-        if (googet != null) 'googet': googet!.toJson(),
-        if (msi != null) 'msi': msi!.toJson(),
-        if (rpm != null) 'rpm': rpm!.toJson(),
-        if (yum != null) 'yum': yum!.toJson(),
-        if (zypper != null) 'zypper': zypper!.toJson(),
+        if (googet != null) 'googet': googet!,
+        if (msi != null) 'msi': msi!,
+        if (rpm != null) 'rpm': rpm!,
+        if (yum != null) 'yum': yum!,
+        if (zypper != null) 'zypper': zypper!,
       };
 }
 
@@ -3517,7 +3491,7 @@ class OSPolicyResourcePackageResourceDeb {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (pullDeps != null) 'pullDeps': pullDeps!,
-        if (source != null) 'source': source!.toJson(),
+        if (source != null) 'source': source!,
       };
 }
 
@@ -3580,7 +3554,7 @@ class OSPolicyResourcePackageResourceMSI {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (properties != null) 'properties': properties!,
-        if (source != null) 'source': source!.toJson(),
+        if (source != null) 'source': source!,
       };
 }
 
@@ -3617,7 +3591,7 @@ class OSPolicyResourcePackageResourceRPM {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (pullDeps != null) 'pullDeps': pullDeps!,
-        if (source != null) 'source': source!.toJson(),
+        if (source != null) 'source': source!,
       };
 }
 
@@ -3709,10 +3683,10 @@ class OSPolicyResourceRepositoryResource {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (apt != null) 'apt': apt!.toJson(),
-        if (goo != null) 'goo': goo!.toJson(),
-        if (yum != null) 'yum': yum!.toJson(),
-        if (zypper != null) 'zypper': zypper!.toJson(),
+        if (apt != null) 'apt': apt!,
+        if (goo != null) 'goo': goo!,
+        if (yum != null) 'yum': yum!,
+        if (zypper != null) 'zypper': zypper!,
       };
 }
 
@@ -4002,7 +3976,7 @@ class Operation {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (done != null) 'done': done!,
-        if (error != null) 'error': error!.toJson(),
+        if (error != null) 'error': error!,
         if (metadata != null) 'metadata': metadata!,
         if (name != null) 'name': name!,
         if (response != null) 'response': response!,
@@ -4108,9 +4082,7 @@ class VulnerabilityReport {
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
         if (updateTime != null) 'updateTime': updateTime!,
-        if (vulnerabilities != null)
-          'vulnerabilities':
-              vulnerabilities!.map((value) => value.toJson()).toList(),
+        if (vulnerabilities != null) 'vulnerabilities': vulnerabilities!,
       };
 }
 
@@ -4180,7 +4152,7 @@ class VulnerabilityReportVulnerability {
         if (availableInventoryItemIds != null)
           'availableInventoryItemIds': availableInventoryItemIds!,
         if (createTime != null) 'createTime': createTime!,
-        if (details != null) 'details': details!.toJson(),
+        if (details != null) 'details': details!,
         if (installedInventoryItemIds != null)
           'installedInventoryItemIds': installedInventoryItemIds!,
         if (updateTime != null) 'updateTime': updateTime!,
@@ -4253,10 +4225,9 @@ class VulnerabilityReportVulnerabilityDetails {
   core.Map<core.String, core.dynamic> toJson() => {
         if (cve != null) 'cve': cve!,
         if (cvssV2Score != null) 'cvssV2Score': cvssV2Score!,
-        if (cvssV3 != null) 'cvssV3': cvssV3!.toJson(),
+        if (cvssV3 != null) 'cvssV3': cvssV3!,
         if (description != null) 'description': description!,
-        if (references != null)
-          'references': references!.map((value) => value.toJson()).toList(),
+        if (references != null) 'references': references!,
         if (severity != null) 'severity': severity!,
       };
 }

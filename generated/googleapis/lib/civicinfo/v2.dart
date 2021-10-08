@@ -363,12 +363,10 @@ class AdministrationRegion {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (electionAdministrationBody != null)
-          'electionAdministrationBody': electionAdministrationBody!.toJson(),
-        if (localJurisdiction != null)
-          'local_jurisdiction': localJurisdiction!.toJson(),
+          'electionAdministrationBody': electionAdministrationBody!,
+        if (localJurisdiction != null) 'local_jurisdiction': localJurisdiction!,
         if (name != null) 'name': name!,
-        if (sources != null)
-          'sources': sources!.map((value) => value.toJson()).toList(),
+        if (sources != null) 'sources': sources!,
       };
 }
 
@@ -506,14 +504,12 @@ class AdministrativeBody {
           'absenteeVotingInfoUrl': absenteeVotingInfoUrl!,
         if (ballotInfoUrl != null) 'ballotInfoUrl': ballotInfoUrl!,
         if (correspondenceAddress != null)
-          'correspondenceAddress': correspondenceAddress!.toJson(),
+          'correspondenceAddress': correspondenceAddress!,
         if (electionInfoUrl != null) 'electionInfoUrl': electionInfoUrl!,
         if (electionNoticeText != null)
           'electionNoticeText': electionNoticeText!,
         if (electionNoticeUrl != null) 'electionNoticeUrl': electionNoticeUrl!,
-        if (electionOfficials != null)
-          'electionOfficials':
-              electionOfficials!.map((value) => value.toJson()).toList(),
+        if (electionOfficials != null) 'electionOfficials': electionOfficials!,
         if (electionRegistrationConfirmationUrl != null)
           'electionRegistrationConfirmationUrl':
               electionRegistrationConfirmationUrl!,
@@ -522,8 +518,7 @@ class AdministrativeBody {
         if (electionRulesUrl != null) 'electionRulesUrl': electionRulesUrl!,
         if (hoursOfOperation != null) 'hoursOfOperation': hoursOfOperation!,
         if (name != null) 'name': name!,
-        if (physicalAddress != null)
-          'physicalAddress': physicalAddress!.toJson(),
+        if (physicalAddress != null) 'physicalAddress': physicalAddress!,
         if (voterServices != null) 'voter_services': voterServices!,
         if (votingLocationFinderUrl != null)
           'votingLocationFinderUrl': votingLocationFinderUrl!,
@@ -599,8 +594,7 @@ class Candidate {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (candidateUrl != null) 'candidateUrl': candidateUrl!,
-        if (channels != null)
-          'channels': channels!.map((value) => value.toJson()).toList(),
+        if (channels != null) 'channels': channels!,
         if (email != null) 'email': email!,
         if (name != null) 'name': name!,
         if (orderOnBallot != null) 'orderOnBallot': orderOnBallot!,
@@ -889,9 +883,8 @@ class Contest {
   core.Map<core.String, core.dynamic> toJson() => {
         if (ballotPlacement != null) 'ballotPlacement': ballotPlacement!,
         if (ballotTitle != null) 'ballotTitle': ballotTitle!,
-        if (candidates != null)
-          'candidates': candidates!.map((value) => value.toJson()).toList(),
-        if (district != null) 'district': district!.toJson(),
+        if (candidates != null) 'candidates': candidates!,
+        if (district != null) 'district': district!,
         if (electorateSpecifications != null)
           'electorateSpecifications': electorateSpecifications!,
         if (level != null) 'level': level!,
@@ -917,8 +910,7 @@ class Contest {
         if (referendumTitle != null) 'referendumTitle': referendumTitle!,
         if (referendumUrl != null) 'referendumUrl': referendumUrl!,
         if (roles != null) 'roles': roles!,
-        if (sources != null)
-          'sources': sources!.map((value) => value.toJson()).toList(),
+        if (sources != null) 'sources': sources!,
         if (special != null) 'special': special!,
         if (type != null) 'type': type!,
       };
@@ -950,8 +942,7 @@ class DivisionSearchResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
-        if (results != null)
-          'results': results!.map((value) => value.toJson()).toList(),
+        if (results != null) 'results': results!,
       };
 }
 
@@ -1120,8 +1111,7 @@ class ElectionsQueryResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (elections != null)
-          'elections': elections!.map((value) => value.toJson()).toList(),
+        if (elections != null) 'elections': elections!,
         if (kind != null) 'kind': kind!,
       };
 }
@@ -1310,8 +1300,7 @@ class Office {
         if (name != null) 'name': name!,
         if (officialIndices != null) 'officialIndices': officialIndices!,
         if (roles != null) 'roles': roles!,
-        if (sources != null)
-          'sources': sources!.map((value) => value.toJson()).toList(),
+        if (sources != null) 'sources': sources!,
       };
 }
 
@@ -1390,10 +1379,8 @@ class Official {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (address != null)
-          'address': address!.map((value) => value.toJson()).toList(),
-        if (channels != null)
-          'channels': channels!.map((value) => value.toJson()).toList(),
+        if (address != null) 'address': address!,
+        if (channels != null) 'channels': channels!,
         if (emails != null) 'emails': emails!,
         if (name != null) 'name': name!,
         if (party != null) 'party': party!,
@@ -1502,15 +1489,14 @@ class PollingLocation {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (address != null) 'address': address!.toJson(),
+        if (address != null) 'address': address!,
         if (endDate != null) 'endDate': endDate!,
         if (latitude != null) 'latitude': latitude!,
         if (longitude != null) 'longitude': longitude!,
         if (name != null) 'name': name!,
         if (notes != null) 'notes': notes!,
         if (pollingHours != null) 'pollingHours': pollingHours!,
-        if (sources != null)
-          'sources': sources!.map((value) => value.toJson()).toList(),
+        if (sources != null) 'sources': sources!,
         if (startDate != null) 'startDate': startDate!,
         if (voterServices != null) 'voterServices': voterServices!,
       };
@@ -1563,13 +1549,9 @@ class RepresentativeInfoData {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (divisions != null)
-          'divisions':
-              divisions!.map((key, item) => core.MapEntry(key, item.toJson())),
-        if (offices != null)
-          'offices': offices!.map((value) => value.toJson()).toList(),
-        if (officials != null)
-          'officials': officials!.map((value) => value.toJson()).toList(),
+        if (divisions != null) 'divisions': divisions!,
+        if (offices != null) 'offices': offices!,
+        if (officials != null) 'officials': officials!,
       };
 }
 
@@ -1636,16 +1618,11 @@ class RepresentativeInfoResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (divisions != null)
-          'divisions':
-              divisions!.map((key, item) => core.MapEntry(key, item.toJson())),
+        if (divisions != null) 'divisions': divisions!,
         if (kind != null) 'kind': kind!,
-        if (normalizedInput != null)
-          'normalizedInput': normalizedInput!.toJson(),
-        if (offices != null)
-          'offices': offices!.map((value) => value.toJson()).toList(),
-        if (officials != null)
-          'officials': officials!.map((value) => value.toJson()).toList(),
+        if (normalizedInput != null) 'normalizedInput': normalizedInput!,
+        if (offices != null) 'offices': offices!,
+        if (officials != null) 'officials': officials!,
       };
 }
 
@@ -1861,27 +1838,16 @@ class VoterInfoResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (contests != null)
-          'contests': contests!.map((value) => value.toJson()).toList(),
-        if (dropOffLocations != null)
-          'dropOffLocations':
-              dropOffLocations!.map((value) => value.toJson()).toList(),
-        if (earlyVoteSites != null)
-          'earlyVoteSites':
-              earlyVoteSites!.map((value) => value.toJson()).toList(),
-        if (election != null) 'election': election!.toJson(),
+        if (contests != null) 'contests': contests!,
+        if (dropOffLocations != null) 'dropOffLocations': dropOffLocations!,
+        if (earlyVoteSites != null) 'earlyVoteSites': earlyVoteSites!,
+        if (election != null) 'election': election!,
         if (kind != null) 'kind': kind!,
         if (mailOnly != null) 'mailOnly': mailOnly!,
-        if (normalizedInput != null)
-          'normalizedInput': normalizedInput!.toJson(),
-        if (otherElections != null)
-          'otherElections':
-              otherElections!.map((value) => value.toJson()).toList(),
-        if (pollingLocations != null)
-          'pollingLocations':
-              pollingLocations!.map((value) => value.toJson()).toList(),
+        if (normalizedInput != null) 'normalizedInput': normalizedInput!,
+        if (otherElections != null) 'otherElections': otherElections!,
+        if (pollingLocations != null) 'pollingLocations': pollingLocations!,
         if (precinctId != null) 'precinctId': precinctId!,
-        if (state != null)
-          'state': state!.map((value) => value.toJson()).toList(),
+        if (state != null) 'state': state!,
       };
 }

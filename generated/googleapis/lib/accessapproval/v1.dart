@@ -186,7 +186,7 @@ class FoldersResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -238,7 +238,7 @@ class FoldersApprovalRequestsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -285,7 +285,7 @@ class FoldersApprovalRequestsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -525,7 +525,7 @@ class OrganizationsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -578,7 +578,7 @@ class OrganizationsApprovalRequestsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -626,7 +626,7 @@ class OrganizationsApprovalRequestsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -867,7 +867,7 @@ class ProjectsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -919,7 +919,7 @@ class ProjectsApprovalRequestsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -966,7 +966,7 @@ class ProjectsApprovalRequestsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1151,9 +1151,7 @@ class AccessApprovalSettings {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (enrolledAncestor != null) 'enrolledAncestor': enrolledAncestor!,
-        if (enrolledServices != null)
-          'enrolledServices':
-              enrolledServices!.map((value) => value.toJson()).toList(),
+        if (enrolledServices != null) 'enrolledServices': enrolledServices!,
         if (name != null) 'name': name!,
         if (notificationEmails != null)
           'notificationEmails': notificationEmails!,
@@ -1336,20 +1334,19 @@ class ApprovalRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (approve != null) 'approve': approve!.toJson(),
-        if (dismiss != null) 'dismiss': dismiss!.toJson(),
+        if (approve != null) 'approve': approve!,
+        if (dismiss != null) 'dismiss': dismiss!,
         if (name != null) 'name': name!,
         if (requestTime != null) 'requestTime': requestTime!,
         if (requestedExpiration != null)
           'requestedExpiration': requestedExpiration!,
         if (requestedLocations != null)
-          'requestedLocations': requestedLocations!.toJson(),
-        if (requestedReason != null)
-          'requestedReason': requestedReason!.toJson(),
+          'requestedLocations': requestedLocations!,
+        if (requestedReason != null) 'requestedReason': requestedReason!,
         if (requestedResourceName != null)
           'requestedResourceName': requestedResourceName!,
         if (requestedResourceProperties != null)
-          'requestedResourceProperties': requestedResourceProperties!.toJson(),
+          'requestedResourceProperties': requestedResourceProperties!,
       };
 }
 
@@ -1525,9 +1522,7 @@ class ListApprovalRequestsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (approvalRequests != null)
-          'approvalRequests':
-              approvalRequests!.map((value) => value.toJson()).toList(),
+        if (approvalRequests != null) 'approvalRequests': approvalRequests!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }

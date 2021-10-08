@@ -83,7 +83,7 @@ class AlertsResource {
     BatchDeleteAlertsRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -120,7 +120,7 @@ class AlertsResource {
     BatchUndeleteAlertsRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -365,7 +365,7 @@ class AlertsResource {
     core.String alertId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -421,7 +421,7 @@ class AlertsFeedbackResource {
     core.String? customerId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (customerId != null) 'customerId': [customerId],
       if ($fields != null) 'fields': [$fields],
@@ -562,7 +562,7 @@ class V1beta1Resource {
     core.String? customerId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (customerId != null) 'customerId': [customerId],
       if ($fields != null) 'fields': [$fields],
@@ -672,9 +672,7 @@ class AccountSuspensionWarning {
   core.Map<core.String, core.dynamic> toJson() => {
         if (appealWindow != null) 'appealWindow': appealWindow!,
         if (state != null) 'state': state!,
-        if (suspensionDetails != null)
-          'suspensionDetails':
-              suspensionDetails!.map((value) => value.toJson()).toList(),
+        if (suspensionDetails != null) 'suspensionDetails': suspensionDetails!,
       };
 }
 
@@ -711,7 +709,7 @@ class AccountWarning {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (email != null) 'email': email!,
-        if (loginDetails != null) 'loginDetails': loginDetails!.toJson(),
+        if (loginDetails != null) 'loginDetails': loginDetails!,
       };
 }
 
@@ -999,7 +997,7 @@ class Alert {
         if (deleted != null) 'deleted': deleted!,
         if (endTime != null) 'endTime': endTime!,
         if (etag != null) 'etag': etag!,
-        if (metadata != null) 'metadata': metadata!.toJson(),
+        if (metadata != null) 'metadata': metadata!,
         if (securityInvestigationToolLink != null)
           'securityInvestigationToolLink': securityInvestigationToolLink!,
         if (source != null) 'source': source!,
@@ -1196,8 +1194,7 @@ class AppMakerSqlSetupNotification {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (requestInfo != null)
-          'requestInfo': requestInfo!.map((value) => value.toJson()).toList(),
+        if (requestInfo != null) 'requestInfo': requestInfo!,
       };
 }
 
@@ -1320,7 +1317,7 @@ class Attachment {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (csv != null) 'csv': csv!.toJson(),
+        if (csv != null) 'csv': csv!,
       };
 }
 
@@ -1368,11 +1365,9 @@ class BadWhitelist {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (domainId != null) 'domainId': domainId!.toJson(),
-        if (maliciousEntity != null)
-          'maliciousEntity': maliciousEntity!.toJson(),
-        if (messages != null)
-          'messages': messages!.map((value) => value.toJson()).toList(),
+        if (domainId != null) 'domainId': domainId!,
+        if (maliciousEntity != null) 'maliciousEntity': maliciousEntity!,
+        if (messages != null) 'messages': messages!,
         if (sourceIp != null) 'sourceIp': sourceIp!,
       };
 }
@@ -1447,9 +1442,7 @@ class BatchDeleteAlertsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (failedAlertStatus != null)
-          'failedAlertStatus': failedAlertStatus!
-              .map((key, item) => core.MapEntry(key, item.toJson())),
+        if (failedAlertStatus != null) 'failedAlertStatus': failedAlertStatus!,
         if (successAlertIds != null) 'successAlertIds': successAlertIds!,
       };
 }
@@ -1524,9 +1517,7 @@ class BatchUndeleteAlertsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (failedAlertStatus != null)
-          'failedAlertStatus': failedAlertStatus!
-              .map((key, item) => core.MapEntry(key, item.toJson())),
+        if (failedAlertStatus != null) 'failedAlertStatus': failedAlertStatus!,
         if (successAlertIds != null) 'successAlertIds': successAlertIds!,
       };
 }
@@ -1604,8 +1595,7 @@ class Csv {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dataRows != null)
-          'dataRows': dataRows!.map((value) => value.toJson()).toList(),
+        if (dataRows != null) 'dataRows': dataRows!,
         if (headers != null) 'headers': headers!,
       };
 }
@@ -1665,8 +1655,7 @@ class DeviceCompromised {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (email != null) 'email': email!,
-        if (events != null)
-          'events': events!.map((value) => value.toJson()).toList(),
+        if (events != null) 'events': events!,
       };
 }
 
@@ -1767,8 +1756,7 @@ class DlpRuleViolation {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (ruleViolationInfo != null)
-          'ruleViolationInfo': ruleViolationInfo!.toJson(),
+        if (ruleViolationInfo != null) 'ruleViolationInfo': ruleViolationInfo!,
       };
 }
 
@@ -1971,7 +1959,7 @@ class GoogleOperations {
   core.Map<core.String, core.dynamic> toJson() => {
         if (affectedUserEmails != null)
           'affectedUserEmails': affectedUserEmails!,
-        if (attachmentData != null) 'attachmentData': attachmentData!.toJson(),
+        if (attachmentData != null) 'attachmentData': attachmentData!,
         if (description != null) 'description': description!,
         if (header != null) 'header': header!,
         if (title != null) 'title': title!,
@@ -2000,8 +1988,7 @@ class ListAlertFeedbackResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (feedback != null)
-          'feedback': feedback!.map((value) => value.toJson()).toList(),
+        if (feedback != null) 'feedback': feedback!,
       };
 }
 
@@ -2036,8 +2023,7 @@ class ListAlertsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (alerts != null)
-          'alerts': alerts!.map((value) => value.toJson()).toList(),
+        if (alerts != null) 'alerts': alerts!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -2137,12 +2123,10 @@ class MailPhishing {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (domainId != null) 'domainId': domainId!.toJson(),
+        if (domainId != null) 'domainId': domainId!,
         if (isInternal != null) 'isInternal': isInternal!,
-        if (maliciousEntity != null)
-          'maliciousEntity': maliciousEntity!.toJson(),
-        if (messages != null)
-          'messages': messages!.map((value) => value.toJson()).toList(),
+        if (maliciousEntity != null) 'maliciousEntity': maliciousEntity!,
+        if (messages != null) 'messages': messages!,
         if (systemActionType != null) 'systemActionType': systemActionType!,
       };
 }
@@ -2180,7 +2164,7 @@ class MaliciousEntity {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
-        if (entity != null) 'entity': entity!.toJson(),
+        if (entity != null) 'entity': entity!,
         if (fromHeader != null) 'fromHeader': fromHeader!,
       };
 }
@@ -2212,9 +2196,9 @@ class MatchInfo {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (predefinedDetector != null)
-          'predefinedDetector': predefinedDetector!.toJson(),
+          'predefinedDetector': predefinedDetector!,
         if (userDefinedDetector != null)
-          'userDefinedDetector': userDefinedDetector!.toJson(),
+          'userDefinedDetector': userDefinedDetector!,
       };
 }
 
@@ -2239,8 +2223,7 @@ class Notification {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cloudPubsubTopic != null)
-          'cloudPubsubTopic': cloudPubsubTopic!.toJson(),
+        if (cloudPubsubTopic != null) 'cloudPubsubTopic': cloudPubsubTopic!,
       };
 }
 
@@ -2291,12 +2274,10 @@ class PhishingSpike {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (domainId != null) 'domainId': domainId!.toJson(),
+        if (domainId != null) 'domainId': domainId!,
         if (isInternal != null) 'isInternal': isInternal!,
-        if (maliciousEntity != null)
-          'maliciousEntity': maliciousEntity!.toJson(),
-        if (messages != null)
-          'messages': messages!.map((value) => value.toJson()).toList(),
+        if (maliciousEntity != null) 'maliciousEntity': maliciousEntity!,
+        if (messages != null) 'messages': messages!,
       };
 }
 
@@ -2583,17 +2564,15 @@ class RuleViolationInfo {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (dataSource != null) 'dataSource': dataSource!,
-        if (matchInfo != null)
-          'matchInfo': matchInfo!.map((value) => value.toJson()).toList(),
+        if (matchInfo != null) 'matchInfo': matchInfo!,
         if (recipients != null) 'recipients': recipients!,
-        if (resourceInfo != null) 'resourceInfo': resourceInfo!.toJson(),
-        if (ruleInfo != null) 'ruleInfo': ruleInfo!.toJson(),
+        if (resourceInfo != null) 'resourceInfo': resourceInfo!,
+        if (ruleInfo != null) 'ruleInfo': ruleInfo!,
         if (suppressedActionTypes != null)
           'suppressedActionTypes': suppressedActionTypes!,
         if (trigger != null) 'trigger': trigger!,
         if (triggeredActionInfo != null)
-          'triggeredActionInfo':
-              triggeredActionInfo!.map((value) => value.toJson()).toList(),
+          'triggeredActionInfo': triggeredActionInfo!,
         if (triggeredActionTypes != null)
           'triggeredActionTypes': triggeredActionTypes!,
         if (triggeringUserEmail != null)
@@ -2621,9 +2600,7 @@ class Settings {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (notifications != null)
-          'notifications':
-              notifications!.map((value) => value.toJson()).toList(),
+        if (notifications != null) 'notifications': notifications!,
       };
 }
 
@@ -2731,8 +2708,7 @@ class SuspiciousActivity {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (email != null) 'email': email!,
-        if (events != null)
-          'events': events!.map((value) => value.toJson()).toList(),
+        if (events != null) 'events': events!,
       };
 }
 

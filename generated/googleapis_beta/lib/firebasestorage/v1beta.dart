@@ -99,7 +99,7 @@ class ProjectsBucketsResource {
     core.String bucket, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -227,7 +227,7 @@ class ProjectsBucketsResource {
     core.String bucket, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -446,8 +446,7 @@ class ListBucketsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (buckets != null)
-          'buckets': buckets!.map((value) => value.toJson()).toList(),
+        if (buckets != null) 'buckets': buckets!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }

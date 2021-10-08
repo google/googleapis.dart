@@ -111,7 +111,7 @@ class ProjectsLocationsEnvironmentsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -345,7 +345,7 @@ class ProjectsLocationsEnvironmentsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -879,7 +879,7 @@ class Environment {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (config != null) 'config': config!.toJson(),
+        if (config != null) 'config': config!,
         if (createTime != null) 'createTime': createTime!,
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
@@ -1017,20 +1017,17 @@ class EnvironmentConfig {
   core.Map<core.String, core.dynamic> toJson() => {
         if (airflowUri != null) 'airflowUri': airflowUri!,
         if (dagGcsPrefix != null) 'dagGcsPrefix': dagGcsPrefix!,
-        if (databaseConfig != null) 'databaseConfig': databaseConfig!.toJson(),
-        if (encryptionConfig != null)
-          'encryptionConfig': encryptionConfig!.toJson(),
+        if (databaseConfig != null) 'databaseConfig': databaseConfig!,
+        if (encryptionConfig != null) 'encryptionConfig': encryptionConfig!,
         if (gkeCluster != null) 'gkeCluster': gkeCluster!,
-        if (nodeConfig != null) 'nodeConfig': nodeConfig!.toJson(),
+        if (nodeConfig != null) 'nodeConfig': nodeConfig!,
         if (nodeCount != null) 'nodeCount': nodeCount!,
         if (privateEnvironmentConfig != null)
-          'privateEnvironmentConfig': privateEnvironmentConfig!.toJson(),
-        if (softwareConfig != null) 'softwareConfig': softwareConfig!.toJson(),
-        if (webServerConfig != null)
-          'webServerConfig': webServerConfig!.toJson(),
+          'privateEnvironmentConfig': privateEnvironmentConfig!,
+        if (softwareConfig != null) 'softwareConfig': softwareConfig!,
+        if (webServerConfig != null) 'webServerConfig': webServerConfig!,
         if (webServerNetworkAccessControl != null)
-          'webServerNetworkAccessControl':
-              webServerNetworkAccessControl!.toJson(),
+          'webServerNetworkAccessControl': webServerNetworkAccessControl!,
       };
 }
 
@@ -1190,7 +1187,7 @@ class ImageVersion {
         if (creationDisabled != null) 'creationDisabled': creationDisabled!,
         if (imageVersionId != null) 'imageVersionId': imageVersionId!,
         if (isDefault != null) 'isDefault': isDefault!,
-        if (releaseDate != null) 'releaseDate': releaseDate!.toJson(),
+        if (releaseDate != null) 'releaseDate': releaseDate!,
         if (supportedPythonVersions != null)
           'supportedPythonVersions': supportedPythonVersions!,
         if (upgradeDisabled != null) 'upgradeDisabled': upgradeDisabled!,
@@ -1224,8 +1221,7 @@ class ListEnvironmentsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (environments != null)
-          'environments': environments!.map((value) => value.toJson()).toList(),
+        if (environments != null) 'environments': environments!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -1257,9 +1253,7 @@ class ListImageVersionsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (imageVersions != null)
-          'imageVersions':
-              imageVersions!.map((value) => value.toJson()).toList(),
+        if (imageVersions != null) 'imageVersions': imageVersions!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -1292,8 +1286,7 @@ class ListOperationsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (operations != null)
-          'operations': operations!.map((value) => value.toJson()).toList(),
+        if (operations != null) 'operations': operations!,
       };
 }
 
@@ -1457,7 +1450,7 @@ class NodeConfig {
   core.Map<core.String, core.dynamic> toJson() => {
         if (diskSizeGb != null) 'diskSizeGb': diskSizeGb!,
         if (ipAllocationPolicy != null)
-          'ipAllocationPolicy': ipAllocationPolicy!.toJson(),
+          'ipAllocationPolicy': ipAllocationPolicy!,
         if (location != null) 'location': location!,
         if (machineType != null) 'machineType': machineType!,
         if (network != null) 'network': network!,
@@ -1537,7 +1530,7 @@ class Operation {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (done != null) 'done': done!,
-        if (error != null) 'error': error!.toJson(),
+        if (error != null) 'error': error!,
         if (metadata != null) 'metadata': metadata!,
         if (name != null) 'name': name!,
         if (response != null) 'response': response!,
@@ -1760,7 +1753,7 @@ class PrivateEnvironmentConfig {
         if (enablePrivateEnvironment != null)
           'enablePrivateEnvironment': enablePrivateEnvironment!,
         if (privateClusterConfig != null)
-          'privateClusterConfig': privateClusterConfig!.toJson(),
+          'privateClusterConfig': privateClusterConfig!,
         if (webServerIpv4CidrBlock != null)
           'webServerIpv4CidrBlock': webServerIpv4CidrBlock!,
         if (webServerIpv4ReservedRange != null)
@@ -1999,8 +1992,6 @@ class WebServerNetworkAccessControl {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (allowedIpRanges != null)
-          'allowedIpRanges':
-              allowedIpRanges!.map((value) => value.toJson()).toList(),
+        if (allowedIpRanges != null) 'allowedIpRanges': allowedIpRanges!,
       };
 }

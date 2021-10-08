@@ -355,7 +355,7 @@ class ProjectsResource {
     CreateProjectRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -527,7 +527,7 @@ class ProjectsResource {
     core.String scriptId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -574,7 +574,7 @@ class ProjectsDeploymentsResource {
     core.String scriptId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -746,7 +746,7 @@ class ProjectsDeploymentsResource {
     core.String deploymentId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -796,7 +796,7 @@ class ProjectsVersionsResource {
     core.String scriptId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -942,7 +942,7 @@ class ScriptsResource {
     core.String scriptId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -990,8 +990,7 @@ class Content {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (files != null)
-          'files': files!.map((value) => value.toJson()).toList(),
+        if (files != null) 'files': files!,
         if (scriptId != null) 'scriptId': scriptId!,
       };
 }
@@ -1071,11 +1070,9 @@ class Deployment {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (deploymentConfig != null)
-          'deploymentConfig': deploymentConfig!.toJson(),
+        if (deploymentConfig != null) 'deploymentConfig': deploymentConfig!,
         if (deploymentId != null) 'deploymentId': deploymentId!,
-        if (entryPoints != null)
-          'entryPoints': entryPoints!.map((value) => value.toJson()).toList(),
+        if (entryPoints != null) 'entryPoints': entryPoints!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
 }
@@ -1180,10 +1177,10 @@ class EntryPoint {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (addOn != null) 'addOn': addOn!.toJson(),
+        if (addOn != null) 'addOn': addOn!,
         if (entryPointType != null) 'entryPointType': entryPointType!,
-        if (executionApi != null) 'executionApi': executionApi!.toJson(),
-        if (webApp != null) 'webApp': webApp!.toJson(),
+        if (executionApi != null) 'executionApi': executionApi!,
+        if (webApp != null) 'webApp': webApp!,
       };
 }
 
@@ -1206,7 +1203,7 @@ class ExecuteStreamResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (result != null) 'result': result!.toJson(),
+        if (result != null) 'result': result!,
       };
 }
 
@@ -1258,8 +1255,7 @@ class ExecutionError {
         if (errorMessage != null) 'errorMessage': errorMessage!,
         if (errorType != null) 'errorType': errorType!,
         if (scriptStackTraceElements != null)
-          'scriptStackTraceElements':
-              scriptStackTraceElements!.map((value) => value.toJson()).toList(),
+          'scriptStackTraceElements': scriptStackTraceElements!,
       };
 }
 
@@ -1451,8 +1447,8 @@ class File {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
-        if (functionSet != null) 'functionSet': functionSet!.toJson(),
-        if (lastModifyUser != null) 'lastModifyUser': lastModifyUser!.toJson(),
+        if (functionSet != null) 'functionSet': functionSet!,
+        if (lastModifyUser != null) 'lastModifyUser': lastModifyUser!,
         if (name != null) 'name': name!,
         if (source != null) 'source': source!,
         if (type != null) 'type': type!,
@@ -1574,8 +1570,7 @@ class GoogleAppsScriptTypeExecutionApiEntryPoint {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (entryPointConfig != null)
-          'entryPointConfig': entryPointConfig!.toJson(),
+        if (entryPointConfig != null) 'entryPointConfig': entryPointConfig!,
       };
 }
 
@@ -1620,8 +1615,7 @@ class GoogleAppsScriptTypeFunctionSet {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (values != null)
-          'values': values!.map((value) => value.toJson()).toList(),
+        if (values != null) 'values': values!,
       };
 }
 
@@ -1836,8 +1830,7 @@ class GoogleAppsScriptTypeWebAppEntryPoint {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (entryPointConfig != null)
-          'entryPointConfig': entryPointConfig!.toJson(),
+        if (entryPointConfig != null) 'entryPointConfig': entryPointConfig!,
         if (url != null) 'url': url!,
       };
 }
@@ -1870,8 +1863,7 @@ class ListDeploymentsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (deployments != null)
-          'deployments': deployments!.map((value) => value.toJson()).toList(),
+        if (deployments != null) 'deployments': deployments!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -1906,8 +1898,7 @@ class ListScriptProcessesResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (processes != null)
-          'processes': processes!.map((value) => value.toJson()).toList(),
+        if (processes != null) 'processes': processes!,
       };
 }
 
@@ -1941,8 +1932,7 @@ class ListUserProcessesResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (processes != null)
-          'processes': processes!.map((value) => value.toJson()).toList(),
+        if (processes != null) 'processes': processes!,
       };
 }
 
@@ -1966,8 +1956,7 @@ class ListValue {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (values != null)
-          'values': values!.map((value) => value.toJson()).toList(),
+        if (values != null) 'values': values!,
       };
 }
 
@@ -2001,8 +1990,7 @@ class ListVersionsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (versions != null)
-          'versions': versions!.map((value) => value.toJson()).toList(),
+        if (versions != null) 'versions': versions!,
       };
 }
 
@@ -2047,14 +2035,9 @@ class Metrics {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (activeUsers != null)
-          'activeUsers': activeUsers!.map((value) => value.toJson()).toList(),
-        if (failedExecutions != null)
-          'failedExecutions':
-              failedExecutions!.map((value) => value.toJson()).toList(),
-        if (totalExecutions != null)
-          'totalExecutions':
-              totalExecutions!.map((value) => value.toJson()).toList(),
+        if (activeUsers != null) 'activeUsers': activeUsers!,
+        if (failedExecutions != null) 'failedExecutions': failedExecutions!,
+        if (totalExecutions != null) 'totalExecutions': totalExecutions!,
       };
 }
 
@@ -2155,7 +2138,7 @@ class Operation {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (done != null) 'done': done!,
-        if (error != null) 'error': error!.toJson(),
+        if (error != null) 'error': error!,
         if (response != null) 'response': response!,
       };
 }
@@ -2224,8 +2207,8 @@ class Project {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
-        if (creator != null) 'creator': creator!.toJson(),
-        if (lastModifyUser != null) 'lastModifyUser': lastModifyUser!.toJson(),
+        if (creator != null) 'creator': creator!,
+        if (lastModifyUser != null) 'lastModifyUser': lastModifyUser!,
         if (parentId != null) 'parentId': parentId!,
         if (scriptId != null) 'scriptId': scriptId!,
         if (title != null) 'title': title!,
@@ -2251,7 +2234,7 @@ class ScriptExecutionResult {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (returnValue != null) 'returnValue': returnValue!.toJson(),
+        if (returnValue != null) 'returnValue': returnValue!,
       };
 }
 
@@ -2357,9 +2340,7 @@ class Struct {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (fields != null)
-          'fields':
-              fields!.map((key, item) => core.MapEntry(key, item.toJson())),
+        if (fields != null) 'fields': fields!,
       };
 }
 
@@ -2381,8 +2362,7 @@ class UpdateDeploymentRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (deploymentConfig != null)
-          'deploymentConfig': deploymentConfig!.toJson(),
+        if (deploymentConfig != null) 'deploymentConfig': deploymentConfig!,
       };
 }
 
@@ -2475,12 +2455,12 @@ class Value {
         if (boolValue != null) 'boolValue': boolValue!,
         if (bytesValue != null) 'bytesValue': bytesValue!,
         if (dateValue != null) 'dateValue': dateValue!,
-        if (listValue != null) 'listValue': listValue!.toJson(),
+        if (listValue != null) 'listValue': listValue!,
         if (nullValue != null) 'nullValue': nullValue!,
         if (numberValue != null) 'numberValue': numberValue!,
         if (protoValue != null) 'protoValue': protoValue!,
         if (stringValue != null) 'stringValue': stringValue!,
-        if (structValue != null) 'structValue': structValue!.toJson(),
+        if (structValue != null) 'structValue': structValue!,
       };
 }
 

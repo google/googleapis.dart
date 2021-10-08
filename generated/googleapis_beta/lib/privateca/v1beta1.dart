@@ -223,7 +223,7 @@ class ProjectsLocationsCertificateAuthoritiesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -281,7 +281,7 @@ class ProjectsLocationsCertificateAuthoritiesResource {
     core.String? requestId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (certificateAuthorityId != null)
         'certificateAuthorityId': [certificateAuthorityId],
@@ -327,7 +327,7 @@ class ProjectsLocationsCertificateAuthoritiesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -369,7 +369,7 @@ class ProjectsLocationsCertificateAuthoritiesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -620,7 +620,7 @@ class ProjectsLocationsCertificateAuthoritiesResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (requestId != null) 'requestId': [requestId],
       if (updateMask != null) 'updateMask': [updateMask],
@@ -664,7 +664,7 @@ class ProjectsLocationsCertificateAuthoritiesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -706,7 +706,7 @@ class ProjectsLocationsCertificateAuthoritiesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -752,7 +752,7 @@ class ProjectsLocationsCertificateAuthoritiesResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -801,7 +801,7 @@ class ProjectsLocationsCertificateAuthoritiesResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1023,7 +1023,7 @@ class ProjectsLocationsCertificateAuthoritiesCertificateRevocationListsResource 
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (requestId != null) 'requestId': [requestId],
       if (updateMask != null) 'updateMask': [updateMask],
@@ -1071,7 +1071,7 @@ class ProjectsLocationsCertificateAuthoritiesCertificateRevocationListsResource 
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1120,7 +1120,7 @@ class ProjectsLocationsCertificateAuthoritiesCertificateRevocationListsResource 
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1193,7 +1193,7 @@ class ProjectsLocationsCertificateAuthoritiesCertificatesResource {
     core.String? requestId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (certificateId != null) 'certificateId': [certificateId],
       if (requestId != null) 'requestId': [requestId],
@@ -1357,7 +1357,7 @@ class ProjectsLocationsCertificateAuthoritiesCertificatesResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (requestId != null) 'requestId': [requestId],
       if (updateMask != null) 'updateMask': [updateMask],
@@ -1403,7 +1403,7 @@ class ProjectsLocationsCertificateAuthoritiesCertificatesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1461,7 +1461,7 @@ class ProjectsLocationsOperationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1799,7 +1799,7 @@ class ProjectsLocationsReusableConfigsResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1848,7 +1848,7 @@ class ProjectsLocationsReusableConfigsResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1955,8 +1955,7 @@ class ActivateCertificateAuthorityRequest {
   core.Map<core.String, core.dynamic> toJson() => {
         if (pemCaCertificate != null) 'pemCaCertificate': pemCaCertificate!,
         if (requestId != null) 'requestId': requestId!,
-        if (subordinateConfig != null)
-          'subordinateConfig': subordinateConfig!.toJson(),
+        if (subordinateConfig != null) 'subordinateConfig': subordinateConfig!,
       };
 }
 
@@ -1986,8 +1985,7 @@ class AllowedConfigList {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (allowedConfigValues != null)
-          'allowedConfigValues':
-              allowedConfigValues!.map((value) => value.toJson()).toList(),
+          'allowedConfigValues': allowedConfigValues!,
       };
 }
 
@@ -2144,9 +2142,7 @@ class AuditConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (auditLogConfigs != null)
-          'auditLogConfigs':
-              auditLogConfigs!.map((value) => value.toJson()).toList(),
+        if (auditLogConfigs != null) 'auditLogConfigs': auditLogConfigs!,
         if (service != null) 'service': service!,
       };
 }
@@ -2265,7 +2261,7 @@ class Binding {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (condition != null) 'condition': condition!.toJson(),
+        if (condition != null) 'condition': condition!,
         if (members != null) 'members': members!,
         if (role != null) 'role': role!,
       };
@@ -2444,8 +2440,8 @@ class Certificate {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (certificateDescription != null)
-          'certificateDescription': certificateDescription!.toJson(),
-        if (config != null) 'config': config!.toJson(),
+          'certificateDescription': certificateDescription!,
+        if (config != null) 'config': config!,
         if (createTime != null) 'createTime': createTime!,
         if (labels != null) 'labels': labels!,
         if (lifetime != null) 'lifetime': lifetime!,
@@ -2454,8 +2450,7 @@ class Certificate {
         if (pemCertificateChain != null)
           'pemCertificateChain': pemCertificateChain!,
         if (pemCsr != null) 'pemCsr': pemCsr!,
-        if (revocationDetails != null)
-          'revocationDetails': revocationDetails!.toJson(),
+        if (revocationDetails != null) 'revocationDetails': revocationDetails!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
 }
@@ -2693,26 +2688,22 @@ class CertificateAuthority {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (accessUrls != null) 'accessUrls': accessUrls!.toJson(),
+        if (accessUrls != null) 'accessUrls': accessUrls!,
         if (caCertificateDescriptions != null)
-          'caCertificateDescriptions': caCertificateDescriptions!
-              .map((value) => value.toJson())
-              .toList(),
-        if (certificatePolicy != null)
-          'certificatePolicy': certificatePolicy!.toJson(),
-        if (config != null) 'config': config!.toJson(),
+          'caCertificateDescriptions': caCertificateDescriptions!,
+        if (certificatePolicy != null) 'certificatePolicy': certificatePolicy!,
+        if (config != null) 'config': config!,
         if (createTime != null) 'createTime': createTime!,
         if (deleteTime != null) 'deleteTime': deleteTime!,
         if (gcsBucket != null) 'gcsBucket': gcsBucket!,
-        if (issuingOptions != null) 'issuingOptions': issuingOptions!.toJson(),
-        if (keySpec != null) 'keySpec': keySpec!.toJson(),
+        if (issuingOptions != null) 'issuingOptions': issuingOptions!,
+        if (keySpec != null) 'keySpec': keySpec!,
         if (labels != null) 'labels': labels!,
         if (lifetime != null) 'lifetime': lifetime!,
         if (name != null) 'name': name!,
         if (pemCaCertificates != null) 'pemCaCertificates': pemCaCertificates!,
         if (state != null) 'state': state!,
-        if (subordinateConfig != null)
-          'subordinateConfig': subordinateConfig!.toJson(),
+        if (subordinateConfig != null) 'subordinateConfig': subordinateConfig!,
         if (tier != null) 'tier': tier!,
         if (type != null) 'type': type!,
         if (updateTime != null) 'updateTime': updateTime!,
@@ -2825,18 +2816,15 @@ class CertificateAuthorityPolicy {
   core.Map<core.String, core.dynamic> toJson() => {
         if (allowedCommonNames != null)
           'allowedCommonNames': allowedCommonNames!,
-        if (allowedConfigList != null)
-          'allowedConfigList': allowedConfigList!.toJson(),
+        if (allowedConfigList != null) 'allowedConfigList': allowedConfigList!,
         if (allowedIssuanceModes != null)
-          'allowedIssuanceModes': allowedIssuanceModes!.toJson(),
+          'allowedIssuanceModes': allowedIssuanceModes!,
         if (allowedLocationsAndOrganizations != null)
-          'allowedLocationsAndOrganizations': allowedLocationsAndOrganizations!
-              .map((value) => value.toJson())
-              .toList(),
-        if (allowedSans != null) 'allowedSans': allowedSans!.toJson(),
+          'allowedLocationsAndOrganizations': allowedLocationsAndOrganizations!,
+        if (allowedSans != null) 'allowedSans': allowedSans!,
         if (maximumLifetime != null) 'maximumLifetime': maximumLifetime!,
         if (overwriteConfigValues != null)
-          'overwriteConfigValues': overwriteConfigValues!.toJson(),
+          'overwriteConfigValues': overwriteConfigValues!,
       };
 }
 
@@ -2886,9 +2874,9 @@ class CertificateConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (publicKey != null) 'publicKey': publicKey!.toJson(),
-        if (reusableConfig != null) 'reusableConfig': reusableConfig!.toJson(),
-        if (subjectConfig != null) 'subjectConfig': subjectConfig!.toJson(),
+        if (publicKey != null) 'publicKey': publicKey!,
+        if (reusableConfig != null) 'reusableConfig': reusableConfig!,
+        if (subjectConfig != null) 'subjectConfig': subjectConfig!,
       };
 }
 
@@ -2978,16 +2966,15 @@ class CertificateDescription {
   core.Map<core.String, core.dynamic> toJson() => {
         if (aiaIssuingCertificateUrls != null)
           'aiaIssuingCertificateUrls': aiaIssuingCertificateUrls!,
-        if (authorityKeyId != null) 'authorityKeyId': authorityKeyId!.toJson(),
-        if (certFingerprint != null)
-          'certFingerprint': certFingerprint!.toJson(),
-        if (configValues != null) 'configValues': configValues!.toJson(),
+        if (authorityKeyId != null) 'authorityKeyId': authorityKeyId!,
+        if (certFingerprint != null) 'certFingerprint': certFingerprint!,
+        if (configValues != null) 'configValues': configValues!,
         if (crlDistributionPoints != null)
           'crlDistributionPoints': crlDistributionPoints!,
-        if (publicKey != null) 'publicKey': publicKey!.toJson(),
+        if (publicKey != null) 'publicKey': publicKey!,
         if (subjectDescription != null)
-          'subjectDescription': subjectDescription!.toJson(),
-        if (subjectKeyId != null) 'subjectKeyId': subjectKeyId!.toJson(),
+          'subjectDescription': subjectDescription!,
+        if (subjectKeyId != null) 'subjectKeyId': subjectKeyId!,
       };
 }
 
@@ -3124,8 +3111,7 @@ class CertificateRevocationList {
         if (name != null) 'name': name!,
         if (pemCrl != null) 'pemCrl': pemCrl!,
         if (revokedCertificates != null)
-          'revokedCertificates':
-              revokedCertificates!.map((value) => value.toJson()).toList(),
+          'revokedCertificates': revokedCertificates!,
         if (sequenceNumber != null) 'sequenceNumber': sequenceNumber!,
         if (state != null) 'state': state!,
         if (updateTime != null) 'updateTime': updateTime!,
@@ -3524,12 +3510,10 @@ class KeyUsage {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (baseKeyUsage != null) 'baseKeyUsage': baseKeyUsage!.toJson(),
-        if (extendedKeyUsage != null)
-          'extendedKeyUsage': extendedKeyUsage!.toJson(),
+        if (baseKeyUsage != null) 'baseKeyUsage': baseKeyUsage!,
+        if (extendedKeyUsage != null) 'extendedKeyUsage': extendedKeyUsage!,
         if (unknownExtendedKeyUsages != null)
-          'unknownExtendedKeyUsages':
-              unknownExtendedKeyUsages!.map((value) => value.toJson()).toList(),
+          'unknownExtendedKeyUsages': unknownExtendedKeyUsages!,
       };
 }
 
@@ -3719,8 +3703,7 @@ class ListCertificateAuthoritiesResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (certificateAuthorities != null)
-          'certificateAuthorities':
-              certificateAuthorities!.map((value) => value.toJson()).toList(),
+          'certificateAuthorities': certificateAuthorities!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (unreachable != null) 'unreachable': unreachable!,
       };
@@ -3768,9 +3751,7 @@ class ListCertificateRevocationListsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (certificateRevocationLists != null)
-          'certificateRevocationLists': certificateRevocationLists!
-              .map((value) => value.toJson())
-              .toList(),
+          'certificateRevocationLists': certificateRevocationLists!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (unreachable != null) 'unreachable': unreachable!,
       };
@@ -3815,8 +3796,7 @@ class ListCertificatesResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (certificates != null)
-          'certificates': certificates!.map((value) => value.toJson()).toList(),
+        if (certificates != null) 'certificates': certificates!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (unreachable != null) 'unreachable': unreachable!,
       };
@@ -3849,8 +3829,7 @@ class ListLocationsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (locations != null)
-          'locations': locations!.map((value) => value.toJson()).toList(),
+        if (locations != null) 'locations': locations!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -3883,8 +3862,7 @@ class ListOperationsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (operations != null)
-          'operations': operations!.map((value) => value.toJson()).toList(),
+        if (operations != null) 'operations': operations!,
       };
 }
 
@@ -3928,9 +3906,7 @@ class ListReusableConfigsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (reusableConfigs != null)
-          'reusableConfigs':
-              reusableConfigs!.map((value) => value.toJson()).toList(),
+        if (reusableConfigs != null) 'reusableConfigs': reusableConfigs!,
         if (unreachable != null) 'unreachable': unreachable!,
       };
 }
@@ -4102,7 +4078,7 @@ class Operation {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (done != null) 'done': done!,
-        if (error != null) 'error': error!.toJson(),
+        if (error != null) 'error': error!,
         if (metadata != null) 'metadata': metadata!,
         if (name != null) 'name': name!,
         if (response != null) 'response': response!,
@@ -4304,10 +4280,8 @@ class Policy {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (auditConfigs != null)
-          'auditConfigs': auditConfigs!.map((value) => value.toJson()).toList(),
-        if (bindings != null)
-          'bindings': bindings!.map((value) => value.toJson()).toList(),
+        if (auditConfigs != null) 'auditConfigs': auditConfigs!,
+        if (bindings != null) 'bindings': bindings!,
         if (etag != null) 'etag': etag!,
         if (version != null) 'version': version!,
       };
@@ -4518,7 +4492,7 @@ class ReusableConfig {
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
         if (updateTime != null) 'updateTime': updateTime!,
-        if (values != null) 'values': values!.toJson(),
+        if (values != null) 'values': values!,
       };
 }
 
@@ -4594,13 +4568,11 @@ class ReusableConfigValues {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (additionalExtensions != null)
-          'additionalExtensions':
-              additionalExtensions!.map((value) => value.toJson()).toList(),
+          'additionalExtensions': additionalExtensions!,
         if (aiaOcspServers != null) 'aiaOcspServers': aiaOcspServers!,
-        if (caOptions != null) 'caOptions': caOptions!.toJson(),
-        if (keyUsage != null) 'keyUsage': keyUsage!.toJson(),
-        if (policyIds != null)
-          'policyIds': policyIds!.map((value) => value.toJson()).toList(),
+        if (caOptions != null) 'caOptions': caOptions!,
+        if (keyUsage != null) 'keyUsage': keyUsage!,
+        if (policyIds != null) 'policyIds': policyIds!,
       };
 }
 
@@ -4637,7 +4609,7 @@ class ReusableConfigWrapper {
   core.Map<core.String, core.dynamic> toJson() => {
         if (reusableConfig != null) 'reusableConfig': reusableConfig!,
         if (reusableConfigValues != null)
-          'reusableConfigValues': reusableConfigValues!.toJson(),
+          'reusableConfigValues': reusableConfigValues!,
       };
 }
 
@@ -4888,7 +4860,7 @@ class SetIamPolicyRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (policy != null) 'policy': policy!.toJson(),
+        if (policy != null) 'policy': policy!,
         if (updateMask != null) 'updateMask': updateMask!,
       };
 }
@@ -5073,8 +5045,7 @@ class SubjectAltNames {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (customSans != null)
-          'customSans': customSans!.map((value) => value.toJson()).toList(),
+        if (customSans != null) 'customSans': customSans!,
         if (dnsNames != null) 'dnsNames': dnsNames!,
         if (emailAddresses != null) 'emailAddresses': emailAddresses!,
         if (ipAddresses != null) 'ipAddresses': ipAddresses!,
@@ -5123,8 +5094,8 @@ class SubjectConfig {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (commonName != null) 'commonName': commonName!,
-        if (subject != null) 'subject': subject!.toJson(),
-        if (subjectAltName != null) 'subjectAltName': subjectAltName!.toJson(),
+        if (subject != null) 'subject': subject!,
+        if (subjectAltName != null) 'subjectAltName': subjectAltName!,
       };
 }
 
@@ -5197,8 +5168,8 @@ class SubjectDescription {
         if (lifetime != null) 'lifetime': lifetime!,
         if (notAfterTime != null) 'notAfterTime': notAfterTime!,
         if (notBeforeTime != null) 'notBeforeTime': notBeforeTime!,
-        if (subject != null) 'subject': subject!.toJson(),
-        if (subjectAltName != null) 'subjectAltName': subjectAltName!.toJson(),
+        if (subject != null) 'subject': subject!,
+        if (subjectAltName != null) 'subjectAltName': subjectAltName!,
       };
 }
 
@@ -5242,7 +5213,7 @@ class SubordinateConfig {
   core.Map<core.String, core.dynamic> toJson() => {
         if (certificateAuthority != null)
           'certificateAuthority': certificateAuthority!,
-        if (pemIssuerChain != null) 'pemIssuerChain': pemIssuerChain!.toJson(),
+        if (pemIssuerChain != null) 'pemIssuerChain': pemIssuerChain!,
       };
 }
 
@@ -5371,7 +5342,7 @@ class X509Extension {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (critical != null) 'critical': critical!,
-        if (objectId != null) 'objectId': objectId!.toJson(),
+        if (objectId != null) 'objectId': objectId!,
         if (value != null) 'value': value!,
       };
 }

@@ -197,8 +197,7 @@ class GoogleCloudPolicyanalyzerV1Activity {
         if (activity != null) 'activity': activity!,
         if (activityType != null) 'activityType': activityType!,
         if (fullResourceName != null) 'fullResourceName': fullResourceName!,
-        if (observationPeriod != null)
-          'observationPeriod': observationPeriod!.toJson(),
+        if (observationPeriod != null) 'observationPeriod': observationPeriod!,
       };
 }
 
@@ -266,8 +265,7 @@ class GoogleCloudPolicyanalyzerV1QueryActivityResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (activities != null)
-          'activities': activities!.map((value) => value.toJson()).toList(),
+        if (activities != null) 'activities': activities!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }

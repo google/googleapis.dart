@@ -204,7 +204,7 @@ class ProjectsLocationsOperationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -367,7 +367,7 @@ class ProjectsLocationsPipelinesResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -701,21 +701,20 @@ class Action {
           'blockExternalNetwork': blockExternalNetwork!,
         if (commands != null) 'commands': commands!,
         if (containerName != null) 'containerName': containerName!,
-        if (credentials != null) 'credentials': credentials!.toJson(),
+        if (credentials != null) 'credentials': credentials!,
         if (disableImagePrefetch != null)
           'disableImagePrefetch': disableImagePrefetch!,
         if (disableStandardErrorCapture != null)
           'disableStandardErrorCapture': disableStandardErrorCapture!,
         if (enableFuse != null) 'enableFuse': enableFuse!,
         if (encryptedEnvironment != null)
-          'encryptedEnvironment': encryptedEnvironment!.toJson(),
+          'encryptedEnvironment': encryptedEnvironment!,
         if (entrypoint != null) 'entrypoint': entrypoint!,
         if (environment != null) 'environment': environment!,
         if (ignoreExitStatus != null) 'ignoreExitStatus': ignoreExitStatus!,
         if (imageUri != null) 'imageUri': imageUri!,
         if (labels != null) 'labels': labels!,
-        if (mounts != null)
-          'mounts': mounts!.map((value) => value.toJson()).toList(),
+        if (mounts != null) 'mounts': mounts!,
         if (pidNamespace != null) 'pidNamespace': pidNamespace!,
         if (portMappings != null) 'portMappings': portMappings!,
         if (publishExposedPorts != null)
@@ -1057,22 +1056,19 @@ class Event {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (containerKilled != null)
-          'containerKilled': containerKilled!.toJson(),
-        if (containerStarted != null)
-          'containerStarted': containerStarted!.toJson(),
-        if (containerStopped != null)
-          'containerStopped': containerStopped!.toJson(),
-        if (delayed != null) 'delayed': delayed!.toJson(),
+        if (containerKilled != null) 'containerKilled': containerKilled!,
+        if (containerStarted != null) 'containerStarted': containerStarted!,
+        if (containerStopped != null) 'containerStopped': containerStopped!,
+        if (delayed != null) 'delayed': delayed!,
         if (description != null) 'description': description!,
-        if (failed != null) 'failed': failed!.toJson(),
-        if (pullStarted != null) 'pullStarted': pullStarted!.toJson(),
-        if (pullStopped != null) 'pullStopped': pullStopped!.toJson(),
+        if (failed != null) 'failed': failed!,
+        if (pullStarted != null) 'pullStarted': pullStarted!,
+        if (pullStopped != null) 'pullStopped': pullStopped!,
         if (timestamp != null) 'timestamp': timestamp!,
         if (unexpectedExitStatus != null)
-          'unexpectedExitStatus': unexpectedExitStatus!.toJson(),
-        if (workerAssigned != null) 'workerAssigned': workerAssigned!.toJson(),
-        if (workerReleased != null) 'workerReleased': workerReleased!.toJson(),
+          'unexpectedExitStatus': unexpectedExitStatus!,
+        if (workerAssigned != null) 'workerAssigned': workerAssigned!,
+        if (workerReleased != null) 'workerReleased': workerReleased!,
       };
 }
 
@@ -1239,8 +1235,7 @@ class ListLocationsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (locations != null)
-          'locations': locations!.map((value) => value.toJson()).toList(),
+        if (locations != null) 'locations': locations!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -1273,8 +1268,7 @@ class ListOperationsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (operations != null)
-          'operations': operations!.map((value) => value.toJson()).toList(),
+        if (operations != null) 'operations': operations!,
       };
 }
 
@@ -1420,10 +1414,9 @@ class Metadata {
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
         if (endTime != null) 'endTime': endTime!,
-        if (events != null)
-          'events': events!.map((value) => value.toJson()).toList(),
+        if (events != null) 'events': events!,
         if (labels != null) 'labels': labels!,
-        if (pipeline != null) 'pipeline': pipeline!.toJson(),
+        if (pipeline != null) 'pipeline': pipeline!,
         if (pubSubTopic != null) 'pubSubTopic': pubSubTopic!,
         if (startTime != null) 'startTime': startTime!,
       };
@@ -1595,7 +1588,7 @@ class Operation {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (done != null) 'done': done!,
-        if (error != null) 'error': error!.toJson(),
+        if (error != null) 'error': error!,
         if (metadata != null) 'metadata': metadata!,
         if (name != null) 'name': name!,
         if (response != null) 'response': response!,
@@ -1717,12 +1710,11 @@ class Pipeline {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (actions != null)
-          'actions': actions!.map((value) => value.toJson()).toList(),
+        if (actions != null) 'actions': actions!,
         if (encryptedEnvironment != null)
-          'encryptedEnvironment': encryptedEnvironment!.toJson(),
+          'encryptedEnvironment': encryptedEnvironment!,
         if (environment != null) 'environment': environment!,
-        if (resources != null) 'resources': resources!.toJson(),
+        if (resources != null) 'resources': resources!,
         if (timeout != null) 'timeout': timeout!,
       };
 }
@@ -1812,7 +1804,7 @@ class Resources {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (regions != null) 'regions': regions!,
-        if (virtualMachine != null) 'virtualMachine': virtualMachine!.toJson(),
+        if (virtualMachine != null) 'virtualMachine': virtualMachine!,
         if (zones != null) 'zones': zones!,
       };
 }
@@ -1870,7 +1862,7 @@ class RunPipelineRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (labels != null) 'labels': labels!,
-        if (pipeline != null) 'pipeline': pipeline!.toJson(),
+        if (pipeline != null) 'pipeline': pipeline!,
         if (pubSubTopic != null) 'pubSubTopic': pubSubTopic!,
       };
 }
@@ -2227,26 +2219,23 @@ class VirtualMachine {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (accelerators != null)
-          'accelerators': accelerators!.map((value) => value.toJson()).toList(),
+        if (accelerators != null) 'accelerators': accelerators!,
         if (bootDiskSizeGb != null) 'bootDiskSizeGb': bootDiskSizeGb!,
         if (bootImage != null) 'bootImage': bootImage!,
         if (cpuPlatform != null) 'cpuPlatform': cpuPlatform!,
-        if (disks != null)
-          'disks': disks!.map((value) => value.toJson()).toList(),
+        if (disks != null) 'disks': disks!,
         if (dockerCacheImages != null) 'dockerCacheImages': dockerCacheImages!,
         if (enableStackdriverMonitoring != null)
           'enableStackdriverMonitoring': enableStackdriverMonitoring!,
         if (labels != null) 'labels': labels!,
         if (machineType != null) 'machineType': machineType!,
-        if (network != null) 'network': network!.toJson(),
+        if (network != null) 'network': network!,
         if (nvidiaDriverVersion != null)
           'nvidiaDriverVersion': nvidiaDriverVersion!,
         if (preemptible != null) 'preemptible': preemptible!,
         if (reservation != null) 'reservation': reservation!,
-        if (serviceAccount != null) 'serviceAccount': serviceAccount!.toJson(),
-        if (volumes != null)
-          'volumes': volumes!.map((value) => value.toJson()).toList(),
+        if (serviceAccount != null) 'serviceAccount': serviceAccount!,
+        if (volumes != null) 'volumes': volumes!,
       };
 }
 
@@ -2297,9 +2286,9 @@ class Volume {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (existingDisk != null) 'existingDisk': existingDisk!.toJson(),
-        if (nfsMount != null) 'nfsMount': nfsMount!.toJson(),
-        if (persistentDisk != null) 'persistentDisk': persistentDisk!.toJson(),
+        if (existingDisk != null) 'existingDisk': existingDisk!,
+        if (nfsMount != null) 'nfsMount': nfsMount!,
+        if (persistentDisk != null) 'persistentDisk': persistentDisk!,
         if (volume != null) 'volume': volume!,
       };
 }

@@ -207,7 +207,7 @@ class ProjectsLocationsNamespacesResource {
     core.String? namespaceId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (namespaceId != null) 'namespaceId': [namespaceId],
       if ($fields != null) 'fields': [$fields],
@@ -325,7 +325,7 @@ class ProjectsLocationsNamespacesResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -444,7 +444,7 @@ class ProjectsLocationsNamespacesResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -488,7 +488,7 @@ class ProjectsLocationsNamespacesResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -531,7 +531,7 @@ class ProjectsLocationsNamespacesResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -593,7 +593,7 @@ class ProjectsLocationsNamespacesServicesResource {
     core.String? serviceId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (serviceId != null) 'serviceId': [serviceId],
       if ($fields != null) 'fields': [$fields],
@@ -711,7 +711,7 @@ class ProjectsLocationsNamespacesServicesResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -832,7 +832,7 @@ class ProjectsLocationsNamespacesServicesResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -876,7 +876,7 @@ class ProjectsLocationsNamespacesServicesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -920,7 +920,7 @@ class ProjectsLocationsNamespacesServicesResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -963,7 +963,7 @@ class ProjectsLocationsNamespacesServicesResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1023,7 +1023,7 @@ class ProjectsLocationsNamespacesServicesEndpointsResource {
     core.String? endpointId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (endpointId != null) 'endpointId': [endpointId],
       if ($fields != null) 'fields': [$fields],
@@ -1220,7 +1220,7 @@ class ProjectsLocationsNamespacesServicesEndpointsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -1308,7 +1308,7 @@ class Binding {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (condition != null) 'condition': condition!.toJson(),
+        if (condition != null) 'condition': condition!,
         if (members != null) 'members': members!,
         if (role != null) 'role': role!,
       };
@@ -1491,7 +1491,7 @@ class GetIamPolicyRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (options != null) 'options': options!.toJson(),
+        if (options != null) 'options': options!,
       };
 }
 
@@ -1554,8 +1554,7 @@ class ListEndpointsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (endpoints != null)
-          'endpoints': endpoints!.map((value) => value.toJson()).toList(),
+        if (endpoints != null) 'endpoints': endpoints!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -1587,8 +1586,7 @@ class ListLocationsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (locations != null)
-          'locations': locations!.map((value) => value.toJson()).toList(),
+        if (locations != null) 'locations': locations!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -1621,8 +1619,7 @@ class ListNamespacesResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (namespaces != null)
-          'namespaces': namespaces!.map((value) => value.toJson()).toList(),
+        if (namespaces != null) 'namespaces': namespaces!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -1656,8 +1653,7 @@ class ListServicesResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (services != null)
-          'services': services!.map((value) => value.toJson()).toList(),
+        if (services != null) 'services': services!,
       };
 }
 
@@ -1872,8 +1868,7 @@ class Policy {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bindings != null)
-          'bindings': bindings!.map((value) => value.toJson()).toList(),
+        if (bindings != null) 'bindings': bindings!,
         if (etag != null) 'etag': etag!,
         if (version != null) 'version': version!,
       };
@@ -1955,7 +1950,7 @@ class ResolveServiceResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (service != null) 'service': service!.toJson(),
+        if (service != null) 'service': service!,
       };
 }
 
@@ -2025,8 +2020,7 @@ class Service {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (annotations != null) 'annotations': annotations!,
-        if (endpoints != null)
-          'endpoints': endpoints!.map((value) => value.toJson()).toList(),
+        if (endpoints != null) 'endpoints': endpoints!,
         if (name != null) 'name': name!,
       };
 }
@@ -2053,7 +2047,7 @@ class SetIamPolicyRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (policy != null) 'policy': policy!.toJson(),
+        if (policy != null) 'policy': policy!,
       };
 }
 

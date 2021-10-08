@@ -112,7 +112,7 @@ class ProjectsTracesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -164,7 +164,7 @@ class ProjectsTracesSpansResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -211,8 +211,8 @@ class Annotation {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (attributes != null) 'attributes': attributes!.toJson(),
-        if (description != null) 'description': description!.toJson(),
+        if (attributes != null) 'attributes': attributes!,
+        if (description != null) 'description': description!,
       };
 }
 
@@ -250,7 +250,7 @@ class AttributeValue {
   core.Map<core.String, core.dynamic> toJson() => {
         if (boolValue != null) 'boolValue': boolValue!,
         if (intValue != null) 'intValue': intValue!,
-        if (stringValue != null) 'stringValue': stringValue!.toJson(),
+        if (stringValue != null) 'stringValue': stringValue!,
       };
 }
 
@@ -295,9 +295,7 @@ class Attributes {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (attributeMap != null)
-          'attributeMap': attributeMap!
-              .map((key, item) => core.MapEntry(key, item.toJson())),
+        if (attributeMap != null) 'attributeMap': attributeMap!,
         if (droppedAttributesCount != null)
           'droppedAttributesCount': droppedAttributesCount!,
       };
@@ -328,8 +326,7 @@ class BatchWriteSpansRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (spans != null)
-          'spans': spans!.map((value) => value.toJson()).toList(),
+        if (spans != null) 'spans': spans!,
       };
 }
 
@@ -390,7 +387,7 @@ class Link {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (attributes != null) 'attributes': attributes!.toJson(),
+        if (attributes != null) 'attributes': attributes!,
         if (spanId != null) 'spanId': spanId!,
         if (traceId != null) 'traceId': traceId!,
         if (type != null) 'type': type!,
@@ -428,7 +425,7 @@ class Links {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (droppedLinksCount != null) 'droppedLinksCount': droppedLinksCount!,
-        if (link != null) 'link': link!.map((value) => value.toJson()).toList(),
+        if (link != null) 'link': link!,
       };
 }
 
@@ -514,8 +511,8 @@ class Module {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (buildId != null) 'buildId': buildId!.toJson(),
-        if (module != null) 'module': module!.toJson(),
+        if (buildId != null) 'buildId': buildId!,
+        if (module != null) 'module': module!,
       };
 }
 
@@ -709,21 +706,21 @@ class Span {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (attributes != null) 'attributes': attributes!.toJson(),
+        if (attributes != null) 'attributes': attributes!,
         if (childSpanCount != null) 'childSpanCount': childSpanCount!,
-        if (displayName != null) 'displayName': displayName!.toJson(),
+        if (displayName != null) 'displayName': displayName!,
         if (endTime != null) 'endTime': endTime!,
-        if (links != null) 'links': links!.toJson(),
+        if (links != null) 'links': links!,
         if (name != null) 'name': name!,
         if (parentSpanId != null) 'parentSpanId': parentSpanId!,
         if (sameProcessAsParentSpan != null)
           'sameProcessAsParentSpan': sameProcessAsParentSpan!,
         if (spanId != null) 'spanId': spanId!,
         if (spanKind != null) 'spanKind': spanKind!,
-        if (stackTrace != null) 'stackTrace': stackTrace!.toJson(),
+        if (stackTrace != null) 'stackTrace': stackTrace!,
         if (startTime != null) 'startTime': startTime!,
-        if (status != null) 'status': status!.toJson(),
-        if (timeEvents != null) 'timeEvents': timeEvents!.toJson(),
+        if (status != null) 'status': status!,
+        if (timeEvents != null) 'timeEvents': timeEvents!,
       };
 }
 
@@ -799,13 +796,13 @@ class StackFrame {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (columnNumber != null) 'columnNumber': columnNumber!,
-        if (fileName != null) 'fileName': fileName!.toJson(),
-        if (functionName != null) 'functionName': functionName!.toJson(),
+        if (fileName != null) 'fileName': fileName!,
+        if (functionName != null) 'functionName': functionName!,
         if (lineNumber != null) 'lineNumber': lineNumber!,
-        if (loadModule != null) 'loadModule': loadModule!.toJson(),
+        if (loadModule != null) 'loadModule': loadModule!,
         if (originalFunctionName != null)
-          'originalFunctionName': originalFunctionName!.toJson(),
-        if (sourceVersion != null) 'sourceVersion': sourceVersion!.toJson(),
+          'originalFunctionName': originalFunctionName!,
+        if (sourceVersion != null) 'sourceVersion': sourceVersion!,
       };
 }
 
@@ -841,8 +838,7 @@ class StackFrames {
   core.Map<core.String, core.dynamic> toJson() => {
         if (droppedFramesCount != null)
           'droppedFramesCount': droppedFramesCount!,
-        if (frame != null)
-          'frame': frame!.map((value) => value.toJson()).toList(),
+        if (frame != null) 'frame': frame!,
       };
 }
 
@@ -879,7 +875,7 @@ class StackTrace {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (stackFrames != null) 'stackFrames': stackFrames!.toJson(),
+        if (stackFrames != null) 'stackFrames': stackFrames!,
         if (stackTraceHashId != null) 'stackTraceHashId': stackTraceHashId!,
       };
 }
@@ -966,8 +962,8 @@ class TimeEvent {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (annotation != null) 'annotation': annotation!.toJson(),
-        if (messageEvent != null) 'messageEvent': messageEvent!.toJson(),
+        if (annotation != null) 'annotation': annotation!,
+        if (messageEvent != null) 'messageEvent': messageEvent!,
         if (time != null) 'time': time!,
       };
 }
@@ -1019,8 +1015,7 @@ class TimeEvents {
           'droppedAnnotationsCount': droppedAnnotationsCount!,
         if (droppedMessageEventsCount != null)
           'droppedMessageEventsCount': droppedMessageEventsCount!,
-        if (timeEvent != null)
-          'timeEvent': timeEvent!.map((value) => value.toJson()).toList(),
+        if (timeEvent != null) 'timeEvent': timeEvent!,
       };
 }
 

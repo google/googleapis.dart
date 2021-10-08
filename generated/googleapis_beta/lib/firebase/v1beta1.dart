@@ -254,7 +254,7 @@ class ProjectsResource {
     core.String project, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -335,7 +335,7 @@ class ProjectsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -569,7 +569,7 @@ class ProjectsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -627,7 +627,7 @@ class ProjectsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -765,7 +765,7 @@ class ProjectsAndroidAppsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -957,7 +957,7 @@ class ProjectsAndroidAppsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -1012,7 +1012,7 @@ class ProjectsAndroidAppsShaResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1256,7 +1256,7 @@ class ProjectsDefaultLocationResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1312,7 +1312,7 @@ class ProjectsIosAppsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1502,7 +1502,7 @@ class ProjectsIosAppsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -1557,7 +1557,7 @@ class ProjectsWebAppsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1747,7 +1747,7 @@ class ProjectsWebAppsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -1925,11 +1925,8 @@ class AnalyticsDetails {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (analyticsProperty != null)
-          'analyticsProperty': analyticsProperty!.toJson(),
-        if (streamMappings != null)
-          'streamMappings':
-              streamMappings!.map((value) => value.toJson()).toList(),
+        if (analyticsProperty != null) 'analyticsProperty': analyticsProperty!,
+        if (streamMappings != null) 'streamMappings': streamMappings!,
       };
 }
 
@@ -2351,7 +2348,7 @@ class FirebaseProject {
         if (name != null) 'name': name!,
         if (projectId != null) 'projectId': projectId!,
         if (projectNumber != null) 'projectNumber': projectNumber!,
-        if (resources != null) 'resources': resources!.toJson(),
+        if (resources != null) 'resources': resources!,
         if (state != null) 'state': state!,
       };
 }
@@ -2509,7 +2506,7 @@ class ListAndroidAppsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (apps != null) 'apps': apps!.map((value) => value.toJson()).toList(),
+        if (apps != null) 'apps': apps!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -2546,8 +2543,7 @@ class ListAvailableLocationsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (locations != null)
-          'locations': locations!.map((value) => value.toJson()).toList(),
+        if (locations != null) 'locations': locations!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -2586,8 +2582,7 @@ class ListAvailableProjectsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (projectInfo != null)
-          'projectInfo': projectInfo!.map((value) => value.toJson()).toList(),
+        if (projectInfo != null) 'projectInfo': projectInfo!,
       };
 }
 
@@ -2624,8 +2619,7 @@ class ListFirebaseProjectsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (results != null)
-          'results': results!.map((value) => value.toJson()).toList(),
+        if (results != null) 'results': results!,
       };
 }
 
@@ -2661,7 +2655,7 @@ class ListIosAppsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (apps != null) 'apps': apps!.map((value) => value.toJson()).toList(),
+        if (apps != null) 'apps': apps!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -2685,8 +2679,7 @@ class ListShaCertificatesResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (certificates != null)
-          'certificates': certificates!.map((value) => value.toJson()).toList(),
+        if (certificates != null) 'certificates': certificates!,
       };
 }
 
@@ -2722,7 +2715,7 @@ class ListWebAppsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (apps != null) 'apps': apps!.map((value) => value.toJson()).toList(),
+        if (apps != null) 'apps': apps!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -2850,7 +2843,7 @@ class Operation {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (done != null) 'done': done!,
-        if (error != null) 'error': error!.toJson(),
+        if (error != null) 'error': error!,
         if (metadata != null) 'metadata': metadata!,
         if (name != null) 'name': name!,
         if (response != null) 'response': response!,
@@ -2966,7 +2959,7 @@ class SearchFirebaseAppsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (apps != null) 'apps': apps!.map((value) => value.toJson()).toList(),
+        if (apps != null) 'apps': apps!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -3128,7 +3121,7 @@ class StatusProto {
         if (canonicalCode != null) 'canonicalCode': canonicalCode!,
         if (code != null) 'code': code!,
         if (message != null) 'message': message!,
-        if (messageSet != null) 'messageSet': messageSet!.toJson(),
+        if (messageSet != null) 'messageSet': messageSet!,
         if (space != null) 'space': space!,
       };
 }

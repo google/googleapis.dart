@@ -394,8 +394,7 @@ class GoogleExampleLibraryagentV1ListBooksResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (books != null)
-          'books': books!.map((value) => value.toJson()).toList(),
+        if (books != null) 'books': books!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -432,8 +431,7 @@ class GoogleExampleLibraryagentV1ListShelvesResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (shelves != null)
-          'shelves': shelves!.map((value) => value.toJson()).toList(),
+        if (shelves != null) 'shelves': shelves!,
       };
 }
 

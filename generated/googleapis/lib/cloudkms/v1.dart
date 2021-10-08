@@ -108,7 +108,7 @@ class ProjectsLocationsResource {
     core.String location, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -254,7 +254,7 @@ class ProjectsLocationsKeyRingsResource {
     core.String? keyRingId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (keyRingId != null) 'keyRingId': [keyRingId],
       if ($fields != null) 'fields': [$fields],
@@ -451,7 +451,7 @@ class ProjectsLocationsKeyRingsResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -499,7 +499,7 @@ class ProjectsLocationsKeyRingsResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -567,7 +567,7 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
     core.bool? skipInitialVersionCreation,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (cryptoKeyId != null) 'cryptoKeyId': [cryptoKeyId],
       if (skipInitialVersionCreation != null)
@@ -614,7 +614,7 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -660,7 +660,7 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -868,7 +868,7 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -915,7 +915,7 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -963,7 +963,7 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1008,7 +1008,7 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1060,7 +1060,7 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1105,7 +1105,7 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1151,7 +1151,7 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1200,7 +1200,7 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1324,7 +1324,7 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1442,7 +1442,7 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1487,7 +1487,7 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1538,7 +1538,7 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -1584,7 +1584,7 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1640,7 +1640,7 @@ class ProjectsLocationsKeyRingsImportJobsResource {
     core.String? importJobId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (importJobId != null) 'importJobId': [importJobId],
       if ($fields != null) 'fields': [$fields],
@@ -1838,7 +1838,7 @@ class ProjectsLocationsKeyRingsImportJobsResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1886,7 +1886,7 @@ class ProjectsLocationsKeyRingsImportJobsResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2079,7 +2079,7 @@ class AsymmetricSignRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (digest != null) 'digest': digest!.toJson(),
+        if (digest != null) 'digest': digest!,
         if (digestCrc32c != null) 'digestCrc32c': digestCrc32c!,
       };
 }
@@ -2215,9 +2215,7 @@ class AuditConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (auditLogConfigs != null)
-          'auditLogConfigs':
-              auditLogConfigs!.map((value) => value.toJson()).toList(),
+        if (auditLogConfigs != null) 'auditLogConfigs': auditLogConfigs!,
         if (service != null) 'service': service!,
       };
 }
@@ -2336,7 +2334,7 @@ class Binding {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (condition != null) 'condition': condition!.toJson(),
+        if (condition != null) 'condition': condition!,
         if (members != null) 'members': members!,
         if (role != null) 'role': role!,
       };
@@ -2534,11 +2532,10 @@ class CryptoKey {
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
         if (nextRotationTime != null) 'nextRotationTime': nextRotationTime!,
-        if (primary != null) 'primary': primary!.toJson(),
+        if (primary != null) 'primary': primary!,
         if (purpose != null) 'purpose': purpose!,
         if (rotationPeriod != null) 'rotationPeriod': rotationPeriod!,
-        if (versionTemplate != null)
-          'versionTemplate': versionTemplate!.toJson(),
+        if (versionTemplate != null) 'versionTemplate': versionTemplate!,
       };
 }
 
@@ -2766,13 +2763,12 @@ class CryptoKeyVersion {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (algorithm != null) 'algorithm': algorithm!,
-        if (attestation != null) 'attestation': attestation!.toJson(),
+        if (attestation != null) 'attestation': attestation!,
         if (createTime != null) 'createTime': createTime!,
         if (destroyEventTime != null) 'destroyEventTime': destroyEventTime!,
         if (destroyTime != null) 'destroyTime': destroyTime!,
         if (externalProtectionLevelOptions != null)
-          'externalProtectionLevelOptions':
-              externalProtectionLevelOptions!.toJson(),
+          'externalProtectionLevelOptions': externalProtectionLevelOptions!,
         if (generateTime != null) 'generateTime': generateTime!,
         if (importFailureReason != null)
           'importFailureReason': importFailureReason!,
@@ -3758,7 +3754,7 @@ class ImportJob {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (attestation != null) 'attestation': attestation!.toJson(),
+        if (attestation != null) 'attestation': attestation!,
         if (createTime != null) 'createTime': createTime!,
         if (expireEventTime != null) 'expireEventTime': expireEventTime!,
         if (expireTime != null) 'expireTime': expireTime!,
@@ -3766,7 +3762,7 @@ class ImportJob {
         if (importMethod != null) 'importMethod': importMethod!,
         if (name != null) 'name': name!,
         if (protectionLevel != null) 'protectionLevel': protectionLevel!,
-        if (publicKey != null) 'publicKey': publicKey!.toJson(),
+        if (publicKey != null) 'publicKey': publicKey!,
         if (state != null) 'state': state!,
       };
 }
@@ -3826,7 +3822,7 @@ class KeyOperationAttestation {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (certChains != null) 'certChains': certChains!.toJson(),
+        if (certChains != null) 'certChains': certChains!,
         if (content != null) 'content': content!,
         if (format != null) 'format': format!,
       };
@@ -3901,9 +3897,7 @@ class ListCryptoKeyVersionsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cryptoKeyVersions != null)
-          'cryptoKeyVersions':
-              cryptoKeyVersions!.map((value) => value.toJson()).toList(),
+        if (cryptoKeyVersions != null) 'cryptoKeyVersions': cryptoKeyVersions!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (totalSize != null) 'totalSize': totalSize!,
       };
@@ -3946,8 +3940,7 @@ class ListCryptoKeysResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cryptoKeys != null)
-          'cryptoKeys': cryptoKeys!.map((value) => value.toJson()).toList(),
+        if (cryptoKeys != null) 'cryptoKeys': cryptoKeys!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (totalSize != null) 'totalSize': totalSize!,
       };
@@ -3990,8 +3983,7 @@ class ListImportJobsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (importJobs != null)
-          'importJobs': importJobs!.map((value) => value.toJson()).toList(),
+        if (importJobs != null) 'importJobs': importJobs!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (totalSize != null) 'totalSize': totalSize!,
       };
@@ -4034,8 +4026,7 @@ class ListKeyRingsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (keyRings != null)
-          'keyRings': keyRings!.map((value) => value.toJson()).toList(),
+        if (keyRings != null) 'keyRings': keyRings!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (totalSize != null) 'totalSize': totalSize!,
       };
@@ -4068,8 +4059,7 @@ class ListLocationsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (locations != null)
-          'locations': locations!.map((value) => value.toJson()).toList(),
+        if (locations != null) 'locations': locations!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -4593,10 +4583,8 @@ class Policy {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (auditConfigs != null)
-          'auditConfigs': auditConfigs!.map((value) => value.toJson()).toList(),
-        if (bindings != null)
-          'bindings': bindings!.map((value) => value.toJson()).toList(),
+        if (auditConfigs != null) 'auditConfigs': auditConfigs!,
+        if (bindings != null) 'bindings': bindings!,
         if (etag != null) 'etag': etag!,
         if (version != null) 'version': version!,
       };
@@ -4748,7 +4736,7 @@ class SetIamPolicyRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (policy != null) 'policy': policy!.toJson(),
+        if (policy != null) 'policy': policy!,
         if (updateMask != null) 'updateMask': updateMask!,
       };
 }

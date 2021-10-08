@@ -107,7 +107,7 @@ class CatalogResource {
     GoogleCloudDatacatalogV1beta1SearchCatalogRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -257,7 +257,7 @@ class ProjectsLocationsEntryGroupsResource {
     core.String? entryGroupId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (entryGroupId != null) 'entryGroupId': [entryGroupId],
       if ($fields != null) 'fields': [$fields],
@@ -402,7 +402,7 @@ class ProjectsLocationsEntryGroupsResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -506,7 +506,7 @@ class ProjectsLocationsEntryGroupsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -560,7 +560,7 @@ class ProjectsLocationsEntryGroupsResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -611,7 +611,7 @@ class ProjectsLocationsEntryGroupsResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -678,7 +678,7 @@ class ProjectsLocationsEntryGroupsEntriesResource {
     core.String? entryId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (entryId != null) 'entryId': [entryId],
       if ($fields != null) 'fields': [$fields],
@@ -814,7 +814,7 @@ class ProjectsLocationsEntryGroupsEntriesResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -932,7 +932,7 @@ class ProjectsLocationsEntryGroupsEntriesResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -984,7 +984,7 @@ class ProjectsLocationsEntryGroupsEntriesResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1044,7 +1044,7 @@ class ProjectsLocationsEntryGroupsEntriesTagsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1184,7 +1184,7 @@ class ProjectsLocationsEntryGroupsEntriesTagsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -1244,7 +1244,7 @@ class ProjectsLocationsEntryGroupsTagsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1384,7 +1384,7 @@ class ProjectsLocationsEntryGroupsTagsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -1446,7 +1446,7 @@ class ProjectsLocationsTagTemplatesResource {
     core.String? tagTemplateId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (tagTemplateId != null) 'tagTemplateId': [tagTemplateId],
       if ($fields != null) 'fields': [$fields],
@@ -1587,7 +1587,7 @@ class ProjectsLocationsTagTemplatesResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1647,7 +1647,7 @@ class ProjectsLocationsTagTemplatesResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -1701,7 +1701,7 @@ class ProjectsLocationsTagTemplatesResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1752,7 +1752,7 @@ class ProjectsLocationsTagTemplatesResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1820,7 +1820,7 @@ class ProjectsLocationsTagTemplatesFieldsResource {
     core.String? tagTemplateFieldId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (tagTemplateFieldId != null)
         'tagTemplateFieldId': [tagTemplateFieldId],
@@ -1931,7 +1931,7 @@ class ProjectsLocationsTagTemplatesFieldsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -1980,7 +1980,7 @@ class ProjectsLocationsTagTemplatesFieldsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2035,7 +2035,7 @@ class ProjectsLocationsTagTemplatesFieldsEnumValuesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2087,7 +2087,7 @@ class ProjectsLocationsTaxonomiesResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2258,7 +2258,7 @@ class ProjectsLocationsTaxonomiesResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2304,7 +2304,7 @@ class ProjectsLocationsTaxonomiesResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2402,7 +2402,7 @@ class ProjectsLocationsTaxonomiesResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -2447,7 +2447,7 @@ class ProjectsLocationsTaxonomiesResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2492,7 +2492,7 @@ class ProjectsLocationsTaxonomiesResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2543,7 +2543,7 @@ class ProjectsLocationsTaxonomiesPolicyTagsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2663,7 +2663,7 @@ class ProjectsLocationsTaxonomiesPolicyTagsResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2763,7 +2763,7 @@ class ProjectsLocationsTaxonomiesPolicyTagsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -2808,7 +2808,7 @@ class ProjectsLocationsTaxonomiesPolicyTagsResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2853,7 +2853,7 @@ class ProjectsLocationsTaxonomiesPolicyTagsResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2942,7 +2942,7 @@ class Binding {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (condition != null) 'condition': condition!.toJson(),
+        if (condition != null) 'condition': condition!,
         if (members != null) 'members': members!,
         if (role != null) 'role': role!,
       };
@@ -3050,7 +3050,7 @@ class GetIamPolicyRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (options != null) 'options': options!.toJson(),
+        if (options != null) 'options': options!,
       };
 }
 
@@ -3183,8 +3183,8 @@ class GoogleCloudDatacatalogV1beta1BigQueryTableSpec {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (tableSourceType != null) 'tableSourceType': tableSourceType!,
-        if (tableSpec != null) 'tableSpec': tableSpec!.toJson(),
-        if (viewSpec != null) 'viewSpec': viewSpec!.toJson(),
+        if (tableSpec != null) 'tableSpec': tableSpec!,
+        if (viewSpec != null) 'viewSpec': viewSpec!,
       };
 }
 
@@ -3256,8 +3256,7 @@ class GoogleCloudDatacatalogV1beta1ColumnSchema {
         if (column != null) 'column': column!,
         if (description != null) 'description': description!,
         if (mode != null) 'mode': mode!,
-        if (subcolumns != null)
-          'subcolumns': subcolumns!.map((value) => value.toJson()).toList(),
+        if (subcolumns != null) 'subcolumns': subcolumns!,
         if (type != null) 'type': type!,
       };
 }
@@ -3459,20 +3458,19 @@ class GoogleCloudDatacatalogV1beta1Entry {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (bigqueryDateShardedSpec != null)
-          'bigqueryDateShardedSpec': bigqueryDateShardedSpec!.toJson(),
-        if (bigqueryTableSpec != null)
-          'bigqueryTableSpec': bigqueryTableSpec!.toJson(),
+          'bigqueryDateShardedSpec': bigqueryDateShardedSpec!,
+        if (bigqueryTableSpec != null) 'bigqueryTableSpec': bigqueryTableSpec!,
         if (description != null) 'description': description!,
         if (displayName != null) 'displayName': displayName!,
-        if (gcsFilesetSpec != null) 'gcsFilesetSpec': gcsFilesetSpec!.toJson(),
+        if (gcsFilesetSpec != null) 'gcsFilesetSpec': gcsFilesetSpec!,
         if (integratedSystem != null) 'integratedSystem': integratedSystem!,
         if (linkedResource != null) 'linkedResource': linkedResource!,
         if (name != null) 'name': name!,
-        if (schema != null) 'schema': schema!.toJson(),
+        if (schema != null) 'schema': schema!,
         if (sourceSystemTimestamps != null)
-          'sourceSystemTimestamps': sourceSystemTimestamps!.toJson(),
+          'sourceSystemTimestamps': sourceSystemTimestamps!,
         if (type != null) 'type': type!,
-        if (usageSignal != null) 'usageSignal': usageSignal!.toJson(),
+        if (usageSignal != null) 'usageSignal': usageSignal!,
         if (userSpecifiedSystem != null)
           'userSpecifiedSystem': userSpecifiedSystem!,
         if (userSpecifiedType != null) 'userSpecifiedType': userSpecifiedType!,
@@ -3536,7 +3534,7 @@ class GoogleCloudDatacatalogV1beta1EntryGroup {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (dataCatalogTimestamps != null)
-          'dataCatalogTimestamps': dataCatalogTimestamps!.toJson(),
+          'dataCatalogTimestamps': dataCatalogTimestamps!,
         if (description != null) 'description': description!,
         if (displayName != null) 'displayName': displayName!,
         if (name != null) 'name': name!,
@@ -3564,8 +3562,7 @@ class GoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (taxonomies != null)
-          'taxonomies': taxonomies!.map((value) => value.toJson()).toList(),
+        if (taxonomies != null) 'taxonomies': taxonomies!,
       };
 }
 
@@ -3600,7 +3597,7 @@ class GoogleCloudDatacatalogV1beta1FieldType {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (enumType != null) 'enumType': enumType!.toJson(),
+        if (enumType != null) 'enumType': enumType!,
         if (primitiveType != null) 'primitiveType': primitiveType!,
       };
 }
@@ -3626,9 +3623,7 @@ class GoogleCloudDatacatalogV1beta1FieldTypeEnumType {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (allowedValues != null)
-          'allowedValues':
-              allowedValues!.map((value) => value.toJson()).toList(),
+        if (allowedValues != null) 'allowedValues': allowedValues!,
       };
 }
 
@@ -3698,7 +3693,7 @@ class GoogleCloudDatacatalogV1beta1GcsFileSpec {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (filePath != null) 'filePath': filePath!,
-        if (gcsTimestamps != null) 'gcsTimestamps': gcsTimestamps!.toJson(),
+        if (gcsTimestamps != null) 'gcsTimestamps': gcsTimestamps!,
         if (sizeBytes != null) 'sizeBytes': sizeBytes!,
       };
 }
@@ -3758,8 +3753,7 @@ class GoogleCloudDatacatalogV1beta1GcsFilesetSpec {
   core.Map<core.String, core.dynamic> toJson() => {
         if (filePatterns != null) 'filePatterns': filePatterns!,
         if (sampleGcsFileSpecs != null)
-          'sampleGcsFileSpecs':
-              sampleGcsFileSpecs!.map((value) => value.toJson()).toList(),
+          'sampleGcsFileSpecs': sampleGcsFileSpecs!,
       };
 }
 
@@ -3781,7 +3775,7 @@ class GoogleCloudDatacatalogV1beta1ImportTaxonomiesRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (inlineSource != null) 'inlineSource': inlineSource!.toJson(),
+        if (inlineSource != null) 'inlineSource': inlineSource!,
       };
 }
 
@@ -3806,8 +3800,7 @@ class GoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (taxonomies != null)
-          'taxonomies': taxonomies!.map((value) => value.toJson()).toList(),
+        if (taxonomies != null) 'taxonomies': taxonomies!,
       };
 }
 
@@ -3834,8 +3827,7 @@ class GoogleCloudDatacatalogV1beta1InlineSource {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (taxonomies != null)
-          'taxonomies': taxonomies!.map((value) => value.toJson()).toList(),
+        if (taxonomies != null) 'taxonomies': taxonomies!,
       };
 }
 
@@ -3868,8 +3860,7 @@ class GoogleCloudDatacatalogV1beta1ListEntriesResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (entries != null)
-          'entries': entries!.map((value) => value.toJson()).toList(),
+        if (entries != null) 'entries': entries!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -3904,8 +3895,7 @@ class GoogleCloudDatacatalogV1beta1ListEntryGroupsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (entryGroups != null)
-          'entryGroups': entryGroups!.map((value) => value.toJson()).toList(),
+        if (entryGroups != null) 'entryGroups': entryGroups!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -3940,8 +3930,7 @@ class GoogleCloudDatacatalogV1beta1ListPolicyTagsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (policyTags != null)
-          'policyTags': policyTags!.map((value) => value.toJson()).toList(),
+        if (policyTags != null) 'policyTags': policyTags!,
       };
 }
 
@@ -3975,7 +3964,7 @@ class GoogleCloudDatacatalogV1beta1ListTagsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (tags != null) 'tags': tags!.map((value) => value.toJson()).toList(),
+        if (tags != null) 'tags': tags!,
       };
 }
 
@@ -4009,8 +3998,7 @@ class GoogleCloudDatacatalogV1beta1ListTaxonomiesResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (taxonomies != null)
-          'taxonomies': taxonomies!.map((value) => value.toJson()).toList(),
+        if (taxonomies != null) 'taxonomies': taxonomies!,
       };
 }
 
@@ -4173,8 +4161,7 @@ class GoogleCloudDatacatalogV1beta1Schema {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (columns != null)
-          'columns': columns!.map((value) => value.toJson()).toList(),
+        if (columns != null) 'columns': columns!,
       };
 }
 
@@ -4256,7 +4243,7 @@ class GoogleCloudDatacatalogV1beta1SearchCatalogRequest {
         if (pageSize != null) 'pageSize': pageSize!,
         if (pageToken != null) 'pageToken': pageToken!,
         if (query != null) 'query': query!,
-        if (scope != null) 'scope': scope!.toJson(),
+        if (scope != null) 'scope': scope!,
       };
 }
 
@@ -4384,8 +4371,7 @@ class GoogleCloudDatacatalogV1beta1SearchCatalogResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (results != null)
-          'results': results!.map((value) => value.toJson()).toList(),
+        if (results != null) 'results': results!,
         if (unreachable != null) 'unreachable': unreachable!,
       };
 }
@@ -4519,9 +4505,7 @@ class GoogleCloudDatacatalogV1beta1SerializedPolicyTag {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (childPolicyTags != null)
-          'childPolicyTags':
-              childPolicyTags!.map((value) => value.toJson()).toList(),
+        if (childPolicyTags != null) 'childPolicyTags': childPolicyTags!,
         if (description != null) 'description': description!,
         if (displayName != null) 'displayName': displayName!,
         if (policyTag != null) 'policyTag': policyTag!,
@@ -4585,8 +4569,7 @@ class GoogleCloudDatacatalogV1beta1SerializedTaxonomy {
           'activatedPolicyTypes': activatedPolicyTypes!,
         if (description != null) 'description': description!,
         if (displayName != null) 'displayName': displayName!,
-        if (policyTags != null)
-          'policyTags': policyTags!.map((value) => value.toJson()).toList(),
+        if (policyTags != null) 'policyTags': policyTags!,
       };
 }
 
@@ -4736,9 +4719,7 @@ class GoogleCloudDatacatalogV1beta1Tag {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (column != null) 'column': column!,
-        if (fields != null)
-          'fields':
-              fields!.map((key, item) => core.MapEntry(key, item.toJson())),
+        if (fields != null) 'fields': fields!,
         if (name != null) 'name': name!,
         if (template != null) 'template': template!,
         if (templateDisplayName != null)
@@ -4818,7 +4799,7 @@ class GoogleCloudDatacatalogV1beta1TagField {
         if (boolValue != null) 'boolValue': boolValue!,
         if (displayName != null) 'displayName': displayName!,
         if (doubleValue != null) 'doubleValue': doubleValue!,
-        if (enumValue != null) 'enumValue': enumValue!.toJson(),
+        if (enumValue != null) 'enumValue': enumValue!,
         if (order != null) 'order': order!,
         if (stringValue != null) 'stringValue': stringValue!,
         if (timestampValue != null) 'timestampValue': timestampValue!,
@@ -4905,9 +4886,7 @@ class GoogleCloudDatacatalogV1beta1TagTemplate {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
-        if (fields != null)
-          'fields':
-              fields!.map((key, item) => core.MapEntry(key, item.toJson())),
+        if (fields != null) 'fields': fields!,
         if (name != null) 'name': name!,
       };
 }
@@ -4985,7 +4964,7 @@ class GoogleCloudDatacatalogV1beta1TagTemplateField {
         if (isRequired != null) 'isRequired': isRequired!,
         if (name != null) 'name': name!,
         if (order != null) 'order': order!,
-        if (type != null) 'type': type!.toJson(),
+        if (type != null) 'type': type!,
       };
 }
 
@@ -5081,7 +5060,7 @@ class GoogleCloudDatacatalogV1beta1Taxonomy {
         if (name != null) 'name': name!,
         if (policyTagCount != null) 'policyTagCount': policyTagCount!,
         if (taxonomyTimestamps != null)
-          'taxonomyTimestamps': taxonomyTimestamps!.toJson(),
+          'taxonomyTimestamps': taxonomyTimestamps!,
       };
 }
 
@@ -5121,8 +5100,7 @@ class GoogleCloudDatacatalogV1beta1UsageSignal {
   core.Map<core.String, core.dynamic> toJson() => {
         if (updateTime != null) 'updateTime': updateTime!,
         if (usageWithinTimeRange != null)
-          'usageWithinTimeRange': usageWithinTimeRange!
-              .map((key, item) => core.MapEntry(key, item.toJson())),
+          'usageWithinTimeRange': usageWithinTimeRange!,
       };
 }
 
@@ -5306,8 +5284,7 @@ class Policy {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bindings != null)
-          'bindings': bindings!.map((value) => value.toJson()).toList(),
+        if (bindings != null) 'bindings': bindings!,
         if (etag != null) 'etag': etag!,
         if (version != null) 'version': version!,
       };
@@ -5335,7 +5312,7 @@ class SetIamPolicyRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (policy != null) 'policy': policy!.toJson(),
+        if (policy != null) 'policy': policy!,
       };
 }
 

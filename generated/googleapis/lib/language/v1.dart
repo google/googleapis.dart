@@ -88,7 +88,7 @@ class DocumentsResource {
     AnalyzeEntitiesRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -126,7 +126,7 @@ class DocumentsResource {
     AnalyzeEntitySentimentRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -163,7 +163,7 @@ class DocumentsResource {
     AnalyzeSentimentRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -202,7 +202,7 @@ class DocumentsResource {
     AnalyzeSyntaxRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -240,7 +240,7 @@ class DocumentsResource {
     AnnotateTextRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -277,7 +277,7 @@ class DocumentsResource {
     ClassifyTextRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -334,7 +334,7 @@ class AnalyzeEntitiesRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (document != null) 'document': document!.toJson(),
+        if (document != null) 'document': document!,
         if (encodingType != null) 'encodingType': encodingType!,
       };
 }
@@ -369,8 +369,7 @@ class AnalyzeEntitiesResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (entities != null)
-          'entities': entities!.map((value) => value.toJson()).toList(),
+        if (entities != null) 'entities': entities!,
         if (language != null) 'language': language!,
       };
 }
@@ -414,7 +413,7 @@ class AnalyzeEntitySentimentRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (document != null) 'document': document!.toJson(),
+        if (document != null) 'document': document!,
         if (encodingType != null) 'encodingType': encodingType!,
       };
 }
@@ -449,8 +448,7 @@ class AnalyzeEntitySentimentResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (entities != null)
-          'entities': entities!.map((value) => value.toJson()).toList(),
+        if (entities != null) 'entities': entities!,
         if (language != null) 'language': language!,
       };
 }
@@ -494,7 +492,7 @@ class AnalyzeSentimentRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (document != null) 'document': document!.toJson(),
+        if (document != null) 'document': document!,
         if (encodingType != null) 'encodingType': encodingType!,
       };
 }
@@ -537,11 +535,9 @@ class AnalyzeSentimentResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (documentSentiment != null)
-          'documentSentiment': documentSentiment!.toJson(),
+        if (documentSentiment != null) 'documentSentiment': documentSentiment!,
         if (language != null) 'language': language!,
-        if (sentences != null)
-          'sentences': sentences!.map((value) => value.toJson()).toList(),
+        if (sentences != null) 'sentences': sentences!,
       };
 }
 
@@ -584,7 +580,7 @@ class AnalyzeSyntaxRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (document != null) 'document': document!.toJson(),
+        if (document != null) 'document': document!,
         if (encodingType != null) 'encodingType': encodingType!,
       };
 }
@@ -630,10 +626,8 @@ class AnalyzeSyntaxResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (language != null) 'language': language!,
-        if (sentences != null)
-          'sentences': sentences!.map((value) => value.toJson()).toList(),
-        if (tokens != null)
-          'tokens': tokens!.map((value) => value.toJson()).toList(),
+        if (sentences != null) 'sentences': sentences!,
+        if (tokens != null) 'tokens': tokens!,
       };
 }
 
@@ -687,9 +681,9 @@ class AnnotateTextRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (document != null) 'document': document!.toJson(),
+        if (document != null) 'document': document!,
         if (encodingType != null) 'encodingType': encodingType!,
-        if (features != null) 'features': features!.toJson(),
+        if (features != null) 'features': features!,
       };
 }
 
@@ -771,17 +765,12 @@ class AnnotateTextResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (categories != null)
-          'categories': categories!.map((value) => value.toJson()).toList(),
-        if (documentSentiment != null)
-          'documentSentiment': documentSentiment!.toJson(),
-        if (entities != null)
-          'entities': entities!.map((value) => value.toJson()).toList(),
+        if (categories != null) 'categories': categories!,
+        if (documentSentiment != null) 'documentSentiment': documentSentiment!,
+        if (entities != null) 'entities': entities!,
         if (language != null) 'language': language!,
-        if (sentences != null)
-          'sentences': sentences!.map((value) => value.toJson()).toList(),
-        if (tokens != null)
-          'tokens': tokens!.map((value) => value.toJson()).toList(),
+        if (sentences != null) 'sentences': sentences!,
+        if (tokens != null) 'tokens': tokens!,
       };
 }
 
@@ -836,7 +825,7 @@ class ClassifyTextRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (document != null) 'document': document!.toJson(),
+        if (document != null) 'document': document!,
       };
 }
 
@@ -860,8 +849,7 @@ class ClassifyTextResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (categories != null)
-          'categories': categories!.map((value) => value.toJson()).toList(),
+        if (categories != null) 'categories': categories!,
       };
 }
 
@@ -1153,12 +1141,11 @@ class Entity {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (mentions != null)
-          'mentions': mentions!.map((value) => value.toJson()).toList(),
+        if (mentions != null) 'mentions': mentions!,
         if (metadata != null) 'metadata': metadata!,
         if (name != null) 'name': name!,
         if (salience != null) 'salience': salience!,
-        if (sentiment != null) 'sentiment': sentiment!.toJson(),
+        if (sentiment != null) 'sentiment': sentiment!,
         if (type != null) 'type': type!,
       };
 }
@@ -1203,8 +1190,8 @@ class EntityMention {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (sentiment != null) 'sentiment': sentiment!.toJson(),
-        if (text != null) 'text': text!.toJson(),
+        if (sentiment != null) 'sentiment': sentiment!,
+        if (text != null) 'text': text!,
         if (type != null) 'type': type!,
       };
 }
@@ -1503,8 +1490,8 @@ class Sentence {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (sentiment != null) 'sentiment': sentiment!.toJson(),
-        if (text != null) 'text': text!.toJson(),
+        if (sentiment != null) 'sentiment': sentiment!,
+        if (text != null) 'text': text!,
       };
 }
 
@@ -1663,9 +1650,9 @@ class Token {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dependencyEdge != null) 'dependencyEdge': dependencyEdge!.toJson(),
+        if (dependencyEdge != null) 'dependencyEdge': dependencyEdge!,
         if (lemma != null) 'lemma': lemma!,
-        if (partOfSpeech != null) 'partOfSpeech': partOfSpeech!.toJson(),
-        if (text != null) 'text': text!.toJson(),
+        if (partOfSpeech != null) 'partOfSpeech': partOfSpeech!,
+        if (text != null) 'text': text!,
       };
 }

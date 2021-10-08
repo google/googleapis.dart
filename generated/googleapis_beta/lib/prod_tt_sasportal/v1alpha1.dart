@@ -188,7 +188,7 @@ class CustomersResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -241,7 +241,7 @@ class CustomersDeploymentsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -406,7 +406,7 @@ class CustomersDeploymentsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -450,7 +450,7 @@ class CustomersDeploymentsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -499,7 +499,7 @@ class CustomersDeploymentsDevicesResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -540,7 +540,7 @@ class CustomersDeploymentsDevicesResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -641,7 +641,7 @@ class CustomersDevicesResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -682,7 +682,7 @@ class CustomersDevicesResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -849,7 +849,7 @@ class CustomersDevicesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -893,7 +893,7 @@ class CustomersDevicesResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -935,7 +935,7 @@ class CustomersDevicesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -976,7 +976,7 @@ class CustomersDevicesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1031,7 +1031,7 @@ class CustomersNodesResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1195,7 +1195,7 @@ class CustomersNodesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1239,7 +1239,7 @@ class CustomersNodesResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -1289,7 +1289,7 @@ class CustomersNodesDeploymentsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1389,7 +1389,7 @@ class CustomersNodesDevicesResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1430,7 +1430,7 @@ class CustomersNodesDevicesResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1533,7 +1533,7 @@ class CustomersNodesNodesResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1748,7 +1748,7 @@ class DeploymentsDevicesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1792,7 +1792,7 @@ class DeploymentsDevicesResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -1834,7 +1834,7 @@ class DeploymentsDevicesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1875,7 +1875,7 @@ class DeploymentsDevicesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1918,7 +1918,7 @@ class InstallerResource {
     SasPortalGenerateSecretRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1955,7 +1955,7 @@ class InstallerResource {
     SasPortalValidateInstallerRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2176,7 +2176,7 @@ class NodesDeploymentsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2220,7 +2220,7 @@ class NodesDeploymentsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -2269,7 +2269,7 @@ class NodesDeploymentsDevicesResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2310,7 +2310,7 @@ class NodesDeploymentsDevicesResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2411,7 +2411,7 @@ class NodesDevicesResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2452,7 +2452,7 @@ class NodesDevicesResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2619,7 +2619,7 @@ class NodesDevicesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2663,7 +2663,7 @@ class NodesDevicesResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -2705,7 +2705,7 @@ class NodesDevicesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2746,7 +2746,7 @@ class NodesDevicesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2800,7 +2800,7 @@ class NodesNodesResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2964,7 +2964,7 @@ class NodesNodesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3008,7 +3008,7 @@ class NodesNodesResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -3058,7 +3058,7 @@ class NodesNodesDeploymentsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3157,7 +3157,7 @@ class NodesNodesDevicesResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3198,7 +3198,7 @@ class NodesNodesDevicesResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3300,7 +3300,7 @@ class NodesNodesNodesResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3397,7 +3397,7 @@ class PoliciesResource {
     SasPortalGetPolicyRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3436,7 +3436,7 @@ class PoliciesResource {
     SasPortalSetPolicyRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3473,7 +3473,7 @@ class PoliciesResource {
     SasPortalTestPermissionsRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3552,7 +3552,7 @@ class SasPortalChannelWithScore {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (frequencyRange != null) 'frequencyRange': frequencyRange!.toJson(),
+        if (frequencyRange != null) 'frequencyRange': frequencyRange!,
         if (score != null) 'score': score!,
       };
 }
@@ -3831,21 +3831,16 @@ class SasPortalDevice {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (activeConfig != null) 'activeConfig': activeConfig!.toJson(),
-        if (currentChannels != null)
-          'currentChannels':
-              currentChannels!.map((value) => value.toJson()).toList(),
-        if (deviceMetadata != null) 'deviceMetadata': deviceMetadata!.toJson(),
+        if (activeConfig != null) 'activeConfig': activeConfig!,
+        if (currentChannels != null) 'currentChannels': currentChannels!,
+        if (deviceMetadata != null) 'deviceMetadata': deviceMetadata!,
         if (displayName != null) 'displayName': displayName!,
         if (fccId != null) 'fccId': fccId!,
         if (grantRangeAllowlists != null)
-          'grantRangeAllowlists':
-              grantRangeAllowlists!.map((value) => value.toJson()).toList(),
-        if (grants != null)
-          'grants': grants!.map((value) => value.toJson()).toList(),
+          'grantRangeAllowlists': grantRangeAllowlists!,
+        if (grants != null) 'grants': grants!,
         if (name != null) 'name': name!,
-        if (preloadedConfig != null)
-          'preloadedConfig': preloadedConfig!.toJson(),
+        if (preloadedConfig != null) 'preloadedConfig': preloadedConfig!,
         if (serialNumber != null) 'serialNumber': serialNumber!,
         if (state != null) 'state': state!,
       };
@@ -3993,15 +3988,15 @@ class SasPortalDeviceConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (airInterface != null) 'airInterface': airInterface!.toJson(),
+        if (airInterface != null) 'airInterface': airInterface!,
         if (callSign != null) 'callSign': callSign!,
         if (category != null) 'category': category!,
         if (installationParams != null)
-          'installationParams': installationParams!.toJson(),
+          'installationParams': installationParams!,
         if (isSigned != null) 'isSigned': isSigned!,
         if (measurementCapabilities != null)
           'measurementCapabilities': measurementCapabilities!,
-        if (model != null) 'model': model!.toJson(),
+        if (model != null) 'model': model!,
         if (state != null) 'state': state!,
         if (updateTime != null) 'updateTime': updateTime!,
         if (userId != null) 'userId': userId!,
@@ -4102,11 +4097,10 @@ class SasPortalDeviceGrant {
   core.Map<core.String, core.dynamic> toJson() => {
         if (channelType != null) 'channelType': channelType!,
         if (expireTime != null) 'expireTime': expireTime!,
-        if (frequencyRange != null) 'frequencyRange': frequencyRange!.toJson(),
+        if (frequencyRange != null) 'frequencyRange': frequencyRange!,
         if (grantId != null) 'grantId': grantId!,
         if (maxEirp != null) 'maxEirp': maxEirp!,
-        if (moveList != null)
-          'moveList': moveList!.map((value) => value.toJson()).toList(),
+        if (moveList != null) 'moveList': moveList!,
         if (state != null) 'state': state!,
         if (suspensionReason != null) 'suspensionReason': suspensionReason!,
       };
@@ -4236,7 +4230,7 @@ class SasPortalDpaMoveList {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (dpaId != null) 'dpaId': dpaId!,
-        if (frequencyRange != null) 'frequencyRange': frequencyRange!.toJson(),
+        if (frequencyRange != null) 'frequencyRange': frequencyRange!,
       };
 }
 
@@ -4536,8 +4530,7 @@ class SasPortalListCustomersResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (customers != null)
-          'customers': customers!.map((value) => value.toJson()).toList(),
+        if (customers != null) 'customers': customers!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -4572,8 +4565,7 @@ class SasPortalListDeploymentsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (deployments != null)
-          'deployments': deployments!.map((value) => value.toJson()).toList(),
+        if (deployments != null) 'deployments': deployments!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -4608,8 +4600,7 @@ class SasPortalListDevicesResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (devices != null)
-          'devices': devices!.map((value) => value.toJson()).toList(),
+        if (devices != null) 'devices': devices!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -4645,8 +4636,7 @@ class SasPortalListNodesResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (nodes != null)
-          'nodes': nodes!.map((value) => value.toJson()).toList(),
+        if (nodes != null) 'nodes': nodes!,
       };
 }
 
@@ -4830,7 +4820,7 @@ class SasPortalOperation {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (done != null) 'done': done!,
-        if (error != null) 'error': error!.toJson(),
+        if (error != null) 'error': error!,
         if (metadata != null) 'metadata': metadata!,
         if (name != null) 'name': name!,
         if (response != null) 'response': response!,
@@ -4877,8 +4867,7 @@ class SasPortalPolicy {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (assignments != null)
-          'assignments': assignments!.map((value) => value.toJson()).toList(),
+        if (assignments != null) 'assignments': assignments!,
         if (etag != null) 'etag': etag!,
       };
 }
@@ -4926,7 +4915,7 @@ class SasPortalSetPolicyRequest {
   core.Map<core.String, core.dynamic> toJson() => {
         if (disableNotification != null)
           'disableNotification': disableNotification!,
-        if (policy != null) 'policy': policy!.toJson(),
+        if (policy != null) 'policy': policy!,
         if (resource != null) 'resource': resource!,
       };
 }
@@ -4954,7 +4943,7 @@ class SasPortalSignDeviceRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (device != null) 'device': device!.toJson(),
+        if (device != null) 'device': device!,
       };
 }
 

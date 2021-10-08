@@ -263,8 +263,8 @@ class SiteSummaryResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (desktopSummary != null) 'desktopSummary': desktopSummary!.toJson(),
-        if (mobileSummary != null) 'mobileSummary': mobileSummary!.toJson(),
+        if (desktopSummary != null) 'desktopSummary': desktopSummary!,
+        if (mobileSummary != null) 'mobileSummary': mobileSummary!,
         if (reviewedSite != null) 'reviewedSite': reviewedSite!,
       };
 }
@@ -289,8 +289,6 @@ class ViolatingSitesResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (violatingSites != null)
-          'violatingSites':
-              violatingSites!.map((value) => value.toJson()).toList(),
+        if (violatingSites != null) 'violatingSites': violatingSites!,
       };
 }

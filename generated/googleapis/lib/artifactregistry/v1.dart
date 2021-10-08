@@ -104,7 +104,7 @@ class OperationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -643,8 +643,8 @@ class ImportAptArtifactsErrorInfo {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (error != null) 'error': error!.toJson(),
-        if (gcsSource != null) 'gcsSource': gcsSource!.toJson(),
+        if (error != null) 'error': error!,
+        if (gcsSource != null) 'gcsSource': gcsSource!,
       };
 }
 
@@ -709,10 +709,8 @@ class ImportAptArtifactsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (aptArtifacts != null)
-          'aptArtifacts': aptArtifacts!.map((value) => value.toJson()).toList(),
-        if (errors != null)
-          'errors': errors!.map((value) => value.toJson()).toList(),
+        if (aptArtifacts != null) 'aptArtifacts': aptArtifacts!,
+        if (errors != null) 'errors': errors!,
       };
 }
 
@@ -742,8 +740,8 @@ class ImportYumArtifactsErrorInfo {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (error != null) 'error': error!.toJson(),
-        if (gcsSource != null) 'gcsSource': gcsSource!.toJson(),
+        if (error != null) 'error': error!,
+        if (gcsSource != null) 'gcsSource': gcsSource!,
       };
 }
 
@@ -808,10 +806,8 @@ class ImportYumArtifactsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (errors != null)
-          'errors': errors!.map((value) => value.toJson()).toList(),
-        if (yumArtifacts != null)
-          'yumArtifacts': yumArtifacts!.map((value) => value.toJson()).toList(),
+        if (errors != null) 'errors': errors!,
+        if (yumArtifacts != null) 'yumArtifacts': yumArtifacts!,
       };
 }
 
@@ -843,8 +839,7 @@ class ListDockerImagesResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dockerImages != null)
-          'dockerImages': dockerImages!.map((value) => value.toJson()).toList(),
+        if (dockerImages != null) 'dockerImages': dockerImages!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -877,8 +872,7 @@ class ListOperationsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (operations != null)
-          'operations': operations!.map((value) => value.toJson()).toList(),
+        if (operations != null) 'operations': operations!,
       };
 }
 
@@ -911,8 +905,7 @@ class ListRepositoriesResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (repositories != null)
-          'repositories': repositories!.map((value) => value.toJson()).toList(),
+        if (repositories != null) 'repositories': repositories!,
       };
 }
 
@@ -985,7 +978,7 @@ class Operation {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (done != null) 'done': done!,
-        if (error != null) 'error': error!.toJson(),
+        if (error != null) 'error': error!,
         if (metadata != null) 'metadata': metadata!,
         if (name != null) 'name': name!,
         if (response != null) 'response': response!,
@@ -1153,7 +1146,7 @@ class UploadAptArtifactMediaResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (operation != null) 'operation': operation!.toJson(),
+        if (operation != null) 'operation': operation!,
       };
 }
 
@@ -1179,8 +1172,7 @@ class UploadAptArtifactResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (aptArtifacts != null)
-          'aptArtifacts': aptArtifacts!.map((value) => value.toJson()).toList(),
+        if (aptArtifacts != null) 'aptArtifacts': aptArtifacts!,
       };
 }
 
@@ -1202,7 +1194,7 @@ class UploadYumArtifactMediaResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (operation != null) 'operation': operation!.toJson(),
+        if (operation != null) 'operation': operation!,
       };
 }
 
@@ -1228,8 +1220,7 @@ class UploadYumArtifactResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (yumArtifacts != null)
-          'yumArtifacts': yumArtifacts!.map((value) => value.toJson()).toList(),
+        if (yumArtifacts != null) 'yumArtifacts': yumArtifacts!,
       };
 }
 

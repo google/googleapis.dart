@@ -241,7 +241,7 @@ class ProjectsEventsResource {
     core.String projectName, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -472,7 +472,7 @@ class ProjectsGroupsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -550,11 +550,9 @@ class ErrorContext {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (httpRequest != null) 'httpRequest': httpRequest!.toJson(),
-        if (reportLocation != null) 'reportLocation': reportLocation!.toJson(),
-        if (sourceReferences != null)
-          'sourceReferences':
-              sourceReferences!.map((value) => value.toJson()).toList(),
+        if (httpRequest != null) 'httpRequest': httpRequest!,
+        if (reportLocation != null) 'reportLocation': reportLocation!,
+        if (sourceReferences != null) 'sourceReferences': sourceReferences!,
         if (user != null) 'user': user!,
       };
 }
@@ -602,10 +600,10 @@ class ErrorEvent {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (context != null) 'context': context!.toJson(),
+        if (context != null) 'context': context!,
         if (eventTime != null) 'eventTime': eventTime!,
         if (message != null) 'message': message!,
-        if (serviceContext != null) 'serviceContext': serviceContext!.toJson(),
+        if (serviceContext != null) 'serviceContext': serviceContext!,
       };
 }
 
@@ -669,9 +667,7 @@ class ErrorGroup {
         if (groupId != null) 'groupId': groupId!,
         if (name != null) 'name': name!,
         if (resolutionStatus != null) 'resolutionStatus': resolutionStatus!,
-        if (trackingIssues != null)
-          'trackingIssues':
-              trackingIssues!.map((value) => value.toJson()).toList(),
+        if (trackingIssues != null) 'trackingIssues': trackingIssues!,
       };
 }
 
@@ -785,20 +781,17 @@ class ErrorGroupStats {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (affectedServices != null)
-          'affectedServices':
-              affectedServices!.map((value) => value.toJson()).toList(),
+        if (affectedServices != null) 'affectedServices': affectedServices!,
         if (affectedUsersCount != null)
           'affectedUsersCount': affectedUsersCount!,
         if (count != null) 'count': count!,
         if (firstSeenTime != null) 'firstSeenTime': firstSeenTime!,
-        if (group != null) 'group': group!.toJson(),
+        if (group != null) 'group': group!,
         if (lastSeenTime != null) 'lastSeenTime': lastSeenTime!,
         if (numAffectedServices != null)
           'numAffectedServices': numAffectedServices!,
-        if (representative != null) 'representative': representative!.toJson(),
-        if (timedCounts != null)
-          'timedCounts': timedCounts!.map((value) => value.toJson()).toList(),
+        if (representative != null) 'representative': representative!,
+        if (timedCounts != null) 'timedCounts': timedCounts!,
       };
 }
 
@@ -907,8 +900,7 @@ class ListEventsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (errorEvents != null)
-          'errorEvents': errorEvents!.map((value) => value.toJson()).toList(),
+        if (errorEvents != null) 'errorEvents': errorEvents!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (timeRangeBegin != null) 'timeRangeBegin': timeRangeBegin!,
       };
@@ -956,9 +948,7 @@ class ListGroupStatsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (errorGroupStats != null)
-          'errorGroupStats':
-              errorGroupStats!.map((value) => value.toJson()).toList(),
+        if (errorGroupStats != null) 'errorGroupStats': errorGroupStats!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (timeRangeBegin != null) 'timeRangeBegin': timeRangeBegin!,
       };
@@ -1041,10 +1031,10 @@ class ReportedErrorEvent {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (context != null) 'context': context!.toJson(),
+        if (context != null) 'context': context!,
         if (eventTime != null) 'eventTime': eventTime!,
         if (message != null) 'message': message!,
-        if (serviceContext != null) 'serviceContext': serviceContext!.toJson(),
+        if (serviceContext != null) 'serviceContext': serviceContext!,
       };
 }
 

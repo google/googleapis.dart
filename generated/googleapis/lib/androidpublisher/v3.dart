@@ -253,7 +253,7 @@ class EditsResource {
     core.String packageName, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -348,7 +348,7 @@ class EditsApksResource {
     core.String editId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -773,7 +773,7 @@ class EditsDetailsResource {
     core.String editId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -820,7 +820,7 @@ class EditsDetailsResource {
     core.String editId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -946,7 +946,7 @@ class EditsExpansionfilesResource {
     core.String expansionFileType, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1011,7 +1011,7 @@ class EditsExpansionfilesResource {
     core.String expansionFileType, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1628,7 +1628,7 @@ class EditsListingsResource {
     core.String language, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1679,7 +1679,7 @@ class EditsListingsResource {
     core.String language, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1780,7 +1780,7 @@ class EditsTestersResource {
     core.String track, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1830,7 +1830,7 @@ class EditsTestersResource {
     core.String track, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1973,7 +1973,7 @@ class EditsTracksResource {
     core.String track, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2023,7 +2023,7 @@ class EditsTracksResource {
     core.String track, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2158,7 +2158,7 @@ class InappproductsResource {
     core.bool? autoConvertMissingPrices,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (autoConvertMissingPrices != null)
         'autoConvertMissingPrices': ['${autoConvertMissingPrices}'],
@@ -2267,7 +2267,7 @@ class InappproductsResource {
     core.bool? autoConvertMissingPrices,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (autoConvertMissingPrices != null)
         'autoConvertMissingPrices': ['${autoConvertMissingPrices}'],
@@ -2325,7 +2325,7 @@ class InappproductsResource {
     core.bool? autoConvertMissingPrices,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (allowMissing != null) 'allowMissing': ['${allowMissing}'],
       if (autoConvertMissingPrices != null)
@@ -2591,7 +2591,7 @@ class PurchasesProductsResource {
     core.String token, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2699,7 +2699,7 @@ class PurchasesSubscriptionsResource {
     core.String token, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2803,7 +2803,7 @@ class PurchasesSubscriptionsResource {
     core.String token, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3195,7 +3195,7 @@ class ReviewsResource {
     core.String reviewId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3258,7 +3258,7 @@ class SystemapksVariantsResource {
     core.String versionCode, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3448,7 +3448,7 @@ class Apk {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (binary != null) 'binary': binary!.toJson(),
+        if (binary != null) 'binary': binary!,
         if (versionCode != null) 'versionCode': versionCode!,
       };
 }
@@ -3501,7 +3501,7 @@ class ApksAddExternallyHostedRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (externallyHostedApk != null)
-          'externallyHostedApk': externallyHostedApk!.toJson(),
+          'externallyHostedApk': externallyHostedApk!,
       };
 }
 
@@ -3524,7 +3524,7 @@ class ApksAddExternallyHostedResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (externallyHostedApk != null)
-          'externallyHostedApk': externallyHostedApk!.toJson(),
+          'externallyHostedApk': externallyHostedApk!,
       };
 }
 
@@ -3553,7 +3553,7 @@ class ApksListResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (apks != null) 'apks': apks!.map((value) => value.toJson()).toList(),
+        if (apks != null) 'apks': apks!,
         if (kind != null) 'kind': kind!,
       };
 }
@@ -3706,8 +3706,7 @@ class BundlesListResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bundles != null)
-          'bundles': bundles!.map((value) => value.toJson()).toList(),
+        if (bundles != null) 'bundles': bundles!,
         if (kind != null) 'kind': kind!,
       };
 }
@@ -3738,9 +3737,8 @@ class Comment {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (developerComment != null)
-          'developerComment': developerComment!.toJson(),
-        if (userComment != null) 'userComment': userComment!.toJson(),
+        if (developerComment != null) 'developerComment': developerComment!,
+        if (userComment != null) 'userComment': userComment!,
       };
 }
 
@@ -3821,8 +3819,7 @@ class DeobfuscationFilesUploadResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (deobfuscationFile != null)
-          'deobfuscationFile': deobfuscationFile!.toJson(),
+        if (deobfuscationFile != null) 'deobfuscationFile': deobfuscationFile!,
       };
 }
 
@@ -3849,7 +3846,7 @@ class DeveloperComment {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (lastModified != null) 'lastModified': lastModified!.toJson(),
+        if (lastModified != null) 'lastModified': lastModified!,
         if (text != null) 'text': text!,
       };
 }
@@ -4051,7 +4048,7 @@ class ExpansionFilesUploadResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (expansionFile != null) 'expansionFile': expansionFile!.toJson(),
+        if (expansionFile != null) 'expansionFile': expansionFile!,
       };
 }
 
@@ -4201,9 +4198,7 @@ class ExternallyHostedApk {
         if (nativeCodes != null) 'nativeCodes': nativeCodes!,
         if (packageName != null) 'packageName': packageName!,
         if (usesFeatures != null) 'usesFeatures': usesFeatures!,
-        if (usesPermissions != null)
-          'usesPermissions':
-              usesPermissions!.map((value) => value.toJson()).toList(),
+        if (usesPermissions != null) 'usesPermissions': usesPermissions!,
         if (versionCode != null) 'versionCode': versionCode!,
         if (versionName != null) 'versionName': versionName!,
       };
@@ -4270,8 +4265,7 @@ class ImagesDeleteAllResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (deleted != null)
-          'deleted': deleted!.map((value) => value.toJson()).toList(),
+        if (deleted != null) 'deleted': deleted!,
       };
 }
 
@@ -4295,8 +4289,7 @@ class ImagesListResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (images != null)
-          'images': images!.map((value) => value.toJson()).toList(),
+        if (images != null) 'images': images!,
       };
 }
 
@@ -4318,7 +4311,7 @@ class ImagesUploadResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (image != null) 'image': image!.toJson(),
+        if (image != null) 'image': image!,
       };
 }
 
@@ -4453,15 +4446,11 @@ class InAppProduct {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (defaultLanguage != null) 'defaultLanguage': defaultLanguage!,
-        if (defaultPrice != null) 'defaultPrice': defaultPrice!.toJson(),
+        if (defaultPrice != null) 'defaultPrice': defaultPrice!,
         if (gracePeriod != null) 'gracePeriod': gracePeriod!,
-        if (listings != null)
-          'listings':
-              listings!.map((key, item) => core.MapEntry(key, item.toJson())),
+        if (listings != null) 'listings': listings!,
         if (packageName != null) 'packageName': packageName!,
-        if (prices != null)
-          'prices':
-              prices!.map((key, item) => core.MapEntry(key, item.toJson())),
+        if (prices != null) 'prices': prices!,
         if (purchaseType != null) 'purchaseType': purchaseType!,
         if (sku != null) 'sku': sku!,
         if (status != null) 'status': status!,
@@ -4550,12 +4539,10 @@ class InappproductsListResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (inappproduct != null)
-          'inappproduct': inappproduct!.map((value) => value.toJson()).toList(),
+        if (inappproduct != null) 'inappproduct': inappproduct!,
         if (kind != null) 'kind': kind!,
-        if (pageInfo != null) 'pageInfo': pageInfo!.toJson(),
-        if (tokenPagination != null)
-          'tokenPagination': tokenPagination!.toJson(),
+        if (pageInfo != null) 'pageInfo': pageInfo!,
+        if (tokenPagination != null) 'tokenPagination': tokenPagination!,
       };
 }
 
@@ -4745,8 +4732,7 @@ class ListingsListResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
-        if (listings != null)
-          'listings': listings!.map((value) => value.toJson()).toList(),
+        if (listings != null) 'listings': listings!,
       };
 }
 
@@ -5063,8 +5049,7 @@ class Review {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (authorName != null) 'authorName': authorName!,
-        if (comments != null)
-          'comments': comments!.map((value) => value.toJson()).toList(),
+        if (comments != null) 'comments': comments!,
         if (reviewId != null) 'reviewId': reviewId!,
       };
 }
@@ -5094,7 +5079,7 @@ class ReviewReplyResult {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (lastEdited != null) 'lastEdited': lastEdited!.toJson(),
+        if (lastEdited != null) 'lastEdited': lastEdited!,
         if (replyText != null) 'replyText': replyText!,
       };
 }
@@ -5135,11 +5120,9 @@ class ReviewsListResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (pageInfo != null) 'pageInfo': pageInfo!.toJson(),
-        if (reviews != null)
-          'reviews': reviews!.map((value) => value.toJson()).toList(),
-        if (tokenPagination != null)
-          'tokenPagination': tokenPagination!.toJson(),
+        if (pageInfo != null) 'pageInfo': pageInfo!,
+        if (reviews != null) 'reviews': reviews!,
+        if (tokenPagination != null) 'tokenPagination': tokenPagination!,
       };
 }
 
@@ -5185,7 +5168,7 @@ class ReviewsReplyResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (result != null) 'result': result!.toJson(),
+        if (result != null) 'result': result!,
       };
 }
 
@@ -5302,7 +5285,7 @@ class SubscriptionPriceChange {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (newPrice != null) 'newPrice': newPrice!.toJson(),
+        if (newPrice != null) 'newPrice': newPrice!,
         if (state != null) 'state': state!,
       };
 }
@@ -5624,7 +5607,7 @@ class SubscriptionPurchase {
           'autoResumeTimeMillis': autoResumeTimeMillis!,
         if (cancelReason != null) 'cancelReason': cancelReason!,
         if (cancelSurveyResult != null)
-          'cancelSurveyResult': cancelSurveyResult!.toJson(),
+          'cancelSurveyResult': cancelSurveyResult!,
         if (countryCode != null) 'countryCode': countryCode!,
         if (developerPayload != null) 'developerPayload': developerPayload!,
         if (emailAddress != null) 'emailAddress': emailAddress!,
@@ -5633,7 +5616,7 @@ class SubscriptionPurchase {
         if (familyName != null) 'familyName': familyName!,
         if (givenName != null) 'givenName': givenName!,
         if (introductoryPriceInfo != null)
-          'introductoryPriceInfo': introductoryPriceInfo!.toJson(),
+          'introductoryPriceInfo': introductoryPriceInfo!,
         if (kind != null) 'kind': kind!,
         if (linkedPurchaseToken != null)
           'linkedPurchaseToken': linkedPurchaseToken!,
@@ -5644,7 +5627,7 @@ class SubscriptionPurchase {
         if (orderId != null) 'orderId': orderId!,
         if (paymentState != null) 'paymentState': paymentState!,
         if (priceAmountMicros != null) 'priceAmountMicros': priceAmountMicros!,
-        if (priceChange != null) 'priceChange': priceChange!.toJson(),
+        if (priceChange != null) 'priceChange': priceChange!,
         if (priceCurrencyCode != null) 'priceCurrencyCode': priceCurrencyCode!,
         if (profileId != null) 'profileId': profileId!,
         if (profileName != null) 'profileName': profileName!,
@@ -5696,7 +5679,7 @@ class SubscriptionPurchasesDeferRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (deferralInfo != null) 'deferralInfo': deferralInfo!.toJson(),
+        if (deferralInfo != null) 'deferralInfo': deferralInfo!,
       };
 }
 
@@ -5742,8 +5725,7 @@ class SystemApksListResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (variants != null)
-          'variants': variants!.map((value) => value.toJson()).toList(),
+        if (variants != null) 'variants': variants!,
       };
 }
 
@@ -5873,8 +5855,7 @@ class Track {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (releases != null)
-          'releases': releases!.map((value) => value.toJson()).toList(),
+        if (releases != null) 'releases': releases!,
         if (track != null) 'track': track!,
       };
 }
@@ -5966,13 +5947,11 @@ class TrackRelease {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (countryTargeting != null)
-          'countryTargeting': countryTargeting!.toJson(),
+        if (countryTargeting != null) 'countryTargeting': countryTargeting!,
         if (inAppUpdatePriority != null)
           'inAppUpdatePriority': inAppUpdatePriority!,
         if (name != null) 'name': name!,
-        if (releaseNotes != null)
-          'releaseNotes': releaseNotes!.map((value) => value.toJson()).toList(),
+        if (releaseNotes != null) 'releaseNotes': releaseNotes!,
         if (status != null) 'status': status!,
         if (userFraction != null) 'userFraction': userFraction!,
         if (versionCodes != null) 'versionCodes': versionCodes!,
@@ -6005,8 +5984,7 @@ class TracksListResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
-        if (tracks != null)
-          'tracks': tracks!.map((value) => value.toJson()).toList(),
+        if (tracks != null) 'tracks': tracks!,
       };
 }
 
@@ -6128,8 +6106,8 @@ class UserComment {
         if (appVersionCode != null) 'appVersionCode': appVersionCode!,
         if (appVersionName != null) 'appVersionName': appVersionName!,
         if (device != null) 'device': device!,
-        if (deviceMetadata != null) 'deviceMetadata': deviceMetadata!.toJson(),
-        if (lastModified != null) 'lastModified': lastModified!.toJson(),
+        if (deviceMetadata != null) 'deviceMetadata': deviceMetadata!,
+        if (lastModified != null) 'lastModified': lastModified!,
         if (originalText != null) 'originalText': originalText!,
         if (reviewerLanguage != null) 'reviewerLanguage': reviewerLanguage!,
         if (starRating != null) 'starRating': starRating!,
@@ -6195,7 +6173,7 @@ class Variant {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (deviceSpec != null) 'deviceSpec': deviceSpec!.toJson(),
+        if (deviceSpec != null) 'deviceSpec': deviceSpec!,
         if (variantId != null) 'variantId': variantId!,
       };
 }
@@ -6315,11 +6293,8 @@ class VoidedPurchasesListResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (pageInfo != null) 'pageInfo': pageInfo!.toJson(),
-        if (tokenPagination != null)
-          'tokenPagination': tokenPagination!.toJson(),
-        if (voidedPurchases != null)
-          'voidedPurchases':
-              voidedPurchases!.map((value) => value.toJson()).toList(),
+        if (pageInfo != null) 'pageInfo': pageInfo!,
+        if (tokenPagination != null) 'tokenPagination': tokenPagination!,
+        if (voidedPurchases != null) 'voidedPurchases': voidedPurchases!,
       };
 }

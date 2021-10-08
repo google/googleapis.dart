@@ -199,7 +199,7 @@ class ProjectsLocationsInstancesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -249,7 +249,7 @@ class ProjectsLocationsInstancesResource {
     core.String? instanceId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (instanceId != null) 'instanceId': [instanceId],
       if ($fields != null) 'fields': [$fields],
@@ -437,7 +437,7 @@ class ProjectsLocationsInstancesResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -484,7 +484,7 @@ class ProjectsLocationsInstancesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -541,7 +541,7 @@ class ProjectsLocationsOperationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -759,7 +759,7 @@ class DailyCycle {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (duration != null) 'duration': duration!,
-        if (startTime != null) 'startTime': startTime!.toJson(),
+        if (startTime != null) 'startTime': startTime!,
       };
 }
 
@@ -858,9 +858,9 @@ class DenyMaintenancePeriod {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (endDate != null) 'endDate': endDate!.toJson(),
-        if (startDate != null) 'startDate': startDate!.toJson(),
-        if (time != null) 'time': time!.toJson(),
+        if (endDate != null) 'endDate': endDate!,
+        if (startDate != null) 'startDate': startDate!,
+        if (time != null) 'time': time!,
       };
 }
 
@@ -903,9 +903,7 @@ class GoogleCloudMemcacheV1LocationMetadata {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (availableZones != null)
-          'availableZones': availableZones!
-              .map((key, item) => core.MapEntry(key, item.toJson())),
+        if (availableZones != null) 'availableZones': availableZones!,
       };
 }
 
@@ -1228,18 +1226,16 @@ class GoogleCloudSaasacceleratorManagementProvidersV1Instance {
         if (maintenancePolicyNames != null)
           'maintenancePolicyNames': maintenancePolicyNames!,
         if (maintenanceSchedules != null)
-          'maintenanceSchedules': maintenanceSchedules!
-              .map((key, item) => core.MapEntry(key, item.toJson())),
+          'maintenanceSchedules': maintenanceSchedules!,
         if (maintenanceSettings != null)
-          'maintenanceSettings': maintenanceSettings!.toJson(),
+          'maintenanceSettings': maintenanceSettings!,
         if (name != null) 'name': name!,
         if (producerMetadata != null) 'producerMetadata': producerMetadata!,
         if (provisionedResources != null)
-          'provisionedResources':
-              provisionedResources!.map((value) => value.toJson()).toList(),
+          'provisionedResources': provisionedResources!,
         if (slmInstanceTemplate != null)
           'slmInstanceTemplate': slmInstanceTemplate!,
-        if (sloMetadata != null) 'sloMetadata': sloMetadata!.toJson(),
+        if (sloMetadata != null) 'sloMetadata': sloMetadata!,
         if (softwareVersions != null) 'softwareVersions': softwareVersions!,
         if (state != null) 'state': state!,
         if (tenantProjectId != null) 'tenantProjectId': tenantProjectId!,
@@ -1380,8 +1376,7 @@ class GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings {
         if (exclude != null) 'exclude': exclude!,
         if (isRollback != null) 'isRollback': isRollback!,
         if (maintenancePolicies != null)
-          'maintenancePolicies': maintenancePolicies!
-              .map((key, item) => core.MapEntry(key, item.toJson())),
+          'maintenancePolicies': maintenancePolicies!,
       };
 }
 
@@ -1445,12 +1440,10 @@ class GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (exclusions != null)
-          'exclusions': exclusions!.map((value) => value.toJson()).toList(),
+        if (exclusions != null) 'exclusions': exclusions!,
         if (location != null) 'location': location!,
         if (nodeId != null) 'nodeId': nodeId!,
-        if (perSliEligibility != null)
-          'perSliEligibility': perSliEligibility!.toJson(),
+        if (perSliEligibility != null) 'perSliEligibility': perSliEligibility!,
       };
 }
 
@@ -1494,9 +1487,7 @@ class GoogleCloudSaasacceleratorManagementProvidersV1PerSliSloEligibility {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (eligibilities != null)
-          'eligibilities': eligibilities!
-              .map((key, item) => core.MapEntry(key, item.toJson())),
+        if (eligibilities != null) 'eligibilities': eligibilities!,
       };
 }
 
@@ -1712,12 +1703,9 @@ class GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (exclusions != null)
-          'exclusions': exclusions!.map((value) => value.toJson()).toList(),
-        if (nodes != null)
-          'nodes': nodes!.map((value) => value.toJson()).toList(),
-        if (perSliEligibility != null)
-          'perSliEligibility': perSliEligibility!.toJson(),
+        if (exclusions != null) 'exclusions': exclusions!,
+        if (nodes != null) 'nodes': nodes!,
+        if (perSliEligibility != null) 'perSliEligibility': perSliEligibility!,
         if (tier != null) 'tier': tier!,
       };
 }
@@ -1925,20 +1913,16 @@ class Instance {
         if (createTime != null) 'createTime': createTime!,
         if (discoveryEndpoint != null) 'discoveryEndpoint': discoveryEndpoint!,
         if (displayName != null) 'displayName': displayName!,
-        if (instanceMessages != null)
-          'instanceMessages':
-              instanceMessages!.map((value) => value.toJson()).toList(),
+        if (instanceMessages != null) 'instanceMessages': instanceMessages!,
         if (labels != null) 'labels': labels!,
         if (memcacheFullVersion != null)
           'memcacheFullVersion': memcacheFullVersion!,
-        if (memcacheNodes != null)
-          'memcacheNodes':
-              memcacheNodes!.map((value) => value.toJson()).toList(),
+        if (memcacheNodes != null) 'memcacheNodes': memcacheNodes!,
         if (memcacheVersion != null) 'memcacheVersion': memcacheVersion!,
         if (name != null) 'name': name!,
-        if (nodeConfig != null) 'nodeConfig': nodeConfig!.toJson(),
+        if (nodeConfig != null) 'nodeConfig': nodeConfig!,
         if (nodeCount != null) 'nodeCount': nodeCount!,
-        if (parameters != null) 'parameters': parameters!.toJson(),
+        if (parameters != null) 'parameters': parameters!,
         if (state != null) 'state': state!,
         if (updateTime != null) 'updateTime': updateTime!,
         if (zones != null) 'zones': zones!,
@@ -2016,8 +2000,7 @@ class ListInstancesResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (instances != null)
-          'instances': instances!.map((value) => value.toJson()).toList(),
+        if (instances != null) 'instances': instances!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (unreachable != null) 'unreachable': unreachable!,
       };
@@ -2050,8 +2033,7 @@ class ListLocationsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (locations != null)
-          'locations': locations!.map((value) => value.toJson()).toList(),
+        if (locations != null) 'locations': locations!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -2084,8 +2066,7 @@ class ListOperationsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (operations != null)
-          'operations': operations!.map((value) => value.toJson()).toList(),
+        if (operations != null) 'operations': operations!,
       };
 }
 
@@ -2188,9 +2169,7 @@ class LocationMetadata {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (availableZones != null)
-          'availableZones': availableZones!
-              .map((key, item) => core.MapEntry(key, item.toJson())),
+        if (availableZones != null) 'availableZones': availableZones!,
       };
 }
 
@@ -2289,7 +2268,7 @@ class MaintenancePolicy {
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
         if (state != null) 'state': state!,
-        if (updatePolicy != null) 'updatePolicy': updatePolicy!.toJson(),
+        if (updatePolicy != null) 'updatePolicy': updatePolicy!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
 }
@@ -2320,8 +2299,8 @@ class MaintenanceWindow {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dailyCycle != null) 'dailyCycle': dailyCycle!.toJson(),
-        if (weeklyCycle != null) 'weeklyCycle': weeklyCycle!.toJson(),
+        if (dailyCycle != null) 'dailyCycle': dailyCycle!,
+        if (weeklyCycle != null) 'weeklyCycle': weeklyCycle!,
       };
 }
 
@@ -2429,7 +2408,7 @@ class Node {
   core.Map<core.String, core.dynamic> toJson() => {
         if (host != null) 'host': host!,
         if (nodeId != null) 'nodeId': nodeId!,
-        if (parameters != null) 'parameters': parameters!.toJson(),
+        if (parameters != null) 'parameters': parameters!,
         if (port != null) 'port': port!,
         if (state != null) 'state': state!,
         if (zone != null) 'zone': zone!,
@@ -2538,7 +2517,7 @@ class Operation {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (done != null) 'done': done!,
-        if (error != null) 'error': error!.toJson(),
+        if (error != null) 'error': error!,
         if (metadata != null) 'metadata': metadata!,
         if (name != null) 'name': name!,
         if (response != null) 'response': response!,
@@ -2673,7 +2652,7 @@ class Schedule {
   core.Map<core.String, core.dynamic> toJson() => {
         if (day != null) 'day': day!,
         if (duration != null) 'duration': duration!,
-        if (startTime != null) 'startTime': startTime!.toJson(),
+        if (startTime != null) 'startTime': startTime!,
       };
 }
 
@@ -2810,7 +2789,7 @@ class UpdateParametersRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (parameters != null) 'parameters': parameters!.toJson(),
+        if (parameters != null) 'parameters': parameters!,
         if (updateMask != null) 'updateMask': updateMask!,
       };
 }
@@ -2864,9 +2843,8 @@ class UpdatePolicy {
   core.Map<core.String, core.dynamic> toJson() => {
         if (channel != null) 'channel': channel!,
         if (denyMaintenancePeriods != null)
-          'denyMaintenancePeriods':
-              denyMaintenancePeriods!.map((value) => value.toJson()).toList(),
-        if (window != null) 'window': window!.toJson(),
+          'denyMaintenancePeriods': denyMaintenancePeriods!,
+        if (window != null) 'window': window!,
       };
 }
 
@@ -2892,8 +2870,7 @@ class WeeklyCycle {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (schedule != null)
-          'schedule': schedule!.map((value) => value.toJson()).toList(),
+        if (schedule != null) 'schedule': schedule!,
       };
 }
 

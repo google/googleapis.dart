@@ -115,7 +115,7 @@ class ChangesResource {
     core.String? clientOperationId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (clientOperationId != null) 'clientOperationId': [clientOperationId],
       if ($fields != null) 'fields': [$fields],
@@ -528,7 +528,7 @@ class ManagedZonesResource {
     core.String? clientOperationId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (clientOperationId != null) 'clientOperationId': [clientOperationId],
       if ($fields != null) 'fields': [$fields],
@@ -724,7 +724,7 @@ class ManagedZonesResource {
     core.String? clientOperationId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (clientOperationId != null) 'clientOperationId': [clientOperationId],
       if ($fields != null) 'fields': [$fields],
@@ -776,7 +776,7 @@ class ManagedZonesResource {
     core.String? clientOperationId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (clientOperationId != null) 'clientOperationId': [clientOperationId],
       if ($fields != null) 'fields': [$fields],
@@ -830,7 +830,7 @@ class PoliciesResource {
     core.String? clientOperationId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (clientOperationId != null) 'clientOperationId': [clientOperationId],
       if ($fields != null) 'fields': [$fields],
@@ -1020,7 +1020,7 @@ class PoliciesResource {
     core.String? clientOperationId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (clientOperationId != null) 'clientOperationId': [clientOperationId],
       if ($fields != null) 'fields': [$fields],
@@ -1073,7 +1073,7 @@ class PoliciesResource {
     core.String? clientOperationId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (clientOperationId != null) 'clientOperationId': [clientOperationId],
       if ($fields != null) 'fields': [$fields],
@@ -1178,7 +1178,7 @@ class ResourceRecordSetsResource {
     core.String? clientOperationId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (clientOperationId != null) 'clientOperationId': [clientOperationId],
       if ($fields != null) 'fields': [$fields],
@@ -1417,7 +1417,7 @@ class ResourceRecordSetsResource {
     core.String? clientOperationId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (clientOperationId != null) 'clientOperationId': [clientOperationId],
       if ($fields != null) 'fields': [$fields],
@@ -1517,10 +1517,8 @@ class Change {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (additions != null)
-          'additions': additions!.map((value) => value.toJson()).toList(),
-        if (deletions != null)
-          'deletions': deletions!.map((value) => value.toJson()).toList(),
+        if (additions != null) 'additions': additions!,
+        if (deletions != null) 'deletions': deletions!,
         if (id != null) 'id': id!,
         if (isServing != null) 'isServing': isServing!,
         if (kind != null) 'kind': kind!,
@@ -1577,9 +1575,8 @@ class ChangesListResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (changes != null)
-          'changes': changes!.map((value) => value.toJson()).toList(),
-        if (header != null) 'header': header!.toJson(),
+        if (changes != null) 'changes': changes!,
+        if (header != null) 'header': header!,
         if (kind != null) 'kind': kind!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
@@ -1709,8 +1706,7 @@ class DnsKey {
         if (algorithm != null) 'algorithm': algorithm!,
         if (creationTime != null) 'creationTime': creationTime!,
         if (description != null) 'description': description!,
-        if (digests != null)
-          'digests': digests!.map((value) => value.toJson()).toList(),
+        if (digests != null) 'digests': digests!,
         if (id != null) 'id': id!,
         if (isActive != null) 'isActive': isActive!,
         if (keyLength != null) 'keyLength': keyLength!,
@@ -1859,9 +1855,8 @@ class DnsKeysListResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dnsKeys != null)
-          'dnsKeys': dnsKeys!.map((value) => value.toJson()).toList(),
-        if (header != null) 'header': header!.toJson(),
+        if (dnsKeys != null) 'dnsKeys': dnsKeys!,
+        if (header != null) 'header': header!,
         if (kind != null) 'kind': kind!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
@@ -2035,22 +2030,21 @@ class ManagedZone {
         if (creationTime != null) 'creationTime': creationTime!,
         if (description != null) 'description': description!,
         if (dnsName != null) 'dnsName': dnsName!,
-        if (dnssecConfig != null) 'dnssecConfig': dnssecConfig!.toJson(),
-        if (forwardingConfig != null)
-          'forwardingConfig': forwardingConfig!.toJson(),
+        if (dnssecConfig != null) 'dnssecConfig': dnssecConfig!,
+        if (forwardingConfig != null) 'forwardingConfig': forwardingConfig!,
         if (id != null) 'id': id!,
         if (kind != null) 'kind': kind!,
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
         if (nameServerSet != null) 'nameServerSet': nameServerSet!,
         if (nameServers != null) 'nameServers': nameServers!,
-        if (peeringConfig != null) 'peeringConfig': peeringConfig!.toJson(),
+        if (peeringConfig != null) 'peeringConfig': peeringConfig!,
         if (privateVisibilityConfig != null)
-          'privateVisibilityConfig': privateVisibilityConfig!.toJson(),
+          'privateVisibilityConfig': privateVisibilityConfig!,
         if (reverseLookupConfig != null)
-          'reverseLookupConfig': reverseLookupConfig!.toJson(),
+          'reverseLookupConfig': reverseLookupConfig!,
         if (serviceDirectoryConfig != null)
-          'serviceDirectoryConfig': serviceDirectoryConfig!.toJson(),
+          'serviceDirectoryConfig': serviceDirectoryConfig!,
         if (visibility != null) 'visibility': visibility!,
       };
 }
@@ -2101,9 +2095,7 @@ class ManagedZoneDnsSecConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (defaultKeySpecs != null)
-          'defaultKeySpecs':
-              defaultKeySpecs!.map((value) => value.toJson()).toList(),
+        if (defaultKeySpecs != null) 'defaultKeySpecs': defaultKeySpecs!,
         if (kind != null) 'kind': kind!,
         if (nonExistence != null) 'nonExistence': nonExistence!,
         if (state != null) 'state': state!,
@@ -2138,9 +2130,7 @@ class ManagedZoneForwardingConfig {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
-        if (targetNameServers != null)
-          'targetNameServers':
-              targetNameServers!.map((value) => value.toJson()).toList(),
+        if (targetNameServers != null) 'targetNameServers': targetNameServers!,
       };
 }
 
@@ -2233,11 +2223,10 @@ class ManagedZoneOperationsListResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (header != null) 'header': header!.toJson(),
+        if (header != null) 'header': header!,
         if (kind != null) 'kind': kind!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (operations != null)
-          'operations': operations!.map((value) => value.toJson()).toList(),
+        if (operations != null) 'operations': operations!,
       };
 }
 
@@ -2263,7 +2252,7 @@ class ManagedZonePeeringConfig {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
-        if (targetNetwork != null) 'targetNetwork': targetNetwork!.toJson(),
+        if (targetNetwork != null) 'targetNetwork': targetNetwork!,
       };
 }
 
@@ -2332,8 +2321,7 @@ class ManagedZonePrivateVisibilityConfig {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
-        if (networks != null)
-          'networks': networks!.map((value) => value.toJson()).toList(),
+        if (networks != null) 'networks': networks!,
       };
 }
 
@@ -2405,7 +2393,7 @@ class ManagedZoneServiceDirectoryConfig {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
-        if (namespace != null) 'namespace': namespace!.toJson(),
+        if (namespace != null) 'namespace': namespace!,
       };
 }
 
@@ -2493,10 +2481,9 @@ class ManagedZonesListResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (header != null) 'header': header!.toJson(),
+        if (header != null) 'header': header!,
         if (kind != null) 'kind': kind!,
-        if (managedZones != null)
-          'managedZones': managedZones!.map((value) => value.toJson()).toList(),
+        if (managedZones != null) 'managedZones': managedZones!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -2583,14 +2570,14 @@ class Operation {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dnsKeyContext != null) 'dnsKeyContext': dnsKeyContext!.toJson(),
+        if (dnsKeyContext != null) 'dnsKeyContext': dnsKeyContext!,
         if (id != null) 'id': id!,
         if (kind != null) 'kind': kind!,
         if (startTime != null) 'startTime': startTime!,
         if (status != null) 'status': status!,
         if (type != null) 'type': type!,
         if (user != null) 'user': user!,
-        if (zoneContext != null) 'zoneContext': zoneContext!.toJson(),
+        if (zoneContext != null) 'zoneContext': zoneContext!,
       };
 }
 
@@ -2619,8 +2606,8 @@ class OperationDnsKeyContext {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (newValue != null) 'newValue': newValue!.toJson(),
-        if (oldValue != null) 'oldValue': oldValue!.toJson(),
+        if (newValue != null) 'newValue': newValue!,
+        if (oldValue != null) 'oldValue': oldValue!,
       };
 }
 
@@ -2649,8 +2636,8 @@ class OperationManagedZoneContext {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (newValue != null) 'newValue': newValue!.toJson(),
-        if (oldValue != null) 'oldValue': oldValue!.toJson(),
+        if (newValue != null) 'newValue': newValue!,
+        if (oldValue != null) 'oldValue': oldValue!,
       };
 }
 
@@ -2700,11 +2687,10 @@ class PoliciesListResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (header != null) 'header': header!.toJson(),
+        if (header != null) 'header': header!,
         if (kind != null) 'kind': kind!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (policies != null)
-          'policies': policies!.map((value) => value.toJson()).toList(),
+        if (policies != null) 'policies': policies!,
       };
 }
 
@@ -2730,8 +2716,8 @@ class PoliciesPatchResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (header != null) 'header': header!.toJson(),
-        if (policy != null) 'policy': policy!.toJson(),
+        if (header != null) 'header': header!,
+        if (policy != null) 'policy': policy!,
       };
 }
 
@@ -2757,8 +2743,8 @@ class PoliciesUpdateResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (header != null) 'header': header!.toJson(),
-        if (policy != null) 'policy': policy!.toJson(),
+        if (header != null) 'header': header!,
+        if (policy != null) 'policy': policy!,
       };
 }
 
@@ -2841,7 +2827,7 @@ class Policy {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (alternativeNameServerConfig != null)
-          'alternativeNameServerConfig': alternativeNameServerConfig!.toJson(),
+          'alternativeNameServerConfig': alternativeNameServerConfig!,
         if (description != null) 'description': description!,
         if (enableInboundForwarding != null)
           'enableInboundForwarding': enableInboundForwarding!,
@@ -2849,8 +2835,7 @@ class Policy {
         if (id != null) 'id': id!,
         if (kind != null) 'kind': kind!,
         if (name != null) 'name': name!,
-        if (networks != null)
-          'networks': networks!.map((value) => value.toJson()).toList(),
+        if (networks != null) 'networks': networks!,
       };
 }
 
@@ -2885,9 +2870,7 @@ class PolicyAlternativeNameServerConfig {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
-        if (targetNameServers != null)
-          'targetNameServers':
-              targetNameServers!.map((value) => value.toJson()).toList(),
+        if (targetNameServers != null) 'targetNameServers': targetNameServers!,
       };
 }
 
@@ -3001,7 +2984,7 @@ class Project {
         if (id != null) 'id': id!,
         if (kind != null) 'kind': kind!,
         if (number != null) 'number': number!,
-        if (quota != null) 'quota': quota!.toJson(),
+        if (quota != null) 'quota': quota!,
       };
 }
 
@@ -3152,8 +3135,7 @@ class Quota {
         if (totalRrdataSizePerChange != null)
           'totalRrdataSizePerChange': totalRrdataSizePerChange!,
         if (whitelistedKeySpecs != null)
-          'whitelistedKeySpecs':
-              whitelistedKeySpecs!.map((value) => value.toJson()).toList(),
+          'whitelistedKeySpecs': whitelistedKeySpecs!,
       };
 }
 
@@ -3265,11 +3247,10 @@ class ResourceRecordSetsListResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (header != null) 'header': header!.toJson(),
+        if (header != null) 'header': header!,
         if (kind != null) 'kind': kind!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (rrsets != null)
-          'rrsets': rrsets!.map((value) => value.toJson()).toList(),
+        if (rrsets != null) 'rrsets': rrsets!,
       };
 }
 

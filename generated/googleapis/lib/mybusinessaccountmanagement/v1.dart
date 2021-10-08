@@ -94,7 +94,7 @@ class AccountsResource {
     Account request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -245,7 +245,7 @@ class AccountsResource {
     core.bool? validateOnly,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
@@ -299,7 +299,7 @@ class AccountsAdminsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -419,7 +419,7 @@ class AccountsAdminsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -468,7 +468,7 @@ class AccountsInvitationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -509,7 +509,7 @@ class AccountsInvitationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -605,7 +605,7 @@ class LocationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -657,7 +657,7 @@ class LocationsAdminsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -779,7 +779,7 @@ class LocationsAdminsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -956,8 +956,7 @@ class Account {
         if (accountName != null) 'accountName': accountName!,
         if (accountNumber != null) 'accountNumber': accountNumber!,
         if (name != null) 'name': name!,
-        if (organizationInfo != null)
-          'organizationInfo': organizationInfo!.toJson(),
+        if (organizationInfo != null) 'organizationInfo': organizationInfo!,
         if (permissionLevel != null) 'permissionLevel': permissionLevel!,
         if (primaryOwner != null) 'primaryOwner': primaryOwner!,
         if (role != null) 'role': role!,
@@ -1114,8 +1113,8 @@ class Invitation {
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
         if (role != null) 'role': role!,
-        if (targetAccount != null) 'targetAccount': targetAccount!.toJson(),
-        if (targetLocation != null) 'targetLocation': targetLocation!.toJson(),
+        if (targetAccount != null) 'targetAccount': targetAccount!,
+        if (targetLocation != null) 'targetLocation': targetLocation!,
         if (targetType != null) 'targetType': targetType!,
       };
 }
@@ -1140,9 +1139,7 @@ class ListAccountAdminsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (accountAdmins != null)
-          'accountAdmins':
-              accountAdmins!.map((value) => value.toJson()).toList(),
+        if (accountAdmins != null) 'accountAdmins': accountAdmins!,
       };
 }
 
@@ -1180,8 +1177,7 @@ class ListAccountsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (accounts != null)
-          'accounts': accounts!.map((value) => value.toJson()).toList(),
+        if (accounts != null) 'accounts': accounts!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -1208,8 +1204,7 @@ class ListInvitationsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (invitations != null)
-          'invitations': invitations!.map((value) => value.toJson()).toList(),
+        if (invitations != null) 'invitations': invitations!,
       };
 }
 
@@ -1233,8 +1228,7 @@ class ListLocationAdminsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (admins != null)
-          'admins': admins!.map((value) => value.toJson()).toList(),
+        if (admins != null) 'admins': admins!,
       };
 }
 
@@ -1276,7 +1270,7 @@ class OrganizationInfo {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (address != null) 'address': address!.toJson(),
+        if (address != null) 'address': address!,
         if (phoneNumber != null) 'phoneNumber': phoneNumber!,
         if (registeredDomain != null) 'registeredDomain': registeredDomain!,
       };

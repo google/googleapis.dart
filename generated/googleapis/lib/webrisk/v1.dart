@@ -165,7 +165,7 @@ class ProjectsOperationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -358,7 +358,7 @@ class ProjectsSubmissionsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -416,7 +416,7 @@ class ProjectsUrisResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -657,12 +657,12 @@ class GoogleCloudWebriskV1ComputeThreatListDiffResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (additions != null) 'additions': additions!.toJson(),
-        if (checksum != null) 'checksum': checksum!.toJson(),
+        if (additions != null) 'additions': additions!,
+        if (checksum != null) 'checksum': checksum!,
         if (newVersionToken != null) 'newVersionToken': newVersionToken!,
         if (recommendedNextDiff != null)
           'recommendedNextDiff': recommendedNextDiff!,
-        if (removals != null) 'removals': removals!.toJson(),
+        if (removals != null) 'removals': removals!,
         if (responseType != null) 'responseType': responseType!,
       };
 }
@@ -862,8 +862,7 @@ class GoogleCloudWebriskV1SearchHashesResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (negativeExpireTime != null)
           'negativeExpireTime': negativeExpireTime!,
-        if (threats != null)
-          'threats': threats!.map((value) => value.toJson()).toList(),
+        if (threats != null) 'threats': threats!,
       };
 }
 
@@ -937,7 +936,7 @@ class GoogleCloudWebriskV1SearchUrisResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (threat != null) 'threat': threat!.toJson(),
+        if (threat != null) 'threat': threat!,
       };
 }
 
@@ -1071,7 +1070,7 @@ class GoogleCloudWebriskV1SubmitUriRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (submission != null) 'submission': submission!.toJson(),
+        if (submission != null) 'submission': submission!,
       };
 }
 
@@ -1111,9 +1110,8 @@ class GoogleCloudWebriskV1ThreatEntryAdditions {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (rawHashes != null)
-          'rawHashes': rawHashes!.map((value) => value.toJson()).toList(),
-        if (riceHashes != null) 'riceHashes': riceHashes!.toJson(),
+        if (rawHashes != null) 'rawHashes': rawHashes!,
+        if (riceHashes != null) 'riceHashes': riceHashes!,
       };
 }
 
@@ -1148,8 +1146,8 @@ class GoogleCloudWebriskV1ThreatEntryRemovals {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (rawIndices != null) 'rawIndices': rawIndices!.toJson(),
-        if (riceIndices != null) 'riceIndices': riceIndices!.toJson(),
+        if (rawIndices != null) 'rawIndices': rawIndices!,
+        if (riceIndices != null) 'riceIndices': riceIndices!,
       };
 }
 
@@ -1184,8 +1182,7 @@ class GoogleLongrunningListOperationsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (operations != null)
-          'operations': operations!.map((value) => value.toJson()).toList(),
+        if (operations != null) 'operations': operations!,
       };
 }
 
@@ -1258,7 +1255,7 @@ class GoogleLongrunningOperation {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (done != null) 'done': done!,
-        if (error != null) 'error': error!.toJson(),
+        if (error != null) 'error': error!,
         if (metadata != null) 'metadata': metadata!,
         if (name != null) 'name': name!,
         if (response != null) 'response': response!,

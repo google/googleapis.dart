@@ -109,7 +109,7 @@ class OperationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -313,7 +313,7 @@ class ServicesResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -355,7 +355,7 @@ class ServicesResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -398,7 +398,7 @@ class ServicesResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -447,7 +447,7 @@ class ServicesResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -494,7 +494,7 @@ class ServicesResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -551,7 +551,7 @@ class ServicesConnectionsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -596,7 +596,7 @@ class ServicesConnectionsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -699,7 +699,7 @@ class ServicesConnectionsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (force != null) 'force': ['${force}'],
       if (updateMask != null) 'updateMask': [updateMask],
@@ -751,7 +751,7 @@ class ServicesDnsRecordSetsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -794,7 +794,7 @@ class ServicesDnsRecordSetsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -838,7 +838,7 @@ class ServicesDnsRecordSetsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -889,7 +889,7 @@ class ServicesDnsZonesResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -933,7 +933,7 @@ class ServicesDnsZonesResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1058,7 +1058,7 @@ class ServicesProjectsGlobalNetworksResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1118,7 +1118,7 @@ class ServicesProjectsGlobalNetworksPeeredDnsDomainsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1259,7 +1259,7 @@ class ServicesRolesResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1323,7 +1323,7 @@ class AddDnsRecordSetRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (consumerNetwork != null) 'consumerNetwork': consumerNetwork!,
-        if (dnsRecordSet != null) 'dnsRecordSet': dnsRecordSet!.toJson(),
+        if (dnsRecordSet != null) 'dnsRecordSet': dnsRecordSet!,
         if (zone != null) 'zone': zone!,
       };
 }
@@ -1411,9 +1411,9 @@ class AddDnsZoneResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (consumerPeeringZone != null)
-          'consumerPeeringZone': consumerPeeringZone!.toJson(),
+          'consumerPeeringZone': consumerPeeringZone!,
         if (producerPrivateZone != null)
-          'producerPrivateZone': producerPrivateZone!.toJson(),
+          'producerPrivateZone': producerPrivateZone!,
       };
 }
 
@@ -1457,9 +1457,7 @@ class AddRolesRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (consumerNetwork != null) 'consumerNetwork': consumerNetwork!,
-        if (policyBinding != null)
-          'policyBinding':
-              policyBinding!.map((value) => value.toJson()).toList(),
+        if (policyBinding != null) 'policyBinding': policyBinding!,
       };
 }
 
@@ -1485,9 +1483,7 @@ class AddRolesResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (policyBinding != null)
-          'policyBinding':
-              policyBinding!.map((value) => value.toJson()).toList(),
+        if (policyBinding != null) 'policyBinding': policyBinding!,
       };
 }
 
@@ -1652,8 +1648,7 @@ class AddSubnetworkRequest {
         if (requestedAddress != null) 'requestedAddress': requestedAddress!,
         if (requestedRanges != null) 'requestedRanges': requestedRanges!,
         if (secondaryIpRangeSpecs != null)
-          'secondaryIpRangeSpecs':
-              secondaryIpRangeSpecs!.map((value) => value.toJson()).toList(),
+          'secondaryIpRangeSpecs': secondaryIpRangeSpecs!,
         if (subnetwork != null) 'subnetwork': subnetwork!,
         if (subnetworkUsers != null) 'subnetworkUsers': subnetworkUsers!,
       };
@@ -1756,14 +1751,11 @@ class Api {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (methods != null)
-          'methods': methods!.map((value) => value.toJson()).toList(),
-        if (mixins != null)
-          'mixins': mixins!.map((value) => value.toJson()).toList(),
+        if (methods != null) 'methods': methods!,
+        if (mixins != null) 'mixins': mixins!,
         if (name != null) 'name': name!,
-        if (options != null)
-          'options': options!.map((value) => value.toJson()).toList(),
-        if (sourceContext != null) 'sourceContext': sourceContext!.toJson(),
+        if (options != null) 'options': options!,
+        if (sourceContext != null) 'sourceContext': sourceContext!,
         if (syntax != null) 'syntax': syntax!,
         if (version != null) 'version': version!,
       };
@@ -1868,8 +1860,7 @@ class AuthProvider {
         if (id != null) 'id': id!,
         if (issuer != null) 'issuer': issuer!,
         if (jwksUri != null) 'jwksUri': jwksUri!,
-        if (jwtLocations != null)
-          'jwtLocations': jwtLocations!.map((value) => value.toJson()).toList(),
+        if (jwtLocations != null) 'jwtLocations': jwtLocations!,
       };
 }
 
@@ -1957,10 +1948,8 @@ class Authentication {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (providers != null)
-          'providers': providers!.map((value) => value.toJson()).toList(),
-        if (rules != null)
-          'rules': rules!.map((value) => value.toJson()).toList(),
+        if (providers != null) 'providers': providers!,
+        if (rules != null) 'rules': rules!,
       };
 }
 
@@ -2018,9 +2007,8 @@ class AuthenticationRule {
   core.Map<core.String, core.dynamic> toJson() => {
         if (allowWithoutCredential != null)
           'allowWithoutCredential': allowWithoutCredential!,
-        if (oauth != null) 'oauth': oauth!.toJson(),
-        if (requirements != null)
-          'requirements': requirements!.map((value) => value.toJson()).toList(),
+        if (oauth != null) 'oauth': oauth!,
+        if (requirements != null) 'requirements': requirements!,
         if (selector != null) 'selector': selector!,
       };
 }
@@ -2047,8 +2035,7 @@ class Backend {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (rules != null)
-          'rules': rules!.map((value) => value.toJson()).toList(),
+        if (rules != null) 'rules': rules!,
       };
 }
 
@@ -2227,8 +2214,7 @@ class Billing {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (consumerDestinations != null)
-          'consumerDestinations':
-              consumerDestinations!.map((value) => value.toJson()).toList(),
+          'consumerDestinations': consumerDestinations!,
       };
 }
 
@@ -2482,9 +2468,7 @@ class ConsumerConfig {
           'producerImportSubnetRoutesWithPublicIp':
               producerImportSubnetRoutesWithPublicIp!,
         if (producerNetwork != null) 'producerNetwork': producerNetwork!,
-        if (reservedRanges != null)
-          'reservedRanges':
-              reservedRanges!.map((value) => value.toJson()).toList(),
+        if (reservedRanges != null) 'reservedRanges': reservedRanges!,
         if (vpcScReferenceArchitectureEnabled != null)
           'vpcScReferenceArchitectureEnabled':
               vpcScReferenceArchitectureEnabled!,
@@ -2557,8 +2541,7 @@ class Context {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (rules != null)
-          'rules': rules!.map((value) => value.toJson()).toList(),
+        if (rules != null) 'rules': rules!,
       };
 }
 
@@ -2694,8 +2677,7 @@ class CustomError {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (rules != null)
-          'rules': rules!.map((value) => value.toJson()).toList(),
+        if (rules != null) 'rules': rules!,
         if (types != null) 'types': types!,
       };
 }
@@ -3010,10 +2992,8 @@ class Documentation {
         if (documentationRootUrl != null)
           'documentationRootUrl': documentationRootUrl!,
         if (overview != null) 'overview': overview!,
-        if (pages != null)
-          'pages': pages!.map((value) => value.toJson()).toList(),
-        if (rules != null)
-          'rules': rules!.map((value) => value.toJson()).toList(),
+        if (pages != null) 'pages': pages!,
+        if (rules != null) 'rules': rules!,
         if (serviceRootUrl != null) 'serviceRootUrl': serviceRootUrl!,
         if (summary != null) 'summary': summary!,
       };
@@ -3218,12 +3198,10 @@ class Enum {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (enumvalue != null)
-          'enumvalue': enumvalue!.map((value) => value.toJson()).toList(),
+        if (enumvalue != null) 'enumvalue': enumvalue!,
         if (name != null) 'name': name!,
-        if (options != null)
-          'options': options!.map((value) => value.toJson()).toList(),
-        if (sourceContext != null) 'sourceContext': sourceContext!.toJson(),
+        if (options != null) 'options': options!,
+        if (sourceContext != null) 'sourceContext': sourceContext!,
         if (syntax != null) 'syntax': syntax!,
       };
 }
@@ -3261,8 +3239,7 @@ class EnumValue {
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
         if (number != null) 'number': number!,
-        if (options != null)
-          'options': options!.map((value) => value.toJson()).toList(),
+        if (options != null) 'options': options!,
       };
 }
 
@@ -3382,8 +3359,7 @@ class Field {
         if (name != null) 'name': name!,
         if (number != null) 'number': number!,
         if (oneofIndex != null) 'oneofIndex': oneofIndex!,
-        if (options != null)
-          'options': options!.map((value) => value.toJson()).toList(),
+        if (options != null) 'options': options!,
         if (packed != null) 'packed': packed!,
         if (typeUrl != null) 'typeUrl': typeUrl!,
       };
@@ -3588,8 +3564,7 @@ class Http {
   core.Map<core.String, core.dynamic> toJson() => {
         if (fullyDecodeReservedExpansion != null)
           'fullyDecodeReservedExpansion': fullyDecodeReservedExpansion!,
-        if (rules != null)
-          'rules': rules!.map((value) => value.toJson()).toList(),
+        if (rules != null) 'rules': rules!,
       };
 }
 
@@ -3838,10 +3813,9 @@ class HttpRule {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (additionalBindings != null)
-          'additionalBindings':
-              additionalBindings!.map((value) => value.toJson()).toList(),
+          'additionalBindings': additionalBindings!,
         if (body != null) 'body': body!,
-        if (custom != null) 'custom': custom!.toJson(),
+        if (custom != null) 'custom': custom!,
         if (delete != null) 'delete': delete!,
         if (get != null) 'get': get!,
         if (patch != null) 'patch': patch!,
@@ -3955,8 +3929,7 @@ class ListConnectionsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (connections != null)
-          'connections': connections!.map((value) => value.toJson()).toList(),
+        if (connections != null) 'connections': connections!,
       };
 }
 
@@ -3988,8 +3961,7 @@ class ListOperationsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (operations != null)
-          'operations': operations!.map((value) => value.toJson()).toList(),
+        if (operations != null) 'operations': operations!,
       };
 }
 
@@ -4013,9 +3985,7 @@ class ListPeeredDnsDomainsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (peeredDnsDomains != null)
-          'peeredDnsDomains':
-              peeredDnsDomains!.map((value) => value.toJson()).toList(),
+        if (peeredDnsDomains != null) 'peeredDnsDomains': peeredDnsDomains!,
       };
 }
 
@@ -4077,8 +4047,7 @@ class LogDescriptor {
   core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
         if (displayName != null) 'displayName': displayName!,
-        if (labels != null)
-          'labels': labels!.map((value) => value.toJson()).toList(),
+        if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
       };
 }
@@ -4134,11 +4103,9 @@ class Logging {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (consumerDestinations != null)
-          'consumerDestinations':
-              consumerDestinations!.map((value) => value.toJson()).toList(),
+          'consumerDestinations': consumerDestinations!,
         if (producerDestinations != null)
-          'producerDestinations':
-              producerDestinations!.map((value) => value.toJson()).toList(),
+          'producerDestinations': producerDestinations!,
       };
 }
 
@@ -4244,8 +4211,7 @@ class Method {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
-        if (options != null)
-          'options': options!.map((value) => value.toJson()).toList(),
+        if (options != null) 'options': options!,
         if (requestStreaming != null) 'requestStreaming': requestStreaming!,
         if (requestTypeUrl != null) 'requestTypeUrl': requestTypeUrl!,
         if (responseStreaming != null) 'responseStreaming': responseStreaming!,
@@ -4478,10 +4444,9 @@ class MetricDescriptor {
   core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
         if (displayName != null) 'displayName': displayName!,
-        if (labels != null)
-          'labels': labels!.map((value) => value.toJson()).toList(),
+        if (labels != null) 'labels': labels!,
         if (launchStage != null) 'launchStage': launchStage!,
-        if (metadata != null) 'metadata': metadata!.toJson(),
+        if (metadata != null) 'metadata': metadata!,
         if (metricKind != null) 'metricKind': metricKind!,
         if (monitoredResourceTypes != null)
           'monitoredResourceTypes': monitoredResourceTypes!,
@@ -4797,8 +4762,7 @@ class MonitoredResourceDescriptor {
   core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
         if (displayName != null) 'displayName': displayName!,
-        if (labels != null)
-          'labels': labels!.map((value) => value.toJson()).toList(),
+        if (labels != null) 'labels': labels!,
         if (launchStage != null) 'launchStage': launchStage!,
         if (name != null) 'name': name!,
         if (type != null) 'type': type!,
@@ -4872,11 +4836,9 @@ class Monitoring {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (consumerDestinations != null)
-          'consumerDestinations':
-              consumerDestinations!.map((value) => value.toJson()).toList(),
+          'consumerDestinations': consumerDestinations!,
         if (producerDestinations != null)
-          'producerDestinations':
-              producerDestinations!.map((value) => value.toJson()).toList(),
+          'producerDestinations': producerDestinations!,
       };
 }
 
@@ -5024,7 +4986,7 @@ class Operation {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (done != null) 'done': done!,
-        if (error != null) 'error': error!.toJson(),
+        if (error != null) 'error': error!,
         if (metadata != null) 'metadata': metadata!,
         if (name != null) 'name': name!,
         if (response != null) 'response': response!,
@@ -5122,8 +5084,7 @@ class Page {
   core.Map<core.String, core.dynamic> toJson() => {
         if (content != null) 'content': content!,
         if (name != null) 'name': name!,
-        if (subpages != null)
-          'subpages': subpages!.map((value) => value.toJson()).toList(),
+        if (subpages != null) 'subpages': subpages!,
       };
 }
 
@@ -5263,10 +5224,8 @@ class Quota {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (limits != null)
-          'limits': limits!.map((value) => value.toJson()).toList(),
-        if (metricRules != null)
-          'metricRules': metricRules!.map((value) => value.toJson()).toList(),
+        if (limits != null) 'limits': limits!,
+        if (metricRules != null) 'metricRules': metricRules!,
       };
 }
 
@@ -5527,8 +5486,7 @@ class RangeReservation {
         if (secondaryRangeIpPrefixLengths != null)
           'secondaryRangeIpPrefixLengths': secondaryRangeIpPrefixLengths!,
         if (subnetworkCandidates != null)
-          'subnetworkCandidates':
-              subnetworkCandidates!.map((value) => value.toJson()).toList(),
+          'subnetworkCandidates': subnetworkCandidates!,
       };
 }
 
@@ -5582,7 +5540,7 @@ class RemoveDnsRecordSetRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (consumerNetwork != null) 'consumerNetwork': consumerNetwork!,
-        if (dnsRecordSet != null) 'dnsRecordSet': dnsRecordSet!.toJson(),
+        if (dnsRecordSet != null) 'dnsRecordSet': dnsRecordSet!,
         if (zone != null) 'zone': zone!,
       };
 }
@@ -6097,41 +6055,34 @@ class Service {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (apis != null) 'apis': apis!.map((value) => value.toJson()).toList(),
-        if (authentication != null) 'authentication': authentication!.toJson(),
-        if (backend != null) 'backend': backend!.toJson(),
-        if (billing != null) 'billing': billing!.toJson(),
+        if (apis != null) 'apis': apis!,
+        if (authentication != null) 'authentication': authentication!,
+        if (backend != null) 'backend': backend!,
+        if (billing != null) 'billing': billing!,
         if (configVersion != null) 'configVersion': configVersion!,
-        if (context != null) 'context': context!.toJson(),
-        if (control != null) 'control': control!.toJson(),
-        if (customError != null) 'customError': customError!.toJson(),
-        if (documentation != null) 'documentation': documentation!.toJson(),
-        if (endpoints != null)
-          'endpoints': endpoints!.map((value) => value.toJson()).toList(),
-        if (enums != null)
-          'enums': enums!.map((value) => value.toJson()).toList(),
-        if (http != null) 'http': http!.toJson(),
+        if (context != null) 'context': context!,
+        if (control != null) 'control': control!,
+        if (customError != null) 'customError': customError!,
+        if (documentation != null) 'documentation': documentation!,
+        if (endpoints != null) 'endpoints': endpoints!,
+        if (enums != null) 'enums': enums!,
+        if (http != null) 'http': http!,
         if (id != null) 'id': id!,
-        if (logging != null) 'logging': logging!.toJson(),
-        if (logs != null) 'logs': logs!.map((value) => value.toJson()).toList(),
-        if (metrics != null)
-          'metrics': metrics!.map((value) => value.toJson()).toList(),
+        if (logging != null) 'logging': logging!,
+        if (logs != null) 'logs': logs!,
+        if (metrics != null) 'metrics': metrics!,
         if (monitoredResources != null)
-          'monitoredResources':
-              monitoredResources!.map((value) => value.toJson()).toList(),
-        if (monitoring != null) 'monitoring': monitoring!.toJson(),
+          'monitoredResources': monitoredResources!,
+        if (monitoring != null) 'monitoring': monitoring!,
         if (name != null) 'name': name!,
         if (producerProjectId != null) 'producerProjectId': producerProjectId!,
-        if (quota != null) 'quota': quota!.toJson(),
-        if (sourceInfo != null) 'sourceInfo': sourceInfo!.toJson(),
-        if (systemParameters != null)
-          'systemParameters': systemParameters!.toJson(),
-        if (systemTypes != null)
-          'systemTypes': systemTypes!.map((value) => value.toJson()).toList(),
+        if (quota != null) 'quota': quota!,
+        if (sourceInfo != null) 'sourceInfo': sourceInfo!,
+        if (systemParameters != null) 'systemParameters': systemParameters!,
+        if (systemTypes != null) 'systemTypes': systemTypes!,
         if (title != null) 'title': title!,
-        if (types != null)
-          'types': types!.map((value) => value.toJson()).toList(),
-        if (usage != null) 'usage': usage!.toJson(),
+        if (types != null) 'types': types!,
+        if (usage != null) 'usage': usage!,
       };
 }
 
@@ -6302,9 +6253,7 @@ class Subnetwork {
         if (network != null) 'network': network!,
         if (outsideAllocation != null) 'outsideAllocation': outsideAllocation!,
         if (region != null) 'region': region!,
-        if (secondaryIpRanges != null)
-          'secondaryIpRanges':
-              secondaryIpRanges!.map((value) => value.toJson()).toList(),
+        if (secondaryIpRanges != null) 'secondaryIpRanges': secondaryIpRanges!,
       };
 }
 
@@ -6388,8 +6337,7 @@ class SystemParameterRule {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (parameters != null)
-          'parameters': parameters!.map((value) => value.toJson()).toList(),
+        if (parameters != null) 'parameters': parameters!,
         if (selector != null) 'selector': selector!,
       };
 }
@@ -6430,8 +6378,7 @@ class SystemParameters {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (rules != null)
-          'rules': rules!.map((value) => value.toJson()).toList(),
+        if (rules != null) 'rules': rules!,
       };
 }
 
@@ -6497,13 +6444,11 @@ class Type {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (fields != null)
-          'fields': fields!.map((value) => value.toJson()).toList(),
+        if (fields != null) 'fields': fields!,
         if (name != null) 'name': name!,
         if (oneofs != null) 'oneofs': oneofs!,
-        if (options != null)
-          'options': options!.map((value) => value.toJson()).toList(),
-        if (sourceContext != null) 'sourceContext': sourceContext!.toJson(),
+        if (options != null) 'options': options!,
+        if (sourceContext != null) 'sourceContext': sourceContext!,
         if (syntax != null) 'syntax': syntax!,
       };
 }
@@ -6530,7 +6475,7 @@ class UpdateConsumerConfigRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (consumerConfig != null) 'consumerConfig': consumerConfig!.toJson(),
+        if (consumerConfig != null) 'consumerConfig': consumerConfig!,
       };
 }
 
@@ -6595,9 +6540,8 @@ class UpdateDnsRecordSetRequest {
   core.Map<core.String, core.dynamic> toJson() => {
         if (consumerNetwork != null) 'consumerNetwork': consumerNetwork!,
         if (existingDnsRecordSet != null)
-          'existingDnsRecordSet': existingDnsRecordSet!.toJson(),
-        if (newDnsRecordSet != null)
-          'newDnsRecordSet': newDnsRecordSet!.toJson(),
+          'existingDnsRecordSet': existingDnsRecordSet!,
+        if (newDnsRecordSet != null) 'newDnsRecordSet': newDnsRecordSet!,
         if (zone != null) 'zone': zone!,
       };
 }
@@ -6659,8 +6603,7 @@ class Usage {
         if (producerNotificationChannel != null)
           'producerNotificationChannel': producerNotificationChannel!,
         if (requirements != null) 'requirements': requirements!,
-        if (rules != null)
-          'rules': rules!.map((value) => value.toJson()).toList(),
+        if (rules != null) 'rules': rules!,
       };
 }
 
@@ -6777,10 +6720,8 @@ class ValidateConsumerConfigRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (consumerNetwork != null) 'consumerNetwork': consumerNetwork!,
-        if (consumerProject != null)
-          'consumerProject': consumerProject!.toJson(),
-        if (rangeReservation != null)
-          'rangeReservation': rangeReservation!.toJson(),
+        if (consumerProject != null) 'consumerProject': consumerProject!,
+        if (rangeReservation != null) 'rangeReservation': rangeReservation!,
         if (validateNetwork != null) 'validateNetwork': validateNetwork!,
       };
 }
@@ -6847,9 +6788,7 @@ class ValidateConsumerConfigResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (existingSubnetworkCandidates != null)
-          'existingSubnetworkCandidates': existingSubnetworkCandidates!
-              .map((value) => value.toJson())
-              .toList(),
+          'existingSubnetworkCandidates': existingSubnetworkCandidates!,
         if (isValid != null) 'isValid': isValid!,
         if (validationError != null) 'validationError': validationError!,
       };

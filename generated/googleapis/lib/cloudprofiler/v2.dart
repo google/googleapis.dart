@@ -109,7 +109,7 @@ class ProjectsProfilesResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -152,7 +152,7 @@ class ProjectsProfilesResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -204,7 +204,7 @@ class ProjectsProfilesResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -253,7 +253,7 @@ class CreateProfileRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (deployment != null) 'deployment': deployment!.toJson(),
+        if (deployment != null) 'deployment': deployment!,
         if (profileType != null) 'profileType': profileType!,
       };
 }
@@ -413,7 +413,7 @@ class Profile {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (deployment != null) 'deployment': deployment!.toJson(),
+        if (deployment != null) 'deployment': deployment!,
         if (duration != null) 'duration': duration!,
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,

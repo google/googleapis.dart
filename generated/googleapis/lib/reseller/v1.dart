@@ -158,7 +158,7 @@ class CustomersResource {
     core.String? customerAuthToken,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (customerAuthToken != null) 'customerAuthToken': [customerAuthToken],
       if ($fields != null) 'fields': [$fields],
@@ -206,7 +206,7 @@ class CustomersResource {
     core.String customerId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -254,7 +254,7 @@ class CustomersResource {
     core.String customerId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -483,7 +483,7 @@ class SubscriptionsResource {
     core.String subscriptionId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -541,7 +541,7 @@ class SubscriptionsResource {
     core.String subscriptionId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -599,7 +599,7 @@ class SubscriptionsResource {
     core.String subscriptionId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -781,7 +781,7 @@ class SubscriptionsResource {
     core.String? customerAuthToken,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (customerAuthToken != null) 'customerAuthToken': [customerAuthToken],
       if ($fields != null) 'fields': [$fields],
@@ -1171,7 +1171,7 @@ class ChangePlanRequest {
         if (kind != null) 'kind': kind!,
         if (planName != null) 'planName': planName!,
         if (purchaseOrderId != null) 'purchaseOrderId': purchaseOrderId!,
-        if (seats != null) 'seats': seats!.toJson(),
+        if (seats != null) 'seats': seats!,
       };
 }
 
@@ -1301,8 +1301,8 @@ class Customer {
         if (customerType != null) 'customerType': customerType!,
         if (kind != null) 'kind': kind!,
         if (phoneNumber != null) 'phoneNumber': phoneNumber!,
-        if (postalAddress != null) 'postalAddress': postalAddress!.toJson(),
-        if (primaryAdmin != null) 'primaryAdmin': primaryAdmin!.toJson(),
+        if (postalAddress != null) 'postalAddress': postalAddress!,
+        if (primaryAdmin != null) 'primaryAdmin': primaryAdmin!,
         if (resourceUiUrl != null) 'resourceUiUrl': resourceUiUrl!,
       };
 }
@@ -1583,7 +1583,7 @@ class SubscriptionPlan {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (commitmentInterval != null)
-          'commitmentInterval': commitmentInterval!.toJson(),
+          'commitmentInterval': commitmentInterval!,
         if (isCommitmentPlan != null) 'isCommitmentPlan': isCommitmentPlan!,
         if (planName != null) 'planName': planName!,
       };
@@ -1893,19 +1893,18 @@ class Subscription {
         if (customerId != null) 'customerId': customerId!,
         if (dealCode != null) 'dealCode': dealCode!,
         if (kind != null) 'kind': kind!,
-        if (plan != null) 'plan': plan!.toJson(),
+        if (plan != null) 'plan': plan!,
         if (purchaseOrderId != null) 'purchaseOrderId': purchaseOrderId!,
-        if (renewalSettings != null)
-          'renewalSettings': renewalSettings!.toJson(),
+        if (renewalSettings != null) 'renewalSettings': renewalSettings!,
         if (resourceUiUrl != null) 'resourceUiUrl': resourceUiUrl!,
-        if (seats != null) 'seats': seats!.toJson(),
+        if (seats != null) 'seats': seats!,
         if (skuId != null) 'skuId': skuId!,
         if (skuName != null) 'skuName': skuName!,
         if (status != null) 'status': status!,
         if (subscriptionId != null) 'subscriptionId': subscriptionId!,
         if (suspensionReasons != null) 'suspensionReasons': suspensionReasons!,
-        if (transferInfo != null) 'transferInfo': transferInfo!.toJson(),
-        if (trialSettings != null) 'trialSettings': trialSettings!.toJson(),
+        if (transferInfo != null) 'transferInfo': transferInfo!,
+        if (trialSettings != null) 'trialSettings': trialSettings!,
       };
 }
 
@@ -1953,8 +1952,6 @@ class Subscriptions {
   core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (subscriptions != null)
-          'subscriptions':
-              subscriptions!.map((value) => value.toJson()).toList(),
+        if (subscriptions != null) 'subscriptions': subscriptions!,
       };
 }

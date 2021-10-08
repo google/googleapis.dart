@@ -168,7 +168,7 @@ class AchievementConfigurationsResource {
     core.String applicationId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -258,7 +258,7 @@ class AchievementConfigurationsResource {
     core.String achievementId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -441,7 +441,7 @@ class LeaderboardConfigurationsResource {
     core.String applicationId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -531,7 +531,7 @@ class LeaderboardConfigurationsResource {
     core.String leaderboardId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -627,11 +627,11 @@ class AchievementConfiguration {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (achievementType != null) 'achievementType': achievementType!,
-        if (draft != null) 'draft': draft!.toJson(),
+        if (draft != null) 'draft': draft!,
         if (id != null) 'id': id!,
         if (initialState != null) 'initialState': initialState!,
         if (kind != null) 'kind': kind!,
-        if (published != null) 'published': published!.toJson(),
+        if (published != null) 'published': published!,
         if (stepsToUnlock != null) 'stepsToUnlock': stepsToUnlock!,
         if (token != null) 'token': token!,
       };
@@ -696,10 +696,10 @@ class AchievementConfigurationDetail {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (description != null) 'description': description!.toJson(),
+        if (description != null) 'description': description!,
         if (iconUrl != null) 'iconUrl': iconUrl!,
         if (kind != null) 'kind': kind!,
-        if (name != null) 'name': name!.toJson(),
+        if (name != null) 'name': name!,
         if (pointValue != null) 'pointValue': pointValue!,
         if (sortRank != null) 'sortRank': sortRank!,
       };
@@ -740,8 +740,7 @@ class AchievementConfigurationListResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (items != null)
-          'items': items!.map((value) => value.toJson()).toList(),
+        if (items != null) 'items': items!,
         if (kind != null) 'kind': kind!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
@@ -813,12 +812,12 @@ class GamesNumberAffixConfiguration {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (few != null) 'few': few!.toJson(),
-        if (many != null) 'many': many!.toJson(),
-        if (one != null) 'one': one!.toJson(),
-        if (other != null) 'other': other!.toJson(),
-        if (two != null) 'two': two!.toJson(),
-        if (zero != null) 'zero': zero!.toJson(),
+        if (few != null) 'few': few!,
+        if (many != null) 'many': many!,
+        if (one != null) 'one': one!,
+        if (other != null) 'other': other!,
+        if (two != null) 'two': two!,
+        if (zero != null) 'zero': zero!,
       };
 }
 
@@ -878,7 +877,7 @@ class GamesNumberFormatConfiguration {
         if (currencyCode != null) 'currencyCode': currencyCode!,
         if (numDecimalPlaces != null) 'numDecimalPlaces': numDecimalPlaces!,
         if (numberFormatType != null) 'numberFormatType': numberFormatType!,
-        if (suffix != null) 'suffix': suffix!.toJson(),
+        if (suffix != null) 'suffix': suffix!,
       };
 }
 
@@ -999,10 +998,10 @@ class LeaderboardConfiguration {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (draft != null) 'draft': draft!.toJson(),
+        if (draft != null) 'draft': draft!,
         if (id != null) 'id': id!,
         if (kind != null) 'kind': kind!,
-        if (published != null) 'published': published!.toJson(),
+        if (published != null) 'published': published!,
         if (scoreMax != null) 'scoreMax': scoreMax!,
         if (scoreMin != null) 'scoreMin': scoreMin!,
         if (scoreOrder != null) 'scoreOrder': scoreOrder!,
@@ -1064,8 +1063,8 @@ class LeaderboardConfigurationDetail {
   core.Map<core.String, core.dynamic> toJson() => {
         if (iconUrl != null) 'iconUrl': iconUrl!,
         if (kind != null) 'kind': kind!,
-        if (name != null) 'name': name!.toJson(),
-        if (scoreFormat != null) 'scoreFormat': scoreFormat!.toJson(),
+        if (name != null) 'name': name!,
+        if (scoreFormat != null) 'scoreFormat': scoreFormat!,
         if (sortRank != null) 'sortRank': sortRank!,
       };
 }
@@ -1105,8 +1104,7 @@ class LeaderboardConfigurationListResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (items != null)
-          'items': items!.map((value) => value.toJson()).toList(),
+        if (items != null) 'items': items!,
         if (kind != null) 'kind': kind!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
@@ -1177,7 +1175,6 @@ class LocalizedStringBundle {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
-        if (translations != null)
-          'translations': translations!.map((value) => value.toJson()).toList(),
+        if (translations != null) 'translations': translations!,
       };
 }

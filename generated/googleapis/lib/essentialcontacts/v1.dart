@@ -158,7 +158,7 @@ class FoldersContactsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -337,7 +337,7 @@ class FoldersContactsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -384,7 +384,7 @@ class FoldersContactsResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -505,7 +505,7 @@ class OrganizationsContactsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -684,7 +684,7 @@ class OrganizationsContactsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -731,7 +731,7 @@ class OrganizationsContactsResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -850,7 +850,7 @@ class ProjectsContactsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1029,7 +1029,7 @@ class ProjectsContactsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -1076,7 +1076,7 @@ class ProjectsContactsResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1130,8 +1130,7 @@ class GoogleCloudEssentialcontactsV1ComputeContactsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (contacts != null)
-          'contacts': contacts!.map((value) => value.toJson()).toList(),
+        if (contacts != null) 'contacts': contacts!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -1257,8 +1256,7 @@ class GoogleCloudEssentialcontactsV1ListContactsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (contacts != null)
-          'contacts': contacts!.map((value) => value.toJson()).toList(),
+        if (contacts != null) 'contacts': contacts!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }

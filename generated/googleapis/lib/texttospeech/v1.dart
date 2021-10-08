@@ -83,7 +83,7 @@ class TextResource {
     SynthesizeSpeechRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -291,8 +291,7 @@ class ListVoicesResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (voices != null)
-          'voices': voices!.map((value) => value.toJson()).toList(),
+        if (voices != null) 'voices': voices!,
       };
 }
 
@@ -369,9 +368,9 @@ class SynthesizeSpeechRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (audioConfig != null) 'audioConfig': audioConfig!.toJson(),
-        if (input != null) 'input': input!.toJson(),
-        if (voice != null) 'voice': voice!.toJson(),
+        if (audioConfig != null) 'audioConfig': audioConfig!,
+        if (input != null) 'input': input!,
+        if (voice != null) 'voice': voice!,
       };
 }
 

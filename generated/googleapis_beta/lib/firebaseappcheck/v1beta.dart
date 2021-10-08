@@ -193,7 +193,7 @@ class ProjectsAppsResource {
     core.String app, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -242,7 +242,7 @@ class ProjectsAppsResource {
     core.String app, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -294,7 +294,7 @@ class ProjectsAppsResource {
     core.String app, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -346,7 +346,7 @@ class ProjectsAppsResource {
     core.String app, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -398,7 +398,7 @@ class ProjectsAppsResource {
     core.String app, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -449,7 +449,7 @@ class ProjectsAppsResource {
     core.String app, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -500,7 +500,7 @@ class ProjectsAppsResource {
     core.String app, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -545,7 +545,7 @@ class ProjectsAppsResource {
     core.String app, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -692,7 +692,7 @@ class ProjectsAppsAppAttestConfigResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -747,7 +747,7 @@ class ProjectsAppsDebugTokensResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -939,7 +939,7 @@ class ProjectsAppsDebugTokensResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -1095,7 +1095,7 @@ class ProjectsAppsDeviceCheckConfigResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -1249,7 +1249,7 @@ class ProjectsAppsRecaptchaConfigResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -1396,7 +1396,7 @@ class ProjectsAppsSafetyNetConfigResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -1449,7 +1449,7 @@ class ProjectsServicesResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1597,7 +1597,7 @@ class ProjectsServicesResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -1755,8 +1755,7 @@ class GoogleFirebaseAppcheckV1betaBatchGetAppAttestConfigsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (configs != null)
-          'configs': configs!.map((value) => value.toJson()).toList(),
+        if (configs != null) 'configs': configs!,
       };
 }
 
@@ -1782,8 +1781,7 @@ class GoogleFirebaseAppcheckV1betaBatchGetDeviceCheckConfigsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (configs != null)
-          'configs': configs!.map((value) => value.toJson()).toList(),
+        if (configs != null) 'configs': configs!,
       };
 }
 
@@ -1809,8 +1807,7 @@ class GoogleFirebaseAppcheckV1betaBatchGetRecaptchaConfigsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (configs != null)
-          'configs': configs!.map((value) => value.toJson()).toList(),
+        if (configs != null) 'configs': configs!,
       };
 }
 
@@ -1836,8 +1833,7 @@ class GoogleFirebaseAppcheckV1betaBatchGetSafetyNetConfigsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (configs != null)
-          'configs': configs!.map((value) => value.toJson()).toList(),
+        if (configs != null) 'configs': configs!,
       };
 }
 
@@ -1880,8 +1876,7 @@ class GoogleFirebaseAppcheckV1betaBatchUpdateServicesRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (requests != null)
-          'requests': requests!.map((value) => value.toJson()).toList(),
+        if (requests != null) 'requests': requests!,
         if (updateMask != null) 'updateMask': updateMask!,
       };
 }
@@ -1907,8 +1902,7 @@ class GoogleFirebaseAppcheckV1betaBatchUpdateServicesResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (services != null)
-          'services': services!.map((value) => value.toJson()).toList(),
+        if (services != null) 'services': services!,
       };
 }
 
@@ -2190,8 +2184,7 @@ class GoogleFirebaseAppcheckV1betaExchangeAppAttestAttestationResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (artifact != null) 'artifact': artifact!,
-        if (attestationToken != null)
-          'attestationToken': attestationToken!.toJson(),
+        if (attestationToken != null) 'attestationToken': attestationToken!,
       };
 }
 
@@ -2351,8 +2344,7 @@ class GoogleFirebaseAppcheckV1betaListDebugTokensResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (debugTokens != null)
-          'debugTokens': debugTokens!.map((value) => value.toJson()).toList(),
+        if (debugTokens != null) 'debugTokens': debugTokens!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -2391,8 +2383,7 @@ class GoogleFirebaseAppcheckV1betaListServicesResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (services != null)
-          'services': services!.map((value) => value.toJson()).toList(),
+        if (services != null) 'services': services!,
       };
 }
 
@@ -2482,7 +2473,7 @@ class GoogleFirebaseAppcheckV1betaPublicJwkSet {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (keys != null) 'keys': keys!.map((value) => value.toJson()).toList(),
+        if (keys != null) 'keys': keys!,
       };
 }
 
@@ -2695,7 +2686,7 @@ class GoogleFirebaseAppcheckV1betaUpdateServiceRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (service != null) 'service': service!.toJson(),
+        if (service != null) 'service': service!,
         if (updateMask != null) 'updateMask': updateMask!,
       };
 }

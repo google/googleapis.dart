@@ -241,7 +241,7 @@ class ProjectsLocationsAgentsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -329,7 +329,7 @@ class ProjectsLocationsAgentsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -510,7 +510,7 @@ class ProjectsLocationsAgentsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -566,7 +566,7 @@ class ProjectsLocationsAgentsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -612,7 +612,7 @@ class ProjectsLocationsAgentsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -674,7 +674,7 @@ class ProjectsLocationsAgentsEntityTypesResource {
     core.String? languageCode,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (languageCode != null) 'languageCode': [languageCode],
       if ($fields != null) 'fields': [$fields],
@@ -891,7 +891,7 @@ class ProjectsLocationsAgentsEntityTypesResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (languageCode != null) 'languageCode': [languageCode],
       if (updateMask != null) 'updateMask': [updateMask],
@@ -959,7 +959,7 @@ class ProjectsLocationsAgentsEnvironmentsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1187,7 +1187,7 @@ class ProjectsLocationsAgentsEnvironmentsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -1237,7 +1237,7 @@ class ProjectsLocationsAgentsEnvironmentsResource {
     core.String environment, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1347,7 +1347,7 @@ class ProjectsLocationsAgentsEnvironmentsExperimentsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1517,7 +1517,7 @@ class ProjectsLocationsAgentsEnvironmentsExperimentsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -1563,7 +1563,7 @@ class ProjectsLocationsAgentsEnvironmentsExperimentsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1608,7 +1608,7 @@ class ProjectsLocationsAgentsEnvironmentsExperimentsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1679,7 +1679,7 @@ class ProjectsLocationsAgentsEnvironmentsSessionsResource {
     core.String session, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1732,7 +1732,7 @@ class ProjectsLocationsAgentsEnvironmentsSessionsResource {
     core.String session, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1783,7 +1783,7 @@ class ProjectsLocationsAgentsEnvironmentsSessionsResource {
     core.String session, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1836,7 +1836,7 @@ class ProjectsLocationsAgentsEnvironmentsSessionsEntityTypesResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2015,7 +2015,7 @@ class ProjectsLocationsAgentsEnvironmentsSessionsEntityTypesResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -2088,7 +2088,7 @@ class ProjectsLocationsAgentsFlowsResource {
     core.String? languageCode,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (languageCode != null) 'languageCode': [languageCode],
       if ($fields != null) 'fields': [$fields],
@@ -2187,7 +2187,7 @@ class ProjectsLocationsAgentsFlowsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2335,7 +2335,7 @@ class ProjectsLocationsAgentsFlowsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2456,7 +2456,7 @@ class ProjectsLocationsAgentsFlowsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (languageCode != null) 'languageCode': [languageCode],
       if (updateMask != null) 'updateMask': [updateMask],
@@ -2512,7 +2512,7 @@ class ProjectsLocationsAgentsFlowsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2558,7 +2558,7 @@ class ProjectsLocationsAgentsFlowsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2628,7 +2628,7 @@ class ProjectsLocationsAgentsFlowsPagesResource {
     core.String? languageCode,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (languageCode != null) 'languageCode': [languageCode],
       if ($fields != null) 'fields': [$fields],
@@ -2869,7 +2869,7 @@ class ProjectsLocationsAgentsFlowsPagesResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (languageCode != null) 'languageCode': [languageCode],
       if (updateMask != null) 'updateMask': [updateMask],
@@ -2935,7 +2935,7 @@ class ProjectsLocationsAgentsFlowsTransitionRouteGroupsResource {
     core.String? languageCode,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (languageCode != null) 'languageCode': [languageCode],
       if ($fields != null) 'fields': [$fields],
@@ -3158,7 +3158,7 @@ class ProjectsLocationsAgentsFlowsTransitionRouteGroupsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (languageCode != null) 'languageCode': [languageCode],
       if (updateMask != null) 'updateMask': [updateMask],
@@ -3215,7 +3215,7 @@ class ProjectsLocationsAgentsFlowsVersionsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3390,7 +3390,7 @@ class ProjectsLocationsAgentsFlowsVersionsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3437,7 +3437,7 @@ class ProjectsLocationsAgentsFlowsVersionsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -3499,7 +3499,7 @@ class ProjectsLocationsAgentsIntentsResource {
     core.String? languageCode,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (languageCode != null) 'languageCode': [languageCode],
       if ($fields != null) 'fields': [$fields],
@@ -3713,7 +3713,7 @@ class ProjectsLocationsAgentsIntentsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (languageCode != null) 'languageCode': [languageCode],
       if (updateMask != null) 'updateMask': [updateMask],
@@ -3783,7 +3783,7 @@ class ProjectsLocationsAgentsSessionsResource {
     core.String session, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3836,7 +3836,7 @@ class ProjectsLocationsAgentsSessionsResource {
     core.String session, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3887,7 +3887,7 @@ class ProjectsLocationsAgentsSessionsResource {
     core.String session, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3940,7 +3940,7 @@ class ProjectsLocationsAgentsSessionsEntityTypesResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4119,7 +4119,7 @@ class ProjectsLocationsAgentsSessionsEntityTypesResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -4173,7 +4173,7 @@ class ProjectsLocationsAgentsTestCasesResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4222,7 +4222,7 @@ class ProjectsLocationsAgentsTestCasesResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4314,7 +4314,7 @@ class ProjectsLocationsAgentsTestCasesResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4364,7 +4364,7 @@ class ProjectsLocationsAgentsTestCasesResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4452,7 +4452,7 @@ class ProjectsLocationsAgentsTestCasesResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4561,7 +4561,7 @@ class ProjectsLocationsAgentsTestCasesResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -4610,7 +4610,7 @@ class ProjectsLocationsAgentsTestCasesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4769,7 +4769,7 @@ class ProjectsLocationsAgentsWebhooksResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4950,7 +4950,7 @@ class ProjectsLocationsAgentsWebhooksResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -5150,7 +5150,7 @@ class ProjectsLocationsSecuritySettingsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -5322,7 +5322,7 @@ class ProjectsLocationsSecuritySettingsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -5513,8 +5513,7 @@ class GoogleCloudDialogflowCxV3AdvancedSettings {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (loggingSettings != null)
-          'loggingSettings': loggingSettings!.toJson(),
+        if (loggingSettings != null) 'loggingSettings': loggingSettings!,
       };
 }
 
@@ -5702,8 +5701,7 @@ class GoogleCloudDialogflowCxV3Agent {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (advancedSettings != null)
-          'advancedSettings': advancedSettings!.toJson(),
+        if (advancedSettings != null) 'advancedSettings': advancedSettings!,
         if (avatarUri != null) 'avatarUri': avatarUri!,
         if (defaultLanguageCode != null)
           'defaultLanguageCode': defaultLanguageCode!,
@@ -5716,7 +5714,7 @@ class GoogleCloudDialogflowCxV3Agent {
         if (name != null) 'name': name!,
         if (securitySettings != null) 'securitySettings': securitySettings!,
         if (speechToTextSettings != null)
-          'speechToTextSettings': speechToTextSettings!.toJson(),
+          'speechToTextSettings': speechToTextSettings!,
         if (startFlow != null) 'startFlow': startFlow!,
         if (supportedLanguageCodes != null)
           'supportedLanguageCodes': supportedLanguageCodes!,
@@ -5754,8 +5752,7 @@ class GoogleCloudDialogflowCxV3AgentValidationResult {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (flowValidationResults != null)
-          'flowValidationResults':
-              flowValidationResults!.map((value) => value.toJson()).toList(),
+          'flowValidationResults': flowValidationResults!,
         if (name != null) 'name': name!,
       };
 }
@@ -5799,7 +5796,7 @@ class GoogleCloudDialogflowCxV3AudioInput {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (audio != null) 'audio': audio!,
-        if (config != null) 'config': config!.toJson(),
+        if (config != null) 'config': config!,
       };
 }
 
@@ -5849,8 +5846,7 @@ class GoogleCloudDialogflowCxV3BatchRunTestCasesMetadata {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (errors != null)
-          'errors': errors!.map((value) => value.toJson()).toList(),
+        if (errors != null) 'errors': errors!,
       };
 }
 
@@ -5914,8 +5910,7 @@ class GoogleCloudDialogflowCxV3BatchRunTestCasesResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (results != null)
-          'results': results!.map((value) => value.toJson()).toList(),
+        if (results != null) 'results': results!,
       };
 }
 
@@ -5965,11 +5960,11 @@ class GoogleCloudDialogflowCxV3CalculateCoverageResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (agent != null) 'agent': agent!,
-        if (intentCoverage != null) 'intentCoverage': intentCoverage!.toJson(),
+        if (intentCoverage != null) 'intentCoverage': intentCoverage!,
         if (routeGroupCoverage != null)
-          'routeGroupCoverage': routeGroupCoverage!.toJson(),
+          'routeGroupCoverage': routeGroupCoverage!,
         if (transitionCoverage != null)
-          'transitionCoverage': transitionCoverage!.toJson(),
+          'transitionCoverage': transitionCoverage!,
       };
 }
 
@@ -6057,9 +6052,9 @@ class GoogleCloudDialogflowCxV3ConversationTurn {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (userInput != null) 'userInput': userInput!.toJson(),
+        if (userInput != null) 'userInput': userInput!,
         if (virtualAgentOutput != null)
-          'virtualAgentOutput': virtualAgentOutput!.toJson(),
+          'virtualAgentOutput': virtualAgentOutput!,
       };
 }
 
@@ -6114,7 +6109,7 @@ class GoogleCloudDialogflowCxV3ConversationTurnUserInput {
           'enableSentimentAnalysis': enableSentimentAnalysis!,
         if (injectedParameters != null)
           'injectedParameters': injectedParameters!,
-        if (input != null) 'input': input!.toJson(),
+        if (input != null) 'input': input!,
         if (isWebhookEnabled != null) 'isWebhookEnabled': isWebhookEnabled!,
       };
 }
@@ -6212,17 +6207,13 @@ class GoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutput {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (currentPage != null) 'currentPage': currentPage!.toJson(),
+        if (currentPage != null) 'currentPage': currentPage!,
         if (diagnosticInfo != null) 'diagnosticInfo': diagnosticInfo!,
-        if (differences != null)
-          'differences': differences!.map((value) => value.toJson()).toList(),
+        if (differences != null) 'differences': differences!,
         if (sessionParameters != null) 'sessionParameters': sessionParameters!,
-        if (status != null) 'status': status!.toJson(),
-        if (textResponses != null)
-          'textResponses':
-              textResponses!.map((value) => value.toJson()).toList(),
-        if (triggeredIntent != null)
-          'triggeredIntent': triggeredIntent!.toJson(),
+        if (status != null) 'status': status!,
+        if (textResponses != null) 'textResponses': textResponses!,
+        if (triggeredIntent != null) 'triggeredIntent': triggeredIntent!,
       };
 }
 
@@ -6246,8 +6237,7 @@ class GoogleCloudDialogflowCxV3CreateDocumentOperationMetadata {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (genericMetadata != null)
-          'genericMetadata': genericMetadata!.toJson(),
+        if (genericMetadata != null) 'genericMetadata': genericMetadata!,
       };
 }
 
@@ -6296,8 +6286,7 @@ class GoogleCloudDialogflowCxV3DeleteDocumentOperationMetadata {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (genericMetadata != null)
-          'genericMetadata': genericMetadata!.toJson(),
+        if (genericMetadata != null) 'genericMetadata': genericMetadata!,
       };
 }
 
@@ -6338,10 +6327,9 @@ class GoogleCloudDialogflowCxV3DetectIntentRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (outputAudioConfig != null)
-          'outputAudioConfig': outputAudioConfig!.toJson(),
-        if (queryInput != null) 'queryInput': queryInput!.toJson(),
-        if (queryParams != null) 'queryParams': queryParams!.toJson(),
+        if (outputAudioConfig != null) 'outputAudioConfig': outputAudioConfig!,
+        if (queryInput != null) 'queryInput': queryInput!,
+        if (queryParams != null) 'queryParams': queryParams!,
       };
 }
 
@@ -6432,9 +6420,8 @@ class GoogleCloudDialogflowCxV3DetectIntentResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (allowCancellation != null) 'allowCancellation': allowCancellation!,
         if (outputAudio != null) 'outputAudio': outputAudio!,
-        if (outputAudioConfig != null)
-          'outputAudioConfig': outputAudioConfig!.toJson(),
-        if (queryResult != null) 'queryResult': queryResult!.toJson(),
+        if (outputAudioConfig != null) 'outputAudioConfig': outputAudioConfig!,
+        if (queryResult != null) 'queryResult': queryResult!,
         if (responseId != null) 'responseId': responseId!,
         if (responseType != null) 'responseType': responseType!,
       };
@@ -6591,11 +6578,8 @@ class GoogleCloudDialogflowCxV3EntityType {
         if (displayName != null) 'displayName': displayName!,
         if (enableFuzzyExtraction != null)
           'enableFuzzyExtraction': enableFuzzyExtraction!,
-        if (entities != null)
-          'entities': entities!.map((value) => value.toJson()).toList(),
-        if (excludedPhrases != null)
-          'excludedPhrases':
-              excludedPhrases!.map((value) => value.toJson()).toList(),
+        if (entities != null) 'entities': entities!,
+        if (excludedPhrases != null) 'excludedPhrases': excludedPhrases!,
         if (kind != null) 'kind': kind!,
         if (name != null) 'name': name!,
         if (redact != null) 'redact': redact!,
@@ -6744,9 +6728,7 @@ class GoogleCloudDialogflowCxV3Environment {
         if (displayName != null) 'displayName': displayName!,
         if (name != null) 'name': name!,
         if (updateTime != null) 'updateTime': updateTime!,
-        if (versionConfigs != null)
-          'versionConfigs':
-              versionConfigs!.map((value) => value.toJson()).toList(),
+        if (versionConfigs != null) 'versionConfigs': versionConfigs!,
       };
 }
 
@@ -6841,7 +6823,7 @@ class GoogleCloudDialogflowCxV3EventHandler {
         if (targetFlow != null) 'targetFlow': targetFlow!,
         if (targetPage != null) 'targetPage': targetPage!,
         if (triggerFulfillment != null)
-          'triggerFulfillment': triggerFulfillment!.toJson(),
+          'triggerFulfillment': triggerFulfillment!,
       };
 }
 
@@ -7013,23 +6995,21 @@ class GoogleCloudDialogflowCxV3Experiment {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
-        if (definition != null) 'definition': definition!.toJson(),
+        if (definition != null) 'definition': definition!,
         if (description != null) 'description': description!,
         if (displayName != null) 'displayName': displayName!,
         if (endTime != null) 'endTime': endTime!,
         if (experimentLength != null) 'experimentLength': experimentLength!,
         if (lastUpdateTime != null) 'lastUpdateTime': lastUpdateTime!,
         if (name != null) 'name': name!,
-        if (result != null) 'result': result!.toJson(),
-        if (rolloutConfig != null) 'rolloutConfig': rolloutConfig!.toJson(),
+        if (result != null) 'result': result!,
+        if (rolloutConfig != null) 'rolloutConfig': rolloutConfig!,
         if (rolloutFailureReason != null)
           'rolloutFailureReason': rolloutFailureReason!,
-        if (rolloutState != null) 'rolloutState': rolloutState!.toJson(),
+        if (rolloutState != null) 'rolloutState': rolloutState!,
         if (startTime != null) 'startTime': startTime!,
         if (state != null) 'state': state!,
-        if (variantsHistory != null)
-          'variantsHistory':
-              variantsHistory!.map((value) => value.toJson()).toList(),
+        if (variantsHistory != null) 'variantsHistory': variantsHistory!,
       };
 }
 
@@ -7065,8 +7045,7 @@ class GoogleCloudDialogflowCxV3ExperimentDefinition {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (condition != null) 'condition': condition!,
-        if (versionVariants != null)
-          'versionVariants': versionVariants!.toJson(),
+        if (versionVariants != null) 'versionVariants': versionVariants!,
       };
 }
 
@@ -7105,9 +7084,7 @@ class GoogleCloudDialogflowCxV3ExperimentResult {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (lastUpdateTime != null) 'lastUpdateTime': lastUpdateTime!,
-        if (versionMetrics != null)
-          'versionMetrics':
-              versionMetrics!.map((value) => value.toJson()).toList(),
+        if (versionMetrics != null) 'versionMetrics': versionMetrics!,
       };
 }
 
@@ -7228,7 +7205,7 @@ class GoogleCloudDialogflowCxV3ExperimentResultMetric {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (confidenceInterval != null)
-          'confidenceInterval': confidenceInterval!.toJson(),
+          'confidenceInterval': confidenceInterval!,
         if (count != null) 'count': count!,
         if (countType != null) 'countType': countType!,
         if (ratio != null) 'ratio': ratio!,
@@ -7275,8 +7252,7 @@ class GoogleCloudDialogflowCxV3ExperimentResultVersionMetrics {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (metrics != null)
-          'metrics': metrics!.map((value) => value.toJson()).toList(),
+        if (metrics != null) 'metrics': metrics!,
         if (sessionCount != null) 'sessionCount': sessionCount!,
         if (version != null) 'version': version!,
       };
@@ -7645,16 +7621,12 @@ class GoogleCloudDialogflowCxV3Flow {
   core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
         if (displayName != null) 'displayName': displayName!,
-        if (eventHandlers != null)
-          'eventHandlers':
-              eventHandlers!.map((value) => value.toJson()).toList(),
+        if (eventHandlers != null) 'eventHandlers': eventHandlers!,
         if (name != null) 'name': name!,
-        if (nluSettings != null) 'nluSettings': nluSettings!.toJson(),
+        if (nluSettings != null) 'nluSettings': nluSettings!,
         if (transitionRouteGroups != null)
           'transitionRouteGroups': transitionRouteGroups!,
-        if (transitionRoutes != null)
-          'transitionRoutes':
-              transitionRoutes!.map((value) => value.toJson()).toList(),
+        if (transitionRoutes != null) 'transitionRoutes': transitionRoutes!,
       };
 }
 
@@ -7696,8 +7668,7 @@ class GoogleCloudDialogflowCxV3FlowValidationResult {
         if (name != null) 'name': name!,
         if (updateTime != null) 'updateTime': updateTime!,
         if (validationMessages != null)
-          'validationMessages':
-              validationMessages!.map((value) => value.toJson()).toList(),
+          'validationMessages': validationMessages!,
       };
 }
 
@@ -7728,8 +7699,7 @@ class GoogleCloudDialogflowCxV3Form {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (parameters != null)
-          'parameters': parameters!.map((value) => value.toJson()).toList(),
+        if (parameters != null) 'parameters': parameters!,
       };
 }
 
@@ -7818,7 +7788,7 @@ class GoogleCloudDialogflowCxV3FormParameter {
         if (defaultValue != null) 'defaultValue': defaultValue!,
         if (displayName != null) 'displayName': displayName!,
         if (entityType != null) 'entityType': entityType!,
-        if (fillBehavior != null) 'fillBehavior': fillBehavior!.toJson(),
+        if (fillBehavior != null) 'fillBehavior': fillBehavior!,
         if (isList != null) 'isList': isList!,
         if (redact != null) 'redact': redact!,
         if (required != null) 'required': required!,
@@ -7881,10 +7851,9 @@ class GoogleCloudDialogflowCxV3FormParameterFillBehavior {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (initialPromptFulfillment != null)
-          'initialPromptFulfillment': initialPromptFulfillment!.toJson(),
+          'initialPromptFulfillment': initialPromptFulfillment!,
         if (repromptEventHandlers != null)
-          'repromptEventHandlers':
-              repromptEventHandlers!.map((value) => value.toJson()).toList(),
+          'repromptEventHandlers': repromptEventHandlers!,
       };
 }
 
@@ -7925,11 +7894,10 @@ class GoogleCloudDialogflowCxV3FulfillIntentRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (match != null) 'match': match!.toJson(),
+        if (match != null) 'match': match!,
         if (matchIntentRequest != null)
-          'matchIntentRequest': matchIntentRequest!.toJson(),
-        if (outputAudioConfig != null)
-          'outputAudioConfig': outputAudioConfig!.toJson(),
+          'matchIntentRequest': matchIntentRequest!,
+        if (outputAudioConfig != null) 'outputAudioConfig': outputAudioConfig!,
       };
 }
 
@@ -7995,9 +7963,8 @@ class GoogleCloudDialogflowCxV3FulfillIntentResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (outputAudio != null) 'outputAudio': outputAudio!,
-        if (outputAudioConfig != null)
-          'outputAudioConfig': outputAudioConfig!.toJson(),
-        if (queryResult != null) 'queryResult': queryResult!.toJson(),
+        if (outputAudioConfig != null) 'outputAudioConfig': outputAudioConfig!,
+        if (queryResult != null) 'queryResult': queryResult!,
         if (responseId != null) 'responseId': responseId!,
       };
 }
@@ -8088,16 +8055,12 @@ class GoogleCloudDialogflowCxV3Fulfillment {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (conditionalCases != null)
-          'conditionalCases':
-              conditionalCases!.map((value) => value.toJson()).toList(),
-        if (messages != null)
-          'messages': messages!.map((value) => value.toJson()).toList(),
+        if (conditionalCases != null) 'conditionalCases': conditionalCases!,
+        if (messages != null) 'messages': messages!,
         if (returnPartialResponses != null)
           'returnPartialResponses': returnPartialResponses!,
         if (setParameterActions != null)
-          'setParameterActions':
-              setParameterActions!.map((value) => value.toJson()).toList(),
+          'setParameterActions': setParameterActions!,
         if (tag != null) 'tag': tag!,
         if (webhook != null) 'webhook': webhook!,
       };
@@ -8128,8 +8091,7 @@ class GoogleCloudDialogflowCxV3FulfillmentConditionalCases {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cases != null)
-          'cases': cases!.map((value) => value.toJson()).toList(),
+        if (cases != null) 'cases': cases!,
       };
 }
 
@@ -8172,8 +8134,7 @@ class GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCase {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (caseContent != null)
-          'caseContent': caseContent!.map((value) => value.toJson()).toList(),
+        if (caseContent != null) 'caseContent': caseContent!,
         if (condition != null) 'condition': condition!,
       };
 }
@@ -8206,9 +8167,8 @@ class GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCaseCaseContent {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (additionalCases != null)
-          'additionalCases': additionalCases!.toJson(),
-        if (message != null) 'message': message!.toJson(),
+        if (additionalCases != null) 'additionalCases': additionalCases!,
+        if (message != null) 'message': message!,
       };
 }
 
@@ -8293,8 +8253,7 @@ class GoogleCloudDialogflowCxV3ImportDocumentsOperationMetadata {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (genericMetadata != null)
-          'genericMetadata': genericMetadata!.toJson(),
+        if (genericMetadata != null) 'genericMetadata': genericMetadata!,
       };
 }
 
@@ -8318,8 +8277,7 @@ class GoogleCloudDialogflowCxV3ImportDocumentsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (warnings != null)
-          'warnings': warnings!.map((value) => value.toJson()).toList(),
+        if (warnings != null) 'warnings': warnings!,
       };
 }
 
@@ -8422,8 +8380,7 @@ class GoogleCloudDialogflowCxV3ImportTestCasesMetadata {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (errors != null)
-          'errors': errors!.map((value) => value.toJson()).toList(),
+        if (errors != null) 'errors': errors!,
       };
 }
 
@@ -8770,12 +8727,9 @@ class GoogleCloudDialogflowCxV3Intent {
         if (isFallback != null) 'isFallback': isFallback!,
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
-        if (parameters != null)
-          'parameters': parameters!.map((value) => value.toJson()).toList(),
+        if (parameters != null) 'parameters': parameters!,
         if (priority != null) 'priority': priority!,
-        if (trainingPhrases != null)
-          'trainingPhrases':
-              trainingPhrases!.map((value) => value.toJson()).toList(),
+        if (trainingPhrases != null) 'trainingPhrases': trainingPhrases!,
       };
 }
 
@@ -8809,8 +8763,7 @@ class GoogleCloudDialogflowCxV3IntentCoverage {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (coverageScore != null) 'coverageScore': coverageScore!,
-        if (intents != null)
-          'intents': intents!.map((value) => value.toJson()).toList(),
+        if (intents != null) 'intents': intents!,
       };
 }
 
@@ -8978,8 +8931,7 @@ class GoogleCloudDialogflowCxV3IntentTrainingPhrase {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (id != null) 'id': id!,
-        if (parts != null)
-          'parts': parts!.map((value) => value.toJson()).toList(),
+        if (parts != null) 'parts': parts!,
         if (repeatCount != null) 'repeatCount': repeatCount!,
       };
 }
@@ -9046,8 +8998,7 @@ class GoogleCloudDialogflowCxV3ListAgentsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (agents != null)
-          'agents': agents!.map((value) => value.toJson()).toList(),
+        if (agents != null) 'agents': agents!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -9084,8 +9035,7 @@ class GoogleCloudDialogflowCxV3ListContinuousTestResultsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (continuousTestResults != null)
-          'continuousTestResults':
-              continuousTestResults!.map((value) => value.toJson()).toList(),
+          'continuousTestResults': continuousTestResults!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -9121,8 +9071,7 @@ class GoogleCloudDialogflowCxV3ListEntityTypesResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (entityTypes != null)
-          'entityTypes': entityTypes!.map((value) => value.toJson()).toList(),
+        if (entityTypes != null) 'entityTypes': entityTypes!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -9159,8 +9108,7 @@ class GoogleCloudDialogflowCxV3ListEnvironmentsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (environments != null)
-          'environments': environments!.map((value) => value.toJson()).toList(),
+        if (environments != null) 'environments': environments!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -9197,8 +9145,7 @@ class GoogleCloudDialogflowCxV3ListExperimentsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (experiments != null)
-          'experiments': experiments!.map((value) => value.toJson()).toList(),
+        if (experiments != null) 'experiments': experiments!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -9234,8 +9181,7 @@ class GoogleCloudDialogflowCxV3ListFlowsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (flows != null)
-          'flows': flows!.map((value) => value.toJson()).toList(),
+        if (flows != null) 'flows': flows!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -9271,8 +9217,7 @@ class GoogleCloudDialogflowCxV3ListIntentsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (intents != null)
-          'intents': intents!.map((value) => value.toJson()).toList(),
+        if (intents != null) 'intents': intents!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -9309,8 +9254,7 @@ class GoogleCloudDialogflowCxV3ListPagesResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (pages != null)
-          'pages': pages!.map((value) => value.toJson()).toList(),
+        if (pages != null) 'pages': pages!,
       };
 }
 
@@ -9344,9 +9288,7 @@ class GoogleCloudDialogflowCxV3ListSecuritySettingsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (securitySettings != null)
-          'securitySettings':
-              securitySettings!.map((value) => value.toJson()).toList(),
+        if (securitySettings != null) 'securitySettings': securitySettings!,
       };
 }
 
@@ -9385,8 +9327,7 @@ class GoogleCloudDialogflowCxV3ListSessionEntityTypesResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (sessionEntityTypes != null)
-          'sessionEntityTypes':
-              sessionEntityTypes!.map((value) => value.toJson()).toList(),
+          'sessionEntityTypes': sessionEntityTypes!,
       };
 }
 
@@ -9420,9 +9361,7 @@ class GoogleCloudDialogflowCxV3ListTestCaseResultsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (testCaseResults != null)
-          'testCaseResults':
-              testCaseResults!.map((value) => value.toJson()).toList(),
+        if (testCaseResults != null) 'testCaseResults': testCaseResults!,
       };
 }
 
@@ -9458,8 +9397,7 @@ class GoogleCloudDialogflowCxV3ListTestCasesResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (testCases != null)
-          'testCases': testCases!.map((value) => value.toJson()).toList(),
+        if (testCases != null) 'testCases': testCases!,
       };
 }
 
@@ -9500,8 +9438,7 @@ class GoogleCloudDialogflowCxV3ListTransitionRouteGroupsResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (transitionRouteGroups != null)
-          'transitionRouteGroups':
-              transitionRouteGroups!.map((value) => value.toJson()).toList(),
+          'transitionRouteGroups': transitionRouteGroups!,
       };
 }
 
@@ -9538,8 +9475,7 @@ class GoogleCloudDialogflowCxV3ListVersionsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (versions != null)
-          'versions': versions!.map((value) => value.toJson()).toList(),
+        if (versions != null) 'versions': versions!,
       };
 }
 
@@ -9575,8 +9511,7 @@ class GoogleCloudDialogflowCxV3ListWebhooksResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (webhooks != null)
-          'webhooks': webhooks!.map((value) => value.toJson()).toList(),
+        if (webhooks != null) 'webhooks': webhooks!,
       };
 }
 
@@ -9638,8 +9573,7 @@ class GoogleCloudDialogflowCxV3LookupEnvironmentHistoryResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (environments != null)
-          'environments': environments!.map((value) => value.toJson()).toList(),
+        if (environments != null) 'environments': environments!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -9732,7 +9666,7 @@ class GoogleCloudDialogflowCxV3Match {
   core.Map<core.String, core.dynamic> toJson() => {
         if (confidence != null) 'confidence': confidence!,
         if (event != null) 'event': event!,
-        if (intent != null) 'intent': intent!.toJson(),
+        if (intent != null) 'intent': intent!,
         if (matchType != null) 'matchType': matchType!,
         if (parameters != null) 'parameters': parameters!,
         if (resolvedInput != null) 'resolvedInput': resolvedInput!,
@@ -9767,8 +9701,8 @@ class GoogleCloudDialogflowCxV3MatchIntentRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (queryInput != null) 'queryInput': queryInput!.toJson(),
-        if (queryParams != null) 'queryParams': queryParams!.toJson(),
+        if (queryInput != null) 'queryInput': queryInput!,
+        if (queryParams != null) 'queryParams': queryParams!,
       };
 }
 
@@ -9836,9 +9770,8 @@ class GoogleCloudDialogflowCxV3MatchIntentResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (currentPage != null) 'currentPage': currentPage!.toJson(),
-        if (matches != null)
-          'matches': matches!.map((value) => value.toJson()).toList(),
+        if (currentPage != null) 'currentPage': currentPage!,
+        if (matches != null) 'matches': matches!,
         if (text != null) 'text': text!,
         if (transcript != null) 'transcript': transcript!,
         if (triggerEvent != null) 'triggerEvent': triggerEvent!,
@@ -9965,7 +9898,7 @@ class GoogleCloudDialogflowCxV3OutputAudioConfig {
         if (audioEncoding != null) 'audioEncoding': audioEncoding!,
         if (sampleRateHertz != null) 'sampleRateHertz': sampleRateHertz!,
         if (synthesizeSpeechConfig != null)
-          'synthesizeSpeechConfig': synthesizeSpeechConfig!.toJson(),
+          'synthesizeSpeechConfig': synthesizeSpeechConfig!,
       };
 }
 
@@ -10078,18 +10011,13 @@ class GoogleCloudDialogflowCxV3Page {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
-        if (entryFulfillment != null)
-          'entryFulfillment': entryFulfillment!.toJson(),
-        if (eventHandlers != null)
-          'eventHandlers':
-              eventHandlers!.map((value) => value.toJson()).toList(),
-        if (form != null) 'form': form!.toJson(),
+        if (entryFulfillment != null) 'entryFulfillment': entryFulfillment!,
+        if (eventHandlers != null) 'eventHandlers': eventHandlers!,
+        if (form != null) 'form': form!,
         if (name != null) 'name': name!,
         if (transitionRouteGroups != null)
           'transitionRouteGroups': transitionRouteGroups!,
-        if (transitionRoutes != null)
-          'transitionRoutes':
-              transitionRoutes!.map((value) => value.toJson()).toList(),
+        if (transitionRoutes != null) 'transitionRoutes': transitionRoutes!,
       };
 }
 
@@ -10124,7 +10052,7 @@ class GoogleCloudDialogflowCxV3PageInfo {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (currentPage != null) 'currentPage': currentPage!,
-        if (formInfo != null) 'formInfo': formInfo!.toJson(),
+        if (formInfo != null) 'formInfo': formInfo!,
       };
 }
 
@@ -10154,9 +10082,7 @@ class GoogleCloudDialogflowCxV3PageInfoFormInfo {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (parameterInfo != null)
-          'parameterInfo':
-              parameterInfo!.map((value) => value.toJson()).toList(),
+        if (parameterInfo != null) 'parameterInfo': parameterInfo!,
       };
 }
 
@@ -10307,12 +10233,12 @@ class GoogleCloudDialogflowCxV3QueryInput {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (audio != null) 'audio': audio!.toJson(),
-        if (dtmf != null) 'dtmf': dtmf!.toJson(),
-        if (event != null) 'event': event!.toJson(),
-        if (intent != null) 'intent': intent!.toJson(),
+        if (audio != null) 'audio': audio!,
+        if (dtmf != null) 'dtmf': dtmf!,
+        if (event != null) 'event': event!,
+        if (intent != null) 'intent': intent!,
         if (languageCode != null) 'languageCode': languageCode!,
-        if (text != null) 'text': text!.toJson(),
+        if (text != null) 'text': text!,
       };
 }
 
@@ -10469,12 +10395,11 @@ class GoogleCloudDialogflowCxV3QueryParameters {
         if (currentPage != null) 'currentPage': currentPage!,
         if (disableWebhook != null) 'disableWebhook': disableWebhook!,
         if (flowVersions != null) 'flowVersions': flowVersions!,
-        if (geoLocation != null) 'geoLocation': geoLocation!.toJson(),
+        if (geoLocation != null) 'geoLocation': geoLocation!,
         if (parameters != null) 'parameters': parameters!,
         if (payload != null) 'payload': payload!,
         if (sessionEntityTypes != null)
-          'sessionEntityTypes':
-              sessionEntityTypes!.map((value) => value.toJson()).toList(),
+          'sessionEntityTypes': sessionEntityTypes!,
         if (timeZone != null) 'timeZone': timeZone!,
         if (webhookHeaders != null) 'webhookHeaders': webhookHeaders!,
       };
@@ -10661,27 +10586,23 @@ class GoogleCloudDialogflowCxV3QueryResult {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (currentPage != null) 'currentPage': currentPage!.toJson(),
+        if (currentPage != null) 'currentPage': currentPage!,
         if (diagnosticInfo != null) 'diagnosticInfo': diagnosticInfo!,
-        if (intent != null) 'intent': intent!.toJson(),
+        if (intent != null) 'intent': intent!,
         if (intentDetectionConfidence != null)
           'intentDetectionConfidence': intentDetectionConfidence!,
         if (languageCode != null) 'languageCode': languageCode!,
-        if (match != null) 'match': match!.toJson(),
+        if (match != null) 'match': match!,
         if (parameters != null) 'parameters': parameters!,
-        if (responseMessages != null)
-          'responseMessages':
-              responseMessages!.map((value) => value.toJson()).toList(),
+        if (responseMessages != null) 'responseMessages': responseMessages!,
         if (sentimentAnalysisResult != null)
-          'sentimentAnalysisResult': sentimentAnalysisResult!.toJson(),
+          'sentimentAnalysisResult': sentimentAnalysisResult!,
         if (text != null) 'text': text!,
         if (transcript != null) 'transcript': transcript!,
         if (triggerEvent != null) 'triggerEvent': triggerEvent!,
         if (triggerIntent != null) 'triggerIntent': triggerIntent!,
         if (webhookPayloads != null) 'webhookPayloads': webhookPayloads!,
-        if (webhookStatuses != null)
-          'webhookStatuses':
-              webhookStatuses!.map((value) => value.toJson()).toList(),
+        if (webhookStatuses != null) 'webhookStatuses': webhookStatuses!,
       };
 }
 
@@ -10705,8 +10626,7 @@ class GoogleCloudDialogflowCxV3ReloadDocumentOperationMetadata {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (genericMetadata != null)
-          'genericMetadata': genericMetadata!.toJson(),
+        if (genericMetadata != null) 'genericMetadata': genericMetadata!,
       };
 }
 
@@ -10850,16 +10770,14 @@ class GoogleCloudDialogflowCxV3ResponseMessage {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (conversationSuccess != null)
-          'conversationSuccess': conversationSuccess!.toJson(),
-        if (endInteraction != null) 'endInteraction': endInteraction!.toJson(),
-        if (liveAgentHandoff != null)
-          'liveAgentHandoff': liveAgentHandoff!.toJson(),
-        if (mixedAudio != null) 'mixedAudio': mixedAudio!.toJson(),
-        if (outputAudioText != null)
-          'outputAudioText': outputAudioText!.toJson(),
+          'conversationSuccess': conversationSuccess!,
+        if (endInteraction != null) 'endInteraction': endInteraction!,
+        if (liveAgentHandoff != null) 'liveAgentHandoff': liveAgentHandoff!,
+        if (mixedAudio != null) 'mixedAudio': mixedAudio!,
+        if (outputAudioText != null) 'outputAudioText': outputAudioText!,
         if (payload != null) 'payload': payload!,
-        if (playAudio != null) 'playAudio': playAudio!.toJson(),
-        if (text != null) 'text': text!.toJson(),
+        if (playAudio != null) 'playAudio': playAudio!,
+        if (text != null) 'text': text!,
       };
 }
 
@@ -10968,8 +10886,7 @@ class GoogleCloudDialogflowCxV3ResponseMessageMixedAudio {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (segments != null)
-          'segments': segments!.map((value) => value.toJson()).toList(),
+        if (segments != null) 'segments': segments!,
       };
 }
 
@@ -11246,8 +11163,7 @@ class GoogleCloudDialogflowCxV3RolloutConfig {
   core.Map<core.String, core.dynamic> toJson() => {
         if (failureCondition != null) 'failureCondition': failureCondition!,
         if (rolloutCondition != null) 'rolloutCondition': rolloutCondition!,
-        if (rolloutSteps != null)
-          'rolloutSteps': rolloutSteps!.map((value) => value.toJson()).toList(),
+        if (rolloutSteps != null) 'rolloutSteps': rolloutSteps!,
       };
 }
 
@@ -11350,8 +11266,7 @@ class GoogleCloudDialogflowCxV3RunContinuousTestMetadata {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (errors != null)
-          'errors': errors!.map((value) => value.toJson()).toList(),
+        if (errors != null) 'errors': errors!,
       };
 }
 
@@ -11378,7 +11293,7 @@ class GoogleCloudDialogflowCxV3RunContinuousTestResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (continuousTestResult != null)
-          'continuousTestResult': continuousTestResult!.toJson(),
+          'continuousTestResult': continuousTestResult!,
       };
 }
 
@@ -11431,7 +11346,7 @@ class GoogleCloudDialogflowCxV3RunTestCaseResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (result != null) 'result': result!.toJson(),
+        if (result != null) 'result': result!,
       };
 }
 
@@ -11563,7 +11478,7 @@ class GoogleCloudDialogflowCxV3SecuritySettings {
           'deidentifyTemplate': deidentifyTemplate!,
         if (displayName != null) 'displayName': displayName!,
         if (insightsExportSettings != null)
-          'insightsExportSettings': insightsExportSettings!.toJson(),
+          'insightsExportSettings': insightsExportSettings!,
         if (inspectTemplate != null) 'inspectTemplate': inspectTemplate!,
         if (name != null) 'name': name!,
         if (purgeDataTypes != null) 'purgeDataTypes': purgeDataTypes!,
@@ -11702,8 +11617,7 @@ class GoogleCloudDialogflowCxV3SessionEntityType {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (entities != null)
-          'entities': entities!.map((value) => value.toJson()).toList(),
+        if (entities != null) 'entities': entities!,
         if (entityOverrideMode != null)
           'entityOverrideMode': entityOverrideMode!,
         if (name != null) 'name': name!,
@@ -11861,7 +11775,7 @@ class GoogleCloudDialogflowCxV3SynthesizeSpeechConfig {
         if (effectsProfileId != null) 'effectsProfileId': effectsProfileId!,
         if (pitch != null) 'pitch': pitch!,
         if (speakingRate != null) 'speakingRate': speakingRate!,
-        if (voice != null) 'voice': voice!.toJson(),
+        if (voice != null) 'voice': voice!,
         if (volumeGainDb != null) 'volumeGainDb': volumeGainDb!,
       };
 }
@@ -11960,15 +11874,13 @@ class GoogleCloudDialogflowCxV3TestCase {
   core.Map<core.String, core.dynamic> toJson() => {
         if (creationTime != null) 'creationTime': creationTime!,
         if (displayName != null) 'displayName': displayName!,
-        if (lastTestResult != null) 'lastTestResult': lastTestResult!.toJson(),
+        if (lastTestResult != null) 'lastTestResult': lastTestResult!,
         if (name != null) 'name': name!,
         if (notes != null) 'notes': notes!,
         if (tags != null) 'tags': tags!,
         if (testCaseConversationTurns != null)
-          'testCaseConversationTurns': testCaseConversationTurns!
-              .map((value) => value.toJson())
-              .toList(),
-        if (testConfig != null) 'testConfig': testConfig!.toJson(),
+          'testCaseConversationTurns': testCaseConversationTurns!,
+        if (testConfig != null) 'testConfig': testConfig!,
       };
 }
 
@@ -11998,8 +11910,8 @@ class GoogleCloudDialogflowCxV3TestCaseError {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (status != null) 'status': status!.toJson(),
-        if (testCase != null) 'testCase': testCase!.toJson(),
+        if (status != null) 'status': status!,
+        if (testCase != null) 'testCase': testCase!,
       };
 }
 
@@ -12059,9 +11971,7 @@ class GoogleCloudDialogflowCxV3TestCaseResult {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (conversationTurns != null)
-          'conversationTurns':
-              conversationTurns!.map((value) => value.toJson()).toList(),
+        if (conversationTurns != null) 'conversationTurns': conversationTurns!,
         if (environment != null) 'environment': environment!,
         if (name != null) 'name': name!,
         if (testResult != null) 'testResult': testResult!,
@@ -12134,7 +12044,7 @@ class GoogleCloudDialogflowCxV3TestError {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (status != null) 'status': status!.toJson(),
+        if (status != null) 'status': status!,
         if (testCase != null) 'testCase': testCase!,
         if (testTime != null) 'testTime': testTime!,
       };
@@ -12231,8 +12141,7 @@ class GoogleCloudDialogflowCxV3TransitionCoverage {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (coverageScore != null) 'coverageScore': coverageScore!,
-        if (transitions != null)
-          'transitions': transitions!.map((value) => value.toJson()).toList(),
+        if (transitions != null) 'transitions': transitions!,
       };
 }
 
@@ -12297,12 +12206,11 @@ class GoogleCloudDialogflowCxV3TransitionCoverageTransition {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (covered != null) 'covered': covered!,
-        if (eventHandler != null) 'eventHandler': eventHandler!.toJson(),
+        if (eventHandler != null) 'eventHandler': eventHandler!,
         if (index != null) 'index': index!,
-        if (source != null) 'source': source!.toJson(),
-        if (target != null) 'target': target!.toJson(),
-        if (transitionRoute != null)
-          'transitionRoute': transitionRoute!.toJson(),
+        if (source != null) 'source': source!,
+        if (target != null) 'target': target!,
+        if (transitionRoute != null) 'transitionRoute': transitionRoute!,
       };
 }
 
@@ -12337,8 +12245,8 @@ class GoogleCloudDialogflowCxV3TransitionCoverageTransitionNode {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (flow != null) 'flow': flow!.toJson(),
-        if (page != null) 'page': page!.toJson(),
+        if (flow != null) 'flow': flow!,
+        if (page != null) 'page': page!,
       };
 }
 
@@ -12429,7 +12337,7 @@ class GoogleCloudDialogflowCxV3TransitionRoute {
         if (targetFlow != null) 'targetFlow': targetFlow!,
         if (targetPage != null) 'targetPage': targetPage!,
         if (triggerFulfillment != null)
-          'triggerFulfillment': triggerFulfillment!.toJson(),
+          'triggerFulfillment': triggerFulfillment!,
       };
 }
 
@@ -12478,9 +12386,7 @@ class GoogleCloudDialogflowCxV3TransitionRouteGroup {
   core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
         if (name != null) 'name': name!,
-        if (transitionRoutes != null)
-          'transitionRoutes':
-              transitionRoutes!.map((value) => value.toJson()).toList(),
+        if (transitionRoutes != null) 'transitionRoutes': transitionRoutes!,
       };
 }
 
@@ -12519,8 +12425,7 @@ class GoogleCloudDialogflowCxV3TransitionRouteGroupCoverage {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (coverageScore != null) 'coverageScore': coverageScore!,
-        if (coverages != null)
-          'coverages': coverages!.map((value) => value.toJson()).toList(),
+        if (coverages != null) 'coverages': coverages!,
       };
 }
 
@@ -12568,9 +12473,8 @@ class GoogleCloudDialogflowCxV3TransitionRouteGroupCoverageCoverage {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (coverageScore != null) 'coverageScore': coverageScore!,
-        if (routeGroup != null) 'routeGroup': routeGroup!.toJson(),
-        if (transitions != null)
-          'transitions': transitions!.map((value) => value.toJson()).toList(),
+        if (routeGroup != null) 'routeGroup': routeGroup!,
+        if (transitions != null) 'transitions': transitions!,
       };
 }
 
@@ -12603,8 +12507,7 @@ class GoogleCloudDialogflowCxV3TransitionRouteGroupCoverageCoverageTransition {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (covered != null) 'covered': covered!,
-        if (transitionRoute != null)
-          'transitionRoute': transitionRoute!.toJson(),
+        if (transitionRoute != null) 'transitionRoute': transitionRoute!,
       };
 }
 
@@ -12628,8 +12531,7 @@ class GoogleCloudDialogflowCxV3UpdateDocumentOperationMetadata {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (genericMetadata != null)
-          'genericMetadata': genericMetadata!.toJson(),
+        if (genericMetadata != null) 'genericMetadata': genericMetadata!,
       };
 }
 
@@ -12747,9 +12649,7 @@ class GoogleCloudDialogflowCxV3ValidationMessage {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (detail != null) 'detail': detail!,
-        if (resourceNames != null)
-          'resourceNames':
-              resourceNames!.map((value) => value.toJson()).toList(),
+        if (resourceNames != null) 'resourceNames': resourceNames!,
         if (resourceType != null) 'resourceType': resourceType!,
         if (resources != null) 'resources': resources!,
         if (severity != null) 'severity': severity!,
@@ -12783,8 +12683,7 @@ class GoogleCloudDialogflowCxV3VariantsHistory {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (updateTime != null) 'updateTime': updateTime!,
-        if (versionVariants != null)
-          'versionVariants': versionVariants!.toJson(),
+        if (versionVariants != null) 'versionVariants': versionVariants!,
       };
 }
 
@@ -12865,7 +12764,7 @@ class GoogleCloudDialogflowCxV3Version {
         if (description != null) 'description': description!,
         if (displayName != null) 'displayName': displayName!,
         if (name != null) 'name': name!,
-        if (nluSettings != null) 'nluSettings': nluSettings!.toJson(),
+        if (nluSettings != null) 'nluSettings': nluSettings!,
         if (state != null) 'state': state!,
       };
 }
@@ -12891,8 +12790,7 @@ class GoogleCloudDialogflowCxV3VersionVariants {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (variants != null)
-          'variants': variants!.map((value) => value.toJson()).toList(),
+        if (variants != null) 'variants': variants!,
       };
 }
 
@@ -13056,11 +12954,9 @@ class GoogleCloudDialogflowCxV3Webhook {
   core.Map<core.String, core.dynamic> toJson() => {
         if (disabled != null) 'disabled': disabled!,
         if (displayName != null) 'displayName': displayName!,
-        if (genericWebService != null)
-          'genericWebService': genericWebService!.toJson(),
+        if (genericWebService != null) 'genericWebService': genericWebService!,
         if (name != null) 'name': name!,
-        if (serviceDirectory != null)
-          'serviceDirectory': serviceDirectory!.toJson(),
+        if (serviceDirectory != null) 'serviceDirectory': serviceDirectory!,
         if (timeout != null) 'timeout': timeout!,
       };
 }
@@ -13254,17 +13150,15 @@ class GoogleCloudDialogflowCxV3WebhookRequest {
   core.Map<core.String, core.dynamic> toJson() => {
         if (detectIntentResponseId != null)
           'detectIntentResponseId': detectIntentResponseId!,
-        if (fulfillmentInfo != null)
-          'fulfillmentInfo': fulfillmentInfo!.toJson(),
-        if (intentInfo != null) 'intentInfo': intentInfo!.toJson(),
+        if (fulfillmentInfo != null) 'fulfillmentInfo': fulfillmentInfo!,
+        if (intentInfo != null) 'intentInfo': intentInfo!,
         if (languageCode != null) 'languageCode': languageCode!,
-        if (messages != null)
-          'messages': messages!.map((value) => value.toJson()).toList(),
-        if (pageInfo != null) 'pageInfo': pageInfo!.toJson(),
+        if (messages != null) 'messages': messages!,
+        if (pageInfo != null) 'pageInfo': pageInfo!,
         if (payload != null) 'payload': payload!,
         if (sentimentAnalysisResult != null)
-          'sentimentAnalysisResult': sentimentAnalysisResult!.toJson(),
-        if (sessionInfo != null) 'sessionInfo': sessionInfo!.toJson(),
+          'sentimentAnalysisResult': sentimentAnalysisResult!,
+        if (sessionInfo != null) 'sessionInfo': sessionInfo!,
         if (text != null) 'text': text!,
         if (transcript != null) 'transcript': transcript!,
         if (triggerEvent != null) 'triggerEvent': triggerEvent!,
@@ -13355,9 +13249,7 @@ class GoogleCloudDialogflowCxV3WebhookRequestIntentInfo {
         if (confidence != null) 'confidence': confidence!,
         if (displayName != null) 'displayName': displayName!,
         if (lastMatchedIntent != null) 'lastMatchedIntent': lastMatchedIntent!,
-        if (parameters != null)
-          'parameters':
-              parameters!.map((key, item) => core.MapEntry(key, item.toJson())),
+        if (parameters != null) 'parameters': parameters!,
       };
 }
 
@@ -13505,10 +13397,10 @@ class GoogleCloudDialogflowCxV3WebhookResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (fulfillmentResponse != null)
-          'fulfillmentResponse': fulfillmentResponse!.toJson(),
-        if (pageInfo != null) 'pageInfo': pageInfo!.toJson(),
+          'fulfillmentResponse': fulfillmentResponse!,
+        if (pageInfo != null) 'pageInfo': pageInfo!,
         if (payload != null) 'payload': payload!,
-        if (sessionInfo != null) 'sessionInfo': sessionInfo!.toJson(),
+        if (sessionInfo != null) 'sessionInfo': sessionInfo!,
         if (targetFlow != null) 'targetFlow': targetFlow!,
         if (targetPage != null) 'targetPage': targetPage!,
       };
@@ -13550,8 +13442,7 @@ class GoogleCloudDialogflowCxV3WebhookResponseFulfillmentResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (mergeBehavior != null) 'mergeBehavior': mergeBehavior!,
-        if (messages != null)
-          'messages': messages!.map((value) => value.toJson()).toList(),
+        if (messages != null) 'messages': messages!,
       };
 }
 
@@ -13589,8 +13480,7 @@ class GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (genericWebService != null)
-          'genericWebService': genericWebService!.toJson(),
+        if (genericWebService != null) 'genericWebService': genericWebService!,
         if (service != null) 'service': service!,
       };
 }
@@ -13634,7 +13524,7 @@ class GoogleCloudDialogflowCxV3beta1AudioInput {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (audio != null) 'audio': audio!,
-        if (config != null) 'config': config!.toJson(),
+        if (config != null) 'config': config!,
       };
 }
 
@@ -13661,8 +13551,7 @@ class GoogleCloudDialogflowCxV3beta1BatchRunTestCasesMetadata {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (errors != null)
-          'errors': errors!.map((value) => value.toJson()).toList(),
+        if (errors != null) 'errors': errors!,
       };
 }
 
@@ -13690,8 +13579,7 @@ class GoogleCloudDialogflowCxV3beta1BatchRunTestCasesResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (results != null)
-          'results': results!.map((value) => value.toJson()).toList(),
+        if (results != null) 'results': results!,
       };
 }
 
@@ -13780,9 +13668,9 @@ class GoogleCloudDialogflowCxV3beta1ConversationTurn {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (userInput != null) 'userInput': userInput!.toJson(),
+        if (userInput != null) 'userInput': userInput!,
         if (virtualAgentOutput != null)
-          'virtualAgentOutput': virtualAgentOutput!.toJson(),
+          'virtualAgentOutput': virtualAgentOutput!,
       };
 }
 
@@ -13838,7 +13726,7 @@ class GoogleCloudDialogflowCxV3beta1ConversationTurnUserInput {
           'enableSentimentAnalysis': enableSentimentAnalysis!,
         if (injectedParameters != null)
           'injectedParameters': injectedParameters!,
-        if (input != null) 'input': input!.toJson(),
+        if (input != null) 'input': input!,
         if (isWebhookEnabled != null) 'isWebhookEnabled': isWebhookEnabled!,
       };
 }
@@ -13937,17 +13825,13 @@ class GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutput {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (currentPage != null) 'currentPage': currentPage!.toJson(),
+        if (currentPage != null) 'currentPage': currentPage!,
         if (diagnosticInfo != null) 'diagnosticInfo': diagnosticInfo!,
-        if (differences != null)
-          'differences': differences!.map((value) => value.toJson()).toList(),
+        if (differences != null) 'differences': differences!,
         if (sessionParameters != null) 'sessionParameters': sessionParameters!,
-        if (status != null) 'status': status!.toJson(),
-        if (textResponses != null)
-          'textResponses':
-              textResponses!.map((value) => value.toJson()).toList(),
-        if (triggeredIntent != null)
-          'triggeredIntent': triggeredIntent!.toJson(),
+        if (status != null) 'status': status!,
+        if (textResponses != null) 'textResponses': textResponses!,
+        if (triggeredIntent != null) 'triggeredIntent': triggeredIntent!,
       };
 }
 
@@ -13972,8 +13856,7 @@ class GoogleCloudDialogflowCxV3beta1CreateDocumentOperationMetadata {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (genericMetadata != null)
-          'genericMetadata': genericMetadata!.toJson(),
+        if (genericMetadata != null) 'genericMetadata': genericMetadata!,
       };
 }
 
@@ -14023,8 +13906,7 @@ class GoogleCloudDialogflowCxV3beta1DeleteDocumentOperationMetadata {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (genericMetadata != null)
-          'genericMetadata': genericMetadata!.toJson(),
+        if (genericMetadata != null) 'genericMetadata': genericMetadata!,
       };
 }
 
@@ -14125,7 +14007,7 @@ class GoogleCloudDialogflowCxV3beta1EventHandler {
         if (targetFlow != null) 'targetFlow': targetFlow!,
         if (targetPage != null) 'targetPage': targetPage!,
         if (triggerFulfillment != null)
-          'triggerFulfillment': triggerFulfillment!.toJson(),
+          'triggerFulfillment': triggerFulfillment!,
       };
 }
 
@@ -14297,8 +14179,7 @@ class GoogleCloudDialogflowCxV3beta1Form {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (parameters != null)
-          'parameters': parameters!.map((value) => value.toJson()).toList(),
+        if (parameters != null) 'parameters': parameters!,
       };
 }
 
@@ -14388,7 +14269,7 @@ class GoogleCloudDialogflowCxV3beta1FormParameter {
         if (defaultValue != null) 'defaultValue': defaultValue!,
         if (displayName != null) 'displayName': displayName!,
         if (entityType != null) 'entityType': entityType!,
-        if (fillBehavior != null) 'fillBehavior': fillBehavior!.toJson(),
+        if (fillBehavior != null) 'fillBehavior': fillBehavior!,
         if (isList != null) 'isList': isList!,
         if (redact != null) 'redact': redact!,
         if (required != null) 'required': required!,
@@ -14452,10 +14333,9 @@ class GoogleCloudDialogflowCxV3beta1FormParameterFillBehavior {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (initialPromptFulfillment != null)
-          'initialPromptFulfillment': initialPromptFulfillment!.toJson(),
+          'initialPromptFulfillment': initialPromptFulfillment!,
         if (repromptEventHandlers != null)
-          'repromptEventHandlers':
-              repromptEventHandlers!.map((value) => value.toJson()).toList(),
+          'repromptEventHandlers': repromptEventHandlers!,
       };
 }
 
@@ -14545,16 +14425,12 @@ class GoogleCloudDialogflowCxV3beta1Fulfillment {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (conditionalCases != null)
-          'conditionalCases':
-              conditionalCases!.map((value) => value.toJson()).toList(),
-        if (messages != null)
-          'messages': messages!.map((value) => value.toJson()).toList(),
+        if (conditionalCases != null) 'conditionalCases': conditionalCases!,
+        if (messages != null) 'messages': messages!,
         if (returnPartialResponses != null)
           'returnPartialResponses': returnPartialResponses!,
         if (setParameterActions != null)
-          'setParameterActions':
-              setParameterActions!.map((value) => value.toJson()).toList(),
+          'setParameterActions': setParameterActions!,
         if (tag != null) 'tag': tag!,
         if (webhook != null) 'webhook': webhook!,
       };
@@ -14587,8 +14463,7 @@ class GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCases {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cases != null)
-          'cases': cases!.map((value) => value.toJson()).toList(),
+        if (cases != null) 'cases': cases!,
       };
 }
 
@@ -14631,8 +14506,7 @@ class GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesCase {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (caseContent != null)
-          'caseContent': caseContent!.map((value) => value.toJson()).toList(),
+        if (caseContent != null) 'caseContent': caseContent!,
         if (condition != null) 'condition': condition!,
       };
 }
@@ -14665,9 +14539,8 @@ class GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesCaseCaseContent {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (additionalCases != null)
-          'additionalCases': additionalCases!.toJson(),
-        if (message != null) 'message': message!.toJson(),
+        if (additionalCases != null) 'additionalCases': additionalCases!,
+        if (message != null) 'message': message!,
       };
 }
 
@@ -14753,8 +14626,7 @@ class GoogleCloudDialogflowCxV3beta1ImportDocumentsOperationMetadata {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (genericMetadata != null)
-          'genericMetadata': genericMetadata!.toJson(),
+        if (genericMetadata != null) 'genericMetadata': genericMetadata!,
       };
 }
 
@@ -14778,8 +14650,7 @@ class GoogleCloudDialogflowCxV3beta1ImportDocumentsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (warnings != null)
-          'warnings': warnings!.map((value) => value.toJson()).toList(),
+        if (warnings != null) 'warnings': warnings!,
       };
 }
 
@@ -14825,8 +14696,7 @@ class GoogleCloudDialogflowCxV3beta1ImportTestCasesMetadata {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (errors != null)
-          'errors': errors!.map((value) => value.toJson()).toList(),
+        if (errors != null) 'errors': errors!,
       };
 }
 
@@ -15137,12 +15007,9 @@ class GoogleCloudDialogflowCxV3beta1Intent {
         if (isFallback != null) 'isFallback': isFallback!,
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
-        if (parameters != null)
-          'parameters': parameters!.map((value) => value.toJson()).toList(),
+        if (parameters != null) 'parameters': parameters!,
         if (priority != null) 'priority': priority!,
-        if (trainingPhrases != null)
-          'trainingPhrases':
-              trainingPhrases!.map((value) => value.toJson()).toList(),
+        if (trainingPhrases != null) 'trainingPhrases': trainingPhrases!,
       };
 }
 
@@ -15280,8 +15147,7 @@ class GoogleCloudDialogflowCxV3beta1IntentTrainingPhrase {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (id != null) 'id': id!,
-        if (parts != null)
-          'parts': parts!.map((value) => value.toJson()).toList(),
+        if (parts != null) 'parts': parts!,
         if (repeatCount != null) 'repeatCount': repeatCount!,
       };
 }
@@ -15427,18 +15293,13 @@ class GoogleCloudDialogflowCxV3beta1Page {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
-        if (entryFulfillment != null)
-          'entryFulfillment': entryFulfillment!.toJson(),
-        if (eventHandlers != null)
-          'eventHandlers':
-              eventHandlers!.map((value) => value.toJson()).toList(),
-        if (form != null) 'form': form!.toJson(),
+        if (entryFulfillment != null) 'entryFulfillment': entryFulfillment!,
+        if (eventHandlers != null) 'eventHandlers': eventHandlers!,
+        if (form != null) 'form': form!,
         if (name != null) 'name': name!,
         if (transitionRouteGroups != null)
           'transitionRouteGroups': transitionRouteGroups!,
-        if (transitionRoutes != null)
-          'transitionRoutes':
-              transitionRoutes!.map((value) => value.toJson()).toList(),
+        if (transitionRoutes != null) 'transitionRoutes': transitionRoutes!,
       };
 }
 
@@ -15473,7 +15334,7 @@ class GoogleCloudDialogflowCxV3beta1PageInfo {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (currentPage != null) 'currentPage': currentPage!,
-        if (formInfo != null) 'formInfo': formInfo!.toJson(),
+        if (formInfo != null) 'formInfo': formInfo!,
       };
 }
 
@@ -15503,9 +15364,7 @@ class GoogleCloudDialogflowCxV3beta1PageInfoFormInfo {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (parameterInfo != null)
-          'parameterInfo':
-              parameterInfo!.map((value) => value.toJson()).toList(),
+        if (parameterInfo != null) 'parameterInfo': parameterInfo!,
       };
 }
 
@@ -15656,12 +15515,12 @@ class GoogleCloudDialogflowCxV3beta1QueryInput {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (audio != null) 'audio': audio!.toJson(),
-        if (dtmf != null) 'dtmf': dtmf!.toJson(),
-        if (event != null) 'event': event!.toJson(),
-        if (intent != null) 'intent': intent!.toJson(),
+        if (audio != null) 'audio': audio!,
+        if (dtmf != null) 'dtmf': dtmf!,
+        if (event != null) 'event': event!,
+        if (intent != null) 'intent': intent!,
         if (languageCode != null) 'languageCode': languageCode!,
-        if (text != null) 'text': text!.toJson(),
+        if (text != null) 'text': text!,
       };
 }
 
@@ -15686,8 +15545,7 @@ class GoogleCloudDialogflowCxV3beta1ReloadDocumentOperationMetadata {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (genericMetadata != null)
-          'genericMetadata': genericMetadata!.toJson(),
+        if (genericMetadata != null) 'genericMetadata': genericMetadata!,
       };
 }
 
@@ -15806,16 +15664,14 @@ class GoogleCloudDialogflowCxV3beta1ResponseMessage {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (conversationSuccess != null)
-          'conversationSuccess': conversationSuccess!.toJson(),
-        if (endInteraction != null) 'endInteraction': endInteraction!.toJson(),
-        if (liveAgentHandoff != null)
-          'liveAgentHandoff': liveAgentHandoff!.toJson(),
-        if (mixedAudio != null) 'mixedAudio': mixedAudio!.toJson(),
-        if (outputAudioText != null)
-          'outputAudioText': outputAudioText!.toJson(),
+          'conversationSuccess': conversationSuccess!,
+        if (endInteraction != null) 'endInteraction': endInteraction!,
+        if (liveAgentHandoff != null) 'liveAgentHandoff': liveAgentHandoff!,
+        if (mixedAudio != null) 'mixedAudio': mixedAudio!,
+        if (outputAudioText != null) 'outputAudioText': outputAudioText!,
         if (payload != null) 'payload': payload!,
-        if (playAudio != null) 'playAudio': playAudio!.toJson(),
-        if (text != null) 'text': text!.toJson(),
+        if (playAudio != null) 'playAudio': playAudio!,
+        if (text != null) 'text': text!,
       };
 }
 
@@ -15925,8 +15781,7 @@ class GoogleCloudDialogflowCxV3beta1ResponseMessageMixedAudio {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (segments != null)
-          'segments': segments!.map((value) => value.toJson()).toList(),
+        if (segments != null) 'segments': segments!,
       };
 }
 
@@ -16122,8 +15977,7 @@ class GoogleCloudDialogflowCxV3beta1RunContinuousTestMetadata {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (errors != null)
-          'errors': errors!.map((value) => value.toJson()).toList(),
+        if (errors != null) 'errors': errors!,
       };
 }
 
@@ -16148,7 +16002,7 @@ class GoogleCloudDialogflowCxV3beta1RunContinuousTestResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (continuousTestResult != null)
-          'continuousTestResult': continuousTestResult!.toJson(),
+          'continuousTestResult': continuousTestResult!,
       };
 }
 
@@ -16175,7 +16029,7 @@ class GoogleCloudDialogflowCxV3beta1RunTestCaseResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (result != null) 'result': result!.toJson(),
+        if (result != null) 'result': result!,
       };
 }
 
@@ -16317,15 +16171,13 @@ class GoogleCloudDialogflowCxV3beta1TestCase {
   core.Map<core.String, core.dynamic> toJson() => {
         if (creationTime != null) 'creationTime': creationTime!,
         if (displayName != null) 'displayName': displayName!,
-        if (lastTestResult != null) 'lastTestResult': lastTestResult!.toJson(),
+        if (lastTestResult != null) 'lastTestResult': lastTestResult!,
         if (name != null) 'name': name!,
         if (notes != null) 'notes': notes!,
         if (tags != null) 'tags': tags!,
         if (testCaseConversationTurns != null)
-          'testCaseConversationTurns': testCaseConversationTurns!
-              .map((value) => value.toJson())
-              .toList(),
-        if (testConfig != null) 'testConfig': testConfig!.toJson(),
+          'testCaseConversationTurns': testCaseConversationTurns!,
+        if (testConfig != null) 'testConfig': testConfig!,
       };
 }
 
@@ -16355,8 +16207,8 @@ class GoogleCloudDialogflowCxV3beta1TestCaseError {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (status != null) 'status': status!.toJson(),
-        if (testCase != null) 'testCase': testCase!.toJson(),
+        if (status != null) 'status': status!,
+        if (testCase != null) 'testCase': testCase!,
       };
 }
 
@@ -16416,9 +16268,7 @@ class GoogleCloudDialogflowCxV3beta1TestCaseResult {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (conversationTurns != null)
-          'conversationTurns':
-              conversationTurns!.map((value) => value.toJson()).toList(),
+        if (conversationTurns != null) 'conversationTurns': conversationTurns!,
         if (environment != null) 'environment': environment!,
         if (name != null) 'name': name!,
         if (testResult != null) 'testResult': testResult!,
@@ -16491,7 +16341,7 @@ class GoogleCloudDialogflowCxV3beta1TestError {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (status != null) 'status': status!.toJson(),
+        if (status != null) 'status': status!,
         if (testCase != null) 'testCase': testCase!,
         if (testTime != null) 'testTime': testTime!,
       };
@@ -16640,7 +16490,7 @@ class GoogleCloudDialogflowCxV3beta1TransitionRoute {
         if (targetFlow != null) 'targetFlow': targetFlow!,
         if (targetPage != null) 'targetPage': targetPage!,
         if (triggerFulfillment != null)
-          'triggerFulfillment': triggerFulfillment!.toJson(),
+          'triggerFulfillment': triggerFulfillment!,
       };
 }
 
@@ -16665,8 +16515,7 @@ class GoogleCloudDialogflowCxV3beta1UpdateDocumentOperationMetadata {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (genericMetadata != null)
-          'genericMetadata': genericMetadata!.toJson(),
+        if (genericMetadata != null) 'genericMetadata': genericMetadata!,
       };
 }
 
@@ -16806,17 +16655,15 @@ class GoogleCloudDialogflowCxV3beta1WebhookRequest {
   core.Map<core.String, core.dynamic> toJson() => {
         if (detectIntentResponseId != null)
           'detectIntentResponseId': detectIntentResponseId!,
-        if (fulfillmentInfo != null)
-          'fulfillmentInfo': fulfillmentInfo!.toJson(),
-        if (intentInfo != null) 'intentInfo': intentInfo!.toJson(),
+        if (fulfillmentInfo != null) 'fulfillmentInfo': fulfillmentInfo!,
+        if (intentInfo != null) 'intentInfo': intentInfo!,
         if (languageCode != null) 'languageCode': languageCode!,
-        if (messages != null)
-          'messages': messages!.map((value) => value.toJson()).toList(),
-        if (pageInfo != null) 'pageInfo': pageInfo!.toJson(),
+        if (messages != null) 'messages': messages!,
+        if (pageInfo != null) 'pageInfo': pageInfo!,
         if (payload != null) 'payload': payload!,
         if (sentimentAnalysisResult != null)
-          'sentimentAnalysisResult': sentimentAnalysisResult!.toJson(),
-        if (sessionInfo != null) 'sessionInfo': sessionInfo!.toJson(),
+          'sentimentAnalysisResult': sentimentAnalysisResult!,
+        if (sessionInfo != null) 'sessionInfo': sessionInfo!,
         if (text != null) 'text': text!,
         if (transcript != null) 'transcript': transcript!,
         if (triggerEvent != null) 'triggerEvent': triggerEvent!,
@@ -16908,9 +16755,7 @@ class GoogleCloudDialogflowCxV3beta1WebhookRequestIntentInfo {
         if (confidence != null) 'confidence': confidence!,
         if (displayName != null) 'displayName': displayName!,
         if (lastMatchedIntent != null) 'lastMatchedIntent': lastMatchedIntent!,
-        if (parameters != null)
-          'parameters':
-              parameters!.map((key, item) => core.MapEntry(key, item.toJson())),
+        if (parameters != null) 'parameters': parameters!,
       };
 }
 
@@ -17058,10 +16903,10 @@ class GoogleCloudDialogflowCxV3beta1WebhookResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (fulfillmentResponse != null)
-          'fulfillmentResponse': fulfillmentResponse!.toJson(),
-        if (pageInfo != null) 'pageInfo': pageInfo!.toJson(),
+          'fulfillmentResponse': fulfillmentResponse!,
+        if (pageInfo != null) 'pageInfo': pageInfo!,
         if (payload != null) 'payload': payload!,
-        if (sessionInfo != null) 'sessionInfo': sessionInfo!.toJson(),
+        if (sessionInfo != null) 'sessionInfo': sessionInfo!,
         if (targetFlow != null) 'targetFlow': targetFlow!,
         if (targetPage != null) 'targetPage': targetPage!,
       };
@@ -17103,8 +16948,7 @@ class GoogleCloudDialogflowCxV3beta1WebhookResponseFulfillmentResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (mergeBehavior != null) 'mergeBehavior': mergeBehavior!,
-        if (messages != null)
-          'messages': messages!.map((value) => value.toJson()).toList(),
+        if (messages != null) 'messages': messages!,
       };
 }
 
@@ -17250,8 +17094,7 @@ class GoogleCloudDialogflowV2BatchUpdateEntityTypesResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (entityTypes != null)
-          'entityTypes': entityTypes!.map((value) => value.toJson()).toList(),
+        if (entityTypes != null) 'entityTypes': entityTypes!,
       };
 }
 
@@ -17275,8 +17118,7 @@ class GoogleCloudDialogflowV2BatchUpdateIntentsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (intents != null)
-          'intents': intents!.map((value) => value.toJson()).toList(),
+        if (intents != null) 'intents': intents!,
       };
 }
 
@@ -17424,9 +17266,8 @@ class GoogleCloudDialogflowV2ConversationEvent {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (conversation != null) 'conversation': conversation!,
-        if (errorStatus != null) 'errorStatus': errorStatus!.toJson(),
-        if (newMessagePayload != null)
-          'newMessagePayload': newMessagePayload!.toJson(),
+        if (errorStatus != null) 'errorStatus': errorStatus!,
+        if (newMessagePayload != null) 'newMessagePayload': newMessagePayload!,
         if (type != null) 'type': type!,
       };
 }
@@ -17524,8 +17365,7 @@ class GoogleCloudDialogflowV2EntityType {
         if (displayName != null) 'displayName': displayName!,
         if (enableFuzzyExtraction != null)
           'enableFuzzyExtraction': enableFuzzyExtraction!,
-        if (entities != null)
-          'entities': entities!.map((value) => value.toJson()).toList(),
+        if (entities != null) 'entities': entities!,
         if (kind != null) 'kind': kind!,
         if (name != null) 'name': name!,
       };
@@ -17790,9 +17630,7 @@ class GoogleCloudDialogflowV2HumanAgentAssistantEvent {
   core.Map<core.String, core.dynamic> toJson() => {
         if (conversation != null) 'conversation': conversation!,
         if (participant != null) 'participant': participant!,
-        if (suggestionResults != null)
-          'suggestionResults':
-              suggestionResults!.map((value) => value.toJson()).toList(),
+        if (suggestionResults != null) 'suggestionResults': suggestionResults!,
       };
 }
 
@@ -18081,29 +17919,22 @@ class GoogleCloudDialogflowV2Intent {
         if (endInteraction != null) 'endInteraction': endInteraction!,
         if (events != null) 'events': events!,
         if (followupIntentInfo != null)
-          'followupIntentInfo':
-              followupIntentInfo!.map((value) => value.toJson()).toList(),
+          'followupIntentInfo': followupIntentInfo!,
         if (inputContextNames != null) 'inputContextNames': inputContextNames!,
         if (isFallback != null) 'isFallback': isFallback!,
         if (liveAgentHandoff != null) 'liveAgentHandoff': liveAgentHandoff!,
-        if (messages != null)
-          'messages': messages!.map((value) => value.toJson()).toList(),
+        if (messages != null) 'messages': messages!,
         if (mlDisabled != null) 'mlDisabled': mlDisabled!,
         if (name != null) 'name': name!,
-        if (outputContexts != null)
-          'outputContexts':
-              outputContexts!.map((value) => value.toJson()).toList(),
-        if (parameters != null)
-          'parameters': parameters!.map((value) => value.toJson()).toList(),
+        if (outputContexts != null) 'outputContexts': outputContexts!,
+        if (parameters != null) 'parameters': parameters!,
         if (parentFollowupIntentName != null)
           'parentFollowupIntentName': parentFollowupIntentName!,
         if (priority != null) 'priority': priority!,
         if (resetContexts != null) 'resetContexts': resetContexts!,
         if (rootFollowupIntentName != null)
           'rootFollowupIntentName': rootFollowupIntentName!,
-        if (trainingPhrases != null)
-          'trainingPhrases':
-              trainingPhrases!.map((value) => value.toJson()).toList(),
+        if (trainingPhrases != null) 'trainingPhrases': trainingPhrases!,
         if (webhookState != null) 'webhookState': webhookState!,
       };
 }
@@ -18297,24 +18128,22 @@ class GoogleCloudDialogflowV2IntentMessage {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (basicCard != null) 'basicCard': basicCard!.toJson(),
+        if (basicCard != null) 'basicCard': basicCard!,
         if (browseCarouselCard != null)
-          'browseCarouselCard': browseCarouselCard!.toJson(),
-        if (card != null) 'card': card!.toJson(),
-        if (carouselSelect != null) 'carouselSelect': carouselSelect!.toJson(),
-        if (image != null) 'image': image!.toJson(),
-        if (linkOutSuggestion != null)
-          'linkOutSuggestion': linkOutSuggestion!.toJson(),
-        if (listSelect != null) 'listSelect': listSelect!.toJson(),
-        if (mediaContent != null) 'mediaContent': mediaContent!.toJson(),
+          'browseCarouselCard': browseCarouselCard!,
+        if (card != null) 'card': card!,
+        if (carouselSelect != null) 'carouselSelect': carouselSelect!,
+        if (image != null) 'image': image!,
+        if (linkOutSuggestion != null) 'linkOutSuggestion': linkOutSuggestion!,
+        if (listSelect != null) 'listSelect': listSelect!,
+        if (mediaContent != null) 'mediaContent': mediaContent!,
         if (payload != null) 'payload': payload!,
         if (platform != null) 'platform': platform!,
-        if (quickReplies != null) 'quickReplies': quickReplies!.toJson(),
-        if (simpleResponses != null)
-          'simpleResponses': simpleResponses!.toJson(),
-        if (suggestions != null) 'suggestions': suggestions!.toJson(),
-        if (tableCard != null) 'tableCard': tableCard!.toJson(),
-        if (text != null) 'text': text!.toJson(),
+        if (quickReplies != null) 'quickReplies': quickReplies!,
+        if (simpleResponses != null) 'simpleResponses': simpleResponses!,
+        if (suggestions != null) 'suggestions': suggestions!,
+        if (tableCard != null) 'tableCard': tableCard!,
+        if (text != null) 'text': text!,
       };
 }
 
@@ -18380,10 +18209,9 @@ class GoogleCloudDialogflowV2IntentMessageBasicCard {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (buttons != null)
-          'buttons': buttons!.map((value) => value.toJson()).toList(),
+        if (buttons != null) 'buttons': buttons!,
         if (formattedText != null) 'formattedText': formattedText!,
-        if (image != null) 'image': image!.toJson(),
+        if (image != null) 'image': image!,
         if (subtitle != null) 'subtitle': subtitle!,
         if (title != null) 'title': title!,
       };
@@ -18419,7 +18247,7 @@ class GoogleCloudDialogflowV2IntentMessageBasicCardButton {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (openUriAction != null) 'openUriAction': openUriAction!.toJson(),
+        if (openUriAction != null) 'openUriAction': openUriAction!,
         if (title != null) 'title': title!,
       };
 }
@@ -18505,8 +18333,7 @@ class GoogleCloudDialogflowV2IntentMessageBrowseCarouselCard {
   core.Map<core.String, core.dynamic> toJson() => {
         if (imageDisplayOptions != null)
           'imageDisplayOptions': imageDisplayOptions!,
-        if (items != null)
-          'items': items!.map((value) => value.toJson()).toList(),
+        if (items != null) 'items': items!,
       };
 }
 
@@ -18577,8 +18404,8 @@ class GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardIt
   core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
         if (footer != null) 'footer': footer!,
-        if (image != null) 'image': image!.toJson(),
-        if (openUriAction != null) 'openUriAction': openUriAction!.toJson(),
+        if (image != null) 'image': image!,
+        if (openUriAction != null) 'openUriAction': openUriAction!,
         if (title != null) 'title': title!,
       };
 }
@@ -18671,8 +18498,7 @@ class GoogleCloudDialogflowV2IntentMessageCard {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (buttons != null)
-          'buttons': buttons!.map((value) => value.toJson()).toList(),
+        if (buttons != null) 'buttons': buttons!,
         if (imageUri != null) 'imageUri': imageUri!,
         if (subtitle != null) 'subtitle': subtitle!,
         if (title != null) 'title': title!,
@@ -18734,8 +18560,7 @@ class GoogleCloudDialogflowV2IntentMessageCarouselSelect {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (items != null)
-          'items': items!.map((value) => value.toJson()).toList(),
+        if (items != null) 'items': items!,
       };
 }
 
@@ -18788,8 +18613,8 @@ class GoogleCloudDialogflowV2IntentMessageCarouselSelectItem {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
-        if (image != null) 'image': image!.toJson(),
-        if (info != null) 'info': info!.toJson(),
+        if (image != null) 'image': image!,
+        if (info != null) 'info': info!,
         if (title != null) 'title': title!,
       };
 }
@@ -18941,8 +18766,7 @@ class GoogleCloudDialogflowV2IntentMessageListSelect {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (items != null)
-          'items': items!.map((value) => value.toJson()).toList(),
+        if (items != null) 'items': items!,
         if (subtitle != null) 'subtitle': subtitle!,
         if (title != null) 'title': title!,
       };
@@ -18996,8 +18820,8 @@ class GoogleCloudDialogflowV2IntentMessageListSelectItem {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
-        if (image != null) 'image': image!.toJson(),
-        if (info != null) 'info': info!.toJson(),
+        if (image != null) 'image': image!,
+        if (info != null) 'info': info!,
         if (title != null) 'title': title!,
       };
 }
@@ -19040,8 +18864,7 @@ class GoogleCloudDialogflowV2IntentMessageMediaContent {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (mediaObjects != null)
-          'mediaObjects': mediaObjects!.map((value) => value.toJson()).toList(),
+        if (mediaObjects != null) 'mediaObjects': mediaObjects!,
         if (mediaType != null) 'mediaType': mediaType!,
       };
 }
@@ -19104,8 +18927,8 @@ class GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObject {
   core.Map<core.String, core.dynamic> toJson() => {
         if (contentUrl != null) 'contentUrl': contentUrl!,
         if (description != null) 'description': description!,
-        if (icon != null) 'icon': icon!.toJson(),
-        if (largeImage != null) 'largeImage': largeImage!.toJson(),
+        if (icon != null) 'icon': icon!,
+        if (largeImage != null) 'largeImage': largeImage!,
         if (name != null) 'name': name!,
       };
 }
@@ -19249,9 +19072,7 @@ class GoogleCloudDialogflowV2IntentMessageSimpleResponses {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (simpleResponses != null)
-          'simpleResponses':
-              simpleResponses!.map((value) => value.toJson()).toList(),
+        if (simpleResponses != null) 'simpleResponses': simpleResponses!,
       };
 }
 
@@ -19301,8 +19122,7 @@ class GoogleCloudDialogflowV2IntentMessageSuggestions {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (suggestions != null)
-          'suggestions': suggestions!.map((value) => value.toJson()).toList(),
+        if (suggestions != null) 'suggestions': suggestions!,
       };
 }
 
@@ -19385,13 +19205,10 @@ class GoogleCloudDialogflowV2IntentMessageTableCard {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (buttons != null)
-          'buttons': buttons!.map((value) => value.toJson()).toList(),
-        if (columnProperties != null)
-          'columnProperties':
-              columnProperties!.map((value) => value.toJson()).toList(),
-        if (image != null) 'image': image!.toJson(),
-        if (rows != null) 'rows': rows!.map((value) => value.toJson()).toList(),
+        if (buttons != null) 'buttons': buttons!,
+        if (columnProperties != null) 'columnProperties': columnProperties!,
+        if (image != null) 'image': image!,
+        if (rows != null) 'rows': rows!,
         if (subtitle != null) 'subtitle': subtitle!,
         if (title != null) 'title': title!,
       };
@@ -19451,8 +19268,7 @@ class GoogleCloudDialogflowV2IntentMessageTableCardRow {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cells != null)
-          'cells': cells!.map((value) => value.toJson()).toList(),
+        if (cells != null) 'cells': cells!,
         if (dividerAfter != null) 'dividerAfter': dividerAfter!,
       };
 }
@@ -19658,8 +19474,7 @@ class GoogleCloudDialogflowV2IntentTrainingPhrase {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
-        if (parts != null)
-          'parts': parts!.map((value) => value.toJson()).toList(),
+        if (parts != null) 'parts': parts!,
         if (timesAddedCount != null) 'timesAddedCount': timesAddedCount!,
         if (type != null) 'type': type!,
       };
@@ -19837,8 +19652,7 @@ class GoogleCloudDialogflowV2Message {
         if (content != null) 'content': content!,
         if (createTime != null) 'createTime': createTime!,
         if (languageCode != null) 'languageCode': languageCode!,
-        if (messageAnnotation != null)
-          'messageAnnotation': messageAnnotation!.toJson(),
+        if (messageAnnotation != null) 'messageAnnotation': messageAnnotation!,
         if (name != null) 'name': name!,
         if (participant != null) 'participant': participant!,
         if (participantRole != null) 'participantRole': participantRole!,
@@ -19878,8 +19692,7 @@ class GoogleCloudDialogflowV2MessageAnnotation {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (containEntities != null) 'containEntities': containEntities!,
-        if (parts != null)
-          'parts': parts!.map((value) => value.toJson()).toList(),
+        if (parts != null) 'parts': parts!,
       };
 }
 
@@ -20146,20 +19959,17 @@ class GoogleCloudDialogflowV2QueryResult {
           'cancelsSlotFilling': cancelsSlotFilling!,
         if (diagnosticInfo != null) 'diagnosticInfo': diagnosticInfo!,
         if (fulfillmentMessages != null)
-          'fulfillmentMessages':
-              fulfillmentMessages!.map((value) => value.toJson()).toList(),
+          'fulfillmentMessages': fulfillmentMessages!,
         if (fulfillmentText != null) 'fulfillmentText': fulfillmentText!,
-        if (intent != null) 'intent': intent!.toJson(),
+        if (intent != null) 'intent': intent!,
         if (intentDetectionConfidence != null)
           'intentDetectionConfidence': intentDetectionConfidence!,
         if (languageCode != null) 'languageCode': languageCode!,
-        if (outputContexts != null)
-          'outputContexts':
-              outputContexts!.map((value) => value.toJson()).toList(),
+        if (outputContexts != null) 'outputContexts': outputContexts!,
         if (parameters != null) 'parameters': parameters!,
         if (queryText != null) 'queryText': queryText!,
         if (sentimentAnalysisResult != null)
-          'sentimentAnalysisResult': sentimentAnalysisResult!.toJson(),
+          'sentimentAnalysisResult': sentimentAnalysisResult!,
         if (speechRecognitionConfidence != null)
           'speechRecognitionConfidence': speechRecognitionConfidence!,
         if (webhookPayload != null) 'webhookPayload': webhookPayload!,
@@ -20229,7 +20039,7 @@ class GoogleCloudDialogflowV2SentimentAnalysisResult {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (queryTextSentiment != null)
-          'queryTextSentiment': queryTextSentiment!.toJson(),
+          'queryTextSentiment': queryTextSentiment!,
       };
 }
 
@@ -20301,8 +20111,7 @@ class GoogleCloudDialogflowV2SessionEntityType {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (entities != null)
-          'entities': entities!.map((value) => value.toJson()).toList(),
+        if (entities != null) 'entities': entities!,
         if (entityOverrideMode != null)
           'entityOverrideMode': entityOverrideMode!,
         if (name != null) 'name': name!,
@@ -20350,9 +20159,7 @@ class GoogleCloudDialogflowV2SuggestArticlesResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (articleAnswers != null)
-          'articleAnswers':
-              articleAnswers!.map((value) => value.toJson()).toList(),
+        if (articleAnswers != null) 'articleAnswers': articleAnswers!,
         if (contextSize != null) 'contextSize': contextSize!,
         if (latestMessage != null) 'latestMessage': latestMessage!,
       };
@@ -20400,8 +20207,7 @@ class GoogleCloudDialogflowV2SuggestFaqAnswersResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (contextSize != null) 'contextSize': contextSize!,
-        if (faqAnswers != null)
-          'faqAnswers': faqAnswers!.map((value) => value.toJson()).toList(),
+        if (faqAnswers != null) 'faqAnswers': faqAnswers!,
         if (latestMessage != null) 'latestMessage': latestMessage!,
       };
 }
@@ -20445,11 +20251,11 @@ class GoogleCloudDialogflowV2SuggestionResult {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (error != null) 'error': error!.toJson(),
+        if (error != null) 'error': error!,
         if (suggestArticlesResponse != null)
-          'suggestArticlesResponse': suggestArticlesResponse!.toJson(),
+          'suggestArticlesResponse': suggestArticlesResponse!,
         if (suggestFaqAnswersResponse != null)
-          'suggestFaqAnswersResponse': suggestFaqAnswersResponse!.toJson(),
+          'suggestFaqAnswersResponse': suggestFaqAnswersResponse!,
       };
 }
 
@@ -20508,8 +20314,8 @@ class GoogleCloudDialogflowV2WebhookRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (originalDetectIntentRequest != null)
-          'originalDetectIntentRequest': originalDetectIntentRequest!.toJson(),
-        if (queryResult != null) 'queryResult': queryResult!.toJson(),
+          'originalDetectIntentRequest': originalDetectIntentRequest!,
+        if (queryResult != null) 'queryResult': queryResult!,
         if (responseId != null) 'responseId': responseId!,
         if (session != null) 'session': session!,
       };
@@ -20644,18 +20450,14 @@ class GoogleCloudDialogflowV2WebhookResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (followupEventInput != null)
-          'followupEventInput': followupEventInput!.toJson(),
+          'followupEventInput': followupEventInput!,
         if (fulfillmentMessages != null)
-          'fulfillmentMessages':
-              fulfillmentMessages!.map((value) => value.toJson()).toList(),
+          'fulfillmentMessages': fulfillmentMessages!,
         if (fulfillmentText != null) 'fulfillmentText': fulfillmentText!,
-        if (outputContexts != null)
-          'outputContexts':
-              outputContexts!.map((value) => value.toJson()).toList(),
+        if (outputContexts != null) 'outputContexts': outputContexts!,
         if (payload != null) 'payload': payload!,
         if (sessionEntityTypes != null)
-          'sessionEntityTypes':
-              sessionEntityTypes!.map((value) => value.toJson()).toList(),
+          'sessionEntityTypes': sessionEntityTypes!,
         if (source != null) 'source': source!,
       };
 }
@@ -20800,8 +20602,7 @@ class GoogleCloudDialogflowV2beta1BatchUpdateEntityTypesResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (entityTypes != null)
-          'entityTypes': entityTypes!.map((value) => value.toJson()).toList(),
+        if (entityTypes != null) 'entityTypes': entityTypes!,
       };
 }
 
@@ -20826,8 +20627,7 @@ class GoogleCloudDialogflowV2beta1BatchUpdateIntentsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (intents != null)
-          'intents': intents!.map((value) => value.toJson()).toList(),
+        if (intents != null) 'intents': intents!,
       };
 }
 
@@ -20981,9 +20781,8 @@ class GoogleCloudDialogflowV2beta1ConversationEvent {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (conversation != null) 'conversation': conversation!,
-        if (errorStatus != null) 'errorStatus': errorStatus!.toJson(),
-        if (newMessagePayload != null)
-          'newMessagePayload': newMessagePayload!.toJson(),
+        if (errorStatus != null) 'errorStatus': errorStatus!,
+        if (newMessagePayload != null) 'newMessagePayload': newMessagePayload!,
         if (type != null) 'type': type!,
       };
 }
@@ -21081,8 +20880,7 @@ class GoogleCloudDialogflowV2beta1EntityType {
         if (displayName != null) 'displayName': displayName!,
         if (enableFuzzyExtraction != null)
           'enableFuzzyExtraction': enableFuzzyExtraction!,
-        if (entities != null)
-          'entities': entities!.map((value) => value.toJson()).toList(),
+        if (entities != null) 'entities': entities!,
         if (kind != null) 'kind': kind!,
         if (name != null) 'name': name!,
       };
@@ -21354,9 +21152,7 @@ class GoogleCloudDialogflowV2beta1HumanAgentAssistantEvent {
   core.Map<core.String, core.dynamic> toJson() => {
         if (conversation != null) 'conversation': conversation!,
         if (participant != null) 'participant': participant!,
-        if (suggestionResults != null)
-          'suggestionResults':
-              suggestionResults!.map((value) => value.toJson()).toList(),
+        if (suggestionResults != null) 'suggestionResults': suggestionResults!,
       };
 }
 
@@ -21380,8 +21176,7 @@ class GoogleCloudDialogflowV2beta1ImportDocumentsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (warnings != null)
-          'warnings': warnings!.map((value) => value.toJson()).toList(),
+        if (warnings != null) 'warnings': warnings!,
       };
 }
 
@@ -21692,30 +21487,23 @@ class GoogleCloudDialogflowV2beta1Intent {
         if (endInteraction != null) 'endInteraction': endInteraction!,
         if (events != null) 'events': events!,
         if (followupIntentInfo != null)
-          'followupIntentInfo':
-              followupIntentInfo!.map((value) => value.toJson()).toList(),
+          'followupIntentInfo': followupIntentInfo!,
         if (inputContextNames != null) 'inputContextNames': inputContextNames!,
         if (isFallback != null) 'isFallback': isFallback!,
         if (liveAgentHandoff != null) 'liveAgentHandoff': liveAgentHandoff!,
-        if (messages != null)
-          'messages': messages!.map((value) => value.toJson()).toList(),
+        if (messages != null) 'messages': messages!,
         if (mlDisabled != null) 'mlDisabled': mlDisabled!,
         if (mlEnabled != null) 'mlEnabled': mlEnabled!,
         if (name != null) 'name': name!,
-        if (outputContexts != null)
-          'outputContexts':
-              outputContexts!.map((value) => value.toJson()).toList(),
-        if (parameters != null)
-          'parameters': parameters!.map((value) => value.toJson()).toList(),
+        if (outputContexts != null) 'outputContexts': outputContexts!,
+        if (parameters != null) 'parameters': parameters!,
         if (parentFollowupIntentName != null)
           'parentFollowupIntentName': parentFollowupIntentName!,
         if (priority != null) 'priority': priority!,
         if (resetContexts != null) 'resetContexts': resetContexts!,
         if (rootFollowupIntentName != null)
           'rootFollowupIntentName': rootFollowupIntentName!,
-        if (trainingPhrases != null)
-          'trainingPhrases':
-              trainingPhrases!.map((value) => value.toJson()).toList(),
+        if (trainingPhrases != null) 'trainingPhrases': trainingPhrases!,
         if (webhookState != null) 'webhookState': webhookState!,
       };
 }
@@ -21968,35 +21756,33 @@ class GoogleCloudDialogflowV2beta1IntentMessage {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (basicCard != null) 'basicCard': basicCard!.toJson(),
+        if (basicCard != null) 'basicCard': basicCard!,
         if (browseCarouselCard != null)
-          'browseCarouselCard': browseCarouselCard!.toJson(),
-        if (card != null) 'card': card!.toJson(),
-        if (carouselSelect != null) 'carouselSelect': carouselSelect!.toJson(),
-        if (image != null) 'image': image!.toJson(),
-        if (linkOutSuggestion != null)
-          'linkOutSuggestion': linkOutSuggestion!.toJson(),
-        if (listSelect != null) 'listSelect': listSelect!.toJson(),
-        if (mediaContent != null) 'mediaContent': mediaContent!.toJson(),
+          'browseCarouselCard': browseCarouselCard!,
+        if (card != null) 'card': card!,
+        if (carouselSelect != null) 'carouselSelect': carouselSelect!,
+        if (image != null) 'image': image!,
+        if (linkOutSuggestion != null) 'linkOutSuggestion': linkOutSuggestion!,
+        if (listSelect != null) 'listSelect': listSelect!,
+        if (mediaContent != null) 'mediaContent': mediaContent!,
         if (payload != null) 'payload': payload!,
         if (platform != null) 'platform': platform!,
-        if (quickReplies != null) 'quickReplies': quickReplies!.toJson(),
+        if (quickReplies != null) 'quickReplies': quickReplies!,
         if (rbmCarouselRichCard != null)
-          'rbmCarouselRichCard': rbmCarouselRichCard!.toJson(),
+          'rbmCarouselRichCard': rbmCarouselRichCard!,
         if (rbmStandaloneRichCard != null)
-          'rbmStandaloneRichCard': rbmStandaloneRichCard!.toJson(),
-        if (rbmText != null) 'rbmText': rbmText!.toJson(),
-        if (simpleResponses != null)
-          'simpleResponses': simpleResponses!.toJson(),
-        if (suggestions != null) 'suggestions': suggestions!.toJson(),
-        if (tableCard != null) 'tableCard': tableCard!.toJson(),
+          'rbmStandaloneRichCard': rbmStandaloneRichCard!,
+        if (rbmText != null) 'rbmText': rbmText!,
+        if (simpleResponses != null) 'simpleResponses': simpleResponses!,
+        if (suggestions != null) 'suggestions': suggestions!,
+        if (tableCard != null) 'tableCard': tableCard!,
         if (telephonyPlayAudio != null)
-          'telephonyPlayAudio': telephonyPlayAudio!.toJson(),
+          'telephonyPlayAudio': telephonyPlayAudio!,
         if (telephonySynthesizeSpeech != null)
-          'telephonySynthesizeSpeech': telephonySynthesizeSpeech!.toJson(),
+          'telephonySynthesizeSpeech': telephonySynthesizeSpeech!,
         if (telephonyTransferCall != null)
-          'telephonyTransferCall': telephonyTransferCall!.toJson(),
-        if (text != null) 'text': text!.toJson(),
+          'telephonyTransferCall': telephonyTransferCall!,
+        if (text != null) 'text': text!,
       };
 }
 
@@ -22062,10 +21848,9 @@ class GoogleCloudDialogflowV2beta1IntentMessageBasicCard {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (buttons != null)
-          'buttons': buttons!.map((value) => value.toJson()).toList(),
+        if (buttons != null) 'buttons': buttons!,
         if (formattedText != null) 'formattedText': formattedText!,
-        if (image != null) 'image': image!.toJson(),
+        if (image != null) 'image': image!,
         if (subtitle != null) 'subtitle': subtitle!,
         if (title != null) 'title': title!,
       };
@@ -22102,7 +21887,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageBasicCardButton {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (openUriAction != null) 'openUriAction': openUriAction!.toJson(),
+        if (openUriAction != null) 'openUriAction': openUriAction!,
         if (title != null) 'title': title!,
       };
 }
@@ -22188,8 +21973,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCard {
   core.Map<core.String, core.dynamic> toJson() => {
         if (imageDisplayOptions != null)
           'imageDisplayOptions': imageDisplayOptions!,
-        if (items != null)
-          'items': items!.map((value) => value.toJson()).toList(),
+        if (items != null) 'items': items!,
       };
 }
 
@@ -22260,8 +22044,8 @@ class GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselC
   core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
         if (footer != null) 'footer': footer!,
-        if (image != null) 'image': image!.toJson(),
-        if (openUriAction != null) 'openUriAction': openUriAction!.toJson(),
+        if (image != null) 'image': image!,
+        if (openUriAction != null) 'openUriAction': openUriAction!,
         if (title != null) 'title': title!,
       };
 }
@@ -22355,8 +22139,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageCard {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (buttons != null)
-          'buttons': buttons!.map((value) => value.toJson()).toList(),
+        if (buttons != null) 'buttons': buttons!,
         if (imageUri != null) 'imageUri': imageUri!,
         if (subtitle != null) 'subtitle': subtitle!,
         if (title != null) 'title': title!,
@@ -22421,8 +22204,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageCarouselSelect {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (items != null)
-          'items': items!.map((value) => value.toJson()).toList(),
+        if (items != null) 'items': items!,
       };
 }
 
@@ -22476,8 +22258,8 @@ class GoogleCloudDialogflowV2beta1IntentMessageCarouselSelectItem {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
-        if (image != null) 'image': image!.toJson(),
-        if (info != null) 'info': info!.toJson(),
+        if (image != null) 'image': image!,
+        if (info != null) 'info': info!,
         if (title != null) 'title': title!,
       };
 }
@@ -22631,8 +22413,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageListSelect {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (items != null)
-          'items': items!.map((value) => value.toJson()).toList(),
+        if (items != null) 'items': items!,
         if (subtitle != null) 'subtitle': subtitle!,
         if (title != null) 'title': title!,
       };
@@ -22688,8 +22469,8 @@ class GoogleCloudDialogflowV2beta1IntentMessageListSelectItem {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
-        if (image != null) 'image': image!.toJson(),
-        if (info != null) 'info': info!.toJson(),
+        if (image != null) 'image': image!,
+        if (info != null) 'info': info!,
         if (title != null) 'title': title!,
       };
 }
@@ -22732,8 +22513,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageMediaContent {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (mediaObjects != null)
-          'mediaObjects': mediaObjects!.map((value) => value.toJson()).toList(),
+        if (mediaObjects != null) 'mediaObjects': mediaObjects!,
         if (mediaType != null) 'mediaType': mediaType!,
       };
 }
@@ -22796,8 +22576,8 @@ class GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObject {
   core.Map<core.String, core.dynamic> toJson() => {
         if (contentUrl != null) 'contentUrl': contentUrl!,
         if (description != null) 'description': description!,
-        if (icon != null) 'icon': icon!.toJson(),
-        if (largeImage != null) 'largeImage': largeImage!.toJson(),
+        if (icon != null) 'icon': icon!,
+        if (largeImage != null) 'largeImage': largeImage!,
         if (name != null) 'name': name!,
       };
 }
@@ -22897,9 +22677,8 @@ class GoogleCloudDialogflowV2beta1IntentMessageRbmCardContent {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
-        if (media != null) 'media': media!.toJson(),
-        if (suggestions != null)
-          'suggestions': suggestions!.map((value) => value.toJson()).toList(),
+        if (media != null) 'media': media!,
+        if (suggestions != null) 'suggestions': suggestions!,
         if (title != null) 'title': title!,
       };
 }
@@ -23014,8 +22793,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCard {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cardContents != null)
-          'cardContents': cardContents!.map((value) => value.toJson()).toList(),
+        if (cardContents != null) 'cardContents': cardContents!,
         if (cardWidth != null) 'cardWidth': cardWidth!,
       };
 }
@@ -23073,7 +22851,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCard {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cardContent != null) 'cardContent': cardContent!.toJson(),
+        if (cardContent != null) 'cardContent': cardContent!,
         if (cardOrientation != null) 'cardOrientation': cardOrientation!,
         if (thumbnailImageAlignment != null)
           'thumbnailImageAlignment': thumbnailImageAlignment!,
@@ -23138,10 +22916,10 @@ class GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedAction {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dial != null) 'dial': dial!.toJson(),
-        if (openUrl != null) 'openUrl': openUrl!.toJson(),
+        if (dial != null) 'dial': dial!,
+        if (openUrl != null) 'openUrl': openUrl!,
         if (postbackData != null) 'postbackData': postbackData!,
-        if (shareLocation != null) 'shareLocation': shareLocation!.toJson(),
+        if (shareLocation != null) 'shareLocation': shareLocation!,
         if (text != null) 'text': text!,
       };
 }
@@ -23269,8 +23047,8 @@ class GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestion {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (action != null) 'action': action!.toJson(),
-        if (reply != null) 'reply': reply!.toJson(),
+        if (action != null) 'action': action!,
+        if (reply != null) 'reply': reply!,
       };
 }
 
@@ -23306,9 +23084,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageRbmText {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (rbmSuggestion != null)
-          'rbmSuggestion':
-              rbmSuggestion!.map((value) => value.toJson()).toList(),
+        if (rbmSuggestion != null) 'rbmSuggestion': rbmSuggestion!,
         if (text != null) 'text': text!,
       };
 }
@@ -23421,9 +23197,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageSimpleResponses {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (simpleResponses != null)
-          'simpleResponses':
-              simpleResponses!.map((value) => value.toJson()).toList(),
+        if (simpleResponses != null) 'simpleResponses': simpleResponses!,
       };
 }
 
@@ -23474,8 +23248,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageSuggestions {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (suggestions != null)
-          'suggestions': suggestions!.map((value) => value.toJson()).toList(),
+        if (suggestions != null) 'suggestions': suggestions!,
       };
 }
 
@@ -23559,13 +23332,10 @@ class GoogleCloudDialogflowV2beta1IntentMessageTableCard {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (buttons != null)
-          'buttons': buttons!.map((value) => value.toJson()).toList(),
-        if (columnProperties != null)
-          'columnProperties':
-              columnProperties!.map((value) => value.toJson()).toList(),
-        if (image != null) 'image': image!.toJson(),
-        if (rows != null) 'rows': rows!.map((value) => value.toJson()).toList(),
+        if (buttons != null) 'buttons': buttons!,
+        if (columnProperties != null) 'columnProperties': columnProperties!,
+        if (image != null) 'image': image!,
+        if (rows != null) 'rows': rows!,
         if (subtitle != null) 'subtitle': subtitle!,
         if (title != null) 'title': title!,
       };
@@ -23626,8 +23396,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageTableCardRow {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cells != null)
-          'cells': cells!.map((value) => value.toJson()).toList(),
+        if (cells != null) 'cells': cells!,
         if (dividerAfter != null) 'dividerAfter': dividerAfter!,
       };
 }
@@ -23929,8 +23698,7 @@ class GoogleCloudDialogflowV2beta1IntentTrainingPhrase {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
-        if (parts != null)
-          'parts': parts!.map((value) => value.toJson()).toList(),
+        if (parts != null) 'parts': parts!,
         if (timesAddedCount != null) 'timesAddedCount': timesAddedCount!,
         if (type != null) 'type': type!,
       };
@@ -24017,8 +23785,7 @@ class GoogleCloudDialogflowV2beta1KnowledgeAnswers {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (answers != null)
-          'answers': answers!.map((value) => value.toJson()).toList(),
+        if (answers != null) 'answers': answers!,
       };
 }
 
@@ -24234,14 +24001,12 @@ class GoogleCloudDialogflowV2beta1Message {
         if (content != null) 'content': content!,
         if (createTime != null) 'createTime': createTime!,
         if (languageCode != null) 'languageCode': languageCode!,
-        if (messageAnnotation != null)
-          'messageAnnotation': messageAnnotation!.toJson(),
+        if (messageAnnotation != null) 'messageAnnotation': messageAnnotation!,
         if (name != null) 'name': name!,
         if (participant != null) 'participant': participant!,
         if (participantRole != null) 'participantRole': participantRole!,
         if (sendTime != null) 'sendTime': sendTime!,
-        if (sentimentAnalysis != null)
-          'sentimentAnalysis': sentimentAnalysis!.toJson(),
+        if (sentimentAnalysis != null) 'sentimentAnalysis': sentimentAnalysis!,
       };
 }
 
@@ -24282,8 +24047,7 @@ class GoogleCloudDialogflowV2beta1MessageAnnotation {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (containEntities != null) 'containEntities': containEntities!,
-        if (parts != null)
-          'parts': parts!.map((value) => value.toJson()).toList(),
+        if (parts != null) 'parts': parts!,
       };
 }
 
@@ -24562,22 +24326,18 @@ class GoogleCloudDialogflowV2beta1QueryResult {
           'cancelsSlotFilling': cancelsSlotFilling!,
         if (diagnosticInfo != null) 'diagnosticInfo': diagnosticInfo!,
         if (fulfillmentMessages != null)
-          'fulfillmentMessages':
-              fulfillmentMessages!.map((value) => value.toJson()).toList(),
+          'fulfillmentMessages': fulfillmentMessages!,
         if (fulfillmentText != null) 'fulfillmentText': fulfillmentText!,
-        if (intent != null) 'intent': intent!.toJson(),
+        if (intent != null) 'intent': intent!,
         if (intentDetectionConfidence != null)
           'intentDetectionConfidence': intentDetectionConfidence!,
-        if (knowledgeAnswers != null)
-          'knowledgeAnswers': knowledgeAnswers!.toJson(),
+        if (knowledgeAnswers != null) 'knowledgeAnswers': knowledgeAnswers!,
         if (languageCode != null) 'languageCode': languageCode!,
-        if (outputContexts != null)
-          'outputContexts':
-              outputContexts!.map((value) => value.toJson()).toList(),
+        if (outputContexts != null) 'outputContexts': outputContexts!,
         if (parameters != null) 'parameters': parameters!,
         if (queryText != null) 'queryText': queryText!,
         if (sentimentAnalysisResult != null)
-          'sentimentAnalysisResult': sentimentAnalysisResult!.toJson(),
+          'sentimentAnalysisResult': sentimentAnalysisResult!,
         if (speechRecognitionConfidence != null)
           'speechRecognitionConfidence': speechRecognitionConfidence!,
         if (webhookPayload != null) 'webhookPayload': webhookPayload!,
@@ -24647,7 +24407,7 @@ class GoogleCloudDialogflowV2beta1SentimentAnalysisResult {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (queryTextSentiment != null)
-          'queryTextSentiment': queryTextSentiment!.toJson(),
+          'queryTextSentiment': queryTextSentiment!,
       };
 }
 
@@ -24722,8 +24482,7 @@ class GoogleCloudDialogflowV2beta1SessionEntityType {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (entities != null)
-          'entities': entities!.map((value) => value.toJson()).toList(),
+        if (entities != null) 'entities': entities!,
         if (entityOverrideMode != null)
           'entityOverrideMode': entityOverrideMode!,
         if (name != null) 'name': name!,
@@ -24815,9 +24574,7 @@ class GoogleCloudDialogflowV2beta1SuggestArticlesResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (articleAnswers != null)
-          'articleAnswers':
-              articleAnswers!.map((value) => value.toJson()).toList(),
+        if (articleAnswers != null) 'articleAnswers': articleAnswers!,
         if (contextSize != null) 'contextSize': contextSize!,
         if (latestMessage != null) 'latestMessage': latestMessage!,
       };
@@ -24868,8 +24625,7 @@ class GoogleCloudDialogflowV2beta1SuggestFaqAnswersResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (contextSize != null) 'contextSize': contextSize!,
-        if (faqAnswers != null)
-          'faqAnswers': faqAnswers!.map((value) => value.toJson()).toList(),
+        if (faqAnswers != null) 'faqAnswers': faqAnswers!,
         if (latestMessage != null) 'latestMessage': latestMessage!,
       };
 }
@@ -24924,9 +24680,7 @@ class GoogleCloudDialogflowV2beta1SuggestSmartRepliesResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (contextSize != null) 'contextSize': contextSize!,
         if (latestMessage != null) 'latestMessage': latestMessage!,
-        if (smartReplyAnswers != null)
-          'smartReplyAnswers':
-              smartReplyAnswers!.map((value) => value.toJson()).toList(),
+        if (smartReplyAnswers != null) 'smartReplyAnswers': smartReplyAnswers!,
       };
 }
 
@@ -24981,13 +24735,13 @@ class GoogleCloudDialogflowV2beta1SuggestionResult {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (error != null) 'error': error!.toJson(),
+        if (error != null) 'error': error!,
         if (suggestArticlesResponse != null)
-          'suggestArticlesResponse': suggestArticlesResponse!.toJson(),
+          'suggestArticlesResponse': suggestArticlesResponse!,
         if (suggestFaqAnswersResponse != null)
-          'suggestFaqAnswersResponse': suggestFaqAnswersResponse!.toJson(),
+          'suggestFaqAnswersResponse': suggestFaqAnswersResponse!,
         if (suggestSmartRepliesResponse != null)
-          'suggestSmartRepliesResponse': suggestSmartRepliesResponse!.toJson(),
+          'suggestSmartRepliesResponse': suggestSmartRepliesResponse!,
       };
 }
 
@@ -25059,11 +24813,10 @@ class GoogleCloudDialogflowV2beta1WebhookRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (alternativeQueryResults != null)
-          'alternativeQueryResults':
-              alternativeQueryResults!.map((value) => value.toJson()).toList(),
+          'alternativeQueryResults': alternativeQueryResults!,
         if (originalDetectIntentRequest != null)
-          'originalDetectIntentRequest': originalDetectIntentRequest!.toJson(),
-        if (queryResult != null) 'queryResult': queryResult!.toJson(),
+          'originalDetectIntentRequest': originalDetectIntentRequest!,
+        if (queryResult != null) 'queryResult': queryResult!,
         if (responseId != null) 'responseId': responseId!,
         if (session != null) 'session': session!,
       };
@@ -25224,19 +24977,15 @@ class GoogleCloudDialogflowV2beta1WebhookResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (endInteraction != null) 'endInteraction': endInteraction!,
         if (followupEventInput != null)
-          'followupEventInput': followupEventInput!.toJson(),
+          'followupEventInput': followupEventInput!,
         if (fulfillmentMessages != null)
-          'fulfillmentMessages':
-              fulfillmentMessages!.map((value) => value.toJson()).toList(),
+          'fulfillmentMessages': fulfillmentMessages!,
         if (fulfillmentText != null) 'fulfillmentText': fulfillmentText!,
         if (liveAgentHandoff != null) 'liveAgentHandoff': liveAgentHandoff!,
-        if (outputContexts != null)
-          'outputContexts':
-              outputContexts!.map((value) => value.toJson()).toList(),
+        if (outputContexts != null) 'outputContexts': outputContexts!,
         if (payload != null) 'payload': payload!,
         if (sessionEntityTypes != null)
-          'sessionEntityTypes':
-              sessionEntityTypes!.map((value) => value.toJson()).toList(),
+          'sessionEntityTypes': sessionEntityTypes!,
         if (source != null) 'source': source!,
       };
 }
@@ -25262,8 +25011,7 @@ class GoogleCloudDialogflowV3alpha1CreateDocumentOperationMetadata {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (genericMetadata != null)
-          'genericMetadata': genericMetadata!.toJson(),
+        if (genericMetadata != null) 'genericMetadata': genericMetadata!,
       };
 }
 
@@ -25288,8 +25036,7 @@ class GoogleCloudDialogflowV3alpha1DeleteDocumentOperationMetadata {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (genericMetadata != null)
-          'genericMetadata': genericMetadata!.toJson(),
+        if (genericMetadata != null) 'genericMetadata': genericMetadata!,
       };
 }
 
@@ -25342,8 +25089,7 @@ class GoogleCloudDialogflowV3alpha1ImportDocumentsOperationMetadata {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (genericMetadata != null)
-          'genericMetadata': genericMetadata!.toJson(),
+        if (genericMetadata != null) 'genericMetadata': genericMetadata!,
       };
 }
 
@@ -25367,8 +25113,7 @@ class GoogleCloudDialogflowV3alpha1ImportDocumentsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (warnings != null)
-          'warnings': warnings!.map((value) => value.toJson()).toList(),
+        if (warnings != null) 'warnings': warnings!,
       };
 }
 
@@ -25393,8 +25138,7 @@ class GoogleCloudDialogflowV3alpha1ReloadDocumentOperationMetadata {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (genericMetadata != null)
-          'genericMetadata': genericMetadata!.toJson(),
+        if (genericMetadata != null) 'genericMetadata': genericMetadata!,
       };
 }
 
@@ -25419,8 +25163,7 @@ class GoogleCloudDialogflowV3alpha1UpdateDocumentOperationMetadata {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (genericMetadata != null)
-          'genericMetadata': genericMetadata!.toJson(),
+        if (genericMetadata != null) 'genericMetadata': genericMetadata!,
       };
 }
 
@@ -25451,8 +25194,7 @@ class GoogleCloudLocationListLocationsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (locations != null)
-          'locations': locations!.map((value) => value.toJson()).toList(),
+        if (locations != null) 'locations': locations!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -25554,8 +25296,7 @@ class GoogleLongrunningListOperationsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (operations != null)
-          'operations': operations!.map((value) => value.toJson()).toList(),
+        if (operations != null) 'operations': operations!,
       };
 }
 
@@ -25628,7 +25369,7 @@ class GoogleLongrunningOperation {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (done != null) 'done': done!,
-        if (error != null) 'error': error!.toJson(),
+        if (error != null) 'error': error!,
         if (metadata != null) 'metadata': metadata!,
         if (name != null) 'name': name!,
         if (response != null) 'response': response!,

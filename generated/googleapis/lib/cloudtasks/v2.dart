@@ -208,7 +208,7 @@ class ProjectsLocationsQueuesResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -338,7 +338,7 @@ class ProjectsLocationsQueuesResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -467,7 +467,7 @@ class ProjectsLocationsQueuesResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -514,7 +514,7 @@ class ProjectsLocationsQueuesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -560,7 +560,7 @@ class ProjectsLocationsQueuesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -609,7 +609,7 @@ class ProjectsLocationsQueuesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -658,7 +658,7 @@ class ProjectsLocationsQueuesResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -706,7 +706,7 @@ class ProjectsLocationsQueuesResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -761,7 +761,7 @@ class ProjectsLocationsQueuesTasksResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -993,7 +993,7 @@ class ProjectsLocationsQueuesTasksResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1153,8 +1153,7 @@ class AppEngineHttpRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (appEngineRouting != null)
-          'appEngineRouting': appEngineRouting!.toJson(),
+        if (appEngineRouting != null) 'appEngineRouting': appEngineRouting!,
         if (body != null) 'body': body!,
         if (headers != null) 'headers': headers!,
         if (httpMethod != null) 'httpMethod': httpMethod!,
@@ -1307,7 +1306,7 @@ class Attempt {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (dispatchTime != null) 'dispatchTime': dispatchTime!,
-        if (responseStatus != null) 'responseStatus': responseStatus!.toJson(),
+        if (responseStatus != null) 'responseStatus': responseStatus!,
         if (responseTime != null) 'responseTime': responseTime!,
         if (scheduleTime != null) 'scheduleTime': scheduleTime!,
       };
@@ -1383,7 +1382,7 @@ class Binding {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (condition != null) 'condition': condition!.toJson(),
+        if (condition != null) 'condition': condition!,
         if (members != null) 'members': members!,
         if (role != null) 'role': role!,
       };
@@ -1456,7 +1455,7 @@ class CreateTaskRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (responseView != null) 'responseView': responseView!,
-        if (task != null) 'task': task!.toJson(),
+        if (task != null) 'task': task!,
       };
 }
 
@@ -1562,7 +1561,7 @@ class GetIamPolicyRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (options != null) 'options': options!.toJson(),
+        if (options != null) 'options': options!,
       };
 }
 
@@ -1731,8 +1730,8 @@ class HttpRequest {
         if (body != null) 'body': body!,
         if (headers != null) 'headers': headers!,
         if (httpMethod != null) 'httpMethod': httpMethod!,
-        if (oauthToken != null) 'oauthToken': oauthToken!.toJson(),
-        if (oidcToken != null) 'oidcToken': oidcToken!.toJson(),
+        if (oauthToken != null) 'oauthToken': oauthToken!,
+        if (oidcToken != null) 'oidcToken': oidcToken!,
         if (url != null) 'url': url!,
       };
 }
@@ -1764,8 +1763,7 @@ class ListLocationsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (locations != null)
-          'locations': locations!.map((value) => value.toJson()).toList(),
+        if (locations != null) 'locations': locations!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -1802,8 +1800,7 @@ class ListQueuesResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (queues != null)
-          'queues': queues!.map((value) => value.toJson()).toList(),
+        if (queues != null) 'queues': queues!,
       };
 }
 
@@ -1838,8 +1835,7 @@ class ListTasksResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (tasks != null)
-          'tasks': tasks!.map((value) => value.toJson()).toList(),
+        if (tasks != null) 'tasks': tasks!,
       };
 }
 
@@ -2096,8 +2092,7 @@ class Policy {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bindings != null)
-          'bindings': bindings!.map((value) => value.toJson()).toList(),
+        if (bindings != null) 'bindings': bindings!,
         if (etag != null) 'etag': etag!,
         if (version != null) 'version': version!,
       };
@@ -2247,13 +2242,13 @@ class Queue {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (appEngineRoutingOverride != null)
-          'appEngineRoutingOverride': appEngineRoutingOverride!.toJson(),
+          'appEngineRoutingOverride': appEngineRoutingOverride!,
         if (name != null) 'name': name!,
         if (purgeTime != null) 'purgeTime': purgeTime!,
-        if (rateLimits != null) 'rateLimits': rateLimits!.toJson(),
-        if (retryConfig != null) 'retryConfig': retryConfig!.toJson(),
+        if (rateLimits != null) 'rateLimits': rateLimits!,
+        if (retryConfig != null) 'retryConfig': retryConfig!,
         if (stackdriverLoggingConfig != null)
-          'stackdriverLoggingConfig': stackdriverLoggingConfig!.toJson(),
+          'stackdriverLoggingConfig': stackdriverLoggingConfig!,
         if (state != null) 'state': state!,
       };
 }
@@ -2496,7 +2491,7 @@ class SetIamPolicyRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (policy != null) 'policy': policy!.toJson(),
+        if (policy != null) 'policy': policy!,
       };
 }
 
@@ -2738,13 +2733,13 @@ class Task {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (appEngineHttpRequest != null)
-          'appEngineHttpRequest': appEngineHttpRequest!.toJson(),
+          'appEngineHttpRequest': appEngineHttpRequest!,
         if (createTime != null) 'createTime': createTime!,
         if (dispatchCount != null) 'dispatchCount': dispatchCount!,
         if (dispatchDeadline != null) 'dispatchDeadline': dispatchDeadline!,
-        if (firstAttempt != null) 'firstAttempt': firstAttempt!.toJson(),
-        if (httpRequest != null) 'httpRequest': httpRequest!.toJson(),
-        if (lastAttempt != null) 'lastAttempt': lastAttempt!.toJson(),
+        if (firstAttempt != null) 'firstAttempt': firstAttempt!,
+        if (httpRequest != null) 'httpRequest': httpRequest!,
+        if (lastAttempt != null) 'lastAttempt': lastAttempt!,
         if (name != null) 'name': name!,
         if (responseCount != null) 'responseCount': responseCount!,
         if (scheduleTime != null) 'scheduleTime': scheduleTime!,

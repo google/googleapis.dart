@@ -163,7 +163,7 @@ class NotesResource {
     Note request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -345,7 +345,7 @@ class NotesPermissionsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -395,7 +395,7 @@ class NotesPermissionsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -465,8 +465,7 @@ class BatchCreatePermissionsRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (requests != null)
-          'requests': requests!.map((value) => value.toJson()).toList(),
+        if (requests != null) 'requests': requests!,
       };
 }
 
@@ -490,8 +489,7 @@ class BatchCreatePermissionsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (permissions != null)
-          'permissions': permissions!.map((value) => value.toJson()).toList(),
+        if (permissions != null) 'permissions': permissions!,
       };
 }
 
@@ -561,7 +559,7 @@ class CreatePermissionRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (parent != null) 'parent': parent!,
-        if (permission != null) 'permission': permission!.toJson(),
+        if (permission != null) 'permission': permission!,
       };
 }
 
@@ -619,8 +617,7 @@ class ListContent {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (listItems != null)
-          'listItems': listItems!.map((value) => value.toJson()).toList(),
+        if (listItems != null) 'listItems': listItems!,
       };
 }
 
@@ -664,10 +661,8 @@ class ListItem {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (checked != null) 'checked': checked!,
-        if (childListItems != null)
-          'childListItems':
-              childListItems!.map((value) => value.toJson()).toList(),
-        if (text != null) 'text': text!.toJson(),
+        if (childListItems != null) 'childListItems': childListItems!,
+        if (text != null) 'text': text!,
       };
 }
 
@@ -699,8 +694,7 @@ class ListNotesResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (notes != null)
-          'notes': notes!.map((value) => value.toJson()).toList(),
+        if (notes != null) 'notes': notes!,
       };
 }
 
@@ -806,13 +800,11 @@ class Note {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (attachments != null)
-          'attachments': attachments!.map((value) => value.toJson()).toList(),
-        if (body != null) 'body': body!.toJson(),
+        if (attachments != null) 'attachments': attachments!,
+        if (body != null) 'body': body!,
         if (createTime != null) 'createTime': createTime!,
         if (name != null) 'name': name!,
-        if (permissions != null)
-          'permissions': permissions!.map((value) => value.toJson()).toList(),
+        if (permissions != null) 'permissions': permissions!,
         if (title != null) 'title': title!,
         if (trashTime != null) 'trashTime': trashTime!,
         if (trashed != null) 'trashed': trashed!,
@@ -906,11 +898,11 @@ class Permission {
   core.Map<core.String, core.dynamic> toJson() => {
         if (deleted != null) 'deleted': deleted!,
         if (email != null) 'email': email!,
-        if (family != null) 'family': family!.toJson(),
-        if (group != null) 'group': group!.toJson(),
+        if (family != null) 'family': family!,
+        if (group != null) 'group': group!,
         if (name != null) 'name': name!,
         if (role != null) 'role': role!,
-        if (user != null) 'user': user!.toJson(),
+        if (user != null) 'user': user!,
       };
 }
 
@@ -942,8 +934,8 @@ class Section {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (list != null) 'list': list!.toJson(),
-        if (text != null) 'text': text!.toJson(),
+        if (list != null) 'list': list!,
+        if (text != null) 'text': text!,
       };
 }
 

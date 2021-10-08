@@ -78,7 +78,7 @@ class V3Resource {
     GoogleMapsPlayablelocationsV3LogImpressionsRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -119,7 +119,7 @@ class V3Resource {
     GoogleMapsPlayablelocationsV3LogPlayerReportsRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -162,7 +162,7 @@ class V3Resource {
     GoogleMapsPlayablelocationsV3SamplePlayableLocationsRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -283,9 +283,8 @@ class GoogleMapsPlayablelocationsV3LogImpressionsRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (clientInfo != null) 'clientInfo': clientInfo!.toJson(),
-        if (impressions != null)
-          'impressions': impressions!.map((value) => value.toJson()).toList(),
+        if (clientInfo != null) 'clientInfo': clientInfo!,
+        if (impressions != null) 'impressions': impressions!,
         if (requestId != null) 'requestId': requestId!,
       };
 }
@@ -346,10 +345,8 @@ class GoogleMapsPlayablelocationsV3LogPlayerReportsRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (clientInfo != null) 'clientInfo': clientInfo!.toJson(),
-        if (playerReports != null)
-          'playerReports':
-              playerReports!.map((value) => value.toJson()).toList(),
+        if (clientInfo != null) 'clientInfo': clientInfo!,
+        if (playerReports != null) 'playerReports': playerReports!,
         if (requestId != null) 'requestId': requestId!,
       };
 }
@@ -500,7 +497,7 @@ class GoogleMapsPlayablelocationsV3SampleCriterion {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (fieldsToReturn != null) 'fieldsToReturn': fieldsToReturn!,
-        if (filter != null) 'filter': filter!.toJson(),
+        if (filter != null) 'filter': filter!,
         if (gameObjectType != null) 'gameObjectType': gameObjectType!,
       };
 }
@@ -547,7 +544,7 @@ class GoogleMapsPlayablelocationsV3SampleFilter {
   core.Map<core.String, core.dynamic> toJson() => {
         if (includedTypes != null) 'includedTypes': includedTypes!,
         if (maxLocationCount != null) 'maxLocationCount': maxLocationCount!,
-        if (spacing != null) 'spacing': spacing!.toJson(),
+        if (spacing != null) 'spacing': spacing!,
       };
 }
 
@@ -619,11 +616,11 @@ class GoogleMapsPlayablelocationsV3SamplePlayableLocation {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (centerPoint != null) 'centerPoint': centerPoint!.toJson(),
+        if (centerPoint != null) 'centerPoint': centerPoint!,
         if (name != null) 'name': name!,
         if (placeId != null) 'placeId': placeId!,
         if (plusCode != null) 'plusCode': plusCode!,
-        if (snappedPoint != null) 'snappedPoint': snappedPoint!.toJson(),
+        if (snappedPoint != null) 'snappedPoint': snappedPoint!,
         if (types != null) 'types': types!,
       };
 }
@@ -651,8 +648,7 @@ class GoogleMapsPlayablelocationsV3SamplePlayableLocationList {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (locations != null)
-          'locations': locations!.map((value) => value.toJson()).toList(),
+        if (locations != null) 'locations': locations!,
       };
 }
 
@@ -705,9 +701,8 @@ class GoogleMapsPlayablelocationsV3SamplePlayableLocationsRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (areaFilter != null) 'areaFilter': areaFilter!.toJson(),
-        if (criteria != null)
-          'criteria': criteria!.map((value) => value.toJson()).toList(),
+        if (areaFilter != null) 'areaFilter': areaFilter!,
+        if (criteria != null) 'criteria': criteria!,
       };
 }
 
@@ -755,8 +750,7 @@ class GoogleMapsPlayablelocationsV3SamplePlayableLocationsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (locationsPerGameObjectType != null)
-          'locationsPerGameObjectType': locationsPerGameObjectType!
-              .map((key, item) => core.MapEntry(key, item.toJson())),
+          'locationsPerGameObjectType': locationsPerGameObjectType!,
         if (ttl != null) 'ttl': ttl!,
       };
 }

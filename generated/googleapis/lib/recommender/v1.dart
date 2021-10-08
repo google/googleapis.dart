@@ -263,7 +263,7 @@ class BillingAccountsLocationsInsightTypesInsightsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -449,7 +449,7 @@ class BillingAccountsLocationsRecommendersRecommendationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -499,7 +499,7 @@ class BillingAccountsLocationsRecommendersRecommendationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -549,7 +549,7 @@ class BillingAccountsLocationsRecommendersRecommendationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -751,7 +751,7 @@ class FoldersLocationsInsightTypesInsightsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -935,7 +935,7 @@ class FoldersLocationsRecommendersRecommendationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -985,7 +985,7 @@ class FoldersLocationsRecommendersRecommendationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1035,7 +1035,7 @@ class FoldersLocationsRecommendersRecommendationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1239,7 +1239,7 @@ class OrganizationsLocationsInsightTypesInsightsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1424,7 +1424,7 @@ class OrganizationsLocationsRecommendersRecommendationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1474,7 +1474,7 @@ class OrganizationsLocationsRecommendersRecommendationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1524,7 +1524,7 @@ class OrganizationsLocationsRecommendersRecommendationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1726,7 +1726,7 @@ class ProjectsLocationsInsightTypesInsightsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1910,7 +1910,7 @@ class ProjectsLocationsRecommendersRecommendationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1960,7 +1960,7 @@ class ProjectsLocationsRecommendersRecommendationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2010,7 +2010,7 @@ class ProjectsLocationsRecommendersRecommendationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2056,7 +2056,7 @@ class GoogleCloudRecommenderV1CostProjection {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cost != null) 'cost': cost!.toJson(),
+        if (cost != null) 'cost': cost!,
         if (duration != null) 'duration': duration!,
       };
 }
@@ -2106,9 +2106,9 @@ class GoogleCloudRecommenderV1Impact {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (category != null) 'category': category!,
-        if (costProjection != null) 'costProjection': costProjection!.toJson(),
+        if (costProjection != null) 'costProjection': costProjection!,
         if (securityProjection != null)
-          'securityProjection': securityProjection!.toJson(),
+          'securityProjection': securityProjection!,
       };
 }
 
@@ -2241,9 +2241,7 @@ class GoogleCloudRecommenderV1Insight {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (associatedRecommendations != null)
-          'associatedRecommendations': associatedRecommendations!
-              .map((value) => value.toJson())
-              .toList(),
+          'associatedRecommendations': associatedRecommendations!,
         if (category != null) 'category': category!,
         if (content != null) 'content': content!,
         if (description != null) 'description': description!,
@@ -2253,7 +2251,7 @@ class GoogleCloudRecommenderV1Insight {
         if (name != null) 'name': name!,
         if (observationPeriod != null) 'observationPeriod': observationPeriod!,
         if (severity != null) 'severity': severity!,
-        if (stateInfo != null) 'stateInfo': stateInfo!.toJson(),
+        if (stateInfo != null) 'stateInfo': stateInfo!,
         if (targetResources != null) 'targetResources': targetResources!,
       };
 }
@@ -2355,8 +2353,7 @@ class GoogleCloudRecommenderV1ListInsightsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (insights != null)
-          'insights': insights!.map((value) => value.toJson()).toList(),
+        if (insights != null) 'insights': insights!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -2392,9 +2389,7 @@ class GoogleCloudRecommenderV1ListRecommendationsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (recommendations != null)
-          'recommendations':
-              recommendations!.map((value) => value.toJson()).toList(),
+        if (recommendations != null) 'recommendations': recommendations!,
       };
 }
 
@@ -2708,15 +2703,13 @@ class GoogleCloudRecommenderV1Operation {
         if (action != null) 'action': action!,
         if (path != null) 'path': path!,
         if (pathFilters != null) 'pathFilters': pathFilters!,
-        if (pathValueMatchers != null)
-          'pathValueMatchers': pathValueMatchers!
-              .map((key, item) => core.MapEntry(key, item.toJson())),
+        if (pathValueMatchers != null) 'pathValueMatchers': pathValueMatchers!,
         if (resource != null) 'resource': resource!,
         if (resourceType != null) 'resourceType': resourceType!,
         if (sourcePath != null) 'sourcePath': sourcePath!,
         if (sourceResource != null) 'sourceResource': sourceResource!,
         if (value != null) 'value': value!,
-        if (valueMatcher != null) 'valueMatcher': valueMatcher!.toJson(),
+        if (valueMatcher != null) 'valueMatcher': valueMatcher!,
       };
 }
 
@@ -2742,8 +2735,7 @@ class GoogleCloudRecommenderV1OperationGroup {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (operations != null)
-          'operations': operations!.map((value) => value.toJson()).toList(),
+        if (operations != null) 'operations': operations!,
       };
 }
 
@@ -2870,22 +2862,19 @@ class GoogleCloudRecommenderV1Recommendation {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (additionalImpact != null)
-          'additionalImpact':
-              additionalImpact!.map((value) => value.toJson()).toList(),
+        if (additionalImpact != null) 'additionalImpact': additionalImpact!,
         if (associatedInsights != null)
-          'associatedInsights':
-              associatedInsights!.map((value) => value.toJson()).toList(),
-        if (content != null) 'content': content!.toJson(),
+          'associatedInsights': associatedInsights!,
+        if (content != null) 'content': content!,
         if (description != null) 'description': description!,
         if (etag != null) 'etag': etag!,
         if (lastRefreshTime != null) 'lastRefreshTime': lastRefreshTime!,
         if (name != null) 'name': name!,
-        if (primaryImpact != null) 'primaryImpact': primaryImpact!.toJson(),
+        if (primaryImpact != null) 'primaryImpact': primaryImpact!,
         if (priority != null) 'priority': priority!,
         if (recommenderSubtype != null)
           'recommenderSubtype': recommenderSubtype!,
-        if (stateInfo != null) 'stateInfo': stateInfo!.toJson(),
+        if (stateInfo != null) 'stateInfo': stateInfo!,
       };
 }
 
@@ -2922,9 +2911,7 @@ class GoogleCloudRecommenderV1RecommendationContent {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (operationGroups != null)
-          'operationGroups':
-              operationGroups!.map((value) => value.toJson()).toList(),
+        if (operationGroups != null) 'operationGroups': operationGroups!,
         if (overview != null) 'overview': overview!,
       };
 }

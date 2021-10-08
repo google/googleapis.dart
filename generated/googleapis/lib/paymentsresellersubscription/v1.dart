@@ -233,7 +233,7 @@ class PartnersSubscriptionsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -285,7 +285,7 @@ class PartnersSubscriptionsResource {
     core.String? subscriptionId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (subscriptionId != null) 'subscriptionId': [subscriptionId],
       if ($fields != null) 'fields': [$fields],
@@ -336,7 +336,7 @@ class PartnersSubscriptionsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -384,7 +384,7 @@ class PartnersSubscriptionsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -477,7 +477,7 @@ class PartnersSubscriptionsResource {
     core.String? subscriptionId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (subscriptionId != null) 'subscriptionId': [subscriptionId],
       if ($fields != null) 'fields': [$fields],
@@ -530,7 +530,7 @@ class PartnersSubscriptionsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -612,7 +612,7 @@ class GoogleCloudPaymentsResellerSubscriptionV1CancelSubscriptionResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (subscription != null) 'subscription': subscription!.toJson(),
+        if (subscription != null) 'subscription': subscription!,
       };
 }
 
@@ -670,7 +670,7 @@ class GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (subscription != null) 'subscription': subscription!.toJson(),
+        if (subscription != null) 'subscription': subscription!,
       };
 }
 
@@ -715,7 +715,7 @@ class GoogleCloudPaymentsResellerSubscriptionV1ExtendSubscriptionRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (extension != null) 'extension': extension!.toJson(),
+        if (extension != null) 'extension': extension!,
         if (requestId != null) 'requestId': requestId!,
       };
 }
@@ -783,7 +783,7 @@ class GoogleCloudPaymentsResellerSubscriptionV1Extension {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (duration != null) 'duration': duration!.toJson(),
+        if (duration != null) 'duration': duration!,
         if (partnerUserToken != null) 'partnerUserToken': partnerUserToken!,
       };
 }
@@ -819,8 +819,7 @@ class GoogleCloudPaymentsResellerSubscriptionV1ListProductsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (products != null)
-          'products': products!.map((value) => value.toJson()).toList(),
+        if (products != null) 'products': products!,
       };
 }
 
@@ -856,8 +855,7 @@ class GoogleCloudPaymentsResellerSubscriptionV1ListPromotionsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (promotions != null)
-          'promotions': promotions!.map((value) => value.toJson()).toList(),
+        if (promotions != null) 'promotions': promotions!,
       };
 }
 
@@ -955,10 +953,8 @@ class GoogleCloudPaymentsResellerSubscriptionV1Product {
         if (name != null) 'name': name!,
         if (regionCodes != null) 'regionCodes': regionCodes!,
         if (subscriptionBillingCycleDuration != null)
-          'subscriptionBillingCycleDuration':
-              subscriptionBillingCycleDuration!.toJson(),
-        if (titles != null)
-          'titles': titles!.map((value) => value.toJson()).toList(),
+          'subscriptionBillingCycleDuration': subscriptionBillingCycleDuration!,
+        if (titles != null) 'titles': titles!,
       };
 }
 
@@ -1055,13 +1051,11 @@ class GoogleCloudPaymentsResellerSubscriptionV1Promotion {
         if (applicableProducts != null)
           'applicableProducts': applicableProducts!,
         if (endTime != null) 'endTime': endTime!,
-        if (freeTrialDuration != null)
-          'freeTrialDuration': freeTrialDuration!.toJson(),
+        if (freeTrialDuration != null) 'freeTrialDuration': freeTrialDuration!,
         if (name != null) 'name': name!,
         if (regionCodes != null) 'regionCodes': regionCodes!,
         if (startTime != null) 'startTime': startTime!,
-        if (titles != null)
-          'titles': titles!.map((value) => value.toJson()).toList(),
+        if (titles != null) 'titles': titles!,
       };
 }
 
@@ -1271,7 +1265,7 @@ class GoogleCloudPaymentsResellerSubscriptionV1Subscription {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (cancellationDetails != null)
-          'cancellationDetails': cancellationDetails!.toJson(),
+          'cancellationDetails': cancellationDetails!,
         if (createTime != null) 'createTime': createTime!,
         if (cycleEndTime != null) 'cycleEndTime': cycleEndTime!,
         if (endUserEntitled != null) 'endUserEntitled': endUserEntitled!,
@@ -1282,12 +1276,11 @@ class GoogleCloudPaymentsResellerSubscriptionV1Subscription {
         if (products != null) 'products': products!,
         if (promotions != null) 'promotions': promotions!,
         if (redirectUri != null) 'redirectUri': redirectUri!,
-        if (serviceLocation != null)
-          'serviceLocation': serviceLocation!.toJson(),
+        if (serviceLocation != null) 'serviceLocation': serviceLocation!,
         if (state != null) 'state': state!,
         if (updateTime != null) 'updateTime': updateTime!,
         if (upgradeDowngradeDetails != null)
-          'upgradeDowngradeDetails': upgradeDowngradeDetails!.toJson(),
+          'upgradeDowngradeDetails': upgradeDowngradeDetails!,
       };
 }
 
@@ -1392,7 +1385,7 @@ class GoogleCloudPaymentsResellerSubscriptionV1UndoCancelSubscriptionResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (subscription != null) 'subscription': subscription!.toJson(),
+        if (subscription != null) 'subscription': subscription!,
       };
 }
 

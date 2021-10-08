@@ -570,7 +570,7 @@ class ChangesResource {
     core.String? teamDriveId,
     core.String? $fields,
   }) async {
-    final _body = convert_1.json.encode(request.toJson());
+    final _body = convert_1.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (driveId != null) 'driveId': [driveId],
       if (includeCorpusRemovals != null)
@@ -631,7 +631,7 @@ class ChannelsResource {
     Channel request, {
     core.String? $fields,
   }) async {
-    final _body = convert_1.json.encode(request.toJson());
+    final _body = convert_1.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -773,7 +773,7 @@ class ChildrenResource {
     core.bool? supportsTeamDrives,
     core.String? $fields,
   }) async {
-    final _body = convert_1.json.encode(request.toJson());
+    final _body = convert_1.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (enforceSingleParent != null)
         'enforceSingleParent': ['${enforceSingleParent}'],
@@ -965,7 +965,7 @@ class CommentsResource {
     core.String fileId, {
     core.String? $fields,
   }) async {
-    final _body = convert_1.json.encode(request.toJson());
+    final _body = convert_1.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1064,7 +1064,7 @@ class CommentsResource {
     core.String commentId, {
     core.String? $fields,
   }) async {
-    final _body = convert_1.json.encode(request.toJson());
+    final _body = convert_1.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1109,7 +1109,7 @@ class CommentsResource {
     core.String commentId, {
     core.String? $fields,
   }) async {
-    final _body = convert_1.json.encode(request.toJson());
+    final _body = convert_1.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1270,7 +1270,7 @@ class DrivesResource {
     core.String requestId, {
     core.String? $fields,
   }) async {
-    final _body = convert_1.json.encode(request.toJson());
+    final _body = convert_1.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       'requestId': [requestId],
       if ($fields != null) 'fields': [$fields],
@@ -1400,7 +1400,7 @@ class DrivesResource {
     core.bool? useDomainAdminAccess,
     core.String? $fields,
   }) async {
-    final _body = convert_1.json.encode(request.toJson());
+    final _body = convert_1.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (useDomainAdminAccess != null)
         'useDomainAdminAccess': ['${useDomainAdminAccess}'],
@@ -1493,7 +1493,7 @@ class FilesResource {
     core.String? visibility,
     core.String? $fields,
   }) async {
-    final _body = convert_1.json.encode(request.toJson());
+    final _body = convert_1.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (convert != null) 'convert': ['${convert}'],
       if (enforceSingleParent != null)
@@ -1876,7 +1876,7 @@ class FilesResource {
     commons.UploadOptions uploadOptions = commons.UploadOptions.defaultOptions,
     commons.Media? uploadMedia,
   }) async {
-    final _body = convert_1.json.encode(request.toJson());
+    final _body = convert_1.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (convert != null) 'convert': ['${convert}'],
       if (enforceSingleParent != null)
@@ -2149,7 +2149,7 @@ class FilesResource {
     core.bool? useContentAsIndexableText,
     core.String? $fields,
   }) async {
-    final _body = convert_1.json.encode(request.toJson());
+    final _body = convert_1.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (addParents != null) 'addParents': [addParents],
       if (convert != null) 'convert': ['${convert}'],
@@ -2466,7 +2466,7 @@ class FilesResource {
     commons.UploadOptions uploadOptions = commons.UploadOptions.defaultOptions,
     commons.Media? uploadMedia,
   }) async {
-    final _body = convert_1.json.encode(request.toJson());
+    final _body = convert_1.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (addParents != null) 'addParents': [addParents],
       if (convert != null) 'convert': ['${convert}'],
@@ -2578,7 +2578,7 @@ class FilesResource {
     core.String? $fields,
     commons.DownloadOptions downloadOptions = commons.DownloadOptions.metadata,
   }) async {
-    final _body = convert_1.json.encode(request.toJson());
+    final _body = convert_1.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (acknowledgeAbuse != null) 'acknowledgeAbuse': ['${acknowledgeAbuse}'],
       if (includePermissionsForView != null)
@@ -2735,7 +2735,7 @@ class ParentsResource {
     core.bool? supportsTeamDrives,
     core.String? $fields,
   }) async {
-    final _body = convert_1.json.encode(request.toJson());
+    final _body = convert_1.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (enforceSingleParent != null)
         'enforceSingleParent': ['${enforceSingleParent}'],
@@ -3006,7 +3006,7 @@ class PermissionsResource {
     core.bool? useDomainAdminAccess,
     core.String? $fields,
   }) async {
-    final _body = convert_1.json.encode(request.toJson());
+    final _body = convert_1.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (emailMessage != null) 'emailMessage': [emailMessage],
       if (enforceSingleParent != null)
@@ -3157,7 +3157,7 @@ class PermissionsResource {
     core.bool? useDomainAdminAccess,
     core.String? $fields,
   }) async {
-    final _body = convert_1.json.encode(request.toJson());
+    final _body = convert_1.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (removeExpiration != null) 'removeExpiration': ['${removeExpiration}'],
       if (supportsAllDrives != null)
@@ -3238,7 +3238,7 @@ class PermissionsResource {
     core.bool? useDomainAdminAccess,
     core.String? $fields,
   }) async {
-    final _body = convert_1.json.encode(request.toJson());
+    final _body = convert_1.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (removeExpiration != null) 'removeExpiration': ['${removeExpiration}'],
       if (supportsAllDrives != null)
@@ -3382,7 +3382,7 @@ class PropertiesResource {
     core.String fileId, {
     core.String? $fields,
   }) async {
-    final _body = convert_1.json.encode(request.toJson());
+    final _body = convert_1.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3463,7 +3463,7 @@ class PropertiesResource {
     core.String? visibility,
     core.String? $fields,
   }) async {
-    final _body = convert_1.json.encode(request.toJson());
+    final _body = convert_1.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (visibility != null) 'visibility': [visibility],
       if ($fields != null) 'fields': [$fields],
@@ -3513,7 +3513,7 @@ class PropertiesResource {
     core.String? visibility,
     core.String? $fields,
   }) async {
-    final _body = convert_1.json.encode(request.toJson());
+    final _body = convert_1.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (visibility != null) 'visibility': [visibility],
       if ($fields != null) 'fields': [$fields],
@@ -3659,7 +3659,7 @@ class RepliesResource {
     core.String commentId, {
     core.String? $fields,
   }) async {
-    final _body = convert_1.json.encode(request.toJson());
+    final _body = convert_1.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3768,7 +3768,7 @@ class RepliesResource {
     core.String replyId, {
     core.String? $fields,
   }) async {
-    final _body = convert_1.json.encode(request.toJson());
+    final _body = convert_1.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3819,7 +3819,7 @@ class RepliesResource {
     core.String replyId, {
     core.String? $fields,
   }) async {
-    final _body = convert_1.json.encode(request.toJson());
+    final _body = convert_1.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4001,7 +4001,7 @@ class RevisionsResource {
     core.String revisionId, {
     core.String? $fields,
   }) async {
-    final _body = convert_1.json.encode(request.toJson());
+    final _body = convert_1.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4046,7 +4046,7 @@ class RevisionsResource {
     core.String revisionId, {
     core.String? $fields,
   }) async {
-    final _body = convert_1.json.encode(request.toJson());
+    final _body = convert_1.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4171,7 +4171,7 @@ class TeamdrivesResource {
     core.String requestId, {
     core.String? $fields,
   }) async {
-    final _body = convert_1.json.encode(request.toJson());
+    final _body = convert_1.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       'requestId': [requestId],
       if ($fields != null) 'fields': [$fields],
@@ -4268,7 +4268,7 @@ class TeamdrivesResource {
     core.bool? useDomainAdminAccess,
     core.String? $fields,
   }) async {
-    final _body = convert_1.json.encode(request.toJson());
+    final _body = convert_1.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (useDomainAdminAccess != null)
         'useDomainAdminAccess': ['${useDomainAdminAccess}'],
@@ -4341,8 +4341,7 @@ class AboutAdditionalRoleInfo {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (roleSets != null)
-          'roleSets': roleSets!.map((value) => value.toJson()).toList(),
+        if (roleSets != null) 'roleSets': roleSets!,
         if (type != null) 'type': type!,
       };
 }
@@ -4804,39 +4803,29 @@ class About {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (additionalRoleInfo != null)
-          'additionalRoleInfo':
-              additionalRoleInfo!.map((value) => value.toJson()).toList(),
+          'additionalRoleInfo': additionalRoleInfo!,
         if (canCreateDrives != null) 'canCreateDrives': canCreateDrives!,
         if (canCreateTeamDrives != null)
           'canCreateTeamDrives': canCreateTeamDrives!,
         if (domainSharingPolicy != null)
           'domainSharingPolicy': domainSharingPolicy!,
-        if (driveThemes != null)
-          'driveThemes': driveThemes!.map((value) => value.toJson()).toList(),
+        if (driveThemes != null) 'driveThemes': driveThemes!,
         if (etag != null) 'etag': etag!,
-        if (exportFormats != null)
-          'exportFormats':
-              exportFormats!.map((value) => value.toJson()).toList(),
-        if (features != null)
-          'features': features!.map((value) => value.toJson()).toList(),
+        if (exportFormats != null) 'exportFormats': exportFormats!,
+        if (features != null) 'features': features!,
         if (folderColorPalette != null)
           'folderColorPalette': folderColorPalette!,
-        if (importFormats != null)
-          'importFormats':
-              importFormats!.map((value) => value.toJson()).toList(),
+        if (importFormats != null) 'importFormats': importFormats!,
         if (isCurrentAppInstalled != null)
           'isCurrentAppInstalled': isCurrentAppInstalled!,
         if (kind != null) 'kind': kind!,
         if (languageCode != null) 'languageCode': languageCode!,
         if (largestChangeId != null) 'largestChangeId': largestChangeId!,
-        if (maxUploadSizes != null)
-          'maxUploadSizes':
-              maxUploadSizes!.map((value) => value.toJson()).toList(),
+        if (maxUploadSizes != null) 'maxUploadSizes': maxUploadSizes!,
         if (name != null) 'name': name!,
         if (permissionId != null) 'permissionId': permissionId!,
         if (quotaBytesByService != null)
-          'quotaBytesByService':
-              quotaBytesByService!.map((value) => value.toJson()).toList(),
+          'quotaBytesByService': quotaBytesByService!,
         if (quotaBytesTotal != null) 'quotaBytesTotal': quotaBytesTotal!,
         if (quotaBytesUsed != null) 'quotaBytesUsed': quotaBytesUsed!,
         if (quotaBytesUsedAggregate != null)
@@ -4848,10 +4837,8 @@ class About {
           'remainingChangeIds': remainingChangeIds!,
         if (rootFolderId != null) 'rootFolderId': rootFolderId!,
         if (selfLink != null) 'selfLink': selfLink!,
-        if (teamDriveThemes != null)
-          'teamDriveThemes':
-              teamDriveThemes!.map((value) => value.toJson()).toList(),
-        if (user != null) 'user': user!.toJson(),
+        if (teamDriveThemes != null) 'teamDriveThemes': teamDriveThemes!,
+        if (user != null) 'user': user!,
       };
 }
 
@@ -5097,8 +5084,7 @@ class App {
           'createInFolderTemplate': createInFolderTemplate!,
         if (createUrl != null) 'createUrl': createUrl!,
         if (hasDriveWideScope != null) 'hasDriveWideScope': hasDriveWideScope!,
-        if (icons != null)
-          'icons': icons!.map((value) => value.toJson()).toList(),
+        if (icons != null) 'icons': icons!,
         if (id != null) 'id': id!,
         if (installed != null) 'installed': installed!,
         if (kind != null) 'kind': kind!,
@@ -5176,8 +5162,7 @@ class AppList {
   core.Map<core.String, core.dynamic> toJson() => {
         if (defaultAppIds != null) 'defaultAppIds': defaultAppIds!,
         if (etag != null) 'etag': etag!,
-        if (items != null)
-          'items': items!.map((value) => value.toJson()).toList(),
+        if (items != null) 'items': items!,
         if (kind != null) 'kind': kind!,
         if (selfLink != null) 'selfLink': selfLink!,
       };
@@ -5292,16 +5277,16 @@ class Change {
   core.Map<core.String, core.dynamic> toJson() => {
         if (changeType != null) 'changeType': changeType!,
         if (deleted != null) 'deleted': deleted!,
-        if (drive != null) 'drive': drive!.toJson(),
+        if (drive != null) 'drive': drive!,
         if (driveId != null) 'driveId': driveId!,
-        if (file != null) 'file': file!.toJson(),
+        if (file != null) 'file': file!,
         if (fileId != null) 'fileId': fileId!,
         if (id != null) 'id': id!,
         if (kind != null) 'kind': kind!,
         if (modificationDate != null)
           'modificationDate': modificationDate!.toIso8601String(),
         if (selfLink != null) 'selfLink': selfLink!,
-        if (teamDrive != null) 'teamDrive': teamDrive!.toJson(),
+        if (teamDrive != null) 'teamDrive': teamDrive!,
         if (teamDriveId != null) 'teamDriveId': teamDriveId!,
         if (type != null) 'type': type!,
       };
@@ -5383,8 +5368,7 @@ class ChangeList {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
-        if (items != null)
-          'items': items!.map((value) => value.toJson()).toList(),
+        if (items != null) 'items': items!,
         if (kind != null) 'kind': kind!,
         if (largestChangeId != null) 'largestChangeId': largestChangeId!,
         if (newStartPageToken != null) 'newStartPageToken': newStartPageToken!,
@@ -5560,8 +5544,7 @@ class ChildList {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
-        if (items != null)
-          'items': items!.map((value) => value.toJson()).toList(),
+        if (items != null) 'items': items!,
         if (kind != null) 'kind': kind!,
         if (nextLink != null) 'nextLink': nextLink!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -5774,10 +5757,10 @@ class Comment {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (anchor != null) 'anchor': anchor!,
-        if (author != null) 'author': author!.toJson(),
+        if (author != null) 'author': author!,
         if (commentId != null) 'commentId': commentId!,
         if (content != null) 'content': content!,
-        if (context != null) 'context': context!.toJson(),
+        if (context != null) 'context': context!,
         if (createdDate != null) 'createdDate': createdDate!.toIso8601String(),
         if (deleted != null) 'deleted': deleted!,
         if (fileId != null) 'fileId': fileId!,
@@ -5786,8 +5769,7 @@ class Comment {
         if (kind != null) 'kind': kind!,
         if (modifiedDate != null)
           'modifiedDate': modifiedDate!.toIso8601String(),
-        if (replies != null)
-          'replies': replies!.map((value) => value.toJson()).toList(),
+        if (replies != null) 'replies': replies!,
         if (selfLink != null) 'selfLink': selfLink!,
         if (status != null) 'status': status!,
       };
@@ -5846,8 +5828,7 @@ class CommentList {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (items != null)
-          'items': items!.map((value) => value.toJson()).toList(),
+        if (items != null) 'items': items!,
         if (kind != null) 'kind': kind!,
         if (nextLink != null) 'nextLink': nextLink!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -5939,7 +5920,7 @@ class CommentReply {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (author != null) 'author': author!.toJson(),
+        if (author != null) 'author': author!,
         if (content != null) 'content': content!,
         if (createdDate != null) 'createdDate': createdDate!.toIso8601String(),
         if (deleted != null) 'deleted': deleted!,
@@ -6005,8 +5986,7 @@ class CommentReplyList {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (items != null)
-          'items': items!.map((value) => value.toJson()).toList(),
+        if (items != null) 'items': items!,
         if (kind != null) 'kind': kind!,
         if (nextLink != null) 'nextLink': nextLink!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -6073,8 +6053,7 @@ class ContentRestriction {
   core.Map<core.String, core.dynamic> toJson() => {
         if (readOnly != null) 'readOnly': readOnly!,
         if (reason != null) 'reason': reason!,
-        if (restrictingUser != null)
-          'restrictingUser': restrictingUser!.toJson(),
+        if (restrictingUser != null) 'restrictingUser': restrictingUser!,
         if (restrictionDate != null)
           'restrictionDate': restrictionDate!.toIso8601String(),
         if (type != null) 'type': type!,
@@ -6484,17 +6463,17 @@ class Drive {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (backgroundImageFile != null)
-          'backgroundImageFile': backgroundImageFile!.toJson(),
+          'backgroundImageFile': backgroundImageFile!,
         if (backgroundImageLink != null)
           'backgroundImageLink': backgroundImageLink!,
-        if (capabilities != null) 'capabilities': capabilities!.toJson(),
+        if (capabilities != null) 'capabilities': capabilities!,
         if (colorRgb != null) 'colorRgb': colorRgb!,
         if (createdDate != null) 'createdDate': createdDate!.toIso8601String(),
         if (hidden != null) 'hidden': hidden!,
         if (id != null) 'id': id!,
         if (kind != null) 'kind': kind!,
         if (name != null) 'name': name!,
-        if (restrictions != null) 'restrictions': restrictions!.toJson(),
+        if (restrictions != null) 'restrictions': restrictions!,
         if (themeId != null) 'themeId': themeId!,
       };
 }
@@ -6538,8 +6517,7 @@ class DriveList {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (items != null)
-          'items': items!.map((value) => value.toJson()).toList(),
+        if (items != null) 'items': items!,
         if (kind != null) 'kind': kind!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
@@ -7131,7 +7109,7 @@ class FileImageMediaMetadata {
         if (height != null) 'height': height!,
         if (isoSpeed != null) 'isoSpeed': isoSpeed!,
         if (lens != null) 'lens': lens!,
-        if (location != null) 'location': location!.toJson(),
+        if (location != null) 'location': location!,
         if (maxApertureValue != null) 'maxApertureValue': maxApertureValue!,
         if (meteringMode != null) 'meteringMode': meteringMode!,
         if (rotation != null) 'rotation': rotation!,
@@ -8050,10 +8028,9 @@ class File {
         if (appDataContents != null) 'appDataContents': appDataContents!,
         if (canComment != null) 'canComment': canComment!,
         if (canReadRevisions != null) 'canReadRevisions': canReadRevisions!,
-        if (capabilities != null) 'capabilities': capabilities!.toJson(),
+        if (capabilities != null) 'capabilities': capabilities!,
         if (contentRestrictions != null)
-          'contentRestrictions':
-              contentRestrictions!.map((value) => value.toJson()).toList(),
+          'contentRestrictions': contentRestrictions!,
         if (copyRequiresWriterPermission != null)
           'copyRequiresWriterPermission': copyRequiresWriterPermission!,
         if (copyable != null) 'copyable': copyable!,
@@ -8079,19 +8056,17 @@ class File {
         if (iconLink != null) 'iconLink': iconLink!,
         if (id != null) 'id': id!,
         if (imageMediaMetadata != null)
-          'imageMediaMetadata': imageMediaMetadata!.toJson(),
-        if (indexableText != null) 'indexableText': indexableText!.toJson(),
+          'imageMediaMetadata': imageMediaMetadata!,
+        if (indexableText != null) 'indexableText': indexableText!,
         if (isAppAuthorized != null) 'isAppAuthorized': isAppAuthorized!,
         if (kind != null) 'kind': kind!,
-        if (labels != null) 'labels': labels!.toJson(),
-        if (lastModifyingUser != null)
-          'lastModifyingUser': lastModifyingUser!.toJson(),
+        if (labels != null) 'labels': labels!,
+        if (lastModifyingUser != null) 'lastModifyingUser': lastModifyingUser!,
         if (lastModifyingUserName != null)
           'lastModifyingUserName': lastModifyingUserName!,
         if (lastViewedByMeDate != null)
           'lastViewedByMeDate': lastViewedByMeDate!.toIso8601String(),
-        if (linkShareMetadata != null)
-          'linkShareMetadata': linkShareMetadata!.toJson(),
+        if (linkShareMetadata != null) 'linkShareMetadata': linkShareMetadata!,
         if (markedViewedByMeDate != null)
           'markedViewedByMeDate': markedViewedByMeDate!.toIso8601String(),
         if (md5Checksum != null) 'md5Checksum': md5Checksum!,
@@ -8104,15 +8079,11 @@ class File {
         if (originalFilename != null) 'originalFilename': originalFilename!,
         if (ownedByMe != null) 'ownedByMe': ownedByMe!,
         if (ownerNames != null) 'ownerNames': ownerNames!,
-        if (owners != null)
-          'owners': owners!.map((value) => value.toJson()).toList(),
-        if (parents != null)
-          'parents': parents!.map((value) => value.toJson()).toList(),
+        if (owners != null) 'owners': owners!,
+        if (parents != null) 'parents': parents!,
         if (permissionIds != null) 'permissionIds': permissionIds!,
-        if (permissions != null)
-          'permissions': permissions!.map((value) => value.toJson()).toList(),
-        if (properties != null)
-          'properties': properties!.map((value) => value.toJson()).toList(),
+        if (permissions != null) 'permissions': permissions!,
+        if (properties != null) 'properties': properties!,
         if (quotaBytesUsed != null) 'quotaBytesUsed': quotaBytesUsed!,
         if (resourceKey != null) 'resourceKey': resourceKey!,
         if (selfLink != null) 'selfLink': selfLink!,
@@ -8120,21 +8091,20 @@ class File {
         if (shared != null) 'shared': shared!,
         if (sharedWithMeDate != null)
           'sharedWithMeDate': sharedWithMeDate!.toIso8601String(),
-        if (sharingUser != null) 'sharingUser': sharingUser!.toJson(),
-        if (shortcutDetails != null)
-          'shortcutDetails': shortcutDetails!.toJson(),
+        if (sharingUser != null) 'sharingUser': sharingUser!,
+        if (shortcutDetails != null) 'shortcutDetails': shortcutDetails!,
         if (spaces != null) 'spaces': spaces!,
         if (teamDriveId != null) 'teamDriveId': teamDriveId!,
-        if (thumbnail != null) 'thumbnail': thumbnail!.toJson(),
+        if (thumbnail != null) 'thumbnail': thumbnail!,
         if (thumbnailLink != null) 'thumbnailLink': thumbnailLink!,
         if (thumbnailVersion != null) 'thumbnailVersion': thumbnailVersion!,
         if (title != null) 'title': title!,
         if (trashedDate != null) 'trashedDate': trashedDate!.toIso8601String(),
-        if (trashingUser != null) 'trashingUser': trashingUser!.toJson(),
-        if (userPermission != null) 'userPermission': userPermission!.toJson(),
+        if (trashingUser != null) 'trashingUser': trashingUser!,
+        if (userPermission != null) 'userPermission': userPermission!,
         if (version != null) 'version': version!,
         if (videoMediaMetadata != null)
-          'videoMediaMetadata': videoMediaMetadata!.toJson(),
+          'videoMediaMetadata': videoMediaMetadata!,
         if (webContentLink != null) 'webContentLink': webContentLink!,
         if (webViewLink != null) 'webViewLink': webViewLink!,
         if (writersCanShare != null) 'writersCanShare': writersCanShare!,
@@ -8214,8 +8184,7 @@ class FileList {
   core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
         if (incompleteSearch != null) 'incompleteSearch': incompleteSearch!,
-        if (items != null)
-          'items': items!.map((value) => value.toJson()).toList(),
+        if (items != null) 'items': items!,
         if (kind != null) 'kind': kind!,
         if (nextLink != null) 'nextLink': nextLink!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -8297,8 +8266,7 @@ class ParentList {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
-        if (items != null)
-          'items': items!.map((value) => value.toJson()).toList(),
+        if (items != null) 'items': items!,
         if (kind != null) 'kind': kind!,
         if (selfLink != null) 'selfLink': selfLink!,
       };
@@ -8673,16 +8641,12 @@ class Permission {
         if (id != null) 'id': id!,
         if (kind != null) 'kind': kind!,
         if (name != null) 'name': name!,
-        if (permissionDetails != null)
-          'permissionDetails':
-              permissionDetails!.map((value) => value.toJson()).toList(),
+        if (permissionDetails != null) 'permissionDetails': permissionDetails!,
         if (photoLink != null) 'photoLink': photoLink!,
         if (role != null) 'role': role!,
         if (selfLink != null) 'selfLink': selfLink!,
         if (teamDrivePermissionDetails != null)
-          'teamDrivePermissionDetails': teamDrivePermissionDetails!
-              .map((value) => value.toJson())
-              .toList(),
+          'teamDrivePermissionDetails': teamDrivePermissionDetails!,
         if (type != null) 'type': type!,
         if (value != null) 'value': value!,
         if (view != null) 'view': view!,
@@ -8764,8 +8728,7 @@ class PermissionList {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
-        if (items != null)
-          'items': items!.map((value) => value.toJson()).toList(),
+        if (items != null) 'items': items!,
         if (kind != null) 'kind': kind!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (selfLink != null) 'selfLink': selfLink!,
@@ -8877,8 +8840,7 @@ class PropertyList {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
-        if (items != null)
-          'items': items!.map((value) => value.toJson()).toList(),
+        if (items != null) 'items': items!,
         if (kind != null) 'kind': kind!,
         if (selfLink != null) 'selfLink': selfLink!,
       };
@@ -9046,8 +9008,7 @@ class Revision {
         if (fileSize != null) 'fileSize': fileSize!,
         if (id != null) 'id': id!,
         if (kind != null) 'kind': kind!,
-        if (lastModifyingUser != null)
-          'lastModifyingUser': lastModifyingUser!.toJson(),
+        if (lastModifyingUser != null) 'lastModifyingUser': lastModifyingUser!,
         if (lastModifyingUserName != null)
           'lastModifyingUserName': lastModifyingUserName!,
         if (md5Checksum != null) 'md5Checksum': md5Checksum!,
@@ -9117,8 +9078,7 @@ class RevisionList {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
-        if (items != null)
-          'items': items!.map((value) => value.toJson()).toList(),
+        if (items != null) 'items': items!,
         if (kind != null) 'kind': kind!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (selfLink != null) 'selfLink': selfLink!,
@@ -9561,16 +9521,16 @@ class TeamDrive {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (backgroundImageFile != null)
-          'backgroundImageFile': backgroundImageFile!.toJson(),
+          'backgroundImageFile': backgroundImageFile!,
         if (backgroundImageLink != null)
           'backgroundImageLink': backgroundImageLink!,
-        if (capabilities != null) 'capabilities': capabilities!.toJson(),
+        if (capabilities != null) 'capabilities': capabilities!,
         if (colorRgb != null) 'colorRgb': colorRgb!,
         if (createdDate != null) 'createdDate': createdDate!.toIso8601String(),
         if (id != null) 'id': id!,
         if (kind != null) 'kind': kind!,
         if (name != null) 'name': name!,
-        if (restrictions != null) 'restrictions': restrictions!.toJson(),
+        if (restrictions != null) 'restrictions': restrictions!,
         if (themeId != null) 'themeId': themeId!,
       };
 }
@@ -9607,8 +9567,7 @@ class TeamDriveList {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (items != null)
-          'items': items!.map((value) => value.toJson()).toList(),
+        if (items != null) 'items': items!,
         if (kind != null) 'kind': kind!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
@@ -9691,6 +9650,6 @@ class User {
           'isAuthenticatedUser': isAuthenticatedUser!,
         if (kind != null) 'kind': kind!,
         if (permissionId != null) 'permissionId': permissionId!,
-        if (picture != null) 'picture': picture!.toJson(),
+        if (picture != null) 'picture': picture!,
       };
 }

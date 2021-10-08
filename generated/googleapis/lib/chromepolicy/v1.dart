@@ -121,7 +121,7 @@ class CustomersPoliciesResource {
     core.String customer, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -176,7 +176,7 @@ class CustomersPoliciesOrgunitsResource {
     core.String customer, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -225,7 +225,7 @@ class CustomersPoliciesOrgunitsResource {
     core.String customer, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -374,7 +374,7 @@ class MediaResource {
     core.String? $fields,
     commons.Media? uploadMedia,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -464,8 +464,7 @@ class GoogleChromePolicyV1BatchInheritOrgUnitPoliciesRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (requests != null)
-          'requests': requests!.map((value) => value.toJson()).toList(),
+        if (requests != null) 'requests': requests!,
       };
 }
 
@@ -499,8 +498,7 @@ class GoogleChromePolicyV1BatchModifyOrgUnitPoliciesRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (requests != null)
-          'requests': requests!.map((value) => value.toJson()).toList(),
+        if (requests != null) 'requests': requests!,
       };
 }
 
@@ -536,8 +534,7 @@ class GoogleChromePolicyV1InheritOrgUnitPolicyRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (policySchema != null) 'policySchema': policySchema!,
-        if (policyTargetKey != null)
-          'policyTargetKey': policyTargetKey!.toJson(),
+        if (policyTargetKey != null) 'policyTargetKey': policyTargetKey!,
       };
 }
 
@@ -569,9 +566,7 @@ class GoogleChromePolicyV1ListPolicySchemasResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (policySchemas != null)
-          'policySchemas':
-              policySchemas!.map((value) => value.toJson()).toList(),
+        if (policySchemas != null) 'policySchemas': policySchemas!,
       };
 }
 
@@ -620,9 +615,8 @@ class GoogleChromePolicyV1ModifyOrgUnitPolicyRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (policyTargetKey != null)
-          'policyTargetKey': policyTargetKey!.toJson(),
-        if (policyValue != null) 'policyValue': policyValue!.toJson(),
+        if (policyTargetKey != null) 'policyTargetKey': policyTargetKey!,
+        if (policyValue != null) 'policyValue': policyValue!,
         if (updateMask != null) 'updateMask': updateMask!,
       };
 }
@@ -744,15 +738,11 @@ class GoogleChromePolicyV1PolicySchema {
         if (accessRestrictions != null)
           'accessRestrictions': accessRestrictions!,
         if (additionalTargetKeyNames != null)
-          'additionalTargetKeyNames':
-              additionalTargetKeyNames!.map((value) => value.toJson()).toList(),
-        if (definition != null) 'definition': definition!.toJson(),
-        if (fieldDescriptions != null)
-          'fieldDescriptions':
-              fieldDescriptions!.map((value) => value.toJson()).toList(),
+          'additionalTargetKeyNames': additionalTargetKeyNames!,
+        if (definition != null) 'definition': definition!,
+        if (fieldDescriptions != null) 'fieldDescriptions': fieldDescriptions!,
         if (name != null) 'name': name!,
-        if (notices != null)
-          'notices': notices!.map((value) => value.toJson()).toList(),
+        if (notices != null) 'notices': notices!,
         if (policyDescription != null) 'policyDescription': policyDescription!,
         if (schemaName != null) 'schemaName': schemaName!,
         if (supportUri != null) 'supportUri': supportUri!,
@@ -876,16 +866,12 @@ class GoogleChromePolicyV1PolicySchemaFieldDescription {
   core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
         if (field != null) 'field': field!,
-        if (fieldDependencies != null)
-          'fieldDependencies':
-              fieldDependencies!.map((value) => value.toJson()).toList(),
+        if (fieldDependencies != null) 'fieldDependencies': fieldDependencies!,
         if (inputConstraint != null) 'inputConstraint': inputConstraint!,
         if (knownValueDescriptions != null)
-          'knownValueDescriptions':
-              knownValueDescriptions!.map((value) => value.toJson()).toList(),
+          'knownValueDescriptions': knownValueDescriptions!,
         if (nestedFieldDescriptions != null)
-          'nestedFieldDescriptions':
-              nestedFieldDescriptions!.map((value) => value.toJson()).toList(),
+          'nestedFieldDescriptions': nestedFieldDescriptions!,
       };
 }
 
@@ -1113,8 +1099,7 @@ class GoogleChromePolicyV1ResolveRequest {
         if (pageToken != null) 'pageToken': pageToken!,
         if (policySchemaFilter != null)
           'policySchemaFilter': policySchemaFilter!,
-        if (policyTargetKey != null)
-          'policyTargetKey': policyTargetKey!.toJson(),
+        if (policyTargetKey != null) 'policyTargetKey': policyTargetKey!,
       };
 }
 
@@ -1148,9 +1133,7 @@ class GoogleChromePolicyV1ResolveResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (resolvedPolicies != null)
-          'resolvedPolicies':
-              resolvedPolicies!.map((value) => value.toJson()).toList(),
+        if (resolvedPolicies != null) 'resolvedPolicies': resolvedPolicies!,
       };
 }
 
@@ -1199,9 +1182,9 @@ class GoogleChromePolicyV1ResolvedPolicy {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (sourceKey != null) 'sourceKey': sourceKey!.toJson(),
-        if (targetKey != null) 'targetKey': targetKey!.toJson(),
-        if (value != null) 'value': value!.toJson(),
+        if (sourceKey != null) 'sourceKey': sourceKey!,
+        if (targetKey != null) 'targetKey': targetKey!,
+        if (value != null) 'value': value!,
       };
 }
 
@@ -1311,15 +1294,11 @@ class Proto2DescriptorProto {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (enumType != null)
-          'enumType': enumType!.map((value) => value.toJson()).toList(),
-        if (field != null)
-          'field': field!.map((value) => value.toJson()).toList(),
+        if (enumType != null) 'enumType': enumType!,
+        if (field != null) 'field': field!,
         if (name != null) 'name': name!,
-        if (nestedType != null)
-          'nestedType': nestedType!.map((value) => value.toJson()).toList(),
-        if (oneofDecl != null)
-          'oneofDecl': oneofDecl!.map((value) => value.toJson()).toList(),
+        if (nestedType != null) 'nestedType': nestedType!,
+        if (oneofDecl != null) 'oneofDecl': oneofDecl!,
       };
 }
 
@@ -1346,8 +1325,7 @@ class Proto2EnumDescriptorProto {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
-        if (value != null)
-          'value': value!.map((value) => value.toJson()).toList(),
+        if (value != null) 'value': value!,
       };
 }
 
@@ -1563,10 +1541,8 @@ class Proto2FileDescriptorProto {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (enumType != null)
-          'enumType': enumType!.map((value) => value.toJson()).toList(),
-        if (messageType != null)
-          'messageType': messageType!.map((value) => value.toJson()).toList(),
+        if (enumType != null) 'enumType': enumType!,
+        if (messageType != null) 'messageType': messageType!,
         if (name != null) 'name': name!,
         if (package != null) 'package': package!,
         if (syntax != null) 'syntax': syntax!,

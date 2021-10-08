@@ -198,7 +198,7 @@ class TablesRowsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -241,7 +241,7 @@ class TablesRowsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -283,7 +283,7 @@ class TablesRowsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -334,7 +334,7 @@ class TablesRowsResource {
     core.String? view,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (view != null) 'view': [view],
       if ($fields != null) 'fields': [$fields],
@@ -541,7 +541,7 @@ class TablesRowsResource {
     core.String? view,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if (view != null) 'view': [view],
@@ -673,8 +673,7 @@ class BatchCreateRowsRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (requests != null)
-          'requests': requests!.map((value) => value.toJson()).toList(),
+        if (requests != null) 'requests': requests!,
       };
 }
 
@@ -698,7 +697,7 @@ class BatchCreateRowsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (rows != null) 'rows': rows!.map((value) => value.toJson()).toList(),
+        if (rows != null) 'rows': rows!,
       };
 }
 
@@ -755,8 +754,7 @@ class BatchUpdateRowsRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (requests != null)
-          'requests': requests!.map((value) => value.toJson()).toList(),
+        if (requests != null) 'requests': requests!,
       };
 }
 
@@ -780,7 +778,7 @@ class BatchUpdateRowsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (rows != null) 'rows': rows!.map((value) => value.toJson()).toList(),
+        if (rows != null) 'rows': rows!,
       };
 }
 
@@ -872,14 +870,13 @@ class ColumnDescription {
   core.Map<core.String, core.dynamic> toJson() => {
         if (dataType != null) 'dataType': dataType!,
         if (id != null) 'id': id!,
-        if (labels != null)
-          'labels': labels!.map((value) => value.toJson()).toList(),
-        if (lookupDetails != null) 'lookupDetails': lookupDetails!.toJson(),
+        if (labels != null) 'labels': labels!,
+        if (lookupDetails != null) 'lookupDetails': lookupDetails!,
         if (multipleValuesDisallowed != null)
           'multipleValuesDisallowed': multipleValuesDisallowed!,
         if (name != null) 'name': name!,
         if (relationshipDetails != null)
-          'relationshipDetails': relationshipDetails!.toJson(),
+          'relationshipDetails': relationshipDetails!,
       };
 }
 
@@ -928,7 +925,7 @@ class CreateRowRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (parent != null) 'parent': parent!,
-        if (row != null) 'row': row!.toJson(),
+        if (row != null) 'row': row!,
         if (view != null) 'view': view!,
       };
 }
@@ -997,7 +994,7 @@ class ListRowsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (rows != null) 'rows': rows!.map((value) => value.toJson()).toList(),
+        if (rows != null) 'rows': rows!,
       };
 }
 
@@ -1031,8 +1028,7 @@ class ListTablesResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (tables != null)
-          'tables': tables!.map((value) => value.toJson()).toList(),
+        if (tables != null) 'tables': tables!,
       };
 }
 
@@ -1066,8 +1062,7 @@ class ListWorkspacesResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (workspaces != null)
-          'workspaces': workspaces!.map((value) => value.toJson()).toList(),
+        if (workspaces != null) 'workspaces': workspaces!,
       };
 }
 
@@ -1265,13 +1260,11 @@ class Table {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (columns != null)
-          'columns': columns!.map((value) => value.toJson()).toList(),
+        if (columns != null) 'columns': columns!,
         if (createTime != null) 'createTime': createTime!,
         if (displayName != null) 'displayName': displayName!,
         if (name != null) 'name': name!,
-        if (savedViews != null)
-          'savedViews': savedViews!.map((value) => value.toJson()).toList(),
+        if (savedViews != null) 'savedViews': savedViews!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
 }
@@ -1316,7 +1309,7 @@ class UpdateRowRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (row != null) 'row': row!.toJson(),
+        if (row != null) 'row': row!,
         if (updateMask != null) 'updateMask': updateMask!,
         if (view != null) 'view': view!,
       };
@@ -1373,8 +1366,7 @@ class Workspace {
         if (createTime != null) 'createTime': createTime!,
         if (displayName != null) 'displayName': displayName!,
         if (name != null) 'name': name!,
-        if (tables != null)
-          'tables': tables!.map((value) => value.toJson()).toList(),
+        if (tables != null) 'tables': tables!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
 }

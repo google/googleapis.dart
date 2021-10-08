@@ -94,7 +94,7 @@ class ApplicationDetailServiceResource {
     FileReference request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -209,7 +209,7 @@ class ProjectsTestMatricesResource {
     core.String? requestId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (requestId != null) 'requestId': [requestId],
       if ($fields != null) 'fields': [$fields],
@@ -355,7 +355,7 @@ class Account {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (googleAuto != null) 'googleAuto': googleAuto!.toJson(),
+        if (googleAuto != null) 'googleAuto': googleAuto!,
       };
 }
 
@@ -459,12 +459,10 @@ class AndroidDeviceCatalog {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (models != null)
-          'models': models!.map((value) => value.toJson()).toList(),
+        if (models != null) 'models': models!,
         if (runtimeConfiguration != null)
-          'runtimeConfiguration': runtimeConfiguration!.toJson(),
-        if (versions != null)
-          'versions': versions!.map((value) => value.toJson()).toList(),
+          'runtimeConfiguration': runtimeConfiguration!,
+        if (versions != null) 'versions': versions!,
       };
 }
 
@@ -490,9 +488,7 @@ class AndroidDeviceList {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (androidDevices != null)
-          'androidDevices':
-              androidDevices!.map((value) => value.toJson()).toList(),
+        if (androidDevices != null) 'androidDevices': androidDevices!,
       };
 }
 
@@ -609,13 +605,13 @@ class AndroidInstrumentationTest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (appApk != null) 'appApk': appApk!.toJson(),
-        if (appBundle != null) 'appBundle': appBundle!.toJson(),
+        if (appApk != null) 'appApk': appApk!,
+        if (appBundle != null) 'appBundle': appBundle!,
         if (appPackageId != null) 'appPackageId': appPackageId!,
         if (orchestratorOption != null)
           'orchestratorOption': orchestratorOption!,
-        if (shardingOption != null) 'shardingOption': shardingOption!.toJson(),
-        if (testApk != null) 'testApk': testApk!.toJson(),
+        if (shardingOption != null) 'shardingOption': shardingOption!,
+        if (testApk != null) 'testApk': testApk!,
         if (testPackageId != null) 'testPackageId': testPackageId!,
         if (testRunnerClass != null) 'testRunnerClass': testRunnerClass!,
         if (testTargets != null) 'testTargets': testTargets!,
@@ -981,21 +977,17 @@ class AndroidRoboTest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (appApk != null) 'appApk': appApk!.toJson(),
-        if (appBundle != null) 'appBundle': appBundle!.toJson(),
+        if (appApk != null) 'appApk': appApk!,
+        if (appBundle != null) 'appBundle': appBundle!,
         if (appInitialActivity != null)
           'appInitialActivity': appInitialActivity!,
         if (appPackageId != null) 'appPackageId': appPackageId!,
         if (maxDepth != null) 'maxDepth': maxDepth!,
         if (maxSteps != null) 'maxSteps': maxSteps!,
-        if (roboDirectives != null)
-          'roboDirectives':
-              roboDirectives!.map((value) => value.toJson()).toList(),
+        if (roboDirectives != null) 'roboDirectives': roboDirectives!,
         if (roboMode != null) 'roboMode': roboMode!,
-        if (roboScript != null) 'roboScript': roboScript!.toJson(),
-        if (startingIntents != null)
-          'startingIntents':
-              startingIntents!.map((value) => value.toJson()).toList(),
+        if (roboScript != null) 'roboScript': roboScript!,
+        if (startingIntents != null) 'startingIntents': startingIntents!,
       };
 }
 
@@ -1029,10 +1021,8 @@ class AndroidRuntimeConfiguration {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (locales != null)
-          'locales': locales!.map((value) => value.toJson()).toList(),
-        if (orientations != null)
-          'orientations': orientations!.map((value) => value.toJson()).toList(),
+        if (locales != null) 'locales': locales!,
+        if (orientations != null) 'orientations': orientations!,
       };
 }
 
@@ -1100,8 +1090,8 @@ class AndroidTestLoop {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (appApk != null) 'appApk': appApk!.toJson(),
-        if (appBundle != null) 'appBundle': appBundle!.toJson(),
+        if (appApk != null) 'appApk': appApk!,
+        if (appBundle != null) 'appBundle': appBundle!,
         if (appPackageId != null) 'appPackageId': appPackageId!,
         if (scenarioLabels != null) 'scenarioLabels': scenarioLabels!,
         if (scenarios != null) 'scenarios': scenarios!,
@@ -1181,9 +1171,9 @@ class AndroidVersion {
   core.Map<core.String, core.dynamic> toJson() => {
         if (apiLevel != null) 'apiLevel': apiLevel!,
         if (codeName != null) 'codeName': codeName!,
-        if (distribution != null) 'distribution': distribution!.toJson(),
+        if (distribution != null) 'distribution': distribution!,
         if (id != null) 'id': id!,
-        if (releaseDate != null) 'releaseDate': releaseDate!.toJson(),
+        if (releaseDate != null) 'releaseDate': releaseDate!,
         if (tags != null) 'tags': tags!,
         if (versionString != null) 'versionString': versionString!,
       };
@@ -1216,7 +1206,7 @@ class Apk {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (location != null) 'location': location!.toJson(),
+        if (location != null) 'location': location!,
         if (packageName != null) 'packageName': packageName!,
       };
 }
@@ -1239,7 +1229,7 @@ class ApkDetail {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (apkManifest != null) 'apkManifest': apkManifest!.toJson(),
+        if (apkManifest != null) 'apkManifest': apkManifest!,
       };
 }
 
@@ -1308,9 +1298,7 @@ class ApkManifest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (applicationLabel != null) 'applicationLabel': applicationLabel!,
-        if (intentFilters != null)
-          'intentFilters':
-              intentFilters!.map((value) => value.toJson()).toList(),
+        if (intentFilters != null) 'intentFilters': intentFilters!,
         if (maxSdkVersion != null) 'maxSdkVersion': maxSdkVersion!,
         if (minSdkVersion != null) 'minSdkVersion': minSdkVersion!,
         if (packageName != null) 'packageName': packageName!,
@@ -1341,7 +1329,7 @@ class AppBundle {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bundleLocation != null) 'bundleLocation': bundleLocation!.toJson(),
+        if (bundleLocation != null) 'bundleLocation': bundleLocation!,
       };
 }
 
@@ -1423,9 +1411,7 @@ class ClientInfo {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (clientInfoDetails != null)
-          'clientInfoDetails':
-              clientInfoDetails!.map((value) => value.toJson()).toList(),
+        if (clientInfoDetails != null) 'clientInfoDetails': clientInfoDetails!,
         if (name != null) 'name': name!,
       };
 }
@@ -1535,8 +1521,8 @@ class DeviceFile {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (obbFile != null) 'obbFile': obbFile!.toJson(),
-        if (regularFile != null) 'regularFile': regularFile!.toJson(),
+        if (obbFile != null) 'obbFile': obbFile!,
+        if (regularFile != null) 'regularFile': regularFile!,
       };
 }
 
@@ -1576,7 +1562,7 @@ class DeviceIpBlock {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (addedDate != null) 'addedDate': addedDate!.toJson(),
+        if (addedDate != null) 'addedDate': addedDate!,
         if (block != null) 'block': block!,
         if (form != null) 'form': form!,
       };
@@ -1602,8 +1588,7 @@ class DeviceIpBlockCatalog {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (ipBlocks != null)
-          'ipBlocks': ipBlocks!.map((value) => value.toJson()).toList(),
+        if (ipBlocks != null) 'ipBlocks': ipBlocks!,
       };
 }
 
@@ -1667,8 +1652,8 @@ class Environment {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (androidDevice != null) 'androidDevice': androidDevice!.toJson(),
-        if (iosDevice != null) 'iosDevice': iosDevice!.toJson(),
+        if (androidDevice != null) 'androidDevice': androidDevice!,
+        if (iosDevice != null) 'iosDevice': iosDevice!,
       };
 }
 
@@ -1707,10 +1692,9 @@ class EnvironmentMatrix {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (androidDeviceList != null)
-          'androidDeviceList': androidDeviceList!.toJson(),
-        if (androidMatrix != null) 'androidMatrix': androidMatrix!.toJson(),
-        if (iosDeviceList != null) 'iosDeviceList': iosDeviceList!.toJson(),
+        if (androidDeviceList != null) 'androidDeviceList': androidDeviceList!,
+        if (androidMatrix != null) 'androidMatrix': androidMatrix!,
+        if (iosDeviceList != null) 'iosDeviceList': iosDeviceList!,
       };
 }
 
@@ -1782,7 +1766,7 @@ class GetApkDetailsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (apkDetail != null) 'apkDetail': apkDetail!.toJson(),
+        if (apkDetail != null) 'apkDetail': apkDetail!,
       };
 }
 
@@ -1974,15 +1958,11 @@ class IosDeviceCatalog {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (models != null)
-          'models': models!.map((value) => value.toJson()).toList(),
+        if (models != null) 'models': models!,
         if (runtimeConfiguration != null)
-          'runtimeConfiguration': runtimeConfiguration!.toJson(),
-        if (versions != null)
-          'versions': versions!.map((value) => value.toJson()).toList(),
-        if (xcodeVersions != null)
-          'xcodeVersions':
-              xcodeVersions!.map((value) => value.toJson()).toList(),
+          'runtimeConfiguration': runtimeConfiguration!,
+        if (versions != null) 'versions': versions!,
+        if (xcodeVersions != null) 'xcodeVersions': xcodeVersions!,
       };
 }
 
@@ -2022,7 +2002,7 @@ class IosDeviceFile {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (bundleId != null) 'bundleId': bundleId!,
-        if (content != null) 'content': content!.toJson(),
+        if (content != null) 'content': content!,
         if (devicePath != null) 'devicePath': devicePath!,
       };
 }
@@ -2049,8 +2029,7 @@ class IosDeviceList {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (iosDevices != null)
-          'iosDevices': iosDevices!.map((value) => value.toJson()).toList(),
+        if (iosDevices != null) 'iosDevices': iosDevices!,
       };
 }
 
@@ -2188,10 +2167,8 @@ class IosRuntimeConfiguration {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (locales != null)
-          'locales': locales!.map((value) => value.toJson()).toList(),
-        if (orientations != null)
-          'orientations': orientations!.map((value) => value.toJson()).toList(),
+        if (locales != null) 'locales': locales!,
+        if (orientations != null) 'orientations': orientations!,
       };
 }
 
@@ -2240,7 +2217,7 @@ class IosTestLoop {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (appBundleId != null) 'appBundleId': appBundleId!,
-        if (appIpa != null) 'appIpa': appIpa!.toJson(),
+        if (appIpa != null) 'appIpa': appIpa!,
         if (scenarios != null) 'scenarios': scenarios!,
       };
 }
@@ -2301,15 +2278,10 @@ class IosTestSetup {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (additionalIpas != null)
-          'additionalIpas':
-              additionalIpas!.map((value) => value.toJson()).toList(),
+        if (additionalIpas != null) 'additionalIpas': additionalIpas!,
         if (networkProfile != null) 'networkProfile': networkProfile!,
-        if (pullDirectories != null)
-          'pullDirectories':
-              pullDirectories!.map((value) => value.toJson()).toList(),
-        if (pushFiles != null)
-          'pushFiles': pushFiles!.map((value) => value.toJson()).toList(),
+        if (pullDirectories != null) 'pullDirectories': pullDirectories!,
+        if (pushFiles != null) 'pushFiles': pushFiles!,
       };
 }
 
@@ -2454,9 +2426,9 @@ class IosXcTest {
         if (appBundleId != null) 'appBundleId': appBundleId!,
         if (testSpecialEntitlements != null)
           'testSpecialEntitlements': testSpecialEntitlements!,
-        if (testsZip != null) 'testsZip': testsZip!.toJson(),
+        if (testsZip != null) 'testsZip': testsZip!,
         if (xcodeVersion != null) 'xcodeVersion': xcodeVersion!,
-        if (xctestrun != null) 'xctestrun': xctestrun!.toJson(),
+        if (xctestrun != null) 'xctestrun': xctestrun!,
       };
 }
 
@@ -2545,8 +2517,7 @@ class ManualSharding {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (testTargetsForShard != null)
-          'testTargetsForShard':
-              testTargetsForShard!.map((value) => value.toJson()).toList(),
+          'testTargetsForShard': testTargetsForShard!,
       };
 }
 
@@ -2580,9 +2551,9 @@ class NetworkConfiguration {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (downRule != null) 'downRule': downRule!.toJson(),
+        if (downRule != null) 'downRule': downRule!,
         if (id != null) 'id': id!,
-        if (upRule != null) 'upRule': upRule!.toJson(),
+        if (upRule != null) 'upRule': upRule!,
       };
 }
 
@@ -2604,9 +2575,7 @@ class NetworkConfigurationCatalog {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (configurations != null)
-          'configurations':
-              configurations!.map((value) => value.toJson()).toList(),
+        if (configurations != null) 'configurations': configurations!,
       };
 }
 
@@ -2641,7 +2610,7 @@ class ObbFile {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (obb != null) 'obb': obb!.toJson(),
+        if (obb != null) 'obb': obb!,
         if (obbFileName != null) 'obbFileName': obbFileName!,
       };
 }
@@ -2767,7 +2736,7 @@ class RegularFile {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (content != null) 'content': content!.toJson(),
+        if (content != null) 'content': content!,
         if (devicePath != null) 'devicePath': devicePath!,
       };
 }
@@ -2821,12 +2790,12 @@ class ResultStorage {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (googleCloudStorage != null)
-          'googleCloudStorage': googleCloudStorage!.toJson(),
+          'googleCloudStorage': googleCloudStorage!,
         if (resultsUrl != null) 'resultsUrl': resultsUrl!,
         if (toolResultsExecution != null)
-          'toolResultsExecution': toolResultsExecution!.toJson(),
+          'toolResultsExecution': toolResultsExecution!,
         if (toolResultsHistory != null)
-          'toolResultsHistory': toolResultsHistory!.toJson(),
+          'toolResultsHistory': toolResultsHistory!,
       };
 }
 
@@ -2921,9 +2890,8 @@ class RoboStartingIntent {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (launcherActivity != null)
-          'launcherActivity': launcherActivity!.toJson(),
-        if (startActivity != null) 'startActivity': startActivity!.toJson(),
+        if (launcherActivity != null) 'launcherActivity': launcherActivity!,
+        if (startActivity != null) 'startActivity': startActivity!,
         if (timeout != null) 'timeout': timeout!,
       };
 }
@@ -2971,7 +2939,7 @@ class Shard {
         if (numShards != null) 'numShards': numShards!,
         if (shardIndex != null) 'shardIndex': shardIndex!,
         if (testTargetsForShard != null)
-          'testTargetsForShard': testTargetsForShard!.toJson(),
+          'testTargetsForShard': testTargetsForShard!,
       };
 }
 
@@ -3002,9 +2970,8 @@ class ShardingOption {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (manualSharding != null) 'manualSharding': manualSharding!.toJson(),
-        if (uniformSharding != null)
-          'uniformSharding': uniformSharding!.toJson(),
+        if (manualSharding != null) 'manualSharding': manualSharding!,
+        if (uniformSharding != null) 'uniformSharding': uniformSharding!,
       };
 }
 
@@ -3161,15 +3128,13 @@ class TestEnvironmentCatalog {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (androidDeviceCatalog != null)
-          'androidDeviceCatalog': androidDeviceCatalog!.toJson(),
+          'androidDeviceCatalog': androidDeviceCatalog!,
         if (deviceIpBlockCatalog != null)
-          'deviceIpBlockCatalog': deviceIpBlockCatalog!.toJson(),
-        if (iosDeviceCatalog != null)
-          'iosDeviceCatalog': iosDeviceCatalog!.toJson(),
+          'deviceIpBlockCatalog': deviceIpBlockCatalog!,
+        if (iosDeviceCatalog != null) 'iosDeviceCatalog': iosDeviceCatalog!,
         if (networkConfigurationCatalog != null)
-          'networkConfigurationCatalog': networkConfigurationCatalog!.toJson(),
-        if (softwareCatalog != null)
-          'softwareCatalog': softwareCatalog!.toJson(),
+          'networkConfigurationCatalog': networkConfigurationCatalog!,
+        if (softwareCatalog != null) 'softwareCatalog': softwareCatalog!,
       };
 }
 
@@ -3302,18 +3267,16 @@ class TestExecution {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (environment != null) 'environment': environment!.toJson(),
+        if (environment != null) 'environment': environment!,
         if (id != null) 'id': id!,
         if (matrixId != null) 'matrixId': matrixId!,
         if (projectId != null) 'projectId': projectId!,
-        if (shard != null) 'shard': shard!.toJson(),
+        if (shard != null) 'shard': shard!,
         if (state != null) 'state': state!,
-        if (testDetails != null) 'testDetails': testDetails!.toJson(),
-        if (testSpecification != null)
-          'testSpecification': testSpecification!.toJson(),
+        if (testDetails != null) 'testDetails': testDetails!,
+        if (testSpecification != null) 'testSpecification': testSpecification!,
         if (timestamp != null) 'timestamp': timestamp!,
-        if (toolResultsStep != null)
-          'toolResultsStep': toolResultsStep!.toJson(),
+        if (toolResultsStep != null) 'toolResultsStep': toolResultsStep!,
       };
 }
 
@@ -3571,23 +3534,19 @@ class TestMatrix {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (clientInfo != null) 'clientInfo': clientInfo!.toJson(),
-        if (environmentMatrix != null)
-          'environmentMatrix': environmentMatrix!.toJson(),
+        if (clientInfo != null) 'clientInfo': clientInfo!,
+        if (environmentMatrix != null) 'environmentMatrix': environmentMatrix!,
         if (failFast != null) 'failFast': failFast!,
         if (flakyTestAttempts != null) 'flakyTestAttempts': flakyTestAttempts!,
         if (invalidMatrixDetails != null)
           'invalidMatrixDetails': invalidMatrixDetails!,
         if (outcomeSummary != null) 'outcomeSummary': outcomeSummary!,
         if (projectId != null) 'projectId': projectId!,
-        if (resultStorage != null) 'resultStorage': resultStorage!.toJson(),
+        if (resultStorage != null) 'resultStorage': resultStorage!,
         if (state != null) 'state': state!,
-        if (testExecutions != null)
-          'testExecutions':
-              testExecutions!.map((value) => value.toJson()).toList(),
+        if (testExecutions != null) 'testExecutions': testExecutions!,
         if (testMatrixId != null) 'testMatrixId': testMatrixId!,
-        if (testSpecification != null)
-          'testSpecification': testSpecification!.toJson(),
+        if (testSpecification != null) 'testSpecification': testSpecification!,
         if (timestamp != null) 'timestamp': timestamp!,
       };
 }
@@ -3692,20 +3651,16 @@ class TestSetup {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (account != null) 'account': account!.toJson(),
-        if (additionalApks != null)
-          'additionalApks':
-              additionalApks!.map((value) => value.toJson()).toList(),
+        if (account != null) 'account': account!,
+        if (additionalApks != null) 'additionalApks': additionalApks!,
         if (directoriesToPull != null) 'directoriesToPull': directoriesToPull!,
         if (dontAutograntPermissions != null)
           'dontAutograntPermissions': dontAutograntPermissions!,
         if (environmentVariables != null)
-          'environmentVariables':
-              environmentVariables!.map((value) => value.toJson()).toList(),
-        if (filesToPush != null)
-          'filesToPush': filesToPush!.map((value) => value.toJson()).toList(),
+          'environmentVariables': environmentVariables!,
+        if (filesToPush != null) 'filesToPush': filesToPush!,
         if (networkProfile != null) 'networkProfile': networkProfile!,
-        if (systrace != null) 'systrace': systrace!.toJson(),
+        if (systrace != null) 'systrace': systrace!,
       };
 }
 
@@ -3808,19 +3763,17 @@ class TestSpecification {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (androidInstrumentationTest != null)
-          'androidInstrumentationTest': androidInstrumentationTest!.toJson(),
-        if (androidRoboTest != null)
-          'androidRoboTest': androidRoboTest!.toJson(),
-        if (androidTestLoop != null)
-          'androidTestLoop': androidTestLoop!.toJson(),
+          'androidInstrumentationTest': androidInstrumentationTest!,
+        if (androidRoboTest != null) 'androidRoboTest': androidRoboTest!,
+        if (androidTestLoop != null) 'androidTestLoop': androidTestLoop!,
         if (disablePerformanceMetrics != null)
           'disablePerformanceMetrics': disablePerformanceMetrics!,
         if (disableVideoRecording != null)
           'disableVideoRecording': disableVideoRecording!,
-        if (iosTestLoop != null) 'iosTestLoop': iosTestLoop!.toJson(),
-        if (iosTestSetup != null) 'iosTestSetup': iosTestSetup!.toJson(),
-        if (iosXcTest != null) 'iosXcTest': iosXcTest!.toJson(),
-        if (testSetup != null) 'testSetup': testSetup!.toJson(),
+        if (iosTestLoop != null) 'iosTestLoop': iosTestLoop!,
+        if (iosTestSetup != null) 'iosTestSetup': iosTestSetup!,
+        if (iosXcTest != null) 'iosXcTest': iosXcTest!,
+        if (testSetup != null) 'testSetup': testSetup!,
         if (testTimeout != null) 'testTimeout': testTimeout!,
       };
 }

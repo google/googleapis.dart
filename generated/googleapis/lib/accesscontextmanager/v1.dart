@@ -100,7 +100,7 @@ class AccessPoliciesResource {
     AccessPolicy request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -273,7 +273,7 @@ class AccessPoliciesResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -327,7 +327,7 @@ class AccessPoliciesAccessLevelsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -528,7 +528,7 @@ class AccessPoliciesAccessLevelsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -579,7 +579,7 @@ class AccessPoliciesAccessLevelsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -641,7 +641,7 @@ class AccessPoliciesServicePerimetersResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -688,7 +688,7 @@ class AccessPoliciesServicePerimetersResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -866,7 +866,7 @@ class AccessPoliciesServicePerimetersResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -916,7 +916,7 @@ class AccessPoliciesServicePerimetersResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -973,7 +973,7 @@ class OperationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1168,7 +1168,7 @@ class OrganizationsGcpUserAccessBindingsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1352,7 +1352,7 @@ class OrganizationsGcpUserAccessBindingsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -1430,8 +1430,8 @@ class AccessLevel {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (basic != null) 'basic': basic!.toJson(),
-        if (custom != null) 'custom': custom!.toJson(),
+        if (basic != null) 'basic': basic!,
+        if (custom != null) 'custom': custom!,
         if (description != null) 'description': description!,
         if (name != null) 'name': name!,
         if (title != null) 'title': title!,
@@ -1538,9 +1538,7 @@ class ApiOperation {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (methodSelectors != null)
-          'methodSelectors':
-              methodSelectors!.map((value) => value.toJson()).toList(),
+        if (methodSelectors != null) 'methodSelectors': methodSelectors!,
         if (serviceName != null) 'serviceName': serviceName!,
       };
 }
@@ -1585,8 +1583,7 @@ class BasicLevel {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (combiningFunction != null) 'combiningFunction': combiningFunction!,
-        if (conditions != null)
-          'conditions': conditions!.map((value) => value.toJson()).toList(),
+        if (conditions != null) 'conditions': conditions!,
       };
 }
 
@@ -1644,9 +1641,7 @@ class CommitServicePerimetersResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (servicePerimeters != null)
-          'servicePerimeters':
-              servicePerimeters!.map((value) => value.toJson()).toList(),
+        if (servicePerimeters != null) 'servicePerimeters': servicePerimeters!,
       };
 }
 
@@ -1742,7 +1737,7 @@ class Condition {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (devicePolicy != null) 'devicePolicy': devicePolicy!.toJson(),
+        if (devicePolicy != null) 'devicePolicy': devicePolicy!,
         if (ipSubnetworks != null) 'ipSubnetworks': ipSubnetworks!,
         if (members != null) 'members': members!,
         if (negate != null) 'negate': negate!,
@@ -1775,7 +1770,7 @@ class CustomLevel {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (expr != null) 'expr': expr!.toJson(),
+        if (expr != null) 'expr': expr!,
       };
 }
 
@@ -1857,9 +1852,7 @@ class DevicePolicy {
           'allowedDeviceManagementLevels': allowedDeviceManagementLevels!,
         if (allowedEncryptionStatuses != null)
           'allowedEncryptionStatuses': allowedEncryptionStatuses!,
-        if (osConstraints != null)
-          'osConstraints':
-              osConstraints!.map((value) => value.toJson()).toList(),
+        if (osConstraints != null) 'osConstraints': osConstraints!,
         if (requireAdminApproval != null)
           'requireAdminApproval': requireAdminApproval!,
         if (requireCorpOwned != null) 'requireCorpOwned': requireCorpOwned!,
@@ -1960,8 +1953,8 @@ class EgressPolicy {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (egressFrom != null) 'egressFrom': egressFrom!.toJson(),
-        if (egressTo != null) 'egressTo': egressTo!.toJson(),
+        if (egressFrom != null) 'egressFrom': egressFrom!,
+        if (egressTo != null) 'egressTo': egressTo!,
       };
 }
 
@@ -2010,8 +2003,7 @@ class EgressTo {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (operations != null)
-          'operations': operations!.map((value) => value.toJson()).toList(),
+        if (operations != null) 'operations': operations!,
         if (resources != null) 'resources': resources!,
       };
 }
@@ -2222,8 +2214,7 @@ class IngressFrom {
   core.Map<core.String, core.dynamic> toJson() => {
         if (identities != null) 'identities': identities!,
         if (identityType != null) 'identityType': identityType!,
-        if (sources != null)
-          'sources': sources!.map((value) => value.toJson()).toList(),
+        if (sources != null) 'sources': sources!,
       };
 }
 
@@ -2266,8 +2257,8 @@ class IngressPolicy {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (ingressFrom != null) 'ingressFrom': ingressFrom!.toJson(),
-        if (ingressTo != null) 'ingressTo': ingressTo!.toJson(),
+        if (ingressFrom != null) 'ingressFrom': ingressFrom!,
+        if (ingressTo != null) 'ingressTo': ingressTo!,
       };
 }
 
@@ -2353,8 +2344,7 @@ class IngressTo {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (operations != null)
-          'operations': operations!.map((value) => value.toJson()).toList(),
+        if (operations != null) 'operations': operations!,
         if (resources != null) 'resources': resources!,
       };
 }
@@ -2388,8 +2378,7 @@ class ListAccessLevelsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (accessLevels != null)
-          'accessLevels': accessLevels!.map((value) => value.toJson()).toList(),
+        if (accessLevels != null) 'accessLevels': accessLevels!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -2423,9 +2412,7 @@ class ListAccessPoliciesResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (accessPolicies != null)
-          'accessPolicies':
-              accessPolicies!.map((value) => value.toJson()).toList(),
+        if (accessPolicies != null) 'accessPolicies': accessPolicies!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -2460,8 +2447,7 @@ class ListGcpUserAccessBindingsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (gcpUserAccessBindings != null)
-          'gcpUserAccessBindings':
-              gcpUserAccessBindings!.map((value) => value.toJson()).toList(),
+          'gcpUserAccessBindings': gcpUserAccessBindings!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -2494,8 +2480,7 @@ class ListOperationsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (operations != null)
-          'operations': operations!.map((value) => value.toJson()).toList(),
+        if (operations != null) 'operations': operations!,
       };
 }
 
@@ -2529,9 +2514,7 @@ class ListServicePerimetersResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (servicePerimeters != null)
-          'servicePerimeters':
-              servicePerimeters!.map((value) => value.toJson()).toList(),
+        if (servicePerimeters != null) 'servicePerimeters': servicePerimeters!,
       };
 }
 
@@ -2638,7 +2621,7 @@ class Operation {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (done != null) 'done': done!,
-        if (error != null) 'error': error!.toJson(),
+        if (error != null) 'error': error!,
         if (metadata != null) 'metadata': metadata!,
         if (name != null) 'name': name!,
         if (response != null) 'response': response!,
@@ -2741,8 +2724,7 @@ class ReplaceAccessLevelsRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (accessLevels != null)
-          'accessLevels': accessLevels!.map((value) => value.toJson()).toList(),
+        if (accessLevels != null) 'accessLevels': accessLevels!,
         if (etag != null) 'etag': etag!,
       };
 }
@@ -2769,8 +2751,7 @@ class ReplaceAccessLevelsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (accessLevels != null)
-          'accessLevels': accessLevels!.map((value) => value.toJson()).toList(),
+        if (accessLevels != null) 'accessLevels': accessLevels!,
       };
 }
 
@@ -2815,9 +2796,7 @@ class ReplaceServicePerimetersRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
-        if (servicePerimeters != null)
-          'servicePerimeters':
-              servicePerimeters!.map((value) => value.toJson()).toList(),
+        if (servicePerimeters != null) 'servicePerimeters': servicePerimeters!,
       };
 }
 
@@ -2843,9 +2822,7 @@ class ReplaceServicePerimetersResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (servicePerimeters != null)
-          'servicePerimeters':
-              servicePerimeters!.map((value) => value.toJson()).toList(),
+        if (servicePerimeters != null) 'servicePerimeters': servicePerimeters!,
       };
 }
 
@@ -2958,8 +2935,8 @@ class ServicePerimeter {
         if (description != null) 'description': description!,
         if (name != null) 'name': name!,
         if (perimeterType != null) 'perimeterType': perimeterType!,
-        if (spec != null) 'spec': spec!.toJson(),
-        if (status != null) 'status': status!.toJson(),
+        if (spec != null) 'spec': spec!,
+        if (status != null) 'status': status!,
         if (title != null) 'title': title!,
         if (useExplicitDryRunSpec != null)
           'useExplicitDryRunSpec': useExplicitDryRunSpec!,
@@ -3057,17 +3034,13 @@ class ServicePerimeterConfig {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accessLevels != null) 'accessLevels': accessLevels!,
-        if (egressPolicies != null)
-          'egressPolicies':
-              egressPolicies!.map((value) => value.toJson()).toList(),
-        if (ingressPolicies != null)
-          'ingressPolicies':
-              ingressPolicies!.map((value) => value.toJson()).toList(),
+        if (egressPolicies != null) 'egressPolicies': egressPolicies!,
+        if (ingressPolicies != null) 'ingressPolicies': ingressPolicies!,
         if (resources != null) 'resources': resources!,
         if (restrictedServices != null)
           'restrictedServices': restrictedServices!,
         if (vpcAccessibleServices != null)
-          'vpcAccessibleServices': vpcAccessibleServices!.toJson(),
+          'vpcAccessibleServices': vpcAccessibleServices!,
       };
 }
 

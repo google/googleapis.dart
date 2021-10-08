@@ -82,7 +82,7 @@ class V1Resource {
     GoogleIdentityStsV1ExchangeTokenRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -170,7 +170,7 @@ class GoogleIamV1Binding {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (condition != null) 'condition': condition!.toJson(),
+        if (condition != null) 'condition': condition!,
         if (members != null) 'members': members!,
         if (role != null) 'role': role!,
       };
@@ -207,8 +207,7 @@ class GoogleIdentityStsV1AccessBoundary {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accessBoundaryRules != null)
-          'accessBoundaryRules':
-              accessBoundaryRules!.map((value) => value.toJson()).toList(),
+          'accessBoundaryRules': accessBoundaryRules!,
       };
 }
 
@@ -272,7 +271,7 @@ class GoogleIdentityStsV1AccessBoundaryRule {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (availabilityCondition != null)
-          'availabilityCondition': availabilityCondition!.toJson(),
+          'availabilityCondition': availabilityCondition!,
         if (availablePermissions != null)
           'availablePermissions': availablePermissions!,
         if (availableResource != null) 'availableResource': availableResource!,
@@ -560,7 +559,7 @@ class GoogleIdentityStsV1Options {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (accessBoundary != null) 'accessBoundary': accessBoundary!.toJson(),
+        if (accessBoundary != null) 'accessBoundary': accessBoundary!,
         if (audiences != null) 'audiences': audiences!,
         if (userProject != null) 'userProject': userProject!,
       };
@@ -597,8 +596,7 @@ class GoogleIdentityStsV1betaAccessBoundary {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accessBoundaryRules != null)
-          'accessBoundaryRules':
-              accessBoundaryRules!.map((value) => value.toJson()).toList(),
+          'accessBoundaryRules': accessBoundaryRules!,
       };
 }
 
@@ -662,7 +660,7 @@ class GoogleIdentityStsV1betaAccessBoundaryRule {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (availabilityCondition != null)
-          'availabilityCondition': availabilityCondition!.toJson(),
+          'availabilityCondition': availabilityCondition!,
         if (availablePermissions != null)
           'availablePermissions': availablePermissions!,
         if (availableResource != null) 'availableResource': availableResource!,
@@ -722,7 +720,7 @@ class GoogleIdentityStsV1betaOptions {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (accessBoundary != null) 'accessBoundary': accessBoundary!.toJson(),
+        if (accessBoundary != null) 'accessBoundary': accessBoundary!,
         if (audiences != null) 'audiences': audiences!,
         if (userProject != null) 'userProject': userProject!,
       };

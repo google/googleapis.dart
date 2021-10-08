@@ -275,11 +275,11 @@ class Categories {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (accessibility != null) 'accessibility': accessibility!.toJson(),
-        if (bestPractices != null) 'best-practices': bestPractices!.toJson(),
-        if (performance != null) 'performance': performance!.toJson(),
-        if (pwa != null) 'pwa': pwa!.toJson(),
-        if (seo != null) 'seo': seo!.toJson(),
+        if (accessibility != null) 'accessibility': accessibility!,
+        if (bestPractices != null) 'best-practices': bestPractices!,
+        if (performance != null) 'performance': performance!,
+        if (pwa != null) 'pwa': pwa!,
+        if (seo != null) 'seo': seo!,
       };
 }
 
@@ -431,7 +431,7 @@ class I18n {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (rendererFormattedStrings != null)
-          'rendererFormattedStrings': rendererFormattedStrings!.toJson(),
+          'rendererFormattedStrings': rendererFormattedStrings!,
       };
 }
 
@@ -606,8 +606,7 @@ class LighthouseCategoryV5 {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (auditRefs != null)
-          'auditRefs': auditRefs!.map((value) => value.toJson()).toList(),
+        if (auditRefs != null) 'auditRefs': auditRefs!,
         if (description != null) 'description': description!,
         if (id != null) 'id': id!,
         if (manualDescription != null) 'manualDescription': manualDescription!,
@@ -759,25 +758,20 @@ class LighthouseResultV5 {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (audits != null)
-          'audits':
-              audits!.map((key, item) => core.MapEntry(key, item.toJson())),
-        if (categories != null) 'categories': categories!.toJson(),
-        if (categoryGroups != null)
-          'categoryGroups': categoryGroups!
-              .map((key, item) => core.MapEntry(key, item.toJson())),
-        if (configSettings != null) 'configSettings': configSettings!.toJson(),
-        if (environment != null) 'environment': environment!.toJson(),
+        if (audits != null) 'audits': audits!,
+        if (categories != null) 'categories': categories!,
+        if (categoryGroups != null) 'categoryGroups': categoryGroups!,
+        if (configSettings != null) 'configSettings': configSettings!,
+        if (environment != null) 'environment': environment!,
         if (fetchTime != null) 'fetchTime': fetchTime!,
         if (finalUrl != null) 'finalUrl': finalUrl!,
-        if (i18n != null) 'i18n': i18n!.toJson(),
+        if (i18n != null) 'i18n': i18n!,
         if (lighthouseVersion != null) 'lighthouseVersion': lighthouseVersion!,
         if (requestedUrl != null) 'requestedUrl': requestedUrl!,
         if (runWarnings != null) 'runWarnings': runWarnings!,
-        if (runtimeError != null) 'runtimeError': runtimeError!.toJson(),
-        if (stackPacks != null)
-          'stackPacks': stackPacks!.map((value) => value.toJson()).toList(),
-        if (timing != null) 'timing': timing!.toJson(),
+        if (runtimeError != null) 'runtimeError': runtimeError!,
+        if (stackPacks != null) 'stackPacks': stackPacks!,
+        if (timing != null) 'timing': timing!,
         if (userAgent != null) 'userAgent': userAgent!,
       };
 }
@@ -833,9 +827,7 @@ class PagespeedApiLoadingExperienceV5 {
   core.Map<core.String, core.dynamic> toJson() => {
         if (id != null) 'id': id!,
         if (initialUrl != null) 'initial_url': initialUrl!,
-        if (metrics != null)
-          'metrics':
-              metrics!.map((key, item) => core.MapEntry(key, item.toJson())),
+        if (metrics != null) 'metrics': metrics!,
         if (originFallback != null) 'origin_fallback': originFallback!,
         if (overallCategory != null) 'overall_category': overallCategory!,
       };
@@ -915,13 +907,11 @@ class PagespeedApiPagespeedResponseV5 {
         if (captchaResult != null) 'captchaResult': captchaResult!,
         if (id != null) 'id': id!,
         if (kind != null) 'kind': kind!,
-        if (lighthouseResult != null)
-          'lighthouseResult': lighthouseResult!.toJson(),
-        if (loadingExperience != null)
-          'loadingExperience': loadingExperience!.toJson(),
+        if (lighthouseResult != null) 'lighthouseResult': lighthouseResult!,
+        if (loadingExperience != null) 'loadingExperience': loadingExperience!,
         if (originLoadingExperience != null)
-          'originLoadingExperience': originLoadingExperience!.toJson(),
-        if (version != null) 'version': version!.toJson(),
+          'originLoadingExperience': originLoadingExperience!,
+        if (version != null) 'version': version!,
       };
 }
 
@@ -1589,9 +1579,7 @@ class UserPageLoadMetricV5 {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (category != null) 'category': category!,
-        if (distributions != null)
-          'distributions':
-              distributions!.map((value) => value.toJson()).toList(),
+        if (distributions != null) 'distributions': distributions!,
         if (formFactor != null) 'formFactor': formFactor!,
         if (median != null) 'median': median!,
         if (metricId != null) 'metricId': metricId!,

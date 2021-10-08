@@ -123,7 +123,7 @@ class EnterprisesResource {
     core.String? signupUrlName,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (agreementAccepted != null)
         'agreementAccepted': ['${agreementAccepted}'],
@@ -307,7 +307,7 @@ class EnterprisesResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -496,7 +496,7 @@ class EnterprisesDevicesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -588,7 +588,7 @@ class EnterprisesDevicesResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -826,7 +826,7 @@ class EnterprisesEnrollmentTokensResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1039,7 +1039,7 @@ class EnterprisesPoliciesResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -1087,7 +1087,7 @@ class EnterprisesWebAppsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1251,7 +1251,7 @@ class EnterprisesWebAppsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -1301,7 +1301,7 @@ class EnterprisesWebTokensResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1629,14 +1629,10 @@ class Application {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (appTracks != null)
-          'appTracks': appTracks!.map((value) => value.toJson()).toList(),
-        if (managedProperties != null)
-          'managedProperties':
-              managedProperties!.map((value) => value.toJson()).toList(),
+        if (appTracks != null) 'appTracks': appTracks!,
+        if (managedProperties != null) 'managedProperties': managedProperties!,
         if (name != null) 'name': name!,
-        if (permissions != null)
-          'permissions': permissions!.map((value) => value.toJson()).toList(),
+        if (permissions != null) 'permissions': permissions!,
         if (title != null) 'title': title!,
       };
 }
@@ -1944,14 +1940,11 @@ class ApplicationPolicy {
         if (managedConfiguration != null)
           'managedConfiguration': managedConfiguration!,
         if (managedConfigurationTemplate != null)
-          'managedConfigurationTemplate':
-              managedConfigurationTemplate!.toJson(),
+          'managedConfigurationTemplate': managedConfigurationTemplate!,
         if (minimumVersionCode != null)
           'minimumVersionCode': minimumVersionCode!,
         if (packageName != null) 'packageName': packageName!,
-        if (permissionGrants != null)
-          'permissionGrants':
-              permissionGrants!.map((value) => value.toJson()).toList(),
+        if (permissionGrants != null) 'permissionGrants': permissionGrants!,
       };
 }
 
@@ -2076,13 +2069,10 @@ class ApplicationReport {
   core.Map<core.String, core.dynamic> toJson() => {
         if (applicationSource != null) 'applicationSource': applicationSource!,
         if (displayName != null) 'displayName': displayName!,
-        if (events != null)
-          'events': events!.map((value) => value.toJson()).toList(),
+        if (events != null) 'events': events!,
         if (installerPackageName != null)
           'installerPackageName': installerPackageName!,
-        if (keyedAppStates != null)
-          'keyedAppStates':
-              keyedAppStates!.map((value) => value.toJson()).toList(),
+        if (keyedAppStates != null) 'keyedAppStates': keyedAppStates!,
         if (packageName != null) 'packageName': packageName!,
         if (packageSha256Hash != null) 'packageSha256Hash': packageSha256Hash!,
         if (signingKeyCertFingerprints != null)
@@ -2420,12 +2410,10 @@ class ComplianceRule {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (apiLevelCondition != null)
-          'apiLevelCondition': apiLevelCondition!.toJson(),
+        if (apiLevelCondition != null) 'apiLevelCondition': apiLevelCondition!,
         if (disableApps != null) 'disableApps': disableApps!,
         if (nonComplianceDetailCondition != null)
-          'nonComplianceDetailCondition':
-              nonComplianceDetailCondition!.toJson(),
+          'nonComplianceDetailCondition': nonComplianceDetailCondition!,
         if (packageNamesToDisable != null)
           'packageNamesToDisable': packageNamesToDisable!,
       };
@@ -3066,30 +3054,26 @@ class Device {
   core.Map<core.String, core.dynamic> toJson() => {
         if (apiLevel != null) 'apiLevel': apiLevel!,
         if (applicationReports != null)
-          'applicationReports':
-              applicationReports!.map((value) => value.toJson()).toList(),
+          'applicationReports': applicationReports!,
         if (appliedPasswordPolicies != null)
-          'appliedPasswordPolicies':
-              appliedPasswordPolicies!.map((value) => value.toJson()).toList(),
+          'appliedPasswordPolicies': appliedPasswordPolicies!,
         if (appliedPolicyName != null) 'appliedPolicyName': appliedPolicyName!,
         if (appliedPolicyVersion != null)
           'appliedPolicyVersion': appliedPolicyVersion!,
         if (appliedState != null) 'appliedState': appliedState!,
         if (commonCriteriaModeInfo != null)
-          'commonCriteriaModeInfo': commonCriteriaModeInfo!.toJson(),
-        if (deviceSettings != null) 'deviceSettings': deviceSettings!.toJson(),
-        if (disabledReason != null) 'disabledReason': disabledReason!.toJson(),
-        if (displays != null)
-          'displays': displays!.map((value) => value.toJson()).toList(),
+          'commonCriteriaModeInfo': commonCriteriaModeInfo!,
+        if (deviceSettings != null) 'deviceSettings': deviceSettings!,
+        if (disabledReason != null) 'disabledReason': disabledReason!,
+        if (displays != null) 'displays': displays!,
         if (enrollmentTime != null) 'enrollmentTime': enrollmentTime!,
         if (enrollmentTokenData != null)
           'enrollmentTokenData': enrollmentTokenData!,
         if (enrollmentTokenName != null)
           'enrollmentTokenName': enrollmentTokenName!,
-        if (hardwareInfo != null) 'hardwareInfo': hardwareInfo!.toJson(),
+        if (hardwareInfo != null) 'hardwareInfo': hardwareInfo!,
         if (hardwareStatusSamples != null)
-          'hardwareStatusSamples':
-              hardwareStatusSamples!.map((value) => value.toJson()).toList(),
+          'hardwareStatusSamples': hardwareStatusSamples!,
         if (lastPolicyComplianceReportTime != null)
           'lastPolicyComplianceReportTime': lastPolicyComplianceReportTime!,
         if (lastPolicySyncTime != null)
@@ -3097,28 +3081,24 @@ class Device {
         if (lastStatusReportTime != null)
           'lastStatusReportTime': lastStatusReportTime!,
         if (managementMode != null) 'managementMode': managementMode!,
-        if (memoryEvents != null)
-          'memoryEvents': memoryEvents!.map((value) => value.toJson()).toList(),
-        if (memoryInfo != null) 'memoryInfo': memoryInfo!.toJson(),
+        if (memoryEvents != null) 'memoryEvents': memoryEvents!,
+        if (memoryInfo != null) 'memoryInfo': memoryInfo!,
         if (name != null) 'name': name!,
-        if (networkInfo != null) 'networkInfo': networkInfo!.toJson(),
+        if (networkInfo != null) 'networkInfo': networkInfo!,
         if (nonComplianceDetails != null)
-          'nonComplianceDetails':
-              nonComplianceDetails!.map((value) => value.toJson()).toList(),
+          'nonComplianceDetails': nonComplianceDetails!,
         if (ownership != null) 'ownership': ownership!,
         if (policyCompliant != null) 'policyCompliant': policyCompliant!,
         if (policyName != null) 'policyName': policyName!,
         if (powerManagementEvents != null)
-          'powerManagementEvents':
-              powerManagementEvents!.map((value) => value.toJson()).toList(),
+          'powerManagementEvents': powerManagementEvents!,
         if (previousDeviceNames != null)
           'previousDeviceNames': previousDeviceNames!,
-        if (securityPosture != null)
-          'securityPosture': securityPosture!.toJson(),
-        if (softwareInfo != null) 'softwareInfo': softwareInfo!.toJson(),
+        if (securityPosture != null) 'securityPosture': securityPosture!,
+        if (softwareInfo != null) 'softwareInfo': softwareInfo!,
         if (state != null) 'state': state!,
         if (systemProperties != null) 'systemProperties': systemProperties!,
-        if (user != null) 'user': user!.toJson(),
+        if (user != null) 'user': user!,
         if (userName != null) 'userName': userName!,
       };
 }
@@ -3425,7 +3405,7 @@ class EnrollmentToken {
         if (oneTimeOnly != null) 'oneTimeOnly': oneTimeOnly!,
         if (policyName != null) 'policyName': policyName!,
         if (qrCode != null) 'qrCode': qrCode!,
-        if (user != null) 'user': user!.toJson(),
+        if (user != null) 'user': user!,
         if (value != null) 'value': value!,
       };
 }
@@ -3535,21 +3515,18 @@ class Enterprise {
   core.Map<core.String, core.dynamic> toJson() => {
         if (appAutoApprovalEnabled != null)
           'appAutoApprovalEnabled': appAutoApprovalEnabled!,
-        if (contactInfo != null) 'contactInfo': contactInfo!.toJson(),
+        if (contactInfo != null) 'contactInfo': contactInfo!,
         if (enabledNotificationTypes != null)
           'enabledNotificationTypes': enabledNotificationTypes!,
         if (enterpriseDisplayName != null)
           'enterpriseDisplayName': enterpriseDisplayName!,
-        if (logo != null) 'logo': logo!.toJson(),
+        if (logo != null) 'logo': logo!,
         if (name != null) 'name': name!,
         if (primaryColor != null) 'primaryColor': primaryColor!,
         if (pubsubTopic != null) 'pubsubTopic': pubsubTopic!,
-        if (signinDetails != null)
-          'signinDetails':
-              signinDetails!.map((value) => value.toJson()).toList(),
+        if (signinDetails != null) 'signinDetails': signinDetails!,
         if (termsAndConditions != null)
-          'termsAndConditions':
-              termsAndConditions!.map((value) => value.toJson()).toList(),
+          'termsAndConditions': termsAndConditions!,
       };
 }
 
@@ -3634,8 +3611,8 @@ class FreezePeriod {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (endDate != null) 'endDate': endDate!.toJson(),
-        if (startDate != null) 'startDate': startDate!.toJson(),
+        if (endDate != null) 'endDate': endDate!,
+        if (startDate != null) 'startDate': startDate!,
       };
 }
 
@@ -4132,8 +4109,7 @@ class ListDevicesResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (devices != null)
-          'devices': devices!.map((value) => value.toJson()).toList(),
+        if (devices != null) 'devices': devices!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -4165,8 +4141,7 @@ class ListEnterprisesResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (enterprises != null)
-          'enterprises': enterprises!.map((value) => value.toJson()).toList(),
+        if (enterprises != null) 'enterprises': enterprises!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -4199,8 +4174,7 @@ class ListOperationsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (operations != null)
-          'operations': operations!.map((value) => value.toJson()).toList(),
+        if (operations != null) 'operations': operations!,
       };
 }
 
@@ -4232,8 +4206,7 @@ class ListPoliciesResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (policies != null)
-          'policies': policies!.map((value) => value.toJson()).toList(),
+        if (policies != null) 'policies': policies!,
       };
 }
 
@@ -4265,8 +4238,7 @@ class ListWebAppsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (webApps != null)
-          'webApps': webApps!.map((value) => value.toJson()).toList(),
+        if (webApps != null) 'webApps': webApps!,
       };
 }
 
@@ -4395,12 +4367,9 @@ class ManagedProperty {
   core.Map<core.String, core.dynamic> toJson() => {
         if (defaultValue != null) 'defaultValue': defaultValue!,
         if (description != null) 'description': description!,
-        if (entries != null)
-          'entries': entries!.map((value) => value.toJson()).toList(),
+        if (entries != null) 'entries': entries!,
         if (key != null) 'key': key!,
-        if (nestedProperties != null)
-          'nestedProperties':
-              nestedProperties!.map((value) => value.toJson()).toList(),
+        if (nestedProperties != null) 'nestedProperties': nestedProperties!,
         if (title != null) 'title': title!,
         if (type != null) 'type': type!,
       };
@@ -4577,9 +4546,7 @@ class NetworkInfo {
         if (meid != null) 'meid': meid!,
         if (networkOperatorName != null)
           'networkOperatorName': networkOperatorName!,
-        if (telephonyInfos != null)
-          'telephonyInfos':
-              telephonyInfos!.map((value) => value.toJson()).toList(),
+        if (telephonyInfos != null) 'telephonyInfos': telephonyInfos!,
         if (wifiMacAddress != null) 'wifiMacAddress': wifiMacAddress!,
       };
 }
@@ -4809,7 +4776,7 @@ class OncCertificateProvider {
         if (certificateReferences != null)
           'certificateReferences': certificateReferences!,
         if (contentProviderEndpoint != null)
-          'contentProviderEndpoint': contentProviderEndpoint!.toJson(),
+          'contentProviderEndpoint': contentProviderEndpoint!,
       };
 }
 
@@ -4882,7 +4849,7 @@ class Operation {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (done != null) 'done': done!,
-        if (error != null) 'error': error!.toJson(),
+        if (error != null) 'error': error!,
         if (metadata != null) 'metadata': metadata!,
         if (name != null) 'name': name!,
         if (response != null) 'response': response!,
@@ -5356,8 +5323,7 @@ class PersonalUsagePolicies {
         if (maxDaysWithWorkOff != null)
           'maxDaysWithWorkOff': maxDaysWithWorkOff!,
         if (personalApplications != null)
-          'personalApplications':
-              personalApplications!.map((value) => value.toJson()).toList(),
+          'personalApplications': personalApplications!,
         if (personalPlayStoreMode != null)
           'personalPlayStoreMode': personalPlayStoreMode!,
         if (screenCaptureDisabled != null)
@@ -6223,15 +6189,14 @@ class Policy {
         if (adjustVolumeDisabled != null)
           'adjustVolumeDisabled': adjustVolumeDisabled!,
         if (advancedSecurityOverrides != null)
-          'advancedSecurityOverrides': advancedSecurityOverrides!.toJson(),
+          'advancedSecurityOverrides': advancedSecurityOverrides!,
         if (alwaysOnVpnPackage != null)
-          'alwaysOnVpnPackage': alwaysOnVpnPackage!.toJson(),
+          'alwaysOnVpnPackage': alwaysOnVpnPackage!,
         if (androidDevicePolicyTracks != null)
           'androidDevicePolicyTracks': androidDevicePolicyTracks!,
         if (appAutoUpdatePolicy != null)
           'appAutoUpdatePolicy': appAutoUpdatePolicy!,
-        if (applications != null)
-          'applications': applications!.map((value) => value.toJson()).toList(),
+        if (applications != null) 'applications': applications!,
         if (autoDateAndTimeZone != null)
           'autoDateAndTimeZone': autoDateAndTimeZone!,
         if (autoTimeRequired != null) 'autoTimeRequired': autoTimeRequired!,
@@ -6246,17 +6211,14 @@ class Policy {
         if (cellBroadcastsConfigDisabled != null)
           'cellBroadcastsConfigDisabled': cellBroadcastsConfigDisabled!,
         if (choosePrivateKeyRules != null)
-          'choosePrivateKeyRules':
-              choosePrivateKeyRules!.map((value) => value.toJson()).toList(),
-        if (complianceRules != null)
-          'complianceRules':
-              complianceRules!.map((value) => value.toJson()).toList(),
+          'choosePrivateKeyRules': choosePrivateKeyRules!,
+        if (complianceRules != null) 'complianceRules': complianceRules!,
         if (createWindowsDisabled != null)
           'createWindowsDisabled': createWindowsDisabled!,
         if (credentialsConfigDisabled != null)
           'credentialsConfigDisabled': credentialsConfigDisabled!,
         if (crossProfilePolicies != null)
-          'crossProfilePolicies': crossProfilePolicies!.toJson(),
+          'crossProfilePolicies': crossProfilePolicies!,
         if (dataRoamingDisabled != null)
           'dataRoamingDisabled': dataRoamingDisabled!,
         if (debuggingFeaturesAllowed != null)
@@ -6264,7 +6226,7 @@ class Policy {
         if (defaultPermissionPolicy != null)
           'defaultPermissionPolicy': defaultPermissionPolicy!,
         if (deviceOwnerLockScreenInfo != null)
-          'deviceOwnerLockScreenInfo': deviceOwnerLockScreenInfo!.toJson(),
+          'deviceOwnerLockScreenInfo': deviceOwnerLockScreenInfo!,
         if (encryptionPolicy != null) 'encryptionPolicy': encryptionPolicy!,
         if (ensureVerifyAppsEnabled != null)
           'ensureVerifyAppsEnabled': ensureVerifyAppsEnabled!,
@@ -6282,10 +6244,10 @@ class Policy {
         if (kioskCustomLauncherEnabled != null)
           'kioskCustomLauncherEnabled': kioskCustomLauncherEnabled!,
         if (kioskCustomization != null)
-          'kioskCustomization': kioskCustomization!.toJson(),
+          'kioskCustomization': kioskCustomization!,
         if (locationMode != null) 'locationMode': locationMode!,
         if (longSupportMessage != null)
-          'longSupportMessage': longSupportMessage!.toJson(),
+          'longSupportMessage': longSupportMessage!,
         if (maximumTimeToLock != null) 'maximumTimeToLock': maximumTimeToLock!,
         if (minimumApiLevel != null) 'minimumApiLevel': minimumApiLevel!,
         if (mobileNetworksConfigDisabled != null)
@@ -6300,41 +6262,32 @@ class Policy {
         if (networkResetDisabled != null)
           'networkResetDisabled': networkResetDisabled!,
         if (oncCertificateProviders != null)
-          'oncCertificateProviders':
-              oncCertificateProviders!.map((value) => value.toJson()).toList(),
+          'oncCertificateProviders': oncCertificateProviders!,
         if (openNetworkConfiguration != null)
           'openNetworkConfiguration': openNetworkConfiguration!,
         if (outgoingBeamDisabled != null)
           'outgoingBeamDisabled': outgoingBeamDisabled!,
         if (outgoingCallsDisabled != null)
           'outgoingCallsDisabled': outgoingCallsDisabled!,
-        if (passwordPolicies != null)
-          'passwordPolicies':
-              passwordPolicies!.map((value) => value.toJson()).toList(),
+        if (passwordPolicies != null) 'passwordPolicies': passwordPolicies!,
         if (passwordRequirements != null)
-          'passwordRequirements': passwordRequirements!.toJson(),
-        if (permissionGrants != null)
-          'permissionGrants':
-              permissionGrants!.map((value) => value.toJson()).toList(),
+          'passwordRequirements': passwordRequirements!,
+        if (permissionGrants != null) 'permissionGrants': permissionGrants!,
         if (permittedAccessibilityServices != null)
-          'permittedAccessibilityServices':
-              permittedAccessibilityServices!.toJson(),
+          'permittedAccessibilityServices': permittedAccessibilityServices!,
         if (permittedInputMethods != null)
-          'permittedInputMethods': permittedInputMethods!.toJson(),
+          'permittedInputMethods': permittedInputMethods!,
         if (persistentPreferredActivities != null)
-          'persistentPreferredActivities': persistentPreferredActivities!
-              .map((value) => value.toJson())
-              .toList(),
+          'persistentPreferredActivities': persistentPreferredActivities!,
         if (personalUsagePolicies != null)
-          'personalUsagePolicies': personalUsagePolicies!.toJson(),
+          'personalUsagePolicies': personalUsagePolicies!,
         if (playStoreMode != null) 'playStoreMode': playStoreMode!,
         if (policyEnforcementRules != null)
-          'policyEnforcementRules':
-              policyEnforcementRules!.map((value) => value.toJson()).toList(),
+          'policyEnforcementRules': policyEnforcementRules!,
         if (privateKeySelectionEnabled != null)
           'privateKeySelectionEnabled': privateKeySelectionEnabled!,
         if (recommendedGlobalProxy != null)
-          'recommendedGlobalProxy': recommendedGlobalProxy!.toJson(),
+          'recommendedGlobalProxy': recommendedGlobalProxy!,
         if (removeUserDisabled != null)
           'removeUserDisabled': removeUserDisabled!,
         if (safeBootDisabled != null) 'safeBootDisabled': safeBootDisabled!,
@@ -6344,21 +6297,20 @@ class Policy {
           'setUserIconDisabled': setUserIconDisabled!,
         if (setWallpaperDisabled != null)
           'setWallpaperDisabled': setWallpaperDisabled!,
-        if (setupActions != null)
-          'setupActions': setupActions!.map((value) => value.toJson()).toList(),
+        if (setupActions != null) 'setupActions': setupActions!,
         if (shareLocationDisabled != null)
           'shareLocationDisabled': shareLocationDisabled!,
         if (shortSupportMessage != null)
-          'shortSupportMessage': shortSupportMessage!.toJson(),
+          'shortSupportMessage': shortSupportMessage!,
         if (skipFirstUseHintsEnabled != null)
           'skipFirstUseHintsEnabled': skipFirstUseHintsEnabled!,
         if (smsDisabled != null) 'smsDisabled': smsDisabled!,
         if (statusBarDisabled != null) 'statusBarDisabled': statusBarDisabled!,
         if (statusReportingSettings != null)
-          'statusReportingSettings': statusReportingSettings!.toJson(),
+          'statusReportingSettings': statusReportingSettings!,
         if (stayOnPluggedModes != null)
           'stayOnPluggedModes': stayOnPluggedModes!,
-        if (systemUpdate != null) 'systemUpdate': systemUpdate!.toJson(),
+        if (systemUpdate != null) 'systemUpdate': systemUpdate!,
         if (tetheringConfigDisabled != null)
           'tetheringConfigDisabled': tetheringConfigDisabled!,
         if (uninstallAppsDisabled != null)
@@ -6421,9 +6373,9 @@ class PolicyEnforcementRule {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (blockAction != null) 'blockAction': blockAction!.toJson(),
+        if (blockAction != null) 'blockAction': blockAction!,
         if (settingName != null) 'settingName': settingName!,
-        if (wipeAction != null) 'wipeAction': wipeAction!.toJson(),
+        if (wipeAction != null) 'wipeAction': wipeAction!,
       };
 }
 
@@ -6462,8 +6414,7 @@ class PostureDetail {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (advice != null)
-          'advice': advice!.map((value) => value.toJson()).toList(),
+        if (advice != null) 'advice': advice!,
         if (securityRisk != null) 'securityRisk': securityRisk!,
       };
 }
@@ -6600,9 +6551,7 @@ class SecurityPosture {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (devicePosture != null) 'devicePosture': devicePosture!,
-        if (postureDetails != null)
-          'postureDetails':
-              postureDetails!.map((value) => value.toJson()).toList(),
+        if (postureDetails != null) 'postureDetails': postureDetails!,
       };
 }
 
@@ -6640,9 +6589,9 @@ class SetupAction {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (description != null) 'description': description!.toJson(),
-        if (launchApp != null) 'launchApp': launchApp!.toJson(),
-        if (title != null) 'title': title!.toJson(),
+        if (description != null) 'description': description!,
+        if (launchApp != null) 'launchApp': launchApp!,
+        if (title != null) 'title': title!,
       };
 }
 
@@ -6863,8 +6812,7 @@ class SoftwareInfo {
           'primaryLanguageCode': primaryLanguageCode!,
         if (securityPatchLevel != null)
           'securityPatchLevel': securityPatchLevel!,
-        if (systemUpdateInfo != null)
-          'systemUpdateInfo': systemUpdateInfo!.toJson(),
+        if (systemUpdateInfo != null) 'systemUpdateInfo': systemUpdateInfo!,
       };
 }
 
@@ -7024,8 +6972,7 @@ class StatusReportingSettings {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (applicationReportingSettings != null)
-          'applicationReportingSettings':
-              applicationReportingSettings!.toJson(),
+          'applicationReportingSettings': applicationReportingSettings!,
         if (applicationReportsEnabled != null)
           'applicationReportsEnabled': applicationReportsEnabled!,
         if (commonCriteriaModeEnabled != null)
@@ -7114,9 +7061,7 @@ class SystemUpdate {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (endMinutes != null) 'endMinutes': endMinutes!,
-        if (freezePeriods != null)
-          'freezePeriods':
-              freezePeriods!.map((value) => value.toJson()).toList(),
+        if (freezePeriods != null) 'freezePeriods': freezePeriods!,
         if (startMinutes != null) 'startMinutes': startMinutes!,
         if (type != null) 'type': type!,
       };
@@ -7226,8 +7171,8 @@ class TermsAndConditions {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (content != null) 'content': content!.toJson(),
-        if (header != null) 'header': header!.toJson(),
+        if (content != null) 'content': content!,
+        if (header != null) 'header': header!,
       };
 }
 
@@ -7372,8 +7317,7 @@ class WebApp {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (displayMode != null) 'displayMode': displayMode!,
-        if (icons != null)
-          'icons': icons!.map((value) => value.toJson()).toList(),
+        if (icons != null) 'icons': icons!,
         if (name != null) 'name': name!,
         if (startUrl != null) 'startUrl': startUrl!,
         if (title != null) 'title': title!,

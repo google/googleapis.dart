@@ -369,7 +369,7 @@ class ProjectsPatchDeploymentsResource {
     core.String? patchDeploymentId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (patchDeploymentId != null) 'patchDeploymentId': [patchDeploymentId],
       if ($fields != null) 'fields': [$fields],
@@ -544,7 +544,7 @@ class ProjectsPatchJobsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -585,7 +585,7 @@ class ProjectsPatchJobsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1028,9 +1028,9 @@ class ExecStep {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (linuxExecStepConfig != null)
-          'linuxExecStepConfig': linuxExecStepConfig!.toJson(),
+          'linuxExecStepConfig': linuxExecStepConfig!,
         if (windowsExecStepConfig != null)
-          'windowsExecStepConfig': windowsExecStepConfig!.toJson(),
+          'windowsExecStepConfig': windowsExecStepConfig!,
       };
 }
 
@@ -1092,7 +1092,7 @@ class ExecStepConfig {
   core.Map<core.String, core.dynamic> toJson() => {
         if (allowedSuccessCodes != null)
           'allowedSuccessCodes': allowedSuccessCodes!,
-        if (gcsObject != null) 'gcsObject': gcsObject!.toJson(),
+        if (gcsObject != null) 'gcsObject': gcsObject!,
         if (interpreter != null) 'interpreter': interpreter!,
         if (localPath != null) 'localPath': localPath!,
       };
@@ -1175,9 +1175,9 @@ class ExecutePatchJobRequest {
         if (displayName != null) 'displayName': displayName!,
         if (dryRun != null) 'dryRun': dryRun!,
         if (duration != null) 'duration': duration!,
-        if (instanceFilter != null) 'instanceFilter': instanceFilter!.toJson(),
-        if (patchConfig != null) 'patchConfig': patchConfig!.toJson(),
-        if (rollout != null) 'rollout': rollout!.toJson(),
+        if (instanceFilter != null) 'instanceFilter': instanceFilter!,
+        if (patchConfig != null) 'patchConfig': patchConfig!,
+        if (rollout != null) 'rollout': rollout!,
       };
 }
 
@@ -1318,10 +1318,9 @@ class Inventory {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (items != null)
-          'items': items!.map((key, item) => core.MapEntry(key, item.toJson())),
+        if (items != null) 'items': items!,
         if (name != null) 'name': name!,
-        if (osInfo != null) 'osInfo': osInfo!.toJson(),
+        if (osInfo != null) 'osInfo': osInfo!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
 }
@@ -1393,12 +1392,10 @@ class InventoryItem {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (availablePackage != null)
-          'availablePackage': availablePackage!.toJson(),
+        if (availablePackage != null) 'availablePackage': availablePackage!,
         if (createTime != null) 'createTime': createTime!,
         if (id != null) 'id': id!,
-        if (installedPackage != null)
-          'installedPackage': installedPackage!.toJson(),
+        if (installedPackage != null) 'installedPackage': installedPackage!,
         if (originType != null) 'originType': originType!,
         if (type != null) 'type': type!,
         if (updateTime != null) 'updateTime': updateTime!,
@@ -1584,14 +1581,14 @@ class InventorySoftwarePackage {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (aptPackage != null) 'aptPackage': aptPackage!.toJson(),
-        if (cosPackage != null) 'cosPackage': cosPackage!.toJson(),
-        if (googetPackage != null) 'googetPackage': googetPackage!.toJson(),
-        if (qfePackage != null) 'qfePackage': qfePackage!.toJson(),
-        if (wuaPackage != null) 'wuaPackage': wuaPackage!.toJson(),
-        if (yumPackage != null) 'yumPackage': yumPackage!.toJson(),
-        if (zypperPackage != null) 'zypperPackage': zypperPackage!.toJson(),
-        if (zypperPatch != null) 'zypperPatch': zypperPatch!.toJson(),
+        if (aptPackage != null) 'aptPackage': aptPackage!,
+        if (cosPackage != null) 'cosPackage': cosPackage!,
+        if (googetPackage != null) 'googetPackage': googetPackage!,
+        if (qfePackage != null) 'qfePackage': qfePackage!,
+        if (wuaPackage != null) 'wuaPackage': wuaPackage!,
+        if (yumPackage != null) 'yumPackage': yumPackage!,
+        if (zypperPackage != null) 'zypperPackage': zypperPackage!,
+        if (zypperPatch != null) 'zypperPatch': zypperPatch!,
       };
 }
 
@@ -1777,8 +1774,7 @@ class InventoryWindowsUpdatePackage {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (categories != null)
-          'categories': categories!.map((value) => value.toJson()).toList(),
+        if (categories != null) 'categories': categories!,
         if (description != null) 'description': description!,
         if (kbArticleIds != null) 'kbArticleIds': kbArticleIds!,
         if (lastDeploymentChangeTime != null)
@@ -1889,8 +1885,7 @@ class ListInventoriesResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (inventories != null)
-          'inventories': inventories!.map((value) => value.toJson()).toList(),
+        if (inventories != null) 'inventories': inventories!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -1924,9 +1919,7 @@ class ListPatchDeploymentsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (patchDeployments != null)
-          'patchDeployments':
-              patchDeployments!.map((value) => value.toJson()).toList(),
+        if (patchDeployments != null) 'patchDeployments': patchDeployments!,
       };
 }
 
@@ -1959,8 +1952,7 @@ class ListPatchJobInstanceDetailsResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (patchJobInstanceDetails != null)
-          'patchJobInstanceDetails':
-              patchJobInstanceDetails!.map((value) => value.toJson()).toList(),
+          'patchJobInstanceDetails': patchJobInstanceDetails!,
       };
 }
 
@@ -1992,8 +1984,7 @@ class ListPatchJobsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (patchJobs != null)
-          'patchJobs': patchJobs!.map((value) => value.toJson()).toList(),
+        if (patchJobs != null) 'patchJobs': patchJobs!,
       };
 }
 
@@ -2028,8 +2019,7 @@ class ListVulnerabilityReportsResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (vulnerabilityReports != null)
-          'vulnerabilityReports':
-              vulnerabilityReports!.map((value) => value.toJson()).toList(),
+          'vulnerabilityReports': vulnerabilityReports!,
       };
 }
 
@@ -2071,7 +2061,7 @@ class MonthlySchedule {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (monthDay != null) 'monthDay': monthDay!,
-        if (weekDayOfMonth != null) 'weekDayOfMonth': weekDayOfMonth!.toJson(),
+        if (weekDayOfMonth != null) 'weekDayOfMonth': weekDayOfMonth!,
       };
 }
 
@@ -2262,14 +2252,14 @@ class PatchConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (apt != null) 'apt': apt!.toJson(),
-        if (goo != null) 'goo': goo!.toJson(),
-        if (postStep != null) 'postStep': postStep!.toJson(),
-        if (preStep != null) 'preStep': preStep!.toJson(),
+        if (apt != null) 'apt': apt!,
+        if (goo != null) 'goo': goo!,
+        if (postStep != null) 'postStep': postStep!,
+        if (preStep != null) 'preStep': preStep!,
         if (rebootConfig != null) 'rebootConfig': rebootConfig!,
-        if (windowsUpdate != null) 'windowsUpdate': windowsUpdate!.toJson(),
-        if (yum != null) 'yum': yum!.toJson(),
-        if (zypper != null) 'zypper': zypper!.toJson(),
+        if (windowsUpdate != null) 'windowsUpdate': windowsUpdate!,
+        if (yum != null) 'yum': yum!,
+        if (zypper != null) 'zypper': zypper!,
       };
 }
 
@@ -2409,15 +2399,13 @@ class PatchDeployment {
         if (createTime != null) 'createTime': createTime!,
         if (description != null) 'description': description!,
         if (duration != null) 'duration': duration!,
-        if (instanceFilter != null) 'instanceFilter': instanceFilter!.toJson(),
+        if (instanceFilter != null) 'instanceFilter': instanceFilter!,
         if (lastExecuteTime != null) 'lastExecuteTime': lastExecuteTime!,
         if (name != null) 'name': name!,
-        if (oneTimeSchedule != null)
-          'oneTimeSchedule': oneTimeSchedule!.toJson(),
-        if (patchConfig != null) 'patchConfig': patchConfig!.toJson(),
-        if (recurringSchedule != null)
-          'recurringSchedule': recurringSchedule!.toJson(),
-        if (rollout != null) 'rollout': rollout!.toJson(),
+        if (oneTimeSchedule != null) 'oneTimeSchedule': oneTimeSchedule!,
+        if (patchConfig != null) 'patchConfig': patchConfig!,
+        if (recurringSchedule != null) 'recurringSchedule': recurringSchedule!,
+        if (rollout != null) 'rollout': rollout!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
 }
@@ -2493,8 +2481,7 @@ class PatchInstanceFilter {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (all != null) 'all': all!,
-        if (groupLabels != null)
-          'groupLabels': groupLabels!.map((value) => value.toJson()).toList(),
+        if (groupLabels != null) 'groupLabels': groupLabels!,
         if (instanceNamePrefixes != null)
           'instanceNamePrefixes': instanceNamePrefixes!,
         if (instances != null) 'instances': instances!,
@@ -2687,13 +2674,13 @@ class PatchJob {
         if (duration != null) 'duration': duration!,
         if (errorMessage != null) 'errorMessage': errorMessage!,
         if (instanceDetailsSummary != null)
-          'instanceDetailsSummary': instanceDetailsSummary!.toJson(),
-        if (instanceFilter != null) 'instanceFilter': instanceFilter!.toJson(),
+          'instanceDetailsSummary': instanceDetailsSummary!,
+        if (instanceFilter != null) 'instanceFilter': instanceFilter!,
         if (name != null) 'name': name!,
-        if (patchConfig != null) 'patchConfig': patchConfig!.toJson(),
+        if (patchConfig != null) 'patchConfig': patchConfig!,
         if (patchDeployment != null) 'patchDeployment': patchDeployment!,
         if (percentComplete != null) 'percentComplete': percentComplete!,
-        if (rollout != null) 'rollout': rollout!.toJson(),
+        if (rollout != null) 'rollout': rollout!,
         if (state != null) 'state': state!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
@@ -2993,8 +2980,7 @@ class PatchRollout {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (disruptionBudget != null)
-          'disruptionBudget': disruptionBudget!.toJson(),
+        if (disruptionBudget != null) 'disruptionBudget': disruptionBudget!,
         if (mode != null) 'mode': mode!,
       };
 }
@@ -3108,12 +3094,12 @@ class RecurringSchedule {
         if (endTime != null) 'endTime': endTime!,
         if (frequency != null) 'frequency': frequency!,
         if (lastExecuteTime != null) 'lastExecuteTime': lastExecuteTime!,
-        if (monthly != null) 'monthly': monthly!.toJson(),
+        if (monthly != null) 'monthly': monthly!,
         if (nextExecuteTime != null) 'nextExecuteTime': nextExecuteTime!,
         if (startTime != null) 'startTime': startTime!,
-        if (timeOfDay != null) 'timeOfDay': timeOfDay!.toJson(),
-        if (timeZone != null) 'timeZone': timeZone!.toJson(),
-        if (weekly != null) 'weekly': weekly!.toJson(),
+        if (timeOfDay != null) 'timeOfDay': timeOfDay!,
+        if (timeZone != null) 'timeZone': timeZone!,
+        if (weekly != null) 'weekly': weekly!,
       };
 }
 
@@ -3250,9 +3236,7 @@ class VulnerabilityReport {
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
         if (updateTime != null) 'updateTime': updateTime!,
-        if (vulnerabilities != null)
-          'vulnerabilities':
-              vulnerabilities!.map((value) => value.toJson()).toList(),
+        if (vulnerabilities != null) 'vulnerabilities': vulnerabilities!,
       };
 }
 
@@ -3322,7 +3306,7 @@ class VulnerabilityReportVulnerability {
         if (availableInventoryItemIds != null)
           'availableInventoryItemIds': availableInventoryItemIds!,
         if (createTime != null) 'createTime': createTime!,
-        if (details != null) 'details': details!.toJson(),
+        if (details != null) 'details': details!,
         if (installedInventoryItemIds != null)
           'installedInventoryItemIds': installedInventoryItemIds!,
         if (updateTime != null) 'updateTime': updateTime!,
@@ -3395,10 +3379,9 @@ class VulnerabilityReportVulnerabilityDetails {
   core.Map<core.String, core.dynamic> toJson() => {
         if (cve != null) 'cve': cve!,
         if (cvssV2Score != null) 'cvssV2Score': cvssV2Score!,
-        if (cvssV3 != null) 'cvssV3': cvssV3!.toJson(),
+        if (cvssV3 != null) 'cvssV3': cvssV3!,
         if (description != null) 'description': description!,
-        if (references != null)
-          'references': references!.map((value) => value.toJson()).toList(),
+        if (references != null) 'references': references!,
         if (severity != null) 'severity': severity!,
       };
 }

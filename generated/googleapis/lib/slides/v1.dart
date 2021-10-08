@@ -121,7 +121,7 @@ class PresentationsResource {
     core.String presentationId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -165,7 +165,7 @@ class PresentationsResource {
     Presentation request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -447,7 +447,7 @@ class AutoText {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (content != null) 'content': content!,
-        if (style != null) 'style': style!.toJson(),
+        if (style != null) 'style': style!,
         if (type != null) 'type': type!,
       };
 }
@@ -540,9 +540,8 @@ class BatchUpdatePresentationRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (requests != null)
-          'requests': requests!.map((value) => value.toJson()).toList(),
-        if (writeControl != null) 'writeControl': writeControl!.toJson(),
+        if (requests != null) 'requests': requests!,
+        if (writeControl != null) 'writeControl': writeControl!,
       };
 }
 
@@ -585,9 +584,8 @@ class BatchUpdatePresentationResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (presentationId != null) 'presentationId': presentationId!,
-        if (replies != null)
-          'replies': replies!.map((value) => value.toJson()).toList(),
-        if (writeControl != null) 'writeControl': writeControl!.toJson(),
+        if (replies != null) 'replies': replies!,
+        if (writeControl != null) 'writeControl': writeControl!,
       };
 }
 
@@ -629,7 +627,7 @@ class Bullet {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bulletStyle != null) 'bulletStyle': bulletStyle!.toJson(),
+        if (bulletStyle != null) 'bulletStyle': bulletStyle!,
         if (glyph != null) 'glyph': glyph!,
         if (listId != null) 'listId': listId!,
         if (nestingLevel != null) 'nestingLevel': nestingLevel!,
@@ -656,8 +654,7 @@ class ColorScheme {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (colors != null)
-          'colors': colors!.map((value) => value.toJson()).toList(),
+        if (colors != null) 'colors': colors!,
       };
 }
 
@@ -699,7 +696,7 @@ class ColorStop {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (alpha != null) 'alpha': alpha!,
-        if (color != null) 'color': color!.toJson(),
+        if (color != null) 'color': color!,
         if (position != null) 'position': position!,
       };
 }
@@ -755,8 +752,7 @@ class CreateImageRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (elementProperties != null)
-          'elementProperties': elementProperties!.toJson(),
+        if (elementProperties != null) 'elementProperties': elementProperties!,
         if (objectId != null) 'objectId': objectId!,
         if (url != null) 'url': url!,
       };
@@ -852,8 +848,7 @@ class CreateLineRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (category != null) 'category': category!,
-        if (elementProperties != null)
-          'elementProperties': elementProperties!.toJson(),
+        if (elementProperties != null) 'elementProperties': elementProperties!,
         if (lineCategory != null) 'lineCategory': lineCategory!,
         if (objectId != null) 'objectId': objectId!,
       };
@@ -974,9 +969,9 @@ class CreateParagraphBulletsRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (bulletPreset != null) 'bulletPreset': bulletPreset!,
-        if (cellLocation != null) 'cellLocation': cellLocation!.toJson(),
+        if (cellLocation != null) 'cellLocation': cellLocation!,
         if (objectId != null) 'objectId': objectId!,
-        if (textRange != null) 'textRange': textRange!.toJson(),
+        if (textRange != null) 'textRange': textRange!,
       };
 }
 
@@ -1281,8 +1276,7 @@ class CreateShapeRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (elementProperties != null)
-          'elementProperties': elementProperties!.toJson(),
+        if (elementProperties != null) 'elementProperties': elementProperties!,
         if (objectId != null) 'objectId': objectId!,
         if (shapeType != null) 'shapeType': shapeType!,
       };
@@ -1382,8 +1376,7 @@ class CreateSheetsChartRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (chartId != null) 'chartId': chartId!,
-        if (elementProperties != null)
-          'elementProperties': elementProperties!.toJson(),
+        if (elementProperties != null) 'elementProperties': elementProperties!,
         if (linkingMode != null) 'linkingMode': linkingMode!,
         if (objectId != null) 'objectId': objectId!,
         if (spreadsheetId != null) 'spreadsheetId': spreadsheetId!,
@@ -1477,10 +1470,9 @@ class CreateSlideRequest {
         if (insertionIndex != null) 'insertionIndex': insertionIndex!,
         if (objectId != null) 'objectId': objectId!,
         if (placeholderIdMappings != null)
-          'placeholderIdMappings':
-              placeholderIdMappings!.map((value) => value.toJson()).toList(),
+          'placeholderIdMappings': placeholderIdMappings!,
         if (slideLayoutReference != null)
-          'slideLayoutReference': slideLayoutReference!.toJson(),
+          'slideLayoutReference': slideLayoutReference!,
       };
 }
 
@@ -1555,8 +1547,7 @@ class CreateTableRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (columns != null) 'columns': columns!,
-        if (elementProperties != null)
-          'elementProperties': elementProperties!.toJson(),
+        if (elementProperties != null) 'elementProperties': elementProperties!,
         if (objectId != null) 'objectId': objectId!,
         if (rows != null) 'rows': rows!,
       };
@@ -1648,8 +1639,7 @@ class CreateVideoRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (elementProperties != null)
-          'elementProperties': elementProperties!.toJson(),
+        if (elementProperties != null) 'elementProperties': elementProperties!,
         if (id != null) 'id': id!,
         if (objectId != null) 'objectId': objectId!,
         if (source != null) 'source': source!,
@@ -1821,9 +1811,9 @@ class DeleteParagraphBulletsRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cellLocation != null) 'cellLocation': cellLocation!.toJson(),
+        if (cellLocation != null) 'cellLocation': cellLocation!,
         if (objectId != null) 'objectId': objectId!,
-        if (textRange != null) 'textRange': textRange!.toJson(),
+        if (textRange != null) 'textRange': textRange!,
       };
 }
 
@@ -1856,7 +1846,7 @@ class DeleteTableColumnRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cellLocation != null) 'cellLocation': cellLocation!.toJson(),
+        if (cellLocation != null) 'cellLocation': cellLocation!,
         if (tableObjectId != null) 'tableObjectId': tableObjectId!,
       };
 }
@@ -1890,7 +1880,7 @@ class DeleteTableRowRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cellLocation != null) 'cellLocation': cellLocation!.toJson(),
+        if (cellLocation != null) 'cellLocation': cellLocation!,
         if (tableObjectId != null) 'tableObjectId': tableObjectId!,
       };
 }
@@ -1942,9 +1932,9 @@ class DeleteTextRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cellLocation != null) 'cellLocation': cellLocation!.toJson(),
+        if (cellLocation != null) 'cellLocation': cellLocation!,
         if (objectId != null) 'objectId': objectId!,
-        if (textRange != null) 'textRange': textRange!.toJson(),
+        if (textRange != null) 'textRange': textRange!,
       };
 }
 
@@ -2078,8 +2068,7 @@ class Group {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (children != null)
-          'children': children!.map((value) => value.toJson()).toList(),
+        if (children != null) 'children': children!,
       };
 }
 
@@ -2201,9 +2190,8 @@ class Image {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (contentUrl != null) 'contentUrl': contentUrl!,
-        if (imageProperties != null)
-          'imageProperties': imageProperties!.toJson(),
-        if (placeholder != null) 'placeholder': placeholder!.toJson(),
+        if (imageProperties != null) 'imageProperties': imageProperties!,
+        if (placeholder != null) 'placeholder': placeholder!,
         if (sourceUrl != null) 'sourceUrl': sourceUrl!,
       };
 }
@@ -2300,11 +2288,11 @@ class ImageProperties {
   core.Map<core.String, core.dynamic> toJson() => {
         if (brightness != null) 'brightness': brightness!,
         if (contrast != null) 'contrast': contrast!,
-        if (cropProperties != null) 'cropProperties': cropProperties!.toJson(),
-        if (link != null) 'link': link!.toJson(),
-        if (outline != null) 'outline': outline!.toJson(),
-        if (recolor != null) 'recolor': recolor!.toJson(),
-        if (shadow != null) 'shadow': shadow!.toJson(),
+        if (cropProperties != null) 'cropProperties': cropProperties!,
+        if (link != null) 'link': link!,
+        if (outline != null) 'outline': outline!,
+        if (recolor != null) 'recolor': recolor!,
+        if (shadow != null) 'shadow': shadow!,
         if (transparency != null) 'transparency': transparency!,
       };
 }
@@ -2357,7 +2345,7 @@ class InsertTableColumnsRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cellLocation != null) 'cellLocation': cellLocation!.toJson(),
+        if (cellLocation != null) 'cellLocation': cellLocation!,
         if (insertRight != null) 'insertRight': insertRight!,
         if (number != null) 'number': number!,
         if (tableObjectId != null) 'tableObjectId': tableObjectId!,
@@ -2410,7 +2398,7 @@ class InsertTableRowsRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cellLocation != null) 'cellLocation': cellLocation!.toJson(),
+        if (cellLocation != null) 'cellLocation': cellLocation!,
         if (insertBelow != null) 'insertBelow': insertBelow!,
         if (number != null) 'number': number!,
         if (tableObjectId != null) 'tableObjectId': tableObjectId!,
@@ -2473,7 +2461,7 @@ class InsertTextRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cellLocation != null) 'cellLocation': cellLocation!.toJson(),
+        if (cellLocation != null) 'cellLocation': cellLocation!,
         if (insertionIndex != null) 'insertionIndex': insertionIndex!,
         if (objectId != null) 'objectId': objectId!,
         if (text != null) 'text': text!,
@@ -2527,8 +2515,7 @@ class LayoutPlaceholderIdMapping {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (layoutPlaceholder != null)
-          'layoutPlaceholder': layoutPlaceholder!.toJson(),
+        if (layoutPlaceholder != null) 'layoutPlaceholder': layoutPlaceholder!,
         if (layoutPlaceholderObjectId != null)
           'layoutPlaceholderObjectId': layoutPlaceholderObjectId!,
         if (objectId != null) 'objectId': objectId!,
@@ -2681,7 +2668,7 @@ class Line {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (lineCategory != null) 'lineCategory': lineCategory!,
-        if (lineProperties != null) 'lineProperties': lineProperties!.toJson(),
+        if (lineProperties != null) 'lineProperties': lineProperties!,
         if (lineType != null) 'lineType': lineType!,
       };
 }
@@ -2747,7 +2734,7 @@ class LineFill {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (solidFill != null) 'solidFill': solidFill!.toJson(),
+        if (solidFill != null) 'solidFill': solidFill!,
       };
 }
 
@@ -2884,13 +2871,12 @@ class LineProperties {
   core.Map<core.String, core.dynamic> toJson() => {
         if (dashStyle != null) 'dashStyle': dashStyle!,
         if (endArrow != null) 'endArrow': endArrow!,
-        if (endConnection != null) 'endConnection': endConnection!.toJson(),
-        if (lineFill != null) 'lineFill': lineFill!.toJson(),
-        if (link != null) 'link': link!.toJson(),
+        if (endConnection != null) 'endConnection': endConnection!,
+        if (lineFill != null) 'lineFill': lineFill!,
+        if (link != null) 'link': link!,
         if (startArrow != null) 'startArrow': startArrow!,
-        if (startConnection != null)
-          'startConnection': startConnection!.toJson(),
-        if (weight != null) 'weight': weight!.toJson(),
+        if (startConnection != null) 'startConnection': startConnection!,
+        if (weight != null) 'weight': weight!,
       };
 }
 
@@ -2990,9 +2976,7 @@ class List {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (listId != null) 'listId': listId!,
-        if (nestingLevel != null)
-          'nestingLevel': nestingLevel!
-              .map((key, item) => core.MapEntry(key, item.toJson())),
+        if (nestingLevel != null) 'nestingLevel': nestingLevel!,
       };
 }
 
@@ -3049,7 +3033,7 @@ class MergeTableCellsRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (objectId != null) 'objectId': objectId!,
-        if (tableRange != null) 'tableRange': tableRange!.toJson(),
+        if (tableRange != null) 'tableRange': tableRange!,
       };
 }
 
@@ -3072,7 +3056,7 @@ class NestingLevel {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bulletStyle != null) 'bulletStyle': bulletStyle!.toJson(),
+        if (bulletStyle != null) 'bulletStyle': bulletStyle!,
       };
 }
 
@@ -3150,7 +3134,7 @@ class OpaqueColor {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (rgbColor != null) 'rgbColor': rgbColor!.toJson(),
+        if (rgbColor != null) 'rgbColor': rgbColor!,
         if (themeColor != null) 'themeColor': themeColor!,
       };
 }
@@ -3175,7 +3159,7 @@ class OptionalColor {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (opaqueColor != null) 'opaqueColor': opaqueColor!.toJson(),
+        if (opaqueColor != null) 'opaqueColor': opaqueColor!,
       };
 }
 
@@ -3262,9 +3246,9 @@ class Outline {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (dashStyle != null) 'dashStyle': dashStyle!,
-        if (outlineFill != null) 'outlineFill': outlineFill!.toJson(),
+        if (outlineFill != null) 'outlineFill': outlineFill!,
         if (propertyState != null) 'propertyState': propertyState!,
-        if (weight != null) 'weight': weight!.toJson(),
+        if (weight != null) 'weight': weight!,
       };
 }
 
@@ -3286,7 +3270,7 @@ class OutlineFill {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (solidFill != null) 'solidFill': solidFill!.toJson(),
+        if (solidFill != null) 'solidFill': solidFill!,
       };
 }
 
@@ -3398,20 +3382,15 @@ class Page {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (layoutProperties != null)
-          'layoutProperties': layoutProperties!.toJson(),
-        if (masterProperties != null)
-          'masterProperties': masterProperties!.toJson(),
-        if (notesProperties != null)
-          'notesProperties': notesProperties!.toJson(),
+        if (layoutProperties != null) 'layoutProperties': layoutProperties!,
+        if (masterProperties != null) 'masterProperties': masterProperties!,
+        if (notesProperties != null) 'notesProperties': notesProperties!,
         if (objectId != null) 'objectId': objectId!,
-        if (pageElements != null)
-          'pageElements': pageElements!.map((value) => value.toJson()).toList(),
-        if (pageProperties != null) 'pageProperties': pageProperties!.toJson(),
+        if (pageElements != null) 'pageElements': pageElements!,
+        if (pageProperties != null) 'pageProperties': pageProperties!,
         if (pageType != null) 'pageType': pageType!,
         if (revisionId != null) 'revisionId': revisionId!,
-        if (slideProperties != null)
-          'slideProperties': slideProperties!.toJson(),
+        if (slideProperties != null) 'slideProperties': slideProperties!,
       };
 }
 
@@ -3471,9 +3450,9 @@ class PageBackgroundFill {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (propertyState != null) 'propertyState': propertyState!,
-        if (solidFill != null) 'solidFill': solidFill!.toJson(),
+        if (solidFill != null) 'solidFill': solidFill!,
         if (stretchedPictureFill != null)
-          'stretchedPictureFill': stretchedPictureFill!.toJson(),
+          'stretchedPictureFill': stretchedPictureFill!,
       };
 }
 
@@ -3606,18 +3585,18 @@ class PageElement {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
-        if (elementGroup != null) 'elementGroup': elementGroup!.toJson(),
-        if (image != null) 'image': image!.toJson(),
-        if (line != null) 'line': line!.toJson(),
+        if (elementGroup != null) 'elementGroup': elementGroup!,
+        if (image != null) 'image': image!,
+        if (line != null) 'line': line!,
         if (objectId != null) 'objectId': objectId!,
-        if (shape != null) 'shape': shape!.toJson(),
-        if (sheetsChart != null) 'sheetsChart': sheetsChart!.toJson(),
-        if (size != null) 'size': size!.toJson(),
-        if (table != null) 'table': table!.toJson(),
+        if (shape != null) 'shape': shape!,
+        if (sheetsChart != null) 'sheetsChart': sheetsChart!,
+        if (size != null) 'size': size!,
+        if (table != null) 'table': table!,
         if (title != null) 'title': title!,
-        if (transform != null) 'transform': transform!.toJson(),
-        if (video != null) 'video': video!.toJson(),
-        if (wordArt != null) 'wordArt': wordArt!.toJson(),
+        if (transform != null) 'transform': transform!,
+        if (video != null) 'video': video!,
+        if (wordArt != null) 'wordArt': wordArt!,
       };
 }
 
@@ -3658,8 +3637,8 @@ class PageElementProperties {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (pageObjectId != null) 'pageObjectId': pageObjectId!,
-        if (size != null) 'size': size!.toJson(),
-        if (transform != null) 'transform': transform!.toJson(),
+        if (size != null) 'size': size!,
+        if (transform != null) 'transform': transform!,
       };
 }
 
@@ -3705,9 +3684,9 @@ class PageProperties {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (colorScheme != null) 'colorScheme': colorScheme!.toJson(),
+        if (colorScheme != null) 'colorScheme': colorScheme!,
         if (pageBackgroundFill != null)
-          'pageBackgroundFill': pageBackgroundFill!.toJson(),
+          'pageBackgroundFill': pageBackgroundFill!,
       };
 }
 
@@ -3739,8 +3718,8 @@ class ParagraphMarker {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bullet != null) 'bullet': bullet!.toJson(),
-        if (style != null) 'style': style!.toJson(),
+        if (bullet != null) 'bullet': bullet!,
+        if (style != null) 'style': style!,
       };
 }
 
@@ -3871,13 +3850,12 @@ class ParagraphStyle {
   core.Map<core.String, core.dynamic> toJson() => {
         if (alignment != null) 'alignment': alignment!,
         if (direction != null) 'direction': direction!,
-        if (indentEnd != null) 'indentEnd': indentEnd!.toJson(),
-        if (indentFirstLine != null)
-          'indentFirstLine': indentFirstLine!.toJson(),
-        if (indentStart != null) 'indentStart': indentStart!.toJson(),
+        if (indentEnd != null) 'indentEnd': indentEnd!,
+        if (indentFirstLine != null) 'indentFirstLine': indentFirstLine!,
+        if (indentStart != null) 'indentStart': indentStart!,
         if (lineSpacing != null) 'lineSpacing': lineSpacing!,
-        if (spaceAbove != null) 'spaceAbove': spaceAbove!.toJson(),
-        if (spaceBelow != null) 'spaceBelow': spaceBelow!.toJson(),
+        if (spaceAbove != null) 'spaceAbove': spaceAbove!,
+        if (spaceBelow != null) 'spaceBelow': spaceBelow!,
         if (spacingMode != null) 'spacingMode': spacingMode!,
       };
 }
@@ -4054,17 +4032,14 @@ class Presentation {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (layouts != null)
-          'layouts': layouts!.map((value) => value.toJson()).toList(),
+        if (layouts != null) 'layouts': layouts!,
         if (locale != null) 'locale': locale!,
-        if (masters != null)
-          'masters': masters!.map((value) => value.toJson()).toList(),
-        if (notesMaster != null) 'notesMaster': notesMaster!.toJson(),
-        if (pageSize != null) 'pageSize': pageSize!.toJson(),
+        if (masters != null) 'masters': masters!,
+        if (notesMaster != null) 'notesMaster': notesMaster!,
+        if (pageSize != null) 'pageSize': pageSize!,
         if (presentationId != null) 'presentationId': presentationId!,
         if (revisionId != null) 'revisionId': revisionId!,
-        if (slides != null)
-          'slides': slides!.map((value) => value.toJson()).toList(),
+        if (slides != null) 'slides': slides!,
         if (title != null) 'title': title!,
       };
 }
@@ -4202,8 +4177,7 @@ class Recolor {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
-        if (recolorStops != null)
-          'recolorStops': recolorStops!.map((value) => value.toJson()).toList(),
+        if (recolorStops != null) 'recolorStops': recolorStops!,
       };
 }
 
@@ -4322,7 +4296,7 @@ class ReplaceAllShapesWithImageRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (containsText != null) 'containsText': containsText!.toJson(),
+        if (containsText != null) 'containsText': containsText!,
         if (imageReplaceMethod != null)
           'imageReplaceMethod': imageReplaceMethod!,
         if (imageUrl != null) 'imageUrl': imageUrl!,
@@ -4422,7 +4396,7 @@ class ReplaceAllShapesWithSheetsChartRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (chartId != null) 'chartId': chartId!,
-        if (containsText != null) 'containsText': containsText!.toJson(),
+        if (containsText != null) 'containsText': containsText!,
         if (linkingMode != null) 'linkingMode': linkingMode!,
         if (pageObjectIds != null) 'pageObjectIds': pageObjectIds!,
         if (spreadsheetId != null) 'spreadsheetId': spreadsheetId!,
@@ -4489,7 +4463,7 @@ class ReplaceAllTextRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (containsText != null) 'containsText': containsText!.toJson(),
+        if (containsText != null) 'containsText': containsText!,
         if (pageObjectIds != null) 'pageObjectIds': pageObjectIds!,
         if (replaceText != null) 'replaceText': replaceText!,
       };
@@ -4962,80 +4936,72 @@ class Request {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (createImage != null) 'createImage': createImage!.toJson(),
-        if (createLine != null) 'createLine': createLine!.toJson(),
+        if (createImage != null) 'createImage': createImage!,
+        if (createLine != null) 'createLine': createLine!,
         if (createParagraphBullets != null)
-          'createParagraphBullets': createParagraphBullets!.toJson(),
-        if (createShape != null) 'createShape': createShape!.toJson(),
-        if (createSheetsChart != null)
-          'createSheetsChart': createSheetsChart!.toJson(),
-        if (createSlide != null) 'createSlide': createSlide!.toJson(),
-        if (createTable != null) 'createTable': createTable!.toJson(),
-        if (createVideo != null) 'createVideo': createVideo!.toJson(),
-        if (deleteObject != null) 'deleteObject': deleteObject!.toJson(),
+          'createParagraphBullets': createParagraphBullets!,
+        if (createShape != null) 'createShape': createShape!,
+        if (createSheetsChart != null) 'createSheetsChart': createSheetsChart!,
+        if (createSlide != null) 'createSlide': createSlide!,
+        if (createTable != null) 'createTable': createTable!,
+        if (createVideo != null) 'createVideo': createVideo!,
+        if (deleteObject != null) 'deleteObject': deleteObject!,
         if (deleteParagraphBullets != null)
-          'deleteParagraphBullets': deleteParagraphBullets!.toJson(),
-        if (deleteTableColumn != null)
-          'deleteTableColumn': deleteTableColumn!.toJson(),
-        if (deleteTableRow != null) 'deleteTableRow': deleteTableRow!.toJson(),
-        if (deleteText != null) 'deleteText': deleteText!.toJson(),
-        if (duplicateObject != null)
-          'duplicateObject': duplicateObject!.toJson(),
-        if (groupObjects != null) 'groupObjects': groupObjects!.toJson(),
+          'deleteParagraphBullets': deleteParagraphBullets!,
+        if (deleteTableColumn != null) 'deleteTableColumn': deleteTableColumn!,
+        if (deleteTableRow != null) 'deleteTableRow': deleteTableRow!,
+        if (deleteText != null) 'deleteText': deleteText!,
+        if (duplicateObject != null) 'duplicateObject': duplicateObject!,
+        if (groupObjects != null) 'groupObjects': groupObjects!,
         if (insertTableColumns != null)
-          'insertTableColumns': insertTableColumns!.toJson(),
-        if (insertTableRows != null)
-          'insertTableRows': insertTableRows!.toJson(),
-        if (insertText != null) 'insertText': insertText!.toJson(),
-        if (mergeTableCells != null)
-          'mergeTableCells': mergeTableCells!.toJson(),
+          'insertTableColumns': insertTableColumns!,
+        if (insertTableRows != null) 'insertTableRows': insertTableRows!,
+        if (insertText != null) 'insertText': insertText!,
+        if (mergeTableCells != null) 'mergeTableCells': mergeTableCells!,
         if (refreshSheetsChart != null)
-          'refreshSheetsChart': refreshSheetsChart!.toJson(),
+          'refreshSheetsChart': refreshSheetsChart!,
         if (replaceAllShapesWithImage != null)
-          'replaceAllShapesWithImage': replaceAllShapesWithImage!.toJson(),
+          'replaceAllShapesWithImage': replaceAllShapesWithImage!,
         if (replaceAllShapesWithSheetsChart != null)
-          'replaceAllShapesWithSheetsChart':
-              replaceAllShapesWithSheetsChart!.toJson(),
-        if (replaceAllText != null) 'replaceAllText': replaceAllText!.toJson(),
-        if (replaceImage != null) 'replaceImage': replaceImage!.toJson(),
-        if (rerouteLine != null) 'rerouteLine': rerouteLine!.toJson(),
-        if (ungroupObjects != null) 'ungroupObjects': ungroupObjects!.toJson(),
-        if (unmergeTableCells != null)
-          'unmergeTableCells': unmergeTableCells!.toJson(),
+          'replaceAllShapesWithSheetsChart': replaceAllShapesWithSheetsChart!,
+        if (replaceAllText != null) 'replaceAllText': replaceAllText!,
+        if (replaceImage != null) 'replaceImage': replaceImage!,
+        if (rerouteLine != null) 'rerouteLine': rerouteLine!,
+        if (ungroupObjects != null) 'ungroupObjects': ungroupObjects!,
+        if (unmergeTableCells != null) 'unmergeTableCells': unmergeTableCells!,
         if (updateImageProperties != null)
-          'updateImageProperties': updateImageProperties!.toJson(),
+          'updateImageProperties': updateImageProperties!,
         if (updateLineCategory != null)
-          'updateLineCategory': updateLineCategory!.toJson(),
+          'updateLineCategory': updateLineCategory!,
         if (updateLineProperties != null)
-          'updateLineProperties': updateLineProperties!.toJson(),
+          'updateLineProperties': updateLineProperties!,
         if (updatePageElementAltText != null)
-          'updatePageElementAltText': updatePageElementAltText!.toJson(),
+          'updatePageElementAltText': updatePageElementAltText!,
         if (updatePageElementTransform != null)
-          'updatePageElementTransform': updatePageElementTransform!.toJson(),
+          'updatePageElementTransform': updatePageElementTransform!,
         if (updatePageElementsZOrder != null)
-          'updatePageElementsZOrder': updatePageElementsZOrder!.toJson(),
+          'updatePageElementsZOrder': updatePageElementsZOrder!,
         if (updatePageProperties != null)
-          'updatePageProperties': updatePageProperties!.toJson(),
+          'updatePageProperties': updatePageProperties!,
         if (updateParagraphStyle != null)
-          'updateParagraphStyle': updateParagraphStyle!.toJson(),
+          'updateParagraphStyle': updateParagraphStyle!,
         if (updateShapeProperties != null)
-          'updateShapeProperties': updateShapeProperties!.toJson(),
+          'updateShapeProperties': updateShapeProperties!,
         if (updateSlideProperties != null)
-          'updateSlideProperties': updateSlideProperties!.toJson(),
+          'updateSlideProperties': updateSlideProperties!,
         if (updateSlidesPosition != null)
-          'updateSlidesPosition': updateSlidesPosition!.toJson(),
+          'updateSlidesPosition': updateSlidesPosition!,
         if (updateTableBorderProperties != null)
-          'updateTableBorderProperties': updateTableBorderProperties!.toJson(),
+          'updateTableBorderProperties': updateTableBorderProperties!,
         if (updateTableCellProperties != null)
-          'updateTableCellProperties': updateTableCellProperties!.toJson(),
+          'updateTableCellProperties': updateTableCellProperties!,
         if (updateTableColumnProperties != null)
-          'updateTableColumnProperties': updateTableColumnProperties!.toJson(),
+          'updateTableColumnProperties': updateTableColumnProperties!,
         if (updateTableRowProperties != null)
-          'updateTableRowProperties': updateTableRowProperties!.toJson(),
-        if (updateTextStyle != null)
-          'updateTextStyle': updateTextStyle!.toJson(),
+          'updateTableRowProperties': updateTableRowProperties!,
+        if (updateTextStyle != null) 'updateTextStyle': updateTextStyle!,
         if (updateVideoProperties != null)
-          'updateVideoProperties': updateVideoProperties!.toJson(),
+          'updateVideoProperties': updateVideoProperties!,
       };
 }
 
@@ -5176,23 +5142,20 @@ class Response {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (createImage != null) 'createImage': createImage!.toJson(),
-        if (createLine != null) 'createLine': createLine!.toJson(),
-        if (createShape != null) 'createShape': createShape!.toJson(),
-        if (createSheetsChart != null)
-          'createSheetsChart': createSheetsChart!.toJson(),
-        if (createSlide != null) 'createSlide': createSlide!.toJson(),
-        if (createTable != null) 'createTable': createTable!.toJson(),
-        if (createVideo != null) 'createVideo': createVideo!.toJson(),
-        if (duplicateObject != null)
-          'duplicateObject': duplicateObject!.toJson(),
-        if (groupObjects != null) 'groupObjects': groupObjects!.toJson(),
+        if (createImage != null) 'createImage': createImage!,
+        if (createLine != null) 'createLine': createLine!,
+        if (createShape != null) 'createShape': createShape!,
+        if (createSheetsChart != null) 'createSheetsChart': createSheetsChart!,
+        if (createSlide != null) 'createSlide': createSlide!,
+        if (createTable != null) 'createTable': createTable!,
+        if (createVideo != null) 'createVideo': createVideo!,
+        if (duplicateObject != null) 'duplicateObject': duplicateObject!,
+        if (groupObjects != null) 'groupObjects': groupObjects!,
         if (replaceAllShapesWithImage != null)
-          'replaceAllShapesWithImage': replaceAllShapesWithImage!.toJson(),
+          'replaceAllShapesWithImage': replaceAllShapesWithImage!,
         if (replaceAllShapesWithSheetsChart != null)
-          'replaceAllShapesWithSheetsChart':
-              replaceAllShapesWithSheetsChart!.toJson(),
-        if (replaceAllText != null) 'replaceAllText': replaceAllText!.toJson(),
+          'replaceAllShapesWithSheetsChart': replaceAllShapesWithSheetsChart!,
+        if (replaceAllText != null) 'replaceAllText': replaceAllText!,
       };
 }
 
@@ -5353,11 +5316,11 @@ class Shadow {
   core.Map<core.String, core.dynamic> toJson() => {
         if (alignment != null) 'alignment': alignment!,
         if (alpha != null) 'alpha': alpha!,
-        if (blurRadius != null) 'blurRadius': blurRadius!.toJson(),
-        if (color != null) 'color': color!.toJson(),
+        if (blurRadius != null) 'blurRadius': blurRadius!,
+        if (color != null) 'color': color!,
         if (propertyState != null) 'propertyState': propertyState!,
         if (rotateWithShape != null) 'rotateWithShape': rotateWithShape!,
-        if (transform != null) 'transform': transform!.toJson(),
+        if (transform != null) 'transform': transform!,
         if (type != null) 'type': type!,
       };
 }
@@ -5671,11 +5634,10 @@ class Shape {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (placeholder != null) 'placeholder': placeholder!.toJson(),
-        if (shapeProperties != null)
-          'shapeProperties': shapeProperties!.toJson(),
+        if (placeholder != null) 'placeholder': placeholder!,
+        if (shapeProperties != null) 'shapeProperties': shapeProperties!,
         if (shapeType != null) 'shapeType': shapeType!,
-        if (text != null) 'text': text!.toJson(),
+        if (text != null) 'text': text!,
       };
 }
 
@@ -5727,7 +5689,7 @@ class ShapeBackgroundFill {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (propertyState != null) 'propertyState': propertyState!,
-        if (solidFill != null) 'solidFill': solidFill!.toJson(),
+        if (solidFill != null) 'solidFill': solidFill!,
       };
 }
 
@@ -5827,13 +5789,13 @@ class ShapeProperties {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (autofit != null) 'autofit': autofit!.toJson(),
+        if (autofit != null) 'autofit': autofit!,
         if (contentAlignment != null) 'contentAlignment': contentAlignment!,
-        if (link != null) 'link': link!.toJson(),
-        if (outline != null) 'outline': outline!.toJson(),
-        if (shadow != null) 'shadow': shadow!.toJson(),
+        if (link != null) 'link': link!,
+        if (outline != null) 'outline': outline!,
+        if (shadow != null) 'shadow': shadow!,
         if (shapeBackgroundFill != null)
-          'shapeBackgroundFill': shapeBackgroundFill!.toJson(),
+          'shapeBackgroundFill': shapeBackgroundFill!,
       };
 }
 
@@ -5885,7 +5847,7 @@ class SheetsChart {
         if (chartId != null) 'chartId': chartId!,
         if (contentUrl != null) 'contentUrl': contentUrl!,
         if (sheetsChartProperties != null)
-          'sheetsChartProperties': sheetsChartProperties!.toJson(),
+          'sheetsChartProperties': sheetsChartProperties!,
         if (spreadsheetId != null) 'spreadsheetId': spreadsheetId!,
       };
 }
@@ -5909,7 +5871,7 @@ class SheetsChartProperties {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (chartImageProperties != null)
-          'chartImageProperties': chartImageProperties!.toJson(),
+          'chartImageProperties': chartImageProperties!,
       };
 }
 
@@ -5939,8 +5901,8 @@ class Size {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (height != null) 'height': height!.toJson(),
-        if (width != null) 'width': width!.toJson(),
+        if (height != null) 'height': height!,
+        if (width != null) 'width': width!,
       };
 }
 
@@ -6001,7 +5963,7 @@ class SlideProperties {
         if (isSkipped != null) 'isSkipped': isSkipped!,
         if (layoutObjectId != null) 'layoutObjectId': layoutObjectId!,
         if (masterObjectId != null) 'masterObjectId': masterObjectId!,
-        if (notesPage != null) 'notesPage': notesPage!.toJson(),
+        if (notesPage != null) 'notesPage': notesPage!,
       };
 }
 
@@ -6040,7 +6002,7 @@ class SolidFill {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (alpha != null) 'alpha': alpha!,
-        if (color != null) 'color': color!.toJson(),
+        if (color != null) 'color': color!,
       };
 }
 
@@ -6084,7 +6046,7 @@ class StretchedPictureFill {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (contentUrl != null) 'contentUrl': contentUrl!,
-        if (size != null) 'size': size!.toJson(),
+        if (size != null) 'size': size!,
       };
 }
 
@@ -6195,16 +6157,12 @@ class Table {
   core.Map<core.String, core.dynamic> toJson() => {
         if (columns != null) 'columns': columns!,
         if (horizontalBorderRows != null)
-          'horizontalBorderRows':
-              horizontalBorderRows!.map((value) => value.toJson()).toList(),
+          'horizontalBorderRows': horizontalBorderRows!,
         if (rows != null) 'rows': rows!,
-        if (tableColumns != null)
-          'tableColumns': tableColumns!.map((value) => value.toJson()).toList(),
-        if (tableRows != null)
-          'tableRows': tableRows!.map((value) => value.toJson()).toList(),
+        if (tableColumns != null) 'tableColumns': tableColumns!,
+        if (tableRows != null) 'tableRows': tableRows!,
         if (verticalBorderRows != null)
-          'verticalBorderRows':
-              verticalBorderRows!.map((value) => value.toJson()).toList(),
+          'verticalBorderRows': verticalBorderRows!,
       };
 }
 
@@ -6234,9 +6192,9 @@ class TableBorderCell {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (location != null) 'location': location!.toJson(),
+        if (location != null) 'location': location!,
         if (tableBorderProperties != null)
-          'tableBorderProperties': tableBorderProperties!.toJson(),
+          'tableBorderProperties': tableBorderProperties!,
       };
 }
 
@@ -6258,7 +6216,7 @@ class TableBorderFill {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (solidFill != null) 'solidFill': solidFill!.toJson(),
+        if (solidFill != null) 'solidFill': solidFill!,
       };
 }
 
@@ -6310,9 +6268,8 @@ class TableBorderProperties {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (dashStyle != null) 'dashStyle': dashStyle!,
-        if (tableBorderFill != null)
-          'tableBorderFill': tableBorderFill!.toJson(),
-        if (weight != null) 'weight': weight!.toJson(),
+        if (tableBorderFill != null) 'tableBorderFill': tableBorderFill!,
+        if (weight != null) 'weight': weight!,
       };
 }
 
@@ -6339,9 +6296,7 @@ class TableBorderRow {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (tableBorderCells != null)
-          'tableBorderCells':
-              tableBorderCells!.map((value) => value.toJson()).toList(),
+        if (tableBorderCells != null) 'tableBorderCells': tableBorderCells!,
       };
 }
 
@@ -6394,11 +6349,11 @@ class TableCell {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (columnSpan != null) 'columnSpan': columnSpan!,
-        if (location != null) 'location': location!.toJson(),
+        if (location != null) 'location': location!,
         if (rowSpan != null) 'rowSpan': rowSpan!,
         if (tableCellProperties != null)
-          'tableCellProperties': tableCellProperties!.toJson(),
-        if (text != null) 'text': text!.toJson(),
+          'tableCellProperties': tableCellProperties!,
+        if (text != null) 'text': text!,
       };
 }
 
@@ -6450,7 +6405,7 @@ class TableCellBackgroundFill {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (propertyState != null) 'propertyState': propertyState!,
-        if (solidFill != null) 'solidFill': solidFill!.toJson(),
+        if (solidFill != null) 'solidFill': solidFill!,
       };
 }
 
@@ -6527,7 +6482,7 @@ class TableCellProperties {
   core.Map<core.String, core.dynamic> toJson() => {
         if (contentAlignment != null) 'contentAlignment': contentAlignment!,
         if (tableCellBackgroundFill != null)
-          'tableCellBackgroundFill': tableCellBackgroundFill!.toJson(),
+          'tableCellBackgroundFill': tableCellBackgroundFill!,
       };
 }
 
@@ -6549,7 +6504,7 @@ class TableColumnProperties {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (columnWidth != null) 'columnWidth': columnWidth!.toJson(),
+        if (columnWidth != null) 'columnWidth': columnWidth!,
       };
 }
 
@@ -6592,7 +6547,7 @@ class TableRange {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (columnSpan != null) 'columnSpan': columnSpan!,
-        if (location != null) 'location': location!.toJson(),
+        if (location != null) 'location': location!,
         if (rowSpan != null) 'rowSpan': rowSpan!,
       };
 }
@@ -6637,11 +6592,10 @@ class TableRow {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (rowHeight != null) 'rowHeight': rowHeight!.toJson(),
-        if (tableCells != null)
-          'tableCells': tableCells!.map((value) => value.toJson()).toList(),
+        if (rowHeight != null) 'rowHeight': rowHeight!,
+        if (tableCells != null) 'tableCells': tableCells!,
         if (tableRowProperties != null)
-          'tableRowProperties': tableRowProperties!.toJson(),
+          'tableRowProperties': tableRowProperties!,
       };
 }
 
@@ -6667,7 +6621,7 @@ class TableRowProperties {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (minRowHeight != null) 'minRowHeight': minRowHeight!.toJson(),
+        if (minRowHeight != null) 'minRowHeight': minRowHeight!,
       };
 }
 
@@ -6709,10 +6663,8 @@ class TextContent {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (lists != null)
-          'lists': lists!.map((key, item) => core.MapEntry(key, item.toJson())),
-        if (textElements != null)
-          'textElements': textElements!.map((value) => value.toJson()).toList(),
+        if (lists != null) 'lists': lists!,
+        if (textElements != null) 'textElements': textElements!,
       };
 }
 
@@ -6777,12 +6729,11 @@ class TextElement {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (autoText != null) 'autoText': autoText!.toJson(),
+        if (autoText != null) 'autoText': autoText!,
         if (endIndex != null) 'endIndex': endIndex!,
-        if (paragraphMarker != null)
-          'paragraphMarker': paragraphMarker!.toJson(),
+        if (paragraphMarker != null) 'paragraphMarker': paragraphMarker!,
         if (startIndex != null) 'startIndex': startIndex!,
-        if (textRun != null) 'textRun': textRun!.toJson(),
+        if (textRun != null) 'textRun': textRun!,
       };
 }
 
@@ -6813,7 +6764,7 @@ class TextRun {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (content != null) 'content': content!,
-        if (style != null) 'style': style!.toJson(),
+        if (style != null) 'style': style!,
       };
 }
 
@@ -6989,21 +6940,19 @@ class TextStyle {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (backgroundColor != null)
-          'backgroundColor': backgroundColor!.toJson(),
+        if (backgroundColor != null) 'backgroundColor': backgroundColor!,
         if (baselineOffset != null) 'baselineOffset': baselineOffset!,
         if (bold != null) 'bold': bold!,
         if (fontFamily != null) 'fontFamily': fontFamily!,
-        if (fontSize != null) 'fontSize': fontSize!.toJson(),
-        if (foregroundColor != null)
-          'foregroundColor': foregroundColor!.toJson(),
+        if (fontSize != null) 'fontSize': fontSize!,
+        if (foregroundColor != null) 'foregroundColor': foregroundColor!,
         if (italic != null) 'italic': italic!,
-        if (link != null) 'link': link!.toJson(),
+        if (link != null) 'link': link!,
         if (smallCaps != null) 'smallCaps': smallCaps!,
         if (strikethrough != null) 'strikethrough': strikethrough!,
         if (underline != null) 'underline': underline!,
         if (weightedFontFamily != null)
-          'weightedFontFamily': weightedFontFamily!.toJson(),
+          'weightedFontFamily': weightedFontFamily!,
       };
 }
 
@@ -7050,7 +6999,7 @@ class ThemeColorPair {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (color != null) 'color': color!.toJson(),
+        if (color != null) 'color': color!,
         if (type != null) 'type': type!,
       };
 }
@@ -7154,7 +7103,7 @@ class UnmergeTableCellsRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (objectId != null) 'objectId': objectId!,
-        if (tableRange != null) 'tableRange': tableRange!.toJson(),
+        if (tableRange != null) 'tableRange': tableRange!,
       };
 }
 
@@ -7198,8 +7147,7 @@ class UpdateImagePropertiesRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (fields != null) 'fields': fields!,
-        if (imageProperties != null)
-          'imageProperties': imageProperties!.toJson(),
+        if (imageProperties != null) 'imageProperties': imageProperties!,
         if (objectId != null) 'objectId': objectId!,
       };
 }
@@ -7284,7 +7232,7 @@ class UpdateLinePropertiesRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (fields != null) 'fields': fields!,
-        if (lineProperties != null) 'lineProperties': lineProperties!.toJson(),
+        if (lineProperties != null) 'lineProperties': lineProperties!,
         if (objectId != null) 'objectId': objectId!,
       };
 }
@@ -7377,7 +7325,7 @@ class UpdatePageElementTransformRequest {
   core.Map<core.String, core.dynamic> toJson() => {
         if (applyMode != null) 'applyMode': applyMode!,
         if (objectId != null) 'objectId': objectId!,
-        if (transform != null) 'transform': transform!.toJson(),
+        if (transform != null) 'transform': transform!,
       };
 }
 
@@ -7471,7 +7419,7 @@ class UpdatePagePropertiesRequest {
   core.Map<core.String, core.dynamic> toJson() => {
         if (fields != null) 'fields': fields!,
         if (objectId != null) 'objectId': objectId!,
-        if (pageProperties != null) 'pageProperties': pageProperties!.toJson(),
+        if (pageProperties != null) 'pageProperties': pageProperties!,
       };
 }
 
@@ -7534,11 +7482,11 @@ class UpdateParagraphStyleRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cellLocation != null) 'cellLocation': cellLocation!.toJson(),
+        if (cellLocation != null) 'cellLocation': cellLocation!,
         if (fields != null) 'fields': fields!,
         if (objectId != null) 'objectId': objectId!,
-        if (style != null) 'style': style!.toJson(),
-        if (textRange != null) 'textRange': textRange!.toJson(),
+        if (style != null) 'style': style!,
+        if (textRange != null) 'textRange': textRange!,
       };
 }
 
@@ -7584,8 +7532,7 @@ class UpdateShapePropertiesRequest {
   core.Map<core.String, core.dynamic> toJson() => {
         if (fields != null) 'fields': fields!,
         if (objectId != null) 'objectId': objectId!,
-        if (shapeProperties != null)
-          'shapeProperties': shapeProperties!.toJson(),
+        if (shapeProperties != null) 'shapeProperties': shapeProperties!,
       };
 }
 
@@ -7630,8 +7577,7 @@ class UpdateSlidePropertiesRequest {
   core.Map<core.String, core.dynamic> toJson() => {
         if (fields != null) 'fields': fields!,
         if (objectId != null) 'objectId': objectId!,
-        if (slideProperties != null)
-          'slideProperties': slideProperties!.toJson(),
+        if (slideProperties != null) 'slideProperties': slideProperties!,
       };
 }
 
@@ -7748,8 +7694,8 @@ class UpdateTableBorderPropertiesRequest {
         if (fields != null) 'fields': fields!,
         if (objectId != null) 'objectId': objectId!,
         if (tableBorderProperties != null)
-          'tableBorderProperties': tableBorderProperties!.toJson(),
-        if (tableRange != null) 'tableRange': tableRange!.toJson(),
+          'tableBorderProperties': tableBorderProperties!,
+        if (tableRange != null) 'tableRange': tableRange!,
       };
 }
 
@@ -7808,8 +7754,8 @@ class UpdateTableCellPropertiesRequest {
         if (fields != null) 'fields': fields!,
         if (objectId != null) 'objectId': objectId!,
         if (tableCellProperties != null)
-          'tableCellProperties': tableCellProperties!.toJson(),
-        if (tableRange != null) 'tableRange': tableRange!.toJson(),
+          'tableCellProperties': tableCellProperties!,
+        if (tableRange != null) 'tableRange': tableRange!,
       };
 }
 
@@ -7870,7 +7816,7 @@ class UpdateTableColumnPropertiesRequest {
         if (fields != null) 'fields': fields!,
         if (objectId != null) 'objectId': objectId!,
         if (tableColumnProperties != null)
-          'tableColumnProperties': tableColumnProperties!.toJson(),
+          'tableColumnProperties': tableColumnProperties!,
       };
 }
 
@@ -7928,7 +7874,7 @@ class UpdateTableRowPropertiesRequest {
         if (objectId != null) 'objectId': objectId!,
         if (rowIndices != null) 'rowIndices': rowIndices!,
         if (tableRowProperties != null)
-          'tableRowProperties': tableRowProperties!.toJson(),
+          'tableRowProperties': tableRowProperties!,
       };
 }
 
@@ -7998,11 +7944,11 @@ class UpdateTextStyleRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cellLocation != null) 'cellLocation': cellLocation!.toJson(),
+        if (cellLocation != null) 'cellLocation': cellLocation!,
         if (fields != null) 'fields': fields!,
         if (objectId != null) 'objectId': objectId!,
-        if (style != null) 'style': style!.toJson(),
-        if (textRange != null) 'textRange': textRange!.toJson(),
+        if (style != null) 'style': style!,
+        if (textRange != null) 'textRange': textRange!,
       };
 }
 
@@ -8047,8 +7993,7 @@ class UpdateVideoPropertiesRequest {
   core.Map<core.String, core.dynamic> toJson() => {
         if (fields != null) 'fields': fields!,
         if (objectId != null) 'objectId': objectId!,
-        if (videoProperties != null)
-          'videoProperties': videoProperties!.toJson(),
+        if (videoProperties != null) 'videoProperties': videoProperties!,
       };
 }
 
@@ -8097,8 +8042,7 @@ class Video {
         if (id != null) 'id': id!,
         if (source != null) 'source': source!,
         if (url != null) 'url': url!,
-        if (videoProperties != null)
-          'videoProperties': videoProperties!.toJson(),
+        if (videoProperties != null) 'videoProperties': videoProperties!,
       };
 }
 
@@ -8164,7 +8108,7 @@ class VideoProperties {
         if (autoPlay != null) 'autoPlay': autoPlay!,
         if (end != null) 'end': end!,
         if (mute != null) 'mute': mute!,
-        if (outline != null) 'outline': outline!.toJson(),
+        if (outline != null) 'outline': outline!,
         if (start != null) 'start': start!,
       };
 }

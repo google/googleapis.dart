@@ -477,17 +477,17 @@ void main() {
           // Array simple/complex
           expect(namedArraySimple.needsJsonEncoding, false);
           expect(namedArraySimple.needsJsonDecoding, true);
-          expect(namedArrayComplex.needsJsonEncoding, true);
+          expect(namedArrayComplex.needsJsonEncoding, false);
           expect(namedArrayComplex.needsJsonDecoding, true);
 
           // Map simple/complex
           expect(namedMapSimple.needsJsonEncoding, false);
           expect(namedMapSimple.needsJsonDecoding, true);
-          expect(namedMapComplex.needsJsonEncoding, true);
+          expect(namedMapComplex.needsJsonEncoding, false);
           expect(namedMapComplex.needsJsonDecoding, true);
 
           // Objects
-          expect(namedObject.needsJsonEncoding, true);
+          expect(namedObject.needsJsonEncoding, false);
           expect(namedObject.needsJsonDecoding, true);
 
           // Unnamed complex types
@@ -509,17 +509,17 @@ void main() {
           // Array simple/complex
           expect(unNamedArraySimple.needsJsonEncoding, false);
           expect(unNamedArraySimple.needsJsonDecoding, true);
-          expect(unNamedArrayComplex.needsJsonEncoding, true);
+          expect(unNamedArrayComplex.needsJsonEncoding, false);
           expect(unNamedArrayComplex.needsJsonDecoding, true);
 
           // Map simple/complex
           expect(unNamedMapSimple.needsJsonEncoding, false);
           expect(unNamedMapSimple.needsJsonDecoding, true);
-          expect(unNamedMapComplex.needsJsonEncoding, true);
+          expect(unNamedMapComplex.needsJsonEncoding, false);
           expect(unNamedMapComplex.needsJsonDecoding, true);
 
           // Objects
-          expect(unNamedObject.needsJsonEncoding, true);
+          expect(unNamedObject.needsJsonEncoding, false);
           expect(unNamedObject.needsJsonDecoding, true);
         });
       });

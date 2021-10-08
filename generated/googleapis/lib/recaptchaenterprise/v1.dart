@@ -97,7 +97,7 @@ class ProjectsAssessmentsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -139,7 +139,7 @@ class ProjectsAssessmentsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -187,7 +187,7 @@ class ProjectsKeysResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -394,7 +394,7 @@ class ProjectsKeysResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -440,7 +440,7 @@ class ProjectsKeysResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -587,11 +587,10 @@ class GoogleCloudRecaptchaenterpriseV1Assessment {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (event != null) 'event': event!.toJson(),
+        if (event != null) 'event': event!,
         if (name != null) 'name': name!,
-        if (riskAnalysis != null) 'riskAnalysis': riskAnalysis!.toJson(),
-        if (tokenProperties != null)
-          'tokenProperties': tokenProperties!.toJson(),
+        if (riskAnalysis != null) 'riskAnalysis': riskAnalysis!,
+        if (tokenProperties != null) 'tokenProperties': tokenProperties!,
       };
 }
 
@@ -818,15 +817,14 @@ class GoogleCloudRecaptchaenterpriseV1Key {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (androidSettings != null)
-          'androidSettings': androidSettings!.toJson(),
+        if (androidSettings != null) 'androidSettings': androidSettings!,
         if (createTime != null) 'createTime': createTime!,
         if (displayName != null) 'displayName': displayName!,
-        if (iosSettings != null) 'iosSettings': iosSettings!.toJson(),
+        if (iosSettings != null) 'iosSettings': iosSettings!,
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
-        if (testingOptions != null) 'testingOptions': testingOptions!.toJson(),
-        if (webSettings != null) 'webSettings': webSettings!.toJson(),
+        if (testingOptions != null) 'testingOptions': testingOptions!,
+        if (webSettings != null) 'webSettings': webSettings!,
       };
 }
 
@@ -859,7 +857,7 @@ class GoogleCloudRecaptchaenterpriseV1ListKeysResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (keys != null) 'keys': keys!.map((value) => value.toJson()).toList(),
+        if (keys != null) 'keys': keys!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -918,12 +916,9 @@ class GoogleCloudRecaptchaenterpriseV1Metrics {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (challengeMetrics != null)
-          'challengeMetrics':
-              challengeMetrics!.map((value) => value.toJson()).toList(),
+        if (challengeMetrics != null) 'challengeMetrics': challengeMetrics!,
         if (name != null) 'name': name!,
-        if (scoreMetrics != null)
-          'scoreMetrics': scoreMetrics!.map((value) => value.toJson()).toList(),
+        if (scoreMetrics != null) 'scoreMetrics': scoreMetrics!,
         if (startTime != null) 'startTime': startTime!,
       };
 }
@@ -1032,10 +1027,8 @@ class GoogleCloudRecaptchaenterpriseV1ScoreMetrics {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (actionMetrics != null)
-          'actionMetrics': actionMetrics!
-              .map((key, item) => core.MapEntry(key, item.toJson())),
-        if (overallMetrics != null) 'overallMetrics': overallMetrics!.toJson(),
+        if (actionMetrics != null) 'actionMetrics': actionMetrics!,
+        if (overallMetrics != null) 'overallMetrics': overallMetrics!,
       };
 }
 

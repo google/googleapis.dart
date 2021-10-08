@@ -139,7 +139,7 @@ class TransferJobsResource {
     TransferJob request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -277,7 +277,7 @@ class TransferJobsResource {
     core.String jobName, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -322,7 +322,7 @@ class TransferJobsResource {
     core.String jobName, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -386,7 +386,7 @@ class TransferOperationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -524,7 +524,7 @@ class TransferOperationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -564,7 +564,7 @@ class TransferOperationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -680,7 +680,7 @@ class AwsS3Data {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (awsAccessKey != null) 'awsAccessKey': awsAccessKey!.toJson(),
+        if (awsAccessKey != null) 'awsAccessKey': awsAccessKey!,
         if (bucketName != null) 'bucketName': bucketName!,
         if (path != null) 'path': path!,
         if (roleArn != null) 'roleArn': roleArn!,
@@ -744,8 +744,7 @@ class AzureBlobStorageData {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (azureCredentials != null)
-          'azureCredentials': azureCredentials!.toJson(),
+        if (azureCredentials != null) 'azureCredentials': azureCredentials!,
         if (container != null) 'container': container!,
         if (path != null) 'path': path!,
         if (storageAccount != null) 'storageAccount': storageAccount!,
@@ -996,9 +995,7 @@ class ErrorSummary {
   core.Map<core.String, core.dynamic> toJson() => {
         if (errorCode != null) 'errorCode': errorCode!,
         if (errorCount != null) 'errorCount': errorCount!,
-        if (errorLogEntries != null)
-          'errorLogEntries':
-              errorLogEntries!.map((value) => value.toJson()).toList(),
+        if (errorLogEntries != null) 'errorLogEntries': errorLogEntries!,
       };
 }
 
@@ -1148,8 +1145,7 @@ class ListOperationsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (operations != null)
-          'operations': operations!.map((value) => value.toJson()).toList(),
+        if (operations != null) 'operations': operations!,
       };
 }
 
@@ -1181,8 +1177,7 @@ class ListTransferJobsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (transferJobs != null)
-          'transferJobs': transferJobs!.map((value) => value.toJson()).toList(),
+        if (transferJobs != null) 'transferJobs': transferJobs!,
       };
 }
 
@@ -1477,7 +1472,7 @@ class Operation {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (done != null) 'done': done!,
-        if (error != null) 'error': error!.toJson(),
+        if (error != null) 'error': error!,
         if (metadata != null) 'metadata': metadata!,
         if (name != null) 'name': name!,
         if (response != null) 'response': response!,
@@ -1624,13 +1619,11 @@ class Schedule {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (endTimeOfDay != null) 'endTimeOfDay': endTimeOfDay!.toJson(),
+        if (endTimeOfDay != null) 'endTimeOfDay': endTimeOfDay!,
         if (repeatInterval != null) 'repeatInterval': repeatInterval!,
-        if (scheduleEndDate != null)
-          'scheduleEndDate': scheduleEndDate!.toJson(),
-        if (scheduleStartDate != null)
-          'scheduleStartDate': scheduleStartDate!.toJson(),
-        if (startTimeOfDay != null) 'startTimeOfDay': startTimeOfDay!.toJson(),
+        if (scheduleEndDate != null) 'scheduleEndDate': scheduleEndDate!,
+        if (scheduleStartDate != null) 'scheduleStartDate': scheduleStartDate!,
+        if (startTimeOfDay != null) 'startTimeOfDay': startTimeOfDay!,
       };
 }
 
@@ -2104,14 +2097,14 @@ class TransferJob {
           'lastModificationTime': lastModificationTime!,
         if (latestOperationName != null)
           'latestOperationName': latestOperationName!,
-        if (loggingConfig != null) 'loggingConfig': loggingConfig!.toJson(),
+        if (loggingConfig != null) 'loggingConfig': loggingConfig!,
         if (name != null) 'name': name!,
         if (notificationConfig != null)
-          'notificationConfig': notificationConfig!.toJson(),
+          'notificationConfig': notificationConfig!,
         if (projectId != null) 'projectId': projectId!,
-        if (schedule != null) 'schedule': schedule!.toJson(),
+        if (schedule != null) 'schedule': schedule!,
         if (status != null) 'status': status!,
-        if (transferSpec != null) 'transferSpec': transferSpec!.toJson(),
+        if (transferSpec != null) 'transferSpec': transferSpec!,
       };
 }
 
@@ -2208,19 +2201,17 @@ class TransferOperation {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (counters != null) 'counters': counters!.toJson(),
+        if (counters != null) 'counters': counters!,
         if (endTime != null) 'endTime': endTime!,
-        if (errorBreakdowns != null)
-          'errorBreakdowns':
-              errorBreakdowns!.map((value) => value.toJson()).toList(),
+        if (errorBreakdowns != null) 'errorBreakdowns': errorBreakdowns!,
         if (name != null) 'name': name!,
         if (notificationConfig != null)
-          'notificationConfig': notificationConfig!.toJson(),
+          'notificationConfig': notificationConfig!,
         if (projectId != null) 'projectId': projectId!,
         if (startTime != null) 'startTime': startTime!,
         if (status != null) 'status': status!,
         if (transferJobName != null) 'transferJobName': transferJobName!,
-        if (transferSpec != null) 'transferSpec': transferSpec!.toJson(),
+        if (transferSpec != null) 'transferSpec': transferSpec!,
       };
 }
 
@@ -2362,19 +2353,15 @@ class TransferSpec {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (awsS3DataSource != null)
-          'awsS3DataSource': awsS3DataSource!.toJson(),
+        if (awsS3DataSource != null) 'awsS3DataSource': awsS3DataSource!,
         if (azureBlobStorageDataSource != null)
-          'azureBlobStorageDataSource': azureBlobStorageDataSource!.toJson(),
-        if (gcsDataSink != null) 'gcsDataSink': gcsDataSink!.toJson(),
-        if (gcsDataSource != null) 'gcsDataSource': gcsDataSource!.toJson(),
-        if (httpDataSource != null) 'httpDataSource': httpDataSource!.toJson(),
-        if (objectConditions != null)
-          'objectConditions': objectConditions!.toJson(),
-        if (posixDataSource != null)
-          'posixDataSource': posixDataSource!.toJson(),
-        if (transferOptions != null)
-          'transferOptions': transferOptions!.toJson(),
+          'azureBlobStorageDataSource': azureBlobStorageDataSource!,
+        if (gcsDataSink != null) 'gcsDataSink': gcsDataSink!,
+        if (gcsDataSource != null) 'gcsDataSource': gcsDataSource!,
+        if (httpDataSource != null) 'httpDataSource': httpDataSource!,
+        if (objectConditions != null) 'objectConditions': objectConditions!,
+        if (posixDataSource != null) 'posixDataSource': posixDataSource!,
+        if (transferOptions != null) 'transferOptions': transferOptions!,
       };
 }
 
@@ -2429,7 +2416,7 @@ class UpdateTransferJobRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (projectId != null) 'projectId': projectId!,
-        if (transferJob != null) 'transferJob': transferJob!.toJson(),
+        if (transferJob != null) 'transferJob': transferJob!,
         if (updateTransferJobFieldMask != null)
           'updateTransferJobFieldMask': updateTransferJobFieldMask!,
       };

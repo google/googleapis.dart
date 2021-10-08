@@ -188,7 +188,7 @@ class SpeechResource {
     LongRunningRecognizeRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -225,7 +225,7 @@ class SpeechResource {
     RecognizeRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -271,8 +271,7 @@ class ListOperationsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (operations != null)
-          'operations': operations!.map((value) => value.toJson()).toList(),
+        if (operations != null) 'operations': operations!,
       };
 }
 
@@ -361,8 +360,8 @@ class LongRunningRecognizeRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (audio != null) 'audio': audio!.toJson(),
-        if (config != null) 'config': config!.toJson(),
+        if (audio != null) 'audio': audio!,
+        if (config != null) 'config': config!,
       };
 }
 
@@ -400,8 +399,7 @@ class LongRunningRecognizeResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (results != null)
-          'results': results!.map((value) => value.toJson()).toList(),
+        if (results != null) 'results': results!,
         if (totalBilledTime != null) 'totalBilledTime': totalBilledTime!,
       };
 }
@@ -475,7 +473,7 @@ class Operation {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (done != null) 'done': done!,
-        if (error != null) 'error': error!.toJson(),
+        if (error != null) 'error': error!,
         if (metadata != null) 'metadata': metadata!,
         if (name != null) 'name': name!,
         if (response != null) 'response': response!,
@@ -754,8 +752,7 @@ class RecognitionConfig {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (audioChannelCount != null) 'audioChannelCount': audioChannelCount!,
-        if (diarizationConfig != null)
-          'diarizationConfig': diarizationConfig!.toJson(),
+        if (diarizationConfig != null) 'diarizationConfig': diarizationConfig!,
         if (enableAutomaticPunctuation != null)
           'enableAutomaticPunctuation': enableAutomaticPunctuation!,
         if (enableSeparateRecognitionPerChannel != null)
@@ -766,13 +763,11 @@ class RecognitionConfig {
         if (encoding != null) 'encoding': encoding!,
         if (languageCode != null) 'languageCode': languageCode!,
         if (maxAlternatives != null) 'maxAlternatives': maxAlternatives!,
-        if (metadata != null) 'metadata': metadata!.toJson(),
+        if (metadata != null) 'metadata': metadata!,
         if (model != null) 'model': model!,
         if (profanityFilter != null) 'profanityFilter': profanityFilter!,
         if (sampleRateHertz != null) 'sampleRateHertz': sampleRateHertz!,
-        if (speechContexts != null)
-          'speechContexts':
-              speechContexts!.map((value) => value.toJson()).toList(),
+        if (speechContexts != null) 'speechContexts': speechContexts!,
         if (useEnhanced != null) 'useEnhanced': useEnhanced!,
       };
 }
@@ -943,8 +938,8 @@ class RecognizeRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (audio != null) 'audio': audio!.toJson(),
-        if (config != null) 'config': config!.toJson(),
+        if (audio != null) 'audio': audio!,
+        if (config != null) 'config': config!,
       };
 }
 
@@ -979,8 +974,7 @@ class RecognizeResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (results != null)
-          'results': results!.map((value) => value.toJson()).toList(),
+        if (results != null) 'results': results!,
         if (totalBilledTime != null) 'totalBilledTime': totalBilledTime!,
       };
 }
@@ -1126,8 +1120,7 @@ class SpeechRecognitionAlternative {
   core.Map<core.String, core.dynamic> toJson() => {
         if (confidence != null) 'confidence': confidence!,
         if (transcript != null) 'transcript': transcript!,
-        if (words != null)
-          'words': words!.map((value) => value.toJson()).toList(),
+        if (words != null) 'words': words!,
       };
 }
 
@@ -1165,8 +1158,7 @@ class SpeechRecognitionResult {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (alternatives != null)
-          'alternatives': alternatives!.map((value) => value.toJson()).toList(),
+        if (alternatives != null) 'alternatives': alternatives!,
         if (channelTag != null) 'channelTag': channelTag!,
       };
 }

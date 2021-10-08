@@ -82,7 +82,7 @@ class ActivityResource {
     QueryDriveActivityRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -153,10 +153,10 @@ class Action {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (actor != null) 'actor': actor!.toJson(),
-        if (detail != null) 'detail': detail!.toJson(),
-        if (target != null) 'target': target!.toJson(),
-        if (timeRange != null) 'timeRange': timeRange!.toJson(),
+        if (actor != null) 'actor': actor!,
+        if (detail != null) 'detail': detail!,
+        if (target != null) 'target': target!,
+        if (timeRange != null) 'timeRange': timeRange!,
         if (timestamp != null) 'timestamp': timestamp!,
       };
 }
@@ -259,18 +259,17 @@ class ActionDetail {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (comment != null) 'comment': comment!.toJson(),
-        if (create != null) 'create': create!.toJson(),
-        if (delete != null) 'delete': delete!.toJson(),
-        if (dlpChange != null) 'dlpChange': dlpChange!.toJson(),
-        if (edit != null) 'edit': edit!.toJson(),
-        if (move != null) 'move': move!.toJson(),
-        if (permissionChange != null)
-          'permissionChange': permissionChange!.toJson(),
-        if (reference != null) 'reference': reference!.toJson(),
-        if (rename != null) 'rename': rename!.toJson(),
-        if (restore != null) 'restore': restore!.toJson(),
-        if (settingsChange != null) 'settingsChange': settingsChange!.toJson(),
+        if (comment != null) 'comment': comment!,
+        if (create != null) 'create': create!,
+        if (delete != null) 'delete': delete!,
+        if (dlpChange != null) 'dlpChange': dlpChange!,
+        if (edit != null) 'edit': edit!,
+        if (move != null) 'move': move!,
+        if (permissionChange != null) 'permissionChange': permissionChange!,
+        if (reference != null) 'reference': reference!,
+        if (rename != null) 'rename': rename!,
+        if (restore != null) 'restore': restore!,
+        if (settingsChange != null) 'settingsChange': settingsChange!,
       };
 }
 
@@ -324,11 +323,11 @@ class Actor {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (administrator != null) 'administrator': administrator!.toJson(),
-        if (anonymous != null) 'anonymous': anonymous!.toJson(),
-        if (impersonation != null) 'impersonation': impersonation!.toJson(),
-        if (system != null) 'system': system!.toJson(),
-        if (user != null) 'user': user!.toJson(),
+        if (administrator != null) 'administrator': administrator!,
+        if (anonymous != null) 'anonymous': anonymous!,
+        if (impersonation != null) 'impersonation': impersonation!,
+        if (system != null) 'system': system!,
+        if (user != null) 'user': user!,
       };
 }
 
@@ -399,7 +398,7 @@ class Assignment {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (assignedUser != null) 'assignedUser': assignedUser!.toJson(),
+        if (assignedUser != null) 'assignedUser': assignedUser!,
         if (subtype != null) 'subtype': subtype!,
       };
 }
@@ -448,12 +447,10 @@ class Comment {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (assignment != null) 'assignment': assignment!.toJson(),
-        if (mentionedUsers != null)
-          'mentionedUsers':
-              mentionedUsers!.map((value) => value.toJson()).toList(),
-        if (post != null) 'post': post!.toJson(),
-        if (suggestion != null) 'suggestion': suggestion!.toJson(),
+        if (assignment != null) 'assignment': assignment!,
+        if (mentionedUsers != null) 'mentionedUsers': mentionedUsers!,
+        if (post != null) 'post': post!,
+        if (suggestion != null) 'suggestion': suggestion!,
       };
 }
 
@@ -488,8 +485,8 @@ class ConsolidationStrategy {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (legacy != null) 'legacy': legacy!.toJson(),
-        if (none != null) 'none': none!.toJson(),
+        if (legacy != null) 'legacy': legacy!,
+        if (none != null) 'none': none!,
       };
 }
 
@@ -511,7 +508,7 @@ class Copy {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (originalObject != null) 'originalObject': originalObject!.toJson(),
+        if (originalObject != null) 'originalObject': originalObject!,
       };
 }
 
@@ -552,9 +549,9 @@ class Create {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (copy != null) 'copy': copy!.toJson(),
-        if (new_ != null) 'new': new_!.toJson(),
-        if (upload != null) 'upload': upload!.toJson(),
+        if (copy != null) 'copy': copy!,
+        if (new_ != null) 'new': new_!,
+        if (upload != null) 'upload': upload!,
       };
 }
 
@@ -669,7 +666,7 @@ class Drive {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
-        if (root != null) 'root': root!.toJson(),
+        if (root != null) 'root': root!,
         if (title != null) 'title': title!,
       };
 }
@@ -751,15 +748,12 @@ class DriveActivity {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (actions != null)
-          'actions': actions!.map((value) => value.toJson()).toList(),
-        if (actors != null)
-          'actors': actors!.map((value) => value.toJson()).toList(),
+        if (actions != null) 'actions': actions!,
+        if (actors != null) 'actors': actors!,
         if (primaryActionDetail != null)
-          'primaryActionDetail': primaryActionDetail!.toJson(),
-        if (targets != null)
-          'targets': targets!.map((value) => value.toJson()).toList(),
-        if (timeRange != null) 'timeRange': timeRange!.toJson(),
+          'primaryActionDetail': primaryActionDetail!,
+        if (targets != null) 'targets': targets!,
+        if (timeRange != null) 'timeRange': timeRange!,
         if (timestamp != null) 'timestamp': timestamp!,
       };
 }
@@ -865,13 +859,13 @@ class DriveItem {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (driveFile != null) 'driveFile': driveFile!.toJson(),
-        if (driveFolder != null) 'driveFolder': driveFolder!.toJson(),
-        if (file != null) 'file': file!.toJson(),
-        if (folder != null) 'folder': folder!.toJson(),
+        if (driveFile != null) 'driveFile': driveFile!,
+        if (driveFolder != null) 'driveFolder': driveFolder!,
+        if (file != null) 'file': file!,
+        if (folder != null) 'folder': folder!,
         if (mimeType != null) 'mimeType': mimeType!,
         if (name != null) 'name': name!,
-        if (owner != null) 'owner': owner!.toJson(),
+        if (owner != null) 'owner': owner!,
         if (title != null) 'title': title!,
       };
 }
@@ -933,10 +927,10 @@ class DriveItemReference {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (driveFile != null) 'driveFile': driveFile!.toJson(),
-        if (driveFolder != null) 'driveFolder': driveFolder!.toJson(),
-        if (file != null) 'file': file!.toJson(),
-        if (folder != null) 'folder': folder!.toJson(),
+        if (driveFile != null) 'driveFile': driveFile!,
+        if (driveFolder != null) 'driveFolder': driveFolder!,
+        if (file != null) 'file': file!,
+        if (folder != null) 'folder': folder!,
         if (name != null) 'name': name!,
         if (title != null) 'title': title!,
       };
@@ -1028,7 +1022,7 @@ class FileComment {
         if (legacyDiscussionId != null)
           'legacyDiscussionId': legacyDiscussionId!,
         if (linkToDiscussion != null) 'linkToDiscussion': linkToDiscussion!,
-        if (parent != null) 'parent': parent!.toJson(),
+        if (parent != null) 'parent': parent!,
       };
 }
 
@@ -1108,8 +1102,7 @@ class Impersonation {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (impersonatedUser != null)
-          'impersonatedUser': impersonatedUser!.toJson(),
+        if (impersonatedUser != null) 'impersonatedUser': impersonatedUser!,
       };
 }
 
@@ -1185,11 +1178,8 @@ class Move {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (addedParents != null)
-          'addedParents': addedParents!.map((value) => value.toJson()).toList(),
-        if (removedParents != null)
-          'removedParents':
-              removedParents!.map((value) => value.toJson()).toList(),
+        if (addedParents != null) 'addedParents': addedParents!,
+        if (removedParents != null) 'removedParents': removedParents!,
       };
 }
 
@@ -1241,10 +1231,10 @@ class Owner {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (domain != null) 'domain': domain!.toJson(),
-        if (drive != null) 'drive': drive!.toJson(),
-        if (teamDrive != null) 'teamDrive': teamDrive!.toJson(),
-        if (user != null) 'user': user!.toJson(),
+        if (domain != null) 'domain': domain!,
+        if (drive != null) 'drive': drive!,
+        if (teamDrive != null) 'teamDrive': teamDrive!,
+        if (user != null) 'user': user!,
       };
 }
 
@@ -1323,11 +1313,11 @@ class Permission {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (allowDiscovery != null) 'allowDiscovery': allowDiscovery!,
-        if (anyone != null) 'anyone': anyone!.toJson(),
-        if (domain != null) 'domain': domain!.toJson(),
-        if (group != null) 'group': group!.toJson(),
+        if (anyone != null) 'anyone': anyone!,
+        if (domain != null) 'domain': domain!,
+        if (group != null) 'group': group!,
         if (role != null) 'role': role!,
-        if (user != null) 'user': user!.toJson(),
+        if (user != null) 'user': user!,
       };
 }
 
@@ -1361,12 +1351,9 @@ class PermissionChange {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (addedPermissions != null)
-          'addedPermissions':
-              addedPermissions!.map((value) => value.toJson()).toList(),
+        if (addedPermissions != null) 'addedPermissions': addedPermissions!,
         if (removedPermissions != null)
-          'removedPermissions':
-              removedPermissions!.map((value) => value.toJson()).toList(),
+          'removedPermissions': removedPermissions!,
       };
 }
 
@@ -1479,7 +1466,7 @@ class QueryDriveActivityRequest {
   core.Map<core.String, core.dynamic> toJson() => {
         if (ancestorName != null) 'ancestorName': ancestorName!,
         if (consolidationStrategy != null)
-          'consolidationStrategy': consolidationStrategy!.toJson(),
+          'consolidationStrategy': consolidationStrategy!,
         if (filter != null) 'filter': filter!,
         if (itemName != null) 'itemName': itemName!,
         if (pageSize != null) 'pageSize': pageSize!,
@@ -1515,8 +1502,7 @@ class QueryDriveActivityResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (activities != null)
-          'activities': activities!.map((value) => value.toJson()).toList(),
+        if (activities != null) 'activities': activities!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -1637,8 +1623,7 @@ class SettingsChange {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (restrictionChanges != null)
-          'restrictionChanges':
-              restrictionChanges!.map((value) => value.toJson()).toList(),
+          'restrictionChanges': restrictionChanges!,
       };
 }
 
@@ -1740,10 +1725,10 @@ class Target {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (drive != null) 'drive': drive!.toJson(),
-        if (driveItem != null) 'driveItem': driveItem!.toJson(),
-        if (fileComment != null) 'fileComment': fileComment!.toJson(),
-        if (teamDrive != null) 'teamDrive': teamDrive!.toJson(),
+        if (drive != null) 'drive': drive!,
+        if (driveItem != null) 'driveItem': driveItem!,
+        if (fileComment != null) 'fileComment': fileComment!,
+        if (teamDrive != null) 'teamDrive': teamDrive!,
       };
 }
 
@@ -1781,9 +1766,9 @@ class TargetReference {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (drive != null) 'drive': drive!.toJson(),
-        if (driveItem != null) 'driveItem': driveItem!.toJson(),
-        if (teamDrive != null) 'teamDrive': teamDrive!.toJson(),
+        if (drive != null) 'drive': drive!,
+        if (driveItem != null) 'driveItem': driveItem!,
+        if (teamDrive != null) 'teamDrive': teamDrive!,
       };
 }
 
@@ -1817,7 +1802,7 @@ class TeamDrive {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
-        if (root != null) 'root': root!.toJson(),
+        if (root != null) 'root': root!,
         if (title != null) 'title': title!,
       };
 }
@@ -1917,8 +1902,8 @@ class User {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (deletedUser != null) 'deletedUser': deletedUser!.toJson(),
-        if (knownUser != null) 'knownUser': knownUser!.toJson(),
-        if (unknownUser != null) 'unknownUser': unknownUser!.toJson(),
+        if (deletedUser != null) 'deletedUser': deletedUser!,
+        if (knownUser != null) 'knownUser': knownUser!,
+        if (unknownUser != null) 'unknownUser': unknownUser!,
       };
 }

@@ -117,7 +117,7 @@ class AppsResource {
     Application request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -202,7 +202,7 @@ class AppsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -253,7 +253,7 @@ class AppsResource {
     core.String appsId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -300,7 +300,7 @@ class AppsAuthorizedCertificatesResource {
     core.String appsId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -508,7 +508,7 @@ class AppsAuthorizedCertificatesResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -629,7 +629,7 @@ class AppsDomainMappingsResource {
     core.String? overrideStrategy,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (overrideStrategy != null) 'overrideStrategy': [overrideStrategy],
       if ($fields != null) 'fields': [$fields],
@@ -814,7 +814,7 @@ class AppsDomainMappingsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -879,7 +879,7 @@ class AppsFirewallIngressRulesResource {
     core.String appsId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -922,7 +922,7 @@ class AppsFirewallIngressRulesResource {
     core.String appsId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1106,7 +1106,7 @@ class AppsFirewallIngressRulesResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -1511,7 +1511,7 @@ class AppsServicesResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (migrateTraffic != null) 'migrateTraffic': ['${migrateTraffic}'],
       if (updateMask != null) 'updateMask': [updateMask],
@@ -1569,7 +1569,7 @@ class AppsServicesVersionsResource {
     core.String servicesId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1821,7 +1821,7 @@ class AppsServicesVersionsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -1890,7 +1890,7 @@ class AppsServicesVersionsInstancesResource {
     core.String instancesId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2352,13 +2352,10 @@ class Application {
         if (defaultCookieExpiration != null)
           'defaultCookieExpiration': defaultCookieExpiration!,
         if (defaultHostname != null) 'defaultHostname': defaultHostname!,
-        if (dispatchRules != null)
-          'dispatchRules':
-              dispatchRules!.map((value) => value.toJson()).toList(),
-        if (featureSettings != null)
-          'featureSettings': featureSettings!.toJson(),
+        if (dispatchRules != null) 'dispatchRules': dispatchRules!,
+        if (featureSettings != null) 'featureSettings': featureSettings!,
         if (gcrDomain != null) 'gcrDomain': gcrDomain!,
-        if (iap != null) 'iap': iap!.toJson(),
+        if (iap != null) 'iap': iap!,
         if (id != null) 'id': id!,
         if (locationId != null) 'locationId': locationId!,
         if (name != null) 'name': name!,
@@ -2480,7 +2477,7 @@ class AuthorizedCertificate {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (certificateRawData != null)
-          'certificateRawData': certificateRawData!.toJson(),
+          'certificateRawData': certificateRawData!,
         if (displayName != null) 'displayName': displayName!,
         if (domainMappingsCount != null)
           'domainMappingsCount': domainMappingsCount!,
@@ -2488,7 +2485,7 @@ class AuthorizedCertificate {
         if (expireTime != null) 'expireTime': expireTime!,
         if (id != null) 'id': id!,
         if (managedCertificate != null)
-          'managedCertificate': managedCertificate!.toJson(),
+          'managedCertificate': managedCertificate!,
         if (name != null) 'name': name!,
         if (visibleDomainMappings != null)
           'visibleDomainMappings': visibleDomainMappings!,
@@ -2653,9 +2650,8 @@ class AutomaticScaling {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (coolDownPeriod != null) 'coolDownPeriod': coolDownPeriod!,
-        if (cpuUtilization != null) 'cpuUtilization': cpuUtilization!.toJson(),
-        if (diskUtilization != null)
-          'diskUtilization': diskUtilization!.toJson(),
+        if (cpuUtilization != null) 'cpuUtilization': cpuUtilization!,
+        if (diskUtilization != null) 'diskUtilization': diskUtilization!,
         if (maxConcurrentRequests != null)
           'maxConcurrentRequests': maxConcurrentRequests!,
         if (maxIdleInstances != null) 'maxIdleInstances': maxIdleInstances!,
@@ -2665,11 +2661,11 @@ class AutomaticScaling {
         if (minPendingLatency != null) 'minPendingLatency': minPendingLatency!,
         if (minTotalInstances != null) 'minTotalInstances': minTotalInstances!,
         if (networkUtilization != null)
-          'networkUtilization': networkUtilization!.toJson(),
+          'networkUtilization': networkUtilization!,
         if (requestUtilization != null)
-          'requestUtilization': requestUtilization!.toJson(),
+          'requestUtilization': requestUtilization!,
         if (standardSchedulerSettings != null)
-          'standardSchedulerSettings': standardSchedulerSettings!.toJson(),
+          'standardSchedulerSettings': standardSchedulerSettings!,
       };
 }
 
@@ -2727,8 +2723,7 @@ class BatchUpdateIngressRulesRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (ingressRules != null)
-          'ingressRules': ingressRules!.map((value) => value.toJson()).toList(),
+        if (ingressRules != null) 'ingressRules': ingressRules!,
       };
 }
 
@@ -2752,8 +2747,7 @@ class BatchUpdateIngressRulesResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (ingressRules != null)
-          'ingressRules': ingressRules!.map((value) => value.toJson()).toList(),
+        if (ingressRules != null) 'ingressRules': ingressRules!,
       };
 }
 
@@ -3047,12 +3041,10 @@ class Deployment {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cloudBuildOptions != null)
-          'cloudBuildOptions': cloudBuildOptions!.toJson(),
-        if (container != null) 'container': container!.toJson(),
-        if (files != null)
-          'files': files!.map((key, item) => core.MapEntry(key, item.toJson())),
-        if (zip != null) 'zip': zip!.toJson(),
+        if (cloudBuildOptions != null) 'cloudBuildOptions': cloudBuildOptions!,
+        if (container != null) 'container': container!,
+        if (files != null) 'files': files!,
+        if (zip != null) 'zip': zip!,
       };
 }
 
@@ -3158,10 +3150,8 @@ class DomainMapping {
   core.Map<core.String, core.dynamic> toJson() => {
         if (id != null) 'id': id!,
         if (name != null) 'name': name!,
-        if (resourceRecords != null)
-          'resourceRecords':
-              resourceRecords!.map((value) => value.toJson()).toList(),
-        if (sslSettings != null) 'sslSettings': sslSettings!.toJson(),
+        if (resourceRecords != null) 'resourceRecords': resourceRecords!,
+        if (sslSettings != null) 'sslSettings': sslSettings!,
       };
 }
 
@@ -4124,8 +4114,7 @@ class ListAuthorizedCertificatesResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (certificates != null)
-          'certificates': certificates!.map((value) => value.toJson()).toList(),
+        if (certificates != null) 'certificates': certificates!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -4157,8 +4146,7 @@ class ListAuthorizedDomainsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (domains != null)
-          'domains': domains!.map((value) => value.toJson()).toList(),
+        if (domains != null) 'domains': domains!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -4190,9 +4178,7 @@ class ListDomainMappingsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (domainMappings != null)
-          'domainMappings':
-              domainMappings!.map((value) => value.toJson()).toList(),
+        if (domainMappings != null) 'domainMappings': domainMappings!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -4224,8 +4210,7 @@ class ListIngressRulesResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (ingressRules != null)
-          'ingressRules': ingressRules!.map((value) => value.toJson()).toList(),
+        if (ingressRules != null) 'ingressRules': ingressRules!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -4257,8 +4242,7 @@ class ListInstancesResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (instances != null)
-          'instances': instances!.map((value) => value.toJson()).toList(),
+        if (instances != null) 'instances': instances!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -4290,8 +4274,7 @@ class ListLocationsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (locations != null)
-          'locations': locations!.map((value) => value.toJson()).toList(),
+        if (locations != null) 'locations': locations!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -4324,8 +4307,7 @@ class ListOperationsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (operations != null)
-          'operations': operations!.map((value) => value.toJson()).toList(),
+        if (operations != null) 'operations': operations!,
       };
 }
 
@@ -4357,8 +4339,7 @@ class ListServicesResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (services != null)
-          'services': services!.map((value) => value.toJson()).toList(),
+        if (services != null) 'services': services!,
       };
 }
 
@@ -4390,8 +4371,7 @@ class ListVersionsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (versions != null)
-          'versions': versions!.map((value) => value.toJson()).toList(),
+        if (versions != null) 'versions': versions!,
       };
 }
 
@@ -4899,7 +4879,7 @@ class Operation {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (done != null) 'done': done!,
-        if (error != null) 'error': error!.toJson(),
+        if (error != null) 'error': error!,
         if (metadata != null) 'metadata': metadata!,
         if (name != null) 'name': name!,
         if (response != null) 'response': response!,
@@ -4981,7 +4961,7 @@ class OperationMetadataV1 {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (createVersionMetadata != null)
-          'createVersionMetadata': createVersionMetadata!.toJson(),
+          'createVersionMetadata': createVersionMetadata!,
         if (endTime != null) 'endTime': endTime!,
         if (ephemeralMessage != null) 'ephemeralMessage': ephemeralMessage!,
         if (insertTime != null) 'insertTime': insertTime!,
@@ -5068,7 +5048,7 @@ class OperationMetadataV1Alpha {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (createVersionMetadata != null)
-          'createVersionMetadata': createVersionMetadata!.toJson(),
+          'createVersionMetadata': createVersionMetadata!,
         if (endTime != null) 'endTime': endTime!,
         if (ephemeralMessage != null) 'ephemeralMessage': ephemeralMessage!,
         if (insertTime != null) 'insertTime': insertTime!,
@@ -5155,7 +5135,7 @@ class OperationMetadataV1Beta {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (createVersionMetadata != null)
-          'createVersionMetadata': createVersionMetadata!.toJson(),
+          'createVersionMetadata': createVersionMetadata!,
         if (endTime != null) 'endTime': endTime!,
         if (ephemeralMessage != null) 'ephemeralMessage': ephemeralMessage!,
         if (insertTime != null) 'insertTime': insertTime!,
@@ -5374,8 +5354,7 @@ class Resources {
         if (diskGb != null) 'diskGb': diskGb!,
         if (kmsKeyReference != null) 'kmsKeyReference': kmsKeyReference!,
         if (memoryGb != null) 'memoryGb': memoryGb!,
-        if (volumes != null)
-          'volumes': volumes!.map((value) => value.toJson()).toList(),
+        if (volumes != null) 'volumes': volumes!,
       };
 }
 
@@ -5452,9 +5431,8 @@ class Service {
   core.Map<core.String, core.dynamic> toJson() => {
         if (id != null) 'id': id!,
         if (name != null) 'name': name!,
-        if (networkSettings != null)
-          'networkSettings': networkSettings!.toJson(),
-        if (split != null) 'split': split!.toJson(),
+        if (networkSettings != null) 'networkSettings': networkSettings!,
+        if (split != null) 'split': split!,
       };
 }
 
@@ -5946,14 +5924,14 @@ class UrlMap {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (apiEndpoint != null) 'apiEndpoint': apiEndpoint!.toJson(),
+        if (apiEndpoint != null) 'apiEndpoint': apiEndpoint!,
         if (authFailAction != null) 'authFailAction': authFailAction!,
         if (login != null) 'login': login!,
         if (redirectHttpResponseCode != null)
           'redirectHttpResponseCode': redirectHttpResponseCode!,
-        if (script != null) 'script': script!.toJson(),
+        if (script != null) 'script': script!,
         if (securityLevel != null) 'securityLevel': securityLevel!,
-        if (staticFiles != null) 'staticFiles': staticFiles!.toJson(),
+        if (staticFiles != null) 'staticFiles': staticFiles!,
         if (urlRegex != null) 'urlRegex': urlRegex!,
       };
 }
@@ -6367,40 +6345,35 @@ class Version {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (apiConfig != null) 'apiConfig': apiConfig!.toJson(),
-        if (automaticScaling != null)
-          'automaticScaling': automaticScaling!.toJson(),
-        if (basicScaling != null) 'basicScaling': basicScaling!.toJson(),
+        if (apiConfig != null) 'apiConfig': apiConfig!,
+        if (automaticScaling != null) 'automaticScaling': automaticScaling!,
+        if (basicScaling != null) 'basicScaling': basicScaling!,
         if (betaSettings != null) 'betaSettings': betaSettings!,
         if (buildEnvVariables != null) 'buildEnvVariables': buildEnvVariables!,
         if (createTime != null) 'createTime': createTime!,
         if (createdBy != null) 'createdBy': createdBy!,
         if (defaultExpiration != null) 'defaultExpiration': defaultExpiration!,
-        if (deployment != null) 'deployment': deployment!.toJson(),
+        if (deployment != null) 'deployment': deployment!,
         if (diskUsageBytes != null) 'diskUsageBytes': diskUsageBytes!,
         if (endpointsApiService != null)
-          'endpointsApiService': endpointsApiService!.toJson(),
-        if (entrypoint != null) 'entrypoint': entrypoint!.toJson(),
+          'endpointsApiService': endpointsApiService!,
+        if (entrypoint != null) 'entrypoint': entrypoint!,
         if (env != null) 'env': env!,
         if (envVariables != null) 'envVariables': envVariables!,
-        if (errorHandlers != null)
-          'errorHandlers':
-              errorHandlers!.map((value) => value.toJson()).toList(),
-        if (handlers != null)
-          'handlers': handlers!.map((value) => value.toJson()).toList(),
-        if (healthCheck != null) 'healthCheck': healthCheck!.toJson(),
+        if (errorHandlers != null) 'errorHandlers': errorHandlers!,
+        if (handlers != null) 'handlers': handlers!,
+        if (healthCheck != null) 'healthCheck': healthCheck!,
         if (id != null) 'id': id!,
         if (inboundServices != null) 'inboundServices': inboundServices!,
         if (instanceClass != null) 'instanceClass': instanceClass!,
-        if (libraries != null)
-          'libraries': libraries!.map((value) => value.toJson()).toList(),
-        if (livenessCheck != null) 'livenessCheck': livenessCheck!.toJson(),
-        if (manualScaling != null) 'manualScaling': manualScaling!.toJson(),
+        if (libraries != null) 'libraries': libraries!,
+        if (livenessCheck != null) 'livenessCheck': livenessCheck!,
+        if (manualScaling != null) 'manualScaling': manualScaling!,
         if (name != null) 'name': name!,
-        if (network != null) 'network': network!.toJson(),
+        if (network != null) 'network': network!,
         if (nobuildFilesRegex != null) 'nobuildFilesRegex': nobuildFilesRegex!,
-        if (readinessCheck != null) 'readinessCheck': readinessCheck!.toJson(),
-        if (resources != null) 'resources': resources!.toJson(),
+        if (readinessCheck != null) 'readinessCheck': readinessCheck!,
+        if (resources != null) 'resources': resources!,
         if (runtime != null) 'runtime': runtime!,
         if (runtimeApiVersion != null) 'runtimeApiVersion': runtimeApiVersion!,
         if (runtimeChannel != null) 'runtimeChannel': runtimeChannel!,
@@ -6412,7 +6385,7 @@ class Version {
         if (versionUrl != null) 'versionUrl': versionUrl!,
         if (vm != null) 'vm': vm!,
         if (vpcAccessConnector != null)
-          'vpcAccessConnector': vpcAccessConnector!.toJson(),
+          'vpcAccessConnector': vpcAccessConnector!,
         if (zones != null) 'zones': zones!,
       };
 }

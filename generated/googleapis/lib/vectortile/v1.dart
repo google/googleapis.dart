@@ -495,13 +495,13 @@ class Area {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (basemapZOrder != null) 'basemapZOrder': basemapZOrder!.toJson(),
+        if (basemapZOrder != null) 'basemapZOrder': basemapZOrder!,
         if (hasExternalEdges != null) 'hasExternalEdges': hasExternalEdges!,
         if (internalEdges != null) 'internalEdges': internalEdges!,
         if (loopBreaks != null) 'loopBreaks': loopBreaks!,
         if (triangleIndices != null) 'triangleIndices': triangleIndices!,
         if (type != null) 'type': type!,
-        if (vertexOffsets != null) 'vertexOffsets': vertexOffsets!.toJson(),
+        if (vertexOffsets != null) 'vertexOffsets': vertexOffsets!,
         if (zOrder != null) 'zOrder': zOrder!,
       };
 }
@@ -586,7 +586,7 @@ class ExtrudedArea {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (area != null) 'area': area!.toJson(),
+        if (area != null) 'area': area!,
         if (maxZ != null) 'maxZ': maxZ!,
         if (minZ != null) 'minZ': minZ!,
       };
@@ -694,11 +694,10 @@ class Feature {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
-        if (geometry != null) 'geometry': geometry!.toJson(),
+        if (geometry != null) 'geometry': geometry!,
         if (placeId != null) 'placeId': placeId!,
-        if (relations != null)
-          'relations': relations!.map((value) => value.toJson()).toList(),
-        if (segmentInfo != null) 'segmentInfo': segmentInfo!.toJson(),
+        if (relations != null) 'relations': relations!,
+        if (segmentInfo != null) 'segmentInfo': segmentInfo!,
         if (type != null) 'type': type!,
       };
 }
@@ -784,12 +783,10 @@ class FeatureTile {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (coordinates != null) 'coordinates': coordinates!.toJson(),
-        if (features != null)
-          'features': features!.map((value) => value.toJson()).toList(),
+        if (coordinates != null) 'coordinates': coordinates!,
+        if (features != null) 'features': features!,
         if (name != null) 'name': name!,
-        if (providers != null)
-          'providers': providers!.map((value) => value.toJson()).toList(),
+        if (providers != null) 'providers': providers!,
         if (status != null) 'status': status!,
         if (versionId != null) 'versionId': versionId!,
       };
@@ -843,7 +840,7 @@ class FirstDerivativeElevationGrid {
   core.Map<core.String, core.dynamic> toJson() => {
         if (altitudeMultiplier != null)
           'altitudeMultiplier': altitudeMultiplier!,
-        if (rows != null) 'rows': rows!.map((value) => value.toJson()).toList(),
+        if (rows != null) 'rows': rows!,
       };
 }
 
@@ -913,16 +910,10 @@ class Geometry {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (areas != null)
-          'areas': areas!.map((value) => value.toJson()).toList(),
-        if (extrudedAreas != null)
-          'extrudedAreas':
-              extrudedAreas!.map((value) => value.toJson()).toList(),
-        if (lines != null)
-          'lines': lines!.map((value) => value.toJson()).toList(),
-        if (modeledVolumes != null)
-          'modeledVolumes':
-              modeledVolumes!.map((value) => value.toJson()).toList(),
+        if (areas != null) 'areas': areas!,
+        if (extrudedAreas != null) 'extrudedAreas': extrudedAreas!,
+        if (lines != null) 'lines': lines!,
+        if (modeledVolumes != null) 'modeledVolumes': modeledVolumes!,
       };
 }
 
@@ -976,8 +967,8 @@ class Line {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (basemapZOrder != null) 'basemapZOrder': basemapZOrder!.toJson(),
-        if (vertexOffsets != null) 'vertexOffsets': vertexOffsets!.toJson(),
+        if (basemapZOrder != null) 'basemapZOrder': basemapZOrder!,
+        if (vertexOffsets != null) 'vertexOffsets': vertexOffsets!,
         if (zOrder != null) 'zOrder': zOrder!,
       };
 }
@@ -1012,9 +1003,8 @@ class ModeledVolume {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (strips != null)
-          'strips': strips!.map((value) => value.toJson()).toList(),
-        if (vertexOffsets != null) 'vertexOffsets': vertexOffsets!.toJson(),
+        if (strips != null) 'strips': strips!,
+        if (vertexOffsets != null) 'vertexOffsets': vertexOffsets!,
       };
 }
 
@@ -1245,7 +1235,7 @@ class SegmentInfo {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (roadInfo != null) 'roadInfo': roadInfo!.toJson(),
+        if (roadInfo != null) 'roadInfo': roadInfo!,
       };
 }
 
@@ -1298,12 +1288,10 @@ class TerrainTile {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (coordinates != null) 'coordinates': coordinates!.toJson(),
-        if (firstDerivative != null)
-          'firstDerivative': firstDerivative!.toJson(),
+        if (coordinates != null) 'coordinates': coordinates!,
+        if (firstDerivative != null) 'firstDerivative': firstDerivative!,
         if (name != null) 'name': name!,
-        if (secondDerivative != null)
-          'secondDerivative': secondDerivative!.toJson(),
+        if (secondDerivative != null) 'secondDerivative': secondDerivative!,
       };
 }
 

@@ -353,7 +353,7 @@ class AccountsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -393,7 +393,7 @@ class AccountsResource {
     GoogleAnalyticsAdminV1alphaProvisionAccountTicketRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -438,7 +438,7 @@ class AccountsResource {
     core.String account, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -495,7 +495,7 @@ class AccountsUserLinksResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -545,7 +545,7 @@ class AccountsUserLinksResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -589,7 +589,7 @@ class AccountsUserLinksResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -680,7 +680,7 @@ class AccountsUserLinksResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -730,7 +730,7 @@ class AccountsUserLinksResource {
     core.bool? notifyNewUser,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (notifyNewUser != null) 'notifyNewUser': ['${notifyNewUser}'],
       if ($fields != null) 'fields': [$fields],
@@ -894,7 +894,7 @@ class AccountsUserLinksResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -962,7 +962,7 @@ class PropertiesResource {
     GoogleAnalyticsAdminV1alphaProperty request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1236,7 +1236,7 @@ class PropertiesResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -1286,7 +1286,7 @@ class PropertiesResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -1337,7 +1337,7 @@ class PropertiesResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -1535,7 +1535,7 @@ class PropertiesAndroidAppDataStreamsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -1589,7 +1589,7 @@ class PropertiesAndroidAppDataStreamsMeasurementProtocolSecretsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1780,7 +1780,7 @@ class PropertiesAndroidAppDataStreamsMeasurementProtocolSecretsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -1830,7 +1830,7 @@ class PropertiesConversionEventsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2010,7 +2010,7 @@ class PropertiesCustomDimensionsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2051,7 +2051,7 @@ class PropertiesCustomDimensionsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2187,7 +2187,7 @@ class PropertiesCustomDimensionsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -2237,7 +2237,7 @@ class PropertiesCustomMetricsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2278,7 +2278,7 @@ class PropertiesCustomMetricsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2411,7 +2411,7 @@ class PropertiesCustomMetricsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -2471,7 +2471,7 @@ class PropertiesDisplayVideo360AdvertiserLinkProposalsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2522,7 +2522,7 @@ class PropertiesDisplayVideo360AdvertiserLinkProposalsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2565,7 +2565,7 @@ class PropertiesDisplayVideo360AdvertiserLinkProposalsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2758,7 +2758,7 @@ class PropertiesDisplayVideo360AdvertiserLinksResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2944,7 +2944,7 @@ class PropertiesDisplayVideo360AdvertiserLinksResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -2996,7 +2996,7 @@ class PropertiesFirebaseLinksResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3135,7 +3135,7 @@ class PropertiesGoogleAdsLinksResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3271,7 +3271,7 @@ class PropertiesGoogleAdsLinksResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -3464,7 +3464,7 @@ class PropertiesIosAppDataStreamsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -3517,7 +3517,7 @@ class PropertiesIosAppDataStreamsMeasurementProtocolSecretsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3707,7 +3707,7 @@ class PropertiesIosAppDataStreamsMeasurementProtocolSecretsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -3764,7 +3764,7 @@ class PropertiesUserLinksResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3814,7 +3814,7 @@ class PropertiesUserLinksResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3858,7 +3858,7 @@ class PropertiesUserLinksResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3949,7 +3949,7 @@ class PropertiesUserLinksResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3999,7 +3999,7 @@ class PropertiesUserLinksResource {
     core.bool? notifyNewUser,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (notifyNewUser != null) 'notifyNewUser': ['${notifyNewUser}'],
       if ($fields != null) 'fields': [$fields],
@@ -4163,7 +4163,7 @@ class PropertiesUserLinksResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4217,7 +4217,7 @@ class PropertiesWebDataStreamsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4482,7 +4482,7 @@ class PropertiesWebDataStreamsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -4537,7 +4537,7 @@ class PropertiesWebDataStreamsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -4590,7 +4590,7 @@ class PropertiesWebDataStreamsMeasurementProtocolSecretsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4780,7 +4780,7 @@ class PropertiesWebDataStreamsMeasurementProtocolSecretsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -4922,9 +4922,7 @@ class GoogleAnalyticsAdminV1alphaAccountSummary {
         if (account != null) 'account': account!,
         if (displayName != null) 'displayName': displayName!,
         if (name != null) 'name': name!,
-        if (propertySummaries != null)
-          'propertySummaries':
-              propertySummaries!.map((value) => value.toJson()).toList(),
+        if (propertySummaries != null) 'propertySummaries': propertySummaries!,
       };
 }
 
@@ -5034,8 +5032,7 @@ class GoogleAnalyticsAdminV1alphaApproveDisplayVideo360AdvertiserLinkProposalRes
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (displayVideo360AdvertiserLink != null)
-          'displayVideo360AdvertiserLink':
-              displayVideo360AdvertiserLink!.toJson(),
+          'displayVideo360AdvertiserLink': displayVideo360AdvertiserLink!,
       };
 }
 
@@ -5168,8 +5165,7 @@ class GoogleAnalyticsAdminV1alphaAuditUserLinksResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (userLinks != null)
-          'userLinks': userLinks!.map((value) => value.toJson()).toList(),
+        if (userLinks != null) 'userLinks': userLinks!,
       };
 }
 
@@ -5213,8 +5209,7 @@ class GoogleAnalyticsAdminV1alphaBatchCreateUserLinksRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (notifyNewUsers != null) 'notifyNewUsers': notifyNewUsers!,
-        if (requests != null)
-          'requests': requests!.map((value) => value.toJson()).toList(),
+        if (requests != null) 'requests': requests!,
       };
 }
 
@@ -5239,8 +5234,7 @@ class GoogleAnalyticsAdminV1alphaBatchCreateUserLinksResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (userLinks != null)
-          'userLinks': userLinks!.map((value) => value.toJson()).toList(),
+        if (userLinks != null) 'userLinks': userLinks!,
       };
 }
 
@@ -5270,8 +5264,7 @@ class GoogleAnalyticsAdminV1alphaBatchDeleteUserLinksRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (requests != null)
-          'requests': requests!.map((value) => value.toJson()).toList(),
+        if (requests != null) 'requests': requests!,
       };
 }
 
@@ -5295,8 +5288,7 @@ class GoogleAnalyticsAdminV1alphaBatchGetUserLinksResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (userLinks != null)
-          'userLinks': userLinks!.map((value) => value.toJson()).toList(),
+        if (userLinks != null) 'userLinks': userLinks!,
       };
 }
 
@@ -5326,8 +5318,7 @@ class GoogleAnalyticsAdminV1alphaBatchUpdateUserLinksRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (requests != null)
-          'requests': requests!.map((value) => value.toJson()).toList(),
+        if (requests != null) 'requests': requests!,
       };
 }
 
@@ -5352,8 +5343,7 @@ class GoogleAnalyticsAdminV1alphaBatchUpdateUserLinksResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (userLinks != null)
-          'userLinks': userLinks!.map((value) => value.toJson()).toList(),
+        if (userLinks != null) 'userLinks': userLinks!,
       };
 }
 
@@ -5417,9 +5407,9 @@ class GoogleAnalyticsAdminV1alphaChangeHistoryChange {
         if (action != null) 'action': action!,
         if (resource != null) 'resource': resource!,
         if (resourceAfterChange != null)
-          'resourceAfterChange': resourceAfterChange!.toJson(),
+          'resourceAfterChange': resourceAfterChange!,
         if (resourceBeforeChange != null)
-          'resourceBeforeChange': resourceBeforeChange!.toJson(),
+          'resourceBeforeChange': resourceBeforeChange!,
       };
 }
 
@@ -5571,32 +5561,28 @@ class GoogleAnalyticsAdminV1alphaChangeHistoryChangeChangeHistoryResource {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (account != null) 'account': account!.toJson(),
+        if (account != null) 'account': account!,
         if (androidAppDataStream != null)
-          'androidAppDataStream': androidAppDataStream!.toJson(),
-        if (conversionEvent != null)
-          'conversionEvent': conversionEvent!.toJson(),
-        if (customDimension != null)
-          'customDimension': customDimension!.toJson(),
-        if (customMetric != null) 'customMetric': customMetric!.toJson(),
+          'androidAppDataStream': androidAppDataStream!,
+        if (conversionEvent != null) 'conversionEvent': conversionEvent!,
+        if (customDimension != null) 'customDimension': customDimension!,
+        if (customMetric != null) 'customMetric': customMetric!,
         if (dataRetentionSettings != null)
-          'dataRetentionSettings': dataRetentionSettings!.toJson(),
+          'dataRetentionSettings': dataRetentionSettings!,
         if (displayVideo360AdvertiserLink != null)
-          'displayVideo360AdvertiserLink':
-              displayVideo360AdvertiserLink!.toJson(),
+          'displayVideo360AdvertiserLink': displayVideo360AdvertiserLink!,
         if (displayVideo360AdvertiserLinkProposal != null)
           'displayVideo360AdvertiserLinkProposal':
-              displayVideo360AdvertiserLinkProposal!.toJson(),
-        if (firebaseLink != null) 'firebaseLink': firebaseLink!.toJson(),
-        if (googleAdsLink != null) 'googleAdsLink': googleAdsLink!.toJson(),
+              displayVideo360AdvertiserLinkProposal!,
+        if (firebaseLink != null) 'firebaseLink': firebaseLink!,
+        if (googleAdsLink != null) 'googleAdsLink': googleAdsLink!,
         if (googleSignalsSettings != null)
-          'googleSignalsSettings': googleSignalsSettings!.toJson(),
-        if (iosAppDataStream != null)
-          'iosAppDataStream': iosAppDataStream!.toJson(),
+          'googleSignalsSettings': googleSignalsSettings!,
+        if (iosAppDataStream != null) 'iosAppDataStream': iosAppDataStream!,
         if (measurementProtocolSecret != null)
-          'measurementProtocolSecret': measurementProtocolSecret!.toJson(),
-        if (property != null) 'property': property!.toJson(),
-        if (webDataStream != null) 'webDataStream': webDataStream!.toJson(),
+          'measurementProtocolSecret': measurementProtocolSecret!,
+        if (property != null) 'property': property!,
+        if (webDataStream != null) 'webDataStream': webDataStream!,
       };
 }
 
@@ -5673,8 +5659,7 @@ class GoogleAnalyticsAdminV1alphaChangeHistoryEvent {
   core.Map<core.String, core.dynamic> toJson() => {
         if (actorType != null) 'actorType': actorType!,
         if (changeTime != null) 'changeTime': changeTime!,
-        if (changes != null)
-          'changes': changes!.map((value) => value.toJson()).toList(),
+        if (changes != null) 'changes': changes!,
         if (changesFiltered != null) 'changesFiltered': changesFiltered!,
         if (id != null) 'id': id!,
         if (userActorEmail != null) 'userActorEmail': userActorEmail!,
@@ -5799,7 +5784,7 @@ class GoogleAnalyticsAdminV1alphaCreateUserLinkRequest {
   core.Map<core.String, core.dynamic> toJson() => {
         if (notifyNewUser != null) 'notifyNewUser': notifyNewUser!,
         if (parent != null) 'parent': parent!,
-        if (userLink != null) 'userLink': userLink!.toJson(),
+        if (userLink != null) 'userLink': userLink!,
       };
 }
 
@@ -6364,7 +6349,7 @@ class GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposal {
         if (costDataSharingEnabled != null)
           'costDataSharingEnabled': costDataSharingEnabled!,
         if (linkProposalStatusDetails != null)
-          'linkProposalStatusDetails': linkProposalStatusDetails!.toJson(),
+          'linkProposalStatusDetails': linkProposalStatusDetails!,
         if (name != null) 'name': name!,
         if (validationEmail != null) 'validationEmail': validationEmail!,
       };
@@ -6917,9 +6902,7 @@ class GoogleAnalyticsAdminV1alphaListAccountSummariesResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (accountSummaries != null)
-          'accountSummaries':
-              accountSummaries!.map((value) => value.toJson()).toList(),
+        if (accountSummaries != null) 'accountSummaries': accountSummaries!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -6953,8 +6936,7 @@ class GoogleAnalyticsAdminV1alphaListAccountsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (accounts != null)
-          'accounts': accounts!.map((value) => value.toJson()).toList(),
+        if (accounts != null) 'accounts': accounts!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -6993,8 +6975,7 @@ class GoogleAnalyticsAdminV1alphaListAndroidAppDataStreamsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (androidAppDataStreams != null)
-          'androidAppDataStreams':
-              androidAppDataStreams!.map((value) => value.toJson()).toList(),
+          'androidAppDataStreams': androidAppDataStreams!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -7030,9 +7011,7 @@ class GoogleAnalyticsAdminV1alphaListConversionEventsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (conversionEvents != null)
-          'conversionEvents':
-              conversionEvents!.map((value) => value.toJson()).toList(),
+        if (conversionEvents != null) 'conversionEvents': conversionEvents!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -7068,9 +7047,7 @@ class GoogleAnalyticsAdminV1alphaListCustomDimensionsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (customDimensions != null)
-          'customDimensions':
-              customDimensions!.map((value) => value.toJson()).toList(),
+        if (customDimensions != null) 'customDimensions': customDimensions!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -7105,9 +7082,7 @@ class GoogleAnalyticsAdminV1alphaListCustomMetricsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (customMetrics != null)
-          'customMetrics':
-              customMetrics!.map((value) => value.toJson()).toList(),
+        if (customMetrics != null) 'customMetrics': customMetrics!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -7148,9 +7123,7 @@ class GoogleAnalyticsAdminV1alphaListDisplayVideo360AdvertiserLinkProposalsRespo
   core.Map<core.String, core.dynamic> toJson() => {
         if (displayVideo360AdvertiserLinkProposals != null)
           'displayVideo360AdvertiserLinkProposals':
-              displayVideo360AdvertiserLinkProposals!
-                  .map((value) => value.toJson())
-                  .toList(),
+              displayVideo360AdvertiserLinkProposals!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -7190,9 +7163,7 @@ class GoogleAnalyticsAdminV1alphaListDisplayVideo360AdvertiserLinksResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (displayVideo360AdvertiserLinks != null)
-          'displayVideo360AdvertiserLinks': displayVideo360AdvertiserLinks!
-              .map((value) => value.toJson())
-              .toList(),
+          'displayVideo360AdvertiserLinks': displayVideo360AdvertiserLinks!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -7231,9 +7202,7 @@ class GoogleAnalyticsAdminV1alphaListFirebaseLinksResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (firebaseLinks != null)
-          'firebaseLinks':
-              firebaseLinks!.map((value) => value.toJson()).toList(),
+        if (firebaseLinks != null) 'firebaseLinks': firebaseLinks!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -7268,9 +7237,7 @@ class GoogleAnalyticsAdminV1alphaListGoogleAdsLinksResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (googleAdsLinks != null)
-          'googleAdsLinks':
-              googleAdsLinks!.map((value) => value.toJson()).toList(),
+        if (googleAdsLinks != null) 'googleAdsLinks': googleAdsLinks!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -7307,9 +7274,7 @@ class GoogleAnalyticsAdminV1alphaListIosAppDataStreamsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (iosAppDataStreams != null)
-          'iosAppDataStreams':
-              iosAppDataStreams!.map((value) => value.toJson()).toList(),
+        if (iosAppDataStreams != null) 'iosAppDataStreams': iosAppDataStreams!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -7349,9 +7314,7 @@ class GoogleAnalyticsAdminV1alphaListMeasurementProtocolSecretsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (measurementProtocolSecrets != null)
-          'measurementProtocolSecrets': measurementProtocolSecrets!
-              .map((value) => value.toJson())
-              .toList(),
+          'measurementProtocolSecrets': measurementProtocolSecrets!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -7387,8 +7350,7 @@ class GoogleAnalyticsAdminV1alphaListPropertiesResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (properties != null)
-          'properties': properties!.map((value) => value.toJson()).toList(),
+        if (properties != null) 'properties': properties!,
       };
 }
 
@@ -7424,8 +7386,7 @@ class GoogleAnalyticsAdminV1alphaListUserLinksResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (userLinks != null)
-          'userLinks': userLinks!.map((value) => value.toJson()).toList(),
+        if (userLinks != null) 'userLinks': userLinks!,
       };
 }
 
@@ -7461,9 +7422,7 @@ class GoogleAnalyticsAdminV1alphaListWebDataStreamsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (webDataStreams != null)
-          'webDataStreams':
-              webDataStreams!.map((value) => value.toJson()).toList(),
+        if (webDataStreams != null) 'webDataStreams': webDataStreams!,
       };
 }
 
@@ -7743,7 +7702,7 @@ class GoogleAnalyticsAdminV1alphaProvisionAccountTicketRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (account != null) 'account': account!.toJson(),
+        if (account != null) 'account': account!,
         if (redirectUri != null) 'redirectUri': redirectUri!,
       };
 }
@@ -7915,8 +7874,7 @@ class GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (changeHistoryEvents != null)
-          'changeHistoryEvents':
-              changeHistoryEvents!.map((value) => value.toJson()).toList(),
+          'changeHistoryEvents': changeHistoryEvents!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -7941,7 +7899,7 @@ class GoogleAnalyticsAdminV1alphaUpdateUserLinkRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (userLink != null) 'userLink': userLink!.toJson(),
+        if (userLink != null) 'userLink': userLink!,
       };
 }
 

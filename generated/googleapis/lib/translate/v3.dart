@@ -101,7 +101,7 @@ class ProjectsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -208,7 +208,7 @@ class ProjectsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -271,7 +271,7 @@ class ProjectsLocationsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -318,7 +318,7 @@ class ProjectsLocationsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -512,7 +512,7 @@ class ProjectsLocationsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -562,7 +562,7 @@ class ProjectsLocationsGlossariesResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -767,7 +767,7 @@ class ProjectsLocationsOperationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -953,7 +953,7 @@ class ProjectsLocationsOperationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1090,14 +1090,11 @@ class BatchTranslateTextRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (glossaries != null)
-          'glossaries':
-              glossaries!.map((key, item) => core.MapEntry(key, item.toJson())),
-        if (inputConfigs != null)
-          'inputConfigs': inputConfigs!.map((value) => value.toJson()).toList(),
+        if (glossaries != null) 'glossaries': glossaries!,
+        if (inputConfigs != null) 'inputConfigs': inputConfigs!,
         if (labels != null) 'labels': labels!,
         if (models != null) 'models': models!,
-        if (outputConfig != null) 'outputConfig': outputConfig!.toJson(),
+        if (outputConfig != null) 'outputConfig': outputConfig!,
         if (sourceLanguageCode != null)
           'sourceLanguageCode': sourceLanguageCode!,
         if (targetLanguageCodes != null)
@@ -1200,8 +1197,7 @@ class DetectLanguageResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (languages != null)
-          'languages': languages!.map((value) => value.toJson()).toList(),
+        if (languages != null) 'languages': languages!,
       };
 }
 
@@ -1374,10 +1370,9 @@ class Glossary {
   core.Map<core.String, core.dynamic> toJson() => {
         if (endTime != null) 'endTime': endTime!,
         if (entryCount != null) 'entryCount': entryCount!,
-        if (inputConfig != null) 'inputConfig': inputConfig!.toJson(),
-        if (languageCodesSet != null)
-          'languageCodesSet': languageCodesSet!.toJson(),
-        if (languagePair != null) 'languagePair': languagePair!.toJson(),
+        if (inputConfig != null) 'inputConfig': inputConfig!,
+        if (languageCodesSet != null) 'languageCodesSet': languageCodesSet!,
+        if (languagePair != null) 'languagePair': languagePair!,
         if (name != null) 'name': name!,
         if (submitTime != null) 'submitTime': submitTime!,
       };
@@ -1416,7 +1411,7 @@ class GlossaryInputConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (gcsSource != null) 'gcsSource': gcsSource!.toJson(),
+        if (gcsSource != null) 'gcsSource': gcsSource!,
       };
 }
 
@@ -1466,7 +1461,7 @@ class InputConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (gcsSource != null) 'gcsSource': gcsSource!.toJson(),
+        if (gcsSource != null) 'gcsSource': gcsSource!,
         if (mimeType != null) 'mimeType': mimeType!,
       };
 }
@@ -1567,8 +1562,7 @@ class ListGlossariesResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (glossaries != null)
-          'glossaries': glossaries!.map((value) => value.toJson()).toList(),
+        if (glossaries != null) 'glossaries': glossaries!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -1600,8 +1594,7 @@ class ListLocationsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (locations != null)
-          'locations': locations!.map((value) => value.toJson()).toList(),
+        if (locations != null) 'locations': locations!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -1634,8 +1627,7 @@ class ListOperationsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (operations != null)
-          'operations': operations!.map((value) => value.toJson()).toList(),
+        if (operations != null) 'operations': operations!,
       };
 }
 
@@ -1777,7 +1769,7 @@ class Operation {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (done != null) 'done': done!,
-        if (error != null) 'error': error!.toJson(),
+        if (error != null) 'error': error!,
         if (metadata != null) 'metadata': metadata!,
         if (name != null) 'name': name!,
         if (response != null) 'response': response!,
@@ -1850,7 +1842,7 @@ class OutputConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (gcsDestination != null) 'gcsDestination': gcsDestination!.toJson(),
+        if (gcsDestination != null) 'gcsDestination': gcsDestination!,
       };
 }
 
@@ -1979,8 +1971,7 @@ class SupportedLanguages {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (languages != null)
-          'languages': languages!.map((value) => value.toJson()).toList(),
+        if (languages != null) 'languages': languages!,
       };
 }
 
@@ -2134,7 +2125,7 @@ class TranslateTextRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (contents != null) 'contents': contents!,
-        if (glossaryConfig != null) 'glossaryConfig': glossaryConfig!.toJson(),
+        if (glossaryConfig != null) 'glossaryConfig': glossaryConfig!,
         if (labels != null) 'labels': labels!,
         if (mimeType != null) 'mimeType': mimeType!,
         if (model != null) 'model': model!,
@@ -2180,10 +2171,8 @@ class TranslateTextResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (glossaryTranslations != null)
-          'glossaryTranslations':
-              glossaryTranslations!.map((value) => value.toJson()).toList(),
-        if (translations != null)
-          'translations': translations!.map((value) => value.toJson()).toList(),
+          'glossaryTranslations': glossaryTranslations!,
+        if (translations != null) 'translations': translations!,
       };
 }
 
@@ -2241,7 +2230,7 @@ class Translation {
   core.Map<core.String, core.dynamic> toJson() => {
         if (detectedLanguageCode != null)
           'detectedLanguageCode': detectedLanguageCode!,
-        if (glossaryConfig != null) 'glossaryConfig': glossaryConfig!.toJson(),
+        if (glossaryConfig != null) 'glossaryConfig': glossaryConfig!,
         if (model != null) 'model': model!,
         if (translatedText != null) 'translatedText': translatedText!,
       };

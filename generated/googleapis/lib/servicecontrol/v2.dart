@@ -107,7 +107,7 @@ class ServicesResource {
     core.String serviceName, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -163,7 +163,7 @@ class ServicesResource {
     core.String serviceName, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -344,14 +344,14 @@ class AttributeContext {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (api != null) 'api': api!.toJson(),
-        if (destination != null) 'destination': destination!.toJson(),
+        if (api != null) 'api': api!,
+        if (destination != null) 'destination': destination!,
         if (extensions != null) 'extensions': extensions!,
-        if (origin != null) 'origin': origin!.toJson(),
-        if (request != null) 'request': request!.toJson(),
-        if (resource != null) 'resource': resource!.toJson(),
-        if (response != null) 'response': response!.toJson(),
-        if (source != null) 'source': source!.toJson(),
+        if (origin != null) 'origin': origin!,
+        if (request != null) 'request': request!,
+        if (resource != null) 'resource': resource!,
+        if (response != null) 'response': response!,
+        if (source != null) 'source': source!,
       };
 }
 
@@ -526,25 +526,21 @@ class AuditLog {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (authenticationInfo != null)
-          'authenticationInfo': authenticationInfo!.toJson(),
-        if (authorizationInfo != null)
-          'authorizationInfo':
-              authorizationInfo!.map((value) => value.toJson()).toList(),
+          'authenticationInfo': authenticationInfo!,
+        if (authorizationInfo != null) 'authorizationInfo': authorizationInfo!,
         if (metadata != null) 'metadata': metadata!,
         if (methodName != null) 'methodName': methodName!,
         if (numResponseItems != null) 'numResponseItems': numResponseItems!,
         if (request != null) 'request': request!,
-        if (requestMetadata != null)
-          'requestMetadata': requestMetadata!.toJson(),
-        if (resourceLocation != null)
-          'resourceLocation': resourceLocation!.toJson(),
+        if (requestMetadata != null) 'requestMetadata': requestMetadata!,
+        if (resourceLocation != null) 'resourceLocation': resourceLocation!,
         if (resourceName != null) 'resourceName': resourceName!,
         if (resourceOriginalState != null)
           'resourceOriginalState': resourceOriginalState!,
         if (response != null) 'response': response!,
         if (serviceData != null) 'serviceData': serviceData!,
         if (serviceName != null) 'serviceName': serviceName!,
-        if (status != null) 'status': status!.toJson(),
+        if (status != null) 'status': status!,
       };
 }
 
@@ -734,9 +730,7 @@ class AuthenticationInfo {
         if (principalEmail != null) 'principalEmail': principalEmail!,
         if (principalSubject != null) 'principalSubject': principalSubject!,
         if (serviceAccountDelegationInfo != null)
-          'serviceAccountDelegationInfo': serviceAccountDelegationInfo!
-              .map((value) => value.toJson())
-              .toList(),
+          'serviceAccountDelegationInfo': serviceAccountDelegationInfo!,
         if (serviceAccountKeyName != null)
           'serviceAccountKeyName': serviceAccountKeyName!,
         if (thirdPartyPrincipal != null)
@@ -795,7 +789,7 @@ class AuthorizationInfo {
         if (permission != null) 'permission': permission!,
         if (resource != null) 'resource': resource!,
         if (resourceAttributes != null)
-          'resourceAttributes': resourceAttributes!.toJson(),
+          'resourceAttributes': resourceAttributes!,
       };
 }
 
@@ -846,10 +840,9 @@ class CheckRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (attributes != null) 'attributes': attributes!.toJson(),
+        if (attributes != null) 'attributes': attributes!,
         if (flags != null) 'flags': flags!,
-        if (resources != null)
-          'resources': resources!.map((value) => value.toJson()).toList(),
+        if (resources != null) 'resources': resources!,
         if (serviceConfigId != null) 'serviceConfigId': serviceConfigId!,
       };
 }
@@ -888,7 +881,7 @@ class CheckResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (headers != null) 'headers': headers!,
-        if (status != null) 'status': status!.toJson(),
+        if (status != null) 'status': status!,
       };
 }
 
@@ -1027,8 +1020,7 @@ class ReportRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (operations != null)
-          'operations': operations!.map((value) => value.toJson()).toList(),
+        if (operations != null) 'operations': operations!,
         if (serviceConfigId != null) 'serviceConfigId': serviceConfigId!,
       };
 }
@@ -1155,7 +1147,7 @@ class Request {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (auth != null) 'auth': auth!.toJson(),
+        if (auth != null) 'auth': auth!,
         if (headers != null) 'headers': headers!,
         if (host != null) 'host': host!,
         if (id != null) 'id': id!,
@@ -1254,9 +1246,8 @@ class RequestMetadata {
         if (callerSuppliedUserAgent != null)
           'callerSuppliedUserAgent': callerSuppliedUserAgent!,
         if (destinationAttributes != null)
-          'destinationAttributes': destinationAttributes!.toJson(),
-        if (requestAttributes != null)
-          'requestAttributes': requestAttributes!.toJson(),
+          'destinationAttributes': destinationAttributes!,
+        if (requestAttributes != null) 'requestAttributes': requestAttributes!,
       };
 }
 
@@ -1644,10 +1635,10 @@ class ServiceAccountDelegationInfo {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (firstPartyPrincipal != null)
-          'firstPartyPrincipal': firstPartyPrincipal!.toJson(),
+          'firstPartyPrincipal': firstPartyPrincipal!,
         if (principalSubject != null) 'principalSubject': principalSubject!,
         if (thirdPartyPrincipal != null)
-          'thirdPartyPrincipal': thirdPartyPrincipal!.toJson(),
+          'thirdPartyPrincipal': thirdPartyPrincipal!,
       };
 }
 

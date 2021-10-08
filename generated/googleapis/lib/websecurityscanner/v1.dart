@@ -104,7 +104,7 @@ class ProjectsScanConfigsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -278,7 +278,7 @@ class ProjectsScanConfigsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -322,7 +322,7 @@ class ProjectsScanConfigsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -470,7 +470,7 @@ class ProjectsScanConfigsScanRunsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -727,9 +727,9 @@ class Authentication {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (customAccount != null) 'customAccount': customAccount!.toJson(),
-        if (googleAccount != null) 'googleAccount': googleAccount!.toJson(),
-        if (iapCredential != null) 'iapCredential': iapCredential!.toJson(),
+        if (customAccount != null) 'customAccount': customAccount!,
+        if (googleAccount != null) 'googleAccount': googleAccount!,
+        if (iapCredential != null) 'iapCredential': iapCredential!,
       };
 }
 
@@ -1022,23 +1022,20 @@ class Finding {
         if (description != null) 'description': description!,
         if (finalUrl != null) 'finalUrl': finalUrl!,
         if (findingType != null) 'findingType': findingType!,
-        if (form != null) 'form': form!.toJson(),
+        if (form != null) 'form': form!,
         if (frameUrl != null) 'frameUrl': frameUrl!,
         if (fuzzedUrl != null) 'fuzzedUrl': fuzzedUrl!,
         if (httpMethod != null) 'httpMethod': httpMethod!,
         if (name != null) 'name': name!,
-        if (outdatedLibrary != null)
-          'outdatedLibrary': outdatedLibrary!.toJson(),
+        if (outdatedLibrary != null) 'outdatedLibrary': outdatedLibrary!,
         if (reproductionUrl != null) 'reproductionUrl': reproductionUrl!,
         if (severity != null) 'severity': severity!,
         if (trackingId != null) 'trackingId': trackingId!,
-        if (violatingResource != null)
-          'violatingResource': violatingResource!.toJson(),
-        if (vulnerableHeaders != null)
-          'vulnerableHeaders': vulnerableHeaders!.toJson(),
+        if (violatingResource != null) 'violatingResource': violatingResource!,
+        if (vulnerableHeaders != null) 'vulnerableHeaders': vulnerableHeaders!,
         if (vulnerableParameters != null)
-          'vulnerableParameters': vulnerableParameters!.toJson(),
-        if (xss != null) 'xss': xss!.toJson(),
+          'vulnerableParameters': vulnerableParameters!,
+        if (xss != null) 'xss': xss!,
       };
 }
 
@@ -1191,7 +1188,7 @@ class IapCredential {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (iapTestServiceAccountInfo != null)
-          'iapTestServiceAccountInfo': iapTestServiceAccountInfo!.toJson(),
+          'iapTestServiceAccountInfo': iapTestServiceAccountInfo!,
       };
 }
 
@@ -1249,8 +1246,7 @@ class ListCrawledUrlsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (crawledUrls != null)
-          'crawledUrls': crawledUrls!.map((value) => value.toJson()).toList(),
+        if (crawledUrls != null) 'crawledUrls': crawledUrls!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -1275,9 +1271,7 @@ class ListFindingTypeStatsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (findingTypeStats != null)
-          'findingTypeStats':
-              findingTypeStats!.map((value) => value.toJson()).toList(),
+        if (findingTypeStats != null) 'findingTypeStats': findingTypeStats!,
       };
 }
 
@@ -1309,8 +1303,7 @@ class ListFindingsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (findings != null)
-          'findings': findings!.map((value) => value.toJson()).toList(),
+        if (findings != null) 'findings': findings!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -1344,8 +1337,7 @@ class ListScanConfigsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (scanConfigs != null)
-          'scanConfigs': scanConfigs!.map((value) => value.toJson()).toList(),
+        if (scanConfigs != null) 'scanConfigs': scanConfigs!,
       };
 }
 
@@ -1378,8 +1370,7 @@ class ListScanRunsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (scanRuns != null)
-          'scanRuns': scanRuns!.map((value) => value.toJson()).toList(),
+        if (scanRuns != null) 'scanRuns': scanRuns!,
       };
 }
 
@@ -1563,7 +1554,7 @@ class ScanConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (authentication != null) 'authentication': authentication!.toJson(),
+        if (authentication != null) 'authentication': authentication!,
         if (blacklistPatterns != null) 'blacklistPatterns': blacklistPatterns!,
         if (displayName != null) 'displayName': displayName!,
         if (exportToSecurityCommandCenter != null)
@@ -1574,7 +1565,7 @@ class ScanConfig {
         if (maxQps != null) 'maxQps': maxQps!,
         if (name != null) 'name': name!,
         if (riskLevel != null) 'riskLevel': riskLevel!,
-        if (schedule != null) 'schedule': schedule!.toJson(),
+        if (schedule != null) 'schedule': schedule!,
         if (startingUrls != null) 'startingUrls': startingUrls!,
         if (staticIpScan != null) 'staticIpScan': staticIpScan!,
         if (userAgent != null) 'userAgent': userAgent!,
@@ -1845,7 +1836,7 @@ class ScanRun {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (endTime != null) 'endTime': endTime!,
-        if (errorTrace != null) 'errorTrace': errorTrace!.toJson(),
+        if (errorTrace != null) 'errorTrace': errorTrace!,
         if (executionState != null) 'executionState': executionState!,
         if (hasVulnerabilities != null)
           'hasVulnerabilities': hasVulnerabilities!,
@@ -1855,9 +1846,7 @@ class ScanRun {
         if (startTime != null) 'startTime': startTime!,
         if (urlsCrawledCount != null) 'urlsCrawledCount': urlsCrawledCount!,
         if (urlsTestedCount != null) 'urlsTestedCount': urlsTestedCount!,
-        if (warningTraces != null)
-          'warningTraces':
-              warningTraces!.map((value) => value.toJson()).toList(),
+        if (warningTraces != null) 'warningTraces': warningTraces!,
       };
 }
 
@@ -1926,8 +1915,7 @@ class ScanRunErrorTrace {
         if (code != null) 'code': code!,
         if (mostCommonHttpErrorCode != null)
           'mostCommonHttpErrorCode': mostCommonHttpErrorCode!,
-        if (scanConfigError != null)
-          'scanConfigError': scanConfigError!.toJson(),
+        if (scanConfigError != null) 'scanConfigError': scanConfigError!,
       };
 }
 
@@ -2073,11 +2061,8 @@ class VulnerableHeaders {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (headers != null)
-          'headers': headers!.map((value) => value.toJson()).toList(),
-        if (missingHeaders != null)
-          'missingHeaders':
-              missingHeaders!.map((value) => value.toJson()).toList(),
+        if (headers != null) 'headers': headers!,
+        if (missingHeaders != null) 'missingHeaders': missingHeaders!,
       };
 }
 

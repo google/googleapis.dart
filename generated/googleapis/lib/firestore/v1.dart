@@ -125,7 +125,7 @@ class ProjectsDatabasesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -173,7 +173,7 @@ class ProjectsDatabasesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -364,7 +364,7 @@ class ProjectsDatabasesCollectionGroupsFieldsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -419,7 +419,7 @@ class ProjectsDatabasesCollectionGroupsIndexesResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -598,7 +598,7 @@ class ProjectsDatabasesDocumentsResource {
     core.String database, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -647,7 +647,7 @@ class ProjectsDatabasesDocumentsResource {
     core.String database, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -690,7 +690,7 @@ class ProjectsDatabasesDocumentsResource {
     core.String database, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -734,7 +734,7 @@ class ProjectsDatabasesDocumentsResource {
     core.String database, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -790,7 +790,7 @@ class ProjectsDatabasesDocumentsResource {
     core.List<core.String>? mask_fieldPaths,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (documentId != null) 'documentId': [documentId],
       if (mask_fieldPaths != null) 'mask.fieldPaths': mask_fieldPaths,
@@ -1025,7 +1025,7 @@ class ProjectsDatabasesDocumentsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1067,7 +1067,7 @@ class ProjectsDatabasesDocumentsResource {
     core.String database, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1116,7 +1116,7 @@ class ProjectsDatabasesDocumentsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1175,7 +1175,7 @@ class ProjectsDatabasesDocumentsResource {
     core.List<core.String>? updateMask_fieldPaths,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (currentDocument_exists != null)
         'currentDocument.exists': ['${currentDocument_exists}'],
@@ -1223,7 +1223,7 @@ class ProjectsDatabasesDocumentsResource {
     core.String database, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1269,7 +1269,7 @@ class ProjectsDatabasesDocumentsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1311,7 +1311,7 @@ class ProjectsDatabasesDocumentsResource {
     core.String database, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1369,7 +1369,7 @@ class ProjectsDatabasesOperationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1636,8 +1636,7 @@ class ArrayValue {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (values != null)
-          'values': values!.map((value) => value.toJson()).toList(),
+        if (values != null) 'values': values!,
       };
 }
 
@@ -1711,8 +1710,8 @@ class BatchGetDocumentsRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (documents != null) 'documents': documents!,
-        if (mask != null) 'mask': mask!.toJson(),
-        if (newTransaction != null) 'newTransaction': newTransaction!.toJson(),
+        if (mask != null) 'mask': mask!,
+        if (newTransaction != null) 'newTransaction': newTransaction!,
         if (readTime != null) 'readTime': readTime!,
         if (transaction != null) 'transaction': transaction!,
       };
@@ -1774,7 +1773,7 @@ class BatchGetDocumentsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (found != null) 'found': found!.toJson(),
+        if (found != null) 'found': found!,
         if (missing != null) 'missing': missing!,
         if (readTime != null) 'readTime': readTime!,
         if (transaction != null) 'transaction': transaction!,
@@ -1818,8 +1817,7 @@ class BatchWriteRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (labels != null) 'labels': labels!,
-        if (writes != null)
-          'writes': writes!.map((value) => value.toJson()).toList(),
+        if (writes != null) 'writes': writes!,
       };
 }
 
@@ -1857,10 +1855,8 @@ class BatchWriteResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (status != null)
-          'status': status!.map((value) => value.toJson()).toList(),
-        if (writeResults != null)
-          'writeResults': writeResults!.map((value) => value.toJson()).toList(),
+        if (status != null) 'status': status!,
+        if (writeResults != null) 'writeResults': writeResults!,
       };
 }
 
@@ -1884,7 +1880,7 @@ class BeginTransactionRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (options != null) 'options': options!.toJson(),
+        if (options != null) 'options': options!,
       };
 }
 
@@ -1987,8 +1983,7 @@ class CommitRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (transaction != null) 'transaction': transaction!,
-        if (writes != null)
-          'writes': writes!.map((value) => value.toJson()).toList(),
+        if (writes != null) 'writes': writes!,
       };
 }
 
@@ -2025,8 +2020,7 @@ class CommitResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (commitTime != null) 'commitTime': commitTime!,
-        if (writeResults != null)
-          'writeResults': writeResults!.map((value) => value.toJson()).toList(),
+        if (writeResults != null) 'writeResults': writeResults!,
       };
 }
 
@@ -2061,8 +2055,7 @@ class CompositeFilter {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (filters != null)
-          'filters': filters!.map((value) => value.toJson()).toList(),
+        if (filters != null) 'filters': filters!,
         if (op != null) 'op': op!,
       };
 }
@@ -2098,8 +2091,7 @@ class Cursor {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (before != null) 'before': before!,
-        if (values != null)
-          'values': values!.map((value) => value.toJson()).toList(),
+        if (values != null) 'values': values!,
       };
 }
 
@@ -2176,9 +2168,7 @@ class Document {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
-        if (fields != null)
-          'fields':
-              fields!.map((key, item) => core.MapEntry(key, item.toJson())),
+        if (fields != null) 'fields': fields!,
         if (name != null) 'name': name!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
@@ -2227,7 +2217,7 @@ class DocumentChange {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (document != null) 'document': document!.toJson(),
+        if (document != null) 'document': document!,
         if (removedTargetIds != null) 'removedTargetIds': removedTargetIds!,
         if (targetIds != null) 'targetIds': targetIds!,
       };
@@ -2385,9 +2375,7 @@ class DocumentTransform {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (document != null) 'document': document!,
-        if (fieldTransforms != null)
-          'fieldTransforms':
-              fieldTransforms!.map((value) => value.toJson()).toList(),
+        if (fieldTransforms != null) 'fieldTransforms': fieldTransforms!,
       };
 }
 
@@ -2516,9 +2504,9 @@ class FieldFilter {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (field != null) 'field': field!.toJson(),
+        if (field != null) 'field': field!,
         if (op != null) 'op': op!,
-        if (value != null) 'value': value!.toJson(),
+        if (value != null) 'value': value!,
       };
 }
 
@@ -2658,13 +2646,13 @@ class FieldTransform {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (appendMissingElements != null)
-          'appendMissingElements': appendMissingElements!.toJson(),
+          'appendMissingElements': appendMissingElements!,
         if (fieldPath != null) 'fieldPath': fieldPath!,
-        if (increment != null) 'increment': increment!.toJson(),
-        if (maximum != null) 'maximum': maximum!.toJson(),
-        if (minimum != null) 'minimum': minimum!.toJson(),
+        if (increment != null) 'increment': increment!,
+        if (maximum != null) 'maximum': maximum!,
+        if (minimum != null) 'minimum': minimum!,
         if (removeAllFromArray != null)
-          'removeAllFromArray': removeAllFromArray!.toJson(),
+          'removeAllFromArray': removeAllFromArray!,
         if (setToServerValue != null) 'setToServerValue': setToServerValue!,
       };
 }
@@ -2703,10 +2691,9 @@ class Filter {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (compositeFilter != null)
-          'compositeFilter': compositeFilter!.toJson(),
-        if (fieldFilter != null) 'fieldFilter': fieldFilter!.toJson(),
-        if (unaryFilter != null) 'unaryFilter': unaryFilter!.toJson(),
+        if (compositeFilter != null) 'compositeFilter': compositeFilter!,
+        if (fieldFilter != null) 'fieldFilter': fieldFilter!,
+        if (unaryFilter != null) 'unaryFilter': unaryFilter!,
       };
 }
 
@@ -2794,9 +2781,8 @@ class GoogleFirestoreAdminV1ExportDocumentsMetadata {
         if (endTime != null) 'endTime': endTime!,
         if (operationState != null) 'operationState': operationState!,
         if (outputUriPrefix != null) 'outputUriPrefix': outputUriPrefix!,
-        if (progressBytes != null) 'progressBytes': progressBytes!.toJson(),
-        if (progressDocuments != null)
-          'progressDocuments': progressDocuments!.toJson(),
+        if (progressBytes != null) 'progressBytes': progressBytes!,
+        if (progressDocuments != null) 'progressDocuments': progressDocuments!,
         if (startTime != null) 'startTime': startTime!,
       };
 }
@@ -2917,7 +2903,7 @@ class GoogleFirestoreAdminV1Field {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (indexConfig != null) 'indexConfig': indexConfig!.toJson(),
+        if (indexConfig != null) 'indexConfig': indexConfig!,
         if (name != null) 'name': name!,
       };
 }
@@ -3007,12 +2993,9 @@ class GoogleFirestoreAdminV1FieldOperationMetadata {
   core.Map<core.String, core.dynamic> toJson() => {
         if (endTime != null) 'endTime': endTime!,
         if (field != null) 'field': field!,
-        if (indexConfigDeltas != null)
-          'indexConfigDeltas':
-              indexConfigDeltas!.map((value) => value.toJson()).toList(),
-        if (progressBytes != null) 'progressBytes': progressBytes!.toJson(),
-        if (progressDocuments != null)
-          'progressDocuments': progressDocuments!.toJson(),
+        if (indexConfigDeltas != null) 'indexConfigDeltas': indexConfigDeltas!,
+        if (progressBytes != null) 'progressBytes': progressBytes!,
+        if (progressDocuments != null) 'progressDocuments': progressDocuments!,
         if (startTime != null) 'startTime': startTime!,
         if (state != null) 'state': state!,
       };
@@ -3102,9 +3085,8 @@ class GoogleFirestoreAdminV1ImportDocumentsMetadata {
         if (endTime != null) 'endTime': endTime!,
         if (inputUriPrefix != null) 'inputUriPrefix': inputUriPrefix!,
         if (operationState != null) 'operationState': operationState!,
-        if (progressBytes != null) 'progressBytes': progressBytes!.toJson(),
-        if (progressDocuments != null)
-          'progressDocuments': progressDocuments!.toJson(),
+        if (progressBytes != null) 'progressBytes': progressBytes!,
+        if (progressDocuments != null) 'progressDocuments': progressDocuments!,
         if (startTime != null) 'startTime': startTime!,
       };
 }
@@ -3232,8 +3214,7 @@ class GoogleFirestoreAdminV1Index {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (fields != null)
-          'fields': fields!.map((value) => value.toJson()).toList(),
+        if (fields != null) 'fields': fields!,
         if (name != null) 'name': name!,
         if (queryScope != null) 'queryScope': queryScope!,
         if (state != null) 'state': state!,
@@ -3297,8 +3278,7 @@ class GoogleFirestoreAdminV1IndexConfig {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (ancestorField != null) 'ancestorField': ancestorField!,
-        if (indexes != null)
-          'indexes': indexes!.map((value) => value.toJson()).toList(),
+        if (indexes != null) 'indexes': indexes!,
         if (reverting != null) 'reverting': reverting!,
         if (usesAncestorConfig != null)
           'usesAncestorConfig': usesAncestorConfig!,
@@ -3336,7 +3316,7 @@ class GoogleFirestoreAdminV1IndexConfigDelta {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (changeType != null) 'changeType': changeType!,
-        if (index != null) 'index': index!.toJson(),
+        if (index != null) 'index': index!,
       };
 }
 
@@ -3465,9 +3445,8 @@ class GoogleFirestoreAdminV1IndexOperationMetadata {
   core.Map<core.String, core.dynamic> toJson() => {
         if (endTime != null) 'endTime': endTime!,
         if (index != null) 'index': index!,
-        if (progressBytes != null) 'progressBytes': progressBytes!.toJson(),
-        if (progressDocuments != null)
-          'progressDocuments': progressDocuments!.toJson(),
+        if (progressBytes != null) 'progressBytes': progressBytes!,
+        if (progressDocuments != null) 'progressDocuments': progressDocuments!,
         if (startTime != null) 'startTime': startTime!,
         if (state != null) 'state': state!,
       };
@@ -3502,8 +3481,7 @@ class GoogleFirestoreAdminV1ListFieldsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (fields != null)
-          'fields': fields!.map((value) => value.toJson()).toList(),
+        if (fields != null) 'fields': fields!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -3537,8 +3515,7 @@ class GoogleFirestoreAdminV1ListIndexesResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (indexes != null)
-          'indexes': indexes!.map((value) => value.toJson()).toList(),
+        if (indexes != null) 'indexes': indexes!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -3609,8 +3586,7 @@ class GoogleLongrunningListOperationsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (operations != null)
-          'operations': operations!.map((value) => value.toJson()).toList(),
+        if (operations != null) 'operations': operations!,
       };
 }
 
@@ -3683,7 +3659,7 @@ class GoogleLongrunningOperation {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (done != null) 'done': done!,
-        if (error != null) 'error': error!.toJson(),
+        if (error != null) 'error': error!,
         if (metadata != null) 'metadata': metadata!,
         if (name != null) 'name': name!,
         if (response != null) 'response': response!,
@@ -3816,8 +3792,7 @@ class ListDocumentsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (documents != null)
-          'documents': documents!.map((value) => value.toJson()).toList(),
+        if (documents != null) 'documents': documents!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -3849,8 +3824,7 @@ class ListLocationsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (locations != null)
-          'locations': locations!.map((value) => value.toJson()).toList(),
+        if (locations != null) 'locations': locations!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -3892,7 +3866,7 @@ class ListenRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (addTarget != null) 'addTarget': addTarget!.toJson(),
+        if (addTarget != null) 'addTarget': addTarget!,
         if (labels != null) 'labels': labels!,
         if (removeTarget != null) 'removeTarget': removeTarget!,
       };
@@ -3953,11 +3927,11 @@ class ListenResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (documentChange != null) 'documentChange': documentChange!.toJson(),
-        if (documentDelete != null) 'documentDelete': documentDelete!.toJson(),
-        if (documentRemove != null) 'documentRemove': documentRemove!.toJson(),
-        if (filter != null) 'filter': filter!.toJson(),
-        if (targetChange != null) 'targetChange': targetChange!.toJson(),
+        if (documentChange != null) 'documentChange': documentChange!,
+        if (documentDelete != null) 'documentDelete': documentDelete!,
+        if (documentRemove != null) 'documentRemove': documentRemove!,
+        if (filter != null) 'filter': filter!,
+        if (targetChange != null) 'targetChange': targetChange!,
       };
 }
 
@@ -4057,9 +4031,7 @@ class MapValue {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (fields != null)
-          'fields':
-              fields!.map((key, item) => core.MapEntry(key, item.toJson())),
+        if (fields != null) 'fields': fields!,
       };
 }
 
@@ -4095,7 +4067,7 @@ class Order {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (direction != null) 'direction': direction!,
-        if (field != null) 'field': field!.toJson(),
+        if (field != null) 'field': field!,
       };
 }
 
@@ -4166,8 +4138,7 @@ class PartitionQueryRequest {
         if (pageSize != null) 'pageSize': pageSize!,
         if (pageToken != null) 'pageToken': pageToken!,
         if (partitionCount != null) 'partitionCount': partitionCount!,
-        if (structuredQuery != null)
-          'structuredQuery': structuredQuery!.toJson(),
+        if (structuredQuery != null) 'structuredQuery': structuredQuery!,
       };
 }
 
@@ -4213,8 +4184,7 @@ class PartitionQueryResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (partitions != null)
-          'partitions': partitions!.map((value) => value.toJson()).toList(),
+        if (partitions != null) 'partitions': partitions!,
       };
 }
 
@@ -4272,8 +4242,7 @@ class Projection {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (fields != null)
-          'fields': fields!.map((value) => value.toJson()).toList(),
+        if (fields != null) 'fields': fields!,
       };
 }
 
@@ -4309,8 +4278,7 @@ class QueryTarget {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (parent != null) 'parent': parent!,
-        if (structuredQuery != null)
-          'structuredQuery': structuredQuery!.toJson(),
+        if (structuredQuery != null) 'structuredQuery': structuredQuery!,
       };
 }
 
@@ -4447,10 +4415,9 @@ class RunQueryRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (newTransaction != null) 'newTransaction': newTransaction!.toJson(),
+        if (newTransaction != null) 'newTransaction': newTransaction!,
         if (readTime != null) 'readTime': readTime!,
-        if (structuredQuery != null)
-          'structuredQuery': structuredQuery!.toJson(),
+        if (structuredQuery != null) 'structuredQuery': structuredQuery!,
         if (transaction != null) 'transaction': transaction!,
       };
 }
@@ -4513,7 +4480,7 @@ class RunQueryResponseElement {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (document != null) 'document': document!.toJson(),
+        if (document != null) 'document': document!,
         if (readTime != null) 'readTime': readTime!,
         if (skippedResults != null) 'skippedResults': skippedResults!,
         if (transaction != null) 'transaction': transaction!,
@@ -4531,10 +4498,6 @@ class RunQueryResponse extends collection.ListBase<RunQueryResponseElement> {
             .map((value) => RunQueryResponseElement.fromJson(
                 value as core.Map<core.String, core.dynamic>))
             .toList();
-
-  core.List<core.Map<core.String, core.dynamic>> toJson() {
-    return _inner.map((value) => value.toJson()).toList();
-  }
 
   @core.override
   RunQueryResponseElement operator [](core.int key) => _inner[key];
@@ -4698,15 +4661,14 @@ class StructuredQuery {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (endAt != null) 'endAt': endAt!.toJson(),
-        if (from != null) 'from': from!.map((value) => value.toJson()).toList(),
+        if (endAt != null) 'endAt': endAt!,
+        if (from != null) 'from': from!,
         if (limit != null) 'limit': limit!,
         if (offset != null) 'offset': offset!,
-        if (orderBy != null)
-          'orderBy': orderBy!.map((value) => value.toJson()).toList(),
-        if (select != null) 'select': select!.toJson(),
-        if (startAt != null) 'startAt': startAt!.toJson(),
-        if (where != null) 'where': where!.toJson(),
+        if (orderBy != null) 'orderBy': orderBy!,
+        if (select != null) 'select': select!,
+        if (startAt != null) 'startAt': startAt!,
+        if (where != null) 'where': where!,
       };
 }
 
@@ -4775,9 +4737,9 @@ class Target {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (documents != null) 'documents': documents!.toJson(),
+        if (documents != null) 'documents': documents!,
         if (once != null) 'once': once!,
-        if (query != null) 'query': query!.toJson(),
+        if (query != null) 'query': query!,
         if (readTime != null) 'readTime': readTime!,
         if (resumeToken != null) 'resumeToken': resumeToken!,
         if (targetId != null) 'targetId': targetId!,
@@ -4866,7 +4828,7 @@ class TargetChange {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cause != null) 'cause': cause!.toJson(),
+        if (cause != null) 'cause': cause!,
         if (readTime != null) 'readTime': readTime!,
         if (resumeToken != null) 'resumeToken': resumeToken!,
         if (targetChangeType != null) 'targetChangeType': targetChangeType!,
@@ -4900,8 +4862,8 @@ class TransactionOptions {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (readOnly != null) 'readOnly': readOnly!.toJson(),
-        if (readWrite != null) 'readWrite': readWrite!.toJson(),
+        if (readOnly != null) 'readOnly': readOnly!,
+        if (readWrite != null) 'readWrite': readWrite!,
       };
 }
 
@@ -4938,7 +4900,7 @@ class UnaryFilter {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (field != null) 'field': field!.toJson(),
+        if (field != null) 'field': field!,
         if (op != null) 'op': op!,
       };
 }
@@ -5056,13 +5018,13 @@ class Value {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (arrayValue != null) 'arrayValue': arrayValue!.toJson(),
+        if (arrayValue != null) 'arrayValue': arrayValue!,
         if (booleanValue != null) 'booleanValue': booleanValue!,
         if (bytesValue != null) 'bytesValue': bytesValue!,
         if (doubleValue != null) 'doubleValue': doubleValue!,
-        if (geoPointValue != null) 'geoPointValue': geoPointValue!.toJson(),
+        if (geoPointValue != null) 'geoPointValue': geoPointValue!,
         if (integerValue != null) 'integerValue': integerValue!,
-        if (mapValue != null) 'mapValue': mapValue!.toJson(),
+        if (mapValue != null) 'mapValue': mapValue!,
         if (nullValue != null) 'nullValue': nullValue!,
         if (referenceValue != null) 'referenceValue': referenceValue!,
         if (stringValue != null) 'stringValue': stringValue!,
@@ -5146,15 +5108,12 @@ class Write {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (currentDocument != null)
-          'currentDocument': currentDocument!.toJson(),
+        if (currentDocument != null) 'currentDocument': currentDocument!,
         if (delete != null) 'delete': delete!,
-        if (transform != null) 'transform': transform!.toJson(),
-        if (update != null) 'update': update!.toJson(),
-        if (updateMask != null) 'updateMask': updateMask!.toJson(),
-        if (updateTransforms != null)
-          'updateTransforms':
-              updateTransforms!.map((value) => value.toJson()).toList(),
+        if (transform != null) 'transform': transform!,
+        if (update != null) 'update': update!,
+        if (updateMask != null) 'updateMask': updateMask!,
+        if (updateTransforms != null) 'updateTransforms': updateTransforms!,
       };
 }
 
@@ -5236,8 +5195,7 @@ class WriteRequest {
         if (labels != null) 'labels': labels!,
         if (streamId != null) 'streamId': streamId!,
         if (streamToken != null) 'streamToken': streamToken!,
-        if (writes != null)
-          'writes': writes!.map((value) => value.toJson()).toList(),
+        if (writes != null) 'writes': writes!,
       };
 }
 
@@ -5302,8 +5260,7 @@ class WriteResponse {
         if (commitTime != null) 'commitTime': commitTime!,
         if (streamId != null) 'streamId': streamId!,
         if (streamToken != null) 'streamToken': streamToken!,
-        if (writeResults != null)
-          'writeResults': writeResults!.map((value) => value.toJson()).toList(),
+        if (writeResults != null) 'writeResults': writeResults!,
       };
 }
 
@@ -5338,9 +5295,7 @@ class WriteResult {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (transformResults != null)
-          'transformResults':
-              transformResults!.map((value) => value.toJson()).toList(),
+        if (transformResults != null) 'transformResults': transformResults!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
 }

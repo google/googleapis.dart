@@ -107,7 +107,7 @@ class ProjectsBrandsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -232,7 +232,7 @@ class ProjectsBrandsIdentityAwareProxyClientsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -416,7 +416,7 @@ class ProjectsBrandsIdentityAwareProxyClientsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -469,7 +469,7 @@ class V1Resource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -554,7 +554,7 @@ class V1Resource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -600,7 +600,7 @@ class V1Resource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -649,7 +649,7 @@ class V1Resource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -752,11 +752,11 @@ class AccessSettings {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (corsSettings != null) 'corsSettings': corsSettings!.toJson(),
-        if (gcipSettings != null) 'gcipSettings': gcipSettings!.toJson(),
-        if (oauthSettings != null) 'oauthSettings': oauthSettings!.toJson(),
+        if (corsSettings != null) 'corsSettings': corsSettings!,
+        if (gcipSettings != null) 'gcipSettings': gcipSettings!,
+        if (oauthSettings != null) 'oauthSettings': oauthSettings!,
         if (policyDelegationSettings != null)
-          'policyDelegationSettings': policyDelegationSettings!.toJson(),
+          'policyDelegationSettings': policyDelegationSettings!,
       };
 }
 
@@ -799,9 +799,9 @@ class ApplicationSettings {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accessDeniedPageSettings != null)
-          'accessDeniedPageSettings': accessDeniedPageSettings!.toJson(),
+          'accessDeniedPageSettings': accessDeniedPageSettings!,
         if (cookieDomain != null) 'cookieDomain': cookieDomain!,
-        if (csmSettings != null) 'csmSettings': csmSettings!.toJson(),
+        if (csmSettings != null) 'csmSettings': csmSettings!,
       };
 }
 
@@ -875,7 +875,7 @@ class Binding {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (condition != null) 'condition': condition!.toJson(),
+        if (condition != null) 'condition': condition!,
         if (members != null) 'members': members!,
         if (role != null) 'role': role!,
       };
@@ -1127,7 +1127,7 @@ class GetIamPolicyRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (options != null) 'options': options!.toJson(),
+        if (options != null) 'options': options!,
       };
 }
 
@@ -1195,9 +1195,9 @@ class IapSettings {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (accessSettings != null) 'accessSettings': accessSettings!.toJson(),
+        if (accessSettings != null) 'accessSettings': accessSettings!,
         if (applicationSettings != null)
-          'applicationSettings': applicationSettings!.toJson(),
+          'applicationSettings': applicationSettings!,
         if (name != null) 'name': name!,
       };
 }
@@ -1261,8 +1261,7 @@ class ListBrandsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (brands != null)
-          'brands': brands!.map((value) => value.toJson()).toList(),
+        if (brands != null) 'brands': brands!,
       };
 }
 
@@ -1297,9 +1296,7 @@ class ListIdentityAwareProxyClientsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (identityAwareProxyClients != null)
-          'identityAwareProxyClients': identityAwareProxyClients!
-              .map((value) => value.toJson())
-              .toList(),
+          'identityAwareProxyClients': identityAwareProxyClients!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -1430,8 +1427,7 @@ class Policy {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bindings != null)
-          'bindings': bindings!.map((value) => value.toJson()).toList(),
+        if (bindings != null) 'bindings': bindings!,
         if (etag != null) 'etag': etag!,
         if (version != null) 'version': version!,
       };
@@ -1488,8 +1484,8 @@ class PolicyDelegationSettings {
   core.Map<core.String, core.dynamic> toJson() => {
         if (iamPermission != null) 'iamPermission': iamPermission!,
         if (iamServiceName != null) 'iamServiceName': iamServiceName!,
-        if (policyName != null) 'policyName': policyName!.toJson(),
-        if (resource != null) 'resource': resource!.toJson(),
+        if (policyName != null) 'policyName': policyName!,
+        if (resource != null) 'resource': resource!,
       };
 }
 
@@ -1647,7 +1643,7 @@ class SetIamPolicyRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (policy != null) 'policy': policy!.toJson(),
+        if (policy != null) 'policy': policy!,
       };
 }
 

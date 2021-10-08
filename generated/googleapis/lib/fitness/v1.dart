@@ -227,7 +227,7 @@ class UsersDataSourcesResource {
     core.String userId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -404,7 +404,7 @@ class UsersDataSourcesResource {
     core.String dataSourceId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -653,7 +653,7 @@ class UsersDataSourcesDatasetsResource {
     core.String datasetId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -707,7 +707,7 @@ class UsersDatasetResource {
     core.String userId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -865,7 +865,7 @@ class UsersSessionsResource {
     core.String sessionId, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -957,10 +957,9 @@ class AggregateBucket {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (activity != null) 'activity': activity!,
-        if (dataset != null)
-          'dataset': dataset!.map((value) => value.toJson()).toList(),
+        if (dataset != null) 'dataset': dataset!,
         if (endTimeMillis != null) 'endTimeMillis': endTimeMillis!,
-        if (session != null) 'session': session!.toJson(),
+        if (session != null) 'session': session!,
         if (startTimeMillis != null) 'startTimeMillis': startTimeMillis!,
         if (type != null) 'type': type!,
       };
@@ -1113,15 +1112,13 @@ class AggregateRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (aggregateBy != null)
-          'aggregateBy': aggregateBy!.map((value) => value.toJson()).toList(),
+        if (aggregateBy != null) 'aggregateBy': aggregateBy!,
         if (bucketByActivitySegment != null)
-          'bucketByActivitySegment': bucketByActivitySegment!.toJson(),
+          'bucketByActivitySegment': bucketByActivitySegment!,
         if (bucketByActivityType != null)
-          'bucketByActivityType': bucketByActivityType!.toJson(),
-        if (bucketBySession != null)
-          'bucketBySession': bucketBySession!.toJson(),
-        if (bucketByTime != null) 'bucketByTime': bucketByTime!.toJson(),
+          'bucketByActivityType': bucketByActivityType!,
+        if (bucketBySession != null) 'bucketBySession': bucketBySession!,
+        if (bucketByTime != null) 'bucketByTime': bucketByTime!,
         if (endTimeMillis != null) 'endTimeMillis': endTimeMillis!,
         if (filteredDataQualityStandard != null)
           'filteredDataQualityStandard': filteredDataQualityStandard!,
@@ -1148,8 +1145,7 @@ class AggregateResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bucket != null)
-          'bucket': bucket!.map((value) => value.toJson()).toList(),
+        if (bucket != null) 'bucket': bucket!,
       };
 }
 
@@ -1288,7 +1284,7 @@ class BucketByTime {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (durationMillis != null) 'durationMillis': durationMillis!,
-        if (period != null) 'period': period!.toJson(),
+        if (period != null) 'period': period!,
       };
 }
 
@@ -1432,8 +1428,7 @@ class DataPoint {
           'originDataSourceId': originDataSourceId!,
         if (rawTimestampNanos != null) 'rawTimestampNanos': rawTimestampNanos!,
         if (startTimeNanos != null) 'startTimeNanos': startTimeNanos!,
-        if (value != null)
-          'value': value!.map((value) => value.toJson()).toList(),
+        if (value != null) 'value': value!,
       };
 }
 
@@ -1558,13 +1553,13 @@ class DataSource {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (application != null) 'application': application!.toJson(),
+        if (application != null) 'application': application!,
         if (dataQualityStandard != null)
           'dataQualityStandard': dataQualityStandard!,
         if (dataStreamId != null) 'dataStreamId': dataStreamId!,
         if (dataStreamName != null) 'dataStreamName': dataStreamName!,
-        if (dataType != null) 'dataType': dataType!.toJson(),
-        if (device != null) 'device': device!.toJson(),
+        if (dataType != null) 'dataType': dataType!,
+        if (device != null) 'device': device!,
         if (name != null) 'name': name!,
         if (type != null) 'type': type!,
       };
@@ -1597,8 +1592,7 @@ class DataType {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (field != null)
-          'field': field!.map((value) => value.toJson()).toList(),
+        if (field != null) 'field': field!,
         if (name != null) 'name': name!,
       };
 }
@@ -1726,8 +1720,7 @@ class Dataset {
         if (maxEndTimeNs != null) 'maxEndTimeNs': maxEndTimeNs!,
         if (minStartTimeNs != null) 'minStartTimeNs': minStartTimeNs!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (point != null)
-          'point': point!.map((value) => value.toJson()).toList(),
+        if (point != null) 'point': point!,
       };
 }
 
@@ -1852,12 +1845,8 @@ class ListDataPointChangesResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (dataSourceId != null) 'dataSourceId': dataSourceId!,
-        if (deletedDataPoint != null)
-          'deletedDataPoint':
-              deletedDataPoint!.map((value) => value.toJson()).toList(),
-        if (insertedDataPoint != null)
-          'insertedDataPoint':
-              insertedDataPoint!.map((value) => value.toJson()).toList(),
+        if (deletedDataPoint != null) 'deletedDataPoint': deletedDataPoint!,
+        if (insertedDataPoint != null) 'insertedDataPoint': insertedDataPoint!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -1881,8 +1870,7 @@ class ListDataSourcesResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dataSource != null)
-          'dataSource': dataSource!.map((value) => value.toJson()).toList(),
+        if (dataSource != null) 'dataSource': dataSource!,
       };
 }
 
@@ -1937,13 +1925,10 @@ class ListSessionsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (deletedSession != null)
-          'deletedSession':
-              deletedSession!.map((value) => value.toJson()).toList(),
+        if (deletedSession != null) 'deletedSession': deletedSession!,
         if (hasMoreData != null) 'hasMoreData': hasMoreData!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (session != null)
-          'session': session!.map((value) => value.toJson()).toList(),
+        if (session != null) 'session': session!,
       };
 }
 
@@ -2050,7 +2035,7 @@ class Session {
   core.Map<core.String, core.dynamic> toJson() => {
         if (activeTimeMillis != null) 'activeTimeMillis': activeTimeMillis!,
         if (activityType != null) 'activityType': activityType!,
-        if (application != null) 'application': application!.toJson(),
+        if (application != null) 'application': application!,
         if (description != null) 'description': description!,
         if (endTimeMillis != null) 'endTimeMillis': endTimeMillis!,
         if (id != null) 'id': id!,
@@ -2119,8 +2104,7 @@ class Value {
   core.Map<core.String, core.dynamic> toJson() => {
         if (fpVal != null) 'fpVal': fpVal!,
         if (intVal != null) 'intVal': intVal!,
-        if (mapVal != null)
-          'mapVal': mapVal!.map((value) => value.toJson()).toList(),
+        if (mapVal != null) 'mapVal': mapVal!,
         if (stringVal != null) 'stringVal': stringVal!,
       };
 }
@@ -2145,6 +2129,6 @@ class ValueMapValEntry {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (key != null) 'key': key!,
-        if (value != null) 'value': value!.toJson(),
+        if (value != null) 'value': value!,
       };
 }

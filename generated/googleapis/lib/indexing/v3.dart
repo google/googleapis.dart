@@ -118,7 +118,7 @@ class UrlNotificationsResource {
     UrlNotification request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -156,7 +156,7 @@ class PublishUrlNotificationResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (urlNotificationMetadata != null)
-          'urlNotificationMetadata': urlNotificationMetadata!.toJson(),
+          'urlNotificationMetadata': urlNotificationMetadata!,
       };
 }
 
@@ -236,8 +236,8 @@ class UrlNotificationMetadata {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (latestRemove != null) 'latestRemove': latestRemove!.toJson(),
-        if (latestUpdate != null) 'latestUpdate': latestUpdate!.toJson(),
+        if (latestRemove != null) 'latestRemove': latestRemove!,
+        if (latestUpdate != null) 'latestUpdate': latestUpdate!,
         if (url != null) 'url': url!,
       };
 }

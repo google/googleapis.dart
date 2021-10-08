@@ -214,7 +214,7 @@ class ProjectsClientEventsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -263,7 +263,7 @@ class ProjectsCompaniesResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -439,7 +439,7 @@ class ProjectsCompaniesResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -487,7 +487,7 @@ class ProjectsJobsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -532,7 +532,7 @@ class ProjectsJobsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -740,7 +740,7 @@ class ProjectsJobsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -785,7 +785,7 @@ class ProjectsJobsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -835,7 +835,7 @@ class ProjectsJobsResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -996,7 +996,7 @@ class BucketizedCount {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (count != null) 'count': count!,
-        if (range != null) 'range': range!.toJson(),
+        if (range != null) 'range': range!,
       };
 }
 
@@ -1092,7 +1092,7 @@ class ClientEvent {
         if (createTime != null) 'createTime': createTime!,
         if (eventId != null) 'eventId': eventId!,
         if (extraInfo != null) 'extraInfo': extraInfo!,
-        if (jobEvent != null) 'jobEvent': jobEvent!.toJson(),
+        if (jobEvent != null) 'jobEvent': jobEvent!,
         if (parentEventId != null) 'parentEventId': parentEventId!,
         if (requestId != null) 'requestId': requestId!,
       };
@@ -1195,10 +1195,9 @@ class CommuteFilter {
         if (allowImpreciseAddresses != null)
           'allowImpreciseAddresses': allowImpreciseAddresses!,
         if (commuteMethod != null) 'commuteMethod': commuteMethod!,
-        if (departureTime != null) 'departureTime': departureTime!.toJson(),
+        if (departureTime != null) 'departureTime': departureTime!,
         if (roadTraffic != null) 'roadTraffic': roadTraffic!,
-        if (startCoordinates != null)
-          'startCoordinates': startCoordinates!.toJson(),
+        if (startCoordinates != null) 'startCoordinates': startCoordinates!,
         if (travelDuration != null) 'travelDuration': travelDuration!,
       };
 }
@@ -1234,7 +1233,7 @@ class CommuteInfo {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (jobLocation != null) 'jobLocation': jobLocation!.toJson(),
+        if (jobLocation != null) 'jobLocation': jobLocation!,
         if (travelDuration != null) 'travelDuration': travelDuration!,
       };
 }
@@ -1406,7 +1405,7 @@ class Company {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (careerSiteUri != null) 'careerSiteUri': careerSiteUri!,
-        if (derivedInfo != null) 'derivedInfo': derivedInfo!.toJson(),
+        if (derivedInfo != null) 'derivedInfo': derivedInfo!,
         if (displayName != null) 'displayName': displayName!,
         if (eeoText != null) 'eeoText': eeoText!,
         if (externalId != null) 'externalId': externalId!,
@@ -1444,7 +1443,7 @@ class CompanyDerivedInfo {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (headquartersLocation != null)
-          'headquartersLocation': headquartersLocation!.toJson(),
+          'headquartersLocation': headquartersLocation!,
       };
 }
 
@@ -1549,11 +1548,11 @@ class CompensationEntry {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (amount != null) 'amount': amount!.toJson(),
+        if (amount != null) 'amount': amount!,
         if (description != null) 'description': description!,
         if (expectedUnitsPerYear != null)
           'expectedUnitsPerYear': expectedUnitsPerYear!,
-        if (range != null) 'range': range!.toJson(),
+        if (range != null) 'range': range!,
         if (type != null) 'type': type!,
         if (unit != null) 'unit': unit!,
       };
@@ -1635,7 +1634,7 @@ class CompensationFilter {
         if (includeJobsWithUnspecifiedCompensationRange != null)
           'includeJobsWithUnspecifiedCompensationRange':
               includeJobsWithUnspecifiedCompensationRange!,
-        if (range != null) 'range': range!.toJson(),
+        if (range != null) 'range': range!,
         if (type != null) 'type': type!,
         if (units != null) 'units': units!,
       };
@@ -1683,8 +1682,7 @@ class CompensationHistogramRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bucketingOption != null)
-          'bucketingOption': bucketingOption!.toJson(),
+        if (bucketingOption != null) 'bucketingOption': bucketingOption!,
         if (type != null) 'type': type!,
       };
 }
@@ -1723,7 +1721,7 @@ class CompensationHistogramResult {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (result != null) 'result': result!.toJson(),
+        if (result != null) 'result': result!,
         if (type != null) 'type': type!,
       };
 }
@@ -1786,13 +1784,10 @@ class CompensationInfo {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (annualizedBaseCompensationRange != null)
-          'annualizedBaseCompensationRange':
-              annualizedBaseCompensationRange!.toJson(),
+          'annualizedBaseCompensationRange': annualizedBaseCompensationRange!,
         if (annualizedTotalCompensationRange != null)
-          'annualizedTotalCompensationRange':
-              annualizedTotalCompensationRange!.toJson(),
-        if (entries != null)
-          'entries': entries!.map((value) => value.toJson()).toList(),
+          'annualizedTotalCompensationRange': annualizedTotalCompensationRange!,
+        if (entries != null) 'entries': entries!,
       };
 }
 
@@ -1832,10 +1827,8 @@ class CompensationRange {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (maxCompensation != null)
-          'maxCompensation': maxCompensation!.toJson(),
-        if (minCompensation != null)
-          'minCompensation': minCompensation!.toJson(),
+        if (maxCompensation != null) 'maxCompensation': maxCompensation!,
+        if (minCompensation != null) 'minCompensation': minCompensation!,
       };
 }
 
@@ -1870,10 +1863,8 @@ class CompleteQueryResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (completionResults != null)
-          'completionResults':
-              completionResults!.map((value) => value.toJson()).toList(),
-        if (metadata != null) 'metadata': metadata!.toJson(),
+        if (completionResults != null) 'completionResults': completionResults!,
+        if (metadata != null) 'metadata': metadata!,
       };
 }
 
@@ -1940,7 +1931,7 @@ class CreateClientEventRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (clientEvent != null) 'clientEvent': clientEvent!.toJson(),
+        if (clientEvent != null) 'clientEvent': clientEvent!,
       };
 }
 
@@ -1966,7 +1957,7 @@ class CreateCompanyRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (company != null) 'company': company!.toJson(),
+        if (company != null) 'company': company!,
       };
 }
 
@@ -1992,7 +1983,7 @@ class CreateJobRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (job != null) 'job': job!.toJson(),
+        if (job != null) 'job': job!,
       };
 }
 
@@ -2106,7 +2097,7 @@ class CustomAttributeHistogramRequest {
         if (key != null) 'key': key!,
         if (longValueHistogramBucketingOption != null)
           'longValueHistogramBucketingOption':
-              longValueHistogramBucketingOption!.toJson(),
+              longValueHistogramBucketingOption!,
         if (stringValueHistogram != null)
           'stringValueHistogram': stringValueHistogram!,
       };
@@ -2158,7 +2149,7 @@ class CustomAttributeHistogramResult {
   core.Map<core.String, core.dynamic> toJson() => {
         if (key != null) 'key': key!,
         if (longValueHistogramResult != null)
-          'longValueHistogramResult': longValueHistogramResult!.toJson(),
+          'longValueHistogramResult': longValueHistogramResult!,
         if (stringValueHistogramResult != null)
           'stringValueHistogramResult': stringValueHistogramResult!,
       };
@@ -2277,13 +2268,9 @@ class HistogramFacets {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (compensationHistogramFacets != null)
-          'compensationHistogramFacets': compensationHistogramFacets!
-              .map((value) => value.toJson())
-              .toList(),
+          'compensationHistogramFacets': compensationHistogramFacets!,
         if (customAttributeHistogramFacets != null)
-          'customAttributeHistogramFacets': customAttributeHistogramFacets!
-              .map((value) => value.toJson())
-              .toList(),
+          'customAttributeHistogramFacets': customAttributeHistogramFacets!,
         if (simpleHistogramFacets != null)
           'simpleHistogramFacets': simpleHistogramFacets!,
       };
@@ -2418,16 +2405,11 @@ class HistogramResults {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (compensationHistogramResults != null)
-          'compensationHistogramResults': compensationHistogramResults!
-              .map((value) => value.toJson())
-              .toList(),
+          'compensationHistogramResults': compensationHistogramResults!,
         if (customAttributeHistogramResults != null)
-          'customAttributeHistogramResults': customAttributeHistogramResults!
-              .map((value) => value.toJson())
-              .toList(),
+          'customAttributeHistogramResults': customAttributeHistogramResults!,
         if (simpleHistogramResults != null)
-          'simpleHistogramResults':
-              simpleHistogramResults!.map((value) => value.toJson()).toList(),
+          'simpleHistogramResults': simpleHistogramResults!,
       };
 }
 
@@ -2888,19 +2870,15 @@ class Job {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (addresses != null) 'addresses': addresses!,
-        if (applicationInfo != null)
-          'applicationInfo': applicationInfo!.toJson(),
+        if (applicationInfo != null) 'applicationInfo': applicationInfo!,
         if (companyDisplayName != null)
           'companyDisplayName': companyDisplayName!,
         if (companyName != null) 'companyName': companyName!,
-        if (compensationInfo != null)
-          'compensationInfo': compensationInfo!.toJson(),
-        if (customAttributes != null)
-          'customAttributes': customAttributes!
-              .map((key, item) => core.MapEntry(key, item.toJson())),
+        if (compensationInfo != null) 'compensationInfo': compensationInfo!,
+        if (customAttributes != null) 'customAttributes': customAttributes!,
         if (degreeTypes != null) 'degreeTypes': degreeTypes!,
         if (department != null) 'department': department!,
-        if (derivedInfo != null) 'derivedInfo': derivedInfo!.toJson(),
+        if (derivedInfo != null) 'derivedInfo': derivedInfo!,
         if (description != null) 'description': description!,
         if (employmentTypes != null) 'employmentTypes': employmentTypes!,
         if (incentives != null) 'incentives': incentives!,
@@ -2916,8 +2894,7 @@ class Job {
           'postingPublishTime': postingPublishTime!,
         if (postingRegion != null) 'postingRegion': postingRegion!,
         if (postingUpdateTime != null) 'postingUpdateTime': postingUpdateTime!,
-        if (processingOptions != null)
-          'processingOptions': processingOptions!.toJson(),
+        if (processingOptions != null) 'processingOptions': processingOptions!,
         if (promotionValue != null) 'promotionValue': promotionValue!,
         if (qualifications != null) 'qualifications': qualifications!,
         if (requisitionId != null) 'requisitionId': requisitionId!,
@@ -2961,8 +2938,7 @@ class JobDerivedInfo {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (jobCategories != null) 'jobCategories': jobCategories!,
-        if (locations != null)
-          'locations': locations!.map((value) => value.toJson()).toList(),
+        if (locations != null) 'locations': locations!,
       };
 }
 
@@ -3285,23 +3261,20 @@ class JobQuery {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (commuteFilter != null) 'commuteFilter': commuteFilter!.toJson(),
+        if (commuteFilter != null) 'commuteFilter': commuteFilter!,
         if (companyDisplayNames != null)
           'companyDisplayNames': companyDisplayNames!,
         if (companyNames != null) 'companyNames': companyNames!,
         if (compensationFilter != null)
-          'compensationFilter': compensationFilter!.toJson(),
+          'compensationFilter': compensationFilter!,
         if (customAttributeFilter != null)
           'customAttributeFilter': customAttributeFilter!,
         if (disableSpellCheck != null) 'disableSpellCheck': disableSpellCheck!,
         if (employmentTypes != null) 'employmentTypes': employmentTypes!,
         if (jobCategories != null) 'jobCategories': jobCategories!,
         if (languageCodes != null) 'languageCodes': languageCodes!,
-        if (locationFilters != null)
-          'locationFilters':
-              locationFilters!.map((value) => value.toJson()).toList(),
-        if (publishTimeRange != null)
-          'publishTimeRange': publishTimeRange!.toJson(),
+        if (locationFilters != null) 'locationFilters': locationFilters!,
+        if (publishTimeRange != null) 'publishTimeRange': publishTimeRange!,
         if (query != null) 'query': query!,
         if (queryLanguageCode != null) 'queryLanguageCode': queryLanguageCode!,
       };
@@ -3382,9 +3355,8 @@ class ListCompaniesResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (companies != null)
-          'companies': companies!.map((value) => value.toJson()).toList(),
-        if (metadata != null) 'metadata': metadata!.toJson(),
+        if (companies != null) 'companies': companies!,
+        if (metadata != null) 'metadata': metadata!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -3430,8 +3402,8 @@ class ListJobsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (jobs != null) 'jobs': jobs!.map((value) => value.toJson()).toList(),
-        if (metadata != null) 'metadata': metadata!.toJson(),
+        if (jobs != null) 'jobs': jobs!,
+        if (metadata != null) 'metadata': metadata!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -3509,9 +3481,9 @@ class Location {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (latLng != null) 'latLng': latLng!.toJson(),
+        if (latLng != null) 'latLng': latLng!,
         if (locationType != null) 'locationType': locationType!,
-        if (postalAddress != null) 'postalAddress': postalAddress!.toJson(),
+        if (postalAddress != null) 'postalAddress': postalAddress!,
         if (radiusInMiles != null) 'radiusInMiles': radiusInMiles!,
       };
 }
@@ -3612,7 +3584,7 @@ class LocationFilter {
   core.Map<core.String, core.dynamic> toJson() => {
         if (address != null) 'address': address!,
         if (distanceInMiles != null) 'distanceInMiles': distanceInMiles!,
-        if (latLng != null) 'latLng': latLng!.toJson(),
+        if (latLng != null) 'latLng': latLng!,
         if (regionCode != null) 'regionCode': regionCode!,
         if (telecommutePreference != null)
           'telecommutePreference': telecommutePreference!,
@@ -3676,8 +3648,8 @@ class MatchingJob {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (commuteInfo != null) 'commuteInfo': commuteInfo!.toJson(),
-        if (job != null) 'job': job!.toJson(),
+        if (commuteInfo != null) 'commuteInfo': commuteInfo!,
+        if (job != null) 'job': job!,
         if (jobSummary != null) 'jobSummary': jobSummary!,
         if (jobTitleSnippet != null) 'jobTitleSnippet': jobTitleSnippet!,
         if (searchTextSnippet != null) 'searchTextSnippet': searchTextSnippet!,
@@ -3720,8 +3692,7 @@ class MendelDebugInput {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (namespacedDebugInput != null)
-          'namespacedDebugInput': namespacedDebugInput!
-              .map((key, item) => core.MapEntry(key, item.toJson())),
+          'namespacedDebugInput': namespacedDebugInput!,
       };
 }
 
@@ -4077,8 +4048,7 @@ class NumericBucketingResult {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (counts != null)
-          'counts': counts!.map((value) => value.toJson()).toList(),
+        if (counts != null) 'counts': counts!,
         if (maxValue != null) 'maxValue': maxValue!,
         if (minValue != null) 'minValue': minValue!,
       };
@@ -4399,7 +4369,7 @@ class RequestMetadata {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (deviceInfo != null) 'deviceInfo': deviceInfo!.toJson(),
+        if (deviceInfo != null) 'deviceInfo': deviceInfo!,
         if (domain != null) 'domain': domain!,
         if (sessionId != null) 'sessionId': sessionId!,
         if (userId != null) 'userId': userId!,
@@ -4668,16 +4638,14 @@ class SearchJobsRequest {
         if (diversificationLevel != null)
           'diversificationLevel': diversificationLevel!,
         if (enableBroadening != null) 'enableBroadening': enableBroadening!,
-        if (histogramFacets != null)
-          'histogramFacets': histogramFacets!.toJson(),
-        if (jobQuery != null) 'jobQuery': jobQuery!.toJson(),
+        if (histogramFacets != null) 'histogramFacets': histogramFacets!,
+        if (jobQuery != null) 'jobQuery': jobQuery!,
         if (jobView != null) 'jobView': jobView!,
         if (offset != null) 'offset': offset!,
         if (orderBy != null) 'orderBy': orderBy!,
         if (pageSize != null) 'pageSize': pageSize!,
         if (pageToken != null) 'pageToken': pageToken!,
-        if (requestMetadata != null)
-          'requestMetadata': requestMetadata!.toJson(),
+        if (requestMetadata != null) 'requestMetadata': requestMetadata!,
         if (requirePreciseResultSize != null)
           'requirePreciseResultSize': requirePreciseResultSize!,
         if (searchMode != null) 'searchMode': searchMode!,
@@ -4791,17 +4759,12 @@ class SearchJobsResponse {
           'broadenedQueryJobsCount': broadenedQueryJobsCount!,
         if (estimatedTotalSize != null)
           'estimatedTotalSize': estimatedTotalSize!,
-        if (histogramResults != null)
-          'histogramResults': histogramResults!.toJson(),
-        if (locationFilters != null)
-          'locationFilters':
-              locationFilters!.map((value) => value.toJson()).toList(),
-        if (matchingJobs != null)
-          'matchingJobs': matchingJobs!.map((value) => value.toJson()).toList(),
-        if (metadata != null) 'metadata': metadata!.toJson(),
+        if (histogramResults != null) 'histogramResults': histogramResults!,
+        if (locationFilters != null) 'locationFilters': locationFilters!,
+        if (matchingJobs != null) 'matchingJobs': matchingJobs!,
+        if (metadata != null) 'metadata': metadata!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (spellCorrection != null)
-          'spellCorrection': spellCorrection!.toJson(),
+        if (spellCorrection != null) 'spellCorrection': spellCorrection!,
         if (totalSize != null) 'totalSize': totalSize!,
       };
 }
@@ -4955,7 +4918,7 @@ class UpdateCompanyRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (company != null) 'company': company!.toJson(),
+        if (company != null) 'company': company!,
         if (updateMask != null) 'updateMask': updateMask!,
       };
 }
@@ -4994,7 +4957,7 @@ class UpdateJobRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (job != null) 'job': job!.toJson(),
+        if (job != null) 'job': job!,
         if (updateMask != null) 'updateMask': updateMask!,
       };
 }

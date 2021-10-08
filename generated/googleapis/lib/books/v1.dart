@@ -358,7 +358,7 @@ class CloudloadingResource {
     BooksCloudloadingResource request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1255,7 +1255,7 @@ class MyconfigResource {
     Usersettings request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1364,7 +1364,7 @@ class MylibraryAnnotationsResource {
     core.String? source,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (annotationId != null) 'annotationId': [annotationId],
       if (country != null) 'country': [country],
@@ -1531,7 +1531,7 @@ class MylibraryAnnotationsResource {
     core.String? source,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (source != null) 'source': [source],
       if ($fields != null) 'fields': [$fields],
@@ -3087,11 +3087,11 @@ class AnnotationClientVersionRanges {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cfiRange != null) 'cfiRange': cfiRange!.toJson(),
+        if (cfiRange != null) 'cfiRange': cfiRange!,
         if (contentVersion != null) 'contentVersion': contentVersion!,
-        if (gbImageRange != null) 'gbImageRange': gbImageRange!.toJson(),
-        if (gbTextRange != null) 'gbTextRange': gbTextRange!.toJson(),
-        if (imageCfiRange != null) 'imageCfiRange': imageCfiRange!.toJson(),
+        if (gbImageRange != null) 'gbImageRange': gbImageRange!,
+        if (gbTextRange != null) 'gbTextRange': gbTextRange!,
+        if (imageCfiRange != null) 'imageCfiRange': imageCfiRange!,
       };
 }
 
@@ -3144,11 +3144,11 @@ class AnnotationCurrentVersionRanges {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cfiRange != null) 'cfiRange': cfiRange!.toJson(),
+        if (cfiRange != null) 'cfiRange': cfiRange!,
         if (contentVersion != null) 'contentVersion': contentVersion!,
-        if (gbImageRange != null) 'gbImageRange': gbImageRange!.toJson(),
-        if (gbTextRange != null) 'gbTextRange': gbTextRange!.toJson(),
-        if (imageCfiRange != null) 'imageCfiRange': imageCfiRange!.toJson(),
+        if (gbImageRange != null) 'gbImageRange': gbImageRange!,
+        if (gbTextRange != null) 'gbTextRange': gbTextRange!,
+        if (imageCfiRange != null) 'imageCfiRange': imageCfiRange!,
       };
 }
 
@@ -3330,17 +3330,17 @@ class Annotation {
         if (beforeSelectedText != null)
           'beforeSelectedText': beforeSelectedText!,
         if (clientVersionRanges != null)
-          'clientVersionRanges': clientVersionRanges!.toJson(),
+          'clientVersionRanges': clientVersionRanges!,
         if (created != null) 'created': created!,
         if (currentVersionRanges != null)
-          'currentVersionRanges': currentVersionRanges!.toJson(),
+          'currentVersionRanges': currentVersionRanges!,
         if (data != null) 'data': data!,
         if (deleted != null) 'deleted': deleted!,
         if (highlightStyle != null) 'highlightStyle': highlightStyle!,
         if (id != null) 'id': id!,
         if (kind != null) 'kind': kind!,
         if (layerId != null) 'layerId': layerId!,
-        if (layerSummary != null) 'layerSummary': layerSummary!.toJson(),
+        if (layerSummary != null) 'layerSummary': layerSummary!,
         if (pageIds != null) 'pageIds': pageIds!,
         if (selectedText != null) 'selectedText': selectedText!,
         if (selfLink != null) 'selfLink': selfLink!,
@@ -3392,8 +3392,7 @@ class Annotations {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (items != null)
-          'items': items!.map((value) => value.toJson()).toList(),
+        if (items != null) 'items': items!,
         if (kind != null) 'kind': kind!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (totalItems != null) 'totalItems': totalItems!,
@@ -3467,8 +3466,7 @@ class AnnotationsSummary {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
-        if (layers != null)
-          'layers': layers!.map((value) => value.toJson()).toList(),
+        if (layers != null) 'layers': layers!,
       };
 }
 
@@ -3512,8 +3510,7 @@ class Annotationsdata {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (items != null)
-          'items': items!.map((value) => value.toJson()).toList(),
+        if (items != null) 'items': items!,
         if (kind != null) 'kind': kind!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (totalItems != null) 'totalItems': totalItems!,
@@ -3734,8 +3731,7 @@ class Bookshelves {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (items != null)
-          'items': items!.map((value) => value.toJson()).toList(),
+        if (items != null) 'items': items!,
         if (kind != null) 'kind': kind!,
       };
 }
@@ -3793,8 +3789,7 @@ class Category {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (items != null)
-          'items': items!.map((value) => value.toJson()).toList(),
+        if (items != null) 'items': items!,
         if (kind != null) 'kind': kind!,
       };
 }
@@ -3989,7 +3984,7 @@ class DictionaryAnnotationdata {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (annotationType != null) 'annotationType': annotationType!,
-        if (data != null) 'data': data!.toJson(),
+        if (data != null) 'data': data!,
         if (encodedData != null) 'encodedData': encodedData!,
         if (id != null) 'id': id!,
         if (kind != null) 'kind': kind!,
@@ -4086,7 +4081,7 @@ class DictlayerdataDictWordsDerivatives {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (source != null) 'source': source!.toJson(),
+        if (source != null) 'source': source!,
         if (text != null) 'text': text!,
       };
 }
@@ -4133,7 +4128,7 @@ class DictlayerdataDictWordsExamples {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (source != null) 'source': source!.toJson(),
+        if (source != null) 'source': source!,
         if (text != null) 'text': text!,
       };
 }
@@ -4202,7 +4197,7 @@ class DictlayerdataDictWordsSensesDefinitionsExamples {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (source != null) 'source': source!.toJson(),
+        if (source != null) 'source': source!,
         if (text != null) 'text': text!,
       };
 }
@@ -4232,8 +4227,7 @@ class DictlayerdataDictWordsSensesDefinitions {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (definition != null) 'definition': definition!,
-        if (examples != null)
-          'examples': examples!.map((value) => value.toJson()).toList(),
+        if (examples != null) 'examples': examples!,
       };
 }
 
@@ -4302,7 +4296,7 @@ class DictlayerdataDictWordsSensesSynonyms {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (source != null) 'source': source!.toJson(),
+        if (source != null) 'source': source!,
         if (text != null) 'text': text!,
       };
 }
@@ -4369,17 +4363,14 @@ class DictlayerdataDictWordsSenses {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (conjugations != null)
-          'conjugations': conjugations!.map((value) => value.toJson()).toList(),
-        if (definitions != null)
-          'definitions': definitions!.map((value) => value.toJson()).toList(),
+        if (conjugations != null) 'conjugations': conjugations!,
+        if (definitions != null) 'definitions': definitions!,
         if (partOfSpeech != null) 'partOfSpeech': partOfSpeech!,
         if (pronunciation != null) 'pronunciation': pronunciation!,
         if (pronunciationUrl != null) 'pronunciationUrl': pronunciationUrl!,
-        if (source != null) 'source': source!.toJson(),
+        if (source != null) 'source': source!,
         if (syllabification != null) 'syllabification': syllabification!,
-        if (synonyms != null)
-          'synonyms': synonyms!.map((value) => value.toJson()).toList(),
+        if (synonyms != null) 'synonyms': synonyms!,
       };
 }
 
@@ -4451,13 +4442,10 @@ class DictlayerdataDictWords {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (derivatives != null)
-          'derivatives': derivatives!.map((value) => value.toJson()).toList(),
-        if (examples != null)
-          'examples': examples!.map((value) => value.toJson()).toList(),
-        if (senses != null)
-          'senses': senses!.map((value) => value.toJson()).toList(),
-        if (source != null) 'source': source!.toJson(),
+        if (derivatives != null) 'derivatives': derivatives!,
+        if (examples != null) 'examples': examples!,
+        if (senses != null) 'senses': senses!,
+        if (source != null) 'source': source!,
       };
 }
 
@@ -4486,9 +4474,8 @@ class DictlayerdataDict {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (source != null) 'source': source!.toJson(),
-        if (words != null)
-          'words': words!.map((value) => value.toJson()).toList(),
+        if (source != null) 'source': source!,
+        if (words != null) 'words': words!,
       };
 }
 
@@ -4517,8 +4504,8 @@ class Dictlayerdata {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (common != null) 'common': common!.toJson(),
-        if (dict != null) 'dict': dict!.toJson(),
+        if (common != null) 'common': common!,
+        if (dict != null) 'dict': dict!,
         if (kind != null) 'kind': kind!,
       };
 }
@@ -4617,13 +4604,12 @@ class DiscoveryclustersClusters {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (bannerWithContentContainer != null)
-          'banner_with_content_container': bannerWithContentContainer!.toJson(),
+          'banner_with_content_container': bannerWithContentContainer!,
         if (subTitle != null) 'subTitle': subTitle!,
         if (title != null) 'title': title!,
         if (totalVolumes != null) 'totalVolumes': totalVolumes!,
         if (uid != null) 'uid': uid!,
-        if (volumes != null)
-          'volumes': volumes!.map((value) => value.toJson()).toList(),
+        if (volumes != null) 'volumes': volumes!,
       };
 }
 
@@ -4655,8 +4641,7 @@ class Discoveryclusters {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (clusters != null)
-          'clusters': clusters!.map((value) => value.toJson()).toList(),
+        if (clusters != null) 'clusters': clusters!,
         if (kind != null) 'kind': kind!,
         if (totalClusters != null) 'totalClusters': totalClusters!,
       };
@@ -4803,8 +4788,7 @@ class DownloadAccesses {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (downloadAccessList != null)
-          'downloadAccessList':
-              downloadAccessList!.map((value) => value.toJson()).toList(),
+          'downloadAccessList': downloadAccessList!,
         if (kind != null) 'kind': kind!,
       };
 }
@@ -4891,7 +4875,7 @@ class FamilyInfo {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
-        if (membership != null) 'membership': membership!.toJson(),
+        if (membership != null) 'membership': membership!,
       };
 }
 
@@ -4983,7 +4967,7 @@ class GeoAnnotationdata {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (annotationType != null) 'annotationType': annotationType!,
-        if (data != null) 'data': data!.toJson(),
+        if (data != null) 'data': data!,
         if (encodedData != null) 'encodedData': encodedData!,
         if (id != null) 'id': id!,
         if (kind != null) 'kind': kind!,
@@ -5121,8 +5105,8 @@ class GeolayerdataGeoViewport {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (hi != null) 'hi': hi!.toJson(),
-        if (lo != null) 'lo': lo!.toJson(),
+        if (hi != null) 'hi': hi!,
+        if (lo != null) 'lo': lo!,
       };
 }
 
@@ -5209,7 +5193,7 @@ class GeolayerdataGeo {
         if (latitude != null) 'latitude': latitude!,
         if (longitude != null) 'longitude': longitude!,
         if (mapType != null) 'mapType': mapType!,
-        if (viewport != null) 'viewport': viewport!.toJson(),
+        if (viewport != null) 'viewport': viewport!,
         if (zoom != null) 'zoom': zoom!,
       };
 }
@@ -5239,8 +5223,8 @@ class Geolayerdata {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (common != null) 'common': common!.toJson(),
-        if (geo != null) 'geo': geo!.toJson(),
+        if (common != null) 'common': common!,
+        if (geo != null) 'geo': geo!,
         if (kind != null) 'kind': kind!,
       };
 }
@@ -5276,8 +5260,7 @@ class Layersummaries {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (items != null)
-          'items': items!.map((value) => value.toJson()).toList(),
+        if (items != null) 'items': items!,
         if (kind != null) 'kind': kind!,
         if (totalItems != null) 'totalItems': totalItems!,
       };
@@ -5471,8 +5454,7 @@ class Metadata {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (items != null)
-          'items': items!.map((value) => value.toJson()).toList(),
+        if (items != null) 'items': items!,
         if (kind != null) 'kind': kind!,
       };
 }
@@ -5673,8 +5655,7 @@ class OffersItems {
         if (artUrl != null) 'artUrl': artUrl!,
         if (gservicesKey != null) 'gservicesKey': gservicesKey!,
         if (id != null) 'id': id!,
-        if (items != null)
-          'items': items!.map((value) => value.toJson()).toList(),
+        if (items != null) 'items': items!,
       };
 }
 
@@ -5702,8 +5683,7 @@ class Offers {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (items != null)
-          'items': items!.map((value) => value.toJson()).toList(),
+        if (items != null) 'items': items!,
         if (kind != null) 'kind': kind!,
       };
 }
@@ -5805,9 +5785,8 @@ class RequestAccessData {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (concurrentAccess != null)
-          'concurrentAccess': concurrentAccess!.toJson(),
-        if (downloadAccess != null) 'downloadAccess': downloadAccess!.toJson(),
+        if (concurrentAccess != null) 'concurrentAccess': concurrentAccess!,
+        if (downloadAccess != null) 'downloadAccess': downloadAccess!,
         if (kind != null) 'kind': kind!,
       };
 }
@@ -5948,13 +5927,13 @@ class Review {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (author != null) 'author': author!.toJson(),
+        if (author != null) 'author': author!,
         if (content != null) 'content': content!,
         if (date != null) 'date': date!,
         if (fullTextUrl != null) 'fullTextUrl': fullTextUrl!,
         if (kind != null) 'kind': kind!,
         if (rating != null) 'rating': rating!,
-        if (source != null) 'source': source!.toJson(),
+        if (source != null) 'source': source!,
         if (title != null) 'title': title!,
         if (type != null) 'type': type!,
         if (volumeId != null) 'volumeId': volumeId!,
@@ -6074,9 +6053,8 @@ class SeriesSeriesSeriesSubscriptionReleaseInfo {
   core.Map<core.String, core.dynamic> toJson() => {
         if (cancelTime != null) 'cancelTime': cancelTime!,
         if (currentReleaseInfo != null)
-          'currentReleaseInfo': currentReleaseInfo!.toJson(),
-        if (nextReleaseInfo != null)
-          'nextReleaseInfo': nextReleaseInfo!.toJson(),
+          'currentReleaseInfo': currentReleaseInfo!,
+        if (nextReleaseInfo != null) 'nextReleaseInfo': nextReleaseInfo!,
         if (seriesSubscriptionType != null)
           'seriesSubscriptionType': seriesSubscriptionType!,
       };
@@ -6152,8 +6130,7 @@ class SeriesSeries {
         if (seriesFormatType != null) 'seriesFormatType': seriesFormatType!,
         if (seriesId != null) 'seriesId': seriesId!,
         if (seriesSubscriptionReleaseInfo != null)
-          'seriesSubscriptionReleaseInfo':
-              seriesSubscriptionReleaseInfo!.toJson(),
+          'seriesSubscriptionReleaseInfo': seriesSubscriptionReleaseInfo!,
         if (seriesType != null) 'seriesType': seriesType!,
         if (subscriptionId != null) 'subscriptionId': subscriptionId!,
         if (title != null) 'title': title!,
@@ -6183,8 +6160,7 @@ class Series {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
-        if (series != null)
-          'series': series!.map((value) => value.toJson()).toList(),
+        if (series != null) 'series': series!,
       };
 }
 
@@ -6216,8 +6192,7 @@ class Seriesmembership {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
-        if (member != null)
-          'member': member!.map((value) => value.toJson()).toList(),
+        if (member != null) 'member': member!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -6387,14 +6362,11 @@ class UsersettingsNotification {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (matchMyInterests != null)
-          'matchMyInterests': matchMyInterests!.toJson(),
-        if (moreFromAuthors != null)
-          'moreFromAuthors': moreFromAuthors!.toJson(),
-        if (moreFromSeries != null) 'moreFromSeries': moreFromSeries!.toJson(),
-        if (priceDrop != null) 'priceDrop': priceDrop!.toJson(),
-        if (rewardExpirations != null)
-          'rewardExpirations': rewardExpirations!.toJson(),
+        if (matchMyInterests != null) 'matchMyInterests': matchMyInterests!,
+        if (moreFromAuthors != null) 'moreFromAuthors': moreFromAuthors!,
+        if (moreFromSeries != null) 'moreFromSeries': moreFromSeries!,
+        if (priceDrop != null) 'priceDrop': priceDrop!,
+        if (rewardExpirations != null) 'rewardExpirations': rewardExpirations!,
       };
 }
 
@@ -6427,8 +6399,8 @@ class Usersettings {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
-        if (notesExport != null) 'notesExport': notesExport!.toJson(),
-        if (notification != null) 'notification': notification!.toJson(),
+        if (notesExport != null) 'notesExport': notesExport!,
+        if (notification != null) 'notification': notification!,
       };
 }
 
@@ -6667,14 +6639,14 @@ class VolumeAccessInfo {
   core.Map<core.String, core.dynamic> toJson() => {
         if (accessViewStatus != null) 'accessViewStatus': accessViewStatus!,
         if (country != null) 'country': country!,
-        if (downloadAccess != null) 'downloadAccess': downloadAccess!.toJson(),
+        if (downloadAccess != null) 'downloadAccess': downloadAccess!,
         if (driveImportedContentLink != null)
           'driveImportedContentLink': driveImportedContentLink!,
         if (embeddable != null) 'embeddable': embeddable!,
-        if (epub != null) 'epub': epub!.toJson(),
+        if (epub != null) 'epub': epub!,
         if (explicitOfflineLicenseManagement != null)
           'explicitOfflineLicenseManagement': explicitOfflineLicenseManagement!,
-        if (pdf != null) 'pdf': pdf!.toJson(),
+        if (pdf != null) 'pdf': pdf!,
         if (publicDomain != null) 'publicDomain': publicDomain!,
         if (quoteSharingAllowed != null)
           'quoteSharingAllowed': quoteSharingAllowed!,
@@ -6740,8 +6712,7 @@ class VolumeLayerInfo {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (layers != null)
-          'layers': layers!.map((value) => value.toJson()).toList(),
+        if (layers != null) 'layers': layers!,
       };
 }
 
@@ -6927,9 +6898,9 @@ class VolumeSaleInfoOffers {
   core.Map<core.String, core.dynamic> toJson() => {
         if (finskyOfferType != null) 'finskyOfferType': finskyOfferType!,
         if (giftable != null) 'giftable': giftable!,
-        if (listPrice != null) 'listPrice': listPrice!.toJson(),
-        if (rentalDuration != null) 'rentalDuration': rentalDuration!.toJson(),
-        if (retailPrice != null) 'retailPrice': retailPrice!.toJson(),
+        if (listPrice != null) 'listPrice': listPrice!,
+        if (rentalDuration != null) 'rentalDuration': rentalDuration!,
+        if (retailPrice != null) 'retailPrice': retailPrice!,
       };
 }
 
@@ -7062,11 +7033,10 @@ class VolumeSaleInfo {
         if (buyLink != null) 'buyLink': buyLink!,
         if (country != null) 'country': country!,
         if (isEbook != null) 'isEbook': isEbook!,
-        if (listPrice != null) 'listPrice': listPrice!.toJson(),
-        if (offers != null)
-          'offers': offers!.map((value) => value.toJson()).toList(),
+        if (listPrice != null) 'listPrice': listPrice!,
+        if (offers != null) 'offers': offers!,
         if (onSaleDate != null) 'onSaleDate': onSaleDate!,
-        if (retailPrice != null) 'retailPrice': retailPrice!.toJson(),
+        if (retailPrice != null) 'retailPrice': retailPrice!,
         if (saleability != null) 'saleability': saleability!,
       };
 }
@@ -7386,9 +7356,9 @@ class VolumeUserInfo {
   core.Map<core.String, core.dynamic> toJson() => {
         if (acquiredTime != null) 'acquiredTime': acquiredTime!,
         if (acquisitionType != null) 'acquisitionType': acquisitionType!,
-        if (copy != null) 'copy': copy!.toJson(),
+        if (copy != null) 'copy': copy!,
         if (entitlementType != null) 'entitlementType': entitlementType!,
-        if (familySharing != null) 'familySharing': familySharing!.toJson(),
+        if (familySharing != null) 'familySharing': familySharing!,
         if (isFamilySharedFromUser != null)
           'isFamilySharedFromUser': isFamilySharedFromUser!,
         if (isFamilySharedToUser != null)
@@ -7401,14 +7371,13 @@ class VolumeUserInfo {
         if (isPreordered != null) 'isPreordered': isPreordered!,
         if (isPurchased != null) 'isPurchased': isPurchased!,
         if (isUploaded != null) 'isUploaded': isUploaded!,
-        if (readingPosition != null)
-          'readingPosition': readingPosition!.toJson(),
-        if (rentalPeriod != null) 'rentalPeriod': rentalPeriod!.toJson(),
+        if (readingPosition != null) 'readingPosition': readingPosition!,
+        if (rentalPeriod != null) 'rentalPeriod': rentalPeriod!,
         if (rentalState != null) 'rentalState': rentalState!,
-        if (review != null) 'review': review!.toJson(),
+        if (review != null) 'review': review!,
         if (updated != null) 'updated': updated!,
         if (userUploadedVolumeInfo != null)
-          'userUploadedVolumeInfo': userUploadedVolumeInfo!.toJson(),
+          'userUploadedVolumeInfo': userUploadedVolumeInfo!,
       };
 }
 
@@ -7866,27 +7835,26 @@ class VolumeVolumeInfo {
         if (comicsContent != null) 'comicsContent': comicsContent!,
         if (contentVersion != null) 'contentVersion': contentVersion!,
         if (description != null) 'description': description!,
-        if (dimensions != null) 'dimensions': dimensions!.toJson(),
-        if (imageLinks != null) 'imageLinks': imageLinks!.toJson(),
+        if (dimensions != null) 'dimensions': dimensions!,
+        if (imageLinks != null) 'imageLinks': imageLinks!,
         if (industryIdentifiers != null)
-          'industryIdentifiers':
-              industryIdentifiers!.map((value) => value.toJson()).toList(),
+          'industryIdentifiers': industryIdentifiers!,
         if (infoLink != null) 'infoLink': infoLink!,
         if (language != null) 'language': language!,
         if (mainCategory != null) 'mainCategory': mainCategory!,
         if (maturityRating != null) 'maturityRating': maturityRating!,
         if (pageCount != null) 'pageCount': pageCount!,
         if (panelizationSummary != null)
-          'panelizationSummary': panelizationSummary!.toJson(),
+          'panelizationSummary': panelizationSummary!,
         if (previewLink != null) 'previewLink': previewLink!,
         if (printType != null) 'printType': printType!,
         if (printedPageCount != null) 'printedPageCount': printedPageCount!,
         if (publishedDate != null) 'publishedDate': publishedDate!,
         if (publisher != null) 'publisher': publisher!,
         if (ratingsCount != null) 'ratingsCount': ratingsCount!,
-        if (readingModes != null) 'readingModes': readingModes!.toJson(),
+        if (readingModes != null) 'readingModes': readingModes!,
         if (samplePageCount != null) 'samplePageCount': samplePageCount!,
-        if (seriesInfo != null) 'seriesInfo': seriesInfo!.toJson(),
+        if (seriesInfo != null) 'seriesInfo': seriesInfo!,
         if (subtitle != null) 'subtitle': subtitle!,
         if (title != null) 'title': title!,
       };
@@ -7997,18 +7965,17 @@ class Volume {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (accessInfo != null) 'accessInfo': accessInfo!.toJson(),
+        if (accessInfo != null) 'accessInfo': accessInfo!,
         if (etag != null) 'etag': etag!,
         if (id != null) 'id': id!,
         if (kind != null) 'kind': kind!,
-        if (layerInfo != null) 'layerInfo': layerInfo!.toJson(),
-        if (recommendedInfo != null)
-          'recommendedInfo': recommendedInfo!.toJson(),
-        if (saleInfo != null) 'saleInfo': saleInfo!.toJson(),
-        if (searchInfo != null) 'searchInfo': searchInfo!.toJson(),
+        if (layerInfo != null) 'layerInfo': layerInfo!,
+        if (recommendedInfo != null) 'recommendedInfo': recommendedInfo!,
+        if (saleInfo != null) 'saleInfo': saleInfo!,
+        if (searchInfo != null) 'searchInfo': searchInfo!,
         if (selfLink != null) 'selfLink': selfLink!,
-        if (userInfo != null) 'userInfo': userInfo!.toJson(),
-        if (volumeInfo != null) 'volumeInfo': volumeInfo!.toJson(),
+        if (userInfo != null) 'userInfo': userInfo!,
+        if (volumeInfo != null) 'volumeInfo': volumeInfo!,
       };
 }
 
@@ -8041,8 +8008,7 @@ class Volume2 {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (items != null)
-          'items': items!.map((value) => value.toJson()).toList(),
+        if (items != null) 'items': items!,
         if (kind != null) 'kind': kind!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
@@ -8089,10 +8055,10 @@ class VolumeannotationContentRanges {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cfiRange != null) 'cfiRange': cfiRange!.toJson(),
+        if (cfiRange != null) 'cfiRange': cfiRange!,
         if (contentVersion != null) 'contentVersion': contentVersion!,
-        if (gbImageRange != null) 'gbImageRange': gbImageRange!.toJson(),
-        if (gbTextRange != null) 'gbTextRange': gbTextRange!.toJson(),
+        if (gbImageRange != null) 'gbImageRange': gbImageRange!,
+        if (gbTextRange != null) 'gbTextRange': gbTextRange!,
       };
 }
 
@@ -8206,7 +8172,7 @@ class Volumeannotation {
         if (annotationDataLink != null)
           'annotationDataLink': annotationDataLink!,
         if (annotationType != null) 'annotationType': annotationType!,
-        if (contentRanges != null) 'contentRanges': contentRanges!.toJson(),
+        if (contentRanges != null) 'contentRanges': contentRanges!,
         if (data != null) 'data': data!,
         if (deleted != null) 'deleted': deleted!,
         if (id != null) 'id': id!,
@@ -8272,8 +8238,7 @@ class Volumeannotations {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (items != null)
-          'items': items!.map((value) => value.toJson()).toList(),
+        if (items != null) 'items': items!,
         if (kind != null) 'kind': kind!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (totalItems != null) 'totalItems': totalItems!,
@@ -8315,8 +8280,7 @@ class Volumes {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (items != null)
-          'items': items!.map((value) => value.toJson()).toList(),
+        if (items != null) 'items': items!,
         if (kind != null) 'kind': kind!,
         if (totalItems != null) 'totalItems': totalItems!,
       };
@@ -8392,8 +8356,7 @@ class VolumeseriesinfoVolumeSeries {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (issue != null)
-          'issue': issue!.map((value) => value.toJson()).toList(),
+        if (issue != null) 'issue': issue!,
         if (orderNumber != null) 'orderNumber': orderNumber!,
         if (seriesBookType != null) 'seriesBookType': seriesBookType!,
         if (seriesId != null) 'seriesId': seriesId!,
@@ -8443,7 +8406,6 @@ class Volumeseriesinfo {
         if (kind != null) 'kind': kind!,
         if (shortSeriesBookTitle != null)
           'shortSeriesBookTitle': shortSeriesBookTitle!,
-        if (volumeSeries != null)
-          'volumeSeries': volumeSeries!.map((value) => value.toJson()).toList(),
+        if (volumeSeries != null) 'volumeSeries': volumeSeries!,
       };
 }

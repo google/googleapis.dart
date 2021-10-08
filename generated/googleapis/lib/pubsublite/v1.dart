@@ -139,7 +139,7 @@ class AdminProjectsLocationsOperationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -335,7 +335,7 @@ class AdminProjectsLocationsSubscriptionsResource {
     core.String? subscriptionId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (skipBacklog != null) 'skipBacklog': ['${skipBacklog}'],
       if (subscriptionId != null) 'subscriptionId': [subscriptionId],
@@ -510,7 +510,7 @@ class AdminProjectsLocationsSubscriptionsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -569,7 +569,7 @@ class AdminProjectsLocationsSubscriptionsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -625,7 +625,7 @@ class AdminProjectsLocationsTopicsResource {
     core.String? topicId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (topicId != null) 'topicId': [topicId],
       if ($fields != null) 'fields': [$fields],
@@ -830,7 +830,7 @@ class AdminProjectsLocationsTopicsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -966,7 +966,7 @@ class CursorProjectsLocationsSubscriptionsResource {
     core.String subscription, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1110,7 +1110,7 @@ class TopicStatsProjectsLocationsTopicsResource {
     core.String topic, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1154,7 +1154,7 @@ class TopicStatsProjectsLocationsTopicsResource {
     core.String topic, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1199,7 +1199,7 @@ class TopicStatsProjectsLocationsTopicsResource {
     core.String topic, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1283,7 +1283,7 @@ class CommitCursorRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cursor != null) 'cursor': cursor!.toJson(),
+        if (cursor != null) 'cursor': cursor!,
         if (partition != null) 'partition': partition!,
       };
 }
@@ -1332,7 +1332,7 @@ class ComputeHeadCursorResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (headCursor != null) 'headCursor': headCursor!.toJson(),
+        if (headCursor != null) 'headCursor': headCursor!,
       };
 }
 
@@ -1375,9 +1375,9 @@ class ComputeMessageStatsRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (endCursor != null) 'endCursor': endCursor!.toJson(),
+        if (endCursor != null) 'endCursor': endCursor!,
         if (partition != null) 'partition': partition!,
-        if (startCursor != null) 'startCursor': startCursor!.toJson(),
+        if (startCursor != null) 'startCursor': startCursor!,
       };
 }
 
@@ -1467,7 +1467,7 @@ class ComputeTimeCursorRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (partition != null) 'partition': partition!,
-        if (target != null) 'target': target!.toJson(),
+        if (target != null) 'target': target!,
       };
 }
 
@@ -1494,7 +1494,7 @@ class ComputeTimeCursorResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cursor != null) 'cursor': cursor!.toJson(),
+        if (cursor != null) 'cursor': cursor!,
       };
 }
 
@@ -1588,8 +1588,7 @@ class ListOperationsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (operations != null)
-          'operations': operations!.map((value) => value.toJson()).toList(),
+        if (operations != null) 'operations': operations!,
       };
 }
 
@@ -1623,9 +1622,7 @@ class ListPartitionCursorsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (partitionCursors != null)
-          'partitionCursors':
-              partitionCursors!.map((value) => value.toJson()).toList(),
+        if (partitionCursors != null) 'partitionCursors': partitionCursors!,
       };
 }
 
@@ -1662,9 +1659,7 @@ class ListSubscriptionsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (subscriptions != null)
-          'subscriptions':
-              subscriptions!.map((value) => value.toJson()).toList(),
+        if (subscriptions != null) 'subscriptions': subscriptions!,
       };
 }
 
@@ -1737,8 +1732,7 @@ class ListTopicsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (topics != null)
-          'topics': topics!.map((value) => value.toJson()).toList(),
+        if (topics != null) 'topics': topics!,
       };
 }
 
@@ -1811,7 +1805,7 @@ class Operation {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (done != null) 'done': done!,
-        if (error != null) 'error': error!.toJson(),
+        if (error != null) 'error': error!,
         if (metadata != null) 'metadata': metadata!,
         if (name != null) 'name': name!,
         if (response != null) 'response': response!,
@@ -1906,7 +1900,7 @@ class PartitionConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (capacity != null) 'capacity': capacity!.toJson(),
+        if (capacity != null) 'capacity': capacity!,
         if (count != null) 'count': count!,
         if (scale != null) 'scale': scale!,
       };
@@ -1937,7 +1931,7 @@ class PartitionCursor {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cursor != null) 'cursor': cursor!.toJson(),
+        if (cursor != null) 'cursor': cursor!,
         if (partition != null) 'partition': partition!,
       };
 }
@@ -2013,7 +2007,7 @@ class SeekSubscriptionRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (namedTarget != null) 'namedTarget': namedTarget!,
-        if (timeTarget != null) 'timeTarget': timeTarget!.toJson(),
+        if (timeTarget != null) 'timeTarget': timeTarget!,
       };
 }
 
@@ -2106,7 +2100,7 @@ class Subscription {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (deliveryConfig != null) 'deliveryConfig': deliveryConfig!.toJson(),
+        if (deliveryConfig != null) 'deliveryConfig': deliveryConfig!,
         if (name != null) 'name': name!,
         if (topic != null) 'topic': topic!,
       };
@@ -2188,10 +2182,8 @@ class Topic {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
-        if (partitionConfig != null)
-          'partitionConfig': partitionConfig!.toJson(),
-        if (retentionConfig != null)
-          'retentionConfig': retentionConfig!.toJson(),
+        if (partitionConfig != null) 'partitionConfig': partitionConfig!,
+        if (retentionConfig != null) 'retentionConfig': retentionConfig!,
       };
 }
 

@@ -204,7 +204,7 @@ class ProjectsLocationsApisResource {
     core.String? apiId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (apiId != null) 'apiId': [apiId],
       if ($fields != null) 'fields': [$fields],
@@ -437,7 +437,7 @@ class ProjectsLocationsApisResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -485,7 +485,7 @@ class ProjectsLocationsApisResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -534,7 +534,7 @@ class ProjectsLocationsApisResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -589,7 +589,7 @@ class ProjectsLocationsApisConfigsResource {
     core.String? apiConfigId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (apiConfigId != null) 'apiConfigId': [apiConfigId],
       if ($fields != null) 'fields': [$fields],
@@ -832,7 +832,7 @@ class ProjectsLocationsApisConfigsResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -880,7 +880,7 @@ class ProjectsLocationsApisConfigsResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -929,7 +929,7 @@ class ProjectsLocationsApisConfigsResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -983,7 +983,7 @@ class ProjectsLocationsGatewaysResource {
     core.String? gatewayId,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (gatewayId != null) 'gatewayId': [gatewayId],
       if ($fields != null) 'fields': [$fields],
@@ -1216,7 +1216,7 @@ class ProjectsLocationsGatewaysResource {
     core.String? updateMask,
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -1264,7 +1264,7 @@ class ProjectsLocationsGatewaysResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1313,7 +1313,7 @@ class ProjectsLocationsGatewaysResource {
     core.String resource, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1372,7 +1372,7 @@ class ProjectsLocationsOperationsResource {
     core.String name, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1790,16 +1790,12 @@ class ApigatewayApiConfig {
         if (displayName != null) 'displayName': displayName!,
         if (gatewayServiceAccount != null)
           'gatewayServiceAccount': gatewayServiceAccount!,
-        if (grpcServices != null)
-          'grpcServices': grpcServices!.map((value) => value.toJson()).toList(),
+        if (grpcServices != null) 'grpcServices': grpcServices!,
         if (labels != null) 'labels': labels!,
         if (managedServiceConfigs != null)
-          'managedServiceConfigs':
-              managedServiceConfigs!.map((value) => value.toJson()).toList(),
+          'managedServiceConfigs': managedServiceConfigs!,
         if (name != null) 'name': name!,
-        if (openapiDocuments != null)
-          'openapiDocuments':
-              openapiDocuments!.map((value) => value.toJson()).toList(),
+        if (openapiDocuments != null) 'openapiDocuments': openapiDocuments!,
         if (serviceConfigId != null) 'serviceConfigId': serviceConfigId!,
         if (state != null) 'state': state!,
         if (updateTime != null) 'updateTime': updateTime!,
@@ -1880,10 +1876,8 @@ class ApigatewayApiConfigGrpcServiceDefinition {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (fileDescriptorSet != null)
-          'fileDescriptorSet': fileDescriptorSet!.toJson(),
-        if (source != null)
-          'source': source!.map((value) => value.toJson()).toList(),
+        if (fileDescriptorSet != null) 'fileDescriptorSet': fileDescriptorSet!,
+        if (source != null) 'source': source!,
       };
 }
 
@@ -1905,7 +1899,7 @@ class ApigatewayApiConfigOpenApiDocument {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (document != null) 'document': document!.toJson(),
+        if (document != null) 'document': document!,
       };
 }
 
@@ -1955,9 +1949,7 @@ class ApigatewayAuditConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (auditLogConfigs != null)
-          'auditLogConfigs':
-              auditLogConfigs!.map((value) => value.toJson()).toList(),
+        if (auditLogConfigs != null) 'auditLogConfigs': auditLogConfigs!,
         if (service != null) 'service': service!,
       };
 }
@@ -2076,7 +2068,7 @@ class ApigatewayBinding {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (condition != null) 'condition': condition!.toJson(),
+        if (condition != null) 'condition': condition!,
         if (members != null) 'members': members!,
         if (role != null) 'role': role!,
       };
@@ -2308,8 +2300,7 @@ class ApigatewayListApiConfigsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (apiConfigs != null)
-          'apiConfigs': apiConfigs!.map((value) => value.toJson()).toList(),
+        if (apiConfigs != null) 'apiConfigs': apiConfigs!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (unreachableLocations != null)
           'unreachableLocations': unreachableLocations!,
@@ -2352,7 +2343,7 @@ class ApigatewayListApisResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (apis != null) 'apis': apis!.map((value) => value.toJson()).toList(),
+        if (apis != null) 'apis': apis!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (unreachableLocations != null)
           'unreachableLocations': unreachableLocations!,
@@ -2395,8 +2386,7 @@ class ApigatewayListGatewaysResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (gateways != null)
-          'gateways': gateways!.map((value) => value.toJson()).toList(),
+        if (gateways != null) 'gateways': gateways!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (unreachableLocations != null)
           'unreachableLocations': unreachableLocations!,
@@ -2430,8 +2420,7 @@ class ApigatewayListLocationsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (locations != null)
-          'locations': locations!.map((value) => value.toJson()).toList(),
+        if (locations != null) 'locations': locations!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -2464,8 +2453,7 @@ class ApigatewayListOperationsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (operations != null)
-          'operations': operations!.map((value) => value.toJson()).toList(),
+        if (operations != null) 'operations': operations!,
       };
 }
 
@@ -2607,7 +2595,7 @@ class ApigatewayOperation {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (done != null) 'done': done!,
-        if (error != null) 'error': error!.toJson(),
+        if (error != null) 'error': error!,
         if (metadata != null) 'metadata': metadata!,
         if (name != null) 'name': name!,
         if (response != null) 'response': response!,
@@ -2704,8 +2692,7 @@ class ApigatewayOperationMetadata {
   core.Map<core.String, core.dynamic> toJson() => {
         if (apiVersion != null) 'apiVersion': apiVersion!,
         if (createTime != null) 'createTime': createTime!,
-        if (diagnostics != null)
-          'diagnostics': diagnostics!.map((value) => value.toJson()).toList(),
+        if (diagnostics != null) 'diagnostics': diagnostics!,
         if (endTime != null) 'endTime': endTime!,
         if (requestedCancellation != null)
           'requestedCancellation': requestedCancellation!,
@@ -2853,10 +2840,8 @@ class ApigatewayPolicy {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (auditConfigs != null)
-          'auditConfigs': auditConfigs!.map((value) => value.toJson()).toList(),
-        if (bindings != null)
-          'bindings': bindings!.map((value) => value.toJson()).toList(),
+        if (auditConfigs != null) 'auditConfigs': auditConfigs!,
+        if (bindings != null) 'bindings': bindings!,
         if (etag != null) 'etag': etag!,
         if (version != null) 'version': version!,
       };
@@ -2894,7 +2879,7 @@ class ApigatewaySetIamPolicyRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (policy != null) 'policy': policy!.toJson(),
+        if (policy != null) 'policy': policy!,
         if (updateMask != null) 'updateMask': updateMask!,
       };
 }

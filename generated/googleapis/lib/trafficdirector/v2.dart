@@ -74,7 +74,7 @@ class DiscoveryResource {
     ClientStatusRequest request, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -117,8 +117,8 @@ class Address {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (pipe != null) 'pipe': pipe!.toJson(),
-        if (socketAddress != null) 'socketAddress': socketAddress!.toJson(),
+        if (pipe != null) 'pipe': pipe!,
+        if (socketAddress != null) 'socketAddress': socketAddress!,
       };
 }
 
@@ -155,7 +155,7 @@ class BuildVersion {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (metadata != null) 'metadata': metadata!,
-        if (version != null) 'version': version!.toJson(),
+        if (version != null) 'version': version!,
       };
 }
 
@@ -185,9 +185,8 @@ class ClientConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (node != null) 'node': node!.toJson(),
-        if (xdsConfig != null)
-          'xdsConfig': xdsConfig!.map((value) => value.toJson()).toList(),
+        if (node != null) 'node': node!,
+        if (xdsConfig != null) 'xdsConfig': xdsConfig!,
       };
 }
 
@@ -213,8 +212,7 @@ class ClientStatusRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nodeMatchers != null)
-          'nodeMatchers': nodeMatchers!.map((value) => value.toJson()).toList(),
+        if (nodeMatchers != null) 'nodeMatchers': nodeMatchers!,
       };
 }
 
@@ -237,8 +235,7 @@ class ClientStatusResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (config != null)
-          'config': config!.map((value) => value.toJson()).toList(),
+        if (config != null) 'config': config!,
       };
 }
 
@@ -305,14 +302,10 @@ class ClustersConfigDump {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (dynamicActiveClusters != null)
-          'dynamicActiveClusters':
-              dynamicActiveClusters!.map((value) => value.toJson()).toList(),
+          'dynamicActiveClusters': dynamicActiveClusters!,
         if (dynamicWarmingClusters != null)
-          'dynamicWarmingClusters':
-              dynamicWarmingClusters!.map((value) => value.toJson()).toList(),
-        if (staticClusters != null)
-          'staticClusters':
-              staticClusters!.map((value) => value.toJson()).toList(),
+          'dynamicWarmingClusters': dynamicWarmingClusters!,
+        if (staticClusters != null) 'staticClusters': staticClusters!,
         if (versionInfo != null) 'versionInfo': versionInfo!,
       };
 }
@@ -346,7 +339,7 @@ class DoubleMatcher {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (exact != null) 'exact': exact!,
-        if (range != null) 'range': range!.toJson(),
+        if (range != null) 'range': range!,
       };
 }
 
@@ -486,11 +479,11 @@ class DynamicListener {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (activeState != null) 'activeState': activeState!.toJson(),
-        if (drainingState != null) 'drainingState': drainingState!.toJson(),
-        if (errorState != null) 'errorState': errorState!.toJson(),
+        if (activeState != null) 'activeState': activeState!,
+        if (drainingState != null) 'drainingState': drainingState!,
+        if (errorState != null) 'errorState': errorState!,
         if (name != null) 'name': name!,
-        if (warmingState != null) 'warmingState': warmingState!.toJson(),
+        if (warmingState != null) 'warmingState': warmingState!,
       };
 }
 
@@ -692,7 +685,7 @@ class Extension {
         if (disabled != null) 'disabled': disabled!,
         if (name != null) 'name': name!,
         if (typeDescriptor != null) 'typeDescriptor': typeDescriptor!,
-        if (version != null) 'version': version!.toJson(),
+        if (version != null) 'version': version!,
       };
 }
 
@@ -797,7 +790,7 @@ class ListMatcher {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (oneOf != null) 'oneOf': oneOf!.toJson(),
+        if (oneOf != null) 'oneOf': oneOf!,
       };
 }
 
@@ -846,12 +839,8 @@ class ListenersConfigDump {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dynamicListeners != null)
-          'dynamicListeners':
-              dynamicListeners!.map((value) => value.toJson()).toList(),
-        if (staticListeners != null)
-          'staticListeners':
-              staticListeners!.map((value) => value.toJson()).toList(),
+        if (dynamicListeners != null) 'dynamicListeners': dynamicListeners!,
+        if (staticListeners != null) 'staticListeners': staticListeners!,
         if (versionInfo != null) 'versionInfo': versionInfo!,
       };
 }
@@ -1035,16 +1024,14 @@ class Node {
         if (buildVersion != null) 'buildVersion': buildVersion!,
         if (clientFeatures != null) 'clientFeatures': clientFeatures!,
         if (cluster != null) 'cluster': cluster!,
-        if (extensions != null)
-          'extensions': extensions!.map((value) => value.toJson()).toList(),
+        if (extensions != null) 'extensions': extensions!,
         if (id != null) 'id': id!,
         if (listeningAddresses != null)
-          'listeningAddresses':
-              listeningAddresses!.map((value) => value.toJson()).toList(),
-        if (locality != null) 'locality': locality!.toJson(),
+          'listeningAddresses': listeningAddresses!,
+        if (locality != null) 'locality': locality!,
         if (metadata != null) 'metadata': metadata!,
         if (userAgentBuildVersion != null)
-          'userAgentBuildVersion': userAgentBuildVersion!.toJson(),
+          'userAgentBuildVersion': userAgentBuildVersion!,
         if (userAgentName != null) 'userAgentName': userAgentName!,
         if (userAgentVersion != null) 'userAgentVersion': userAgentVersion!,
       };
@@ -1080,10 +1067,8 @@ class NodeMatcher {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nodeId != null) 'nodeId': nodeId!.toJson(),
-        if (nodeMetadatas != null)
-          'nodeMetadatas':
-              nodeMetadatas!.map((value) => value.toJson()).toList(),
+        if (nodeId != null) 'nodeId': nodeId!,
+        if (nodeMetadatas != null) 'nodeMetadatas': nodeMetadatas!,
       };
 }
 
@@ -1162,11 +1147,10 @@ class PerXdsConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (clusterConfig != null) 'clusterConfig': clusterConfig!.toJson(),
-        if (listenerConfig != null) 'listenerConfig': listenerConfig!.toJson(),
-        if (routeConfig != null) 'routeConfig': routeConfig!.toJson(),
-        if (scopedRouteConfig != null)
-          'scopedRouteConfig': scopedRouteConfig!.toJson(),
+        if (clusterConfig != null) 'clusterConfig': clusterConfig!,
+        if (listenerConfig != null) 'listenerConfig': listenerConfig!,
+        if (routeConfig != null) 'routeConfig': routeConfig!,
+        if (scopedRouteConfig != null) 'scopedRouteConfig': scopedRouteConfig!,
         if (status != null) 'status': status!,
       };
 }
@@ -1227,7 +1211,7 @@ class RegexMatcher {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (googleRe2 != null) 'googleRe2': googleRe2!.toJson(),
+        if (googleRe2 != null) 'googleRe2': googleRe2!,
         if (regex != null) 'regex': regex!,
       };
 }
@@ -1270,11 +1254,9 @@ class RoutesConfigDump {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (dynamicRouteConfigs != null)
-          'dynamicRouteConfigs':
-              dynamicRouteConfigs!.map((value) => value.toJson()).toList(),
+          'dynamicRouteConfigs': dynamicRouteConfigs!,
         if (staticRouteConfigs != null)
-          'staticRouteConfigs':
-              staticRouteConfigs!.map((value) => value.toJson()).toList(),
+          'staticRouteConfigs': staticRouteConfigs!,
       };
 }
 
@@ -1317,12 +1299,9 @@ class ScopedRoutesConfigDump {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (dynamicScopedRouteConfigs != null)
-          'dynamicScopedRouteConfigs': dynamicScopedRouteConfigs!
-              .map((value) => value.toJson())
-              .toList(),
+          'dynamicScopedRouteConfigs': dynamicScopedRouteConfigs!,
         if (inlineScopedRouteConfigs != null)
-          'inlineScopedRouteConfigs':
-              inlineScopedRouteConfigs!.map((value) => value.toJson()).toList(),
+          'inlineScopedRouteConfigs': inlineScopedRouteConfigs!,
       };
 }
 
@@ -1613,7 +1592,7 @@ class StringMatcher {
         if (ignoreCase != null) 'ignoreCase': ignoreCase!,
         if (prefix != null) 'prefix': prefix!,
         if (regex != null) 'regex': regex!,
-        if (safeRegex != null) 'safeRegex': safeRegex!.toJson(),
+        if (safeRegex != null) 'safeRegex': safeRegex!,
         if (suffix != null) 'suffix': suffix!,
       };
 }
@@ -1661,8 +1640,8 @@ class StructMatcher {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (path != null) 'path': path!.map((value) => value.toJson()).toList(),
-        if (value != null) 'value': value!.toJson(),
+        if (path != null) 'path': path!,
+        if (value != null) 'value': value!,
       };
 }
 
@@ -1777,10 +1756,10 @@ class ValueMatcher {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (boolMatch != null) 'boolMatch': boolMatch!,
-        if (doubleMatch != null) 'doubleMatch': doubleMatch!.toJson(),
-        if (listMatch != null) 'listMatch': listMatch!.toJson(),
-        if (nullMatch != null) 'nullMatch': nullMatch!.toJson(),
+        if (doubleMatch != null) 'doubleMatch': doubleMatch!,
+        if (listMatch != null) 'listMatch': listMatch!,
+        if (nullMatch != null) 'nullMatch': nullMatch!,
         if (presentMatch != null) 'presentMatch': presentMatch!,
-        if (stringMatch != null) 'stringMatch': stringMatch!.toJson(),
+        if (stringMatch != null) 'stringMatch': stringMatch!,
       };
 }

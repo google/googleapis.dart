@@ -103,7 +103,7 @@ class ProjectsMessagesResource {
     core.String parent, {
     core.String? $fields,
   }) async {
-    final _body = convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -234,8 +234,8 @@ class AndroidConfig {
         if (collapseKey != null) 'collapseKey': collapseKey!,
         if (data != null) 'data': data!,
         if (directBootOk != null) 'directBootOk': directBootOk!,
-        if (fcmOptions != null) 'fcmOptions': fcmOptions!.toJson(),
-        if (notification != null) 'notification': notification!.toJson(),
+        if (fcmOptions != null) 'fcmOptions': fcmOptions!,
+        if (notification != null) 'notification': notification!,
         if (priority != null) 'priority': priority!,
         if (restrictedPackageName != null)
           'restrictedPackageName': restrictedPackageName!,
@@ -595,7 +595,7 @@ class AndroidNotification {
         if (eventTime != null) 'eventTime': eventTime!,
         if (icon != null) 'icon': icon!,
         if (image != null) 'image': image!,
-        if (lightSettings != null) 'lightSettings': lightSettings!.toJson(),
+        if (lightSettings != null) 'lightSettings': lightSettings!,
         if (localOnly != null) 'localOnly': localOnly!,
         if (notificationCount != null) 'notificationCount': notificationCount!,
         if (notificationPriority != null)
@@ -664,7 +664,7 @@ class ApnsConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (fcmOptions != null) 'fcmOptions': fcmOptions!.toJson(),
+        if (fcmOptions != null) 'fcmOptions': fcmOptions!,
         if (headers != null) 'headers': headers!,
         if (payload != null) 'payload': payload!,
       };
@@ -869,7 +869,7 @@ class LightSettings {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (color != null) 'color': color!.toJson(),
+        if (color != null) 'color': color!,
         if (lightOffDuration != null) 'lightOffDuration': lightOffDuration!,
         if (lightOnDuration != null) 'lightOnDuration': lightOnDuration!,
       };
@@ -983,16 +983,16 @@ class Message {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (android != null) 'android': android!.toJson(),
-        if (apns != null) 'apns': apns!.toJson(),
+        if (android != null) 'android': android!,
+        if (apns != null) 'apns': apns!,
         if (condition != null) 'condition': condition!,
         if (data != null) 'data': data!,
-        if (fcmOptions != null) 'fcmOptions': fcmOptions!.toJson(),
+        if (fcmOptions != null) 'fcmOptions': fcmOptions!,
         if (name != null) 'name': name!,
-        if (notification != null) 'notification': notification!.toJson(),
+        if (notification != null) 'notification': notification!,
         if (token != null) 'token': token!,
         if (topic != null) 'topic': topic!,
-        if (webpush != null) 'webpush': webpush!.toJson(),
+        if (webpush != null) 'webpush': webpush!,
       };
 }
 
@@ -1063,7 +1063,7 @@ class SendMessageRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (message != null) 'message': message!.toJson(),
+        if (message != null) 'message': message!,
         if (validateOnly != null) 'validateOnly': validateOnly!,
       };
 }
@@ -1132,7 +1132,7 @@ class WebpushConfig {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (data != null) 'data': data!,
-        if (fcmOptions != null) 'fcmOptions': fcmOptions!.toJson(),
+        if (fcmOptions != null) 'fcmOptions': fcmOptions!,
         if (headers != null) 'headers': headers!,
         if (notification != null) 'notification': notification!,
       };
