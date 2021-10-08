@@ -14,6 +14,7 @@ import 'src/pubspec.dart';
 import 'src/utils.dart';
 
 export 'src/generated_googleapis/discovery/v1.dart';
+export 'src/generated_googleapis/src/user_agent.dart';
 export 'src/pubspec.dart';
 export 'src/utils.dart' show GenerateResult;
 
