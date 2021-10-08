@@ -35,7 +35,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-import '../src/empty.dart';
+import '../shared.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -428,95 +428,15 @@ class ProjectsLocationsScansVulnerabilitiesResource {
 }
 
 /// An alias to a repo revision.
-class AliasContext {
-  /// The alias kind.
-  /// Possible string values are:
-  /// - "KIND_UNSPECIFIED" : Unknown.
-  /// - "FIXED" : Git tag.
-  /// - "MOVABLE" : Git branch.
-  /// - "OTHER" : Used to specify non-standard aliases. For example, if a Git
-  /// repo has a ref named "refs/foo/bar".
-  core.String? kind;
-
-  /// The alias name.
-  core.String? name;
-
-  AliasContext({
-    this.kind,
-    this.name,
-  });
-
-  AliasContext.fromJson(core.Map _json)
-      : this(
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (kind != null) 'kind': kind!,
-        if (name != null) 'name': name!,
-      };
-}
+typedef AliasContext = $AliasContext;
 
 /// AnalyzePackagesMetadata contains metadata for an active scan of a container
 /// image.
-class AnalyzePackagesMetadata {
-  /// When the scan was created.
-  core.String? createTime;
-
-  /// The resource URI of the container image being scanned.
-  core.String? resourceUri;
-
-  AnalyzePackagesMetadata({
-    this.createTime,
-    this.resourceUri,
-  });
-
-  AnalyzePackagesMetadata.fromJson(core.Map _json)
-      : this(
-          createTime: _json.containsKey('createTime')
-              ? _json['createTime'] as core.String
-              : null,
-          resourceUri: _json.containsKey('resourceUri')
-              ? _json['resourceUri'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
-        if (resourceUri != null) 'resourceUri': resourceUri!,
-      };
-}
+typedef AnalyzePackagesMetadata = $Shared04;
 
 /// AnalyzePackagesMetadata contains metadata for an active scan of a container
 /// image.
-class AnalyzePackagesMetadataV1 {
-  /// When the scan was created.
-  core.String? createTime;
-
-  /// The resource URI of the container image being scanned.
-  core.String? resourceUri;
-
-  AnalyzePackagesMetadataV1({
-    this.createTime,
-    this.resourceUri,
-  });
-
-  AnalyzePackagesMetadataV1.fromJson(core.Map _json)
-      : this(
-          createTime: _json.containsKey('createTime')
-              ? _json['createTime'] as core.String
-              : null,
-          resourceUri: _json.containsKey('resourceUri')
-              ? _json['resourceUri'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
-        if (resourceUri != null) 'resourceUri': resourceUri!,
-      };
-}
+typedef AnalyzePackagesMetadataV1 = $Shared04;
 
 /// AnalyzePackagesRequest is the request to analyze a list of packages and
 /// create Vulnerability Occurrences for it.
@@ -555,88 +475,14 @@ class AnalyzePackagesRequest {
 
 /// AnalyzePackagesResponse contains the information necessary to find results
 /// for the given scan.
-class AnalyzePackagesResponse {
-  /// The name of the scan resource created by this successful scan.
-  core.String? scan;
-
-  AnalyzePackagesResponse({
-    this.scan,
-  });
-
-  AnalyzePackagesResponse.fromJson(core.Map _json)
-      : this(
-          scan: _json.containsKey('scan') ? _json['scan'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (scan != null) 'scan': scan!,
-      };
-}
+typedef AnalyzePackagesResponse = $Shared05;
 
 /// AnalyzePackagesResponse contains the information necessary to find results
 /// for the given scan.
-class AnalyzePackagesResponseV1 {
-  /// The name of the scan resource created by this successful scan.
-  core.String? scan;
-
-  AnalyzePackagesResponseV1({
-    this.scan,
-  });
-
-  AnalyzePackagesResponseV1.fromJson(core.Map _json)
-      : this(
-          scan: _json.containsKey('scan') ? _json['scan'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (scan != null) 'scan': scan!,
-      };
-}
+typedef AnalyzePackagesResponseV1 = $Shared05;
 
 /// Artifact describes a build product.
-class Artifact {
-  /// Hash or checksum value of a binary, or Docker Registry 2.0 digest of a
-  /// container.
-  core.String? checksum;
-
-  /// Artifact ID, if any; for container images, this will be a URL by digest
-  /// like `gcr.io/projectID/imagename@sha256:123456`.
-  core.String? id;
-
-  /// Related artifact names.
-  ///
-  /// This may be the path to a binary or jar file, or in the case of a
-  /// container build, the name used to push the container image to Google
-  /// Container Registry, as presented to `docker push`. Note that a single
-  /// Artifact ID can have multiple names, for example if two tags are applied
-  /// to one image.
-  core.List<core.String>? names;
-
-  Artifact({
-    this.checksum,
-    this.id,
-    this.names,
-  });
-
-  Artifact.fromJson(core.Map _json)
-      : this(
-          checksum: _json.containsKey('checksum')
-              ? _json['checksum'] as core.String
-              : null,
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          names: _json.containsKey('names')
-              ? (_json['names'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (checksum != null) 'checksum': checksum!,
-        if (id != null) 'id': id!,
-        if (names != null) 'names': names!,
-      };
-}
+typedef Artifact = $Artifact;
 
 /// Occurrence that represents a single "attestation".
 ///
@@ -984,70 +830,7 @@ class CloudRepoSourceContext {
 }
 
 /// Command describes a step performed as part of the build pipeline.
-class Command {
-  /// Command-line arguments used when executing this command.
-  core.List<core.String>? args;
-
-  /// Working directory (relative to project source root) used when running this
-  /// command.
-  core.String? dir;
-
-  /// Environment variables set before running this command.
-  core.List<core.String>? env;
-
-  /// Optional unique identifier for this command, used in wait_for to reference
-  /// this command as a dependency.
-  core.String? id;
-
-  /// Name of the command, as presented on the command line, or if the command
-  /// is packaged as a Docker container, as presented to `docker pull`.
-  ///
-  /// Required.
-  core.String? name;
-
-  /// The ID(s) of the command(s) that this command depends on.
-  core.List<core.String>? waitFor;
-
-  Command({
-    this.args,
-    this.dir,
-    this.env,
-    this.id,
-    this.name,
-    this.waitFor,
-  });
-
-  Command.fromJson(core.Map _json)
-      : this(
-          args: _json.containsKey('args')
-              ? (_json['args'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          dir: _json.containsKey('dir') ? _json['dir'] as core.String : null,
-          env: _json.containsKey('env')
-              ? (_json['env'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          waitFor: _json.containsKey('waitFor')
-              ? (_json['waitFor'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (args != null) 'args': args!,
-        if (dir != null) 'dir': dir!,
-        if (env != null) 'env': env!,
-        if (id != null) 'id': id!,
-        if (name != null) 'name': name!,
-        if (waitFor != null) 'waitFor': waitFor!,
-      };
-}
+typedef Command = $Command;
 
 /// Indicates that the builder claims certain fields in this message to be
 /// complete.
@@ -1153,85 +936,7 @@ class DSSEAttestationOccurrence {
 }
 
 /// The period during which some deployable was active in a runtime.
-class DeploymentOccurrence {
-  /// Address of the runtime element hosting this deployment.
-  core.String? address;
-
-  /// Configuration used to create this deployment.
-  core.String? config;
-
-  /// Beginning of the lifetime of this deployment.
-  ///
-  /// Required.
-  core.String? deployTime;
-
-  /// Platform hosting this deployment.
-  /// Possible string values are:
-  /// - "PLATFORM_UNSPECIFIED" : Unknown.
-  /// - "GKE" : Google Container Engine.
-  /// - "FLEX" : Google App Engine: Flexible Environment.
-  /// - "CUSTOM" : Custom user-defined platform.
-  core.String? platform;
-
-  /// Resource URI for the artifact being deployed taken from the deployable
-  /// field with the same name.
-  ///
-  /// Output only.
-  core.List<core.String>? resourceUri;
-
-  /// End of the lifetime of this deployment.
-  core.String? undeployTime;
-
-  /// Identity of the user that triggered this deployment.
-  core.String? userEmail;
-
-  DeploymentOccurrence({
-    this.address,
-    this.config,
-    this.deployTime,
-    this.platform,
-    this.resourceUri,
-    this.undeployTime,
-    this.userEmail,
-  });
-
-  DeploymentOccurrence.fromJson(core.Map _json)
-      : this(
-          address: _json.containsKey('address')
-              ? _json['address'] as core.String
-              : null,
-          config: _json.containsKey('config')
-              ? _json['config'] as core.String
-              : null,
-          deployTime: _json.containsKey('deployTime')
-              ? _json['deployTime'] as core.String
-              : null,
-          platform: _json.containsKey('platform')
-              ? _json['platform'] as core.String
-              : null,
-          resourceUri: _json.containsKey('resourceUri')
-              ? (_json['resourceUri'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          undeployTime: _json.containsKey('undeployTime')
-              ? _json['undeployTime'] as core.String
-              : null,
-          userEmail: _json.containsKey('userEmail')
-              ? _json['userEmail'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (address != null) 'address': address!,
-        if (config != null) 'config': config!,
-        if (deployTime != null) 'deployTime': deployTime!,
-        if (platform != null) 'platform': platform!,
-        if (resourceUri != null) 'resourceUri': resourceUri!,
-        if (undeployTime != null) 'undeployTime': undeployTime!,
-        if (userEmail != null) 'userEmail': userEmail!,
-      };
-}
+typedef DeploymentOccurrence = $Shared03;
 
 /// Provides information about the analysis status of a discovered resource.
 class DiscoveryOccurrence {
@@ -1412,51 +1117,7 @@ class FileHashes {
 }
 
 /// A set of properties that uniquely identify a given Docker image.
-class Fingerprint {
-  /// The layer ID of the final layer in the Docker image's v1 representation.
-  ///
-  /// Required.
-  core.String? v1Name;
-
-  /// The ordered list of v2 blobs that represent a given image.
-  ///
-  /// Required.
-  core.List<core.String>? v2Blob;
-
-  /// The name of the image's v2 blobs computed via: \[bottom\] := v2_blobbottom
-  /// := sha256(v2_blob\[N\] + " " + v2_name\[N+1\]) Only the name of the final
-  /// blob is kept.
-  ///
-  /// Output only.
-  core.String? v2Name;
-
-  Fingerprint({
-    this.v1Name,
-    this.v2Blob,
-    this.v2Name,
-  });
-
-  Fingerprint.fromJson(core.Map _json)
-      : this(
-          v1Name: _json.containsKey('v1Name')
-              ? _json['v1Name'] as core.String
-              : null,
-          v2Blob: _json.containsKey('v2Blob')
-              ? (_json['v2Blob'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          v2Name: _json.containsKey('v2Name')
-              ? _json['v2Name'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (v1Name != null) 'v1Name': v1Name!,
-        if (v2Blob != null) 'v2Blob': v2Blob!,
-        if (v2Name != null) 'v2Name': v2Name!,
-      };
-}
+typedef Fingerprint = $Fingerprint;
 
 /// A SourceContext referring to a Gerrit project.
 class GerritSourceContext {
@@ -1509,31 +1170,7 @@ class GerritSourceContext {
 
 /// A GitSourceContext denotes a particular revision in a third party Git
 /// repository (e.g., GitHub).
-class GitSourceContext {
-  /// Git commit hash.
-  core.String? revisionId;
-
-  /// Git repository URL.
-  core.String? url;
-
-  GitSourceContext({
-    this.revisionId,
-    this.url,
-  });
-
-  GitSourceContext.fromJson(core.Map _json)
-      : this(
-          revisionId: _json.containsKey('revisionId')
-              ? _json['revisionId'] as core.String
-              : null,
-          url: _json.containsKey('url') ? _json['url'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (revisionId != null) 'revisionId': revisionId!,
-        if (url != null) 'url': url!,
-      };
-}
+typedef GitSourceContext = $GitSourceContext;
 
 /// Container message for hash values.
 class Hash {
@@ -2531,35 +2168,7 @@ class PackageOccurrence {
 
 /// Selects a repo using a Google Cloud Platform project ID (e.g.,
 /// winged-cargo-31) and a repo name within that project.
-class ProjectRepoId {
-  /// The ID of the project.
-  core.String? projectId;
-
-  /// The name of the repo.
-  ///
-  /// Leave empty for the default repo.
-  core.String? repoName;
-
-  ProjectRepoId({
-    this.projectId,
-    this.repoName,
-  });
-
-  ProjectRepoId.fromJson(core.Map _json)
-      : this(
-          projectId: _json.containsKey('projectId')
-              ? _json['projectId'] as core.String
-              : null,
-          repoName: _json.containsKey('repoName')
-              ? _json['repoName'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (projectId != null) 'projectId': projectId!,
-        if (repoName != null) 'repoName': repoName!,
-      };
-}
+typedef ProjectRepoId = $ProjectRepoId;
 
 /// Steps taken to build the artifact.
 ///
@@ -2652,30 +2261,7 @@ class Recipe {
 }
 
 /// Metadata for any related URL information.
-class RelatedUrl {
-  /// Label to describe usage of the URL.
-  core.String? label;
-
-  /// Specific URL associated with the resource.
-  core.String? url;
-
-  RelatedUrl({
-    this.label,
-    this.url,
-  });
-
-  RelatedUrl.fromJson(core.Map _json)
-      : this(
-          label:
-              _json.containsKey('label') ? _json['label'] as core.String : null,
-          url: _json.containsKey('url') ? _json['url'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (label != null) 'label': label!,
-        if (url != null) 'url': url!,
-      };
-}
+typedef RelatedUrl = $RelatedUrl;
 
 /// A unique identifier for a Cloud Repo.
 class RepoId {
@@ -2724,56 +2310,7 @@ class RepoId {
 /// explicitly provided payload (e.g. a `payload` field on the proto message
 /// that holds this Signature, or the canonical serialization of the proto
 /// message that holds this signature).
-class Signature {
-  /// The identifier for the public key that verifies this signature.
-  ///
-  /// * The `public_key_id` is required. * The `public_key_id` SHOULD be an
-  /// RFC3986 conformant URI. * When possible, the `public_key_id` SHOULD be an
-  /// immutable reference, such as a cryptographic digest. Examples of valid
-  /// `public_key_id`s: OpenPGP V4 public key fingerprint: *
-  /// "openpgp4fpr:74FAF3B861BDA0870C7B6DEF607E48D2A663AEEA" See
-  /// https://www.iana.org/assignments/uri-schemes/prov/openpgp4fpr for more
-  /// details on this scheme. RFC6920 digest-named SubjectPublicKeyInfo (digest
-  /// of the DER serialization): *
-  /// "ni:///sha-256;cD9o9Cq6LG3jD0iKXqEi_vdjJGecm_iXkbqVoScViaU" *
-  /// "nih:///sha-256;703f68f42aba2c6de30f488a5ea122fef76324679c9bf89791ba95a1271589a5"
-  core.String? publicKeyId;
-
-  /// The content of the signature, an opaque bytestring.
-  ///
-  /// The payload that this signature verifies MUST be unambiguously provided
-  /// with the Signature during verification. A wrapper message might provide
-  /// the payload explicitly. Alternatively, a message might have a canonical
-  /// serialization that can always be unambiguously computed to derive the
-  /// payload.
-  core.String? signature;
-  core.List<core.int> get signatureAsBytes => convert.base64.decode(signature!);
-
-  set signatureAsBytes(core.List<core.int> _bytes) {
-    signature =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
-  }
-
-  Signature({
-    this.publicKeyId,
-    this.signature,
-  });
-
-  Signature.fromJson(core.Map _json)
-      : this(
-          publicKeyId: _json.containsKey('publicKeyId')
-              ? _json['publicKeyId'] as core.String
-              : null,
-          signature: _json.containsKey('signature')
-              ? _json['signature'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (publicKeyId != null) 'publicKeyId': publicKeyId!,
-        if (signature != null) 'signature': signature!,
-      };
-}
+typedef Signature = $Signature;
 
 /// Source describes the location of the source used for the build.
 class Source {
@@ -2908,49 +2445,7 @@ class SourceContext {
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-class Status {
-  /// The status code, which should be an enum value of google.rpc.Code.
-  core.int? code;
-
-  /// A list of messages that carry the error details.
-  ///
-  /// There is a common set of message types for APIs to use.
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object?>>? details;
-
-  /// A developer-facing error message, which should be in English.
-  ///
-  /// Any user-facing error message should be localized and sent in the
-  /// google.rpc.Status.details field, or localized by the client.
-  core.String? message;
-
-  Status({
-    this.code,
-    this.details,
-    this.message,
-  });
-
-  Status.fromJson(core.Map _json)
-      : this(
-          code: _json.containsKey('code') ? _json['code'] as core.int : null,
-          details: _json.containsKey('details')
-              ? (_json['details'] as core.List)
-                  .map((value) => value as core.Map<core.String, core.dynamic>)
-                  .toList()
-              : null,
-          message: _json.containsKey('message')
-              ? _json['message'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (code != null) 'code': code!,
-        if (details != null) 'details': details!,
-        if (message != null) 'message': message!,
-      };
-}
+typedef Status = $Status;
 
 class Subject {
   /// "": ""

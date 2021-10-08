@@ -37,7 +37,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-import '../src/empty.dart';
+import '../shared.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -2348,61 +2348,7 @@ class ExpirationPolicy {
 /// functions that may be referenced within an expression are determined by the
 /// service that evaluates it. See the service documentation for additional
 /// information.
-class Expr {
-  /// Description of the expression.
-  ///
-  /// This is a longer text which describes the expression, e.g. when hovered
-  /// over it in a UI.
-  ///
-  /// Optional.
-  core.String? description;
-
-  /// Textual representation of an expression in Common Expression Language
-  /// syntax.
-  core.String? expression;
-
-  /// String indicating the location of the expression for error reporting, e.g.
-  /// a file name and a position in the file.
-  ///
-  /// Optional.
-  core.String? location;
-
-  /// Title for the expression, i.e. a short string describing its purpose.
-  ///
-  /// This can be used e.g. in UIs which allow to enter the expression.
-  ///
-  /// Optional.
-  core.String? title;
-
-  Expr({
-    this.description,
-    this.expression,
-    this.location,
-    this.title,
-  });
-
-  Expr.fromJson(core.Map _json)
-      : this(
-          description: _json.containsKey('description')
-              ? _json['description'] as core.String
-              : null,
-          expression: _json.containsKey('expression')
-              ? _json['expression'] as core.String
-              : null,
-          location: _json.containsKey('location')
-              ? _json['location'] as core.String
-              : null,
-          title:
-              _json.containsKey('title') ? _json['title'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (description != null) 'description': description!,
-        if (expression != null) 'expression': expression!,
-        if (location != null) 'location': location!,
-        if (title != null) 'title': title!,
-      };
-}
+typedef Expr = $Expr;
 
 /// Response for the `ListSchemas` method.
 class ListSchemasResponse {
@@ -2917,86 +2863,7 @@ class PublishResponse {
 /// for more information. See
 /// [quotas and limits](https://cloud.google.com/pubsub/quotas) for more
 /// information about message limits.
-class PubsubMessage {
-  /// Attributes for this message.
-  ///
-  /// If this field is empty, the message must contain non-empty data. This can
-  /// be used to filter messages on the subscription.
-  core.Map<core.String, core.String>? attributes;
-
-  /// The message data field.
-  ///
-  /// If this field is empty, the message must contain at least one attribute.
-  core.String? data;
-  core.List<core.int> get dataAsBytes => convert.base64.decode(data!);
-
-  set dataAsBytes(core.List<core.int> _bytes) {
-    data =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
-  }
-
-  /// ID of this message, assigned by the server when the message is published.
-  ///
-  /// Guaranteed to be unique within the topic. This value may be read by a
-  /// subscriber that receives a `PubsubMessage` via a `Pull` call or a push
-  /// delivery. It must not be populated by the publisher in a `Publish` call.
-  core.String? messageId;
-
-  /// If non-empty, identifies related messages for which publish order should
-  /// be respected.
-  ///
-  /// If a `Subscription` has `enable_message_ordering` set to `true`, messages
-  /// published with the same non-empty `ordering_key` value will be delivered
-  /// to subscribers in the order in which they are received by the Pub/Sub
-  /// system. All `PubsubMessage`s published in a given `PublishRequest` must
-  /// specify the same `ordering_key` value.
-  core.String? orderingKey;
-
-  /// The time at which the message was published, populated by the server when
-  /// it receives the `Publish` call.
-  ///
-  /// It must not be populated by the publisher in a `Publish` call.
-  core.String? publishTime;
-
-  PubsubMessage({
-    this.attributes,
-    this.data,
-    this.messageId,
-    this.orderingKey,
-    this.publishTime,
-  });
-
-  PubsubMessage.fromJson(core.Map _json)
-      : this(
-          attributes: _json.containsKey('attributes')
-              ? (_json['attributes'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.String,
-                  ),
-                )
-              : null,
-          data: _json.containsKey('data') ? _json['data'] as core.String : null,
-          messageId: _json.containsKey('messageId')
-              ? _json['messageId'] as core.String
-              : null,
-          orderingKey: _json.containsKey('orderingKey')
-              ? _json['orderingKey'] as core.String
-              : null,
-          publishTime: _json.containsKey('publishTime')
-              ? _json['publishTime'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (attributes != null) 'attributes': attributes!,
-        if (data != null) 'data': data!,
-        if (messageId != null) 'messageId': messageId!,
-        if (orderingKey != null) 'orderingKey': orderingKey!,
-        if (publishTime != null) 'publishTime': publishTime!,
-      };
-}
+typedef PubsubMessage = $PubsubMessage;
 
 /// Request for the `Pull` method.
 class PullRequest {
@@ -3666,55 +3533,10 @@ class Subscription {
 }
 
 /// Request message for `TestIamPermissions` method.
-class TestIamPermissionsRequest {
-  /// The set of permissions to check for the `resource`.
-  ///
-  /// Permissions with wildcards (such as '*' or 'storage.*') are not allowed.
-  /// For more information see
-  /// [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).
-  core.List<core.String>? permissions;
-
-  TestIamPermissionsRequest({
-    this.permissions,
-  });
-
-  TestIamPermissionsRequest.fromJson(core.Map _json)
-      : this(
-          permissions: _json.containsKey('permissions')
-              ? (_json['permissions'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (permissions != null) 'permissions': permissions!,
-      };
-}
+typedef TestIamPermissionsRequest = $TestIamPermissionsRequest;
 
 /// Response message for `TestIamPermissions` method.
-class TestIamPermissionsResponse {
-  /// A subset of `TestPermissionsRequest.permissions` that the caller is
-  /// allowed.
-  core.List<core.String>? permissions;
-
-  TestIamPermissionsResponse({
-    this.permissions,
-  });
-
-  TestIamPermissionsResponse.fromJson(core.Map _json)
-      : this(
-          permissions: _json.containsKey('permissions')
-              ? (_json['permissions'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (permissions != null) 'permissions': permissions!,
-      };
-}
+typedef TestIamPermissionsResponse = $PermissionsResponse;
 
 /// A topic resource.
 class Topic {

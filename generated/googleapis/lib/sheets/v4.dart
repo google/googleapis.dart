@@ -33,7 +33,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-import '../src/empty.dart';
+import '../shared.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -2710,39 +2710,7 @@ class BatchClearValuesByDataFilterRequest {
 
 /// The response when clearing a range of values selected with DataFilters in a
 /// spreadsheet.
-class BatchClearValuesByDataFilterResponse {
-  /// The ranges that were cleared, in A1 notation.
-  ///
-  /// If the requests are for an unbounded range or a ranger larger than the
-  /// bounds of the sheet, this is the actual ranges that were cleared, bounded
-  /// to the sheet's limits.
-  core.List<core.String>? clearedRanges;
-
-  /// The spreadsheet the updates were applied to.
-  core.String? spreadsheetId;
-
-  BatchClearValuesByDataFilterResponse({
-    this.clearedRanges,
-    this.spreadsheetId,
-  });
-
-  BatchClearValuesByDataFilterResponse.fromJson(core.Map _json)
-      : this(
-          clearedRanges: _json.containsKey('clearedRanges')
-              ? (_json['clearedRanges'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          spreadsheetId: _json.containsKey('spreadsheetId')
-              ? _json['spreadsheetId'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (clearedRanges != null) 'clearedRanges': clearedRanges!,
-        if (spreadsheetId != null) 'spreadsheetId': spreadsheetId!,
-      };
-}
+typedef BatchClearValuesByDataFilterResponse = $Response;
 
 /// The request for clearing more than one range of values in a spreadsheet.
 class BatchClearValuesRequest {
@@ -2768,39 +2736,7 @@ class BatchClearValuesRequest {
 }
 
 /// The response when clearing a range of values in a spreadsheet.
-class BatchClearValuesResponse {
-  /// The ranges that were cleared, in A1 notation.
-  ///
-  /// If the requests are for an unbounded range or a ranger larger than the
-  /// bounds of the sheet, this is the actual ranges that were cleared, bounded
-  /// to the sheet's limits.
-  core.List<core.String>? clearedRanges;
-
-  /// The spreadsheet the updates were applied to.
-  core.String? spreadsheetId;
-
-  BatchClearValuesResponse({
-    this.clearedRanges,
-    this.spreadsheetId,
-  });
-
-  BatchClearValuesResponse.fromJson(core.Map _json)
-      : this(
-          clearedRanges: _json.containsKey('clearedRanges')
-              ? (_json['clearedRanges'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          spreadsheetId: _json.containsKey('spreadsheetId')
-              ? _json['spreadsheetId'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (clearedRanges != null) 'clearedRanges': clearedRanges!,
-        if (spreadsheetId != null) 'spreadsheetId': spreadsheetId!,
-      };
-}
+typedef BatchClearValuesResponse = $Response;
 
 /// The request for retrieving a range of values in a spreadsheet selected by a
 /// set of DataFilters.
@@ -5140,58 +5076,7 @@ class ClearValuesResponse {
 /// - hexString.length; var resultBuilder = \['#'\]; for (var i = 0; i <
 /// missingZeros; i++) { resultBuilder.push('0'); }
 /// resultBuilder.push(hexString); return resultBuilder.join(''); }; // ...
-class Color {
-  /// The fraction of this color that should be applied to the pixel.
-  ///
-  /// That is, the final pixel color is defined by the equation: `pixel color =
-  /// alpha * (this color) + (1.0 - alpha) * (background color)` This means that
-  /// a value of 1.0 corresponds to a solid color, whereas a value of 0.0
-  /// corresponds to a completely transparent color. This uses a wrapper message
-  /// rather than a simple float scalar so that it is possible to distinguish
-  /// between a default value and the value being unset. If omitted, this color
-  /// object is rendered as a solid color (as if the alpha value had been
-  /// explicitly given a value of 1.0).
-  core.double? alpha;
-
-  /// The amount of blue in the color as a value in the interval \[0, 1\].
-  core.double? blue;
-
-  /// The amount of green in the color as a value in the interval \[0, 1\].
-  core.double? green;
-
-  /// The amount of red in the color as a value in the interval \[0, 1\].
-  core.double? red;
-
-  Color({
-    this.alpha,
-    this.blue,
-    this.green,
-    this.red,
-  });
-
-  Color.fromJson(core.Map _json)
-      : this(
-          alpha: _json.containsKey('alpha')
-              ? (_json['alpha'] as core.num).toDouble()
-              : null,
-          blue: _json.containsKey('blue')
-              ? (_json['blue'] as core.num).toDouble()
-              : null,
-          green: _json.containsKey('green')
-              ? (_json['green'] as core.num).toDouble()
-              : null,
-          red: _json.containsKey('red')
-              ? (_json['red'] as core.num).toDouble()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (alpha != null) 'alpha': alpha!,
-        if (blue != null) 'blue': blue!,
-        if (green != null) 'green': green!,
-        if (red != null) 'red': red!,
-      };
-}
+typedef Color = $Color;
 
 /// A color value.
 class ColorStyle {
@@ -12908,55 +12793,7 @@ class ThemeColorPair {
 /// The date and time zone are either not significant or are specified
 /// elsewhere. An API may choose to allow leap seconds. Related types are
 /// google.type.Date and `google.protobuf.Timestamp`.
-class TimeOfDay {
-  /// Hours of day in 24 hour format.
-  ///
-  /// Should be from 0 to 23. An API may choose to allow the value "24:00:00"
-  /// for scenarios like business closing time.
-  core.int? hours;
-
-  /// Minutes of hour of day.
-  ///
-  /// Must be from 0 to 59.
-  core.int? minutes;
-
-  /// Fractions of seconds in nanoseconds.
-  ///
-  /// Must be from 0 to 999,999,999.
-  core.int? nanos;
-
-  /// Seconds of minutes of the time.
-  ///
-  /// Must normally be from 0 to 59. An API may allow the value 60 if it allows
-  /// leap-seconds.
-  core.int? seconds;
-
-  TimeOfDay({
-    this.hours,
-    this.minutes,
-    this.nanos,
-    this.seconds,
-  });
-
-  TimeOfDay.fromJson(core.Map _json)
-      : this(
-          hours: _json.containsKey('hours') ? _json['hours'] as core.int : null,
-          minutes: _json.containsKey('minutes')
-              ? _json['minutes'] as core.int
-              : null,
-          nanos: _json.containsKey('nanos') ? _json['nanos'] as core.int : null,
-          seconds: _json.containsKey('seconds')
-              ? _json['seconds'] as core.int
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (hours != null) 'hours': hours!,
-        if (minutes != null) 'minutes': minutes!,
-        if (nanos != null) 'nanos': nanos!,
-        if (seconds != null) 'seconds': seconds!,
-      };
-}
+typedef TimeOfDay = $TimeOfDay;
 
 /// A color scale for a treemap chart.
 class TreemapChartColorScale {

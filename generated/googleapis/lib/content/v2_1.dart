@@ -69,7 +69,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-import '../src/empty.dart';
+import '../shared.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -11735,42 +11735,7 @@ class DatafeedstatusesListResponse {
 /// anniversary * A year on its own, with zero month and day values * A year and
 /// month value, with a zero day, such as a credit card expiration date Related
 /// types are google.type.TimeOfDay and `google.protobuf.Timestamp`.
-class Date {
-  /// Day of a month.
-  ///
-  /// Must be from 1 to 31 and valid for the year and month, or 0 to specify a
-  /// year by itself or a year and month where the day isn't significant.
-  core.int? day;
-
-  /// Month of a year.
-  ///
-  /// Must be from 1 to 12, or 0 to specify a year without a month and day.
-  core.int? month;
-
-  /// Year of the date.
-  ///
-  /// Must be from 1 to 9999, or 0 to specify a date without a year.
-  core.int? year;
-
-  Date({
-    this.day,
-    this.month,
-    this.year,
-  });
-
-  Date.fromJson(core.Map _json)
-      : this(
-          day: _json.containsKey('day') ? _json['day'] as core.int : null,
-          month: _json.containsKey('month') ? _json['month'] as core.int : null,
-          year: _json.containsKey('year') ? _json['year'] as core.int : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (day != null) 'day': day!,
-        if (month != null) 'month': month!,
-        if (year != null) 'year': year!,
-      };
-}
+typedef Date = $Date;
 
 /// Represents civil time (or occasionally physical time).
 ///
@@ -15018,93 +14983,7 @@ class Order {
       };
 }
 
-class OrderAddress {
-  /// CLDR country code (e.g. "US").
-  core.String? country;
-
-  /// Strings representing the lines of the printed label for mailing the order,
-  /// for example: John Smith 1600 Amphitheatre Parkway Mountain View, CA, 94043
-  /// United States
-  core.List<core.String>? fullAddress;
-
-  /// Whether the address is a post office box.
-  core.bool? isPostOfficeBox;
-
-  /// City, town or commune.
-  ///
-  /// May also include dependent localities or sublocalities (e.g. neighborhoods
-  /// or suburbs).
-  core.String? locality;
-
-  /// Postal Code or ZIP (e.g. "94043").
-  core.String? postalCode;
-
-  /// Name of the recipient.
-  core.String? recipientName;
-
-  /// Top-level administrative subdivision of the country.
-  ///
-  /// For example, a state like California ("CA") or a province like Quebec
-  /// ("QC").
-  core.String? region;
-
-  /// Street-level part of the address.
-  core.List<core.String>? streetAddress;
-
-  OrderAddress({
-    this.country,
-    this.fullAddress,
-    this.isPostOfficeBox,
-    this.locality,
-    this.postalCode,
-    this.recipientName,
-    this.region,
-    this.streetAddress,
-  });
-
-  OrderAddress.fromJson(core.Map _json)
-      : this(
-          country: _json.containsKey('country')
-              ? _json['country'] as core.String
-              : null,
-          fullAddress: _json.containsKey('fullAddress')
-              ? (_json['fullAddress'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          isPostOfficeBox: _json.containsKey('isPostOfficeBox')
-              ? _json['isPostOfficeBox'] as core.bool
-              : null,
-          locality: _json.containsKey('locality')
-              ? _json['locality'] as core.String
-              : null,
-          postalCode: _json.containsKey('postalCode')
-              ? _json['postalCode'] as core.String
-              : null,
-          recipientName: _json.containsKey('recipientName')
-              ? _json['recipientName'] as core.String
-              : null,
-          region: _json.containsKey('region')
-              ? _json['region'] as core.String
-              : null,
-          streetAddress: _json.containsKey('streetAddress')
-              ? (_json['streetAddress'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (country != null) 'country': country!,
-        if (fullAddress != null) 'fullAddress': fullAddress!,
-        if (isPostOfficeBox != null) 'isPostOfficeBox': isPostOfficeBox!,
-        if (locality != null) 'locality': locality!,
-        if (postalCode != null) 'postalCode': postalCode!,
-        if (recipientName != null) 'recipientName': recipientName!,
-        if (region != null) 'region': region!,
-        if (streetAddress != null) 'streetAddress': streetAddress!,
-      };
-}
+typedef OrderAddress = $OrderAddress;
 
 class OrderCancellation {
   /// The actor that created the cancellation.
@@ -20863,60 +20742,10 @@ class PostalCodeRange {
       };
 }
 
-class Price {
-  /// The currency of the price.
-  core.String? currency;
-
-  /// The price represented as a number.
-  core.String? value;
-
-  Price({
-    this.currency,
-    this.value,
-  });
-
-  Price.fromJson(core.Map _json)
-      : this(
-          currency: _json.containsKey('currency')
-              ? _json['currency'] as core.String
-              : null,
-          value:
-              _json.containsKey('value') ? _json['value'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (currency != null) 'currency': currency!,
-        if (value != null) 'value': value!,
-      };
-}
+typedef Price = $Shared06;
 
 /// The price represented as a number and currency.
-class PriceAmount {
-  /// The currency of the price.
-  core.String? currency;
-
-  /// The price represented as a number.
-  core.String? value;
-
-  PriceAmount({
-    this.currency,
-    this.value,
-  });
-
-  PriceAmount.fromJson(core.Map _json)
-      : this(
-          currency: _json.containsKey('currency')
-              ? _json['currency'] as core.String
-              : null,
-          value:
-              _json.containsKey('value') ? _json['value'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (currency != null) 'currency': currency!,
-        if (value != null) 'value': value!,
-      };
-}
+typedef PriceAmount = $Shared06;
 
 /// Required product attributes are primarily defined by the products data
 /// specification.
@@ -24869,50 +24698,10 @@ class RequestPhoneVerificationResponse {
 typedef RequestReviewBuyOnGoogleProgramRequest = $Empty;
 
 /// Request message for the RequestReviewFreeListings Program method.
-class RequestReviewFreeListingsRequest {
-  /// The code \[ISO 3166-1
-  /// alpha-2\](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) of the country
-  /// for which review is to be requested.
-  core.String? regionCode;
-
-  RequestReviewFreeListingsRequest({
-    this.regionCode,
-  });
-
-  RequestReviewFreeListingsRequest.fromJson(core.Map _json)
-      : this(
-          regionCode: _json.containsKey('regionCode')
-              ? _json['regionCode'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (regionCode != null) 'regionCode': regionCode!,
-      };
-}
+typedef RequestReviewFreeListingsRequest = $Request06;
 
 /// Request message for the RequestReviewShoppingAds program method.
-class RequestReviewShoppingAdsRequest {
-  /// The code \[ISO 3166-1
-  /// alpha-2\](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) of the country
-  /// for which review is to be requested.
-  core.String? regionCode;
-
-  RequestReviewShoppingAdsRequest({
-    this.regionCode,
-  });
-
-  RequestReviewShoppingAdsRequest.fromJson(core.Map _json)
-      : this(
-          regionCode: _json.containsKey('regionCode')
-              ? _json['regionCode'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (regionCode != null) 'regionCode': regionCode!,
-      };
-}
+typedef RequestReviewShoppingAdsRequest = $Request06;
 
 /// Return address resource.
 class ReturnAddress {
@@ -27872,93 +27661,7 @@ class TestOrder {
       };
 }
 
-class TestOrderAddress {
-  /// CLDR country code (e.g. "US").
-  core.String? country;
-
-  /// Strings representing the lines of the printed label for mailing the order,
-  /// for example: John Smith 1600 Amphitheatre Parkway Mountain View, CA, 94043
-  /// United States
-  core.List<core.String>? fullAddress;
-
-  /// Whether the address is a post office box.
-  core.bool? isPostOfficeBox;
-
-  /// City, town or commune.
-  ///
-  /// May also include dependent localities or sublocalities (e.g. neighborhoods
-  /// or suburbs).
-  core.String? locality;
-
-  /// Postal Code or ZIP (e.g. "94043").
-  core.String? postalCode;
-
-  /// Name of the recipient.
-  core.String? recipientName;
-
-  /// Top-level administrative subdivision of the country.
-  ///
-  /// For example, a state like California ("CA") or a province like Quebec
-  /// ("QC").
-  core.String? region;
-
-  /// Street-level part of the address.
-  core.List<core.String>? streetAddress;
-
-  TestOrderAddress({
-    this.country,
-    this.fullAddress,
-    this.isPostOfficeBox,
-    this.locality,
-    this.postalCode,
-    this.recipientName,
-    this.region,
-    this.streetAddress,
-  });
-
-  TestOrderAddress.fromJson(core.Map _json)
-      : this(
-          country: _json.containsKey('country')
-              ? _json['country'] as core.String
-              : null,
-          fullAddress: _json.containsKey('fullAddress')
-              ? (_json['fullAddress'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          isPostOfficeBox: _json.containsKey('isPostOfficeBox')
-              ? _json['isPostOfficeBox'] as core.bool
-              : null,
-          locality: _json.containsKey('locality')
-              ? _json['locality'] as core.String
-              : null,
-          postalCode: _json.containsKey('postalCode')
-              ? _json['postalCode'] as core.String
-              : null,
-          recipientName: _json.containsKey('recipientName')
-              ? _json['recipientName'] as core.String
-              : null,
-          region: _json.containsKey('region')
-              ? _json['region'] as core.String
-              : null,
-          streetAddress: _json.containsKey('streetAddress')
-              ? (_json['streetAddress'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (country != null) 'country': country!,
-        if (fullAddress != null) 'fullAddress': fullAddress!,
-        if (isPostOfficeBox != null) 'isPostOfficeBox': isPostOfficeBox!,
-        if (locality != null) 'locality': locality!,
-        if (postalCode != null) 'postalCode': postalCode!,
-        if (recipientName != null) 'recipientName': recipientName!,
-        if (region != null) 'region': region!,
-        if (streetAddress != null) 'streetAddress': streetAddress!,
-      };
-}
+typedef TestOrderAddress = $OrderAddress;
 
 class TestOrderDeliveryDetails {
   /// The delivery address
@@ -28294,33 +27997,7 @@ class TestOrderPickupDetailsPickupPerson {
 
 /// Represents a time zone from the
 /// [IANA Time Zone Database](https://www.iana.org/time-zones).
-class TimeZone {
-  /// IANA Time Zone Database time zone, e.g. "America/New_York".
-  core.String? id;
-
-  /// IANA Time Zone Database version number, e.g. "2019a".
-  ///
-  /// Optional.
-  core.String? version;
-
-  TimeZone({
-    this.id,
-    this.version,
-  });
-
-  TimeZone.fromJson(core.Map _json)
-      : this(
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          version: _json.containsKey('version')
-              ? _json['version'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (id != null) 'id': id!,
-        if (version != null) 'version': version!,
-      };
-}
+typedef TimeZone = $TimeZone;
 
 class TransitTable {
   /// A list of postal group names.

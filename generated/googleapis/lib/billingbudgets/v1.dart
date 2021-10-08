@@ -33,7 +33,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-import '../src/empty.dart';
+import '../shared.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -883,81 +883,7 @@ typedef GoogleProtobufEmpty = $Empty;
 /// anniversary * A year on its own, with zero month and day values * A year and
 /// month value, with a zero day, such as a credit card expiration date Related
 /// types are google.type.TimeOfDay and `google.protobuf.Timestamp`.
-class GoogleTypeDate {
-  /// Day of a month.
-  ///
-  /// Must be from 1 to 31 and valid for the year and month, or 0 to specify a
-  /// year by itself or a year and month where the day isn't significant.
-  core.int? day;
-
-  /// Month of a year.
-  ///
-  /// Must be from 1 to 12, or 0 to specify a year without a month and day.
-  core.int? month;
-
-  /// Year of the date.
-  ///
-  /// Must be from 1 to 9999, or 0 to specify a date without a year.
-  core.int? year;
-
-  GoogleTypeDate({
-    this.day,
-    this.month,
-    this.year,
-  });
-
-  GoogleTypeDate.fromJson(core.Map _json)
-      : this(
-          day: _json.containsKey('day') ? _json['day'] as core.int : null,
-          month: _json.containsKey('month') ? _json['month'] as core.int : null,
-          year: _json.containsKey('year') ? _json['year'] as core.int : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (day != null) 'day': day!,
-        if (month != null) 'month': month!,
-        if (year != null) 'year': year!,
-      };
-}
+typedef GoogleTypeDate = $Date;
 
 /// Represents an amount of money with its currency type.
-class GoogleTypeMoney {
-  /// The three-letter currency code defined in ISO 4217.
-  core.String? currencyCode;
-
-  /// Number of nano (10^-9) units of the amount.
-  ///
-  /// The value must be between -999,999,999 and +999,999,999 inclusive. If
-  /// `units` is positive, `nanos` must be positive or zero. If `units` is zero,
-  /// `nanos` can be positive, zero, or negative. If `units` is negative,
-  /// `nanos` must be negative or zero. For example $-1.75 is represented as
-  /// `units`=-1 and `nanos`=-750,000,000.
-  core.int? nanos;
-
-  /// The whole units of the amount.
-  ///
-  /// For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar.
-  core.String? units;
-
-  GoogleTypeMoney({
-    this.currencyCode,
-    this.nanos,
-    this.units,
-  });
-
-  GoogleTypeMoney.fromJson(core.Map _json)
-      : this(
-          currencyCode: _json.containsKey('currencyCode')
-              ? _json['currencyCode'] as core.String
-              : null,
-          nanos: _json.containsKey('nanos') ? _json['nanos'] as core.int : null,
-          units:
-              _json.containsKey('units') ? _json['units'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (currencyCode != null) 'currencyCode': currencyCode!,
-        if (nanos != null) 'nanos': nanos!,
-        if (units != null) 'units': units!,
-      };
-}
+typedef GoogleTypeMoney = $Money;

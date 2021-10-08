@@ -40,7 +40,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-import '../src/empty.dart';
+import '../shared.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -398,32 +398,7 @@ class ThreatMatchesResource {
 typedef GoogleProtobufEmpty = $Empty;
 
 /// The expected state of a client's local database.
-class GoogleSecuritySafebrowsingV4Checksum {
-  /// The SHA256 hash of the client state; that is, of the sorted list of all
-  /// hashes present in the database.
-  core.String? sha256;
-  core.List<core.int> get sha256AsBytes => convert.base64.decode(sha256!);
-
-  set sha256AsBytes(core.List<core.int> _bytes) {
-    sha256 =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
-  }
-
-  GoogleSecuritySafebrowsingV4Checksum({
-    this.sha256,
-  });
-
-  GoogleSecuritySafebrowsingV4Checksum.fromJson(core.Map _json)
-      : this(
-          sha256: _json.containsKey('sha256')
-              ? _json['sha256'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (sha256 != null) 'sha256': sha256!,
-      };
-}
+typedef GoogleSecuritySafebrowsingV4Checksum = $Checksum;
 
 /// The client metadata associated with Safe Browsing API requests.
 class GoogleSecuritySafebrowsingV4ClientInfo {
@@ -1118,27 +1093,7 @@ class GoogleSecuritySafebrowsingV4RawHashes {
 }
 
 /// A set of raw indices to remove from a local list.
-class GoogleSecuritySafebrowsingV4RawIndices {
-  /// The indices to remove from a lexicographically-sorted local list.
-  core.List<core.int>? indices;
-
-  GoogleSecuritySafebrowsingV4RawIndices({
-    this.indices,
-  });
-
-  GoogleSecuritySafebrowsingV4RawIndices.fromJson(core.Map _json)
-      : this(
-          indices: _json.containsKey('indices')
-              ? (_json['indices'] as core.List)
-                  .map((value) => value as core.int)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (indices != null) 'indices': indices!,
-      };
-}
+typedef GoogleSecuritySafebrowsingV4RawIndices = $RawIndices;
 
 /// The Rice-Golomb encoded data.
 ///

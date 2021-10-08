@@ -48,7 +48,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-import '../src/empty.dart';
+import '../shared.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -3492,40 +3492,7 @@ class PoliciesResource {
 }
 
 /// Associates `members` with a `role`.
-class SasPortalAssignment {
-  /// The identities the role is assigned to.
-  ///
-  /// It can have the following values: * `{user_email}`: An email address that
-  /// represents a specific Google account. For example: `alice@gmail.com`. *
-  /// `{group_email}`: An email address that represents a Google group. For
-  /// example, `viewers@gmail.com`.
-  core.List<core.String>? members;
-
-  /// Role that is assigned to `members`.
-  ///
-  /// Required.
-  core.String? role;
-
-  SasPortalAssignment({
-    this.members,
-    this.role,
-  });
-
-  SasPortalAssignment.fromJson(core.Map _json)
-      : this(
-          members: _json.containsKey('members')
-              ? (_json['members'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          role: _json.containsKey('role') ? _json['role'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (members != null) 'members': members!,
-        if (role != null) 'role': role!,
-      };
-}
+typedef SasPortalAssignment = $SasPortalAssignment;
 
 /// The channel with score.
 class SasPortalChannelWithScore {
@@ -3558,167 +3525,14 @@ class SasPortalChannelWithScore {
 }
 
 /// Request for CreateSignedDevice.
-class SasPortalCreateSignedDeviceRequest {
-  /// JSON Web Token signed using a CPI private key.
-  ///
-  /// Payload must be the JSON encoding of the device. The user_id field must be
-  /// set.
-  ///
-  /// Required.
-  core.String? encodedDevice;
-  core.List<core.int> get encodedDeviceAsBytes =>
-      convert.base64.decode(encodedDevice!);
-
-  set encodedDeviceAsBytes(core.List<core.int> _bytes) {
-    encodedDevice =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
-  }
-
-  /// Unique installer id (CPI ID) from the Certified Professional Installers
-  /// database.
-  ///
-  /// Required.
-  core.String? installerId;
-
-  SasPortalCreateSignedDeviceRequest({
-    this.encodedDevice,
-    this.installerId,
-  });
-
-  SasPortalCreateSignedDeviceRequest.fromJson(core.Map _json)
-      : this(
-          encodedDevice: _json.containsKey('encodedDevice')
-              ? _json['encodedDevice'] as core.String
-              : null,
-          installerId: _json.containsKey('installerId')
-              ? _json['installerId'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (encodedDevice != null) 'encodedDevice': encodedDevice!,
-        if (installerId != null) 'installerId': installerId!,
-      };
-}
+typedef SasPortalCreateSignedDeviceRequest
+    = $SasPortalCreateSignedDeviceRequest;
 
 /// Entity representing a SAS customer.
-class SasPortalCustomer {
-  /// Name of the organization that the customer entity represents.
-  ///
-  /// Required.
-  core.String? displayName;
-
-  /// Resource name of the customer.
-  ///
-  /// Output only.
-  core.String? name;
-
-  /// User IDs used by the devices belonging to this customer.
-  core.List<core.String>? sasUserIds;
-
-  SasPortalCustomer({
-    this.displayName,
-    this.name,
-    this.sasUserIds,
-  });
-
-  SasPortalCustomer.fromJson(core.Map _json)
-      : this(
-          displayName: _json.containsKey('displayName')
-              ? _json['displayName'] as core.String
-              : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          sasUserIds: _json.containsKey('sasUserIds')
-              ? (_json['sasUserIds'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (displayName != null) 'displayName': displayName!,
-        if (name != null) 'name': name!,
-        if (sasUserIds != null) 'sasUserIds': sasUserIds!,
-      };
-}
+typedef SasPortalCustomer = $SasPortalCustomer;
 
 /// The Deployment.
-class SasPortalDeployment {
-  /// The allowed billing modes under this deployment.
-  core.List<core.String>? allowedBillingModes;
-
-  /// Default billing mode for the deployment and devices under it.
-  /// Possible string values are:
-  /// - "BILLING_MODE_UNSPECIFIED" : Billing mode has not been specified.
-  /// - "MOBILE" : Price is based on category of CBSD: Category A, Category B
-  /// registered with SAS.
-  /// - "FIXED_WIRELESS" : Price is based on type of CBSD: Base station or CPE.
-  core.String? defaultBillingMode;
-
-  /// The deployment's display name.
-  core.String? displayName;
-
-  /// The FRNs copied from its direct parent.
-  ///
-  /// Output only.
-  core.List<core.String>? frns;
-
-  /// Resource name.
-  ///
-  /// Output only.
-  core.String? name;
-
-  /// User ID used by the devices belonging to this deployment.
-  ///
-  /// Each deployment should be associated with one unique user ID.
-  core.List<core.String>? sasUserIds;
-
-  SasPortalDeployment({
-    this.allowedBillingModes,
-    this.defaultBillingMode,
-    this.displayName,
-    this.frns,
-    this.name,
-    this.sasUserIds,
-  });
-
-  SasPortalDeployment.fromJson(core.Map _json)
-      : this(
-          allowedBillingModes: _json.containsKey('allowedBillingModes')
-              ? (_json['allowedBillingModes'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          defaultBillingMode: _json.containsKey('defaultBillingMode')
-              ? _json['defaultBillingMode'] as core.String
-              : null,
-          displayName: _json.containsKey('displayName')
-              ? _json['displayName'] as core.String
-              : null,
-          frns: _json.containsKey('frns')
-              ? (_json['frns'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          sasUserIds: _json.containsKey('sasUserIds')
-              ? (_json['sasUserIds'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (allowedBillingModes != null)
-          'allowedBillingModes': allowedBillingModes!,
-        if (defaultBillingMode != null)
-          'defaultBillingMode': defaultBillingMode!,
-        if (displayName != null) 'displayName': displayName!,
-        if (frns != null) 'frns': frns!,
-        if (name != null) 'name': name!,
-        if (sasUserIds != null) 'sasUserIds': sasUserIds!,
-      };
-}
+typedef SasPortalDeployment = $SasPortalDeployment;
 
 class SasPortalDevice {
   /// Current configuration of the device as registered to the SAS.
@@ -3847,50 +3661,7 @@ class SasPortalDevice {
 }
 
 /// Information about the device's air interface.
-class SasPortalDeviceAirInterface {
-  /// Conditional.
-  ///
-  /// This field specifies the radio access technology that is used for the
-  /// CBSD.
-  /// Possible string values are:
-  /// - "RADIO_TECHNOLOGY_UNSPECIFIED"
-  /// - "E_UTRA"
-  /// - "CAMBIUM_NETWORKS"
-  /// - "FOUR_G_BBW_SAA_1"
-  /// - "NR"
-  /// - "DOODLE_CBRS"
-  /// - "CW"
-  /// - "REDLINE"
-  /// - "TARANA_WIRELESS"
-  core.String? radioTechnology;
-
-  /// This field is related to the `radioTechnology` and provides the air
-  /// interface specification that the CBSD is compliant with at the time of
-  /// registration.
-  ///
-  /// Optional.
-  core.String? supportedSpec;
-
-  SasPortalDeviceAirInterface({
-    this.radioTechnology,
-    this.supportedSpec,
-  });
-
-  SasPortalDeviceAirInterface.fromJson(core.Map _json)
-      : this(
-          radioTechnology: _json.containsKey('radioTechnology')
-              ? _json['radioTechnology'] as core.String
-              : null,
-          supportedSpec: _json.containsKey('supportedSpec')
-              ? _json['supportedSpec'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (radioTechnology != null) 'radioTechnology': radioTechnology!,
-        if (supportedSpec != null) 'supportedSpec': supportedSpec!,
-      };
-}
+typedef SasPortalDeviceAirInterface = $SasPortalDeviceAirInterface;
 
 /// Information about the device configuration.
 class SasPortalDeviceConfig {
@@ -4107,103 +3878,10 @@ class SasPortalDeviceGrant {
 }
 
 /// Device data overridable by both SAS Portal and registration requests.
-class SasPortalDeviceMetadata {
-  /// If populated, the Antenna Model Pattern to use.
-  ///
-  /// Format is: RecordCreatorId:PatternId
-  core.String? antennaModel;
-
-  /// CCG.
-  ///
-  /// A group of CBSDs in the same ICG requesting a common primary channel
-  /// assignment. See CBRSA-TS-2001 V3.0.0 for more details.
-  core.String? commonChannelGroup;
-
-  /// ICG.
-  ///
-  /// A group of CBSDs that manage their own interference with the group. See
-  /// CBRSA-TS-2001 V3.0.0 for more details.
-  core.String? interferenceCoordinationGroup;
-
-  SasPortalDeviceMetadata({
-    this.antennaModel,
-    this.commonChannelGroup,
-    this.interferenceCoordinationGroup,
-  });
-
-  SasPortalDeviceMetadata.fromJson(core.Map _json)
-      : this(
-          antennaModel: _json.containsKey('antennaModel')
-              ? _json['antennaModel'] as core.String
-              : null,
-          commonChannelGroup: _json.containsKey('commonChannelGroup')
-              ? _json['commonChannelGroup'] as core.String
-              : null,
-          interferenceCoordinationGroup:
-              _json.containsKey('interferenceCoordinationGroup')
-                  ? _json['interferenceCoordinationGroup'] as core.String
-                  : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (antennaModel != null) 'antennaModel': antennaModel!,
-        if (commonChannelGroup != null)
-          'commonChannelGroup': commonChannelGroup!,
-        if (interferenceCoordinationGroup != null)
-          'interferenceCoordinationGroup': interferenceCoordinationGroup!,
-      };
-}
+typedef SasPortalDeviceMetadata = $SasPortalDeviceMetadata;
 
 /// Information about the model of the device.
-class SasPortalDeviceModel {
-  /// The firmware version of the device.
-  core.String? firmwareVersion;
-
-  /// The hardware version of the device.
-  core.String? hardwareVersion;
-
-  /// The name of the device model.
-  core.String? name;
-
-  /// The software version of the device.
-  core.String? softwareVersion;
-
-  /// The name of the device vendor.
-  core.String? vendor;
-
-  SasPortalDeviceModel({
-    this.firmwareVersion,
-    this.hardwareVersion,
-    this.name,
-    this.softwareVersion,
-    this.vendor,
-  });
-
-  SasPortalDeviceModel.fromJson(core.Map _json)
-      : this(
-          firmwareVersion: _json.containsKey('firmwareVersion')
-              ? _json['firmwareVersion'] as core.String
-              : null,
-          hardwareVersion: _json.containsKey('hardwareVersion')
-              ? _json['hardwareVersion'] as core.String
-              : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          softwareVersion: _json.containsKey('softwareVersion')
-              ? _json['softwareVersion'] as core.String
-              : null,
-          vendor: _json.containsKey('vendor')
-              ? _json['vendor'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (firmwareVersion != null) 'firmwareVersion': firmwareVersion!,
-        if (hardwareVersion != null) 'hardwareVersion': hardwareVersion!,
-        if (name != null) 'name': name!,
-        if (softwareVersion != null) 'softwareVersion': softwareVersion!,
-        if (vendor != null) 'vendor': vendor!,
-      };
-}
+typedef SasPortalDeviceModel = $SasPortalDeviceModel;
 
 /// An entry in a DPA's move list.
 class SasPortalDpaMoveList {
@@ -4244,261 +3922,19 @@ class SasPortalDpaMoveList {
 typedef SasPortalEmpty = $Empty;
 
 /// Frequency range from `low_frequency` to `high_frequency`.
-class SasPortalFrequencyRange {
-  /// The highest frequency of the frequency range in MHz.
-  core.double? highFrequencyMhz;
-
-  /// The lowest frequency of the frequency range in MHz.
-  core.double? lowFrequencyMhz;
-
-  SasPortalFrequencyRange({
-    this.highFrequencyMhz,
-    this.lowFrequencyMhz,
-  });
-
-  SasPortalFrequencyRange.fromJson(core.Map _json)
-      : this(
-          highFrequencyMhz: _json.containsKey('highFrequencyMhz')
-              ? (_json['highFrequencyMhz'] as core.num).toDouble()
-              : null,
-          lowFrequencyMhz: _json.containsKey('lowFrequencyMhz')
-              ? (_json['lowFrequencyMhz'] as core.num).toDouble()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (highFrequencyMhz != null) 'highFrequencyMhz': highFrequencyMhz!,
-        if (lowFrequencyMhz != null) 'lowFrequencyMhz': lowFrequencyMhz!,
-      };
-}
+typedef SasPortalFrequencyRange = $SasPortalFrequencyRange;
 
 /// Request for GenerateSecret.
 typedef SasPortalGenerateSecretRequest = $Empty;
 
 /// Response for GenerateSecret.
-class SasPortalGenerateSecretResponse {
-  /// The secret generated by the string and used by ValidateInstaller.
-  core.String? secret;
-
-  SasPortalGenerateSecretResponse({
-    this.secret,
-  });
-
-  SasPortalGenerateSecretResponse.fromJson(core.Map _json)
-      : this(
-          secret: _json.containsKey('secret')
-              ? _json['secret'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (secret != null) 'secret': secret!,
-      };
-}
+typedef SasPortalGenerateSecretResponse = $SasPortalGenerateSecretResponse;
 
 /// Request message for `GetPolicy` method.
-class SasPortalGetPolicyRequest {
-  /// The resource for which the policy is being requested.
-  ///
-  /// Required.
-  core.String? resource;
-
-  SasPortalGetPolicyRequest({
-    this.resource,
-  });
-
-  SasPortalGetPolicyRequest.fromJson(core.Map _json)
-      : this(
-          resource: _json.containsKey('resource')
-              ? _json['resource'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (resource != null) 'resource': resource!,
-      };
-}
+typedef SasPortalGetPolicyRequest = $SasPortalGetPolicyRequest;
 
 /// Information about the device installation parameters.
-class SasPortalInstallationParams {
-  /// Boresight direction of the horizontal plane of the antenna in degrees with
-  /// respect to true north.
-  ///
-  /// The value of this parameter is an integer with a value between 0 and 359
-  /// inclusive. A value of 0 degrees means true north; a value of 90 degrees
-  /// means east. This parameter is optional for Category A devices and
-  /// conditional for Category B devices.
-  core.int? antennaAzimuth;
-
-  /// 3-dB antenna beamwidth of the antenna in the horizontal-plane in degrees.
-  ///
-  /// This parameter is an unsigned integer having a value between 0 and 360
-  /// (degrees) inclusive; it is optional for Category A devices and conditional
-  /// for Category B devices.
-  core.int? antennaBeamwidth;
-
-  /// Antenna downtilt in degrees and is an integer with a value between -90 and
-  /// +90 inclusive; a negative value means the antenna is tilted up (above
-  /// horizontal).
-  ///
-  /// This parameter is optional for Category A devices and conditional for
-  /// Category B devices.
-  core.int? antennaDowntilt;
-
-  /// Peak antenna gain in dBi.
-  ///
-  /// This parameter is an integer with a value between -127 and +128 (dBi)
-  /// inclusive.
-  core.int? antennaGain;
-
-  /// If an external antenna is used, the antenna model is optionally provided
-  /// in this field.
-  ///
-  /// The string has a maximum length of 128 octets.
-  core.String? antennaModel;
-
-  /// If present, this parameter specifies whether the CBSD is a CPE-CBSD or
-  /// not.
-  core.bool? cpeCbsdIndication;
-
-  /// This parameter is the maximum device EIRP in units of dBm/10MHz and is an
-  /// integer with a value between -127 and +47 (dBm/10 MHz) inclusive.
-  ///
-  /// If not included, SAS interprets it as maximum allowable EIRP in units of
-  /// dBm/10MHz for device category.
-  core.int? eirpCapability;
-
-  /// Device antenna height in meters.
-  ///
-  /// When the `heightType` parameter value is "AGL", the antenna height should
-  /// be given relative to ground level. When the `heightType` parameter value
-  /// is "AMSL", it is given with respect to WGS84 datum.
-  core.double? height;
-
-  /// Specifies how the height is measured.
-  /// Possible string values are:
-  /// - "HEIGHT_TYPE_UNSPECIFIED" : Unspecified height type.
-  /// - "HEIGHT_TYPE_AGL" : AGL height is measured relative to the ground level.
-  /// - "HEIGHT_TYPE_AMSL" : AMSL height is measured relative to the mean sea
-  /// level.
-  core.String? heightType;
-
-  /// A positive number in meters to indicate accuracy of the device antenna
-  /// horizontal location.
-  ///
-  /// This optional parameter should only be present if its value is less than
-  /// the FCC requirement of 50 meters.
-  core.double? horizontalAccuracy;
-
-  /// Whether the device antenna is indoor or not.
-  ///
-  /// `true`: indoor. `false`: outdoor.
-  core.bool? indoorDeployment;
-
-  /// Latitude of the device antenna location in degrees relative to the WGS 84
-  /// datum.
-  ///
-  /// The allowed range is from -90.000000 to +90.000000. Positive values
-  /// represent latitudes north of the equator; negative values south of the
-  /// equator.
-  core.double? latitude;
-
-  /// Longitude of the device antenna location in degrees relative to the WGS 84
-  /// datum.
-  ///
-  /// The allowed range is from -180.000000 to +180.000000. Positive values
-  /// represent longitudes east of the prime meridian; negative values west of
-  /// the prime meridian.
-  core.double? longitude;
-
-  /// A positive number in meters to indicate accuracy of the device antenna
-  /// vertical location.
-  ///
-  /// This optional parameter should only be present if its value is less than
-  /// the FCC requirement of 3 meters.
-  core.double? verticalAccuracy;
-
-  SasPortalInstallationParams({
-    this.antennaAzimuth,
-    this.antennaBeamwidth,
-    this.antennaDowntilt,
-    this.antennaGain,
-    this.antennaModel,
-    this.cpeCbsdIndication,
-    this.eirpCapability,
-    this.height,
-    this.heightType,
-    this.horizontalAccuracy,
-    this.indoorDeployment,
-    this.latitude,
-    this.longitude,
-    this.verticalAccuracy,
-  });
-
-  SasPortalInstallationParams.fromJson(core.Map _json)
-      : this(
-          antennaAzimuth: _json.containsKey('antennaAzimuth')
-              ? _json['antennaAzimuth'] as core.int
-              : null,
-          antennaBeamwidth: _json.containsKey('antennaBeamwidth')
-              ? _json['antennaBeamwidth'] as core.int
-              : null,
-          antennaDowntilt: _json.containsKey('antennaDowntilt')
-              ? _json['antennaDowntilt'] as core.int
-              : null,
-          antennaGain: _json.containsKey('antennaGain')
-              ? _json['antennaGain'] as core.int
-              : null,
-          antennaModel: _json.containsKey('antennaModel')
-              ? _json['antennaModel'] as core.String
-              : null,
-          cpeCbsdIndication: _json.containsKey('cpeCbsdIndication')
-              ? _json['cpeCbsdIndication'] as core.bool
-              : null,
-          eirpCapability: _json.containsKey('eirpCapability')
-              ? _json['eirpCapability'] as core.int
-              : null,
-          height: _json.containsKey('height')
-              ? (_json['height'] as core.num).toDouble()
-              : null,
-          heightType: _json.containsKey('heightType')
-              ? _json['heightType'] as core.String
-              : null,
-          horizontalAccuracy: _json.containsKey('horizontalAccuracy')
-              ? (_json['horizontalAccuracy'] as core.num).toDouble()
-              : null,
-          indoorDeployment: _json.containsKey('indoorDeployment')
-              ? _json['indoorDeployment'] as core.bool
-              : null,
-          latitude: _json.containsKey('latitude')
-              ? (_json['latitude'] as core.num).toDouble()
-              : null,
-          longitude: _json.containsKey('longitude')
-              ? (_json['longitude'] as core.num).toDouble()
-              : null,
-          verticalAccuracy: _json.containsKey('verticalAccuracy')
-              ? (_json['verticalAccuracy'] as core.num).toDouble()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (antennaAzimuth != null) 'antennaAzimuth': antennaAzimuth!,
-        if (antennaBeamwidth != null) 'antennaBeamwidth': antennaBeamwidth!,
-        if (antennaDowntilt != null) 'antennaDowntilt': antennaDowntilt!,
-        if (antennaGain != null) 'antennaGain': antennaGain!,
-        if (antennaModel != null) 'antennaModel': antennaModel!,
-        if (cpeCbsdIndication != null) 'cpeCbsdIndication': cpeCbsdIndication!,
-        if (eirpCapability != null) 'eirpCapability': eirpCapability!,
-        if (height != null) 'height': height!,
-        if (heightType != null) 'heightType': heightType!,
-        if (horizontalAccuracy != null)
-          'horizontalAccuracy': horizontalAccuracy!,
-        if (indoorDeployment != null) 'indoorDeployment': indoorDeployment!,
-        if (latitude != null) 'latitude': latitude!,
-        if (longitude != null) 'longitude': longitude!,
-        if (verticalAccuracy != null) 'verticalAccuracy': verticalAccuracy!,
-      };
-}
+typedef SasPortalInstallationParams = $SasPortalInstallationParams;
 
 /// Response for `ListCustomers`.
 class SasPortalListCustomersResponse {
@@ -4641,115 +4077,16 @@ class SasPortalListNodesResponse {
 }
 
 /// Request for MoveDeployment.
-class SasPortalMoveDeploymentRequest {
-  /// The name of the new parent resource node or customer to reparent the
-  /// deployment under.
-  ///
-  /// Required.
-  core.String? destination;
-
-  SasPortalMoveDeploymentRequest({
-    this.destination,
-  });
-
-  SasPortalMoveDeploymentRequest.fromJson(core.Map _json)
-      : this(
-          destination: _json.containsKey('destination')
-              ? _json['destination'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (destination != null) 'destination': destination!,
-      };
-}
+typedef SasPortalMoveDeploymentRequest = $SasPortalMoveDeploymentRequest;
 
 /// Request for MoveDevice.
-class SasPortalMoveDeviceRequest {
-  /// The name of the new parent resource node or customer to reparent the
-  /// device under.
-  ///
-  /// Required.
-  core.String? destination;
-
-  SasPortalMoveDeviceRequest({
-    this.destination,
-  });
-
-  SasPortalMoveDeviceRequest.fromJson(core.Map _json)
-      : this(
-          destination: _json.containsKey('destination')
-              ? _json['destination'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (destination != null) 'destination': destination!,
-      };
-}
+typedef SasPortalMoveDeviceRequest = $SasPortalMoveDeviceRequest;
 
 /// Request for MoveNode.
-class SasPortalMoveNodeRequest {
-  /// The name of the new parent resource node or customer to reparent the node
-  /// under.
-  ///
-  /// Required.
-  core.String? destination;
-
-  SasPortalMoveNodeRequest({
-    this.destination,
-  });
-
-  SasPortalMoveNodeRequest.fromJson(core.Map _json)
-      : this(
-          destination: _json.containsKey('destination')
-              ? _json['destination'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (destination != null) 'destination': destination!,
-      };
-}
+typedef SasPortalMoveNodeRequest = $SasPortalMoveNodeRequest;
 
 /// The Node.
-class SasPortalNode {
-  /// The node's display name.
-  core.String? displayName;
-
-  /// Resource name.
-  ///
-  /// Output only.
-  core.String? name;
-
-  /// User ids used by the devices belonging to this node.
-  core.List<core.String>? sasUserIds;
-
-  SasPortalNode({
-    this.displayName,
-    this.name,
-    this.sasUserIds,
-  });
-
-  SasPortalNode.fromJson(core.Map _json)
-      : this(
-          displayName: _json.containsKey('displayName')
-              ? _json['displayName'] as core.String
-              : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          sasUserIds: _json.containsKey('sasUserIds')
-              ? (_json['sasUserIds'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (displayName != null) 'displayName': displayName!,
-        if (name != null) 'name': name!,
-        if (sasUserIds != null) 'sasUserIds': sasUserIds!,
-      };
-}
+typedef SasPortalNode = $SasPortalNode;
 
 /// This resource represents a long-running operation that is the result of a
 /// network API call.
@@ -4954,195 +4291,20 @@ class SasPortalSignDeviceRequest {
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-class SasPortalStatus {
-  /// The status code, which should be an enum value of google.rpc.Code.
-  core.int? code;
-
-  /// A list of messages that carry the error details.
-  ///
-  /// There is a common set of message types for APIs to use.
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object?>>? details;
-
-  /// A developer-facing error message, which should be in English.
-  ///
-  /// Any user-facing error message should be localized and sent in the
-  /// google.rpc.Status.details field, or localized by the client.
-  core.String? message;
-
-  SasPortalStatus({
-    this.code,
-    this.details,
-    this.message,
-  });
-
-  SasPortalStatus.fromJson(core.Map _json)
-      : this(
-          code: _json.containsKey('code') ? _json['code'] as core.int : null,
-          details: _json.containsKey('details')
-              ? (_json['details'] as core.List)
-                  .map((value) => value as core.Map<core.String, core.dynamic>)
-                  .toList()
-              : null,
-          message: _json.containsKey('message')
-              ? _json['message'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (code != null) 'code': code!,
-        if (details != null) 'details': details!,
-        if (message != null) 'message': message!,
-      };
-}
+typedef SasPortalStatus = $Status;
 
 /// Request message for `TestPermissions` method.
-class SasPortalTestPermissionsRequest {
-  /// The set of permissions to check for the `resource`.
-  core.List<core.String>? permissions;
-
-  /// The resource for which the permissions are being requested.
-  ///
-  /// Required.
-  core.String? resource;
-
-  SasPortalTestPermissionsRequest({
-    this.permissions,
-    this.resource,
-  });
-
-  SasPortalTestPermissionsRequest.fromJson(core.Map _json)
-      : this(
-          permissions: _json.containsKey('permissions')
-              ? (_json['permissions'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          resource: _json.containsKey('resource')
-              ? _json['resource'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (permissions != null) 'permissions': permissions!,
-        if (resource != null) 'resource': resource!,
-      };
-}
+typedef SasPortalTestPermissionsRequest = $SasPortalTestPermissionsRequest;
 
 /// Response message for `TestPermissions` method.
-class SasPortalTestPermissionsResponse {
-  /// A set of permissions that the caller is allowed.
-  core.List<core.String>? permissions;
-
-  SasPortalTestPermissionsResponse({
-    this.permissions,
-  });
-
-  SasPortalTestPermissionsResponse.fromJson(core.Map _json)
-      : this(
-          permissions: _json.containsKey('permissions')
-              ? (_json['permissions'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (permissions != null) 'permissions': permissions!,
-      };
-}
+typedef SasPortalTestPermissionsResponse = $SasPortalTestPermissionsResponse;
 
 /// Request for UpdateSignedDevice.
-class SasPortalUpdateSignedDeviceRequest {
-  /// The JSON Web Token signed using a CPI private key.
-  ///
-  /// Payload must be the JSON encoding of the device. The user_id field must be
-  /// set.
-  ///
-  /// Required.
-  core.String? encodedDevice;
-  core.List<core.int> get encodedDeviceAsBytes =>
-      convert.base64.decode(encodedDevice!);
-
-  set encodedDeviceAsBytes(core.List<core.int> _bytes) {
-    encodedDevice =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
-  }
-
-  /// Unique installer ID (CPI ID) from the Certified Professional Installers
-  /// database.
-  ///
-  /// Required.
-  core.String? installerId;
-
-  SasPortalUpdateSignedDeviceRequest({
-    this.encodedDevice,
-    this.installerId,
-  });
-
-  SasPortalUpdateSignedDeviceRequest.fromJson(core.Map _json)
-      : this(
-          encodedDevice: _json.containsKey('encodedDevice')
-              ? _json['encodedDevice'] as core.String
-              : null,
-          installerId: _json.containsKey('installerId')
-              ? _json['installerId'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (encodedDevice != null) 'encodedDevice': encodedDevice!,
-        if (installerId != null) 'installerId': installerId!,
-      };
-}
+typedef SasPortalUpdateSignedDeviceRequest
+    = $SasPortalUpdateSignedDeviceRequest;
 
 /// Request for ValidateInstaller.
-class SasPortalValidateInstallerRequest {
-  /// JSON Web Token signed using a CPI private key.
-  ///
-  /// Payload must include a "secret" claim whose value is the secret.
-  ///
-  /// Required.
-  core.String? encodedSecret;
-
-  /// Unique installer id (CPI ID) from the Certified Professional Installers
-  /// database.
-  ///
-  /// Required.
-  core.String? installerId;
-
-  /// Secret returned by the GenerateSecret.
-  ///
-  /// Required.
-  core.String? secret;
-
-  SasPortalValidateInstallerRequest({
-    this.encodedSecret,
-    this.installerId,
-    this.secret,
-  });
-
-  SasPortalValidateInstallerRequest.fromJson(core.Map _json)
-      : this(
-          encodedSecret: _json.containsKey('encodedSecret')
-              ? _json['encodedSecret'] as core.String
-              : null,
-          installerId: _json.containsKey('installerId')
-              ? _json['installerId'] as core.String
-              : null,
-          secret: _json.containsKey('secret')
-              ? _json['secret'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (encodedSecret != null) 'encodedSecret': encodedSecret!,
-        if (installerId != null) 'installerId': installerId!,
-        if (secret != null) 'secret': secret!,
-      };
-}
+typedef SasPortalValidateInstallerRequest = $SasPortalValidateInstallerRequest;
 
 /// Response for ValidateInstaller.
 typedef SasPortalValidateInstallerResponse = $Empty;

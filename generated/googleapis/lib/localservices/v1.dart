@@ -28,6 +28,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
+import '../shared.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -778,30 +779,4 @@ class GoogleAdsHomeservicesLocalservicesV1SearchDetailedLeadReportsResponse {
 
 /// Represents a time zone from the
 /// [IANA Time Zone Database](https://www.iana.org/time-zones).
-class GoogleTypeTimeZone {
-  /// IANA Time Zone Database time zone, e.g. "America/New_York".
-  core.String? id;
-
-  /// IANA Time Zone Database version number, e.g. "2019a".
-  ///
-  /// Optional.
-  core.String? version;
-
-  GoogleTypeTimeZone({
-    this.id,
-    this.version,
-  });
-
-  GoogleTypeTimeZone.fromJson(core.Map _json)
-      : this(
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          version: _json.containsKey('version')
-              ? _json['version'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (id != null) 'id': id!,
-        if (version != null) 'version': version!,
-      };
-}
+typedef GoogleTypeTimeZone = $TimeZone;

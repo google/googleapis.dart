@@ -35,7 +35,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-import '../src/empty.dart';
+import '../shared.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -459,63 +459,11 @@ class AliasContext {
 
 /// AnalyzePackagesMetadata contains metadata for an active scan of a container
 /// image.
-class AnalyzePackagesMetadata {
-  /// When the scan was created.
-  core.String? createTime;
-
-  /// The resource URI of the container image being scanned.
-  core.String? resourceUri;
-
-  AnalyzePackagesMetadata({
-    this.createTime,
-    this.resourceUri,
-  });
-
-  AnalyzePackagesMetadata.fromJson(core.Map _json)
-      : this(
-          createTime: _json.containsKey('createTime')
-              ? _json['createTime'] as core.String
-              : null,
-          resourceUri: _json.containsKey('resourceUri')
-              ? _json['resourceUri'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
-        if (resourceUri != null) 'resourceUri': resourceUri!,
-      };
-}
+typedef AnalyzePackagesMetadata = $Shared07;
 
 /// AnalyzePackagesMetadata contains metadata for an active scan of a container
 /// image.
-class AnalyzePackagesMetadataV1 {
-  /// When the scan was created.
-  core.String? createTime;
-
-  /// The resource URI of the container image being scanned.
-  core.String? resourceUri;
-
-  AnalyzePackagesMetadataV1({
-    this.createTime,
-    this.resourceUri,
-  });
-
-  AnalyzePackagesMetadataV1.fromJson(core.Map _json)
-      : this(
-          createTime: _json.containsKey('createTime')
-              ? _json['createTime'] as core.String
-              : null,
-          resourceUri: _json.containsKey('resourceUri')
-              ? _json['resourceUri'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
-        if (resourceUri != null) 'resourceUri': resourceUri!,
-      };
-}
+typedef AnalyzePackagesMetadataV1 = $Shared07;
 
 /// AnalyzePackagesRequest is the request to analyze a list of packages and
 /// create Vulnerability Occurrences for it.
@@ -562,43 +510,11 @@ class AnalyzePackagesRequestV1 {
 
 /// AnalyzePackagesResponse contains the information necessary to find results
 /// for the given scan.
-class AnalyzePackagesResponse {
-  /// The name of the scan resource created by this successful scan.
-  core.String? scan;
-
-  AnalyzePackagesResponse({
-    this.scan,
-  });
-
-  AnalyzePackagesResponse.fromJson(core.Map _json)
-      : this(
-          scan: _json.containsKey('scan') ? _json['scan'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (scan != null) 'scan': scan!,
-      };
-}
+typedef AnalyzePackagesResponse = $Shared08;
 
 /// AnalyzePackagesResponse contains the information necessary to find results
 /// for the given scan.
-class AnalyzePackagesResponseV1 {
-  /// The name of the scan resource created by this successful scan.
-  core.String? scan;
-
-  AnalyzePackagesResponseV1({
-    this.scan,
-  });
-
-  AnalyzePackagesResponseV1.fromJson(core.Map _json)
-      : this(
-          scan: _json.containsKey('scan') ? _json['scan'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (scan != null) 'scan': scan!,
-      };
-}
+typedef AnalyzePackagesResponseV1 = $Shared08;
 
 /// Artifact describes a build product.
 class Artifact {
@@ -906,22 +822,7 @@ class BuildProvenance {
       };
 }
 
-class BuilderConfig {
-  core.String? id;
-
-  BuilderConfig({
-    this.id,
-  });
-
-  BuilderConfig.fromJson(core.Map _json)
-      : this(
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (id != null) 'id': id!,
-      };
-}
+typedef BuilderConfig = $Shared09;
 
 /// The category to which the update belongs.
 class Category {
@@ -1769,28 +1670,7 @@ class InTotoStatement {
       };
 }
 
-class Jwt {
-  /// The compact encoding of a JWS, which is always three base64 encoded
-  /// strings joined by periods.
-  ///
-  /// For details, see: https://tools.ietf.org/html/rfc7515.html#section-3.1
-  core.String? compactJwt;
-
-  Jwt({
-    this.compactJwt,
-  });
-
-  Jwt.fromJson(core.Map _json)
-      : this(
-          compactJwt: _json.containsKey('compactJwt')
-              ? _json['compactJwt'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (compactJwt != null) 'compactJwt': compactJwt!,
-      };
-}
+typedef Jwt = $Jwt;
 
 /// Layer holds metadata specific to a layer of a Docker image.
 class Layer {
@@ -2538,35 +2418,7 @@ class PackageOccurrence {
 
 /// Selects a repo using a Google Cloud Platform project ID (e.g.,
 /// winged-cargo-31) and a repo name within that project.
-class ProjectRepoId {
-  /// The ID of the project.
-  core.String? projectId;
-
-  /// The name of the repo.
-  ///
-  /// Leave empty for the default repo.
-  core.String? repoName;
-
-  ProjectRepoId({
-    this.projectId,
-    this.repoName,
-  });
-
-  ProjectRepoId.fromJson(core.Map _json)
-      : this(
-          projectId: _json.containsKey('projectId')
-              ? _json['projectId'] as core.String
-              : null,
-          repoName: _json.containsKey('repoName')
-              ? _json['repoName'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (projectId != null) 'projectId': projectId!,
-        if (repoName != null) 'repoName': repoName!,
-      };
-}
+typedef ProjectRepoId = $ProjectRepoId;
 
 /// Steps taken to build the artifact.
 ///
@@ -2731,56 +2583,7 @@ class RepoId {
 /// explicitly provided payload (e.g. a `payload` field on the proto message
 /// that holds this Signature, or the canonical serialization of the proto
 /// message that holds this signature).
-class Signature {
-  /// The identifier for the public key that verifies this signature.
-  ///
-  /// * The `public_key_id` is required. * The `public_key_id` SHOULD be an
-  /// RFC3986 conformant URI. * When possible, the `public_key_id` SHOULD be an
-  /// immutable reference, such as a cryptographic digest. Examples of valid
-  /// `public_key_id`s: OpenPGP V4 public key fingerprint: *
-  /// "openpgp4fpr:74FAF3B861BDA0870C7B6DEF607E48D2A663AEEA" See
-  /// https://www.iana.org/assignments/uri-schemes/prov/openpgp4fpr for more
-  /// details on this scheme. RFC6920 digest-named SubjectPublicKeyInfo (digest
-  /// of the DER serialization): *
-  /// "ni:///sha-256;cD9o9Cq6LG3jD0iKXqEi_vdjJGecm_iXkbqVoScViaU" *
-  /// "nih:///sha-256;703f68f42aba2c6de30f488a5ea122fef76324679c9bf89791ba95a1271589a5"
-  core.String? publicKeyId;
-
-  /// The content of the signature, an opaque bytestring.
-  ///
-  /// The payload that this signature verifies MUST be unambiguously provided
-  /// with the Signature during verification. A wrapper message might provide
-  /// the payload explicitly. Alternatively, a message might have a canonical
-  /// serialization that can always be unambiguously computed to derive the
-  /// payload.
-  core.String? signature;
-  core.List<core.int> get signatureAsBytes => convert.base64.decode(signature!);
-
-  set signatureAsBytes(core.List<core.int> _bytes) {
-    signature =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
-  }
-
-  Signature({
-    this.publicKeyId,
-    this.signature,
-  });
-
-  Signature.fromJson(core.Map _json)
-      : this(
-          publicKeyId: _json.containsKey('publicKeyId')
-              ? _json['publicKeyId'] as core.String
-              : null,
-          signature: _json.containsKey('signature')
-              ? _json['signature'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (publicKeyId != null) 'publicKeyId': publicKeyId!,
-        if (signature != null) 'signature': signature!,
-      };
-}
+typedef Signature = $Signature;
 
 /// Source describes the location of the source used for the build.
 class Source {
@@ -2915,49 +2718,7 @@ class SourceContext {
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-class Status {
-  /// The status code, which should be an enum value of google.rpc.Code.
-  core.int? code;
-
-  /// A list of messages that carry the error details.
-  ///
-  /// There is a common set of message types for APIs to use.
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object?>>? details;
-
-  /// A developer-facing error message, which should be in English.
-  ///
-  /// Any user-facing error message should be localized and sent in the
-  /// google.rpc.Status.details field, or localized by the client.
-  core.String? message;
-
-  Status({
-    this.code,
-    this.details,
-    this.message,
-  });
-
-  Status.fromJson(core.Map _json)
-      : this(
-          code: _json.containsKey('code') ? _json['code'] as core.int : null,
-          details: _json.containsKey('details')
-              ? (_json['details'] as core.List)
-                  .map((value) => value as core.Map<core.String, core.dynamic>)
-                  .toList()
-              : null,
-          message: _json.containsKey('message')
-              ? _json['message'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (code != null) 'code': code!,
-        if (details != null) 'details': details!,
-        if (message != null) 'message': message!,
-      };
-}
+typedef Status = $Status;
 
 class Subject {
   /// "": ""

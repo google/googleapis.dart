@@ -38,6 +38,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
+import '../shared.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -2977,111 +2978,7 @@ class CalendarNotification {
       };
 }
 
-class Channel {
-  /// The address where notifications are delivered for this channel.
-  core.String? address;
-
-  /// Date and time of notification channel expiration, expressed as a Unix
-  /// timestamp, in milliseconds.
-  ///
-  /// Optional.
-  core.String? expiration;
-
-  /// A UUID or similar unique string that identifies this channel.
-  core.String? id;
-
-  /// Identifies this as a notification channel used to watch for changes to a
-  /// resource, which is "api#channel".
-  core.String? kind;
-
-  /// Additional parameters controlling delivery channel behavior.
-  ///
-  /// Optional.
-  core.Map<core.String, core.String>? params;
-
-  /// A Boolean value to indicate whether payload is wanted.
-  ///
-  /// Optional.
-  core.bool? payload;
-
-  /// An opaque ID that identifies the resource being watched on this channel.
-  ///
-  /// Stable across different API versions.
-  core.String? resourceId;
-
-  /// A version-specific identifier for the watched resource.
-  core.String? resourceUri;
-
-  /// An arbitrary string delivered to the target address with each notification
-  /// delivered over this channel.
-  ///
-  /// Optional.
-  core.String? token;
-
-  /// The type of delivery mechanism used for this channel.
-  ///
-  /// Valid values are "web_hook" (or "webhook"). Both values refer to a channel
-  /// where Http requests are used to deliver messages.
-  core.String? type;
-
-  Channel({
-    this.address,
-    this.expiration,
-    this.id,
-    this.kind,
-    this.params,
-    this.payload,
-    this.resourceId,
-    this.resourceUri,
-    this.token,
-    this.type,
-  });
-
-  Channel.fromJson(core.Map _json)
-      : this(
-          address: _json.containsKey('address')
-              ? _json['address'] as core.String
-              : null,
-          expiration: _json.containsKey('expiration')
-              ? _json['expiration'] as core.String
-              : null,
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          params: _json.containsKey('params')
-              ? (_json['params'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.String,
-                  ),
-                )
-              : null,
-          payload: _json.containsKey('payload')
-              ? _json['payload'] as core.bool
-              : null,
-          resourceId: _json.containsKey('resourceId')
-              ? _json['resourceId'] as core.String
-              : null,
-          resourceUri: _json.containsKey('resourceUri')
-              ? _json['resourceUri'] as core.String
-              : null,
-          token:
-              _json.containsKey('token') ? _json['token'] as core.String : null,
-          type: _json.containsKey('type') ? _json['type'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (address != null) 'address': address!,
-        if (expiration != null) 'expiration': expiration!,
-        if (id != null) 'id': id!,
-        if (kind != null) 'kind': kind!,
-        if (params != null) 'params': params!,
-        if (payload != null) 'payload': payload!,
-        if (resourceId != null) 'resourceId': resourceId!,
-        if (resourceUri != null) 'resourceUri': resourceUri!,
-        if (token != null) 'token': token!,
-        if (type != null) 'type': type!,
-      };
-}
+typedef Channel = $Channel;
 
 class ColorDefinition {
   /// The background color associated with this color definition.

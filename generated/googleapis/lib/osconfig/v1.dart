@@ -43,7 +43,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-import '../src/empty.dart';
+import '../shared.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -1545,42 +1545,7 @@ typedef CancelPatchJobRequest = $Empty;
 /// anniversary * A year on its own, with zero month and day values * A year and
 /// month value, with a zero day, such as a credit card expiration date Related
 /// types are google.type.TimeOfDay and `google.protobuf.Timestamp`.
-class Date {
-  /// Day of a month.
-  ///
-  /// Must be from 1 to 31 and valid for the year and month, or 0 to specify a
-  /// year by itself or a year and month where the day isn't significant.
-  core.int? day;
-
-  /// Month of a year.
-  ///
-  /// Must be from 1 to 12, or 0 to specify a year without a month and day.
-  core.int? month;
-
-  /// Year of the date.
-  ///
-  /// Must be from 1 to 9999, or 0 to specify a date without a year.
-  core.int? year;
-
-  Date({
-    this.day,
-    this.month,
-    this.year,
-  });
-
-  Date.fromJson(core.Map _json)
-      : this(
-          day: _json.containsKey('day') ? _json['day'] as core.int : null,
-          month: _json.containsKey('month') ? _json['month'] as core.int : null,
-          year: _json.containsKey('year') ? _json['year'] as core.int : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (day != null) 'day': day!,
-        if (month != null) 'month': month!,
-        if (year != null) 'year': year!,
-      };
-}
+typedef Date = $Date;
 
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs.
@@ -1993,87 +1958,7 @@ class InventoryItem {
 }
 
 /// Operating system information for the VM.
-class InventoryOsInfo {
-  /// The system architecture of the operating system.
-  core.String? architecture;
-
-  /// The VM hostname.
-  core.String? hostname;
-
-  /// The kernel release of the operating system.
-  core.String? kernelRelease;
-
-  /// The kernel version of the operating system.
-  core.String? kernelVersion;
-
-  /// The operating system long name.
-  ///
-  /// For example 'Debian GNU/Linux 9' or 'Microsoft Window Server 2019
-  /// Datacenter'.
-  core.String? longName;
-
-  /// The current version of the OS Config agent running on the VM.
-  core.String? osconfigAgentVersion;
-
-  /// The operating system short name.
-  ///
-  /// For example, 'windows' or 'debian'.
-  core.String? shortName;
-
-  /// The version of the operating system.
-  core.String? version;
-
-  InventoryOsInfo({
-    this.architecture,
-    this.hostname,
-    this.kernelRelease,
-    this.kernelVersion,
-    this.longName,
-    this.osconfigAgentVersion,
-    this.shortName,
-    this.version,
-  });
-
-  InventoryOsInfo.fromJson(core.Map _json)
-      : this(
-          architecture: _json.containsKey('architecture')
-              ? _json['architecture'] as core.String
-              : null,
-          hostname: _json.containsKey('hostname')
-              ? _json['hostname'] as core.String
-              : null,
-          kernelRelease: _json.containsKey('kernelRelease')
-              ? _json['kernelRelease'] as core.String
-              : null,
-          kernelVersion: _json.containsKey('kernelVersion')
-              ? _json['kernelVersion'] as core.String
-              : null,
-          longName: _json.containsKey('longName')
-              ? _json['longName'] as core.String
-              : null,
-          osconfigAgentVersion: _json.containsKey('osconfigAgentVersion')
-              ? _json['osconfigAgentVersion'] as core.String
-              : null,
-          shortName: _json.containsKey('shortName')
-              ? _json['shortName'] as core.String
-              : null,
-          version: _json.containsKey('version')
-              ? _json['version'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (architecture != null) 'architecture': architecture!,
-        if (hostname != null) 'hostname': hostname!,
-        if (kernelRelease != null) 'kernelRelease': kernelRelease!,
-        if (kernelVersion != null) 'kernelVersion': kernelVersion!,
-        if (longName != null) 'longName': longName!,
-        if (osconfigAgentVersion != null)
-          'osconfigAgentVersion': osconfigAgentVersion!,
-        if (shortName != null) 'shortName': shortName!,
-        if (version != null) 'version': version!,
-      };
-}
+typedef InventoryOsInfo = $OsInfo;
 
 /// Software package information of the operating system.
 class InventorySoftwarePackage {
@@ -2196,41 +2081,7 @@ class InventorySoftwarePackage {
 ///
 /// This includes package info for APT, Yum, Zypper, and Googet package
 /// managers.
-class InventoryVersionedPackage {
-  /// The system architecture this package is intended for.
-  core.String? architecture;
-
-  /// The name of the package.
-  core.String? packageName;
-
-  /// The version of the package.
-  core.String? version;
-
-  InventoryVersionedPackage({
-    this.architecture,
-    this.packageName,
-    this.version,
-  });
-
-  InventoryVersionedPackage.fromJson(core.Map _json)
-      : this(
-          architecture: _json.containsKey('architecture')
-              ? _json['architecture'] as core.String
-              : null,
-          packageName: _json.containsKey('packageName')
-              ? _json['packageName'] as core.String
-              : null,
-          version: _json.containsKey('version')
-              ? _json['version'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (architecture != null) 'architecture': architecture!,
-        if (packageName != null) 'packageName': packageName!,
-        if (version != null) 'version': version!,
-      };
-}
+typedef InventoryVersionedPackage = $VersionedPackage;
 
 /// Contains information about a Windows application that is retrieved from the
 /// Windows Registry.
@@ -2299,51 +2150,8 @@ class InventoryWindowsApplication {
 /// Fields are taken from Windows QuickFixEngineering Interface and match the
 /// source names:
 /// https://docs.microsoft.com/en-us/windows/win32/cimwin32prov/win32-quickfixengineering
-class InventoryWindowsQuickFixEngineeringPackage {
-  /// A short textual description of the QFE update.
-  core.String? caption;
-
-  /// A textual description of the QFE update.
-  core.String? description;
-
-  /// Unique identifier associated with a particular QFE update.
-  core.String? hotFixId;
-
-  /// Date that the QFE update was installed.
-  ///
-  /// Mapped from installed_on field.
-  core.String? installTime;
-
-  InventoryWindowsQuickFixEngineeringPackage({
-    this.caption,
-    this.description,
-    this.hotFixId,
-    this.installTime,
-  });
-
-  InventoryWindowsQuickFixEngineeringPackage.fromJson(core.Map _json)
-      : this(
-          caption: _json.containsKey('caption')
-              ? _json['caption'] as core.String
-              : null,
-          description: _json.containsKey('description')
-              ? _json['description'] as core.String
-              : null,
-          hotFixId: _json.containsKey('hotFixId')
-              ? _json['hotFixId'] as core.String
-              : null,
-          installTime: _json.containsKey('installTime')
-              ? _json['installTime'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (caption != null) 'caption': caption!,
-        if (description != null) 'description': description!,
-        if (hotFixId != null) 'hotFixId': hotFixId!,
-        if (installTime != null) 'installTime': installTime!,
-      };
-}
+typedef InventoryWindowsQuickFixEngineeringPackage
+    = $WindowsQuickFixEngineeringPackage;
 
 /// Details related to a Windows Update package.
 ///
@@ -2450,74 +2258,11 @@ class InventoryWindowsUpdatePackage {
 }
 
 /// Categories specified by the Windows Update.
-class InventoryWindowsUpdatePackageWindowsUpdateCategory {
-  /// The identifier of the windows update category.
-  core.String? id;
-
-  /// The name of the windows update category.
-  core.String? name;
-
-  InventoryWindowsUpdatePackageWindowsUpdateCategory({
-    this.id,
-    this.name,
-  });
-
-  InventoryWindowsUpdatePackageWindowsUpdateCategory.fromJson(core.Map _json)
-      : this(
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (id != null) 'id': id!,
-        if (name != null) 'name': name!,
-      };
-}
+typedef InventoryWindowsUpdatePackageWindowsUpdateCategory
+    = $WindowsUpdateCategory;
 
 /// Details related to a Zypper Patch.
-class InventoryZypperPatch {
-  /// The category of the patch.
-  core.String? category;
-
-  /// The name of the patch.
-  core.String? patchName;
-
-  /// The severity specified for this patch
-  core.String? severity;
-
-  /// Any summary information provided about this patch.
-  core.String? summary;
-
-  InventoryZypperPatch({
-    this.category,
-    this.patchName,
-    this.severity,
-    this.summary,
-  });
-
-  InventoryZypperPatch.fromJson(core.Map _json)
-      : this(
-          category: _json.containsKey('category')
-              ? _json['category'] as core.String
-              : null,
-          patchName: _json.containsKey('patchName')
-              ? _json['patchName'] as core.String
-              : null,
-          severity: _json.containsKey('severity')
-              ? _json['severity'] as core.String
-              : null,
-          summary: _json.containsKey('summary')
-              ? _json['summary'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (category != null) 'category': category!,
-        if (patchName != null) 'patchName': patchName!,
-        if (severity != null) 'severity': severity!,
-        if (summary != null) 'summary': summary!,
-      };
-}
+typedef InventoryZypperPatch = $ZypperPatch;
 
 /// A response message for listing inventory data for all VMs in a specified
 /// location.
@@ -3153,40 +2898,7 @@ class OSPolicyAssignmentInstanceFilter {
 }
 
 /// VM inventory details.
-class OSPolicyAssignmentInstanceFilterInventory {
-  /// The OS short name
-  ///
-  /// Required.
-  core.String? osShortName;
-
-  /// The OS version Prefix matches are supported if asterisk(*) is provided as
-  /// the last character.
-  ///
-  /// For example, to match all versions with a major version of `7`, specify
-  /// the following value for this field `7.*` An empty string matches all OS
-  /// versions.
-  core.String? osVersion;
-
-  OSPolicyAssignmentInstanceFilterInventory({
-    this.osShortName,
-    this.osVersion,
-  });
-
-  OSPolicyAssignmentInstanceFilterInventory.fromJson(core.Map _json)
-      : this(
-          osShortName: _json.containsKey('osShortName')
-              ? _json['osShortName'] as core.String
-              : null,
-          osVersion: _json.containsKey('osVersion')
-              ? _json['osVersion'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (osShortName != null) 'osShortName': osShortName!,
-        if (osVersion != null) 'osVersion': osVersion!,
-      };
-}
+typedef OSPolicyAssignmentInstanceFilterInventory = $Shared10;
 
 /// Message representing label set.
 ///
@@ -3651,40 +3363,7 @@ class OSPolicyAssignmentRollout {
 }
 
 /// Filtering criteria to select VMs based on inventory details.
-class OSPolicyInventoryFilter {
-  /// The OS short name
-  ///
-  /// Required.
-  core.String? osShortName;
-
-  /// The OS version Prefix matches are supported if asterisk(*) is provided as
-  /// the last character.
-  ///
-  /// For example, to match all versions with a major version of `7`, specify
-  /// the following value for this field `7.*` An empty string matches all OS
-  /// versions.
-  core.String? osVersion;
-
-  OSPolicyInventoryFilter({
-    this.osShortName,
-    this.osVersion,
-  });
-
-  OSPolicyInventoryFilter.fromJson(core.Map _json)
-      : this(
-          osShortName: _json.containsKey('osShortName')
-              ? _json['osShortName'] as core.String
-              : null,
-          osVersion: _json.containsKey('osVersion')
-              ? _json['osVersion'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (osShortName != null) 'osShortName': osShortName!,
-        if (osVersion != null) 'osVersion': osVersion!,
-      };
-}
+typedef OSPolicyInventoryFilter = $Shared10;
 
 /// An OS policy resource is used to define the desired state configuration and
 /// provides a specific functionality like installing/removing packages,
@@ -4226,25 +3905,7 @@ class OSPolicyResourcePackageResource {
 ///
 /// - install: `apt-get update && apt-get -y install [name]` - remove: `apt-get
 /// -y remove [name]`
-class OSPolicyResourcePackageResourceAPT {
-  /// Package name.
-  ///
-  /// Required.
-  core.String? name;
-
-  OSPolicyResourcePackageResourceAPT({
-    this.name,
-  });
-
-  OSPolicyResourcePackageResourceAPT.fromJson(core.Map _json)
-      : this(
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-      };
-}
+typedef OSPolicyResourcePackageResourceAPT = $Shared02;
 
 /// A deb package file.
 ///
@@ -4287,25 +3948,7 @@ class OSPolicyResourcePackageResourceDeb {
 ///
 /// - install: `googet -noconfirm install package` - remove: `googet -noconfirm
 /// remove package`
-class OSPolicyResourcePackageResourceGooGet {
-  /// Package name.
-  ///
-  /// Required.
-  core.String? name;
-
-  OSPolicyResourcePackageResourceGooGet({
-    this.name,
-  });
-
-  OSPolicyResourcePackageResourceGooGet.fromJson(core.Map _json)
-      : this(
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-      };
-}
+typedef OSPolicyResourcePackageResourceGooGet = $Shared02;
 
 /// An MSI package.
 ///
@@ -4386,48 +4029,12 @@ class OSPolicyResourcePackageResourceRPM {
 /// A package managed by YUM.
 ///
 /// - install: `yum -y install package` - remove: `yum -y remove package`
-class OSPolicyResourcePackageResourceYUM {
-  /// Package name.
-  ///
-  /// Required.
-  core.String? name;
-
-  OSPolicyResourcePackageResourceYUM({
-    this.name,
-  });
-
-  OSPolicyResourcePackageResourceYUM.fromJson(core.Map _json)
-      : this(
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-      };
-}
+typedef OSPolicyResourcePackageResourceYUM = $Shared02;
 
 /// A package managed by Zypper.
 ///
 /// - install: `zypper -y install package` - remove: `zypper -y rm package`
-class OSPolicyResourcePackageResourceZypper {
-  /// Package name.
-  ///
-  /// Required.
-  core.String? name;
-
-  OSPolicyResourcePackageResourceZypper({
-    this.name,
-  });
-
-  OSPolicyResourcePackageResourceZypper.fromJson(core.Map _json)
-      : this(
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-      };
-}
+typedef OSPolicyResourcePackageResourceZypper = $Shared02;
 
 /// A resource that manages a package repository.
 class OSPolicyResourceRepositoryResource {
@@ -5747,134 +5354,18 @@ class RecurringSchedule {
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-class Status {
-  /// The status code, which should be an enum value of google.rpc.Code.
-  core.int? code;
-
-  /// A list of messages that carry the error details.
-  ///
-  /// There is a common set of message types for APIs to use.
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object?>>? details;
-
-  /// A developer-facing error message, which should be in English.
-  ///
-  /// Any user-facing error message should be localized and sent in the
-  /// google.rpc.Status.details field, or localized by the client.
-  core.String? message;
-
-  Status({
-    this.code,
-    this.details,
-    this.message,
-  });
-
-  Status.fromJson(core.Map _json)
-      : this(
-          code: _json.containsKey('code') ? _json['code'] as core.int : null,
-          details: _json.containsKey('details')
-              ? (_json['details'] as core.List)
-                  .map((value) => value as core.Map<core.String, core.dynamic>)
-                  .toList()
-              : null,
-          message: _json.containsKey('message')
-              ? _json['message'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (code != null) 'code': code!,
-        if (details != null) 'details': details!,
-        if (message != null) 'message': message!,
-      };
-}
+typedef Status = $Status;
 
 /// Represents a time of day.
 ///
 /// The date and time zone are either not significant or are specified
 /// elsewhere. An API may choose to allow leap seconds. Related types are
 /// google.type.Date and `google.protobuf.Timestamp`.
-class TimeOfDay {
-  /// Hours of day in 24 hour format.
-  ///
-  /// Should be from 0 to 23. An API may choose to allow the value "24:00:00"
-  /// for scenarios like business closing time.
-  core.int? hours;
-
-  /// Minutes of hour of day.
-  ///
-  /// Must be from 0 to 59.
-  core.int? minutes;
-
-  /// Fractions of seconds in nanoseconds.
-  ///
-  /// Must be from 0 to 999,999,999.
-  core.int? nanos;
-
-  /// Seconds of minutes of the time.
-  ///
-  /// Must normally be from 0 to 59. An API may allow the value 60 if it allows
-  /// leap-seconds.
-  core.int? seconds;
-
-  TimeOfDay({
-    this.hours,
-    this.minutes,
-    this.nanos,
-    this.seconds,
-  });
-
-  TimeOfDay.fromJson(core.Map _json)
-      : this(
-          hours: _json.containsKey('hours') ? _json['hours'] as core.int : null,
-          minutes: _json.containsKey('minutes')
-              ? _json['minutes'] as core.int
-              : null,
-          nanos: _json.containsKey('nanos') ? _json['nanos'] as core.int : null,
-          seconds: _json.containsKey('seconds')
-              ? _json['seconds'] as core.int
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (hours != null) 'hours': hours!,
-        if (minutes != null) 'minutes': minutes!,
-        if (nanos != null) 'nanos': nanos!,
-        if (seconds != null) 'seconds': seconds!,
-      };
-}
+typedef TimeOfDay = $TimeOfDay;
 
 /// Represents a time zone from the
 /// [IANA Time Zone Database](https://www.iana.org/time-zones).
-class TimeZone {
-  /// IANA Time Zone Database time zone, e.g. "America/New_York".
-  core.String? id;
-
-  /// IANA Time Zone Database version number, e.g. "2019a".
-  ///
-  /// Optional.
-  core.String? version;
-
-  TimeZone({
-    this.id,
-    this.version,
-  });
-
-  TimeZone.fromJson(core.Map _json)
-      : this(
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          version: _json.containsKey('version')
-              ? _json['version'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (id != null) 'id': id!,
-        if (version != null) 'version': version!,
-      };
-}
+typedef TimeZone = $TimeZone;
 
 /// This API resource represents the vulnerability report for a specified
 /// Compute Engine virtual machine (VM) instance at a given point in time.

@@ -47,7 +47,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-import '../src/empty.dart';
+import '../shared.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -2573,193 +2573,15 @@ class GoogleCloudDatalabelingV1alpha1ExportDataOperationResponse {
 }
 
 /// Export destination of the data.Only gcs path is allowed in output_uri.
-class GoogleCloudDatalabelingV1alpha1GcsDestination {
-  /// The format of the gcs destination.
-  ///
-  /// Only "text/csv" and "application/json" are supported.
-  ///
-  /// Required.
-  core.String? mimeType;
-
-  /// The output uri of destination file.
-  ///
-  /// Required.
-  core.String? outputUri;
-
-  GoogleCloudDatalabelingV1alpha1GcsDestination({
-    this.mimeType,
-    this.outputUri,
-  });
-
-  GoogleCloudDatalabelingV1alpha1GcsDestination.fromJson(core.Map _json)
-      : this(
-          mimeType: _json.containsKey('mimeType')
-              ? _json['mimeType'] as core.String
-              : null,
-          outputUri: _json.containsKey('outputUri')
-              ? _json['outputUri'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (mimeType != null) 'mimeType': mimeType!,
-        if (outputUri != null) 'outputUri': outputUri!,
-      };
-}
+typedef GoogleCloudDatalabelingV1alpha1GcsDestination = $GcsDestination;
 
 /// Export folder destination of the data.
-class GoogleCloudDatalabelingV1alpha1GcsFolderDestination {
-  /// Cloud Storage directory to export data to.
-  ///
-  /// Required.
-  core.String? outputFolderUri;
-
-  GoogleCloudDatalabelingV1alpha1GcsFolderDestination({
-    this.outputFolderUri,
-  });
-
-  GoogleCloudDatalabelingV1alpha1GcsFolderDestination.fromJson(core.Map _json)
-      : this(
-          outputFolderUri: _json.containsKey('outputFolderUri')
-              ? _json['outputFolderUri'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (outputFolderUri != null) 'outputFolderUri': outputFolderUri!,
-      };
-}
+typedef GoogleCloudDatalabelingV1alpha1GcsFolderDestination
+    = $GcsFolderDestination;
 
 /// Configuration for how human labeling task should be done.
-class GoogleCloudDatalabelingV1alpha1HumanAnnotationConfig {
-  /// A human-readable description for AnnotatedDataset.
-  ///
-  /// The description can be up to 10000 characters long.
-  ///
-  /// Optional.
-  core.String? annotatedDatasetDescription;
-
-  /// A human-readable name for AnnotatedDataset defined by users.
-  ///
-  /// Maximum of 64 characters .
-  ///
-  /// Required.
-  core.String? annotatedDatasetDisplayName;
-
-  /// If you want your own labeling contributors to manage and work on this
-  /// labeling request, you can set these contributors here.
-  ///
-  /// We will give them access to the question types in crowdcompute. Note that
-  /// these emails must be registered in crowdcompute worker UI:
-  /// https://crowd-compute.appspot.com/
-  ///
-  /// Optional.
-  core.List<core.String>? contributorEmails;
-
-  /// Instruction resource name.
-  ///
-  /// Required.
-  core.String? instruction;
-
-  /// A human-readable label used to logically group labeling tasks.
-  ///
-  /// This string must match the regular expression `[a-zA-Z\\d_-]{0,128}`.
-  ///
-  /// Optional.
-  core.String? labelGroup;
-
-  /// The Language of this question, as a
-  /// \[BCP-47\](https://www.rfc-editor.org/rfc/bcp/bcp47.txt).
-  ///
-  /// Default value is en-US. Only need to set this when task is language
-  /// related. For example, French text classification.
-  ///
-  /// Optional.
-  core.String? languageCode;
-
-  /// Maximum duration for contributors to answer a question.
-  ///
-  /// Maximum is 3600 seconds. Default is 3600 seconds.
-  ///
-  /// Optional.
-  core.String? questionDuration;
-
-  /// Replication of questions.
-  ///
-  /// Each question will be sent to up to this number of contributors to label.
-  /// Aggregated answers will be returned. Default is set to 1. For image
-  /// related labeling, valid values are 1, 3, 5.
-  ///
-  /// Optional.
-  core.int? replicaCount;
-
-  /// Email of the user who started the labeling task and should be notified by
-  /// email.
-  ///
-  /// If empty no notification will be sent.
-  core.String? userEmailAddress;
-
-  GoogleCloudDatalabelingV1alpha1HumanAnnotationConfig({
-    this.annotatedDatasetDescription,
-    this.annotatedDatasetDisplayName,
-    this.contributorEmails,
-    this.instruction,
-    this.labelGroup,
-    this.languageCode,
-    this.questionDuration,
-    this.replicaCount,
-    this.userEmailAddress,
-  });
-
-  GoogleCloudDatalabelingV1alpha1HumanAnnotationConfig.fromJson(core.Map _json)
-      : this(
-          annotatedDatasetDescription:
-              _json.containsKey('annotatedDatasetDescription')
-                  ? _json['annotatedDatasetDescription'] as core.String
-                  : null,
-          annotatedDatasetDisplayName:
-              _json.containsKey('annotatedDatasetDisplayName')
-                  ? _json['annotatedDatasetDisplayName'] as core.String
-                  : null,
-          contributorEmails: _json.containsKey('contributorEmails')
-              ? (_json['contributorEmails'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          instruction: _json.containsKey('instruction')
-              ? _json['instruction'] as core.String
-              : null,
-          labelGroup: _json.containsKey('labelGroup')
-              ? _json['labelGroup'] as core.String
-              : null,
-          languageCode: _json.containsKey('languageCode')
-              ? _json['languageCode'] as core.String
-              : null,
-          questionDuration: _json.containsKey('questionDuration')
-              ? _json['questionDuration'] as core.String
-              : null,
-          replicaCount: _json.containsKey('replicaCount')
-              ? _json['replicaCount'] as core.int
-              : null,
-          userEmailAddress: _json.containsKey('userEmailAddress')
-              ? _json['userEmailAddress'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (annotatedDatasetDescription != null)
-          'annotatedDatasetDescription': annotatedDatasetDescription!,
-        if (annotatedDatasetDisplayName != null)
-          'annotatedDatasetDisplayName': annotatedDatasetDisplayName!,
-        if (contributorEmails != null) 'contributorEmails': contributorEmails!,
-        if (instruction != null) 'instruction': instruction!,
-        if (labelGroup != null) 'labelGroup': labelGroup!,
-        if (languageCode != null) 'languageCode': languageCode!,
-        if (questionDuration != null) 'questionDuration': questionDuration!,
-        if (replicaCount != null) 'replicaCount': replicaCount!,
-        if (userEmailAddress != null) 'userEmailAddress': userEmailAddress!,
-      };
-}
+typedef GoogleCloudDatalabelingV1alpha1HumanAnnotationConfig
+    = $HumanAnnotationConfig;
 
 /// Metadata of an ImportData operation.
 class GoogleCloudDatalabelingV1alpha1ImportDataOperationMetadata {
@@ -2814,48 +2636,8 @@ class GoogleCloudDatalabelingV1alpha1ImportDataOperationMetadata {
 }
 
 /// Response used for ImportData longrunning operation.
-class GoogleCloudDatalabelingV1alpha1ImportDataOperationResponse {
-  /// Ouptut only.
-  ///
-  /// The name of imported dataset.
-  core.String? dataset;
-
-  /// Number of examples imported successfully.
-  ///
-  /// Output only.
-  core.int? importCount;
-
-  /// Total number of examples requested to import
-  ///
-  /// Output only.
-  core.int? totalCount;
-
-  GoogleCloudDatalabelingV1alpha1ImportDataOperationResponse({
-    this.dataset,
-    this.importCount,
-    this.totalCount,
-  });
-
-  GoogleCloudDatalabelingV1alpha1ImportDataOperationResponse.fromJson(
-      core.Map _json)
-      : this(
-          dataset: _json.containsKey('dataset')
-              ? _json['dataset'] as core.String
-              : null,
-          importCount: _json.containsKey('importCount')
-              ? _json['importCount'] as core.int
-              : null,
-          totalCount: _json.containsKey('totalCount')
-              ? _json['totalCount'] as core.int
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (dataset != null) 'dataset': dataset!,
-        if (importCount != null) 'importCount': importCount!,
-        if (totalCount != null) 'totalCount': totalCount!,
-      };
-}
+typedef GoogleCloudDatalabelingV1alpha1ImportDataOperationResponse
+    = $ImportDataOperationResponse;
 
 /// Details of a LabelImageBoundingBox operation metadata.
 class GoogleCloudDatalabelingV1alpha1LabelImageBoundingBoxOperationMetadata {
@@ -3224,36 +3006,7 @@ class GoogleCloudDatalabelingV1alpha1LabelOperationMetadata {
 }
 
 /// Statistics about annotation specs.
-class GoogleCloudDatalabelingV1alpha1LabelStats {
-  /// Map of each annotation spec's example count.
-  ///
-  /// Key is the annotation spec name and value is the number of examples for
-  /// that annotation spec. If the annotated dataset does not have annotation
-  /// spec, the map will return a pair where the key is empty string and value
-  /// is the total number of annotations.
-  core.Map<core.String, core.String>? exampleCount;
-
-  GoogleCloudDatalabelingV1alpha1LabelStats({
-    this.exampleCount,
-  });
-
-  GoogleCloudDatalabelingV1alpha1LabelStats.fromJson(core.Map _json)
-      : this(
-          exampleCount: _json.containsKey('exampleCount')
-              ? (_json['exampleCount'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.String,
-                  ),
-                )
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (exampleCount != null) 'exampleCount': exampleCount!,
-      };
-}
+typedef GoogleCloudDatalabelingV1alpha1LabelStats = $LabelStats;
 
 /// Details of a LabelTextClassification operation metadata.
 class GoogleCloudDatalabelingV1alpha1LabelTextClassificationOperationMetadata {
@@ -4261,38 +4014,7 @@ class GoogleCloudDatalabelingV1beta1BoundingPoly {
 }
 
 /// Config for image bounding poly (and bounding box) human labeling task.
-class GoogleCloudDatalabelingV1beta1BoundingPolyConfig {
-  /// Annotation spec set resource name.
-  ///
-  /// Required.
-  core.String? annotationSpecSet;
-
-  /// Instruction message showed on contributors UI.
-  ///
-  /// Optional.
-  core.String? instructionMessage;
-
-  GoogleCloudDatalabelingV1beta1BoundingPolyConfig({
-    this.annotationSpecSet,
-    this.instructionMessage,
-  });
-
-  GoogleCloudDatalabelingV1beta1BoundingPolyConfig.fromJson(core.Map _json)
-      : this(
-          annotationSpecSet: _json.containsKey('annotationSpecSet')
-              ? _json['annotationSpecSet'] as core.String
-              : null,
-          instructionMessage: _json.containsKey('instructionMessage')
-              ? _json['instructionMessage'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (annotationSpecSet != null) 'annotationSpecSet': annotationSpecSet!,
-        if (instructionMessage != null)
-          'instructionMessage': instructionMessage!,
-      };
-}
+typedef GoogleCloudDatalabelingV1beta1BoundingPolyConfig = $Config;
 
 /// Metadata for classification annotations.
 class GoogleCloudDatalabelingV1beta1ClassificationMetadata {
@@ -5969,62 +5691,11 @@ class GoogleCloudDatalabelingV1beta1FeedbackThreadMetadata {
 }
 
 /// Export destination of the data.Only gcs path is allowed in output_uri.
-class GoogleCloudDatalabelingV1beta1GcsDestination {
-  /// The format of the gcs destination.
-  ///
-  /// Only "text/csv" and "application/json" are supported.
-  ///
-  /// Required.
-  core.String? mimeType;
-
-  /// The output uri of destination file.
-  ///
-  /// Required.
-  core.String? outputUri;
-
-  GoogleCloudDatalabelingV1beta1GcsDestination({
-    this.mimeType,
-    this.outputUri,
-  });
-
-  GoogleCloudDatalabelingV1beta1GcsDestination.fromJson(core.Map _json)
-      : this(
-          mimeType: _json.containsKey('mimeType')
-              ? _json['mimeType'] as core.String
-              : null,
-          outputUri: _json.containsKey('outputUri')
-              ? _json['outputUri'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (mimeType != null) 'mimeType': mimeType!,
-        if (outputUri != null) 'outputUri': outputUri!,
-      };
-}
+typedef GoogleCloudDatalabelingV1beta1GcsDestination = $GcsDestination;
 
 /// Export folder destination of the data.
-class GoogleCloudDatalabelingV1beta1GcsFolderDestination {
-  /// Cloud Storage directory to export data to.
-  ///
-  /// Required.
-  core.String? outputFolderUri;
-
-  GoogleCloudDatalabelingV1beta1GcsFolderDestination({
-    this.outputFolderUri,
-  });
-
-  GoogleCloudDatalabelingV1beta1GcsFolderDestination.fromJson(core.Map _json)
-      : this(
-          outputFolderUri: _json.containsKey('outputFolderUri')
-              ? _json['outputFolderUri'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (outputFolderUri != null) 'outputFolderUri': outputFolderUri!,
-      };
-}
+typedef GoogleCloudDatalabelingV1beta1GcsFolderDestination
+    = $GcsFolderDestination;
 
 /// Source of the Cloud Storage file to be imported.
 class GoogleCloudDatalabelingV1beta1GcsSource {
@@ -6064,135 +5735,8 @@ class GoogleCloudDatalabelingV1beta1GcsSource {
 }
 
 /// Configuration for how human labeling task should be done.
-class GoogleCloudDatalabelingV1beta1HumanAnnotationConfig {
-  /// A human-readable description for AnnotatedDataset.
-  ///
-  /// The description can be up to 10000 characters long.
-  ///
-  /// Optional.
-  core.String? annotatedDatasetDescription;
-
-  /// A human-readable name for AnnotatedDataset defined by users.
-  ///
-  /// Maximum of 64 characters .
-  ///
-  /// Required.
-  core.String? annotatedDatasetDisplayName;
-
-  /// If you want your own labeling contributors to manage and work on this
-  /// labeling request, you can set these contributors here.
-  ///
-  /// We will give them access to the question types in crowdcompute. Note that
-  /// these emails must be registered in crowdcompute worker UI:
-  /// https://crowd-compute.appspot.com/
-  ///
-  /// Optional.
-  core.List<core.String>? contributorEmails;
-
-  /// Instruction resource name.
-  ///
-  /// Required.
-  core.String? instruction;
-
-  /// A human-readable label used to logically group labeling tasks.
-  ///
-  /// This string must match the regular expression `[a-zA-Z\\d_-]{0,128}`.
-  ///
-  /// Optional.
-  core.String? labelGroup;
-
-  /// The Language of this question, as a
-  /// \[BCP-47\](https://www.rfc-editor.org/rfc/bcp/bcp47.txt).
-  ///
-  /// Default value is en-US. Only need to set this when task is language
-  /// related. For example, French text classification.
-  ///
-  /// Optional.
-  core.String? languageCode;
-
-  /// Maximum duration for contributors to answer a question.
-  ///
-  /// Maximum is 3600 seconds. Default is 3600 seconds.
-  ///
-  /// Optional.
-  core.String? questionDuration;
-
-  /// Replication of questions.
-  ///
-  /// Each question will be sent to up to this number of contributors to label.
-  /// Aggregated answers will be returned. Default is set to 1. For image
-  /// related labeling, valid values are 1, 3, 5.
-  ///
-  /// Optional.
-  core.int? replicaCount;
-
-  /// Email of the user who started the labeling task and should be notified by
-  /// email.
-  ///
-  /// If empty no notification will be sent.
-  core.String? userEmailAddress;
-
-  GoogleCloudDatalabelingV1beta1HumanAnnotationConfig({
-    this.annotatedDatasetDescription,
-    this.annotatedDatasetDisplayName,
-    this.contributorEmails,
-    this.instruction,
-    this.labelGroup,
-    this.languageCode,
-    this.questionDuration,
-    this.replicaCount,
-    this.userEmailAddress,
-  });
-
-  GoogleCloudDatalabelingV1beta1HumanAnnotationConfig.fromJson(core.Map _json)
-      : this(
-          annotatedDatasetDescription:
-              _json.containsKey('annotatedDatasetDescription')
-                  ? _json['annotatedDatasetDescription'] as core.String
-                  : null,
-          annotatedDatasetDisplayName:
-              _json.containsKey('annotatedDatasetDisplayName')
-                  ? _json['annotatedDatasetDisplayName'] as core.String
-                  : null,
-          contributorEmails: _json.containsKey('contributorEmails')
-              ? (_json['contributorEmails'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          instruction: _json.containsKey('instruction')
-              ? _json['instruction'] as core.String
-              : null,
-          labelGroup: _json.containsKey('labelGroup')
-              ? _json['labelGroup'] as core.String
-              : null,
-          languageCode: _json.containsKey('languageCode')
-              ? _json['languageCode'] as core.String
-              : null,
-          questionDuration: _json.containsKey('questionDuration')
-              ? _json['questionDuration'] as core.String
-              : null,
-          replicaCount: _json.containsKey('replicaCount')
-              ? _json['replicaCount'] as core.int
-              : null,
-          userEmailAddress: _json.containsKey('userEmailAddress')
-              ? _json['userEmailAddress'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (annotatedDatasetDescription != null)
-          'annotatedDatasetDescription': annotatedDatasetDescription!,
-        if (annotatedDatasetDisplayName != null)
-          'annotatedDatasetDisplayName': annotatedDatasetDisplayName!,
-        if (contributorEmails != null) 'contributorEmails': contributorEmails!,
-        if (instruction != null) 'instruction': instruction!,
-        if (labelGroup != null) 'labelGroup': labelGroup!,
-        if (languageCode != null) 'languageCode': languageCode!,
-        if (questionDuration != null) 'questionDuration': questionDuration!,
-        if (replicaCount != null) 'replicaCount': replicaCount!,
-        if (userEmailAddress != null) 'userEmailAddress': userEmailAddress!,
-      };
-}
+typedef GoogleCloudDatalabelingV1beta1HumanAnnotationConfig
+    = $HumanAnnotationConfig;
 
 /// Image bounding poly annotation.
 ///
@@ -6512,48 +6056,8 @@ class GoogleCloudDatalabelingV1beta1ImportDataOperationMetadata {
 }
 
 /// Response used for ImportData longrunning operation.
-class GoogleCloudDatalabelingV1beta1ImportDataOperationResponse {
-  /// Ouptut only.
-  ///
-  /// The name of imported dataset.
-  core.String? dataset;
-
-  /// Number of examples imported successfully.
-  ///
-  /// Output only.
-  core.int? importCount;
-
-  /// Total number of examples requested to import
-  ///
-  /// Output only.
-  core.int? totalCount;
-
-  GoogleCloudDatalabelingV1beta1ImportDataOperationResponse({
-    this.dataset,
-    this.importCount,
-    this.totalCount,
-  });
-
-  GoogleCloudDatalabelingV1beta1ImportDataOperationResponse.fromJson(
-      core.Map _json)
-      : this(
-          dataset: _json.containsKey('dataset')
-              ? _json['dataset'] as core.String
-              : null,
-          importCount: _json.containsKey('importCount')
-              ? _json['importCount'] as core.int
-              : null,
-          totalCount: _json.containsKey('totalCount')
-              ? _json['totalCount'] as core.int
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (dataset != null) 'dataset': dataset!,
-        if (importCount != null) 'importCount': importCount!,
-        if (totalCount != null) 'totalCount': totalCount!,
-      };
-}
+typedef GoogleCloudDatalabelingV1beta1ImportDataOperationResponse
+    = $ImportDataOperationResponse;
 
 /// Request message for ImportData API.
 class GoogleCloudDatalabelingV1beta1ImportDataRequest {
@@ -7297,36 +6801,7 @@ class GoogleCloudDatalabelingV1beta1LabelOperationMetadata {
 }
 
 /// Statistics about annotation specs.
-class GoogleCloudDatalabelingV1beta1LabelStats {
-  /// Map of each annotation spec's example count.
-  ///
-  /// Key is the annotation spec name and value is the number of examples for
-  /// that annotation spec. If the annotated dataset does not have annotation
-  /// spec, the map will return a pair where the key is empty string and value
-  /// is the total number of annotations.
-  core.Map<core.String, core.String>? exampleCount;
-
-  GoogleCloudDatalabelingV1beta1LabelStats({
-    this.exampleCount,
-  });
-
-  GoogleCloudDatalabelingV1beta1LabelStats.fromJson(core.Map _json)
-      : this(
-          exampleCount: _json.containsKey('exampleCount')
-              ? (_json['exampleCount'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.String,
-                  ),
-                )
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (exampleCount != null) 'exampleCount': exampleCount!,
-      };
-}
+typedef GoogleCloudDatalabelingV1beta1LabelStats = $LabelStats;
 
 /// Details of a LabelTextClassification operation metadata.
 class GoogleCloudDatalabelingV1beta1LabelTextClassificationOperationMetadata {
@@ -8310,38 +7785,7 @@ class GoogleCloudDatalabelingV1beta1Polyline {
 }
 
 /// Config for image polyline human labeling task.
-class GoogleCloudDatalabelingV1beta1PolylineConfig {
-  /// Annotation spec set resource name.
-  ///
-  /// Required.
-  core.String? annotationSpecSet;
-
-  /// Instruction message showed on contributors UI.
-  ///
-  /// Optional.
-  core.String? instructionMessage;
-
-  GoogleCloudDatalabelingV1beta1PolylineConfig({
-    this.annotationSpecSet,
-    this.instructionMessage,
-  });
-
-  GoogleCloudDatalabelingV1beta1PolylineConfig.fromJson(core.Map _json)
-      : this(
-          annotationSpecSet: _json.containsKey('annotationSpecSet')
-              ? _json['annotationSpecSet'] as core.String
-              : null,
-          instructionMessage: _json.containsKey('instructionMessage')
-              ? _json['instructionMessage'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (annotationSpecSet != null) 'annotationSpecSet': annotationSpecSet!,
-        if (instructionMessage != null)
-          'instructionMessage': instructionMessage!,
-      };
-}
+typedef GoogleCloudDatalabelingV1beta1PolylineConfig = $Config;
 
 class GoogleCloudDatalabelingV1beta1PrCurve {
   /// The annotation spec of the label for which the precision-recall curve
@@ -9330,62 +8774,11 @@ class GoogleCloudDatalabelingV1p1alpha1ExportDataOperationResponse {
 }
 
 /// Export destination of the data.Only gcs path is allowed in output_uri.
-class GoogleCloudDatalabelingV1p1alpha1GcsDestination {
-  /// The format of the gcs destination.
-  ///
-  /// Only "text/csv" and "application/json" are supported.
-  ///
-  /// Required.
-  core.String? mimeType;
-
-  /// The output uri of destination file.
-  ///
-  /// Required.
-  core.String? outputUri;
-
-  GoogleCloudDatalabelingV1p1alpha1GcsDestination({
-    this.mimeType,
-    this.outputUri,
-  });
-
-  GoogleCloudDatalabelingV1p1alpha1GcsDestination.fromJson(core.Map _json)
-      : this(
-          mimeType: _json.containsKey('mimeType')
-              ? _json['mimeType'] as core.String
-              : null,
-          outputUri: _json.containsKey('outputUri')
-              ? _json['outputUri'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (mimeType != null) 'mimeType': mimeType!,
-        if (outputUri != null) 'outputUri': outputUri!,
-      };
-}
+typedef GoogleCloudDatalabelingV1p1alpha1GcsDestination = $GcsDestination;
 
 /// Export folder destination of the data.
-class GoogleCloudDatalabelingV1p1alpha1GcsFolderDestination {
-  /// Cloud Storage directory to export data to.
-  ///
-  /// Required.
-  core.String? outputFolderUri;
-
-  GoogleCloudDatalabelingV1p1alpha1GcsFolderDestination({
-    this.outputFolderUri,
-  });
-
-  GoogleCloudDatalabelingV1p1alpha1GcsFolderDestination.fromJson(core.Map _json)
-      : this(
-          outputFolderUri: _json.containsKey('outputFolderUri')
-              ? _json['outputFolderUri'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (outputFolderUri != null) 'outputFolderUri': outputFolderUri!,
-      };
-}
+typedef GoogleCloudDatalabelingV1p1alpha1GcsFolderDestination
+    = $GcsFolderDestination;
 
 /// Metadata of an GenerateAnalysisReport operation.
 class GoogleCloudDatalabelingV1p1alpha1GenerateAnalysisReportOperationMetadata {
@@ -9420,136 +8813,8 @@ class GoogleCloudDatalabelingV1p1alpha1GenerateAnalysisReportOperationMetadata {
 }
 
 /// Configuration for how human labeling task should be done.
-class GoogleCloudDatalabelingV1p1alpha1HumanAnnotationConfig {
-  /// A human-readable description for AnnotatedDataset.
-  ///
-  /// The description can be up to 10000 characters long.
-  ///
-  /// Optional.
-  core.String? annotatedDatasetDescription;
-
-  /// A human-readable name for AnnotatedDataset defined by users.
-  ///
-  /// Maximum of 64 characters .
-  ///
-  /// Required.
-  core.String? annotatedDatasetDisplayName;
-
-  /// If you want your own labeling contributors to manage and work on this
-  /// labeling request, you can set these contributors here.
-  ///
-  /// We will give them access to the question types in crowdcompute. Note that
-  /// these emails must be registered in crowdcompute worker UI:
-  /// https://crowd-compute.appspot.com/
-  ///
-  /// Optional.
-  core.List<core.String>? contributorEmails;
-
-  /// Instruction resource name.
-  ///
-  /// Required.
-  core.String? instruction;
-
-  /// A human-readable label used to logically group labeling tasks.
-  ///
-  /// This string must match the regular expression `[a-zA-Z\\d_-]{0,128}`.
-  ///
-  /// Optional.
-  core.String? labelGroup;
-
-  /// The Language of this question, as a
-  /// \[BCP-47\](https://www.rfc-editor.org/rfc/bcp/bcp47.txt).
-  ///
-  /// Default value is en-US. Only need to set this when task is language
-  /// related. For example, French text classification.
-  ///
-  /// Optional.
-  core.String? languageCode;
-
-  /// Maximum duration for contributors to answer a question.
-  ///
-  /// Maximum is 3600 seconds. Default is 3600 seconds.
-  ///
-  /// Optional.
-  core.String? questionDuration;
-
-  /// Replication of questions.
-  ///
-  /// Each question will be sent to up to this number of contributors to label.
-  /// Aggregated answers will be returned. Default is set to 1. For image
-  /// related labeling, valid values are 1, 3, 5.
-  ///
-  /// Optional.
-  core.int? replicaCount;
-
-  /// Email of the user who started the labeling task and should be notified by
-  /// email.
-  ///
-  /// If empty no notification will be sent.
-  core.String? userEmailAddress;
-
-  GoogleCloudDatalabelingV1p1alpha1HumanAnnotationConfig({
-    this.annotatedDatasetDescription,
-    this.annotatedDatasetDisplayName,
-    this.contributorEmails,
-    this.instruction,
-    this.labelGroup,
-    this.languageCode,
-    this.questionDuration,
-    this.replicaCount,
-    this.userEmailAddress,
-  });
-
-  GoogleCloudDatalabelingV1p1alpha1HumanAnnotationConfig.fromJson(
-      core.Map _json)
-      : this(
-          annotatedDatasetDescription:
-              _json.containsKey('annotatedDatasetDescription')
-                  ? _json['annotatedDatasetDescription'] as core.String
-                  : null,
-          annotatedDatasetDisplayName:
-              _json.containsKey('annotatedDatasetDisplayName')
-                  ? _json['annotatedDatasetDisplayName'] as core.String
-                  : null,
-          contributorEmails: _json.containsKey('contributorEmails')
-              ? (_json['contributorEmails'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          instruction: _json.containsKey('instruction')
-              ? _json['instruction'] as core.String
-              : null,
-          labelGroup: _json.containsKey('labelGroup')
-              ? _json['labelGroup'] as core.String
-              : null,
-          languageCode: _json.containsKey('languageCode')
-              ? _json['languageCode'] as core.String
-              : null,
-          questionDuration: _json.containsKey('questionDuration')
-              ? _json['questionDuration'] as core.String
-              : null,
-          replicaCount: _json.containsKey('replicaCount')
-              ? _json['replicaCount'] as core.int
-              : null,
-          userEmailAddress: _json.containsKey('userEmailAddress')
-              ? _json['userEmailAddress'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (annotatedDatasetDescription != null)
-          'annotatedDatasetDescription': annotatedDatasetDescription!,
-        if (annotatedDatasetDisplayName != null)
-          'annotatedDatasetDisplayName': annotatedDatasetDisplayName!,
-        if (contributorEmails != null) 'contributorEmails': contributorEmails!,
-        if (instruction != null) 'instruction': instruction!,
-        if (labelGroup != null) 'labelGroup': labelGroup!,
-        if (languageCode != null) 'languageCode': languageCode!,
-        if (questionDuration != null) 'questionDuration': questionDuration!,
-        if (replicaCount != null) 'replicaCount': replicaCount!,
-        if (userEmailAddress != null) 'userEmailAddress': userEmailAddress!,
-      };
-}
+typedef GoogleCloudDatalabelingV1p1alpha1HumanAnnotationConfig
+    = $HumanAnnotationConfig;
 
 /// Metadata of an ImportData operation.
 class GoogleCloudDatalabelingV1p1alpha1ImportDataOperationMetadata {
@@ -9604,48 +8869,8 @@ class GoogleCloudDatalabelingV1p1alpha1ImportDataOperationMetadata {
 }
 
 /// Response used for ImportData longrunning operation.
-class GoogleCloudDatalabelingV1p1alpha1ImportDataOperationResponse {
-  /// Ouptut only.
-  ///
-  /// The name of imported dataset.
-  core.String? dataset;
-
-  /// Number of examples imported successfully.
-  ///
-  /// Output only.
-  core.int? importCount;
-
-  /// Total number of examples requested to import
-  ///
-  /// Output only.
-  core.int? totalCount;
-
-  GoogleCloudDatalabelingV1p1alpha1ImportDataOperationResponse({
-    this.dataset,
-    this.importCount,
-    this.totalCount,
-  });
-
-  GoogleCloudDatalabelingV1p1alpha1ImportDataOperationResponse.fromJson(
-      core.Map _json)
-      : this(
-          dataset: _json.containsKey('dataset')
-              ? _json['dataset'] as core.String
-              : null,
-          importCount: _json.containsKey('importCount')
-              ? _json['importCount'] as core.int
-              : null,
-          totalCount: _json.containsKey('totalCount')
-              ? _json['totalCount'] as core.int
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (dataset != null) 'dataset': dataset!,
-        if (importCount != null) 'importCount': importCount!,
-        if (totalCount != null) 'totalCount': totalCount!,
-      };
-}
+typedef GoogleCloudDatalabelingV1p1alpha1ImportDataOperationResponse
+    = $ImportDataOperationResponse;
 
 /// Details of a LabelImageBoundingBox operation metadata.
 class GoogleCloudDatalabelingV1p1alpha1LabelImageBoundingBoxOperationMetadata {
@@ -10015,36 +9240,7 @@ class GoogleCloudDatalabelingV1p1alpha1LabelOperationMetadata {
 }
 
 /// Statistics about annotation specs.
-class GoogleCloudDatalabelingV1p1alpha1LabelStats {
-  /// Map of each annotation spec's example count.
-  ///
-  /// Key is the annotation spec name and value is the number of examples for
-  /// that annotation spec. If the annotated dataset does not have annotation
-  /// spec, the map will return a pair where the key is empty string and value
-  /// is the total number of annotations.
-  core.Map<core.String, core.String>? exampleCount;
-
-  GoogleCloudDatalabelingV1p1alpha1LabelStats({
-    this.exampleCount,
-  });
-
-  GoogleCloudDatalabelingV1p1alpha1LabelStats.fromJson(core.Map _json)
-      : this(
-          exampleCount: _json.containsKey('exampleCount')
-              ? (_json['exampleCount'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.String,
-                  ),
-                )
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (exampleCount != null) 'exampleCount': exampleCount!,
-      };
-}
+typedef GoogleCloudDatalabelingV1p1alpha1LabelStats = $LabelStats;
 
 /// Details of a LabelTextClassification operation metadata.
 class GoogleCloudDatalabelingV1p1alpha1LabelTextClassificationOperationMetadata {
@@ -10410,194 +9606,15 @@ class GoogleCloudDatalabelingV1p2alpha1ExportDataOperationResponse {
 }
 
 /// Export destination of the data.Only gcs path is allowed in output_uri.
-class GoogleCloudDatalabelingV1p2alpha1GcsDestination {
-  /// The format of the gcs destination.
-  ///
-  /// Only "text/csv" and "application/json" are supported.
-  ///
-  /// Required.
-  core.String? mimeType;
-
-  /// The output uri of destination file.
-  ///
-  /// Required.
-  core.String? outputUri;
-
-  GoogleCloudDatalabelingV1p2alpha1GcsDestination({
-    this.mimeType,
-    this.outputUri,
-  });
-
-  GoogleCloudDatalabelingV1p2alpha1GcsDestination.fromJson(core.Map _json)
-      : this(
-          mimeType: _json.containsKey('mimeType')
-              ? _json['mimeType'] as core.String
-              : null,
-          outputUri: _json.containsKey('outputUri')
-              ? _json['outputUri'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (mimeType != null) 'mimeType': mimeType!,
-        if (outputUri != null) 'outputUri': outputUri!,
-      };
-}
+typedef GoogleCloudDatalabelingV1p2alpha1GcsDestination = $GcsDestination;
 
 /// Export folder destination of the data.
-class GoogleCloudDatalabelingV1p2alpha1GcsFolderDestination {
-  /// Cloud Storage directory to export data to.
-  ///
-  /// Required.
-  core.String? outputFolderUri;
-
-  GoogleCloudDatalabelingV1p2alpha1GcsFolderDestination({
-    this.outputFolderUri,
-  });
-
-  GoogleCloudDatalabelingV1p2alpha1GcsFolderDestination.fromJson(core.Map _json)
-      : this(
-          outputFolderUri: _json.containsKey('outputFolderUri')
-              ? _json['outputFolderUri'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (outputFolderUri != null) 'outputFolderUri': outputFolderUri!,
-      };
-}
+typedef GoogleCloudDatalabelingV1p2alpha1GcsFolderDestination
+    = $GcsFolderDestination;
 
 /// Configuration for how human labeling task should be done.
-class GoogleCloudDatalabelingV1p2alpha1HumanAnnotationConfig {
-  /// A human-readable description for AnnotatedDataset.
-  ///
-  /// The description can be up to 10000 characters long.
-  ///
-  /// Optional.
-  core.String? annotatedDatasetDescription;
-
-  /// A human-readable name for AnnotatedDataset defined by users.
-  ///
-  /// Maximum of 64 characters .
-  ///
-  /// Required.
-  core.String? annotatedDatasetDisplayName;
-
-  /// If you want your own labeling contributors to manage and work on this
-  /// labeling request, you can set these contributors here.
-  ///
-  /// We will give them access to the question types in crowdcompute. Note that
-  /// these emails must be registered in crowdcompute worker UI:
-  /// https://crowd-compute.appspot.com/
-  ///
-  /// Optional.
-  core.List<core.String>? contributorEmails;
-
-  /// Instruction resource name.
-  ///
-  /// Required.
-  core.String? instruction;
-
-  /// A human-readable label used to logically group labeling tasks.
-  ///
-  /// This string must match the regular expression `[a-zA-Z\\d_-]{0,128}`.
-  ///
-  /// Optional.
-  core.String? labelGroup;
-
-  /// The Language of this question, as a
-  /// \[BCP-47\](https://www.rfc-editor.org/rfc/bcp/bcp47.txt).
-  ///
-  /// Default value is en-US. Only need to set this when task is language
-  /// related. For example, French text classification.
-  ///
-  /// Optional.
-  core.String? languageCode;
-
-  /// Maximum duration for contributors to answer a question.
-  ///
-  /// Maximum is 3600 seconds. Default is 3600 seconds.
-  ///
-  /// Optional.
-  core.String? questionDuration;
-
-  /// Replication of questions.
-  ///
-  /// Each question will be sent to up to this number of contributors to label.
-  /// Aggregated answers will be returned. Default is set to 1. For image
-  /// related labeling, valid values are 1, 3, 5.
-  ///
-  /// Optional.
-  core.int? replicaCount;
-
-  /// Email of the user who started the labeling task and should be notified by
-  /// email.
-  ///
-  /// If empty no notification will be sent.
-  core.String? userEmailAddress;
-
-  GoogleCloudDatalabelingV1p2alpha1HumanAnnotationConfig({
-    this.annotatedDatasetDescription,
-    this.annotatedDatasetDisplayName,
-    this.contributorEmails,
-    this.instruction,
-    this.labelGroup,
-    this.languageCode,
-    this.questionDuration,
-    this.replicaCount,
-    this.userEmailAddress,
-  });
-
-  GoogleCloudDatalabelingV1p2alpha1HumanAnnotationConfig.fromJson(
-      core.Map _json)
-      : this(
-          annotatedDatasetDescription:
-              _json.containsKey('annotatedDatasetDescription')
-                  ? _json['annotatedDatasetDescription'] as core.String
-                  : null,
-          annotatedDatasetDisplayName:
-              _json.containsKey('annotatedDatasetDisplayName')
-                  ? _json['annotatedDatasetDisplayName'] as core.String
-                  : null,
-          contributorEmails: _json.containsKey('contributorEmails')
-              ? (_json['contributorEmails'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          instruction: _json.containsKey('instruction')
-              ? _json['instruction'] as core.String
-              : null,
-          labelGroup: _json.containsKey('labelGroup')
-              ? _json['labelGroup'] as core.String
-              : null,
-          languageCode: _json.containsKey('languageCode')
-              ? _json['languageCode'] as core.String
-              : null,
-          questionDuration: _json.containsKey('questionDuration')
-              ? _json['questionDuration'] as core.String
-              : null,
-          replicaCount: _json.containsKey('replicaCount')
-              ? _json['replicaCount'] as core.int
-              : null,
-          userEmailAddress: _json.containsKey('userEmailAddress')
-              ? _json['userEmailAddress'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (annotatedDatasetDescription != null)
-          'annotatedDatasetDescription': annotatedDatasetDescription!,
-        if (annotatedDatasetDisplayName != null)
-          'annotatedDatasetDisplayName': annotatedDatasetDisplayName!,
-        if (contributorEmails != null) 'contributorEmails': contributorEmails!,
-        if (instruction != null) 'instruction': instruction!,
-        if (labelGroup != null) 'labelGroup': labelGroup!,
-        if (languageCode != null) 'languageCode': languageCode!,
-        if (questionDuration != null) 'questionDuration': questionDuration!,
-        if (replicaCount != null) 'replicaCount': replicaCount!,
-        if (userEmailAddress != null) 'userEmailAddress': userEmailAddress!,
-      };
-}
+typedef GoogleCloudDatalabelingV1p2alpha1HumanAnnotationConfig
+    = $HumanAnnotationConfig;
 
 /// Metadata of an ImportData operation.
 class GoogleCloudDatalabelingV1p2alpha1ImportDataOperationMetadata {
@@ -10652,48 +9669,8 @@ class GoogleCloudDatalabelingV1p2alpha1ImportDataOperationMetadata {
 }
 
 /// Response used for ImportData longrunning operation.
-class GoogleCloudDatalabelingV1p2alpha1ImportDataOperationResponse {
-  /// Ouptut only.
-  ///
-  /// The name of imported dataset.
-  core.String? dataset;
-
-  /// Number of examples imported successfully.
-  ///
-  /// Output only.
-  core.int? importCount;
-
-  /// Total number of examples requested to import
-  ///
-  /// Output only.
-  core.int? totalCount;
-
-  GoogleCloudDatalabelingV1p2alpha1ImportDataOperationResponse({
-    this.dataset,
-    this.importCount,
-    this.totalCount,
-  });
-
-  GoogleCloudDatalabelingV1p2alpha1ImportDataOperationResponse.fromJson(
-      core.Map _json)
-      : this(
-          dataset: _json.containsKey('dataset')
-              ? _json['dataset'] as core.String
-              : null,
-          importCount: _json.containsKey('importCount')
-              ? _json['importCount'] as core.int
-              : null,
-          totalCount: _json.containsKey('totalCount')
-              ? _json['totalCount'] as core.int
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (dataset != null) 'dataset': dataset!,
-        if (importCount != null) 'importCount': importCount!,
-        if (totalCount != null) 'totalCount': totalCount!,
-      };
-}
+typedef GoogleCloudDatalabelingV1p2alpha1ImportDataOperationResponse
+    = $ImportDataOperationResponse;
 
 /// Details of a LabelImageBoundingBox operation metadata.
 class GoogleCloudDatalabelingV1p2alpha1LabelImageBoundingBoxOperationMetadata {
@@ -11063,36 +10040,7 @@ class GoogleCloudDatalabelingV1p2alpha1LabelOperationMetadata {
 }
 
 /// Statistics about annotation specs.
-class GoogleCloudDatalabelingV1p2alpha1LabelStats {
-  /// Map of each annotation spec's example count.
-  ///
-  /// Key is the annotation spec name and value is the number of examples for
-  /// that annotation spec. If the annotated dataset does not have annotation
-  /// spec, the map will return a pair where the key is empty string and value
-  /// is the total number of annotations.
-  core.Map<core.String, core.String>? exampleCount;
-
-  GoogleCloudDatalabelingV1p2alpha1LabelStats({
-    this.exampleCount,
-  });
-
-  GoogleCloudDatalabelingV1p2alpha1LabelStats.fromJson(core.Map _json)
-      : this(
-          exampleCount: _json.containsKey('exampleCount')
-              ? (_json['exampleCount'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.String,
-                  ),
-                )
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (exampleCount != null) 'exampleCount': exampleCount!,
-      };
-}
+typedef GoogleCloudDatalabelingV1p2alpha1LabelStats = $LabelStats;
 
 /// Details of a LabelTextClassification operation metadata.
 class GoogleCloudDatalabelingV1p2alpha1LabelTextClassificationOperationMetadata {
@@ -11395,46 +10343,4 @@ typedef GoogleProtobufEmpty = $Empty;
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-class GoogleRpcStatus {
-  /// The status code, which should be an enum value of google.rpc.Code.
-  core.int? code;
-
-  /// A list of messages that carry the error details.
-  ///
-  /// There is a common set of message types for APIs to use.
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object?>>? details;
-
-  /// A developer-facing error message, which should be in English.
-  ///
-  /// Any user-facing error message should be localized and sent in the
-  /// google.rpc.Status.details field, or localized by the client.
-  core.String? message;
-
-  GoogleRpcStatus({
-    this.code,
-    this.details,
-    this.message,
-  });
-
-  GoogleRpcStatus.fromJson(core.Map _json)
-      : this(
-          code: _json.containsKey('code') ? _json['code'] as core.int : null,
-          details: _json.containsKey('details')
-              ? (_json['details'] as core.List)
-                  .map((value) => value as core.Map<core.String, core.dynamic>)
-                  .toList()
-              : null,
-          message: _json.containsKey('message')
-              ? _json['message'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (code != null) 'code': code!,
-        if (details != null) 'details': details!,
-        if (message != null) 'message': message!,
-      };
-}
+typedef GoogleRpcStatus = $Status;

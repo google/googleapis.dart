@@ -35,7 +35,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-import '../src/empty.dart';
+import '../shared.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -647,35 +647,7 @@ class ImportAptArtifactsErrorInfo {
 }
 
 /// Google Cloud Storage location where the artifacts currently reside.
-class ImportAptArtifactsGcsSource {
-  /// Cloud Storage paths URI (e.g., gs://my_bucket//my_object).
-  core.List<core.String>? uris;
-
-  /// Supports URI wildcards for matching multiple objects from a single URI.
-  core.bool? useWildcards;
-
-  ImportAptArtifactsGcsSource({
-    this.uris,
-    this.useWildcards,
-  });
-
-  ImportAptArtifactsGcsSource.fromJson(core.Map _json)
-      : this(
-          uris: _json.containsKey('uris')
-              ? (_json['uris'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          useWildcards: _json.containsKey('useWildcards')
-              ? _json['useWildcards'] as core.bool
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (uris != null) 'uris': uris!,
-        if (useWildcards != null) 'useWildcards': useWildcards!,
-      };
-}
+typedef ImportAptArtifactsGcsSource = $ArtifactsGcsSource;
 
 /// The response message from importing artifacts.
 class ImportAptArtifactsResponse {
@@ -744,35 +716,7 @@ class ImportYumArtifactsErrorInfo {
 }
 
 /// Google Cloud Storage location where the artifacts currently reside.
-class ImportYumArtifactsGcsSource {
-  /// Cloud Storage paths URI (e.g., gs://my_bucket//my_object).
-  core.List<core.String>? uris;
-
-  /// Supports URI wildcards for matching multiple objects from a single URI.
-  core.bool? useWildcards;
-
-  ImportYumArtifactsGcsSource({
-    this.uris,
-    this.useWildcards,
-  });
-
-  ImportYumArtifactsGcsSource.fromJson(core.Map _json)
-      : this(
-          uris: _json.containsKey('uris')
-              ? (_json['uris'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          useWildcards: _json.containsKey('useWildcards')
-              ? _json['useWildcards'] as core.bool
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (uris != null) 'uris': uris!,
-        if (useWildcards != null) 'useWildcards': useWildcards!,
-      };
-}
+typedef ImportYumArtifactsGcsSource = $ArtifactsGcsSource;
 
 /// The response message from importing artifacts.
 class ImportYumArtifactsResponse {
@@ -1081,49 +1025,7 @@ class Repository {
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-class Status {
-  /// The status code, which should be an enum value of google.rpc.Code.
-  core.int? code;
-
-  /// A list of messages that carry the error details.
-  ///
-  /// There is a common set of message types for APIs to use.
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object?>>? details;
-
-  /// A developer-facing error message, which should be in English.
-  ///
-  /// Any user-facing error message should be localized and sent in the
-  /// google.rpc.Status.details field, or localized by the client.
-  core.String? message;
-
-  Status({
-    this.code,
-    this.details,
-    this.message,
-  });
-
-  Status.fromJson(core.Map _json)
-      : this(
-          code: _json.containsKey('code') ? _json['code'] as core.int : null,
-          details: _json.containsKey('details')
-              ? (_json['details'] as core.List)
-                  .map((value) => value as core.Map<core.String, core.dynamic>)
-                  .toList()
-              : null,
-          message: _json.containsKey('message')
-              ? _json['message'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (code != null) 'code': code!,
-        if (details != null) 'details': details!,
-        if (message != null) 'message': message!,
-      };
-}
+typedef Status = $Status;
 
 /// The response to upload an artifact.
 class UploadAptArtifactMediaResponse {

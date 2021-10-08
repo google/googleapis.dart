@@ -61,7 +61,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-import '../src/empty.dart';
+import '../shared.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -5442,22 +5442,7 @@ class AbuseReport {
       };
 }
 
-class AbuseType {
-  core.String? id;
-
-  AbuseType({
-    this.id,
-  });
-
-  AbuseType.fromJson(core.Map _json)
-      : this(
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (id != null) 'id': id!,
-      };
-}
+typedef AbuseType = $Shared09;
 
 /// Rights management policy for YouTube resources.
 class AccessPolicy {
@@ -8249,23 +8234,7 @@ class CommentSnippet {
 }
 
 /// The id of the author's YouTube channel, if any.
-class CommentSnippetAuthorChannelId {
-  core.String? value;
-
-  CommentSnippetAuthorChannelId({
-    this.value,
-  });
-
-  CommentSnippetAuthorChannelId.fromJson(core.Map _json)
-      : this(
-          value:
-              _json.containsKey('value') ? _json['value'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (value != null) 'value': value!,
-      };
-}
+typedef CommentSnippetAuthorChannelId = $Shared11;
 
 /// A *comment thread* represents information that applies to a top level
 /// comment and all its replies.
@@ -10572,23 +10541,7 @@ class InvideoTiming {
       };
 }
 
-class LanguageTag {
-  core.String? value;
-
-  LanguageTag({
-    this.value,
-  });
-
-  LanguageTag.fromJson(core.Map _json)
-      : this(
-          value:
-              _json.containsKey('value') ? _json['value'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (value != null) 'value': value!,
-      };
-}
+typedef LanguageTag = $Shared11;
 
 class LevelDetails {
   /// The name that should be used when referring to this level.

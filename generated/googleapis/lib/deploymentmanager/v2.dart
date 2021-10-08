@@ -36,6 +36,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
+import '../shared.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -350,16 +351,20 @@ class DeploymentsResource {
   /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -799,16 +804,20 @@ class ManifestsResource {
   /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -934,16 +943,20 @@ class OperationsResource {
   /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -1075,16 +1088,20 @@ class ResourcesResource {
   /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -1168,16 +1185,20 @@ class TypesResource {
   /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -1301,43 +1322,7 @@ class AuditConfig {
 /// "exempted_members": \[ "user:jose@example.com" \] }, { "log_type":
 /// "DATA_WRITE" } \] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while
 /// exempting jose@example.com from DATA_READ logging.
-class AuditLogConfig {
-  /// Specifies the identities that do not cause logging for this type of
-  /// permission.
-  ///
-  /// Follows the same format of Binding.members.
-  core.List<core.String>? exemptedMembers;
-
-  /// The log type that this config enables.
-  /// Possible string values are:
-  /// - "LOG_TYPE_UNSPECIFIED" : Default case. Should never be this.
-  /// - "ADMIN_READ" : Admin reads. Example: CloudIAM getIamPolicy
-  /// - "DATA_WRITE" : Data writes. Example: CloudSQL Users create
-  /// - "DATA_READ" : Data reads. Example: CloudSQL Users list
-  core.String? logType;
-
-  AuditLogConfig({
-    this.exemptedMembers,
-    this.logType,
-  });
-
-  AuditLogConfig.fromJson(core.Map _json)
-      : this(
-          exemptedMembers: _json.containsKey('exemptedMembers')
-              ? (_json['exemptedMembers'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          logType: _json.containsKey('logType')
-              ? _json['logType'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (exemptedMembers != null) 'exemptedMembers': exemptedMembers!,
-        if (logType != null) 'logType': logType!,
-      };
-}
+typedef AuditLogConfig = $AuditLogConfig;
 
 /// Associates `members` with a `role`.
 class Binding {
@@ -1591,30 +1576,7 @@ class Deployment {
 }
 
 /// Label object for Deployments
-class DeploymentLabelEntry {
-  /// Key of the label
-  core.String? key;
-
-  /// Value of the label
-  core.String? value;
-
-  DeploymentLabelEntry({
-    this.key,
-    this.value,
-  });
-
-  DeploymentLabelEntry.fromJson(core.Map _json)
-      : this(
-          key: _json.containsKey('key') ? _json['key'] as core.String : null,
-          value:
-              _json.containsKey('value') ? _json['value'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (key != null) 'key': key!,
-        if (value != null) 'value': value!,
-      };
-}
+typedef DeploymentLabelEntry = $LabelEntry;
 
 class DeploymentUpdate {
   /// An optional user-provided description of the deployment after the current
@@ -1668,30 +1630,7 @@ class DeploymentUpdate {
 }
 
 /// Label object for DeploymentUpdate
-class DeploymentUpdateLabelEntry {
-  /// Key of the label
-  core.String? key;
-
-  /// Value of the label
-  core.String? value;
-
-  DeploymentUpdateLabelEntry({
-    this.key,
-    this.value,
-  });
-
-  DeploymentUpdateLabelEntry.fromJson(core.Map _json)
-      : this(
-          key: _json.containsKey('key') ? _json['key'] as core.String : null,
-          value:
-              _json.containsKey('value') ? _json['value'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (key != null) 'key': key!,
-        if (value != null) 'value': value!,
-      };
-}
+typedef DeploymentUpdateLabelEntry = $LabelEntry;
 
 class DeploymentsCancelPreviewRequest {
   /// Specifies a fingerprint for `cancelPreview()` requests.
@@ -1820,61 +1759,7 @@ class DeploymentsStopRequest {
 /// functions that may be referenced within an expression are determined by the
 /// service that evaluates it. See the service documentation for additional
 /// information.
-class Expr {
-  /// Description of the expression.
-  ///
-  /// This is a longer text which describes the expression, e.g. when hovered
-  /// over it in a UI.
-  ///
-  /// Optional.
-  core.String? description;
-
-  /// Textual representation of an expression in Common Expression Language
-  /// syntax.
-  core.String? expression;
-
-  /// String indicating the location of the expression for error reporting, e.g.
-  /// a file name and a position in the file.
-  ///
-  /// Optional.
-  core.String? location;
-
-  /// Title for the expression, i.e. a short string describing its purpose.
-  ///
-  /// This can be used e.g. in UIs which allow to enter the expression.
-  ///
-  /// Optional.
-  core.String? title;
-
-  Expr({
-    this.description,
-    this.expression,
-    this.location,
-    this.title,
-  });
-
-  Expr.fromJson(core.Map _json)
-      : this(
-          description: _json.containsKey('description')
-              ? _json['description'] as core.String
-              : null,
-          expression: _json.containsKey('expression')
-              ? _json['expression'] as core.String
-              : null,
-          location: _json.containsKey('location')
-              ? _json['location'] as core.String
-              : null,
-          title:
-              _json.containsKey('title') ? _json['title'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (description != null) 'description': description!,
-        if (expression != null) 'expression': expression!,
-        if (location != null) 'location': location!,
-        if (title != null) 'title': title!,
-      };
-}
+typedef Expr = $Expr;
 
 class GlobalSetPolicyRequest {
   /// Flatten Policy to create a backward compatible wire-format.
@@ -2677,7 +2562,11 @@ class Policy {
   ///
   /// Optionally, may specify a `condition` that determines how and when the
   /// `bindings` are applied. Each of the `bindings` must contain at least one
-  /// member.
+  /// member. The `bindings` in a `Policy` can refer to up to 1,500 members; up
+  /// to 250 of these members can be Google groups. Each occurrence of a member
+  /// counts towards these limits. For example, if the `bindings` grant 50
+  /// different roles to `user:alice@example.com`, and not to any other member,
+  /// then you can add another 1,450 members to the `bindings` in the `Policy`.
   core.List<Binding>? bindings;
 
   /// `etag` is used for optimistic concurrency control as a way to help prevent
@@ -3428,52 +3317,8 @@ class TargetConfiguration {
       };
 }
 
-class TestPermissionsRequest {
-  /// The set of permissions to check for the 'resource'.
-  ///
-  /// Permissions with wildcards (such as '*' or 'storage.*') are not allowed.
-  core.List<core.String>? permissions;
-
-  TestPermissionsRequest({
-    this.permissions,
-  });
-
-  TestPermissionsRequest.fromJson(core.Map _json)
-      : this(
-          permissions: _json.containsKey('permissions')
-              ? (_json['permissions'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (permissions != null) 'permissions': permissions!,
-      };
-}
-
-class TestPermissionsResponse {
-  /// A subset of `TestPermissionsRequest.permissions` that the caller is
-  /// allowed.
-  core.List<core.String>? permissions;
-
-  TestPermissionsResponse({
-    this.permissions,
-  });
-
-  TestPermissionsResponse.fromJson(core.Map _json)
-      : this(
-          permissions: _json.containsKey('permissions')
-              ? (_json['permissions'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (permissions != null) 'permissions': permissions!,
-      };
-}
+typedef TestPermissionsRequest = $TestPermissionsRequest;
+typedef TestPermissionsResponse = $PermissionsResponse;
 
 /// A resource type supported by Deployment Manager.
 class Type {

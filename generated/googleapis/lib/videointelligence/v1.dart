@@ -40,7 +40,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-import '../src/empty.dart';
+import '../shared.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -655,44 +655,7 @@ class GoogleCloudVideointelligenceV1AnnotateVideoResponse {
 }
 
 /// A generic detected attribute represented by name in string format.
-class GoogleCloudVideointelligenceV1DetectedAttribute {
-  /// Detected attribute confidence.
-  ///
-  /// Range \[0, 1\].
-  core.double? confidence;
-
-  /// The name of the attribute, for example, glasses, dark_glasses, mouth_open.
-  ///
-  /// A full list of supported type names will be provided in the document.
-  core.String? name;
-
-  /// Text value of the detection result.
-  ///
-  /// For example, the value for "HairColor" can be "black", "blonde", etc.
-  core.String? value;
-
-  GoogleCloudVideointelligenceV1DetectedAttribute({
-    this.confidence,
-    this.name,
-    this.value,
-  });
-
-  GoogleCloudVideointelligenceV1DetectedAttribute.fromJson(core.Map _json)
-      : this(
-          confidence: _json.containsKey('confidence')
-              ? (_json['confidence'] as core.num).toDouble()
-              : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          value:
-              _json.containsKey('value') ? _json['value'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (confidence != null) 'confidence': confidence!,
-        if (name != null) 'name': name!,
-        if (value != null) 'value': value!,
-      };
-}
+typedef GoogleCloudVideointelligenceV1DetectedAttribute = $DetectedAttribute;
 
 /// A generic detected landmark represented by name in string format and a 2D
 /// location.
@@ -737,44 +700,7 @@ class GoogleCloudVideointelligenceV1DetectedLandmark {
 }
 
 /// Detected entity from video analysis.
-class GoogleCloudVideointelligenceV1Entity {
-  /// Textual description, e.g., `Fixed-gear bicycle`.
-  core.String? description;
-
-  /// Opaque entity ID.
-  ///
-  /// Some IDs may be available in
-  /// [Google Knowledge Graph Search API](https://developers.google.com/knowledge-graph/).
-  core.String? entityId;
-
-  /// Language code for `description` in BCP-47 format.
-  core.String? languageCode;
-
-  GoogleCloudVideointelligenceV1Entity({
-    this.description,
-    this.entityId,
-    this.languageCode,
-  });
-
-  GoogleCloudVideointelligenceV1Entity.fromJson(core.Map _json)
-      : this(
-          description: _json.containsKey('description')
-              ? _json['description'] as core.String
-              : null,
-          entityId: _json.containsKey('entityId')
-              ? _json['entityId'] as core.String
-              : null,
-          languageCode: _json.containsKey('languageCode')
-              ? _json['languageCode'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (description != null) 'description': description!,
-        if (entityId != null) 'entityId': entityId!,
-        if (languageCode != null) 'languageCode': languageCode!,
-      };
-}
+typedef GoogleCloudVideointelligenceV1Entity = $Entity;
 
 /// Explicit content annotation (based on per-frame visual signals only).
 ///
@@ -839,42 +765,8 @@ class GoogleCloudVideointelligenceV1ExplicitContentDetectionConfig {
 }
 
 /// Video frame level annotation results for explicit content.
-class GoogleCloudVideointelligenceV1ExplicitContentFrame {
-  /// Likelihood of the pornography content..
-  /// Possible string values are:
-  /// - "LIKELIHOOD_UNSPECIFIED" : Unspecified likelihood.
-  /// - "VERY_UNLIKELY" : Very unlikely.
-  /// - "UNLIKELY" : Unlikely.
-  /// - "POSSIBLE" : Possible.
-  /// - "LIKELY" : Likely.
-  /// - "VERY_LIKELY" : Very likely.
-  core.String? pornographyLikelihood;
-
-  /// Time-offset, relative to the beginning of the video, corresponding to the
-  /// video frame for this location.
-  core.String? timeOffset;
-
-  GoogleCloudVideointelligenceV1ExplicitContentFrame({
-    this.pornographyLikelihood,
-    this.timeOffset,
-  });
-
-  GoogleCloudVideointelligenceV1ExplicitContentFrame.fromJson(core.Map _json)
-      : this(
-          pornographyLikelihood: _json.containsKey('pornographyLikelihood')
-              ? _json['pornographyLikelihood'] as core.String
-              : null,
-          timeOffset: _json.containsKey('timeOffset')
-              ? _json['timeOffset'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (pornographyLikelihood != null)
-          'pornographyLikelihood': pornographyLikelihood!,
-        if (timeOffset != null) 'timeOffset': timeOffset!,
-      };
-}
+typedef GoogleCloudVideointelligenceV1ExplicitContentFrame
+    = $ExplicitContentFrame;
 
 /// No effect.
 ///
@@ -1236,36 +1128,7 @@ class GoogleCloudVideointelligenceV1LabelDetectionConfig {
 }
 
 /// Video frame level annotation results for label detection.
-class GoogleCloudVideointelligenceV1LabelFrame {
-  /// Confidence that the label is accurate.
-  ///
-  /// Range: \[0, 1\].
-  core.double? confidence;
-
-  /// Time-offset, relative to the beginning of the video, corresponding to the
-  /// video frame for this location.
-  core.String? timeOffset;
-
-  GoogleCloudVideointelligenceV1LabelFrame({
-    this.confidence,
-    this.timeOffset,
-  });
-
-  GoogleCloudVideointelligenceV1LabelFrame.fromJson(core.Map _json)
-      : this(
-          confidence: _json.containsKey('confidence')
-              ? (_json['confidence'] as core.num).toDouble()
-              : null,
-          timeOffset: _json.containsKey('timeOffset')
-              ? _json['timeOffset'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (confidence != null) 'confidence': confidence!,
-        if (timeOffset != null) 'timeOffset': timeOffset!,
-      };
-}
+typedef GoogleCloudVideointelligenceV1LabelFrame = $LabelFrame;
 
 /// Video segment level annotation results for label detection.
 class GoogleCloudVideointelligenceV1LabelSegment {
@@ -1356,49 +1219,8 @@ class GoogleCloudVideointelligenceV1LogoRecognitionAnnotation {
 ///
 /// The normalized vertex coordinates are relative to the original image. Range:
 /// \[0, 1\].
-class GoogleCloudVideointelligenceV1NormalizedBoundingBox {
-  /// Bottom Y coordinate.
-  core.double? bottom;
-
-  /// Left X coordinate.
-  core.double? left;
-
-  /// Right X coordinate.
-  core.double? right;
-
-  /// Top Y coordinate.
-  core.double? top;
-
-  GoogleCloudVideointelligenceV1NormalizedBoundingBox({
-    this.bottom,
-    this.left,
-    this.right,
-    this.top,
-  });
-
-  GoogleCloudVideointelligenceV1NormalizedBoundingBox.fromJson(core.Map _json)
-      : this(
-          bottom: _json.containsKey('bottom')
-              ? (_json['bottom'] as core.num).toDouble()
-              : null,
-          left: _json.containsKey('left')
-              ? (_json['left'] as core.num).toDouble()
-              : null,
-          right: _json.containsKey('right')
-              ? (_json['right'] as core.num).toDouble()
-              : null,
-          top: _json.containsKey('top')
-              ? (_json['top'] as core.num).toDouble()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (bottom != null) 'bottom': bottom!,
-        if (left != null) 'left': left!,
-        if (right != null) 'right': right!,
-        if (top != null) 'top': top!,
-      };
-}
+typedef GoogleCloudVideointelligenceV1NormalizedBoundingBox
+    = $NormalizedBoundingBox;
 
 /// Normalized bounding polygon for text (that might not be aligned with axis).
 ///
@@ -1437,33 +1259,7 @@ class GoogleCloudVideointelligenceV1NormalizedBoundingPoly {
 ///
 /// NOTE: the normalized vertex coordinates are relative to the original image
 /// and range from 0 to 1.
-class GoogleCloudVideointelligenceV1NormalizedVertex {
-  /// X coordinate.
-  core.double? x;
-
-  /// Y coordinate.
-  core.double? y;
-
-  GoogleCloudVideointelligenceV1NormalizedVertex({
-    this.x,
-    this.y,
-  });
-
-  GoogleCloudVideointelligenceV1NormalizedVertex.fromJson(core.Map _json)
-      : this(
-          x: _json.containsKey('x')
-              ? (_json['x'] as core.num).toDouble()
-              : null,
-          y: _json.containsKey('y')
-              ? (_json['y'] as core.num).toDouble()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (x != null) 'x': x!,
-        if (y != null) 'y': y!,
-      };
-}
+typedef GoogleCloudVideointelligenceV1NormalizedVertex = $NormalizedVertex00;
 
 /// Annotations corresponding to one tracked object.
 class GoogleCloudVideointelligenceV1ObjectTrackingAnnotation {
@@ -2740,113 +2536,13 @@ class GoogleCloudVideointelligenceV1VideoContext {
 }
 
 /// Video segment.
-class GoogleCloudVideointelligenceV1VideoSegment {
-  /// Time-offset, relative to the beginning of the video, corresponding to the
-  /// end of the segment (inclusive).
-  core.String? endTimeOffset;
-
-  /// Time-offset, relative to the beginning of the video, corresponding to the
-  /// start of the segment (inclusive).
-  core.String? startTimeOffset;
-
-  GoogleCloudVideointelligenceV1VideoSegment({
-    this.endTimeOffset,
-    this.startTimeOffset,
-  });
-
-  GoogleCloudVideointelligenceV1VideoSegment.fromJson(core.Map _json)
-      : this(
-          endTimeOffset: _json.containsKey('endTimeOffset')
-              ? _json['endTimeOffset'] as core.String
-              : null,
-          startTimeOffset: _json.containsKey('startTimeOffset')
-              ? _json['startTimeOffset'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (endTimeOffset != null) 'endTimeOffset': endTimeOffset!,
-        if (startTimeOffset != null) 'startTimeOffset': startTimeOffset!,
-      };
-}
+typedef GoogleCloudVideointelligenceV1VideoSegment = $VideoSegment;
 
 /// Word-specific information for recognized words.
 ///
 /// Word information is only included in the response when certain request
 /// parameters are set, such as `enable_word_time_offsets`.
-class GoogleCloudVideointelligenceV1WordInfo {
-  /// The confidence estimate between 0.0 and 1.0.
-  ///
-  /// A higher number indicates an estimated greater likelihood that the
-  /// recognized words are correct. This field is set only for the top
-  /// alternative. This field is not guaranteed to be accurate and users should
-  /// not rely on it to be always provided. The default of 0.0 is a sentinel
-  /// value indicating `confidence` was not set.
-  ///
-  /// Output only.
-  core.double? confidence;
-
-  /// Time offset relative to the beginning of the audio, and corresponding to
-  /// the end of the spoken word.
-  ///
-  /// This field is only set if `enable_word_time_offsets=true` and only in the
-  /// top hypothesis. This is an experimental feature and the accuracy of the
-  /// time offset can vary.
-  core.String? endTime;
-
-  /// A distinct integer value is assigned for every speaker within the audio.
-  ///
-  /// This field specifies which one of those speakers was detected to have
-  /// spoken this word. Value ranges from 1 up to diarization_speaker_count, and
-  /// is only set if speaker diarization is enabled.
-  ///
-  /// Output only.
-  core.int? speakerTag;
-
-  /// Time offset relative to the beginning of the audio, and corresponding to
-  /// the start of the spoken word.
-  ///
-  /// This field is only set if `enable_word_time_offsets=true` and only in the
-  /// top hypothesis. This is an experimental feature and the accuracy of the
-  /// time offset can vary.
-  core.String? startTime;
-
-  /// The word corresponding to this set of information.
-  core.String? word;
-
-  GoogleCloudVideointelligenceV1WordInfo({
-    this.confidence,
-    this.endTime,
-    this.speakerTag,
-    this.startTime,
-    this.word,
-  });
-
-  GoogleCloudVideointelligenceV1WordInfo.fromJson(core.Map _json)
-      : this(
-          confidence: _json.containsKey('confidence')
-              ? (_json['confidence'] as core.num).toDouble()
-              : null,
-          endTime: _json.containsKey('endTime')
-              ? _json['endTime'] as core.String
-              : null,
-          speakerTag: _json.containsKey('speakerTag')
-              ? _json['speakerTag'] as core.int
-              : null,
-          startTime: _json.containsKey('startTime')
-              ? _json['startTime'] as core.String
-              : null,
-          word: _json.containsKey('word') ? _json['word'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (confidence != null) 'confidence': confidence!,
-        if (endTime != null) 'endTime': endTime!,
-        if (speakerTag != null) 'speakerTag': speakerTag!,
-        if (startTime != null) 'startTime': startTime!,
-        if (word != null) 'word': word!,
-      };
-}
+typedef GoogleCloudVideointelligenceV1WordInfo = $WordInfo;
 
 /// Video annotation progress.
 ///
@@ -2912,44 +2608,8 @@ class GoogleCloudVideointelligenceV1beta2AnnotateVideoResponse {
 }
 
 /// A generic detected attribute represented by name in string format.
-class GoogleCloudVideointelligenceV1beta2DetectedAttribute {
-  /// Detected attribute confidence.
-  ///
-  /// Range \[0, 1\].
-  core.double? confidence;
-
-  /// The name of the attribute, for example, glasses, dark_glasses, mouth_open.
-  ///
-  /// A full list of supported type names will be provided in the document.
-  core.String? name;
-
-  /// Text value of the detection result.
-  ///
-  /// For example, the value for "HairColor" can be "black", "blonde", etc.
-  core.String? value;
-
-  GoogleCloudVideointelligenceV1beta2DetectedAttribute({
-    this.confidence,
-    this.name,
-    this.value,
-  });
-
-  GoogleCloudVideointelligenceV1beta2DetectedAttribute.fromJson(core.Map _json)
-      : this(
-          confidence: _json.containsKey('confidence')
-              ? (_json['confidence'] as core.num).toDouble()
-              : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          value:
-              _json.containsKey('value') ? _json['value'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (confidence != null) 'confidence': confidence!,
-        if (name != null) 'name': name!,
-        if (value != null) 'value': value!,
-      };
-}
+typedef GoogleCloudVideointelligenceV1beta2DetectedAttribute
+    = $DetectedAttribute;
 
 /// A generic detected landmark represented by name in string format and a 2D
 /// location.
@@ -2994,44 +2654,7 @@ class GoogleCloudVideointelligenceV1beta2DetectedLandmark {
 }
 
 /// Detected entity from video analysis.
-class GoogleCloudVideointelligenceV1beta2Entity {
-  /// Textual description, e.g., `Fixed-gear bicycle`.
-  core.String? description;
-
-  /// Opaque entity ID.
-  ///
-  /// Some IDs may be available in
-  /// [Google Knowledge Graph Search API](https://developers.google.com/knowledge-graph/).
-  core.String? entityId;
-
-  /// Language code for `description` in BCP-47 format.
-  core.String? languageCode;
-
-  GoogleCloudVideointelligenceV1beta2Entity({
-    this.description,
-    this.entityId,
-    this.languageCode,
-  });
-
-  GoogleCloudVideointelligenceV1beta2Entity.fromJson(core.Map _json)
-      : this(
-          description: _json.containsKey('description')
-              ? _json['description'] as core.String
-              : null,
-          entityId: _json.containsKey('entityId')
-              ? _json['entityId'] as core.String
-              : null,
-          languageCode: _json.containsKey('languageCode')
-              ? _json['languageCode'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (description != null) 'description': description!,
-        if (entityId != null) 'entityId': entityId!,
-        if (languageCode != null) 'languageCode': languageCode!,
-      };
-}
+typedef GoogleCloudVideointelligenceV1beta2Entity = $Entity;
 
 /// Explicit content annotation (based on per-frame visual signals only).
 ///
@@ -3072,43 +2695,8 @@ class GoogleCloudVideointelligenceV1beta2ExplicitContentAnnotation {
 }
 
 /// Video frame level annotation results for explicit content.
-class GoogleCloudVideointelligenceV1beta2ExplicitContentFrame {
-  /// Likelihood of the pornography content..
-  /// Possible string values are:
-  /// - "LIKELIHOOD_UNSPECIFIED" : Unspecified likelihood.
-  /// - "VERY_UNLIKELY" : Very unlikely.
-  /// - "UNLIKELY" : Unlikely.
-  /// - "POSSIBLE" : Possible.
-  /// - "LIKELY" : Likely.
-  /// - "VERY_LIKELY" : Very likely.
-  core.String? pornographyLikelihood;
-
-  /// Time-offset, relative to the beginning of the video, corresponding to the
-  /// video frame for this location.
-  core.String? timeOffset;
-
-  GoogleCloudVideointelligenceV1beta2ExplicitContentFrame({
-    this.pornographyLikelihood,
-    this.timeOffset,
-  });
-
-  GoogleCloudVideointelligenceV1beta2ExplicitContentFrame.fromJson(
-      core.Map _json)
-      : this(
-          pornographyLikelihood: _json.containsKey('pornographyLikelihood')
-              ? _json['pornographyLikelihood'] as core.String
-              : null,
-          timeOffset: _json.containsKey('timeOffset')
-              ? _json['timeOffset'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (pornographyLikelihood != null)
-          'pornographyLikelihood': pornographyLikelihood!,
-        if (timeOffset != null) 'timeOffset': timeOffset!,
-      };
-}
+typedef GoogleCloudVideointelligenceV1beta2ExplicitContentFrame
+    = $ExplicitContentFrame;
 
 /// No effect.
 ///
@@ -3346,36 +2934,7 @@ class GoogleCloudVideointelligenceV1beta2LabelAnnotation {
 }
 
 /// Video frame level annotation results for label detection.
-class GoogleCloudVideointelligenceV1beta2LabelFrame {
-  /// Confidence that the label is accurate.
-  ///
-  /// Range: \[0, 1\].
-  core.double? confidence;
-
-  /// Time-offset, relative to the beginning of the video, corresponding to the
-  /// video frame for this location.
-  core.String? timeOffset;
-
-  GoogleCloudVideointelligenceV1beta2LabelFrame({
-    this.confidence,
-    this.timeOffset,
-  });
-
-  GoogleCloudVideointelligenceV1beta2LabelFrame.fromJson(core.Map _json)
-      : this(
-          confidence: _json.containsKey('confidence')
-              ? (_json['confidence'] as core.num).toDouble()
-              : null,
-          timeOffset: _json.containsKey('timeOffset')
-              ? _json['timeOffset'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (confidence != null) 'confidence': confidence!,
-        if (timeOffset != null) 'timeOffset': timeOffset!,
-      };
-}
+typedef GoogleCloudVideointelligenceV1beta2LabelFrame = $LabelFrame;
 
 /// Video segment level annotation results for label detection.
 class GoogleCloudVideointelligenceV1beta2LabelSegment {
@@ -3467,50 +3026,8 @@ class GoogleCloudVideointelligenceV1beta2LogoRecognitionAnnotation {
 ///
 /// The normalized vertex coordinates are relative to the original image. Range:
 /// \[0, 1\].
-class GoogleCloudVideointelligenceV1beta2NormalizedBoundingBox {
-  /// Bottom Y coordinate.
-  core.double? bottom;
-
-  /// Left X coordinate.
-  core.double? left;
-
-  /// Right X coordinate.
-  core.double? right;
-
-  /// Top Y coordinate.
-  core.double? top;
-
-  GoogleCloudVideointelligenceV1beta2NormalizedBoundingBox({
-    this.bottom,
-    this.left,
-    this.right,
-    this.top,
-  });
-
-  GoogleCloudVideointelligenceV1beta2NormalizedBoundingBox.fromJson(
-      core.Map _json)
-      : this(
-          bottom: _json.containsKey('bottom')
-              ? (_json['bottom'] as core.num).toDouble()
-              : null,
-          left: _json.containsKey('left')
-              ? (_json['left'] as core.num).toDouble()
-              : null,
-          right: _json.containsKey('right')
-              ? (_json['right'] as core.num).toDouble()
-              : null,
-          top: _json.containsKey('top')
-              ? (_json['top'] as core.num).toDouble()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (bottom != null) 'bottom': bottom!,
-        if (left != null) 'left': left!,
-        if (right != null) 'right': right!,
-        if (top != null) 'top': top!,
-      };
-}
+typedef GoogleCloudVideointelligenceV1beta2NormalizedBoundingBox
+    = $NormalizedBoundingBox;
 
 /// Normalized bounding polygon for text (that might not be aligned with axis).
 ///
@@ -3551,33 +3068,8 @@ class GoogleCloudVideointelligenceV1beta2NormalizedBoundingPoly {
 ///
 /// NOTE: the normalized vertex coordinates are relative to the original image
 /// and range from 0 to 1.
-class GoogleCloudVideointelligenceV1beta2NormalizedVertex {
-  /// X coordinate.
-  core.double? x;
-
-  /// Y coordinate.
-  core.double? y;
-
-  GoogleCloudVideointelligenceV1beta2NormalizedVertex({
-    this.x,
-    this.y,
-  });
-
-  GoogleCloudVideointelligenceV1beta2NormalizedVertex.fromJson(core.Map _json)
-      : this(
-          x: _json.containsKey('x')
-              ? (_json['x'] as core.num).toDouble()
-              : null,
-          y: _json.containsKey('y')
-              ? (_json['y'] as core.num).toDouble()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (x != null) 'x': x!,
-        if (y != null) 'y': y!,
-      };
-}
+typedef GoogleCloudVideointelligenceV1beta2NormalizedVertex
+    = $NormalizedVertex00;
 
 /// Annotations corresponding to one tracked object.
 class GoogleCloudVideointelligenceV1beta2ObjectTrackingAnnotation {
@@ -4434,113 +3926,13 @@ class GoogleCloudVideointelligenceV1beta2VideoAnnotationResults {
 }
 
 /// Video segment.
-class GoogleCloudVideointelligenceV1beta2VideoSegment {
-  /// Time-offset, relative to the beginning of the video, corresponding to the
-  /// end of the segment (inclusive).
-  core.String? endTimeOffset;
-
-  /// Time-offset, relative to the beginning of the video, corresponding to the
-  /// start of the segment (inclusive).
-  core.String? startTimeOffset;
-
-  GoogleCloudVideointelligenceV1beta2VideoSegment({
-    this.endTimeOffset,
-    this.startTimeOffset,
-  });
-
-  GoogleCloudVideointelligenceV1beta2VideoSegment.fromJson(core.Map _json)
-      : this(
-          endTimeOffset: _json.containsKey('endTimeOffset')
-              ? _json['endTimeOffset'] as core.String
-              : null,
-          startTimeOffset: _json.containsKey('startTimeOffset')
-              ? _json['startTimeOffset'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (endTimeOffset != null) 'endTimeOffset': endTimeOffset!,
-        if (startTimeOffset != null) 'startTimeOffset': startTimeOffset!,
-      };
-}
+typedef GoogleCloudVideointelligenceV1beta2VideoSegment = $VideoSegment;
 
 /// Word-specific information for recognized words.
 ///
 /// Word information is only included in the response when certain request
 /// parameters are set, such as `enable_word_time_offsets`.
-class GoogleCloudVideointelligenceV1beta2WordInfo {
-  /// The confidence estimate between 0.0 and 1.0.
-  ///
-  /// A higher number indicates an estimated greater likelihood that the
-  /// recognized words are correct. This field is set only for the top
-  /// alternative. This field is not guaranteed to be accurate and users should
-  /// not rely on it to be always provided. The default of 0.0 is a sentinel
-  /// value indicating `confidence` was not set.
-  ///
-  /// Output only.
-  core.double? confidence;
-
-  /// Time offset relative to the beginning of the audio, and corresponding to
-  /// the end of the spoken word.
-  ///
-  /// This field is only set if `enable_word_time_offsets=true` and only in the
-  /// top hypothesis. This is an experimental feature and the accuracy of the
-  /// time offset can vary.
-  core.String? endTime;
-
-  /// A distinct integer value is assigned for every speaker within the audio.
-  ///
-  /// This field specifies which one of those speakers was detected to have
-  /// spoken this word. Value ranges from 1 up to diarization_speaker_count, and
-  /// is only set if speaker diarization is enabled.
-  ///
-  /// Output only.
-  core.int? speakerTag;
-
-  /// Time offset relative to the beginning of the audio, and corresponding to
-  /// the start of the spoken word.
-  ///
-  /// This field is only set if `enable_word_time_offsets=true` and only in the
-  /// top hypothesis. This is an experimental feature and the accuracy of the
-  /// time offset can vary.
-  core.String? startTime;
-
-  /// The word corresponding to this set of information.
-  core.String? word;
-
-  GoogleCloudVideointelligenceV1beta2WordInfo({
-    this.confidence,
-    this.endTime,
-    this.speakerTag,
-    this.startTime,
-    this.word,
-  });
-
-  GoogleCloudVideointelligenceV1beta2WordInfo.fromJson(core.Map _json)
-      : this(
-          confidence: _json.containsKey('confidence')
-              ? (_json['confidence'] as core.num).toDouble()
-              : null,
-          endTime: _json.containsKey('endTime')
-              ? _json['endTime'] as core.String
-              : null,
-          speakerTag: _json.containsKey('speakerTag')
-              ? _json['speakerTag'] as core.int
-              : null,
-          startTime: _json.containsKey('startTime')
-              ? _json['startTime'] as core.String
-              : null,
-          word: _json.containsKey('word') ? _json['word'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (confidence != null) 'confidence': confidence!,
-        if (endTime != null) 'endTime': endTime!,
-        if (speakerTag != null) 'speakerTag': speakerTag!,
-        if (startTime != null) 'startTime': startTime!,
-        if (word != null) 'word': word!,
-      };
-}
+typedef GoogleCloudVideointelligenceV1beta2WordInfo = $WordInfo;
 
 /// Video annotation progress.
 ///
@@ -4606,45 +3998,8 @@ class GoogleCloudVideointelligenceV1p1beta1AnnotateVideoResponse {
 }
 
 /// A generic detected attribute represented by name in string format.
-class GoogleCloudVideointelligenceV1p1beta1DetectedAttribute {
-  /// Detected attribute confidence.
-  ///
-  /// Range \[0, 1\].
-  core.double? confidence;
-
-  /// The name of the attribute, for example, glasses, dark_glasses, mouth_open.
-  ///
-  /// A full list of supported type names will be provided in the document.
-  core.String? name;
-
-  /// Text value of the detection result.
-  ///
-  /// For example, the value for "HairColor" can be "black", "blonde", etc.
-  core.String? value;
-
-  GoogleCloudVideointelligenceV1p1beta1DetectedAttribute({
-    this.confidence,
-    this.name,
-    this.value,
-  });
-
-  GoogleCloudVideointelligenceV1p1beta1DetectedAttribute.fromJson(
-      core.Map _json)
-      : this(
-          confidence: _json.containsKey('confidence')
-              ? (_json['confidence'] as core.num).toDouble()
-              : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          value:
-              _json.containsKey('value') ? _json['value'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (confidence != null) 'confidence': confidence!,
-        if (name != null) 'name': name!,
-        if (value != null) 'value': value!,
-      };
-}
+typedef GoogleCloudVideointelligenceV1p1beta1DetectedAttribute
+    = $DetectedAttribute;
 
 /// A generic detected landmark represented by name in string format and a 2D
 /// location.
@@ -4689,44 +4044,7 @@ class GoogleCloudVideointelligenceV1p1beta1DetectedLandmark {
 }
 
 /// Detected entity from video analysis.
-class GoogleCloudVideointelligenceV1p1beta1Entity {
-  /// Textual description, e.g., `Fixed-gear bicycle`.
-  core.String? description;
-
-  /// Opaque entity ID.
-  ///
-  /// Some IDs may be available in
-  /// [Google Knowledge Graph Search API](https://developers.google.com/knowledge-graph/).
-  core.String? entityId;
-
-  /// Language code for `description` in BCP-47 format.
-  core.String? languageCode;
-
-  GoogleCloudVideointelligenceV1p1beta1Entity({
-    this.description,
-    this.entityId,
-    this.languageCode,
-  });
-
-  GoogleCloudVideointelligenceV1p1beta1Entity.fromJson(core.Map _json)
-      : this(
-          description: _json.containsKey('description')
-              ? _json['description'] as core.String
-              : null,
-          entityId: _json.containsKey('entityId')
-              ? _json['entityId'] as core.String
-              : null,
-          languageCode: _json.containsKey('languageCode')
-              ? _json['languageCode'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (description != null) 'description': description!,
-        if (entityId != null) 'entityId': entityId!,
-        if (languageCode != null) 'languageCode': languageCode!,
-      };
-}
+typedef GoogleCloudVideointelligenceV1p1beta1Entity = $Entity;
 
 /// Explicit content annotation (based on per-frame visual signals only).
 ///
@@ -4767,43 +4085,8 @@ class GoogleCloudVideointelligenceV1p1beta1ExplicitContentAnnotation {
 }
 
 /// Video frame level annotation results for explicit content.
-class GoogleCloudVideointelligenceV1p1beta1ExplicitContentFrame {
-  /// Likelihood of the pornography content..
-  /// Possible string values are:
-  /// - "LIKELIHOOD_UNSPECIFIED" : Unspecified likelihood.
-  /// - "VERY_UNLIKELY" : Very unlikely.
-  /// - "UNLIKELY" : Unlikely.
-  /// - "POSSIBLE" : Possible.
-  /// - "LIKELY" : Likely.
-  /// - "VERY_LIKELY" : Very likely.
-  core.String? pornographyLikelihood;
-
-  /// Time-offset, relative to the beginning of the video, corresponding to the
-  /// video frame for this location.
-  core.String? timeOffset;
-
-  GoogleCloudVideointelligenceV1p1beta1ExplicitContentFrame({
-    this.pornographyLikelihood,
-    this.timeOffset,
-  });
-
-  GoogleCloudVideointelligenceV1p1beta1ExplicitContentFrame.fromJson(
-      core.Map _json)
-      : this(
-          pornographyLikelihood: _json.containsKey('pornographyLikelihood')
-              ? _json['pornographyLikelihood'] as core.String
-              : null,
-          timeOffset: _json.containsKey('timeOffset')
-              ? _json['timeOffset'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (pornographyLikelihood != null)
-          'pornographyLikelihood': pornographyLikelihood!,
-        if (timeOffset != null) 'timeOffset': timeOffset!,
-      };
-}
+typedef GoogleCloudVideointelligenceV1p1beta1ExplicitContentFrame
+    = $ExplicitContentFrame;
 
 /// No effect.
 ///
@@ -5042,36 +4325,7 @@ class GoogleCloudVideointelligenceV1p1beta1LabelAnnotation {
 }
 
 /// Video frame level annotation results for label detection.
-class GoogleCloudVideointelligenceV1p1beta1LabelFrame {
-  /// Confidence that the label is accurate.
-  ///
-  /// Range: \[0, 1\].
-  core.double? confidence;
-
-  /// Time-offset, relative to the beginning of the video, corresponding to the
-  /// video frame for this location.
-  core.String? timeOffset;
-
-  GoogleCloudVideointelligenceV1p1beta1LabelFrame({
-    this.confidence,
-    this.timeOffset,
-  });
-
-  GoogleCloudVideointelligenceV1p1beta1LabelFrame.fromJson(core.Map _json)
-      : this(
-          confidence: _json.containsKey('confidence')
-              ? (_json['confidence'] as core.num).toDouble()
-              : null,
-          timeOffset: _json.containsKey('timeOffset')
-              ? _json['timeOffset'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (confidence != null) 'confidence': confidence!,
-        if (timeOffset != null) 'timeOffset': timeOffset!,
-      };
-}
+typedef GoogleCloudVideointelligenceV1p1beta1LabelFrame = $LabelFrame;
 
 /// Video segment level annotation results for label detection.
 class GoogleCloudVideointelligenceV1p1beta1LabelSegment {
@@ -5164,50 +4418,8 @@ class GoogleCloudVideointelligenceV1p1beta1LogoRecognitionAnnotation {
 ///
 /// The normalized vertex coordinates are relative to the original image. Range:
 /// \[0, 1\].
-class GoogleCloudVideointelligenceV1p1beta1NormalizedBoundingBox {
-  /// Bottom Y coordinate.
-  core.double? bottom;
-
-  /// Left X coordinate.
-  core.double? left;
-
-  /// Right X coordinate.
-  core.double? right;
-
-  /// Top Y coordinate.
-  core.double? top;
-
-  GoogleCloudVideointelligenceV1p1beta1NormalizedBoundingBox({
-    this.bottom,
-    this.left,
-    this.right,
-    this.top,
-  });
-
-  GoogleCloudVideointelligenceV1p1beta1NormalizedBoundingBox.fromJson(
-      core.Map _json)
-      : this(
-          bottom: _json.containsKey('bottom')
-              ? (_json['bottom'] as core.num).toDouble()
-              : null,
-          left: _json.containsKey('left')
-              ? (_json['left'] as core.num).toDouble()
-              : null,
-          right: _json.containsKey('right')
-              ? (_json['right'] as core.num).toDouble()
-              : null,
-          top: _json.containsKey('top')
-              ? (_json['top'] as core.num).toDouble()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (bottom != null) 'bottom': bottom!,
-        if (left != null) 'left': left!,
-        if (right != null) 'right': right!,
-        if (top != null) 'top': top!,
-      };
-}
+typedef GoogleCloudVideointelligenceV1p1beta1NormalizedBoundingBox
+    = $NormalizedBoundingBox;
 
 /// Normalized bounding polygon for text (that might not be aligned with axis).
 ///
@@ -5248,33 +4460,8 @@ class GoogleCloudVideointelligenceV1p1beta1NormalizedBoundingPoly {
 ///
 /// NOTE: the normalized vertex coordinates are relative to the original image
 /// and range from 0 to 1.
-class GoogleCloudVideointelligenceV1p1beta1NormalizedVertex {
-  /// X coordinate.
-  core.double? x;
-
-  /// Y coordinate.
-  core.double? y;
-
-  GoogleCloudVideointelligenceV1p1beta1NormalizedVertex({
-    this.x,
-    this.y,
-  });
-
-  GoogleCloudVideointelligenceV1p1beta1NormalizedVertex.fromJson(core.Map _json)
-      : this(
-          x: _json.containsKey('x')
-              ? (_json['x'] as core.num).toDouble()
-              : null,
-          y: _json.containsKey('y')
-              ? (_json['y'] as core.num).toDouble()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (x != null) 'x': x!,
-        if (y != null) 'y': y!,
-      };
-}
+typedef GoogleCloudVideointelligenceV1p1beta1NormalizedVertex
+    = $NormalizedVertex00;
 
 /// Annotations corresponding to one tracked object.
 class GoogleCloudVideointelligenceV1p1beta1ObjectTrackingAnnotation {
@@ -6136,113 +5323,13 @@ class GoogleCloudVideointelligenceV1p1beta1VideoAnnotationResults {
 }
 
 /// Video segment.
-class GoogleCloudVideointelligenceV1p1beta1VideoSegment {
-  /// Time-offset, relative to the beginning of the video, corresponding to the
-  /// end of the segment (inclusive).
-  core.String? endTimeOffset;
-
-  /// Time-offset, relative to the beginning of the video, corresponding to the
-  /// start of the segment (inclusive).
-  core.String? startTimeOffset;
-
-  GoogleCloudVideointelligenceV1p1beta1VideoSegment({
-    this.endTimeOffset,
-    this.startTimeOffset,
-  });
-
-  GoogleCloudVideointelligenceV1p1beta1VideoSegment.fromJson(core.Map _json)
-      : this(
-          endTimeOffset: _json.containsKey('endTimeOffset')
-              ? _json['endTimeOffset'] as core.String
-              : null,
-          startTimeOffset: _json.containsKey('startTimeOffset')
-              ? _json['startTimeOffset'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (endTimeOffset != null) 'endTimeOffset': endTimeOffset!,
-        if (startTimeOffset != null) 'startTimeOffset': startTimeOffset!,
-      };
-}
+typedef GoogleCloudVideointelligenceV1p1beta1VideoSegment = $VideoSegment;
 
 /// Word-specific information for recognized words.
 ///
 /// Word information is only included in the response when certain request
 /// parameters are set, such as `enable_word_time_offsets`.
-class GoogleCloudVideointelligenceV1p1beta1WordInfo {
-  /// The confidence estimate between 0.0 and 1.0.
-  ///
-  /// A higher number indicates an estimated greater likelihood that the
-  /// recognized words are correct. This field is set only for the top
-  /// alternative. This field is not guaranteed to be accurate and users should
-  /// not rely on it to be always provided. The default of 0.0 is a sentinel
-  /// value indicating `confidence` was not set.
-  ///
-  /// Output only.
-  core.double? confidence;
-
-  /// Time offset relative to the beginning of the audio, and corresponding to
-  /// the end of the spoken word.
-  ///
-  /// This field is only set if `enable_word_time_offsets=true` and only in the
-  /// top hypothesis. This is an experimental feature and the accuracy of the
-  /// time offset can vary.
-  core.String? endTime;
-
-  /// A distinct integer value is assigned for every speaker within the audio.
-  ///
-  /// This field specifies which one of those speakers was detected to have
-  /// spoken this word. Value ranges from 1 up to diarization_speaker_count, and
-  /// is only set if speaker diarization is enabled.
-  ///
-  /// Output only.
-  core.int? speakerTag;
-
-  /// Time offset relative to the beginning of the audio, and corresponding to
-  /// the start of the spoken word.
-  ///
-  /// This field is only set if `enable_word_time_offsets=true` and only in the
-  /// top hypothesis. This is an experimental feature and the accuracy of the
-  /// time offset can vary.
-  core.String? startTime;
-
-  /// The word corresponding to this set of information.
-  core.String? word;
-
-  GoogleCloudVideointelligenceV1p1beta1WordInfo({
-    this.confidence,
-    this.endTime,
-    this.speakerTag,
-    this.startTime,
-    this.word,
-  });
-
-  GoogleCloudVideointelligenceV1p1beta1WordInfo.fromJson(core.Map _json)
-      : this(
-          confidence: _json.containsKey('confidence')
-              ? (_json['confidence'] as core.num).toDouble()
-              : null,
-          endTime: _json.containsKey('endTime')
-              ? _json['endTime'] as core.String
-              : null,
-          speakerTag: _json.containsKey('speakerTag')
-              ? _json['speakerTag'] as core.int
-              : null,
-          startTime: _json.containsKey('startTime')
-              ? _json['startTime'] as core.String
-              : null,
-          word: _json.containsKey('word') ? _json['word'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (confidence != null) 'confidence': confidence!,
-        if (endTime != null) 'endTime': endTime!,
-        if (speakerTag != null) 'speakerTag': speakerTag!,
-        if (startTime != null) 'startTime': startTime!,
-        if (word != null) 'word': word!,
-      };
-}
+typedef GoogleCloudVideointelligenceV1p1beta1WordInfo = $WordInfo;
 
 /// Video annotation progress.
 ///
@@ -6308,45 +5395,8 @@ class GoogleCloudVideointelligenceV1p2beta1AnnotateVideoResponse {
 }
 
 /// A generic detected attribute represented by name in string format.
-class GoogleCloudVideointelligenceV1p2beta1DetectedAttribute {
-  /// Detected attribute confidence.
-  ///
-  /// Range \[0, 1\].
-  core.double? confidence;
-
-  /// The name of the attribute, for example, glasses, dark_glasses, mouth_open.
-  ///
-  /// A full list of supported type names will be provided in the document.
-  core.String? name;
-
-  /// Text value of the detection result.
-  ///
-  /// For example, the value for "HairColor" can be "black", "blonde", etc.
-  core.String? value;
-
-  GoogleCloudVideointelligenceV1p2beta1DetectedAttribute({
-    this.confidence,
-    this.name,
-    this.value,
-  });
-
-  GoogleCloudVideointelligenceV1p2beta1DetectedAttribute.fromJson(
-      core.Map _json)
-      : this(
-          confidence: _json.containsKey('confidence')
-              ? (_json['confidence'] as core.num).toDouble()
-              : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          value:
-              _json.containsKey('value') ? _json['value'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (confidence != null) 'confidence': confidence!,
-        if (name != null) 'name': name!,
-        if (value != null) 'value': value!,
-      };
-}
+typedef GoogleCloudVideointelligenceV1p2beta1DetectedAttribute
+    = $DetectedAttribute;
 
 /// A generic detected landmark represented by name in string format and a 2D
 /// location.
@@ -6391,44 +5441,7 @@ class GoogleCloudVideointelligenceV1p2beta1DetectedLandmark {
 }
 
 /// Detected entity from video analysis.
-class GoogleCloudVideointelligenceV1p2beta1Entity {
-  /// Textual description, e.g., `Fixed-gear bicycle`.
-  core.String? description;
-
-  /// Opaque entity ID.
-  ///
-  /// Some IDs may be available in
-  /// [Google Knowledge Graph Search API](https://developers.google.com/knowledge-graph/).
-  core.String? entityId;
-
-  /// Language code for `description` in BCP-47 format.
-  core.String? languageCode;
-
-  GoogleCloudVideointelligenceV1p2beta1Entity({
-    this.description,
-    this.entityId,
-    this.languageCode,
-  });
-
-  GoogleCloudVideointelligenceV1p2beta1Entity.fromJson(core.Map _json)
-      : this(
-          description: _json.containsKey('description')
-              ? _json['description'] as core.String
-              : null,
-          entityId: _json.containsKey('entityId')
-              ? _json['entityId'] as core.String
-              : null,
-          languageCode: _json.containsKey('languageCode')
-              ? _json['languageCode'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (description != null) 'description': description!,
-        if (entityId != null) 'entityId': entityId!,
-        if (languageCode != null) 'languageCode': languageCode!,
-      };
-}
+typedef GoogleCloudVideointelligenceV1p2beta1Entity = $Entity;
 
 /// Explicit content annotation (based on per-frame visual signals only).
 ///
@@ -6469,43 +5482,8 @@ class GoogleCloudVideointelligenceV1p2beta1ExplicitContentAnnotation {
 }
 
 /// Video frame level annotation results for explicit content.
-class GoogleCloudVideointelligenceV1p2beta1ExplicitContentFrame {
-  /// Likelihood of the pornography content..
-  /// Possible string values are:
-  /// - "LIKELIHOOD_UNSPECIFIED" : Unspecified likelihood.
-  /// - "VERY_UNLIKELY" : Very unlikely.
-  /// - "UNLIKELY" : Unlikely.
-  /// - "POSSIBLE" : Possible.
-  /// - "LIKELY" : Likely.
-  /// - "VERY_LIKELY" : Very likely.
-  core.String? pornographyLikelihood;
-
-  /// Time-offset, relative to the beginning of the video, corresponding to the
-  /// video frame for this location.
-  core.String? timeOffset;
-
-  GoogleCloudVideointelligenceV1p2beta1ExplicitContentFrame({
-    this.pornographyLikelihood,
-    this.timeOffset,
-  });
-
-  GoogleCloudVideointelligenceV1p2beta1ExplicitContentFrame.fromJson(
-      core.Map _json)
-      : this(
-          pornographyLikelihood: _json.containsKey('pornographyLikelihood')
-              ? _json['pornographyLikelihood'] as core.String
-              : null,
-          timeOffset: _json.containsKey('timeOffset')
-              ? _json['timeOffset'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (pornographyLikelihood != null)
-          'pornographyLikelihood': pornographyLikelihood!,
-        if (timeOffset != null) 'timeOffset': timeOffset!,
-      };
-}
+typedef GoogleCloudVideointelligenceV1p2beta1ExplicitContentFrame
+    = $ExplicitContentFrame;
 
 /// No effect.
 ///
@@ -6744,36 +5722,7 @@ class GoogleCloudVideointelligenceV1p2beta1LabelAnnotation {
 }
 
 /// Video frame level annotation results for label detection.
-class GoogleCloudVideointelligenceV1p2beta1LabelFrame {
-  /// Confidence that the label is accurate.
-  ///
-  /// Range: \[0, 1\].
-  core.double? confidence;
-
-  /// Time-offset, relative to the beginning of the video, corresponding to the
-  /// video frame for this location.
-  core.String? timeOffset;
-
-  GoogleCloudVideointelligenceV1p2beta1LabelFrame({
-    this.confidence,
-    this.timeOffset,
-  });
-
-  GoogleCloudVideointelligenceV1p2beta1LabelFrame.fromJson(core.Map _json)
-      : this(
-          confidence: _json.containsKey('confidence')
-              ? (_json['confidence'] as core.num).toDouble()
-              : null,
-          timeOffset: _json.containsKey('timeOffset')
-              ? _json['timeOffset'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (confidence != null) 'confidence': confidence!,
-        if (timeOffset != null) 'timeOffset': timeOffset!,
-      };
-}
+typedef GoogleCloudVideointelligenceV1p2beta1LabelFrame = $LabelFrame;
 
 /// Video segment level annotation results for label detection.
 class GoogleCloudVideointelligenceV1p2beta1LabelSegment {
@@ -6866,50 +5815,8 @@ class GoogleCloudVideointelligenceV1p2beta1LogoRecognitionAnnotation {
 ///
 /// The normalized vertex coordinates are relative to the original image. Range:
 /// \[0, 1\].
-class GoogleCloudVideointelligenceV1p2beta1NormalizedBoundingBox {
-  /// Bottom Y coordinate.
-  core.double? bottom;
-
-  /// Left X coordinate.
-  core.double? left;
-
-  /// Right X coordinate.
-  core.double? right;
-
-  /// Top Y coordinate.
-  core.double? top;
-
-  GoogleCloudVideointelligenceV1p2beta1NormalizedBoundingBox({
-    this.bottom,
-    this.left,
-    this.right,
-    this.top,
-  });
-
-  GoogleCloudVideointelligenceV1p2beta1NormalizedBoundingBox.fromJson(
-      core.Map _json)
-      : this(
-          bottom: _json.containsKey('bottom')
-              ? (_json['bottom'] as core.num).toDouble()
-              : null,
-          left: _json.containsKey('left')
-              ? (_json['left'] as core.num).toDouble()
-              : null,
-          right: _json.containsKey('right')
-              ? (_json['right'] as core.num).toDouble()
-              : null,
-          top: _json.containsKey('top')
-              ? (_json['top'] as core.num).toDouble()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (bottom != null) 'bottom': bottom!,
-        if (left != null) 'left': left!,
-        if (right != null) 'right': right!,
-        if (top != null) 'top': top!,
-      };
-}
+typedef GoogleCloudVideointelligenceV1p2beta1NormalizedBoundingBox
+    = $NormalizedBoundingBox;
 
 /// Normalized bounding polygon for text (that might not be aligned with axis).
 ///
@@ -6950,33 +5857,8 @@ class GoogleCloudVideointelligenceV1p2beta1NormalizedBoundingPoly {
 ///
 /// NOTE: the normalized vertex coordinates are relative to the original image
 /// and range from 0 to 1.
-class GoogleCloudVideointelligenceV1p2beta1NormalizedVertex {
-  /// X coordinate.
-  core.double? x;
-
-  /// Y coordinate.
-  core.double? y;
-
-  GoogleCloudVideointelligenceV1p2beta1NormalizedVertex({
-    this.x,
-    this.y,
-  });
-
-  GoogleCloudVideointelligenceV1p2beta1NormalizedVertex.fromJson(core.Map _json)
-      : this(
-          x: _json.containsKey('x')
-              ? (_json['x'] as core.num).toDouble()
-              : null,
-          y: _json.containsKey('y')
-              ? (_json['y'] as core.num).toDouble()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (x != null) 'x': x!,
-        if (y != null) 'y': y!,
-      };
-}
+typedef GoogleCloudVideointelligenceV1p2beta1NormalizedVertex
+    = $NormalizedVertex00;
 
 /// Annotations corresponding to one tracked object.
 class GoogleCloudVideointelligenceV1p2beta1ObjectTrackingAnnotation {
@@ -7838,113 +6720,13 @@ class GoogleCloudVideointelligenceV1p2beta1VideoAnnotationResults {
 }
 
 /// Video segment.
-class GoogleCloudVideointelligenceV1p2beta1VideoSegment {
-  /// Time-offset, relative to the beginning of the video, corresponding to the
-  /// end of the segment (inclusive).
-  core.String? endTimeOffset;
-
-  /// Time-offset, relative to the beginning of the video, corresponding to the
-  /// start of the segment (inclusive).
-  core.String? startTimeOffset;
-
-  GoogleCloudVideointelligenceV1p2beta1VideoSegment({
-    this.endTimeOffset,
-    this.startTimeOffset,
-  });
-
-  GoogleCloudVideointelligenceV1p2beta1VideoSegment.fromJson(core.Map _json)
-      : this(
-          endTimeOffset: _json.containsKey('endTimeOffset')
-              ? _json['endTimeOffset'] as core.String
-              : null,
-          startTimeOffset: _json.containsKey('startTimeOffset')
-              ? _json['startTimeOffset'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (endTimeOffset != null) 'endTimeOffset': endTimeOffset!,
-        if (startTimeOffset != null) 'startTimeOffset': startTimeOffset!,
-      };
-}
+typedef GoogleCloudVideointelligenceV1p2beta1VideoSegment = $VideoSegment;
 
 /// Word-specific information for recognized words.
 ///
 /// Word information is only included in the response when certain request
 /// parameters are set, such as `enable_word_time_offsets`.
-class GoogleCloudVideointelligenceV1p2beta1WordInfo {
-  /// The confidence estimate between 0.0 and 1.0.
-  ///
-  /// A higher number indicates an estimated greater likelihood that the
-  /// recognized words are correct. This field is set only for the top
-  /// alternative. This field is not guaranteed to be accurate and users should
-  /// not rely on it to be always provided. The default of 0.0 is a sentinel
-  /// value indicating `confidence` was not set.
-  ///
-  /// Output only.
-  core.double? confidence;
-
-  /// Time offset relative to the beginning of the audio, and corresponding to
-  /// the end of the spoken word.
-  ///
-  /// This field is only set if `enable_word_time_offsets=true` and only in the
-  /// top hypothesis. This is an experimental feature and the accuracy of the
-  /// time offset can vary.
-  core.String? endTime;
-
-  /// A distinct integer value is assigned for every speaker within the audio.
-  ///
-  /// This field specifies which one of those speakers was detected to have
-  /// spoken this word. Value ranges from 1 up to diarization_speaker_count, and
-  /// is only set if speaker diarization is enabled.
-  ///
-  /// Output only.
-  core.int? speakerTag;
-
-  /// Time offset relative to the beginning of the audio, and corresponding to
-  /// the start of the spoken word.
-  ///
-  /// This field is only set if `enable_word_time_offsets=true` and only in the
-  /// top hypothesis. This is an experimental feature and the accuracy of the
-  /// time offset can vary.
-  core.String? startTime;
-
-  /// The word corresponding to this set of information.
-  core.String? word;
-
-  GoogleCloudVideointelligenceV1p2beta1WordInfo({
-    this.confidence,
-    this.endTime,
-    this.speakerTag,
-    this.startTime,
-    this.word,
-  });
-
-  GoogleCloudVideointelligenceV1p2beta1WordInfo.fromJson(core.Map _json)
-      : this(
-          confidence: _json.containsKey('confidence')
-              ? (_json['confidence'] as core.num).toDouble()
-              : null,
-          endTime: _json.containsKey('endTime')
-              ? _json['endTime'] as core.String
-              : null,
-          speakerTag: _json.containsKey('speakerTag')
-              ? _json['speakerTag'] as core.int
-              : null,
-          startTime: _json.containsKey('startTime')
-              ? _json['startTime'] as core.String
-              : null,
-          word: _json.containsKey('word') ? _json['word'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (confidence != null) 'confidence': confidence!,
-        if (endTime != null) 'endTime': endTime!,
-        if (speakerTag != null) 'speakerTag': speakerTag!,
-        if (startTime != null) 'startTime': startTime!,
-        if (word != null) 'word': word!,
-      };
-}
+typedef GoogleCloudVideointelligenceV1p2beta1WordInfo = $WordInfo;
 
 /// Video annotation progress.
 ///
@@ -8126,45 +6908,8 @@ class GoogleCloudVideointelligenceV1p3beta1CelebrityTrack {
 }
 
 /// A generic detected attribute represented by name in string format.
-class GoogleCloudVideointelligenceV1p3beta1DetectedAttribute {
-  /// Detected attribute confidence.
-  ///
-  /// Range \[0, 1\].
-  core.double? confidence;
-
-  /// The name of the attribute, for example, glasses, dark_glasses, mouth_open.
-  ///
-  /// A full list of supported type names will be provided in the document.
-  core.String? name;
-
-  /// Text value of the detection result.
-  ///
-  /// For example, the value for "HairColor" can be "black", "blonde", etc.
-  core.String? value;
-
-  GoogleCloudVideointelligenceV1p3beta1DetectedAttribute({
-    this.confidence,
-    this.name,
-    this.value,
-  });
-
-  GoogleCloudVideointelligenceV1p3beta1DetectedAttribute.fromJson(
-      core.Map _json)
-      : this(
-          confidence: _json.containsKey('confidence')
-              ? (_json['confidence'] as core.num).toDouble()
-              : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          value:
-              _json.containsKey('value') ? _json['value'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (confidence != null) 'confidence': confidence!,
-        if (name != null) 'name': name!,
-        if (value != null) 'value': value!,
-      };
-}
+typedef GoogleCloudVideointelligenceV1p3beta1DetectedAttribute
+    = $DetectedAttribute;
 
 /// A generic detected landmark represented by name in string format and a 2D
 /// location.
@@ -8209,44 +6954,7 @@ class GoogleCloudVideointelligenceV1p3beta1DetectedLandmark {
 }
 
 /// Detected entity from video analysis.
-class GoogleCloudVideointelligenceV1p3beta1Entity {
-  /// Textual description, e.g., `Fixed-gear bicycle`.
-  core.String? description;
-
-  /// Opaque entity ID.
-  ///
-  /// Some IDs may be available in
-  /// [Google Knowledge Graph Search API](https://developers.google.com/knowledge-graph/).
-  core.String? entityId;
-
-  /// Language code for `description` in BCP-47 format.
-  core.String? languageCode;
-
-  GoogleCloudVideointelligenceV1p3beta1Entity({
-    this.description,
-    this.entityId,
-    this.languageCode,
-  });
-
-  GoogleCloudVideointelligenceV1p3beta1Entity.fromJson(core.Map _json)
-      : this(
-          description: _json.containsKey('description')
-              ? _json['description'] as core.String
-              : null,
-          entityId: _json.containsKey('entityId')
-              ? _json['entityId'] as core.String
-              : null,
-          languageCode: _json.containsKey('languageCode')
-              ? _json['languageCode'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (description != null) 'description': description!,
-        if (entityId != null) 'entityId': entityId!,
-        if (languageCode != null) 'languageCode': languageCode!,
-      };
-}
+typedef GoogleCloudVideointelligenceV1p3beta1Entity = $Entity;
 
 /// Explicit content annotation (based on per-frame visual signals only).
 ///
@@ -8287,43 +6995,8 @@ class GoogleCloudVideointelligenceV1p3beta1ExplicitContentAnnotation {
 }
 
 /// Video frame level annotation results for explicit content.
-class GoogleCloudVideointelligenceV1p3beta1ExplicitContentFrame {
-  /// Likelihood of the pornography content..
-  /// Possible string values are:
-  /// - "LIKELIHOOD_UNSPECIFIED" : Unspecified likelihood.
-  /// - "VERY_UNLIKELY" : Very unlikely.
-  /// - "UNLIKELY" : Unlikely.
-  /// - "POSSIBLE" : Possible.
-  /// - "LIKELY" : Likely.
-  /// - "VERY_LIKELY" : Very likely.
-  core.String? pornographyLikelihood;
-
-  /// Time-offset, relative to the beginning of the video, corresponding to the
-  /// video frame for this location.
-  core.String? timeOffset;
-
-  GoogleCloudVideointelligenceV1p3beta1ExplicitContentFrame({
-    this.pornographyLikelihood,
-    this.timeOffset,
-  });
-
-  GoogleCloudVideointelligenceV1p3beta1ExplicitContentFrame.fromJson(
-      core.Map _json)
-      : this(
-          pornographyLikelihood: _json.containsKey('pornographyLikelihood')
-              ? _json['pornographyLikelihood'] as core.String
-              : null,
-          timeOffset: _json.containsKey('timeOffset')
-              ? _json['timeOffset'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (pornographyLikelihood != null)
-          'pornographyLikelihood': pornographyLikelihood!,
-        if (timeOffset != null) 'timeOffset': timeOffset!,
-      };
-}
+typedef GoogleCloudVideointelligenceV1p3beta1ExplicitContentFrame
+    = $ExplicitContentFrame;
 
 /// No effect.
 ///
@@ -8562,36 +7235,7 @@ class GoogleCloudVideointelligenceV1p3beta1LabelAnnotation {
 }
 
 /// Video frame level annotation results for label detection.
-class GoogleCloudVideointelligenceV1p3beta1LabelFrame {
-  /// Confidence that the label is accurate.
-  ///
-  /// Range: \[0, 1\].
-  core.double? confidence;
-
-  /// Time-offset, relative to the beginning of the video, corresponding to the
-  /// video frame for this location.
-  core.String? timeOffset;
-
-  GoogleCloudVideointelligenceV1p3beta1LabelFrame({
-    this.confidence,
-    this.timeOffset,
-  });
-
-  GoogleCloudVideointelligenceV1p3beta1LabelFrame.fromJson(core.Map _json)
-      : this(
-          confidence: _json.containsKey('confidence')
-              ? (_json['confidence'] as core.num).toDouble()
-              : null,
-          timeOffset: _json.containsKey('timeOffset')
-              ? _json['timeOffset'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (confidence != null) 'confidence': confidence!,
-        if (timeOffset != null) 'timeOffset': timeOffset!,
-      };
-}
+typedef GoogleCloudVideointelligenceV1p3beta1LabelFrame = $LabelFrame;
 
 /// Video segment level annotation results for label detection.
 class GoogleCloudVideointelligenceV1p3beta1LabelSegment {
@@ -8684,50 +7328,8 @@ class GoogleCloudVideointelligenceV1p3beta1LogoRecognitionAnnotation {
 ///
 /// The normalized vertex coordinates are relative to the original image. Range:
 /// \[0, 1\].
-class GoogleCloudVideointelligenceV1p3beta1NormalizedBoundingBox {
-  /// Bottom Y coordinate.
-  core.double? bottom;
-
-  /// Left X coordinate.
-  core.double? left;
-
-  /// Right X coordinate.
-  core.double? right;
-
-  /// Top Y coordinate.
-  core.double? top;
-
-  GoogleCloudVideointelligenceV1p3beta1NormalizedBoundingBox({
-    this.bottom,
-    this.left,
-    this.right,
-    this.top,
-  });
-
-  GoogleCloudVideointelligenceV1p3beta1NormalizedBoundingBox.fromJson(
-      core.Map _json)
-      : this(
-          bottom: _json.containsKey('bottom')
-              ? (_json['bottom'] as core.num).toDouble()
-              : null,
-          left: _json.containsKey('left')
-              ? (_json['left'] as core.num).toDouble()
-              : null,
-          right: _json.containsKey('right')
-              ? (_json['right'] as core.num).toDouble()
-              : null,
-          top: _json.containsKey('top')
-              ? (_json['top'] as core.num).toDouble()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (bottom != null) 'bottom': bottom!,
-        if (left != null) 'left': left!,
-        if (right != null) 'right': right!,
-        if (top != null) 'top': top!,
-      };
-}
+typedef GoogleCloudVideointelligenceV1p3beta1NormalizedBoundingBox
+    = $NormalizedBoundingBox;
 
 /// Normalized bounding polygon for text (that might not be aligned with axis).
 ///
@@ -8768,33 +7370,8 @@ class GoogleCloudVideointelligenceV1p3beta1NormalizedBoundingPoly {
 ///
 /// NOTE: the normalized vertex coordinates are relative to the original image
 /// and range from 0 to 1.
-class GoogleCloudVideointelligenceV1p3beta1NormalizedVertex {
-  /// X coordinate.
-  core.double? x;
-
-  /// Y coordinate.
-  core.double? y;
-
-  GoogleCloudVideointelligenceV1p3beta1NormalizedVertex({
-    this.x,
-    this.y,
-  });
-
-  GoogleCloudVideointelligenceV1p3beta1NormalizedVertex.fromJson(core.Map _json)
-      : this(
-          x: _json.containsKey('x')
-              ? (_json['x'] as core.num).toDouble()
-              : null,
-          y: _json.containsKey('y')
-              ? (_json['y'] as core.num).toDouble()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (x != null) 'x': x!,
-        if (y != null) 'y': y!,
-      };
-}
+typedef GoogleCloudVideointelligenceV1p3beta1NormalizedVertex
+    = $NormalizedVertex00;
 
 /// Annotations corresponding to one tracked object.
 class GoogleCloudVideointelligenceV1p3beta1ObjectTrackingAnnotation {
@@ -9835,113 +8412,13 @@ class GoogleCloudVideointelligenceV1p3beta1VideoAnnotationResults {
 }
 
 /// Video segment.
-class GoogleCloudVideointelligenceV1p3beta1VideoSegment {
-  /// Time-offset, relative to the beginning of the video, corresponding to the
-  /// end of the segment (inclusive).
-  core.String? endTimeOffset;
-
-  /// Time-offset, relative to the beginning of the video, corresponding to the
-  /// start of the segment (inclusive).
-  core.String? startTimeOffset;
-
-  GoogleCloudVideointelligenceV1p3beta1VideoSegment({
-    this.endTimeOffset,
-    this.startTimeOffset,
-  });
-
-  GoogleCloudVideointelligenceV1p3beta1VideoSegment.fromJson(core.Map _json)
-      : this(
-          endTimeOffset: _json.containsKey('endTimeOffset')
-              ? _json['endTimeOffset'] as core.String
-              : null,
-          startTimeOffset: _json.containsKey('startTimeOffset')
-              ? _json['startTimeOffset'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (endTimeOffset != null) 'endTimeOffset': endTimeOffset!,
-        if (startTimeOffset != null) 'startTimeOffset': startTimeOffset!,
-      };
-}
+typedef GoogleCloudVideointelligenceV1p3beta1VideoSegment = $VideoSegment;
 
 /// Word-specific information for recognized words.
 ///
 /// Word information is only included in the response when certain request
 /// parameters are set, such as `enable_word_time_offsets`.
-class GoogleCloudVideointelligenceV1p3beta1WordInfo {
-  /// The confidence estimate between 0.0 and 1.0.
-  ///
-  /// A higher number indicates an estimated greater likelihood that the
-  /// recognized words are correct. This field is set only for the top
-  /// alternative. This field is not guaranteed to be accurate and users should
-  /// not rely on it to be always provided. The default of 0.0 is a sentinel
-  /// value indicating `confidence` was not set.
-  ///
-  /// Output only.
-  core.double? confidence;
-
-  /// Time offset relative to the beginning of the audio, and corresponding to
-  /// the end of the spoken word.
-  ///
-  /// This field is only set if `enable_word_time_offsets=true` and only in the
-  /// top hypothesis. This is an experimental feature and the accuracy of the
-  /// time offset can vary.
-  core.String? endTime;
-
-  /// A distinct integer value is assigned for every speaker within the audio.
-  ///
-  /// This field specifies which one of those speakers was detected to have
-  /// spoken this word. Value ranges from 1 up to diarization_speaker_count, and
-  /// is only set if speaker diarization is enabled.
-  ///
-  /// Output only.
-  core.int? speakerTag;
-
-  /// Time offset relative to the beginning of the audio, and corresponding to
-  /// the start of the spoken word.
-  ///
-  /// This field is only set if `enable_word_time_offsets=true` and only in the
-  /// top hypothesis. This is an experimental feature and the accuracy of the
-  /// time offset can vary.
-  core.String? startTime;
-
-  /// The word corresponding to this set of information.
-  core.String? word;
-
-  GoogleCloudVideointelligenceV1p3beta1WordInfo({
-    this.confidence,
-    this.endTime,
-    this.speakerTag,
-    this.startTime,
-    this.word,
-  });
-
-  GoogleCloudVideointelligenceV1p3beta1WordInfo.fromJson(core.Map _json)
-      : this(
-          confidence: _json.containsKey('confidence')
-              ? (_json['confidence'] as core.num).toDouble()
-              : null,
-          endTime: _json.containsKey('endTime')
-              ? _json['endTime'] as core.String
-              : null,
-          speakerTag: _json.containsKey('speakerTag')
-              ? _json['speakerTag'] as core.int
-              : null,
-          startTime: _json.containsKey('startTime')
-              ? _json['startTime'] as core.String
-              : null,
-          word: _json.containsKey('word') ? _json['word'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (confidence != null) 'confidence': confidence!,
-        if (endTime != null) 'endTime': endTime!,
-        if (speakerTag != null) 'speakerTag': speakerTag!,
-        if (startTime != null) 'startTime': startTime!,
-        if (word != null) 'word': word!,
-      };
-}
+typedef GoogleCloudVideointelligenceV1p3beta1WordInfo = $WordInfo;
 
 /// The request message for Operations.CancelOperation.
 typedef GoogleLongrunningCancelOperationRequest = $Empty;
@@ -10070,46 +8547,4 @@ typedef GoogleProtobufEmpty = $Empty;
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-class GoogleRpcStatus {
-  /// The status code, which should be an enum value of google.rpc.Code.
-  core.int? code;
-
-  /// A list of messages that carry the error details.
-  ///
-  /// There is a common set of message types for APIs to use.
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object?>>? details;
-
-  /// A developer-facing error message, which should be in English.
-  ///
-  /// Any user-facing error message should be localized and sent in the
-  /// google.rpc.Status.details field, or localized by the client.
-  core.String? message;
-
-  GoogleRpcStatus({
-    this.code,
-    this.details,
-    this.message,
-  });
-
-  GoogleRpcStatus.fromJson(core.Map _json)
-      : this(
-          code: _json.containsKey('code') ? _json['code'] as core.int : null,
-          details: _json.containsKey('details')
-              ? (_json['details'] as core.List)
-                  .map((value) => value as core.Map<core.String, core.dynamic>)
-                  .toList()
-              : null,
-          message: _json.containsKey('message')
-              ? _json['message'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (code != null) 'code': code!,
-        if (details != null) 'details': details!,
-        if (message != null) 'message': message!,
-      };
-}
+typedef GoogleRpcStatus = $Status;

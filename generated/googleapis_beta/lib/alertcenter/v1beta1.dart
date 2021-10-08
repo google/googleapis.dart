@@ -33,7 +33,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-import '../src/empty.dart';
+import '../shared.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -1373,40 +1373,7 @@ class BadWhitelist {
 }
 
 /// A request to perform batch delete on alerts.
-class BatchDeleteAlertsRequest {
-  /// list of alert IDs.
-  ///
-  /// Required.
-  core.List<core.String>? alertId;
-
-  /// The unique identifier of the Google Workspace organization account of the
-  /// customer the alerts are associated with.
-  ///
-  /// Optional.
-  core.String? customerId;
-
-  BatchDeleteAlertsRequest({
-    this.alertId,
-    this.customerId,
-  });
-
-  BatchDeleteAlertsRequest.fromJson(core.Map _json)
-      : this(
-          alertId: _json.containsKey('alertId')
-              ? (_json['alertId'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          customerId: _json.containsKey('customerId')
-              ? _json['customerId'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (alertId != null) 'alertId': alertId!,
-        if (customerId != null) 'customerId': customerId!,
-      };
-}
+typedef BatchDeleteAlertsRequest = $AlertsRequest;
 
 /// Response to batch delete operation on alerts.
 class BatchDeleteAlertsResponse {
@@ -1448,40 +1415,7 @@ class BatchDeleteAlertsResponse {
 }
 
 /// A request to perform batch undelete on alerts.
-class BatchUndeleteAlertsRequest {
-  /// list of alert IDs.
-  ///
-  /// Required.
-  core.List<core.String>? alertId;
-
-  /// The unique identifier of the Google Workspace organization account of the
-  /// customer the alerts are associated with.
-  ///
-  /// Optional.
-  core.String? customerId;
-
-  BatchUndeleteAlertsRequest({
-    this.alertId,
-    this.customerId,
-  });
-
-  BatchUndeleteAlertsRequest.fromJson(core.Map _json)
-      : this(
-          alertId: _json.containsKey('alertId')
-              ? (_json['alertId'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          customerId: _json.containsKey('customerId')
-              ? _json['customerId'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (alertId != null) 'alertId': alertId!,
-        if (customerId != null) 'customerId': customerId!,
-      };
-}
+typedef BatchUndeleteAlertsRequest = $AlertsRequest;
 
 /// Response to batch undelete operation on alerts.
 class BatchUndeleteAlertsResponse {
@@ -2633,49 +2567,7 @@ class StateSponsoredAttack {
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-class Status {
-  /// The status code, which should be an enum value of google.rpc.Code.
-  core.int? code;
-
-  /// A list of messages that carry the error details.
-  ///
-  /// There is a common set of message types for APIs to use.
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object?>>? details;
-
-  /// A developer-facing error message, which should be in English.
-  ///
-  /// Any user-facing error message should be localized and sent in the
-  /// google.rpc.Status.details field, or localized by the client.
-  core.String? message;
-
-  Status({
-    this.code,
-    this.details,
-    this.message,
-  });
-
-  Status.fromJson(core.Map _json)
-      : this(
-          code: _json.containsKey('code') ? _json['code'] as core.int : null,
-          details: _json.containsKey('details')
-              ? (_json['details'] as core.List)
-                  .map((value) => value as core.Map<core.String, core.dynamic>)
-                  .toList()
-              : null,
-          message: _json.containsKey('message')
-              ? _json['message'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (code != null) 'code': code!,
-        if (details != null) 'details': details!,
-        if (message != null) 'message': message!,
-      };
-}
+typedef Status = $Status;
 
 /// A mobile suspicious activity alert.
 ///

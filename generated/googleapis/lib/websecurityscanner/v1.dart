@@ -36,7 +36,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-import '../src/empty.dart';
+import '../shared.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -1141,30 +1141,7 @@ class GoogleAccount {
 }
 
 /// Describes a HTTP Header.
-class Header {
-  /// Header name.
-  core.String? name;
-
-  /// Header value.
-  core.String? value;
-
-  Header({
-    this.name,
-    this.value,
-  });
-
-  Header.fromJson(core.Map _json)
-      : this(
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          value:
-              _json.containsKey('value') ? _json['value'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-        if (value != null) 'value': value!,
-      };
-}
+typedef Header = $Header;
 
 /// Describes authentication configuration for Identity-Aware-Proxy (IAP).
 class IapCredential {

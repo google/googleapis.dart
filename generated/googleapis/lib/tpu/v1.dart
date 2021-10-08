@@ -35,7 +35,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-import '../src/empty.dart';
+import '../shared.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -1069,73 +1069,7 @@ class ListTensorFlowVersionsResponse {
 }
 
 /// A resource that represents Google Cloud Platform location.
-class Location {
-  /// The friendly name for this location, typically a nearby city name.
-  ///
-  /// For example, "Tokyo".
-  core.String? displayName;
-
-  /// Cross-service attributes for the location.
-  ///
-  /// For example {"cloud.googleapis.com/region": "us-east1"}
-  core.Map<core.String, core.String>? labels;
-
-  /// The canonical id for this location.
-  ///
-  /// For example: `"us-east1"`.
-  core.String? locationId;
-
-  /// Service-specific metadata.
-  ///
-  /// For example the available capacity at the given location.
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object?>? metadata;
-
-  /// Resource name for the location, which may vary between implementations.
-  ///
-  /// For example: `"projects/example-project/locations/us-east1"`
-  core.String? name;
-
-  Location({
-    this.displayName,
-    this.labels,
-    this.locationId,
-    this.metadata,
-    this.name,
-  });
-
-  Location.fromJson(core.Map _json)
-      : this(
-          displayName: _json.containsKey('displayName')
-              ? _json['displayName'] as core.String
-              : null,
-          labels: _json.containsKey('labels')
-              ? (_json['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.String,
-                  ),
-                )
-              : null,
-          locationId: _json.containsKey('locationId')
-              ? _json['locationId'] as core.String
-              : null,
-          metadata: _json.containsKey('metadata')
-              ? _json['metadata'] as core.Map<core.String, core.dynamic>
-              : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (displayName != null) 'displayName': displayName!,
-        if (labels != null) 'labels': labels!,
-        if (locationId != null) 'locationId': locationId!,
-        if (metadata != null) 'metadata': metadata!,
-        if (name != null) 'name': name!,
-      };
-}
+typedef Location = $Location00;
 
 /// A network endpoint over which a TPU worker can be reached.
 class NetworkEndpoint {
@@ -1504,89 +1438,7 @@ class Operation {
 }
 
 /// Represents the metadata of the long-running operation.
-class OperationMetadata {
-  /// API version used to start the operation.
-  ///
-  /// Output only.
-  core.String? apiVersion;
-
-  /// Identifies whether the user has requested cancellation of the operation.
-  ///
-  /// Operations that have been cancelled successfully have Operation.error
-  /// value with a google.rpc.Status.code of 1, corresponding to
-  /// `Code.CANCELLED`.
-  ///
-  /// Output only.
-  core.bool? cancelRequested;
-
-  /// The time the operation was created.
-  ///
-  /// Output only.
-  core.String? createTime;
-
-  /// The time the operation finished running.
-  ///
-  /// Output only.
-  core.String? endTime;
-
-  /// Human-readable status of the operation, if any.
-  ///
-  /// Output only.
-  core.String? statusDetail;
-
-  /// Server-defined resource path for the target of the operation.
-  ///
-  /// Output only.
-  core.String? target;
-
-  /// Name of the verb executed by the operation.
-  ///
-  /// Output only.
-  core.String? verb;
-
-  OperationMetadata({
-    this.apiVersion,
-    this.cancelRequested,
-    this.createTime,
-    this.endTime,
-    this.statusDetail,
-    this.target,
-    this.verb,
-  });
-
-  OperationMetadata.fromJson(core.Map _json)
-      : this(
-          apiVersion: _json.containsKey('apiVersion')
-              ? _json['apiVersion'] as core.String
-              : null,
-          cancelRequested: _json.containsKey('cancelRequested')
-              ? _json['cancelRequested'] as core.bool
-              : null,
-          createTime: _json.containsKey('createTime')
-              ? _json['createTime'] as core.String
-              : null,
-          endTime: _json.containsKey('endTime')
-              ? _json['endTime'] as core.String
-              : null,
-          statusDetail: _json.containsKey('statusDetail')
-              ? _json['statusDetail'] as core.String
-              : null,
-          target: _json.containsKey('target')
-              ? _json['target'] as core.String
-              : null,
-          verb: _json.containsKey('verb') ? _json['verb'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (apiVersion != null) 'apiVersion': apiVersion!,
-        if (cancelRequested != null) 'cancelRequested': cancelRequested!,
-        if (createTime != null) 'createTime': createTime!,
-        if (endTime != null) 'endTime': endTime!,
-        if (statusDetail != null) 'statusDetail': statusDetail!,
-        if (target != null) 'target': target!,
-        if (verb != null) 'verb': verb!,
-      };
-}
+typedef OperationMetadata = $OperationMetadata02;
 
 /// Request for ReimageNode.
 class ReimageNodeRequest {
@@ -1648,49 +1500,7 @@ typedef StartNodeRequest = $Empty;
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-class Status {
-  /// The status code, which should be an enum value of google.rpc.Code.
-  core.int? code;
-
-  /// A list of messages that carry the error details.
-  ///
-  /// There is a common set of message types for APIs to use.
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object?>>? details;
-
-  /// A developer-facing error message, which should be in English.
-  ///
-  /// Any user-facing error message should be localized and sent in the
-  /// google.rpc.Status.details field, or localized by the client.
-  core.String? message;
-
-  Status({
-    this.code,
-    this.details,
-    this.message,
-  });
-
-  Status.fromJson(core.Map _json)
-      : this(
-          code: _json.containsKey('code') ? _json['code'] as core.int : null,
-          details: _json.containsKey('details')
-              ? (_json['details'] as core.List)
-                  .map((value) => value as core.Map<core.String, core.dynamic>)
-                  .toList()
-              : null,
-          message: _json.containsKey('message')
-              ? _json['message'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (code != null) 'code': code!,
-        if (details != null) 'details': details!,
-        if (message != null) 'message': message!,
-      };
-}
+typedef Status = $Status;
 
 /// Request for StopNode.
 typedef StopNodeRequest = $Empty;

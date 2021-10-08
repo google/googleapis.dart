@@ -41,7 +41,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-import '../src/empty.dart';
+import '../shared.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -2174,25 +2174,7 @@ class ApiConfigHandler {
 }
 
 /// Uses Google Cloud Endpoints to handle requests.
-class ApiEndpointHandler {
-  /// Path to the script from the application root directory.
-  core.String? scriptPath;
-
-  ApiEndpointHandler({
-    this.scriptPath,
-  });
-
-  ApiEndpointHandler.fromJson(core.Map _json)
-      : this(
-          scriptPath: _json.containsKey('scriptPath')
-              ? _json['scriptPath'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (scriptPath != null) 'scriptPath': scriptPath!,
-      };
-}
+typedef ApiEndpointHandler = $Handler;
 
 /// An Application resource contains the top-level configuration of an App
 /// Engine application.
@@ -2888,75 +2870,15 @@ class CpuUtilization {
 
 /// Metadata for the given google.longrunning.Operation during a
 /// google.appengine.v1.CreateVersionRequest.
-class CreateVersionMetadataV1 {
-  /// The Cloud Build ID if one was created as part of the version create.
-  ///
-  /// @OutputOnly
-  core.String? cloudBuildId;
-
-  CreateVersionMetadataV1({
-    this.cloudBuildId,
-  });
-
-  CreateVersionMetadataV1.fromJson(core.Map _json)
-      : this(
-          cloudBuildId: _json.containsKey('cloudBuildId')
-              ? _json['cloudBuildId'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (cloudBuildId != null) 'cloudBuildId': cloudBuildId!,
-      };
-}
+typedef CreateVersionMetadataV1 = $Shared03;
 
 /// Metadata for the given google.longrunning.Operation during a
 /// google.appengine.v1alpha.CreateVersionRequest.
-class CreateVersionMetadataV1Alpha {
-  /// The Cloud Build ID if one was created as part of the version create.
-  ///
-  /// @OutputOnly
-  core.String? cloudBuildId;
-
-  CreateVersionMetadataV1Alpha({
-    this.cloudBuildId,
-  });
-
-  CreateVersionMetadataV1Alpha.fromJson(core.Map _json)
-      : this(
-          cloudBuildId: _json.containsKey('cloudBuildId')
-              ? _json['cloudBuildId'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (cloudBuildId != null) 'cloudBuildId': cloudBuildId!,
-      };
-}
+typedef CreateVersionMetadataV1Alpha = $Shared03;
 
 /// Metadata for the given google.longrunning.Operation during a
 /// google.appengine.v1beta.CreateVersionRequest.
-class CreateVersionMetadataV1Beta {
-  /// The Cloud Build ID if one was created as part of the version create.
-  ///
-  /// @OutputOnly
-  core.String? cloudBuildId;
-
-  CreateVersionMetadataV1Beta({
-    this.cloudBuildId,
-  });
-
-  CreateVersionMetadataV1Beta.fromJson(core.Map _json)
-      : this(
-          cloudBuildId: _json.containsKey('cloudBuildId')
-              ? _json['cloudBuildId'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (cloudBuildId != null) 'cloudBuildId': cloudBuildId!,
-      };
-}
+typedef CreateVersionMetadataV1Beta = $Shared03;
 
 /// Request message for Instances.DebugInstance.
 class DebugInstanceRequest {
@@ -3453,266 +3375,7 @@ class FirewallRule {
 }
 
 /// Metadata for the given google.cloud.location.Location.
-class GoogleAppengineV1betaLocationMetadata {
-  /// App Engine flexible environment is available in the given
-  /// location.@OutputOnly
-  core.bool? flexibleEnvironmentAvailable;
-
-  /// Search API
-  /// (https://cloud.google.com/appengine/docs/standard/python/search) is
-  /// available in the given location.
-  ///
-  /// Output only.
-  core.bool? searchApiAvailable;
-
-  /// App Engine standard environment is available in the given
-  /// location.@OutputOnly
-  core.bool? standardEnvironmentAvailable;
-
-  GoogleAppengineV1betaLocationMetadata({
-    this.flexibleEnvironmentAvailable,
-    this.searchApiAvailable,
-    this.standardEnvironmentAvailable,
-  });
-
-  GoogleAppengineV1betaLocationMetadata.fromJson(core.Map _json)
-      : this(
-          flexibleEnvironmentAvailable:
-              _json.containsKey('flexibleEnvironmentAvailable')
-                  ? _json['flexibleEnvironmentAvailable'] as core.bool
-                  : null,
-          searchApiAvailable: _json.containsKey('searchApiAvailable')
-              ? _json['searchApiAvailable'] as core.bool
-              : null,
-          standardEnvironmentAvailable:
-              _json.containsKey('standardEnvironmentAvailable')
-                  ? _json['standardEnvironmentAvailable'] as core.bool
-                  : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (flexibleEnvironmentAvailable != null)
-          'flexibleEnvironmentAvailable': flexibleEnvironmentAvailable!,
-        if (searchApiAvailable != null)
-          'searchApiAvailable': searchApiAvailable!,
-        if (standardEnvironmentAvailable != null)
-          'standardEnvironmentAvailable': standardEnvironmentAvailable!,
-      };
-}
-
-/// Represents the metadata of the long-running operation.
-class GoogleAppengineV2OperationMetadata {
-  /// API version used to start the operation.
-  ///
-  /// Output only.
-  core.String? apiVersion;
-
-  /// The time the operation was created.
-  ///
-  /// Output only.
-  core.String? createTime;
-
-  /// The time the operation finished running.
-  ///
-  /// Output only.
-  core.String? endTime;
-
-  /// Ephemeral message that may change every time the operation is polled.
-  ///
-  /// Output only.
-  core.String? ephemeralMessage;
-
-  /// Identifies whether the user has requested cancellation of the operation.
-  ///
-  /// Operations that have been cancelled successfully have Operation.error
-  /// value with a google.rpc.Status.code of 1, corresponding to Code.CANCELLED.
-  ///
-  /// Output only.
-  core.bool? requestedCancellation;
-
-  /// Human-readable status of the operation, if any.
-  ///
-  /// Output only.
-  core.String? statusMessage;
-
-  /// Server-defined resource path for the target of the operation.
-  ///
-  /// Output only.
-  core.String? target;
-
-  /// Name of the verb executed by the operation.
-  ///
-  /// Output only.
-  core.String? verb;
-
-  /// Durable messages that persist on every operation poll.
-  ///
-  /// Output only.
-  core.List<core.String>? warning;
-
-  GoogleAppengineV2OperationMetadata({
-    this.apiVersion,
-    this.createTime,
-    this.endTime,
-    this.ephemeralMessage,
-    this.requestedCancellation,
-    this.statusMessage,
-    this.target,
-    this.verb,
-    this.warning,
-  });
-
-  GoogleAppengineV2OperationMetadata.fromJson(core.Map _json)
-      : this(
-          apiVersion: _json.containsKey('apiVersion')
-              ? _json['apiVersion'] as core.String
-              : null,
-          createTime: _json.containsKey('createTime')
-              ? _json['createTime'] as core.String
-              : null,
-          endTime: _json.containsKey('endTime')
-              ? _json['endTime'] as core.String
-              : null,
-          ephemeralMessage: _json.containsKey('ephemeralMessage')
-              ? _json['ephemeralMessage'] as core.String
-              : null,
-          requestedCancellation: _json.containsKey('requestedCancellation')
-              ? _json['requestedCancellation'] as core.bool
-              : null,
-          statusMessage: _json.containsKey('statusMessage')
-              ? _json['statusMessage'] as core.String
-              : null,
-          target: _json.containsKey('target')
-              ? _json['target'] as core.String
-              : null,
-          verb: _json.containsKey('verb') ? _json['verb'] as core.String : null,
-          warning: _json.containsKey('warning')
-              ? (_json['warning'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (apiVersion != null) 'apiVersion': apiVersion!,
-        if (createTime != null) 'createTime': createTime!,
-        if (endTime != null) 'endTime': endTime!,
-        if (ephemeralMessage != null) 'ephemeralMessage': ephemeralMessage!,
-        if (requestedCancellation != null)
-          'requestedCancellation': requestedCancellation!,
-        if (statusMessage != null) 'statusMessage': statusMessage!,
-        if (target != null) 'target': target!,
-        if (verb != null) 'verb': verb!,
-        if (warning != null) 'warning': warning!,
-      };
-}
-
-/// Represents the metadata of the long-running operation.
-class GoogleAppengineV2mainOperationMetadata {
-  /// API version used to start the operation.
-  ///
-  /// Output only.
-  core.String? apiVersion;
-
-  /// The time the operation was created.
-  ///
-  /// Output only.
-  core.String? createTime;
-
-  /// The time the operation finished running.
-  ///
-  /// Output only.
-  core.String? endTime;
-
-  /// Ephemeral message that may change every time the operation is polled.
-  ///
-  /// Output only.
-  core.String? ephemeralMessage;
-
-  /// Identifies whether the user has requested cancellation of the operation.
-  ///
-  /// Operations that have been cancelled successfully have Operation.error
-  /// value with a google.rpc.Status.code of 1, corresponding to Code.CANCELLED.
-  ///
-  /// Output only.
-  core.bool? requestedCancellation;
-
-  /// Human-readable status of the operation, if any.
-  ///
-  /// Output only.
-  core.String? statusMessage;
-
-  /// Server-defined resource path for the target of the operation.
-  ///
-  /// Output only.
-  core.String? target;
-
-  /// Name of the verb executed by the operation.
-  ///
-  /// Output only.
-  core.String? verb;
-
-  /// Durable messages that persist on every operation poll.
-  ///
-  /// Output only.
-  core.List<core.String>? warning;
-
-  GoogleAppengineV2mainOperationMetadata({
-    this.apiVersion,
-    this.createTime,
-    this.endTime,
-    this.ephemeralMessage,
-    this.requestedCancellation,
-    this.statusMessage,
-    this.target,
-    this.verb,
-    this.warning,
-  });
-
-  GoogleAppengineV2mainOperationMetadata.fromJson(core.Map _json)
-      : this(
-          apiVersion: _json.containsKey('apiVersion')
-              ? _json['apiVersion'] as core.String
-              : null,
-          createTime: _json.containsKey('createTime')
-              ? _json['createTime'] as core.String
-              : null,
-          endTime: _json.containsKey('endTime')
-              ? _json['endTime'] as core.String
-              : null,
-          ephemeralMessage: _json.containsKey('ephemeralMessage')
-              ? _json['ephemeralMessage'] as core.String
-              : null,
-          requestedCancellation: _json.containsKey('requestedCancellation')
-              ? _json['requestedCancellation'] as core.bool
-              : null,
-          statusMessage: _json.containsKey('statusMessage')
-              ? _json['statusMessage'] as core.String
-              : null,
-          target: _json.containsKey('target')
-              ? _json['target'] as core.String
-              : null,
-          verb: _json.containsKey('verb') ? _json['verb'] as core.String : null,
-          warning: _json.containsKey('warning')
-              ? (_json['warning'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (apiVersion != null) 'apiVersion': apiVersion!,
-        if (createTime != null) 'createTime': createTime!,
-        if (endTime != null) 'endTime': endTime!,
-        if (ephemeralMessage != null) 'ephemeralMessage': ephemeralMessage!,
-        if (requestedCancellation != null)
-          'requestedCancellation': requestedCancellation!,
-        if (statusMessage != null) 'statusMessage': statusMessage!,
-        if (target != null) 'target': target!,
-        if (verb != null) 'verb': verb!,
-        if (warning != null) 'warning': warning!,
-      };
-}
+typedef GoogleAppengineV1betaLocationMetadata = $LocationMetadata;
 
 /// Health checking configuration for VM instances.
 ///
@@ -4447,121 +4110,10 @@ class LivenessCheck {
 }
 
 /// A resource that represents Google Cloud Platform location.
-class Location {
-  /// The friendly name for this location, typically a nearby city name.
-  ///
-  /// For example, "Tokyo".
-  core.String? displayName;
-
-  /// Cross-service attributes for the location.
-  ///
-  /// For example {"cloud.googleapis.com/region": "us-east1"}
-  core.Map<core.String, core.String>? labels;
-
-  /// The canonical id for this location.
-  ///
-  /// For example: "us-east1".
-  core.String? locationId;
-
-  /// Service-specific metadata.
-  ///
-  /// For example the available capacity at the given location.
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object?>? metadata;
-
-  /// Resource name for the location, which may vary between implementations.
-  ///
-  /// For example: "projects/example-project/locations/us-east1"
-  core.String? name;
-
-  Location({
-    this.displayName,
-    this.labels,
-    this.locationId,
-    this.metadata,
-    this.name,
-  });
-
-  Location.fromJson(core.Map _json)
-      : this(
-          displayName: _json.containsKey('displayName')
-              ? _json['displayName'] as core.String
-              : null,
-          labels: _json.containsKey('labels')
-              ? (_json['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.String,
-                  ),
-                )
-              : null,
-          locationId: _json.containsKey('locationId')
-              ? _json['locationId'] as core.String
-              : null,
-          metadata: _json.containsKey('metadata')
-              ? _json['metadata'] as core.Map<core.String, core.dynamic>
-              : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (displayName != null) 'displayName': displayName!,
-        if (labels != null) 'labels': labels!,
-        if (locationId != null) 'locationId': locationId!,
-        if (metadata != null) 'metadata': metadata!,
-        if (name != null) 'name': name!,
-      };
-}
+typedef Location = $Location01;
 
 /// Metadata for the given google.cloud.location.Location.
-class LocationMetadata {
-  /// App Engine flexible environment is available in the given
-  /// location.@OutputOnly
-  core.bool? flexibleEnvironmentAvailable;
-
-  /// Search API
-  /// (https://cloud.google.com/appengine/docs/standard/python/search) is
-  /// available in the given location.
-  ///
-  /// Output only.
-  core.bool? searchApiAvailable;
-
-  /// App Engine standard environment is available in the given
-  /// location.@OutputOnly
-  core.bool? standardEnvironmentAvailable;
-
-  LocationMetadata({
-    this.flexibleEnvironmentAvailable,
-    this.searchApiAvailable,
-    this.standardEnvironmentAvailable,
-  });
-
-  LocationMetadata.fromJson(core.Map _json)
-      : this(
-          flexibleEnvironmentAvailable:
-              _json.containsKey('flexibleEnvironmentAvailable')
-                  ? _json['flexibleEnvironmentAvailable'] as core.bool
-                  : null,
-          searchApiAvailable: _json.containsKey('searchApiAvailable')
-              ? _json['searchApiAvailable'] as core.bool
-              : null,
-          standardEnvironmentAvailable:
-              _json.containsKey('standardEnvironmentAvailable')
-                  ? _json['standardEnvironmentAvailable'] as core.bool
-                  : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (flexibleEnvironmentAvailable != null)
-          'flexibleEnvironmentAvailable': flexibleEnvironmentAvailable!,
-        if (searchApiAvailable != null)
-          'searchApiAvailable': searchApiAvailable!,
-        if (standardEnvironmentAvailable != null)
-          'standardEnvironmentAvailable': standardEnvironmentAvailable!,
-      };
-}
+typedef LocationMetadata = $LocationMetadata;
 
 /// A certificate managed by App Engine.
 class ManagedCertificate {
@@ -5359,25 +4911,7 @@ class Resources {
 }
 
 /// Executes a script to handle the request that matches the URL pattern.
-class ScriptHandler {
-  /// Path to the script from the application root directory.
-  core.String? scriptPath;
-
-  ScriptHandler({
-    this.scriptPath,
-  });
-
-  ScriptHandler.fromJson(core.Map _json)
-      : this(
-          scriptPath: _json.containsKey('scriptPath')
-              ? _json['scriptPath'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (scriptPath != null) 'scriptPath': scriptPath!,
-      };
-}
+typedef ScriptHandler = $Handler;
 
 /// A Service resource is a logical component of an application that can share
 /// state and communicate in a secure fashion with other services.
@@ -5677,49 +5211,7 @@ class StaticFilesHandler {
 /// three pieces of data: error code, error message, and error details.You can
 /// find out more about this error model and how to work with it in the API
 /// Design Guide (https://cloud.google.com/apis/design/errors).
-class Status {
-  /// The status code, which should be an enum value of google.rpc.Code.
-  core.int? code;
-
-  /// A list of messages that carry the error details.
-  ///
-  /// There is a common set of message types for APIs to use.
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object?>>? details;
-
-  /// A developer-facing error message, which should be in English.
-  ///
-  /// Any user-facing error message should be localized and sent in the
-  /// google.rpc.Status.details field, or localized by the client.
-  core.String? message;
-
-  Status({
-    this.code,
-    this.details,
-    this.message,
-  });
-
-  Status.fromJson(core.Map _json)
-      : this(
-          code: _json.containsKey('code') ? _json['code'] as core.int : null,
-          details: _json.containsKey('details')
-              ? (_json['details'] as core.List)
-                  .map((value) => value as core.Map<core.String, core.dynamic>)
-                  .toList()
-              : null,
-          message: _json.containsKey('message')
-              ? _json['message'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (code != null) 'code': code!,
-        if (details != null) 'details': details!,
-        if (message != null) 'message': message!,
-      };
-}
+typedef Status = $Status;
 
 /// Traffic routing configuration for versions within a single service.
 ///

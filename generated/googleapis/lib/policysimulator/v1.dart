@@ -49,6 +49,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
+import '../shared.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -717,34 +718,35 @@ class ProjectsLocationsReplaysResultsResource {
   }
 }
 
-/// A summary and comparison of the member's access under the current (baseline)
-/// policies and the proposed (simulated) policies for a single access tuple.
+/// A summary and comparison of the principal's access under the current
+/// (baseline) policies and the proposed (simulated) policies for a single
+/// access tuple.
 class GoogleCloudPolicysimulatorV1AccessStateDiff {
-  /// How the member's access, specified in the AccessState field, changed
+  /// How the principal's access, specified in the AccessState field, changed
   /// between the current (baseline) policies and proposed (simulated) policies.
   /// Possible string values are:
-  /// - "ACCESS_CHANGE_TYPE_UNSPECIFIED" : The access change is unspecified.
-  /// - "NO_CHANGE" : The member's access did not change. This includes the case
-  /// where both baseline and simulated are UNKNOWN, but the unknown information
-  /// is equivalent.
-  /// - "UNKNOWN_CHANGE" : The member's access under both the current policies
-  /// and the proposed policies is `UNKNOWN`, but the unknown information
-  /// differs between them.
-  /// - "ACCESS_REVOKED" : The member had access under the current policies
+  /// - "ACCESS_CHANGE_TYPE_UNSPECIFIED" : Default value. This value is unused.
+  /// - "NO_CHANGE" : The principal's access did not change. This includes the
+  /// case where both baseline and simulated are UNKNOWN, but the unknown
+  /// information is equivalent.
+  /// - "UNKNOWN_CHANGE" : The principal's access under both the current
+  /// policies and the proposed policies is `UNKNOWN`, but the unknown
+  /// information differs between them.
+  /// - "ACCESS_REVOKED" : The principal had access under the current policies
   /// (`GRANTED`), but will no longer have access after the proposed changes
   /// (`NOT_GRANTED`).
-  /// - "ACCESS_GAINED" : The member did not have access under the current
+  /// - "ACCESS_GAINED" : The principal did not have access under the current
   /// policies (`NOT_GRANTED`), but will have access after the proposed changes
   /// (`GRANTED`).
   /// - "ACCESS_MAYBE_REVOKED" : This result can occur for the following
-  /// reasons: * The member had access under the current policies (`GRANTED`),
-  /// but their access after the proposed changes is `UNKNOWN`. * The member's
-  /// access under the current policies is `UNKNOWN`, but they will not have
-  /// access after the proposed changes (`NOT_GRANTED`).
+  /// reasons: * The principal had access under the current policies
+  /// (`GRANTED`), but their access after the proposed changes is `UNKNOWN`. *
+  /// The principal's access under the current policies is `UNKNOWN`, but they
+  /// will not have access after the proposed changes (`NOT_GRANTED`).
   /// - "ACCESS_MAYBE_GAINED" : This result can occur for the following reasons:
-  /// * The member did not have access under the current policies
+  /// * The principal did not have access under the current policies
   /// (`NOT_GRANTED`), but their access after the proposed changes is `UNKNOWN`.
-  /// * The member's access under the current policies is `UNKNOWN`, but they
+  /// * The principal's access under the current policies is `UNKNOWN`, but they
   /// will have access after the proposed changes (`GRANTED`).
   core.String? accessChange;
 
@@ -788,82 +790,26 @@ class GoogleCloudPolicysimulatorV1AccessStateDiff {
       };
 }
 
-/// Information about the member, resource, and permission to check.
-class GoogleCloudPolicysimulatorV1AccessTuple {
-  /// The full resource name that identifies the resource.
-  ///
-  /// For example,
-  /// `//compute.googleapis.com/projects/my-project/zones/us-central1-a/instances/my-instance`.
-  /// For examples of full resource names for Google Cloud services, see
-  /// https://cloud.google.com/iam/help/troubleshooter/full-resource-names.
-  ///
-  /// Required.
-  core.String? fullResourceName;
+/// Information about the principal, resource, and permission to check.
+typedef GoogleCloudPolicysimulatorV1AccessTuple = $V1AccessTuple;
 
-  /// The IAM permission to check for the specified member and resource.
-  ///
-  /// For a complete list of IAM permissions, see
-  /// https://cloud.google.com/iam/help/permissions/reference. For a complete
-  /// list of predefined IAM roles and the permissions in each role, see
-  /// https://cloud.google.com/iam/help/roles/reference.
-  ///
-  /// Required.
-  core.String? permission;
-
-  /// The member, or principal, whose access you want to check, in the form of
-  /// the email address that represents that member.
-  ///
-  /// For example, `alice@example.com` or
-  /// `my-service-account@my-project.iam.gserviceaccount.com`. The member must
-  /// be a Google Account or a service account. Other types of members are not
-  /// supported.
-  ///
-  /// Required.
-  core.String? principal;
-
-  GoogleCloudPolicysimulatorV1AccessTuple({
-    this.fullResourceName,
-    this.permission,
-    this.principal,
-  });
-
-  GoogleCloudPolicysimulatorV1AccessTuple.fromJson(core.Map _json)
-      : this(
-          fullResourceName: _json.containsKey('fullResourceName')
-              ? _json['fullResourceName'] as core.String
-              : null,
-          permission: _json.containsKey('permission')
-              ? _json['permission'] as core.String
-              : null,
-          principal: _json.containsKey('principal')
-              ? _json['principal'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (fullResourceName != null) 'fullResourceName': fullResourceName!,
-        if (permission != null) 'permission': permission!,
-        if (principal != null) 'principal': principal!,
-      };
-}
-
-/// Details about how a binding in a policy affects a member's ability to use a
-/// permission.
+/// Details about how a binding in a policy affects a principal's ability to use
+/// a permission.
 class GoogleCloudPolicysimulatorV1BindingExplanation {
   /// Indicates whether _this binding_ provides the specified permission to the
-  /// specified member for the specified resource.
+  /// specified principal for the specified resource.
   ///
-  /// This field does _not_ indicate whether the member actually has the
+  /// This field does _not_ indicate whether the principal actually has the
   /// permission for the resource. There might be another binding that overrides
-  /// this binding. To determine whether the member actually has the permission,
-  /// use the `access` field in the TroubleshootIamPolicyResponse.
+  /// this binding. To determine whether the principal actually has the
+  /// permission, use the `access` field in the TroubleshootIamPolicyResponse.
   ///
   /// Required.
   /// Possible string values are:
-  /// - "ACCESS_STATE_UNSPECIFIED" : The access state is not specified.
-  /// - "GRANTED" : The member has the permission.
-  /// - "NOT_GRANTED" : The member does not have the permission.
-  /// - "UNKNOWN_CONDITIONAL" : The member has the permission only if a
+  /// - "ACCESS_STATE_UNSPECIFIED" : Default value. This value is unused.
+  /// - "GRANTED" : The principal has the permission.
+  /// - "NOT_GRANTED" : The principal does not have the permission.
+  /// - "UNKNOWN_CONDITIONAL" : The principal has the permission only if a
   /// condition expression evaluates to `true`.
   /// - "UNKNOWN_INFO_DENIED" : The user who created the Replay does not have
   /// access to all of the policies that Policy Simulator needs to evaluate.
@@ -876,19 +822,20 @@ class GoogleCloudPolicysimulatorV1BindingExplanation {
   /// https://cloud.google.com/iam/docs/conditions-overview.
   GoogleTypeExpr? condition;
 
-  /// Indicates whether each member in the binding includes the member specified
-  /// in the request, either directly or indirectly.
+  /// Indicates whether each principal in the binding includes the principal
+  /// specified in the request, either directly or indirectly.
   ///
-  /// Each key identifies a member in the binding, and each value indicates
-  /// whether the member in the binding includes the member in the request. For
-  /// example, suppose that a binding includes the following members: *
-  /// `user:alice@example.com` * `group:product-eng@example.com` The member in
-  /// the replayed access tuple is `user:bob@example.com`. This user is a member
-  /// of the group `group:product-eng@example.com`. For the first member in the
-  /// binding, the key is `user:alice@example.com`, and the `membership` field
-  /// in the value is set to `MEMBERSHIP_NOT_INCLUDED`. For the second member in
-  /// the binding, the key is `group:product-eng@example.com`, and the
-  /// `membership` field in the value is set to `MEMBERSHIP_INCLUDED`.
+  /// Each key identifies a principal in the binding, and each value indicates
+  /// whether the principal in the binding includes the principal in the
+  /// request. For example, suppose that a binding includes the following
+  /// principals: * `user:alice@example.com` * `group:product-eng@example.com`
+  /// The principal in the replayed access tuple is `user:bob@example.com`. This
+  /// user is a principal of the group `group:product-eng@example.com`. For the
+  /// first principal in the binding, the key is `user:alice@example.com`, and
+  /// the `membership` field in the value is set to `MEMBERSHIP_NOT_INCLUDED`.
+  /// For the second principal in the binding, the key is
+  /// `group:product-eng@example.com`, and the `membership` field in the value
+  /// is set to `MEMBERSHIP_INCLUDED`.
   core.Map<core.String,
           GoogleCloudPolicysimulatorV1BindingExplanationAnnotatedMembership>?
       memberships;
@@ -896,7 +843,7 @@ class GoogleCloudPolicysimulatorV1BindingExplanation {
   /// The relevance of this binding to the overall determination for the entire
   /// policy.
   /// Possible string values are:
-  /// - "HEURISTIC_RELEVANCE_UNSPECIFIED" : Reserved for future use.
+  /// - "HEURISTIC_RELEVANCE_UNSPECIFIED" : Default value. This value is unused.
   /// - "NORMAL" : The data point has a limited effect on the result. Changing
   /// the data point is unlikely to affect the overall determination.
   /// - "HIGH" : The data point has a strong effect on the result. Changing the
@@ -913,8 +860,7 @@ class GoogleCloudPolicysimulatorV1BindingExplanation {
   /// Indicates whether the role granted by this binding contains the specified
   /// permission.
   /// Possible string values are:
-  /// - "ROLE_PERMISSION_UNSPECIFIED" : The inclusion of the permission is not
-  /// specified.
+  /// - "ROLE_PERMISSION_UNSPECIFIED" : Default value. This value is unused.
   /// - "ROLE_PERMISSION_INCLUDED" : The permission is included in the role.
   /// - "ROLE_PERMISSION_NOT_INCLUDED" : The permission is not included in the
   /// role.
@@ -925,7 +871,7 @@ class GoogleCloudPolicysimulatorV1BindingExplanation {
   /// The relevance of the permission's existence, or nonexistence, in the role
   /// to the overall determination for the entire policy.
   /// Possible string values are:
-  /// - "HEURISTIC_RELEVANCE_UNSPECIFIED" : Reserved for future use.
+  /// - "HEURISTIC_RELEVANCE_UNSPECIFIED" : Default value. This value is unused.
   /// - "NORMAL" : The data point has a limited effect on the result. Changing
   /// the data point is unlikely to affect the overall determination.
   /// - "HIGH" : The data point has a strong effect on the result. Changing the
@@ -985,27 +931,27 @@ class GoogleCloudPolicysimulatorV1BindingExplanation {
       };
 }
 
-/// Details about whether the binding includes the member.
+/// Details about whether the binding includes the principal.
 class GoogleCloudPolicysimulatorV1BindingExplanationAnnotatedMembership {
-  /// Indicates whether the binding includes the member.
+  /// Indicates whether the binding includes the principal.
   /// Possible string values are:
-  /// - "MEMBERSHIP_UNSPECIFIED" : The membership is not specified.
-  /// - "MEMBERSHIP_INCLUDED" : The binding includes the member. The member can
-  /// be included directly or indirectly. For example: * A member is included
-  /// directly if that member is listed in the binding. * A member is included
-  /// indirectly if that member is in a Google group or Google Workspace domain
-  /// that is listed in the binding.
-  /// - "MEMBERSHIP_NOT_INCLUDED" : The binding does not include the member.
+  /// - "MEMBERSHIP_UNSPECIFIED" : Default value. This value is unused.
+  /// - "MEMBERSHIP_INCLUDED" : The binding includes the principal. The
+  /// principal can be included directly or indirectly. For example: * A
+  /// principal is included directly if that principal is listed in the binding.
+  /// * A principal is included indirectly if that principal is in a Google
+  /// group or Google Workspace domain that is listed in the binding.
+  /// - "MEMBERSHIP_NOT_INCLUDED" : The binding does not include the principal.
   /// - "MEMBERSHIP_UNKNOWN_INFO_DENIED" : The user who created the Replay is
   /// not allowed to access the binding.
-  /// - "MEMBERSHIP_UNKNOWN_UNSUPPORTED" : The member is an unsupported type.
+  /// - "MEMBERSHIP_UNKNOWN_UNSUPPORTED" : The principal is an unsupported type.
   /// Only Google Accounts and service accounts are supported.
   core.String? membership;
 
-  /// The relevance of the member's status to the overall determination for the
-  /// binding.
+  /// The relevance of the principal's status to the overall determination for
+  /// the binding.
   /// Possible string values are:
-  /// - "HEURISTIC_RELEVANCE_UNSPECIFIED" : Reserved for future use.
+  /// - "HEURISTIC_RELEVANCE_UNSPECIFIED" : Default value. This value is unused.
   /// - "NORMAL" : The data point has a limited effect on the result. Changing
   /// the data point is unlikely to affect the overall determination.
   /// - "HIGH" : The data point has a strong effect on the result. Changing the
@@ -1037,13 +983,13 @@ class GoogleCloudPolicysimulatorV1BindingExplanationAnnotatedMembership {
 /// Details about how a set of policies, listed in ExplainedPolicy, resulted in
 /// a certain AccessState when replaying an access tuple.
 class GoogleCloudPolicysimulatorV1ExplainedAccess {
-  /// Whether the member in the access tuple has permission to access the
+  /// Whether the principal in the access tuple has permission to access the
   /// resource in the access tuple under the given policies.
   /// Possible string values are:
-  /// - "ACCESS_STATE_UNSPECIFIED" : The access state is not specified.
-  /// - "GRANTED" : The member has the permission.
-  /// - "NOT_GRANTED" : The member does not have the permission.
-  /// - "UNKNOWN_CONDITIONAL" : The member has the permission only if a
+  /// - "ACCESS_STATE_UNSPECIFIED" : Default value. This value is unused.
+  /// - "GRANTED" : The principal has the permission.
+  /// - "NOT_GRANTED" : The principal does not have the permission.
+  /// - "UNKNOWN_CONDITIONAL" : The principal has the permission only if a
   /// condition expression evaluates to `true`.
   /// - "UNKNOWN_INFO_DENIED" : The user who created the Replay does not have
   /// access to all of the policies that Policy Simulator needs to evaluate.
@@ -1097,24 +1043,24 @@ class GoogleCloudPolicysimulatorV1ExplainedAccess {
 /// Details about how a specific IAM Policy contributed to the access check.
 class GoogleCloudPolicysimulatorV1ExplainedPolicy {
   /// Indicates whether _this policy_ provides the specified permission to the
-  /// specified member for the specified resource.
+  /// specified principal for the specified resource.
   ///
-  /// This field does _not_ indicate whether the member actually has the
+  /// This field does _not_ indicate whether the principal actually has the
   /// permission for the resource. There might be another policy that overrides
-  /// this policy. To determine whether the member actually has the permission,
-  /// use the `access` field in the TroubleshootIamPolicyResponse.
+  /// this policy. To determine whether the principal actually has the
+  /// permission, use the `access` field in the TroubleshootIamPolicyResponse.
   /// Possible string values are:
-  /// - "ACCESS_STATE_UNSPECIFIED" : The access state is not specified.
-  /// - "GRANTED" : The member has the permission.
-  /// - "NOT_GRANTED" : The member does not have the permission.
-  /// - "UNKNOWN_CONDITIONAL" : The member has the permission only if a
+  /// - "ACCESS_STATE_UNSPECIFIED" : Default value. This value is unused.
+  /// - "GRANTED" : The principal has the permission.
+  /// - "NOT_GRANTED" : The principal does not have the permission.
+  /// - "UNKNOWN_CONDITIONAL" : The principal has the permission only if a
   /// condition expression evaluates to `true`.
   /// - "UNKNOWN_INFO_DENIED" : The user who created the Replay does not have
   /// access to all of the policies that Policy Simulator needs to evaluate.
   core.String? access;
 
-  /// Details about how each binding in the policy affects the member's ability,
-  /// or inability, to use the permission for the resource.
+  /// Details about how each binding in the policy affects the principal's
+  /// ability, or inability, to use the permission for the resource.
   ///
   /// If the user who created the Replay does not have access to the policy,
   /// this field is omitted.
@@ -1143,7 +1089,7 @@ class GoogleCloudPolicysimulatorV1ExplainedPolicy {
   /// If the user who created the Replay does not have access to the policy,
   /// this field is omitted.
   /// Possible string values are:
-  /// - "HEURISTIC_RELEVANCE_UNSPECIFIED" : Reserved for future use.
+  /// - "HEURISTIC_RELEVANCE_UNSPECIFIED" : Default value. This value is unused.
   /// - "NORMAL" : The data point has a limited effect on the result. Changing
   /// the data point is unlikely to affect the overall determination.
   /// - "HIGH" : The data point has a strong effect on the result. Changing the
@@ -1255,7 +1201,7 @@ class GoogleCloudPolicysimulatorV1Replay {
   ///
   /// Output only.
   /// Possible string values are:
-  /// - "STATE_UNSPECIFIED" : The state is unspecified.
+  /// - "STATE_UNSPECIFIED" : Default value. This value is unused.
   /// - "PENDING" : The `Replay` has not started yet.
   /// - "RUNNING" : The `Replay` is currently running.
   /// - "SUCCEEDED" : The `Replay` has successfully completed.
@@ -1348,14 +1294,14 @@ class GoogleCloudPolicysimulatorV1ReplayConfig {
 /// The difference between the results of evaluating an access tuple under the
 /// current (baseline) policies and under the proposed (simulated) policies.
 ///
-/// This difference explains how a member's access could change if the proposed
-/// policies were applied.
+/// This difference explains how a principal's access could change if the
+/// proposed policies were applied.
 class GoogleCloudPolicysimulatorV1ReplayDiff {
-  /// A summary and comparison of the member's access under the current
+  /// A summary and comparison of the principal's access under the current
   /// (baseline) policies and the proposed (simulated) policies for a single
   /// access tuple.
   ///
-  /// The evaluation of the member's access is reported in the AccessState
+  /// The evaluation of the principal's access is reported in the AccessState
   /// field.
   GoogleCloudPolicysimulatorV1AccessStateDiff? accessDiff;
 
@@ -1377,36 +1323,20 @@ class GoogleCloudPolicysimulatorV1ReplayDiff {
 }
 
 /// Metadata about a Replay operation.
-class GoogleCloudPolicysimulatorV1ReplayOperationMetadata {
-  /// Time when the request was received.
-  core.String? startTime;
-
-  GoogleCloudPolicysimulatorV1ReplayOperationMetadata({
-    this.startTime,
-  });
-
-  GoogleCloudPolicysimulatorV1ReplayOperationMetadata.fromJson(core.Map _json)
-      : this(
-          startTime: _json.containsKey('startTime')
-              ? _json['startTime'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (startTime != null) 'startTime': startTime!,
-      };
-}
+typedef GoogleCloudPolicysimulatorV1ReplayOperationMetadata
+    = $ReplayOperationMetadata;
 
 /// The result of replaying a single access tuple against a simulated state.
 class GoogleCloudPolicysimulatorV1ReplayResult {
   /// The access tuple that was replayed.
   ///
-  /// This field includes information about the member, resource, and permission
-  /// that were involved in the access attempt.
+  /// This field includes information about the principal, resource, and
+  /// permission that were involved in the access attempt.
   GoogleCloudPolicysimulatorV1AccessTuple? accessTuple;
 
-  /// The difference between the member's access under the current (baseline)
-  /// policies and the member's access under the proposed (simulated) policies.
+  /// The difference between the principal's access under the current (baseline)
+  /// policies and the principal's access under the proposed (simulated)
+  /// policies.
   ///
   /// This field is only included for access tuples that were successfully
   /// replayed and had different results under the current policies and the
@@ -1660,26 +1590,8 @@ class GoogleCloudPolicysimulatorV1beta1ReplayConfig {
 }
 
 /// Metadata about a Replay operation.
-class GoogleCloudPolicysimulatorV1beta1ReplayOperationMetadata {
-  /// Time when the request was received.
-  core.String? startTime;
-
-  GoogleCloudPolicysimulatorV1beta1ReplayOperationMetadata({
-    this.startTime,
-  });
-
-  GoogleCloudPolicysimulatorV1beta1ReplayOperationMetadata.fromJson(
-      core.Map _json)
-      : this(
-          startTime: _json.containsKey('startTime')
-              ? _json['startTime'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (startTime != null) 'startTime': startTime!,
-      };
-}
+typedef GoogleCloudPolicysimulatorV1beta1ReplayOperationMetadata
+    = $ReplayOperationMetadata;
 
 /// Summary statistics about the replayed log entries.
 class GoogleCloudPolicysimulatorV1beta1ReplayResultsSummary {
@@ -1803,43 +1715,7 @@ class GoogleIamV1AuditConfig {
 /// "exempted_members": \[ "user:jose@example.com" \] }, { "log_type":
 /// "DATA_WRITE" } \] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while
 /// exempting jose@example.com from DATA_READ logging.
-class GoogleIamV1AuditLogConfig {
-  /// Specifies the identities that do not cause logging for this type of
-  /// permission.
-  ///
-  /// Follows the same format of Binding.members.
-  core.List<core.String>? exemptedMembers;
-
-  /// The log type that this config enables.
-  /// Possible string values are:
-  /// - "LOG_TYPE_UNSPECIFIED" : Default case. Should never be this.
-  /// - "ADMIN_READ" : Admin reads. Example: CloudIAM getIamPolicy
-  /// - "DATA_WRITE" : Data writes. Example: CloudSQL Users create
-  /// - "DATA_READ" : Data reads. Example: CloudSQL Users list
-  core.String? logType;
-
-  GoogleIamV1AuditLogConfig({
-    this.exemptedMembers,
-    this.logType,
-  });
-
-  GoogleIamV1AuditLogConfig.fromJson(core.Map _json)
-      : this(
-          exemptedMembers: _json.containsKey('exemptedMembers')
-              ? (_json['exemptedMembers'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          logType: _json.containsKey('logType')
-              ? _json['logType'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (exemptedMembers != null) 'exemptedMembers': exemptedMembers!,
-        if (logType != null) 'logType': logType!,
-      };
-}
+typedef GoogleIamV1AuditLogConfig = $AuditLogConfig;
 
 /// Associates `members` with a `role`.
 class GoogleIamV1Binding {
@@ -1956,7 +1832,11 @@ class GoogleIamV1Policy {
   ///
   /// Optionally, may specify a `condition` that determines how and when the
   /// `bindings` are applied. Each of the `bindings` must contain at least one
-  /// member.
+  /// member. The `bindings` in a `Policy` can refer to up to 1,500 members; up
+  /// to 250 of these members can be Google groups. Each occurrence of a member
+  /// counts towards these limits. For example, if the `bindings` grant 50
+  /// different roles to `user:alice@example.com`, and not to any other member,
+  /// then you can add another 1,450 members to the `bindings` in the `Policy`.
   core.List<GoogleIamV1Binding>? bindings;
 
   /// `etag` is used for optimistic concurrency control as a way to help prevent
@@ -2148,49 +2028,7 @@ class GoogleLongrunningOperation {
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-class GoogleRpcStatus {
-  /// The status code, which should be an enum value of google.rpc.Code.
-  core.int? code;
-
-  /// A list of messages that carry the error details.
-  ///
-  /// There is a common set of message types for APIs to use.
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object?>>? details;
-
-  /// A developer-facing error message, which should be in English.
-  ///
-  /// Any user-facing error message should be localized and sent in the
-  /// google.rpc.Status.details field, or localized by the client.
-  core.String? message;
-
-  GoogleRpcStatus({
-    this.code,
-    this.details,
-    this.message,
-  });
-
-  GoogleRpcStatus.fromJson(core.Map _json)
-      : this(
-          code: _json.containsKey('code') ? _json['code'] as core.int : null,
-          details: _json.containsKey('details')
-              ? (_json['details'] as core.List)
-                  .map((value) => value as core.Map<core.String, core.dynamic>)
-                  .toList()
-              : null,
-          message: _json.containsKey('message')
-              ? _json['message'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (code != null) 'code': code!,
-        if (details != null) 'details': details!,
-        if (message != null) 'message': message!,
-      };
-}
+typedef GoogleRpcStatus = $Status;
 
 /// Represents a whole or partial calendar date, such as a birthday.
 ///
@@ -2201,42 +2039,7 @@ class GoogleRpcStatus {
 /// anniversary * A year on its own, with zero month and day values * A year and
 /// month value, with a zero day, such as a credit card expiration date Related
 /// types are google.type.TimeOfDay and `google.protobuf.Timestamp`.
-class GoogleTypeDate {
-  /// Day of a month.
-  ///
-  /// Must be from 1 to 31 and valid for the year and month, or 0 to specify a
-  /// year by itself or a year and month where the day isn't significant.
-  core.int? day;
-
-  /// Month of a year.
-  ///
-  /// Must be from 1 to 12, or 0 to specify a year without a month and day.
-  core.int? month;
-
-  /// Year of the date.
-  ///
-  /// Must be from 1 to 9999, or 0 to specify a date without a year.
-  core.int? year;
-
-  GoogleTypeDate({
-    this.day,
-    this.month,
-    this.year,
-  });
-
-  GoogleTypeDate.fromJson(core.Map _json)
-      : this(
-          day: _json.containsKey('day') ? _json['day'] as core.int : null,
-          month: _json.containsKey('month') ? _json['month'] as core.int : null,
-          year: _json.containsKey('year') ? _json['year'] as core.int : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (day != null) 'day': day!,
-        if (month != null) 'month': month!,
-        if (year != null) 'year': year!,
-      };
-}
+typedef GoogleTypeDate = $Date;
 
 /// Represents a textual expression in the Common Expression Language (CEL)
 /// syntax.
@@ -2256,58 +2059,4 @@ class GoogleTypeDate {
 /// functions that may be referenced within an expression are determined by the
 /// service that evaluates it. See the service documentation for additional
 /// information.
-class GoogleTypeExpr {
-  /// Description of the expression.
-  ///
-  /// This is a longer text which describes the expression, e.g. when hovered
-  /// over it in a UI.
-  ///
-  /// Optional.
-  core.String? description;
-
-  /// Textual representation of an expression in Common Expression Language
-  /// syntax.
-  core.String? expression;
-
-  /// String indicating the location of the expression for error reporting, e.g.
-  /// a file name and a position in the file.
-  ///
-  /// Optional.
-  core.String? location;
-
-  /// Title for the expression, i.e. a short string describing its purpose.
-  ///
-  /// This can be used e.g. in UIs which allow to enter the expression.
-  ///
-  /// Optional.
-  core.String? title;
-
-  GoogleTypeExpr({
-    this.description,
-    this.expression,
-    this.location,
-    this.title,
-  });
-
-  GoogleTypeExpr.fromJson(core.Map _json)
-      : this(
-          description: _json.containsKey('description')
-              ? _json['description'] as core.String
-              : null,
-          expression: _json.containsKey('expression')
-              ? _json['expression'] as core.String
-              : null,
-          location: _json.containsKey('location')
-              ? _json['location'] as core.String
-              : null,
-          title:
-              _json.containsKey('title') ? _json['title'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (description != null) 'description': description!,
-        if (expression != null) 'expression': expression!,
-        if (location != null) 'location': location!,
-        if (title != null) 'title': title!,
-      };
-}
+typedef GoogleTypeExpr = $Expr;

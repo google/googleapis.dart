@@ -35,7 +35,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-import '../src/empty.dart';
+import '../shared.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -1096,42 +1096,7 @@ class DailyCycle {
 /// anniversary * A year on its own, with zero month and day values * A year and
 /// month value, with a zero day, such as a credit card expiration date Related
 /// types are google.type.TimeOfDay and `google.protobuf.Timestamp`.
-class Date {
-  /// Day of a month.
-  ///
-  /// Must be from 1 to 31 and valid for the year and month, or 0 to specify a
-  /// year by itself or a year and month where the day isn't significant.
-  core.int? day;
-
-  /// Month of a year.
-  ///
-  /// Must be from 1 to 12, or 0 to specify a year without a month and day.
-  core.int? month;
-
-  /// Year of the date.
-  ///
-  /// Must be from 1 to 9999, or 0 to specify a date without a year.
-  core.int? year;
-
-  Date({
-    this.day,
-    this.month,
-    this.year,
-  });
-
-  Date.fromJson(core.Map _json)
-      : this(
-          day: _json.containsKey('day') ? _json['day'] as core.int : null,
-          month: _json.containsKey('month') ? _json['month'] as core.int : null,
-          year: _json.containsKey('year') ? _json['year'] as core.int : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (day != null) 'day': day!,
-        if (month != null) 'month': month!,
-        if (year != null) 'year': year!,
-      };
-}
+typedef Date = $Date;
 
 /// DenyMaintenancePeriod definition.
 ///
@@ -1500,73 +1465,8 @@ class GoogleCloudSaasacceleratorManagementProvidersV1Instance {
 
 /// Maintenance schedule which is exposed to customer and potentially end user,
 /// indicating published upcoming future maintenance schedule
-class GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule {
-  /// This field is deprecated, and will be always set to true since reschedule
-  /// can happen multiple times now.
-  ///
-  /// This field should not be removed until all service producers remove this
-  /// for their customers.
-  core.bool? canReschedule;
-
-  /// The scheduled end time for the maintenance.
-  core.String? endTime;
-
-  /// The rollout management policy this maintenance schedule is associated
-  /// with.
-  ///
-  /// When doing reschedule update request, the reschedule should be against
-  /// this given policy.
-  core.String? rolloutManagementPolicy;
-
-  /// schedule_deadline_time is the time deadline any schedule start time cannot
-  /// go beyond, including reschedule.
-  ///
-  /// It's normally the initial schedule start time plus maintenance window
-  /// length (1 day or 1 week). Maintenance cannot be scheduled to start beyond
-  /// this deadline.
-  core.String? scheduleDeadlineTime;
-
-  /// The scheduled start time for the maintenance.
-  core.String? startTime;
-
-  GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule({
-    this.canReschedule,
-    this.endTime,
-    this.rolloutManagementPolicy,
-    this.scheduleDeadlineTime,
-    this.startTime,
-  });
-
-  GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule.fromJson(
-      core.Map _json)
-      : this(
-          canReschedule: _json.containsKey('canReschedule')
-              ? _json['canReschedule'] as core.bool
-              : null,
-          endTime: _json.containsKey('endTime')
-              ? _json['endTime'] as core.String
-              : null,
-          rolloutManagementPolicy: _json.containsKey('rolloutManagementPolicy')
-              ? _json['rolloutManagementPolicy'] as core.String
-              : null,
-          scheduleDeadlineTime: _json.containsKey('scheduleDeadlineTime')
-              ? _json['scheduleDeadlineTime'] as core.String
-              : null,
-          startTime: _json.containsKey('startTime')
-              ? _json['startTime'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (canReschedule != null) 'canReschedule': canReschedule!,
-        if (endTime != null) 'endTime': endTime!,
-        if (rolloutManagementPolicy != null)
-          'rolloutManagementPolicy': rolloutManagementPolicy!,
-        if (scheduleDeadlineTime != null)
-          'scheduleDeadlineTime': scheduleDeadlineTime!,
-        if (startTime != null) 'startTime': startTime!,
-      };
-}
+typedef GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule
+    = $GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule;
 
 /// Maintenance settings associated with instance.
 ///
@@ -1728,77 +1628,14 @@ class GoogleCloudSaasacceleratorManagementProvidersV1PerSliSloEligibility {
 }
 
 /// Describes provisioned dataplane resources.
-class GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource {
-  /// Type of the resource.
-  ///
-  /// This can be either a GCP resource or a custom one (e.g. another cloud
-  /// provider's VM). For GCP compute resources use singular form of the names
-  /// listed in GCP compute API documentation
-  /// (https://cloud.google.com/compute/docs/reference/rest/v1/), prefixed with
-  /// 'compute-', for example: 'compute-instance', 'compute-disk',
-  /// 'compute-autoscaler'.
-  core.String? resourceType;
-
-  /// URL identifying the resource, e.g.
-  /// "https://www.googleapis.com/compute/v1/projects/...)".
-  core.String? resourceUrl;
-
-  GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource({
-    this.resourceType,
-    this.resourceUrl,
-  });
-
-  GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource.fromJson(
-      core.Map _json)
-      : this(
-          resourceType: _json.containsKey('resourceType')
-              ? _json['resourceType'] as core.String
-              : null,
-          resourceUrl: _json.containsKey('resourceUrl')
-              ? _json['resourceUrl'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (resourceType != null) 'resourceType': resourceType!,
-        if (resourceUrl != null) 'resourceUrl': resourceUrl!,
-      };
-}
+typedef GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource
+    = $GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource;
 
 /// SloEligibility is a tuple containing eligibility value: true if an instance
 /// is eligible for SLO calculation or false if it should be excluded from all
 /// SLO-related calculations along with a user-defined reason.
-class GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility {
-  /// Whether an instance is eligible or ineligible.
-  core.bool? eligible;
-
-  /// User-defined reason for the current value of instance eligibility.
-  ///
-  /// Usually, this can be directly mapped to the internal state. An empty
-  /// reason is allowed.
-  core.String? reason;
-
-  GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility({
-    this.eligible,
-    this.reason,
-  });
-
-  GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility.fromJson(
-      core.Map _json)
-      : this(
-          eligible: _json.containsKey('eligible')
-              ? _json['eligible'] as core.bool
-              : null,
-          reason: _json.containsKey('reason')
-              ? _json['reason'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (eligible != null) 'eligible': eligible!,
-        if (reason != null) 'reason': reason!,
-      };
-}
+typedef GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility
+    = $GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility;
 
 /// SloMetadata contains resources required for proper SLO classification of the
 /// instance.
@@ -2168,73 +2005,7 @@ class ListOperationsResponse {
 }
 
 /// A resource that represents Google Cloud Platform location.
-class Location {
-  /// The friendly name for this location, typically a nearby city name.
-  ///
-  /// For example, "Tokyo".
-  core.String? displayName;
-
-  /// Cross-service attributes for the location.
-  ///
-  /// For example {"cloud.googleapis.com/region": "us-east1"}
-  core.Map<core.String, core.String>? labels;
-
-  /// The canonical id for this location.
-  ///
-  /// For example: `"us-east1"`.
-  core.String? locationId;
-
-  /// Service-specific metadata.
-  ///
-  /// For example the available capacity at the given location.
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object?>? metadata;
-
-  /// Resource name for the location, which may vary between implementations.
-  ///
-  /// For example: `"projects/example-project/locations/us-east1"`
-  core.String? name;
-
-  Location({
-    this.displayName,
-    this.labels,
-    this.locationId,
-    this.metadata,
-    this.name,
-  });
-
-  Location.fromJson(core.Map _json)
-      : this(
-          displayName: _json.containsKey('displayName')
-              ? _json['displayName'] as core.String
-              : null,
-          labels: _json.containsKey('labels')
-              ? (_json['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.String,
-                  ),
-                )
-              : null,
-          locationId: _json.containsKey('locationId')
-              ? _json['locationId'] as core.String
-              : null,
-          metadata: _json.containsKey('metadata')
-              ? _json['metadata'] as core.Map<core.String, core.dynamic>
-              : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (displayName != null) 'displayName': displayName!,
-        if (labels != null) 'labels': labels!,
-        if (locationId != null) 'locationId': locationId!,
-        if (metadata != null) 'metadata': metadata!,
-        if (name != null) 'name': name!,
-      };
-}
+typedef Location = $Location00;
 
 /// Defines policies to service maintenance events.
 class MaintenancePolicy {
@@ -2594,89 +2365,7 @@ class Operation {
 }
 
 /// Represents the metadata of the long-running operation.
-class OperationMetadata {
-  /// API version used to start the operation.
-  ///
-  /// Output only.
-  core.String? apiVersion;
-
-  /// Identifies whether the user has requested cancellation of the operation.
-  ///
-  /// Operations that have been cancelled successfully have Operation.error
-  /// value with a google.rpc.Status.code of 1, corresponding to
-  /// `Code.CANCELLED`.
-  ///
-  /// Output only.
-  core.bool? cancelRequested;
-
-  /// The time the operation was created.
-  ///
-  /// Output only.
-  core.String? createTime;
-
-  /// The time the operation finished running.
-  ///
-  /// Output only.
-  core.String? endTime;
-
-  /// Human-readable status of the operation, if any.
-  ///
-  /// Output only.
-  core.String? statusDetail;
-
-  /// Server-defined resource path for the target of the operation.
-  ///
-  /// Output only.
-  core.String? target;
-
-  /// Name of the verb executed by the operation.
-  ///
-  /// Output only.
-  core.String? verb;
-
-  OperationMetadata({
-    this.apiVersion,
-    this.cancelRequested,
-    this.createTime,
-    this.endTime,
-    this.statusDetail,
-    this.target,
-    this.verb,
-  });
-
-  OperationMetadata.fromJson(core.Map _json)
-      : this(
-          apiVersion: _json.containsKey('apiVersion')
-              ? _json['apiVersion'] as core.String
-              : null,
-          cancelRequested: _json.containsKey('cancelRequested')
-              ? _json['cancelRequested'] as core.bool
-              : null,
-          createTime: _json.containsKey('createTime')
-              ? _json['createTime'] as core.String
-              : null,
-          endTime: _json.containsKey('endTime')
-              ? _json['endTime'] as core.String
-              : null,
-          statusDetail: _json.containsKey('statusDetail')
-              ? _json['statusDetail'] as core.String
-              : null,
-          target: _json.containsKey('target')
-              ? _json['target'] as core.String
-              : null,
-          verb: _json.containsKey('verb') ? _json['verb'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (apiVersion != null) 'apiVersion': apiVersion!,
-        if (cancelRequested != null) 'cancelRequested': cancelRequested!,
-        if (createTime != null) 'createTime': createTime!,
-        if (endTime != null) 'endTime': endTime!,
-        if (statusDetail != null) 'statusDetail': statusDetail!,
-        if (target != null) 'target': target!,
-        if (verb != null) 'verb': verb!,
-      };
-}
+typedef OperationMetadata = $OperationMetadata02;
 
 /// RestoreInstanceRequest restores an existing instances's file share from a
 /// backup.
@@ -2766,104 +2455,14 @@ class Schedule {
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-class Status {
-  /// The status code, which should be an enum value of google.rpc.Code.
-  core.int? code;
-
-  /// A list of messages that carry the error details.
-  ///
-  /// There is a common set of message types for APIs to use.
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object?>>? details;
-
-  /// A developer-facing error message, which should be in English.
-  ///
-  /// Any user-facing error message should be localized and sent in the
-  /// google.rpc.Status.details field, or localized by the client.
-  core.String? message;
-
-  Status({
-    this.code,
-    this.details,
-    this.message,
-  });
-
-  Status.fromJson(core.Map _json)
-      : this(
-          code: _json.containsKey('code') ? _json['code'] as core.int : null,
-          details: _json.containsKey('details')
-              ? (_json['details'] as core.List)
-                  .map((value) => value as core.Map<core.String, core.dynamic>)
-                  .toList()
-              : null,
-          message: _json.containsKey('message')
-              ? _json['message'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (code != null) 'code': code!,
-        if (details != null) 'details': details!,
-        if (message != null) 'message': message!,
-      };
-}
+typedef Status = $Status;
 
 /// Represents a time of day.
 ///
 /// The date and time zone are either not significant or are specified
 /// elsewhere. An API may choose to allow leap seconds. Related types are
 /// google.type.Date and `google.protobuf.Timestamp`.
-class TimeOfDay {
-  /// Hours of day in 24 hour format.
-  ///
-  /// Should be from 0 to 23. An API may choose to allow the value "24:00:00"
-  /// for scenarios like business closing time.
-  core.int? hours;
-
-  /// Minutes of hour of day.
-  ///
-  /// Must be from 0 to 59.
-  core.int? minutes;
-
-  /// Fractions of seconds in nanoseconds.
-  ///
-  /// Must be from 0 to 999,999,999.
-  core.int? nanos;
-
-  /// Seconds of minutes of the time.
-  ///
-  /// Must normally be from 0 to 59. An API may allow the value 60 if it allows
-  /// leap-seconds.
-  core.int? seconds;
-
-  TimeOfDay({
-    this.hours,
-    this.minutes,
-    this.nanos,
-    this.seconds,
-  });
-
-  TimeOfDay.fromJson(core.Map _json)
-      : this(
-          hours: _json.containsKey('hours') ? _json['hours'] as core.int : null,
-          minutes: _json.containsKey('minutes')
-              ? _json['minutes'] as core.int
-              : null,
-          nanos: _json.containsKey('nanos') ? _json['nanos'] as core.int : null,
-          seconds: _json.containsKey('seconds')
-              ? _json['seconds'] as core.int
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (hours != null) 'hours': hours!,
-        if (minutes != null) 'minutes': minutes!,
-        if (nanos != null) 'nanos': nanos!,
-        if (seconds != null) 'seconds': seconds!,
-      };
-}
+typedef TimeOfDay = $TimeOfDay;
 
 /// Maintenance policy applicable to instance updates.
 class UpdatePolicy {

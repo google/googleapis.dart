@@ -52,7 +52,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-import '../src/empty.dart';
+import '../shared.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -5831,27 +5831,7 @@ class Exemplar {
 /// one element. If bounds has only one element, then there are no finite
 /// buckets, and that single element is the common boundary of the overflow and
 /// underflow buckets.
-class Explicit {
-  /// The values must be monotonically increasing.
-  core.List<core.double>? bounds;
-
-  Explicit({
-    this.bounds,
-  });
-
-  Explicit.fromJson(core.Map _json)
-      : this(
-          bounds: _json.containsKey('bounds')
-              ? (_json['bounds'] as core.List)
-                  .map((value) => (value as core.num).toDouble())
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (bounds != null) 'bounds': bounds!,
-      };
-}
+typedef Explicit = $Explicit;
 
 /// Specifies an exponential sequence of buckets that have a width that is
 /// proportional to the value of the lower bound.
@@ -5860,41 +5840,7 @@ class Explicit {
 /// in the bucket.There are num_finite_buckets + 2 (= N) buckets. Bucket i has
 /// the following boundaries:Upper bound (0 <= i < N-1): scale * (growth_factor
 /// ^ i). Lower bound (1 <= i < N): scale * (growth_factor ^ (i - 1)).
-class Exponential {
-  /// Must be greater than 1.
-  core.double? growthFactor;
-
-  /// Must be greater than 0.
-  core.int? numFiniteBuckets;
-
-  /// Must be greater than 0.
-  core.double? scale;
-
-  Exponential({
-    this.growthFactor,
-    this.numFiniteBuckets,
-    this.scale,
-  });
-
-  Exponential.fromJson(core.Map _json)
-      : this(
-          growthFactor: _json.containsKey('growthFactor')
-              ? (_json['growthFactor'] as core.num).toDouble()
-              : null,
-          numFiniteBuckets: _json.containsKey('numFiniteBuckets')
-              ? _json['numFiniteBuckets'] as core.int
-              : null,
-          scale: _json.containsKey('scale')
-              ? (_json['scale'] as core.num).toDouble()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (growthFactor != null) 'growthFactor': growthFactor!,
-        if (numFiniteBuckets != null) 'numFiniteBuckets': numFiniteBuckets!,
-        if (scale != null) 'scale': scale!,
-      };
-}
+typedef Exponential = $Exponential;
 
 /// A single field of a message type.
 class Field {
@@ -6599,41 +6545,7 @@ class LatencyCriteria {
 /// in the bucket.There are num_finite_buckets + 2 (= N) buckets. Bucket i has
 /// the following boundaries:Upper bound (0 <= i < N-1): offset + (width * i).
 /// Lower bound (1 <= i < N): offset + (width * (i - 1)).
-class Linear {
-  /// Must be greater than 0.
-  core.int? numFiniteBuckets;
-
-  /// Lower bound of the first bucket.
-  core.double? offset;
-
-  /// Must be greater than 0.
-  core.double? width;
-
-  Linear({
-    this.numFiniteBuckets,
-    this.offset,
-    this.width,
-  });
-
-  Linear.fromJson(core.Map _json)
-      : this(
-          numFiniteBuckets: _json.containsKey('numFiniteBuckets')
-              ? _json['numFiniteBuckets'] as core.int
-              : null,
-          offset: _json.containsKey('offset')
-              ? (_json['offset'] as core.num).toDouble()
-              : null,
-          width: _json.containsKey('width')
-              ? (_json['width'] as core.num).toDouble()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (numFiniteBuckets != null) 'numFiniteBuckets': numFiniteBuckets!,
-        if (offset != null) 'offset': offset!,
-        if (width != null) 'width': width!,
-      };
-}
+typedef Linear = $Linear;
 
 /// The protocol for the ListAlertPolicies response.
 class ListAlertPoliciesResponse {
@@ -7604,82 +7516,7 @@ class MetricDescriptor {
 }
 
 /// Additional annotations that can be used to guide the usage of a metric.
-class MetricDescriptorMetadata {
-  /// The delay of data points caused by ingestion.
-  ///
-  /// Data points older than this age are guaranteed to be ingested and
-  /// available to be read, excluding data loss due to errors.
-  core.String? ingestDelay;
-
-  /// Must use the MetricDescriptor.launch_stage instead.
-  ///
-  /// Deprecated.
-  /// Possible string values are:
-  /// - "LAUNCH_STAGE_UNSPECIFIED" : Do not use this default value.
-  /// - "UNIMPLEMENTED" : The feature is not yet implemented. Users can not use
-  /// it.
-  /// - "PRELAUNCH" : Prelaunch features are hidden from users and are only
-  /// visible internally.
-  /// - "EARLY_ACCESS" : Early Access features are limited to a closed group of
-  /// testers. To use these features, you must sign up in advance and sign a
-  /// Trusted Tester agreement (which includes confidentiality provisions).
-  /// These features may be unstable, changed in backward-incompatible ways, and
-  /// are not guaranteed to be released.
-  /// - "ALPHA" : Alpha is a limited availability test for releases before they
-  /// are cleared for widespread use. By Alpha, all significant design issues
-  /// are resolved and we are in the process of verifying functionality. Alpha
-  /// customers need to apply for access, agree to applicable terms, and have
-  /// their projects allowlisted. Alpha releases don’t have to be feature
-  /// complete, no SLAs are provided, and there are no technical support
-  /// obligations, but they will be far enough along that customers can actually
-  /// use them in test environments or for limited-use tests -- just like they
-  /// would in normal production cases.
-  /// - "BETA" : Beta is the point at which we are ready to open a release for
-  /// any customer to use. There are no SLA or technical support obligations in
-  /// a Beta release. Products will be complete from a feature perspective, but
-  /// may have some open outstanding issues. Beta releases are suitable for
-  /// limited production use cases.
-  /// - "GA" : GA features are open to all developers and are considered stable
-  /// and fully qualified for production use.
-  /// - "DEPRECATED" : Deprecated features are scheduled to be shut down and
-  /// removed. For more information, see the “Deprecation Policy” section of our
-  /// Terms of Service (https://cloud.google.com/terms/) and the Google Cloud
-  /// Platform Subject to the Deprecation Policy
-  /// (https://cloud.google.com/terms/deprecation) documentation.
-  core.String? launchStage;
-
-  /// The sampling period of metric data points.
-  ///
-  /// For metrics which are written periodically, consecutive data points are
-  /// stored at this time interval, excluding data loss due to errors. Metrics
-  /// with a higher granularity have a smaller sampling period.
-  core.String? samplePeriod;
-
-  MetricDescriptorMetadata({
-    this.ingestDelay,
-    this.launchStage,
-    this.samplePeriod,
-  });
-
-  MetricDescriptorMetadata.fromJson(core.Map _json)
-      : this(
-          ingestDelay: _json.containsKey('ingestDelay')
-              ? _json['ingestDelay'] as core.String
-              : null,
-          launchStage: _json.containsKey('launchStage')
-              ? _json['launchStage'] as core.String
-              : null,
-          samplePeriod: _json.containsKey('samplePeriod')
-              ? _json['samplePeriod'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (ingestDelay != null) 'ingestDelay': ingestDelay!,
-        if (launchStage != null) 'launchStage': launchStage!,
-        if (samplePeriod != null) 'samplePeriod': samplePeriod!,
-      };
-}
+typedef MetricDescriptorMetadata = $MetricDescriptorMetadata01;
 
 /// A MetricRange is used when each window is good when the value x of a single
 /// TimeSeries satisfies range.min <= x <= range.max.
@@ -8069,52 +7906,7 @@ class MonitoredResourceDescriptor {
 /// metadata. Monitoring and Logging use an ingestion pipeline to extract
 /// metadata for cloud resources of all types, and store the metadata in this
 /// message.
-class MonitoredResourceMetadata {
-  /// Values for predefined system metadata labels.
-  ///
-  /// System labels are a kind of metadata extracted by Google, including
-  /// "machine_image", "vpc", "subnet_id", "security_group", "name", etc. System
-  /// label values can be only strings, Boolean values, or a list of strings.
-  /// For example: { "name": "my-test-instance", "security_group": \["a", "b",
-  /// "c"\], "spot_instance": false }
-  ///
-  /// Output only.
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object?>? systemLabels;
-
-  /// A map of user-defined metadata labels.
-  ///
-  /// Output only.
-  core.Map<core.String, core.String>? userLabels;
-
-  MonitoredResourceMetadata({
-    this.systemLabels,
-    this.userLabels,
-  });
-
-  MonitoredResourceMetadata.fromJson(core.Map _json)
-      : this(
-          systemLabels: _json.containsKey('systemLabels')
-              ? _json['systemLabels'] as core.Map<core.String, core.dynamic>
-              : null,
-          userLabels: _json.containsKey('userLabels')
-              ? (_json['userLabels'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.String,
-                  ),
-                )
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (systemLabels != null) 'systemLabels': systemLabels!,
-        if (userLabels != null) 'userLabels': userLabels!,
-      };
-}
+typedef MonitoredResourceMetadata = $MonitoredResourceMetadata;
 
 /// A condition type that allows alert policies to be defined using Monitoring
 /// Query Language (https://cloud.google.com/monitoring/mql).
@@ -9267,49 +9059,7 @@ class SpanContext {
 /// three pieces of data: error code, error message, and error details.You can
 /// find out more about this error model and how to work with it in the API
 /// Design Guide (https://cloud.google.com/apis/design/errors).
-class Status {
-  /// The status code, which should be an enum value of google.rpc.Code.
-  core.int? code;
-
-  /// A list of messages that carry the error details.
-  ///
-  /// There is a common set of message types for APIs to use.
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object?>>? details;
-
-  /// A developer-facing error message, which should be in English.
-  ///
-  /// Any user-facing error message should be localized and sent in the
-  /// google.rpc.Status.details field, or localized by the client.
-  core.String? message;
-
-  Status({
-    this.code,
-    this.details,
-    this.message,
-  });
-
-  Status.fromJson(core.Map _json)
-      : this(
-          code: _json.containsKey('code') ? _json['code'] as core.int : null,
-          details: _json.containsKey('details')
-              ? (_json['details'] as core.List)
-                  .map((value) => value as core.Map<core.String, core.dynamic>)
-                  .toList()
-              : null,
-          message: _json.containsKey('message')
-              ? _json['message'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (code != null) 'code': code!,
-        if (details != null) 'details': details!,
-        if (message != null) 'message': message!,
-      };
-}
+typedef Status = $Status;
 
 /// Information required for a TCP Uptime check request.
 class TcpCheck {

@@ -40,7 +40,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-import '../src/empty.dart';
+import '../shared.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -3024,49 +3024,7 @@ class ShaCertificate {
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-class Status {
-  /// The status code, which should be an enum value of google.rpc.Code.
-  core.int? code;
-
-  /// A list of messages that carry the error details.
-  ///
-  /// There is a common set of message types for APIs to use.
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object?>>? details;
-
-  /// A developer-facing error message, which should be in English.
-  ///
-  /// Any user-facing error message should be localized and sent in the
-  /// google.rpc.Status.details field, or localized by the client.
-  core.String? message;
-
-  Status({
-    this.code,
-    this.details,
-    this.message,
-  });
-
-  Status.fromJson(core.Map _json)
-      : this(
-          code: _json.containsKey('code') ? _json['code'] as core.int : null,
-          details: _json.containsKey('details')
-              ? (_json['details'] as core.List)
-                  .map((value) => value as core.Map<core.String, core.dynamic>)
-                  .toList()
-              : null,
-          message: _json.containsKey('message')
-              ? _json['message'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (code != null) 'code': code!,
-        if (details != null) 'details': details!,
-        if (message != null) 'message': message!,
-      };
-}
+typedef Status = $Status;
 
 /// Wire-format for a Status object
 class StatusProto {
@@ -3142,7 +3100,7 @@ class StreamMapping {
   /// associated with the Firebase Web App. Firebase SDKs use this ID to
   /// interact with Google Analytics APIs. Learn more about this ID and Google
   /// Analytics web streams in the
-  /// [Analytics documentation](https://support.google.com/analytics/topic/9303475).
+  /// [Analytics documentation](https://support.google.com/analytics/answer/9304153).
   core.String? measurementId;
 
   /// The unique Google-assigned identifier of the Google Analytics data stream
@@ -3295,7 +3253,7 @@ class WebAppConfig {
   /// field is only present if the `WebApp` is linked to a web stream in a
   /// Google Analytics App + Web property. Learn more about this ID and Google
   /// Analytics web streams in the
-  /// [Analytics documentation](https://support.google.com/analytics/topic/9303475).
+  /// [Analytics documentation](https://support.google.com/analytics/answer/9304153).
   /// To generate a `measurementId` and link the `WebApp` with a Google
   /// Analytics web stream, call
   /// \[`AddGoogleAnalytics`\](../../v1beta1/projects/addGoogleAnalytics). For

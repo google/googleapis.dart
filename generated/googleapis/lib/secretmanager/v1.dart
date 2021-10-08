@@ -34,7 +34,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-import '../src/empty.dart';
+import '../shared.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -981,43 +981,7 @@ class AuditConfig {
 /// "exempted_members": \[ "user:jose@example.com" \] }, { "log_type":
 /// "DATA_WRITE" } \] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while
 /// exempting jose@example.com from DATA_READ logging.
-class AuditLogConfig {
-  /// Specifies the identities that do not cause logging for this type of
-  /// permission.
-  ///
-  /// Follows the same format of Binding.members.
-  core.List<core.String>? exemptedMembers;
-
-  /// The log type that this config enables.
-  /// Possible string values are:
-  /// - "LOG_TYPE_UNSPECIFIED" : Default case. Should never be this.
-  /// - "ADMIN_READ" : Admin reads. Example: CloudIAM getIamPolicy
-  /// - "DATA_WRITE" : Data writes. Example: CloudSQL Users create
-  /// - "DATA_READ" : Data reads. Example: CloudSQL Users list
-  core.String? logType;
-
-  AuditLogConfig({
-    this.exemptedMembers,
-    this.logType,
-  });
-
-  AuditLogConfig.fromJson(core.Map _json)
-      : this(
-          exemptedMembers: _json.containsKey('exemptedMembers')
-              ? (_json['exemptedMembers'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          logType: _json.containsKey('logType')
-              ? _json['logType'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (exemptedMembers != null) 'exemptedMembers': exemptedMembers!,
-        if (logType != null) 'logType': logType!,
-      };
-}
+typedef AuditLogConfig = $AuditLogConfig;
 
 /// A replication policy that replicates the Secret payload without any
 /// restrictions.
@@ -1216,52 +1180,10 @@ class CustomerManagedEncryptionStatus {
 }
 
 /// Request message for SecretManagerService.DestroySecretVersion.
-class DestroySecretVersionRequest {
-  /// Etag of the SecretVersion.
-  ///
-  /// The request succeeds if it matches the etag of the currently stored secret
-  /// version object. If the etag is omitted, the request succeeds.
-  ///
-  /// Optional.
-  core.String? etag;
-
-  DestroySecretVersionRequest({
-    this.etag,
-  });
-
-  DestroySecretVersionRequest.fromJson(core.Map _json)
-      : this(
-          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (etag != null) 'etag': etag!,
-      };
-}
+typedef DestroySecretVersionRequest = $SecretVersionRequest;
 
 /// Request message for SecretManagerService.DisableSecretVersion.
-class DisableSecretVersionRequest {
-  /// Etag of the SecretVersion.
-  ///
-  /// The request succeeds if it matches the etag of the currently stored secret
-  /// version object. If the etag is omitted, the request succeeds.
-  ///
-  /// Optional.
-  core.String? etag;
-
-  DisableSecretVersionRequest({
-    this.etag,
-  });
-
-  DisableSecretVersionRequest.fromJson(core.Map _json)
-      : this(
-          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (etag != null) 'etag': etag!,
-      };
-}
+typedef DisableSecretVersionRequest = $SecretVersionRequest;
 
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs.
@@ -1273,28 +1195,7 @@ class DisableSecretVersionRequest {
 typedef Empty = $Empty;
 
 /// Request message for SecretManagerService.EnableSecretVersion.
-class EnableSecretVersionRequest {
-  /// Etag of the SecretVersion.
-  ///
-  /// The request succeeds if it matches the etag of the currently stored secret
-  /// version object. If the etag is omitted, the request succeeds.
-  ///
-  /// Optional.
-  core.String? etag;
-
-  EnableSecretVersionRequest({
-    this.etag,
-  });
-
-  EnableSecretVersionRequest.fromJson(core.Map _json)
-      : this(
-          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (etag != null) 'etag': etag!,
-      };
-}
+typedef EnableSecretVersionRequest = $SecretVersionRequest;
 
 /// Represents a textual expression in the Common Expression Language (CEL)
 /// syntax.
@@ -1314,61 +1215,7 @@ class EnableSecretVersionRequest {
 /// functions that may be referenced within an expression are determined by the
 /// service that evaluates it. See the service documentation for additional
 /// information.
-class Expr {
-  /// Description of the expression.
-  ///
-  /// This is a longer text which describes the expression, e.g. when hovered
-  /// over it in a UI.
-  ///
-  /// Optional.
-  core.String? description;
-
-  /// Textual representation of an expression in Common Expression Language
-  /// syntax.
-  core.String? expression;
-
-  /// String indicating the location of the expression for error reporting, e.g.
-  /// a file name and a position in the file.
-  ///
-  /// Optional.
-  core.String? location;
-
-  /// Title for the expression, i.e. a short string describing its purpose.
-  ///
-  /// This can be used e.g. in UIs which allow to enter the expression.
-  ///
-  /// Optional.
-  core.String? title;
-
-  Expr({
-    this.description,
-    this.expression,
-    this.location,
-    this.title,
-  });
-
-  Expr.fromJson(core.Map _json)
-      : this(
-          description: _json.containsKey('description')
-              ? _json['description'] as core.String
-              : null,
-          expression: _json.containsKey('expression')
-              ? _json['expression'] as core.String
-              : null,
-          location: _json.containsKey('location')
-              ? _json['location'] as core.String
-              : null,
-          title:
-              _json.containsKey('title') ? _json['title'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (description != null) 'description': description!,
-        if (expression != null) 'expression': expression!,
-        if (location != null) 'location': location!,
-        if (title != null) 'title': title!,
-      };
-}
+typedef Expr = $Expr;
 
 /// The response message for Locations.ListLocations.
 class ListLocationsResponse {
@@ -1490,73 +1337,7 @@ class ListSecretsResponse {
 }
 
 /// A resource that represents Google Cloud Platform location.
-class Location {
-  /// The friendly name for this location, typically a nearby city name.
-  ///
-  /// For example, "Tokyo".
-  core.String? displayName;
-
-  /// Cross-service attributes for the location.
-  ///
-  /// For example {"cloud.googleapis.com/region": "us-east1"}
-  core.Map<core.String, core.String>? labels;
-
-  /// The canonical id for this location.
-  ///
-  /// For example: `"us-east1"`.
-  core.String? locationId;
-
-  /// Service-specific metadata.
-  ///
-  /// For example the available capacity at the given location.
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object?>? metadata;
-
-  /// Resource name for the location, which may vary between implementations.
-  ///
-  /// For example: `"projects/example-project/locations/us-east1"`
-  core.String? name;
-
-  Location({
-    this.displayName,
-    this.labels,
-    this.locationId,
-    this.metadata,
-    this.name,
-  });
-
-  Location.fromJson(core.Map _json)
-      : this(
-          displayName: _json.containsKey('displayName')
-              ? _json['displayName'] as core.String
-              : null,
-          labels: _json.containsKey('labels')
-              ? (_json['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.String,
-                  ),
-                )
-              : null,
-          locationId: _json.containsKey('locationId')
-              ? _json['locationId'] as core.String
-              : null,
-          metadata: _json.containsKey('metadata')
-              ? _json['metadata'] as core.Map<core.String, core.dynamic>
-              : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (displayName != null) 'displayName': displayName!,
-        if (labels != null) 'labels': labels!,
-        if (locationId != null) 'locationId': locationId!,
-        if (metadata != null) 'metadata': metadata!,
-        if (name != null) 'name': name!,
-      };
-}
+typedef Location = $Location00;
 
 /// An Identity and Access Management (IAM) policy, which specifies access
 /// controls for Google Cloud resources.
@@ -1597,7 +1378,11 @@ class Policy {
   ///
   /// Optionally, may specify a `condition` that determines how and when the
   /// `bindings` are applied. Each of the `bindings` must contain at least one
-  /// member.
+  /// member. The `bindings` in a `Policy` can refer to up to 1,500 members; up
+  /// to 250 of these members can be Google groups. Each occurrence of a member
+  /// counts towards these limits. For example, if the `bindings` grant 50
+  /// different roles to `user:alice@example.com`, and not to any other member,
+  /// then you can add another 1,450 members to the `bindings` in the `Policy`.
   core.List<Binding>? bindings;
 
   /// `etag` is used for optimistic concurrency control as a way to help prevent
@@ -2143,55 +1928,10 @@ class SetIamPolicyRequest {
 }
 
 /// Request message for `TestIamPermissions` method.
-class TestIamPermissionsRequest {
-  /// The set of permissions to check for the `resource`.
-  ///
-  /// Permissions with wildcards (such as '*' or 'storage.*') are not allowed.
-  /// For more information see
-  /// [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).
-  core.List<core.String>? permissions;
-
-  TestIamPermissionsRequest({
-    this.permissions,
-  });
-
-  TestIamPermissionsRequest.fromJson(core.Map _json)
-      : this(
-          permissions: _json.containsKey('permissions')
-              ? (_json['permissions'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (permissions != null) 'permissions': permissions!,
-      };
-}
+typedef TestIamPermissionsRequest = $TestIamPermissionsRequest;
 
 /// Response message for `TestIamPermissions` method.
-class TestIamPermissionsResponse {
-  /// A subset of `TestPermissionsRequest.permissions` that the caller is
-  /// allowed.
-  core.List<core.String>? permissions;
-
-  TestIamPermissionsResponse({
-    this.permissions,
-  });
-
-  TestIamPermissionsResponse.fromJson(core.Map _json)
-      : this(
-          permissions: _json.containsKey('permissions')
-              ? (_json['permissions'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (permissions != null) 'permissions': permissions!,
-      };
-}
+typedef TestIamPermissionsResponse = $PermissionsResponse;
 
 /// A Pub/Sub topic which Secret Manager will publish to when control plane
 /// events occur on this secret.

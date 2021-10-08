@@ -105,7 +105,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-import '../src/empty.dart';
+import '../shared.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -11701,53 +11701,7 @@ class EdgeConfigstoreBundleBadBundleViolation {
 /// (stream google.api.HttpBody); } Use of this type only changes how the
 /// request and response bodies are handled, all other features will continue to
 /// work unchanged.
-class GoogleApiHttpBody {
-  /// The HTTP Content-Type header value specifying the content type of the
-  /// body.
-  core.String? contentType;
-
-  /// The HTTP request/response body as raw binary.
-  core.String? data;
-  core.List<core.int> get dataAsBytes => convert.base64.decode(data!);
-
-  set dataAsBytes(core.List<core.int> _bytes) {
-    data =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
-  }
-
-  /// Application specific response metadata.
-  ///
-  /// Must be set in the first response for streaming APIs.
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object?>>? extensions;
-
-  GoogleApiHttpBody({
-    this.contentType,
-    this.data,
-    this.extensions,
-  });
-
-  GoogleApiHttpBody.fromJson(core.Map _json)
-      : this(
-          contentType: _json.containsKey('contentType')
-              ? _json['contentType'] as core.String
-              : null,
-          data: _json.containsKey('data') ? _json['data'] as core.String : null,
-          extensions: _json.containsKey('extensions')
-              ? (_json['extensions'] as core.List)
-                  .map((value) => value as core.Map<core.String, core.dynamic>)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (contentType != null) 'contentType': contentType!,
-        if (data != null) 'data': data!,
-        if (extensions != null) 'extensions': extensions!,
-      };
-}
+typedef GoogleApiHttpBody = $HttpBody;
 
 class GoogleCloudApigeeV1Access {
   GoogleCloudApigeeV1AccessGet? Get;
@@ -20307,45 +20261,7 @@ class GoogleCloudApigeeV1RuntimeTraceConfigOverride {
 ///
 /// Only the fields that are defined in the distributed trace configuration can
 /// be overridden using the distribute trace configuration override APIs.
-class GoogleCloudApigeeV1RuntimeTraceSamplingConfig {
-  /// Sampler of distributed tracing.
-  ///
-  /// OFF is the default value.
-  /// Possible string values are:
-  /// - "SAMPLER_UNSPECIFIED" : Sampler unspecified.
-  /// - "OFF" : OFF means distributed trace is disabled, or the sampling
-  /// probability is 0.
-  /// - "PROBABILITY" : PROBABILITY means traces are captured on a probability
-  /// that defined by sampling_rate. The sampling rate is limited to 0 to 0.5
-  /// when this is set.
-  core.String? sampler;
-
-  /// Field sampling rate.
-  ///
-  /// This value is only applicable when using the PROBABILITY sampler. The
-  /// supported values are > 0 and <= 0.5.
-  core.double? samplingRate;
-
-  GoogleCloudApigeeV1RuntimeTraceSamplingConfig({
-    this.sampler,
-    this.samplingRate,
-  });
-
-  GoogleCloudApigeeV1RuntimeTraceSamplingConfig.fromJson(core.Map _json)
-      : this(
-          sampler: _json.containsKey('sampler')
-              ? _json['sampler'] as core.String
-              : null,
-          samplingRate: _json.containsKey('samplingRate')
-              ? (_json['samplingRate'] as core.num).toDouble()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (sampler != null) 'sampler': sampler!,
-        if (samplingRate != null) 'samplingRate': samplingRate!,
-      };
-}
+typedef GoogleCloudApigeeV1RuntimeTraceSamplingConfig = $TraceSamplingConfig;
 
 /// Response for Schema call
 class GoogleCloudApigeeV1Schema {
@@ -21505,45 +21421,7 @@ class GoogleCloudApigeeV1TraceConfigOverride {
 ///
 /// Only the fields that are defined in the distributed trace configuration can
 /// be overridden using the distribute trace configuration override APIs.
-class GoogleCloudApigeeV1TraceSamplingConfig {
-  /// Sampler of distributed tracing.
-  ///
-  /// OFF is the default value.
-  /// Possible string values are:
-  /// - "SAMPLER_UNSPECIFIED" : Sampler unspecified.
-  /// - "OFF" : OFF means distributed trace is disabled, or the sampling
-  /// probability is 0.
-  /// - "PROBABILITY" : PROBABILITY means traces are captured on a probability
-  /// that defined by sampling_rate. The sampling rate is limited to 0 to 0.5
-  /// when this is set.
-  core.String? sampler;
-
-  /// Field sampling rate.
-  ///
-  /// This value is only applicable when using the PROBABILITY sampler. The
-  /// supported values are > 0 and <= 0.5.
-  core.double? samplingRate;
-
-  GoogleCloudApigeeV1TraceSamplingConfig({
-    this.sampler,
-    this.samplingRate,
-  });
-
-  GoogleCloudApigeeV1TraceSamplingConfig.fromJson(core.Map _json)
-      : this(
-          sampler: _json.containsKey('sampler')
-              ? _json['sampler'] as core.String
-              : null,
-          samplingRate: _json.containsKey('samplingRate')
-              ? (_json['samplingRate'] as core.num).toDouble()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (sampler != null) 'sampler': sampler!,
-        if (samplingRate != null) 'samplingRate': samplingRate!,
-      };
-}
+typedef GoogleCloudApigeeV1TraceSamplingConfig = $TraceSamplingConfig;
 
 /// Details on why a resource update failed in the runtime.
 class GoogleCloudApigeeV1UpdateError {
@@ -21729,43 +21607,7 @@ class GoogleIamV1AuditConfig {
 /// "exempted_members": \[ "user:jose@example.com" \] }, { "log_type":
 /// "DATA_WRITE" } \] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while
 /// exempting jose@example.com from DATA_READ logging.
-class GoogleIamV1AuditLogConfig {
-  /// Specifies the identities that do not cause logging for this type of
-  /// permission.
-  ///
-  /// Follows the same format of Binding.members.
-  core.List<core.String>? exemptedMembers;
-
-  /// The log type that this config enables.
-  /// Possible string values are:
-  /// - "LOG_TYPE_UNSPECIFIED" : Default case. Should never be this.
-  /// - "ADMIN_READ" : Admin reads. Example: CloudIAM getIamPolicy
-  /// - "DATA_WRITE" : Data writes. Example: CloudSQL Users create
-  /// - "DATA_READ" : Data reads. Example: CloudSQL Users list
-  core.String? logType;
-
-  GoogleIamV1AuditLogConfig({
-    this.exemptedMembers,
-    this.logType,
-  });
-
-  GoogleIamV1AuditLogConfig.fromJson(core.Map _json)
-      : this(
-          exemptedMembers: _json.containsKey('exemptedMembers')
-              ? (_json['exemptedMembers'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          logType: _json.containsKey('logType')
-              ? _json['logType'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (exemptedMembers != null) 'exemptedMembers': exemptedMembers!,
-        if (logType != null) 'logType': logType!,
-      };
-}
+typedef GoogleIamV1AuditLogConfig = $AuditLogConfig;
 
 /// Associates `members` with a `role`.
 class GoogleIamV1Binding {
@@ -21882,7 +21724,11 @@ class GoogleIamV1Policy {
   ///
   /// Optionally, may specify a `condition` that determines how and when the
   /// `bindings` are applied. Each of the `bindings` must contain at least one
-  /// member.
+  /// member. The `bindings` in a `Policy` can refer to up to 1,500 members; up
+  /// to 250 of these members can be Google groups. Each occurrence of a member
+  /// counts towards these limits. For example, if the `bindings` grant 50
+  /// different roles to `user:alice@example.com`, and not to any other member,
+  /// then you can add another 1,450 members to the `bindings` in the `Policy`.
   core.List<GoogleIamV1Binding>? bindings;
 
   /// `etag` is used for optimistic concurrency control as a way to help prevent
@@ -21997,55 +21843,10 @@ class GoogleIamV1SetIamPolicyRequest {
 }
 
 /// Request message for `TestIamPermissions` method.
-class GoogleIamV1TestIamPermissionsRequest {
-  /// The set of permissions to check for the `resource`.
-  ///
-  /// Permissions with wildcards (such as '*' or 'storage.*') are not allowed.
-  /// For more information see
-  /// [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).
-  core.List<core.String>? permissions;
-
-  GoogleIamV1TestIamPermissionsRequest({
-    this.permissions,
-  });
-
-  GoogleIamV1TestIamPermissionsRequest.fromJson(core.Map _json)
-      : this(
-          permissions: _json.containsKey('permissions')
-              ? (_json['permissions'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (permissions != null) 'permissions': permissions!,
-      };
-}
+typedef GoogleIamV1TestIamPermissionsRequest = $TestIamPermissionsRequest;
 
 /// Response message for `TestIamPermissions` method.
-class GoogleIamV1TestIamPermissionsResponse {
-  /// A subset of `TestPermissionsRequest.permissions` that the caller is
-  /// allowed.
-  core.List<core.String>? permissions;
-
-  GoogleIamV1TestIamPermissionsResponse({
-    this.permissions,
-  });
-
-  GoogleIamV1TestIamPermissionsResponse.fromJson(core.Map _json)
-      : this(
-          permissions: _json.containsKey('permissions')
-              ? (_json['permissions'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (permissions != null) 'permissions': permissions!,
-      };
-}
+typedef GoogleIamV1TestIamPermissionsResponse = $PermissionsResponse;
 
 /// The response message for Operations.ListOperations.
 class GoogleLongrunningListOperationsResponse {
@@ -22245,49 +22046,7 @@ class GoogleRpcPreconditionFailureViolation {
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-class GoogleRpcStatus {
-  /// The status code, which should be an enum value of google.rpc.Code.
-  core.int? code;
-
-  /// A list of messages that carry the error details.
-  ///
-  /// There is a common set of message types for APIs to use.
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object?>>? details;
-
-  /// A developer-facing error message, which should be in English.
-  ///
-  /// Any user-facing error message should be localized and sent in the
-  /// google.rpc.Status.details field, or localized by the client.
-  core.String? message;
-
-  GoogleRpcStatus({
-    this.code,
-    this.details,
-    this.message,
-  });
-
-  GoogleRpcStatus.fromJson(core.Map _json)
-      : this(
-          code: _json.containsKey('code') ? _json['code'] as core.int : null,
-          details: _json.containsKey('details')
-              ? (_json['details'] as core.List)
-                  .map((value) => value as core.Map<core.String, core.dynamic>)
-                  .toList()
-              : null,
-          message: _json.containsKey('message')
-              ? _json['message'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (code != null) 'code': code!,
-        if (details != null) 'details': details!,
-        if (message != null) 'message': message!,
-      };
-}
+typedef GoogleRpcStatus = $Status;
 
 /// Represents a textual expression in the Common Expression Language (CEL)
 /// syntax.
@@ -22307,100 +22066,7 @@ class GoogleRpcStatus {
 /// functions that may be referenced within an expression are determined by the
 /// service that evaluates it. See the service documentation for additional
 /// information.
-class GoogleTypeExpr {
-  /// Description of the expression.
-  ///
-  /// This is a longer text which describes the expression, e.g. when hovered
-  /// over it in a UI.
-  ///
-  /// Optional.
-  core.String? description;
-
-  /// Textual representation of an expression in Common Expression Language
-  /// syntax.
-  core.String? expression;
-
-  /// String indicating the location of the expression for error reporting, e.g.
-  /// a file name and a position in the file.
-  ///
-  /// Optional.
-  core.String? location;
-
-  /// Title for the expression, i.e. a short string describing its purpose.
-  ///
-  /// This can be used e.g. in UIs which allow to enter the expression.
-  ///
-  /// Optional.
-  core.String? title;
-
-  GoogleTypeExpr({
-    this.description,
-    this.expression,
-    this.location,
-    this.title,
-  });
-
-  GoogleTypeExpr.fromJson(core.Map _json)
-      : this(
-          description: _json.containsKey('description')
-              ? _json['description'] as core.String
-              : null,
-          expression: _json.containsKey('expression')
-              ? _json['expression'] as core.String
-              : null,
-          location: _json.containsKey('location')
-              ? _json['location'] as core.String
-              : null,
-          title:
-              _json.containsKey('title') ? _json['title'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (description != null) 'description': description!,
-        if (expression != null) 'expression': expression!,
-        if (location != null) 'location': location!,
-        if (title != null) 'title': title!,
-      };
-}
+typedef GoogleTypeExpr = $Expr;
 
 /// Represents an amount of money with its currency type.
-class GoogleTypeMoney {
-  /// The three-letter currency code defined in ISO 4217.
-  core.String? currencyCode;
-
-  /// Number of nano (10^-9) units of the amount.
-  ///
-  /// The value must be between -999,999,999 and +999,999,999 inclusive. If
-  /// `units` is positive, `nanos` must be positive or zero. If `units` is zero,
-  /// `nanos` can be positive, zero, or negative. If `units` is negative,
-  /// `nanos` must be negative or zero. For example $-1.75 is represented as
-  /// `units`=-1 and `nanos`=-750,000,000.
-  core.int? nanos;
-
-  /// The whole units of the amount.
-  ///
-  /// For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar.
-  core.String? units;
-
-  GoogleTypeMoney({
-    this.currencyCode,
-    this.nanos,
-    this.units,
-  });
-
-  GoogleTypeMoney.fromJson(core.Map _json)
-      : this(
-          currencyCode: _json.containsKey('currencyCode')
-              ? _json['currencyCode'] as core.String
-              : null,
-          nanos: _json.containsKey('nanos') ? _json['nanos'] as core.int : null,
-          units:
-              _json.containsKey('units') ? _json['units'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (currencyCode != null) 'currencyCode': currencyCode!,
-        if (nanos != null) 'nanos': nanos!,
-        if (units != null) 'units': units!,
-      };
-}
+typedef GoogleTypeMoney = $Money;

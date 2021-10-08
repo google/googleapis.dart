@@ -51,6 +51,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
+import '../shared.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -2435,130 +2436,13 @@ class GoogleCloudRecommenderV1MarkInsightAcceptedRequest {
 }
 
 /// Request for the `MarkRecommendationClaimed` Method.
-class GoogleCloudRecommenderV1MarkRecommendationClaimedRequest {
-  /// Fingerprint of the Recommendation.
-  ///
-  /// Provides optimistic locking.
-  ///
-  /// Required.
-  core.String? etag;
-
-  /// State properties to include with this state.
-  ///
-  /// Overwrites any existing `state_metadata`. Keys must match the regex
-  /// /^a-z0-9{0,62}$/. Values must match the regex
-  /// /^\[a-zA-Z0-9_./-\]{0,255}$/.
-  core.Map<core.String, core.String>? stateMetadata;
-
-  GoogleCloudRecommenderV1MarkRecommendationClaimedRequest({
-    this.etag,
-    this.stateMetadata,
-  });
-
-  GoogleCloudRecommenderV1MarkRecommendationClaimedRequest.fromJson(
-      core.Map _json)
-      : this(
-          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
-          stateMetadata: _json.containsKey('stateMetadata')
-              ? (_json['stateMetadata'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.String,
-                  ),
-                )
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (etag != null) 'etag': etag!,
-        if (stateMetadata != null) 'stateMetadata': stateMetadata!,
-      };
-}
+typedef GoogleCloudRecommenderV1MarkRecommendationClaimedRequest = $Request03;
 
 /// Request for the `MarkRecommendationFailed` Method.
-class GoogleCloudRecommenderV1MarkRecommendationFailedRequest {
-  /// Fingerprint of the Recommendation.
-  ///
-  /// Provides optimistic locking.
-  ///
-  /// Required.
-  core.String? etag;
-
-  /// State properties to include with this state.
-  ///
-  /// Overwrites any existing `state_metadata`. Keys must match the regex
-  /// /^a-z0-9{0,62}$/. Values must match the regex
-  /// /^\[a-zA-Z0-9_./-\]{0,255}$/.
-  core.Map<core.String, core.String>? stateMetadata;
-
-  GoogleCloudRecommenderV1MarkRecommendationFailedRequest({
-    this.etag,
-    this.stateMetadata,
-  });
-
-  GoogleCloudRecommenderV1MarkRecommendationFailedRequest.fromJson(
-      core.Map _json)
-      : this(
-          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
-          stateMetadata: _json.containsKey('stateMetadata')
-              ? (_json['stateMetadata'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.String,
-                  ),
-                )
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (etag != null) 'etag': etag!,
-        if (stateMetadata != null) 'stateMetadata': stateMetadata!,
-      };
-}
+typedef GoogleCloudRecommenderV1MarkRecommendationFailedRequest = $Request03;
 
 /// Request for the `MarkRecommendationSucceeded` Method.
-class GoogleCloudRecommenderV1MarkRecommendationSucceededRequest {
-  /// Fingerprint of the Recommendation.
-  ///
-  /// Provides optimistic locking.
-  ///
-  /// Required.
-  core.String? etag;
-
-  /// State properties to include with this state.
-  ///
-  /// Overwrites any existing `state_metadata`. Keys must match the regex
-  /// /^a-z0-9{0,62}$/. Values must match the regex
-  /// /^\[a-zA-Z0-9_./-\]{0,255}$/.
-  core.Map<core.String, core.String>? stateMetadata;
-
-  GoogleCloudRecommenderV1MarkRecommendationSucceededRequest({
-    this.etag,
-    this.stateMetadata,
-  });
-
-  GoogleCloudRecommenderV1MarkRecommendationSucceededRequest.fromJson(
-      core.Map _json)
-      : this(
-          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
-          stateMetadata: _json.containsKey('stateMetadata')
-              ? (_json['stateMetadata'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.String,
-                  ),
-                )
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (etag != null) 'etag': etag!,
-        if (stateMetadata != null) 'stateMetadata': stateMetadata!,
-      };
-}
+typedef GoogleCloudRecommenderV1MarkRecommendationSucceededRequest = $Request03;
 
 /// Contains an operation for a resource loosely based on the JSON-PATCH format
 /// with support for: * Custom filters for describing partial array patch.
@@ -3042,43 +2926,4 @@ class GoogleCloudRecommenderV1ValueMatcher {
 }
 
 /// Represents an amount of money with its currency type.
-class GoogleTypeMoney {
-  /// The three-letter currency code defined in ISO 4217.
-  core.String? currencyCode;
-
-  /// Number of nano (10^-9) units of the amount.
-  ///
-  /// The value must be between -999,999,999 and +999,999,999 inclusive. If
-  /// `units` is positive, `nanos` must be positive or zero. If `units` is zero,
-  /// `nanos` can be positive, zero, or negative. If `units` is negative,
-  /// `nanos` must be negative or zero. For example $-1.75 is represented as
-  /// `units`=-1 and `nanos`=-750,000,000.
-  core.int? nanos;
-
-  /// The whole units of the amount.
-  ///
-  /// For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar.
-  core.String? units;
-
-  GoogleTypeMoney({
-    this.currencyCode,
-    this.nanos,
-    this.units,
-  });
-
-  GoogleTypeMoney.fromJson(core.Map _json)
-      : this(
-          currencyCode: _json.containsKey('currencyCode')
-              ? _json['currencyCode'] as core.String
-              : null,
-          nanos: _json.containsKey('nanos') ? _json['nanos'] as core.int : null,
-          units:
-              _json.containsKey('units') ? _json['units'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (currencyCode != null) 'currencyCode': currencyCode!,
-        if (nanos != null) 'nanos': nanos!,
-        if (units != null) 'units': units!,
-      };
-}
+typedef GoogleTypeMoney = $Money;

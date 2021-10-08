@@ -120,6 +120,57 @@ void checkGoogleAnalyticsAdminV1alphaAccountSummary(
   buildCounterGoogleAnalyticsAdminV1alphaAccountSummary--;
 }
 
+core.int
+    buildCounterGoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionRequest =
+    0;
+api.GoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionRequest
+    buildGoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionRequest() {
+  final o =
+      api.GoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionRequest();
+  buildCounterGoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionRequest++;
+  if (buildCounterGoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionRequest <
+      3) {
+    o.acknowledgement = 'foo';
+  }
+  buildCounterGoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionRequest--;
+  return o;
+}
+
+void checkGoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionRequest(
+    api.GoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionRequest o) {
+  buildCounterGoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionRequest++;
+  if (buildCounterGoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionRequest <
+      3) {
+    unittest.expect(
+      o.acknowledgement!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionRequest--;
+}
+
+core.int
+    buildCounterGoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionResponse =
+    0;
+api.GoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionResponse
+    buildGoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionResponse() {
+  final o =
+      api.GoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionResponse();
+  buildCounterGoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionResponse++;
+  if (buildCounterGoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionResponse <
+      3) {}
+  buildCounterGoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionResponse--;
+  return o;
+}
+
+void checkGoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionResponse(
+    api.GoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionResponse o) {
+  buildCounterGoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionResponse++;
+  if (buildCounterGoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionResponse <
+      3) {}
+  buildCounterGoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionResponse--;
+}
+
 core.int buildCounterGoogleAnalyticsAdminV1alphaAndroidAppDataStream = 0;
 api.GoogleAnalyticsAdminV1alphaAndroidAppDataStream
     buildGoogleAnalyticsAdminV1alphaAndroidAppDataStream() {
@@ -2536,6 +2587,34 @@ void main() {
     });
   });
 
+  unittest.group(
+      'obj-schema-GoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionRequest',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o =
+          buildGoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionRequest
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionRequest(od);
+    });
+  });
+
+  unittest.group(
+      'obj-schema-GoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionResponse',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o =
+          buildGoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionResponse
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionResponse(od);
+    });
+  });
+
   unittest.group('obj-schema-GoogleAnalyticsAdminV1alphaAndroidAppDataStream',
       () {
     unittest.test('to-json--from-json', () async {
@@ -4344,6 +4423,71 @@ void main() {
   });
 
   unittest.group('resource-PropertiesResource', () {
+    unittest.test('method--acknowledgeUserDataCollection', () async {
+      final mock = HttpServerMock();
+      final res = api.GoogleAnalyticsAdminApi(mock).properties;
+      final arg_request =
+          buildGoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionRequest();
+      final arg_property = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj =
+            api.GoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionRequest
+                .fromJson(json as core.Map<core.String, core.dynamic>);
+        checkGoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionRequest(
+            obj);
+
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals('v1alpha/'),
+        );
+        pathOffset += 8;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(
+            buildGoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.acknowledgeUserDataCollection(
+          arg_request, arg_property,
+          $fields: arg_$fields);
+      checkGoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionResponse(
+          response as api
+              .GoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionResponse);
+    });
+
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
       final res = api.GoogleAnalyticsAdminApi(mock).properties;

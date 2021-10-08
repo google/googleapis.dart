@@ -37,7 +37,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-import '../src/empty.dart';
+import '../shared.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -877,7 +877,15 @@ class StorageResource {
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
 /// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
 /// object `{}`.
-typedef Empty = $Empty;
+class Empty {
+  Empty();
+
+  Empty.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
+
+  core.Map<core.String, core.dynamic> toJson() => {};
+}
 
 class ListOfAny extends collection.ListBase<core.Object?> {
   final core.List<core.Object?> _inner;
@@ -1551,40 +1559,5 @@ class ToyRequest {
       };
 }
 
-class ToyResourceResponse {
-  core.String? result;
-
-  ToyResourceResponse({
-    this.result,
-  });
-
-  ToyResourceResponse.fromJson(core.Map _json)
-      : this(
-          result: _json.containsKey('result')
-              ? _json['result'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (result != null) 'result': result!,
-      };
-}
-
-class ToyResponse {
-  core.String? result;
-
-  ToyResponse({
-    this.result,
-  });
-
-  ToyResponse.fromJson(core.Map _json)
-      : this(
-          result: _json.containsKey('result')
-              ? _json['result'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (result != null) 'result': result!,
-      };
-}
+typedef ToyResourceResponse = $Response;
+typedef ToyResponse = $Response;

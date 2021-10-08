@@ -39,7 +39,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-import '../src/empty.dart';
+import '../shared.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -2248,53 +2248,7 @@ class ProjectsOperationsResource {
 /// (stream google.api.HttpBody); } Use of this type only changes how the
 /// request and response bodies are handled, all other features will continue to
 /// work unchanged.
-class GoogleApiHttpBody {
-  /// The HTTP Content-Type header value specifying the content type of the
-  /// body.
-  core.String? contentType;
-
-  /// The HTTP request/response body as raw binary.
-  core.String? data;
-  core.List<core.int> get dataAsBytes => convert.base64.decode(data!);
-
-  set dataAsBytes(core.List<core.int> _bytes) {
-    data =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
-  }
-
-  /// Application specific response metadata.
-  ///
-  /// Must be set in the first response for streaming APIs.
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object?>>? extensions;
-
-  GoogleApiHttpBody({
-    this.contentType,
-    this.data,
-    this.extensions,
-  });
-
-  GoogleApiHttpBody.fromJson(core.Map _json)
-      : this(
-          contentType: _json.containsKey('contentType')
-              ? _json['contentType'] as core.String
-              : null,
-          data: _json.containsKey('data') ? _json['data'] as core.String : null,
-          extensions: _json.containsKey('extensions')
-              ? (_json['extensions'] as core.List)
-                  .map((value) => value as core.Map<core.String, core.dynamic>)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (contentType != null) 'contentType': contentType!,
-        if (data != null) 'data': data!,
-        if (extensions != null) 'extensions': extensions!,
-      };
-}
+typedef GoogleApiHttpBody = $HttpBody;
 
 class GoogleCloudMlV1AutomatedStoppingConfigDecayCurveAutomatedStoppingConfig {
   /// If true, measurement.elapsed_time is used as the x-axis of each Trials
@@ -3983,28 +3937,7 @@ class GoogleCloudMlV1HyperparameterSpec {
 /// the model's fully differentiable structure.
 ///
 /// Refer to this paper for more details: https://arxiv.org/abs/1703.01365
-class GoogleCloudMlV1IntegratedGradientsAttribution {
-  /// Number of steps for approximating the path integral.
-  ///
-  /// A good value to start is 50 and gradually increase until the sum to diff
-  /// property is met within the desired error range.
-  core.int? numIntegralSteps;
-
-  GoogleCloudMlV1IntegratedGradientsAttribution({
-    this.numIntegralSteps,
-  });
-
-  GoogleCloudMlV1IntegratedGradientsAttribution.fromJson(core.Map _json)
-      : this(
-          numIntegralSteps: _json.containsKey('numIntegralSteps')
-              ? _json['numIntegralSteps'] as core.int
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (numIntegralSteps != null) 'numIntegralSteps': numIntegralSteps!,
-      };
-}
+typedef GoogleCloudMlV1IntegratedGradientsAttribution = $Attribution;
 
 /// Represents a training or prediction job.
 class GoogleCloudMlV1Job {
@@ -6905,28 +6838,7 @@ class GoogleCloudMlV1Version {
 ///
 /// Refer to this paper for more details: https://arxiv.org/abs/1906.02825
 /// Currently only implemented for models with natural image inputs.
-class GoogleCloudMlV1XraiAttribution {
-  /// Number of steps for approximating the path integral.
-  ///
-  /// A good value to start is 50 and gradually increase until the sum to diff
-  /// property is met within the desired error range.
-  core.int? numIntegralSteps;
-
-  GoogleCloudMlV1XraiAttribution({
-    this.numIntegralSteps,
-  });
-
-  GoogleCloudMlV1XraiAttribution.fromJson(core.Map _json)
-      : this(
-          numIntegralSteps: _json.containsKey('numIntegralSteps')
-              ? _json['numIntegralSteps'] as core.int
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (numIntegralSteps != null) 'numIntegralSteps': numIntegralSteps!,
-      };
-}
+typedef GoogleCloudMlV1XraiAttribution = $Attribution;
 
 /// Specifies the audit configuration for a service.
 ///
@@ -6985,43 +6897,7 @@ class GoogleIamV1AuditConfig {
 /// "exempted_members": \[ "user:jose@example.com" \] }, { "log_type":
 /// "DATA_WRITE" } \] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while
 /// exempting jose@example.com from DATA_READ logging.
-class GoogleIamV1AuditLogConfig {
-  /// Specifies the identities that do not cause logging for this type of
-  /// permission.
-  ///
-  /// Follows the same format of Binding.members.
-  core.List<core.String>? exemptedMembers;
-
-  /// The log type that this config enables.
-  /// Possible string values are:
-  /// - "LOG_TYPE_UNSPECIFIED" : Default case. Should never be this.
-  /// - "ADMIN_READ" : Admin reads. Example: CloudIAM getIamPolicy
-  /// - "DATA_WRITE" : Data writes. Example: CloudSQL Users create
-  /// - "DATA_READ" : Data reads. Example: CloudSQL Users list
-  core.String? logType;
-
-  GoogleIamV1AuditLogConfig({
-    this.exemptedMembers,
-    this.logType,
-  });
-
-  GoogleIamV1AuditLogConfig.fromJson(core.Map _json)
-      : this(
-          exemptedMembers: _json.containsKey('exemptedMembers')
-              ? (_json['exemptedMembers'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          logType: _json.containsKey('logType')
-              ? _json['logType'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (exemptedMembers != null) 'exemptedMembers': exemptedMembers!,
-        if (logType != null) 'logType': logType!,
-      };
-}
+typedef GoogleIamV1AuditLogConfig = $AuditLogConfig;
 
 /// Associates `members` with a `role`.
 class GoogleIamV1Binding {
@@ -7253,55 +7129,10 @@ class GoogleIamV1SetIamPolicyRequest {
 }
 
 /// Request message for `TestIamPermissions` method.
-class GoogleIamV1TestIamPermissionsRequest {
-  /// The set of permissions to check for the `resource`.
-  ///
-  /// Permissions with wildcards (such as '*' or 'storage.*') are not allowed.
-  /// For more information see
-  /// [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).
-  core.List<core.String>? permissions;
-
-  GoogleIamV1TestIamPermissionsRequest({
-    this.permissions,
-  });
-
-  GoogleIamV1TestIamPermissionsRequest.fromJson(core.Map _json)
-      : this(
-          permissions: _json.containsKey('permissions')
-              ? (_json['permissions'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (permissions != null) 'permissions': permissions!,
-      };
-}
+typedef GoogleIamV1TestIamPermissionsRequest = $TestIamPermissionsRequest;
 
 /// Response message for `TestIamPermissions` method.
-class GoogleIamV1TestIamPermissionsResponse {
-  /// A subset of `TestPermissionsRequest.permissions` that the caller is
-  /// allowed.
-  core.List<core.String>? permissions;
-
-  GoogleIamV1TestIamPermissionsResponse({
-    this.permissions,
-  });
-
-  GoogleIamV1TestIamPermissionsResponse.fromJson(core.Map _json)
-      : this(
-          permissions: _json.containsKey('permissions')
-              ? (_json['permissions'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (permissions != null) 'permissions': permissions!,
-      };
-}
+typedef GoogleIamV1TestIamPermissionsResponse = $PermissionsResponse;
 
 /// The response message for Operations.ListOperations.
 class GoogleLongrunningListOperationsResponse {
@@ -7427,49 +7258,7 @@ typedef GoogleProtobufEmpty = $Empty;
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-class GoogleRpcStatus {
-  /// The status code, which should be an enum value of google.rpc.Code.
-  core.int? code;
-
-  /// A list of messages that carry the error details.
-  ///
-  /// There is a common set of message types for APIs to use.
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object?>>? details;
-
-  /// A developer-facing error message, which should be in English.
-  ///
-  /// Any user-facing error message should be localized and sent in the
-  /// google.rpc.Status.details field, or localized by the client.
-  core.String? message;
-
-  GoogleRpcStatus({
-    this.code,
-    this.details,
-    this.message,
-  });
-
-  GoogleRpcStatus.fromJson(core.Map _json)
-      : this(
-          code: _json.containsKey('code') ? _json['code'] as core.int : null,
-          details: _json.containsKey('details')
-              ? (_json['details'] as core.List)
-                  .map((value) => value as core.Map<core.String, core.dynamic>)
-                  .toList()
-              : null,
-          message: _json.containsKey('message')
-              ? _json['message'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (code != null) 'code': code!,
-        if (details != null) 'details': details!,
-        if (message != null) 'message': message!,
-      };
-}
+typedef GoogleRpcStatus = $Status;
 
 /// Represents a textual expression in the Common Expression Language (CEL)
 /// syntax.
@@ -7489,58 +7278,4 @@ class GoogleRpcStatus {
 /// functions that may be referenced within an expression are determined by the
 /// service that evaluates it. See the service documentation for additional
 /// information.
-class GoogleTypeExpr {
-  /// Description of the expression.
-  ///
-  /// This is a longer text which describes the expression, e.g. when hovered
-  /// over it in a UI.
-  ///
-  /// Optional.
-  core.String? description;
-
-  /// Textual representation of an expression in Common Expression Language
-  /// syntax.
-  core.String? expression;
-
-  /// String indicating the location of the expression for error reporting, e.g.
-  /// a file name and a position in the file.
-  ///
-  /// Optional.
-  core.String? location;
-
-  /// Title for the expression, i.e. a short string describing its purpose.
-  ///
-  /// This can be used e.g. in UIs which allow to enter the expression.
-  ///
-  /// Optional.
-  core.String? title;
-
-  GoogleTypeExpr({
-    this.description,
-    this.expression,
-    this.location,
-    this.title,
-  });
-
-  GoogleTypeExpr.fromJson(core.Map _json)
-      : this(
-          description: _json.containsKey('description')
-              ? _json['description'] as core.String
-              : null,
-          expression: _json.containsKey('expression')
-              ? _json['expression'] as core.String
-              : null,
-          location: _json.containsKey('location')
-              ? _json['location'] as core.String
-              : null,
-          title:
-              _json.containsKey('title') ? _json['title'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (description != null) 'description': description!,
-        if (expression != null) 'expression': expression!,
-        if (location != null) 'location': location!,
-        if (title != null) 'title': title!,
-      };
-}
+typedef GoogleTypeExpr = $Expr;

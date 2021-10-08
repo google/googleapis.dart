@@ -36,7 +36,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-import '../src/empty.dart';
+import '../shared.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -1176,80 +1176,10 @@ class ProjectsScanConfigsResource {
 }
 
 /// An alias to a repo revision.
-class AliasContext {
-  /// The alias kind.
-  /// Possible string values are:
-  /// - "KIND_UNSPECIFIED" : Unknown.
-  /// - "FIXED" : Git tag.
-  /// - "MOVABLE" : Git branch.
-  /// - "OTHER" : Used to specify non-standard aliases. For example, if a Git
-  /// repo has a ref named "refs/foo/bar".
-  core.String? kind;
-
-  /// The alias name.
-  core.String? name;
-
-  AliasContext({
-    this.kind,
-    this.name,
-  });
-
-  AliasContext.fromJson(core.Map _json)
-      : this(
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (kind != null) 'kind': kind!,
-        if (name != null) 'name': name!,
-      };
-}
+typedef AliasContext = $AliasContext;
 
 /// Artifact describes a build product.
-class Artifact {
-  /// Hash or checksum value of a binary, or Docker Registry 2.0 digest of a
-  /// container.
-  core.String? checksum;
-
-  /// Artifact ID, if any; for container images, this will be a URL by digest
-  /// like `gcr.io/projectID/imagename@sha256:123456`.
-  core.String? id;
-
-  /// Related artifact names.
-  ///
-  /// This may be the path to a binary or jar file, or in the case of a
-  /// container build, the name used to push the container image to Google
-  /// Container Registry, as presented to `docker push`. Note that a single
-  /// Artifact ID can have multiple names, for example if two tags are applied
-  /// to one image.
-  core.List<core.String>? names;
-
-  Artifact({
-    this.checksum,
-    this.id,
-    this.names,
-  });
-
-  Artifact.fromJson(core.Map _json)
-      : this(
-          checksum: _json.containsKey('checksum')
-              ? _json['checksum'] as core.String
-              : null,
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          names: _json.containsKey('names')
-              ? (_json['names'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (checksum != null) 'checksum': checksum!,
-        if (id != null) 'id': id!,
-        if (names != null) 'names': names!,
-      };
-}
+typedef Artifact = $Artifact;
 
 /// Defines a hash object for use in Materials and Products.
 class ArtifactHashes {
@@ -2043,30 +1973,7 @@ class BuildStep {
 /// Defines an object for the byproducts field in in-toto links.
 ///
 /// The suggested fields are "stderr", "stdout", and "return-value".
-class ByProducts {
-  core.Map<core.String, core.String>? customValues;
-
-  ByProducts({
-    this.customValues,
-  });
-
-  ByProducts.fromJson(core.Map _json)
-      : this(
-          customValues: _json.containsKey('customValues')
-              ? (_json['customValues'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.String,
-                  ),
-                )
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (customValues != null) 'customValues': customValues!,
-      };
-}
+typedef ByProducts = $Shared02;
 
 /// Common Vulnerability Scoring System version 3.
 ///
@@ -2250,70 +2157,7 @@ class CloudRepoSourceContext {
 }
 
 /// Command describes a step performed as part of the build pipeline.
-class Command {
-  /// Command-line arguments used when executing this command.
-  core.List<core.String>? args;
-
-  /// Working directory (relative to project source root) used when running this
-  /// command.
-  core.String? dir;
-
-  /// Environment variables set before running this command.
-  core.List<core.String>? env;
-
-  /// Optional unique identifier for this command, used in wait_for to reference
-  /// this command as a dependency.
-  core.String? id;
-
-  /// Name of the command, as presented on the command line, or if the command
-  /// is packaged as a Docker container, as presented to `docker pull`.
-  ///
-  /// Required.
-  core.String? name;
-
-  /// The ID(s) of the command(s) that this command depends on.
-  core.List<core.String>? waitFor;
-
-  Command({
-    this.args,
-    this.dir,
-    this.env,
-    this.id,
-    this.name,
-    this.waitFor,
-  });
-
-  Command.fromJson(core.Map _json)
-      : this(
-          args: _json.containsKey('args')
-              ? (_json['args'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          dir: _json.containsKey('dir') ? _json['dir'] as core.String : null,
-          env: _json.containsKey('env')
-              ? (_json['env'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          waitFor: _json.containsKey('waitFor')
-              ? (_json['waitFor'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (args != null) 'args': args!,
-        if (dir != null) 'dir': dir!,
-        if (env != null) 'env': env!,
-        if (id != null) 'id': id!,
-        if (name != null) 'name': name!,
-        if (waitFor != null) 'waitFor': waitFor!,
-      };
-}
+typedef Command = $Command;
 
 /// An artifact that can be deployed in some runtime.
 class Deployable {
@@ -2341,85 +2185,7 @@ class Deployable {
 }
 
 /// The period during which some deployable was active in a runtime.
-class Deployment {
-  /// Address of the runtime element hosting this deployment.
-  core.String? address;
-
-  /// Configuration used to create this deployment.
-  core.String? config;
-
-  /// Beginning of the lifetime of this deployment.
-  ///
-  /// Required.
-  core.String? deployTime;
-
-  /// Platform hosting this deployment.
-  /// Possible string values are:
-  /// - "PLATFORM_UNSPECIFIED" : Unknown.
-  /// - "GKE" : Google Container Engine.
-  /// - "FLEX" : Google App Engine: Flexible Environment.
-  /// - "CUSTOM" : Custom user-defined platform.
-  core.String? platform;
-
-  /// Resource URI for the artifact being deployed taken from the deployable
-  /// field with the same name.
-  ///
-  /// Output only.
-  core.List<core.String>? resourceUri;
-
-  /// End of the lifetime of this deployment.
-  core.String? undeployTime;
-
-  /// Identity of the user that triggered this deployment.
-  core.String? userEmail;
-
-  Deployment({
-    this.address,
-    this.config,
-    this.deployTime,
-    this.platform,
-    this.resourceUri,
-    this.undeployTime,
-    this.userEmail,
-  });
-
-  Deployment.fromJson(core.Map _json)
-      : this(
-          address: _json.containsKey('address')
-              ? _json['address'] as core.String
-              : null,
-          config: _json.containsKey('config')
-              ? _json['config'] as core.String
-              : null,
-          deployTime: _json.containsKey('deployTime')
-              ? _json['deployTime'] as core.String
-              : null,
-          platform: _json.containsKey('platform')
-              ? _json['platform'] as core.String
-              : null,
-          resourceUri: _json.containsKey('resourceUri')
-              ? (_json['resourceUri'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          undeployTime: _json.containsKey('undeployTime')
-              ? _json['undeployTime'] as core.String
-              : null,
-          userEmail: _json.containsKey('userEmail')
-              ? _json['userEmail'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (address != null) 'address': address!,
-        if (config != null) 'config': config!,
-        if (deployTime != null) 'deployTime': deployTime!,
-        if (platform != null) 'platform': platform!,
-        if (resourceUri != null) 'resourceUri': resourceUri!,
-        if (undeployTime != null) 'undeployTime': undeployTime!,
-        if (userEmail != null) 'userEmail': userEmail!,
-      };
-}
+typedef Deployment = $Shared03;
 
 /// Derived describes the derived image portion (Occurrence) of the DockerImage
 /// relationship.
@@ -2958,30 +2724,7 @@ typedef Empty = $Empty;
 /// Defines an object for the environment field in in-toto links.
 ///
 /// The suggested fields are "variables", "filesystem", and "workdir".
-class Environment {
-  core.Map<core.String, core.String>? customValues;
-
-  Environment({
-    this.customValues,
-  });
-
-  Environment.fromJson(core.Map _json)
-      : this(
-          customValues: _json.containsKey('customValues')
-              ? (_json['customValues'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.String,
-                  ),
-                )
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (customValues != null) 'customValues': customValues!,
-      };
-}
+typedef Environment = $Shared02;
 
 /// Represents a textual expression in the Common Expression Language (CEL)
 /// syntax.
@@ -3001,61 +2744,7 @@ class Environment {
 /// functions that may be referenced within an expression are determined by the
 /// service that evaluates it. See the service documentation for additional
 /// information.
-class Expr {
-  /// Description of the expression.
-  ///
-  /// This is a longer text which describes the expression, e.g. when hovered
-  /// over it in a UI.
-  ///
-  /// Optional.
-  core.String? description;
-
-  /// Textual representation of an expression in Common Expression Language
-  /// syntax.
-  core.String? expression;
-
-  /// String indicating the location of the expression for error reporting, e.g.
-  /// a file name and a position in the file.
-  ///
-  /// Optional.
-  core.String? location;
-
-  /// Title for the expression, i.e. a short string describing its purpose.
-  ///
-  /// This can be used e.g. in UIs which allow to enter the expression.
-  ///
-  /// Optional.
-  core.String? title;
-
-  Expr({
-    this.description,
-    this.expression,
-    this.location,
-    this.title,
-  });
-
-  Expr.fromJson(core.Map _json)
-      : this(
-          description: _json.containsKey('description')
-              ? _json['description'] as core.String
-              : null,
-          expression: _json.containsKey('expression')
-              ? _json['expression'] as core.String
-              : null,
-          location: _json.containsKey('location')
-              ? _json['location'] as core.String
-              : null,
-          title:
-              _json.containsKey('title') ? _json['title'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (description != null) 'description': description!,
-        if (expression != null) 'expression': expression!,
-        if (location != null) 'location': location!,
-        if (title != null) 'title': title!,
-      };
-}
+typedef Expr = $Expr;
 
 /// An External Reference allows a Package to reference an external source of
 /// additional information, metadata, enumerations, asset identifiers, or
@@ -3301,51 +2990,7 @@ class FileOccurrence {
 }
 
 /// A set of properties that uniquely identify a given Docker image.
-class Fingerprint {
-  /// The layer ID of the final layer in the Docker image's v1 representation.
-  ///
-  /// Required.
-  core.String? v1Name;
-
-  /// The ordered list of v2 blobs that represent a given image.
-  ///
-  /// Required.
-  core.List<core.String>? v2Blob;
-
-  /// The name of the image's v2 blobs computed via: \[bottom\] := v2_blobbottom
-  /// := sha256(v2_blob\[N\] + " " + v2_name\[N+1\]) Only the name of the final
-  /// blob is kept.
-  ///
-  /// Output only.
-  core.String? v2Name;
-
-  Fingerprint({
-    this.v1Name,
-    this.v2Blob,
-    this.v2Name,
-  });
-
-  Fingerprint.fromJson(core.Map _json)
-      : this(
-          v1Name: _json.containsKey('v1Name')
-              ? _json['v1Name'] as core.String
-              : null,
-          v2Blob: _json.containsKey('v2Blob')
-              ? (_json['v2Blob'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          v2Name: _json.containsKey('v2Name')
-              ? _json['v2Name'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (v1Name != null) 'v1Name': v1Name!,
-        if (v2Blob != null) 'v2Blob': v2Blob!,
-        if (v2Name != null) 'v2Name': v2Name!,
-      };
-}
+typedef Fingerprint = $Fingerprint;
 
 /// Per resource and severity counts of fixable and total vulnerabilities.
 class FixableTotalByDigest {
@@ -3543,63 +3188,11 @@ class GetIamPolicyRequest {
 }
 
 /// Encapsulates settings provided to GetIamPolicy.
-class GetPolicyOptions {
-  /// The policy format version to be returned.
-  ///
-  /// Valid values are 0, 1, and 3. Requests specifying an invalid value will be
-  /// rejected. Requests for policies with any conditional bindings must specify
-  /// version 3. Policies without any conditional bindings may specify any valid
-  /// value or leave the field unset. To learn which resources support
-  /// conditions in their IAM policies, see the
-  /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-  ///
-  /// Optional.
-  core.int? requestedPolicyVersion;
-
-  GetPolicyOptions({
-    this.requestedPolicyVersion,
-  });
-
-  GetPolicyOptions.fromJson(core.Map _json)
-      : this(
-          requestedPolicyVersion: _json.containsKey('requestedPolicyVersion')
-              ? _json['requestedPolicyVersion'] as core.int
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (requestedPolicyVersion != null)
-          'requestedPolicyVersion': requestedPolicyVersion!,
-      };
-}
+typedef GetPolicyOptions = $GetPolicyOptions;
 
 /// A GitSourceContext denotes a particular revision in a third party Git
 /// repository (e.g., GitHub).
-class GitSourceContext {
-  /// Git commit hash.
-  core.String? revisionId;
-
-  /// Git repository URL.
-  core.String? url;
-
-  GitSourceContext({
-    this.revisionId,
-    this.url,
-  });
-
-  GitSourceContext.fromJson(core.Map _json)
-      : this(
-          revisionId: _json.containsKey('revisionId')
-              ? _json['revisionId'] as core.String
-              : null,
-          url: _json.containsKey('url') ? _json['url'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (revisionId != null) 'revisionId': revisionId!,
-        if (url != null) 'url': url!,
-      };
-}
+typedef GitSourceContext = $GitSourceContext;
 
 /// Metadata for all operations used and required for all operations that
 /// created by Container Analysis Providers
@@ -5454,61 +5047,10 @@ class Policy {
 
 /// Selects a repo using a Google Cloud Platform project ID (e.g.,
 /// winged-cargo-31) and a repo name within that project.
-class ProjectRepoId {
-  /// The ID of the project.
-  core.String? projectId;
-
-  /// The name of the repo.
-  ///
-  /// Leave empty for the default repo.
-  core.String? repoName;
-
-  ProjectRepoId({
-    this.projectId,
-    this.repoName,
-  });
-
-  ProjectRepoId.fromJson(core.Map _json)
-      : this(
-          projectId: _json.containsKey('projectId')
-              ? _json['projectId'] as core.String
-              : null,
-          repoName: _json.containsKey('repoName')
-              ? _json['repoName'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (projectId != null) 'projectId': projectId!,
-        if (repoName != null) 'repoName': repoName!,
-      };
-}
+typedef ProjectRepoId = $ProjectRepoId;
 
 /// Metadata for any related URL information.
-class RelatedUrl {
-  /// Label to describe usage of the URL.
-  core.String? label;
-
-  /// Specific URL associated with the resource.
-  core.String? url;
-
-  RelatedUrl({
-    this.label,
-    this.url,
-  });
-
-  RelatedUrl.fromJson(core.Map _json)
-      : this(
-          label:
-              _json.containsKey('label') ? _json['label'] as core.String : null,
-          url: _json.containsKey('url') ? _json['url'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (label != null) 'label': label!,
-        if (url != null) 'url': url!,
-      };
-}
+typedef RelatedUrl = $RelatedUrl;
 
 /// RelationshipNote represents an SPDX Relationship section:
 /// https://spdx.github.io/spdx-spec/7-relationships-between-SPDX-elements/
@@ -5826,56 +5368,7 @@ class SetIamPolicyRequest {
 /// explicitly provided payload (e.g. a `payload` field on the proto message
 /// that holds this Signature, or the canonical serialization of the proto
 /// message that holds this signature).
-class Signature {
-  /// The identifier for the public key that verifies this signature.
-  ///
-  /// * The `public_key_id` is required. * The `public_key_id` SHOULD be an
-  /// RFC3986 conformant URI. * When possible, the `public_key_id` SHOULD be an
-  /// immutable reference, such as a cryptographic digest. Examples of valid
-  /// `public_key_id`s: OpenPGP V4 public key fingerprint: *
-  /// "openpgp4fpr:74FAF3B861BDA0870C7B6DEF607E48D2A663AEEA" See
-  /// https://www.iana.org/assignments/uri-schemes/prov/openpgp4fpr for more
-  /// details on this scheme. RFC6920 digest-named SubjectPublicKeyInfo (digest
-  /// of the DER serialization): *
-  /// "ni:///sha-256;cD9o9Cq6LG3jD0iKXqEi_vdjJGecm_iXkbqVoScViaU" *
-  /// "nih:///sha-256;703f68f42aba2c6de30f488a5ea122fef76324679c9bf89791ba95a1271589a5"
-  core.String? publicKeyId;
-
-  /// The content of the signature, an opaque bytestring.
-  ///
-  /// The payload that this signature verifies MUST be unambiguously provided
-  /// with the Signature during verification. A wrapper message might provide
-  /// the payload explicitly. Alternatively, a message might have a canonical
-  /// serialization that can always be unambiguously computed to derive the
-  /// payload.
-  core.String? signature;
-  core.List<core.int> get signatureAsBytes => convert.base64.decode(signature!);
-
-  set signatureAsBytes(core.List<core.int> _bytes) {
-    signature =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
-  }
-
-  Signature({
-    this.publicKeyId,
-    this.signature,
-  });
-
-  Signature.fromJson(core.Map _json)
-      : this(
-          publicKeyId: _json.containsKey('publicKeyId')
-              ? _json['publicKeyId'] as core.String
-              : null,
-          signature: _json.containsKey('signature')
-              ? _json['signature'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (publicKeyId != null) 'publicKeyId': publicKeyId!,
-        if (signature != null) 'signature': signature!,
-      };
-}
+typedef Signature = $Signature;
 
 /// This defines the format used to record keys used in the software supply
 /// chain.
@@ -6067,100 +5560,13 @@ class SourceContext {
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-class Status {
-  /// The status code, which should be an enum value of google.rpc.Code.
-  core.int? code;
-
-  /// A list of messages that carry the error details.
-  ///
-  /// There is a common set of message types for APIs to use.
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object?>>? details;
-
-  /// A developer-facing error message, which should be in English.
-  ///
-  /// Any user-facing error message should be localized and sent in the
-  /// google.rpc.Status.details field, or localized by the client.
-  core.String? message;
-
-  Status({
-    this.code,
-    this.details,
-    this.message,
-  });
-
-  Status.fromJson(core.Map _json)
-      : this(
-          code: _json.containsKey('code') ? _json['code'] as core.int : null,
-          details: _json.containsKey('details')
-              ? (_json['details'] as core.List)
-                  .map((value) => value as core.Map<core.String, core.dynamic>)
-                  .toList()
-              : null,
-          message: _json.containsKey('message')
-              ? _json['message'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (code != null) 'code': code!,
-        if (details != null) 'details': details!,
-        if (message != null) 'message': message!,
-      };
-}
+typedef Status = $Status;
 
 /// Request message for `TestIamPermissions` method.
-class TestIamPermissionsRequest {
-  /// The set of permissions to check for the `resource`.
-  ///
-  /// Permissions with wildcards (such as '*' or 'storage.*') are not allowed.
-  /// For more information see
-  /// [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).
-  core.List<core.String>? permissions;
-
-  TestIamPermissionsRequest({
-    this.permissions,
-  });
-
-  TestIamPermissionsRequest.fromJson(core.Map _json)
-      : this(
-          permissions: _json.containsKey('permissions')
-              ? (_json['permissions'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (permissions != null) 'permissions': permissions!,
-      };
-}
+typedef TestIamPermissionsRequest = $TestIamPermissionsRequest;
 
 /// Response message for `TestIamPermissions` method.
-class TestIamPermissionsResponse {
-  /// A subset of `TestPermissionsRequest.permissions` that the caller is
-  /// allowed.
-  core.List<core.String>? permissions;
-
-  TestIamPermissionsResponse({
-    this.permissions,
-  });
-
-  TestIamPermissionsResponse.fromJson(core.Map _json)
-      : this(
-          permissions: _json.containsKey('permissions')
-              ? (_json['permissions'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (permissions != null) 'permissions': permissions!,
-      };
-}
+typedef TestIamPermissionsResponse = $TestIamPermissionsResponse;
 
 /// Start and end times for a build execution phase.
 class TimeSpan {

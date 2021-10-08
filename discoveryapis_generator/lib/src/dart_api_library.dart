@@ -6,11 +6,11 @@ library discoveryapis_generator.dart_api_library;
 
 import 'dart_comments.dart';
 import 'dart_resources.dart';
-import 'dart_schema_types.dart';
 import 'dart_schemas.dart';
 import 'generated_googleapis/discovery/v1.dart';
 import 'namer.dart';
 import 'shared_output.dart';
+import 'type_deduplicate.dart';
 import 'utils.dart';
 
 const ignoreForFileSet = {
@@ -74,7 +74,6 @@ abstract class BaseApiLibrary {
 /// Generates a API library based on a [RestDescription].
 class DartApiLibrary extends BaseApiLibrary {
   final bool isPackage;
-  late final bool hasEmptyClass = _hasEmptyClass();
   late final DartSchemaTypeDB schemaDB;
   late final DartApiClass apiClass;
   late final bool exposeMedia;
@@ -97,7 +96,7 @@ class DartApiLibrary extends BaseApiLibrary {
   @override
   String get librarySource {
     final sink = StringBuffer();
-    final schemas = generateSchemas(schemaDB, isPackage);
+    final schemas = generateSchemas(schemaDB);
     final resources = generateResources(apiClass);
     sink.write(_libraryHeader());
     if (resources.isNotEmpty) {
@@ -144,16 +143,14 @@ import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as ${imports
     return result.join('\n');
   }
 
-  bool _hasEmptyClass() =>
-      schemaDB.namedSchemaTypes.values.any((element) => element.isEmpty);
-
   Iterable<String> _sharedBits(String exportedMediaClasses) sync* {
     if (isPackage) {
       yield '';
-      if (hasEmptyClass) {
-        yield "import '../$emptyObjectDartFile';";
-      }
-      yield "import '../$userAgentDartFilePath';";
+
+      yield* [
+        if (generatedDuplicateLibraries()) "import '../shared.dart';",
+        "import '../$userAgentDartFilePath';",
+      ]..sort();
     }
     yield "\nexport 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show ApiRequestError, DetailedApiRequestError$exportedMediaClasses;";
     if (!isPackage) {
@@ -163,7 +160,6 @@ import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as ${imports
 }
 
 const userAgentDartFilePath = 'src/user_agent.dart';
-const emptyObjectDartFile = 'src/empty.dart';
 
 Comment _commentFromRestDescription(
   RestDescription description,

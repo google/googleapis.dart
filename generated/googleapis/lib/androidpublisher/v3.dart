@@ -20,8 +20,6 @@
 ///
 /// Create an instance of [AndroidPublisherApi] to access these resources:
 ///
-/// - [ApplicationsResource]
-///   - [ApplicationsPricingResource]
 /// - [EditsResource]
 ///   - [EditsApksResource]
 ///   - [EditsBundlesResource]
@@ -34,6 +32,7 @@
 ///   - [EditsTracksResource]
 /// - [InappproductsResource]
 /// - [InternalappsharingartifactsResource]
+/// - [MonetizationResource]
 /// - [OrdersResource]
 /// - [PurchasesResource]
 ///   - [PurchasesProductsResource]
@@ -51,6 +50,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
+import '../shared.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -72,11 +72,11 @@ class AndroidPublisherApi {
 
   final commons.ApiRequester _requester;
 
-  ApplicationsResource get applications => ApplicationsResource(_requester);
   EditsResource get edits => EditsResource(_requester);
   InappproductsResource get inappproducts => InappproductsResource(_requester);
   InternalappsharingartifactsResource get internalappsharingartifacts =>
       InternalappsharingartifactsResource(_requester);
+  MonetizationResource get monetization => MonetizationResource(_requester);
   OrdersResource get orders => OrdersResource(_requester);
   PurchasesResource get purchases => PurchasesResource(_requester);
   ReviewsResource get reviews => ReviewsResource(_requester);
@@ -87,66 +87,6 @@ class AndroidPublisherApi {
       core.String servicePath = ''})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
-}
-
-class ApplicationsResource {
-  final commons.ApiRequester _requester;
-
-  ApplicationsPricingResource get pricing =>
-      ApplicationsPricingResource(_requester);
-
-  ApplicationsResource(commons.ApiRequester client) : _requester = client;
-}
-
-class ApplicationsPricingResource {
-  final commons.ApiRequester _requester;
-
-  ApplicationsPricingResource(commons.ApiRequester client)
-      : _requester = client;
-
-  /// Calculates the region prices, using today's exchange rate and
-  /// country-specific pricing patterns, based on the price in the request for a
-  /// set of regions.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [packageName] - Required. The app package name.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [ConvertRegionPricesResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<ConvertRegionPricesResponse> convertRegionPrices(
-    ConvertRegionPricesRequest request,
-    core.String packageName, {
-    core.String? $fields,
-  }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final _url = 'androidpublisher/v3/applications/' +
-        commons.escapeVariable('$packageName') +
-        '/pricing:convertRegionPrices';
-
-    final _response = await _requester.request(
-      _url,
-      'POST',
-      body: _body,
-      queryParams: _queryParams,
-    );
-    return ConvertRegionPricesResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
-  }
 }
 
 class EditsResource {
@@ -2545,6 +2485,56 @@ class InternalappsharingartifactsResource {
       uploadOptions: uploadOptions,
     );
     return InternalAppSharingArtifact.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class MonetizationResource {
+  final commons.ApiRequester _requester;
+
+  MonetizationResource(commons.ApiRequester client) : _requester = client;
+
+  /// Calculates the region prices, using today's exchange rate and
+  /// country-specific pricing patterns, based on the price in the request for a
+  /// set of regions.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Required. The app package name.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ConvertRegionPricesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ConvertRegionPricesResponse> convertRegionPrices(
+    ConvertRegionPricesRequest request,
+    core.String packageName, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'androidpublisher/v3/applications/' +
+        commons.escapeVariable('$packageName') +
+        '/pricing:convertRegionPrices';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return ConvertRegionPricesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
 }
@@ -4965,89 +4955,13 @@ class LocalizedText {
 }
 
 /// Represents an amount of money with its currency type.
-class Money {
-  /// The three-letter currency code defined in ISO 4217.
-  core.String? currencyCode;
-
-  /// Number of nano (10^-9) units of the amount.
-  ///
-  /// The value must be between -999,999,999 and +999,999,999 inclusive. If
-  /// `units` is positive, `nanos` must be positive or zero. If `units` is zero,
-  /// `nanos` can be positive, zero, or negative. If `units` is negative,
-  /// `nanos` must be negative or zero. For example $-1.75 is represented as
-  /// `units`=-1 and `nanos`=-750,000,000.
-  core.int? nanos;
-
-  /// The whole units of the amount.
-  ///
-  /// For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar.
-  core.String? units;
-
-  Money({
-    this.currencyCode,
-    this.nanos,
-    this.units,
-  });
-
-  Money.fromJson(core.Map _json)
-      : this(
-          currencyCode: _json.containsKey('currencyCode')
-              ? _json['currencyCode'] as core.String
-              : null,
-          nanos: _json.containsKey('nanos') ? _json['nanos'] as core.int : null,
-          units:
-              _json.containsKey('units') ? _json['units'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (currencyCode != null) 'currencyCode': currencyCode!,
-        if (nanos != null) 'nanos': nanos!,
-        if (units != null) 'units': units!,
-      };
-}
+typedef Money = $Money;
 
 /// Information about the current page.
 ///
 /// List operations that supports paging return only one "page" of results. This
 /// protocol buffer message describes the page that has been returned.
-class PageInfo {
-  /// Maximum number of results returned in one page.
-  ///
-  /// ! The number of results included in the API response.
-  core.int? resultPerPage;
-
-  /// Index of the first result returned in the current page.
-  core.int? startIndex;
-
-  /// Total number of results available on the backend ! The total number of
-  /// results in the result set.
-  core.int? totalResults;
-
-  PageInfo({
-    this.resultPerPage,
-    this.startIndex,
-    this.totalResults,
-  });
-
-  PageInfo.fromJson(core.Map _json)
-      : this(
-          resultPerPage: _json.containsKey('resultPerPage')
-              ? _json['resultPerPage'] as core.int
-              : null,
-          startIndex: _json.containsKey('startIndex')
-              ? _json['startIndex'] as core.int
-              : null,
-          totalResults: _json.containsKey('totalResults')
-              ? _json['totalResults'] as core.int
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (resultPerPage != null) 'resultPerPage': resultPerPage!,
-        if (startIndex != null) 'startIndex': startIndex!,
-        if (totalResults != null) 'totalResults': totalResults!,
-      };
-}
+typedef PageInfo = $PageInfo;
 
 /// Definition of a price, i.e. currency and units.
 class Price {
@@ -5236,25 +5150,7 @@ class ProductPurchase {
 }
 
 /// Request for the product.purchases.acknowledge API.
-class ProductPurchasesAcknowledgeRequest {
-  /// Payload to attach to the purchase.
-  core.String? developerPayload;
-
-  ProductPurchasesAcknowledgeRequest({
-    this.developerPayload,
-  });
-
-  ProductPurchasesAcknowledgeRequest.fromJson(core.Map _json)
-      : this(
-          developerPayload: _json.containsKey('developerPayload')
-              ? _json['developerPayload'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (developerPayload != null) 'developerPayload': developerPayload!,
-      };
-}
+typedef ProductPurchasesAcknowledgeRequest = $PurchasesAcknowledgeRequest;
 
 /// An Android app review.
 class Review {
@@ -5883,25 +5779,7 @@ class SubscriptionPurchase {
 }
 
 /// Request for the purchases.subscriptions.acknowledge API.
-class SubscriptionPurchasesAcknowledgeRequest {
-  /// Payload to attach to the purchase.
-  core.String? developerPayload;
-
-  SubscriptionPurchasesAcknowledgeRequest({
-    this.developerPayload,
-  });
-
-  SubscriptionPurchasesAcknowledgeRequest.fromJson(core.Map _json)
-      : this(
-          developerPayload: _json.containsKey('developerPayload')
-              ? _json['developerPayload'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (developerPayload != null) 'developerPayload': developerPayload!,
-      };
-}
+typedef SubscriptionPurchasesAcknowledgeRequest = $PurchasesAcknowledgeRequest;
 
 /// Request for the purchases.subscriptions.defer API.
 class SubscriptionPurchasesDeferRequest {
@@ -6039,33 +5917,7 @@ class Timestamp {
 /// indicates whether a next/previous page is available and provides a mean of
 /// accessing this page. ListRequest.page_token should be set to either
 /// next_page_token or previous_page_token to access another page.
-class TokenPagination {
-  /// Tokens to pass to the standard list field 'page_token'.
-  ///
-  /// Whenever available, tokens are preferred over manipulating start_index.
-  core.String? nextPageToken;
-  core.String? previousPageToken;
-
-  TokenPagination({
-    this.nextPageToken,
-    this.previousPageToken,
-  });
-
-  TokenPagination.fromJson(core.Map _json)
-      : this(
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
-              : null,
-          previousPageToken: _json.containsKey('previousPageToken')
-              ? _json['previousPageToken'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (previousPageToken != null) 'previousPageToken': previousPageToken!,
-      };
-}
+typedef TokenPagination = $TokenPagination;
 
 /// A track configuration.
 ///

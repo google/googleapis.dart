@@ -41,7 +41,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-import '../src/empty.dart';
+import '../shared.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -1174,42 +1174,7 @@ typedef CancelOperationRequest = $Empty;
 /// anniversary * A year on its own, with zero month and day values * A year and
 /// month value, with a zero day, such as a credit card expiration date Related
 /// types are google.type.TimeOfDay and `google.protobuf.Timestamp`.
-class Date {
-  /// Day of a month.
-  ///
-  /// Must be from 1 to 31 and valid for the year and month, or 0 to specify a
-  /// year by itself or a year and month where the day isn't significant.
-  core.int? day;
-
-  /// Month of a year.
-  ///
-  /// Must be from 1 to 12, or 0 to specify a year without a month and day.
-  core.int? month;
-
-  /// Year of the date.
-  ///
-  /// Must be from 1 to 9999, or 0 to specify a date without a year.
-  core.int? year;
-
-  Date({
-    this.day,
-    this.month,
-    this.year,
-  });
-
-  Date.fromJson(core.Map _json)
-      : this(
-          day: _json.containsKey('day') ? _json['day'] as core.int : null,
-          month: _json.containsKey('month') ? _json['month'] as core.int : null,
-          year: _json.containsKey('year') ? _json['year'] as core.int : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (day != null) 'day': day!,
-        if (month != null) 'month': month!,
-        if (year != null) 'year': year!,
-      };
-}
+typedef Date = $Date;
 
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs.
@@ -2661,40 +2626,7 @@ class OSPolicyAssignmentInstanceFilter {
 }
 
 /// VM inventory details.
-class OSPolicyAssignmentInstanceFilterInventory {
-  /// The OS short name
-  ///
-  /// Required.
-  core.String? osShortName;
-
-  /// The OS version Prefix matches are supported if asterisk(*) is provided as
-  /// the last character.
-  ///
-  /// For example, to match all versions with a major version of `7`, specify
-  /// the following value for this field `7.*` An empty string matches all OS
-  /// versions.
-  core.String? osVersion;
-
-  OSPolicyAssignmentInstanceFilterInventory({
-    this.osShortName,
-    this.osVersion,
-  });
-
-  OSPolicyAssignmentInstanceFilterInventory.fromJson(core.Map _json)
-      : this(
-          osShortName: _json.containsKey('osShortName')
-              ? _json['osShortName'] as core.String
-              : null,
-          osVersion: _json.containsKey('osVersion')
-              ? _json['osVersion'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (osShortName != null) 'osShortName': osShortName!,
-        if (osVersion != null) 'osVersion': osVersion!,
-      };
-}
+typedef OSPolicyAssignmentInstanceFilterInventory = $Shared06;
 
 /// Message representing label set.
 ///
@@ -3159,40 +3091,7 @@ class OSPolicyAssignmentRollout {
 }
 
 /// Filtering criteria to select VMs based on inventory details.
-class OSPolicyInventoryFilter {
-  /// The OS short name
-  ///
-  /// Required.
-  core.String? osShortName;
-
-  /// The OS version Prefix matches are supported if asterisk(*) is provided as
-  /// the last character.
-  ///
-  /// For example, to match all versions with a major version of `7`, specify
-  /// the following value for this field `7.*` An empty string matches all OS
-  /// versions.
-  core.String? osVersion;
-
-  OSPolicyInventoryFilter({
-    this.osShortName,
-    this.osVersion,
-  });
-
-  OSPolicyInventoryFilter.fromJson(core.Map _json)
-      : this(
-          osShortName: _json.containsKey('osShortName')
-              ? _json['osShortName'] as core.String
-              : null,
-          osVersion: _json.containsKey('osVersion')
-              ? _json['osVersion'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (osShortName != null) 'osShortName': osShortName!,
-        if (osVersion != null) 'osVersion': osVersion!,
-      };
-}
+typedef OSPolicyInventoryFilter = $Shared06;
 
 /// Filtering criteria to select VMs based on OS details.
 class OSPolicyOSFilter {
@@ -3928,25 +3827,7 @@ class OSPolicyResourcePackageResource {
 ///
 /// - install: `apt-get update && apt-get -y install [name]` - remove: `apt-get
 /// -y remove [name]`
-class OSPolicyResourcePackageResourceAPT {
-  /// Package name.
-  ///
-  /// Required.
-  core.String? name;
-
-  OSPolicyResourcePackageResourceAPT({
-    this.name,
-  });
-
-  OSPolicyResourcePackageResourceAPT.fromJson(core.Map _json)
-      : this(
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-      };
-}
+typedef OSPolicyResourcePackageResourceAPT = $Shared01;
 
 /// A deb package file.
 ///
@@ -3989,25 +3870,7 @@ class OSPolicyResourcePackageResourceDeb {
 ///
 /// - install: `googet -noconfirm install package` - remove: `googet -noconfirm
 /// remove package`
-class OSPolicyResourcePackageResourceGooGet {
-  /// Package name.
-  ///
-  /// Required.
-  core.String? name;
-
-  OSPolicyResourcePackageResourceGooGet({
-    this.name,
-  });
-
-  OSPolicyResourcePackageResourceGooGet.fromJson(core.Map _json)
-      : this(
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-      };
-}
+typedef OSPolicyResourcePackageResourceGooGet = $Shared01;
 
 /// An MSI package.
 ///
@@ -4088,48 +3951,12 @@ class OSPolicyResourcePackageResourceRPM {
 /// A package managed by YUM.
 ///
 /// - install: `yum -y install package` - remove: `yum -y remove package`
-class OSPolicyResourcePackageResourceYUM {
-  /// Package name.
-  ///
-  /// Required.
-  core.String? name;
-
-  OSPolicyResourcePackageResourceYUM({
-    this.name,
-  });
-
-  OSPolicyResourcePackageResourceYUM.fromJson(core.Map _json)
-      : this(
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-      };
-}
+typedef OSPolicyResourcePackageResourceYUM = $Shared01;
 
 /// A package managed by Zypper.
 ///
 /// - install: `zypper -y install package` - remove: `zypper -y rm package`
-class OSPolicyResourcePackageResourceZypper {
-  /// Package name.
-  ///
-  /// Required.
-  core.String? name;
-
-  OSPolicyResourcePackageResourceZypper({
-    this.name,
-  });
-
-  OSPolicyResourcePackageResourceZypper.fromJson(core.Map _json)
-      : this(
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-      };
-}
+typedef OSPolicyResourcePackageResourceZypper = $Shared01;
 
 /// A resource that manages a package repository.
 class OSPolicyResourceRepositoryResource {
@@ -4480,49 +4307,7 @@ class Operation {
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-class Status {
-  /// The status code, which should be an enum value of google.rpc.Code.
-  core.int? code;
-
-  /// A list of messages that carry the error details.
-  ///
-  /// There is a common set of message types for APIs to use.
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object?>>? details;
-
-  /// A developer-facing error message, which should be in English.
-  ///
-  /// Any user-facing error message should be localized and sent in the
-  /// google.rpc.Status.details field, or localized by the client.
-  core.String? message;
-
-  Status({
-    this.code,
-    this.details,
-    this.message,
-  });
-
-  Status.fromJson(core.Map _json)
-      : this(
-          code: _json.containsKey('code') ? _json['code'] as core.int : null,
-          details: _json.containsKey('details')
-              ? (_json['details'] as core.List)
-                  .map((value) => value as core.Map<core.String, core.dynamic>)
-                  .toList()
-              : null,
-          message: _json.containsKey('message')
-              ? _json['message'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (code != null) 'code': code!,
-        if (details != null) 'details': details!,
-        if (message != null) 'message': message!,
-      };
-}
+typedef Status = $Status;
 
 /// This API resource represents the vulnerability report for a specified
 /// Compute Engine virtual machine (VM) instance at a given point in time.

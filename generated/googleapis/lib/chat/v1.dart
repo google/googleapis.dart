@@ -40,7 +40,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-import '../src/empty.dart';
+import '../shared.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -952,30 +952,7 @@ class SpacesMessagesAttachmentsResource {
 /// For example, consider three snooze buttons: snooze now, snooze 1 day, snooze
 /// next week. You might use action method = snooze(), passing the snooze type
 /// and snooze time in the list of string parameters.
-class ActionParameter {
-  /// The name of the parameter for the action script.
-  core.String? key;
-
-  /// The value of the parameter.
-  core.String? value;
-
-  ActionParameter({
-    this.key,
-    this.value,
-  });
-
-  ActionParameter.fromJson(core.Map _json)
-      : this(
-          key: _json.containsKey('key') ? _json['key'] as core.String : null,
-          value:
-              _json.containsKey('value') ? _json['value'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (key != null) 'key': key!,
-        if (value != null) 'value': value!,
-      };
-}
+typedef ActionParameter = $ActionParameter;
 
 /// Parameters that a bot can use to configure how it's response is posted.
 class ActionResponse {
@@ -1541,58 +1518,7 @@ class CardHeader {
 /// - hexString.length; var resultBuilder = \['#'\]; for (var i = 0; i <
 /// missingZeros; i++) { resultBuilder.push('0'); }
 /// resultBuilder.push(hexString); return resultBuilder.join(''); }; // ...
-class Color {
-  /// The fraction of this color that should be applied to the pixel.
-  ///
-  /// That is, the final pixel color is defined by the equation: `pixel color =
-  /// alpha * (this color) + (1.0 - alpha) * (background color)` This means that
-  /// a value of 1.0 corresponds to a solid color, whereas a value of 0.0
-  /// corresponds to a completely transparent color. This uses a wrapper message
-  /// rather than a simple float scalar so that it is possible to distinguish
-  /// between a default value and the value being unset. If omitted, this color
-  /// object is rendered as a solid color (as if the alpha value had been
-  /// explicitly given a value of 1.0).
-  core.double? alpha;
-
-  /// The amount of blue in the color as a value in the interval \[0, 1\].
-  core.double? blue;
-
-  /// The amount of green in the color as a value in the interval \[0, 1\].
-  core.double? green;
-
-  /// The amount of red in the color as a value in the interval \[0, 1\].
-  core.double? red;
-
-  Color({
-    this.alpha,
-    this.blue,
-    this.green,
-    this.red,
-  });
-
-  Color.fromJson(core.Map _json)
-      : this(
-          alpha: _json.containsKey('alpha')
-              ? (_json['alpha'] as core.num).toDouble()
-              : null,
-          blue: _json.containsKey('blue')
-              ? (_json['blue'] as core.num).toDouble()
-              : null,
-          green: _json.containsKey('green')
-              ? (_json['green'] as core.num).toDouble()
-              : null,
-          red: _json.containsKey('red')
-              ? (_json['red'] as core.num).toDouble()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (alpha != null) 'alpha': alpha!,
-        if (blue != null) 'blue': blue!,
-        if (green != null) 'green': green!,
-        if (red != null) 'red': red!,
-      };
-}
+typedef Color = $Color;
 
 /// Next available ID = 8
 class CommonEventObject {
@@ -2098,30 +2024,7 @@ class GoogleAppsCardV1Action {
 /// For example, consider three snooze buttons: snooze now, snooze 1 day, snooze
 /// next week. You might use action method = snooze(), passing the snooze type
 /// and snooze time in the list of string parameters.
-class GoogleAppsCardV1ActionParameter {
-  /// The name of the parameter for the action script.
-  core.String? key;
-
-  /// The value of the parameter.
-  core.String? value;
-
-  GoogleAppsCardV1ActionParameter({
-    this.key,
-    this.value,
-  });
-
-  GoogleAppsCardV1ActionParameter.fromJson(core.Map _json)
-      : this(
-          key: _json.containsKey('key') ? _json['key'] as core.String : null,
-          value:
-              _json.containsKey('value') ? _json['value'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (key != null) 'key': key!,
-        if (value != null) 'value': value!,
-      };
-}
+typedef GoogleAppsCardV1ActionParameter = $ActionParameter;
 
 /// Represents the complete border style applied to widgets.
 class GoogleAppsCardV1BorderStyle {
@@ -3251,22 +3154,7 @@ class GoogleAppsCardV1SelectionItem {
 /// A suggestion item.
 ///
 /// Only supports text for now.
-class GoogleAppsCardV1SuggestionItem {
-  core.String? text;
-
-  GoogleAppsCardV1SuggestionItem({
-    this.text,
-  });
-
-  GoogleAppsCardV1SuggestionItem.fromJson(core.Map _json)
-      : this(
-          text: _json.containsKey('text') ? _json['text'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (text != null) 'text': text!,
-      };
-}
+typedef GoogleAppsCardV1SuggestionItem = $Shared04;
 
 /// A container wrapping elements necessary for showing suggestion items used in
 /// text input autocomplete.
@@ -3963,25 +3851,7 @@ class ListSpacesResponse {
 }
 
 /// Media resource.
-class Media {
-  /// Name of the media resource.
-  core.String? resourceName;
-
-  Media({
-    this.resourceName,
-  });
-
-  Media.fromJson(core.Map _json)
-      : this(
-          resourceName: _json.containsKey('resourceName')
-              ? _json['resourceName'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (resourceName != null) 'resourceName': resourceName!,
-      };
-}
+typedef Media = $Media;
 
 /// Represents a membership relation in Google Chat.
 class Membership {
@@ -4477,22 +4347,7 @@ class TextButton {
 /// A paragraph of text.
 ///
 /// Formatted text supported.
-class TextParagraph {
-  core.String? text;
-
-  TextParagraph({
-    this.text,
-  });
-
-  TextParagraph.fromJson(core.Map _json)
-      : this(
-          text: _json.containsKey('text') ? _json['text'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (text != null) 'text': text!,
-      };
-}
+typedef TextParagraph = $Shared04;
 
 /// A thread in Google Chat.
 class Thread {

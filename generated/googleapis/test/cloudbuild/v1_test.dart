@@ -4594,6 +4594,7 @@ void main() {
       final res = api.CloudBuildApi(mock).projects.githubEnterpriseConfigs;
       final arg_request = buildGitHubEnterpriseConfig();
       final arg_parent = 'foo';
+      final arg_gheConfigId = 'foo';
       final arg_projectId = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4633,6 +4634,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['gheConfigId']!.first,
+          unittest.equals(arg_gheConfigId),
+        );
+        unittest.expect(
           queryMap['projectId']!.first,
           unittest.equals(arg_projectId),
         );
@@ -4648,7 +4653,9 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.create(arg_request, arg_parent,
-          projectId: arg_projectId, $fields: arg_$fields);
+          gheConfigId: arg_gheConfigId,
+          projectId: arg_projectId,
+          $fields: arg_$fields);
       checkOperation(response as api.Operation);
     });
 
@@ -5293,6 +5300,7 @@ void main() {
           api.CloudBuildApi(mock).projects.locations.githubEnterpriseConfigs;
       final arg_request = buildGitHubEnterpriseConfig();
       final arg_parent = 'foo';
+      final arg_gheConfigId = 'foo';
       final arg_projectId = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -5332,6 +5340,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['gheConfigId']!.first,
+          unittest.equals(arg_gheConfigId),
+        );
+        unittest.expect(
           queryMap['projectId']!.first,
           unittest.equals(arg_projectId),
         );
@@ -5347,7 +5359,9 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.create(arg_request, arg_parent,
-          projectId: arg_projectId, $fields: arg_$fields);
+          gheConfigId: arg_gheConfigId,
+          projectId: arg_projectId,
+          $fields: arg_$fields);
       checkOperation(response as api.Operation);
     });
 

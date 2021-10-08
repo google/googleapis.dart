@@ -41,7 +41,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-import '../src/empty.dart';
+import '../shared.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -506,6 +506,12 @@ class ProjectsGithubEnterpriseConfigsResource {
   /// projects/{$project_number} or projects/{$project_id}
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
+  /// [gheConfigId] - Optional. The ID to use for the GithubEnterpriseConfig,
+  /// which will become the final component of the GithubEnterpriseConfig’s
+  /// resource name. ghe_config_id must meet the following requirements: + They
+  /// must contain only alphanumeric characters and dashes. + They can be 1-64
+  /// characters long. + They must begin and end with an alphanumeric character
+  ///
   /// [projectId] - ID of the project.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -521,11 +527,13 @@ class ProjectsGithubEnterpriseConfigsResource {
   async.Future<Operation> create(
     GitHubEnterpriseConfig request,
     core.String parent, {
+    core.String? gheConfigId,
     core.String? projectId,
     core.String? $fields,
   }) async {
     final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
+      if (gheConfigId != null) 'gheConfigId': [gheConfigId],
       if (projectId != null) 'projectId': [projectId],
       if ($fields != null) 'fields': [$fields],
     };
@@ -1073,6 +1081,12 @@ class ProjectsLocationsGithubEnterpriseConfigsResource {
   /// projects/{$project_number} or projects/{$project_id}
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
+  /// [gheConfigId] - Optional. The ID to use for the GithubEnterpriseConfig,
+  /// which will become the final component of the GithubEnterpriseConfig’s
+  /// resource name. ghe_config_id must meet the following requirements: + They
+  /// must contain only alphanumeric characters and dashes. + They can be 1-64
+  /// characters long. + They must begin and end with an alphanumeric character
+  ///
   /// [projectId] - ID of the project.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1088,11 +1102,13 @@ class ProjectsLocationsGithubEnterpriseConfigsResource {
   async.Future<Operation> create(
     GitHubEnterpriseConfig request,
     core.String parent, {
+    core.String? gheConfigId,
     core.String? projectId,
     core.String? $fields,
   }) async {
     final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
+      if (gheConfigId != null) 'gheConfigId': [gheConfigId],
       if (projectId != null) 'projectId': [projectId],
       if ($fields != null) 'fields': [$fields],
     };
@@ -3846,45 +3862,7 @@ class CancelBuildRequest {
 typedef CancelOperationRequest = $Empty;
 
 /// Metadata for `CreateGithubEnterpriseConfig` operation.
-class CreateGitHubEnterpriseConfigOperationMetadata {
-  /// Time the operation was completed.
-  core.String? completeTime;
-
-  /// Time the operation was created.
-  core.String? createTime;
-
-  /// The resource name of the GitHubEnterprise to be created.
-  ///
-  /// Format:
-  /// `projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}`.
-  core.String? githubEnterpriseConfig;
-
-  CreateGitHubEnterpriseConfigOperationMetadata({
-    this.completeTime,
-    this.createTime,
-    this.githubEnterpriseConfig,
-  });
-
-  CreateGitHubEnterpriseConfigOperationMetadata.fromJson(core.Map _json)
-      : this(
-          completeTime: _json.containsKey('completeTime')
-              ? _json['completeTime'] as core.String
-              : null,
-          createTime: _json.containsKey('createTime')
-              ? _json['createTime'] as core.String
-              : null,
-          githubEnterpriseConfig: _json.containsKey('githubEnterpriseConfig')
-              ? _json['githubEnterpriseConfig'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (completeTime != null) 'completeTime': completeTime!,
-        if (createTime != null) 'createTime': createTime!,
-        if (githubEnterpriseConfig != null)
-          'githubEnterpriseConfig': githubEnterpriseConfig!,
-      };
-}
+typedef CreateGitHubEnterpriseConfigOperationMetadata = $OperationMetadata03;
 
 /// Metadata for the `CreateWorkerPool` operation.
 class CreateWorkerPoolOperationMetadata {
@@ -4440,90 +4418,7 @@ class GitRepoSource {
 }
 
 /// Represents the metadata of the long-running operation.
-class GoogleDevtoolsCloudbuildV2OperationMetadata {
-  /// API version used to start the operation.
-  ///
-  /// Output only.
-  core.String? apiVersion;
-
-  /// The time the operation was created.
-  ///
-  /// Output only.
-  core.String? createTime;
-
-  /// The time the operation finished running.
-  ///
-  /// Output only.
-  core.String? endTime;
-
-  /// Identifies whether the user has requested cancellation of the operation.
-  ///
-  /// Operations that have successfully been cancelled have Operation.error
-  /// value with a google.rpc.Status.code of 1, corresponding to
-  /// `Code.CANCELLED`.
-  ///
-  /// Output only.
-  core.bool? requestedCancellation;
-
-  /// Human-readable status of the operation, if any.
-  ///
-  /// Output only.
-  core.String? statusMessage;
-
-  /// Server-defined resource path for the target of the operation.
-  ///
-  /// Output only.
-  core.String? target;
-
-  /// Name of the verb executed by the operation.
-  ///
-  /// Output only.
-  core.String? verb;
-
-  GoogleDevtoolsCloudbuildV2OperationMetadata({
-    this.apiVersion,
-    this.createTime,
-    this.endTime,
-    this.requestedCancellation,
-    this.statusMessage,
-    this.target,
-    this.verb,
-  });
-
-  GoogleDevtoolsCloudbuildV2OperationMetadata.fromJson(core.Map _json)
-      : this(
-          apiVersion: _json.containsKey('apiVersion')
-              ? _json['apiVersion'] as core.String
-              : null,
-          createTime: _json.containsKey('createTime')
-              ? _json['createTime'] as core.String
-              : null,
-          endTime: _json.containsKey('endTime')
-              ? _json['endTime'] as core.String
-              : null,
-          requestedCancellation: _json.containsKey('requestedCancellation')
-              ? _json['requestedCancellation'] as core.bool
-              : null,
-          statusMessage: _json.containsKey('statusMessage')
-              ? _json['statusMessage'] as core.String
-              : null,
-          target: _json.containsKey('target')
-              ? _json['target'] as core.String
-              : null,
-          verb: _json.containsKey('verb') ? _json['verb'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (apiVersion != null) 'apiVersion': apiVersion!,
-        if (createTime != null) 'createTime': createTime!,
-        if (endTime != null) 'endTime': endTime!,
-        if (requestedCancellation != null)
-          'requestedCancellation': requestedCancellation!,
-        if (statusMessage != null) 'statusMessage': statusMessage!,
-        if (target != null) 'target': target!,
-        if (verb != null) 'verb': verb!,
-      };
-}
+typedef GoogleDevtoolsCloudbuildV2OperationMetadata = $OperationMetadata00;
 
 /// HTTPDelivery is the delivery configuration for an HTTP notification.
 class HTTPDelivery {
@@ -4598,53 +4493,7 @@ class Hash {
 /// (stream google.api.HttpBody); } Use of this type only changes how the
 /// request and response bodies are handled, all other features will continue to
 /// work unchanged.
-class HttpBody {
-  /// The HTTP Content-Type header value specifying the content type of the
-  /// body.
-  core.String? contentType;
-
-  /// The HTTP request/response body as raw binary.
-  core.String? data;
-  core.List<core.int> get dataAsBytes => convert.base64.decode(data!);
-
-  set dataAsBytes(core.List<core.int> _bytes) {
-    data =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
-  }
-
-  /// Application specific response metadata.
-  ///
-  /// Must be set in the first response for streaming APIs.
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object?>>? extensions;
-
-  HttpBody({
-    this.contentType,
-    this.data,
-    this.extensions,
-  });
-
-  HttpBody.fromJson(core.Map _json)
-      : this(
-          contentType: _json.containsKey('contentType')
-              ? _json['contentType'] as core.String
-              : null,
-          data: _json.containsKey('data') ? _json['data'] as core.String : null,
-          extensions: _json.containsKey('extensions')
-              ? (_json['extensions'] as core.List)
-                  .map((value) => value as core.Map<core.String, core.dynamic>)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (contentType != null) 'contentType': contentType!,
-        if (data != null) 'data': data!,
-        if (extensions != null) 'extensions': extensions!,
-      };
-}
+typedef HttpBody = $HttpBody;
 
 /// Pairs a set of secret environment variables mapped to encrypted values with
 /// the Cloud KMS key to use to decrypt the value.
@@ -5165,89 +5014,7 @@ class Operation {
 }
 
 /// Represents the metadata of the long-running operation.
-class OperationMetadata {
-  /// API version used to start the operation.
-  ///
-  /// Output only.
-  core.String? apiVersion;
-
-  /// Identifies whether the user has requested cancellation of the operation.
-  ///
-  /// Operations that have been cancelled successfully have Operation.error
-  /// value with a google.rpc.Status.code of 1, corresponding to
-  /// `Code.CANCELLED`.
-  ///
-  /// Output only.
-  core.bool? cancelRequested;
-
-  /// The time the operation was created.
-  ///
-  /// Output only.
-  core.String? createTime;
-
-  /// The time the operation finished running.
-  ///
-  /// Output only.
-  core.String? endTime;
-
-  /// Human-readable status of the operation, if any.
-  ///
-  /// Output only.
-  core.String? statusDetail;
-
-  /// Server-defined resource path for the target of the operation.
-  ///
-  /// Output only.
-  core.String? target;
-
-  /// Name of the verb executed by the operation.
-  ///
-  /// Output only.
-  core.String? verb;
-
-  OperationMetadata({
-    this.apiVersion,
-    this.cancelRequested,
-    this.createTime,
-    this.endTime,
-    this.statusDetail,
-    this.target,
-    this.verb,
-  });
-
-  OperationMetadata.fromJson(core.Map _json)
-      : this(
-          apiVersion: _json.containsKey('apiVersion')
-              ? _json['apiVersion'] as core.String
-              : null,
-          cancelRequested: _json.containsKey('cancelRequested')
-              ? _json['cancelRequested'] as core.bool
-              : null,
-          createTime: _json.containsKey('createTime')
-              ? _json['createTime'] as core.String
-              : null,
-          endTime: _json.containsKey('endTime')
-              ? _json['endTime'] as core.String
-              : null,
-          statusDetail: _json.containsKey('statusDetail')
-              ? _json['statusDetail'] as core.String
-              : null,
-          target: _json.containsKey('target')
-              ? _json['target'] as core.String
-              : null,
-          verb: _json.containsKey('verb') ? _json['verb'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (apiVersion != null) 'apiVersion': apiVersion!,
-        if (cancelRequested != null) 'cancelRequested': cancelRequested!,
-        if (createTime != null) 'createTime': createTime!,
-        if (endTime != null) 'endTime': endTime!,
-        if (statusDetail != null) 'statusDetail': statusDetail!,
-        if (target != null) 'target': target!,
-        if (verb != null) 'verb': verb!,
-      };
-}
+typedef OperationMetadata = $OperationMetadata02;
 
 /// Details about how a build should be executed on a `WorkerPool`.
 ///
@@ -5308,45 +5075,7 @@ class PrivatePoolV1Config {
 }
 
 /// Metadata for `ProcessAppManifestCallback` operation.
-class ProcessAppManifestCallbackOperationMetadata {
-  /// Time the operation was completed.
-  core.String? completeTime;
-
-  /// Time the operation was created.
-  core.String? createTime;
-
-  /// The resource name of the GitHubEnterprise to be created.
-  ///
-  /// Format:
-  /// `projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}`.
-  core.String? githubEnterpriseConfig;
-
-  ProcessAppManifestCallbackOperationMetadata({
-    this.completeTime,
-    this.createTime,
-    this.githubEnterpriseConfig,
-  });
-
-  ProcessAppManifestCallbackOperationMetadata.fromJson(core.Map _json)
-      : this(
-          completeTime: _json.containsKey('completeTime')
-              ? _json['completeTime'] as core.String
-              : null,
-          createTime: _json.containsKey('createTime')
-              ? _json['createTime'] as core.String
-              : null,
-          githubEnterpriseConfig: _json.containsKey('githubEnterpriseConfig')
-              ? _json['githubEnterpriseConfig'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (completeTime != null) 'completeTime': completeTime!,
-        if (createTime != null) 'createTime': createTime!,
-        if (githubEnterpriseConfig != null)
-          'githubEnterpriseConfig': githubEnterpriseConfig!,
-      };
-}
+typedef ProcessAppManifestCallbackOperationMetadata = $OperationMetadata03;
 
 /// PubsubConfig describes the configuration of a trigger that creates a build
 /// whenever a Pub/Sub message is published.
@@ -6095,49 +5824,7 @@ class SourceProvenance {
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-class Status {
-  /// The status code, which should be an enum value of google.rpc.Code.
-  core.int? code;
-
-  /// A list of messages that carry the error details.
-  ///
-  /// There is a common set of message types for APIs to use.
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object?>>? details;
-
-  /// A developer-facing error message, which should be in English.
-  ///
-  /// Any user-facing error message should be localized and sent in the
-  /// google.rpc.Status.details field, or localized by the client.
-  core.String? message;
-
-  Status({
-    this.code,
-    this.details,
-    this.message,
-  });
-
-  Status.fromJson(core.Map _json)
-      : this(
-          code: _json.containsKey('code') ? _json['code'] as core.int : null,
-          details: _json.containsKey('details')
-              ? (_json['details'] as core.List)
-                  .map((value) => value as core.Map<core.String, core.dynamic>)
-                  .toList()
-              : null,
-          message: _json.containsKey('message')
-              ? _json['message'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (code != null) 'code': code!,
-        if (details != null) 'details': details!,
-        if (message != null) 'message': message!,
-      };
-}
+typedef Status = $Status;
 
 /// Location of the source in an archive file in Google Cloud Storage.
 class StorageSource {

@@ -31,7 +31,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-import '../src/empty.dart';
+import '../shared.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -713,44 +713,7 @@ class GoogleCloudAssuredworkloadsV1Workload {
 }
 
 /// Settings specific to the Key Management Service.
-class GoogleCloudAssuredworkloadsV1WorkloadKMSSettings {
-  /// Input only.
-  ///
-  /// Immutable. The time at which the Key Management Service will automatically
-  /// create a new version of the crypto key and mark it as the primary.
-  ///
-  /// Required.
-  core.String? nextRotationTime;
-
-  /// Input only.
-  ///
-  /// Immutable. \[next_rotation_time\] will be advanced by this period when the
-  /// Key Management Service automatically rotates a key. Must be at least 24
-  /// hours and at most 876,000 hours.
-  ///
-  /// Required.
-  core.String? rotationPeriod;
-
-  GoogleCloudAssuredworkloadsV1WorkloadKMSSettings({
-    this.nextRotationTime,
-    this.rotationPeriod,
-  });
-
-  GoogleCloudAssuredworkloadsV1WorkloadKMSSettings.fromJson(core.Map _json)
-      : this(
-          nextRotationTime: _json.containsKey('nextRotationTime')
-              ? _json['nextRotationTime'] as core.String
-              : null,
-          rotationPeriod: _json.containsKey('rotationPeriod')
-              ? _json['rotationPeriod'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (nextRotationTime != null) 'nextRotationTime': nextRotationTime!,
-        if (rotationPeriod != null) 'rotationPeriod': rotationPeriod!,
-      };
-}
+typedef GoogleCloudAssuredworkloadsV1WorkloadKMSSettings = $WorkloadKMSSettings;
 
 /// Represent the resources that are children of this Workload.
 class GoogleCloudAssuredworkloadsV1WorkloadResourceInfo {
@@ -1269,44 +1232,8 @@ class GoogleCloudAssuredworkloadsV1beta1WorkloadIL4Settings {
 }
 
 /// Settings specific to the Key Management Service.
-class GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings {
-  /// Input only.
-  ///
-  /// Immutable. The time at which the Key Management Service will automatically
-  /// create a new version of the crypto key and mark it as the primary.
-  ///
-  /// Required.
-  core.String? nextRotationTime;
-
-  /// Input only.
-  ///
-  /// Immutable. \[next_rotation_time\] will be advanced by this period when the
-  /// Key Management Service automatically rotates a key. Must be at least 24
-  /// hours and at most 876,000 hours.
-  ///
-  /// Required.
-  core.String? rotationPeriod;
-
-  GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings({
-    this.nextRotationTime,
-    this.rotationPeriod,
-  });
-
-  GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings.fromJson(core.Map _json)
-      : this(
-          nextRotationTime: _json.containsKey('nextRotationTime')
-              ? _json['nextRotationTime'] as core.String
-              : null,
-          rotationPeriod: _json.containsKey('rotationPeriod')
-              ? _json['rotationPeriod'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (nextRotationTime != null) 'nextRotationTime': nextRotationTime!,
-        if (rotationPeriod != null) 'rotationPeriod': rotationPeriod!,
-      };
-}
+typedef GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings
+    = $WorkloadKMSSettings;
 
 /// Represent the resources that are children of this Workload.
 class GoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfo {
@@ -1526,46 +1453,4 @@ typedef GoogleProtobufEmpty = $Empty;
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-class GoogleRpcStatus {
-  /// The status code, which should be an enum value of google.rpc.Code.
-  core.int? code;
-
-  /// A list of messages that carry the error details.
-  ///
-  /// There is a common set of message types for APIs to use.
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object?>>? details;
-
-  /// A developer-facing error message, which should be in English.
-  ///
-  /// Any user-facing error message should be localized and sent in the
-  /// google.rpc.Status.details field, or localized by the client.
-  core.String? message;
-
-  GoogleRpcStatus({
-    this.code,
-    this.details,
-    this.message,
-  });
-
-  GoogleRpcStatus.fromJson(core.Map _json)
-      : this(
-          code: _json.containsKey('code') ? _json['code'] as core.int : null,
-          details: _json.containsKey('details')
-              ? (_json['details'] as core.List)
-                  .map((value) => value as core.Map<core.String, core.dynamic>)
-                  .toList()
-              : null,
-          message: _json.containsKey('message')
-              ? _json['message'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (code != null) 'code': code!,
-        if (details != null) 'details': details!,
-        if (message != null) 'message': message!,
-      };
-}
+typedef GoogleRpcStatus = $Status;

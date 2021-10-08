@@ -34,7 +34,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-import '../src/empty.dart';
+import '../shared.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -668,33 +668,7 @@ class GoogleCloudWebriskV1ComputeThreatListDiffResponse {
 }
 
 /// The expected state of a client's local database.
-class GoogleCloudWebriskV1ComputeThreatListDiffResponseChecksum {
-  /// The SHA256 hash of the client state; that is, of the sorted list of all
-  /// hashes present in the database.
-  core.String? sha256;
-  core.List<core.int> get sha256AsBytes => convert.base64.decode(sha256!);
-
-  set sha256AsBytes(core.List<core.int> _bytes) {
-    sha256 =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
-  }
-
-  GoogleCloudWebriskV1ComputeThreatListDiffResponseChecksum({
-    this.sha256,
-  });
-
-  GoogleCloudWebriskV1ComputeThreatListDiffResponseChecksum.fromJson(
-      core.Map _json)
-      : this(
-          sha256: _json.containsKey('sha256')
-              ? _json['sha256'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (sha256 != null) 'sha256': sha256!,
-      };
-}
+typedef GoogleCloudWebriskV1ComputeThreatListDiffResponseChecksum = $Checksum;
 
 /// The uncompressed threat entries in hash format.
 ///
@@ -745,27 +719,7 @@ class GoogleCloudWebriskV1RawHashes {
 }
 
 /// A set of raw indices to remove from a local list.
-class GoogleCloudWebriskV1RawIndices {
-  /// The indices to remove from a lexicographically-sorted local list.
-  core.List<core.int>? indices;
-
-  GoogleCloudWebriskV1RawIndices({
-    this.indices,
-  });
-
-  GoogleCloudWebriskV1RawIndices.fromJson(core.Map _json)
-      : this(
-          indices: _json.containsKey('indices')
-              ? (_json['indices'] as core.List)
-                  .map((value) => value as core.int)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (indices != null) 'indices': indices!,
-      };
-}
+typedef GoogleCloudWebriskV1RawIndices = $RawIndices;
 
 /// The Rice-Golomb encoded data.
 ///
@@ -1278,46 +1232,4 @@ typedef GoogleProtobufEmpty = $Empty;
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-class GoogleRpcStatus {
-  /// The status code, which should be an enum value of google.rpc.Code.
-  core.int? code;
-
-  /// A list of messages that carry the error details.
-  ///
-  /// There is a common set of message types for APIs to use.
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object?>>? details;
-
-  /// A developer-facing error message, which should be in English.
-  ///
-  /// Any user-facing error message should be localized and sent in the
-  /// google.rpc.Status.details field, or localized by the client.
-  core.String? message;
-
-  GoogleRpcStatus({
-    this.code,
-    this.details,
-    this.message,
-  });
-
-  GoogleRpcStatus.fromJson(core.Map _json)
-      : this(
-          code: _json.containsKey('code') ? _json['code'] as core.int : null,
-          details: _json.containsKey('details')
-              ? (_json['details'] as core.List)
-                  .map((value) => value as core.Map<core.String, core.dynamic>)
-                  .toList()
-              : null,
-          message: _json.containsKey('message')
-              ? _json['message'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (code != null) 'code': code!,
-        if (details != null) 'details': details!,
-        if (message != null) 'message': message!,
-      };
-}
+typedef GoogleRpcStatus = $Status;

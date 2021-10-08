@@ -34,7 +34,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-import '../src/empty.dart';
+import '../shared.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -2277,34 +2277,7 @@ class GoogleAppsCloudidentityDevicesV1AndroidAttributes {
 typedef GoogleAppsCloudidentityDevicesV1ApproveDeviceUserMetadata = $Empty;
 
 /// Request message for approving the device to access user data.
-class GoogleAppsCloudidentityDevicesV1ApproveDeviceUserRequest {
-  /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
-  /// the customer.
-  ///
-  /// If you're using this API for your own organization, use
-  /// `customers/my_customer` If you're using this API to manage another
-  /// organization, use `customers/{customer}`, where customer is the customer
-  /// to whom the device belongs.
-  ///
-  /// Optional.
-  core.String? customer;
-
-  GoogleAppsCloudidentityDevicesV1ApproveDeviceUserRequest({
-    this.customer,
-  });
-
-  GoogleAppsCloudidentityDevicesV1ApproveDeviceUserRequest.fromJson(
-      core.Map _json)
-      : this(
-          customer: _json.containsKey('customer')
-              ? _json['customer'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (customer != null) 'customer': customer!,
-      };
-}
+typedef GoogleAppsCloudidentityDevicesV1ApproveDeviceUserRequest = $Request00;
 
 /// Response message for approving the device to access user data.
 class GoogleAppsCloudidentityDevicesV1ApproveDeviceUserResponse {
@@ -2333,34 +2306,7 @@ class GoogleAppsCloudidentityDevicesV1ApproveDeviceUserResponse {
 typedef GoogleAppsCloudidentityDevicesV1BlockDeviceUserMetadata = $Empty;
 
 /// Request message for blocking account on device.
-class GoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest {
-  /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
-  /// the customer.
-  ///
-  /// If you're using this API for your own organization, use
-  /// `customers/my_customer` If you're using this API to manage another
-  /// organization, use `customers/{customer}`, where customer is the customer
-  /// to whom the device belongs.
-  ///
-  /// Optional.
-  core.String? customer;
-
-  GoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest({
-    this.customer,
-  });
-
-  GoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest.fromJson(
-      core.Map _json)
-      : this(
-          customer: _json.containsKey('customer')
-              ? _json['customer'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (customer != null) 'customer': customer!,
-      };
-}
+typedef GoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest = $Request00;
 
 /// Response message for blocking the device from accessing user data.
 class GoogleAppsCloudidentityDevicesV1BlockDeviceUserResponse {
@@ -2389,34 +2335,7 @@ class GoogleAppsCloudidentityDevicesV1BlockDeviceUserResponse {
 typedef GoogleAppsCloudidentityDevicesV1CancelWipeDeviceMetadata = $Empty;
 
 /// Request message for cancelling an unfinished device wipe.
-class GoogleAppsCloudidentityDevicesV1CancelWipeDeviceRequest {
-  /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
-  /// the customer.
-  ///
-  /// If you're using this API for your own organization, use
-  /// `customers/my_customer` If you're using this API to manage another
-  /// organization, use `customers/{customer}`, where customer is the customer
-  /// to whom the device belongs.
-  ///
-  /// Optional.
-  core.String? customer;
-
-  GoogleAppsCloudidentityDevicesV1CancelWipeDeviceRequest({
-    this.customer,
-  });
-
-  GoogleAppsCloudidentityDevicesV1CancelWipeDeviceRequest.fromJson(
-      core.Map _json)
-      : this(
-          customer: _json.containsKey('customer')
-              ? _json['customer'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (customer != null) 'customer': customer!,
-      };
-}
+typedef GoogleAppsCloudidentityDevicesV1CancelWipeDeviceRequest = $Request00;
 
 /// Response message for cancelling an unfinished device wipe.
 class GoogleAppsCloudidentityDevicesV1CancelWipeDeviceResponse {
@@ -2447,34 +2366,8 @@ class GoogleAppsCloudidentityDevicesV1CancelWipeDeviceResponse {
 typedef GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserMetadata = $Empty;
 
 /// Request message for cancelling an unfinished user account wipe.
-class GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserRequest {
-  /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
-  /// the customer.
-  ///
-  /// If you're using this API for your own organization, use
-  /// `customers/my_customer` If you're using this API to manage another
-  /// organization, use `customers/{customer}`, where customer is the customer
-  /// to whom the device belongs.
-  ///
-  /// Optional.
-  core.String? customer;
-
-  GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserRequest({
-    this.customer,
-  });
-
-  GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserRequest.fromJson(
-      core.Map _json)
-      : this(
-          customer: _json.containsKey('customer')
-              ? _json['customer'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (customer != null) 'customer': customer!,
-      };
-}
+typedef GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserRequest
+    = $Request00;
 
 /// Response message for cancelling an unfinished user account wipe.
 class GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserResponse {
@@ -3363,33 +3256,7 @@ typedef GoogleAppsCloudidentityDevicesV1UpdateDeviceMetadata = $Empty;
 typedef GoogleAppsCloudidentityDevicesV1WipeDeviceMetadata = $Empty;
 
 /// Request message for wiping all data on the device.
-class GoogleAppsCloudidentityDevicesV1WipeDeviceRequest {
-  /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
-  /// the customer.
-  ///
-  /// If you're using this API for your own organization, use
-  /// `customers/my_customer` If you're using this API to manage another
-  /// organization, use `customers/{customer}`, where customer is the customer
-  /// to whom the device belongs.
-  ///
-  /// Optional.
-  core.String? customer;
-
-  GoogleAppsCloudidentityDevicesV1WipeDeviceRequest({
-    this.customer,
-  });
-
-  GoogleAppsCloudidentityDevicesV1WipeDeviceRequest.fromJson(core.Map _json)
-      : this(
-          customer: _json.containsKey('customer')
-              ? _json['customer'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (customer != null) 'customer': customer!,
-      };
-}
+typedef GoogleAppsCloudidentityDevicesV1WipeDeviceRequest = $Request00;
 
 /// Response message for wiping all data on the device.
 class GoogleAppsCloudidentityDevicesV1WipeDeviceResponse {
@@ -3419,33 +3286,7 @@ class GoogleAppsCloudidentityDevicesV1WipeDeviceResponse {
 typedef GoogleAppsCloudidentityDevicesV1WipeDeviceUserMetadata = $Empty;
 
 /// Request message for starting an account wipe on device.
-class GoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest {
-  /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
-  /// the customer.
-  ///
-  /// If you're using this API for your own organization, use
-  /// `customers/my_customer` If you're using this API to manage another
-  /// organization, use `customers/{customer}`, where customer is the customer
-  /// to whom the device belongs.
-  ///
-  /// Optional.
-  core.String? customer;
-
-  GoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest({
-    this.customer,
-  });
-
-  GoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest.fromJson(core.Map _json)
-      : this(
-          customer: _json.containsKey('customer')
-              ? _json['customer'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (customer != null) 'customer': customer!,
-      };
-}
+typedef GoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest = $Request00;
 
 /// Response message for wiping the user's account from the device.
 class GoogleAppsCloudidentityDevicesV1WipeDeviceUserResponse {
@@ -4275,49 +4116,7 @@ class SearchTransitiveMembershipsResponse {
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-class Status {
-  /// The status code, which should be an enum value of google.rpc.Code.
-  core.int? code;
-
-  /// A list of messages that carry the error details.
-  ///
-  /// There is a common set of message types for APIs to use.
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object?>>? details;
-
-  /// A developer-facing error message, which should be in English.
-  ///
-  /// Any user-facing error message should be localized and sent in the
-  /// google.rpc.Status.details field, or localized by the client.
-  core.String? message;
-
-  Status({
-    this.code,
-    this.details,
-    this.message,
-  });
-
-  Status.fromJson(core.Map _json)
-      : this(
-          code: _json.containsKey('code') ? _json['code'] as core.int : null,
-          details: _json.containsKey('details')
-              ? (_json['details'] as core.List)
-                  .map((value) => value as core.Map<core.String, core.dynamic>)
-                  .toList()
-              : null,
-          message: _json.containsKey('message')
-              ? _json['message'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (code != null) 'code': code!,
-        if (details != null) 'details': details!,
-        if (message != null) 'message': message!,
-      };
-}
+typedef Status = $Status;
 
 /// Message representing the role of a TransitiveMembership.
 class TransitiveMembershipRole {

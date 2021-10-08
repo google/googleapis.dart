@@ -42,7 +42,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-import '../src/empty.dart';
+import '../shared.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -4253,6 +4253,10 @@ class Cluster {
   /// The configuration options for master authorized networks feature.
   MasterAuthorizedNetworksConfig? masterAuthorizedNetworksConfig;
 
+  /// Configuration for issuance of mTLS keys and certificates to Kubernetes
+  /// pods.
+  MeshCertificates? meshCertificates;
+
   /// Monitoring configuration for the cluster.
   MonitoringConfig? monitoringConfig;
 
@@ -4440,6 +4444,7 @@ class Cluster {
     this.maintenancePolicy,
     this.masterAuth,
     this.masterAuthorizedNetworksConfig,
+    this.meshCertificates,
     this.monitoringConfig,
     this.monitoringService,
     this.name,
@@ -4591,6 +4596,10 @@ class Cluster {
                       _json['masterAuthorizedNetworksConfig']
                           as core.Map<core.String, core.dynamic>)
                   : null,
+          meshCertificates: _json.containsKey('meshCertificates')
+              ? MeshCertificates.fromJson(_json['meshCertificates']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           monitoringConfig: _json.containsKey('monitoringConfig')
               ? MonitoringConfig.fromJson(_json['monitoringConfig']
                   as core.Map<core.String, core.dynamic>)
@@ -4727,6 +4736,7 @@ class Cluster {
         if (masterAuth != null) 'masterAuth': masterAuth!,
         if (masterAuthorizedNetworksConfig != null)
           'masterAuthorizedNetworksConfig': masterAuthorizedNetworksConfig!,
+        if (meshCertificates != null) 'meshCertificates': meshCertificates!,
         if (monitoringConfig != null) 'monitoringConfig': monitoringConfig!,
         if (monitoringService != null) 'monitoringService': monitoringService!,
         if (name != null) 'name': name!,
@@ -4919,6 +4929,10 @@ class ClusterUpdate {
   /// Kubernetes version - "-": picks the default Kubernetes version
   core.String? desiredMasterVersion;
 
+  /// Configuration for issuance of mTLS keys and certificates to Kubernetes
+  /// pods.
+  MeshCertificates? desiredMeshCertificates;
+
   /// The desired monitoring configuration.
   MonitoringConfig? desiredMonitoringConfig;
 
@@ -5007,6 +5021,7 @@ class ClusterUpdate {
     this.desiredLoggingService,
     this.desiredMasterAuthorizedNetworksConfig,
     this.desiredMasterVersion,
+    this.desiredMeshCertificates,
     this.desiredMonitoringConfig,
     this.desiredMonitoringService,
     this.desiredNodePoolAutoscaling,
@@ -5096,6 +5111,10 @@ class ClusterUpdate {
                   : null,
           desiredMasterVersion: _json.containsKey('desiredMasterVersion')
               ? _json['desiredMasterVersion'] as core.String
+              : null,
+          desiredMeshCertificates: _json.containsKey('desiredMeshCertificates')
+              ? MeshCertificates.fromJson(_json['desiredMeshCertificates']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           desiredMonitoringConfig: _json.containsKey('desiredMonitoringConfig')
               ? MonitoringConfig.fromJson(_json['desiredMonitoringConfig']
@@ -5190,6 +5209,8 @@ class ClusterUpdate {
               desiredMasterAuthorizedNetworksConfig!,
         if (desiredMasterVersion != null)
           'desiredMasterVersion': desiredMasterVersion!,
+        if (desiredMeshCertificates != null)
+          'desiredMeshCertificates': desiredMeshCertificates!,
         if (desiredMonitoringConfig != null)
           'desiredMonitoringConfig': desiredMonitoringConfig!,
         if (desiredMonitoringService != null)
@@ -6654,6 +6675,9 @@ class MaxPodsConstraint {
         if (maxPodsPerNode != null) 'maxPodsPerNode': maxPodsPerNode!,
       };
 }
+
+/// Configuration for issuance of mTLS keys and certificates to Kubernetes pods.
+typedef MeshCertificates = $Empty;
 
 /// Progress metric is (string, int|float|string) pair.
 class Metric {
@@ -9613,49 +9637,7 @@ class StartIPRotationRequest {
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-class Status {
-  /// The status code, which should be an enum value of google.rpc.Code.
-  core.int? code;
-
-  /// A list of messages that carry the error details.
-  ///
-  /// There is a common set of message types for APIs to use.
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object?>>? details;
-
-  /// A developer-facing error message, which should be in English.
-  ///
-  /// Any user-facing error message should be localized and sent in the
-  /// google.rpc.Status.details field, or localized by the client.
-  core.String? message;
-
-  Status({
-    this.code,
-    this.details,
-    this.message,
-  });
-
-  Status.fromJson(core.Map _json)
-      : this(
-          code: _json.containsKey('code') ? _json['code'] as core.int : null,
-          details: _json.containsKey('details')
-              ? (_json['details'] as core.List)
-                  .map((value) => value as core.Map<core.String, core.dynamic>)
-                  .toList()
-              : null,
-          message: _json.containsKey('message')
-              ? _json['message'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (code != null) 'code': code!,
-        if (details != null) 'details': details!,
-        if (message != null) 'message': message!,
-      };
-}
+typedef Status = $Status;
 
 /// StatusCondition describes why a cluster or a node pool has a certain status
 /// (e.g., ERROR or DEGRADED).

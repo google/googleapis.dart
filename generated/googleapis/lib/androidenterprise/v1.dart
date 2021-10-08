@@ -46,6 +46,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
+import '../shared.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -5941,44 +5942,7 @@ class NotificationSet {
 ///
 /// List operations that supports paging return only one "page" of results. This
 /// protocol buffer message describes the page that has been returned.
-class PageInfo {
-  /// Maximum number of results returned in one page.
-  ///
-  /// ! The number of results included in the API response.
-  core.int? resultPerPage;
-
-  /// Index of the first result returned in the current page.
-  core.int? startIndex;
-
-  /// Total number of results available on the backend ! The total number of
-  /// results in the result set.
-  core.int? totalResults;
-
-  PageInfo({
-    this.resultPerPage,
-    this.startIndex,
-    this.totalResults,
-  });
-
-  PageInfo.fromJson(core.Map _json)
-      : this(
-          resultPerPage: _json.containsKey('resultPerPage')
-              ? _json['resultPerPage'] as core.int
-              : null,
-          startIndex: _json.containsKey('startIndex')
-              ? _json['startIndex'] as core.int
-              : null,
-          totalResults: _json.containsKey('totalResults')
-              ? _json['totalResults'] as core.int
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (resultPerPage != null) 'resultPerPage': resultPerPage!,
-        if (startIndex != null) 'startIndex': startIndex!,
-        if (totalResults != null) 'totalResults': totalResults!,
-      };
-}
+typedef PageInfo = $PageInfo;
 
 /// A Permissions resource represents some extra capability, to be granted to an
 /// Android app, which requires explicit consent.
@@ -7268,33 +7232,7 @@ class StorePage {
 /// indicates whether a next/previous page is available and provides a mean of
 /// accessing this page. ListRequest.page_token should be set to either
 /// next_page_token or previous_page_token to access another page.
-class TokenPagination {
-  /// Tokens to pass to the standard list field 'page_token'.
-  ///
-  /// Whenever available, tokens are preferred over manipulating start_index.
-  core.String? nextPageToken;
-  core.String? previousPageToken;
-
-  TokenPagination({
-    this.nextPageToken,
-    this.previousPageToken,
-  });
-
-  TokenPagination.fromJson(core.Map _json)
-      : this(
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
-              : null,
-          previousPageToken: _json.containsKey('previousPageToken')
-              ? _json['previousPageToken'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (previousPageToken != null) 'previousPageToken': previousPageToken!,
-      };
-}
+typedef TokenPagination = $TokenPagination;
 
 /// Id to name association of a track.
 class TrackInfo {
@@ -7591,29 +7529,7 @@ class WebApp {
 }
 
 /// Icon for a web app.
-class WebAppIcon {
-  /// The actual bytes of the image in a base64url encoded string (c.f. RFC4648,
-  /// section 5 "Base 64 Encoding with URL and Filename Safe Alphabet").
-  ///
-  /// - The image type can be png or jpg. - The image should ideally be square.
-  /// - The image should ideally have a size of 512x512.
-  core.String? imageData;
-
-  WebAppIcon({
-    this.imageData,
-  });
-
-  WebAppIcon.fromJson(core.Map _json)
-      : this(
-          imageData: _json.containsKey('imageData')
-              ? _json['imageData'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (imageData != null) 'imageData': imageData!,
-      };
-}
+typedef WebAppIcon = $WebAppIcon;
 
 class WebAppsListResponse {
   /// The manifest describing a web app.

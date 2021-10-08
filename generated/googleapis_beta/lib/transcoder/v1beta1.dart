@@ -34,7 +34,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-import '../src/empty.dart';
+import '../shared.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -449,29 +449,7 @@ class AdBreak {
 }
 
 /// Configuration for AES-128 encryption.
-class Aes128Encryption {
-  /// URI of the key delivery service.
-  ///
-  /// This URI is inserted into the M3U8 header.
-  ///
-  /// Required.
-  core.String? keyUri;
-
-  Aes128Encryption({
-    this.keyUri,
-  });
-
-  Aes128Encryption.fromJson(core.Map _json)
-      : this(
-          keyUri: _json.containsKey('keyUri')
-              ? _json['keyUri'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (keyUri != null) 'keyUri': keyUri!,
-      };
-}
+typedef Aes128Encryption = $Encryption;
 
 /// Animation types.
 class Animation {
@@ -2207,29 +2185,7 @@ class PubsubDestination {
 }
 
 /// Configuration for SAMPLE-AES encryption.
-class SampleAesEncryption {
-  /// URI of the key delivery service.
-  ///
-  /// This URI is inserted into the M3U8 header.
-  ///
-  /// Required.
-  core.String? keyUri;
-
-  SampleAesEncryption({
-    this.keyUri,
-  });
-
-  SampleAesEncryption.fromJson(core.Map _json)
-      : this(
-          keyUri: _json.containsKey('keyUri')
-              ? _json['keyUri'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (keyUri != null) 'keyUri': keyUri!,
-      };
-}
+typedef SampleAesEncryption = $Encryption;
 
 /// Segment settings for `"ts"`, `"fmp4"` and `"vtt"`.
 class SegmentSettings {

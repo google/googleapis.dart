@@ -1310,6 +1310,7 @@ api.GenerateEphemeralCertRequest buildGenerateEphemeralCertRequest() {
     o.accessToken = 'foo';
     o.publicKey = 'foo';
     o.readTime = 'foo';
+    o.validDuration = 'foo';
   }
   buildCounterGenerateEphemeralCertRequest--;
   return o;
@@ -1328,6 +1329,10 @@ void checkGenerateEphemeralCertRequest(api.GenerateEphemeralCertRequest o) {
     );
     unittest.expect(
       o.readTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.validDuration!,
       unittest.equals('foo'),
     );
   }

@@ -40,7 +40,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-import '../src/empty.dart';
+import '../shared.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -2629,35 +2629,7 @@ class ProductsSkusResource {
 }
 
 /// Request message for CloudChannelService.ActivateEntitlement.
-class GoogleCloudChannelV1ActivateEntitlementRequest {
-  /// You can specify an optional unique request ID, and if you need to retry
-  /// your request, the server will know to ignore the request if it's complete.
-  ///
-  /// For example, you make an initial request and the request times out. If you
-  /// make the request again with the same request ID, the server can check if
-  /// it received the original operation with the same request ID. If it did, it
-  /// will ignore the second request. The request ID must be a valid
-  /// [UUID](https://tools.ietf.org/html/rfc4122) with the exception that zero
-  /// UUID is not supported (`00000000-0000-0000-0000-000000000000`).
-  ///
-  /// Optional.
-  core.String? requestId;
-
-  GoogleCloudChannelV1ActivateEntitlementRequest({
-    this.requestId,
-  });
-
-  GoogleCloudChannelV1ActivateEntitlementRequest.fromJson(core.Map _json)
-      : this(
-          requestId: _json.containsKey('requestId')
-              ? _json['requestId'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (requestId != null) 'requestId': requestId!,
-      };
-}
+typedef GoogleCloudChannelV1ActivateEntitlementRequest = $Request01;
 
 /// Information needed to create an Admin User for Google Workspace.
 class GoogleCloudChannelV1AdminUser {
@@ -2696,56 +2668,10 @@ class GoogleCloudChannelV1AdminUser {
 }
 
 /// Association links that an entitlement has to other entitlements.
-class GoogleCloudChannelV1AssociationInfo {
-  /// The name of the base entitlement, for which this entitlement is an add-on.
-  core.String? baseEntitlement;
-
-  GoogleCloudChannelV1AssociationInfo({
-    this.baseEntitlement,
-  });
-
-  GoogleCloudChannelV1AssociationInfo.fromJson(core.Map _json)
-      : this(
-          baseEntitlement: _json.containsKey('baseEntitlement')
-              ? _json['baseEntitlement'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (baseEntitlement != null) 'baseEntitlement': baseEntitlement!,
-      };
-}
+typedef GoogleCloudChannelV1AssociationInfo = $AssociationInfo;
 
 /// Request message for CloudChannelService.CancelEntitlement.
-class GoogleCloudChannelV1CancelEntitlementRequest {
-  /// You can specify an optional unique request ID, and if you need to retry
-  /// your request, the server will know to ignore the request if it's complete.
-  ///
-  /// For example, you make an initial request and the request times out. If you
-  /// make the request again with the same request ID, the server can check if
-  /// it received the original operation with the same request ID. If it did, it
-  /// will ignore the second request. The request ID must be a valid
-  /// [UUID](https://tools.ietf.org/html/rfc4122) with the exception that zero
-  /// UUID is not supported (`00000000-0000-0000-0000-000000000000`).
-  ///
-  /// Optional.
-  core.String? requestId;
-
-  GoogleCloudChannelV1CancelEntitlementRequest({
-    this.requestId,
-  });
-
-  GoogleCloudChannelV1CancelEntitlementRequest.fromJson(core.Map _json)
-      : this(
-          requestId: _json.containsKey('requestId')
-              ? _json['requestId'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (requestId != null) 'requestId': requestId!,
-      };
-}
+typedef GoogleCloudChannelV1CancelEntitlementRequest = $Request01;
 
 /// Request message for CloudChannelService.ChangeOffer.
 class GoogleCloudChannelV1ChangeOfferRequest {
@@ -3600,41 +3526,7 @@ class GoogleCloudChannelV1CustomerConstraints {
 }
 
 /// Represents Pub/Sub message content describing customer update.
-class GoogleCloudChannelV1CustomerEvent {
-  /// Resource name of the customer.
-  ///
-  /// Format: accounts/{account_id}/customers/{customer_id}
-  core.String? customer;
-
-  /// Type of event which happened on the customer.
-  /// Possible string values are:
-  /// - "TYPE_UNSPECIFIED" : Default value. This state doesn't show unless an
-  /// error occurs.
-  /// - "PRIMARY_DOMAIN_CHANGED" : Primary domain for customer was changed.
-  /// - "PRIMARY_DOMAIN_VERIFIED" : Primary domain of the customer has been
-  /// verified.
-  core.String? eventType;
-
-  GoogleCloudChannelV1CustomerEvent({
-    this.customer,
-    this.eventType,
-  });
-
-  GoogleCloudChannelV1CustomerEvent.fromJson(core.Map _json)
-      : this(
-          customer: _json.containsKey('customer')
-              ? _json['customer'] as core.String
-              : null,
-          eventType: _json.containsKey('eventType')
-              ? _json['eventType'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (customer != null) 'customer': customer!,
-        if (eventType != null) 'eventType': eventType!,
-      };
-}
+typedef GoogleCloudChannelV1CustomerEvent = $CustomerEvent;
 
 /// Required Edu Attributes
 class GoogleCloudChannelV1EduData {
@@ -3845,54 +3737,7 @@ class GoogleCloudChannelV1Entitlement {
 }
 
 /// Represents Pub/Sub message content describing entitlement update.
-class GoogleCloudChannelV1EntitlementEvent {
-  /// Resource name of an entitlement of the form:
-  /// accounts/{account_id}/customers/{customer_id}/entitlements/{entitlement_id}
-  core.String? entitlement;
-
-  /// Type of event which happened on the entitlement.
-  /// Possible string values are:
-  /// - "TYPE_UNSPECIFIED" : Default value. This state doesn't show unless an
-  /// error occurs.
-  /// - "CREATED" : A new entitlement was created.
-  /// - "PRICE_PLAN_SWITCHED" : The offer type associated with an entitlement
-  /// was changed. This is not triggered if an entitlement converts from a
-  /// commit offer to a flexible offer as part of a renewal.
-  /// - "COMMITMENT_CHANGED" : Annual commitment for a commit plan was changed.
-  /// - "RENEWED" : An annual entitlement was renewed.
-  /// - "SUSPENDED" : Entitlement was suspended.
-  /// - "ACTIVATED" : Entitlement was unsuspended.
-  /// - "CANCELLED" : Entitlement was cancelled.
-  /// - "SKU_CHANGED" : Entitlement was upgraded or downgraded (e.g. from Google
-  /// Workspace Business Standard to Google Workspace Business Plus).
-  /// - "RENEWAL_SETTING_CHANGED" : The renewal settings of an entitlement has
-  /// changed.
-  /// - "PAID_SERVICE_STARTED" : Paid service has started on trial entitlement.
-  /// - "LICENSE_ASSIGNMENT_CHANGED" : License was assigned to or revoked from a
-  /// user.
-  /// - "LICENSE_CAP_CHANGED" : License cap was changed for the entitlement.
-  core.String? eventType;
-
-  GoogleCloudChannelV1EntitlementEvent({
-    this.entitlement,
-    this.eventType,
-  });
-
-  GoogleCloudChannelV1EntitlementEvent.fromJson(core.Map _json)
-      : this(
-          entitlement: _json.containsKey('entitlement')
-              ? _json['entitlement'] as core.String
-              : null,
-          eventType: _json.containsKey('eventType')
-              ? _json['eventType'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (entitlement != null) 'entitlement': entitlement!,
-        if (eventType != null) 'eventType': eventType!,
-      };
-}
+typedef GoogleCloudChannelV1EntitlementEvent = $EntitlementEvent;
 
 /// Request message for CloudChannelService.ImportCustomer
 class GoogleCloudChannelV1ImportCustomerRequest {
@@ -4857,38 +4702,7 @@ class GoogleCloudChannelV1ParameterDefinition {
 }
 
 /// Represents period in days/months/years.
-class GoogleCloudChannelV1Period {
-  /// Total duration of Period Type defined.
-  core.int? duration;
-
-  /// Period Type.
-  /// Possible string values are:
-  /// - "PERIOD_TYPE_UNSPECIFIED" : Not used.
-  /// - "DAY" : Day.
-  /// - "MONTH" : Month.
-  /// - "YEAR" : Year.
-  core.String? periodType;
-
-  GoogleCloudChannelV1Period({
-    this.duration,
-    this.periodType,
-  });
-
-  GoogleCloudChannelV1Period.fromJson(core.Map _json)
-      : this(
-          duration: _json.containsKey('duration')
-              ? _json['duration'] as core.int
-              : null,
-          periodType: _json.containsKey('periodType')
-              ? _json['periodType'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (duration != null) 'duration': duration!,
-        if (periodType != null) 'periodType': periodType!,
-      };
-}
+typedef GoogleCloudChannelV1Period = $Period;
 
 /// The payment plan for the Offer.
 ///
@@ -5258,49 +5072,7 @@ class GoogleCloudChannelV1ProvisionCloudIdentityRequest {
 }
 
 /// Service provisioned for an entitlement.
-class GoogleCloudChannelV1ProvisionedService {
-  /// The product pertaining to the provisioning resource as specified in the
-  /// Offer.
-  ///
-  /// Output only.
-  core.String? productId;
-
-  /// Provisioning ID of the entitlement.
-  ///
-  /// For Google Workspace, this would be the underlying Subscription ID.
-  ///
-  /// Output only.
-  core.String? provisioningId;
-
-  /// The SKU pertaining to the provisioning resource as specified in the Offer.
-  ///
-  /// Output only.
-  core.String? skuId;
-
-  GoogleCloudChannelV1ProvisionedService({
-    this.productId,
-    this.provisioningId,
-    this.skuId,
-  });
-
-  GoogleCloudChannelV1ProvisionedService.fromJson(core.Map _json)
-      : this(
-          productId: _json.containsKey('productId')
-              ? _json['productId'] as core.String
-              : null,
-          provisioningId: _json.containsKey('provisioningId')
-              ? _json['provisioningId'] as core.String
-              : null,
-          skuId:
-              _json.containsKey('skuId') ? _json['skuId'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (productId != null) 'productId': productId!,
-        if (provisioningId != null) 'provisioningId': provisioningId!,
-        if (skuId != null) 'skuId': skuId!,
-      };
-}
+typedef GoogleCloudChannelV1ProvisionedService = $ProvisionedService;
 
 /// Offer that you can purchase for a customer.
 ///
@@ -5492,35 +5264,7 @@ class GoogleCloudChannelV1Sku {
 }
 
 /// Request message for CloudChannelService.StartPaidService.
-class GoogleCloudChannelV1StartPaidServiceRequest {
-  /// You can specify an optional unique request ID, and if you need to retry
-  /// your request, the server will know to ignore the request if it's complete.
-  ///
-  /// For example, you make an initial request and the request times out. If you
-  /// make the request again with the same request ID, the server can check if
-  /// it received the original operation with the same request ID. If it did, it
-  /// will ignore the second request. The request ID must be a valid
-  /// [UUID](https://tools.ietf.org/html/rfc4122) with the exception that zero
-  /// UUID is not supported (`00000000-0000-0000-0000-000000000000`).
-  ///
-  /// Optional.
-  core.String? requestId;
-
-  GoogleCloudChannelV1StartPaidServiceRequest({
-    this.requestId,
-  });
-
-  GoogleCloudChannelV1StartPaidServiceRequest.fromJson(core.Map _json)
-      : this(
-          requestId: _json.containsKey('requestId')
-              ? _json['requestId'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (requestId != null) 'requestId': requestId!,
-      };
-}
+typedef GoogleCloudChannelV1StartPaidServiceRequest = $Request01;
 
 /// Represents information which resellers will get as part of notification from
 /// Cloud Pub/Sub.
@@ -5556,35 +5300,7 @@ class GoogleCloudChannelV1SubscriberEvent {
 }
 
 /// Request message for CloudChannelService.SuspendEntitlement.
-class GoogleCloudChannelV1SuspendEntitlementRequest {
-  /// You can specify an optional unique request ID, and if you need to retry
-  /// your request, the server will know to ignore the request if it's complete.
-  ///
-  /// For example, you make an initial request and the request times out. If you
-  /// make the request again with the same request ID, the server can check if
-  /// it received the original operation with the same request ID. If it did, it
-  /// will ignore the second request. The request ID must be a valid
-  /// [UUID](https://tools.ietf.org/html/rfc4122) with the exception that zero
-  /// UUID is not supported (`00000000-0000-0000-0000-000000000000`).
-  ///
-  /// Optional.
-  core.String? requestId;
-
-  GoogleCloudChannelV1SuspendEntitlementRequest({
-    this.requestId,
-  });
-
-  GoogleCloudChannelV1SuspendEntitlementRequest.fromJson(core.Map _json)
-      : this(
-          requestId: _json.containsKey('requestId')
-              ? _json['requestId'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (requestId != null) 'requestId': requestId!,
-      };
-}
+typedef GoogleCloudChannelV1SuspendEntitlementRequest = $Request01;
 
 /// Specifies transfer eligibility of a SKU.
 class GoogleCloudChannelV1TransferEligibility {
@@ -5830,38 +5546,7 @@ class GoogleCloudChannelV1TransferableSku {
 }
 
 /// Settings for trial offers.
-class GoogleCloudChannelV1TrialSettings {
-  /// Date when the trial ends.
-  ///
-  /// The value is in milliseconds using the UNIX Epoch format. See an example
-  /// [Epoch converter](https://www.epochconverter.com).
-  core.String? endTime;
-
-  /// Determines if the entitlement is in a trial or not: * `true` - The
-  /// entitlement is in trial.
-  ///
-  /// * `false` - The entitlement is not in trial.
-  core.bool? trial;
-
-  GoogleCloudChannelV1TrialSettings({
-    this.endTime,
-    this.trial,
-  });
-
-  GoogleCloudChannelV1TrialSettings.fromJson(core.Map _json)
-      : this(
-          endTime: _json.containsKey('endTime')
-              ? _json['endTime'] as core.String
-              : null,
-          trial:
-              _json.containsKey('trial') ? _json['trial'] as core.bool : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (endTime != null) 'endTime': endTime!,
-        if (trial != null) 'trial': trial!,
-      };
-}
+typedef GoogleCloudChannelV1TrialSettings = $TrialSettings;
 
 /// Request Message for UnregisterSubscriber.
 class GoogleCloudChannelV1UnregisterSubscriberRequest {
@@ -5948,81 +5633,10 @@ class GoogleCloudChannelV1UpdateChannelPartnerLinkRequest {
 }
 
 /// Data type and value of a parameter.
-class GoogleCloudChannelV1Value {
-  /// Represents a boolean value.
-  core.bool? boolValue;
-
-  /// Represents a double value.
-  core.double? doubleValue;
-
-  /// Represents an int64 value.
-  core.String? int64Value;
-
-  /// Represents an 'Any' proto value.
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object?>? protoValue;
-
-  /// Represents a string value.
-  core.String? stringValue;
-
-  GoogleCloudChannelV1Value({
-    this.boolValue,
-    this.doubleValue,
-    this.int64Value,
-    this.protoValue,
-    this.stringValue,
-  });
-
-  GoogleCloudChannelV1Value.fromJson(core.Map _json)
-      : this(
-          boolValue: _json.containsKey('boolValue')
-              ? _json['boolValue'] as core.bool
-              : null,
-          doubleValue: _json.containsKey('doubleValue')
-              ? (_json['doubleValue'] as core.num).toDouble()
-              : null,
-          int64Value: _json.containsKey('int64Value')
-              ? _json['int64Value'] as core.String
-              : null,
-          protoValue: _json.containsKey('protoValue')
-              ? _json['protoValue'] as core.Map<core.String, core.dynamic>
-              : null,
-          stringValue: _json.containsKey('stringValue')
-              ? _json['stringValue'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (boolValue != null) 'boolValue': boolValue!,
-        if (doubleValue != null) 'doubleValue': doubleValue!,
-        if (int64Value != null) 'int64Value': int64Value!,
-        if (protoValue != null) 'protoValue': protoValue!,
-        if (stringValue != null) 'stringValue': stringValue!,
-      };
-}
+typedef GoogleCloudChannelV1Value = $Value;
 
 /// Association links that an entitlement has to other entitlements.
-class GoogleCloudChannelV1alpha1AssociationInfo {
-  /// The name of the base entitlement, for which this entitlement is an add-on.
-  core.String? baseEntitlement;
-
-  GoogleCloudChannelV1alpha1AssociationInfo({
-    this.baseEntitlement,
-  });
-
-  GoogleCloudChannelV1alpha1AssociationInfo.fromJson(core.Map _json)
-      : this(
-          baseEntitlement: _json.containsKey('baseEntitlement')
-              ? _json['baseEntitlement'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (baseEntitlement != null) 'baseEntitlement': baseEntitlement!,
-      };
-}
+typedef GoogleCloudChannelV1alpha1AssociationInfo = $AssociationInfo;
 
 /// Commitment settings for commitment-based offers.
 class GoogleCloudChannelV1alpha1CommitmentSettings {
@@ -6070,41 +5684,7 @@ class GoogleCloudChannelV1alpha1CommitmentSettings {
 }
 
 /// Represents Pub/Sub message content describing customer update.
-class GoogleCloudChannelV1alpha1CustomerEvent {
-  /// Resource name of the customer.
-  ///
-  /// Format: accounts/{account_id}/customers/{customer_id}
-  core.String? customer;
-
-  /// Type of event which happened on the customer.
-  /// Possible string values are:
-  /// - "TYPE_UNSPECIFIED" : Default value. This state doesn't show unless an
-  /// error occurs.
-  /// - "PRIMARY_DOMAIN_CHANGED" : Primary domain for customer was changed.
-  /// - "PRIMARY_DOMAIN_VERIFIED" : Primary domain of the customer has been
-  /// verified.
-  core.String? eventType;
-
-  GoogleCloudChannelV1alpha1CustomerEvent({
-    this.customer,
-    this.eventType,
-  });
-
-  GoogleCloudChannelV1alpha1CustomerEvent.fromJson(core.Map _json)
-      : this(
-          customer: _json.containsKey('customer')
-              ? _json['customer'] as core.String
-              : null,
-          eventType: _json.containsKey('eventType')
-              ? _json['eventType'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (customer != null) 'customer': customer!,
-        if (eventType != null) 'eventType': eventType!,
-      };
-}
+typedef GoogleCloudChannelV1alpha1CustomerEvent = $CustomerEvent;
 
 /// An entitlement is a representation of a customer's ability to use a service.
 class GoogleCloudChannelV1alpha1Entitlement {
@@ -6322,54 +5902,7 @@ class GoogleCloudChannelV1alpha1Entitlement {
 }
 
 /// Represents Pub/Sub message content describing entitlement update.
-class GoogleCloudChannelV1alpha1EntitlementEvent {
-  /// Resource name of an entitlement of the form:
-  /// accounts/{account_id}/customers/{customer_id}/entitlements/{entitlement_id}
-  core.String? entitlement;
-
-  /// Type of event which happened on the entitlement.
-  /// Possible string values are:
-  /// - "TYPE_UNSPECIFIED" : Default value. This state doesn't show unless an
-  /// error occurs.
-  /// - "CREATED" : A new entitlement was created.
-  /// - "PRICE_PLAN_SWITCHED" : The offer type associated with an entitlement
-  /// was changed. This is not triggered if an entitlement converts from a
-  /// commit offer to a flexible offer as part of a renewal.
-  /// - "COMMITMENT_CHANGED" : Annual commitment for a commit plan was changed.
-  /// - "RENEWED" : An annual entitlement was renewed.
-  /// - "SUSPENDED" : Entitlement was suspended.
-  /// - "ACTIVATED" : Entitlement was unsuspended.
-  /// - "CANCELLED" : Entitlement was cancelled.
-  /// - "SKU_CHANGED" : Entitlement was upgraded or downgraded (e.g. from Google
-  /// Workspace Business Standard to Google Workspace Business Plus).
-  /// - "RENEWAL_SETTING_CHANGED" : The renewal settings of an entitlement has
-  /// changed.
-  /// - "PAID_SERVICE_STARTED" : Paid service has started on trial entitlement.
-  /// - "LICENSE_ASSIGNMENT_CHANGED" : License was assigned to or revoked from a
-  /// user.
-  /// - "LICENSE_CAP_CHANGED" : License cap was changed for the entitlement.
-  core.String? eventType;
-
-  GoogleCloudChannelV1alpha1EntitlementEvent({
-    this.entitlement,
-    this.eventType,
-  });
-
-  GoogleCloudChannelV1alpha1EntitlementEvent.fromJson(core.Map _json)
-      : this(
-          entitlement: _json.containsKey('entitlement')
-              ? _json['entitlement'] as core.String
-              : null,
-          eventType: _json.containsKey('eventType')
-              ? _json['eventType'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (entitlement != null) 'entitlement': entitlement!,
-        if (eventType != null) 'eventType': eventType!,
-      };
-}
+typedef GoogleCloudChannelV1alpha1EntitlementEvent = $EntitlementEvent;
 
 /// Provides contextual information about a google.longrunning.Operation.
 class GoogleCloudChannelV1alpha1OperationMetadata {
@@ -6462,83 +5995,10 @@ class GoogleCloudChannelV1alpha1Parameter {
 }
 
 /// Represents period in days/months/years.
-class GoogleCloudChannelV1alpha1Period {
-  /// Total duration of Period Type defined.
-  core.int? duration;
-
-  /// Period Type.
-  /// Possible string values are:
-  /// - "PERIOD_TYPE_UNSPECIFIED" : Not used.
-  /// - "DAY" : Day.
-  /// - "MONTH" : Month.
-  /// - "YEAR" : Year.
-  core.String? periodType;
-
-  GoogleCloudChannelV1alpha1Period({
-    this.duration,
-    this.periodType,
-  });
-
-  GoogleCloudChannelV1alpha1Period.fromJson(core.Map _json)
-      : this(
-          duration: _json.containsKey('duration')
-              ? _json['duration'] as core.int
-              : null,
-          periodType: _json.containsKey('periodType')
-              ? _json['periodType'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (duration != null) 'duration': duration!,
-        if (periodType != null) 'periodType': periodType!,
-      };
-}
+typedef GoogleCloudChannelV1alpha1Period = $Period;
 
 /// Service provisioned for an entitlement.
-class GoogleCloudChannelV1alpha1ProvisionedService {
-  /// The product pertaining to the provisioning resource as specified in the
-  /// Offer.
-  ///
-  /// Output only.
-  core.String? productId;
-
-  /// Provisioning ID of the entitlement.
-  ///
-  /// For Google Workspace, this would be the underlying Subscription ID.
-  ///
-  /// Output only.
-  core.String? provisioningId;
-
-  /// The SKU pertaining to the provisioning resource as specified in the Offer.
-  ///
-  /// Output only.
-  core.String? skuId;
-
-  GoogleCloudChannelV1alpha1ProvisionedService({
-    this.productId,
-    this.provisioningId,
-    this.skuId,
-  });
-
-  GoogleCloudChannelV1alpha1ProvisionedService.fromJson(core.Map _json)
-      : this(
-          productId: _json.containsKey('productId')
-              ? _json['productId'] as core.String
-              : null,
-          provisioningId: _json.containsKey('provisioningId')
-              ? _json['provisioningId'] as core.String
-              : null,
-          skuId:
-              _json.containsKey('skuId') ? _json['skuId'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (productId != null) 'productId': productId!,
-        if (provisioningId != null) 'provisioningId': provisioningId!,
-        if (skuId != null) 'skuId': skuId!,
-      };
-}
+typedef GoogleCloudChannelV1alpha1ProvisionedService = $ProvisionedService;
 
 /// Renewal settings for renewable Offers.
 class GoogleCloudChannelV1alpha1RenewalSettings {
@@ -6683,94 +6143,10 @@ class GoogleCloudChannelV1alpha1TransferEntitlementsResponse {
 }
 
 /// Settings for trial offers.
-class GoogleCloudChannelV1alpha1TrialSettings {
-  /// Date when the trial ends.
-  ///
-  /// The value is in milliseconds using the UNIX Epoch format. See an example
-  /// [Epoch converter](https://www.epochconverter.com).
-  core.String? endTime;
-
-  /// Determines if the entitlement is in a trial or not: * `true` - The
-  /// entitlement is in trial.
-  ///
-  /// * `false` - The entitlement is not in trial.
-  core.bool? trial;
-
-  GoogleCloudChannelV1alpha1TrialSettings({
-    this.endTime,
-    this.trial,
-  });
-
-  GoogleCloudChannelV1alpha1TrialSettings.fromJson(core.Map _json)
-      : this(
-          endTime: _json.containsKey('endTime')
-              ? _json['endTime'] as core.String
-              : null,
-          trial:
-              _json.containsKey('trial') ? _json['trial'] as core.bool : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (endTime != null) 'endTime': endTime!,
-        if (trial != null) 'trial': trial!,
-      };
-}
+typedef GoogleCloudChannelV1alpha1TrialSettings = $TrialSettings;
 
 /// Data type and value of a parameter.
-class GoogleCloudChannelV1alpha1Value {
-  /// Represents a boolean value.
-  core.bool? boolValue;
-
-  /// Represents a double value.
-  core.double? doubleValue;
-
-  /// Represents an int64 value.
-  core.String? int64Value;
-
-  /// Represents an 'Any' proto value.
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object?>? protoValue;
-
-  /// Represents a string value.
-  core.String? stringValue;
-
-  GoogleCloudChannelV1alpha1Value({
-    this.boolValue,
-    this.doubleValue,
-    this.int64Value,
-    this.protoValue,
-    this.stringValue,
-  });
-
-  GoogleCloudChannelV1alpha1Value.fromJson(core.Map _json)
-      : this(
-          boolValue: _json.containsKey('boolValue')
-              ? _json['boolValue'] as core.bool
-              : null,
-          doubleValue: _json.containsKey('doubleValue')
-              ? (_json['doubleValue'] as core.num).toDouble()
-              : null,
-          int64Value: _json.containsKey('int64Value')
-              ? _json['int64Value'] as core.String
-              : null,
-          protoValue: _json.containsKey('protoValue')
-              ? _json['protoValue'] as core.Map<core.String, core.dynamic>
-              : null,
-          stringValue: _json.containsKey('stringValue')
-              ? _json['stringValue'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (boolValue != null) 'boolValue': boolValue!,
-        if (doubleValue != null) 'doubleValue': doubleValue!,
-        if (int64Value != null) 'int64Value': int64Value!,
-        if (protoValue != null) 'protoValue': protoValue!,
-        if (stringValue != null) 'stringValue': stringValue!,
-      };
-}
+typedef GoogleCloudChannelV1alpha1Value = $Value;
 
 /// The request message for Operations.CancelOperation.
 typedef GoogleLongrunningCancelOperationRequest = $Empty;
@@ -6899,91 +6275,10 @@ typedef GoogleProtobufEmpty = $Empty;
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-class GoogleRpcStatus {
-  /// The status code, which should be an enum value of google.rpc.Code.
-  core.int? code;
-
-  /// A list of messages that carry the error details.
-  ///
-  /// There is a common set of message types for APIs to use.
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object?>>? details;
-
-  /// A developer-facing error message, which should be in English.
-  ///
-  /// Any user-facing error message should be localized and sent in the
-  /// google.rpc.Status.details field, or localized by the client.
-  core.String? message;
-
-  GoogleRpcStatus({
-    this.code,
-    this.details,
-    this.message,
-  });
-
-  GoogleRpcStatus.fromJson(core.Map _json)
-      : this(
-          code: _json.containsKey('code') ? _json['code'] as core.int : null,
-          details: _json.containsKey('details')
-              ? (_json['details'] as core.List)
-                  .map((value) => value as core.Map<core.String, core.dynamic>)
-                  .toList()
-              : null,
-          message: _json.containsKey('message')
-              ? _json['message'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (code != null) 'code': code!,
-        if (details != null) 'details': details!,
-        if (message != null) 'message': message!,
-      };
-}
+typedef GoogleRpcStatus = $Status;
 
 /// Represents an amount of money with its currency type.
-class GoogleTypeMoney {
-  /// The three-letter currency code defined in ISO 4217.
-  core.String? currencyCode;
-
-  /// Number of nano (10^-9) units of the amount.
-  ///
-  /// The value must be between -999,999,999 and +999,999,999 inclusive. If
-  /// `units` is positive, `nanos` must be positive or zero. If `units` is zero,
-  /// `nanos` can be positive, zero, or negative. If `units` is negative,
-  /// `nanos` must be negative or zero. For example $-1.75 is represented as
-  /// `units`=-1 and `nanos`=-750,000,000.
-  core.int? nanos;
-
-  /// The whole units of the amount.
-  ///
-  /// For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar.
-  core.String? units;
-
-  GoogleTypeMoney({
-    this.currencyCode,
-    this.nanos,
-    this.units,
-  });
-
-  GoogleTypeMoney.fromJson(core.Map _json)
-      : this(
-          currencyCode: _json.containsKey('currencyCode')
-              ? _json['currencyCode'] as core.String
-              : null,
-          nanos: _json.containsKey('nanos') ? _json['nanos'] as core.int : null,
-          units:
-              _json.containsKey('units') ? _json['units'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (currencyCode != null) 'currencyCode': currencyCode!,
-        if (nanos != null) 'nanos': nanos!,
-        if (units != null) 'units': units!,
-      };
-}
+typedef GoogleTypeMoney = $Money;
 
 /// Represents a postal address, e.g. for postal delivery or payments addresses.
 ///
@@ -6996,183 +6291,4 @@ class GoogleTypeMoney {
 /// be presented with UI elements for input or editing of fields outside
 /// countries where that field is used. For more guidance on how to use this
 /// schema, please see: https://support.google.com/business/answer/6397478
-class GoogleTypePostalAddress {
-  /// Unstructured address lines describing the lower levels of an address.
-  ///
-  /// Because values in address_lines do not have type information and may
-  /// sometimes contain multiple values in a single field (e.g. "Austin, TX"),
-  /// it is important that the line order is clear. The order of address lines
-  /// should be "envelope order" for the country/region of the address. In
-  /// places where this can vary (e.g. Japan), address_language is used to make
-  /// it explicit (e.g. "ja" for large-to-small ordering and "ja-Latn" or "en"
-  /// for small-to-large). This way, the most specific line of an address can be
-  /// selected based on the language. The minimum permitted structural
-  /// representation of an address consists of a region_code with all remaining
-  /// information placed in the address_lines. It would be possible to format
-  /// such an address very approximately without geocoding, but no semantic
-  /// reasoning could be made about any of the address components until it was
-  /// at least partially resolved. Creating an address only containing a
-  /// region_code and address_lines, and then geocoding is the recommended way
-  /// to handle completely unstructured addresses (as opposed to guessing which
-  /// parts of the address should be localities or administrative areas).
-  core.List<core.String>? addressLines;
-
-  /// Highest administrative subdivision which is used for postal addresses of a
-  /// country or region.
-  ///
-  /// For example, this can be a state, a province, an oblast, or a prefecture.
-  /// Specifically, for Spain this is the province and not the autonomous
-  /// community (e.g. "Barcelona" and not "Catalonia"). Many countries don't use
-  /// an administrative area in postal addresses. E.g. in Switzerland this
-  /// should be left unpopulated.
-  ///
-  /// Optional.
-  core.String? administrativeArea;
-
-  /// BCP-47 language code of the contents of this address (if known).
-  ///
-  /// This is often the UI language of the input form or is expected to match
-  /// one of the languages used in the address' country/region, or their
-  /// transliterated equivalents. This can affect formatting in certain
-  /// countries, but is not critical to the correctness of the data and will
-  /// never affect any validation or other non-formatting related operations. If
-  /// this value is not known, it should be omitted (rather than specifying a
-  /// possibly incorrect default). Examples: "zh-Hant", "ja", "ja-Latn", "en".
-  ///
-  /// Optional.
-  core.String? languageCode;
-
-  /// Generally refers to the city/town portion of the address.
-  ///
-  /// Examples: US city, IT comune, UK post town. In regions of the world where
-  /// localities are not well defined or do not fit into this structure well,
-  /// leave locality empty and use address_lines.
-  ///
-  /// Optional.
-  core.String? locality;
-
-  /// The name of the organization at the address.
-  ///
-  /// Optional.
-  core.String? organization;
-
-  /// Postal code of the address.
-  ///
-  /// Not all countries use or require postal codes to be present, but where
-  /// they are used, they may trigger additional validation with other parts of
-  /// the address (e.g. state/zip validation in the U.S.A.).
-  ///
-  /// Optional.
-  core.String? postalCode;
-
-  /// The recipient at the address.
-  ///
-  /// This field may, under certain circumstances, contain multiline
-  /// information. For example, it might contain "care of" information.
-  ///
-  /// Optional.
-  core.List<core.String>? recipients;
-
-  /// CLDR region code of the country/region of the address.
-  ///
-  /// This is never inferred and it is up to the user to ensure the value is
-  /// correct. See http://cldr.unicode.org/ and
-  /// http://www.unicode.org/cldr/charts/30/supplemental/territory_information.html
-  /// for details. Example: "CH" for Switzerland.
-  ///
-  /// Required.
-  core.String? regionCode;
-
-  /// The schema revision of the `PostalAddress`.
-  ///
-  /// This must be set to 0, which is the latest revision. All new revisions
-  /// **must** be backward compatible with old revisions.
-  core.int? revision;
-
-  /// Additional, country-specific, sorting code.
-  ///
-  /// This is not used in most regions. Where it is used, the value is either a
-  /// string like "CEDEX", optionally followed by a number (e.g. "CEDEX 7"), or
-  /// just a number alone, representing the "sector code" (Jamaica), "delivery
-  /// area indicator" (Malawi) or "post office indicator" (e.g. Côte d'Ivoire).
-  ///
-  /// Optional.
-  core.String? sortingCode;
-
-  /// Sublocality of the address.
-  ///
-  /// For example, this can be neighborhoods, boroughs, districts.
-  ///
-  /// Optional.
-  core.String? sublocality;
-
-  GoogleTypePostalAddress({
-    this.addressLines,
-    this.administrativeArea,
-    this.languageCode,
-    this.locality,
-    this.organization,
-    this.postalCode,
-    this.recipients,
-    this.regionCode,
-    this.revision,
-    this.sortingCode,
-    this.sublocality,
-  });
-
-  GoogleTypePostalAddress.fromJson(core.Map _json)
-      : this(
-          addressLines: _json.containsKey('addressLines')
-              ? (_json['addressLines'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          administrativeArea: _json.containsKey('administrativeArea')
-              ? _json['administrativeArea'] as core.String
-              : null,
-          languageCode: _json.containsKey('languageCode')
-              ? _json['languageCode'] as core.String
-              : null,
-          locality: _json.containsKey('locality')
-              ? _json['locality'] as core.String
-              : null,
-          organization: _json.containsKey('organization')
-              ? _json['organization'] as core.String
-              : null,
-          postalCode: _json.containsKey('postalCode')
-              ? _json['postalCode'] as core.String
-              : null,
-          recipients: _json.containsKey('recipients')
-              ? (_json['recipients'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          regionCode: _json.containsKey('regionCode')
-              ? _json['regionCode'] as core.String
-              : null,
-          revision: _json.containsKey('revision')
-              ? _json['revision'] as core.int
-              : null,
-          sortingCode: _json.containsKey('sortingCode')
-              ? _json['sortingCode'] as core.String
-              : null,
-          sublocality: _json.containsKey('sublocality')
-              ? _json['sublocality'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (addressLines != null) 'addressLines': addressLines!,
-        if (administrativeArea != null)
-          'administrativeArea': administrativeArea!,
-        if (languageCode != null) 'languageCode': languageCode!,
-        if (locality != null) 'locality': locality!,
-        if (organization != null) 'organization': organization!,
-        if (postalCode != null) 'postalCode': postalCode!,
-        if (recipients != null) 'recipients': recipients!,
-        if (regionCode != null) 'regionCode': regionCode!,
-        if (revision != null) 'revision': revision!,
-        if (sortingCode != null) 'sortingCode': sortingCode!,
-        if (sublocality != null) 'sublocality': sublocality!,
-      };
-}
+typedef GoogleTypePostalAddress = $PostalAddress;

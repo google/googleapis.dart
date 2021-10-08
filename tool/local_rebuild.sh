@@ -1,6 +1,6 @@
 #!/bin/bash
 
-dart generator/bin/generate.dart run_config generate #--no-delete-existing
+dart generator/bin/generate.dart run_config generate --no-delete-existing
 
 cp generated/googleapis/lib/discovery/v1.dart discoveryapis_generator/lib/src/generated_googleapis/discovery/v1.dart
 

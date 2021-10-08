@@ -41,7 +41,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-import '../src/empty.dart';
+import '../shared.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -2493,54 +2493,10 @@ class GroupsCountResult {
 }
 
 /// Options for Groups exports.
-class GroupsExportOptions {
-  /// The file format for exported messages.
-  /// Possible string values are:
-  /// - "EXPORT_FORMAT_UNSPECIFIED" : No export format specified.
-  /// - "MBOX" : Export as MBOX.
-  /// - "PST" : Export as PST.
-  core.String? exportFormat;
-
-  GroupsExportOptions({
-    this.exportFormat,
-  });
-
-  GroupsExportOptions.fromJson(core.Map _json)
-      : this(
-          exportFormat: _json.containsKey('exportFormat')
-              ? _json['exportFormat'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (exportFormat != null) 'exportFormat': exportFormat!,
-      };
-}
+typedef GroupsExportOptions = $ExportOptions;
 
 /// Options for Chat exports.
-class HangoutsChatExportOptions {
-  /// The file format for exported messages.
-  /// Possible string values are:
-  /// - "EXPORT_FORMAT_UNSPECIFIED" : No export format specified.
-  /// - "MBOX" : Export as MBOX.
-  /// - "PST" : Export as PST.
-  core.String? exportFormat;
-
-  HangoutsChatExportOptions({
-    this.exportFormat,
-  });
-
-  HangoutsChatExportOptions.fromJson(core.Map _json)
-      : this(
-          exportFormat: _json.containsKey('exportFormat')
-              ? _json['exportFormat'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (exportFormat != null) 'exportFormat': exportFormat!,
-      };
-}
+typedef HangoutsChatExportOptions = $ExportOptions;
 
 /// The Chat spaces to search
 class HangoutsChatInfo {
@@ -2689,45 +2645,7 @@ class HeldDriveQuery {
 }
 
 /// Query options for group holds.
-class HeldGroupsQuery {
-  /// The end time for the query.
-  ///
-  /// Specify in GMT. The value is rounded to 12 AM on the specified date.
-  core.String? endTime;
-
-  /// The start time for the query.
-  ///
-  /// Specify in GMT. The value is rounded to 12 AM on the specified date.
-  core.String? startTime;
-
-  /// The [search operators](https://support.google.com/vault/answer/2474474)
-  /// used to refine the messages covered by the hold.
-  core.String? terms;
-
-  HeldGroupsQuery({
-    this.endTime,
-    this.startTime,
-    this.terms,
-  });
-
-  HeldGroupsQuery.fromJson(core.Map _json)
-      : this(
-          endTime: _json.containsKey('endTime')
-              ? _json['endTime'] as core.String
-              : null,
-          startTime: _json.containsKey('startTime')
-              ? _json['startTime'] as core.String
-              : null,
-          terms:
-              _json.containsKey('terms') ? _json['terms'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (endTime != null) 'endTime': endTime!,
-        if (startTime != null) 'startTime': startTime!,
-        if (terms != null) 'terms': terms!,
-      };
-}
+typedef HeldGroupsQuery = $Query;
 
 /// Options for Chat holds.
 class HeldHangoutsChatQuery {
@@ -2752,45 +2670,7 @@ class HeldHangoutsChatQuery {
 }
 
 /// Query options for Gmail holds.
-class HeldMailQuery {
-  /// The end time for the query.
-  ///
-  /// Specify in GMT. The value is rounded to 12 AM on the specified date.
-  core.String? endTime;
-
-  /// The start time for the query.
-  ///
-  /// Specify in GMT. The value is rounded to 12 AM on the specified date.
-  core.String? startTime;
-
-  /// The [search operators](https://support.google.com/vault/answer/2474474)
-  /// used to refine the messages covered by the hold.
-  core.String? terms;
-
-  HeldMailQuery({
-    this.endTime,
-    this.startTime,
-    this.terms,
-  });
-
-  HeldMailQuery.fromJson(core.Map _json)
-      : this(
-          endTime: _json.containsKey('endTime')
-              ? _json['endTime'] as core.String
-              : null,
-          startTime: _json.containsKey('startTime')
-              ? _json['startTime'] as core.String
-              : null,
-          terms:
-              _json.containsKey('terms') ? _json['terms'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (endTime != null) 'endTime': endTime!,
-        if (startTime != null) 'startTime': startTime!,
-        if (terms != null) 'terms': terms!,
-      };
-}
+typedef HeldMailQuery = $Query;
 
 /// The organizational unit covered by a hold.
 ///
@@ -3882,49 +3762,7 @@ class SharedDriveInfo {
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-class Status {
-  /// The status code, which should be an enum value of google.rpc.Code.
-  core.int? code;
-
-  /// A list of messages that carry the error details.
-  ///
-  /// There is a common set of message types for APIs to use.
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object?>>? details;
-
-  /// A developer-facing error message, which should be in English.
-  ///
-  /// Any user-facing error message should be localized and sent in the
-  /// google.rpc.Status.details field, or localized by the client.
-  core.String? message;
-
-  Status({
-    this.code,
-    this.details,
-    this.message,
-  });
-
-  Status.fromJson(core.Map _json)
-      : this(
-          code: _json.containsKey('code') ? _json['code'] as core.int : null,
-          details: _json.containsKey('details')
-              ? (_json['details'] as core.List)
-                  .map((value) => value as core.Map<core.String, core.dynamic>)
-                  .toList()
-              : null,
-          message: _json.containsKey('message')
-              ? _json['message'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (code != null) 'code': code!,
-        if (details != null) 'details': details!,
-        if (message != null) 'message': message!,
-      };
-}
+typedef Status = $Status;
 
 /// Team Drives to search
 class TeamDriveInfo {

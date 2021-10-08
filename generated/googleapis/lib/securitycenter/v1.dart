@@ -44,7 +44,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-import '../src/empty.dart';
+import '../shared.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -3141,43 +3141,7 @@ class AuditConfig {
 /// "exempted_members": \[ "user:jose@example.com" \] }, { "log_type":
 /// "DATA_WRITE" } \] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while
 /// exempting jose@example.com from DATA_READ logging.
-class AuditLogConfig {
-  /// Specifies the identities that do not cause logging for this type of
-  /// permission.
-  ///
-  /// Follows the same format of Binding.members.
-  core.List<core.String>? exemptedMembers;
-
-  /// The log type that this config enables.
-  /// Possible string values are:
-  /// - "LOG_TYPE_UNSPECIFIED" : Default case. Should never be this.
-  /// - "ADMIN_READ" : Admin reads. Example: CloudIAM getIamPolicy
-  /// - "DATA_WRITE" : Data writes. Example: CloudSQL Users create
-  /// - "DATA_READ" : Data reads. Example: CloudSQL Users list
-  core.String? logType;
-
-  AuditLogConfig({
-    this.exemptedMembers,
-    this.logType,
-  });
-
-  AuditLogConfig.fromJson(core.Map _json)
-      : this(
-          exemptedMembers: _json.containsKey('exemptedMembers')
-              ? (_json['exemptedMembers'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          logType: _json.containsKey('logType')
-              ? _json['logType'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (exemptedMembers != null) 'exemptedMembers': exemptedMembers!,
-        if (logType != null) 'logType': logType!,
-      };
-}
+typedef AuditLogConfig = $AuditLogConfig;
 
 /// Associates `members` with a `role`.
 class Binding {
@@ -3492,61 +3456,7 @@ typedef Empty = $Empty;
 /// functions that may be referenced within an expression are determined by the
 /// service that evaluates it. See the service documentation for additional
 /// information.
-class Expr {
-  /// Description of the expression.
-  ///
-  /// This is a longer text which describes the expression, e.g. when hovered
-  /// over it in a UI.
-  ///
-  /// Optional.
-  core.String? description;
-
-  /// Textual representation of an expression in Common Expression Language
-  /// syntax.
-  core.String? expression;
-
-  /// String indicating the location of the expression for error reporting, e.g.
-  /// a file name and a position in the file.
-  ///
-  /// Optional.
-  core.String? location;
-
-  /// Title for the expression, i.e. a short string describing its purpose.
-  ///
-  /// This can be used e.g. in UIs which allow to enter the expression.
-  ///
-  /// Optional.
-  core.String? title;
-
-  Expr({
-    this.description,
-    this.expression,
-    this.location,
-    this.title,
-  });
-
-  Expr.fromJson(core.Map _json)
-      : this(
-          description: _json.containsKey('description')
-              ? _json['description'] as core.String
-              : null,
-          expression: _json.containsKey('expression')
-              ? _json['expression'] as core.String
-              : null,
-          location: _json.containsKey('location')
-              ? _json['location'] as core.String
-              : null,
-          title:
-              _json.containsKey('title') ? _json['title'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (description != null) 'description': description!,
-        if (expression != null) 'expression': expression!,
-        if (location != null) 'location': location!,
-        if (title != null) 'title': title!,
-      };
-}
+typedef Expr = $Expr;
 
 /// Security Command Center finding.
 ///
@@ -3802,38 +3712,7 @@ class Finding {
 
 /// Message that contains the resource name and display name of a folder
 /// resource.
-class Folder {
-  /// Full resource name of this folder.
-  ///
-  /// See:
-  /// https://cloud.google.com/apis/design/resource_names#full_resource_name
-  core.String? resourceFolder;
-
-  /// The user defined display name for this folder.
-  core.String? resourceFolderDisplayName;
-
-  Folder({
-    this.resourceFolder,
-    this.resourceFolderDisplayName,
-  });
-
-  Folder.fromJson(core.Map _json)
-      : this(
-          resourceFolder: _json.containsKey('resourceFolder')
-              ? _json['resourceFolder'] as core.String
-              : null,
-          resourceFolderDisplayName:
-              _json.containsKey('resourceFolderDisplayName')
-                  ? _json['resourceFolderDisplayName'] as core.String
-                  : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (resourceFolder != null) 'resourceFolder': resourceFolder!,
-        if (resourceFolderDisplayName != null)
-          'resourceFolderDisplayName': resourceFolderDisplayName!,
-      };
-}
+typedef Folder = $Folder;
 
 /// Request message for `GetIamPolicy` method.
 class GetIamPolicyRequest {
@@ -3859,35 +3738,7 @@ class GetIamPolicyRequest {
 }
 
 /// Encapsulates settings provided to GetIamPolicy.
-class GetPolicyOptions {
-  /// The policy format version to be returned.
-  ///
-  /// Valid values are 0, 1, and 3. Requests specifying an invalid value will be
-  /// rejected. Requests for policies with any conditional bindings must specify
-  /// version 3. Policies without any conditional bindings may specify any valid
-  /// value or leave the field unset. To learn which resources support
-  /// conditions in their IAM policies, see the
-  /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-  ///
-  /// Optional.
-  core.int? requestedPolicyVersion;
-
-  GetPolicyOptions({
-    this.requestedPolicyVersion,
-  });
-
-  GetPolicyOptions.fromJson(core.Map _json)
-      : this(
-          requestedPolicyVersion: _json.containsKey('requestedPolicyVersion')
-              ? _json['requestedPolicyVersion'] as core.int
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (requestedPolicyVersion != null)
-          'requestedPolicyVersion': requestedPolicyVersion!,
-      };
-}
+typedef GetPolicyOptions = $GetPolicyOptions;
 
 /// Cloud SCC's Notification
 class GoogleCloudSecuritycenterV1NotificationMessage {
@@ -4007,75 +3858,12 @@ class GoogleCloudSecuritycenterV1Resource {
 }
 
 /// Response of asset discovery run
-class GoogleCloudSecuritycenterV1RunAssetDiscoveryResponse {
-  /// The duration between asset discovery run start and end
-  core.String? duration;
-
-  /// The state of an asset discovery run.
-  /// Possible string values are:
-  /// - "STATE_UNSPECIFIED" : Asset discovery run state was unspecified.
-  /// - "COMPLETED" : Asset discovery run completed successfully.
-  /// - "SUPERSEDED" : Asset discovery run was cancelled with tasks still
-  /// pending, as another run for the same organization was started with a
-  /// higher priority.
-  /// - "TERMINATED" : Asset discovery run was killed and terminated.
-  core.String? state;
-
-  GoogleCloudSecuritycenterV1RunAssetDiscoveryResponse({
-    this.duration,
-    this.state,
-  });
-
-  GoogleCloudSecuritycenterV1RunAssetDiscoveryResponse.fromJson(core.Map _json)
-      : this(
-          duration: _json.containsKey('duration')
-              ? _json['duration'] as core.String
-              : null,
-          state:
-              _json.containsKey('state') ? _json['state'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (duration != null) 'duration': duration!,
-        if (state != null) 'state': state!,
-      };
-}
+typedef GoogleCloudSecuritycenterV1RunAssetDiscoveryResponse
+    = $RunAssetDiscoveryResponse;
 
 /// Response of asset discovery run
-class GoogleCloudSecuritycenterV1beta1RunAssetDiscoveryResponse {
-  /// The duration between asset discovery run start and end
-  core.String? duration;
-
-  /// The state of an asset discovery run.
-  /// Possible string values are:
-  /// - "STATE_UNSPECIFIED" : Asset discovery run state was unspecified.
-  /// - "COMPLETED" : Asset discovery run completed successfully.
-  /// - "SUPERSEDED" : Asset discovery run was cancelled with tasks still
-  /// pending, as another run for the same organization was started with a
-  /// higher priority.
-  /// - "TERMINATED" : Asset discovery run was killed and terminated.
-  core.String? state;
-
-  GoogleCloudSecuritycenterV1beta1RunAssetDiscoveryResponse({
-    this.duration,
-    this.state,
-  });
-
-  GoogleCloudSecuritycenterV1beta1RunAssetDiscoveryResponse.fromJson(
-      core.Map _json)
-      : this(
-          duration: _json.containsKey('duration')
-              ? _json['duration'] as core.String
-              : null,
-          state:
-              _json.containsKey('state') ? _json['state'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (duration != null) 'duration': duration!,
-        if (state != null) 'state': state!,
-      };
-}
+typedef GoogleCloudSecuritycenterV1beta1RunAssetDiscoveryResponse
+    = $RunAssetDiscoveryResponse;
 
 /// Security Command Center finding.
 ///
@@ -4256,38 +4044,7 @@ class GoogleCloudSecuritycenterV1p1beta1Finding {
 
 /// Message that contains the resource name and display name of a folder
 /// resource.
-class GoogleCloudSecuritycenterV1p1beta1Folder {
-  /// Full resource name of this folder.
-  ///
-  /// See:
-  /// https://cloud.google.com/apis/design/resource_names#full_resource_name
-  core.String? resourceFolder;
-
-  /// The user defined display name for this folder.
-  core.String? resourceFolderDisplayName;
-
-  GoogleCloudSecuritycenterV1p1beta1Folder({
-    this.resourceFolder,
-    this.resourceFolderDisplayName,
-  });
-
-  GoogleCloudSecuritycenterV1p1beta1Folder.fromJson(core.Map _json)
-      : this(
-          resourceFolder: _json.containsKey('resourceFolder')
-              ? _json['resourceFolder'] as core.String
-              : null,
-          resourceFolderDisplayName:
-              _json.containsKey('resourceFolderDisplayName')
-                  ? _json['resourceFolderDisplayName'] as core.String
-                  : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (resourceFolder != null) 'resourceFolder': resourceFolder!,
-        if (resourceFolderDisplayName != null)
-          'resourceFolderDisplayName': resourceFolderDisplayName!,
-      };
-}
+typedef GoogleCloudSecuritycenterV1p1beta1Folder = $Folder;
 
 /// Security Command Center's Notification
 class GoogleCloudSecuritycenterV1p1beta1NotificationMessage {
@@ -4402,40 +4159,8 @@ class GoogleCloudSecuritycenterV1p1beta1Resource {
 }
 
 /// Response of asset discovery run
-class GoogleCloudSecuritycenterV1p1beta1RunAssetDiscoveryResponse {
-  /// The duration between asset discovery run start and end
-  core.String? duration;
-
-  /// The state of an asset discovery run.
-  /// Possible string values are:
-  /// - "STATE_UNSPECIFIED" : Asset discovery run state was unspecified.
-  /// - "COMPLETED" : Asset discovery run completed successfully.
-  /// - "SUPERSEDED" : Asset discovery run was cancelled with tasks still
-  /// pending, as another run for the same organization was started with a
-  /// higher priority.
-  /// - "TERMINATED" : Asset discovery run was killed and terminated.
-  core.String? state;
-
-  GoogleCloudSecuritycenterV1p1beta1RunAssetDiscoveryResponse({
-    this.duration,
-    this.state,
-  });
-
-  GoogleCloudSecuritycenterV1p1beta1RunAssetDiscoveryResponse.fromJson(
-      core.Map _json)
-      : this(
-          duration: _json.containsKey('duration')
-              ? _json['duration'] as core.String
-              : null,
-          state:
-              _json.containsKey('state') ? _json['state'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (duration != null) 'duration': duration!,
-        if (state != null) 'state': state!,
-      };
-}
+typedef GoogleCloudSecuritycenterV1p1beta1RunAssetDiscoveryResponse
+    = $RunAssetDiscoveryResponse;
 
 /// User specified security marks that are attached to the parent Security
 /// Command Center resource.
@@ -4443,64 +4168,7 @@ class GoogleCloudSecuritycenterV1p1beta1RunAssetDiscoveryResponse {
 /// Security marks are scoped within a Security Command Center organization --
 /// they can be modified and viewed by all users who have proper permissions on
 /// the organization.
-class GoogleCloudSecuritycenterV1p1beta1SecurityMarks {
-  /// The canonical name of the marks.
-  ///
-  /// Examples:
-  /// "organizations/{organization_id}/assets/{asset_id}/securityMarks"
-  /// "folders/{folder_id}/assets/{asset_id}/securityMarks"
-  /// "projects/{project_number}/assets/{asset_id}/securityMarks"
-  /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}/securityMarks"
-  /// "folders/{folder_id}/sources/{source_id}/findings/{finding_id}/securityMarks"
-  /// "projects/{project_number}/sources/{source_id}/findings/{finding_id}/securityMarks"
-  core.String? canonicalName;
-
-  /// Mutable user specified security marks belonging to the parent resource.
-  ///
-  /// Constraints are as follows: * Keys and values are treated as case
-  /// insensitive * Keys must be between 1 - 256 characters (inclusive) * Keys
-  /// must be letters, numbers, underscores, or dashes * Values have leading and
-  /// trailing whitespace trimmed, remaining characters must be between 1 - 4096
-  /// characters (inclusive)
-  core.Map<core.String, core.String>? marks;
-
-  /// The relative resource name of the SecurityMarks.
-  ///
-  /// See:
-  /// https://cloud.google.com/apis/design/resource_names#relative_resource_name
-  /// Examples:
-  /// "organizations/{organization_id}/assets/{asset_id}/securityMarks"
-  /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}/securityMarks".
-  core.String? name;
-
-  GoogleCloudSecuritycenterV1p1beta1SecurityMarks({
-    this.canonicalName,
-    this.marks,
-    this.name,
-  });
-
-  GoogleCloudSecuritycenterV1p1beta1SecurityMarks.fromJson(core.Map _json)
-      : this(
-          canonicalName: _json.containsKey('canonicalName')
-              ? _json['canonicalName'] as core.String
-              : null,
-          marks: _json.containsKey('marks')
-              ? (_json['marks'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.String,
-                  ),
-                )
-              : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (canonicalName != null) 'canonicalName': canonicalName!,
-        if (marks != null) 'marks': marks!,
-        if (name != null) 'name': name!,
-      };
-}
+typedef GoogleCloudSecuritycenterV1p1beta1SecurityMarks = $SecurityMarks;
 
 /// Request message for grouping by assets.
 class GroupAssetsRequest {
@@ -5478,7 +5146,11 @@ class Policy {
   ///
   /// Optionally, may specify a `condition` that determines how and when the
   /// `bindings` are applied. Each of the `bindings` must contain at least one
-  /// member.
+  /// member. The `bindings` in a `Policy` can refer to up to 1,500 members; up
+  /// to 250 of these members can be Google groups. Each occurrence of a member
+  /// counts towards these limits. For example, if the `bindings` grant 50
+  /// different roles to `user:alice@example.com`, and not to any other member,
+  /// then you can add another 1,450 members to the `bindings` in the `Policy`.
   core.List<Binding>? bindings;
 
   /// `etag` is used for optimistic concurrency control as a way to help prevent
@@ -5776,64 +5448,7 @@ class SecurityCenterProperties {
 /// Security marks are scoped within a Security Command Center organization --
 /// they can be modified and viewed by all users who have proper permissions on
 /// the organization.
-class SecurityMarks {
-  /// The canonical name of the marks.
-  ///
-  /// Examples:
-  /// "organizations/{organization_id}/assets/{asset_id}/securityMarks"
-  /// "folders/{folder_id}/assets/{asset_id}/securityMarks"
-  /// "projects/{project_number}/assets/{asset_id}/securityMarks"
-  /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}/securityMarks"
-  /// "folders/{folder_id}/sources/{source_id}/findings/{finding_id}/securityMarks"
-  /// "projects/{project_number}/sources/{source_id}/findings/{finding_id}/securityMarks"
-  core.String? canonicalName;
-
-  /// Mutable user specified security marks belonging to the parent resource.
-  ///
-  /// Constraints are as follows: * Keys and values are treated as case
-  /// insensitive * Keys must be between 1 - 256 characters (inclusive) * Keys
-  /// must be letters, numbers, underscores, or dashes * Values have leading and
-  /// trailing whitespace trimmed, remaining characters must be between 1 - 4096
-  /// characters (inclusive)
-  core.Map<core.String, core.String>? marks;
-
-  /// The relative resource name of the SecurityMarks.
-  ///
-  /// See:
-  /// https://cloud.google.com/apis/design/resource_names#relative_resource_name
-  /// Examples:
-  /// "organizations/{organization_id}/assets/{asset_id}/securityMarks"
-  /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}/securityMarks".
-  core.String? name;
-
-  SecurityMarks({
-    this.canonicalName,
-    this.marks,
-    this.name,
-  });
-
-  SecurityMarks.fromJson(core.Map _json)
-      : this(
-          canonicalName: _json.containsKey('canonicalName')
-              ? _json['canonicalName'] as core.String
-              : null,
-          marks: _json.containsKey('marks')
-              ? (_json['marks'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.String,
-                  ),
-                )
-              : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (canonicalName != null) 'canonicalName': canonicalName!,
-        if (marks != null) 'marks': marks!,
-        if (name != null) 'name': name!,
-      };
-}
+typedef SecurityMarks = $SecurityMarks;
 
 /// Request message for updating a finding's state.
 class SetFindingStateRequest {
@@ -5983,49 +5598,7 @@ class Source {
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-class Status {
-  /// The status code, which should be an enum value of google.rpc.Code.
-  core.int? code;
-
-  /// A list of messages that carry the error details.
-  ///
-  /// There is a common set of message types for APIs to use.
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object?>>? details;
-
-  /// A developer-facing error message, which should be in English.
-  ///
-  /// Any user-facing error message should be localized and sent in the
-  /// google.rpc.Status.details field, or localized by the client.
-  core.String? message;
-
-  Status({
-    this.code,
-    this.details,
-    this.message,
-  });
-
-  Status.fromJson(core.Map _json)
-      : this(
-          code: _json.containsKey('code') ? _json['code'] as core.int : null,
-          details: _json.containsKey('details')
-              ? (_json['details'] as core.List)
-                  .map((value) => value as core.Map<core.String, core.dynamic>)
-                  .toList()
-              : null,
-          message: _json.containsKey('message')
-              ? _json['message'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (code != null) 'code': code!,
-        if (details != null) 'details': details!,
-        if (message != null) 'message': message!,
-      };
-}
+typedef Status = $Status;
 
 /// The config for streaming-based notifications, which send each event as soon
 /// as it is detected.
@@ -6061,55 +5634,10 @@ class StreamingConfig {
 }
 
 /// Request message for `TestIamPermissions` method.
-class TestIamPermissionsRequest {
-  /// The set of permissions to check for the `resource`.
-  ///
-  /// Permissions with wildcards (such as '*' or 'storage.*') are not allowed.
-  /// For more information see
-  /// [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).
-  core.List<core.String>? permissions;
-
-  TestIamPermissionsRequest({
-    this.permissions,
-  });
-
-  TestIamPermissionsRequest.fromJson(core.Map _json)
-      : this(
-          permissions: _json.containsKey('permissions')
-              ? (_json['permissions'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (permissions != null) 'permissions': permissions!,
-      };
-}
+typedef TestIamPermissionsRequest = $TestIamPermissionsRequest;
 
 /// Response message for `TestIamPermissions` method.
-class TestIamPermissionsResponse {
-  /// A subset of `TestPermissionsRequest.permissions` that the caller is
-  /// allowed.
-  core.List<core.String>? permissions;
-
-  TestIamPermissionsResponse({
-    this.permissions,
-  });
-
-  TestIamPermissionsResponse.fromJson(core.Map _json)
-      : this(
-          permissions: _json.containsKey('permissions')
-              ? (_json['permissions'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (permissions != null) 'permissions': permissions!,
-      };
-}
+typedef TestIamPermissionsResponse = $PermissionsResponse;
 
 /// Refers to common vulnerability fields e.g. cve, cvss, cwe etc.
 class Vulnerability {

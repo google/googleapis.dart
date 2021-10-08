@@ -60,7 +60,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-import '../src/empty.dart';
+import '../shared.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -10917,23 +10917,7 @@ class GooglePrivacyDlpV2Key {
 }
 
 /// A representation of a Datastore kind.
-class GooglePrivacyDlpV2KindExpression {
-  /// The name of the kind.
-  core.String? name;
-
-  GooglePrivacyDlpV2KindExpression({
-    this.name,
-  });
-
-  GooglePrivacyDlpV2KindExpression.fromJson(core.Map _json)
-      : this(
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-      };
-}
+typedef GooglePrivacyDlpV2KindExpression = $KindExpression;
 
 /// Include to use an existing data crypto key wrapped by KMS.
 ///
@@ -11718,76 +11702,13 @@ class GooglePrivacyDlpV2OutputStorageConfig {
 /// A partition ID identifies a grouping of entities. The grouping is always by
 /// project and namespace, however the namespace ID may be empty. A partition ID
 /// contains several dimensions: project ID and namespace ID.
-class GooglePrivacyDlpV2PartitionId {
-  /// If not empty, the ID of the namespace to which the entities belong.
-  core.String? namespaceId;
-
-  /// The ID of the project to which the entities belong.
-  core.String? projectId;
-
-  GooglePrivacyDlpV2PartitionId({
-    this.namespaceId,
-    this.projectId,
-  });
-
-  GooglePrivacyDlpV2PartitionId.fromJson(core.Map _json)
-      : this(
-          namespaceId: _json.containsKey('namespaceId')
-              ? _json['namespaceId'] as core.String
-              : null,
-          projectId: _json.containsKey('projectId')
-              ? _json['projectId'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (namespaceId != null) 'namespaceId': namespaceId!,
-        if (projectId != null) 'projectId': projectId!,
-      };
-}
+typedef GooglePrivacyDlpV2PartitionId = $PartitionId;
 
 /// A (kind, ID/name) pair used to construct a key path.
 ///
 /// If either name or ID is set, the element is complete. If neither is set, the
 /// element is incomplete.
-class GooglePrivacyDlpV2PathElement {
-  /// The auto-allocated ID of the entity.
-  ///
-  /// Never equal to zero. Values less than zero are discouraged and may not be
-  /// supported in the future.
-  core.String? id;
-
-  /// The kind of the entity.
-  ///
-  /// A kind matching regex `__.*__` is reserved/read-only. A kind must not
-  /// contain more than 1500 bytes when UTF-8 encoded. Cannot be `""`.
-  core.String? kind;
-
-  /// The name of the entity.
-  ///
-  /// A name matching regex `__.*__` is reserved/read-only. A name must not be
-  /// more than 1500 bytes when UTF-8 encoded. Cannot be `""`.
-  core.String? name;
-
-  GooglePrivacyDlpV2PathElement({
-    this.id,
-    this.kind,
-    this.name,
-  });
-
-  GooglePrivacyDlpV2PathElement.fromJson(core.Map _json)
-      : this(
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (id != null) 'id': id!,
-        if (kind != null) 'kind': kind!,
-        if (name != null) 'name': name!,
-      };
-}
+typedef GooglePrivacyDlpV2PathElement = $PathElement;
 
 /// A rule for transforming a value.
 class GooglePrivacyDlpV2PrimitiveTransformation {
@@ -14224,49 +14145,7 @@ typedef GoogleProtobufEmpty = $Empty;
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-class GoogleRpcStatus {
-  /// The status code, which should be an enum value of google.rpc.Code.
-  core.int? code;
-
-  /// A list of messages that carry the error details.
-  ///
-  /// There is a common set of message types for APIs to use.
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object?>>? details;
-
-  /// A developer-facing error message, which should be in English.
-  ///
-  /// Any user-facing error message should be localized and sent in the
-  /// google.rpc.Status.details field, or localized by the client.
-  core.String? message;
-
-  GoogleRpcStatus({
-    this.code,
-    this.details,
-    this.message,
-  });
-
-  GoogleRpcStatus.fromJson(core.Map _json)
-      : this(
-          code: _json.containsKey('code') ? _json['code'] as core.int : null,
-          details: _json.containsKey('details')
-              ? (_json['details'] as core.List)
-                  .map((value) => value as core.Map<core.String, core.dynamic>)
-                  .toList()
-              : null,
-          message: _json.containsKey('message')
-              ? _json['message'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (code != null) 'code': code!,
-        if (details != null) 'details': details!,
-        if (message != null) 'message': message!,
-      };
-}
+typedef GoogleRpcStatus = $Status;
 
 /// Represents a whole or partial calendar date, such as a birthday.
 ///
@@ -14277,94 +14156,11 @@ class GoogleRpcStatus {
 /// anniversary * A year on its own, with zero month and day values * A year and
 /// month value, with a zero day, such as a credit card expiration date Related
 /// types are google.type.TimeOfDay and `google.protobuf.Timestamp`.
-class GoogleTypeDate {
-  /// Day of a month.
-  ///
-  /// Must be from 1 to 31 and valid for the year and month, or 0 to specify a
-  /// year by itself or a year and month where the day isn't significant.
-  core.int? day;
-
-  /// Month of a year.
-  ///
-  /// Must be from 1 to 12, or 0 to specify a year without a month and day.
-  core.int? month;
-
-  /// Year of the date.
-  ///
-  /// Must be from 1 to 9999, or 0 to specify a date without a year.
-  core.int? year;
-
-  GoogleTypeDate({
-    this.day,
-    this.month,
-    this.year,
-  });
-
-  GoogleTypeDate.fromJson(core.Map _json)
-      : this(
-          day: _json.containsKey('day') ? _json['day'] as core.int : null,
-          month: _json.containsKey('month') ? _json['month'] as core.int : null,
-          year: _json.containsKey('year') ? _json['year'] as core.int : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (day != null) 'day': day!,
-        if (month != null) 'month': month!,
-        if (year != null) 'year': year!,
-      };
-}
+typedef GoogleTypeDate = $Date;
 
 /// Represents a time of day.
 ///
 /// The date and time zone are either not significant or are specified
 /// elsewhere. An API may choose to allow leap seconds. Related types are
 /// google.type.Date and `google.protobuf.Timestamp`.
-class GoogleTypeTimeOfDay {
-  /// Hours of day in 24 hour format.
-  ///
-  /// Should be from 0 to 23. An API may choose to allow the value "24:00:00"
-  /// for scenarios like business closing time.
-  core.int? hours;
-
-  /// Minutes of hour of day.
-  ///
-  /// Must be from 0 to 59.
-  core.int? minutes;
-
-  /// Fractions of seconds in nanoseconds.
-  ///
-  /// Must be from 0 to 999,999,999.
-  core.int? nanos;
-
-  /// Seconds of minutes of the time.
-  ///
-  /// Must normally be from 0 to 59. An API may allow the value 60 if it allows
-  /// leap-seconds.
-  core.int? seconds;
-
-  GoogleTypeTimeOfDay({
-    this.hours,
-    this.minutes,
-    this.nanos,
-    this.seconds,
-  });
-
-  GoogleTypeTimeOfDay.fromJson(core.Map _json)
-      : this(
-          hours: _json.containsKey('hours') ? _json['hours'] as core.int : null,
-          minutes: _json.containsKey('minutes')
-              ? _json['minutes'] as core.int
-              : null,
-          nanos: _json.containsKey('nanos') ? _json['nanos'] as core.int : null,
-          seconds: _json.containsKey('seconds')
-              ? _json['seconds'] as core.int
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (hours != null) 'hours': hours!,
-        if (minutes != null) 'minutes': minutes!,
-        if (nanos != null) 'nanos': nanos!,
-        if (seconds != null) 'seconds': seconds!,
-      };
-}
+typedef GoogleTypeTimeOfDay = $TimeOfDay;

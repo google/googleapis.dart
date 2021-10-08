@@ -82,7 +82,7 @@ class ClientApiLibrary extends BaseApiLibrary {
   @override
   String get librarySource {
     final sink = StringBuffer();
-    final schemas = generateSchemas(schemaDB, false);
+    final schemas = generateSchemas(schemaDB);
     final resources = generateResources(apiClass);
     sink.write(libraryHeader());
     if (resources.isNotEmpty) {

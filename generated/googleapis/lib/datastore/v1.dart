@@ -33,7 +33,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-import '../src/empty.dart';
+import '../shared.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -1346,42 +1346,7 @@ class GoogleDatastoreAdminV1CommonMetadata {
 /// Kinds Foo and Bar in both the default and Baz namespaces: kinds=\['Foo',
 /// 'Bar'\], namespace_ids=\['', 'Baz'\] The entire Baz namespace: kinds=\[\],
 /// namespace_ids=\['Baz'\]
-class GoogleDatastoreAdminV1EntityFilter {
-  /// If empty, then this represents all kinds.
-  core.List<core.String>? kinds;
-
-  /// An empty list represents all namespaces.
-  ///
-  /// This is the preferred usage for projects that don't use namespaces. An
-  /// empty string element represents the default namespace. This should be used
-  /// if the project has data in non-default namespaces, but doesn't want to
-  /// include them. Each namespace in this list must be unique.
-  core.List<core.String>? namespaceIds;
-
-  GoogleDatastoreAdminV1EntityFilter({
-    this.kinds,
-    this.namespaceIds,
-  });
-
-  GoogleDatastoreAdminV1EntityFilter.fromJson(core.Map _json)
-      : this(
-          kinds: _json.containsKey('kinds')
-              ? (_json['kinds'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          namespaceIds: _json.containsKey('namespaceIds')
-              ? (_json['namespaceIds'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (kinds != null) 'kinds': kinds!,
-        if (namespaceIds != null) 'namespaceIds': namespaceIds!,
-      };
-}
+typedef GoogleDatastoreAdminV1EntityFilter = $EntityFilter;
 
 /// Metadata for ExportEntities operations.
 class GoogleDatastoreAdminV1ExportEntitiesMetadata {
@@ -1862,37 +1827,7 @@ class GoogleDatastoreAdminV1ListIndexesResponse {
 }
 
 /// Measures the progress of a particular metric.
-class GoogleDatastoreAdminV1Progress {
-  /// The amount of work that has been completed.
-  ///
-  /// Note that this may be greater than work_estimated.
-  core.String? workCompleted;
-
-  /// An estimate of how much work needs to be performed.
-  ///
-  /// May be zero if the work estimate is unavailable.
-  core.String? workEstimated;
-
-  GoogleDatastoreAdminV1Progress({
-    this.workCompleted,
-    this.workEstimated,
-  });
-
-  GoogleDatastoreAdminV1Progress.fromJson(core.Map _json)
-      : this(
-          workCompleted: _json.containsKey('workCompleted')
-              ? _json['workCompleted'] as core.String
-              : null,
-          workEstimated: _json.containsKey('workEstimated')
-              ? _json['workEstimated'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (workCompleted != null) 'workCompleted': workCompleted!,
-        if (workEstimated != null) 'workEstimated': workEstimated!,
-      };
-}
+typedef GoogleDatastoreAdminV1Progress = $Progress;
 
 /// Metadata common to all Datastore Admin operations.
 class GoogleDatastoreAdminV1beta1CommonMetadata {
@@ -1983,42 +1918,7 @@ class GoogleDatastoreAdminV1beta1CommonMetadata {
 /// Kinds Foo and Bar in both the default and Baz namespaces: kinds=\['Foo',
 /// 'Bar'\], namespace_ids=\['', 'Baz'\] The entire Baz namespace: kinds=\[\],
 /// namespace_ids=\['Baz'\]
-class GoogleDatastoreAdminV1beta1EntityFilter {
-  /// If empty, then this represents all kinds.
-  core.List<core.String>? kinds;
-
-  /// An empty list represents all namespaces.
-  ///
-  /// This is the preferred usage for projects that don't use namespaces. An
-  /// empty string element represents the default namespace. This should be used
-  /// if the project has data in non-default namespaces, but doesn't want to
-  /// include them. Each namespace in this list must be unique.
-  core.List<core.String>? namespaceIds;
-
-  GoogleDatastoreAdminV1beta1EntityFilter({
-    this.kinds,
-    this.namespaceIds,
-  });
-
-  GoogleDatastoreAdminV1beta1EntityFilter.fromJson(core.Map _json)
-      : this(
-          kinds: _json.containsKey('kinds')
-              ? (_json['kinds'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          namespaceIds: _json.containsKey('namespaceIds')
-              ? (_json['namespaceIds'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (kinds != null) 'kinds': kinds!,
-        if (namespaceIds != null) 'namespaceIds': namespaceIds!,
-      };
-}
+typedef GoogleDatastoreAdminV1beta1EntityFilter = $EntityFilter;
 
 /// Metadata for ExportEntities operations.
 class GoogleDatastoreAdminV1beta1ExportEntitiesMetadata {
@@ -2172,37 +2072,7 @@ class GoogleDatastoreAdminV1beta1ImportEntitiesMetadata {
 }
 
 /// Measures the progress of a particular metric.
-class GoogleDatastoreAdminV1beta1Progress {
-  /// The amount of work that has been completed.
-  ///
-  /// Note that this may be greater than work_estimated.
-  core.String? workCompleted;
-
-  /// An estimate of how much work needs to be performed.
-  ///
-  /// May be zero if the work estimate is unavailable.
-  core.String? workEstimated;
-
-  GoogleDatastoreAdminV1beta1Progress({
-    this.workCompleted,
-    this.workEstimated,
-  });
-
-  GoogleDatastoreAdminV1beta1Progress.fromJson(core.Map _json)
-      : this(
-          workCompleted: _json.containsKey('workCompleted')
-              ? _json['workCompleted'] as core.String
-              : null,
-          workEstimated: _json.containsKey('workEstimated')
-              ? _json['workEstimated'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (workCompleted != null) 'workCompleted': workCompleted!,
-        if (workEstimated != null) 'workEstimated': workEstimated!,
-      };
-}
+typedef GoogleDatastoreAdminV1beta1Progress = $Progress;
 
 /// The response message for Operations.ListOperations.
 class GoogleLongrunningListOperationsResponse {
@@ -2474,60 +2344,14 @@ class Key {
 }
 
 /// A representation of a kind.
-class KindExpression {
-  /// The name of the kind.
-  core.String? name;
-
-  KindExpression({
-    this.name,
-  });
-
-  KindExpression.fromJson(core.Map _json)
-      : this(
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-      };
-}
+typedef KindExpression = $KindExpression;
 
 /// An object that represents a latitude/longitude pair.
 ///
 /// This is expressed as a pair of doubles to represent degrees latitude and
 /// degrees longitude. Unless specified otherwise, this object must conform to
 /// the WGS84 standard. Values must be within normalized ranges.
-class LatLng {
-  /// The latitude in degrees.
-  ///
-  /// It must be in the range \[-90.0, +90.0\].
-  core.double? latitude;
-
-  /// The longitude in degrees.
-  ///
-  /// It must be in the range \[-180.0, +180.0\].
-  core.double? longitude;
-
-  LatLng({
-    this.latitude,
-    this.longitude,
-  });
-
-  LatLng.fromJson(core.Map _json)
-      : this(
-          latitude: _json.containsKey('latitude')
-              ? (_json['latitude'] as core.num).toDouble()
-              : null,
-          longitude: _json.containsKey('longitude')
-              ? (_json['longitude'] as core.num).toDouble()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (latitude != null) 'latitude': latitude!,
-        if (longitude != null) 'longitude': longitude!,
-      };
-}
+typedef LatLng = $LatLng;
 
 /// The request for Datastore.Lookup.
 class LookupRequest {
@@ -2749,76 +2573,13 @@ class MutationResult {
 /// certain documented contexts. Foreign partition IDs (in which the project ID
 /// does not match the context project ID ) are discouraged. Reads and writes of
 /// foreign partition IDs may fail if the project is not in an active state.
-class PartitionId {
-  /// If not empty, the ID of the namespace to which the entities belong.
-  core.String? namespaceId;
-
-  /// The ID of the project to which the entities belong.
-  core.String? projectId;
-
-  PartitionId({
-    this.namespaceId,
-    this.projectId,
-  });
-
-  PartitionId.fromJson(core.Map _json)
-      : this(
-          namespaceId: _json.containsKey('namespaceId')
-              ? _json['namespaceId'] as core.String
-              : null,
-          projectId: _json.containsKey('projectId')
-              ? _json['projectId'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (namespaceId != null) 'namespaceId': namespaceId!,
-        if (projectId != null) 'projectId': projectId!,
-      };
-}
+typedef PartitionId = $PartitionId;
 
 /// A (kind, ID/name) pair used to construct a key path.
 ///
 /// If either name or ID is set, the element is complete. If neither is set, the
 /// element is incomplete.
-class PathElement {
-  /// The auto-allocated ID of the entity.
-  ///
-  /// Never equal to zero. Values less than zero are discouraged and may not be
-  /// supported in the future.
-  core.String? id;
-
-  /// The kind of the entity.
-  ///
-  /// A kind matching regex `__.*__` is reserved/read-only. A kind must not
-  /// contain more than 1500 bytes when UTF-8 encoded. Cannot be `""`.
-  core.String? kind;
-
-  /// The name of the entity.
-  ///
-  /// A name matching regex `__.*__` is reserved/read-only. A name must not be
-  /// more than 1500 bytes when UTF-8 encoded. Cannot be `""`.
-  core.String? name;
-
-  PathElement({
-    this.id,
-    this.kind,
-    this.name,
-  });
-
-  PathElement.fromJson(core.Map _json)
-      : this(
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (id != null) 'id': id!,
-        if (kind != null) 'kind': kind!,
-        if (name != null) 'name': name!,
-      };
-}
+typedef PathElement = $PathElement;
 
 /// A representation of a property in a projection.
 class Projection {
@@ -3431,49 +3192,7 @@ class RunQueryResponse {
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-class Status {
-  /// The status code, which should be an enum value of google.rpc.Code.
-  core.int? code;
-
-  /// A list of messages that carry the error details.
-  ///
-  /// There is a common set of message types for APIs to use.
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object?>>? details;
-
-  /// A developer-facing error message, which should be in English.
-  ///
-  /// Any user-facing error message should be localized and sent in the
-  /// google.rpc.Status.details field, or localized by the client.
-  core.String? message;
-
-  Status({
-    this.code,
-    this.details,
-    this.message,
-  });
-
-  Status.fromJson(core.Map _json)
-      : this(
-          code: _json.containsKey('code') ? _json['code'] as core.int : null,
-          details: _json.containsKey('details')
-              ? (_json['details'] as core.List)
-                  .map((value) => value as core.Map<core.String, core.dynamic>)
-                  .toList()
-              : null,
-          message: _json.containsKey('message')
-              ? _json['message'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (code != null) 'code': code!,
-        if (details != null) 'details': details!,
-        if (message != null) 'message': message!,
-      };
-}
+typedef Status = $Status;
 
 /// Options for beginning a new transaction.
 ///

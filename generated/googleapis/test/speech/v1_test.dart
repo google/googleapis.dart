@@ -137,6 +137,8 @@ api.LongRunningRecognizeResponse buildLongRunningRecognizeResponse() {
   final o = api.LongRunningRecognizeResponse();
   buildCounterLongRunningRecognizeResponse++;
   if (buildCounterLongRunningRecognizeResponse < 3) {
+    o.outputConfig = buildTranscriptOutputConfig();
+    o.outputError = buildStatus();
     o.results = buildUnnamed1();
     o.totalBilledTime = 'foo';
   }
@@ -147,6 +149,8 @@ api.LongRunningRecognizeResponse buildLongRunningRecognizeResponse() {
 void checkLongRunningRecognizeResponse(api.LongRunningRecognizeResponse o) {
   buildCounterLongRunningRecognizeResponse++;
   if (buildCounterLongRunningRecognizeResponse < 3) {
+    checkTranscriptOutputConfig(o.outputConfig!);
+    checkStatus(o.outputError!);
     checkUnnamed1(o.results!);
     unittest.expect(
       o.totalBilledTime!,

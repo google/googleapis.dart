@@ -32,6 +32,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
+import '../shared.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -384,6 +385,12 @@ class LongRunningRecognizeRequest {
 /// returned by the `GetOperation` call of the `google::longrunning::Operations`
 /// service.
 class LongRunningRecognizeResponse {
+  /// Original output config if present in the request.
+  TranscriptOutputConfig? outputConfig;
+
+  /// If the transcript output fails this field contains the relevant error.
+  Status? outputError;
+
   /// Sequential list of transcription results corresponding to sequential
   /// portions of audio.
   core.List<SpeechRecognitionResult>? results;
@@ -392,12 +399,22 @@ class LongRunningRecognizeResponse {
   core.String? totalBilledTime;
 
   LongRunningRecognizeResponse({
+    this.outputConfig,
+    this.outputError,
     this.results,
     this.totalBilledTime,
   });
 
   LongRunningRecognizeResponse.fromJson(core.Map _json)
       : this(
+          outputConfig: _json.containsKey('outputConfig')
+              ? TranscriptOutputConfig.fromJson(
+                  _json['outputConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+          outputError: _json.containsKey('outputError')
+              ? Status.fromJson(
+                  _json['outputError'] as core.Map<core.String, core.dynamic>)
+              : null,
           results: _json.containsKey('results')
               ? (_json['results'] as core.List)
                   .map((value) => SpeechRecognitionResult.fromJson(
@@ -410,6 +427,8 @@ class LongRunningRecognizeResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (outputConfig != null) 'outputConfig': outputConfig!,
+        if (outputError != null) 'outputError': outputError!,
         if (results != null) 'results': results!,
         if (totalBilledTime != null) 'totalBilledTime': totalBilledTime!,
       };
@@ -620,6 +639,10 @@ class RecognitionConfig {
   /// (octets) as specified in RFC 5574. In other words, each RTP header is
   /// replaced with a single byte containing the block length. Only Speex
   /// wideband is supported. `sample_rate_hertz` must be 16000.
+  /// - "WEBM_OPUS" : Opus encoded audio frames in WebM container
+  /// ([OggOpus](https://wiki.xiph.org/OggOpus)). This is a Beta features and
+  /// only available in v1p1beta1. `sample_rate_hertz` must be one of 8000,
+  /// 12000, 16000, 24000, or 48000.
   core.String? encoding;
 
   /// The language of the supplied audio as a
@@ -1181,49 +1204,7 @@ class SpeechRecognitionResult {
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-class Status {
-  /// The status code, which should be an enum value of google.rpc.Code.
-  core.int? code;
-
-  /// A list of messages that carry the error details.
-  ///
-  /// There is a common set of message types for APIs to use.
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object?>>? details;
-
-  /// A developer-facing error message, which should be in English.
-  ///
-  /// Any user-facing error message should be localized and sent in the
-  /// google.rpc.Status.details field, or localized by the client.
-  core.String? message;
-
-  Status({
-    this.code,
-    this.details,
-    this.message,
-  });
-
-  Status.fromJson(core.Map _json)
-      : this(
-          code: _json.containsKey('code') ? _json['code'] as core.int : null,
-          details: _json.containsKey('details')
-              ? (_json['details'] as core.List)
-                  .map((value) => value as core.Map<core.String, core.dynamic>)
-                  .toList()
-              : null,
-          message: _json.containsKey('message')
-              ? _json['message'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (code != null) 'code': code!,
-        if (details != null) 'details': details!,
-        if (message != null) 'message': message!,
-      };
-}
+typedef Status = $Status;
 
 /// Specifies an optional destination for the recognition results.
 class TranscriptOutputConfig {

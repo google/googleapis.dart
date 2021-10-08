@@ -34,7 +34,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-import '../src/empty.dart';
+import '../shared.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -1166,61 +1166,7 @@ typedef Empty = $Empty;
 /// functions that may be referenced within an expression are determined by the
 /// service that evaluates it. See the service documentation for additional
 /// information.
-class Expr {
-  /// Description of the expression.
-  ///
-  /// This is a longer text which describes the expression, e.g. when hovered
-  /// over it in a UI.
-  ///
-  /// Optional.
-  core.String? description;
-
-  /// Textual representation of an expression in Common Expression Language
-  /// syntax.
-  core.String? expression;
-
-  /// String indicating the location of the expression for error reporting, e.g.
-  /// a file name and a position in the file.
-  ///
-  /// Optional.
-  core.String? location;
-
-  /// Title for the expression, i.e. a short string describing its purpose.
-  ///
-  /// This can be used e.g. in UIs which allow to enter the expression.
-  ///
-  /// Optional.
-  core.String? title;
-
-  Expr({
-    this.description,
-    this.expression,
-    this.location,
-    this.title,
-  });
-
-  Expr.fromJson(core.Map _json)
-      : this(
-          description: _json.containsKey('description')
-              ? _json['description'] as core.String
-              : null,
-          expression: _json.containsKey('expression')
-              ? _json['expression'] as core.String
-              : null,
-          location: _json.containsKey('location')
-              ? _json['location'] as core.String
-              : null,
-          title:
-              _json.containsKey('title') ? _json['title'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (description != null) 'description': description!,
-        if (expression != null) 'expression': expression!,
-        if (location != null) 'location': location!,
-        if (title != null) 'title': title!,
-      };
-}
+typedef Expr = $Expr;
 
 /// An Identity and Access Management (IAM) policy, which specifies access
 /// controls for Google Cloud resources.
@@ -1258,7 +1204,11 @@ class IamPolicy {
   ///
   /// Optionally, may specify a `condition` that determines how and when the
   /// `bindings` are applied. Each of the `bindings` must contain at least one
-  /// member.
+  /// member. The `bindings` in a `Policy` can refer to up to 1,500 members; up
+  /// to 250 of these members can be Google groups. Each occurrence of a member
+  /// counts towards these limits. For example, if the `bindings` grant 50
+  /// different roles to `user:alice@example.com`, and not to any other member,
+  /// then you can add another 1,450 members to the `bindings` in the `Policy`.
   core.List<Binding>? bindings;
 
   /// `etag` is used for optimistic concurrency control as a way to help prevent
@@ -1327,28 +1277,7 @@ class IamPolicy {
       };
 }
 
-class Jwt {
-  /// The compact encoding of a JWS, which is always three base64 encoded
-  /// strings joined by periods.
-  ///
-  /// For details, see: https://tools.ietf.org/html/rfc7515.html#section-3.1
-  core.String? compactJwt;
-
-  Jwt({
-    this.compactJwt,
-  });
-
-  Jwt.fromJson(core.Map _json)
-      : this(
-          compactJwt: _json.containsKey('compactJwt')
-              ? _json['compactJwt'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (compactJwt != null) 'compactJwt': compactJwt!,
-      };
-}
+typedef Jwt = $Jwt;
 
 /// Response message for BinauthzManagementService.ListAttestors.
 class ListAttestorsResponse {
@@ -1690,107 +1619,13 @@ class SetIamPolicyRequest {
 /// explicitly provided payload (e.g. a `payload` field on the proto message
 /// that holds this Signature, or the canonical serialization of the proto
 /// message that holds this signature).
-class Signature {
-  /// The identifier for the public key that verifies this signature.
-  ///
-  /// * The `public_key_id` is required. * The `public_key_id` SHOULD be an
-  /// RFC3986 conformant URI. * When possible, the `public_key_id` SHOULD be an
-  /// immutable reference, such as a cryptographic digest. Examples of valid
-  /// `public_key_id`s: OpenPGP V4 public key fingerprint: *
-  /// "openpgp4fpr:74FAF3B861BDA0870C7B6DEF607E48D2A663AEEA" See
-  /// https://www.iana.org/assignments/uri-schemes/prov/openpgp4fpr for more
-  /// details on this scheme. RFC6920 digest-named SubjectPublicKeyInfo (digest
-  /// of the DER serialization): *
-  /// "ni:///sha-256;cD9o9Cq6LG3jD0iKXqEi_vdjJGecm_iXkbqVoScViaU" *
-  /// "nih:///sha-256;703f68f42aba2c6de30f488a5ea122fef76324679c9bf89791ba95a1271589a5"
-  core.String? publicKeyId;
-
-  /// The content of the signature, an opaque bytestring.
-  ///
-  /// The payload that this signature verifies MUST be unambiguously provided
-  /// with the Signature during verification. A wrapper message might provide
-  /// the payload explicitly. Alternatively, a message might have a canonical
-  /// serialization that can always be unambiguously computed to derive the
-  /// payload.
-  core.String? signature;
-  core.List<core.int> get signatureAsBytes => convert.base64.decode(signature!);
-
-  set signatureAsBytes(core.List<core.int> _bytes) {
-    signature =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
-  }
-
-  Signature({
-    this.publicKeyId,
-    this.signature,
-  });
-
-  Signature.fromJson(core.Map _json)
-      : this(
-          publicKeyId: _json.containsKey('publicKeyId')
-              ? _json['publicKeyId'] as core.String
-              : null,
-          signature: _json.containsKey('signature')
-              ? _json['signature'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (publicKeyId != null) 'publicKeyId': publicKeyId!,
-        if (signature != null) 'signature': signature!,
-      };
-}
+typedef Signature = $Signature;
 
 /// Request message for `TestIamPermissions` method.
-class TestIamPermissionsRequest {
-  /// The set of permissions to check for the `resource`.
-  ///
-  /// Permissions with wildcards (such as '*' or 'storage.*') are not allowed.
-  /// For more information see
-  /// [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).
-  core.List<core.String>? permissions;
-
-  TestIamPermissionsRequest({
-    this.permissions,
-  });
-
-  TestIamPermissionsRequest.fromJson(core.Map _json)
-      : this(
-          permissions: _json.containsKey('permissions')
-              ? (_json['permissions'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (permissions != null) 'permissions': permissions!,
-      };
-}
+typedef TestIamPermissionsRequest = $TestIamPermissionsRequest;
 
 /// Response message for `TestIamPermissions` method.
-class TestIamPermissionsResponse {
-  /// A subset of `TestPermissionsRequest.permissions` that the caller is
-  /// allowed.
-  core.List<core.String>? permissions;
-
-  TestIamPermissionsResponse({
-    this.permissions,
-  });
-
-  TestIamPermissionsResponse.fromJson(core.Map _json)
-      : this(
-          permissions: _json.containsKey('permissions')
-              ? (_json['permissions'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (permissions != null) 'permissions': permissions!,
-      };
-}
+typedef TestIamPermissionsResponse = $PermissionsResponse;
 
 /// An user owned Grafeas note references a Grafeas Attestation.Authority Note
 /// created by the user.

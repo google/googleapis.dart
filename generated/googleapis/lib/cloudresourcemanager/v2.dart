@@ -32,7 +32,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-import '../src/empty.dart';
+import '../shared.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -716,43 +716,7 @@ class AuditConfig {
 /// "exempted_members": \[ "user:jose@example.com" \] }, { "log_type":
 /// "DATA_WRITE" } \] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while
 /// exempting jose@example.com from DATA_READ logging.
-class AuditLogConfig {
-  /// Specifies the identities that do not cause logging for this type of
-  /// permission.
-  ///
-  /// Follows the same format of Binding.members.
-  core.List<core.String>? exemptedMembers;
-
-  /// The log type that this config enables.
-  /// Possible string values are:
-  /// - "LOG_TYPE_UNSPECIFIED" : Default case. Should never be this.
-  /// - "ADMIN_READ" : Admin reads. Example: CloudIAM getIamPolicy
-  /// - "DATA_WRITE" : Data writes. Example: CloudSQL Users create
-  /// - "DATA_READ" : Data reads. Example: CloudSQL Users list
-  core.String? logType;
-
-  AuditLogConfig({
-    this.exemptedMembers,
-    this.logType,
-  });
-
-  AuditLogConfig.fromJson(core.Map _json)
-      : this(
-          exemptedMembers: _json.containsKey('exemptedMembers')
-              ? (_json['exemptedMembers'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          logType: _json.containsKey('logType')
-              ? _json['logType'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (exemptedMembers != null) 'exemptedMembers': exemptedMembers!,
-        if (logType != null) 'logType': logType!,
-      };
-}
+typedef AuditLogConfig = $AuditLogConfig;
 
 /// Associates `members` with a `role`.
 class Binding {
@@ -831,183 +795,22 @@ class Binding {
 }
 
 /// Metadata describing a long running folder operation
-class CloudresourcemanagerGoogleCloudResourcemanagerV2alpha1FolderOperation {
-  /// The resource name of the folder or organization we are either creating the
-  /// folder under or moving the folder to.
-  core.String? destinationParent;
-
-  /// The display name of the folder.
-  core.String? displayName;
-
-  /// The type of this operation.
-  /// Possible string values are:
-  /// - "OPERATION_TYPE_UNSPECIFIED" : Operation type not specified.
-  /// - "CREATE" : A create folder operation.
-  /// - "MOVE" : A move folder operation.
-  core.String? operationType;
-
-  /// The resource name of the folder's parent.
-  ///
-  /// Only applicable when the operation_type is MOVE.
-  core.String? sourceParent;
-
-  CloudresourcemanagerGoogleCloudResourcemanagerV2alpha1FolderOperation({
-    this.destinationParent,
-    this.displayName,
-    this.operationType,
-    this.sourceParent,
-  });
-
-  CloudresourcemanagerGoogleCloudResourcemanagerV2alpha1FolderOperation.fromJson(
-      core.Map _json)
-      : this(
-          destinationParent: _json.containsKey('destinationParent')
-              ? _json['destinationParent'] as core.String
-              : null,
-          displayName: _json.containsKey('displayName')
-              ? _json['displayName'] as core.String
-              : null,
-          operationType: _json.containsKey('operationType')
-              ? _json['operationType'] as core.String
-              : null,
-          sourceParent: _json.containsKey('sourceParent')
-              ? _json['sourceParent'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (destinationParent != null) 'destinationParent': destinationParent!,
-        if (displayName != null) 'displayName': displayName!,
-        if (operationType != null) 'operationType': operationType!,
-        if (sourceParent != null) 'sourceParent': sourceParent!,
-      };
-}
+typedef CloudresourcemanagerGoogleCloudResourcemanagerV2alpha1FolderOperation
+    = $FolderOperation;
 
 /// Metadata describing a long running folder operation
-class CloudresourcemanagerGoogleCloudResourcemanagerV2beta1FolderOperation {
-  /// The resource name of the folder or organization we are either creating the
-  /// folder under or moving the folder to.
-  core.String? destinationParent;
-
-  /// The display name of the folder.
-  core.String? displayName;
-
-  /// The type of this operation.
-  /// Possible string values are:
-  /// - "OPERATION_TYPE_UNSPECIFIED" : Operation type not specified.
-  /// - "CREATE" : A create folder operation.
-  /// - "MOVE" : A move folder operation.
-  core.String? operationType;
-
-  /// The resource name of the folder's parent.
-  ///
-  /// Only applicable when the operation_type is MOVE.
-  core.String? sourceParent;
-
-  CloudresourcemanagerGoogleCloudResourcemanagerV2beta1FolderOperation({
-    this.destinationParent,
-    this.displayName,
-    this.operationType,
-    this.sourceParent,
-  });
-
-  CloudresourcemanagerGoogleCloudResourcemanagerV2beta1FolderOperation.fromJson(
-      core.Map _json)
-      : this(
-          destinationParent: _json.containsKey('destinationParent')
-              ? _json['destinationParent'] as core.String
-              : null,
-          displayName: _json.containsKey('displayName')
-              ? _json['displayName'] as core.String
-              : null,
-          operationType: _json.containsKey('operationType')
-              ? _json['operationType'] as core.String
-              : null,
-          sourceParent: _json.containsKey('sourceParent')
-              ? _json['sourceParent'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (destinationParent != null) 'destinationParent': destinationParent!,
-        if (displayName != null) 'displayName': displayName!,
-        if (operationType != null) 'operationType': operationType!,
-        if (sourceParent != null) 'sourceParent': sourceParent!,
-      };
-}
+typedef CloudresourcemanagerGoogleCloudResourcemanagerV2beta1FolderOperation
+    = $FolderOperation;
 
 /// Metadata pertaining to the Folder creation process.
-class CreateFolderMetadata {
-  /// The display name of the folder.
-  core.String? displayName;
-
-  /// The resource name of the folder or organization we are creating the folder
-  /// under.
-  core.String? parent;
-
-  CreateFolderMetadata({
-    this.displayName,
-    this.parent,
-  });
-
-  CreateFolderMetadata.fromJson(core.Map _json)
-      : this(
-          displayName: _json.containsKey('displayName')
-              ? _json['displayName'] as core.String
-              : null,
-          parent: _json.containsKey('parent')
-              ? _json['parent'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (displayName != null) 'displayName': displayName!,
-        if (parent != null) 'parent': parent!,
-      };
-}
+typedef CreateFolderMetadata = $CreateFolderMetadata;
 
 /// A status object which is used as the `metadata` field for the Operation
 /// returned by CreateProject.
 ///
 /// It provides insight for when significant phases of Project creation have
 /// completed.
-class CreateProjectMetadata {
-  /// Creation time of the project creation workflow.
-  core.String? createTime;
-
-  /// True if the project can be retrieved using `GetProject`.
-  ///
-  /// No other operations on the project are guaranteed to work until the
-  /// project creation is complete.
-  core.bool? gettable;
-
-  /// True if the project creation process is complete.
-  core.bool? ready;
-
-  CreateProjectMetadata({
-    this.createTime,
-    this.gettable,
-    this.ready,
-  });
-
-  CreateProjectMetadata.fromJson(core.Map _json)
-      : this(
-          createTime: _json.containsKey('createTime')
-              ? _json['createTime'] as core.String
-              : null,
-          gettable: _json.containsKey('gettable')
-              ? _json['gettable'] as core.bool
-              : null,
-          ready:
-              _json.containsKey('ready') ? _json['ready'] as core.bool : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
-        if (gettable != null) 'gettable': gettable!,
-        if (ready != null) 'ready': ready!,
-      };
-}
+typedef CreateProjectMetadata = $CreateProjectMetadata;
 
 /// Runtime operation information for creating a TagValue.
 typedef CreateTagBindingMetadata = $Empty;
@@ -1022,8 +825,8 @@ typedef CreateTagValueMetadata = $Empty;
 /// returned by `DeleteFolder`.
 typedef DeleteFolderMetadata = $Empty;
 
-/// A status object which is used as the `metadata` field for the operation
-/// returned by DeleteOrganization.
+/// LINT.IfChange A status object which is used as the `metadata` field for the
+/// operation returned by DeleteOrganization.
 typedef DeleteOrganizationMetadata = $Empty;
 
 /// A status object which is used as the `metadata` field for the Operation
@@ -1057,61 +860,7 @@ typedef DeleteTagValueMetadata = $Empty;
 /// functions that may be referenced within an expression are determined by the
 /// service that evaluates it. See the service documentation for additional
 /// information.
-class Expr {
-  /// Description of the expression.
-  ///
-  /// This is a longer text which describes the expression, e.g. when hovered
-  /// over it in a UI.
-  ///
-  /// Optional.
-  core.String? description;
-
-  /// Textual representation of an expression in Common Expression Language
-  /// syntax.
-  core.String? expression;
-
-  /// String indicating the location of the expression for error reporting, e.g.
-  /// a file name and a position in the file.
-  ///
-  /// Optional.
-  core.String? location;
-
-  /// Title for the expression, i.e. a short string describing its purpose.
-  ///
-  /// This can be used e.g. in UIs which allow to enter the expression.
-  ///
-  /// Optional.
-  core.String? title;
-
-  Expr({
-    this.description,
-    this.expression,
-    this.location,
-    this.title,
-  });
-
-  Expr.fromJson(core.Map _json)
-      : this(
-          description: _json.containsKey('description')
-              ? _json['description'] as core.String
-              : null,
-          expression: _json.containsKey('expression')
-              ? _json['expression'] as core.String
-              : null,
-          location: _json.containsKey('location')
-              ? _json['location'] as core.String
-              : null,
-          title:
-              _json.containsKey('title') ? _json['title'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (description != null) 'description': description!,
-        if (expression != null) 'expression': expression!,
-        if (location != null) 'location': location!,
-        if (title != null) 'title': title!,
-      };
-}
+typedef Expr = $Expr;
 
 /// A Folder in an Organization's resource hierarchy, used to organize that
 /// Organization's resources.
@@ -1195,98 +944,10 @@ class Folder {
 }
 
 /// Metadata describing a long running folder operation
-class FolderOperation {
-  /// The resource name of the folder or organization we are either creating the
-  /// folder under or moving the folder to.
-  core.String? destinationParent;
-
-  /// The display name of the folder.
-  core.String? displayName;
-
-  /// The type of this operation.
-  /// Possible string values are:
-  /// - "OPERATION_TYPE_UNSPECIFIED" : Operation type not specified.
-  /// - "CREATE" : A create folder operation.
-  /// - "MOVE" : A move folder operation.
-  core.String? operationType;
-
-  /// The resource name of the folder's parent.
-  ///
-  /// Only applicable when the operation_type is MOVE.
-  core.String? sourceParent;
-
-  FolderOperation({
-    this.destinationParent,
-    this.displayName,
-    this.operationType,
-    this.sourceParent,
-  });
-
-  FolderOperation.fromJson(core.Map _json)
-      : this(
-          destinationParent: _json.containsKey('destinationParent')
-              ? _json['destinationParent'] as core.String
-              : null,
-          displayName: _json.containsKey('displayName')
-              ? _json['displayName'] as core.String
-              : null,
-          operationType: _json.containsKey('operationType')
-              ? _json['operationType'] as core.String
-              : null,
-          sourceParent: _json.containsKey('sourceParent')
-              ? _json['sourceParent'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (destinationParent != null) 'destinationParent': destinationParent!,
-        if (displayName != null) 'displayName': displayName!,
-        if (operationType != null) 'operationType': operationType!,
-        if (sourceParent != null) 'sourceParent': sourceParent!,
-      };
-}
+typedef FolderOperation = $FolderOperation;
 
 /// A classification of the Folder Operation error.
-class FolderOperationError {
-  /// The type of operation error experienced.
-  /// Possible string values are:
-  /// - "ERROR_TYPE_UNSPECIFIED" : The error type was unrecognized or
-  /// unspecified.
-  /// - "ACTIVE_FOLDER_HEIGHT_VIOLATION" : The attempted action would violate
-  /// the max folder depth constraint.
-  /// - "MAX_CHILD_FOLDERS_VIOLATION" : The attempted action would violate the
-  /// max child folders constraint.
-  /// - "FOLDER_NAME_UNIQUENESS_VIOLATION" : The attempted action would violate
-  /// the locally-unique folder display_name constraint.
-  /// - "RESOURCE_DELETED_VIOLATION" : The resource being moved has been
-  /// deleted.
-  /// - "PARENT_DELETED_VIOLATION" : The resource a folder was being added to
-  /// has been deleted.
-  /// - "CYCLE_INTRODUCED_VIOLATION" : The attempted action would introduce
-  /// cycle in resource path.
-  /// - "FOLDER_BEING_MOVED_VIOLATION" : The attempted action would move a
-  /// folder that is already being moved.
-  /// - "FOLDER_TO_DELETE_NON_EMPTY_VIOLATION" : The folder the caller is trying
-  /// to delete contains active resources.
-  /// - "DELETED_FOLDER_HEIGHT_VIOLATION" : The attempted action would violate
-  /// the max deleted folder depth constraint.
-  core.String? errorMessageId;
-
-  FolderOperationError({
-    this.errorMessageId,
-  });
-
-  FolderOperationError.fromJson(core.Map _json)
-      : this(
-          errorMessageId: _json.containsKey('errorMessageId')
-              ? _json['errorMessageId'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (errorMessageId != null) 'errorMessageId': errorMessageId!,
-      };
-}
+typedef FolderOperationError = $FolderOperationError;
 
 /// Request message for `GetIamPolicy` method.
 class GetIamPolicyRequest {
@@ -1312,35 +973,7 @@ class GetIamPolicyRequest {
 }
 
 /// Encapsulates settings provided to GetIamPolicy.
-class GetPolicyOptions {
-  /// The policy format version to be returned.
-  ///
-  /// Valid values are 0, 1, and 3. Requests specifying an invalid value will be
-  /// rejected. Requests for policies with any conditional bindings must specify
-  /// version 3. Policies without any conditional bindings may specify any valid
-  /// value or leave the field unset. To learn which resources support
-  /// conditions in their IAM policies, see the
-  /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-  ///
-  /// Optional.
-  core.int? requestedPolicyVersion;
-
-  GetPolicyOptions({
-    this.requestedPolicyVersion,
-  });
-
-  GetPolicyOptions.fromJson(core.Map _json)
-      : this(
-          requestedPolicyVersion: _json.containsKey('requestedPolicyVersion')
-              ? _json['requestedPolicyVersion'] as core.int
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (requestedPolicyVersion != null)
-          'requestedPolicyVersion': requestedPolicyVersion!,
-      };
-}
+typedef GetPolicyOptions = $GetPolicyOptions;
 
 /// The ListFolders response message.
 class ListFoldersResponse {
@@ -1377,41 +1010,7 @@ class ListFoldersResponse {
 }
 
 /// Metadata pertaining to the folder move process.
-class MoveFolderMetadata {
-  /// The resource name of the folder or organization to move the folder to.
-  core.String? destinationParent;
-
-  /// The display name of the folder.
-  core.String? displayName;
-
-  /// The resource name of the folder's parent.
-  core.String? sourceParent;
-
-  MoveFolderMetadata({
-    this.destinationParent,
-    this.displayName,
-    this.sourceParent,
-  });
-
-  MoveFolderMetadata.fromJson(core.Map _json)
-      : this(
-          destinationParent: _json.containsKey('destinationParent')
-              ? _json['destinationParent'] as core.String
-              : null,
-          displayName: _json.containsKey('displayName')
-              ? _json['displayName'] as core.String
-              : null,
-          sourceParent: _json.containsKey('sourceParent')
-              ? _json['sourceParent'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (destinationParent != null) 'destinationParent': destinationParent!,
-        if (displayName != null) 'displayName': displayName!,
-        if (sourceParent != null) 'sourceParent': sourceParent!,
-      };
-}
+typedef MoveFolderMetadata = $MoveFolderMetadata;
 
 /// The MoveFolder request message.
 class MoveFolderRequest {
@@ -1558,7 +1157,11 @@ class Policy {
   ///
   /// Optionally, may specify a `condition` that determines how and when the
   /// `bindings` are applied. Each of the `bindings` must contain at least one
-  /// member.
+  /// member. The `bindings` in a `Policy` can refer to up to 1,500 members; up
+  /// to 250 of these members can be Google groups. Each occurrence of a member
+  /// counts towards these limits. For example, if the `bindings` grant 50
+  /// different roles to `user:alice@example.com`, and not to any other member,
+  /// then you can add another 1,450 members to the `bindings` in the `Policy`.
   core.List<Binding>? bindings;
 
   /// `etag` is used for optimistic concurrency control as a way to help prevent
@@ -1640,43 +1243,7 @@ class Policy {
 ///
 /// It provides insight for when significant phases of Project creation have
 /// completed.
-class ProjectCreationStatus {
-  /// Creation time of the project creation workflow.
-  core.String? createTime;
-
-  /// True if the project can be retrieved using GetProject.
-  ///
-  /// No other operations on the project are guaranteed to work until the
-  /// project creation is complete.
-  core.bool? gettable;
-
-  /// True if the project creation process is complete.
-  core.bool? ready;
-
-  ProjectCreationStatus({
-    this.createTime,
-    this.gettable,
-    this.ready,
-  });
-
-  ProjectCreationStatus.fromJson(core.Map _json)
-      : this(
-          createTime: _json.containsKey('createTime')
-              ? _json['createTime'] as core.String
-              : null,
-          gettable: _json.containsKey('gettable')
-              ? _json['gettable'] as core.bool
-              : null,
-          ready:
-              _json.containsKey('ready') ? _json['ready'] as core.bool : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
-        if (gettable != null) 'gettable': gettable!,
-        if (ready != null) 'ready': ready!,
-      };
-}
+typedef ProjectCreationStatus = $ProjectCreationStatus;
 
 /// The request message for searching folders.
 class SearchFoldersRequest {
@@ -1816,100 +1383,13 @@ class SetIamPolicyRequest {
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-class Status {
-  /// The status code, which should be an enum value of google.rpc.Code.
-  core.int? code;
-
-  /// A list of messages that carry the error details.
-  ///
-  /// There is a common set of message types for APIs to use.
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object?>>? details;
-
-  /// A developer-facing error message, which should be in English.
-  ///
-  /// Any user-facing error message should be localized and sent in the
-  /// google.rpc.Status.details field, or localized by the client.
-  core.String? message;
-
-  Status({
-    this.code,
-    this.details,
-    this.message,
-  });
-
-  Status.fromJson(core.Map _json)
-      : this(
-          code: _json.containsKey('code') ? _json['code'] as core.int : null,
-          details: _json.containsKey('details')
-              ? (_json['details'] as core.List)
-                  .map((value) => value as core.Map<core.String, core.dynamic>)
-                  .toList()
-              : null,
-          message: _json.containsKey('message')
-              ? _json['message'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (code != null) 'code': code!,
-        if (details != null) 'details': details!,
-        if (message != null) 'message': message!,
-      };
-}
+typedef Status = $Status;
 
 /// Request message for `TestIamPermissions` method.
-class TestIamPermissionsRequest {
-  /// The set of permissions to check for the `resource`.
-  ///
-  /// Permissions with wildcards (such as '*' or 'storage.*') are not allowed.
-  /// For more information see
-  /// [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).
-  core.List<core.String>? permissions;
-
-  TestIamPermissionsRequest({
-    this.permissions,
-  });
-
-  TestIamPermissionsRequest.fromJson(core.Map _json)
-      : this(
-          permissions: _json.containsKey('permissions')
-              ? (_json['permissions'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (permissions != null) 'permissions': permissions!,
-      };
-}
+typedef TestIamPermissionsRequest = $TestIamPermissionsRequest;
 
 /// Response message for `TestIamPermissions` method.
-class TestIamPermissionsResponse {
-  /// A subset of `TestPermissionsRequest.permissions` that the caller is
-  /// allowed.
-  core.List<core.String>? permissions;
-
-  TestIamPermissionsResponse({
-    this.permissions,
-  });
-
-  TestIamPermissionsResponse.fromJson(core.Map _json)
-      : this(
-          permissions: _json.containsKey('permissions')
-              ? (_json['permissions'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (permissions != null) 'permissions': permissions!,
-      };
-}
+typedef TestIamPermissionsResponse = $PermissionsResponse;
 
 /// A status object which is used as the `metadata` field for the `Operation`
 /// returned by `UndeleteFolder`.
@@ -1918,8 +1398,8 @@ typedef UndeleteFolderMetadata = $Empty;
 /// The UndeleteFolder request message.
 typedef UndeleteFolderRequest = $Empty;
 
-/// A status object which is used as the `metadata` field for the Operation
-/// returned by UndeleteOrganization.
+/// LINT.IfChange A status object which is used as the `metadata` field for the
+/// Operation returned by UndeleteOrganization.
 typedef UndeleteOrganizationMetadata = $Empty;
 
 /// A status object which is used as the `metadata` field for the Operation

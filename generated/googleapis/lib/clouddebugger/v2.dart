@@ -36,7 +36,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-import '../src/empty.dart';
+import '../shared.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -1416,35 +1416,7 @@ class ListDebuggeesResponse {
 
 /// Selects a repo using a Google Cloud Platform project ID (e.g.
 /// winged-cargo-31) and a repo name within that project.
-class ProjectRepoId {
-  /// The ID of the project.
-  core.String? projectId;
-
-  /// The name of the repo.
-  ///
-  /// Leave empty for the default repo.
-  core.String? repoName;
-
-  ProjectRepoId({
-    this.projectId,
-    this.repoName,
-  });
-
-  ProjectRepoId.fromJson(core.Map _json)
-      : this(
-          projectId: _json.containsKey('projectId')
-              ? _json['projectId'] as core.String
-              : null,
-          repoName: _json.containsKey('repoName')
-              ? _json['repoName'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (projectId != null) 'projectId': projectId!,
-        if (repoName != null) 'repoName': repoName!,
-      };
-}
+typedef ProjectRepoId = $ProjectRepoId;
 
 /// Request to register a debuggee.
 class RegisterDebuggeeRequest {

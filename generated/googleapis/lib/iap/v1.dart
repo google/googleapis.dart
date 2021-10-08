@@ -33,7 +33,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-import '../src/empty.dart';
+import '../shared.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -78,11 +78,12 @@ class ProjectsBrandsResource {
   /// Constructs a new OAuth brand for the project if one does not exist.
   ///
   /// The created brand is "internal only", meaning that OAuth clients created
-  /// under it only accept requests from users who belong to the same G Suite
-  /// organization as the project. The brand is created in an un-reviewed
-  /// status. NOTE: The "internal only" status can be manually changed in the
-  /// Google Cloud console. Requires that a brand does not already exist for the
-  /// project, and that the specified support email is owned by the caller.
+  /// under it only accept requests from users who belong to the same Google
+  /// Workspace organization as the project. The brand is created in an
+  /// un-reviewed status. NOTE: The "internal only" status can be manually
+  /// changed in the Google Cloud Console. Requires that a brand does not
+  /// already exist for the project, and that the specified support email is
+  /// owned by the caller.
   ///
   /// [request] - The metadata request object.
   ///
@@ -722,11 +723,15 @@ class AccessSettings {
   /// INTERNAL_ONLY.
   PolicyDelegationSettings? policyDelegationSettings;
 
+  /// Settings to configure reauthentication policies in IAP.
+  ReauthSettings? reauthSettings;
+
   AccessSettings({
     this.corsSettings,
     this.gcipSettings,
     this.oauthSettings,
     this.policyDelegationSettings,
+    this.reauthSettings,
   });
 
   AccessSettings.fromJson(core.Map _json)
@@ -749,6 +754,10 @@ class AccessSettings {
                       _json['policyDelegationSettings']
                           as core.Map<core.String, core.dynamic>)
                   : null,
+          reauthSettings: _json.containsKey('reauthSettings')
+              ? ReauthSettings.fromJson(_json['reauthSettings']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -757,6 +766,7 @@ class AccessSettings {
         if (oauthSettings != null) 'oauthSettings': oauthSettings!,
         if (policyDelegationSettings != null)
           'policyDelegationSettings': policyDelegationSettings!,
+        if (reauthSettings != null) 'reauthSettings': reauthSettings!,
       };
 }
 
@@ -1012,61 +1022,7 @@ typedef Empty = $Empty;
 /// functions that may be referenced within an expression are determined by the
 /// service that evaluates it. See the service documentation for additional
 /// information.
-class Expr {
-  /// Description of the expression.
-  ///
-  /// This is a longer text which describes the expression, e.g. when hovered
-  /// over it in a UI.
-  ///
-  /// Optional.
-  core.String? description;
-
-  /// Textual representation of an expression in Common Expression Language
-  /// syntax.
-  core.String? expression;
-
-  /// String indicating the location of the expression for error reporting, e.g.
-  /// a file name and a position in the file.
-  ///
-  /// Optional.
-  core.String? location;
-
-  /// Title for the expression, i.e. a short string describing its purpose.
-  ///
-  /// This can be used e.g. in UIs which allow to enter the expression.
-  ///
-  /// Optional.
-  core.String? title;
-
-  Expr({
-    this.description,
-    this.expression,
-    this.location,
-    this.title,
-  });
-
-  Expr.fromJson(core.Map _json)
-      : this(
-          description: _json.containsKey('description')
-              ? _json['description'] as core.String
-              : null,
-          expression: _json.containsKey('expression')
-              ? _json['expression'] as core.String
-              : null,
-          location: _json.containsKey('location')
-              ? _json['location'] as core.String
-              : null,
-          title:
-              _json.containsKey('title') ? _json['title'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (description != null) 'description': description!,
-        if (expression != null) 'expression': expression!,
-        if (location != null) 'location': location!,
-        if (title != null) 'title': title!,
-      };
-}
+typedef Expr = $Expr;
 
 /// Allows customers to configure tenant_id for GCIP instance per-app.
 class GcipSettings {
@@ -1132,35 +1088,7 @@ class GetIamPolicyRequest {
 }
 
 /// Encapsulates settings provided to GetIamPolicy.
-class GetPolicyOptions {
-  /// The policy format version to be returned.
-  ///
-  /// Valid values are 0, 1, and 3. Requests specifying an invalid value will be
-  /// rejected. Requests for policies with any conditional bindings must specify
-  /// version 3. Policies without any conditional bindings may specify any valid
-  /// value or leave the field unset. To learn which resources support
-  /// conditions in their IAM policies, see the
-  /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-  ///
-  /// Optional.
-  core.int? requestedPolicyVersion;
-
-  GetPolicyOptions({
-    this.requestedPolicyVersion,
-  });
-
-  GetPolicyOptions.fromJson(core.Map _json)
-      : this(
-          requestedPolicyVersion: _json.containsKey('requestedPolicyVersion')
-              ? _json['requestedPolicyVersion'] as core.int
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (requestedPolicyVersion != null)
-          'requestedPolicyVersion': requestedPolicyVersion!,
-      };
-}
+typedef GetPolicyOptions = $GetPolicyOptions;
 
 /// The IAP configurable settings.
 class IapSettings {
@@ -1364,7 +1292,11 @@ class Policy {
   ///
   /// Optionally, may specify a `condition` that determines how and when the
   /// `bindings` are applied. Each of the `bindings` must contain at least one
-  /// member.
+  /// member. The `bindings` in a `Policy` can refer to up to 1,500 members; up
+  /// to 250 of these members can be Google groups. Each occurrence of a member
+  /// counts towards these limits. For example, if the `bindings` grant 50
+  /// different roles to `user:alice@example.com`, and not to any other member,
+  /// then you can add another 1,450 members to the `bindings` in the `Policy`.
   core.List<Binding>? bindings;
 
   /// `etag` is used for optimistic concurrency control as a way to help prevent
@@ -1537,6 +1469,63 @@ class PolicyName {
       };
 }
 
+/// Configuration for IAP reauthentication policies.
+class ReauthSettings {
+  /// Reauth session lifetime, how long before a user has to reauthenticate
+  /// again.
+  core.String? maxAge;
+
+  /// Reauth method required by the policy.
+  /// Possible string values are:
+  /// - "METHOD_UNSPECIFIED" : Reauthentication disabled.
+  /// - "LOGIN" : Mimicks the behavior as if the user had logged out and tried
+  /// to log in again. Users with 2SV (step verification) enabled will see their
+  /// 2SV challenges if they did not opt to have their second factor responses
+  /// saved. Apps Core (GSuites) admins can configure settings to disable 2SV
+  /// cookies and require 2-step verification for all Apps Core users in their
+  /// domains.
+  /// - "PASSWORD" : User must type their password.
+  /// - "SECURE_KEY" : User must use their secure key 2nd factor device.
+  core.String? method;
+
+  /// How IAP determines the effective policy in cases of hierarchial policies.
+  ///
+  /// Policies are merged from higher in the hierarchy to lower in the
+  /// hierarchy.
+  /// Possible string values are:
+  /// - "POLICY_TYPE_UNSPECIFIED" : Default value. This value is unused/invalid.
+  /// - "MINIMUM" : This policy acts as a minimum to other policies, lower in
+  /// the hierarchy. Effective policy may only be the same or stricter.
+  /// - "DEFAULT" : This policy acts as a default if no other reauth policy is
+  /// set.
+  core.String? policyType;
+
+  ReauthSettings({
+    this.maxAge,
+    this.method,
+    this.policyType,
+  });
+
+  ReauthSettings.fromJson(core.Map _json)
+      : this(
+          maxAge: _json.containsKey('maxAge')
+              ? _json['maxAge'] as core.String
+              : null,
+          method: _json.containsKey('method')
+              ? _json['method'] as core.String
+              : null,
+          policyType: _json.containsKey('policyType')
+              ? _json['policyType'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (maxAge != null) 'maxAge': maxAge!,
+        if (method != null) 'method': method!,
+        if (policyType != null) 'policyType': policyType!,
+      };
+}
+
 /// The request sent to ResetIdentityAwareProxyClientSecret.
 typedef ResetIdentityAwareProxyClientSecretRequest = $Empty;
 
@@ -1648,52 +1637,7 @@ class SetIamPolicyRequest {
 }
 
 /// Request message for `TestIamPermissions` method.
-class TestIamPermissionsRequest {
-  /// The set of permissions to check for the `resource`.
-  ///
-  /// Permissions with wildcards (such as '*' or 'storage.*') are not allowed.
-  /// For more information see
-  /// [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).
-  core.List<core.String>? permissions;
-
-  TestIamPermissionsRequest({
-    this.permissions,
-  });
-
-  TestIamPermissionsRequest.fromJson(core.Map _json)
-      : this(
-          permissions: _json.containsKey('permissions')
-              ? (_json['permissions'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (permissions != null) 'permissions': permissions!,
-      };
-}
+typedef TestIamPermissionsRequest = $TestIamPermissionsRequest;
 
 /// Response message for `TestIamPermissions` method.
-class TestIamPermissionsResponse {
-  /// A subset of `TestPermissionsRequest.permissions` that the caller is
-  /// allowed.
-  core.List<core.String>? permissions;
-
-  TestIamPermissionsResponse({
-    this.permissions,
-  });
-
-  TestIamPermissionsResponse.fromJson(core.Map _json)
-      : this(
-          permissions: _json.containsKey('permissions')
-              ? (_json['permissions'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (permissions != null) 'permissions': permissions!,
-      };
-}
+typedef TestIamPermissionsResponse = $PermissionsResponse;

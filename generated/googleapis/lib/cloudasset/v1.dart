@@ -34,7 +34,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-import '../src/empty.dart';
+import '../shared.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -1604,43 +1604,7 @@ class AuditConfig {
 /// "exempted_members": \[ "user:jose@example.com" \] }, { "log_type":
 /// "DATA_WRITE" } \] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while
 /// exempting jose@example.com from DATA_READ logging.
-class AuditLogConfig {
-  /// Specifies the identities that do not cause logging for this type of
-  /// permission.
-  ///
-  /// Follows the same format of Binding.members.
-  core.List<core.String>? exemptedMembers;
-
-  /// The log type that this config enables.
-  /// Possible string values are:
-  /// - "LOG_TYPE_UNSPECIFIED" : Default case. Should never be this.
-  /// - "ADMIN_READ" : Admin reads. Example: CloudIAM getIamPolicy
-  /// - "DATA_WRITE" : Data writes. Example: CloudSQL Users create
-  /// - "DATA_READ" : Data reads. Example: CloudSQL Users list
-  core.String? logType;
-
-  AuditLogConfig({
-    this.exemptedMembers,
-    this.logType,
-  });
-
-  AuditLogConfig.fromJson(core.Map _json)
-      : this(
-          exemptedMembers: _json.containsKey('exemptedMembers')
-              ? (_json['exemptedMembers'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          logType: _json.containsKey('logType')
-              ? _json['logType'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (exemptedMembers != null) 'exemptedMembers': exemptedMembers!,
-        if (logType != null) 'logType': logType!,
-      };
-}
+typedef AuditLogConfig = $AuditLogConfig;
 
 /// Batch get assets history response.
 class BatchGetAssetsHistoryResponse {
@@ -1949,42 +1913,7 @@ class CreateFeedRequest {
 /// anniversary * A year on its own, with zero month and day values * A year and
 /// month value, with a zero day, such as a credit card expiration date Related
 /// types are google.type.TimeOfDay and `google.protobuf.Timestamp`.
-class Date {
-  /// Day of a month.
-  ///
-  /// Must be from 1 to 31 and valid for the year and month, or 0 to specify a
-  /// year by itself or a year and month where the day isn't significant.
-  core.int? day;
-
-  /// Month of a year.
-  ///
-  /// Must be from 1 to 12, or 0 to specify a year without a month and day.
-  core.int? month;
-
-  /// Year of the date.
-  ///
-  /// Must be from 1 to 9999, or 0 to specify a date without a year.
-  core.int? year;
-
-  Date({
-    this.day,
-    this.month,
-    this.year,
-  });
-
-  Date.fromJson(core.Map _json)
-      : this(
-          day: _json.containsKey('day') ? _json['day'] as core.int : null,
-          month: _json.containsKey('month') ? _json['month'] as core.int : null,
-          year: _json.containsKey('year') ? _json['year'] as core.int : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (day != null) 'day': day!,
-        if (month != null) 'month': month!,
-        if (year != null) 'year': year!,
-      };
-}
+typedef Date = $Date;
 
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs.
@@ -2153,61 +2082,7 @@ class ExportAssetsRequest {
 /// functions that may be referenced within an expression are determined by the
 /// service that evaluates it. See the service documentation for additional
 /// information.
-class Expr {
-  /// Description of the expression.
-  ///
-  /// This is a longer text which describes the expression, e.g. when hovered
-  /// over it in a UI.
-  ///
-  /// Optional.
-  core.String? description;
-
-  /// Textual representation of an expression in Common Expression Language
-  /// syntax.
-  core.String? expression;
-
-  /// String indicating the location of the expression for error reporting, e.g.
-  /// a file name and a position in the file.
-  ///
-  /// Optional.
-  core.String? location;
-
-  /// Title for the expression, i.e. a short string describing its purpose.
-  ///
-  /// This can be used e.g. in UIs which allow to enter the expression.
-  ///
-  /// Optional.
-  core.String? title;
-
-  Expr({
-    this.description,
-    this.expression,
-    this.location,
-    this.title,
-  });
-
-  Expr.fromJson(core.Map _json)
-      : this(
-          description: _json.containsKey('description')
-              ? _json['description'] as core.String
-              : null,
-          expression: _json.containsKey('expression')
-              ? _json['expression'] as core.String
-              : null,
-          location: _json.containsKey('location')
-              ? _json['location'] as core.String
-              : null,
-          title:
-              _json.containsKey('title') ? _json['title'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (description != null) 'description': description!,
-        if (expression != null) 'expression': expression!,
-        if (location != null) 'location': location!,
-        if (title != null) 'title': title!,
-      };
-}
+typedef Expr = $Expr;
 
 /// An asset feed used to export asset updates to a destinations.
 ///
@@ -2940,58 +2815,7 @@ class GoogleCloudAssetV1p7beta1Asset {
 /// policy). See
 /// [Supported asset types](https://cloud.google.com/asset-inventory/docs/supported-asset-types)
 /// for more information.
-class GoogleCloudAssetV1p7beta1RelatedAsset {
-  /// The ancestors of an asset in Google Cloud
-  /// [resource hierarchy](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy),
-  /// represented as a list of relative resource names.
-  ///
-  /// An ancestry path starts with the closest ancestor in the hierarchy and
-  /// ends at root. Example: `["projects/123456789", "folders/5432",
-  /// "organizations/1234"]`
-  core.List<core.String>? ancestors;
-
-  /// The full name of the asset.
-  ///
-  /// Example:
-  /// `//compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1`
-  /// See
-  /// [Resource names](https://cloud.google.com/apis/design/resource_names#full_resource_name)
-  /// for more information.
-  core.String? asset;
-
-  /// The type of the asset.
-  ///
-  /// Example: `compute.googleapis.com/Disk` See
-  /// [Supported asset types](https://cloud.google.com/asset-inventory/docs/supported-asset-types)
-  /// for more information.
-  core.String? assetType;
-
-  GoogleCloudAssetV1p7beta1RelatedAsset({
-    this.ancestors,
-    this.asset,
-    this.assetType,
-  });
-
-  GoogleCloudAssetV1p7beta1RelatedAsset.fromJson(core.Map _json)
-      : this(
-          ancestors: _json.containsKey('ancestors')
-              ? (_json['ancestors'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          asset:
-              _json.containsKey('asset') ? _json['asset'] as core.String : null,
-          assetType: _json.containsKey('assetType')
-              ? _json['assetType'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (ancestors != null) 'ancestors': ancestors!,
-        if (asset != null) 'asset': asset!,
-        if (assetType != null) 'assetType': assetType!,
-      };
-}
+typedef GoogleCloudAssetV1p7beta1RelatedAsset = $RelatedAsset;
 
 /// The detailed related assets with the `relationship_type`.
 class GoogleCloudAssetV1p7beta1RelatedAssets {
@@ -3031,199 +2855,15 @@ class GoogleCloudAssetV1p7beta1RelatedAssets {
 
 /// The relationship attributes which include `type`, `source_resource_type`,
 /// `target_resource_type` and `action`.
-class GoogleCloudAssetV1p7beta1RelationshipAttributes {
-  /// The detail of the relationship, e.g. `contains`, `attaches`
-  core.String? action;
-
-  /// The source asset type.
-  ///
-  /// Example: `compute.googleapis.com/Instance`
-  core.String? sourceResourceType;
-
-  /// The target asset type.
-  ///
-  /// Example: `compute.googleapis.com/Disk`
-  core.String? targetResourceType;
-
-  /// The unique identifier of the relationship type.
-  ///
-  /// Example: `INSTANCE_TO_INSTANCEGROUP`
-  core.String? type;
-
-  GoogleCloudAssetV1p7beta1RelationshipAttributes({
-    this.action,
-    this.sourceResourceType,
-    this.targetResourceType,
-    this.type,
-  });
-
-  GoogleCloudAssetV1p7beta1RelationshipAttributes.fromJson(core.Map _json)
-      : this(
-          action: _json.containsKey('action')
-              ? _json['action'] as core.String
-              : null,
-          sourceResourceType: _json.containsKey('sourceResourceType')
-              ? _json['sourceResourceType'] as core.String
-              : null,
-          targetResourceType: _json.containsKey('targetResourceType')
-              ? _json['targetResourceType'] as core.String
-              : null,
-          type: _json.containsKey('type') ? _json['type'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (action != null) 'action': action!,
-        if (sourceResourceType != null)
-          'sourceResourceType': sourceResourceType!,
-        if (targetResourceType != null)
-          'targetResourceType': targetResourceType!,
-        if (type != null) 'type': type!,
-      };
-}
+typedef GoogleCloudAssetV1p7beta1RelationshipAttributes
+    = $RelationshipAttributes;
 
 /// A representation of a Google Cloud resource.
-class GoogleCloudAssetV1p7beta1Resource {
-  /// The content of the resource, in which some sensitive fields are removed
-  /// and may not be present.
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object?>? data;
-
-  /// The URL of the discovery document containing the resource's JSON schema.
-  ///
-  /// Example: `https://www.googleapis.com/discovery/v1/apis/compute/v1/rest`
-  /// This value is unspecified for resources that do not have an API based on a
-  /// discovery document, such as Cloud Bigtable.
-  core.String? discoveryDocumentUri;
-
-  /// The JSON schema name listed in the discovery document.
-  ///
-  /// Example: `Project` This value is unspecified for resources that do not
-  /// have an API based on a discovery document, such as Cloud Bigtable.
-  core.String? discoveryName;
-
-  /// The location of the resource in Google Cloud, such as its zone and region.
-  ///
-  /// For more information, see https://cloud.google.com/about/locations/.
-  core.String? location;
-
-  /// The full name of the immediate parent of this resource.
-  ///
-  /// See
-  /// [Resource Names](https://cloud.google.com/apis/design/resource_names#full_resource_name)
-  /// for more information. For Google Cloud assets, this value is the parent
-  /// resource defined in the
-  /// [Cloud IAM policy hierarchy](https://cloud.google.com/iam/docs/overview#policy_hierarchy).
-  /// Example: `//cloudresourcemanager.googleapis.com/projects/my_project_123`
-  /// For third-party assets, this field may be set differently.
-  core.String? parent;
-
-  /// The REST URL for accessing the resource.
-  ///
-  /// An HTTP `GET` request using this URL returns the resource itself. Example:
-  /// `https://cloudresourcemanager.googleapis.com/v1/projects/my-project-123`
-  /// This value is unspecified for resources without a REST API.
-  core.String? resourceUrl;
-
-  /// The API version.
-  ///
-  /// Example: `v1`
-  core.String? version;
-
-  GoogleCloudAssetV1p7beta1Resource({
-    this.data,
-    this.discoveryDocumentUri,
-    this.discoveryName,
-    this.location,
-    this.parent,
-    this.resourceUrl,
-    this.version,
-  });
-
-  GoogleCloudAssetV1p7beta1Resource.fromJson(core.Map _json)
-      : this(
-          data: _json.containsKey('data')
-              ? _json['data'] as core.Map<core.String, core.dynamic>
-              : null,
-          discoveryDocumentUri: _json.containsKey('discoveryDocumentUri')
-              ? _json['discoveryDocumentUri'] as core.String
-              : null,
-          discoveryName: _json.containsKey('discoveryName')
-              ? _json['discoveryName'] as core.String
-              : null,
-          location: _json.containsKey('location')
-              ? _json['location'] as core.String
-              : null,
-          parent: _json.containsKey('parent')
-              ? _json['parent'] as core.String
-              : null,
-          resourceUrl: _json.containsKey('resourceUrl')
-              ? _json['resourceUrl'] as core.String
-              : null,
-          version: _json.containsKey('version')
-              ? _json['version'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (data != null) 'data': data!,
-        if (discoveryDocumentUri != null)
-          'discoveryDocumentUri': discoveryDocumentUri!,
-        if (discoveryName != null) 'discoveryName': discoveryName!,
-        if (location != null) 'location': location!,
-        if (parent != null) 'parent': parent!,
-        if (resourceUrl != null) 'resourceUrl': resourceUrl!,
-        if (version != null) 'version': version!,
-      };
-}
+typedef GoogleCloudAssetV1p7beta1Resource = $Resource00;
 
 /// Used in `policy_type` to specify how `boolean_policy` will behave at this
 /// resource.
-class GoogleCloudOrgpolicyV1BooleanPolicy {
-  /// If `true`, then the `Policy` is enforced.
-  ///
-  /// If `false`, then any configuration is acceptable. Suppose you have a
-  /// `Constraint` `constraints/compute.disableSerialPortAccess` with
-  /// `constraint_default` set to `ALLOW`. A `Policy` for that `Constraint`
-  /// exhibits the following behavior: - If the `Policy` at this resource has
-  /// enforced set to `false`, serial port connection attempts will be allowed.
-  /// - If the `Policy` at this resource has enforced set to `true`, serial port
-  /// connection attempts will be refused. - If the `Policy` at this resource is
-  /// `RestoreDefault`, serial port connection attempts will be allowed. - If no
-  /// `Policy` is set at this resource or anywhere higher in the resource
-  /// hierarchy, serial port connection attempts will be allowed. - If no
-  /// `Policy` is set at this resource, but one exists higher in the resource
-  /// hierarchy, the behavior is as if the`Policy` were set at this resource.
-  /// The following examples demonstrate the different possible layerings:
-  /// Example 1 (nearest `Constraint` wins): `organizations/foo` has a `Policy`
-  /// with: {enforced: false} `projects/bar` has no `Policy` set. The constraint
-  /// at `projects/bar` and `organizations/foo` will not be enforced. Example 2
-  /// (enforcement gets replaced): `organizations/foo` has a `Policy` with:
-  /// {enforced: false} `projects/bar` has a `Policy` with: {enforced: true} The
-  /// constraint at `organizations/foo` is not enforced. The constraint at
-  /// `projects/bar` is enforced. Example 3 (RestoreDefault):
-  /// `organizations/foo` has a `Policy` with: {enforced: true} `projects/bar`
-  /// has a `Policy` with: {RestoreDefault: {}} The constraint at
-  /// `organizations/foo` is enforced. The constraint at `projects/bar` is not
-  /// enforced, because `constraint_default` for the `Constraint` is `ALLOW`.
-  core.bool? enforced;
-
-  GoogleCloudOrgpolicyV1BooleanPolicy({
-    this.enforced,
-  });
-
-  GoogleCloudOrgpolicyV1BooleanPolicy.fromJson(core.Map _json)
-      : this(
-          enforced: _json.containsKey('enforced')
-              ? _json['enforced'] as core.bool
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (enforced != null) 'enforced': enforced!,
-      };
-}
+typedef GoogleCloudOrgpolicyV1BooleanPolicy = $BooleanPolicy;
 
 /// Used in `policy_type` to specify how `list_policy` behaves at this resource.
 ///
@@ -3243,136 +2883,7 @@ class GoogleCloudOrgpolicyV1BooleanPolicy {
 /// `ALL_VALUES_UNSPECIFIED`. `ALLOW` or `DENY` are used to allow or deny all
 /// values. If `all_values` is set to either `ALLOW` or `DENY`, `allowed_values`
 /// and `denied_values` must be unset.
-class GoogleCloudOrgpolicyV1ListPolicy {
-  /// The policy all_values state.
-  /// Possible string values are:
-  /// - "ALL_VALUES_UNSPECIFIED" : Indicates that allowed_values or
-  /// denied_values must be set.
-  /// - "ALLOW" : A policy with this set allows all values.
-  /// - "DENY" : A policy with this set denies all values.
-  core.String? allValues;
-
-  /// List of values allowed at this resource.
-  ///
-  /// Can only be set if `all_values` is set to `ALL_VALUES_UNSPECIFIED`.
-  core.List<core.String>? allowedValues;
-
-  /// List of values denied at this resource.
-  ///
-  /// Can only be set if `all_values` is set to `ALL_VALUES_UNSPECIFIED`.
-  core.List<core.String>? deniedValues;
-
-  /// Determines the inheritance behavior for this `Policy`.
-  ///
-  /// By default, a `ListPolicy` set at a resource supersedes any `Policy` set
-  /// anywhere up the resource hierarchy. However, if `inherit_from_parent` is
-  /// set to `true`, then the values from the effective `Policy` of the parent
-  /// resource are inherited, meaning the values set in this `Policy` are added
-  /// to the values inherited up the hierarchy. Setting `Policy` hierarchies
-  /// that inherit both allowed values and denied values isn't recommended in
-  /// most circumstances to keep the configuration simple and understandable.
-  /// However, it is possible to set a `Policy` with `allowed_values` set that
-  /// inherits a `Policy` with `denied_values` set. In this case, the values
-  /// that are allowed must be in `allowed_values` and not present in
-  /// `denied_values`. For example, suppose you have a `Constraint`
-  /// `constraints/serviceuser.services`, which has a `constraint_type` of
-  /// `list_constraint`, and with `constraint_default` set to `ALLOW`. Suppose
-  /// that at the Organization level, a `Policy` is applied that restricts the
-  /// allowed API activations to {`E1`, `E2`}. Then, if a `Policy` is applied to
-  /// a project below the Organization that has `inherit_from_parent` set to
-  /// `false` and field all_values set to DENY, then an attempt to activate any
-  /// API will be denied. The following examples demonstrate different possible
-  /// layerings for `projects/bar` parented by `organizations/foo`: Example 1
-  /// (no inherited values): `organizations/foo` has a `Policy` with values:
-  /// {allowed_values: "E1" allowed_values:"E2"} `projects/bar` has
-  /// `inherit_from_parent` `false` and values: {allowed_values: "E3"
-  /// allowed_values: "E4"} The accepted values at `organizations/foo` are `E1`,
-  /// `E2`. The accepted values at `projects/bar` are `E3`, and `E4`. Example 2
-  /// (inherited values): `organizations/foo` has a `Policy` with values:
-  /// {allowed_values: "E1" allowed_values:"E2"} `projects/bar` has a `Policy`
-  /// with values: {value: "E3" value: "E4" inherit_from_parent: true} The
-  /// accepted values at `organizations/foo` are `E1`, `E2`. The accepted values
-  /// at `projects/bar` are `E1`, `E2`, `E3`, and `E4`. Example 3 (inheriting
-  /// both allowed and denied values): `organizations/foo` has a `Policy` with
-  /// values: {allowed_values: "E1" allowed_values: "E2"} `projects/bar` has a
-  /// `Policy` with: {denied_values: "E1"} The accepted values at
-  /// `organizations/foo` are `E1`, `E2`. The value accepted at `projects/bar`
-  /// is `E2`. Example 4 (RestoreDefault): `organizations/foo` has a `Policy`
-  /// with values: {allowed_values: "E1" allowed_values:"E2"} `projects/bar` has
-  /// a `Policy` with values: {RestoreDefault: {}} The accepted values at
-  /// `organizations/foo` are `E1`, `E2`. The accepted values at `projects/bar`
-  /// are either all or none depending on the value of `constraint_default` (if
-  /// `ALLOW`, all; if `DENY`, none). Example 5 (no policy inherits parent
-  /// policy): `organizations/foo` has no `Policy` set. `projects/bar` has no
-  /// `Policy` set. The accepted values at both levels are either all or none
-  /// depending on the value of `constraint_default` (if `ALLOW`, all; if
-  /// `DENY`, none). Example 6 (ListConstraint allowing all):
-  /// `organizations/foo` has a `Policy` with values: {allowed_values: "E1"
-  /// allowed_values: "E2"} `projects/bar` has a `Policy` with: {all: ALLOW} The
-  /// accepted values at `organizations/foo` are `E1`, E2`. Any value is
-  /// accepted at `projects/bar`. Example 7 (ListConstraint allowing none):
-  /// `organizations/foo` has a `Policy` with values: {allowed_values: "E1"
-  /// allowed_values: "E2"} `projects/bar` has a `Policy` with: {all: DENY} The
-  /// accepted values at `organizations/foo` are `E1`, E2`. No value is accepted
-  /// at `projects/bar`. Example 10 (allowed and denied subtrees of Resource
-  /// Manager hierarchy): Given the following resource hierarchy O1->{F1, F2};
-  /// F1->{P1}; F2->{P2, P3}, `organizations/foo` has a `Policy` with values:
-  /// {allowed_values: "under:organizations/O1"} `projects/bar` has a `Policy`
-  /// with: {allowed_values: "under:projects/P3"} {denied_values:
-  /// "under:folders/F2"} The accepted values at `organizations/foo` are
-  /// `organizations/O1`, `folders/F1`, `folders/F2`, `projects/P1`,
-  /// `projects/P2`, `projects/P3`. The accepted values at `projects/bar` are
-  /// `organizations/O1`, `folders/F1`, `projects/P1`.
-  core.bool? inheritFromParent;
-
-  /// The Google Cloud Console will try to default to a configuration that
-  /// matches the value specified in this `Policy`.
-  ///
-  /// If `suggested_value` is not set, it will inherit the value specified
-  /// higher in the hierarchy, unless `inherit_from_parent` is `false`.
-  ///
-  /// Optional.
-  core.String? suggestedValue;
-
-  GoogleCloudOrgpolicyV1ListPolicy({
-    this.allValues,
-    this.allowedValues,
-    this.deniedValues,
-    this.inheritFromParent,
-    this.suggestedValue,
-  });
-
-  GoogleCloudOrgpolicyV1ListPolicy.fromJson(core.Map _json)
-      : this(
-          allValues: _json.containsKey('allValues')
-              ? _json['allValues'] as core.String
-              : null,
-          allowedValues: _json.containsKey('allowedValues')
-              ? (_json['allowedValues'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          deniedValues: _json.containsKey('deniedValues')
-              ? (_json['deniedValues'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          inheritFromParent: _json.containsKey('inheritFromParent')
-              ? _json['inheritFromParent'] as core.bool
-              : null,
-          suggestedValue: _json.containsKey('suggestedValue')
-              ? _json['suggestedValue'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (allValues != null) 'allValues': allValues!,
-        if (allowedValues != null) 'allowedValues': allowedValues!,
-        if (deniedValues != null) 'deniedValues': deniedValues!,
-        if (inheritFromParent != null) 'inheritFromParent': inheritFromParent!,
-        if (suggestedValue != null) 'suggestedValue': suggestedValue!,
-      };
-}
+typedef GoogleCloudOrgpolicyV1ListPolicy = $ListPolicy;
 
 /// Defines a Cloud Organization `Policy` which is used to specify `Constraints`
 /// for configurations of Cloud Platform resources.
@@ -3560,63 +3071,7 @@ class GoogleIdentityAccesscontextmanagerV1AccessLevel {
 ///
 /// An access policy is globally visible within an organization, and the
 /// restrictions it specifies apply to all projects within an organization.
-class GoogleIdentityAccesscontextmanagerV1AccessPolicy {
-  /// An opaque identifier for the current version of the `AccessPolicy`.
-  ///
-  /// This will always be a strongly validated etag, meaning that two Access
-  /// Polices will be identical if and only if their etags are identical.
-  /// Clients should not expect this to be in any specific format.
-  ///
-  /// Output only.
-  core.String? etag;
-
-  /// Resource name of the `AccessPolicy`.
-  ///
-  /// Format: `accessPolicies/{access_policy}`
-  ///
-  /// Output only.
-  core.String? name;
-
-  /// The parent of this `AccessPolicy` in the Cloud Resource Hierarchy.
-  ///
-  /// Currently immutable once created. Format:
-  /// `organizations/{organization_id}`
-  ///
-  /// Required.
-  core.String? parent;
-
-  /// Human readable title.
-  ///
-  /// Does not affect behavior.
-  ///
-  /// Required.
-  core.String? title;
-
-  GoogleIdentityAccesscontextmanagerV1AccessPolicy({
-    this.etag,
-    this.name,
-    this.parent,
-    this.title,
-  });
-
-  GoogleIdentityAccesscontextmanagerV1AccessPolicy.fromJson(core.Map _json)
-      : this(
-          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          parent: _json.containsKey('parent')
-              ? _json['parent'] as core.String
-              : null,
-          title:
-              _json.containsKey('title') ? _json['title'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (etag != null) 'etag': etag!,
-        if (name != null) 'name': name!,
-        if (parent != null) 'parent': parent!,
-        if (title != null) 'title': title!,
-      };
-}
+typedef GoogleIdentityAccesscontextmanagerV1AccessPolicy = $AccessPolicy;
 
 /// Identification for an API Operation.
 class GoogleIdentityAccesscontextmanagerV1ApiOperation {
@@ -3929,51 +3384,7 @@ class GoogleIdentityAccesscontextmanagerV1DevicePolicy {
 /// if the destination of the request is also protected by a ServicePerimeter,
 /// then that ServicePerimeter must have an IngressPolicy which allows access in
 /// order for this request to succeed.
-class GoogleIdentityAccesscontextmanagerV1EgressFrom {
-  /// A list of identities that are allowed access through this
-  /// \[EgressPolicy\].
-  ///
-  /// Should be in the format of email address. The email address should
-  /// represent individual user or service account only.
-  core.List<core.String>? identities;
-
-  /// Specifies the type of identities that are allowed access to outside the
-  /// perimeter.
-  ///
-  /// If left unspecified, then members of `identities` field will be allowed
-  /// access.
-  /// Possible string values are:
-  /// - "IDENTITY_TYPE_UNSPECIFIED" : No blanket identity group specified.
-  /// - "ANY_IDENTITY" : Authorize access from all identities outside the
-  /// perimeter.
-  /// - "ANY_USER_ACCOUNT" : Authorize access from all human users outside the
-  /// perimeter.
-  /// - "ANY_SERVICE_ACCOUNT" : Authorize access from all service accounts
-  /// outside the perimeter.
-  core.String? identityType;
-
-  GoogleIdentityAccesscontextmanagerV1EgressFrom({
-    this.identities,
-    this.identityType,
-  });
-
-  GoogleIdentityAccesscontextmanagerV1EgressFrom.fromJson(core.Map _json)
-      : this(
-          identities: _json.containsKey('identities')
-              ? (_json['identities'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          identityType: _json.containsKey('identityType')
-              ? _json['identityType'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (identities != null) 'identities': identities!,
-        if (identityType != null) 'identityType': identityType!,
-      };
-}
+typedef GoogleIdentityAccesscontextmanagerV1EgressFrom = $EgressFrom;
 
 /// Policy for egress from perimeter.
 ///
@@ -4180,47 +3591,7 @@ class GoogleIdentityAccesscontextmanagerV1IngressPolicy {
 }
 
 /// The source that IngressPolicy authorizes access from.
-class GoogleIdentityAccesscontextmanagerV1IngressSource {
-  /// An AccessLevel resource name that allow resources within the
-  /// ServicePerimeters to be accessed from the internet.
-  ///
-  /// AccessLevels listed must be in the same policy as this ServicePerimeter.
-  /// Referencing a nonexistent AccessLevel will cause an error. If no
-  /// AccessLevel names are listed, resources within the perimeter can only be
-  /// accessed via Google Cloud calls with request origins within the perimeter.
-  /// Example: `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL`. If a single `*`
-  /// is specified for `access_level`, then all IngressSources will be allowed.
-  core.String? accessLevel;
-
-  /// A Google Cloud resource that is allowed to ingress the perimeter.
-  ///
-  /// Requests from these resources will be allowed to access perimeter data.
-  /// Currently only projects are allowed. Format: `projects/{project_number}`
-  /// The project may be in any Google Cloud organization, not just the
-  /// organization that the perimeter is defined in. `*` is not allowed, the
-  /// case of allowing all Google Cloud resources only is not supported.
-  core.String? resource;
-
-  GoogleIdentityAccesscontextmanagerV1IngressSource({
-    this.accessLevel,
-    this.resource,
-  });
-
-  GoogleIdentityAccesscontextmanagerV1IngressSource.fromJson(core.Map _json)
-      : this(
-          accessLevel: _json.containsKey('accessLevel')
-              ? _json['accessLevel'] as core.String
-              : null,
-          resource: _json.containsKey('resource')
-              ? _json['resource'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (accessLevel != null) 'accessLevel': accessLevel!,
-        if (resource != null) 'resource': resource!,
-      };
-}
+typedef GoogleIdentityAccesscontextmanagerV1IngressSource = $IngressSource;
 
 /// Defines the conditions under which an IngressPolicy matches a request.
 ///
@@ -4268,94 +3639,10 @@ class GoogleIdentityAccesscontextmanagerV1IngressTo {
 }
 
 /// An allowed method or permission of a service specified in ApiOperation.
-class GoogleIdentityAccesscontextmanagerV1MethodSelector {
-  /// Value for `method` should be a valid method name for the corresponding
-  /// `service_name` in ApiOperation.
-  ///
-  /// If `*` used as value for `method`, then ALL methods and permissions are
-  /// allowed.
-  core.String? method;
-
-  /// Value for `permission` should be a valid Cloud IAM permission for the
-  /// corresponding `service_name` in ApiOperation.
-  core.String? permission;
-
-  GoogleIdentityAccesscontextmanagerV1MethodSelector({
-    this.method,
-    this.permission,
-  });
-
-  GoogleIdentityAccesscontextmanagerV1MethodSelector.fromJson(core.Map _json)
-      : this(
-          method: _json.containsKey('method')
-              ? _json['method'] as core.String
-              : null,
-          permission: _json.containsKey('permission')
-              ? _json['permission'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (method != null) 'method': method!,
-        if (permission != null) 'permission': permission!,
-      };
-}
+typedef GoogleIdentityAccesscontextmanagerV1MethodSelector = $MethodSelector;
 
 /// A restriction on the OS type and version of devices making requests.
-class GoogleIdentityAccesscontextmanagerV1OsConstraint {
-  /// The minimum allowed OS version.
-  ///
-  /// If not set, any version of this OS satisfies the constraint. Format:
-  /// `"major.minor.patch"`. Examples: `"10.5.301"`, `"9.2.1"`.
-  core.String? minimumVersion;
-
-  /// The allowed OS type.
-  ///
-  /// Required.
-  /// Possible string values are:
-  /// - "OS_UNSPECIFIED" : The operating system of the device is not specified
-  /// or not known.
-  /// - "DESKTOP_MAC" : A desktop Mac operating system.
-  /// - "DESKTOP_WINDOWS" : A desktop Windows operating system.
-  /// - "DESKTOP_LINUX" : A desktop Linux operating system.
-  /// - "DESKTOP_CHROME_OS" : A desktop ChromeOS operating system.
-  /// - "ANDROID" : An Android operating system.
-  /// - "IOS" : An iOS operating system.
-  core.String? osType;
-
-  /// Only allows requests from devices with a verified Chrome OS.
-  ///
-  /// Verifications includes requirements that the device is enterprise-managed,
-  /// conformant to domain policies, and the caller has permission to call the
-  /// API targeted by the request.
-  core.bool? requireVerifiedChromeOs;
-
-  GoogleIdentityAccesscontextmanagerV1OsConstraint({
-    this.minimumVersion,
-    this.osType,
-    this.requireVerifiedChromeOs,
-  });
-
-  GoogleIdentityAccesscontextmanagerV1OsConstraint.fromJson(core.Map _json)
-      : this(
-          minimumVersion: _json.containsKey('minimumVersion')
-              ? _json['minimumVersion'] as core.String
-              : null,
-          osType: _json.containsKey('osType')
-              ? _json['osType'] as core.String
-              : null,
-          requireVerifiedChromeOs: _json.containsKey('requireVerifiedChromeOs')
-              ? _json['requireVerifiedChromeOs'] as core.bool
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (minimumVersion != null) 'minimumVersion': minimumVersion!,
-        if (osType != null) 'osType': osType!,
-        if (requireVerifiedChromeOs != null)
-          'requireVerifiedChromeOs': requireVerifiedChromeOs!,
-      };
-}
+typedef GoogleIdentityAccesscontextmanagerV1OsConstraint = $OsConstraint;
 
 /// `ServicePerimeter` describes a set of Google Cloud resources which can
 /// freely import and export data amongst themselves, but not export outside of
@@ -4584,42 +3871,8 @@ class GoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig {
 }
 
 /// Specifies how APIs are allowed to communicate within the Service Perimeter.
-class GoogleIdentityAccesscontextmanagerV1VpcAccessibleServices {
-  /// The list of APIs usable within the Service Perimeter.
-  ///
-  /// Must be empty unless 'enable_restriction' is True. You can specify a list
-  /// of individual services, as well as include the 'RESTRICTED-SERVICES'
-  /// value, which automatically includes all of the services protected by the
-  /// perimeter.
-  core.List<core.String>? allowedServices;
-
-  /// Whether to restrict API calls within the Service Perimeter to the list of
-  /// APIs specified in 'allowed_services'.
-  core.bool? enableRestriction;
-
-  GoogleIdentityAccesscontextmanagerV1VpcAccessibleServices({
-    this.allowedServices,
-    this.enableRestriction,
-  });
-
-  GoogleIdentityAccesscontextmanagerV1VpcAccessibleServices.fromJson(
-      core.Map _json)
-      : this(
-          allowedServices: _json.containsKey('allowedServices')
-              ? (_json['allowedServices'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          enableRestriction: _json.containsKey('enableRestriction')
-              ? _json['enableRestriction'] as core.bool
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (allowedServices != null) 'allowedServices': allowedServices!,
-        if (enableRestriction != null) 'enableRestriction': enableRestriction!,
-      };
-}
+typedef GoogleIdentityAccesscontextmanagerV1VpcAccessibleServices
+    = $VpcAccessibleServices;
 
 /// An analysis message to group the query and results.
 class IamPolicyAnalysis {
@@ -5637,87 +4890,7 @@ class Options {
 }
 
 /// Operating system information for the VM.
-class OsInfo {
-  /// The system architecture of the operating system.
-  core.String? architecture;
-
-  /// The VM hostname.
-  core.String? hostname;
-
-  /// The kernel release of the operating system.
-  core.String? kernelRelease;
-
-  /// The kernel version of the operating system.
-  core.String? kernelVersion;
-
-  /// The operating system long name.
-  ///
-  /// For example 'Debian GNU/Linux 9' or 'Microsoft Window Server 2019
-  /// Datacenter'.
-  core.String? longName;
-
-  /// The current version of the OS Config agent running on the VM.
-  core.String? osconfigAgentVersion;
-
-  /// The operating system short name.
-  ///
-  /// For example, 'windows' or 'debian'.
-  core.String? shortName;
-
-  /// The version of the operating system.
-  core.String? version;
-
-  OsInfo({
-    this.architecture,
-    this.hostname,
-    this.kernelRelease,
-    this.kernelVersion,
-    this.longName,
-    this.osconfigAgentVersion,
-    this.shortName,
-    this.version,
-  });
-
-  OsInfo.fromJson(core.Map _json)
-      : this(
-          architecture: _json.containsKey('architecture')
-              ? _json['architecture'] as core.String
-              : null,
-          hostname: _json.containsKey('hostname')
-              ? _json['hostname'] as core.String
-              : null,
-          kernelRelease: _json.containsKey('kernelRelease')
-              ? _json['kernelRelease'] as core.String
-              : null,
-          kernelVersion: _json.containsKey('kernelVersion')
-              ? _json['kernelVersion'] as core.String
-              : null,
-          longName: _json.containsKey('longName')
-              ? _json['longName'] as core.String
-              : null,
-          osconfigAgentVersion: _json.containsKey('osconfigAgentVersion')
-              ? _json['osconfigAgentVersion'] as core.String
-              : null,
-          shortName: _json.containsKey('shortName')
-              ? _json['shortName'] as core.String
-              : null,
-          version: _json.containsKey('version')
-              ? _json['version'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (architecture != null) 'architecture': architecture!,
-        if (hostname != null) 'hostname': hostname!,
-        if (kernelRelease != null) 'kernelRelease': kernelRelease!,
-        if (kernelVersion != null) 'kernelVersion': kernelVersion!,
-        if (longName != null) 'longName': longName!,
-        if (osconfigAgentVersion != null)
-          'osconfigAgentVersion': osconfigAgentVersion!,
-        if (shortName != null) 'shortName': shortName!,
-        if (version != null) 'version': version!,
-      };
-}
+typedef OsInfo = $OsInfo;
 
 /// Output configuration for export assets destination.
 class OutputConfig {
@@ -5960,58 +5133,7 @@ class PubsubDestination {
 /// policy). See
 /// [Supported asset types](https://cloud.google.com/asset-inventory/docs/supported-asset-types)
 /// for more information.
-class RelatedAsset {
-  /// The ancestors of an asset in Google Cloud
-  /// [resource hierarchy](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy),
-  /// represented as a list of relative resource names.
-  ///
-  /// An ancestry path starts with the closest ancestor in the hierarchy and
-  /// ends at root. Example: `["projects/123456789", "folders/5432",
-  /// "organizations/1234"]`
-  core.List<core.String>? ancestors;
-
-  /// The full name of the asset.
-  ///
-  /// Example:
-  /// `//compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1`
-  /// See
-  /// [Resource names](https://cloud.google.com/apis/design/resource_names#full_resource_name)
-  /// for more information.
-  core.String? asset;
-
-  /// The type of the asset.
-  ///
-  /// Example: `compute.googleapis.com/Disk` See
-  /// [Supported asset types](https://cloud.google.com/asset-inventory/docs/supported-asset-types)
-  /// for more information.
-  core.String? assetType;
-
-  RelatedAsset({
-    this.ancestors,
-    this.asset,
-    this.assetType,
-  });
-
-  RelatedAsset.fromJson(core.Map _json)
-      : this(
-          ancestors: _json.containsKey('ancestors')
-              ? (_json['ancestors'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          asset:
-              _json.containsKey('asset') ? _json['asset'] as core.String : null,
-          assetType: _json.containsKey('assetType')
-              ? _json['assetType'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (ancestors != null) 'ancestors': ancestors!,
-        if (asset != null) 'asset': asset!,
-        if (assetType != null) 'assetType': assetType!,
-      };
-}
+typedef RelatedAsset = $RelatedAsset;
 
 /// The detailed related assets with the `relationship_type`.
 class RelatedAssets {
@@ -6107,152 +5229,10 @@ class RelatedResources {
 
 /// The relationship attributes which include `type`, `source_resource_type`,
 /// `target_resource_type` and `action`.
-class RelationshipAttributes {
-  /// The detail of the relationship, e.g. `contains`, `attaches`
-  core.String? action;
-
-  /// The source asset type.
-  ///
-  /// Example: `compute.googleapis.com/Instance`
-  core.String? sourceResourceType;
-
-  /// The target asset type.
-  ///
-  /// Example: `compute.googleapis.com/Disk`
-  core.String? targetResourceType;
-
-  /// The unique identifier of the relationship type.
-  ///
-  /// Example: `INSTANCE_TO_INSTANCEGROUP`
-  core.String? type;
-
-  RelationshipAttributes({
-    this.action,
-    this.sourceResourceType,
-    this.targetResourceType,
-    this.type,
-  });
-
-  RelationshipAttributes.fromJson(core.Map _json)
-      : this(
-          action: _json.containsKey('action')
-              ? _json['action'] as core.String
-              : null,
-          sourceResourceType: _json.containsKey('sourceResourceType')
-              ? _json['sourceResourceType'] as core.String
-              : null,
-          targetResourceType: _json.containsKey('targetResourceType')
-              ? _json['targetResourceType'] as core.String
-              : null,
-          type: _json.containsKey('type') ? _json['type'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (action != null) 'action': action!,
-        if (sourceResourceType != null)
-          'sourceResourceType': sourceResourceType!,
-        if (targetResourceType != null)
-          'targetResourceType': targetResourceType!,
-        if (type != null) 'type': type!,
-      };
-}
+typedef RelationshipAttributes = $RelationshipAttributes;
 
 /// A representation of a Google Cloud resource.
-class Resource {
-  /// The content of the resource, in which some sensitive fields are removed
-  /// and may not be present.
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object?>? data;
-
-  /// The URL of the discovery document containing the resource's JSON schema.
-  ///
-  /// Example: `https://www.googleapis.com/discovery/v1/apis/compute/v1/rest`
-  /// This value is unspecified for resources that do not have an API based on a
-  /// discovery document, such as Cloud Bigtable.
-  core.String? discoveryDocumentUri;
-
-  /// The JSON schema name listed in the discovery document.
-  ///
-  /// Example: `Project` This value is unspecified for resources that do not
-  /// have an API based on a discovery document, such as Cloud Bigtable.
-  core.String? discoveryName;
-
-  /// The location of the resource in Google Cloud, such as its zone and region.
-  ///
-  /// For more information, see https://cloud.google.com/about/locations/.
-  core.String? location;
-
-  /// The full name of the immediate parent of this resource.
-  ///
-  /// See
-  /// [Resource Names](https://cloud.google.com/apis/design/resource_names#full_resource_name)
-  /// for more information. For Google Cloud assets, this value is the parent
-  /// resource defined in the
-  /// [Cloud IAM policy hierarchy](https://cloud.google.com/iam/docs/overview#policy_hierarchy).
-  /// Example: `//cloudresourcemanager.googleapis.com/projects/my_project_123`
-  /// For third-party assets, this field may be set differently.
-  core.String? parent;
-
-  /// The REST URL for accessing the resource.
-  ///
-  /// An HTTP `GET` request using this URL returns the resource itself. Example:
-  /// `https://cloudresourcemanager.googleapis.com/v1/projects/my-project-123`
-  /// This value is unspecified for resources without a REST API.
-  core.String? resourceUrl;
-
-  /// The API version.
-  ///
-  /// Example: `v1`
-  core.String? version;
-
-  Resource({
-    this.data,
-    this.discoveryDocumentUri,
-    this.discoveryName,
-    this.location,
-    this.parent,
-    this.resourceUrl,
-    this.version,
-  });
-
-  Resource.fromJson(core.Map _json)
-      : this(
-          data: _json.containsKey('data')
-              ? _json['data'] as core.Map<core.String, core.dynamic>
-              : null,
-          discoveryDocumentUri: _json.containsKey('discoveryDocumentUri')
-              ? _json['discoveryDocumentUri'] as core.String
-              : null,
-          discoveryName: _json.containsKey('discoveryName')
-              ? _json['discoveryName'] as core.String
-              : null,
-          location: _json.containsKey('location')
-              ? _json['location'] as core.String
-              : null,
-          parent: _json.containsKey('parent')
-              ? _json['parent'] as core.String
-              : null,
-          resourceUrl: _json.containsKey('resourceUrl')
-              ? _json['resourceUrl'] as core.String
-              : null,
-          version: _json.containsKey('version')
-              ? _json['version'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (data != null) 'data': data!,
-        if (discoveryDocumentUri != null)
-          'discoveryDocumentUri': discoveryDocumentUri!,
-        if (discoveryName != null) 'discoveryName': discoveryName!,
-        if (location != null) 'location': location!,
-        if (parent != null) 'parent': parent!,
-        if (resourceUrl != null) 'resourceUrl': resourceUrl!,
-        if (version != null) 'version': version!,
-      };
-}
+typedef Resource = $Resource00;
 
 /// A result of Resource Search, containing information of a cloud resource.
 class ResourceSearchResult {
@@ -6817,49 +5797,7 @@ class SoftwarePackage {
 /// contains three pieces of data: error code, error message, and error details.
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
-class Status {
-  /// The status code, which should be an enum value of google.rpc.Code.
-  core.int? code;
-
-  /// A list of messages that carry the error details.
-  ///
-  /// There is a common set of message types for APIs to use.
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object?>>? details;
-
-  /// A developer-facing error message, which should be in English.
-  ///
-  /// Any user-facing error message should be localized and sent in the
-  /// google.rpc.Status.details field, or localized by the client.
-  core.String? message;
-
-  Status({
-    this.code,
-    this.details,
-    this.message,
-  });
-
-  Status.fromJson(core.Map _json)
-      : this(
-          code: _json.containsKey('code') ? _json['code'] as core.int : null,
-          details: _json.containsKey('details')
-              ? (_json['details'] as core.List)
-                  .map((value) => value as core.Map<core.String, core.dynamic>)
-                  .toList()
-              : null,
-          message: _json.containsKey('message')
-              ? _json['message'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (code != null) 'code': code!,
-        if (details != null) 'details': details!,
-        if (message != null) 'message': message!,
-      };
-}
+typedef Status = $Status;
 
 /// An asset in Google Cloud and its temporal metadata, including the time
 /// window when it was observed and its status during that window.
@@ -7005,41 +5943,7 @@ class UpdateFeedRequest {
 ///
 /// This includes package info for APT, Yum, Zypper, and Googet package
 /// managers.
-class VersionedPackage {
-  /// The system architecture this package is intended for.
-  core.String? architecture;
-
-  /// The name of the package.
-  core.String? packageName;
-
-  /// The version of the package.
-  core.String? version;
-
-  VersionedPackage({
-    this.architecture,
-    this.packageName,
-    this.version,
-  });
-
-  VersionedPackage.fromJson(core.Map _json)
-      : this(
-          architecture: _json.containsKey('architecture')
-              ? _json['architecture'] as core.String
-              : null,
-          packageName: _json.containsKey('packageName')
-              ? _json['packageName'] as core.String
-              : null,
-          version: _json.containsKey('version')
-              ? _json['version'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (architecture != null) 'architecture': architecture!,
-        if (packageName != null) 'packageName': packageName!,
-        if (version != null) 'version': version!,
-      };
-}
+typedef VersionedPackage = $VersionedPackage;
 
 /// Resource representation as defined by the corresponding service providing
 /// the resource for a given API version.
@@ -7155,76 +6059,10 @@ class WindowsApplication {
 /// Fields are taken from Windows QuickFixEngineering Interface and match the
 /// source names:
 /// https://docs.microsoft.com/en-us/windows/win32/cimwin32prov/win32-quickfixengineering
-class WindowsQuickFixEngineeringPackage {
-  /// A short textual description of the QFE update.
-  core.String? caption;
-
-  /// A textual description of the QFE update.
-  core.String? description;
-
-  /// Unique identifier associated with a particular QFE update.
-  core.String? hotFixId;
-
-  /// Date that the QFE update was installed.
-  ///
-  /// Mapped from installed_on field.
-  core.String? installTime;
-
-  WindowsQuickFixEngineeringPackage({
-    this.caption,
-    this.description,
-    this.hotFixId,
-    this.installTime,
-  });
-
-  WindowsQuickFixEngineeringPackage.fromJson(core.Map _json)
-      : this(
-          caption: _json.containsKey('caption')
-              ? _json['caption'] as core.String
-              : null,
-          description: _json.containsKey('description')
-              ? _json['description'] as core.String
-              : null,
-          hotFixId: _json.containsKey('hotFixId')
-              ? _json['hotFixId'] as core.String
-              : null,
-          installTime: _json.containsKey('installTime')
-              ? _json['installTime'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (caption != null) 'caption': caption!,
-        if (description != null) 'description': description!,
-        if (hotFixId != null) 'hotFixId': hotFixId!,
-        if (installTime != null) 'installTime': installTime!,
-      };
-}
+typedef WindowsQuickFixEngineeringPackage = $WindowsQuickFixEngineeringPackage;
 
 /// Categories specified by the Windows Update.
-class WindowsUpdateCategory {
-  /// The identifier of the windows update category.
-  core.String? id;
-
-  /// The name of the windows update category.
-  core.String? name;
-
-  WindowsUpdateCategory({
-    this.id,
-    this.name,
-  });
-
-  WindowsUpdateCategory.fromJson(core.Map _json)
-      : this(
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (id != null) 'id': id!,
-        if (name != null) 'name': name!,
-      };
-}
+typedef WindowsUpdateCategory = $WindowsUpdateCategory;
 
 /// Details related to a Windows Update package.
 ///
@@ -7329,46 +6167,4 @@ class WindowsUpdatePackage {
 }
 
 /// Details related to a Zypper Patch.
-class ZypperPatch {
-  /// The category of the patch.
-  core.String? category;
-
-  /// The name of the patch.
-  core.String? patchName;
-
-  /// The severity specified for this patch
-  core.String? severity;
-
-  /// Any summary information provided about this patch.
-  core.String? summary;
-
-  ZypperPatch({
-    this.category,
-    this.patchName,
-    this.severity,
-    this.summary,
-  });
-
-  ZypperPatch.fromJson(core.Map _json)
-      : this(
-          category: _json.containsKey('category')
-              ? _json['category'] as core.String
-              : null,
-          patchName: _json.containsKey('patchName')
-              ? _json['patchName'] as core.String
-              : null,
-          severity: _json.containsKey('severity')
-              ? _json['severity'] as core.String
-              : null,
-          summary: _json.containsKey('summary')
-              ? _json['summary'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (category != null) 'category': category!,
-        if (patchName != null) 'patchName': patchName!,
-        if (severity != null) 'severity': severity!,
-        if (summary != null) 'summary': summary!,
-      };
-}
+typedef ZypperPatch = $ZypperPatch;
