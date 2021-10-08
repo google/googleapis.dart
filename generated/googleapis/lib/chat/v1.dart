@@ -2024,30 +2024,7 @@ class GoogleAppsCardV1Action {
 /// For example, consider three snooze buttons: snooze now, snooze 1 day, snooze
 /// next week. You might use action method = snooze(), passing the snooze type
 /// and snooze time in the list of string parameters.
-class GoogleAppsCardV1ActionParameter {
-  /// The name of the parameter for the action script.
-  core.String? key;
-
-  /// The value of the parameter.
-  core.String? value;
-
-  GoogleAppsCardV1ActionParameter({
-    this.key,
-    this.value,
-  });
-
-  GoogleAppsCardV1ActionParameter.fromJson(core.Map _json)
-      : this(
-          key: _json.containsKey('key') ? _json['key'] as core.String : null,
-          value:
-              _json.containsKey('value') ? _json['value'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (key != null) 'key': key!,
-        if (value != null) 'value': value!,
-      };
-}
+typedef GoogleAppsCardV1ActionParameter = $ActionParameter;
 
 /// Represents the complete border style applied to widgets.
 class GoogleAppsCardV1BorderStyle {

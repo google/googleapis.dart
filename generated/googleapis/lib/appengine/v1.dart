@@ -4191,52 +4191,7 @@ class LivenessCheck {
 typedef Location = $Location;
 
 /// Metadata for the given google.cloud.location.Location.
-class LocationMetadata {
-  /// App Engine flexible environment is available in the given
-  /// location.@OutputOnly
-  core.bool? flexibleEnvironmentAvailable;
-
-  /// Search API
-  /// (https://cloud.google.com/appengine/docs/standard/python/search) is
-  /// available in the given location.
-  ///
-  /// Output only.
-  core.bool? searchApiAvailable;
-
-  /// App Engine standard environment is available in the given
-  /// location.@OutputOnly
-  core.bool? standardEnvironmentAvailable;
-
-  LocationMetadata({
-    this.flexibleEnvironmentAvailable,
-    this.searchApiAvailable,
-    this.standardEnvironmentAvailable,
-  });
-
-  LocationMetadata.fromJson(core.Map _json)
-      : this(
-          flexibleEnvironmentAvailable:
-              _json.containsKey('flexibleEnvironmentAvailable')
-                  ? _json['flexibleEnvironmentAvailable'] as core.bool
-                  : null,
-          searchApiAvailable: _json.containsKey('searchApiAvailable')
-              ? _json['searchApiAvailable'] as core.bool
-              : null,
-          standardEnvironmentAvailable:
-              _json.containsKey('standardEnvironmentAvailable')
-                  ? _json['standardEnvironmentAvailable'] as core.bool
-                  : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (flexibleEnvironmentAvailable != null)
-          'flexibleEnvironmentAvailable': flexibleEnvironmentAvailable!,
-        if (searchApiAvailable != null)
-          'searchApiAvailable': searchApiAvailable!,
-        if (standardEnvironmentAvailable != null)
-          'standardEnvironmentAvailable': standardEnvironmentAvailable!,
-      };
-}
+typedef LocationMetadata = $LocationMetadata;
 
 /// A certificate managed by App Engine.
 class ManagedCertificate {

@@ -3597,28 +3597,7 @@ class Operation {
 }
 
 /// The operation metadata returned for the batchend services operation.
-class OperationMetadata {
-  /// The full name of the resources that this operation is directly associated
-  /// with.
-  core.List<core.String>? resourceNames;
-
-  OperationMetadata({
-    this.resourceNames,
-  });
-
-  OperationMetadata.fromJson(core.Map _json)
-      : this(
-          resourceNames: _json.containsKey('resourceNames')
-              ? (_json['resourceNames'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (resourceNames != null) 'resourceNames': resourceNames!,
-      };
-}
+typedef OperationMetadata = $OperationMetadata;
 
 /// A protocol buffer option, which can be attached to a message, field,
 /// enumeration, etc.
@@ -3847,35 +3826,7 @@ class QuotaOverride {
 ///
 /// This is the identity that service producer should use to access consumer
 /// resources.
-class ServiceIdentity {
-  /// The email address of the service account that a service producer would use
-  /// to access consumer resources.
-  core.String? email;
-
-  /// The unique and stable id of the service account.
-  ///
-  /// https://cloud.google.com/iam/reference/rest/v1/projects.serviceAccounts#ServiceAccount
-  core.String? uniqueId;
-
-  ServiceIdentity({
-    this.email,
-    this.uniqueId,
-  });
-
-  ServiceIdentity.fromJson(core.Map _json)
-      : this(
-          email:
-              _json.containsKey('email') ? _json['email'] as core.String : null,
-          uniqueId: _json.containsKey('uniqueId')
-              ? _json['uniqueId'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (email != null) 'email': email!,
-        if (uniqueId != null) 'uniqueId': uniqueId!,
-      };
-}
+typedef ServiceIdentity = $ServiceIdentity;
 
 /// `SourceContext` represents information about the source of a protobuf
 /// element, like the file in which it is defined.

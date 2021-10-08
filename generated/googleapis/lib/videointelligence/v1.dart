@@ -3525,33 +3525,7 @@ class GoogleCloudVideointelligenceV1beta2NormalizedBoundingPoly {
 ///
 /// NOTE: the normalized vertex coordinates are relative to the original image
 /// and range from 0 to 1.
-class GoogleCloudVideointelligenceV1beta2NormalizedVertex {
-  /// X coordinate.
-  core.double? x;
-
-  /// Y coordinate.
-  core.double? y;
-
-  GoogleCloudVideointelligenceV1beta2NormalizedVertex({
-    this.x,
-    this.y,
-  });
-
-  GoogleCloudVideointelligenceV1beta2NormalizedVertex.fromJson(core.Map _json)
-      : this(
-          x: _json.containsKey('x')
-              ? (_json['x'] as core.num).toDouble()
-              : null,
-          y: _json.containsKey('y')
-              ? (_json['y'] as core.num).toDouble()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (x != null) 'x': x!,
-        if (y != null) 'y': y!,
-      };
-}
+typedef GoogleCloudVideointelligenceV1beta2NormalizedVertex = $NormalizedVertex;
 
 /// Annotations corresponding to one tracked object.
 class GoogleCloudVideointelligenceV1beta2ObjectTrackingAnnotation {
@@ -5222,33 +5196,8 @@ class GoogleCloudVideointelligenceV1p1beta1NormalizedBoundingPoly {
 ///
 /// NOTE: the normalized vertex coordinates are relative to the original image
 /// and range from 0 to 1.
-class GoogleCloudVideointelligenceV1p1beta1NormalizedVertex {
-  /// X coordinate.
-  core.double? x;
-
-  /// Y coordinate.
-  core.double? y;
-
-  GoogleCloudVideointelligenceV1p1beta1NormalizedVertex({
-    this.x,
-    this.y,
-  });
-
-  GoogleCloudVideointelligenceV1p1beta1NormalizedVertex.fromJson(core.Map _json)
-      : this(
-          x: _json.containsKey('x')
-              ? (_json['x'] as core.num).toDouble()
-              : null,
-          y: _json.containsKey('y')
-              ? (_json['y'] as core.num).toDouble()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (x != null) 'x': x!,
-        if (y != null) 'y': y!,
-      };
-}
+typedef GoogleCloudVideointelligenceV1p1beta1NormalizedVertex
+    = $NormalizedVertex;
 
 /// Annotations corresponding to one tracked object.
 class GoogleCloudVideointelligenceV1p1beta1ObjectTrackingAnnotation {
@@ -6924,33 +6873,8 @@ class GoogleCloudVideointelligenceV1p2beta1NormalizedBoundingPoly {
 ///
 /// NOTE: the normalized vertex coordinates are relative to the original image
 /// and range from 0 to 1.
-class GoogleCloudVideointelligenceV1p2beta1NormalizedVertex {
-  /// X coordinate.
-  core.double? x;
-
-  /// Y coordinate.
-  core.double? y;
-
-  GoogleCloudVideointelligenceV1p2beta1NormalizedVertex({
-    this.x,
-    this.y,
-  });
-
-  GoogleCloudVideointelligenceV1p2beta1NormalizedVertex.fromJson(core.Map _json)
-      : this(
-          x: _json.containsKey('x')
-              ? (_json['x'] as core.num).toDouble()
-              : null,
-          y: _json.containsKey('y')
-              ? (_json['y'] as core.num).toDouble()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (x != null) 'x': x!,
-        if (y != null) 'y': y!,
-      };
-}
+typedef GoogleCloudVideointelligenceV1p2beta1NormalizedVertex
+    = $NormalizedVertex;
 
 /// Annotations corresponding to one tracked object.
 class GoogleCloudVideointelligenceV1p2beta1ObjectTrackingAnnotation {
@@ -8742,33 +8666,8 @@ class GoogleCloudVideointelligenceV1p3beta1NormalizedBoundingPoly {
 ///
 /// NOTE: the normalized vertex coordinates are relative to the original image
 /// and range from 0 to 1.
-class GoogleCloudVideointelligenceV1p3beta1NormalizedVertex {
-  /// X coordinate.
-  core.double? x;
-
-  /// Y coordinate.
-  core.double? y;
-
-  GoogleCloudVideointelligenceV1p3beta1NormalizedVertex({
-    this.x,
-    this.y,
-  });
-
-  GoogleCloudVideointelligenceV1p3beta1NormalizedVertex.fromJson(core.Map _json)
-      : this(
-          x: _json.containsKey('x')
-              ? (_json['x'] as core.num).toDouble()
-              : null,
-          y: _json.containsKey('y')
-              ? (_json['y'] as core.num).toDouble()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (x != null) 'x': x!,
-        if (y != null) 'y': y!,
-      };
-}
+typedef GoogleCloudVideointelligenceV1p3beta1NormalizedVertex
+    = $NormalizedVertex;
 
 /// Annotations corresponding to one tracked object.
 class GoogleCloudVideointelligenceV1p3beta1ObjectTrackingAnnotation {

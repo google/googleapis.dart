@@ -4107,38 +4107,7 @@ class GoogleCloudSecuritycenterV1p1beta1Finding {
 
 /// Message that contains the resource name and display name of a folder
 /// resource.
-class GoogleCloudSecuritycenterV1p1beta1Folder {
-  /// Full resource name of this folder.
-  ///
-  /// See:
-  /// https://cloud.google.com/apis/design/resource_names#full_resource_name
-  core.String? resourceFolder;
-
-  /// The user defined display name for this folder.
-  core.String? resourceFolderDisplayName;
-
-  GoogleCloudSecuritycenterV1p1beta1Folder({
-    this.resourceFolder,
-    this.resourceFolderDisplayName,
-  });
-
-  GoogleCloudSecuritycenterV1p1beta1Folder.fromJson(core.Map _json)
-      : this(
-          resourceFolder: _json.containsKey('resourceFolder')
-              ? _json['resourceFolder'] as core.String
-              : null,
-          resourceFolderDisplayName:
-              _json.containsKey('resourceFolderDisplayName')
-                  ? _json['resourceFolderDisplayName'] as core.String
-                  : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (resourceFolder != null) 'resourceFolder': resourceFolder!,
-        if (resourceFolderDisplayName != null)
-          'resourceFolderDisplayName': resourceFolderDisplayName!,
-      };
-}
+typedef GoogleCloudSecuritycenterV1p1beta1Folder = $Folder;
 
 /// Security Command Center's Notification
 class GoogleCloudSecuritycenterV1p1beta1NotificationMessage {
@@ -5574,64 +5543,7 @@ class SecurityCenterProperties {
 /// Security marks are scoped within a Security Command Center organization --
 /// they can be modified and viewed by all users who have proper permissions on
 /// the organization.
-class SecurityMarks {
-  /// The canonical name of the marks.
-  ///
-  /// Examples:
-  /// "organizations/{organization_id}/assets/{asset_id}/securityMarks"
-  /// "folders/{folder_id}/assets/{asset_id}/securityMarks"
-  /// "projects/{project_number}/assets/{asset_id}/securityMarks"
-  /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}/securityMarks"
-  /// "folders/{folder_id}/sources/{source_id}/findings/{finding_id}/securityMarks"
-  /// "projects/{project_number}/sources/{source_id}/findings/{finding_id}/securityMarks"
-  core.String? canonicalName;
-
-  /// Mutable user specified security marks belonging to the parent resource.
-  ///
-  /// Constraints are as follows: * Keys and values are treated as case
-  /// insensitive * Keys must be between 1 - 256 characters (inclusive) * Keys
-  /// must be letters, numbers, underscores, or dashes * Values have leading and
-  /// trailing whitespace trimmed, remaining characters must be between 1 - 4096
-  /// characters (inclusive)
-  core.Map<core.String, core.String>? marks;
-
-  /// The relative resource name of the SecurityMarks.
-  ///
-  /// See:
-  /// https://cloud.google.com/apis/design/resource_names#relative_resource_name
-  /// Examples:
-  /// "organizations/{organization_id}/assets/{asset_id}/securityMarks"
-  /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}/securityMarks".
-  core.String? name;
-
-  SecurityMarks({
-    this.canonicalName,
-    this.marks,
-    this.name,
-  });
-
-  SecurityMarks.fromJson(core.Map _json)
-      : this(
-          canonicalName: _json.containsKey('canonicalName')
-              ? _json['canonicalName'] as core.String
-              : null,
-          marks: _json.containsKey('marks')
-              ? (_json['marks'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.String,
-                  ),
-                )
-              : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (canonicalName != null) 'canonicalName': canonicalName!,
-        if (marks != null) 'marks': marks!,
-        if (name != null) 'name': name!,
-      };
-}
+typedef SecurityMarks = $SecurityMarks;
 
 /// Request message for updating a finding's state.
 class SetFindingStateRequest {

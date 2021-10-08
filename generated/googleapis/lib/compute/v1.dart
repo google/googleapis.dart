@@ -80932,27 +80932,8 @@ class RegionDisksAddResourcePoliciesRequest {
       };
 }
 
-class RegionDisksRemoveResourcePoliciesRequest {
-  /// Resource policies to be removed from this disk.
-  core.List<core.String>? resourcePolicies;
-
-  RegionDisksRemoveResourcePoliciesRequest({
-    this.resourcePolicies,
-  });
-
-  RegionDisksRemoveResourcePoliciesRequest.fromJson(core.Map _json)
-      : this(
-          resourcePolicies: _json.containsKey('resourcePolicies')
-              ? (_json['resourcePolicies'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (resourcePolicies != null) 'resourcePolicies': resourcePolicies!,
-      };
-}
+typedef RegionDisksRemoveResourcePoliciesRequest
+    = $DisksRemoveResourcePoliciesRequest;
 
 class RegionDisksResizeRequest {
   /// The new size of the regional persistent disk, which is specified in GB.
@@ -81472,30 +81453,8 @@ class RegionInstanceGroupManagerUpdateInstanceConfigReq {
       };
 }
 
-class RegionInstanceGroupManagersAbandonInstancesRequest {
-  /// The URLs of one or more instances to abandon.
-  ///
-  /// This can be a full URL or a partial URL, such as
-  /// zones/\[ZONE\]/instances/\[INSTANCE_NAME\].
-  core.List<core.String>? instances;
-
-  RegionInstanceGroupManagersAbandonInstancesRequest({
-    this.instances,
-  });
-
-  RegionInstanceGroupManagersAbandonInstancesRequest.fromJson(core.Map _json)
-      : this(
-          instances: _json.containsKey('instances')
-              ? (_json['instances'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (instances != null) 'instances': instances!,
-      };
-}
+typedef RegionInstanceGroupManagersAbandonInstancesRequest
+    = $InstanceGroupManagersAbandonInstancesRequest;
 
 /// RegionInstanceGroupManagers.applyUpdatesToInstances
 class RegionInstanceGroupManagersApplyUpdatesRequest {
@@ -81605,47 +81564,8 @@ class RegionInstanceGroupManagersCreateInstancesRequest {
       };
 }
 
-class RegionInstanceGroupManagersDeleteInstancesRequest {
-  /// The URLs of one or more instances to delete.
-  ///
-  /// This can be a full URL or a partial URL, such as
-  /// zones/\[ZONE\]/instances/\[INSTANCE_NAME\].
-  core.List<core.String>? instances;
-
-  /// Specifies whether the request should proceed despite the inclusion of
-  /// instances that are not members of the group or that are already in the
-  /// process of being deleted or abandoned.
-  ///
-  /// If this field is set to `false` and such an instance is specified in the
-  /// request, the operation fails. The operation always fails if the request
-  /// contains a malformed instance URL or a reference to an instance that
-  /// exists in a zone or region other than the group's zone or region.
-  core.bool? skipInstancesOnValidationError;
-
-  RegionInstanceGroupManagersDeleteInstancesRequest({
-    this.instances,
-    this.skipInstancesOnValidationError,
-  });
-
-  RegionInstanceGroupManagersDeleteInstancesRequest.fromJson(core.Map _json)
-      : this(
-          instances: _json.containsKey('instances')
-              ? (_json['instances'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          skipInstancesOnValidationError:
-              _json.containsKey('skipInstancesOnValidationError')
-                  ? _json['skipInstancesOnValidationError'] as core.bool
-                  : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (instances != null) 'instances': instances!,
-        if (skipInstancesOnValidationError != null)
-          'skipInstancesOnValidationError': skipInstancesOnValidationError!,
-      };
-}
+typedef RegionInstanceGroupManagersDeleteInstancesRequest
+    = $InstanceGroupManagersDeleteInstancesRequest;
 
 class RegionInstanceGroupManagersListErrorsResponse {
   /// The list of errors of the managed instance group.

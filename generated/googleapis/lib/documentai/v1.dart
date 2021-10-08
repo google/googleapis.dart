@@ -6555,39 +6555,8 @@ class GoogleCloudDocumentaiV1beta1DocumentPageBlock {
 }
 
 /// Detected language for a structural component.
-class GoogleCloudDocumentaiV1beta1DocumentPageDetectedLanguage {
-  /// Confidence of detected language.
-  ///
-  /// Range \[0, 1\].
-  core.double? confidence;
-
-  /// The BCP-47 language code, such as "en-US" or "sr-Latn".
-  ///
-  /// For more information, see
-  /// http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
-  core.String? languageCode;
-
-  GoogleCloudDocumentaiV1beta1DocumentPageDetectedLanguage({
-    this.confidence,
-    this.languageCode,
-  });
-
-  GoogleCloudDocumentaiV1beta1DocumentPageDetectedLanguage.fromJson(
-      core.Map _json)
-      : this(
-          confidence: _json.containsKey('confidence')
-              ? (_json['confidence'] as core.num).toDouble()
-              : null,
-          languageCode: _json.containsKey('languageCode')
-              ? _json['languageCode'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (confidence != null) 'confidence': confidence!,
-        if (languageCode != null) 'languageCode': languageCode!,
-      };
-}
+typedef GoogleCloudDocumentaiV1beta1DocumentPageDetectedLanguage
+    = $DetectedLanguage;
 
 /// Dimension for the page.
 class GoogleCloudDocumentaiV1beta1DocumentPageDimension {
@@ -8895,39 +8864,8 @@ class GoogleCloudDocumentaiV1beta2DocumentPageBlock {
 }
 
 /// Detected language for a structural component.
-class GoogleCloudDocumentaiV1beta2DocumentPageDetectedLanguage {
-  /// Confidence of detected language.
-  ///
-  /// Range \[0, 1\].
-  core.double? confidence;
-
-  /// The BCP-47 language code, such as "en-US" or "sr-Latn".
-  ///
-  /// For more information, see
-  /// http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
-  core.String? languageCode;
-
-  GoogleCloudDocumentaiV1beta2DocumentPageDetectedLanguage({
-    this.confidence,
-    this.languageCode,
-  });
-
-  GoogleCloudDocumentaiV1beta2DocumentPageDetectedLanguage.fromJson(
-      core.Map _json)
-      : this(
-          confidence: _json.containsKey('confidence')
-              ? (_json['confidence'] as core.num).toDouble()
-              : null,
-          languageCode: _json.containsKey('languageCode')
-              ? _json['languageCode'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (confidence != null) 'confidence': confidence!,
-        if (languageCode != null) 'languageCode': languageCode!,
-      };
-}
+typedef GoogleCloudDocumentaiV1beta2DocumentPageDetectedLanguage
+    = $DetectedLanguage;
 
 /// Dimension for the page.
 class GoogleCloudDocumentaiV1beta2DocumentPageDimension {

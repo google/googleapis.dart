@@ -799,57 +799,8 @@ typedef CloudresourcemanagerGoogleCloudResourcemanagerV2alpha1FolderOperation
     = $FolderOperation;
 
 /// Metadata describing a long running folder operation
-class CloudresourcemanagerGoogleCloudResourcemanagerV2beta1FolderOperation {
-  /// The resource name of the folder or organization we are either creating the
-  /// folder under or moving the folder to.
-  core.String? destinationParent;
-
-  /// The display name of the folder.
-  core.String? displayName;
-
-  /// The type of this operation.
-  /// Possible string values are:
-  /// - "OPERATION_TYPE_UNSPECIFIED" : Operation type not specified.
-  /// - "CREATE" : A create folder operation.
-  /// - "MOVE" : A move folder operation.
-  core.String? operationType;
-
-  /// The resource name of the folder's parent.
-  ///
-  /// Only applicable when the operation_type is MOVE.
-  core.String? sourceParent;
-
-  CloudresourcemanagerGoogleCloudResourcemanagerV2beta1FolderOperation({
-    this.destinationParent,
-    this.displayName,
-    this.operationType,
-    this.sourceParent,
-  });
-
-  CloudresourcemanagerGoogleCloudResourcemanagerV2beta1FolderOperation.fromJson(
-      core.Map _json)
-      : this(
-          destinationParent: _json.containsKey('destinationParent')
-              ? _json['destinationParent'] as core.String
-              : null,
-          displayName: _json.containsKey('displayName')
-              ? _json['displayName'] as core.String
-              : null,
-          operationType: _json.containsKey('operationType')
-              ? _json['operationType'] as core.String
-              : null,
-          sourceParent: _json.containsKey('sourceParent')
-              ? _json['sourceParent'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (destinationParent != null) 'destinationParent': destinationParent!,
-        if (displayName != null) 'displayName': displayName!,
-        if (operationType != null) 'operationType': operationType!,
-        if (sourceParent != null) 'sourceParent': sourceParent!,
-      };
-}
+typedef CloudresourcemanagerGoogleCloudResourcemanagerV2beta1FolderOperation
+    = $FolderOperation;
 
 /// Metadata pertaining to the Folder creation process.
 typedef CreateFolderMetadata = $CreateFolderMetadata;
@@ -993,56 +944,7 @@ class Folder {
 }
 
 /// Metadata describing a long running folder operation
-class FolderOperation {
-  /// The resource name of the folder or organization we are either creating the
-  /// folder under or moving the folder to.
-  core.String? destinationParent;
-
-  /// The display name of the folder.
-  core.String? displayName;
-
-  /// The type of this operation.
-  /// Possible string values are:
-  /// - "OPERATION_TYPE_UNSPECIFIED" : Operation type not specified.
-  /// - "CREATE" : A create folder operation.
-  /// - "MOVE" : A move folder operation.
-  core.String? operationType;
-
-  /// The resource name of the folder's parent.
-  ///
-  /// Only applicable when the operation_type is MOVE.
-  core.String? sourceParent;
-
-  FolderOperation({
-    this.destinationParent,
-    this.displayName,
-    this.operationType,
-    this.sourceParent,
-  });
-
-  FolderOperation.fromJson(core.Map _json)
-      : this(
-          destinationParent: _json.containsKey('destinationParent')
-              ? _json['destinationParent'] as core.String
-              : null,
-          displayName: _json.containsKey('displayName')
-              ? _json['displayName'] as core.String
-              : null,
-          operationType: _json.containsKey('operationType')
-              ? _json['operationType'] as core.String
-              : null,
-          sourceParent: _json.containsKey('sourceParent')
-              ? _json['sourceParent'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (destinationParent != null) 'destinationParent': destinationParent!,
-        if (displayName != null) 'displayName': displayName!,
-        if (operationType != null) 'operationType': operationType!,
-        if (sourceParent != null) 'sourceParent': sourceParent!,
-      };
-}
+typedef FolderOperation = $FolderOperation;
 
 /// A classification of the Folder Operation error.
 typedef FolderOperationError = $FolderOperationError;

@@ -43,9 +43,7 @@ extension ObjectTypeExtention on ObjectType {
       return null;
     }
 
-    if (!libraryValue.addUsedItem(duplicateItem)) {
-      return null;
-    }
+    libraryValue.addUsedItem(duplicateItem);
 
     if (duplicateItem != _DuplicateItem._empty) {
       final initialCovertCallCount = imports.convert.callCount;
@@ -80,7 +78,7 @@ mixin DedupeMixin {
   List<RestDescription> get descriptions;
 
   Set<_DuplicateItem> wrapPackageDeduplicateLogic(void Function() action) {
-    final dupes = <String, Map<String, int>>{};
+    final dupes = <String, Set<MapEntry<String, String>>>{};
     final emptySchema = <String>{};
 
     for (var api in descriptions) {
@@ -95,7 +93,7 @@ mixin DedupeMixin {
 
         final innerMap = dupes.putIfAbsent(content, () => {});
 
-        innerMap[schemaEntry.key] = (innerMap[schemaEntry.key] ?? 0) + 1;
+        innerMap.add(MapEntry(api.id!, schema.id!));
 
         if (schema.emptyType) {
           emptySchema.add(content);
@@ -111,12 +109,12 @@ mixin DedupeMixin {
         continue;
       }
 
-      if (dupe.value.total < 2) {
+      if (dupe.value.length < 2) {
         // Rule of 3 – only de-duplicate classes that show up 3x (or more)
         continue;
       }
 
-      final allKeys = dupe.value.keys.toSet();
+      final allKeys = dupe.value.map((e) => e.value).toSet();
       final shortestKey = allKeys.reduce((a, b) => a.length < b.length ? a : b);
       if (allKeys.any((element) => !element.endsWith(shortestKey))) {
         continue;
@@ -159,21 +157,12 @@ mixin DedupeMixin {
 }
 
 class _LibraryZoneData {
-  bool addUsedItem(_DuplicateItem item) {
-    final existing = _usedItems
+  void addUsedItem(_DuplicateItem item) {
+    if (_usedItems
         .where((element) => element.className == item.className)
-        .toList();
-
-    if (existing.isNotEmpty) {
-      if (existing.length == 1 && existing.single == _DuplicateItem._empty) {
-        return true;
-      }
-
-      return false;
+        .isEmpty) {
+      _usedItems.add(item);
     }
-
-    _usedItems.add(item);
-    return true;
   }
 
   final _usedItems = <_DuplicateItem>[];
@@ -240,11 +229,6 @@ class $_sharedEmptyClassName {
 
   @override
   int compareTo(_DuplicateItem other) => className.compareTo(other.className);
-}
-
-extension on Map<String, int> {
-  int get total =>
-      values.fold(0, (previousValue, element) => previousValue + element);
 }
 
 extension on JsonSchema {
