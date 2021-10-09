@@ -1,3 +1,8 @@
+/// Shared types to minimize the package size. Do not use directly.
+@core.Deprecated(
+  'Avoid importing this library. '
+  'Use the members defined in the target API library instead.',
+)
 library $shared;
 
 // ignore_for_file: camel_case_types
@@ -14,7 +19,7 @@ library $shared;
 
 import 'dart:core' as core;
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - toyApi:0.1 : ToyResourceResponse
 /// - toyApi:0.1 : ToyResponse

@@ -7,6 +7,8 @@ import 'package:collection/collection.dart';
 import 'dart_schema_types.dart';
 import 'generated_googleapis/discovery/v1.dart';
 
+const sharedLibraryName = 'shared.dart';
+
 final _packageZoneKey = Object();
 final _libraryZoneKey = Object();
 
@@ -179,7 +181,7 @@ class _DuplicateItem implements Comparable<_DuplicateItem> {
   String? _definition;
 
   String get definition => '''
-/// Shared implementation type for:
+/// Used by:
 ///
 ${replacements.map((e) => '/// - $e').join('\n')}
 $_definition''';

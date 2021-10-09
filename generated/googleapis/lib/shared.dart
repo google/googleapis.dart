@@ -1,3 +1,8 @@
+/// Shared types to minimize the package size. Do not use directly.
+@core.Deprecated(
+  'Avoid importing this library. '
+  'Use the members defined in the target API library instead.',
+)
 library $shared;
 
 // ignore_for_file: camel_case_types
@@ -15,7 +20,7 @@ library $shared;
 import 'dart:convert' as convert;
 import 'dart:core' as core;
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - accesscontextmanager:v1 : AccessPolicy
 /// - cloudasset:v1 : GoogleIdentityAccesscontextmanagerV1AccessPolicy
@@ -77,7 +82,7 @@ class $AccessPolicy {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dfareporting:v3.4 : AccountActiveAdSummary
 /// - dfareporting:v3.5 : AccountActiveAdSummary
@@ -143,7 +148,7 @@ class $AccountActiveAdSummary {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dfareporting:v3.4 : AccountPermission
 /// - dfareporting:v3.5 : AccountPermission
@@ -210,7 +215,7 @@ class $AccountPermission {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dfareporting:v3.4 : AccountPermissionGroup
 /// - dfareporting:v3.5 : AccountPermissionGroup
@@ -246,7 +251,7 @@ class $AccountPermissionGroup {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - chat:v1 : ActionParameter
 /// - chat:v1 : GoogleAppsCardV1ActionParameter
@@ -275,7 +280,7 @@ class $ActionParameter {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dfareporting:v3.4 : AdSlot
 /// - dfareporting:v3.5 : AdSlot
@@ -369,7 +374,7 @@ class $AdSlot {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dfareporting:v3.4 : AdvertiserGroup
 /// - dfareporting:v3.5 : AdvertiserGroup
@@ -420,7 +425,7 @@ class $AdvertiserGroup {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - searchconsole:v1 : ApiDataRow
 /// - webmasters:v3 : ApiDataRow
@@ -469,7 +474,7 @@ class $ApiDataRow {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - artifactregistry:v1 : ImportAptArtifactsGcsSource
 /// - artifactregistry:v1 : ImportYumArtifactsGcsSource
@@ -503,7 +508,7 @@ class $ArtifactsGcsSource {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - cloudchannel:v1 : GoogleCloudChannelV1AssociationInfo
 /// - cloudchannel:v1 : GoogleCloudChannelV1alpha1AssociationInfo
@@ -527,7 +532,7 @@ class $AssociationInfo {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - ml:v1 : GoogleCloudMlV1__IntegratedGradientsAttribution
 /// - ml:v1 : GoogleCloudMlV1__XraiAttribution
@@ -554,7 +559,7 @@ class $Attribution {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dfareporting:v3.4 : AudienceSegment
 /// - dfareporting:v3.5 : AudienceSegment
@@ -598,7 +603,7 @@ class $AudienceSegment {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - apigateway:v1 : ApigatewayAuditLogConfig
 /// - apigee:v1 : GoogleIamV1AuditLogConfig
@@ -669,7 +674,7 @@ class $AuditLogConfig {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - servicecontrol:v1 : Auth
 /// - servicecontrol:v2 : Auth
@@ -767,7 +772,7 @@ class $Auth {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - serviceconsumermanagement:v1 : AuthRequirement
 /// - servicemanagement:v1 : AuthRequirement
@@ -815,7 +820,7 @@ class $AuthRequirement {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - serviceconsumermanagement:v1 : BackendRule
 /// - servicemanagement:v1 : BackendRule
@@ -954,7 +959,7 @@ class $BackendRule {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - vision:v1 : BatchOperationMetadata
 /// - vision:v1 : GoogleCloudVisionV1p3beta1BatchOperationMetadata
@@ -1006,7 +1011,7 @@ class $BatchOperationMetadata {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - serviceconsumermanagement:v1 : BillingDestination
 /// - servicemanagement:v1 : BillingDestination
@@ -1046,7 +1051,7 @@ class $BillingDestination {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - cloudasset:v1 : GoogleCloudOrgpolicyV1BooleanPolicy
 /// - cloudresourcemanager:v1 : BooleanPolicy
@@ -1095,7 +1100,7 @@ class $BooleanPolicy {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dfareporting:v3.4 : Browser
 /// - dfareporting:v3.5 : Browser
@@ -1177,7 +1182,7 @@ class $Browser {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dfareporting:v3.4 : CampaignCreativeAssociation
 /// - dfareporting:v3.5 : CampaignCreativeAssociation
@@ -1211,7 +1216,7 @@ class $CampaignCreativeAssociation {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - compute:v1 : BackendBucketCdnPolicyBypassCacheOnRequestHeader
 /// - compute:v1 : BackendServiceCdnPolicyBypassCacheOnRequestHeader
@@ -1237,7 +1242,7 @@ class $CdnPolicyBypassCacheOnRequestHeader {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - compute:v1 : BackendBucketCdnPolicyNegativeCachingPolicy
 /// - compute:v1 : BackendServiceCdnPolicyNegativeCachingPolicy
@@ -1273,7 +1278,7 @@ class $CdnPolicyNegativeCachingPolicy {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dfareporting:v3.4 : ChangeLog
 /// - dfareporting:v3.5 : ChangeLog
@@ -1402,7 +1407,7 @@ class $ChangeLog {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - calendar:v3 : Channel
 /// - drive:v2 : Channel
@@ -1513,7 +1518,7 @@ class $Channel {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - safebrowsing:v4 : GoogleSecuritySafebrowsingV4Checksum
 /// - webrisk:v1 : GoogleCloudWebriskV1ComputeThreatListDiffResponseChecksum
@@ -1544,7 +1549,7 @@ class $Checksum {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dfareporting:v3.4 : City
 /// - dfareporting:v3.5 : City
@@ -1632,7 +1637,7 @@ class $City {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dfareporting:v3.4 : ClickThroughUrl
 /// - dfareporting:v3.5 : ClickThroughUrl
@@ -1696,7 +1701,7 @@ class $ClickThroughUrl {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dfareporting:v3.4 : ClickThroughUrlSuffixProperties
 /// - dfareporting:v3.5 : ClickThroughUrlSuffixProperties
@@ -1733,7 +1738,7 @@ class $ClickThroughUrlSuffixProperties {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - chat:v1 : Color
 /// - documentai:v1 : GoogleTypeColor
@@ -1793,7 +1798,7 @@ class $Color {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - documentai:v1 : GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata
 /// - documentai:v1 : GoogleCloudDocumentaiV1CommonOperationMetadata
@@ -1848,7 +1853,7 @@ class $CommonOperationMetadata {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dfareporting:v3.4 : ConnectionType
 /// - dfareporting:v3.5 : ConnectionType
@@ -1884,7 +1889,7 @@ class $ConnectionType {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dfareporting:v3.4 : ContentCategory
 /// - dfareporting:v3.5 : ContentCategory
@@ -1935,7 +1940,7 @@ class $ContentCategory {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - serviceconsumermanagement:v1 : ContextRule
 /// - servicemanagement:v1 : ContextRule
@@ -2009,7 +2014,7 @@ class $ContextRule {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3ContinuousTestResult
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3beta1ContinuousTestResult
@@ -2068,7 +2073,7 @@ class $ContinuousTestResult {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - serviceconsumermanagement:v1 : Control
 /// - servicemanagement:v1 : Control
@@ -2097,7 +2102,7 @@ class $Control {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dfareporting:v3.4 : ConversionError
 /// - dfareporting:v3.5 : ConversionError
@@ -2140,7 +2145,7 @@ class $ConversionError {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dfareporting:v3.4 : Country
 /// - dfareporting:v3.5 : Country
@@ -2196,7 +2201,7 @@ class $Country {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - contactcenterinsights:v1 : GoogleCloudContactcenterinsightsV1CreateAnalysisOperationMetadata
 /// - contactcenterinsights:v1 : GoogleCloudContactcenterinsightsV1alpha1CreateAnalysisOperationMetadata
@@ -2242,7 +2247,7 @@ class $CreateAnalysisOperationMetadata {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - cloudresourcemanager:v1 : CreateFolderMetadata
 /// - cloudresourcemanager:v2 : CreateFolderMetadata
@@ -2276,7 +2281,7 @@ class $CreateFolderMetadata {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - cloudresourcemanager:v1 : CreateProjectMetadata
 /// - cloudresourcemanager:v2 : CreateProjectMetadata
@@ -2319,7 +2324,7 @@ class $CreateProjectMetadata {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3CreateVersionOperationMetadata
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3beta1CreateVersionOperationMetadata
@@ -2347,7 +2352,7 @@ class $CreateVersionOperationMetadata {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dfareporting:v3.4 : CreativeAssetId
 /// - dfareporting:v3.5 : CreativeAssetId
@@ -2390,7 +2395,7 @@ class $CreativeAssetId {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dfareporting:v3.4 : CreativeClickThroughUrl
 /// - dfareporting:v3.5 : CreativeClickThroughUrl
@@ -2439,7 +2444,7 @@ class $CreativeClickThroughUrl {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dfareporting:v3.4 : CreativeFieldAssignment
 /// - dfareporting:v3.5 : CreativeFieldAssignment
@@ -2472,7 +2477,7 @@ class $CreativeFieldAssignment {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dfareporting:v3.4 : CreativeFieldValue
 /// - dfareporting:v3.5 : CreativeFieldValue
@@ -2514,7 +2519,7 @@ class $CreativeFieldValue {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dfareporting:v3.4 : CreativeGroupAssignment
 /// - dfareporting:v3.5 : CreativeGroupAssignment
@@ -2550,7 +2555,7 @@ class $CreativeGroupAssignment {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - serviceconsumermanagement:v1 : CustomErrorRule
 /// - servicemanagement:v1 : CustomErrorRule
@@ -2589,7 +2594,7 @@ class $CustomErrorRule {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dfareporting:v3.4 : CustomFloodlightVariable
 /// - dfareporting:v3.5 : CustomFloodlightVariable
@@ -2731,7 +2736,7 @@ class $CustomFloodlightVariable {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - serviceconsumermanagement:v1 : CustomHttpPattern
 /// - servicemanagement:v1 : CustomHttpPattern
@@ -2761,7 +2766,7 @@ class $CustomHttpPattern {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dfareporting:v3.4 : CustomViewabilityMetricConfiguration
 /// - dfareporting:v3.5 : CustomViewabilityMetricConfiguration
@@ -2819,7 +2824,7 @@ class $CustomViewabilityMetricConfiguration {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - cloudchannel:v1 : GoogleCloudChannelV1CustomerEvent
 /// - cloudchannel:v1 : GoogleCloudChannelV1alpha1CustomerEvent
@@ -2859,7 +2864,7 @@ class $CustomerEvent {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - admob:v1 : Date
 /// - adsense:v2 : Date
@@ -2920,7 +2925,7 @@ class $Date {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dfareporting:v3.4 : DateRange
 /// - dfareporting:v3.5 : DateRange
@@ -2985,7 +2990,7 @@ class $DateRange {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dfareporting:v3.4 : DayPartTargeting
 /// - dfareporting:v3.5 : DayPartTargeting
@@ -3041,7 +3046,7 @@ class $DayPartTargeting {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - cloudsearch:v1 : ResponseDebugInfo
 /// - cloudsearch:v1 : ResultDebugInfo
@@ -3066,7 +3071,7 @@ class $DebugInfo {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dfareporting:v3.4 : DefaultClickThroughEventTagProperties
 /// - dfareporting:v3.5 : DefaultClickThroughEventTagProperties
@@ -3104,7 +3109,7 @@ class $DefaultClickThroughEventTagProperties {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - contactcenterinsights:v1 : GoogleCloudContactcenterinsightsV1DeleteIssueModelRequest
 /// - contactcenterinsights:v1 : GoogleCloudContactcenterinsightsV1alpha1DeleteIssueModelRequest
@@ -3128,7 +3133,7 @@ class $DeleteIssueModelRequest {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - contactcenterinsights:v1 : GoogleCloudContactcenterinsightsV1DeployIssueModelRequest
 /// - contactcenterinsights:v1 : GoogleCloudContactcenterinsightsV1alpha1DeployIssueModelRequest
@@ -3152,7 +3157,7 @@ class $DeployIssueModelRequest {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - videointelligence:v1 : GoogleCloudVideointelligenceV1_DetectedAttribute
 /// - videointelligence:v1 : GoogleCloudVideointelligenceV1beta2_DetectedAttribute
@@ -3198,7 +3203,7 @@ class $DetectedAttribute {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - vision:v1 : DetectedBreak
 /// - vision:v1 : GoogleCloudVisionV1p1beta1TextAnnotationDetectedBreak
@@ -3239,7 +3244,7 @@ class $DetectedBreak {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - documentai:v1 : GoogleCloudDocumentaiV1DocumentPageDetectedLanguage
 /// - documentai:v1 : GoogleCloudDocumentaiV1beta1DocumentPageDetectedLanguage
@@ -3282,7 +3287,7 @@ class $DetectedLanguage {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dfareporting:v3.4 : DfpSettings
 /// - dfareporting:v3.5 : DfpSettings
@@ -3343,7 +3348,7 @@ class $DfpSettings {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dfareporting:v3.4 : Dimension
 /// - dfareporting:v3.5 : Dimension
@@ -3371,7 +3376,7 @@ class $Dimension {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dfareporting:v3.4 : DimensionFilter
 /// - dfareporting:v3.5 : DimensionFilter
@@ -3408,7 +3413,7 @@ class $DimensionFilter {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dfareporting:v3.4 : DimensionValue
 /// - dfareporting:v3.5 : DimensionValue
@@ -3475,7 +3480,7 @@ class $DimensionValue {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - compute:v1 : DisksRemoveResourcePoliciesRequest
 /// - compute:v1 : RegionDisksRemoveResourcePoliciesRequest
@@ -3501,7 +3506,7 @@ class $DisksRemoveResourcePoliciesRequest {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - documentai:v1 : GoogleCloudDocumentaiV1DocumentEntityRelation
 /// - documentai:v1 : GoogleCloudDocumentaiV1beta1DocumentEntityRelation
@@ -3542,7 +3547,7 @@ class $DocumentEntityRelation {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - documentai:v1 : GoogleCloudDocumentaiV1DocumentPageDimension
 /// - documentai:v1 : GoogleCloudDocumentaiV1beta1DocumentPageDimension
@@ -3581,7 +3586,7 @@ class $DocumentPageDimension {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - documentai:v1 : GoogleCloudDocumentaiV1DocumentPageImage
 /// - documentai:v1 : GoogleCloudDocumentaiV1beta1DocumentPageImage
@@ -3633,7 +3638,7 @@ class $DocumentPageImage {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - documentai:v1 : GoogleCloudDocumentaiV1DocumentPageMatrix
 /// - documentai:v1 : GoogleCloudDocumentaiV1beta1DocumentPageMatrix
@@ -3684,7 +3689,7 @@ class $DocumentPageMatrix {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - documentai:v1 : GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreak
 /// - documentai:v1 : GoogleCloudDocumentaiV1beta1DocumentPageTokenDetectedBreak
@@ -3713,7 +3718,7 @@ class $DocumentPageTokenDetectedBreak {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - documentai:v1 : GoogleCloudDocumentaiV1DocumentProvenanceParent
 /// - documentai:v1 : GoogleCloudDocumentaiV1beta1DocumentProvenanceParent
@@ -3752,7 +3757,7 @@ class $DocumentProvenanceParent {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - documentai:v1 : GoogleCloudDocumentaiV1DocumentRevisionHumanReview
 /// - documentai:v1 : GoogleCloudDocumentaiV1beta1DocumentRevisionHumanReview
@@ -3788,7 +3793,7 @@ class $DocumentRevisionHumanReview {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - documentai:v1 : GoogleCloudDocumentaiV1DocumentShardInfo
 /// - documentai:v1 : GoogleCloudDocumentaiV1beta1DocumentShardInfo
@@ -3830,7 +3835,7 @@ class $DocumentShardInfo {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - documentai:v1 : GoogleCloudDocumentaiV1DocumentStyleFontSize
 /// - documentai:v1 : GoogleCloudDocumentaiV1beta1DocumentStyleFontSize
@@ -3863,7 +3868,7 @@ class $DocumentStyleFontSize {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - documentai:v1 : GoogleCloudDocumentaiV1DocumentTextAnchorTextSegment
 /// - documentai:v1 : GoogleCloudDocumentaiV1beta1DocumentTextAnchorTextSegment
@@ -3896,7 +3901,7 @@ class $DocumentTextAnchorTextSegment {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - serviceconsumermanagement:v1 : DocumentationRule
 /// - servicemanagement:v1 : DocumentationRule
@@ -3953,7 +3958,7 @@ class $DocumentationRule {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3DtmfInput
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3beta1DtmfInput
@@ -3987,7 +3992,7 @@ class $DtmfInput {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dfareporting:v3.4 : DynamicTargetingKey
 /// - dfareporting:v3.5 : DynamicTargetingKey
@@ -4045,7 +4050,7 @@ class $DynamicTargetingKey {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - accesscontextmanager:v1 : EgressFrom
 /// - cloudasset:v1 : GoogleIdentityAccesscontextmanagerV1EgressFrom
@@ -4095,7 +4100,7 @@ class $EgressFrom {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - accessapproval:v1 : DismissApprovalRequestMessage
 /// - accessapproval:v1 : Empty
@@ -4630,7 +4635,7 @@ class $Empty {
   core.Map<core.String, core.dynamic> toJson() => {};
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dfareporting:v3.4 : EncryptionInfo
 /// - dfareporting:v3.5 : EncryptionInfo
@@ -4699,7 +4704,7 @@ class $EncryptionInfo {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - serviceconsumermanagement:v1 : Endpoint
 /// - servicemanagement:v1 : Endpoint
@@ -4750,7 +4755,7 @@ class $Endpoint {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - cloudchannel:v1 : GoogleCloudChannelV1EntitlementEvent
 /// - cloudchannel:v1 : GoogleCloudChannelV1alpha1EntitlementEvent
@@ -4803,7 +4808,7 @@ class $EntitlementEvent {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - videointelligence:v1 : GoogleCloudVideointelligenceV1_Entity
 /// - videointelligence:v1 : GoogleCloudVideointelligenceV1beta2_Entity
@@ -4849,7 +4854,7 @@ class $Entity {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - datastore:v1 : GoogleDatastoreAdminV1EntityFilter
 /// - datastore:v1 : GoogleDatastoreAdminV1beta1EntityFilter
@@ -4890,7 +4895,7 @@ class $EntityFilter {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowV2EntityTypeEntity
 /// - dialogflow:v2 : GoogleCloudDialogflowV2beta1EntityTypeEntity
@@ -4939,7 +4944,7 @@ class $EntityTypeEntity {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3EnvironmentTestCasesConfig
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfig
@@ -4993,7 +4998,7 @@ class $EnvironmentTestCasesConfig {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3EnvironmentVersionConfig
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfig
@@ -5021,7 +5026,7 @@ class $EnvironmentVersionConfig {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3EventInput
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3beta1EventInput
@@ -5046,7 +5051,7 @@ class $EventInput00 {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowV2EventInput
 /// - dialogflow:v2 : GoogleCloudDialogflowV2beta1EventInput
@@ -5107,7 +5112,7 @@ class $EventInput01 {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dfareporting:v3.4 : EventTagOverride
 /// - dfareporting:v3.5 : EventTagOverride
@@ -5139,7 +5144,7 @@ class $EventTagOverride {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - logging:v2 : Explicit
 /// - monitoring:v3 : Explicit
@@ -5165,7 +5170,7 @@ class $Explicit {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - videointelligence:v1 : GoogleCloudVideointelligenceV1_ExplicitContentFrame
 /// - videointelligence:v1 : GoogleCloudVideointelligenceV1beta2_ExplicitContentFrame
@@ -5209,7 +5214,7 @@ class $ExplicitContentFrame {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - logging:v2 : Exponential
 /// - monitoring:v3 : Exponential
@@ -5249,7 +5254,7 @@ class $Exponential {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3ExportAgentResponse
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3beta1ExportAgentResponse
@@ -5293,7 +5298,7 @@ class $ExportAgentResponse00 {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowV2ExportAgentResponse
 /// - dialogflow:v2 : GoogleCloudDialogflowV2beta1ExportAgentResponse
@@ -5337,7 +5342,7 @@ class $ExportAgentResponse01 {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - retail:v2 : GoogleCloudRetailV2alphaExportErrorsConfig
 /// - retail:v2 : GoogleCloudRetailV2betaExportErrorsConfig
@@ -5365,7 +5370,7 @@ class $ExportErrorsConfig {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3ExportFlowResponse
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3beta1ExportFlowResponse
@@ -5409,7 +5414,7 @@ class $ExportFlowResponse {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - contactcenterinsights:v1 : GoogleCloudContactcenterinsightsV1ExportInsightsDataRequestBigQueryDestination
 /// - contactcenterinsights:v1 : GoogleCloudContactcenterinsightsV1alpha1ExportInsightsDataRequestBigQueryDestination
@@ -5461,7 +5466,7 @@ class $ExportInsightsDataRequestBigQueryDestination {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - retail:v2 : GoogleCloudRetailV2alphaExportMetadata
 /// - retail:v2 : GoogleCloudRetailV2betaExportMetadata
@@ -5495,7 +5500,7 @@ class $ExportMetadata {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - vault:v1 : GroupsExportOptions
 /// - vault:v1 : HangoutsChatExportOptions
@@ -5523,7 +5528,7 @@ class $ExportOptions {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3ExportTestCasesResponse
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3beta1ExportTestCasesResponse
@@ -5566,7 +5571,7 @@ class $ExportTestCasesResponse {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - accesscontextmanager:v1 : Expr
 /// - apigateway:v1 : ApigatewayExpr
@@ -5671,7 +5676,7 @@ class $Expr {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowV2FaqAnswer
 /// - dialogflow:v2 : GoogleCloudDialogflowV2beta1FaqAnswer
@@ -5748,7 +5753,7 @@ class $FaqAnswer {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - fcm:v1 : AndroidFcmOptions
 /// - fcm:v1 : FcmOptions
@@ -5772,7 +5777,7 @@ class $FcmOptions {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - servicecontrol:v1 : FirstPartyPrincipal
 /// - servicecontrol:v2 : FirstPartyPrincipal
@@ -5811,7 +5816,7 @@ class $FirstPartyPrincipal {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dfareporting:v3.4 : Flight
 /// - dfareporting:v3.5 : Flight
@@ -5859,7 +5864,7 @@ class $Flight {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dfareporting:v3.4 : FloodlightActivitiesGenerateTagResponse
 /// - dfareporting:v3.5 : FloodlightActivitiesGenerateTagResponse
@@ -5909,7 +5914,7 @@ class $FloodlightActivitiesGenerateTagResponse {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dfareporting:v3.4 : FloodlightActivityDynamicTag
 /// - dfareporting:v3.5 : FloodlightActivityDynamicTag
@@ -5945,7 +5950,7 @@ class $FloodlightActivityDynamicTag {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - securitycenter:v1 : Folder
 /// - securitycenter:v1 : GoogleCloudSecuritycenterV1p1beta1Folder
@@ -5982,7 +5987,7 @@ class $Folder {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - cloudresourcemanager:v1 : CloudresourcemanagerGoogleCloudResourcemanagerV2alpha1FolderOperation
 /// - cloudresourcemanager:v1 : CloudresourcemanagerGoogleCloudResourcemanagerV2beta1FolderOperation
@@ -6044,7 +6049,7 @@ class $FolderOperation {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - cloudresourcemanager:v1 : FolderOperationError
 /// - cloudresourcemanager:v2 : FolderOperationError
@@ -6090,7 +6095,7 @@ class $FolderOperationError {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dfareporting:v3.4 : FrequencyCap
 /// - dfareporting:v3.5 : FrequencyCap
@@ -6128,7 +6133,7 @@ class $FrequencyCap {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dfareporting:v3.4 : FsCommand
 /// - dfareporting:v3.5 : FsCommand
@@ -6186,7 +6191,7 @@ class $FsCommand {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3FulfillmentSetParameterAction
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3beta1FulfillmentSetParameterAction
@@ -6223,7 +6228,7 @@ class $FulfillmentSetParameterAction {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - vision:v1 : GcsDestination
 /// - vision:v1 : GoogleCloudVisionV1p1beta1GcsDestination
@@ -6263,7 +6268,7 @@ class $GcsDestination {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - vision:v1 : GcsSource
 /// - vision:v1 : GoogleCloudVisionV1p1beta1GcsSource
@@ -6291,7 +6296,7 @@ class $GcsSource00 {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - healthcare:v1 : GcsSource
 /// - healthcare:v1 : GoogleCloudHealthcareV1FhirGcsSource
@@ -6325,7 +6330,7 @@ class $GcsSource01 {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - bigquery:v2 : GetPolicyOptions
 /// - bigtableadmin:v2 : GetPolicyOptions
@@ -6370,7 +6375,7 @@ class $GetPolicyOptions {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowV2AnnotatedMessagePart
 /// - dialogflow:v3 : GoogleCloudDialogflowV2AnnotatedMessagePart
@@ -6421,7 +6426,7 @@ class $GoogleCloudDialogflowV2AnnotatedMessagePart {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowV2ArticleAnswer
 /// - dialogflow:v3 : GoogleCloudDialogflowV2ArticleAnswer
@@ -6495,7 +6500,7 @@ class $GoogleCloudDialogflowV2ArticleAnswer {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowV2Context
 /// - dialogflow:v3 : GoogleCloudDialogflowV2Context
@@ -6566,7 +6571,7 @@ class $GoogleCloudDialogflowV2Context {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowV2IntentMessageImage
 /// - dialogflow:v3 : GoogleCloudDialogflowV2IntentMessageImage
@@ -6603,7 +6608,7 @@ class $GoogleCloudDialogflowV2IntentMessageImage {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowV2KnowledgeOperationMetadata
 /// - dialogflow:v3 : GoogleCloudDialogflowV2KnowledgeOperationMetadata
@@ -6633,7 +6638,7 @@ class $GoogleCloudDialogflowV2KnowledgeOperationMetadata {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowV2beta1AnnotatedMessagePart
 /// - dialogflow:v3 : GoogleCloudDialogflowV2beta1AnnotatedMessagePart
@@ -6690,7 +6695,7 @@ class $GoogleCloudDialogflowV2beta1AnnotatedMessagePart {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowV2beta1ArticleAnswer
 /// - dialogflow:v3 : GoogleCloudDialogflowV2beta1ArticleAnswer
@@ -6754,7 +6759,7 @@ class $GoogleCloudDialogflowV2beta1ArticleAnswer {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowV2beta1Context
 /// - dialogflow:v3 : GoogleCloudDialogflowV2beta1Context
@@ -6827,7 +6832,7 @@ class $GoogleCloudDialogflowV2beta1Context {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowV2beta1IntentMessageImage
 /// - dialogflow:v3 : GoogleCloudDialogflowV2beta1IntentMessageImage
@@ -6864,7 +6869,7 @@ class $GoogleCloudDialogflowV2beta1IntentMessageImage {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMedia
 /// - dialogflow:v3 : GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMedia
@@ -6929,7 +6934,7 @@ class $GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMedia {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionDial
 /// - dialogflow:v3 : GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionDial
@@ -6959,7 +6964,7 @@ class $GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedAc
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionOpenUri
 /// - dialogflow:v3 : GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionOpenUri
@@ -6984,7 +6989,7 @@ class $GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedAc
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedReply
 /// - dialogflow:v3 : GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedReply
@@ -7019,7 +7024,7 @@ class $GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedReply {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowV2beta1IntentMessageTelephonyPlayAudio
 /// - dialogflow:v3 : GoogleCloudDialogflowV2beta1IntentMessageTelephonyPlayAudio
@@ -7056,7 +7061,7 @@ class $GoogleCloudDialogflowV2beta1IntentMessageTelephonyPlayAudio {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowV2beta1IntentMessageTelephonySynthesizeSpeech
 /// - dialogflow:v3 : GoogleCloudDialogflowV2beta1IntentMessageTelephonySynthesizeSpeech
@@ -7088,7 +7093,7 @@ class $GoogleCloudDialogflowV2beta1IntentMessageTelephonySynthesizeSpeech {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowV2beta1IntentMessageTelephonyTransferCall
 /// - dialogflow:v3 : GoogleCloudDialogflowV2beta1IntentMessageTelephonyTransferCall
@@ -7118,7 +7123,7 @@ class $GoogleCloudDialogflowV2beta1IntentMessageTelephonyTransferCall {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowV2beta1KnowledgeAnswersAnswer
 /// - dialogflow:v3 : GoogleCloudDialogflowV2beta1KnowledgeAnswersAnswer
@@ -7197,7 +7202,7 @@ class $GoogleCloudDialogflowV2beta1KnowledgeAnswersAnswer {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowV2beta1SmartReplyAnswer
 /// - dialogflow:v3 : GoogleCloudDialogflowV2beta1SmartReplyAnswer
@@ -7241,7 +7246,7 @@ class $GoogleCloudDialogflowV2beta1SmartReplyAnswer {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - file:v1 : GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule
 /// - managedidentities:v1 : GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule
@@ -7314,7 +7319,7 @@ class $GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - file:v1 : GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource
 /// - managedidentities:v1 : GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource
@@ -7356,7 +7361,7 @@ class $GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - file:v1 : GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility
 /// - managedidentities:v1 : GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility
@@ -7393,7 +7398,7 @@ class $GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - appengine:v1 : ApiEndpointHandler
 /// - appengine:v1 : ScriptHandler
@@ -7417,7 +7422,7 @@ class $Handler {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - compute:v1 : UrlMapTestHeader
 /// - websecurityscanner:v1 : Header
@@ -7446,7 +7451,7 @@ class $Header {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - adsense:v2 : HttpBody
 /// - apigee:v1 : GoogleApiHttpBody
@@ -7503,7 +7508,7 @@ class $HttpBody {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - documentai:v1 : GoogleCloudDocumentaiV1HumanReviewStatus
 /// - documentai:v1 : GoogleCloudDocumentaiV1beta3HumanReviewStatus
@@ -7559,7 +7564,7 @@ class $HumanReviewStatus {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - vision:v1 : GoogleCloudVisionV1p1beta1ImageAnnotationContext
 /// - vision:v1 : GoogleCloudVisionV1p2beta1ImageAnnotationContext
@@ -7593,7 +7598,7 @@ class $ImageAnnotationContext {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - retail:v2 : GoogleCloudRetailV2ImportErrorsConfig
 /// - retail:v2 : GoogleCloudRetailV2alphaImportErrorsConfig
@@ -7622,7 +7627,7 @@ class $ImportErrorsConfig {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3ImportFlowResponse
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3beta1ImportFlowResponse
@@ -7648,7 +7653,7 @@ class $ImportFlowResponse {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - retail:v2 : GoogleCloudRetailV2ImportMetadata
 /// - retail:v2 : GoogleCloudRetailV2alphaImportMetadata
@@ -7723,7 +7728,7 @@ class $ImportMetadata {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3ImportTestCasesResponse
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3beta1ImportTestCasesResponse
@@ -7753,7 +7758,7 @@ class $ImportTestCasesResponse {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - accesscontextmanager:v1 : IngressSource
 /// - cloudasset:v1 : GoogleIdentityAccesscontextmanagerV1IngressSource
@@ -7799,7 +7804,7 @@ class $IngressSource {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3InputAudioConfig
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3beta1InputAudioConfig
@@ -7966,7 +7971,7 @@ class $InputAudioConfig {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - compute:v1 : InstanceGroupManagersAbandonInstancesRequest
 /// - compute:v1 : RegionInstanceGroupManagersAbandonInstancesRequest
@@ -7995,7 +8000,7 @@ class $InstanceGroupManagersAbandonInstancesRequest {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - compute:v1 : InstanceGroupManagersApplyUpdatesRequest
 /// - compute:v1 : RegionInstanceGroupManagersApplyUpdatesRequest
@@ -8080,7 +8085,7 @@ class $InstanceGroupManagersApplyUpdatesRequest {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - compute:v1 : InstanceGroupManagersDeleteInstancesRequest
 /// - compute:v1 : RegionInstanceGroupManagersDeleteInstancesRequest
@@ -8126,7 +8131,7 @@ class $InstanceGroupManagersDeleteInstancesRequest {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowV2IntentFollowupIntentInfo
 /// - dialogflow:v2 : GoogleCloudDialogflowV2beta1IntentFollowupIntentInfo
@@ -8167,7 +8172,7 @@ class $IntentFollowupIntentInfo {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3IntentInput
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3beta1IntentInput
@@ -8197,7 +8202,7 @@ class $IntentInput {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriAction
 /// - dialogflow:v2 : GoogleCloudDialogflowV2beta1IntentMessageBasicCardButtonOpenUriAction
@@ -8223,7 +8228,7 @@ class $IntentMessageBasicCardButtonOpenUriAction {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction
 /// - dialogflow:v2 : GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction
@@ -8267,7 +8272,7 @@ class $IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowV2IntentMessageCardButton
 /// - dialogflow:v2 : GoogleCloudDialogflowV2beta1IntentMessageCardButton
@@ -8303,7 +8308,7 @@ class $IntentMessageCardButton {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowV2IntentMessageColumnProperties
 /// - dialogflow:v2 : GoogleCloudDialogflowV2beta1IntentMessageColumnProperties
@@ -8348,7 +8353,7 @@ class $IntentMessageColumnProperties {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowV2IntentMessageLinkOutSuggestion
 /// - dialogflow:v2 : GoogleCloudDialogflowV2beta1IntentMessageLinkOutSuggestion
@@ -8384,7 +8389,7 @@ class $IntentMessageLinkOutSuggestion {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowV2IntentMessageQuickReplies
 /// - dialogflow:v2 : GoogleCloudDialogflowV2beta1IntentMessageQuickReplies
@@ -8423,7 +8428,7 @@ class $IntentMessageQuickReplies {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowV2IntentMessageSelectItemInfo
 /// - dialogflow:v2 : GoogleCloudDialogflowV2beta1IntentMessageSelectItemInfo
@@ -8462,7 +8467,7 @@ class $IntentMessageSelectItemInfo {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowV2IntentMessageSimpleResponse
 /// - dialogflow:v2 : GoogleCloudDialogflowV2beta1IntentMessageSimpleResponse
@@ -8509,7 +8514,7 @@ class $IntentMessageSimpleResponse {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowV2IntentMessageSuggestion
 /// - dialogflow:v2 : GoogleCloudDialogflowV2beta1IntentMessageSuggestion
@@ -8536,7 +8541,7 @@ class $IntentMessageSuggestion {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowV2IntentMessageTableCardCell
 /// - dialogflow:v2 : GoogleCloudDialogflowV2beta1IntentMessageTableCardCell
@@ -8562,7 +8567,7 @@ class $IntentMessageTableCardCell {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowV2IntentMessageText
 /// - dialogflow:v2 : GoogleCloudDialogflowV2beta1IntentMessageText
@@ -8592,7 +8597,7 @@ class $IntentMessageText {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3IntentParameter
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3beta1IntentParameter
@@ -8654,7 +8659,7 @@ class $IntentParameter00 {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowV2IntentParameter
 /// - dialogflow:v2 : GoogleCloudDialogflowV2beta1IntentParameter
@@ -8764,7 +8769,7 @@ class $IntentParameter01 {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3IntentTrainingPhrasePart
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3beta1IntentTrainingPhrasePart
@@ -8800,7 +8805,7 @@ class $IntentTrainingPhrasePart00 {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowV2IntentTrainingPhrasePart
 /// - dialogflow:v2 : GoogleCloudDialogflowV2beta1IntentTrainingPhrasePart
@@ -8864,7 +8869,7 @@ class $IntentTrainingPhrasePart01 {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - contactcenterinsights:v1 : GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig
 /// - contactcenterinsights:v1 : GoogleCloudContactcenterinsightsV1alpha1IssueModelInputDataConfig
@@ -8920,7 +8925,7 @@ class $IssueModelInputDataConfig {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - contactcenterinsights:v1 : GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStats
 /// - contactcenterinsights:v1 : GoogleCloudContactcenterinsightsV1alpha1IssueModelLabelStatsIssueStats
@@ -8956,7 +8961,7 @@ class $IssueModelLabelStatsIssueStats {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - binaryauthorization:v1 : Jwt
 /// - ondemandscanning:v1 : Jwt
@@ -8983,7 +8988,7 @@ class $Jwt {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - serviceconsumermanagement:v1 : JwtLocation
 /// - servicemanagement:v1 : JwtLocation
@@ -9031,7 +9036,7 @@ class $JwtLocation {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - vision:v1 : GoogleCloudVisionV1p1beta1ProductKeyValue
 /// - vision:v1 : GoogleCloudVisionV1p2beta1ProductKeyValue
@@ -9067,7 +9072,7 @@ class $KeyValue {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dfareporting:v3.4 : KeyValueTargetingExpression
 /// - dfareporting:v3.5 : KeyValueTargetingExpression
@@ -9091,7 +9096,7 @@ class $KeyValueTargetingExpression {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - datastore:v1 : KindExpression
 /// - dlp:v2 : GooglePrivacyDlpV2KindExpression
@@ -9113,7 +9118,7 @@ class $KindExpression {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3GenericKnowledgeOperationMetadata
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3beta1GenericKnowledgeOperationMetadata
@@ -9149,7 +9154,7 @@ class $KnowledgeOperationMetadata {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - logging:v2 : LabelDescriptor
 /// - serviceconsumermanagement:v1 : LabelDescriptor
@@ -9194,7 +9199,7 @@ class $LabelDescriptor {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - deploymentmanager:v2 : DeploymentLabelEntry
 /// - deploymentmanager:v2 : DeploymentUpdateLabelEntry
@@ -9223,7 +9228,7 @@ class $LabelEntry {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - videointelligence:v1 : GoogleCloudVideointelligenceV1_LabelFrame
 /// - videointelligence:v1 : GoogleCloudVideointelligenceV1beta2_LabelFrame
@@ -9261,7 +9266,7 @@ class $LabelFrame {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dfareporting:v3.4 : Language
 /// - dfareporting:v3.5 : Language
@@ -9310,7 +9315,7 @@ class $Language {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dfareporting:v3.4 : LastModifiedInfo
 /// - dfareporting:v3.5 : LastModifiedInfo
@@ -9332,7 +9337,7 @@ class $LastModifiedInfo {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - datastore:v1 : LatLng
 /// - dialogflow:v2 : GoogleTypeLatLng
@@ -9376,7 +9381,7 @@ class $LatLng {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - cloudresourcemanager:v1 : Lien
 /// - cloudresourcemanager:v3 : Lien
@@ -9456,7 +9461,7 @@ class $Lien {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - logging:v2 : Linear
 /// - monitoring:v3 : Linear
@@ -9496,7 +9501,7 @@ class $Linear {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - cloudasset:v1 : GoogleCloudOrgpolicyV1ListPolicy
 /// - cloudresourcemanager:v1 : ListPolicy
@@ -9631,7 +9636,7 @@ class $ListPolicy {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dfareporting:v3.4 : ListPopulationTerm
 /// - dfareporting:v3.5 : ListPopulationTerm
@@ -9749,7 +9754,7 @@ class $ListPopulationTerm {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dfareporting:v3.4 : ListTargetingExpression
 /// - dfareporting:v3.5 : ListTargetingExpression
@@ -9773,7 +9778,7 @@ class $ListTargetingExpression {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - apigateway:v1 : ApigatewayLocation
 /// - bigquerydatatransfer:v1 : Location
@@ -9875,7 +9880,7 @@ class $Location00 {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - appengine:v1 : Location
 /// - logging:v2 : Location
@@ -9947,7 +9952,7 @@ class $Location01 {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - appengine:v1 : GoogleAppengineV1betaLocationMetadata
 /// - appengine:v1 : LocationMetadata
@@ -9998,7 +10003,7 @@ class $LocationMetadata {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - serviceconsumermanagement:v1 : LoggingDestination
 /// - servicemanagement:v1 : LoggingDestination
@@ -10040,7 +10045,7 @@ class $LoggingDestination {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dfareporting:v3.4 : LookbackConfiguration
 /// - dfareporting:v3.5 : LookbackConfiguration
@@ -10084,7 +10089,7 @@ class $LookbackConfiguration {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - chat:v1 : Media
 /// - cloudsearch:v1 : Media
@@ -10109,7 +10114,7 @@ class $Media {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - accesscontextmanager:v1 : MethodSelector
 /// - cloudasset:v1 : GoogleIdentityAccesscontextmanagerV1MethodSelector
@@ -10146,7 +10151,7 @@ class $MethodSelector {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dfareporting:v3.4 : Metric
 /// - dfareporting:v3.5 : Metric
@@ -10174,7 +10179,7 @@ class $Metric {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - serviceconsumermanagement:v1 : MetricDescriptorMetadata
 /// - servicemanagement:v1 : MetricDescriptorMetadata
@@ -10257,7 +10262,7 @@ class $MetricDescriptorMetadata00 {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - logging:v2 : MetricDescriptorMetadata
 /// - monitoring:v3 : MetricDescriptorMetadata
@@ -10338,7 +10343,7 @@ class $MetricDescriptorMetadata01 {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - serviceconsumermanagement:v1 : MetricRule
 /// - servicemanagement:v1 : MetricRule
@@ -10385,7 +10390,7 @@ class $MetricRule {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dfareporting:v3.4 : Metro
 /// - dfareporting:v3.5 : Metro
@@ -10459,7 +10464,7 @@ class $Metro {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - serviceconsumermanagement:v1 : Mixin
 /// - servicemanagement:v1 : Mixin
@@ -10489,7 +10494,7 @@ class $Mixin {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dfareporting:v3.4 : MobileApp
 /// - dfareporting:v3.5 : MobileApp
@@ -10546,7 +10551,7 @@ class $MobileApp {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dfareporting:v3.4 : MobileCarrier
 /// - dfareporting:v3.5 : MobileCarrier
@@ -10598,7 +10603,7 @@ class $MobileCarrier {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - androidpublisher:v3 : Money
 /// - apigee:v1 : GoogleTypeMoney
@@ -10653,7 +10658,7 @@ class $Money {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - logging:v2 : MonitoredResourceMetadata
 /// - monitoring:v3 : MonitoredResourceMetadata
@@ -10704,7 +10709,7 @@ class $MonitoredResourceMetadata {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - serviceconsumermanagement:v1 : MonitoringDestination
 /// - servicemanagement:v1 : MonitoringDestination
@@ -10744,7 +10749,7 @@ class $MonitoringDestination {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - cloudresourcemanager:v1 : MoveFolderMetadata
 /// - cloudresourcemanager:v2 : MoveFolderMetadata
@@ -10785,7 +10790,7 @@ class $MoveFolderMetadata {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - jobs:v3 : NamespacedDebugInput
 /// - jobs:v4 : NamespacedDebugInput
@@ -11011,7 +11016,7 @@ class $NamespacedDebugInput {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - videointelligence:v1 : GoogleCloudVideointelligenceV1_NormalizedBoundingBox
 /// - videointelligence:v1 : GoogleCloudVideointelligenceV1beta2_NormalizedBoundingBox
@@ -11062,7 +11067,7 @@ class $NormalizedBoundingBox {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - videointelligence:v1 : GoogleCloudVideointelligenceV1_NormalizedVertex
 /// - videointelligence:v1 : GoogleCloudVideointelligenceV1beta2_NormalizedVertex
@@ -11102,7 +11107,7 @@ class $NormalizedVertex00 {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - documentai:v1 : GoogleCloudDocumentaiV1NormalizedVertex
 /// - documentai:v1 : GoogleCloudDocumentaiV1beta1NormalizedVertex
@@ -11135,7 +11140,7 @@ class $NormalizedVertex01 {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - serviceconsumermanagement:v1 : OAuthRequirements
 /// - servicemanagement:v1 : OAuthRequirements
@@ -11165,7 +11170,7 @@ class $OAuthRequirements {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - vision:v1 : GoogleCloudVisionV1p1beta1ProductSearchResultsObjectAnnotation
 /// - vision:v1 : GoogleCloudVisionV1p2beta1ProductSearchResultsObjectAnnotation
@@ -11217,7 +11222,7 @@ class $ObjectAnnotation {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dfareporting:v3.4 : ObjectFilter
 /// - dfareporting:v3.5 : ObjectFilter
@@ -11269,7 +11274,7 @@ class $ObjectFilter {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dfareporting:v3.4 : OffsetPosition
 /// - dfareporting:v3.5 : OffsetPosition
@@ -11297,7 +11302,7 @@ class $OffsetPosition {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dfareporting:v3.4 : OmnitureSettings
 /// - dfareporting:v3.5 : OmnitureSettings
@@ -11337,7 +11342,7 @@ class $OmnitureSettings {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - managedidentities:v1 : GoogleCloudManagedidentitiesV1OpMetadata
 /// - managedidentities:v1 : GoogleCloudManagedidentitiesV1alpha1OpMetadata
@@ -11417,7 +11422,7 @@ class $OpMetadata {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dfareporting:v3.4 : OperatingSystem
 /// - dfareporting:v3.5 : OperatingSystem
@@ -11472,7 +11477,7 @@ class $OperatingSystem {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - cloudbuild:v1 : GoogleDevtoolsCloudbuildV2OperationMetadata
 /// - datamigration:v1 : GoogleCloudClouddmsV1OperationMetadata
@@ -11565,7 +11570,7 @@ class $OperationMetadata00 {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - vision:v1 : GoogleCloudVisionV1p1beta1OperationMetadata
 /// - vision:v1 : GoogleCloudVisionV1p2beta1OperationMetadata
@@ -11613,7 +11618,7 @@ class $OperationMetadata01 {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - cloudbuild:v1 : OperationMetadata
 /// - file:v1 : OperationMetadata
@@ -11703,7 +11708,7 @@ class $OperationMetadata02 {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - cloudbuild:v1 : CreateGitHubEnterpriseConfigOperationMetadata
 /// - cloudbuild:v1 : ProcessAppManifestCallbackOperationMetadata
@@ -11747,7 +11752,7 @@ class $OperationMetadata03 {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - documentai:v1 : GoogleCloudDocumentaiV1beta1OperationMetadata
 /// - documentai:v1 : GoogleCloudDocumentaiV1beta2OperationMetadata
@@ -11803,7 +11808,7 @@ class $OperationMetadata04 {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - memcache:v1 : GoogleCloudMemcacheV1OperationMetadata
 /// - memcache:v1 : OperationMetadata
@@ -11891,7 +11896,7 @@ class $OperationMetadata05 {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - serviceusage:v1 : GoogleApiServiceusageV1OperationMetadata
 /// - serviceusage:v1 : OperationMetadata
@@ -11918,7 +11923,7 @@ class $OperationMetadata06 {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - bigtableadmin:v2 : OperationProgress
 /// - spanner:v1 : OperationProgress
@@ -11961,7 +11966,7 @@ class $OperationProgress {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - serviceconsumermanagement:v1 : Option
 /// - servicemanagement:v1 : Option
@@ -12005,7 +12010,7 @@ class $Option {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - content:v2.1 : OrderAddress
 /// - content:v2.1 : TestOrderAddress
@@ -12097,7 +12102,7 @@ class $OrderAddress {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dfareporting:v3.4 : OrderContact
 /// - dfareporting:v3.5 : OrderContact
@@ -12162,7 +12167,7 @@ class $OrderContact {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowV2OriginalDetectIntentRequest
 /// - dialogflow:v2 : GoogleCloudDialogflowV2beta1OriginalDetectIntentRequest
@@ -12224,7 +12229,7 @@ class $OriginalDetectIntentRequest {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - accesscontextmanager:v1 : OsConstraint
 /// - cloudasset:v1 : GoogleIdentityAccesscontextmanagerV1OsConstraint
@@ -12283,7 +12288,7 @@ class $OsConstraint {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - cloudasset:v1 : OsInfo
 /// - osconfig:v1 : InventoryOsInfo
@@ -12369,7 +12374,7 @@ class $OsInfo {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - androidenterprise:v1 : PageInfo
 /// - androidpublisher:v3 : PageInfo
@@ -12412,7 +12417,7 @@ class $PageInfo {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3PageInfoFormInfoParameterInfo
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3beta1PageInfoFormInfoParameterInfo
@@ -12495,7 +12500,7 @@ class $PageInfoFormInfoParameterInfo {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - datastore:v1 : PartitionId
 /// - dlp:v2 : GooglePrivacyDlpV2PartitionId
@@ -12527,7 +12532,7 @@ class $PartitionId {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - datastore:v1 : PathElement
 /// - dlp:v2 : GooglePrivacyDlpV2PathElement
@@ -12570,7 +12575,7 @@ class $PathElement {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dfareporting:v3.4 : PathReportDimensionValue
 /// - dfareporting:v3.5 : PathReportDimensionValue
@@ -12639,7 +12644,7 @@ class $PathReportDimensionValue {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - servicecontrol:v1 : Peer
 /// - servicecontrol:v2 : Peer
@@ -12703,7 +12708,7 @@ class $Peer {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - cloudchannel:v1 : GoogleCloudChannelV1Period
 /// - cloudchannel:v1 : GoogleCloudChannelV1alpha1Period
@@ -12740,7 +12745,7 @@ class $Period {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - apigateway:v1 : ApigatewayTestIamPermissionsResponse
 /// - apigee:v1 : GoogleIamV1TestIamPermissionsResponse
@@ -12805,7 +12810,7 @@ class $PermissionsResponse {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dfareporting:v3.4 : PlacementStrategy
 /// - dfareporting:v3.5 : PlacementStrategy
@@ -12855,7 +12860,7 @@ class $PlacementStrategy {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dfareporting:v3.4 : PlatformType
 /// - dfareporting:v3.5 : PlatformType
@@ -12891,7 +12896,7 @@ class $PlatformType {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - vision:v1 : GoogleCloudVisionV1p1beta1Position
 /// - vision:v1 : GoogleCloudVisionV1p2beta1Position
@@ -12934,7 +12939,7 @@ class $Position {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - cloudchannel:v1 : GoogleTypePostalAddress
 /// - documentai:v1 : GoogleTypePostalAddress
@@ -13124,7 +13129,7 @@ class $PostalAddress {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dfareporting:v3.4 : PostalCode
 /// - dfareporting:v3.5 : PostalCode
@@ -13178,7 +13183,7 @@ class $PostalCode {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dfareporting:v3.4 : PricingSchedulePricingPeriod
 /// - dfareporting:v3.5 : PricingSchedulePricingPeriod
@@ -13239,7 +13244,7 @@ class $PricingSchedulePricingPeriod {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - datastore:v1 : GoogleDatastoreAdminV1Progress
 /// - datastore:v1 : GoogleDatastoreAdminV1beta1Progress
@@ -13275,7 +13280,7 @@ class $Progress {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - cloudresourcemanager:v1 : ProjectCreationStatus
 /// - cloudresourcemanager:v2 : ProjectCreationStatus
@@ -13318,7 +13323,7 @@ class $ProjectCreationStatus {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - clouddebugger:v2 : ProjectRepoId
 /// - ondemandscanning:v1 : ProjectRepoId
@@ -13352,7 +13357,7 @@ class $ProjectRepoId {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - vision:v1 : GoogleCloudVisionV1p1beta1Property
 /// - vision:v1 : GoogleCloudVisionV1p2beta1Property
@@ -13392,7 +13397,7 @@ class $Property {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - cloudchannel:v1 : GoogleCloudChannelV1ProvisionedService
 /// - cloudchannel:v1 : GoogleCloudChannelV1alpha1ProvisionedService
@@ -13440,7 +13445,7 @@ class $ProvisionedService {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - compute:v1 : TargetSslProxiesSetProxyHeaderRequest
 /// - compute:v1 : TargetTcpProxiesSetProxyHeaderRequest
@@ -13469,7 +13474,7 @@ class $ProxiesSetProxyHeaderRequest {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - cloudscheduler:v1 : PubsubMessage
 /// - pubsub:v1 : PubsubMessage
@@ -13554,7 +13559,7 @@ class $PubsubMessage {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - androidpublisher:v3 : ProductPurchasesAcknowledgeRequest
 /// - androidpublisher:v3 : SubscriptionPurchasesAcknowledgeRequest
@@ -13578,7 +13583,7 @@ class $PurchasesAcknowledgeRequest {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - retail:v2 : GoogleCloudRetailV2PurgeUserEventsResponse
 /// - retail:v2 : GoogleCloudRetailV2alphaPurgeUserEventsResponse
@@ -13603,7 +13608,7 @@ class $PurgeUserEventsResponse {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - vault:v1 : HeldGroupsQuery
 /// - vault:v1 : HeldMailQuery
@@ -13647,7 +13652,7 @@ class $Query {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - serviceconsumermanagement:v1 : QuotaLimit
 /// - servicemanagement:v1 : QuotaLimit
@@ -13795,7 +13800,7 @@ class $QuotaLimit {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - safebrowsing:v4 : GoogleSecuritySafebrowsingV4RawIndices
 /// - webrisk:v1 : GoogleCloudWebriskV1RawIndices
@@ -13821,7 +13826,7 @@ class $RawIndices {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dfareporting:v3.4 : Recipient
 /// - dfareporting:v3.5 : Recipient
@@ -13861,7 +13866,7 @@ class $Recipient {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dfareporting:v3.4 : Region
 /// - dfareporting:v3.5 : Region
@@ -13923,7 +13928,7 @@ class $Region {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - retail:v2 : GoogleCloudRetailV2RejoinUserEventsResponse
 /// - retail:v2 : GoogleCloudRetailV2alphaRejoinUserEventsResponse
@@ -13949,7 +13954,7 @@ class $RejoinUserEventsResponse {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - cloudasset:v1 : GoogleCloudAssetV1p7beta1RelatedAsset
 /// - cloudasset:v1 : RelatedAsset
@@ -14006,7 +14011,7 @@ class $RelatedAsset {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - cloudasset:v1 : GoogleCloudAssetV1p7beta1RelationshipAttributes
 /// - cloudasset:v1 : RelationshipAttributes
@@ -14060,7 +14065,7 @@ class $RelationshipAttributes {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dfareporting:v3.4 : RemarketingListShare
 /// - dfareporting:v3.5 : RemarketingListShare
@@ -14115,7 +14120,7 @@ class $RemarketingListShare {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - docs:v1 : ReplaceAllTextResponse
 /// - slides:v1 : ReplaceAllTextResponse
@@ -14140,7 +14145,7 @@ class $ReplaceAllTextResponse {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - policysimulator:v1 : GoogleCloudPolicysimulatorV1ReplayOperationMetadata
 /// - policysimulator:v1 : GoogleCloudPolicysimulatorV1beta1ReplayOperationMetadata
@@ -14164,7 +14169,7 @@ class $ReplayOperationMetadata {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - compute:v1 : InstanceGroupManagersDeletePerInstanceConfigsReq
 /// - compute:v1 : RegionInstanceGroupManagerDeleteInstanceConfigReq
@@ -14191,7 +14196,7 @@ class $Req {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - cloudidentity:v1 : GoogleAppsCloudidentityDevicesV1ApproveDeviceUserRequest
 /// - cloudidentity:v1 : GoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest
@@ -14227,7 +14232,7 @@ class $Request00 {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - cloudchannel:v1 : GoogleCloudChannelV1ActivateEntitlementRequest
 /// - cloudchannel:v1 : GoogleCloudChannelV1CancelEntitlementRequest
@@ -14263,7 +14268,7 @@ class $Request01 {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - privateca:v1 : DisableCertificateAuthorityRequest
 /// - privateca:v1 : EnableCertificateAuthorityRequest
@@ -14302,7 +14307,7 @@ class $Request02 {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - recommender:v1 : GoogleCloudRecommenderV1MarkRecommendationClaimedRequest
 /// - recommender:v1 : GoogleCloudRecommenderV1MarkRecommendationFailedRequest
@@ -14347,7 +14352,7 @@ class $Request03 {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - cloudresourcemanager:v1 : ListAvailableOrgPolicyConstraintsRequest
 /// - cloudresourcemanager:v1 : ListOrgPoliciesRequest
@@ -14385,7 +14390,7 @@ class $Request04 {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - compute:v1 : InstanceGroupManagersRecreateInstancesRequest
 /// - compute:v1 : RegionInstanceGroupManagersRecreateRequest
@@ -14414,7 +14419,7 @@ class $Request05 {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - content:v2.1 : RequestReviewFreeListingsRequest
 /// - content:v2.1 : RequestReviewShoppingAdsRequest
@@ -14440,7 +14445,7 @@ class $Request06 {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dialogflow:v3 : GoogleCloudDialogflowCxV3ValidateAgentRequest
 /// - dialogflow:v3 : GoogleCloudDialogflowCxV3ValidateFlowRequest
@@ -14464,7 +14469,7 @@ class $Request07 {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - cloudasset:v1 : GoogleCloudAssetV1p7beta1Resource
 /// - cloudasset:v1 : Resource
@@ -14564,7 +14569,7 @@ class $Resource00 {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - servicecontrol:v1 : Resource
 /// - servicecontrol:v2 : Resource
@@ -14738,7 +14743,7 @@ class $Resource01 {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - servicecontrol:v1 : ResourceLocation
 /// - servicecontrol:v2 : ResourceLocation
@@ -14782,7 +14787,7 @@ class $ResourceLocation {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - sheets:v4 : BatchClearValuesByDataFilterResponse
 /// - sheets:v4 : BatchClearValuesResponse
@@ -14820,7 +14825,7 @@ class $Response {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3ResponseMessageConversationSuccess
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3beta1ResponseMessageConversationSuccess
@@ -14851,7 +14856,7 @@ class $ResponseMessageConversationSuccess {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3ResponseMessageLiveAgentHandoff
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3beta1ResponseMessageLiveAgentHandoff
@@ -14882,7 +14887,7 @@ class $ResponseMessageLiveAgentHandoff {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3ResponseMessageMixedAudioSegment
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3beta1ResponseMessageMixedAudioSegment
@@ -14935,7 +14940,7 @@ class $ResponseMessageMixedAudioSegment {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3ResponseMessageOutputAudioText
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3beta1ResponseMessageOutputAudioText
@@ -14980,7 +14985,7 @@ class $ResponseMessageOutputAudioText {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3ResponseMessagePlayAudio
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3beta1ResponseMessagePlayAudio
@@ -15024,7 +15029,7 @@ class $ResponseMessagePlayAudio {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3ResponseMessageText
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3beta1ResponseMessageText
@@ -15067,7 +15072,7 @@ class $ResponseMessageText {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - jobs:v3 : ResponseMetadata
 /// - jobs:v4 : ResponseMetadata
@@ -15093,7 +15098,7 @@ class $ResponseMetadata {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - documentai:v1 : GoogleCloudDocumentaiV1ReviewDocumentResponse
 /// - documentai:v1 : GoogleCloudDocumentaiV1beta3ReviewDocumentResponse
@@ -15117,7 +15122,7 @@ class $ReviewDocumentResponse {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - docs:v1 : RgbColor
 /// - slides:v1 : RgbColor
@@ -15157,7 +15162,7 @@ class $RgbColor {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dfareporting:v3.4 : Rule
 /// - dfareporting:v3.5 : Rule
@@ -15204,7 +15209,7 @@ class $Rule {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - securitycenter:v1 : GoogleCloudSecuritycenterV1RunAssetDiscoveryResponse
 /// - securitycenter:v1 : GoogleCloudSecuritycenterV1beta1RunAssetDiscoveryResponse
@@ -15243,7 +15248,7 @@ class $RunAssetDiscoveryResponse {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - vision:v1 : GoogleCloudVisionV1p1beta1SafeSearchAnnotation
 /// - vision:v1 : GoogleCloudVisionV1p2beta1SafeSearchAnnotation
@@ -15343,7 +15348,7 @@ class $SafeSearchAnnotation {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - secretmanager:v1 : DestroySecretVersionRequest
 /// - secretmanager:v1 : DisableSecretVersionRequest
@@ -15371,7 +15376,7 @@ class $SecretVersionRequest {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - securitycenter:v1 : GoogleCloudSecuritycenterV1p1beta1SecurityMarks
 /// - securitycenter:v1 : SecurityMarks
@@ -15434,7 +15439,7 @@ class $SecurityMarks {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - serviceusage:v1 : GoogleApiServiceusageV1beta1ServiceIdentity
 /// - serviceusage:v1 : ServiceIdentity
@@ -15468,7 +15473,7 @@ class $ServiceIdentity {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3SessionInfo
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3beta1SessionInfo
@@ -15517,7 +15522,7 @@ class $SessionInfo {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - compute:v1 : RegionSetLabelsRequest
 /// - compute:v1 : ZoneSetLabelsRequest
@@ -15567,7 +15572,7 @@ class $SetLabelsRequest {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - tagmanager:v1 : SetupTag
 /// - tagmanager:v2 : SetupTag
@@ -15603,7 +15608,7 @@ class $SetupTag {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3WebhookRequestSentimentAnalysisResult
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3beta1WebhookRequestSentimentAnalysisResult
@@ -15645,7 +15650,7 @@ class $Shared00 {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - documentai:v1 : GoogleCloudDocumentaiV1beta1GcsDestination
 /// - documentai:v1 : GoogleCloudDocumentaiV1beta1GcsSource
@@ -15668,7 +15673,7 @@ class $Shared01 {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - osconfig:v1 : OSPolicyResourcePackageResourceAPT
 /// - osconfig:v1 : OSPolicyResourcePackageResourceGooGet
@@ -15694,7 +15699,7 @@ class $Shared02 {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - appengine:v1 : CreateVersionMetadataV1
 /// - appengine:v1 : CreateVersionMetadataV1Alpha
@@ -15721,7 +15726,7 @@ class $Shared03 {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - chat:v1 : GoogleAppsCardV1SuggestionItem
 /// - chat:v1 : TextParagraph
@@ -15742,7 +15747,7 @@ class $Shared04 {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - compute:v1 : InstancesSetServiceAccountRequest
 /// - compute:v1 : ServiceAccount
@@ -15775,7 +15780,7 @@ class $Shared05 {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - content:v2.1 : Price
 /// - content:v2.1 : PriceAmount
@@ -15806,7 +15811,7 @@ class $Shared06 {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - ondemandscanning:v1 : AnalyzePackagesMetadata
 /// - ondemandscanning:v1 : AnalyzePackagesMetadataV1
@@ -15838,7 +15843,7 @@ class $Shared07 {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - ondemandscanning:v1 : AnalyzePackagesResponse
 /// - ondemandscanning:v1 : AnalyzePackagesResponseV1
@@ -15860,7 +15865,7 @@ class $Shared08 {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - ondemandscanning:v1 : BuilderConfig
 /// - youtube:v3 : AbuseType
@@ -15881,7 +15886,7 @@ class $Shared09 {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - osconfig:v1 : OSPolicyAssignmentInstanceFilterInventory
 /// - osconfig:v1 : OSPolicyInventoryFilter
@@ -15920,7 +15925,7 @@ class $Shared10 {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - youtube:v3 : CommentSnippetAuthorChannelId
 /// - youtube:v3 : LanguageTag
@@ -15942,7 +15947,7 @@ class $Shared11 {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - notebooks:v1 : RuntimeShieldedInstanceConfig
 /// - notebooks:v1 : ShieldedInstanceConfig
@@ -15995,7 +16000,7 @@ class $ShieldedInstanceConfig {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - binaryauthorization:v1 : Signature
 /// - ondemandscanning:v1 : Signature
@@ -16050,7 +16055,7 @@ class $Signature {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dfareporting:v3.4 : SiteContact
 /// - dfareporting:v3.5 : SiteContact
@@ -16132,7 +16137,7 @@ class $SiteContact {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dfareporting:v3.4 : SiteTranscodeSetting
 /// - dfareporting:v3.5 : SiteTranscodeSetting
@@ -16169,7 +16174,7 @@ class $SiteTranscodeSetting {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dfareporting:v3.4 : Size
 /// - dfareporting:v3.5 : Size
@@ -16226,7 +16231,7 @@ class $Size {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dfareporting:v3.4 : SortedDimension
 /// - dfareporting:v3.5 : SortedDimension
@@ -16265,7 +16270,7 @@ class $SortedDimension {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - serviceconsumermanagement:v1 : SourceContext
 /// - servicemanagement:v1 : SourceContext
@@ -16294,7 +16299,7 @@ class $SourceContext {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - serviceconsumermanagement:v1 : SourceInfo
 /// - servicemanagement:v1 : SourceInfo
@@ -16325,7 +16330,7 @@ class $SourceInfo {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - servicecontrol:v1 : SpanContext
 /// - servicecontrol:v2 : SpanContext
@@ -16356,7 +16361,7 @@ class $SpanContext {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - drive:v2 : StartPageToken
 /// - drive:v3 : StartPageToken
@@ -16388,7 +16393,7 @@ class $StartPageToken {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - accesscontextmanager:v1 : Status
 /// - androiddeviceprovisioning:v1 : Status
@@ -16522,7 +16527,7 @@ class $Status {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dfareporting:v3.4 : Subaccount
 /// - dfareporting:v3.5 : Subaccount
@@ -16584,7 +16589,7 @@ class $Subaccount {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - serviceconsumermanagement:v1 : SystemParameter
 /// - servicemanagement:v1 : SystemParameter
@@ -16630,7 +16635,7 @@ class $SystemParameter {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dfareporting:v3.4 : TagData
 /// - dfareporting:v3.5 : TagData
@@ -16708,7 +16713,7 @@ class $TagData {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dfareporting:v3.4 : TagSetting
 /// - dfareporting:v3.5 : TagSetting
@@ -16773,7 +16778,7 @@ class $TagSetting {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dfareporting:v3.4 : TagSettings
 /// - dfareporting:v3.5 : TagSettings
@@ -16805,7 +16810,7 @@ class $TagSettings {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dfareporting:v3.4 : TargetWindow
 /// - dfareporting:v3.5 : TargetWindow
@@ -16843,7 +16848,7 @@ class $TargetWindow {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - tagmanager:v1 : TeardownTag
 /// - tagmanager:v2 : TeardownTag
@@ -16879,7 +16884,7 @@ class $TeardownTag {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - serviceconsumermanagement:v1 : DeleteTenantProjectRequest
 /// - serviceconsumermanagement:v1 : RemoveTenantProjectRequest
@@ -16904,7 +16909,7 @@ class $TenantProjectRequest {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3TestConfig
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3beta1TestConfig
@@ -16942,7 +16947,7 @@ class $TestConfig {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - apigateway:v1 : ApigatewayTestIamPermissionsRequest
 /// - apigee:v1 : GoogleIamV1TestIamPermissionsRequest
@@ -17007,7 +17012,7 @@ class $TestIamPermissionsRequest {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - compute:v1 : TestPermissionsRequest
 /// - deploymentmanager:v2 : TestPermissionsRequest
@@ -17035,7 +17040,7 @@ class $TestPermissionsRequest {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3TestRunDifference
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3beta1TestRunDifference
@@ -17073,7 +17078,7 @@ class $TestRunDifference {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3TextInput
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3beta1TextInput
@@ -17101,7 +17106,7 @@ class $TextInput {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dfareporting:v3.4 : ThirdPartyAuthenticationToken
 /// - dfareporting:v3.5 : ThirdPartyAuthenticationToken
@@ -17132,7 +17137,7 @@ class $ThirdPartyAuthenticationToken {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - servicecontrol:v1 : ThirdPartyPrincipal
 /// - servicecontrol:v2 : ThirdPartyPrincipal
@@ -17159,7 +17164,7 @@ class $ThirdPartyPrincipal {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dfareporting:v3.4 : ThirdPartyTrackingUrl
 /// - dfareporting:v3.5 : ThirdPartyTrackingUrl
@@ -17209,7 +17214,7 @@ class $ThirdPartyTrackingUrl {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - classroom:v1 : TimeOfDay
 /// - dlp:v2 : GoogleTypeTimeOfDay
@@ -17274,7 +17279,7 @@ class $TimeOfDay {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - adsense:v2 : TimeZone
 /// - content:v2.1 : TimeZone
@@ -17309,7 +17314,7 @@ class $TimeZone {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - androidenterprise:v1 : TokenPagination
 /// - androidpublisher:v3 : TokenPagination
@@ -17341,7 +17346,7 @@ class $TokenPagination {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - apigee:v1 : GoogleCloudApigeeV1RuntimeTraceSamplingConfig
 /// - apigee:v1 : GoogleCloudApigeeV1TraceSamplingConfig
@@ -17385,7 +17390,7 @@ class $TraceSamplingConfig {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dfareporting:v3.4 : TranscodeSetting
 /// - dfareporting:v3.5 : TranscodeSetting
@@ -17422,7 +17427,7 @@ class $TranscodeSetting {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - cloudchannel:v1 : GoogleCloudChannelV1TrialSettings
 /// - cloudchannel:v1 : GoogleCloudChannelV1alpha1TrialSettings
@@ -17459,7 +17464,7 @@ class $TrialSettings {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - cloudtrace:v2 : TruncatableString
 /// - servicecontrol:v1 : TruncatableString
@@ -17499,7 +17504,7 @@ class $TruncatableString {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - contactcenterinsights:v1 : GoogleCloudContactcenterinsightsV1UndeployIssueModelRequest
 /// - contactcenterinsights:v1 : GoogleCloudContactcenterinsightsV1alpha1UndeployIssueModelRequest
@@ -17523,7 +17528,7 @@ class $UndeployIssueModelRequest {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dfareporting:v3.4 : UniversalAdId
 /// - dfareporting:v3.5 : UniversalAdId
@@ -17562,7 +17567,7 @@ class $UniversalAdId {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - serviceconsumermanagement:v1 : UsageRule
 /// - servicemanagement:v1 : UsageRule
@@ -17614,7 +17619,7 @@ class $UsageRule {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dfareporting:v3.4 : UserDefinedVariableConfiguration
 /// - dfareporting:v3.5 : UserDefinedVariableConfiguration
@@ -17765,7 +17770,7 @@ class $UserDefinedVariableConfiguration {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - retail:v2 : GoogleCloudRetailV2UserEventImportSummary
 /// - retail:v2 : GoogleCloudRetailV2alphaUserEventImportSummary
@@ -17800,7 +17805,7 @@ class $UserEventImportSummary {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dfareporting:v3.4 : UserProfile
 /// - dfareporting:v3.5 : UserProfile
@@ -17878,7 +17883,7 @@ class $UserProfile {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dfareporting:v3.4 : UserRolePermission
 /// - dfareporting:v3.5 : UserRolePermission
@@ -17937,7 +17942,7 @@ class $UserRolePermission {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dfareporting:v3.4 : UserRolePermissionGroup
 /// - dfareporting:v3.5 : UserRolePermissionGroup
@@ -17973,7 +17978,7 @@ class $UserRolePermissionGroup {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - policysimulator:v1 : GoogleCloudPolicysimulatorV1AccessTuple
 /// - policytroubleshooter:v1 : GoogleCloudPolicytroubleshooterV1AccessTuple
@@ -18035,7 +18040,7 @@ class $V1AccessTuple {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - cloudchannel:v1 : GoogleCloudChannelV1Value
 /// - cloudchannel:v1 : GoogleCloudChannelV1alpha1Value
@@ -18094,7 +18099,7 @@ class $Value {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - cloudasset:v1 : VersionedPackage
 /// - osconfig:v1 : InventoryVersionedPackage
@@ -18134,7 +18139,7 @@ class $VersionedPackage {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - vision:v1 : GoogleCloudVisionV1p1beta1Vertex
 /// - vision:v1 : GoogleCloudVisionV1p2beta1Vertex
@@ -18165,7 +18170,7 @@ class $Vertex00 {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - documentai:v1 : GoogleCloudDocumentaiV1Vertex
 /// - documentai:v1 : GoogleCloudDocumentaiV1beta1Vertex
@@ -18194,7 +18199,7 @@ class $Vertex01 {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dfareporting:v3.4 : VideoOffset
 /// - dfareporting:v3.5 : VideoOffset
@@ -18232,7 +18237,7 @@ class $VideoOffset {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - videointelligence:v1 : GoogleCloudVideointelligenceV1_VideoSegment
 /// - videointelligence:v1 : GoogleCloudVideointelligenceV1beta2_VideoSegment
@@ -18269,7 +18274,7 @@ class $VideoSegment {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - serviceconsumermanagement:v1 : V1AddVisibilityLabelsResponse
 /// - serviceconsumermanagement:v1 : V1RemoveVisibilityLabelsResponse
@@ -18295,7 +18300,7 @@ class $VisibilityLabelsResponse {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - accesscontextmanager:v1 : VpcAccessibleServices
 /// - cloudasset:v1 : GoogleIdentityAccesscontextmanagerV1VpcAccessibleServices
@@ -18335,7 +18340,7 @@ class $VpcAccessibleServices {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - servicenetworking:v1 : DisableVpcServiceControlsRequest
 /// - servicenetworking:v1 : EnableVpcServiceControlsRequest
@@ -18364,7 +18369,7 @@ class $VpcServiceControlsRequest {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - androidenterprise:v1 : WebAppIcon
 /// - androidmanagement:v1 : WebAppIcon
@@ -18392,7 +18397,7 @@ class $WebAppIcon {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - vision:v1 : GoogleCloudVisionV1p1beta1WebDetectionWebEntity
 /// - vision:v1 : GoogleCloudVisionV1p2beta1WebDetectionWebEntity
@@ -18437,7 +18442,7 @@ class $WebEntity {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - vision:v1 : GoogleCloudVisionV1p1beta1WebDetectionWebImage
 /// - vision:v1 : GoogleCloudVisionV1p2beta1WebDetectionWebImage
@@ -18470,7 +18475,7 @@ class $WebImage {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - vision:v1 : GoogleCloudVisionV1p1beta1WebDetectionWebLabel
 /// - vision:v1 : GoogleCloudVisionV1p2beta1WebDetectionWebLabel
@@ -18507,7 +18512,7 @@ class $WebLabel {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3WebhookRequestFulfillmentInfo
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3beta1WebhookRequestFulfillmentInfo
@@ -18533,7 +18538,7 @@ class $WebhookRequestFulfillmentInfo {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3WebhookRequestIntentInfoIntentParameterValue
 /// - dialogflow:v2 : GoogleCloudDialogflowCxV3beta1WebhookRequestIntentInfoIntentParameterValue
@@ -18574,7 +18579,7 @@ class $WebhookRequestIntentInfoIntentParameterValue {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - cloudasset:v1 : WindowsQuickFixEngineeringPackage
 /// - osconfig:v1 : InventoryWindowsQuickFixEngineeringPackage
@@ -18624,7 +18629,7 @@ class $WindowsQuickFixEngineeringPackage {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - cloudasset:v1 : WindowsUpdateCategory
 /// - osconfig:v1 : InventoryWindowsUpdatePackageWindowsUpdateCategory
@@ -18652,7 +18657,7 @@ class $WindowsUpdateCategory {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - videointelligence:v1 : GoogleCloudVideointelligenceV1_WordInfo
 /// - videointelligence:v1 : GoogleCloudVideointelligenceV1beta2_WordInfo
@@ -18733,7 +18738,7 @@ class $WordInfo {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - assuredworkloads:v1 : GoogleCloudAssuredworkloadsV1WorkloadKMSSettings
 /// - assuredworkloads:v1 : GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings
@@ -18776,7 +18781,7 @@ class $WorkloadKMSSettings {
       };
 }
 
-/// Shared implementation type for:
+/// Used by:
 ///
 /// - cloudasset:v1 : ZypperPatch
 /// - osconfig:v1 : InventoryZypperPatch
