@@ -1,8 +1,23 @@
-## 5.0.2-dev
+## 6.0.0
 
-- Fix an issue with the generated Firestore API. [#303](https://github.com/google/googleapis.dart/issues/303)
-- Reuse empty types using `typedef`.
+- Introduce a new `$shared` library that contains identical classes across
+  libraries. Reduces the size of the generated package and (in theory) could
+  allow better code sharing.
+- Drop explicit `toJson` in many cases. We assume that types defined in this
+  package are passed to Dart's JSON serialization logic.
+- Correctly encode `DateTime` as UTC.
+  [#79](https://github.com/google/googleapis.dart/issues/79)
+- Fix an issue with the generated Firestore API.
+  [#303](https://github.com/google/googleapis.dart/issues/303)
+- Correctly handle the case where "any" type can be `null`.
+  [#306](https://github.com/google/googleapis.dart/issues/306)
 - Require Dart 2.13 or greater.
+
+### API changes
+
+- `authorizedbuyersmarketplace` - new!
+- `connectors` - new!
+- `networkconnectivity` - new!
 
 ## 5.0.1
 
