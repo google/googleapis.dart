@@ -1544,6 +1544,15 @@ class AddSubnetworkRequest {
   /// Optional.
   core.String? privateIpv6GoogleAccess;
 
+  /// Defines the purpose field of the subnet, e.g. 'PRIVATE_SERVICE_CONNECT'.
+  ///
+  /// For information about the purposes that can be set using this field, see
+  /// [subnetwork](https://cloud.google.com/compute/docs/reference/rest/v1/subnetworks)
+  /// in the Compute API documentation.
+  ///
+  /// Optional.
+  core.String? purpose;
+
   /// The name of a \[region\](/compute/docs/regions-zones) for the subnet, such
   /// `europe-west1`.
   ///
@@ -1595,6 +1604,7 @@ class AddSubnetworkRequest {
     this.ipPrefixLength,
     this.outsideAllocationPublicIpRange,
     this.privateIpv6GoogleAccess,
+    this.purpose,
     this.region,
     this.requestedAddress,
     this.requestedRanges,
@@ -1623,6 +1633,9 @@ class AddSubnetworkRequest {
                   : null,
           privateIpv6GoogleAccess: _json.containsKey('privateIpv6GoogleAccess')
               ? _json['privateIpv6GoogleAccess'] as core.String
+              : null,
+          purpose: _json.containsKey('purpose')
+              ? _json['purpose'] as core.String
               : null,
           region: _json.containsKey('region')
               ? _json['region'] as core.String
@@ -1660,6 +1673,7 @@ class AddSubnetworkRequest {
           'outsideAllocationPublicIpRange': outsideAllocationPublicIpRange!,
         if (privateIpv6GoogleAccess != null)
           'privateIpv6GoogleAccess': privateIpv6GoogleAccess!,
+        if (purpose != null) 'purpose': purpose!,
         if (region != null) 'region': region!,
         if (requestedAddress != null) 'requestedAddress': requestedAddress!,
         if (requestedRanges != null) 'requestedRanges': requestedRanges!,

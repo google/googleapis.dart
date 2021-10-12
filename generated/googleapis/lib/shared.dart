@@ -616,6 +616,7 @@ class $AudienceSegment {
 /// - cloudresourcemanager:v1 : AuditLogConfig
 /// - cloudresourcemanager:v2 : AuditLogConfig
 /// - cloudresourcemanager:v3 : AuditLogConfig
+/// - connectors:v1 : AuditLogConfig
 /// - datafusion:v1 : AuditLogConfig
 /// - datamigration:v1 : AuditLogConfig
 /// - deploymentmanager:v2 : AuditLogConfig
@@ -4127,6 +4128,16 @@ class $EgressFrom {
 /// - artifactregistry:v1 : CancelOperationRequest
 /// - artifactregistry:v1 : Empty
 /// - assuredworkloads:v1 : GoogleProtobufEmpty
+/// - authorizedbuyersmarketplace:v1 : ActivateClientRequest
+/// - authorizedbuyersmarketplace:v1 : ActivateClientUserRequest
+/// - authorizedbuyersmarketplace:v1 : CancelNegotiationRequest
+/// - authorizedbuyersmarketplace:v1 : DeactivateClientRequest
+/// - authorizedbuyersmarketplace:v1 : DeactivateClientUserRequest
+/// - authorizedbuyersmarketplace:v1 : Empty
+/// - authorizedbuyersmarketplace:v1 : ResumeFinalizedDealRequest
+/// - authorizedbuyersmarketplace:v1 : SetReadyToServeRequest
+/// - authorizedbuyersmarketplace:v1 : SubscribeAuctionPackageRequest
+/// - authorizedbuyersmarketplace:v1 : UnsubscribeAuctionPackageRequest
 /// - baremetalsolution:v1 : ResetInstanceRequest
 /// - baremetalsolution:v1 : ResetInstanceResponse
 /// - bigquerydatatransfer:v1 : CheckValidCredsRequest
@@ -4248,6 +4259,7 @@ class $EgressFrom {
 /// - cloudscheduler:v1 : PauseJobRequest
 /// - cloudscheduler:v1 : ResumeJobRequest
 /// - cloudscheduler:v1 : RunJobRequest
+/// - cloudsearch:v1 : InitializeCustomerRequest
 /// - cloudsearch:v1 : QuerySuggestion
 /// - cloudshell:v1 : AddPublicKeyMetadata
 /// - cloudshell:v1 : AuthorizeEnvironmentMetadata
@@ -4264,6 +4276,8 @@ class $EgressFrom {
 /// - cloudtasks:v2 : ResumeQueueRequest
 /// - cloudtrace:v2 : Empty
 /// - composer:v1 : Empty
+/// - connectors:v1 : CancelOperationRequest
+/// - connectors:v1 : Empty
 /// - contactcenterinsights:v1 : GoogleCloudContactcenterinsightsV1DeployIssueModelResponse
 /// - contactcenterinsights:v1 : GoogleCloudContactcenterinsightsV1ExportInsightsDataResponse
 /// - contactcenterinsights:v1 : GoogleCloudContactcenterinsightsV1HoldData
@@ -5589,6 +5603,7 @@ class $ExportTestCasesResponse {
 /// - cloudresourcemanager:v3 : Expr
 /// - cloudtasks:v2 : Expr
 /// - compute:v1 : Expr
+/// - connectors:v1 : Expr
 /// - datacatalog:v1 : Expr
 /// - datafusion:v1 : Expr
 /// - datamigration:v1 : Expr
@@ -9787,6 +9802,7 @@ class $ListTargetingExpression {
 /// - cloudkms:v1 : Location
 /// - cloudscheduler:v1 : Location
 /// - cloudtasks:v2 : Location
+/// - connectors:v1 : Location
 /// - datafusion:v1 : Location
 /// - datamigration:v1 : Location
 /// - dialogflow:v2 : GoogleCloudLocationLocation
@@ -10607,6 +10623,7 @@ class $MobileCarrier {
 ///
 /// - androidpublisher:v3 : Money
 /// - apigee:v1 : GoogleTypeMoney
+/// - authorizedbuyersmarketplace:v1 : Money
 /// - billingbudgets:v1 : GoogleTypeMoney
 /// - cloudbilling:v1 : Money
 /// - cloudchannel:v1 : GoogleTypeMoney
@@ -11480,6 +11497,7 @@ class $OperatingSystem {
 /// Used by:
 ///
 /// - cloudbuild:v1 : GoogleDevtoolsCloudbuildV2OperationMetadata
+/// - connectors:v1 : OperationMetadata
 /// - datamigration:v1 : GoogleCloudClouddmsV1OperationMetadata
 /// - eventarc:v1 : OperationMetadata
 /// - networksecurity:v1 : OperationMetadata
@@ -12761,6 +12779,7 @@ class $Period {
 /// - cloudresourcemanager:v3 : TestIamPermissionsResponse
 /// - cloudtasks:v2 : TestIamPermissionsResponse
 /// - compute:v1 : TestPermissionsResponse
+/// - connectors:v1 : TestIamPermissionsResponse
 /// - datacatalog:v1 : TestIamPermissionsResponse
 /// - datafusion:v1 : TestIamPermissionsResponse
 /// - datamigration:v1 : TestIamPermissionsResponse
@@ -16423,6 +16442,7 @@ class $StartPageToken {
 /// - cloudtasks:v2 : Status
 /// - cloudtrace:v2 : Status
 /// - composer:v1 : Status
+/// - connectors:v1 : Status
 /// - contactcenterinsights:v1 : GoogleRpcStatus
 /// - container:v1 : Status
 /// - datafusion:v1 : Status
@@ -16962,6 +16982,7 @@ class $TestConfig {
 /// - cloudresourcemanager:v2 : TestIamPermissionsRequest
 /// - cloudresourcemanager:v3 : TestIamPermissionsRequest
 /// - cloudtasks:v2 : TestIamPermissionsRequest
+/// - connectors:v1 : TestIamPermissionsRequest
 /// - datacatalog:v1 : TestIamPermissionsRequest
 /// - datafusion:v1 : TestIamPermissionsRequest
 /// - datamigration:v1 : TestIamPermissionsRequest
@@ -17216,6 +17237,7 @@ class $ThirdPartyTrackingUrl {
 
 /// Used by:
 ///
+/// - authorizedbuyersmarketplace:v1 : TimeOfDay
 /// - classroom:v1 : TimeOfDay
 /// - dlp:v2 : GoogleTypeTimeOfDay
 /// - file:v1 : TimeOfDay
@@ -17282,6 +17304,7 @@ class $TimeOfDay {
 /// Used by:
 ///
 /// - adsense:v2 : TimeZone
+/// - authorizedbuyersmarketplace:v1 : TimeZone
 /// - content:v2.1 : TimeZone
 /// - documentai:v1 : GoogleTypeTimeZone
 /// - localservices:v1 : GoogleTypeTimeZone

@@ -1049,6 +1049,55 @@ class ProjectsPatchDeploymentsResource {
     return ListPatchDeploymentsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
+
+  /// Update an OS Config patch deployment.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Unique name for the patch deployment resource in a project. The
+  /// patch deployment name is in the form:
+  /// `projects/{project_id}/patchDeployments/{patch_deployment_id}`. This field
+  /// is ignored when you create a new patch deployment.
+  /// Value must have pattern `^projects/\[^/\]+/patchDeployments/\[^/\]+$`.
+  ///
+  /// [updateMask] - Optional. Field mask that controls which fields of the
+  /// patch deployment should be updated.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [PatchDeployment].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<PatchDeployment> patch(
+    PatchDeployment request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return PatchDeployment.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class ProjectsPatchJobsResource {

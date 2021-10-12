@@ -794,6 +794,11 @@ class ColumnDescription {
   /// These types directly map to the column types supported on Tables website.
   core.String? dataType;
 
+  /// Additional details about a date column.
+  ///
+  /// Optional.
+  DateDetails? dateDetails;
+
   /// Internal id for a column.
   core.String? id;
 
@@ -838,6 +843,7 @@ class ColumnDescription {
 
   ColumnDescription({
     this.dataType,
+    this.dateDetails,
     this.id,
     this.labels,
     this.lookupDetails,
@@ -851,6 +857,10 @@ class ColumnDescription {
       : this(
           dataType: _json.containsKey('dataType')
               ? _json['dataType'] as core.String
+              : null,
+          dateDetails: _json.containsKey('dateDetails')
+              ? DateDetails.fromJson(
+                  _json['dateDetails'] as core.Map<core.String, core.dynamic>)
               : null,
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
           labels: _json.containsKey('labels')
@@ -879,6 +889,7 @@ class ColumnDescription {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (dataType != null) 'dataType': dataType!,
+        if (dateDetails != null) 'dateDetails': dateDetails!,
         if (id != null) 'id': id!,
         if (labels != null) 'labels': labels!,
         if (lookupDetails != null) 'lookupDetails': lookupDetails!,
@@ -938,6 +949,27 @@ class CreateRowRequest {
         if (parent != null) 'parent': parent!,
         if (row != null) 'row': row!,
         if (view != null) 'view': view!,
+      };
+}
+
+/// Details about a date column.
+class DateDetails {
+  /// Whether the date column includes time.
+  core.bool? hasTime;
+
+  DateDetails({
+    this.hasTime,
+  });
+
+  DateDetails.fromJson(core.Map _json)
+      : this(
+          hasTime: _json.containsKey('hasTime')
+              ? _json['hasTime'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (hasTime != null) 'hasTime': hasTime!,
       };
 }
 
@@ -1211,7 +1243,7 @@ class SavedView {
 
 /// A single table.
 ///
-/// NextId: 7
+/// NextId: 8
 class Table {
   /// List of columns in this table.
   ///
@@ -1232,6 +1264,11 @@ class Table {
   /// Saved views for this table.
   core.List<SavedView>? savedViews;
 
+  /// The time zone of the table.
+  ///
+  /// IANA Time Zone Database time zone, e.g. "America/New_York".
+  core.String? timeZone;
+
   /// Time when the table was last updated excluding updates to individual rows
   core.String? updateTime;
 
@@ -1241,6 +1278,7 @@ class Table {
     this.displayName,
     this.name,
     this.savedViews,
+    this.timeZone,
     this.updateTime,
   });
 
@@ -1265,6 +1303,9 @@ class Table {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          timeZone: _json.containsKey('timeZone')
+              ? _json['timeZone'] as core.String
+              : null,
           updateTime: _json.containsKey('updateTime')
               ? _json['updateTime'] as core.String
               : null,
@@ -1276,6 +1317,7 @@ class Table {
         if (displayName != null) 'displayName': displayName!,
         if (name != null) 'name': name!,
         if (savedViews != null) 'savedViews': savedViews!,
+        if (timeZone != null) 'timeZone': timeZone!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
 }

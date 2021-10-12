@@ -494,8 +494,7 @@ class PhotosResource {
   ///
   /// [filter] - Optional. The filter expression. For example:
   /// `placeId=ChIJj61dQgK6j4AR4GeTYWZsKWw`. The filters supported at the moment
-  /// are: `placeId`, `min_latitude`, `max_latitude`, `min_longitude`, and
-  /// `max_longitude`.
+  /// are: `placeId`.
   ///
   /// [languageCode] - The BCP-47 language code, such as "en-US" or "sr-Latn".
   /// For more information, see

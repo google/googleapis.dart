@@ -1466,6 +1466,27 @@ void checkRetrieveRegisterParametersResponse(
   buildCounterRetrieveRegisterParametersResponse--;
 }
 
+core.int buildCounterRetrieveTransferParametersResponse = 0;
+api.RetrieveTransferParametersResponse
+    buildRetrieveTransferParametersResponse() {
+  final o = api.RetrieveTransferParametersResponse();
+  buildCounterRetrieveTransferParametersResponse++;
+  if (buildCounterRetrieveTransferParametersResponse < 3) {
+    o.transferParameters = buildTransferParameters();
+  }
+  buildCounterRetrieveTransferParametersResponse--;
+  return o;
+}
+
+void checkRetrieveTransferParametersResponse(
+    api.RetrieveTransferParametersResponse o) {
+  buildCounterRetrieveTransferParametersResponse++;
+  if (buildCounterRetrieveTransferParametersResponse < 3) {
+    checkTransferParameters(o.transferParameters!);
+  }
+  buildCounterRetrieveTransferParametersResponse--;
+}
+
 core.List<api.RegisterParameters> buildUnnamed29() => [
       buildRegisterParameters(),
       buildRegisterParameters(),
@@ -1675,6 +1696,122 @@ void checkTestIamPermissionsResponse(api.TestIamPermissionsResponse o) {
     checkUnnamed33(o.permissions!);
   }
   buildCounterTestIamPermissionsResponse--;
+}
+
+core.List<core.String> buildUnnamed34() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed34(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.int buildCounterTransferDomainRequest = 0;
+api.TransferDomainRequest buildTransferDomainRequest() {
+  final o = api.TransferDomainRequest();
+  buildCounterTransferDomainRequest++;
+  if (buildCounterTransferDomainRequest < 3) {
+    o.authorizationCode = buildAuthorizationCode();
+    o.contactNotices = buildUnnamed34();
+    o.registration = buildRegistration();
+    o.validateOnly = true;
+    o.yearlyPrice = buildMoney();
+  }
+  buildCounterTransferDomainRequest--;
+  return o;
+}
+
+void checkTransferDomainRequest(api.TransferDomainRequest o) {
+  buildCounterTransferDomainRequest++;
+  if (buildCounterTransferDomainRequest < 3) {
+    checkAuthorizationCode(o.authorizationCode!);
+    checkUnnamed34(o.contactNotices!);
+    checkRegistration(o.registration!);
+    unittest.expect(o.validateOnly!, unittest.isTrue);
+    checkMoney(o.yearlyPrice!);
+  }
+  buildCounterTransferDomainRequest--;
+}
+
+core.List<core.String> buildUnnamed35() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed35(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.List<core.String> buildUnnamed36() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed36(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.int buildCounterTransferParameters = 0;
+api.TransferParameters buildTransferParameters() {
+  final o = api.TransferParameters();
+  buildCounterTransferParameters++;
+  if (buildCounterTransferParameters < 3) {
+    o.currentRegistrar = 'foo';
+    o.domainName = 'foo';
+    o.nameServers = buildUnnamed35();
+    o.supportedPrivacy = buildUnnamed36();
+    o.transferLockState = 'foo';
+    o.yearlyPrice = buildMoney();
+  }
+  buildCounterTransferParameters--;
+  return o;
+}
+
+void checkTransferParameters(api.TransferParameters o) {
+  buildCounterTransferParameters++;
+  if (buildCounterTransferParameters < 3) {
+    unittest.expect(
+      o.currentRegistrar!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.domainName!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed35(o.nameServers!);
+    checkUnnamed36(o.supportedPrivacy!);
+    unittest.expect(
+      o.transferLockState!,
+      unittest.equals('foo'),
+    );
+    checkMoney(o.yearlyPrice!);
+  }
+  buildCounterTransferParameters--;
 }
 
 void main() {
@@ -1988,6 +2125,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-RetrieveTransferParametersResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildRetrieveTransferParametersResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RetrieveTransferParametersResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkRetrieveTransferParametersResponse(od);
+    });
+  });
+
   unittest.group('obj-schema-SearchDomainsResponse', () {
     unittest.test('to-json--from-json', () async {
       final o = buildSearchDomainsResponse();
@@ -2035,6 +2182,26 @@ void main() {
       final od = api.TestIamPermissionsResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkTestIamPermissionsResponse(od);
+    });
+  });
+
+  unittest.group('obj-schema-TransferDomainRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildTransferDomainRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.TransferDomainRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkTransferDomainRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-TransferParameters', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildTransferParameters();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.TransferParameters.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkTransferParameters(od);
     });
   });
 
@@ -3051,6 +3218,66 @@ void main() {
           response as api.RetrieveRegisterParametersResponse);
     });
 
+    unittest.test('method--retrieveTransferParameters', () async {
+      final mock = HttpServerMock();
+      final res = api.CloudDomainsApi(mock).projects.locations.registrations;
+      final arg_location = 'foo';
+      final arg_domainName = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals('v1beta1/'),
+        );
+        pathOffset += 8;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['domainName']!.first,
+          unittest.equals(arg_domainName),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp =
+            convert.json.encode(buildRetrieveTransferParametersResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.retrieveTransferParameters(arg_location,
+          domainName: arg_domainName, $fields: arg_$fields);
+      checkRetrieveTransferParametersResponse(
+          response as api.RetrieveTransferParametersResponse);
+    });
+
     unittest.test('method--searchDomains', () async {
       final mock = HttpServerMock();
       final res = api.CloudDomainsApi(mock).projects.locations.registrations;
@@ -3224,6 +3451,64 @@ void main() {
           $fields: arg_$fields);
       checkTestIamPermissionsResponse(
           response as api.TestIamPermissionsResponse);
+    });
+
+    unittest.test('method--transfer', () async {
+      final mock = HttpServerMock();
+      final res = api.CloudDomainsApi(mock).projects.locations.registrations;
+      final arg_request = buildTransferDomainRequest();
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.TransferDomainRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkTransferDomainRequest(obj);
+
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals('v1beta1/'),
+        );
+        pathOffset += 8;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildOperation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.transfer(arg_request, arg_parent, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
   });
 }

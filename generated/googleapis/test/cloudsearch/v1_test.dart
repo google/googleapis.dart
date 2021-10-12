@@ -1648,6 +1648,21 @@ void checkIndexItemRequest(api.IndexItemRequest o) {
   buildCounterIndexItemRequest--;
 }
 
+core.int buildCounterInitializeCustomerRequest = 0;
+api.InitializeCustomerRequest buildInitializeCustomerRequest() {
+  final o = api.InitializeCustomerRequest();
+  buildCounterInitializeCustomerRequest++;
+  if (buildCounterInitializeCustomerRequest < 3) {}
+  buildCounterInitializeCustomerRequest--;
+  return o;
+}
+
+void checkInitializeCustomerRequest(api.InitializeCustomerRequest o) {
+  buildCounterInitializeCustomerRequest++;
+  if (buildCounterInitializeCustomerRequest < 3) {}
+  buildCounterInitializeCustomerRequest--;
+}
+
 core.int buildCounterIntegerOperatorOptions = 0;
 api.IntegerOperatorOptions buildIntegerOperatorOptions() {
   final o = api.IntegerOperatorOptions();
@@ -5785,6 +5800,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-InitializeCustomerRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildInitializeCustomerRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.InitializeCustomerRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkInitializeCustomerRequest(od);
+    });
+  });
+
   unittest.group('obj-schema-IntegerOperatorOptions', () {
     unittest.test('to-json--from-json', () async {
       final o = buildIntegerOperatorOptions();
@@ -9801,6 +9826,64 @@ void main() {
           $fields: arg_$fields);
       checkGetSearchApplicationUserStatsResponse(
           response as api.GetSearchApplicationUserStatsResponse);
+    });
+  });
+
+  unittest.group('resource-V1Resource', () {
+    unittest.test('method--initializeCustomer', () async {
+      final mock = HttpServerMock();
+      final res = api.CloudSearchApi(mock).v1;
+      final arg_request = buildInitializeCustomerRequest();
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.InitializeCustomerRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkInitializeCustomerRequest(obj);
+
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 21),
+          unittest.equals('v1:initializeCustomer'),
+        );
+        pathOffset += 21;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildOperation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.initializeCustomer(arg_request, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
   });
 }

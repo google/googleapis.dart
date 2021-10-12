@@ -274,6 +274,7 @@ api.AddSubnetworkRequest buildAddSubnetworkRequest() {
     o.ipPrefixLength = 42;
     o.outsideAllocationPublicIpRange = 'foo';
     o.privateIpv6GoogleAccess = 'foo';
+    o.purpose = 'foo';
     o.region = 'foo';
     o.requestedAddress = 'foo';
     o.requestedRanges = buildUnnamed2();
@@ -310,6 +311,10 @@ void checkAddSubnetworkRequest(api.AddSubnetworkRequest o) {
     );
     unittest.expect(
       o.privateIpv6GoogleAccess!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.purpose!,
       unittest.equals('foo'),
     );
     unittest.expect(

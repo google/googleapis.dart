@@ -199,6 +199,7 @@ api.ColumnDescription buildColumnDescription() {
   buildCounterColumnDescription++;
   if (buildCounterColumnDescription < 3) {
     o.dataType = 'foo';
+    o.dateDetails = buildDateDetails();
     o.id = 'foo';
     o.labels = buildUnnamed5();
     o.lookupDetails = buildLookupDetails();
@@ -218,6 +219,7 @@ void checkColumnDescription(api.ColumnDescription o) {
       o.dataType!,
       unittest.equals('foo'),
     );
+    checkDateDetails(o.dateDetails!);
     unittest.expect(
       o.id!,
       unittest.equals('foo'),
@@ -262,6 +264,25 @@ void checkCreateRowRequest(api.CreateRowRequest o) {
     );
   }
   buildCounterCreateRowRequest--;
+}
+
+core.int buildCounterDateDetails = 0;
+api.DateDetails buildDateDetails() {
+  final o = api.DateDetails();
+  buildCounterDateDetails++;
+  if (buildCounterDateDetails < 3) {
+    o.hasTime = true;
+  }
+  buildCounterDateDetails--;
+  return o;
+}
+
+void checkDateDetails(api.DateDetails o) {
+  buildCounterDateDetails++;
+  if (buildCounterDateDetails < 3) {
+    unittest.expect(o.hasTime!, unittest.isTrue);
+  }
+  buildCounterDateDetails--;
 }
 
 core.int buildCounterEmpty = 0;
@@ -598,6 +619,7 @@ api.Table buildTable() {
     o.displayName = 'foo';
     o.name = 'foo';
     o.savedViews = buildUnnamed11();
+    o.timeZone = 'foo';
     o.updateTime = 'foo';
   }
   buildCounterTable--;
@@ -621,6 +643,10 @@ void checkTable(api.Table o) {
       unittest.equals('foo'),
     );
     checkUnnamed11(o.savedViews!);
+    unittest.expect(
+      o.timeZone!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.updateTime!,
       unittest.equals('foo'),
@@ -776,6 +802,16 @@ void main() {
       final od = api.CreateRowRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkCreateRowRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-DateDetails', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildDateDetails();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DateDetails.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkDateDetails(od);
     });
   });
 

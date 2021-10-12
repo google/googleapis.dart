@@ -8123,18 +8123,26 @@ class AccountBusinessInformation {
   /// This field will only be updated if explicitly set.
   core.String? koreanBusinessRegistrationNumber;
 
-  /// ! The phone number of the business.
+  /// The phone number of the business.
   ///
-  /// This can only be updated if a verified ! phone number is not already set.
-  /// To replace a verified phone number use ! the
-  /// `Accounts.requestphoneverification` and ! `Accounts.verifyphonenumber`.
+  /// This can only be updated if a verified phone number is not already set. To
+  /// replace a verified phone number use the
+  /// `Accounts.requestphoneverification` and `Accounts.verifyphonenumber`.
   core.String? phoneNumber;
+
+  /// Verification status of the phone number of the business.
+  ///
+  /// This status is read only and can be updated only by successful phone
+  /// verification. Acceptable values are: - "`verified`" - "`unverified`"
+  /// "`unspecified`" -
+  core.String? phoneVerificationStatus;
 
   AccountBusinessInformation({
     this.address,
     this.customerService,
     this.koreanBusinessRegistrationNumber,
     this.phoneNumber,
+    this.phoneVerificationStatus,
   });
 
   AccountBusinessInformation.fromJson(core.Map _json)
@@ -8154,6 +8162,9 @@ class AccountBusinessInformation {
           phoneNumber: _json.containsKey('phoneNumber')
               ? _json['phoneNumber'] as core.String
               : null,
+          phoneVerificationStatus: _json.containsKey('phoneVerificationStatus')
+              ? _json['phoneVerificationStatus'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -8162,6 +8173,8 @@ class AccountBusinessInformation {
         if (koreanBusinessRegistrationNumber != null)
           'koreanBusinessRegistrationNumber': koreanBusinessRegistrationNumber!,
         if (phoneNumber != null) 'phoneNumber': phoneNumber!,
+        if (phoneVerificationStatus != null)
+          'phoneVerificationStatus': phoneVerificationStatus!,
       };
 }
 
@@ -9881,6 +9894,72 @@ class AccounttaxListResponse {
 
 /// Request message for the ActivateProgram method.
 typedef ActivateBuyOnGoogleProgramRequest = $Empty;
+
+class Address {
+  /// Top-level administrative subdivision of the country.
+  ///
+  /// For example, a state like California ("CA") or a province like Quebec
+  /// ("QC").
+  ///
+  /// Required.
+  core.String? administrativeArea;
+
+  /// City, town or commune.
+  ///
+  /// May also include dependent localities or sublocalities (e.g. neighborhoods
+  /// or suburbs).
+  ///
+  /// Required.
+  core.String? city;
+
+  /// [CLDR country code](http://www.unicode.org/repos/cldr/tags/latest/common/main/en.xml)
+  /// (e.g. "US").
+  ///
+  /// Required.
+  core.String? country;
+
+  /// Postal code or ZIP (e.g. "94043").
+  ///
+  /// Required.
+  core.String? postalCode;
+
+  /// Street-level part of the address.
+  core.String? streetAddress;
+
+  Address({
+    this.administrativeArea,
+    this.city,
+    this.country,
+    this.postalCode,
+    this.streetAddress,
+  });
+
+  Address.fromJson(core.Map _json)
+      : this(
+          administrativeArea: _json.containsKey('administrativeArea')
+              ? _json['administrativeArea'] as core.String
+              : null,
+          city: _json.containsKey('city') ? _json['city'] as core.String : null,
+          country: _json.containsKey('country')
+              ? _json['country'] as core.String
+              : null,
+          postalCode: _json.containsKey('postalCode')
+              ? _json['postalCode'] as core.String
+              : null,
+          streetAddress: _json.containsKey('streetAddress')
+              ? _json['streetAddress'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (administrativeArea != null)
+          'administrativeArea': administrativeArea!,
+        if (city != null) 'city': city!,
+        if (country != null) 'country': country!,
+        if (postalCode != null) 'postalCode': postalCode!,
+        if (streetAddress != null) 'streetAddress': streetAddress!,
+      };
+}
 
 class Amount {
   /// The pre-tax or post-tax price depending on the location of the order.
@@ -16768,6 +16847,9 @@ class OrderTrackingSignalLineItemDetails {
   /// The manufacturer part number.
   core.String? mpn;
 
+  /// Plain text description of this product.
+  core.String? productDescription;
+
   /// The Content API REST ID of the product, in the form
   /// channel:contentLanguage:targetCountry:offerId.
   ///
@@ -16779,12 +16861,21 @@ class OrderTrackingSignalLineItemDetails {
   /// Required.
   core.String? quantity;
 
+  /// Merchant SKU for this item.
+  core.String? sku;
+
+  /// Universal product code for this item.
+  core.String? upc;
+
   OrderTrackingSignalLineItemDetails({
     this.gtin,
     this.lineItemId,
     this.mpn,
+    this.productDescription,
     this.productId,
     this.quantity,
+    this.sku,
+    this.upc,
   });
 
   OrderTrackingSignalLineItemDetails.fromJson(core.Map _json)
@@ -16794,20 +16885,29 @@ class OrderTrackingSignalLineItemDetails {
               ? _json['lineItemId'] as core.String
               : null,
           mpn: _json.containsKey('mpn') ? _json['mpn'] as core.String : null,
+          productDescription: _json.containsKey('productDescription')
+              ? _json['productDescription'] as core.String
+              : null,
           productId: _json.containsKey('productId')
               ? _json['productId'] as core.String
               : null,
           quantity: _json.containsKey('quantity')
               ? _json['quantity'] as core.String
               : null,
+          sku: _json.containsKey('sku') ? _json['sku'] as core.String : null,
+          upc: _json.containsKey('upc') ? _json['upc'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (gtin != null) 'gtin': gtin!,
         if (lineItemId != null) 'lineItemId': lineItemId!,
         if (mpn != null) 'mpn': mpn!,
+        if (productDescription != null)
+          'productDescription': productDescription!,
         if (productId != null) 'productId': productId!,
         if (quantity != null) 'quantity': quantity!,
+        if (sku != null) 'sku': sku!,
+        if (upc != null) 'upc': upc!,
       };
 }
 
@@ -22778,11 +22878,16 @@ class ProductstatusesListResponse {
       };
 }
 
-/// Represents a promotion.
+/// The Promotions feature is currently in alpha and is not yet publicly
+/// available via Content API for Shopping.
 ///
-/// (1) https://support.google.com/merchants/answer/2906014 (2)
-/// https://support.google.com/merchants/answer/10146130 (3)
-/// https://support.google.com/merchants/answer/9173673
+/// This documentation is provided for reference only may be subject to change.
+/// Represents a promotion. See the following articles for more details. *
+/// [Promotions feed specification](https://support.google.com/merchants/answer/2906014)
+/// *
+/// [Local promotions feed specification](https://support.google.com/merchants/answer/10146130)
+/// *
+/// [Promotions on Buy on Google product data specification](https://support.google.com/merchants/answer/9173673)
 class Promotion {
   /// Product filter by brand for the promotion.
   core.List<core.String>? brand;
@@ -22842,7 +22947,9 @@ class Promotion {
   /// The REST promotion id to uniquely identify the promotion.
   ///
   /// Content API methods that operate on promotions take this as their
-  /// promotionId parameter.
+  /// promotionId parameter. The REST ID for a promotion is of the form
+  /// channel:contentLanguage:targetCountry:promotionId The channel field will
+  /// have a value of "online", "local", or "onlinelocal".
   ///
   /// Required. Output only.
   core.String? id;
@@ -22902,7 +23009,7 @@ class Promotion {
   /// Possible string values are:
   /// - "PRODUCT_APPLICABILITY_UNSPECIFIED" : Unknown product applicability.
   /// - "ALL_PRODUCTS" : Applicable to all products.
-  /// - "PRODUCT_SPECIFIC" : Applicable to only a single product or list of
+  /// - "SPECIFIC_PRODUCTS" : Applicable to only a single product or list of
   /// products.
   core.String? productApplicability;
 
@@ -26974,10 +27081,16 @@ class ShippingSettings {
   /// Optional.
   core.List<Service>? services;
 
+  /// A list of warehouses which can be referred to in `services`.
+  ///
+  /// Optional.
+  core.List<Warehouse>? warehouses;
+
   ShippingSettings({
     this.accountId,
     this.postalCodeGroups,
     this.services,
+    this.warehouses,
   });
 
   ShippingSettings.fromJson(core.Map _json)
@@ -26997,12 +27110,19 @@ class ShippingSettings {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          warehouses: _json.containsKey('warehouses')
+              ? (_json['warehouses'] as core.List)
+                  .map((value) => Warehouse.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accountId != null) 'accountId': accountId!,
         if (postalCodeGroups != null) 'postalCodeGroups': postalCodeGroups!,
         if (services != null) 'services': services!,
+        if (warehouses != null) 'warehouses': warehouses!,
       };
 }
 
@@ -28373,6 +28493,79 @@ class VerifyPhoneNumberResponse {
       };
 }
 
+/// A fulfillment warehouse, which stores and handles inventory.
+class Warehouse {
+  /// Business days of the warehouse.
+  ///
+  /// If not set, will be Monday to Friday by default.
+  BusinessDayConfig? businessDayConfig;
+
+  /// The latest time of day that an order can be accepted and begin processing.
+  ///
+  /// Later orders will be processed in the next day. The time is based on the
+  /// warehouse postal code.
+  ///
+  /// Required.
+  WarehouseCutoffTime? cutoffTime;
+
+  /// The number of days it takes for this warehouse to pack up and ship an
+  /// item.
+  ///
+  /// This is on the warehouse level, but can be overridden on the offer level
+  /// based on the attributes of an item.
+  ///
+  /// Required.
+  core.String? handlingDays;
+
+  /// The name of the warehouse.
+  ///
+  /// Must be unique within account.
+  ///
+  /// Required.
+  core.String? name;
+
+  /// Shipping address of the warehouse.
+  ///
+  /// Required.
+  Address? shippingAddress;
+
+  Warehouse({
+    this.businessDayConfig,
+    this.cutoffTime,
+    this.handlingDays,
+    this.name,
+    this.shippingAddress,
+  });
+
+  Warehouse.fromJson(core.Map _json)
+      : this(
+          businessDayConfig: _json.containsKey('businessDayConfig')
+              ? BusinessDayConfig.fromJson(_json['businessDayConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          cutoffTime: _json.containsKey('cutoffTime')
+              ? WarehouseCutoffTime.fromJson(
+                  _json['cutoffTime'] as core.Map<core.String, core.dynamic>)
+              : null,
+          handlingDays: _json.containsKey('handlingDays')
+              ? _json['handlingDays'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          shippingAddress: _json.containsKey('shippingAddress')
+              ? Address.fromJson(_json['shippingAddress']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (businessDayConfig != null) 'businessDayConfig': businessDayConfig!,
+        if (cutoffTime != null) 'cutoffTime': cutoffTime!,
+        if (handlingDays != null) 'handlingDays': handlingDays!,
+        if (name != null) 'name': name!,
+        if (shippingAddress != null) 'shippingAddress': shippingAddress!,
+      };
+}
+
 class WarehouseBasedDeliveryTime {
   /// Carrier, such as `"UPS"` or `"Fedex"`.
   ///
@@ -28392,28 +28585,27 @@ class WarehouseBasedDeliveryTime {
   core.String? carrierService;
 
   /// Shipping origin's state.
-  ///
-  /// Required.
   core.String? originAdministrativeArea;
 
   /// Shipping origin's city.
-  ///
-  /// Required.
   core.String? originCity;
 
   /// Shipping origin's country represented as a
   /// [CLDR territory code](http://www.unicode.org/repos/cldr/tags/latest/common/main/en.xml).
-  ///
-  /// Required.
   core.String? originCountry;
 
   /// Shipping origin.
-  ///
-  /// Required.
   core.String? originPostalCode;
 
   /// Shipping origin's street address.
   core.String? originStreetAddress;
+
+  /// The name of the warehouse.
+  ///
+  /// Warehouse name need to be matched with name. If warehouseName is set, the
+  /// below fields will be ignored. The warehouse info will be read from
+  /// warehouse.
+  core.String? warehouseName;
 
   WarehouseBasedDeliveryTime({
     this.carrier,
@@ -28423,6 +28615,7 @@ class WarehouseBasedDeliveryTime {
     this.originCountry,
     this.originPostalCode,
     this.originStreetAddress,
+    this.warehouseName,
   });
 
   WarehouseBasedDeliveryTime.fromJson(core.Map _json)
@@ -28449,6 +28642,9 @@ class WarehouseBasedDeliveryTime {
           originStreetAddress: _json.containsKey('originStreetAddress')
               ? _json['originStreetAddress'] as core.String
               : null,
+          warehouseName: _json.containsKey('warehouseName')
+              ? _json['warehouseName'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -28461,6 +28657,42 @@ class WarehouseBasedDeliveryTime {
         if (originPostalCode != null) 'originPostalCode': originPostalCode!,
         if (originStreetAddress != null)
           'originStreetAddress': originStreetAddress!,
+        if (warehouseName != null) 'warehouseName': warehouseName!,
+      };
+}
+
+class WarehouseCutoffTime {
+  /// Hour (24-hour clock) of the cutoff time until which an order has to be
+  /// placed to be processed in the same day by the warehouse.
+  ///
+  /// Hour is based on the timezone of warehouse.
+  ///
+  /// Required.
+  core.int? hour;
+
+  /// Minute of the cutoff time until which an order has to be placed to be
+  /// processed in the same day by the warehouse.
+  ///
+  /// Minute is based on the timezone of warehouse.
+  ///
+  /// Required.
+  core.int? minute;
+
+  WarehouseCutoffTime({
+    this.hour,
+    this.minute,
+  });
+
+  WarehouseCutoffTime.fromJson(core.Map _json)
+      : this(
+          hour: _json.containsKey('hour') ? _json['hour'] as core.int : null,
+          minute:
+              _json.containsKey('minute') ? _json['minute'] as core.int : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (hour != null) 'hour': hour!,
+        if (minute != null) 'minute': minute!,
       };
 }
 
