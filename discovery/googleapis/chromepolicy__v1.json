@@ -322,7 +322,7 @@
             }
         }
     },
-    "revision": "20211006",
+    "revision": "20211008",
     "rootUrl": "https://chromepolicy.googleapis.com/",
     "schemas": {
         "GoogleChromePolicyV1AdditionalTargetKeyName": {

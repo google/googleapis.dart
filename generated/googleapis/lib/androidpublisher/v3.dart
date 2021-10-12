@@ -30,6 +30,7 @@
 ///   - [EditsListingsResource]
 ///   - [EditsTestersResource]
 ///   - [EditsTracksResource]
+/// - [GrantsResource]
 /// - [InappproductsResource]
 /// - [InternalappsharingartifactsResource]
 /// - [MonetizationResource]
@@ -41,6 +42,7 @@
 /// - [ReviewsResource]
 /// - [SystemapksResource]
 ///   - [SystemapksVariantsResource]
+/// - [UsersResource]
 library androidpublisher.v3;
 
 import 'dart:async' as async;
@@ -74,6 +76,7 @@ class AndroidPublisherApi {
   final commons.ApiRequester _requester;
 
   EditsResource get edits => EditsResource(_requester);
+  GrantsResource get grants => GrantsResource(_requester);
   InappproductsResource get inappproducts => InappproductsResource(_requester);
   InternalappsharingartifactsResource get internalappsharingartifacts =>
       InternalappsharingartifactsResource(_requester);
@@ -82,6 +85,7 @@ class AndroidPublisherApi {
   PurchasesResource get purchases => PurchasesResource(_requester);
   ReviewsResource get reviews => ReviewsResource(_requester);
   SystemapksResource get systemapks => SystemapksResource(_requester);
+  UsersResource get users => UsersResource(_requester);
 
   AndroidPublisherApi(http.Client client,
       {core.String rootUrl = 'https://androidpublisher.googleapis.com/',
@@ -2049,6 +2053,135 @@ class EditsTracksResource {
   }
 }
 
+class GrantsResource {
+  final commons.ApiRequester _requester;
+
+  GrantsResource(commons.ApiRequester client) : _requester = client;
+
+  /// Grant access for a user to the given package.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The user which needs permission. Format:
+  /// developers/{developer}/users/{user}
+  /// Value must have pattern `^developers/\[^/\]+/users/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Grant].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Grant> create(
+    Grant request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url =
+        'androidpublisher/v3/' + core.Uri.encodeFull('$parent') + '/grants';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Grant.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Removes all access for the user to the given package or developer account.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the grant to delete. Format:
+  /// developers/{developer}/users/{email}/grants/{package_name}
+  /// Value must have pattern
+  /// `^developers/\[^/\]+/users/\[^/\]+/grants/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<void> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'androidpublisher/v3/' + core.Uri.encodeFull('$name');
+
+    await _requester.request(
+      _url,
+      'DELETE',
+      queryParams: _queryParams,
+      downloadOptions: null,
+    );
+  }
+
+  /// Updates access for the user to the given package.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name for this grant, following the pattern
+  /// "developers/{developer}/users/{email}/grants/{package_name}".
+  /// Value must have pattern
+  /// `^developers/\[^/\]+/users/\[^/\]+/grants/\[^/\]+$`.
+  ///
+  /// [updateMask] - Optional. The list of fields to be updated.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Grant].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Grant> patch(
+    Grant request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'androidpublisher/v3/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Grant.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class InappproductsResource {
   final commons.ApiRequester _requester;
 
@@ -3475,6 +3608,181 @@ class SystemapksVariantsResource {
   }
 }
 
+class UsersResource {
+  final commons.ApiRequester _requester;
+
+  UsersResource(commons.ApiRequester client) : _requester = client;
+
+  /// Grant access for a user to the given developer account.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The developer account to add the user to. Format:
+  /// developers/{developer}
+  /// Value must have pattern `^developers/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [User].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<User> create(
+    User request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url =
+        'androidpublisher/v3/' + core.Uri.encodeFull('$parent') + '/users';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return User.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Removes all access for the user to the given developer account.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the user to delete. Format:
+  /// developers/{developer}/users/{email}
+  /// Value must have pattern `^developers/\[^/\]+/users/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<void> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'androidpublisher/v3/' + core.Uri.encodeFull('$name');
+
+    await _requester.request(
+      _url,
+      'DELETE',
+      queryParams: _queryParams,
+      downloadOptions: null,
+    );
+  }
+
+  /// Lists all users with access to a developer account.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The developer account to fetch users from. Format:
+  /// developers/{developer}
+  /// Value must have pattern `^developers/\[^/\]+$`.
+  ///
+  /// [pageSize] - The maximum number of results to return. This must be set to
+  /// -1 to disable pagination.
+  ///
+  /// [pageToken] - A token received from a previous call to this method, in
+  /// order to retrieve further results.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListUsersResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListUsersResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url =
+        'androidpublisher/v3/' + core.Uri.encodeFull('$parent') + '/users';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return ListUsersResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates access for the user to the developer account.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name for this user, following the pattern
+  /// "developers/{developer}/users/{email}".
+  /// Value must have pattern `^developers/\[^/\]+/users/\[^/\]+$`.
+  ///
+  /// [updateMask] - Optional. The list of fields to be updated.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [User].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<User> patch(
+    User request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'androidpublisher/v3/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return User.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+}
+
 /// Information about an APK.
 ///
 /// The resource for ApksService.
@@ -4395,6 +4703,49 @@ class ExternallyHostedApk {
       };
 }
 
+/// An access grant resource.
+class Grant {
+  /// The permissions granted to the user for this app.
+  core.List<core.String>? appLevelPermissions;
+
+  /// Resource name for this grant, following the pattern
+  /// "developers/{developer}/users/{email}/grants/{package_name}".
+  ///
+  /// Required.
+  core.String? name;
+
+  /// The package name of the app.
+  ///
+  /// Immutable.
+  core.String? packageName;
+
+  Grant({
+    this.appLevelPermissions,
+    this.name,
+    this.packageName,
+  });
+
+  Grant.fromJson(core.Map _json)
+      : this(
+          appLevelPermissions: _json.containsKey('appLevelPermissions')
+              ? (_json['appLevelPermissions'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          packageName: _json.containsKey('packageName')
+              ? _json['packageName'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (appLevelPermissions != null)
+          'appLevelPermissions': appLevelPermissions!,
+        if (name != null) 'name': name!,
+        if (packageName != null) 'packageName': packageName!,
+      };
+}
+
 /// An uploaded image.
 ///
 /// The resource for ImagesService.
@@ -4840,6 +5191,41 @@ class IntroductoryPriceInfo {
           'introductoryPriceCycles': introductoryPriceCycles!,
         if (introductoryPricePeriod != null)
           'introductoryPricePeriod': introductoryPricePeriod!,
+      };
+}
+
+/// A response containing one or more users with access to an account.
+class ListUsersResponse {
+  /// A token to pass to subsequent calls in order to retrieve subsequent
+  /// results.
+  ///
+  /// This will not be set if there are no more results to return.
+  core.String? nextPageToken;
+
+  /// The resulting users.
+  core.List<User>? users;
+
+  ListUsersResponse({
+    this.nextPageToken,
+    this.users,
+  });
+
+  ListUsersResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          users: _json.containsKey('users')
+              ? (_json['users'] as core.List)
+                  .map((value) => User.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (users != null) 'users': users!,
       };
 }
 
@@ -6080,6 +6466,98 @@ class TracksListResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
         if (tracks != null) 'tracks': tracks!,
+      };
+}
+
+/// A user resource.
+class User {
+  /// The state of the user's access to the Play Console.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "ACCESS_STATE_UNSPECIFIED" : Unknown or unspecified access state.
+  /// - "INVITED" : User is invited but has not yet accepted the invitation.
+  /// - "INVITATION_EXPIRED" : Invitation has expired.
+  /// - "ACCESS_GRANTED" : User has accepted an invitation and has access to the
+  /// Play Console.
+  /// - "ACCESS_EXPIRED" : Account access has expired.
+  core.String? accessState;
+
+  /// Permissions for the user which apply across the developer account.
+  core.List<core.String>? developerAccountPermissions;
+
+  /// The user's email address.
+  ///
+  /// Immutable.
+  core.String? email;
+
+  /// The time at which the user's access expires, if set.
+  core.String? expirationTime;
+
+  /// Per-app permissions for the user.
+  ///
+  /// Output only.
+  core.List<Grant>? grants;
+
+  /// Resource name for this user, following the pattern
+  /// "developers/{developer}/users/{email}".
+  ///
+  /// Required.
+  core.String? name;
+
+  /// Whether there are more permissions for the user that are not represented
+  /// here.
+  ///
+  /// Output only.
+  core.bool? partial;
+
+  User({
+    this.accessState,
+    this.developerAccountPermissions,
+    this.email,
+    this.expirationTime,
+    this.grants,
+    this.name,
+    this.partial,
+  });
+
+  User.fromJson(core.Map _json)
+      : this(
+          accessState: _json.containsKey('accessState')
+              ? _json['accessState'] as core.String
+              : null,
+          developerAccountPermissions:
+              _json.containsKey('developerAccountPermissions')
+                  ? (_json['developerAccountPermissions'] as core.List)
+                      .map((value) => value as core.String)
+                      .toList()
+                  : null,
+          email:
+              _json.containsKey('email') ? _json['email'] as core.String : null,
+          expirationTime: _json.containsKey('expirationTime')
+              ? _json['expirationTime'] as core.String
+              : null,
+          grants: _json.containsKey('grants')
+              ? (_json['grants'] as core.List)
+                  .map((value) => Grant.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          partial: _json.containsKey('partial')
+              ? _json['partial'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (accessState != null) 'accessState': accessState!,
+        if (developerAccountPermissions != null)
+          'developerAccountPermissions': developerAccountPermissions!,
+        if (email != null) 'email': email!,
+        if (expirationTime != null) 'expirationTime': expirationTime!,
+        if (grants != null) 'grants': grants!,
+        if (name != null) 'name': name!,
+        if (partial != null) 'partial': partial!,
       };
 }
 

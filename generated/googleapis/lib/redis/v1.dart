@@ -1266,6 +1266,11 @@ class Instance {
   /// Required.
   core.String? name;
 
+  /// Info per node.
+  ///
+  /// Output only.
+  core.List<NodeInfo>? nodes;
+
   /// Cloud IAM identity used by import / export operations to transfer data
   /// to/from Cloud Storage.
   ///
@@ -1279,6 +1284,34 @@ class Instance {
   ///
   /// Output only.
   core.int? port;
+
+  /// Hostname or IP address of the exposed readonly Redis endpoint.
+  ///
+  /// Standard tier only. Targets all healthy replica nodes in instance.
+  /// Replication is asynchronous and replica nodes will exhibit some lag behind
+  /// the primary. Write requests must target 'host'.
+  ///
+  /// Output only.
+  core.String? readEndpoint;
+
+  /// The port number of the exposed readonly redis endpoint.
+  ///
+  /// Standard tier only. Write requests should target 'port'.
+  ///
+  /// Output only.
+  core.int? readEndpointPort;
+
+  /// Read replica mode.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "READ_REPLICAS_MODE_UNSPECIFIED" : If not set, redis backend would pick
+  /// the mode based on other fields in the request.
+  /// - "READ_REPLICAS_DISABLED" : If disabled, read endpoint will not be
+  /// provided and the instance cannot scale up or down the number of replicas.
+  /// - "READ_REPLICAS_ENABLED" : If enabled, read endpoint will be provided and
+  /// the instance can scale up and down the number of replicas.
+  core.String? readReplicasMode;
 
   /// Redis configuration parameters, according to
   /// http://redis.io/topics/config.
@@ -1300,6 +1333,14 @@ class Instance {
   ///
   /// Optional.
   core.String? redisVersion;
+
+  /// The number of replica nodes.
+  ///
+  /// Valid range for standard tier is \[1-5\] and defaults to 1. Valid value
+  /// for basic tier is 0 and defaults to 0.
+  ///
+  /// Optional.
+  core.int? replicaCount;
 
   /// For DIRECT_PEERING mode, the CIDR range of internal addresses that are
   /// reserved for this instance.
@@ -1380,10 +1421,15 @@ class Instance {
     this.maintenanceSchedule,
     this.memorySizeGb,
     this.name,
+    this.nodes,
     this.persistenceIamIdentity,
     this.port,
+    this.readEndpoint,
+    this.readEndpointPort,
+    this.readReplicasMode,
     this.redisConfigs,
     this.redisVersion,
+    this.replicaCount,
     this.reservedIpRange,
     this.serverCaCerts,
     this.state,
@@ -1439,10 +1485,25 @@ class Instance {
               ? _json['memorySizeGb'] as core.int
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          nodes: _json.containsKey('nodes')
+              ? (_json['nodes'] as core.List)
+                  .map((value) => NodeInfo.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           persistenceIamIdentity: _json.containsKey('persistenceIamIdentity')
               ? _json['persistenceIamIdentity'] as core.String
               : null,
           port: _json.containsKey('port') ? _json['port'] as core.int : null,
+          readEndpoint: _json.containsKey('readEndpoint')
+              ? _json['readEndpoint'] as core.String
+              : null,
+          readEndpointPort: _json.containsKey('readEndpointPort')
+              ? _json['readEndpointPort'] as core.int
+              : null,
+          readReplicasMode: _json.containsKey('readReplicasMode')
+              ? _json['readReplicasMode'] as core.String
+              : null,
           redisConfigs: _json.containsKey('redisConfigs')
               ? (_json['redisConfigs'] as core.Map<core.String, core.dynamic>)
                   .map(
@@ -1454,6 +1515,9 @@ class Instance {
               : null,
           redisVersion: _json.containsKey('redisVersion')
               ? _json['redisVersion'] as core.String
+              : null,
+          replicaCount: _json.containsKey('replicaCount')
+              ? _json['replicaCount'] as core.int
               : null,
           reservedIpRange: _json.containsKey('reservedIpRange')
               ? _json['reservedIpRange'] as core.String
@@ -1492,11 +1556,16 @@ class Instance {
           'maintenanceSchedule': maintenanceSchedule!,
         if (memorySizeGb != null) 'memorySizeGb': memorySizeGb!,
         if (name != null) 'name': name!,
+        if (nodes != null) 'nodes': nodes!,
         if (persistenceIamIdentity != null)
           'persistenceIamIdentity': persistenceIamIdentity!,
         if (port != null) 'port': port!,
+        if (readEndpoint != null) 'readEndpoint': readEndpoint!,
+        if (readEndpointPort != null) 'readEndpointPort': readEndpointPort!,
+        if (readReplicasMode != null) 'readReplicasMode': readReplicasMode!,
         if (redisConfigs != null) 'redisConfigs': redisConfigs!,
         if (redisVersion != null) 'redisVersion': redisVersion!,
+        if (replicaCount != null) 'replicaCount': replicaCount!,
         if (reservedIpRange != null) 'reservedIpRange': reservedIpRange!,
         if (serverCaCerts != null) 'serverCaCerts': serverCaCerts!,
         if (state != null) 'state': state!,
@@ -1833,6 +1902,37 @@ class MaintenanceSchedule {
         if (scheduleDeadlineTime != null)
           'scheduleDeadlineTime': scheduleDeadlineTime!,
         if (startTime != null) 'startTime': startTime!,
+      };
+}
+
+/// Node specific properties.
+class NodeInfo {
+  /// Node identifying string.
+  ///
+  /// e.g. 'node-0', 'node-1'
+  ///
+  /// Output only.
+  core.String? id;
+
+  /// Location of the node.
+  ///
+  /// Output only.
+  core.String? zone;
+
+  NodeInfo({
+    this.id,
+    this.zone,
+  });
+
+  NodeInfo.fromJson(core.Map _json)
+      : this(
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          zone: _json.containsKey('zone') ? _json['zone'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (id != null) 'id': id!,
+        if (zone != null) 'zone': zone!,
       };
 }
 

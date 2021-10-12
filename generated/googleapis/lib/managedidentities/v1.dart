@@ -1196,7 +1196,9 @@ class ProjectsLocationsGlobalPeeringsResource {
   /// `projects/{project_id}/locations/global`
   /// Value must have pattern `^projects/\[^/\]+/locations/global$`.
   ///
-  /// [peeringId] - Required. Peering Id, unique name to identify peering.
+  /// [peeringId] - Required. Peering Id, unique name to identify peering. It
+  /// should follow the regex format
+  /// "^(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?)$"
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3218,7 +3220,11 @@ class Policy {
   ///
   /// Optionally, may specify a `condition` that determines how and when the
   /// `bindings` are applied. Each of the `bindings` must contain at least one
-  /// member.
+  /// member. The `bindings` in a `Policy` can refer to up to 1,500 members; up
+  /// to 250 of these members can be Google groups. Each occurrence of a member
+  /// counts towards these limits. For example, if the `bindings` grant 50
+  /// different roles to `user:alice@example.com`, and not to any other member,
+  /// then you can add another 1,450 members to the `bindings` in the `Policy`.
   core.List<Binding>? bindings;
 
   /// `etag` is used for optimistic concurrency control as a way to help prevent

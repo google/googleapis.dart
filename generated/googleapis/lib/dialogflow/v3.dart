@@ -10142,6 +10142,10 @@ class GoogleCloudDialogflowCxV3QueryResult {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? diagnosticInfo;
 
+  /// If a DTMF was provided as input, this field will contain a copy of the
+  /// DTMFInput.
+  GoogleCloudDialogflowCxV3DtmfInput? dtmf;
+
   /// The Intent that matched the conversational query.
   ///
   /// Some, not all fields are filled in this message, including but not limited
@@ -10228,6 +10232,7 @@ class GoogleCloudDialogflowCxV3QueryResult {
   GoogleCloudDialogflowCxV3QueryResult({
     this.currentPage,
     this.diagnosticInfo,
+    this.dtmf,
     this.intent,
     this.intentDetectionConfidence,
     this.languageCode,
@@ -10251,6 +10256,10 @@ class GoogleCloudDialogflowCxV3QueryResult {
               : null,
           diagnosticInfo: _json.containsKey('diagnosticInfo')
               ? _json['diagnosticInfo'] as core.Map<core.String, core.dynamic>
+              : null,
+          dtmf: _json.containsKey('dtmf')
+              ? GoogleCloudDialogflowCxV3DtmfInput.fromJson(
+                  _json['dtmf'] as core.Map<core.String, core.dynamic>)
               : null,
           intent: _json.containsKey('intent')
               ? GoogleCloudDialogflowCxV3Intent.fromJson(
@@ -10308,6 +10317,7 @@ class GoogleCloudDialogflowCxV3QueryResult {
   core.Map<core.String, core.dynamic> toJson() => {
         if (currentPage != null) 'currentPage': currentPage!,
         if (diagnosticInfo != null) 'diagnosticInfo': diagnosticInfo!,
+        if (dtmf != null) 'dtmf': dtmf!,
         if (intent != null) 'intent': intent!,
         if (intentDetectionConfidence != null)
           'intentDetectionConfidence': intentDetectionConfidence!,

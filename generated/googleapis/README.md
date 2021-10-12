@@ -177,6 +177,13 @@ Store and manage build artifacts in a scalable and integrated service built on G
 - [Documentation](https://cloud.google.com)
 - [API details](https://pub.dev/documentation/googleapis/5.0.2-dev/assuredworkloads.v1/assuredworkloads.v1-library.html)
 
+#### Authorized Buyers Marketplace API - `authorizedbuyersmarketplace.v1`
+
+The Authorized Buyers Marketplace API allows buyers programmatically discover inventory; propose, retrieve and negotiate deals with publishers.
+
+- [Documentation](https://developers.google.com/authorized-buyers/apis/marketplace/reference/rest/)
+- [API details](https://pub.dev/documentation/googleapis/5.0.2-dev/authorizedbuyersmarketplace.v1/authorizedbuyersmarketplace.v1-library.html)
+
 #### Bare Metal Solution API - `baremetalsolution.v1`
 
 Provides ways to manage Bare Metal Solution hardware installed in a regional extension located near a Google Cloud data center.
@@ -428,6 +435,11 @@ Creates and runs virtual machines on Google Cloud Platform.
 
 - [Documentation](https://cloud.google.com/compute/)
 - [API details](https://pub.dev/documentation/googleapis/5.0.2-dev/compute.v1/compute.v1-library.html)
+
+#### Connectors API - `connectors.v1`
+
+- [Documentation](https://cloud.google.com/apigee/docs/api-platform/connectors/about-connectors)
+- [API details](https://pub.dev/documentation/googleapis/5.0.2-dev/connectors.v1/connectors.v1-library.html)
 
 #### Contact Center AI Insights API - `contactcenterinsights.v1`
 

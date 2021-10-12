@@ -36,6 +36,7 @@ packages:
     - appengine:v1 # https://cloud.google.com/appengine/docs/admin-api/
     - artifactregistry:v1
     - assuredworkloads:v1
+    - authorizedbuyersmarketplace:v1
     - baremetalsolution:v1
     - bigquery:v2 # https://developers.google.com/bigquery/
     - bigquerydatatransfer:v1 # https://cloud.google.com/bigquery/transfer/
@@ -72,6 +73,7 @@ packages:
     - cloudtrace:v2 # https://cloud.google.com/cloud-trace/
     - composer:v1 # https://cloud.google.com/composer/
     - compute:v1 # https://developers.google.com/compute/
+    - connectors:v1
     - contactcenterinsights:v1
     - container:v1 # https://cloud.google.com/container-engine/
     - content:v2.1 # https://developers.google.com/shopping-content/
@@ -312,7 +314,6 @@ skipped_apis:
 - dns:v1beta2 # v1 included
 - documentai:v1beta2 # v1beta3 included
 - domains:v1alpha2 # v1beta1 included
-- doubleclickbidmanager:v1 # v1.1 included
 - eventarc:v1beta1 # v1 included
 - file:v1beta1
 - firebasehosting:v1beta1 # v1 included

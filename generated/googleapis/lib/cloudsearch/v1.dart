@@ -50,6 +50,7 @@
 ///     - [StatsSessionSearchapplicationsResource]
 ///   - [StatsUserResource]
 ///     - [StatsUserSearchapplicationsResource]
+/// - [V1Resource]
 library cloudsearch.v1;
 
 import 'dart:async' as async;
@@ -125,6 +126,7 @@ class CloudSearchApi {
   QueryResource get query => QueryResource(_requester);
   SettingsResource get settings => SettingsResource(_requester);
   StatsResource get stats => StatsResource(_requester);
+  V1Resource get v1 => V1Resource(_requester);
 
   CloudSearchApi(http.Client client,
       {core.String rootUrl = 'https://cloudsearch.googleapis.com/',
@@ -2649,6 +2651,50 @@ class StatsUserSearchapplicationsResource {
   }
 }
 
+class V1Resource {
+  final commons.ApiRequester _requester;
+
+  V1Resource(commons.ApiRequester client) : _requester = client;
+
+  /// Initializes the customer.
+  ///
+  /// **Note:** This API requires an admin account to execute.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> initializeCustomer(
+    InitializeCustomerRequest request, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    const _url = 'v1:initializeCustomer';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+}
+
 /// Represents the settings for Cloud audit logging
 class AuditLoggingSettings {
   /// Indicates whether audit logging is on/off for admin activity read APIs
@@ -4603,6 +4649,9 @@ class IndexItemRequest {
         if (mode != null) 'mode': mode!,
       };
 }
+
+/// Request message for `InitializeCustomer` method.
+typedef InitializeCustomerRequest = $Empty;
 
 /// Used to provide a search operator for integer properties.
 ///

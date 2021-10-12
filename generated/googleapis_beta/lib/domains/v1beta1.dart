@@ -413,10 +413,12 @@ class ProjectsLocationsRegistrationsResource {
 
   /// Deletes a `Registration` resource.
   ///
-  /// For `Registration` resources , this method works if: * `state` is
-  /// `EXPORTED` with `expire_time` in the past * `state` is
-  /// `REGISTRATION_FAILED` When an active domain is successfully deleted, you
-  /// can continue to use the domain in
+  /// For `Registration` resources using usage billing, this method works if: *
+  /// `state` is `EXPORTED` with `expire_time` in the past * `state` is
+  /// `REGISTRATION_FAILED` * `state` is `TRANSFER_FAILED` This method works on
+  /// any `Registration` resource using subscription billing, provided that the
+  /// resource was created at least 1 day in the past. When an active domain is
+  /// successfully deleted, you can continue to use the domain in
   /// [Google Domains](https://domains.google/) until it expires. The calling
   /// user becomes the domain's sole owner in Google Domains, and permissions
   /// for the domain are subsequently managed there. The domain will not renew
@@ -906,6 +908,54 @@ class ProjectsLocationsRegistrationsResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
+  /// Gets parameters needed to transfer a domain name from another registrar to
+  /// Cloud Domains.
+  ///
+  /// For domains managed by Google Domains, transferring to Cloud Domains is
+  /// not yet supported. Use the returned values to call `TransferDomain`.
+  ///
+  /// Request parameters:
+  ///
+  /// [location] - Required. The location. Must be in the format `projects / *
+  /// /locations / * `.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [domainName] - Required. The domain name. Unicode domain names must be
+  /// expressed in Punycode format.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [RetrieveTransferParametersResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<RetrieveTransferParametersResponse> retrieveTransferParameters(
+    core.String location, {
+    core.String? domainName,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (domainName != null) 'domainName': [domainName],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1beta1/' +
+        core.Uri.encodeFull('$location') +
+        '/registrations:retrieveTransferParameters';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return RetrieveTransferParametersResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
   /// Searches for available domain names similar to the provided query.
   ///
   /// Availability results from this method are approximate; call
@@ -1048,6 +1098,64 @@ class ProjectsLocationsRegistrationsResource {
     );
     return TestIamPermissionsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Transfers a domain name from another registrar to Cloud Domains.
+  ///
+  /// For domains managed by Google Domains, transferring to Cloud Domains is
+  /// not yet supported. Before calling this method, go to the domain's current
+  /// registrar to unlock the domain for transfer and retrieve the domain's
+  /// transfer authorization code. Then call `RetrieveTransferParameters` to
+  /// confirm that the domain is unlocked and to get values needed to build a
+  /// call to this method. A successful call creates a `Registration` resource
+  /// in state `TRANSFER_PENDING`. It can take several days to complete the
+  /// transfer process. The registrant can often speed up this process by
+  /// approving the transfer through the current registrar, either by clicking a
+  /// link in an email from the registrar or by visiting the registrar's
+  /// website. A few minutes after transfer approval, the resource transitions
+  /// to state `ACTIVE`, indicating that the transfer was successful. If the
+  /// transfer is rejected or the request expires without being approved, the
+  /// resource can end up in state `TRANSFER_FAILED`. If transfer fails, you can
+  /// safely delete the resource and retry the transfer.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource of the `Registration`. Must be in
+  /// the format `projects / * /locations / * `.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> transfer(
+    TransferDomainRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url =
+        'v1beta1/' + core.Uri.encodeFull('$parent') + '/registrations:transfer';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2126,7 +2234,11 @@ class Policy {
   ///
   /// Optionally, may specify a `condition` that determines how and when the
   /// `bindings` are applied. Each of the `bindings` must contain at least one
-  /// member.
+  /// member. The `bindings` in a `Policy` can refer to up to 1,500 members; up
+  /// to 250 of these members can be Google groups. Each occurrence of a member
+  /// counts towards these limits. For example, if the `bindings` grant 50
+  /// different roles to `user:alice@example.com`, and not to any other member,
+  /// then you can add another 1,450 members to the `bindings` in the `Policy`.
   core.List<Binding>? bindings;
 
   /// `etag` is used for optimistic concurrency control as a way to help prevent
@@ -2368,11 +2480,17 @@ class RegisterParameters {
 /// The `Registration` resource facilitates managing and configuring domain name
 /// registrations.
 ///
-/// To create a new `Registration` resource, find a suitable domain name by
-/// calling the `SearchDomains` method with a query to see available domain name
-/// options. After choosing a name, call `RetrieveRegisterParameters` to ensure
+/// There are several ways to create a new `Registration` resource: To create a
+/// new `Registration` resource, find a suitable domain name by calling the
+/// `SearchDomains` method with a query to see available domain name options.
+/// After choosing a name, call `RetrieveRegisterParameters` to ensure
 /// availability and obtain information like pricing, which is needed to build a
-/// call to `RegisterDomain`.
+/// call to `RegisterDomain`. Another way to create a new `Registration` is to
+/// transfer an existing domain from another registrar. First, go to the current
+/// registrar to unlock the domain for transfer and retrieve the domain's
+/// transfer authorization code. Then call `RetrieveTransferParameters` to
+/// confirm that the domain is unlocked and to get values needed to build a call
+/// to `TransferDomain`.
 class Registration {
   /// Settings for contact information linked to the `Registration`.
   ///
@@ -2446,6 +2564,13 @@ class Registration {
   /// - "REGISTRATION_PENDING" : The domain is being registered.
   /// - "REGISTRATION_FAILED" : The domain registration failed. You can delete
   /// resources in this state to allow registration to be retried.
+  /// - "TRANSFER_PENDING" : Domain transfer from another registrar to Cloud
+  /// Domains is in progress. The domain's current registrar may require action
+  /// to complete the transfer. Check emails from the domain's current registrar
+  /// to the domain's current registrant for instructions.
+  /// - "TRANSFER_FAILED" : The attempt to transfer the domain from another
+  /// registrar to Cloud Domains failed. You can delete resources in this state
+  /// to allow transfer to be retried.
   /// - "ACTIVE" : The domain is registered and operational. The domain renews
   /// automatically as long as it remains in this state.
   /// - "SUSPENDED" : The domain is suspended and inoperative. For more details,
@@ -2572,6 +2697,29 @@ class RetrieveRegisterParametersResponse {
       };
 }
 
+/// Response for the `RetrieveTransferParameters` method.
+class RetrieveTransferParametersResponse {
+  /// Parameters to use when calling the `TransferDomain` method.
+  TransferParameters? transferParameters;
+
+  RetrieveTransferParametersResponse({
+    this.transferParameters,
+  });
+
+  RetrieveTransferParametersResponse.fromJson(core.Map _json)
+      : this(
+          transferParameters: _json.containsKey('transferParameters')
+              ? TransferParameters.fromJson(_json['transferParameters']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (transferParameters != null)
+          'transferParameters': transferParameters!,
+      };
+}
+
 /// Response for the `SearchDomains` method.
 class SearchDomainsResponse {
   /// Results of the domain name search.
@@ -2648,3 +2796,156 @@ typedef TestIamPermissionsRequest = $TestIamPermissionsRequest;
 
 /// Response message for `TestIamPermissions` method.
 typedef TestIamPermissionsResponse = $TestIamPermissionsResponse;
+
+/// Request for the `TransferDomain` method.
+class TransferDomainRequest {
+  /// The domain's transfer authorization code.
+  ///
+  /// You can obtain this from the domain's current registrar.
+  AuthorizationCode? authorizationCode;
+
+  /// The list of contact notices that you acknowledge.
+  ///
+  /// The notices needed here depend on the values specified in
+  /// `registration.contact_settings`.
+  core.List<core.String>? contactNotices;
+
+  /// The complete `Registration` resource to be created.
+  ///
+  /// You can leave `registration.dns_settings` unset to import the domain's
+  /// current DNS configuration from its current registrar. Use this option only
+  /// if you are sure that the domain's current DNS service will not cease upon
+  /// transfer, as is often the case for DNS services provided for free by the
+  /// registrar.
+  ///
+  /// Required.
+  Registration? registration;
+
+  /// Validate the request without actually transferring the domain.
+  core.bool? validateOnly;
+
+  /// Acknowledgement of the price to transfer or renew the domain for one year.
+  ///
+  /// Call `RetrieveTransferParameters` to obtain the price, which you must
+  /// acknowledge.
+  ///
+  /// Required.
+  Money? yearlyPrice;
+
+  TransferDomainRequest({
+    this.authorizationCode,
+    this.contactNotices,
+    this.registration,
+    this.validateOnly,
+    this.yearlyPrice,
+  });
+
+  TransferDomainRequest.fromJson(core.Map _json)
+      : this(
+          authorizationCode: _json.containsKey('authorizationCode')
+              ? AuthorizationCode.fromJson(_json['authorizationCode']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          contactNotices: _json.containsKey('contactNotices')
+              ? (_json['contactNotices'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          registration: _json.containsKey('registration')
+              ? Registration.fromJson(
+                  _json['registration'] as core.Map<core.String, core.dynamic>)
+              : null,
+          validateOnly: _json.containsKey('validateOnly')
+              ? _json['validateOnly'] as core.bool
+              : null,
+          yearlyPrice: _json.containsKey('yearlyPrice')
+              ? Money.fromJson(
+                  _json['yearlyPrice'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (authorizationCode != null) 'authorizationCode': authorizationCode!,
+        if (contactNotices != null) 'contactNotices': contactNotices!,
+        if (registration != null) 'registration': registration!,
+        if (validateOnly != null) 'validateOnly': validateOnly!,
+        if (yearlyPrice != null) 'yearlyPrice': yearlyPrice!,
+      };
+}
+
+/// Parameters required to transfer a domain from another registrar.
+class TransferParameters {
+  /// The registrar that currently manages the domain.
+  core.String? currentRegistrar;
+
+  /// The domain name.
+  ///
+  /// Unicode domain names are expressed in Punycode format.
+  core.String? domainName;
+
+  /// The name servers that currently store the configuration of the domain.
+  core.List<core.String>? nameServers;
+
+  /// Contact privacy options that the domain supports.
+  core.List<core.String>? supportedPrivacy;
+
+  /// Indicates whether the domain is protected by a transfer lock.
+  ///
+  /// For a transfer to succeed, this must show `UNLOCKED`. To unlock a domain,
+  /// go to its current registrar.
+  /// Possible string values are:
+  /// - "TRANSFER_LOCK_STATE_UNSPECIFIED" : The state is unspecified.
+  /// - "UNLOCKED" : The domain is unlocked and can be transferred to another
+  /// registrar.
+  /// - "LOCKED" : The domain is locked and cannot be transferred to another
+  /// registrar.
+  core.String? transferLockState;
+
+  /// Price to transfer or renew the domain for one year.
+  Money? yearlyPrice;
+
+  TransferParameters({
+    this.currentRegistrar,
+    this.domainName,
+    this.nameServers,
+    this.supportedPrivacy,
+    this.transferLockState,
+    this.yearlyPrice,
+  });
+
+  TransferParameters.fromJson(core.Map _json)
+      : this(
+          currentRegistrar: _json.containsKey('currentRegistrar')
+              ? _json['currentRegistrar'] as core.String
+              : null,
+          domainName: _json.containsKey('domainName')
+              ? _json['domainName'] as core.String
+              : null,
+          nameServers: _json.containsKey('nameServers')
+              ? (_json['nameServers'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          supportedPrivacy: _json.containsKey('supportedPrivacy')
+              ? (_json['supportedPrivacy'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          transferLockState: _json.containsKey('transferLockState')
+              ? _json['transferLockState'] as core.String
+              : null,
+          yearlyPrice: _json.containsKey('yearlyPrice')
+              ? Money.fromJson(
+                  _json['yearlyPrice'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (currentRegistrar != null) 'currentRegistrar': currentRegistrar!,
+        if (domainName != null) 'domainName': domainName!,
+        if (nameServers != null) 'nameServers': nameServers!,
+        if (supportedPrivacy != null) 'supportedPrivacy': supportedPrivacy!,
+        if (transferLockState != null) 'transferLockState': transferLockState!,
+        if (yearlyPrice != null) 'yearlyPrice': yearlyPrice!,
+      };
+}

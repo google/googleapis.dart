@@ -4439,6 +4439,7 @@ api.GoogleCloudDialogflowCxV3QueryResult
   if (buildCounterGoogleCloudDialogflowCxV3QueryResult < 3) {
     o.currentPage = buildGoogleCloudDialogflowCxV3Page();
     o.diagnosticInfo = buildUnnamed70();
+    o.dtmf = buildGoogleCloudDialogflowCxV3DtmfInput();
     o.intent = buildGoogleCloudDialogflowCxV3Intent();
     o.intentDetectionConfidence = 42.0;
     o.languageCode = 'foo';
@@ -4464,6 +4465,7 @@ void checkGoogleCloudDialogflowCxV3QueryResult(
   if (buildCounterGoogleCloudDialogflowCxV3QueryResult < 3) {
     checkGoogleCloudDialogflowCxV3Page(o.currentPage!);
     checkUnnamed70(o.diagnosticInfo!);
+    checkGoogleCloudDialogflowCxV3DtmfInput(o.dtmf!);
     checkGoogleCloudDialogflowCxV3Intent(o.intent!);
     unittest.expect(
       o.intentDetectionConfidence!,
