@@ -1,6 +1,10 @@
-## 5.0.2-dev
+## 6.0.0
 
-- Reuse empty types using `typedef`.
+- Introduce a new `$shared` library that contains identical classes across
+  libraries. Reduces the size of the generated package and (in theory) could
+  allow better code sharing.
+- Drop explicit `toJson` in many cases. We assume that types defined in this
+  package are passed to Dart's JSON serialization logic.
 - Require Dart 2.13 or greater.
 
 ## 5.0.0
