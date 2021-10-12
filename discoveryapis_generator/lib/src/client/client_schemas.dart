@@ -209,12 +209,12 @@ DartSchemaTypeDB parseSchemas(
     });
 
     // Resolve all forward references and save list in [db.dartTypes].
-    db.dartTypes = db.dartTypes.map((type) => type!.resolve(db)).toList();
+    db.dartTypes = db.dartTypes.map((type) => type.resolve(db)).toList();
 
     // Build map of all top level dart schema classes which will be represented
     // as named dart classes.
     db.dartClassTypes.addAll(db.dartTypes
-        .where((type) => type!.className != null)
+        .where((type) => type.className != null)
         .cast<ComplexDartSchemaType>());
   }
 
