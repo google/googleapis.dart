@@ -1393,7 +1393,8 @@ class $ChangeLog {
   core.Map<core.String, core.dynamic> toJson() => {
         if (accountId != null) 'accountId': accountId!,
         if (action != null) 'action': action!,
-        if (changeTime != null) 'changeTime': changeTime!.toIso8601String(),
+        if (changeTime != null)
+          'changeTime': changeTime!.toUtc().toIso8601String(),
         if (fieldName != null) 'fieldName': fieldName!,
         if (id != null) 'id': id!,
         if (kind != null) 'kind': kind!,

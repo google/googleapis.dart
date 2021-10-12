@@ -375,8 +375,8 @@ api.WmxSitemap buildWmxSitemap() {
     o.errors = 'foo';
     o.isPending = true;
     o.isSitemapsIndex = true;
-    o.lastDownloaded = core.DateTime.parse('2002-02-27T14:01:02');
-    o.lastSubmitted = core.DateTime.parse('2002-02-27T14:01:02');
+    o.lastDownloaded = core.DateTime.parse('2002-02-27T14:01:02Z');
+    o.lastSubmitted = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.path = 'foo';
     o.type = 'foo';
     o.warnings = 'foo';
@@ -397,11 +397,11 @@ void checkWmxSitemap(api.WmxSitemap o) {
     unittest.expect(o.isSitemapsIndex!, unittest.isTrue);
     unittest.expect(
       o.lastDownloaded!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
     unittest.expect(
       o.lastSubmitted!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
     unittest.expect(
       o.path!,

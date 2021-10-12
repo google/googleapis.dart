@@ -12223,7 +12223,7 @@ class Ad {
         if (deliverySchedule != null) 'deliverySchedule': deliverySchedule!,
         if (dynamicClickTracker != null)
           'dynamicClickTracker': dynamicClickTracker!,
-        if (endTime != null) 'endTime': endTime!.toIso8601String(),
+        if (endTime != null) 'endTime': endTime!.toUtc().toIso8601String(),
         if (eventTagOverrides != null) 'eventTagOverrides': eventTagOverrides!,
         if (geoTargeting != null) 'geoTargeting': geoTargeting!,
         if (id != null) 'id': id!,
@@ -12241,7 +12241,8 @@ class Ad {
         if (size != null) 'size': size!,
         if (sslCompliant != null) 'sslCompliant': sslCompliant!,
         if (sslRequired != null) 'sslRequired': sslRequired!,
-        if (startTime != null) 'startTime': startTime!.toIso8601String(),
+        if (startTime != null)
+          'startTime': startTime!.toUtc().toIso8601String(),
         if (subaccountId != null) 'subaccountId': subaccountId!,
         if (targetingTemplateId != null)
           'targetingTemplateId': targetingTemplateId!,
@@ -16050,12 +16051,13 @@ class CreativeAssignment {
         if (creativeId != null) 'creativeId': creativeId!,
         if (creativeIdDimensionValue != null)
           'creativeIdDimensionValue': creativeIdDimensionValue!,
-        if (endTime != null) 'endTime': endTime!.toIso8601String(),
+        if (endTime != null) 'endTime': endTime!.toUtc().toIso8601String(),
         if (richMediaExitOverrides != null)
           'richMediaExitOverrides': richMediaExitOverrides!,
         if (sequence != null) 'sequence': sequence!,
         if (sslCompliant != null) 'sslCompliant': sslCompliant!,
-        if (startTime != null) 'startTime': startTime!.toIso8601String(),
+        if (startTime != null)
+          'startTime': startTime!.toUtc().toIso8601String(),
         if (weight != null) 'weight': weight!,
       };
 }
@@ -20569,7 +20571,7 @@ class OrderDocument {
         if (lastSentRecipients != null)
           'lastSentRecipients': lastSentRecipients!,
         if (lastSentTime != null)
-          'lastSentTime': lastSentTime!.toIso8601String(),
+          'lastSentTime': lastSentTime!.toUtc().toIso8601String(),
         if (orderId != null) 'orderId': orderId!,
         if (projectId != null) 'projectId': projectId!,
         if (signed != null) 'signed': signed!,

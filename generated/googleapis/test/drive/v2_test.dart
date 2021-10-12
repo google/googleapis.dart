@@ -839,7 +839,7 @@ api.Change buildChange() {
     o.fileId = 'foo';
     o.id = 'foo';
     o.kind = 'foo';
-    o.modificationDate = core.DateTime.parse('2002-02-27T14:01:02');
+    o.modificationDate = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.selfLink = 'foo';
     o.teamDrive = buildTeamDrive();
     o.teamDriveId = 'foo';
@@ -877,7 +877,7 @@ void checkChange(api.Change o) {
     );
     unittest.expect(
       o.modificationDate!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
     unittest.expect(
       o.selfLink!,
@@ -1179,13 +1179,13 @@ api.Comment buildComment() {
     o.commentId = 'foo';
     o.content = 'foo';
     o.context = buildCommentContext();
-    o.createdDate = core.DateTime.parse('2002-02-27T14:01:02');
+    o.createdDate = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.deleted = true;
     o.fileId = 'foo';
     o.fileTitle = 'foo';
     o.htmlContent = 'foo';
     o.kind = 'foo';
-    o.modifiedDate = core.DateTime.parse('2002-02-27T14:01:02');
+    o.modifiedDate = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.replies = buildUnnamed23();
     o.selfLink = 'foo';
     o.status = 'foo';
@@ -1213,7 +1213,7 @@ void checkComment(api.Comment o) {
     checkCommentContext(o.context!);
     unittest.expect(
       o.createdDate!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
     unittest.expect(o.deleted!, unittest.isTrue);
     unittest.expect(
@@ -1234,7 +1234,7 @@ void checkComment(api.Comment o) {
     );
     unittest.expect(
       o.modifiedDate!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
     checkUnnamed23(o.replies!);
     unittest.expect(
@@ -1306,11 +1306,11 @@ api.CommentReply buildCommentReply() {
   if (buildCounterCommentReply < 3) {
     o.author = buildUser();
     o.content = 'foo';
-    o.createdDate = core.DateTime.parse('2002-02-27T14:01:02');
+    o.createdDate = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.deleted = true;
     o.htmlContent = 'foo';
     o.kind = 'foo';
-    o.modifiedDate = core.DateTime.parse('2002-02-27T14:01:02');
+    o.modifiedDate = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.replyId = 'foo';
     o.verb = 'foo';
   }
@@ -1328,7 +1328,7 @@ void checkCommentReply(api.CommentReply o) {
     );
     unittest.expect(
       o.createdDate!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
     unittest.expect(o.deleted!, unittest.isTrue);
     unittest.expect(
@@ -1341,7 +1341,7 @@ void checkCommentReply(api.CommentReply o) {
     );
     unittest.expect(
       o.modifiedDate!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
     unittest.expect(
       o.replyId!,
@@ -1413,7 +1413,7 @@ api.ContentRestriction buildContentRestriction() {
     o.readOnly = true;
     o.reason = 'foo';
     o.restrictingUser = buildUser();
-    o.restrictionDate = core.DateTime.parse('2002-02-27T14:01:02');
+    o.restrictionDate = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.type = 'foo';
   }
   buildCounterContentRestriction--;
@@ -1431,7 +1431,7 @@ void checkContentRestriction(api.ContentRestriction o) {
     checkUser(o.restrictingUser!);
     unittest.expect(
       o.restrictionDate!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
     unittest.expect(
       o.type!,
@@ -1566,7 +1566,7 @@ api.Drive buildDrive() {
     o.backgroundImageLink = 'foo';
     o.capabilities = buildDriveCapabilities();
     o.colorRgb = 'foo';
-    o.createdDate = core.DateTime.parse('2002-02-27T14:01:02');
+    o.createdDate = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.hidden = true;
     o.id = 'foo';
     o.kind = 'foo';
@@ -1593,7 +1593,7 @@ void checkDrive(api.Drive o) {
     );
     unittest.expect(
       o.createdDate!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
     unittest.expect(o.hidden!, unittest.isTrue);
     unittest.expect(
@@ -2208,7 +2208,7 @@ api.File buildFile() {
     o.contentRestrictions = buildUnnamed27();
     o.copyRequiresWriterPermission = true;
     o.copyable = true;
-    o.createdDate = core.DateTime.parse('2002-02-27T14:01:02');
+    o.createdDate = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.defaultOpenWithLink = 'foo';
     o.description = 'foo';
     o.downloadUrl = 'foo';
@@ -2234,13 +2234,13 @@ api.File buildFile() {
     o.labels = buildFileLabels();
     o.lastModifyingUser = buildUser();
     o.lastModifyingUserName = 'foo';
-    o.lastViewedByMeDate = core.DateTime.parse('2002-02-27T14:01:02');
+    o.lastViewedByMeDate = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.linkShareMetadata = buildFileLinkShareMetadata();
-    o.markedViewedByMeDate = core.DateTime.parse('2002-02-27T14:01:02');
+    o.markedViewedByMeDate = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.md5Checksum = 'foo';
     o.mimeType = 'foo';
-    o.modifiedByMeDate = core.DateTime.parse('2002-02-27T14:01:02');
-    o.modifiedDate = core.DateTime.parse('2002-02-27T14:01:02');
+    o.modifiedByMeDate = core.DateTime.parse('2002-02-27T14:01:02Z');
+    o.modifiedDate = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.openWithLinks = buildUnnamed29();
     o.originalFilename = 'foo';
     o.ownedByMe = true;
@@ -2255,7 +2255,7 @@ api.File buildFile() {
     o.selfLink = 'foo';
     o.shareable = true;
     o.shared = true;
-    o.sharedWithMeDate = core.DateTime.parse('2002-02-27T14:01:02');
+    o.sharedWithMeDate = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.sharingUser = buildUser();
     o.shortcutDetails = buildFileShortcutDetails();
     o.spaces = buildUnnamed36();
@@ -2264,7 +2264,7 @@ api.File buildFile() {
     o.thumbnailLink = 'foo';
     o.thumbnailVersion = 'foo';
     o.title = 'foo';
-    o.trashedDate = core.DateTime.parse('2002-02-27T14:01:02');
+    o.trashedDate = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.trashingUser = buildUser();
     o.userPermission = buildPermission();
     o.version = 'foo';
@@ -2293,7 +2293,7 @@ void checkFile(api.File o) {
     unittest.expect(o.copyable!, unittest.isTrue);
     unittest.expect(
       o.createdDate!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
     unittest.expect(
       o.defaultOpenWithLink!,
@@ -2367,12 +2367,12 @@ void checkFile(api.File o) {
     );
     unittest.expect(
       o.lastViewedByMeDate!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
     checkFileLinkShareMetadata(o.linkShareMetadata!);
     unittest.expect(
       o.markedViewedByMeDate!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
     unittest.expect(
       o.md5Checksum!,
@@ -2384,11 +2384,11 @@ void checkFile(api.File o) {
     );
     unittest.expect(
       o.modifiedByMeDate!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
     unittest.expect(
       o.modifiedDate!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
     checkUnnamed29(o.openWithLinks!);
     unittest.expect(
@@ -2418,7 +2418,7 @@ void checkFile(api.File o) {
     unittest.expect(o.shared!, unittest.isTrue);
     unittest.expect(
       o.sharedWithMeDate!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
     checkUser(o.sharingUser!);
     checkFileShortcutDetails(o.shortcutDetails!);
@@ -2442,7 +2442,7 @@ void checkFile(api.File o) {
     );
     unittest.expect(
       o.trashedDate!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
     checkUser(o.trashingUser!);
     checkPermission(o.userPermission!);
@@ -2809,7 +2809,7 @@ api.Permission buildPermission() {
     o.domain = 'foo';
     o.emailAddress = 'foo';
     o.etag = 'foo';
-    o.expirationDate = core.DateTime.parse('2002-02-27T14:01:02');
+    o.expirationDate = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.id = 'foo';
     o.kind = 'foo';
     o.name = 'foo';
@@ -2850,7 +2850,7 @@ void checkPermission(api.Permission o) {
     );
     unittest.expect(
       o.expirationDate!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
     unittest.expect(
       o.id!,
@@ -3096,7 +3096,7 @@ api.Revision buildRevision() {
     o.lastModifyingUserName = 'foo';
     o.md5Checksum = 'foo';
     o.mimeType = 'foo';
-    o.modifiedDate = core.DateTime.parse('2002-02-27T14:01:02');
+    o.modifiedDate = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.originalFilename = 'foo';
     o.pinned = true;
     o.publishAuto = true;
@@ -3148,7 +3148,7 @@ void checkRevision(api.Revision o) {
     );
     unittest.expect(
       o.modifiedDate!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
     unittest.expect(
       o.originalFilename!,
@@ -3374,7 +3374,7 @@ api.TeamDrive buildTeamDrive() {
     o.backgroundImageLink = 'foo';
     o.capabilities = buildTeamDriveCapabilities();
     o.colorRgb = 'foo';
-    o.createdDate = core.DateTime.parse('2002-02-27T14:01:02');
+    o.createdDate = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.id = 'foo';
     o.kind = 'foo';
     o.name = 'foo';
@@ -3400,7 +3400,7 @@ void checkTeamDrive(api.TeamDrive o) {
     );
     unittest.expect(
       o.createdDate!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
     unittest.expect(
       o.id!,

@@ -225,7 +225,7 @@ api.DataTransfer buildDataTransfer() {
     o.newOwnerUserId = 'foo';
     o.oldOwnerUserId = 'foo';
     o.overallTransferStatusCode = 'foo';
-    o.requestTime = core.DateTime.parse('2002-02-27T14:01:02');
+    o.requestTime = core.DateTime.parse('2002-02-27T14:01:02Z');
   }
   buildCounterDataTransfer--;
   return o;
@@ -261,7 +261,7 @@ void checkDataTransfer(api.DataTransfer o) {
     );
     unittest.expect(
       o.requestTime!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
   }
   buildCounterDataTransfer--;

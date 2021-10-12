@@ -836,9 +836,9 @@ class WmxSitemap {
         if (isPending != null) 'isPending': isPending!,
         if (isSitemapsIndex != null) 'isSitemapsIndex': isSitemapsIndex!,
         if (lastDownloaded != null)
-          'lastDownloaded': lastDownloaded!.toIso8601String(),
+          'lastDownloaded': lastDownloaded!.toUtc().toIso8601String(),
         if (lastSubmitted != null)
-          'lastSubmitted': lastSubmitted!.toIso8601String(),
+          'lastSubmitted': lastSubmitted!.toUtc().toIso8601String(),
         if (path != null) 'path': path!,
         if (type != null) 'type': type!,
         if (warnings != null) 'warnings': warnings!,

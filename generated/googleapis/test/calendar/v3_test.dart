@@ -542,7 +542,7 @@ api.Colors buildColors() {
     o.calendar = buildUnnamed5();
     o.event = buildUnnamed6();
     o.kind = 'foo';
-    o.updated = core.DateTime.parse('2002-02-27T14:01:02');
+    o.updated = core.DateTime.parse('2002-02-27T14:01:02Z');
   }
   buildCounterColors--;
   return o;
@@ -559,7 +559,7 @@ void checkColors(api.Colors o) {
     );
     unittest.expect(
       o.updated!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
   }
   buildCounterColors--;
@@ -1219,7 +1219,7 @@ api.Event buildEvent() {
     o.attendeesOmitted = true;
     o.colorId = 'foo';
     o.conferenceData = buildConferenceData();
-    o.created = core.DateTime.parse('2002-02-27T14:01:02');
+    o.created = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.creator = buildEventCreator();
     o.description = 'foo';
     o.end = buildEventDateTime();
@@ -1250,7 +1250,7 @@ api.Event buildEvent() {
     o.status = 'foo';
     o.summary = 'foo';
     o.transparency = 'foo';
-    o.updated = core.DateTime.parse('2002-02-27T14:01:02');
+    o.updated = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.visibility = 'foo';
   }
   buildCounterEvent--;
@@ -1271,7 +1271,7 @@ void checkEvent(api.Event o) {
     checkConferenceData(o.conferenceData!);
     unittest.expect(
       o.created!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
     checkEventCreator(o.creator!);
     unittest.expect(
@@ -1347,7 +1347,7 @@ void checkEvent(api.Event o) {
     );
     unittest.expect(
       o.updated!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
     unittest.expect(
       o.visibility!,
@@ -1460,7 +1460,7 @@ api.EventDateTime buildEventDateTime() {
   buildCounterEventDateTime++;
   if (buildCounterEventDateTime < 3) {
     o.date = core.DateTime.parse('2002-02-27T14:01:02Z');
-    o.dateTime = core.DateTime.parse('2002-02-27T14:01:02');
+    o.dateTime = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.timeZone = 'foo';
   }
   buildCounterEventDateTime--;
@@ -1476,7 +1476,7 @@ void checkEventDateTime(api.EventDateTime o) {
     );
     unittest.expect(
       o.dateTime!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
     unittest.expect(
       o.timeZone!,
@@ -1550,7 +1550,7 @@ api.Events buildEvents() {
     o.nextSyncToken = 'foo';
     o.summary = 'foo';
     o.timeZone = 'foo';
-    o.updated = core.DateTime.parse('2002-02-27T14:01:02');
+    o.updated = core.DateTime.parse('2002-02-27T14:01:02Z');
   }
   buildCounterEvents--;
   return o;
@@ -1595,7 +1595,7 @@ void checkEvents(api.Events o) {
     );
     unittest.expect(
       o.updated!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
   }
   buildCounterEvents--;
@@ -1712,8 +1712,8 @@ api.FreeBusyRequest buildFreeBusyRequest() {
     o.calendarExpansionMax = 42;
     o.groupExpansionMax = 42;
     o.items = buildUnnamed24();
-    o.timeMax = core.DateTime.parse('2002-02-27T14:01:02');
-    o.timeMin = core.DateTime.parse('2002-02-27T14:01:02');
+    o.timeMax = core.DateTime.parse('2002-02-27T14:01:02Z');
+    o.timeMin = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.timeZone = 'foo';
   }
   buildCounterFreeBusyRequest--;
@@ -1734,11 +1734,11 @@ void checkFreeBusyRequest(api.FreeBusyRequest o) {
     checkUnnamed24(o.items!);
     unittest.expect(
       o.timeMax!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
     unittest.expect(
       o.timeMin!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
     unittest.expect(
       o.timeZone!,
@@ -1800,8 +1800,8 @@ api.FreeBusyResponse buildFreeBusyResponse() {
     o.calendars = buildUnnamed25();
     o.groups = buildUnnamed26();
     o.kind = 'foo';
-    o.timeMax = core.DateTime.parse('2002-02-27T14:01:02');
-    o.timeMin = core.DateTime.parse('2002-02-27T14:01:02');
+    o.timeMax = core.DateTime.parse('2002-02-27T14:01:02Z');
+    o.timeMin = core.DateTime.parse('2002-02-27T14:01:02Z');
   }
   buildCounterFreeBusyResponse--;
   return o;
@@ -1818,11 +1818,11 @@ void checkFreeBusyResponse(api.FreeBusyResponse o) {
     );
     unittest.expect(
       o.timeMax!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
     unittest.expect(
       o.timeMin!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
   }
   buildCounterFreeBusyResponse--;
@@ -1920,8 +1920,8 @@ api.TimePeriod buildTimePeriod() {
   final o = api.TimePeriod();
   buildCounterTimePeriod++;
   if (buildCounterTimePeriod < 3) {
-    o.end = core.DateTime.parse('2002-02-27T14:01:02');
-    o.start = core.DateTime.parse('2002-02-27T14:01:02');
+    o.end = core.DateTime.parse('2002-02-27T14:01:02Z');
+    o.start = core.DateTime.parse('2002-02-27T14:01:02Z');
   }
   buildCounterTimePeriod--;
   return o;
@@ -1932,11 +1932,11 @@ void checkTimePeriod(api.TimePeriod o) {
   if (buildCounterTimePeriod < 3) {
     unittest.expect(
       o.end!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
     unittest.expect(
       o.start!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
   }
   buildCounterTimePeriod--;
@@ -4453,8 +4453,8 @@ void main() {
       final arg_originalStart = 'foo';
       final arg_pageToken = 'foo';
       final arg_showDeleted = true;
-      final arg_timeMax = core.DateTime.parse('2002-02-27T14:01:02');
-      final arg_timeMin = core.DateTime.parse('2002-02-27T14:01:02');
+      final arg_timeMax = core.DateTime.parse('2002-02-27T14:01:02Z');
+      final arg_timeMin = core.DateTime.parse('2002-02-27T14:01:02Z');
       final arg_timeZone = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4599,10 +4599,10 @@ void main() {
       final arg_showHiddenInvitations = true;
       final arg_singleEvents = true;
       final arg_syncToken = 'foo';
-      final arg_timeMax = core.DateTime.parse('2002-02-27T14:01:02');
-      final arg_timeMin = core.DateTime.parse('2002-02-27T14:01:02');
+      final arg_timeMax = core.DateTime.parse('2002-02-27T14:01:02Z');
+      final arg_timeMin = core.DateTime.parse('2002-02-27T14:01:02Z');
       final arg_timeZone = 'foo';
-      final arg_updatedMin = core.DateTime.parse('2002-02-27T14:01:02');
+      final arg_updatedMin = core.DateTime.parse('2002-02-27T14:01:02Z');
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = (req.url).path;
@@ -5204,10 +5204,10 @@ void main() {
       final arg_showHiddenInvitations = true;
       final arg_singleEvents = true;
       final arg_syncToken = 'foo';
-      final arg_timeMax = core.DateTime.parse('2002-02-27T14:01:02');
-      final arg_timeMin = core.DateTime.parse('2002-02-27T14:01:02');
+      final arg_timeMax = core.DateTime.parse('2002-02-27T14:01:02Z');
+      final arg_timeMin = core.DateTime.parse('2002-02-27T14:01:02Z');
       final arg_timeZone = 'foo';
-      final arg_updatedMin = core.DateTime.parse('2002-02-27T14:01:02');
+      final arg_updatedMin = core.DateTime.parse('2002-02-27T14:01:02Z');
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final obj =

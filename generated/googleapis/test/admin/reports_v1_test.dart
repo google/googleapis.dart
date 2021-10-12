@@ -317,7 +317,7 @@ api.ActivityId buildActivityId() {
   if (buildCounterActivityId < 3) {
     o.applicationName = 'foo';
     o.customerId = 'foo';
-    o.time = core.DateTime.parse('2002-02-27T14:01:02');
+    o.time = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.uniqueQualifier = 'foo';
   }
   buildCounterActivityId--;
@@ -337,7 +337,7 @@ void checkActivityId(api.ActivityId o) {
     );
     unittest.expect(
       o.time!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
     unittest.expect(
       o.uniqueQualifier!,
@@ -657,7 +657,7 @@ api.UsageReportParameters buildUsageReportParameters() {
   buildCounterUsageReportParameters++;
   if (buildCounterUsageReportParameters < 3) {
     o.boolValue = true;
-    o.datetimeValue = core.DateTime.parse('2002-02-27T14:01:02');
+    o.datetimeValue = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.intValue = 'foo';
     o.msgValue = buildUnnamed13();
     o.name = 'foo';
@@ -673,7 +673,7 @@ void checkUsageReportParameters(api.UsageReportParameters o) {
     unittest.expect(o.boolValue!, unittest.isTrue);
     unittest.expect(
       o.datetimeValue!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
     unittest.expect(
       o.intValue!,

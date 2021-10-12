@@ -633,7 +633,7 @@ api.Ad buildAd() {
         buildDefaultClickThroughEventTagProperties();
     o.deliverySchedule = buildDeliverySchedule();
     o.dynamicClickTracker = true;
-    o.endTime = core.DateTime.parse('2002-02-27T14:01:02');
+    o.endTime = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.eventTagOverrides = buildUnnamed10();
     o.geoTargeting = buildGeoTargeting();
     o.id = 'foo';
@@ -648,7 +648,7 @@ api.Ad buildAd() {
     o.size = buildSize();
     o.sslCompliant = true;
     o.sslRequired = true;
-    o.startTime = core.DateTime.parse('2002-02-27T14:01:02');
+    o.startTime = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.subaccountId = 'foo';
     o.targetingTemplateId = 'foo';
     o.technologyTargeting = buildTechnologyTargeting();
@@ -701,7 +701,7 @@ void checkAd(api.Ad o) {
     unittest.expect(o.dynamicClickTracker!, unittest.isTrue);
     unittest.expect(
       o.endTime!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
     checkUnnamed10(o.eventTagOverrides!);
     checkGeoTargeting(o.geoTargeting!);
@@ -728,7 +728,7 @@ void checkAd(api.Ad o) {
     unittest.expect(o.sslRequired!, unittest.isTrue);
     unittest.expect(
       o.startTime!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
     unittest.expect(
       o.subaccountId!,
@@ -1614,7 +1614,7 @@ api.ChangeLog buildChangeLog() {
   if (buildCounterChangeLog < 3) {
     o.accountId = 'foo';
     o.action = 'foo';
-    o.changeTime = core.DateTime.parse('2002-02-27T14:01:02');
+    o.changeTime = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.fieldName = 'foo';
     o.id = 'foo';
     o.kind = 'foo';
@@ -1644,7 +1644,7 @@ void checkChangeLog(api.ChangeLog o) {
     );
     unittest.expect(
       o.changeTime!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
     unittest.expect(
       o.fieldName!,
@@ -3546,11 +3546,11 @@ api.CreativeAssignment buildCreativeAssignment() {
     o.creativeGroupAssignments = buildUnnamed64();
     o.creativeId = 'foo';
     o.creativeIdDimensionValue = buildDimensionValue();
-    o.endTime = core.DateTime.parse('2002-02-27T14:01:02');
+    o.endTime = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.richMediaExitOverrides = buildUnnamed65();
     o.sequence = 42;
     o.sslCompliant = true;
-    o.startTime = core.DateTime.parse('2002-02-27T14:01:02');
+    o.startTime = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.weight = 42;
   }
   buildCounterCreativeAssignment--;
@@ -3572,7 +3572,7 @@ void checkCreativeAssignment(api.CreativeAssignment o) {
     checkDimensionValue(o.creativeIdDimensionValue!);
     unittest.expect(
       o.endTime!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
     checkUnnamed65(o.richMediaExitOverrides!);
     unittest.expect(
@@ -3582,7 +3582,7 @@ void checkCreativeAssignment(api.CreativeAssignment o) {
     unittest.expect(o.sslCompliant!, unittest.isTrue);
     unittest.expect(
       o.startTime!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
     unittest.expect(
       o.weight!,
@@ -7957,7 +7957,7 @@ api.OrderDocument buildOrderDocument() {
     o.id = 'foo';
     o.kind = 'foo';
     o.lastSentRecipients = buildUnnamed128();
-    o.lastSentTime = core.DateTime.parse('2002-02-27T14:01:02');
+    o.lastSentTime = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.orderId = 'foo';
     o.projectId = 'foo';
     o.signed = true;
@@ -8002,7 +8002,7 @@ void checkOrderDocument(api.OrderDocument o) {
     checkUnnamed128(o.lastSentRecipients!);
     unittest.expect(
       o.lastSentTime!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
     unittest.expect(
       o.orderId!,

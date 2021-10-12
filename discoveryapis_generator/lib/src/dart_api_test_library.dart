@@ -699,11 +699,10 @@ class DateTimeSchemaTest extends PrimitiveSchemaTest<DateTimeType> {
   String get declaration => 'core.DateTime';
 
   @override
-  String get newSchemaExpr => "core.DateTime.parse('2002-02-27T14:01:02')";
+  String get newSchemaExpr => "core.DateTime.parse('2002-02-27T14:01:02Z')";
 
   @override
-  String checkSchemaStatement(String o) =>
-      expectEqual(o, "core.DateTime.parse('2002-02-27T14:01:02')");
+  String checkSchemaStatement(String o) => expectEqual(o, newSchemaExpr);
 }
 
 class EnumSchemaTest extends StringSchemaTest {

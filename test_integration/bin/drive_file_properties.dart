@@ -41,7 +41,11 @@ Future<void> main() async {
       await printProperties();
 
       print(prettyJsonEncode(await api.update(
-        File(properties: {'bob': null, 'wynette': 'nice'}),
+        File(
+          // Verifies fix to https://github.com/google/googleapis.dart/issues/79
+          viewedByMeTime: DateTime.now(),
+          properties: {'bob': null, 'wynette': 'nice'},
+        ),
         fileId,
       )));
 

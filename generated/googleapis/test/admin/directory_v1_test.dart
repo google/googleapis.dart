@@ -1091,7 +1091,7 @@ api.ChromeOsDeviceCpuStatusReports buildChromeOsDeviceCpuStatusReports() {
   if (buildCounterChromeOsDeviceCpuStatusReports < 3) {
     o.cpuTemperatureInfo = buildUnnamed17();
     o.cpuUtilizationPercentageInfo = buildUnnamed18();
-    o.reportTime = core.DateTime.parse('2002-02-27T14:01:02');
+    o.reportTime = core.DateTime.parse('2002-02-27T14:01:02Z');
   }
   buildCounterChromeOsDeviceCpuStatusReports--;
   return o;
@@ -1104,7 +1104,7 @@ void checkChromeOsDeviceCpuStatusReports(api.ChromeOsDeviceCpuStatusReports o) {
     checkUnnamed18(o.cpuUtilizationPercentageInfo!);
     unittest.expect(
       o.reportTime!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
   }
   buildCounterChromeOsDeviceCpuStatusReports--;
@@ -1126,7 +1126,7 @@ api.ChromeOsDeviceDeviceFiles buildChromeOsDeviceDeviceFiles() {
   final o = api.ChromeOsDeviceDeviceFiles();
   buildCounterChromeOsDeviceDeviceFiles++;
   if (buildCounterChromeOsDeviceDeviceFiles < 3) {
-    o.createTime = core.DateTime.parse('2002-02-27T14:01:02');
+    o.createTime = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.downloadUrl = 'foo';
     o.name = 'foo';
     o.type = 'foo';
@@ -1140,7 +1140,7 @@ void checkChromeOsDeviceDeviceFiles(api.ChromeOsDeviceDeviceFiles o) {
   if (buildCounterChromeOsDeviceDeviceFiles < 3) {
     unittest.expect(
       o.createTime!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
     unittest.expect(
       o.downloadUrl!,
@@ -1327,7 +1327,7 @@ api.ChromeOsDeviceScreenshotFiles buildChromeOsDeviceScreenshotFiles() {
   final o = api.ChromeOsDeviceScreenshotFiles();
   buildCounterChromeOsDeviceScreenshotFiles++;
   if (buildCounterChromeOsDeviceScreenshotFiles < 3) {
-    o.createTime = core.DateTime.parse('2002-02-27T14:01:02');
+    o.createTime = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.downloadUrl = 'foo';
     o.name = 'foo';
     o.type = 'foo';
@@ -1341,7 +1341,7 @@ void checkChromeOsDeviceScreenshotFiles(api.ChromeOsDeviceScreenshotFiles o) {
   if (buildCounterChromeOsDeviceScreenshotFiles < 3) {
     unittest.expect(
       o.createTime!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
     unittest.expect(
       o.downloadUrl!,
@@ -1393,7 +1393,7 @@ api.ChromeOsDeviceSystemRamFreeReports
   final o = api.ChromeOsDeviceSystemRamFreeReports();
   buildCounterChromeOsDeviceSystemRamFreeReports++;
   if (buildCounterChromeOsDeviceSystemRamFreeReports < 3) {
-    o.reportTime = core.DateTime.parse('2002-02-27T14:01:02');
+    o.reportTime = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.systemRamFreeInfo = buildUnnamed26();
   }
   buildCounterChromeOsDeviceSystemRamFreeReports--;
@@ -1406,7 +1406,7 @@ void checkChromeOsDeviceSystemRamFreeReports(
   if (buildCounterChromeOsDeviceSystemRamFreeReports < 3) {
     unittest.expect(
       o.reportTime!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
     checkUnnamed26(o.systemRamFreeInfo!);
   }
@@ -1493,9 +1493,9 @@ api.ChromeOsDevice buildChromeOsDevice() {
     o.ethernetMacAddress0 = 'foo';
     o.firmwareVersion = 'foo';
     o.kind = 'foo';
-    o.lastEnrollmentTime = core.DateTime.parse('2002-02-27T14:01:02');
+    o.lastEnrollmentTime = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.lastKnownNetwork = buildUnnamed23();
-    o.lastSync = core.DateTime.parse('2002-02-27T14:01:02');
+    o.lastSync = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.macAddress = 'foo';
     o.manufactureDate = 'foo';
     o.meid = 'foo';
@@ -1509,7 +1509,7 @@ api.ChromeOsDevice buildChromeOsDevice() {
     o.screenshotFiles = buildUnnamed25();
     o.serialNumber = 'foo';
     o.status = 'foo';
-    o.supportEndDate = core.DateTime.parse('2002-02-27T14:01:02');
+    o.supportEndDate = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.systemRamFreeReports = buildUnnamed27();
     o.systemRamTotal = 'foo';
     o.tpmVersionInfo = buildChromeOsDeviceTpmVersionInfo();
@@ -1577,12 +1577,12 @@ void checkChromeOsDevice(api.ChromeOsDevice o) {
     );
     unittest.expect(
       o.lastEnrollmentTime!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
     checkUnnamed23(o.lastKnownNetwork!);
     unittest.expect(
       o.lastSync!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
     unittest.expect(
       o.macAddress!,
@@ -1632,7 +1632,7 @@ void checkChromeOsDevice(api.ChromeOsDevice o) {
     );
     unittest.expect(
       o.supportEndDate!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
     checkUnnamed27(o.systemRamFreeReports!);
     unittest.expect(
@@ -1783,7 +1783,7 @@ api.Customer buildCustomer() {
   buildCounterCustomer++;
   if (buildCounterCustomer < 3) {
     o.alternateEmail = 'foo';
-    o.customerCreationTime = core.DateTime.parse('2002-02-27T14:01:02');
+    o.customerCreationTime = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.customerDomain = 'foo';
     o.etag = 'foo';
     o.id = 'foo';
@@ -1805,7 +1805,7 @@ void checkCustomer(api.Customer o) {
     );
     unittest.expect(
       o.customerCreationTime!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
     unittest.expect(
       o.customerDomain!,
@@ -2845,13 +2845,13 @@ api.MobileDevice buildMobileDevice() {
     o.email = buildUnnamed42();
     o.encryptionStatus = 'foo';
     o.etag = 'foo';
-    o.firstSync = core.DateTime.parse('2002-02-27T14:01:02');
+    o.firstSync = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.hardware = 'foo';
     o.hardwareId = 'foo';
     o.imei = 'foo';
     o.kernelVersion = 'foo';
     o.kind = 'foo';
-    o.lastSync = core.DateTime.parse('2002-02-27T14:01:02');
+    o.lastSync = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.managedAccountIsOnOwnerProfile = true;
     o.manufacturer = 'foo';
     o.meid = 'foo';
@@ -2925,7 +2925,7 @@ void checkMobileDevice(api.MobileDevice o) {
     );
     unittest.expect(
       o.firstSync!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
     unittest.expect(
       o.hardware!,
@@ -2949,7 +2949,7 @@ void checkMobileDevice(api.MobileDevice o) {
     );
     unittest.expect(
       o.lastSync!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
     unittest.expect(o.managedAccountIsOnOwnerProfile!, unittest.isTrue);
     unittest.expect(
@@ -3957,10 +3957,10 @@ api.User buildUser() {
     o.aliases = buildUnnamed57();
     o.archived = true;
     o.changePasswordAtNextLogin = true;
-    o.creationTime = core.DateTime.parse('2002-02-27T14:01:02');
+    o.creationTime = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.customSchemas = buildUnnamed58();
     o.customerId = 'foo';
-    o.deletionTime = core.DateTime.parse('2002-02-27T14:01:02');
+    o.deletionTime = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.emails = {
       'list': [1, 2, 3],
       'bool': true,
@@ -4002,7 +4002,7 @@ api.User buildUser() {
       'bool': true,
       'string': 'foo'
     };
-    o.lastLoginTime = core.DateTime.parse('2002-02-27T14:01:02');
+    o.lastLoginTime = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.locations = {
       'list': [1, 2, 3],
       'bool': true,
@@ -4082,7 +4082,7 @@ void checkUser(api.User o) {
     unittest.expect(o.changePasswordAtNextLogin!, unittest.isTrue);
     unittest.expect(
       o.creationTime!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
     checkUnnamed58(o.customSchemas!);
     unittest.expect(
@@ -4091,7 +4091,7 @@ void checkUser(api.User o) {
     );
     unittest.expect(
       o.deletionTime!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
     var casted5 = (o.emails!) as core.Map;
     unittest.expect(casted5, unittest.hasLength(3));
@@ -4202,7 +4202,7 @@ void checkUser(api.User o) {
     );
     unittest.expect(
       o.lastLoginTime!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
     var casted11 = (o.locations!) as core.Map;
     unittest.expect(casted11, unittest.hasLength(3));
