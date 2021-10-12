@@ -222,7 +222,7 @@ api.BucketIamConfigurationBucketPolicyOnly
   buildCounterBucketIamConfigurationBucketPolicyOnly++;
   if (buildCounterBucketIamConfigurationBucketPolicyOnly < 3) {
     o.enabled = true;
-    o.lockedTime = core.DateTime.parse('2002-02-27T14:01:02');
+    o.lockedTime = core.DateTime.parse('2002-02-27T14:01:02Z');
   }
   buildCounterBucketIamConfigurationBucketPolicyOnly--;
   return o;
@@ -235,7 +235,7 @@ void checkBucketIamConfigurationBucketPolicyOnly(
     unittest.expect(o.enabled!, unittest.isTrue);
     unittest.expect(
       o.lockedTime!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
   }
   buildCounterBucketIamConfigurationBucketPolicyOnly--;
@@ -248,7 +248,7 @@ api.BucketIamConfigurationUniformBucketLevelAccess
   buildCounterBucketIamConfigurationUniformBucketLevelAccess++;
   if (buildCounterBucketIamConfigurationUniformBucketLevelAccess < 3) {
     o.enabled = true;
-    o.lockedTime = core.DateTime.parse('2002-02-27T14:01:02');
+    o.lockedTime = core.DateTime.parse('2002-02-27T14:01:02Z');
   }
   buildCounterBucketIamConfigurationUniformBucketLevelAccess--;
   return o;
@@ -261,7 +261,7 @@ void checkBucketIamConfigurationUniformBucketLevelAccess(
     unittest.expect(o.enabled!, unittest.isTrue);
     unittest.expect(
       o.lockedTime!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
   }
   buildCounterBucketIamConfigurationUniformBucketLevelAccess--;
@@ -527,7 +527,7 @@ api.BucketRetentionPolicy buildBucketRetentionPolicy() {
   final o = api.BucketRetentionPolicy();
   buildCounterBucketRetentionPolicy++;
   if (buildCounterBucketRetentionPolicy < 3) {
-    o.effectiveTime = core.DateTime.parse('2002-02-27T14:01:02');
+    o.effectiveTime = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.isLocked = true;
     o.retentionPeriod = 'foo';
   }
@@ -540,7 +540,7 @@ void checkBucketRetentionPolicy(api.BucketRetentionPolicy o) {
   if (buildCounterBucketRetentionPolicy < 3) {
     unittest.expect(
       o.effectiveTime!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
     unittest.expect(o.isLocked!, unittest.isTrue);
     unittest.expect(
@@ -627,8 +627,8 @@ api.Bucket buildBucket() {
     o.satisfiesPZS = true;
     o.selfLink = 'foo';
     o.storageClass = 'foo';
-    o.timeCreated = core.DateTime.parse('2002-02-27T14:01:02');
-    o.updated = core.DateTime.parse('2002-02-27T14:01:02');
+    o.timeCreated = core.DateTime.parse('2002-02-27T14:01:02Z');
+    o.updated = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.versioning = buildBucketVersioning();
     o.website = buildBucketWebsite();
   }
@@ -699,11 +699,11 @@ void checkBucket(api.Bucket o) {
     );
     unittest.expect(
       o.timeCreated!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
     unittest.expect(
       o.updated!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
     checkBucketVersioning(o.versioning!);
     checkBucketWebsite(o.website!);
@@ -1130,8 +1130,8 @@ api.HmacKeyMetadata buildHmacKeyMetadata() {
     o.selfLink = 'foo';
     o.serviceAccountEmail = 'foo';
     o.state = 'foo';
-    o.timeCreated = core.DateTime.parse('2002-02-27T14:01:02');
-    o.updated = core.DateTime.parse('2002-02-27T14:01:02');
+    o.timeCreated = core.DateTime.parse('2002-02-27T14:01:02Z');
+    o.updated = core.DateTime.parse('2002-02-27T14:01:02Z');
   }
   buildCounterHmacKeyMetadata--;
   return o;
@@ -1174,11 +1174,11 @@ void checkHmacKeyMetadata(api.HmacKeyMetadata o) {
     );
     unittest.expect(
       o.timeCreated!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
     unittest.expect(
       o.updated!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
   }
   buildCounterHmacKeyMetadata--;
@@ -1445,7 +1445,7 @@ api.Object buildObject() {
     o.contentLanguage = 'foo';
     o.contentType = 'foo';
     o.crc32c = 'foo';
-    o.customTime = core.DateTime.parse('2002-02-27T14:01:02');
+    o.customTime = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.customerEncryption = buildObjectCustomerEncryption();
     o.etag = 'foo';
     o.eventBasedHold = true;
@@ -1459,15 +1459,15 @@ api.Object buildObject() {
     o.metageneration = 'foo';
     o.name = 'foo';
     o.owner = buildObjectOwner();
-    o.retentionExpirationTime = core.DateTime.parse('2002-02-27T14:01:02');
+    o.retentionExpirationTime = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.selfLink = 'foo';
     o.size = 'foo';
     o.storageClass = 'foo';
     o.temporaryHold = true;
-    o.timeCreated = core.DateTime.parse('2002-02-27T14:01:02');
-    o.timeDeleted = core.DateTime.parse('2002-02-27T14:01:02');
-    o.timeStorageClassUpdated = core.DateTime.parse('2002-02-27T14:01:02');
-    o.updated = core.DateTime.parse('2002-02-27T14:01:02');
+    o.timeCreated = core.DateTime.parse('2002-02-27T14:01:02Z');
+    o.timeDeleted = core.DateTime.parse('2002-02-27T14:01:02Z');
+    o.timeStorageClassUpdated = core.DateTime.parse('2002-02-27T14:01:02Z');
+    o.updated = core.DateTime.parse('2002-02-27T14:01:02Z');
   }
   buildCounterObject--;
   return o;
@@ -1511,7 +1511,7 @@ void checkObject(api.Object o) {
     );
     unittest.expect(
       o.customTime!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
     checkObjectCustomerEncryption(o.customerEncryption!);
     unittest.expect(
@@ -1555,7 +1555,7 @@ void checkObject(api.Object o) {
     checkObjectOwner(o.owner!);
     unittest.expect(
       o.retentionExpirationTime!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
     unittest.expect(
       o.selfLink!,
@@ -1572,19 +1572,19 @@ void checkObject(api.Object o) {
     unittest.expect(o.temporaryHold!, unittest.isTrue);
     unittest.expect(
       o.timeCreated!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
     unittest.expect(
       o.timeDeleted!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
     unittest.expect(
       o.timeStorageClassUpdated!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
     unittest.expect(
       o.updated!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
   }
   buildCounterObject--;

@@ -618,7 +618,7 @@ api.ActivitySnippet buildActivitySnippet() {
     o.channelTitle = 'foo';
     o.description = 'foo';
     o.groupId = 'foo';
-    o.publishedAt = core.DateTime.parse('2002-02-27T14:01:02');
+    o.publishedAt = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.thumbnails = buildThumbnailDetails();
     o.title = 'foo';
     o.type = 'foo';
@@ -648,7 +648,7 @@ void checkActivitySnippet(api.ActivitySnippet o) {
     );
     unittest.expect(
       o.publishedAt!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
     checkThumbnailDetails(o.thumbnails!);
     unittest.expect(
@@ -760,7 +760,7 @@ api.CaptionSnippet buildCaptionSnippet() {
     o.isEasyReader = true;
     o.isLarge = true;
     o.language = 'foo';
-    o.lastUpdated = core.DateTime.parse('2002-02-27T14:01:02');
+    o.lastUpdated = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.name = 'foo';
     o.status = 'foo';
     o.trackKind = 'foo';
@@ -792,7 +792,7 @@ void checkCaptionSnippet(api.CaptionSnippet o) {
     );
     unittest.expect(
       o.lastUpdated!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
     unittest.expect(
       o.name!,
@@ -1076,7 +1076,7 @@ api.ChannelContentOwnerDetails buildChannelContentOwnerDetails() {
   buildCounterChannelContentOwnerDetails++;
   if (buildCounterChannelContentOwnerDetails < 3) {
     o.contentOwner = 'foo';
-    o.timeLinked = core.DateTime.parse('2002-02-27T14:01:02');
+    o.timeLinked = core.DateTime.parse('2002-02-27T14:01:02Z');
   }
   buildCounterChannelContentOwnerDetails--;
   return o;
@@ -1091,7 +1091,7 @@ void checkChannelContentOwnerDetails(api.ChannelContentOwnerDetails o) {
     );
     unittest.expect(
       o.timeLinked!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
   }
   buildCounterChannelContentOwnerDetails--;
@@ -1685,7 +1685,7 @@ api.ChannelSnippet buildChannelSnippet() {
     o.defaultLanguage = 'foo';
     o.description = 'foo';
     o.localized = buildChannelLocalization();
-    o.publishedAt = core.DateTime.parse('2002-02-27T14:01:02');
+    o.publishedAt = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.thumbnails = buildThumbnailDetails();
     o.title = 'foo';
   }
@@ -1715,7 +1715,7 @@ void checkChannelSnippet(api.ChannelSnippet o) {
     checkChannelLocalization(o.localized!);
     unittest.expect(
       o.publishedAt!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
     checkThumbnailDetails(o.thumbnails!);
     unittest.expect(
@@ -1987,10 +1987,10 @@ api.CommentSnippet buildCommentSnippet() {
     o.likeCount = 42;
     o.moderationStatus = 'foo';
     o.parentId = 'foo';
-    o.publishedAt = core.DateTime.parse('2002-02-27T14:01:02');
+    o.publishedAt = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.textDisplay = 'foo';
     o.textOriginal = 'foo';
-    o.updatedAt = core.DateTime.parse('2002-02-27T14:01:02');
+    o.updatedAt = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.videoId = 'foo';
     o.viewerRating = 'foo';
   }
@@ -2033,7 +2033,7 @@ void checkCommentSnippet(api.CommentSnippet o) {
     );
     unittest.expect(
       o.publishedAt!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
     unittest.expect(
       o.textDisplay!,
@@ -2045,7 +2045,7 @@ void checkCommentSnippet(api.CommentSnippet o) {
     );
     unittest.expect(
       o.updatedAt!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
     unittest.expect(
       o.videoId!,
@@ -3269,7 +3269,7 @@ api.LiveBroadcastContentDetails buildLiveBroadcastContentDetails() {
   buildCounterLiveBroadcastContentDetails++;
   if (buildCounterLiveBroadcastContentDetails < 3) {
     o.boundStreamId = 'foo';
-    o.boundStreamLastUpdateTimeMs = core.DateTime.parse('2002-02-27T14:01:02');
+    o.boundStreamLastUpdateTimeMs = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.closedCaptionsType = 'foo';
     o.enableAutoStart = true;
     o.enableAutoStop = true;
@@ -3299,7 +3299,7 @@ void checkLiveBroadcastContentDetails(api.LiveBroadcastContentDetails o) {
     );
     unittest.expect(
       o.boundStreamLastUpdateTimeMs!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
     unittest.expect(
       o.closedCaptionsType!,
@@ -3404,15 +3404,15 @@ api.LiveBroadcastSnippet buildLiveBroadcastSnippet() {
   final o = api.LiveBroadcastSnippet();
   buildCounterLiveBroadcastSnippet++;
   if (buildCounterLiveBroadcastSnippet < 3) {
-    o.actualEndTime = core.DateTime.parse('2002-02-27T14:01:02');
-    o.actualStartTime = core.DateTime.parse('2002-02-27T14:01:02');
+    o.actualEndTime = core.DateTime.parse('2002-02-27T14:01:02Z');
+    o.actualStartTime = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.channelId = 'foo';
     o.description = 'foo';
     o.isDefaultBroadcast = true;
     o.liveChatId = 'foo';
-    o.publishedAt = core.DateTime.parse('2002-02-27T14:01:02');
-    o.scheduledEndTime = core.DateTime.parse('2002-02-27T14:01:02');
-    o.scheduledStartTime = core.DateTime.parse('2002-02-27T14:01:02');
+    o.publishedAt = core.DateTime.parse('2002-02-27T14:01:02Z');
+    o.scheduledEndTime = core.DateTime.parse('2002-02-27T14:01:02Z');
+    o.scheduledStartTime = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.thumbnails = buildThumbnailDetails();
     o.title = 'foo';
   }
@@ -3425,11 +3425,11 @@ void checkLiveBroadcastSnippet(api.LiveBroadcastSnippet o) {
   if (buildCounterLiveBroadcastSnippet < 3) {
     unittest.expect(
       o.actualEndTime!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
     unittest.expect(
       o.actualStartTime!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
     unittest.expect(
       o.channelId!,
@@ -3446,15 +3446,15 @@ void checkLiveBroadcastSnippet(api.LiveBroadcastSnippet o) {
     );
     unittest.expect(
       o.publishedAt!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
     unittest.expect(
       o.scheduledEndTime!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
     unittest.expect(
       o.scheduledStartTime!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
     checkThumbnailDetails(o.thumbnails!);
     unittest.expect(
@@ -3791,7 +3791,7 @@ api.LiveChatMessageListResponse buildLiveChatMessageListResponse() {
     o.items = buildUnnamed29();
     o.kind = 'foo';
     o.nextPageToken = 'foo';
-    o.offlineAt = core.DateTime.parse('2002-02-27T14:01:02');
+    o.offlineAt = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.pageInfo = buildPageInfo();
     o.pollingIntervalMillis = 42;
     o.tokenPagination = buildTokenPagination();
@@ -3823,7 +3823,7 @@ void checkLiveChatMessageListResponse(api.LiveChatMessageListResponse o) {
     );
     unittest.expect(
       o.offlineAt!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
     checkPageInfo(o.pageInfo!);
     unittest.expect(
@@ -3876,7 +3876,7 @@ api.LiveChatMessageSnippet buildLiveChatMessageSnippet() {
     o.messageDeletedDetails = buildLiveChatMessageDeletedDetails();
     o.messageRetractedDetails = buildLiveChatMessageRetractedDetails();
     o.newSponsorDetails = buildLiveChatNewSponsorDetails();
-    o.publishedAt = core.DateTime.parse('2002-02-27T14:01:02');
+    o.publishedAt = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.superChatDetails = buildLiveChatSuperChatDetails();
     o.superStickerDetails = buildLiveChatSuperStickerDetails();
     o.textMessageDetails = buildLiveChatTextMessageDetails();
@@ -3910,7 +3910,7 @@ void checkLiveChatMessageSnippet(api.LiveChatMessageSnippet o) {
     checkLiveChatNewSponsorDetails(o.newSponsorDetails!);
     unittest.expect(
       o.publishedAt!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
     checkLiveChatSuperChatDetails(o.superChatDetails!);
     checkLiveChatSuperStickerDetails(o.superStickerDetails!);
@@ -4416,7 +4416,7 @@ api.LiveStreamSnippet buildLiveStreamSnippet() {
     o.channelId = 'foo';
     o.description = 'foo';
     o.isDefaultStream = true;
-    o.publishedAt = core.DateTime.parse('2002-02-27T14:01:02');
+    o.publishedAt = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.title = 'foo';
   }
   buildCounterLiveStreamSnippet--;
@@ -4437,7 +4437,7 @@ void checkLiveStreamSnippet(api.LiveStreamSnippet o) {
     unittest.expect(o.isDefaultStream!, unittest.isTrue);
     unittest.expect(
       o.publishedAt!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
     unittest.expect(
       o.title!,
@@ -5055,7 +5055,7 @@ api.PlaylistItemContentDetails buildPlaylistItemContentDetails() {
     o.note = 'foo';
     o.startAt = 'foo';
     o.videoId = 'foo';
-    o.videoPublishedAt = core.DateTime.parse('2002-02-27T14:01:02');
+    o.videoPublishedAt = core.DateTime.parse('2002-02-27T14:01:02Z');
   }
   buildCounterPlaylistItemContentDetails--;
   return o;
@@ -5082,7 +5082,7 @@ void checkPlaylistItemContentDetails(api.PlaylistItemContentDetails o) {
     );
     unittest.expect(
       o.videoPublishedAt!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
   }
   buildCounterPlaylistItemContentDetails--;
@@ -5162,7 +5162,7 @@ api.PlaylistItemSnippet buildPlaylistItemSnippet() {
     o.description = 'foo';
     o.playlistId = 'foo';
     o.position = 42;
-    o.publishedAt = core.DateTime.parse('2002-02-27T14:01:02');
+    o.publishedAt = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.resourceId = buildResourceId();
     o.thumbnails = buildThumbnailDetails();
     o.title = 'foo';
@@ -5198,7 +5198,7 @@ void checkPlaylistItemSnippet(api.PlaylistItemSnippet o) {
     );
     unittest.expect(
       o.publishedAt!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
     checkResourceId(o.resourceId!);
     checkThumbnailDetails(o.thumbnails!);
@@ -5380,7 +5380,7 @@ api.PlaylistSnippet buildPlaylistSnippet() {
     o.defaultLanguage = 'foo';
     o.description = 'foo';
     o.localized = buildPlaylistLocalization();
-    o.publishedAt = core.DateTime.parse('2002-02-27T14:01:02');
+    o.publishedAt = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.tags = buildUnnamed41();
     o.thumbnailVideoId = 'foo';
     o.thumbnails = buildThumbnailDetails();
@@ -5412,7 +5412,7 @@ void checkPlaylistSnippet(api.PlaylistSnippet o) {
     checkPlaylistLocalization(o.localized!);
     unittest.expect(
       o.publishedAt!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
     checkUnnamed41(o.tags!);
     unittest.expect(
@@ -5642,7 +5642,7 @@ api.SearchResultSnippet buildSearchResultSnippet() {
     o.channelTitle = 'foo';
     o.description = 'foo';
     o.liveBroadcastContent = 'foo';
-    o.publishedAt = core.DateTime.parse('2002-02-27T14:01:02');
+    o.publishedAt = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.thumbnails = buildThumbnailDetails();
     o.title = 'foo';
   }
@@ -5671,7 +5671,7 @@ void checkSearchResultSnippet(api.SearchResultSnippet o) {
     );
     unittest.expect(
       o.publishedAt!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
     checkThumbnailDetails(o.thumbnails!);
     unittest.expect(
@@ -5824,7 +5824,7 @@ api.SubscriptionSnippet buildSubscriptionSnippet() {
     o.channelId = 'foo';
     o.channelTitle = 'foo';
     o.description = 'foo';
-    o.publishedAt = core.DateTime.parse('2002-02-27T14:01:02');
+    o.publishedAt = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.resourceId = buildResourceId();
     o.thumbnails = buildThumbnailDetails();
     o.title = 'foo';
@@ -5850,7 +5850,7 @@ void checkSubscriptionSnippet(api.SubscriptionSnippet o) {
     );
     unittest.expect(
       o.publishedAt!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
     checkResourceId(o.resourceId!);
     checkThumbnailDetails(o.thumbnails!);
@@ -5997,7 +5997,7 @@ api.SuperChatEventSnippet buildSuperChatEventSnippet() {
     o.amountMicros = 'foo';
     o.channelId = 'foo';
     o.commentText = 'foo';
-    o.createdAt = core.DateTime.parse('2002-02-27T14:01:02');
+    o.createdAt = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.currency = 'foo';
     o.displayString = 'foo';
     o.isSuperStickerEvent = true;
@@ -6026,7 +6026,7 @@ void checkSuperChatEventSnippet(api.SuperChatEventSnippet o) {
     );
     unittest.expect(
       o.createdAt!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
     unittest.expect(
       o.currency!,
@@ -7149,11 +7149,11 @@ api.VideoLiveStreamingDetails buildVideoLiveStreamingDetails() {
   buildCounterVideoLiveStreamingDetails++;
   if (buildCounterVideoLiveStreamingDetails < 3) {
     o.activeLiveChatId = 'foo';
-    o.actualEndTime = core.DateTime.parse('2002-02-27T14:01:02');
-    o.actualStartTime = core.DateTime.parse('2002-02-27T14:01:02');
+    o.actualEndTime = core.DateTime.parse('2002-02-27T14:01:02Z');
+    o.actualStartTime = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.concurrentViewers = 'foo';
-    o.scheduledEndTime = core.DateTime.parse('2002-02-27T14:01:02');
-    o.scheduledStartTime = core.DateTime.parse('2002-02-27T14:01:02');
+    o.scheduledEndTime = core.DateTime.parse('2002-02-27T14:01:02Z');
+    o.scheduledStartTime = core.DateTime.parse('2002-02-27T14:01:02Z');
   }
   buildCounterVideoLiveStreamingDetails--;
   return o;
@@ -7168,11 +7168,11 @@ void checkVideoLiveStreamingDetails(api.VideoLiveStreamingDetails o) {
     );
     unittest.expect(
       o.actualEndTime!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
     unittest.expect(
       o.actualStartTime!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
     unittest.expect(
       o.concurrentViewers!,
@@ -7180,11 +7180,11 @@ void checkVideoLiveStreamingDetails(api.VideoLiveStreamingDetails o) {
     );
     unittest.expect(
       o.scheduledEndTime!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
     unittest.expect(
       o.scheduledStartTime!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
   }
   buildCounterVideoLiveStreamingDetails--;
@@ -7405,7 +7405,7 @@ api.VideoRecordingDetails buildVideoRecordingDetails() {
   if (buildCounterVideoRecordingDetails < 3) {
     o.location = buildGeoPoint();
     o.locationDescription = 'foo';
-    o.recordingDate = core.DateTime.parse('2002-02-27T14:01:02');
+    o.recordingDate = core.DateTime.parse('2002-02-27T14:01:02Z');
   }
   buildCounterVideoRecordingDetails--;
   return o;
@@ -7421,7 +7421,7 @@ void checkVideoRecordingDetails(api.VideoRecordingDetails o) {
     );
     unittest.expect(
       o.recordingDate!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
   }
   buildCounterVideoRecordingDetails--;
@@ -7457,7 +7457,7 @@ api.VideoSnippet buildVideoSnippet() {
     o.description = 'foo';
     o.liveBroadcastContent = 'foo';
     o.localized = buildVideoLocalization();
-    o.publishedAt = core.DateTime.parse('2002-02-27T14:01:02');
+    o.publishedAt = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.tags = buildUnnamed56();
     o.thumbnails = buildThumbnailDetails();
     o.title = 'foo';
@@ -7500,7 +7500,7 @@ void checkVideoSnippet(api.VideoSnippet o) {
     checkVideoLocalization(o.localized!);
     unittest.expect(
       o.publishedAt!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
     checkUnnamed56(o.tags!);
     checkThumbnailDetails(o.thumbnails!);
@@ -7565,7 +7565,7 @@ api.VideoStatus buildVideoStatus() {
     o.madeForKids = true;
     o.privacyStatus = 'foo';
     o.publicStatsViewable = true;
-    o.publishAt = core.DateTime.parse('2002-02-27T14:01:02');
+    o.publishAt = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.rejectionReason = 'foo';
     o.selfDeclaredMadeForKids = true;
     o.uploadStatus = 'foo';
@@ -7594,7 +7594,7 @@ void checkVideoStatus(api.VideoStatus o) {
     unittest.expect(o.publicStatsViewable!, unittest.isTrue);
     unittest.expect(
       o.publishAt!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
     unittest.expect(
       o.rejectionReason!,

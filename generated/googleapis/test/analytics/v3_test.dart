@@ -95,14 +95,14 @@ api.Account buildAccount() {
   buildCounterAccount++;
   if (buildCounterAccount < 3) {
     o.childLink = buildAccountChildLink();
-    o.created = core.DateTime.parse('2002-02-27T14:01:02');
+    o.created = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.id = 'foo';
     o.kind = 'foo';
     o.name = 'foo';
     o.permissions = buildAccountPermissions();
     o.selfLink = 'foo';
     o.starred = true;
-    o.updated = core.DateTime.parse('2002-02-27T14:01:02');
+    o.updated = core.DateTime.parse('2002-02-27T14:01:02Z');
   }
   buildCounterAccount--;
   return o;
@@ -114,7 +114,7 @@ void checkAccount(api.Account o) {
     checkAccountChildLink(o.childLink!);
     unittest.expect(
       o.created!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
     unittest.expect(
       o.id!,
@@ -136,7 +136,7 @@ void checkAccount(api.Account o) {
     unittest.expect(o.starred!, unittest.isTrue);
     unittest.expect(
       o.updated!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
   }
   buildCounterAccount--;
@@ -741,7 +741,7 @@ api.CustomDataSource buildCustomDataSource() {
   if (buildCounterCustomDataSource < 3) {
     o.accountId = 'foo';
     o.childLink = buildCustomDataSourceChildLink();
-    o.created = core.DateTime.parse('2002-02-27T14:01:02');
+    o.created = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.description = 'foo';
     o.id = 'foo';
     o.importBehavior = 'foo';
@@ -752,7 +752,7 @@ api.CustomDataSource buildCustomDataSource() {
     o.schema = buildUnnamed9();
     o.selfLink = 'foo';
     o.type = 'foo';
-    o.updated = core.DateTime.parse('2002-02-27T14:01:02');
+    o.updated = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.uploadType = 'foo';
     o.webPropertyId = 'foo';
   }
@@ -770,7 +770,7 @@ void checkCustomDataSource(api.CustomDataSource o) {
     checkCustomDataSourceChildLink(o.childLink!);
     unittest.expect(
       o.created!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
     unittest.expect(
       o.description!,
@@ -805,7 +805,7 @@ void checkCustomDataSource(api.CustomDataSource o) {
     );
     unittest.expect(
       o.updated!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
     unittest.expect(
       o.uploadType!,
@@ -918,7 +918,7 @@ api.CustomDimension buildCustomDimension() {
   if (buildCounterCustomDimension < 3) {
     o.accountId = 'foo';
     o.active = true;
-    o.created = core.DateTime.parse('2002-02-27T14:01:02');
+    o.created = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.id = 'foo';
     o.index = 42;
     o.kind = 'foo';
@@ -926,7 +926,7 @@ api.CustomDimension buildCustomDimension() {
     o.parentLink = buildCustomDimensionParentLink();
     o.scope = 'foo';
     o.selfLink = 'foo';
-    o.updated = core.DateTime.parse('2002-02-27T14:01:02');
+    o.updated = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.webPropertyId = 'foo';
   }
   buildCounterCustomDimension--;
@@ -943,7 +943,7 @@ void checkCustomDimension(api.CustomDimension o) {
     unittest.expect(o.active!, unittest.isTrue);
     unittest.expect(
       o.created!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
     unittest.expect(
       o.id!,
@@ -972,7 +972,7 @@ void checkCustomDimension(api.CustomDimension o) {
     );
     unittest.expect(
       o.updated!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
     unittest.expect(
       o.webPropertyId!,
@@ -1081,7 +1081,7 @@ api.CustomMetric buildCustomMetric() {
   if (buildCounterCustomMetric < 3) {
     o.accountId = 'foo';
     o.active = true;
-    o.created = core.DateTime.parse('2002-02-27T14:01:02');
+    o.created = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.id = 'foo';
     o.index = 42;
     o.kind = 'foo';
@@ -1092,7 +1092,7 @@ api.CustomMetric buildCustomMetric() {
     o.scope = 'foo';
     o.selfLink = 'foo';
     o.type = 'foo';
-    o.updated = core.DateTime.parse('2002-02-27T14:01:02');
+    o.updated = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.webPropertyId = 'foo';
   }
   buildCounterCustomMetric--;
@@ -1109,7 +1109,7 @@ void checkCustomMetric(api.CustomMetric o) {
     unittest.expect(o.active!, unittest.isTrue);
     unittest.expect(
       o.created!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
     unittest.expect(
       o.id!,
@@ -1150,7 +1150,7 @@ void checkCustomMetric(api.CustomMetric o) {
     );
     unittest.expect(
       o.updated!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
     unittest.expect(
       o.webPropertyId!,
@@ -1634,10 +1634,10 @@ api.Experiment buildExperiment() {
   buildCounterExperiment++;
   if (buildCounterExperiment < 3) {
     o.accountId = 'foo';
-    o.created = core.DateTime.parse('2002-02-27T14:01:02');
+    o.created = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.description = 'foo';
     o.editableInGaUi = true;
-    o.endTime = core.DateTime.parse('2002-02-27T14:01:02');
+    o.endTime = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.equalWeighting = true;
     o.id = 'foo';
     o.internalWebPropertyId = 'foo';
@@ -1653,10 +1653,10 @@ api.Experiment buildExperiment() {
     o.selfLink = 'foo';
     o.servingFramework = 'foo';
     o.snippet = 'foo';
-    o.startTime = core.DateTime.parse('2002-02-27T14:01:02');
+    o.startTime = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.status = 'foo';
     o.trafficCoverage = 42.0;
-    o.updated = core.DateTime.parse('2002-02-27T14:01:02');
+    o.updated = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.variations = buildUnnamed19();
     o.webPropertyId = 'foo';
     o.winnerConfidenceLevel = 42.0;
@@ -1675,7 +1675,7 @@ void checkExperiment(api.Experiment o) {
     );
     unittest.expect(
       o.created!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
     unittest.expect(
       o.description!,
@@ -1684,7 +1684,7 @@ void checkExperiment(api.Experiment o) {
     unittest.expect(o.editableInGaUi!, unittest.isTrue);
     unittest.expect(
       o.endTime!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
     unittest.expect(o.equalWeighting!, unittest.isTrue);
     unittest.expect(
@@ -1739,7 +1739,7 @@ void checkExperiment(api.Experiment o) {
     );
     unittest.expect(
       o.startTime!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
     unittest.expect(
       o.status!,
@@ -1751,7 +1751,7 @@ void checkExperiment(api.Experiment o) {
     );
     unittest.expect(
       o.updated!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
     checkUnnamed19(o.variations!);
     unittest.expect(
@@ -2029,7 +2029,7 @@ api.Filter buildFilter() {
   if (buildCounterFilter < 3) {
     o.accountId = 'foo';
     o.advancedDetails = buildFilterAdvancedDetails();
-    o.created = core.DateTime.parse('2002-02-27T14:01:02');
+    o.created = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.excludeDetails = buildFilterExpression();
     o.id = 'foo';
     o.includeDetails = buildFilterExpression();
@@ -2040,7 +2040,7 @@ api.Filter buildFilter() {
     o.searchAndReplaceDetails = buildFilterSearchAndReplaceDetails();
     o.selfLink = 'foo';
     o.type = 'foo';
-    o.updated = core.DateTime.parse('2002-02-27T14:01:02');
+    o.updated = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.uppercaseDetails = buildFilterUppercaseDetails();
   }
   buildCounterFilter--;
@@ -2057,7 +2057,7 @@ void checkFilter(api.Filter o) {
     checkFilterAdvancedDetails(o.advancedDetails!);
     unittest.expect(
       o.created!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
     checkFilterExpression(o.excludeDetails!);
     unittest.expect(
@@ -2086,7 +2086,7 @@ void checkFilter(api.Filter o) {
     );
     unittest.expect(
       o.updated!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
     checkFilterUppercaseDetails(o.uppercaseDetails!);
   }
@@ -2926,7 +2926,7 @@ api.Goal buildGoal() {
   if (buildCounterGoal < 3) {
     o.accountId = 'foo';
     o.active = true;
-    o.created = core.DateTime.parse('2002-02-27T14:01:02');
+    o.created = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.eventDetails = buildGoalEventDetails();
     o.id = 'foo';
     o.internalWebPropertyId = 'foo';
@@ -2936,7 +2936,7 @@ api.Goal buildGoal() {
     o.profileId = 'foo';
     o.selfLink = 'foo';
     o.type = 'foo';
-    o.updated = core.DateTime.parse('2002-02-27T14:01:02');
+    o.updated = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.urlDestinationDetails = buildGoalUrlDestinationDetails();
     o.value = 42.0;
     o.visitNumPagesDetails = buildGoalVisitNumPagesDetails();
@@ -2957,7 +2957,7 @@ void checkGoal(api.Goal o) {
     unittest.expect(o.active!, unittest.isTrue);
     unittest.expect(
       o.created!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
     checkGoalEventDetails(o.eventDetails!);
     unittest.expect(
@@ -2991,7 +2991,7 @@ void checkGoal(api.Goal o) {
     );
     unittest.expect(
       o.updated!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
     checkGoalUrlDestinationDetails(o.urlDestinationDetails!);
     unittest.expect(
@@ -3708,7 +3708,7 @@ api.Profile buildProfile() {
     o.accountId = 'foo';
     o.botFilteringEnabled = true;
     o.childLink = buildProfileChildLink();
-    o.created = core.DateTime.parse('2002-02-27T14:01:02');
+    o.created = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.currency = 'foo';
     o.defaultPage = 'foo';
     o.eCommerceTracking = true;
@@ -3728,7 +3728,7 @@ api.Profile buildProfile() {
     o.stripSiteSearchQueryParameters = true;
     o.timezone = 'foo';
     o.type = 'foo';
-    o.updated = core.DateTime.parse('2002-02-27T14:01:02');
+    o.updated = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.webPropertyId = 'foo';
     o.websiteUrl = 'foo';
   }
@@ -3747,7 +3747,7 @@ void checkProfile(api.Profile o) {
     checkProfileChildLink(o.childLink!);
     unittest.expect(
       o.created!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
     unittest.expect(
       o.currency!,
@@ -3806,7 +3806,7 @@ void checkProfile(api.Profile o) {
     );
     unittest.expect(
       o.updated!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
     unittest.expect(
       o.webPropertyId!,
@@ -4455,7 +4455,7 @@ api.RemarketingAudience buildRemarketingAudience() {
     o.accountId = 'foo';
     o.audienceDefinition = buildRemarketingAudienceAudienceDefinition();
     o.audienceType = 'foo';
-    o.created = core.DateTime.parse('2002-02-27T14:01:02');
+    o.created = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.description = 'foo';
     o.id = 'foo';
     o.internalWebPropertyId = 'foo';
@@ -4465,7 +4465,7 @@ api.RemarketingAudience buildRemarketingAudience() {
     o.name = 'foo';
     o.stateBasedAudienceDefinition =
         buildRemarketingAudienceStateBasedAudienceDefinition();
-    o.updated = core.DateTime.parse('2002-02-27T14:01:02');
+    o.updated = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.webPropertyId = 'foo';
   }
   buildCounterRemarketingAudience--;
@@ -4486,7 +4486,7 @@ void checkRemarketingAudience(api.RemarketingAudience o) {
     );
     unittest.expect(
       o.created!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
     unittest.expect(
       o.description!,
@@ -4514,7 +4514,7 @@ void checkRemarketingAudience(api.RemarketingAudience o) {
         o.stateBasedAudienceDefinition!);
     unittest.expect(
       o.updated!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
     unittest.expect(
       o.webPropertyId!,
@@ -4594,7 +4594,7 @@ api.Segment buildSegment() {
   final o = api.Segment();
   buildCounterSegment++;
   if (buildCounterSegment < 3) {
-    o.created = core.DateTime.parse('2002-02-27T14:01:02');
+    o.created = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.definition = 'foo';
     o.id = 'foo';
     o.kind = 'foo';
@@ -4602,7 +4602,7 @@ api.Segment buildSegment() {
     o.segmentId = 'foo';
     o.selfLink = 'foo';
     o.type = 'foo';
-    o.updated = core.DateTime.parse('2002-02-27T14:01:02');
+    o.updated = core.DateTime.parse('2002-02-27T14:01:02Z');
   }
   buildCounterSegment--;
   return o;
@@ -4613,7 +4613,7 @@ void checkSegment(api.Segment o) {
   if (buildCounterSegment < 3) {
     unittest.expect(
       o.created!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
     unittest.expect(
       o.definition!,
@@ -4645,7 +4645,7 @@ void checkSegment(api.Segment o) {
     );
     unittest.expect(
       o.updated!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
   }
   buildCounterSegment--;
@@ -4777,7 +4777,7 @@ api.UnsampledReport buildUnsampledReport() {
     o.accountId = 'foo';
     o.cloudStorageDownloadDetails =
         buildUnsampledReportCloudStorageDownloadDetails();
-    o.created = core.DateTime.parse('2002-02-27T14:01:02');
+    o.created = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.dimensions = 'foo';
     o.downloadType = 'foo';
     o.driveDownloadDetails = buildUnsampledReportDriveDownloadDetails();
@@ -4792,7 +4792,7 @@ api.UnsampledReport buildUnsampledReport() {
     o.startDate = 'foo';
     o.status = 'foo';
     o.title = 'foo';
-    o.updated = core.DateTime.parse('2002-02-27T14:01:02');
+    o.updated = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.webPropertyId = 'foo';
   }
   buildCounterUnsampledReport--;
@@ -4810,7 +4810,7 @@ void checkUnsampledReport(api.UnsampledReport o) {
         o.cloudStorageDownloadDetails!);
     unittest.expect(
       o.created!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
     unittest.expect(
       o.dimensions!,
@@ -4867,7 +4867,7 @@ void checkUnsampledReport(api.UnsampledReport o) {
     );
     unittest.expect(
       o.updated!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
     unittest.expect(
       o.webPropertyId!,
@@ -4970,7 +4970,7 @@ api.Upload buildUpload() {
     o.id = 'foo';
     o.kind = 'foo';
     o.status = 'foo';
-    o.uploadTime = core.DateTime.parse('2002-02-27T14:01:02');
+    o.uploadTime = core.DateTime.parse('2002-02-27T14:01:02Z');
   }
   buildCounterUpload--;
   return o;
@@ -5002,7 +5002,7 @@ void checkUpload(api.Upload o) {
     );
     unittest.expect(
       o.uploadTime!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
   }
   buildCounterUpload--;
@@ -5100,7 +5100,7 @@ api.UserDeletionRequest buildUserDeletionRequest() {
   final o = api.UserDeletionRequest();
   buildCounterUserDeletionRequest++;
   if (buildCounterUserDeletionRequest < 3) {
-    o.deletionRequestTime = core.DateTime.parse('2002-02-27T14:01:02');
+    o.deletionRequestTime = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.firebaseProjectId = 'foo';
     o.id = buildUserDeletionRequestId();
     o.kind = 'foo';
@@ -5116,7 +5116,7 @@ void checkUserDeletionRequest(api.UserDeletionRequest o) {
   if (buildCounterUserDeletionRequest < 3) {
     unittest.expect(
       o.deletionRequestTime!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
     unittest.expect(
       o.firebaseProjectId!,
@@ -5442,7 +5442,7 @@ api.Webproperty buildWebproperty() {
   if (buildCounterWebproperty < 3) {
     o.accountId = 'foo';
     o.childLink = buildWebpropertyChildLink();
-    o.created = core.DateTime.parse('2002-02-27T14:01:02');
+    o.created = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.dataRetentionResetOnNewActivity = true;
     o.dataRetentionTtl = 'foo';
     o.defaultProfileId = 'foo';
@@ -5457,7 +5457,7 @@ api.Webproperty buildWebproperty() {
     o.profileCount = 42;
     o.selfLink = 'foo';
     o.starred = true;
-    o.updated = core.DateTime.parse('2002-02-27T14:01:02');
+    o.updated = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.websiteUrl = 'foo';
   }
   buildCounterWebproperty--;
@@ -5474,7 +5474,7 @@ void checkWebproperty(api.Webproperty o) {
     checkWebpropertyChildLink(o.childLink!);
     unittest.expect(
       o.created!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
     unittest.expect(o.dataRetentionResetOnNewActivity!, unittest.isTrue);
     unittest.expect(
@@ -5522,7 +5522,7 @@ void checkWebproperty(api.Webproperty o) {
     unittest.expect(o.starred!, unittest.isTrue);
     unittest.expect(
       o.updated!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
     unittest.expect(
       o.websiteUrl!,

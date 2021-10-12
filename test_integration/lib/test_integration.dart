@@ -106,5 +106,5 @@ void _prompt(String url) {
   print('');
 }
 
-String prettyJsonEncode(Object object) =>
+String prettyJsonEncode(Object? object) =>
     const JsonEncoder.withIndent(' ').convert(object);

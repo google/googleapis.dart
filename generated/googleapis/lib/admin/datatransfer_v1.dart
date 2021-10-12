@@ -547,7 +547,8 @@ class DataTransfer {
         if (oldOwnerUserId != null) 'oldOwnerUserId': oldOwnerUserId!,
         if (overallTransferStatusCode != null)
           'overallTransferStatusCode': overallTransferStatusCode!,
-        if (requestTime != null) 'requestTime': requestTime!.toIso8601String(),
+        if (requestTime != null)
+          'requestTime': requestTime!.toUtc().toIso8601String(),
       };
 }
 

@@ -1111,7 +1111,7 @@ api.BqmlTrainingRun buildBqmlTrainingRun() {
   buildCounterBqmlTrainingRun++;
   if (buildCounterBqmlTrainingRun < 3) {
     o.iterationResults = buildUnnamed21();
-    o.startTime = core.DateTime.parse('2002-02-27T14:01:02');
+    o.startTime = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.state = 'foo';
     o.trainingOptions = buildBqmlTrainingRunTrainingOptions();
   }
@@ -1125,7 +1125,7 @@ void checkBqmlTrainingRun(api.BqmlTrainingRun o) {
     checkUnnamed21(o.iterationResults!);
     unittest.expect(
       o.startTime!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
     unittest.expect(
       o.state!,
@@ -5415,7 +5415,7 @@ api.SnapshotDefinition buildSnapshotDefinition() {
   buildCounterSnapshotDefinition++;
   if (buildCounterSnapshotDefinition < 3) {
     o.baseTableReference = buildTableReference();
-    o.snapshotTime = core.DateTime.parse('2002-02-27T14:01:02');
+    o.snapshotTime = core.DateTime.parse('2002-02-27T14:01:02Z');
   }
   buildCounterSnapshotDefinition--;
   return o;
@@ -5427,7 +5427,7 @@ void checkSnapshotDefinition(api.SnapshotDefinition o) {
     checkTableReference(o.baseTableReference!);
     unittest.expect(
       o.snapshotTime!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02')),
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
   }
   buildCounterSnapshotDefinition--;

@@ -1260,7 +1260,7 @@ class ActivityId {
   core.Map<core.String, core.dynamic> toJson() => {
         if (applicationName != null) 'applicationName': applicationName!,
         if (customerId != null) 'customerId': customerId!,
-        if (time != null) 'time': time!.toIso8601String(),
+        if (time != null) 'time': time!.toUtc().toIso8601String(),
         if (uniqueQualifier != null) 'uniqueQualifier': uniqueQualifier!,
       };
 }
@@ -1662,7 +1662,7 @@ class UsageReportParameters {
   core.Map<core.String, core.dynamic> toJson() => {
         if (boolValue != null) 'boolValue': boolValue!,
         if (datetimeValue != null)
-          'datetimeValue': datetimeValue!.toIso8601String(),
+          'datetimeValue': datetimeValue!.toUtc().toIso8601String(),
         if (intValue != null) 'intValue': intValue!,
         if (msgValue != null) 'msgValue': msgValue!,
         if (name != null) 'name': name!,

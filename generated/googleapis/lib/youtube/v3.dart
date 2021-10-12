@@ -6283,7 +6283,8 @@ class ActivitySnippet {
         if (channelTitle != null) 'channelTitle': channelTitle!,
         if (description != null) 'description': description!,
         if (groupId != null) 'groupId': groupId!,
-        if (publishedAt != null) 'publishedAt': publishedAt!.toIso8601String(),
+        if (publishedAt != null)
+          'publishedAt': publishedAt!.toUtc().toIso8601String(),
         if (thumbnails != null) 'thumbnails': thumbnails!,
         if (title != null) 'title': title!,
         if (type != null) 'type': type!,
@@ -6539,7 +6540,8 @@ class CaptionSnippet {
         if (isEasyReader != null) 'isEasyReader': isEasyReader!,
         if (isLarge != null) 'isLarge': isLarge!,
         if (language != null) 'language': language!,
-        if (lastUpdated != null) 'lastUpdated': lastUpdated!.toIso8601String(),
+        if (lastUpdated != null)
+          'lastUpdated': lastUpdated!.toUtc().toIso8601String(),
         if (name != null) 'name': name!,
         if (status != null) 'status': status!,
         if (trackKind != null) 'trackKind': trackKind!,
@@ -6999,7 +7001,8 @@ class ChannelContentOwnerDetails {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (contentOwner != null) 'contentOwner': contentOwner!,
-        if (timeLinked != null) 'timeLinked': timeLinked!.toIso8601String(),
+        if (timeLinked != null)
+          'timeLinked': timeLinked!.toUtc().toIso8601String(),
       };
 }
 
@@ -7764,7 +7767,8 @@ class ChannelSnippet {
         if (defaultLanguage != null) 'defaultLanguage': defaultLanguage!,
         if (description != null) 'description': description!,
         if (localized != null) 'localized': localized!,
-        if (publishedAt != null) 'publishedAt': publishedAt!.toIso8601String(),
+        if (publishedAt != null)
+          'publishedAt': publishedAt!.toUtc().toIso8601String(),
         if (thumbnails != null) 'thumbnails': thumbnails!,
         if (title != null) 'title': title!,
       };
@@ -8225,10 +8229,12 @@ class CommentSnippet {
         if (likeCount != null) 'likeCount': likeCount!,
         if (moderationStatus != null) 'moderationStatus': moderationStatus!,
         if (parentId != null) 'parentId': parentId!,
-        if (publishedAt != null) 'publishedAt': publishedAt!.toIso8601String(),
+        if (publishedAt != null)
+          'publishedAt': publishedAt!.toUtc().toIso8601String(),
         if (textDisplay != null) 'textDisplay': textDisplay!,
         if (textOriginal != null) 'textOriginal': textOriginal!,
-        if (updatedAt != null) 'updatedAt': updatedAt!.toIso8601String(),
+        if (updatedAt != null)
+          'updatedAt': updatedAt!.toUtc().toIso8601String(),
         if (videoId != null) 'videoId': videoId!,
         if (viewerRating != null) 'viewerRating': viewerRating!,
       };
@@ -10856,7 +10862,7 @@ class LiveBroadcastContentDetails {
         if (boundStreamId != null) 'boundStreamId': boundStreamId!,
         if (boundStreamLastUpdateTimeMs != null)
           'boundStreamLastUpdateTimeMs':
-              boundStreamLastUpdateTimeMs!.toIso8601String(),
+              boundStreamLastUpdateTimeMs!.toUtc().toIso8601String(),
         if (closedCaptionsType != null)
           'closedCaptionsType': closedCaptionsType!,
         if (enableAutoStart != null) 'enableAutoStart': enableAutoStart!,
@@ -11073,19 +11079,20 @@ class LiveBroadcastSnippet {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (actualEndTime != null)
-          'actualEndTime': actualEndTime!.toIso8601String(),
+          'actualEndTime': actualEndTime!.toUtc().toIso8601String(),
         if (actualStartTime != null)
-          'actualStartTime': actualStartTime!.toIso8601String(),
+          'actualStartTime': actualStartTime!.toUtc().toIso8601String(),
         if (channelId != null) 'channelId': channelId!,
         if (description != null) 'description': description!,
         if (isDefaultBroadcast != null)
           'isDefaultBroadcast': isDefaultBroadcast!,
         if (liveChatId != null) 'liveChatId': liveChatId!,
-        if (publishedAt != null) 'publishedAt': publishedAt!.toIso8601String(),
+        if (publishedAt != null)
+          'publishedAt': publishedAt!.toUtc().toIso8601String(),
         if (scheduledEndTime != null)
-          'scheduledEndTime': scheduledEndTime!.toIso8601String(),
+          'scheduledEndTime': scheduledEndTime!.toUtc().toIso8601String(),
         if (scheduledStartTime != null)
-          'scheduledStartTime': scheduledStartTime!.toIso8601String(),
+          'scheduledStartTime': scheduledStartTime!.toUtc().toIso8601String(),
         if (thumbnails != null) 'thumbnails': thumbnails!,
         if (title != null) 'title': title!,
       };
@@ -11629,7 +11636,8 @@ class LiveChatMessageListResponse {
         if (items != null) 'items': items!,
         if (kind != null) 'kind': kind!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (offlineAt != null) 'offlineAt': offlineAt!.toIso8601String(),
+        if (offlineAt != null)
+          'offlineAt': offlineAt!.toUtc().toIso8601String(),
         if (pageInfo != null) 'pageInfo': pageInfo!,
         if (pollingIntervalMillis != null)
           'pollingIntervalMillis': pollingIntervalMillis!,
@@ -11829,7 +11837,8 @@ class LiveChatMessageSnippet {
         if (messageRetractedDetails != null)
           'messageRetractedDetails': messageRetractedDetails!,
         if (newSponsorDetails != null) 'newSponsorDetails': newSponsorDetails!,
-        if (publishedAt != null) 'publishedAt': publishedAt!.toIso8601String(),
+        if (publishedAt != null)
+          'publishedAt': publishedAt!.toUtc().toIso8601String(),
         if (superChatDetails != null) 'superChatDetails': superChatDetails!,
         if (superStickerDetails != null)
           'superStickerDetails': superStickerDetails!,
@@ -12588,7 +12597,8 @@ class LiveStreamSnippet {
         if (channelId != null) 'channelId': channelId!,
         if (description != null) 'description': description!,
         if (isDefaultStream != null) 'isDefaultStream': isDefaultStream!,
-        if (publishedAt != null) 'publishedAt': publishedAt!.toIso8601String(),
+        if (publishedAt != null)
+          'publishedAt': publishedAt!.toUtc().toIso8601String(),
         if (title != null) 'title': title!,
       };
 }
@@ -13454,7 +13464,7 @@ class PlaylistItemContentDetails {
         if (startAt != null) 'startAt': startAt!,
         if (videoId != null) 'videoId': videoId!,
         if (videoPublishedAt != null)
-          'videoPublishedAt': videoPublishedAt!.toIso8601String(),
+          'videoPublishedAt': videoPublishedAt!.toUtc().toIso8601String(),
       };
 }
 
@@ -13650,7 +13660,8 @@ class PlaylistItemSnippet {
         if (description != null) 'description': description!,
         if (playlistId != null) 'playlistId': playlistId!,
         if (position != null) 'position': position!,
-        if (publishedAt != null) 'publishedAt': publishedAt!.toIso8601String(),
+        if (publishedAt != null)
+          'publishedAt': publishedAt!.toUtc().toIso8601String(),
         if (resourceId != null) 'resourceId': resourceId!,
         if (thumbnails != null) 'thumbnails': thumbnails!,
         if (title != null) 'title': title!,
@@ -13923,7 +13934,8 @@ class PlaylistSnippet {
         if (defaultLanguage != null) 'defaultLanguage': defaultLanguage!,
         if (description != null) 'description': description!,
         if (localized != null) 'localized': localized!,
-        if (publishedAt != null) 'publishedAt': publishedAt!.toIso8601String(),
+        if (publishedAt != null)
+          'publishedAt': publishedAt!.toUtc().toIso8601String(),
         if (tags != null) 'tags': tags!,
         if (thumbnailVideoId != null) 'thumbnailVideoId': thumbnailVideoId!,
         if (thumbnails != null) 'thumbnails': thumbnails!,
@@ -14286,7 +14298,8 @@ class SearchResultSnippet {
         if (description != null) 'description': description!,
         if (liveBroadcastContent != null)
           'liveBroadcastContent': liveBroadcastContent!,
-        if (publishedAt != null) 'publishedAt': publishedAt!.toIso8601String(),
+        if (publishedAt != null)
+          'publishedAt': publishedAt!.toUtc().toIso8601String(),
         if (thumbnails != null) 'thumbnails': thumbnails!,
         if (title != null) 'title': title!,
       };
@@ -14556,7 +14569,8 @@ class SubscriptionSnippet {
         if (channelId != null) 'channelId': channelId!,
         if (channelTitle != null) 'channelTitle': channelTitle!,
         if (description != null) 'description': description!,
-        if (publishedAt != null) 'publishedAt': publishedAt!.toIso8601String(),
+        if (publishedAt != null)
+          'publishedAt': publishedAt!.toUtc().toIso8601String(),
         if (resourceId != null) 'resourceId': resourceId!,
         if (thumbnails != null) 'thumbnails': thumbnails!,
         if (title != null) 'title': title!,
@@ -14821,7 +14835,8 @@ class SuperChatEventSnippet {
         if (amountMicros != null) 'amountMicros': amountMicros!,
         if (channelId != null) 'channelId': channelId!,
         if (commentText != null) 'commentText': commentText!,
-        if (createdAt != null) 'createdAt': createdAt!.toIso8601String(),
+        if (createdAt != null)
+          'createdAt': createdAt!.toUtc().toIso8601String(),
         if (currency != null) 'currency': currency!,
         if (displayString != null) 'displayString': displayString!,
         if (isSuperStickerEvent != null)
@@ -16460,14 +16475,14 @@ class VideoLiveStreamingDetails {
   core.Map<core.String, core.dynamic> toJson() => {
         if (activeLiveChatId != null) 'activeLiveChatId': activeLiveChatId!,
         if (actualEndTime != null)
-          'actualEndTime': actualEndTime!.toIso8601String(),
+          'actualEndTime': actualEndTime!.toUtc().toIso8601String(),
         if (actualStartTime != null)
-          'actualStartTime': actualStartTime!.toIso8601String(),
+          'actualStartTime': actualStartTime!.toUtc().toIso8601String(),
         if (concurrentViewers != null) 'concurrentViewers': concurrentViewers!,
         if (scheduledEndTime != null)
-          'scheduledEndTime': scheduledEndTime!.toIso8601String(),
+          'scheduledEndTime': scheduledEndTime!.toUtc().toIso8601String(),
         if (scheduledStartTime != null)
-          'scheduledStartTime': scheduledStartTime!.toIso8601String(),
+          'scheduledStartTime': scheduledStartTime!.toUtc().toIso8601String(),
       };
 }
 
@@ -16819,7 +16834,7 @@ class VideoRecordingDetails {
         if (locationDescription != null)
           'locationDescription': locationDescription!,
         if (recordingDate != null)
-          'recordingDate': recordingDate!.toIso8601String(),
+          'recordingDate': recordingDate!.toUtc().toIso8601String(),
       };
 }
 
@@ -16953,7 +16968,8 @@ class VideoSnippet {
         if (liveBroadcastContent != null)
           'liveBroadcastContent': liveBroadcastContent!,
         if (localized != null) 'localized': localized!,
-        if (publishedAt != null) 'publishedAt': publishedAt!.toIso8601String(),
+        if (publishedAt != null)
+          'publishedAt': publishedAt!.toUtc().toIso8601String(),
         if (tags != null) 'tags': tags!,
         if (thumbnails != null) 'thumbnails': thumbnails!,
         if (title != null) 'title': title!,
@@ -17149,7 +17165,8 @@ class VideoStatus {
         if (privacyStatus != null) 'privacyStatus': privacyStatus!,
         if (publicStatsViewable != null)
           'publicStatsViewable': publicStatsViewable!,
-        if (publishAt != null) 'publishAt': publishAt!.toIso8601String(),
+        if (publishAt != null)
+          'publishAt': publishAt!.toUtc().toIso8601String(),
         if (rejectionReason != null) 'rejectionReason': rejectionReason!,
         if (selfDeclaredMadeForKids != null)
           'selfDeclaredMadeForKids': selfDeclaredMadeForKids!,
