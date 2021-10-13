@@ -97,7 +97,7 @@ Future<AccessCredentials> refreshCredentials(
 
   final body =
       Stream<List<int>>.fromIterable([(ascii.encode(formValues.join('&')))]);
-  final request = RequestImpl('POST', _googleTokenUri, body);
+  final request = RequestImpl('POST', googleOauthTokenUri, body);
   request.headers['content-type'] = 'application/x-www-form-urlencoded';
 
   final response = await client.send(request);
@@ -143,5 +143,3 @@ Future<AccessCredentials> refreshCredentials(
     idToken: idToken,
   );
 }
-
-final _googleTokenUri = Uri.parse('https://accounts.google.com/o/oauth2/token');

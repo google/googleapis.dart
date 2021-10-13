@@ -6,6 +6,9 @@ import 'dart:convert';
 
 import 'package:http/http.dart' show StreamedResponse;
 
+final googleOauthTokenUri =
+    Uri.parse('https://accounts.google.com/o/oauth2/token');
+
 /// Due to differences of clock speed, network latency, etc. we
 /// will shorten expiry dates by 20 seconds.
 const maxExpectedTimeDiffInSeconds = 20;

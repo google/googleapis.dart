@@ -20,9 +20,6 @@ class JwtFlow extends BaseFlow {
   // https://developers.google.com/accounts/docs/OAuth2ServiceAccount
   // JSON Web Signature (JWS) requires signing a string with a private key.
 
-  static const _googleOauth2TokenUrl =
-      'https://accounts.google.com/o/oauth2/token';
-
   final String _clientEmail;
   final RS256Signer _signer;
   final List<String> _scopes;
@@ -48,7 +45,7 @@ class JwtFlow extends BaseFlow {
     final jwtClaimSet = {
       'iss': _clientEmail,
       'scope': _scopes.join(' '),
-      'aud': _googleOauth2TokenUrl,
+      'aud': googleOauthTokenUri.toString(),
       'exp': timestamp + 3600,
       'iat': timestamp,
       if (_user != null) 'sub': _user!,
@@ -65,7 +62,7 @@ class JwtFlow extends BaseFlow {
         'assertion=${Uri.encodeComponent(jwt)}';
 
     final body = Stream<List<int>>.value(utf8.encode(requestParameters));
-    final request = RequestImpl('POST', Uri.parse(_googleOauth2TokenUrl), body)
+    final request = RequestImpl('POST', googleOauthTokenUri, body)
       ..headers['content-type'] = contentTypeUrlEncoded;
 
     final httpResponse = await _client.send(request);
