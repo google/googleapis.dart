@@ -2,7 +2,9 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-/// This library has been deprecated. Use `googleapis_auth.dart` instead.
+// ignore_for_file: comment_references
+
+/// This library has been deprecated. Use [googleapis_auth] instead.
 @Deprecated('Use `googleapis_auth.dart` instead')
 library auth;
 
