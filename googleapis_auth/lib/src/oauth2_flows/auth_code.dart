@@ -101,10 +101,16 @@ Future<AccessCredentials> obtainAccessCredentialsUsingCode(
 /// for further details.
 abstract class AuthorizationCodeGrantAbstractFlow {
   final ClientId clientId;
+  final String? hostedDomain;
   final List<String> scopes;
   final http.Client _client;
 
-  AuthorizationCodeGrantAbstractFlow(this.clientId, this.scopes, this._client);
+  AuthorizationCodeGrantAbstractFlow(
+    this.clientId,
+    this.scopes,
+    this._client, {
+    this.hostedDomain,
+  });
 
   Future<AccessCredentials> run();
 
@@ -127,6 +133,7 @@ abstract class AuthorizationCodeGrantAbstractFlow {
       'client_id=${Uri.encodeQueryComponent(clientId.identifier)}',
       'redirect_uri=${Uri.encodeQueryComponent(redirectUri)}',
       'scope=${Uri.encodeQueryComponent(scopes.join(' '))}',
+      if (hostedDomain != null) 'hd=${Uri.encodeQueryComponent(hostedDomain!)}',
       if (state != null) 'state=${Uri.encodeQueryComponent(state)}',
     ];
     return Uri.parse(
@@ -154,8 +161,9 @@ class AuthorizationCodeGrantServerFlow
     ClientId clientId,
     List<String> scopes,
     http.Client client,
-    this.userPrompt,
-  ) : super(clientId, scopes, client);
+    this.userPrompt, {
+    String? hostedDomain,
+  }) : super(clientId, scopes, client, hostedDomain: hostedDomain);
 
   @override
   Future<AccessCredentials> run() async {
@@ -256,8 +264,9 @@ class AuthorizationCodeGrantManualFlow
     ClientId clientId,
     List<String> scopes,
     http.Client client,
-    this.userPrompt,
-  ) : super(clientId, scopes, client);
+    this.userPrompt, {
+    String? hostedDomain,
+  }) : super(clientId, scopes, client, hostedDomain: hostedDomain);
 
   @override
   Future<AccessCredentials> run() async {

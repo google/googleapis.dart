@@ -1,5 +1,8 @@
 ## 1.2.0-dev
 
+- Added an optional `hostedDomain` parameter to many functions in
+  `auth_io.dart`.
+  If provided, restricts sign-in to Google Apps hosted accounts at that domain.
 - Fix an error when doing OAUTH code exchanged with an undefined secret.
 - `clientViaApiKey` is now exported from `googleapis_auth.dart`.
 - Added `String? details` to `UserConsentException`.
