@@ -58,7 +58,10 @@ abstract class RSAAlgorithm {
   /// The [intendedLength] argument specifies the number of bytes in which the
   /// result should be encoded. Zero bytes will be used for padding.
   static List<int> encrypt(
-      RSAPrivateKey key, List<int> bytes, int intendedLength,) {
+    RSAPrivateKey key,
+    List<int> bytes,
+    int intendedLength,
+  ) {
     final message = bytes2BigInt(bytes);
     final encryptedMessage = _encryptInteger(key, message);
     return integer2Bytes(encryptedMessage, intendedLength);
@@ -75,7 +78,6 @@ abstract class RSAAlgorithm {
     return ((((xp - xq) * key.coeff) % key.p) * key.q) + xq;
   }
 
-  // TODO(kevmoo): see if this can be done more efficiently with BigInt
   static BigInt _modPow(BigInt b, BigInt e, BigInt m) {
     if (e < BigInt.one) {
       return BigInt.one;

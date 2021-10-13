@@ -64,9 +64,7 @@ class JwtFlow extends BaseFlow {
     final requestParameters = 'grant_type=${Uri.encodeComponent(_uri)}&'
         'assertion=${Uri.encodeComponent(jwt)}';
 
-    final body = Stream<List<int>>.fromIterable(
-      <List<int>>[utf8.encode(requestParameters)],
-    );
+    final body = Stream<List<int>>.value(utf8.encode(requestParameters));
     final request = RequestImpl('POST', Uri.parse(_googleOauth2TokenUrl), body)
       ..headers['content-type'] = contentTypeUrlEncoded;
 

@@ -54,7 +54,7 @@ Future<void> _upload(StorageApi storageApi, List<int> sampleContent) async {
     uploadObject,
     _bucketName,
     uploadMedia: Media(
-      Stream.fromIterable([sampleContent]),
+      Stream.value(sampleContent),
       sampleContent.length,
     ),
   );
@@ -77,7 +77,7 @@ Future<void> _uploadChunked(
     uploadObject,
     _bucketName,
     uploadMedia: Media(
-      Stream.fromIterable([sampleContent]),
+      Stream.value(sampleContent),
       sampleContent.length,
     ),
     uploadOptions: ResumableUploadOptions(chunkSize: 256 * 1024),
