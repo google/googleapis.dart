@@ -142,11 +142,13 @@ class BrowserOAuth2Flow {
   Future<AutoRefreshingAuthClient> clientViaUserConsent({
     bool immediate = false,
     String? loginHint,
-  }) =>
-      obtainAccessCredentialsViaUserConsent(
-        immediate: immediate,
-        loginHint: loginHint,
-      ).then(_clientFromCredentials);
+  }) async {
+    final credentials = await obtainAccessCredentialsViaUserConsent(
+      immediate: immediate,
+      loginHint: loginHint,
+    );
+    return _clientFromCredentials(credentials);
+  }
 
   /// Obtains [AccessCredentials] and an authorization code which can be
   /// exchanged for permanent access credentials.
