@@ -100,11 +100,18 @@ Future<AutoRefreshingAuthClient> clientViaApplicationDefaultCredentials({
 ///
 /// The user is responsible for closing the returned HTTP [Client].
 /// Closing the returned [Client] will not close [baseClient].
+///
+/// {@template googleapis_auth_hosted_domain_param}
+/// If provided, restricts sign-in to Google Apps hosted accounts at
+/// [hostedDomain]. For more details, see
+/// https://developers.google.com/identity/protocols/oauth2/openid-connect#hd-param
+/// {@endtemplate}
 Future<AutoRefreshingAuthClient> clientViaUserConsent(
   ClientId clientId,
   List<String> scopes,
   PromptUserForConsent userPrompt, {
   Client? baseClient,
+  String? hostedDomain,
 }) async {
   var closeUnderlyingClient = false;
   if (baseClient == null) {
@@ -117,6 +124,7 @@ Future<AutoRefreshingAuthClient> clientViaUserConsent(
     scopes,
     baseClient,
     userPrompt,
+    hostedDomain: hostedDomain,
   );
 
   AccessCredentials credentials;
@@ -152,11 +160,14 @@ Future<AutoRefreshingAuthClient> clientViaUserConsent(
 ///
 /// The user is responsible for closing the returned HTTP [Client].
 /// Closing the returned [Client] will not close [baseClient].
+///
+/// {@macro googleapis_auth_hosted_domain_param}
 Future<AutoRefreshingAuthClient> clientViaUserConsentManual(
   ClientId clientId,
   List<String> scopes,
   PromptUserForConsentManual userPrompt, {
   Client? baseClient,
+  String? hostedDomain,
 }) async {
   var closeUnderlyingClient = false;
   if (baseClient == null) {
@@ -169,6 +180,7 @@ Future<AutoRefreshingAuthClient> clientViaUserConsentManual(
     scopes,
     baseClient,
     userPrompt,
+    hostedDomain: hostedDomain,
   );
 
   AccessCredentials credentials;
@@ -192,9 +204,9 @@ Future<AutoRefreshingAuthClient> clientViaUserConsentManual(
 
 /// Obtain oauth2 [AccessCredentials] using the oauth2 authentication code flow.
 ///
-/// The returned future will complete with `AccessCredentials` if the user
+/// The returned future will complete with [AccessCredentials] if the user
 /// has given the application access to it's data. Otherwise the future will
-/// complete with a `UserConsentException`.
+/// complete with a [UserConsentException].
 ///
 /// In case another error occurs the returned future will complete with an
 /// `Exception`.
@@ -202,18 +214,26 @@ Future<AutoRefreshingAuthClient> clientViaUserConsentManual(
 /// [userPrompt] will be used for directing the user/user-agent to a URI. See
 /// [PromptUserForConsent] for more information.
 ///
-/// [client] will be used for obtaining `AccessCredentials` from an
+/// [client] will be used for obtaining [AccessCredentials] from an
 /// authorization code.
 ///
-/// The [ClientId] can be obtained in the Google Cloud Console.
+/// The [clientId] can be obtained in the Google Cloud Console.
+///
+/// {@macro googleapis_auth_hosted_domain_param}
 Future<AccessCredentials> obtainAccessCredentialsViaUserConsent(
   ClientId clientId,
   List<String> scopes,
   Client client,
-  PromptUserForConsent userPrompt,
-) =>
-    AuthorizationCodeGrantServerFlow(clientId, scopes, client, userPrompt)
-        .run();
+  PromptUserForConsent userPrompt, {
+  String? hostedDomain,
+}) =>
+    AuthorizationCodeGrantServerFlow(
+      clientId,
+      scopes,
+      client,
+      userPrompt,
+      hostedDomain: hostedDomain,
+    ).run();
 
 /// Obtain oauth2 [AccessCredentials] using the oauth2 authentication code flow.
 ///
@@ -230,15 +250,23 @@ Future<AccessCredentials> obtainAccessCredentialsViaUserConsent(
 /// [client] will be used for obtaining `AccessCredentials` from an
 /// authorization code.
 ///
-/// The [ClientId] can be obtained in the Google Cloud Console.
+/// The [clientId] can be obtained in the Google Cloud Console.
+///
+/// {@macro googleapis_auth_hosted_domain_param}
 Future<AccessCredentials> obtainAccessCredentialsViaUserConsentManual(
   ClientId clientId,
   List<String> scopes,
   Client client,
-  PromptUserForConsentManual userPrompt,
-) =>
-    AuthorizationCodeGrantManualFlow(clientId, scopes, client, userPrompt)
-        .run();
+  PromptUserForConsentManual userPrompt, {
+  String? hostedDomain,
+}) =>
+    AuthorizationCodeGrantManualFlow(
+      clientId,
+      scopes,
+      client,
+      userPrompt,
+      hostedDomain: hostedDomain,
+    ).run();
 
 /// Obtain oauth2 [AccessCredentials] by exchanging an authorization code.
 ///
