@@ -64,7 +64,6 @@ Future<AccessCredentials> obtainAccessCredentialsUsingCode(
   http.Client client, [
   List<String>? scopes,
 ]) async {
-  final uri = Uri.parse('https://accounts.google.com/o/oauth2/token');
   final formValues = [
     'grant_type=authorization_code',
     'code=${Uri.encodeQueryComponent(code)}',
@@ -74,7 +73,7 @@ Future<AccessCredentials> obtainAccessCredentialsUsingCode(
   ];
 
   final body = Stream<List<int>>.value(ascii.encode(formValues.join('&')));
-  final request = RequestImpl('POST', uri, body);
+  final request = RequestImpl('POST', googleOauthTokenUri, body);
   request.headers['content-type'] = contentTypeUrlEncoded;
 
   final response = await client.send(request);
@@ -158,10 +157,8 @@ abstract class AuthorizationCodeGrantAbstractFlow {
       'client_id=${Uri.encodeQueryComponent(clientId.identifier)}',
       'redirect_uri=${Uri.encodeQueryComponent(redirectUri)}',
       'scope=${Uri.encodeQueryComponent(scopes.join(' '))}',
+      if (state != null) 'state=${Uri.encodeQueryComponent(state)}',
     ];
-    if (state != null) {
-      queryValues.add('state=${Uri.encodeQueryComponent(state)}');
-    }
     return Uri.parse(
       'https://accounts.google.com/o/oauth2/auth'
       '?${queryValues.join('&')}',
