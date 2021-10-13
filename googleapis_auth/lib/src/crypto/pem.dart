@@ -28,8 +28,10 @@ Uint8List _getBytesFromPEMString(String pemString) {
   if (lines.length < 2 ||
       !lines.first.startsWith('-----BEGIN') ||
       !lines.last.startsWith('-----END')) {
-    throw ArgumentError('The given string does not have the correct '
-        'begin/end markers expected in a PEM file.');
+    throw ArgumentError(
+      'The given string does not have the correct '
+      'begin/end markers expected in a PEM file.',
+    );
   }
   final base64 = lines.sublist(1, lines.length - 1).join();
   return Uint8List.fromList(base64Decode(base64));
@@ -60,19 +62,22 @@ RSAPrivateKey _extractRSAKeyFromDERBytes(Uint8List bytes) {
     }
 
     final key = RSAPrivateKey(
-        asnIntegers[1].integer,
-        asnIntegers[2].integer,
-        asnIntegers[3].integer,
-        asnIntegers[4].integer,
-        asnIntegers[5].integer,
-        asnIntegers[6].integer,
-        asnIntegers[7].integer,
-        asnIntegers[8].integer);
+      asnIntegers[1].integer,
+      asnIntegers[2].integer,
+      asnIntegers[3].integer,
+      asnIntegers[4].integer,
+      asnIntegers[5].integer,
+      asnIntegers[6].integer,
+      asnIntegers[7].integer,
+      asnIntegers[8].integer,
+    );
 
     final bitLength = key.bitLength;
     if (bitLength != 1024 && bitLength != 2048 && bitLength != 4096) {
-      throw ArgumentError('The RSA modulus has a bit length of $bitLength. '
-          'Only 1024, 2048 and 4096 are supported.');
+      throw ArgumentError(
+        'The RSA modulus has a bit length of $bitLength. '
+        'Only 1024, 2048 and 4096 are supported.',
+      );
     }
     return key;
   }
@@ -86,13 +91,15 @@ RSAPrivateKey _extractRSAKeyFromDERBytes(Uint8List bytes) {
         // Seems like the embedded form.
         // TODO: Validate that rsa identifier matches!
         return privateKeyFromSequence(
-            ASN1Parser.parse(string.bytes as Uint8List) as ASN1Sequence);
+          ASN1Parser.parse(string.bytes as Uint8List) as ASN1Sequence,
+        );
       }
     }
     return privateKeyFromSequence(asn as ASN1Sequence);
   } catch (error) {
     throw ArgumentError(
-        'Error while extracting private key from DER bytes: $error');
+      'Error while extracting private key from DER bytes: $error',
+    );
   }
 }
 

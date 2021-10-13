@@ -300,15 +300,16 @@ void main() {
             AccessToken('Bearer', 'bar', yesterday), 'refresh', ['s1', 's2']);
 
         final client = autoRefreshingClient(
-            clientId,
-            credentials,
-            mockClient(expectAsync1((request) {
-              // This should be a refresh request.
-              expect(request.headers['foo'], isNull);
-              final headers = {'content-type': 'image/png'};
+          clientId,
+          credentials,
+          mockClient(expectAsync1((request) {
+            // This should be a refresh request.
+            expect(request.headers['foo'], isNull);
+            final headers = {'content-type': 'image/png'};
 
-              return Future.value(Response('', 200, headers: headers));
-            }), expectClose: false));
+            return Future.value(Response('', 200, headers: headers));
+          }), expectClose: false),
+        );
         expect(client.credentials, equals(credentials));
 
         final request = RequestImpl('POST', url);
@@ -325,25 +326,33 @@ void main() {
         final client = autoRefreshingClient(
             clientId,
             credentials,
-            mockClient(expectAsync1((request) {
-              if (serverInvocation++ == 0) {
-                // This should be a refresh request.
-                expect(request.headers['foo'], isNull);
-                return successfulRefresh(request);
-              } else {
-                // This is the real request.
-                expect(request.headers['foo'], equals('bar'));
-                return Future.value(Response('', 200));
-              }
-            }, count: 2)));
+            mockClient(
+              expectAsync1(
+                (request) {
+                  if (serverInvocation++ == 0) {
+                    // This should be a refresh request.
+                    expect(request.headers['foo'], isNull);
+                    return successfulRefresh(request);
+                  } else {
+                    // This is the real request.
+                    expect(request.headers['foo'], equals('bar'));
+                    return Future.value(Response('', 200));
+                  }
+                },
+                count: 2,
+              ),
+            ));
         expect(client.credentials, equals(credentials));
 
         var executed = false;
-        client.credentialUpdates.listen(expectAsync1((newCredentials) {
-          expect(newCredentials.accessToken.type, equals('Bearer'));
-          expect(newCredentials.accessToken.data, equals('atoken'));
-          executed = true;
-        }), onDone: expectAsync0(() {}));
+        client.credentialUpdates.listen(
+          expectAsync1((newCredentials) {
+            expect(newCredentials.accessToken.type, equals('Bearer'));
+            expect(newCredentials.accessToken.data, equals('atoken'));
+            executed = true;
+          }),
+          onDone: expectAsync0(() {}),
+        );
 
         final request = RequestImpl('POST', url);
         request.headers.addAll({'foo': 'bar'});

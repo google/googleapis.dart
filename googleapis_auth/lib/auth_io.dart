@@ -113,7 +113,11 @@ Future<AutoRefreshingAuthClient> clientViaUserConsent(
   }
 
   final flow = AuthorizationCodeGrantServerFlow(
-      clientId, scopes, baseClient, userPrompt);
+    clientId,
+    scopes,
+    baseClient,
+    userPrompt,
+  );
 
   AccessCredentials credentials;
 
