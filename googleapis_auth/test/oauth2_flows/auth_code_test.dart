@@ -120,40 +120,54 @@ void main() {
         validateAccessCredentials(await flow.run());
       });
 
-      test('user-exception', () {
+      test('user-exception', () async {
         // We use a TransportException here for convenience.
         Future<String> manualUserPromptError(String url) =>
             Future.error(TransportException());
 
         final flow = AuthorizationCodeGrantManualFlow(
-            clientId,
-            scopes,
-            mockClient(successFullResponse(manual: true), expectClose: false),
-            manualUserPromptError);
-        expect(flow.run(), throwsA(isTransportException));
+          clientId,
+          scopes,
+          mockClient(successFullResponse(manual: true), expectClose: false),
+          manualUserPromptError,
+        );
+        await expectLater(flow.run(), throwsA(isTransportException));
       });
 
-      test('transport-exception', () {
+      test('transport-exception', () async {
         final flow = AuthorizationCodeGrantManualFlow(
-            clientId, scopes, transportFailure, manualUserPrompt);
-        expect(flow.run(), throwsA(isTransportException));
+          clientId,
+          scopes,
+          transportFailure,
+          manualUserPrompt,
+        );
+        await expectLater(flow.run(), throwsA(isTransportException));
       });
 
-      test('invalid-server-response', () {
-        final flow = AuthorizationCodeGrantManualFlow(clientId, scopes,
-            mockClient(invalidResponse, expectClose: false), manualUserPrompt);
-        expect(flow.run(), throwsA(isException));
+      test('invalid-server-response', () async {
+        final flow = AuthorizationCodeGrantManualFlow(
+          clientId,
+          scopes,
+          mockClient(invalidResponse, expectClose: false),
+          manualUserPrompt,
+        );
+        await expectLater(flow.run(), throwsA(isException));
       });
     });
 
     group('http-server', () {
-      void callRedirectionEndpoint(Uri authCodeCall) {
+      Future<void> callRedirectionEndpoint(Uri authCodeCall) async {
         final ioClient = HttpClient();
-        ioClient
-            .getUrl(authCodeCall)
-            .then((request) => request.close())
-            .then((response) => response.drain())
-            .whenComplete(expectAsync0(ioClient.close));
+
+        final closeMe = expectAsync0(ioClient.close);
+
+        try {
+          final request = await ioClient.getUrl(authCodeCall);
+          final response = await request.close();
+          await response.drain();
+        } finally {
+          closeMe();
+        }
       }
 
       void userPrompt(String url) {
@@ -184,37 +198,44 @@ void main() {
         callRedirectionEndpoint(authCodeCall);
       }
 
-      test('successfull', () async {
+      test('successful', () async {
         final flow = AuthorizationCodeGrantServerFlow(
-            clientId,
-            scopes,
-            mockClient(successFullResponse(manual: false), expectClose: false),
-            expectAsync1(userPrompt));
+          clientId,
+          scopes,
+          mockClient(successFullResponse(manual: false), expectClose: false),
+          expectAsync1(userPrompt),
+        );
         validateAccessCredentials(await flow.run());
       });
 
-      test('transport-exception', () {
+      test('transport-exception', () async {
         final flow = AuthorizationCodeGrantServerFlow(
-            clientId, scopes, transportFailure, expectAsync1(userPrompt));
-        expect(flow.run(), throwsA(isTransportException));
+          clientId,
+          scopes,
+          transportFailure,
+          expectAsync1(userPrompt),
+        );
+        await expectLater(flow.run(), throwsA(isTransportException));
       });
 
-      test('invalid-server-response', () {
+      test('invalid-server-response', () async {
         final flow = AuthorizationCodeGrantServerFlow(
-            clientId,
-            scopes,
-            mockClient(invalidResponse, expectClose: false),
-            expectAsync1(userPrompt));
-        expect(flow.run(), throwsA(isException));
+          clientId,
+          scopes,
+          mockClient(invalidResponse, expectClose: false),
+          expectAsync1(userPrompt),
+        );
+        await expectLater(flow.run(), throwsA(isException));
       });
 
-      test('failed-authentication', () {
+      test('failed-authentication', () async {
         final flow = AuthorizationCodeGrantServerFlow(
-            clientId,
-            scopes,
-            mockClient(successFullResponse(manual: false), expectClose: false),
-            expectAsync1(userPromptInvalidAuthCodeCallback));
-        expect(flow.run(), throwsA(isUserConsentException));
+          clientId,
+          scopes,
+          mockClient(successFullResponse(manual: false), expectClose: false),
+          expectAsync1(userPromptInvalidAuthCodeCallback),
+        );
+        await expectLater(flow.run(), throwsA(isUserConsentException));
       });
     }, testOn: '!browser');
   });
