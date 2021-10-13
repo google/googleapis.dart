@@ -10,7 +10,7 @@ class RequestImpl extends http.BaseRequest {
   final Stream<List<int>> _stream;
 
   RequestImpl(String method, Uri url, [Stream<List<int>>? stream])
-      : _stream = stream ?? Stream.fromIterable([]),
+      : _stream = stream ?? const Stream.empty(),
         super(method, url);
 
   @override

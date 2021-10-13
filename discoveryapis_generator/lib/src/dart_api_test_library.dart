@@ -182,7 +182,7 @@ http.StreamedResponse stringResponse(
   core.Map<core.String, core.String> headers,
   core.String body,
 ) {
-  final stream = async.Stream.fromIterable([convert.utf8.encode(body)]);
+  final stream = async.Stream.value(convert.utf8.encode(body));
   return http.StreamedResponse(stream, status, headers: headers);
 }
 ''';
