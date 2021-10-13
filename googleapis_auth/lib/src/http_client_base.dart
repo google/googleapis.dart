@@ -76,8 +76,9 @@ class RefCountedClient extends DelegatingClient {
   void _ensureClientIsOpen() {
     if (_refCount <= 0) {
       throw StateError(
-          'This reference counted HTTP client has reached a count of zero and '
-          'can no longer be used for making HTTP requests.');
+        'This reference counted HTTP client has reached a count of zero and '
+        'can no longer be used for making HTTP requests.',
+      );
     }
   }
 }

@@ -37,8 +37,10 @@ class AuthenticatedClient extends DelegatingClient implements AuthClient {
     final wwwAuthenticate = response.headers['www-authenticate'];
     if (wwwAuthenticate != null) {
       await response.stream.drain();
-      throw AccessDeniedException('Access was denied '
-          '(www-authenticate header was: $wwwAuthenticate).');
+      throw AccessDeniedException(
+        'Access was denied '
+        '(www-authenticate header was: $wwwAuthenticate).',
+      );
     }
     return response;
   }
@@ -57,12 +59,13 @@ class ApiKeyClient extends DelegatingClient {
         super(client, closeUnderlyingClient: true);
 
   @override
-  Future<StreamedResponse> send(BaseRequest request) {
+  Future<StreamedResponse> send(BaseRequest request) async {
     var url = request.url;
     if (url.queryParameters.containsKey('key')) {
-      return Future.error(Exception(
-          'Tried to make a HTTP request which has already a "key" query '
-          'parameter. Adding the API key would override that existing value.'));
+      throw Exception(
+        'Tried to make a HTTP request which has already a "key" query '
+        'parameter. Adding the API key would override that existing value.',
+      );
     }
 
     if (url.query == '') {
@@ -71,9 +74,8 @@ class ApiKeyClient extends DelegatingClient {
       url = url.replace(query: '${url.query}&key=$_encodedApiKey');
     }
 
-    final modifiedRequest =
-        RequestImpl(request.method, url, request.finalize());
-    modifiedRequest.headers.addAll(request.headers);
+    final modifiedRequest = RequestImpl(request.method, url, request.finalize())
+      ..headers.addAll(request.headers);
     return baseClient.send(modifiedRequest);
   }
 }
@@ -127,9 +129,10 @@ abstract class AutoRefreshDelegatingClient extends DelegatingClient
   final StreamController<AccessCredentials> _credentialStreamController =
       StreamController.broadcast(sync: true);
 
-  AutoRefreshDelegatingClient(Client client,
-      {bool closeUnderlyingClient = true})
-      : super(client, closeUnderlyingClient: closeUnderlyingClient);
+  AutoRefreshDelegatingClient(
+    Client client, {
+    bool closeUnderlyingClient = true,
+  }) : super(client, closeUnderlyingClient: closeUnderlyingClient);
 
   @override
   Stream<AccessCredentials> get credentialUpdates =>

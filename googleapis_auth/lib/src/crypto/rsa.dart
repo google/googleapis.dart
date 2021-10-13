@@ -37,7 +37,15 @@ class RSAPrivateKey {
   int get bitLength => n.bitLength;
 
   RSAPrivateKey(
-      this.n, this.e, this.d, this.p, this.q, this.dmp1, this.dmq1, this.coeff);
+    this.n,
+    this.e,
+    this.d,
+    this.p,
+    this.q,
+    this.dmp1,
+    this.dmq1,
+    this.coeff,
+  );
 }
 
 // ignore: avoid_classes_with_only_static_members
@@ -50,7 +58,7 @@ abstract class RSAAlgorithm {
   /// The [intendedLength] argument specifies the number of bytes in which the
   /// result should be encoded. Zero bytes will be used for padding.
   static List<int> encrypt(
-      RSAPrivateKey key, List<int> bytes, int intendedLength) {
+      RSAPrivateKey key, List<int> bytes, int intendedLength,) {
     final message = bytes2BigInt(bytes);
     final encryptedMessage = _encryptInteger(key, message);
     return integer2Bytes(encryptedMessage, intendedLength);

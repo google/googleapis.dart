@@ -31,9 +31,13 @@ import '../utils.dart';
 //
 // Scopes are separated by spaces.
 Future<List<String>> obtainScopesFromAccessToken(
-    String accessToken, http.Client client) async {
-  final url = Uri.parse('https://www.googleapis.com/oauth2/v2/tokeninfo'
-      '?access_token=${Uri.encodeQueryComponent(accessToken)}');
+  String accessToken,
+  http.Client client,
+) async {
+  final url = Uri.parse(
+    'https://www.googleapis.com/oauth2/v2/tokeninfo'
+    '?access_token=${Uri.encodeQueryComponent(accessToken)}',
+  );
 
   final response = await client.post(url);
   if (response.statusCode == 200) {
@@ -41,18 +45,25 @@ Future<List<String>> obtainScopesFromAccessToken(
     final scope = json['scope'];
     if (scope is! String) {
       throw Exception(
-          'The response did not include a `scope` value of type `String`.');
+        'The response did not include a `scope` value of type `String`.',
+      );
     }
     return scope.split(' ').toList();
   } else {
-    throw Exception('Unable to obtain list of scopes an access token '
-        'is valid for. Server responded with ${response.statusCode}.');
+    throw Exception(
+      'Unable to obtain list of scopes an access token '
+      'is valid for. Server responded with ${response.statusCode}.',
+    );
   }
 }
 
 Future<AccessCredentials> obtainAccessCredentialsUsingCode(
-    ClientId clientId, String code, String redirectUrl, http.Client client,
-    [List<String>? scopes]) async {
+  ClientId clientId,
+  String code,
+  String redirectUrl,
+  http.Client client, [
+  List<String>? scopes,
+]) async {
   final uri = Uri.parse('https://accounts.google.com/o/oauth2/token');
   final formValues = [
     'grant_type=authorization_code',
@@ -62,8 +73,7 @@ Future<AccessCredentials> obtainAccessCredentialsUsingCode(
     'client_secret=${Uri.encodeQueryComponent(clientId.secret ?? '')}',
   ];
 
-  final body = Stream<List<int>>.fromIterable(
-      <List<int>>[ascii.encode(formValues.join('&'))]);
+  final body = Stream<List<int>>.value(ascii.encode(formValues.join('&')));
   final request = RequestImpl('POST', uri, body);
   request.headers['content-type'] = contentTypeUrlEncoded;
 
@@ -88,25 +98,29 @@ Future<AccessCredentials> obtainAccessCredentialsUsingCode(
       accessToken == null ||
       seconds is! int ||
       tokenType != 'Bearer') {
-    throw Exception('Failed to exchange authorization code. '
-        'Invalid server response. '
-        'Http status code was: ${response.statusCode}.');
+    throw Exception(
+      'Failed to exchange authorization code. '
+      'Invalid server response. '
+      'Http status code was: ${response.statusCode}.',
+    );
   }
 
   if (scopes != null) {
     return AccessCredentials(
-        AccessToken('Bearer', accessToken, expiryDate(seconds)),
-        refreshToken,
-        scopes,
-        idToken: idToken);
+      AccessToken('Bearer', accessToken, expiryDate(seconds)),
+      refreshToken,
+      scopes,
+      idToken: idToken,
+    );
   }
 
   scopes = await obtainScopesFromAccessToken(accessToken, client);
   return AccessCredentials(
-      AccessToken('Bearer', accessToken, expiryDate(seconds)),
-      refreshToken,
-      scopes,
-      idToken: idToken);
+    AccessToken('Bearer', accessToken, expiryDate(seconds)),
+    refreshToken,
+    scopes,
+    idToken: idToken,
+  );
 }
 
 /// Abstract class for obtaining access credentials via the authorization code
@@ -126,9 +140,16 @@ abstract class AuthorizationCodeGrantAbstractFlow {
   Future<AccessCredentials> run();
 
   Future<AccessCredentials> _obtainAccessCredentialsUsingCode(
-          String code, String redirectUri) =>
+    String code,
+    String redirectUri,
+  ) =>
       obtainAccessCredentialsUsingCode(
-          clientId, code, redirectUri, _client, scopes);
+        clientId,
+        code,
+        redirectUri,
+        _client,
+        scopes,
+      );
 
   String _authenticationUri(String redirectUri, {String? state}) {
     // TODO: Increase scopes with [include_granted_scopes].
@@ -141,9 +162,10 @@ abstract class AuthorizationCodeGrantAbstractFlow {
     if (state != null) {
       queryValues.add('state=${Uri.encodeQueryComponent(state)}');
     }
-    return Uri.parse('https://accounts.google.com/o/oauth2/auth'
-            '?${queryValues.join('&')}')
-        .toString();
+    return Uri.parse(
+      'https://accounts.google.com/o/oauth2/auth'
+      '?${queryValues.join('&')}',
+    ).toString();
   }
 }
 
@@ -161,9 +183,12 @@ class AuthorizationCodeGrantServerFlow
     extends AuthorizationCodeGrantAbstractFlow {
   final PromptUserForConsent userPrompt;
 
-  AuthorizationCodeGrantServerFlow(ClientId clientId, List<String> scopes,
-      http.Client client, this.userPrompt)
-      : super(clientId, scopes, client);
+  AuthorizationCodeGrantServerFlow(
+    ClientId clientId,
+    List<String> scopes,
+    http.Client client,
+    this.userPrompt,
+  ) : super(clientId, scopes, client);
 
   @override
   Future<AccessCredentials> run() async {
@@ -187,23 +212,28 @@ class AuthorizationCodeGrantServerFlow
         final error = uri.queryParameters['error'];
 
         if (request.method != 'GET') {
-          throw Exception('Invalid response from server '
-              '(expected GET request callback, got: ${request.method}).');
+          throw Exception(
+            'Invalid response from server '
+            '(expected GET request callback, got: ${request.method}).',
+          );
         }
 
         if (state != returnedState) {
           throw Exception(
-              'Invalid response from server (state did not match).');
+            'Invalid response from server (state did not match).',
+          );
         }
 
         if (error != null) {
           throw UserConsentException(
-              'Error occurred while obtaining access credentials: $error');
+            'Error occurred while obtaining access credentials: $error',
+          );
         }
 
         if (code == null || code == '') {
           throw Exception(
-              'Invalid response from server (no auth code transmitted).');
+            'Invalid response from server (no auth code transmitted).',
+          );
         }
         final credentials =
             await _obtainAccessCredentialsUsingCode(code, redirectionUri);
@@ -212,7 +242,8 @@ class AuthorizationCodeGrantServerFlow
         request.response
           ..statusCode = 200
           ..headers.set('content-type', 'text/html; charset=UTF-8')
-          ..write('''
+          ..write(
+            '''
 <!DOCTYPE html>
 
 <html>
@@ -225,7 +256,8 @@ class AuthorizationCodeGrantServerFlow
     <h2 style="text-align: center">Application has successfully obtained access credentials</h2>
     <p style="text-align: center">This window can be closed now.</p>
   </body>
-</html>''');
+</html>''',
+          );
         await request.response.close();
         return credentials;
       } catch (e) {
@@ -253,9 +285,12 @@ class AuthorizationCodeGrantManualFlow
     extends AuthorizationCodeGrantAbstractFlow {
   final PromptUserForConsentManual userPrompt;
 
-  AuthorizationCodeGrantManualFlow(ClientId clientId, List<String> scopes,
-      http.Client client, this.userPrompt)
-      : super(clientId, scopes, client);
+  AuthorizationCodeGrantManualFlow(
+    ClientId clientId,
+    List<String> scopes,
+    http.Client client,
+    this.userPrompt,
+  ) : super(clientId, scopes, client);
 
   @override
   Future<AccessCredentials> run() async {

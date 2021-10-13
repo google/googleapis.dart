@@ -35,8 +35,10 @@ class MetadataServerAuthorizationFlow extends BaseFlow {
   final Uri _tokenUrl;
   final http.Client _client;
 
-  factory MetadataServerAuthorizationFlow(http.Client client,
-      {String email = 'default'}) {
+  factory MetadataServerAuthorizationFlow(
+    http.Client client, {
+    String email = 'default',
+  }) {
     final encodedEmail = Uri.encodeComponent(email);
 
     final metadataHost =
@@ -47,11 +49,19 @@ class MetadataServerAuthorizationFlow extends BaseFlow {
     final scopesUrl = Uri.parse('$serviceAccountPrefix/$encodedEmail/scopes');
     final tokenUrl = Uri.parse('$serviceAccountPrefix/$encodedEmail/token');
     return MetadataServerAuthorizationFlow._(
-        client, email, scopesUrl, tokenUrl);
+      client,
+      email,
+      scopesUrl,
+      tokenUrl,
+    );
   }
 
   MetadataServerAuthorizationFlow._(
-      this._client, this.email, this._scopesUrl, this._tokenUrl);
+    this._client,
+    this.email,
+    this._scopesUrl,
+    this._tokenUrl,
+  );
 
   @override
   Future<AccessCredentials> run() async {

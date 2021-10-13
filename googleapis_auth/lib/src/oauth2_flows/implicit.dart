@@ -66,8 +66,11 @@ class ImplicitFlow {
 
     final timeout = Timer(callbackTimeout, () {
       _pendingInitialization = null;
-      completer.completeError(Exception(
-          'Timed out while waiting for the gapi.auth library to load.'));
+      completer.completeError(
+        Exception(
+          'Timed out while waiting for the gapi.auth library to load.',
+        ),
+      );
     });
 
     js.context['dartGapiLoaded'] = () {

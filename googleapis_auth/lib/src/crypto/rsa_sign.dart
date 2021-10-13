@@ -56,7 +56,8 @@ class RS256Signer {
     // }
     var offset = 0;
     final digestInfo = Uint8List(
-        2 + 2 + _rsaSha256AlgorithmIdentifier.length + 2 + 2 + hash.length);
+      2 + 2 + _rsaSha256AlgorithmIdentifier.length + 2 + 2 + hash.length,
+    );
     {
       // DigestInfo
       digestInfo[offset++] = ASN1Parser.sequenceTag;
