@@ -98,7 +98,7 @@ class ImplicitFlow {
       _pendingInitialization = null;
       if (!completer.isCompleted) {
         // script loading errors can still happen after timeouts
-        completer.completeError(Exception('Failed to load gapi library.'));
+        completer.completeError(StateError('Failed to load gapi library.'));
       }
     });
     html.document.body!.append(script);

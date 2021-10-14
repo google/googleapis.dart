@@ -26,7 +26,7 @@ void main() {
             .having(
               (p0) => p0.message,
               'message',
-              contains('Could not decode the response as JSON.'),
+              contains('The response was not valid UTF-8.'),
             )
             .having(
               (p0) => p0.responseContent,
