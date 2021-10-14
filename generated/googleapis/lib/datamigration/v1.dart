@@ -383,11 +383,12 @@ class ProjectsLocationsConnectionProfilesResource {
   /// the response. The expression must specify the field name, a comparison
   /// operator, and the value that you want to use for filtering. The value must
   /// be a string, a number, or a boolean. The comparison operator must be
-  /// either =, !=, >, or <. For example, list connection profiles created this
-  /// year by specifying **createTime %gt; 2020-01-01T00:00:00.000000000Z**. You
-  /// can also filter nested fields. For example, you could specify
-  /// **mySql.username = %lt;my_username%gt;** to list all connection profiles
-  /// configured to connect with a specific username.
+  /// either =, !=, \>, or \<. For example, list connection profiles created
+  /// this year by specifying **createTime %gt;
+  /// 2020-01-01T00:00:00.000000000Z**. You can also filter nested fields. For
+  /// example, you could specify **mySql.username = %lt;my_username%gt;** to
+  /// list all connection profiles configured to connect with a specific
+  /// username.
   ///
   /// [orderBy] - the order by fields for the result.
   ///
@@ -844,9 +845,9 @@ class ProjectsLocationsMigrationJobsResource {
   /// response. The expression must specify the field name, a comparison
   /// operator, and the value that you want to use for filtering. The value must
   /// be a string, a number, or a boolean. The comparison operator must be
-  /// either =, !=, >, or <. For example, list migration jobs created this year
-  /// by specifying **createTime %gt; 2020-01-01T00:00:00.000000000Z.** You can
-  /// also filter nested fields. For example, you could specify
+  /// either =, !=, \>, or \<. For example, list migration jobs created this
+  /// year by specifying **createTime %gt; 2020-01-01T00:00:00.000000000Z.** You
+  /// can also filter nested fields. For example, you could specify
   /// **reverseSshConnectivity.vmIp = "1.2.3.4"** to select all migration jobs
   /// connecting through the specific SSH tunnel bastion.
   ///
@@ -2079,7 +2080,7 @@ typedef Empty = $Empty;
 /// CEL is a C-like expression language. The syntax and semantics of CEL are
 /// documented at https://github.com/google/cel-spec. Example (Comparison):
 /// title: "Summary size limit" description: "Determines if a summary is less
-/// than 100 chars" expression: "document.summary.size() < 100" Example
+/// than 100 chars" expression: "document.summary.size() \< 100" Example
 /// (Equality): title: "Requestor is owner" description: "Determines if
 /// requestor is the document owner" expression: "document.owner ==
 /// request.auth.claims.email" Example (Logic): title: "Public documents"
@@ -2800,14 +2801,14 @@ class Operation {
 /// "roles/resourcemanager.organizationViewer", "members": \[
 /// "user:eve@example.com" \], "condition": { "title": "expirable access",
 /// "description": "Does not grant access after Sep 2020", "expression":
-/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } \], "etag":
+/// "request.time \< timestamp('2020-10-01T00:00:00.000Z')", } } \], "etag":
 /// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: -
 /// user:mike@example.com - group:admins@example.com - domain:google.com -
 /// serviceAccount:my-project-id@appspot.gserviceaccount.com role:
 /// roles/resourcemanager.organizationAdmin - members: - user:eve@example.com
 /// role: roles/resourcemanager.organizationViewer condition: title: expirable
 /// access description: Does not grant access after Sep 2020 expression:
-/// request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA=
+/// request.time \< timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA=
 /// version: 3 For a description of IAM and its features, see the
 /// [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {

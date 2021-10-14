@@ -4291,19 +4291,19 @@ class CellFormat {
   /// written in the next cell over, so long as that cell is empty. If the next
   /// cell over is non-empty, this behaves the same as `CLIP`. The text will
   /// never wrap to the next line unless the user manually inserts a new line.
-  /// Example: | First sentence. | | Manual newline that is very long. <- Text
+  /// Example: | First sentence. | | Manual newline that is very long. \<- Text
   /// continues into next cell | Next newline. |
   /// - "LEGACY_WRAP" : This wrap strategy represents the old Google Sheets wrap
   /// strategy where words that are longer than a line are clipped rather than
   /// broken. This strategy is not supported on all platforms and is being
-  /// phased out. Example: | Cell has a | | loooooooooo| <- Word is clipped. |
+  /// phased out. Example: | Cell has a | | loooooooooo| \<- Word is clipped. |
   /// word. |
   /// - "CLIP" : Lines that are longer than the cell width will be clipped. The
   /// text will never wrap to the next line unless the user manually inserts a
-  /// new line. Example: | First sentence. | | Manual newline t| <- Text is
+  /// new line. Example: | First sentence. | | Manual newline t| \<- Text is
   /// clipped | Next newline. |
   /// - "WRAP" : Words that are longer than a line are wrapped at the character
-  /// level rather than clipped. Example: | Cell has a | | loooooooooo| <- Word
+  /// level rather than clipped. Example: | Cell has a | | loooooooooo| \<- Word
   /// is broken. | ong word. |
   core.String? wrapStrategy;
 
@@ -5062,7 +5062,7 @@ class ClearValuesResponse {
 /// toProto(UIColor* color) { CGFloat red, green, blue, alpha; if (!\[color
 /// getRed:&red green:&green blue:&blue alpha:&alpha\]) { return nil; } Color*
 /// result = \[\[Color alloc\] init\]; \[result setRed:red\]; \[result
-/// setGreen:green\]; \[result setBlue:blue\]; if (alpha <= 0.9999) { \[result
+/// setGreen:green\]; \[result setBlue:blue\]; if (alpha \<= 0.9999) { \[result
 /// setAlpha:floatWrapperWithValue(alpha)\]; } \[result autorelease\]; return
 /// result; } // ... Example (JavaScript): // ... var protoToCssColor =
 /// function(rgb_color) { var redFrac = rgb_color.red || 0.0; var greenFrac =
@@ -5072,10 +5072,10 @@ class ClearValuesResponse {
 /// rgbToCssColor(red, green, blue); } var alphaFrac = rgb_color.alpha.value ||
 /// 0.0; var rgbParams = \[red, green, blue\].join(','); return \['rgba(',
 /// rgbParams, ',', alphaFrac, ')'\].join(''); }; var rgbToCssColor =
-/// function(red, green, blue) { var rgbNumber = new Number((red << 16) | (green
-/// << 8) | blue); var hexString = rgbNumber.toString(16); var missingZeros = 6
-/// - hexString.length; var resultBuilder = \['#'\]; for (var i = 0; i <
-/// missingZeros; i++) { resultBuilder.push('0'); }
+/// function(red, green, blue) { var rgbNumber = new Number((red \<\< 16) |
+/// (green \<\< 8) | blue); var hexString = rgbNumber.toString(16); var
+/// missingZeros = 6 - hexString.length; var resultBuilder = \['#'\]; for (var i
+/// = 0; i \< missingZeros; i++) { resultBuilder.push('0'); }
 /// resultBuilder.push(hexString); return resultBuilder.join(''); }; // ...
 typedef Color = $Color;
 
@@ -8048,7 +8048,7 @@ class FindReplaceResponse {
   /// The number of occurrences (possibly multiple within a cell) changed.
   ///
   /// For example, if replacing `"e"` with `"o"` in `"Google Sheets"`, this
-  /// would be `"3"` because `"Google Sheets"` -> `"Googlo Shoots"`.
+  /// would be `"3"` because `"Google Sheets"` -\> `"Googlo Shoots"`.
   core.int? occurrencesChanged;
 
   /// The number of rows changed.
@@ -8520,8 +8520,8 @@ class HistogramChartSpec {
 /// looks like the one below by applying a histogram group rule with a
 /// HistogramRule.start of 25, an HistogramRule.interval of 20, and an
 /// HistogramRule.end of 65. +-------------+-------------------+ | Grouped Age |
-/// AVERAGE of Amount | +-------------+-------------------+ | < 25 | $19.34 | |
-/// 25-45 | $31.43 | | 45-65 | $35.87 | | > 65 | $27.55 |
+/// AVERAGE of Amount | +-------------+-------------------+ | \< 25 | $19.34 | |
+/// 25-45 | $31.43 | | 45-65 | $35.87 | | \> 65 | $27.55 |
 /// +-------------+-------------------+ | Grand Total | $29.12 |
 /// +-------------+-------------------+
 class HistogramRule {
@@ -9572,7 +9572,7 @@ class PivotFilterCriteria {
   /// pivot table can be referenced by column header name. For example, if the
   /// source data has columns named "Revenue" and "Cost" and a condition is
   /// applied to the "Revenue" column with type `NUMBER_GREATER` and value
-  /// `=Cost`, then only columns where "Revenue" > "Cost" are included.
+  /// `=Cost`, then only columns where "Revenue" \> "Cost" are included.
   BooleanCondition? condition;
 
   /// Whether values are visible by default.

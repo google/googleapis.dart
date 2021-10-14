@@ -3932,7 +3932,7 @@ class PretargetingConfig {
   /// The targeted minimum viewability decile, ranging in values \[0, 10\].
   ///
   /// A value of 5 means that the configuration will only match adslots for
-  /// which we predict at least 50% viewability. Values > 10 will be rounded
+  /// which we predict at least 50% viewability. Values \> 10 will be rounded
   /// down to 10. An unset value or a value of 0 indicates that bid requests
   /// will be sent regardless of viewability.
   core.int? minimumViewabilityDecile;

@@ -736,7 +736,7 @@ class GoogleCloudResourcesettingsV1SettingMetadata {
   /// - "STRING_SET" : A string set setting.
   /// - "ENUM_VALUE" : A Enum setting
   /// - "DURATION_VALUE" : A Duration setting
-  /// - "STRING_MAP" : A string->string map setting
+  /// - "STRING_MAP" : A string-\>string map setting
   core.String? dataType;
 
   /// The value provided by Setting.effective_value if no setting value is
@@ -882,7 +882,7 @@ class GoogleCloudResourcesettingsV1ValueEnumValue {
       };
 }
 
-/// A string->string map value that can hold a map of string keys to string
+/// A string-\>string map value that can hold a map of string keys to string
 /// values.
 ///
 /// The maximum length of each string is 200 characters and there can be a

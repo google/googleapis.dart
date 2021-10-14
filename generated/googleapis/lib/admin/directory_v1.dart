@@ -535,7 +535,7 @@ class ChromeosdevicesResource {
   /// - "notes" : Chrome device notes as annotated by the administrator.
   /// - "serialNumber" : The Chrome device serial number entered when the device
   /// was enabled.
-  /// - "status" : Chrome device status. For more information, see the <a
+  /// - "status" : Chrome device status. For more information, see the \<a
   /// \[chromeosdevices\](/admin-sdk/directory/v1/reference/chromeosdevices.html).
   /// - "supportEndDate" : Chrome device support end date. This is applicable
   /// only for devices purchased directly from Google.
@@ -7291,8 +7291,8 @@ class ChromeOsDeviceSystemRamFreeReports {
 class ChromeOsDeviceTpmVersionInfo {
   /// TPM family.
   ///
-  /// We use the TPM 2.0 style encoding, e.g.: TPM 1.2: "1.2" -> 312e3200 TPM
-  /// 2.0: "2.0" -> 322e3000
+  /// We use the TPM 2.0 style encoding, e.g.: TPM 1.2: "1.2" -\> 312e3200 TPM
+  /// 2.0: "2.0" -\> 322e3000
   core.String? family;
 
   /// TPM firmware version.

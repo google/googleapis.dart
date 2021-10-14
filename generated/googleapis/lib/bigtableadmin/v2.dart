@@ -1426,24 +1426,24 @@ class ProjectsInstancesClustersBackupsResource {
   /// [filter] - A filter expression that filters backups listed in the
   /// response. The expression must specify the field name, a comparison
   /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be <, >,
-  /// <=, >=, !=, =, or :. Colon ':' represents a HAS operator which is roughly
-  /// synonymous with equality. Filter rules are case insensitive. The fields
-  /// eligible for filtering are: * `name` * `source_table` * `state` *
+  /// be a string, a number, or a boolean. The comparison operator must be \<,
+  /// \>, \<=, \>=, !=, =, or :. Colon ':' represents a HAS operator which is
+  /// roughly synonymous with equality. Filter rules are case insensitive. The
+  /// fields eligible for filtering are: * `name` * `source_table` * `state` *
   /// `start_time` (and values are of the format YYYY-MM-DDTHH:MM:SSZ) *
   /// `end_time` (and values are of the format YYYY-MM-DDTHH:MM:SSZ) *
   /// `expire_time` (and values are of the format YYYY-MM-DDTHH:MM:SSZ) *
   /// `size_bytes` To filter on multiple expressions, provide each separate
   /// expression within parentheses. By default, each expression is an AND
   /// expression. However, you can include AND, OR, and NOT expressions
-  /// explicitly. Some examples of using filters are: * `name:"exact"` --> The
-  /// backup's name is the string "exact". * `name:howl` --> The backup's name
-  /// contains the string "howl". * `source_table:prod` --> The source_table's
-  /// name contains the string "prod". * `state:CREATING` --> The backup is
-  /// pending creation. * `state:READY` --> The backup is fully created and
+  /// explicitly. Some examples of using filters are: * `name:"exact"` --\> The
+  /// backup's name is the string "exact". * `name:howl` --\> The backup's name
+  /// contains the string "howl". * `source_table:prod` --\> The source_table's
+  /// name contains the string "prod". * `state:CREATING` --\> The backup is
+  /// pending creation. * `state:READY` --\> The backup is fully created and
   /// ready for use. * `(name:howl) AND (start_time < \"2018-03-28T14:50:00Z\")`
-  /// --> The backup name contains the string "howl" and start_time of the
-  /// backup is before 2018-03-28T14:50:00Z. * `size_bytes > 10000000000` -->
+  /// --\> The backup name contains the string "howl" and start_time of the
+  /// backup is before 2018-03-28T14:50:00Z. * `size_bytes > 10000000000` --\>
   /// The backup's size is greater than 10GB
   ///
   /// [orderBy] - An expression for specifying the sort order of the results of
@@ -3393,7 +3393,7 @@ class EncryptionInfo {
 /// CEL is a C-like expression language. The syntax and semantics of CEL are
 /// documented at https://github.com/google/cel-spec. Example (Comparison):
 /// title: "Summary size limit" description: "Determines if a summary is less
-/// than 100 chars" expression: "document.summary.size() < 100" Example
+/// than 100 chars" expression: "document.summary.size() \< 100" Example
 /// (Equality): title: "Requestor is owner" description: "Determines if
 /// requestor is the document owner" expression: "document.owner ==
 /// request.auth.claims.email" Example (Logic): title: "Public documents"
@@ -4246,14 +4246,14 @@ class PartialUpdateInstanceRequest {
 /// "roles/resourcemanager.organizationViewer", "members": \[
 /// "user:eve@example.com" \], "condition": { "title": "expirable access",
 /// "description": "Does not grant access after Sep 2020", "expression":
-/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } \], "etag":
+/// "request.time \< timestamp('2020-10-01T00:00:00.000Z')", } } \], "etag":
 /// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: -
 /// user:mike@example.com - group:admins@example.com - domain:google.com -
 /// serviceAccount:my-project-id@appspot.gserviceaccount.com role:
 /// roles/resourcemanager.organizationAdmin - members: - user:eve@example.com
 /// role: roles/resourcemanager.organizationViewer condition: title: expirable
 /// access description: Does not grant access after Sep 2020 expression:
-/// request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA=
+/// request.time \< timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA=
 /// version: 3 For a description of IAM and its features, see the
 /// [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {

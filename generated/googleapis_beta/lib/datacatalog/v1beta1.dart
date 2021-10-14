@@ -2964,7 +2964,7 @@ typedef Empty = $Empty;
 /// CEL is a C-like expression language. The syntax and semantics of CEL are
 /// documented at https://github.com/google/cel-spec. Example (Comparison):
 /// title: "Summary size limit" description: "Determines if a summary is less
-/// than 100 chars" expression: "document.summary.size() < 100" Example
+/// than 100 chars" expression: "document.summary.size() \< 100" Example
 /// (Equality): title: "Requestor is owner" description: "Determines if
 /// requestor is the document owner" expression: "document.owner ==
 /// request.auth.claims.email" Example (Logic): title: "Public documents"
@@ -3924,7 +3924,7 @@ class GoogleCloudDatacatalogV1beta1ListTaxonomiesResponse {
 /// Denotes one policy tag in a taxonomy (e.g. ssn).
 ///
 /// Policy Tags can be defined in a hierarchy. For example, consider the
-/// following hierarchy: Geolocation -> (LatLong, City, ZipCode). PolicyTag
+/// following hierarchy: Geolocation -\> (LatLong, City, ZipCode). PolicyTag
 /// "Geolocation" contains three child policy tags: "LatLong", "City", and
 /// "ZipCode".
 class GoogleCloudDatacatalogV1beta1PolicyTag {
@@ -4094,8 +4094,8 @@ class GoogleCloudDatacatalogV1beta1SearchCatalogRequest {
 
   /// Number of results in the search page.
   ///
-  /// If <=0 then defaults to 10. Max limit for page_size is 1000. Throws an
-  /// invalid argument for page_size > 1000.
+  /// If \<=0 then defaults to 10. Max limit for page_size is 1000. Throws an
+  /// invalid argument for page_size \> 1000.
   core.int? pageSize;
 
   /// Pagination token returned in an earlier
@@ -5125,14 +5125,14 @@ class GoogleCloudDatacatalogV1beta1ViewSpec {
 /// "roles/resourcemanager.organizationViewer", "members": \[
 /// "user:eve@example.com" \], "condition": { "title": "expirable access",
 /// "description": "Does not grant access after Sep 2020", "expression":
-/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } \], "etag":
+/// "request.time \< timestamp('2020-10-01T00:00:00.000Z')", } } \], "etag":
 /// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: -
 /// user:mike@example.com - group:admins@example.com - domain:google.com -
 /// serviceAccount:my-project-id@appspot.gserviceaccount.com role:
 /// roles/resourcemanager.organizationAdmin - members: - user:eve@example.com
 /// role: roles/resourcemanager.organizationViewer condition: title: expirable
 /// access description: Does not grant access after Sep 2020 expression:
-/// request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA=
+/// request.time \< timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA=
 /// version: 3 For a description of IAM and its features, see the
 /// [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {

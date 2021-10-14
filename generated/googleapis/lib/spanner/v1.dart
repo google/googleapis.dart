@@ -394,12 +394,12 @@ class ProjectsInstancesResource {
   /// [filter] - An expression for filtering the results of the request. Filter
   /// rules are case insensitive. The fields eligible for filtering are: *
   /// `name` * `display_name` * `labels.key` where key is the name of a label
-  /// Some examples of using filters are: * `name:*` --> The instance has a
-  /// name. * `name:Howl` --> The instance's name contains the string "howl". *
-  /// `name:HOWL` --> Equivalent to above. * `NAME:howl` --> Equivalent to
-  /// above. * `labels.env:*` --> The instance has the label "env". *
-  /// `labels.env:dev` --> The instance has the label "env" and the value of the
-  /// label contains the string "dev". * `name:howl labels.env:dev` --> The
+  /// Some examples of using filters are: * `name:*` --\> The instance has a
+  /// name. * `name:Howl` --\> The instance's name contains the string "howl". *
+  /// `name:HOWL` --\> Equivalent to above. * `NAME:howl` --\> Equivalent to
+  /// above. * `labels.env:*` --\> The instance has the label "env". *
+  /// `labels.env:dev` --\> The instance has the label "env" and the value of
+  /// the label contains the string "dev". * `name:howl labels.env:dev` --\> The
   /// instance's name contains "howl" and it has the label "env" with its value
   /// containing "dev".
   ///
@@ -2596,8 +2596,8 @@ class ProjectsInstancesDatabasesSessionsResource {
   /// [filter] - An expression for filtering the results of the request. Filter
   /// rules are case insensitive. The fields eligible for filtering are: *
   /// `labels.key` where key is the name of a label Some examples of using
-  /// filters are: * `labels.env:*` --> The session has the label "env". *
-  /// `labels.env:dev` --> The session has the label "env" and the value of the
+  /// filters are: * `labels.env:*` --\> The session has the label "env". *
+  /// `labels.env:dev` --\> The session has the label "env" and the value of the
   /// label contains the string "dev".
   ///
   /// [pageSize] - Number of sessions to be returned in the response. If 0 or
@@ -4674,7 +4674,7 @@ class ExecuteSqlRequest {
 /// CEL is a C-like expression language. The syntax and semantics of CEL are
 /// documented at https://github.com/google/cel-spec. Example (Comparison):
 /// title: "Summary size limit" description: "Determines if a summary is less
-/// than 100 chars" expression: "document.summary.size() < 100" Example
+/// than 100 chars" expression: "document.summary.size() \< 100" Example
 /// (Equality): title: "Requestor is owner" description: "Determines if
 /// requestor is the document owner" expression: "document.owner ==
 /// request.auth.claims.email" Example (Logic): title: "Public documents"
@@ -6126,18 +6126,18 @@ class PartialResultSet {
   /// list by applying these rules recursively. * `object`: concatenate the
   /// (field name, field value) pairs. If a field name is duplicated, then apply
   /// these rules recursively to merge the field values. Some examples of
-  /// merging: # Strings are concatenated. "foo", "bar" => "foobar" # Lists of
-  /// non-strings are concatenated. \[2, 3\], \[4\] => \[2, 3, 4\] # Lists are
+  /// merging: # Strings are concatenated. "foo", "bar" =\> "foobar" # Lists of
+  /// non-strings are concatenated. \[2, 3\], \[4\] =\> \[2, 3, 4\] # Lists are
   /// concatenated, but the last and first elements are merged # because they
-  /// are strings. \["a", "b"\], \["c", "d"\] => \["a", "bc", "d"\] # Lists are
+  /// are strings. \["a", "b"\], \["c", "d"\] =\> \["a", "bc", "d"\] # Lists are
   /// concatenated, but the last and first elements are merged # because they
   /// are lists. Recursively, the last and first elements # of the inner lists
   /// are merged because they are strings. \["a", \["b", "c"\]\], \[\["d"\],
-  /// "e"\] => \["a", \["b", "cd"\], "e"\] # Non-overlapping object fields are
-  /// combined. {"a": "1"}, {"b": "2"} => {"a": "1", "b": 2"} # Overlapping
-  /// object fields are merged. {"a": "1"}, {"a": "2"} => {"a": "12"} # Examples
-  /// of merging objects containing lists of strings. {"a": \["1"\]}, {"a":
-  /// \["2"\]} => {"a": \["12"\]} For a more complete example, suppose a
+  /// "e"\] =\> \["a", \["b", "cd"\], "e"\] # Non-overlapping object fields are
+  /// combined. {"a": "1"}, {"b": "2"} =\> {"a": "1", "b": 2"} # Overlapping
+  /// object fields are merged. {"a": "1"}, {"a": "2"} =\> {"a": "12"} #
+  /// Examples of merging objects containing lists of strings. {"a": \["1"\]},
+  /// {"a": \["2"\]} =\> {"a": \["12"\]} For a more complete example, suppose a
   /// streaming SQL query is yielding a result set whose rows contain a single
   /// string field. The following `PartialResultSet`s might be yielded: {
   /// "metadata": { ... } "values": \["Hello", "W"\] "chunked_value": true
@@ -6581,14 +6581,14 @@ class PlanNode {
 /// "roles/resourcemanager.organizationViewer", "members": \[
 /// "user:eve@example.com" \], "condition": { "title": "expirable access",
 /// "description": "Does not grant access after Sep 2020", "expression":
-/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } \], "etag":
+/// "request.time \< timestamp('2020-10-01T00:00:00.000Z')", } } \], "etag":
 /// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: -
 /// user:mike@example.com - group:admins@example.com - domain:google.com -
 /// serviceAccount:my-project-id@appspot.gserviceaccount.com role:
 /// roles/resourcemanager.organizationAdmin - members: - user:eve@example.com
 /// role: roles/resourcemanager.organizationViewer condition: title: expirable
 /// access description: Does not grant access after Sep 2020 expression:
-/// request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA=
+/// request.time \< timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA=
 /// version: 3 For a description of IAM and its features, see the
 /// [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {
@@ -6816,7 +6816,7 @@ class ReadOnly {
   /// without the distributed timestamp negotiation overhead of `max_staleness`.
   core.String? exactStaleness;
 
-  /// Read data at a timestamp >= `NOW - max_staleness` seconds.
+  /// Read data at a timestamp \>= `NOW - max_staleness` seconds.
   ///
   /// Guarantees that all writes that have committed more than the specified
   /// number of seconds ago are visible. Because Cloud Spanner chooses the exact
@@ -6827,7 +6827,7 @@ class ReadOnly {
   /// this option can only be used in single-use transactions.
   core.String? maxStaleness;
 
-  /// Executes all reads at a timestamp >= `min_read_timestamp`.
+  /// Executes all reads at a timestamp \>= `min_read_timestamp`.
   ///
   /// This is useful for requesting fresher data than some previous read, or
   /// data that is fresh enough to observe the effects of some previously
@@ -7754,7 +7754,7 @@ class ShortRepresentation {
   /// A string representation of the expression subtree rooted at this node.
   core.String? description;
 
-  /// A mapping of (subquery variable name) -> (subquery node id) for cases
+  /// A mapping of (subquery variable name) -\> (subquery node id) for cases
   /// where the `description` string of this node references a `SCALAR` subquery
   /// contained in the expression subtree rooted at this node.
   ///
@@ -8055,7 +8055,7 @@ class Transaction {
 /// less than or equal to the read timestamp, and observe none of the
 /// modifications done by transactions with a larger commit timestamp. They will
 /// block until all conflicting transactions that may be assigned commit
-/// timestamps <= the read timestamp have finished. The timestamp can either be
+/// timestamps \<= the read timestamp have finished. The timestamp can either be
 /// expressed as an absolute Cloud Spanner commit timestamp or a staleness
 /// relative to the current time. These modes do not require a "negotiation
 /// phase" to pick a timestamp. As a result, they execute slightly faster than

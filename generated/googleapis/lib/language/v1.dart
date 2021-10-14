@@ -1095,7 +1095,7 @@ class Entity {
   /// locality plus whichever additional elements appear in the text: *
   /// `street_number` - street number * `locality` - city or town *
   /// `street_name` - street/route name, if detected * `postal_code` - postal
-  /// code, if detected * `country` - country, if detected< * `broad_region` -
+  /// code, if detected * `country` - country, if detected\< * `broad_region` -
   /// administrative area, such as the state, if detected * `narrow_region` -
   /// smaller administrative area, such as county, if detected * `sublocality` -
   /// used in Asian addresses to demark a district within a city, if detected

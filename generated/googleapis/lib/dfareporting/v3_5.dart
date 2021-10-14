@@ -11539,7 +11539,7 @@ class AccountUserProfile {
   ///
   /// This is a required field. Must be less than 64 characters long, must be
   /// globally unique, and cannot contain whitespace or any of the following
-  /// characters: "&;<>"#%,".
+  /// characters: "&;\<\>"#%,".
   core.String? name;
 
   /// Filter that describes which sites are visible to the user profile.

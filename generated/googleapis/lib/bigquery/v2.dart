@@ -248,8 +248,8 @@ class DatasetsResource {
   /// [all] - Whether to list all datasets, including hidden ones
   ///
   /// [filter] - An expression for filtering the results of the request by
-  /// label. The syntax is "labels.<name>\[:<value>\]". Multiple filters can be
-  /// ANDed together by connecting with a space. Example:
+  /// label. The syntax is "labels.\<name\>\[:\<value\>\]". Multiple filters can
+  /// be ANDed together by connecting with a space. Example:
   /// "labels.department:receiving labels.active". See Filtering datasets using
   /// labels for details.
   ///
@@ -3957,8 +3957,8 @@ class CsvOptions {
   /// headers in the first row. If they are not detected, the row is read as
   /// data. Otherwise data is read starting from the second row. *
   /// skipLeadingRows is 0 - Instructs autodetect that there are no headers and
-  /// data should be read starting from the first row. * skipLeadingRows = N > 0
-  /// - Autodetect skips N-1 rows and tries to detect headers in row N. If
+  /// data should be read starting from the first row. * skipLeadingRows = N \>
+  /// 0 - Autodetect skips N-1 rows and tries to detect headers in row N. If
   /// headers are not detected, row N is just skipped. Otherwise row N is used
   /// to extract column names for the detected schema.
   ///
@@ -4768,7 +4768,7 @@ class Entry {
 
   /// The predicted label.
   ///
-  /// For confidence_threshold > 0, we will also add an entry indicating the
+  /// For confidence_threshold \> 0, we will also add an entry indicating the
   /// number of items under the confidence threshold.
   core.String? predictedLabel;
 
@@ -5210,7 +5210,7 @@ class ExplainQueryStep {
 /// CEL is a C-like expression language. The syntax and semantics of CEL are
 /// documented at https://github.com/google/cel-spec. Example (Comparison):
 /// title: "Summary size limit" description: "Determines if a summary is less
-/// than 100 chars" expression: "document.summary.size() < 100" Example
+/// than 100 chars" expression: "document.summary.size() \< 100" Example
 /// (Equality): title: "Requestor is owner" description: "Determines if
 /// requestor is the document owner" expression: "document.owner ==
 /// request.auth.claims.email" Example (Logic): title: "Public documents"
@@ -5264,15 +5264,15 @@ class ExternalDataConfiguration {
   /// the type supporting the widest range in the specified list is picked, and
   /// if a value exceeds the supported range when reading the data, an error
   /// will be thrown. Example: Suppose the value of this field is \["NUMERIC",
-  /// "BIGNUMERIC"\]. If (precision,scale) is: (38,9) -> NUMERIC; (39,9) ->
-  /// BIGNUMERIC (NUMERIC cannot hold 30 integer digits); (38,10) -> BIGNUMERIC
-  /// (NUMERIC cannot hold 10 fractional digits); (76,38) -> BIGNUMERIC; (77,38)
-  /// -> BIGNUMERIC (error if value exeeds supported range). This field cannot
-  /// contain duplicate types. The order of the types in this field is ignored.
-  /// For example, \["BIGNUMERIC", "NUMERIC"\] is the same as \["NUMERIC",
-  /// "BIGNUMERIC"\] and NUMERIC always takes precedence over BIGNUMERIC.
-  /// Defaults to \["NUMERIC", "STRING"\] for ORC and \["NUMERIC"\] for the
-  /// other file formats.
+  /// "BIGNUMERIC"\]. If (precision,scale) is: (38,9) -\> NUMERIC; (39,9) -\>
+  /// BIGNUMERIC (NUMERIC cannot hold 30 integer digits); (38,10) -\> BIGNUMERIC
+  /// (NUMERIC cannot hold 10 fractional digits); (76,38) -\> BIGNUMERIC;
+  /// (77,38) -\> BIGNUMERIC (error if value exeeds supported range). This field
+  /// cannot contain duplicate types. The order of the types in this field is
+  /// ignored. For example, \["BIGNUMERIC", "NUMERIC"\] is the same as
+  /// \["NUMERIC", "BIGNUMERIC"\] and NUMERIC always takes precedence over
+  /// BIGNUMERIC. Defaults to \["NUMERIC", "STRING"\] for ORC and \["NUMERIC"\]
+  /// for the other file formats.
   ///
   /// Optional.
   core.List<core.String>? decimalTargetTypes;
@@ -5699,7 +5699,7 @@ class GoogleSheetsOptions {
   /// first row. If they are not detected, the row is read as data. Otherwise
   /// data is read starting from the second row. * skipLeadingRows is 0 -
   /// Instructs autodetect that there are no headers and data should be read
-  /// starting from the first row. * skipLeadingRows = N > 0 - Autodetect skips
+  /// starting from the first row. * skipLeadingRows = N \> 0 - Autodetect skips
   /// N-1 rows and tries to detect headers in row N. If headers are not
   /// detected, row N is just skipped. Otherwise row N is used to extract column
   /// names for the detected schema.
@@ -6252,15 +6252,15 @@ class JobConfigurationLoad {
   /// the type supporting the widest range in the specified list is picked, and
   /// if a value exceeds the supported range when reading the data, an error
   /// will be thrown. Example: Suppose the value of this field is \["NUMERIC",
-  /// "BIGNUMERIC"\]. If (precision,scale) is: (38,9) -> NUMERIC; (39,9) ->
-  /// BIGNUMERIC (NUMERIC cannot hold 30 integer digits); (38,10) -> BIGNUMERIC
-  /// (NUMERIC cannot hold 10 fractional digits); (76,38) -> BIGNUMERIC; (77,38)
-  /// -> BIGNUMERIC (error if value exeeds supported range). This field cannot
-  /// contain duplicate types. The order of the types in this field is ignored.
-  /// For example, \["BIGNUMERIC", "NUMERIC"\] is the same as \["NUMERIC",
-  /// "BIGNUMERIC"\] and NUMERIC always takes precedence over BIGNUMERIC.
-  /// Defaults to \["NUMERIC", "STRING"\] for ORC and \["NUMERIC"\] for the
-  /// other file formats.
+  /// "BIGNUMERIC"\]. If (precision,scale) is: (38,9) -\> NUMERIC; (39,9) -\>
+  /// BIGNUMERIC (NUMERIC cannot hold 30 integer digits); (38,10) -\> BIGNUMERIC
+  /// (NUMERIC cannot hold 10 fractional digits); (76,38) -\> BIGNUMERIC;
+  /// (77,38) -\> BIGNUMERIC (error if value exeeds supported range). This field
+  /// cannot contain duplicate types. The order of the types in this field is
+  /// ignored. For example, \["BIGNUMERIC", "NUMERIC"\] is the same as
+  /// \["NUMERIC", "BIGNUMERIC"\] and NUMERIC always takes precedence over
+  /// BIGNUMERIC. Defaults to \["NUMERIC", "STRING"\] for ORC and \["NUMERIC"\]
+  /// for the other file formats.
   ///
   /// Optional.
   core.List<core.String>? decimalTargetTypes;
@@ -7332,7 +7332,7 @@ class JobStatisticsReservationUsage {
 }
 
 class JobStatistics {
-  /// \[TrustedTester\] \[Output-only\] Job progress (0.0 -> 1.0) for LOAD and
+  /// \[TrustedTester\] \[Output-only\] Job progress (0.0 -\> 1.0) for LOAD and
   /// EXTRACT jobs.
   core.double? completionRatio;
 
@@ -8684,14 +8684,14 @@ class ParquetOptions {
 /// "roles/resourcemanager.organizationViewer", "members": \[
 /// "user:eve@example.com" \], "condition": { "title": "expirable access",
 /// "description": "Does not grant access after Sep 2020", "expression":
-/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } \], "etag":
+/// "request.time \< timestamp('2020-10-01T00:00:00.000Z')", } } \], "etag":
 /// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: -
 /// user:mike@example.com - group:admins@example.com - domain:google.com -
 /// serviceAccount:my-project-id@appspot.gserviceaccount.com role:
 /// roles/resourcemanager.organizationAdmin - members: - user:eve@example.com
 /// role: roles/resourcemanager.organizationViewer condition: title: expirable
 /// access description: Does not grant access after Sep 2020 expression:
-/// request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA=
+/// request.time \< timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA=
 /// version: 3 For a description of IAM and its features, see the
 /// [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {
@@ -10346,7 +10346,7 @@ class SnapshotDefinition {
 /// The type of a variable, e.g., a function argument.
 ///
 /// Examples: INT64: {type_kind="INT64"} ARRAY: {type_kind="ARRAY",
-/// array_element_type="STRING"} STRUCT>: {type_kind="STRUCT",
+/// array_element_type="STRING"} STRUCT\>: {type_kind="STRUCT",
 /// struct_type={fields=\[ {name="x", type={type_kind="STRING"}}, {name="y",
 /// type={type_kind="ARRAY", array_element_type="DATE"}} \]}}
 class StandardSqlDataType {
@@ -12346,7 +12346,7 @@ class TrainingRun {
   /// end of training.
   EvaluationMetrics? evaluationMetrics;
 
-  /// Output of each iteration run, results.size() <= max_iterations.
+  /// Output of each iteration run, results.size() \<= max_iterations.
   core.List<IterationResult>? results;
 
   /// The start time of this training run.

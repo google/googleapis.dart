@@ -751,7 +751,7 @@ class ActivityRule {
   /// this alert and we found the relationship after creating both alerts.
   core.String? supersedingAlert;
 
-  /// Alert threshold is for example “COUNT > 5”.
+  /// Alert threshold is for example “COUNT \> 5”.
   core.String? threshold;
 
   /// The trigger sources for this rule.

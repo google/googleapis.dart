@@ -1522,12 +1522,12 @@ typedef CancelOperationRequest = $Empty;
 class Capacity {
   /// Publish throughput capacity per partition in MiB/s.
   ///
-  /// Must be >= 4 and <= 16.
+  /// Must be \>= 4 and \<= 16.
   core.int? publishMibPerSec;
 
   /// Subscribe throughput capacity per partition in MiB/s.
   ///
-  /// Must be >= 4 and <= 32.
+  /// Must be \>= 4 and \<= 32.
   core.int? subscribeMibPerSec;
 
   Capacity({
@@ -1637,7 +1637,7 @@ class ComputeHeadCursorResponse {
 class ComputeMessageStatsRequest {
   /// The exclusive end of the range.
   ///
-  /// The range is empty if end_cursor <= start_cursor. Specifying a
+  /// The range is empty if end_cursor \<= start_cursor. Specifying a
   /// start_cursor before the first message and an end_cursor after the last
   /// message will retrieve all messages.
   Cursor? endCursor;
@@ -2511,7 +2511,7 @@ class TimeTarget {
   /// Request the cursor of the first message with publish time greater than or
   /// equal to `publish_time`.
   ///
-  /// All messages thereafter are guaranteed to have publish times >=
+  /// All messages thereafter are guaranteed to have publish times \>=
   /// `publish_time`.
   core.String? publishTime;
 

@@ -700,7 +700,7 @@ class TasksResource {
 class TaskLinks {
   /// The description.
   ///
-  /// In HTML speak: Everything between <a> and </a>.
+  /// In HTML speak: Everything between \<a\> and \</a\>.
   core.String? description;
 
   /// The URL.

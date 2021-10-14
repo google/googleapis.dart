@@ -3490,17 +3490,17 @@ class GoogleCloudRetailV2Product {
   /// This field is repeated for supporting one product belonging to several
   /// parallel categories. Strongly recommended using the full path for better
   /// search / recommendation quality. To represent full path of category, use
-  /// '>' sign to separate different hierarchies. If '>' is part of the category
-  /// name, please replace it with other character(s). For example, if a shoes
-  /// product belongs to both \["Shoes & Accessories" -> "Shoes"\] and \["Sports
-  /// & Fitness" -> "Athletic Clothing" -> "Shoes"\], it could be represented
-  /// as: "categories": \[ "Shoes & Accessories > Shoes", "Sports & Fitness >
-  /// Athletic Clothing > Shoes" \] Must be set for Type.PRIMARY Product
-  /// otherwise an INVALID_ARGUMENT error is returned. At most 250 values are
-  /// allowed per Product. Empty values are not allowed. Each value must be a
-  /// UTF-8 encoded string with a length limit of 5,000 characters. Otherwise,
-  /// an INVALID_ARGUMENT error is returned. Google Merchant Center property
-  /// google_product_category. Schema.org property
+  /// '\>' sign to separate different hierarchies. If '\>' is part of the
+  /// category name, please replace it with other character(s). For example, if
+  /// a shoes product belongs to both \["Shoes & Accessories" -\> "Shoes"\] and
+  /// \["Sports & Fitness" -\> "Athletic Clothing" -\> "Shoes"\], it could be
+  /// represented as: "categories": \[ "Shoes & Accessories \> Shoes", "Sports &
+  /// Fitness \> Athletic Clothing \> Shoes" \] Must be set for Type.PRIMARY
+  /// Product otherwise an INVALID_ARGUMENT error is returned. At most 250
+  /// values are allowed per Product. Empty values are not allowed. Each value
+  /// must be a UTF-8 encoded string with a length limit of 5,000 characters.
+  /// Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center
+  /// property google_product_category. Schema.org property
   /// [Product.category](https://schema.org/category).
   /// \[mc_google_product_category\]:
   /// https://support.google.com/merchants/answer/6324436
@@ -4531,11 +4531,11 @@ class GoogleCloudRetailV2SearchRequest {
   ///
   /// Required for category navigation queries to achieve good search quality.
   /// The format should be the same as UserEvent.page_categories; To represent
-  /// full path of category, use '>' sign to separate different hierarchies. If
-  /// '>' is part of the category name, please replace it with other
+  /// full path of category, use '\>' sign to separate different hierarchies. If
+  /// '\>' is part of the category name, please replace it with other
   /// character(s). Category pages include special pages such as sales or
   /// promotions. For instance, a special sale page may have the category
-  /// hierarchy: "pageCategories" : \["Sales > 2017 Black Friday Deals"\].
+  /// hierarchy: "pageCategories" : \["Sales \> 2017 Black Friday Deals"\].
   core.List<core.String>? pageCategories;
 
   /// Maximum number of Products to return.
@@ -4902,9 +4902,9 @@ class GoogleCloudRetailV2SearchRequestFacetSpec {
 class GoogleCloudRetailV2SearchRequestFacetSpecFacetKey {
   /// Only get facet values that contains the given strings.
   ///
-  /// For example, suppose "categories" has three values "Women > Shoe", "Women
-  /// > Dress" and "Men > Shoe". If set "contains" to "Shoe", the "categories"
-  /// facet will give only "Women > Shoe" and "Men > Shoe". Only supported on
+  /// For example, suppose "categories" has three values "Women \> Shoe", "Women
+  /// \> Dress" and "Men \> Shoe". If set "contains" to "Shoe", the "categories"
+  /// facet will give only "Women \> Shoe" and "Men \> Shoe". Only supported on
   /// textual fields. Maximum is 10.
   core.List<core.String>? contains;
 
@@ -4943,10 +4943,10 @@ class GoogleCloudRetailV2SearchRequestFacetSpecFacetKey {
 
   /// Only get facet values that start with the given string prefix.
   ///
-  /// For example, suppose "categories" has three values "Women > Shoe", "Women
-  /// > Dress" and "Men > Shoe". If set "prefixes" to "Women", the "categories"
-  /// facet will give only "Women > Shoe" and "Women > Dress". Only supported on
-  /// textual fields. Maximum is 10.
+  /// For example, suppose "categories" has three values "Women \> Shoe", "Women
+  /// \> Dress" and "Men \> Shoe". If set "prefixes" to "Women", the
+  /// "categories" facet will give only "Women \> Shoe" and "Women \> Dress".
+  /// Only supported on textual fields. Maximum is 10.
   core.List<core.String>? prefixes;
 
   /// The query that is used to compute facet for the given facet key.
@@ -5599,11 +5599,11 @@ class GoogleCloudRetailV2UserEvent {
 
   /// The categories associated with a category page.
   ///
-  /// To represent full path of category, use '>' sign to separate different
-  /// hierarchies. If '>' is part of the category name, please replace it with
+  /// To represent full path of category, use '\>' sign to separate different
+  /// hierarchies. If '\>' is part of the category name, please replace it with
   /// other character(s). Category pages include special pages such as sales or
   /// promotions. For instance, a special sale page may have the category
-  /// hierarchy: "pageCategories" : \["Sales > 2017 Black Friday Deals"\].
+  /// hierarchy: "pageCategories" : \["Sales \> 2017 Black Friday Deals"\].
   /// Required for `category-page-view` events. At least one of search_query or
   /// page_categories is required for `search` events. Other event types should
   /// not set this field. Otherwise, an INVALID_ARGUMENT error is returned.

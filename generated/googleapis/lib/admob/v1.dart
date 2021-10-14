@@ -947,7 +947,7 @@ class LocalizationSettings {
 /// "currency_code": "USD", "language_code": "en-US" } } For a better
 /// understanding, you can treat the preceding specification like the following
 /// pseudo SQL: SELECT AD_SOURCE, APP, COUNTRY, OBSERVED_ECPM FROM
-/// MEDIATION_REPORT WHERE DATE >= '2021-09-01' AND DATE <= '2021-09-30' AND
+/// MEDIATION_REPORT WHERE DATE \>= '2021-09-01' AND DATE \<= '2021-09-30' AND
 /// COUNTRY IN ('US', 'CN') GROUP BY AD_SOURCE, APP, COUNTRY ORDER BY APP ASC;
 class MediationReportSpec {
   /// The date range for which the report is generated.
@@ -1252,8 +1252,8 @@ class MediationReportSpecSortCondition {
 /// 'DESCENDING'} \], 'localization_settings': { 'currency_code': 'USD',
 /// 'language_code': 'en-US' } } For a better understanding, you can treat the
 /// preceding specification like the following pseudo SQL: SELECT DATE, APP,
-/// COUNTRY, CLICKS, ESTIMATED_EARNINGS FROM NETWORK_REPORT WHERE DATE >=
-/// '2021-09-01' AND DATE <= '2021-09-30' AND COUNTRY IN ('US', 'CN') GROUP BY
+/// COUNTRY, CLICKS, ESTIMATED_EARNINGS FROM NETWORK_REPORT WHERE DATE \>=
+/// '2021-09-01' AND DATE \<= '2021-09-30' AND COUNTRY IN ('US', 'CN') GROUP BY
 /// DATE, APP, COUNTRY ORDER BY APP ASC, CLICKS DESC;
 class NetworkReportSpec {
   /// The date range for which the report is generated.

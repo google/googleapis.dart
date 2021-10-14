@@ -982,8 +982,9 @@ class BatchTranslateTextRequest {
 
   /// Input configurations.
   ///
-  /// The total number of files matched should be <= 100. The total content size
-  /// should be <= 100M Unicode codepoints. The files must use UTF-8 encoding.
+  /// The total number of files matched should be \<= 100. The total content
+  /// size should be \<= 100M Unicode codepoints. The files must use UTF-8
+  /// encoding.
   ///
   /// Required.
   core.List<InputConfig>? inputConfigs;
@@ -1426,7 +1427,7 @@ class InputConfig {
   /// column (optional) is the id of the text request. If the first column is
   /// missing, we use the row number (0-based) from the input file as the ID in
   /// the output file. The second column is the actual text to be translated. We
-  /// recommend each row be <= 10K Unicode codepoints, otherwise an error might
+  /// recommend each row be \<= 10K Unicode codepoints, otherwise an error might
   /// be returned. Note that the input tsv must be RFC 4180 compliant. You could
   /// use https://github.com/Clever/csvlint to check potential formatting errors
   /// in your tsv file. csvlint --delimiter='\t' your_input_file.tsv The other

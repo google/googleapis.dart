@@ -9593,8 +9593,8 @@ class $ListPolicy {
   /// allowed_values: "E2"} `projects/bar` has a `Policy` with: {all: DENY} The
   /// accepted values at `organizations/foo` are `E1`, E2`. No value is accepted
   /// at `projects/bar`. Example 10 (allowed and denied subtrees of Resource
-  /// Manager hierarchy): Given the following resource hierarchy O1->{F1, F2};
-  /// F1->{P1}; F2->{P2, P3}, `organizations/foo` has a `Policy` with values:
+  /// Manager hierarchy): Given the following resource hierarchy O1-\>{F1, F2};
+  /// F1-\>{P1}; F2-\>{P2, P3}, `organizations/foo` has a `Policy` with values:
   /// {allowed_values: "under:organizations/O1"} `projects/bar` has a `Policy`
   /// with: {allowed_values: "under:projects/P3"} {denied_values:
   /// "under:folders/F2"} The accepted values at `organizations/foo` are
@@ -14618,7 +14618,7 @@ class $Resource01 {
 
   /// Mutable.
   ///
-  /// The display name set by clients. Must be <= 63 characters.
+  /// The display name set by clients. Must be \<= 63 characters.
   core.String? displayName;
 
   /// An opaque value that uniquely identifies a version or generation of a
@@ -17390,7 +17390,7 @@ class $TraceSamplingConfig {
   /// Field sampling rate.
   ///
   /// This value is only applicable when using the PROBABILITY sampler. The
-  /// supported values are > 0 and <= 0.5.
+  /// supported values are \> 0 and \<= 0.5.
   core.double? samplingRate;
 
   $TraceSamplingConfig({
@@ -17659,7 +17659,7 @@ class $UserDefinedVariableConfiguration {
   /// User-friendly name for the variable which will appear in reports.
   ///
   /// This is a required field, must be less than 64 characters long, and cannot
-  /// contain the following characters: ""<>".
+  /// contain the following characters: ""\<\>".
   core.String? reportName;
 
   /// Variable name in the tag.

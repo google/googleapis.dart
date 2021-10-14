@@ -365,7 +365,7 @@ class DevicesResource {
   ///
   /// [updateMask] - Mask that identifies which fields to update. If not set,
   /// all modifiable fields will be modified. When set in a query parameter,
-  /// this field should be specified as updateMask=<field1>,<field2>,...
+  /// this field should be specified as updateMask=\<field1\>,\<field2\>,...
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6161,7 +6161,7 @@ class Product {
   /// A list of permissions required by the app.
   core.List<ProductPermission>? permissions;
 
-  /// A string of the form *app:<package name>*.
+  /// A string of the form *app:\<package name\>*.
   ///
   /// For example, app:com.google.android.gm represents the Gmail app.
   core.String? productId;
@@ -7476,7 +7476,7 @@ class WebApp {
 
   /// The ID of the application.
   ///
-  /// A string of the form "app:<package name>" where the package name always
+  /// A string of the form "app:\<package name\>" where the package name always
   /// starts with the prefix "com.google.enterprise.webapp." followed by a
   /// random id.
   core.String? webAppId;

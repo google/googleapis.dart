@@ -1026,12 +1026,12 @@ class PeopleResource {
   ///
   /// [resourceNames] - Required. The resource names of the people to provide
   /// information about. It's repeatable. The URL query parameter should be
-  /// resourceNames=<name1>&resourceNames=<name2>&... - To get information about
-  /// the authenticated user, specify `people/me`. - To get information about a
-  /// google account, specify `people/{account_id}`. - To get information about
-  /// a contact, specify the resource name that identifies the contact as
-  /// returned by `people.connections.list`. There is a maximum of 200 resource
-  /// names.
+  /// resourceNames=\<name1\>&resourceNames=\<name2\>&... - To get information
+  /// about the authenticated user, specify `people/me`. - To get information
+  /// about a google account, specify `people/{account_id}`. - To get
+  /// information about a contact, specify the resource name that identifies the
+  /// contact as returned by `people.connections.list`. There is a maximum of
+  /// 200 resource names.
   ///
   /// [sources] - Optional. A mask of what source types to return. Defaults to
   /// READ_SOURCE_TYPE_CONTACT and READ_SOURCE_TYPE_PROFILE if not set.

@@ -191,7 +191,7 @@ class AuditRefs {
 /// A proportion of data in the total distribution, bucketed by a min/max
 /// percentage.
 ///
-/// Each bucket's range is bounded by min <= x < max, In millisecond.
+/// Each bucket's range is bounded by min \<= x \< max, In millisecond.
 class Bucket {
   /// Upper bound for a bucket's range.
   core.int? max;

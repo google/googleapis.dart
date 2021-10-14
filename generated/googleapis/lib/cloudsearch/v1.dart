@@ -2758,12 +2758,13 @@ class BooleanOperatorOptions {
   /// boolean property.
   ///
   /// For example, if operatorName is *closed* and the property's name is
-  /// *isClosed*, then queries like *closed:<value>* show results only where the
-  /// value of the property named *isClosed* matches *<value>*. By contrast, a
-  /// search that uses the same *<value>* without an operator returns all items
-  /// where *<value>* matches the value of any String properties or text within
-  /// the content field for the item. The operator name can only contain
-  /// lowercase letters (a-z). The maximum length is 32 characters.
+  /// *isClosed*, then queries like *closed:\<value\>* show results only where
+  /// the value of the property named *isClosed* matches *\<value\>*. By
+  /// contrast, a search that uses the same *\<value\>* without an operator
+  /// returns all items where *\<value\>* matches the value of any String
+  /// properties or text within the content field for the item. The operator
+  /// name can only contain lowercase letters (a-z). The maximum length is 32
+  /// characters.
   core.String? operatorName;
 
   BooleanOperatorOptions({
@@ -3132,8 +3133,8 @@ class DataSource {
   /// A short name or alias for the source.
   ///
   /// This value will be used to match the 'source' operator. For example, if
-  /// the short name is *<value>* then queries like *source:<value>* will only
-  /// return results for this source. The value must be unique across all
+  /// the short name is *\<value\>* then queries like *source:\<value\>* will
+  /// only return results for this source. The value must be unique across all
   /// datasources. The value must only contain alphanumeric characters
   /// (a-zA-Z0-9). The value cannot start with 'google' and cannot be one of the
   /// following: mail, gmail, docs, drive, groups, sites, calendar, hangouts,
@@ -3329,20 +3330,20 @@ class DateOperatorOptions {
   /// date property using the greater-than operator.
   ///
   /// For example, if greaterThanOperatorName is *closedafter* and the
-  /// property's name is *closeDate*, then queries like *closedafter:<value>*
+  /// property's name is *closeDate*, then queries like *closedafter:\<value\>*
   /// show results only where the value of the property named *closeDate* is
-  /// later than *<value>*. The operator name can only contain lowercase letters
-  /// (a-z). The maximum length is 32 characters.
+  /// later than *\<value\>*. The operator name can only contain lowercase
+  /// letters (a-z). The maximum length is 32 characters.
   core.String? greaterThanOperatorName;
 
   /// Indicates the operator name required in the query in order to isolate the
   /// date property using the less-than operator.
   ///
   /// For example, if lessThanOperatorName is *closedbefore* and the property's
-  /// name is *closeDate*, then queries like *closedbefore:<value>* show results
-  /// only where the value of the property named *closeDate* is earlier than
-  /// *<value>*. The operator name can only contain lowercase letters (a-z). The
-  /// maximum length is 32 characters.
+  /// name is *closeDate*, then queries like *closedbefore:\<value\>* show
+  /// results only where the value of the property named *closeDate* is earlier
+  /// than *\<value\>*. The operator name can only contain lowercase letters
+  /// (a-z). The maximum length is 32 characters.
   core.String? lessThanOperatorName;
 
   /// Indicates the actual string required in the query in order to isolate the
@@ -3350,10 +3351,10 @@ class DateOperatorOptions {
   ///
   /// For example, suppose an issue tracking schema object has a property named
   /// *closeDate* that specifies an operator with an operatorName of *closedon*.
-  /// For searches on that data, queries like *closedon:<value>* show results
-  /// only where the value of the *closeDate* property matches *<value>*. By
-  /// contrast, a search that uses the same *<value>* without an operator
-  /// returns all items where *<value>* matches the value of any String
+  /// For searches on that data, queries like *closedon:\<value\>* show results
+  /// only where the value of the *closeDate* property matches *\<value\>*. By
+  /// contrast, a search that uses the same *\<value\>* without an operator
+  /// returns all items where *\<value\>* matches the value of any String
   /// properties or text within the content field for the indexed datasource.
   /// The operator name can only contain lowercase letters (a-z). The maximum
   /// length is 32 characters.
@@ -3739,10 +3740,10 @@ class EnumOperatorOptions {
   /// enum property.
   ///
   /// For example, if operatorName is *priority* and the property's name is
-  /// *priorityVal*, then queries like *priority:<value>* show results only
-  /// where the value of the property named *priorityVal* matches *<value>*. By
-  /// contrast, a search that uses the same *<value>* without an operator
-  /// returns all items where *<value>* matches the value of any String
+  /// *priorityVal*, then queries like *priority:\<value\>* show results only
+  /// where the value of the property named *priorityVal* matches *\<value\>*.
+  /// By contrast, a search that uses the same *\<value\>* without an operator
+  /// returns all items where *\<value\>* matches the value of any String
   /// properties or text within the content field for the item. The operator
   /// name can only contain lowercase letters (a-z). The maximum length is 32
   /// characters.
@@ -4482,12 +4483,13 @@ class HtmlOperatorOptions {
   /// html property.
   ///
   /// For example, if operatorName is *subject* and the property's name is
-  /// *subjectLine*, then queries like *subject:<value>* show results only where
-  /// the value of the property named *subjectLine* matches *<value>*. By
-  /// contrast, a search that uses the same *<value>* without an operator return
-  /// all items where *<value>* matches the value of any html properties or text
-  /// within the content field for the item. The operator name can only contain
-  /// lowercase letters (a-z). The maximum length is 32 characters.
+  /// *subjectLine*, then queries like *subject:\<value\>* show results only
+  /// where the value of the property named *subjectLine* matches *\<value\>*.
+  /// By contrast, a search that uses the same *\<value\>* without an operator
+  /// return all items where *\<value\>* matches the value of any html
+  /// properties or text within the content field for the item. The operator
+  /// name can only contain lowercase letters (a-z). The maximum length is 32
+  /// characters.
   core.String? operatorName;
 
   HtmlOperatorOptions({
@@ -4663,18 +4665,19 @@ class IntegerOperatorOptions {
   ///
   /// For example, if greaterThanOperatorName is *priorityabove* and the
   /// property's name is *priorityVal*, then queries like
-  /// *priorityabove:<value>* show results only where the value of the property
-  /// named *priorityVal* is greater than *<value>*. The operator name can only
-  /// contain lowercase letters (a-z). The maximum length is 32 characters.
+  /// *priorityabove:\<value\>* show results only where the value of the
+  /// property named *priorityVal* is greater than *\<value\>*. The operator
+  /// name can only contain lowercase letters (a-z). The maximum length is 32
+  /// characters.
   core.String? greaterThanOperatorName;
 
   /// Indicates the operator name required in the query in order to isolate the
   /// integer property using the less-than operator.
   ///
   /// For example, if lessThanOperatorName is *prioritybelow* and the property's
-  /// name is *priorityVal*, then queries like *prioritybelow:<value>* show
+  /// name is *priorityVal*, then queries like *prioritybelow:\<value\>* show
   /// results only where the value of the property named *priorityVal* is less
-  /// than *<value>*. The operator name can only contain lowercase letters
+  /// than *\<value\>*. The operator name can only contain lowercase letters
   /// (a-z). The maximum length is 32 characters.
   core.String? lessThanOperatorName;
 
@@ -4682,10 +4685,10 @@ class IntegerOperatorOptions {
   /// integer property.
   ///
   /// For example, if operatorName is *priority* and the property's name is
-  /// *priorityVal*, then queries like *priority:<value>* show results only
-  /// where the value of the property named *priorityVal* matches *<value>*. By
-  /// contrast, a search that uses the same *<value>* without an operator
-  /// returns all items where *<value>* matches the value of any String
+  /// *priorityVal*, then queries like *priority:\<value\>* show results only
+  /// where the value of the property named *priorityVal* matches *\<value\>*.
+  /// By contrast, a search that uses the same *\<value\>* without an operator
+  /// returns all items where *\<value\>* matches the value of any String
   /// properties or text within the content field for the item. The operator
   /// name can only contain lowercase letters (a-z). The maximum length is 32
   /// characters.
@@ -8779,12 +8782,13 @@ class TextOperatorOptions {
   /// text property.
   ///
   /// For example, if operatorName is *subject* and the property's name is
-  /// *subjectLine*, then queries like *subject:<value>* show results only where
-  /// the value of the property named *subjectLine* matches *<value>*. By
-  /// contrast, a search that uses the same *<value>* without an operator
-  /// returns all items where *<value>* matches the value of any text properties
-  /// or text within the content field for the item. The operator name can only
-  /// contain lowercase letters (a-z). The maximum length is 32 characters.
+  /// *subjectLine*, then queries like *subject:\<value\>* show results only
+  /// where the value of the property named *subjectLine* matches *\<value\>*.
+  /// By contrast, a search that uses the same *\<value\>* without an operator
+  /// returns all items where *\<value\>* matches the value of any text
+  /// properties or text within the content field for the item. The operator
+  /// name can only contain lowercase letters (a-z). The maximum length is 32
+  /// characters.
   core.String? operatorName;
 
   TextOperatorOptions({
@@ -8874,30 +8878,30 @@ class TimestampOperatorOptions {
   /// timestamp property using the greater-than operator.
   ///
   /// For example, if greaterThanOperatorName is *closedafter* and the
-  /// property's name is *closeDate*, then queries like *closedafter:<value>*
+  /// property's name is *closeDate*, then queries like *closedafter:\<value\>*
   /// show results only where the value of the property named *closeDate* is
-  /// later than *<value>*. The operator name can only contain lowercase letters
-  /// (a-z). The maximum length is 32 characters.
+  /// later than *\<value\>*. The operator name can only contain lowercase
+  /// letters (a-z). The maximum length is 32 characters.
   core.String? greaterThanOperatorName;
 
   /// Indicates the operator name required in the query in order to isolate the
   /// timestamp property using the less-than operator.
   ///
   /// For example, if lessThanOperatorName is *closedbefore* and the property's
-  /// name is *closeDate*, then queries like *closedbefore:<value>* show results
-  /// only where the value of the property named *closeDate* is earlier than
-  /// *<value>*. The operator name can only contain lowercase letters (a-z). The
-  /// maximum length is 32 characters.
+  /// name is *closeDate*, then queries like *closedbefore:\<value\>* show
+  /// results only where the value of the property named *closeDate* is earlier
+  /// than *\<value\>*. The operator name can only contain lowercase letters
+  /// (a-z). The maximum length is 32 characters.
   core.String? lessThanOperatorName;
 
   /// Indicates the operator name required in the query in order to isolate the
   /// timestamp property.
   ///
   /// For example, if operatorName is *closedon* and the property's name is
-  /// *closeDate*, then queries like *closedon:<value>* show results only where
-  /// the value of the property named *closeDate* matches *<value>*. By
-  /// contrast, a search that uses the same *<value>* without an operator
-  /// returns all items where *<value>* matches the value of any String
+  /// *closeDate*, then queries like *closedon:\<value\>* show results only
+  /// where the value of the property named *closeDate* matches *\<value\>*. By
+  /// contrast, a search that uses the same *\<value\>* without an operator
+  /// returns all items where *\<value\>* matches the value of any String
   /// properties or text within the content field for the item. The operator
   /// name can only contain lowercase letters (a-z). The maximum length is 32
   /// characters.

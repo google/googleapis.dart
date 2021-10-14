@@ -5224,7 +5224,7 @@ class ComposeRequest {
 /// Represents an expression text.
 ///
 /// Example: title: "User account presence" description: "Determines whether the
-/// request has a user account" expression: "size(request.user) > 0"
+/// request has a user account" expression: "size(request.user) \> 0"
 class Expr {
   /// An optional description of the expression.
   ///

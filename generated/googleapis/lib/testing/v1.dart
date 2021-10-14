@@ -2461,8 +2461,8 @@ class ManualSharding {
   /// Group of packages, classes, and/or test methods to be run for each shard.
   ///
   /// When any physical devices are selected, the number of
-  /// test_targets_for_shard must be >= 1 and <= 50. When no physical devices
-  /// are selected, the number must be >= 1 and <= 500.
+  /// test_targets_for_shard must be \>= 1 and \<= 50. When no physical devices
+  /// are selected, the number must be \>= 1 and \<= 500.
   ///
   /// Required.
   core.List<TestTargetsForShard>? testTargetsForShard;
@@ -3912,7 +3912,7 @@ class TrafficRule {
   /// Burst size in kbits.
   core.double? burst;
 
-  /// Packet delay, must be >= 0.
+  /// Packet delay, must be \>= 0.
   core.String? delay;
 
   /// Packet duplication ratio (0.0 - 1.0).
@@ -3965,8 +3965,9 @@ class TrafficRule {
 class UniformSharding {
   /// Total number of shards.
   ///
-  /// When any physical devices are selected, the number must be >= 1 and <= 50.
-  /// When no physical devices are selected, the number must be >= 1 and <= 500.
+  /// When any physical devices are selected, the number must be \>= 1 and \<=
+  /// 50. When no physical devices are selected, the number must be \>= 1 and
+  /// \<= 500.
   ///
   /// Required.
   core.int? numShards;

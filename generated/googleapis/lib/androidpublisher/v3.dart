@@ -6380,7 +6380,8 @@ class TrackRelease {
 
   /// Fraction of users who are eligible for a staged release.
   ///
-  /// 0 < fraction < 1. Can only be set when status is "inProgress" or "halted".
+  /// 0 \< fraction \< 1. Can only be set when status is "inProgress" or
+  /// "halted".
   core.double? userFraction;
 
   /// Version codes of all APKs in the release.

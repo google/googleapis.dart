@@ -267,8 +267,8 @@ class Deployment {
   /// Labels identify the deployment within the user universe and same target.
   ///
   /// Validation regex for label names: `^[a-z0-9]([a-z0-9-]{0,61}[a-z0-9])?$`.
-  /// Value for an individual label must be <= 512 bytes, the total size of all
-  /// label names and values must be <= 1024 bytes. Label named "language" can
+  /// Value for an individual label must be \<= 512 bytes, the total size of all
+  /// label names and values must be \<= 1024 bytes. Label named "language" can
   /// be used to record the programming language of the profiled deployment. The
   /// standard choices for the value include "java", "go", "python", "ruby",
   /// "nodejs", "php", "dotnet". For deployments running on Google Cloud

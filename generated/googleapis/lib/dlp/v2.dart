@@ -1117,7 +1117,7 @@ class OrganizationsLocationsDlpJobsResource {
   /// operator must be `=` or `!=`. Examples: * inspected_storage =
   /// cloud_storage AND state = done * inspected_storage = cloud_storage OR
   /// inspected_storage = bigquery * inspected_storage = cloud_storage AND
-  /// (state = done OR state = canceled) * end_time >
+  /// (state = done OR state = canceled) * end_time \>
   /// \"2017-12-12T00:00:00+00:00\" The length of this field should be no more
   /// than 500 characters.
   ///
@@ -1622,7 +1622,7 @@ class OrganizationsLocationsJobTriggersResource {
   /// Examples: * inspected_storage = cloud_storage AND status = HEALTHY *
   /// inspected_storage = cloud_storage OR inspected_storage = bigquery *
   /// inspected_storage = cloud_storage AND (state = PAUSED OR state = HEALTHY)
-  /// * last_run_time > \"2017-12-12T00:00:00+00:00\" The length of this field
+  /// * last_run_time \> \"2017-12-12T00:00:00+00:00\" The length of this field
   /// should be no more than 500 characters.
   ///
   /// [locationId] - Deprecated. This field has no effect.
@@ -2968,7 +2968,7 @@ class ProjectsDlpJobsResource {
   /// operator must be `=` or `!=`. Examples: * inspected_storage =
   /// cloud_storage AND state = done * inspected_storage = cloud_storage OR
   /// inspected_storage = bigquery * inspected_storage = cloud_storage AND
-  /// (state = done OR state = canceled) * end_time >
+  /// (state = done OR state = canceled) * end_time \>
   /// \"2017-12-12T00:00:00+00:00\" The length of this field should be no more
   /// than 500 characters.
   ///
@@ -3576,7 +3576,7 @@ class ProjectsJobTriggersResource {
   /// Examples: * inspected_storage = cloud_storage AND status = HEALTHY *
   /// inspected_storage = cloud_storage OR inspected_storage = bigquery *
   /// inspected_storage = cloud_storage AND (state = PAUSED OR state = HEALTHY)
-  /// * last_run_time > \"2017-12-12T00:00:00+00:00\" The length of this field
+  /// * last_run_time \> \"2017-12-12T00:00:00+00:00\" The length of this field
   /// should be no more than 500 characters.
   ///
   /// [locationId] - Deprecated. This field has no effect.
@@ -4476,7 +4476,7 @@ class ProjectsLocationsDlpJobsResource {
   /// operator must be `=` or `!=`. Examples: * inspected_storage =
   /// cloud_storage AND state = done * inspected_storage = cloud_storage OR
   /// inspected_storage = bigquery * inspected_storage = cloud_storage AND
-  /// (state = done OR state = canceled) * end_time >
+  /// (state = done OR state = canceled) * end_time \>
   /// \"2017-12-12T00:00:00+00:00\" The length of this field should be no more
   /// than 500 characters.
   ///
@@ -5137,7 +5137,7 @@ class ProjectsLocationsJobTriggersResource {
   /// Examples: * inspected_storage = cloud_storage AND status = HEALTHY *
   /// inspected_storage = cloud_storage OR inspected_storage = bigquery *
   /// inspected_storage = cloud_storage AND (state = PAUSED OR state = HEALTHY)
-  /// * last_run_time > \"2017-12-12T00:00:00+00:00\" The length of this field
+  /// * last_run_time \> \"2017-12-12T00:00:00+00:00\" The length of this field
   /// should be no more than 500 characters.
   ///
   /// [locationId] - Deprecated. This field has no effect.
@@ -6339,8 +6339,8 @@ class GooglePrivacyDlpV2Bucket {
 /// Generalization function that buckets values based on ranges.
 ///
 /// The ranges and replacement values are dynamically provided by the user for
-/// custom behavior, such as 1-30 -> LOW 31-65 -> MEDIUM 66-100 -> HIGH This can
-/// be used on data of type: number, long, string, timestamp. If the bound
+/// custom behavior, such as 1-30 -\> LOW 31-65 -\> MEDIUM 66-100 -\> HIGH This
+/// can be used on data of type: number, long, string, timestamp. If the bound
 /// `Value` type differs from the type of data being transformed, we will first
 /// attempt converting the type of the data to be transformed to match the type
 /// of the bound before comparing. See
@@ -6627,7 +6627,7 @@ class GooglePrivacyDlpV2CharsToIgnore {
   /// - "ALPHA_UPPER_CASE" : A-Z
   /// - "ALPHA_LOWER_CASE" : a-z
   /// - "PUNCTUATION" : US Punctuation, one of
-  /// !"#$%&'()*+,-./:;<=>?@\[\]^_\`{|}~
+  /// !"#$%&'()*+,-./:;\<=\>?@\[\]^_\`{|}~
   /// - "WHITESPACE" : Whitespace character, one of \[ \t\n\x0B\f\r\]
   core.String? commonCharactersToIgnore;
 
@@ -7664,7 +7664,7 @@ class GooglePrivacyDlpV2CryptoReplaceFfxFpeConfig {
   /// 95\]. This must be encoded as ASCII. The order of characters does not
   /// matter. The full list of allowed characters is:
   /// 0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz
-  /// ~\`!@#$%^&*()_-+={\[}\]|\:;"'<,>.?/
+  /// ~\`!@#$%^&*()_-+={\[}\]|\:;"'\<,\>.?/
   core.String? customAlphabet;
 
   /// The native way to select the alphabet.

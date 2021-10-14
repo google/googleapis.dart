@@ -146,14 +146,14 @@ class ProjectsReleasesResource {
   /// Once a `Release` refers to a `Ruleset`, the rules can be enforced by
   /// Firebase Rules-enabled services. More than one `Release` may be 'live'
   /// concurrently. Consider the following three `Release` names for
-  /// `projects/foo` and the `Ruleset` to which they refer. Release Name ->
-  /// Ruleset Name * projects/foo/releases/prod -> projects/foo/rulesets/uuid123
-  /// * projects/foo/releases/prod/beta -> projects/foo/rulesets/uuid123 *
-  /// projects/foo/releases/prod/v23 -> projects/foo/rulesets/uuid456 The
-  /// relationships reflect a `Ruleset` rollout in progress. The `prod` and
-  /// `prod/beta` releases refer to the same `Ruleset`. However, `prod/v23`
-  /// refers to a new `Ruleset`. The `Ruleset` reference for a `Release` may be
-  /// updated using the UpdateRelease method.
+  /// `projects/foo` and the `Ruleset` to which they refer. Release Name -\>
+  /// Ruleset Name * projects/foo/releases/prod -\>
+  /// projects/foo/rulesets/uuid123 * projects/foo/releases/prod/beta -\>
+  /// projects/foo/rulesets/uuid123 * projects/foo/releases/prod/v23 -\>
+  /// projects/foo/rulesets/uuid456 The relationships reflect a `Ruleset`
+  /// rollout in progress. The `prod` and `prod/beta` releases refer to the same
+  /// `Ruleset`. However, `prod/v23` refers to a new `Ruleset`. The `Ruleset`
+  /// reference for a `Release` may be updated using the UpdateRelease method.
   ///
   /// [request] - The metadata request object.
   ///
@@ -329,15 +329,15 @@ class ProjectsReleasesResource {
   /// [filter] - `Release` filter. The list method supports filters with
   /// restrictions on the `Release.name`, and `Release.ruleset_name`. Example 1:
   /// A filter of 'name=prod*' might return `Release`s with names within
-  /// 'projects/foo' prefixed with 'prod': Name -> Ruleset Name: *
-  /// projects/foo/releases/prod -> projects/foo/rulesets/uuid1234 *
-  /// projects/foo/releases/prod/v1 -> projects/foo/rulesets/uuid1234 *
-  /// projects/foo/releases/prod/v2 -> projects/foo/rulesets/uuid8888 Example 2:
-  /// A filter of `name=prod* ruleset_name=uuid1234` would return only `Release`
-  /// instances for 'projects/foo' with names prefixed with 'prod' referring to
-  /// the same `Ruleset` name of 'uuid1234': Name -> Ruleset Name: *
-  /// projects/foo/releases/prod -> projects/foo/rulesets/1234 *
-  /// projects/foo/releases/prod/v1 -> projects/foo/rulesets/1234 In the
+  /// 'projects/foo' prefixed with 'prod': Name -\> Ruleset Name: *
+  /// projects/foo/releases/prod -\> projects/foo/rulesets/uuid1234 *
+  /// projects/foo/releases/prod/v1 -\> projects/foo/rulesets/uuid1234 *
+  /// projects/foo/releases/prod/v2 -\> projects/foo/rulesets/uuid8888 Example
+  /// 2: A filter of `name=prod* ruleset_name=uuid1234` would return only
+  /// `Release` instances for 'projects/foo' with names prefixed with 'prod'
+  /// referring to the same `Ruleset` name of 'uuid1234': Name -\> Ruleset Name:
+  /// * projects/foo/releases/prod -\> projects/foo/rulesets/1234 *
+  /// projects/foo/releases/prod/v1 -\> projects/foo/rulesets/1234 In the
   /// examples, the filter parameters refer to the search filters are relative
   /// to the project. Fully qualified prefixed may also be used.
   ///

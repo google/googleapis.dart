@@ -976,8 +976,8 @@ class ProjectsLocationsCatalogsEventStoresUserEventsResource {
   /// returned events. This is a sequence of terms, where each term applies some
   /// kind of a restriction to the returned user events. Use this expression to
   /// restrict results to a specific time range, or filter events by eventType.
-  /// eg: eventTime > "2012-04-23T18:25:43.511Z" eventsMissingCatalogItems
-  /// eventTime<"2012-04-23T18:25:43.511Z" eventType=search We expect only 3
+  /// eg: eventTime \> "2012-04-23T18:25:43.511Z" eventsMissingCatalogItems
+  /// eventTime\<"2012-04-23T18:25:43.511Z" eventType=search We expect only 3
   /// types of fields: * eventTime: this can be specified a maximum of 2 times,
   /// once with a less than operator and once with a greater than operator. The
   /// eventTime restrict should result in one contiguous valid eventTime range.
@@ -986,10 +986,10 @@ class ProjectsLocationsCatalogsEventStoresUserEventsResource {
   /// events for which catalog items were not found in the catalog. The default
   /// behavior is to return only those events for which catalog items were
   /// found. Some examples of valid filters expressions: * Example 1: eventTime
-  /// > "2012-04-23T18:25:43.511Z" eventTime < "2012-04-23T18:30:43.511Z" *
-  /// Example 2: eventTime > "2012-04-23T18:25:43.511Z" eventType =
+  /// \> "2012-04-23T18:25:43.511Z" eventTime \< "2012-04-23T18:30:43.511Z" *
+  /// Example 2: eventTime \> "2012-04-23T18:25:43.511Z" eventType =
   /// detail-page-view * Example 3: eventsMissingCatalogItems eventType = search
-  /// eventTime < "2018-04-23T18:30:43.511Z" * Example 4: eventTime >
+  /// eventTime \< "2018-04-23T18:30:43.511Z" * Example 4: eventTime \>
   /// "2012-04-23T18:25:43.511Z" * Example 5: eventType = search * Example 6:
   /// eventsMissingCatalogItems
   ///
@@ -1558,9 +1558,9 @@ class GoogleCloudRecommendationengineV1beta1CatalogItem {
   ///
   /// This field is repeated for supporting one catalog item belonging to
   /// several parallel category hierarchies. For example, if a shoes product
-  /// belongs to both \["Shoes & Accessories" -> "Shoes"\] and \["Sports &
-  /// Fitness" -> "Athletic Clothing" -> "Shoes"\], it could be represented as:
-  /// "categoryHierarchies": \[ { "categories": \["Shoes & Accessories",
+  /// belongs to both \["Shoes & Accessories" -\> "Shoes"\] and \["Sports &
+  /// Fitness" -\> "Athletic Clothing" -\> "Shoes"\], it could be represented
+  /// as: "categoryHierarchies": \[ { "categories": \["Shoes & Accessories",
   /// "Shoes"\]}, { "categories": \["Sports & Fitness", "Athletic Clothing",
   /// "Shoes"\] } \]
   ///

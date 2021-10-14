@@ -1372,7 +1372,7 @@ class Proto2FieldDescriptorProto {
   ///
   /// For booleans, "true" or "false". For strings, contains the default text
   /// contents (not escaped in any way). For bytes, contains the C escaped
-  /// value. All bytes >= 128 are escaped.
+  /// value. All bytes \>= 128 are escaped.
   core.String? defaultValue;
 
   /// JSON name of this field.

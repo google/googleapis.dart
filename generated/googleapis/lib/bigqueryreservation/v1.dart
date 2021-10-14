@@ -130,7 +130,7 @@ class ProjectsLocationsResource {
   /// on the organization will be returned (organization doesn't have
   /// ancestors). Comparing to ListAssignments, there are some behavior
   /// differences: 1. permission on the assignee will be verified in this API.
-  /// 2. Hierarchy lookup (project->folder->organization) happens in this API.
+  /// 2. Hierarchy lookup (project-\>folder-\>organization) happens in this API.
   /// 3. Parent here is `projects / * /locations / * `, instead of `projects / *
   /// /locations / * reservations / * `.
   ///
@@ -196,7 +196,7 @@ class ProjectsLocationsResource {
   /// on the organization will be returned (organization doesn't have
   /// ancestors). Comparing to ListAssignments, there are some behavior
   /// differences: 1. permission on the assignee will be verified in this API.
-  /// 2. Hierarchy lookup (project->folder->organization) happens in this API.
+  /// 2. Hierarchy lookup (project-\>folder-\>organization) happens in this API.
   /// 3. Parent here is `projects / * /locations / * `, instead of `projects / *
   /// /locations / * reservations / * `. **Note** "-" cannot be used for
   /// projects nor locations.
