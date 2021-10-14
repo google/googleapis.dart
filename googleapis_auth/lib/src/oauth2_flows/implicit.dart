@@ -231,30 +231,16 @@ class LoginResult {
 
 /// Convert [responseType] to string value expected by `gapi.auth.authorize`.
 String _responseTypeToString(ResponseType responseType) {
-  String result;
-
   switch (responseType) {
     case ResponseType.code:
-      result = 'code';
-      break;
-
+      return 'code';
     case ResponseType.idToken:
-      result = 'id_token';
-      break;
-
+      return 'id_token';
     case ResponseType.permission:
-      result = 'permission';
-      break;
-
+      return 'permission';
     case ResponseType.token:
-      result = 'token';
-      break;
-
-    default:
-      throw ArgumentError('Unknown response type: $responseType');
+      return 'token';
   }
-
-  return result;
 }
 
 /// Creates a script that will run properly when strict CSP is enforced.

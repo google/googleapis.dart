@@ -6,7 +6,7 @@
 /// browser login flow.
 ///
 /// More information about these values can be found here:
-/// https://developers.google.com/identity/protocols/OpenIDConnect#response-type
+/// https://developers.google.com/identity/protocols/oauth2/openid-connect#response-type
 enum ResponseType {
   /// Requests an access code.  This triggers the basic rather than the implicit
   /// flow.

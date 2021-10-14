@@ -296,5 +296,5 @@ client.close();
 ### More information
 
 More information can be obtained from official Google Developers documentation:
-- [OAuth2 to Access Google APIs](https://developers.google.com/accounts/docs/OAuth2)
+- [OAuth2 to Access Google APIs](https://developers.google.com/identity/protocols/oauth2)
 - [OAuth2 Playground](https://developers.google.com/oauthplayground/)

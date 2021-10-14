@@ -14,30 +14,29 @@ import 'oauth2_flows/metadata_server.dart';
 /// In case the VM was not configured with access to the requested scopes or an
 /// error occurs the returned future will complete with an `Exception`.
 ///
-/// [baseClient] will be used for obtaining `AccessCredentials`.
+/// {@template googleapis_auth_client_for_creds}
+/// [client] will be used for making the HTTP requests needed to create the
+/// returned [AccessCredentials].
+/// {@endtemplate}
 ///
 /// No credentials are needed. But this function is only intended to work on a
 /// Google Compute Engine VM with configured access to Google APIs.
 Future<AccessCredentials> obtainAccessCredentialsViaMetadataServer(
-  Client baseClient,
+  Client client,
 ) =>
-    MetadataServerAuthorizationFlow(baseClient).run();
+    MetadataServerAuthorizationFlow(client).run();
 
 /// Obtains oauth2 credentials and returns an authenticated HTTP client.
 ///
 /// See [obtainAccessCredentialsViaMetadataServer] for specifics about the
 /// arguments used for obtaining access credentials.
 ///
-/// Once access credentials have been obtained, this function will complete
-/// with an auto-refreshing HTTP client. Once the `AccessCredentials` expire
-/// it will obtain new access credentials.
+/// {@macro googleapis_auth_returned_auto_refresh_client}
 ///
-/// If [baseClient] is not given, one will be automatically created. It will be
-/// used for making authenticated HTTP requests and for obtaining access
-/// credentials.
+/// {@macro googleapis_auth_baseClient_param}
 ///
-/// The user is responsible for closing the returned HTTP [Client].
-/// Closing the returned [Client] will not close [baseClient].
+/// {@macro googleapis_auth_close_the_client}
+/// {@macro googleapis_auth_not_close_the_baseClient}
 Future<AutoRefreshingAuthClient> clientViaMetadataServer({
   Client? baseClient,
 }) async =>
