@@ -1766,9 +1766,9 @@ class GoogleDatastoreAdminV1IndexedProperty {
   /// Possible string values are:
   /// - "DIRECTION_UNSPECIFIED" : The direction is unspecified.
   /// - "ASCENDING" : The property's values are indexed so as to support
-  /// sequencing in ascending order and also query by <, >, <=, >=, and =.
+  /// sequencing in ascending order and also query by \<, \>, \<=, \>=, and =.
   /// - "DESCENDING" : The property's values are indexed so as to support
-  /// sequencing in descending order and also query by <, >, <=, >=, and =.
+  /// sequencing in descending order and also query by \<, \>, \<=, \>=, and =.
   core.String? direction;
 
   /// The property name to index.
@@ -2744,13 +2744,13 @@ class Query {
   /// The maximum number of results to return.
   ///
   /// Applies after all other constraints. Optional. Unspecified is interpreted
-  /// as no limit. Must be >= 0 if specified.
+  /// as no limit. Must be \>= 0 if specified.
   core.int? limit;
 
   /// The number of results to skip.
   ///
   /// Applies before limit, but after all other constraints. Optional. Must be
-  /// >= 0 if specified.
+  /// \>= 0 if specified.
   core.int? offset;
 
   /// The order to apply to the query results (if empty, order is unspecified).

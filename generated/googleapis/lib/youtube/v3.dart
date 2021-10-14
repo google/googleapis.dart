@@ -13813,7 +13813,7 @@ class PlaylistLocalization {
 }
 
 class PlaylistPlayer {
-  /// An <iframe> tag that embeds a player that will play the playlist.
+  /// An \<iframe\> tag that embeds a player that will play the playlist.
   core.String? embedHtml;
 
   PlaylistPlayer({
@@ -16540,7 +16540,7 @@ class VideoMonetizationDetails {
 class VideoPlayer {
   core.String? embedHeight;
 
-  /// An <iframe> tag that embeds a player that will play the video.
+  /// An \<iframe\> tag that embeds a player that will play the video.
   core.String? embedHtml;
 
   /// The embed width
@@ -17305,8 +17305,8 @@ class VideoTopicDetails {
   ///
   /// These are topics that are centrally featured in the video, and it can be
   /// said that the video is mainly about each of these. You can retrieve
-  /// information about each topic using the < a
-  /// href="http://wiki.freebase.com/wiki/Topic_API">Freebase Topic API.
+  /// information about each topic using the \< a
+  /// href="http://wiki.freebase.com/wiki/Topic_API"\>Freebase Topic API.
   core.List<core.String>? topicIds;
 
   VideoTopicDetails({

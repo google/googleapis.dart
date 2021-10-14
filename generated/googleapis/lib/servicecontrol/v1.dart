@@ -1147,7 +1147,7 @@ class Distribution {
 
   /// The total number of samples in the distribution.
   ///
-  /// Must be >= 0.
+  /// Must be \>= 0.
   core.String? count;
 
   /// Example points.
@@ -1323,8 +1323,8 @@ class ExplicitBuckets {
   /// bound_size() - 1. Note that there are no finite buckets at all if 'bound'
   /// only contains a single element; in that special case the single bound
   /// defines the boundary between the underflow and overflow buckets. bucket
-  /// number lower bound upper bound i == 0 (underflow) -inf bound\[i\] 0 < i <
-  /// bound_size() bound\[i-1\] bound\[i\] i == bound_size() (overflow)
+  /// number lower bound upper bound i == 0 (underflow) -inf bound\[i\] 0 \< i
+  /// \< bound_size() bound\[i-1\] bound\[i\] i == bound_size() (overflow)
   /// bound\[i-1\] +inf
   core.List<core.double>? bounds;
 
@@ -1365,7 +1365,7 @@ class ExponentialBuckets {
   /// growth_factor^(i-1), scale * growth_factor^i) where i ranges from 1 to
   /// num_finite_buckets inclusive.
   ///
-  /// Must be > 0.
+  /// Must be \> 0.
   core.double? scale;
 
   ExponentialBuckets({

@@ -1677,7 +1677,7 @@ class $MigrateLocationDestructivelyMetadata {
   /// - "PENDING" : The MigrateLocationDestructively request has passed
   /// precondition checks and the bucket migration will begin soon.
   /// - "CREATING_TEMP_BUCKET" : Generating a unique bucket name, storing the
-  /// source -> temp mapping in Spanner, and actually creating the temporary
+  /// source -\> temp mapping in Spanner, and actually creating the temporary
   /// bucket via Bigstore.
   /// - "TRANSFERRING_TO_TEMP" : The first STS transfer to move all objects from
   /// the source bucket to the temp bucket is underway.

@@ -2553,14 +2553,14 @@ class DnsZone {
 
 /// `Documentation` provides the information for describing a service.
 ///
-/// Example: documentation: summary: > The Google Calendar API gives access to
+/// Example: documentation: summary: \> The Google Calendar API gives access to
 /// most calendar features. pages: - name: Overview content: (== include
 /// google/foo/overview.md ==) - name: Tutorial content: (== include
 /// google/foo/tutorial.md ==) subpages; - name: Java content: (== include
 /// google/foo/tutorial_java.md ==) rules: - selector:
-/// google.calendar.Calendar.Get description: > ... - selector:
-/// google.calendar.Calendar.Put description: > ... Documentation is provided in
-/// markdown syntax. In addition to standard markdown features, definition
+/// google.calendar.Calendar.Get description: \> ... - selector:
+/// google.calendar.Calendar.Put description: \> ... Documentation is provided
+/// in markdown syntax. In addition to standard markdown features, definition
 /// lists, tables and fenced code blocks are supported. Section headers can be
 /// provided and are interpreted relative to the section nesting of the context
 /// where a documentation fragment is embedded. Documentation from the IDL is

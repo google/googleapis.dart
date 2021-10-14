@@ -2091,14 +2091,14 @@ class Diagnostic {
 
 /// `Documentation` provides the information for describing a service.
 ///
-/// Example: documentation: summary: > The Google Calendar API gives access to
+/// Example: documentation: summary: \> The Google Calendar API gives access to
 /// most calendar features. pages: - name: Overview content: (== include
 /// google/foo/overview.md ==) - name: Tutorial content: (== include
 /// google/foo/tutorial.md ==) subpages; - name: Java content: (== include
 /// google/foo/tutorial_java.md ==) rules: - selector:
-/// google.calendar.Calendar.Get description: > ... - selector:
-/// google.calendar.Calendar.Put description: > ... Documentation is provided in
-/// markdown syntax. In addition to standard markdown features, definition
+/// google.calendar.Calendar.Get description: \> ... - selector:
+/// google.calendar.Calendar.Put description: \> ... Documentation is provided
+/// in markdown syntax. In addition to standard markdown features, definition
 /// lists, tables and fenced code blocks are supported. Section headers can be
 /// provided and are interpreted relative to the section nesting of the context
 /// where a documentation fragment is embedded. Documentation from the IDL is
@@ -2327,7 +2327,7 @@ class EnumValue {
 /// CEL is a C-like expression language. The syntax and semantics of CEL are
 /// documented at https://github.com/google/cel-spec. Example (Comparison):
 /// title: "Summary size limit" description: "Determines if a summary is less
-/// than 100 chars" expression: "document.summary.size() < 100" Example
+/// than 100 chars" expression: "document.summary.size() \< 100" Example
 /// (Equality): title: "Requestor is owner" description: "Determines if
 /// requestor is the document owner" expression: "document.owner ==
 /// request.auth.claims.email" Example (Logic): title: "Public documents"
@@ -4048,14 +4048,14 @@ class Page {
 /// "roles/resourcemanager.organizationViewer", "members": \[
 /// "user:eve@example.com" \], "condition": { "title": "expirable access",
 /// "description": "Does not grant access after Sep 2020", "expression":
-/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } \], "etag":
+/// "request.time \< timestamp('2020-10-01T00:00:00.000Z')", } } \], "etag":
 /// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: -
 /// user:mike@example.com - group:admins@example.com - domain:google.com -
 /// serviceAccount:my-project-id@appspot.gserviceaccount.com role:
 /// roles/resourcemanager.organizationAdmin - members: - user:eve@example.com
 /// role: roles/resourcemanager.organizationViewer condition: title: expirable
 /// access description: Does not grant access after Sep 2020 expression:
-/// request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA=
+/// request.time \< timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA=
 /// version: 3 For a description of IAM and its features, see the
 /// [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {

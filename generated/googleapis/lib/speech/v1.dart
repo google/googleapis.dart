@@ -589,8 +589,8 @@ class RecognitionConfig {
   /// value does not add punctuation to result hypotheses.
   core.bool? enableAutomaticPunctuation;
 
-  /// This needs to be set to `true` explicitly and `audio_channel_count` > 1 to
-  /// get each channel recognized separately.
+  /// This needs to be set to `true` explicitly and `audio_channel_count` \> 1
+  /// to get each channel recognized separately.
   ///
   /// The recognition result will contain a `channel_tag` field to state which
   /// channel that result belongs to. If this is not true, we will only

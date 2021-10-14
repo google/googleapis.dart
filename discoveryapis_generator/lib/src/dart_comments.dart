@@ -5,7 +5,7 @@
 library discoveryapis_generator.dart_comments;
 
 final _markdownToEscape =
-    {'[', ']', '`'}.map((e) => RegExp('([\\\\]*)(\\$e)')).toSet();
+    {'[', ']', '<', '>', '`'}.map((e) => RegExp('([\\\\]*)(\\$e)')).toSet();
 
 String markdownEscape(String input) {
   for (var pattern in _markdownToEscape) {

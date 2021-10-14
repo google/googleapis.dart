@@ -2994,7 +2994,7 @@ class GraphicsStats {
 
   /// Total frames with slow render time.
   ///
-  /// Should be <= total_frames.
+  /// Should be \<= total_frames.
   core.String? jankyFrames;
 
   /// Total "missed vsync" events.
@@ -5316,7 +5316,7 @@ class Step {
 
   /// The initial state is IN_PROGRESS.
   ///
-  /// The only legal state transitions are * IN_PROGRESS -> COMPLETE A
+  /// The only legal state transitions are * IN_PROGRESS -\> COMPLETE A
   /// PRECONDITION_FAILED will be returned if an invalid transition is
   /// requested. It is valid to create Step with a state set to COMPLETE. The
   /// state can only be set to COMPLETE once. A PRECONDITION_FAILED will be

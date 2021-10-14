@@ -931,8 +931,8 @@ class Job {
   /// the `n+1`th execution is scheduled to run at 16:00 but the `n`th execution
   /// takes until 16:15, the `n+1`th execution will not start until `16:15`. A
   /// scheduled start time will be delayed if the previous execution has not
-  /// ended when its scheduled time occurs. If retry_count > 0 and a job attempt
-  /// fails, the job will be tried a total of retry_count times, with
+  /// ended when its scheduled time occurs. If retry_count \> 0 and a job
+  /// attempt fails, the job will be tried a total of retry_count times, with
   /// exponential backoff, until the next scheduled start time.
   core.String? schedule;
 

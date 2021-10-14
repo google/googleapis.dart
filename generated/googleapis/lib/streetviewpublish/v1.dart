@@ -1162,7 +1162,7 @@ class Pose {
   /// Compass heading, measured at the center of the photo in degrees clockwise
   /// from North.
   ///
-  /// Value must be >=0 and <360. NaN indicates an unmeasured quantity.
+  /// Value must be \>=0 and \<360. NaN indicates an unmeasured quantity.
   core.double? heading;
 
   /// Latitude and longitude pair of the pose, as explained here:
@@ -1179,14 +1179,14 @@ class Pose {
 
   /// Pitch, measured at the center of the photo in degrees.
   ///
-  /// Value must be >=-90 and <= 90. A value of -90 means looking directly down,
-  /// and a value of 90 means looking directly up. NaN indicates an unmeasured
-  /// quantity.
+  /// Value must be \>=-90 and \<= 90. A value of -90 means looking directly
+  /// down, and a value of 90 means looking directly up. NaN indicates an
+  /// unmeasured quantity.
   core.double? pitch;
 
   /// Roll, measured in degrees.
   ///
-  /// Value must be >= 0 and <360. A value of 0 means level with the horizon.
+  /// Value must be \>= 0 and \<360. A value of 0 means level with the horizon.
   /// NaN indicates an unmeasured quantity.
   core.double? roll;
 

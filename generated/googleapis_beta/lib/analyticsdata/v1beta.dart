@@ -1269,12 +1269,13 @@ class DimensionOrderBy {
   /// Possible string values are:
   /// - "ORDER_TYPE_UNSPECIFIED" : Unspecified.
   /// - "ALPHANUMERIC" : Alphanumeric sort by Unicode code point. For example,
-  /// "2" < "A" < "X" < "b" < "z".
+  /// "2" \< "A" \< "X" \< "b" \< "z".
   /// - "CASE_INSENSITIVE_ALPHANUMERIC" : Case insensitive alphanumeric sort by
-  /// lower case Unicode code point. For example, "2" < "A" < "b" < "X" < "z".
+  /// lower case Unicode code point. For example, "2" \< "A" \< "b" \< "X" \<
+  /// "z".
   /// - "NUMERIC" : Dimension values are converted to numbers before sorting.
-  /// For example in NUMERIC sort, "25" < "100", and in `ALPHANUMERIC` sort,
-  /// "100" < "25". Non-numeric dimension values all have equal ordering value
+  /// For example in NUMERIC sort, "25" \< "100", and in `ALPHANUMERIC` sort,
+  /// "100" \< "25". Non-numeric dimension values all have equal ordering value
   /// below all numeric values.
   core.String? orderType;
 

@@ -4838,7 +4838,7 @@ class ProjectsLocationsAgentsTestCasesResultsResource {
   /// "environment=draft AND latest" matches the latest test result for each
   /// test case in the draft environment. * "environment IN (e1,e2)" matches any
   /// test case results with an environment resource name of either "e1" or
-  /// "e2". * "test_time > 1602540713" matches any test case results with test
+  /// "e2". * "test_time \> 1602540713" matches any test case results with test
   /// time later than a unix timestamp in seconds 1602540713.
   ///
   /// [pageSize] - The maximum number of items to return in a single page. By
@@ -5639,7 +5639,7 @@ class ProjectsOperationsResource {
 /// Hierarchical advanced settings for agent/flow/page/fulfillment/parameter.
 ///
 /// Settings exposed at lower level overrides the settings exposed at higher
-/// level. Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
+/// level. Hierarchy: Agent-\>Flow-\>Page-\>Fulfillment/Parameter.
 class GoogleCloudDialogflowCxV3AdvancedSettings {
   /// Settings for logging.
   ///
@@ -7125,9 +7125,9 @@ class GoogleCloudDialogflowCxV3Experiment {
 
   /// The current state of the experiment.
   ///
-  /// Transition triggered by Experiments.StartExperiment: DRAFT->RUNNING.
-  /// Transition triggered by Experiments.CancelExperiment: DRAFT->DONE or
-  /// RUNNING->DONE.
+  /// Transition triggered by Experiments.StartExperiment: DRAFT-\>RUNNING.
+  /// Transition triggered by Experiments.CancelExperiment: DRAFT-\>DONE or
+  /// RUNNING-\>DONE.
   /// Possible string values are:
   /// - "STATE_UNSPECIFIED" : State unspecified.
   /// - "DRAFT" : The experiment is created but not started yet.
@@ -9738,8 +9738,8 @@ class GoogleCloudDialogflowCxV3Page {
   ///
   /// Transition route groups must be unique within a page. * If multiple
   /// transition routes within a page scope refer to the same intent, then the
-  /// precedence order is: page's transition route -> page's transition route
-  /// group -> flow's transition routes. * If multiple transition route groups
+  /// precedence order is: page's transition route -\> page's transition route
+  /// group -\> flow's transition routes. * If multiple transition route groups
   /// within a page contain the same intent, then the first group in the ordered
   /// list takes precedence.
   /// Format:`projects//locations//agents//flows//transitionRouteGroups/`.
@@ -10650,16 +10650,16 @@ class GoogleCloudDialogflowCxV3RestoreAgentRequest {
 class GoogleCloudDialogflowCxV3RolloutConfig {
   /// The conditions that are used to evaluate the failure of a rollout step.
   ///
-  /// If not specified, no rollout steps will fail. E.g. "containment_rate < 10%
-  /// OR average_turn_count < 3". See the
+  /// If not specified, no rollout steps will fail. E.g. "containment_rate \<
+  /// 10% OR average_turn_count \< 3". See the
   /// [conditions reference](https://cloud.google.com/dialogflow/cx/docs/reference/condition).
   core.String? failureCondition;
 
   /// The conditions that are used to evaluate the success of a rollout step.
   ///
   /// If not specified, all rollout steps will proceed to the next one unless
-  /// failure conditions are met. E.g. "containment_rate > 60% AND callback_rate
-  /// < 20%". See the
+  /// failure conditions are met. E.g. "containment_rate \> 60% AND
+  /// callback_rate \< 20%". See the
   /// [conditions reference](https://cloud.google.com/dialogflow/cx/docs/reference/condition).
   core.String? rolloutCondition;
 
@@ -11180,7 +11180,7 @@ class GoogleCloudDialogflowCxV3SynthesizeSpeechConfig {
   ///
   /// 1.0 is the normal native speed supported by the specific voice. 2.0 is
   /// twice as fast, and 0.5 is half as fast. If unset(0.0), defaults to the
-  /// native 1.0 speed. Any other values < 0.25 or > 4.0 will return an error.
+  /// native 1.0 speed. Any other values \< 0.25 or \> 4.0 will return an error.
   ///
   /// Optional.
   core.double? speakingRate;
@@ -14074,8 +14074,8 @@ class GoogleCloudDialogflowCxV3beta1Page {
   ///
   /// Transition route groups must be unique within a page. * If multiple
   /// transition routes within a page scope refer to the same intent, then the
-  /// precedence order is: page's transition route -> page's transition route
-  /// group -> flow's transition routes. * If multiple transition route groups
+  /// precedence order is: page's transition route -\> page's transition route
+  /// group -\> flow's transition routes. * If multiple transition route groups
   /// within a page contain the same intent, then the first group in the ordered
   /// list takes precedence.
   /// Format:`projects//locations//agents//flows//transitionRouteGroups/`.

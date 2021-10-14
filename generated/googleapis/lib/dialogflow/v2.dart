@@ -11999,8 +11999,8 @@ class GoogleCloudDialogflowCxV3Page {
   ///
   /// Transition route groups must be unique within a page. * If multiple
   /// transition routes within a page scope refer to the same intent, then the
-  /// precedence order is: page's transition route -> page's transition route
-  /// group -> flow's transition routes. * If multiple transition route groups
+  /// precedence order is: page's transition route -\> page's transition route
+  /// group -\> flow's transition routes. * If multiple transition route groups
   /// within a page contain the same intent, then the first group in the ordered
   /// list takes precedence.
   /// Format:`projects//locations//agents//flows//transitionRouteGroups/`.
@@ -14565,8 +14565,8 @@ class GoogleCloudDialogflowCxV3beta1Page {
   ///
   /// Transition route groups must be unique within a page. * If multiple
   /// transition routes within a page scope refer to the same intent, then the
-  /// precedence order is: page's transition route -> page's transition route
-  /// group -> flow's transition routes. * If multiple transition route groups
+  /// precedence order is: page's transition route -\> page's transition route
+  /// group -\> flow's transition routes. * If multiple transition route groups
   /// within a page contain the same intent, then the first group in the ordered
   /// list takes precedence.
   /// Format:`projects//locations//agents//flows//transitionRouteGroups/`.
@@ -22402,7 +22402,7 @@ class GoogleCloudDialogflowV2SynthesizeSpeechConfig {
   ///
   /// 1.0 is the normal native speed supported by the specific voice. 2.0 is
   /// twice as fast, and 0.5 is half as fast. If unset(0.0), defaults to the
-  /// native 1.0 speed. Any other values < 0.25 or > 4.0 will return an error.
+  /// native 1.0 speed. Any other values \< 0.25 or \> 4.0 will return an error.
   ///
   /// Optional.
   core.double? speakingRate;

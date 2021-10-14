@@ -3414,8 +3414,8 @@ class Enterprise {
   /// A color in RGB format that indicates the predominant color to display in
   /// the device management app UI.
   ///
-  /// The color components are stored as follows: (red << 16) | (green << 8) |
-  /// blue, where the value of each component is between 0 and 255, inclusive.
+  /// The color components are stored as follows: (red \<\< 16) | (green \<\< 8)
+  /// | blue, where the value of each component is between 0 and 255, inclusive.
   core.int? primaryColor;
 
   /// The topic that Cloud Pub/Sub notifications are published to, in the form
@@ -3915,7 +3915,7 @@ class KeyedAppState {
   /// Optionally, a machine-readable value to be read by the EMM.
   ///
   /// For example, setting values that the admin can choose to query against in
-  /// the EMM console (e.g. “notify me if the battery_warning data < 10”).
+  /// the EMM console (e.g. “notify me if the battery_warning data \< 10”).
   core.String? data;
 
   /// The key for the app state.

@@ -791,14 +791,15 @@ class ProjectsJobsMessagesResource {
   ///
   /// [jobId] - The job to get messages about.
   ///
-  /// [endTime] - Return only messages with timestamps < end_time. The default
+  /// [endTime] - Return only messages with timestamps \< end_time. The default
   /// is now (i.e. return up to the latest messages available).
   ///
   /// [location] - The
   /// [regional endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
   /// that contains the job specified by job_id.
   ///
-  /// [minimumImportance] - Filter to only get messages with importance >= level
+  /// [minimumImportance] - Filter to only get messages with importance \>=
+  /// level
   /// Possible string values are:
   /// - "JOB_MESSAGE_IMPORTANCE_UNKNOWN" : The message importance isn't
   /// specified, or is unknown.
@@ -832,7 +833,7 @@ class ProjectsJobsMessagesResource {
   /// returned by an earlier call. This will cause the next page of results to
   /// be returned.
   ///
-  /// [startTime] - If specified, return only messages with timestamps >=
+  /// [startTime] - If specified, return only messages with timestamps \>=
   /// start_time. The default is the job creation time (i.e. beginning of
   /// messages).
   ///
@@ -1731,10 +1732,11 @@ class ProjectsLocationsJobsMessagesResource {
   ///
   /// [jobId] - The job to get messages about.
   ///
-  /// [endTime] - Return only messages with timestamps < end_time. The default
+  /// [endTime] - Return only messages with timestamps \< end_time. The default
   /// is now (i.e. return up to the latest messages available).
   ///
-  /// [minimumImportance] - Filter to only get messages with importance >= level
+  /// [minimumImportance] - Filter to only get messages with importance \>=
+  /// level
   /// Possible string values are:
   /// - "JOB_MESSAGE_IMPORTANCE_UNKNOWN" : The message importance isn't
   /// specified, or is unknown.
@@ -1768,7 +1770,7 @@ class ProjectsLocationsJobsMessagesResource {
   /// returned by an earlier call. This will cause the next page of results to
   /// be returned.
   ///
-  /// [startTime] - If specified, return only messages with timestamps >=
+  /// [startTime] - If specified, return only messages with timestamps \>=
   /// start_time. The default is the job creation time (i.e. beginning of
   /// messages).
   ///
@@ -3620,8 +3622,8 @@ class CounterUpdate {
 
   /// The service-generated short identifier for this counter.
   ///
-  /// The short_id -> (name, metadata) mapping is constant for the lifetime of a
-  /// job.
+  /// The short_id -\> (name, metadata) mapping is constant for the lifetime of
+  /// a job.
   core.String? shortId;
 
   /// List of strings, for Set.
@@ -5549,7 +5551,7 @@ class Job {
   /// map are UTF8 strings that comply with the following restrictions: * Keys
   /// must conform to regexp: \p{Ll}\p{Lo}{0,62} * Values must conform to
   /// regexp: \[\p{Ll}\p{Lo}\p{N}_-\]{0,63} * Both keys and values are
-  /// additionally constrained to be <= 128 bytes in size.
+  /// additionally constrained to be \<= 128 bytes in size.
   core.Map<core.String, core.String>? labels;
 
   /// The
@@ -9504,7 +9506,7 @@ class SpannerIODetails {
 /// A representation of an int64, n, that is immune to precision loss when
 /// encoded in JSON.
 class SplitInt64 {
-  /// The high order bits, including the sign: n >> 32.
+  /// The high order bits, including the sign: n \>\> 32.
   core.int? highBits;
 
   /// The low order bits: n & 0xffffffff.

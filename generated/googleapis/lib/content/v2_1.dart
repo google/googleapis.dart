@@ -12421,7 +12421,7 @@ class Headers {
   /// A list of inclusive number of items upper bounds.
   ///
   /// The last value can be `"infinity"`. For example `["10", "50", "infinity"]`
-  /// represents the headers "<= 10 items", "<= 50 items", and "> 50 items".
+  /// represents the headers "\<= 10 items", "\<= 50 items", and "\> 50 items".
   /// Must be non-empty. Can only be set if all other fields are not set.
   core.List<core.String>? numberOfItems;
 
@@ -12437,8 +12437,8 @@ class Headers {
   ///
   /// The last price's value can be `"infinity"`. For example `[{"value": "10",
   /// "currency": "USD"}, {"value": "500", "currency": "USD"}, {"value":
-  /// "infinity", "currency": "USD"}]` represents the headers "<= $10", "<=
-  /// $500", and "> $500". All prices within a service must have the same
+  /// "infinity", "currency": "USD"}]` represents the headers "\<= $10", "\<=
+  /// $500", and "\> $500". All prices within a service must have the same
   /// currency. Must be non-empty. Can only be set if all other fields are not
   /// set.
   core.List<Price>? prices;
@@ -12447,9 +12447,9 @@ class Headers {
   ///
   /// The last weight's value can be `"infinity"`. For example `[{"value": "10",
   /// "unit": "kg"}, {"value": "50", "unit": "kg"}, {"value": "infinity",
-  /// "unit": "kg"}]` represents the headers "<= 10kg", "<= 50kg", and "> 50kg".
-  /// All weights within a service must have the same unit. Must be non-empty.
-  /// Can only be set if all other fields are not set.
+  /// "unit": "kg"}]` represents the headers "\<= 10kg", "\<= 50kg", and "\>
+  /// 50kg". All weights within a service must have the same unit. Must be
+  /// non-empty. Can only be set if all other fields are not set.
   core.List<Weight>? weights;
 
   Headers({
@@ -12664,9 +12664,9 @@ class InapplicabilityDetails {
   /// price in the restriction.
   /// - "UNCATEGORIZED" : The reason is not categorized to any known reason.
   /// - "INVALID_AUTO_PRICE_MIN" : The auto_pricing_min_price is invalid. For
-  /// example, it is missing or < 0.
+  /// example, it is missing or \< 0.
   /// - "INVALID_FLOOR_CONFIG" : The floor defined in the rule is invalid. For
-  /// example, it has the wrong sign which results in a floor < 0.
+  /// example, it has the wrong sign which results in a floor \< 0.
   core.String? inapplicableReason;
 
   InapplicabilityDetails({
@@ -24612,7 +24612,7 @@ class RepricingRuleReportBuyboxWinningRuleStats {
 class RepricingRuleRestriction {
   /// The inclusive floor lower bound.
   ///
-  /// The repricing rule only applies when new price >= floor.
+  /// The repricing rule only applies when new price \>= floor.
   RepricingRuleRestrictionBoundary? floor;
 
   /// If true, use the AUTO_PRICING_MIN_PRICE offer attribute as the lower bound
@@ -24652,16 +24652,16 @@ class RepricingRuleRestrictionBoundary {
   /// The percentage delta relative to the offer selling price.
   ///
   /// This field is signed. It must be negative in floor. When it is used in
-  /// floor, it should be > -100. For example, if an offer is selling at $10 and
-  /// this field is -30 in floor, the repricing rule only applies if the
-  /// calculated new price is >= $7.
+  /// floor, it should be \> -100. For example, if an offer is selling at $10
+  /// and this field is -30 in floor, the repricing rule only applies if the
+  /// calculated new price is \>= $7.
   core.int? percentageDelta;
 
   /// The price micros relative to the offer selling price.
   ///
   /// This field is signed. It must be negative in floor. For example, if an
   /// offer is selling at $10 and this field is -$2 in floor, the repricing rule
-  /// only applies if the calculated new price is >= $8.
+  /// only applies if the calculated new price is \>= $8.
   core.String? priceDelta;
 
   RepricingRuleRestrictionBoundary({

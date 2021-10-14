@@ -8460,7 +8460,7 @@ class BigQueryOptions {
 /// sequence of N buckets for a distribution consists of an underflow bucket
 /// (number 0), zero or more finite buckets (number 1 through N - 2) and an
 /// overflow bucket (number N - 1). The buckets are contiguous: the lower bound
-/// of bucket i (i > 0) is the same as the upper bound of bucket i - 1. The
+/// of bucket i (i \> 0) is the same as the upper bound of bucket i - 1. The
 /// buckets span the whole range of finite values: lower bound of the underflow
 /// bucket is -infinity and the upper bound of the overflow bucket is +infinity.
 /// The finite buckets are so-called because both bounds are finite.
@@ -8739,9 +8739,9 @@ typedef Empty = $Empty;
 /// Specifies a set of buckets with arbitrary widths.There are size(bounds) + 1
 /// (= N) buckets.
 ///
-/// Bucket i has the following boundaries:Upper bound (0 <= i < N-1): boundsi
-/// Lower bound (1 <= i < N); boundsi - 1The bounds field must contain at least
-/// one element. If bounds has only one element, then there are no finite
+/// Bucket i has the following boundaries:Upper bound (0 \<= i \< N-1): boundsi
+/// Lower bound (1 \<= i \< N); boundsi - 1The bounds field must contain at
+/// least one element. If bounds has only one element, then there are no finite
 /// buckets, and that single element is the common boundary of the overflow and
 /// underflow buckets.
 typedef Explicit = $Explicit;
@@ -8751,8 +8751,9 @@ typedef Explicit = $Explicit;
 ///
 /// Each bucket represents a constant relative uncertainty on a specific value
 /// in the bucket.There are num_finite_buckets + 2 (= N) buckets. Bucket i has
-/// the following boundaries:Upper bound (0 <= i < N-1): scale * (growth_factor
-/// ^ i). Lower bound (1 <= i < N): scale * (growth_factor ^ (i - 1)).
+/// the following boundaries:Upper bound (0 \<= i \< N-1): scale *
+/// (growth_factor ^ i). Lower bound (1 \<= i \< N): scale * (growth_factor ^ (i
+/// - 1)).
 typedef Exponential = $Exponential;
 
 /// A common proto for logging HTTP requests.
@@ -8929,8 +8930,8 @@ typedef LabelDescriptor = $LabelDescriptor;
 ///
 /// Each bucket represents a constant absolute uncertainty on the specific value
 /// in the bucket.There are num_finite_buckets + 2 (= N) buckets. Bucket i has
-/// the following boundaries:Upper bound (0 <= i < N-1): offset + (width * i).
-/// Lower bound (1 <= i < N): offset + (width * (i - 1)).
+/// the following boundaries:Upper bound (0 \<= i \< N-1): offset + (width * i).
+/// Lower bound (1 \<= i \< N): offset + (width * (i - 1)).
 typedef Linear = $Linear;
 
 /// The response from ListBuckets.
@@ -9940,7 +9941,7 @@ class LogExclusion {
   /// (https://cloud.google.com/logging/docs/view/advanced-queries#sample), you
   /// can exclude less than 100% of the matching log entries.For example, the
   /// following query matches 99% of low-severity log entries from Google Cloud
-  /// Storage buckets:resource.type=gcs_bucket severity<ERROR sample(insertId,
+  /// Storage buckets:resource.type=gcs_bucket severity\<ERROR sample(insertId,
   /// 0.99)
   ///
   /// Required.
@@ -10095,8 +10096,8 @@ class LogMetric {
   /// (https://cloud.google.com/logging/docs/view/advanced_filters) which is
   /// used to match log entries.
   ///
-  /// Example: "resource.type=gae_app AND severity>=ERROR" The maximum length of
-  /// the filter is 20000 characters.
+  /// Example: "resource.type=gae_app AND severity\>=ERROR" The maximum length
+  /// of the filter is 20000 characters.
   ///
   /// Required.
   core.String? filter;
@@ -10315,7 +10316,7 @@ class LogSink {
   /// The only exported log entries are those that are in the resource owning
   /// the sink and that match the filter.For
   /// example:logName="projects/\[PROJECT_ID\]/logs/\[LOG_ID\]" AND
-  /// severity>=ERROR
+  /// severity\>=ERROR
   ///
   /// Optional.
   core.String? filter;

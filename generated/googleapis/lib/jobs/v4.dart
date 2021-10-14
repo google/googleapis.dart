@@ -1022,7 +1022,7 @@ class ProjectsTenantsJobsResource {
   /// [pageSize] - The maximum number of jobs to be returned per page of
   /// results. If job_view is set to JobView.JOB_VIEW_ID_ONLY, the maximum
   /// allowed page size is 1000. Otherwise, the maximum allowed page size is
-  /// 100. Default is 100 if empty or a number < 1 is specified.
+  /// 100. Default is 100 if empty or a number \< 1 is specified.
   ///
   /// [pageToken] - The starting point of a query result.
   ///
@@ -2406,7 +2406,7 @@ class CustomRankingInfo {
   /// the left and right side of the operator is either a numeric
   /// Job.custom_attributes key, integer/double value or an expression that can
   /// be evaluated to a number. Parenthesis are supported to adjust calculation
-  /// precedence. The expression must be < 200 characters in length. The
+  /// precedence. The expression must be \< 200 characters in length. The
   /// expression is considered invalid for a job if the expression references
   /// custom attributes that are not populated on the job or if the expression
   /// results in a divide by zero. If an expression is invalid for a job, that
@@ -2787,7 +2787,7 @@ class Job {
   /// The value determines the sort order of the jobs returned when searching
   /// for jobs using the featured jobs search call, with higher promotional
   /// values being returned first and ties being resolved by relevance sort.
-  /// Only the jobs with a promotionValue >0 are returned in a
+  /// Only the jobs with a promotionValue \>0 are returned in a
   /// FEATURED_JOB_SEARCH. Default value is 0, and negative values are treated
   /// as 0.
   core.int? promotionValue;
@@ -3192,7 +3192,7 @@ class JobQuery {
   /// This search filter is applied only to Job.compensation_info.
   ///
   /// For example, if the filter is specified as "Hourly job with per-hour
-  /// compensation > $15", only jobs meeting these criteria are searched. If a
+  /// compensation \> $15", only jobs meeting these criteria are searched. If a
   /// filter isn't defined, all open jobs are searched.
   CompensationFilter? compensationFilter;
 
@@ -3208,7 +3208,7 @@ class JobQuery {
   /// existence of a key. Boolean expressions (AND/OR/NOT) are supported up to 3
   /// levels of nesting (for example, "((A AND B AND C) OR NOT D) AND E"), a
   /// maximum of 100 comparisons or functions are allowed in the expression. The
-  /// expression must be < 10000 bytes in length. Sample Query:
+  /// expression must be \< 10000 bytes in length. Sample Query:
   /// `(LOWER(driving_license)="class \"a\"" OR EMPTY(driving_license)) AND
   /// driving_years > 10`
   core.String? customAttributeFilter;
@@ -4293,12 +4293,13 @@ class SearchJobsRequest {
   /// specified. The default search behavior is identical to JOB_SEARCH search
   /// behavior.
   /// - "JOB_SEARCH" : The job search matches against all jobs, and featured
-  /// jobs (jobs with promotionValue > 0) are not specially handled.
+  /// jobs (jobs with promotionValue \> 0) are not specially handled.
   /// - "FEATURED_JOB_SEARCH" : The job search matches only against featured
-  /// jobs (jobs with a promotionValue > 0). This method doesn't return any jobs
-  /// having a promotionValue <= 0. The search results order is determined by
-  /// the promotionValue (jobs with a higher promotionValue are returned higher
-  /// up in the search results), with relevance being used as a tiebreaker.
+  /// jobs (jobs with a promotionValue \> 0). This method doesn't return any
+  /// jobs having a promotionValue \<= 0. The search results order is determined
+  /// by the promotionValue (jobs with a higher promotionValue are returned
+  /// higher up in the search results), with relevance being used as a
+  /// tiebreaker.
   core.String? searchMode;
 
   SearchJobsRequest({

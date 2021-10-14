@@ -324,7 +324,7 @@ class FoldersTimeSeriesResource {
   /// computed at each point of the alignment period prior to the above
   /// calculation to smooth the metric and prevent false positives from very
   /// short-lived spikes. The moving mean is only applicable for data whose
-  /// values are >= 0. Any values < 0 are treated as a missing datapoint, and
+  /// values are \>= 0. Any values \< 0 are treated as a missing datapoint, and
   /// are ignored. While DELTA metrics are accepted by this alignment, special
   /// care should be taken that the values for the metric will always be
   /// positive. The output is a GAUGE metric with value_type DOUBLE.
@@ -555,7 +555,7 @@ class FoldersTimeSeriesResource {
   /// computed at each point of the alignment period prior to the above
   /// calculation to smooth the metric and prevent false positives from very
   /// short-lived spikes. The moving mean is only applicable for data whose
-  /// values are >= 0. Any values < 0 are treated as a missing datapoint, and
+  /// values are \>= 0. Any values \< 0 are treated as a missing datapoint, and
   /// are ignored. While DELTA metrics are accepted by this alignment, special
   /// care should be taken that the values for the metric will always be
   /// positive. The output is a GAUGE metric with value_type DOUBLE.
@@ -869,7 +869,7 @@ class OrganizationsTimeSeriesResource {
   /// computed at each point of the alignment period prior to the above
   /// calculation to smooth the metric and prevent false positives from very
   /// short-lived spikes. The moving mean is only applicable for data whose
-  /// values are >= 0. Any values < 0 are treated as a missing datapoint, and
+  /// values are \>= 0. Any values \< 0 are treated as a missing datapoint, and
   /// are ignored. While DELTA metrics are accepted by this alignment, special
   /// care should be taken that the values for the metric will always be
   /// positive. The output is a GAUGE metric with value_type DOUBLE.
@@ -1100,7 +1100,7 @@ class OrganizationsTimeSeriesResource {
   /// computed at each point of the alignment period prior to the above
   /// calculation to smooth the metric and prevent false positives from very
   /// short-lived spikes. The moving mean is only applicable for data whose
-  /// values are >= 0. Any values < 0 are treated as a missing datapoint, and
+  /// values are \>= 0. Any values \< 0 are treated as a missing datapoint, and
   /// are ignored. While DELTA metrics are accepted by this alignment, special
   /// care should be taken that the values for the metric will always be
   /// positive. The output is a GAUGE metric with value_type DOUBLE.
@@ -3014,7 +3014,7 @@ class ProjectsTimeSeriesResource {
   /// computed at each point of the alignment period prior to the above
   /// calculation to smooth the metric and prevent false positives from very
   /// short-lived spikes. The moving mean is only applicable for data whose
-  /// values are >= 0. Any values < 0 are treated as a missing datapoint, and
+  /// values are \>= 0. Any values \< 0 are treated as a missing datapoint, and
   /// are ignored. While DELTA metrics are accepted by this alignment, special
   /// care should be taken that the values for the metric will always be
   /// positive. The output is a GAUGE metric with value_type DOUBLE.
@@ -3245,7 +3245,7 @@ class ProjectsTimeSeriesResource {
   /// computed at each point of the alignment period prior to the above
   /// calculation to smooth the metric and prevent false positives from very
   /// short-lived spikes. The moving mean is only applicable for data whose
-  /// values are >= 0. Any values < 0 are treated as a missing datapoint, and
+  /// values are \>= 0. Any values \< 0 are treated as a missing datapoint, and
   /// are ignored. While DELTA metrics are accepted by this alignment, special
   /// care should be taken that the values for the metric will always be
   /// positive. The output is a GAUGE metric with value_type DOUBLE.
@@ -3520,7 +3520,7 @@ class ProjectsUptimeCheckConfigsResource {
   ///
   /// [pageSize] - The maximum number of results to return in a single response.
   /// The server may further constrain the maximum number of results returned in
-  /// a single page. If the page_size is <=0, the server will decide the number
+  /// a single page. If the page_size is \<=0, the server will decide the number
   /// of results to be returned.
   ///
   /// [pageToken] - If this field is not empty then it must contain the
@@ -4144,7 +4144,7 @@ class UptimeCheckIpsResource {
   ///
   /// [pageSize] - The maximum number of results to return in a single response.
   /// The server may further constrain the maximum number of results returned in
-  /// a single page. If the page_size is <=0, the server will decide the number
+  /// a single page. If the page_size is \<=0, the server will decide the number
   /// of results to be returned. NOTE: this field is not yet implemented
   ///
   /// [pageToken] - If this field is not empty then it must contain the
@@ -4412,7 +4412,7 @@ class Aggregation {
   /// computed at each point of the alignment period prior to the above
   /// calculation to smooth the metric and prevent false positives from very
   /// short-lived spikes. The moving mean is only applicable for data whose
-  /// values are >= 0. Any values < 0 are treated as a missing datapoint, and
+  /// values are \>= 0. Any values \< 0 are treated as a missing datapoint, and
   /// are ignored. While DELTA metrics are accepted by this alignment, special
   /// care should be taken that the values for the metric will always be
   /// positive. The output is a GAUGE metric with value_type DOUBLE.
@@ -4833,7 +4833,7 @@ class BasicSli {
 /// sequence of N buckets for a distribution consists of an underflow bucket
 /// (number 0), zero or more finite buckets (number 1 through N - 2) and an
 /// overflow bucket (number N - 1). The buckets are contiguous: the lower bound
-/// of bucket i (i > 0) is the same as the upper bound of bucket i - 1. The
+/// of bucket i (i \> 0) is the same as the upper bound of bucket i - 1. The
 /// buckets span the whole range of finite values: lower bound of the underflow
 /// bucket is -infinity and the upper bound of the overflow bucket is +infinity.
 /// The finite buckets are so-called because both bounds are finite.
@@ -4970,7 +4970,7 @@ class CollectdPayload {
 
   /// The measurement metadata.
   ///
-  /// Example: "process_id" -> 12345
+  /// Example: "process_id" -\> 12345
   core.Map<core.String, TypedValue>? metadata;
 
   /// The name of the plugin.
@@ -5827,9 +5827,9 @@ class Exemplar {
 /// Specifies a set of buckets with arbitrary widths.There are size(bounds) + 1
 /// (= N) buckets.
 ///
-/// Bucket i has the following boundaries:Upper bound (0 <= i < N-1): boundsi
-/// Lower bound (1 <= i < N); boundsi - 1The bounds field must contain at least
-/// one element. If bounds has only one element, then there are no finite
+/// Bucket i has the following boundaries:Upper bound (0 \<= i \< N-1): boundsi
+/// Lower bound (1 \<= i \< N); boundsi - 1The bounds field must contain at
+/// least one element. If bounds has only one element, then there are no finite
 /// buckets, and that single element is the common boundary of the overflow and
 /// underflow buckets.
 typedef Explicit = $Explicit;
@@ -5839,8 +5839,9 @@ typedef Explicit = $Explicit;
 ///
 /// Each bucket represents a constant relative uncertainty on a specific value
 /// in the bucket.There are num_finite_buckets + 2 (= N) buckets. Bucket i has
-/// the following boundaries:Upper bound (0 <= i < N-1): scale * (growth_factor
-/// ^ i). Lower bound (1 <= i < N): scale * (growth_factor ^ (i - 1)).
+/// the following boundaries:Upper bound (0 \<= i \< N-1): scale *
+/// (growth_factor ^ i). Lower bound (1 \<= i \< N): scale * (growth_factor ^ (i
+/// - 1)).
 typedef Exponential = $Exponential;
 
 /// A single field of a message type.
@@ -6385,7 +6386,7 @@ class InternalChecker {
 
 /// Canonical service scoped to an Istio mesh.
 ///
-/// Anthos clusters running ASM >= 1.6.8 will have their services ingested as
+/// Anthos clusters running ASM \>= 1.6.8 will have their services ingested as
 /// this type.
 class IstioCanonicalService {
   /// The name of the canonical service underlying this service.
@@ -6544,8 +6545,8 @@ class LatencyCriteria {
 ///
 /// Each bucket represents a constant absolute uncertainty on the specific value
 /// in the bucket.There are num_finite_buckets + 2 (= N) buckets. Bucket i has
-/// the following boundaries:Upper bound (0 <= i < N-1): offset + (width * i).
-/// Lower bound (1 <= i < N): offset + (width * (i - 1)).
+/// the following boundaries:Upper bound (0 \<= i \< N-1): offset + (width * i).
+/// Lower bound (1 \<= i \< N): offset + (width * (i - 1)).
 typedef Linear = $Linear;
 
 /// The protocol for the ListAlertPolicies response.
@@ -7115,7 +7116,7 @@ class LogMatch {
 
 /// Istio service scoped to an Istio mesh.
 ///
-/// Anthos clusters running ASM < 1.6.8 will have their services ingested as
+/// Anthos clusters running ASM \< 1.6.8 will have their services ingested as
 /// this type.
 class MeshIstio {
   /// Identifier for the mesh in which this Istio service is defined.
@@ -7520,7 +7521,7 @@ class MetricDescriptor {
 typedef MetricDescriptorMetadata = $MetricDescriptorMetadata01;
 
 /// A MetricRange is used when each window is good when the value x of a single
-/// TimeSeries satisfies range.min <= x <= range.max.
+/// TimeSeries satisfies range.min \<= x \<= range.max.
 ///
 /// The provided TimeSeries must have ValueType = INT64 or ValueType = DOUBLE
 /// and MetricKind = GAUGE.
@@ -8385,7 +8386,7 @@ class PerformanceThreshold {
   /// RequestBasedSli to evaluate to judge window quality.
   RequestBasedSli? performance;
 
-  /// If window performance >= threshold, the window is counted as good.
+  /// If window performance \>= threshold, the window is counted as good.
   core.double? threshold;
 
   PerformanceThreshold({
@@ -8837,7 +8838,7 @@ class Service {
 /// parameters. Alternatively, a "custom" SLI can be defined with a query to the
 /// underlying metric store. An SLI is defined to be good_service /
 /// total_service over any queried time interval. The value of performance
-/// always falls into the range 0 <= performance <= 1. A custom SLI describes
+/// always falls into the range 0 \<= performance \<= 1. A custom SLI describes
 /// how to compute this ratio, whether this is by dividing values from a pair of
 /// time series, cutting a Distribution into good and bad counts, or counting
 /// time windows in which the service complies with a criterion. For separation
@@ -8916,7 +8917,7 @@ class ServiceLevelObjective {
   /// The fraction of service that must be good in order for this objective to
   /// be met.
   ///
-  /// 0 < goal <= 0.999.
+  /// 0 \< goal \<= 0.999.
   core.double? goal;
 
   /// Resource name for this ServiceLevelObjective.

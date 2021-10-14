@@ -800,8 +800,8 @@ class FeatureTile {
 /// (generally) relative to the EGM96 geoid, however some areas will be relative
 /// to NAVD88. EGM96 and NAVD88 are off by no more than 2 meters. The grid is
 /// oriented north-west to south-east, as illustrated: rows\[0\].a\[0\]
-/// rows\[0\].a\[m\] +-----------------+ | | | N | | ^ | | | | | W <-----> E | |
-/// | | | v | | S | | | +-----------------+ rows\[n\].a\[0\] rows\[n\].a\[m\]
+/// rows\[0\].a\[m\] +-----------------+ | | | N | | ^ | | | | | W \<-----\> E |
+/// | | | | v | | S | | | +-----------------+ rows\[n\].a\[0\] rows\[n\].a\[m\]
 /// Rather than storing the altitudes directly, we store the diffs between them
 /// as integers at some requested level of precision to take advantage of
 /// integer packing. The actual altitude values a\[\] can be reconstructed using
@@ -1104,7 +1104,7 @@ class Row {
   /// units are specified by the altitude_multiplier parameter above; the value
   /// in meters is given by altitude_multiplier * altitude_diffs\[n\]. The
   /// altitude row (in metres above sea level) can be reconstructed with: a\[0\]
-  /// = altitude_diffs\[0\] * altitude_multiplier when n > 0, a\[n\] = a\[n-1\]
+  /// = altitude_diffs\[0\] * altitude_multiplier when n \> 0, a\[n\] = a\[n-1\]
   /// + altitude_diffs\[n-1\] * altitude_multiplier.
   core.List<core.int>? altitudeDiffs;
 
@@ -1134,8 +1134,8 @@ class Row {
 /// (generally) relative to the EGM96 geoid, however some areas will be relative
 /// to NAVD88. EGM96 and NAVD88 are off by no more than 2 meters. The grid is
 /// oriented north-west to south-east, as illustrated: rows\[0\].a\[0\]
-/// rows\[0\].a\[m\] +-----------------+ | | | N | | ^ | | | | | W <-----> E | |
-/// | | | v | | S | | | +-----------------+ rows\[n\].a\[0\] rows\[n\].a\[m\]
+/// rows\[0\].a\[m\] +-----------------+ | | | N | | ^ | | | | | W \<-----\> E |
+/// | | | | v | | S | | | +-----------------+ rows\[n\].a\[0\] rows\[n\].a\[m\]
 /// Rather than storing the altitudes directly, we store the diffs of the diffs
 /// between them as integers at some requested level of precision to take
 /// advantage of integer packing. Note that the data is packed in such a way

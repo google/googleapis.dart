@@ -196,16 +196,16 @@ class ActivitiesResource {
   /// filtered request's parameter does not belong to the `eventName`. For more
   /// information about `eventName` parameters, see the list of event names for
   /// various applications above in `applicationName`. In the following Admin
-  /// Activity example, the <> operator is URL-encoded in the request's query
+  /// Activity example, the \<\> operator is URL-encoded in the request's query
   /// string (%3C%3E): GET...&eventName=CHANGE_CALENDAR_SETTING
   /// &filters=NEW_VALUE%3C%3EREAD_ONLY_ACCESS In the following Drive example,
   /// the list can be a view or edit event's `doc_id` parameter with a value
-  /// that is manipulated by an 'equal to' (==) or 'not equal to' (<>)
+  /// that is manipulated by an 'equal to' (==) or 'not equal to' (\<\>)
   /// relational operator. In the first example, the report returns each edited
   /// document's `doc_id`. In the second example, the report returns each viewed
   /// document's `doc_id` that equals the value 12345 and does not return any
-  /// viewed document's which have a `doc_id` value of 98765. The <> operator is
-  /// URL-encoded in the request's query string (%3C%3E):
+  /// viewed document's which have a `doc_id` value of 98765. The \<\> operator
+  /// is URL-encoded in the request's query string (%3C%3E):
   /// GET...&eventName=edit&filters=doc_id
   /// GET...&eventName=view&filters=doc_id==12345,doc_id%3C%3E98765 The
   /// relational operators include: - `==` - 'equal to'. - `<>` - 'not equal
@@ -220,7 +220,7 @@ class ActivitiesResource {
   /// returns the response corresponding to the remaining valid request
   /// parameters. If no parameters are requested, all parameters are returned.
   /// Value must have pattern
-  /// `(.+\[<,<=,==,>=,>,<>\].+,)*(.+\[<,<=,==,>=,>,<>\].+)`.
+  /// `(.+\[\<,\<=,==,\>=,\>,\<\>\].+,)*(.+\[\<,\<=,==,\>=,\>,\<\>\].+)`.
   ///
   /// [groupIdFilter] - Comma separated group ids (obfuscated) on which user
   /// activities are filtered, i.e. the response will contain activities for
@@ -424,16 +424,16 @@ class ActivitiesResource {
   /// filtered request's parameter does not belong to the `eventName`. For more
   /// information about `eventName` parameters, see the list of event names for
   /// various applications above in `applicationName`. In the following Admin
-  /// Activity example, the <> operator is URL-encoded in the request's query
+  /// Activity example, the \<\> operator is URL-encoded in the request's query
   /// string (%3C%3E): GET...&eventName=CHANGE_CALENDAR_SETTING
   /// &filters=NEW_VALUE%3C%3EREAD_ONLY_ACCESS In the following Drive example,
   /// the list can be a view or edit event's `doc_id` parameter with a value
-  /// that is manipulated by an 'equal to' (==) or 'not equal to' (<>)
+  /// that is manipulated by an 'equal to' (==) or 'not equal to' (\<\>)
   /// relational operator. In the first example, the report returns each edited
   /// document's `doc_id`. In the second example, the report returns each viewed
   /// document's `doc_id` that equals the value 12345 and does not return any
-  /// viewed document's which have a `doc_id` value of 98765. The <> operator is
-  /// URL-encoded in the request's query string (%3C%3E):
+  /// viewed document's which have a `doc_id` value of 98765. The \<\> operator
+  /// is URL-encoded in the request's query string (%3C%3E):
   /// GET...&eventName=edit&filters=doc_id
   /// GET...&eventName=view&filters=doc_id==12345,doc_id%3C%3E98765 The
   /// relational operators include: - `==` - 'equal to'. - `<>` - 'not equal
@@ -448,7 +448,7 @@ class ActivitiesResource {
   /// returns the response corresponding to the remaining valid request
   /// parameters. If no parameters are requested, all parameters are returned.
   /// Value must have pattern
-  /// `(.+\[<,<=,==,>=,>,<>\].+,)*(.+\[<,<=,==,>=,>,<>\].+)`.
+  /// `(.+\[\<,\<=,==,\>=,\>,\<\>\].+,)*(.+\[\<,\<=,==,\>=,\>,\<\>\].+)`.
   ///
   /// [groupIdFilter] - Comma separated group ids (obfuscated) on which user
   /// activities are filtered, i.e. the response will contain activities for
@@ -713,7 +713,7 @@ class EntityUsageReportsResource {
   /// (%3E). - `>=` - 'greater than or equal to'. It is URL-encoded (%3E=).
   /// Filters can only be applied to numeric parameters.
   /// Value must have pattern
-  /// `(((gplus)):\[a-z0-9_\]+\[<,<=,==,>=,>,!=\]\[^,\]+,)*(((gplus)):\[a-z0-9_\]+\[<,<=,==,>=,>,!=\]\[^,\]+)`.
+  /// `(((gplus)):\[a-z0-9_\]+\[\<,\<=,==,\>=,\>,!=\]\[^,\]+,)*(((gplus)):\[a-z0-9_\]+\[\<,\<=,==,\>=,\>,!=\]\[^,\]+)`.
   ///
   /// [maxResults] - Determines how many activity records are shown on each
   /// response page. For example, if the request sets `maxResults=1` and the
@@ -834,7 +834,7 @@ class UserUsageReportResource {
   /// 'greater than'. It is URL-encoded (%3E). - `>=` - 'greater than or equal
   /// to'. It is URL-encoded (%3E=).
   /// Value must have pattern
-  /// `(((accounts)|(classroom)|(cros)|(gmail)|(calendar)|(docs)|(gplus)|(sites)|(device_management)|(drive)):\[a-z0-9_\]+\[<,<=,==,>=,>,!=\]\[^,\]+,)*(((accounts)|(classroom)|(cros)|(gmail)|(calendar)|(docs)|(gplus)|(sites)|(device_management)|(drive)):\[a-z0-9_\]+\[<,<=,==,>=,>,!=\]\[^,\]+)`.
+  /// `(((accounts)|(classroom)|(cros)|(gmail)|(calendar)|(docs)|(gplus)|(sites)|(device_management)|(drive)):\[a-z0-9_\]+\[\<,\<=,==,\>=,\>,!=\]\[^,\]+,)*(((accounts)|(classroom)|(cros)|(gmail)|(calendar)|(docs)|(gplus)|(sites)|(device_management)|(drive)):\[a-z0-9_\]+\[\<,\<=,==,\>=,\>,!=\]\[^,\]+)`.
   ///
   /// [groupIdFilter] - Comma separated group ids (obfuscated) on which user
   /// activities are filtered, i.e. the response will contain activities for

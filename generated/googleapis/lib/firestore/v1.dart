@@ -3535,7 +3535,7 @@ class GoogleFirestoreAdminV1IndexField {
   core.String? fieldPath;
 
   /// Indicates that this field supports ordering by the specified order or
-  /// comparing using =, !=, <, <=, >, >=.
+  /// comparing using =, !=, \<, \<=, \>, \>=.
   /// Possible string values are:
   /// - "ORDER_UNSPECIFIED" : The ordering is unspecified. Not a valid option.
   /// - "ASCENDING" : The field is ordered by ascending field value.
@@ -4664,12 +4664,12 @@ class StructuredQuery {
 
   /// The maximum number of results to return.
   ///
-  /// Applies after all other constraints. Must be >= 0 if specified.
+  /// Applies after all other constraints. Must be \>= 0 if specified.
   core.int? limit;
 
   /// The number of results to skip.
   ///
-  /// Applies before limit, but after all other constraints. Must be >= 0 if
+  /// Applies before limit, but after all other constraints. Must be \>= 0 if
   /// specified.
   core.int? offset;
 

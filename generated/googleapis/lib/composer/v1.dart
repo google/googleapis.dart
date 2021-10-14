@@ -794,7 +794,7 @@ class Environment {
   /// map are UTF8 strings that comply with the following restrictions: * Keys
   /// must conform to regexp: \p{Ll}\p{Lo}{0,62} * Values must conform to
   /// regexp: \[\p{Ll}\p{Lo}\p{N}_-\]{0,63} * Both keys and values are
-  /// additionally constrained to be <= 128 bytes in size.
+  /// additionally constrained to be \<= 128 bytes in size.
   ///
   /// Optional.
   core.Map<core.String, core.String>? labels;
@@ -1835,7 +1835,7 @@ class SoftwareConfig {
   ///
   /// Keys refer to the lowercase package name such as "numpy" and values are
   /// the lowercase extras and version specifier such as "==1.12.0",
-  /// "\[devel,gcp_api\]", or "\[devel\]>=1.8.2, <1.9.2". To specify a package
+  /// "\[devel,gcp_api\]", or "\[devel\]\>=1.8.2, \<1.9.2". To specify a package
   /// without pinning it to a version specifier, use the empty string as the
   /// value.
   ///

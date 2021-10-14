@@ -774,8 +774,8 @@ class GoogleMapsPlayablelocationsV3SampleSpacingOptions {
   /// 1. Add locations for X, within 400m of each other. 2. Add locations for Y,
   /// without any spacing. 3. Finally, add locations for Z within 200m of each
   /// other as well X and Y. The distance diagram between those locations end up
-  /// as: * From->To. * X->X: 400m * Y->X, Y->Y: unspecified. * Z->X, Z->Y,
-  /// Z->Z: 200m.
+  /// as: * From-\>To. * X-\>X: 400m * Y-\>X, Y-\>Y: unspecified. * Z-\>X,
+  /// Z-\>Y, Z-\>Z: 200m.
   ///
   /// Required.
   core.double? minSpacingMeters;

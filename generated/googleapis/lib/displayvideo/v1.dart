@@ -2439,7 +2439,7 @@ class AdvertisersInsertionOrdersResource {
   /// Restrictions can be combined by `AND` or `OR` logical operators. A
   /// sequence of restrictions implicitly uses `AND`. * A restriction has the
   /// form of `{field} {operator} {value}`. * The operator used on
-  /// `budget.budget_segments.date_range.end_date` must be LESS THAN (<). * The
+  /// `budget.budget_segments.date_range.end_date` must be LESS THAN (\<). * The
   /// operator used on `updateTime` must be `GREATER THAN OR EQUAL TO (>=)` or
   /// `LESS THAN OR EQUAL TO (<=)`. * The operators used on all other fields
   /// must be `EQUALS (=)`. * Supported fields: - `campaignId` - `displayName` -
@@ -3383,7 +3383,7 @@ class AdvertisersLineItemsResource {
   /// can be combined by `AND` or `OR` logical operators. A sequence of
   /// restrictions implicitly uses `AND`. * A restriction has the form of
   /// `{field} {operator} {value}`. * The operator used on
-  /// `flight.dateRange.endDate` must be LESS THAN (<). * The operator used on
+  /// `flight.dateRange.endDate` must be LESS THAN (\<). * The operator used on
   /// `updateTime` must be `GREATER THAN OR EQUAL TO (>=)` or `LESS THAN OR
   /// EQUAL TO (<=)`. * The operator used on `warningMessages` must be `HAS
   /// (:)`. * The operators used on all other fields must be `EQUALS (=)`. *
@@ -16324,13 +16324,13 @@ class DoubleVerifyAppStarRating {
   /// Possible string values are:
   /// - "APP_STAR_RATE_UNSPECIFIED" : This enum is only a placeholder and it
   /// doesn't specify any app star rating options.
-  /// - "APP_STAR_RATE_1_POINT_5_LESS" : Official Apps with rating < 1.5 Stars.
-  /// - "APP_STAR_RATE_2_LESS" : Official Apps with rating < 2 Stars.
-  /// - "APP_STAR_RATE_2_POINT_5_LESS" : Official Apps with rating < 2.5 Stars.
-  /// - "APP_STAR_RATE_3_LESS" : Official Apps with rating < 3 Stars.
-  /// - "APP_STAR_RATE_3_POINT_5_LESS" : Official Apps with rating < 3.5 Stars.
-  /// - "APP_STAR_RATE_4_LESS" : Official Apps with rating < 4 Stars.
-  /// - "APP_STAR_RATE_4_POINT_5_LESS" : Official Apps with rating < 4.5 Stars.
+  /// - "APP_STAR_RATE_1_POINT_5_LESS" : Official Apps with rating \< 1.5 Stars.
+  /// - "APP_STAR_RATE_2_LESS" : Official Apps with rating \< 2 Stars.
+  /// - "APP_STAR_RATE_2_POINT_5_LESS" : Official Apps with rating \< 2.5 Stars.
+  /// - "APP_STAR_RATE_3_LESS" : Official Apps with rating \< 3 Stars.
+  /// - "APP_STAR_RATE_3_POINT_5_LESS" : Official Apps with rating \< 3.5 Stars.
+  /// - "APP_STAR_RATE_4_LESS" : Official Apps with rating \< 4 Stars.
+  /// - "APP_STAR_RATE_4_POINT_5_LESS" : Official Apps with rating \< 4.5 Stars.
   core.String? avoidedStarRating;
 
   DoubleVerifyAppStarRating({

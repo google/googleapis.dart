@@ -2441,7 +2441,7 @@ class GuestUnitType {
 
   /// Short, English label or name of the GuestUnitType.
   ///
-  /// Target <50 chars.
+  /// Target \<50 chars.
   ///
   /// Required.
   core.String? label;
