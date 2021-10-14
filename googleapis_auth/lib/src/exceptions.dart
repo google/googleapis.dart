@@ -33,10 +33,28 @@ class UserConsentException implements Exception {
 ///
 /// This could indicate invalid credentials.
 class ServerRequestFailedException implements Exception {
+  /// Describes the failure.
   final String message;
 
-  ServerRequestFailedException(this.message);
+  /// The HTTP status code of the response, if known.
+  ///
+  /// If `null`, the status code was likely `200` and there was another issue
+  /// with the response.
+  final int? statusCode;
+
+  /// Data representing the content of the response, if any.
+  ///
+  /// This may be a [String] representing the raw content of the response or
+  /// the a parsed JSON literal of the content.
+  final Object? responseContent;
+
+  ServerRequestFailedException(
+    this.message, {
+    this.statusCode,
+    required this.responseContent,
+  });
 
   @override
-  String toString() => message;
+  String toString() =>
+      [message, if (statusCode != null) 'Status code: $statusCode'].join(' ');
 }

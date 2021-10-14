@@ -21,7 +21,7 @@ void main() {
   const tokenUrl = '$apiUrl/instance/service-accounts/default/token';
   const scopesUrl = '$apiUrl/instance/service-accounts/default/scopes';
 
-  Future<Response> successfulAccessToken(Request request) {
+  Future<Response> successfulAccessToken(Request request) async {
     expect(request.method, equals('GET'));
     expect(request.url.toString(), equals(tokenUrl));
     expect(request.headers[apiHeaderKey], equals(apiHeaderValue));
@@ -31,10 +31,10 @@ void main() {
       'expires_in': 3600,
       'token_type': 'Bearer',
     });
-    return Future.value(Response(body, 200));
+    return Response(body, 200, headers: jsonContentType);
   }
 
-  Future<Response> invalidAccessToken(Request request) {
+  Future<Response> invalidAccessToken(Request request) async {
     expect(request.method, equals('GET'));
     expect(request.url.toString(), equals(tokenUrl));
     expect(request.headers[apiHeaderKey], equals(apiHeaderValue));
@@ -44,7 +44,7 @@ void main() {
       'access_token': 'atok',
       'token_type': 'Bearer',
     });
-    return Future.value(Response(body, 200));
+    return Response(body, 200, headers: jsonContentType);
   }
 
   Future<Response> successfulScopes(Request request) {
@@ -56,7 +56,7 @@ void main() {
   }
 
   group('metadata-server-authorization-flow', () {
-    test('successfull', () async {
+    test('successful', () async {
       final flow = MetadataServerAuthorizationFlow(mockClient(
           expectAsync1((request) {
             final url = request.url.toString();
@@ -77,7 +77,7 @@ void main() {
       expectExpiryOneHourFromNow(credentials.accessToken);
     });
 
-    test('invalid-server-reponse', () {
+    test('invalid-server-response', () {
       var requestNr = 0;
       final flow = MetadataServerAuthorizationFlow(mockClient(
           expectAsync1((request) {

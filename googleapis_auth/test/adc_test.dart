@@ -41,7 +41,7 @@ void main() {
               'access_token': 'atoken',
               'expires_in': 3600,
             });
-            return Response(body, 200, headers: _jsonContentType);
+            return Response(body, 200, headers: jsonContentType);
           }
           if (url == 'https://storage.googleapis.com/b/bucket/o/obj') {
             expect(request.method, equals('GET'));
@@ -95,7 +95,7 @@ void main() {
               'access_token': 'atoken',
               'expires_in': 3600,
             });
-            return Response(body, 200, headers: _jsonContentType);
+            return Response(body, 200, headers: jsonContentType);
           }
           if (url == 'https://storage.googleapis.com/b/bucket/o/obj') {
             expect(request.method, equals('GET'));
@@ -119,5 +119,3 @@ void main() {
     }
   });
 }
-
-const _jsonContentType = {'content-type': 'application/json'};

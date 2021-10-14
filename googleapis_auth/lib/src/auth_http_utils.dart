@@ -62,7 +62,7 @@ class ApiKeyClient extends DelegatingClient {
   Future<StreamedResponse> send(BaseRequest request) async {
     var url = request.url;
     if (url.queryParameters.containsKey('key')) {
-      throw Exception(
+      throw ArgumentError(
         'Tried to make a HTTP request which has already a "key" query '
         'parameter. Adding the API key would override that existing value.',
       );

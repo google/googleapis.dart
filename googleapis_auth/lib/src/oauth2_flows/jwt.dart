@@ -8,10 +8,8 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 import '../access_credentials.dart';
-import '../access_token.dart';
 import '../crypto/rsa.dart';
 import '../crypto/rsa_sign.dart';
-import '../http_client_base.dart';
 import '../utils.dart';
 import 'base_flow.dart';
 
@@ -58,16 +56,11 @@ class JwtFlow extends BaseFlow {
     final signature = _signer.sign(jwtSignatureInputInBytes);
     final jwt = '$jwtSignatureInput.${_base64url(signature)}';
 
-    final requestParameters = 'grant_type=${Uri.encodeComponent(_uri)}&'
-        'assertion=${Uri.encodeComponent(jwt)}';
-
-    final body = Stream<List<int>>.value(utf8.encode(requestParameters));
-    final request = RequestImpl('POST', googleOauthTokenUri, body)
-      ..headers['content-type'] = contentTypeUrlEncoded;
-
-    final httpResponse = await _client.send(request);
-    final response = await readJsonMap(httpResponse);
-    final accessToken = parseAccessToken(httpResponse.statusCode, response);
+    final response = await _client.oauthTokenRequest({
+      'grant_type': _uri,
+      'assertion': jwt,
+    });
+    final accessToken = parseAccessToken(response);
     return AccessCredentials(accessToken, null, _scopes);
   }
 }

@@ -6,13 +6,12 @@
 // BSD-style license that can be found in the LICENSE file.
 
 import 'dart:async';
-import 'dart:convert';
 import 'dart:io';
 
 import 'package:http/http.dart' as http;
 
 import '../access_credentials.dart';
-import '../access_token.dart';
+import '../utils.dart';
 import 'base_flow.dart';
 
 /// Obtains access credentials form the metadata server.
@@ -65,19 +64,22 @@ class MetadataServerAuthorizationFlow extends BaseFlow {
   @override
   Future<AccessCredentials> run() async {
     final results = await Future.wait(
-      [_client.get(_tokenUrl, headers: _headers), _getScopes()],
+      [
+        _client.requestJson(
+          http.Request('GET', _tokenUrl)..headers.addAll(_headers),
+          'Failed to obtain access credentials.',
+        ),
+        _getScopes()
+      ],
     );
-    final tokenResponse = results.first as http.Response;
-    final json = jsonDecode(tokenResponse.body) as Map<String, dynamic>;
-    final scopesString = results.last as String;
+    final json = results.first as Map<String, dynamic>;
+    final accessToken = parseAccessToken(json);
 
-    final scopes = scopesString
+    final scopes = (results.last as String)
         .replaceAll('\n', ' ')
         .split(' ')
         .where((part) => part.isNotEmpty)
         .toList();
-
-    final accessToken = parseAccessToken(tokenResponse.statusCode, json);
 
     return AccessCredentials(
       accessToken,

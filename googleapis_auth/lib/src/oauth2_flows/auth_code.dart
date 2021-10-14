@@ -3,16 +3,14 @@
 // BSD-style license that can be found in the LICENSE file.
 
 import 'dart:async';
-import 'dart:convert';
 import 'dart:io';
 
 import 'package:http/http.dart' as http;
+import 'package:http/http.dart';
 
 import '../access_credentials.dart';
-import '../access_token.dart';
 import '../client_id.dart';
 import '../exceptions.dart';
-import '../http_client_base.dart';
 import '../typedefs.dart';
 import '../utils.dart';
 
@@ -39,22 +37,19 @@ Future<List<String>> obtainScopesFromAccessToken(
     '?access_token=${Uri.encodeQueryComponent(accessToken)}',
   );
 
-  final response = await client.post(url);
-  if (response.statusCode == 200) {
-    final json = jsonDecode(response.body) as Map;
-    final scope = json['scope'];
-    if (scope is! String) {
-      throw Exception(
-        'The response did not include a `scope` value of type `String`.',
-      );
-    }
-    return scope.split(' ').toList();
-  } else {
-    throw Exception(
-      'Unable to obtain list of scopes an access token '
-      'is valid for. Server responded with ${response.statusCode}.',
+  final json = await client.requestJson(
+    Request('POST', url),
+    'Failed to obtain scopes from access token.',
+  );
+
+  final scope = json['scope'];
+  if (scope is! String) {
+    throw ServerRequestFailedException(
+      'The response did not include a `scope` value of type `String`.',
+      responseContent: json,
     );
   }
+  return scope.split(' ').toList();
 }
 
 Future<AccessCredentials> obtainAccessCredentialsUsingCode(
@@ -64,25 +59,19 @@ Future<AccessCredentials> obtainAccessCredentialsUsingCode(
   http.Client client, [
   List<String>? scopes,
 ]) async {
-  final formValues = [
-    'grant_type=authorization_code',
-    'code=${Uri.encodeQueryComponent(code)}',
-    'redirect_uri=${Uri.encodeQueryComponent(redirectUrl)}',
-    'client_id=${Uri.encodeQueryComponent(clientId.identifier)}',
-    'client_secret=${Uri.encodeQueryComponent(clientId.secret ?? '')}',
-  ];
-
-  final body = Stream<List<int>>.value(ascii.encode(formValues.join('&')));
-  final request = RequestImpl('POST', googleOauthTokenUri, body);
-  request.headers['content-type'] = contentTypeUrlEncoded;
-
-  final response = await client.send(request);
-  final jsonMap = await readJsonMap(response);
+  final jsonMap = await client.oauthTokenRequest(
+    {
+      'grant_type': 'authorization_code',
+      'code': code,
+      'redirect_uri': redirectUrl,
+      'client_id': clientId.identifier,
+      'client_secret': clientId.secret ?? '',
+    },
+  );
+  final accessToken = parseAccessToken(jsonMap);
 
   final idToken = jsonMap['id_token'] as String?;
   final refreshToken = jsonMap['refresh_token'] as String?;
-
-  final accessToken = parseAccessToken(response.statusCode, jsonMap);
 
   return AccessCredentials(
     accessToken,
