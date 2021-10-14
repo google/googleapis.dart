@@ -88,7 +88,7 @@ void main() {
             }
           }, count: 2),
           expectClose: false));
-      expect(flow.run(), throwsA(isException));
+      expect(flow.run(), throwsA(isServerRequestFailedException));
     });
 
     test('token-transport-error', () {

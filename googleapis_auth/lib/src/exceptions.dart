@@ -2,15 +2,9 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-/// Thrown if an attempt to refresh a token failed.
-class RefreshFailedException implements Exception {
-  final String message;
-
-  RefreshFailedException(this.message);
-
-  @override
-  String toString() => message;
-}
+/// No longer used. Replaced by [ServerRequestFailedException].
+@Deprecated('No longer used. Replaced by ServerRequestFailedException.')
+typedef RefreshFailedException = ServerRequestFailedException;
 
 /// Thrown if an attempt to make an authorized request failed.
 class AccessDeniedException implements Exception {
@@ -32,4 +26,17 @@ class UserConsentException implements Exception {
 
   @override
   String toString() => [message, if (details != null) details].join(' ');
+}
+
+/// Thrown when a request to or the response from an authentication service is
+/// invalid.
+///
+/// This could indicate invalid credentials.
+class ServerRequestFailedException implements Exception {
+  final String message;
+
+  ServerRequestFailedException(this.message);
+
+  @override
+  String toString() => message;
 }

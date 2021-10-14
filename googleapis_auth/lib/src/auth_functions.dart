@@ -107,37 +107,20 @@ Future<AccessCredentials> refreshCredentials(
   if (contentType == null ||
       (!contentType.contains('json') && !contentType.contains('javascript'))) {
     await response.stream.drain().catchError((_) {});
-    throw Exception(
+    throw ServerRequestFailedException(
       'Server responded with invalid content type: $contentType. '
-      'Expected json response.',
+      'Expected JSON response.',
     );
   }
 
   final jsonMap = await readJsonMap(response);
 
+  final accessToken = parseAccessToken(response.statusCode, jsonMap);
+
   final idToken = jsonMap['id_token'] as String?;
-  final token = jsonMap['access_token'] as String?;
-  final seconds = jsonMap['expires_in'];
-  final tokenType = jsonMap['token_type'] as String?;
-  final error = errorString(jsonMap);
-
-  if (response.statusCode != 200 && error != null) {
-    throw RefreshFailedException(
-      'Refreshing attempt failed. Status code ${response.statusCode}. $error',
-    );
-  }
-
-  if (token == null ||
-      seconds is! int ||
-      tokenType == null ||
-      tokenType != 'Bearer') {
-    throw Exception(
-      'Refreshing attempt failed. Invalid server response.',
-    );
-  }
 
   return AccessCredentials(
-    AccessToken(tokenType, token, expiryDate(seconds)),
+    accessToken,
     credentials.refreshToken,
     credentials.scopes,
     idToken: idToken,

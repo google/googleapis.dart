@@ -72,7 +72,7 @@ void main() {
       final flow = JwtFlow(clientEmail, testPrivateKey, null, scopes,
           mockClient(expectAsync1(invalidAccessToken), expectClose: false));
 
-      expect(flow.run(), throwsA(isException));
+      expect(flow.run(), throwsA(isServerRequestFailedException));
     });
 
     test('transport-failure', () {

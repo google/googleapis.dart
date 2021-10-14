@@ -151,7 +151,7 @@ void main() {
           mockClient(invalidResponse, expectClose: false),
           manualUserPrompt,
         );
-        await expectLater(flow.run(), throwsA(isException));
+        await expectLater(flow.run(), throwsA(isServerRequestFailedException));
       });
     });
 
@@ -225,7 +225,7 @@ void main() {
           mockClient(invalidResponse, expectClose: false),
           expectAsync1(userPrompt),
         );
-        await expectLater(flow.run(), throwsA(isException));
+        await expectLater(flow.run(), throwsA(isServerRequestFailedException));
       });
 
       test('failed-authentication', () async {
