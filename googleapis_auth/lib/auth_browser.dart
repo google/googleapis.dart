@@ -26,14 +26,15 @@ export 'googleapis_auth.dart';
 /// If loading or initializing the `gapi` library results in an error, this
 /// future will complete with an error.
 ///
-/// If [baseClient] is not given, one will be automatically created. It will be
-/// used for making authenticated HTTP requests. See [BrowserOAuth2Flow].
+/// {@template googleapis_auth_baseClient_param}
+/// If [baseClient] is provided, all HTTP requests will be made with it.
+/// Otherwise, a new [Client] instance will be created.
+/// {@endtemplate}
 ///
-/// The [ClientId] can be obtained in the Google Cloud Console.
+/// {@macro googleapis_auth_clientId_param}
 ///
-/// The user is responsible for closing the returned [BrowserOAuth2Flow] object.
-/// Closing the returned [BrowserOAuth2Flow] will not close [baseClient]
-/// if one was given.
+/// {@macro googleapis_auth_close_the_client}
+/// {@macro googleapis_auth_not_close_the_baseClient}
 Future<BrowserOAuth2Flow> createImplicitBrowserFlow(
   ClientId clientId,
   List<String> scopes, {
@@ -58,8 +59,8 @@ Future<BrowserOAuth2Flow> createImplicitBrowserFlow(
 ///
 /// Warning:
 ///
-/// The methods `obtainAccessCredentialsViaUserConsent` and
-/// `clientViaUserConsent` try to open a popup window for the user authorization
+/// The methods [obtainAccessCredentialsViaUserConsent] and
+/// [clientViaUserConsent] try to open a popup window for the user authorization
 /// dialog.
 ///
 /// In order to prevent browsers from blocking the popup window, these
@@ -100,12 +101,11 @@ class BrowserOAuth2Flow {
   /// If [responseTypes] is not `null` or empty, it will be sent to the server
   /// to inform the server of the type of responses to reply with.
   ///
-  /// The returned future will complete with `AccessCredentials` if the user
-  /// has given the application access to it's data. Otherwise the future will
-  /// complete with a `UserConsentException`.
-  ///
-  /// In case another error occurs the returned future will complete with an
-  /// `Exception`.
+  /// {@template googleapis_auth_user_consent_return}
+  /// The returned [Future] will complete with [AccessCredentials] if the user
+  /// has given the application access to their data.
+  /// Otherwise, a [UserConsentException] will be thrown.
+  /// {@endtemplate}
   Future<AccessCredentials> obtainAccessCredentialsViaUserConsent({
     bool immediate = false,
     bool force = false,
@@ -123,12 +123,13 @@ class BrowserOAuth2Flow {
 
   /// Obtains [AccessCredentials] and returns an authenticated HTTP client.
   ///
-  /// After obtaining access credentials, this function will return an HTTP
-  /// [Client]. HTTP requests made on the returned client will get an
-  /// additional `Authorization` header with the `AccessCredentials` obtained.
-  ///
-  /// In case the `AccessCredentials` expire, it will try to obtain new ones
-  /// without user consent.
+  /// {@template googleapis_auth_returned_auto_refresh_client}
+  /// HTTP requests made on the returned client will get an additional
+  /// `Authorization` header with the [AccessCredentials] obtained.
+  /// Once the [AccessCredentials] expire, it will use it's refresh token
+  /// (if available) to obtain new credentials.
+  /// See [autoRefreshingClient] for more information.
+  /// {@endtemplate}
   ///
   /// See [obtainAccessCredentialsViaUserConsent] for how credentials will be
   /// obtained. Errors from [obtainAccessCredentialsViaUserConsent] will be let
@@ -138,7 +139,7 @@ class BrowserOAuth2Flow {
   /// The returned HTTP client will forward errors from lower levels via it's
   /// `Future<Response>` or it's `Response.read()` stream.
   ///
-  /// The user is responsible for closing the returned HTTP client.
+  /// {@macro googleapis_auth_close_the_client}
   Future<AutoRefreshingAuthClient> clientViaUserConsent({
     bool immediate = false,
     String? loginHint,

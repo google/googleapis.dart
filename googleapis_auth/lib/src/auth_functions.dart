@@ -16,15 +16,24 @@ import 'exceptions.dart';
 import 'http_client_base.dart';
 import 'utils.dart';
 
-/// Obtains a HTTP client which uses the given [apiKey] for making HTTP
+/// Obtains a [Client] which uses the given [apiKey] for making HTTP
 /// requests.
+///
+/// {@macro googleapis_auth_baseClient_param}
 ///
 /// Note that the returned client should *only* be used for making HTTP requests
 /// to Google Services. The [apiKey] should not be disclosed to third parties.
 ///
+/// {@template googleapis_auth_close_the_client}
 /// The user is responsible for closing the returned HTTP [Client].
+/// {@endtemplate}
+/// {@template googleapis_auth_not_close_the_baseClient}
 /// Closing the returned [Client] will not close [baseClient].
-Client clientViaApiKey(String apiKey, {Client? baseClient}) {
+/// {@endtemplate}
+Client clientViaApiKey(
+  String apiKey, {
+  Client? baseClient,
+}) {
   if (baseClient == null) {
     baseClient = Client();
   } else {
@@ -33,14 +42,14 @@ Client clientViaApiKey(String apiKey, {Client? baseClient}) {
   return ApiKeyClient(baseClient, apiKey);
 }
 
-/// Obtain an `http.Client` which automatically authenticates
-/// requests using [credentials].
-///
-/// Note that the returned `RequestHandler` will not auto-refresh the given
+/// Obtain a [Client] which automatically authenticates requests using
 /// [credentials].
 ///
-/// The user is responsible for closing the returned HTTP [Client].
-/// Closing the returned [Client] will not close [baseClient].
+/// Note that the returned [AuthClient] will not auto-refresh the given
+/// [credentials].
+///
+/// {@macro googleapis_auth_close_the_client}
+/// {@macro googleapis_auth_not_close_the_baseClient}
 AuthClient authenticatedClient(
   Client baseClient,
   AccessCredentials credentials,
@@ -51,12 +60,18 @@ AuthClient authenticatedClient(
   return AuthenticatedClient(baseClient, credentials);
 }
 
-/// Obtain an `http.Client` which automatically refreshes [credentials]
-/// before they expire. Uses [baseClient] as a base for making authenticated
-/// http requests and for refreshing [credentials].
+/// Creates an [AutoRefreshingAuthClient] which automatically refreshes
+/// [credentials] before they expire.
 ///
-/// The user is responsible for closing the returned HTTP [Client].
-/// Closing the returned [Client] will not close [baseClient].
+/// Uses [baseClient] to make authenticated HTTP requests and to refresh
+/// [credentials].
+///
+/// {@template googleapis_auth_clientId_param}
+/// The [clientId] can be obtained in the Google Cloud Console.
+/// {@endtemplate}
+///
+/// {@macro googleapis_auth_close_the_client}
+/// {@macro googleapis_auth_not_close_the_baseClient}
 AutoRefreshingAuthClient autoRefreshingClient(
   ClientId clientId,
   AccessCredentials credentials,
@@ -71,8 +86,11 @@ AutoRefreshingAuthClient autoRefreshingClient(
   return AutoRefreshingClient(baseClient, clientId, credentials);
 }
 
-/// Tries to obtain refreshed [AccessCredentials] based on [credentials] using
-/// [client].
+/// Obtains refreshed [AccessCredentials] for [clientId] and [credentials].
+///
+/// {@macro googleapis_auth_clientId_param}
+///
+/// {@macro googleapis_auth_client_for_creds}
 Future<AccessCredentials> refreshCredentials(
   ClientId clientId,
   AccessCredentials credentials,

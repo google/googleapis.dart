@@ -7,7 +7,6 @@ import 'dart:io';
 import 'package:http/http.dart';
 
 import 'src/adc_utils.dart';
-import 'src/auth_functions.dart';
 import 'src/auth_http_utils.dart';
 import 'src/http_client_base.dart';
 import 'src/metadata_server_client.dart' show clientViaMetadataServer;
@@ -36,6 +35,10 @@ export 'src/typedefs.dart';
 /// [metadata]: https://cloud.google.com/compute/docs/storing-retrieving-metadata
 /// [svc-keys]: https://cloud.google.com/docs/authentication/getting-started
 /// [gcloud-login]: https://cloud.google.com/sdk/gcloud/reference/auth/application-default/login
+///
+/// {@macro googleapis_auth_baseClient_param}
+///
+/// {@macro googleapis_auth_returned_auto_refresh_client}
 Future<AutoRefreshingAuthClient> clientViaApplicationDefaultCredentials({
   required List<String> scopes,
   Client? baseClient,
@@ -90,22 +93,20 @@ Future<AutoRefreshingAuthClient> clientViaApplicationDefaultCredentials({
 /// See [obtainAccessCredentialsViaUserConsent] for specifics about the
 /// arguments used for obtaining access credentials.
 ///
-/// Once access credentials have been obtained, this function will complete
-/// with an auto-refreshing HTTP client. Once the `AccessCredentials` expire
-/// it will use it's refresh token (if available) to obtain new credentials.
-/// See [autoRefreshingClient] for more information.
+/// {@macro googleapis_auth_returned_auto_refresh_client}
 ///
-/// If [baseClient] is not given, one will be automatically created. It will be
-/// used for making authenticated HTTP requests.
+/// {@macro googleapis_auth_baseClient_param}
 ///
-/// The user is responsible for closing the returned HTTP [Client].
-/// Closing the returned [Client] will not close [baseClient].
+/// {@macro googleapis_auth_clientId_param}
 ///
 /// {@template googleapis_auth_hosted_domain_param}
 /// If provided, restricts sign-in to Google Apps hosted accounts at
 /// [hostedDomain]. For more details, see
 /// https://developers.google.com/identity/protocols/oauth2/openid-connect#hd-param
 /// {@endtemplate}
+///
+/// {@macro googleapis_auth_close_the_client}
+/// {@macro googleapis_auth_not_close_the_baseClient}
 Future<AutoRefreshingAuthClient> clientViaUserConsent(
   ClientId clientId,
   List<String> scopes,
@@ -150,18 +151,16 @@ Future<AutoRefreshingAuthClient> clientViaUserConsent(
 /// See [obtainAccessCredentialsViaUserConsentManual] for specifics about the
 /// arguments used for obtaining access credentials.
 ///
-/// Once access credentials have been obtained, this function will complete
-/// with an auto-refreshing HTTP client. Once the `AccessCredentials` expire
-/// it will use it's refresh token (if available) to obtain new credentials.
-/// See [autoRefreshingClient] for more information.
+/// {@macro googleapis_auth_returned_auto_refresh_client}
 ///
-/// If [baseClient] is not given, one will be automatically created. It will be
-/// used for making authenticated HTTP requests.
+/// {@macro googleapis_auth_baseClient_param}
 ///
-/// The user is responsible for closing the returned HTTP [Client].
-/// Closing the returned [Client] will not close [baseClient].
+/// {@macro googleapis_auth_clientId_param}
 ///
 /// {@macro googleapis_auth_hosted_domain_param}
+///
+/// {@macro googleapis_auth_close_the_client}
+/// {@macro googleapis_auth_not_close_the_baseClient}
 Future<AutoRefreshingAuthClient> clientViaUserConsentManual(
   ClientId clientId,
   List<String> scopes,
@@ -204,22 +203,16 @@ Future<AutoRefreshingAuthClient> clientViaUserConsentManual(
 
 /// Obtain oauth2 [AccessCredentials] using the oauth2 authentication code flow.
 ///
-/// The returned future will complete with [AccessCredentials] if the user
-/// has given the application access to it's data. Otherwise the future will
-/// complete with a [UserConsentException].
-///
-/// In case another error occurs the returned future will complete with an
-/// `Exception`.
-///
 /// [userPrompt] will be used for directing the user/user-agent to a URI. See
 /// [PromptUserForConsent] for more information.
 ///
-/// [client] will be used for obtaining [AccessCredentials] from an
-/// authorization code.
+/// {@macro googleapis_auth_client_for_creds}
 ///
-/// The [clientId] can be obtained in the Google Cloud Console.
+/// {@macro googleapis_auth_clientId_param}
 ///
 /// {@macro googleapis_auth_hosted_domain_param}
+///
+/// {@macro googleapis_auth_user_consent_return}
 Future<AccessCredentials> obtainAccessCredentialsViaUserConsent(
   ClientId clientId,
   List<String> scopes,
@@ -237,22 +230,16 @@ Future<AccessCredentials> obtainAccessCredentialsViaUserConsent(
 
 /// Obtain oauth2 [AccessCredentials] using the oauth2 authentication code flow.
 ///
-/// The returned future will complete with `AccessCredentials` if the user
-/// has given the application access to it's data. Otherwise the future will
-/// complete with a `UserConsentException`.
-///
-/// In case another error occurs the returned future will complete with an
-/// `Exception`.
-///
 /// [userPrompt] will be used for directing the user/user-agent to a URI. See
 /// [PromptUserForConsentManual] for more information.
 ///
-/// [client] will be used for obtaining `AccessCredentials` from an
-/// authorization code.
+/// {@macro googleapis_auth_client_for_creds}
 ///
-/// The [clientId] can be obtained in the Google Cloud Console.
+/// {@macro googleapis_auth_clientId_param}
 ///
 /// {@macro googleapis_auth_hosted_domain_param}
+///
+/// {@macro googleapis_auth_user_consent_return}
 Future<AccessCredentials> obtainAccessCredentialsViaUserConsentManual(
   ClientId clientId,
   List<String> scopes,
@@ -276,6 +263,10 @@ Future<AccessCredentials> obtainAccessCredentialsViaUserConsentManual(
 /// code. This authorization code needs to be transferred to the server, which
 /// can exchange it against long-lived [AccessCredentials].
 ///
+/// {@macro googleapis_auth_client_for_creds}
+///
+/// {@macro googleapis_auth_clientId_param}
+///
 /// If the authorization code was obtained using the mentioned hybrid flow, the
 /// [redirectUrl] must be `"postmessage"` (default).
 ///
@@ -288,12 +279,10 @@ Future<AccessCredentials> obtainAccessCredentialsViaUserConsentManual(
 /// NOTE: It is important to transmit the authorization code in a secure manner
 /// to the server. You should use "anti-request forgery state tokens" to guard
 /// against "cross site request forgery" attacks.
-/// An example on how to do this can be found here:
-///   https://developers.google.com/+/web/signin/server-side-flow
 Future<AccessCredentials> obtainAccessCredentialsViaCodeExchange(
-  Client baseClient,
+  Client client,
   ClientId clientId,
   String code, {
   String redirectUrl = 'postmessage',
 }) =>
-    obtainAccessCredentialsUsingCode(clientId, code, redirectUrl, baseClient);
+    obtainAccessCredentialsUsingCode(clientId, code, redirectUrl, client);

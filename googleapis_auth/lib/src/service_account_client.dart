@@ -13,20 +13,20 @@ import 'service_account_credentials.dart';
 /// In case the service account has no access to the requested scopes or another
 /// error occurs the returned future will complete with an `Exception`.
 ///
-/// [baseClient] will be used for obtaining `AccessCredentials`.
+/// {@macro googleapis_auth_client_for_creds}
 ///
 /// The [ServiceAccountCredentials] can be obtained in the Google Cloud Console.
 Future<AccessCredentials> obtainAccessCredentialsViaServiceAccount(
   ServiceAccountCredentials clientCredentials,
   List<String> scopes,
-  Client baseClient,
+  Client client,
 ) =>
     JwtFlow(
       clientCredentials.email,
       clientCredentials.privateRSAKey,
       clientCredentials.impersonatedUser,
       scopes,
-      baseClient,
+      client,
     ).run();
 
 /// Obtains oauth2 credentials and returns an authenticated HTTP client.
@@ -34,16 +34,12 @@ Future<AccessCredentials> obtainAccessCredentialsViaServiceAccount(
 /// See [obtainAccessCredentialsViaServiceAccount] for specifics about the
 /// arguments used for obtaining access credentials.
 ///
-/// Once access credentials have been obtained, this function will complete
-/// with an auto-refreshing HTTP client. Once the `AccessCredentials` expire
-/// it will obtain new access credentials.
+/// {@macro googleapis_auth_returned_auto_refresh_client}
 ///
-/// If [baseClient] is not given, one will be automatically created. It will be
-/// used for making authenticated HTTP requests and for obtaining access
-/// credentials.
+/// {@macro googleapis_auth_baseClient_param}
 ///
-/// The user is responsible for closing the returned HTTP [Client].
-/// Closing the returned [Client] will not close [baseClient].
+/// {@macro googleapis_auth_close_the_client}
+/// {@macro googleapis_auth_not_close_the_baseClient}
 Future<AutoRefreshingAuthClient> clientViaServiceAccount(
   ServiceAccountCredentials clientCredentials,
   List<String> scopes, {
