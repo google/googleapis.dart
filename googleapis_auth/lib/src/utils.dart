@@ -23,24 +23,6 @@ DateTime expiryDate(int seconds) => DateTime.now()
 const contentTypeUrlEncoded =
     'application/x-www-form-urlencoded; charset=utf-8';
 
-/// Returns an error string for [json] if it contains error data in keys
-/// `error` and `error_description`.
-///
-/// Otherwise, returns `null`.
-String? errorString(Map<String, dynamic> json) {
-  final error = json['error'];
-  if (error == null) {
-    return null;
-  }
-
-  final description = json['error_description'];
-
-  return [
-    'Error: $error',
-    if (description != null) '$description',
-  ].join(' ');
-}
-
 Future<Map<String, dynamic>> readJsonMap(StreamedResponse response) async =>
     await response.stream.transform(utf8.decoder).transform(json.decoder).single
         as Map<String, dynamic>;

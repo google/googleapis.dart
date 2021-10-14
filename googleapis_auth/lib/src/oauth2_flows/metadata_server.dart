@@ -13,7 +13,6 @@ import 'package:http/http.dart' as http;
 
 import '../access_credentials.dart';
 import '../access_token.dart';
-import '../utils.dart';
 import 'base_flow.dart';
 
 /// Obtains access credentials form the metadata server.
@@ -65,8 +64,11 @@ class MetadataServerAuthorizationFlow extends BaseFlow {
 
   @override
   Future<AccessCredentials> run() async {
-    final results = await Future.wait([_getToken(), _getScopes()]);
-    final json = results.first as Map<String, dynamic>;
+    final results = await Future.wait(
+      [_client.get(_tokenUrl, headers: _headers), _getScopes()],
+    );
+    final tokenResponse = results.first as http.Response;
+    final json = jsonDecode(tokenResponse.body) as Map<String, dynamic>;
     final scopesString = results.last as String;
 
     final scopes = scopesString
@@ -75,31 +77,13 @@ class MetadataServerAuthorizationFlow extends BaseFlow {
         .where((part) => part.isNotEmpty)
         .toList();
 
-    final type = json['token_type'] as String;
-    final accessToken = json['access_token'] as String?;
-    final expiresIn = json['expires_in'];
-    final error = errorString(json);
-
-    if (error != null) {
-      throw Exception(
-        'Error while obtaining credentials from metadata server. $error',
-      );
-    }
-
-    if (type != 'Bearer' || accessToken == null || expiresIn is! int) {
-      throw Exception('Invalid response from metadata server.');
-    }
+    final accessToken = parseAccessToken(tokenResponse.statusCode, json);
 
     return AccessCredentials(
-      AccessToken(type, accessToken, expiryDate(expiresIn)),
+      accessToken,
       null,
       scopes,
     );
-  }
-
-  Future<Map<String, dynamic>> _getToken() async {
-    final response = await _client.get(_tokenUrl, headers: _headers);
-    return jsonDecode(response.body) as Map<String, dynamic>;
   }
 
   Future<String> _getScopes() async {

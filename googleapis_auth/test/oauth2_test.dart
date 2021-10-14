@@ -131,7 +131,7 @@ void main() {
     final aToken = AccessToken('Bearer', 'bar', tomorrow);
     final credentials = AccessCredentials(aToken, 'refresh', ['s1', 's2']);
 
-    Future<Response> successfulRefresh(Request request) {
+    Future<Response> successfulRefresh(Request request) async {
       expect(request.method, equals('POST'));
       expect('${request.url}',
           equals('https://accounts.google.com/o/oauth2/token'));
@@ -147,13 +147,12 @@ void main() {
         'expires_in': 3600,
       });
 
-      return Future.value(Response(body, 200, headers: _jsonContentType));
+      return Response(body, 200, headers: _jsonContentType);
     }
 
-    Future<Response> refreshErrorResponse(Request request) {
+    Future<Response> refreshErrorResponse(Request request) async {
       final body = jsonEncode({'error': 'An error occured'});
-      return Future<Response>.value(
-          Response(body, 400, headers: _jsonContentType));
+      return Response(body, 400, headers: _jsonContentType);
     }
 
     Future<Response> serverError(Request request) =>
@@ -177,24 +176,31 @@ void main() {
     });
 
     test('refreshCredentials-http-error', () async {
-      try {
-        await refreshCredentials(
-            clientId, credentials, mockClient(serverError, expectClose: false));
-        fail('expected error');
-      } catch (error) {
-        expect(
-            error.toString(), equals('Exception: transport layer exception'));
-      }
+      await expectLater(
+        refreshCredentials(
+          clientId,
+          credentials,
+          mockClient(serverError, expectClose: false),
+        ),
+        throwsA(
+          isA<Exception>().having(
+            (p0) => p0.toString(),
+            'toString',
+            'Exception: transport layer exception',
+          ),
+        ),
+      );
     });
 
     test('refreshCredentials-error-response', () async {
-      try {
-        await refreshCredentials(clientId, credentials,
-            mockClient(refreshErrorResponse, expectClose: false));
-        fail('expected error');
-      } catch (error) {
-        expect(error is RefreshFailedException, isTrue);
-      }
+      await expectLater(
+        refreshCredentials(
+          clientId,
+          credentials,
+          mockClient(refreshErrorResponse, expectClose: false),
+        ),
+        throwsA(isServerRequestFailedException),
+      );
     });
 
     group('authenticatedClient', () {
@@ -202,15 +208,16 @@ void main() {
 
       test('successfull', () async {
         final client = authenticatedClient(
-            mockClient(expectAsync1((request) {
-              expect(request.method, equals('POST'));
-              expect(request.url, equals(url));
-              expect(request.headers.length, equals(1));
-              expect(request.headers['Authorization'], equals('Bearer bar'));
+          mockClient(expectAsync1((request) async {
+            expect(request.method, equals('POST'));
+            expect(request.url, equals(url));
+            expect(request.headers.length, equals(1));
+            expect(request.headers['Authorization'], equals('Bearer bar'));
 
-              return Future.value(Response('', 204));
-            }), expectClose: false),
-            credentials);
+            return Response('', 204);
+          }), expectClose: false),
+          credentials,
+        );
         expect(client.credentials, equals(credentials));
 
         final response = await client.send(RequestImpl('POST', url));
@@ -219,16 +226,17 @@ void main() {
 
       test('access-denied', () {
         final client = authenticatedClient(
-            mockClient(expectAsync1((request) {
-              expect(request.method, equals('POST'));
-              expect(request.url, equals(url));
-              expect(request.headers.length, equals(1));
-              expect(request.headers['Authorization'], equals('Bearer bar'));
+          mockClient(expectAsync1((request) async {
+            expect(request.method, equals('POST'));
+            expect(request.url, equals(url));
+            expect(request.headers.length, equals(1));
+            expect(request.headers['Authorization'], equals('Bearer bar'));
 
-              const headers = {'www-authenticate': 'foobar'};
-              return Future.value(Response('', 401, headers: headers));
-            }), expectClose: false),
-            credentials);
+            const headers = {'www-authenticate': 'foobar'};
+            return Response('', 401, headers: headers);
+          }), expectClose: false),
+          credentials,
+        );
         expect(client.credentials, equals(credentials));
 
         expect(client.send(RequestImpl('POST', url)),
@@ -243,10 +251,12 @@ void main() {
             ['s1', 's2']);
 
         expect(
-            () => authenticatedClient(
-                mockClient(_defaultResponseHandler, expectClose: false),
-                nonBearerCredentials),
-            throwsA(isArgumentError));
+          () => authenticatedClient(
+            mockClient(_defaultResponseHandler, expectClose: false),
+            nonBearerCredentials,
+          ),
+          throwsA(isArgumentError),
+        );
       });
     });
 
@@ -255,11 +265,13 @@ void main() {
 
       test('up-to-date', () async {
         final client = autoRefreshingClient(
-            clientId,
-            credentials,
-            mockClient(
-                expectAsync1((request) => Future.value(Response('', 200))),
-                expectClose: false));
+          clientId,
+          credentials,
+          mockClient(
+            expectAsync1((request) async => Response('', 200)),
+            expectClose: false,
+          ),
+        );
         expect(client.credentials, equals(credentials));
 
         final response = await client.send(RequestImpl('POST', url));
@@ -271,31 +283,16 @@ void main() {
             AccessToken('Bearer', 'bar', yesterday), null, ['s1', 's2']);
 
         expect(
-            () => autoRefreshingClient(clientId, credentials,
-                mockClient(_defaultResponseHandler, expectClose: false)),
-            throwsA(isArgumentError));
+          () => autoRefreshingClient(
+            clientId,
+            credentials,
+            mockClient(_defaultResponseHandler, expectClose: false),
+          ),
+          throwsA(isArgumentError),
+        );
       });
 
       test('refresh-failed', () {
-        final credentials = AccessCredentials(
-            AccessToken('Bearer', 'bar', yesterday), 'refresh', ['s1', 's2']);
-
-        final client = autoRefreshingClient(
-            clientId,
-            credentials,
-            mockClient(expectAsync1((request) {
-              // This should be a refresh request.
-              expect(request.headers['foo'], isNull);
-              return refreshErrorResponse(request);
-            }), expectClose: false));
-        expect(client.credentials, equals(credentials));
-
-        final request = RequestImpl('POST', url);
-        request.headers.addAll({'foo': 'bar'});
-        expect(client.send(request), throwsA(isRefreshFailedException));
-      });
-
-      test('invalid-content-type', () {
         final credentials = AccessCredentials(
             AccessToken('Bearer', 'bar', yesterday), 'refresh', ['s1', 's2']);
 
@@ -305,16 +302,36 @@ void main() {
           mockClient(expectAsync1((request) {
             // This should be a refresh request.
             expect(request.headers['foo'], isNull);
-            final headers = {'content-type': 'image/png'};
-
-            return Future.value(Response('', 200, headers: headers));
+            return refreshErrorResponse(request);
           }), expectClose: false),
         );
         expect(client.credentials, equals(credentials));
 
         final request = RequestImpl('POST', url);
         request.headers.addAll({'foo': 'bar'});
-        expect(client.send(request), throwsA(isException));
+        expect(client.send(request), throwsA(isServerRequestFailedException));
+      });
+
+      test('invalid-content-type', () {
+        final credentials = AccessCredentials(
+            AccessToken('Bearer', 'bar', yesterday), 'refresh', ['s1', 's2']);
+
+        final client = autoRefreshingClient(
+          clientId,
+          credentials,
+          mockClient(expectAsync1((request) async {
+            // This should be a refresh request.
+            expect(request.headers['foo'], isNull);
+            final headers = {'content-type': 'image/png'};
+
+            return Response('', 200, headers: headers);
+          }), expectClose: false),
+        );
+        expect(client.credentials, equals(credentials));
+
+        final request = RequestImpl('POST', url);
+        request.headers.addAll({'foo': 'bar'});
+        expect(client.send(request), throwsA(isServerRequestFailedException));
       });
 
       test('successful-refresh', () async {
@@ -328,7 +345,7 @@ void main() {
             credentials,
             mockClient(
               expectAsync1(
-                (request) {
+                (request) async {
                   if (serverInvocation++ == 0) {
                     // This should be a refresh request.
                     expect(request.headers['foo'], isNull);
@@ -336,7 +353,7 @@ void main() {
                   } else {
                     // This is the real request.
                     expect(request.headers['foo'], equals('bar'));
-                    return Future.value(Response('', 200));
+                    return Response('', 200);
                   }
                 },
                 count: 2,

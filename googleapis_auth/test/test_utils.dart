@@ -11,9 +11,10 @@ import 'package:http/http.dart';
 import 'package:http/testing.dart';
 import 'package:test/test.dart';
 
-const Matcher isUserConsentException = TypeMatcher<UserConsentException>();
+const isServerRequestFailedException =
+    TypeMatcher<ServerRequestFailedException>();
 
-const Matcher isRefreshFailedException = TypeMatcher<RefreshFailedException>();
+const Matcher isUserConsentException = TypeMatcher<UserConsentException>();
 
 const Matcher isAccessDeniedException = TypeMatcher<AccessDeniedException>();
 

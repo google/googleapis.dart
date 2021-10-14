@@ -80,44 +80,14 @@ Future<AccessCredentials> obtainAccessCredentialsUsingCode(
   final jsonMap = await readJsonMap(response);
 
   final idToken = jsonMap['id_token'] as String?;
-  final tokenType = jsonMap['token_type'];
-  final accessToken = jsonMap['access_token'] as String?;
-  final seconds = jsonMap['expires_in'];
   final refreshToken = jsonMap['refresh_token'] as String?;
-  final error = errorString(jsonMap);
 
-  if (response.statusCode != 200 && error != null) {
-    throw Exception(
-      'Failed to exchange authorization code. '
-      'Response was ${response.statusCode}. $error',
-    );
-  }
+  final accessToken = parseAccessToken(response.statusCode, jsonMap);
 
-  if (response.statusCode != 200 ||
-      accessToken == null ||
-      seconds is! int ||
-      tokenType != 'Bearer') {
-    throw Exception(
-      'Failed to exchange authorization code. '
-      'Invalid server response. '
-      'Http status code was: ${response.statusCode}.',
-    );
-  }
-
-  if (scopes != null) {
-    return AccessCredentials(
-      AccessToken('Bearer', accessToken, expiryDate(seconds)),
-      refreshToken,
-      scopes,
-      idToken: idToken,
-    );
-  }
-
-  scopes = await obtainScopesFromAccessToken(accessToken, client);
   return AccessCredentials(
-    AccessToken('Bearer', accessToken, expiryDate(seconds)),
+    accessToken,
     refreshToken,
-    scopes,
+    scopes ?? await obtainScopesFromAccessToken(accessToken.data, client),
     idToken: idToken,
   );
 }

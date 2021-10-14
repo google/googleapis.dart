@@ -67,21 +67,7 @@ class JwtFlow extends BaseFlow {
 
     final httpResponse = await _client.send(request);
     final response = await readJsonMap(httpResponse);
-    final tokenType = response['token_type'] as String;
-    final token = response['access_token'] as String?;
-    final expiresIn = response['expires_in'];
-    final error = errorString(response);
-
-    if (httpResponse.statusCode != 200 && error != null) {
-      throw Exception('Unable to obtain credentials. $error');
-    }
-
-    if (tokenType != 'Bearer' || token == null || expiresIn is! int) {
-      throw Exception(
-        'Unable to obtain credentials. Invalid response from server.',
-      );
-    }
-    final accessToken = AccessToken(tokenType, token, expiryDate(expiresIn));
+    final accessToken = parseAccessToken(httpResponse.statusCode, response);
     return AccessCredentials(accessToken, null, _scopes);
   }
 }

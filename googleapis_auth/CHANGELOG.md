@@ -5,6 +5,9 @@
 - Added `String? details` to `UserConsentException`.
 - Update the host used to access metadata on Google Cloud.
   From `http://metadata/` to `http://metadata.google.internal`.
+- Require Dart 2.13
+- Deprecated `RefreshFailedException` - `ServerRequestFailedException` is used
+  instead.
 
 ## 1.1.0
 
