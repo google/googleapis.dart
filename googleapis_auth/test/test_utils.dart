@@ -2,14 +2,14 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-import 'dart:async';
-
 import 'package:googleapis_auth/googleapis_auth.dart';
 import 'package:googleapis_auth/src/crypto/pem.dart';
 import 'package:googleapis_auth/src/utils.dart';
 import 'package:http/http.dart';
 import 'package:http/testing.dart';
 import 'package:test/test.dart';
+
+const jsonContentType = {'content-type': 'application/json'};
 
 const isServerRequestFailedException =
     TypeMatcher<ServerRequestFailedException>();
@@ -22,9 +22,8 @@ const Matcher isTransportException = TypeMatcher<TransportException>();
 
 class TransportException implements Exception {}
 
-Client get transportFailure => MockClient(
-      expectAsync1((Request _) => Future<Response>.error(TransportException())),
-    );
+Client get transportFailure =>
+    MockClient(expectAsync1((_) async => throw TransportException()));
 
 const testPrivateKeyString = '''-----BEGIN RSA PRIVATE KEY-----
 MIIEowIBAAKCAQEAuDOwXO14ltE1j2O0iDSuqtbw/1kMKjeiki3oehk2zNoUte42
@@ -64,7 +63,7 @@ void expectExpiryOneHourFromNow(AccessToken accessToken) {
 }
 
 Client mockClient(
-  Future<Response> Function(Request _) requestHandler, {
+  MockClientHandler requestHandler, {
   bool expectClose = true,
 }) =>
     ExpectCloseMockClient(requestHandler, expectClose ? 1 : 0);
@@ -74,7 +73,7 @@ class ExpectCloseMockClient extends MockClient {
   late void Function() _expectedToBeCalled;
 
   ExpectCloseMockClient(
-    Future<Response> Function(Request _) requestHandler,
+    MockClientHandler requestHandler,
     int c,
   ) : super(requestHandler) {
     _expectedToBeCalled = expectAsync0(() {}, count: c);

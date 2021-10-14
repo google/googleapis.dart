@@ -117,7 +117,7 @@ void main() {
 
         final client = ApiKeyClient(mock, key);
         expect(client.send(request('http://localhost/abc?key=a')),
-            throwsException);
+            throwsArgumentError);
         client.close();
       });
     });

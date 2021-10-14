@@ -22,7 +22,8 @@ void main() {
 
   test('gapi-load-failure', () {
     impl.gapiUrl = resource('non_existent.js');
-    expect(auth.createImplicitBrowserFlow(clientId, scopes), throwsException);
+    expect(
+        auth.createImplicitBrowserFlow(clientId, scopes), throwsArgumentError);
   }, timeout: timeout);
 
   test('gapi-load-failure--syntax-error', () async {

@@ -14,7 +14,7 @@ import '../test_utils.dart';
 void main() {
   const tokenUrl = 'https://accounts.google.com/o/oauth2/token';
 
-  Future<Response> successfulSignRequest(Request request) {
+  Future<Response> successfulSignRequest(Request request) async {
     expect(request.method, equals('POST'));
     expect(request.url.toString(), equals(tokenUrl));
 
@@ -30,16 +30,16 @@ void main() {
       'expires_in': 3600,
       'token_type': 'Bearer',
     });
-    return Future.value(Response(body, 200));
+    return Response(body, 200, headers: jsonContentType);
   }
 
-  Future<Response> invalidAccessToken(Request request) {
+  Future<Response> invalidAccessToken(Request request) async {
     final body = jsonEncode({
       // Missing 'expires_in' entry
       'access_token': 'atok',
       'token_type': 'Bearer',
     });
-    return Future.value(Response(body, 200));
+    return Response(body, 200, headers: jsonContentType);
   }
 
   group('jwt-flow', () {
@@ -69,8 +69,13 @@ void main() {
     });
 
     test('invalid-server-response', () {
-      final flow = JwtFlow(clientEmail, testPrivateKey, null, scopes,
-          mockClient(expectAsync1(invalidAccessToken), expectClose: false));
+      final flow = JwtFlow(
+        clientEmail,
+        testPrivateKey,
+        null,
+        scopes,
+        mockClient(expectAsync1(invalidAccessToken), expectClose: false),
+      );
 
       expect(flow.run(), throwsA(isServerRequestFailedException));
     });

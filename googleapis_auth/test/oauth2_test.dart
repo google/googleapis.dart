@@ -147,12 +147,12 @@ void main() {
         'expires_in': 3600,
       });
 
-      return Response(body, 200, headers: _jsonContentType);
+      return Response(body, 200, headers: jsonContentType);
     }
 
     Future<Response> refreshErrorResponse(Request request) async {
-      final body = jsonEncode({'error': 'An error occured'});
-      return Response(body, 400, headers: _jsonContentType);
+      final body = jsonEncode({'error': 'An error occurred'});
+      return Response(body, 400, headers: jsonContentType);
     }
 
     Future<Response> serverError(Request request) =>
@@ -206,7 +206,7 @@ void main() {
     group('authenticatedClient', () {
       final url = Uri.parse('http://www.example.com');
 
-      test('successfull', () async {
+      test('successful', () async {
         final client = authenticatedClient(
           mockClient(expectAsync1((request) async {
             expect(request.method, equals('POST'));
@@ -385,5 +385,3 @@ void main() {
     });
   });
 }
-
-const _jsonContentType = {'content-type': 'application/json'};

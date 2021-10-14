@@ -3,16 +3,13 @@
 // BSD-style license that can be found in the LICENSE file.
 
 import 'dart:async';
-import 'dart:convert';
 
 import 'package:http/http.dart';
 
 import 'access_credentials.dart';
-import 'access_token.dart';
 import 'auth_client.dart';
 import 'auth_http_utils.dart';
 import 'client_id.dart';
-import 'exceptions.dart';
 import 'http_client_base.dart';
 import 'utils.dart';
 
@@ -106,34 +103,14 @@ Future<AccessCredentials> refreshCredentials(
     throw ArgumentError('clientId.refreshToken cannot be null.');
   }
 
-  final formValues = [
-    'client_id=${Uri.encodeComponent(clientId.identifier)}',
-    'client_secret=${Uri.encodeComponent(secret)}',
-    'refresh_token=${Uri.encodeComponent(refreshToken)}',
-    'grant_type=refresh_token',
-  ];
+  final jsonMap = await client.oauthTokenRequest({
+    'client_id': clientId.identifier,
+    'client_secret': secret,
+    'refresh_token': refreshToken,
+    'grant_type': 'refresh_token',
+  });
 
-  final body =
-      Stream<List<int>>.fromIterable([(ascii.encode(formValues.join('&')))]);
-  final request = RequestImpl('POST', googleOauthTokenUri, body);
-  request.headers['content-type'] = 'application/x-www-form-urlencoded';
-
-  final response = await client.send(request);
-  var contentType = response.headers['content-type'];
-  contentType = contentType?.toLowerCase();
-
-  if (contentType == null ||
-      (!contentType.contains('json') && !contentType.contains('javascript'))) {
-    await response.stream.drain().catchError((_) {});
-    throw ServerRequestFailedException(
-      'Server responded with invalid content type: $contentType. '
-      'Expected JSON response.',
-    );
-  }
-
-  final jsonMap = await readJsonMap(response);
-
-  final accessToken = parseAccessToken(response.statusCode, jsonMap);
+  final accessToken = parseAccessToken(jsonMap);
 
   final idToken = jsonMap['id_token'] as String?;
 
