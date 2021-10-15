@@ -106,6 +106,7 @@ Future<AccessCredentials> refreshCredentials(
     throw ArgumentError('clientId.refreshToken cannot be null.');
   }
 
+  // https://developers.google.com/identity/protocols/oauth2/native-app#offline
   final jsonMap = await client.oauthTokenRequest({
     'client_id': clientId.identifier,
     'client_secret': secret,
