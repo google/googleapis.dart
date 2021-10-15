@@ -8,6 +8,8 @@ import 'dart:io';
 
 import 'package:googleapis_auth/googleapis_auth.dart';
 import 'package:googleapis_auth/src/oauth2_flows/auth_code.dart';
+import 'package:googleapis_auth/src/oauth2_flows/authorization_code_grant_manual_flow.dart';
+import 'package:googleapis_auth/src/oauth2_flows/authorization_code_grant_server_flow.dart';
 import 'package:http/http.dart';
 import 'package:test/test.dart';
 
@@ -15,13 +17,24 @@ import '../test_utils.dart';
 
 typedef RequestHandler = Future<Response> Function(Request _);
 
+final _browserFlowRedirectMatcher = predicate<String>((object) {
+  if (object.startsWith('redirect_uri=')) {
+    final url = Uri.parse(
+        Uri.decodeComponent(object.substring('redirect_uri='.length)));
+    expect(url.scheme, equals('http'));
+    expect(url.host, equals('localhost'));
+    return true;
+  }
+  return false;
+});
+
 void main() {
   final clientId = ClientId('id', 'secret');
   final scopes = ['s1', 's2'];
 
   // Validation + Responses from the authorization server.
 
-  RequestHandler successFullResponse({bool? manual}) =>
+  RequestHandler successFullResponse({required bool manual}) =>
       (Request request) async {
         expect(request.method, equals('POST'));
         expect('${request.url}',
@@ -32,22 +45,22 @@ void main() {
             isTrue);
 
         final pairs = request.body.split('&');
-        expect(pairs, hasLength(5));
-        expect(pairs[0], equals('grant_type=authorization_code'));
-        expect(pairs[1], equals('code=mycode'));
-        expect(pairs[3], equals('client_id=id'));
-        expect(pairs[4], equals('client_secret=secret'));
-        if (manual!) {
-          expect(pairs[2],
-              equals('redirect_uri=urn%3Aietf%3Awg%3Aoauth%3A2.0%3Aoob'));
-        } else {
-          expect(pairs[2], startsWith('redirect_uri='));
-
-          final url = Uri.parse(
-              Uri.decodeComponent(pairs[2].substring('redirect_uri='.length)));
-          expect(url.scheme, equals('http'));
-          expect(url.host, equals('localhost'));
-        }
+        expect(pairs, hasLength(6));
+        expect(
+          pairs,
+          containsAll([
+            'grant_type=authorization_code',
+            'code=mycode',
+            'client_id=id',
+            'client_secret=secret',
+            allOf(
+              startsWith('code_verifier='),
+              hasLength(100), // happens to be the output length as implemented!
+            ),
+            if (manual) 'redirect_uri=urn%3Aietf%3Awg%3Aoauth%3A2.0%3Aoob',
+            if (!manual) _browserFlowRedirectMatcher
+          ]),
+        );
 
         final result = {
           'token_type': 'Bearer',
@@ -115,12 +128,13 @@ void main() {
         return 'mycode';
       }
 
-      test('successfull', () async {
+      test('successful', () async {
         final flow = AuthorizationCodeGrantManualFlow(
-            clientId,
-            scopes,
-            mockClient(successFullResponse(manual: true), expectClose: false),
-            manualUserPrompt);
+          clientId,
+          scopes,
+          mockClient(successFullResponse(manual: true), expectClose: false),
+          manualUserPrompt,
+        );
         validateAccessCredentials(await flow.run());
       });
 

@@ -11,6 +11,8 @@ import 'src/auth_http_utils.dart';
 import 'src/http_client_base.dart';
 import 'src/metadata_server_client.dart' show clientViaMetadataServer;
 import 'src/oauth2_flows/auth_code.dart';
+import 'src/oauth2_flows/authorization_code_grant_manual_flow.dart';
+import 'src/oauth2_flows/authorization_code_grant_server_flow.dart';
 import 'src/service_account_credentials.dart';
 import 'src/typedefs.dart';
 
