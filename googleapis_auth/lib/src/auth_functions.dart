@@ -60,12 +60,15 @@ AuthClient authenticatedClient(
 /// Creates an [AutoRefreshingAuthClient] which automatically refreshes
 /// [credentials] before they expire.
 ///
+/// {@template googleapis_auth_clientId_param}
+/// The [clientId] that you obtain from the API Console
+/// [Credentials page](https://console.developers.google.com/apis/credentials),
+/// as described in
+/// [Obtain OAuth 2.0 credentials](https://developers.google.com/identity/protocols/oauth2/openid-connect#getcredentials).
+/// {@endtemplate}
+///
 /// Uses [baseClient] to make authenticated HTTP requests and to refresh
 /// [credentials].
-///
-/// {@template googleapis_auth_clientId_param}
-/// The [clientId] can be obtained in the Google Cloud Console.
-/// {@endtemplate}
 ///
 /// {@macro googleapis_auth_close_the_client}
 /// {@macro googleapis_auth_not_close_the_baseClient}

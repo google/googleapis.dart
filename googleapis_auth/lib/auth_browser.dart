@@ -26,12 +26,12 @@ export 'googleapis_auth.dart';
 /// If loading or initializing the `gapi` library results in an error, this
 /// future will complete with an error.
 ///
+/// {@macro googleapis_auth_clientId_param}
+///
 /// {@template googleapis_auth_baseClient_param}
 /// If [baseClient] is provided, all HTTP requests will be made with it.
 /// Otherwise, a new [Client] instance will be created.
 /// {@endtemplate}
-///
-/// {@macro googleapis_auth_clientId_param}
 ///
 /// {@macro googleapis_auth_close_the_client}
 /// {@macro googleapis_auth_not_close_the_baseClient}
