@@ -2,6 +2,8 @@
 
 - Use the latest supported Google OAuth 2.0 URL
 - Generate a longer, secure random state token. 
+- Implement code verifier logic for the desktop auth flows.
+  See https://developers.google.com/identity/protocols/oauth2/native-app#create-code-challenge
 
 ## 1.2.0
 
