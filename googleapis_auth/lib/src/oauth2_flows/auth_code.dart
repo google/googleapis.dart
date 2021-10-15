@@ -115,20 +115,17 @@ abstract class AuthorizationCodeGrantAbstractFlow {
         scopes,
       );
 
-  String _authenticationUri(String redirectUri, {String? state}) {
+  Uri _authenticationUri(String redirectUri, {String? state}) {
     // TODO: Increase scopes with [include_granted_scopes].
-    final queryValues = [
-      'response_type=code',
-      'client_id=${Uri.encodeQueryComponent(clientId.identifier)}',
-      'redirect_uri=${Uri.encodeQueryComponent(redirectUri)}',
-      'scope=${Uri.encodeQueryComponent(scopes.join(' '))}',
-      if (hostedDomain != null) 'hd=${Uri.encodeQueryComponent(hostedDomain!)}',
-      if (state != null) 'state=${Uri.encodeQueryComponent(state)}',
-    ];
-    return Uri.parse(
-      'https://accounts.google.com/o/oauth2/auth'
-      '?${queryValues.join('&')}',
-    ).toString();
+    final queryValues = {
+      'response_type': 'code',
+      'client_id': clientId.identifier,
+      'redirect_uri': redirectUri,
+      'scope': scopes.join(' '),
+      if (hostedDomain != null) 'hd': hostedDomain!,
+      if (state != null) 'state': state,
+    };
+    return Uri.https('accounts.google.com', 'o/oauth2/v2/auth', queryValues);
   }
 }
 
@@ -165,7 +162,7 @@ class AuthorizationCodeGrantServerFlow
 
       // Prompt user and wait until they go to URL and the google authorization
       // server calls back to our locally running HTTP server.
-      userPrompt(_authenticationUri(redirectionUri, state: state));
+      userPrompt(_authenticationUri(redirectionUri, state: state).toString());
 
       final request = await server.first;
       final uri = request.uri;
@@ -263,7 +260,8 @@ class AuthorizationCodeGrantManualFlow
 
     // Prompt user and wait until they go to URL and copy&pastes the auth code
     // in.
-    final code = await userPrompt(_authenticationUri(redirectionUri));
+    final code =
+        await userPrompt(_authenticationUri(redirectionUri).toString());
     // Use code to obtain credentials
     return _obtainAccessCredentialsUsingCode(code, redirectionUri);
   }

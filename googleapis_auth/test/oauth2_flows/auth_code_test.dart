@@ -89,7 +89,7 @@ void main() {
     final uri = Uri.parse(url);
     expect(uri.scheme, equals('https'));
     expect(uri.host, equals('accounts.google.com'));
-    expect(uri.path, equals('/o/oauth2/auth'));
+    expect(uri.path, equals('/o/oauth2/v2/auth'));
     expect(uri.queryParameters['client_id'], equals(clientId.identifier));
     expect(uri.queryParameters['response_type'], equals('code'));
     expect(uri.queryParameters['scope'], equals('s1 s2'));

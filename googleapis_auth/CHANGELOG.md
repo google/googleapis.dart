@@ -1,3 +1,7 @@
+## 1.3.0-dev
+
+- Use the latest supported Google OAuth 2.0 URL
+
 ## 1.2.0
 
 - Added an optional `hostedDomain` parameter to many functions in
