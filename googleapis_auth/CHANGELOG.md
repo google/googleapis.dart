@@ -1,6 +1,7 @@
 ## 1.3.0-dev
 
 - Use the latest supported Google OAuth 2.0 URL
+- Generate a longer, secure random state token. 
 
 ## 1.2.0
 
