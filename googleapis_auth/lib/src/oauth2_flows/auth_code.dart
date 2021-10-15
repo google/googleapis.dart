@@ -163,7 +163,7 @@ class AuthorizationCodeGrantServerFlow
       final redirectionUri = 'http://localhost:$port';
       final state = 'authcodestate${DateTime.now().millisecondsSinceEpoch}';
 
-      // Prompt user and wait until he goes to URL and the google authorization
+      // Prompt user and wait until they go to URL and the google authorization
       // server calls back to our locally running HTTP server.
       userPrompt(_authenticationUri(redirectionUri, state: state));
 
@@ -261,7 +261,7 @@ class AuthorizationCodeGrantManualFlow
   Future<AccessCredentials> run() async {
     const redirectionUri = 'urn:ietf:wg:oauth:2.0:oob';
 
-    // Prompt user and wait until he goes to URL and copy&pastes the auth code
+    // Prompt user and wait until they go to URL and copy&pastes the auth code
     // in.
     final code = await userPrompt(_authenticationUri(redirectionUri));
     // Use code to obtain credentials
