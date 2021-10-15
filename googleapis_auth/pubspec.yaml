@@ -12,3 +12,6 @@ dependencies:
 
 dev_dependencies:
   test: ^1.16.0
+
+false_secrets:
+- test/test_utils.dart
