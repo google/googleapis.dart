@@ -3,7 +3,10 @@
 // BSD-style license that can be found in the LICENSE file.
 
 import 'dart:async';
+import 'dart:convert';
 import 'dart:io';
+import 'dart:math';
+import 'dart:typed_data';
 
 import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
@@ -158,7 +161,7 @@ class AuthorizationCodeGrantServerFlow
     try {
       final port = server.port;
       final redirectionUri = 'http://localhost:$port';
-      final state = 'authcodestate${DateTime.now().millisecondsSinceEpoch}';
+      final state = _randomState();
 
       // Prompt user and wait until they go to URL and the google authorization
       // server calls back to our locally running HTTP server.
@@ -267,4 +270,19 @@ class AuthorizationCodeGrantManualFlow
   }
 }
 
+/// See https://developers.google.com/identity/protocols/oauth2/openid-connect#createxsrftoken
+String _randomState() {
+  final rnd = Random.secure();
+
+  final list = Uint32List(6);
+  for (var i = 0; i < list.length; i++) {
+    list[i] = rnd.nextInt(1 << 32);
+  }
+
+  var value = base64UrlEncode(Uint8List.view(list.buffer));
+  while (value.endsWith('=')) {
+    value = value.substring(0, value.length - 1);
+  }
+  return value;
+}
 // TODO: Server app flow is missing here.
