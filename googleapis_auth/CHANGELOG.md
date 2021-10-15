@@ -1,4 +1,4 @@
-## 1.2.0-dev
+## 1.2.0
 
 - Added an optional `hostedDomain` parameter to many functions in
   `auth_io.dart`.
