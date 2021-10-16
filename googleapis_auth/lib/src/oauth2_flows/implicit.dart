@@ -156,7 +156,7 @@ class ImplicitFlow {
 
     _gapiAuth.callMethod('authorize', [
       js.JsObject.jsify(json),
-      (jsTokenObject) {
+      (js.JsObject jsTokenObject) {
         try {
           final result = _processToken(jsTokenObject, hybrid, responseTypes);
           completer.complete(result);
