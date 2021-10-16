@@ -26,7 +26,7 @@ void main() {
         credsFile,
         'test-credentials-file',
         [],
-        mockClient((Request request) async {
+        mockClient((request) async {
           final url = request.url.toString();
           if (url == 'https://accounts.google.com/o/oauth2/token') {
             expect(request.method, equals('POST'));
@@ -80,7 +80,7 @@ void main() {
         credsFile,
         'test-credentials-file',
         [],
-        mockClient((Request request) async {
+        mockClient((request) async {
           final url = request.url.toString();
           if (url == 'https://accounts.google.com/o/oauth2/token') {
             expect(request.method, equals('POST'));

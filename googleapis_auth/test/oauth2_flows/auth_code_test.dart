@@ -21,8 +21,7 @@ void main() {
 
   // Validation + Responses from the authorization server.
 
-  RequestHandler successFullResponse({bool? manual}) =>
-      (Request request) async {
+  RequestHandler successFullResponse({bool? manual}) => (request) async {
         expect(request.method, equals('POST'));
         expect('${request.url}',
             equals('https://accounts.google.com/o/oauth2/token'));
@@ -256,7 +255,7 @@ void main() {
         'https://www.googleapis.com/oauth2/v2/tokeninfo?access_token=my_token';
 
     test('successful', () async {
-      final http = mockClient(expectAsync1((BaseRequest request) async {
+      final http = mockClient(expectAsync1((request) async {
         expect(request.url.toString(), expectedUri);
         return Response(successfulResponseJson, 200, headers: jsonContentType);
       }), expectClose: false);
@@ -265,7 +264,7 @@ void main() {
     });
 
     test('non-200-status-code', () {
-      final http = mockClient(expectAsync1((BaseRequest request) async {
+      final http = mockClient(expectAsync1((request) async {
         expect(request.url.toString(), expectedUri);
         return Response(successfulResponseJson, 201);
       }), expectClose: false);
@@ -277,7 +276,7 @@ void main() {
 
     test('no-scope', () {
       final http = mockClient(
-        expectAsync1((BaseRequest request) async {
+        expectAsync1((request) async {
           expect(request.url.toString(), expectedUri);
           return Response(jsonEncode({}), 200, headers: jsonContentType);
         }),

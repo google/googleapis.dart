@@ -89,7 +89,7 @@ void main() {
           Future<Response>.value(Response.bytes([], 200));
 
       test('no-query-string', () {
-        final mock = mockClient((Request request) {
+        final mock = mockClient((request) {
           expect('${request.url}', equals('http://localhost/abc?$keyEncoded'));
           return responseF();
         });
@@ -100,7 +100,7 @@ void main() {
       });
 
       test('with-query-string', () {
-        final mock = mockClient((Request request) {
+        final mock = mockClient((request) {
           expect(
               '${request.url}', equals('http://localhost/abc?x&$keyEncoded'));
           return responseF();
