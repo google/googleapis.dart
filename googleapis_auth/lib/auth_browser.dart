@@ -26,12 +26,12 @@ export 'googleapis_auth.dart';
 /// If loading or initializing the `gapi` library results in an error, this
 /// future will complete with an error.
 ///
+/// {@macro googleapis_auth_clientId_param}
+///
 /// {@template googleapis_auth_baseClient_param}
 /// If [baseClient] is provided, all HTTP requests will be made with it.
 /// Otherwise, a new [Client] instance will be created.
 /// {@endtemplate}
-///
-/// {@macro googleapis_auth_clientId_param}
 ///
 /// {@macro googleapis_auth_close_the_client}
 /// {@macro googleapis_auth_not_close_the_baseClient}
@@ -83,13 +83,13 @@ class BrowserOAuth2Flow {
   /// is either not logged in or has not already granted the application access,
   /// a `UserConsentException` will be thrown.
   ///
-  /// If [immediate] is `false` the user might be asked to login (if he is not
+  /// If [immediate] is `false` the user might be asked to login (if not
   /// already logged in) and might get asked to grant the application access
   /// (if the application hasn't been granted access before).
   ///
   /// If [force] is `true` this will create a popup window and ask the user to
   /// grant the application offline access. In case the user is not already
-  /// logged in, he will be presented with an login dialog first.
+  /// logged in, they will be presented with an login dialog first.
   ///
   /// If [force] is `false` this will only create a popup window if the user
   /// has not already granted the application access.
@@ -163,7 +163,7 @@ class BrowserOAuth2Flow {
   ///
   /// If [force] is `true` this will create a popup window and ask the user to
   /// grant the application offline access. In case the user is not already
-  /// logged in, he will be presented with an login dialog first.
+  /// logged in, they will be presented with an login dialog first.
   ///
   /// If [force] is `false` this will only create a popup window if the user
   /// has not already granted the application access. Please note that the

@@ -11,6 +11,8 @@ import 'src/auth_http_utils.dart';
 import 'src/http_client_base.dart';
 import 'src/metadata_server_client.dart' show clientViaMetadataServer;
 import 'src/oauth2_flows/auth_code.dart';
+import 'src/oauth2_flows/authorization_code_grant_manual_flow.dart';
+import 'src/oauth2_flows/authorization_code_grant_server_flow.dart';
 import 'src/service_account_credentials.dart';
 import 'src/typedefs.dart';
 
@@ -93,11 +95,11 @@ Future<AutoRefreshingAuthClient> clientViaApplicationDefaultCredentials({
 /// See [obtainAccessCredentialsViaUserConsent] for specifics about the
 /// arguments used for obtaining access credentials.
 ///
+/// {@macro googleapis_auth_clientId_param}
+///
 /// {@macro googleapis_auth_returned_auto_refresh_client}
 ///
 /// {@macro googleapis_auth_baseClient_param}
-///
-/// {@macro googleapis_auth_clientId_param}
 ///
 /// {@template googleapis_auth_hosted_domain_param}
 /// If provided, restricts sign-in to Google Apps hosted accounts at
@@ -151,11 +153,11 @@ Future<AutoRefreshingAuthClient> clientViaUserConsent(
 /// See [obtainAccessCredentialsViaUserConsentManual] for specifics about the
 /// arguments used for obtaining access credentials.
 ///
+/// {@macro googleapis_auth_clientId_param}
+///
 /// {@macro googleapis_auth_returned_auto_refresh_client}
 ///
 /// {@macro googleapis_auth_baseClient_param}
-///
-/// {@macro googleapis_auth_clientId_param}
 ///
 /// {@macro googleapis_auth_hosted_domain_param}
 ///
@@ -203,12 +205,12 @@ Future<AutoRefreshingAuthClient> clientViaUserConsentManual(
 
 /// Obtain oauth2 [AccessCredentials] using the oauth2 authentication code flow.
 ///
+/// {@macro googleapis_auth_clientId_param}
+///
 /// [userPrompt] will be used for directing the user/user-agent to a URI. See
 /// [PromptUserForConsent] for more information.
 ///
 /// {@macro googleapis_auth_client_for_creds}
-///
-/// {@macro googleapis_auth_clientId_param}
 ///
 /// {@macro googleapis_auth_hosted_domain_param}
 ///
@@ -230,12 +232,12 @@ Future<AccessCredentials> obtainAccessCredentialsViaUserConsent(
 
 /// Obtain oauth2 [AccessCredentials] using the oauth2 authentication code flow.
 ///
+/// {@macro googleapis_auth_clientId_param}
+///
 /// [userPrompt] will be used for directing the user/user-agent to a URI. See
 /// [PromptUserForConsentManual] for more information.
 ///
 /// {@macro googleapis_auth_client_for_creds}
-///
-/// {@macro googleapis_auth_clientId_param}
 ///
 /// {@macro googleapis_auth_hosted_domain_param}
 ///

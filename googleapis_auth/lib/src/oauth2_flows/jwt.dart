@@ -56,6 +56,7 @@ class JwtFlow extends BaseFlow {
     final signature = _signer.sign(jwtSignatureInputInBytes);
     final jwt = '$jwtSignatureInput.${_base64url(signature)}';
 
+    // https://developers.google.com/identity/protocols/oauth2/service-account#authorizingrequests
     final response = await _client.oauthTokenRequest({
       'grant_type': _uri,
       'assertion': jwt,
