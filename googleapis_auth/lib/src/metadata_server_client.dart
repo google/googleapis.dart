@@ -39,8 +39,8 @@ Future<AccessCredentials> obtainAccessCredentialsViaMetadataServer(
 /// {@macro googleapis_auth_not_close_the_baseClient}
 Future<AutoRefreshingAuthClient> clientViaMetadataServer({
   Client? baseClient,
-}) async =>
-    await clientFromFlow(
+}) =>
+    clientFromFlow(
       (c) => MetadataServerAuthorizationFlow(c),
       baseClient: baseClient,
     );
