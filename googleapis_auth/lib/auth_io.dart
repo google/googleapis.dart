@@ -56,7 +56,7 @@ Future<AutoRefreshingAuthClient> clientViaApplicationDefaultCredentials({
   if (credsEnv != null && credsEnv.isNotEmpty) {
     // If env var is specific and not empty, we always try to load, even if
     // the file doesn't exist.
-    return fromApplicationsCredentialsFile(
+    return await fromApplicationsCredentialsFile(
       File(credsEnv),
       'GOOGLE_APPLICATION_CREDENTIALS',
       scopes,
@@ -79,7 +79,7 @@ Future<AutoRefreshingAuthClient> clientViaApplicationDefaultCredentials({
   }
   // Only try to load from credFile if it exists.
   if (await credFile.exists()) {
-    return fromApplicationsCredentialsFile(
+    return await fromApplicationsCredentialsFile(
       credFile,
       '`gcloud auth application-default login`',
       scopes,
@@ -87,7 +87,7 @@ Future<AutoRefreshingAuthClient> clientViaApplicationDefaultCredentials({
     );
   }
 
-  return clientViaMetadataServer(baseClient: baseClient);
+  return await clientViaMetadataServer(baseClient: baseClient);
 }
 
 /// Obtains oauth2 credentials and returns an authenticated HTTP client.
