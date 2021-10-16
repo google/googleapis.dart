@@ -7,6 +7,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:googleapis_auth/googleapis_auth.dart';
+import 'package:googleapis_auth/src/known_uris.dart';
 import 'package:googleapis_auth/src/oauth2_flows/auth_code.dart';
 import 'package:googleapis_auth/src/oauth2_flows/authorization_code_grant_manual_flow.dart';
 import 'package:googleapis_auth/src/oauth2_flows/authorization_code_grant_server_flow.dart';
@@ -37,12 +38,11 @@ void main() {
   RequestHandler successFullResponse({required bool manual}) =>
       (Request request) async {
         expect(request.method, equals('POST'));
-        expect('${request.url}',
-            equals('https://accounts.google.com/o/oauth2/token'));
+        expect(request.url, googleOauth2TokenEndpoint);
         expect(
-            request.headers['content-type']!
-                .startsWith('application/x-www-form-urlencoded'),
-            isTrue);
+          request.headers['content-type']!,
+          startsWith('application/x-www-form-urlencoded'),
+        );
 
         final pairs = request.body.split('&');
         expect(pairs, hasLength(6));
@@ -100,13 +100,18 @@ void main() {
 
   Uri validateUserPromptUri(String url, {bool manual = false}) {
     final uri = Uri.parse(url);
-    expect(uri.scheme, equals('https'));
-    expect(uri.host, equals('accounts.google.com'));
-    expect(uri.path, equals('/o/oauth2/v2/auth'));
-    expect(uri.queryParameters['client_id'], equals(clientId.identifier));
-    expect(uri.queryParameters['response_type'], equals('code'));
-    expect(uri.queryParameters['scope'], equals('s1 s2'));
-    expect(uri.queryParameters['redirect_uri'], isNotNull);
+    expect(uri.scheme, googleOauth2AuthorizationEndpoint.scheme);
+    expect(uri.authority, googleOauth2AuthorizationEndpoint.authority);
+    expect(uri.path, googleOauth2AuthorizationEndpoint.path);
+    expect(uri.queryParameters, {
+      'client_id': clientId.identifier,
+      'response_type': 'code',
+      'scope': 's1 s2',
+      'redirect_uri': isNotEmpty,
+      'code_challenge': hasLength(43),
+      'code_challenge_method': 'S256',
+      if (!manual) 'state': hasLength(32),
+    });
 
     final redirectUri = Uri.parse(uri.queryParameters['redirect_uri']!);
 

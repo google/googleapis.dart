@@ -1,3 +1,7 @@
+// Copyright (c) 2021, the Dart project authors.  Please see the AUTHORS file
+// for details. All rights reserved. Use of this source code is governed by a
+// BSD-style license that can be found in the LICENSE file.
+
 import 'dart:convert';
 import 'dart:math';
 import 'dart:typed_data';
@@ -7,9 +11,11 @@ import 'package:http/http.dart' as http;
 
 import '../access_credentials.dart';
 import '../client_id.dart';
+import '../known_uris.dart';
 import 'auth_code.dart';
+import 'base_flow.dart';
 
-abstract class AuthorizationCodeGrantAbstractFlow {
+abstract class AuthorizationCodeGrantAbstractFlow implements BaseFlow {
   final ClientId clientId;
   final String? hostedDomain;
   final List<String> scopes;
@@ -21,8 +27,6 @@ abstract class AuthorizationCodeGrantAbstractFlow {
     this._client, {
     this.hostedDomain,
   });
-
-  Future<AccessCredentials> run();
 
   Future<AccessCredentials> obtainAccessCredentialsUsingCodeImpl(
     String code,
@@ -38,7 +42,7 @@ abstract class AuthorizationCodeGrantAbstractFlow {
         scopes: scopes,
       );
 
-  Uri authenticationUri(
+  String authenticationUri(
     String redirectUri, {
     String? state,
     required String codeVerifier,
@@ -54,7 +58,11 @@ abstract class AuthorizationCodeGrantAbstractFlow {
       'code_challenge_method': 'S256',
       if (state != null) 'state': state,
     };
-    return Uri.https('accounts.google.com', 'o/oauth2/v2/auth', queryValues);
+    return googleOauth2AuthorizationEndpoint
+        .replace(
+          queryParameters: queryValues,
+        )
+        .toString();
   }
 }
 

@@ -1,3 +1,7 @@
+// Copyright (c) 2021, the Dart project authors.  Please see the AUTHORS file
+// for details. All rights reserved. Use of this source code is governed by a
+// BSD-style license that can be found in the LICENSE file.
+
 import 'dart:async';
 import 'dart:io';
 
@@ -43,20 +47,18 @@ class AuthorizationCodeGrantServerFlow
 
       // Prompt user and wait until they goes to URL and the google
       // authorization server calls back to our locally running HTTP server.
-      userPrompt(authenticationUri(
-        redirectionUri,
-        state: state,
-        codeVerifier: codeVerifier,
-      ).toString());
+      userPrompt(
+        authenticationUri(
+          redirectionUri,
+          state: state,
+          codeVerifier: codeVerifier,
+        ),
+      );
 
       final request = await server.first;
       final uri = request.uri;
 
       try {
-        final returnedState = uri.queryParameters['state'];
-        final code = uri.queryParameters['code'];
-        final error = uri.queryParameters['error'];
-
         if (request.method != 'GET') {
           throw Exception(
             'Invalid response from server '
@@ -64,19 +66,22 @@ class AuthorizationCodeGrantServerFlow
           );
         }
 
+        final returnedState = uri.queryParameters['state'];
         if (state != returnedState) {
           throw Exception(
             'Invalid response from server (state did not match).',
           );
         }
 
+        final error = uri.queryParameters['error'];
         if (error != null) {
           throw UserConsentException(
             'Error occurred while obtaining access credentials: $error',
           );
         }
 
-        if (code == null || code == '') {
+        final code = uri.queryParameters['code'];
+        if (code == null || code.isEmpty) {
           throw Exception(
             'Invalid response from server (no auth code transmitted).',
           );
