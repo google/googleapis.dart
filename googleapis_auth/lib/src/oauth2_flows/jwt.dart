@@ -10,6 +10,7 @@ import 'package:http/http.dart' as http;
 import '../access_credentials.dart';
 import '../crypto/rsa.dart';
 import '../crypto/rsa_sign.dart';
+import '../known_uris.dart';
 import '../utils.dart';
 import 'base_flow.dart';
 
@@ -43,7 +44,7 @@ class JwtFlow extends BaseFlow {
     final jwtClaimSet = {
       'iss': _clientEmail,
       'scope': _scopes.join(' '),
-      'aud': googleOauthTokenUri.toString(),
+      'aud': googleOauth2TokenEndpoint.toString(),
       'exp': timestamp + 3600,
       'iat': timestamp,
       if (_user != null) 'sub': _user!,

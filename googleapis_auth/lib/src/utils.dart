@@ -10,9 +10,7 @@ import 'package:http_parser/http_parser.dart';
 import 'access_token.dart';
 import 'exceptions.dart';
 import 'http_client_base.dart';
-
-final googleOauthTokenUri =
-    Uri.parse('https://accounts.google.com/o/oauth2/token');
+import 'known_uris.dart';
 
 /// Due to differences of clock speed, network latency, etc. we
 /// will shorten expiry dates by 20 seconds.
@@ -120,7 +118,7 @@ extension ClientExtensions on Client {
             .join('&'),
       ),
     );
-    final request = RequestImpl('POST', googleOauthTokenUri, body)
+    final request = RequestImpl('POST', googleOauth2TokenEndpoint, body)
       ..headers['content-type'] = _contentTypeUrlEncoded;
 
     return requestJson(request, 'Failed to obtain access credentials.');

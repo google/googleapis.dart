@@ -5,6 +5,7 @@
 import 'dart:async';
 import 'dart:convert';
 
+import 'package:googleapis_auth/src/known_uris.dart';
 import 'package:googleapis_auth/src/oauth2_flows/jwt.dart';
 import 'package:http/http.dart';
 import 'package:test/test.dart';
@@ -12,11 +13,9 @@ import 'package:test/test.dart';
 import '../test_utils.dart';
 
 void main() {
-  const tokenUrl = 'https://accounts.google.com/o/oauth2/token';
-
   Future<Response> successfulSignRequest(Request request) async {
     expect(request.method, equals('POST'));
-    expect(request.url.toString(), equals(tokenUrl));
+    expect(request.url, googleOauth2TokenEndpoint);
 
     // We are not asserting what comes after '&assertion=' because this is
     // time dependent.
@@ -46,9 +45,14 @@ void main() {
     const clientEmail = 'a@b.com';
     final scopes = ['s1', 's2'];
 
-    test('successfull', () async {
-      final flow = JwtFlow(clientEmail, testPrivateKey, null, scopes,
-          mockClient(expectAsync1(successfulSignRequest), expectClose: false));
+    test('successful', () async {
+      final flow = JwtFlow(
+        clientEmail,
+        testPrivateKey,
+        null,
+        scopes,
+        mockClient(expectAsync1(successfulSignRequest), expectClose: false),
+      );
 
       final credentials = await flow.run();
       expect(credentials.accessToken.data, equals('atok'));

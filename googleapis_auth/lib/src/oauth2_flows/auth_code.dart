@@ -10,11 +10,9 @@ import 'package:http/http.dart';
 import '../access_credentials.dart';
 import '../client_id.dart';
 import '../exceptions.dart';
+import '../known_uris.dart';
 import '../utils.dart';
 
-// The OAuth2 Token endpoint can be used to make requests as
-//    https://www.googleapis.com/oauth2/v2/tokeninfo?access_token=<token>
-//
 // A successful response from the server will give an HTTP response status
 // 200 and a body of the following type:
 // {
@@ -30,9 +28,8 @@ Future<List<String>> obtainScopesFromAccessToken(
   String accessToken,
   http.Client client,
 ) async {
-  final url = Uri.parse(
-    'https://www.googleapis.com/oauth2/v2/tokeninfo'
-    '?access_token=${Uri.encodeQueryComponent(accessToken)}',
+  final url = googleOauth2TokenInfoEndpoint.replace(
+    queryParameters: {'access_token': accessToken},
   );
 
   final json = await client.requestJson(

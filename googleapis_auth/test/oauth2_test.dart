@@ -7,6 +7,7 @@ import 'dart:convert';
 
 import 'package:googleapis_auth/googleapis_auth.dart';
 import 'package:googleapis_auth/src/http_client_base.dart';
+import 'package:googleapis_auth/src/known_uris.dart';
 import 'package:googleapis_auth/src/utils.dart';
 import 'package:http/http.dart';
 import 'package:test/test.dart';
@@ -133,14 +134,16 @@ void main() {
 
     Future<Response> successfulRefresh(Request request) async {
       expect(request.method, equals('POST'));
-      expect('${request.url}',
-          equals('https://accounts.google.com/o/oauth2/token'));
+      expect(request.url, googleOauth2TokenEndpoint);
       expect(
-          request.body,
-          equals('client_id=id&'
-              'client_secret=secret&'
-              'refresh_token=refresh&'
-              'grant_type=refresh_token'));
+        request.body,
+        equals(
+          'client_id=id&'
+          'client_secret=secret&'
+          'refresh_token=refresh&'
+          'grant_type=refresh_token',
+        ),
+      );
       final body = jsonEncode({
         'token_type': 'Bearer',
         'access_token': 'atoken',
@@ -158,7 +161,7 @@ void main() {
     Future<Response> serverError(Request request) =>
         Future<Response>.error(Exception('transport layer exception'));
 
-    test('refreshCredentials-successfull', () async {
+    test('refreshCredentials-successful', () async {
       final newCredentials = await refreshCredentials(clientId, credentials,
           mockClient(expectAsync1(successfulRefresh), expectClose: false));
       final expectedResultUtc = DateTime.now()
