@@ -457,6 +457,62 @@ class GoogleAdsHomeservicesLocalservicesV1AggregatorInfo {
       };
 }
 
+/// Container for booking lead specific information.
+class GoogleAdsHomeservicesLocalservicesV1BookingLead {
+  /// Timestamp of when service is provided by advertiser.
+  core.String? bookingAppointmentTimestamp;
+
+  /// Consumer email associated with the booking lead.
+  core.String? consumerEmail;
+
+  /// Consumer phone number associated with the booking lead.
+  core.String? consumerPhoneNumber;
+
+  /// Name of the customer who created the lead.
+  core.String? customerName;
+
+  /// The job type of the specified lead.
+  core.String? jobType;
+
+  GoogleAdsHomeservicesLocalservicesV1BookingLead({
+    this.bookingAppointmentTimestamp,
+    this.consumerEmail,
+    this.consumerPhoneNumber,
+    this.customerName,
+    this.jobType,
+  });
+
+  GoogleAdsHomeservicesLocalservicesV1BookingLead.fromJson(core.Map _json)
+      : this(
+          bookingAppointmentTimestamp:
+              _json.containsKey('bookingAppointmentTimestamp')
+                  ? _json['bookingAppointmentTimestamp'] as core.String
+                  : null,
+          consumerEmail: _json.containsKey('consumerEmail')
+              ? _json['consumerEmail'] as core.String
+              : null,
+          consumerPhoneNumber: _json.containsKey('consumerPhoneNumber')
+              ? _json['consumerPhoneNumber'] as core.String
+              : null,
+          customerName: _json.containsKey('customerName')
+              ? _json['customerName'] as core.String
+              : null,
+          jobType: _json.containsKey('jobType')
+              ? _json['jobType'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (bookingAppointmentTimestamp != null)
+          'bookingAppointmentTimestamp': bookingAppointmentTimestamp!,
+        if (consumerEmail != null) 'consumerEmail': consumerEmail!,
+        if (consumerPhoneNumber != null)
+          'consumerPhoneNumber': consumerPhoneNumber!,
+        if (customerName != null) 'customerName': customerName!,
+        if (jobType != null) 'jobType': jobType!,
+      };
+}
+
 /// A Detailed Lead Report of a lead identified by their lead id and contains
 /// consumer, account, monetization, and lead data.
 class GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport {
@@ -465,6 +521,9 @@ class GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport {
 
   /// Aggregator specific information related to the lead.
   GoogleAdsHomeservicesLocalservicesV1AggregatorInfo? aggregatorInfo;
+
+  /// More information associated to only booking leads.
+  GoogleAdsHomeservicesLocalservicesV1BookingLead? bookingLead;
 
   /// Business name associated to the account.
   core.String? businessName;
@@ -502,6 +561,7 @@ class GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport {
   /// - "LEAD_TYPE_UNSPECIFIED" : Not specified.
   /// - "MESSAGE" : Message lead.
   /// - "PHONE_CALL" : Phone call lead.
+  /// - "BOOKING" : Booking lead.
   core.String? leadType;
 
   /// More information associated to only message leads.
@@ -516,6 +576,7 @@ class GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport {
   GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport({
     this.accountId,
     this.aggregatorInfo,
+    this.bookingLead,
     this.businessName,
     this.chargeStatus,
     this.currencyCode,
@@ -541,6 +602,10 @@ class GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport {
               ? GoogleAdsHomeservicesLocalservicesV1AggregatorInfo.fromJson(
                   _json['aggregatorInfo']
                       as core.Map<core.String, core.dynamic>)
+              : null,
+          bookingLead: _json.containsKey('bookingLead')
+              ? GoogleAdsHomeservicesLocalservicesV1BookingLead.fromJson(
+                  _json['bookingLead'] as core.Map<core.String, core.dynamic>)
               : null,
           businessName: _json.containsKey('businessName')
               ? _json['businessName'] as core.String
@@ -587,6 +652,7 @@ class GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport {
   core.Map<core.String, core.dynamic> toJson() => {
         if (accountId != null) 'accountId': accountId!,
         if (aggregatorInfo != null) 'aggregatorInfo': aggregatorInfo!,
+        if (bookingLead != null) 'bookingLead': bookingLead!,
         if (businessName != null) 'businessName': businessName!,
         if (chargeStatus != null) 'chargeStatus': chargeStatus!,
         if (currencyCode != null) 'currencyCode': currencyCode!,

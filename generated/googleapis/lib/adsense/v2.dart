@@ -17,7 +17,8 @@
 /// The AdSense Management API allows publishers to access their inventory and
 /// run earnings and performance reports.
 ///
-/// For more information, see <http://code.google.com/apis/adsense/management/>
+/// For more information, see
+/// <https://developers.google.com/adsense/management/>
 ///
 /// Create an instance of [AdsenseApi] to access these resources:
 ///

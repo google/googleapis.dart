@@ -5382,66 +5382,11 @@ class StorageSourceManifest {
 }
 
 /// Start and end times for a build execution phase.
-class TimeSpan {
-  /// End of time span.
-  core.String? endTime;
-
-  /// Start of time span.
-  core.String? startTime;
-
-  TimeSpan({
-    this.endTime,
-    this.startTime,
-  });
-
-  TimeSpan.fromJson(core.Map _json)
-      : this(
-          endTime: _json.containsKey('endTime')
-              ? _json['endTime'] as core.String
-              : null,
-          startTime: _json.containsKey('startTime')
-              ? _json['startTime'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (endTime != null) 'endTime': endTime!,
-        if (startTime != null) 'startTime': startTime!,
-      };
-}
+typedef TimeSpan = $TimeSpan;
 
 /// Volume describes a Docker container volume which is mounted into build steps
 /// in order to persist files across build step execution.
-class Volume {
-  /// Name of the volume to mount.
-  ///
-  /// Volume names must be unique per build step and must be valid names for
-  /// Docker volumes. Each named volume must be used by at least two build
-  /// steps.
-  core.String? name;
-
-  /// Path at which to mount the volume.
-  ///
-  /// Paths must be absolute and cannot conflict with other volume paths on the
-  /// same build step or with certain reserved volume paths.
-  core.String? path;
-
-  Volume({
-    this.name,
-    this.path,
-  });
-
-  Volume.fromJson(core.Map _json)
-      : this(
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          path: _json.containsKey('path') ? _json['path'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-        if (path != null) 'path': path!,
-      };
-}
+typedef Volume = $Volume;
 
 /// A non-fatal problem encountered during the execution of the build.
 class Warning {

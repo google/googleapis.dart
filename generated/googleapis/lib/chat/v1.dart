@@ -865,7 +865,8 @@ class SpacesMessagesResource {
   /// Value must have pattern `^spaces/\[^/\]+/messages/\[^/\]+$`.
   ///
   /// [updateMask] - Required. The field paths to be updated, comma separated if
-  /// there are multiple. Currently supported field paths: * text * cards
+  /// there are multiple. Currently supported field paths: * text * cards *
+  /// gsuite_message_integration_render_data * attachment
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2856,7 +2857,7 @@ class GoogleAppsCardV1SelectionItem {
 /// A suggestion item.
 ///
 /// Only supports text for now.
-typedef GoogleAppsCardV1SuggestionItem = $Shared04;
+typedef GoogleAppsCardV1SuggestionItem = $Shared05;
 
 /// A container wrapping elements necessary for showing suggestion items used in
 /// text input autocomplete.
@@ -3982,7 +3983,7 @@ class TextButton {
 /// A paragraph of text.
 ///
 /// Formatted text supported.
-typedef TextParagraph = $Shared04;
+typedef TextParagraph = $Shared05;
 
 /// A thread in Google Chat.
 class Thread {

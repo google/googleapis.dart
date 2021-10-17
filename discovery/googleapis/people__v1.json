@@ -1171,7 +1171,7 @@
             }
         }
     },
-    "revision": "20211010",
+    "revision": "20211018",
     "rootUrl": "https://people.googleapis.com/",
     "schemas": {
         "Address": {

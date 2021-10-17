@@ -856,7 +856,7 @@ class SearchAnalyticsQueryRequest {
   /// - "WEB"
   /// - "IMAGE"
   /// - "VIDEO"
-  /// - "NEWS"
+  /// - "NEWS" : News tab in search.
   core.String? searchType;
 
   /// \[Required\] Start date of the requested date range, in YYYY-MM-DD format,

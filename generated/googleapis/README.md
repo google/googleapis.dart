@@ -87,7 +87,7 @@ Accesses AdSense publishers' inventory and generates performance reports.
 
 The AdSense Management API allows publishers to access their inventory and run earnings and performance reports.
 
-- [Documentation](http://code.google.com/apis/adsense/management/)
+- [Documentation](https://developers.google.com/adsense/management/)
 - [API details](https://pub.dev/documentation/googleapis/6.0.1-dev/adsense.v2/adsense.v2-library.html)
 
 #### ![Logo](https://www.google.com/images/icons/product/adsense-16.png) AdSense Host API - `adsensehost.v4_1`
@@ -453,6 +453,13 @@ Builds and manages container-based applications, powered by the open source Kube
 - [Documentation](https://cloud.google.com/container-engine/)
 - [API details](https://pub.dev/documentation/googleapis/6.0.1-dev/container.v1/container.v1-library.html)
 
+#### Container Analysis API - `containeranalysis.v1`
+
+An implementation of the Grafeas API, which stores, and enables querying and retrieval of critical metadata about all of your software artifacts.
+
+- [Documentation](https://cloud.google.com/container-analysis/api/reference/rest/)
+- [API details](https://pub.dev/documentation/googleapis/6.0.1-dev/containeranalysis.v1/containeranalysis.v1-library.html)
+
 #### Content API for Shopping - `content.v2_1`
 
 Manage your product listings and accounts for Google Shopping
@@ -583,6 +590,13 @@ Service to parse structured information from unstructured or semi-structured doc
 
 - [Documentation](https://cloud.google.com/document-ai/docs/)
 - [API details](https://pub.dev/documentation/googleapis/6.0.1-dev/documentai.v1/documentai.v1-library.html)
+
+#### Cloud Domains API - `domains.v1`
+
+Enables management and configuration of domain names.
+
+- [Documentation](https://cloud.google.com/domains/)
+- [API details](https://pub.dev/documentation/googleapis/6.0.1-dev/domains.v1/domains.v1-library.html)
 
 #### Domains RDAP API - `domainsrdap.v1`
 
@@ -1023,11 +1037,6 @@ Provides access to information about profiles and contacts.
 - [Documentation](https://developers.google.com/people/)
 - [API details](https://pub.dev/documentation/googleapis/6.0.1-dev/people.v1/people.v1-library.html)
 
-#### Playable Locations API - `playablelocations.v3`
-
-- [Documentation](https://developers.google.com/maps/contact-sales/)
-- [API details](https://pub.dev/documentation/googleapis/6.0.1-dev/playablelocations.v3/playablelocations.v3-library.html)
-
 #### Google Play Custom App Publishing API - `playcustomapp.v1`
 
 API to create and publish custom Android apps
@@ -1352,19 +1361,19 @@ Retention and eDiscovery for Google Workspace. To work with Vault resources, the
 - [Documentation](https://developers.google.com/vault)
 - [API details](https://pub.dev/documentation/googleapis/6.0.1-dev/vault.v1/vault.v1-library.html)
 
-#### Semantic Tile API - `vectortile.v1`
-
-Serves vector tiles containing geospatial data. 
-
-- [Documentation](https://developers.google.com/maps/contact-sales/)
-- [API details](https://pub.dev/documentation/googleapis/6.0.1-dev/vectortile.v1/vectortile.v1-library.html)
-
 #### Chrome Verified Access API - `verifiedaccess.v1`
 
 API for Verified Access chrome extension to provide credential verification for chrome devices connecting to an enterprise network
 
 - [Documentation](https://developers.google.com/chrome/verified-access)
 - [API details](https://pub.dev/documentation/googleapis/6.0.1-dev/verifiedaccess.v1/verifiedaccess.v1-library.html)
+
+#### Version History API - `versionhistory.v1`
+
+Version History API - Prod
+
+- [Documentation](https://developers.chrome.com/versionhistory)
+- [API details](https://pub.dev/documentation/googleapis/6.0.1-dev/versionhistory.v1/versionhistory.v1-library.html)
 
 #### Cloud Video Intelligence API - `videointelligence.v1`
 
@@ -1379,6 +1388,13 @@ Integrates Google Vision features, including image labeling, face, logo, and lan
 
 - [Documentation](https://cloud.google.com/vision/)
 - [API details](https://pub.dev/documentation/googleapis/6.0.1-dev/vision.v1/vision.v1-library.html)
+
+#### VM Migration API - `vmmigration.v1`
+
+Use the Migrate for Compute Engine API to programmatically migrate workloads. 
+
+- [Documentation](https://cloud.google.com/migrate/compute-engine)
+- [API details](https://pub.dev/documentation/googleapis/6.0.1-dev/vmmigration.v1/vmmigration.v1-library.html)
 
 #### Web Fonts Developer API - `webfonts.v1`
 

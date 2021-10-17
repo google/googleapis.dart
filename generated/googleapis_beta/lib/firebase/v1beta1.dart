@@ -1933,6 +1933,13 @@ class AnalyticsDetails {
 
 /// Details of a Google Analytics property
 class AnalyticsProperty {
+  /// The ID of the
+  /// [Google Analytics account](https://www.google.com/analytics/) for the
+  /// Google Analytics property associated with the specified FirebaseProject.
+  ///
+  /// Output only.
+  core.String? analyticsAccountId;
+
   /// The display name of the Google Analytics property associated with the
   /// specified `FirebaseProject`.
   core.String? displayName;
@@ -1948,12 +1955,16 @@ class AnalyticsProperty {
   core.String? id;
 
   AnalyticsProperty({
+    this.analyticsAccountId,
     this.displayName,
     this.id,
   });
 
   AnalyticsProperty.fromJson(core.Map _json)
       : this(
+          analyticsAccountId: _json.containsKey('analyticsAccountId')
+              ? _json['analyticsAccountId'] as core.String
+              : null,
           displayName: _json.containsKey('displayName')
               ? _json['displayName'] as core.String
               : null,
@@ -1961,6 +1972,8 @@ class AnalyticsProperty {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (analyticsAccountId != null)
+          'analyticsAccountId': analyticsAccountId!,
         if (displayName != null) 'displayName': displayName!,
         if (id != null) 'id': id!,
       };
@@ -2397,6 +2410,9 @@ class IosApp {
   /// Immutable.
   core.String? projectId;
 
+  /// The Apple Developer Team ID associated with the App in the App Store.
+  core.String? teamId;
+
   IosApp({
     this.appId,
     this.appStoreId,
@@ -2404,6 +2420,7 @@ class IosApp {
     this.displayName,
     this.name,
     this.projectId,
+    this.teamId,
   });
 
   IosApp.fromJson(core.Map _json)
@@ -2423,6 +2440,9 @@ class IosApp {
           projectId: _json.containsKey('projectId')
               ? _json['projectId'] as core.String
               : null,
+          teamId: _json.containsKey('teamId')
+              ? _json['teamId'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2432,6 +2452,7 @@ class IosApp {
         if (displayName != null) 'displayName': displayName!,
         if (name != null) 'name': name!,
         if (projectId != null) 'projectId': projectId!,
+        if (teamId != null) 'teamId': teamId!,
       };
 }
 

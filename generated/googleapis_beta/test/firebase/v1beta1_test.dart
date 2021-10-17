@@ -149,6 +149,7 @@ api.AnalyticsProperty buildAnalyticsProperty() {
   final o = api.AnalyticsProperty();
   buildCounterAnalyticsProperty++;
   if (buildCounterAnalyticsProperty < 3) {
+    o.analyticsAccountId = 'foo';
     o.displayName = 'foo';
     o.id = 'foo';
   }
@@ -159,6 +160,10 @@ api.AnalyticsProperty buildAnalyticsProperty() {
 void checkAnalyticsProperty(api.AnalyticsProperty o) {
   buildCounterAnalyticsProperty++;
   if (buildCounterAnalyticsProperty < 3) {
+    unittest.expect(
+      o.analyticsAccountId!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.displayName!,
       unittest.equals('foo'),
@@ -411,6 +416,7 @@ api.IosApp buildIosApp() {
     o.displayName = 'foo';
     o.name = 'foo';
     o.projectId = 'foo';
+    o.teamId = 'foo';
   }
   buildCounterIosApp--;
   return o;
@@ -441,6 +447,10 @@ void checkIosApp(api.IosApp o) {
     );
     unittest.expect(
       o.projectId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.teamId!,
       unittest.equals('foo'),
     );
   }

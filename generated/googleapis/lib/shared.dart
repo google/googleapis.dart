@@ -427,6 +427,40 @@ class $AdvertiserGroup {
 
 /// Used by:
 ///
+/// - containeranalysis:v1 : AliasContext
+/// - ondemandscanning:v1 : AliasContext
+class $AliasContext {
+  /// The alias kind.
+  /// Possible string values are:
+  /// - "KIND_UNSPECIFIED" : Unknown.
+  /// - "FIXED" : Git tag.
+  /// - "MOVABLE" : Git branch.
+  /// - "OTHER" : Used to specify non-standard aliases. For example, if a Git
+  /// repo has a ref named "refs/foo/bar".
+  core.String? kind;
+
+  /// The alias name.
+  core.String? name;
+
+  $AliasContext({
+    this.kind,
+    this.name,
+  });
+
+  $AliasContext.fromJson(core.Map _json)
+      : this(
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (name != null) 'name': name!,
+      };
+}
+
+/// Used by:
+///
 /// - searchconsole:v1 : ApiDataRow
 /// - webmasters:v3 : ApiDataRow
 class $ApiDataRow {
@@ -471,6 +505,54 @@ class $ApiDataRow {
         if (impressions != null) 'impressions': impressions!,
         if (keys != null) 'keys': keys!,
         if (position != null) 'position': position!,
+      };
+}
+
+/// Used by:
+///
+/// - containeranalysis:v1 : Artifact
+/// - ondemandscanning:v1 : Artifact
+class $Artifact {
+  /// Hash or checksum value of a binary, or Docker Registry 2.0 digest of a
+  /// container.
+  core.String? checksum;
+
+  /// Artifact ID, if any; for container images, this will be a URL by digest
+  /// like `gcr.io/projectID/imagename@sha256:123456`.
+  core.String? id;
+
+  /// Related artifact names.
+  ///
+  /// This may be the path to a binary or jar file, or in the case of a
+  /// container build, the name used to push the container image to Google
+  /// Container Registry, as presented to `docker push`. Note that a single
+  /// Artifact ID can have multiple names, for example if two tags are applied
+  /// to one image.
+  core.List<core.String>? names;
+
+  $Artifact({
+    this.checksum,
+    this.id,
+    this.names,
+  });
+
+  $Artifact.fromJson(core.Map _json)
+      : this(
+          checksum: _json.containsKey('checksum')
+              ? _json['checksum'] as core.String
+              : null,
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          names: _json.containsKey('names')
+              ? (_json['names'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (checksum != null) 'checksum': checksum!,
+        if (id != null) 'id': id!,
+        if (names != null) 'names': names!,
       };
 }
 
@@ -586,6 +668,7 @@ class $AudienceSegment {
 /// - datafusion:v1 : AuditLogConfig
 /// - datamigration:v1 : AuditLogConfig
 /// - deploymentmanager:v2 : AuditLogConfig
+/// - domains:v1 : AuditLogConfig
 /// - eventarc:v1 : AuditLogConfig
 /// - gkehub:v1 : AuditLogConfig
 /// - healthcare:v1 : AuditLogConfig
@@ -1128,6 +1211,36 @@ class $CampaignCreativeAssociation {
   core.Map<core.String, core.dynamic> toJson() => {
         if (creativeId != null) 'creativeId': creativeId!,
         if (kind != null) 'kind': kind!,
+      };
+}
+
+/// Used by:
+///
+/// - containeranalysis:v1 : Category
+/// - ondemandscanning:v1 : Category
+class $Category {
+  /// The identifier of the category.
+  core.String? categoryId;
+
+  /// The localized name of the category.
+  core.String? name;
+
+  $Category({
+    this.categoryId,
+    this.name,
+  });
+
+  $Category.fromJson(core.Map _json)
+      : this(
+          categoryId: _json.containsKey('categoryId')
+              ? _json['categoryId'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (categoryId != null) 'categoryId': categoryId!,
+        if (name != null) 'name': name!,
       };
 }
 
@@ -1711,6 +1824,120 @@ class $Color {
         if (blue != null) 'blue': blue!,
         if (green != null) 'green': green!,
         if (red != null) 'red': red!,
+      };
+}
+
+/// Used by:
+///
+/// - containeranalysis:v1 : Command
+/// - ondemandscanning:v1 : Command
+class $Command {
+  /// Command-line arguments used when executing this command.
+  core.List<core.String>? args;
+
+  /// Working directory (relative to project source root) used when running this
+  /// command.
+  core.String? dir;
+
+  /// Environment variables set before running this command.
+  core.List<core.String>? env;
+
+  /// Optional unique identifier for this command, used in wait_for to reference
+  /// this command as a dependency.
+  core.String? id;
+
+  /// Name of the command, as presented on the command line, or if the command
+  /// is packaged as a Docker container, as presented to `docker pull`.
+  ///
+  /// Required.
+  core.String? name;
+
+  /// The ID(s) of the command(s) that this command depends on.
+  core.List<core.String>? waitFor;
+
+  $Command({
+    this.args,
+    this.dir,
+    this.env,
+    this.id,
+    this.name,
+    this.waitFor,
+  });
+
+  $Command.fromJson(core.Map _json)
+      : this(
+          args: _json.containsKey('args')
+              ? (_json['args'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          dir: _json.containsKey('dir') ? _json['dir'] as core.String : null,
+          env: _json.containsKey('env')
+              ? (_json['env'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          waitFor: _json.containsKey('waitFor')
+              ? (_json['waitFor'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (args != null) 'args': args!,
+        if (dir != null) 'dir': dir!,
+        if (env != null) 'env': env!,
+        if (id != null) 'id': id!,
+        if (name != null) 'name': name!,
+        if (waitFor != null) 'waitFor': waitFor!,
+      };
+}
+
+/// Used by:
+///
+/// - containeranalysis:v1 : Completeness
+/// - ondemandscanning:v1 : Completeness
+class $Completeness {
+  /// If true, the builder claims that recipe.arguments is complete, meaning
+  /// that all external inputs are properly captured in the recipe.
+  core.bool? arguments;
+
+  /// If true, the builder claims that recipe.environment is claimed to be
+  /// complete.
+  core.bool? environment;
+
+  /// If true, the builder claims that materials are complete, usually through
+  /// some controls to prevent network access.
+  ///
+  /// Sometimes called "hermetic".
+  core.bool? materials;
+
+  $Completeness({
+    this.arguments,
+    this.environment,
+    this.materials,
+  });
+
+  $Completeness.fromJson(core.Map _json)
+      : this(
+          arguments: _json.containsKey('arguments')
+              ? _json['arguments'] as core.bool
+              : null,
+          environment: _json.containsKey('environment')
+              ? _json['environment'] as core.bool
+              : null,
+          materials: _json.containsKey('materials')
+              ? _json['materials'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (arguments != null) 'arguments': arguments!,
+        if (environment != null) 'environment': environment!,
+        if (materials != null) 'materials': materials!,
       };
 }
 
@@ -2805,6 +3032,90 @@ class $DeployIssueModelRequest {
 
 /// Used by:
 ///
+/// - containeranalysis:v1 : DeploymentOccurrence
+/// - ondemandscanning:v1 : DeploymentOccurrence
+class $DeploymentOccurrence {
+  /// Address of the runtime element hosting this deployment.
+  core.String? address;
+
+  /// Configuration used to create this deployment.
+  core.String? config;
+
+  /// Beginning of the lifetime of this deployment.
+  ///
+  /// Required.
+  core.String? deployTime;
+
+  /// Platform hosting this deployment.
+  /// Possible string values are:
+  /// - "PLATFORM_UNSPECIFIED" : Unknown.
+  /// - "GKE" : Google Container Engine.
+  /// - "FLEX" : Google App Engine: Flexible Environment.
+  /// - "CUSTOM" : Custom user-defined platform.
+  core.String? platform;
+
+  /// Resource URI for the artifact being deployed taken from the deployable
+  /// field with the same name.
+  ///
+  /// Output only.
+  core.List<core.String>? resourceUri;
+
+  /// End of the lifetime of this deployment.
+  core.String? undeployTime;
+
+  /// Identity of the user that triggered this deployment.
+  core.String? userEmail;
+
+  $DeploymentOccurrence({
+    this.address,
+    this.config,
+    this.deployTime,
+    this.platform,
+    this.resourceUri,
+    this.undeployTime,
+    this.userEmail,
+  });
+
+  $DeploymentOccurrence.fromJson(core.Map _json)
+      : this(
+          address: _json.containsKey('address')
+              ? _json['address'] as core.String
+              : null,
+          config: _json.containsKey('config')
+              ? _json['config'] as core.String
+              : null,
+          deployTime: _json.containsKey('deployTime')
+              ? _json['deployTime'] as core.String
+              : null,
+          platform: _json.containsKey('platform')
+              ? _json['platform'] as core.String
+              : null,
+          resourceUri: _json.containsKey('resourceUri')
+              ? (_json['resourceUri'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          undeployTime: _json.containsKey('undeployTime')
+              ? _json['undeployTime'] as core.String
+              : null,
+          userEmail: _json.containsKey('userEmail')
+              ? _json['userEmail'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (address != null) 'address': address!,
+        if (config != null) 'config': config!,
+        if (deployTime != null) 'deployTime': deployTime!,
+        if (platform != null) 'platform': platform!,
+        if (resourceUri != null) 'resourceUri': resourceUri!,
+        if (undeployTime != null) 'undeployTime': undeployTime!,
+        if (userEmail != null) 'userEmail': userEmail!,
+      };
+}
+
+/// Used by:
+///
 /// - vision:v1 : DetectedBreak
 /// - vision:v1 : GoogleCloudVisionV1p1beta1TextAnnotationDetectedBreak
 /// - vision:v1 : GoogleCloudVisionV1p2beta1TextAnnotationDetectedBreak
@@ -3889,6 +4200,8 @@ class $EgressFrom {
 /// - contactcenterinsights:v1 : GoogleProtobufEmpty
 /// - container:v1 : Empty
 /// - container:v1 : MeshCertificates
+/// - containeranalysis:v1 : CancelOperationRequest
+/// - containeranalysis:v1 : Empty
 /// - content:v2.1 : ActivateBuyOnGoogleProgramRequest
 /// - content:v2.1 : CaptureOrderRequest
 /// - content:v2.1 : PauseBuyOnGoogleProgramRequest
@@ -3981,6 +4294,8 @@ class $EgressFrom {
 /// - documentai:v1 : GoogleCloudDocumentaiV1beta3SetDefaultProcessorVersionResponse
 /// - documentai:v1 : GoogleCloudDocumentaiV1beta3UndeployProcessorVersionResponse
 /// - documentai:v1 : GoogleProtobufEmpty
+/// - domains:v1 : ExportRegistrationRequest
+/// - domains:v1 : ResetAuthorizationCodeRequest
 /// - driveactivity:v2 : Administrator
 /// - driveactivity:v2 : AnonymousUser
 /// - driveactivity:v2 : Anyone
@@ -4104,8 +4419,6 @@ class $EgressFrom {
 /// - paymentsresellersubscription:v1 : GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionRequest
 /// - paymentsresellersubscription:v1 : GoogleCloudPaymentsResellerSubscriptionV1UndoCancelSubscriptionRequest
 /// - people:v1 : Empty
-/// - playablelocations:v3 : GoogleMapsPlayablelocationsV3LogImpressionsResponse
-/// - playablelocations:v3 : GoogleMapsPlayablelocationsV3LogPlayerReportsResponse
 /// - privateca:v1 : CancelOperationRequest
 /// - privateca:v1 : Empty
 /// - pubsub:v1 : DetachSubscriptionResponse
@@ -4138,7 +4451,6 @@ class $EgressFrom {
 /// - retail:v2 : GoogleCloudRetailV2SetInventoryResponse
 /// - retail:v2 : GoogleCloudRetailV2alphaAddFulfillmentPlacesMetadata
 /// - retail:v2 : GoogleCloudRetailV2alphaAddFulfillmentPlacesResponse
-/// - retail:v2 : GoogleCloudRetailV2alphaEnrollSolutionMetadata
 /// - retail:v2 : GoogleCloudRetailV2alphaPurgeMetadata
 /// - retail:v2 : GoogleCloudRetailV2alphaRejoinUserEventsMetadata
 /// - retail:v2 : GoogleCloudRetailV2alphaRemoveFulfillmentPlacesMetadata
@@ -4227,6 +4539,14 @@ class $EgressFrom {
 /// - videointelligence:v1 : GoogleProtobuf_Empty
 /// - vision:v1 : CancelOperationRequest
 /// - vision:v1 : Empty
+/// - vmmigration:v1 : CancelCloneJobRequest
+/// - vmmigration:v1 : CancelCutoverJobRequest
+/// - vmmigration:v1 : CancelOperationRequest
+/// - vmmigration:v1 : Empty
+/// - vmmigration:v1 : FinalizeMigrationRequest
+/// - vmmigration:v1 : PauseMigrationRequest
+/// - vmmigration:v1 : ResumeMigrationRequest
+/// - vmmigration:v1 : StartMigrationRequest
 /// - webrisk:v1 : GoogleLongrunningCancelOperationRequest
 /// - webrisk:v1 : GoogleProtobufEmpty
 /// - websecurityscanner:v1 : Empty
@@ -4455,6 +4775,38 @@ class $EntityTypeEntity {
   core.Map<core.String, core.dynamic> toJson() => {
         if (synonyms != null) 'synonyms': synonyms!,
         if (value != null) 'value': value!,
+      };
+}
+
+/// Used by:
+///
+/// - containeranalysis:v1 : EnvelopeSignature
+/// - ondemandscanning:v1 : EnvelopeSignature
+class $EnvelopeSignature {
+  core.String? keyid;
+  core.String? sig;
+  core.List<core.int> get sigAsBytes => convert.base64.decode(sig!);
+
+  set sigAsBytes(core.List<core.int> _bytes) {
+    sig =
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  $EnvelopeSignature({
+    this.keyid,
+    this.sig,
+  });
+
+  $EnvelopeSignature.fromJson(core.Map _json)
+      : this(
+          keyid:
+              _json.containsKey('keyid') ? _json['keyid'] as core.String : null,
+          sig: _json.containsKey('sig') ? _json['sig'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (keyid != null) 'keyid': keyid!,
+        if (sig != null) 'sig': sig!,
       };
 }
 
@@ -4823,11 +5175,13 @@ class $ExportOptions {
 /// - cloudtasks:v2 : Expr
 /// - compute:v1 : Expr
 /// - connectors:v1 : Expr
+/// - containeranalysis:v1 : Expr
 /// - datacatalog:v1 : Expr
 /// - datafusion:v1 : Expr
 /// - datamigration:v1 : Expr
 /// - dataproc:v1 : Expr
 /// - deploymentmanager:v2 : Expr
+/// - domains:v1 : Expr
 /// - eventarc:v1 : Expr
 /// - gameservices:v1 : Expr
 /// - gkehub:v1 : Expr
@@ -5008,6 +5362,56 @@ class $FcmOptions {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (analyticsLabel != null) 'analyticsLabel': analyticsLabel!,
+      };
+}
+
+/// Used by:
+///
+/// - containeranalysis:v1 : Fingerprint
+/// - ondemandscanning:v1 : Fingerprint
+class $Fingerprint {
+  /// The layer ID of the final layer in the Docker image's v1 representation.
+  ///
+  /// Required.
+  core.String? v1Name;
+
+  /// The ordered list of v2 blobs that represent a given image.
+  ///
+  /// Required.
+  core.List<core.String>? v2Blob;
+
+  /// The name of the image's v2 blobs computed via: \[bottom\] := v2_blobbottom
+  /// := sha256(v2_blob\[N\] + " " + v2_name\[N+1\]) Only the name of the final
+  /// blob is kept.
+  ///
+  /// Output only.
+  core.String? v2Name;
+
+  $Fingerprint({
+    this.v1Name,
+    this.v2Blob,
+    this.v2Name,
+  });
+
+  $Fingerprint.fromJson(core.Map _json)
+      : this(
+          v1Name: _json.containsKey('v1Name')
+              ? _json['v1Name'] as core.String
+              : null,
+          v2Blob: _json.containsKey('v2Blob')
+              ? (_json['v2Blob'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          v2Name: _json.containsKey('v2Name')
+              ? _json['v2Name'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (v1Name != null) 'v1Name': v1Name!,
+        if (v2Blob != null) 'v2Blob': v2Blob!,
+        if (v2Name != null) 'v2Name': v2Name!,
       };
 }
 
@@ -5426,6 +5830,7 @@ class $GcsSource01 {
 /// - cloudresourcemanager:v2 : GetPolicyOptions
 /// - cloudresourcemanager:v3 : GetPolicyOptions
 /// - cloudtasks:v2 : GetPolicyOptions
+/// - containeranalysis:v1 : GetPolicyOptions
 /// - datacatalog:v1 : GetPolicyOptions
 /// - iap:v1 : GetPolicyOptions
 /// - securitycenter:v1 : GetPolicyOptions
@@ -5459,6 +5864,36 @@ class $GetPolicyOptions {
   core.Map<core.String, core.dynamic> toJson() => {
         if (requestedPolicyVersion != null)
           'requestedPolicyVersion': requestedPolicyVersion!,
+      };
+}
+
+/// Used by:
+///
+/// - containeranalysis:v1 : GitSourceContext
+/// - ondemandscanning:v1 : GitSourceContext
+class $GitSourceContext {
+  /// Git commit hash.
+  core.String? revisionId;
+
+  /// Git repository URL.
+  core.String? url;
+
+  $GitSourceContext({
+    this.revisionId,
+    this.url,
+  });
+
+  $GitSourceContext.fromJson(core.Map _json)
+      : this(
+          revisionId: _json.containsKey('revisionId')
+              ? _json['revisionId'] as core.String
+              : null,
+          url: _json.containsKey('url') ? _json['url'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (revisionId != null) 'revisionId': revisionId!,
+        if (url != null) 'url': url!,
       };
 }
 
@@ -5721,6 +6156,45 @@ class $Handler {
 
 /// Used by:
 ///
+/// - containeranalysis:v1 : Hash
+/// - ondemandscanning:v1 : Hash
+class $Hash {
+  /// The type of hash that was performed, e.g. "SHA-256".
+  ///
+  /// Required.
+  core.String? type;
+
+  /// The hash value.
+  ///
+  /// Required.
+  core.String? value;
+  core.List<core.int> get valueAsBytes => convert.base64.decode(value!);
+
+  set valueAsBytes(core.List<core.int> _bytes) {
+    value =
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  $Hash({
+    this.type,
+    this.value,
+  });
+
+  $Hash.fromJson(core.Map _json)
+      : this(
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+          value:
+              _json.containsKey('value') ? _json['value'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (type != null) 'type': type!,
+        if (value != null) 'value': value!,
+      };
+}
+
+/// Used by:
+///
 /// - compute:v1 : UrlMapTestHeader
 /// - websecurityscanner:v1 : Header
 class $Header {
@@ -5858,6 +6332,38 @@ class $HumanReviewStatus {
           'humanReviewOperation': humanReviewOperation!,
         if (state != null) 'state': state!,
         if (stateMessage != null) 'stateMessage': stateMessage!,
+      };
+}
+
+/// Used by:
+///
+/// - containeranalysis:v1 : Identity
+/// - ondemandscanning:v1 : Identity
+class $Identity {
+  /// The revision number of the update.
+  core.int? revision;
+
+  /// The revision independent identifier of the update.
+  core.String? updateId;
+
+  $Identity({
+    this.revision,
+    this.updateId,
+  });
+
+  $Identity.fromJson(core.Map _json)
+      : this(
+          revision: _json.containsKey('revision')
+              ? _json['revision'] as core.int
+              : null,
+          updateId: _json.containsKey('updateId')
+              ? _json['updateId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (revision != null) 'revision': revision!,
+        if (updateId != null) 'updateId': updateId!,
       };
 }
 
@@ -7037,6 +7543,48 @@ class $IntentTrainingPhrasePart01 {
 
 /// Used by:
 ///
+/// - sheets:v4 : Interval
+/// - versionhistory:v1 : Interval
+class $Interval {
+  /// Exclusive end of the interval.
+  ///
+  /// If specified, a Timestamp matching this interval will have to be before
+  /// the end.
+  ///
+  /// Optional.
+  core.String? endTime;
+
+  /// Inclusive start of the interval.
+  ///
+  /// If specified, a Timestamp matching this interval will have to be the same
+  /// or after the start.
+  ///
+  /// Optional.
+  core.String? startTime;
+
+  $Interval({
+    this.endTime,
+    this.startTime,
+  });
+
+  $Interval.fromJson(core.Map _json)
+      : this(
+          endTime: _json.containsKey('endTime')
+              ? _json['endTime'] as core.String
+              : null,
+          startTime: _json.containsKey('startTime')
+              ? _json['startTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (endTime != null) 'endTime': endTime!,
+        if (startTime != null) 'startTime': startTime!,
+      };
+}
+
+/// Used by:
+///
 /// - contactcenterinsights:v1 : GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig
 /// - contactcenterinsights:v1 : GoogleCloudContactcenterinsightsV1alpha1IssueModelInputDataConfig
 class $IssueModelInputDataConfig {
@@ -7130,6 +7678,7 @@ class $IssueModelLabelStatsIssueStats {
 /// Used by:
 ///
 /// - binaryauthorization:v1 : Jwt
+/// - containeranalysis:v1 : Jwt
 /// - ondemandscanning:v1 : Jwt
 class $Jwt {
   /// The compact encoding of a JWS, which is always three base64 encoded
@@ -7438,7 +7987,6 @@ class $LastModifiedInfo {
 /// - jobs:v3 : LatLng
 /// - jobs:v4 : LatLng
 /// - mybusinessbusinessinformation:v1 : LatLng
-/// - playablelocations:v3 : GoogleTypeLatLng
 /// - streetviewpublish:v1 : LatLng
 /// - vision:v1 : LatLng
 class $LatLng {
@@ -7470,6 +8018,43 @@ class $LatLng {
   core.Map<core.String, core.dynamic> toJson() => {
         if (latitude != null) 'latitude': latitude!,
         if (longitude != null) 'longitude': longitude!,
+      };
+}
+
+/// Used by:
+///
+/// - containeranalysis:v1 : Layer
+/// - ondemandscanning:v1 : Layer
+class $Layer {
+  /// The recovered arguments to the Dockerfile directive.
+  core.String? arguments;
+
+  /// The recovered Dockerfile directive used to construct this layer.
+  ///
+  /// See https://docs.docker.com/engine/reference/builder/ for more
+  /// information.
+  ///
+  /// Required.
+  core.String? directive;
+
+  $Layer({
+    this.arguments,
+    this.directive,
+  });
+
+  $Layer.fromJson(core.Map _json)
+      : this(
+          arguments: _json.containsKey('arguments')
+              ? _json['arguments'] as core.String
+              : null,
+          directive: _json.containsKey('directive')
+              ? _json['directive'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (arguments != null) 'arguments': arguments!,
+        if (directive != null) 'directive': directive!,
       };
 }
 
@@ -7885,6 +8470,7 @@ class $ListTargetingExpression {
 /// - dialogflow:v2 : GoogleCloudLocationLocation
 /// - dialogflow:v3 : GoogleCloudLocationLocation
 /// - documentai:v1 : GoogleCloudLocationLocation
+/// - domains:v1 : Location
 /// - eventarc:v1 : Location
 /// - file:v1 : Location
 /// - firestore:v1 : Location
@@ -7904,6 +8490,7 @@ class $ListTargetingExpression {
 /// - servicedirectory:v1 : Location
 /// - tpu:v1 : Location
 /// - translate:v3 : Location
+/// - vmmigration:v1 : Location
 /// - workflows:v1 : Location
 class $Location00 {
   /// The friendly name for this location, typically a nearby city name.
@@ -8655,6 +9242,7 @@ class $MobileCarrier {
 /// - cloudchannel:v1 : GoogleTypeMoney
 /// - displayvideo:v1 : Money
 /// - documentai:v1 : GoogleTypeMoney
+/// - domains:v1 : Money
 /// - jobs:v3 : Money
 /// - jobs:v4 : Money
 /// - mybusinessbusinessinformation:v1 : Money
@@ -8789,6 +9377,48 @@ class $MonitoringDestination {
   core.Map<core.String, core.dynamic> toJson() => {
         if (metrics != null) 'metrics': metrics!,
         if (monitoredResource != null) 'monitoredResource': monitoredResource!,
+      };
+}
+
+/// Used by:
+///
+/// - containeranalysis:v1 : NonCompliantFile
+/// - ondemandscanning:v1 : NonCompliantFile
+class $NonCompliantFile {
+  /// Command to display the non-compliant files.
+  core.String? displayCommand;
+
+  /// display_command is a single command that can be used to display a list of
+  /// non compliant files.
+  ///
+  /// When there is no such command, we can also iterate a list of non compliant
+  /// file using 'path'. Empty if `display_command` is set.
+  core.String? path;
+
+  /// Explains why a file is non compliant for a CIS check.
+  core.String? reason;
+
+  $NonCompliantFile({
+    this.displayCommand,
+    this.path,
+    this.reason,
+  });
+
+  $NonCompliantFile.fromJson(core.Map _json)
+      : this(
+          displayCommand: _json.containsKey('displayCommand')
+              ? _json['displayCommand'] as core.String
+              : null,
+          path: _json.containsKey('path') ? _json['path'] as core.String : null,
+          reason: _json.containsKey('reason')
+              ? _json['reason'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (displayCommand != null) 'displayCommand': displayCommand!,
+        if (path != null) 'path': path!,
+        if (reason != null) 'reason': reason!,
       };
 }
 
@@ -9773,10 +10403,12 @@ class $Period {
 /// - cloudtasks:v2 : TestIamPermissionsResponse
 /// - compute:v1 : TestPermissionsResponse
 /// - connectors:v1 : TestIamPermissionsResponse
+/// - containeranalysis:v1 : TestIamPermissionsResponse
 /// - datacatalog:v1 : TestIamPermissionsResponse
 /// - datafusion:v1 : TestIamPermissionsResponse
 /// - datamigration:v1 : TestIamPermissionsResponse
 /// - deploymentmanager:v2 : TestPermissionsResponse
+/// - domains:v1 : TestIamPermissionsResponse
 /// - eventarc:v1 : TestIamPermissionsResponse
 /// - gameservices:v1 : TestIamPermissionsResponse
 /// - gkehub:v1 : TestIamPermissionsResponse
@@ -9955,6 +10587,7 @@ class $Position {
 ///
 /// - cloudchannel:v1 : GoogleTypePostalAddress
 /// - documentai:v1 : GoogleTypePostalAddress
+/// - domains:v1 : PostalAddress
 /// - jobs:v3 : PostalAddress
 /// - jobs:v4 : PostalAddress
 /// - mybusinessaccountmanagement:v1 : PostalAddress
@@ -10259,6 +10892,7 @@ class $PricingSchedulePricingPeriod {
 /// Used by:
 ///
 /// - clouddebugger:v2 : ProjectRepoId
+/// - containeranalysis:v1 : ProjectRepoId
 /// - ondemandscanning:v1 : ProjectRepoId
 class $ProjectRepoId {
   /// The ID of the project.
@@ -10736,6 +11370,96 @@ class $RawIndices {
 
 /// Used by:
 ///
+/// - containeranalysis:v1 : Recipe
+/// - ondemandscanning:v1 : Recipe
+class $Recipe {
+  /// Collection of all external inputs that influenced the build on top of
+  /// recipe.definedInMaterial and recipe.entryPoint.
+  ///
+  /// For example, if the recipe type were "make", then this might be the flags
+  /// passed to make aside from the target, which is captured in
+  /// recipe.entryPoint. Since the arguments field can greatly vary in
+  /// structure, depending on the builder and recipe type, this is of form
+  /// "Any".
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.List<core.Map<core.String, core.Object?>>? arguments;
+
+  /// Index in materials containing the recipe steps that are not implied by
+  /// recipe.type.
+  ///
+  /// For example, if the recipe type were "make", then this would point to the
+  /// source containing the Makefile, not the make program itself. Set to -1 if
+  /// the recipe doesn't come from a material, as zero is default unset value
+  /// for int64.
+  core.String? definedInMaterial;
+
+  /// String identifying the entry point into the build.
+  ///
+  /// This is often a path to a configuration file and/or a target label within
+  /// that file. The syntax and meaning are defined by recipe.type. For example,
+  /// if the recipe type were "make", then this would reference the directory in
+  /// which to run make as well as which target to use.
+  core.String? entryPoint;
+
+  /// Any other builder-controlled inputs necessary for correctly evaluating the
+  /// recipe.
+  ///
+  /// Usually only needed for reproducing the build but not evaluated as part of
+  /// policy. Since the environment field can greatly vary in structure,
+  /// depending on the builder and recipe type, this is of form "Any".
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.List<core.Map<core.String, core.Object?>>? environment;
+
+  /// URI indicating what type of recipe was performed.
+  ///
+  /// It determines the meaning of recipe.entryPoint, recipe.arguments,
+  /// recipe.environment, and materials.
+  core.String? type;
+
+  $Recipe({
+    this.arguments,
+    this.definedInMaterial,
+    this.entryPoint,
+    this.environment,
+    this.type,
+  });
+
+  $Recipe.fromJson(core.Map _json)
+      : this(
+          arguments: _json.containsKey('arguments')
+              ? (_json['arguments'] as core.List)
+                  .map((value) => value as core.Map<core.String, core.dynamic>)
+                  .toList()
+              : null,
+          definedInMaterial: _json.containsKey('definedInMaterial')
+              ? _json['definedInMaterial'] as core.String
+              : null,
+          entryPoint: _json.containsKey('entryPoint')
+              ? _json['entryPoint'] as core.String
+              : null,
+          environment: _json.containsKey('environment')
+              ? (_json['environment'] as core.List)
+                  .map((value) => value as core.Map<core.String, core.dynamic>)
+                  .toList()
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (arguments != null) 'arguments': arguments!,
+        if (definedInMaterial != null) 'definedInMaterial': definedInMaterial!,
+        if (entryPoint != null) 'entryPoint': entryPoint!,
+        if (environment != null) 'environment': environment!,
+        if (type != null) 'type': type!,
+      };
+}
+
+/// Used by:
+///
 /// - dfareporting:v3.4 : Recipient
 /// - dfareporting:v3.5 : Recipient
 class $Recipient {
@@ -10890,6 +11614,35 @@ class $RelatedAsset {
         if (ancestors != null) 'ancestors': ancestors!,
         if (asset != null) 'asset': asset!,
         if (assetType != null) 'assetType': assetType!,
+      };
+}
+
+/// Used by:
+///
+/// - containeranalysis:v1 : RelatedUrl
+/// - ondemandscanning:v1 : RelatedUrl
+class $RelatedUrl {
+  /// Label to describe usage of the URL.
+  core.String? label;
+
+  /// Specific URL associated with the resource.
+  core.String? url;
+
+  $RelatedUrl({
+    this.label,
+    this.url,
+  });
+
+  $RelatedUrl.fromJson(core.Map _json)
+      : this(
+          label:
+              _json.containsKey('label') ? _json['label'] as core.String : null,
+          url: _json.containsKey('url') ? _json['url'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (label != null) 'label': label!,
+        if (url != null) 'url': url!,
       };
 }
 
@@ -12346,16 +13099,38 @@ class $Shared02 {
 
 /// Used by:
 ///
-/// - chat:v1 : GoogleAppsCardV1SuggestionItem
-/// - chat:v1 : TextParagraph
+/// - containeranalysis:v1 : BuilderConfig
+/// - ondemandscanning:v1 : BuilderConfig
+/// - youtube:v3 : AbuseType
 class $Shared04 {
-  core.String? text;
+  core.String? id;
 
   $Shared04({
-    this.text,
+    this.id,
   });
 
   $Shared04.fromJson(core.Map _json)
+      : this(
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (id != null) 'id': id!,
+      };
+}
+
+/// Used by:
+///
+/// - chat:v1 : GoogleAppsCardV1SuggestionItem
+/// - chat:v1 : TextParagraph
+class $Shared05 {
+  core.String? text;
+
+  $Shared05({
+    this.text,
+  });
+
+  $Shared05.fromJson(core.Map _json)
       : this(
           text: _json.containsKey('text') ? _json['text'] as core.String : null,
         );
@@ -12369,19 +13144,19 @@ class $Shared04 {
 ///
 /// - compute:v1 : InstancesSetServiceAccountRequest
 /// - compute:v1 : ServiceAccount
-class $Shared05 {
+class $Shared06 {
   /// Email address of the service account.
   core.String? email;
 
   /// The list of scopes to be made available for this service account.
   core.List<core.String>? scopes;
 
-  $Shared05({
+  $Shared06({
     this.email,
     this.scopes,
   });
 
-  $Shared05.fromJson(core.Map _json)
+  $Shared06.fromJson(core.Map _json)
       : this(
           email:
               _json.containsKey('email') ? _json['email'] as core.String : null,
@@ -12402,19 +13177,19 @@ class $Shared05 {
 ///
 /// - content:v2.1 : Price
 /// - content:v2.1 : PriceAmount
-class $Shared06 {
+class $Shared07 {
   /// The currency of the price.
   core.String? currency;
 
   /// The price represented as a number.
   core.String? value;
 
-  $Shared06({
+  $Shared07({
     this.currency,
     this.value,
   });
 
-  $Shared06.fromJson(core.Map _json)
+  $Shared07.fromJson(core.Map _json)
       : this(
           currency: _json.containsKey('currency')
               ? _json['currency'] as core.String
@@ -12426,27 +13201,6 @@ class $Shared06 {
   core.Map<core.String, core.dynamic> toJson() => {
         if (currency != null) 'currency': currency!,
         if (value != null) 'value': value!,
-      };
-}
-
-/// Used by:
-///
-/// - ondemandscanning:v1 : BuilderConfig
-/// - youtube:v3 : AbuseType
-class $Shared09 {
-  core.String? id;
-
-  $Shared09({
-    this.id,
-  });
-
-  $Shared09.fromJson(core.Map _json)
-      : this(
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (id != null) 'id': id!,
       };
 }
 
@@ -12567,6 +13321,7 @@ class $ShieldedInstanceConfig {
 /// Used by:
 ///
 /// - binaryauthorization:v1 : Signature
+/// - containeranalysis:v1 : Signature
 /// - ondemandscanning:v1 : Signature
 class $Signature {
   /// The identifier for the public key that verifies this signature.
@@ -12959,6 +13714,7 @@ class $StartPageToken {
 /// - connectors:v1 : Status
 /// - contactcenterinsights:v1 : GoogleRpcStatus
 /// - container:v1 : Status
+/// - containeranalysis:v1 : Status
 /// - datafusion:v1 : Status
 /// - datamigration:v1 : Status
 /// - dataproc:v1 : Status
@@ -12968,6 +13724,7 @@ class $StartPageToken {
 /// - displayvideo:v1 : Status
 /// - dlp:v2 : GoogleRpcStatus
 /// - documentai:v1 : GoogleRpcStatus
+/// - domains:v1 : Status
 /// - eventarc:v1 : GoogleRpcStatus
 /// - file:v1 : Status
 /// - firebasehosting:v1 : Status
@@ -13015,6 +13772,7 @@ class $StartPageToken {
 /// - vault:v1 : Status
 /// - videointelligence:v1 : GoogleRpc_Status
 /// - vision:v1 : Status
+/// - vmmigration:v1 : Status
 /// - webrisk:v1 : GoogleRpcStatus
 /// - workflows:v1 : Status
 class $Status {
@@ -13119,6 +13877,39 @@ class $Subaccount {
           'availablePermissionIds': availablePermissionIds!,
         if (id != null) 'id': id!,
         if (kind != null) 'kind': kind!,
+        if (name != null) 'name': name!,
+      };
+}
+
+/// Used by:
+///
+/// - containeranalysis:v1 : Subject
+/// - ondemandscanning:v1 : Subject
+class $Subject {
+  /// "": ""
+  core.Map<core.String, core.String>? digest;
+  core.String? name;
+
+  $Subject({
+    this.digest,
+    this.name,
+  });
+
+  $Subject.fromJson(core.Map _json)
+      : this(
+          digest: _json.containsKey('digest')
+              ? (_json['digest'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (digest != null) 'digest': digest!,
         if (name != null) 'name': name!,
       };
 }
@@ -13497,9 +14288,11 @@ class $TestConfig {
 /// - cloudresourcemanager:v3 : TestIamPermissionsRequest
 /// - cloudtasks:v2 : TestIamPermissionsRequest
 /// - connectors:v1 : TestIamPermissionsRequest
+/// - containeranalysis:v1 : TestIamPermissionsRequest
 /// - datacatalog:v1 : TestIamPermissionsRequest
 /// - datafusion:v1 : TestIamPermissionsRequest
 /// - datamigration:v1 : TestIamPermissionsRequest
+/// - domains:v1 : TestIamPermissionsRequest
 /// - eventarc:v1 : TestIamPermissionsRequest
 /// - gameservices:v1 : TestIamPermissionsRequest
 /// - gkehub:v1 : TestIamPermissionsRequest
@@ -13790,6 +14583,38 @@ class $TimeOfDay {
 
 /// Used by:
 ///
+/// - cloudbuild:v1 : TimeSpan
+/// - containeranalysis:v1 : TimeSpan
+class $TimeSpan {
+  /// End of time span.
+  core.String? endTime;
+
+  /// Start of time span.
+  core.String? startTime;
+
+  $TimeSpan({
+    this.endTime,
+    this.startTime,
+  });
+
+  $TimeSpan.fromJson(core.Map _json)
+      : this(
+          endTime: _json.containsKey('endTime')
+              ? _json['endTime'] as core.String
+              : null,
+          startTime: _json.containsKey('startTime')
+              ? _json['startTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (endTime != null) 'endTime': endTime!,
+        if (startTime != null) 'startTime': startTime!,
+      };
+}
+
+/// Used by:
+///
 /// - adsense:v2 : TimeZone
 /// - authorizedbuyersmarketplace:v1 : TimeZone
 /// - content:v2.1 : TimeZone
@@ -14074,6 +14899,62 @@ class $UniversalAdId {
   core.Map<core.String, core.dynamic> toJson() => {
         if (registry != null) 'registry': registry!,
         if (value != null) 'value': value!,
+      };
+}
+
+/// Used by:
+///
+/// - containeranalysis:v1 : UpgradeDistribution
+/// - ondemandscanning:v1 : UpgradeDistribution
+class $UpgradeDistribution {
+  /// The operating system classification of this Upgrade, as specified by the
+  /// upstream operating system upgrade feed.
+  ///
+  /// For Windows the classification is one of the category_ids listed at
+  /// https://docs.microsoft.com/en-us/previous-versions/windows/desktop/ff357803(v=vs.85)
+  core.String? classification;
+
+  /// Required - The specific operating system this metadata applies to.
+  ///
+  /// See https://cpe.mitre.org/specification/.
+  core.String? cpeUri;
+
+  /// The cve tied to this Upgrade.
+  core.List<core.String>? cve;
+
+  /// The severity as specified by the upstream operating system.
+  core.String? severity;
+
+  $UpgradeDistribution({
+    this.classification,
+    this.cpeUri,
+    this.cve,
+    this.severity,
+  });
+
+  $UpgradeDistribution.fromJson(core.Map _json)
+      : this(
+          classification: _json.containsKey('classification')
+              ? _json['classification'] as core.String
+              : null,
+          cpeUri: _json.containsKey('cpeUri')
+              ? _json['cpeUri'] as core.String
+              : null,
+          cve: _json.containsKey('cve')
+              ? (_json['cve'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          severity: _json.containsKey('severity')
+              ? _json['severity'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (classification != null) 'classification': classification!,
+        if (cpeUri != null) 'cpeUri': cpeUri!,
+        if (cve != null) 'cve': cve!,
+        if (severity != null) 'severity': severity!,
       };
 }
 
@@ -14576,6 +15457,81 @@ class $Value {
 
 /// Used by:
 ///
+/// - containeranalysis:v1 : Version
+/// - ondemandscanning:v1 : Version
+class $Version {
+  /// Used to correct mistakes in the version numbering scheme.
+  core.int? epoch;
+
+  /// Human readable version string.
+  ///
+  /// This string is of the form :- and is only set when kind is NORMAL.
+  core.String? fullName;
+
+  /// Whether this version is specifying part of an inclusive range.
+  ///
+  /// Grafeas does not have the capability to specify version ranges; instead we
+  /// have fields that specify start version and end versions. At times this is
+  /// insufficient - we also need to specify whether the version is included in
+  /// the range or is excluded from the range. This boolean is expected to be
+  /// set to true when the version is included in a range.
+  core.bool? inclusive;
+
+  /// Distinguishes between sentinel MIN/MAX versions and normal versions.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "VERSION_KIND_UNSPECIFIED" : Unknown.
+  /// - "NORMAL" : A standard package version.
+  /// - "MINIMUM" : A special version representing negative infinity.
+  /// - "MAXIMUM" : A special version representing positive infinity.
+  core.String? kind;
+
+  /// Required only when version kind is NORMAL.
+  ///
+  /// The main part of the version name.
+  core.String? name;
+
+  /// The iteration of the package build from the above version.
+  core.String? revision;
+
+  $Version({
+    this.epoch,
+    this.fullName,
+    this.inclusive,
+    this.kind,
+    this.name,
+    this.revision,
+  });
+
+  $Version.fromJson(core.Map _json)
+      : this(
+          epoch: _json.containsKey('epoch') ? _json['epoch'] as core.int : null,
+          fullName: _json.containsKey('fullName')
+              ? _json['fullName'] as core.String
+              : null,
+          inclusive: _json.containsKey('inclusive')
+              ? _json['inclusive'] as core.bool
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          revision: _json.containsKey('revision')
+              ? _json['revision'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (epoch != null) 'epoch': epoch!,
+        if (fullName != null) 'fullName': fullName!,
+        if (inclusive != null) 'inclusive': inclusive!,
+        if (kind != null) 'kind': kind!,
+        if (name != null) 'name': name!,
+        if (revision != null) 'revision': revision!,
+      };
+}
+
+/// Used by:
+///
 /// - cloudasset:v1 : VersionedPackage
 /// - osconfig:v1 : InventoryVersionedPackage
 class $VersionedPackage {
@@ -14746,6 +15702,41 @@ class $VideoSegment {
   core.Map<core.String, core.dynamic> toJson() => {
         if (endTimeOffset != null) 'endTimeOffset': endTimeOffset!,
         if (startTimeOffset != null) 'startTimeOffset': startTimeOffset!,
+      };
+}
+
+/// Used by:
+///
+/// - cloudbuild:v1 : Volume
+/// - containeranalysis:v1 : Volume
+class $Volume {
+  /// Name of the volume to mount.
+  ///
+  /// Volume names must be unique per build step and must be valid names for
+  /// Docker volumes. Each named volume must be used by at least two build
+  /// steps.
+  core.String? name;
+
+  /// Path at which to mount the volume.
+  ///
+  /// Paths must be absolute and cannot conflict with other volume paths on the
+  /// same build step or with certain reserved volume paths.
+  core.String? path;
+
+  $Volume({
+    this.name,
+    this.path,
+  });
+
+  $Volume.fromJson(core.Map _json)
+      : this(
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          path: _json.containsKey('path') ? _json['path'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+        if (path != null) 'path': path!,
       };
 }
 

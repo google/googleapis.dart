@@ -428,35 +428,7 @@ class ProjectsLocationsScansVulnerabilitiesResource {
 }
 
 /// An alias to a repo revision.
-class AliasContext {
-  /// The alias kind.
-  /// Possible string values are:
-  /// - "KIND_UNSPECIFIED" : Unknown.
-  /// - "FIXED" : Git tag.
-  /// - "MOVABLE" : Git branch.
-  /// - "OTHER" : Used to specify non-standard aliases. For example, if a Git
-  /// repo has a ref named "refs/foo/bar".
-  core.String? kind;
-
-  /// The alias name.
-  core.String? name;
-
-  AliasContext({
-    this.kind,
-    this.name,
-  });
-
-  AliasContext.fromJson(core.Map _json)
-      : this(
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (kind != null) 'kind': kind!,
-        if (name != null) 'name': name!,
-      };
-}
+typedef AliasContext = $AliasContext;
 
 /// AnalyzePackagesRequest is the request to analyze a list of packages and
 /// create Vulnerability Occurrences for it.
@@ -502,49 +474,7 @@ class AnalyzePackagesRequestV1 {
 }
 
 /// Artifact describes a build product.
-class Artifact {
-  /// Hash or checksum value of a binary, or Docker Registry 2.0 digest of a
-  /// container.
-  core.String? checksum;
-
-  /// Artifact ID, if any; for container images, this will be a URL by digest
-  /// like `gcr.io/projectID/imagename@sha256:123456`.
-  core.String? id;
-
-  /// Related artifact names.
-  ///
-  /// This may be the path to a binary or jar file, or in the case of a
-  /// container build, the name used to push the container image to Google
-  /// Container Registry, as presented to `docker push`. Note that a single
-  /// Artifact ID can have multiple names, for example if two tags are applied
-  /// to one image.
-  core.List<core.String>? names;
-
-  Artifact({
-    this.checksum,
-    this.id,
-    this.names,
-  });
-
-  Artifact.fromJson(core.Map _json)
-      : this(
-          checksum: _json.containsKey('checksum')
-              ? _json['checksum'] as core.String
-              : null,
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          names: _json.containsKey('names')
-              ? (_json['names'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (checksum != null) 'checksum': checksum!,
-        if (id != null) 'id': id!,
-        if (names != null) 'names': names!,
-      };
-}
+typedef Artifact = $Artifact;
 
 /// Occurrence that represents a single "attestation".
 ///
@@ -807,34 +737,10 @@ class BuildProvenance {
       };
 }
 
-typedef BuilderConfig = $Shared09;
+typedef BuilderConfig = $Shared04;
 
 /// The category to which the update belongs.
-class Category {
-  /// The identifier of the category.
-  core.String? categoryId;
-
-  /// The localized name of the category.
-  core.String? name;
-
-  Category({
-    this.categoryId,
-    this.name,
-  });
-
-  Category.fromJson(core.Map _json)
-      : this(
-          categoryId: _json.containsKey('categoryId')
-              ? _json['categoryId'] as core.String
-              : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (categoryId != null) 'categoryId': categoryId!,
-        if (name != null) 'name': name!,
-      };
-}
+typedef Category = $Category;
 
 /// A CloudRepoSourceContext denotes a particular revision in a Google Cloud
 /// Source Repo.
@@ -877,113 +783,11 @@ class CloudRepoSourceContext {
 }
 
 /// Command describes a step performed as part of the build pipeline.
-class Command {
-  /// Command-line arguments used when executing this command.
-  core.List<core.String>? args;
-
-  /// Working directory (relative to project source root) used when running this
-  /// command.
-  core.String? dir;
-
-  /// Environment variables set before running this command.
-  core.List<core.String>? env;
-
-  /// Optional unique identifier for this command, used in wait_for to reference
-  /// this command as a dependency.
-  core.String? id;
-
-  /// Name of the command, as presented on the command line, or if the command
-  /// is packaged as a Docker container, as presented to `docker pull`.
-  ///
-  /// Required.
-  core.String? name;
-
-  /// The ID(s) of the command(s) that this command depends on.
-  core.List<core.String>? waitFor;
-
-  Command({
-    this.args,
-    this.dir,
-    this.env,
-    this.id,
-    this.name,
-    this.waitFor,
-  });
-
-  Command.fromJson(core.Map _json)
-      : this(
-          args: _json.containsKey('args')
-              ? (_json['args'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          dir: _json.containsKey('dir') ? _json['dir'] as core.String : null,
-          env: _json.containsKey('env')
-              ? (_json['env'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          waitFor: _json.containsKey('waitFor')
-              ? (_json['waitFor'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (args != null) 'args': args!,
-        if (dir != null) 'dir': dir!,
-        if (env != null) 'env': env!,
-        if (id != null) 'id': id!,
-        if (name != null) 'name': name!,
-        if (waitFor != null) 'waitFor': waitFor!,
-      };
-}
+typedef Command = $Command;
 
 /// Indicates that the builder claims certain fields in this message to be
 /// complete.
-class Completeness {
-  /// If true, the builder claims that recipe.arguments is complete, meaning
-  /// that all external inputs are properly captured in the recipe.
-  core.bool? arguments;
-
-  /// If true, the builder claims that recipe.environment is claimed to be
-  /// complete.
-  core.bool? environment;
-
-  /// If true, the builder claims that materials are complete, usually through
-  /// some controls to prevent network access.
-  ///
-  /// Sometimes called "hermetic".
-  core.bool? materials;
-
-  Completeness({
-    this.arguments,
-    this.environment,
-    this.materials,
-  });
-
-  Completeness.fromJson(core.Map _json)
-      : this(
-          arguments: _json.containsKey('arguments')
-              ? _json['arguments'] as core.bool
-              : null,
-          environment: _json.containsKey('environment')
-              ? _json['environment'] as core.bool
-              : null,
-          materials: _json.containsKey('materials')
-              ? _json['materials'] as core.bool
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (arguments != null) 'arguments': arguments!,
-        if (environment != null) 'environment': environment!,
-        if (materials != null) 'materials': materials!,
-      };
-}
+typedef Completeness = $Completeness;
 
 /// An indication that the compliance checks in the associated ComplianceNote
 /// were not satisfied for particular resources or a specified reason.
@@ -1046,85 +850,7 @@ class DSSEAttestationOccurrence {
 }
 
 /// The period during which some deployable was active in a runtime.
-class DeploymentOccurrence {
-  /// Address of the runtime element hosting this deployment.
-  core.String? address;
-
-  /// Configuration used to create this deployment.
-  core.String? config;
-
-  /// Beginning of the lifetime of this deployment.
-  ///
-  /// Required.
-  core.String? deployTime;
-
-  /// Platform hosting this deployment.
-  /// Possible string values are:
-  /// - "PLATFORM_UNSPECIFIED" : Unknown.
-  /// - "GKE" : Google Container Engine.
-  /// - "FLEX" : Google App Engine: Flexible Environment.
-  /// - "CUSTOM" : Custom user-defined platform.
-  core.String? platform;
-
-  /// Resource URI for the artifact being deployed taken from the deployable
-  /// field with the same name.
-  ///
-  /// Output only.
-  core.List<core.String>? resourceUri;
-
-  /// End of the lifetime of this deployment.
-  core.String? undeployTime;
-
-  /// Identity of the user that triggered this deployment.
-  core.String? userEmail;
-
-  DeploymentOccurrence({
-    this.address,
-    this.config,
-    this.deployTime,
-    this.platform,
-    this.resourceUri,
-    this.undeployTime,
-    this.userEmail,
-  });
-
-  DeploymentOccurrence.fromJson(core.Map _json)
-      : this(
-          address: _json.containsKey('address')
-              ? _json['address'] as core.String
-              : null,
-          config: _json.containsKey('config')
-              ? _json['config'] as core.String
-              : null,
-          deployTime: _json.containsKey('deployTime')
-              ? _json['deployTime'] as core.String
-              : null,
-          platform: _json.containsKey('platform')
-              ? _json['platform'] as core.String
-              : null,
-          resourceUri: _json.containsKey('resourceUri')
-              ? (_json['resourceUri'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          undeployTime: _json.containsKey('undeployTime')
-              ? _json['undeployTime'] as core.String
-              : null,
-          userEmail: _json.containsKey('userEmail')
-              ? _json['userEmail'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (address != null) 'address': address!,
-        if (config != null) 'config': config!,
-        if (deployTime != null) 'deployTime': deployTime!,
-        if (platform != null) 'platform': platform!,
-        if (resourceUri != null) 'resourceUri': resourceUri!,
-        if (undeployTime != null) 'undeployTime': undeployTime!,
-        if (userEmail != null) 'userEmail': userEmail!,
-      };
-}
+typedef DeploymentOccurrence = $DeploymentOccurrence;
 
 /// Provides information about the analysis status of a discovered resource.
 class DiscoveryOccurrence {
@@ -1249,33 +975,7 @@ class Envelope {
       };
 }
 
-class EnvelopeSignature {
-  core.String? keyid;
-  core.String? sig;
-  core.List<core.int> get sigAsBytes => convert.base64.decode(sig!);
-
-  set sigAsBytes(core.List<core.int> _bytes) {
-    sig =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
-  }
-
-  EnvelopeSignature({
-    this.keyid,
-    this.sig,
-  });
-
-  EnvelopeSignature.fromJson(core.Map _json)
-      : this(
-          keyid:
-              _json.containsKey('keyid') ? _json['keyid'] as core.String : null,
-          sig: _json.containsKey('sig') ? _json['sig'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (keyid != null) 'keyid': keyid!,
-        if (sig != null) 'sig': sig!,
-      };
-}
+typedef EnvelopeSignature = $EnvelopeSignature;
 
 /// Container message for hashes of byte content of files, used in source
 /// messages to verify integrity of source input to the build.
@@ -1305,51 +1005,7 @@ class FileHashes {
 }
 
 /// A set of properties that uniquely identify a given Docker image.
-class Fingerprint {
-  /// The layer ID of the final layer in the Docker image's v1 representation.
-  ///
-  /// Required.
-  core.String? v1Name;
-
-  /// The ordered list of v2 blobs that represent a given image.
-  ///
-  /// Required.
-  core.List<core.String>? v2Blob;
-
-  /// The name of the image's v2 blobs computed via: \[bottom\] := v2_blobbottom
-  /// := sha256(v2_blob\[N\] + " " + v2_name\[N+1\]) Only the name of the final
-  /// blob is kept.
-  ///
-  /// Output only.
-  core.String? v2Name;
-
-  Fingerprint({
-    this.v1Name,
-    this.v2Blob,
-    this.v2Name,
-  });
-
-  Fingerprint.fromJson(core.Map _json)
-      : this(
-          v1Name: _json.containsKey('v1Name')
-              ? _json['v1Name'] as core.String
-              : null,
-          v2Blob: _json.containsKey('v2Blob')
-              ? (_json['v2Blob'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          v2Name: _json.containsKey('v2Name')
-              ? _json['v2Name'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (v1Name != null) 'v1Name': v1Name!,
-        if (v2Blob != null) 'v2Blob': v2Blob!,
-        if (v2Name != null) 'v2Name': v2Name!,
-      };
-}
+typedef Fingerprint = $Fingerprint;
 
 /// A SourceContext referring to a Gerrit project.
 class GerritSourceContext {
@@ -1402,96 +1058,13 @@ class GerritSourceContext {
 
 /// A GitSourceContext denotes a particular revision in a third party Git
 /// repository (e.g., GitHub).
-class GitSourceContext {
-  /// Git commit hash.
-  core.String? revisionId;
-
-  /// Git repository URL.
-  core.String? url;
-
-  GitSourceContext({
-    this.revisionId,
-    this.url,
-  });
-
-  GitSourceContext.fromJson(core.Map _json)
-      : this(
-          revisionId: _json.containsKey('revisionId')
-              ? _json['revisionId'] as core.String
-              : null,
-          url: _json.containsKey('url') ? _json['url'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (revisionId != null) 'revisionId': revisionId!,
-        if (url != null) 'url': url!,
-      };
-}
+typedef GitSourceContext = $GitSourceContext;
 
 /// Container message for hash values.
-class Hash {
-  /// The type of hash that was performed, e.g. "SHA-256".
-  ///
-  /// Required.
-  core.String? type;
-
-  /// The hash value.
-  ///
-  /// Required.
-  core.String? value;
-  core.List<core.int> get valueAsBytes => convert.base64.decode(value!);
-
-  set valueAsBytes(core.List<core.int> _bytes) {
-    value =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
-  }
-
-  Hash({
-    this.type,
-    this.value,
-  });
-
-  Hash.fromJson(core.Map _json)
-      : this(
-          type: _json.containsKey('type') ? _json['type'] as core.String : null,
-          value:
-              _json.containsKey('value') ? _json['value'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (type != null) 'type': type!,
-        if (value != null) 'value': value!,
-      };
-}
+typedef Hash = $Hash;
 
 /// The unique identifier of the update.
-class Identity {
-  /// The revision number of the update.
-  core.int? revision;
-
-  /// The revision independent identifier of the update.
-  core.String? updateId;
-
-  Identity({
-    this.revision,
-    this.updateId,
-  });
-
-  Identity.fromJson(core.Map _json)
-      : this(
-          revision: _json.containsKey('revision')
-              ? _json['revision'] as core.int
-              : null,
-          updateId: _json.containsKey('updateId')
-              ? _json['updateId'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (revision != null) 'revision': revision!,
-        if (updateId != null) 'updateId': updateId!,
-      };
-}
+typedef Identity = $Identity;
 
 /// Details of the derived image portion of the DockerImage relationship.
 ///
@@ -1658,38 +1231,7 @@ class InTotoStatement {
 typedef Jwt = $Jwt;
 
 /// Layer holds metadata specific to a layer of a Docker image.
-class Layer {
-  /// The recovered arguments to the Dockerfile directive.
-  core.String? arguments;
-
-  /// The recovered Dockerfile directive used to construct this layer.
-  ///
-  /// See https://docs.docker.com/engine/reference/builder/ for more
-  /// information.
-  ///
-  /// Required.
-  core.String? directive;
-
-  Layer({
-    this.arguments,
-    this.directive,
-  });
-
-  Layer.fromJson(core.Map _json)
-      : this(
-          arguments: _json.containsKey('arguments')
-              ? _json['arguments'] as core.String
-              : null,
-          directive: _json.containsKey('directive')
-              ? _json['directive'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (arguments != null) 'arguments': arguments!,
-        if (directive != null) 'directive': directive!,
-      };
-}
+typedef Layer = $Layer;
 
 /// The response message for Operations.ListOperations.
 class ListOperationsResponse {
@@ -1859,43 +1401,7 @@ class Metadata {
 }
 
 /// Details about files that caused a compliance check to fail.
-class NonCompliantFile {
-  /// Command to display the non-compliant files.
-  core.String? displayCommand;
-
-  /// display_command is a single command that can be used to display a list of
-  /// non compliant files.
-  ///
-  /// When there is no such command, we can also iterate a list of non compliant
-  /// file using 'path'. Empty if `display_command` is set.
-  core.String? path;
-
-  /// Explains why a file is non compliant for a CIS check.
-  core.String? reason;
-
-  NonCompliantFile({
-    this.displayCommand,
-    this.path,
-    this.reason,
-  });
-
-  NonCompliantFile.fromJson(core.Map _json)
-      : this(
-          displayCommand: _json.containsKey('displayCommand')
-              ? _json['displayCommand'] as core.String
-              : null,
-          path: _json.containsKey('path') ? _json['path'] as core.String : null,
-          reason: _json.containsKey('reason')
-              ? _json['reason'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (displayCommand != null) 'displayCommand': displayCommand!,
-        if (path != null) 'path': path!,
-        if (reason != null) 'reason': reason!,
-      };
-}
+typedef NonCompliantFile = $NonCompliantFile;
 
 /// An instance of an analysis type that has been found on a resource.
 class Occurrence {
@@ -2409,117 +1915,10 @@ typedef ProjectRepoId = $ProjectRepoId;
 ///
 /// For a TaskRun, typically each container corresponds to one step in the
 /// recipe.
-class Recipe {
-  /// Collection of all external inputs that influenced the build on top of
-  /// recipe.definedInMaterial and recipe.entryPoint.
-  ///
-  /// For example, if the recipe type were "make", then this might be the flags
-  /// passed to make aside from the target, which is captured in
-  /// recipe.entryPoint. Since the arguments field can greatly vary in
-  /// structure, depending on the builder and recipe type, this is of form
-  /// "Any".
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object?>>? arguments;
-
-  /// Index in materials containing the recipe steps that are not implied by
-  /// recipe.type.
-  ///
-  /// For example, if the recipe type were "make", then this would point to the
-  /// source containing the Makefile, not the make program itself. Set to -1 if
-  /// the recipe doesn't come from a material, as zero is default unset value
-  /// for int64.
-  core.String? definedInMaterial;
-
-  /// String identifying the entry point into the build.
-  ///
-  /// This is often a path to a configuration file and/or a target label within
-  /// that file. The syntax and meaning are defined by recipe.type. For example,
-  /// if the recipe type were "make", then this would reference the directory in
-  /// which to run make as well as which target to use.
-  core.String? entryPoint;
-
-  /// Any other builder-controlled inputs necessary for correctly evaluating the
-  /// recipe.
-  ///
-  /// Usually only needed for reproducing the build but not evaluated as part of
-  /// policy. Since the environment field can greatly vary in structure,
-  /// depending on the builder and recipe type, this is of form "Any".
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object?>>? environment;
-
-  /// URI indicating what type of recipe was performed.
-  ///
-  /// It determines the meaning of recipe.entryPoint, recipe.arguments,
-  /// recipe.environment, and materials.
-  core.String? type;
-
-  Recipe({
-    this.arguments,
-    this.definedInMaterial,
-    this.entryPoint,
-    this.environment,
-    this.type,
-  });
-
-  Recipe.fromJson(core.Map _json)
-      : this(
-          arguments: _json.containsKey('arguments')
-              ? (_json['arguments'] as core.List)
-                  .map((value) => value as core.Map<core.String, core.dynamic>)
-                  .toList()
-              : null,
-          definedInMaterial: _json.containsKey('definedInMaterial')
-              ? _json['definedInMaterial'] as core.String
-              : null,
-          entryPoint: _json.containsKey('entryPoint')
-              ? _json['entryPoint'] as core.String
-              : null,
-          environment: _json.containsKey('environment')
-              ? (_json['environment'] as core.List)
-                  .map((value) => value as core.Map<core.String, core.dynamic>)
-                  .toList()
-              : null,
-          type: _json.containsKey('type') ? _json['type'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (arguments != null) 'arguments': arguments!,
-        if (definedInMaterial != null) 'definedInMaterial': definedInMaterial!,
-        if (entryPoint != null) 'entryPoint': entryPoint!,
-        if (environment != null) 'environment': environment!,
-        if (type != null) 'type': type!,
-      };
-}
+typedef Recipe = $Recipe;
 
 /// Metadata for any related URL information.
-class RelatedUrl {
-  /// Label to describe usage of the URL.
-  core.String? label;
-
-  /// Specific URL associated with the resource.
-  core.String? url;
-
-  RelatedUrl({
-    this.label,
-    this.url,
-  });
-
-  RelatedUrl.fromJson(core.Map _json)
-      : this(
-          label:
-              _json.containsKey('label') ? _json['label'] as core.String : null,
-          url: _json.containsKey('url') ? _json['url'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (label != null) 'label': label!,
-        if (url != null) 'url': url!,
-      };
-}
+typedef RelatedUrl = $RelatedUrl;
 
 /// A unique identifier for a Cloud Repo.
 class RepoId {
@@ -2704,92 +2103,14 @@ class SourceContext {
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 typedef Status = $Status;
-
-class Subject {
-  /// "": ""
-  core.Map<core.String, core.String>? digest;
-  core.String? name;
-
-  Subject({
-    this.digest,
-    this.name,
-  });
-
-  Subject.fromJson(core.Map _json)
-      : this(
-          digest: _json.containsKey('digest')
-              ? (_json['digest'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.String,
-                  ),
-                )
-              : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (digest != null) 'digest': digest!,
-        if (name != null) 'name': name!,
-      };
-}
+typedef Subject = $Subject;
 
 /// The Upgrade Distribution represents metadata about the Upgrade for each
 /// operating system (CPE).
 ///
 /// Some distributions have additional metadata around updates, classifying them
 /// into various categories and severities.
-class UpgradeDistribution {
-  /// The operating system classification of this Upgrade, as specified by the
-  /// upstream operating system upgrade feed.
-  ///
-  /// For Windows the classification is one of the category_ids listed at
-  /// https://docs.microsoft.com/en-us/previous-versions/windows/desktop/ff357803(v=vs.85)
-  core.String? classification;
-
-  /// Required - The specific operating system this metadata applies to.
-  ///
-  /// See https://cpe.mitre.org/specification/.
-  core.String? cpeUri;
-
-  /// The cve tied to this Upgrade.
-  core.List<core.String>? cve;
-
-  /// The severity as specified by the upstream operating system.
-  core.String? severity;
-
-  UpgradeDistribution({
-    this.classification,
-    this.cpeUri,
-    this.cve,
-    this.severity,
-  });
-
-  UpgradeDistribution.fromJson(core.Map _json)
-      : this(
-          classification: _json.containsKey('classification')
-              ? _json['classification'] as core.String
-              : null,
-          cpeUri: _json.containsKey('cpeUri')
-              ? _json['cpeUri'] as core.String
-              : null,
-          cve: _json.containsKey('cve')
-              ? (_json['cve'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          severity: _json.containsKey('severity')
-              ? _json['severity'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (classification != null) 'classification': classification!,
-        if (cpeUri != null) 'cpeUri': cpeUri!,
-        if (cve != null) 'cve': cve!,
-        if (severity != null) 'severity': severity!,
-      };
-}
+typedef UpgradeDistribution = $UpgradeDistribution;
 
 /// An Upgrade Occurrence represents that a specific resource_url could install
 /// a specific upgrade.
@@ -2856,76 +2177,7 @@ class UpgradeOccurrence {
 }
 
 /// Version contains structured information about the version of a package.
-class Version {
-  /// Used to correct mistakes in the version numbering scheme.
-  core.int? epoch;
-
-  /// Human readable version string.
-  ///
-  /// This string is of the form :- and is only set when kind is NORMAL.
-  core.String? fullName;
-
-  /// Whether this version is specifying part of an inclusive range.
-  ///
-  /// Grafeas does not have the capability to specify version ranges; instead we
-  /// have fields that specify start version and end versions. At times this is
-  /// insufficient - we also need to specify whether the version is included in
-  /// the range or is excluded from the range. This boolean is expected to be
-  /// set to true when the version is included in a range.
-  core.bool? inclusive;
-
-  /// Distinguishes between sentinel MIN/MAX versions and normal versions.
-  ///
-  /// Required.
-  /// Possible string values are:
-  /// - "VERSION_KIND_UNSPECIFIED" : Unknown.
-  /// - "NORMAL" : A standard package version.
-  /// - "MINIMUM" : A special version representing negative infinity.
-  /// - "MAXIMUM" : A special version representing positive infinity.
-  core.String? kind;
-
-  /// Required only when version kind is NORMAL.
-  ///
-  /// The main part of the version name.
-  core.String? name;
-
-  /// The iteration of the package build from the above version.
-  core.String? revision;
-
-  Version({
-    this.epoch,
-    this.fullName,
-    this.inclusive,
-    this.kind,
-    this.name,
-    this.revision,
-  });
-
-  Version.fromJson(core.Map _json)
-      : this(
-          epoch: _json.containsKey('epoch') ? _json['epoch'] as core.int : null,
-          fullName: _json.containsKey('fullName')
-              ? _json['fullName'] as core.String
-              : null,
-          inclusive: _json.containsKey('inclusive')
-              ? _json['inclusive'] as core.bool
-              : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          revision: _json.containsKey('revision')
-              ? _json['revision'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (epoch != null) 'epoch': epoch!,
-        if (fullName != null) 'fullName': fullName!,
-        if (inclusive != null) 'inclusive': inclusive!,
-        if (kind != null) 'kind': kind!,
-        if (name != null) 'name': name!,
-        if (revision != null) 'revision': revision!,
-      };
-}
+typedef Version = $Version;
 
 /// An occurrence of a severity vulnerability on a resource.
 class VulnerabilityOccurrence {

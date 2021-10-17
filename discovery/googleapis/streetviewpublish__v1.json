@@ -217,7 +217,7 @@
                     ],
                     "parameters": {
                         "id": {
-                            "description": "Required. A unique identifier for a photo.",
+                            "description": "A unique identifier for a photo.",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -373,7 +373,7 @@
             }
         }
     },
-    "revision": "20211011",
+    "revision": "20211018",
     "rootUrl": "https://streetviewpublish.googleapis.com/",
     "schemas": {
         "BatchDeletePhotosRequest": {
@@ -652,7 +652,7 @@
             "id": "PhotoId",
             "properties": {
                 "id": {
-                    "description": "Required. A unique identifier for a photo.",
+                    "description": "A unique identifier for a photo.",
                     "type": "string"
                 }
             },

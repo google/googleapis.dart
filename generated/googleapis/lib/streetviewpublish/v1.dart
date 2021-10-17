@@ -277,7 +277,7 @@ class PhotoResource {
   ///
   /// Request parameters:
   ///
-  /// [id] - Required. A unique identifier for a photo.
+  /// [id] - A unique identifier for a photo.
   ///
   /// [updateMask] - Required. Mask that identifies fields on the photo metadata
   /// to update. If not present, the old Photo metadata is entirely replaced
@@ -975,8 +975,6 @@ class Photo {
 /// Identifier for a Photo.
 class PhotoId {
   /// A unique identifier for a photo.
-  ///
-  /// Required.
   core.String? id;
 
   PhotoId({

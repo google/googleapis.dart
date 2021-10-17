@@ -1496,12 +1496,14 @@ api.Resource buildResource() {
   final o = api.Resource();
   buildCounterResource++;
   if (buildCounterResource < 3) {
+    o.displayName = 'foo';
     o.folders = buildUnnamed22();
     o.name = 'foo';
     o.parentDisplayName = 'foo';
     o.parentName = 'foo';
     o.projectDisplayName = 'foo';
     o.projectName = 'foo';
+    o.type = 'foo';
   }
   buildCounterResource--;
   return o;
@@ -1510,6 +1512,10 @@ api.Resource buildResource() {
 void checkResource(api.Resource o) {
   buildCounterResource++;
   if (buildCounterResource < 3) {
+    unittest.expect(
+      o.displayName!,
+      unittest.equals('foo'),
+    );
     checkUnnamed22(o.folders!);
     unittest.expect(
       o.name!,
@@ -1529,6 +1535,10 @@ void checkResource(api.Resource o) {
     );
     unittest.expect(
       o.projectName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.type!,
       unittest.equals('foo'),
     );
   }

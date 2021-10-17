@@ -371,7 +371,7 @@
             }
         }
     },
-    "revision": "20211008",
+    "revision": "20211015",
     "rootUrl": "https://searchconsole.googleapis.com/",
     "schemas": {
         "ApiDataRow": {
@@ -673,7 +673,7 @@
                         "",
                         "",
                         "",
-                        ""
+                        "News tab in search."
                     ],
                     "type": "string"
                 },

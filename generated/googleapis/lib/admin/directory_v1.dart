@@ -523,6 +523,10 @@ class ChromeosdevicesResource {
   /// as part of the \[Users
   /// resource\](/admin-sdk/directory/v1/reference/users).
   ///
+  /// [includeChildOrgunits] - Return devices from all child orgunits, as well
+  /// as the specified org unit. If this is set to true 'orgUnitPath' must be
+  /// provided.
+  ///
   /// [maxResults] - Maximum number of results to return.
   ///
   /// [orderBy] - Device property to use for sorting results.
@@ -573,6 +577,7 @@ class ChromeosdevicesResource {
   /// this method will complete with the same error.
   async.Future<ChromeOsDevices> list(
     core.String customerId, {
+    core.bool? includeChildOrgunits,
     core.int? maxResults,
     core.String? orderBy,
     core.String? orgUnitPath,
@@ -583,6 +588,8 @@ class ChromeosdevicesResource {
     core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
+      if (includeChildOrgunits != null)
+        'includeChildOrgunits': ['${includeChildOrgunits}'],
       if (maxResults != null) 'maxResults': ['${maxResults}'],
       if (orderBy != null) 'orderBy': [orderBy],
       if (orgUnitPath != null) 'orgUnitPath': [orgUnitPath],
@@ -9662,6 +9669,8 @@ class MobileDevices {
 ///
 /// For more information about common organizational unit tasks, see the
 /// \[Developer's Guide\](/admin-sdk/directory/v1/guides/manage-org-units.html).
+/// The customer's organizational unit hierarchy is limited to 35 levels of
+/// depth.
 class OrgUnit {
   /// Determines if a sub-organizational unit can inherit the settings of the
   /// parent organization.

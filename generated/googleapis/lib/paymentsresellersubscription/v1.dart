@@ -354,7 +354,8 @@ class PartnersSubscriptionsResource {
         .fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Used by partners to extend a subscription service for their customers.
+  /// Used by partners to extend a subscription service for their customers on
+  /// an ongoing basis for the subscription to remain active and renewable.
   ///
   /// It should be called directly by the partner using service accounts.
   ///
@@ -552,9 +553,8 @@ class PartnersSubscriptionsResource {
 class GoogleCloudPaymentsResellerSubscriptionV1CancelSubscriptionRequest {
   /// If true, the subscription will be cancelled immediately.
   ///
-  /// Otherwise, the subscription will be cancelled at the end of the current
-  /// cycle, and therefore no prorated refund will be issued for the rest of the
-  /// cycle.
+  /// Otherwise, the subscription will be cancelled at renewal_time, and
+  /// therefore no prorated refund will be issued for the rest of the cycle.
   ///
   /// Optional.
   core.bool? cancelImmediately;

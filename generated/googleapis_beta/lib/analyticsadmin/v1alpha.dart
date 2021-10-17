@@ -6315,7 +6315,7 @@ class GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink {
       };
 }
 
-/// A proposal for a link between an GA4 property and a Display & Video 360
+/// A proposal for a link between a GA4 property and a Display & Video 360
 /// advertiser.
 ///
 /// A proposal is converted to a DisplayVideo360AdvertiserLink once approved.
@@ -6583,7 +6583,7 @@ class GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings {
       };
 }
 
-/// A link between an GA4 property and a Firebase project.
+/// A link between a GA4 property and a Firebase project.
 class GoogleAnalyticsAdminV1alphaFirebaseLink {
   /// Time when this FirebaseLink was originally created.
   ///
@@ -6665,7 +6665,7 @@ class GoogleAnalyticsAdminV1alphaGlobalSiteTag {
       };
 }
 
-/// A link between an GA4 property and a Google Ads account.
+/// A link between a GA4 property and a Google Ads account.
 class GoogleAnalyticsAdminV1alphaGoogleAdsLink {
   /// Enable personalized advertising features with this integration.
   ///
@@ -7741,7 +7741,7 @@ class GoogleAnalyticsAdminV1alphaProperty {
       };
 }
 
-/// A virtual resource representing metadata for an GA4 property.
+/// A virtual resource representing metadata for a GA4 property.
 class GoogleAnalyticsAdminV1alphaPropertySummary {
   /// Display name for the property referred to in this account summary.
   core.String? displayName;

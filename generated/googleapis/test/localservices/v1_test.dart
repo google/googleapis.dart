@@ -152,6 +152,50 @@ void checkGoogleAdsHomeservicesLocalservicesV1AggregatorInfo(
   buildCounterGoogleAdsHomeservicesLocalservicesV1AggregatorInfo--;
 }
 
+core.int buildCounterGoogleAdsHomeservicesLocalservicesV1BookingLead = 0;
+api.GoogleAdsHomeservicesLocalservicesV1BookingLead
+    buildGoogleAdsHomeservicesLocalservicesV1BookingLead() {
+  final o = api.GoogleAdsHomeservicesLocalservicesV1BookingLead();
+  buildCounterGoogleAdsHomeservicesLocalservicesV1BookingLead++;
+  if (buildCounterGoogleAdsHomeservicesLocalservicesV1BookingLead < 3) {
+    o.bookingAppointmentTimestamp = 'foo';
+    o.consumerEmail = 'foo';
+    o.consumerPhoneNumber = 'foo';
+    o.customerName = 'foo';
+    o.jobType = 'foo';
+  }
+  buildCounterGoogleAdsHomeservicesLocalservicesV1BookingLead--;
+  return o;
+}
+
+void checkGoogleAdsHomeservicesLocalservicesV1BookingLead(
+    api.GoogleAdsHomeservicesLocalservicesV1BookingLead o) {
+  buildCounterGoogleAdsHomeservicesLocalservicesV1BookingLead++;
+  if (buildCounterGoogleAdsHomeservicesLocalservicesV1BookingLead < 3) {
+    unittest.expect(
+      o.bookingAppointmentTimestamp!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.consumerEmail!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.consumerPhoneNumber!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.customerName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.jobType!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleAdsHomeservicesLocalservicesV1BookingLead--;
+}
+
 core.int buildCounterGoogleAdsHomeservicesLocalservicesV1DetailedLeadReport = 0;
 api.GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport
     buildGoogleAdsHomeservicesLocalservicesV1DetailedLeadReport() {
@@ -161,6 +205,7 @@ api.GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport
     o.accountId = 'foo';
     o.aggregatorInfo =
         buildGoogleAdsHomeservicesLocalservicesV1AggregatorInfo();
+    o.bookingLead = buildGoogleAdsHomeservicesLocalservicesV1BookingLead();
     o.businessName = 'foo';
     o.chargeStatus = 'foo';
     o.currencyCode = 'foo';
@@ -188,6 +233,7 @@ void checkGoogleAdsHomeservicesLocalservicesV1DetailedLeadReport(
       unittest.equals('foo'),
     );
     checkGoogleAdsHomeservicesLocalservicesV1AggregatorInfo(o.aggregatorInfo!);
+    checkGoogleAdsHomeservicesLocalservicesV1BookingLead(o.bookingLead!);
     unittest.expect(
       o.businessName!,
       unittest.equals('foo'),
@@ -445,6 +491,17 @@ void main() {
           api.GoogleAdsHomeservicesLocalservicesV1AggregatorInfo.fromJson(
               oJson as core.Map<core.String, core.dynamic>);
       checkGoogleAdsHomeservicesLocalservicesV1AggregatorInfo(od);
+    });
+  });
+
+  unittest.group('obj-schema-GoogleAdsHomeservicesLocalservicesV1BookingLead',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleAdsHomeservicesLocalservicesV1BookingLead();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleAdsHomeservicesLocalservicesV1BookingLead.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleAdsHomeservicesLocalservicesV1BookingLead(od);
     });
   });
 

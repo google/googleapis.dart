@@ -4298,10 +4298,10 @@ class GetDataSourceIndexStatsResponse {
       };
 }
 
-/// Response format for getting query stats at a search application level
-/// between given dates.
+/// Response format for getting query stats for a search application between
+/// given dates.
 class GetSearchApplicationQueryStatsResponse {
-  /// Search application level query stats per date
+  /// Query stats per date for a search application.
   core.List<SearchApplicationQueryStats>? stats;
 
   GetSearchApplicationQueryStatsResponse({
