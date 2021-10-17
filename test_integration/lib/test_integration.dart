@@ -6,6 +6,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:_discoveryapis_commons/_discoveryapis_commons.dart';
 import 'package:googleapis_auth/auth_io.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/io_client.dart';
@@ -44,6 +45,10 @@ Future<T> withClientFromUserCredentials<T>(
 
   try {
     return await action(authenticatedClient(client, credentials));
+  } on DetailedApiRequestError catch (e) {
+    print(e);
+    print(prettyJsonEncode(e.jsonResponse));
+    rethrow;
   } finally {
     client.close();
   }
