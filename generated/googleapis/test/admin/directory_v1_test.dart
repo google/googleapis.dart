@@ -5946,6 +5946,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.DirectoryApi(mock).chromeosdevices;
       final arg_customerId = 'foo';
+      final arg_includeChildOrgunits = true;
       final arg_maxResults = 42;
       final arg_orderBy = 'foo';
       final arg_orgUnitPath = 'foo';
@@ -6000,6 +6001,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['includeChildOrgunits']!.first,
+          unittest.equals('$arg_includeChildOrgunits'),
+        );
+        unittest.expect(
           core.int.parse(queryMap['maxResults']!.first),
           unittest.equals(arg_maxResults),
         );
@@ -6039,6 +6044,7 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(arg_customerId,
+          includeChildOrgunits: arg_includeChildOrgunits,
           maxResults: arg_maxResults,
           orderBy: arg_orderBy,
           orgUnitPath: arg_orgUnitPath,

@@ -144,7 +144,7 @@
                         "orgunits": {
                             "methods": {
                                 "batchInherit": {
-                                    "description": "Modify multiple policy values that are applied to a specific org unit so that they now inherit the value from a parent (if applicable). All targets must have the same target format. That is to say that they must point to the same target resource and must have the same keys specified in `additionalTargetKeyNames`. On failure the request will return the error details as part of the google.rpc.Status.",
+                                    "description": "Modify multiple policy values that are applied to a specific org unit so that they now inherit the value from a parent (if applicable). All targets must have the same target format. That is to say that they must point to the same target resource and must have the same keys specified in `additionalTargetKeyNames`, though the values for those keys may be different. On failure the request will return the error details as part of the google.rpc.Status.",
                                     "flatPath": "v1/customers/{customersId}/policies/orgunits:batchInherit",
                                     "httpMethod": "POST",
                                     "id": "chromepolicy.customers.policies.orgunits.batchInherit",
@@ -172,7 +172,7 @@
                                     ]
                                 },
                                 "batchModify": {
-                                    "description": "Modify multiple policy values that are applied to a specific org unit. All targets must have the same target format. That is to say that they must point to the same target resource and must have the same keys specified in `additionalTargetKeyNames`. On failure the request will return the error details as part of the google.rpc.Status.",
+                                    "description": "Modify multiple policy values that are applied to a specific org unit. All targets must have the same target format. That is to say that they must point to the same target resource and must have the same keys specified in `additionalTargetKeyNames`, though the values for those keys may be different. On failure the request will return the error details as part of the google.rpc.Status.",
                                     "flatPath": "v1/customers/{customersId}/policies/orgunits:batchModify",
                                     "httpMethod": "POST",
                                     "id": "chromepolicy.customers.policies.orgunits.batchModify",
@@ -322,7 +322,7 @@
             }
         }
     },
-    "revision": "20211008",
+    "revision": "20211018",
     "rootUrl": "https://chromepolicy.googleapis.com/",
     "schemas": {
         "GoogleChromePolicyV1AdditionalTargetKeyName": {
@@ -471,7 +471,7 @@
                     "type": "string"
                 },
                 "schemaName": {
-                    "description": "Output only. The full qualified name of the policy schema. This value is used to fill the field `policy_schema` in PolicyValue when calling BatchInheritOrgUnitPolicies or BatchModifyOrgUnitPolicies.",
+                    "description": "Output only. The fully qualified name of the policy schema. This value is used to fill the field `policy_schema` in PolicyValue when calling BatchInheritOrgUnitPolicies or BatchModifyOrgUnitPolicies",
                     "readOnly": true,
                     "type": "string"
                 },

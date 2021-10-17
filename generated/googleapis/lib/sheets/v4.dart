@@ -8765,43 +8765,7 @@ class InterpolationPoint {
 /// The start must be less than or equal to the end. When the start equals the
 /// end, the interval is empty (matches no time). When both start and end are
 /// unspecified, the interval matches any time.
-class Interval {
-  /// Exclusive end of the interval.
-  ///
-  /// If specified, a Timestamp matching this interval will have to be before
-  /// the end.
-  ///
-  /// Optional.
-  core.String? endTime;
-
-  /// Inclusive start of the interval.
-  ///
-  /// If specified, a Timestamp matching this interval will have to be the same
-  /// or after the start.
-  ///
-  /// Optional.
-  core.String? startTime;
-
-  Interval({
-    this.endTime,
-    this.startTime,
-  });
-
-  Interval.fromJson(core.Map _json)
-      : this(
-          endTime: _json.containsKey('endTime')
-              ? _json['endTime'] as core.String
-              : null,
-          startTime: _json.containsKey('startTime')
-              ? _json['startTime'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (endTime != null) 'endTime': endTime!,
-        if (startTime != null) 'startTime': startTime!,
-      };
-}
+typedef Interval = $Interval;
 
 /// Settings to control how circular dependencies are resolved with iterative
 /// calculation.

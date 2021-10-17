@@ -391,6 +391,53 @@ class BiddersEndpointsResource {
     return ListEndpointsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
+
+  /// Updates a bidder's endpoint.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Output only. Name of the endpoint resource that must follow the
+  /// pattern `bidders/{bidderAccountId}/endpoints/{endpointId}`, where
+  /// {bidderAccountId} is the account ID of the bidder who operates this
+  /// endpoint, and {endpointId} is a unique ID assigned by the server.
+  /// Value must have pattern `^bidders/\[^/\]+/endpoints/\[^/\]+$`.
+  ///
+  /// [updateMask] - Field mask to use for partial in-place updates.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Endpoint].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Endpoint> patch(
+    Endpoint request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Endpoint.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class BiddersPretargetingConfigsResource {

@@ -5443,7 +5443,7 @@ class AbuseReport {
       };
 }
 
-typedef AbuseType = $Shared09;
+typedef AbuseType = $Shared04;
 
 /// Rights management policy for YouTube resources.
 class AccessPolicy {

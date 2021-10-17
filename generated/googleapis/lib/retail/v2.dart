@@ -1204,9 +1204,8 @@ class ProjectsLocationsCatalogsPlacementsResource {
   /// [placement] - Required. The resource name of the search engine placement,
   /// such as `projects / *
   /// /locations/global/catalogs/default_catalog/placements/default_search`.
-  /// This field is used to identify the set of models that will be used to make
-  /// the search. We currently support one placement with the following ID: *
-  /// `default_search`.
+  /// This field is used to identify the serving configuration name and the set
+  /// of models that will be used to make the search.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/catalogs/\[^/\]+/placements/\[^/\]+$`.
   ///
@@ -4048,7 +4047,11 @@ class GoogleCloudRetailV2SearchRequest {
   /// Boost specification to boost certain products.
   ///
   /// See more details at this
-  /// [user guide](https://cloud.google.com/retail/docs/boosting).
+  /// [user guide](https://cloud.google.com/retail/docs/boosting). Notice that
+  /// if both ServingConfig.boost_control_ids and \[SearchRequest.boost_spec\]
+  /// are set, the boost conditions from both places are evaluated. If a search
+  /// request matches multiple boost conditions, the final boost score is equal
+  /// to the sum of the boost scores from all matched boost conditions.
   GoogleCloudRetailV2SearchRequestBoostSpec? boostSpec;
 
   /// The branch resource name, such as `projects / *
@@ -4154,23 +4157,23 @@ class GoogleCloudRetailV2SearchRequest {
   /// "fulfillmentType.fulfillmentId". E.g., in "pickupInStore.store123",
   /// "pickupInStore" is fulfillment type and "store123" is the store ID.
   /// Supported keys are: * colorFamilies * price * originalPrice * discount *
-  /// attributes.key, where key is any key in the Product.attributes map. *
-  /// pickupInStore.id, where id is any FulfillmentInfo.place_ids for
-  /// FulfillmentInfo.type "pickup-in-store". * shipToStore.id, where id is any
-  /// FulfillmentInfo.place_ids for FulfillmentInfo.type "ship-to-store". *
-  /// sameDayDelivery.id, where id is any FulfillmentInfo.place_ids for
-  /// FulfillmentInfo.type "same-day-delivery". * nextDayDelivery.id, where id
-  /// is any FulfillmentInfo.place_ids for FulfillmentInfo.type
-  /// "next-day-delivery". * customFulfillment1.id, where id is any
-  /// FulfillmentInfo.place_ids for FulfillmentInfo.type "custom-type-1". *
-  /// customFulfillment2.id, where id is any FulfillmentInfo.place_ids for
-  /// FulfillmentInfo.type "custom-type-2". * customFulfillment3.id, where id is
-  /// any FulfillmentInfo.place_ids for FulfillmentInfo.type "custom-type-3". *
-  /// customFulfillment4.id, where id is any FulfillmentInfo.place_ids for
-  /// FulfillmentInfo.type "custom-type-4". * customFulfillment5.id, where id is
-  /// any FulfillmentInfo.place_ids for FulfillmentInfo.type "custom-type-5". If
-  /// this field is set to an invalid value other than these, an
-  /// INVALID_ARGUMENT error is returned.
+  /// inventory(place_id,price) * attributes.key, where key is any key in the
+  /// Product.attributes map. * pickupInStore.id, where id is any
+  /// FulfillmentInfo.place_ids for FulfillmentInfo.type "pickup-in-store". *
+  /// shipToStore.id, where id is any FulfillmentInfo.place_ids for
+  /// FulfillmentInfo.type "ship-to-store". * sameDayDelivery.id, where id is
+  /// any FulfillmentInfo.place_ids for FulfillmentInfo.type
+  /// "same-day-delivery". * nextDayDelivery.id, where id is any
+  /// FulfillmentInfo.place_ids for FulfillmentInfo.type "next-day-delivery". *
+  /// customFulfillment1.id, where id is any FulfillmentInfo.place_ids for
+  /// FulfillmentInfo.type "custom-type-1". * customFulfillment2.id, where id is
+  /// any FulfillmentInfo.place_ids for FulfillmentInfo.type "custom-type-2". *
+  /// customFulfillment3.id, where id is any FulfillmentInfo.place_ids for
+  /// FulfillmentInfo.type "custom-type-3". * customFulfillment4.id, where id is
+  /// any FulfillmentInfo.place_ids for FulfillmentInfo.type "custom-type-4". *
+  /// customFulfillment5.id, where id is any FulfillmentInfo.place_ids for
+  /// FulfillmentInfo.type "custom-type-5". If this field is set to an invalid
+  /// value other than these, an INVALID_ARGUMENT error is returned.
   core.List<core.String>? variantRollupKeys;
 
   /// A unique identifier for tracking visitors.
@@ -4503,7 +4506,8 @@ class GoogleCloudRetailV2SearchRequestFacetSpecFacetKey {
   /// "pickupInStore" * "shipToStore" * "sameDayDelivery" * "nextDayDelivery" *
   /// "customFulfillment1" * "customFulfillment2" * "customFulfillment3" *
   /// "customFulfillment4" * "customFulfillment5" * numerical_field = * "price"
-  /// * "discount" * "rating" * "ratingCount" * "attributes.key"
+  /// * "discount" * "rating" * "ratingCount" * "attributes.key" *
+  /// "inventory(place_id,price)"
   ///
   /// Required.
   core.String? key;

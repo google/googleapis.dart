@@ -145,7 +145,7 @@
             }
         }
     },
-    "revision": "20210930",
+    "revision": "20211014",
     "rootUrl": "https://groupsmigration.googleapis.com/",
     "schemas": {
         "Groups": {

@@ -20843,10 +20843,10 @@ class PostalCodeRange {
       };
 }
 
-typedef Price = $Shared06;
+typedef Price = $Shared07;
 
 /// The price represented as a number and currency.
-typedef PriceAmount = $Shared06;
+typedef PriceAmount = $Shared07;
 
 /// Required product attributes are primarily defined by the products data
 /// specification.
@@ -22949,7 +22949,7 @@ class Promotion {
   /// Content API methods that operate on promotions take this as their
   /// promotionId parameter. The REST ID for a promotion is of the form
   /// channel:contentLanguage:targetCountry:promotionId The channel field will
-  /// have a value of "online", "local", or "onlinelocal".
+  /// have a value of "online", "in_store", or "online_in_store".
   ///
   /// Required. Output only.
   core.String? id;

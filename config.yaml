@@ -76,6 +76,7 @@ packages:
     - connectors:v1
     - contactcenterinsights:v1
     - container:v1 # https://cloud.google.com/container-engine/
+    - containeranalysis:v1
     - content:v2.1 # https://developers.google.com/shopping-content/
     - customsearch:v1 # https://developers.google.com/custom-search/
     - datacatalog:v1
@@ -95,6 +96,7 @@ packages:
     - dns:v1 # https://cloud.google.com/dns/api/v1/
     - docs:v1
     - documentai:v1
+    - domains:v1
     - domainsrdap:v1
     - doubleclickbidmanager:v1.1
     - doubleclicksearch:v2 # https://developers.google.com/doubleclick-search/
@@ -160,7 +162,6 @@ packages:
     - pagespeedonline:v5 # https://developers.google.com/speed/docs/insights/about
     - paymentsresellersubscription:v1
     - people:v1 # https://developers.google.com/people/
-    - playablelocations:v3
     - playcustomapp:v1 # https://developers.google.com/android/work/play/custom-app-api
     - policyanalyzer:v1
     - policysimulator:v1
@@ -209,10 +210,11 @@ packages:
     - trafficdirector:v2
     - translate:v3
     - vault:v1 # https://apps.google.com/products/vault/
-    - vectortile:v1
     - verifiedaccess:v1
+    - versionhistory:v1
     - videointelligence:v1 # https://cloud.google.com/video-intelligence/
     - vision:v1 # https://cloud.google.com/vision/reference/rest/
+    - vmmigration:v1
     - webfonts:v1 # https://developers.google.com/fonts/docs/developer_api
     - webmasters:v3 # https://developers.google.com/webmaster-tools/
     - webrisk:v1
@@ -376,6 +378,7 @@ skipped_apis:
 - videointelligence:v1p3beta1
 - vision:v1p1beta1 # v1 included
 - vision:v1p2beta1 # v1 included
+- vmmigration:v1alpha1
 - websecurityscanner:v1alpha # v1 included
 - websecurityscanner:v1beta # v1 included
 - workflowexecutions:v1beta # v1 included

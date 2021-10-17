@@ -1119,7 +1119,7 @@
             }
         }
     },
-    "revision": "20211005",
+    "revision": "20211018",
     "rootUrl": "https://firebase.googleapis.com/",
     "schemas": {
         "AddFirebaseRequest": {
@@ -1190,6 +1190,11 @@
             "description": "Details of a Google Analytics property",
             "id": "AnalyticsProperty",
             "properties": {
+                "analyticsAccountId": {
+                    "description": "Output only. The ID of the [Google Analytics account](https://www.google.com/analytics/) for the Google Analytics property associated with the specified FirebaseProject.",
+                    "readOnly": true,
+                    "type": "string"
+                },
                 "displayName": {
                     "description": "The display name of the Google Analytics property associated with the specified `FirebaseProject`.",
                     "type": "string"
@@ -1393,6 +1398,10 @@
                 },
                 "projectId": {
                     "description": "Immutable. A user-assigned unique identifier of the parent FirebaseProject for the `IosApp`.",
+                    "type": "string"
+                },
+                "teamId": {
+                    "description": "The Apple Developer Team ID associated with the App in the App Store.",
                     "type": "string"
                 }
             },
