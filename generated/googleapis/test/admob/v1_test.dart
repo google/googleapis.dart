@@ -287,27 +287,42 @@ void checkGenerateNetworkReportRequest(api.GenerateNetworkReportRequest o) {
   buildCounterGenerateNetworkReportRequest--;
 }
 
-core.int buildCounterGenerateNetworkReportResponse = 0;
-api.GenerateNetworkReportResponse buildGenerateNetworkReportResponse() {
-  final o = api.GenerateNetworkReportResponse();
-  buildCounterGenerateNetworkReportResponse++;
-  if (buildCounterGenerateNetworkReportResponse < 3) {
+core.int buildCounterGenerateNetworkReportResponseElement = 0;
+api.GenerateNetworkReportResponseElement
+    buildGenerateNetworkReportResponseElement() {
+  final o = api.GenerateNetworkReportResponseElement();
+  buildCounterGenerateNetworkReportResponseElement++;
+  if (buildCounterGenerateNetworkReportResponseElement < 3) {
     o.footer = buildReportFooter();
     o.header = buildReportHeader();
     o.row = buildReportRow();
   }
-  buildCounterGenerateNetworkReportResponse--;
+  buildCounterGenerateNetworkReportResponseElement--;
   return o;
 }
 
-void checkGenerateNetworkReportResponse(api.GenerateNetworkReportResponse o) {
-  buildCounterGenerateNetworkReportResponse++;
-  if (buildCounterGenerateNetworkReportResponse < 3) {
+void checkGenerateNetworkReportResponseElement(
+    api.GenerateNetworkReportResponseElement o) {
+  buildCounterGenerateNetworkReportResponseElement++;
+  if (buildCounterGenerateNetworkReportResponseElement < 3) {
     checkReportFooter(o.footer!);
     checkReportHeader(o.header!);
     checkReportRow(o.row!);
   }
-  buildCounterGenerateNetworkReportResponse--;
+  buildCounterGenerateNetworkReportResponseElement--;
+}
+
+api.GenerateNetworkReportResponse buildGenerateNetworkReportResponse() {
+  final o = api.GenerateNetworkReportResponse();
+  o.add(buildGenerateNetworkReportResponseElement());
+  o.add(buildGenerateNetworkReportResponseElement());
+  return o;
+}
+
+void checkGenerateNetworkReportResponse(api.GenerateNetworkReportResponse o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGenerateNetworkReportResponseElement(o[0]);
+  checkGenerateNetworkReportResponseElement(o[1]);
 }
 
 core.List<api.AdUnit> buildUnnamed1() => [
@@ -1101,12 +1116,21 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-GenerateNetworkReportResponseElement', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGenerateNetworkReportResponseElement();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GenerateNetworkReportResponseElement.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGenerateNetworkReportResponseElement(od);
+    });
+  });
+
   unittest.group('obj-schema-GenerateNetworkReportResponse', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGenerateNetworkReportResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.GenerateNetworkReportResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+      final od = api.GenerateNetworkReportResponse.fromJson(oJson as core.List);
       checkGenerateNetworkReportResponse(od);
     });
   });

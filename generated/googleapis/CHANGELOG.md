@@ -1,3 +1,8 @@
+## 6.0.1-dev
+
+- Fixed issue in AdMob `accounts.networkReport.generate` return type.
+  [#183](https://github.com/google/googleapis.dart/issues/183)
+
 ## 6.0.0
 
 - Introduce a new `$shared` library that contains identical classes across
