@@ -857,7 +857,12 @@ DartResourceClass _parseResource(
     if (description.baseUrl != null) {
       final expectedBaseUrl =
           '${description.rootUrl}${description.servicePath}';
-      assert(expectedBaseUrl == description.baseUrl);
+      if (expectedBaseUrl != description.baseUrl) {
+        print([description.name, description.version].join(' '));
+        print(
+          ['URL mismatch!', expectedBaseUrl, description.baseUrl].join(' '),
+        );
+      }
     }
 
     final rootUrl = description.rootUrl;
