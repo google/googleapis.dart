@@ -20,14 +20,14 @@ class DartApiTestLibrary extends TestHelper {
   final String apiImportPath;
   final String? packageName;
 
-  final Map<DartSchemaType?, SchemaTest> schemaTests = {};
+  final Map<DartSchemaType, SchemaTest> schemaTests = {};
   final List<ResourceTest> resourceTests = [];
   final Map<ResourceTest, ResourceTest> parentResourceTests = {};
 
   /// Generates a API test library for [apiLibrary].
   DartApiTestLibrary.build(
       this.apiLibrary, this.apiImportPath, this.packageName) {
-    void handleType(DartSchemaType? schema) {
+    void handleType(DartSchemaType schema) {
       schemaTests.putIfAbsent(schema, () => testFromSchema(this, schema));
     }
 

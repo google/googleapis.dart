@@ -6,6 +6,7 @@ library discoveryapis_generator.client_api_library;
 
 import 'package:path/path.dart' as path;
 
+import '../base_api_library.dart';
 import '../dart_api_library.dart';
 import '../dart_resources.dart';
 import '../dart_schemas.dart';
@@ -20,8 +21,11 @@ import 'client_schemas.dart' as client;
 /// as the server API. It will use the existing definitions of the API message
 /// classes instead of generating new client message classes.
 class ClientApiLibrary extends BaseApiLibrary {
+  @override
   late final DartSchemaTypeDB schemaDB;
+  @override
   late DartApiClass apiClass;
+
   late bool exposeMedia;
   late final String schemaImports;
   late final String libraryName;
@@ -79,22 +83,10 @@ class ClientApiLibrary extends BaseApiLibrary {
     return parsedImports;
   }
 
-  @override
-  String get librarySource {
-    final sink = StringBuffer();
-    final schemas = generateSchemas(schemaDB);
-    final resources = generateResources(apiClass);
-    sink.write(libraryHeader());
-    if (resources.isNotEmpty) {
-      sink.writeln(resources);
-    }
-    sink.write(schemas);
-    return '$sink';
-  }
-
   /// Create the library header. Note, this must be called after the library
   /// source string has been generated, since it relies on [Identifier] usage
   /// counts being calculated
+  @override
   String libraryHeader() {
     var exportedMediaClasses = '';
     if (exposeMedia) {

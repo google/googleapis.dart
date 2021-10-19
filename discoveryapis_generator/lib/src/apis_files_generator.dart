@@ -10,6 +10,7 @@ import 'dart:io';
 import 'package:path/path.dart' as path;
 import 'package:yaml/yaml.dart';
 
+import 'base_api_library.dart';
 import 'client/client_api_library.dart';
 import 'dart_api_library.dart';
 import 'generated_googleapis/discovery/v1.dart';

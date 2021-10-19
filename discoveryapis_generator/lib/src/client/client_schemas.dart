@@ -36,7 +36,7 @@ class ClientObjectType extends ObjectType {
       // The super variant fromJson() will call this subclass constructor
       // and the variant discriminator is final.
       if (!isVariantDiscriminator(property)) {
-        final decodeString = property.type!
+        final decodeString = property.type
             .jsonDecode("_json['${escapeString(property.jsonName)}']");
         fromJsonString.writeln(
           "    if (_json.containsKey('${escapeString(property.jsonName)}')) {",
@@ -59,7 +59,7 @@ class ClientObjectType extends ObjectType {
       toJsonString.writeln('    if (message.${property.name} != null) {');
       toJsonString.writeln(
         "      _json['${escapeString(property.jsonName)}'] = "
-        '${property.type!.jsonEncode('message.${property.name}!')};',
+        '${property.type.jsonEncode('message.${property.name}!')};',
       );
       toJsonString.writeln('    }');
     }

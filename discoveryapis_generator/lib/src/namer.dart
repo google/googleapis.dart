@@ -24,7 +24,7 @@ class Identifier {
 
   bool get hasPrefix => preferredName != null;
 
-  /// The allocated name for this [Identifier]. This will be [:null:] until
+  /// The allocated name for this [Identifier]. This will be `null` until
   /// [sealWithName] was called.
   String? get name => _name;
 
