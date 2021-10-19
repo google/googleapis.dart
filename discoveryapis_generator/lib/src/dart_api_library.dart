@@ -25,7 +25,6 @@ const ignoreForFileSet = {
   'prefer_expression_function_bodies',
   'prefer_interpolation_to_compose_strings',
   'unnecessary_brace_in_string_interps',
-  //'unnecessary_cast',
   'unnecessary_lambdas',
   'unnecessary_string_interpolations',
 };
