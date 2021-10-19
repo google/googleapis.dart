@@ -125,10 +125,20 @@ class DiscoveryPackagesConfiguration {
       writeDiscoveryDocuments(
         '$discoveryDocsDir/${entry.key}',
         entry.value.apis.map(
-          (e) => allApis.singleWhere((element) => element!.id == e, orElse: () {
-            throw StateError('  !!! Colud not find an element for `$e`!');
-          }),
-        ),
+          (e) {
+            final allMatches =
+                allApis.where((element) => element.id == e).toList();
+
+            if (allMatches.length == 1) {
+              return allMatches.single;
+            }
+
+            print(
+              'Looking 1 match for "$e" - instead found ${allMatches.length}',
+            );
+            return null;
+          },
+        ).whereType<RestDescription>(),
       );
     }
   }

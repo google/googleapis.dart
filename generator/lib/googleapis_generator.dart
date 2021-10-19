@@ -26,7 +26,7 @@ Future<List<DirectoryListItems>?> _listAllApis() async {
   }
 }
 
-Future<List<RestDescription?>> downloadDiscoveryDocuments(
+Future<List<RestDescription>> downloadDiscoveryDocuments(
   String outputDir,
 ) async {
   final apis = await fetchDiscoveryDocuments();
@@ -36,7 +36,7 @@ Future<List<RestDescription?>> downloadDiscoveryDocuments(
 
 void writeDiscoveryDocuments(
   String outputDir,
-  Iterable<RestDescription?> apis,
+  Iterable<RestDescription> apis,
 ) {
   final directory = Directory(outputDir);
   if (directory.existsSync()) {
@@ -46,7 +46,7 @@ void writeDiscoveryDocuments(
   directory.createSync(recursive: true);
 
   for (var description in apis) {
-    final name = '$outputDir/${description!.name}__${description.version}.json';
+    final name = '$outputDir/${description.name}__${description.version}.json';
     final file = File(name);
     const encoder = JsonEncoder.withIndent('    ');
     file.writeAsStringSync(encoder.convert(description.toJson()));
@@ -54,7 +54,7 @@ void writeDiscoveryDocuments(
   }
 }
 
-Future<List<RestDescription?>> fetchDiscoveryDocuments({
+Future<List<RestDescription>> fetchDiscoveryDocuments({
   Map<String, String>? existingRevisions,
 }) async {
   final client = IOClient();
@@ -143,6 +143,7 @@ $stack
             return description;
           })
           .where((rd) => rd != null)
+          .cast<RestDescription>()
           .toList();
     } finally {
       await pool.close();
