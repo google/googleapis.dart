@@ -722,34 +722,6 @@ void checkGoogleCloudChannelV1CustomerConstraints(
   buildCounterGoogleCloudChannelV1CustomerConstraints--;
 }
 
-core.int buildCounterGoogleCloudChannelV1CustomerEvent = 0;
-api.GoogleCloudChannelV1CustomerEvent buildGoogleCloudChannelV1CustomerEvent() {
-  final o = api.GoogleCloudChannelV1CustomerEvent();
-  buildCounterGoogleCloudChannelV1CustomerEvent++;
-  if (buildCounterGoogleCloudChannelV1CustomerEvent < 3) {
-    o.customer = 'foo';
-    o.eventType = 'foo';
-  }
-  buildCounterGoogleCloudChannelV1CustomerEvent--;
-  return o;
-}
-
-void checkGoogleCloudChannelV1CustomerEvent(
-    api.GoogleCloudChannelV1CustomerEvent o) {
-  buildCounterGoogleCloudChannelV1CustomerEvent++;
-  if (buildCounterGoogleCloudChannelV1CustomerEvent < 3) {
-    unittest.expect(
-      o.customer!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.eventType!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterGoogleCloudChannelV1CustomerEvent--;
-}
-
 core.int buildCounterGoogleCloudChannelV1EduData = 0;
 api.GoogleCloudChannelV1EduData buildGoogleCloudChannelV1EduData() {
   final o = api.GoogleCloudChannelV1EduData();
@@ -868,35 +840,6 @@ void checkGoogleCloudChannelV1Entitlement(
     );
   }
   buildCounterGoogleCloudChannelV1Entitlement--;
-}
-
-core.int buildCounterGoogleCloudChannelV1EntitlementEvent = 0;
-api.GoogleCloudChannelV1EntitlementEvent
-    buildGoogleCloudChannelV1EntitlementEvent() {
-  final o = api.GoogleCloudChannelV1EntitlementEvent();
-  buildCounterGoogleCloudChannelV1EntitlementEvent++;
-  if (buildCounterGoogleCloudChannelV1EntitlementEvent < 3) {
-    o.entitlement = 'foo';
-    o.eventType = 'foo';
-  }
-  buildCounterGoogleCloudChannelV1EntitlementEvent--;
-  return o;
-}
-
-void checkGoogleCloudChannelV1EntitlementEvent(
-    api.GoogleCloudChannelV1EntitlementEvent o) {
-  buildCounterGoogleCloudChannelV1EntitlementEvent++;
-  if (buildCounterGoogleCloudChannelV1EntitlementEvent < 3) {
-    unittest.expect(
-      o.entitlement!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.eventType!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterGoogleCloudChannelV1EntitlementEvent--;
 }
 
 core.int buildCounterGoogleCloudChannelV1ImportCustomerRequest = 0;
@@ -1589,30 +1532,6 @@ void checkGoogleCloudChannelV1Offer(api.GoogleCloudChannelV1Offer o) {
   buildCounterGoogleCloudChannelV1Offer--;
 }
 
-core.int buildCounterGoogleCloudChannelV1OperationMetadata = 0;
-api.GoogleCloudChannelV1OperationMetadata
-    buildGoogleCloudChannelV1OperationMetadata() {
-  final o = api.GoogleCloudChannelV1OperationMetadata();
-  buildCounterGoogleCloudChannelV1OperationMetadata++;
-  if (buildCounterGoogleCloudChannelV1OperationMetadata < 3) {
-    o.operationType = 'foo';
-  }
-  buildCounterGoogleCloudChannelV1OperationMetadata--;
-  return o;
-}
-
-void checkGoogleCloudChannelV1OperationMetadata(
-    api.GoogleCloudChannelV1OperationMetadata o) {
-  buildCounterGoogleCloudChannelV1OperationMetadata++;
-  if (buildCounterGoogleCloudChannelV1OperationMetadata < 3) {
-    unittest.expect(
-      o.operationType!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterGoogleCloudChannelV1OperationMetadata--;
-}
-
 core.int buildCounterGoogleCloudChannelV1Parameter = 0;
 api.GoogleCloudChannelV1Parameter buildGoogleCloudChannelV1Parameter() {
   final o = api.GoogleCloudChannelV1Parameter();
@@ -2149,29 +2068,6 @@ void checkGoogleCloudChannelV1StartPaidServiceRequest(
   buildCounterGoogleCloudChannelV1StartPaidServiceRequest--;
 }
 
-core.int buildCounterGoogleCloudChannelV1SubscriberEvent = 0;
-api.GoogleCloudChannelV1SubscriberEvent
-    buildGoogleCloudChannelV1SubscriberEvent() {
-  final o = api.GoogleCloudChannelV1SubscriberEvent();
-  buildCounterGoogleCloudChannelV1SubscriberEvent++;
-  if (buildCounterGoogleCloudChannelV1SubscriberEvent < 3) {
-    o.customerEvent = buildGoogleCloudChannelV1CustomerEvent();
-    o.entitlementEvent = buildGoogleCloudChannelV1EntitlementEvent();
-  }
-  buildCounterGoogleCloudChannelV1SubscriberEvent--;
-  return o;
-}
-
-void checkGoogleCloudChannelV1SubscriberEvent(
-    api.GoogleCloudChannelV1SubscriberEvent o) {
-  buildCounterGoogleCloudChannelV1SubscriberEvent++;
-  if (buildCounterGoogleCloudChannelV1SubscriberEvent < 3) {
-    checkGoogleCloudChannelV1CustomerEvent(o.customerEvent!);
-    checkGoogleCloudChannelV1EntitlementEvent(o.entitlementEvent!);
-  }
-  buildCounterGoogleCloudChannelV1SubscriberEvent--;
-}
-
 core.int buildCounterGoogleCloudChannelV1SuspendEntitlementRequest = 0;
 api.GoogleCloudChannelV1SuspendEntitlementRequest
     buildGoogleCloudChannelV1SuspendEntitlementRequest() {
@@ -2280,38 +2176,6 @@ void checkUnnamed25(core.List<api.GoogleCloudChannelV1Entitlement> o) {
   checkGoogleCloudChannelV1Entitlement(o[1]);
 }
 
-core.int buildCounterGoogleCloudChannelV1TransferEntitlementsResponse = 0;
-api.GoogleCloudChannelV1TransferEntitlementsResponse
-    buildGoogleCloudChannelV1TransferEntitlementsResponse() {
-  final o = api.GoogleCloudChannelV1TransferEntitlementsResponse();
-  buildCounterGoogleCloudChannelV1TransferEntitlementsResponse++;
-  if (buildCounterGoogleCloudChannelV1TransferEntitlementsResponse < 3) {
-    o.entitlements = buildUnnamed25();
-  }
-  buildCounterGoogleCloudChannelV1TransferEntitlementsResponse--;
-  return o;
-}
-
-void checkGoogleCloudChannelV1TransferEntitlementsResponse(
-    api.GoogleCloudChannelV1TransferEntitlementsResponse o) {
-  buildCounterGoogleCloudChannelV1TransferEntitlementsResponse++;
-  if (buildCounterGoogleCloudChannelV1TransferEntitlementsResponse < 3) {
-    checkUnnamed25(o.entitlements!);
-  }
-  buildCounterGoogleCloudChannelV1TransferEntitlementsResponse--;
-}
-
-core.List<api.GoogleCloudChannelV1Entitlement> buildUnnamed26() => [
-      buildGoogleCloudChannelV1Entitlement(),
-      buildGoogleCloudChannelV1Entitlement(),
-    ];
-
-void checkUnnamed26(core.List<api.GoogleCloudChannelV1Entitlement> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudChannelV1Entitlement(o[0]);
-  checkGoogleCloudChannelV1Entitlement(o[1]);
-}
-
 core.int buildCounterGoogleCloudChannelV1TransferEntitlementsToGoogleRequest =
     0;
 api.GoogleCloudChannelV1TransferEntitlementsToGoogleRequest
@@ -2319,7 +2183,7 @@ api.GoogleCloudChannelV1TransferEntitlementsToGoogleRequest
   final o = api.GoogleCloudChannelV1TransferEntitlementsToGoogleRequest();
   buildCounterGoogleCloudChannelV1TransferEntitlementsToGoogleRequest++;
   if (buildCounterGoogleCloudChannelV1TransferEntitlementsToGoogleRequest < 3) {
-    o.entitlements = buildUnnamed26();
+    o.entitlements = buildUnnamed25();
     o.requestId = 'foo';
   }
   buildCounterGoogleCloudChannelV1TransferEntitlementsToGoogleRequest--;
@@ -2330,7 +2194,7 @@ void checkGoogleCloudChannelV1TransferEntitlementsToGoogleRequest(
     api.GoogleCloudChannelV1TransferEntitlementsToGoogleRequest o) {
   buildCounterGoogleCloudChannelV1TransferEntitlementsToGoogleRequest++;
   if (buildCounterGoogleCloudChannelV1TransferEntitlementsToGoogleRequest < 3) {
-    checkUnnamed26(o.entitlements!);
+    checkUnnamed25(o.entitlements!);
     unittest.expect(
       o.requestId!,
       unittest.equals('foo'),
@@ -2484,7 +2348,7 @@ void checkGoogleCloudChannelV1UpdateChannelPartnerLinkRequest(
   buildCounterGoogleCloudChannelV1UpdateChannelPartnerLinkRequest--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed27() => {
+core.Map<core.String, core.Object?> buildUnnamed26() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -2497,7 +2361,7 @@ core.Map<core.String, core.Object?> buildUnnamed27() => {
       },
     };
 
-void checkUnnamed27(core.Map<core.String, core.Object?> o) {
+void checkUnnamed26(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o['x']!) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -2537,7 +2401,7 @@ api.GoogleCloudChannelV1Value buildGoogleCloudChannelV1Value() {
     o.boolValue = true;
     o.doubleValue = 42.0;
     o.int64Value = 'foo';
-    o.protoValue = buildUnnamed27();
+    o.protoValue = buildUnnamed26();
     o.stringValue = 'foo';
   }
   buildCounterGoogleCloudChannelV1Value--;
@@ -2556,7 +2420,7 @@ void checkGoogleCloudChannelV1Value(api.GoogleCloudChannelV1Value o) {
       o.int64Value!,
       unittest.equals('foo'),
     );
-    checkUnnamed27(o.protoValue!);
+    checkUnnamed26(o.protoValue!);
     unittest.expect(
       o.stringValue!,
       unittest.equals('foo'),
@@ -2565,461 +2429,61 @@ void checkGoogleCloudChannelV1Value(api.GoogleCloudChannelV1Value o) {
   buildCounterGoogleCloudChannelV1Value--;
 }
 
-core.int buildCounterGoogleCloudChannelV1alpha1AssociationInfo = 0;
-api.GoogleCloudChannelV1alpha1AssociationInfo
-    buildGoogleCloudChannelV1alpha1AssociationInfo() {
-  final o = api.GoogleCloudChannelV1alpha1AssociationInfo();
-  buildCounterGoogleCloudChannelV1alpha1AssociationInfo++;
-  if (buildCounterGoogleCloudChannelV1alpha1AssociationInfo < 3) {
-    o.baseEntitlement = 'foo';
-  }
-  buildCounterGoogleCloudChannelV1alpha1AssociationInfo--;
+core.int buildCounterGoogleLongrunningCancelOperationRequest = 0;
+api.GoogleLongrunningCancelOperationRequest
+    buildGoogleLongrunningCancelOperationRequest() {
+  final o = api.GoogleLongrunningCancelOperationRequest();
+  buildCounterGoogleLongrunningCancelOperationRequest++;
+  if (buildCounterGoogleLongrunningCancelOperationRequest < 3) {}
+  buildCounterGoogleLongrunningCancelOperationRequest--;
   return o;
 }
 
-void checkGoogleCloudChannelV1alpha1AssociationInfo(
-    api.GoogleCloudChannelV1alpha1AssociationInfo o) {
-  buildCounterGoogleCloudChannelV1alpha1AssociationInfo++;
-  if (buildCounterGoogleCloudChannelV1alpha1AssociationInfo < 3) {
-    unittest.expect(
-      o.baseEntitlement!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterGoogleCloudChannelV1alpha1AssociationInfo--;
+void checkGoogleLongrunningCancelOperationRequest(
+    api.GoogleLongrunningCancelOperationRequest o) {
+  buildCounterGoogleLongrunningCancelOperationRequest++;
+  if (buildCounterGoogleLongrunningCancelOperationRequest < 3) {}
+  buildCounterGoogleLongrunningCancelOperationRequest--;
 }
 
-core.int buildCounterGoogleCloudChannelV1alpha1CommitmentSettings = 0;
-api.GoogleCloudChannelV1alpha1CommitmentSettings
-    buildGoogleCloudChannelV1alpha1CommitmentSettings() {
-  final o = api.GoogleCloudChannelV1alpha1CommitmentSettings();
-  buildCounterGoogleCloudChannelV1alpha1CommitmentSettings++;
-  if (buildCounterGoogleCloudChannelV1alpha1CommitmentSettings < 3) {
-    o.endTime = 'foo';
-    o.renewalSettings = buildGoogleCloudChannelV1alpha1RenewalSettings();
-    o.startTime = 'foo';
-  }
-  buildCounterGoogleCloudChannelV1alpha1CommitmentSettings--;
-  return o;
-}
-
-void checkGoogleCloudChannelV1alpha1CommitmentSettings(
-    api.GoogleCloudChannelV1alpha1CommitmentSettings o) {
-  buildCounterGoogleCloudChannelV1alpha1CommitmentSettings++;
-  if (buildCounterGoogleCloudChannelV1alpha1CommitmentSettings < 3) {
-    unittest.expect(
-      o.endTime!,
-      unittest.equals('foo'),
-    );
-    checkGoogleCloudChannelV1alpha1RenewalSettings(o.renewalSettings!);
-    unittest.expect(
-      o.startTime!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterGoogleCloudChannelV1alpha1CommitmentSettings--;
-}
-
-core.int buildCounterGoogleCloudChannelV1alpha1CustomerEvent = 0;
-api.GoogleCloudChannelV1alpha1CustomerEvent
-    buildGoogleCloudChannelV1alpha1CustomerEvent() {
-  final o = api.GoogleCloudChannelV1alpha1CustomerEvent();
-  buildCounterGoogleCloudChannelV1alpha1CustomerEvent++;
-  if (buildCounterGoogleCloudChannelV1alpha1CustomerEvent < 3) {
-    o.customer = 'foo';
-    o.eventType = 'foo';
-  }
-  buildCounterGoogleCloudChannelV1alpha1CustomerEvent--;
-  return o;
-}
-
-void checkGoogleCloudChannelV1alpha1CustomerEvent(
-    api.GoogleCloudChannelV1alpha1CustomerEvent o) {
-  buildCounterGoogleCloudChannelV1alpha1CustomerEvent++;
-  if (buildCounterGoogleCloudChannelV1alpha1CustomerEvent < 3) {
-    unittest.expect(
-      o.customer!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.eventType!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterGoogleCloudChannelV1alpha1CustomerEvent--;
-}
-
-core.List<api.GoogleCloudChannelV1alpha1Parameter> buildUnnamed28() => [
-      buildGoogleCloudChannelV1alpha1Parameter(),
-      buildGoogleCloudChannelV1alpha1Parameter(),
+core.List<api.GoogleLongrunningOperation> buildUnnamed27() => [
+      buildGoogleLongrunningOperation(),
+      buildGoogleLongrunningOperation(),
     ];
 
-void checkUnnamed28(core.List<api.GoogleCloudChannelV1alpha1Parameter> o) {
+void checkUnnamed27(core.List<api.GoogleLongrunningOperation> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudChannelV1alpha1Parameter(o[0]);
-  checkGoogleCloudChannelV1alpha1Parameter(o[1]);
+  checkGoogleLongrunningOperation(o[0]);
+  checkGoogleLongrunningOperation(o[1]);
 }
 
-core.List<core.String> buildUnnamed29() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed29(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
-core.int buildCounterGoogleCloudChannelV1alpha1Entitlement = 0;
-api.GoogleCloudChannelV1alpha1Entitlement
-    buildGoogleCloudChannelV1alpha1Entitlement() {
-  final o = api.GoogleCloudChannelV1alpha1Entitlement();
-  buildCounterGoogleCloudChannelV1alpha1Entitlement++;
-  if (buildCounterGoogleCloudChannelV1alpha1Entitlement < 3) {
-    o.assignedUnits = 42;
-    o.associationInfo = buildGoogleCloudChannelV1alpha1AssociationInfo();
-    o.channelPartnerId = 'foo';
-    o.commitmentSettings = buildGoogleCloudChannelV1alpha1CommitmentSettings();
-    o.createTime = 'foo';
-    o.maxUnits = 42;
-    o.name = 'foo';
-    o.numUnits = 42;
-    o.offer = 'foo';
-    o.parameters = buildUnnamed28();
-    o.provisionedService = buildGoogleCloudChannelV1alpha1ProvisionedService();
-    o.provisioningState = 'foo';
-    o.purchaseOrderId = 'foo';
-    o.suspensionReasons = buildUnnamed29();
-    o.trialSettings = buildGoogleCloudChannelV1alpha1TrialSettings();
-    o.updateTime = 'foo';
+core.int buildCounterGoogleLongrunningListOperationsResponse = 0;
+api.GoogleLongrunningListOperationsResponse
+    buildGoogleLongrunningListOperationsResponse() {
+  final o = api.GoogleLongrunningListOperationsResponse();
+  buildCounterGoogleLongrunningListOperationsResponse++;
+  if (buildCounterGoogleLongrunningListOperationsResponse < 3) {
+    o.nextPageToken = 'foo';
+    o.operations = buildUnnamed27();
   }
-  buildCounterGoogleCloudChannelV1alpha1Entitlement--;
+  buildCounterGoogleLongrunningListOperationsResponse--;
   return o;
 }
 
-void checkGoogleCloudChannelV1alpha1Entitlement(
-    api.GoogleCloudChannelV1alpha1Entitlement o) {
-  buildCounterGoogleCloudChannelV1alpha1Entitlement++;
-  if (buildCounterGoogleCloudChannelV1alpha1Entitlement < 3) {
+void checkGoogleLongrunningListOperationsResponse(
+    api.GoogleLongrunningListOperationsResponse o) {
+  buildCounterGoogleLongrunningListOperationsResponse++;
+  if (buildCounterGoogleLongrunningListOperationsResponse < 3) {
     unittest.expect(
-      o.assignedUnits!,
-      unittest.equals(42),
-    );
-    checkGoogleCloudChannelV1alpha1AssociationInfo(o.associationInfo!);
-    unittest.expect(
-      o.channelPartnerId!,
+      o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkGoogleCloudChannelV1alpha1CommitmentSettings(o.commitmentSettings!);
-    unittest.expect(
-      o.createTime!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.maxUnits!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.name!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.numUnits!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.offer!,
-      unittest.equals('foo'),
-    );
-    checkUnnamed28(o.parameters!);
-    checkGoogleCloudChannelV1alpha1ProvisionedService(o.provisionedService!);
-    unittest.expect(
-      o.provisioningState!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.purchaseOrderId!,
-      unittest.equals('foo'),
-    );
-    checkUnnamed29(o.suspensionReasons!);
-    checkGoogleCloudChannelV1alpha1TrialSettings(o.trialSettings!);
-    unittest.expect(
-      o.updateTime!,
-      unittest.equals('foo'),
-    );
+    checkUnnamed27(o.operations!);
   }
-  buildCounterGoogleCloudChannelV1alpha1Entitlement--;
+  buildCounterGoogleLongrunningListOperationsResponse--;
 }
 
-core.int buildCounterGoogleCloudChannelV1alpha1EntitlementEvent = 0;
-api.GoogleCloudChannelV1alpha1EntitlementEvent
-    buildGoogleCloudChannelV1alpha1EntitlementEvent() {
-  final o = api.GoogleCloudChannelV1alpha1EntitlementEvent();
-  buildCounterGoogleCloudChannelV1alpha1EntitlementEvent++;
-  if (buildCounterGoogleCloudChannelV1alpha1EntitlementEvent < 3) {
-    o.entitlement = 'foo';
-    o.eventType = 'foo';
-  }
-  buildCounterGoogleCloudChannelV1alpha1EntitlementEvent--;
-  return o;
-}
-
-void checkGoogleCloudChannelV1alpha1EntitlementEvent(
-    api.GoogleCloudChannelV1alpha1EntitlementEvent o) {
-  buildCounterGoogleCloudChannelV1alpha1EntitlementEvent++;
-  if (buildCounterGoogleCloudChannelV1alpha1EntitlementEvent < 3) {
-    unittest.expect(
-      o.entitlement!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.eventType!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterGoogleCloudChannelV1alpha1EntitlementEvent--;
-}
-
-core.int buildCounterGoogleCloudChannelV1alpha1OperationMetadata = 0;
-api.GoogleCloudChannelV1alpha1OperationMetadata
-    buildGoogleCloudChannelV1alpha1OperationMetadata() {
-  final o = api.GoogleCloudChannelV1alpha1OperationMetadata();
-  buildCounterGoogleCloudChannelV1alpha1OperationMetadata++;
-  if (buildCounterGoogleCloudChannelV1alpha1OperationMetadata < 3) {
-    o.operationType = 'foo';
-  }
-  buildCounterGoogleCloudChannelV1alpha1OperationMetadata--;
-  return o;
-}
-
-void checkGoogleCloudChannelV1alpha1OperationMetadata(
-    api.GoogleCloudChannelV1alpha1OperationMetadata o) {
-  buildCounterGoogleCloudChannelV1alpha1OperationMetadata++;
-  if (buildCounterGoogleCloudChannelV1alpha1OperationMetadata < 3) {
-    unittest.expect(
-      o.operationType!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterGoogleCloudChannelV1alpha1OperationMetadata--;
-}
-
-core.int buildCounterGoogleCloudChannelV1alpha1Parameter = 0;
-api.GoogleCloudChannelV1alpha1Parameter
-    buildGoogleCloudChannelV1alpha1Parameter() {
-  final o = api.GoogleCloudChannelV1alpha1Parameter();
-  buildCounterGoogleCloudChannelV1alpha1Parameter++;
-  if (buildCounterGoogleCloudChannelV1alpha1Parameter < 3) {
-    o.editable = true;
-    o.name = 'foo';
-    o.value = buildGoogleCloudChannelV1alpha1Value();
-  }
-  buildCounterGoogleCloudChannelV1alpha1Parameter--;
-  return o;
-}
-
-void checkGoogleCloudChannelV1alpha1Parameter(
-    api.GoogleCloudChannelV1alpha1Parameter o) {
-  buildCounterGoogleCloudChannelV1alpha1Parameter++;
-  if (buildCounterGoogleCloudChannelV1alpha1Parameter < 3) {
-    unittest.expect(o.editable!, unittest.isTrue);
-    unittest.expect(
-      o.name!,
-      unittest.equals('foo'),
-    );
-    checkGoogleCloudChannelV1alpha1Value(o.value!);
-  }
-  buildCounterGoogleCloudChannelV1alpha1Parameter--;
-}
-
-core.int buildCounterGoogleCloudChannelV1alpha1Period = 0;
-api.GoogleCloudChannelV1alpha1Period buildGoogleCloudChannelV1alpha1Period() {
-  final o = api.GoogleCloudChannelV1alpha1Period();
-  buildCounterGoogleCloudChannelV1alpha1Period++;
-  if (buildCounterGoogleCloudChannelV1alpha1Period < 3) {
-    o.duration = 42;
-    o.periodType = 'foo';
-  }
-  buildCounterGoogleCloudChannelV1alpha1Period--;
-  return o;
-}
-
-void checkGoogleCloudChannelV1alpha1Period(
-    api.GoogleCloudChannelV1alpha1Period o) {
-  buildCounterGoogleCloudChannelV1alpha1Period++;
-  if (buildCounterGoogleCloudChannelV1alpha1Period < 3) {
-    unittest.expect(
-      o.duration!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.periodType!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterGoogleCloudChannelV1alpha1Period--;
-}
-
-core.int buildCounterGoogleCloudChannelV1alpha1ProvisionedService = 0;
-api.GoogleCloudChannelV1alpha1ProvisionedService
-    buildGoogleCloudChannelV1alpha1ProvisionedService() {
-  final o = api.GoogleCloudChannelV1alpha1ProvisionedService();
-  buildCounterGoogleCloudChannelV1alpha1ProvisionedService++;
-  if (buildCounterGoogleCloudChannelV1alpha1ProvisionedService < 3) {
-    o.productId = 'foo';
-    o.provisioningId = 'foo';
-    o.skuId = 'foo';
-  }
-  buildCounterGoogleCloudChannelV1alpha1ProvisionedService--;
-  return o;
-}
-
-void checkGoogleCloudChannelV1alpha1ProvisionedService(
-    api.GoogleCloudChannelV1alpha1ProvisionedService o) {
-  buildCounterGoogleCloudChannelV1alpha1ProvisionedService++;
-  if (buildCounterGoogleCloudChannelV1alpha1ProvisionedService < 3) {
-    unittest.expect(
-      o.productId!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.provisioningId!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.skuId!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterGoogleCloudChannelV1alpha1ProvisionedService--;
-}
-
-core.int buildCounterGoogleCloudChannelV1alpha1RenewalSettings = 0;
-api.GoogleCloudChannelV1alpha1RenewalSettings
-    buildGoogleCloudChannelV1alpha1RenewalSettings() {
-  final o = api.GoogleCloudChannelV1alpha1RenewalSettings();
-  buildCounterGoogleCloudChannelV1alpha1RenewalSettings++;
-  if (buildCounterGoogleCloudChannelV1alpha1RenewalSettings < 3) {
-    o.disableCommitment = true;
-    o.enableRenewal = true;
-    o.paymentCycle = buildGoogleCloudChannelV1alpha1Period();
-    o.paymentOption = 'foo';
-    o.paymentPlan = 'foo';
-    o.resizeUnitCount = true;
-  }
-  buildCounterGoogleCloudChannelV1alpha1RenewalSettings--;
-  return o;
-}
-
-void checkGoogleCloudChannelV1alpha1RenewalSettings(
-    api.GoogleCloudChannelV1alpha1RenewalSettings o) {
-  buildCounterGoogleCloudChannelV1alpha1RenewalSettings++;
-  if (buildCounterGoogleCloudChannelV1alpha1RenewalSettings < 3) {
-    unittest.expect(o.disableCommitment!, unittest.isTrue);
-    unittest.expect(o.enableRenewal!, unittest.isTrue);
-    checkGoogleCloudChannelV1alpha1Period(o.paymentCycle!);
-    unittest.expect(
-      o.paymentOption!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.paymentPlan!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(o.resizeUnitCount!, unittest.isTrue);
-  }
-  buildCounterGoogleCloudChannelV1alpha1RenewalSettings--;
-}
-
-core.int buildCounterGoogleCloudChannelV1alpha1SubscriberEvent = 0;
-api.GoogleCloudChannelV1alpha1SubscriberEvent
-    buildGoogleCloudChannelV1alpha1SubscriberEvent() {
-  final o = api.GoogleCloudChannelV1alpha1SubscriberEvent();
-  buildCounterGoogleCloudChannelV1alpha1SubscriberEvent++;
-  if (buildCounterGoogleCloudChannelV1alpha1SubscriberEvent < 3) {
-    o.customerEvent = buildGoogleCloudChannelV1alpha1CustomerEvent();
-    o.entitlementEvent = buildGoogleCloudChannelV1alpha1EntitlementEvent();
-  }
-  buildCounterGoogleCloudChannelV1alpha1SubscriberEvent--;
-  return o;
-}
-
-void checkGoogleCloudChannelV1alpha1SubscriberEvent(
-    api.GoogleCloudChannelV1alpha1SubscriberEvent o) {
-  buildCounterGoogleCloudChannelV1alpha1SubscriberEvent++;
-  if (buildCounterGoogleCloudChannelV1alpha1SubscriberEvent < 3) {
-    checkGoogleCloudChannelV1alpha1CustomerEvent(o.customerEvent!);
-    checkGoogleCloudChannelV1alpha1EntitlementEvent(o.entitlementEvent!);
-  }
-  buildCounterGoogleCloudChannelV1alpha1SubscriberEvent--;
-}
-
-core.List<api.GoogleCloudChannelV1alpha1Entitlement> buildUnnamed30() => [
-      buildGoogleCloudChannelV1alpha1Entitlement(),
-      buildGoogleCloudChannelV1alpha1Entitlement(),
-    ];
-
-void checkUnnamed30(core.List<api.GoogleCloudChannelV1alpha1Entitlement> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudChannelV1alpha1Entitlement(o[0]);
-  checkGoogleCloudChannelV1alpha1Entitlement(o[1]);
-}
-
-core.int buildCounterGoogleCloudChannelV1alpha1TransferEntitlementsResponse = 0;
-api.GoogleCloudChannelV1alpha1TransferEntitlementsResponse
-    buildGoogleCloudChannelV1alpha1TransferEntitlementsResponse() {
-  final o = api.GoogleCloudChannelV1alpha1TransferEntitlementsResponse();
-  buildCounterGoogleCloudChannelV1alpha1TransferEntitlementsResponse++;
-  if (buildCounterGoogleCloudChannelV1alpha1TransferEntitlementsResponse < 3) {
-    o.entitlements = buildUnnamed30();
-  }
-  buildCounterGoogleCloudChannelV1alpha1TransferEntitlementsResponse--;
-  return o;
-}
-
-void checkGoogleCloudChannelV1alpha1TransferEntitlementsResponse(
-    api.GoogleCloudChannelV1alpha1TransferEntitlementsResponse o) {
-  buildCounterGoogleCloudChannelV1alpha1TransferEntitlementsResponse++;
-  if (buildCounterGoogleCloudChannelV1alpha1TransferEntitlementsResponse < 3) {
-    checkUnnamed30(o.entitlements!);
-  }
-  buildCounterGoogleCloudChannelV1alpha1TransferEntitlementsResponse--;
-}
-
-core.int buildCounterGoogleCloudChannelV1alpha1TrialSettings = 0;
-api.GoogleCloudChannelV1alpha1TrialSettings
-    buildGoogleCloudChannelV1alpha1TrialSettings() {
-  final o = api.GoogleCloudChannelV1alpha1TrialSettings();
-  buildCounterGoogleCloudChannelV1alpha1TrialSettings++;
-  if (buildCounterGoogleCloudChannelV1alpha1TrialSettings < 3) {
-    o.endTime = 'foo';
-    o.trial = true;
-  }
-  buildCounterGoogleCloudChannelV1alpha1TrialSettings--;
-  return o;
-}
-
-void checkGoogleCloudChannelV1alpha1TrialSettings(
-    api.GoogleCloudChannelV1alpha1TrialSettings o) {
-  buildCounterGoogleCloudChannelV1alpha1TrialSettings++;
-  if (buildCounterGoogleCloudChannelV1alpha1TrialSettings < 3) {
-    unittest.expect(
-      o.endTime!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(o.trial!, unittest.isTrue);
-  }
-  buildCounterGoogleCloudChannelV1alpha1TrialSettings--;
-}
-
-core.Map<core.String, core.Object?> buildUnnamed31() => {
+core.Map<core.String, core.Object?> buildUnnamed28() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -3032,7 +2496,7 @@ core.Map<core.String, core.Object?> buildUnnamed31() => {
       },
     };
 
-void checkUnnamed31(core.Map<core.String, core.Object?> o) {
+void checkUnnamed28(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted3 = (o['x']!) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
@@ -3064,98 +2528,7 @@ void checkUnnamed31(core.Map<core.String, core.Object?> o) {
   );
 }
 
-core.int buildCounterGoogleCloudChannelV1alpha1Value = 0;
-api.GoogleCloudChannelV1alpha1Value buildGoogleCloudChannelV1alpha1Value() {
-  final o = api.GoogleCloudChannelV1alpha1Value();
-  buildCounterGoogleCloudChannelV1alpha1Value++;
-  if (buildCounterGoogleCloudChannelV1alpha1Value < 3) {
-    o.boolValue = true;
-    o.doubleValue = 42.0;
-    o.int64Value = 'foo';
-    o.protoValue = buildUnnamed31();
-    o.stringValue = 'foo';
-  }
-  buildCounterGoogleCloudChannelV1alpha1Value--;
-  return o;
-}
-
-void checkGoogleCloudChannelV1alpha1Value(
-    api.GoogleCloudChannelV1alpha1Value o) {
-  buildCounterGoogleCloudChannelV1alpha1Value++;
-  if (buildCounterGoogleCloudChannelV1alpha1Value < 3) {
-    unittest.expect(o.boolValue!, unittest.isTrue);
-    unittest.expect(
-      o.doubleValue!,
-      unittest.equals(42.0),
-    );
-    unittest.expect(
-      o.int64Value!,
-      unittest.equals('foo'),
-    );
-    checkUnnamed31(o.protoValue!);
-    unittest.expect(
-      o.stringValue!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterGoogleCloudChannelV1alpha1Value--;
-}
-
-core.int buildCounterGoogleLongrunningCancelOperationRequest = 0;
-api.GoogleLongrunningCancelOperationRequest
-    buildGoogleLongrunningCancelOperationRequest() {
-  final o = api.GoogleLongrunningCancelOperationRequest();
-  buildCounterGoogleLongrunningCancelOperationRequest++;
-  if (buildCounterGoogleLongrunningCancelOperationRequest < 3) {}
-  buildCounterGoogleLongrunningCancelOperationRequest--;
-  return o;
-}
-
-void checkGoogleLongrunningCancelOperationRequest(
-    api.GoogleLongrunningCancelOperationRequest o) {
-  buildCounterGoogleLongrunningCancelOperationRequest++;
-  if (buildCounterGoogleLongrunningCancelOperationRequest < 3) {}
-  buildCounterGoogleLongrunningCancelOperationRequest--;
-}
-
-core.List<api.GoogleLongrunningOperation> buildUnnamed32() => [
-      buildGoogleLongrunningOperation(),
-      buildGoogleLongrunningOperation(),
-    ];
-
-void checkUnnamed32(core.List<api.GoogleLongrunningOperation> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkGoogleLongrunningOperation(o[0]);
-  checkGoogleLongrunningOperation(o[1]);
-}
-
-core.int buildCounterGoogleLongrunningListOperationsResponse = 0;
-api.GoogleLongrunningListOperationsResponse
-    buildGoogleLongrunningListOperationsResponse() {
-  final o = api.GoogleLongrunningListOperationsResponse();
-  buildCounterGoogleLongrunningListOperationsResponse++;
-  if (buildCounterGoogleLongrunningListOperationsResponse < 3) {
-    o.nextPageToken = 'foo';
-    o.operations = buildUnnamed32();
-  }
-  buildCounterGoogleLongrunningListOperationsResponse--;
-  return o;
-}
-
-void checkGoogleLongrunningListOperationsResponse(
-    api.GoogleLongrunningListOperationsResponse o) {
-  buildCounterGoogleLongrunningListOperationsResponse++;
-  if (buildCounterGoogleLongrunningListOperationsResponse < 3) {
-    unittest.expect(
-      o.nextPageToken!,
-      unittest.equals('foo'),
-    );
-    checkUnnamed32(o.operations!);
-  }
-  buildCounterGoogleLongrunningListOperationsResponse--;
-}
-
-core.Map<core.String, core.Object?> buildUnnamed33() => {
+core.Map<core.String, core.Object?> buildUnnamed29() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -3168,7 +2541,7 @@ core.Map<core.String, core.Object?> buildUnnamed33() => {
       },
     };
 
-void checkUnnamed33(core.Map<core.String, core.Object?> o) {
+void checkUnnamed29(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted5 = (o['x']!) as core.Map;
   unittest.expect(casted5, unittest.hasLength(3));
@@ -3200,7 +2573,52 @@ void checkUnnamed33(core.Map<core.String, core.Object?> o) {
   );
 }
 
-core.Map<core.String, core.Object?> buildUnnamed34() => {
+core.int buildCounterGoogleLongrunningOperation = 0;
+api.GoogleLongrunningOperation buildGoogleLongrunningOperation() {
+  final o = api.GoogleLongrunningOperation();
+  buildCounterGoogleLongrunningOperation++;
+  if (buildCounterGoogleLongrunningOperation < 3) {
+    o.done = true;
+    o.error = buildGoogleRpcStatus();
+    o.metadata = buildUnnamed28();
+    o.name = 'foo';
+    o.response = buildUnnamed29();
+  }
+  buildCounterGoogleLongrunningOperation--;
+  return o;
+}
+
+void checkGoogleLongrunningOperation(api.GoogleLongrunningOperation o) {
+  buildCounterGoogleLongrunningOperation++;
+  if (buildCounterGoogleLongrunningOperation < 3) {
+    unittest.expect(o.done!, unittest.isTrue);
+    checkGoogleRpcStatus(o.error!);
+    checkUnnamed28(o.metadata!);
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed29(o.response!);
+  }
+  buildCounterGoogleLongrunningOperation--;
+}
+
+core.int buildCounterGoogleProtobufEmpty = 0;
+api.GoogleProtobufEmpty buildGoogleProtobufEmpty() {
+  final o = api.GoogleProtobufEmpty();
+  buildCounterGoogleProtobufEmpty++;
+  if (buildCounterGoogleProtobufEmpty < 3) {}
+  buildCounterGoogleProtobufEmpty--;
+  return o;
+}
+
+void checkGoogleProtobufEmpty(api.GoogleProtobufEmpty o) {
+  buildCounterGoogleProtobufEmpty++;
+  if (buildCounterGoogleProtobufEmpty < 3) {}
+  buildCounterGoogleProtobufEmpty--;
+}
+
+core.Map<core.String, core.Object?> buildUnnamed30() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -3213,7 +2631,7 @@ core.Map<core.String, core.Object?> buildUnnamed34() => {
       },
     };
 
-void checkUnnamed34(core.Map<core.String, core.Object?> o) {
+void checkUnnamed30(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted7 = (o['x']!) as core.Map;
   unittest.expect(casted7, unittest.hasLength(3));
@@ -3245,105 +2663,15 @@ void checkUnnamed34(core.Map<core.String, core.Object?> o) {
   );
 }
 
-core.int buildCounterGoogleLongrunningOperation = 0;
-api.GoogleLongrunningOperation buildGoogleLongrunningOperation() {
-  final o = api.GoogleLongrunningOperation();
-  buildCounterGoogleLongrunningOperation++;
-  if (buildCounterGoogleLongrunningOperation < 3) {
-    o.done = true;
-    o.error = buildGoogleRpcStatus();
-    o.metadata = buildUnnamed33();
-    o.name = 'foo';
-    o.response = buildUnnamed34();
-  }
-  buildCounterGoogleLongrunningOperation--;
-  return o;
-}
-
-void checkGoogleLongrunningOperation(api.GoogleLongrunningOperation o) {
-  buildCounterGoogleLongrunningOperation++;
-  if (buildCounterGoogleLongrunningOperation < 3) {
-    unittest.expect(o.done!, unittest.isTrue);
-    checkGoogleRpcStatus(o.error!);
-    checkUnnamed33(o.metadata!);
-    unittest.expect(
-      o.name!,
-      unittest.equals('foo'),
-    );
-    checkUnnamed34(o.response!);
-  }
-  buildCounterGoogleLongrunningOperation--;
-}
-
-core.int buildCounterGoogleProtobufEmpty = 0;
-api.GoogleProtobufEmpty buildGoogleProtobufEmpty() {
-  final o = api.GoogleProtobufEmpty();
-  buildCounterGoogleProtobufEmpty++;
-  if (buildCounterGoogleProtobufEmpty < 3) {}
-  buildCounterGoogleProtobufEmpty--;
-  return o;
-}
-
-void checkGoogleProtobufEmpty(api.GoogleProtobufEmpty o) {
-  buildCounterGoogleProtobufEmpty++;
-  if (buildCounterGoogleProtobufEmpty < 3) {}
-  buildCounterGoogleProtobufEmpty--;
-}
-
-core.Map<core.String, core.Object?> buildUnnamed35() => {
-      'x': {
-        'list': [1, 2, 3],
-        'bool': true,
-        'string': 'foo'
-      },
-      'y': {
-        'list': [1, 2, 3],
-        'bool': true,
-        'string': 'foo'
-      },
-    };
-
-void checkUnnamed35(core.Map<core.String, core.Object?> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  var casted9 = (o['x']!) as core.Map;
-  unittest.expect(casted9, unittest.hasLength(3));
-  unittest.expect(
-    casted9['list'],
-    unittest.equals([1, 2, 3]),
-  );
-  unittest.expect(
-    casted9['bool'],
-    unittest.equals(true),
-  );
-  unittest.expect(
-    casted9['string'],
-    unittest.equals('foo'),
-  );
-  var casted10 = (o['y']!) as core.Map;
-  unittest.expect(casted10, unittest.hasLength(3));
-  unittest.expect(
-    casted10['list'],
-    unittest.equals([1, 2, 3]),
-  );
-  unittest.expect(
-    casted10['bool'],
-    unittest.equals(true),
-  );
-  unittest.expect(
-    casted10['string'],
-    unittest.equals('foo'),
-  );
-}
-
-core.List<core.Map<core.String, core.Object?>> buildUnnamed36() => [
-      buildUnnamed35(),
-      buildUnnamed35(),
+core.List<core.Map<core.String, core.Object?>> buildUnnamed31() => [
+      buildUnnamed30(),
+      buildUnnamed30(),
     ];
 
-void checkUnnamed36(core.List<core.Map<core.String, core.Object?>> o) {
+void checkUnnamed31(core.List<core.Map<core.String, core.Object?>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed35(o[0]);
-  checkUnnamed35(o[1]);
+  checkUnnamed30(o[0]);
+  checkUnnamed30(o[1]);
 }
 
 core.int buildCounterGoogleRpcStatus = 0;
@@ -3352,7 +2680,7 @@ api.GoogleRpcStatus buildGoogleRpcStatus() {
   buildCounterGoogleRpcStatus++;
   if (buildCounterGoogleRpcStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed36();
+    o.details = buildUnnamed31();
     o.message = 'foo';
   }
   buildCounterGoogleRpcStatus--;
@@ -3366,7 +2694,7 @@ void checkGoogleRpcStatus(api.GoogleRpcStatus o) {
       o.code!,
       unittest.equals(42),
     );
-    checkUnnamed36(o.details!);
+    checkUnnamed31(o.details!);
     unittest.expect(
       o.message!,
       unittest.equals('foo'),
@@ -3407,12 +2735,12 @@ void checkGoogleTypeMoney(api.GoogleTypeMoney o) {
   buildCounterGoogleTypeMoney--;
 }
 
-core.List<core.String> buildUnnamed37() => [
+core.List<core.String> buildUnnamed32() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed37(core.List<core.String> o) {
+void checkUnnamed32(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -3424,12 +2752,12 @@ void checkUnnamed37(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed38() => [
+core.List<core.String> buildUnnamed33() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed38(core.List<core.String> o) {
+void checkUnnamed33(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -3446,13 +2774,13 @@ api.GoogleTypePostalAddress buildGoogleTypePostalAddress() {
   final o = api.GoogleTypePostalAddress();
   buildCounterGoogleTypePostalAddress++;
   if (buildCounterGoogleTypePostalAddress < 3) {
-    o.addressLines = buildUnnamed37();
+    o.addressLines = buildUnnamed32();
     o.administrativeArea = 'foo';
     o.languageCode = 'foo';
     o.locality = 'foo';
     o.organization = 'foo';
     o.postalCode = 'foo';
-    o.recipients = buildUnnamed38();
+    o.recipients = buildUnnamed33();
     o.regionCode = 'foo';
     o.revision = 42;
     o.sortingCode = 'foo';
@@ -3465,7 +2793,7 @@ api.GoogleTypePostalAddress buildGoogleTypePostalAddress() {
 void checkGoogleTypePostalAddress(api.GoogleTypePostalAddress o) {
   buildCounterGoogleTypePostalAddress++;
   if (buildCounterGoogleTypePostalAddress < 3) {
-    checkUnnamed37(o.addressLines!);
+    checkUnnamed32(o.addressLines!);
     unittest.expect(
       o.administrativeArea!,
       unittest.equals('foo'),
@@ -3486,7 +2814,7 @@ void checkGoogleTypePostalAddress(api.GoogleTypePostalAddress o) {
       o.postalCode!,
       unittest.equals('foo'),
     );
-    checkUnnamed38(o.recipients!);
+    checkUnnamed33(o.recipients!);
     unittest.expect(
       o.regionCode!,
       unittest.equals('foo'),
@@ -3697,16 +3025,6 @@ void main() {
     });
   });
 
-  unittest.group('obj-schema-GoogleCloudChannelV1CustomerEvent', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildGoogleCloudChannelV1CustomerEvent();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.GoogleCloudChannelV1CustomerEvent.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudChannelV1CustomerEvent(od);
-    });
-  });
-
   unittest.group('obj-schema-GoogleCloudChannelV1EduData', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGoogleCloudChannelV1EduData();
@@ -3724,16 +3042,6 @@ void main() {
       final od = api.GoogleCloudChannelV1Entitlement.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudChannelV1Entitlement(od);
-    });
-  });
-
-  unittest.group('obj-schema-GoogleCloudChannelV1EntitlementEvent', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildGoogleCloudChannelV1EntitlementEvent();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.GoogleCloudChannelV1EntitlementEvent.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudChannelV1EntitlementEvent(od);
     });
   });
 
@@ -3913,16 +3221,6 @@ void main() {
       final od = api.GoogleCloudChannelV1Offer.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudChannelV1Offer(od);
-    });
-  });
-
-  unittest.group('obj-schema-GoogleCloudChannelV1OperationMetadata', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildGoogleCloudChannelV1OperationMetadata();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.GoogleCloudChannelV1OperationMetadata.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudChannelV1OperationMetadata(od);
     });
   });
 
@@ -4109,16 +3407,6 @@ void main() {
     });
   });
 
-  unittest.group('obj-schema-GoogleCloudChannelV1SubscriberEvent', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildGoogleCloudChannelV1SubscriberEvent();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.GoogleCloudChannelV1SubscriberEvent.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudChannelV1SubscriberEvent(od);
-    });
-  });
-
   unittest.group('obj-schema-GoogleCloudChannelV1SuspendEntitlementRequest',
       () {
     unittest.test('to-json--from-json', () async {
@@ -4148,17 +3436,6 @@ void main() {
       final od = api.GoogleCloudChannelV1TransferEntitlementsRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudChannelV1TransferEntitlementsRequest(od);
-    });
-  });
-
-  unittest.group('obj-schema-GoogleCloudChannelV1TransferEntitlementsResponse',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildGoogleCloudChannelV1TransferEntitlementsResponse();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.GoogleCloudChannelV1TransferEntitlementsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudChannelV1TransferEntitlementsResponse(od);
     });
   });
 
@@ -4245,148 +3522,6 @@ void main() {
       final od = api.GoogleCloudChannelV1Value.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudChannelV1Value(od);
-    });
-  });
-
-  unittest.group('obj-schema-GoogleCloudChannelV1alpha1AssociationInfo', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildGoogleCloudChannelV1alpha1AssociationInfo();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.GoogleCloudChannelV1alpha1AssociationInfo.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudChannelV1alpha1AssociationInfo(od);
-    });
-  });
-
-  unittest.group('obj-schema-GoogleCloudChannelV1alpha1CommitmentSettings', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildGoogleCloudChannelV1alpha1CommitmentSettings();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.GoogleCloudChannelV1alpha1CommitmentSettings.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudChannelV1alpha1CommitmentSettings(od);
-    });
-  });
-
-  unittest.group('obj-schema-GoogleCloudChannelV1alpha1CustomerEvent', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildGoogleCloudChannelV1alpha1CustomerEvent();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.GoogleCloudChannelV1alpha1CustomerEvent.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudChannelV1alpha1CustomerEvent(od);
-    });
-  });
-
-  unittest.group('obj-schema-GoogleCloudChannelV1alpha1Entitlement', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildGoogleCloudChannelV1alpha1Entitlement();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.GoogleCloudChannelV1alpha1Entitlement.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudChannelV1alpha1Entitlement(od);
-    });
-  });
-
-  unittest.group('obj-schema-GoogleCloudChannelV1alpha1EntitlementEvent', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildGoogleCloudChannelV1alpha1EntitlementEvent();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.GoogleCloudChannelV1alpha1EntitlementEvent.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudChannelV1alpha1EntitlementEvent(od);
-    });
-  });
-
-  unittest.group('obj-schema-GoogleCloudChannelV1alpha1OperationMetadata', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildGoogleCloudChannelV1alpha1OperationMetadata();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.GoogleCloudChannelV1alpha1OperationMetadata.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudChannelV1alpha1OperationMetadata(od);
-    });
-  });
-
-  unittest.group('obj-schema-GoogleCloudChannelV1alpha1Parameter', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildGoogleCloudChannelV1alpha1Parameter();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.GoogleCloudChannelV1alpha1Parameter.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudChannelV1alpha1Parameter(od);
-    });
-  });
-
-  unittest.group('obj-schema-GoogleCloudChannelV1alpha1Period', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildGoogleCloudChannelV1alpha1Period();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.GoogleCloudChannelV1alpha1Period.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudChannelV1alpha1Period(od);
-    });
-  });
-
-  unittest.group('obj-schema-GoogleCloudChannelV1alpha1ProvisionedService', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildGoogleCloudChannelV1alpha1ProvisionedService();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.GoogleCloudChannelV1alpha1ProvisionedService.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudChannelV1alpha1ProvisionedService(od);
-    });
-  });
-
-  unittest.group('obj-schema-GoogleCloudChannelV1alpha1RenewalSettings', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildGoogleCloudChannelV1alpha1RenewalSettings();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.GoogleCloudChannelV1alpha1RenewalSettings.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudChannelV1alpha1RenewalSettings(od);
-    });
-  });
-
-  unittest.group('obj-schema-GoogleCloudChannelV1alpha1SubscriberEvent', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildGoogleCloudChannelV1alpha1SubscriberEvent();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.GoogleCloudChannelV1alpha1SubscriberEvent.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudChannelV1alpha1SubscriberEvent(od);
-    });
-  });
-
-  unittest.group(
-      'obj-schema-GoogleCloudChannelV1alpha1TransferEntitlementsResponse', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildGoogleCloudChannelV1alpha1TransferEntitlementsResponse();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.GoogleCloudChannelV1alpha1TransferEntitlementsResponse.fromJson(
-              oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudChannelV1alpha1TransferEntitlementsResponse(od);
-    });
-  });
-
-  unittest.group('obj-schema-GoogleCloudChannelV1alpha1TrialSettings', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildGoogleCloudChannelV1alpha1TrialSettings();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.GoogleCloudChannelV1alpha1TrialSettings.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudChannelV1alpha1TrialSettings(od);
-    });
-  });
-
-  unittest.group('obj-schema-GoogleCloudChannelV1alpha1Value', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildGoogleCloudChannelV1alpha1Value();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.GoogleCloudChannelV1alpha1Value.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudChannelV1alpha1Value(od);
     });
   });
 

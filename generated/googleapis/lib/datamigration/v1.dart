@@ -2140,9 +2140,6 @@ class GenerateSshScriptRequest {
       };
 }
 
-/// Represents the metadata of the long-running operation.
-typedef GoogleCloudClouddmsV1OperationMetadata = $OperationMetadata00;
-
 /// Response message for 'ListConnectionProfiles' request.
 class ListConnectionProfilesResponse {
   /// The response list of connection profiles.
@@ -2536,87 +2533,6 @@ class MigrationJob {
         if (updateTime != null) 'updateTime': updateTime!,
         if (vpcPeeringConnectivity != null)
           'vpcPeeringConnectivity': vpcPeeringConnectivity!,
-      };
-}
-
-/// Error message of a verification Migration job.
-class MigrationJobVerificationError {
-  /// An instance of ErrorCode specifying the error that occurred.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "ERROR_CODE_UNSPECIFIED" : An unknown error occurred
-  /// - "CONNECTION_FAILURE" : We failed to connect to one of the connection
-  /// profile.
-  /// - "AUTHENTICATION_FAILURE" : We failed to authenticate to one of the
-  /// connection profile.
-  /// - "INVALID_CONNECTION_PROFILE_CONFIG" : One of the involved connection
-  /// profiles has an invalid configuration.
-  /// - "VERSION_INCOMPATIBILITY" : The versions of the source and the
-  /// destination are incompatible.
-  /// - "CONNECTION_PROFILE_TYPES_INCOMPATIBILITY" : The types of the source and
-  /// the destination are incompatible.
-  /// - "NO_PGLOGICAL_INSTALLED" : No pglogical extension installed on
-  /// databases, applicable for postgres.
-  /// - "PGLOGICAL_NODE_ALREADY_EXISTS" : pglogical node already exists on
-  /// databases, applicable for postgres.
-  /// - "INVALID_WAL_LEVEL" : The value of parameter wal_level is not set to
-  /// logical.
-  /// - "INVALID_SHARED_PRELOAD_LIBRARY" : The value of parameter
-  /// shared_preload_libraries does not include pglogical.
-  /// - "INSUFFICIENT_MAX_REPLICATION_SLOTS" : The value of parameter
-  /// max_replication_slots is not sufficient.
-  /// - "INSUFFICIENT_MAX_WAL_SENDERS" : The value of parameter max_wal_senders
-  /// is not sufficient.
-  /// - "INSUFFICIENT_MAX_WORKER_PROCESSES" : The value of parameter
-  /// max_worker_processes is not sufficient.
-  /// - "UNSUPPORTED_EXTENSIONS" : Extensions installed are either not supported
-  /// or having unsupported versions.
-  /// - "UNSUPPORTED_MIGRATION_TYPE" : Unsupported migration type.
-  /// - "INVALID_RDS_LOGICAL_REPLICATION" : Invalid RDS logical replication.
-  /// - "UNSUPPORTED_GTID_MODE" : The gtid_mode is not supported, applicable for
-  /// MySQL.
-  /// - "UNSUPPORTED_TABLE_DEFINITION" : The table definition is not support due
-  /// to missing primary key or replica identity.
-  /// - "UNSUPPORTED_DEFINER" : The definer is not supported.
-  /// - "CANT_RESTART_RUNNING_MIGRATION" : Migration is already running at the
-  /// time of restart request.
-  core.String? errorCode;
-
-  /// A specific detailed error message, if supplied by the engine.
-  ///
-  /// Output only.
-  core.String? errorDetailMessage;
-
-  /// A formatted message with further details about the error and a CTA.
-  ///
-  /// Output only.
-  core.String? errorMessage;
-
-  MigrationJobVerificationError({
-    this.errorCode,
-    this.errorDetailMessage,
-    this.errorMessage,
-  });
-
-  MigrationJobVerificationError.fromJson(core.Map _json)
-      : this(
-          errorCode: _json.containsKey('errorCode')
-              ? _json['errorCode'] as core.String
-              : null,
-          errorDetailMessage: _json.containsKey('errorDetailMessage')
-              ? _json['errorDetailMessage'] as core.String
-              : null,
-          errorMessage: _json.containsKey('errorMessage')
-              ? _json['errorMessage'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (errorCode != null) 'errorCode': errorCode!,
-        if (errorDetailMessage != null)
-          'errorDetailMessage': errorDetailMessage!,
-        if (errorMessage != null) 'errorMessage': errorMessage!,
       };
 }
 

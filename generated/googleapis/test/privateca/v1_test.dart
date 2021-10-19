@@ -1938,55 +1938,6 @@ void checkOperation(api.Operation o) {
   buildCounterOperation--;
 }
 
-core.int buildCounterOperationMetadata = 0;
-api.OperationMetadata buildOperationMetadata() {
-  final o = api.OperationMetadata();
-  buildCounterOperationMetadata++;
-  if (buildCounterOperationMetadata < 3) {
-    o.apiVersion = 'foo';
-    o.createTime = 'foo';
-    o.endTime = 'foo';
-    o.requestedCancellation = true;
-    o.statusMessage = 'foo';
-    o.target = 'foo';
-    o.verb = 'foo';
-  }
-  buildCounterOperationMetadata--;
-  return o;
-}
-
-void checkOperationMetadata(api.OperationMetadata o) {
-  buildCounterOperationMetadata++;
-  if (buildCounterOperationMetadata < 3) {
-    unittest.expect(
-      o.apiVersion!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.createTime!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.endTime!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(o.requestedCancellation!, unittest.isTrue);
-    unittest.expect(
-      o.statusMessage!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.target!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.verb!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterOperationMetadata--;
-}
-
 core.List<api.AuditConfig> buildUnnamed38() => [
       buildAuditConfig(),
       buildAuditConfig(),
@@ -2086,31 +2037,6 @@ void checkPublishingOptions(api.PublishingOptions o) {
     unittest.expect(o.publishCrl!, unittest.isTrue);
   }
   buildCounterPublishingOptions--;
-}
-
-core.int buildCounterReconciliationOperationMetadata = 0;
-api.ReconciliationOperationMetadata buildReconciliationOperationMetadata() {
-  final o = api.ReconciliationOperationMetadata();
-  buildCounterReconciliationOperationMetadata++;
-  if (buildCounterReconciliationOperationMetadata < 3) {
-    o.deleteResource = true;
-    o.exclusiveAction = 'foo';
-  }
-  buildCounterReconciliationOperationMetadata--;
-  return o;
-}
-
-void checkReconciliationOperationMetadata(
-    api.ReconciliationOperationMetadata o) {
-  buildCounterReconciliationOperationMetadata++;
-  if (buildCounterReconciliationOperationMetadata < 3) {
-    unittest.expect(o.deleteResource!, unittest.isTrue);
-    unittest.expect(
-      o.exclusiveAction!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterReconciliationOperationMetadata--;
 }
 
 core.int buildCounterRevocationDetails = 0;
@@ -3249,16 +3175,6 @@ void main() {
     });
   });
 
-  unittest.group('obj-schema-OperationMetadata', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildOperationMetadata();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.OperationMetadata.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkOperationMetadata(od);
-    });
-  });
-
   unittest.group('obj-schema-Policy', () {
     unittest.test('to-json--from-json', () async {
       final o = buildPolicy();
@@ -3286,16 +3202,6 @@ void main() {
       final od = api.PublishingOptions.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkPublishingOptions(od);
-    });
-  });
-
-  unittest.group('obj-schema-ReconciliationOperationMetadata', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildReconciliationOperationMetadata();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.ReconciliationOperationMetadata.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkReconciliationOperationMetadata(od);
     });
   });
 

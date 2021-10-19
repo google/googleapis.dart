@@ -388,40 +388,6 @@ void checkGoogleCloudWebriskV1Submission(api.GoogleCloudWebriskV1Submission o) {
   buildCounterGoogleCloudWebriskV1Submission--;
 }
 
-core.int buildCounterGoogleCloudWebriskV1SubmitUriMetadata = 0;
-api.GoogleCloudWebriskV1SubmitUriMetadata
-    buildGoogleCloudWebriskV1SubmitUriMetadata() {
-  final o = api.GoogleCloudWebriskV1SubmitUriMetadata();
-  buildCounterGoogleCloudWebriskV1SubmitUriMetadata++;
-  if (buildCounterGoogleCloudWebriskV1SubmitUriMetadata < 3) {
-    o.createTime = 'foo';
-    o.state = 'foo';
-    o.updateTime = 'foo';
-  }
-  buildCounterGoogleCloudWebriskV1SubmitUriMetadata--;
-  return o;
-}
-
-void checkGoogleCloudWebriskV1SubmitUriMetadata(
-    api.GoogleCloudWebriskV1SubmitUriMetadata o) {
-  buildCounterGoogleCloudWebriskV1SubmitUriMetadata++;
-  if (buildCounterGoogleCloudWebriskV1SubmitUriMetadata < 3) {
-    unittest.expect(
-      o.createTime!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.state!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.updateTime!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterGoogleCloudWebriskV1SubmitUriMetadata--;
-}
-
 core.int buildCounterGoogleCloudWebriskV1SubmitUriRequest = 0;
 api.GoogleCloudWebriskV1SubmitUriRequest
     buildGoogleCloudWebriskV1SubmitUriRequest() {
@@ -930,16 +896,6 @@ void main() {
       final od = api.GoogleCloudWebriskV1Submission.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudWebriskV1Submission(od);
-    });
-  });
-
-  unittest.group('obj-schema-GoogleCloudWebriskV1SubmitUriMetadata', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildGoogleCloudWebriskV1SubmitUriMetadata();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.GoogleCloudWebriskV1SubmitUriMetadata.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudWebriskV1SubmitUriMetadata(od);
     });
   });
 

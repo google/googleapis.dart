@@ -26,49 +26,6 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
-core.int
-    buildCounterGoogleCloudAssuredworkloadsV1CreateWorkloadOperationMetadata =
-    0;
-api.GoogleCloudAssuredworkloadsV1CreateWorkloadOperationMetadata
-    buildGoogleCloudAssuredworkloadsV1CreateWorkloadOperationMetadata() {
-  final o = api.GoogleCloudAssuredworkloadsV1CreateWorkloadOperationMetadata();
-  buildCounterGoogleCloudAssuredworkloadsV1CreateWorkloadOperationMetadata++;
-  if (buildCounterGoogleCloudAssuredworkloadsV1CreateWorkloadOperationMetadata <
-      3) {
-    o.complianceRegime = 'foo';
-    o.createTime = 'foo';
-    o.displayName = 'foo';
-    o.parent = 'foo';
-  }
-  buildCounterGoogleCloudAssuredworkloadsV1CreateWorkloadOperationMetadata--;
-  return o;
-}
-
-void checkGoogleCloudAssuredworkloadsV1CreateWorkloadOperationMetadata(
-    api.GoogleCloudAssuredworkloadsV1CreateWorkloadOperationMetadata o) {
-  buildCounterGoogleCloudAssuredworkloadsV1CreateWorkloadOperationMetadata++;
-  if (buildCounterGoogleCloudAssuredworkloadsV1CreateWorkloadOperationMetadata <
-      3) {
-    unittest.expect(
-      o.complianceRegime!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.createTime!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.displayName!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.parent!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterGoogleCloudAssuredworkloadsV1CreateWorkloadOperationMetadata--;
-}
-
 core.List<api.GoogleCloudAssuredworkloadsV1Workload> buildUnnamed0() => [
       buildGoogleCloudAssuredworkloadsV1Workload(),
       buildGoogleCloudAssuredworkloadsV1Workload(),
@@ -303,386 +260,12 @@ void checkGoogleCloudAssuredworkloadsV1WorkloadResourceSettings(
   buildCounterGoogleCloudAssuredworkloadsV1WorkloadResourceSettings--;
 }
 
-core.List<api.GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettings>
-    buildUnnamed4() => [
-          buildGoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettings(),
-          buildGoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettings(),
-        ];
-
-void checkUnnamed4(
-    core.List<api.GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettings>
-        o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettings(o[0]);
-  checkGoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettings(o[1]);
-}
-
-core.int
-    buildCounterGoogleCloudAssuredworkloadsV1beta1CreateWorkloadOperationMetadata =
-    0;
-api.GoogleCloudAssuredworkloadsV1beta1CreateWorkloadOperationMetadata
-    buildGoogleCloudAssuredworkloadsV1beta1CreateWorkloadOperationMetadata() {
-  final o =
-      api.GoogleCloudAssuredworkloadsV1beta1CreateWorkloadOperationMetadata();
-  buildCounterGoogleCloudAssuredworkloadsV1beta1CreateWorkloadOperationMetadata++;
-  if (buildCounterGoogleCloudAssuredworkloadsV1beta1CreateWorkloadOperationMetadata <
-      3) {
-    o.complianceRegime = 'foo';
-    o.createTime = 'foo';
-    o.displayName = 'foo';
-    o.parent = 'foo';
-    o.resourceSettings = buildUnnamed4();
-  }
-  buildCounterGoogleCloudAssuredworkloadsV1beta1CreateWorkloadOperationMetadata--;
-  return o;
-}
-
-void checkGoogleCloudAssuredworkloadsV1beta1CreateWorkloadOperationMetadata(
-    api.GoogleCloudAssuredworkloadsV1beta1CreateWorkloadOperationMetadata o) {
-  buildCounterGoogleCloudAssuredworkloadsV1beta1CreateWorkloadOperationMetadata++;
-  if (buildCounterGoogleCloudAssuredworkloadsV1beta1CreateWorkloadOperationMetadata <
-      3) {
-    unittest.expect(
-      o.complianceRegime!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.createTime!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.displayName!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.parent!,
-      unittest.equals('foo'),
-    );
-    checkUnnamed4(o.resourceSettings!);
-  }
-  buildCounterGoogleCloudAssuredworkloadsV1beta1CreateWorkloadOperationMetadata--;
-}
-
-core.Map<core.String, core.String> buildUnnamed5() => {
-      'x': 'foo',
-      'y': 'foo',
-    };
-
-void checkUnnamed5(core.Map<core.String, core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o['x']!,
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o['y']!,
-    unittest.equals('foo'),
-  );
-}
-
-core.List<api.GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettings>
-    buildUnnamed6() => [
-          buildGoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettings(),
-          buildGoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettings(),
-        ];
-
-void checkUnnamed6(
-    core.List<api.GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettings>
-        o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettings(o[0]);
-  checkGoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettings(o[1]);
-}
-
-core.List<api.GoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfo>
-    buildUnnamed7() => [
-          buildGoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfo(),
-          buildGoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfo(),
-        ];
-
-void checkUnnamed7(
-    core.List<api.GoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfo> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfo(o[0]);
-  checkGoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfo(o[1]);
-}
-
-core.int buildCounterGoogleCloudAssuredworkloadsV1beta1Workload = 0;
-api.GoogleCloudAssuredworkloadsV1beta1Workload
-    buildGoogleCloudAssuredworkloadsV1beta1Workload() {
-  final o = api.GoogleCloudAssuredworkloadsV1beta1Workload();
-  buildCounterGoogleCloudAssuredworkloadsV1beta1Workload++;
-  if (buildCounterGoogleCloudAssuredworkloadsV1beta1Workload < 3) {
-    o.billingAccount = 'foo';
-    o.cjisSettings =
-        buildGoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettings();
-    o.complianceRegime = 'foo';
-    o.createTime = 'foo';
-    o.displayName = 'foo';
-    o.etag = 'foo';
-    o.fedrampHighSettings =
-        buildGoogleCloudAssuredworkloadsV1beta1WorkloadFedrampHighSettings();
-    o.fedrampModerateSettings =
-        buildGoogleCloudAssuredworkloadsV1beta1WorkloadFedrampModerateSettings();
-    o.il4Settings =
-        buildGoogleCloudAssuredworkloadsV1beta1WorkloadIL4Settings();
-    o.kmsSettings =
-        buildGoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings();
-    o.labels = buildUnnamed5();
-    o.name = 'foo';
-    o.provisionedResourcesParent = 'foo';
-    o.resourceSettings = buildUnnamed6();
-    o.resources = buildUnnamed7();
-  }
-  buildCounterGoogleCloudAssuredworkloadsV1beta1Workload--;
-  return o;
-}
-
-void checkGoogleCloudAssuredworkloadsV1beta1Workload(
-    api.GoogleCloudAssuredworkloadsV1beta1Workload o) {
-  buildCounterGoogleCloudAssuredworkloadsV1beta1Workload++;
-  if (buildCounterGoogleCloudAssuredworkloadsV1beta1Workload < 3) {
-    unittest.expect(
-      o.billingAccount!,
-      unittest.equals('foo'),
-    );
-    checkGoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettings(
-        o.cjisSettings!);
-    unittest.expect(
-      o.complianceRegime!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.createTime!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.displayName!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.etag!,
-      unittest.equals('foo'),
-    );
-    checkGoogleCloudAssuredworkloadsV1beta1WorkloadFedrampHighSettings(
-        o.fedrampHighSettings!);
-    checkGoogleCloudAssuredworkloadsV1beta1WorkloadFedrampModerateSettings(
-        o.fedrampModerateSettings!);
-    checkGoogleCloudAssuredworkloadsV1beta1WorkloadIL4Settings(o.il4Settings!);
-    checkGoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings(o.kmsSettings!);
-    checkUnnamed5(o.labels!);
-    unittest.expect(
-      o.name!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.provisionedResourcesParent!,
-      unittest.equals('foo'),
-    );
-    checkUnnamed6(o.resourceSettings!);
-    checkUnnamed7(o.resources!);
-  }
-  buildCounterGoogleCloudAssuredworkloadsV1beta1Workload--;
-}
-
-core.int buildCounterGoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettings = 0;
-api.GoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettings
-    buildGoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettings() {
-  final o = api.GoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettings();
-  buildCounterGoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettings++;
-  if (buildCounterGoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettings < 3) {
-    o.kmsSettings =
-        buildGoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings();
-  }
-  buildCounterGoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettings--;
-  return o;
-}
-
-void checkGoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettings(
-    api.GoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettings o) {
-  buildCounterGoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettings++;
-  if (buildCounterGoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettings < 3) {
-    checkGoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings(o.kmsSettings!);
-  }
-  buildCounterGoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettings--;
-}
-
-core.int
-    buildCounterGoogleCloudAssuredworkloadsV1beta1WorkloadFedrampHighSettings =
-    0;
-api.GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampHighSettings
-    buildGoogleCloudAssuredworkloadsV1beta1WorkloadFedrampHighSettings() {
-  final o = api.GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampHighSettings();
-  buildCounterGoogleCloudAssuredworkloadsV1beta1WorkloadFedrampHighSettings++;
-  if (buildCounterGoogleCloudAssuredworkloadsV1beta1WorkloadFedrampHighSettings <
-      3) {
-    o.kmsSettings =
-        buildGoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings();
-  }
-  buildCounterGoogleCloudAssuredworkloadsV1beta1WorkloadFedrampHighSettings--;
-  return o;
-}
-
-void checkGoogleCloudAssuredworkloadsV1beta1WorkloadFedrampHighSettings(
-    api.GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampHighSettings o) {
-  buildCounterGoogleCloudAssuredworkloadsV1beta1WorkloadFedrampHighSettings++;
-  if (buildCounterGoogleCloudAssuredworkloadsV1beta1WorkloadFedrampHighSettings <
-      3) {
-    checkGoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings(o.kmsSettings!);
-  }
-  buildCounterGoogleCloudAssuredworkloadsV1beta1WorkloadFedrampHighSettings--;
-}
-
-core.int
-    buildCounterGoogleCloudAssuredworkloadsV1beta1WorkloadFedrampModerateSettings =
-    0;
-api.GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampModerateSettings
-    buildGoogleCloudAssuredworkloadsV1beta1WorkloadFedrampModerateSettings() {
-  final o =
-      api.GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampModerateSettings();
-  buildCounterGoogleCloudAssuredworkloadsV1beta1WorkloadFedrampModerateSettings++;
-  if (buildCounterGoogleCloudAssuredworkloadsV1beta1WorkloadFedrampModerateSettings <
-      3) {
-    o.kmsSettings =
-        buildGoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings();
-  }
-  buildCounterGoogleCloudAssuredworkloadsV1beta1WorkloadFedrampModerateSettings--;
-  return o;
-}
-
-void checkGoogleCloudAssuredworkloadsV1beta1WorkloadFedrampModerateSettings(
-    api.GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampModerateSettings o) {
-  buildCounterGoogleCloudAssuredworkloadsV1beta1WorkloadFedrampModerateSettings++;
-  if (buildCounterGoogleCloudAssuredworkloadsV1beta1WorkloadFedrampModerateSettings <
-      3) {
-    checkGoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings(o.kmsSettings!);
-  }
-  buildCounterGoogleCloudAssuredworkloadsV1beta1WorkloadFedrampModerateSettings--;
-}
-
-core.int buildCounterGoogleCloudAssuredworkloadsV1beta1WorkloadIL4Settings = 0;
-api.GoogleCloudAssuredworkloadsV1beta1WorkloadIL4Settings
-    buildGoogleCloudAssuredworkloadsV1beta1WorkloadIL4Settings() {
-  final o = api.GoogleCloudAssuredworkloadsV1beta1WorkloadIL4Settings();
-  buildCounterGoogleCloudAssuredworkloadsV1beta1WorkloadIL4Settings++;
-  if (buildCounterGoogleCloudAssuredworkloadsV1beta1WorkloadIL4Settings < 3) {
-    o.kmsSettings =
-        buildGoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings();
-  }
-  buildCounterGoogleCloudAssuredworkloadsV1beta1WorkloadIL4Settings--;
-  return o;
-}
-
-void checkGoogleCloudAssuredworkloadsV1beta1WorkloadIL4Settings(
-    api.GoogleCloudAssuredworkloadsV1beta1WorkloadIL4Settings o) {
-  buildCounterGoogleCloudAssuredworkloadsV1beta1WorkloadIL4Settings++;
-  if (buildCounterGoogleCloudAssuredworkloadsV1beta1WorkloadIL4Settings < 3) {
-    checkGoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings(o.kmsSettings!);
-  }
-  buildCounterGoogleCloudAssuredworkloadsV1beta1WorkloadIL4Settings--;
-}
-
-core.int buildCounterGoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings = 0;
-api.GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings
-    buildGoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings() {
-  final o = api.GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings();
-  buildCounterGoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings++;
-  if (buildCounterGoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings < 3) {
-    o.nextRotationTime = 'foo';
-    o.rotationPeriod = 'foo';
-  }
-  buildCounterGoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings--;
-  return o;
-}
-
-void checkGoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings(
-    api.GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings o) {
-  buildCounterGoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings++;
-  if (buildCounterGoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings < 3) {
-    unittest.expect(
-      o.nextRotationTime!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.rotationPeriod!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterGoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings--;
-}
-
-core.int buildCounterGoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfo = 0;
-api.GoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfo
-    buildGoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfo() {
-  final o = api.GoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfo();
-  buildCounterGoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfo++;
-  if (buildCounterGoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfo < 3) {
-    o.resourceId = 'foo';
-    o.resourceType = 'foo';
-  }
-  buildCounterGoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfo--;
-  return o;
-}
-
-void checkGoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfo(
-    api.GoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfo o) {
-  buildCounterGoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfo++;
-  if (buildCounterGoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfo < 3) {
-    unittest.expect(
-      o.resourceId!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.resourceType!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterGoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfo--;
-}
-
-core.int
-    buildCounterGoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettings = 0;
-api.GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettings
-    buildGoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettings() {
-  final o = api.GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettings();
-  buildCounterGoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettings++;
-  if (buildCounterGoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettings <
-      3) {
-    o.displayName = 'foo';
-    o.resourceId = 'foo';
-    o.resourceType = 'foo';
-  }
-  buildCounterGoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettings--;
-  return o;
-}
-
-void checkGoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettings(
-    api.GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettings o) {
-  buildCounterGoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettings++;
-  if (buildCounterGoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettings <
-      3) {
-    unittest.expect(
-      o.displayName!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.resourceId!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.resourceType!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterGoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettings--;
-}
-
-core.List<api.GoogleLongrunningOperation> buildUnnamed8() => [
+core.List<api.GoogleLongrunningOperation> buildUnnamed4() => [
       buildGoogleLongrunningOperation(),
       buildGoogleLongrunningOperation(),
     ];
 
-void checkUnnamed8(core.List<api.GoogleLongrunningOperation> o) {
+void checkUnnamed4(core.List<api.GoogleLongrunningOperation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleLongrunningOperation(o[0]);
   checkGoogleLongrunningOperation(o[1]);
@@ -695,7 +278,7 @@ api.GoogleLongrunningListOperationsResponse
   buildCounterGoogleLongrunningListOperationsResponse++;
   if (buildCounterGoogleLongrunningListOperationsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.operations = buildUnnamed8();
+    o.operations = buildUnnamed4();
   }
   buildCounterGoogleLongrunningListOperationsResponse--;
   return o;
@@ -709,12 +292,12 @@ void checkGoogleLongrunningListOperationsResponse(
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed8(o.operations!);
+    checkUnnamed4(o.operations!);
   }
   buildCounterGoogleLongrunningListOperationsResponse--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed9() => {
+core.Map<core.String, core.Object?> buildUnnamed5() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -727,7 +310,7 @@ core.Map<core.String, core.Object?> buildUnnamed9() => {
       },
     };
 
-void checkUnnamed9(core.Map<core.String, core.Object?> o) {
+void checkUnnamed5(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o['x']!) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -759,7 +342,7 @@ void checkUnnamed9(core.Map<core.String, core.Object?> o) {
   );
 }
 
-core.Map<core.String, core.Object?> buildUnnamed10() => {
+core.Map<core.String, core.Object?> buildUnnamed6() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -772,7 +355,7 @@ core.Map<core.String, core.Object?> buildUnnamed10() => {
       },
     };
 
-void checkUnnamed10(core.Map<core.String, core.Object?> o) {
+void checkUnnamed6(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted3 = (o['x']!) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
@@ -811,9 +394,9 @@ api.GoogleLongrunningOperation buildGoogleLongrunningOperation() {
   if (buildCounterGoogleLongrunningOperation < 3) {
     o.done = true;
     o.error = buildGoogleRpcStatus();
-    o.metadata = buildUnnamed9();
+    o.metadata = buildUnnamed5();
     o.name = 'foo';
-    o.response = buildUnnamed10();
+    o.response = buildUnnamed6();
   }
   buildCounterGoogleLongrunningOperation--;
   return o;
@@ -824,12 +407,12 @@ void checkGoogleLongrunningOperation(api.GoogleLongrunningOperation o) {
   if (buildCounterGoogleLongrunningOperation < 3) {
     unittest.expect(o.done!, unittest.isTrue);
     checkGoogleRpcStatus(o.error!);
-    checkUnnamed9(o.metadata!);
+    checkUnnamed5(o.metadata!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed10(o.response!);
+    checkUnnamed6(o.response!);
   }
   buildCounterGoogleLongrunningOperation--;
 }
@@ -849,7 +432,7 @@ void checkGoogleProtobufEmpty(api.GoogleProtobufEmpty o) {
   buildCounterGoogleProtobufEmpty--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed11() => {
+core.Map<core.String, core.Object?> buildUnnamed7() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -862,7 +445,7 @@ core.Map<core.String, core.Object?> buildUnnamed11() => {
       },
     };
 
-void checkUnnamed11(core.Map<core.String, core.Object?> o) {
+void checkUnnamed7(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted5 = (o['x']!) as core.Map;
   unittest.expect(casted5, unittest.hasLength(3));
@@ -894,15 +477,15 @@ void checkUnnamed11(core.Map<core.String, core.Object?> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object?>> buildUnnamed12() => [
-      buildUnnamed11(),
-      buildUnnamed11(),
+core.List<core.Map<core.String, core.Object?>> buildUnnamed8() => [
+      buildUnnamed7(),
+      buildUnnamed7(),
     ];
 
-void checkUnnamed12(core.List<core.Map<core.String, core.Object?>> o) {
+void checkUnnamed8(core.List<core.Map<core.String, core.Object?>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed11(o[0]);
-  checkUnnamed11(o[1]);
+  checkUnnamed7(o[0]);
+  checkUnnamed7(o[1]);
 }
 
 core.int buildCounterGoogleRpcStatus = 0;
@@ -911,7 +494,7 @@ api.GoogleRpcStatus buildGoogleRpcStatus() {
   buildCounterGoogleRpcStatus++;
   if (buildCounterGoogleRpcStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed12();
+    o.details = buildUnnamed8();
     o.message = 'foo';
   }
   buildCounterGoogleRpcStatus--;
@@ -925,7 +508,7 @@ void checkGoogleRpcStatus(api.GoogleRpcStatus o) {
       o.code!,
       unittest.equals(42),
     );
-    checkUnnamed12(o.details!);
+    checkUnnamed8(o.details!);
     unittest.expect(
       o.message!,
       unittest.equals('foo'),
@@ -935,20 +518,6 @@ void checkGoogleRpcStatus(api.GoogleRpcStatus o) {
 }
 
 void main() {
-  unittest.group(
-      'obj-schema-GoogleCloudAssuredworkloadsV1CreateWorkloadOperationMetadata',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o =
-          buildGoogleCloudAssuredworkloadsV1CreateWorkloadOperationMetadata();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.GoogleCloudAssuredworkloadsV1CreateWorkloadOperationMetadata
-              .fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudAssuredworkloadsV1CreateWorkloadOperationMetadata(od);
-    });
-  });
-
   unittest.group(
       'obj-schema-GoogleCloudAssuredworkloadsV1ListWorkloadsResponse', () {
     unittest.test('to-json--from-json', () async {
@@ -1002,121 +571,6 @@ void main() {
           api.GoogleCloudAssuredworkloadsV1WorkloadResourceSettings.fromJson(
               oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudAssuredworkloadsV1WorkloadResourceSettings(od);
-    });
-  });
-
-  unittest.group(
-      'obj-schema-GoogleCloudAssuredworkloadsV1beta1CreateWorkloadOperationMetadata',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o =
-          buildGoogleCloudAssuredworkloadsV1beta1CreateWorkloadOperationMetadata();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.GoogleCloudAssuredworkloadsV1beta1CreateWorkloadOperationMetadata
-              .fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudAssuredworkloadsV1beta1CreateWorkloadOperationMetadata(
-          od);
-    });
-  });
-
-  unittest.group('obj-schema-GoogleCloudAssuredworkloadsV1beta1Workload', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildGoogleCloudAssuredworkloadsV1beta1Workload();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.GoogleCloudAssuredworkloadsV1beta1Workload.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudAssuredworkloadsV1beta1Workload(od);
-    });
-  });
-
-  unittest.group(
-      'obj-schema-GoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettings', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildGoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettings();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.GoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettings.fromJson(
-              oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettings(od);
-    });
-  });
-
-  unittest.group(
-      'obj-schema-GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampHighSettings',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o =
-          buildGoogleCloudAssuredworkloadsV1beta1WorkloadFedrampHighSettings();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampHighSettings
-              .fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudAssuredworkloadsV1beta1WorkloadFedrampHighSettings(od);
-    });
-  });
-
-  unittest.group(
-      'obj-schema-GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampModerateSettings',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o =
-          buildGoogleCloudAssuredworkloadsV1beta1WorkloadFedrampModerateSettings();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampModerateSettings
-              .fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudAssuredworkloadsV1beta1WorkloadFedrampModerateSettings(
-          od);
-    });
-  });
-
-  unittest.group(
-      'obj-schema-GoogleCloudAssuredworkloadsV1beta1WorkloadIL4Settings', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildGoogleCloudAssuredworkloadsV1beta1WorkloadIL4Settings();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.GoogleCloudAssuredworkloadsV1beta1WorkloadIL4Settings.fromJson(
-              oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudAssuredworkloadsV1beta1WorkloadIL4Settings(od);
-    });
-  });
-
-  unittest.group(
-      'obj-schema-GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildGoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings.fromJson(
-              oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings(od);
-    });
-  });
-
-  unittest.group(
-      'obj-schema-GoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfo', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildGoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfo();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.GoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfo.fromJson(
-              oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfo(od);
-    });
-  });
-
-  unittest.group(
-      'obj-schema-GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettings',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o =
-          buildGoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettings();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettings
-          .fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettings(od);
     });
   });
 

@@ -1972,36 +1972,6 @@ class HiveMetastoreConfig {
       };
 }
 
-/// A specification of a supported version of the Hive Metastore software.
-class HiveMetastoreVersion {
-  /// Whether version will be chosen by the server if a metastore service is
-  /// created with a HiveMetastoreConfig that omits the version.
-  core.bool? isDefault;
-
-  /// The semantic version of the Hive Metastore software.
-  core.String? version;
-
-  HiveMetastoreVersion({
-    this.isDefault,
-    this.version,
-  });
-
-  HiveMetastoreVersion.fromJson(core.Map _json)
-      : this(
-          isDefault: _json.containsKey('isDefault')
-              ? _json['isDefault'] as core.bool
-              : null,
-          version: _json.containsKey('version')
-              ? _json['version'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (isDefault != null) 'isDefault': isDefault!,
-        if (version != null) 'version': version!,
-      };
-}
-
 /// Configuration information for a Kerberos principal.
 class KerberosConfig {
   /// A Kerberos keytab file that can be used to authenticate a service
@@ -2331,36 +2301,6 @@ class Location {
         if (locationId != null) 'locationId': locationId!,
         if (metadata != null) 'metadata': metadata!,
         if (name != null) 'name': name!,
-      };
-}
-
-/// Metadata about the service in a location.
-class LocationMetadata {
-  /// The versions of Hive Metastore that can be used when creating a new
-  /// metastore service in this location.
-  ///
-  /// The server guarantees that exactly one HiveMetastoreVersion in the list
-  /// will set is_default.
-  core.List<HiveMetastoreVersion>? supportedHiveMetastoreVersions;
-
-  LocationMetadata({
-    this.supportedHiveMetastoreVersions,
-  });
-
-  LocationMetadata.fromJson(core.Map _json)
-      : this(
-          supportedHiveMetastoreVersions:
-              _json.containsKey('supportedHiveMetastoreVersions')
-                  ? (_json['supportedHiveMetastoreVersions'] as core.List)
-                      .map((value) => HiveMetastoreVersion.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                      .toList()
-                  : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (supportedHiveMetastoreVersions != null)
-          'supportedHiveMetastoreVersions': supportedHiveMetastoreVersions!,
       };
 }
 
@@ -2709,91 +2649,6 @@ class Operation {
         if (metadata != null) 'metadata': metadata!,
         if (name != null) 'name': name!,
         if (response != null) 'response': response!,
-      };
-}
-
-/// Represents the metadata of a long-running operation.
-class OperationMetadata {
-  /// API version used to start the operation.
-  ///
-  /// Output only.
-  core.String? apiVersion;
-
-  /// The time the operation was created.
-  ///
-  /// Output only.
-  core.String? createTime;
-
-  /// The time the operation finished running.
-  ///
-  /// Output only.
-  core.String? endTime;
-
-  /// Identifies whether the caller has requested cancellation of the operation.
-  ///
-  /// Operations that have successfully been cancelled have Operation.error
-  /// value with a google.rpc.Status.code of 1, corresponding to Code.CANCELLED.
-  ///
-  /// Output only.
-  core.bool? requestedCancellation;
-
-  /// Human-readable status of the operation, if any.
-  ///
-  /// Output only.
-  core.String? statusMessage;
-
-  /// Server-defined resource path for the target of the operation.
-  ///
-  /// Output only.
-  core.String? target;
-
-  /// Name of the verb executed by the operation.
-  ///
-  /// Output only.
-  core.String? verb;
-
-  OperationMetadata({
-    this.apiVersion,
-    this.createTime,
-    this.endTime,
-    this.requestedCancellation,
-    this.statusMessage,
-    this.target,
-    this.verb,
-  });
-
-  OperationMetadata.fromJson(core.Map _json)
-      : this(
-          apiVersion: _json.containsKey('apiVersion')
-              ? _json['apiVersion'] as core.String
-              : null,
-          createTime: _json.containsKey('createTime')
-              ? _json['createTime'] as core.String
-              : null,
-          endTime: _json.containsKey('endTime')
-              ? _json['endTime'] as core.String
-              : null,
-          requestedCancellation: _json.containsKey('requestedCancellation')
-              ? _json['requestedCancellation'] as core.bool
-              : null,
-          statusMessage: _json.containsKey('statusMessage')
-              ? _json['statusMessage'] as core.String
-              : null,
-          target: _json.containsKey('target')
-              ? _json['target'] as core.String
-              : null,
-          verb: _json.containsKey('verb') ? _json['verb'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (apiVersion != null) 'apiVersion': apiVersion!,
-        if (createTime != null) 'createTime': createTime!,
-        if (endTime != null) 'endTime': endTime!,
-        if (requestedCancellation != null)
-          'requestedCancellation': requestedCancellation!,
-        if (statusMessage != null) 'statusMessage': statusMessage!,
-        if (target != null) 'target': target!,
-        if (verb != null) 'verb': verb!,
       };
 }
 

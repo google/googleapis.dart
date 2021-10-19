@@ -690,43 +690,6 @@ void checkOperation(api.Operation o) {
   buildCounterOperation--;
 }
 
-core.int buildCounterOperationMetadata = 0;
-api.OperationMetadata buildOperationMetadata() {
-  final o = api.OperationMetadata();
-  buildCounterOperationMetadata++;
-  if (buildCounterOperationMetadata < 3) {
-    o.createTime = 'foo';
-    o.endTime = 'foo';
-    o.target = 'foo';
-    o.verb = 'foo';
-  }
-  buildCounterOperationMetadata--;
-  return o;
-}
-
-void checkOperationMetadata(api.OperationMetadata o) {
-  buildCounterOperationMetadata++;
-  if (buildCounterOperationMetadata < 3) {
-    unittest.expect(
-      o.createTime!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.endTime!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.target!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.verb!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterOperationMetadata--;
-}
-
 core.int buildCounterPartitionConfig = 0;
 api.PartitionConfig buildPartitionConfig() {
   final o = api.PartitionConfig();
@@ -878,21 +841,6 @@ void checkSeekSubscriptionRequest(api.SeekSubscriptionRequest o) {
     checkTimeTarget(o.timeTarget!);
   }
   buildCounterSeekSubscriptionRequest--;
-}
-
-core.int buildCounterSeekSubscriptionResponse = 0;
-api.SeekSubscriptionResponse buildSeekSubscriptionResponse() {
-  final o = api.SeekSubscriptionResponse();
-  buildCounterSeekSubscriptionResponse++;
-  if (buildCounterSeekSubscriptionResponse < 3) {}
-  buildCounterSeekSubscriptionResponse--;
-  return o;
-}
-
-void checkSeekSubscriptionResponse(api.SeekSubscriptionResponse o) {
-  buildCounterSeekSubscriptionResponse++;
-  if (buildCounterSeekSubscriptionResponse < 3) {}
-  buildCounterSeekSubscriptionResponse--;
 }
 
 core.Map<core.String, core.Object?> buildUnnamed9() => {
@@ -1297,16 +1245,6 @@ void main() {
     });
   });
 
-  unittest.group('obj-schema-OperationMetadata', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildOperationMetadata();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.OperationMetadata.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkOperationMetadata(od);
-    });
-  });
-
   unittest.group('obj-schema-PartitionConfig', () {
     unittest.test('to-json--from-json', () async {
       final o = buildPartitionConfig();
@@ -1364,16 +1302,6 @@ void main() {
       final od = api.SeekSubscriptionRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkSeekSubscriptionRequest(od);
-    });
-  });
-
-  unittest.group('obj-schema-SeekSubscriptionResponse', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildSeekSubscriptionResponse();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.SeekSubscriptionResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkSeekSubscriptionResponse(od);
     });
   });
 

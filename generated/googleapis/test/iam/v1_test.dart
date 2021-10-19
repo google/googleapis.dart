@@ -26,25 +26,6 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
-core.int buildCounterAdminAuditData = 0;
-api.AdminAuditData buildAdminAuditData() {
-  final o = api.AdminAuditData();
-  buildCounterAdminAuditData++;
-  if (buildCounterAdminAuditData < 3) {
-    o.permissionDelta = buildPermissionDelta();
-  }
-  buildCounterAdminAuditData--;
-  return o;
-}
-
-void checkAdminAuditData(api.AdminAuditData o) {
-  buildCounterAdminAuditData++;
-  if (buildCounterAdminAuditData < 3) {
-    checkPermissionDelta(o.permissionDelta!);
-  }
-  buildCounterAdminAuditData--;
-}
-
 core.List<api.AuditLogConfig> buildUnnamed0() => [
       buildAuditLogConfig(),
       buildAuditLogConfig(),
@@ -78,25 +59,6 @@ void checkAuditConfig(api.AuditConfig o) {
     );
   }
   buildCounterAuditConfig--;
-}
-
-core.int buildCounterAuditData = 0;
-api.AuditData buildAuditData() {
-  final o = api.AuditData();
-  buildCounterAuditData++;
-  if (buildCounterAuditData < 3) {
-    o.policyDelta = buildPolicyDelta();
-  }
-  buildCounterAuditData--;
-  return o;
-}
-
-void checkAuditData(api.AuditData o) {
-  buildCounterAuditData++;
-  if (buildCounterAuditData < 3) {
-    checkPolicyDelta(o.policyDelta!);
-  }
-  buildCounterAuditData--;
 }
 
 core.List<core.String> buildUnnamed1() => [
@@ -225,40 +187,6 @@ void checkBinding(api.Binding o) {
     );
   }
   buildCounterBinding--;
-}
-
-core.int buildCounterBindingDelta = 0;
-api.BindingDelta buildBindingDelta() {
-  final o = api.BindingDelta();
-  buildCounterBindingDelta++;
-  if (buildCounterBindingDelta < 3) {
-    o.action = 'foo';
-    o.condition = buildExpr();
-    o.member = 'foo';
-    o.role = 'foo';
-  }
-  buildCounterBindingDelta--;
-  return o;
-}
-
-void checkBindingDelta(api.BindingDelta o) {
-  buildCounterBindingDelta++;
-  if (buildCounterBindingDelta < 3) {
-    unittest.expect(
-      o.action!,
-      unittest.equals('foo'),
-    );
-    checkExpr(o.condition!);
-    unittest.expect(
-      o.member!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.role!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterBindingDelta--;
 }
 
 core.int buildCounterCreateRoleRequest = 0;
@@ -959,78 +887,23 @@ void checkPermission(api.Permission o) {
   buildCounterPermission--;
 }
 
-core.List<core.String> buildUnnamed12() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed12(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
-core.List<core.String> buildUnnamed13() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed13(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
-core.int buildCounterPermissionDelta = 0;
-api.PermissionDelta buildPermissionDelta() {
-  final o = api.PermissionDelta();
-  buildCounterPermissionDelta++;
-  if (buildCounterPermissionDelta < 3) {
-    o.addedPermissions = buildUnnamed12();
-    o.removedPermissions = buildUnnamed13();
-  }
-  buildCounterPermissionDelta--;
-  return o;
-}
-
-void checkPermissionDelta(api.PermissionDelta o) {
-  buildCounterPermissionDelta++;
-  if (buildCounterPermissionDelta < 3) {
-    checkUnnamed12(o.addedPermissions!);
-    checkUnnamed13(o.removedPermissions!);
-  }
-  buildCounterPermissionDelta--;
-}
-
-core.List<api.AuditConfig> buildUnnamed14() => [
+core.List<api.AuditConfig> buildUnnamed12() => [
       buildAuditConfig(),
       buildAuditConfig(),
     ];
 
-void checkUnnamed14(core.List<api.AuditConfig> o) {
+void checkUnnamed12(core.List<api.AuditConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAuditConfig(o[0]);
   checkAuditConfig(o[1]);
 }
 
-core.List<api.Binding> buildUnnamed15() => [
+core.List<api.Binding> buildUnnamed13() => [
       buildBinding(),
       buildBinding(),
     ];
 
-void checkUnnamed15(core.List<api.Binding> o) {
+void checkUnnamed13(core.List<api.Binding> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBinding(o[0]);
   checkBinding(o[1]);
@@ -1041,8 +914,8 @@ api.Policy buildPolicy() {
   final o = api.Policy();
   buildCounterPolicy++;
   if (buildCounterPolicy < 3) {
-    o.auditConfigs = buildUnnamed14();
-    o.bindings = buildUnnamed15();
+    o.auditConfigs = buildUnnamed12();
+    o.bindings = buildUnnamed13();
     o.etag = 'foo';
     o.version = 42;
   }
@@ -1053,8 +926,8 @@ api.Policy buildPolicy() {
 void checkPolicy(api.Policy o) {
   buildCounterPolicy++;
   if (buildCounterPolicy < 3) {
-    checkUnnamed14(o.auditConfigs!);
-    checkUnnamed15(o.bindings!);
+    checkUnnamed12(o.auditConfigs!);
+    checkUnnamed13(o.bindings!);
     unittest.expect(
       o.etag!,
       unittest.equals('foo'),
@@ -1065,36 +938,6 @@ void checkPolicy(api.Policy o) {
     );
   }
   buildCounterPolicy--;
-}
-
-core.List<api.BindingDelta> buildUnnamed16() => [
-      buildBindingDelta(),
-      buildBindingDelta(),
-    ];
-
-void checkUnnamed16(core.List<api.BindingDelta> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkBindingDelta(o[0]);
-  checkBindingDelta(o[1]);
-}
-
-core.int buildCounterPolicyDelta = 0;
-api.PolicyDelta buildPolicyDelta() {
-  final o = api.PolicyDelta();
-  buildCounterPolicyDelta++;
-  if (buildCounterPolicyDelta < 3) {
-    o.bindingDeltas = buildUnnamed16();
-  }
-  buildCounterPolicyDelta--;
-  return o;
-}
-
-void checkPolicyDelta(api.PolicyDelta o) {
-  buildCounterPolicyDelta++;
-  if (buildCounterPolicyDelta < 3) {
-    checkUnnamed16(o.bindingDeltas!);
-  }
-  buildCounterPolicyDelta--;
 }
 
 core.int buildCounterQueryAuditableServicesRequest = 0;
@@ -1119,12 +962,12 @@ void checkQueryAuditableServicesRequest(api.QueryAuditableServicesRequest o) {
   buildCounterQueryAuditableServicesRequest--;
 }
 
-core.List<api.AuditableService> buildUnnamed17() => [
+core.List<api.AuditableService> buildUnnamed14() => [
       buildAuditableService(),
       buildAuditableService(),
     ];
 
-void checkUnnamed17(core.List<api.AuditableService> o) {
+void checkUnnamed14(core.List<api.AuditableService> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAuditableService(o[0]);
   checkAuditableService(o[1]);
@@ -1135,7 +978,7 @@ api.QueryAuditableServicesResponse buildQueryAuditableServicesResponse() {
   final o = api.QueryAuditableServicesResponse();
   buildCounterQueryAuditableServicesResponse++;
   if (buildCounterQueryAuditableServicesResponse < 3) {
-    o.services = buildUnnamed17();
+    o.services = buildUnnamed14();
   }
   buildCounterQueryAuditableServicesResponse--;
   return o;
@@ -1144,7 +987,7 @@ api.QueryAuditableServicesResponse buildQueryAuditableServicesResponse() {
 void checkQueryAuditableServicesResponse(api.QueryAuditableServicesResponse o) {
   buildCounterQueryAuditableServicesResponse++;
   if (buildCounterQueryAuditableServicesResponse < 3) {
-    checkUnnamed17(o.services!);
+    checkUnnamed14(o.services!);
   }
   buildCounterQueryAuditableServicesResponse--;
 }
@@ -1186,12 +1029,12 @@ void checkQueryGrantableRolesRequest(api.QueryGrantableRolesRequest o) {
   buildCounterQueryGrantableRolesRequest--;
 }
 
-core.List<api.Role> buildUnnamed18() => [
+core.List<api.Role> buildUnnamed15() => [
       buildRole(),
       buildRole(),
     ];
 
-void checkUnnamed18(core.List<api.Role> o) {
+void checkUnnamed15(core.List<api.Role> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRole(o[0]);
   checkRole(o[1]);
@@ -1203,7 +1046,7 @@ api.QueryGrantableRolesResponse buildQueryGrantableRolesResponse() {
   buildCounterQueryGrantableRolesResponse++;
   if (buildCounterQueryGrantableRolesResponse < 3) {
     o.nextPageToken = 'foo';
-    o.roles = buildUnnamed18();
+    o.roles = buildUnnamed15();
   }
   buildCounterQueryGrantableRolesResponse--;
   return o;
@@ -1216,7 +1059,7 @@ void checkQueryGrantableRolesResponse(api.QueryGrantableRolesResponse o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed18(o.roles!);
+    checkUnnamed15(o.roles!);
   }
   buildCounterQueryGrantableRolesResponse--;
 }
@@ -1254,12 +1097,12 @@ void checkQueryTestablePermissionsRequest(
   buildCounterQueryTestablePermissionsRequest--;
 }
 
-core.List<api.Permission> buildUnnamed19() => [
+core.List<api.Permission> buildUnnamed16() => [
       buildPermission(),
       buildPermission(),
     ];
 
-void checkUnnamed19(core.List<api.Permission> o) {
+void checkUnnamed16(core.List<api.Permission> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPermission(o[0]);
   checkPermission(o[1]);
@@ -1271,7 +1114,7 @@ api.QueryTestablePermissionsResponse buildQueryTestablePermissionsResponse() {
   buildCounterQueryTestablePermissionsResponse++;
   if (buildCounterQueryTestablePermissionsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.permissions = buildUnnamed19();
+    o.permissions = buildUnnamed16();
   }
   buildCounterQueryTestablePermissionsResponse--;
   return o;
@@ -1285,17 +1128,17 @@ void checkQueryTestablePermissionsResponse(
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed19(o.permissions!);
+    checkUnnamed16(o.permissions!);
   }
   buildCounterQueryTestablePermissionsResponse--;
 }
 
-core.List<core.String> buildUnnamed20() => [
+core.List<core.String> buildUnnamed17() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed20(core.List<core.String> o) {
+void checkUnnamed17(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1315,7 +1158,7 @@ api.Role buildRole() {
     o.deleted = true;
     o.description = 'foo';
     o.etag = 'foo';
-    o.includedPermissions = buildUnnamed20();
+    o.includedPermissions = buildUnnamed17();
     o.name = 'foo';
     o.stage = 'foo';
     o.title = 'foo';
@@ -1336,7 +1179,7 @@ void checkRole(api.Role o) {
       o.etag!,
       unittest.equals('foo'),
     );
-    checkUnnamed20(o.includedPermissions!);
+    checkUnnamed17(o.includedPermissions!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -1598,7 +1441,7 @@ void checkSignJwtResponse(api.SignJwtResponse o) {
   buildCounterSignJwtResponse--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed21() => {
+core.Map<core.String, core.Object?> buildUnnamed18() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -1611,7 +1454,7 @@ core.Map<core.String, core.Object?> buildUnnamed21() => {
       },
     };
 
-void checkUnnamed21(core.Map<core.String, core.Object?> o) {
+void checkUnnamed18(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted5 = (o['x']!) as core.Map;
   unittest.expect(casted5, unittest.hasLength(3));
@@ -1643,15 +1486,15 @@ void checkUnnamed21(core.Map<core.String, core.Object?> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object?>> buildUnnamed22() => [
-      buildUnnamed21(),
-      buildUnnamed21(),
+core.List<core.Map<core.String, core.Object?>> buildUnnamed19() => [
+      buildUnnamed18(),
+      buildUnnamed18(),
     ];
 
-void checkUnnamed22(core.List<core.Map<core.String, core.Object?>> o) {
+void checkUnnamed19(core.List<core.Map<core.String, core.Object?>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed21(o[0]);
-  checkUnnamed21(o[1]);
+  checkUnnamed18(o[0]);
+  checkUnnamed18(o[1]);
 }
 
 core.int buildCounterStatus = 0;
@@ -1660,7 +1503,7 @@ api.Status buildStatus() {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed22();
+    o.details = buildUnnamed19();
     o.message = 'foo';
   }
   buildCounterStatus--;
@@ -1674,7 +1517,7 @@ void checkStatus(api.Status o) {
       o.code!,
       unittest.equals(42),
     );
-    checkUnnamed22(o.details!);
+    checkUnnamed19(o.details!);
     unittest.expect(
       o.message!,
       unittest.equals('foo'),
@@ -1683,12 +1526,12 @@ void checkStatus(api.Status o) {
   buildCounterStatus--;
 }
 
-core.List<core.String> buildUnnamed23() => [
+core.List<core.String> buildUnnamed20() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed23(core.List<core.String> o) {
+void checkUnnamed20(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1705,7 +1548,7 @@ api.TestIamPermissionsRequest buildTestIamPermissionsRequest() {
   final o = api.TestIamPermissionsRequest();
   buildCounterTestIamPermissionsRequest++;
   if (buildCounterTestIamPermissionsRequest < 3) {
-    o.permissions = buildUnnamed23();
+    o.permissions = buildUnnamed20();
   }
   buildCounterTestIamPermissionsRequest--;
   return o;
@@ -1714,17 +1557,17 @@ api.TestIamPermissionsRequest buildTestIamPermissionsRequest() {
 void checkTestIamPermissionsRequest(api.TestIamPermissionsRequest o) {
   buildCounterTestIamPermissionsRequest++;
   if (buildCounterTestIamPermissionsRequest < 3) {
-    checkUnnamed23(o.permissions!);
+    checkUnnamed20(o.permissions!);
   }
   buildCounterTestIamPermissionsRequest--;
 }
 
-core.List<core.String> buildUnnamed24() => [
+core.List<core.String> buildUnnamed21() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed24(core.List<core.String> o) {
+void checkUnnamed21(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1741,7 +1584,7 @@ api.TestIamPermissionsResponse buildTestIamPermissionsResponse() {
   final o = api.TestIamPermissionsResponse();
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
-    o.permissions = buildUnnamed24();
+    o.permissions = buildUnnamed21();
   }
   buildCounterTestIamPermissionsResponse--;
   return o;
@@ -1750,7 +1593,7 @@ api.TestIamPermissionsResponse buildTestIamPermissionsResponse() {
 void checkTestIamPermissionsResponse(api.TestIamPermissionsResponse o) {
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
-    checkUnnamed24(o.permissions!);
+    checkUnnamed21(o.permissions!);
   }
   buildCounterTestIamPermissionsResponse--;
 }
@@ -1906,12 +1749,12 @@ void checkWorkloadIdentityPool(api.WorkloadIdentityPool o) {
   buildCounterWorkloadIdentityPool--;
 }
 
-core.Map<core.String, core.String> buildUnnamed25() => {
+core.Map<core.String, core.String> buildUnnamed22() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed25(core.Map<core.String, core.String> o) {
+void checkUnnamed22(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -1929,7 +1772,7 @@ api.WorkloadIdentityPoolProvider buildWorkloadIdentityPoolProvider() {
   buildCounterWorkloadIdentityPoolProvider++;
   if (buildCounterWorkloadIdentityPoolProvider < 3) {
     o.attributeCondition = 'foo';
-    o.attributeMapping = buildUnnamed25();
+    o.attributeMapping = buildUnnamed22();
     o.aws = buildAws();
     o.description = 'foo';
     o.disabled = true;
@@ -1949,7 +1792,7 @@ void checkWorkloadIdentityPoolProvider(api.WorkloadIdentityPoolProvider o) {
       o.attributeCondition!,
       unittest.equals('foo'),
     );
-    checkUnnamed25(o.attributeMapping!);
+    checkUnnamed22(o.attributeMapping!);
     checkAws(o.aws!);
     unittest.expect(
       o.description!,
@@ -1973,12 +1816,12 @@ void checkWorkloadIdentityPoolProvider(api.WorkloadIdentityPoolProvider o) {
   buildCounterWorkloadIdentityPoolProvider--;
 }
 
-core.List<core.String> buildUnnamed26() => [
+core.List<core.String> buildUnnamed23() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed26(core.List<core.String> o) {
+void checkUnnamed23(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1991,16 +1834,6 @@ void checkUnnamed26(core.List<core.String> o) {
 }
 
 void main() {
-  unittest.group('obj-schema-AdminAuditData', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildAdminAuditData();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.AdminAuditData.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkAdminAuditData(od);
-    });
-  });
-
   unittest.group('obj-schema-AuditConfig', () {
     unittest.test('to-json--from-json', () async {
       final o = buildAuditConfig();
@@ -2008,16 +1841,6 @@ void main() {
       final od = api.AuditConfig.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkAuditConfig(od);
-    });
-  });
-
-  unittest.group('obj-schema-AuditData', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildAuditData();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.AuditData.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkAuditData(od);
     });
   });
 
@@ -2057,16 +1880,6 @@ void main() {
       final od =
           api.Binding.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkBinding(od);
-    });
-  });
-
-  unittest.group('obj-schema-BindingDelta', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildBindingDelta();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.BindingDelta.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkBindingDelta(od);
     });
   });
 
@@ -2280,16 +2093,6 @@ void main() {
     });
   });
 
-  unittest.group('obj-schema-PermissionDelta', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildPermissionDelta();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.PermissionDelta.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkPermissionDelta(od);
-    });
-  });
-
   unittest.group('obj-schema-Policy', () {
     unittest.test('to-json--from-json', () async {
       final o = buildPolicy();
@@ -2297,16 +2100,6 @@ void main() {
       final od =
           api.Policy.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkPolicy(od);
-    });
-  });
-
-  unittest.group('obj-schema-PolicyDelta', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildPolicyDelta();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.PolicyDelta.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkPolicyDelta(od);
     });
   });
 
@@ -5425,7 +5218,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.IamApi(mock).projects.serviceAccounts.keys;
       final arg_name = 'foo';
-      final arg_keyTypes = buildUnnamed26();
+      final arg_keyTypes = buildUnnamed23();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = (req.url).path;

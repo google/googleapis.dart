@@ -46,66 +46,6 @@ void checkCheckTransitiveMembershipResponse(
   buildCounterCheckTransitiveMembershipResponse--;
 }
 
-core.int buildCounterCreateGroupMetadata = 0;
-api.CreateGroupMetadata buildCreateGroupMetadata() {
-  final o = api.CreateGroupMetadata();
-  buildCounterCreateGroupMetadata++;
-  if (buildCounterCreateGroupMetadata < 3) {}
-  buildCounterCreateGroupMetadata--;
-  return o;
-}
-
-void checkCreateGroupMetadata(api.CreateGroupMetadata o) {
-  buildCounterCreateGroupMetadata++;
-  if (buildCounterCreateGroupMetadata < 3) {}
-  buildCounterCreateGroupMetadata--;
-}
-
-core.int buildCounterCreateMembershipMetadata = 0;
-api.CreateMembershipMetadata buildCreateMembershipMetadata() {
-  final o = api.CreateMembershipMetadata();
-  buildCounterCreateMembershipMetadata++;
-  if (buildCounterCreateMembershipMetadata < 3) {}
-  buildCounterCreateMembershipMetadata--;
-  return o;
-}
-
-void checkCreateMembershipMetadata(api.CreateMembershipMetadata o) {
-  buildCounterCreateMembershipMetadata++;
-  if (buildCounterCreateMembershipMetadata < 3) {}
-  buildCounterCreateMembershipMetadata--;
-}
-
-core.int buildCounterDeleteGroupMetadata = 0;
-api.DeleteGroupMetadata buildDeleteGroupMetadata() {
-  final o = api.DeleteGroupMetadata();
-  buildCounterDeleteGroupMetadata++;
-  if (buildCounterDeleteGroupMetadata < 3) {}
-  buildCounterDeleteGroupMetadata--;
-  return o;
-}
-
-void checkDeleteGroupMetadata(api.DeleteGroupMetadata o) {
-  buildCounterDeleteGroupMetadata++;
-  if (buildCounterDeleteGroupMetadata < 3) {}
-  buildCounterDeleteGroupMetadata--;
-}
-
-core.int buildCounterDeleteMembershipMetadata = 0;
-api.DeleteMembershipMetadata buildDeleteMembershipMetadata() {
-  final o = api.DeleteMembershipMetadata();
-  buildCounterDeleteMembershipMetadata++;
-  if (buildCounterDeleteMembershipMetadata < 3) {}
-  buildCounterDeleteMembershipMetadata--;
-  return o;
-}
-
-void checkDeleteMembershipMetadata(api.DeleteMembershipMetadata o) {
-  buildCounterDeleteMembershipMetadata++;
-  if (buildCounterDeleteMembershipMetadata < 3) {}
-  buildCounterDeleteMembershipMetadata--;
-}
-
 core.List<api.DynamicGroupQuery> buildUnnamed0() => [
       buildDynamicGroupQuery(),
       buildDynamicGroupQuery(),
@@ -241,64 +181,6 @@ void checkExpiryDetail(api.ExpiryDetail o) {
   buildCounterExpiryDetail--;
 }
 
-core.int buildCounterGetMembershipGraphMetadata = 0;
-api.GetMembershipGraphMetadata buildGetMembershipGraphMetadata() {
-  final o = api.GetMembershipGraphMetadata();
-  buildCounterGetMembershipGraphMetadata++;
-  if (buildCounterGetMembershipGraphMetadata < 3) {}
-  buildCounterGetMembershipGraphMetadata--;
-  return o;
-}
-
-void checkGetMembershipGraphMetadata(api.GetMembershipGraphMetadata o) {
-  buildCounterGetMembershipGraphMetadata++;
-  if (buildCounterGetMembershipGraphMetadata < 3) {}
-  buildCounterGetMembershipGraphMetadata--;
-}
-
-core.List<api.MembershipAdjacencyList> buildUnnamed1() => [
-      buildMembershipAdjacencyList(),
-      buildMembershipAdjacencyList(),
-    ];
-
-void checkUnnamed1(core.List<api.MembershipAdjacencyList> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkMembershipAdjacencyList(o[0]);
-  checkMembershipAdjacencyList(o[1]);
-}
-
-core.List<api.Group> buildUnnamed2() => [
-      buildGroup(),
-      buildGroup(),
-    ];
-
-void checkUnnamed2(core.List<api.Group> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkGroup(o[0]);
-  checkGroup(o[1]);
-}
-
-core.int buildCounterGetMembershipGraphResponse = 0;
-api.GetMembershipGraphResponse buildGetMembershipGraphResponse() {
-  final o = api.GetMembershipGraphResponse();
-  buildCounterGetMembershipGraphResponse++;
-  if (buildCounterGetMembershipGraphResponse < 3) {
-    o.adjacencyList = buildUnnamed1();
-    o.groups = buildUnnamed2();
-  }
-  buildCounterGetMembershipGraphResponse--;
-  return o;
-}
-
-void checkGetMembershipGraphResponse(api.GetMembershipGraphResponse o) {
-  buildCounterGetMembershipGraphResponse++;
-  if (buildCounterGetMembershipGraphResponse < 3) {
-    checkUnnamed1(o.adjacencyList!);
-    checkUnnamed2(o.groups!);
-  }
-  buildCounterGetMembershipGraphResponse--;
-}
-
 core.int buildCounterGoogleAppsCloudidentityDevicesV1AndroidAttributes = 0;
 api.GoogleAppsCloudidentityDevicesV1AndroidAttributes
     buildGoogleAppsCloudidentityDevicesV1AndroidAttributes() {
@@ -329,26 +211,6 @@ void checkGoogleAppsCloudidentityDevicesV1AndroidAttributes(
   buildCounterGoogleAppsCloudidentityDevicesV1AndroidAttributes--;
 }
 
-core.int buildCounterGoogleAppsCloudidentityDevicesV1ApproveDeviceUserMetadata =
-    0;
-api.GoogleAppsCloudidentityDevicesV1ApproveDeviceUserMetadata
-    buildGoogleAppsCloudidentityDevicesV1ApproveDeviceUserMetadata() {
-  final o = api.GoogleAppsCloudidentityDevicesV1ApproveDeviceUserMetadata();
-  buildCounterGoogleAppsCloudidentityDevicesV1ApproveDeviceUserMetadata++;
-  if (buildCounterGoogleAppsCloudidentityDevicesV1ApproveDeviceUserMetadata <
-      3) {}
-  buildCounterGoogleAppsCloudidentityDevicesV1ApproveDeviceUserMetadata--;
-  return o;
-}
-
-void checkGoogleAppsCloudidentityDevicesV1ApproveDeviceUserMetadata(
-    api.GoogleAppsCloudidentityDevicesV1ApproveDeviceUserMetadata o) {
-  buildCounterGoogleAppsCloudidentityDevicesV1ApproveDeviceUserMetadata++;
-  if (buildCounterGoogleAppsCloudidentityDevicesV1ApproveDeviceUserMetadata <
-      3) {}
-  buildCounterGoogleAppsCloudidentityDevicesV1ApproveDeviceUserMetadata--;
-}
-
 core.int buildCounterGoogleAppsCloudidentityDevicesV1ApproveDeviceUserRequest =
     0;
 api.GoogleAppsCloudidentityDevicesV1ApproveDeviceUserRequest
@@ -376,50 +238,6 @@ void checkGoogleAppsCloudidentityDevicesV1ApproveDeviceUserRequest(
   buildCounterGoogleAppsCloudidentityDevicesV1ApproveDeviceUserRequest--;
 }
 
-core.int buildCounterGoogleAppsCloudidentityDevicesV1ApproveDeviceUserResponse =
-    0;
-api.GoogleAppsCloudidentityDevicesV1ApproveDeviceUserResponse
-    buildGoogleAppsCloudidentityDevicesV1ApproveDeviceUserResponse() {
-  final o = api.GoogleAppsCloudidentityDevicesV1ApproveDeviceUserResponse();
-  buildCounterGoogleAppsCloudidentityDevicesV1ApproveDeviceUserResponse++;
-  if (buildCounterGoogleAppsCloudidentityDevicesV1ApproveDeviceUserResponse <
-      3) {
-    o.deviceUser = buildGoogleAppsCloudidentityDevicesV1DeviceUser();
-  }
-  buildCounterGoogleAppsCloudidentityDevicesV1ApproveDeviceUserResponse--;
-  return o;
-}
-
-void checkGoogleAppsCloudidentityDevicesV1ApproveDeviceUserResponse(
-    api.GoogleAppsCloudidentityDevicesV1ApproveDeviceUserResponse o) {
-  buildCounterGoogleAppsCloudidentityDevicesV1ApproveDeviceUserResponse++;
-  if (buildCounterGoogleAppsCloudidentityDevicesV1ApproveDeviceUserResponse <
-      3) {
-    checkGoogleAppsCloudidentityDevicesV1DeviceUser(o.deviceUser!);
-  }
-  buildCounterGoogleAppsCloudidentityDevicesV1ApproveDeviceUserResponse--;
-}
-
-core.int buildCounterGoogleAppsCloudidentityDevicesV1BlockDeviceUserMetadata =
-    0;
-api.GoogleAppsCloudidentityDevicesV1BlockDeviceUserMetadata
-    buildGoogleAppsCloudidentityDevicesV1BlockDeviceUserMetadata() {
-  final o = api.GoogleAppsCloudidentityDevicesV1BlockDeviceUserMetadata();
-  buildCounterGoogleAppsCloudidentityDevicesV1BlockDeviceUserMetadata++;
-  if (buildCounterGoogleAppsCloudidentityDevicesV1BlockDeviceUserMetadata <
-      3) {}
-  buildCounterGoogleAppsCloudidentityDevicesV1BlockDeviceUserMetadata--;
-  return o;
-}
-
-void checkGoogleAppsCloudidentityDevicesV1BlockDeviceUserMetadata(
-    api.GoogleAppsCloudidentityDevicesV1BlockDeviceUserMetadata o) {
-  buildCounterGoogleAppsCloudidentityDevicesV1BlockDeviceUserMetadata++;
-  if (buildCounterGoogleAppsCloudidentityDevicesV1BlockDeviceUserMetadata <
-      3) {}
-  buildCounterGoogleAppsCloudidentityDevicesV1BlockDeviceUserMetadata--;
-}
-
 core.int buildCounterGoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest = 0;
 api.GoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest
     buildGoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest() {
@@ -442,48 +260,6 @@ void checkGoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest(
     );
   }
   buildCounterGoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest--;
-}
-
-core.int buildCounterGoogleAppsCloudidentityDevicesV1BlockDeviceUserResponse =
-    0;
-api.GoogleAppsCloudidentityDevicesV1BlockDeviceUserResponse
-    buildGoogleAppsCloudidentityDevicesV1BlockDeviceUserResponse() {
-  final o = api.GoogleAppsCloudidentityDevicesV1BlockDeviceUserResponse();
-  buildCounterGoogleAppsCloudidentityDevicesV1BlockDeviceUserResponse++;
-  if (buildCounterGoogleAppsCloudidentityDevicesV1BlockDeviceUserResponse < 3) {
-    o.deviceUser = buildGoogleAppsCloudidentityDevicesV1DeviceUser();
-  }
-  buildCounterGoogleAppsCloudidentityDevicesV1BlockDeviceUserResponse--;
-  return o;
-}
-
-void checkGoogleAppsCloudidentityDevicesV1BlockDeviceUserResponse(
-    api.GoogleAppsCloudidentityDevicesV1BlockDeviceUserResponse o) {
-  buildCounterGoogleAppsCloudidentityDevicesV1BlockDeviceUserResponse++;
-  if (buildCounterGoogleAppsCloudidentityDevicesV1BlockDeviceUserResponse < 3) {
-    checkGoogleAppsCloudidentityDevicesV1DeviceUser(o.deviceUser!);
-  }
-  buildCounterGoogleAppsCloudidentityDevicesV1BlockDeviceUserResponse--;
-}
-
-core.int buildCounterGoogleAppsCloudidentityDevicesV1CancelWipeDeviceMetadata =
-    0;
-api.GoogleAppsCloudidentityDevicesV1CancelWipeDeviceMetadata
-    buildGoogleAppsCloudidentityDevicesV1CancelWipeDeviceMetadata() {
-  final o = api.GoogleAppsCloudidentityDevicesV1CancelWipeDeviceMetadata();
-  buildCounterGoogleAppsCloudidentityDevicesV1CancelWipeDeviceMetadata++;
-  if (buildCounterGoogleAppsCloudidentityDevicesV1CancelWipeDeviceMetadata <
-      3) {}
-  buildCounterGoogleAppsCloudidentityDevicesV1CancelWipeDeviceMetadata--;
-  return o;
-}
-
-void checkGoogleAppsCloudidentityDevicesV1CancelWipeDeviceMetadata(
-    api.GoogleAppsCloudidentityDevicesV1CancelWipeDeviceMetadata o) {
-  buildCounterGoogleAppsCloudidentityDevicesV1CancelWipeDeviceMetadata++;
-  if (buildCounterGoogleAppsCloudidentityDevicesV1CancelWipeDeviceMetadata <
-      3) {}
-  buildCounterGoogleAppsCloudidentityDevicesV1CancelWipeDeviceMetadata--;
 }
 
 core.int buildCounterGoogleAppsCloudidentityDevicesV1CancelWipeDeviceRequest =
@@ -509,51 +285,6 @@ void checkGoogleAppsCloudidentityDevicesV1CancelWipeDeviceRequest(
     );
   }
   buildCounterGoogleAppsCloudidentityDevicesV1CancelWipeDeviceRequest--;
-}
-
-core.int buildCounterGoogleAppsCloudidentityDevicesV1CancelWipeDeviceResponse =
-    0;
-api.GoogleAppsCloudidentityDevicesV1CancelWipeDeviceResponse
-    buildGoogleAppsCloudidentityDevicesV1CancelWipeDeviceResponse() {
-  final o = api.GoogleAppsCloudidentityDevicesV1CancelWipeDeviceResponse();
-  buildCounterGoogleAppsCloudidentityDevicesV1CancelWipeDeviceResponse++;
-  if (buildCounterGoogleAppsCloudidentityDevicesV1CancelWipeDeviceResponse <
-      3) {
-    o.device = buildGoogleAppsCloudidentityDevicesV1Device();
-  }
-  buildCounterGoogleAppsCloudidentityDevicesV1CancelWipeDeviceResponse--;
-  return o;
-}
-
-void checkGoogleAppsCloudidentityDevicesV1CancelWipeDeviceResponse(
-    api.GoogleAppsCloudidentityDevicesV1CancelWipeDeviceResponse o) {
-  buildCounterGoogleAppsCloudidentityDevicesV1CancelWipeDeviceResponse++;
-  if (buildCounterGoogleAppsCloudidentityDevicesV1CancelWipeDeviceResponse <
-      3) {
-    checkGoogleAppsCloudidentityDevicesV1Device(o.device!);
-  }
-  buildCounterGoogleAppsCloudidentityDevicesV1CancelWipeDeviceResponse--;
-}
-
-core.int
-    buildCounterGoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserMetadata =
-    0;
-api.GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserMetadata
-    buildGoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserMetadata() {
-  final o = api.GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserMetadata();
-  buildCounterGoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserMetadata++;
-  if (buildCounterGoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserMetadata <
-      3) {}
-  buildCounterGoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserMetadata--;
-  return o;
-}
-
-void checkGoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserMetadata(
-    api.GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserMetadata o) {
-  buildCounterGoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserMetadata++;
-  if (buildCounterGoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserMetadata <
-      3) {}
-  buildCounterGoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserMetadata--;
 }
 
 core.int
@@ -583,37 +314,12 @@ void checkGoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserRequest(
   buildCounterGoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserRequest--;
 }
 
-core.int
-    buildCounterGoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserResponse =
-    0;
-api.GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserResponse
-    buildGoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserResponse() {
-  final o = api.GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserResponse();
-  buildCounterGoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserResponse++;
-  if (buildCounterGoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserResponse <
-      3) {
-    o.deviceUser = buildGoogleAppsCloudidentityDevicesV1DeviceUser();
-  }
-  buildCounterGoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserResponse--;
-  return o;
-}
-
-void checkGoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserResponse(
-    api.GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserResponse o) {
-  buildCounterGoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserResponse++;
-  if (buildCounterGoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserResponse <
-      3) {
-    checkGoogleAppsCloudidentityDevicesV1DeviceUser(o.deviceUser!);
-  }
-  buildCounterGoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserResponse--;
-}
-
-core.List<core.String> buildUnnamed3() => [
+core.List<core.String> buildUnnamed1() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed3(core.List<core.String> o) {
+void checkUnnamed1(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -626,12 +332,12 @@ void checkUnnamed3(core.List<core.String> o) {
 }
 
 core.Map<core.String, api.GoogleAppsCloudidentityDevicesV1CustomAttributeValue>
-    buildUnnamed4() => {
+    buildUnnamed2() => {
           'x': buildGoogleAppsCloudidentityDevicesV1CustomAttributeValue(),
           'y': buildGoogleAppsCloudidentityDevicesV1CustomAttributeValue(),
         };
 
-void checkUnnamed4(
+void checkUnnamed2(
     core.Map<core.String,
             api.GoogleAppsCloudidentityDevicesV1CustomAttributeValue>
         o) {
@@ -646,13 +352,13 @@ api.GoogleAppsCloudidentityDevicesV1ClientState
   final o = api.GoogleAppsCloudidentityDevicesV1ClientState();
   buildCounterGoogleAppsCloudidentityDevicesV1ClientState++;
   if (buildCounterGoogleAppsCloudidentityDevicesV1ClientState < 3) {
-    o.assetTags = buildUnnamed3();
+    o.assetTags = buildUnnamed1();
     o.complianceState = 'foo';
     o.createTime = 'foo';
     o.customId = 'foo';
     o.etag = 'foo';
     o.healthScore = 'foo';
-    o.keyValuePairs = buildUnnamed4();
+    o.keyValuePairs = buildUnnamed2();
     o.lastUpdateTime = 'foo';
     o.managed = 'foo';
     o.name = 'foo';
@@ -667,7 +373,7 @@ void checkGoogleAppsCloudidentityDevicesV1ClientState(
     api.GoogleAppsCloudidentityDevicesV1ClientState o) {
   buildCounterGoogleAppsCloudidentityDevicesV1ClientState++;
   if (buildCounterGoogleAppsCloudidentityDevicesV1ClientState < 3) {
-    checkUnnamed3(o.assetTags!);
+    checkUnnamed1(o.assetTags!);
     unittest.expect(
       o.complianceState!,
       unittest.equals('foo'),
@@ -688,7 +394,7 @@ void checkGoogleAppsCloudidentityDevicesV1ClientState(
       o.healthScore!,
       unittest.equals('foo'),
     );
-    checkUnnamed4(o.keyValuePairs!);
+    checkUnnamed2(o.keyValuePairs!);
     unittest.expect(
       o.lastUpdateTime!,
       unittest.equals('foo'),
@@ -711,23 +417,6 @@ void checkGoogleAppsCloudidentityDevicesV1ClientState(
     );
   }
   buildCounterGoogleAppsCloudidentityDevicesV1ClientState--;
-}
-
-core.int buildCounterGoogleAppsCloudidentityDevicesV1CreateDeviceMetadata = 0;
-api.GoogleAppsCloudidentityDevicesV1CreateDeviceMetadata
-    buildGoogleAppsCloudidentityDevicesV1CreateDeviceMetadata() {
-  final o = api.GoogleAppsCloudidentityDevicesV1CreateDeviceMetadata();
-  buildCounterGoogleAppsCloudidentityDevicesV1CreateDeviceMetadata++;
-  if (buildCounterGoogleAppsCloudidentityDevicesV1CreateDeviceMetadata < 3) {}
-  buildCounterGoogleAppsCloudidentityDevicesV1CreateDeviceMetadata--;
-  return o;
-}
-
-void checkGoogleAppsCloudidentityDevicesV1CreateDeviceMetadata(
-    api.GoogleAppsCloudidentityDevicesV1CreateDeviceMetadata o) {
-  buildCounterGoogleAppsCloudidentityDevicesV1CreateDeviceMetadata++;
-  if (buildCounterGoogleAppsCloudidentityDevicesV1CreateDeviceMetadata < 3) {}
-  buildCounterGoogleAppsCloudidentityDevicesV1CreateDeviceMetadata--;
 }
 
 core.int buildCounterGoogleAppsCloudidentityDevicesV1CustomAttributeValue = 0;
@@ -761,49 +450,12 @@ void checkGoogleAppsCloudidentityDevicesV1CustomAttributeValue(
   buildCounterGoogleAppsCloudidentityDevicesV1CustomAttributeValue--;
 }
 
-core.int buildCounterGoogleAppsCloudidentityDevicesV1DeleteDeviceMetadata = 0;
-api.GoogleAppsCloudidentityDevicesV1DeleteDeviceMetadata
-    buildGoogleAppsCloudidentityDevicesV1DeleteDeviceMetadata() {
-  final o = api.GoogleAppsCloudidentityDevicesV1DeleteDeviceMetadata();
-  buildCounterGoogleAppsCloudidentityDevicesV1DeleteDeviceMetadata++;
-  if (buildCounterGoogleAppsCloudidentityDevicesV1DeleteDeviceMetadata < 3) {}
-  buildCounterGoogleAppsCloudidentityDevicesV1DeleteDeviceMetadata--;
-  return o;
-}
-
-void checkGoogleAppsCloudidentityDevicesV1DeleteDeviceMetadata(
-    api.GoogleAppsCloudidentityDevicesV1DeleteDeviceMetadata o) {
-  buildCounterGoogleAppsCloudidentityDevicesV1DeleteDeviceMetadata++;
-  if (buildCounterGoogleAppsCloudidentityDevicesV1DeleteDeviceMetadata < 3) {}
-  buildCounterGoogleAppsCloudidentityDevicesV1DeleteDeviceMetadata--;
-}
-
-core.int buildCounterGoogleAppsCloudidentityDevicesV1DeleteDeviceUserMetadata =
-    0;
-api.GoogleAppsCloudidentityDevicesV1DeleteDeviceUserMetadata
-    buildGoogleAppsCloudidentityDevicesV1DeleteDeviceUserMetadata() {
-  final o = api.GoogleAppsCloudidentityDevicesV1DeleteDeviceUserMetadata();
-  buildCounterGoogleAppsCloudidentityDevicesV1DeleteDeviceUserMetadata++;
-  if (buildCounterGoogleAppsCloudidentityDevicesV1DeleteDeviceUserMetadata <
-      3) {}
-  buildCounterGoogleAppsCloudidentityDevicesV1DeleteDeviceUserMetadata--;
-  return o;
-}
-
-void checkGoogleAppsCloudidentityDevicesV1DeleteDeviceUserMetadata(
-    api.GoogleAppsCloudidentityDevicesV1DeleteDeviceUserMetadata o) {
-  buildCounterGoogleAppsCloudidentityDevicesV1DeleteDeviceUserMetadata++;
-  if (buildCounterGoogleAppsCloudidentityDevicesV1DeleteDeviceUserMetadata <
-      3) {}
-  buildCounterGoogleAppsCloudidentityDevicesV1DeleteDeviceUserMetadata--;
-}
-
-core.List<core.String> buildUnnamed5() => [
+core.List<core.String> buildUnnamed3() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed5(core.List<core.String> o) {
+void checkUnnamed3(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -815,12 +467,12 @@ void checkUnnamed5(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed6() => [
+core.List<core.String> buildUnnamed4() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed6(core.List<core.String> o) {
+void checkUnnamed4(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -861,12 +513,12 @@ api.GoogleAppsCloudidentityDevicesV1Device
     o.name = 'foo';
     o.networkOperator = 'foo';
     o.osVersion = 'foo';
-    o.otherAccounts = buildUnnamed5();
+    o.otherAccounts = buildUnnamed3();
     o.ownerType = 'foo';
     o.releaseVersion = 'foo';
     o.securityPatchTime = 'foo';
     o.serialNumber = 'foo';
-    o.wifiMacAddresses = buildUnnamed6();
+    o.wifiMacAddresses = buildUnnamed4();
   }
   buildCounterGoogleAppsCloudidentityDevicesV1Device--;
   return o;
@@ -956,7 +608,7 @@ void checkGoogleAppsCloudidentityDevicesV1Device(
       o.osVersion!,
       unittest.equals('foo'),
     );
-    checkUnnamed5(o.otherAccounts!);
+    checkUnnamed3(o.otherAccounts!);
     unittest.expect(
       o.ownerType!,
       unittest.equals('foo'),
@@ -973,7 +625,7 @@ void checkGoogleAppsCloudidentityDevicesV1Device(
       o.serialNumber!,
       unittest.equals('foo'),
     );
-    checkUnnamed6(o.wifiMacAddresses!);
+    checkUnnamed4(o.wifiMacAddresses!);
   }
   buildCounterGoogleAppsCloudidentityDevicesV1Device--;
 }
@@ -1047,12 +699,12 @@ void checkGoogleAppsCloudidentityDevicesV1DeviceUser(
   buildCounterGoogleAppsCloudidentityDevicesV1DeviceUser--;
 }
 
-core.List<api.GoogleAppsCloudidentityDevicesV1ClientState> buildUnnamed7() => [
+core.List<api.GoogleAppsCloudidentityDevicesV1ClientState> buildUnnamed5() => [
       buildGoogleAppsCloudidentityDevicesV1ClientState(),
       buildGoogleAppsCloudidentityDevicesV1ClientState(),
     ];
 
-void checkUnnamed7(
+void checkUnnamed5(
     core.List<api.GoogleAppsCloudidentityDevicesV1ClientState> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleAppsCloudidentityDevicesV1ClientState(o[0]);
@@ -1067,7 +719,7 @@ api.GoogleAppsCloudidentityDevicesV1ListClientStatesResponse
   buildCounterGoogleAppsCloudidentityDevicesV1ListClientStatesResponse++;
   if (buildCounterGoogleAppsCloudidentityDevicesV1ListClientStatesResponse <
       3) {
-    o.clientStates = buildUnnamed7();
+    o.clientStates = buildUnnamed5();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleAppsCloudidentityDevicesV1ListClientStatesResponse--;
@@ -1079,7 +731,7 @@ void checkGoogleAppsCloudidentityDevicesV1ListClientStatesResponse(
   buildCounterGoogleAppsCloudidentityDevicesV1ListClientStatesResponse++;
   if (buildCounterGoogleAppsCloudidentityDevicesV1ListClientStatesResponse <
       3) {
-    checkUnnamed7(o.clientStates!);
+    checkUnnamed5(o.clientStates!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -1088,12 +740,12 @@ void checkGoogleAppsCloudidentityDevicesV1ListClientStatesResponse(
   buildCounterGoogleAppsCloudidentityDevicesV1ListClientStatesResponse--;
 }
 
-core.List<api.GoogleAppsCloudidentityDevicesV1DeviceUser> buildUnnamed8() => [
+core.List<api.GoogleAppsCloudidentityDevicesV1DeviceUser> buildUnnamed6() => [
       buildGoogleAppsCloudidentityDevicesV1DeviceUser(),
       buildGoogleAppsCloudidentityDevicesV1DeviceUser(),
     ];
 
-void checkUnnamed8(
+void checkUnnamed6(
     core.List<api.GoogleAppsCloudidentityDevicesV1DeviceUser> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleAppsCloudidentityDevicesV1DeviceUser(o[0]);
@@ -1107,7 +759,7 @@ api.GoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse
   final o = api.GoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse();
   buildCounterGoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse++;
   if (buildCounterGoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse < 3) {
-    o.deviceUsers = buildUnnamed8();
+    o.deviceUsers = buildUnnamed6();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse--;
@@ -1118,7 +770,7 @@ void checkGoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse(
     api.GoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse o) {
   buildCounterGoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse++;
   if (buildCounterGoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse < 3) {
-    checkUnnamed8(o.deviceUsers!);
+    checkUnnamed6(o.deviceUsers!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -1127,12 +779,12 @@ void checkGoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse(
   buildCounterGoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse--;
 }
 
-core.List<api.GoogleAppsCloudidentityDevicesV1Device> buildUnnamed9() => [
+core.List<api.GoogleAppsCloudidentityDevicesV1Device> buildUnnamed7() => [
       buildGoogleAppsCloudidentityDevicesV1Device(),
       buildGoogleAppsCloudidentityDevicesV1Device(),
     ];
 
-void checkUnnamed9(core.List<api.GoogleAppsCloudidentityDevicesV1Device> o) {
+void checkUnnamed7(core.List<api.GoogleAppsCloudidentityDevicesV1Device> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleAppsCloudidentityDevicesV1Device(o[0]);
   checkGoogleAppsCloudidentityDevicesV1Device(o[1]);
@@ -1144,7 +796,7 @@ api.GoogleAppsCloudidentityDevicesV1ListDevicesResponse
   final o = api.GoogleAppsCloudidentityDevicesV1ListDevicesResponse();
   buildCounterGoogleAppsCloudidentityDevicesV1ListDevicesResponse++;
   if (buildCounterGoogleAppsCloudidentityDevicesV1ListDevicesResponse < 3) {
-    o.devices = buildUnnamed9();
+    o.devices = buildUnnamed7();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleAppsCloudidentityDevicesV1ListDevicesResponse--;
@@ -1155,7 +807,7 @@ void checkGoogleAppsCloudidentityDevicesV1ListDevicesResponse(
     api.GoogleAppsCloudidentityDevicesV1ListDevicesResponse o) {
   buildCounterGoogleAppsCloudidentityDevicesV1ListDevicesResponse++;
   if (buildCounterGoogleAppsCloudidentityDevicesV1ListDevicesResponse < 3) {
-    checkUnnamed9(o.devices!);
+    checkUnnamed7(o.devices!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -1164,32 +816,12 @@ void checkGoogleAppsCloudidentityDevicesV1ListDevicesResponse(
   buildCounterGoogleAppsCloudidentityDevicesV1ListDevicesResponse--;
 }
 
-core.int buildCounterGoogleAppsCloudidentityDevicesV1ListEndpointAppsMetadata =
-    0;
-api.GoogleAppsCloudidentityDevicesV1ListEndpointAppsMetadata
-    buildGoogleAppsCloudidentityDevicesV1ListEndpointAppsMetadata() {
-  final o = api.GoogleAppsCloudidentityDevicesV1ListEndpointAppsMetadata();
-  buildCounterGoogleAppsCloudidentityDevicesV1ListEndpointAppsMetadata++;
-  if (buildCounterGoogleAppsCloudidentityDevicesV1ListEndpointAppsMetadata <
-      3) {}
-  buildCounterGoogleAppsCloudidentityDevicesV1ListEndpointAppsMetadata--;
-  return o;
-}
-
-void checkGoogleAppsCloudidentityDevicesV1ListEndpointAppsMetadata(
-    api.GoogleAppsCloudidentityDevicesV1ListEndpointAppsMetadata o) {
-  buildCounterGoogleAppsCloudidentityDevicesV1ListEndpointAppsMetadata++;
-  if (buildCounterGoogleAppsCloudidentityDevicesV1ListEndpointAppsMetadata <
-      3) {}
-  buildCounterGoogleAppsCloudidentityDevicesV1ListEndpointAppsMetadata--;
-}
-
-core.List<core.String> buildUnnamed10() => [
+core.List<core.String> buildUnnamed8() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed10(core.List<core.String> o) {
+void checkUnnamed8(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1211,7 +843,7 @@ api.GoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse
   if (buildCounterGoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse <
       3) {
     o.customer = 'foo';
-    o.names = buildUnnamed10();
+    o.names = buildUnnamed8();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse--;
@@ -1227,87 +859,13 @@ void checkGoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse(
       o.customer!,
       unittest.equals('foo'),
     );
-    checkUnnamed10(o.names!);
+    checkUnnamed8(o.names!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
     );
   }
   buildCounterGoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse--;
-}
-
-core.int buildCounterGoogleAppsCloudidentityDevicesV1SignoutDeviceUserMetadata =
-    0;
-api.GoogleAppsCloudidentityDevicesV1SignoutDeviceUserMetadata
-    buildGoogleAppsCloudidentityDevicesV1SignoutDeviceUserMetadata() {
-  final o = api.GoogleAppsCloudidentityDevicesV1SignoutDeviceUserMetadata();
-  buildCounterGoogleAppsCloudidentityDevicesV1SignoutDeviceUserMetadata++;
-  if (buildCounterGoogleAppsCloudidentityDevicesV1SignoutDeviceUserMetadata <
-      3) {}
-  buildCounterGoogleAppsCloudidentityDevicesV1SignoutDeviceUserMetadata--;
-  return o;
-}
-
-void checkGoogleAppsCloudidentityDevicesV1SignoutDeviceUserMetadata(
-    api.GoogleAppsCloudidentityDevicesV1SignoutDeviceUserMetadata o) {
-  buildCounterGoogleAppsCloudidentityDevicesV1SignoutDeviceUserMetadata++;
-  if (buildCounterGoogleAppsCloudidentityDevicesV1SignoutDeviceUserMetadata <
-      3) {}
-  buildCounterGoogleAppsCloudidentityDevicesV1SignoutDeviceUserMetadata--;
-}
-
-core.int buildCounterGoogleAppsCloudidentityDevicesV1UpdateClientStateMetadata =
-    0;
-api.GoogleAppsCloudidentityDevicesV1UpdateClientStateMetadata
-    buildGoogleAppsCloudidentityDevicesV1UpdateClientStateMetadata() {
-  final o = api.GoogleAppsCloudidentityDevicesV1UpdateClientStateMetadata();
-  buildCounterGoogleAppsCloudidentityDevicesV1UpdateClientStateMetadata++;
-  if (buildCounterGoogleAppsCloudidentityDevicesV1UpdateClientStateMetadata <
-      3) {}
-  buildCounterGoogleAppsCloudidentityDevicesV1UpdateClientStateMetadata--;
-  return o;
-}
-
-void checkGoogleAppsCloudidentityDevicesV1UpdateClientStateMetadata(
-    api.GoogleAppsCloudidentityDevicesV1UpdateClientStateMetadata o) {
-  buildCounterGoogleAppsCloudidentityDevicesV1UpdateClientStateMetadata++;
-  if (buildCounterGoogleAppsCloudidentityDevicesV1UpdateClientStateMetadata <
-      3) {}
-  buildCounterGoogleAppsCloudidentityDevicesV1UpdateClientStateMetadata--;
-}
-
-core.int buildCounterGoogleAppsCloudidentityDevicesV1UpdateDeviceMetadata = 0;
-api.GoogleAppsCloudidentityDevicesV1UpdateDeviceMetadata
-    buildGoogleAppsCloudidentityDevicesV1UpdateDeviceMetadata() {
-  final o = api.GoogleAppsCloudidentityDevicesV1UpdateDeviceMetadata();
-  buildCounterGoogleAppsCloudidentityDevicesV1UpdateDeviceMetadata++;
-  if (buildCounterGoogleAppsCloudidentityDevicesV1UpdateDeviceMetadata < 3) {}
-  buildCounterGoogleAppsCloudidentityDevicesV1UpdateDeviceMetadata--;
-  return o;
-}
-
-void checkGoogleAppsCloudidentityDevicesV1UpdateDeviceMetadata(
-    api.GoogleAppsCloudidentityDevicesV1UpdateDeviceMetadata o) {
-  buildCounterGoogleAppsCloudidentityDevicesV1UpdateDeviceMetadata++;
-  if (buildCounterGoogleAppsCloudidentityDevicesV1UpdateDeviceMetadata < 3) {}
-  buildCounterGoogleAppsCloudidentityDevicesV1UpdateDeviceMetadata--;
-}
-
-core.int buildCounterGoogleAppsCloudidentityDevicesV1WipeDeviceMetadata = 0;
-api.GoogleAppsCloudidentityDevicesV1WipeDeviceMetadata
-    buildGoogleAppsCloudidentityDevicesV1WipeDeviceMetadata() {
-  final o = api.GoogleAppsCloudidentityDevicesV1WipeDeviceMetadata();
-  buildCounterGoogleAppsCloudidentityDevicesV1WipeDeviceMetadata++;
-  if (buildCounterGoogleAppsCloudidentityDevicesV1WipeDeviceMetadata < 3) {}
-  buildCounterGoogleAppsCloudidentityDevicesV1WipeDeviceMetadata--;
-  return o;
-}
-
-void checkGoogleAppsCloudidentityDevicesV1WipeDeviceMetadata(
-    api.GoogleAppsCloudidentityDevicesV1WipeDeviceMetadata o) {
-  buildCounterGoogleAppsCloudidentityDevicesV1WipeDeviceMetadata++;
-  if (buildCounterGoogleAppsCloudidentityDevicesV1WipeDeviceMetadata < 3) {}
-  buildCounterGoogleAppsCloudidentityDevicesV1WipeDeviceMetadata--;
 }
 
 core.int buildCounterGoogleAppsCloudidentityDevicesV1WipeDeviceRequest = 0;
@@ -1334,44 +892,6 @@ void checkGoogleAppsCloudidentityDevicesV1WipeDeviceRequest(
   buildCounterGoogleAppsCloudidentityDevicesV1WipeDeviceRequest--;
 }
 
-core.int buildCounterGoogleAppsCloudidentityDevicesV1WipeDeviceResponse = 0;
-api.GoogleAppsCloudidentityDevicesV1WipeDeviceResponse
-    buildGoogleAppsCloudidentityDevicesV1WipeDeviceResponse() {
-  final o = api.GoogleAppsCloudidentityDevicesV1WipeDeviceResponse();
-  buildCounterGoogleAppsCloudidentityDevicesV1WipeDeviceResponse++;
-  if (buildCounterGoogleAppsCloudidentityDevicesV1WipeDeviceResponse < 3) {
-    o.device = buildGoogleAppsCloudidentityDevicesV1Device();
-  }
-  buildCounterGoogleAppsCloudidentityDevicesV1WipeDeviceResponse--;
-  return o;
-}
-
-void checkGoogleAppsCloudidentityDevicesV1WipeDeviceResponse(
-    api.GoogleAppsCloudidentityDevicesV1WipeDeviceResponse o) {
-  buildCounterGoogleAppsCloudidentityDevicesV1WipeDeviceResponse++;
-  if (buildCounterGoogleAppsCloudidentityDevicesV1WipeDeviceResponse < 3) {
-    checkGoogleAppsCloudidentityDevicesV1Device(o.device!);
-  }
-  buildCounterGoogleAppsCloudidentityDevicesV1WipeDeviceResponse--;
-}
-
-core.int buildCounterGoogleAppsCloudidentityDevicesV1WipeDeviceUserMetadata = 0;
-api.GoogleAppsCloudidentityDevicesV1WipeDeviceUserMetadata
-    buildGoogleAppsCloudidentityDevicesV1WipeDeviceUserMetadata() {
-  final o = api.GoogleAppsCloudidentityDevicesV1WipeDeviceUserMetadata();
-  buildCounterGoogleAppsCloudidentityDevicesV1WipeDeviceUserMetadata++;
-  if (buildCounterGoogleAppsCloudidentityDevicesV1WipeDeviceUserMetadata < 3) {}
-  buildCounterGoogleAppsCloudidentityDevicesV1WipeDeviceUserMetadata--;
-  return o;
-}
-
-void checkGoogleAppsCloudidentityDevicesV1WipeDeviceUserMetadata(
-    api.GoogleAppsCloudidentityDevicesV1WipeDeviceUserMetadata o) {
-  buildCounterGoogleAppsCloudidentityDevicesV1WipeDeviceUserMetadata++;
-  if (buildCounterGoogleAppsCloudidentityDevicesV1WipeDeviceUserMetadata < 3) {}
-  buildCounterGoogleAppsCloudidentityDevicesV1WipeDeviceUserMetadata--;
-}
-
 core.int buildCounterGoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest = 0;
 api.GoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest
     buildGoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest() {
@@ -1396,33 +916,12 @@ void checkGoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest(
   buildCounterGoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest--;
 }
 
-core.int buildCounterGoogleAppsCloudidentityDevicesV1WipeDeviceUserResponse = 0;
-api.GoogleAppsCloudidentityDevicesV1WipeDeviceUserResponse
-    buildGoogleAppsCloudidentityDevicesV1WipeDeviceUserResponse() {
-  final o = api.GoogleAppsCloudidentityDevicesV1WipeDeviceUserResponse();
-  buildCounterGoogleAppsCloudidentityDevicesV1WipeDeviceUserResponse++;
-  if (buildCounterGoogleAppsCloudidentityDevicesV1WipeDeviceUserResponse < 3) {
-    o.deviceUser = buildGoogleAppsCloudidentityDevicesV1DeviceUser();
-  }
-  buildCounterGoogleAppsCloudidentityDevicesV1WipeDeviceUserResponse--;
-  return o;
-}
-
-void checkGoogleAppsCloudidentityDevicesV1WipeDeviceUserResponse(
-    api.GoogleAppsCloudidentityDevicesV1WipeDeviceUserResponse o) {
-  buildCounterGoogleAppsCloudidentityDevicesV1WipeDeviceUserResponse++;
-  if (buildCounterGoogleAppsCloudidentityDevicesV1WipeDeviceUserResponse < 3) {
-    checkGoogleAppsCloudidentityDevicesV1DeviceUser(o.deviceUser!);
-  }
-  buildCounterGoogleAppsCloudidentityDevicesV1WipeDeviceUserResponse--;
-}
-
-core.Map<core.String, core.String> buildUnnamed11() => {
+core.Map<core.String, core.String> buildUnnamed9() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed11(core.Map<core.String, core.String> o) {
+void checkUnnamed9(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -1444,7 +943,7 @@ api.Group buildGroup() {
     o.displayName = 'foo';
     o.dynamicGroupMetadata = buildDynamicGroupMetadata();
     o.groupKey = buildEntityKey();
-    o.labels = buildUnnamed11();
+    o.labels = buildUnnamed9();
     o.name = 'foo';
     o.parent = 'foo';
     o.updateTime = 'foo';
@@ -1470,7 +969,7 @@ void checkGroup(api.Group o) {
     );
     checkDynamicGroupMetadata(o.dynamicGroupMetadata!);
     checkEntityKey(o.groupKey!);
-    checkUnnamed11(o.labels!);
+    checkUnnamed9(o.labels!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -1487,12 +986,12 @@ void checkGroup(api.Group o) {
   buildCounterGroup--;
 }
 
-core.Map<core.String, core.String> buildUnnamed12() => {
+core.Map<core.String, core.String> buildUnnamed10() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed12(core.Map<core.String, core.String> o) {
+void checkUnnamed10(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -1504,12 +1003,12 @@ void checkUnnamed12(core.Map<core.String, core.String> o) {
   );
 }
 
-core.List<api.TransitiveMembershipRole> buildUnnamed13() => [
+core.List<api.TransitiveMembershipRole> buildUnnamed11() => [
       buildTransitiveMembershipRole(),
       buildTransitiveMembershipRole(),
     ];
 
-void checkUnnamed13(core.List<api.TransitiveMembershipRole> o) {
+void checkUnnamed11(core.List<api.TransitiveMembershipRole> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTransitiveMembershipRole(o[0]);
   checkTransitiveMembershipRole(o[1]);
@@ -1523,9 +1022,9 @@ api.GroupRelation buildGroupRelation() {
     o.displayName = 'foo';
     o.group = 'foo';
     o.groupKey = buildEntityKey();
-    o.labels = buildUnnamed12();
+    o.labels = buildUnnamed10();
     o.relationType = 'foo';
-    o.roles = buildUnnamed13();
+    o.roles = buildUnnamed11();
   }
   buildCounterGroupRelation--;
   return o;
@@ -1543,22 +1042,22 @@ void checkGroupRelation(api.GroupRelation o) {
       unittest.equals('foo'),
     );
     checkEntityKey(o.groupKey!);
-    checkUnnamed12(o.labels!);
+    checkUnnamed10(o.labels!);
     unittest.expect(
       o.relationType!,
       unittest.equals('foo'),
     );
-    checkUnnamed13(o.roles!);
+    checkUnnamed11(o.roles!);
   }
   buildCounterGroupRelation--;
 }
 
-core.List<api.Group> buildUnnamed14() => [
+core.List<api.Group> buildUnnamed12() => [
       buildGroup(),
       buildGroup(),
     ];
 
-void checkUnnamed14(core.List<api.Group> o) {
+void checkUnnamed12(core.List<api.Group> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGroup(o[0]);
   checkGroup(o[1]);
@@ -1569,7 +1068,7 @@ api.ListGroupsResponse buildListGroupsResponse() {
   final o = api.ListGroupsResponse();
   buildCounterListGroupsResponse++;
   if (buildCounterListGroupsResponse < 3) {
-    o.groups = buildUnnamed14();
+    o.groups = buildUnnamed12();
     o.nextPageToken = 'foo';
   }
   buildCounterListGroupsResponse--;
@@ -1579,7 +1078,7 @@ api.ListGroupsResponse buildListGroupsResponse() {
 void checkListGroupsResponse(api.ListGroupsResponse o) {
   buildCounterListGroupsResponse++;
   if (buildCounterListGroupsResponse < 3) {
-    checkUnnamed14(o.groups!);
+    checkUnnamed12(o.groups!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -1588,12 +1087,12 @@ void checkListGroupsResponse(api.ListGroupsResponse o) {
   buildCounterListGroupsResponse--;
 }
 
-core.List<api.Membership> buildUnnamed15() => [
+core.List<api.Membership> buildUnnamed13() => [
       buildMembership(),
       buildMembership(),
     ];
 
-void checkUnnamed15(core.List<api.Membership> o) {
+void checkUnnamed13(core.List<api.Membership> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMembership(o[0]);
   checkMembership(o[1]);
@@ -1604,7 +1103,7 @@ api.ListMembershipsResponse buildListMembershipsResponse() {
   final o = api.ListMembershipsResponse();
   buildCounterListMembershipsResponse++;
   if (buildCounterListMembershipsResponse < 3) {
-    o.memberships = buildUnnamed15();
+    o.memberships = buildUnnamed13();
     o.nextPageToken = 'foo';
   }
   buildCounterListMembershipsResponse--;
@@ -1614,7 +1113,7 @@ api.ListMembershipsResponse buildListMembershipsResponse() {
 void checkListMembershipsResponse(api.ListMembershipsResponse o) {
   buildCounterListMembershipsResponse++;
   if (buildCounterListMembershipsResponse < 3) {
-    checkUnnamed15(o.memberships!);
+    checkUnnamed13(o.memberships!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -1667,23 +1166,23 @@ void checkLookupMembershipNameResponse(api.LookupMembershipNameResponse o) {
   buildCounterLookupMembershipNameResponse--;
 }
 
-core.List<api.EntityKey> buildUnnamed16() => [
+core.List<api.EntityKey> buildUnnamed14() => [
       buildEntityKey(),
       buildEntityKey(),
     ];
 
-void checkUnnamed16(core.List<api.EntityKey> o) {
+void checkUnnamed14(core.List<api.EntityKey> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkEntityKey(o[0]);
   checkEntityKey(o[1]);
 }
 
-core.List<api.TransitiveMembershipRole> buildUnnamed17() => [
+core.List<api.TransitiveMembershipRole> buildUnnamed15() => [
       buildTransitiveMembershipRole(),
       buildTransitiveMembershipRole(),
     ];
 
-void checkUnnamed17(core.List<api.TransitiveMembershipRole> o) {
+void checkUnnamed15(core.List<api.TransitiveMembershipRole> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTransitiveMembershipRole(o[0]);
   checkTransitiveMembershipRole(o[1]);
@@ -1695,9 +1194,9 @@ api.MemberRelation buildMemberRelation() {
   buildCounterMemberRelation++;
   if (buildCounterMemberRelation < 3) {
     o.member = 'foo';
-    o.preferredMemberKey = buildUnnamed16();
+    o.preferredMemberKey = buildUnnamed14();
     o.relationType = 'foo';
-    o.roles = buildUnnamed17();
+    o.roles = buildUnnamed15();
   }
   buildCounterMemberRelation--;
   return o;
@@ -1710,22 +1209,22 @@ void checkMemberRelation(api.MemberRelation o) {
       o.member!,
       unittest.equals('foo'),
     );
-    checkUnnamed16(o.preferredMemberKey!);
+    checkUnnamed14(o.preferredMemberKey!);
     unittest.expect(
       o.relationType!,
       unittest.equals('foo'),
     );
-    checkUnnamed17(o.roles!);
+    checkUnnamed15(o.roles!);
   }
   buildCounterMemberRelation--;
 }
 
-core.List<api.MembershipRole> buildUnnamed18() => [
+core.List<api.MembershipRole> buildUnnamed16() => [
       buildMembershipRole(),
       buildMembershipRole(),
     ];
 
-void checkUnnamed18(core.List<api.MembershipRole> o) {
+void checkUnnamed16(core.List<api.MembershipRole> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMembershipRole(o[0]);
   checkMembershipRole(o[1]);
@@ -1739,7 +1238,7 @@ api.Membership buildMembership() {
     o.createTime = 'foo';
     o.name = 'foo';
     o.preferredMemberKey = buildEntityKey();
-    o.roles = buildUnnamed18();
+    o.roles = buildUnnamed16();
     o.type = 'foo';
     o.updateTime = 'foo';
   }
@@ -1759,7 +1258,7 @@ void checkMembership(api.Membership o) {
       unittest.equals('foo'),
     );
     checkEntityKey(o.preferredMemberKey!);
-    checkUnnamed18(o.roles!);
+    checkUnnamed16(o.roles!);
     unittest.expect(
       o.type!,
       unittest.equals('foo'),
@@ -1770,41 +1269,6 @@ void checkMembership(api.Membership o) {
     );
   }
   buildCounterMembership--;
-}
-
-core.List<api.Membership> buildUnnamed19() => [
-      buildMembership(),
-      buildMembership(),
-    ];
-
-void checkUnnamed19(core.List<api.Membership> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkMembership(o[0]);
-  checkMembership(o[1]);
-}
-
-core.int buildCounterMembershipAdjacencyList = 0;
-api.MembershipAdjacencyList buildMembershipAdjacencyList() {
-  final o = api.MembershipAdjacencyList();
-  buildCounterMembershipAdjacencyList++;
-  if (buildCounterMembershipAdjacencyList < 3) {
-    o.edges = buildUnnamed19();
-    o.group = 'foo';
-  }
-  buildCounterMembershipAdjacencyList--;
-  return o;
-}
-
-void checkMembershipAdjacencyList(api.MembershipAdjacencyList o) {
-  buildCounterMembershipAdjacencyList++;
-  if (buildCounterMembershipAdjacencyList < 3) {
-    checkUnnamed19(o.edges!);
-    unittest.expect(
-      o.group!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterMembershipAdjacencyList--;
 }
 
 core.int buildCounterMembershipRole = 0;
@@ -1831,23 +1295,23 @@ void checkMembershipRole(api.MembershipRole o) {
   buildCounterMembershipRole--;
 }
 
-core.List<api.MembershipRole> buildUnnamed20() => [
+core.List<api.MembershipRole> buildUnnamed17() => [
       buildMembershipRole(),
       buildMembershipRole(),
     ];
 
-void checkUnnamed20(core.List<api.MembershipRole> o) {
+void checkUnnamed17(core.List<api.MembershipRole> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMembershipRole(o[0]);
   checkMembershipRole(o[1]);
 }
 
-core.List<core.String> buildUnnamed21() => [
+core.List<core.String> buildUnnamed18() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed21(core.List<core.String> o) {
+void checkUnnamed18(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1859,12 +1323,12 @@ void checkUnnamed21(core.List<core.String> o) {
   );
 }
 
-core.List<api.UpdateMembershipRolesParams> buildUnnamed22() => [
+core.List<api.UpdateMembershipRolesParams> buildUnnamed19() => [
       buildUpdateMembershipRolesParams(),
       buildUpdateMembershipRolesParams(),
     ];
 
-void checkUnnamed22(core.List<api.UpdateMembershipRolesParams> o) {
+void checkUnnamed19(core.List<api.UpdateMembershipRolesParams> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUpdateMembershipRolesParams(o[0]);
   checkUpdateMembershipRolesParams(o[1]);
@@ -1875,9 +1339,9 @@ api.ModifyMembershipRolesRequest buildModifyMembershipRolesRequest() {
   final o = api.ModifyMembershipRolesRequest();
   buildCounterModifyMembershipRolesRequest++;
   if (buildCounterModifyMembershipRolesRequest < 3) {
-    o.addRoles = buildUnnamed20();
-    o.removeRoles = buildUnnamed21();
-    o.updateRolesParams = buildUnnamed22();
+    o.addRoles = buildUnnamed17();
+    o.removeRoles = buildUnnamed18();
+    o.updateRolesParams = buildUnnamed19();
   }
   buildCounterModifyMembershipRolesRequest--;
   return o;
@@ -1886,9 +1350,9 @@ api.ModifyMembershipRolesRequest buildModifyMembershipRolesRequest() {
 void checkModifyMembershipRolesRequest(api.ModifyMembershipRolesRequest o) {
   buildCounterModifyMembershipRolesRequest++;
   if (buildCounterModifyMembershipRolesRequest < 3) {
-    checkUnnamed20(o.addRoles!);
-    checkUnnamed21(o.removeRoles!);
-    checkUnnamed22(o.updateRolesParams!);
+    checkUnnamed17(o.addRoles!);
+    checkUnnamed18(o.removeRoles!);
+    checkUnnamed19(o.updateRolesParams!);
   }
   buildCounterModifyMembershipRolesRequest--;
 }
@@ -1912,7 +1376,7 @@ void checkModifyMembershipRolesResponse(api.ModifyMembershipRolesResponse o) {
   buildCounterModifyMembershipRolesResponse--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed23() => {
+core.Map<core.String, core.Object?> buildUnnamed20() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -1925,7 +1389,7 @@ core.Map<core.String, core.Object?> buildUnnamed23() => {
       },
     };
 
-void checkUnnamed23(core.Map<core.String, core.Object?> o) {
+void checkUnnamed20(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o['x']!) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -1957,7 +1421,7 @@ void checkUnnamed23(core.Map<core.String, core.Object?> o) {
   );
 }
 
-core.Map<core.String, core.Object?> buildUnnamed24() => {
+core.Map<core.String, core.Object?> buildUnnamed21() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -1970,7 +1434,7 @@ core.Map<core.String, core.Object?> buildUnnamed24() => {
       },
     };
 
-void checkUnnamed24(core.Map<core.String, core.Object?> o) {
+void checkUnnamed21(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted3 = (o['x']!) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
@@ -2009,9 +1473,9 @@ api.Operation buildOperation() {
   if (buildCounterOperation < 3) {
     o.done = true;
     o.error = buildStatus();
-    o.metadata = buildUnnamed23();
+    o.metadata = buildUnnamed20();
     o.name = 'foo';
-    o.response = buildUnnamed24();
+    o.response = buildUnnamed21();
   }
   buildCounterOperation--;
   return o;
@@ -2022,22 +1486,22 @@ void checkOperation(api.Operation o) {
   if (buildCounterOperation < 3) {
     unittest.expect(o.done!, unittest.isTrue);
     checkStatus(o.error!);
-    checkUnnamed23(o.metadata!);
+    checkUnnamed20(o.metadata!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed24(o.response!);
+    checkUnnamed21(o.response!);
   }
   buildCounterOperation--;
 }
 
-core.List<api.Group> buildUnnamed25() => [
+core.List<api.Group> buildUnnamed22() => [
       buildGroup(),
       buildGroup(),
     ];
 
-void checkUnnamed25(core.List<api.Group> o) {
+void checkUnnamed22(core.List<api.Group> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGroup(o[0]);
   checkGroup(o[1]);
@@ -2048,7 +1512,7 @@ api.SearchGroupsResponse buildSearchGroupsResponse() {
   final o = api.SearchGroupsResponse();
   buildCounterSearchGroupsResponse++;
   if (buildCounterSearchGroupsResponse < 3) {
-    o.groups = buildUnnamed25();
+    o.groups = buildUnnamed22();
     o.nextPageToken = 'foo';
   }
   buildCounterSearchGroupsResponse--;
@@ -2058,7 +1522,7 @@ api.SearchGroupsResponse buildSearchGroupsResponse() {
 void checkSearchGroupsResponse(api.SearchGroupsResponse o) {
   buildCounterSearchGroupsResponse++;
   if (buildCounterSearchGroupsResponse < 3) {
-    checkUnnamed25(o.groups!);
+    checkUnnamed22(o.groups!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -2067,12 +1531,12 @@ void checkSearchGroupsResponse(api.SearchGroupsResponse o) {
   buildCounterSearchGroupsResponse--;
 }
 
-core.List<api.GroupRelation> buildUnnamed26() => [
+core.List<api.GroupRelation> buildUnnamed23() => [
       buildGroupRelation(),
       buildGroupRelation(),
     ];
 
-void checkUnnamed26(core.List<api.GroupRelation> o) {
+void checkUnnamed23(core.List<api.GroupRelation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGroupRelation(o[0]);
   checkGroupRelation(o[1]);
@@ -2083,7 +1547,7 @@ api.SearchTransitiveGroupsResponse buildSearchTransitiveGroupsResponse() {
   final o = api.SearchTransitiveGroupsResponse();
   buildCounterSearchTransitiveGroupsResponse++;
   if (buildCounterSearchTransitiveGroupsResponse < 3) {
-    o.memberships = buildUnnamed26();
+    o.memberships = buildUnnamed23();
     o.nextPageToken = 'foo';
   }
   buildCounterSearchTransitiveGroupsResponse--;
@@ -2093,7 +1557,7 @@ api.SearchTransitiveGroupsResponse buildSearchTransitiveGroupsResponse() {
 void checkSearchTransitiveGroupsResponse(api.SearchTransitiveGroupsResponse o) {
   buildCounterSearchTransitiveGroupsResponse++;
   if (buildCounterSearchTransitiveGroupsResponse < 3) {
-    checkUnnamed26(o.memberships!);
+    checkUnnamed23(o.memberships!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -2102,12 +1566,12 @@ void checkSearchTransitiveGroupsResponse(api.SearchTransitiveGroupsResponse o) {
   buildCounterSearchTransitiveGroupsResponse--;
 }
 
-core.List<api.MemberRelation> buildUnnamed27() => [
+core.List<api.MemberRelation> buildUnnamed24() => [
       buildMemberRelation(),
       buildMemberRelation(),
     ];
 
-void checkUnnamed27(core.List<api.MemberRelation> o) {
+void checkUnnamed24(core.List<api.MemberRelation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMemberRelation(o[0]);
   checkMemberRelation(o[1]);
@@ -2119,7 +1583,7 @@ api.SearchTransitiveMembershipsResponse
   final o = api.SearchTransitiveMembershipsResponse();
   buildCounterSearchTransitiveMembershipsResponse++;
   if (buildCounterSearchTransitiveMembershipsResponse < 3) {
-    o.memberships = buildUnnamed27();
+    o.memberships = buildUnnamed24();
     o.nextPageToken = 'foo';
   }
   buildCounterSearchTransitiveMembershipsResponse--;
@@ -2130,7 +1594,7 @@ void checkSearchTransitiveMembershipsResponse(
     api.SearchTransitiveMembershipsResponse o) {
   buildCounterSearchTransitiveMembershipsResponse++;
   if (buildCounterSearchTransitiveMembershipsResponse < 3) {
-    checkUnnamed27(o.memberships!);
+    checkUnnamed24(o.memberships!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -2139,7 +1603,7 @@ void checkSearchTransitiveMembershipsResponse(
   buildCounterSearchTransitiveMembershipsResponse--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed28() => {
+core.Map<core.String, core.Object?> buildUnnamed25() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -2152,7 +1616,7 @@ core.Map<core.String, core.Object?> buildUnnamed28() => {
       },
     };
 
-void checkUnnamed28(core.Map<core.String, core.Object?> o) {
+void checkUnnamed25(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted5 = (o['x']!) as core.Map;
   unittest.expect(casted5, unittest.hasLength(3));
@@ -2184,15 +1648,15 @@ void checkUnnamed28(core.Map<core.String, core.Object?> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object?>> buildUnnamed29() => [
-      buildUnnamed28(),
-      buildUnnamed28(),
+core.List<core.Map<core.String, core.Object?>> buildUnnamed26() => [
+      buildUnnamed25(),
+      buildUnnamed25(),
     ];
 
-void checkUnnamed29(core.List<core.Map<core.String, core.Object?>> o) {
+void checkUnnamed26(core.List<core.Map<core.String, core.Object?>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed28(o[0]);
-  checkUnnamed28(o[1]);
+  checkUnnamed25(o[0]);
+  checkUnnamed25(o[1]);
 }
 
 core.int buildCounterStatus = 0;
@@ -2201,7 +1665,7 @@ api.Status buildStatus() {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed29();
+    o.details = buildUnnamed26();
     o.message = 'foo';
   }
   buildCounterStatus--;
@@ -2215,7 +1679,7 @@ void checkStatus(api.Status o) {
       o.code!,
       unittest.equals(42),
     );
-    checkUnnamed29(o.details!);
+    checkUnnamed26(o.details!);
     unittest.expect(
       o.message!,
       unittest.equals('foo'),
@@ -2246,36 +1710,6 @@ void checkTransitiveMembershipRole(api.TransitiveMembershipRole o) {
   buildCounterTransitiveMembershipRole--;
 }
 
-core.int buildCounterUpdateGroupMetadata = 0;
-api.UpdateGroupMetadata buildUpdateGroupMetadata() {
-  final o = api.UpdateGroupMetadata();
-  buildCounterUpdateGroupMetadata++;
-  if (buildCounterUpdateGroupMetadata < 3) {}
-  buildCounterUpdateGroupMetadata--;
-  return o;
-}
-
-void checkUpdateGroupMetadata(api.UpdateGroupMetadata o) {
-  buildCounterUpdateGroupMetadata++;
-  if (buildCounterUpdateGroupMetadata < 3) {}
-  buildCounterUpdateGroupMetadata--;
-}
-
-core.int buildCounterUpdateMembershipMetadata = 0;
-api.UpdateMembershipMetadata buildUpdateMembershipMetadata() {
-  final o = api.UpdateMembershipMetadata();
-  buildCounterUpdateMembershipMetadata++;
-  if (buildCounterUpdateMembershipMetadata < 3) {}
-  buildCounterUpdateMembershipMetadata--;
-  return o;
-}
-
-void checkUpdateMembershipMetadata(api.UpdateMembershipMetadata o) {
-  buildCounterUpdateMembershipMetadata++;
-  if (buildCounterUpdateMembershipMetadata < 3) {}
-  buildCounterUpdateMembershipMetadata--;
-}
-
 core.int buildCounterUpdateMembershipRolesParams = 0;
 api.UpdateMembershipRolesParams buildUpdateMembershipRolesParams() {
   final o = api.UpdateMembershipRolesParams();
@@ -2300,43 +1734,6 @@ void checkUpdateMembershipRolesParams(api.UpdateMembershipRolesParams o) {
   buildCounterUpdateMembershipRolesParams--;
 }
 
-core.int buildCounterUserInvitation = 0;
-api.UserInvitation buildUserInvitation() {
-  final o = api.UserInvitation();
-  buildCounterUserInvitation++;
-  if (buildCounterUserInvitation < 3) {
-    o.mailsSentCount = 'foo';
-    o.name = 'foo';
-    o.state = 'foo';
-    o.updateTime = 'foo';
-  }
-  buildCounterUserInvitation--;
-  return o;
-}
-
-void checkUserInvitation(api.UserInvitation o) {
-  buildCounterUserInvitation++;
-  if (buildCounterUserInvitation < 3) {
-    unittest.expect(
-      o.mailsSentCount!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.name!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.state!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.updateTime!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterUserInvitation--;
-}
-
 void main() {
   unittest.group('obj-schema-CheckTransitiveMembershipResponse', () {
     unittest.test('to-json--from-json', () async {
@@ -2345,46 +1742,6 @@ void main() {
       final od = api.CheckTransitiveMembershipResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkCheckTransitiveMembershipResponse(od);
-    });
-  });
-
-  unittest.group('obj-schema-CreateGroupMetadata', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildCreateGroupMetadata();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.CreateGroupMetadata.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkCreateGroupMetadata(od);
-    });
-  });
-
-  unittest.group('obj-schema-CreateMembershipMetadata', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildCreateMembershipMetadata();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.CreateMembershipMetadata.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkCreateMembershipMetadata(od);
-    });
-  });
-
-  unittest.group('obj-schema-DeleteGroupMetadata', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildDeleteGroupMetadata();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.DeleteGroupMetadata.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkDeleteGroupMetadata(od);
-    });
-  });
-
-  unittest.group('obj-schema-DeleteMembershipMetadata', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildDeleteMembershipMetadata();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.DeleteMembershipMetadata.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkDeleteMembershipMetadata(od);
     });
   });
 
@@ -2438,26 +1795,6 @@ void main() {
     });
   });
 
-  unittest.group('obj-schema-GetMembershipGraphMetadata', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildGetMembershipGraphMetadata();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.GetMembershipGraphMetadata.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkGetMembershipGraphMetadata(od);
-    });
-  });
-
-  unittest.group('obj-schema-GetMembershipGraphResponse', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildGetMembershipGraphResponse();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.GetMembershipGraphResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkGetMembershipGraphResponse(od);
-    });
-  });
-
   unittest.group('obj-schema-GoogleAppsCloudidentityDevicesV1AndroidAttributes',
       () {
     unittest.test('to-json--from-json', () async {
@@ -2466,19 +1803,6 @@ void main() {
       final od = api.GoogleAppsCloudidentityDevicesV1AndroidAttributes.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkGoogleAppsCloudidentityDevicesV1AndroidAttributes(od);
-    });
-  });
-
-  unittest.group(
-      'obj-schema-GoogleAppsCloudidentityDevicesV1ApproveDeviceUserMetadata',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o =
-          buildGoogleAppsCloudidentityDevicesV1ApproveDeviceUserMetadata();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.GoogleAppsCloudidentityDevicesV1ApproveDeviceUserMetadata
-          .fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleAppsCloudidentityDevicesV1ApproveDeviceUserMetadata(od);
     });
   });
 
@@ -2496,31 +1820,6 @@ void main() {
   });
 
   unittest.group(
-      'obj-schema-GoogleAppsCloudidentityDevicesV1ApproveDeviceUserResponse',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o =
-          buildGoogleAppsCloudidentityDevicesV1ApproveDeviceUserResponse();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.GoogleAppsCloudidentityDevicesV1ApproveDeviceUserResponse
-          .fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleAppsCloudidentityDevicesV1ApproveDeviceUserResponse(od);
-    });
-  });
-
-  unittest.group(
-      'obj-schema-GoogleAppsCloudidentityDevicesV1BlockDeviceUserMetadata', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildGoogleAppsCloudidentityDevicesV1BlockDeviceUserMetadata();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.GoogleAppsCloudidentityDevicesV1BlockDeviceUserMetadata.fromJson(
-              oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleAppsCloudidentityDevicesV1BlockDeviceUserMetadata(od);
-    });
-  });
-
-  unittest.group(
       'obj-schema-GoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest();
@@ -2529,31 +1828,6 @@ void main() {
           api.GoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest.fromJson(
               oJson as core.Map<core.String, core.dynamic>);
       checkGoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest(od);
-    });
-  });
-
-  unittest.group(
-      'obj-schema-GoogleAppsCloudidentityDevicesV1BlockDeviceUserResponse', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildGoogleAppsCloudidentityDevicesV1BlockDeviceUserResponse();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.GoogleAppsCloudidentityDevicesV1BlockDeviceUserResponse.fromJson(
-              oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleAppsCloudidentityDevicesV1BlockDeviceUserResponse(od);
-    });
-  });
-
-  unittest.group(
-      'obj-schema-GoogleAppsCloudidentityDevicesV1CancelWipeDeviceMetadata',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildGoogleAppsCloudidentityDevicesV1CancelWipeDeviceMetadata();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.GoogleAppsCloudidentityDevicesV1CancelWipeDeviceMetadata.fromJson(
-              oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleAppsCloudidentityDevicesV1CancelWipeDeviceMetadata(od);
     });
   });
 
@@ -2570,33 +1844,6 @@ void main() {
   });
 
   unittest.group(
-      'obj-schema-GoogleAppsCloudidentityDevicesV1CancelWipeDeviceResponse',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildGoogleAppsCloudidentityDevicesV1CancelWipeDeviceResponse();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.GoogleAppsCloudidentityDevicesV1CancelWipeDeviceResponse.fromJson(
-              oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleAppsCloudidentityDevicesV1CancelWipeDeviceResponse(od);
-    });
-  });
-
-  unittest.group(
-      'obj-schema-GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserMetadata',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o =
-          buildGoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserMetadata();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserMetadata
-              .fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserMetadata(od);
-    });
-  });
-
-  unittest.group(
       'obj-schema-GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserRequest',
       () {
     unittest.test('to-json--from-json', () async {
@@ -2606,20 +1853,6 @@ void main() {
       final od = api.GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserRequest
           .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserRequest(od);
-    });
-  });
-
-  unittest.group(
-      'obj-schema-GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserResponse',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o =
-          buildGoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserResponse();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserResponse
-              .fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserResponse(od);
     });
   });
 
@@ -2634,18 +1867,6 @@ void main() {
   });
 
   unittest.group(
-      'obj-schema-GoogleAppsCloudidentityDevicesV1CreateDeviceMetadata', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildGoogleAppsCloudidentityDevicesV1CreateDeviceMetadata();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.GoogleAppsCloudidentityDevicesV1CreateDeviceMetadata.fromJson(
-              oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleAppsCloudidentityDevicesV1CreateDeviceMetadata(od);
-    });
-  });
-
-  unittest.group(
       'obj-schema-GoogleAppsCloudidentityDevicesV1CustomAttributeValue', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGoogleAppsCloudidentityDevicesV1CustomAttributeValue();
@@ -2654,31 +1875,6 @@ void main() {
           api.GoogleAppsCloudidentityDevicesV1CustomAttributeValue.fromJson(
               oJson as core.Map<core.String, core.dynamic>);
       checkGoogleAppsCloudidentityDevicesV1CustomAttributeValue(od);
-    });
-  });
-
-  unittest.group(
-      'obj-schema-GoogleAppsCloudidentityDevicesV1DeleteDeviceMetadata', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildGoogleAppsCloudidentityDevicesV1DeleteDeviceMetadata();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.GoogleAppsCloudidentityDevicesV1DeleteDeviceMetadata.fromJson(
-              oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleAppsCloudidentityDevicesV1DeleteDeviceMetadata(od);
-    });
-  });
-
-  unittest.group(
-      'obj-schema-GoogleAppsCloudidentityDevicesV1DeleteDeviceUserMetadata',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildGoogleAppsCloudidentityDevicesV1DeleteDeviceUserMetadata();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.GoogleAppsCloudidentityDevicesV1DeleteDeviceUserMetadata.fromJson(
-              oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleAppsCloudidentityDevicesV1DeleteDeviceUserMetadata(od);
     });
   });
 
@@ -2740,19 +1936,6 @@ void main() {
   });
 
   unittest.group(
-      'obj-schema-GoogleAppsCloudidentityDevicesV1ListEndpointAppsMetadata',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildGoogleAppsCloudidentityDevicesV1ListEndpointAppsMetadata();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.GoogleAppsCloudidentityDevicesV1ListEndpointAppsMetadata.fromJson(
-              oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleAppsCloudidentityDevicesV1ListEndpointAppsMetadata(od);
-    });
-  });
-
-  unittest.group(
       'obj-schema-GoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse',
       () {
     unittest.test('to-json--from-json', () async {
@@ -2763,56 +1946,6 @@ void main() {
           api.GoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse
               .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse(od);
-    });
-  });
-
-  unittest.group(
-      'obj-schema-GoogleAppsCloudidentityDevicesV1SignoutDeviceUserMetadata',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o =
-          buildGoogleAppsCloudidentityDevicesV1SignoutDeviceUserMetadata();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.GoogleAppsCloudidentityDevicesV1SignoutDeviceUserMetadata
-          .fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleAppsCloudidentityDevicesV1SignoutDeviceUserMetadata(od);
-    });
-  });
-
-  unittest.group(
-      'obj-schema-GoogleAppsCloudidentityDevicesV1UpdateClientStateMetadata',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o =
-          buildGoogleAppsCloudidentityDevicesV1UpdateClientStateMetadata();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.GoogleAppsCloudidentityDevicesV1UpdateClientStateMetadata
-          .fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleAppsCloudidentityDevicesV1UpdateClientStateMetadata(od);
-    });
-  });
-
-  unittest.group(
-      'obj-schema-GoogleAppsCloudidentityDevicesV1UpdateDeviceMetadata', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildGoogleAppsCloudidentityDevicesV1UpdateDeviceMetadata();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.GoogleAppsCloudidentityDevicesV1UpdateDeviceMetadata.fromJson(
-              oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleAppsCloudidentityDevicesV1UpdateDeviceMetadata(od);
-    });
-  });
-
-  unittest.group(
-      'obj-schema-GoogleAppsCloudidentityDevicesV1WipeDeviceMetadata', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildGoogleAppsCloudidentityDevicesV1WipeDeviceMetadata();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.GoogleAppsCloudidentityDevicesV1WipeDeviceMetadata.fromJson(
-              oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleAppsCloudidentityDevicesV1WipeDeviceMetadata(od);
     });
   });
 
@@ -2828,30 +1961,6 @@ void main() {
   });
 
   unittest.group(
-      'obj-schema-GoogleAppsCloudidentityDevicesV1WipeDeviceResponse', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildGoogleAppsCloudidentityDevicesV1WipeDeviceResponse();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.GoogleAppsCloudidentityDevicesV1WipeDeviceResponse.fromJson(
-              oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleAppsCloudidentityDevicesV1WipeDeviceResponse(od);
-    });
-  });
-
-  unittest.group(
-      'obj-schema-GoogleAppsCloudidentityDevicesV1WipeDeviceUserMetadata', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildGoogleAppsCloudidentityDevicesV1WipeDeviceUserMetadata();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.GoogleAppsCloudidentityDevicesV1WipeDeviceUserMetadata.fromJson(
-              oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleAppsCloudidentityDevicesV1WipeDeviceUserMetadata(od);
-    });
-  });
-
-  unittest.group(
       'obj-schema-GoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest();
@@ -2860,18 +1969,6 @@ void main() {
           api.GoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest.fromJson(
               oJson as core.Map<core.String, core.dynamic>);
       checkGoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest(od);
-    });
-  });
-
-  unittest.group(
-      'obj-schema-GoogleAppsCloudidentityDevicesV1WipeDeviceUserResponse', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildGoogleAppsCloudidentityDevicesV1WipeDeviceUserResponse();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.GoogleAppsCloudidentityDevicesV1WipeDeviceUserResponse.fromJson(
-              oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleAppsCloudidentityDevicesV1WipeDeviceUserResponse(od);
     });
   });
 
@@ -2952,16 +2049,6 @@ void main() {
       final od =
           api.Membership.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkMembership(od);
-    });
-  });
-
-  unittest.group('obj-schema-MembershipAdjacencyList', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildMembershipAdjacencyList();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.MembershipAdjacencyList.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkMembershipAdjacencyList(od);
     });
   });
 
@@ -3055,26 +2142,6 @@ void main() {
     });
   });
 
-  unittest.group('obj-schema-UpdateGroupMetadata', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildUpdateGroupMetadata();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.UpdateGroupMetadata.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkUpdateGroupMetadata(od);
-    });
-  });
-
-  unittest.group('obj-schema-UpdateMembershipMetadata', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildUpdateMembershipMetadata();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.UpdateMembershipMetadata.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkUpdateMembershipMetadata(od);
-    });
-  });
-
   unittest.group('obj-schema-UpdateMembershipRolesParams', () {
     unittest.test('to-json--from-json', () async {
       final o = buildUpdateMembershipRolesParams();
@@ -3082,16 +2149,6 @@ void main() {
       final od = api.UpdateMembershipRolesParams.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkUpdateMembershipRolesParams(od);
-    });
-  });
-
-  unittest.group('obj-schema-UserInvitation', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildUserInvitation();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.UserInvitation.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkUserInvitation(od);
     });
   });
 

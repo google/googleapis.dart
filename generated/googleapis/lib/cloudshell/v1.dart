@@ -489,10 +489,6 @@ class UsersEnvironmentsResource {
   }
 }
 
-/// Message included in the metadata field of operations returned from
-/// AddPublicKey.
-typedef AddPublicKeyMetadata = $Empty;
-
 /// Request message for AddPublicKey.
 class AddPublicKeyRequest {
   /// Key that should be added to the environment.
@@ -516,29 +512,6 @@ class AddPublicKeyRequest {
         if (key != null) 'key': key!,
       };
 }
-
-/// Response message for AddPublicKey.
-class AddPublicKeyResponse {
-  /// Key that was added to the environment.
-  core.String? key;
-
-  AddPublicKeyResponse({
-    this.key,
-  });
-
-  AddPublicKeyResponse.fromJson(core.Map _json)
-      : this(
-          key: _json.containsKey('key') ? _json['key'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (key != null) 'key': key!,
-      };
-}
-
-/// Message included in the metadata field of operations returned from
-/// AuthorizeEnvironment.
-typedef AuthorizeEnvironmentMetadata = $Empty;
 
 /// Request message for AuthorizeEnvironment.
 class AuthorizeEnvironmentRequest {
@@ -580,19 +553,8 @@ class AuthorizeEnvironmentRequest {
       };
 }
 
-/// Response message for AuthorizeEnvironment.
-typedef AuthorizeEnvironmentResponse = $Empty;
-
 /// The request message for Operations.CancelOperation.
 typedef CancelOperationRequest = $Empty;
-
-/// Message included in the metadata field of operations returned from
-/// CreateEnvironment.
-typedef CreateEnvironmentMetadata = $Empty;
-
-/// Message included in the metadata field of operations returned from
-/// DeleteEnvironment.
-typedef DeleteEnvironmentMetadata = $Empty;
 
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs.
@@ -840,10 +802,6 @@ class Operation {
       };
 }
 
-/// Message included in the metadata field of operations returned from
-/// RemovePublicKey.
-typedef RemovePublicKeyMetadata = $Empty;
-
 /// Request message for RemovePublicKey.
 class RemovePublicKeyRequest {
   /// Key that should be removed from the environment.
@@ -860,46 +818,6 @@ class RemovePublicKeyRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (key != null) 'key': key!,
-      };
-}
-
-/// Response message for RemovePublicKey.
-typedef RemovePublicKeyResponse = $Empty;
-
-/// Message included in the metadata field of operations returned from
-/// StartEnvironment.
-class StartEnvironmentMetadata {
-  /// Current state of the environment being started.
-  /// Possible string values are:
-  /// - "STATE_UNSPECIFIED" : The environment's start state is unknown.
-  /// - "STARTING" : The environment is in the process of being started, but no
-  /// additional details are available.
-  /// - "UNARCHIVING_DISK" : Startup is waiting for the user's disk to be
-  /// unarchived. This can happen when the user returns to Cloud Shell after not
-  /// having used it for a while, and suggests that startup will take longer
-  /// than normal.
-  /// - "AWAITING_COMPUTE_RESOURCES" : Startup is waiting for compute resources
-  /// to be assigned to the environment. This should normally happen very
-  /// quickly, but an environment might stay in this state for an extended
-  /// period of time if the system is experiencing heavy load.
-  /// - "FINISHED" : Startup has completed. If the start operation was
-  /// successful, the user should be able to establish an SSH connection to
-  /// their environment. Otherwise, the operation will contain details of the
-  /// failure.
-  core.String? state;
-
-  StartEnvironmentMetadata({
-    this.state,
-  });
-
-  StartEnvironmentMetadata.fromJson(core.Map _json)
-      : this(
-          state:
-              _json.containsKey('state') ? _json['state'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (state != null) 'state': state!,
       };
 }
 
@@ -936,29 +854,6 @@ class StartEnvironmentRequest {
   core.Map<core.String, core.dynamic> toJson() => {
         if (accessToken != null) 'accessToken': accessToken!,
         if (publicKeys != null) 'publicKeys': publicKeys!,
-      };
-}
-
-/// Message included in the response field of operations returned from
-/// StartEnvironment once the operation is complete.
-class StartEnvironmentResponse {
-  /// Environment that was started.
-  Environment? environment;
-
-  StartEnvironmentResponse({
-    this.environment,
-  });
-
-  StartEnvironmentResponse.fromJson(core.Map _json)
-      : this(
-          environment: _json.containsKey('environment')
-              ? Environment.fromJson(
-                  _json['environment'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (environment != null) 'environment': environment!,
       };
 }
 

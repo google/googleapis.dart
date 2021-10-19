@@ -2038,14 +2038,6 @@ class ClearOrgPolicyRequest {
       };
 }
 
-/// Metadata describing a long running folder operation
-typedef CloudresourcemanagerGoogleCloudResourcemanagerV2alpha1FolderOperation
-    = $FolderOperation;
-
-/// Metadata describing a long running folder operation
-typedef CloudresourcemanagerGoogleCloudResourcemanagerV2beta1FolderOperation
-    = $FolderOperation;
-
 /// A `Constraint` describes a way in which a resource's configuration can be
 /// restricted.
 ///
@@ -2145,46 +2137,6 @@ class Constraint {
       };
 }
 
-/// Metadata pertaining to the Folder creation process.
-typedef CreateFolderMetadata = $CreateFolderMetadata;
-
-/// A status object which is used as the `metadata` field for the Operation
-/// returned by CreateProject.
-///
-/// It provides insight for when significant phases of Project creation have
-/// completed.
-typedef CreateProjectMetadata = $CreateProjectMetadata;
-
-/// Runtime operation information for creating a TagValue.
-typedef CreateTagBindingMetadata = $Empty;
-
-/// Runtime operation information for creating a TagKey.
-typedef CreateTagKeyMetadata = $Empty;
-
-/// Runtime operation information for creating a TagValue.
-typedef CreateTagValueMetadata = $Empty;
-
-/// A status object which is used as the `metadata` field for the `Operation`
-/// returned by `DeleteFolder`.
-typedef DeleteFolderMetadata = $Empty;
-
-/// LINT.IfChange A status object which is used as the `metadata` field for the
-/// operation returned by DeleteOrganization.
-typedef DeleteOrganizationMetadata = $Empty;
-
-/// A status object which is used as the `metadata` field for the Operation
-/// returned by `DeleteProject`.
-typedef DeleteProjectMetadata = $Empty;
-
-/// Runtime operation information for deleting a TagBinding.
-typedef DeleteTagBindingMetadata = $Empty;
-
-/// Runtime operation information for deleting a TagKey.
-typedef DeleteTagKeyMetadata = $Empty;
-
-/// Runtime operation information for deleting a TagValue.
-typedef DeleteTagValueMetadata = $Empty;
-
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs.
 ///
@@ -2213,12 +2165,6 @@ typedef Empty = $Empty;
 /// service that evaluates it. See the service documentation for additional
 /// information.
 typedef Expr = $Expr;
-
-/// Metadata describing a long running folder operation
-typedef FolderOperation = $FolderOperation;
-
-/// A classification of the Folder Operation error.
-typedef FolderOperationError = $FolderOperationError;
 
 /// The request sent to the GetAncestry method.
 typedef GetAncestryRequest = $Empty;
@@ -2540,13 +2486,6 @@ class ListProjectsResponse {
         if (projects != null) 'projects': projects!,
       };
 }
-
-/// Metadata pertaining to the folder move process.
-typedef MoveFolderMetadata = $MoveFolderMetadata;
-
-/// A status object which is used as the `metadata` field for the Operation
-/// returned by MoveProject.
-typedef MoveProjectMetadata = $Empty;
 
 /// This resource represents a long-running operation that is the result of a
 /// network API call.
@@ -3059,13 +2998,6 @@ class Project {
       };
 }
 
-/// A status object which is used as the `metadata` field for the Operation
-/// returned by CreateProject.
-///
-/// It provides insight for when significant phases of Project creation have
-/// completed.
-typedef ProjectCreationStatus = $ProjectCreationStatus;
-
 /// A container to reference an id for any resource type.
 ///
 /// A `resource` in Google Cloud Platform is a generic term for something you (a
@@ -3277,31 +3209,5 @@ typedef TestIamPermissionsRequest = $TestIamPermissionsRequest;
 /// Response message for `TestIamPermissions` method.
 typedef TestIamPermissionsResponse = $PermissionsResponse;
 
-/// A status object which is used as the `metadata` field for the `Operation`
-/// returned by `UndeleteFolder`.
-typedef UndeleteFolderMetadata = $Empty;
-
-/// LINT.IfChange A status object which is used as the `metadata` field for the
-/// Operation returned by UndeleteOrganization.
-typedef UndeleteOrganizationMetadata = $Empty;
-
-/// A status object which is used as the `metadata` field for the Operation
-/// returned by `UndeleteProject`.
-typedef UndeleteProjectMetadata = $Empty;
-
 /// The request sent to the UndeleteProject method.
 typedef UndeleteProjectRequest = $Empty;
-
-/// A status object which is used as the `metadata` field for the Operation
-/// returned by UpdateFolder.
-typedef UpdateFolderMetadata = $Empty;
-
-/// A status object which is used as the `metadata` field for the Operation
-/// returned by UpdateProject.
-typedef UpdateProjectMetadata = $Empty;
-
-/// Runtime operation information for updating a TagKey.
-typedef UpdateTagKeyMetadata = $Empty;
-
-/// Runtime operation information for updating a TagValue.
-typedef UpdateTagValueMetadata = $Empty;

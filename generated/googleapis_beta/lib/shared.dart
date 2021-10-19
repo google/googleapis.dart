@@ -297,61 +297,6 @@ class $Command {
 
 /// Used by:
 ///
-/// - documentai:v1beta3 : GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata
-/// - documentai:v1beta3 : GoogleCloudDocumentaiV1CommonOperationMetadata
-/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta3CommonOperationMetadata
-class $CommonOperationMetadata {
-  /// The creation time of the operation.
-  core.String? createTime;
-
-  /// The state of the operation.
-  /// Possible string values are:
-  /// - "STATE_UNSPECIFIED" : Unspecified state.
-  /// - "RUNNING" : Operation is still running.
-  /// - "CANCELLING" : Operation is being cancelled.
-  /// - "SUCCEEDED" : Operation succeeded.
-  /// - "FAILED" : Operation failed.
-  /// - "CANCELLED" : Operation is cancelled.
-  core.String? state;
-
-  /// A message providing more details about the current state of processing.
-  core.String? stateMessage;
-
-  /// The last update time of the operation.
-  core.String? updateTime;
-
-  $CommonOperationMetadata({
-    this.createTime,
-    this.state,
-    this.stateMessage,
-    this.updateTime,
-  });
-
-  $CommonOperationMetadata.fromJson(core.Map _json)
-      : this(
-          createTime: _json.containsKey('createTime')
-              ? _json['createTime'] as core.String
-              : null,
-          state:
-              _json.containsKey('state') ? _json['state'] as core.String : null,
-          stateMessage: _json.containsKey('stateMessage')
-              ? _json['stateMessage'] as core.String
-              : null,
-          updateTime: _json.containsKey('updateTime')
-              ? _json['updateTime'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
-        if (state != null) 'state': state!,
-        if (stateMessage != null) 'stateMessage': stateMessage!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
-}
-
-/// Used by:
-///
 /// - datalabeling:v1beta1 : GoogleCloudDatalabelingV1beta1BoundingPolyConfig
 /// - datalabeling:v1beta1 : GoogleCloudDatalabelingV1beta1PolylineConfig
 class $Config {
@@ -1035,30 +980,6 @@ class $Entry {
 
 /// Used by:
 ///
-/// - lifesciences:v2beta : PullStartedEvent
-/// - lifesciences:v2beta : PullStoppedEvent
-class $Event {
-  /// The URI of the image that was pulled.
-  core.String? imageUri;
-
-  $Event({
-    this.imageUri,
-  });
-
-  $Event.fromJson(core.Map _json)
-      : this(
-          imageUri: _json.containsKey('imageUri')
-              ? _json['imageUri'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (imageUri != null) 'imageUri': imageUri!,
-      };
-}
-
-/// Used by:
-///
 /// - bigqueryconnection:v1beta1 : Expr
 /// - containeranalysis:v1beta1 : Expr
 /// - datacatalog:v1beta1 : Expr
@@ -1501,54 +1422,6 @@ class $HumanReviewStatus {
 
 /// Used by:
 ///
-/// - datalabeling:v1beta1 : GoogleCloudDatalabelingV1alpha1ImportDataOperationResponse
-/// - datalabeling:v1beta1 : GoogleCloudDatalabelingV1beta1ImportDataOperationResponse
-/// - datalabeling:v1beta1 : GoogleCloudDatalabelingV1p1alpha1ImportDataOperationResponse
-/// - datalabeling:v1beta1 : GoogleCloudDatalabelingV1p2alpha1ImportDataOperationResponse
-class $ImportDataOperationResponse {
-  /// Ouptut only.
-  ///
-  /// The name of imported dataset.
-  core.String? dataset;
-
-  /// Number of examples imported successfully.
-  ///
-  /// Output only.
-  core.int? importCount;
-
-  /// Total number of examples requested to import
-  ///
-  /// Output only.
-  core.int? totalCount;
-
-  $ImportDataOperationResponse({
-    this.dataset,
-    this.importCount,
-    this.totalCount,
-  });
-
-  $ImportDataOperationResponse.fromJson(core.Map _json)
-      : this(
-          dataset: _json.containsKey('dataset')
-              ? _json['dataset'] as core.String
-              : null,
-          importCount: _json.containsKey('importCount')
-              ? _json['importCount'] as core.int
-              : null,
-          totalCount: _json.containsKey('totalCount')
-              ? _json['totalCount'] as core.int
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (dataset != null) 'dataset': dataset!,
-        if (importCount != null) 'importCount': importCount!,
-        if (totalCount != null) 'totalCount': totalCount!,
-      };
-}
-
-/// Used by:
-///
 /// - datalabeling:v1beta1 : GoogleCloudDatalabelingV1alpha1LabelStats
 /// - datalabeling:v1beta1 : GoogleCloudDatalabelingV1beta1LabelStats
 /// - datalabeling:v1beta1 : GoogleCloudDatalabelingV1p1alpha1LabelStats
@@ -1662,70 +1535,6 @@ class $Location {
 
 /// Used by:
 ///
-/// - firebasestorage:v1beta : GoogleFirebaseStorageControlplaneV1alphaMigrateLocationDestructivelyMetadata
-/// - firebasestorage:v1beta : GoogleFirebaseStorageControlplaneV1betaMigrateLocationDestructivelyMetadata
-class $MigrateLocationDestructivelyMetadata {
-  /// The time the LRO was created.
-  core.String? createTime;
-
-  /// The time the LRO was last updated.
-  core.String? lastUpdateTime;
-
-  /// The current state of the migration.
-  /// Possible string values are:
-  /// - "STATE_UNSPECIFIED" : Unspecified state. Should not be used.
-  /// - "PENDING" : The MigrateLocationDestructively request has passed
-  /// precondition checks and the bucket migration will begin soon.
-  /// - "CREATING_TEMP_BUCKET" : Generating a unique bucket name, storing the
-  /// source -\> temp mapping in Spanner, and actually creating the temporary
-  /// bucket via Bigstore.
-  /// - "TRANSFERRING_TO_TEMP" : The first STS transfer to move all objects from
-  /// the source bucket to the temp bucket is underway.
-  /// - "DELETING_SOURCE_BUCKET" : The source bucket is being emptied and
-  /// deleted.
-  /// - "CREATING_DESTINATION_BUCKET" : The source bucket is being recreated in
-  /// the new location.
-  /// - "TRANSFERRING_TO_DESTINATION" : The second STS transfer to move all
-  /// objects from the temp bucket to the final bucket is underway.
-  /// - "DELETING_TEMP_BUCKET" : The temp bucket is being emptied and deleted.
-  /// - "SUCCEEDED" : All stages of the migration have completed and the
-  /// operation has been marked done and updated with a response.
-  /// - "FAILED" : The migration failed at some stage and it is not possible to
-  /// continue retrying that stage. Manual recovery may be needed. Rollback is
-  /// either impossible at this stage, or has been attempted and failed.
-  /// - "ROLLING_BACK" : The migration has encountered a permanent failure and
-  /// is now being rolled back so that the source bucket is restored to its
-  /// original state.
-  /// - "ROLLED_BACK" : The migration has been successfully rolled back.
-  core.String? state;
-
-  $MigrateLocationDestructivelyMetadata({
-    this.createTime,
-    this.lastUpdateTime,
-    this.state,
-  });
-
-  $MigrateLocationDestructivelyMetadata.fromJson(core.Map _json)
-      : this(
-          createTime: _json.containsKey('createTime')
-              ? _json['createTime'] as core.String
-              : null,
-          lastUpdateTime: _json.containsKey('lastUpdateTime')
-              ? _json['lastUpdateTime'] as core.String
-              : null,
-          state:
-              _json.containsKey('state') ? _json['state'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
-        if (lastUpdateTime != null) 'lastUpdateTime': lastUpdateTime!,
-        if (state != null) 'state': state!,
-      };
-}
-
-/// Used by:
-///
 /// - adexchangebuyer2:v2beta1 : Money
 /// - documentai:v1beta3 : GoogleTypeMoney
 /// - domains:v1beta1 : Money
@@ -1800,152 +1609,6 @@ class $NormalizedVertex {
   core.Map<core.String, core.dynamic> toJson() => {
         if (x != null) 'x': x!,
         if (y != null) 'y': y!,
-      };
-}
-
-/// Used by:
-///
-/// - networkconnectivity:v1alpha1 : OperationMetadata
-/// - networksecurity:v1beta1 : OperationMetadata
-/// - privateca:v1beta1 : OperationMetadata
-class $OperationMetadata00 {
-  /// API version used to start the operation.
-  ///
-  /// Output only.
-  core.String? apiVersion;
-
-  /// The time the operation was created.
-  ///
-  /// Output only.
-  core.String? createTime;
-
-  /// The time the operation finished running.
-  ///
-  /// Output only.
-  core.String? endTime;
-
-  /// Identifies whether the user has requested cancellation of the operation.
-  ///
-  /// Operations that have successfully been cancelled have Operation.error
-  /// value with a google.rpc.Status.code of 1, corresponding to
-  /// `Code.CANCELLED`.
-  ///
-  /// Output only.
-  core.bool? requestedCancellation;
-
-  /// Human-readable status of the operation, if any.
-  ///
-  /// Output only.
-  core.String? statusMessage;
-
-  /// Server-defined resource path for the target of the operation.
-  ///
-  /// Output only.
-  core.String? target;
-
-  /// Name of the verb executed by the operation.
-  ///
-  /// Output only.
-  core.String? verb;
-
-  $OperationMetadata00({
-    this.apiVersion,
-    this.createTime,
-    this.endTime,
-    this.requestedCancellation,
-    this.statusMessage,
-    this.target,
-    this.verb,
-  });
-
-  $OperationMetadata00.fromJson(core.Map _json)
-      : this(
-          apiVersion: _json.containsKey('apiVersion')
-              ? _json['apiVersion'] as core.String
-              : null,
-          createTime: _json.containsKey('createTime')
-              ? _json['createTime'] as core.String
-              : null,
-          endTime: _json.containsKey('endTime')
-              ? _json['endTime'] as core.String
-              : null,
-          requestedCancellation: _json.containsKey('requestedCancellation')
-              ? _json['requestedCancellation'] as core.bool
-              : null,
-          statusMessage: _json.containsKey('statusMessage')
-              ? _json['statusMessage'] as core.String
-              : null,
-          target: _json.containsKey('target')
-              ? _json['target'] as core.String
-              : null,
-          verb: _json.containsKey('verb') ? _json['verb'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (apiVersion != null) 'apiVersion': apiVersion!,
-        if (createTime != null) 'createTime': createTime!,
-        if (endTime != null) 'endTime': endTime!,
-        if (requestedCancellation != null)
-          'requestedCancellation': requestedCancellation!,
-        if (statusMessage != null) 'statusMessage': statusMessage!,
-        if (target != null) 'target': target!,
-        if (verb != null) 'verb': verb!,
-      };
-}
-
-/// Used by:
-///
-/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta1OperationMetadata
-/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta2OperationMetadata
-class $OperationMetadata01 {
-  /// The creation time of the operation.
-  core.String? createTime;
-
-  /// The state of the current batch processing.
-  /// Possible string values are:
-  /// - "STATE_UNSPECIFIED" : The default value. This value is used if the state
-  /// is omitted.
-  /// - "ACCEPTED" : Request is received.
-  /// - "WAITING" : Request operation is waiting for scheduling.
-  /// - "RUNNING" : Request is being processed.
-  /// - "SUCCEEDED" : The batch processing completed successfully.
-  /// - "CANCELLED" : The batch processing was cancelled.
-  /// - "FAILED" : The batch processing has failed.
-  core.String? state;
-
-  /// A message providing more details about the current state of processing.
-  core.String? stateMessage;
-
-  /// The last update time of the operation.
-  core.String? updateTime;
-
-  $OperationMetadata01({
-    this.createTime,
-    this.state,
-    this.stateMessage,
-    this.updateTime,
-  });
-
-  $OperationMetadata01.fromJson(core.Map _json)
-      : this(
-          createTime: _json.containsKey('createTime')
-              ? _json['createTime'] as core.String
-              : null,
-          state:
-              _json.containsKey('state') ? _json['state'] as core.String : null,
-          stateMessage: _json.containsKey('stateMessage')
-              ? _json['stateMessage'] as core.String
-              : null,
-          updateTime: _json.containsKey('updateTime')
-              ? _json['updateTime'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
-        if (state != null) 'state': state!,
-        if (stateMessage != null) 'stateMessage': stateMessage!,
-        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
@@ -2194,79 +1857,6 @@ class $RelatedUrl {
   core.Map<core.String, core.dynamic> toJson() => {
         if (label != null) 'label': label!,
         if (url != null) 'url': url!,
-      };
-}
-
-/// Used by:
-///
-/// - policysimulator:v1beta1 : GoogleCloudPolicysimulatorV1ReplayOperationMetadata
-/// - policysimulator:v1beta1 : GoogleCloudPolicysimulatorV1beta1ReplayOperationMetadata
-class $ReplayOperationMetadata {
-  /// Time when the request was received.
-  core.String? startTime;
-
-  $ReplayOperationMetadata({
-    this.startTime,
-  });
-
-  $ReplayOperationMetadata.fromJson(core.Map _json)
-      : this(
-          startTime: _json.containsKey('startTime')
-              ? _json['startTime'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (startTime != null) 'startTime': startTime!,
-      };
-}
-
-/// Used by:
-///
-/// - recommendationengine:v1beta1 : GoogleCloudRecommendationengineV1alphaRejoinCatalogResponse
-/// - recommendationengine:v1beta1 : GoogleCloudRecommendationengineV1beta1RejoinUserEventsResponse
-class $Response {
-  /// Number of user events that were joined with latest catalog items.
-  core.String? rejoinedUserEventsCount;
-
-  $Response({
-    this.rejoinedUserEventsCount,
-  });
-
-  $Response.fromJson(core.Map _json)
-      : this(
-          rejoinedUserEventsCount: _json.containsKey('rejoinedUserEventsCount')
-              ? _json['rejoinedUserEventsCount'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (rejoinedUserEventsCount != null)
-          'rejoinedUserEventsCount': rejoinedUserEventsCount!,
-      };
-}
-
-/// Used by:
-///
-/// - documentai:v1beta3 : GoogleCloudDocumentaiV1ReviewDocumentResponse
-/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta3ReviewDocumentResponse
-class $ReviewDocumentResponse {
-  /// The Cloud Storage uri for the human reviewed document.
-  core.String? gcsDestination;
-
-  $ReviewDocumentResponse({
-    this.gcsDestination,
-  });
-
-  $ReviewDocumentResponse.fromJson(core.Map _json)
-      : this(
-          gcsDestination: _json.containsKey('gcsDestination')
-              ? _json['gcsDestination'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (gcsDestination != null) 'gcsDestination': gcsDestination!,
       };
 }
 
@@ -3184,29 +2774,6 @@ class $SasPortalValidateInstallerRequest {
 
 /// Used by:
 ///
-/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta1GcsDestination
-/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta1GcsSource
-/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta2GcsDestination
-/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta2GcsSource
-class $Shared00 {
-  core.String? uri;
-
-  $Shared00({
-    this.uri,
-  });
-
-  $Shared00.fromJson(core.Map _json)
-      : this(
-          uri: _json.containsKey('uri') ? _json['uri'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (uri != null) 'uri': uri!,
-      };
-}
-
-/// Used by:
-///
 /// - osconfig:v1alpha : OSPolicyResourcePackageResourceAPT
 /// - osconfig:v1alpha : OSPolicyResourcePackageResourceGooGet
 /// - osconfig:v1alpha : OSPolicyResourcePackageResourceYUM
@@ -3341,60 +2908,6 @@ class $Shared03 {
         if (resourceUri != null) 'resourceUri': resourceUri!,
         if (undeployTime != null) 'undeployTime': undeployTime!,
         if (userEmail != null) 'userEmail': userEmail!,
-      };
-}
-
-/// Used by:
-///
-/// - ondemandscanning:v1beta1 : AnalyzePackagesMetadata
-/// - ondemandscanning:v1beta1 : AnalyzePackagesMetadataV1
-class $Shared04 {
-  /// When the scan was created.
-  core.String? createTime;
-
-  /// The resource URI of the container image being scanned.
-  core.String? resourceUri;
-
-  $Shared04({
-    this.createTime,
-    this.resourceUri,
-  });
-
-  $Shared04.fromJson(core.Map _json)
-      : this(
-          createTime: _json.containsKey('createTime')
-              ? _json['createTime'] as core.String
-              : null,
-          resourceUri: _json.containsKey('resourceUri')
-              ? _json['resourceUri'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
-        if (resourceUri != null) 'resourceUri': resourceUri!,
-      };
-}
-
-/// Used by:
-///
-/// - ondemandscanning:v1beta1 : AnalyzePackagesResponse
-/// - ondemandscanning:v1beta1 : AnalyzePackagesResponseV1
-class $Shared05 {
-  /// The name of the scan resource created by this successful scan.
-  core.String? scan;
-
-  $Shared05({
-    this.scan,
-  });
-
-  $Shared05.fromJson(core.Map _json)
-      : this(
-          scan: _json.containsKey('scan') ? _json['scan'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (scan != null) 'scan': scan!,
       };
 }
 

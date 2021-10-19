@@ -210,66 +210,7 @@ void checkEntryPoint(api.EntryPoint o) {
   buildCounterEntryPoint--;
 }
 
-core.int buildCounterExecuteStreamResponse = 0;
-api.ExecuteStreamResponse buildExecuteStreamResponse() {
-  final o = api.ExecuteStreamResponse();
-  buildCounterExecuteStreamResponse++;
-  if (buildCounterExecuteStreamResponse < 3) {
-    o.result = buildScriptExecutionResult();
-  }
-  buildCounterExecuteStreamResponse--;
-  return o;
-}
-
-void checkExecuteStreamResponse(api.ExecuteStreamResponse o) {
-  buildCounterExecuteStreamResponse++;
-  if (buildCounterExecuteStreamResponse < 3) {
-    checkScriptExecutionResult(o.result!);
-  }
-  buildCounterExecuteStreamResponse--;
-}
-
-core.List<api.ScriptStackTraceElement> buildUnnamed2() => [
-      buildScriptStackTraceElement(),
-      buildScriptStackTraceElement(),
-    ];
-
-void checkUnnamed2(core.List<api.ScriptStackTraceElement> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkScriptStackTraceElement(o[0]);
-  checkScriptStackTraceElement(o[1]);
-}
-
-core.int buildCounterExecutionError = 0;
-api.ExecutionError buildExecutionError() {
-  final o = api.ExecutionError();
-  buildCounterExecutionError++;
-  if (buildCounterExecutionError < 3) {
-    o.errorMessage = 'foo';
-    o.errorType = 'foo';
-    o.scriptStackTraceElements = buildUnnamed2();
-  }
-  buildCounterExecutionError--;
-  return o;
-}
-
-void checkExecutionError(api.ExecutionError o) {
-  buildCounterExecutionError++;
-  if (buildCounterExecutionError < 3) {
-    unittest.expect(
-      o.errorMessage!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.errorType!,
-      unittest.equals('foo'),
-    );
-    checkUnnamed2(o.scriptStackTraceElements!);
-  }
-  buildCounterExecutionError--;
-}
-
-core.List<core.Object?> buildUnnamed3() => [
+core.List<core.Object?> buildUnnamed2() => [
       {
         'list': [1, 2, 3],
         'bool': true,
@@ -282,7 +223,7 @@ core.List<core.Object?> buildUnnamed3() => [
       },
     ];
 
-void checkUnnamed3(core.List<core.Object?> o) {
+void checkUnnamed2(core.List<core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o[0]) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -321,7 +262,7 @@ api.ExecutionRequest buildExecutionRequest() {
   if (buildCounterExecutionRequest < 3) {
     o.devMode = true;
     o.function = 'foo';
-    o.parameters = buildUnnamed3();
+    o.parameters = buildUnnamed2();
     o.sessionState = 'foo';
   }
   buildCounterExecutionRequest--;
@@ -336,49 +277,13 @@ void checkExecutionRequest(api.ExecutionRequest o) {
       o.function!,
       unittest.equals('foo'),
     );
-    checkUnnamed3(o.parameters!);
+    checkUnnamed2(o.parameters!);
     unittest.expect(
       o.sessionState!,
       unittest.equals('foo'),
     );
   }
   buildCounterExecutionRequest--;
-}
-
-core.int buildCounterExecutionResponse = 0;
-api.ExecutionResponse buildExecutionResponse() {
-  final o = api.ExecutionResponse();
-  buildCounterExecutionResponse++;
-  if (buildCounterExecutionResponse < 3) {
-    o.result = {
-      'list': [1, 2, 3],
-      'bool': true,
-      'string': 'foo'
-    };
-  }
-  buildCounterExecutionResponse--;
-  return o;
-}
-
-void checkExecutionResponse(api.ExecutionResponse o) {
-  buildCounterExecutionResponse++;
-  if (buildCounterExecutionResponse < 3) {
-    var casted3 = (o.result!) as core.Map;
-    unittest.expect(casted3, unittest.hasLength(3));
-    unittest.expect(
-      casted3['list'],
-      unittest.equals([1, 2, 3]),
-    );
-    unittest.expect(
-      casted3['bool'],
-      unittest.equals(true),
-    );
-    unittest.expect(
-      casted3['string'],
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterExecutionResponse--;
 }
 
 core.int buildCounterFile = 0;
@@ -543,12 +448,12 @@ void checkGoogleAppsScriptTypeFunction(api.GoogleAppsScriptTypeFunction o) {
   buildCounterGoogleAppsScriptTypeFunction--;
 }
 
-core.List<api.GoogleAppsScriptTypeFunction> buildUnnamed4() => [
+core.List<api.GoogleAppsScriptTypeFunction> buildUnnamed3() => [
       buildGoogleAppsScriptTypeFunction(),
       buildGoogleAppsScriptTypeFunction(),
     ];
 
-void checkUnnamed4(core.List<api.GoogleAppsScriptTypeFunction> o) {
+void checkUnnamed3(core.List<api.GoogleAppsScriptTypeFunction> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleAppsScriptTypeFunction(o[0]);
   checkGoogleAppsScriptTypeFunction(o[1]);
@@ -559,7 +464,7 @@ api.GoogleAppsScriptTypeFunctionSet buildGoogleAppsScriptTypeFunctionSet() {
   final o = api.GoogleAppsScriptTypeFunctionSet();
   buildCounterGoogleAppsScriptTypeFunctionSet++;
   if (buildCounterGoogleAppsScriptTypeFunctionSet < 3) {
-    o.values = buildUnnamed4();
+    o.values = buildUnnamed3();
   }
   buildCounterGoogleAppsScriptTypeFunctionSet--;
   return o;
@@ -569,7 +474,7 @@ void checkGoogleAppsScriptTypeFunctionSet(
     api.GoogleAppsScriptTypeFunctionSet o) {
   buildCounterGoogleAppsScriptTypeFunctionSet++;
   if (buildCounterGoogleAppsScriptTypeFunctionSet < 3) {
-    checkUnnamed4(o.values!);
+    checkUnnamed3(o.values!);
   }
   buildCounterGoogleAppsScriptTypeFunctionSet--;
 }
@@ -717,12 +622,12 @@ void checkGoogleAppsScriptTypeWebAppEntryPoint(
   buildCounterGoogleAppsScriptTypeWebAppEntryPoint--;
 }
 
-core.List<api.Deployment> buildUnnamed5() => [
+core.List<api.Deployment> buildUnnamed4() => [
       buildDeployment(),
       buildDeployment(),
     ];
 
-void checkUnnamed5(core.List<api.Deployment> o) {
+void checkUnnamed4(core.List<api.Deployment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDeployment(o[0]);
   checkDeployment(o[1]);
@@ -733,7 +638,7 @@ api.ListDeploymentsResponse buildListDeploymentsResponse() {
   final o = api.ListDeploymentsResponse();
   buildCounterListDeploymentsResponse++;
   if (buildCounterListDeploymentsResponse < 3) {
-    o.deployments = buildUnnamed5();
+    o.deployments = buildUnnamed4();
     o.nextPageToken = 'foo';
   }
   buildCounterListDeploymentsResponse--;
@@ -743,13 +648,48 @@ api.ListDeploymentsResponse buildListDeploymentsResponse() {
 void checkListDeploymentsResponse(api.ListDeploymentsResponse o) {
   buildCounterListDeploymentsResponse++;
   if (buildCounterListDeploymentsResponse < 3) {
-    checkUnnamed5(o.deployments!);
+    checkUnnamed4(o.deployments!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
     );
   }
   buildCounterListDeploymentsResponse--;
+}
+
+core.List<api.GoogleAppsScriptTypeProcess> buildUnnamed5() => [
+      buildGoogleAppsScriptTypeProcess(),
+      buildGoogleAppsScriptTypeProcess(),
+    ];
+
+void checkUnnamed5(core.List<api.GoogleAppsScriptTypeProcess> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleAppsScriptTypeProcess(o[0]);
+  checkGoogleAppsScriptTypeProcess(o[1]);
+}
+
+core.int buildCounterListScriptProcessesResponse = 0;
+api.ListScriptProcessesResponse buildListScriptProcessesResponse() {
+  final o = api.ListScriptProcessesResponse();
+  buildCounterListScriptProcessesResponse++;
+  if (buildCounterListScriptProcessesResponse < 3) {
+    o.nextPageToken = 'foo';
+    o.processes = buildUnnamed5();
+  }
+  buildCounterListScriptProcessesResponse--;
+  return o;
+}
+
+void checkListScriptProcessesResponse(api.ListScriptProcessesResponse o) {
+  buildCounterListScriptProcessesResponse++;
+  if (buildCounterListScriptProcessesResponse < 3) {
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed5(o.processes!);
+  }
+  buildCounterListScriptProcessesResponse--;
 }
 
 core.List<api.GoogleAppsScriptTypeProcess> buildUnnamed6() => [
@@ -763,48 +703,13 @@ void checkUnnamed6(core.List<api.GoogleAppsScriptTypeProcess> o) {
   checkGoogleAppsScriptTypeProcess(o[1]);
 }
 
-core.int buildCounterListScriptProcessesResponse = 0;
-api.ListScriptProcessesResponse buildListScriptProcessesResponse() {
-  final o = api.ListScriptProcessesResponse();
-  buildCounterListScriptProcessesResponse++;
-  if (buildCounterListScriptProcessesResponse < 3) {
-    o.nextPageToken = 'foo';
-    o.processes = buildUnnamed6();
-  }
-  buildCounterListScriptProcessesResponse--;
-  return o;
-}
-
-void checkListScriptProcessesResponse(api.ListScriptProcessesResponse o) {
-  buildCounterListScriptProcessesResponse++;
-  if (buildCounterListScriptProcessesResponse < 3) {
-    unittest.expect(
-      o.nextPageToken!,
-      unittest.equals('foo'),
-    );
-    checkUnnamed6(o.processes!);
-  }
-  buildCounterListScriptProcessesResponse--;
-}
-
-core.List<api.GoogleAppsScriptTypeProcess> buildUnnamed7() => [
-      buildGoogleAppsScriptTypeProcess(),
-      buildGoogleAppsScriptTypeProcess(),
-    ];
-
-void checkUnnamed7(core.List<api.GoogleAppsScriptTypeProcess> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkGoogleAppsScriptTypeProcess(o[0]);
-  checkGoogleAppsScriptTypeProcess(o[1]);
-}
-
 core.int buildCounterListUserProcessesResponse = 0;
 api.ListUserProcessesResponse buildListUserProcessesResponse() {
   final o = api.ListUserProcessesResponse();
   buildCounterListUserProcessesResponse++;
   if (buildCounterListUserProcessesResponse < 3) {
     o.nextPageToken = 'foo';
-    o.processes = buildUnnamed7();
+    o.processes = buildUnnamed6();
   }
   buildCounterListUserProcessesResponse--;
   return o;
@@ -817,47 +722,17 @@ void checkListUserProcessesResponse(api.ListUserProcessesResponse o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed7(o.processes!);
+    checkUnnamed6(o.processes!);
   }
   buildCounterListUserProcessesResponse--;
 }
 
-core.List<api.Value> buildUnnamed8() => [
-      buildValue(),
-      buildValue(),
-    ];
-
-void checkUnnamed8(core.List<api.Value> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkValue(o[0]);
-  checkValue(o[1]);
-}
-
-core.int buildCounterListValue = 0;
-api.ListValue buildListValue() {
-  final o = api.ListValue();
-  buildCounterListValue++;
-  if (buildCounterListValue < 3) {
-    o.values = buildUnnamed8();
-  }
-  buildCounterListValue--;
-  return o;
-}
-
-void checkListValue(api.ListValue o) {
-  buildCounterListValue++;
-  if (buildCounterListValue < 3) {
-    checkUnnamed8(o.values!);
-  }
-  buildCounterListValue--;
-}
-
-core.List<api.Version> buildUnnamed9() => [
+core.List<api.Version> buildUnnamed7() => [
       buildVersion(),
       buildVersion(),
     ];
 
-void checkUnnamed9(core.List<api.Version> o) {
+void checkUnnamed7(core.List<api.Version> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkVersion(o[0]);
   checkVersion(o[1]);
@@ -869,7 +744,7 @@ api.ListVersionsResponse buildListVersionsResponse() {
   buildCounterListVersionsResponse++;
   if (buildCounterListVersionsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.versions = buildUnnamed9();
+    o.versions = buildUnnamed7();
   }
   buildCounterListVersionsResponse--;
   return o;
@@ -882,9 +757,31 @@ void checkListVersionsResponse(api.ListVersionsResponse o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed9(o.versions!);
+    checkUnnamed7(o.versions!);
   }
   buildCounterListVersionsResponse--;
+}
+
+core.List<api.MetricsValue> buildUnnamed8() => [
+      buildMetricsValue(),
+      buildMetricsValue(),
+    ];
+
+void checkUnnamed8(core.List<api.MetricsValue> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkMetricsValue(o[0]);
+  checkMetricsValue(o[1]);
+}
+
+core.List<api.MetricsValue> buildUnnamed9() => [
+      buildMetricsValue(),
+      buildMetricsValue(),
+    ];
+
+void checkUnnamed9(core.List<api.MetricsValue> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkMetricsValue(o[0]);
+  checkMetricsValue(o[1]);
 }
 
 core.List<api.MetricsValue> buildUnnamed10() => [
@@ -898,36 +795,14 @@ void checkUnnamed10(core.List<api.MetricsValue> o) {
   checkMetricsValue(o[1]);
 }
 
-core.List<api.MetricsValue> buildUnnamed11() => [
-      buildMetricsValue(),
-      buildMetricsValue(),
-    ];
-
-void checkUnnamed11(core.List<api.MetricsValue> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkMetricsValue(o[0]);
-  checkMetricsValue(o[1]);
-}
-
-core.List<api.MetricsValue> buildUnnamed12() => [
-      buildMetricsValue(),
-      buildMetricsValue(),
-    ];
-
-void checkUnnamed12(core.List<api.MetricsValue> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkMetricsValue(o[0]);
-  checkMetricsValue(o[1]);
-}
-
 core.int buildCounterMetrics = 0;
 api.Metrics buildMetrics() {
   final o = api.Metrics();
   buildCounterMetrics++;
   if (buildCounterMetrics < 3) {
-    o.activeUsers = buildUnnamed10();
-    o.failedExecutions = buildUnnamed11();
-    o.totalExecutions = buildUnnamed12();
+    o.activeUsers = buildUnnamed8();
+    o.failedExecutions = buildUnnamed9();
+    o.totalExecutions = buildUnnamed10();
   }
   buildCounterMetrics--;
   return o;
@@ -936,9 +811,9 @@ api.Metrics buildMetrics() {
 void checkMetrics(api.Metrics o) {
   buildCounterMetrics++;
   if (buildCounterMetrics < 3) {
-    checkUnnamed10(o.activeUsers!);
-    checkUnnamed11(o.failedExecutions!);
-    checkUnnamed12(o.totalExecutions!);
+    checkUnnamed8(o.activeUsers!);
+    checkUnnamed9(o.failedExecutions!);
+    checkUnnamed10(o.totalExecutions!);
   }
   buildCounterMetrics--;
 }
@@ -975,7 +850,7 @@ void checkMetricsValue(api.MetricsValue o) {
   buildCounterMetricsValue--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed13() => {
+core.Map<core.String, core.Object?> buildUnnamed11() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -988,9 +863,23 @@ core.Map<core.String, core.Object?> buildUnnamed13() => {
       },
     };
 
-void checkUnnamed13(core.Map<core.String, core.Object?> o) {
+void checkUnnamed11(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted4 = (o['x']!) as core.Map;
+  var casted3 = (o['x']!) as core.Map;
+  unittest.expect(casted3, unittest.hasLength(3));
+  unittest.expect(
+    casted3['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted3['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted3['string'],
+    unittest.equals('foo'),
+  );
+  var casted4 = (o['y']!) as core.Map;
   unittest.expect(casted4, unittest.hasLength(3));
   unittest.expect(
     casted4['list'],
@@ -1004,20 +893,6 @@ void checkUnnamed13(core.Map<core.String, core.Object?> o) {
     casted4['string'],
     unittest.equals('foo'),
   );
-  var casted5 = (o['y']!) as core.Map;
-  unittest.expect(casted5, unittest.hasLength(3));
-  unittest.expect(
-    casted5['list'],
-    unittest.equals([1, 2, 3]),
-  );
-  unittest.expect(
-    casted5['bool'],
-    unittest.equals(true),
-  );
-  unittest.expect(
-    casted5['string'],
-    unittest.equals('foo'),
-  );
 }
 
 core.int buildCounterOperation = 0;
@@ -1027,7 +902,7 @@ api.Operation buildOperation() {
   if (buildCounterOperation < 3) {
     o.done = true;
     o.error = buildStatus();
-    o.response = buildUnnamed13();
+    o.response = buildUnnamed11();
   }
   buildCounterOperation--;
   return o;
@@ -1038,7 +913,7 @@ void checkOperation(api.Operation o) {
   if (buildCounterOperation < 3) {
     unittest.expect(o.done!, unittest.isTrue);
     checkStatus(o.error!);
-    checkUnnamed13(o.response!);
+    checkUnnamed11(o.response!);
   }
   buildCounterOperation--;
 }
@@ -1089,53 +964,7 @@ void checkProject(api.Project o) {
   buildCounterProject--;
 }
 
-core.int buildCounterScriptExecutionResult = 0;
-api.ScriptExecutionResult buildScriptExecutionResult() {
-  final o = api.ScriptExecutionResult();
-  buildCounterScriptExecutionResult++;
-  if (buildCounterScriptExecutionResult < 3) {
-    o.returnValue = buildValue();
-  }
-  buildCounterScriptExecutionResult--;
-  return o;
-}
-
-void checkScriptExecutionResult(api.ScriptExecutionResult o) {
-  buildCounterScriptExecutionResult++;
-  if (buildCounterScriptExecutionResult < 3) {
-    checkValue(o.returnValue!);
-  }
-  buildCounterScriptExecutionResult--;
-}
-
-core.int buildCounterScriptStackTraceElement = 0;
-api.ScriptStackTraceElement buildScriptStackTraceElement() {
-  final o = api.ScriptStackTraceElement();
-  buildCounterScriptStackTraceElement++;
-  if (buildCounterScriptStackTraceElement < 3) {
-    o.function = 'foo';
-    o.lineNumber = 42;
-  }
-  buildCounterScriptStackTraceElement--;
-  return o;
-}
-
-void checkScriptStackTraceElement(api.ScriptStackTraceElement o) {
-  buildCounterScriptStackTraceElement++;
-  if (buildCounterScriptStackTraceElement < 3) {
-    unittest.expect(
-      o.function!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.lineNumber!,
-      unittest.equals(42),
-    );
-  }
-  buildCounterScriptStackTraceElement--;
-}
-
-core.Map<core.String, core.Object?> buildUnnamed14() => {
+core.Map<core.String, core.Object?> buildUnnamed12() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -1148,9 +977,23 @@ core.Map<core.String, core.Object?> buildUnnamed14() => {
       },
     };
 
-void checkUnnamed14(core.Map<core.String, core.Object?> o) {
+void checkUnnamed12(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted6 = (o['x']!) as core.Map;
+  var casted5 = (o['x']!) as core.Map;
+  unittest.expect(casted5, unittest.hasLength(3));
+  unittest.expect(
+    casted5['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted5['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted5['string'],
+    unittest.equals('foo'),
+  );
+  var casted6 = (o['y']!) as core.Map;
   unittest.expect(casted6, unittest.hasLength(3));
   unittest.expect(
     casted6['list'],
@@ -1164,31 +1007,17 @@ void checkUnnamed14(core.Map<core.String, core.Object?> o) {
     casted6['string'],
     unittest.equals('foo'),
   );
-  var casted7 = (o['y']!) as core.Map;
-  unittest.expect(casted7, unittest.hasLength(3));
-  unittest.expect(
-    casted7['list'],
-    unittest.equals([1, 2, 3]),
-  );
-  unittest.expect(
-    casted7['bool'],
-    unittest.equals(true),
-  );
-  unittest.expect(
-    casted7['string'],
-    unittest.equals('foo'),
-  );
 }
 
-core.List<core.Map<core.String, core.Object?>> buildUnnamed15() => [
-      buildUnnamed14(),
-      buildUnnamed14(),
+core.List<core.Map<core.String, core.Object?>> buildUnnamed13() => [
+      buildUnnamed12(),
+      buildUnnamed12(),
     ];
 
-void checkUnnamed15(core.List<core.Map<core.String, core.Object?>> o) {
+void checkUnnamed13(core.List<core.Map<core.String, core.Object?>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed14(o[0]);
-  checkUnnamed14(o[1]);
+  checkUnnamed12(o[0]);
+  checkUnnamed12(o[1]);
 }
 
 core.int buildCounterStatus = 0;
@@ -1197,7 +1026,7 @@ api.Status buildStatus() {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed15();
+    o.details = buildUnnamed13();
     o.message = 'foo';
   }
   buildCounterStatus--;
@@ -1211,43 +1040,13 @@ void checkStatus(api.Status o) {
       o.code!,
       unittest.equals(42),
     );
-    checkUnnamed15(o.details!);
+    checkUnnamed13(o.details!);
     unittest.expect(
       o.message!,
       unittest.equals('foo'),
     );
   }
   buildCounterStatus--;
-}
-
-core.Map<core.String, api.Value> buildUnnamed16() => {
-      'x': buildValue(),
-      'y': buildValue(),
-    };
-
-void checkUnnamed16(core.Map<core.String, api.Value> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkValue(o['x']!);
-  checkValue(o['y']!);
-}
-
-core.int buildCounterStruct = 0;
-api.Struct buildStruct() {
-  final o = api.Struct();
-  buildCounterStruct++;
-  if (buildCounterStruct < 3) {
-    o.fields = buildUnnamed16();
-  }
-  buildCounterStruct--;
-  return o;
-}
-
-void checkStruct(api.Struct o) {
-  buildCounterStruct++;
-  if (buildCounterStruct < 3) {
-    checkUnnamed16(o.fields!);
-  }
-  buildCounterStruct--;
 }
 
 core.int buildCounterUpdateDeploymentRequest = 0;
@@ -1267,101 +1066,6 @@ void checkUpdateDeploymentRequest(api.UpdateDeploymentRequest o) {
     checkDeploymentConfig(o.deploymentConfig!);
   }
   buildCounterUpdateDeploymentRequest--;
-}
-
-core.Map<core.String, core.Object?> buildUnnamed17() => {
-      'x': {
-        'list': [1, 2, 3],
-        'bool': true,
-        'string': 'foo'
-      },
-      'y': {
-        'list': [1, 2, 3],
-        'bool': true,
-        'string': 'foo'
-      },
-    };
-
-void checkUnnamed17(core.Map<core.String, core.Object?> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  var casted8 = (o['x']!) as core.Map;
-  unittest.expect(casted8, unittest.hasLength(3));
-  unittest.expect(
-    casted8['list'],
-    unittest.equals([1, 2, 3]),
-  );
-  unittest.expect(
-    casted8['bool'],
-    unittest.equals(true),
-  );
-  unittest.expect(
-    casted8['string'],
-    unittest.equals('foo'),
-  );
-  var casted9 = (o['y']!) as core.Map;
-  unittest.expect(casted9, unittest.hasLength(3));
-  unittest.expect(
-    casted9['list'],
-    unittest.equals([1, 2, 3]),
-  );
-  unittest.expect(
-    casted9['bool'],
-    unittest.equals(true),
-  );
-  unittest.expect(
-    casted9['string'],
-    unittest.equals('foo'),
-  );
-}
-
-core.int buildCounterValue = 0;
-api.Value buildValue() {
-  final o = api.Value();
-  buildCounterValue++;
-  if (buildCounterValue < 3) {
-    o.boolValue = true;
-    o.bytesValue = 'foo';
-    o.dateValue = 'foo';
-    o.listValue = buildListValue();
-    o.nullValue = 'NULL_VALUE';
-    o.numberValue = 42.0;
-    o.protoValue = buildUnnamed17();
-    o.stringValue = 'foo';
-    o.structValue = buildStruct();
-  }
-  buildCounterValue--;
-  return o;
-}
-
-void checkValue(api.Value o) {
-  buildCounterValue++;
-  if (buildCounterValue < 3) {
-    unittest.expect(o.boolValue!, unittest.isTrue);
-    unittest.expect(
-      o.bytesValue!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.dateValue!,
-      unittest.equals('foo'),
-    );
-    checkListValue(o.listValue!);
-    unittest.expect(
-      o.nullValue!,
-      unittest.equals('NULL_VALUE'),
-    );
-    unittest.expect(
-      o.numberValue!,
-      unittest.equals(42.0),
-    );
-    checkUnnamed17(o.protoValue!);
-    unittest.expect(
-      o.stringValue!,
-      unittest.equals('foo'),
-    );
-    checkStruct(o.structValue!);
-  }
-  buildCounterValue--;
 }
 
 core.int buildCounterVersion = 0;
@@ -1401,6 +1105,74 @@ void checkVersion(api.Version o) {
   buildCounterVersion--;
 }
 
+core.List<core.String> buildUnnamed14() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed14(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.List<core.String> buildUnnamed15() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed15(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.List<core.String> buildUnnamed16() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed16(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.List<core.String> buildUnnamed17() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed17(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
 core.List<core.String> buildUnnamed18() => [
       'foo',
       'foo',
@@ -1424,74 +1196,6 @@ core.List<core.String> buildUnnamed19() => [
     ];
 
 void checkUnnamed19(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
-core.List<core.String> buildUnnamed20() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed20(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
-core.List<core.String> buildUnnamed21() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed21(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
-core.List<core.String> buildUnnamed22() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed22(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
-core.List<core.String> buildUnnamed23() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed23(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1564,26 +1268,6 @@ void main() {
     });
   });
 
-  unittest.group('obj-schema-ExecuteStreamResponse', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildExecuteStreamResponse();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.ExecuteStreamResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkExecuteStreamResponse(od);
-    });
-  });
-
-  unittest.group('obj-schema-ExecutionError', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildExecutionError();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.ExecutionError.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkExecutionError(od);
-    });
-  });
-
   unittest.group('obj-schema-ExecutionRequest', () {
     unittest.test('to-json--from-json', () async {
       final o = buildExecutionRequest();
@@ -1591,16 +1275,6 @@ void main() {
       final od = api.ExecutionRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkExecutionRequest(od);
-    });
-  });
-
-  unittest.group('obj-schema-ExecutionResponse', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildExecutionResponse();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.ExecutionResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkExecutionResponse(od);
     });
   });
 
@@ -1734,16 +1408,6 @@ void main() {
     });
   });
 
-  unittest.group('obj-schema-ListValue', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildListValue();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.ListValue.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkListValue(od);
-    });
-  });
-
   unittest.group('obj-schema-ListVersionsResponse', () {
     unittest.test('to-json--from-json', () async {
       final o = buildListVersionsResponse();
@@ -1794,26 +1458,6 @@ void main() {
     });
   });
 
-  unittest.group('obj-schema-ScriptExecutionResult', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildScriptExecutionResult();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.ScriptExecutionResult.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkScriptExecutionResult(od);
-    });
-  });
-
-  unittest.group('obj-schema-ScriptStackTraceElement', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildScriptStackTraceElement();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.ScriptStackTraceElement.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkScriptStackTraceElement(od);
-    });
-  });
-
   unittest.group('obj-schema-Status', () {
     unittest.test('to-json--from-json', () async {
       final o = buildStatus();
@@ -1824,16 +1468,6 @@ void main() {
     });
   });
 
-  unittest.group('obj-schema-Struct', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildStruct();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.Struct.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkStruct(od);
-    });
-  });
-
   unittest.group('obj-schema-UpdateDeploymentRequest', () {
     unittest.test('to-json--from-json', () async {
       final o = buildUpdateDeploymentRequest();
@@ -1841,16 +1475,6 @@ void main() {
       final od = api.UpdateDeploymentRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkUpdateDeploymentRequest(od);
-    });
-  });
-
-  unittest.group('obj-schema-Value', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildValue();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.Value.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkValue(od);
     });
   });
 
@@ -1876,9 +1500,9 @@ void main() {
       final arg_userProcessFilter_projectName = 'foo';
       final arg_userProcessFilter_scriptId = 'foo';
       final arg_userProcessFilter_startTime = 'foo';
-      final arg_userProcessFilter_statuses = buildUnnamed18();
-      final arg_userProcessFilter_types = buildUnnamed19();
-      final arg_userProcessFilter_userAccessLevels = buildUnnamed20();
+      final arg_userProcessFilter_statuses = buildUnnamed14();
+      final arg_userProcessFilter_types = buildUnnamed15();
+      final arg_userProcessFilter_userAccessLevels = buildUnnamed16();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = (req.url).path;
@@ -1993,9 +1617,9 @@ void main() {
       final arg_scriptProcessFilter_endTime = 'foo';
       final arg_scriptProcessFilter_functionName = 'foo';
       final arg_scriptProcessFilter_startTime = 'foo';
-      final arg_scriptProcessFilter_statuses = buildUnnamed21();
-      final arg_scriptProcessFilter_types = buildUnnamed22();
-      final arg_scriptProcessFilter_userAccessLevels = buildUnnamed23();
+      final arg_scriptProcessFilter_statuses = buildUnnamed17();
+      final arg_scriptProcessFilter_types = buildUnnamed18();
+      final arg_scriptProcessFilter_userAccessLevels = buildUnnamed19();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = (req.url).path;

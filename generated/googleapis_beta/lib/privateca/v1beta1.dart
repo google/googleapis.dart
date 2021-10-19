@@ -3868,9 +3868,6 @@ class Operation {
       };
 }
 
-/// Represents the metadata of the long-running operation.
-typedef OperationMetadata = $OperationMetadata00;
-
 /// An Identity and Access Management (IAM) policy, which specifies access
 /// controls for Google Cloud resources.
 ///
@@ -4037,45 +4034,6 @@ class PublicKey {
   core.Map<core.String, core.dynamic> toJson() => {
         if (key != null) 'key': key!,
         if (type != null) 'type': type!,
-      };
-}
-
-/// Operation metadata returned by the CLH during resource state reconciliation.
-class ReconciliationOperationMetadata {
-  /// Use exclusive_action instead.
-  ///
-  /// Deprecated.
-  core.bool? deleteResource;
-
-  ///
-  /// Possible string values are:
-  /// - "UNKNOWN_REPAIR_ACTION"
-  /// - "DELETE" : The resource has to be deleted. When using this bit, the CLH
-  /// should fail the operation.
-  /// - "RETRY" : This resource could not be repaired but the repair should be
-  /// tried again at a later time. This can happen if there is a dependency that
-  /// needs to be resolved first- e.g. if a parent resource must be repaired
-  /// before a child resource.
-  core.String? exclusiveAction;
-
-  ReconciliationOperationMetadata({
-    this.deleteResource,
-    this.exclusiveAction,
-  });
-
-  ReconciliationOperationMetadata.fromJson(core.Map _json)
-      : this(
-          deleteResource: _json.containsKey('deleteResource')
-              ? _json['deleteResource'] as core.bool
-              : null,
-          exclusiveAction: _json.containsKey('exclusiveAction')
-              ? _json['exclusiveAction'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (deleteResource != null) 'deleteResource': deleteResource!,
-        if (exclusiveAction != null) 'exclusiveAction': exclusiveAction!,
       };
 }
 

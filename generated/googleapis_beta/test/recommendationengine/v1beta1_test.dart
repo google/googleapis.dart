@@ -111,94 +111,6 @@ void checkGoogleApiHttpBody(api.GoogleApiHttpBody o) {
   buildCounterGoogleApiHttpBody--;
 }
 
-core.int
-    buildCounterGoogleCloudRecommendationengineV1alphaRejoinCatalogMetadata = 0;
-api.GoogleCloudRecommendationengineV1alphaRejoinCatalogMetadata
-    buildGoogleCloudRecommendationengineV1alphaRejoinCatalogMetadata() {
-  final o = api.GoogleCloudRecommendationengineV1alphaRejoinCatalogMetadata();
-  buildCounterGoogleCloudRecommendationengineV1alphaRejoinCatalogMetadata++;
-  if (buildCounterGoogleCloudRecommendationengineV1alphaRejoinCatalogMetadata <
-      3) {}
-  buildCounterGoogleCloudRecommendationengineV1alphaRejoinCatalogMetadata--;
-  return o;
-}
-
-void checkGoogleCloudRecommendationengineV1alphaRejoinCatalogMetadata(
-    api.GoogleCloudRecommendationengineV1alphaRejoinCatalogMetadata o) {
-  buildCounterGoogleCloudRecommendationengineV1alphaRejoinCatalogMetadata++;
-  if (buildCounterGoogleCloudRecommendationengineV1alphaRejoinCatalogMetadata <
-      3) {}
-  buildCounterGoogleCloudRecommendationengineV1alphaRejoinCatalogMetadata--;
-}
-
-core.int
-    buildCounterGoogleCloudRecommendationengineV1alphaRejoinCatalogResponse = 0;
-api.GoogleCloudRecommendationengineV1alphaRejoinCatalogResponse
-    buildGoogleCloudRecommendationengineV1alphaRejoinCatalogResponse() {
-  final o = api.GoogleCloudRecommendationengineV1alphaRejoinCatalogResponse();
-  buildCounterGoogleCloudRecommendationengineV1alphaRejoinCatalogResponse++;
-  if (buildCounterGoogleCloudRecommendationengineV1alphaRejoinCatalogResponse <
-      3) {
-    o.rejoinedUserEventsCount = 'foo';
-  }
-  buildCounterGoogleCloudRecommendationengineV1alphaRejoinCatalogResponse--;
-  return o;
-}
-
-void checkGoogleCloudRecommendationengineV1alphaRejoinCatalogResponse(
-    api.GoogleCloudRecommendationengineV1alphaRejoinCatalogResponse o) {
-  buildCounterGoogleCloudRecommendationengineV1alphaRejoinCatalogResponse++;
-  if (buildCounterGoogleCloudRecommendationengineV1alphaRejoinCatalogResponse <
-      3) {
-    unittest.expect(
-      o.rejoinedUserEventsCount!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterGoogleCloudRecommendationengineV1alphaRejoinCatalogResponse--;
-}
-
-core.int buildCounterGoogleCloudRecommendationengineV1alphaTuningMetadata = 0;
-api.GoogleCloudRecommendationengineV1alphaTuningMetadata
-    buildGoogleCloudRecommendationengineV1alphaTuningMetadata() {
-  final o = api.GoogleCloudRecommendationengineV1alphaTuningMetadata();
-  buildCounterGoogleCloudRecommendationengineV1alphaTuningMetadata++;
-  if (buildCounterGoogleCloudRecommendationengineV1alphaTuningMetadata < 3) {
-    o.recommendationModel = 'foo';
-  }
-  buildCounterGoogleCloudRecommendationengineV1alphaTuningMetadata--;
-  return o;
-}
-
-void checkGoogleCloudRecommendationengineV1alphaTuningMetadata(
-    api.GoogleCloudRecommendationengineV1alphaTuningMetadata o) {
-  buildCounterGoogleCloudRecommendationengineV1alphaTuningMetadata++;
-  if (buildCounterGoogleCloudRecommendationengineV1alphaTuningMetadata < 3) {
-    unittest.expect(
-      o.recommendationModel!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterGoogleCloudRecommendationengineV1alphaTuningMetadata--;
-}
-
-core.int buildCounterGoogleCloudRecommendationengineV1alphaTuningResponse = 0;
-api.GoogleCloudRecommendationengineV1alphaTuningResponse
-    buildGoogleCloudRecommendationengineV1alphaTuningResponse() {
-  final o = api.GoogleCloudRecommendationengineV1alphaTuningResponse();
-  buildCounterGoogleCloudRecommendationengineV1alphaTuningResponse++;
-  if (buildCounterGoogleCloudRecommendationengineV1alphaTuningResponse < 3) {}
-  buildCounterGoogleCloudRecommendationengineV1alphaTuningResponse--;
-  return o;
-}
-
-void checkGoogleCloudRecommendationengineV1alphaTuningResponse(
-    api.GoogleCloudRecommendationengineV1alphaTuningResponse o) {
-  buildCounterGoogleCloudRecommendationengineV1alphaTuningResponse++;
-  if (buildCounterGoogleCloudRecommendationengineV1alphaTuningResponse < 3) {}
-  buildCounterGoogleCloudRecommendationengineV1alphaTuningResponse--;
-}
-
 core.int buildCounterGoogleCloudRecommendationengineV1beta1BigQuerySource = 0;
 api.GoogleCloudRecommendationengineV1beta1BigQuerySource
     buildGoogleCloudRecommendationengineV1beta1BigQuerySource() {
@@ -826,47 +738,6 @@ void checkGoogleCloudRecommendationengineV1beta1ImportCatalogItemsRequest(
   buildCounterGoogleCloudRecommendationengineV1beta1ImportCatalogItemsRequest--;
 }
 
-core.List<api.GoogleRpcStatus> buildUnnamed12() => [
-      buildGoogleRpcStatus(),
-      buildGoogleRpcStatus(),
-    ];
-
-void checkUnnamed12(core.List<api.GoogleRpcStatus> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkGoogleRpcStatus(o[0]);
-  checkGoogleRpcStatus(o[1]);
-}
-
-core.int
-    buildCounterGoogleCloudRecommendationengineV1beta1ImportCatalogItemsResponse =
-    0;
-api.GoogleCloudRecommendationengineV1beta1ImportCatalogItemsResponse
-    buildGoogleCloudRecommendationengineV1beta1ImportCatalogItemsResponse() {
-  final o =
-      api.GoogleCloudRecommendationengineV1beta1ImportCatalogItemsResponse();
-  buildCounterGoogleCloudRecommendationengineV1beta1ImportCatalogItemsResponse++;
-  if (buildCounterGoogleCloudRecommendationengineV1beta1ImportCatalogItemsResponse <
-      3) {
-    o.errorSamples = buildUnnamed12();
-    o.errorsConfig =
-        buildGoogleCloudRecommendationengineV1beta1ImportErrorsConfig();
-  }
-  buildCounterGoogleCloudRecommendationengineV1beta1ImportCatalogItemsResponse--;
-  return o;
-}
-
-void checkGoogleCloudRecommendationengineV1beta1ImportCatalogItemsResponse(
-    api.GoogleCloudRecommendationengineV1beta1ImportCatalogItemsResponse o) {
-  buildCounterGoogleCloudRecommendationengineV1beta1ImportCatalogItemsResponse++;
-  if (buildCounterGoogleCloudRecommendationengineV1beta1ImportCatalogItemsResponse <
-      3) {
-    checkUnnamed12(o.errorSamples!);
-    checkGoogleCloudRecommendationengineV1beta1ImportErrorsConfig(
-        o.errorsConfig!);
-  }
-  buildCounterGoogleCloudRecommendationengineV1beta1ImportCatalogItemsResponse--;
-}
-
 core.int buildCounterGoogleCloudRecommendationengineV1beta1ImportErrorsConfig =
     0;
 api.GoogleCloudRecommendationengineV1beta1ImportErrorsConfig
@@ -892,55 +763,6 @@ void checkGoogleCloudRecommendationengineV1beta1ImportErrorsConfig(
     );
   }
   buildCounterGoogleCloudRecommendationengineV1beta1ImportErrorsConfig--;
-}
-
-core.int buildCounterGoogleCloudRecommendationengineV1beta1ImportMetadata = 0;
-api.GoogleCloudRecommendationengineV1beta1ImportMetadata
-    buildGoogleCloudRecommendationengineV1beta1ImportMetadata() {
-  final o = api.GoogleCloudRecommendationengineV1beta1ImportMetadata();
-  buildCounterGoogleCloudRecommendationengineV1beta1ImportMetadata++;
-  if (buildCounterGoogleCloudRecommendationengineV1beta1ImportMetadata < 3) {
-    o.createTime = 'foo';
-    o.failureCount = 'foo';
-    o.operationName = 'foo';
-    o.requestId = 'foo';
-    o.successCount = 'foo';
-    o.updateTime = 'foo';
-  }
-  buildCounterGoogleCloudRecommendationengineV1beta1ImportMetadata--;
-  return o;
-}
-
-void checkGoogleCloudRecommendationengineV1beta1ImportMetadata(
-    api.GoogleCloudRecommendationengineV1beta1ImportMetadata o) {
-  buildCounterGoogleCloudRecommendationengineV1beta1ImportMetadata++;
-  if (buildCounterGoogleCloudRecommendationengineV1beta1ImportMetadata < 3) {
-    unittest.expect(
-      o.createTime!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.failureCount!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.operationName!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.requestId!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.successCount!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.updateTime!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterGoogleCloudRecommendationengineV1beta1ImportMetadata--;
 }
 
 core.int
@@ -977,51 +799,6 @@ void checkGoogleCloudRecommendationengineV1beta1ImportUserEventsRequest(
   buildCounterGoogleCloudRecommendationengineV1beta1ImportUserEventsRequest--;
 }
 
-core.List<api.GoogleRpcStatus> buildUnnamed13() => [
-      buildGoogleRpcStatus(),
-      buildGoogleRpcStatus(),
-    ];
-
-void checkUnnamed13(core.List<api.GoogleRpcStatus> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkGoogleRpcStatus(o[0]);
-  checkGoogleRpcStatus(o[1]);
-}
-
-core.int
-    buildCounterGoogleCloudRecommendationengineV1beta1ImportUserEventsResponse =
-    0;
-api.GoogleCloudRecommendationengineV1beta1ImportUserEventsResponse
-    buildGoogleCloudRecommendationengineV1beta1ImportUserEventsResponse() {
-  final o =
-      api.GoogleCloudRecommendationengineV1beta1ImportUserEventsResponse();
-  buildCounterGoogleCloudRecommendationengineV1beta1ImportUserEventsResponse++;
-  if (buildCounterGoogleCloudRecommendationengineV1beta1ImportUserEventsResponse <
-      3) {
-    o.errorSamples = buildUnnamed13();
-    o.errorsConfig =
-        buildGoogleCloudRecommendationengineV1beta1ImportErrorsConfig();
-    o.importSummary =
-        buildGoogleCloudRecommendationengineV1beta1UserEventImportSummary();
-  }
-  buildCounterGoogleCloudRecommendationengineV1beta1ImportUserEventsResponse--;
-  return o;
-}
-
-void checkGoogleCloudRecommendationengineV1beta1ImportUserEventsResponse(
-    api.GoogleCloudRecommendationengineV1beta1ImportUserEventsResponse o) {
-  buildCounterGoogleCloudRecommendationengineV1beta1ImportUserEventsResponse++;
-  if (buildCounterGoogleCloudRecommendationengineV1beta1ImportUserEventsResponse <
-      3) {
-    checkUnnamed13(o.errorSamples!);
-    checkGoogleCloudRecommendationengineV1beta1ImportErrorsConfig(
-        o.errorsConfig!);
-    checkGoogleCloudRecommendationengineV1beta1UserEventImportSummary(
-        o.importSummary!);
-  }
-  buildCounterGoogleCloudRecommendationengineV1beta1ImportUserEventsResponse--;
-}
-
 core.int buildCounterGoogleCloudRecommendationengineV1beta1InputConfig = 0;
 api.GoogleCloudRecommendationengineV1beta1InputConfig
     buildGoogleCloudRecommendationengineV1beta1InputConfig() {
@@ -1056,12 +833,12 @@ void checkGoogleCloudRecommendationengineV1beta1InputConfig(
 }
 
 core.List<api.GoogleCloudRecommendationengineV1beta1CatalogItem>
-    buildUnnamed14() => [
+    buildUnnamed12() => [
           buildGoogleCloudRecommendationengineV1beta1CatalogItem(),
           buildGoogleCloudRecommendationengineV1beta1CatalogItem(),
         ];
 
-void checkUnnamed14(
+void checkUnnamed12(
     core.List<api.GoogleCloudRecommendationengineV1beta1CatalogItem> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudRecommendationengineV1beta1CatalogItem(o[0]);
@@ -1078,7 +855,7 @@ api.GoogleCloudRecommendationengineV1beta1ListCatalogItemsResponse
   buildCounterGoogleCloudRecommendationengineV1beta1ListCatalogItemsResponse++;
   if (buildCounterGoogleCloudRecommendationengineV1beta1ListCatalogItemsResponse <
       3) {
-    o.catalogItems = buildUnnamed14();
+    o.catalogItems = buildUnnamed12();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudRecommendationengineV1beta1ListCatalogItemsResponse--;
@@ -1090,7 +867,7 @@ void checkGoogleCloudRecommendationengineV1beta1ListCatalogItemsResponse(
   buildCounterGoogleCloudRecommendationengineV1beta1ListCatalogItemsResponse++;
   if (buildCounterGoogleCloudRecommendationengineV1beta1ListCatalogItemsResponse <
       3) {
-    checkUnnamed14(o.catalogItems!);
+    checkUnnamed12(o.catalogItems!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -1099,13 +876,13 @@ void checkGoogleCloudRecommendationengineV1beta1ListCatalogItemsResponse(
   buildCounterGoogleCloudRecommendationengineV1beta1ListCatalogItemsResponse--;
 }
 
-core.List<api.GoogleCloudRecommendationengineV1beta1Catalog> buildUnnamed15() =>
+core.List<api.GoogleCloudRecommendationengineV1beta1Catalog> buildUnnamed13() =>
     [
       buildGoogleCloudRecommendationengineV1beta1Catalog(),
       buildGoogleCloudRecommendationengineV1beta1Catalog(),
     ];
 
-void checkUnnamed15(
+void checkUnnamed13(
     core.List<api.GoogleCloudRecommendationengineV1beta1Catalog> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudRecommendationengineV1beta1Catalog(o[0]);
@@ -1120,7 +897,7 @@ api.GoogleCloudRecommendationengineV1beta1ListCatalogsResponse
   buildCounterGoogleCloudRecommendationengineV1beta1ListCatalogsResponse++;
   if (buildCounterGoogleCloudRecommendationengineV1beta1ListCatalogsResponse <
       3) {
-    o.catalogs = buildUnnamed15();
+    o.catalogs = buildUnnamed13();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudRecommendationengineV1beta1ListCatalogsResponse--;
@@ -1132,7 +909,7 @@ void checkGoogleCloudRecommendationengineV1beta1ListCatalogsResponse(
   buildCounterGoogleCloudRecommendationengineV1beta1ListCatalogsResponse++;
   if (buildCounterGoogleCloudRecommendationengineV1beta1ListCatalogsResponse <
       3) {
-    checkUnnamed15(o.catalogs!);
+    checkUnnamed13(o.catalogs!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -1143,12 +920,12 @@ void checkGoogleCloudRecommendationengineV1beta1ListCatalogsResponse(
 
 core.List<
         api.GoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistration>
-    buildUnnamed16() => [
+    buildUnnamed14() => [
           buildGoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistration(),
           buildGoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistration(),
         ];
 
-void checkUnnamed16(
+void checkUnnamed14(
     core.List<
             api.GoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistration>
         o) {
@@ -1168,7 +945,7 @@ api.GoogleCloudRecommendationengineV1beta1ListPredictionApiKeyRegistrationsRespo
   if (buildCounterGoogleCloudRecommendationengineV1beta1ListPredictionApiKeyRegistrationsResponse <
       3) {
     o.nextPageToken = 'foo';
-    o.predictionApiKeyRegistrations = buildUnnamed16();
+    o.predictionApiKeyRegistrations = buildUnnamed14();
   }
   buildCounterGoogleCloudRecommendationengineV1beta1ListPredictionApiKeyRegistrationsResponse--;
   return o;
@@ -1184,18 +961,18 @@ void checkGoogleCloudRecommendationengineV1beta1ListPredictionApiKeyRegistration
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed16(o.predictionApiKeyRegistrations!);
+    checkUnnamed14(o.predictionApiKeyRegistrations!);
   }
   buildCounterGoogleCloudRecommendationengineV1beta1ListPredictionApiKeyRegistrationsResponse--;
 }
 
 core.List<api.GoogleCloudRecommendationengineV1beta1UserEvent>
-    buildUnnamed17() => [
+    buildUnnamed15() => [
           buildGoogleCloudRecommendationengineV1beta1UserEvent(),
           buildGoogleCloudRecommendationengineV1beta1UserEvent(),
         ];
 
-void checkUnnamed17(
+void checkUnnamed15(
     core.List<api.GoogleCloudRecommendationengineV1beta1UserEvent> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudRecommendationengineV1beta1UserEvent(o[0]);
@@ -1212,7 +989,7 @@ api.GoogleCloudRecommendationengineV1beta1ListUserEventsResponse
   if (buildCounterGoogleCloudRecommendationengineV1beta1ListUserEventsResponse <
       3) {
     o.nextPageToken = 'foo';
-    o.userEvents = buildUnnamed17();
+    o.userEvents = buildUnnamed15();
   }
   buildCounterGoogleCloudRecommendationengineV1beta1ListUserEventsResponse--;
   return o;
@@ -1227,17 +1004,17 @@ void checkGoogleCloudRecommendationengineV1beta1ListUserEventsResponse(
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed17(o.userEvents!);
+    checkUnnamed15(o.userEvents!);
   }
   buildCounterGoogleCloudRecommendationengineV1beta1ListUserEventsResponse--;
 }
 
-core.Map<core.String, core.String> buildUnnamed18() => {
+core.Map<core.String, core.String> buildUnnamed16() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed18(core.Map<core.String, core.String> o) {
+void checkUnnamed16(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -1249,7 +1026,7 @@ void checkUnnamed18(core.Map<core.String, core.String> o) {
   );
 }
 
-core.Map<core.String, core.Object?> buildUnnamed19() => {
+core.Map<core.String, core.Object?> buildUnnamed17() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -1262,7 +1039,7 @@ core.Map<core.String, core.Object?> buildUnnamed19() => {
       },
     };
 
-void checkUnnamed19(core.Map<core.String, core.Object?> o) {
+void checkUnnamed17(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted3 = (o['x']!) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
@@ -1302,10 +1079,10 @@ api.GoogleCloudRecommendationengineV1beta1PredictRequest
   if (buildCounterGoogleCloudRecommendationengineV1beta1PredictRequest < 3) {
     o.dryRun = true;
     o.filter = 'foo';
-    o.labels = buildUnnamed18();
+    o.labels = buildUnnamed16();
     o.pageSize = 42;
     o.pageToken = 'foo';
-    o.params = buildUnnamed19();
+    o.params = buildUnnamed17();
     o.userEvent = buildGoogleCloudRecommendationengineV1beta1UserEvent();
   }
   buildCounterGoogleCloudRecommendationengineV1beta1PredictRequest--;
@@ -1321,7 +1098,7 @@ void checkGoogleCloudRecommendationengineV1beta1PredictRequest(
       o.filter!,
       unittest.equals('foo'),
     );
-    checkUnnamed18(o.labels!);
+    checkUnnamed16(o.labels!);
     unittest.expect(
       o.pageSize!,
       unittest.equals(42),
@@ -1330,18 +1107,18 @@ void checkGoogleCloudRecommendationengineV1beta1PredictRequest(
       o.pageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed19(o.params!);
+    checkUnnamed17(o.params!);
     checkGoogleCloudRecommendationengineV1beta1UserEvent(o.userEvent!);
   }
   buildCounterGoogleCloudRecommendationengineV1beta1PredictRequest--;
 }
 
-core.List<core.String> buildUnnamed20() => [
+core.List<core.String> buildUnnamed18() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed20(core.List<core.String> o) {
+void checkUnnamed18(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1353,7 +1130,7 @@ void checkUnnamed20(core.List<core.String> o) {
   );
 }
 
-core.Map<core.String, core.Object?> buildUnnamed21() => {
+core.Map<core.String, core.Object?> buildUnnamed19() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -1366,7 +1143,7 @@ core.Map<core.String, core.Object?> buildUnnamed21() => {
       },
     };
 
-void checkUnnamed21(core.Map<core.String, core.Object?> o) {
+void checkUnnamed19(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted5 = (o['x']!) as core.Map;
   unittest.expect(casted5, unittest.hasLength(3));
@@ -1400,12 +1177,12 @@ void checkUnnamed21(core.Map<core.String, core.Object?> o) {
 
 core.List<
         api.GoogleCloudRecommendationengineV1beta1PredictResponsePredictionResult>
-    buildUnnamed22() => [
+    buildUnnamed20() => [
           buildGoogleCloudRecommendationengineV1beta1PredictResponsePredictionResult(),
           buildGoogleCloudRecommendationengineV1beta1PredictResponsePredictionResult(),
         ];
 
-void checkUnnamed22(
+void checkUnnamed20(
     core.List<
             api.GoogleCloudRecommendationengineV1beta1PredictResponsePredictionResult>
         o) {
@@ -1423,11 +1200,11 @@ api.GoogleCloudRecommendationengineV1beta1PredictResponse
   buildCounterGoogleCloudRecommendationengineV1beta1PredictResponse++;
   if (buildCounterGoogleCloudRecommendationengineV1beta1PredictResponse < 3) {
     o.dryRun = true;
-    o.itemsMissingInCatalog = buildUnnamed20();
-    o.metadata = buildUnnamed21();
+    o.itemsMissingInCatalog = buildUnnamed18();
+    o.metadata = buildUnnamed19();
     o.nextPageToken = 'foo';
     o.recommendationToken = 'foo';
-    o.results = buildUnnamed22();
+    o.results = buildUnnamed20();
   }
   buildCounterGoogleCloudRecommendationengineV1beta1PredictResponse--;
   return o;
@@ -1438,8 +1215,8 @@ void checkGoogleCloudRecommendationengineV1beta1PredictResponse(
   buildCounterGoogleCloudRecommendationengineV1beta1PredictResponse++;
   if (buildCounterGoogleCloudRecommendationengineV1beta1PredictResponse < 3) {
     unittest.expect(o.dryRun!, unittest.isTrue);
-    checkUnnamed20(o.itemsMissingInCatalog!);
-    checkUnnamed21(o.metadata!);
+    checkUnnamed18(o.itemsMissingInCatalog!);
+    checkUnnamed19(o.metadata!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -1448,12 +1225,12 @@ void checkGoogleCloudRecommendationengineV1beta1PredictResponse(
       o.recommendationToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed22(o.results!);
+    checkUnnamed20(o.results!);
   }
   buildCounterGoogleCloudRecommendationengineV1beta1PredictResponse--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed23() => {
+core.Map<core.String, core.Object?> buildUnnamed21() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -1466,7 +1243,7 @@ core.Map<core.String, core.Object?> buildUnnamed23() => {
       },
     };
 
-void checkUnnamed23(core.Map<core.String, core.Object?> o) {
+void checkUnnamed21(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted7 = (o['x']!) as core.Map;
   unittest.expect(casted7, unittest.hasLength(3));
@@ -1509,7 +1286,7 @@ api.GoogleCloudRecommendationengineV1beta1PredictResponsePredictionResult
   if (buildCounterGoogleCloudRecommendationengineV1beta1PredictResponsePredictionResult <
       3) {
     o.id = 'foo';
-    o.itemMetadata = buildUnnamed23();
+    o.itemMetadata = buildUnnamed21();
   }
   buildCounterGoogleCloudRecommendationengineV1beta1PredictResponsePredictionResult--;
   return o;
@@ -1525,7 +1302,7 @@ void checkGoogleCloudRecommendationengineV1beta1PredictResponsePredictionResult(
       o.id!,
       unittest.equals('foo'),
     );
-    checkUnnamed23(o.itemMetadata!);
+    checkUnnamed21(o.itemMetadata!);
   }
   buildCounterGoogleCloudRecommendationengineV1beta1PredictResponsePredictionResult--;
 }
@@ -1559,12 +1336,12 @@ void checkGoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistration(
   buildCounterGoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistration--;
 }
 
-core.Map<core.String, core.double> buildUnnamed24() => {
+core.Map<core.String, core.double> buildUnnamed22() => {
       'x': 42.0,
       'y': 42.0,
     };
 
-void checkUnnamed24(core.Map<core.String, core.double> o) {
+void checkUnnamed22(core.Map<core.String, core.double> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -1576,12 +1353,12 @@ void checkUnnamed24(core.Map<core.String, core.double> o) {
   );
 }
 
-core.List<api.GoogleCloudRecommendationengineV1beta1Image> buildUnnamed25() => [
+core.List<api.GoogleCloudRecommendationengineV1beta1Image> buildUnnamed23() => [
       buildGoogleCloudRecommendationengineV1beta1Image(),
       buildGoogleCloudRecommendationengineV1beta1Image(),
     ];
 
-void checkUnnamed25(
+void checkUnnamed23(
     core.List<api.GoogleCloudRecommendationengineV1beta1Image> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudRecommendationengineV1beta1Image(o[0]);
@@ -1598,11 +1375,11 @@ api.GoogleCloudRecommendationengineV1beta1ProductCatalogItem
       3) {
     o.availableQuantity = 'foo';
     o.canonicalProductUri = 'foo';
-    o.costs = buildUnnamed24();
+    o.costs = buildUnnamed22();
     o.currencyCode = 'foo';
     o.exactPrice =
         buildGoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPrice();
-    o.images = buildUnnamed25();
+    o.images = buildUnnamed23();
     o.priceRange =
         buildGoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRange();
     o.stockState = 'foo';
@@ -1624,14 +1401,14 @@ void checkGoogleCloudRecommendationengineV1beta1ProductCatalogItem(
       o.canonicalProductUri!,
       unittest.equals('foo'),
     );
-    checkUnnamed24(o.costs!);
+    checkUnnamed22(o.costs!);
     unittest.expect(
       o.currencyCode!,
       unittest.equals('foo'),
     );
     checkGoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPrice(
         o.exactPrice!);
-    checkUnnamed25(o.images!);
+    checkUnnamed23(o.images!);
     checkGoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRange(
         o.priceRange!);
     unittest.expect(
@@ -1768,12 +1545,12 @@ void checkGoogleCloudRecommendationengineV1beta1ProductDetail(
 
 core.List<
         api.GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy>
-    buildUnnamed26() => [
+    buildUnnamed24() => [
           buildGoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy(),
           buildGoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy(),
         ];
 
-void checkUnnamed26(
+void checkUnnamed24(
     core.List<
             api.GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy>
         o) {
@@ -1783,12 +1560,12 @@ void checkUnnamed26(
 }
 
 core.List<api.GoogleCloudRecommendationengineV1beta1ProductDetail>
-    buildUnnamed27() => [
+    buildUnnamed25() => [
           buildGoogleCloudRecommendationengineV1beta1ProductDetail(),
           buildGoogleCloudRecommendationengineV1beta1ProductDetail(),
         ];
 
-void checkUnnamed27(
+void checkUnnamed25(
     core.List<api.GoogleCloudRecommendationengineV1beta1ProductDetail> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudRecommendationengineV1beta1ProductDetail(o[0]);
@@ -1805,8 +1582,8 @@ api.GoogleCloudRecommendationengineV1beta1ProductEventDetail
       3) {
     o.cartId = 'foo';
     o.listId = 'foo';
-    o.pageCategories = buildUnnamed26();
-    o.productDetails = buildUnnamed27();
+    o.pageCategories = buildUnnamed24();
+    o.productDetails = buildUnnamed25();
     o.purchaseTransaction =
         buildGoogleCloudRecommendationengineV1beta1PurchaseTransaction();
     o.searchQuery = 'foo';
@@ -1828,8 +1605,8 @@ void checkGoogleCloudRecommendationengineV1beta1ProductEventDetail(
       o.listId!,
       unittest.equals('foo'),
     );
-    checkUnnamed26(o.pageCategories!);
-    checkUnnamed27(o.productDetails!);
+    checkUnnamed24(o.pageCategories!);
+    checkUnnamed25(o.productDetails!);
     checkGoogleCloudRecommendationengineV1beta1PurchaseTransaction(
         o.purchaseTransaction!);
     unittest.expect(
@@ -1840,12 +1617,12 @@ void checkGoogleCloudRecommendationengineV1beta1ProductEventDetail(
   buildCounterGoogleCloudRecommendationengineV1beta1ProductEventDetail--;
 }
 
-core.Map<core.String, core.double> buildUnnamed28() => {
+core.Map<core.String, core.double> buildUnnamed26() => {
       'x': 42.0,
       'y': 42.0,
     };
 
-void checkUnnamed28(core.Map<core.String, core.double> o) {
+void checkUnnamed26(core.Map<core.String, core.double> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -1857,12 +1634,12 @@ void checkUnnamed28(core.Map<core.String, core.double> o) {
   );
 }
 
-core.Map<core.String, core.double> buildUnnamed29() => {
+core.Map<core.String, core.double> buildUnnamed27() => {
       'x': 42.0,
       'y': 42.0,
     };
 
-void checkUnnamed29(core.Map<core.String, core.double> o) {
+void checkUnnamed27(core.Map<core.String, core.double> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -1882,11 +1659,11 @@ api.GoogleCloudRecommendationengineV1beta1PurchaseTransaction
   buildCounterGoogleCloudRecommendationengineV1beta1PurchaseTransaction++;
   if (buildCounterGoogleCloudRecommendationengineV1beta1PurchaseTransaction <
       3) {
-    o.costs = buildUnnamed28();
+    o.costs = buildUnnamed26();
     o.currencyCode = 'foo';
     o.id = 'foo';
     o.revenue = 42.0;
-    o.taxes = buildUnnamed29();
+    o.taxes = buildUnnamed27();
   }
   buildCounterGoogleCloudRecommendationengineV1beta1PurchaseTransaction--;
   return o;
@@ -1897,7 +1674,7 @@ void checkGoogleCloudRecommendationengineV1beta1PurchaseTransaction(
   buildCounterGoogleCloudRecommendationengineV1beta1PurchaseTransaction++;
   if (buildCounterGoogleCloudRecommendationengineV1beta1PurchaseTransaction <
       3) {
-    checkUnnamed28(o.costs!);
+    checkUnnamed26(o.costs!);
     unittest.expect(
       o.currencyCode!,
       unittest.equals('foo'),
@@ -1910,42 +1687,9 @@ void checkGoogleCloudRecommendationengineV1beta1PurchaseTransaction(
       o.revenue!,
       unittest.equals(42.0),
     );
-    checkUnnamed29(o.taxes!);
+    checkUnnamed27(o.taxes!);
   }
   buildCounterGoogleCloudRecommendationengineV1beta1PurchaseTransaction--;
-}
-
-core.int
-    buildCounterGoogleCloudRecommendationengineV1beta1PurgeUserEventsMetadata =
-    0;
-api.GoogleCloudRecommendationengineV1beta1PurgeUserEventsMetadata
-    buildGoogleCloudRecommendationengineV1beta1PurgeUserEventsMetadata() {
-  final o = api.GoogleCloudRecommendationengineV1beta1PurgeUserEventsMetadata();
-  buildCounterGoogleCloudRecommendationengineV1beta1PurgeUserEventsMetadata++;
-  if (buildCounterGoogleCloudRecommendationengineV1beta1PurgeUserEventsMetadata <
-      3) {
-    o.createTime = 'foo';
-    o.operationName = 'foo';
-  }
-  buildCounterGoogleCloudRecommendationengineV1beta1PurgeUserEventsMetadata--;
-  return o;
-}
-
-void checkGoogleCloudRecommendationengineV1beta1PurgeUserEventsMetadata(
-    api.GoogleCloudRecommendationengineV1beta1PurgeUserEventsMetadata o) {
-  buildCounterGoogleCloudRecommendationengineV1beta1PurgeUserEventsMetadata++;
-  if (buildCounterGoogleCloudRecommendationengineV1beta1PurgeUserEventsMetadata <
-      3) {
-    unittest.expect(
-      o.createTime!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.operationName!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterGoogleCloudRecommendationengineV1beta1PurgeUserEventsMetadata--;
 }
 
 core.int
@@ -1978,71 +1722,6 @@ void checkGoogleCloudRecommendationengineV1beta1PurgeUserEventsRequest(
   buildCounterGoogleCloudRecommendationengineV1beta1PurgeUserEventsRequest--;
 }
 
-core.List<api.GoogleCloudRecommendationengineV1beta1UserEvent>
-    buildUnnamed30() => [
-          buildGoogleCloudRecommendationengineV1beta1UserEvent(),
-          buildGoogleCloudRecommendationengineV1beta1UserEvent(),
-        ];
-
-void checkUnnamed30(
-    core.List<api.GoogleCloudRecommendationengineV1beta1UserEvent> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudRecommendationengineV1beta1UserEvent(o[0]);
-  checkGoogleCloudRecommendationengineV1beta1UserEvent(o[1]);
-}
-
-core.int
-    buildCounterGoogleCloudRecommendationengineV1beta1PurgeUserEventsResponse =
-    0;
-api.GoogleCloudRecommendationengineV1beta1PurgeUserEventsResponse
-    buildGoogleCloudRecommendationengineV1beta1PurgeUserEventsResponse() {
-  final o = api.GoogleCloudRecommendationengineV1beta1PurgeUserEventsResponse();
-  buildCounterGoogleCloudRecommendationengineV1beta1PurgeUserEventsResponse++;
-  if (buildCounterGoogleCloudRecommendationengineV1beta1PurgeUserEventsResponse <
-      3) {
-    o.purgedEventsCount = 'foo';
-    o.userEventsSample = buildUnnamed30();
-  }
-  buildCounterGoogleCloudRecommendationengineV1beta1PurgeUserEventsResponse--;
-  return o;
-}
-
-void checkGoogleCloudRecommendationengineV1beta1PurgeUserEventsResponse(
-    api.GoogleCloudRecommendationengineV1beta1PurgeUserEventsResponse o) {
-  buildCounterGoogleCloudRecommendationengineV1beta1PurgeUserEventsResponse++;
-  if (buildCounterGoogleCloudRecommendationengineV1beta1PurgeUserEventsResponse <
-      3) {
-    unittest.expect(
-      o.purgedEventsCount!,
-      unittest.equals('foo'),
-    );
-    checkUnnamed30(o.userEventsSample!);
-  }
-  buildCounterGoogleCloudRecommendationengineV1beta1PurgeUserEventsResponse--;
-}
-
-core.int
-    buildCounterGoogleCloudRecommendationengineV1beta1RejoinUserEventsMetadata =
-    0;
-api.GoogleCloudRecommendationengineV1beta1RejoinUserEventsMetadata
-    buildGoogleCloudRecommendationengineV1beta1RejoinUserEventsMetadata() {
-  final o =
-      api.GoogleCloudRecommendationengineV1beta1RejoinUserEventsMetadata();
-  buildCounterGoogleCloudRecommendationengineV1beta1RejoinUserEventsMetadata++;
-  if (buildCounterGoogleCloudRecommendationengineV1beta1RejoinUserEventsMetadata <
-      3) {}
-  buildCounterGoogleCloudRecommendationengineV1beta1RejoinUserEventsMetadata--;
-  return o;
-}
-
-void checkGoogleCloudRecommendationengineV1beta1RejoinUserEventsMetadata(
-    api.GoogleCloudRecommendationengineV1beta1RejoinUserEventsMetadata o) {
-  buildCounterGoogleCloudRecommendationengineV1beta1RejoinUserEventsMetadata++;
-  if (buildCounterGoogleCloudRecommendationengineV1beta1RejoinUserEventsMetadata <
-      3) {}
-  buildCounterGoogleCloudRecommendationengineV1beta1RejoinUserEventsMetadata--;
-}
-
 core.int
     buildCounterGoogleCloudRecommendationengineV1beta1RejoinUserEventsRequest =
     0;
@@ -2069,35 +1748,6 @@ void checkGoogleCloudRecommendationengineV1beta1RejoinUserEventsRequest(
     );
   }
   buildCounterGoogleCloudRecommendationengineV1beta1RejoinUserEventsRequest--;
-}
-
-core.int
-    buildCounterGoogleCloudRecommendationengineV1beta1RejoinUserEventsResponse =
-    0;
-api.GoogleCloudRecommendationengineV1beta1RejoinUserEventsResponse
-    buildGoogleCloudRecommendationengineV1beta1RejoinUserEventsResponse() {
-  final o =
-      api.GoogleCloudRecommendationengineV1beta1RejoinUserEventsResponse();
-  buildCounterGoogleCloudRecommendationengineV1beta1RejoinUserEventsResponse++;
-  if (buildCounterGoogleCloudRecommendationengineV1beta1RejoinUserEventsResponse <
-      3) {
-    o.rejoinedUserEventsCount = 'foo';
-  }
-  buildCounterGoogleCloudRecommendationengineV1beta1RejoinUserEventsResponse--;
-  return o;
-}
-
-void checkGoogleCloudRecommendationengineV1beta1RejoinUserEventsResponse(
-    api.GoogleCloudRecommendationengineV1beta1RejoinUserEventsResponse o) {
-  buildCounterGoogleCloudRecommendationengineV1beta1RejoinUserEventsResponse++;
-  if (buildCounterGoogleCloudRecommendationengineV1beta1RejoinUserEventsResponse <
-      3) {
-    unittest.expect(
-      o.rejoinedUserEventsCount!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterGoogleCloudRecommendationengineV1beta1RejoinUserEventsResponse--;
 }
 
 core.int buildCounterGoogleCloudRecommendationengineV1beta1UserEvent = 0;
@@ -2142,46 +1792,13 @@ void checkGoogleCloudRecommendationengineV1beta1UserEvent(
   buildCounterGoogleCloudRecommendationengineV1beta1UserEvent--;
 }
 
-core.int
-    buildCounterGoogleCloudRecommendationengineV1beta1UserEventImportSummary =
-    0;
-api.GoogleCloudRecommendationengineV1beta1UserEventImportSummary
-    buildGoogleCloudRecommendationengineV1beta1UserEventImportSummary() {
-  final o = api.GoogleCloudRecommendationengineV1beta1UserEventImportSummary();
-  buildCounterGoogleCloudRecommendationengineV1beta1UserEventImportSummary++;
-  if (buildCounterGoogleCloudRecommendationengineV1beta1UserEventImportSummary <
-      3) {
-    o.joinedEventsCount = 'foo';
-    o.unjoinedEventsCount = 'foo';
-  }
-  buildCounterGoogleCloudRecommendationengineV1beta1UserEventImportSummary--;
-  return o;
-}
-
-void checkGoogleCloudRecommendationengineV1beta1UserEventImportSummary(
-    api.GoogleCloudRecommendationengineV1beta1UserEventImportSummary o) {
-  buildCounterGoogleCloudRecommendationengineV1beta1UserEventImportSummary++;
-  if (buildCounterGoogleCloudRecommendationengineV1beta1UserEventImportSummary <
-      3) {
-    unittest.expect(
-      o.joinedEventsCount!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.unjoinedEventsCount!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterGoogleCloudRecommendationengineV1beta1UserEventImportSummary--;
-}
-
 core.List<api.GoogleCloudRecommendationengineV1beta1UserEvent>
-    buildUnnamed31() => [
+    buildUnnamed28() => [
           buildGoogleCloudRecommendationengineV1beta1UserEvent(),
           buildGoogleCloudRecommendationengineV1beta1UserEvent(),
         ];
 
-void checkUnnamed31(
+void checkUnnamed28(
     core.List<api.GoogleCloudRecommendationengineV1beta1UserEvent> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudRecommendationengineV1beta1UserEvent(o[0]);
@@ -2196,7 +1813,7 @@ api.GoogleCloudRecommendationengineV1beta1UserEventInlineSource
   buildCounterGoogleCloudRecommendationengineV1beta1UserEventInlineSource++;
   if (buildCounterGoogleCloudRecommendationengineV1beta1UserEventInlineSource <
       3) {
-    o.userEvents = buildUnnamed31();
+    o.userEvents = buildUnnamed28();
   }
   buildCounterGoogleCloudRecommendationengineV1beta1UserEventInlineSource--;
   return o;
@@ -2207,7 +1824,7 @@ void checkGoogleCloudRecommendationengineV1beta1UserEventInlineSource(
   buildCounterGoogleCloudRecommendationengineV1beta1UserEventInlineSource++;
   if (buildCounterGoogleCloudRecommendationengineV1beta1UserEventInlineSource <
       3) {
-    checkUnnamed31(o.userEvents!);
+    checkUnnamed28(o.userEvents!);
   }
   buildCounterGoogleCloudRecommendationengineV1beta1UserEventInlineSource--;
 }
@@ -2253,12 +1870,12 @@ void checkGoogleCloudRecommendationengineV1beta1UserInfo(
   buildCounterGoogleCloudRecommendationengineV1beta1UserInfo--;
 }
 
-core.List<api.GoogleLongrunningOperation> buildUnnamed32() => [
+core.List<api.GoogleLongrunningOperation> buildUnnamed29() => [
       buildGoogleLongrunningOperation(),
       buildGoogleLongrunningOperation(),
     ];
 
-void checkUnnamed32(core.List<api.GoogleLongrunningOperation> o) {
+void checkUnnamed29(core.List<api.GoogleLongrunningOperation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleLongrunningOperation(o[0]);
   checkGoogleLongrunningOperation(o[1]);
@@ -2271,7 +1888,7 @@ api.GoogleLongrunningListOperationsResponse
   buildCounterGoogleLongrunningListOperationsResponse++;
   if (buildCounterGoogleLongrunningListOperationsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.operations = buildUnnamed32();
+    o.operations = buildUnnamed29();
   }
   buildCounterGoogleLongrunningListOperationsResponse--;
   return o;
@@ -2285,12 +1902,12 @@ void checkGoogleLongrunningListOperationsResponse(
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed32(o.operations!);
+    checkUnnamed29(o.operations!);
   }
   buildCounterGoogleLongrunningListOperationsResponse--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed33() => {
+core.Map<core.String, core.Object?> buildUnnamed30() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -2303,7 +1920,7 @@ core.Map<core.String, core.Object?> buildUnnamed33() => {
       },
     };
 
-void checkUnnamed33(core.Map<core.String, core.Object?> o) {
+void checkUnnamed30(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted9 = (o['x']!) as core.Map;
   unittest.expect(casted9, unittest.hasLength(3));
@@ -2335,7 +1952,7 @@ void checkUnnamed33(core.Map<core.String, core.Object?> o) {
   );
 }
 
-core.Map<core.String, core.Object?> buildUnnamed34() => {
+core.Map<core.String, core.Object?> buildUnnamed31() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -2348,7 +1965,7 @@ core.Map<core.String, core.Object?> buildUnnamed34() => {
       },
     };
 
-void checkUnnamed34(core.Map<core.String, core.Object?> o) {
+void checkUnnamed31(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted11 = (o['x']!) as core.Map;
   unittest.expect(casted11, unittest.hasLength(3));
@@ -2387,9 +2004,9 @@ api.GoogleLongrunningOperation buildGoogleLongrunningOperation() {
   if (buildCounterGoogleLongrunningOperation < 3) {
     o.done = true;
     o.error = buildGoogleRpcStatus();
-    o.metadata = buildUnnamed33();
+    o.metadata = buildUnnamed30();
     o.name = 'foo';
-    o.response = buildUnnamed34();
+    o.response = buildUnnamed31();
   }
   buildCounterGoogleLongrunningOperation--;
   return o;
@@ -2400,12 +2017,12 @@ void checkGoogleLongrunningOperation(api.GoogleLongrunningOperation o) {
   if (buildCounterGoogleLongrunningOperation < 3) {
     unittest.expect(o.done!, unittest.isTrue);
     checkGoogleRpcStatus(o.error!);
-    checkUnnamed33(o.metadata!);
+    checkUnnamed30(o.metadata!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed34(o.response!);
+    checkUnnamed31(o.response!);
   }
   buildCounterGoogleLongrunningOperation--;
 }
@@ -2425,7 +2042,7 @@ void checkGoogleProtobufEmpty(api.GoogleProtobufEmpty o) {
   buildCounterGoogleProtobufEmpty--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed35() => {
+core.Map<core.String, core.Object?> buildUnnamed32() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -2438,7 +2055,7 @@ core.Map<core.String, core.Object?> buildUnnamed35() => {
       },
     };
 
-void checkUnnamed35(core.Map<core.String, core.Object?> o) {
+void checkUnnamed32(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted13 = (o['x']!) as core.Map;
   unittest.expect(casted13, unittest.hasLength(3));
@@ -2470,15 +2087,15 @@ void checkUnnamed35(core.Map<core.String, core.Object?> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object?>> buildUnnamed36() => [
-      buildUnnamed35(),
-      buildUnnamed35(),
+core.List<core.Map<core.String, core.Object?>> buildUnnamed33() => [
+      buildUnnamed32(),
+      buildUnnamed32(),
     ];
 
-void checkUnnamed36(core.List<core.Map<core.String, core.Object?>> o) {
+void checkUnnamed33(core.List<core.Map<core.String, core.Object?>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed35(o[0]);
-  checkUnnamed35(o[1]);
+  checkUnnamed32(o[0]);
+  checkUnnamed32(o[1]);
 }
 
 core.int buildCounterGoogleRpcStatus = 0;
@@ -2487,7 +2104,7 @@ api.GoogleRpcStatus buildGoogleRpcStatus() {
   buildCounterGoogleRpcStatus++;
   if (buildCounterGoogleRpcStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed36();
+    o.details = buildUnnamed33();
     o.message = 'foo';
   }
   buildCounterGoogleRpcStatus--;
@@ -2501,7 +2118,7 @@ void checkGoogleRpcStatus(api.GoogleRpcStatus o) {
       o.code!,
       unittest.equals(42),
     );
-    checkUnnamed36(o.details!);
+    checkUnnamed33(o.details!);
     unittest.expect(
       o.message!,
       unittest.equals('foo'),
@@ -2518,56 +2135,6 @@ void main() {
       final od = api.GoogleApiHttpBody.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkGoogleApiHttpBody(od);
-    });
-  });
-
-  unittest.group(
-      'obj-schema-GoogleCloudRecommendationengineV1alphaRejoinCatalogMetadata',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o =
-          buildGoogleCloudRecommendationengineV1alphaRejoinCatalogMetadata();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.GoogleCloudRecommendationengineV1alphaRejoinCatalogMetadata
-          .fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudRecommendationengineV1alphaRejoinCatalogMetadata(od);
-    });
-  });
-
-  unittest.group(
-      'obj-schema-GoogleCloudRecommendationengineV1alphaRejoinCatalogResponse',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o =
-          buildGoogleCloudRecommendationengineV1alphaRejoinCatalogResponse();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.GoogleCloudRecommendationengineV1alphaRejoinCatalogResponse
-          .fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudRecommendationengineV1alphaRejoinCatalogResponse(od);
-    });
-  });
-
-  unittest.group(
-      'obj-schema-GoogleCloudRecommendationengineV1alphaTuningMetadata', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildGoogleCloudRecommendationengineV1alphaTuningMetadata();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.GoogleCloudRecommendationengineV1alphaTuningMetadata.fromJson(
-              oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudRecommendationengineV1alphaTuningMetadata(od);
-    });
-  });
-
-  unittest.group(
-      'obj-schema-GoogleCloudRecommendationengineV1alphaTuningResponse', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildGoogleCloudRecommendationengineV1alphaTuningResponse();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.GoogleCloudRecommendationengineV1alphaTuningResponse.fromJson(
-              oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudRecommendationengineV1alphaTuningResponse(od);
     });
   });
 
@@ -2746,20 +2313,6 @@ void main() {
   });
 
   unittest.group(
-      'obj-schema-GoogleCloudRecommendationengineV1beta1ImportCatalogItemsResponse',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o =
-          buildGoogleCloudRecommendationengineV1beta1ImportCatalogItemsResponse();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.GoogleCloudRecommendationengineV1beta1ImportCatalogItemsResponse
-              .fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudRecommendationengineV1beta1ImportCatalogItemsResponse(od);
-    });
-  });
-
-  unittest.group(
       'obj-schema-GoogleCloudRecommendationengineV1beta1ImportErrorsConfig',
       () {
     unittest.test('to-json--from-json', () async {
@@ -2769,18 +2322,6 @@ void main() {
           api.GoogleCloudRecommendationengineV1beta1ImportErrorsConfig.fromJson(
               oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudRecommendationengineV1beta1ImportErrorsConfig(od);
-    });
-  });
-
-  unittest.group(
-      'obj-schema-GoogleCloudRecommendationengineV1beta1ImportMetadata', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildGoogleCloudRecommendationengineV1beta1ImportMetadata();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.GoogleCloudRecommendationengineV1beta1ImportMetadata.fromJson(
-              oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudRecommendationengineV1beta1ImportMetadata(od);
     });
   });
 
@@ -2795,20 +2336,6 @@ void main() {
           api.GoogleCloudRecommendationengineV1beta1ImportUserEventsRequest
               .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudRecommendationengineV1beta1ImportUserEventsRequest(od);
-    });
-  });
-
-  unittest.group(
-      'obj-schema-GoogleCloudRecommendationengineV1beta1ImportUserEventsResponse',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o =
-          buildGoogleCloudRecommendationengineV1beta1ImportUserEventsResponse();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.GoogleCloudRecommendationengineV1beta1ImportUserEventsResponse
-              .fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudRecommendationengineV1beta1ImportUserEventsResponse(od);
     });
   });
 
@@ -3015,20 +2542,6 @@ void main() {
   });
 
   unittest.group(
-      'obj-schema-GoogleCloudRecommendationengineV1beta1PurgeUserEventsMetadata',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o =
-          buildGoogleCloudRecommendationengineV1beta1PurgeUserEventsMetadata();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.GoogleCloudRecommendationengineV1beta1PurgeUserEventsMetadata
-              .fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudRecommendationengineV1beta1PurgeUserEventsMetadata(od);
-    });
-  });
-
-  unittest.group(
       'obj-schema-GoogleCloudRecommendationengineV1beta1PurgeUserEventsRequest',
       () {
     unittest.test('to-json--from-json', () async {
@@ -3039,34 +2552,6 @@ void main() {
           api.GoogleCloudRecommendationengineV1beta1PurgeUserEventsRequest
               .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudRecommendationengineV1beta1PurgeUserEventsRequest(od);
-    });
-  });
-
-  unittest.group(
-      'obj-schema-GoogleCloudRecommendationengineV1beta1PurgeUserEventsResponse',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o =
-          buildGoogleCloudRecommendationengineV1beta1PurgeUserEventsResponse();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.GoogleCloudRecommendationengineV1beta1PurgeUserEventsResponse
-              .fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudRecommendationengineV1beta1PurgeUserEventsResponse(od);
-    });
-  });
-
-  unittest.group(
-      'obj-schema-GoogleCloudRecommendationengineV1beta1RejoinUserEventsMetadata',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o =
-          buildGoogleCloudRecommendationengineV1beta1RejoinUserEventsMetadata();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.GoogleCloudRecommendationengineV1beta1RejoinUserEventsMetadata
-              .fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudRecommendationengineV1beta1RejoinUserEventsMetadata(od);
     });
   });
 
@@ -3084,20 +2569,6 @@ void main() {
     });
   });
 
-  unittest.group(
-      'obj-schema-GoogleCloudRecommendationengineV1beta1RejoinUserEventsResponse',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o =
-          buildGoogleCloudRecommendationengineV1beta1RejoinUserEventsResponse();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.GoogleCloudRecommendationengineV1beta1RejoinUserEventsResponse
-              .fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudRecommendationengineV1beta1RejoinUserEventsResponse(od);
-    });
-  });
-
   unittest.group('obj-schema-GoogleCloudRecommendationengineV1beta1UserEvent',
       () {
     unittest.test('to-json--from-json', () async {
@@ -3106,20 +2577,6 @@ void main() {
       final od = api.GoogleCloudRecommendationengineV1beta1UserEvent.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudRecommendationengineV1beta1UserEvent(od);
-    });
-  });
-
-  unittest.group(
-      'obj-schema-GoogleCloudRecommendationengineV1beta1UserEventImportSummary',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o =
-          buildGoogleCloudRecommendationengineV1beta1UserEventImportSummary();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.GoogleCloudRecommendationengineV1beta1UserEventImportSummary
-              .fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudRecommendationengineV1beta1UserEventImportSummary(od);
     });
   });
 

@@ -2895,31 +2895,6 @@ class RolesResource {
   }
 }
 
-/// Audit log information specific to Cloud IAM admin APIs.
-///
-/// This message is serialized as an `Any` type in the `ServiceData` message of
-/// an `AuditLog` message.
-class AdminAuditData {
-  /// The permission_delta when when creating or updating a Role.
-  PermissionDelta? permissionDelta;
-
-  AdminAuditData({
-    this.permissionDelta,
-  });
-
-  AdminAuditData.fromJson(core.Map _json)
-      : this(
-          permissionDelta: _json.containsKey('permissionDelta')
-              ? PermissionDelta.fromJson(_json['permissionDelta']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (permissionDelta != null) 'permissionDelta': permissionDelta!,
-      };
-}
-
 /// Specifies the audit configuration for a service.
 ///
 /// The configuration determines which permission types are logged, and what
@@ -2968,31 +2943,6 @@ class AuditConfig {
   core.Map<core.String, core.dynamic> toJson() => {
         if (auditLogConfigs != null) 'auditLogConfigs': auditLogConfigs!,
         if (service != null) 'service': service!,
-      };
-}
-
-/// Audit log information specific to Cloud IAM.
-///
-/// This message is serialized as an `Any` type in the `ServiceData` message of
-/// an `AuditLog` message.
-class AuditData {
-  /// Policy delta between the original policy and the newly set policy.
-  PolicyDelta? policyDelta;
-
-  AuditData({
-    this.policyDelta,
-  });
-
-  AuditData.fromJson(core.Map _json)
-      : this(
-          policyDelta: _json.containsKey('policyDelta')
-              ? PolicyDelta.fromJson(
-                  _json['policyDelta'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (policyDelta != null) 'policyDelta': policyDelta!,
       };
 }
 
@@ -3120,63 +3070,6 @@ class Binding {
   core.Map<core.String, core.dynamic> toJson() => {
         if (condition != null) 'condition': condition!,
         if (members != null) 'members': members!,
-        if (role != null) 'role': role!,
-      };
-}
-
-/// One delta entry for Binding.
-///
-/// Each individual change (only one member in each entry) to a binding will be
-/// a separate entry.
-class BindingDelta {
-  /// The action that was performed on a Binding.
-  ///
-  /// Required
-  /// Possible string values are:
-  /// - "ACTION_UNSPECIFIED" : Unspecified.
-  /// - "ADD" : Addition of a Binding.
-  /// - "REMOVE" : Removal of a Binding.
-  core.String? action;
-
-  /// The condition that is associated with this binding.
-  Expr? condition;
-
-  /// A single identity requesting access for a Cloud Platform resource.
-  ///
-  /// Follows the same format of Binding.members. Required
-  core.String? member;
-
-  /// Role that is assigned to `members`.
-  ///
-  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`. Required
-  core.String? role;
-
-  BindingDelta({
-    this.action,
-    this.condition,
-    this.member,
-    this.role,
-  });
-
-  BindingDelta.fromJson(core.Map _json)
-      : this(
-          action: _json.containsKey('action')
-              ? _json['action'] as core.String
-              : null,
-          condition: _json.containsKey('condition')
-              ? Expr.fromJson(
-                  _json['condition'] as core.Map<core.String, core.dynamic>)
-              : null,
-          member: _json.containsKey('member')
-              ? _json['member'] as core.String
-              : null,
-          role: _json.containsKey('role') ? _json['role'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (action != null) 'action': action!,
-        if (condition != null) 'condition': condition!,
-        if (member != null) 'member': member!,
         if (role != null) 'role': role!,
       };
 }
@@ -3904,41 +3797,6 @@ class Permission {
       };
 }
 
-/// A PermissionDelta message to record the added_permissions and
-/// removed_permissions inside a role.
-class PermissionDelta {
-  /// Added permissions.
-  core.List<core.String>? addedPermissions;
-
-  /// Removed permissions.
-  core.List<core.String>? removedPermissions;
-
-  PermissionDelta({
-    this.addedPermissions,
-    this.removedPermissions,
-  });
-
-  PermissionDelta.fromJson(core.Map _json)
-      : this(
-          addedPermissions: _json.containsKey('addedPermissions')
-              ? (_json['addedPermissions'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          removedPermissions: _json.containsKey('removedPermissions')
-              ? (_json['removedPermissions'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (addedPermissions != null) 'addedPermissions': addedPermissions!,
-        if (removedPermissions != null)
-          'removedPermissions': removedPermissions!,
-      };
-}
-
 /// An Identity and Access Management (IAM) policy, which specifies access
 /// controls for Google Cloud resources.
 ///
@@ -4052,30 +3910,6 @@ class Policy {
         if (bindings != null) 'bindings': bindings!,
         if (etag != null) 'etag': etag!,
         if (version != null) 'version': version!,
-      };
-}
-
-/// The difference delta between two policies.
-class PolicyDelta {
-  /// The delta for Bindings between two policies.
-  core.List<BindingDelta>? bindingDeltas;
-
-  PolicyDelta({
-    this.bindingDeltas,
-  });
-
-  PolicyDelta.fromJson(core.Map _json)
-      : this(
-          bindingDeltas: _json.containsKey('bindingDeltas')
-              ? (_json['bindingDeltas'] as core.List)
-                  .map((value) => BindingDelta.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (bindingDeltas != null) 'bindingDeltas': bindingDeltas!,
       };
 }
 

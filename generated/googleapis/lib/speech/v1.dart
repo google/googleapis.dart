@@ -277,59 +277,6 @@ class ListOperationsResponse {
       };
 }
 
-/// Describes the progress of a long-running `LongRunningRecognize` call.
-///
-/// It is included in the `metadata` field of the `Operation` returned by the
-/// `GetOperation` call of the `google::longrunning::Operations` service.
-class LongRunningRecognizeMetadata {
-  /// Time of the most recent processing update.
-  core.String? lastUpdateTime;
-
-  /// Approximate percentage of audio processed thus far.
-  ///
-  /// Guaranteed to be 100 when the audio is fully processed and the results are
-  /// available.
-  core.int? progressPercent;
-
-  /// Time when the request was received.
-  core.String? startTime;
-
-  /// The URI of the audio file being transcribed.
-  ///
-  /// Empty if the audio was sent as byte content.
-  ///
-  /// Output only.
-  core.String? uri;
-
-  LongRunningRecognizeMetadata({
-    this.lastUpdateTime,
-    this.progressPercent,
-    this.startTime,
-    this.uri,
-  });
-
-  LongRunningRecognizeMetadata.fromJson(core.Map _json)
-      : this(
-          lastUpdateTime: _json.containsKey('lastUpdateTime')
-              ? _json['lastUpdateTime'] as core.String
-              : null,
-          progressPercent: _json.containsKey('progressPercent')
-              ? _json['progressPercent'] as core.int
-              : null,
-          startTime: _json.containsKey('startTime')
-              ? _json['startTime'] as core.String
-              : null,
-          uri: _json.containsKey('uri') ? _json['uri'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (lastUpdateTime != null) 'lastUpdateTime': lastUpdateTime!,
-        if (progressPercent != null) 'progressPercent': progressPercent!,
-        if (startTime != null) 'startTime': startTime!,
-        if (uri != null) 'uri': uri!,
-      };
-}
-
 /// The top-level message sent by the client for the `LongRunningRecognize`
 /// method.
 class LongRunningRecognizeRequest {
@@ -375,63 +322,6 @@ class LongRunningRecognizeRequest {
         if (audio != null) 'audio': audio!,
         if (config != null) 'config': config!,
         if (outputConfig != null) 'outputConfig': outputConfig!,
-      };
-}
-
-/// The only message returned to the client by the `LongRunningRecognize`
-/// method.
-///
-/// It contains the result as zero or more sequential `SpeechRecognitionResult`
-/// messages. It is included in the `result.response` field of the `Operation`
-/// returned by the `GetOperation` call of the `google::longrunning::Operations`
-/// service.
-class LongRunningRecognizeResponse {
-  /// Original output config if present in the request.
-  TranscriptOutputConfig? outputConfig;
-
-  /// If the transcript output fails this field contains the relevant error.
-  Status? outputError;
-
-  /// Sequential list of transcription results corresponding to sequential
-  /// portions of audio.
-  core.List<SpeechRecognitionResult>? results;
-
-  /// When available, billed audio seconds for the corresponding request.
-  core.String? totalBilledTime;
-
-  LongRunningRecognizeResponse({
-    this.outputConfig,
-    this.outputError,
-    this.results,
-    this.totalBilledTime,
-  });
-
-  LongRunningRecognizeResponse.fromJson(core.Map _json)
-      : this(
-          outputConfig: _json.containsKey('outputConfig')
-              ? TranscriptOutputConfig.fromJson(
-                  _json['outputConfig'] as core.Map<core.String, core.dynamic>)
-              : null,
-          outputError: _json.containsKey('outputError')
-              ? Status.fromJson(
-                  _json['outputError'] as core.Map<core.String, core.dynamic>)
-              : null,
-          results: _json.containsKey('results')
-              ? (_json['results'] as core.List)
-                  .map((value) => SpeechRecognitionResult.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          totalBilledTime: _json.containsKey('totalBilledTime')
-              ? _json['totalBilledTime'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (outputConfig != null) 'outputConfig': outputConfig!,
-        if (outputError != null) 'outputError': outputError!,
-        if (results != null) 'results': results!,
-        if (totalBilledTime != null) 'totalBilledTime': totalBilledTime!,
       };
 }
 

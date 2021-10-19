@@ -407,62 +407,6 @@ void checkContextValue(api.ContextValue o) {
   buildCounterContextValue--;
 }
 
-core.int buildCounterCreateBackupMetadata = 0;
-api.CreateBackupMetadata buildCreateBackupMetadata() {
-  final o = api.CreateBackupMetadata();
-  buildCounterCreateBackupMetadata++;
-  if (buildCounterCreateBackupMetadata < 3) {
-    o.cancelTime = 'foo';
-    o.database = 'foo';
-    o.name = 'foo';
-    o.progress = buildOperationProgress();
-  }
-  buildCounterCreateBackupMetadata--;
-  return o;
-}
-
-void checkCreateBackupMetadata(api.CreateBackupMetadata o) {
-  buildCounterCreateBackupMetadata++;
-  if (buildCounterCreateBackupMetadata < 3) {
-    unittest.expect(
-      o.cancelTime!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.database!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.name!,
-      unittest.equals('foo'),
-    );
-    checkOperationProgress(o.progress!);
-  }
-  buildCounterCreateBackupMetadata--;
-}
-
-core.int buildCounterCreateDatabaseMetadata = 0;
-api.CreateDatabaseMetadata buildCreateDatabaseMetadata() {
-  final o = api.CreateDatabaseMetadata();
-  buildCounterCreateDatabaseMetadata++;
-  if (buildCounterCreateDatabaseMetadata < 3) {
-    o.database = 'foo';
-  }
-  buildCounterCreateDatabaseMetadata--;
-  return o;
-}
-
-void checkCreateDatabaseMetadata(api.CreateDatabaseMetadata o) {
-  buildCounterCreateDatabaseMetadata++;
-  if (buildCounterCreateDatabaseMetadata < 3) {
-    unittest.expect(
-      o.database!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterCreateDatabaseMetadata--;
-}
-
 core.List<core.String> buildUnnamed4() => [
       'foo',
       'foo',
@@ -504,40 +448,6 @@ void checkCreateDatabaseRequest(api.CreateDatabaseRequest o) {
     checkUnnamed4(o.extraStatements!);
   }
   buildCounterCreateDatabaseRequest--;
-}
-
-core.int buildCounterCreateInstanceMetadata = 0;
-api.CreateInstanceMetadata buildCreateInstanceMetadata() {
-  final o = api.CreateInstanceMetadata();
-  buildCounterCreateInstanceMetadata++;
-  if (buildCounterCreateInstanceMetadata < 3) {
-    o.cancelTime = 'foo';
-    o.endTime = 'foo';
-    o.instance = buildInstance();
-    o.startTime = 'foo';
-  }
-  buildCounterCreateInstanceMetadata--;
-  return o;
-}
-
-void checkCreateInstanceMetadata(api.CreateInstanceMetadata o) {
-  buildCounterCreateInstanceMetadata++;
-  if (buildCounterCreateInstanceMetadata < 3) {
-    unittest.expect(
-      o.cancelTime!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.endTime!,
-      unittest.equals('foo'),
-    );
-    checkInstance(o.instance!);
-    unittest.expect(
-      o.startTime!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterCreateInstanceMetadata--;
 }
 
 core.int buildCounterCreateInstanceRequest = 0;
@@ -2368,63 +2278,6 @@ void checkOperation(api.Operation o) {
   buildCounterOperation--;
 }
 
-core.int buildCounterOperationProgress = 0;
-api.OperationProgress buildOperationProgress() {
-  final o = api.OperationProgress();
-  buildCounterOperationProgress++;
-  if (buildCounterOperationProgress < 3) {
-    o.endTime = 'foo';
-    o.progressPercent = 42;
-    o.startTime = 'foo';
-  }
-  buildCounterOperationProgress--;
-  return o;
-}
-
-void checkOperationProgress(api.OperationProgress o) {
-  buildCounterOperationProgress++;
-  if (buildCounterOperationProgress < 3) {
-    unittest.expect(
-      o.endTime!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.progressPercent!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.startTime!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterOperationProgress--;
-}
-
-core.int buildCounterOptimizeRestoredDatabaseMetadata = 0;
-api.OptimizeRestoredDatabaseMetadata buildOptimizeRestoredDatabaseMetadata() {
-  final o = api.OptimizeRestoredDatabaseMetadata();
-  buildCounterOptimizeRestoredDatabaseMetadata++;
-  if (buildCounterOptimizeRestoredDatabaseMetadata < 3) {
-    o.name = 'foo';
-    o.progress = buildOperationProgress();
-  }
-  buildCounterOptimizeRestoredDatabaseMetadata--;
-  return o;
-}
-
-void checkOptimizeRestoredDatabaseMetadata(
-    api.OptimizeRestoredDatabaseMetadata o) {
-  buildCounterOptimizeRestoredDatabaseMetadata++;
-  if (buildCounterOptimizeRestoredDatabaseMetadata < 3) {
-    unittest.expect(
-      o.name!,
-      unittest.equals('foo'),
-    );
-    checkOperationProgress(o.progress!);
-  }
-  buildCounterOptimizeRestoredDatabaseMetadata--;
-}
-
 core.List<core.Object?> buildUnnamed43() => [
       {
         'list': [1, 2, 3],
@@ -3221,47 +3074,6 @@ void checkRestoreDatabaseEncryptionConfig(
     );
   }
   buildCounterRestoreDatabaseEncryptionConfig--;
-}
-
-core.int buildCounterRestoreDatabaseMetadata = 0;
-api.RestoreDatabaseMetadata buildRestoreDatabaseMetadata() {
-  final o = api.RestoreDatabaseMetadata();
-  buildCounterRestoreDatabaseMetadata++;
-  if (buildCounterRestoreDatabaseMetadata < 3) {
-    o.backupInfo = buildBackupInfo();
-    o.cancelTime = 'foo';
-    o.name = 'foo';
-    o.optimizeDatabaseOperationName = 'foo';
-    o.progress = buildOperationProgress();
-    o.sourceType = 'foo';
-  }
-  buildCounterRestoreDatabaseMetadata--;
-  return o;
-}
-
-void checkRestoreDatabaseMetadata(api.RestoreDatabaseMetadata o) {
-  buildCounterRestoreDatabaseMetadata++;
-  if (buildCounterRestoreDatabaseMetadata < 3) {
-    checkBackupInfo(o.backupInfo!);
-    unittest.expect(
-      o.cancelTime!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.name!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.optimizeDatabaseOperationName!,
-      unittest.equals('foo'),
-    );
-    checkOperationProgress(o.progress!);
-    unittest.expect(
-      o.sourceType!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterRestoreDatabaseMetadata--;
 }
 
 core.int buildCounterRestoreDatabaseRequest = 0;
@@ -4124,88 +3936,13 @@ void checkUnnamed67(core.List<core.String> o) {
   );
 }
 
-core.List<api.OperationProgress> buildUnnamed68() => [
-      buildOperationProgress(),
-      buildOperationProgress(),
-    ];
-
-void checkUnnamed68(core.List<api.OperationProgress> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkOperationProgress(o[0]);
-  checkOperationProgress(o[1]);
-}
-
-core.List<core.String> buildUnnamed69() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed69(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
-core.int buildCounterUpdateDatabaseDdlMetadata = 0;
-api.UpdateDatabaseDdlMetadata buildUpdateDatabaseDdlMetadata() {
-  final o = api.UpdateDatabaseDdlMetadata();
-  buildCounterUpdateDatabaseDdlMetadata++;
-  if (buildCounterUpdateDatabaseDdlMetadata < 3) {
-    o.commitTimestamps = buildUnnamed67();
-    o.database = 'foo';
-    o.progress = buildUnnamed68();
-    o.statements = buildUnnamed69();
-    o.throttled = true;
-  }
-  buildCounterUpdateDatabaseDdlMetadata--;
-  return o;
-}
-
-void checkUpdateDatabaseDdlMetadata(api.UpdateDatabaseDdlMetadata o) {
-  buildCounterUpdateDatabaseDdlMetadata++;
-  if (buildCounterUpdateDatabaseDdlMetadata < 3) {
-    checkUnnamed67(o.commitTimestamps!);
-    unittest.expect(
-      o.database!,
-      unittest.equals('foo'),
-    );
-    checkUnnamed68(o.progress!);
-    checkUnnamed69(o.statements!);
-    unittest.expect(o.throttled!, unittest.isTrue);
-  }
-  buildCounterUpdateDatabaseDdlMetadata--;
-}
-
-core.List<core.String> buildUnnamed70() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed70(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
 core.int buildCounterUpdateDatabaseDdlRequest = 0;
 api.UpdateDatabaseDdlRequest buildUpdateDatabaseDdlRequest() {
   final o = api.UpdateDatabaseDdlRequest();
   buildCounterUpdateDatabaseDdlRequest++;
   if (buildCounterUpdateDatabaseDdlRequest < 3) {
     o.operationId = 'foo';
-    o.statements = buildUnnamed70();
+    o.statements = buildUnnamed67();
   }
   buildCounterUpdateDatabaseDdlRequest--;
   return o;
@@ -4218,43 +3955,9 @@ void checkUpdateDatabaseDdlRequest(api.UpdateDatabaseDdlRequest o) {
       o.operationId!,
       unittest.equals('foo'),
     );
-    checkUnnamed70(o.statements!);
+    checkUnnamed67(o.statements!);
   }
   buildCounterUpdateDatabaseDdlRequest--;
-}
-
-core.int buildCounterUpdateInstanceMetadata = 0;
-api.UpdateInstanceMetadata buildUpdateInstanceMetadata() {
-  final o = api.UpdateInstanceMetadata();
-  buildCounterUpdateInstanceMetadata++;
-  if (buildCounterUpdateInstanceMetadata < 3) {
-    o.cancelTime = 'foo';
-    o.endTime = 'foo';
-    o.instance = buildInstance();
-    o.startTime = 'foo';
-  }
-  buildCounterUpdateInstanceMetadata--;
-  return o;
-}
-
-void checkUpdateInstanceMetadata(api.UpdateInstanceMetadata o) {
-  buildCounterUpdateInstanceMetadata++;
-  if (buildCounterUpdateInstanceMetadata < 3) {
-    unittest.expect(
-      o.cancelTime!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.endTime!,
-      unittest.equals('foo'),
-    );
-    checkInstance(o.instance!);
-    unittest.expect(
-      o.startTime!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterUpdateInstanceMetadata--;
 }
 
 core.int buildCounterUpdateInstanceRequest = 0;
@@ -4281,23 +3984,23 @@ void checkUpdateInstanceRequest(api.UpdateInstanceRequest o) {
   buildCounterUpdateInstanceRequest--;
 }
 
-core.List<api.DiagnosticMessage> buildUnnamed71() => [
+core.List<api.DiagnosticMessage> buildUnnamed68() => [
       buildDiagnosticMessage(),
       buildDiagnosticMessage(),
     ];
 
-void checkUnnamed71(core.List<api.DiagnosticMessage> o) {
+void checkUnnamed68(core.List<api.DiagnosticMessage> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDiagnosticMessage(o[0]);
   checkDiagnosticMessage(o[1]);
 }
 
-core.List<core.String> buildUnnamed72() => [
+core.List<core.String> buildUnnamed69() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed72(core.List<core.String> o) {
+void checkUnnamed69(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -4307,6 +4010,94 @@ void checkUnnamed72(core.List<core.String> o) {
     o[1],
     unittest.equals('foo'),
   );
+}
+
+core.List<core.String> buildUnnamed70() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed70(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.List<api.Metric> buildUnnamed71() => [
+      buildMetric(),
+      buildMetric(),
+    ];
+
+void checkUnnamed71(core.List<api.Metric> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkMetric(o[0]);
+  checkMetric(o[1]);
+}
+
+core.List<api.PrefixNode> buildUnnamed72() => [
+      buildPrefixNode(),
+      buildPrefixNode(),
+    ];
+
+void checkUnnamed72(core.List<api.PrefixNode> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkPrefixNode(o[0]);
+  checkPrefixNode(o[1]);
+}
+
+core.int buildCounterVisualizationData = 0;
+api.VisualizationData buildVisualizationData() {
+  final o = api.VisualizationData();
+  buildCounterVisualizationData++;
+  if (buildCounterVisualizationData < 3) {
+    o.dataSourceEndToken = 'foo';
+    o.dataSourceSeparatorToken = 'foo';
+    o.diagnosticMessages = buildUnnamed68();
+    o.endKeyStrings = buildUnnamed69();
+    o.hasPii = true;
+    o.indexedKeys = buildUnnamed70();
+    o.keySeparator = 'foo';
+    o.keyUnit = 'foo';
+    o.metrics = buildUnnamed71();
+    o.prefixNodes = buildUnnamed72();
+  }
+  buildCounterVisualizationData--;
+  return o;
+}
+
+void checkVisualizationData(api.VisualizationData o) {
+  buildCounterVisualizationData++;
+  if (buildCounterVisualizationData < 3) {
+    unittest.expect(
+      o.dataSourceEndToken!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.dataSourceSeparatorToken!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed68(o.diagnosticMessages!);
+    checkUnnamed69(o.endKeyStrings!);
+    unittest.expect(o.hasPii!, unittest.isTrue);
+    checkUnnamed70(o.indexedKeys!);
+    unittest.expect(
+      o.keySeparator!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.keyUnit!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed71(o.metrics!);
+    checkUnnamed72(o.prefixNodes!);
+  }
+  buildCounterVisualizationData--;
 }
 
 core.List<core.String> buildUnnamed73() => [
@@ -4326,95 +4117,7 @@ void checkUnnamed73(core.List<core.String> o) {
   );
 }
 
-core.List<api.Metric> buildUnnamed74() => [
-      buildMetric(),
-      buildMetric(),
-    ];
-
-void checkUnnamed74(core.List<api.Metric> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkMetric(o[0]);
-  checkMetric(o[1]);
-}
-
-core.List<api.PrefixNode> buildUnnamed75() => [
-      buildPrefixNode(),
-      buildPrefixNode(),
-    ];
-
-void checkUnnamed75(core.List<api.PrefixNode> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkPrefixNode(o[0]);
-  checkPrefixNode(o[1]);
-}
-
-core.int buildCounterVisualizationData = 0;
-api.VisualizationData buildVisualizationData() {
-  final o = api.VisualizationData();
-  buildCounterVisualizationData++;
-  if (buildCounterVisualizationData < 3) {
-    o.dataSourceEndToken = 'foo';
-    o.dataSourceSeparatorToken = 'foo';
-    o.diagnosticMessages = buildUnnamed71();
-    o.endKeyStrings = buildUnnamed72();
-    o.hasPii = true;
-    o.indexedKeys = buildUnnamed73();
-    o.keySeparator = 'foo';
-    o.keyUnit = 'foo';
-    o.metrics = buildUnnamed74();
-    o.prefixNodes = buildUnnamed75();
-  }
-  buildCounterVisualizationData--;
-  return o;
-}
-
-void checkVisualizationData(api.VisualizationData o) {
-  buildCounterVisualizationData++;
-  if (buildCounterVisualizationData < 3) {
-    unittest.expect(
-      o.dataSourceEndToken!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.dataSourceSeparatorToken!,
-      unittest.equals('foo'),
-    );
-    checkUnnamed71(o.diagnosticMessages!);
-    checkUnnamed72(o.endKeyStrings!);
-    unittest.expect(o.hasPii!, unittest.isTrue);
-    checkUnnamed73(o.indexedKeys!);
-    unittest.expect(
-      o.keySeparator!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.keyUnit!,
-      unittest.equals('foo'),
-    );
-    checkUnnamed74(o.metrics!);
-    checkUnnamed75(o.prefixNodes!);
-  }
-  buildCounterVisualizationData--;
-}
-
-core.List<core.String> buildUnnamed76() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed76(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
-core.List<core.Object?> buildUnnamed77() => [
+core.List<core.Object?> buildUnnamed74() => [
       {
         'list': [1, 2, 3],
         'bool': true,
@@ -4427,7 +4130,7 @@ core.List<core.Object?> buildUnnamed77() => [
       },
     ];
 
-void checkUnnamed77(core.List<core.Object?> o) {
+void checkUnnamed74(core.List<core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted35 = (o[0]) as core.Map;
   unittest.expect(casted35, unittest.hasLength(3));
@@ -4459,15 +4162,15 @@ void checkUnnamed77(core.List<core.Object?> o) {
   );
 }
 
-core.List<core.List<core.Object?>> buildUnnamed78() => [
-      buildUnnamed77(),
-      buildUnnamed77(),
+core.List<core.List<core.Object?>> buildUnnamed75() => [
+      buildUnnamed74(),
+      buildUnnamed74(),
     ];
 
-void checkUnnamed78(core.List<core.List<core.Object?>> o) {
+void checkUnnamed75(core.List<core.List<core.Object?>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed77(o[0]);
-  checkUnnamed77(o[1]);
+  checkUnnamed74(o[0]);
+  checkUnnamed74(o[1]);
 }
 
 core.int buildCounterWrite = 0;
@@ -4475,9 +4178,9 @@ api.Write buildWrite() {
   final o = api.Write();
   buildCounterWrite++;
   if (buildCounterWrite < 3) {
-    o.columns = buildUnnamed76();
+    o.columns = buildUnnamed73();
     o.table = 'foo';
-    o.values = buildUnnamed78();
+    o.values = buildUnnamed75();
   }
   buildCounterWrite--;
   return o;
@@ -4486,12 +4189,12 @@ api.Write buildWrite() {
 void checkWrite(api.Write o) {
   buildCounterWrite++;
   if (buildCounterWrite < 3) {
-    checkUnnamed76(o.columns!);
+    checkUnnamed73(o.columns!);
     unittest.expect(
       o.table!,
       unittest.equals('foo'),
     );
-    checkUnnamed78(o.values!);
+    checkUnnamed75(o.values!);
   }
   buildCounterWrite--;
 }
@@ -4607,26 +4310,6 @@ void main() {
     });
   });
 
-  unittest.group('obj-schema-CreateBackupMetadata', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildCreateBackupMetadata();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.CreateBackupMetadata.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkCreateBackupMetadata(od);
-    });
-  });
-
-  unittest.group('obj-schema-CreateDatabaseMetadata', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildCreateDatabaseMetadata();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.CreateDatabaseMetadata.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkCreateDatabaseMetadata(od);
-    });
-  });
-
   unittest.group('obj-schema-CreateDatabaseRequest', () {
     unittest.test('to-json--from-json', () async {
       final o = buildCreateDatabaseRequest();
@@ -4634,16 +4317,6 @@ void main() {
       final od = api.CreateDatabaseRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkCreateDatabaseRequest(od);
-    });
-  });
-
-  unittest.group('obj-schema-CreateInstanceMetadata', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildCreateInstanceMetadata();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.CreateInstanceMetadata.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkCreateInstanceMetadata(od);
     });
   });
 
@@ -5047,26 +4720,6 @@ void main() {
     });
   });
 
-  unittest.group('obj-schema-OperationProgress', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildOperationProgress();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.OperationProgress.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkOperationProgress(od);
-    });
-  });
-
-  unittest.group('obj-schema-OptimizeRestoredDatabaseMetadata', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildOptimizeRestoredDatabaseMetadata();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.OptimizeRestoredDatabaseMetadata.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkOptimizeRestoredDatabaseMetadata(od);
-    });
-  });
-
   unittest.group('obj-schema-PartialResultSet', () {
     unittest.test('to-json--from-json', () async {
       final o = buildPartialResultSet();
@@ -5244,16 +4897,6 @@ void main() {
       final od = api.RestoreDatabaseEncryptionConfig.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkRestoreDatabaseEncryptionConfig(od);
-    });
-  });
-
-  unittest.group('obj-schema-RestoreDatabaseMetadata', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildRestoreDatabaseMetadata();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.RestoreDatabaseMetadata.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkRestoreDatabaseMetadata(od);
     });
   });
 
@@ -5457,16 +5100,6 @@ void main() {
     });
   });
 
-  unittest.group('obj-schema-UpdateDatabaseDdlMetadata', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildUpdateDatabaseDdlMetadata();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.UpdateDatabaseDdlMetadata.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkUpdateDatabaseDdlMetadata(od);
-    });
-  });
-
   unittest.group('obj-schema-UpdateDatabaseDdlRequest', () {
     unittest.test('to-json--from-json', () async {
       final o = buildUpdateDatabaseDdlRequest();
@@ -5474,16 +5107,6 @@ void main() {
       final od = api.UpdateDatabaseDdlRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkUpdateDatabaseDdlRequest(od);
-    });
-  });
-
-  unittest.group('obj-schema-UpdateInstanceMetadata', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildUpdateInstanceMetadata();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.UpdateInstanceMetadata.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkUpdateInstanceMetadata(od);
     });
   });
 

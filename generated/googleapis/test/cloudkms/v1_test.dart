@@ -1277,27 +1277,6 @@ void checkLocation(api.Location o) {
   buildCounterLocation--;
 }
 
-core.int buildCounterLocationMetadata = 0;
-api.LocationMetadata buildLocationMetadata() {
-  final o = api.LocationMetadata();
-  buildCounterLocationMetadata++;
-  if (buildCounterLocationMetadata < 3) {
-    o.ekmAvailable = true;
-    o.hsmAvailable = true;
-  }
-  buildCounterLocationMetadata--;
-  return o;
-}
-
-void checkLocationMetadata(api.LocationMetadata o) {
-  buildCounterLocationMetadata++;
-  if (buildCounterLocationMetadata < 3) {
-    unittest.expect(o.ekmAvailable!, unittest.isTrue);
-    unittest.expect(o.hsmAvailable!, unittest.isTrue);
-  }
-  buildCounterLocationMetadata--;
-}
-
 core.int buildCounterMacSignRequest = 0;
 api.MacSignRequest buildMacSignRequest() {
   final o = api.MacSignRequest();
@@ -1996,16 +1975,6 @@ void main() {
       final od =
           api.Location.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkLocation(od);
-    });
-  });
-
-  unittest.group('obj-schema-LocationMetadata', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildLocationMetadata();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.LocationMetadata.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkLocationMetadata(od);
     });
   });
 

@@ -250,39 +250,6 @@ class ListOperationsResponse {
       };
 }
 
-/// This is returned in the longrunning operations for create/update.
-class ModelOperationMetadata {
-  ///
-  /// Possible string values are:
-  /// - "BASIC_OPERATION_STATUS_UNSPECIFIED" : The status is unspecified
-  /// - "BASIC_OPERATION_STATUS_UPLOADING" : The model file is being uploaded
-  /// - "BASIC_OPERATION_STATUS_VERIFYING" : The model file is being verified
-  core.String? basicOperationStatus;
-
-  /// The name of the model we are creating/updating The name must have the form
-  /// `projects/{project_id}/models/{model_id}`
-  core.String? name;
-
-  ModelOperationMetadata({
-    this.basicOperationStatus,
-    this.name,
-  });
-
-  ModelOperationMetadata.fromJson(core.Map _json)
-      : this(
-          basicOperationStatus: _json.containsKey('basicOperationStatus')
-              ? _json['basicOperationStatus'] as core.String
-              : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (basicOperationStatus != null)
-          'basicOperationStatus': basicOperationStatus!,
-        if (name != null) 'name': name!,
-      };
-}
-
 /// This resource represents a long-running operation that is the result of a
 /// network API call.
 class Operation {

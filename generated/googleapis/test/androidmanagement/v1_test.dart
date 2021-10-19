@@ -1839,21 +1839,6 @@ void checkHardwareStatus(api.HardwareStatus o) {
   buildCounterHardwareStatus--;
 }
 
-core.int buildCounterIssueCommandResponse = 0;
-api.IssueCommandResponse buildIssueCommandResponse() {
-  final o = api.IssueCommandResponse();
-  buildCounterIssueCommandResponse++;
-  if (buildCounterIssueCommandResponse < 3) {}
-  buildCounterIssueCommandResponse--;
-  return o;
-}
-
-void checkIssueCommandResponse(api.IssueCommandResponse o) {
-  buildCounterIssueCommandResponse++;
-  if (buildCounterIssueCommandResponse < 3) {}
-  buildCounterIssueCommandResponse--;
-}
-
 core.int buildCounterKeyedAppState = 0;
 api.KeyedAppState buildKeyedAppState() {
   final o = api.KeyedAppState();
@@ -4517,16 +4502,6 @@ void main() {
       final od = api.HardwareStatus.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkHardwareStatus(od);
-    });
-  });
-
-  unittest.group('obj-schema-IssueCommandResponse', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildIssueCommandResponse();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.IssueCommandResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkIssueCommandResponse(od);
     });
   });
 

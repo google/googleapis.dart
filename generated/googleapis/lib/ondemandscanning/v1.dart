@@ -458,14 +458,6 @@ class AliasContext {
       };
 }
 
-/// AnalyzePackagesMetadata contains metadata for an active scan of a container
-/// image.
-typedef AnalyzePackagesMetadata = $Shared07;
-
-/// AnalyzePackagesMetadata contains metadata for an active scan of a container
-/// image.
-typedef AnalyzePackagesMetadataV1 = $Shared07;
-
 /// AnalyzePackagesRequest is the request to analyze a list of packages and
 /// create Vulnerability Occurrences for it.
 class AnalyzePackagesRequestV1 {
@@ -508,14 +500,6 @@ class AnalyzePackagesRequestV1 {
         if (resourceUri != null) 'resourceUri': resourceUri!,
       };
 }
-
-/// AnalyzePackagesResponse contains the information necessary to find results
-/// for the given scan.
-typedef AnalyzePackagesResponse = $Shared08;
-
-/// AnalyzePackagesResponse contains the information necessary to find results
-/// for the given scan.
-typedef AnalyzePackagesResponseV1 = $Shared08;
 
 /// Artifact describes a build product.
 class Artifact {

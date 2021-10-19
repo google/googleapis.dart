@@ -3996,37 +3996,6 @@ class ListLocationsResponse {
 /// A resource that represents Google Cloud Platform location.
 typedef Location = $Location00;
 
-/// Cloud KMS metadata for the given google.cloud.location.Location.
-class LocationMetadata {
-  /// Indicates whether CryptoKeys with protection_level EXTERNAL can be created
-  /// in this location.
-  core.bool? ekmAvailable;
-
-  /// Indicates whether CryptoKeys with protection_level HSM can be created in
-  /// this location.
-  core.bool? hsmAvailable;
-
-  LocationMetadata({
-    this.ekmAvailable,
-    this.hsmAvailable,
-  });
-
-  LocationMetadata.fromJson(core.Map _json)
-      : this(
-          ekmAvailable: _json.containsKey('ekmAvailable')
-              ? _json['ekmAvailable'] as core.bool
-              : null,
-          hsmAvailable: _json.containsKey('hsmAvailable')
-              ? _json['hsmAvailable'] as core.bool
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (ekmAvailable != null) 'ekmAvailable': ekmAvailable!,
-        if (hsmAvailable != null) 'hsmAvailable': hsmAvailable!,
-      };
-}
-
 /// Request message for KeyManagementService.MacSign.
 class MacSignRequest {
   /// The data to sign.

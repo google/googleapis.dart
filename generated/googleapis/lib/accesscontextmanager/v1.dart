@@ -1371,9 +1371,6 @@ class OrganizationsGcpUserAccessBindingsResource {
   }
 }
 
-/// Metadata of Access Context Manager's Long Running Operations.
-typedef AccessContextManagerOperationMetadata = $Empty;
-
 /// An `AccessLevel` is a label that can be applied to requests to Google Cloud
 /// services, along with a list of requirements necessary for the label to be
 /// applied.
@@ -1561,32 +1558,6 @@ class CommitServicePerimetersRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
-      };
-}
-
-/// A response to CommitServicePerimetersRequest.
-///
-/// This will be put inside of Operation.response field.
-class CommitServicePerimetersResponse {
-  /// List of all the Service Perimeter instances in the Access Policy.
-  core.List<ServicePerimeter>? servicePerimeters;
-
-  CommitServicePerimetersResponse({
-    this.servicePerimeters,
-  });
-
-  CommitServicePerimetersResponse.fromJson(core.Map _json)
-      : this(
-          servicePerimeters: _json.containsKey('servicePerimeters')
-              ? (_json['servicePerimeters'] as core.List)
-                  .map((value) => ServicePerimeter.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (servicePerimeters != null) 'servicePerimeters': servicePerimeters!,
       };
 }
 
@@ -1997,12 +1968,6 @@ class GcpUserAccessBinding {
         if (name != null) 'name': name!,
       };
 }
-
-/// Currently, a completed operation means nothing.
-///
-/// In the future, this metadata and a completed operation may indicate that the
-/// binding has taken effect and is affecting access decisions for all users.
-typedef GcpUserAccessBindingOperationMetadata = $Empty;
 
 /// Defines the conditions under which an IngressPolicy matches a request.
 ///
@@ -2452,32 +2417,6 @@ class ReplaceAccessLevelsRequest {
       };
 }
 
-/// A response to ReplaceAccessLevelsRequest.
-///
-/// This will be put inside of Operation.response field.
-class ReplaceAccessLevelsResponse {
-  /// List of the Access Level instances.
-  core.List<AccessLevel>? accessLevels;
-
-  ReplaceAccessLevelsResponse({
-    this.accessLevels,
-  });
-
-  ReplaceAccessLevelsResponse.fromJson(core.Map _json)
-      : this(
-          accessLevels: _json.containsKey('accessLevels')
-              ? (_json['accessLevels'] as core.List)
-                  .map((value) => AccessLevel.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (accessLevels != null) 'accessLevels': accessLevels!,
-      };
-}
-
 /// A request to replace all existing Service Perimeters in an Access Policy
 /// with the Service Perimeters provided.
 ///
@@ -2519,32 +2458,6 @@ class ReplaceServicePerimetersRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
-        if (servicePerimeters != null) 'servicePerimeters': servicePerimeters!,
-      };
-}
-
-/// A response to ReplaceServicePerimetersRequest.
-///
-/// This will be put inside of Operation.response field.
-class ReplaceServicePerimetersResponse {
-  /// List of the Service Perimeter instances.
-  core.List<ServicePerimeter>? servicePerimeters;
-
-  ReplaceServicePerimetersResponse({
-    this.servicePerimeters,
-  });
-
-  ReplaceServicePerimetersResponse.fromJson(core.Map _json)
-      : this(
-          servicePerimeters: _json.containsKey('servicePerimeters')
-              ? (_json['servicePerimeters'] as core.List)
-                  .map((value) => ServicePerimeter.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
         if (servicePerimeters != null) 'servicePerimeters': servicePerimeters!,
       };
 }

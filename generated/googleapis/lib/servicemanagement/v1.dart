@@ -1892,28 +1892,6 @@ class ConfigFile {
       };
 }
 
-/// Represents a service configuration with its name and id.
-class ConfigRef {
-  /// Resource name of a service config.
-  ///
-  /// It must have the following format: "services/{service
-  /// name}/configs/{config id}".
-  core.String? name;
-
-  ConfigRef({
-    this.name,
-  });
-
-  ConfigRef.fromJson(core.Map _json)
-      : this(
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-      };
-}
-
 /// Represents a source file which is used to generate the service configuration
 /// defined by `google.api.Service`.
 class ConfigSource {
@@ -2204,9 +2182,6 @@ class Documentation {
 /// A documentation rule provides information about individual API elements.
 typedef DocumentationRule = $DocumentationRule;
 
-/// Operation payload for EnableService method.
-typedef EnableServiceResponse = $Empty;
-
 /// `Endpoint` describes a network address of a service that serves a set of
 /// APIs.
 ///
@@ -2460,37 +2435,6 @@ class Field {
         if (options != null) 'options': options!,
         if (packed != null) 'packed': packed!,
         if (typeUrl != null) 'typeUrl': typeUrl!,
-      };
-}
-
-/// Encapsulation of flow-specific error details for debugging.
-///
-/// Used as a details field on an error Status, not intended for external use.
-class FlowErrorDetails {
-  /// The type of exception (as a class name).
-  core.String? exceptionType;
-
-  /// The step that failed.
-  core.String? flowStepId;
-
-  FlowErrorDetails({
-    this.exceptionType,
-    this.flowStepId,
-  });
-
-  FlowErrorDetails.fromJson(core.Map _json)
-      : this(
-          exceptionType: _json.containsKey('exceptionType')
-              ? _json['exceptionType'] as core.String
-              : null,
-          flowStepId: _json.containsKey('flowStepId')
-              ? _json['flowStepId'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (exceptionType != null) 'exceptionType': exceptionType!,
-        if (flowStepId != null) 'flowStepId': flowStepId!,
       };
 }
 
@@ -3867,107 +3811,6 @@ class Operation {
       };
 }
 
-/// A message representing the message types used by a long-running operation.
-///
-/// Example: rpc Export(ExportRequest) returns (google.longrunning.Operation) {
-/// option (google.longrunning.operation_info) = { response_type:
-/// "ExportResponse" metadata_type: "ExportMetadata" }; }
-class OperationInfo {
-  /// The message name of the metadata type for this long-running operation.
-  ///
-  /// If the response is in a different package from the rpc, a fully-qualified
-  /// message name must be used (e.g. `google.protobuf.Struct`). Note: Altering
-  /// this value constitutes a breaking change.
-  ///
-  /// Required.
-  core.String? metadataType;
-
-  /// The message name of the primary return type for this long-running
-  /// operation.
-  ///
-  /// This type will be used to deserialize the LRO's response. If the response
-  /// is in a different package from the rpc, a fully-qualified message name
-  /// must be used (e.g. `google.protobuf.Struct`). Note: Altering this value
-  /// constitutes a breaking change.
-  ///
-  /// Required.
-  core.String? responseType;
-
-  OperationInfo({
-    this.metadataType,
-    this.responseType,
-  });
-
-  OperationInfo.fromJson(core.Map _json)
-      : this(
-          metadataType: _json.containsKey('metadataType')
-              ? _json['metadataType'] as core.String
-              : null,
-          responseType: _json.containsKey('responseType')
-              ? _json['responseType'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (metadataType != null) 'metadataType': metadataType!,
-        if (responseType != null) 'responseType': responseType!,
-      };
-}
-
-/// The metadata associated with a long running operation resource.
-class OperationMetadata {
-  /// Percentage of completion of this operation, ranging from 0 to 100.
-  core.int? progressPercentage;
-
-  /// The full name of the resources that this operation is directly associated
-  /// with.
-  core.List<core.String>? resourceNames;
-
-  /// The start time of the operation.
-  core.String? startTime;
-
-  /// Detailed status information for each step.
-  ///
-  /// The order is undetermined.
-  core.List<Step>? steps;
-
-  OperationMetadata({
-    this.progressPercentage,
-    this.resourceNames,
-    this.startTime,
-    this.steps,
-  });
-
-  OperationMetadata.fromJson(core.Map _json)
-      : this(
-          progressPercentage: _json.containsKey('progressPercentage')
-              ? _json['progressPercentage'] as core.int
-              : null,
-          resourceNames: _json.containsKey('resourceNames')
-              ? (_json['resourceNames'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          startTime: _json.containsKey('startTime')
-              ? _json['startTime'] as core.String
-              : null,
-          steps: _json.containsKey('steps')
-              ? (_json['steps'] as core.List)
-                  .map((value) => Step.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (progressPercentage != null)
-          'progressPercentage': progressPercentage!,
-        if (resourceNames != null) 'resourceNames': resourceNames!,
-        if (startTime != null) 'startTime': startTime!,
-        if (steps != null) 'steps': steps!,
-      };
-}
-
 /// A protocol buffer option, which can be attached to a message, field,
 /// enumeration, etc.
 typedef Option = $Option;
@@ -4212,47 +4055,6 @@ class Quota {
 /// There can be at most one limit for a duration and limit type combination
 /// defined within a `QuotaGroup`.
 typedef QuotaLimit = $QuotaLimit;
-
-/// Defines a proto annotation that describes a string field that refers to an
-/// API resource.
-class ResourceReference {
-  /// The resource type of a child collection that the annotated field
-  /// references.
-  ///
-  /// This is useful for annotating the `parent` field that doesn't have a fixed
-  /// resource type. Example: message ListLogEntriesRequest { string parent = 1
-  /// \[(google.api.resource_reference) = { child_type:
-  /// "logging.googleapis.com/LogEntry" }; }
-  core.String? childType;
-
-  /// The resource type that the annotated field references.
-  ///
-  /// Example: message Subscription { string topic = 2
-  /// \[(google.api.resource_reference) = { type: "pubsub.googleapis.com/Topic"
-  /// }\]; } Occasionally, a field may reference an arbitrary resource. In this
-  /// case, APIs use the special value * in their resource reference. Example:
-  /// message GetIamPolicyRequest { string resource = 2
-  /// \[(google.api.resource_reference) = { type: "*" }\]; }
-  core.String? type;
-
-  ResourceReference({
-    this.childType,
-    this.type,
-  });
-
-  ResourceReference.fromJson(core.Map _json)
-      : this(
-          childType: _json.containsKey('childType')
-              ? _json['childType'] as core.String
-              : null,
-          type: _json.containsKey('type') ? _json['type'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (childType != null) 'childType': childType!,
-        if (type != null) 'type': type!,
-      };
-}
 
 /// A rollout resource that defines how service configuration versions are
 /// pushed to control plane systems.
@@ -4735,43 +4537,6 @@ typedef SourceInfo = $SourceInfo;
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 typedef Status = $Status;
 
-/// Represents the status of one operation step.
-class Step {
-  /// The short description of the step.
-  core.String? description;
-
-  /// The status code.
-  /// Possible string values are:
-  /// - "STATUS_UNSPECIFIED" : Unspecifed code.
-  /// - "DONE" : The operation or step has completed without errors.
-  /// - "NOT_STARTED" : The operation or step has not started yet.
-  /// - "IN_PROGRESS" : The operation or step is in progress.
-  /// - "FAILED" : The operation or step has completed with errors. If the
-  /// operation is rollbackable, the rollback completed with errors too.
-  /// - "CANCELLED" : The operation or step has completed with cancellation.
-  core.String? status;
-
-  Step({
-    this.description,
-    this.status,
-  });
-
-  Step.fromJson(core.Map _json)
-      : this(
-          description: _json.containsKey('description')
-              ? _json['description'] as core.String
-              : null,
-          status: _json.containsKey('status')
-              ? _json['status'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (description != null) 'description': description!,
-        if (status != null) 'status': status!,
-      };
-}
-
 /// Request message for SubmitConfigSource method.
 class SubmitConfigSourceRequest {
   /// The source configuration for the service.
@@ -4805,28 +4570,6 @@ class SubmitConfigSourceRequest {
   core.Map<core.String, core.dynamic> toJson() => {
         if (configSource != null) 'configSource': configSource!,
         if (validateOnly != null) 'validateOnly': validateOnly!,
-      };
-}
-
-/// Response message for SubmitConfigSource method.
-class SubmitConfigSourceResponse {
-  /// The generated service configuration.
-  Service? serviceConfig;
-
-  SubmitConfigSourceResponse({
-    this.serviceConfig,
-  });
-
-  SubmitConfigSourceResponse.fromJson(core.Map _json)
-      : this(
-          serviceConfig: _json.containsKey('serviceConfig')
-              ? Service.fromJson(
-                  _json['serviceConfig'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (serviceConfig != null) 'serviceConfig': serviceConfig!,
       };
 }
 
@@ -5031,28 +4774,6 @@ class Type {
         if (options != null) 'options': options!,
         if (sourceContext != null) 'sourceContext': sourceContext!,
         if (syntax != null) 'syntax': syntax!,
-      };
-}
-
-/// Response message for UndeleteService method.
-class UndeleteServiceResponse {
-  /// Revived service resource.
-  ManagedService? service;
-
-  UndeleteServiceResponse({
-    this.service,
-  });
-
-  UndeleteServiceResponse.fromJson(core.Map _json)
-      : this(
-          service: _json.containsKey('service')
-              ? ManagedService.fromJson(
-                  _json['service'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (service != null) 'service': service!,
       };
 }
 

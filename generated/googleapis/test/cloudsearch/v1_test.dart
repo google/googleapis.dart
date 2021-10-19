@@ -744,94 +744,6 @@ void checkDoubleValues(api.DoubleValues o) {
   buildCounterDoubleValues--;
 }
 
-core.int buildCounterDriveFollowUpRestrict = 0;
-api.DriveFollowUpRestrict buildDriveFollowUpRestrict() {
-  final o = api.DriveFollowUpRestrict();
-  buildCounterDriveFollowUpRestrict++;
-  if (buildCounterDriveFollowUpRestrict < 3) {
-    o.type = 'foo';
-  }
-  buildCounterDriveFollowUpRestrict--;
-  return o;
-}
-
-void checkDriveFollowUpRestrict(api.DriveFollowUpRestrict o) {
-  buildCounterDriveFollowUpRestrict++;
-  if (buildCounterDriveFollowUpRestrict < 3) {
-    unittest.expect(
-      o.type!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterDriveFollowUpRestrict--;
-}
-
-core.int buildCounterDriveLocationRestrict = 0;
-api.DriveLocationRestrict buildDriveLocationRestrict() {
-  final o = api.DriveLocationRestrict();
-  buildCounterDriveLocationRestrict++;
-  if (buildCounterDriveLocationRestrict < 3) {
-    o.type = 'foo';
-  }
-  buildCounterDriveLocationRestrict--;
-  return o;
-}
-
-void checkDriveLocationRestrict(api.DriveLocationRestrict o) {
-  buildCounterDriveLocationRestrict++;
-  if (buildCounterDriveLocationRestrict < 3) {
-    unittest.expect(
-      o.type!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterDriveLocationRestrict--;
-}
-
-core.int buildCounterDriveMimeTypeRestrict = 0;
-api.DriveMimeTypeRestrict buildDriveMimeTypeRestrict() {
-  final o = api.DriveMimeTypeRestrict();
-  buildCounterDriveMimeTypeRestrict++;
-  if (buildCounterDriveMimeTypeRestrict < 3) {
-    o.type = 'foo';
-  }
-  buildCounterDriveMimeTypeRestrict--;
-  return o;
-}
-
-void checkDriveMimeTypeRestrict(api.DriveMimeTypeRestrict o) {
-  buildCounterDriveMimeTypeRestrict++;
-  if (buildCounterDriveMimeTypeRestrict < 3) {
-    unittest.expect(
-      o.type!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterDriveMimeTypeRestrict--;
-}
-
-core.int buildCounterDriveTimeSpanRestrict = 0;
-api.DriveTimeSpanRestrict buildDriveTimeSpanRestrict() {
-  final o = api.DriveTimeSpanRestrict();
-  buildCounterDriveTimeSpanRestrict++;
-  if (buildCounterDriveTimeSpanRestrict < 3) {
-    o.type = 'foo';
-  }
-  buildCounterDriveTimeSpanRestrict--;
-  return o;
-}
-
-void checkDriveTimeSpanRestrict(api.DriveTimeSpanRestrict o) {
-  buildCounterDriveTimeSpanRestrict++;
-  if (buildCounterDriveTimeSpanRestrict < 3) {
-    unittest.expect(
-      o.type!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterDriveTimeSpanRestrict--;
-}
-
 core.int buildCounterEmailAddress = 0;
 api.EmailAddress buildEmailAddress() {
   final o = api.EmailAddress();
@@ -3390,25 +3302,6 @@ void checkQueryInterpretationOptions(api.QueryInterpretationOptions o) {
   buildCounterQueryInterpretationOptions--;
 }
 
-core.int buildCounterQueryItem = 0;
-api.QueryItem buildQueryItem() {
-  final o = api.QueryItem();
-  buildCounterQueryItem++;
-  if (buildCounterQueryItem < 3) {
-    o.isSynthetic = true;
-  }
-  buildCounterQueryItem--;
-  return o;
-}
-
-void checkQueryItem(api.QueryItem o) {
-  buildCounterQueryItem++;
-  if (buildCounterQueryItem < 3) {
-    unittest.expect(o.isSynthetic!, unittest.isTrue);
-  }
-  buildCounterQueryItem--;
-}
-
 core.List<core.String> buildUnnamed54() => [
       'foo',
       'foo',
@@ -3647,36 +3540,6 @@ void checkResponseDebugInfo(api.ResponseDebugInfo o) {
     );
   }
   buildCounterResponseDebugInfo--;
-}
-
-core.int buildCounterRestrictItem = 0;
-api.RestrictItem buildRestrictItem() {
-  final o = api.RestrictItem();
-  buildCounterRestrictItem++;
-  if (buildCounterRestrictItem < 3) {
-    o.driveFollowUpRestrict = buildDriveFollowUpRestrict();
-    o.driveLocationRestrict = buildDriveLocationRestrict();
-    o.driveMimeTypeRestrict = buildDriveMimeTypeRestrict();
-    o.driveTimeSpanRestrict = buildDriveTimeSpanRestrict();
-    o.searchOperator = 'foo';
-  }
-  buildCounterRestrictItem--;
-  return o;
-}
-
-void checkRestrictItem(api.RestrictItem o) {
-  buildCounterRestrictItem++;
-  if (buildCounterRestrictItem < 3) {
-    checkDriveFollowUpRestrict(o.driveFollowUpRestrict!);
-    checkDriveLocationRestrict(o.driveLocationRestrict!);
-    checkDriveMimeTypeRestrict(o.driveMimeTypeRestrict!);
-    checkDriveTimeSpanRestrict(o.driveTimeSpanRestrict!);
-    unittest.expect(
-      o.searchOperator!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterRestrictItem--;
 }
 
 core.List<api.SourceResultCount> buildUnnamed56() => [
@@ -5480,46 +5343,6 @@ void main() {
     });
   });
 
-  unittest.group('obj-schema-DriveFollowUpRestrict', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildDriveFollowUpRestrict();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.DriveFollowUpRestrict.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkDriveFollowUpRestrict(od);
-    });
-  });
-
-  unittest.group('obj-schema-DriveLocationRestrict', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildDriveLocationRestrict();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.DriveLocationRestrict.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkDriveLocationRestrict(od);
-    });
-  });
-
-  unittest.group('obj-schema-DriveMimeTypeRestrict', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildDriveMimeTypeRestrict();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.DriveMimeTypeRestrict.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkDriveMimeTypeRestrict(od);
-    });
-  });
-
-  unittest.group('obj-schema-DriveTimeSpanRestrict', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildDriveTimeSpanRestrict();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.DriveTimeSpanRestrict.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkDriveTimeSpanRestrict(od);
-    });
-  });
-
   unittest.group('obj-schema-EmailAddress', () {
     unittest.test('to-json--from-json', () async {
       final o = buildEmailAddress();
@@ -6260,16 +6083,6 @@ void main() {
     });
   });
 
-  unittest.group('obj-schema-QueryItem', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildQueryItem();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.QueryItem.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkQueryItem(od);
-    });
-  });
-
   unittest.group('obj-schema-QueryOperator', () {
     unittest.test('to-json--from-json', () async {
       final o = buildQueryOperator();
@@ -6337,16 +6150,6 @@ void main() {
       final od = api.ResponseDebugInfo.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkResponseDebugInfo(od);
-    });
-  });
-
-  unittest.group('obj-schema-RestrictItem', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildRestrictItem();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.RestrictItem.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkRestrictItem(od);
     });
   });
 

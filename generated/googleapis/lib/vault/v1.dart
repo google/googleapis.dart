@@ -1594,74 +1594,6 @@ class OperationsResource {
   }
 }
 
-/// The results count for each account.
-class AccountCount {
-  /// Account owner.
-  UserInfo? account;
-
-  /// The number of results (messages or files) found for this account.
-  core.String? count;
-
-  AccountCount({
-    this.account,
-    this.count,
-  });
-
-  AccountCount.fromJson(core.Map _json)
-      : this(
-          account: _json.containsKey('account')
-              ? UserInfo.fromJson(
-                  _json['account'] as core.Map<core.String, core.dynamic>)
-              : null,
-          count:
-              _json.containsKey('count') ? _json['count'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (account != null) 'account': account!,
-        if (count != null) 'count': count!,
-      };
-}
-
-/// An error that occurred when querying a specific account
-class AccountCountError {
-  /// Account owner.
-  UserInfo? account;
-
-  /// Account query error.
-  /// Possible string values are:
-  /// - "ERROR_TYPE_UNSPECIFIED" : Default.
-  /// - "WILDCARD_TOO_BROAD" : Permanent - prefix terms expanded to too many
-  /// query terms.
-  /// - "TOO_MANY_TERMS" : Permanent - query contains too many terms.
-  /// - "LOCATION_UNAVAILABLE" : Transient - data in transit between storage
-  /// replicas, temporarily unavailable.
-  /// - "UNKNOWN" : Unrecognized error.
-  /// - "DEADLINE_EXCEEDED" : Deadline exceeded when querying the account.
-  core.String? errorType;
-
-  AccountCountError({
-    this.account,
-    this.errorType,
-  });
-
-  AccountCountError.fromJson(core.Map _json)
-      : this(
-          account: _json.containsKey('account')
-              ? UserInfo.fromJson(
-                  _json['account'] as core.Map<core.String, core.dynamic>)
-              : null,
-          errorType: _json.containsKey('errorType')
-              ? _json['errorType'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (account != null) 'account': account!,
-        if (errorType != null) 'errorType': errorType!,
-      };
-}
-
 /// The accounts to search
 class AccountInfo {
   /// A set of accounts to search.
@@ -1998,54 +1930,6 @@ class CorpusQuery {
       };
 }
 
-/// Long running operation metadata for CountArtifacts.
-class CountArtifactsMetadata {
-  /// End time of count operation.
-  ///
-  /// Available when operation is done.
-  core.String? endTime;
-
-  /// The matter ID of the associated matter.
-  core.String? matterId;
-
-  /// The search query from the request.
-  Query? query;
-
-  /// Creation time of count operation.
-  core.String? startTime;
-
-  CountArtifactsMetadata({
-    this.endTime,
-    this.matterId,
-    this.query,
-    this.startTime,
-  });
-
-  CountArtifactsMetadata.fromJson(core.Map _json)
-      : this(
-          endTime: _json.containsKey('endTime')
-              ? _json['endTime'] as core.String
-              : null,
-          matterId: _json.containsKey('matterId')
-              ? _json['matterId'] as core.String
-              : null,
-          query: _json.containsKey('query')
-              ? Query.fromJson(
-                  _json['query'] as core.Map<core.String, core.dynamic>)
-              : null,
-          startTime: _json.containsKey('startTime')
-              ? _json['startTime'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (endTime != null) 'endTime': endTime!,
-        if (matterId != null) 'matterId': matterId!,
-        if (query != null) 'query': query!,
-        if (startTime != null) 'startTime': startTime!,
-      };
-}
-
 /// Count artifacts request.
 class CountArtifactsRequest {
   /// The search query.
@@ -2078,45 +1962,6 @@ class CountArtifactsRequest {
   core.Map<core.String, core.dynamic> toJson() => {
         if (query != null) 'query': query!,
         if (view != null) 'view': view!,
-      };
-}
-
-/// Definition of the response for method CountArtifacts.
-class CountArtifactsResponse {
-  /// Count metrics for Groups.
-  GroupsCountResult? groupsCountResult;
-
-  /// Count metrics for Gmail and classic Hangouts.
-  MailCountResult? mailCountResult;
-
-  /// Total count of messages.
-  core.String? totalCount;
-
-  CountArtifactsResponse({
-    this.groupsCountResult,
-    this.mailCountResult,
-    this.totalCount,
-  });
-
-  CountArtifactsResponse.fromJson(core.Map _json)
-      : this(
-          groupsCountResult: _json.containsKey('groupsCountResult')
-              ? GroupsCountResult.fromJson(_json['groupsCountResult']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          mailCountResult: _json.containsKey('mailCountResult')
-              ? MailCountResult.fromJson(_json['mailCountResult']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          totalCount: _json.containsKey('totalCount')
-              ? _json['totalCount'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (groupsCountResult != null) 'groupsCountResult': groupsCountResult!,
-        if (mailCountResult != null) 'mailCountResult': mailCountResult!,
-        if (totalCount != null) 'totalCount': totalCount!,
       };
 }
 
@@ -2421,75 +2266,6 @@ class ExportStats {
         if (sizeInBytes != null) 'sizeInBytes': sizeInBytes!,
         if (totalArtifactCount != null)
           'totalArtifactCount': totalArtifactCount!,
-      };
-}
-
-/// Groups specific count metrics.
-class GroupsCountResult {
-  /// Error occurred when querying these accounts.
-  core.List<AccountCountError>? accountCountErrors;
-
-  /// Subtotal count per matching account that have more than zero messages.
-  core.List<AccountCount>? accountCounts;
-
-  /// Total number of accounts that can be queried and have more than zero
-  /// messages.
-  core.String? matchingAccountsCount;
-
-  /// When **DataScope** is **HELD_DATA**, these accounts in the request are not
-  /// queried because they are not on hold.
-  ///
-  /// For other data scope, this field is not set.
-  core.List<core.String>? nonQueryableAccounts;
-
-  /// Total number of accounts involved in this count operation.
-  core.String? queriedAccountsCount;
-
-  GroupsCountResult({
-    this.accountCountErrors,
-    this.accountCounts,
-    this.matchingAccountsCount,
-    this.nonQueryableAccounts,
-    this.queriedAccountsCount,
-  });
-
-  GroupsCountResult.fromJson(core.Map _json)
-      : this(
-          accountCountErrors: _json.containsKey('accountCountErrors')
-              ? (_json['accountCountErrors'] as core.List)
-                  .map((value) => AccountCountError.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          accountCounts: _json.containsKey('accountCounts')
-              ? (_json['accountCounts'] as core.List)
-                  .map((value) => AccountCount.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          matchingAccountsCount: _json.containsKey('matchingAccountsCount')
-              ? _json['matchingAccountsCount'] as core.String
-              : null,
-          nonQueryableAccounts: _json.containsKey('nonQueryableAccounts')
-              ? (_json['nonQueryableAccounts'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          queriedAccountsCount: _json.containsKey('queriedAccountsCount')
-              ? _json['queriedAccountsCount'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (accountCountErrors != null)
-          'accountCountErrors': accountCountErrors!,
-        if (accountCounts != null) 'accountCounts': accountCounts!,
-        if (matchingAccountsCount != null)
-          'matchingAccountsCount': matchingAccountsCount!,
-        if (nonQueryableAccounts != null)
-          'nonQueryableAccounts': nonQueryableAccounts!,
-        if (queriedAccountsCount != null)
-          'queriedAccountsCount': queriedAccountsCount!,
       };
 }
 
@@ -3013,75 +2789,6 @@ class ListSavedQueriesResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (savedQueries != null) 'savedQueries': savedQueries!,
-      };
-}
-
-/// Gmail and classic Hangouts-specific count metrics.
-class MailCountResult {
-  /// Errors occurred when querying these accounts.
-  core.List<AccountCountError>? accountCountErrors;
-
-  /// Subtotal count per matching account that have more than zero messages.
-  core.List<AccountCount>? accountCounts;
-
-  /// Total number of accounts that can be queried and have more than zero
-  /// messages.
-  core.String? matchingAccountsCount;
-
-  /// When **DataScope** is **HELD_DATA**, the number of accounts in the request
-  /// that are not queried because they are not on hold.
-  ///
-  /// For other data scopes, this field is not set.
-  core.List<core.String>? nonQueryableAccounts;
-
-  /// Total number of accounts involved in this count operation.
-  core.String? queriedAccountsCount;
-
-  MailCountResult({
-    this.accountCountErrors,
-    this.accountCounts,
-    this.matchingAccountsCount,
-    this.nonQueryableAccounts,
-    this.queriedAccountsCount,
-  });
-
-  MailCountResult.fromJson(core.Map _json)
-      : this(
-          accountCountErrors: _json.containsKey('accountCountErrors')
-              ? (_json['accountCountErrors'] as core.List)
-                  .map((value) => AccountCountError.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          accountCounts: _json.containsKey('accountCounts')
-              ? (_json['accountCounts'] as core.List)
-                  .map((value) => AccountCount.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          matchingAccountsCount: _json.containsKey('matchingAccountsCount')
-              ? _json['matchingAccountsCount'] as core.String
-              : null,
-          nonQueryableAccounts: _json.containsKey('nonQueryableAccounts')
-              ? (_json['nonQueryableAccounts'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          queriedAccountsCount: _json.containsKey('queriedAccountsCount')
-              ? _json['queriedAccountsCount'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (accountCountErrors != null)
-          'accountCountErrors': accountCountErrors!,
-        if (accountCounts != null) 'accountCounts': accountCounts!,
-        if (matchingAccountsCount != null)
-          'matchingAccountsCount': matchingAccountsCount!,
-        if (nonQueryableAccounts != null)
-          'nonQueryableAccounts': nonQueryableAccounts!,
-        if (queriedAccountsCount != null)
-          'queriedAccountsCount': queriedAccountsCount!,
       };
 }
 

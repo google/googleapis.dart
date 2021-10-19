@@ -2588,43 +2588,6 @@ class ArtifactObjects {
       };
 }
 
-/// An artifact that was uploaded during a build.
-///
-/// This is a single record in the artifact manifest JSON file.
-class ArtifactResult {
-  /// The file hash of the artifact.
-  core.List<FileHashes>? fileHash;
-
-  /// The path of an artifact in a Google Cloud Storage bucket, with the
-  /// generation number.
-  ///
-  /// For example, `gs://mybucket/path/to/output.jar#generation`.
-  core.String? location;
-
-  ArtifactResult({
-    this.fileHash,
-    this.location,
-  });
-
-  ArtifactResult.fromJson(core.Map _json)
-      : this(
-          fileHash: _json.containsKey('fileHash')
-              ? (_json['fileHash'] as core.List)
-                  .map((value) => FileHashes.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          location: _json.containsKey('location')
-              ? _json['location'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (fileHash != null) 'fileHash': fileHash!,
-        if (location != null) 'location': location!,
-      };
-}
-
 /// Artifacts produced by a build that should be uploaded upon successful
 /// completion of all build steps.
 class Artifacts {
@@ -3091,28 +3054,6 @@ class BuildApproval {
         if (config != null) 'config': config!,
         if (result != null) 'result': result!,
         if (state != null) 'state': state!,
-      };
-}
-
-/// Metadata for build operations.
-class BuildOperationMetadata {
-  /// The build that the operation is tracking.
-  Build? build;
-
-  BuildOperationMetadata({
-    this.build,
-  });
-
-  BuildOperationMetadata.fromJson(core.Map _json)
-      : this(
-          build: _json.containsKey('build')
-              ? Build.fromJson(
-                  _json['build'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (build != null) 'build': build!,
       };
 }
 
@@ -3862,130 +3803,6 @@ class CancelBuildRequest {
 /// The request message for Operations.CancelOperation.
 typedef CancelOperationRequest = $Empty;
 
-/// Metadata for `CreateGithubEnterpriseConfig` operation.
-typedef CreateGitHubEnterpriseConfigOperationMetadata = $OperationMetadata03;
-
-/// Metadata for the `CreateWorkerPool` operation.
-class CreateWorkerPoolOperationMetadata {
-  /// Time the operation was completed.
-  core.String? completeTime;
-
-  /// Time the operation was created.
-  core.String? createTime;
-
-  /// The resource name of the `WorkerPool` to create.
-  ///
-  /// Format:
-  /// `projects/{project}/locations/{location}/workerPools/{worker_pool}`.
-  core.String? workerPool;
-
-  CreateWorkerPoolOperationMetadata({
-    this.completeTime,
-    this.createTime,
-    this.workerPool,
-  });
-
-  CreateWorkerPoolOperationMetadata.fromJson(core.Map _json)
-      : this(
-          completeTime: _json.containsKey('completeTime')
-              ? _json['completeTime'] as core.String
-              : null,
-          createTime: _json.containsKey('createTime')
-              ? _json['createTime'] as core.String
-              : null,
-          workerPool: _json.containsKey('workerPool')
-              ? _json['workerPool'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (completeTime != null) 'completeTime': completeTime!,
-        if (createTime != null) 'createTime': createTime!,
-        if (workerPool != null) 'workerPool': workerPool!,
-      };
-}
-
-/// Metadata for `DeleteGitHubEnterpriseConfig` operation.
-class DeleteGitHubEnterpriseConfigOperationMetadata {
-  /// Time the operation was completed.
-  core.String? completeTime;
-
-  /// Time the operation was created.
-  core.String? createTime;
-
-  /// The resource name of the GitHubEnterprise to be deleted.
-  ///
-  /// Format:
-  /// `projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}`.
-  core.String? githubEnterpriseConfig;
-
-  DeleteGitHubEnterpriseConfigOperationMetadata({
-    this.completeTime,
-    this.createTime,
-    this.githubEnterpriseConfig,
-  });
-
-  DeleteGitHubEnterpriseConfigOperationMetadata.fromJson(core.Map _json)
-      : this(
-          completeTime: _json.containsKey('completeTime')
-              ? _json['completeTime'] as core.String
-              : null,
-          createTime: _json.containsKey('createTime')
-              ? _json['createTime'] as core.String
-              : null,
-          githubEnterpriseConfig: _json.containsKey('githubEnterpriseConfig')
-              ? _json['githubEnterpriseConfig'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (completeTime != null) 'completeTime': completeTime!,
-        if (createTime != null) 'createTime': createTime!,
-        if (githubEnterpriseConfig != null)
-          'githubEnterpriseConfig': githubEnterpriseConfig!,
-      };
-}
-
-/// Metadata for the `DeleteWorkerPool` operation.
-class DeleteWorkerPoolOperationMetadata {
-  /// Time the operation was completed.
-  core.String? completeTime;
-
-  /// Time the operation was created.
-  core.String? createTime;
-
-  /// The resource name of the `WorkerPool` being deleted.
-  ///
-  /// Format:
-  /// `projects/{project}/locations/{location}/workerPools/{worker_pool}`.
-  core.String? workerPool;
-
-  DeleteWorkerPoolOperationMetadata({
-    this.completeTime,
-    this.createTime,
-    this.workerPool,
-  });
-
-  DeleteWorkerPoolOperationMetadata.fromJson(core.Map _json)
-      : this(
-          completeTime: _json.containsKey('completeTime')
-              ? _json['completeTime'] as core.String
-              : null,
-          createTime: _json.containsKey('createTime')
-              ? _json['createTime'] as core.String
-              : null,
-          workerPool: _json.containsKey('workerPool')
-              ? _json['workerPool'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (completeTime != null) 'completeTime': completeTime!,
-        if (createTime != null) 'createTime': createTime!,
-        if (workerPool != null) 'workerPool': workerPool!,
-      };
-}
-
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs.
 ///
@@ -4418,28 +4235,6 @@ class GitRepoSource {
       };
 }
 
-/// Represents the metadata of the long-running operation.
-typedef GoogleDevtoolsCloudbuildV2OperationMetadata = $OperationMetadata00;
-
-/// HTTPDelivery is the delivery configuration for an HTTP notification.
-class HTTPDelivery {
-  /// The URI to which JSON-containing HTTP POST requests should be sent.
-  core.String? uri;
-
-  HTTPDelivery({
-    this.uri,
-  });
-
-  HTTPDelivery.fromJson(core.Map _json)
-      : this(
-          uri: _json.containsKey('uri') ? _json['uri'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (uri != null) 'uri': uri!,
-      };
-}
-
 /// Container message for hash values.
 class Hash {
   /// The type of hash that was performed.
@@ -4708,236 +4503,6 @@ class NetworkConfig {
       };
 }
 
-/// Notification is the container which holds the data that is relevant to this
-/// particular notification.
-class Notification {
-  /// The filter string to use for notification filtering.
-  ///
-  /// Currently, this is assumed to be a CEL program. See
-  /// https://opensource.google/projects/cel for more.
-  core.String? filter;
-
-  /// Configuration for HTTP delivery.
-  HTTPDelivery? httpDelivery;
-
-  /// Configuration for Slack delivery.
-  SlackDelivery? slackDelivery;
-
-  /// Configuration for SMTP (email) delivery.
-  SMTPDelivery? smtpDelivery;
-
-  /// Escape hatch for users to supply custom delivery configs.
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object?>? structDelivery;
-
-  Notification({
-    this.filter,
-    this.httpDelivery,
-    this.slackDelivery,
-    this.smtpDelivery,
-    this.structDelivery,
-  });
-
-  Notification.fromJson(core.Map _json)
-      : this(
-          filter: _json.containsKey('filter')
-              ? _json['filter'] as core.String
-              : null,
-          httpDelivery: _json.containsKey('httpDelivery')
-              ? HTTPDelivery.fromJson(
-                  _json['httpDelivery'] as core.Map<core.String, core.dynamic>)
-              : null,
-          slackDelivery: _json.containsKey('slackDelivery')
-              ? SlackDelivery.fromJson(
-                  _json['slackDelivery'] as core.Map<core.String, core.dynamic>)
-              : null,
-          smtpDelivery: _json.containsKey('smtpDelivery')
-              ? SMTPDelivery.fromJson(
-                  _json['smtpDelivery'] as core.Map<core.String, core.dynamic>)
-              : null,
-          structDelivery: _json.containsKey('structDelivery')
-              ? _json['structDelivery'] as core.Map<core.String, core.dynamic>
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (filter != null) 'filter': filter!,
-        if (httpDelivery != null) 'httpDelivery': httpDelivery!,
-        if (slackDelivery != null) 'slackDelivery': slackDelivery!,
-        if (smtpDelivery != null) 'smtpDelivery': smtpDelivery!,
-        if (structDelivery != null) 'structDelivery': structDelivery!,
-      };
-}
-
-/// NotifierConfig is the top-level configuration message.
-class NotifierConfig {
-  /// The API version of this configuration format.
-  core.String? apiVersion;
-
-  /// The type of notifier to use (e.g. SMTPNotifier).
-  core.String? kind;
-
-  /// Metadata for referring to/handling/deploying this notifier.
-  NotifierMetadata? metadata;
-
-  /// The actual configuration for this notifier.
-  NotifierSpec? spec;
-
-  NotifierConfig({
-    this.apiVersion,
-    this.kind,
-    this.metadata,
-    this.spec,
-  });
-
-  NotifierConfig.fromJson(core.Map _json)
-      : this(
-          apiVersion: _json.containsKey('apiVersion')
-              ? _json['apiVersion'] as core.String
-              : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          metadata: _json.containsKey('metadata')
-              ? NotifierMetadata.fromJson(
-                  _json['metadata'] as core.Map<core.String, core.dynamic>)
-              : null,
-          spec: _json.containsKey('spec')
-              ? NotifierSpec.fromJson(
-                  _json['spec'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (apiVersion != null) 'apiVersion': apiVersion!,
-        if (kind != null) 'kind': kind!,
-        if (metadata != null) 'metadata': metadata!,
-        if (spec != null) 'spec': spec!,
-      };
-}
-
-/// NotifierMetadata contains the data which can be used to reference or
-/// describe this notifier.
-class NotifierMetadata {
-  /// The human-readable and user-given name for the notifier.
-  ///
-  /// For example: "repo-merge-email-notifier".
-  core.String? name;
-
-  /// The string representing the name and version of notifier to deploy.
-  ///
-  /// Expected to be of the form of "/:". For example:
-  /// "gcr.io/my-project/notifiers/smtp:1.2.34".
-  core.String? notifier;
-
-  NotifierMetadata({
-    this.name,
-    this.notifier,
-  });
-
-  NotifierMetadata.fromJson(core.Map _json)
-      : this(
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          notifier: _json.containsKey('notifier')
-              ? _json['notifier'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-        if (notifier != null) 'notifier': notifier!,
-      };
-}
-
-/// NotifierSecret is the container that maps a secret name (reference) to its
-/// Google Cloud Secret Manager resource path.
-class NotifierSecret {
-  /// Name is the local name of the secret, such as the verbatim string
-  /// "my-smtp-password".
-  core.String? name;
-
-  /// Value is interpreted to be a resource path for fetching the actual
-  /// (versioned) secret data for this secret.
-  ///
-  /// For example, this would be a Google Cloud Secret Manager secret version
-  /// resource path like:
-  /// "projects/my-project/secrets/my-secret/versions/latest".
-  core.String? value;
-
-  NotifierSecret({
-    this.name,
-    this.value,
-  });
-
-  NotifierSecret.fromJson(core.Map _json)
-      : this(
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          value:
-              _json.containsKey('value') ? _json['value'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-        if (value != null) 'value': value!,
-      };
-}
-
-/// NotifierSecretRef contains the reference to a secret stored in the
-/// corresponding NotifierSpec.
-class NotifierSecretRef {
-  /// The value of `secret_ref` should be a `name` that is registered in a
-  /// `Secret` in the `secrets` list of the `Spec`.
-  core.String? secretRef;
-
-  NotifierSecretRef({
-    this.secretRef,
-  });
-
-  NotifierSecretRef.fromJson(core.Map _json)
-      : this(
-          secretRef: _json.containsKey('secretRef')
-              ? _json['secretRef'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (secretRef != null) 'secretRef': secretRef!,
-      };
-}
-
-/// NotifierSpec is the configuration container for notifications.
-class NotifierSpec {
-  /// The configuration of this particular notifier.
-  Notification? notification;
-
-  /// Configurations for secret resources used by this particular notifier.
-  core.List<NotifierSecret>? secrets;
-
-  NotifierSpec({
-    this.notification,
-    this.secrets,
-  });
-
-  NotifierSpec.fromJson(core.Map _json)
-      : this(
-          notification: _json.containsKey('notification')
-              ? Notification.fromJson(
-                  _json['notification'] as core.Map<core.String, core.dynamic>)
-              : null,
-          secrets: _json.containsKey('secrets')
-              ? (_json['secrets'] as core.List)
-                  .map((value) => NotifierSecret.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (notification != null) 'notification': notification!,
-        if (secrets != null) 'secrets': secrets!,
-      };
-}
-
 /// This resource represents a long-running operation that is the result of a
 /// network API call.
 class Operation {
@@ -5014,9 +4579,6 @@ class Operation {
       };
 }
 
-/// Represents the metadata of the long-running operation.
-typedef OperationMetadata = $OperationMetadata02;
-
 /// Details about how a build should be executed on a `WorkerPool`.
 ///
 /// See
@@ -5074,9 +4636,6 @@ class PrivatePoolV1Config {
         if (workerConfig != null) 'workerConfig': workerConfig!,
       };
 }
-
-/// Metadata for `ProcessAppManifestCallback` operation.
-typedef ProcessAppManifestCallbackOperationMetadata = $OperationMetadata03;
 
 /// PubsubConfig describes the configuration of a trigger that creates a build
 /// whenever a Pub/Sub message is published.
@@ -5490,72 +5049,6 @@ class RunBuildTriggerRequest {
       };
 }
 
-/// SMTPDelivery is the delivery configuration for an SMTP (email) notification.
-class SMTPDelivery {
-  /// This is the SMTP account/email that appears in the `From:` of the email.
-  ///
-  /// If empty, it is assumed to be sender.
-  core.String? fromAddress;
-
-  /// The SMTP sender's password.
-  NotifierSecretRef? password;
-
-  /// The SMTP port of the server.
-  core.String? port;
-
-  /// This is the list of addresses to which we send the email (i.e. in the
-  /// `To:` of the email).
-  core.List<core.String>? recipientAddresses;
-
-  /// This is the SMTP account/email that is used to send the message.
-  core.String? senderAddress;
-
-  /// The address of the SMTP server.
-  core.String? server;
-
-  SMTPDelivery({
-    this.fromAddress,
-    this.password,
-    this.port,
-    this.recipientAddresses,
-    this.senderAddress,
-    this.server,
-  });
-
-  SMTPDelivery.fromJson(core.Map _json)
-      : this(
-          fromAddress: _json.containsKey('fromAddress')
-              ? _json['fromAddress'] as core.String
-              : null,
-          password: _json.containsKey('password')
-              ? NotifierSecretRef.fromJson(
-                  _json['password'] as core.Map<core.String, core.dynamic>)
-              : null,
-          port: _json.containsKey('port') ? _json['port'] as core.String : null,
-          recipientAddresses: _json.containsKey('recipientAddresses')
-              ? (_json['recipientAddresses'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          senderAddress: _json.containsKey('senderAddress')
-              ? _json['senderAddress'] as core.String
-              : null,
-          server: _json.containsKey('server')
-              ? _json['server'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (fromAddress != null) 'fromAddress': fromAddress!,
-        if (password != null) 'password': password!,
-        if (port != null) 'port': port!,
-        if (recipientAddresses != null)
-          'recipientAddresses': recipientAddresses!,
-        if (senderAddress != null) 'senderAddress': senderAddress!,
-        if (server != null) 'server': server!,
-      };
-}
-
 /// Pairs a set of secret environment variables containing encrypted values with
 /// the Cloud KMS key to use to decrypt the value.
 ///
@@ -5665,33 +5158,6 @@ class Secrets {
   core.Map<core.String, core.dynamic> toJson() => {
         if (inline != null) 'inline': inline!,
         if (secretManager != null) 'secretManager': secretManager!,
-      };
-}
-
-/// SlackDelivery is the delivery configuration for delivering Slack messages
-/// via webhooks.
-///
-/// See Slack webhook documentation at:
-/// https://api.slack.com/messaging/webhooks.
-class SlackDelivery {
-  /// The secret reference for the Slack webhook URI for sending messages to a
-  /// channel.
-  NotifierSecretRef? webhookUri;
-
-  SlackDelivery({
-    this.webhookUri,
-  });
-
-  SlackDelivery.fromJson(core.Map _json)
-      : this(
-          webhookUri: _json.containsKey('webhookUri')
-              ? NotifierSecretRef.fromJson(
-                  _json['webhookUri'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (webhookUri != null) 'webhookUri': webhookUri!,
       };
 }
 
@@ -5941,87 +5407,6 @@ class TimeSpan {
   core.Map<core.String, core.dynamic> toJson() => {
         if (endTime != null) 'endTime': endTime!,
         if (startTime != null) 'startTime': startTime!,
-      };
-}
-
-/// Metadata for `UpdateGitHubEnterpriseConfig` operation.
-class UpdateGitHubEnterpriseConfigOperationMetadata {
-  /// Time the operation was completed.
-  core.String? completeTime;
-
-  /// Time the operation was created.
-  core.String? createTime;
-
-  /// The resource name of the GitHubEnterprise to be updated.
-  ///
-  /// Format:
-  /// `projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}`.
-  core.String? githubEnterpriseConfig;
-
-  UpdateGitHubEnterpriseConfigOperationMetadata({
-    this.completeTime,
-    this.createTime,
-    this.githubEnterpriseConfig,
-  });
-
-  UpdateGitHubEnterpriseConfigOperationMetadata.fromJson(core.Map _json)
-      : this(
-          completeTime: _json.containsKey('completeTime')
-              ? _json['completeTime'] as core.String
-              : null,
-          createTime: _json.containsKey('createTime')
-              ? _json['createTime'] as core.String
-              : null,
-          githubEnterpriseConfig: _json.containsKey('githubEnterpriseConfig')
-              ? _json['githubEnterpriseConfig'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (completeTime != null) 'completeTime': completeTime!,
-        if (createTime != null) 'createTime': createTime!,
-        if (githubEnterpriseConfig != null)
-          'githubEnterpriseConfig': githubEnterpriseConfig!,
-      };
-}
-
-/// Metadata for the `UpdateWorkerPool` operation.
-class UpdateWorkerPoolOperationMetadata {
-  /// Time the operation was completed.
-  core.String? completeTime;
-
-  /// Time the operation was created.
-  core.String? createTime;
-
-  /// The resource name of the `WorkerPool` being updated.
-  ///
-  /// Format:
-  /// `projects/{project}/locations/{location}/workerPools/{worker_pool}`.
-  core.String? workerPool;
-
-  UpdateWorkerPoolOperationMetadata({
-    this.completeTime,
-    this.createTime,
-    this.workerPool,
-  });
-
-  UpdateWorkerPoolOperationMetadata.fromJson(core.Map _json)
-      : this(
-          completeTime: _json.containsKey('completeTime')
-              ? _json['completeTime'] as core.String
-              : null,
-          createTime: _json.containsKey('createTime')
-              ? _json['createTime'] as core.String
-              : null,
-          workerPool: _json.containsKey('workerPool')
-              ? _json['workerPool'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (completeTime != null) 'completeTime': completeTime!,
-        if (createTime != null) 'createTime': createTime!,
-        if (workerPool != null) 'workerPool': workerPool!,
       };
 }
 

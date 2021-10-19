@@ -26,21 +26,6 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
-core.int buildCounterAddPublicKeyMetadata = 0;
-api.AddPublicKeyMetadata buildAddPublicKeyMetadata() {
-  final o = api.AddPublicKeyMetadata();
-  buildCounterAddPublicKeyMetadata++;
-  if (buildCounterAddPublicKeyMetadata < 3) {}
-  buildCounterAddPublicKeyMetadata--;
-  return o;
-}
-
-void checkAddPublicKeyMetadata(api.AddPublicKeyMetadata o) {
-  buildCounterAddPublicKeyMetadata++;
-  if (buildCounterAddPublicKeyMetadata < 3) {}
-  buildCounterAddPublicKeyMetadata--;
-}
-
 core.int buildCounterAddPublicKeyRequest = 0;
 api.AddPublicKeyRequest buildAddPublicKeyRequest() {
   final o = api.AddPublicKeyRequest();
@@ -61,43 +46,6 @@ void checkAddPublicKeyRequest(api.AddPublicKeyRequest o) {
     );
   }
   buildCounterAddPublicKeyRequest--;
-}
-
-core.int buildCounterAddPublicKeyResponse = 0;
-api.AddPublicKeyResponse buildAddPublicKeyResponse() {
-  final o = api.AddPublicKeyResponse();
-  buildCounterAddPublicKeyResponse++;
-  if (buildCounterAddPublicKeyResponse < 3) {
-    o.key = 'foo';
-  }
-  buildCounterAddPublicKeyResponse--;
-  return o;
-}
-
-void checkAddPublicKeyResponse(api.AddPublicKeyResponse o) {
-  buildCounterAddPublicKeyResponse++;
-  if (buildCounterAddPublicKeyResponse < 3) {
-    unittest.expect(
-      o.key!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterAddPublicKeyResponse--;
-}
-
-core.int buildCounterAuthorizeEnvironmentMetadata = 0;
-api.AuthorizeEnvironmentMetadata buildAuthorizeEnvironmentMetadata() {
-  final o = api.AuthorizeEnvironmentMetadata();
-  buildCounterAuthorizeEnvironmentMetadata++;
-  if (buildCounterAuthorizeEnvironmentMetadata < 3) {}
-  buildCounterAuthorizeEnvironmentMetadata--;
-  return o;
-}
-
-void checkAuthorizeEnvironmentMetadata(api.AuthorizeEnvironmentMetadata o) {
-  buildCounterAuthorizeEnvironmentMetadata++;
-  if (buildCounterAuthorizeEnvironmentMetadata < 3) {}
-  buildCounterAuthorizeEnvironmentMetadata--;
 }
 
 core.int buildCounterAuthorizeEnvironmentRequest = 0;
@@ -132,21 +80,6 @@ void checkAuthorizeEnvironmentRequest(api.AuthorizeEnvironmentRequest o) {
   buildCounterAuthorizeEnvironmentRequest--;
 }
 
-core.int buildCounterAuthorizeEnvironmentResponse = 0;
-api.AuthorizeEnvironmentResponse buildAuthorizeEnvironmentResponse() {
-  final o = api.AuthorizeEnvironmentResponse();
-  buildCounterAuthorizeEnvironmentResponse++;
-  if (buildCounterAuthorizeEnvironmentResponse < 3) {}
-  buildCounterAuthorizeEnvironmentResponse--;
-  return o;
-}
-
-void checkAuthorizeEnvironmentResponse(api.AuthorizeEnvironmentResponse o) {
-  buildCounterAuthorizeEnvironmentResponse++;
-  if (buildCounterAuthorizeEnvironmentResponse < 3) {}
-  buildCounterAuthorizeEnvironmentResponse--;
-}
-
 core.int buildCounterCancelOperationRequest = 0;
 api.CancelOperationRequest buildCancelOperationRequest() {
   final o = api.CancelOperationRequest();
@@ -160,36 +93,6 @@ void checkCancelOperationRequest(api.CancelOperationRequest o) {
   buildCounterCancelOperationRequest++;
   if (buildCounterCancelOperationRequest < 3) {}
   buildCounterCancelOperationRequest--;
-}
-
-core.int buildCounterCreateEnvironmentMetadata = 0;
-api.CreateEnvironmentMetadata buildCreateEnvironmentMetadata() {
-  final o = api.CreateEnvironmentMetadata();
-  buildCounterCreateEnvironmentMetadata++;
-  if (buildCounterCreateEnvironmentMetadata < 3) {}
-  buildCounterCreateEnvironmentMetadata--;
-  return o;
-}
-
-void checkCreateEnvironmentMetadata(api.CreateEnvironmentMetadata o) {
-  buildCounterCreateEnvironmentMetadata++;
-  if (buildCounterCreateEnvironmentMetadata < 3) {}
-  buildCounterCreateEnvironmentMetadata--;
-}
-
-core.int buildCounterDeleteEnvironmentMetadata = 0;
-api.DeleteEnvironmentMetadata buildDeleteEnvironmentMetadata() {
-  final o = api.DeleteEnvironmentMetadata();
-  buildCounterDeleteEnvironmentMetadata++;
-  if (buildCounterDeleteEnvironmentMetadata < 3) {}
-  buildCounterDeleteEnvironmentMetadata--;
-  return o;
-}
-
-void checkDeleteEnvironmentMetadata(api.DeleteEnvironmentMetadata o) {
-  buildCounterDeleteEnvironmentMetadata++;
-  if (buildCounterDeleteEnvironmentMetadata < 3) {}
-  buildCounterDeleteEnvironmentMetadata--;
 }
 
 core.int buildCounterEmpty = 0;
@@ -438,21 +341,6 @@ void checkOperation(api.Operation o) {
   buildCounterOperation--;
 }
 
-core.int buildCounterRemovePublicKeyMetadata = 0;
-api.RemovePublicKeyMetadata buildRemovePublicKeyMetadata() {
-  final o = api.RemovePublicKeyMetadata();
-  buildCounterRemovePublicKeyMetadata++;
-  if (buildCounterRemovePublicKeyMetadata < 3) {}
-  buildCounterRemovePublicKeyMetadata--;
-  return o;
-}
-
-void checkRemovePublicKeyMetadata(api.RemovePublicKeyMetadata o) {
-  buildCounterRemovePublicKeyMetadata++;
-  if (buildCounterRemovePublicKeyMetadata < 3) {}
-  buildCounterRemovePublicKeyMetadata--;
-}
-
 core.int buildCounterRemovePublicKeyRequest = 0;
 api.RemovePublicKeyRequest buildRemovePublicKeyRequest() {
   final o = api.RemovePublicKeyRequest();
@@ -473,43 +361,6 @@ void checkRemovePublicKeyRequest(api.RemovePublicKeyRequest o) {
     );
   }
   buildCounterRemovePublicKeyRequest--;
-}
-
-core.int buildCounterRemovePublicKeyResponse = 0;
-api.RemovePublicKeyResponse buildRemovePublicKeyResponse() {
-  final o = api.RemovePublicKeyResponse();
-  buildCounterRemovePublicKeyResponse++;
-  if (buildCounterRemovePublicKeyResponse < 3) {}
-  buildCounterRemovePublicKeyResponse--;
-  return o;
-}
-
-void checkRemovePublicKeyResponse(api.RemovePublicKeyResponse o) {
-  buildCounterRemovePublicKeyResponse++;
-  if (buildCounterRemovePublicKeyResponse < 3) {}
-  buildCounterRemovePublicKeyResponse--;
-}
-
-core.int buildCounterStartEnvironmentMetadata = 0;
-api.StartEnvironmentMetadata buildStartEnvironmentMetadata() {
-  final o = api.StartEnvironmentMetadata();
-  buildCounterStartEnvironmentMetadata++;
-  if (buildCounterStartEnvironmentMetadata < 3) {
-    o.state = 'foo';
-  }
-  buildCounterStartEnvironmentMetadata--;
-  return o;
-}
-
-void checkStartEnvironmentMetadata(api.StartEnvironmentMetadata o) {
-  buildCounterStartEnvironmentMetadata++;
-  if (buildCounterStartEnvironmentMetadata < 3) {
-    unittest.expect(
-      o.state!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterStartEnvironmentMetadata--;
 }
 
 core.List<core.String> buildUnnamed4() => [
@@ -551,25 +402,6 @@ void checkStartEnvironmentRequest(api.StartEnvironmentRequest o) {
     checkUnnamed4(o.publicKeys!);
   }
   buildCounterStartEnvironmentRequest--;
-}
-
-core.int buildCounterStartEnvironmentResponse = 0;
-api.StartEnvironmentResponse buildStartEnvironmentResponse() {
-  final o = api.StartEnvironmentResponse();
-  buildCounterStartEnvironmentResponse++;
-  if (buildCounterStartEnvironmentResponse < 3) {
-    o.environment = buildEnvironment();
-  }
-  buildCounterStartEnvironmentResponse--;
-  return o;
-}
-
-void checkStartEnvironmentResponse(api.StartEnvironmentResponse o) {
-  buildCounterStartEnvironmentResponse++;
-  if (buildCounterStartEnvironmentResponse < 3) {
-    checkEnvironment(o.environment!);
-  }
-  buildCounterStartEnvironmentResponse--;
 }
 
 core.Map<core.String, core.Object?> buildUnnamed5() => {
@@ -658,16 +490,6 @@ void checkStatus(api.Status o) {
 }
 
 void main() {
-  unittest.group('obj-schema-AddPublicKeyMetadata', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildAddPublicKeyMetadata();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.AddPublicKeyMetadata.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkAddPublicKeyMetadata(od);
-    });
-  });
-
   unittest.group('obj-schema-AddPublicKeyRequest', () {
     unittest.test('to-json--from-json', () async {
       final o = buildAddPublicKeyRequest();
@@ -675,26 +497,6 @@ void main() {
       final od = api.AddPublicKeyRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkAddPublicKeyRequest(od);
-    });
-  });
-
-  unittest.group('obj-schema-AddPublicKeyResponse', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildAddPublicKeyResponse();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.AddPublicKeyResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkAddPublicKeyResponse(od);
-    });
-  });
-
-  unittest.group('obj-schema-AuthorizeEnvironmentMetadata', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildAuthorizeEnvironmentMetadata();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.AuthorizeEnvironmentMetadata.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkAuthorizeEnvironmentMetadata(od);
     });
   });
 
@@ -708,16 +510,6 @@ void main() {
     });
   });
 
-  unittest.group('obj-schema-AuthorizeEnvironmentResponse', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildAuthorizeEnvironmentResponse();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.AuthorizeEnvironmentResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkAuthorizeEnvironmentResponse(od);
-    });
-  });
-
   unittest.group('obj-schema-CancelOperationRequest', () {
     unittest.test('to-json--from-json', () async {
       final o = buildCancelOperationRequest();
@@ -725,26 +517,6 @@ void main() {
       final od = api.CancelOperationRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkCancelOperationRequest(od);
-    });
-  });
-
-  unittest.group('obj-schema-CreateEnvironmentMetadata', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildCreateEnvironmentMetadata();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.CreateEnvironmentMetadata.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkCreateEnvironmentMetadata(od);
-    });
-  });
-
-  unittest.group('obj-schema-DeleteEnvironmentMetadata', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildDeleteEnvironmentMetadata();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.DeleteEnvironmentMetadata.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkDeleteEnvironmentMetadata(od);
     });
   });
 
@@ -788,16 +560,6 @@ void main() {
     });
   });
 
-  unittest.group('obj-schema-RemovePublicKeyMetadata', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildRemovePublicKeyMetadata();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.RemovePublicKeyMetadata.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkRemovePublicKeyMetadata(od);
-    });
-  });
-
   unittest.group('obj-schema-RemovePublicKeyRequest', () {
     unittest.test('to-json--from-json', () async {
       final o = buildRemovePublicKeyRequest();
@@ -808,26 +570,6 @@ void main() {
     });
   });
 
-  unittest.group('obj-schema-RemovePublicKeyResponse', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildRemovePublicKeyResponse();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.RemovePublicKeyResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkRemovePublicKeyResponse(od);
-    });
-  });
-
-  unittest.group('obj-schema-StartEnvironmentMetadata', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildStartEnvironmentMetadata();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.StartEnvironmentMetadata.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkStartEnvironmentMetadata(od);
-    });
-  });
-
   unittest.group('obj-schema-StartEnvironmentRequest', () {
     unittest.test('to-json--from-json', () async {
       final o = buildStartEnvironmentRequest();
@@ -835,16 +577,6 @@ void main() {
       final od = api.StartEnvironmentRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkStartEnvironmentRequest(od);
-    });
-  });
-
-  unittest.group('obj-schema-StartEnvironmentResponse', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildStartEnvironmentResponse();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.StartEnvironmentResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkStartEnvironmentResponse(od);
     });
   });
 

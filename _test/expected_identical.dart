@@ -918,25 +918,6 @@ class StorageResource {
   }
 }
 
-/// A generic empty message that you can re-use to avoid defining duplicated
-/// empty messages in your APIs.
-///
-/// A typical example is to use it as the request or the response type of an API
-/// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
-/// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
-/// object `{}`.
-class EmptyFactory {
-  static Empty fromJson(core.Map _json) {
-    final message = Empty();
-    return message;
-  }
-
-  static core.Map<core.String, core.dynamic> toJson(Empty message) {
-    final _json = <core.String, core.dynamic>{};
-    return _json;
-  }
-}
-
 class NestedResponseFactory {
   static NestedResponse fromJson(core.Map _json) {
     final message = NestedResponse();

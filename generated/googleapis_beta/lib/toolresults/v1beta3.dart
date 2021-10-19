@@ -1882,30 +1882,6 @@ class ProjectsHistoriesExecutionsStepsThumbnailsResource {
   }
 }
 
-/// Additional details for an ANR crash.
-class ANR {
-  /// The stack trace of the ANR crash.
-  ///
-  /// Optional.
-  StackTrace? stackTrace;
-
-  ANR({
-    this.stackTrace,
-  });
-
-  ANR.fromJson(core.Map _json)
-      : this(
-          stackTrace: _json.containsKey('stackTrace')
-              ? StackTrace.fromJson(
-                  _json['stackTrace'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (stackTrace != null) 'stackTrace': stackTrace!,
-      };
-}
-
 /// Android app information.
 class AndroidAppInfo {
   /// The name of the app.
@@ -2268,9 +2244,6 @@ class AppStartTime {
       };
 }
 
-/// A suggestion to use deep links for a Robo run.
-typedef AvailableDeepLinks = $Empty;
-
 /// Encapsulates the metadata for basic sample series represented by a line
 /// chart
 class BasicPerfSampleSeries {
@@ -2383,28 +2356,6 @@ class BatchCreatePerfSamplesResponse {
       };
 }
 
-/// A warning that Robo encountered a screen that was mostly blank; this may
-/// indicate a problem with the app.
-class BlankScreen {
-  /// The screen id of the element
-  core.String? screenId;
-
-  BlankScreen({
-    this.screenId,
-  });
-
-  BlankScreen.fromJson(core.Map _json)
-      : this(
-          screenId: _json.containsKey('screenId')
-              ? _json['screenId'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (screenId != null) 'screenId': screenId!,
-      };
-}
-
 class CPUInfo {
   /// description of the device processor ie '1.8 GHz hexa core 64-bit ARMv8-A'
   core.String? cpuProcessor;
@@ -2440,30 +2391,6 @@ class CPUInfo {
         if (numberOfCores != null) 'numberOfCores': numberOfCores!,
       };
 }
-
-/// Crash dialog was detected during the test execution
-class CrashDialogError {
-  /// The name of the package that caused the dialog.
-  core.String? crashPackage;
-
-  CrashDialogError({
-    this.crashPackage,
-  });
-
-  CrashDialogError.fromJson(core.Map _json)
-      : this(
-          crashPackage: _json.containsKey('crashPackage')
-              ? _json['crashPackage'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (crashPackage != null) 'crashPackage': crashPackage!,
-      };
-}
-
-/// A warning that device ran out of memory
-typedef DeviceOutOfMemory = $Empty;
 
 /// A Duration represents a signed, fixed-length span of time represented as a
 /// count of seconds and fractions of seconds at nanosecond resolution.
@@ -2504,69 +2431,6 @@ class Duration {
   core.Map<core.String, core.dynamic> toJson() => {
         if (nanos != null) 'nanos': nanos!,
         if (seconds != null) 'seconds': seconds!,
-      };
-}
-
-/// Additional details about encountered login screens.
-class EncounteredLoginScreen {
-  /// Number of encountered distinct login screens.
-  core.int? distinctScreens;
-
-  /// Subset of login screens.
-  core.List<core.String>? screenIds;
-
-  EncounteredLoginScreen({
-    this.distinctScreens,
-    this.screenIds,
-  });
-
-  EncounteredLoginScreen.fromJson(core.Map _json)
-      : this(
-          distinctScreens: _json.containsKey('distinctScreens')
-              ? _json['distinctScreens'] as core.int
-              : null,
-          screenIds: _json.containsKey('screenIds')
-              ? (_json['screenIds'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (distinctScreens != null) 'distinctScreens': distinctScreens!,
-        if (screenIds != null) 'screenIds': screenIds!,
-      };
-}
-
-/// Additional details about encountered screens with elements that are not
-/// Android UI widgets.
-class EncounteredNonAndroidUiWidgetScreen {
-  /// Number of encountered distinct screens with non Android UI widgets.
-  core.int? distinctScreens;
-
-  /// Subset of screens which contain non Android UI widgets.
-  core.List<core.String>? screenIds;
-
-  EncounteredNonAndroidUiWidgetScreen({
-    this.distinctScreens,
-    this.screenIds,
-  });
-
-  EncounteredNonAndroidUiWidgetScreen.fromJson(core.Map _json)
-      : this(
-          distinctScreens: _json.containsKey('distinctScreens')
-              ? _json['distinctScreens'] as core.int
-              : null,
-          screenIds: _json.containsKey('screenIds')
-              ? (_json['screenIds'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (distinctScreens != null) 'distinctScreens': distinctScreens!,
-        if (screenIds != null) 'screenIds': screenIds!,
       };
 }
 
@@ -2848,9 +2712,6 @@ class Execution {
       };
 }
 
-/// Failed to install the APK.
-typedef FailedToInstall = $Empty;
-
 /// Details for an outcome with a FAILURE outcome summary.
 class FailureDetail {
   /// If the failure was severe because the system (app) under test crashed.
@@ -2922,30 +2783,6 @@ class FailureDetail {
         if (otherNativeCrash != null) 'otherNativeCrash': otherNativeCrash!,
         if (timedOut != null) 'timedOut': timedOut!,
         if (unableToCrawl != null) 'unableToCrawl': unableToCrawl!,
-      };
-}
-
-/// Additional details for a fatal exception.
-class FatalException {
-  /// The stack trace of the fatal exception.
-  ///
-  /// Optional.
-  StackTrace? stackTrace;
-
-  FatalException({
-    this.stackTrace,
-  });
-
-  FatalException.fromJson(core.Map _json)
-      : this(
-          stackTrace: _json.containsKey('stackTrace')
-              ? StackTrace.fromJson(
-                  _json['stackTrace'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (stackTrace != null) 'stackTrace': stackTrace!,
       };
 }
 
@@ -3246,40 +3083,6 @@ class Image {
       };
 }
 
-/// Additional details of in-app purchases encountered during the crawl.
-class InAppPurchasesFound {
-  /// The total number of in-app purchases flows explored: how many times the
-  /// robo tries to buy a SKU.
-  core.int? inAppPurchasesFlowsExplored;
-
-  /// The total number of in-app purchases flows started.
-  core.int? inAppPurchasesFlowsStarted;
-
-  InAppPurchasesFound({
-    this.inAppPurchasesFlowsExplored,
-    this.inAppPurchasesFlowsStarted,
-  });
-
-  InAppPurchasesFound.fromJson(core.Map _json)
-      : this(
-          inAppPurchasesFlowsExplored:
-              _json.containsKey('inAppPurchasesFlowsExplored')
-                  ? _json['inAppPurchasesFlowsExplored'] as core.int
-                  : null,
-          inAppPurchasesFlowsStarted:
-              _json.containsKey('inAppPurchasesFlowsStarted')
-                  ? _json['inAppPurchasesFlowsStarted'] as core.int
-                  : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (inAppPurchasesFlowsExplored != null)
-          'inAppPurchasesFlowsExplored': inAppPurchasesFlowsExplored!,
-        if (inAppPurchasesFlowsStarted != null)
-          'inAppPurchasesFlowsStarted': inAppPurchasesFlowsStarted!,
-      };
-}
-
 /// Details for an outcome with an INCONCLUSIVE outcome summary.
 class InconclusiveDetail {
   /// If the end user aborted the test execution before a pass or fail could be
@@ -3386,33 +3189,6 @@ class IndividualOutcome {
         if (outcomeSummary != null) 'outcomeSummary': outcomeSummary!,
         if (runDuration != null) 'runDuration': runDuration!,
         if (stepId != null) 'stepId': stepId!,
-      };
-}
-
-/// A warning that Robo did not crawl potentially important parts of the app.
-typedef InsufficientCoverage = $Empty;
-
-/// Additional details for an iOS app crash.
-class IosAppCrashed {
-  /// The stack trace, if one is available.
-  ///
-  /// Optional.
-  StackTrace? stackTrace;
-
-  IosAppCrashed({
-    this.stackTrace,
-  });
-
-  IosAppCrashed.fromJson(core.Map _json)
-      : this(
-          stackTrace: _json.containsKey('stackTrace')
-              ? StackTrace.fromJson(
-                  _json['stackTrace'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (stackTrace != null) 'stackTrace': stackTrace!,
       };
 }
 
@@ -3547,9 +3323,6 @@ class IosXcTest {
         if (xcodeVersion != null) 'xcodeVersion': xcodeVersion!,
       };
 }
-
-/// Failed to find the launcher activity of an app.
-typedef LauncherActivityNotFound = $Empty;
 
 /// Response message for EnvironmentService.ListEnvironments.
 class ListEnvironmentsResponse {
@@ -3913,9 +3686,6 @@ class ListTestCasesResponse {
       };
 }
 
-/// A warning that there were issues in logcat collection.
-typedef LogcatCollectionError = $Empty;
-
 /// One dimension of the matrix of different runs of a step.
 typedef MatrixDimensionDefinition = $Empty;
 
@@ -4054,235 +3824,6 @@ class MultiStep {
       };
 }
 
-/// Additional details for a native crash.
-class NativeCrash {
-  /// The stack trace of the native crash.
-  ///
-  /// Optional.
-  StackTrace? stackTrace;
-
-  NativeCrash({
-    this.stackTrace,
-  });
-
-  NativeCrash.fromJson(core.Map _json)
-      : this(
-          stackTrace: _json.containsKey('stackTrace')
-              ? StackTrace.fromJson(
-                  _json['stackTrace'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (stackTrace != null) 'stackTrace': stackTrace!,
-      };
-}
-
-/// A non-sdk API and examples of it being called along with other metadata See
-/// https://developer.android.com/distribute/best-practices/develop/restrictions-non-sdk-interfaces
-class NonSdkApi {
-  /// The signature of the Non-SDK API
-  core.String? apiSignature;
-
-  /// Example stack traces of this API being called.
-  core.List<core.String>? exampleStackTraces;
-
-  /// Optional debugging insights for non-SDK API violations.
-  core.List<NonSdkApiInsight>? insights;
-
-  /// The total number of times this API was observed to have been called.
-  core.int? invocationCount;
-
-  /// Which list this API appears on
-  /// Possible string values are:
-  /// - "NONE"
-  /// - "WHITE"
-  /// - "BLACK"
-  /// - "GREY"
-  /// - "GREY_MAX_O"
-  /// - "GREY_MAX_P"
-  /// - "GREY_MAX_Q"
-  /// - "GREY_MAX_R"
-  core.String? list;
-
-  NonSdkApi({
-    this.apiSignature,
-    this.exampleStackTraces,
-    this.insights,
-    this.invocationCount,
-    this.list,
-  });
-
-  NonSdkApi.fromJson(core.Map _json)
-      : this(
-          apiSignature: _json.containsKey('apiSignature')
-              ? _json['apiSignature'] as core.String
-              : null,
-          exampleStackTraces: _json.containsKey('exampleStackTraces')
-              ? (_json['exampleStackTraces'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          insights: _json.containsKey('insights')
-              ? (_json['insights'] as core.List)
-                  .map((value) => NonSdkApiInsight.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          invocationCount: _json.containsKey('invocationCount')
-              ? _json['invocationCount'] as core.int
-              : null,
-          list: _json.containsKey('list') ? _json['list'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (apiSignature != null) 'apiSignature': apiSignature!,
-        if (exampleStackTraces != null)
-          'exampleStackTraces': exampleStackTraces!,
-        if (insights != null) 'insights': insights!,
-        if (invocationCount != null) 'invocationCount': invocationCount!,
-        if (list != null) 'list': list!,
-      };
-}
-
-/// Non-SDK API insights (to address debugging solutions).
-class NonSdkApiInsight {
-  /// Optional sample stack traces, for which this insight applies (there should
-  /// be at least one).
-  core.List<core.String>? exampleTraceMessages;
-
-  /// A unique ID, to be used for determining the effectiveness of this
-  /// particular insight in the context of a matcher.
-  ///
-  /// (required)
-  core.String? matcherId;
-
-  /// An insight indicating that the hidden API usage originates from a
-  /// Google-provided library.
-  PendingGoogleUpdateInsight? pendingGoogleUpdateInsight;
-
-  /// An insight indicating that the hidden API usage originates from the use of
-  /// a library that needs to be upgraded.
-  UpgradeInsight? upgradeInsight;
-
-  NonSdkApiInsight({
-    this.exampleTraceMessages,
-    this.matcherId,
-    this.pendingGoogleUpdateInsight,
-    this.upgradeInsight,
-  });
-
-  NonSdkApiInsight.fromJson(core.Map _json)
-      : this(
-          exampleTraceMessages: _json.containsKey('exampleTraceMessages')
-              ? (_json['exampleTraceMessages'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          matcherId: _json.containsKey('matcherId')
-              ? _json['matcherId'] as core.String
-              : null,
-          pendingGoogleUpdateInsight:
-              _json.containsKey('pendingGoogleUpdateInsight')
-                  ? PendingGoogleUpdateInsight.fromJson(
-                      _json['pendingGoogleUpdateInsight']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          upgradeInsight: _json.containsKey('upgradeInsight')
-              ? UpgradeInsight.fromJson(_json['upgradeInsight']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (exampleTraceMessages != null)
-          'exampleTraceMessages': exampleTraceMessages!,
-        if (matcherId != null) 'matcherId': matcherId!,
-        if (pendingGoogleUpdateInsight != null)
-          'pendingGoogleUpdateInsight': pendingGoogleUpdateInsight!,
-        if (upgradeInsight != null) 'upgradeInsight': upgradeInsight!,
-      };
-}
-
-/// Additional details for a non-sdk API usage violation.
-class NonSdkApiUsageViolation {
-  /// Signatures of a subset of those hidden API's.
-  core.List<core.String>? apiSignatures;
-
-  /// Total number of unique hidden API's accessed.
-  core.int? uniqueApis;
-
-  NonSdkApiUsageViolation({
-    this.apiSignatures,
-    this.uniqueApis,
-  });
-
-  NonSdkApiUsageViolation.fromJson(core.Map _json)
-      : this(
-          apiSignatures: _json.containsKey('apiSignatures')
-              ? (_json['apiSignatures'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          uniqueApis: _json.containsKey('uniqueApis')
-              ? _json['uniqueApis'] as core.int
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (apiSignatures != null) 'apiSignatures': apiSignatures!,
-        if (uniqueApis != null) 'uniqueApis': uniqueApis!,
-      };
-}
-
-/// Contains a summary and examples of non-sdk API usage violations.
-class NonSdkApiUsageViolationReport {
-  /// Examples of the detected API usages.
-  core.List<NonSdkApi>? exampleApis;
-
-  /// Minimum API level required for the application to run.
-  core.int? minSdkVersion;
-
-  /// Specifies the API Level on which the application is designed to run.
-  core.int? targetSdkVersion;
-
-  /// Total number of unique Non-SDK API's accessed.
-  core.int? uniqueApis;
-
-  NonSdkApiUsageViolationReport({
-    this.exampleApis,
-    this.minSdkVersion,
-    this.targetSdkVersion,
-    this.uniqueApis,
-  });
-
-  NonSdkApiUsageViolationReport.fromJson(core.Map _json)
-      : this(
-          exampleApis: _json.containsKey('exampleApis')
-              ? (_json['exampleApis'] as core.List)
-                  .map((value) => NonSdkApi.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          minSdkVersion: _json.containsKey('minSdkVersion')
-              ? _json['minSdkVersion'] as core.int
-              : null,
-          targetSdkVersion: _json.containsKey('targetSdkVersion')
-              ? _json['targetSdkVersion'] as core.int
-              : null,
-          uniqueApis: _json.containsKey('uniqueApis')
-              ? _json['uniqueApis'] as core.int
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (exampleApis != null) 'exampleApis': exampleApis!,
-        if (minSdkVersion != null) 'minSdkVersion': minSdkVersion!,
-        if (targetSdkVersion != null) 'targetSdkVersion': targetSdkVersion!,
-        if (uniqueApis != null) 'uniqueApis': uniqueApis!,
-      };
-}
-
 /// Interprets a result so that humans and machines can act on it.
 class Outcome {
   /// More information about a FAILURE outcome.
@@ -4366,63 +3907,6 @@ class Outcome {
         if (skippedDetail != null) 'skippedDetail': skippedDetail!,
         if (successDetail != null) 'successDetail': successDetail!,
         if (summary != null) 'summary': summary!,
-      };
-}
-
-/// A warning that Robo encountered a screen that has overlapping clickable
-/// elements; this may indicate a potential UI issue.
-class OverlappingUIElements {
-  /// Resource names of the overlapping screen elements
-  core.List<core.String>? resourceName;
-
-  /// The screen id of the elements
-  core.String? screenId;
-
-  OverlappingUIElements({
-    this.resourceName,
-    this.screenId,
-  });
-
-  OverlappingUIElements.fromJson(core.Map _json)
-      : this(
-          resourceName: _json.containsKey('resourceName')
-              ? (_json['resourceName'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          screenId: _json.containsKey('screenId')
-              ? _json['screenId'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (resourceName != null) 'resourceName': resourceName!,
-        if (screenId != null) 'screenId': screenId!,
-      };
-}
-
-/// This insight indicates that the hidden API usage originates from a
-/// Google-provided library.
-///
-/// Users need not take any action.
-class PendingGoogleUpdateInsight {
-  /// The name of the Google-provided library with the non-SDK API dependency.
-  core.String? nameOfGoogleLibrary;
-
-  PendingGoogleUpdateInsight({
-    this.nameOfGoogleLibrary,
-  });
-
-  PendingGoogleUpdateInsight.fromJson(core.Map _json)
-      : this(
-          nameOfGoogleLibrary: _json.containsKey('nameOfGoogleLibrary')
-              ? _json['nameOfGoogleLibrary'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (nameOfGoogleLibrary != null)
-          'nameOfGoogleLibrary': nameOfGoogleLibrary!,
       };
 }
 
@@ -4646,30 +4130,6 @@ class PerfSampleSeries {
       };
 }
 
-/// A notification that Robo signed in with Google.
-typedef PerformedGoogleLogin = $Empty;
-
-/// A notification that Robo performed some monkey actions.
-class PerformedMonkeyActions {
-  /// The total number of monkey actions performed during the crawl.
-  core.int? totalActions;
-
-  PerformedMonkeyActions({
-    this.totalActions,
-  });
-
-  PerformedMonkeyActions.fromJson(core.Map _json)
-      : this(
-          totalActions: _json.containsKey('totalActions')
-              ? _json['totalActions'] as core.int
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (totalActions != null) 'totalActions': totalActions!,
-      };
-}
-
 /// Stores rollup test status of multiple steps that were run as a group and
 /// outcome of each individual step.
 class PrimaryStep {
@@ -4857,35 +4317,6 @@ class ResultsStorage {
         if (resultsStoragePath != null)
           'resultsStoragePath': resultsStoragePath!,
         if (xunitXmlFile != null) 'xunitXmlFile': xunitXmlFile!,
-      };
-}
-
-/// Execution stats for a user-provided Robo script.
-class RoboScriptExecution {
-  /// The number of Robo script actions executed successfully.
-  core.int? successfulActions;
-
-  /// The total number of actions in the Robo script.
-  core.int? totalActions;
-
-  RoboScriptExecution({
-    this.successfulActions,
-    this.totalActions,
-  });
-
-  RoboScriptExecution.fromJson(core.Map _json)
-      : this(
-          successfulActions: _json.containsKey('successfulActions')
-              ? _json['successfulActions'] as core.int
-              : null,
-          totalActions: _json.containsKey('totalActions')
-              ? _json['totalActions'] as core.int
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (successfulActions != null) 'successfulActions': successfulActions!,
-        if (totalActions != null) 'totalActions': totalActions!,
       };
 }
 
@@ -5157,30 +4588,6 @@ class StackTrace {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (exception != null) 'exception': exception!,
-      };
-}
-
-/// User provided intent failed to resolve to an activity.
-class StartActivityNotFound {
-  core.String? action;
-  core.String? uri;
-
-  StartActivityNotFound({
-    this.action,
-    this.uri,
-  });
-
-  StartActivityNotFound.fromJson(core.Map _json)
-      : this(
-          action: _json.containsKey('action')
-              ? _json['action'] as core.String
-              : null,
-          uri: _json.containsKey('uri') ? _json['uri'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (action != null) 'action': action!,
-        if (uri != null) 'uri': uri!,
       };
 }
 
@@ -6418,141 +5825,5 @@ class ToolOutputReference {
         if (creationTime != null) 'creationTime': creationTime!,
         if (output != null) 'output': output!,
         if (testCase != null) 'testCase': testCase!,
-      };
-}
-
-/// A warning that the screen hierarchy is deeper than the recommended
-/// threshold.
-class UIElementTooDeep {
-  /// The depth of the screen element
-  core.int? depth;
-
-  /// The screen id of the element
-  core.String? screenId;
-
-  /// The screen state id of the element
-  core.String? screenStateId;
-
-  UIElementTooDeep({
-    this.depth,
-    this.screenId,
-    this.screenStateId,
-  });
-
-  UIElementTooDeep.fromJson(core.Map _json)
-      : this(
-          depth: _json.containsKey('depth') ? _json['depth'] as core.int : null,
-          screenId: _json.containsKey('screenId')
-              ? _json['screenId'] as core.String
-              : null,
-          screenStateId: _json.containsKey('screenStateId')
-              ? _json['screenStateId'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (depth != null) 'depth': depth!,
-        if (screenId != null) 'screenId': screenId!,
-        if (screenStateId != null) 'screenStateId': screenStateId!,
-      };
-}
-
-/// Default unspecified warning.
-typedef UnspecifiedWarning = $Empty;
-
-/// Additional details of an unused robodirective.
-class UnusedRoboDirective {
-  /// The name of the resource that was unused.
-  core.String? resourceName;
-
-  UnusedRoboDirective({
-    this.resourceName,
-  });
-
-  UnusedRoboDirective.fromJson(core.Map _json)
-      : this(
-          resourceName: _json.containsKey('resourceName')
-              ? _json['resourceName'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (resourceName != null) 'resourceName': resourceName!,
-      };
-}
-
-/// This insight is a recommendation to upgrade a given library to the specified
-/// version, in order to avoid dependencies on non-SDK APIs.
-class UpgradeInsight {
-  /// The name of the package to be upgraded.
-  core.String? packageName;
-
-  /// The suggested version to upgrade to.
-  ///
-  /// Optional: In case we are not sure which version solves this problem
-  core.String? upgradeToVersion;
-
-  UpgradeInsight({
-    this.packageName,
-    this.upgradeToVersion,
-  });
-
-  UpgradeInsight.fromJson(core.Map _json)
-      : this(
-          packageName: _json.containsKey('packageName')
-              ? _json['packageName'] as core.String
-              : null,
-          upgradeToVersion: _json.containsKey('upgradeToVersion')
-              ? _json['upgradeToVersion'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (packageName != null) 'packageName': packageName!,
-        if (upgradeToVersion != null) 'upgradeToVersion': upgradeToVersion!,
-      };
-}
-
-/// Additional details of a used Robo directive.
-class UsedRoboDirective {
-  /// The name of the resource that was used.
-  core.String? resourceName;
-
-  UsedRoboDirective({
-    this.resourceName,
-  });
-
-  UsedRoboDirective.fromJson(core.Map _json)
-      : this(
-          resourceName: _json.containsKey('resourceName')
-              ? _json['resourceName'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (resourceName != null) 'resourceName': resourceName!,
-      };
-}
-
-/// Additional details of a used Robo directive with an ignore action.
-///
-/// Note: This is a different scenario than unused directive.
-class UsedRoboIgnoreDirective {
-  /// The name of the resource that was ignored.
-  core.String? resourceName;
-
-  UsedRoboIgnoreDirective({
-    this.resourceName,
-  });
-
-  UsedRoboIgnoreDirective.fromJson(core.Map _json)
-      : this(
-          resourceName: _json.containsKey('resourceName')
-              ? _json['resourceName'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (resourceName != null) 'resourceName': resourceName!,
       };
 }

@@ -1185,81 +1185,6 @@ class EntryPoint {
       };
 }
 
-/// The response for executing or debugging a function in an Apps Script
-/// project.
-class ExecuteStreamResponse {
-  /// The result of the execution.
-  ScriptExecutionResult? result;
-
-  ExecuteStreamResponse({
-    this.result,
-  });
-
-  ExecuteStreamResponse.fromJson(core.Map _json)
-      : this(
-          result: _json.containsKey('result')
-              ? ScriptExecutionResult.fromJson(
-                  _json['result'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (result != null) 'result': result!,
-      };
-}
-
-/// An object that provides information about the nature of an error resulting
-/// from an attempted execution of a script function using the Apps Script API.
-///
-/// If a run call succeeds but the script function (or Apps Script itself)
-/// throws an exception, the response body's error field contains a Status
-/// object. The `Status` object's `details` field contains an array with a
-/// single one of these `ExecutionError` objects.
-class ExecutionError {
-  /// The error message thrown by Apps Script, usually localized into the user's
-  /// language.
-  core.String? errorMessage;
-
-  /// The error type, for example `TypeError` or `ReferenceError`.
-  ///
-  /// If the error type is unavailable, this field is not included.
-  core.String? errorType;
-
-  /// An array of objects that provide a stack trace through the script to show
-  /// where the execution failed, with the deepest call first.
-  core.List<ScriptStackTraceElement>? scriptStackTraceElements;
-
-  ExecutionError({
-    this.errorMessage,
-    this.errorType,
-    this.scriptStackTraceElements,
-  });
-
-  ExecutionError.fromJson(core.Map _json)
-      : this(
-          errorMessage: _json.containsKey('errorMessage')
-              ? _json['errorMessage'] as core.String
-              : null,
-          errorType: _json.containsKey('errorType')
-              ? _json['errorType'] as core.String
-              : null,
-          scriptStackTraceElements:
-              _json.containsKey('scriptStackTraceElements')
-                  ? (_json['scriptStackTraceElements'] as core.List)
-                      .map((value) => ScriptStackTraceElement.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                      .toList()
-                  : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (errorMessage != null) 'errorMessage': errorMessage!,
-        if (errorType != null) 'errorType': errorType!,
-        if (scriptStackTraceElements != null)
-          'scriptStackTraceElements': scriptStackTraceElements!,
-      };
-}
-
 /// A request to run the function in a script.
 ///
 /// The script is identified by the specified `script_id`. Executing a function
@@ -1333,37 +1258,6 @@ class ExecutionRequest {
         if (function != null) 'function': function!,
         if (parameters != null) 'parameters': parameters!,
         if (sessionState != null) 'sessionState': sessionState!,
-      };
-}
-
-/// An object that provides the return value of a function executed using the
-/// Apps Script API.
-///
-/// If the script function returns successfully, the response body's response
-/// field contains this `ExecutionResponse` object.
-class ExecutionResponse {
-  /// The return value of the script function.
-  ///
-  /// The type matches the object type returned in Apps Script. Functions called
-  /// using the Apps Script API cannot return Apps Script-specific objects (such
-  /// as a `Document` or a `Calendar`); they can only return primitive types
-  /// such as a `string`, `number`, `array`, `object`, or `boolean`.
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Object? result;
-
-  ExecutionResponse({
-    this.result,
-  });
-
-  ExecutionResponse.fromJson(core.Map _json)
-      : this(
-          result: _json.containsKey('result') ? _json['result'] : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (result != null) 'result': result!,
       };
 }
 
@@ -1937,30 +1831,6 @@ class ListUserProcessesResponse {
       };
 }
 
-/// `ListValue` is a wrapper around a repeated field of values.
-class ListValue {
-  /// Repeated field of dynamically typed values.
-  core.List<Value>? values;
-
-  ListValue({
-    this.values,
-  });
-
-  ListValue.fromJson(core.Map _json)
-      : this(
-          values: _json.containsKey('values')
-              ? (_json['values'] as core.List)
-                  .map((value) => Value.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (values != null) 'values': values!,
-      };
-}
-
 /// Response with the list of the versions for the specified script project.
 class ListVersionsResponse {
   /// The token use to fetch the next page of records.
@@ -2217,57 +2087,6 @@ class Project {
       };
 }
 
-/// The result of an execution.
-class ScriptExecutionResult {
-  /// The returned value of the execution.
-  Value? returnValue;
-
-  ScriptExecutionResult({
-    this.returnValue,
-  });
-
-  ScriptExecutionResult.fromJson(core.Map _json)
-      : this(
-          returnValue: _json.containsKey('returnValue')
-              ? Value.fromJson(
-                  _json['returnValue'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (returnValue != null) 'returnValue': returnValue!,
-      };
-}
-
-/// A stack trace through the script that shows where the execution failed.
-class ScriptStackTraceElement {
-  /// The name of the function that failed.
-  core.String? function;
-
-  /// The line number where the script failed.
-  core.int? lineNumber;
-
-  ScriptStackTraceElement({
-    this.function,
-    this.lineNumber,
-  });
-
-  ScriptStackTraceElement.fromJson(core.Map _json)
-      : this(
-          function: _json.containsKey('function')
-              ? _json['function'] as core.String
-              : null,
-          lineNumber: _json.containsKey('lineNumber')
-              ? _json['lineNumber'] as core.int
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (function != null) 'function': function!,
-        if (lineNumber != null) 'lineNumber': lineNumber!,
-      };
-}
-
 /// If a `run` call succeeds but the script function (or Apps Script itself)
 /// throws an exception, the response body's error field contains this `Status`
 /// object.
@@ -2318,33 +2137,6 @@ class Status {
       };
 }
 
-/// `Struct` represents a structured data value, consisting of fields which map
-/// to dynamically typed values.
-class Struct {
-  /// Unordered map of dynamically typed values.
-  core.Map<core.String, Value>? fields;
-
-  Struct({
-    this.fields,
-  });
-
-  Struct.fromJson(core.Map _json)
-      : this(
-          fields: _json.containsKey('fields')
-              ? (_json['fields'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    Value.fromJson(item as core.Map<core.String, core.dynamic>),
-                  ),
-                )
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (fields != null) 'fields': fields!,
-      };
-}
-
 /// Request with deployment information to update an existing deployment.
 class UpdateDeploymentRequest {
   /// The deployment configuration.
@@ -2364,104 +2156,6 @@ class UpdateDeploymentRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (deploymentConfig != null) 'deploymentConfig': deploymentConfig!,
-      };
-}
-
-/// `Value` represents a dynamically typed value which is the outcome of an
-/// executed script.
-class Value {
-  /// Represents a boolean value.
-  core.bool? boolValue;
-
-  /// Represents raw byte values.
-  core.String? bytesValue;
-  core.List<core.int> get bytesValueAsBytes =>
-      convert.base64.decode(bytesValue!);
-
-  set bytesValueAsBytes(core.List<core.int> _bytes) {
-    bytesValue =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
-  }
-
-  /// Represents a date in ms since the epoch.
-  core.String? dateValue;
-
-  /// Represents a repeated `Value`.
-  ListValue? listValue;
-
-  /// Represents a null value.
-  /// Possible string values are:
-  /// - "NULL_VALUE" : Null value.
-  core.String? nullValue;
-
-  /// Represents a double value.
-  core.double? numberValue;
-
-  /// Represents a structured proto value.
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object?>? protoValue;
-
-  /// Represents a string value.
-  core.String? stringValue;
-
-  /// Represents a structured value.
-  Struct? structValue;
-
-  Value({
-    this.boolValue,
-    this.bytesValue,
-    this.dateValue,
-    this.listValue,
-    this.nullValue,
-    this.numberValue,
-    this.protoValue,
-    this.stringValue,
-    this.structValue,
-  });
-
-  Value.fromJson(core.Map _json)
-      : this(
-          boolValue: _json.containsKey('boolValue')
-              ? _json['boolValue'] as core.bool
-              : null,
-          bytesValue: _json.containsKey('bytesValue')
-              ? _json['bytesValue'] as core.String
-              : null,
-          dateValue: _json.containsKey('dateValue')
-              ? _json['dateValue'] as core.String
-              : null,
-          listValue: _json.containsKey('listValue')
-              ? ListValue.fromJson(
-                  _json['listValue'] as core.Map<core.String, core.dynamic>)
-              : null,
-          nullValue: _json.containsKey('nullValue') ? 'NULL_VALUE' : null,
-          numberValue: _json.containsKey('numberValue')
-              ? (_json['numberValue'] as core.num).toDouble()
-              : null,
-          protoValue: _json.containsKey('protoValue')
-              ? _json['protoValue'] as core.Map<core.String, core.dynamic>
-              : null,
-          stringValue: _json.containsKey('stringValue')
-              ? _json['stringValue'] as core.String
-              : null,
-          structValue: _json.containsKey('structValue')
-              ? Struct.fromJson(
-                  _json['structValue'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (boolValue != null) 'boolValue': boolValue!,
-        if (bytesValue != null) 'bytesValue': bytesValue!,
-        if (dateValue != null) 'dateValue': dateValue!,
-        if (listValue != null) 'listValue': listValue!,
-        if (nullValue != null) 'nullValue': nullValue!,
-        if (numberValue != null) 'numberValue': numberValue!,
-        if (protoValue != null) 'protoValue': protoValue!,
-        if (stringValue != null) 'stringValue': stringValue!,
-        if (structValue != null) 'structValue': structValue!,
       };
 }
 

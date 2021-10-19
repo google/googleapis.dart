@@ -431,14 +431,6 @@ class ProjectsLocationsScansVulnerabilitiesResource {
 /// An alias to a repo revision.
 typedef AliasContext = $AliasContext;
 
-/// AnalyzePackagesMetadata contains metadata for an active scan of a container
-/// image.
-typedef AnalyzePackagesMetadata = $Shared04;
-
-/// AnalyzePackagesMetadata contains metadata for an active scan of a container
-/// image.
-typedef AnalyzePackagesMetadataV1 = $Shared04;
-
 /// AnalyzePackagesRequest is the request to analyze a list of packages and
 /// create Vulnerability Occurrences for it.
 class AnalyzePackagesRequest {
@@ -473,14 +465,6 @@ class AnalyzePackagesRequest {
         if (resourceUri != null) 'resourceUri': resourceUri!,
       };
 }
-
-/// AnalyzePackagesResponse contains the information necessary to find results
-/// for the given scan.
-typedef AnalyzePackagesResponse = $Shared05;
-
-/// AnalyzePackagesResponse contains the information necessary to find results
-/// for the given scan.
-typedef AnalyzePackagesResponseV1 = $Shared05;
 
 /// Artifact describes a build product.
 typedef Artifact = $Artifact;

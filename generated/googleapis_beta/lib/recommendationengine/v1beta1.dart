@@ -1353,40 +1353,6 @@ class GoogleApiHttpBody {
       };
 }
 
-/// Metadata for TriggerCatalogRejoin method.
-typedef GoogleCloudRecommendationengineV1alphaRejoinCatalogMetadata = $Empty;
-
-/// Response message for TriggerCatalogRejoin method.
-typedef GoogleCloudRecommendationengineV1alphaRejoinCatalogResponse = $Response;
-
-/// Metadata associated with a tune operation.
-class GoogleCloudRecommendationengineV1alphaTuningMetadata {
-  /// The resource name of the recommendation model that this tune applies to.
-  ///
-  /// Format:
-  /// projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/eventStores/{event_store_id}/recommendationModels/{recommendation_model_id}
-  core.String? recommendationModel;
-
-  GoogleCloudRecommendationengineV1alphaTuningMetadata({
-    this.recommendationModel,
-  });
-
-  GoogleCloudRecommendationengineV1alphaTuningMetadata.fromJson(core.Map _json)
-      : this(
-          recommendationModel: _json.containsKey('recommendationModel')
-              ? _json['recommendationModel'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (recommendationModel != null)
-          'recommendationModel': recommendationModel!,
-      };
-}
-
-/// Response associated with a tune operation.
-typedef GoogleCloudRecommendationengineV1alphaTuningResponse = $Empty;
-
 /// BigQuery source import data from.
 class GoogleCloudRecommendationengineV1beta1BigQuerySource {
   /// The schema to use when parsing the data from the source.
@@ -2183,45 +2149,6 @@ class GoogleCloudRecommendationengineV1beta1ImportCatalogItemsRequest {
       };
 }
 
-/// Response of the ImportCatalogItemsRequest.
-///
-/// If the long running operation is done, then this message is returned by the
-/// google.longrunning.Operations.response field if the operation was
-/// successful.
-class GoogleCloudRecommendationengineV1beta1ImportCatalogItemsResponse {
-  /// A sample of errors encountered while processing the request.
-  core.List<GoogleRpcStatus>? errorSamples;
-
-  /// Echoes the destination for the complete errors in the request if set.
-  GoogleCloudRecommendationengineV1beta1ImportErrorsConfig? errorsConfig;
-
-  GoogleCloudRecommendationengineV1beta1ImportCatalogItemsResponse({
-    this.errorSamples,
-    this.errorsConfig,
-  });
-
-  GoogleCloudRecommendationengineV1beta1ImportCatalogItemsResponse.fromJson(
-      core.Map _json)
-      : this(
-          errorSamples: _json.containsKey('errorSamples')
-              ? (_json['errorSamples'] as core.List)
-                  .map((value) => GoogleRpcStatus.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          errorsConfig: _json.containsKey('errorsConfig')
-              ? GoogleCloudRecommendationengineV1beta1ImportErrorsConfig
-                  .fromJson(_json['errorsConfig']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (errorSamples != null) 'errorSamples': errorSamples!,
-        if (errorsConfig != null) 'errorsConfig': errorsConfig!,
-      };
-}
-
 /// Configuration of destination for Import related errors.
 class GoogleCloudRecommendationengineV1beta1ImportErrorsConfig {
   /// Google Cloud Storage path for import errors.
@@ -2245,73 +2172,6 @@ class GoogleCloudRecommendationengineV1beta1ImportErrorsConfig {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (gcsPrefix != null) 'gcsPrefix': gcsPrefix!,
-      };
-}
-
-/// Metadata related to the progress of the Import operation.
-///
-/// This will be returned by the google.longrunning.Operation.metadata field.
-class GoogleCloudRecommendationengineV1beta1ImportMetadata {
-  /// Operation create time.
-  core.String? createTime;
-
-  /// Count of entries that encountered errors while processing.
-  core.String? failureCount;
-
-  /// Name of the operation.
-  core.String? operationName;
-
-  /// Id of the request / operation.
-  ///
-  /// This is parroting back the requestId that was passed in the request.
-  core.String? requestId;
-
-  /// Count of entries that were processed successfully.
-  core.String? successCount;
-
-  /// Operation last update time.
-  ///
-  /// If the operation is done, this is also the finish time.
-  core.String? updateTime;
-
-  GoogleCloudRecommendationengineV1beta1ImportMetadata({
-    this.createTime,
-    this.failureCount,
-    this.operationName,
-    this.requestId,
-    this.successCount,
-    this.updateTime,
-  });
-
-  GoogleCloudRecommendationengineV1beta1ImportMetadata.fromJson(core.Map _json)
-      : this(
-          createTime: _json.containsKey('createTime')
-              ? _json['createTime'] as core.String
-              : null,
-          failureCount: _json.containsKey('failureCount')
-              ? _json['failureCount'] as core.String
-              : null,
-          operationName: _json.containsKey('operationName')
-              ? _json['operationName'] as core.String
-              : null,
-          requestId: _json.containsKey('requestId')
-              ? _json['requestId'] as core.String
-              : null,
-          successCount: _json.containsKey('successCount')
-              ? _json['successCount'] as core.String
-              : null,
-          updateTime: _json.containsKey('updateTime')
-              ? _json['updateTime'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
-        if (failureCount != null) 'failureCount': failureCount!,
-        if (operationName != null) 'operationName': operationName!,
-        if (requestId != null) 'requestId': requestId!,
-        if (successCount != null) 'successCount': successCount!,
-        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
@@ -2365,56 +2225,6 @@ class GoogleCloudRecommendationengineV1beta1ImportUserEventsRequest {
         if (errorsConfig != null) 'errorsConfig': errorsConfig!,
         if (inputConfig != null) 'inputConfig': inputConfig!,
         if (requestId != null) 'requestId': requestId!,
-      };
-}
-
-/// Response of the ImportUserEventsRequest.
-///
-/// If the long running operation was successful, then this message is returned
-/// by the google.longrunning.Operations.response field if the operation was
-/// successful.
-class GoogleCloudRecommendationengineV1beta1ImportUserEventsResponse {
-  /// A sample of errors encountered while processing the request.
-  core.List<GoogleRpcStatus>? errorSamples;
-
-  /// Echoes the destination for the complete errors if this field was set in
-  /// the request.
-  GoogleCloudRecommendationengineV1beta1ImportErrorsConfig? errorsConfig;
-
-  /// Aggregated statistics of user event import status.
-  GoogleCloudRecommendationengineV1beta1UserEventImportSummary? importSummary;
-
-  GoogleCloudRecommendationengineV1beta1ImportUserEventsResponse({
-    this.errorSamples,
-    this.errorsConfig,
-    this.importSummary,
-  });
-
-  GoogleCloudRecommendationengineV1beta1ImportUserEventsResponse.fromJson(
-      core.Map _json)
-      : this(
-          errorSamples: _json.containsKey('errorSamples')
-              ? (_json['errorSamples'] as core.List)
-                  .map((value) => GoogleRpcStatus.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          errorsConfig: _json.containsKey('errorsConfig')
-              ? GoogleCloudRecommendationengineV1beta1ImportErrorsConfig
-                  .fromJson(_json['errorsConfig']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          importSummary: _json.containsKey('importSummary')
-              ? GoogleCloudRecommendationengineV1beta1UserEventImportSummary
-                  .fromJson(_json['importSummary']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (errorSamples != null) 'errorSamples': errorSamples!,
-        if (errorsConfig != null) 'errorsConfig': errorsConfig!,
-        if (importSummary != null) 'importSummary': importSummary!,
       };
 }
 
@@ -3436,38 +3246,6 @@ class GoogleCloudRecommendationengineV1beta1PurchaseTransaction {
       };
 }
 
-/// Metadata related to the progress of the PurgeUserEvents operation.
-///
-/// This will be returned by the google.longrunning.Operation.metadata field.
-class GoogleCloudRecommendationengineV1beta1PurgeUserEventsMetadata {
-  /// Operation create time.
-  core.String? createTime;
-
-  /// The ID of the request / operation.
-  core.String? operationName;
-
-  GoogleCloudRecommendationengineV1beta1PurgeUserEventsMetadata({
-    this.createTime,
-    this.operationName,
-  });
-
-  GoogleCloudRecommendationengineV1beta1PurgeUserEventsMetadata.fromJson(
-      core.Map _json)
-      : this(
-          createTime: _json.containsKey('createTime')
-              ? _json['createTime'] as core.String
-              : null,
-          operationName: _json.containsKey('operationName')
-              ? _json['operationName'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
-        if (operationName != null) 'operationName': operationName!,
-      };
-}
-
 /// Request message for PurgeUserEvents method.
 class GoogleCloudRecommendationengineV1beta1PurgeUserEventsRequest {
   /// The filter string to specify the events to be deleted.
@@ -3516,49 +3294,6 @@ class GoogleCloudRecommendationengineV1beta1PurgeUserEventsRequest {
       };
 }
 
-/// Response of the PurgeUserEventsRequest.
-///
-/// If the long running operation is successfully done, then this message is
-/// returned by the google.longrunning.Operations.response field.
-class GoogleCloudRecommendationengineV1beta1PurgeUserEventsResponse {
-  /// The total count of events purged as a result of the operation.
-  core.String? purgedEventsCount;
-
-  /// A sampling of events deleted (or will be deleted) depending on the `force`
-  /// property in the request.
-  ///
-  /// Max of 500 items will be returned.
-  core.List<GoogleCloudRecommendationengineV1beta1UserEvent>? userEventsSample;
-
-  GoogleCloudRecommendationengineV1beta1PurgeUserEventsResponse({
-    this.purgedEventsCount,
-    this.userEventsSample,
-  });
-
-  GoogleCloudRecommendationengineV1beta1PurgeUserEventsResponse.fromJson(
-      core.Map _json)
-      : this(
-          purgedEventsCount: _json.containsKey('purgedEventsCount')
-              ? _json['purgedEventsCount'] as core.String
-              : null,
-          userEventsSample: _json.containsKey('userEventsSample')
-              ? (_json['userEventsSample'] as core.List)
-                  .map((value) =>
-                      GoogleCloudRecommendationengineV1beta1UserEvent.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (purgedEventsCount != null) 'purgedEventsCount': purgedEventsCount!,
-        if (userEventsSample != null) 'userEventsSample': userEventsSample!,
-      };
-}
-
-/// Metadata for RejoinUserEvents method.
-typedef GoogleCloudRecommendationengineV1beta1RejoinUserEventsMetadata = $Empty;
-
 /// Request message for CatalogRejoin method.
 class GoogleCloudRecommendationengineV1beta1RejoinUserEventsRequest {
   /// The type of the catalog rejoin to define the scope and range of the user
@@ -3589,10 +3324,6 @@ class GoogleCloudRecommendationengineV1beta1RejoinUserEventsRequest {
           'userEventRejoinScope': userEventRejoinScope!,
       };
 }
-
-/// Response message for RejoinUserEvents method.
-typedef GoogleCloudRecommendationengineV1beta1RejoinUserEventsResponse
-    = $Response;
 
 /// UserEvent captures all metadata information recommendation engine needs to
 /// know about how end users interact with customers' website.
@@ -3705,40 +3436,6 @@ class GoogleCloudRecommendationengineV1beta1UserEvent {
         if (productEventDetail != null)
           'productEventDetail': productEventDetail!,
         if (userInfo != null) 'userInfo': userInfo!,
-      };
-}
-
-/// A summary of import result.
-///
-/// The UserEventImportSummary summarizes the import status for user events.
-class GoogleCloudRecommendationengineV1beta1UserEventImportSummary {
-  /// Count of user events imported with complete existing catalog information.
-  core.String? joinedEventsCount;
-
-  /// Count of user events imported, but with catalog information not found in
-  /// the imported catalog.
-  core.String? unjoinedEventsCount;
-
-  GoogleCloudRecommendationengineV1beta1UserEventImportSummary({
-    this.joinedEventsCount,
-    this.unjoinedEventsCount,
-  });
-
-  GoogleCloudRecommendationengineV1beta1UserEventImportSummary.fromJson(
-      core.Map _json)
-      : this(
-          joinedEventsCount: _json.containsKey('joinedEventsCount')
-              ? _json['joinedEventsCount'] as core.String
-              : null,
-          unjoinedEventsCount: _json.containsKey('unjoinedEventsCount')
-              ? _json['unjoinedEventsCount'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (joinedEventsCount != null) 'joinedEventsCount': joinedEventsCount!,
-        if (unjoinedEventsCount != null)
-          'unjoinedEventsCount': unjoinedEventsCount!,
       };
 }
 

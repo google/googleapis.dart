@@ -1688,36 +1688,6 @@ void checkMatchingJob(api.MatchingJob o) {
   buildCounterMatchingJob--;
 }
 
-core.Map<core.String, api.NamespacedDebugInput> buildUnnamed33() => {
-      'x': buildNamespacedDebugInput(),
-      'y': buildNamespacedDebugInput(),
-    };
-
-void checkUnnamed33(core.Map<core.String, api.NamespacedDebugInput> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkNamespacedDebugInput(o['x']!);
-  checkNamespacedDebugInput(o['y']!);
-}
-
-core.int buildCounterMendelDebugInput = 0;
-api.MendelDebugInput buildMendelDebugInput() {
-  final o = api.MendelDebugInput();
-  buildCounterMendelDebugInput++;
-  if (buildCounterMendelDebugInput < 3) {
-    o.namespacedDebugInput = buildUnnamed33();
-  }
-  buildCounterMendelDebugInput--;
-  return o;
-}
-
-void checkMendelDebugInput(api.MendelDebugInput o) {
-  buildCounterMendelDebugInput++;
-  if (buildCounterMendelDebugInput < 3) {
-    checkUnnamed33(o.namespacedDebugInput!);
-  }
-  buildCounterMendelDebugInput--;
-}
-
 core.int buildCounterMoney = 0;
 api.Money buildMoney() {
   final o = api.Money();
@@ -1750,21 +1720,82 @@ void checkMoney(api.Money o) {
   buildCounterMoney--;
 }
 
-core.List<core.String> buildUnnamed34() => [
-      'foo',
-      'foo',
+core.List<core.double> buildUnnamed33() => [
+      42.0,
+      42.0,
     ];
 
-void checkUnnamed34(core.List<core.String> o) {
+void checkUnnamed33(core.List<core.double> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
-    unittest.equals('foo'),
+    unittest.equals(42.0),
   );
   unittest.expect(
     o[1],
-    unittest.equals('foo'),
+    unittest.equals(42.0),
   );
+}
+
+core.int buildCounterNumericBucketingOption = 0;
+api.NumericBucketingOption buildNumericBucketingOption() {
+  final o = api.NumericBucketingOption();
+  buildCounterNumericBucketingOption++;
+  if (buildCounterNumericBucketingOption < 3) {
+    o.bucketBounds = buildUnnamed33();
+    o.requiresMinMax = true;
+  }
+  buildCounterNumericBucketingOption--;
+  return o;
+}
+
+void checkNumericBucketingOption(api.NumericBucketingOption o) {
+  buildCounterNumericBucketingOption++;
+  if (buildCounterNumericBucketingOption < 3) {
+    checkUnnamed33(o.bucketBounds!);
+    unittest.expect(o.requiresMinMax!, unittest.isTrue);
+  }
+  buildCounterNumericBucketingOption--;
+}
+
+core.List<api.BucketizedCount> buildUnnamed34() => [
+      buildBucketizedCount(),
+      buildBucketizedCount(),
+    ];
+
+void checkUnnamed34(core.List<api.BucketizedCount> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkBucketizedCount(o[0]);
+  checkBucketizedCount(o[1]);
+}
+
+core.int buildCounterNumericBucketingResult = 0;
+api.NumericBucketingResult buildNumericBucketingResult() {
+  final o = api.NumericBucketingResult();
+  buildCounterNumericBucketingResult++;
+  if (buildCounterNumericBucketingResult < 3) {
+    o.counts = buildUnnamed34();
+    o.maxValue = 42.0;
+    o.minValue = 42.0;
+  }
+  buildCounterNumericBucketingResult--;
+  return o;
+}
+
+void checkNumericBucketingResult(api.NumericBucketingResult o) {
+  buildCounterNumericBucketingResult++;
+  if (buildCounterNumericBucketingResult < 3) {
+    checkUnnamed34(o.counts!);
+    unittest.expect(
+      o.maxValue!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.minValue!,
+      unittest.equals(42.0),
+    );
+  }
+  buildCounterNumericBucketingResult--;
 }
 
 core.List<core.String> buildUnnamed35() => [
@@ -1784,299 +1815,12 @@ void checkUnnamed35(core.List<core.String> o) {
   );
 }
 
-core.List<core.int> buildUnnamed36() => [
-      42,
-      42,
-    ];
-
-void checkUnnamed36(core.List<core.int> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals(42),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals(42),
-  );
-}
-
-core.List<core.String> buildUnnamed37() => [
+core.List<core.String> buildUnnamed36() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed37(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
-core.List<core.String> buildUnnamed38() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed38(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
-core.List<core.int> buildUnnamed39() => [
-      42,
-      42,
-    ];
-
-void checkUnnamed39(core.List<core.int> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals(42),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals(42),
-  );
-}
-
-core.List<core.String> buildUnnamed40() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed40(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
-core.List<core.String> buildUnnamed41() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed41(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
-core.List<core.int> buildUnnamed42() => [
-      42,
-      42,
-    ];
-
-void checkUnnamed42(core.List<core.int> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals(42),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals(42),
-  );
-}
-
-core.Map<core.String, core.String> buildUnnamed43() => {
-      'x': 'foo',
-      'y': 'foo',
-    };
-
-void checkUnnamed43(core.Map<core.String, core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o['x']!,
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o['y']!,
-    unittest.equals('foo'),
-  );
-}
-
-core.Map<core.String, core.bool> buildUnnamed44() => {
-      'x': true,
-      'y': true,
-    };
-
-void checkUnnamed44(core.Map<core.String, core.bool> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o['x']!, unittest.isTrue);
-  unittest.expect(o['y']!, unittest.isTrue);
-}
-
-core.int buildCounterNamespacedDebugInput = 0;
-api.NamespacedDebugInput buildNamespacedDebugInput() {
-  final o = api.NamespacedDebugInput();
-  buildCounterNamespacedDebugInput++;
-  if (buildCounterNamespacedDebugInput < 3) {
-    o.absolutelyForcedExpNames = buildUnnamed34();
-    o.absolutelyForcedExpTags = buildUnnamed35();
-    o.absolutelyForcedExps = buildUnnamed36();
-    o.conditionallyForcedExpNames = buildUnnamed37();
-    o.conditionallyForcedExpTags = buildUnnamed38();
-    o.conditionallyForcedExps = buildUnnamed39();
-    o.disableAutomaticEnrollmentSelection = true;
-    o.disableExpNames = buildUnnamed40();
-    o.disableExpTags = buildUnnamed41();
-    o.disableExps = buildUnnamed42();
-    o.disableManualEnrollmentSelection = true;
-    o.disableOrganicSelection = true;
-    o.forcedFlags = buildUnnamed43();
-    o.forcedRollouts = buildUnnamed44();
-  }
-  buildCounterNamespacedDebugInput--;
-  return o;
-}
-
-void checkNamespacedDebugInput(api.NamespacedDebugInput o) {
-  buildCounterNamespacedDebugInput++;
-  if (buildCounterNamespacedDebugInput < 3) {
-    checkUnnamed34(o.absolutelyForcedExpNames!);
-    checkUnnamed35(o.absolutelyForcedExpTags!);
-    checkUnnamed36(o.absolutelyForcedExps!);
-    checkUnnamed37(o.conditionallyForcedExpNames!);
-    checkUnnamed38(o.conditionallyForcedExpTags!);
-    checkUnnamed39(o.conditionallyForcedExps!);
-    unittest.expect(o.disableAutomaticEnrollmentSelection!, unittest.isTrue);
-    checkUnnamed40(o.disableExpNames!);
-    checkUnnamed41(o.disableExpTags!);
-    checkUnnamed42(o.disableExps!);
-    unittest.expect(o.disableManualEnrollmentSelection!, unittest.isTrue);
-    unittest.expect(o.disableOrganicSelection!, unittest.isTrue);
-    checkUnnamed43(o.forcedFlags!);
-    checkUnnamed44(o.forcedRollouts!);
-  }
-  buildCounterNamespacedDebugInput--;
-}
-
-core.List<core.double> buildUnnamed45() => [
-      42.0,
-      42.0,
-    ];
-
-void checkUnnamed45(core.List<core.double> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals(42.0),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals(42.0),
-  );
-}
-
-core.int buildCounterNumericBucketingOption = 0;
-api.NumericBucketingOption buildNumericBucketingOption() {
-  final o = api.NumericBucketingOption();
-  buildCounterNumericBucketingOption++;
-  if (buildCounterNumericBucketingOption < 3) {
-    o.bucketBounds = buildUnnamed45();
-    o.requiresMinMax = true;
-  }
-  buildCounterNumericBucketingOption--;
-  return o;
-}
-
-void checkNumericBucketingOption(api.NumericBucketingOption o) {
-  buildCounterNumericBucketingOption++;
-  if (buildCounterNumericBucketingOption < 3) {
-    checkUnnamed45(o.bucketBounds!);
-    unittest.expect(o.requiresMinMax!, unittest.isTrue);
-  }
-  buildCounterNumericBucketingOption--;
-}
-
-core.List<api.BucketizedCount> buildUnnamed46() => [
-      buildBucketizedCount(),
-      buildBucketizedCount(),
-    ];
-
-void checkUnnamed46(core.List<api.BucketizedCount> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkBucketizedCount(o[0]);
-  checkBucketizedCount(o[1]);
-}
-
-core.int buildCounterNumericBucketingResult = 0;
-api.NumericBucketingResult buildNumericBucketingResult() {
-  final o = api.NumericBucketingResult();
-  buildCounterNumericBucketingResult++;
-  if (buildCounterNumericBucketingResult < 3) {
-    o.counts = buildUnnamed46();
-    o.maxValue = 42.0;
-    o.minValue = 42.0;
-  }
-  buildCounterNumericBucketingResult--;
-  return o;
-}
-
-void checkNumericBucketingResult(api.NumericBucketingResult o) {
-  buildCounterNumericBucketingResult++;
-  if (buildCounterNumericBucketingResult < 3) {
-    checkUnnamed46(o.counts!);
-    unittest.expect(
-      o.maxValue!,
-      unittest.equals(42.0),
-    );
-    unittest.expect(
-      o.minValue!,
-      unittest.equals(42.0),
-    );
-  }
-  buildCounterNumericBucketingResult--;
-}
-
-core.List<core.String> buildUnnamed47() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed47(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
-core.List<core.String> buildUnnamed48() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed48(core.List<core.String> o) {
+void checkUnnamed36(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -2093,13 +1837,13 @@ api.PostalAddress buildPostalAddress() {
   final o = api.PostalAddress();
   buildCounterPostalAddress++;
   if (buildCounterPostalAddress < 3) {
-    o.addressLines = buildUnnamed47();
+    o.addressLines = buildUnnamed35();
     o.administrativeArea = 'foo';
     o.languageCode = 'foo';
     o.locality = 'foo';
     o.organization = 'foo';
     o.postalCode = 'foo';
-    o.recipients = buildUnnamed48();
+    o.recipients = buildUnnamed36();
     o.regionCode = 'foo';
     o.revision = 42;
     o.sortingCode = 'foo';
@@ -2112,7 +1856,7 @@ api.PostalAddress buildPostalAddress() {
 void checkPostalAddress(api.PostalAddress o) {
   buildCounterPostalAddress++;
   if (buildCounterPostalAddress < 3) {
-    checkUnnamed47(o.addressLines!);
+    checkUnnamed35(o.addressLines!);
     unittest.expect(
       o.administrativeArea!,
       unittest.equals('foo'),
@@ -2133,7 +1877,7 @@ void checkPostalAddress(api.PostalAddress o) {
       o.postalCode!,
       unittest.equals('foo'),
     );
-    checkUnnamed48(o.recipients!);
+    checkUnnamed36(o.recipients!);
     unittest.expect(
       o.regionCode!,
       unittest.equals('foo'),
@@ -2298,23 +2042,23 @@ void checkSearchJobsRequest(api.SearchJobsRequest o) {
   buildCounterSearchJobsRequest--;
 }
 
-core.List<api.Location> buildUnnamed49() => [
+core.List<api.Location> buildUnnamed37() => [
       buildLocation(),
       buildLocation(),
     ];
 
-void checkUnnamed49(core.List<api.Location> o) {
+void checkUnnamed37(core.List<api.Location> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLocation(o[0]);
   checkLocation(o[1]);
 }
 
-core.List<api.MatchingJob> buildUnnamed50() => [
+core.List<api.MatchingJob> buildUnnamed38() => [
       buildMatchingJob(),
       buildMatchingJob(),
     ];
 
-void checkUnnamed50(core.List<api.MatchingJob> o) {
+void checkUnnamed38(core.List<api.MatchingJob> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMatchingJob(o[0]);
   checkMatchingJob(o[1]);
@@ -2328,8 +2072,8 @@ api.SearchJobsResponse buildSearchJobsResponse() {
     o.broadenedQueryJobsCount = 42;
     o.estimatedTotalSize = 42;
     o.histogramResults = buildHistogramResults();
-    o.locationFilters = buildUnnamed49();
-    o.matchingJobs = buildUnnamed50();
+    o.locationFilters = buildUnnamed37();
+    o.matchingJobs = buildUnnamed38();
     o.metadata = buildResponseMetadata();
     o.nextPageToken = 'foo';
     o.spellCorrection = buildSpellingCorrection();
@@ -2351,8 +2095,8 @@ void checkSearchJobsResponse(api.SearchJobsResponse o) {
       unittest.equals(42),
     );
     checkHistogramResults(o.histogramResults!);
-    checkUnnamed49(o.locationFilters!);
-    checkUnnamed50(o.matchingJobs!);
+    checkUnnamed37(o.locationFilters!);
+    checkUnnamed38(o.matchingJobs!);
     checkResponseMetadata(o.metadata!);
     unittest.expect(
       o.nextPageToken!,
@@ -2503,12 +2247,12 @@ void checkUpdateJobRequest(api.UpdateJobRequest o) {
   buildCounterUpdateJobRequest--;
 }
 
-core.List<core.String> buildUnnamed51() => [
+core.List<core.String> buildUnnamed39() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed51(core.List<core.String> o) {
+void checkUnnamed39(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -2900,16 +2644,6 @@ void main() {
     });
   });
 
-  unittest.group('obj-schema-MendelDebugInput', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildMendelDebugInput();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.MendelDebugInput.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkMendelDebugInput(od);
-    });
-  });
-
   unittest.group('obj-schema-Money', () {
     unittest.test('to-json--from-json', () async {
       final o = buildMoney();
@@ -2917,16 +2651,6 @@ void main() {
       final od =
           api.Money.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkMoney(od);
-    });
-  });
-
-  unittest.group('obj-schema-NamespacedDebugInput', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildNamespacedDebugInput();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.NamespacedDebugInput.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkNamespacedDebugInput(od);
     });
   });
 
@@ -3067,7 +2791,7 @@ void main() {
       final arg_name = 'foo';
       final arg_companyName = 'foo';
       final arg_languageCode = 'foo';
-      final arg_languageCodes = buildUnnamed51();
+      final arg_languageCodes = buildUnnamed39();
       final arg_pageSize = 42;
       final arg_query = 'foo';
       final arg_scope = 'foo';
