@@ -60,7 +60,7 @@ class ObjectType extends ComplexDartSchemaType {
     for (var i = 0; i < properties.length; i++) {
       final property = properties[i];
       final resolvedProperty = DartClassProperty(property.name,
-          property.comment, property.type!.resolve(db), property.jsonName,
+          property.comment, property.type.resolve(db), property.jsonName,
           byteArrayAccessor: property.byteArrayAccessor);
       properties[i] = resolvedProperty;
     }
@@ -95,7 +95,7 @@ class ObjectType extends ComplexDartSchemaType {
         postfix = ' = "${escapeString(discriminatorValue()!)}"';
       }
       propertyString.writeln(
-        '$comment  $prefix${property.type!.nullableDeclaration} '
+        '$comment  $prefix${property.type.nullableDeclaration} '
         '${property.name}$postfix;',
       );
 
@@ -136,7 +136,7 @@ class ObjectType extends ComplexDartSchemaType {
         if (!isVariantDiscriminator(property)) {
           fromJsonString.writeln(
             '${property.name}:'
-            '${property.type!.decodeFromMap(property.jsonName)},',
+            '${property.type.decodeFromMap(property.jsonName)},',
           );
         }
       }
@@ -149,7 +149,7 @@ class ObjectType extends ComplexDartSchemaType {
     for (var property in properties) {
       toJsonString.writeln('if (${property.name} != null)');
       toJsonString.writeln("'${escapeString(property.jsonName)}':"
-          '${property.type!.jsonEncode('${property.name}!')},');
+          '${property.type.jsonEncode('${property.name}!')},');
     }
     toJsonString.write('};');
 

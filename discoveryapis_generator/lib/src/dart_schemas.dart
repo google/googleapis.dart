@@ -65,7 +65,7 @@ class DartSchemaTypeDB {
 class DartClassProperty {
   final Identifier name;
   final Comment comment;
-  final DartSchemaType? type;
+  final DartSchemaType type;
   final String jsonName;
 
   // If this property is a base64 encoded bytes, this identifier will represent
@@ -306,9 +306,10 @@ DartSchemaType parsePrimitive(
 }
 
 /// Generates the codegen'ed dart string for all schema classes.
-String generateSchemas(DartSchemaTypeDB db) {
+String generateSchemas(Iterable<ComplexDartSchemaType> classTypes) {
   final sb = StringBuffer();
-  for (var value in db.dartClassTypes) {
+
+  for (var value in classTypes) {
     final classDefinition = value.classDefinition();
     if (classDefinition != null) {
       sb.writeln(classDefinition);

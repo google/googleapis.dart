@@ -4,6 +4,7 @@
 
 library discoveryapis_generator.dart_api_library;
 
+import 'base_api_library.dart';
 import 'dart_comments.dart';
 import 'dart_resources.dart';
 import 'dart_schemas.dart';
@@ -11,7 +12,6 @@ import 'generated_googleapis/discovery/v1.dart';
 import 'namer.dart';
 import 'shared_output.dart';
 import 'type_deduplicate.dart';
-import 'utils.dart';
 
 const ignoreForFileSet = {
   // violated by `container` v1 API,
@@ -55,26 +55,15 @@ class DartApiImports {
       '${core.ref()}Map<${core.ref()}String, ${core.ref()}dynamic>';
 }
 
-abstract class BaseApiLibrary {
-  String get librarySource;
-
-  final ApiLibraryNamer namer;
-  final RestDescription description;
-
-  late final DartApiImports imports;
-
-  BaseApiLibrary(this.description, String apiClassSuffix,
-      {bool useCorePrefixes = true})
-      : namer = ApiLibraryNamer(apiClassSuffix: apiClassSuffix) {
-    imports = DartApiImports.fromNamer(namer, useCorePrefixes: useCorePrefixes);
-  }
-}
-
 /// Generates a API library based on a [RestDescription].
 class DartApiLibrary extends BaseApiLibrary {
-  final bool isPackage;
+  @override
   late final DartSchemaTypeDB schemaDB;
+
+  @override
   late final DartApiClass apiClass;
+
+  final bool isPackage;
   late final bool exposeMedia;
   late final String libraryName;
 
@@ -92,24 +81,11 @@ class DartApiLibrary extends BaseApiLibrary {
     namer.nameAllIdentifiers();
   }
 
-  @override
-  String get librarySource {
-    final sink = StringBuffer();
-    final schemas = generateSchemas(schemaDB);
-    final resources = generateResources(apiClass);
-    sink.write(_libraryHeader());
-    if (resources.isNotEmpty) {
-      sink.write('$resources\n$schemas');
-    } else {
-      sink.write(schemas);
-    }
-    return formatSource(sink.toString());
-  }
-
   /// Create the library header. Note, this must be called after the library
   /// source string has been generated, since it relies on [Identifier] usage
   /// counts being calculated
-  String _libraryHeader() {
+  @override
+  String libraryHeader() {
     var exportedMediaClasses = '';
     if (exposeMedia) {
       exportedMediaClasses = ', Media, UploadOptions,\n'

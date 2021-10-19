@@ -69,7 +69,7 @@ class MethodParameter {
 
 /// Represents a method on a resource class.
 class DartResourceMethod {
-  /// [requestParameter] may be [:null:].
+  /// [requestParameter] may be `null`.
   final MethodParameter? requestParameter;
 
   /// [returnType] may be `null`.
