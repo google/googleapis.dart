@@ -662,43 +662,6 @@ void checkStatus(api.Status o) {
   buildCounterStatus--;
 }
 
-core.int buildCounterSyncRepoMetadata = 0;
-api.SyncRepoMetadata buildSyncRepoMetadata() {
-  final o = api.SyncRepoMetadata();
-  buildCounterSyncRepoMetadata++;
-  if (buildCounterSyncRepoMetadata < 3) {
-    o.name = 'foo';
-    o.startTime = 'foo';
-    o.statusMessage = 'foo';
-    o.updateTime = 'foo';
-  }
-  buildCounterSyncRepoMetadata--;
-  return o;
-}
-
-void checkSyncRepoMetadata(api.SyncRepoMetadata o) {
-  buildCounterSyncRepoMetadata++;
-  if (buildCounterSyncRepoMetadata < 3) {
-    unittest.expect(
-      o.name!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.startTime!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.statusMessage!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.updateTime!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterSyncRepoMetadata--;
-}
-
 core.int buildCounterSyncRepoRequest = 0;
 api.SyncRepoRequest buildSyncRepoRequest() {
   final o = api.SyncRepoRequest();
@@ -972,16 +935,6 @@ void main() {
       final od =
           api.Status.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkStatus(od);
-    });
-  });
-
-  unittest.group('obj-schema-SyncRepoMetadata', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildSyncRepoMetadata();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.SyncRepoMetadata.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkSyncRepoMetadata(od);
     });
   });
 

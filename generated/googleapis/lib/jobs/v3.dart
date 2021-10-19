@@ -3627,51 +3627,8 @@ class MatchingJob {
       };
 }
 
-/// Message representing input to a Mendel server for debug forcing.
-///
-/// See go/mendel-debug-forcing for more details. Next ID: 2
-class MendelDebugInput {
-  /// When a request spans multiple servers, a MendelDebugInput may travel with
-  /// the request and take effect in all the servers.
-  ///
-  /// This field is a map of namespaces to NamespacedMendelDebugInput protos. In
-  /// a single server, up to two NamespacedMendelDebugInput protos are applied:
-  /// 1. NamespacedMendelDebugInput with the global namespace (key == ""). 2.
-  /// NamespacedMendelDebugInput with the server's namespace. When both
-  /// NamespacedMendelDebugInput protos are present, they are merged. See
-  /// go/mendel-debug-forcing for more details.
-  core.Map<core.String, NamespacedDebugInput>? namespacedDebugInput;
-
-  MendelDebugInput({
-    this.namespacedDebugInput,
-  });
-
-  MendelDebugInput.fromJson(core.Map _json)
-      : this(
-          namespacedDebugInput: _json.containsKey('namespacedDebugInput')
-              ? (_json['namespacedDebugInput']
-                      as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    NamespacedDebugInput.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
-                  ),
-                )
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (namespacedDebugInput != null)
-          'namespacedDebugInput': namespacedDebugInput!,
-      };
-}
-
 /// Represents an amount of money with its currency type.
 typedef Money = $Money;
-
-/// Next ID: 15
-typedef NamespacedDebugInput = $NamespacedDebugInput;
 
 /// Input only.
 ///

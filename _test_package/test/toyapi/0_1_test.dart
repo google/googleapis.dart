@@ -26,68 +26,6 @@ import 'package:test_package/toyapi/0_1.dart' as api;
 
 import '../test_shared.dart';
 
-core.int buildCounterEmpty = 0;
-api.Empty buildEmpty() {
-  final o = api.Empty();
-  buildCounterEmpty++;
-  if (buildCounterEmpty < 3) {}
-  buildCounterEmpty--;
-  return o;
-}
-
-void checkEmpty(api.Empty o) {
-  buildCounterEmpty++;
-  if (buildCounterEmpty < 3) {}
-  buildCounterEmpty--;
-}
-
-api.ListOfAny buildListOfAny() {
-  final o = api.ListOfAny();
-  o.add({
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  });
-  o.add({
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  });
-  return o;
-}
-
-void checkListOfAny(api.ListOfAny o) {
-  unittest.expect(o, unittest.hasLength(2));
-  var casted1 = (o[0]) as core.Map;
-  unittest.expect(casted1, unittest.hasLength(3));
-  unittest.expect(
-    casted1['list'],
-    unittest.equals([1, 2, 3]),
-  );
-  unittest.expect(
-    casted1['bool'],
-    unittest.equals(true),
-  );
-  unittest.expect(
-    casted1['string'],
-    unittest.equals('foo'),
-  );
-  var casted2 = (o[1]) as core.Map;
-  unittest.expect(casted2, unittest.hasLength(3));
-  unittest.expect(
-    casted2['list'],
-    unittest.equals([1, 2, 3]),
-  );
-  unittest.expect(
-    casted2['bool'],
-    unittest.equals(true),
-  );
-  unittest.expect(
-    casted2['string'],
-    unittest.equals('foo'),
-  );
-}
-
 core.List<core.String> buildUnnamed0() => [
       'foo',
       'foo',
@@ -284,53 +222,6 @@ void checkListOfToyRequest(api.ListOfToyRequest o) {
   unittest.expect(o, unittest.hasLength(2));
   checkToyRequest(o[0]);
   checkToyRequest(o[1]);
-}
-
-api.MapOfAny buildMapOfAny() {
-  final o = api.MapOfAny();
-  o['a'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  o['b'] = {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  };
-  return o;
-}
-
-void checkMapOfAny(api.MapOfAny o) {
-  unittest.expect(o, unittest.hasLength(2));
-  var casted3 = (o['a']!) as core.Map;
-  unittest.expect(casted3, unittest.hasLength(3));
-  unittest.expect(
-    casted3['list'],
-    unittest.equals([1, 2, 3]),
-  );
-  unittest.expect(
-    casted3['bool'],
-    unittest.equals(true),
-  );
-  unittest.expect(
-    casted3['string'],
-    unittest.equals('foo'),
-  );
-  var casted4 = (o['b']!) as core.Map;
-  unittest.expect(casted4, unittest.hasLength(3));
-  unittest.expect(
-    casted4['list'],
-    unittest.equals([1, 2, 3]),
-  );
-  unittest.expect(
-    casted4['bool'],
-    unittest.equals(true),
-  );
-  unittest.expect(
-    casted4['string'],
-    unittest.equals('foo'),
-  );
 }
 
 core.Map<core.String, core.bool> buildUnnamed7() => {
@@ -565,32 +456,32 @@ core.Map<core.String, core.Object?> buildUnnamed14() => {
 
 void checkUnnamed14(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted5 = (o['x']!) as core.Map;
-  unittest.expect(casted5, unittest.hasLength(3));
+  var casted1 = (o['x']!) as core.Map;
+  unittest.expect(casted1, unittest.hasLength(3));
   unittest.expect(
-    casted5['list'],
+    casted1['list'],
     unittest.equals([1, 2, 3]),
   );
   unittest.expect(
-    casted5['bool'],
+    casted1['bool'],
     unittest.equals(true),
   );
   unittest.expect(
-    casted5['string'],
+    casted1['string'],
     unittest.equals('foo'),
   );
-  var casted6 = (o['y']!) as core.Map;
-  unittest.expect(casted6, unittest.hasLength(3));
+  var casted2 = (o['y']!) as core.Map;
+  unittest.expect(casted2, unittest.hasLength(3));
   unittest.expect(
-    casted6['list'],
+    casted2['list'],
     unittest.equals([1, 2, 3]),
   );
   unittest.expect(
-    casted6['bool'],
+    casted2['bool'],
     unittest.equals(true),
   );
   unittest.expect(
-    casted6['string'],
+    casted2['string'],
     unittest.equals('foo'),
   );
 }
@@ -657,18 +548,18 @@ void checkToyMapResponse(api.ToyMapResponse o) {
       o.result!,
       unittest.equals('foo'),
     );
-    var casted7 = (o.v!) as core.Map;
-    unittest.expect(casted7, unittest.hasLength(3));
+    var casted3 = (o.v!) as core.Map;
+    unittest.expect(casted3, unittest.hasLength(3));
     unittest.expect(
-      casted7['list'],
+      casted3['list'],
       unittest.equals([1, 2, 3]),
     );
     unittest.expect(
-      casted7['bool'],
+      casted3['bool'],
       unittest.equals(true),
     );
     unittest.expect(
-      casted7['string'],
+      casted3['string'],
       unittest.equals('foo'),
     );
   }
@@ -747,25 +638,6 @@ void checkToyResponse(api.ToyResponse o) {
 }
 
 void main() {
-  unittest.group('obj-schema-Empty', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildEmpty();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.Empty.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkEmpty(od);
-    });
-  });
-
-  unittest.group('obj-schema-ListOfAny', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildListOfAny();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.ListOfAny.fromJson(oJson as core.List);
-      checkListOfAny(od);
-    });
-  });
-
   unittest.group('obj-schema-ListOfListOfString', () {
     unittest.test('to-json--from-json', () async {
       final o = buildListOfListOfString();
@@ -826,16 +698,6 @@ void main() {
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.ListOfToyRequest.fromJson(oJson as core.List);
       checkListOfToyRequest(od);
-    });
-  });
-
-  unittest.group('obj-schema-MapOfAny', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildMapOfAny();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.MapOfAny.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkMapOfAny(od);
     });
   });
 

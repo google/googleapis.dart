@@ -2182,54 +2182,6 @@ class Operation {
       };
 }
 
-/// Metadata for long running operations.
-class OperationMetadata {
-  /// The time the operation was created.
-  core.String? createTime;
-
-  /// The time the operation finished running.
-  ///
-  /// Not set if the operation has not completed.
-  core.String? endTime;
-
-  /// Resource path for the target of the operation.
-  ///
-  /// For example, targets of seeks are subscription resources, structured like:
-  /// projects/{project_number}/locations/{location}/subscriptions/{subscription_id}
-  core.String? target;
-
-  /// Name of the verb executed by the operation.
-  core.String? verb;
-
-  OperationMetadata({
-    this.createTime,
-    this.endTime,
-    this.target,
-    this.verb,
-  });
-
-  OperationMetadata.fromJson(core.Map _json)
-      : this(
-          createTime: _json.containsKey('createTime')
-              ? _json['createTime'] as core.String
-              : null,
-          endTime: _json.containsKey('endTime')
-              ? _json['endTime'] as core.String
-              : null,
-          target: _json.containsKey('target')
-              ? _json['target'] as core.String
-              : null,
-          verb: _json.containsKey('verb') ? _json['verb'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
-        if (endTime != null) 'endTime': endTime!,
-        if (target != null) 'target': target!,
-        if (verb != null) 'verb': verb!,
-      };
-}
-
 /// The settings for a topic's partitions.
 class PartitionConfig {
   /// The capacity configuration.
@@ -2441,9 +2393,6 @@ class SeekSubscriptionRequest {
         if (timeTarget != null) 'timeTarget': timeTarget!,
       };
 }
-
-/// Response for SeekSubscription long running operation.
-typedef SeekSubscriptionResponse = $Empty;
 
 /// The `Status` type defines a logical error model that is suitable for
 /// different programming environments, including REST APIs and RPC APIs.

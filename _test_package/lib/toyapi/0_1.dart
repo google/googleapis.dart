@@ -871,53 +871,6 @@ class StorageResource {
   }
 }
 
-/// A generic empty message that you can re-use to avoid defining duplicated
-/// empty messages in your APIs.
-///
-/// A typical example is to use it as the request or the response type of an API
-/// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
-/// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
-/// object `{}`.
-class Empty {
-  Empty();
-
-  Empty.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map _json);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
-
-class ListOfAny extends collection.ListBase<core.Object?> {
-  final core.List<core.Object?> _inner;
-
-  ListOfAny() : _inner = [];
-
-  ListOfAny.fromJson(core.List json)
-      : _inner = json.map((value) => value).toList();
-
-  @core.override
-  core.Object? operator [](core.int key) => _inner[key];
-
-  @core.override
-  void operator []=(core.int key, core.Object? value) {
-    _inner[key] = value;
-  }
-
-  @core.override
-  core.int get length => _inner.length;
-
-  @core.override
-  set length(core.int newLength) {
-    _inner.length = newLength;
-  }
-
-  @core.override
-  void add(core.Object? element) {
-    _inner.add(element);
-  }
-}
-
 class ListOfListOfString extends collection.ListBase<core.List<core.String>> {
   final core.List<core.List<core.String>> _inner;
 
@@ -1166,37 +1119,6 @@ class ListOfToyRequest extends collection.ListBase<ToyRequest> {
   void add(ToyRequest element) {
     _inner.add(element);
   }
-}
-
-class MapOfAny extends collection.MapBase<core.String, core.Object?> {
-  final _innerMap = <core.String, core.Object?>{};
-
-  MapOfAny();
-
-  MapOfAny.fromJson(core.Map<core.String, core.dynamic> _json) {
-    _json.forEach((core.String key, value) {
-      this[key] = value;
-    });
-  }
-
-  @core.override
-  core.Object? operator [](core.Object? key) => _innerMap[key];
-
-  @core.override
-  void operator []=(core.String key, core.Object? value) {
-    _innerMap[key] = value;
-  }
-
-  @core.override
-  void clear() {
-    _innerMap.clear();
-  }
-
-  @core.override
-  core.Iterable<core.String> get keys => _innerMap.keys;
-
-  @core.override
-  core.Object? remove(core.Object? key) => _innerMap.remove(key);
 }
 
 class MapOfListOfMapOfbool extends collection

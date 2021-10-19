@@ -2134,67 +2134,6 @@ class Operation {
       };
 }
 
-/// Represents the metadata of the long-running operation.
-///
-/// Output only.
-class OperationMetadata {
-  /// API version used to start the operation.
-  core.String? apiVersion;
-
-  /// The time the operation was created.
-  core.String? createTime;
-
-  /// The time the operation finished running.
-  core.String? endTime;
-
-  /// Human-readable status of the operation, if any.
-  core.String? statusDetail;
-
-  /// Server-defined resource path for the target of the operation.
-  core.String? target;
-
-  /// Name of the verb executed by the operation.
-  core.String? verb;
-
-  OperationMetadata({
-    this.apiVersion,
-    this.createTime,
-    this.endTime,
-    this.statusDetail,
-    this.target,
-    this.verb,
-  });
-
-  OperationMetadata.fromJson(core.Map _json)
-      : this(
-          apiVersion: _json.containsKey('apiVersion')
-              ? _json['apiVersion'] as core.String
-              : null,
-          createTime: _json.containsKey('createTime')
-              ? _json['createTime'] as core.String
-              : null,
-          endTime: _json.containsKey('endTime')
-              ? _json['endTime'] as core.String
-              : null,
-          statusDetail: _json.containsKey('statusDetail')
-              ? _json['statusDetail'] as core.String
-              : null,
-          target: _json.containsKey('target')
-              ? _json['target'] as core.String
-              : null,
-          verb: _json.containsKey('verb') ? _json['verb'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (apiVersion != null) 'apiVersion': apiVersion!,
-        if (createTime != null) 'createTime': createTime!,
-        if (endTime != null) 'endTime': endTime!,
-        if (statusDetail != null) 'statusDetail': statusDetail!,
-        if (target != null) 'target': target!,
-        if (verb != null) 'verb': verb!,
-      };
-}
-
 /// An Identity and Access Management (IAM) policy, which specifies access
 /// controls for Google Cloud resources.
 ///

@@ -305,143 +305,23 @@ void checkListPhotosResponse(api.ListPhotosResponse o) {
   buildCounterListPhotosResponse--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed6() => {
-      'x': {
-        'list': [1, 2, 3],
-        'bool': true,
-        'string': 'foo'
-      },
-      'y': {
-        'list': [1, 2, 3],
-        'bool': true,
-        'string': 'foo'
-      },
-    };
-
-void checkUnnamed6(core.Map<core.String, core.Object?> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  var casted1 = (o['x']!) as core.Map;
-  unittest.expect(casted1, unittest.hasLength(3));
-  unittest.expect(
-    casted1['list'],
-    unittest.equals([1, 2, 3]),
-  );
-  unittest.expect(
-    casted1['bool'],
-    unittest.equals(true),
-  );
-  unittest.expect(
-    casted1['string'],
-    unittest.equals('foo'),
-  );
-  var casted2 = (o['y']!) as core.Map;
-  unittest.expect(casted2, unittest.hasLength(3));
-  unittest.expect(
-    casted2['list'],
-    unittest.equals([1, 2, 3]),
-  );
-  unittest.expect(
-    casted2['bool'],
-    unittest.equals(true),
-  );
-  unittest.expect(
-    casted2['string'],
-    unittest.equals('foo'),
-  );
-}
-
-core.Map<core.String, core.Object?> buildUnnamed7() => {
-      'x': {
-        'list': [1, 2, 3],
-        'bool': true,
-        'string': 'foo'
-      },
-      'y': {
-        'list': [1, 2, 3],
-        'bool': true,
-        'string': 'foo'
-      },
-    };
-
-void checkUnnamed7(core.Map<core.String, core.Object?> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  var casted3 = (o['x']!) as core.Map;
-  unittest.expect(casted3, unittest.hasLength(3));
-  unittest.expect(
-    casted3['list'],
-    unittest.equals([1, 2, 3]),
-  );
-  unittest.expect(
-    casted3['bool'],
-    unittest.equals(true),
-  );
-  unittest.expect(
-    casted3['string'],
-    unittest.equals('foo'),
-  );
-  var casted4 = (o['y']!) as core.Map;
-  unittest.expect(casted4, unittest.hasLength(3));
-  unittest.expect(
-    casted4['list'],
-    unittest.equals([1, 2, 3]),
-  );
-  unittest.expect(
-    casted4['bool'],
-    unittest.equals(true),
-  );
-  unittest.expect(
-    casted4['string'],
-    unittest.equals('foo'),
-  );
-}
-
-core.int buildCounterOperation = 0;
-api.Operation buildOperation() {
-  final o = api.Operation();
-  buildCounterOperation++;
-  if (buildCounterOperation < 3) {
-    o.done = true;
-    o.error = buildStatus();
-    o.metadata = buildUnnamed6();
-    o.name = 'foo';
-    o.response = buildUnnamed7();
-  }
-  buildCounterOperation--;
-  return o;
-}
-
-void checkOperation(api.Operation o) {
-  buildCounterOperation++;
-  if (buildCounterOperation < 3) {
-    unittest.expect(o.done!, unittest.isTrue);
-    checkStatus(o.error!);
-    checkUnnamed6(o.metadata!);
-    unittest.expect(
-      o.name!,
-      unittest.equals('foo'),
-    );
-    checkUnnamed7(o.response!);
-  }
-  buildCounterOperation--;
-}
-
-core.List<api.Connection> buildUnnamed8() => [
+core.List<api.Connection> buildUnnamed6() => [
       buildConnection(),
       buildConnection(),
     ];
 
-void checkUnnamed8(core.List<api.Connection> o) {
+void checkUnnamed6(core.List<api.Connection> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkConnection(o[0]);
   checkConnection(o[1]);
 }
 
-core.List<api.Place> buildUnnamed9() => [
+core.List<api.Place> buildUnnamed7() => [
       buildPlace(),
       buildPlace(),
     ];
 
-void checkUnnamed9(core.List<api.Place> o) {
+void checkUnnamed7(core.List<api.Place> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPlace(o[0]);
   checkPlace(o[1]);
@@ -453,11 +333,11 @@ api.Photo buildPhoto() {
   buildCounterPhoto++;
   if (buildCounterPhoto < 3) {
     o.captureTime = 'foo';
-    o.connections = buildUnnamed8();
+    o.connections = buildUnnamed6();
     o.downloadUrl = 'foo';
     o.mapsPublishStatus = 'foo';
     o.photoId = buildPhotoId();
-    o.places = buildUnnamed9();
+    o.places = buildUnnamed7();
     o.pose = buildPose();
     o.shareLink = 'foo';
     o.thumbnailUrl = 'foo';
@@ -477,7 +357,7 @@ void checkPhoto(api.Photo o) {
       o.captureTime!,
       unittest.equals('foo'),
     );
-    checkUnnamed8(o.connections!);
+    checkUnnamed6(o.connections!);
     unittest.expect(
       o.downloadUrl!,
       unittest.equals('foo'),
@@ -487,7 +367,7 @@ void checkPhoto(api.Photo o) {
       unittest.equals('foo'),
     );
     checkPhotoId(o.photoId!);
-    checkUnnamed9(o.places!);
+    checkUnnamed7(o.places!);
     checkPose(o.pose!);
     unittest.expect(
       o.shareLink!,
@@ -635,7 +515,7 @@ void checkPose(api.Pose o) {
   buildCounterPose--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed10() => {
+core.Map<core.String, core.Object?> buildUnnamed8() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -648,47 +528,47 @@ core.Map<core.String, core.Object?> buildUnnamed10() => {
       },
     };
 
-void checkUnnamed10(core.Map<core.String, core.Object?> o) {
+void checkUnnamed8(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted5 = (o['x']!) as core.Map;
-  unittest.expect(casted5, unittest.hasLength(3));
+  var casted1 = (o['x']!) as core.Map;
+  unittest.expect(casted1, unittest.hasLength(3));
   unittest.expect(
-    casted5['list'],
+    casted1['list'],
     unittest.equals([1, 2, 3]),
   );
   unittest.expect(
-    casted5['bool'],
+    casted1['bool'],
     unittest.equals(true),
   );
   unittest.expect(
-    casted5['string'],
+    casted1['string'],
     unittest.equals('foo'),
   );
-  var casted6 = (o['y']!) as core.Map;
-  unittest.expect(casted6, unittest.hasLength(3));
+  var casted2 = (o['y']!) as core.Map;
+  unittest.expect(casted2, unittest.hasLength(3));
   unittest.expect(
-    casted6['list'],
+    casted2['list'],
     unittest.equals([1, 2, 3]),
   );
   unittest.expect(
-    casted6['bool'],
+    casted2['bool'],
     unittest.equals(true),
   );
   unittest.expect(
-    casted6['string'],
+    casted2['string'],
     unittest.equals('foo'),
   );
 }
 
-core.List<core.Map<core.String, core.Object?>> buildUnnamed11() => [
-      buildUnnamed10(),
-      buildUnnamed10(),
+core.List<core.Map<core.String, core.Object?>> buildUnnamed9() => [
+      buildUnnamed8(),
+      buildUnnamed8(),
     ];
 
-void checkUnnamed11(core.List<core.Map<core.String, core.Object?>> o) {
+void checkUnnamed9(core.List<core.Map<core.String, core.Object?>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed10(o[0]);
-  checkUnnamed10(o[1]);
+  checkUnnamed8(o[0]);
+  checkUnnamed8(o[1]);
 }
 
 core.int buildCounterStatus = 0;
@@ -697,7 +577,7 @@ api.Status buildStatus() {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed11();
+    o.details = buildUnnamed9();
     o.message = 'foo';
   }
   buildCounterStatus--;
@@ -711,7 +591,7 @@ void checkStatus(api.Status o) {
       o.code!,
       unittest.equals(42),
     );
-    checkUnnamed11(o.details!);
+    checkUnnamed9(o.details!);
     unittest.expect(
       o.message!,
       unittest.equals('foo'),
@@ -766,12 +646,12 @@ void checkUploadRef(api.UploadRef o) {
   buildCounterUploadRef--;
 }
 
-core.List<core.String> buildUnnamed12() => [
+core.List<core.String> buildUnnamed10() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed12(core.List<core.String> o) {
+void checkUnnamed10(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -881,16 +761,6 @@ void main() {
       final od = api.ListPhotosResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkListPhotosResponse(od);
-    });
-  });
-
-  unittest.group('obj-schema-Operation', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildOperation();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.Operation.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkOperation(od);
     });
   });
 
@@ -1339,7 +1209,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.StreetViewPublishApi(mock).photos;
       final arg_languageCode = 'foo';
-      final arg_photoIds = buildUnnamed12();
+      final arg_photoIds = buildUnnamed10();
       final arg_view = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {

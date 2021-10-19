@@ -489,57 +489,6 @@ void checkGenerateSshScriptRequest(api.GenerateSshScriptRequest o) {
   buildCounterGenerateSshScriptRequest--;
 }
 
-core.int buildCounterGoogleCloudClouddmsV1OperationMetadata = 0;
-api.GoogleCloudClouddmsV1OperationMetadata
-    buildGoogleCloudClouddmsV1OperationMetadata() {
-  final o = api.GoogleCloudClouddmsV1OperationMetadata();
-  buildCounterGoogleCloudClouddmsV1OperationMetadata++;
-  if (buildCounterGoogleCloudClouddmsV1OperationMetadata < 3) {
-    o.apiVersion = 'foo';
-    o.createTime = 'foo';
-    o.endTime = 'foo';
-    o.requestedCancellation = true;
-    o.statusMessage = 'foo';
-    o.target = 'foo';
-    o.verb = 'foo';
-  }
-  buildCounterGoogleCloudClouddmsV1OperationMetadata--;
-  return o;
-}
-
-void checkGoogleCloudClouddmsV1OperationMetadata(
-    api.GoogleCloudClouddmsV1OperationMetadata o) {
-  buildCounterGoogleCloudClouddmsV1OperationMetadata++;
-  if (buildCounterGoogleCloudClouddmsV1OperationMetadata < 3) {
-    unittest.expect(
-      o.apiVersion!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.createTime!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.endTime!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(o.requestedCancellation!, unittest.isTrue);
-    unittest.expect(
-      o.statusMessage!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.target!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.verb!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterGoogleCloudClouddmsV1OperationMetadata--;
-}
-
 core.List<api.ConnectionProfile> buildUnnamed6() => [
       buildConnectionProfile(),
       buildConnectionProfile(),
@@ -922,38 +871,6 @@ void checkMigrationJob(api.MigrationJob o) {
     checkVpcPeeringConnectivity(o.vpcPeeringConnectivity!);
   }
   buildCounterMigrationJob--;
-}
-
-core.int buildCounterMigrationJobVerificationError = 0;
-api.MigrationJobVerificationError buildMigrationJobVerificationError() {
-  final o = api.MigrationJobVerificationError();
-  buildCounterMigrationJobVerificationError++;
-  if (buildCounterMigrationJobVerificationError < 3) {
-    o.errorCode = 'foo';
-    o.errorDetailMessage = 'foo';
-    o.errorMessage = 'foo';
-  }
-  buildCounterMigrationJobVerificationError--;
-  return o;
-}
-
-void checkMigrationJobVerificationError(api.MigrationJobVerificationError o) {
-  buildCounterMigrationJobVerificationError++;
-  if (buildCounterMigrationJobVerificationError < 3) {
-    unittest.expect(
-      o.errorCode!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.errorDetailMessage!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.errorMessage!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterMigrationJobVerificationError--;
 }
 
 core.int buildCounterMySqlConnectionProfile = 0;
@@ -1866,16 +1783,6 @@ void main() {
     });
   });
 
-  unittest.group('obj-schema-GoogleCloudClouddmsV1OperationMetadata', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildGoogleCloudClouddmsV1OperationMetadata();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.GoogleCloudClouddmsV1OperationMetadata.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudClouddmsV1OperationMetadata(od);
-    });
-  });
-
   unittest.group('obj-schema-ListConnectionProfilesResponse', () {
     unittest.test('to-json--from-json', () async {
       final o = buildListConnectionProfilesResponse();
@@ -1933,16 +1840,6 @@ void main() {
       final od = api.MigrationJob.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkMigrationJob(od);
-    });
-  });
-
-  unittest.group('obj-schema-MigrationJobVerificationError', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildMigrationJobVerificationError();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.MigrationJobVerificationError.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkMigrationJobVerificationError(od);
     });
   });
 

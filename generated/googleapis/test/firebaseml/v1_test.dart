@@ -91,33 +91,6 @@ void checkListOperationsResponse(api.ListOperationsResponse o) {
   buildCounterListOperationsResponse--;
 }
 
-core.int buildCounterModelOperationMetadata = 0;
-api.ModelOperationMetadata buildModelOperationMetadata() {
-  final o = api.ModelOperationMetadata();
-  buildCounterModelOperationMetadata++;
-  if (buildCounterModelOperationMetadata < 3) {
-    o.basicOperationStatus = 'foo';
-    o.name = 'foo';
-  }
-  buildCounterModelOperationMetadata--;
-  return o;
-}
-
-void checkModelOperationMetadata(api.ModelOperationMetadata o) {
-  buildCounterModelOperationMetadata++;
-  if (buildCounterModelOperationMetadata < 3) {
-    unittest.expect(
-      o.basicOperationStatus!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.name!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterModelOperationMetadata--;
-}
-
 core.Map<core.String, core.Object?> buildUnnamed1() => {
       'x': {
         'list': [1, 2, 3],
@@ -351,16 +324,6 @@ void main() {
       final od = api.ListOperationsResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkListOperationsResponse(od);
-    });
-  });
-
-  unittest.group('obj-schema-ModelOperationMetadata', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildModelOperationMetadata();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.ModelOperationMetadata.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkModelOperationMetadata(od);
     });
   });
 

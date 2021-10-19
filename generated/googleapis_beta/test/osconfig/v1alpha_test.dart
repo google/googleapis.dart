@@ -1241,50 +1241,6 @@ void checkOSPolicyAssignmentLabelSet(api.OSPolicyAssignmentLabelSet o) {
   buildCounterOSPolicyAssignmentLabelSet--;
 }
 
-core.int buildCounterOSPolicyAssignmentOperationMetadata = 0;
-api.OSPolicyAssignmentOperationMetadata
-    buildOSPolicyAssignmentOperationMetadata() {
-  final o = api.OSPolicyAssignmentOperationMetadata();
-  buildCounterOSPolicyAssignmentOperationMetadata++;
-  if (buildCounterOSPolicyAssignmentOperationMetadata < 3) {
-    o.apiMethod = 'foo';
-    o.osPolicyAssignment = 'foo';
-    o.rolloutStartTime = 'foo';
-    o.rolloutState = 'foo';
-    o.rolloutUpdateTime = 'foo';
-  }
-  buildCounterOSPolicyAssignmentOperationMetadata--;
-  return o;
-}
-
-void checkOSPolicyAssignmentOperationMetadata(
-    api.OSPolicyAssignmentOperationMetadata o) {
-  buildCounterOSPolicyAssignmentOperationMetadata++;
-  if (buildCounterOSPolicyAssignmentOperationMetadata < 3) {
-    unittest.expect(
-      o.apiMethod!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.osPolicyAssignment!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.rolloutStartTime!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.rolloutState!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.rolloutUpdateTime!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterOSPolicyAssignmentOperationMetadata--;
-}
-
 core.List<api.OSPolicyAssignmentReportOSPolicyCompliance> buildUnnamed19() => [
       buildOSPolicyAssignmentReportOSPolicyCompliance(),
       buildOSPolicyAssignmentReportOSPolicyCompliance(),
@@ -3094,16 +3050,6 @@ void main() {
       final od = api.OSPolicyAssignmentLabelSet.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkOSPolicyAssignmentLabelSet(od);
-    });
-  });
-
-  unittest.group('obj-schema-OSPolicyAssignmentOperationMetadata', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildOSPolicyAssignmentOperationMetadata();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.OSPolicyAssignmentOperationMetadata.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkOSPolicyAssignmentOperationMetadata(od);
     });
   });
 

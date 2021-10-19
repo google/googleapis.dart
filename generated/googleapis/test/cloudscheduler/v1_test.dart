@@ -512,68 +512,12 @@ void checkUnnamed6(core.Map<core.String, core.String> o) {
   );
 }
 
-core.int buildCounterPubsubMessage = 0;
-api.PubsubMessage buildPubsubMessage() {
-  final o = api.PubsubMessage();
-  buildCounterPubsubMessage++;
-  if (buildCounterPubsubMessage < 3) {
-    o.attributes = buildUnnamed6();
-    o.data = 'foo';
-    o.messageId = 'foo';
-    o.orderingKey = 'foo';
-    o.publishTime = 'foo';
-  }
-  buildCounterPubsubMessage--;
-  return o;
-}
-
-void checkPubsubMessage(api.PubsubMessage o) {
-  buildCounterPubsubMessage++;
-  if (buildCounterPubsubMessage < 3) {
-    checkUnnamed6(o.attributes!);
-    unittest.expect(
-      o.data!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.messageId!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.orderingKey!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.publishTime!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterPubsubMessage--;
-}
-
-core.Map<core.String, core.String> buildUnnamed7() => {
-      'x': 'foo',
-      'y': 'foo',
-    };
-
-void checkUnnamed7(core.Map<core.String, core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o['x']!,
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o['y']!,
-    unittest.equals('foo'),
-  );
-}
-
 core.int buildCounterPubsubTarget = 0;
 api.PubsubTarget buildPubsubTarget() {
   final o = api.PubsubTarget();
   buildCounterPubsubTarget++;
   if (buildCounterPubsubTarget < 3) {
-    o.attributes = buildUnnamed7();
+    o.attributes = buildUnnamed6();
     o.data = 'foo';
     o.topicName = 'foo';
   }
@@ -584,7 +528,7 @@ api.PubsubTarget buildPubsubTarget() {
 void checkPubsubTarget(api.PubsubTarget o) {
   buildCounterPubsubTarget++;
   if (buildCounterPubsubTarget < 3) {
-    checkUnnamed7(o.attributes!);
+    checkUnnamed6(o.attributes!);
     unittest.expect(
       o.data!,
       unittest.equals('foo'),
@@ -669,7 +613,7 @@ void checkRunJobRequest(api.RunJobRequest o) {
   buildCounterRunJobRequest--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed8() => {
+core.Map<core.String, core.Object?> buildUnnamed7() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -682,7 +626,7 @@ core.Map<core.String, core.Object?> buildUnnamed8() => {
       },
     };
 
-void checkUnnamed8(core.Map<core.String, core.Object?> o) {
+void checkUnnamed7(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted3 = (o['x']!) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
@@ -714,15 +658,15 @@ void checkUnnamed8(core.Map<core.String, core.Object?> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object?>> buildUnnamed9() => [
-      buildUnnamed8(),
-      buildUnnamed8(),
+core.List<core.Map<core.String, core.Object?>> buildUnnamed8() => [
+      buildUnnamed7(),
+      buildUnnamed7(),
     ];
 
-void checkUnnamed9(core.List<core.Map<core.String, core.Object?>> o) {
+void checkUnnamed8(core.List<core.Map<core.String, core.Object?>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed8(o[0]);
-  checkUnnamed8(o[1]);
+  checkUnnamed7(o[0]);
+  checkUnnamed7(o[1]);
 }
 
 core.int buildCounterStatus = 0;
@@ -731,7 +675,7 @@ api.Status buildStatus() {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed9();
+    o.details = buildUnnamed8();
     o.message = 'foo';
   }
   buildCounterStatus--;
@@ -745,7 +689,7 @@ void checkStatus(api.Status o) {
       o.code!,
       unittest.equals(42),
     );
-    checkUnnamed9(o.details!);
+    checkUnnamed8(o.details!);
     unittest.expect(
       o.message!,
       unittest.equals('foo'),
@@ -861,16 +805,6 @@ void main() {
       final od = api.PauseJobRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkPauseJobRequest(od);
-    });
-  });
-
-  unittest.group('obj-schema-PubsubMessage', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildPubsubMessage();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.PubsubMessage.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkPubsubMessage(od);
     });
   });
 

@@ -8182,33 +8182,6 @@ class ListRowAccessPoliciesResponse {
       };
 }
 
-/// BigQuery-specific metadata about a location.
-///
-/// This will be set on google.cloud.location.Location.metadata in Cloud
-/// Location API responses.
-class LocationMetadata {
-  /// The legacy BigQuery location ID, e.g. “EU” for the “europe” location.
-  ///
-  /// This is for any API consumers that need the legacy “US” and “EU”
-  /// locations.
-  core.String? legacyLocationId;
-
-  LocationMetadata({
-    this.legacyLocationId,
-  });
-
-  LocationMetadata.fromJson(core.Map _json)
-      : this(
-          legacyLocationId: _json.containsKey('legacyLocationId')
-              ? _json['legacyLocationId'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (legacyLocationId != null) 'legacyLocationId': legacyLocationId!,
-      };
-}
-
 class MaterializedViewDefinition {
   /// \[TrustedTester\] Enable automatic refresh of the materialized view when
   /// the base table is updated.

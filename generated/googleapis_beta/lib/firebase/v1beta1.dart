@@ -2772,9 +2772,6 @@ class Location {
       };
 }
 
-/// This is proto2's version of MessageSet.
-typedef MessageSet = $Empty;
-
 /// This resource represents a long-running operation that is the result of a
 /// network API call.
 class Operation {
@@ -3026,64 +3023,6 @@ class ShaCertificate {
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 typedef Status = $Status;
-
-/// Wire-format for a Status object
-class StatusProto {
-  /// The canonical error code (see codes.proto) that most closely corresponds
-  /// to this status.
-  ///
-  /// May be missing.
-  core.int? canonicalCode;
-
-  /// Numeric code drawn from the space specified below.
-  ///
-  /// Often, this is the canonical error space, and code is drawn from
-  /// google3/util/task/codes.proto
-  core.int? code;
-
-  /// Detail message
-  core.String? message;
-
-  /// message_set associates an arbitrary proto message with the status.
-  MessageSet? messageSet;
-
-  /// The following are usually only present when code != 0 Space to which this
-  /// status belongs
-  core.String? space;
-
-  StatusProto({
-    this.canonicalCode,
-    this.code,
-    this.message,
-    this.messageSet,
-    this.space,
-  });
-
-  StatusProto.fromJson(core.Map _json)
-      : this(
-          canonicalCode: _json.containsKey('canonicalCode')
-              ? _json['canonicalCode'] as core.int
-              : null,
-          code: _json.containsKey('code') ? _json['code'] as core.int : null,
-          message: _json.containsKey('message')
-              ? _json['message'] as core.String
-              : null,
-          messageSet: _json.containsKey('messageSet')
-              ? MessageSet.fromJson(
-                  _json['messageSet'] as core.Map<core.String, core.dynamic>)
-              : null,
-          space:
-              _json.containsKey('space') ? _json['space'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (canonicalCode != null) 'canonicalCode': canonicalCode!,
-        if (code != null) 'code': code!,
-        if (message != null) 'message': message!,
-        if (messageSet != null) 'messageSet': messageSet!,
-        if (space != null) 'space': space!,
-      };
-}
 
 /// A mapping of a Firebase App to a Google Analytics data stream
 class StreamMapping {

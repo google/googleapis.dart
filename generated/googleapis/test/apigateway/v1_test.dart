@@ -980,114 +980,23 @@ void checkApigatewayOperation(api.ApigatewayOperation o) {
   buildCounterApigatewayOperation--;
 }
 
-core.List<api.ApigatewayOperationMetadataDiagnostic> buildUnnamed22() => [
-      buildApigatewayOperationMetadataDiagnostic(),
-      buildApigatewayOperationMetadataDiagnostic(),
-    ];
-
-void checkUnnamed22(core.List<api.ApigatewayOperationMetadataDiagnostic> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkApigatewayOperationMetadataDiagnostic(o[0]);
-  checkApigatewayOperationMetadataDiagnostic(o[1]);
-}
-
-core.int buildCounterApigatewayOperationMetadata = 0;
-api.ApigatewayOperationMetadata buildApigatewayOperationMetadata() {
-  final o = api.ApigatewayOperationMetadata();
-  buildCounterApigatewayOperationMetadata++;
-  if (buildCounterApigatewayOperationMetadata < 3) {
-    o.apiVersion = 'foo';
-    o.createTime = 'foo';
-    o.diagnostics = buildUnnamed22();
-    o.endTime = 'foo';
-    o.requestedCancellation = true;
-    o.statusMessage = 'foo';
-    o.target = 'foo';
-    o.verb = 'foo';
-  }
-  buildCounterApigatewayOperationMetadata--;
-  return o;
-}
-
-void checkApigatewayOperationMetadata(api.ApigatewayOperationMetadata o) {
-  buildCounterApigatewayOperationMetadata++;
-  if (buildCounterApigatewayOperationMetadata < 3) {
-    unittest.expect(
-      o.apiVersion!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.createTime!,
-      unittest.equals('foo'),
-    );
-    checkUnnamed22(o.diagnostics!);
-    unittest.expect(
-      o.endTime!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(o.requestedCancellation!, unittest.isTrue);
-    unittest.expect(
-      o.statusMessage!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.target!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.verb!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterApigatewayOperationMetadata--;
-}
-
-core.int buildCounterApigatewayOperationMetadataDiagnostic = 0;
-api.ApigatewayOperationMetadataDiagnostic
-    buildApigatewayOperationMetadataDiagnostic() {
-  final o = api.ApigatewayOperationMetadataDiagnostic();
-  buildCounterApigatewayOperationMetadataDiagnostic++;
-  if (buildCounterApigatewayOperationMetadataDiagnostic < 3) {
-    o.location = 'foo';
-    o.message = 'foo';
-  }
-  buildCounterApigatewayOperationMetadataDiagnostic--;
-  return o;
-}
-
-void checkApigatewayOperationMetadataDiagnostic(
-    api.ApigatewayOperationMetadataDiagnostic o) {
-  buildCounterApigatewayOperationMetadataDiagnostic++;
-  if (buildCounterApigatewayOperationMetadataDiagnostic < 3) {
-    unittest.expect(
-      o.location!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.message!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterApigatewayOperationMetadataDiagnostic--;
-}
-
-core.List<api.ApigatewayAuditConfig> buildUnnamed23() => [
+core.List<api.ApigatewayAuditConfig> buildUnnamed22() => [
       buildApigatewayAuditConfig(),
       buildApigatewayAuditConfig(),
     ];
 
-void checkUnnamed23(core.List<api.ApigatewayAuditConfig> o) {
+void checkUnnamed22(core.List<api.ApigatewayAuditConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkApigatewayAuditConfig(o[0]);
   checkApigatewayAuditConfig(o[1]);
 }
 
-core.List<api.ApigatewayBinding> buildUnnamed24() => [
+core.List<api.ApigatewayBinding> buildUnnamed23() => [
       buildApigatewayBinding(),
       buildApigatewayBinding(),
     ];
 
-void checkUnnamed24(core.List<api.ApigatewayBinding> o) {
+void checkUnnamed23(core.List<api.ApigatewayBinding> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkApigatewayBinding(o[0]);
   checkApigatewayBinding(o[1]);
@@ -1098,8 +1007,8 @@ api.ApigatewayPolicy buildApigatewayPolicy() {
   final o = api.ApigatewayPolicy();
   buildCounterApigatewayPolicy++;
   if (buildCounterApigatewayPolicy < 3) {
-    o.auditConfigs = buildUnnamed23();
-    o.bindings = buildUnnamed24();
+    o.auditConfigs = buildUnnamed22();
+    o.bindings = buildUnnamed23();
     o.etag = 'foo';
     o.version = 42;
   }
@@ -1110,8 +1019,8 @@ api.ApigatewayPolicy buildApigatewayPolicy() {
 void checkApigatewayPolicy(api.ApigatewayPolicy o) {
   buildCounterApigatewayPolicy++;
   if (buildCounterApigatewayPolicy < 3) {
-    checkUnnamed23(o.auditConfigs!);
-    checkUnnamed24(o.bindings!);
+    checkUnnamed22(o.auditConfigs!);
+    checkUnnamed23(o.bindings!);
     unittest.expect(
       o.etag!,
       unittest.equals('foo'),
@@ -1148,7 +1057,7 @@ void checkApigatewaySetIamPolicyRequest(api.ApigatewaySetIamPolicyRequest o) {
   buildCounterApigatewaySetIamPolicyRequest--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed25() => {
+core.Map<core.String, core.Object?> buildUnnamed24() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -1161,7 +1070,7 @@ core.Map<core.String, core.Object?> buildUnnamed25() => {
       },
     };
 
-void checkUnnamed25(core.Map<core.String, core.Object?> o) {
+void checkUnnamed24(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted7 = (o['x']!) as core.Map;
   unittest.expect(casted7, unittest.hasLength(3));
@@ -1193,15 +1102,15 @@ void checkUnnamed25(core.Map<core.String, core.Object?> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object?>> buildUnnamed26() => [
-      buildUnnamed25(),
-      buildUnnamed25(),
+core.List<core.Map<core.String, core.Object?>> buildUnnamed25() => [
+      buildUnnamed24(),
+      buildUnnamed24(),
     ];
 
-void checkUnnamed26(core.List<core.Map<core.String, core.Object?>> o) {
+void checkUnnamed25(core.List<core.Map<core.String, core.Object?>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed25(o[0]);
-  checkUnnamed25(o[1]);
+  checkUnnamed24(o[0]);
+  checkUnnamed24(o[1]);
 }
 
 core.int buildCounterApigatewayStatus = 0;
@@ -1210,7 +1119,7 @@ api.ApigatewayStatus buildApigatewayStatus() {
   buildCounterApigatewayStatus++;
   if (buildCounterApigatewayStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed26();
+    o.details = buildUnnamed25();
     o.message = 'foo';
   }
   buildCounterApigatewayStatus--;
@@ -1224,13 +1133,51 @@ void checkApigatewayStatus(api.ApigatewayStatus o) {
       o.code!,
       unittest.equals(42),
     );
-    checkUnnamed26(o.details!);
+    checkUnnamed25(o.details!);
     unittest.expect(
       o.message!,
       unittest.equals('foo'),
     );
   }
   buildCounterApigatewayStatus--;
+}
+
+core.List<core.String> buildUnnamed26() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed26(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.int buildCounterApigatewayTestIamPermissionsRequest = 0;
+api.ApigatewayTestIamPermissionsRequest
+    buildApigatewayTestIamPermissionsRequest() {
+  final o = api.ApigatewayTestIamPermissionsRequest();
+  buildCounterApigatewayTestIamPermissionsRequest++;
+  if (buildCounterApigatewayTestIamPermissionsRequest < 3) {
+    o.permissions = buildUnnamed26();
+  }
+  buildCounterApigatewayTestIamPermissionsRequest--;
+  return o;
+}
+
+void checkApigatewayTestIamPermissionsRequest(
+    api.ApigatewayTestIamPermissionsRequest o) {
+  buildCounterApigatewayTestIamPermissionsRequest++;
+  if (buildCounterApigatewayTestIamPermissionsRequest < 3) {
+    checkUnnamed26(o.permissions!);
+  }
+  buildCounterApigatewayTestIamPermissionsRequest--;
 }
 
 core.List<core.String> buildUnnamed27() => [
@@ -1250,51 +1197,13 @@ void checkUnnamed27(core.List<core.String> o) {
   );
 }
 
-core.int buildCounterApigatewayTestIamPermissionsRequest = 0;
-api.ApigatewayTestIamPermissionsRequest
-    buildApigatewayTestIamPermissionsRequest() {
-  final o = api.ApigatewayTestIamPermissionsRequest();
-  buildCounterApigatewayTestIamPermissionsRequest++;
-  if (buildCounterApigatewayTestIamPermissionsRequest < 3) {
-    o.permissions = buildUnnamed27();
-  }
-  buildCounterApigatewayTestIamPermissionsRequest--;
-  return o;
-}
-
-void checkApigatewayTestIamPermissionsRequest(
-    api.ApigatewayTestIamPermissionsRequest o) {
-  buildCounterApigatewayTestIamPermissionsRequest++;
-  if (buildCounterApigatewayTestIamPermissionsRequest < 3) {
-    checkUnnamed27(o.permissions!);
-  }
-  buildCounterApigatewayTestIamPermissionsRequest--;
-}
-
-core.List<core.String> buildUnnamed28() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed28(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
 core.int buildCounterApigatewayTestIamPermissionsResponse = 0;
 api.ApigatewayTestIamPermissionsResponse
     buildApigatewayTestIamPermissionsResponse() {
   final o = api.ApigatewayTestIamPermissionsResponse();
   buildCounterApigatewayTestIamPermissionsResponse++;
   if (buildCounterApigatewayTestIamPermissionsResponse < 3) {
-    o.permissions = buildUnnamed28();
+    o.permissions = buildUnnamed27();
   }
   buildCounterApigatewayTestIamPermissionsResponse--;
   return o;
@@ -1304,7 +1213,7 @@ void checkApigatewayTestIamPermissionsResponse(
     api.ApigatewayTestIamPermissionsResponse o) {
   buildCounterApigatewayTestIamPermissionsResponse++;
   if (buildCounterApigatewayTestIamPermissionsResponse < 3) {
-    checkUnnamed28(o.permissions!);
+    checkUnnamed27(o.permissions!);
   }
   buildCounterApigatewayTestIamPermissionsResponse--;
 }
@@ -1502,26 +1411,6 @@ void main() {
       final od = api.ApigatewayOperation.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkApigatewayOperation(od);
-    });
-  });
-
-  unittest.group('obj-schema-ApigatewayOperationMetadata', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildApigatewayOperationMetadata();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.ApigatewayOperationMetadata.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkApigatewayOperationMetadata(od);
-    });
-  });
-
-  unittest.group('obj-schema-ApigatewayOperationMetadataDiagnostic', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildApigatewayOperationMetadataDiagnostic();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.ApigatewayOperationMetadataDiagnostic.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkApigatewayOperationMetadataDiagnostic(od);
     });
   });
 

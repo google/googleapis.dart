@@ -763,91 +763,6 @@ void checkSentiment(api.Sentiment o) {
   buildCounterSentiment--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed12() => {
-      'x': {
-        'list': [1, 2, 3],
-        'bool': true,
-        'string': 'foo'
-      },
-      'y': {
-        'list': [1, 2, 3],
-        'bool': true,
-        'string': 'foo'
-      },
-    };
-
-void checkUnnamed12(core.Map<core.String, core.Object?> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  var casted1 = (o['x']!) as core.Map;
-  unittest.expect(casted1, unittest.hasLength(3));
-  unittest.expect(
-    casted1['list'],
-    unittest.equals([1, 2, 3]),
-  );
-  unittest.expect(
-    casted1['bool'],
-    unittest.equals(true),
-  );
-  unittest.expect(
-    casted1['string'],
-    unittest.equals('foo'),
-  );
-  var casted2 = (o['y']!) as core.Map;
-  unittest.expect(casted2, unittest.hasLength(3));
-  unittest.expect(
-    casted2['list'],
-    unittest.equals([1, 2, 3]),
-  );
-  unittest.expect(
-    casted2['bool'],
-    unittest.equals(true),
-  );
-  unittest.expect(
-    casted2['string'],
-    unittest.equals('foo'),
-  );
-}
-
-core.List<core.Map<core.String, core.Object?>> buildUnnamed13() => [
-      buildUnnamed12(),
-      buildUnnamed12(),
-    ];
-
-void checkUnnamed13(core.List<core.Map<core.String, core.Object?>> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed12(o[0]);
-  checkUnnamed12(o[1]);
-}
-
-core.int buildCounterStatus = 0;
-api.Status buildStatus() {
-  final o = api.Status();
-  buildCounterStatus++;
-  if (buildCounterStatus < 3) {
-    o.code = 42;
-    o.details = buildUnnamed13();
-    o.message = 'foo';
-  }
-  buildCounterStatus--;
-  return o;
-}
-
-void checkStatus(api.Status o) {
-  buildCounterStatus++;
-  if (buildCounterStatus < 3) {
-    unittest.expect(
-      o.code!,
-      unittest.equals(42),
-    );
-    checkUnnamed13(o.details!);
-    unittest.expect(
-      o.message!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterStatus--;
-}
-
 core.int buildCounterTextSpan = 0;
 api.TextSpan buildTextSpan() {
   final o = api.TextSpan();
@@ -1111,16 +1026,6 @@ void main() {
       final od =
           api.Sentiment.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkSentiment(od);
-    });
-  });
-
-  unittest.group('obj-schema-Status', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildStatus();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.Status.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkStatus(od);
     });
   });
 

@@ -1204,53 +1204,6 @@ class SetIamPolicyRequest {
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 typedef Status = $Status;
 
-/// Metadata of SyncRepo.
-///
-/// This message is in the metadata field of Operation.
-class SyncRepoMetadata {
-  /// The name of the repo being synchronized.
-  ///
-  /// Values are of the form `projects//repos/`.
-  core.String? name;
-
-  /// The time this operation is started.
-  core.String? startTime;
-
-  /// The latest status message on syncing the repository.
-  core.String? statusMessage;
-
-  /// The time this operation's status message is updated.
-  core.String? updateTime;
-
-  SyncRepoMetadata({
-    this.name,
-    this.startTime,
-    this.statusMessage,
-    this.updateTime,
-  });
-
-  SyncRepoMetadata.fromJson(core.Map _json)
-      : this(
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          startTime: _json.containsKey('startTime')
-              ? _json['startTime'] as core.String
-              : null,
-          statusMessage: _json.containsKey('statusMessage')
-              ? _json['statusMessage'] as core.String
-              : null,
-          updateTime: _json.containsKey('updateTime')
-              ? _json['updateTime'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-        if (startTime != null) 'startTime': startTime!,
-        if (statusMessage != null) 'statusMessage': statusMessage!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
-}
-
 /// Request for SyncRepo.
 typedef SyncRepoRequest = $Empty;
 

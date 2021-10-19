@@ -298,14 +298,6 @@ class Bucket {
 /// object `{}`.
 typedef Empty = $Empty;
 
-/// Metadata for MigrateLocationDestructively LRO.
-typedef GoogleFirebaseStorageControlplaneV1alphaMigrateLocationDestructivelyMetadata
-    = $MigrateLocationDestructivelyMetadata;
-
-/// Metadata for MigrateLocationDestructively LRO.
-typedef GoogleFirebaseStorageControlplaneV1betaMigrateLocationDestructivelyMetadata
-    = $MigrateLocationDestructivelyMetadata;
-
 /// The response returned by `ListBuckets`.
 class ListBucketsResponse {
   /// The list of linked buckets.

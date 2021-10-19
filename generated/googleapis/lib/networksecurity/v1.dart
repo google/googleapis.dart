@@ -2544,9 +2544,6 @@ class Operation {
       };
 }
 
-/// Represents the metadata of the long-running operation.
-typedef OperationMetadata = $OperationMetadata00;
-
 /// Specification of rules.
 class Rule {
   /// List of attributes for the traffic destination.

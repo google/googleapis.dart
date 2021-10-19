@@ -8525,60 +8525,6 @@ void checkSdfConfig(api.SdfConfig o) {
   buildCounterSdfConfig--;
 }
 
-core.int buildCounterSdfDownloadTask = 0;
-api.SdfDownloadTask buildSdfDownloadTask() {
-  final o = api.SdfDownloadTask();
-  buildCounterSdfDownloadTask++;
-  if (buildCounterSdfDownloadTask < 3) {
-    o.resourceName = 'foo';
-  }
-  buildCounterSdfDownloadTask--;
-  return o;
-}
-
-void checkSdfDownloadTask(api.SdfDownloadTask o) {
-  buildCounterSdfDownloadTask++;
-  if (buildCounterSdfDownloadTask < 3) {
-    unittest.expect(
-      o.resourceName!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterSdfDownloadTask--;
-}
-
-core.int buildCounterSdfDownloadTaskMetadata = 0;
-api.SdfDownloadTaskMetadata buildSdfDownloadTaskMetadata() {
-  final o = api.SdfDownloadTaskMetadata();
-  buildCounterSdfDownloadTaskMetadata++;
-  if (buildCounterSdfDownloadTaskMetadata < 3) {
-    o.createTime = 'foo';
-    o.endTime = 'foo';
-    o.version = 'foo';
-  }
-  buildCounterSdfDownloadTaskMetadata--;
-  return o;
-}
-
-void checkSdfDownloadTaskMetadata(api.SdfDownloadTaskMetadata o) {
-  buildCounterSdfDownloadTaskMetadata++;
-  if (buildCounterSdfDownloadTaskMetadata < 3) {
-    unittest.expect(
-      o.createTime!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.endTime!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.version!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterSdfDownloadTaskMetadata--;
-}
-
 core.int buildCounterSearchTargetingOptionsRequest = 0;
 api.SearchTargetingOptionsRequest buildSearchTargetingOptionsRequest() {
   final o = api.SearchTargetingOptionsRequest();
@@ -11771,26 +11717,6 @@ void main() {
       final od =
           api.SdfConfig.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkSdfConfig(od);
-    });
-  });
-
-  unittest.group('obj-schema-SdfDownloadTask', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildSdfDownloadTask();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.SdfDownloadTask.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkSdfDownloadTask(od);
-    });
-  });
-
-  unittest.group('obj-schema-SdfDownloadTaskMetadata', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildSdfDownloadTaskMetadata();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.SdfDownloadTaskMetadata.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkSdfDownloadTaskMetadata(od);
     });
   });
 

@@ -963,48 +963,6 @@ class GoogleCloudWebriskV1Submission {
       };
 }
 
-/// Metadata for the Submit URI long-running operation.
-class GoogleCloudWebriskV1SubmitUriMetadata {
-  /// Creation time of the operation.
-  core.String? createTime;
-
-  /// The state of the operation.
-  /// Possible string values are:
-  /// - "STATE_UNSPECIFIED" : Default unspecified state.
-  /// - "RUNNING" : The operation is currently running.
-  /// - "SUCCEEDED" : The operation finished with a success status.
-  /// - "CANCELLED" : The operation was cancelled.
-  /// - "FAILED" : The operation finished with a failure status.
-  core.String? state;
-
-  /// Latest update time of the operation.
-  core.String? updateTime;
-
-  GoogleCloudWebriskV1SubmitUriMetadata({
-    this.createTime,
-    this.state,
-    this.updateTime,
-  });
-
-  GoogleCloudWebriskV1SubmitUriMetadata.fromJson(core.Map _json)
-      : this(
-          createTime: _json.containsKey('createTime')
-              ? _json['createTime'] as core.String
-              : null,
-          state:
-              _json.containsKey('state') ? _json['state'] as core.String : null,
-          updateTime: _json.containsKey('updateTime')
-              ? _json['updateTime'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
-        if (state != null) 'state': state!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
-}
-
 /// Request to send a potentially malicious URI to WebRisk.
 class GoogleCloudWebriskV1SubmitUriRequest {
   /// The submission that contains the URI to be scanned.

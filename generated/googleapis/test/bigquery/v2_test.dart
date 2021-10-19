@@ -4003,28 +4003,6 @@ void checkListRowAccessPoliciesResponse(api.ListRowAccessPoliciesResponse o) {
   buildCounterListRowAccessPoliciesResponse--;
 }
 
-core.int buildCounterLocationMetadata = 0;
-api.LocationMetadata buildLocationMetadata() {
-  final o = api.LocationMetadata();
-  buildCounterLocationMetadata++;
-  if (buildCounterLocationMetadata < 3) {
-    o.legacyLocationId = 'foo';
-  }
-  buildCounterLocationMetadata--;
-  return o;
-}
-
-void checkLocationMetadata(api.LocationMetadata o) {
-  buildCounterLocationMetadata++;
-  if (buildCounterLocationMetadata < 3) {
-    unittest.expect(
-      o.legacyLocationId!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterLocationMetadata--;
-}
-
 core.int buildCounterMaterializedViewDefinition = 0;
 api.MaterializedViewDefinition buildMaterializedViewDefinition() {
   final o = api.MaterializedViewDefinition();
@@ -7696,16 +7674,6 @@ void main() {
       final od = api.ListRowAccessPoliciesResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkListRowAccessPoliciesResponse(od);
-    });
-  });
-
-  unittest.group('obj-schema-LocationMetadata', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildLocationMetadata();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.LocationMetadata.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkLocationMetadata(od);
     });
   });
 

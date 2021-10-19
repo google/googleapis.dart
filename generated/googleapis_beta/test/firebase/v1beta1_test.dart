@@ -760,21 +760,6 @@ void checkLocation(api.Location o) {
   buildCounterLocation--;
 }
 
-core.int buildCounterMessageSet = 0;
-api.MessageSet buildMessageSet() {
-  final o = api.MessageSet();
-  buildCounterMessageSet++;
-  if (buildCounterMessageSet < 3) {}
-  buildCounterMessageSet--;
-  return o;
-}
-
-void checkMessageSet(api.MessageSet o) {
-  buildCounterMessageSet++;
-  if (buildCounterMessageSet < 3) {}
-  buildCounterMessageSet--;
-}
-
 core.Map<core.String, core.Object?> buildUnnamed9() => {
       'x': {
         'list': [1, 2, 3],
@@ -1099,45 +1084,6 @@ void checkStatus(api.Status o) {
     );
   }
   buildCounterStatus--;
-}
-
-core.int buildCounterStatusProto = 0;
-api.StatusProto buildStatusProto() {
-  final o = api.StatusProto();
-  buildCounterStatusProto++;
-  if (buildCounterStatusProto < 3) {
-    o.canonicalCode = 42;
-    o.code = 42;
-    o.message = 'foo';
-    o.messageSet = buildMessageSet();
-    o.space = 'foo';
-  }
-  buildCounterStatusProto--;
-  return o;
-}
-
-void checkStatusProto(api.StatusProto o) {
-  buildCounterStatusProto++;
-  if (buildCounterStatusProto < 3) {
-    unittest.expect(
-      o.canonicalCode!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.code!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.message!,
-      unittest.equals('foo'),
-    );
-    checkMessageSet(o.messageSet!);
-    unittest.expect(
-      o.space!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterStatusProto--;
 }
 
 core.int buildCounterStreamMapping = 0;
@@ -1516,16 +1462,6 @@ void main() {
     });
   });
 
-  unittest.group('obj-schema-MessageSet', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildMessageSet();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.MessageSet.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkMessageSet(od);
-    });
-  });
-
   unittest.group('obj-schema-Operation', () {
     unittest.test('to-json--from-json', () async {
       final o = buildOperation();
@@ -1583,16 +1519,6 @@ void main() {
       final od =
           api.Status.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkStatus(od);
-    });
-  });
-
-  unittest.group('obj-schema-StatusProto', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildStatusProto();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.StatusProto.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkStatusProto(od);
     });
   });
 

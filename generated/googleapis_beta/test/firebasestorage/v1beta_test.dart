@@ -85,86 +85,6 @@ void checkEmpty(api.Empty o) {
   buildCounterEmpty--;
 }
 
-core.int
-    buildCounterGoogleFirebaseStorageControlplaneV1alphaMigrateLocationDestructivelyMetadata =
-    0;
-api.GoogleFirebaseStorageControlplaneV1alphaMigrateLocationDestructivelyMetadata
-    buildGoogleFirebaseStorageControlplaneV1alphaMigrateLocationDestructivelyMetadata() {
-  final o = api
-      .GoogleFirebaseStorageControlplaneV1alphaMigrateLocationDestructivelyMetadata();
-  buildCounterGoogleFirebaseStorageControlplaneV1alphaMigrateLocationDestructivelyMetadata++;
-  if (buildCounterGoogleFirebaseStorageControlplaneV1alphaMigrateLocationDestructivelyMetadata <
-      3) {
-    o.createTime = 'foo';
-    o.lastUpdateTime = 'foo';
-    o.state = 'foo';
-  }
-  buildCounterGoogleFirebaseStorageControlplaneV1alphaMigrateLocationDestructivelyMetadata--;
-  return o;
-}
-
-void checkGoogleFirebaseStorageControlplaneV1alphaMigrateLocationDestructivelyMetadata(
-    api.GoogleFirebaseStorageControlplaneV1alphaMigrateLocationDestructivelyMetadata
-        o) {
-  buildCounterGoogleFirebaseStorageControlplaneV1alphaMigrateLocationDestructivelyMetadata++;
-  if (buildCounterGoogleFirebaseStorageControlplaneV1alphaMigrateLocationDestructivelyMetadata <
-      3) {
-    unittest.expect(
-      o.createTime!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.lastUpdateTime!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.state!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterGoogleFirebaseStorageControlplaneV1alphaMigrateLocationDestructivelyMetadata--;
-}
-
-core.int
-    buildCounterGoogleFirebaseStorageControlplaneV1betaMigrateLocationDestructivelyMetadata =
-    0;
-api.GoogleFirebaseStorageControlplaneV1betaMigrateLocationDestructivelyMetadata
-    buildGoogleFirebaseStorageControlplaneV1betaMigrateLocationDestructivelyMetadata() {
-  final o = api
-      .GoogleFirebaseStorageControlplaneV1betaMigrateLocationDestructivelyMetadata();
-  buildCounterGoogleFirebaseStorageControlplaneV1betaMigrateLocationDestructivelyMetadata++;
-  if (buildCounterGoogleFirebaseStorageControlplaneV1betaMigrateLocationDestructivelyMetadata <
-      3) {
-    o.createTime = 'foo';
-    o.lastUpdateTime = 'foo';
-    o.state = 'foo';
-  }
-  buildCounterGoogleFirebaseStorageControlplaneV1betaMigrateLocationDestructivelyMetadata--;
-  return o;
-}
-
-void checkGoogleFirebaseStorageControlplaneV1betaMigrateLocationDestructivelyMetadata(
-    api.GoogleFirebaseStorageControlplaneV1betaMigrateLocationDestructivelyMetadata
-        o) {
-  buildCounterGoogleFirebaseStorageControlplaneV1betaMigrateLocationDestructivelyMetadata++;
-  if (buildCounterGoogleFirebaseStorageControlplaneV1betaMigrateLocationDestructivelyMetadata <
-      3) {
-    unittest.expect(
-      o.createTime!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.lastUpdateTime!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.state!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterGoogleFirebaseStorageControlplaneV1betaMigrateLocationDestructivelyMetadata--;
-}
-
 core.List<api.Bucket> buildUnnamed0() => [
       buildBucket(),
       buildBucket(),
@@ -243,36 +163,6 @@ void main() {
       final od =
           api.Empty.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkEmpty(od);
-    });
-  });
-
-  unittest.group(
-      'obj-schema-GoogleFirebaseStorageControlplaneV1alphaMigrateLocationDestructivelyMetadata',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o =
-          buildGoogleFirebaseStorageControlplaneV1alphaMigrateLocationDestructivelyMetadata();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.GoogleFirebaseStorageControlplaneV1alphaMigrateLocationDestructivelyMetadata
-              .fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleFirebaseStorageControlplaneV1alphaMigrateLocationDestructivelyMetadata(
-          od);
-    });
-  });
-
-  unittest.group(
-      'obj-schema-GoogleFirebaseStorageControlplaneV1betaMigrateLocationDestructivelyMetadata',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o =
-          buildGoogleFirebaseStorageControlplaneV1betaMigrateLocationDestructivelyMetadata();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.GoogleFirebaseStorageControlplaneV1betaMigrateLocationDestructivelyMetadata
-              .fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleFirebaseStorageControlplaneV1betaMigrateLocationDestructivelyMetadata(
-          od);
     });
   });
 

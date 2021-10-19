@@ -1296,35 +1296,6 @@ class BatchCreateJobsRequest {
       };
 }
 
-/// The result of JobService.BatchCreateJobs.
-///
-/// It's used to replace google.longrunning.Operation.response in case of
-/// success.
-class BatchCreateJobsResponse {
-  /// List of job mutation results from a batch create operation.
-  ///
-  /// It can change until operation status is FINISHED, FAILED or CANCELLED.
-  core.List<JobResult>? jobResults;
-
-  BatchCreateJobsResponse({
-    this.jobResults,
-  });
-
-  BatchCreateJobsResponse.fromJson(core.Map _json)
-      : this(
-          jobResults: _json.containsKey('jobResults')
-              ? (_json['jobResults'] as core.List)
-                  .map((value) => JobResult.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (jobResults != null) 'jobResults': jobResults!,
-      };
-}
-
 /// Request to delete a batch of jobs.
 class BatchDeleteJobsRequest {
   /// The names of the jobs to delete.
@@ -1349,130 +1320,6 @@ class BatchDeleteJobsRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (names != null) 'names': names!,
-      };
-}
-
-/// The result of JobService.BatchDeleteJobs.
-///
-/// It's used to replace google.longrunning.Operation.response in case of
-/// success.
-class BatchDeleteJobsResponse {
-  /// List of job mutation results from a batch delete operation.
-  ///
-  /// It can change until operation status is FINISHED, FAILED or CANCELLED.
-  core.List<JobResult>? jobResults;
-
-  BatchDeleteJobsResponse({
-    this.jobResults,
-  });
-
-  BatchDeleteJobsResponse.fromJson(core.Map _json)
-      : this(
-          jobResults: _json.containsKey('jobResults')
-              ? (_json['jobResults'] as core.List)
-                  .map((value) => JobResult.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (jobResults != null) 'jobResults': jobResults!,
-      };
-}
-
-/// Metadata used for long running operations returned by CTS batch APIs.
-///
-/// It's used to replace google.longrunning.Operation.metadata.
-class BatchOperationMetadata {
-  /// The time when the batch operation is created.
-  core.String? createTime;
-
-  /// The time when the batch operation is finished and
-  /// google.longrunning.Operation.done is set to `true`.
-  core.String? endTime;
-
-  /// Count of failed item(s) inside an operation.
-  core.int? failureCount;
-
-  /// The state of a long running operation.
-  /// Possible string values are:
-  /// - "STATE_UNSPECIFIED" : Default value.
-  /// - "INITIALIZING" : The batch operation is being prepared for processing.
-  /// - "PROCESSING" : The batch operation is actively being processed.
-  /// - "SUCCEEDED" : The batch operation is processed, and at least one item
-  /// has been successfully processed.
-  /// - "FAILED" : The batch operation is done and no item has been successfully
-  /// processed.
-  /// - "CANCELLING" : The batch operation is in the process of cancelling after
-  /// google.longrunning.Operations.CancelOperation is called.
-  /// - "CANCELLED" : The batch operation is done after
-  /// google.longrunning.Operations.CancelOperation is called. Any items
-  /// processed before cancelling are returned in the response.
-  core.String? state;
-
-  /// More detailed information about operation state.
-  core.String? stateDescription;
-
-  /// Count of successful item(s) inside an operation.
-  core.int? successCount;
-
-  /// Count of total item(s) inside an operation.
-  core.int? totalCount;
-
-  /// The time when the batch operation status is updated.
-  ///
-  /// The metadata and the update_time is refreshed every minute otherwise
-  /// cached data is returned.
-  core.String? updateTime;
-
-  BatchOperationMetadata({
-    this.createTime,
-    this.endTime,
-    this.failureCount,
-    this.state,
-    this.stateDescription,
-    this.successCount,
-    this.totalCount,
-    this.updateTime,
-  });
-
-  BatchOperationMetadata.fromJson(core.Map _json)
-      : this(
-          createTime: _json.containsKey('createTime')
-              ? _json['createTime'] as core.String
-              : null,
-          endTime: _json.containsKey('endTime')
-              ? _json['endTime'] as core.String
-              : null,
-          failureCount: _json.containsKey('failureCount')
-              ? _json['failureCount'] as core.int
-              : null,
-          state:
-              _json.containsKey('state') ? _json['state'] as core.String : null,
-          stateDescription: _json.containsKey('stateDescription')
-              ? _json['stateDescription'] as core.String
-              : null,
-          successCount: _json.containsKey('successCount')
-              ? _json['successCount'] as core.int
-              : null,
-          totalCount: _json.containsKey('totalCount')
-              ? _json['totalCount'] as core.int
-              : null,
-          updateTime: _json.containsKey('updateTime')
-              ? _json['updateTime'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
-        if (endTime != null) 'endTime': endTime!,
-        if (failureCount != null) 'failureCount': failureCount!,
-        if (state != null) 'state': state!,
-        if (stateDescription != null) 'stateDescription': stateDescription!,
-        if (successCount != null) 'successCount': successCount!,
-        if (totalCount != null) 'totalCount': totalCount!,
-        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
@@ -1517,35 +1364,6 @@ class BatchUpdateJobsRequest {
   core.Map<core.String, core.dynamic> toJson() => {
         if (jobs != null) 'jobs': jobs!,
         if (updateMask != null) 'updateMask': updateMask!,
-      };
-}
-
-/// The result of JobService.BatchUpdateJobs.
-///
-/// It's used to replace google.longrunning.Operation.response in case of
-/// success.
-class BatchUpdateJobsResponse {
-  /// List of job mutation results from a batch update operation.
-  ///
-  /// It can change until operation status is FINISHED, FAILED or CANCELLED.
-  core.List<JobResult>? jobResults;
-
-  BatchUpdateJobsResponse({
-    this.jobResults,
-  });
-
-  BatchUpdateJobsResponse.fromJson(core.Map _json)
-      : this(
-          jobResults: _json.containsKey('jobResults')
-              ? (_json['jobResults'] as core.List)
-                  .map((value) => JobResult.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (jobResults != null) 'jobResults': jobResults!,
       };
 }
 
@@ -3382,41 +3200,6 @@ class JobQuery {
       };
 }
 
-/// Mutation result of a job from a batch operation.
-class JobResult {
-  /// Here Job only contains basic information including name, company,
-  /// language_code and requisition_id, use getJob method to retrieve detailed
-  /// information of the created/updated job.
-  Job? job;
-
-  /// The status of the job processed.
-  ///
-  /// This field is populated if the processing of the job fails.
-  Status? status;
-
-  JobResult({
-    this.job,
-    this.status,
-  });
-
-  JobResult.fromJson(core.Map _json)
-      : this(
-          job: _json.containsKey('job')
-              ? Job.fromJson(
-                  _json['job'] as core.Map<core.String, core.dynamic>)
-              : null,
-          status: _json.containsKey('status')
-              ? Status.fromJson(
-                  _json['status'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (job != null) 'job': job!,
-        if (status != null) 'status': status!,
-      };
-}
-
 /// An object that represents a latitude/longitude pair.
 ///
 /// This is expressed as a pair of doubles to represent degrees latitude and
@@ -3785,51 +3568,8 @@ class MatchingJob {
       };
 }
 
-/// Message representing input to a Mendel server for debug forcing.
-///
-/// See go/mendel-debug-forcing for more details. Next ID: 2
-class MendelDebugInput {
-  /// When a request spans multiple servers, a MendelDebugInput may travel with
-  /// the request and take effect in all the servers.
-  ///
-  /// This field is a map of namespaces to NamespacedMendelDebugInput protos. In
-  /// a single server, up to two NamespacedMendelDebugInput protos are applied:
-  /// 1. NamespacedMendelDebugInput with the global namespace (key == ""). 2.
-  /// NamespacedMendelDebugInput with the server's namespace. When both
-  /// NamespacedMendelDebugInput protos are present, they are merged. See
-  /// go/mendel-debug-forcing for more details.
-  core.Map<core.String, NamespacedDebugInput>? namespacedDebugInput;
-
-  MendelDebugInput({
-    this.namespacedDebugInput,
-  });
-
-  MendelDebugInput.fromJson(core.Map _json)
-      : this(
-          namespacedDebugInput: _json.containsKey('namespacedDebugInput')
-              ? (_json['namespacedDebugInput']
-                      as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    NamespacedDebugInput.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
-                  ),
-                )
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (namespacedDebugInput != null)
-          'namespacedDebugInput': namespacedDebugInput!,
-      };
-}
-
 /// Represents an amount of money with its currency type.
 typedef Money = $Money;
-
-/// Next ID: 15
-typedef NamespacedDebugInput = $NamespacedDebugInput;
 
 /// This resource represents a long-running operation that is the result of a
 /// network API call.

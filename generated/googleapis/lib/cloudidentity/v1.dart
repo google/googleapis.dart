@@ -1975,18 +1975,6 @@ class CheckTransitiveMembershipResponse {
       };
 }
 
-/// Metadata for CreateGroup LRO.
-typedef CreateGroupMetadata = $Empty;
-
-/// Metadata for CreateMembership LRO.
-typedef CreateMembershipMetadata = $Empty;
-
-/// Metadata for DeleteGroup LRO.
-typedef DeleteGroupMetadata = $Empty;
-
-/// Metadata for DeleteMembership LRO.
-typedef DeleteMembershipMetadata = $Empty;
-
 /// Dynamic group metadata like queries and status.
 class DynamicGroupMetadata {
   /// Memberships will be the union of all queries.
@@ -2169,49 +2157,6 @@ class ExpiryDetail {
       };
 }
 
-/// Metadata of GetMembershipGraphResponse LRO.
-///
-/// This is currently empty to permit future extensibility.
-typedef GetMembershipGraphMetadata = $Empty;
-
-/// The response message for MembershipsService.GetMembershipGraph.
-class GetMembershipGraphResponse {
-  /// The membership graph's path information represented as an adjacency list.
-  core.List<MembershipAdjacencyList>? adjacencyList;
-
-  /// The resources representing each group in the adjacency list.
-  ///
-  /// Each group in this list can be correlated to a 'group' of the
-  /// MembershipAdjacencyList using the 'name' of the Group resource.
-  core.List<Group>? groups;
-
-  GetMembershipGraphResponse({
-    this.adjacencyList,
-    this.groups,
-  });
-
-  GetMembershipGraphResponse.fromJson(core.Map _json)
-      : this(
-          adjacencyList: _json.containsKey('adjacencyList')
-              ? (_json['adjacencyList'] as core.List)
-                  .map((value) => MembershipAdjacencyList.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          groups: _json.containsKey('groups')
-              ? (_json['groups'] as core.List)
-                  .map((value) => Group.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (adjacencyList != null) 'adjacencyList': adjacencyList!,
-        if (groups != null) 'groups': groups!,
-      };
-}
-
 /// Resource representing the Android specific attributes of a Device.
 class GoogleAppsCloudidentityDevicesV1AndroidAttributes {
   /// Whether applications from unknown sources can be installed on device.
@@ -2274,124 +2219,18 @@ class GoogleAppsCloudidentityDevicesV1AndroidAttributes {
       };
 }
 
-/// Metadata for ApproveDeviceUser LRO.
-typedef GoogleAppsCloudidentityDevicesV1ApproveDeviceUserMetadata = $Empty;
-
 /// Request message for approving the device to access user data.
 typedef GoogleAppsCloudidentityDevicesV1ApproveDeviceUserRequest = $Request00;
-
-/// Response message for approving the device to access user data.
-class GoogleAppsCloudidentityDevicesV1ApproveDeviceUserResponse {
-  /// Resultant DeviceUser object for the action.
-  GoogleAppsCloudidentityDevicesV1DeviceUser? deviceUser;
-
-  GoogleAppsCloudidentityDevicesV1ApproveDeviceUserResponse({
-    this.deviceUser,
-  });
-
-  GoogleAppsCloudidentityDevicesV1ApproveDeviceUserResponse.fromJson(
-      core.Map _json)
-      : this(
-          deviceUser: _json.containsKey('deviceUser')
-              ? GoogleAppsCloudidentityDevicesV1DeviceUser.fromJson(
-                  _json['deviceUser'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (deviceUser != null) 'deviceUser': deviceUser!,
-      };
-}
-
-/// Metadata for BlockDeviceUser LRO.
-typedef GoogleAppsCloudidentityDevicesV1BlockDeviceUserMetadata = $Empty;
 
 /// Request message for blocking account on device.
 typedef GoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest = $Request00;
 
-/// Response message for blocking the device from accessing user data.
-class GoogleAppsCloudidentityDevicesV1BlockDeviceUserResponse {
-  /// Resultant DeviceUser object for the action.
-  GoogleAppsCloudidentityDevicesV1DeviceUser? deviceUser;
-
-  GoogleAppsCloudidentityDevicesV1BlockDeviceUserResponse({
-    this.deviceUser,
-  });
-
-  GoogleAppsCloudidentityDevicesV1BlockDeviceUserResponse.fromJson(
-      core.Map _json)
-      : this(
-          deviceUser: _json.containsKey('deviceUser')
-              ? GoogleAppsCloudidentityDevicesV1DeviceUser.fromJson(
-                  _json['deviceUser'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (deviceUser != null) 'deviceUser': deviceUser!,
-      };
-}
-
-/// Metadata for CancelWipeDevice LRO.
-typedef GoogleAppsCloudidentityDevicesV1CancelWipeDeviceMetadata = $Empty;
-
 /// Request message for cancelling an unfinished device wipe.
 typedef GoogleAppsCloudidentityDevicesV1CancelWipeDeviceRequest = $Request00;
-
-/// Response message for cancelling an unfinished device wipe.
-class GoogleAppsCloudidentityDevicesV1CancelWipeDeviceResponse {
-  /// Resultant Device object for the action.
-  ///
-  /// Note that asset tags will not be returned in the device object.
-  GoogleAppsCloudidentityDevicesV1Device? device;
-
-  GoogleAppsCloudidentityDevicesV1CancelWipeDeviceResponse({
-    this.device,
-  });
-
-  GoogleAppsCloudidentityDevicesV1CancelWipeDeviceResponse.fromJson(
-      core.Map _json)
-      : this(
-          device: _json.containsKey('device')
-              ? GoogleAppsCloudidentityDevicesV1Device.fromJson(
-                  _json['device'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (device != null) 'device': device!,
-      };
-}
-
-/// Metadata for CancelWipeDeviceUser LRO.
-typedef GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserMetadata = $Empty;
 
 /// Request message for cancelling an unfinished user account wipe.
 typedef GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserRequest
     = $Request00;
-
-/// Response message for cancelling an unfinished user account wipe.
-class GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserResponse {
-  /// Resultant DeviceUser object for the action.
-  GoogleAppsCloudidentityDevicesV1DeviceUser? deviceUser;
-
-  GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserResponse({
-    this.deviceUser,
-  });
-
-  GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserResponse.fromJson(
-      core.Map _json)
-      : this(
-          deviceUser: _json.containsKey('deviceUser')
-              ? GoogleAppsCloudidentityDevicesV1DeviceUser.fromJson(
-                  _json['deviceUser'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (deviceUser != null) 'deviceUser': deviceUser!,
-      };
-}
 
 /// Represents the state associated with an API client calling the Devices API.
 ///
@@ -2568,9 +2407,6 @@ class GoogleAppsCloudidentityDevicesV1ClientState {
       };
 }
 
-/// Metadata for CreateDevice LRO.
-typedef GoogleAppsCloudidentityDevicesV1CreateDeviceMetadata = $Empty;
-
 /// Additional custom attribute values may be one of these types
 class GoogleAppsCloudidentityDevicesV1CustomAttributeValue {
   /// Represents a boolean value.
@@ -2607,12 +2443,6 @@ class GoogleAppsCloudidentityDevicesV1CustomAttributeValue {
         if (stringValue != null) 'stringValue': stringValue!,
       };
 }
-
-/// Metadata for DeleteDevice LRO.
-typedef GoogleAppsCloudidentityDevicesV1DeleteDeviceMetadata = $Empty;
-
-/// Metadata for DeleteDeviceUser LRO.
-typedef GoogleAppsCloudidentityDevicesV1DeleteDeviceUserMetadata = $Empty;
 
 ///  A Device within the Cloud Identity Devices API.
 ///
@@ -3194,9 +3024,6 @@ class GoogleAppsCloudidentityDevicesV1ListDevicesResponse {
       };
 }
 
-/// Metadata for ListEndpointApps LRO.
-typedef GoogleAppsCloudidentityDevicesV1ListEndpointAppsMetadata = $Empty;
-
 /// Response containing resource names of the DeviceUsers associated with the
 /// caller's credentials.
 class GoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse {
@@ -3244,73 +3071,11 @@ class GoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse {
       };
 }
 
-/// Metadata for SignoutDeviceUser LRO.
-typedef GoogleAppsCloudidentityDevicesV1SignoutDeviceUserMetadata = $Empty;
-
-/// Metadata for UpdateClientState LRO.
-typedef GoogleAppsCloudidentityDevicesV1UpdateClientStateMetadata = $Empty;
-
-/// Metadata for UpdateDevice LRO.
-typedef GoogleAppsCloudidentityDevicesV1UpdateDeviceMetadata = $Empty;
-
-/// Metadata for WipeDevice LRO.
-typedef GoogleAppsCloudidentityDevicesV1WipeDeviceMetadata = $Empty;
-
 /// Request message for wiping all data on the device.
 typedef GoogleAppsCloudidentityDevicesV1WipeDeviceRequest = $Request00;
 
-/// Response message for wiping all data on the device.
-class GoogleAppsCloudidentityDevicesV1WipeDeviceResponse {
-  /// Resultant Device object for the action.
-  ///
-  /// Note that asset tags will not be returned in the device object.
-  GoogleAppsCloudidentityDevicesV1Device? device;
-
-  GoogleAppsCloudidentityDevicesV1WipeDeviceResponse({
-    this.device,
-  });
-
-  GoogleAppsCloudidentityDevicesV1WipeDeviceResponse.fromJson(core.Map _json)
-      : this(
-          device: _json.containsKey('device')
-              ? GoogleAppsCloudidentityDevicesV1Device.fromJson(
-                  _json['device'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (device != null) 'device': device!,
-      };
-}
-
-/// Metadata for WipeDeviceUser LRO.
-typedef GoogleAppsCloudidentityDevicesV1WipeDeviceUserMetadata = $Empty;
-
 /// Request message for starting an account wipe on device.
 typedef GoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest = $Request00;
-
-/// Response message for wiping the user's account from the device.
-class GoogleAppsCloudidentityDevicesV1WipeDeviceUserResponse {
-  /// Resultant DeviceUser object for the action.
-  GoogleAppsCloudidentityDevicesV1DeviceUser? deviceUser;
-
-  GoogleAppsCloudidentityDevicesV1WipeDeviceUserResponse({
-    this.deviceUser,
-  });
-
-  GoogleAppsCloudidentityDevicesV1WipeDeviceUserResponse.fromJson(
-      core.Map _json)
-      : this(
-          deviceUser: _json.containsKey('deviceUser')
-              ? GoogleAppsCloudidentityDevicesV1DeviceUser.fromJson(
-                  _json['deviceUser'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (deviceUser != null) 'deviceUser': deviceUser!,
-      };
-}
 
 /// A group within the Cloud Identity Groups API.
 ///
@@ -3785,42 +3550,6 @@ class Membership {
       };
 }
 
-/// Membership graph's path information as an adjacency list.
-class MembershipAdjacencyList {
-  /// Each edge contains information about the member that belongs to this
-  /// group.
-  ///
-  /// Note: Fields returned here will help identify the specific Membership
-  /// resource (e.g name, preferred_member_key and role), but may not be a
-  /// comprehensive list of all fields.
-  core.List<Membership>? edges;
-
-  /// Resource name of the group that the members belong to.
-  core.String? group;
-
-  MembershipAdjacencyList({
-    this.edges,
-    this.group,
-  });
-
-  MembershipAdjacencyList.fromJson(core.Map _json)
-      : this(
-          edges: _json.containsKey('edges')
-              ? (_json['edges'] as core.List)
-                  .map((value) => Membership.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          group:
-              _json.containsKey('group') ? _json['group'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (edges != null) 'edges': edges!,
-        if (group != null) 'group': group!,
-      };
-}
-
 /// A membership role within the Cloud Identity Groups API.
 ///
 /// A `MembershipRole` defines the privileges granted to a `Membership`.
@@ -4141,12 +3870,6 @@ class TransitiveMembershipRole {
       };
 }
 
-/// Metadata for UpdateGroup LRO.
-typedef UpdateGroupMetadata = $Empty;
-
-/// Metadata for UpdateMembership LRO.
-typedef UpdateMembershipMetadata = $Empty;
-
 /// The details of an update to a `MembershipRole`.
 class UpdateMembershipRolesParams {
   /// The fully-qualified names of fields to update.
@@ -4178,63 +3901,5 @@ class UpdateMembershipRolesParams {
   core.Map<core.String, core.dynamic> toJson() => {
         if (fieldMask != null) 'fieldMask': fieldMask!,
         if (membershipRole != null) 'membershipRole': membershipRole!,
-      };
-}
-
-/// The `UserInvitation` resource represents an email that can be sent to an
-/// unmanaged user account inviting them to join the customer’s Google Workspace
-/// or Cloud Identity account.
-///
-/// An unmanaged account shares an email address domain with the Google
-/// Workspace or Cloud Identity account but is not managed by it yet. If the
-/// user accepts the `UserInvitation`, the user account will become managed.
-class UserInvitation {
-  /// Number of invitation emails sent to the user.
-  core.String? mailsSentCount;
-
-  /// Shall be of the form
-  /// `customers/{customer}/userinvitations/{user_email_address}`.
-  core.String? name;
-
-  /// State of the `UserInvitation`.
-  /// Possible string values are:
-  /// - "STATE_UNSPECIFIED" : The default value. This value is used if the state
-  /// is omitted.
-  /// - "NOT_YET_SENT" : The `UserInvitation` has been created and is ready for
-  /// sending as an email.
-  /// - "INVITED" : The user has been invited by email.
-  /// - "ACCEPTED" : The user has accepted the invitation and is part of the
-  /// organization.
-  /// - "DECLINED" : The user declined the invitation.
-  core.String? state;
-
-  /// Time when the `UserInvitation` was last updated.
-  core.String? updateTime;
-
-  UserInvitation({
-    this.mailsSentCount,
-    this.name,
-    this.state,
-    this.updateTime,
-  });
-
-  UserInvitation.fromJson(core.Map _json)
-      : this(
-          mailsSentCount: _json.containsKey('mailsSentCount')
-              ? _json['mailsSentCount'] as core.String
-              : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          state:
-              _json.containsKey('state') ? _json['state'] as core.String : null,
-          updateTime: _json.containsKey('updateTime')
-              ? _json['updateTime'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (mailsSentCount != null) 'mailsSentCount': mailsSentCount!,
-        if (name != null) 'name': name!,
-        if (state != null) 'state': state!,
-        if (updateTime != null) 'updateTime': updateTime!,
       };
 }

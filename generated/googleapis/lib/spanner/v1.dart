@@ -3748,80 +3748,6 @@ class ContextValue {
       };
 }
 
-/// Metadata type for the operation returned by CreateBackup.
-class CreateBackupMetadata {
-  /// The time at which cancellation of this operation was received.
-  ///
-  /// Operations.CancelOperation starts asynchronous cancellation on a
-  /// long-running operation. The server makes a best effort to cancel the
-  /// operation, but success is not guaranteed. Clients can use
-  /// Operations.GetOperation or other methods to check whether the cancellation
-  /// succeeded or whether the operation completed despite cancellation. On
-  /// successful cancellation, the operation is not deleted; instead, it becomes
-  /// an operation with an Operation.error value with a google.rpc.Status.code
-  /// of 1, corresponding to `Code.CANCELLED`.
-  core.String? cancelTime;
-
-  /// The name of the database the backup is created from.
-  core.String? database;
-
-  /// The name of the backup being created.
-  core.String? name;
-
-  /// The progress of the CreateBackup operation.
-  OperationProgress? progress;
-
-  CreateBackupMetadata({
-    this.cancelTime,
-    this.database,
-    this.name,
-    this.progress,
-  });
-
-  CreateBackupMetadata.fromJson(core.Map _json)
-      : this(
-          cancelTime: _json.containsKey('cancelTime')
-              ? _json['cancelTime'] as core.String
-              : null,
-          database: _json.containsKey('database')
-              ? _json['database'] as core.String
-              : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          progress: _json.containsKey('progress')
-              ? OperationProgress.fromJson(
-                  _json['progress'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (cancelTime != null) 'cancelTime': cancelTime!,
-        if (database != null) 'database': database!,
-        if (name != null) 'name': name!,
-        if (progress != null) 'progress': progress!,
-      };
-}
-
-/// Metadata type for the operation returned by CreateDatabase.
-class CreateDatabaseMetadata {
-  /// The database being created.
-  core.String? database;
-
-  CreateDatabaseMetadata({
-    this.database,
-  });
-
-  CreateDatabaseMetadata.fromJson(core.Map _json)
-      : this(
-          database: _json.containsKey('database')
-              ? _json['database'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (database != null) 'database': database!,
-      };
-}
-
 /// The request for CreateDatabase.
 class CreateDatabaseRequest {
   /// A \`CREATE DATABASE\` statement, which specifies the ID of the new
@@ -3878,55 +3804,6 @@ class CreateDatabaseRequest {
         if (createStatement != null) 'createStatement': createStatement!,
         if (encryptionConfig != null) 'encryptionConfig': encryptionConfig!,
         if (extraStatements != null) 'extraStatements': extraStatements!,
-      };
-}
-
-/// Metadata type for the operation returned by CreateInstance.
-class CreateInstanceMetadata {
-  /// The time at which this operation was cancelled.
-  ///
-  /// If set, this operation is in the process of undoing itself (which is
-  /// guaranteed to succeed) and cannot be cancelled again.
-  core.String? cancelTime;
-
-  /// The time at which this operation failed or was completed successfully.
-  core.String? endTime;
-
-  /// The instance being created.
-  Instance? instance;
-
-  /// The time at which the CreateInstance request was received.
-  core.String? startTime;
-
-  CreateInstanceMetadata({
-    this.cancelTime,
-    this.endTime,
-    this.instance,
-    this.startTime,
-  });
-
-  CreateInstanceMetadata.fromJson(core.Map _json)
-      : this(
-          cancelTime: _json.containsKey('cancelTime')
-              ? _json['cancelTime'] as core.String
-              : null,
-          endTime: _json.containsKey('endTime')
-              ? _json['endTime'] as core.String
-              : null,
-          instance: _json.containsKey('instance')
-              ? Instance.fromJson(
-                  _json['instance'] as core.Map<core.String, core.dynamic>)
-              : null,
-          startTime: _json.containsKey('startTime')
-              ? _json['startTime'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (cancelTime != null) 'cancelTime': cancelTime!,
-        if (endTime != null) 'endTime': endTime!,
-        if (instance != null) 'instance': instance!,
-        if (startTime != null) 'startTime': startTime!,
       };
 }
 
@@ -6036,42 +5913,6 @@ class Operation {
       };
 }
 
-/// Encapsulates progress related information for a Cloud Spanner long running
-/// operation.
-typedef OperationProgress = $OperationProgress;
-
-/// Metadata type for the long-running operation used to track the progress of
-/// optimizations performed on a newly restored database.
-///
-/// This long-running operation is automatically created by the system after the
-/// successful completion of a database restore, and cannot be cancelled.
-class OptimizeRestoredDatabaseMetadata {
-  /// Name of the restored database being optimized.
-  core.String? name;
-
-  /// The progress of the post-restore optimizations.
-  OperationProgress? progress;
-
-  OptimizeRestoredDatabaseMetadata({
-    this.name,
-    this.progress,
-  });
-
-  OptimizeRestoredDatabaseMetadata.fromJson(core.Map _json)
-      : this(
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          progress: _json.containsKey('progress')
-              ? OperationProgress.fromJson(
-                  _json['progress'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-        if (progress != null) 'progress': progress!,
-      };
-}
-
 /// Partial results from a streaming read or SQL query.
 ///
 /// Streaming reads and SQL queries better tolerate large result sets, large
@@ -7198,91 +7039,6 @@ class RestoreDatabaseEncryptionConfig {
       };
 }
 
-/// Metadata type for the long-running operation returned by RestoreDatabase.
-class RestoreDatabaseMetadata {
-  /// Information about the backup used to restore the database.
-  BackupInfo? backupInfo;
-
-  /// The time at which cancellation of this operation was received.
-  ///
-  /// Operations.CancelOperation starts asynchronous cancellation on a
-  /// long-running operation. The server makes a best effort to cancel the
-  /// operation, but success is not guaranteed. Clients can use
-  /// Operations.GetOperation or other methods to check whether the cancellation
-  /// succeeded or whether the operation completed despite cancellation. On
-  /// successful cancellation, the operation is not deleted; instead, it becomes
-  /// an operation with an Operation.error value with a google.rpc.Status.code
-  /// of 1, corresponding to `Code.CANCELLED`.
-  core.String? cancelTime;
-
-  /// Name of the database being created and restored to.
-  core.String? name;
-
-  /// If exists, the name of the long-running operation that will be used to
-  /// track the post-restore optimization process to optimize the performance of
-  /// the restored database, and remove the dependency on the restore source.
-  ///
-  /// The name is of the form `projects//instances//databases//operations/`
-  /// where the is the name of database being created and restored to. The
-  /// metadata type of the long-running operation is
-  /// OptimizeRestoredDatabaseMetadata. This long-running operation will be
-  /// automatically created by the system after the RestoreDatabase long-running
-  /// operation completes successfully. This operation will not be created if
-  /// the restore was not successful.
-  core.String? optimizeDatabaseOperationName;
-
-  /// The progress of the RestoreDatabase operation.
-  OperationProgress? progress;
-
-  /// The type of the restore source.
-  /// Possible string values are:
-  /// - "TYPE_UNSPECIFIED" : No restore associated.
-  /// - "BACKUP" : A backup was used as the source of the restore.
-  core.String? sourceType;
-
-  RestoreDatabaseMetadata({
-    this.backupInfo,
-    this.cancelTime,
-    this.name,
-    this.optimizeDatabaseOperationName,
-    this.progress,
-    this.sourceType,
-  });
-
-  RestoreDatabaseMetadata.fromJson(core.Map _json)
-      : this(
-          backupInfo: _json.containsKey('backupInfo')
-              ? BackupInfo.fromJson(
-                  _json['backupInfo'] as core.Map<core.String, core.dynamic>)
-              : null,
-          cancelTime: _json.containsKey('cancelTime')
-              ? _json['cancelTime'] as core.String
-              : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          optimizeDatabaseOperationName:
-              _json.containsKey('optimizeDatabaseOperationName')
-                  ? _json['optimizeDatabaseOperationName'] as core.String
-                  : null,
-          progress: _json.containsKey('progress')
-              ? OperationProgress.fromJson(
-                  _json['progress'] as core.Map<core.String, core.dynamic>)
-              : null,
-          sourceType: _json.containsKey('sourceType')
-              ? _json['sourceType'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (backupInfo != null) 'backupInfo': backupInfo!,
-        if (cancelTime != null) 'cancelTime': cancelTime!,
-        if (name != null) 'name': name!,
-        if (optimizeDatabaseOperationName != null)
-          'optimizeDatabaseOperationName': optimizeDatabaseOperationName!,
-        if (progress != null) 'progress': progress!,
-        if (sourceType != null) 'sourceType': sourceType!,
-      };
-}
-
 /// The request for RestoreDatabase.
 class RestoreDatabaseRequest {
   /// Name of the backup from which to restore.
@@ -8303,82 +8059,6 @@ class Type {
       };
 }
 
-/// Metadata type for the operation returned by UpdateDatabaseDdl.
-class UpdateDatabaseDdlMetadata {
-  /// Reports the commit timestamps of all statements that have succeeded so
-  /// far, where `commit_timestamps[i]` is the commit timestamp for the
-  /// statement `statements[i]`.
-  core.List<core.String>? commitTimestamps;
-
-  /// The database being modified.
-  core.String? database;
-
-  /// The progress of the UpdateDatabaseDdl operations.
-  ///
-  /// Currently, only index creation statements will have a continuously
-  /// updating progress. For non-index creation statements, `progress[i]` will
-  /// have start time and end time populated with commit timestamp of operation,
-  /// as well as a progress of 100% once the operation has completed.
-  /// `progress[i]` is the operation progress for `statements[i]`.
-  core.List<OperationProgress>? progress;
-
-  /// For an update this list contains all the statements.
-  ///
-  /// For an individual statement, this list contains only that statement.
-  core.List<core.String>? statements;
-
-  /// When true, indicates that the operation is throttled e.g due to resource
-  /// constraints.
-  ///
-  /// When resources become available the operation will resume and this field
-  /// will be false again.
-  ///
-  /// Output only.
-  core.bool? throttled;
-
-  UpdateDatabaseDdlMetadata({
-    this.commitTimestamps,
-    this.database,
-    this.progress,
-    this.statements,
-    this.throttled,
-  });
-
-  UpdateDatabaseDdlMetadata.fromJson(core.Map _json)
-      : this(
-          commitTimestamps: _json.containsKey('commitTimestamps')
-              ? (_json['commitTimestamps'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          database: _json.containsKey('database')
-              ? _json['database'] as core.String
-              : null,
-          progress: _json.containsKey('progress')
-              ? (_json['progress'] as core.List)
-                  .map((value) => OperationProgress.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          statements: _json.containsKey('statements')
-              ? (_json['statements'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          throttled: _json.containsKey('throttled')
-              ? _json['throttled'] as core.bool
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (commitTimestamps != null) 'commitTimestamps': commitTimestamps!,
-        if (database != null) 'database': database!,
-        if (progress != null) 'progress': progress!,
-        if (statements != null) 'statements': statements!,
-        if (throttled != null) 'throttled': throttled!,
-      };
-}
-
 /// Enqueues the given DDL statements to be applied, in order but not
 /// necessarily all at once, to the database schema at some point (or points) in
 /// the future.
@@ -8433,55 +8113,6 @@ class UpdateDatabaseDdlRequest {
   core.Map<core.String, core.dynamic> toJson() => {
         if (operationId != null) 'operationId': operationId!,
         if (statements != null) 'statements': statements!,
-      };
-}
-
-/// Metadata type for the operation returned by UpdateInstance.
-class UpdateInstanceMetadata {
-  /// The time at which this operation was cancelled.
-  ///
-  /// If set, this operation is in the process of undoing itself (which is
-  /// guaranteed to succeed) and cannot be cancelled again.
-  core.String? cancelTime;
-
-  /// The time at which this operation failed or was completed successfully.
-  core.String? endTime;
-
-  /// The desired end state of the update.
-  Instance? instance;
-
-  /// The time at which UpdateInstance request was received.
-  core.String? startTime;
-
-  UpdateInstanceMetadata({
-    this.cancelTime,
-    this.endTime,
-    this.instance,
-    this.startTime,
-  });
-
-  UpdateInstanceMetadata.fromJson(core.Map _json)
-      : this(
-          cancelTime: _json.containsKey('cancelTime')
-              ? _json['cancelTime'] as core.String
-              : null,
-          endTime: _json.containsKey('endTime')
-              ? _json['endTime'] as core.String
-              : null,
-          instance: _json.containsKey('instance')
-              ? Instance.fromJson(
-                  _json['instance'] as core.Map<core.String, core.dynamic>)
-              : null,
-          startTime: _json.containsKey('startTime')
-              ? _json['startTime'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (cancelTime != null) 'cancelTime': cancelTime!,
-        if (endTime != null) 'endTime': endTime!,
-        if (instance != null) 'instance': instance!,
-        if (startTime != null) 'startTime': startTime!,
       };
 }
 

@@ -4174,87 +4174,6 @@ void checkUpdateNodePoolRequest(api.UpdateNodePoolRequest o) {
   buildCounterUpdateNodePoolRequest--;
 }
 
-core.int buildCounterUpgradeAvailableEvent = 0;
-api.UpgradeAvailableEvent buildUpgradeAvailableEvent() {
-  final o = api.UpgradeAvailableEvent();
-  buildCounterUpgradeAvailableEvent++;
-  if (buildCounterUpgradeAvailableEvent < 3) {
-    o.releaseChannel = buildReleaseChannel();
-    o.resource = 'foo';
-    o.resourceType = 'foo';
-    o.version = 'foo';
-  }
-  buildCounterUpgradeAvailableEvent--;
-  return o;
-}
-
-void checkUpgradeAvailableEvent(api.UpgradeAvailableEvent o) {
-  buildCounterUpgradeAvailableEvent++;
-  if (buildCounterUpgradeAvailableEvent < 3) {
-    checkReleaseChannel(o.releaseChannel!);
-    unittest.expect(
-      o.resource!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.resourceType!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.version!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterUpgradeAvailableEvent--;
-}
-
-core.int buildCounterUpgradeEvent = 0;
-api.UpgradeEvent buildUpgradeEvent() {
-  final o = api.UpgradeEvent();
-  buildCounterUpgradeEvent++;
-  if (buildCounterUpgradeEvent < 3) {
-    o.currentVersion = 'foo';
-    o.operation = 'foo';
-    o.operationStartTime = 'foo';
-    o.resource = 'foo';
-    o.resourceType = 'foo';
-    o.targetVersion = 'foo';
-  }
-  buildCounterUpgradeEvent--;
-  return o;
-}
-
-void checkUpgradeEvent(api.UpgradeEvent o) {
-  buildCounterUpgradeEvent++;
-  if (buildCounterUpgradeEvent < 3) {
-    unittest.expect(
-      o.currentVersion!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.operation!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.operationStartTime!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.resource!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.resourceType!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.targetVersion!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterUpgradeEvent--;
-}
-
 core.int buildCounterUpgradeSettings = 0;
 api.UpgradeSettings buildUpgradeSettings() {
   final o = api.UpgradeSettings();
@@ -5453,26 +5372,6 @@ void main() {
       final od = api.UpdateNodePoolRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkUpdateNodePoolRequest(od);
-    });
-  });
-
-  unittest.group('obj-schema-UpgradeAvailableEvent', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildUpgradeAvailableEvent();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.UpgradeAvailableEvent.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkUpgradeAvailableEvent(od);
-    });
-  });
-
-  unittest.group('obj-schema-UpgradeEvent', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildUpgradeEvent();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.UpgradeEvent.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkUpgradeEvent(od);
     });
   });
 

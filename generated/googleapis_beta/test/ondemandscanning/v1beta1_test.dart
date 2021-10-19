@@ -53,60 +53,6 @@ void checkAliasContext(api.AliasContext o) {
   buildCounterAliasContext--;
 }
 
-core.int buildCounterAnalyzePackagesMetadata = 0;
-api.AnalyzePackagesMetadata buildAnalyzePackagesMetadata() {
-  final o = api.AnalyzePackagesMetadata();
-  buildCounterAnalyzePackagesMetadata++;
-  if (buildCounterAnalyzePackagesMetadata < 3) {
-    o.createTime = 'foo';
-    o.resourceUri = 'foo';
-  }
-  buildCounterAnalyzePackagesMetadata--;
-  return o;
-}
-
-void checkAnalyzePackagesMetadata(api.AnalyzePackagesMetadata o) {
-  buildCounterAnalyzePackagesMetadata++;
-  if (buildCounterAnalyzePackagesMetadata < 3) {
-    unittest.expect(
-      o.createTime!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.resourceUri!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterAnalyzePackagesMetadata--;
-}
-
-core.int buildCounterAnalyzePackagesMetadataV1 = 0;
-api.AnalyzePackagesMetadataV1 buildAnalyzePackagesMetadataV1() {
-  final o = api.AnalyzePackagesMetadataV1();
-  buildCounterAnalyzePackagesMetadataV1++;
-  if (buildCounterAnalyzePackagesMetadataV1 < 3) {
-    o.createTime = 'foo';
-    o.resourceUri = 'foo';
-  }
-  buildCounterAnalyzePackagesMetadataV1--;
-  return o;
-}
-
-void checkAnalyzePackagesMetadataV1(api.AnalyzePackagesMetadataV1 o) {
-  buildCounterAnalyzePackagesMetadataV1++;
-  if (buildCounterAnalyzePackagesMetadataV1 < 3) {
-    unittest.expect(
-      o.createTime!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.resourceUri!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterAnalyzePackagesMetadataV1--;
-}
-
 core.List<api.PackageData> buildUnnamed0() => [
       buildPackageData(),
       buildPackageData(),
@@ -140,50 +86,6 @@ void checkAnalyzePackagesRequest(api.AnalyzePackagesRequest o) {
     );
   }
   buildCounterAnalyzePackagesRequest--;
-}
-
-core.int buildCounterAnalyzePackagesResponse = 0;
-api.AnalyzePackagesResponse buildAnalyzePackagesResponse() {
-  final o = api.AnalyzePackagesResponse();
-  buildCounterAnalyzePackagesResponse++;
-  if (buildCounterAnalyzePackagesResponse < 3) {
-    o.scan = 'foo';
-  }
-  buildCounterAnalyzePackagesResponse--;
-  return o;
-}
-
-void checkAnalyzePackagesResponse(api.AnalyzePackagesResponse o) {
-  buildCounterAnalyzePackagesResponse++;
-  if (buildCounterAnalyzePackagesResponse < 3) {
-    unittest.expect(
-      o.scan!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterAnalyzePackagesResponse--;
-}
-
-core.int buildCounterAnalyzePackagesResponseV1 = 0;
-api.AnalyzePackagesResponseV1 buildAnalyzePackagesResponseV1() {
-  final o = api.AnalyzePackagesResponseV1();
-  buildCounterAnalyzePackagesResponseV1++;
-  if (buildCounterAnalyzePackagesResponseV1 < 3) {
-    o.scan = 'foo';
-  }
-  buildCounterAnalyzePackagesResponseV1--;
-  return o;
-}
-
-void checkAnalyzePackagesResponseV1(api.AnalyzePackagesResponseV1 o) {
-  buildCounterAnalyzePackagesResponseV1++;
-  if (buildCounterAnalyzePackagesResponseV1 < 3) {
-    unittest.expect(
-      o.scan!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterAnalyzePackagesResponseV1--;
 }
 
 core.List<core.String> buildUnnamed1() => [
@@ -2463,26 +2365,6 @@ void main() {
     });
   });
 
-  unittest.group('obj-schema-AnalyzePackagesMetadata', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildAnalyzePackagesMetadata();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.AnalyzePackagesMetadata.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkAnalyzePackagesMetadata(od);
-    });
-  });
-
-  unittest.group('obj-schema-AnalyzePackagesMetadataV1', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildAnalyzePackagesMetadataV1();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.AnalyzePackagesMetadataV1.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkAnalyzePackagesMetadataV1(od);
-    });
-  });
-
   unittest.group('obj-schema-AnalyzePackagesRequest', () {
     unittest.test('to-json--from-json', () async {
       final o = buildAnalyzePackagesRequest();
@@ -2490,26 +2372,6 @@ void main() {
       final od = api.AnalyzePackagesRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkAnalyzePackagesRequest(od);
-    });
-  });
-
-  unittest.group('obj-schema-AnalyzePackagesResponse', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildAnalyzePackagesResponse();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.AnalyzePackagesResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkAnalyzePackagesResponse(od);
-    });
-  });
-
-  unittest.group('obj-schema-AnalyzePackagesResponseV1', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildAnalyzePackagesResponseV1();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.AnalyzePackagesResponseV1.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkAnalyzePackagesResponseV1(od);
     });
   });
 

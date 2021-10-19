@@ -8008,9 +8008,6 @@ class DeidentifyFhirStoreRequest {
       };
 }
 
-/// Contains a summary of the Deidentify operation.
-typedef DeidentifySummary = $Empty;
-
 /// Specifies the parameters needed for de-identification of DICOM stores.
 class DicomConfig {
   /// Tag filtering profile that determines which tags to keep/remove.
@@ -8579,9 +8576,6 @@ class ExportDicomDataRequest {
       };
 }
 
-/// Returns additional information in regards to a completed DICOM store export.
-typedef ExportDicomDataResponse = $Empty;
-
 /// Request to schedule an export.
 class ExportMessagesRequest {
   /// The end of the range in `send_time` (MSH.7,
@@ -8634,11 +8628,6 @@ class ExportMessagesRequest {
       };
 }
 
-/// Final response for the export operation.
-///
-/// This structure is included in the response to describe the detailed outcome.
-typedef ExportMessagesResponse = $Empty;
-
 /// Request to export resources.
 class ExportResourcesRequest {
   /// The BigQuery output destination.
@@ -8684,12 +8673,6 @@ class ExportResourcesRequest {
         if (gcsDestination != null) 'gcsDestination': gcsDestination!,
       };
 }
-
-/// Response when all resources export successfully.
-///
-/// This structure is included in the response to describe the detailed outcome
-/// after the operation finishes successfully.
-typedef ExportResourcesResponse = $Empty;
 
 /// Represents a textual expression in the Common Expression Language (CEL)
 /// syntax.
@@ -9209,12 +9192,6 @@ class GoogleCloudHealthcareV1ConsentPolicy {
           'resourceAttributes': resourceAttributes!,
       };
 }
-
-/// Contains a summary of the DeidentifyDicomStore operation.
-typedef GoogleCloudHealthcareV1DeidentifyDeidentifyDicomStoreSummary = $Empty;
-
-/// Contains a summary of the DeidentifyFhirStore operation.
-typedef GoogleCloudHealthcareV1DeidentifyDeidentifyFhirStoreSummary = $Empty;
 
 /// The BigQuery table where the server writes the output.
 class GoogleCloudHealthcareV1DicomBigQueryDestination {
@@ -9838,9 +9815,6 @@ class ImportDicomDataRequest {
       };
 }
 
-/// Returns additional information in regards to a completed DICOM store import.
-typedef ImportDicomDataResponse = $Empty;
-
 /// Request to import messages.
 class ImportMessagesRequest {
   /// Cloud Storage source data location and import configuration.
@@ -9866,12 +9840,6 @@ class ImportMessagesRequest {
         if (gcsSource != null) 'gcsSource': gcsSource!,
       };
 }
-
-/// Final response of importing messages.
-///
-/// This structure is included in the response to describe the detailed outcome.
-/// It is only included when the operation finishes successfully.
-typedef ImportMessagesResponse = $Empty;
 
 /// Request to import resources.
 class ImportResourcesRequest {
@@ -9921,12 +9889,6 @@ class ImportResourcesRequest {
         if (gcsSource != null) 'gcsSource': gcsSource!,
       };
 }
-
-/// Final response of importing resources.
-///
-/// This structure is included in the response to describe the detailed outcome
-/// after the operation finishes successfully.
-typedef ImportResourcesResponse = $Empty;
 
 /// A transformation to apply to text that is identified as a specific
 /// info_type.
@@ -10790,71 +10752,6 @@ class Operation {
       };
 }
 
-/// OperationMetadata provides information about the operation execution.
-///
-/// Returned in the long-running operation's metadata field.
-class OperationMetadata {
-  /// The name of the API method that initiated the operation.
-  core.String? apiMethodName;
-
-  /// Specifies if cancellation was requested for the operation.
-  core.bool? cancelRequested;
-  ProgressCounter? counter;
-
-  /// The time at which the operation was created by the API.
-  core.String? createTime;
-
-  /// The time at which execution was completed.
-  core.String? endTime;
-
-  /// A link to audit and error logs in the log viewer.
-  ///
-  /// Error logs are generated only by some operations, listed at
-  /// [Viewing error logs in Cloud Logging](https://cloud.google.com/healthcare/docs/how-tos/logging).
-  core.String? logsUrl;
-
-  OperationMetadata({
-    this.apiMethodName,
-    this.cancelRequested,
-    this.counter,
-    this.createTime,
-    this.endTime,
-    this.logsUrl,
-  });
-
-  OperationMetadata.fromJson(core.Map _json)
-      : this(
-          apiMethodName: _json.containsKey('apiMethodName')
-              ? _json['apiMethodName'] as core.String
-              : null,
-          cancelRequested: _json.containsKey('cancelRequested')
-              ? _json['cancelRequested'] as core.bool
-              : null,
-          counter: _json.containsKey('counter')
-              ? ProgressCounter.fromJson(
-                  _json['counter'] as core.Map<core.String, core.dynamic>)
-              : null,
-          createTime: _json.containsKey('createTime')
-              ? _json['createTime'] as core.String
-              : null,
-          endTime: _json.containsKey('endTime')
-              ? _json['endTime'] as core.String
-              : null,
-          logsUrl: _json.containsKey('logsUrl')
-              ? _json['logsUrl'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (apiMethodName != null) 'apiMethodName': apiMethodName!,
-        if (cancelRequested != null) 'cancelRequested': cancelRequested!,
-        if (counter != null) 'counter': counter!,
-        if (createTime != null) 'createTime': createTime!,
-        if (endTime != null) 'endTime': endTime!,
-        if (logsUrl != null) 'logsUrl': logsUrl!,
-      };
-}
-
 /// The content of a HL7v2 message in a structured format.
 class ParsedData {
   core.List<Segment>? segments;
@@ -11098,43 +10995,6 @@ class Policy {
       };
 }
 
-/// ProgressCounter provides counters to describe an operation's progress.
-class ProgressCounter {
-  /// The number of units that failed in the operation.
-  core.String? failure;
-
-  /// The number of units that are pending in the operation.
-  core.String? pending;
-
-  /// The number of units that succeeded in the operation.
-  core.String? success;
-
-  ProgressCounter({
-    this.failure,
-    this.pending,
-    this.success,
-  });
-
-  ProgressCounter.fromJson(core.Map _json)
-      : this(
-          failure: _json.containsKey('failure')
-              ? _json['failure'] as core.String
-              : null,
-          pending: _json.containsKey('pending')
-              ? _json['pending'] as core.String
-              : null,
-          success: _json.containsKey('success')
-              ? _json['success'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (failure != null) 'failure': failure!,
-        if (pending != null) 'pending': pending!,
-        if (success != null) 'success': success!,
-      };
-}
-
 /// Queries all data_ids that are consented for a given use in the given consent
 /// store and writes them to a specified destination.
 ///
@@ -11202,32 +11062,6 @@ class QueryAccessibleDataRequest {
         if (requestAttributes != null) 'requestAttributes': requestAttributes!,
         if (resourceAttributes != null)
           'resourceAttributes': resourceAttributes!,
-      };
-}
-
-/// Response for successful QueryAccessibleData operations.
-///
-/// This structure is included in the response upon operation completion.
-class QueryAccessibleDataResponse {
-  /// List of files, each of which contains a list of data_id(s) that are
-  /// consented for a specified use in the request.
-  core.List<core.String>? gcsUris;
-
-  QueryAccessibleDataResponse({
-    this.gcsUris,
-  });
-
-  QueryAccessibleDataResponse.fromJson(core.Map _json)
-      : this(
-          gcsUris: _json.containsKey('gcsUris')
-              ? (_json['gcsUris'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (gcsUris != null) 'gcsUris': gcsUris!,
       };
 }
 

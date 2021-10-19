@@ -3902,11 +3902,6 @@ class HardwareStatus {
       };
 }
 
-/// Response on issuing a command.
-///
-/// This is currently empty as a placeholder.
-typedef IssueCommandResponse = $Empty;
-
 /// Keyed app state reported by the app.
 class KeyedAppState {
   /// The creation time of the app state on the device.
