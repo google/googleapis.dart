@@ -842,35 +842,6 @@
                                         "https://www.googleapis.com/auth/datastore"
                                     ]
                                 },
-                                "listen": {
-                                    "description": "Listens to changes.",
-                                    "flatPath": "v1/projects/{projectsId}/databases/{databasesId}/documents:listen",
-                                    "httpMethod": "POST",
-                                    "id": "firestore.projects.databases.documents.listen",
-                                    "parameterOrder": [
-                                        "database"
-                                    ],
-                                    "parameters": {
-                                        "database": {
-                                            "description": "Required. The database name. In the format: `projects/{project_id}/databases/{database_id}`.",
-                                            "location": "path",
-                                            "pattern": "^projects/[^/]+/databases/[^/]+$",
-                                            "required": true,
-                                            "type": "string"
-                                        }
-                                    },
-                                    "path": "v1/{+database}/documents:listen",
-                                    "request": {
-                                        "$ref": "ListenRequest"
-                                    },
-                                    "response": {
-                                        "$ref": "ListenResponse"
-                                    },
-                                    "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform",
-                                        "https://www.googleapis.com/auth/datastore"
-                                    ]
-                                },
                                 "partitionQuery": {
                                     "description": "Partitions a query by returning partition cursors that can be used to run the query in parallel. The returned partition cursors are split points that can be used by RunQuery as starting/end points for the query results.",
                                     "flatPath": "v1/projects/{projectsId}/databases/{databasesId}/documents/{documentsId}/{documentsId1}:partitionQuery",
