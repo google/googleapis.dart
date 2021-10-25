@@ -1,4 +1,4 @@
-## 6.0.1-dev
+## 7.0.0-dev
 
 - Fixed issue in AdMob `accounts.networkReport.generate` return type.
   [#183](https://github.com/google/googleapis.dart/issues/183)

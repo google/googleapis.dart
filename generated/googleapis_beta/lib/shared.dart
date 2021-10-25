@@ -829,7 +829,6 @@ class $DocumentTextAnchorTextSegment {
 /// - clouderrorreporting:v1beta1 : DeleteEventsResponse
 /// - clouderrorreporting:v1beta1 : ReportErrorEventResponse
 /// - containeranalysis:v1beta1 : Empty
-/// - containeranalysis:v1beta1 : RelationshipNote
 /// - datacatalog:v1beta1 : Empty
 /// - dataflow:v1b3 : DeleteSnapshotResponse
 /// - dataflow:v1b3 : ResourceUtilizationReportResponse
@@ -840,6 +839,13 @@ class $DocumentTextAnchorTextSegment {
 /// - datalabeling:v1beta1 : GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadata
 /// - datalabeling:v1beta1 : GoogleCloudDatalabelingV1beta1ResumeEvaluationJobRequest
 /// - datalabeling:v1beta1 : GoogleProtobufEmpty
+/// - datastream:v1alpha1 : AvroFileFormat
+/// - datastream:v1alpha1 : BackfillNoneStrategy
+/// - datastream:v1alpha1 : CancelOperationRequest
+/// - datastream:v1alpha1 : Empty
+/// - datastream:v1alpha1 : FetchErrorsRequest
+/// - datastream:v1alpha1 : NoConnectivitySettings
+/// - datastream:v1alpha1 : StaticServiceIpConnectivity
 /// - documentai:v1beta3 : GoogleCloudDocumentaiUiv1beta3BatchDeleteDocumentsResponse
 /// - documentai:v1beta3 : GoogleCloudDocumentaiUiv1beta3BatchMoveDocumentsResponse
 /// - documentai:v1beta3 : GoogleCloudDocumentaiUiv1beta3DeployProcessorVersionResponse
@@ -912,6 +918,10 @@ class $DocumentTextAnchorTextSegment {
 /// - toolresults:v1beta3 : PerformedGoogleLogin
 /// - toolresults:v1beta3 : StepSummary
 /// - toolresults:v1beta3 : UnspecifiedWarning
+/// - tpu:v2alpha1 : Empty
+/// - tpu:v2alpha1 : GenerateServiceIdentityRequest
+/// - tpu:v2alpha1 : StartNodeRequest
+/// - tpu:v2alpha1 : StopNodeRequest
 /// - transcoder:v1beta1 : Empty
 class $Empty {
   $Empty();
@@ -1459,12 +1469,14 @@ class $LabelStats {
 
 /// Used by:
 ///
+/// - datastream:v1alpha1 : Location
 /// - documentai:v1beta3 : GoogleCloudLocationLocation
 /// - domains:v1beta1 : Location
 /// - lifesciences:v2beta : Location
 /// - networkconnectivity:v1alpha1 : Location
 /// - networksecurity:v1beta1 : Location
 /// - privateca:v1beta1 : Location
+/// - tpu:v2alpha1 : Location
 class $Location {
   /// The friendly name for this location, typically a nearby city name.
   ///
@@ -3011,6 +3023,7 @@ class $Signature {
 /// - containeranalysis:v1beta1 : Status
 /// - dataflow:v1b3 : Status
 /// - datalabeling:v1beta1 : GoogleRpcStatus
+/// - datastream:v1alpha1 : Status
 /// - documentai:v1beta3 : GoogleRpcStatus
 /// - domains:v1beta1 : Status
 /// - firebase:v1beta1 : Status
@@ -3026,6 +3039,7 @@ class $Signature {
 /// - recommendationengine:v1beta1 : GoogleRpcStatus
 /// - sasportal:v1alpha1 : SasPortalStatus
 /// - toolresults:v1beta3 : Status
+/// - tpu:v2alpha1 : Status
 class $Status {
   /// The status code, which should be an enum value of google.rpc.Code.
   core.int? code;

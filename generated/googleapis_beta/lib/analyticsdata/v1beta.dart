@@ -417,6 +417,38 @@ class PropertiesResource {
   }
 }
 
+/// A metric actively restricted in creating the report.
+class ActiveMetricRestriction {
+  /// The name of the restricted metric.
+  core.String? metricName;
+
+  /// The reason for this metric's restriction.
+  core.List<core.String>? restrictedMetricTypes;
+
+  ActiveMetricRestriction({
+    this.metricName,
+    this.restrictedMetricTypes,
+  });
+
+  ActiveMetricRestriction.fromJson(core.Map _json)
+      : this(
+          metricName: _json.containsKey('metricName')
+              ? _json['metricName'] as core.String
+              : null,
+          restrictedMetricTypes: _json.containsKey('restrictedMetricTypes')
+              ? (_json['restrictedMetricTypes'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (metricName != null) 'metricName': metricName!,
+        if (restrictedMetricTypes != null)
+          'restrictedMetricTypes': restrictedMetricTypes!,
+      };
+}
+
 /// The batch request containing multiple pivot report requests.
 class BatchRunPivotReportsRequest {
   /// Individual requests.
@@ -1682,6 +1714,17 @@ class MetricMetadata {
   /// Useable in \[Metric\](#Metric)'s `name`. For example, `eventCount`.
   core.String? apiName;
 
+  /// If reasons are specified, your access is blocked to this metric for this
+  /// property.
+  ///
+  /// API requests from you to this property for this metric will succeed;
+  /// however, the report will contain only zeros for this metric. API requests
+  /// with metric filters on blocked metrics will fail. If reasons are empty,
+  /// you have access to this metric. To learn more, see \[Access and
+  /// data-restriction
+  /// management\](https://support.google.com/analytics/answer/10851388).
+  core.List<core.String>? blockedReasons;
+
   /// The display name of the category that this metrics belongs to.
   ///
   /// Similar dimensions and metrics are categorized together.
@@ -1734,6 +1777,7 @@ class MetricMetadata {
 
   MetricMetadata({
     this.apiName,
+    this.blockedReasons,
     this.category,
     this.customDefinition,
     this.deprecatedApiNames,
@@ -1747,6 +1791,11 @@ class MetricMetadata {
       : this(
           apiName: _json.containsKey('apiName')
               ? _json['apiName'] as core.String
+              : null,
+          blockedReasons: _json.containsKey('blockedReasons')
+              ? (_json['blockedReasons'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
               : null,
           category: _json.containsKey('category')
               ? _json['category'] as core.String
@@ -1773,6 +1822,7 @@ class MetricMetadata {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (apiName != null) 'apiName': apiName!,
+        if (blockedReasons != null) 'blockedReasons': blockedReasons!,
         if (category != null) 'category': category!,
         if (customDefinition != null) 'customDefinition': customDefinition!,
         if (deprecatedApiNames != null)
@@ -2347,6 +2397,16 @@ class ResponseMetaData {
   /// This can happen for high cardinality reports.
   core.bool? dataLossFromOtherRow;
 
+  /// If empty reason is specified, the report is empty for this reason.
+  core.String? emptyReason;
+
+  /// Describes the schema restrictions actively enforced in creating this
+  /// report.
+  ///
+  /// To learn more, see \[Access and data-restriction
+  /// management\](https://support.google.com/analytics/answer/10851388).
+  SchemaRestrictionResponse? schemaRestrictionResponse;
+
   /// The property's current timezone.
   ///
   /// Intended to be used to interpret time-based dimensions like `hour` and
@@ -2358,6 +2418,8 @@ class ResponseMetaData {
   ResponseMetaData({
     this.currencyCode,
     this.dataLossFromOtherRow,
+    this.emptyReason,
+    this.schemaRestrictionResponse,
     this.timeZone,
   });
 
@@ -2369,6 +2431,15 @@ class ResponseMetaData {
           dataLossFromOtherRow: _json.containsKey('dataLossFromOtherRow')
               ? _json['dataLossFromOtherRow'] as core.bool
               : null,
+          emptyReason: _json.containsKey('emptyReason')
+              ? _json['emptyReason'] as core.String
+              : null,
+          schemaRestrictionResponse:
+              _json.containsKey('schemaRestrictionResponse')
+                  ? SchemaRestrictionResponse.fromJson(
+                      _json['schemaRestrictionResponse']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           timeZone: _json.containsKey('timeZone')
               ? _json['timeZone'] as core.String
               : null,
@@ -2378,6 +2449,9 @@ class ResponseMetaData {
         if (currencyCode != null) 'currencyCode': currencyCode!,
         if (dataLossFromOtherRow != null)
           'dataLossFromOtherRow': dataLossFromOtherRow!,
+        if (emptyReason != null) 'emptyReason': emptyReason!,
+        if (schemaRestrictionResponse != null)
+          'schemaRestrictionResponse': schemaRestrictionResponse!,
         if (timeZone != null) 'timeZone': timeZone!,
       };
 }
@@ -3262,6 +3336,39 @@ class RunReportResponse {
         if (rowCount != null) 'rowCount': rowCount!,
         if (rows != null) 'rows': rows!,
         if (totals != null) 'totals': totals!,
+      };
+}
+
+/// The schema restrictions actively enforced in creating this report.
+///
+/// To learn more, see \[Access and data-restriction
+/// management\](https://support.google.com/analytics/answer/10851388).
+class SchemaRestrictionResponse {
+  /// All restrictions actively enforced in creating the report.
+  ///
+  /// For example, `purchaseRevenue` always has the restriction type
+  /// `REVENUE_DATA`. However, this active response restriction is only
+  /// populated if the user's custom role disallows access to `REVENUE_DATA`.
+  core.List<ActiveMetricRestriction>? activeMetricRestrictions;
+
+  SchemaRestrictionResponse({
+    this.activeMetricRestrictions,
+  });
+
+  SchemaRestrictionResponse.fromJson(core.Map _json)
+      : this(
+          activeMetricRestrictions:
+              _json.containsKey('activeMetricRestrictions')
+                  ? (_json['activeMetricRestrictions'] as core.List)
+                      .map((value) => ActiveMetricRestriction.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                      .toList()
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (activeMetricRestrictions != null)
+          'activeMetricRestrictions': activeMetricRestrictions!,
       };
 }
 

@@ -240,6 +240,7 @@ api.ConfigManagementConfigSync buildConfigManagementConfigSync() {
   final o = api.ConfigManagementConfigSync();
   buildCounterConfigManagementConfigSync++;
   if (buildCounterConfigManagementConfigSync < 3) {
+    o.enabled = true;
     o.git = buildConfigManagementGitConfig();
     o.sourceFormat = 'foo';
   }
@@ -250,6 +251,7 @@ api.ConfigManagementConfigSync buildConfigManagementConfigSync() {
 void checkConfigManagementConfigSync(api.ConfigManagementConfigSync o) {
   buildCounterConfigManagementConfigSync++;
   if (buildCounterConfigManagementConfigSync < 3) {
+    unittest.expect(o.enabled!, unittest.isTrue);
     checkConfigManagementGitConfig(o.git!);
     unittest.expect(
       o.sourceFormat!,

@@ -1306,6 +1306,7 @@ api.ReportData buildReportData() {
   buildCounterReportData++;
   if (buildCounterReportData < 3) {
     o.dataLastRefreshed = 'foo';
+    o.emptyReason = 'foo';
     o.isDataGolden = true;
     o.maximums = buildUnnamed23();
     o.minimums = buildUnnamed24();
@@ -1324,6 +1325,10 @@ void checkReportData(api.ReportData o) {
   if (buildCounterReportData < 3) {
     unittest.expect(
       o.dataLastRefreshed!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.emptyReason!,
       unittest.equals('foo'),
     );
     unittest.expect(o.isDataGolden!, unittest.isTrue);

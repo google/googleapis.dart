@@ -92,6 +92,8 @@ api.AsymmetricSignRequest buildAsymmetricSignRequest() {
   final o = api.AsymmetricSignRequest();
   buildCounterAsymmetricSignRequest++;
   if (buildCounterAsymmetricSignRequest < 3) {
+    o.data = 'foo';
+    o.dataCrc32c = 'foo';
     o.digest = buildDigest();
     o.digestCrc32c = 'foo';
   }
@@ -102,6 +104,14 @@ api.AsymmetricSignRequest buildAsymmetricSignRequest() {
 void checkAsymmetricSignRequest(api.AsymmetricSignRequest o) {
   buildCounterAsymmetricSignRequest++;
   if (buildCounterAsymmetricSignRequest < 3) {
+    unittest.expect(
+      o.data!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.dataCrc32c!,
+      unittest.equals('foo'),
+    );
     checkDigest(o.digest!);
     unittest.expect(
       o.digestCrc32c!,
@@ -120,6 +130,7 @@ api.AsymmetricSignResponse buildAsymmetricSignResponse() {
     o.protectionLevel = 'foo';
     o.signature = 'foo';
     o.signatureCrc32c = 'foo';
+    o.verifiedDataCrc32c = true;
     o.verifiedDigestCrc32c = true;
   }
   buildCounterAsymmetricSignResponse--;
@@ -145,6 +156,7 @@ void checkAsymmetricSignResponse(api.AsymmetricSignResponse o) {
       o.signatureCrc32c!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.verifiedDataCrc32c!, unittest.isTrue);
     unittest.expect(o.verifiedDigestCrc32c!, unittest.isTrue);
   }
   buildCounterAsymmetricSignResponse--;

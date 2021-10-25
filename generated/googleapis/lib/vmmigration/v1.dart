@@ -2839,6 +2839,15 @@ class ComputeEngineTargetDefaults {
   /// Output only.
   AppliedLicense? appliedLicense;
 
+  /// The VM Boot Option, as set in the source vm.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "COMPUTE_ENGINE_BOOT_OPTION_UNSPECIFIED" : The boot option is unknown.
+  /// - "COMPUTE_ENGINE_BOOT_OPTION_EFI" : The boot option is EFI.
+  /// - "COMPUTE_ENGINE_BOOT_OPTION_BIOS" : The boot option is BIOS.
+  core.String? bootOption;
+
   /// Compute instance scheduling information (if empty default is used).
   ComputeScheduling? computeScheduling;
 
@@ -2871,11 +2880,19 @@ class ComputeEngineTargetDefaults {
   /// The machine type series to create the VM with.
   core.String? machineTypeSeries;
 
+  /// The metadata key/value pairs to assign to the VM.
+  core.Map<core.String, core.String>? metadata;
+
   /// List of NICs connected to this VM.
   core.List<NetworkInterface>? networkInterfaces;
 
   /// A map of network tags to associate with the VM.
   core.List<core.String>? networkTags;
+
+  /// Defines whether the instance has Secure Boot enabled.
+  ///
+  /// This can be set to true only if the vm boot option is EFI.
+  core.bool? secureBoot;
 
   /// The service account to associate the VM with.
   core.String? serviceAccount;
@@ -2892,14 +2909,17 @@ class ComputeEngineTargetDefaults {
 
   ComputeEngineTargetDefaults({
     this.appliedLicense,
+    this.bootOption,
     this.computeScheduling,
     this.diskType,
     this.labels,
     this.licenseType,
     this.machineType,
     this.machineTypeSeries,
+    this.metadata,
     this.networkInterfaces,
     this.networkTags,
+    this.secureBoot,
     this.serviceAccount,
     this.targetProject,
     this.vmName,
@@ -2911,6 +2931,9 @@ class ComputeEngineTargetDefaults {
           appliedLicense: _json.containsKey('appliedLicense')
               ? AppliedLicense.fromJson(_json['appliedLicense']
                   as core.Map<core.String, core.dynamic>)
+              : null,
+          bootOption: _json.containsKey('bootOption')
+              ? _json['bootOption'] as core.String
               : null,
           computeScheduling: _json.containsKey('computeScheduling')
               ? ComputeScheduling.fromJson(_json['computeScheduling']
@@ -2936,6 +2959,14 @@ class ComputeEngineTargetDefaults {
           machineTypeSeries: _json.containsKey('machineTypeSeries')
               ? _json['machineTypeSeries'] as core.String
               : null,
+          metadata: _json.containsKey('metadata')
+              ? (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
           networkInterfaces: _json.containsKey('networkInterfaces')
               ? (_json['networkInterfaces'] as core.List)
                   .map((value) => NetworkInterface.fromJson(
@@ -2946,6 +2977,9 @@ class ComputeEngineTargetDefaults {
               ? (_json['networkTags'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
+              : null,
+          secureBoot: _json.containsKey('secureBoot')
+              ? _json['secureBoot'] as core.bool
               : null,
           serviceAccount: _json.containsKey('serviceAccount')
               ? _json['serviceAccount'] as core.String
@@ -2961,14 +2995,17 @@ class ComputeEngineTargetDefaults {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (appliedLicense != null) 'appliedLicense': appliedLicense!,
+        if (bootOption != null) 'bootOption': bootOption!,
         if (computeScheduling != null) 'computeScheduling': computeScheduling!,
         if (diskType != null) 'diskType': diskType!,
         if (labels != null) 'labels': labels!,
         if (licenseType != null) 'licenseType': licenseType!,
         if (machineType != null) 'machineType': machineType!,
         if (machineTypeSeries != null) 'machineTypeSeries': machineTypeSeries!,
+        if (metadata != null) 'metadata': metadata!,
         if (networkInterfaces != null) 'networkInterfaces': networkInterfaces!,
         if (networkTags != null) 'networkTags': networkTags!,
+        if (secureBoot != null) 'secureBoot': secureBoot!,
         if (serviceAccount != null) 'serviceAccount': serviceAccount!,
         if (targetProject != null) 'targetProject': targetProject!,
         if (vmName != null) 'vmName': vmName!,

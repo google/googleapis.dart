@@ -29,7 +29,6 @@
 library artifactregistry.v1;
 
 import 'dart:async' as async;
-import 'dart:convert' as convert;
 import 'dart:core' as core;
 
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
@@ -72,94 +71,6 @@ class OperationsResource {
 
   OperationsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Starts asynchronous cancellation on a long-running operation.
-  ///
-  /// The server makes a best effort to cancel the operation, but success is not
-  /// guaranteed. If the server doesn't support this method, it returns
-  /// `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation
-  /// or other methods to check whether the cancellation succeeded or whether
-  /// the operation completed despite cancellation. On successful cancellation,
-  /// the operation is not deleted; instead, it becomes an operation with an
-  /// Operation.error value with a google.rpc.Status.code of 1, corresponding to
-  /// `Code.CANCELLED`.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - The name of the operation resource to be cancelled.
-  /// Value must have pattern `^operations/.*$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Empty].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Empty> cancel(
-    CancelOperationRequest request,
-    core.String name, {
-    core.String? $fields,
-  }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':cancel';
-
-    final _response = await _requester.request(
-      _url,
-      'POST',
-      body: _body,
-      queryParams: _queryParams,
-    );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
-  }
-
-  /// Deletes a long-running operation.
-  ///
-  /// This method indicates that the client is no longer interested in the
-  /// operation result. It does not cancel the operation. If the server doesn't
-  /// support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - The name of the operation resource to be deleted.
-  /// Value must have pattern `^operations/.*$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Empty].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
-
-    final _response = await _requester.request(
-      _url,
-      'DELETE',
-      queryParams: _queryParams,
-    );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
-  }
-
   /// Gets the latest state of a long-running operation.
   ///
   /// Clients can use this method to poll the operation result at intervals as
@@ -196,63 +107,6 @@ class OperationsResource {
       queryParams: _queryParams,
     );
     return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
-  }
-
-  /// Lists operations that match the specified filter in the request.
-  ///
-  /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-  /// NOTE: the `name` binding allows API services to override the binding to
-  /// use different resource name schemes, such as `users / * /operations`. To
-  /// override the binding, API services can add a binding such as
-  /// `"/v1/{name=users / * }/operations"` to their service configuration. For
-  /// backwards compatibility, the default name includes the operations
-  /// collection id, however overriding users must ensure the name binding is
-  /// the parent resource, without the operations collection id.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - The name of the operation's parent resource.
-  /// Value must have pattern `^operations$`.
-  ///
-  /// [filter] - The standard list filter.
-  ///
-  /// [pageSize] - The standard list page size.
-  ///
-  /// [pageToken] - The standard list page token.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [ListOperationsResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<ListOperationsResponse> list(
-    core.String name, {
-    core.String? filter,
-    core.int? pageSize,
-    core.String? pageToken,
-    core.String? $fields,
-  }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
-
-    final _response = await _requester.request(
-      _url,
-      'GET',
-      queryParams: _queryParams,
-    );
-    return ListOperationsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -421,9 +275,6 @@ class ProjectsLocationsRepositoriesDockerImagesResource {
   }
 }
 
-/// The request message for Operations.CancelOperation.
-typedef CancelOperationRequest = $Empty;
-
 /// DockerImage represents a docker artifact.
 ///
 /// The following fields are returned as untyped metadata in the Version
@@ -522,15 +373,6 @@ class DockerImage {
       };
 }
 
-/// A generic empty message that you can re-use to avoid defining duplicated
-/// empty messages in your APIs.
-///
-/// A typical example is to use it as the request or the response type of an API
-/// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
-/// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
-/// object `{}`.
-typedef Empty = $Empty;
-
 /// The response from listing docker images.
 class ListDockerImagesResponse {
   /// The docker images returned.
@@ -561,38 +403,6 @@ class ListDockerImagesResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (dockerImages != null) 'dockerImages': dockerImages!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
-}
-
-/// The response message for Operations.ListOperations.
-class ListOperationsResponse {
-  /// The standard List next-page token.
-  core.String? nextPageToken;
-
-  /// A list of operations that matches the specified filter in the request.
-  core.List<Operation>? operations;
-
-  ListOperationsResponse({
-    this.nextPageToken,
-    this.operations,
-  });
-
-  ListOperationsResponse.fromJson(core.Map _json)
-      : this(
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
-              : null,
-          operations: _json.containsKey('operations')
-              ? (_json['operations'] as core.List)
-                  .map((value) => Operation.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (operations != null) 'operations': operations!,
       };
 }
 

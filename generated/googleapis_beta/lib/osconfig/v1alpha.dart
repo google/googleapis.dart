@@ -348,6 +348,14 @@ class ProjectsLocationsInstancesOsPolicyAssignmentsResource {
   ProjectsLocationsInstancesOsPolicyAssignmentsResource(
       commons.ApiRequester client)
       : _requester = client;
+}
+
+class ProjectsLocationsInstancesOsPolicyAssignmentsReportsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsInstancesOsPolicyAssignmentsReportsResource(
+      commons.ApiRequester client)
+      : _requester = client;
 
   /// Get the OS policy asssignment report for the specified Compute Engine VM
   /// instance.
@@ -374,7 +382,7 @@ class ProjectsLocationsInstancesOsPolicyAssignmentsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<OSPolicyAssignmentReport> getReport(
+  async.Future<OSPolicyAssignmentReport> get(
     core.String name, {
     core.String? $fields,
   }) async {
@@ -392,14 +400,6 @@ class ProjectsLocationsInstancesOsPolicyAssignmentsResource {
     return OSPolicyAssignmentReport.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
-}
-
-class ProjectsLocationsInstancesOsPolicyAssignmentsReportsResource {
-  final commons.ApiRequester _requester;
-
-  ProjectsLocationsInstancesOsPolicyAssignmentsReportsResource(
-      commons.ApiRequester client)
-      : _requester = client;
 
   /// List OS policy asssignment reports for all Compute Engine VM instances in
   /// the specified zone.
@@ -1798,8 +1798,8 @@ class InventoryVersionedPackage {
 /// Contains information about a Windows application that is retrieved from the
 /// Windows Registry.
 ///
-/// For more information about these fields, see Windows Installer Properties
-/// for the Uninstall Registry.
+/// For more information about these fields, see:
+/// https://docs.microsoft.com/en-us/windows/win32/msi/uninstall-registry-key
 class InventoryWindowsApplication {
   /// The name of the application or product.
   core.String? displayName;

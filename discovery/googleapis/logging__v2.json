@@ -186,7 +186,7 @@
                 "exclusions": {
                     "methods": {
                         "create": {
-                            "description": "Creates a new exclusion in a specified parent resource. Only log entries belonging to that resource can be excluded. You can have up to 10 exclusions in a resource.",
+                            "description": "Creates a new exclusion in the _Default sink in a specified parent resource. Only log entries belonging to that resource can be excluded. You can have up to 10 exclusions in a resource.",
                             "flatPath": "v2/billingAccounts/{billingAccountsId}/exclusions",
                             "httpMethod": "POST",
                             "id": "logging.billingAccounts.exclusions.create",
@@ -215,7 +215,7 @@
                             ]
                         },
                         "delete": {
-                            "description": "Deletes an exclusion.",
+                            "description": "Deletes an exclusion in the _Default sink.",
                             "flatPath": "v2/billingAccounts/{billingAccountsId}/exclusions/{exclusionsId}",
                             "httpMethod": "DELETE",
                             "id": "logging.billingAccounts.exclusions.delete",
@@ -241,7 +241,7 @@
                             ]
                         },
                         "get": {
-                            "description": "Gets the description of an exclusion.",
+                            "description": "Gets the description of an exclusion in the _Default sink.",
                             "flatPath": "v2/billingAccounts/{billingAccountsId}/exclusions/{exclusionsId}",
                             "httpMethod": "GET",
                             "id": "logging.billingAccounts.exclusions.get",
@@ -269,7 +269,7 @@
                             ]
                         },
                         "list": {
-                            "description": "Lists all the exclusions in a parent resource.",
+                            "description": "Lists all the exclusions on the _Default sink in a parent resource.",
                             "flatPath": "v2/billingAccounts/{billingAccountsId}/exclusions",
                             "httpMethod": "GET",
                             "id": "logging.billingAccounts.exclusions.list",
@@ -308,7 +308,7 @@
                             ]
                         },
                         "patch": {
-                            "description": "Changes one or more properties of an existing exclusion.",
+                            "description": "Changes one or more properties of an existing exclusion in the _Default sink.",
                             "flatPath": "v2/billingAccounts/{billingAccountsId}/exclusions/{exclusionsId}",
                             "httpMethod": "PATCH",
                             "id": "logging.billingAccounts.exclusions.patch",
@@ -1214,7 +1214,7 @@
         "exclusions": {
             "methods": {
                 "create": {
-                    "description": "Creates a new exclusion in a specified parent resource. Only log entries belonging to that resource can be excluded. You can have up to 10 exclusions in a resource.",
+                    "description": "Creates a new exclusion in the _Default sink in a specified parent resource. Only log entries belonging to that resource can be excluded. You can have up to 10 exclusions in a resource.",
                     "flatPath": "v2/{v2Id}/{v2Id1}/exclusions",
                     "httpMethod": "POST",
                     "id": "logging.exclusions.create",
@@ -1243,7 +1243,7 @@
                     ]
                 },
                 "delete": {
-                    "description": "Deletes an exclusion.",
+                    "description": "Deletes an exclusion in the _Default sink.",
                     "flatPath": "v2/{v2Id}/{v2Id1}/exclusions/{exclusionsId}",
                     "httpMethod": "DELETE",
                     "id": "logging.exclusions.delete",
@@ -1269,7 +1269,7 @@
                     ]
                 },
                 "get": {
-                    "description": "Gets the description of an exclusion.",
+                    "description": "Gets the description of an exclusion in the _Default sink.",
                     "flatPath": "v2/{v2Id}/{v2Id1}/exclusions/{exclusionsId}",
                     "httpMethod": "GET",
                     "id": "logging.exclusions.get",
@@ -1297,7 +1297,7 @@
                     ]
                 },
                 "list": {
-                    "description": "Lists all the exclusions in a parent resource.",
+                    "description": "Lists all the exclusions on the _Default sink in a parent resource.",
                     "flatPath": "v2/{v2Id}/{v2Id1}/exclusions",
                     "httpMethod": "GET",
                     "id": "logging.exclusions.list",
@@ -1336,7 +1336,7 @@
                     ]
                 },
                 "patch": {
-                    "description": "Changes one or more properties of an existing exclusion.",
+                    "description": "Changes one or more properties of an existing exclusion in the _Default sink.",
                     "flatPath": "v2/{v2Id}/{v2Id1}/exclusions/{exclusionsId}",
                     "httpMethod": "PATCH",
                     "id": "logging.exclusions.patch",
@@ -1377,7 +1377,7 @@
                 "exclusions": {
                     "methods": {
                         "create": {
-                            "description": "Creates a new exclusion in a specified parent resource. Only log entries belonging to that resource can be excluded. You can have up to 10 exclusions in a resource.",
+                            "description": "Creates a new exclusion in the _Default sink in a specified parent resource. Only log entries belonging to that resource can be excluded. You can have up to 10 exclusions in a resource.",
                             "flatPath": "v2/folders/{foldersId}/exclusions",
                             "httpMethod": "POST",
                             "id": "logging.folders.exclusions.create",
@@ -1406,7 +1406,7 @@
                             ]
                         },
                         "delete": {
-                            "description": "Deletes an exclusion.",
+                            "description": "Deletes an exclusion in the _Default sink.",
                             "flatPath": "v2/folders/{foldersId}/exclusions/{exclusionsId}",
                             "httpMethod": "DELETE",
                             "id": "logging.folders.exclusions.delete",
@@ -1432,7 +1432,7 @@
                             ]
                         },
                         "get": {
-                            "description": "Gets the description of an exclusion.",
+                            "description": "Gets the description of an exclusion in the _Default sink.",
                             "flatPath": "v2/folders/{foldersId}/exclusions/{exclusionsId}",
                             "httpMethod": "GET",
                             "id": "logging.folders.exclusions.get",
@@ -1460,7 +1460,7 @@
                             ]
                         },
                         "list": {
-                            "description": "Lists all the exclusions in a parent resource.",
+                            "description": "Lists all the exclusions on the _Default sink in a parent resource.",
                             "flatPath": "v2/folders/{foldersId}/exclusions",
                             "httpMethod": "GET",
                             "id": "logging.folders.exclusions.list",
@@ -1499,7 +1499,7 @@
                             ]
                         },
                         "patch": {
-                            "description": "Changes one or more properties of an existing exclusion.",
+                            "description": "Changes one or more properties of an existing exclusion in the _Default sink.",
                             "flatPath": "v2/folders/{foldersId}/exclusions/{exclusionsId}",
                             "httpMethod": "PATCH",
                             "id": "logging.folders.exclusions.patch",
@@ -3027,7 +3027,7 @@
         "organizations": {
             "methods": {
                 "getCmekSettings": {
-                    "description": "Gets the Logs Router CMEK settings for the given resource.Note: CMEK for the Logs Router can currently only be configured for GCP organizations. Once configured, it applies to all projects and folders in the GCP organization.See Enabling CMEK for Logs Router (https://cloud.google.com/logging/docs/routing/managed-encryption) for more information.",
+                    "description": "Gets the Logs Router CMEK settings for the given resource.Note: CMEK for the Logs Router can currently only be configured for Google Cloud organizations. Once configured, it applies to all projects and folders in the Google Cloud organization.See Enabling CMEK for Logs Router (https://cloud.google.com/logging/docs/routing/managed-encryption) for more information.",
                     "flatPath": "v2/organizations/{organizationsId}/cmekSettings",
                     "httpMethod": "GET",
                     "id": "logging.organizations.getCmekSettings",
@@ -3036,7 +3036,7 @@
                     ],
                     "parameters": {
                         "name": {
-                            "description": "Required. The resource for which to retrieve CMEK settings. \"projects/[PROJECT_ID]/cmekSettings\" \"organizations/[ORGANIZATION_ID]/cmekSettings\" \"billingAccounts/[BILLING_ACCOUNT_ID]/cmekSettings\" \"folders/[FOLDER_ID]/cmekSettings\" For example:\"organizations/12345/cmekSettings\"Note: CMEK for the Logs Router can currently only be configured for GCP organizations. Once configured, it applies to all projects and folders in the GCP organization.",
+                            "description": "Required. The resource for which to retrieve CMEK settings. \"projects/[PROJECT_ID]/cmekSettings\" \"organizations/[ORGANIZATION_ID]/cmekSettings\" \"billingAccounts/[BILLING_ACCOUNT_ID]/cmekSettings\" \"folders/[FOLDER_ID]/cmekSettings\" For example:\"organizations/12345/cmekSettings\"Note: CMEK for the Logs Router can currently only be configured for Google Cloud organizations. Once configured, it applies to all projects and folders in the Google Cloud organization.",
                             "location": "path",
                             "pattern": "^organizations/[^/]+$",
                             "required": true,
@@ -3055,7 +3055,7 @@
                     ]
                 },
                 "updateCmekSettings": {
-                    "description": "Updates the Logs Router CMEK settings for the given resource.Note: CMEK for the Logs Router can currently only be configured for GCP organizations. Once configured, it applies to all projects and folders in the GCP organization.UpdateCmekSettings will fail if 1) kms_key_name is invalid, or 2) the associated service account does not have the required roles/cloudkms.cryptoKeyEncrypterDecrypter role assigned for the key, or 3) access to the key is disabled.See Enabling CMEK for Logs Router (https://cloud.google.com/logging/docs/routing/managed-encryption) for more information.",
+                    "description": "Updates the Logs Router CMEK settings for the given resource.Note: CMEK for the Logs Router can currently only be configured for Google Cloud organizations. Once configured, it applies to all projects and folders in the Google Cloud organization.UpdateCmekSettings will fail if 1) kms_key_name is invalid, or 2) the associated service account does not have the required roles/cloudkms.cryptoKeyEncrypterDecrypter role assigned for the key, or 3) access to the key is disabled.See Enabling CMEK for Logs Router (https://cloud.google.com/logging/docs/routing/managed-encryption) for more information.",
                     "flatPath": "v2/organizations/{organizationsId}/cmekSettings",
                     "httpMethod": "PATCH",
                     "id": "logging.organizations.updateCmekSettings",
@@ -3064,7 +3064,7 @@
                     ],
                     "parameters": {
                         "name": {
-                            "description": "Required. The resource name for the CMEK settings to update. \"projects/[PROJECT_ID]/cmekSettings\" \"organizations/[ORGANIZATION_ID]/cmekSettings\" \"billingAccounts/[BILLING_ACCOUNT_ID]/cmekSettings\" \"folders/[FOLDER_ID]/cmekSettings\" For example:\"organizations/12345/cmekSettings\"Note: CMEK for the Logs Router can currently only be configured for GCP organizations. Once configured, it applies to all projects and folders in the GCP organization.",
+                            "description": "Required. The resource name for the CMEK settings to update. \"projects/[PROJECT_ID]/cmekSettings\" \"organizations/[ORGANIZATION_ID]/cmekSettings\" \"billingAccounts/[BILLING_ACCOUNT_ID]/cmekSettings\" \"folders/[FOLDER_ID]/cmekSettings\" For example:\"organizations/12345/cmekSettings\"Note: CMEK for the Logs Router can currently only be configured for Google Cloud organizations. Once configured, it applies to all projects and folders in the Google Cloud organization.",
                             "location": "path",
                             "pattern": "^organizations/[^/]+$",
                             "required": true,
@@ -3094,7 +3094,7 @@
                 "exclusions": {
                     "methods": {
                         "create": {
-                            "description": "Creates a new exclusion in a specified parent resource. Only log entries belonging to that resource can be excluded. You can have up to 10 exclusions in a resource.",
+                            "description": "Creates a new exclusion in the _Default sink in a specified parent resource. Only log entries belonging to that resource can be excluded. You can have up to 10 exclusions in a resource.",
                             "flatPath": "v2/organizations/{organizationsId}/exclusions",
                             "httpMethod": "POST",
                             "id": "logging.organizations.exclusions.create",
@@ -3123,7 +3123,7 @@
                             ]
                         },
                         "delete": {
-                            "description": "Deletes an exclusion.",
+                            "description": "Deletes an exclusion in the _Default sink.",
                             "flatPath": "v2/organizations/{organizationsId}/exclusions/{exclusionsId}",
                             "httpMethod": "DELETE",
                             "id": "logging.organizations.exclusions.delete",
@@ -3149,7 +3149,7 @@
                             ]
                         },
                         "get": {
-                            "description": "Gets the description of an exclusion.",
+                            "description": "Gets the description of an exclusion in the _Default sink.",
                             "flatPath": "v2/organizations/{organizationsId}/exclusions/{exclusionsId}",
                             "httpMethod": "GET",
                             "id": "logging.organizations.exclusions.get",
@@ -3177,7 +3177,7 @@
                             ]
                         },
                         "list": {
-                            "description": "Lists all the exclusions in a parent resource.",
+                            "description": "Lists all the exclusions on the _Default sink in a parent resource.",
                             "flatPath": "v2/organizations/{organizationsId}/exclusions",
                             "httpMethod": "GET",
                             "id": "logging.organizations.exclusions.list",
@@ -3216,7 +3216,7 @@
                             ]
                         },
                         "patch": {
-                            "description": "Changes one or more properties of an existing exclusion.",
+                            "description": "Changes one or more properties of an existing exclusion in the _Default sink.",
                             "flatPath": "v2/organizations/{organizationsId}/exclusions/{exclusionsId}",
                             "httpMethod": "PATCH",
                             "id": "logging.organizations.exclusions.patch",
@@ -4091,7 +4091,7 @@
                 "exclusions": {
                     "methods": {
                         "create": {
-                            "description": "Creates a new exclusion in a specified parent resource. Only log entries belonging to that resource can be excluded. You can have up to 10 exclusions in a resource.",
+                            "description": "Creates a new exclusion in the _Default sink in a specified parent resource. Only log entries belonging to that resource can be excluded. You can have up to 10 exclusions in a resource.",
                             "flatPath": "v2/projects/{projectsId}/exclusions",
                             "httpMethod": "POST",
                             "id": "logging.projects.exclusions.create",
@@ -4120,7 +4120,7 @@
                             ]
                         },
                         "delete": {
-                            "description": "Deletes an exclusion.",
+                            "description": "Deletes an exclusion in the _Default sink.",
                             "flatPath": "v2/projects/{projectsId}/exclusions/{exclusionsId}",
                             "httpMethod": "DELETE",
                             "id": "logging.projects.exclusions.delete",
@@ -4146,7 +4146,7 @@
                             ]
                         },
                         "get": {
-                            "description": "Gets the description of an exclusion.",
+                            "description": "Gets the description of an exclusion in the _Default sink.",
                             "flatPath": "v2/projects/{projectsId}/exclusions/{exclusionsId}",
                             "httpMethod": "GET",
                             "id": "logging.projects.exclusions.get",
@@ -4174,7 +4174,7 @@
                             ]
                         },
                         "list": {
-                            "description": "Lists all the exclusions in a parent resource.",
+                            "description": "Lists all the exclusions on the _Default sink in a parent resource.",
                             "flatPath": "v2/projects/{projectsId}/exclusions",
                             "httpMethod": "GET",
                             "id": "logging.projects.exclusions.list",
@@ -4213,7 +4213,7 @@
                             ]
                         },
                         "patch": {
-                            "description": "Changes one or more properties of an existing exclusion.",
+                            "description": "Changes one or more properties of an existing exclusion in the _Default sink.",
                             "flatPath": "v2/projects/{projectsId}/exclusions/{exclusionsId}",
                             "httpMethod": "PATCH",
                             "id": "logging.projects.exclusions.patch",
@@ -5415,7 +5415,7 @@
         "v2": {
             "methods": {
                 "getCmekSettings": {
-                    "description": "Gets the Logs Router CMEK settings for the given resource.Note: CMEK for the Logs Router can currently only be configured for GCP organizations. Once configured, it applies to all projects and folders in the GCP organization.See Enabling CMEK for Logs Router (https://cloud.google.com/logging/docs/routing/managed-encryption) for more information.",
+                    "description": "Gets the Logs Router CMEK settings for the given resource.Note: CMEK for the Logs Router can currently only be configured for Google Cloud organizations. Once configured, it applies to all projects and folders in the Google Cloud organization.See Enabling CMEK for Logs Router (https://cloud.google.com/logging/docs/routing/managed-encryption) for more information.",
                     "flatPath": "v2/{v2Id}/{v2Id1}/cmekSettings",
                     "httpMethod": "GET",
                     "id": "logging.getCmekSettings",
@@ -5424,7 +5424,7 @@
                     ],
                     "parameters": {
                         "name": {
-                            "description": "Required. The resource for which to retrieve CMEK settings. \"projects/[PROJECT_ID]/cmekSettings\" \"organizations/[ORGANIZATION_ID]/cmekSettings\" \"billingAccounts/[BILLING_ACCOUNT_ID]/cmekSettings\" \"folders/[FOLDER_ID]/cmekSettings\" For example:\"organizations/12345/cmekSettings\"Note: CMEK for the Logs Router can currently only be configured for GCP organizations. Once configured, it applies to all projects and folders in the GCP organization.",
+                            "description": "Required. The resource for which to retrieve CMEK settings. \"projects/[PROJECT_ID]/cmekSettings\" \"organizations/[ORGANIZATION_ID]/cmekSettings\" \"billingAccounts/[BILLING_ACCOUNT_ID]/cmekSettings\" \"folders/[FOLDER_ID]/cmekSettings\" For example:\"organizations/12345/cmekSettings\"Note: CMEK for the Logs Router can currently only be configured for Google Cloud organizations. Once configured, it applies to all projects and folders in the Google Cloud organization.",
                             "location": "path",
                             "pattern": "^[^/]+/[^/]+$",
                             "required": true,
@@ -5443,7 +5443,7 @@
                     ]
                 },
                 "updateCmekSettings": {
-                    "description": "Updates the Logs Router CMEK settings for the given resource.Note: CMEK for the Logs Router can currently only be configured for GCP organizations. Once configured, it applies to all projects and folders in the GCP organization.UpdateCmekSettings will fail if 1) kms_key_name is invalid, or 2) the associated service account does not have the required roles/cloudkms.cryptoKeyEncrypterDecrypter role assigned for the key, or 3) access to the key is disabled.See Enabling CMEK for Logs Router (https://cloud.google.com/logging/docs/routing/managed-encryption) for more information.",
+                    "description": "Updates the Logs Router CMEK settings for the given resource.Note: CMEK for the Logs Router can currently only be configured for Google Cloud organizations. Once configured, it applies to all projects and folders in the Google Cloud organization.UpdateCmekSettings will fail if 1) kms_key_name is invalid, or 2) the associated service account does not have the required roles/cloudkms.cryptoKeyEncrypterDecrypter role assigned for the key, or 3) access to the key is disabled.See Enabling CMEK for Logs Router (https://cloud.google.com/logging/docs/routing/managed-encryption) for more information.",
                     "flatPath": "v2/{v2Id}/{v2Id1}/cmekSettings",
                     "httpMethod": "PATCH",
                     "id": "logging.updateCmekSettings",
@@ -5452,7 +5452,7 @@
                     ],
                     "parameters": {
                         "name": {
-                            "description": "Required. The resource name for the CMEK settings to update. \"projects/[PROJECT_ID]/cmekSettings\" \"organizations/[ORGANIZATION_ID]/cmekSettings\" \"billingAccounts/[BILLING_ACCOUNT_ID]/cmekSettings\" \"folders/[FOLDER_ID]/cmekSettings\" For example:\"organizations/12345/cmekSettings\"Note: CMEK for the Logs Router can currently only be configured for GCP organizations. Once configured, it applies to all projects and folders in the GCP organization.",
+                            "description": "Required. The resource name for the CMEK settings to update. \"projects/[PROJECT_ID]/cmekSettings\" \"organizations/[ORGANIZATION_ID]/cmekSettings\" \"billingAccounts/[BILLING_ACCOUNT_ID]/cmekSettings\" \"folders/[FOLDER_ID]/cmekSettings\" For example:\"organizations/12345/cmekSettings\"Note: CMEK for the Logs Router can currently only be configured for Google Cloud organizations. Once configured, it applies to all projects and folders in the Google Cloud organization.",
                             "location": "path",
                             "pattern": "^[^/]+/[^/]+$",
                             "required": true,
@@ -5480,7 +5480,7 @@
             }
         }
     },
-    "revision": "20210922",
+    "revision": "20211015",
     "rootUrl": "https://logging.googleapis.com/",
     "schemas": {
         "BigQueryOptions": {
@@ -5525,7 +5525,7 @@
             "type": "object"
         },
         "CmekSettings": {
-            "description": "Describes the customer-managed encryption key (CMEK) settings associated with a project, folder, organization, billing account, or flexible resource.Note: CMEK for the Logs Router can currently only be configured for GCP organizations. Once configured, it applies to all projects and folders in the GCP organization.See Enabling CMEK for Logs Router (https://cloud.google.com/logging/docs/routing/managed-encryption) for more information.",
+            "description": "Describes the customer-managed encryption key (CMEK) settings associated with a project, folder, organization, billing account, or flexible resource.Note: CMEK for the Logs Router can currently only be configured for Google Cloud organizations. Once configured, it applies to all projects and folders in the Google Cloud organization.See Enabling CMEK for Logs Router (https://cloud.google.com/logging/docs/routing/managed-encryption) for more information.",
             "id": "CmekSettings",
             "properties": {
                 "kmsKeyName": {
@@ -6265,7 +6265,7 @@
             "type": "object"
         },
         "LogExclusion": {
-            "description": "Specifies a set of log entries that are not to be stored in Cloud Logging. If your GCP resource receives a large volume of log entries, you can use exclusions to reduce your chargeable logs. Exclusions are processed after log sinks, so you can export log entries before they are excluded. Note that organization-level and folder-level exclusions don't apply to child resources, and that you can't exclude audit log entries.",
+            "description": "Specifies a set of log entries that are filtered out by a sink. If your Google Cloud resource receives a large volume of log entries, you can use exclusions to reduce your chargeable logs. Note that exclusions on organization-level and folder-level sinks don't apply to child resources. Note also that you cannot modify the _Required sink or exclude logs from it.",
             "id": "LogExclusion",
             "properties": {
                 "createTime": {
@@ -6477,7 +6477,7 @@
                     "type": "string"
                 },
                 "writerIdentity": {
-                    "description": "Output only. An IAM identity—a service account or group—under which Cloud Logging writes the exported log entries to the sink's destination. This field is set by sinks.create and sinks.update based on the value of unique_writer_identity in those methods.Until you grant this identity write-access to the destination, log entry exports from this sink will fail. For more information, see Granting Access for a Resource (https://cloud.google.com/iam/docs/granting-roles-to-service-accounts#granting_access_to_a_service_account_for_a_resource). Consult the destination service's documentation to determine the appropriate IAM roles to assign to the identity.",
+                    "description": "Output only. An IAM identity—a service account or group—under which Cloud Logging writes the exported log entries to the sink's destination. This field is set by sinks.create and sinks.update based on the value of unique_writer_identity in those methods.Until you grant this identity write-access to the destination, log entry exports from this sink will fail. For more information, see Granting Access for a Resource (https://cloud.google.com/iam/docs/granting-roles-to-service-accounts#granting_access_to_a_service_account_for_a_resource). Consult the destination service's documentation to determine the appropriate IAM roles to assign to the identity.Sinks that have a destination that is a log bucket in the same project as the sink do not have a writer_identity and no additional permissions are required.",
                     "readOnly": true,
                     "type": "string"
                 }

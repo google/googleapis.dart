@@ -451,6 +451,21 @@ class RecognitionAudio {
 /// Provides information to the recognizer that specifies how to process the
 /// request.
 class RecognitionConfig {
+  /// A list of up to 3 additional
+  /// \[BCP-47\](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tags,
+  /// listing possible alternative languages of the supplied audio.
+  ///
+  /// See
+  /// [Language Support](https://cloud.google.com/speech-to-text/docs/languages)
+  /// for a list of the currently supported language codes. If alternative
+  /// languages are listed, recognition result will contain recognition in the
+  /// most likely language detected including the main language_code. The
+  /// recognition result will include the language tag of the language detected
+  /// in the audio. Note: This feature is only supported for Voice Command and
+  /// Voice Search use cases and performance may vary for other use cases (e.g.,
+  /// phone call transcription).
+  core.List<core.String>? alternativeLanguageCodes;
+
   /// The number of channels in the input audio data.
   ///
   /// ONLY set this for MULTI-CHANNEL recognition. Valid values for LINEAR16 and
@@ -488,6 +503,13 @@ class RecognitionConfig {
   /// channels recognized: `audio_channel_count` multiplied by the length of the
   /// audio.
   core.bool? enableSeparateRecognitionPerChannel;
+
+  /// If `true`, the top result includes a list of words and the confidence for
+  /// those words.
+  ///
+  /// If `false`, no word-level confidence information is returned. The default
+  /// is `false`.
+  core.bool? enableWordConfidence;
 
   /// If `true`, the top result includes a list of words and the start and end
   /// time offsets (timestamps) for those words.
@@ -607,10 +629,12 @@ class RecognitionConfig {
   core.bool? useEnhanced;
 
   RecognitionConfig({
+    this.alternativeLanguageCodes,
     this.audioChannelCount,
     this.diarizationConfig,
     this.enableAutomaticPunctuation,
     this.enableSeparateRecognitionPerChannel,
+    this.enableWordConfidence,
     this.enableWordTimeOffsets,
     this.encoding,
     this.languageCode,
@@ -625,6 +649,12 @@ class RecognitionConfig {
 
   RecognitionConfig.fromJson(core.Map _json)
       : this(
+          alternativeLanguageCodes:
+              _json.containsKey('alternativeLanguageCodes')
+                  ? (_json['alternativeLanguageCodes'] as core.List)
+                      .map((value) => value as core.String)
+                      .toList()
+                  : null,
           audioChannelCount: _json.containsKey('audioChannelCount')
               ? _json['audioChannelCount'] as core.int
               : null,
@@ -640,6 +670,9 @@ class RecognitionConfig {
               _json.containsKey('enableSeparateRecognitionPerChannel')
                   ? _json['enableSeparateRecognitionPerChannel'] as core.bool
                   : null,
+          enableWordConfidence: _json.containsKey('enableWordConfidence')
+              ? _json['enableWordConfidence'] as core.bool
+              : null,
           enableWordTimeOffsets: _json.containsKey('enableWordTimeOffsets')
               ? _json['enableWordTimeOffsets'] as core.bool
               : null,
@@ -676,6 +709,8 @@ class RecognitionConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (alternativeLanguageCodes != null)
+          'alternativeLanguageCodes': alternativeLanguageCodes!,
         if (audioChannelCount != null) 'audioChannelCount': audioChannelCount!,
         if (diarizationConfig != null) 'diarizationConfig': diarizationConfig!,
         if (enableAutomaticPunctuation != null)
@@ -683,6 +718,8 @@ class RecognitionConfig {
         if (enableSeparateRecognitionPerChannel != null)
           'enableSeparateRecognitionPerChannel':
               enableSeparateRecognitionPerChannel!,
+        if (enableWordConfidence != null)
+          'enableWordConfidence': enableWordConfidence!,
         if (enableWordTimeOffsets != null)
           'enableWordTimeOffsets': enableWordTimeOffsets!,
         if (encoding != null) 'encoding': encoding!,
@@ -1064,9 +1101,19 @@ class SpeechRecognitionResult {
   /// For audio_channel_count = N, its output values can range from '1' to 'N'.
   core.int? channelTag;
 
+  /// The \[BCP-47\](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag
+  /// of the language in this result.
+  ///
+  /// This language code was detected to have the most likelihood of being
+  /// spoken in the audio.
+  ///
+  /// Output only.
+  core.String? languageCode;
+
   SpeechRecognitionResult({
     this.alternatives,
     this.channelTag,
+    this.languageCode,
   });
 
   SpeechRecognitionResult.fromJson(core.Map _json)
@@ -1080,11 +1127,15 @@ class SpeechRecognitionResult {
           channelTag: _json.containsKey('channelTag')
               ? _json['channelTag'] as core.int
               : null,
+          languageCode: _json.containsKey('languageCode')
+              ? _json['languageCode'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (alternatives != null) 'alternatives': alternatives!,
         if (channelTag != null) 'channelTag': channelTag!,
+        if (languageCode != null) 'languageCode': languageCode!,
       };
 }
 
@@ -1123,6 +1174,16 @@ class TranscriptOutputConfig {
 
 /// Word-specific information for recognized words.
 class WordInfo {
+  /// The confidence estimate between 0.0 and 1.0.
+  ///
+  /// A higher number indicates an estimated greater likelihood that the
+  /// recognized words are correct. This field is set only for the top
+  /// alternative of a non-streaming result or, of a streaming result where
+  /// `is_final=true`. This field is not guaranteed to be accurate and users
+  /// should not rely on it to be always provided. The default of 0.0 is a
+  /// sentinel value indicating `confidence` was not set.
+  core.double? confidence;
+
   /// Time offset relative to the beginning of the audio, and corresponding to
   /// the end of the spoken word.
   ///
@@ -1153,6 +1214,7 @@ class WordInfo {
   core.String? word;
 
   WordInfo({
+    this.confidence,
     this.endTime,
     this.speakerTag,
     this.startTime,
@@ -1161,6 +1223,9 @@ class WordInfo {
 
   WordInfo.fromJson(core.Map _json)
       : this(
+          confidence: _json.containsKey('confidence')
+              ? (_json['confidence'] as core.num).toDouble()
+              : null,
           endTime: _json.containsKey('endTime')
               ? _json['endTime'] as core.String
               : null,
@@ -1174,6 +1239,7 @@ class WordInfo {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (confidence != null) 'confidence': confidence!,
         if (endTime != null) 'endTime': endTime!,
         if (speakerTag != null) 'speakerTag': speakerTag!,
         if (startTime != null) 'startTime': startTime!,

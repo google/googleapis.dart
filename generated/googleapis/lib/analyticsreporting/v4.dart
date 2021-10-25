@@ -1769,6 +1769,9 @@ class ReportData {
   /// calculation of the report.
   core.String? dataLastRefreshed;
 
+  /// If empty reason is specified, the report is empty for this reason.
+  core.String? emptyReason;
+
   /// Indicates if response to this request is golden or not.
   ///
   /// Data is golden when the exact same request will not produce any new
@@ -1825,6 +1828,7 @@ class ReportData {
 
   ReportData({
     this.dataLastRefreshed,
+    this.emptyReason,
     this.isDataGolden,
     this.maximums,
     this.minimums,
@@ -1839,6 +1843,9 @@ class ReportData {
       : this(
           dataLastRefreshed: _json.containsKey('dataLastRefreshed')
               ? _json['dataLastRefreshed'] as core.String
+              : null,
+          emptyReason: _json.containsKey('emptyReason')
+              ? _json['emptyReason'] as core.String
               : null,
           isDataGolden: _json.containsKey('isDataGolden')
               ? _json['isDataGolden'] as core.bool
@@ -1884,6 +1891,7 @@ class ReportData {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (dataLastRefreshed != null) 'dataLastRefreshed': dataLastRefreshed!,
+        if (emptyReason != null) 'emptyReason': emptyReason!,
         if (isDataGolden != null) 'isDataGolden': isDataGolden!,
         if (maximums != null) 'maximums': maximums!,
         if (minimums != null) 'minimums': minimums!,

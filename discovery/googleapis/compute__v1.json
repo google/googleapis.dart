@@ -28277,7 +28277,7 @@
             }
         }
     },
-    "revision": "20210918",
+    "revision": "20211004",
     "rootUrl": "https://compute.googleapis.com/",
     "schemas": {
         "AcceleratorConfig": {

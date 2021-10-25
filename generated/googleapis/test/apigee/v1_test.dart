@@ -6101,6 +6101,7 @@ api.GoogleCloudApigeeV1Organization buildGoogleCloudApigeeV1Organization() {
     o.expiresAt = 'foo';
     o.lastModifiedAt = 'foo';
     o.name = 'foo';
+    o.portalDisabled = true;
     o.projectId = 'foo';
     o.properties = buildGoogleCloudApigeeV1Properties();
     o.runtimeDatabaseEncryptionKeyName = 'foo';
@@ -6164,6 +6165,7 @@ void checkGoogleCloudApigeeV1Organization(
       o.name!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.portalDisabled!, unittest.isTrue);
     unittest.expect(
       o.projectId!,
       unittest.equals('foo'),

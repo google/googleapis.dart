@@ -1655,7 +1655,7 @@ class Operation {
       };
 }
 
-/// RestoreInstanceRequest restores an existing instances's file share from a
+/// RestoreInstanceRequest restores an existing instance's file share from a
 /// backup.
 class RestoreInstanceRequest {
   /// Name of the file share in the Cloud Filestore instance that the backup is

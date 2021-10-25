@@ -1981,6 +1981,7 @@ api.GoogleCloudRetailV2SearchRequest buildGoogleCloudRetailV2SearchRequest() {
     o.query = 'foo';
     o.queryExpansionSpec =
         buildGoogleCloudRetailV2SearchRequestQueryExpansionSpec();
+    o.searchMode = 'foo';
     o.userInfo = buildGoogleCloudRetailV2UserInfo();
     o.variantRollupKeys = buildUnnamed39();
     o.visitorId = 'foo';
@@ -2031,6 +2032,10 @@ void checkGoogleCloudRetailV2SearchRequest(
     );
     checkGoogleCloudRetailV2SearchRequestQueryExpansionSpec(
         o.queryExpansionSpec!);
+    unittest.expect(
+      o.searchMode!,
+      unittest.equals('foo'),
+    );
     checkGoogleCloudRetailV2UserInfo(o.userInfo!);
     checkUnnamed39(o.variantRollupKeys!);
     unittest.expect(

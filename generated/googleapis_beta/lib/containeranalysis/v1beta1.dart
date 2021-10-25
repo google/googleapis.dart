@@ -1441,19 +1441,20 @@ class BatchCreateOccurrencesResponse {
       };
 }
 
-/// Associates `members` with a `role`.
+/// Associates `members`, or principals, with a `role`.
 class Binding {
   /// The condition that is associated with this binding.
   ///
   /// If the condition evaluates to `true`, then this binding applies to the
   /// current request. If the condition evaluates to `false`, then this binding
   /// does not apply to the current request. However, a different role binding
-  /// might grant the same role to one or more of the members in this binding.
-  /// To learn which resources support conditions in their IAM policies, see the
+  /// might grant the same role to one or more of the principals in this
+  /// binding. To learn which resources support conditions in their IAM
+  /// policies, see the
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   Expr? condition;
 
-  /// Specifies the identities requesting access for a Cloud Platform resource.
+  /// Specifies the principals requesting access for a Cloud Platform resource.
   ///
   /// `members` can have the following values: * `allUsers`: A special
   /// identifier that represents anyone who is on the internet; with or without
@@ -1485,7 +1486,7 @@ class Binding {
   /// `example.com`.
   core.List<core.String>? members;
 
-  /// Role that is assigned to `members`.
+  /// Role that is assigned to the list of `members`, or principals.
   ///
   /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
   core.String? role;
@@ -2286,6 +2287,7 @@ class Discovery {
   /// - "SBOM" : This represents a software bill of materials.
   /// - "SPDX_PACKAGE" : This represents an SPDX Package.
   /// - "SPDX_FILE" : This represents an SPDX File.
+  /// - "SPDX_RELATIONSHIP" : This represents an SPDX Relationship.
   core.String? analysisKind;
 
   Discovery({
@@ -2710,15 +2712,10 @@ class FileOccurrence {
   /// by other elements
   core.String? id;
 
-  /// This field provides a place for the SPDX file creator to record any
-  /// relevant background references or analysis that went in to arriving at the
-  /// Concluded License for a file
-  core.String? licenseComments;
-
   /// This field contains the license the SPDX file creator has concluded as
   /// governing the file or alternative values if the governing license cannot
   /// be determined
-  core.String? licenseConcluded;
+  License? licenseConcluded;
 
   /// This field provides a place for the SPDX file creator to record license
   /// notices or other such related notices found in the file
@@ -2731,7 +2728,6 @@ class FileOccurrence {
     this.copyright,
     this.filesLicenseInfo,
     this.id,
-    this.licenseComments,
     this.licenseConcluded,
     this.notice,
   });
@@ -2760,11 +2756,9 @@ class FileOccurrence {
                   .toList()
               : null,
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          licenseComments: _json.containsKey('licenseComments')
-              ? _json['licenseComments'] as core.String
-              : null,
           licenseConcluded: _json.containsKey('licenseConcluded')
-              ? _json['licenseConcluded'] as core.String
+              ? License.fromJson(_json['licenseConcluded']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           notice: _json.containsKey('notice')
               ? _json['notice'] as core.String
@@ -2778,7 +2772,6 @@ class FileOccurrence {
         if (copyright != null) 'copyright': copyright!,
         if (filesLicenseInfo != null) 'filesLicenseInfo': filesLicenseInfo!,
         if (id != null) 'id': id!,
-        if (licenseComments != null) 'licenseComments': licenseComments!,
         if (licenseConcluded != null) 'licenseConcluded': licenseConcluded!,
         if (notice != null) 'notice': notice!,
       };
@@ -3588,6 +3581,37 @@ class Layer {
       };
 }
 
+/// License information:
+/// https://spdx.github.io/spdx-spec/3-package-information/#315-declared-license
+class License {
+  /// Comments
+  core.String? comments;
+
+  /// Expression:
+  /// https://spdx.github.io/spdx-spec/appendix-IV-SPDX-license-expressions/
+  core.String? expression;
+
+  License({
+    this.comments,
+    this.expression,
+  });
+
+  License.fromJson(core.Map _json)
+      : this(
+          comments: _json.containsKey('comments')
+              ? _json['comments'] as core.String
+              : null,
+          expression: _json.containsKey('expression')
+              ? _json['expression'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (comments != null) 'comments': comments!,
+        if (expression != null) 'expression': expression!,
+      };
+}
+
 /// This corresponds to an in-toto link.
 class Link {
   /// ByProducts are data generated as part of a software supply chain step, but
@@ -3904,6 +3928,7 @@ class Note {
   /// - "SBOM" : This represents a software bill of materials.
   /// - "SPDX_PACKAGE" : This represents an SPDX Package.
   /// - "SPDX_FILE" : This represents an SPDX File.
+  /// - "SPDX_RELATIONSHIP" : This represents an SPDX Relationship.
   core.String? kind;
 
   /// A detailed description of this note.
@@ -3924,19 +3949,19 @@ class Note {
   /// URLs associated with this note.
   core.List<RelatedUrl>? relatedUrl;
 
-  /// A note describing SPDX Document which represents SBOM.
+  /// A note describing a software bill of materials.
   DocumentNote? sbom;
 
   /// A one sentence description of this note.
   core.String? shortDescription;
 
-  /// A note describing SPDX File.
+  /// A note describing an SPDX File.
   FileNote? spdxFile;
 
-  /// A note describing SPDX Package.
-  PackageNote? spdxPackage;
+  /// A note describing an SPDX Package.
+  PackageInfoNote? spdxPackage;
 
-  /// A note describing SPDX Relationship.
+  /// A note describing an SPDX File.
   RelationshipNote? spdxRelationship;
 
   /// The time this note was last updated.
@@ -4037,7 +4062,7 @@ class Note {
                   _json['spdxFile'] as core.Map<core.String, core.dynamic>)
               : null,
           spdxPackage: _json.containsKey('spdxPackage')
-              ? PackageNote.fromJson(
+              ? PackageInfoNote.fromJson(
                   _json['spdxPackage'] as core.Map<core.String, core.dynamic>)
               : null,
           spdxRelationship: _json.containsKey('spdxRelationship')
@@ -4128,6 +4153,7 @@ class Occurrence {
   /// - "SBOM" : This represents a software bill of materials.
   /// - "SPDX_PACKAGE" : This represents an SPDX Package.
   /// - "SPDX_FILE" : This represents an SPDX File.
+  /// - "SPDX_RELATIONSHIP" : This represents an SPDX Relationship.
   core.String? kind;
 
   /// The name of the occurrence in the form of
@@ -4152,14 +4178,14 @@ class Occurrence {
   /// Required. Immutable.
   Resource? resource;
 
-  /// Describes a specific SPDX Document.
+  /// Describes a specific software bill of materials document.
   DocumentOccurrence? sbom;
 
   /// Describes a specific SPDX File.
   FileOccurrence? spdxFile;
 
   /// Describes a specific SPDX Package.
-  PackageOccurrence? spdxPackage;
+  PackageInfoOccurrence? spdxPackage;
 
   /// Describes a specific SPDX Relationship.
   RelationshipOccurrence? spdxRelationship;
@@ -4248,7 +4274,7 @@ class Occurrence {
                   _json['spdxFile'] as core.Map<core.String, core.dynamic>)
               : null,
           spdxPackage: _json.containsKey('spdxPackage')
-              ? PackageOccurrence.fromJson(
+              ? PackageInfoOccurrence.fromJson(
                   _json['spdxPackage'] as core.Map<core.String, core.dynamic>)
               : null,
           spdxRelationship: _json.containsKey('spdxRelationship')
@@ -4322,6 +4348,291 @@ class Package {
       };
 }
 
+/// PackageInfoNote represents an SPDX Package Information section:
+/// https://spdx.github.io/spdx-spec/3-package-information/
+class PackageInfoNote {
+  /// Indicates whether the file content of this package has been available for
+  /// or subjected to analysis when creating the SPDX document
+  core.bool? analyzed;
+
+  /// A place for the SPDX data creator to record, at the package level,
+  /// acknowledgements that may be needed to be communicated in some contexts
+  core.String? attribution;
+
+  /// Provide an independently reproducible mechanism that permits unique
+  /// identification of a specific package that correlates to the data in this
+  /// SPDX file
+  core.String? checksum;
+
+  /// Identify the copyright holders of the package, as well as any dates
+  /// present
+  core.String? copyright;
+
+  /// A more detailed description of the package
+  core.String? detailedDescription;
+
+  /// This section identifies the download Universal Resource Locator (URL), or
+  /// a specific location within a version control system (VCS) for the package
+  /// at the time that the SPDX file was created
+  core.String? downloadLocation;
+
+  /// ExternalRef
+  core.List<ExternalRef>? externalRefs;
+
+  /// Contain the license the SPDX file creator has concluded as governing the
+  /// This field is to contain a list of all licenses found in the package.
+  ///
+  /// The relationship between licenses (i.e., conjunctive, disjunctive) is not
+  /// specified in this field – it is simply a listing of all licenses found
+  core.List<core.String>? filesLicenseInfo;
+
+  /// Provide a place for the SPDX file creator to record a web site that serves
+  /// as the package's home page
+  core.String? homePage;
+
+  /// List the licenses that have been declared by the authors of the package
+  License? licenseDeclared;
+
+  /// If the package identified in the SPDX file originated from a different
+  /// person or organization than identified as Package Supplier, this field
+  /// identifies from where or whom the package originally came
+  core.String? originator;
+
+  /// The type of package: OS, MAVEN, GO, GO_STDLIB, etc.
+  core.String? packageType;
+
+  /// A short description of the package
+  core.String? summaryDescription;
+
+  /// Identify the actual distribution source for the package/directory
+  /// identified in the SPDX file
+  core.String? supplier;
+
+  /// Identify the full name of the package as given by the Package Originator
+  core.String? title;
+
+  /// This field provides an independently reproducible mechanism identifying
+  /// specific contents of a package based on the actual files (except the SPDX
+  /// file itself, if it is included in the package) that make up each package
+  /// and that correlates to the data in this SPDX file
+  core.String? verificationCode;
+
+  /// Identify the version of the package
+  core.String? version;
+
+  PackageInfoNote({
+    this.analyzed,
+    this.attribution,
+    this.checksum,
+    this.copyright,
+    this.detailedDescription,
+    this.downloadLocation,
+    this.externalRefs,
+    this.filesLicenseInfo,
+    this.homePage,
+    this.licenseDeclared,
+    this.originator,
+    this.packageType,
+    this.summaryDescription,
+    this.supplier,
+    this.title,
+    this.verificationCode,
+    this.version,
+  });
+
+  PackageInfoNote.fromJson(core.Map _json)
+      : this(
+          analyzed: _json.containsKey('analyzed')
+              ? _json['analyzed'] as core.bool
+              : null,
+          attribution: _json.containsKey('attribution')
+              ? _json['attribution'] as core.String
+              : null,
+          checksum: _json.containsKey('checksum')
+              ? _json['checksum'] as core.String
+              : null,
+          copyright: _json.containsKey('copyright')
+              ? _json['copyright'] as core.String
+              : null,
+          detailedDescription: _json.containsKey('detailedDescription')
+              ? _json['detailedDescription'] as core.String
+              : null,
+          downloadLocation: _json.containsKey('downloadLocation')
+              ? _json['downloadLocation'] as core.String
+              : null,
+          externalRefs: _json.containsKey('externalRefs')
+              ? (_json['externalRefs'] as core.List)
+                  .map((value) => ExternalRef.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          filesLicenseInfo: _json.containsKey('filesLicenseInfo')
+              ? (_json['filesLicenseInfo'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          homePage: _json.containsKey('homePage')
+              ? _json['homePage'] as core.String
+              : null,
+          licenseDeclared: _json.containsKey('licenseDeclared')
+              ? License.fromJson(_json['licenseDeclared']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          originator: _json.containsKey('originator')
+              ? _json['originator'] as core.String
+              : null,
+          packageType: _json.containsKey('packageType')
+              ? _json['packageType'] as core.String
+              : null,
+          summaryDescription: _json.containsKey('summaryDescription')
+              ? _json['summaryDescription'] as core.String
+              : null,
+          supplier: _json.containsKey('supplier')
+              ? _json['supplier'] as core.String
+              : null,
+          title:
+              _json.containsKey('title') ? _json['title'] as core.String : null,
+          verificationCode: _json.containsKey('verificationCode')
+              ? _json['verificationCode'] as core.String
+              : null,
+          version: _json.containsKey('version')
+              ? _json['version'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (analyzed != null) 'analyzed': analyzed!,
+        if (attribution != null) 'attribution': attribution!,
+        if (checksum != null) 'checksum': checksum!,
+        if (copyright != null) 'copyright': copyright!,
+        if (detailedDescription != null)
+          'detailedDescription': detailedDescription!,
+        if (downloadLocation != null) 'downloadLocation': downloadLocation!,
+        if (externalRefs != null) 'externalRefs': externalRefs!,
+        if (filesLicenseInfo != null) 'filesLicenseInfo': filesLicenseInfo!,
+        if (homePage != null) 'homePage': homePage!,
+        if (licenseDeclared != null) 'licenseDeclared': licenseDeclared!,
+        if (originator != null) 'originator': originator!,
+        if (packageType != null) 'packageType': packageType!,
+        if (summaryDescription != null)
+          'summaryDescription': summaryDescription!,
+        if (supplier != null) 'supplier': supplier!,
+        if (title != null) 'title': title!,
+        if (verificationCode != null) 'verificationCode': verificationCode!,
+        if (version != null) 'version': version!,
+      };
+}
+
+/// PackageInfoOccurrence represents an SPDX Package Information section:
+/// https://spdx.github.io/spdx-spec/3-package-information/
+class PackageInfoOccurrence {
+  /// A place for the SPDX file creator to record any general comments about the
+  /// package being described
+  core.String? comment;
+
+  /// Provide the actual file name of the package, or path of the directory
+  /// being treated as a package
+  core.String? filename;
+
+  /// Provide a place for the SPDX file creator to record a web site that serves
+  /// as the package's home page
+  ///
+  /// Output only.
+  core.String? homePage;
+
+  /// Uniquely identify any element in an SPDX document which may be referenced
+  /// by other elements
+  core.String? id;
+
+  /// package or alternative values, if the governing license cannot be
+  /// determined
+  License? licenseConcluded;
+
+  /// The type of package: OS, MAVEN, GO, GO_STDLIB, etc.
+  ///
+  /// Output only.
+  core.String? packageType;
+
+  /// Provide a place for the SPDX file creator to record any relevant
+  /// background information or additional comments about the origin of the
+  /// package
+  core.String? sourceInfo;
+
+  /// A short description of the package
+  ///
+  /// Output only.
+  core.String? summaryDescription;
+
+  /// Identify the full name of the package as given by the Package Originator
+  ///
+  /// Output only.
+  core.String? title;
+
+  /// Identify the version of the package
+  ///
+  /// Output only.
+  core.String? version;
+
+  PackageInfoOccurrence({
+    this.comment,
+    this.filename,
+    this.homePage,
+    this.id,
+    this.licenseConcluded,
+    this.packageType,
+    this.sourceInfo,
+    this.summaryDescription,
+    this.title,
+    this.version,
+  });
+
+  PackageInfoOccurrence.fromJson(core.Map _json)
+      : this(
+          comment: _json.containsKey('comment')
+              ? _json['comment'] as core.String
+              : null,
+          filename: _json.containsKey('filename')
+              ? _json['filename'] as core.String
+              : null,
+          homePage: _json.containsKey('homePage')
+              ? _json['homePage'] as core.String
+              : null,
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          licenseConcluded: _json.containsKey('licenseConcluded')
+              ? License.fromJson(_json['licenseConcluded']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          packageType: _json.containsKey('packageType')
+              ? _json['packageType'] as core.String
+              : null,
+          sourceInfo: _json.containsKey('sourceInfo')
+              ? _json['sourceInfo'] as core.String
+              : null,
+          summaryDescription: _json.containsKey('summaryDescription')
+              ? _json['summaryDescription'] as core.String
+              : null,
+          title:
+              _json.containsKey('title') ? _json['title'] as core.String : null,
+          version: _json.containsKey('version')
+              ? _json['version'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (comment != null) 'comment': comment!,
+        if (filename != null) 'filename': filename!,
+        if (homePage != null) 'homePage': homePage!,
+        if (id != null) 'id': id!,
+        if (licenseConcluded != null) 'licenseConcluded': licenseConcluded!,
+        if (packageType != null) 'packageType': packageType!,
+        if (sourceInfo != null) 'sourceInfo': sourceInfo!,
+        if (summaryDescription != null)
+          'summaryDescription': summaryDescription!,
+        if (title != null) 'title': title!,
+        if (version != null) 'version': version!,
+      };
+}
+
 /// This message wraps a location affected by a vulnerability and its associated
 /// fix (if one is available).
 class PackageIssue {
@@ -4389,240 +4700,6 @@ class PackageIssue {
         if (fixedLocation != null) 'fixedLocation': fixedLocation!,
         if (packageType != null) 'packageType': packageType!,
         if (severityName != null) 'severityName': severityName!,
-      };
-}
-
-/// PackageNote represents an SPDX Package Information section:
-/// https://spdx.github.io/spdx-spec/3-package-information/
-class PackageNote {
-  /// Indicates whether the file content of this package has been available for
-  /// or subjected to analysis when creating the SPDX document
-  core.bool? analyzed;
-
-  /// A place for the SPDX data creator to record, at the package level,
-  /// acknowledgements that may be needed to be communicated in some contexts
-  core.String? attribution;
-
-  /// Provide an independently reproducible mechanism that permits unique
-  /// identification of a specific package that correlates to the data in this
-  /// SPDX file
-  core.String? checksum;
-
-  /// Identify the copyright holders of the package, as well as any dates
-  /// present
-  core.String? copyright;
-
-  /// A more detailed description of the package
-  core.String? detailedDescription;
-
-  /// This section identifies the download Universal Resource Locator (URL), or
-  /// a specific location within a version control system (VCS) for the package
-  /// at the time that the SPDX file was created
-  core.String? downloadLocation;
-
-  /// ExternalRef
-  core.List<ExternalRef>? externalRefs;
-
-  /// Contain the license the SPDX file creator has concluded as governing the
-  /// This field is to contain a list of all licenses found in the package.
-  ///
-  /// The relationship between licenses (i.e., conjunctive, disjunctive) is not
-  /// specified in this field – it is simply a listing of all licenses found
-  core.List<core.String>? filesLicenseInfo;
-
-  /// Provide a place for the SPDX file creator to record a web site that serves
-  /// as the package's home page
-  core.String? homePage;
-
-  /// List the licenses that have been declared by the authors of the package
-  core.String? licenseDeclared;
-
-  /// If the package identified in the SPDX file originated from a different
-  /// person or organization than identified as Package Supplier, this field
-  /// identifies from where or whom the package originally came
-  core.String? originator;
-
-  /// A short description of the package
-  core.String? summaryDescription;
-
-  /// Identify the actual distribution source for the package/directory
-  /// identified in the SPDX file
-  core.String? supplier;
-
-  /// Identify the full name of the package as given by the Package Originator
-  core.String? title;
-
-  /// This field provides an independently reproducible mechanism identifying
-  /// specific contents of a package based on the actual files (except the SPDX
-  /// file itself, if it is included in the package) that make up each package
-  /// and that correlates to the data in this SPDX file
-  core.String? verificationCode;
-
-  /// Identify the version of the package
-  core.String? version;
-
-  PackageNote({
-    this.analyzed,
-    this.attribution,
-    this.checksum,
-    this.copyright,
-    this.detailedDescription,
-    this.downloadLocation,
-    this.externalRefs,
-    this.filesLicenseInfo,
-    this.homePage,
-    this.licenseDeclared,
-    this.originator,
-    this.summaryDescription,
-    this.supplier,
-    this.title,
-    this.verificationCode,
-    this.version,
-  });
-
-  PackageNote.fromJson(core.Map _json)
-      : this(
-          analyzed: _json.containsKey('analyzed')
-              ? _json['analyzed'] as core.bool
-              : null,
-          attribution: _json.containsKey('attribution')
-              ? _json['attribution'] as core.String
-              : null,
-          checksum: _json.containsKey('checksum')
-              ? _json['checksum'] as core.String
-              : null,
-          copyright: _json.containsKey('copyright')
-              ? _json['copyright'] as core.String
-              : null,
-          detailedDescription: _json.containsKey('detailedDescription')
-              ? _json['detailedDescription'] as core.String
-              : null,
-          downloadLocation: _json.containsKey('downloadLocation')
-              ? _json['downloadLocation'] as core.String
-              : null,
-          externalRefs: _json.containsKey('externalRefs')
-              ? (_json['externalRefs'] as core.List)
-                  .map((value) => ExternalRef.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          filesLicenseInfo: _json.containsKey('filesLicenseInfo')
-              ? (_json['filesLicenseInfo'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          homePage: _json.containsKey('homePage')
-              ? _json['homePage'] as core.String
-              : null,
-          licenseDeclared: _json.containsKey('licenseDeclared')
-              ? _json['licenseDeclared'] as core.String
-              : null,
-          originator: _json.containsKey('originator')
-              ? _json['originator'] as core.String
-              : null,
-          summaryDescription: _json.containsKey('summaryDescription')
-              ? _json['summaryDescription'] as core.String
-              : null,
-          supplier: _json.containsKey('supplier')
-              ? _json['supplier'] as core.String
-              : null,
-          title:
-              _json.containsKey('title') ? _json['title'] as core.String : null,
-          verificationCode: _json.containsKey('verificationCode')
-              ? _json['verificationCode'] as core.String
-              : null,
-          version: _json.containsKey('version')
-              ? _json['version'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (analyzed != null) 'analyzed': analyzed!,
-        if (attribution != null) 'attribution': attribution!,
-        if (checksum != null) 'checksum': checksum!,
-        if (copyright != null) 'copyright': copyright!,
-        if (detailedDescription != null)
-          'detailedDescription': detailedDescription!,
-        if (downloadLocation != null) 'downloadLocation': downloadLocation!,
-        if (externalRefs != null) 'externalRefs': externalRefs!,
-        if (filesLicenseInfo != null) 'filesLicenseInfo': filesLicenseInfo!,
-        if (homePage != null) 'homePage': homePage!,
-        if (licenseDeclared != null) 'licenseDeclared': licenseDeclared!,
-        if (originator != null) 'originator': originator!,
-        if (summaryDescription != null)
-          'summaryDescription': summaryDescription!,
-        if (supplier != null) 'supplier': supplier!,
-        if (title != null) 'title': title!,
-        if (verificationCode != null) 'verificationCode': verificationCode!,
-        if (version != null) 'version': version!,
-      };
-}
-
-/// PackageOccurrence represents an SPDX Package Information section:
-/// https://spdx.github.io/spdx-spec/3-package-information/
-class PackageOccurrence {
-  /// A place for the SPDX file creator to record any general comments about the
-  /// package being described
-  core.String? comment;
-
-  /// Provide the actual file name of the package, or path of the directory
-  /// being treated as a package
-  core.String? filename;
-
-  /// Uniquely identify any element in an SPDX document which may be referenced
-  /// by other elements
-  core.String? id;
-
-  /// This field provides a place for the SPDX file creator to record any
-  /// relevant background information or analysis that went in to arriving at
-  /// the Concluded License for a package
-  core.String? licenseComments;
-
-  /// package or alternative values, if the governing license cannot be
-  /// determined
-  core.String? licenseConcluded;
-
-  /// Provide a place for the SPDX file creator to record any relevant
-  /// background information or additional comments about the origin of the
-  /// package
-  core.String? sourceInfo;
-
-  PackageOccurrence({
-    this.comment,
-    this.filename,
-    this.id,
-    this.licenseComments,
-    this.licenseConcluded,
-    this.sourceInfo,
-  });
-
-  PackageOccurrence.fromJson(core.Map _json)
-      : this(
-          comment: _json.containsKey('comment')
-              ? _json['comment'] as core.String
-              : null,
-          filename: _json.containsKey('filename')
-              ? _json['filename'] as core.String
-              : null,
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          licenseComments: _json.containsKey('licenseComments')
-              ? _json['licenseComments'] as core.String
-              : null,
-          licenseConcluded: _json.containsKey('licenseConcluded')
-              ? _json['licenseConcluded'] as core.String
-              : null,
-          sourceInfo: _json.containsKey('sourceInfo')
-              ? _json['sourceInfo'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (comment != null) 'comment': comment!,
-        if (filename != null) 'filename': filename!,
-        if (id != null) 'id': id!,
-        if (licenseComments != null) 'licenseComments': licenseComments!,
-        if (licenseConcluded != null) 'licenseConcluded': licenseConcluded!,
-        if (sourceInfo != null) 'sourceInfo': sourceInfo!,
       };
 }
 
@@ -4704,15 +4781,15 @@ class PgpSignedAttestation {
 /// controls for Google Cloud resources.
 ///
 /// A `Policy` is a collection of `bindings`. A `binding` binds one or more
-/// `members` to a single `role`. Members can be user accounts, service
-/// accounts, Google groups, and domains (such as G Suite). A `role` is a named
-/// list of permissions; each `role` can be an IAM predefined role or a
-/// user-created custom role. For some types of Google Cloud resources, a
-/// `binding` can also specify a `condition`, which is a logical expression that
-/// allows access to a resource only if the expression evaluates to `true`. A
-/// condition can add constraints based on attributes of the request, the
-/// resource, or both. To learn which resources support conditions in their IAM
-/// policies, see the
+/// `members`, or principals, to a single `role`. Principals can be user
+/// accounts, service accounts, Google groups, and domains (such as G Suite). A
+/// `role` is a named list of permissions; each `role` can be an IAM predefined
+/// role or a user-created custom role. For some types of Google Cloud
+/// resources, a `binding` can also specify a `condition`, which is a logical
+/// expression that allows access to a resource only if the expression evaluates
+/// to `true`. A condition can add constraints based on attributes of the
+/// request, the resource, or both. To learn which resources support conditions
+/// in their IAM policies, see the
 /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 /// **JSON example:** { "bindings": \[ { "role":
 /// "roles/resourcemanager.organizationAdmin", "members": \[
@@ -4732,11 +4809,16 @@ class PgpSignedAttestation {
 /// version: 3 For a description of IAM and its features, see the
 /// [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {
-  /// Associates a list of `members` to a `role`.
+  /// Associates a list of `members`, or principals, with a `role`.
   ///
   /// Optionally, may specify a `condition` that determines how and when the
   /// `bindings` are applied. Each of the `bindings` must contain at least one
-  /// member.
+  /// principal. The `bindings` in a `Policy` can refer to up to 1,500
+  /// principals; up to 250 of these principals can be Google groups. Each
+  /// occurrence of a principal counts towards these limits. For example, if the
+  /// `bindings` grant 50 different roles to `user:alice@example.com`, and not
+  /// to any other principal, then you can add another 1,450 principals to the
+  /// `bindings` in the `Policy`.
   core.List<Binding>? bindings;
 
   /// `etag` is used for optimistic concurrency control as a way to help prevent
@@ -4814,7 +4896,103 @@ typedef RelatedUrl = $RelatedUrl;
 
 /// RelationshipNote represents an SPDX Relationship section:
 /// https://spdx.github.io/spdx-spec/7-relationships-between-SPDX-elements/
-typedef RelationshipNote = $Empty;
+class RelationshipNote {
+  /// The type of relationship between the source and target SPDX elements
+  /// Possible string values are:
+  /// - "RELATIONSHIP_TYPE_UNSPECIFIED" : Unspecified
+  /// - "DESCRIBES" : Is to be used when SPDXRef-DOCUMENT describes SPDXRef-A
+  /// - "DESCRIBED_BY" : Is to be used when SPDXRef-A is described by
+  /// SPDXREF-Document
+  /// - "CONTAINS" : Is to be used when SPDXRef-A contains SPDXRef-B
+  /// - "CONTAINED_BY" : Is to be used when SPDXRef-A is contained by SPDXRef-B
+  /// - "DEPENDS_ON" : Is to be used when SPDXRef-A depends on SPDXRef-B
+  /// - "DEPENDENCY_OF" : Is to be used when SPDXRef-A is dependency of
+  /// SPDXRef-B
+  /// - "DEPENDENCY_MANIFEST_OF" : Is to be used when SPDXRef-A is a manifest
+  /// file that lists a set of dependencies for SPDXRef-B
+  /// - "BUILD_DEPENDENCY_OF" : Is to be used when SPDXRef-A is a build
+  /// dependency of SPDXRef-B
+  /// - "DEV_DEPENDENCY_OF" : Is to be used when SPDXRef-A is a development
+  /// dependency of SPDXRef-B
+  /// - "OPTIONAL_DEPENDENCY_OF" : Is to be used when SPDXRef-A is an optional
+  /// dependency of SPDXRef-B
+  /// - "PROVIDED_DEPENDENCY_OF" : Is to be used when SPDXRef-A is a to be
+  /// provided dependency of SPDXRef-B
+  /// - "TEST_DEPENDENCY_OF" : Is to be used when SPDXRef-A is a test dependency
+  /// of SPDXRef-B
+  /// - "RUNTIME_DEPENDENCY_OF" : Is to be used when SPDXRef-A is a dependency
+  /// required for the execution of SPDXRef-B
+  /// - "EXAMPLE_OF" : Is to be used when SPDXRef-A is an example of SPDXRef-B
+  /// - "GENERATES" : Is to be used when SPDXRef-A generates SPDXRef-B
+  /// - "GENERATED_FROM" : Is to be used when SPDXRef-A was generated from
+  /// SPDXRef-B
+  /// - "ANCESTOR_OF" : Is to be used when SPDXRef-A is an ancestor (same
+  /// lineage but pre-dates) SPDXRef-B
+  /// - "DESCENDANT_OF" : Is to be used when SPDXRef-A is a descendant of (same
+  /// lineage but postdates) SPDXRef-B
+  /// - "VARIANT_OF" : Is to be used when SPDXRef-A is a variant of (same
+  /// lineage but not clear which came first) SPDXRef-B
+  /// - "DISTRIBUTION_ARTIFACT" : Is to be used when distributing SPDXRef-A
+  /// requires that SPDXRef-B also be distributed
+  /// - "PATCH_FOR" : Is to be used when SPDXRef-A is a patch file for (to be
+  /// applied to) SPDXRef-B
+  /// - "PATCH_APPLIED" : Is to be used when SPDXRef-A is a patch file that has
+  /// been applied to SPDXRef-B
+  /// - "COPY_OF" : Is to be used when SPDXRef-A is an exact copy of SPDXRef-B
+  /// - "FILE_ADDED" : Is to be used when SPDXRef-A is a file that was added to
+  /// SPDXRef-B
+  /// - "FILE_DELETED" : Is to be used when SPDXRef-A is a file that was deleted
+  /// from SPDXRef-B
+  /// - "FILE_MODIFIED" : Is to be used when SPDXRef-A is a file that was
+  /// modified from SPDXRef-B
+  /// - "EXPANDED_FROM_ARCHIVE" : Is to be used when SPDXRef-A is expanded from
+  /// the archive SPDXRef-B
+  /// - "DYNAMIC_LINK" : Is to be used when SPDXRef-A dynamically links to
+  /// SPDXRef-B
+  /// - "STATIC_LINK" : Is to be used when SPDXRef-A statically links to
+  /// SPDXRef-B
+  /// - "DATA_FILE_OF" : Is to be used when SPDXRef-A is a data file used in
+  /// SPDXRef-B
+  /// - "TEST_CASE_OF" : Is to be used when SPDXRef-A is a test case used in
+  /// testing SPDXRef-B
+  /// - "BUILD_TOOL_OF" : Is to be used when SPDXRef-A is used to build
+  /// SPDXRef-B
+  /// - "DEV_TOOL_OF" : Is to be used when SPDXRef-A is used as a development
+  /// tool for SPDXRef-B
+  /// - "TEST_OF" : Is to be used when SPDXRef-A is used for testing SPDXRef-B
+  /// - "TEST_TOOL_OF" : Is to be used when SPDXRef-A is used as a test tool for
+  /// SPDXRef-B
+  /// - "DOCUMENTATION_OF" : Is to be used when SPDXRef-A provides documentation
+  /// of SPDXRef-B
+  /// - "OPTIONAL_COMPONENT_OF" : Is to be used when SPDXRef-A is an optional
+  /// component of SPDXRef-B
+  /// - "METAFILE_OF" : Is to be used when SPDXRef-A is a metafile of SPDXRef-B
+  /// - "PACKAGE_OF" : Is to be used when SPDXRef-A is used as a package as part
+  /// of SPDXRef-B
+  /// - "AMENDS" : Is to be used when (current) SPDXRef-DOCUMENT amends the SPDX
+  /// information in SPDXRef-B
+  /// - "PREREQUISITE_FOR" : Is to be used when SPDXRef-A is a prerequisite for
+  /// SPDXRef-B
+  /// - "HAS_PREREQUISITE" : Is to be used when SPDXRef-A has as a prerequisite
+  /// SPDXRef-B
+  /// - "OTHER" : Is to be used for a relationship which has not been defined in
+  /// the formal SPDX specification. A description of the relationship should be
+  /// included in the Relationship comments field
+  core.String? type;
+
+  RelationshipNote({
+    this.type,
+  });
+
+  RelationshipNote.fromJson(core.Map _json)
+      : this(
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (type != null) 'type': type!,
+      };
+}
 
 /// RelationshipOccurrence represents an SPDX Relationship section:
 /// https://spdx.github.io/spdx-spec/7-relationships-between-SPDX-elements/
@@ -4834,8 +5012,10 @@ class RelationshipOccurrence {
   core.String? target;
 
   /// The type of relationship between the source and target SPDX elements
+  ///
+  /// Output only.
   /// Possible string values are:
-  /// - "TYPE_UNSPECIFIED" : Unspecified
+  /// - "RELATIONSHIP_TYPE_UNSPECIFIED" : Unspecified
   /// - "DESCRIBES" : Is to be used when SPDXRef-DOCUMENT describes SPDXRef-A
   /// - "DESCRIBED_BY" : Is to be used when SPDXRef-A is described by
   /// SPDXREF-Document

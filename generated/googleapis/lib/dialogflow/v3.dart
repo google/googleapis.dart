@@ -24,6 +24,7 @@
 /// - [ProjectsResource]
 ///   - [ProjectsLocationsResource]
 ///     - [ProjectsLocationsAgentsResource]
+///       - [ProjectsLocationsAgentsChangelogsResource]
 ///       - [ProjectsLocationsAgentsEntityTypesResource]
 ///       - [ProjectsLocationsAgentsEnvironmentsResource]
 /// - [ProjectsLocationsAgentsEnvironmentsContinuousTestResultsResource]
@@ -197,6 +198,8 @@ class ProjectsLocationsResource {
 class ProjectsLocationsAgentsResource {
   final commons.ApiRequester _requester;
 
+  ProjectsLocationsAgentsChangelogsResource get changelogs =>
+      ProjectsLocationsAgentsChangelogsResource(_requester);
   ProjectsLocationsAgentsEntityTypesResource get entityTypes =>
       ProjectsLocationsAgentsEntityTypesResource(_requester);
   ProjectsLocationsAgentsEnvironmentsResource get environments =>
@@ -628,6 +631,113 @@ class ProjectsLocationsAgentsResource {
       queryParams: _queryParams,
     );
     return GoogleCloudDialogflowCxV3AgentValidationResult.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsAgentsChangelogsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsAgentsChangelogsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Retrieves the specified Changelog.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the changelog to get. Format:
+  /// `projects//locations//agents//changelogs/`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agents/\[^/\]+/changelogs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowCxV3Changelog].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowCxV3Changelog> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v3/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDialogflowCxV3Changelog.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns the list of Changelogs.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The agent containing the changelogs. Format:
+  /// `projects//locations//agents/`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agents/\[^/\]+$`.
+  ///
+  /// [filter] - The filter string. Supports filter by user_email, resource,
+  /// type and create_time. Some examples: 1. By user email: user_email =
+  /// "someone@google.com" 2. By resource name: resource =
+  /// "projects/123/locations/global/agents/456/flows/789" 3. By resource
+  /// display name: display_name = "my agent" 4. By action: action = "Create" 5.
+  /// By type: type = "flows" 6. By create time. Currently predicates on
+  /// `create_time` and `create_time_epoch_seconds` are supported:
+  /// create_time_epoch_seconds \> 1551790877 AND create_time \<=
+  /// 2017-01-15T01:30:15.01Z 7. Combination of above filters: resource =
+  /// "projects/123/locations/global/agents/456/flows/789" AND user_email =
+  /// "someone@google.com" AND create_time \<= 2017-01-15T01:30:15.01Z
+  ///
+  /// [pageSize] - The maximum number of items to return in a single page. By
+  /// default 100 and at most 1000.
+  ///
+  /// [pageToken] - The next_page_token value returned from a previous list
+  /// request.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowCxV3ListChangelogsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowCxV3ListChangelogsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v3/' + core.Uri.encodeFull('$parent') + '/changelogs';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDialogflowCxV3ListChangelogsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
 }
@@ -3329,6 +3439,53 @@ class ProjectsLocationsAgentsFlowsVersionsResource {
 
   ProjectsLocationsAgentsFlowsVersionsResource(commons.ApiRequester client)
       : _requester = client;
+
+  /// Compares the specified base version with target version.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [baseVersion] - Required. Name of the base flow version to compare with
+  /// the target version. Use version ID `0` to indicate the draft version of
+  /// the specified flow. Format:
+  /// `projects//locations//agents//flows//versions/`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agents/\[^/\]+/flows/\[^/\]+/versions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowCxV3CompareVersionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowCxV3CompareVersionsResponse>
+      compareVersions(
+    GoogleCloudDialogflowCxV3CompareVersionsRequest request,
+    core.String baseVersion, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url =
+        'v3/' + core.Uri.encodeFull('$baseVersion') + ':compareVersions';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDialogflowCxV3CompareVersionsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
 
   /// Creates a Version in the specified Flow.
   ///
@@ -6064,6 +6221,152 @@ class GoogleCloudDialogflowCxV3CalculateCoverageResponse {
       };
 }
 
+/// Changelogs represents a change made to a given agent.
+class GoogleCloudDialogflowCxV3Changelog {
+  /// The action of the change.
+  core.String? action;
+
+  /// The timestamp of the change.
+  core.String? createTime;
+
+  /// The affected resource display name of the change.
+  core.String? displayName;
+
+  /// The unique identifier of the changelog.
+  ///
+  /// Format: `projects//locations//agents//changelogs/`.
+  core.String? name;
+
+  /// The affected resource name of the change.
+  core.String? resource;
+
+  /// The affected resource type.
+  core.String? type;
+
+  /// Email address of the authenticated user.
+  core.String? userEmail;
+
+  GoogleCloudDialogflowCxV3Changelog({
+    this.action,
+    this.createTime,
+    this.displayName,
+    this.name,
+    this.resource,
+    this.type,
+    this.userEmail,
+  });
+
+  GoogleCloudDialogflowCxV3Changelog.fromJson(core.Map _json)
+      : this(
+          action: _json.containsKey('action')
+              ? _json['action'] as core.String
+              : null,
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          resource: _json.containsKey('resource')
+              ? _json['resource'] as core.String
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+          userEmail: _json.containsKey('userEmail')
+              ? _json['userEmail'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (action != null) 'action': action!,
+        if (createTime != null) 'createTime': createTime!,
+        if (displayName != null) 'displayName': displayName!,
+        if (name != null) 'name': name!,
+        if (resource != null) 'resource': resource!,
+        if (type != null) 'type': type!,
+        if (userEmail != null) 'userEmail': userEmail!,
+      };
+}
+
+/// The request message for Versions.CompareVersions.
+class GoogleCloudDialogflowCxV3CompareVersionsRequest {
+  /// The language to compare the flow versions for.
+  ///
+  /// If not specified, the agent's default language is used.
+  /// [Many languages](https://cloud.google.com/dialogflow/docs/reference/language)
+  /// are supported. Note: languages must be enabled in the agent before they
+  /// can be used.
+  core.String? languageCode;
+
+  /// Name of the target flow version to compare with the base version.
+  ///
+  /// Use version ID `0` to indicate the draft version of the specified flow.
+  /// Format: `projects//locations//agents//flows//versions/`.
+  ///
+  /// Required.
+  core.String? targetVersion;
+
+  GoogleCloudDialogflowCxV3CompareVersionsRequest({
+    this.languageCode,
+    this.targetVersion,
+  });
+
+  GoogleCloudDialogflowCxV3CompareVersionsRequest.fromJson(core.Map _json)
+      : this(
+          languageCode: _json.containsKey('languageCode')
+              ? _json['languageCode'] as core.String
+              : null,
+          targetVersion: _json.containsKey('targetVersion')
+              ? _json['targetVersion'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (languageCode != null) 'languageCode': languageCode!,
+        if (targetVersion != null) 'targetVersion': targetVersion!,
+      };
+}
+
+/// The response message for Versions.CompareVersions.
+class GoogleCloudDialogflowCxV3CompareVersionsResponse {
+  /// JSON representation of the base version content.
+  core.String? baseVersionContentJson;
+
+  /// The timestamp when the two version compares.
+  core.String? compareTime;
+
+  /// JSON representation of the target version content.
+  core.String? targetVersionContentJson;
+
+  GoogleCloudDialogflowCxV3CompareVersionsResponse({
+    this.baseVersionContentJson,
+    this.compareTime,
+    this.targetVersionContentJson,
+  });
+
+  GoogleCloudDialogflowCxV3CompareVersionsResponse.fromJson(core.Map _json)
+      : this(
+          baseVersionContentJson: _json.containsKey('baseVersionContentJson')
+              ? _json['baseVersionContentJson'] as core.String
+              : null,
+          compareTime: _json.containsKey('compareTime')
+              ? _json['compareTime'] as core.String
+              : null,
+          targetVersionContentJson:
+              _json.containsKey('targetVersionContentJson')
+                  ? _json['targetVersionContentJson'] as core.String
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (baseVersionContentJson != null)
+          'baseVersionContentJson': baseVersionContentJson!,
+        if (compareTime != null) 'compareTime': compareTime!,
+        if (targetVersionContentJson != null)
+          'targetVersionContentJson': targetVersionContentJson!,
+      };
+}
+
 /// Represents a result from running a test case in an agent environment.
 typedef GoogleCloudDialogflowCxV3ContinuousTestResult = $ContinuousTestResult;
 
@@ -8497,6 +8800,42 @@ class GoogleCloudDialogflowCxV3ListAgentsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (agents != null) 'agents': agents!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
+/// The response message for Changelogs.ListChangelogs.
+class GoogleCloudDialogflowCxV3ListChangelogsResponse {
+  /// The list of changelogs.
+  ///
+  /// There will be a maximum number of items returned based on the page_size
+  /// field in the request. The changelogs will be ordered by timestamp.
+  core.List<GoogleCloudDialogflowCxV3Changelog>? changelogs;
+
+  /// Token to retrieve the next page of results, or empty if there are no more
+  /// results in the list.
+  core.String? nextPageToken;
+
+  GoogleCloudDialogflowCxV3ListChangelogsResponse({
+    this.changelogs,
+    this.nextPageToken,
+  });
+
+  GoogleCloudDialogflowCxV3ListChangelogsResponse.fromJson(core.Map _json)
+      : this(
+          changelogs: _json.containsKey('changelogs')
+              ? (_json['changelogs'] as core.List)
+                  .map((value) => GoogleCloudDialogflowCxV3Changelog.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (changelogs != null) 'changelogs': changelogs!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }

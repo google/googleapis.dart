@@ -449,6 +449,7 @@ api.ExecutionTemplate buildExecutionTemplate() {
     o.dataprocParameters = buildDataprocParameters();
     o.inputNotebookFile = 'foo';
     o.jobType = 'foo';
+    o.kernelSpec = 'foo';
     o.labels = buildUnnamed3();
     o.masterType = 'foo';
     o.outputNotebookFolder = 'foo';
@@ -477,6 +478,10 @@ void checkExecutionTemplate(api.ExecutionTemplate o) {
     );
     unittest.expect(
       o.jobType!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.kernelSpec!,
       unittest.equals('foo'),
     );
     checkUnnamed3(o.labels!);
@@ -2701,11 +2706,29 @@ void checkUpgradeInstanceRequest(api.UpgradeInstanceRequest o) {
   buildCounterUpgradeInstanceRequest--;
 }
 
+core.Map<core.String, core.String> buildUnnamed41() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
+
+void checkUnnamed41(core.Map<core.String, core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o['x']!,
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o['y']!,
+    unittest.equals('foo'),
+  );
+}
+
 core.int buildCounterVertexAIParameters = 0;
 api.VertexAIParameters buildVertexAIParameters() {
   final o = api.VertexAIParameters();
   buildCounterVertexAIParameters++;
   if (buildCounterVertexAIParameters < 3) {
+    o.env = buildUnnamed41();
     o.network = 'foo';
   }
   buildCounterVertexAIParameters--;
@@ -2715,6 +2738,7 @@ api.VertexAIParameters buildVertexAIParameters() {
 void checkVertexAIParameters(api.VertexAIParameters o) {
   buildCounterVertexAIParameters++;
   if (buildCounterVertexAIParameters < 3) {
+    checkUnnamed41(o.env!);
     unittest.expect(
       o.network!,
       unittest.equals('foo'),
@@ -2752,32 +2776,15 @@ void checkVirtualMachine(api.VirtualMachine o) {
   buildCounterVirtualMachine--;
 }
 
-core.List<api.ContainerImage> buildUnnamed41() => [
+core.List<api.ContainerImage> buildUnnamed42() => [
       buildContainerImage(),
       buildContainerImage(),
     ];
 
-void checkUnnamed41(core.List<api.ContainerImage> o) {
+void checkUnnamed42(core.List<api.ContainerImage> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkContainerImage(o[0]);
   checkContainerImage(o[1]);
-}
-
-core.Map<core.String, core.String> buildUnnamed42() => {
-      'x': 'foo',
-      'y': 'foo',
-    };
-
-void checkUnnamed42(core.Map<core.String, core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o['x']!,
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o['y']!,
-    unittest.equals('foo'),
-  );
 }
 
 core.Map<core.String, core.String> buildUnnamed43() => {
@@ -2814,12 +2821,29 @@ void checkUnnamed44(core.Map<core.String, core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed45() => [
+core.Map<core.String, core.String> buildUnnamed45() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
+
+void checkUnnamed45(core.Map<core.String, core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o['x']!,
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o['y']!,
+    unittest.equals('foo'),
+  );
+}
+
+core.List<core.String> buildUnnamed46() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed45(core.List<core.String> o) {
+void checkUnnamed46(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -2837,19 +2861,19 @@ api.VirtualMachineConfig buildVirtualMachineConfig() {
   buildCounterVirtualMachineConfig++;
   if (buildCounterVirtualMachineConfig < 3) {
     o.acceleratorConfig = buildRuntimeAcceleratorConfig();
-    o.containerImages = buildUnnamed41();
+    o.containerImages = buildUnnamed42();
     o.dataDisk = buildLocalDisk();
     o.encryptionConfig = buildEncryptionConfig();
-    o.guestAttributes = buildUnnamed42();
+    o.guestAttributes = buildUnnamed43();
     o.internalIpOnly = true;
-    o.labels = buildUnnamed43();
+    o.labels = buildUnnamed44();
     o.machineType = 'foo';
-    o.metadata = buildUnnamed44();
+    o.metadata = buildUnnamed45();
     o.network = 'foo';
     o.nicType = 'foo';
     o.shieldedInstanceConfig = buildRuntimeShieldedInstanceConfig();
     o.subnet = 'foo';
-    o.tags = buildUnnamed45();
+    o.tags = buildUnnamed46();
     o.zone = 'foo';
   }
   buildCounterVirtualMachineConfig--;
@@ -2860,17 +2884,17 @@ void checkVirtualMachineConfig(api.VirtualMachineConfig o) {
   buildCounterVirtualMachineConfig++;
   if (buildCounterVirtualMachineConfig < 3) {
     checkRuntimeAcceleratorConfig(o.acceleratorConfig!);
-    checkUnnamed41(o.containerImages!);
+    checkUnnamed42(o.containerImages!);
     checkLocalDisk(o.dataDisk!);
     checkEncryptionConfig(o.encryptionConfig!);
-    checkUnnamed42(o.guestAttributes!);
+    checkUnnamed43(o.guestAttributes!);
     unittest.expect(o.internalIpOnly!, unittest.isTrue);
-    checkUnnamed43(o.labels!);
+    checkUnnamed44(o.labels!);
     unittest.expect(
       o.machineType!,
       unittest.equals('foo'),
     );
-    checkUnnamed44(o.metadata!);
+    checkUnnamed45(o.metadata!);
     unittest.expect(
       o.network!,
       unittest.equals('foo'),
@@ -2884,7 +2908,7 @@ void checkVirtualMachineConfig(api.VirtualMachineConfig o) {
       o.subnet!,
       unittest.equals('foo'),
     );
-    checkUnnamed45(o.tags!);
+    checkUnnamed46(o.tags!);
     unittest.expect(
       o.zone!,
       unittest.equals('foo'),
@@ -5908,6 +5932,65 @@ void main() {
       checkRuntime(response as api.Runtime);
     });
 
+    unittest.test('method--getIamPolicy', () async {
+      final mock = HttpServerMock();
+      final res = api.AIPlatformNotebooksApi(mock).projects.locations.runtimes;
+      final arg_resource = 'foo';
+      final arg_options_requestedPolicyVersion = 42;
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          core.int.parse(queryMap['options.requestedPolicyVersion']!.first),
+          unittest.equals(arg_options_requestedPolicyVersion),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildPolicy());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.getIamPolicy(arg_resource,
+          options_requestedPolicyVersion: arg_options_requestedPolicyVersion,
+          $fields: arg_$fields);
+      checkPolicy(response as api.Policy);
+    });
+
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
       final res = api.AIPlatformNotebooksApi(mock).projects.locations.runtimes;
@@ -6089,6 +6172,64 @@ void main() {
       checkOperation(response as api.Operation);
     });
 
+    unittest.test('method--setIamPolicy', () async {
+      final mock = HttpServerMock();
+      final res = api.AIPlatformNotebooksApi(mock).projects.locations.runtimes;
+      final arg_request = buildSetIamPolicyRequest();
+      final arg_resource = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.SetIamPolicyRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSetIamPolicyRequest(obj);
+
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildPolicy());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.setIamPolicy(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkPolicy(response as api.Policy);
+    });
+
     unittest.test('method--start', () async {
       final mock = HttpServerMock();
       final res = api.AIPlatformNotebooksApi(mock).projects.locations.runtimes;
@@ -6261,6 +6402,65 @@ void main() {
       final response =
           await res.switch_(arg_request, arg_name, $fields: arg_$fields);
       checkOperation(response as api.Operation);
+    });
+
+    unittest.test('method--testIamPermissions', () async {
+      final mock = HttpServerMock();
+      final res = api.AIPlatformNotebooksApi(mock).projects.locations.runtimes;
+      final arg_request = buildTestIamPermissionsRequest();
+      final arg_resource = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.TestIamPermissionsRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkTestIamPermissionsRequest(obj);
+
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildTestIamPermissionsResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.testIamPermissions(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkTestIamPermissionsResponse(
+          response as api.TestIamPermissionsResponse);
     });
   });
 

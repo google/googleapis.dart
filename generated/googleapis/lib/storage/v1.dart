@@ -3835,6 +3835,37 @@ class ProjectsServiceAccountResource {
   }
 }
 
+/// The bucket's Autoclass configuration.
+class BucketAutoclass {
+  /// Whether or not Autoclass is enabled on this bucket
+  core.bool? enabled;
+
+  /// A date and time in RFC 3339 format representing the instant at which
+  /// "enabled" was last toggled.
+  core.DateTime? toggleTime;
+
+  BucketAutoclass({
+    this.enabled,
+    this.toggleTime,
+  });
+
+  BucketAutoclass.fromJson(core.Map _json)
+      : this(
+          enabled: _json.containsKey('enabled')
+              ? _json['enabled'] as core.bool
+              : null,
+          toggleTime: _json.containsKey('toggleTime')
+              ? core.DateTime.parse(_json['toggleTime'] as core.String)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enabled != null) 'enabled': enabled!,
+        if (toggleTime != null)
+          'toggleTime': toggleTime!.toUtc().toIso8601String(),
+      };
+}
+
 /// The bucket's billing configuration.
 class BucketBilling {
   /// When set to true, Requester Pays is enabled for this bucket.
@@ -4494,6 +4525,9 @@ class Bucket {
   /// Access controls on the bucket.
   core.List<BucketAccessControl>? acl;
 
+  /// The bucket's Autoclass configuration.
+  BucketAutoclass? autoclass;
+
   /// The bucket's billing configuration.
   BucketBilling? billing;
 
@@ -4628,6 +4662,7 @@ class Bucket {
 
   Bucket({
     this.acl,
+    this.autoclass,
     this.billing,
     this.cors,
     this.customPlacementConfig,
@@ -4665,6 +4700,10 @@ class Bucket {
                   .map((value) => BucketAccessControl.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
+              : null,
+          autoclass: _json.containsKey('autoclass')
+              ? BucketAutoclass.fromJson(
+                  _json['autoclass'] as core.Map<core.String, core.dynamic>)
               : null,
           billing: _json.containsKey('billing')
               ? BucketBilling.fromJson(
@@ -4766,6 +4805,7 @@ class Bucket {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (acl != null) 'acl': acl!,
+        if (autoclass != null) 'autoclass': autoclass!,
         if (billing != null) 'billing': billing!,
         if (cors != null) 'cors': cors!,
         if (customPlacementConfig != null)

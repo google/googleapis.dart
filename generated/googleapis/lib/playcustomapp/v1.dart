@@ -144,6 +144,16 @@ class CustomApp {
   /// Default listing language in BCP 47 format.
   core.String? languageCode;
 
+  /// Organizations to which the custom app should be made available.
+  ///
+  /// If the request contains any organizations, then the app will be restricted
+  /// to only these organizations. To support the organization linked to the
+  /// developer account, the organization ID should be provided explicitly
+  /// together with other organizations. If no organizations are provided, then
+  /// the app is only available to the organization linked to the developer
+  /// account.
+  core.List<Organization>? organizations;
+
   /// Package name of the created Android app.
   ///
   /// Only present in the API response.
@@ -156,6 +166,7 @@ class CustomApp {
 
   CustomApp({
     this.languageCode,
+    this.organizations,
     this.packageName,
     this.title,
   });
@@ -164,6 +175,12 @@ class CustomApp {
       : this(
           languageCode: _json.containsKey('languageCode')
               ? _json['languageCode'] as core.String
+              : null,
+          organizations: _json.containsKey('organizations')
+              ? (_json['organizations'] as core.List)
+                  .map((value) => Organization.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
               : null,
           packageName: _json.containsKey('packageName')
               ? _json['packageName'] as core.String
@@ -174,7 +191,42 @@ class CustomApp {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (languageCode != null) 'languageCode': languageCode!,
+        if (organizations != null) 'organizations': organizations!,
         if (packageName != null) 'packageName': packageName!,
         if (title != null) 'title': title!,
+      };
+}
+
+/// Represents an organization that can access a custom app.
+class Organization {
+  /// ID of the organization.
+  ///
+  /// Required.
+  core.String? organizationId;
+
+  /// A human-readable name of the organization, to help recognize the
+  /// organization.
+  ///
+  /// Optional.
+  core.String? organizationName;
+
+  Organization({
+    this.organizationId,
+    this.organizationName,
+  });
+
+  Organization.fromJson(core.Map _json)
+      : this(
+          organizationId: _json.containsKey('organizationId')
+              ? _json['organizationId'] as core.String
+              : null,
+          organizationName: _json.containsKey('organizationName')
+              ? _json['organizationName'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (organizationId != null) 'organizationId': organizationId!,
+        if (organizationName != null) 'organizationName': organizationName!,
       };
 }

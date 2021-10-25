@@ -4145,6 +4145,27 @@ class GoogleCloudRetailV2SearchRequest {
   /// [user guide](https://cloud.google.com/retail/docs/result-size#query_expansion).
   GoogleCloudRetailV2SearchRequestQueryExpansionSpec? queryExpansionSpec;
 
+  /// The search mode of the search request.
+  ///
+  /// If not specified, a single search request triggers both product search and
+  /// faceted search.
+  /// Possible string values are:
+  /// - "SEARCH_MODE_UNSPECIFIED" : Default value. In this case both product
+  /// search and faceted search will be performed. Both
+  /// \[SearchResponse.SearchResult\] and \[SearchResponse.Facet\] will be
+  /// returned.
+  /// - "PRODUCT_SEARCH_ONLY" : Only product search will be performed. The
+  /// faceted search will be disabled. Only \[SearchResponse.SearchResult\] will
+  /// be returned. \[SearchResponse.Facet\] will not be returned, even if
+  /// SearchRequest.facet_specs or SearchRequest.dynamic_facet_spec is set.
+  /// - "FACETED_SEARCH_ONLY" : Only faceted search will be performed. The
+  /// product search will be disabled. When in this mode, one or both of
+  /// SearchRequest.facet_spec and SearchRequest.dynamic_facet_spec should be
+  /// set. Otherwise, an INVALID_ARGUMENT error is returned. Only
+  /// \[SearchResponse.Facet\] will be returned. \[SearchResponse.SearchResult\]
+  /// will not be returned.
+  core.String? searchMode;
+
   /// User information.
   GoogleCloudRetailV2UserInfo? userInfo;
 
@@ -4201,6 +4222,7 @@ class GoogleCloudRetailV2SearchRequest {
     this.pageToken,
     this.query,
     this.queryExpansionSpec,
+    this.searchMode,
     this.userInfo,
     this.variantRollupKeys,
     this.visitorId,
@@ -4256,6 +4278,9 @@ class GoogleCloudRetailV2SearchRequest {
                   _json['queryExpansionSpec']
                       as core.Map<core.String, core.dynamic>)
               : null,
+          searchMode: _json.containsKey('searchMode')
+              ? _json['searchMode'] as core.String
+              : null,
           userInfo: _json.containsKey('userInfo')
               ? GoogleCloudRetailV2UserInfo.fromJson(
                   _json['userInfo'] as core.Map<core.String, core.dynamic>)
@@ -4285,6 +4310,7 @@ class GoogleCloudRetailV2SearchRequest {
         if (query != null) 'query': query!,
         if (queryExpansionSpec != null)
           'queryExpansionSpec': queryExpansionSpec!,
+        if (searchMode != null) 'searchMode': searchMode!,
         if (userInfo != null) 'userInfo': userInfo!,
         if (variantRollupKeys != null) 'variantRollupKeys': variantRollupKeys!,
         if (visitorId != null) 'visitorId': visitorId!,

@@ -460,7 +460,7 @@ class V1Resource {
   /// be returned.
   ///
   /// [analysisQuery_identitySelector_identity] - Required. The identity appear
-  /// in the form of members in
+  /// in the form of principals in
   /// [IAM policy binding](https://cloud.google.com/iam/reference/rest/v1/Binding).
   /// The examples of supported forms are: "user:mike@example.com",
   /// "group:admins@example.com", "domain:google.com",
@@ -518,12 +518,12 @@ class V1Resource {
   /// selector, and this flag is not allowed to set. Default is false.
   ///
   /// [analysisQuery_options_outputGroupEdges] - Optional. If true, the result
-  /// will output group identity edges, starting from the binding's group
-  /// members, to any expanded identities. Default is false.
+  /// will output the relevant membership relationships between groups and other
+  /// groups, and between groups and principals. Default is false.
   ///
   /// [analysisQuery_options_outputResourceEdges] - Optional. If true, the
-  /// result will output resource edges, starting from the policy attached
-  /// resource, to any expanded resources. Default is false.
+  /// result will output the relevant parent/child relationships between
+  /// resources. Default is false.
   ///
   /// [analysisQuery_resourceSelector_fullResourceName] - Required. The
   /// [full resource name](https://cloud.google.com/asset-inventory/docs/resource-name-format)
@@ -949,7 +949,7 @@ class V1Resource {
   /// [how to construct a query](https://cloud.google.com/asset-inventory/docs/searching-iam-policies#how_to_construct_a_query)
   /// for more information. If not specified or empty, it will search all the
   /// IAM policies within the specified `scope`. Note that the query string is
-  /// compared against each Cloud IAM policy binding, including its members,
+  /// compared against each Cloud IAM policy binding, including its principals,
   /// roles, and Cloud IAM conditions. The returned Cloud IAM policies will only
   /// contain the bindings that match your query. To learn more about the IAM
   /// policy structure, see
@@ -977,7 +977,7 @@ class V1Resource {
   /// that are set on resources "instance1" or "instance2" and also specify user
   /// "amy". * `roles:roles/compute.admin` to find IAM policy bindings that
   /// specify the Compute Admin role. * `memberTypes:user` to find IAM policy
-  /// bindings that contain the "user" member type.
+  /// bindings that contain the principal type "user".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1711,19 +1711,20 @@ class BigQueryDestination {
       };
 }
 
-/// Associates `members` with a `role`.
+/// Associates `members`, or principals, with a `role`.
 class Binding {
   /// The condition that is associated with this binding.
   ///
   /// If the condition evaluates to `true`, then this binding applies to the
   /// current request. If the condition evaluates to `false`, then this binding
   /// does not apply to the current request. However, a different role binding
-  /// might grant the same role to one or more of the members in this binding.
-  /// To learn which resources support conditions in their IAM policies, see the
+  /// might grant the same role to one or more of the principals in this
+  /// binding. To learn which resources support conditions in their IAM
+  /// policies, see the
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   Expr? condition;
 
-  /// Specifies the identities requesting access for a Cloud Platform resource.
+  /// Specifies the principals requesting access for a Cloud Platform resource.
   ///
   /// `members` can have the following values: * `allUsers`: A special
   /// identifier that represents anyone who is on the internet; with or without
@@ -1755,7 +1756,7 @@ class Binding {
   /// `example.com`.
   core.List<core.String>? members;
 
-  /// Role that is assigned to `members`.
+  /// Role that is assigned to the list of `members`, or principals.
   ///
   /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
   core.String? role;
@@ -4110,7 +4111,7 @@ class IamPolicySearchResult {
 /// assigned either directly to them or to the groups they belong to, directly
 /// or indirectly.
 class IdentitySelector {
-  /// The identity appear in the form of members in
+  /// The identity appear in the form of principals in
   /// [IAM policy binding](https://cloud.google.com/iam/reference/rest/v1/Binding).
   ///
   /// The examples of supported forms are: "user:mike@example.com",
@@ -4590,16 +4591,16 @@ class Options {
   /// Optional.
   core.bool? expandRoles;
 
-  /// If true, the result will output group identity edges, starting from the
-  /// binding's group members, to any expanded identities.
+  /// If true, the result will output the relevant membership relationships
+  /// between groups and other groups, and between groups and principals.
   ///
   /// Default is false.
   ///
   /// Optional.
   core.bool? outputGroupEdges;
 
-  /// If true, the result will output resource edges, starting from the policy
-  /// attached resource, to any expanded resources.
+  /// If true, the result will output the relevant parent/child relationships
+  /// between resources.
   ///
   /// Default is false.
   ///
@@ -4751,15 +4752,15 @@ class Permissions {
 /// controls for Google Cloud resources.
 ///
 /// A `Policy` is a collection of `bindings`. A `binding` binds one or more
-/// `members` to a single `role`. Members can be user accounts, service
-/// accounts, Google groups, and domains (such as G Suite). A `role` is a named
-/// list of permissions; each `role` can be an IAM predefined role or a
-/// user-created custom role. For some types of Google Cloud resources, a
-/// `binding` can also specify a `condition`, which is a logical expression that
-/// allows access to a resource only if the expression evaluates to `true`. A
-/// condition can add constraints based on attributes of the request, the
-/// resource, or both. To learn which resources support conditions in their IAM
-/// policies, see the
+/// `members`, or principals, to a single `role`. Principals can be user
+/// accounts, service accounts, Google groups, and domains (such as G Suite). A
+/// `role` is a named list of permissions; each `role` can be an IAM predefined
+/// role or a user-created custom role. For some types of Google Cloud
+/// resources, a `binding` can also specify a `condition`, which is a logical
+/// expression that allows access to a resource only if the expression evaluates
+/// to `true`. A condition can add constraints based on attributes of the
+/// request, the resource, or both. To learn which resources support conditions
+/// in their IAM policies, see the
 /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 /// **JSON example:** { "bindings": \[ { "role":
 /// "roles/resourcemanager.organizationAdmin", "members": \[
@@ -4782,11 +4783,16 @@ class Policy {
   /// Specifies cloud audit logging configuration for this policy.
   core.List<AuditConfig>? auditConfigs;
 
-  /// Associates a list of `members` to a `role`.
+  /// Associates a list of `members`, or principals, with a `role`.
   ///
   /// Optionally, may specify a `condition` that determines how and when the
   /// `bindings` are applied. Each of the `bindings` must contain at least one
-  /// member.
+  /// principal. The `bindings` in a `Policy` can refer to up to 1,500
+  /// principals; up to 250 of these principals can be Google groups. Each
+  /// occurrence of a principal counts towards these limits. For example, if the
+  /// `bindings` grant 50 different roles to `user:alice@example.com`, and not
+  /// to any other principal, then you can add another 1,450 principals to the
+  /// `bindings` in the `Policy`.
   core.List<Binding>? bindings;
 
   /// `etag` is used for optimistic concurrency control as a way to help prevent

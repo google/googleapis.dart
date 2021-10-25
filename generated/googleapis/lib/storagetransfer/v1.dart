@@ -22,6 +22,8 @@
 /// Create an instance of [StoragetransferApi] to access these resources:
 ///
 /// - [GoogleServiceAccountsResource]
+/// - [ProjectsResource]
+///   - [ProjectsAgentPoolsResource]
 /// - [TransferJobsResource]
 /// - [TransferOperationsResource]
 library storagetransfer.v1;
@@ -52,6 +54,7 @@ class StoragetransferApi {
 
   GoogleServiceAccountsResource get googleServiceAccounts =>
       GoogleServiceAccountsResource(_requester);
+  ProjectsResource get projects => ProjectsResource(_requester);
   TransferJobsResource get transferJobs => TransferJobsResource(_requester);
   TransferOperationsResource get transferOperations =>
       TransferOperationsResource(_requester);
@@ -112,6 +115,242 @@ class GoogleServiceAccountsResource {
     );
     return GoogleServiceAccount.fromJson(
         _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsAgentPoolsResource get agentPools =>
+      ProjectsAgentPoolsResource(_requester);
+
+  ProjectsResource(commons.ApiRequester client) : _requester = client;
+}
+
+class ProjectsAgentPoolsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsAgentPoolsResource(commons.ApiRequester client) : _requester = client;
+
+  /// Creates an agent pool resource.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [projectId] - Required. The ID of the Google Cloud Platform Console
+  /// project that owns the agent pool.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [agentPoolId] - Required. The id of the agent pool to create. The
+  /// agent_pool_id must be non-empty, less than or equal to 128 characters, and
+  /// satisfy the following regex: "^\[a-z\](\[a-z0-9-._~\]*\[a-z0-9\])?$".
+  /// Also, agent pool names cannot start with the string "goog".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AgentPool].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AgentPool> create(
+    AgentPool request,
+    core.String projectId, {
+    core.String? agentPoolId,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (agentPoolId != null) 'agentPoolId': [agentPoolId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url =
+        'v1/projects/' + core.Uri.encodeFull('$projectId') + '/agentPools';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return AgentPool.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes an agent pool.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The agent pool name to delete.
+  /// Value must have pattern `^projects/\[^/\]+/agentPools/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'DELETE',
+      queryParams: _queryParams,
+    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets an agent pool.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The agent pool to get.
+  /// Value must have pattern `^projects/\[^/\]+/agentPools/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AgentPool].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AgentPool> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return AgentPool.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists agent pools.
+  ///
+  /// Request parameters:
+  ///
+  /// [projectId] - Required. The ID of the Google Cloud Platform Console
+  /// project that owns the job.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [filter] - A list of optional query parameters specified as JSON text in
+  /// the form of: `{"agentPoolNames":["agentpool1","agentpool2",...]}` Since
+  /// `agentPoolNames` support multiple values, its values must be specified
+  /// with array notation. `agentPoolNames` is an optional field. The list
+  /// returns all agent pools for the project when the filter is not provided or
+  /// empty.
+  ///
+  /// [pageSize] - The list page size. The max allowed value is 256.
+  ///
+  /// [pageToken] - The list page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListAgentPoolsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListAgentPoolsResponse> list(
+    core.String projectId, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url =
+        'v1/projects/' + core.Uri.encodeFull('$projectId') + '/agentPools';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return ListAgentPoolsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates an existing agent pool resource.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Specifies a unique string that identifies the agent
+  /// pool. Format: projects/{project_id}/agentPools/{agent_pool_id}
+  /// Value must have pattern `^projects/\[^/\]+/agentPools/\[^/\]+$`.
+  ///
+  /// [updateMask] - The field mask of the fields in `agentPool` that are to be
+  /// updated in this request. Fields in `agentPool` that can be updated are:
+  /// display_name, bandwidth_limit,
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AgentPool].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AgentPool> patch(
+    AgentPool request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return AgentPool.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -582,6 +821,66 @@ class TransferOperationsResource {
   }
 }
 
+/// Represents an On-Premises Agent pool.
+class AgentPool {
+  /// Specifies the bandwidth limit details.
+  ///
+  /// If this field is unspecified, the default value is set as 'No Limit'.
+  BandwidthLimit? bandwidthLimit;
+
+  /// Specifies the client-specified AgentPool description.
+  core.String? displayName;
+
+  /// Specifies a unique string that identifies the agent pool.
+  ///
+  /// Format: projects/{project_id}/agentPools/{agent_pool_id}
+  ///
+  /// Required.
+  core.String? name;
+
+  /// Specifies the state of the AgentPool.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Default value. This value is unused.
+  /// - "CREATING" : This is an initialization state. During this stage, the
+  /// resources such as Pub/Sub topics are allocated for the AgentPool.
+  /// - "CREATED" : Determines that the AgentPool is created for use. At this
+  /// state, Agents can join the AgentPool and participate in the transfer jobs
+  /// in that pool.
+  /// - "DELETING" : Determines that the AgentPool deletion has been initiated,
+  /// and all the resources are scheduled to be cleaned up and freed.
+  core.String? state;
+
+  AgentPool({
+    this.bandwidthLimit,
+    this.displayName,
+    this.name,
+    this.state,
+  });
+
+  AgentPool.fromJson(core.Map _json)
+      : this(
+          bandwidthLimit: _json.containsKey('bandwidthLimit')
+              ? BandwidthLimit.fromJson(_json['bandwidthLimit']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          state:
+              _json.containsKey('state') ? _json['state'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (bandwidthLimit != null) 'bandwidthLimit': bandwidthLimit!,
+        if (displayName != null) 'displayName': displayName!,
+        if (name != null) 'name': name!,
+        if (state != null) 'state': state!,
+      };
+}
+
 /// AWS access key (see
 /// [AWS Security Credentials](https://docs.aws.amazon.com/general/latest/gr/aws-security-credentials.html)).
 ///
@@ -784,6 +1083,29 @@ class AzureCredentials {
       };
 }
 
+/// Specifies the BandwidthLimit to describe the non-negative bandwidth rate in
+/// mbps for the agent pool.
+class BandwidthLimit {
+  /// Specifies bandwidth rate in mbps distributed across all the agents in the
+  /// pool.
+  core.String? limitMbps;
+
+  BandwidthLimit({
+    this.limitMbps,
+  });
+
+  BandwidthLimit.fromJson(core.Map _json)
+      : this(
+          limitMbps: _json.containsKey('limitMbps')
+              ? _json['limitMbps'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (limitMbps != null) 'limitMbps': limitMbps!,
+      };
+}
+
 /// The request message for Operations.CancelOperation.
 typedef CancelOperationRequest = $Empty;
 
@@ -922,6 +1244,38 @@ class HttpData {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (listUrl != null) 'listUrl': listUrl!,
+      };
+}
+
+/// Response from ListAgentPools.
+class ListAgentPoolsResponse {
+  /// A list of agent pools.
+  core.List<AgentPool>? agentPools;
+
+  /// The list next page token.
+  core.String? nextPageToken;
+
+  ListAgentPoolsResponse({
+    this.agentPools,
+    this.nextPageToken,
+  });
+
+  ListAgentPoolsResponse.fromJson(core.Map _json)
+      : this(
+          agentPools: _json.containsKey('agentPools')
+              ? (_json['agentPools'] as core.List)
+                  .map((value) => AgentPool.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (agentPools != null) 'agentPools': agentPools!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 

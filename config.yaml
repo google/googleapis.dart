@@ -2,7 +2,7 @@
 # should be ignored.
 packages:
 - googleapis:
-    version: 6.0.1-dev
+    version: 7.0.0-dev
     repository: https://github.com/google/googleapis.dart/tree/master/generated/googleapis
     readme: resources/README.md
     license: resources/LICENSE
@@ -226,7 +226,7 @@ packages:
     - youtubereporting:v1 # https://developers.google.com/youtube/reporting/v1/reports/
 
 - googleapis_beta:
-    version: 6.0.0
+    version: 7.0.0-dev
     repository: https://github.com/google/googleapis.dart/tree/master/generated/googleapis_beta
     readme: resources/README.md
     license: resources/LICENSE
@@ -244,6 +244,7 @@ packages:
     - datacatalog:v1beta1
     - dataflow:v1b3 # https://cloud.google.com/dataflow/
     - datalabeling:v1beta1
+    - datastream:v1alpha1
     - documentai:v1beta3
     - domains:v1beta1
     - factchecktools:v1alpha1
@@ -266,6 +267,7 @@ packages:
     - sasportal:v1alpha1
     - sqladmin:v1beta4
     - toolresults:v1beta3 # https://developers.google.com/cloud-test-lab/
+    - tpu:v2alpha1
     - transcoder:v1beta1
 
 # APIs that we do not wish to include in this package

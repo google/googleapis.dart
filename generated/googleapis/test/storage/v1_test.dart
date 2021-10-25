@@ -37,6 +37,30 @@ void checkUnnamed0(core.List<api.BucketAccessControl> o) {
   checkBucketAccessControl(o[1]);
 }
 
+core.int buildCounterBucketAutoclass = 0;
+api.BucketAutoclass buildBucketAutoclass() {
+  final o = api.BucketAutoclass();
+  buildCounterBucketAutoclass++;
+  if (buildCounterBucketAutoclass < 3) {
+    o.enabled = true;
+    o.toggleTime = core.DateTime.parse('2002-02-27T14:01:02Z');
+  }
+  buildCounterBucketAutoclass--;
+  return o;
+}
+
+void checkBucketAutoclass(api.BucketAutoclass o) {
+  buildCounterBucketAutoclass++;
+  if (buildCounterBucketAutoclass < 3) {
+    unittest.expect(o.enabled!, unittest.isTrue);
+    unittest.expect(
+      o.toggleTime!,
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
+    );
+  }
+  buildCounterBucketAutoclass--;
+}
+
 core.int buildCounterBucketBilling = 0;
 api.BucketBilling buildBucketBilling() {
   final o = api.BucketBilling();
@@ -603,6 +627,7 @@ api.Bucket buildBucket() {
   buildCounterBucket++;
   if (buildCounterBucket < 3) {
     o.acl = buildUnnamed0();
+    o.autoclass = buildBucketAutoclass();
     o.billing = buildBucketBilling();
     o.cors = buildUnnamed4();
     o.customPlacementConfig = buildBucketCustomPlacementConfig();
@@ -640,6 +665,7 @@ void checkBucket(api.Bucket o) {
   buildCounterBucket++;
   if (buildCounterBucket < 3) {
     checkUnnamed0(o.acl!);
+    checkBucketAutoclass(o.autoclass!);
     checkBucketBilling(o.billing!);
     checkUnnamed4(o.cors!);
     checkBucketCustomPlacementConfig(o.customPlacementConfig!);
@@ -2027,6 +2053,16 @@ void checkUnnamed27(core.List<core.String> o) {
 }
 
 void main() {
+  unittest.group('obj-schema-BucketAutoclass', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildBucketAutoclass();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.BucketAutoclass.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkBucketAutoclass(od);
+    });
+  });
+
   unittest.group('obj-schema-BucketBilling', () {
     unittest.test('to-json--from-json', () async {
       final o = buildBucketBilling();

@@ -4736,14 +4736,16 @@ void main() {
   });
 
   unittest.group(
-      'resource-ProjectsLocationsInstancesOsPolicyAssignmentsResource', () {
-    unittest.test('method--getReport', () async {
+      'resource-ProjectsLocationsInstancesOsPolicyAssignmentsReportsResource',
+      () {
+    unittest.test('method--get', () async {
       final mock = HttpServerMock();
       final res = api.OSConfigApi(mock)
           .projects
           .locations
           .instances
-          .osPolicyAssignments;
+          .osPolicyAssignments
+          .reports;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4789,14 +4791,10 @@ void main() {
         final resp = convert.json.encode(buildOSPolicyAssignmentReport());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      final response = await res.getReport(arg_name, $fields: arg_$fields);
+      final response = await res.get(arg_name, $fields: arg_$fields);
       checkOSPolicyAssignmentReport(response as api.OSPolicyAssignmentReport);
     });
-  });
 
-  unittest.group(
-      'resource-ProjectsLocationsInstancesOsPolicyAssignmentsReportsResource',
-      () {
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
       final res = api.OSConfigApi(mock)
