@@ -7048,7 +7048,7 @@ class MetricAbsence {
   /// as how to combine the retrieved time series together (such as when
   /// aggregating multiple streams on each resource to a single stream for each
   /// resource or when aggregating streams across all members of a group of
-  /// resrouces).
+  /// resources).
   ///
   /// Multiple aggregations are applied in the order specified.This field is
   /// similar to the one in the ListTimeSeries request
@@ -7402,7 +7402,7 @@ class MetricThreshold {
   /// as how to combine the retrieved time series together (such as when
   /// aggregating multiple streams on each resource to a single stream for each
   /// resource or when aggregating streams across all members of a group of
-  /// resrouces).
+  /// resources).
   ///
   /// Multiple aggregations are applied in the order specified.This field is
   /// similar to the one in the ListTimeSeries request
@@ -8064,6 +8064,10 @@ class NotificationChannelDescriptor {
   /// In the above, \[TYPE\] is the value of the type field.
   core.String? name;
 
+  /// The tiers that support this notification channel; the project service tier
+  /// must be one of the supported_tiers.
+  core.List<core.String>? supportedTiers;
+
   /// The type of notification channel, such as "email" and "sms".
   ///
   /// To view the full list of channels, see Channel descriptors
@@ -8077,6 +8081,7 @@ class NotificationChannelDescriptor {
     this.labels,
     this.launchStage,
     this.name,
+    this.supportedTiers,
     this.type,
   });
 
@@ -8098,6 +8103,11 @@ class NotificationChannelDescriptor {
               ? _json['launchStage'] as core.String
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          supportedTiers: _json.containsKey('supportedTiers')
+              ? (_json['supportedTiers'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
           type: _json.containsKey('type') ? _json['type'] as core.String : null,
         );
 
@@ -8107,6 +8117,7 @@ class NotificationChannelDescriptor {
         if (labels != null) 'labels': labels!,
         if (launchStage != null) 'launchStage': launchStage!,
         if (name != null) 'name': name!,
+        if (supportedTiers != null) 'supportedTiers': supportedTiers!,
         if (type != null) 'type': type!,
       };
 }
@@ -8827,10 +8838,10 @@ class Telemetry {
 /// non-overlapping intervals. For DELTA metrics, the start time of the next
 /// interval must be at least a millisecond after the end time of the previous
 /// interval. For CUMULATIVE metrics, the start time and end time must specify a
-/// a non-zero interval, with subsequent points specifying the same start time
-/// and increasing end times, until an event resets the cumulative value to zero
-/// and sets a new start time for the following points. The new start time must
-/// be at least a millisecond after the end time of the previous interval. The
+/// non-zero interval, with subsequent points specifying the same start time and
+/// increasing end times, until an event resets the cumulative value to zero and
+/// sets a new start time for the following points. The new start time must be
+/// at least a millisecond after the end time of the previous interval. The
 /// start time of a new interval must be at least a millisecond after the end
 /// time of the previous interval because intervals are closed. If the start
 /// time of a new interval is the same as the end time of the previous interval,

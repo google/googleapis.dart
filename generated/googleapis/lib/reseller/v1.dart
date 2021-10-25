@@ -78,10 +78,12 @@ class CustomersResource {
   ///
   /// Request parameters:
   ///
-  /// [customerId] - Either the customer's primary domain name or the customer's
-  /// unique identifier. If using the domain name, we do not recommend using a
-  /// `customerId` as a key for persistent data. If the domain name for a
-  /// `customerId` is changed, the Google system automatically updates.
+  /// [customerId] - This can be either the customer's primary domain name or
+  /// the customer's unique identifier. If the domain name for a customer
+  /// changes, the old domain name cannot be used to access the customer, but
+  /// the customer's unique identifier (as returned by the API) can always be
+  /// used. We recommend storing the unique identifier in your systems where
+  /// applicable.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -186,10 +188,12 @@ class CustomersResource {
   ///
   /// Request parameters:
   ///
-  /// [customerId] - Either the customer's primary domain name or the customer's
-  /// unique identifier. If using the domain name, we do not recommend using a
-  /// `customerId` as a key for persistent data. If the domain name for a
-  /// `customerId` is changed, the Google system automatically updates.
+  /// [customerId] - This can be either the customer's primary domain name or
+  /// the customer's unique identifier. If the domain name for a customer
+  /// changes, the old domain name cannot be used to access the customer, but
+  /// the customer's unique identifier (as returned by the API) can always be
+  /// used. We recommend storing the unique identifier in your systems where
+  /// applicable.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -234,10 +238,12 @@ class CustomersResource {
   ///
   /// Request parameters:
   ///
-  /// [customerId] - Either the customer's primary domain name or the customer's
-  /// unique identifier. If using the domain name, we do not recommend using a
-  /// `customerId` as a key for persistent data. If the domain name for a
-  /// `customerId` is changed, the Google system automatically updates.
+  /// [customerId] - This can be either the customer's primary domain name or
+  /// the customer's unique identifier. If the domain name for a customer
+  /// changes, the old domain name cannot be used to access the customer, but
+  /// the customer's unique identifier (as returned by the API) can always be
+  /// used. We recommend storing the unique identifier in your systems where
+  /// applicable.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -399,10 +405,12 @@ class SubscriptionsResource {
   ///
   /// Request parameters:
   ///
-  /// [customerId] - Either the customer's primary domain name or the customer's
-  /// unique identifier. If using the domain name, we do not recommend using a
-  /// `customerId` as a key for persistent data. If the domain name for a
-  /// `customerId` is changed, the Google system automatically updates.
+  /// [customerId] - This can be either the customer's primary domain name or
+  /// the customer's unique identifier. If the domain name for a customer
+  /// changes, the old domain name cannot be used to access the customer, but
+  /// the customer's unique identifier (as returned by the API) can always be
+  /// used. We recommend storing the unique identifier in your systems where
+  /// applicable.
   ///
   /// [subscriptionId] - This is a required property. The `subscriptionId` is
   /// the subscription identifier and is unique for each customer. Since a
@@ -456,10 +464,12 @@ class SubscriptionsResource {
   ///
   /// Request parameters:
   ///
-  /// [customerId] - Either the customer's primary domain name or the customer's
-  /// unique identifier. If using the domain name, we do not recommend using a
-  /// `customerId` as a key for persistent data. If the domain name for a
-  /// `customerId` is changed, the Google system automatically updates.
+  /// [customerId] - This can be either the customer's primary domain name or
+  /// the customer's unique identifier. If the domain name for a customer
+  /// changes, the old domain name cannot be used to access the customer, but
+  /// the customer's unique identifier (as returned by the API) can always be
+  /// used. We recommend storing the unique identifier in your systems where
+  /// applicable.
   ///
   /// [subscriptionId] - This is a required property. The `subscriptionId` is
   /// the subscription identifier and is unique for each customer. Since a
@@ -514,10 +524,12 @@ class SubscriptionsResource {
   ///
   /// Request parameters:
   ///
-  /// [customerId] - Either the customer's primary domain name or the customer's
-  /// unique identifier. If using the domain name, we do not recommend using a
-  /// `customerId` as a key for persistent data. If the domain name for a
-  /// `customerId` is changed, the Google system automatically updates.
+  /// [customerId] - This can be either the customer's primary domain name or
+  /// the customer's unique identifier. If the domain name for a customer
+  /// changes, the old domain name cannot be used to access the customer, but
+  /// the customer's unique identifier (as returned by the API) can always be
+  /// used. We recommend storing the unique identifier in your systems where
+  /// applicable.
   ///
   /// [subscriptionId] - This is a required property. The `subscriptionId` is
   /// the subscription identifier and is unique for each customer. Since a
@@ -572,10 +584,12 @@ class SubscriptionsResource {
   ///
   /// Request parameters:
   ///
-  /// [customerId] - Either the customer's primary domain name or the customer's
-  /// unique identifier. If using the domain name, we do not recommend using a
-  /// `customerId` as a key for persistent data. If the domain name for a
-  /// `customerId` is changed, the Google system automatically updates.
+  /// [customerId] - This can be either the customer's primary domain name or
+  /// the customer's unique identifier. If the domain name for a customer
+  /// changes, the old domain name cannot be used to access the customer, but
+  /// the customer's unique identifier (as returned by the API) can always be
+  /// used. We recommend storing the unique identifier in your systems where
+  /// applicable.
   ///
   /// [subscriptionId] - This is a required property. The `subscriptionId` is
   /// the subscription identifier and is unique for each customer. Since a
@@ -624,10 +638,12 @@ class SubscriptionsResource {
   ///
   /// Request parameters:
   ///
-  /// [customerId] - Either the customer's primary domain name or the customer's
-  /// unique identifier. If using the domain name, we do not recommend using a
-  /// `customerId` as a key for persistent data. If the domain name for a
-  /// `customerId` is changed, the Google system automatically updates.
+  /// [customerId] - This can be either the customer's primary domain name or
+  /// the customer's unique identifier. If the domain name for a customer
+  /// changes, the old domain name cannot be used to access the customer, but
+  /// the customer's unique identifier (as returned by the API) can always be
+  /// used. We recommend storing the unique identifier in your systems where
+  /// applicable.
   ///
   /// [subscriptionId] - This is a required property. The `subscriptionId` is
   /// the subscription identifier and is unique for each customer. Since a
@@ -689,10 +705,12 @@ class SubscriptionsResource {
   ///
   /// Request parameters:
   ///
-  /// [customerId] - Either the customer's primary domain name or the customer's
-  /// unique identifier. If using the domain name, we do not recommend using a
-  /// `customerId` as a key for persistent data. If the domain name for a
-  /// `customerId` is changed, the Google system automatically updates.
+  /// [customerId] - This can be either the customer's primary domain name or
+  /// the customer's unique identifier. If the domain name for a customer
+  /// changes, the old domain name cannot be used to access the customer, but
+  /// the customer's unique identifier (as returned by the API) can always be
+  /// used. We recommend storing the unique identifier in your systems where
+  /// applicable.
   ///
   /// [subscriptionId] - This is a required property. The `subscriptionId` is
   /// the subscription identifier and is unique for each customer. Since a
@@ -753,10 +771,12 @@ class SubscriptionsResource {
   ///
   /// Request parameters:
   ///
-  /// [customerId] - Either the customer's primary domain name or the customer's
-  /// unique identifier. If using the domain name, we do not recommend using a
-  /// `customerId` as a key for persistent data. If the domain name for a
-  /// `customerId` is changed, the Google system automatically updates.
+  /// [customerId] - This can be either the customer's primary domain name or
+  /// the customer's unique identifier. If the domain name for a customer
+  /// changes, the old domain name cannot be used to access the customer, but
+  /// the customer's unique identifier (as returned by the API) can always be
+  /// used. We recommend storing the unique identifier in your systems where
+  /// applicable.
   ///
   /// [customerAuthToken] - The `customerAuthToken` query string is required
   /// when creating a resold account that transfers a direct customer's
@@ -818,10 +838,12 @@ class SubscriptionsResource {
   /// complete the subscription transfer. For more information, see the
   /// administrator help center.
   ///
-  /// [customerId] - Either the customer's primary domain name or the customer's
-  /// unique identifier. If using the domain name, we do not recommend using a
-  /// `customerId` as a key for persistent data. If the domain name for a
-  /// `customerId` is changed, the Google system automatically updates.
+  /// [customerId] - This can be either the customer's primary domain name or
+  /// the customer's unique identifier. If the domain name for a customer
+  /// changes, the old domain name cannot be used to access the customer, but
+  /// the customer's unique identifier (as returned by the API) can always be
+  /// used. We recommend storing the unique identifier in your systems where
+  /// applicable.
   ///
   /// [customerNamePrefix] - When retrieving all of your subscriptions and
   /// filtering for specific customers, you can enter a prefix for a customer
@@ -886,10 +908,12 @@ class SubscriptionsResource {
   ///
   /// Request parameters:
   ///
-  /// [customerId] - Either the customer's primary domain name or the customer's
-  /// unique identifier. If using the domain name, we do not recommend using a
-  /// `customerId` as a key for persistent data. If the domain name for a
-  /// `customerId` is changed, the Google system automatically updates.
+  /// [customerId] - This can be either the customer's primary domain name or
+  /// the customer's unique identifier. If the domain name for a customer
+  /// changes, the old domain name cannot be used to access the customer, but
+  /// the customer's unique identifier (as returned by the API) can always be
+  /// used. We recommend storing the unique identifier in your systems where
+  /// applicable.
   ///
   /// [subscriptionId] - This is a required property. The `subscriptionId` is
   /// the subscription identifier and is unique for each customer. Since a
@@ -946,10 +970,12 @@ class SubscriptionsResource {
   ///
   /// Request parameters:
   ///
-  /// [customerId] - Either the customer's primary domain name or the customer's
-  /// unique identifier. If using the domain name, we do not recommend using a
-  /// `customerId` as a key for persistent data. If the domain name for a
-  /// `customerId` is changed, the Google system automatically updates.
+  /// [customerId] - This can be either the customer's primary domain name or
+  /// the customer's unique identifier. If the domain name for a customer
+  /// changes, the old domain name cannot be used to access the customer, but
+  /// the customer's unique identifier (as returned by the API) can always be
+  /// used. We recommend storing the unique identifier in your systems where
+  /// applicable.
   ///
   /// [subscriptionId] - This is a required property. The `subscriptionId` is
   /// the subscription identifier and is unique for each customer. Since a

@@ -46,6 +46,7 @@
 ///     - [AdvertisersTargetingTypesAssignedTargetingOptionsResource]
 /// - [CombinedAudiencesResource]
 /// - [CustomBiddingAlgorithmsResource]
+///   - [CustomBiddingAlgorithmsScriptsResource]
 /// - [CustomListsResource]
 /// - [FirstAndThirdPartyAudiencesResource]
 /// - [FloodlightGroupsResource]
@@ -6230,8 +6231,50 @@ class CombinedAudiencesResource {
 class CustomBiddingAlgorithmsResource {
   final commons.ApiRequester _requester;
 
+  CustomBiddingAlgorithmsScriptsResource get scripts =>
+      CustomBiddingAlgorithmsScriptsResource(_requester);
+
   CustomBiddingAlgorithmsResource(commons.ApiRequester client)
       : _requester = client;
+
+  /// Creates a new custom bidding algorithm.
+  ///
+  /// Returns the newly created custom bidding algorithm if successful.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [CustomBiddingAlgorithm].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<CustomBiddingAlgorithm> create(
+    CustomBiddingAlgorithm request, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    const _url = 'v1/customBiddingAlgorithms';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return CustomBiddingAlgorithm.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
 
   /// Gets a custom bidding algorithm.
   ///
@@ -6366,6 +6409,301 @@ class CustomBiddingAlgorithmsResource {
       queryParams: _queryParams,
     );
     return ListCustomBiddingAlgorithmsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates an existing custom bidding algorithm.
+  ///
+  /// Returns the updated custom bidding algorithm if successful.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [customBiddingAlgorithmId] - Output only. The unique ID of the custom
+  /// bidding algorithm. Assigned by the system.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [updateMask] - Required. The mask to control which fields to update.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [CustomBiddingAlgorithm].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<CustomBiddingAlgorithm> patch(
+    CustomBiddingAlgorithm request,
+    core.String customBiddingAlgorithmId, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/customBiddingAlgorithms/' +
+        core.Uri.encodeFull('$customBiddingAlgorithmId');
+
+    final _response = await _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return CustomBiddingAlgorithm.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Creates a custom bidding script reference object for a script file.
+  ///
+  /// The resulting reference object provides a resource path to which the
+  /// script file should be uploaded. This reference object should be included
+  /// in when creating a new custom bidding script object.
+  ///
+  /// Request parameters:
+  ///
+  /// [customBiddingAlgorithmId] - Required. The ID of the custom bidding
+  /// algorithm owns the script.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [advertiserId] - The ID of the advertiser that owns the parent custom
+  /// bidding algorithm.
+  ///
+  /// [partnerId] - The ID of the partner that owns the parent custom bidding
+  /// algorithm. Only this partner will have write access to this custom bidding
+  /// script.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [CustomBiddingScriptRef].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<CustomBiddingScriptRef> uploadScript(
+    core.String customBiddingAlgorithmId, {
+    core.String? advertiserId,
+    core.String? partnerId,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (advertiserId != null) 'advertiserId': [advertiserId],
+      if (partnerId != null) 'partnerId': [partnerId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/customBiddingAlgorithms/' +
+        core.Uri.encodeFull('$customBiddingAlgorithmId') +
+        ':uploadScript';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return CustomBiddingScriptRef.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class CustomBiddingAlgorithmsScriptsResource {
+  final commons.ApiRequester _requester;
+
+  CustomBiddingAlgorithmsScriptsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a new custom bidding script.
+  ///
+  /// Returns the newly created script if successful.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [customBiddingAlgorithmId] - Required. The ID of the custom bidding
+  /// algorithm that owns the script.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [advertiserId] - The ID of the advertiser that owns the parent custom
+  /// bidding algorithm.
+  ///
+  /// [partnerId] - The ID of the partner that owns the parent custom bidding
+  /// algorithm. Only this partner will have write access to this custom bidding
+  /// script.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [CustomBiddingScript].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<CustomBiddingScript> create(
+    CustomBiddingScript request,
+    core.String customBiddingAlgorithmId, {
+    core.String? advertiserId,
+    core.String? partnerId,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (advertiserId != null) 'advertiserId': [advertiserId],
+      if (partnerId != null) 'partnerId': [partnerId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/customBiddingAlgorithms/' +
+        core.Uri.encodeFull('$customBiddingAlgorithmId') +
+        '/scripts';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return CustomBiddingScript.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets a custom bidding script.
+  ///
+  /// Request parameters:
+  ///
+  /// [customBiddingAlgorithmId] - Required. The ID of the custom bidding
+  /// algorithm owns the script.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [customBiddingScriptId] - Required. The ID of the custom bidding script to
+  /// fetch.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [advertiserId] - The ID of the advertiser that owns the parent custom
+  /// bidding algorithm.
+  ///
+  /// [partnerId] - The ID of the partner that owns the parent custom bidding
+  /// algorithm. Only this partner will have write access to this custom bidding
+  /// script.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [CustomBiddingScript].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<CustomBiddingScript> get(
+    core.String customBiddingAlgorithmId,
+    core.String customBiddingScriptId, {
+    core.String? advertiserId,
+    core.String? partnerId,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (advertiserId != null) 'advertiserId': [advertiserId],
+      if (partnerId != null) 'partnerId': [partnerId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/customBiddingAlgorithms/' +
+        core.Uri.encodeFull('$customBiddingAlgorithmId') +
+        '/scripts/' +
+        core.Uri.encodeFull('$customBiddingScriptId');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return CustomBiddingScript.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists custom bidding scripts that belong to the given algorithm.
+  ///
+  /// The order is defined by the order_by parameter.
+  ///
+  /// Request parameters:
+  ///
+  /// [customBiddingAlgorithmId] - Required. The ID of the custom bidding
+  /// algorithm owns the script.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [advertiserId] - The ID of the advertiser that owns the parent custom
+  /// bidding algorithm.
+  ///
+  /// [orderBy] - Field by which to sort the list. Acceptable values are: *
+  /// `createTime desc` (default) The default sorting order is descending. To
+  /// specify ascending order for a field, the suffix "desc" should be removed.
+  /// Example: `createTime`.
+  ///
+  /// [pageSize] - Requested page size. Must be between `1` and `100`. If
+  /// unspecified will default to `100`. Returns error code `INVALID_ARGUMENT`
+  /// if an invalid value is specified.
+  ///
+  /// [pageToken] - A token identifying a page of results the server should
+  /// return. Typically, this is the value of next_page_token returned from the
+  /// previous call to `ListCustomBiddingScripts` method. If not specified, the
+  /// first page of results will be returned.
+  ///
+  /// [partnerId] - The ID of the partner that owns the parent custom bidding
+  /// algorithm. Only this partner will have write access to this custom bidding
+  /// script.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListCustomBiddingScriptsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListCustomBiddingScriptsResponse> list(
+    core.String customBiddingAlgorithmId, {
+    core.String? advertiserId,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? partnerId,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (advertiserId != null) 'advertiserId': [advertiserId],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (partnerId != null) 'partnerId': [partnerId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/customBiddingAlgorithms/' +
+        core.Uri.encodeFull('$customBiddingAlgorithmId') +
+        '/scripts';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return ListCustomBiddingScriptsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
 }
@@ -7576,6 +7914,63 @@ class MediaResource {
     } else {
       return _response as commons.Media;
     }
+  }
+
+  /// Uploads media.
+  ///
+  /// Upload is supported on the URI
+  /// `/upload/media/{resource_name=**}?upload_type=media.` **Note**: Upload
+  /// requests will not be successful without including `upload_type=media`
+  /// query string.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resourceName] - Name of the media that is being downloaded. See
+  /// ReadRequest.resource_name.
+  /// Value must have pattern `^.*$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// [uploadMedia] - The media to upload.
+  ///
+  /// Completes with a [GoogleBytestreamMedia].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleBytestreamMedia> upload(
+    GoogleBytestreamMedia request,
+    core.String resourceName, {
+    core.String? $fields,
+    commons.Media? uploadMedia,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    core.String _url;
+    if (uploadMedia == null) {
+      _url = 'media/' + core.Uri.encodeFull('$resourceName');
+    } else {
+      _url = '/upload/media/' + core.Uri.encodeFull('$resourceName');
+    }
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+      uploadMedia: uploadMedia,
+      uploadOptions: commons.UploadOptions.defaultOptions,
+    );
+    return GoogleBytestreamMedia.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -15606,6 +16001,134 @@ class CustomBiddingAlgorithm {
       };
 }
 
+/// A single custom bidding script.
+class CustomBiddingScript {
+  /// Whether the script is currently being used for scoring by the parent
+  /// algorithm.
+  ///
+  /// Output only.
+  core.bool? active;
+
+  /// The time when the script was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// The unique ID of the custom bidding algorithm the script belongs to.
+  ///
+  /// Output only.
+  core.String? customBiddingAlgorithmId;
+
+  /// The unique ID of the custom bidding script.
+  ///
+  /// Output only.
+  core.String? customBiddingScriptId;
+
+  /// Error details of a rejected custom bidding script.
+  ///
+  /// This field will only be populated when Script.state is REJECTED.
+  ///
+  /// Output only.
+  core.List<ScriptError>? errors;
+
+  /// The resource name of the custom bidding script.
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// The reference to the uploaded script file.
+  CustomBiddingScriptRef? script;
+
+  /// The state of the custom bidding script.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : The script state is not specified or is unknown in
+  /// this version.
+  /// - "ACCEPTED" : The script has been accepted for scoring impressions.
+  /// - "REJECTED" : The script has been rejected by backend pipelines. It may
+  /// have errors.
+  /// - "PENDING" : The script is being processed for backend pipelines.
+  core.String? state;
+
+  CustomBiddingScript({
+    this.active,
+    this.createTime,
+    this.customBiddingAlgorithmId,
+    this.customBiddingScriptId,
+    this.errors,
+    this.name,
+    this.script,
+    this.state,
+  });
+
+  CustomBiddingScript.fromJson(core.Map _json)
+      : this(
+          active:
+              _json.containsKey('active') ? _json['active'] as core.bool : null,
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          customBiddingAlgorithmId:
+              _json.containsKey('customBiddingAlgorithmId')
+                  ? _json['customBiddingAlgorithmId'] as core.String
+                  : null,
+          customBiddingScriptId: _json.containsKey('customBiddingScriptId')
+              ? _json['customBiddingScriptId'] as core.String
+              : null,
+          errors: _json.containsKey('errors')
+              ? (_json['errors'] as core.List)
+                  .map((value) => ScriptError.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          script: _json.containsKey('script')
+              ? CustomBiddingScriptRef.fromJson(
+                  _json['script'] as core.Map<core.String, core.dynamic>)
+              : null,
+          state:
+              _json.containsKey('state') ? _json['state'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (active != null) 'active': active!,
+        if (createTime != null) 'createTime': createTime!,
+        if (customBiddingAlgorithmId != null)
+          'customBiddingAlgorithmId': customBiddingAlgorithmId!,
+        if (customBiddingScriptId != null)
+          'customBiddingScriptId': customBiddingScriptId!,
+        if (errors != null) 'errors': errors!,
+        if (name != null) 'name': name!,
+        if (script != null) 'script': script!,
+        if (state != null) 'state': state!,
+      };
+}
+
+/// The reference to the uploaded custom bidding script file.
+class CustomBiddingScriptRef {
+  /// A resource name to be used in media.download to Download the script files.
+  ///
+  /// Or media.upload to Upload the script files. Resource names have the format
+  /// `customBiddingAlgorithms/{custom_bidding_algorithm_id}/scriptRef/{ref_id}`.
+  core.String? resourceName;
+
+  CustomBiddingScriptRef({
+    this.resourceName,
+  });
+
+  CustomBiddingScriptRef.fromJson(core.Map _json)
+      : this(
+          resourceName: _json.containsKey('resourceName')
+              ? _json['resourceName'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (resourceName != null) 'resourceName': resourceName!,
+      };
+}
+
 /// Describes a custom list entity, such as a custom affinity or custom intent
 /// audience list.
 class CustomList {
@@ -20637,6 +21160,44 @@ class ListCustomBiddingAlgorithmsResponse {
       };
 }
 
+class ListCustomBiddingScriptsResponse {
+  /// The list of custom bidding scripts.
+  ///
+  /// This list will be absent if empty.
+  core.List<CustomBiddingScript>? customBiddingScripts;
+
+  /// A token to retrieve the next page of results.
+  ///
+  /// Pass this value in the page_token field in the subsequent call to
+  /// `ListCustomBiddingScriptsRequest` method to retrieve the next page of
+  /// results. If this field is null, it means this is the last page.
+  core.String? nextPageToken;
+
+  ListCustomBiddingScriptsResponse({
+    this.customBiddingScripts,
+    this.nextPageToken,
+  });
+
+  ListCustomBiddingScriptsResponse.fromJson(core.Map _json)
+      : this(
+          customBiddingScripts: _json.containsKey('customBiddingScripts')
+              ? (_json['customBiddingScripts'] as core.List)
+                  .map((value) => CustomBiddingScript.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (customBiddingScripts != null)
+          'customBiddingScripts': customBiddingScripts!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
 class ListCustomListsResponse {
   /// The list of custom lists.
   ///
@@ -23893,6 +24454,56 @@ class ReviewStatusInfo {
           'exchangeReviewStatuses': exchangeReviewStatuses!,
         if (publisherReviewStatuses != null)
           'publisherReviewStatuses': publisherReviewStatuses!,
+      };
+}
+
+/// An error message for a custom bidding script.
+class ScriptError {
+  /// The column number in the script where the error was thrown.
+  core.String? column;
+
+  /// The type of error.
+  /// Possible string values are:
+  /// - "ERROR_CODE_UNSPECIFIED" : The script error is not specified or is
+  /// unknown in this version.
+  /// - "SYNTAX_ERROR" : The script has a syntax error.
+  /// - "DEPRECATED_SYNTAX" : The script uses deprecated syntax.
+  /// - "INTERNAL_ERROR" : Internal errors were thrown while processing the
+  /// script.
+  core.String? errorCode;
+
+  /// The detailed error message.
+  core.String? errorMessage;
+
+  /// The line number in the script where the error was thrown.
+  core.String? line;
+
+  ScriptError({
+    this.column,
+    this.errorCode,
+    this.errorMessage,
+    this.line,
+  });
+
+  ScriptError.fromJson(core.Map _json)
+      : this(
+          column: _json.containsKey('column')
+              ? _json['column'] as core.String
+              : null,
+          errorCode: _json.containsKey('errorCode')
+              ? _json['errorCode'] as core.String
+              : null,
+          errorMessage: _json.containsKey('errorMessage')
+              ? _json['errorMessage'] as core.String
+              : null,
+          line: _json.containsKey('line') ? _json['line'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (column != null) 'column': column!,
+        if (errorCode != null) 'errorCode': errorCode!,
+        if (errorMessage != null) 'errorMessage': errorMessage!,
+        if (line != null) 'line': line!,
       };
 }
 

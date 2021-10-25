@@ -5905,6 +5905,46 @@ class PromotionsResource {
     );
     return Promotion.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
+
+  /// Retrieves a promotion from your Merchant Center account.
+  ///
+  /// Request parameters:
+  ///
+  /// [merchantId] - Required. The ID of the account that contains the
+  /// collection.
+  ///
+  /// [id] - Required. REST ID of the promotion to retrieve.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Promotion].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Promotion> get(
+    core.String merchantId,
+    core.String id, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = commons.escapeVariable('$merchantId') +
+        '/promotions/' +
+        commons.escapeVariable('$id');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return Promotion.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class PubsubnotificationsettingsResource {
@@ -8134,7 +8174,6 @@ class AccountBusinessInformation {
   ///
   /// This status is read only and can be updated only by successful phone
   /// verification. Acceptable values are: - "`verified`" - "`unverified`"
-  /// "`unspecified`" -
   core.String? phoneVerificationStatus;
 
   AccountBusinessInformation({
@@ -16836,6 +16875,9 @@ class OrderTrackingSignal {
 
 /// The line items of the order.
 class OrderTrackingSignalLineItemDetails {
+  /// Brand of the product.
+  core.String? brand;
+
   /// The Global Trade Item Number.
   core.String? gtin;
 
@@ -16847,7 +16889,8 @@ class OrderTrackingSignalLineItemDetails {
   /// The manufacturer part number.
   core.String? mpn;
 
-  /// Plain text description of this product.
+  /// Plain text description of this product (deprecated: Please use
+  /// product_title instead).
   core.String? productDescription;
 
   /// The Content API REST ID of the product, in the form
@@ -16856,23 +16899,29 @@ class OrderTrackingSignalLineItemDetails {
   /// Required.
   core.String? productId;
 
+  /// Plain text title of this product.
+  core.String? productTitle;
+
   /// The quantity of the line item in the order.
   ///
   /// Required.
   core.String? quantity;
 
-  /// Merchant SKU for this item.
+  /// Merchant SKU for this item (deprecated).
   core.String? sku;
 
-  /// Universal product code for this item.
+  /// Universal product code for this item (deprecated: Please use GTIN
+  /// instead).
   core.String? upc;
 
   OrderTrackingSignalLineItemDetails({
+    this.brand,
     this.gtin,
     this.lineItemId,
     this.mpn,
     this.productDescription,
     this.productId,
+    this.productTitle,
     this.quantity,
     this.sku,
     this.upc,
@@ -16880,6 +16929,8 @@ class OrderTrackingSignalLineItemDetails {
 
   OrderTrackingSignalLineItemDetails.fromJson(core.Map _json)
       : this(
+          brand:
+              _json.containsKey('brand') ? _json['brand'] as core.String : null,
           gtin: _json.containsKey('gtin') ? _json['gtin'] as core.String : null,
           lineItemId: _json.containsKey('lineItemId')
               ? _json['lineItemId'] as core.String
@@ -16891,6 +16942,9 @@ class OrderTrackingSignalLineItemDetails {
           productId: _json.containsKey('productId')
               ? _json['productId'] as core.String
               : null,
+          productTitle: _json.containsKey('productTitle')
+              ? _json['productTitle'] as core.String
+              : null,
           quantity: _json.containsKey('quantity')
               ? _json['quantity'] as core.String
               : null,
@@ -16899,12 +16953,14 @@ class OrderTrackingSignalLineItemDetails {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (brand != null) 'brand': brand!,
         if (gtin != null) 'gtin': gtin!,
         if (lineItemId != null) 'lineItemId': lineItemId!,
         if (mpn != null) 'mpn': mpn!,
         if (productDescription != null)
           'productDescription': productDescription!,
         if (productId != null) 'productId': productId!,
+        if (productTitle != null) 'productTitle': productTitle!,
         if (quantity != null) 'quantity': quantity!,
         if (sku != null) 'sku': sku!,
         if (upc != null) 'upc': upc!,

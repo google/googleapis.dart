@@ -26,12 +26,24 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
+core.List<api.Organization> buildUnnamed0() => [
+      buildOrganization(),
+      buildOrganization(),
+    ];
+
+void checkUnnamed0(core.List<api.Organization> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkOrganization(o[0]);
+  checkOrganization(o[1]);
+}
+
 core.int buildCounterCustomApp = 0;
 api.CustomApp buildCustomApp() {
   final o = api.CustomApp();
   buildCounterCustomApp++;
   if (buildCounterCustomApp < 3) {
     o.languageCode = 'foo';
+    o.organizations = buildUnnamed0();
     o.packageName = 'foo';
     o.title = 'foo';
   }
@@ -46,6 +58,7 @@ void checkCustomApp(api.CustomApp o) {
       o.languageCode!,
       unittest.equals('foo'),
     );
+    checkUnnamed0(o.organizations!);
     unittest.expect(
       o.packageName!,
       unittest.equals('foo'),
@@ -58,6 +71,33 @@ void checkCustomApp(api.CustomApp o) {
   buildCounterCustomApp--;
 }
 
+core.int buildCounterOrganization = 0;
+api.Organization buildOrganization() {
+  final o = api.Organization();
+  buildCounterOrganization++;
+  if (buildCounterOrganization < 3) {
+    o.organizationId = 'foo';
+    o.organizationName = 'foo';
+  }
+  buildCounterOrganization--;
+  return o;
+}
+
+void checkOrganization(api.Organization o) {
+  buildCounterOrganization++;
+  if (buildCounterOrganization < 3) {
+    unittest.expect(
+      o.organizationId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.organizationName!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterOrganization--;
+}
+
 void main() {
   unittest.group('obj-schema-CustomApp', () {
     unittest.test('to-json--from-json', () async {
@@ -66,6 +106,16 @@ void main() {
       final od =
           api.CustomApp.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkCustomApp(od);
+    });
+  });
+
+  unittest.group('obj-schema-Organization', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildOrganization();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.Organization.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkOrganization(od);
     });
   });
 

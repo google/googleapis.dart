@@ -1616,10 +1616,10 @@ class FilesResource {
     );
   }
 
-  /// Exports a Google Doc to the requested MIME type and returns the exported
-  /// content.
+  /// Exports a Google Workspace document to the requested MIME type and returns
+  /// exported byte content.
   ///
-  /// Please note that the exported content is limited to 10MB.
+  /// Note that the exported content is limited to 10MB.
   ///
   /// Request parameters:
   ///

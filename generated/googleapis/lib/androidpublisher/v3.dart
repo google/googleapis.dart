@@ -4886,6 +4886,12 @@ class InAppProduct {
   /// "en-US".
   core.Map<core.String, InAppProductListing>? listings;
 
+  /// Details about taxes and legal compliance.
+  ///
+  /// Only applicable to managed products.
+  ManagedProductTaxAndComplianceSettings?
+      managedProductTaxesAndComplianceSettings;
+
   /// Package name of the parent app.
   core.String? packageName;
 
@@ -4919,6 +4925,11 @@ class InAppProduct {
   /// P6M (six months), and P1Y (one year).
   core.String? subscriptionPeriod;
 
+  /// Details about taxes and legal compliance.
+  ///
+  /// Only applicable to subscription products.
+  SubscriptionTaxAndComplianceSettings? subscriptionTaxesAndComplianceSettings;
+
   /// Trial period, specified in ISO 8601 format.
   ///
   /// Acceptable values are anything between P7D (seven days) and P999D (999
@@ -4930,12 +4941,14 @@ class InAppProduct {
     this.defaultPrice,
     this.gracePeriod,
     this.listings,
+    this.managedProductTaxesAndComplianceSettings,
     this.packageName,
     this.prices,
     this.purchaseType,
     this.sku,
     this.status,
     this.subscriptionPeriod,
+    this.subscriptionTaxesAndComplianceSettings,
     this.trialPeriod,
   });
 
@@ -4960,6 +4973,12 @@ class InAppProduct {
                   ),
                 )
               : null,
+          managedProductTaxesAndComplianceSettings:
+              _json.containsKey('managedProductTaxesAndComplianceSettings')
+                  ? ManagedProductTaxAndComplianceSettings.fromJson(
+                      _json['managedProductTaxesAndComplianceSettings']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           packageName: _json.containsKey('packageName')
               ? _json['packageName'] as core.String
               : null,
@@ -4981,6 +5000,12 @@ class InAppProduct {
           subscriptionPeriod: _json.containsKey('subscriptionPeriod')
               ? _json['subscriptionPeriod'] as core.String
               : null,
+          subscriptionTaxesAndComplianceSettings:
+              _json.containsKey('subscriptionTaxesAndComplianceSettings')
+                  ? SubscriptionTaxAndComplianceSettings.fromJson(
+                      _json['subscriptionTaxesAndComplianceSettings']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           trialPeriod: _json.containsKey('trialPeriod')
               ? _json['trialPeriod'] as core.String
               : null,
@@ -4991,6 +5016,9 @@ class InAppProduct {
         if (defaultPrice != null) 'defaultPrice': defaultPrice!,
         if (gracePeriod != null) 'gracePeriod': gracePeriod!,
         if (listings != null) 'listings': listings!,
+        if (managedProductTaxesAndComplianceSettings != null)
+          'managedProductTaxesAndComplianceSettings':
+              managedProductTaxesAndComplianceSettings!,
         if (packageName != null) 'packageName': packageName!,
         if (prices != null) 'prices': prices!,
         if (purchaseType != null) 'purchaseType': purchaseType!,
@@ -4998,6 +5026,9 @@ class InAppProduct {
         if (status != null) 'status': status!,
         if (subscriptionPeriod != null)
           'subscriptionPeriod': subscriptionPeriod!,
+        if (subscriptionTaxesAndComplianceSettings != null)
+          'subscriptionTaxesAndComplianceSettings':
+              subscriptionTaxesAndComplianceSettings!,
         if (trialPeriod != null) 'trialPeriod': trialPeriod!,
       };
 }
@@ -5341,6 +5372,57 @@ class LocalizedText {
       };
 }
 
+/// Details about taxation and legal compliance for managed products.
+class ManagedProductTaxAndComplianceSettings {
+  /// Digital content or service classification for products distributed to
+  /// users in the European Economic Area (EEA).
+  ///
+  /// The withdrawal regime under EEA consumer laws depends on this
+  /// classification. Refer to the
+  /// [Help Center article](https://support.google.com/googleplay/android-developer/answer/10463498)
+  /// for more information.
+  /// Possible string values are:
+  /// - "WITHDRAWAL_RIGHT_TYPE_UNSPECIFIED"
+  /// - "WITHDRAWAL_RIGHT_DIGITAL_CONTENT"
+  /// - "WITHDRAWAL_RIGHT_SERVICE"
+  core.String? eeaWithdrawalRightType;
+
+  /// A mapping from region code to tax rate details.
+  ///
+  /// The keys are region codes as defined by Unicode's "CLDR".
+  core.Map<core.String, RegionalTaxRateInfo>? taxRateInfoByRegionCode;
+
+  ManagedProductTaxAndComplianceSettings({
+    this.eeaWithdrawalRightType,
+    this.taxRateInfoByRegionCode,
+  });
+
+  ManagedProductTaxAndComplianceSettings.fromJson(core.Map _json)
+      : this(
+          eeaWithdrawalRightType: _json.containsKey('eeaWithdrawalRightType')
+              ? _json['eeaWithdrawalRightType'] as core.String
+              : null,
+          taxRateInfoByRegionCode: _json.containsKey('taxRateInfoByRegionCode')
+              ? (_json['taxRateInfoByRegionCode']
+                      as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    RegionalTaxRateInfo.fromJson(
+                        item as core.Map<core.String, core.dynamic>),
+                  ),
+                )
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (eeaWithdrawalRightType != null)
+          'eeaWithdrawalRightType': eeaWithdrawalRightType!,
+        if (taxRateInfoByRegionCode != null)
+          'taxRateInfoByRegionCode': taxRateInfoByRegionCode!,
+      };
+}
+
 /// Represents an amount of money with its currency type.
 typedef Money = $Money;
 
@@ -5538,6 +5620,50 @@ class ProductPurchase {
 
 /// Request for the product.purchases.acknowledge API.
 typedef ProductPurchasesAcknowledgeRequest = $PurchasesAcknowledgeRequest;
+
+/// Specified details about taxation in a given geographical region.
+class RegionalTaxRateInfo {
+  /// You must tell us if your app contains streaming products to correctly
+  /// charge US state and local sales tax.
+  ///
+  /// Field only supported in United States.
+  core.bool? eligibleForStreamingServiceTaxRate;
+
+  /// Tax tier to specify reduced tax rate.
+  ///
+  /// Developers who sell digital news, magazines, newspapers, books, or
+  /// audiobooks in various regions may be eligible for reduced tax rates.
+  /// [Learn more](https://support.google.com/googleplay/android-developer/answer/10463498).
+  /// Possible string values are:
+  /// - "TAX_TIER_UNSPECIFIED"
+  /// - "TAX_TIER_BOOKS_1"
+  /// - "TAX_TIER_NEWS_1"
+  /// - "TAX_TIER_NEWS_2"
+  core.String? taxTier;
+
+  RegionalTaxRateInfo({
+    this.eligibleForStreamingServiceTaxRate,
+    this.taxTier,
+  });
+
+  RegionalTaxRateInfo.fromJson(core.Map _json)
+      : this(
+          eligibleForStreamingServiceTaxRate:
+              _json.containsKey('eligibleForStreamingServiceTaxRate')
+                  ? _json['eligibleForStreamingServiceTaxRate'] as core.bool
+                  : null,
+          taxTier: _json.containsKey('taxTier')
+              ? _json['taxTier'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (eligibleForStreamingServiceTaxRate != null)
+          'eligibleForStreamingServiceTaxRate':
+              eligibleForStreamingServiceTaxRate!,
+        if (taxTier != null) 'taxTier': taxTier!,
+      };
+}
 
 /// An Android app review.
 class Review {
@@ -6209,6 +6335,58 @@ class SubscriptionPurchasesDeferResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (newExpiryTimeMillis != null)
           'newExpiryTimeMillis': newExpiryTimeMillis!,
+      };
+}
+
+/// Details about taxation, Google Play policy and legal compliance for
+/// subscription products.
+class SubscriptionTaxAndComplianceSettings {
+  /// Digital content or service classification for products distributed to
+  /// users in the European Economic Area (EEA).
+  ///
+  /// The withdrawal regime under EEA consumer laws depends on this
+  /// classification. Refer to the
+  /// [Help Center article](https://support.google.com/googleplay/android-developer/answer/10463498)
+  /// for more information.
+  /// Possible string values are:
+  /// - "WITHDRAWAL_RIGHT_TYPE_UNSPECIFIED"
+  /// - "WITHDRAWAL_RIGHT_DIGITAL_CONTENT"
+  /// - "WITHDRAWAL_RIGHT_SERVICE"
+  core.String? eeaWithdrawalRightType;
+
+  /// A mapping from region code to tax rate details.
+  ///
+  /// The keys are region codes as defined by Unicode's "CLDR".
+  core.Map<core.String, RegionalTaxRateInfo>? taxRateInfoByRegionCode;
+
+  SubscriptionTaxAndComplianceSettings({
+    this.eeaWithdrawalRightType,
+    this.taxRateInfoByRegionCode,
+  });
+
+  SubscriptionTaxAndComplianceSettings.fromJson(core.Map _json)
+      : this(
+          eeaWithdrawalRightType: _json.containsKey('eeaWithdrawalRightType')
+              ? _json['eeaWithdrawalRightType'] as core.String
+              : null,
+          taxRateInfoByRegionCode: _json.containsKey('taxRateInfoByRegionCode')
+              ? (_json['taxRateInfoByRegionCode']
+                      as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    RegionalTaxRateInfo.fromJson(
+                        item as core.Map<core.String, core.dynamic>),
+                  ),
+                )
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (eeaWithdrawalRightType != null)
+          'eeaWithdrawalRightType': eeaWithdrawalRightType!,
+        if (taxRateInfoByRegionCode != null)
+          'taxRateInfoByRegionCode': taxRateInfoByRegionCode!,
       };
 }
 

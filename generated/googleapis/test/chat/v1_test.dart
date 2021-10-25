@@ -2834,6 +2834,7 @@ void main() {
       final res = api.HangoutsChatApi(mock).dms;
       final arg_request = buildMessage();
       final arg_parent = 'foo';
+      final arg_requestId = 'foo';
       final arg_threadKey = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2872,6 +2873,10 @@ void main() {
             );
           }
         }
+        unittest.expect(
+          queryMap['requestId']!.first,
+          unittest.equals(arg_requestId),
+        );
         unittest.expect(
           queryMap['threadKey']!.first,
           unittest.equals(arg_threadKey),
@@ -2888,7 +2893,9 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.messages(arg_request, arg_parent,
-          threadKey: arg_threadKey, $fields: arg_$fields);
+          requestId: arg_requestId,
+          threadKey: arg_threadKey,
+          $fields: arg_$fields);
       checkMessage(response as api.Message);
     });
 
@@ -2897,6 +2904,7 @@ void main() {
       final res = api.HangoutsChatApi(mock).dms;
       final arg_request = buildMessage();
       final arg_parent = 'foo';
+      final arg_requestId = 'foo';
       final arg_threadKey = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2935,6 +2943,10 @@ void main() {
             );
           }
         }
+        unittest.expect(
+          queryMap['requestId']!.first,
+          unittest.equals(arg_requestId),
+        );
         unittest.expect(
           queryMap['threadKey']!.first,
           unittest.equals(arg_threadKey),
@@ -2951,7 +2963,9 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.webhooks(arg_request, arg_parent,
-          threadKey: arg_threadKey, $fields: arg_$fields);
+          requestId: arg_requestId,
+          threadKey: arg_threadKey,
+          $fields: arg_$fields);
       checkMessage(response as api.Message);
     });
   });
@@ -2962,6 +2976,7 @@ void main() {
       final res = api.HangoutsChatApi(mock).dms.conversations;
       final arg_request = buildMessage();
       final arg_parent = 'foo';
+      final arg_requestId = 'foo';
       final arg_threadKey = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3001,6 +3016,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['requestId']!.first,
+          unittest.equals(arg_requestId),
+        );
+        unittest.expect(
           queryMap['threadKey']!.first,
           unittest.equals(arg_threadKey),
         );
@@ -3016,7 +3035,9 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.messages(arg_request, arg_parent,
-          threadKey: arg_threadKey, $fields: arg_$fields);
+          requestId: arg_requestId,
+          threadKey: arg_threadKey,
+          $fields: arg_$fields);
       checkMessage(response as api.Message);
     });
   });
@@ -3085,6 +3106,7 @@ void main() {
       final res = api.HangoutsChatApi(mock).rooms;
       final arg_request = buildMessage();
       final arg_parent = 'foo';
+      final arg_requestId = 'foo';
       final arg_threadKey = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3123,6 +3145,10 @@ void main() {
             );
           }
         }
+        unittest.expect(
+          queryMap['requestId']!.first,
+          unittest.equals(arg_requestId),
+        );
         unittest.expect(
           queryMap['threadKey']!.first,
           unittest.equals(arg_threadKey),
@@ -3139,7 +3165,9 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.messages(arg_request, arg_parent,
-          threadKey: arg_threadKey, $fields: arg_$fields);
+          requestId: arg_requestId,
+          threadKey: arg_threadKey,
+          $fields: arg_$fields);
       checkMessage(response as api.Message);
     });
 
@@ -3148,6 +3176,7 @@ void main() {
       final res = api.HangoutsChatApi(mock).rooms;
       final arg_request = buildMessage();
       final arg_parent = 'foo';
+      final arg_requestId = 'foo';
       final arg_threadKey = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3186,6 +3215,10 @@ void main() {
             );
           }
         }
+        unittest.expect(
+          queryMap['requestId']!.first,
+          unittest.equals(arg_requestId),
+        );
         unittest.expect(
           queryMap['threadKey']!.first,
           unittest.equals(arg_threadKey),
@@ -3202,7 +3235,9 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.webhooks(arg_request, arg_parent,
-          threadKey: arg_threadKey, $fields: arg_$fields);
+          requestId: arg_requestId,
+          threadKey: arg_threadKey,
+          $fields: arg_$fields);
       checkMessage(response as api.Message);
     });
   });
@@ -3213,6 +3248,7 @@ void main() {
       final res = api.HangoutsChatApi(mock).rooms.conversations;
       final arg_request = buildMessage();
       final arg_parent = 'foo';
+      final arg_requestId = 'foo';
       final arg_threadKey = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3252,6 +3288,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['requestId']!.first,
+          unittest.equals(arg_requestId),
+        );
+        unittest.expect(
           queryMap['threadKey']!.first,
           unittest.equals(arg_threadKey),
         );
@@ -3267,7 +3307,9 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.messages(arg_request, arg_parent,
-          threadKey: arg_threadKey, $fields: arg_$fields);
+          requestId: arg_requestId,
+          threadKey: arg_threadKey,
+          $fields: arg_$fields);
       checkMessage(response as api.Message);
     });
   });
@@ -3393,6 +3435,7 @@ void main() {
       final res = api.HangoutsChatApi(mock).spaces;
       final arg_request = buildMessage();
       final arg_parent = 'foo';
+      final arg_requestId = 'foo';
       final arg_threadKey = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3432,6 +3475,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['requestId']!.first,
+          unittest.equals(arg_requestId),
+        );
+        unittest.expect(
           queryMap['threadKey']!.first,
           unittest.equals(arg_threadKey),
         );
@@ -3447,7 +3494,9 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.webhooks(arg_request, arg_parent,
-          threadKey: arg_threadKey, $fields: arg_$fields);
+          requestId: arg_requestId,
+          threadKey: arg_threadKey,
+          $fields: arg_$fields);
       checkMessage(response as api.Message);
     });
   });
@@ -3577,6 +3626,7 @@ void main() {
       final res = api.HangoutsChatApi(mock).spaces.messages;
       final arg_request = buildMessage();
       final arg_parent = 'foo';
+      final arg_requestId = 'foo';
       final arg_threadKey = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3616,6 +3666,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['requestId']!.first,
+          unittest.equals(arg_requestId),
+        );
+        unittest.expect(
           queryMap['threadKey']!.first,
           unittest.equals(arg_threadKey),
         );
@@ -3631,7 +3685,9 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.create(arg_request, arg_parent,
-          threadKey: arg_threadKey, $fields: arg_$fields);
+          requestId: arg_requestId,
+          threadKey: arg_threadKey,
+          $fields: arg_$fields);
       checkMessage(response as api.Message);
     });
 

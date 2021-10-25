@@ -485,7 +485,7 @@ class ProjectsLocationsExecutionsResource {
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [filter] - Filter applied to resulting executions. Currently only supports
-  /// filtering executions by a specified schedule_id. Format: "schedule_id="
+  /// filtering executions by a specified schedule_id. Format: `schedule_id=`
   ///
   /// [orderBy] - Sort by field.
   ///
@@ -1806,6 +1806,58 @@ class ProjectsLocationsRuntimesResource {
     return Runtime.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
+  /// Gets the access control policy for a resource.
+  ///
+  /// Returns an empty policy if the resource exists and does not have a policy
+  /// set.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// requested. See the operation documentation for the appropriate value for
+  /// this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/runtimes/\[^/\]+$`.
+  ///
+  /// [options_requestedPolicyVersion] - Optional. The policy format version to
+  /// be returned. Valid values are 0, 1, and 3. Requests specifying an invalid
+  /// value will be rejected. Requests for policies with any conditional
+  /// bindings must specify version 3. Policies without any conditional bindings
+  /// may specify any valid value or leave the field unset. To learn which
+  /// resources support conditions in their IAM policies, see the
+  /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> getIamPolicy(
+    core.String resource, {
+    core.int? options_requestedPolicyVersion,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (options_requestedPolicyVersion != null)
+        'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
   /// Lists Runtimes in a given project and location.
   ///
   /// Request parameters:
@@ -1934,6 +1986,52 @@ class ProjectsLocationsRuntimesResource {
       queryParams: _queryParams,
     );
     return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Sets the access control policy on the specified resource.
+  ///
+  /// Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`,
+  /// and `PERMISSION_DENIED` errors.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// specified. See the operation documentation for the appropriate value for
+  /// this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/runtimes/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> setIamPolicy(
+    SetIamPolicyRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Starts a Managed Notebook Runtime.
@@ -2068,6 +2166,56 @@ class ProjectsLocationsRuntimesResource {
       queryParams: _queryParams,
     );
     return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns permissions that a caller has on the specified resource.
+  ///
+  /// If the resource does not exist, this will return an empty set of
+  /// permissions, not a `NOT_FOUND` error. Note: This operation is designed to
+  /// be used for building permission-aware UIs and command-line tools, not for
+  /// authorization checking. This operation may "fail open" without warning.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy detail is being
+  /// requested. See the operation documentation for the appropriate value for
+  /// this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/runtimes/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [TestIamPermissionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TestIamPermissionsResponse> testIamPermissions(
+    TestIamPermissionsRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url =
+        'v1/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return TestIamPermissionsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2340,19 +2488,20 @@ class AcceleratorConfig {
       };
 }
 
-/// Associates `members` with a `role`.
+/// Associates `members`, or principals, with a `role`.
 class Binding {
   /// The condition that is associated with this binding.
   ///
   /// If the condition evaluates to `true`, then this binding applies to the
   /// current request. If the condition evaluates to `false`, then this binding
   /// does not apply to the current request. However, a different role binding
-  /// might grant the same role to one or more of the members in this binding.
-  /// To learn which resources support conditions in their IAM policies, see the
+  /// might grant the same role to one or more of the principals in this
+  /// binding. To learn which resources support conditions in their IAM
+  /// policies, see the
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   Expr? condition;
 
-  /// Specifies the identities requesting access for a Cloud Platform resource.
+  /// Specifies the principals requesting access for a Cloud Platform resource.
   ///
   /// `members` can have the following values: * `allUsers`: A special
   /// identifier that represents anyone who is on the internet; with or without
@@ -2384,7 +2533,7 @@ class Binding {
   /// `example.com`.
   core.List<core.String>? members;
 
-  /// Role that is assigned to `members`.
+  /// Role that is assigned to the list of `members`, or principals.
   ///
   /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
   core.String? role;
@@ -2457,7 +2606,7 @@ class ContainerImage {
 class DataprocParameters {
   /// URI for cluster used to run Dataproc execution.
   ///
-  /// Format: 'projects/{PROJECT_ID}/regions/{REGION}/clusters/{CLUSTER_NAME}
+  /// Format: `projects/{PROJECT_ID}/regions/{REGION}/clusters/{CLUSTER_NAME}`
   core.String? cluster;
 
   DataprocParameters({
@@ -2900,8 +3049,8 @@ class ExecutionTemplate {
   /// Path to the notebook file to execute.
   ///
   /// Must be in a Google Cloud Storage bucket. Format:
-  /// gs://{bucket_name}/{folder}/{notebook_file_name} Ex:
-  /// gs://notebook_user/scheduled_notebooks/sentiment_notebook.ipynb
+  /// `gs://{bucket_name}/{folder}/{notebook_file_name}` Ex:
+  /// `gs://notebook_user/scheduled_notebooks/sentiment_notebook.ipynb`
   core.String? inputNotebookFile;
 
   /// The type of Job to be used on this execution.
@@ -2912,6 +3061,12 @@ class ExecutionTemplate {
   /// - "DATAPROC" : Run execution on a cluster with Dataproc as a job.
   /// https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.jobs
   core.String? jobType;
+
+  /// Name of the kernel spec to use.
+  ///
+  /// This must be specified if the kernel spec name on the execution target
+  /// does not match the name in the input notebook file.
+  core.String? kernelSpec;
 
   /// Labels for execution.
   ///
@@ -2944,7 +3099,7 @@ class ExecutionTemplate {
   /// Path to the notebook folder to write to.
   ///
   /// Must be in a Google Cloud Storage bucket path. Format:
-  /// gs://{bucket_name}/{folder} Ex: gs://notebook_user/scheduled_notebooks
+  /// `gs://{bucket_name}/{folder}` Ex: `gs://notebook_user/scheduled_notebooks`
   core.String? outputNotebookFolder;
 
   /// Parameters used within the 'input_notebook_file' notebook.
@@ -2955,7 +3110,7 @@ class ExecutionTemplate {
   /// Ref https://papermill.readthedocs.io/en/latest/usage-parameterize.html on
   /// how to specifying parameters in the input notebook and pass them here in
   /// an YAML file. Ex:
-  /// gs://notebook_user/scheduled_notebooks/sentiment_notebook_params.yaml
+  /// `gs://notebook_user/scheduled_notebooks/sentiment_notebook_params.yaml`
   core.String? paramsYamlFile;
 
   /// Scale tier of the hardware used for notebook execution.
@@ -2994,6 +3149,7 @@ class ExecutionTemplate {
     this.dataprocParameters,
     this.inputNotebookFile,
     this.jobType,
+    this.kernelSpec,
     this.labels,
     this.masterType,
     this.outputNotebookFolder,
@@ -3022,6 +3178,9 @@ class ExecutionTemplate {
               : null,
           jobType: _json.containsKey('jobType')
               ? _json['jobType'] as core.String
+              : null,
+          kernelSpec: _json.containsKey('kernelSpec')
+              ? _json['kernelSpec'] as core.String
               : null,
           labels: _json.containsKey('labels')
               ? (_json['labels'] as core.Map<core.String, core.dynamic>).map(
@@ -3062,6 +3221,7 @@ class ExecutionTemplate {
           'dataprocParameters': dataprocParameters!,
         if (inputNotebookFile != null) 'inputNotebookFile': inputNotebookFile!,
         if (jobType != null) 'jobType': jobType!,
+        if (kernelSpec != null) 'kernelSpec': kernelSpec!,
         if (labels != null) 'labels': labels!,
         if (masterType != null) 'masterType': masterType!,
         if (outputNotebookFolder != null)
@@ -3319,7 +3479,7 @@ class Instance {
   /// fully boots up.
   ///
   /// The path must be a URL or Cloud Storage path
-  /// (gs://path-to-file/file-name).
+  /// (`gs://path-to-file/file-name`).
   core.String? postStartupScript;
 
   /// The proxy endpoint that is used to access the Jupyter notebook.
@@ -3380,6 +3540,8 @@ class Instance {
   /// - "UPGRADING" : The instance is upgrading.
   /// - "INITIALIZING" : The instance is being created.
   /// - "REGISTERING" : The instance is getting registered.
+  /// - "SUSPENDING" : The instance is suspending.
+  /// - "SUSPENDED" : The instance is suspended.
   core.String? state;
 
   /// The name of the subnet that this instance is in.
@@ -3752,9 +3914,9 @@ class ListExecutionsResponse {
 
   /// Executions IDs that could not be reached.
   ///
-  /// For example,
+  /// For example:
   /// \['projects/{project_id}/location/{location}/executions/imagenet_test1',
-  /// 'projects/{project_id}/location/{location}/executions/classifier_train1'\].
+  /// 'projects/{project_id}/location/{location}/executions/classifier_train1'\]
   core.List<core.String>? unreachable;
 
   ListExecutionsResponse({
@@ -3955,9 +4117,9 @@ class ListSchedulesResponse {
 
   /// Schedules that could not be reached.
   ///
-  /// For example,
+  /// For example:
   /// \['projects/{project_id}/location/{location}/schedules/monthly_digest',
-  /// 'projects/{project_id}/location/{location}/schedules/weekly_sentiment'\].
+  /// 'projects/{project_id}/location/{location}/schedules/weekly_sentiment'\]
   core.List<core.String>? unreachable;
 
   ListSchedulesResponse({
@@ -4323,15 +4485,15 @@ class Operation {
 /// controls for Google Cloud resources.
 ///
 /// A `Policy` is a collection of `bindings`. A `binding` binds one or more
-/// `members` to a single `role`. Members can be user accounts, service
-/// accounts, Google groups, and domains (such as G Suite). A `role` is a named
-/// list of permissions; each `role` can be an IAM predefined role or a
-/// user-created custom role. For some types of Google Cloud resources, a
-/// `binding` can also specify a `condition`, which is a logical expression that
-/// allows access to a resource only if the expression evaluates to `true`. A
-/// condition can add constraints based on attributes of the request, the
-/// resource, or both. To learn which resources support conditions in their IAM
-/// policies, see the
+/// `members`, or principals, to a single `role`. Principals can be user
+/// accounts, service accounts, Google groups, and domains (such as G Suite). A
+/// `role` is a named list of permissions; each `role` can be an IAM predefined
+/// role or a user-created custom role. For some types of Google Cloud
+/// resources, a `binding` can also specify a `condition`, which is a logical
+/// expression that allows access to a resource only if the expression evaluates
+/// to `true`. A condition can add constraints based on attributes of the
+/// request, the resource, or both. To learn which resources support conditions
+/// in their IAM policies, see the
 /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 /// **JSON example:** { "bindings": \[ { "role":
 /// "roles/resourcemanager.organizationAdmin", "members": \[
@@ -4351,11 +4513,16 @@ class Operation {
 /// version: 3 For a description of IAM and its features, see the
 /// [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {
-  /// Associates a list of `members` to a `role`.
+  /// Associates a list of `members`, or principals, with a `role`.
   ///
   /// Optionally, may specify a `condition` that determines how and when the
   /// `bindings` are applied. Each of the `bindings` must contain at least one
-  /// member.
+  /// principal. The `bindings` in a `Policy` can refer to up to 1,500
+  /// principals; up to 250 of these principals can be Google groups. Each
+  /// occurrence of a principal counts towards these limits. For example, if the
+  /// `bindings` grant 50 different roles to `user:alice@example.com`, and not
+  /// to any other principal, then you can add another 1,450 principals to the
+  /// `bindings` in the `Policy`.
   core.List<Binding>? bindings;
 
   /// `etag` is used for optimistic concurrency control as a way to help prevent
@@ -4922,7 +5089,7 @@ class RuntimeSoftwareConfig {
   /// fully boots up.
   ///
   /// The path must be a URL or Cloud Storage path
-  /// (gs://path-to-file/file-name).
+  /// (`gs://path-to-file/file-name`).
   core.String? postStartupScript;
 
   RuntimeSoftwareConfig({
@@ -5126,6 +5293,7 @@ class SchedulerAcceleratorConfig {
   /// - "NVIDIA_TESLA_V100" : Nvidia Tesla V100 GPU.
   /// - "NVIDIA_TESLA_P4" : Nvidia Tesla P4 GPU.
   /// - "NVIDIA_TESLA_T4" : Nvidia Tesla T4 GPU.
+  /// - "NVIDIA_TESLA_A100" : Nvidia Tesla A100 GPU.
   /// - "TPU_V2" : TPU v2.
   /// - "TPU_V3" : TPU v3.
   core.String? type;
@@ -5524,6 +5692,12 @@ typedef UpgradeInstanceRequest = $Empty;
 
 /// Parameters used in Vertex AI JobType executions.
 class VertexAIParameters {
+  /// Environment variables.
+  ///
+  /// At most 100 environment variables can be specified and unique. Example:
+  /// GCP_BUCKET=gs://my-bucket/samples/
+  core.Map<core.String, core.String>? env;
+
   /// The full name of the Compute Engine
   /// \[network\](/compute/docs/networks-and-firewalls#networks) to which the
   /// Job should be peered.
@@ -5537,17 +5711,27 @@ class VertexAIParameters {
   core.String? network;
 
   VertexAIParameters({
+    this.env,
     this.network,
   });
 
   VertexAIParameters.fromJson(core.Map _json)
       : this(
+          env: _json.containsKey('env')
+              ? (_json['env'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
           network: _json.containsKey('network')
               ? _json['network'] as core.String
               : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (env != null) 'env': env!,
         if (network != null) 'network': network!,
       };
 }

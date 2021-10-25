@@ -1173,58 +1173,6 @@ void checkGoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposal(
   buildCounterGoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposal--;
 }
 
-core.int buildCounterGoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings = 0;
-api.GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings
-    buildGoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings() {
-  final o = api.GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings();
-  buildCounterGoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings++;
-  if (buildCounterGoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings < 3) {
-    o.fileDownloadsEnabled = true;
-    o.name = 'foo';
-    o.outboundClicksEnabled = true;
-    o.pageChangesEnabled = true;
-    o.pageLoadsEnabled = true;
-    o.pageViewsEnabled = true;
-    o.scrollsEnabled = true;
-    o.searchQueryParameter = 'foo';
-    o.siteSearchEnabled = true;
-    o.streamEnabled = true;
-    o.uriQueryParameter = 'foo';
-    o.videoEngagementEnabled = true;
-  }
-  buildCounterGoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings--;
-  return o;
-}
-
-void checkGoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings(
-    api.GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings o) {
-  buildCounterGoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings++;
-  if (buildCounterGoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings < 3) {
-    unittest.expect(o.fileDownloadsEnabled!, unittest.isTrue);
-    unittest.expect(
-      o.name!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(o.outboundClicksEnabled!, unittest.isTrue);
-    unittest.expect(o.pageChangesEnabled!, unittest.isTrue);
-    unittest.expect(o.pageLoadsEnabled!, unittest.isTrue);
-    unittest.expect(o.pageViewsEnabled!, unittest.isTrue);
-    unittest.expect(o.scrollsEnabled!, unittest.isTrue);
-    unittest.expect(
-      o.searchQueryParameter!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(o.siteSearchEnabled!, unittest.isTrue);
-    unittest.expect(o.streamEnabled!, unittest.isTrue);
-    unittest.expect(
-      o.uriQueryParameter!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(o.videoEngagementEnabled!, unittest.isTrue);
-  }
-  buildCounterGoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings--;
-}
-
 core.int buildCounterGoogleAnalyticsAdminV1alphaFirebaseLink = 0;
 api.GoogleAnalyticsAdminV1alphaFirebaseLink
     buildGoogleAnalyticsAdminV1alphaFirebaseLink() {
@@ -2935,18 +2883,6 @@ void main() {
           api.GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposal
               .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposal(od);
-    });
-  });
-
-  unittest.group(
-      'obj-schema-GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildGoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings.fromJson(
-              oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings(od);
     });
   });
 
@@ -8922,61 +8858,6 @@ void main() {
           response as api.GoogleAnalyticsAdminV1alphaWebDataStream);
     });
 
-    unittest.test('method--getEnhancedMeasurementSettings', () async {
-      final mock = HttpServerMock();
-      final res = api.GoogleAnalyticsAdminApi(mock).properties.webDataStreams;
-      final arg_name = 'foo';
-      final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 8),
-          unittest.equals('v1alpha/'),
-        );
-        pathOffset += 8;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
-
-        final query = (req.url).query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
-
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
-          }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
-
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(
-            buildGoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.getEnhancedMeasurementSettings(arg_name,
-          $fields: arg_$fields);
-      checkGoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings(response
-          as api.GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings);
-    });
-
     unittest.test('method--getGlobalSiteTag', () async {
       final mock = HttpServerMock();
       final res = api.GoogleAnalyticsAdminApi(mock).properties.webDataStreams;
@@ -9162,74 +9043,6 @@ void main() {
           updateMask: arg_updateMask, $fields: arg_$fields);
       checkGoogleAnalyticsAdminV1alphaWebDataStream(
           response as api.GoogleAnalyticsAdminV1alphaWebDataStream);
-    });
-
-    unittest.test('method--updateEnhancedMeasurementSettings', () async {
-      final mock = HttpServerMock();
-      final res = api.GoogleAnalyticsAdminApi(mock).properties.webDataStreams;
-      final arg_request =
-          buildGoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings();
-      final arg_name = 'foo';
-      final arg_updateMask = 'foo';
-      final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj =
-            api.GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings.fromJson(
-                json as core.Map<core.String, core.dynamic>);
-        checkGoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings(obj);
-
-        final path = (req.url).path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 8),
-          unittest.equals('v1alpha/'),
-        );
-        pathOffset += 8;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
-
-        final query = (req.url).query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
-
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
-          }
-        }
-        unittest.expect(
-          queryMap['updateMask']!.first,
-          unittest.equals(arg_updateMask),
-        );
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
-
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(
-            buildGoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.updateEnhancedMeasurementSettings(
-          arg_request, arg_name,
-          updateMask: arg_updateMask, $fields: arg_$fields);
-      checkGoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings(response
-          as api.GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings);
     });
   });
 

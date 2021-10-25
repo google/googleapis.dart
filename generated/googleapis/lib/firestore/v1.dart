@@ -945,7 +945,8 @@ class ProjectsDatabasesDocumentsResource {
   /// exist. When set to `false`, the target document must not exist.
   ///
   /// [currentDocument_updateTime] - When set, the target document must exist
-  /// and have been last updated at that time.
+  /// and have been last updated at that time. Timestamp must be microsecond
+  /// aligned.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1226,7 +1227,8 @@ class ProjectsDatabasesDocumentsResource {
   /// exist. When set to `false`, the target document must not exist.
   ///
   /// [currentDocument_updateTime] - When set, the target document must exist
-  /// and have been last updated at that time.
+  /// and have been last updated at that time. Timestamp must be microsecond
+  /// aligned.
   ///
   /// [mask_fieldPaths] - The list of field paths in the mask. See
   /// Document.fields for a field path syntax reference.
@@ -2595,6 +2597,20 @@ class GoogleFirestoreAdminV1Database {
   /// Datastore.
   core.String? concurrencyMode;
 
+  /// The earliest timestamp at which older versions of the data can be read
+  /// from the database.
+  ///
+  /// See \[version_retention_period\] above; this field is populated with `now
+  /// - version_retention_period`. This value is continuously updated, and
+  /// becomes stale the moment it is queried. If you are using this value to
+  /// recover data, make sure to account for the time from the moment when the
+  /// value is queried to the moment when you initiate the recovery. Note that
+  /// you should not need to query this field: if you know the
+  /// `version_retention_period` then you can query within that time.
+  ///
+  /// Output only.
+  core.String? earliestVersionTime;
+
   /// This checksum is computed by the server based on the value of other
   /// fields, and may be sent on update and delete requests to ensure the client
   /// has an up-to-date value before proceeding.
@@ -2624,6 +2640,7 @@ class GoogleFirestoreAdminV1Database {
 
   GoogleFirestoreAdminV1Database({
     this.concurrencyMode,
+    this.earliestVersionTime,
     this.etag,
     this.locationId,
     this.name,
@@ -2635,6 +2652,9 @@ class GoogleFirestoreAdminV1Database {
           concurrencyMode: _json.containsKey('concurrencyMode')
               ? _json['concurrencyMode'] as core.String
               : null,
+          earliestVersionTime: _json.containsKey('earliestVersionTime')
+              ? _json['earliestVersionTime'] as core.String
+              : null,
           etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
           locationId: _json.containsKey('locationId')
               ? _json['locationId'] as core.String
@@ -2645,6 +2665,8 @@ class GoogleFirestoreAdminV1Database {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (concurrencyMode != null) 'concurrencyMode': concurrencyMode!,
+        if (earliestVersionTime != null)
+          'earliestVersionTime': earliestVersionTime!,
         if (etag != null) 'etag': etag!,
         if (locationId != null) 'locationId': locationId!,
         if (name != null) 'name': name!,
@@ -3526,6 +3548,8 @@ class Precondition {
 
   /// When set, the target document must exist and have been last updated at
   /// that time.
+  ///
+  /// Timestamp must be microsecond aligned.
   core.String? updateTime;
 
   Precondition({

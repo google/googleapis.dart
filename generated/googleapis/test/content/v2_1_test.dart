@@ -7139,11 +7139,13 @@ api.OrderTrackingSignalLineItemDetails
   final o = api.OrderTrackingSignalLineItemDetails();
   buildCounterOrderTrackingSignalLineItemDetails++;
   if (buildCounterOrderTrackingSignalLineItemDetails < 3) {
+    o.brand = 'foo';
     o.gtin = 'foo';
     o.lineItemId = 'foo';
     o.mpn = 'foo';
     o.productDescription = 'foo';
     o.productId = 'foo';
+    o.productTitle = 'foo';
     o.quantity = 'foo';
     o.sku = 'foo';
     o.upc = 'foo';
@@ -7156,6 +7158,10 @@ void checkOrderTrackingSignalLineItemDetails(
     api.OrderTrackingSignalLineItemDetails o) {
   buildCounterOrderTrackingSignalLineItemDetails++;
   if (buildCounterOrderTrackingSignalLineItemDetails < 3) {
+    unittest.expect(
+      o.brand!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.gtin!,
       unittest.equals('foo'),
@@ -7174,6 +7180,10 @@ void checkOrderTrackingSignalLineItemDetails(
     );
     unittest.expect(
       o.productId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.productTitle!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -27301,6 +27311,54 @@ void main() {
       }), true);
       final response =
           await res.create(arg_request, arg_merchantId, $fields: arg_$fields);
+      checkPromotion(response as api.Promotion);
+    });
+
+    unittest.test('method--get', () async {
+      final mock = HttpServerMock();
+      final res = api.ShoppingContentApi(mock).promotions;
+      final arg_merchantId = 'foo';
+      final arg_id = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildPromotion());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.get(arg_merchantId, arg_id, $fields: arg_$fields);
       checkPromotion(response as api.Promotion);
     });
   });

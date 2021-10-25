@@ -197,6 +197,7 @@ api.GoogleCloudDatacatalogV1BigQueryDateShardedSpec
   buildCounterGoogleCloudDatacatalogV1BigQueryDateShardedSpec++;
   if (buildCounterGoogleCloudDatacatalogV1BigQueryDateShardedSpec < 3) {
     o.dataset = 'foo';
+    o.latestShardResource = 'foo';
     o.shardCount = 'foo';
     o.tablePrefix = 'foo';
   }
@@ -210,6 +211,10 @@ void checkGoogleCloudDatacatalogV1BigQueryDateShardedSpec(
   if (buildCounterGoogleCloudDatacatalogV1BigQueryDateShardedSpec < 3) {
     unittest.expect(
       o.dataset!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.latestShardResource!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -1522,6 +1527,8 @@ api.GoogleCloudDatacatalogV1SearchCatalogResult
   final o = api.GoogleCloudDatacatalogV1SearchCatalogResult();
   buildCounterGoogleCloudDatacatalogV1SearchCatalogResult++;
   if (buildCounterGoogleCloudDatacatalogV1SearchCatalogResult < 3) {
+    o.description = 'foo';
+    o.displayName = 'foo';
     o.fullyQualifiedName = 'foo';
     o.integratedSystem = 'foo';
     o.linkedResource = 'foo';
@@ -1539,6 +1546,14 @@ void checkGoogleCloudDatacatalogV1SearchCatalogResult(
     api.GoogleCloudDatacatalogV1SearchCatalogResult o) {
   buildCounterGoogleCloudDatacatalogV1SearchCatalogResult++;
   if (buildCounterGoogleCloudDatacatalogV1SearchCatalogResult < 3) {
+    unittest.expect(
+      o.description!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.displayName!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.fullyQualifiedName!,
       unittest.equals('foo'),

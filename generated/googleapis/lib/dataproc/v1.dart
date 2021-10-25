@@ -3663,6 +3663,17 @@ class AutoscalingPolicy {
   /// Required.
   core.String? id;
 
+  /// The labels to associate with this autoscaling policy.
+  ///
+  /// Label keys must contain 1 to 63 characters, and must conform to RFC 1035
+  /// (https://www.ietf.org/rfc/rfc1035.txt). Label values may be empty, but, if
+  /// present, must contain 1 to 63 characters, and must conform to RFC 1035
+  /// (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be
+  /// associated with an autoscaling policy.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
   /// The "resource name" of the autoscaling policy, as described in
   /// https://cloud.google.com/apis/design/resource_names.
   ///
@@ -3689,6 +3700,7 @@ class AutoscalingPolicy {
   AutoscalingPolicy({
     this.basicAlgorithm,
     this.id,
+    this.labels,
     this.name,
     this.secondaryWorkerConfig,
     this.workerConfig,
@@ -3701,6 +3713,14 @@ class AutoscalingPolicy {
                   as core.Map<core.String, core.dynamic>)
               : null,
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          labels: _json.containsKey('labels')
+              ? (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           secondaryWorkerConfig: _json.containsKey('secondaryWorkerConfig')
               ? InstanceGroupAutoscalingPolicyConfig.fromJson(
@@ -3716,6 +3736,7 @@ class AutoscalingPolicy {
   core.Map<core.String, core.dynamic> toJson() => {
         if (basicAlgorithm != null) 'basicAlgorithm': basicAlgorithm!,
         if (id != null) 'id': id!,
+        if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
         if (secondaryWorkerConfig != null)
           'secondaryWorkerConfig': secondaryWorkerConfig!,
@@ -3733,6 +3754,11 @@ class BasicAutoscalingAlgorithm {
   /// Optional.
   core.String? cooldownPeriod;
 
+  /// Spark Standalone autoscaling configuration
+  ///
+  /// Optional.
+  SparkStandaloneAutoscalingConfig? sparkStandaloneConfig;
+
   /// YARN autoscaling configuration.
   ///
   /// Optional.
@@ -3740,6 +3766,7 @@ class BasicAutoscalingAlgorithm {
 
   BasicAutoscalingAlgorithm({
     this.cooldownPeriod,
+    this.sparkStandaloneConfig,
     this.yarnConfig,
   });
 
@@ -3747,6 +3774,11 @@ class BasicAutoscalingAlgorithm {
       : this(
           cooldownPeriod: _json.containsKey('cooldownPeriod')
               ? _json['cooldownPeriod'] as core.String
+              : null,
+          sparkStandaloneConfig: _json.containsKey('sparkStandaloneConfig')
+              ? SparkStandaloneAutoscalingConfig.fromJson(
+                  _json['sparkStandaloneConfig']
+                      as core.Map<core.String, core.dynamic>)
               : null,
           yarnConfig: _json.containsKey('yarnConfig')
               ? BasicYarnAutoscalingConfig.fromJson(
@@ -3756,6 +3788,8 @@ class BasicAutoscalingAlgorithm {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (cooldownPeriod != null) 'cooldownPeriod': cooldownPeriod!,
+        if (sparkStandaloneConfig != null)
+          'sparkStandaloneConfig': sparkStandaloneConfig!,
         if (yarnConfig != null) 'yarnConfig': yarnConfig!,
       };
 }
@@ -3861,7 +3895,7 @@ class BasicYarnAutoscalingConfig {
       };
 }
 
-/// Associates members with a role.
+/// Associates members, or principals, with a role.
 class Binding {
   /// The condition that is associated with this binding.If the condition
   /// evaluates to true, then this binding applies to the current request.If the
@@ -3869,12 +3903,12 @@ class Binding {
   /// current request.
   ///
   /// However, a different role binding might grant the same role to one or more
-  /// of the members in this binding.To learn which resources support conditions
-  /// in their IAM policies, see the IAM documentation
+  /// of the principals in this binding.To learn which resources support
+  /// conditions in their IAM policies, see the IAM documentation
   /// (https://cloud.google.com/iam/help/conditions/resource-policies).
   Expr? condition;
 
-  /// Specifies the identities requesting access for a Cloud Platform resource.
+  /// Specifies the principals requesting access for a Cloud Platform resource.
   ///
   /// members can have the following values: allUsers: A special identifier that
   /// represents anyone who is on the internet; with or without a Google
@@ -3906,7 +3940,7 @@ class Binding {
   /// example.com.
   core.List<core.String>? members;
 
-  /// Role that is assigned to members.
+  /// Role that is assigned to the list of members, or principals.
   ///
   /// For example, roles/viewer, roles/editor, or roles/owner.
   core.String? role;
@@ -7125,15 +7159,15 @@ class PigJob {
 /// An Identity and Access Management (IAM) policy, which specifies access
 /// controls for Google Cloud resources.A Policy is a collection of bindings.
 ///
-/// A binding binds one or more members to a single role. Members can be user
-/// accounts, service accounts, Google groups, and domains (such as G Suite). A
-/// role is a named list of permissions; each role can be an IAM predefined role
-/// or a user-created custom role.For some types of Google Cloud resources, a
-/// binding can also specify a condition, which is a logical expression that
-/// allows access to a resource only if the expression evaluates to true. A
-/// condition can add constraints based on attributes of the request, the
-/// resource, or both. To learn which resources support conditions in their IAM
-/// policies, see the IAM documentation
+/// A binding binds one or more members, or principals, to a single role.
+/// Principals can be user accounts, service accounts, Google groups, and
+/// domains (such as G Suite). A role is a named list of permissions; each role
+/// can be an IAM predefined role or a user-created custom role.For some types
+/// of Google Cloud resources, a binding can also specify a condition, which is
+/// a logical expression that allows access to a resource only if the expression
+/// evaluates to true. A condition can add constraints based on attributes of
+/// the request, the resource, or both. To learn which resources support
+/// conditions in their IAM policies, see the IAM documentation
 /// (https://cloud.google.com/iam/help/conditions/resource-policies).JSON
 /// example: { "bindings": \[ { "role":
 /// "roles/resourcemanager.organizationAdmin", "members": \[
@@ -7153,15 +7187,16 @@ class PigJob {
 /// version: 3 For a description of IAM and its features, see the IAM
 /// documentation (https://cloud.google.com/iam/docs/).
 class Policy {
-  /// Associates a list of members to a role.
+  /// Associates a list of members, or principals, with a role.
   ///
   /// Optionally, may specify a condition that determines how and when the
   /// bindings are applied. Each of the bindings must contain at least one
-  /// member.The bindings in a Policy can refer to up to 1,500 members; up to
-  /// 250 of these members can be Google groups. Each occurrence of a member
-  /// counts towards these limits. For example, if the bindings grant 50
-  /// different roles to user:alice@example.com, and not to any other member,
-  /// then you can add another 1,450 members to the bindings in the Policy.
+  /// principal.The bindings in a Policy can refer to up to 1,500 principals; up
+  /// to 250 of these principals can be Google groups. Each occurrence of a
+  /// principal counts towards these limits. For example, if the bindings grant
+  /// 50 different roles to user:alice@example.com, and not to any other
+  /// principal, then you can add another 1,450 principals to the bindings in
+  /// the Policy.
   core.List<Binding>? bindings;
 
   /// etag is used for optimistic concurrency control as a way to help prevent
@@ -8100,6 +8135,101 @@ class SparkSqlJob {
         if (queryFileUri != null) 'queryFileUri': queryFileUri!,
         if (queryList != null) 'queryList': queryList!,
         if (scriptVariables != null) 'scriptVariables': scriptVariables!,
+      };
+}
+
+/// Basic autoscaling configurations for Spark Standalone.
+class SparkStandaloneAutoscalingConfig {
+  /// Timeout for Spark graceful decommissioning of spark workers.
+  ///
+  /// Specifies the duration to wait for spark worker to complete spark
+  /// decomissioning tasks before forcefully removing workers. Only applicable
+  /// to downscaling operations.Bounds: 0s, 1d.
+  ///
+  /// Required.
+  core.String? gracefulDecommissionTimeout;
+
+  /// Fraction of required executors to remove from Spark Serverless clusters.
+  ///
+  /// A scale-down factor of 1.0 will result in scaling down so that there are
+  /// no more executors for the Spark Job.(more aggressive scaling). A
+  /// scale-down factor closer to 0 will result in a smaller magnitude of
+  /// scaling donw (less aggressive scaling).Bounds: 0.0, 1.0.
+  ///
+  /// Required.
+  core.double? scaleDownFactor;
+
+  /// Minimum scale-down threshold as a fraction of total cluster size before
+  /// scaling occurs.
+  ///
+  /// For example, in a 20-worker cluster, a threshold of 0.1 means the
+  /// autoscaler must recommend at least a 2 worker scale-down for the cluster
+  /// to scale. A threshold of 0 means the autoscaler will scale down on any
+  /// recommended change.Bounds: 0.0, 1.0. Default: 0.0.
+  ///
+  /// Optional.
+  core.double? scaleDownMinWorkerFraction;
+
+  /// Fraction of required workers to add to Spark Standalone clusters.
+  ///
+  /// A scale-up factor of 1.0 will result in scaling up so that there are no
+  /// more required workers for the Spark Job (more aggressive scaling). A
+  /// scale-up factor closer to 0 will result in a smaller magnitude of scaling
+  /// up (less aggressive scaling).Bounds: 0.0, 1.0.
+  ///
+  /// Required.
+  core.double? scaleUpFactor;
+
+  /// Minimum scale-up threshold as a fraction of total cluster size before
+  /// scaling occurs.
+  ///
+  /// For example, in a 20-worker cluster, a threshold of 0.1 means the
+  /// autoscaler must recommend at least a 2-worker scale-up for the cluster to
+  /// scale. A threshold of 0 means the autoscaler will scale up on any
+  /// recommended change.Bounds: 0.0, 1.0. Default: 0.0.
+  ///
+  /// Optional.
+  core.double? scaleUpMinWorkerFraction;
+
+  SparkStandaloneAutoscalingConfig({
+    this.gracefulDecommissionTimeout,
+    this.scaleDownFactor,
+    this.scaleDownMinWorkerFraction,
+    this.scaleUpFactor,
+    this.scaleUpMinWorkerFraction,
+  });
+
+  SparkStandaloneAutoscalingConfig.fromJson(core.Map _json)
+      : this(
+          gracefulDecommissionTimeout:
+              _json.containsKey('gracefulDecommissionTimeout')
+                  ? _json['gracefulDecommissionTimeout'] as core.String
+                  : null,
+          scaleDownFactor: _json.containsKey('scaleDownFactor')
+              ? (_json['scaleDownFactor'] as core.num).toDouble()
+              : null,
+          scaleDownMinWorkerFraction:
+              _json.containsKey('scaleDownMinWorkerFraction')
+                  ? (_json['scaleDownMinWorkerFraction'] as core.num).toDouble()
+                  : null,
+          scaleUpFactor: _json.containsKey('scaleUpFactor')
+              ? (_json['scaleUpFactor'] as core.num).toDouble()
+              : null,
+          scaleUpMinWorkerFraction:
+              _json.containsKey('scaleUpMinWorkerFraction')
+                  ? (_json['scaleUpMinWorkerFraction'] as core.num).toDouble()
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (gracefulDecommissionTimeout != null)
+          'gracefulDecommissionTimeout': gracefulDecommissionTimeout!,
+        if (scaleDownFactor != null) 'scaleDownFactor': scaleDownFactor!,
+        if (scaleDownMinWorkerFraction != null)
+          'scaleDownMinWorkerFraction': scaleDownMinWorkerFraction!,
+        if (scaleUpFactor != null) 'scaleUpFactor': scaleUpFactor!,
+        if (scaleUpMinWorkerFraction != null)
+          'scaleUpMinWorkerFraction': scaleUpMinWorkerFraction!,
       };
 }
 

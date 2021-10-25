@@ -183,6 +183,7 @@ api.Destination buildDestination() {
   buildCounterDestination++;
   if (buildCounterDestination < 3) {
     o.cloudRun = buildCloudRun();
+    o.gke = buildGKE();
   }
   buildCounterDestination--;
   return o;
@@ -192,6 +193,7 @@ void checkDestination(api.Destination o) {
   buildCounterDestination++;
   if (buildCounterDestination < 3) {
     checkCloudRun(o.cloudRun!);
+    checkGKE(o.gke!);
   }
   buildCounterDestination--;
 }
@@ -273,6 +275,48 @@ void checkExpr(api.Expr o) {
     );
   }
   buildCounterExpr--;
+}
+
+core.int buildCounterGKE = 0;
+api.GKE buildGKE() {
+  final o = api.GKE();
+  buildCounterGKE++;
+  if (buildCounterGKE < 3) {
+    o.cluster = 'foo';
+    o.location = 'foo';
+    o.namespace = 'foo';
+    o.path = 'foo';
+    o.service = 'foo';
+  }
+  buildCounterGKE--;
+  return o;
+}
+
+void checkGKE(api.GKE o) {
+  buildCounterGKE++;
+  if (buildCounterGKE < 3) {
+    unittest.expect(
+      o.cluster!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.location!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.namespace!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.path!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.service!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGKE--;
 }
 
 core.int buildCounterGoogleLongrunningCancelOperationRequest = 0;
@@ -1077,6 +1121,15 @@ void main() {
       final od =
           api.Expr.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkExpr(od);
+    });
+  });
+
+  unittest.group('obj-schema-GKE', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGKE();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GKE.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkGKE(od);
     });
   });
 

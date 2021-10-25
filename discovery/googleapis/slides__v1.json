@@ -311,7 +311,7 @@
             }
         }
     },
-    "revision": "20211012",
+    "revision": "20211021",
     "rootUrl": "https://slides.googleapis.com/",
     "schemas": {
         "AffineTransform": {

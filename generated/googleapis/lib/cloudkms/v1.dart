@@ -2038,6 +2038,37 @@ class AsymmetricDecryptResponse {
 
 /// Request message for KeyManagementService.AsymmetricSign.
 class AsymmetricSignRequest {
+  /// This field will only be honored for RAW_PKCS1 keys.
+  ///
+  /// The data to sign. A digest is computed over the data that will be signed,
+  /// PKCS #1 padding is applied to the digest directly and then encrypted.
+  ///
+  /// Optional.
+  core.String? data;
+  core.List<core.int> get dataAsBytes => convert.base64.decode(data!);
+
+  set dataAsBytes(core.List<core.int> _bytes) {
+    data =
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  /// An optional CRC32C checksum of the AsymmetricSignRequest.data.
+  ///
+  /// If specified, KeyManagementService will verify the integrity of the
+  /// received AsymmetricSignRequest.data using this checksum.
+  /// KeyManagementService will report an error if the checksum verification
+  /// fails. If you receive a checksum error, your client should verify that
+  /// CRC32C(AsymmetricSignRequest.data) is equal to
+  /// AsymmetricSignRequest.data_crc32c, and if so, perform a limited number of
+  /// retries. A persistent mismatch may indicate an issue in your computation
+  /// of the CRC32C checksum. Note: This field is defined as int64 for reasons
+  /// of compatibility across different languages. However, it is a non-negative
+  /// integer, which will never exceed 2^32-1, and can be safely downconverted
+  /// to uint32 in languages that support this type.
+  ///
+  /// Optional.
+  core.String? dataCrc32c;
+
   /// The digest of the data to sign.
   ///
   /// The digest must be produced with the same digest algorithm as specified by
@@ -2064,12 +2095,18 @@ class AsymmetricSignRequest {
   core.String? digestCrc32c;
 
   AsymmetricSignRequest({
+    this.data,
+    this.dataCrc32c,
     this.digest,
     this.digestCrc32c,
   });
 
   AsymmetricSignRequest.fromJson(core.Map _json)
       : this(
+          data: _json.containsKey('data') ? _json['data'] as core.String : null,
+          dataCrc32c: _json.containsKey('dataCrc32c')
+              ? _json['dataCrc32c'] as core.String
+              : null,
           digest: _json.containsKey('digest')
               ? Digest.fromJson(
                   _json['digest'] as core.Map<core.String, core.dynamic>)
@@ -2080,6 +2117,8 @@ class AsymmetricSignRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (data != null) 'data': data!,
+        if (dataCrc32c != null) 'dataCrc32c': dataCrc32c!,
         if (digest != null) 'digest': digest!,
         if (digestCrc32c != null) 'digestCrc32c': digestCrc32c!,
       };
@@ -2126,6 +2165,17 @@ class AsymmetricSignResponse {
 
   /// Integrity verification field.
   ///
+  /// A flag indicating whether AsymmetricSignRequest.data_crc32c was received
+  /// by KeyManagementService and used for the integrity verification of the
+  /// data. A false value of this field indicates either that
+  /// AsymmetricSignRequest.data_crc32c was left unset or that it was not
+  /// delivered to KeyManagementService. If you've set
+  /// AsymmetricSignRequest.data_crc32c but this field is still false, discard
+  /// the response and perform a limited number of retries.
+  core.bool? verifiedDataCrc32c;
+
+  /// Integrity verification field.
+  ///
   /// A flag indicating whether AsymmetricSignRequest.digest_crc32c was received
   /// by KeyManagementService and used for the integrity verification of the
   /// digest. A false value of this field indicates either that
@@ -2140,6 +2190,7 @@ class AsymmetricSignResponse {
     this.protectionLevel,
     this.signature,
     this.signatureCrc32c,
+    this.verifiedDataCrc32c,
     this.verifiedDigestCrc32c,
   });
 
@@ -2155,6 +2206,9 @@ class AsymmetricSignResponse {
           signatureCrc32c: _json.containsKey('signatureCrc32c')
               ? _json['signatureCrc32c'] as core.String
               : null,
+          verifiedDataCrc32c: _json.containsKey('verifiedDataCrc32c')
+              ? _json['verifiedDataCrc32c'] as core.bool
+              : null,
           verifiedDigestCrc32c: _json.containsKey('verifiedDigestCrc32c')
               ? _json['verifiedDigestCrc32c'] as core.bool
               : null,
@@ -2165,6 +2219,8 @@ class AsymmetricSignResponse {
         if (protectionLevel != null) 'protectionLevel': protectionLevel!,
         if (signature != null) 'signature': signature!,
         if (signatureCrc32c != null) 'signatureCrc32c': signatureCrc32c!,
+        if (verifiedDataCrc32c != null)
+          'verifiedDataCrc32c': verifiedDataCrc32c!,
         if (verifiedDigestCrc32c != null)
           'verifiedDigestCrc32c': verifiedDigestCrc32c!,
       };
@@ -2229,19 +2285,20 @@ class AuditConfig {
 /// exempting jose@example.com from DATA_READ logging.
 typedef AuditLogConfig = $AuditLogConfig;
 
-/// Associates `members` with a `role`.
+/// Associates `members`, or principals, with a `role`.
 class Binding {
   /// The condition that is associated with this binding.
   ///
   /// If the condition evaluates to `true`, then this binding applies to the
   /// current request. If the condition evaluates to `false`, then this binding
   /// does not apply to the current request. However, a different role binding
-  /// might grant the same role to one or more of the members in this binding.
-  /// To learn which resources support conditions in their IAM policies, see the
+  /// might grant the same role to one or more of the principals in this
+  /// binding. To learn which resources support conditions in their IAM
+  /// policies, see the
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   Expr? condition;
 
-  /// Specifies the identities requesting access for a Cloud Platform resource.
+  /// Specifies the principals requesting access for a Cloud Platform resource.
   ///
   /// `members` can have the following values: * `allUsers`: A special
   /// identifier that represents anyone who is on the internet; with or without
@@ -2273,7 +2330,7 @@ class Binding {
   /// `example.com`.
   core.List<core.String>? members;
 
-  /// Role that is assigned to `members`.
+  /// Role that is assigned to the list of `members`, or principals.
   ///
   /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
   core.String? role;
@@ -2535,6 +2592,12 @@ class CryptoKeyVersion {
   /// a SHA256 digest.
   /// - "RSA_SIGN_PKCS1_4096_SHA512" : RSASSA-PKCS1-v1_5 with a 4096 bit key and
   /// a SHA512 digest.
+  /// - "RSA_SIGN_RAW_PKCS1_2048" : RSASSA-PKCS1-v1_5 signing without encoding,
+  /// with a 2048 bit key.
+  /// - "RSA_SIGN_RAW_PKCS1_3072" : RSASSA-PKCS1-v1_5 signing without encoding,
+  /// with a 3072 bit key.
+  /// - "RSA_SIGN_RAW_PKCS1_4096" : RSASSA-PKCS1-v1_5 signing without encoding,
+  /// with a 4096 bit key.
   /// - "RSA_DECRYPT_OAEP_2048_SHA256" : RSAES-OAEP 2048 bit key with a SHA256
   /// digest.
   /// - "RSA_DECRYPT_OAEP_3072_SHA256" : RSAES-OAEP 3072 bit key with a SHA256
@@ -2781,6 +2844,12 @@ class CryptoKeyVersionTemplate {
   /// a SHA256 digest.
   /// - "RSA_SIGN_PKCS1_4096_SHA512" : RSASSA-PKCS1-v1_5 with a 4096 bit key and
   /// a SHA512 digest.
+  /// - "RSA_SIGN_RAW_PKCS1_2048" : RSASSA-PKCS1-v1_5 signing without encoding,
+  /// with a 2048 bit key.
+  /// - "RSA_SIGN_RAW_PKCS1_3072" : RSASSA-PKCS1-v1_5 signing without encoding,
+  /// with a 3072 bit key.
+  /// - "RSA_SIGN_RAW_PKCS1_4096" : RSASSA-PKCS1-v1_5 signing without encoding,
+  /// with a 4096 bit key.
   /// - "RSA_DECRYPT_OAEP_2048_SHA256" : RSAES-OAEP 2048 bit key with a SHA256
   /// digest.
   /// - "RSA_DECRYPT_OAEP_3072_SHA256" : RSAES-OAEP 3072 bit key with a SHA256
@@ -3427,6 +3496,12 @@ class ImportCryptoKeyVersionRequest {
   /// a SHA256 digest.
   /// - "RSA_SIGN_PKCS1_4096_SHA512" : RSASSA-PKCS1-v1_5 with a 4096 bit key and
   /// a SHA512 digest.
+  /// - "RSA_SIGN_RAW_PKCS1_2048" : RSASSA-PKCS1-v1_5 signing without encoding,
+  /// with a 2048 bit key.
+  /// - "RSA_SIGN_RAW_PKCS1_3072" : RSASSA-PKCS1-v1_5 signing without encoding,
+  /// with a 3072 bit key.
+  /// - "RSA_SIGN_RAW_PKCS1_4096" : RSASSA-PKCS1-v1_5 signing without encoding,
+  /// with a 4096 bit key.
   /// - "RSA_DECRYPT_OAEP_2048_SHA256" : RSAES-OAEP 2048 bit key with a SHA256
   /// digest.
   /// - "RSA_DECRYPT_OAEP_3072_SHA256" : RSAES-OAEP 3072 bit key with a SHA256
@@ -4310,15 +4385,15 @@ class MacVerifyResponse {
 /// controls for Google Cloud resources.
 ///
 /// A `Policy` is a collection of `bindings`. A `binding` binds one or more
-/// `members` to a single `role`. Members can be user accounts, service
-/// accounts, Google groups, and domains (such as G Suite). A `role` is a named
-/// list of permissions; each `role` can be an IAM predefined role or a
-/// user-created custom role. For some types of Google Cloud resources, a
-/// `binding` can also specify a `condition`, which is a logical expression that
-/// allows access to a resource only if the expression evaluates to `true`. A
-/// condition can add constraints based on attributes of the request, the
-/// resource, or both. To learn which resources support conditions in their IAM
-/// policies, see the
+/// `members`, or principals, to a single `role`. Principals can be user
+/// accounts, service accounts, Google groups, and domains (such as G Suite). A
+/// `role` is a named list of permissions; each `role` can be an IAM predefined
+/// role or a user-created custom role. For some types of Google Cloud
+/// resources, a `binding` can also specify a `condition`, which is a logical
+/// expression that allows access to a resource only if the expression evaluates
+/// to `true`. A condition can add constraints based on attributes of the
+/// request, the resource, or both. To learn which resources support conditions
+/// in their IAM policies, see the
 /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 /// **JSON example:** { "bindings": \[ { "role":
 /// "roles/resourcemanager.organizationAdmin", "members": \[
@@ -4341,11 +4416,16 @@ class Policy {
   /// Specifies cloud audit logging configuration for this policy.
   core.List<AuditConfig>? auditConfigs;
 
-  /// Associates a list of `members` to a `role`.
+  /// Associates a list of `members`, or principals, with a `role`.
   ///
   /// Optionally, may specify a `condition` that determines how and when the
   /// `bindings` are applied. Each of the `bindings` must contain at least one
-  /// member.
+  /// principal. The `bindings` in a `Policy` can refer to up to 1,500
+  /// principals; up to 250 of these principals can be Google groups. Each
+  /// occurrence of a principal counts towards these limits. For example, if the
+  /// `bindings` grant 50 different roles to `user:alice@example.com`, and not
+  /// to any other principal, then you can add another 1,450 principals to the
+  /// `bindings` in the `Policy`.
   core.List<Binding>? bindings;
 
   /// `etag` is used for optimistic concurrency control as a way to help prevent
@@ -4446,6 +4526,12 @@ class PublicKey {
   /// a SHA256 digest.
   /// - "RSA_SIGN_PKCS1_4096_SHA512" : RSASSA-PKCS1-v1_5 with a 4096 bit key and
   /// a SHA512 digest.
+  /// - "RSA_SIGN_RAW_PKCS1_2048" : RSASSA-PKCS1-v1_5 signing without encoding,
+  /// with a 2048 bit key.
+  /// - "RSA_SIGN_RAW_PKCS1_3072" : RSASSA-PKCS1-v1_5 signing without encoding,
+  /// with a 3072 bit key.
+  /// - "RSA_SIGN_RAW_PKCS1_4096" : RSASSA-PKCS1-v1_5 signing without encoding,
+  /// with a 4096 bit key.
   /// - "RSA_DECRYPT_OAEP_2048_SHA256" : RSAES-OAEP 2048 bit key with a SHA256
   /// digest.
   /// - "RSA_DECRYPT_OAEP_3072_SHA256" : RSAES-OAEP 3072 bit key with a SHA256

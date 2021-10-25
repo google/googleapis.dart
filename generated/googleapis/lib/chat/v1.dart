@@ -94,6 +94,11 @@ class DmsResource {
   /// Example: spaces/AAAAMpdlehY
   /// Value must have pattern `^dms/\[^/\]+$`.
   ///
+  /// [requestId] - Optional. A unique request ID for this message. If a message
+  /// has already been created in the space with this request ID, the subsequent
+  /// request will return the existing message and no new message will be
+  /// created.
+  ///
   /// [threadKey] - Optional. Opaque thread identifier string that can be
   /// specified to group messages into a single thread. If this is the first
   /// message with a given thread identifier, a new thread is created.
@@ -116,11 +121,13 @@ class DmsResource {
   async.Future<Message> messages(
     Message request,
     core.String parent, {
+    core.String? requestId,
     core.String? threadKey,
     core.String? $fields,
   }) async {
     final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
       if (threadKey != null) 'threadKey': [threadKey],
       if ($fields != null) 'fields': [$fields],
     };
@@ -148,6 +155,11 @@ class DmsResource {
   /// Example: spaces/AAAAMpdlehY
   /// Value must have pattern `^dms/\[^/\]+$`.
   ///
+  /// [requestId] - Optional. A unique request ID for this message. If a message
+  /// has already been created in the space with this request ID, the subsequent
+  /// request will return the existing message and no new message will be
+  /// created.
+  ///
   /// [threadKey] - Optional. Opaque thread identifier string that can be
   /// specified to group messages into a single thread. If this is the first
   /// message with a given thread identifier, a new thread is created.
@@ -170,11 +182,13 @@ class DmsResource {
   async.Future<Message> webhooks(
     Message request,
     core.String parent, {
+    core.String? requestId,
     core.String? threadKey,
     core.String? $fields,
   }) async {
     final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
       if (threadKey != null) 'threadKey': [threadKey],
       if ($fields != null) 'fields': [$fields],
     };
@@ -208,6 +222,11 @@ class DmsConversationsResource {
   /// Example: spaces/AAAAMpdlehY
   /// Value must have pattern `^dms/\[^/\]+/conversations/\[^/\]+$`.
   ///
+  /// [requestId] - Optional. A unique request ID for this message. If a message
+  /// has already been created in the space with this request ID, the subsequent
+  /// request will return the existing message and no new message will be
+  /// created.
+  ///
   /// [threadKey] - Optional. Opaque thread identifier string that can be
   /// specified to group messages into a single thread. If this is the first
   /// message with a given thread identifier, a new thread is created.
@@ -230,11 +249,13 @@ class DmsConversationsResource {
   async.Future<Message> messages(
     Message request,
     core.String parent, {
+    core.String? requestId,
     core.String? threadKey,
     core.String? $fields,
   }) async {
     final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
       if (threadKey != null) 'threadKey': [threadKey],
       if ($fields != null) 'fields': [$fields],
     };
@@ -329,6 +350,11 @@ class RoomsResource {
   /// Example: spaces/AAAAMpdlehY
   /// Value must have pattern `^rooms/\[^/\]+$`.
   ///
+  /// [requestId] - Optional. A unique request ID for this message. If a message
+  /// has already been created in the space with this request ID, the subsequent
+  /// request will return the existing message and no new message will be
+  /// created.
+  ///
   /// [threadKey] - Optional. Opaque thread identifier string that can be
   /// specified to group messages into a single thread. If this is the first
   /// message with a given thread identifier, a new thread is created.
@@ -351,11 +377,13 @@ class RoomsResource {
   async.Future<Message> messages(
     Message request,
     core.String parent, {
+    core.String? requestId,
     core.String? threadKey,
     core.String? $fields,
   }) async {
     final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
       if (threadKey != null) 'threadKey': [threadKey],
       if ($fields != null) 'fields': [$fields],
     };
@@ -383,6 +411,11 @@ class RoomsResource {
   /// Example: spaces/AAAAMpdlehY
   /// Value must have pattern `^rooms/\[^/\]+$`.
   ///
+  /// [requestId] - Optional. A unique request ID for this message. If a message
+  /// has already been created in the space with this request ID, the subsequent
+  /// request will return the existing message and no new message will be
+  /// created.
+  ///
   /// [threadKey] - Optional. Opaque thread identifier string that can be
   /// specified to group messages into a single thread. If this is the first
   /// message with a given thread identifier, a new thread is created.
@@ -405,11 +438,13 @@ class RoomsResource {
   async.Future<Message> webhooks(
     Message request,
     core.String parent, {
+    core.String? requestId,
     core.String? threadKey,
     core.String? $fields,
   }) async {
     final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
       if (threadKey != null) 'threadKey': [threadKey],
       if ($fields != null) 'fields': [$fields],
     };
@@ -443,6 +478,11 @@ class RoomsConversationsResource {
   /// Example: spaces/AAAAMpdlehY
   /// Value must have pattern `^rooms/\[^/\]+/conversations/\[^/\]+$`.
   ///
+  /// [requestId] - Optional. A unique request ID for this message. If a message
+  /// has already been created in the space with this request ID, the subsequent
+  /// request will return the existing message and no new message will be
+  /// created.
+  ///
   /// [threadKey] - Optional. Opaque thread identifier string that can be
   /// specified to group messages into a single thread. If this is the first
   /// message with a given thread identifier, a new thread is created.
@@ -465,11 +505,13 @@ class RoomsConversationsResource {
   async.Future<Message> messages(
     Message request,
     core.String parent, {
+    core.String? requestId,
     core.String? threadKey,
     core.String? $fields,
   }) async {
     final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
       if (threadKey != null) 'threadKey': [threadKey],
       if ($fields != null) 'fields': [$fields],
     };
@@ -499,7 +541,7 @@ class SpacesResource {
   /// Request parameters:
   ///
   /// [name] - Required. Resource name of the space, in the form "spaces / * ".
-  /// Example: spaces/AAAAMpdlehY
+  /// Example: spaces/AAAAAAAAAAAA
   /// Value must have pattern `^spaces/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -585,6 +627,11 @@ class SpacesResource {
   /// Example: spaces/AAAAMpdlehY
   /// Value must have pattern `^spaces/\[^/\]+$`.
   ///
+  /// [requestId] - Optional. A unique request ID for this message. If a message
+  /// has already been created in the space with this request ID, the subsequent
+  /// request will return the existing message and no new message will be
+  /// created.
+  ///
   /// [threadKey] - Optional. Opaque thread identifier string that can be
   /// specified to group messages into a single thread. If this is the first
   /// message with a given thread identifier, a new thread is created.
@@ -607,11 +654,13 @@ class SpacesResource {
   async.Future<Message> webhooks(
     Message request,
     core.String parent, {
+    core.String? requestId,
     core.String? threadKey,
     core.String? $fields,
   }) async {
     final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
       if (threadKey != null) 'threadKey': [threadKey],
       if ($fields != null) 'fields': [$fields],
     };
@@ -739,6 +788,11 @@ class SpacesMessagesResource {
   /// Example: spaces/AAAAMpdlehY
   /// Value must have pattern `^spaces/\[^/\]+$`.
   ///
+  /// [requestId] - Optional. A unique request ID for this message. If a message
+  /// has already been created in the space with this request ID, the subsequent
+  /// request will return the existing message and no new message will be
+  /// created.
+  ///
   /// [threadKey] - Optional. Opaque thread identifier string that can be
   /// specified to group messages into a single thread. If this is the first
   /// message with a given thread identifier, a new thread is created.
@@ -761,11 +815,13 @@ class SpacesMessagesResource {
   async.Future<Message> create(
     Message request,
     core.String parent, {
+    core.String? requestId,
     core.String? threadKey,
     core.String? $fields,
   }) async {
     final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
       if (threadKey != null) 'threadKey': [threadKey],
       if ($fields != null) 'fields': [$fields],
     };
@@ -861,7 +917,8 @@ class SpacesMessagesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - null
+  /// [name] - Resource name in the form `spaces / * /messages / * `. Example:
+  /// `spaces/AAAAMpdlehY/messages/UMxbHmzDlr4.UMxbHmzDlr4`
   /// Value must have pattern `^spaces/\[^/\]+/messages/\[^/\]+$`.
   ///
   /// [updateMask] - Required. The field paths to be updated, comma separated if
@@ -3602,6 +3659,10 @@ class Message {
   ///
   /// Output only.
   core.String? lastUpdateTime;
+
+  /// Resource name in the form `spaces / * /messages / * `.
+  ///
+  /// Example: `spaces/AAAAMpdlehY/messages/UMxbHmzDlr4.UMxbHmzDlr4`
   core.String? name;
 
   /// Text for generating preview chips.
@@ -3899,7 +3960,7 @@ class Space {
 
   /// Resource name of the space, in the form "spaces / * ".
   ///
-  /// Example: spaces/AAAAMpdlehYs
+  /// Example: spaces/AAAAAAAAAAAA
   core.String? name;
 
   /// Whether the space is a DM between a bot and a single human.
@@ -3917,7 +3978,8 @@ class Space {
   /// - "TYPE_UNSPECIFIED"
   /// - "ROOM" : Conversations between two or more humans.
   /// - "DM" : 1:1 Direct Message between a human and a Chat bot, where all
-  /// messages are flat.
+  /// messages are flat. Note that this does not include direct messages between
+  /// two humans.
   core.String? type;
 
   Space({

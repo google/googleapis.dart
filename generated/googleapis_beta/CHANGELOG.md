@@ -1,3 +1,5 @@
+## 7.0.0-dev
+
 ## 6.0.0
 
 - Introduce a new `$shared` library that contains identical classes across

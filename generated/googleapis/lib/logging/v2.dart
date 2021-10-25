@@ -257,7 +257,8 @@ class BillingAccountsExclusionsResource {
   BillingAccountsExclusionsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Creates a new exclusion in a specified parent resource.
+  /// Creates a new exclusion in the _Default sink in a specified parent
+  /// resource.
   ///
   /// Only log entries belonging to that resource can be excluded. You can have
   /// up to 10 exclusions in a resource.
@@ -304,7 +305,7 @@ class BillingAccountsExclusionsResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Deletes an exclusion.
+  /// Deletes an exclusion in the _Default sink.
   ///
   /// Request parameters:
   ///
@@ -344,7 +345,7 @@ class BillingAccountsExclusionsResource {
     return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Gets the description of an exclusion.
+  /// Gets the description of an exclusion in the _Default sink.
   ///
   /// Request parameters:
   ///
@@ -385,7 +386,7 @@ class BillingAccountsExclusionsResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Lists all the exclusions in a parent resource.
+  /// Lists all the exclusions on the _Default sink in a parent resource.
   ///
   /// Request parameters:
   ///
@@ -436,7 +437,8 @@ class BillingAccountsExclusionsResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Changes one or more properties of an existing exclusion.
+  /// Changes one or more properties of an existing exclusion in the _Default
+  /// sink.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1869,7 +1871,8 @@ class ExclusionsResource {
 
   ExclusionsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Creates a new exclusion in a specified parent resource.
+  /// Creates a new exclusion in the _Default sink in a specified parent
+  /// resource.
   ///
   /// Only log entries belonging to that resource can be excluded. You can have
   /// up to 10 exclusions in a resource.
@@ -1916,7 +1919,7 @@ class ExclusionsResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Deletes an exclusion.
+  /// Deletes an exclusion in the _Default sink.
   ///
   /// Request parameters:
   ///
@@ -1956,7 +1959,7 @@ class ExclusionsResource {
     return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Gets the description of an exclusion.
+  /// Gets the description of an exclusion in the _Default sink.
   ///
   /// Request parameters:
   ///
@@ -1997,7 +2000,7 @@ class ExclusionsResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Lists all the exclusions in a parent resource.
+  /// Lists all the exclusions on the _Default sink in a parent resource.
   ///
   /// Request parameters:
   ///
@@ -2048,7 +2051,8 @@ class ExclusionsResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Changes one or more properties of an existing exclusion.
+  /// Changes one or more properties of an existing exclusion in the _Default
+  /// sink.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2122,7 +2126,8 @@ class FoldersExclusionsResource {
 
   FoldersExclusionsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Creates a new exclusion in a specified parent resource.
+  /// Creates a new exclusion in the _Default sink in a specified parent
+  /// resource.
   ///
   /// Only log entries belonging to that resource can be excluded. You can have
   /// up to 10 exclusions in a resource.
@@ -2169,7 +2174,7 @@ class FoldersExclusionsResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Deletes an exclusion.
+  /// Deletes an exclusion in the _Default sink.
   ///
   /// Request parameters:
   ///
@@ -2209,7 +2214,7 @@ class FoldersExclusionsResource {
     return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Gets the description of an exclusion.
+  /// Gets the description of an exclusion in the _Default sink.
   ///
   /// Request parameters:
   ///
@@ -2250,7 +2255,7 @@ class FoldersExclusionsResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Lists all the exclusions in a parent resource.
+  /// Lists all the exclusions on the _Default sink in a parent resource.
   ///
   /// Request parameters:
   ///
@@ -2301,7 +2306,8 @@ class FoldersExclusionsResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Changes one or more properties of an existing exclusion.
+  /// Changes one or more properties of an existing exclusion in the _Default
+  /// sink.
   ///
   /// [request] - The metadata request object.
   ///
@@ -4625,10 +4631,11 @@ class OrganizationsResource {
   OrganizationsResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets the Logs Router CMEK settings for the given resource.Note: CMEK for
-  /// the Logs Router can currently only be configured for GCP organizations.
+  /// the Logs Router can currently only be configured for Google Cloud
+  /// organizations.
   ///
-  /// Once configured, it applies to all projects and folders in the GCP
-  /// organization.See Enabling CMEK for Logs Router
+  /// Once configured, it applies to all projects and folders in the Google
+  /// Cloud organization.See Enabling CMEK for Logs Router
   /// (https://cloud.google.com/logging/docs/routing/managed-encryption) for
   /// more information.
   ///
@@ -4640,8 +4647,9 @@ class OrganizationsResource {
   /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/cmekSettings"
   /// "folders/\[FOLDER_ID\]/cmekSettings" For
   /// example:"organizations/12345/cmekSettings"Note: CMEK for the Logs Router
-  /// can currently only be configured for GCP organizations. Once configured,
-  /// it applies to all projects and folders in the GCP organization.
+  /// can currently only be configured for Google Cloud organizations. Once
+  /// configured, it applies to all projects and folders in the Google Cloud
+  /// organization.
   /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -4674,12 +4682,12 @@ class OrganizationsResource {
   }
 
   /// Updates the Logs Router CMEK settings for the given resource.Note: CMEK
-  /// for the Logs Router can currently only be configured for GCP
+  /// for the Logs Router can currently only be configured for Google Cloud
   /// organizations.
   ///
-  /// Once configured, it applies to all projects and folders in the GCP
-  /// organization.UpdateCmekSettings will fail if 1) kms_key_name is invalid,
-  /// or 2) the associated service account does not have the required
+  /// Once configured, it applies to all projects and folders in the Google
+  /// Cloud organization.UpdateCmekSettings will fail if 1) kms_key_name is
+  /// invalid, or 2) the associated service account does not have the required
   /// roles/cloudkms.cryptoKeyEncrypterDecrypter role assigned for the key, or
   /// 3) access to the key is disabled.See Enabling CMEK for Logs Router
   /// (https://cloud.google.com/logging/docs/routing/managed-encryption) for
@@ -4695,8 +4703,9 @@ class OrganizationsResource {
   /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/cmekSettings"
   /// "folders/\[FOLDER_ID\]/cmekSettings" For
   /// example:"organizations/12345/cmekSettings"Note: CMEK for the Logs Router
-  /// can currently only be configured for GCP organizations. Once configured,
-  /// it applies to all projects and folders in the GCP organization.
+  /// can currently only be configured for Google Cloud organizations. Once
+  /// configured, it applies to all projects and folders in the Google Cloud
+  /// organization.
   /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [updateMask] - Optional. Field mask identifying which fields from
@@ -4745,7 +4754,8 @@ class OrganizationsExclusionsResource {
   OrganizationsExclusionsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Creates a new exclusion in a specified parent resource.
+  /// Creates a new exclusion in the _Default sink in a specified parent
+  /// resource.
   ///
   /// Only log entries belonging to that resource can be excluded. You can have
   /// up to 10 exclusions in a resource.
@@ -4792,7 +4802,7 @@ class OrganizationsExclusionsResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Deletes an exclusion.
+  /// Deletes an exclusion in the _Default sink.
   ///
   /// Request parameters:
   ///
@@ -4832,7 +4842,7 @@ class OrganizationsExclusionsResource {
     return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Gets the description of an exclusion.
+  /// Gets the description of an exclusion in the _Default sink.
   ///
   /// Request parameters:
   ///
@@ -4873,7 +4883,7 @@ class OrganizationsExclusionsResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Lists all the exclusions in a parent resource.
+  /// Lists all the exclusions on the _Default sink in a parent resource.
   ///
   /// Request parameters:
   ///
@@ -4924,7 +4934,8 @@ class OrganizationsExclusionsResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Changes one or more properties of an existing exclusion.
+  /// Changes one or more properties of an existing exclusion in the _Default
+  /// sink.
   ///
   /// [request] - The metadata request object.
   ///
@@ -6277,7 +6288,8 @@ class ProjectsExclusionsResource {
 
   ProjectsExclusionsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Creates a new exclusion in a specified parent resource.
+  /// Creates a new exclusion in the _Default sink in a specified parent
+  /// resource.
   ///
   /// Only log entries belonging to that resource can be excluded. You can have
   /// up to 10 exclusions in a resource.
@@ -6324,7 +6336,7 @@ class ProjectsExclusionsResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Deletes an exclusion.
+  /// Deletes an exclusion in the _Default sink.
   ///
   /// Request parameters:
   ///
@@ -6364,7 +6376,7 @@ class ProjectsExclusionsResource {
     return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Gets the description of an exclusion.
+  /// Gets the description of an exclusion in the _Default sink.
   ///
   /// Request parameters:
   ///
@@ -6405,7 +6417,7 @@ class ProjectsExclusionsResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Lists all the exclusions in a parent resource.
+  /// Lists all the exclusions on the _Default sink in a parent resource.
   ///
   /// Request parameters:
   ///
@@ -6456,7 +6468,8 @@ class ProjectsExclusionsResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Changes one or more properties of an existing exclusion.
+  /// Changes one or more properties of an existing exclusion in the _Default
+  /// sink.
   ///
   /// [request] - The metadata request object.
   ///
@@ -8285,10 +8298,11 @@ class V2Resource {
   V2Resource(commons.ApiRequester client) : _requester = client;
 
   /// Gets the Logs Router CMEK settings for the given resource.Note: CMEK for
-  /// the Logs Router can currently only be configured for GCP organizations.
+  /// the Logs Router can currently only be configured for Google Cloud
+  /// organizations.
   ///
-  /// Once configured, it applies to all projects and folders in the GCP
-  /// organization.See Enabling CMEK for Logs Router
+  /// Once configured, it applies to all projects and folders in the Google
+  /// Cloud organization.See Enabling CMEK for Logs Router
   /// (https://cloud.google.com/logging/docs/routing/managed-encryption) for
   /// more information.
   ///
@@ -8300,8 +8314,9 @@ class V2Resource {
   /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/cmekSettings"
   /// "folders/\[FOLDER_ID\]/cmekSettings" For
   /// example:"organizations/12345/cmekSettings"Note: CMEK for the Logs Router
-  /// can currently only be configured for GCP organizations. Once configured,
-  /// it applies to all projects and folders in the GCP organization.
+  /// can currently only be configured for Google Cloud organizations. Once
+  /// configured, it applies to all projects and folders in the Google Cloud
+  /// organization.
   /// Value must have pattern `^\[^/\]+/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -8334,12 +8349,12 @@ class V2Resource {
   }
 
   /// Updates the Logs Router CMEK settings for the given resource.Note: CMEK
-  /// for the Logs Router can currently only be configured for GCP
+  /// for the Logs Router can currently only be configured for Google Cloud
   /// organizations.
   ///
-  /// Once configured, it applies to all projects and folders in the GCP
-  /// organization.UpdateCmekSettings will fail if 1) kms_key_name is invalid,
-  /// or 2) the associated service account does not have the required
+  /// Once configured, it applies to all projects and folders in the Google
+  /// Cloud organization.UpdateCmekSettings will fail if 1) kms_key_name is
+  /// invalid, or 2) the associated service account does not have the required
   /// roles/cloudkms.cryptoKeyEncrypterDecrypter role assigned for the key, or
   /// 3) access to the key is disabled.See Enabling CMEK for Logs Router
   /// (https://cloud.google.com/logging/docs/routing/managed-encryption) for
@@ -8355,8 +8370,9 @@ class V2Resource {
   /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/cmekSettings"
   /// "folders/\[FOLDER_ID\]/cmekSettings" For
   /// example:"organizations/12345/cmekSettings"Note: CMEK for the Logs Router
-  /// can currently only be configured for GCP organizations. Once configured,
-  /// it applies to all projects and folders in the GCP organization.
+  /// can currently only be configured for Google Cloud organizations. Once
+  /// configured, it applies to all projects and folders in the Google Cloud
+  /// organization.
   /// Value must have pattern `^\[^/\]+/\[^/\]+$`.
   ///
   /// [updateMask] - Optional. Field mask identifying which fields from
@@ -8510,9 +8526,9 @@ typedef CancelOperationRequest = $Empty;
 /// Describes the customer-managed encryption key (CMEK) settings associated
 /// with a project, folder, organization, billing account, or flexible
 /// resource.Note: CMEK for the Logs Router can currently only be configured for
-/// GCP organizations.
+/// Google Cloud organizations.
 ///
-/// Once configured, it applies to all projects and folders in the GCP
+/// Once configured, it applies to all projects and folders in the Google Cloud
 /// organization.See Enabling CMEK for Logs Router
 /// (https://cloud.google.com/logging/docs/routing/managed-encryption) for more
 /// information.
@@ -9802,13 +9818,12 @@ class LogEntrySourceLocation {
       };
 }
 
-/// Specifies a set of log entries that are not to be stored in Cloud Logging.
+/// Specifies a set of log entries that are filtered out by a sink.
 ///
-/// If your GCP resource receives a large volume of log entries, you can use
-/// exclusions to reduce your chargeable logs. Exclusions are processed after
-/// log sinks, so you can export log entries before they are excluded. Note that
-/// organization-level and folder-level exclusions don't apply to child
-/// resources, and that you can't exclude audit log entries.
+/// If your Google Cloud resource receives a large volume of log entries, you
+/// can use exclusions to reduce your chargeable logs. Note that exclusions on
+/// organization-level and folder-level sinks don't apply to child resources.
+/// Note also that you cannot modify the _Required sink or exclude logs from it.
 class LogExclusion {
   /// The creation timestamp of the exclusion.This field may not be present for
   /// older exclusions.
@@ -10212,7 +10227,9 @@ class LogSink {
   /// fail. For more information, see Granting Access for a Resource
   /// (https://cloud.google.com/iam/docs/granting-roles-to-service-accounts#granting_access_to_a_service_account_for_a_resource).
   /// Consult the destination service's documentation to determine the
-  /// appropriate IAM roles to assign to the identity.
+  /// appropriate IAM roles to assign to the identity.Sinks that have a
+  /// destination that is a log bucket in the same project as the sink do not
+  /// have a writer_identity and no additional permissions are required.
   ///
   /// Output only.
   core.String? writerIdentity;

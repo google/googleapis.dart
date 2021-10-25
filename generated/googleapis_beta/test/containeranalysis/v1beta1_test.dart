@@ -1485,8 +1485,7 @@ api.FileOccurrence buildFileOccurrence() {
     o.copyright = 'foo';
     o.filesLicenseInfo = buildUnnamed24();
     o.id = 'foo';
-    o.licenseComments = 'foo';
-    o.licenseConcluded = 'foo';
+    o.licenseConcluded = buildLicense();
     o.notice = 'foo';
   }
   buildCounterFileOccurrence--;
@@ -1511,14 +1510,7 @@ void checkFileOccurrence(api.FileOccurrence o) {
       o.id!,
       unittest.equals('foo'),
     );
-    unittest.expect(
-      o.licenseComments!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.licenseConcluded!,
-      unittest.equals('foo'),
-    );
+    checkLicense(o.licenseConcluded!);
     unittest.expect(
       o.notice!,
       unittest.equals('foo'),
@@ -2231,6 +2223,33 @@ void checkLayer(api.Layer o) {
   buildCounterLayer--;
 }
 
+core.int buildCounterLicense = 0;
+api.License buildLicense() {
+  final o = api.License();
+  buildCounterLicense++;
+  if (buildCounterLicense < 3) {
+    o.comments = 'foo';
+    o.expression = 'foo';
+  }
+  buildCounterLicense--;
+  return o;
+}
+
+void checkLicense(api.License o) {
+  buildCounterLicense++;
+  if (buildCounterLicense < 3) {
+    unittest.expect(
+      o.comments!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.expression!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterLicense--;
+}
+
 core.List<core.String> buildUnnamed35() => [
       'foo',
       'foo',
@@ -2516,7 +2535,7 @@ api.Note buildNote() {
     o.sbom = buildDocumentNote();
     o.shortDescription = 'foo';
     o.spdxFile = buildFileNote();
-    o.spdxPackage = buildPackageNote();
+    o.spdxPackage = buildPackageInfoNote();
     o.spdxRelationship = buildRelationshipNote();
     o.updateTime = 'foo';
     o.vulnerability = buildVulnerability();
@@ -2563,7 +2582,7 @@ void checkNote(api.Note o) {
       unittest.equals('foo'),
     );
     checkFileNote(o.spdxFile!);
-    checkPackageNote(o.spdxPackage!);
+    checkPackageInfoNote(o.spdxPackage!);
     checkRelationshipNote(o.spdxRelationship!);
     unittest.expect(
       o.updateTime!,
@@ -2594,7 +2613,7 @@ api.Occurrence buildOccurrence() {
     o.resource = buildResource();
     o.sbom = buildDocumentOccurrence();
     o.spdxFile = buildFileOccurrence();
-    o.spdxPackage = buildPackageOccurrence();
+    o.spdxPackage = buildPackageInfoOccurrence();
     o.spdxRelationship = buildRelationshipOccurrence();
     o.updateTime = 'foo';
     o.vulnerability = buildGrafeasV1beta1VulnerabilityDetails();
@@ -2636,7 +2655,7 @@ void checkOccurrence(api.Occurrence o) {
     checkResource(o.resource!);
     checkDocumentOccurrence(o.sbom!);
     checkFileOccurrence(o.spdxFile!);
-    checkPackageOccurrence(o.spdxPackage!);
+    checkPackageInfoOccurrence(o.spdxPackage!);
     checkRelationshipOccurrence(o.spdxRelationship!);
     unittest.expect(
       o.updateTime!,
@@ -2682,6 +2701,188 @@ void checkPackage(api.Package o) {
   buildCounterPackage--;
 }
 
+core.List<api.ExternalRef> buildUnnamed45() => [
+      buildExternalRef(),
+      buildExternalRef(),
+    ];
+
+void checkUnnamed45(core.List<api.ExternalRef> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkExternalRef(o[0]);
+  checkExternalRef(o[1]);
+}
+
+core.List<core.String> buildUnnamed46() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed46(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.int buildCounterPackageInfoNote = 0;
+api.PackageInfoNote buildPackageInfoNote() {
+  final o = api.PackageInfoNote();
+  buildCounterPackageInfoNote++;
+  if (buildCounterPackageInfoNote < 3) {
+    o.analyzed = true;
+    o.attribution = 'foo';
+    o.checksum = 'foo';
+    o.copyright = 'foo';
+    o.detailedDescription = 'foo';
+    o.downloadLocation = 'foo';
+    o.externalRefs = buildUnnamed45();
+    o.filesLicenseInfo = buildUnnamed46();
+    o.homePage = 'foo';
+    o.licenseDeclared = buildLicense();
+    o.originator = 'foo';
+    o.packageType = 'foo';
+    o.summaryDescription = 'foo';
+    o.supplier = 'foo';
+    o.title = 'foo';
+    o.verificationCode = 'foo';
+    o.version = 'foo';
+  }
+  buildCounterPackageInfoNote--;
+  return o;
+}
+
+void checkPackageInfoNote(api.PackageInfoNote o) {
+  buildCounterPackageInfoNote++;
+  if (buildCounterPackageInfoNote < 3) {
+    unittest.expect(o.analyzed!, unittest.isTrue);
+    unittest.expect(
+      o.attribution!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.checksum!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.copyright!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.detailedDescription!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.downloadLocation!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed45(o.externalRefs!);
+    checkUnnamed46(o.filesLicenseInfo!);
+    unittest.expect(
+      o.homePage!,
+      unittest.equals('foo'),
+    );
+    checkLicense(o.licenseDeclared!);
+    unittest.expect(
+      o.originator!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.packageType!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.summaryDescription!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.supplier!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.title!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.verificationCode!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.version!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterPackageInfoNote--;
+}
+
+core.int buildCounterPackageInfoOccurrence = 0;
+api.PackageInfoOccurrence buildPackageInfoOccurrence() {
+  final o = api.PackageInfoOccurrence();
+  buildCounterPackageInfoOccurrence++;
+  if (buildCounterPackageInfoOccurrence < 3) {
+    o.comment = 'foo';
+    o.filename = 'foo';
+    o.homePage = 'foo';
+    o.id = 'foo';
+    o.licenseConcluded = buildLicense();
+    o.packageType = 'foo';
+    o.sourceInfo = 'foo';
+    o.summaryDescription = 'foo';
+    o.title = 'foo';
+    o.version = 'foo';
+  }
+  buildCounterPackageInfoOccurrence--;
+  return o;
+}
+
+void checkPackageInfoOccurrence(api.PackageInfoOccurrence o) {
+  buildCounterPackageInfoOccurrence++;
+  if (buildCounterPackageInfoOccurrence < 3) {
+    unittest.expect(
+      o.comment!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.filename!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.homePage!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.id!,
+      unittest.equals('foo'),
+    );
+    checkLicense(o.licenseConcluded!);
+    unittest.expect(
+      o.packageType!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.sourceInfo!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.summaryDescription!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.title!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.version!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterPackageInfoOccurrence--;
+}
+
 core.int buildCounterPackageIssue = 0;
 api.PackageIssue buildPackageIssue() {
   final o = api.PackageIssue();
@@ -2716,169 +2917,6 @@ void checkPackageIssue(api.PackageIssue o) {
     );
   }
   buildCounterPackageIssue--;
-}
-
-core.List<api.ExternalRef> buildUnnamed45() => [
-      buildExternalRef(),
-      buildExternalRef(),
-    ];
-
-void checkUnnamed45(core.List<api.ExternalRef> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkExternalRef(o[0]);
-  checkExternalRef(o[1]);
-}
-
-core.List<core.String> buildUnnamed46() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed46(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
-core.int buildCounterPackageNote = 0;
-api.PackageNote buildPackageNote() {
-  final o = api.PackageNote();
-  buildCounterPackageNote++;
-  if (buildCounterPackageNote < 3) {
-    o.analyzed = true;
-    o.attribution = 'foo';
-    o.checksum = 'foo';
-    o.copyright = 'foo';
-    o.detailedDescription = 'foo';
-    o.downloadLocation = 'foo';
-    o.externalRefs = buildUnnamed45();
-    o.filesLicenseInfo = buildUnnamed46();
-    o.homePage = 'foo';
-    o.licenseDeclared = 'foo';
-    o.originator = 'foo';
-    o.summaryDescription = 'foo';
-    o.supplier = 'foo';
-    o.title = 'foo';
-    o.verificationCode = 'foo';
-    o.version = 'foo';
-  }
-  buildCounterPackageNote--;
-  return o;
-}
-
-void checkPackageNote(api.PackageNote o) {
-  buildCounterPackageNote++;
-  if (buildCounterPackageNote < 3) {
-    unittest.expect(o.analyzed!, unittest.isTrue);
-    unittest.expect(
-      o.attribution!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.checksum!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.copyright!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.detailedDescription!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.downloadLocation!,
-      unittest.equals('foo'),
-    );
-    checkUnnamed45(o.externalRefs!);
-    checkUnnamed46(o.filesLicenseInfo!);
-    unittest.expect(
-      o.homePage!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.licenseDeclared!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.originator!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.summaryDescription!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.supplier!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.title!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.verificationCode!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.version!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterPackageNote--;
-}
-
-core.int buildCounterPackageOccurrence = 0;
-api.PackageOccurrence buildPackageOccurrence() {
-  final o = api.PackageOccurrence();
-  buildCounterPackageOccurrence++;
-  if (buildCounterPackageOccurrence < 3) {
-    o.comment = 'foo';
-    o.filename = 'foo';
-    o.id = 'foo';
-    o.licenseComments = 'foo';
-    o.licenseConcluded = 'foo';
-    o.sourceInfo = 'foo';
-  }
-  buildCounterPackageOccurrence--;
-  return o;
-}
-
-void checkPackageOccurrence(api.PackageOccurrence o) {
-  buildCounterPackageOccurrence++;
-  if (buildCounterPackageOccurrence < 3) {
-    unittest.expect(
-      o.comment!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.filename!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.id!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.licenseComments!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.licenseConcluded!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.sourceInfo!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterPackageOccurrence--;
 }
 
 core.int buildCounterPgpSignedAttestation = 0;
@@ -3011,14 +3049,21 @@ core.int buildCounterRelationshipNote = 0;
 api.RelationshipNote buildRelationshipNote() {
   final o = api.RelationshipNote();
   buildCounterRelationshipNote++;
-  if (buildCounterRelationshipNote < 3) {}
+  if (buildCounterRelationshipNote < 3) {
+    o.type = 'foo';
+  }
   buildCounterRelationshipNote--;
   return o;
 }
 
 void checkRelationshipNote(api.RelationshipNote o) {
   buildCounterRelationshipNote++;
-  if (buildCounterRelationshipNote < 3) {}
+  if (buildCounterRelationshipNote < 3) {
+    unittest.expect(
+      o.type!,
+      unittest.equals('foo'),
+    );
+  }
   buildCounterRelationshipNote--;
 }
 
@@ -4268,6 +4313,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-License', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildLicense();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.License.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkLicense(od);
+    });
+  });
+
   unittest.group('obj-schema-Link', () {
     unittest.test('to-json--from-json', () async {
       final o = buildLink();
@@ -4358,6 +4413,26 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-PackageInfoNote', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildPackageInfoNote();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PackageInfoNote.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkPackageInfoNote(od);
+    });
+  });
+
+  unittest.group('obj-schema-PackageInfoOccurrence', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildPackageInfoOccurrence();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PackageInfoOccurrence.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkPackageInfoOccurrence(od);
+    });
+  });
+
   unittest.group('obj-schema-PackageIssue', () {
     unittest.test('to-json--from-json', () async {
       final o = buildPackageIssue();
@@ -4365,26 +4440,6 @@ void main() {
       final od = api.PackageIssue.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkPackageIssue(od);
-    });
-  });
-
-  unittest.group('obj-schema-PackageNote', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildPackageNote();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.PackageNote.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkPackageNote(od);
-    });
-  });
-
-  unittest.group('obj-schema-PackageOccurrence', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildPackageOccurrence();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.PackageOccurrence.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkPackageOccurrence(od);
     });
   });
 

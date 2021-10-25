@@ -23,6 +23,11 @@
 /// Create an instance of [IamApi] to access these resources:
 ///
 /// - [IamPoliciesResource]
+/// - [LocationsResource]
+///   - [LocationsWorkforcePoolsResource]
+///     - [LocationsWorkforcePoolsOperationsResource]
+///     - [LocationsWorkforcePoolsProvidersResource]
+///       - [LocationsWorkforcePoolsProvidersOperationsResource]
 /// - [OrganizationsResource]
 ///   - [OrganizationsRolesResource]
 /// - [PermissionsResource]
@@ -64,6 +69,7 @@ class IamApi {
   final commons.ApiRequester _requester;
 
   IamPoliciesResource get iamPolicies => IamPoliciesResource(_requester);
+  LocationsResource get locations => LocationsResource(_requester);
   OrganizationsResource get organizations => OrganizationsResource(_requester);
   PermissionsResource get permissions => PermissionsResource(_requester);
   ProjectsResource get projects => ProjectsResource(_requester);
@@ -165,6 +171,130 @@ class IamPoliciesResource {
   }
 }
 
+class LocationsResource {
+  final commons.ApiRequester _requester;
+
+  LocationsWorkforcePoolsResource get workforcePools =>
+      LocationsWorkforcePoolsResource(_requester);
+
+  LocationsResource(commons.ApiRequester client) : _requester = client;
+}
+
+class LocationsWorkforcePoolsResource {
+  final commons.ApiRequester _requester;
+
+  LocationsWorkforcePoolsOperationsResource get operations =>
+      LocationsWorkforcePoolsOperationsResource(_requester);
+  LocationsWorkforcePoolsProvidersResource get providers =>
+      LocationsWorkforcePoolsProvidersResource(_requester);
+
+  LocationsWorkforcePoolsResource(commons.ApiRequester client)
+      : _requester = client;
+}
+
+class LocationsWorkforcePoolsOperationsResource {
+  final commons.ApiRequester _requester;
+
+  LocationsWorkforcePoolsOperationsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets the latest state of a long-running operation.
+  ///
+  /// Clients can use this method to poll the operation result at intervals as
+  /// recommended by the API service.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource.
+  /// Value must have pattern
+  /// `^locations/\[^/\]+/workforcePools/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class LocationsWorkforcePoolsProvidersResource {
+  final commons.ApiRequester _requester;
+
+  LocationsWorkforcePoolsProvidersOperationsResource get operations =>
+      LocationsWorkforcePoolsProvidersOperationsResource(_requester);
+
+  LocationsWorkforcePoolsProvidersResource(commons.ApiRequester client)
+      : _requester = client;
+}
+
+class LocationsWorkforcePoolsProvidersOperationsResource {
+  final commons.ApiRequester _requester;
+
+  LocationsWorkforcePoolsProvidersOperationsResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets the latest state of a long-running operation.
+  ///
+  /// Clients can use this method to poll the operation result at intervals as
+  /// recommended by the API service.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource.
+  /// Value must have pattern
+  /// `^locations/\[^/\]+/workforcePools/\[^/\]+/providers/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class OrganizationsResource {
   final commons.ApiRequester _requester;
 
@@ -236,13 +366,13 @@ class OrganizationsRolesResource {
   /// Deletes a custom Role.
   ///
   /// When you delete a custom role, the following changes occur immediately: *
-  /// You cannot bind a member to the custom role in an IAM Policy. * Existing
-  /// bindings to the custom role are not changed, but they have no effect. * By
-  /// default, the response from ListRoles does not include the custom role. You
-  /// have 7 days to undelete the custom role. After 7 days, the following
-  /// changes occur: * The custom role is permanently deleted and cannot be
-  /// recovered. * If an IAM policy contains a binding to the custom role, the
-  /// binding is permanently removed.
+  /// You cannot bind a principal to the custom role in an IAM Policy. *
+  /// Existing bindings to the custom role are not changed, but they have no
+  /// effect. * By default, the response from ListRoles does not include the
+  /// custom role. You have 7 days to undelete the custom role. After 7 days,
+  /// the following changes occur: * The custom role is permanently deleted and
+  /// cannot be recovered. * If an IAM policy contains a binding to the custom
+  /// role, the binding is permanently removed.
   ///
   /// Request parameters:
   ///
@@ -558,7 +688,7 @@ class PermissionsResource {
 
   /// Lists every permission that you can test on a resource.
   ///
-  /// A permission is testable if you can check whether a member has that
+  /// A permission is testable if you can check whether a principal has that
   /// permission on the resource.
   ///
   /// [request] - The metadata request object.
@@ -1348,13 +1478,13 @@ class ProjectsRolesResource {
   /// Deletes a custom Role.
   ///
   /// When you delete a custom role, the following changes occur immediately: *
-  /// You cannot bind a member to the custom role in an IAM Policy. * Existing
-  /// bindings to the custom role are not changed, but they have no effect. * By
-  /// default, the response from ListRoles does not include the custom role. You
-  /// have 7 days to undelete the custom role. After 7 days, the following
-  /// changes occur: * The custom role is permanently deleted and cannot be
-  /// recovered. * If an IAM policy contains a binding to the custom role, the
-  /// binding is permanently removed.
+  /// You cannot bind a principal to the custom role in an IAM Policy. *
+  /// Existing bindings to the custom role are not changed, but they have no
+  /// effect. * By default, the response from ListRoles does not include the
+  /// custom role. You have 7 days to undelete the custom role. After 7 days,
+  /// the following changes occur: * The custom role is permanently deleted and
+  /// cannot be recovered. * If an IAM policy contains a binding to the custom
+  /// role, the binding is permanently removed.
   ///
   /// Request parameters:
   ///
@@ -1911,7 +2041,7 @@ class ProjectsServiceAccountsResource {
 
   /// Gets the IAM policy that is attached to a ServiceAccount.
   ///
-  /// This IAM policy specifies which members have access to the service
+  /// This IAM policy specifies which principals have access to the service
   /// account. This method does not tell you whether the service account has
   /// been granted any roles on other resources. To check whether a service
   /// account has role grants on a resource, use the `getIamPolicy` method for
@@ -2070,14 +2200,17 @@ class ProjectsServiceAccountsResource {
   /// Sets the IAM policy that is attached to a ServiceAccount.
   ///
   /// Use this method to grant or revoke access to the service account. For
-  /// example, you could grant a member the ability to impersonate the service
-  /// account. This method does not enable the service account to access other
-  /// resources. To grant roles to a service account on a resource, follow these
-  /// steps: 1. Call the resource's `getIamPolicy` method to get its current IAM
-  /// policy. 2. Edit the policy so that it binds the service account to an IAM
-  /// role for the resource. 3. Call the resource's `setIamPolicy` method to
-  /// update its IAM policy. For detailed instructions, see
-  /// [Granting roles to a service account for specific resources](https://cloud.google.com/iam/help/service-accounts/granting-access-to-service-accounts).
+  /// example, you could grant a principal the ability to impersonate the
+  /// service account. This method does not enable the service account to access
+  /// other resources. To grant roles to a service account on a resource, follow
+  /// these steps: 1. Call the resource's `getIamPolicy` method to get its
+  /// current IAM policy. 2. Edit the policy so that it binds the service
+  /// account to an IAM role for the resource. 3. Call the resource's
+  /// `setIamPolicy` method to update its IAM policy. For detailed instructions,
+  /// see
+  /// [Manage access to project, folders, and organizations](https://cloud.google.com/iam/help/service-accounts/granting-access-to-service-accounts)
+  /// or
+  /// [Manage access to other resources](https://cloud.google.com/iam/help/access/manage-other-resources).
   ///
   /// [request] - The metadata request object.
   ///
@@ -2998,19 +3131,20 @@ class Aws {
       };
 }
 
-/// Associates `members` with a `role`.
+/// Associates `members`, or principals, with a `role`.
 class Binding {
   /// The condition that is associated with this binding.
   ///
   /// If the condition evaluates to `true`, then this binding applies to the
   /// current request. If the condition evaluates to `false`, then this binding
   /// does not apply to the current request. However, a different role binding
-  /// might grant the same role to one or more of the members in this binding.
-  /// To learn which resources support conditions in their IAM policies, see the
+  /// might grant the same role to one or more of the principals in this
+  /// binding. To learn which resources support conditions in their IAM
+  /// policies, see the
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   Expr? condition;
 
-  /// Specifies the identities requesting access for a Cloud Platform resource.
+  /// Specifies the principals requesting access for a Cloud Platform resource.
   ///
   /// `members` can have the following values: * `allUsers`: A special
   /// identifier that represents anyone who is on the internet; with or without
@@ -3042,7 +3176,7 @@ class Binding {
   /// `example.com`.
   core.List<core.String>? members;
 
-  /// Role that is assigned to `members`.
+  /// Role that is assigned to the list of `members`, or principals.
   ///
   /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
   core.String? role;
@@ -3801,15 +3935,15 @@ class Permission {
 /// controls for Google Cloud resources.
 ///
 /// A `Policy` is a collection of `bindings`. A `binding` binds one or more
-/// `members` to a single `role`. Members can be user accounts, service
-/// accounts, Google groups, and domains (such as G Suite). A `role` is a named
-/// list of permissions; each `role` can be an IAM predefined role or a
-/// user-created custom role. For some types of Google Cloud resources, a
-/// `binding` can also specify a `condition`, which is a logical expression that
-/// allows access to a resource only if the expression evaluates to `true`. A
-/// condition can add constraints based on attributes of the request, the
-/// resource, or both. To learn which resources support conditions in their IAM
-/// policies, see the
+/// `members`, or principals, to a single `role`. Principals can be user
+/// accounts, service accounts, Google groups, and domains (such as G Suite). A
+/// `role` is a named list of permissions; each `role` can be an IAM predefined
+/// role or a user-created custom role. For some types of Google Cloud
+/// resources, a `binding` can also specify a `condition`, which is a logical
+/// expression that allows access to a resource only if the expression evaluates
+/// to `true`. A condition can add constraints based on attributes of the
+/// request, the resource, or both. To learn which resources support conditions
+/// in their IAM policies, see the
 /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 /// **JSON example:** { "bindings": \[ { "role":
 /// "roles/resourcemanager.organizationAdmin", "members": \[
@@ -3832,11 +3966,16 @@ class Policy {
   /// Specifies cloud audit logging configuration for this policy.
   core.List<AuditConfig>? auditConfigs;
 
-  /// Associates a list of `members` to a `role`.
+  /// Associates a list of `members`, or principals, with a `role`.
   ///
   /// Optionally, may specify a `condition` that determines how and when the
   /// `bindings` are applied. Each of the `bindings` must contain at least one
-  /// member.
+  /// principal. The `bindings` in a `Policy` can refer to up to 1,500
+  /// principals; up to 250 of these principals can be Google groups. Each
+  /// occurrence of a principal counts towards these limits. For example, if the
+  /// `bindings` grant 50 different roles to `user:alice@example.com`, and not
+  /// to any other principal, then you can add another 1,450 principals to the
+  /// `bindings` in the `Policy`.
   core.List<Binding>? bindings;
 
   /// `etag` is used for optimistic concurrency control as a way to help prevent
@@ -4177,7 +4316,7 @@ class Role {
   /// - "GA" : The user has indicated this role is generally available.
   /// - "DEPRECATED" : The user has indicated this role is being deprecated.
   /// - "DISABLED" : This role is disabled and will not contribute permissions
-  /// to any members it is granted to in policies.
+  /// to any principals it is granted to in policies.
   /// - "EAP" : The user has indicated this role is currently in an EAP phase.
   core.String? stage;
 

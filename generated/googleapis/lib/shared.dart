@@ -4035,8 +4035,6 @@ class $EgressFrom {
 /// - apikeys:v2 : V2UndeleteKeyRequest
 /// - appengine:v1 : Empty
 /// - appengine:v1 : RepairApplicationRequest
-/// - artifactregistry:v1 : CancelOperationRequest
-/// - artifactregistry:v1 : Empty
 /// - assuredworkloads:v1 : GoogleProtobufEmpty
 /// - authorizedbuyersmarketplace:v1 : ActivateClientRequest
 /// - authorizedbuyersmarketplace:v1 : ActivateClientUserRequest
@@ -13767,6 +13765,7 @@ class $StartPageToken {
 /// - speech:v1 : Status
 /// - storagetransfer:v1 : Status
 /// - streetviewpublish:v1 : Status
+/// - texttospeech:v1 : Status
 /// - tpu:v1 : Status
 /// - translate:v3 : Status
 /// - vault:v1 : Status

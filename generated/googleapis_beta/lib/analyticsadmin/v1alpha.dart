@@ -4362,49 +4362,6 @@ class PropertiesWebDataStreamsResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Returns the singleton enhanced measurement settings for this web stream.
-  ///
-  /// Note that the stream must enable enhanced measurement for these settings
-  /// to take effect.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - Required. The name of the settings to lookup. Format:
-  /// properties/{property_id}/webDataStreams/{stream_id}/enhancedMeasurementSettings
-  /// Example: "properties/1000/webDataStreams/2000/enhancedMeasurementSettings"
-  /// Value must have pattern
-  /// `^properties/\[^/\]+/webDataStreams/\[^/\]+/enhancedMeasurementSettings$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings>
-      getEnhancedMeasurementSettings(
-    core.String name, {
-    core.String? $fields,
-  }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final _url = 'v1alpha/' + core.Uri.encodeFull('$name');
-
-    final _response = await _requester.request(
-      _url,
-      'GET',
-      queryParams: _queryParams,
-    );
-    return GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
-  }
-
   /// Returns the Site Tag for the specified web stream.
   ///
   /// Site Tags are immutable singletons.
@@ -4548,61 +4505,6 @@ class PropertiesWebDataStreamsResource {
       queryParams: _queryParams,
     );
     return GoogleAnalyticsAdminV1alphaWebDataStream.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
-  }
-
-  /// Updates the singleton enhanced measurement settings for this web stream.
-  ///
-  /// Note that the stream must enable enhanced measurement for these settings
-  /// to take effect.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - Output only. Resource name of this Data Stream. Format:
-  /// properties/{property_id}/webDataStreams/{stream_id}/enhancedMeasurementSettings
-  /// Example: "properties/1000/webDataStreams/2000/enhancedMeasurementSettings"
-  /// Value must have pattern
-  /// `^properties/\[^/\]+/webDataStreams/\[^/\]+/enhancedMeasurementSettings$`.
-  ///
-  /// [updateMask] - Required. The list of fields to be updated. Field names
-  /// must be in snake case (e.g., "field_to_update"). Omitted fields will not
-  /// be updated. To replace the entire entity, use one path with the string "*"
-  /// to match all fields.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings>
-      updateEnhancedMeasurementSettings(
-    GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings request,
-    core.String name, {
-    core.String? updateMask,
-    core.String? $fields,
-  }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final _url = 'v1alpha/' + core.Uri.encodeFull('$name');
-
-    final _response = await _requester.request(
-      _url,
-      'PATCH',
-      body: _body,
-      queryParams: _queryParams,
-    );
-    return GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
 }
@@ -6254,8 +6156,8 @@ class GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink {
   /// Enables the import of cost data from Display & Video 360 into the GA4
   /// property.
   ///
-  /// This can only be enabled if campaign_data_import_enabled is enabled. After
-  /// link creation, this can only be updated from the Display & Video 360
+  /// This can only be enabled if campaign_data_sharing_enabled is enabled.
+  /// After link creation, this can only be updated from the Display & Video 360
   /// product. If this field is not set on create, it will be defaulted to true.
   ///
   /// Immutable.
@@ -6350,7 +6252,7 @@ class GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposal {
 
   /// Enables the import of cost data from Display & Video 360.
   ///
-  /// This can only be enabled if campaign_data_import_enabled is enabled. If
+  /// This can only be enabled if campaign_data_sharing_enabled is enabled. If
   /// this field is not set on create, it will be defaulted to true.
   ///
   /// Immutable.
@@ -6438,148 +6340,6 @@ class GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposal {
           'linkProposalStatusDetails': linkProposalStatusDetails!,
         if (name != null) 'name': name!,
         if (validationEmail != null) 'validationEmail': validationEmail!,
-      };
-}
-
-/// Singleton resource under a WebDataStream, configuring measurement of
-/// additional site interactions and content.
-class GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings {
-  /// If enabled, capture a file download event each time a link is clicked with
-  /// a common document, compressed file, application, video, or audio
-  /// extension.
-  core.bool? fileDownloadsEnabled;
-
-  /// Resource name of this Data Stream.
-  ///
-  /// Format:
-  /// properties/{property_id}/webDataStreams/{stream_id}/enhancedMeasurementSettings
-  /// Example: "properties/1000/webDataStreams/2000/enhancedMeasurementSettings"
-  ///
-  /// Output only.
-  core.String? name;
-
-  /// If enabled, capture an outbound click event each time a visitor clicks a
-  /// link that leads them away from your domain.
-  core.bool? outboundClicksEnabled;
-
-  /// If enabled, capture a page view event each time the website changes the
-  /// browser history state.
-  core.bool? pageChangesEnabled;
-
-  /// If enabled, capture a page view event each time a page loads.
-  ///
-  /// Output only.
-  core.bool? pageLoadsEnabled;
-
-  /// If enabled, capture a page view event each time a page loads or the
-  /// website changes the browser history state.
-  ///
-  /// Output only.
-  core.bool? pageViewsEnabled;
-
-  /// If enabled, capture scroll events each time a visitor gets to the bottom
-  /// of a page.
-  core.bool? scrollsEnabled;
-
-  /// URL query parameters to interpret as site search parameters.
-  ///
-  /// Max length is 1024 characters. Must not be empty.
-  ///
-  /// Required.
-  core.String? searchQueryParameter;
-
-  /// If enabled, capture a view search results event each time a visitor
-  /// performs a search on your site (based on a query parameter).
-  core.bool? siteSearchEnabled;
-
-  /// Indicates whether Enhanced Measurement Settings will be used to
-  /// automatically measure interactions and content on this web stream.
-  ///
-  /// Changing this value does not affect the settings themselves, but
-  /// determines whether they are respected.
-  core.bool? streamEnabled;
-
-  /// Additional URL query parameters.
-  ///
-  /// Max length is 1024 characters.
-  core.String? uriQueryParameter;
-
-  /// If enabled, capture video play, progress, and complete events as visitors
-  /// view embedded videos on your site.
-  core.bool? videoEngagementEnabled;
-
-  GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings({
-    this.fileDownloadsEnabled,
-    this.name,
-    this.outboundClicksEnabled,
-    this.pageChangesEnabled,
-    this.pageLoadsEnabled,
-    this.pageViewsEnabled,
-    this.scrollsEnabled,
-    this.searchQueryParameter,
-    this.siteSearchEnabled,
-    this.streamEnabled,
-    this.uriQueryParameter,
-    this.videoEngagementEnabled,
-  });
-
-  GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings.fromJson(
-      core.Map _json)
-      : this(
-          fileDownloadsEnabled: _json.containsKey('fileDownloadsEnabled')
-              ? _json['fileDownloadsEnabled'] as core.bool
-              : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          outboundClicksEnabled: _json.containsKey('outboundClicksEnabled')
-              ? _json['outboundClicksEnabled'] as core.bool
-              : null,
-          pageChangesEnabled: _json.containsKey('pageChangesEnabled')
-              ? _json['pageChangesEnabled'] as core.bool
-              : null,
-          pageLoadsEnabled: _json.containsKey('pageLoadsEnabled')
-              ? _json['pageLoadsEnabled'] as core.bool
-              : null,
-          pageViewsEnabled: _json.containsKey('pageViewsEnabled')
-              ? _json['pageViewsEnabled'] as core.bool
-              : null,
-          scrollsEnabled: _json.containsKey('scrollsEnabled')
-              ? _json['scrollsEnabled'] as core.bool
-              : null,
-          searchQueryParameter: _json.containsKey('searchQueryParameter')
-              ? _json['searchQueryParameter'] as core.String
-              : null,
-          siteSearchEnabled: _json.containsKey('siteSearchEnabled')
-              ? _json['siteSearchEnabled'] as core.bool
-              : null,
-          streamEnabled: _json.containsKey('streamEnabled')
-              ? _json['streamEnabled'] as core.bool
-              : null,
-          uriQueryParameter: _json.containsKey('uriQueryParameter')
-              ? _json['uriQueryParameter'] as core.String
-              : null,
-          videoEngagementEnabled: _json.containsKey('videoEngagementEnabled')
-              ? _json['videoEngagementEnabled'] as core.bool
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (fileDownloadsEnabled != null)
-          'fileDownloadsEnabled': fileDownloadsEnabled!,
-        if (name != null) 'name': name!,
-        if (outboundClicksEnabled != null)
-          'outboundClicksEnabled': outboundClicksEnabled!,
-        if (pageChangesEnabled != null)
-          'pageChangesEnabled': pageChangesEnabled!,
-        if (pageLoadsEnabled != null) 'pageLoadsEnabled': pageLoadsEnabled!,
-        if (pageViewsEnabled != null) 'pageViewsEnabled': pageViewsEnabled!,
-        if (scrollsEnabled != null) 'scrollsEnabled': scrollsEnabled!,
-        if (searchQueryParameter != null)
-          'searchQueryParameter': searchQueryParameter!,
-        if (siteSearchEnabled != null) 'siteSearchEnabled': siteSearchEnabled!,
-        if (streamEnabled != null) 'streamEnabled': streamEnabled!,
-        if (uriQueryParameter != null) 'uriQueryParameter': uriQueryParameter!,
-        if (videoEngagementEnabled != null)
-          'videoEngagementEnabled': videoEngagementEnabled!,
       };
 }
 
