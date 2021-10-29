@@ -206,6 +206,7 @@ api.GoogleCloudPaymentsResellerSubscriptionV1ExtendSubscriptionResponse
       3) {
     o.cycleEndTime = 'foo';
     o.freeTrialEndTime = 'foo';
+    o.renewalTime = 'foo';
   }
   buildCounterGoogleCloudPaymentsResellerSubscriptionV1ExtendSubscriptionResponse--;
   return o;
@@ -222,6 +223,10 @@ void checkGoogleCloudPaymentsResellerSubscriptionV1ExtendSubscriptionResponse(
     );
     unittest.expect(
       o.freeTrialEndTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.renewalTime!,
       unittest.equals('foo'),
     );
   }

@@ -444,7 +444,7 @@
                                             "type": "string"
                                         },
                                         "updateMask": {
-                                            "description": "Required. Mask of fields from Node to update. Supported fields: None.",
+                                            "description": "Required. Mask of fields from Node to update. Supported fields: [description, tags, labels, metadata, network_config.enable_external_ips].",
                                             "format": "google-fieldmask",
                                             "location": "query",
                                             "type": "string"
@@ -719,7 +719,7 @@
             }
         }
     },
-    "revision": "20210915",
+    "revision": "20211021",
     "rootUrl": "https://tpu.googleapis.com/",
     "schemas": {
         "AcceleratorType": {

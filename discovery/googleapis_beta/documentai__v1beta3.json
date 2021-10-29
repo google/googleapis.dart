@@ -794,7 +794,7 @@
             }
         }
     },
-    "revision": "20211019",
+    "revision": "20211022",
     "rootUrl": "https://documentai.googleapis.com/",
     "schemas": {
         "GoogleCloudDocumentaiUiv1beta3BatchDeleteDocumentsMetadata": {
@@ -836,6 +836,10 @@
                 "createTime": {
                     "description": "The creation time of the operation.",
                     "format": "google-datetime",
+                    "type": "string"
+                },
+                "resource": {
+                    "description": "A related resource to this operation.",
                     "type": "string"
                 },
                 "state": {
@@ -1239,6 +1243,10 @@
                 "createTime": {
                     "description": "The creation time of the operation.",
                     "format": "google-datetime",
+                    "type": "string"
+                },
+                "resource": {
+                    "description": "A related resource to this operation.",
                     "type": "string"
                 },
                 "state": {
@@ -3957,6 +3965,10 @@
                 "createTime": {
                     "description": "The creation time of the operation.",
                     "format": "google-datetime",
+                    "type": "string"
+                },
+                "resource": {
+                    "description": "A related resource to this operation.",
                     "type": "string"
                 },
                 "state": {

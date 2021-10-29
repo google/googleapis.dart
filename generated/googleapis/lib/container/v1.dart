@@ -4313,6 +4313,12 @@ class Cluster {
   /// Output only.
   core.int? nodeIpv4CidrSize;
 
+  /// Default NodePool settings for the entire cluster.
+  ///
+  /// These settings are overridden if specified on the specific NodePool
+  /// object.
+  NodePoolDefaults? nodePoolDefaults;
+
   /// The node pools associated with this cluster.
   ///
   /// This field should not be set if "node_config" or "initial_node_count" are
@@ -4454,6 +4460,7 @@ class Cluster {
     this.networkPolicy,
     this.nodeConfig,
     this.nodeIpv4CidrSize,
+    this.nodePoolDefaults,
     this.nodePools,
     this.notificationConfig,
     this.privateClusterConfig,
@@ -4627,6 +4634,10 @@ class Cluster {
           nodeIpv4CidrSize: _json.containsKey('nodeIpv4CidrSize')
               ? _json['nodeIpv4CidrSize'] as core.int
               : null,
+          nodePoolDefaults: _json.containsKey('nodePoolDefaults')
+              ? NodePoolDefaults.fromJson(_json['nodePoolDefaults']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           nodePools: _json.containsKey('nodePools')
               ? (_json['nodePools'] as core.List)
                   .map((value) => NodePool.fromJson(
@@ -4746,6 +4757,7 @@ class Cluster {
         if (networkPolicy != null) 'networkPolicy': networkPolicy!,
         if (nodeConfig != null) 'nodeConfig': nodeConfig!,
         if (nodeIpv4CidrSize != null) 'nodeIpv4CidrSize': nodeIpv4CidrSize!,
+        if (nodePoolDefaults != null) 'nodePoolDefaults': nodePoolDefaults!,
         if (nodePools != null) 'nodePools': nodePools!,
         if (notificationConfig != null)
           'notificationConfig': notificationConfig!,
@@ -4858,9 +4870,6 @@ class ClusterUpdate {
   /// The desired authenticator groups config for the cluster.
   AuthenticatorGroupsConfig? desiredAuthenticatorGroupsConfig;
 
-  /// The desired Autopilot configuration for the cluster.
-  Autopilot? desiredAutopilot;
-
   /// The desired configuration options for the Binary Authorization feature.
   BinaryAuthorization? desiredBinaryAuthorization;
 
@@ -4882,6 +4891,12 @@ class ClusterUpdate {
 
   /// The desired status of whether to disable default sNAT for this cluster.
   DefaultSnatStatus? desiredDefaultSnatStatus;
+
+  /// DNSConfig contains clusterDNS config for this cluster.
+  DNSConfig? desiredDnsConfig;
+
+  /// The desired GCFS config for the cluster
+  GcfsConfig? desiredGcfsConfig;
 
   /// The desired image type for the node pool.
   ///
@@ -5008,12 +5023,13 @@ class ClusterUpdate {
   ClusterUpdate({
     this.desiredAddonsConfig,
     this.desiredAuthenticatorGroupsConfig,
-    this.desiredAutopilot,
     this.desiredBinaryAuthorization,
     this.desiredClusterAutoscaling,
     this.desiredDatabaseEncryption,
     this.desiredDatapathProvider,
     this.desiredDefaultSnatStatus,
+    this.desiredDnsConfig,
+    this.desiredGcfsConfig,
     this.desiredImageType,
     this.desiredIntraNodeVisibilityConfig,
     this.desiredL4ilbSubsettingConfig,
@@ -5050,10 +5066,6 @@ class ClusterUpdate {
                       _json['desiredAuthenticatorGroupsConfig']
                           as core.Map<core.String, core.dynamic>)
                   : null,
-          desiredAutopilot: _json.containsKey('desiredAutopilot')
-              ? Autopilot.fromJson(_json['desiredAutopilot']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
           desiredBinaryAuthorization: _json
                   .containsKey('desiredBinaryAuthorization')
               ? BinaryAuthorization.fromJson(_json['desiredBinaryAuthorization']
@@ -5077,6 +5089,14 @@ class ClusterUpdate {
                   ? DefaultSnatStatus.fromJson(_json['desiredDefaultSnatStatus']
                       as core.Map<core.String, core.dynamic>)
                   : null,
+          desiredDnsConfig: _json.containsKey('desiredDnsConfig')
+              ? DNSConfig.fromJson(_json['desiredDnsConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          desiredGcfsConfig: _json.containsKey('desiredGcfsConfig')
+              ? GcfsConfig.fromJson(_json['desiredGcfsConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           desiredImageType: _json.containsKey('desiredImageType')
               ? _json['desiredImageType'] as core.String
               : null,
@@ -5184,7 +5204,6 @@ class ClusterUpdate {
           'desiredAddonsConfig': desiredAddonsConfig!,
         if (desiredAuthenticatorGroupsConfig != null)
           'desiredAuthenticatorGroupsConfig': desiredAuthenticatorGroupsConfig!,
-        if (desiredAutopilot != null) 'desiredAutopilot': desiredAutopilot!,
         if (desiredBinaryAuthorization != null)
           'desiredBinaryAuthorization': desiredBinaryAuthorization!,
         if (desiredClusterAutoscaling != null)
@@ -5195,6 +5214,8 @@ class ClusterUpdate {
           'desiredDatapathProvider': desiredDatapathProvider!,
         if (desiredDefaultSnatStatus != null)
           'desiredDefaultSnatStatus': desiredDefaultSnatStatus!,
+        if (desiredDnsConfig != null) 'desiredDnsConfig': desiredDnsConfig!,
+        if (desiredGcfsConfig != null) 'desiredGcfsConfig': desiredGcfsConfig!,
         if (desiredImageType != null) 'desiredImageType': desiredImageType!,
         if (desiredIntraNodeVisibilityConfig != null)
           'desiredIntraNodeVisibilityConfig': desiredIntraNodeVisibilityConfig!,
@@ -5499,6 +5520,52 @@ class CreateNodePoolRequest {
       };
 }
 
+/// DNSConfig contains the desired set of options for configuring clusterDNS.
+class DNSConfig {
+  /// cluster_dns indicates which in-cluster DNS provider should be used.
+  /// Possible string values are:
+  /// - "PROVIDER_UNSPECIFIED" : Default value
+  /// - "PLATFORM_DEFAULT" : Use GKE default DNS provider(kube-dns) for DNS
+  /// resolution.
+  /// - "CLOUD_DNS" : Use CloudDNS for DNS resolution.
+  core.String? clusterDns;
+
+  /// cluster_dns_domain is the suffix used for all cluster service records.
+  core.String? clusterDnsDomain;
+
+  /// cluster_dns_scope indicates the scope of access to cluster DNS records.
+  /// Possible string values are:
+  /// - "DNS_SCOPE_UNSPECIFIED" : Default value, will be inferred as cluster
+  /// scope.
+  /// - "VPC_SCOPE" : DNS records are accessible from within the VPC.
+  core.String? clusterDnsScope;
+
+  DNSConfig({
+    this.clusterDns,
+    this.clusterDnsDomain,
+    this.clusterDnsScope,
+  });
+
+  DNSConfig.fromJson(core.Map _json)
+      : this(
+          clusterDns: _json.containsKey('clusterDns')
+              ? _json['clusterDns'] as core.String
+              : null,
+          clusterDnsDomain: _json.containsKey('clusterDnsDomain')
+              ? _json['clusterDnsDomain'] as core.String
+              : null,
+          clusterDnsScope: _json.containsKey('clusterDnsScope')
+              ? _json['clusterDnsScope'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (clusterDns != null) 'clusterDns': clusterDns!,
+        if (clusterDnsDomain != null) 'clusterDnsDomain': clusterDnsDomain!,
+        if (clusterDnsScope != null) 'clusterDnsScope': clusterDnsScope!,
+      };
+}
+
 /// Time window specified for daily maintenance operations.
 class DailyMaintenanceWindow {
   /// Duration of the time window, automatically chosen to be smallest possible
@@ -5635,6 +5702,28 @@ class GcePersistentDiskCsiDriverConfig {
   });
 
   GcePersistentDiskCsiDriverConfig.fromJson(core.Map _json)
+      : this(
+          enabled: _json.containsKey('enabled')
+              ? _json['enabled'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enabled != null) 'enabled': enabled!,
+      };
+}
+
+/// GcfsConfig contains configurations of Google Container File System (image
+/// streaming).
+class GcfsConfig {
+  /// Whether to use GCFS.
+  core.bool? enabled;
+
+  GcfsConfig({
+    this.enabled,
+  });
+
+  GcfsConfig.fromJson(core.Map _json)
       : this(
           enabled: _json.containsKey('enabled')
               ? _json['enabled'] as core.bool
@@ -6793,6 +6882,9 @@ class NetworkConfig {
   /// to the nodes to prevent sNAT on cluster internal traffic.
   DefaultSnatStatus? defaultSnatStatus;
 
+  /// DNSConfig contains clusterDNS config for this cluster.
+  DNSConfig? dnsConfig;
+
   /// Whether Intra-node visibility is enabled for this cluster.
   ///
   /// This makes same node pod to pod traffic visible for VPC network.
@@ -6837,6 +6929,7 @@ class NetworkConfig {
   NetworkConfig({
     this.datapathProvider,
     this.defaultSnatStatus,
+    this.dnsConfig,
     this.enableIntraNodeVisibility,
     this.enableL4ilbSubsetting,
     this.network,
@@ -6852,6 +6945,10 @@ class NetworkConfig {
           defaultSnatStatus: _json.containsKey('defaultSnatStatus')
               ? DefaultSnatStatus.fromJson(_json['defaultSnatStatus']
                   as core.Map<core.String, core.dynamic>)
+              : null,
+          dnsConfig: _json.containsKey('dnsConfig')
+              ? DNSConfig.fromJson(
+                  _json['dnsConfig'] as core.Map<core.String, core.dynamic>)
               : null,
           enableIntraNodeVisibility:
               _json.containsKey('enableIntraNodeVisibility')
@@ -6874,6 +6971,7 @@ class NetworkConfig {
   core.Map<core.String, core.dynamic> toJson() => {
         if (datapathProvider != null) 'datapathProvider': datapathProvider!,
         if (defaultSnatStatus != null) 'defaultSnatStatus': defaultSnatStatus!,
+        if (dnsConfig != null) 'dnsConfig': dnsConfig!,
         if (enableIntraNodeVisibility != null)
           'enableIntraNodeVisibility': enableIntraNodeVisibility!,
         if (enableL4ilbSubsetting != null)
@@ -6970,6 +7068,9 @@ class NodeConfig {
   /// Type of the disk attached to each node (e.g. 'pd-standard', 'pd-ssd' or
   /// 'pd-balanced') If unspecified, the default disk type is 'pd-standard'
   core.String? diskType;
+
+  /// Google Container File System (image streaming) configs.
+  GcfsConfig? gcfsConfig;
 
   /// Enable or disable gvnic in the node pool.
   VirtualNIC? gvnic;
@@ -7101,6 +7202,7 @@ class NodeConfig {
     this.bootDiskKmsKey,
     this.diskSizeGb,
     this.diskType,
+    this.gcfsConfig,
     this.gvnic,
     this.imageType,
     this.kubeletConfig,
@@ -7138,6 +7240,10 @@ class NodeConfig {
               : null,
           diskType: _json.containsKey('diskType')
               ? _json['diskType'] as core.String
+              : null,
+          gcfsConfig: _json.containsKey('gcfsConfig')
+              ? GcfsConfig.fromJson(
+                  _json['gcfsConfig'] as core.Map<core.String, core.dynamic>)
               : null,
           gvnic: _json.containsKey('gvnic')
               ? VirtualNIC.fromJson(
@@ -7227,6 +7333,7 @@ class NodeConfig {
         if (bootDiskKmsKey != null) 'bootDiskKmsKey': bootDiskKmsKey!,
         if (diskSizeGb != null) 'diskSizeGb': diskSizeGb!,
         if (diskType != null) 'diskType': diskType!,
+        if (gcfsConfig != null) 'gcfsConfig': gcfsConfig!,
         if (gvnic != null) 'gvnic': gvnic!,
         if (imageType != null) 'imageType': imageType!,
         if (kubeletConfig != null) 'kubeletConfig': kubeletConfig!,
@@ -7249,6 +7356,28 @@ class NodeConfig {
         if (taints != null) 'taints': taints!,
         if (workloadMetadataConfig != null)
           'workloadMetadataConfig': workloadMetadataConfig!,
+      };
+}
+
+/// Subset of NodeConfig message that has defaults.
+class NodeConfigDefaults {
+  /// GCFS (Google Container File System, a.k.a Riptide) options.
+  GcfsConfig? gcfsConfig;
+
+  NodeConfigDefaults({
+    this.gcfsConfig,
+  });
+
+  NodeConfigDefaults.fromJson(core.Map _json)
+      : this(
+          gcfsConfig: _json.containsKey('gcfsConfig')
+              ? GcfsConfig.fromJson(
+                  _json['gcfsConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (gcfsConfig != null) 'gcfsConfig': gcfsConfig!,
       };
 }
 
@@ -7668,6 +7797,29 @@ class NodePoolAutoscaling {
         if (enabled != null) 'enabled': enabled!,
         if (maxNodeCount != null) 'maxNodeCount': maxNodeCount!,
         if (minNodeCount != null) 'minNodeCount': minNodeCount!,
+      };
+}
+
+/// Subset of Nodepool message that has defaults.
+class NodePoolDefaults {
+  /// Subset of NodeConfig message that has defaults.
+  NodeConfigDefaults? nodeConfigDefaults;
+
+  NodePoolDefaults({
+    this.nodeConfigDefaults,
+  });
+
+  NodePoolDefaults.fromJson(core.Map _json)
+      : this(
+          nodeConfigDefaults: _json.containsKey('nodeConfigDefaults')
+              ? NodeConfigDefaults.fromJson(_json['nodeConfigDefaults']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nodeConfigDefaults != null)
+          'nodeConfigDefaults': nodeConfigDefaults!,
       };
 }
 
@@ -9954,6 +10106,9 @@ class UpdateNodePoolRequest {
   /// Deprecated.
   core.String? clusterId;
 
+  /// GCFS config.
+  GcfsConfig? gcfsConfig;
+
   /// Enable or disable gvnic on the node pool.
   VirtualNIC? gvnic;
 
@@ -10028,6 +10183,7 @@ class UpdateNodePoolRequest {
 
   UpdateNodePoolRequest({
     this.clusterId,
+    this.gcfsConfig,
     this.gvnic,
     this.imageType,
     this.kubeletConfig,
@@ -10046,6 +10202,10 @@ class UpdateNodePoolRequest {
       : this(
           clusterId: _json.containsKey('clusterId')
               ? _json['clusterId'] as core.String
+              : null,
+          gcfsConfig: _json.containsKey('gcfsConfig')
+              ? GcfsConfig.fromJson(
+                  _json['gcfsConfig'] as core.Map<core.String, core.dynamic>)
               : null,
           gvnic: _json.containsKey('gvnic')
               ? VirtualNIC.fromJson(
@@ -10090,6 +10250,7 @@ class UpdateNodePoolRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (clusterId != null) 'clusterId': clusterId!,
+        if (gcfsConfig != null) 'gcfsConfig': gcfsConfig!,
         if (gvnic != null) 'gvnic': gvnic!,
         if (imageType != null) 'imageType': imageType!,
         if (kubeletConfig != null) 'kubeletConfig': kubeletConfig!,

@@ -2565,6 +2565,7 @@ api.GooglePrivacyDlpV2InfoType buildGooglePrivacyDlpV2InfoType() {
   buildCounterGooglePrivacyDlpV2InfoType++;
   if (buildCounterGooglePrivacyDlpV2InfoType < 3) {
     o.name = 'foo';
+    o.version = 'foo';
   }
   buildCounterGooglePrivacyDlpV2InfoType--;
   return o;
@@ -2575,6 +2576,10 @@ void checkGooglePrivacyDlpV2InfoType(api.GooglePrivacyDlpV2InfoType o) {
   if (buildCounterGooglePrivacyDlpV2InfoType < 3) {
     unittest.expect(
       o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.version!,
       unittest.equals('foo'),
     );
   }

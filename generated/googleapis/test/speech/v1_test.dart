@@ -269,6 +269,8 @@ api.RecognitionConfig buildRecognitionConfig() {
     o.diarizationConfig = buildSpeakerDiarizationConfig();
     o.enableAutomaticPunctuation = true;
     o.enableSeparateRecognitionPerChannel = true;
+    o.enableSpokenEmojis = true;
+    o.enableSpokenPunctuation = true;
     o.enableWordConfidence = true;
     o.enableWordTimeOffsets = true;
     o.encoding = 'foo';
@@ -296,6 +298,8 @@ void checkRecognitionConfig(api.RecognitionConfig o) {
     checkSpeakerDiarizationConfig(o.diarizationConfig!);
     unittest.expect(o.enableAutomaticPunctuation!, unittest.isTrue);
     unittest.expect(o.enableSeparateRecognitionPerChannel!, unittest.isTrue);
+    unittest.expect(o.enableSpokenEmojis!, unittest.isTrue);
+    unittest.expect(o.enableSpokenPunctuation!, unittest.isTrue);
     unittest.expect(o.enableWordConfidence!, unittest.isTrue);
     unittest.expect(o.enableWordTimeOffsets!, unittest.isTrue);
     unittest.expect(

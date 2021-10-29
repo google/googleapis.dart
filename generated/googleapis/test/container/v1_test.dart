@@ -505,6 +505,7 @@ api.Cluster buildCluster() {
     o.networkPolicy = buildNetworkPolicy();
     o.nodeConfig = buildNodeConfig();
     o.nodeIpv4CidrSize = 42;
+    o.nodePoolDefaults = buildNodePoolDefaults();
     o.nodePools = buildUnnamed4();
     o.notificationConfig = buildNotificationConfig();
     o.privateClusterConfig = buildPrivateClusterConfig();
@@ -625,6 +626,7 @@ void checkCluster(api.Cluster o) {
       o.nodeIpv4CidrSize!,
       unittest.equals(42),
     );
+    checkNodePoolDefaults(o.nodePoolDefaults!);
     checkUnnamed4(o.nodePools!);
     checkNotificationConfig(o.notificationConfig!);
     checkPrivateClusterConfig(o.privateClusterConfig!);
@@ -749,12 +751,13 @@ api.ClusterUpdate buildClusterUpdate() {
   if (buildCounterClusterUpdate < 3) {
     o.desiredAddonsConfig = buildAddonsConfig();
     o.desiredAuthenticatorGroupsConfig = buildAuthenticatorGroupsConfig();
-    o.desiredAutopilot = buildAutopilot();
     o.desiredBinaryAuthorization = buildBinaryAuthorization();
     o.desiredClusterAutoscaling = buildClusterAutoscaling();
     o.desiredDatabaseEncryption = buildDatabaseEncryption();
     o.desiredDatapathProvider = 'foo';
     o.desiredDefaultSnatStatus = buildDefaultSnatStatus();
+    o.desiredDnsConfig = buildDNSConfig();
+    o.desiredGcfsConfig = buildGcfsConfig();
     o.desiredImageType = 'foo';
     o.desiredIntraNodeVisibilityConfig = buildIntraNodeVisibilityConfig();
     o.desiredL4ilbSubsettingConfig = buildILBSubsettingConfig();
@@ -788,7 +791,6 @@ void checkClusterUpdate(api.ClusterUpdate o) {
   if (buildCounterClusterUpdate < 3) {
     checkAddonsConfig(o.desiredAddonsConfig!);
     checkAuthenticatorGroupsConfig(o.desiredAuthenticatorGroupsConfig!);
-    checkAutopilot(o.desiredAutopilot!);
     checkBinaryAuthorization(o.desiredBinaryAuthorization!);
     checkClusterAutoscaling(o.desiredClusterAutoscaling!);
     checkDatabaseEncryption(o.desiredDatabaseEncryption!);
@@ -797,6 +799,8 @@ void checkClusterUpdate(api.ClusterUpdate o) {
       unittest.equals('foo'),
     );
     checkDefaultSnatStatus(o.desiredDefaultSnatStatus!);
+    checkDNSConfig(o.desiredDnsConfig!);
+    checkGcfsConfig(o.desiredGcfsConfig!);
     unittest.expect(
       o.desiredImageType!,
       unittest.equals('foo'),
@@ -1012,6 +1016,38 @@ void checkCreateNodePoolRequest(api.CreateNodePoolRequest o) {
   buildCounterCreateNodePoolRequest--;
 }
 
+core.int buildCounterDNSConfig = 0;
+api.DNSConfig buildDNSConfig() {
+  final o = api.DNSConfig();
+  buildCounterDNSConfig++;
+  if (buildCounterDNSConfig < 3) {
+    o.clusterDns = 'foo';
+    o.clusterDnsDomain = 'foo';
+    o.clusterDnsScope = 'foo';
+  }
+  buildCounterDNSConfig--;
+  return o;
+}
+
+void checkDNSConfig(api.DNSConfig o) {
+  buildCounterDNSConfig++;
+  if (buildCounterDNSConfig < 3) {
+    unittest.expect(
+      o.clusterDns!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.clusterDnsDomain!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.clusterDnsScope!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterDNSConfig--;
+}
+
 core.int buildCounterDailyMaintenanceWindow = 0;
 api.DailyMaintenanceWindow buildDailyMaintenanceWindow() {
   final o = api.DailyMaintenanceWindow();
@@ -1137,6 +1173,25 @@ void checkGcePersistentDiskCsiDriverConfig(
     unittest.expect(o.enabled!, unittest.isTrue);
   }
   buildCounterGcePersistentDiskCsiDriverConfig--;
+}
+
+core.int buildCounterGcfsConfig = 0;
+api.GcfsConfig buildGcfsConfig() {
+  final o = api.GcfsConfig();
+  buildCounterGcfsConfig++;
+  if (buildCounterGcfsConfig < 3) {
+    o.enabled = true;
+  }
+  buildCounterGcfsConfig--;
+  return o;
+}
+
+void checkGcfsConfig(api.GcfsConfig o) {
+  buildCounterGcfsConfig++;
+  if (buildCounterGcfsConfig < 3) {
+    unittest.expect(o.enabled!, unittest.isTrue);
+  }
+  buildCounterGcfsConfig--;
 }
 
 core.int buildCounterGcpFilestoreCsiDriverConfig = 0;
@@ -2119,6 +2174,7 @@ api.NetworkConfig buildNetworkConfig() {
   if (buildCounterNetworkConfig < 3) {
     o.datapathProvider = 'foo';
     o.defaultSnatStatus = buildDefaultSnatStatus();
+    o.dnsConfig = buildDNSConfig();
     o.enableIntraNodeVisibility = true;
     o.enableL4ilbSubsetting = true;
     o.network = 'foo';
@@ -2137,6 +2193,7 @@ void checkNetworkConfig(api.NetworkConfig o) {
       unittest.equals('foo'),
     );
     checkDefaultSnatStatus(o.defaultSnatStatus!);
+    checkDNSConfig(o.dnsConfig!);
     unittest.expect(o.enableIntraNodeVisibility!, unittest.isTrue);
     unittest.expect(o.enableL4ilbSubsetting!, unittest.isTrue);
     unittest.expect(
@@ -2297,6 +2354,7 @@ api.NodeConfig buildNodeConfig() {
     o.bootDiskKmsKey = 'foo';
     o.diskSizeGb = 42;
     o.diskType = 'foo';
+    o.gcfsConfig = buildGcfsConfig();
     o.gvnic = buildVirtualNIC();
     o.imageType = 'foo';
     o.kubeletConfig = buildNodeKubeletConfig();
@@ -2337,6 +2395,7 @@ void checkNodeConfig(api.NodeConfig o) {
       o.diskType!,
       unittest.equals('foo'),
     );
+    checkGcfsConfig(o.gcfsConfig!);
     checkVirtualNIC(o.gvnic!);
     unittest.expect(
       o.imageType!,
@@ -2376,6 +2435,25 @@ void checkNodeConfig(api.NodeConfig o) {
     checkWorkloadMetadataConfig(o.workloadMetadataConfig!);
   }
   buildCounterNodeConfig--;
+}
+
+core.int buildCounterNodeConfigDefaults = 0;
+api.NodeConfigDefaults buildNodeConfigDefaults() {
+  final o = api.NodeConfigDefaults();
+  buildCounterNodeConfigDefaults++;
+  if (buildCounterNodeConfigDefaults < 3) {
+    o.gcfsConfig = buildGcfsConfig();
+  }
+  buildCounterNodeConfigDefaults--;
+  return o;
+}
+
+void checkNodeConfigDefaults(api.NodeConfigDefaults o) {
+  buildCounterNodeConfigDefaults++;
+  if (buildCounterNodeConfigDefaults < 3) {
+    checkGcfsConfig(o.gcfsConfig!);
+  }
+  buildCounterNodeConfigDefaults--;
 }
 
 core.int buildCounterNodeKubeletConfig = 0;
@@ -2603,6 +2681,25 @@ void checkNodePoolAutoscaling(api.NodePoolAutoscaling o) {
     );
   }
   buildCounterNodePoolAutoscaling--;
+}
+
+core.int buildCounterNodePoolDefaults = 0;
+api.NodePoolDefaults buildNodePoolDefaults() {
+  final o = api.NodePoolDefaults();
+  buildCounterNodePoolDefaults++;
+  if (buildCounterNodePoolDefaults < 3) {
+    o.nodeConfigDefaults = buildNodeConfigDefaults();
+  }
+  buildCounterNodePoolDefaults--;
+  return o;
+}
+
+void checkNodePoolDefaults(api.NodePoolDefaults o) {
+  buildCounterNodePoolDefaults++;
+  if (buildCounterNodePoolDefaults < 3) {
+    checkNodeConfigDefaults(o.nodeConfigDefaults!);
+  }
+  buildCounterNodePoolDefaults--;
 }
 
 core.int buildCounterNodeTaint = 0;
@@ -4116,6 +4213,7 @@ api.UpdateNodePoolRequest buildUpdateNodePoolRequest() {
   buildCounterUpdateNodePoolRequest++;
   if (buildCounterUpdateNodePoolRequest < 3) {
     o.clusterId = 'foo';
+    o.gcfsConfig = buildGcfsConfig();
     o.gvnic = buildVirtualNIC();
     o.imageType = 'foo';
     o.kubeletConfig = buildNodeKubeletConfig();
@@ -4140,6 +4238,7 @@ void checkUpdateNodePoolRequest(api.UpdateNodePoolRequest o) {
       o.clusterId!,
       unittest.equals('foo'),
     );
+    checkGcfsConfig(o.gcfsConfig!);
     checkVirtualNIC(o.gvnic!);
     unittest.expect(
       o.imageType!,
@@ -4576,6 +4675,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-DNSConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildDNSConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.DNSConfig.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkDNSConfig(od);
+    });
+  });
+
   unittest.group('obj-schema-DailyMaintenanceWindow', () {
     unittest.test('to-json--from-json', () async {
       final o = buildDailyMaintenanceWindow();
@@ -4633,6 +4742,16 @@ void main() {
       final od = api.GcePersistentDiskCsiDriverConfig.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkGcePersistentDiskCsiDriverConfig(od);
+    });
+  });
+
+  unittest.group('obj-schema-GcfsConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGcfsConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GcfsConfig.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkGcfsConfig(od);
     });
   });
 
@@ -4955,6 +5074,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-NodeConfigDefaults', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildNodeConfigDefaults();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.NodeConfigDefaults.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkNodeConfigDefaults(od);
+    });
+  });
+
   unittest.group('obj-schema-NodeKubeletConfig', () {
     unittest.test('to-json--from-json', () async {
       final o = buildNodeKubeletConfig();
@@ -5002,6 +5131,16 @@ void main() {
       final od = api.NodePoolAutoscaling.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkNodePoolAutoscaling(od);
+    });
+  });
+
+  unittest.group('obj-schema-NodePoolDefaults', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildNodePoolDefaults();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.NodePoolDefaults.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkNodePoolDefaults(od);
     });
   });
 

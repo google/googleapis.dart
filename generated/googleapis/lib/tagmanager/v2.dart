@@ -7632,6 +7632,9 @@ class Zone {
   /// User notes on how to apply this zone in the container.
   core.String? notes;
 
+  /// Additional parameters.
+  core.List<Parameter>? parameter;
+
   /// GTM Zone's API relative path.
   core.String? path;
 
@@ -7655,6 +7658,7 @@ class Zone {
     this.fingerprint,
     this.name,
     this.notes,
+    this.parameter,
     this.path,
     this.tagManagerUrl,
     this.typeRestriction,
@@ -7686,6 +7690,12 @@ class Zone {
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           notes:
               _json.containsKey('notes') ? _json['notes'] as core.String : null,
+          parameter: _json.containsKey('parameter')
+              ? (_json['parameter'] as core.List)
+                  .map((value) => Parameter.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           path: _json.containsKey('path') ? _json['path'] as core.String : null,
           tagManagerUrl: _json.containsKey('tagManagerUrl')
               ? _json['tagManagerUrl'] as core.String
@@ -7710,6 +7720,7 @@ class Zone {
         if (fingerprint != null) 'fingerprint': fingerprint!,
         if (name != null) 'name': name!,
         if (notes != null) 'notes': notes!,
+        if (parameter != null) 'parameter': parameter!,
         if (path != null) 'path': path!,
         if (tagManagerUrl != null) 'tagManagerUrl': tagManagerUrl!,
         if (typeRestriction != null) 'typeRestriction': typeRestriction!,

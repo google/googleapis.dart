@@ -183,7 +183,7 @@
             }
         }
     },
-    "revision": "20211019",
+    "revision": "20211022",
     "rootUrl": "https://digitalassetlinks.googleapis.com/",
     "schemas": {
         "AndroidAppAsset": {

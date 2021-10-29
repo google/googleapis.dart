@@ -462,7 +462,7 @@ class ProjectsKeysResource {
 
 /// Settings specific to keys that can be used by Android apps.
 class GoogleCloudRecaptchaenterpriseV1AndroidKeySettings {
-  /// If set to true, it means allowed_package_names will not be enforced.
+  /// If set to true, allowed_package_names are not enforced.
   core.bool? allowAllPackageNames;
 
   /// Android package names of apps allowed to use the key.
@@ -725,7 +725,7 @@ class GoogleCloudRecaptchaenterpriseV1Event {
 
 /// Settings specific to keys that can be used by iOS apps.
 class GoogleCloudRecaptchaenterpriseV1IOSKeySettings {
-  /// If set to true, it means allowed_bundle_ids will not be enforced.
+  /// If set to true, allowed_bundle_ids are not enforced.
   core.bool? allowAllBundleIds;
 
   /// iOS bundle ids of apps allowed to use the key.
@@ -1059,10 +1059,10 @@ class GoogleCloudRecaptchaenterpriseV1TestingOptions {
   /// - "TESTING_CHALLENGE_UNSPECIFIED" : Perform the normal risk analysis and
   /// return either nocaptcha or a challenge depending on risk and trust
   /// factors.
-  /// - "NOCAPTCHA" : Challenge requests for this key will always return a
-  /// nocaptcha, which does not require a solution.
-  /// - "UNSOLVABLE_CHALLENGE" : Challenge requests for this key will always
-  /// return an unsolvable challenge.
+  /// - "NOCAPTCHA" : Challenge requests for this key always return a nocaptcha,
+  /// which does not require a solution.
+  /// - "UNSOLVABLE_CHALLENGE" : Challenge requests for this key always return
+  /// an unsolvable challenge.
   core.String? testingChallenge;
 
   /// All assessments for this Key will return this score.
@@ -1162,11 +1162,10 @@ class GoogleCloudRecaptchaenterpriseV1WebKeySettings {
   /// If set to true, it means allowed_domains will not be enforced.
   core.bool? allowAllDomains;
 
-  /// Whether this key can be used on AMP (Accelerated Mobile Pages) websites.
+  /// If set to true, the key can be used on AMP (Accelerated Mobile Pages)
+  /// websites.
   ///
-  /// This can only be set for the SCORE integration type.
-  ///
-  /// Required.
+  /// This is supported only for the SCORE integration type.
   core.bool? allowAmpTraffic;
 
   /// Domains or subdomains of websites allowed to use the key.

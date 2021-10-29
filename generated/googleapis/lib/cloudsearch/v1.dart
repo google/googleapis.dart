@@ -8234,9 +8234,11 @@ class SourceConfig {
 /// To foster better search quality and source diversity in search results, you
 /// can set a condition to reduce repetitive results by source.
 class SourceCrowdingConfig {
-  /// Maximum number of results allowed from a source.
+  /// Maximum number of results allowed from a datasource in a result page as
+  /// long as results from other sources are not exhausted.
   ///
-  /// No limits will be set on results if this value is less than or equal to 0.
+  /// Value specified must not be negative. A default value is used if this
+  /// value is equal to 0. To disable crowding, set the value greater than 100.
   core.int? numResults;
 
   /// Maximum number of suggestions allowed from a source.

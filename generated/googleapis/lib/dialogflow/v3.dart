@@ -3448,8 +3448,8 @@ class ProjectsLocationsAgentsFlowsVersionsResource {
   ///
   /// [baseVersion] - Required. Name of the base flow version to compare with
   /// the target version. Use version ID `0` to indicate the draft version of
-  /// the specified flow. Format:
-  /// `projects//locations//agents//flows//versions/`.
+  /// the specified flow. Format: `projects//locations//agents/
+  /// /flows//versions/`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/agents/\[^/\]+/flows/\[^/\]+/versions/\[^/\]+$`.
   ///
@@ -7126,7 +7126,7 @@ class GoogleCloudDialogflowCxV3Environment {
 
 /// The configuration for continuous tests.
 typedef GoogleCloudDialogflowCxV3EnvironmentTestCasesConfig
-    = $EnvironmentTestCasesConfig;
+    = $GoogleCloudDialogflowCxV3EnvironmentTestCasesConfig;
 
 /// Configuration for the version.
 typedef GoogleCloudDialogflowCxV3EnvironmentVersionConfig
@@ -10801,9 +10801,12 @@ class GoogleCloudDialogflowCxV3SecuritySettings {
   /// [DLP](https://cloud.google.com/dlp/docs) deidentify template name.
   ///
   /// Use this template to define de-identification configuration for the
-  /// content. If empty, Dialogflow replaces sensitive info with `[redacted]`
-  /// text. The template name will have one of the following formats:
-  /// `projects//locations//deidentifyTemplates/` OR
+  /// content. The `DLP De-identify Templates Reader` role is needed on the
+  /// Dialogflow service identity service account (has the form
+  /// `service-PROJECT_NUMBER@gcp-sa-dialogflow.iam.gserviceaccount.com`) for
+  /// your agent's project. If empty, Dialogflow replaces sensitive info with
+  /// `[redacted]` text. The template name will have one of the following
+  /// formats: `projects//locations//deidentifyTemplates/` OR
   /// `organizations//locations//deidentifyTemplates/` Note:
   /// `deidentify_template` must be located in the same region as the
   /// `SecuritySettings`.
@@ -10825,9 +10828,13 @@ class GoogleCloudDialogflowCxV3SecuritySettings {
 
   /// [DLP](https://cloud.google.com/dlp/docs) inspect template name.
   ///
-  /// Use this template to define inspect base settings. If empty, we use the
-  /// default DLP inspect config. The template name will have one of the
-  /// following formats: `projects//locations//inspectTemplates/` OR
+  /// Use this template to define inspect base settings. The `DLP Inspect
+  /// Templates Reader` role is needed on the Dialogflow service identity
+  /// service account (has the form
+  /// `service-PROJECT_NUMBER@gcp-sa-dialogflow.iam.gserviceaccount.com`) for
+  /// your agent's project. If empty, we use the default DLP inspect config. The
+  /// template name will have one of the following formats:
+  /// `projects//locations//inspectTemplates/` OR
   /// `organizations//locations//inspectTemplates/` Note: `inspect_template`
   /// must be located in the same region as the `SecuritySettings`.
   core.String? inspectTemplate;
@@ -10863,11 +10870,11 @@ class GoogleCloudDialogflowCxV3SecuritySettings {
   /// Retains data in interaction logging for the specified number of days.
   ///
   /// This does not apply to Cloud logging, which is owned by the user - not
-  /// Dialogflow. User must Set a value lower than Dialogflow's default 30d TTL.
-  /// Setting a value higher than that has no effect. A missing value or setting
-  /// to 0 also means we use Dialogflow's default TTL. Note: Interaction logging
-  /// is a limited access feature. Talk to your Google representative to check
-  /// availability for you.
+  /// Dialogflow. User must set a value lower than Dialogflow's default 365d
+  /// TTL. Setting a value higher than that has no effect. A missing value or
+  /// setting to 0 also means we use Dialogflow's default TTL. Note: Interaction
+  /// logging is a limited access feature. Talk to your Google representative to
+  /// check availability for you.
   core.int? retentionWindowDays;
 
   GoogleCloudDialogflowCxV3SecuritySettings({

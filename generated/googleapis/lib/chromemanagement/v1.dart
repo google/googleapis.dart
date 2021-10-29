@@ -87,6 +87,64 @@ class CustomersAppsResource {
   CustomersAppsWebResource get web => CustomersAppsWebResource(_requester);
 
   CustomersAppsResource(commons.ApiRequester client) : _requester = client;
+
+  /// Generate summary of app installation requests.
+  ///
+  /// Request parameters:
+  ///
+  /// [customer] - Required. Customer id or "my_customer" to use the customer
+  /// associated to the account making the request.
+  /// Value must have pattern `^customers/\[^/\]+$`.
+  ///
+  /// [orderBy] - Field used to order results. Supported fields: * request_count
+  /// * latest_request_time
+  ///
+  /// [orgUnitId] - The ID of the organizational unit.
+  ///
+  /// [pageSize] - Maximum number of results to return. Maximum and default are
+  /// 50, anything above will be coerced to 50.
+  ///
+  /// [pageToken] - Token to specify the page of the request to be returned.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleChromeManagementV1CountChromeAppRequestsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleChromeManagementV1CountChromeAppRequestsResponse>
+      countChromeAppRequests(
+    core.String customer, {
+    core.String? orderBy,
+    core.String? orgUnitId,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (orgUnitId != null) 'orgUnitId': [orgUnitId],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' +
+        core.Uri.encodeFull('$customer') +
+        '/apps:countChromeAppRequests';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleChromeManagementV1CountChromeAppRequestsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class CustomersAppsAndroidResource {
@@ -941,6 +999,91 @@ class GoogleChromeManagementV1ChromeAppPermission {
       };
 }
 
+/// Details of an app installation request.
+class GoogleChromeManagementV1ChromeAppRequest {
+  /// Format: app_details=customers/{customer_id}/apps/chrome/{app_id}
+  ///
+  /// Output only.
+  core.String? appDetails;
+
+  /// Unique store identifier for the app.
+  ///
+  /// Example: "gmbmikajjgmnabiglmofipeabaddhgne" for the Save to Google Drive
+  /// Chrome extension.
+  ///
+  /// Output only.
+  core.String? appId;
+
+  /// The uri for the detail page of the item.
+  ///
+  /// Output only.
+  core.String? detailUri;
+
+  /// App's display name.
+  ///
+  /// Output only.
+  core.String? displayName;
+
+  /// A link to an image that can be used as an icon for the product.
+  ///
+  /// Output only.
+  core.String? iconUri;
+
+  /// The timestamp of the most recently made request for this app.
+  ///
+  /// Output only.
+  core.String? latestRequestTime;
+
+  /// Total count of requests for this app.
+  ///
+  /// Output only.
+  core.String? requestCount;
+
+  GoogleChromeManagementV1ChromeAppRequest({
+    this.appDetails,
+    this.appId,
+    this.detailUri,
+    this.displayName,
+    this.iconUri,
+    this.latestRequestTime,
+    this.requestCount,
+  });
+
+  GoogleChromeManagementV1ChromeAppRequest.fromJson(core.Map _json)
+      : this(
+          appDetails: _json.containsKey('appDetails')
+              ? _json['appDetails'] as core.String
+              : null,
+          appId:
+              _json.containsKey('appId') ? _json['appId'] as core.String : null,
+          detailUri: _json.containsKey('detailUri')
+              ? _json['detailUri'] as core.String
+              : null,
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          iconUri: _json.containsKey('iconUri')
+              ? _json['iconUri'] as core.String
+              : null,
+          latestRequestTime: _json.containsKey('latestRequestTime')
+              ? _json['latestRequestTime'] as core.String
+              : null,
+          requestCount: _json.containsKey('requestCount')
+              ? _json['requestCount'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (appDetails != null) 'appDetails': appDetails!,
+        if (appId != null) 'appId': appId!,
+        if (detailUri != null) 'detailUri': detailUri!,
+        if (displayName != null) 'displayName': displayName!,
+        if (iconUri != null) 'iconUri': iconUri!,
+        if (latestRequestTime != null) 'latestRequestTime': latestRequestTime!,
+        if (requestCount != null) 'requestCount': requestCount!,
+      };
+}
+
 /// Represent one host permission.
 class GoogleChromeManagementV1ChromeAppSiteAccess {
   /// This can contain very specific hosts, or patterns like "*.com" for
@@ -962,6 +1105,48 @@ class GoogleChromeManagementV1ChromeAppSiteAccess {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (hostMatch != null) 'hostMatch': hostMatch!,
+      };
+}
+
+/// Response containing summary of requested app installations.
+class GoogleChromeManagementV1CountChromeAppRequestsResponse {
+  /// Token to specify the next page in the list.
+  core.String? nextPageToken;
+
+  /// Count of requested apps matching request.
+  core.List<GoogleChromeManagementV1ChromeAppRequest>? requestedApps;
+
+  /// Total number of matching app requests.
+  core.int? totalSize;
+
+  GoogleChromeManagementV1CountChromeAppRequestsResponse({
+    this.nextPageToken,
+    this.requestedApps,
+    this.totalSize,
+  });
+
+  GoogleChromeManagementV1CountChromeAppRequestsResponse.fromJson(
+      core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          requestedApps: _json.containsKey('requestedApps')
+              ? (_json['requestedApps'] as core.List)
+                  .map((value) =>
+                      GoogleChromeManagementV1ChromeAppRequest.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          totalSize: _json.containsKey('totalSize')
+              ? _json['totalSize'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (requestedApps != null) 'requestedApps': requestedApps!,
+        if (totalSize != null) 'totalSize': totalSize!,
       };
 }
 
