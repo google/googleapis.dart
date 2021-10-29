@@ -82,6 +82,7 @@ packages:
     - datacatalog:v1
     - datafusion:v1
     - datamigration:v1
+    - datapipelines:v1
     - dataproc:v1 # https://cloud.google.com/dataproc/
     - datastore:v1 # https://developers.google.com/datastore/
     - deploymentmanager:v2 # https://cloud.google.com/deployment-manager/

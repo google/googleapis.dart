@@ -3316,7 +3316,7 @@
             }
         }
     },
-    "revision": "20211020",
+    "revision": "20211027",
     "rootUrl": "https://tagmanager.googleapis.com/",
     "schemas": {
         "Account": {
@@ -5582,6 +5582,13 @@
                 "notes": {
                     "description": "User notes on how to apply this zone in the container.",
                     "type": "string"
+                },
+                "parameter": {
+                    "description": "Additional parameters.",
+                    "items": {
+                        "$ref": "Parameter"
+                    },
+                    "type": "array"
                 },
                 "path": {
                     "description": "GTM Zone's API relative path.",

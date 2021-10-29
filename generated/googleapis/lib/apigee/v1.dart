@@ -12382,6 +12382,13 @@ class GoogleCloudApigeeV1ApiProxyRevision {
   /// Metadata describing the API proxy revision as a key-value map.
   core.Map<core.String, core.String>? entityMetaDataAsProperties;
 
+  /// List of IntegrationEndpoints in the '/integration-endpoints' directory of
+  /// the API proxy.
+  ///
+  /// This is a 'manifest' setting designed to provide visibility into the
+  /// contents of the API proxy.
+  core.List<core.String>? integrationEndpoints;
+
   /// Time that the API proxy revision was last modified in milliseconds since
   /// epoch.
   core.String? lastModifiedAt;
@@ -12454,6 +12461,7 @@ class GoogleCloudApigeeV1ApiProxyRevision {
     this.description,
     this.displayName,
     this.entityMetaDataAsProperties,
+    this.integrationEndpoints,
     this.lastModifiedAt,
     this.name,
     this.policies,
@@ -12506,6 +12514,11 @@ class GoogleCloudApigeeV1ApiProxyRevision {
                       ),
                     )
                   : null,
+          integrationEndpoints: _json.containsKey('integrationEndpoints')
+              ? (_json['integrationEndpoints'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
           lastModifiedAt: _json.containsKey('lastModifiedAt')
               ? _json['lastModifiedAt'] as core.String
               : null,
@@ -12576,6 +12589,8 @@ class GoogleCloudApigeeV1ApiProxyRevision {
         if (displayName != null) 'displayName': displayName!,
         if (entityMetaDataAsProperties != null)
           'entityMetaDataAsProperties': entityMetaDataAsProperties!,
+        if (integrationEndpoints != null)
+          'integrationEndpoints': integrationEndpoints!,
         if (lastModifiedAt != null) 'lastModifiedAt': lastModifiedAt!,
         if (name != null) 'name': name!,
         if (policies != null) 'policies': policies!,

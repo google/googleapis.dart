@@ -515,6 +515,8 @@ class ApiDimensionFilter {
   /// - "NOT_EQUALS"
   /// - "CONTAINS"
   /// - "NOT_CONTAINS"
+  /// - "INCLUDING_REGEX"
+  /// - "EXCLUDING_REGEX"
   core.String? operator;
 
   ApiDimensionFilter({
@@ -857,6 +859,8 @@ class SearchAnalyticsQueryRequest {
   /// - "IMAGE"
   /// - "VIDEO"
   /// - "NEWS" : News tab in search.
+  /// - "DISCOVER" : Discover.
+  /// - "GOOGLE_NEWS" : Google News (news.google.com or mobile app).
   core.String? searchType;
 
   /// \[Required\] Start date of the requested date range, in YYYY-MM-DD format,
@@ -872,6 +876,19 @@ class SearchAnalyticsQueryRequest {
   /// Must be a non-negative number.
   core.int? startRow;
 
+  /// \[Optional; Default is \"web\"\] Type of report: search type, or either
+  /// Discover or Gnews.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "WEB"
+  /// - "IMAGE"
+  /// - "VIDEO"
+  /// - "NEWS" : News tab in search.
+  /// - "DISCOVER" : Discover.
+  /// - "GOOGLE_NEWS" : Google News (news.google.com or mobile app).
+  core.String? type;
+
   SearchAnalyticsQueryRequest({
     this.aggregationType,
     this.dataState,
@@ -882,6 +899,7 @@ class SearchAnalyticsQueryRequest {
     this.searchType,
     this.startDate,
     this.startRow,
+    this.type,
   });
 
   SearchAnalyticsQueryRequest.fromJson(core.Map _json)
@@ -918,6 +936,7 @@ class SearchAnalyticsQueryRequest {
           startRow: _json.containsKey('startRow')
               ? _json['startRow'] as core.int
               : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -931,6 +950,7 @@ class SearchAnalyticsQueryRequest {
         if (searchType != null) 'searchType': searchType!,
         if (startDate != null) 'startDate': startDate!,
         if (startRow != null) 'startRow': startRow!,
+        if (type != null) 'type': type!,
       };
 }
 

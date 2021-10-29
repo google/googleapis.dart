@@ -1803,6 +1803,7 @@ api.GoogleCloudHealthcareV1DicomBigQueryDestination
   if (buildCounterGoogleCloudHealthcareV1DicomBigQueryDestination < 3) {
     o.force = true;
     o.tableUri = 'foo';
+    o.writeDisposition = 'foo';
   }
   buildCounterGoogleCloudHealthcareV1DicomBigQueryDestination--;
   return o;
@@ -1815,6 +1816,10 @@ void checkGoogleCloudHealthcareV1DicomBigQueryDestination(
     unittest.expect(o.force!, unittest.isTrue);
     unittest.expect(
       o.tableUri!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.writeDisposition!,
       unittest.equals('foo'),
     );
   }

@@ -495,6 +495,11 @@ Manage Cloud Database Migration Service resources on Google Cloud Platform.
 - [Documentation](https://cloud.google.com/database-migration/)
 - [API details](https://pub.dev/documentation/googleapis/7.0.0-dev/datamigration.v1/datamigration.v1-library.html)
 
+#### Data pipelines API - `datapipelines.v1`
+
+- [Documentation](https://developers.google.com/apis-explorer/#search/dataflow)
+- [API details](https://pub.dev/documentation/googleapis/7.0.0-dev/datapipelines.v1/datapipelines.v1-library.html)
+
 #### Cloud Dataproc API - `dataproc.v1`
 
 Manages Hadoop-based clusters and jobs on Google Cloud Platform.

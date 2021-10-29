@@ -10821,9 +10821,11 @@ class GoogleCloudDialogflowV2Agent {
   /// Optional.
   /// Possible string values are:
   /// - "TIER_UNSPECIFIED" : Not specified. This value should never be used.
-  /// - "TIER_STANDARD" : Standard tier.
-  /// - "TIER_ENTERPRISE" : Enterprise tier (Essentials).
-  /// - "TIER_ENTERPRISE_PLUS" : Enterprise tier (Plus).
+  /// - "TIER_STANDARD" : Trial Edition, previously known as Standard Edition.
+  /// - "TIER_ENTERPRISE" : Essentials Edition, previously known as Enterprise
+  /// Essential Edition.
+  /// - "TIER_ENTERPRISE_PLUS" : Essentials Edition (same as TIER_ENTERPRISE),
+  /// previously known as Enterprise Plus Edition.
   core.String? tier;
 
   /// The time zone of this agent from the

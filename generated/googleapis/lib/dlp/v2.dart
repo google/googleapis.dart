@@ -9702,17 +9702,25 @@ class GooglePrivacyDlpV2InfoType {
   /// `[A-Za-z0-9$-_]{1,64}`.
   core.String? name;
 
+  /// Optional version name for this InfoType.
+  core.String? version;
+
   GooglePrivacyDlpV2InfoType({
     this.name,
+    this.version,
   });
 
   GooglePrivacyDlpV2InfoType.fromJson(core.Map _json)
       : this(
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          version: _json.containsKey('version')
+              ? _json['version'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
+        if (version != null) 'version': version!,
       };
 }
 

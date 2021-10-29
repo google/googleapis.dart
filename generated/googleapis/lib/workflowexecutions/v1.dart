@@ -301,7 +301,7 @@ typedef CancelExecutionRequest = $Empty;
 
 /// Error describes why the execution was abnormally terminated.
 class Error {
-  /// Human readable stack trace string.
+  /// Human-readable stack trace string.
   core.String? context;
 
   /// Error message and data returned represented as a JSON string.
@@ -502,8 +502,7 @@ class Position {
   /// generated from.
   core.String? column;
 
-  /// The length in bytes of text in this character group, e.g. digits of a
-  /// number, string length, or AST (abstract syntax tree) node.
+  /// The number of bytes of source code making up this stack trace element.
   core.String? length;
 
   /// The source code line number the current instruction was generated from.
@@ -535,7 +534,7 @@ class Position {
 
 /// A collection of stack elements (frames) where an error occurred.
 class StackTrace {
-  /// An array of Stack elements.
+  /// An array of stack elements.
   core.List<StackTraceElement>? elements;
 
   StackTrace({
@@ -559,7 +558,7 @@ class StackTrace {
 
 /// A single stack element (frame) where an error occurred.
 class StackTraceElement {
-  /// The source position information of the stacktrace element.
+  /// The source position information of the stack trace element.
   Position? position;
 
   /// The routine where the error occurred.

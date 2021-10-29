@@ -357,6 +357,7 @@ api.SearchAnalyticsQueryRequest buildSearchAnalyticsQueryRequest() {
     o.searchType = 'foo';
     o.startDate = 'foo';
     o.startRow = 42;
+    o.type = 'foo';
   }
   buildCounterSearchAnalyticsQueryRequest--;
   return o;
@@ -394,6 +395,10 @@ void checkSearchAnalyticsQueryRequest(api.SearchAnalyticsQueryRequest o) {
     unittest.expect(
       o.startRow!,
       unittest.equals(42),
+    );
+    unittest.expect(
+      o.type!,
+      unittest.equals('foo'),
     );
   }
   buildCounterSearchAnalyticsQueryRequest--;

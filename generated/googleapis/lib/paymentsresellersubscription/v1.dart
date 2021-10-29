@@ -737,9 +737,20 @@ class GoogleCloudPaymentsResellerSubscriptionV1ExtendSubscriptionResponse {
   /// trial period is offered to the partner.
   core.String? freeTrialEndTime;
 
+  /// The time at which the subscription is expected to be renewed by Google - a
+  /// new charge will be incurred and the service entitlement will be renewed.
+  ///
+  /// A non-immediate cancellation will take place at this time too, before
+  /// which, the service entitlement for the end user will remain valid. UTC
+  /// timezone in ISO 8061 format. For example: "2019-08-31T17:28:54.564Z"
+  ///
+  /// Output only.
+  core.String? renewalTime;
+
   GoogleCloudPaymentsResellerSubscriptionV1ExtendSubscriptionResponse({
     this.cycleEndTime,
     this.freeTrialEndTime,
+    this.renewalTime,
   });
 
   GoogleCloudPaymentsResellerSubscriptionV1ExtendSubscriptionResponse.fromJson(
@@ -751,11 +762,15 @@ class GoogleCloudPaymentsResellerSubscriptionV1ExtendSubscriptionResponse {
           freeTrialEndTime: _json.containsKey('freeTrialEndTime')
               ? _json['freeTrialEndTime'] as core.String
               : null,
+          renewalTime: _json.containsKey('renewalTime')
+              ? _json['renewalTime'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (cycleEndTime != null) 'cycleEndTime': cycleEndTime!,
         if (freeTrialEndTime != null) 'freeTrialEndTime': freeTrialEndTime!,
+        if (renewalTime != null) 'renewalTime': renewalTime!,
       };
 }
 

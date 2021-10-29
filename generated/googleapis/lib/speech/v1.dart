@@ -504,6 +504,24 @@ class RecognitionConfig {
   /// audio.
   core.bool? enableSeparateRecognitionPerChannel;
 
+  /// The spoken emoji behavior for the call If not set, uses default behavior
+  /// based on model of choice If 'true', adds spoken emoji formatting for the
+  /// request.
+  ///
+  /// This will replace spoken emojis with the corresponding Unicode symbols in
+  /// the final transcript. If 'false', spoken emojis are not replaced.
+  core.bool? enableSpokenEmojis;
+
+  /// The spoken punctuation behavior for the call If not set, uses default
+  /// behavior based on model of choice e.g. command_and_search will enable
+  /// spoken punctuation by default If 'true', replaces spoken punctuation with
+  /// the corresponding symbols in the request.
+  ///
+  /// For example, "how are you question mark" becomes "how are you?". See
+  /// https://cloud.google.com/speech-to-text/docs/spoken-punctuation for
+  /// support. If 'false', spoken punctuation is not replaced.
+  core.bool? enableSpokenPunctuation;
+
   /// If `true`, the top result includes a list of words and the confidence for
   /// those words.
   ///
@@ -634,6 +652,8 @@ class RecognitionConfig {
     this.diarizationConfig,
     this.enableAutomaticPunctuation,
     this.enableSeparateRecognitionPerChannel,
+    this.enableSpokenEmojis,
+    this.enableSpokenPunctuation,
     this.enableWordConfidence,
     this.enableWordTimeOffsets,
     this.encoding,
@@ -670,6 +690,12 @@ class RecognitionConfig {
               _json.containsKey('enableSeparateRecognitionPerChannel')
                   ? _json['enableSeparateRecognitionPerChannel'] as core.bool
                   : null,
+          enableSpokenEmojis: _json.containsKey('enableSpokenEmojis')
+              ? _json['enableSpokenEmojis'] as core.bool
+              : null,
+          enableSpokenPunctuation: _json.containsKey('enableSpokenPunctuation')
+              ? _json['enableSpokenPunctuation'] as core.bool
+              : null,
           enableWordConfidence: _json.containsKey('enableWordConfidence')
               ? _json['enableWordConfidence'] as core.bool
               : null,
@@ -718,6 +744,10 @@ class RecognitionConfig {
         if (enableSeparateRecognitionPerChannel != null)
           'enableSeparateRecognitionPerChannel':
               enableSeparateRecognitionPerChannel!,
+        if (enableSpokenEmojis != null)
+          'enableSpokenEmojis': enableSpokenEmojis!,
+        if (enableSpokenPunctuation != null)
+          'enableSpokenPunctuation': enableSpokenPunctuation!,
         if (enableWordConfidence != null)
           'enableWordConfidence': enableWordConfidence!,
         if (enableWordTimeOffsets != null)

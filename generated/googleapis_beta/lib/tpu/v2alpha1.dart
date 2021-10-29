@@ -533,7 +533,8 @@ class ProjectsLocationsNodesResource {
   /// `^projects/\[^/\]+/locations/\[^/\]+/nodes/\[^/\]+$`.
   ///
   /// [updateMask] - Required. Mask of fields from Node to update. Supported
-  /// fields: None.
+  /// fields: \[description, tags, labels, metadata,
+  /// network_config.enable_external_ips\].
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.

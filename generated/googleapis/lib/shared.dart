@@ -4217,6 +4217,9 @@ class $EgressFrom {
 /// - datamigration:v1 : StaticIpConnectivity
 /// - datamigration:v1 : StopMigrationJobRequest
 /// - datamigration:v1 : VerifyMigrationJobRequest
+/// - datapipelines:v1 : GoogleCloudDatapipelinesV1RunPipelineRequest
+/// - datapipelines:v1 : GoogleCloudDatapipelinesV1StopPipelineRequest
+/// - datapipelines:v1 : GoogleProtobufEmpty
 /// - dataproc:v1 : CancelJobRequest
 /// - dataproc:v1 : DiagnoseClusterRequest
 /// - dataproc:v1 : Empty
@@ -4805,60 +4808,6 @@ class $EnvelopeSignature {
   core.Map<core.String, core.dynamic> toJson() => {
         if (keyid != null) 'keyid': keyid!,
         if (sig != null) 'sig': sig!,
-      };
-}
-
-/// Used by:
-///
-/// - dialogflow:v2 : GoogleCloudDialogflowCxV3EnvironmentTestCasesConfig
-/// - dialogflow:v2 : GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfig
-/// - dialogflow:v3 : GoogleCloudDialogflowCxV3EnvironmentTestCasesConfig
-/// - dialogflow:v3 : GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfig
-class $EnvironmentTestCasesConfig {
-  /// Whether to run test cases in TestCasesConfig.test_cases periodically.
-  ///
-  /// Default false. If set to ture, run once a day.
-  core.bool? enableContinuousRun;
-
-  /// Whether to run test cases in TestCasesConfig.test_cases before deploying a
-  /// flow version to the environment.
-  ///
-  /// Default false.
-  core.bool? enablePredeploymentRun;
-
-  /// A list of test case names to run.
-  ///
-  /// They should be under the same agent. Format of each test case name:
-  /// `projects//locations/ /agents//testCases/`
-  core.List<core.String>? testCases;
-
-  $EnvironmentTestCasesConfig({
-    this.enableContinuousRun,
-    this.enablePredeploymentRun,
-    this.testCases,
-  });
-
-  $EnvironmentTestCasesConfig.fromJson(core.Map _json)
-      : this(
-          enableContinuousRun: _json.containsKey('enableContinuousRun')
-              ? _json['enableContinuousRun'] as core.bool
-              : null,
-          enablePredeploymentRun: _json.containsKey('enablePredeploymentRun')
-              ? _json['enablePredeploymentRun'] as core.bool
-              : null,
-          testCases: _json.containsKey('testCases')
-              ? (_json['testCases'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (enableContinuousRun != null)
-          'enableContinuousRun': enableContinuousRun!,
-        if (enablePredeploymentRun != null)
-          'enablePredeploymentRun': enablePredeploymentRun!,
-        if (testCases != null) 'testCases': testCases!,
       };
 }
 
@@ -5892,6 +5841,58 @@ class $GitSourceContext {
   core.Map<core.String, core.dynamic> toJson() => {
         if (revisionId != null) 'revisionId': revisionId!,
         if (url != null) 'url': url!,
+      };
+}
+
+/// Used by:
+///
+/// - dialogflow:v2 : GoogleCloudDialogflowCxV3EnvironmentTestCasesConfig
+/// - dialogflow:v3 : GoogleCloudDialogflowCxV3EnvironmentTestCasesConfig
+class $GoogleCloudDialogflowCxV3EnvironmentTestCasesConfig {
+  /// Whether to run test cases in TestCasesConfig.test_cases periodically.
+  ///
+  /// Default false. If set to ture, run once a day.
+  core.bool? enableContinuousRun;
+
+  /// Whether to run test cases in TestCasesConfig.test_cases before deploying a
+  /// flow version to the environment.
+  ///
+  /// Default false.
+  core.bool? enablePredeploymentRun;
+
+  /// A list of test case names to run.
+  ///
+  /// They should be under the same agent. Format of each test case name:
+  /// `projects//locations/ /agents//testCases/`
+  core.List<core.String>? testCases;
+
+  $GoogleCloudDialogflowCxV3EnvironmentTestCasesConfig({
+    this.enableContinuousRun,
+    this.enablePredeploymentRun,
+    this.testCases,
+  });
+
+  $GoogleCloudDialogflowCxV3EnvironmentTestCasesConfig.fromJson(core.Map _json)
+      : this(
+          enableContinuousRun: _json.containsKey('enableContinuousRun')
+              ? _json['enableContinuousRun'] as core.bool
+              : null,
+          enablePredeploymentRun: _json.containsKey('enablePredeploymentRun')
+              ? _json['enablePredeploymentRun'] as core.bool
+              : null,
+          testCases: _json.containsKey('testCases')
+              ? (_json['testCases'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enableContinuousRun != null)
+          'enableContinuousRun': enableContinuousRun!,
+        if (enablePredeploymentRun != null)
+          'enablePredeploymentRun': enablePredeploymentRun!,
+        if (testCases != null) 'testCases': testCases!,
       };
 }
 
@@ -13715,6 +13716,7 @@ class $StartPageToken {
 /// - containeranalysis:v1 : Status
 /// - datafusion:v1 : Status
 /// - datamigration:v1 : Status
+/// - datapipelines:v1 : GoogleRpcStatus
 /// - dataproc:v1 : Status
 /// - datastore:v1 : Status
 /// - dialogflow:v2 : GoogleRpcStatus

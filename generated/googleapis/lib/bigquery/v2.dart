@@ -2324,52 +2324,6 @@ class Argument {
       };
 }
 
-/// Arima coefficients.
-class ArimaCoefficients {
-  /// Auto-regressive coefficients, an array of double.
-  core.List<core.double>? autoRegressiveCoefficients;
-
-  /// Intercept coefficient, just a double not an array.
-  core.double? interceptCoefficient;
-
-  /// Moving-average coefficients, an array of double.
-  core.List<core.double>? movingAverageCoefficients;
-
-  ArimaCoefficients({
-    this.autoRegressiveCoefficients,
-    this.interceptCoefficient,
-    this.movingAverageCoefficients,
-  });
-
-  ArimaCoefficients.fromJson(core.Map _json)
-      : this(
-          autoRegressiveCoefficients:
-              _json.containsKey('autoRegressiveCoefficients')
-                  ? (_json['autoRegressiveCoefficients'] as core.List)
-                      .map((value) => (value as core.num).toDouble())
-                      .toList()
-                  : null,
-          interceptCoefficient: _json.containsKey('interceptCoefficient')
-              ? (_json['interceptCoefficient'] as core.num).toDouble()
-              : null,
-          movingAverageCoefficients:
-              _json.containsKey('movingAverageCoefficients')
-                  ? (_json['movingAverageCoefficients'] as core.List)
-                      .map((value) => (value as core.num).toDouble())
-                      .toList()
-                  : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (autoRegressiveCoefficients != null)
-          'autoRegressiveCoefficients': autoRegressiveCoefficients!,
-        if (interceptCoefficient != null)
-          'interceptCoefficient': interceptCoefficient!,
-        if (movingAverageCoefficients != null)
-          'movingAverageCoefficients': movingAverageCoefficients!,
-      };
-}
-
 /// ARIMA model fitting metrics.
 class ArimaFittingMetrics {
   /// AIC.
@@ -2493,120 +2447,6 @@ class ArimaForecastingMetrics {
       };
 }
 
-/// Arima model information.
-class ArimaModelInfo {
-  /// Arima coefficients.
-  ArimaCoefficients? arimaCoefficients;
-
-  /// Arima fitting metrics.
-  ArimaFittingMetrics? arimaFittingMetrics;
-
-  /// Whether Arima model fitted with drift or not.
-  ///
-  /// It is always false when d is not 1.
-  core.bool? hasDrift;
-
-  /// If true, holiday_effect is a part of time series decomposition result.
-  core.bool? hasHolidayEffect;
-
-  /// If true, spikes_and_dips is a part of time series decomposition result.
-  core.bool? hasSpikesAndDips;
-
-  /// If true, step_changes is a part of time series decomposition result.
-  core.bool? hasStepChanges;
-
-  /// Non-seasonal order.
-  ArimaOrder? nonSeasonalOrder;
-
-  /// Seasonal periods.
-  ///
-  /// Repeated because multiple periods are supported for one time series.
-  core.List<core.String>? seasonalPeriods;
-
-  /// The time_series_id value for this time series.
-  ///
-  /// It will be one of the unique values from the time_series_id_column
-  /// specified during ARIMA model training. Only present when
-  /// time_series_id_column training option was used.
-  core.String? timeSeriesId;
-
-  /// The tuple of time_series_ids identifying this time series.
-  ///
-  /// It will be one of the unique tuples of values present in the
-  /// time_series_id_columns specified during ARIMA model training. Only present
-  /// when time_series_id_columns training option was used and the order of
-  /// values here are same as the order of time_series_id_columns.
-  core.List<core.String>? timeSeriesIds;
-
-  ArimaModelInfo({
-    this.arimaCoefficients,
-    this.arimaFittingMetrics,
-    this.hasDrift,
-    this.hasHolidayEffect,
-    this.hasSpikesAndDips,
-    this.hasStepChanges,
-    this.nonSeasonalOrder,
-    this.seasonalPeriods,
-    this.timeSeriesId,
-    this.timeSeriesIds,
-  });
-
-  ArimaModelInfo.fromJson(core.Map _json)
-      : this(
-          arimaCoefficients: _json.containsKey('arimaCoefficients')
-              ? ArimaCoefficients.fromJson(_json['arimaCoefficients']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          arimaFittingMetrics: _json.containsKey('arimaFittingMetrics')
-              ? ArimaFittingMetrics.fromJson(_json['arimaFittingMetrics']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          hasDrift: _json.containsKey('hasDrift')
-              ? _json['hasDrift'] as core.bool
-              : null,
-          hasHolidayEffect: _json.containsKey('hasHolidayEffect')
-              ? _json['hasHolidayEffect'] as core.bool
-              : null,
-          hasSpikesAndDips: _json.containsKey('hasSpikesAndDips')
-              ? _json['hasSpikesAndDips'] as core.bool
-              : null,
-          hasStepChanges: _json.containsKey('hasStepChanges')
-              ? _json['hasStepChanges'] as core.bool
-              : null,
-          nonSeasonalOrder: _json.containsKey('nonSeasonalOrder')
-              ? ArimaOrder.fromJson(_json['nonSeasonalOrder']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          seasonalPeriods: _json.containsKey('seasonalPeriods')
-              ? (_json['seasonalPeriods'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          timeSeriesId: _json.containsKey('timeSeriesId')
-              ? _json['timeSeriesId'] as core.String
-              : null,
-          timeSeriesIds: _json.containsKey('timeSeriesIds')
-              ? (_json['timeSeriesIds'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (arimaCoefficients != null) 'arimaCoefficients': arimaCoefficients!,
-        if (arimaFittingMetrics != null)
-          'arimaFittingMetrics': arimaFittingMetrics!,
-        if (hasDrift != null) 'hasDrift': hasDrift!,
-        if (hasHolidayEffect != null) 'hasHolidayEffect': hasHolidayEffect!,
-        if (hasSpikesAndDips != null) 'hasSpikesAndDips': hasSpikesAndDips!,
-        if (hasStepChanges != null) 'hasStepChanges': hasStepChanges!,
-        if (nonSeasonalOrder != null) 'nonSeasonalOrder': nonSeasonalOrder!,
-        if (seasonalPeriods != null) 'seasonalPeriods': seasonalPeriods!,
-        if (timeSeriesId != null) 'timeSeriesId': timeSeriesId!,
-        if (timeSeriesIds != null) 'timeSeriesIds': timeSeriesIds!,
-      };
-}
-
 /// Arima order, can be used for both non-seasonal and seasonal parts.
 class ArimaOrder {
   /// Order of the differencing part.
@@ -2635,48 +2475,6 @@ class ArimaOrder {
         if (d != null) 'd': d!,
         if (p != null) 'p': p!,
         if (q != null) 'q': q!,
-      };
-}
-
-/// (Auto-)arima fitting result.
-///
-/// Wrap everything in ArimaResult for easier refactoring if we want to use
-/// model-specific iteration results.
-class ArimaResult {
-  /// This message is repeated because there are multiple arima models fitted in
-  /// auto-arima.
-  ///
-  /// For non-auto-arima model, its size is one.
-  core.List<ArimaModelInfo>? arimaModelInfo;
-
-  /// Seasonal periods.
-  ///
-  /// Repeated because multiple periods are supported for one time series.
-  core.List<core.String>? seasonalPeriods;
-
-  ArimaResult({
-    this.arimaModelInfo,
-    this.seasonalPeriods,
-  });
-
-  ArimaResult.fromJson(core.Map _json)
-      : this(
-          arimaModelInfo: _json.containsKey('arimaModelInfo')
-              ? (_json['arimaModelInfo'] as core.List)
-                  .map((value) => ArimaModelInfo.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          seasonalPeriods: _json.containsKey('seasonalPeriods')
-              ? (_json['seasonalPeriods'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (arimaModelInfo != null) 'arimaModelInfo': arimaModelInfo!,
-        if (seasonalPeriods != null) 'seasonalPeriods': seasonalPeriods!,
       };
 }
 
@@ -3356,19 +3154,20 @@ class BinaryConfusionMatrix {
       };
 }
 
-/// Associates `members` with a `role`.
+/// Associates `members`, or principals, with a `role`.
 class Binding {
   /// The condition that is associated with this binding.
   ///
   /// If the condition evaluates to `true`, then this binding applies to the
   /// current request. If the condition evaluates to `false`, then this binding
   /// does not apply to the current request. However, a different role binding
-  /// might grant the same role to one or more of the members in this binding.
-  /// To learn which resources support conditions in their IAM policies, see the
+  /// might grant the same role to one or more of the principals in this
+  /// binding. To learn which resources support conditions in their IAM
+  /// policies, see the
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   Expr? condition;
 
-  /// Specifies the identities requesting access for a Cloud Platform resource.
+  /// Specifies the principals requesting access for a Cloud Platform resource.
   ///
   /// `members` can have the following values: * `allUsers`: A special
   /// identifier that represents anyone who is on the internet; with or without
@@ -3400,7 +3199,7 @@ class Binding {
   /// `example.com`.
   core.List<core.String>? members;
 
-  /// Role that is assigned to `members`.
+  /// Role that is assigned to the list of `members`, or principals.
   ///
   /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
   core.String? role;
@@ -3719,44 +3518,6 @@ class Cluster {
         if (centroidId != null) 'centroidId': centroidId!,
         if (count != null) 'count': count!,
         if (featureValues != null) 'featureValues': featureValues!,
-      };
-}
-
-/// Information about a single cluster for clustering model.
-class ClusterInfo {
-  /// Centroid id.
-  core.String? centroidId;
-
-  /// Cluster radius, the average distance from centroid to each point assigned
-  /// to the cluster.
-  core.double? clusterRadius;
-
-  /// Cluster size, the total number of points assigned to the cluster.
-  core.String? clusterSize;
-
-  ClusterInfo({
-    this.centroidId,
-    this.clusterRadius,
-    this.clusterSize,
-  });
-
-  ClusterInfo.fromJson(core.Map _json)
-      : this(
-          centroidId: _json.containsKey('centroidId')
-              ? _json['centroidId'] as core.String
-              : null,
-          clusterRadius: _json.containsKey('clusterRadius')
-              ? (_json['clusterRadius'] as core.num).toDouble()
-              : null,
-          clusterSize: _json.containsKey('clusterSize')
-              ? _json['clusterSize'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (centroidId != null) 'centroidId': centroidId!,
-        if (clusterRadius != null) 'clusterRadius': clusterRadius!,
-        if (clusterSize != null) 'clusterSize': clusterSize!,
       };
 }
 
@@ -4622,7 +4383,7 @@ class DestinationTableProperties {
   /// Optional.
   core.String? description;
 
-  /// The expiration timestamp for the destination table.
+  /// The destination table expiration time.
   ///
   /// If this field is set: For a new table, it will set the table's expiration
   /// time (even if there is a dataset level default table expiration time). For
@@ -4634,7 +4395,7 @@ class DestinationTableProperties {
   /// data is overwritten to a table (WRITE_TRUNCATE).
   ///
   /// Optional.
-  core.String? expirationTimestampMillis;
+  core.DateTime? expirationTime;
 
   /// The friendly name for the destination table.
   ///
@@ -4657,7 +4418,7 @@ class DestinationTableProperties {
 
   DestinationTableProperties({
     this.description,
-    this.expirationTimestampMillis,
+    this.expirationTime,
     this.friendlyName,
     this.labels,
   });
@@ -4667,10 +4428,9 @@ class DestinationTableProperties {
           description: _json.containsKey('description')
               ? _json['description'] as core.String
               : null,
-          expirationTimestampMillis:
-              _json.containsKey('expirationTimestampMillis')
-                  ? _json['expirationTimestampMillis'] as core.String
-                  : null,
+          expirationTime: _json.containsKey('expirationTime')
+              ? core.DateTime.parse(_json['expirationTime'] as core.String)
+              : null,
           friendlyName: _json.containsKey('friendlyName')
               ? _json['friendlyName'] as core.String
               : null,
@@ -4686,8 +4446,8 @@ class DestinationTableProperties {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
-        if (expirationTimestampMillis != null)
-          'expirationTimestampMillis': expirationTimestampMillis!,
+        if (expirationTime != null)
+          'expirationTime': expirationTime!.toUtc().toIso8601String(),
         if (friendlyName != null) 'friendlyName': friendlyName!,
         if (labels != null) 'labels': labels!,
       };
@@ -5790,13 +5550,7 @@ class HivePartitioningOptions {
       };
 }
 
-/// Information about a single iteration of the training run.
 class IterationResult {
-  ArimaResult? arimaResult;
-
-  /// Information about top clusters for clustering models.
-  core.List<ClusterInfo>? clusterInfos;
-
   /// Time taken to run the iteration in milliseconds.
   core.String? durationMs;
 
@@ -5813,8 +5567,6 @@ class IterationResult {
   core.double? trainingLoss;
 
   IterationResult({
-    this.arimaResult,
-    this.clusterInfos,
     this.durationMs,
     this.evalLoss,
     this.index,
@@ -5824,16 +5576,6 @@ class IterationResult {
 
   IterationResult.fromJson(core.Map _json)
       : this(
-          arimaResult: _json.containsKey('arimaResult')
-              ? ArimaResult.fromJson(
-                  _json['arimaResult'] as core.Map<core.String, core.dynamic>)
-              : null,
-          clusterInfos: _json.containsKey('clusterInfos')
-              ? (_json['clusterInfos'] as core.List)
-                  .map((value) => ClusterInfo.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
           durationMs: _json.containsKey('durationMs')
               ? _json['durationMs'] as core.String
               : null,
@@ -5850,8 +5592,6 @@ class IterationResult {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (arimaResult != null) 'arimaResult': arimaResult!,
-        if (clusterInfos != null) 'clusterInfos': clusterInfos!,
         if (durationMs != null) 'durationMs': durationMs!,
         if (evalLoss != null) 'evalLoss': evalLoss!,
         if (index != null) 'index': index!,
@@ -7612,6 +7352,9 @@ class JobStatistics2 {
   /// \[Output-only\] The original estimate of bytes processed for the job.
   core.String? estimatedBytesProcessed;
 
+  /// \[Output-only\] Statistics of a BigQuery ML training job.
+  MlStatistics? mlStatistics;
+
   /// \[Output-only, Beta\] Information about create model query job progress.
   BigQueryModelTraining? modelTraining;
 
@@ -7710,6 +7453,7 @@ class JobStatistics2 {
     this.ddlTargetTable,
     this.dmlStats,
     this.estimatedBytesProcessed,
+    this.mlStatistics,
     this.modelTraining,
     this.modelTrainingCurrentIteration,
     this.modelTrainingExpectedTotalIteration,
@@ -7776,6 +7520,10 @@ class JobStatistics2 {
               : null,
           estimatedBytesProcessed: _json.containsKey('estimatedBytesProcessed')
               ? _json['estimatedBytesProcessed'] as core.String
+              : null,
+          mlStatistics: _json.containsKey('mlStatistics')
+              ? MlStatistics.fromJson(
+                  _json['mlStatistics'] as core.Map<core.String, core.dynamic>)
               : null,
           modelTraining: _json.containsKey('modelTraining')
               ? BigQueryModelTraining.fromJson(
@@ -7874,6 +7622,7 @@ class JobStatistics2 {
         if (dmlStats != null) 'dmlStats': dmlStats!,
         if (estimatedBytesProcessed != null)
           'estimatedBytesProcessed': estimatedBytesProcessed!,
+        if (mlStatistics != null) 'mlStatistics': mlStatistics!,
         if (modelTraining != null) 'modelTraining': modelTraining!,
         if (modelTrainingCurrentIteration != null)
           'modelTrainingCurrentIteration': modelTrainingCurrentIteration!,
@@ -8235,6 +7984,41 @@ class MaterializedViewDefinition {
         if (lastRefreshTime != null) 'lastRefreshTime': lastRefreshTime!,
         if (query != null) 'query': query!,
         if (refreshIntervalMs != null) 'refreshIntervalMs': refreshIntervalMs!,
+      };
+}
+
+class MlStatistics {
+  /// Results for all completed iterations.
+  core.List<IterationResult>? iterationResults;
+
+  /// Maximum number of iterations specified as max_iterations in the 'CREATE
+  /// MODEL' query.
+  ///
+  /// The actual number of iterations may be less than this number due to early
+  /// stop.
+  core.String? maxIterations;
+
+  MlStatistics({
+    this.iterationResults,
+    this.maxIterations,
+  });
+
+  MlStatistics.fromJson(core.Map _json)
+      : this(
+          iterationResults: _json.containsKey('iterationResults')
+              ? (_json['iterationResults'] as core.List)
+                  .map((value) => IterationResult.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          maxIterations: _json.containsKey('maxIterations')
+              ? _json['maxIterations'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (iterationResults != null) 'iterationResults': iterationResults!,
+        if (maxIterations != null) 'maxIterations': maxIterations!,
       };
 }
 
@@ -8640,15 +8424,15 @@ class ParquetOptions {
 /// controls for Google Cloud resources.
 ///
 /// A `Policy` is a collection of `bindings`. A `binding` binds one or more
-/// `members` to a single `role`. Members can be user accounts, service
-/// accounts, Google groups, and domains (such as G Suite). A `role` is a named
-/// list of permissions; each `role` can be an IAM predefined role or a
-/// user-created custom role. For some types of Google Cloud resources, a
-/// `binding` can also specify a `condition`, which is a logical expression that
-/// allows access to a resource only if the expression evaluates to `true`. A
-/// condition can add constraints based on attributes of the request, the
-/// resource, or both. To learn which resources support conditions in their IAM
-/// policies, see the
+/// `members`, or principals, to a single `role`. Principals can be user
+/// accounts, service accounts, Google groups, and domains (such as G Suite). A
+/// `role` is a named list of permissions; each `role` can be an IAM predefined
+/// role or a user-created custom role. For some types of Google Cloud
+/// resources, a `binding` can also specify a `condition`, which is a logical
+/// expression that allows access to a resource only if the expression evaluates
+/// to `true`. A condition can add constraints based on attributes of the
+/// request, the resource, or both. To learn which resources support conditions
+/// in their IAM policies, see the
 /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 /// **JSON example:** { "bindings": \[ { "role":
 /// "roles/resourcemanager.organizationAdmin", "members": \[
@@ -8671,11 +8455,16 @@ class Policy {
   /// Specifies cloud audit logging configuration for this policy.
   core.List<AuditConfig>? auditConfigs;
 
-  /// Associates a list of `members` to a `role`.
+  /// Associates a list of `members`, or principals, with a `role`.
   ///
   /// Optionally, may specify a `condition` that determines how and when the
   /// `bindings` are applied. Each of the `bindings` must contain at least one
-  /// member.
+  /// principal. The `bindings` in a `Policy` can refer to up to 1,500
+  /// principals; up to 250 of these principals can be Google groups. Each
+  /// occurrence of a principal counts towards these limits. For example, if the
+  /// `bindings` grant 50 different roles to `user:alice@example.com`, and not
+  /// to any other principal, then you can add another 1,450 principals to the
+  /// `bindings` in the `Policy`.
   core.List<Binding>? bindings;
 
   /// `etag` is used for optimistic concurrency control as a way to help prevent

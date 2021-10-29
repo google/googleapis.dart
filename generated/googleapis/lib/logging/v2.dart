@@ -8539,9 +8539,10 @@ class CmekSettings {
   /// example:"projects/my-project/locations/us-central1/keyRings/my-ring/cryptoKeys/my-key"To
   /// enable CMEK for the Logs Router, set this field to a valid kms_key_name
   /// for which the associated service account has the required
-  /// roles/cloudkms.cryptoKeyEncrypterDecrypter role assigned for the key.The
-  /// Cloud KMS key used by the Log Router can be updated by changing the
-  /// kms_key_name to a new valid key name.
+  /// cloudkms.cryptoKeyEncrypterDecrypter roles assigned for the key.The Cloud
+  /// KMS key used by the Log Router can be updated by changing the kms_key_name
+  /// to a new valid key name or disabled by setting the key name to an empty
+  /// string.
   ///
   /// Encryption operations that are in progress will be completed with the key
   /// that was in use when they started. Decryption operations will be completed
@@ -8559,8 +8560,8 @@ class CmekSettings {
 
   /// The service account that will be used by the Logs Router to access your
   /// Cloud KMS key.Before enabling CMEK for Logs Router, you must first assign
-  /// the role roles/cloudkms.cryptoKeyEncrypterDecrypter to the service account
-  /// that the Logs Router will use to access your Cloud KMS key.
+  /// the cloudkms.cryptoKeyEncrypterDecrypter role to the service account that
+  /// the Logs Router will use to access your Cloud KMS key.
   ///
   /// Use GetCmekSettings to obtain the service account ID.See Enabling CMEK for
   /// Logs Router

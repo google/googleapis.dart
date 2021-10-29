@@ -125,7 +125,7 @@ class ActivitiesResource {
   /// various Jamboard activity events.
   /// - "login" : The Login application's activity reports return account
   /// information about different types of Login activity events.
-  /// - "meet" : The Meet Audit activity report return information about
+  /// - "meet" : The Meet Audit activity report returns information about
   /// different types of Meet Audit activity events.
   /// - "mobile" : The Mobile Audit activity report return information about
   /// different types of Mobile Audit activity events.
@@ -353,7 +353,7 @@ class ActivitiesResource {
   /// various Jamboard activity events.
   /// - "login" : The Login application's activity reports return account
   /// information about different types of Login activity events.
-  /// - "meet" : The Meet Audit activity report return information about
+  /// - "meet" : The Meet Audit activity report returns information about
   /// different types of Meet Audit activity events.
   /// - "mobile" : The Mobile Audit activity report return information about
   /// different types of Mobile Audit activity events.
@@ -992,7 +992,8 @@ class ActivityActor {
 
   /// The unique Google Workspace profile ID of the actor.
   ///
-  /// May be absent if the actor is not a Google Workspace user.
+  /// This value might be absent if the actor is not a Google Workspace user, or
+  /// may be the number 105250506097979753968 which acts as a placeholder ID.
   core.String? profileId;
 
   ActivityActor({
