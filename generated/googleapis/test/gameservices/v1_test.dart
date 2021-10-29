@@ -1659,7 +1659,6 @@ api.Policy buildPolicy() {
     o.auditConfigs = buildUnnamed30();
     o.bindings = buildUnnamed31();
     o.etag = 'foo';
-    o.iamOwned = true;
     o.rules = buildUnnamed32();
     o.version = 42;
   }
@@ -1676,7 +1675,6 @@ void checkPolicy(api.Policy o) {
       o.etag!,
       unittest.equals('foo'),
     );
-    unittest.expect(o.iamOwned!, unittest.isTrue);
     checkUnnamed32(o.rules!);
     unittest.expect(
       o.version!,

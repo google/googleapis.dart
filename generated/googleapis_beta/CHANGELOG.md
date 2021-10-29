@@ -1,4 +1,14 @@
-## 7.0.0-dev
+## 7.0.0
+
+### googleapis_beta
+
+- Removed *many* types defined in the source library JSON definition, but that 
+  were not used by the API.
+
+### API changes
+
+- `datastream v1alpha1` - new
+- `tpu v2alpha1` - new! 
 
 ## 6.0.0
 

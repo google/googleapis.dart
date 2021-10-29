@@ -1,7 +1,21 @@
-## 7.0.0-dev
+## 7.0.0
 
+- Removed *many* types defined in the source library JSON definition, but that
+  were not used by the API.
+- Drop unusable `Firestore` `listen` function and related types.
+  [#77](https://github.com/google/googleapis.dart/issues/77)
 - Fixed issue in AdMob `accounts.networkReport.generate` return type.
   [#183](https://github.com/google/googleapis.dart/issues/183)
+
+### API changes
+
+- `containeranalysis` - new!
+- `datapipelines` - new!
+- `domains` - new!
+- `playablelocations` - **removed!**
+- `vectortile` - **removed!**
+- `versionhistory` - new!
+- `vmmigration` - new!
 
 ## 6.0.0
 

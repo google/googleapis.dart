@@ -570,7 +570,7 @@ class ProjectsLocationsInstancesResource {
   /// [updateMask] - Required. Mask of fields to update. At least one path must
   /// be supplied in this field. The elements of the repeated paths field may
   /// only include these fields from Instance: * `displayName` * `labels` *
-  /// `memorySizeGb` * `redisConfig`
+  /// `memorySizeGb` * `redisConfig` * `replica_count`
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1046,13 +1046,14 @@ class InputConfig {
 
 /// A Google Cloud Redis instance.
 ///
-/// next id = 37
+/// next id = 38
 class Instance {
-  /// Only applicable to STANDARD_HA tier which protects the instance against
-  /// zonal failures by provisioning it across two zones.
+  /// If specified, at least one node will be provisioned in this zone in
+  /// addition to the zone specified in location_id.
   ///
-  /// If provided, it must be a different zone from the one provided in
-  /// location_id.
+  /// Only applicable to standard tier. If provided, it must be a different zone
+  /// from the one provided in \[location_id\]. Additional nodes beyond the
+  /// first 2 will be placed in zones selected by the service.
   ///
   /// Optional.
   core.String? alternativeLocationId;
@@ -1093,12 +1094,10 @@ class Instance {
   /// Output only.
   core.String? createTime;
 
-  /// The current zone where the Redis endpoint is placed.
+  /// The current zone where the Redis primary node is located.
   ///
-  /// For Basic Tier instances, this will always be the same as the location_id
-  /// provided by the user at creation time. For Standard Tier instances, this
-  /// can be either location_id or alternative_location_id and can change after
-  /// a failover event.
+  /// In basic tier, this will always be the same as \[location_id\]. In
+  /// standard tier, this can be the zone of any node in the instance.
   ///
   /// Output only.
   core.String? currentLocationId;
@@ -1118,10 +1117,9 @@ class Instance {
   /// The zone where the instance will be provisioned.
   ///
   /// If not provided, the service will choose a zone from the specified region
-  /// for the instance. For standard tier, instances will be created across two
-  /// zones for protection against zonal failures. If
-  /// \[alternative_location_id\] is also provided, it must be different from
-  /// \[location_id\].
+  /// for the instance. For standard tier, additional nodes will be added across
+  /// multiple zones for protection against zonal failures. If specified, at
+  /// least one node will be provisioned in this zone.
   ///
   /// Optional.
   core.String? locationId;
@@ -1161,6 +1159,11 @@ class Instance {
   /// Output only.
   core.List<NodeInfo>? nodes;
 
+  /// Persistence configuration parameters
+  ///
+  /// Optional.
+  PersistenceConfig? persistenceConfig;
+
   /// Cloud IAM identity used by import / export operations to transfer data
   /// to/from Cloud Storage.
   ///
@@ -1195,8 +1198,8 @@ class Instance {
   ///
   /// Optional.
   /// Possible string values are:
-  /// - "READ_REPLICAS_MODE_UNSPECIFIED" : If not set, redis backend would pick
-  /// the mode based on other fields in the request.
+  /// - "READ_REPLICAS_MODE_UNSPECIFIED" : If not set, Memorystore Redis backend
+  /// will pick the mode based on other fields in the request.
   /// - "READ_REPLICAS_DISABLED" : If disabled, read endpoint will not be
   /// provided and the instance cannot scale up or down the number of replicas.
   /// - "READ_REPLICAS_ENABLED" : If enabled, read endpoint will be provided and
@@ -1226,7 +1229,7 @@ class Instance {
 
   /// The number of replica nodes.
   ///
-  /// Valid range for standard tier is \[1-5\] and defaults to 1. Valid value
+  /// Valid range for standard tier is \[1-5\] and defaults to 2. Valid value
   /// for basic tier is 0 and defaults to 0.
   ///
   /// Optional.
@@ -1239,7 +1242,8 @@ class Instance {
   /// authorized network. For PRIVATE_SERVICE_ACCESS mode, the name of one
   /// allocated IP address ranges associated with this private service access
   /// connection. If not provided, the service will choose an unused /29 block,
-  /// for example, 10.0.0.0/29 or 192.168.0.0/29.
+  /// for example, 10.0.0.0/29 or 192.168.0.0/29. For READ_REPLICAS_ENABLED the
+  /// default block size is /28.
   ///
   /// Optional.
   core.String? reservedIpRange;
@@ -1312,6 +1316,7 @@ class Instance {
     this.memorySizeGb,
     this.name,
     this.nodes,
+    this.persistenceConfig,
     this.persistenceIamIdentity,
     this.port,
     this.readEndpoint,
@@ -1381,6 +1386,10 @@ class Instance {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          persistenceConfig: _json.containsKey('persistenceConfig')
+              ? PersistenceConfig.fromJson(_json['persistenceConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           persistenceIamIdentity: _json.containsKey('persistenceIamIdentity')
               ? _json['persistenceIamIdentity'] as core.String
               : null,
@@ -1447,6 +1456,7 @@ class Instance {
         if (memorySizeGb != null) 'memorySizeGb': memorySizeGb!,
         if (name != null) 'name': name!,
         if (nodes != null) 'nodes': nodes!,
+        if (persistenceConfig != null) 'persistenceConfig': persistenceConfig!,
         if (persistenceIamIdentity != null)
           'persistenceIamIdentity': persistenceIamIdentity!,
         if (port != null) 'port': port!,
@@ -1925,6 +1935,84 @@ class OutputConfig {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (gcsDestination != null) 'gcsDestination': gcsDestination!,
+      };
+}
+
+/// Configuration of the persistence functionality.
+class PersistenceConfig {
+  /// Controls whether Persistence features are enabled.
+  ///
+  /// If not provided, the existing value will be used.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "PERSISTENCE_MODE_UNSPECIFIED" : Not set.
+  /// - "DISABLED" : Persistence is disabled for the instance, and any existing
+  /// snapshots are deleted.
+  /// - "RDB" : RDB based Persistence is enabled.
+  core.String? persistenceMode;
+
+  /// The next time that a snapshot attempt is scheduled to occur.
+  ///
+  /// Output only.
+  core.String? rdbNextSnapshotTime;
+
+  /// Period between RDB snapshots.
+  ///
+  /// Snapshots will be attempted every period starting from the provided
+  /// snapshot start time. For example, a start time of 01/01/2033 06:45 and
+  /// SIX_HOURS snapshot period will do nothing until 01/01/2033, and then
+  /// trigger snapshots every day at 06:45, 12:45, 18:45, and 00:45 the next
+  /// day, and so on. If not provided, TWENTY_FOUR_HOURS will be used as
+  /// default.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "SNAPSHOT_PERIOD_UNSPECIFIED" : Not set.
+  /// - "ONE_HOUR" : Snapshot every 1 hour.
+  /// - "SIX_HOURS" : Snapshot every 6 hours.
+  /// - "TWELVE_HOURS" : Snapshot every 12 hours.
+  /// - "TWENTY_FOUR_HOURS" : Snapshot every 24 horus.
+  core.String? rdbSnapshotPeriod;
+
+  /// Date and time that the first snapshot was/will be attempted, and to which
+  /// future snapshots will be aligned.
+  ///
+  /// If not provided, the current time will be used.
+  ///
+  /// Optional.
+  core.String? rdbSnapshotStartTime;
+
+  PersistenceConfig({
+    this.persistenceMode,
+    this.rdbNextSnapshotTime,
+    this.rdbSnapshotPeriod,
+    this.rdbSnapshotStartTime,
+  });
+
+  PersistenceConfig.fromJson(core.Map _json)
+      : this(
+          persistenceMode: _json.containsKey('persistenceMode')
+              ? _json['persistenceMode'] as core.String
+              : null,
+          rdbNextSnapshotTime: _json.containsKey('rdbNextSnapshotTime')
+              ? _json['rdbNextSnapshotTime'] as core.String
+              : null,
+          rdbSnapshotPeriod: _json.containsKey('rdbSnapshotPeriod')
+              ? _json['rdbSnapshotPeriod'] as core.String
+              : null,
+          rdbSnapshotStartTime: _json.containsKey('rdbSnapshotStartTime')
+              ? _json['rdbSnapshotStartTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (persistenceMode != null) 'persistenceMode': persistenceMode!,
+        if (rdbNextSnapshotTime != null)
+          'rdbNextSnapshotTime': rdbNextSnapshotTime!,
+        if (rdbSnapshotPeriod != null) 'rdbSnapshotPeriod': rdbSnapshotPeriod!,
+        if (rdbSnapshotStartTime != null)
+          'rdbSnapshotStartTime': rdbSnapshotStartTime!,
       };
 }
 

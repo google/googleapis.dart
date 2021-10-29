@@ -14,6 +14,8 @@
 
 /// Idea Hub API - v1beta
 ///
+/// This is an invitation-only API.
+///
 /// For more information, see
 /// <https://console.cloud.google.com/apis/library/ideahub.googleapis.com>
 ///
@@ -40,6 +42,7 @@ import '../src/user_agent.dart';
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
+/// This is an invitation-only API.
 class IdeahubApi {
   final commons.ApiRequester _requester;
 

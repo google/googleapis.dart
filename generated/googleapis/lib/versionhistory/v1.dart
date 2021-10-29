@@ -551,6 +551,7 @@ class Platform {
   /// - "MAC_ARM64"
   /// - "LACROS"
   /// - "LACROS_ARM32"
+  /// - "CHROMEOS"
   core.String? platformType;
 
   Platform({

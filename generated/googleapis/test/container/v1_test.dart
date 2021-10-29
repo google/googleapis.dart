@@ -94,6 +94,28 @@ void checkAddonsConfig(api.AddonsConfig o) {
   buildCounterAddonsConfig--;
 }
 
+core.int buildCounterAdvancedMachineFeatures = 0;
+api.AdvancedMachineFeatures buildAdvancedMachineFeatures() {
+  final o = api.AdvancedMachineFeatures();
+  buildCounterAdvancedMachineFeatures++;
+  if (buildCounterAdvancedMachineFeatures < 3) {
+    o.threadsPerCore = 'foo';
+  }
+  buildCounterAdvancedMachineFeatures--;
+  return o;
+}
+
+void checkAdvancedMachineFeatures(api.AdvancedMachineFeatures o) {
+  buildCounterAdvancedMachineFeatures++;
+  if (buildCounterAdvancedMachineFeatures < 3) {
+    unittest.expect(
+      o.threadsPerCore!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterAdvancedMachineFeatures--;
+}
+
 core.int buildCounterAuthenticatorGroupsConfig = 0;
 api.AuthenticatorGroupsConfig buildAuthenticatorGroupsConfig() {
   final o = api.AuthenticatorGroupsConfig();
@@ -2064,14 +2086,18 @@ core.int buildCounterMeshCertificates = 0;
 api.MeshCertificates buildMeshCertificates() {
   final o = api.MeshCertificates();
   buildCounterMeshCertificates++;
-  if (buildCounterMeshCertificates < 3) {}
+  if (buildCounterMeshCertificates < 3) {
+    o.enableCertificates = true;
+  }
   buildCounterMeshCertificates--;
   return o;
 }
 
 void checkMeshCertificates(api.MeshCertificates o) {
   buildCounterMeshCertificates++;
-  if (buildCounterMeshCertificates < 3) {}
+  if (buildCounterMeshCertificates < 3) {
+    unittest.expect(o.enableCertificates!, unittest.isTrue);
+  }
   buildCounterMeshCertificates--;
 }
 
@@ -2351,6 +2377,7 @@ api.NodeConfig buildNodeConfig() {
   buildCounterNodeConfig++;
   if (buildCounterNodeConfig < 3) {
     o.accelerators = buildUnnamed26();
+    o.advancedMachineFeatures = buildAdvancedMachineFeatures();
     o.bootDiskKmsKey = 'foo';
     o.diskSizeGb = 42;
     o.diskType = 'foo';
@@ -2383,6 +2410,7 @@ void checkNodeConfig(api.NodeConfig o) {
   buildCounterNodeConfig++;
   if (buildCounterNodeConfig < 3) {
     checkUnnamed26(o.accelerators!);
+    checkAdvancedMachineFeatures(o.advancedMachineFeatures!);
     unittest.expect(
       o.bootDiskKmsKey!,
       unittest.equals('foo'),
@@ -4482,6 +4510,16 @@ void main() {
       final od = api.AddonsConfig.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkAddonsConfig(od);
+    });
+  });
+
+  unittest.group('obj-schema-AdvancedMachineFeatures', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildAdvancedMachineFeatures();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AdvancedMachineFeatures.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkAdvancedMachineFeatures(od);
     });
   });
 

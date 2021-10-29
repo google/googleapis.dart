@@ -284,11 +284,13 @@ api.CaPool buildCaPool() {
   final o = api.CaPool();
   buildCounterCaPool++;
   if (buildCounterCaPool < 3) {
+    o.createTime = 'foo';
     o.issuancePolicy = buildIssuancePolicy();
     o.labels = buildUnnamed4();
     o.name = 'foo';
     o.publishingOptions = buildPublishingOptions();
     o.tier = 'foo';
+    o.updateTime = 'foo';
   }
   buildCounterCaPool--;
   return o;
@@ -297,6 +299,10 @@ api.CaPool buildCaPool() {
 void checkCaPool(api.CaPool o) {
   buildCounterCaPool++;
   if (buildCounterCaPool < 3) {
+    unittest.expect(
+      o.createTime!,
+      unittest.equals('foo'),
+    );
     checkIssuancePolicy(o.issuancePolicy!);
     checkUnnamed4(o.labels!);
     unittest.expect(
@@ -306,6 +312,10 @@ void checkCaPool(api.CaPool o) {
     checkPublishingOptions(o.publishingOptions!);
     unittest.expect(
       o.tier!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.updateTime!,
       unittest.equals('foo'),
     );
   }

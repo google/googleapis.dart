@@ -26,6 +26,40 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
+core.int buildCounterAppDevExperienceFeatureSpec = 0;
+api.AppDevExperienceFeatureSpec buildAppDevExperienceFeatureSpec() {
+  final o = api.AppDevExperienceFeatureSpec();
+  buildCounterAppDevExperienceFeatureSpec++;
+  if (buildCounterAppDevExperienceFeatureSpec < 3) {}
+  buildCounterAppDevExperienceFeatureSpec--;
+  return o;
+}
+
+void checkAppDevExperienceFeatureSpec(api.AppDevExperienceFeatureSpec o) {
+  buildCounterAppDevExperienceFeatureSpec++;
+  if (buildCounterAppDevExperienceFeatureSpec < 3) {}
+  buildCounterAppDevExperienceFeatureSpec--;
+}
+
+core.int buildCounterAppDevExperienceFeatureState = 0;
+api.AppDevExperienceFeatureState buildAppDevExperienceFeatureState() {
+  final o = api.AppDevExperienceFeatureState();
+  buildCounterAppDevExperienceFeatureState++;
+  if (buildCounterAppDevExperienceFeatureState < 3) {
+    o.networkingInstallSucceeded = buildStatus();
+  }
+  buildCounterAppDevExperienceFeatureState--;
+  return o;
+}
+
+void checkAppDevExperienceFeatureState(api.AppDevExperienceFeatureState o) {
+  buildCounterAppDevExperienceFeatureState++;
+  if (buildCounterAppDevExperienceFeatureState < 3) {
+    checkStatus(o.networkingInstallSucceeded!);
+  }
+  buildCounterAppDevExperienceFeatureState--;
+}
+
 core.List<api.AuditLogConfig> buildUnnamed0() => [
       buildAuditLogConfig(),
       buildAuditLogConfig(),
@@ -202,6 +236,7 @@ api.CommonFeatureSpec buildCommonFeatureSpec() {
   final o = api.CommonFeatureSpec();
   buildCounterCommonFeatureSpec++;
   if (buildCounterCommonFeatureSpec < 3) {
+    o.appdevexperience = buildAppDevExperienceFeatureSpec();
     o.multiclusteringress = buildMultiClusterIngressFeatureSpec();
   }
   buildCounterCommonFeatureSpec--;
@@ -211,6 +246,7 @@ api.CommonFeatureSpec buildCommonFeatureSpec() {
 void checkCommonFeatureSpec(api.CommonFeatureSpec o) {
   buildCounterCommonFeatureSpec++;
   if (buildCounterCommonFeatureSpec < 3) {
+    checkAppDevExperienceFeatureSpec(o.appdevexperience!);
     checkMultiClusterIngressFeatureSpec(o.multiclusteringress!);
   }
   buildCounterCommonFeatureSpec--;
@@ -221,6 +257,7 @@ api.CommonFeatureState buildCommonFeatureState() {
   final o = api.CommonFeatureState();
   buildCounterCommonFeatureState++;
   if (buildCounterCommonFeatureState < 3) {
+    o.appdevexperience = buildAppDevExperienceFeatureState();
     o.state = buildFeatureState();
   }
   buildCounterCommonFeatureState--;
@@ -230,6 +267,7 @@ api.CommonFeatureState buildCommonFeatureState() {
 void checkCommonFeatureState(api.CommonFeatureState o) {
   buildCounterCommonFeatureState++;
   if (buildCounterCommonFeatureState < 3) {
+    checkAppDevExperienceFeatureState(o.appdevexperience!);
     checkFeatureState(o.state!);
   }
   buildCounterCommonFeatureState--;
@@ -1765,6 +1803,7 @@ api.MembershipFeatureState buildMembershipFeatureState() {
   final o = api.MembershipFeatureState();
   buildCounterMembershipFeatureState++;
   if (buildCounterMembershipFeatureState < 3) {
+    o.appdevexperience = buildAppDevExperienceFeatureState();
     o.configmanagement = buildConfigManagementMembershipState();
     o.state = buildFeatureState();
   }
@@ -1775,6 +1814,7 @@ api.MembershipFeatureState buildMembershipFeatureState() {
 void checkMembershipFeatureState(api.MembershipFeatureState o) {
   buildCounterMembershipFeatureState++;
   if (buildCounterMembershipFeatureState < 3) {
+    checkAppDevExperienceFeatureState(o.appdevexperience!);
     checkConfigManagementMembershipState(o.configmanagement!);
     checkFeatureState(o.state!);
   }
@@ -2072,6 +2112,33 @@ void checkSetIamPolicyRequest(api.SetIamPolicyRequest o) {
   buildCounterSetIamPolicyRequest--;
 }
 
+core.int buildCounterStatus = 0;
+api.Status buildStatus() {
+  final o = api.Status();
+  buildCounterStatus++;
+  if (buildCounterStatus < 3) {
+    o.code = 'foo';
+    o.description = 'foo';
+  }
+  buildCounterStatus--;
+  return o;
+}
+
+void checkStatus(api.Status o) {
+  buildCounterStatus++;
+  if (buildCounterStatus < 3) {
+    unittest.expect(
+      o.code!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.description!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterStatus--;
+}
+
 core.List<core.String> buildUnnamed25() => [
       'foo',
       'foo',
@@ -2172,6 +2239,26 @@ void checkTypeMeta(api.TypeMeta o) {
 }
 
 void main() {
+  unittest.group('obj-schema-AppDevExperienceFeatureSpec', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildAppDevExperienceFeatureSpec();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AppDevExperienceFeatureSpec.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkAppDevExperienceFeatureSpec(od);
+    });
+  });
+
+  unittest.group('obj-schema-AppDevExperienceFeatureState', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildAppDevExperienceFeatureState();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AppDevExperienceFeatureState.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkAppDevExperienceFeatureState(od);
+    });
+  });
+
   unittest.group('obj-schema-AuditConfig', () {
     unittest.test('to-json--from-json', () async {
       final o = buildAuditConfig();
@@ -2711,6 +2798,16 @@ void main() {
       final od = api.SetIamPolicyRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkSetIamPolicyRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-Status', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildStatus();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.Status.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkStatus(od);
     });
   });
 

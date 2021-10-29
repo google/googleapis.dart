@@ -29,6 +29,7 @@
 ///   - [NamespacesRevisionsResource]
 ///   - [NamespacesRoutesResource]
 ///   - [NamespacesServicesResource]
+/// - [OperationsResource]
 /// - [ProjectsResource]
 ///   - [ProjectsAuthorizeddomainsResource]
 ///   - [ProjectsLocationsResource]
@@ -67,6 +68,7 @@ class CloudRunApi {
   final commons.ApiRequester _requester;
 
   NamespacesResource get namespaces => NamespacesResource(_requester);
+  OperationsResource get operations => OperationsResource(_requester);
   ProjectsResource get projects => ProjectsResource(_requester);
 
   CloudRunApi(http.Client client,
@@ -1055,6 +1057,61 @@ class NamespacesServicesResource {
       queryParams: _queryParams,
     );
     return Service.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class OperationsResource {
+  final commons.ApiRequester _requester;
+
+  OperationsResource(commons.ApiRequester client) : _requester = client;
+
+  /// Starts asynchronous cancellation on a long-running operation.
+  ///
+  /// The server makes a best effort to cancel the operation, but success is not
+  /// guaranteed. If the server doesn't support this method, it returns
+  /// `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation
+  /// or other methods to check whether the cancellation succeeded or whether
+  /// the operation completed despite cancellation. On successful cancellation,
+  /// the operation is not deleted; instead, it becomes an operation with an
+  /// Operation.error value with a google.rpc.Status.code of 1, corresponding to
+  /// `Code.CANCELLED`.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource to be cancelled.
+  /// Value must have pattern `^operations/.*$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> cancel(
+    GoogleLongrunningCancelOperationRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':cancel';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3249,6 +3306,15 @@ class DomainMappingStatus {
       };
 }
 
+/// A generic empty message that you can re-use to avoid defining duplicated
+/// empty messages in your APIs.
+///
+/// A typical example is to use it as the request or the response type of an API
+/// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
+/// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
+/// object `{}`.
+typedef Empty = $Empty;
+
 /// Not supported by Cloud Run EnvFromSource represents the source of a set of
 /// ConfigMaps
 class EnvFromSource {
@@ -3491,6 +3557,9 @@ class GoogleCloudRunV1Condition {
         if (type != null) 'type': type!,
       };
 }
+
+/// The request message for Operations.CancelOperation.
+typedef GoogleLongrunningCancelOperationRequest = $Empty;
 
 /// Not supported by Cloud Run HTTPGetAction describes an action based on HTTP
 /// Get requests.

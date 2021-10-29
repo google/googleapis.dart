@@ -2714,6 +2714,11 @@ class CaOptions {
 /// CertificateAuthority resources and to rotate CA certificates in and out of
 /// the trust anchor.
 class CaPool {
+  /// The time at which this CaPool was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
   /// The IssuancePolicy to control how Certificates will be issued from this
   /// CaPool.
   ///
@@ -2746,16 +2751,26 @@ class CaPool {
   /// - "DEVOPS" : DevOps tier.
   core.String? tier;
 
+  /// The time at which this CaPool was last updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
   CaPool({
+    this.createTime,
     this.issuancePolicy,
     this.labels,
     this.name,
     this.publishingOptions,
     this.tier,
+    this.updateTime,
   });
 
   CaPool.fromJson(core.Map _json)
       : this(
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
           issuancePolicy: _json.containsKey('issuancePolicy')
               ? IssuancePolicy.fromJson(_json['issuancePolicy']
                   as core.Map<core.String, core.dynamic>)
@@ -2774,14 +2789,19 @@ class CaPool {
                   as core.Map<core.String, core.dynamic>)
               : null,
           tier: _json.containsKey('tier') ? _json['tier'] as core.String : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
         if (issuancePolicy != null) 'issuancePolicy': issuancePolicy!,
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
         if (publishingOptions != null) 'publishingOptions': publishingOptions!,
         if (tier != null) 'tier': tier!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
