@@ -1,4 +1,4 @@
-# Created with package:mono_repo v5.0.3
+# Created with package:mono_repo v5.0.4
 name: Dart CI
 on:
   push:
@@ -31,9 +31,9 @@ jobs:
         with:
           sdk: stable
       - id: checkout
-        uses: actions/checkout@v2.3.4
+        uses: actions/checkout@v2.3.5
       - name: mono_repo self validate
-        run: dart pub global activate mono_repo 5.0.3
+        run: dart pub global activate mono_repo 5.0.4
       - name: mono_repo self validate
         run: dart pub global run mono_repo generate --validate
   job_002:
@@ -54,7 +54,7 @@ jobs:
         with:
           sdk: "2.12.0"
       - id: checkout
-        uses: actions/checkout@v2.3.4
+        uses: actions/checkout@v2.3.5
       - id: discoveryapis_commons_pub_upgrade
         name: discoveryapis_commons; dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
@@ -99,7 +99,7 @@ jobs:
         with:
           sdk: "2.13.0"
       - id: checkout
-        uses: actions/checkout@v2.3.4
+        uses: actions/checkout@v2.3.5
       - id: googleapis_auth_pub_upgrade
         name: googleapis_auth; dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
@@ -131,7 +131,7 @@ jobs:
         with:
           sdk: "2.13.4"
       - id: checkout
-        uses: actions/checkout@v2.3.4
+        uses: actions/checkout@v2.3.5
       - id: _test_pub_upgrade
         name: _test; dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
@@ -215,7 +215,7 @@ jobs:
         with:
           sdk: "2.14.0"
       - id: checkout
-        uses: actions/checkout@v2.3.4
+        uses: actions/checkout@v2.3.5
       - id: discoveryapis_generator_pub_upgrade
         name: discoveryapis_generator; dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
@@ -247,7 +247,7 @@ jobs:
         with:
           sdk: dev
       - id: checkout
-        uses: actions/checkout@v2.3.4
+        uses: actions/checkout@v2.3.5
       - id: _test_pub_upgrade
         name: _test; dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
@@ -383,7 +383,7 @@ jobs:
         with:
           sdk: "2.12.0"
       - id: checkout
-        uses: actions/checkout@v2.3.4
+        uses: actions/checkout@v2.3.5
       - id: discoveryapis_commons_pub_upgrade
         name: discoveryapis_commons; dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
@@ -418,7 +418,7 @@ jobs:
         with:
           sdk: "2.13.0"
       - id: checkout
-        uses: actions/checkout@v2.3.4
+        uses: actions/checkout@v2.3.5
       - id: googleapis_auth_pub_upgrade
         name: googleapis_auth; dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
@@ -453,7 +453,7 @@ jobs:
         with:
           sdk: "2.13.0"
       - id: checkout
-        uses: actions/checkout@v2.3.4
+        uses: actions/checkout@v2.3.5
       - id: googleapis_auth_pub_upgrade
         name: googleapis_auth; dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
@@ -488,7 +488,7 @@ jobs:
         with:
           sdk: "2.13.4"
       - id: checkout
-        uses: actions/checkout@v2.3.4
+        uses: actions/checkout@v2.3.5
       - id: _test_package_pub_upgrade
         name: _test_package; dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
@@ -523,7 +523,7 @@ jobs:
         with:
           sdk: "2.13.4"
       - id: checkout
-        uses: actions/checkout@v2.3.4
+        uses: actions/checkout@v2.3.5
       - id: generated_googleapis_pub_upgrade
         name: generated/googleapis; dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
@@ -558,7 +558,7 @@ jobs:
         with:
           sdk: "2.13.4"
       - id: checkout
-        uses: actions/checkout@v2.3.4
+        uses: actions/checkout@v2.3.5
       - id: generated_googleapis_beta_pub_upgrade
         name: generated/googleapis_beta; dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
@@ -593,7 +593,7 @@ jobs:
         with:
           sdk: "2.14.0"
       - id: checkout
-        uses: actions/checkout@v2.3.4
+        uses: actions/checkout@v2.3.5
       - id: discoveryapis_generator_pub_upgrade
         name: discoveryapis_generator; dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
@@ -628,7 +628,7 @@ jobs:
         with:
           sdk: dev
       - id: checkout
-        uses: actions/checkout@v2.3.4
+        uses: actions/checkout@v2.3.5
       - id: _test_package_pub_upgrade
         name: _test_package; dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
@@ -663,7 +663,7 @@ jobs:
         with:
           sdk: dev
       - id: checkout
-        uses: actions/checkout@v2.3.4
+        uses: actions/checkout@v2.3.5
       - id: discoveryapis_commons_pub_upgrade
         name: discoveryapis_commons; dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
@@ -698,7 +698,7 @@ jobs:
         with:
           sdk: dev
       - id: checkout
-        uses: actions/checkout@v2.3.4
+        uses: actions/checkout@v2.3.5
       - id: discoveryapis_generator_pub_upgrade
         name: discoveryapis_generator; dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
@@ -733,7 +733,7 @@ jobs:
         with:
           sdk: dev
       - id: checkout
-        uses: actions/checkout@v2.3.4
+        uses: actions/checkout@v2.3.5
       - id: generated_googleapis_pub_upgrade
         name: generated/googleapis; dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
@@ -768,7 +768,7 @@ jobs:
         with:
           sdk: dev
       - id: checkout
-        uses: actions/checkout@v2.3.4
+        uses: actions/checkout@v2.3.5
       - id: generated_googleapis_beta_pub_upgrade
         name: generated/googleapis_beta; dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
@@ -803,7 +803,7 @@ jobs:
         with:
           sdk: dev
       - id: checkout
-        uses: actions/checkout@v2.3.4
+        uses: actions/checkout@v2.3.5
       - id: googleapis_auth_pub_upgrade
         name: googleapis_auth; dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
@@ -838,7 +838,7 @@ jobs:
         with:
           sdk: dev
       - id: checkout
-        uses: actions/checkout@v2.3.4
+        uses: actions/checkout@v2.3.5
       - id: googleapis_auth_pub_upgrade
         name: googleapis_auth; dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"

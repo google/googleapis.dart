@@ -28,7 +28,7 @@ jobs:
     - uses: dart-lang/setup-dart@v1.2
       with:
         sdk: dev
-    - uses: actions/checkout@v2.3.4
+    - uses: actions/checkout@v2.3.5
     - run: |
         pushd discoveryapis_generator
         pub upgrade
