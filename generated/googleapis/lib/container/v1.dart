@@ -3665,6 +3665,31 @@ class AddonsConfig {
       };
 }
 
+/// Specifies options for controlling advanced machine features.
+class AdvancedMachineFeatures {
+  /// The number of threads per physical core.
+  ///
+  /// To disable simultaneous multithreading (SMT) set this to 1. If unset, the
+  /// maximum number of threads supported per core by the underlying processor
+  /// is assumed.
+  core.String? threadsPerCore;
+
+  AdvancedMachineFeatures({
+    this.threadsPerCore,
+  });
+
+  AdvancedMachineFeatures.fromJson(core.Map _json)
+      : this(
+          threadsPerCore: _json.containsKey('threadsPerCore')
+              ? _json['threadsPerCore'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (threadsPerCore != null) 'threadsPerCore': threadsPerCore!,
+      };
+}
+
 /// Configuration for returning group information from authenticators.
 class AuthenticatorGroupsConfig {
   /// Whether this cluster should return group membership lookups during
@@ -6767,7 +6792,31 @@ class MaxPodsConstraint {
 }
 
 /// Configuration for issuance of mTLS keys and certificates to Kubernetes pods.
-typedef MeshCertificates = $Empty;
+class MeshCertificates {
+  /// enable_certificates controls issuance of workload mTLS certificates.
+  ///
+  /// If set, the GKE Workload Identity Certificates controller and node agent
+  /// will be deployed in the cluster, which can then be configured by creating
+  /// a WorkloadCertificateConfig Custom Resource. Requires Workload Identity
+  /// (workload_pool must be non-empty).
+  core.bool? enableCertificates;
+
+  MeshCertificates({
+    this.enableCertificates,
+  });
+
+  MeshCertificates.fromJson(core.Map _json)
+      : this(
+          enableCertificates: _json.containsKey('enableCertificates')
+              ? _json['enableCertificates'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enableCertificates != null)
+          'enableCertificates': enableCertificates!,
+      };
+}
 
 /// Progress metric is (string, int|float|string) pair.
 class Metric {
@@ -7049,6 +7098,9 @@ class NodeConfig {
   /// support for GPUs.
   core.List<AcceleratorConfig>? accelerators;
 
+  /// Advanced features for the Compute Engine VM.
+  AdvancedMachineFeatures? advancedMachineFeatures;
+
   /// The Customer Managed Encryption Key used to encrypt the boot disk attached
   /// to each node in the node pool.
   ///
@@ -7199,6 +7251,7 @@ class NodeConfig {
 
   NodeConfig({
     this.accelerators,
+    this.advancedMachineFeatures,
     this.bootDiskKmsKey,
     this.diskSizeGb,
     this.diskType,
@@ -7231,6 +7284,11 @@ class NodeConfig {
                   .map((value) => AcceleratorConfig.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
+              : null,
+          advancedMachineFeatures: _json.containsKey('advancedMachineFeatures')
+              ? AdvancedMachineFeatures.fromJson(
+                  _json['advancedMachineFeatures']
+                      as core.Map<core.String, core.dynamic>)
               : null,
           bootDiskKmsKey: _json.containsKey('bootDiskKmsKey')
               ? _json['bootDiskKmsKey'] as core.String
@@ -7330,6 +7388,8 @@ class NodeConfig {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accelerators != null) 'accelerators': accelerators!,
+        if (advancedMachineFeatures != null)
+          'advancedMachineFeatures': advancedMachineFeatures!,
         if (bootDiskKmsKey != null) 'bootDiskKmsKey': bootDiskKmsKey!,
         if (diskSizeGb != null) 'diskSizeGb': diskSizeGb!,
         if (diskType != null) 'diskType': diskType!,

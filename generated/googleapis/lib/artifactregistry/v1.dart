@@ -278,8 +278,8 @@ class ProjectsLocationsRepositoriesDockerImagesResource {
 /// DockerImage represents a docker artifact.
 ///
 /// The following fields are returned as untyped metadata in the Version
-/// resource, using camelcase keys (i.e. metadata.imageSizeBytes): -
-/// imageSizeBytes - mediaType - buildTime
+/// resource, using camelcase keys (i.e. metadata.imageSizeBytes): *
+/// imageSizeBytes * mediaType * buildTime
 class DockerImage {
   /// The time this image was built.
   ///

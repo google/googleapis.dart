@@ -126,7 +126,6 @@ api.CloneJob buildCloneJob() {
   buildCounterCloneJob++;
   if (buildCounterCloneJob < 3) {
     o.computeEngineTargetDetails = buildComputeEngineTargetDetails();
-    o.computeEngineVmDetails = buildTargetVMDetails();
     o.createTime = 'foo';
     o.error = buildStatus();
     o.name = 'foo';
@@ -141,7 +140,6 @@ void checkCloneJob(api.CloneJob o) {
   buildCounterCloneJob++;
   if (buildCounterCloneJob < 3) {
     checkComputeEngineTargetDetails(o.computeEngineTargetDetails!);
-    checkTargetVMDetails(o.computeEngineVmDetails!);
     unittest.expect(
       o.createTime!,
       unittest.equals('foo'),
@@ -490,7 +488,6 @@ api.CutoverJob buildCutoverJob() {
   buildCounterCutoverJob++;
   if (buildCounterCutoverJob < 3) {
     o.computeEngineTargetDetails = buildComputeEngineTargetDetails();
-    o.computeEngineVmDetails = buildTargetVMDetails();
     o.createTime = 'foo';
     o.error = buildStatus();
     o.name = 'foo';
@@ -507,7 +504,6 @@ void checkCutoverJob(api.CutoverJob o) {
   buildCounterCutoverJob++;
   if (buildCounterCutoverJob < 3) {
     checkComputeEngineTargetDetails(o.computeEngineTargetDetails!);
-    checkTargetVMDetails(o.computeEngineVmDetails!);
     unittest.expect(
       o.createTime!,
       unittest.equals('foo'),
@@ -1917,155 +1913,12 @@ void checkTargetProject(api.TargetProject o) {
   buildCounterTargetProject--;
 }
 
-core.Map<core.String, core.String> buildUnnamed36() => {
-      'x': 'foo',
-      'y': 'foo',
-    };
-
-void checkUnnamed36(core.Map<core.String, core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o['x']!,
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o['y']!,
-    unittest.equals('foo'),
-  );
-}
-
-core.Map<core.String, core.String> buildUnnamed37() => {
-      'x': 'foo',
-      'y': 'foo',
-    };
-
-void checkUnnamed37(core.Map<core.String, core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o['x']!,
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o['y']!,
-    unittest.equals('foo'),
-  );
-}
-
-core.List<api.NetworkInterface> buildUnnamed38() => [
-      buildNetworkInterface(),
-      buildNetworkInterface(),
-    ];
-
-void checkUnnamed38(core.List<api.NetworkInterface> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkNetworkInterface(o[0]);
-  checkNetworkInterface(o[1]);
-}
-
-core.List<core.String> buildUnnamed39() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed39(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
-core.int buildCounterTargetVMDetails = 0;
-api.TargetVMDetails buildTargetVMDetails() {
-  final o = api.TargetVMDetails();
-  buildCounterTargetVMDetails++;
-  if (buildCounterTargetVMDetails < 3) {
-    o.appliedLicense = buildAppliedLicense();
-    o.bootOption = 'foo';
-    o.computeScheduling = buildComputeScheduling();
-    o.diskType = 'foo';
-    o.labels = buildUnnamed36();
-    o.licenseType = 'foo';
-    o.machineType = 'foo';
-    o.machineTypeSeries = 'foo';
-    o.metadata = buildUnnamed37();
-    o.name = 'foo';
-    o.networkInterfaces = buildUnnamed38();
-    o.networkTags = buildUnnamed39();
-    o.project = 'foo';
-    o.secureBoot = true;
-    o.serviceAccount = 'foo';
-    o.targetProject = 'foo';
-    o.zone = 'foo';
-  }
-  buildCounterTargetVMDetails--;
-  return o;
-}
-
-void checkTargetVMDetails(api.TargetVMDetails o) {
-  buildCounterTargetVMDetails++;
-  if (buildCounterTargetVMDetails < 3) {
-    checkAppliedLicense(o.appliedLicense!);
-    unittest.expect(
-      o.bootOption!,
-      unittest.equals('foo'),
-    );
-    checkComputeScheduling(o.computeScheduling!);
-    unittest.expect(
-      o.diskType!,
-      unittest.equals('foo'),
-    );
-    checkUnnamed36(o.labels!);
-    unittest.expect(
-      o.licenseType!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.machineType!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.machineTypeSeries!,
-      unittest.equals('foo'),
-    );
-    checkUnnamed37(o.metadata!);
-    unittest.expect(
-      o.name!,
-      unittest.equals('foo'),
-    );
-    checkUnnamed38(o.networkInterfaces!);
-    checkUnnamed39(o.networkTags!);
-    unittest.expect(
-      o.project!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(o.secureBoot!, unittest.isTrue);
-    unittest.expect(
-      o.serviceAccount!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.targetProject!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.zone!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterTargetVMDetails--;
-}
-
-core.List<api.VmUtilizationInfo> buildUnnamed40() => [
+core.List<api.VmUtilizationInfo> buildUnnamed36() => [
       buildVmUtilizationInfo(),
       buildVmUtilizationInfo(),
     ];
 
-void checkUnnamed40(core.List<api.VmUtilizationInfo> o) {
+void checkUnnamed36(core.List<api.VmUtilizationInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkVmUtilizationInfo(o[0]);
   checkVmUtilizationInfo(o[1]);
@@ -2085,7 +1938,7 @@ api.UtilizationReport buildUtilizationReport() {
     o.stateTime = 'foo';
     o.timeFrame = 'foo';
     o.vmCount = 42;
-    o.vms = buildUnnamed40();
+    o.vms = buildUnnamed36();
   }
   buildCounterUtilizationReport--;
   return o;
@@ -2127,7 +1980,7 @@ void checkUtilizationReport(api.UtilizationReport o) {
       o.vmCount!,
       unittest.equals(42),
     );
-    checkUnnamed40(o.vms!);
+    checkUnnamed36(o.vms!);
   }
   buildCounterUtilizationReport--;
 }
@@ -2329,12 +2182,12 @@ void checkVmwareVmDetails(api.VmwareVmDetails o) {
   buildCounterVmwareVmDetails--;
 }
 
-core.List<api.VmwareVmDetails> buildUnnamed41() => [
+core.List<api.VmwareVmDetails> buildUnnamed37() => [
       buildVmwareVmDetails(),
       buildVmwareVmDetails(),
     ];
 
-void checkUnnamed41(core.List<api.VmwareVmDetails> o) {
+void checkUnnamed37(core.List<api.VmwareVmDetails> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkVmwareVmDetails(o[0]);
   checkVmwareVmDetails(o[1]);
@@ -2345,7 +2198,7 @@ api.VmwareVmsDetails buildVmwareVmsDetails() {
   final o = api.VmwareVmsDetails();
   buildCounterVmwareVmsDetails++;
   if (buildCounterVmwareVmsDetails < 3) {
-    o.details = buildUnnamed41();
+    o.details = buildUnnamed37();
   }
   buildCounterVmwareVmsDetails--;
   return o;
@@ -2354,7 +2207,7 @@ api.VmwareVmsDetails buildVmwareVmsDetails() {
 void checkVmwareVmsDetails(api.VmwareVmsDetails o) {
   buildCounterVmwareVmsDetails++;
   if (buildCounterVmwareVmsDetails < 3) {
-    checkUnnamed41(o.details!);
+    checkUnnamed37(o.details!);
   }
   buildCounterVmwareVmsDetails--;
 }
@@ -2757,16 +2610,6 @@ void main() {
       final od = api.TargetProject.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkTargetProject(od);
-    });
-  });
-
-  unittest.group('obj-schema-TargetVMDetails', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildTargetVMDetails();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.TargetVMDetails.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkTargetVMDetails(od);
     });
   });
 

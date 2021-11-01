@@ -446,7 +446,7 @@ class ProjectsLocationsConnectionProfilesResource {
   /// Request parameters:
   ///
   /// [name] - The name of this connection profile resource in the form of
-  /// projects/{project}/locations/{location}/connectionProfiles/{instance}.
+  /// projects/{project}/locations/{location}/connectionProfiles/{connectionProfile}.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/connectionProfiles/\[^/\]+$`.
   ///
@@ -909,7 +909,7 @@ class ProjectsLocationsMigrationJobsResource {
   /// Request parameters:
   ///
   /// [name] - The name (URI) of this migration job resource, in the form of:
-  /// projects/{project}/locations/{location}/instances/{instance}.
+  /// projects/{project}/locations/{location}/migrationJobs/{migrationJob}.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/migrationJobs/\[^/\]+$`.
   ///
@@ -1923,7 +1923,7 @@ class ConnectionProfile {
   MySqlConnectionProfile? mysql;
 
   /// The name of this connection profile resource in the form of
-  /// projects/{project}/locations/{location}/connectionProfiles/{instance}.
+  /// projects/{project}/locations/{location}/connectionProfiles/{connectionProfile}.
   core.String? name;
 
   /// A PostgreSQL database connection profile.
@@ -2348,7 +2348,7 @@ class MigrationJob {
   core.Map<core.String, core.String>? labels;
 
   /// The name (URI) of this migration job resource, in the form of:
-  /// projects/{project}/locations/{location}/instances/{instance}.
+  /// projects/{project}/locations/{location}/migrationJobs/{migrationJob}.
   core.String? name;
 
   /// The current migration job phase.
@@ -2384,8 +2384,7 @@ class MigrationJob {
   /// - "DRAFT" : The migration job is in draft mode and no resources are
   /// created.
   /// - "CREATING" : The migration job is being created.
-  /// - "NOT_STARTED" : The migration job is created, not started and is fully
-  /// editable.
+  /// - "NOT_STARTED" : The migration job is created and not started.
   /// - "RUNNING" : The migration job is running.
   /// - "FAILED" : The migration job failed.
   /// - "COMPLETED" : The migration job has been completed.

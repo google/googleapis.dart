@@ -2739,13 +2739,6 @@ class CloneJob {
   /// Output only.
   ComputeEngineTargetDetails? computeEngineTargetDetails;
 
-  /// Details of the VM in Compute Engine.
-  ///
-  /// Deprecated: Use compute_engine_target_details instead.
-  ///
-  /// Output only.
-  TargetVMDetails? computeEngineVmDetails;
-
   /// The time the clone job was created (as an API call, not when it was
   /// actually created in the target).
   ///
@@ -2783,7 +2776,6 @@ class CloneJob {
 
   CloneJob({
     this.computeEngineTargetDetails,
-    this.computeEngineVmDetails,
     this.createTime,
     this.error,
     this.name,
@@ -2799,10 +2791,6 @@ class CloneJob {
                       _json['computeEngineTargetDetails']
                           as core.Map<core.String, core.dynamic>)
                   : null,
-          computeEngineVmDetails: _json.containsKey('computeEngineVmDetails')
-              ? TargetVMDetails.fromJson(_json['computeEngineVmDetails']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
           createTime: _json.containsKey('createTime')
               ? _json['createTime'] as core.String
               : null,
@@ -2821,8 +2809,6 @@ class CloneJob {
   core.Map<core.String, core.dynamic> toJson() => {
         if (computeEngineTargetDetails != null)
           'computeEngineTargetDetails': computeEngineTargetDetails!,
-        if (computeEngineVmDetails != null)
-          'computeEngineVmDetails': computeEngineVmDetails!,
         if (createTime != null) 'createTime': createTime!,
         if (error != null) 'error': error!,
         if (name != null) 'name': name!,
@@ -3273,13 +3259,6 @@ class CutoverJob {
   /// Output only.
   ComputeEngineTargetDetails? computeEngineTargetDetails;
 
-  /// Details of the VM in Compute Engine.
-  ///
-  /// Deprecated: Use compute_engine_target_details instead.
-  ///
-  /// Output only.
-  TargetVMDetails? computeEngineVmDetails;
-
   /// The time the cutover job was created (as an API call, not when it was
   /// actually created in the target).
   ///
@@ -3329,7 +3308,6 @@ class CutoverJob {
 
   CutoverJob({
     this.computeEngineTargetDetails,
-    this.computeEngineVmDetails,
     this.createTime,
     this.error,
     this.name,
@@ -3347,10 +3325,6 @@ class CutoverJob {
                       _json['computeEngineTargetDetails']
                           as core.Map<core.String, core.dynamic>)
                   : null,
-          computeEngineVmDetails: _json.containsKey('computeEngineVmDetails')
-              ? TargetVMDetails.fromJson(_json['computeEngineVmDetails']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
           createTime: _json.containsKey('createTime')
               ? _json['createTime'] as core.String
               : null,
@@ -3375,8 +3349,6 @@ class CutoverJob {
   core.Map<core.String, core.dynamic> toJson() => {
         if (computeEngineTargetDetails != null)
           'computeEngineTargetDetails': computeEngineTargetDetails!,
-        if (computeEngineVmDetails != null)
-          'computeEngineVmDetails': computeEngineVmDetails!,
         if (createTime != null) 'createTime': createTime!,
         if (error != null) 'error': error!,
         if (name != null) 'name': name!,
@@ -4705,191 +4677,6 @@ class TargetProject {
         if (name != null) 'name': name!,
         if (project != null) 'project': project!,
         if (updateTime != null) 'updateTime': updateTime!,
-      };
-}
-
-/// TargetVMDetails is a collection of details for creating a VM in a target
-/// Compute Engine project.
-class TargetVMDetails {
-  /// The OS license returned from the adaptation module report.
-  ///
-  /// Output only.
-  AppliedLicense? appliedLicense;
-
-  /// The VM Boot Option, as set in the source vm.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "BOOT_OPTION_UNSPECIFIED" : The boot option is unknown.
-  /// - "EFI" : The boot option is EFI.
-  /// - "BIOS" : The boot option is BIOS.
-  core.String? bootOption;
-
-  /// Compute instance scheduling information (if empty default is used).
-  ComputeScheduling? computeScheduling;
-
-  /// The disk type to use in the VM.
-  /// Possible string values are:
-  /// - "DISK_TYPE_UNSPECIFIED" : An unspecified disk type. Will be used as
-  /// STANDARD.
-  /// - "STANDARD" : A Standard disk type.
-  /// - "BALANCED" : An alternative to SSD persistent disks that balance
-  /// performance and cost.
-  /// - "SSD" : SSD hard disk type.
-  core.String? diskType;
-
-  /// A map of labels to associate with the VM.
-  core.Map<core.String, core.String>? labels;
-
-  /// The license type to use in OS adaptation.
-  /// Possible string values are:
-  /// - "DEFAULT" : The license type is the default for the OS.
-  /// - "PAYG" : The license type is Pay As You Go license type.
-  /// - "BYOL" : The license type is Bring Your Own License type.
-  core.String? licenseType;
-
-  /// The machine type to create the VM with.
-  core.String? machineType;
-
-  /// The machine type series to create the VM with.
-  core.String? machineTypeSeries;
-
-  /// The metadata key/value pairs to assign to the VM.
-  core.Map<core.String, core.String>? metadata;
-
-  /// The name of the VM to create.
-  core.String? name;
-
-  /// List of NICs connected to this VM.
-  core.List<NetworkInterface>? networkInterfaces;
-
-  /// A map of network tags to associate with the VM.
-  core.List<core.String>? networkTags;
-
-  /// The project in which to create the VM.
-  core.String? project;
-
-  /// Defines whether the instance has Secure Boot enabled.
-  ///
-  /// This can be set to true only if the vm boot option is EFI.
-  core.bool? secureBoot;
-
-  /// The service account to associate the VM with.
-  core.String? serviceAccount;
-
-  /// The full path of the resource of type TargetProject which represents the
-  /// Compute Engine project in which to create this VM.
-  core.String? targetProject;
-
-  /// The zone in which to create the VM.
-  core.String? zone;
-
-  TargetVMDetails({
-    this.appliedLicense,
-    this.bootOption,
-    this.computeScheduling,
-    this.diskType,
-    this.labels,
-    this.licenseType,
-    this.machineType,
-    this.machineTypeSeries,
-    this.metadata,
-    this.name,
-    this.networkInterfaces,
-    this.networkTags,
-    this.project,
-    this.secureBoot,
-    this.serviceAccount,
-    this.targetProject,
-    this.zone,
-  });
-
-  TargetVMDetails.fromJson(core.Map _json)
-      : this(
-          appliedLicense: _json.containsKey('appliedLicense')
-              ? AppliedLicense.fromJson(_json['appliedLicense']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          bootOption: _json.containsKey('bootOption')
-              ? _json['bootOption'] as core.String
-              : null,
-          computeScheduling: _json.containsKey('computeScheduling')
-              ? ComputeScheduling.fromJson(_json['computeScheduling']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          diskType: _json.containsKey('diskType')
-              ? _json['diskType'] as core.String
-              : null,
-          labels: _json.containsKey('labels')
-              ? (_json['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.String,
-                  ),
-                )
-              : null,
-          licenseType: _json.containsKey('licenseType')
-              ? _json['licenseType'] as core.String
-              : null,
-          machineType: _json.containsKey('machineType')
-              ? _json['machineType'] as core.String
-              : null,
-          machineTypeSeries: _json.containsKey('machineTypeSeries')
-              ? _json['machineTypeSeries'] as core.String
-              : null,
-          metadata: _json.containsKey('metadata')
-              ? (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.String,
-                  ),
-                )
-              : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          networkInterfaces: _json.containsKey('networkInterfaces')
-              ? (_json['networkInterfaces'] as core.List)
-                  .map((value) => NetworkInterface.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          networkTags: _json.containsKey('networkTags')
-              ? (_json['networkTags'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          project: _json.containsKey('project')
-              ? _json['project'] as core.String
-              : null,
-          secureBoot: _json.containsKey('secureBoot')
-              ? _json['secureBoot'] as core.bool
-              : null,
-          serviceAccount: _json.containsKey('serviceAccount')
-              ? _json['serviceAccount'] as core.String
-              : null,
-          targetProject: _json.containsKey('targetProject')
-              ? _json['targetProject'] as core.String
-              : null,
-          zone: _json.containsKey('zone') ? _json['zone'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (appliedLicense != null) 'appliedLicense': appliedLicense!,
-        if (bootOption != null) 'bootOption': bootOption!,
-        if (computeScheduling != null) 'computeScheduling': computeScheduling!,
-        if (diskType != null) 'diskType': diskType!,
-        if (labels != null) 'labels': labels!,
-        if (licenseType != null) 'licenseType': licenseType!,
-        if (machineType != null) 'machineType': machineType!,
-        if (machineTypeSeries != null) 'machineTypeSeries': machineTypeSeries!,
-        if (metadata != null) 'metadata': metadata!,
-        if (name != null) 'name': name!,
-        if (networkInterfaces != null) 'networkInterfaces': networkInterfaces!,
-        if (networkTags != null) 'networkTags': networkTags!,
-        if (project != null) 'project': project!,
-        if (secureBoot != null) 'secureBoot': secureBoot!,
-        if (serviceAccount != null) 'serviceAccount': serviceAccount!,
-        if (targetProject != null) 'targetProject': targetProject!,
-        if (zone != null) 'zone': zone!,
       };
 }
 

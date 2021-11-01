@@ -4197,7 +4197,6 @@ class $EgressFrom {
 /// - contactcenterinsights:v1 : GoogleCloudContactcenterinsightsV1alpha1UndeployIssueModelResponse
 /// - contactcenterinsights:v1 : GoogleProtobufEmpty
 /// - container:v1 : Empty
-/// - container:v1 : MeshCertificates
 /// - containeranalysis:v1 : CancelOperationRequest
 /// - containeranalysis:v1 : Empty
 /// - content:v2.1 : ActivateBuyOnGoogleProgramRequest
@@ -4325,6 +4324,7 @@ class $EgressFrom {
 /// - gameservices:v1 : CancelOperationRequest
 /// - gameservices:v1 : Empty
 /// - gameservices:v1 : FetchDeploymentStateRequest
+/// - gkehub:v1 : AppDevExperienceFeatureSpec
 /// - gkehub:v1 : CancelOperationRequest
 /// - gkehub:v1 : Empty
 /// - healthcare:v1 : ArchiveUserDataMappingRequest
@@ -4467,6 +4467,8 @@ class $EgressFrom {
 /// - retail:v2 : GoogleCloudRetailV2betaSetInventoryMetadata
 /// - retail:v2 : GoogleCloudRetailV2betaSetInventoryResponse
 /// - retail:v2 : GoogleProtobufEmpty
+/// - run:v1 : Empty
+/// - run:v1 : GoogleLongrunningCancelOperationRequest
 /// - runtimeconfig:v1 : CancelOperationRequest
 /// - runtimeconfig:v1 : Empty
 /// - safebrowsing:v4 : GoogleProtobufEmpty

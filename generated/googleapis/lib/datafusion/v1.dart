@@ -56,7 +56,8 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// prepare, blend, transfer and transform data without having to wrestle with
 /// infrastructure.
 class DataFusionApi {
-  /// See, edit, configure, and delete your Google Cloud Platform data
+  /// See, edit, configure, and delete your Google Cloud data and see the email
+  /// address for your Google Account.
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
@@ -198,11 +199,11 @@ class ProjectsLocationsInstancesResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - The instance's project and location in the format
+  /// [parent] - Required. The instance's project and location in the format
   /// projects/{project}/locations/{location}.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [instanceId] - The name of the instance to create.
+  /// [instanceId] - Required. The name of the instance to create.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -241,7 +242,7 @@ class ProjectsLocationsInstancesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - The instance resource name in the format
+  /// [name] - Required. The instance resource name in the format
   /// projects/{project}/locations/{location}/instances/{instance}
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+$`.
@@ -278,7 +279,7 @@ class ProjectsLocationsInstancesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - The instance resource name in the format
+  /// [name] - Required. The instance resource name in the format
   /// projects/{project}/locations/{location}/instances/{instance}.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+$`.
@@ -367,10 +368,11 @@ class ProjectsLocationsInstancesResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - The project and location for which to retrieve instance
-  /// information in the format projects/{project}/locations/{location}. If the
-  /// location is specified as '-' (wildcard), then all regions available to the
-  /// project are queried, and the results are aggregated.
+  /// [parent] - Required. The project and location for which to retrieve
+  /// instance information in the format
+  /// projects/{project}/locations/{location}. If the location is specified as
+  /// '-' (wildcard), then all regions available to the project are queried, and
+  /// the results are aggregated.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [filter] - List filter.
@@ -479,8 +481,9 @@ class ProjectsLocationsInstancesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Name of the Data Fusion instance which need to be restarted in
-  /// the form of projects/{project}/locations/{location}/instances/{instance}
+  /// [name] - Required. Name of the Data Fusion instance which need to be
+  /// restarted in the form of
+  /// projects/{project}/locations/{location}/instances/{instance}
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+$`.
   ///
@@ -971,19 +974,20 @@ class AuditConfig {
 /// exempting jose@example.com from DATA_READ logging.
 typedef AuditLogConfig = $AuditLogConfig;
 
-/// Associates `members` with a `role`.
+/// Associates `members`, or principals, with a `role`.
 class Binding {
   /// The condition that is associated with this binding.
   ///
   /// If the condition evaluates to `true`, then this binding applies to the
   /// current request. If the condition evaluates to `false`, then this binding
   /// does not apply to the current request. However, a different role binding
-  /// might grant the same role to one or more of the members in this binding.
-  /// To learn which resources support conditions in their IAM policies, see the
+  /// might grant the same role to one or more of the principals in this
+  /// binding. To learn which resources support conditions in their IAM
+  /// policies, see the
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   Expr? condition;
 
-  /// Specifies the identities requesting access for a Cloud Platform resource.
+  /// Specifies the principals requesting access for a Cloud Platform resource.
   ///
   /// `members` can have the following values: * `allUsers`: A special
   /// identifier that represents anyone who is on the internet; with or without
@@ -1015,7 +1019,7 @@ class Binding {
   /// `example.com`.
   core.List<core.String>? members;
 
-  /// Role that is assigned to `members`.
+  /// Role that is assigned to the list of `members`, or principals.
   ///
   /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
   core.String? role;
@@ -1139,6 +1143,11 @@ class Instance {
   /// A description of this instance.
   core.String? description;
 
+  /// If the instance state is DISABLED, the reason for disabling the instance.
+  ///
+  /// Output only.
+  core.List<core.String>? disabledReason;
+
   /// Display name for an instance.
   core.String? displayName;
 
@@ -1213,6 +1222,7 @@ class Instance {
   /// - "UPDATING" : Instance is being updated on customer request
   /// - "AUTO_UPDATING" : Instance is being auto-updated
   /// - "AUTO_UPGRADING" : Instance is being auto-upgraded
+  /// - "DISABLED" : Instance is disabled
   core.String? state;
 
   /// Additional information about the current state of this Data Fusion
@@ -1267,6 +1277,7 @@ class Instance {
     this.cryptoKeyConfig,
     this.dataprocServiceAccount,
     this.description,
+    this.disabledReason,
     this.displayName,
     this.enableRbac,
     this.enableStackdriverLogging,
@@ -1318,6 +1329,11 @@ class Instance {
               : null,
           description: _json.containsKey('description')
               ? _json['description'] as core.String
+              : null,
+          disabledReason: _json.containsKey('disabledReason')
+              ? (_json['disabledReason'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
               : null,
           displayName: _json.containsKey('displayName')
               ? _json['displayName'] as core.String
@@ -1396,6 +1412,7 @@ class Instance {
         if (dataprocServiceAccount != null)
           'dataprocServiceAccount': dataprocServiceAccount!,
         if (description != null) 'description': description!,
+        if (disabledReason != null) 'disabledReason': disabledReason!,
         if (displayName != null) 'displayName': displayName!,
         if (enableRbac != null) 'enableRbac': enableRbac!,
         if (enableStackdriverLogging != null)
@@ -1689,15 +1706,15 @@ class Operation {
 /// controls for Google Cloud resources.
 ///
 /// A `Policy` is a collection of `bindings`. A `binding` binds one or more
-/// `members` to a single `role`. Members can be user accounts, service
-/// accounts, Google groups, and domains (such as G Suite). A `role` is a named
-/// list of permissions; each `role` can be an IAM predefined role or a
-/// user-created custom role. For some types of Google Cloud resources, a
-/// `binding` can also specify a `condition`, which is a logical expression that
-/// allows access to a resource only if the expression evaluates to `true`. A
-/// condition can add constraints based on attributes of the request, the
-/// resource, or both. To learn which resources support conditions in their IAM
-/// policies, see the
+/// `members`, or principals, to a single `role`. Principals can be user
+/// accounts, service accounts, Google groups, and domains (such as G Suite). A
+/// `role` is a named list of permissions; each `role` can be an IAM predefined
+/// role or a user-created custom role. For some types of Google Cloud
+/// resources, a `binding` can also specify a `condition`, which is a logical
+/// expression that allows access to a resource only if the expression evaluates
+/// to `true`. A condition can add constraints based on attributes of the
+/// request, the resource, or both. To learn which resources support conditions
+/// in their IAM policies, see the
 /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 /// **JSON example:** { "bindings": \[ { "role":
 /// "roles/resourcemanager.organizationAdmin", "members": \[
@@ -1713,18 +1730,23 @@ class Operation {
 /// roles/resourcemanager.organizationAdmin - members: - user:eve@example.com
 /// role: roles/resourcemanager.organizationViewer condition: title: expirable
 /// access description: Does not grant access after Sep 2020 expression:
-/// request.time \< timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= -
+/// request.time \< timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA=
 /// version: 3 For a description of IAM and its features, see the
 /// [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {
   /// Specifies cloud audit logging configuration for this policy.
   core.List<AuditConfig>? auditConfigs;
 
-  /// Associates a list of `members` to a `role`.
+  /// Associates a list of `members`, or principals, with a `role`.
   ///
   /// Optionally, may specify a `condition` that determines how and when the
   /// `bindings` are applied. Each of the `bindings` must contain at least one
-  /// member.
+  /// principal. The `bindings` in a `Policy` can refer to up to 1,500
+  /// principals; up to 250 of these principals can be Google groups. Each
+  /// occurrence of a principal counts towards these limits. For example, if the
+  /// `bindings` grant 50 different roles to `user:alice@example.com`, and not
+  /// to any other principal, then you can add another 1,450 principals to the
+  /// `bindings` in the `Policy`.
   core.List<Binding>? bindings;
 
   /// `etag` is used for optimistic concurrency control as a way to help prevent
@@ -1867,12 +1889,20 @@ class Version {
   /// Whether this is currently the default version for Cloud Data Fusion
   core.bool? defaultVersion;
 
+  /// Type represents the release availability of the version
+  /// Possible string values are:
+  /// - "TYPE_UNSPECIFIED" : Version does not have availability yet
+  /// - "TYPE_PREVIEW" : Version is under development and not considered stable
+  /// - "TYPE_GENERAL_AVAILABILITY" : Version is available for public use
+  core.String? type;
+
   /// The version number of the Data Fusion instance, such as '6.0.1.0'.
   core.String? versionNumber;
 
   Version({
     this.availableFeatures,
     this.defaultVersion,
+    this.type,
     this.versionNumber,
   });
 
@@ -1886,6 +1916,7 @@ class Version {
           defaultVersion: _json.containsKey('defaultVersion')
               ? _json['defaultVersion'] as core.bool
               : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
           versionNumber: _json.containsKey('versionNumber')
               ? _json['versionNumber'] as core.String
               : null,
@@ -1894,6 +1925,7 @@ class Version {
   core.Map<core.String, core.dynamic> toJson() => {
         if (availableFeatures != null) 'availableFeatures': availableFeatures!,
         if (defaultVersion != null) 'defaultVersion': defaultVersion!,
+        if (type != null) 'type': type!,
         if (versionNumber != null) 'versionNumber': versionNumber!,
       };
 }

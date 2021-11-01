@@ -240,6 +240,7 @@ api.Instance buildInstance() {
     o.memorySizeGb = 42;
     o.name = 'foo';
     o.nodes = buildUnnamed1();
+    o.persistenceConfig = buildPersistenceConfig();
     o.persistenceIamIdentity = 'foo';
     o.port = 42;
     o.readEndpoint = 'foo';
@@ -307,6 +308,7 @@ void checkInstance(api.Instance o) {
       unittest.equals('foo'),
     );
     checkUnnamed1(o.nodes!);
+    checkPersistenceConfig(o.persistenceConfig!);
     unittest.expect(
       o.persistenceIamIdentity!,
       unittest.equals('foo'),
@@ -850,6 +852,43 @@ void checkOutputConfig(api.OutputConfig o) {
   buildCounterOutputConfig--;
 }
 
+core.int buildCounterPersistenceConfig = 0;
+api.PersistenceConfig buildPersistenceConfig() {
+  final o = api.PersistenceConfig();
+  buildCounterPersistenceConfig++;
+  if (buildCounterPersistenceConfig < 3) {
+    o.persistenceMode = 'foo';
+    o.rdbNextSnapshotTime = 'foo';
+    o.rdbSnapshotPeriod = 'foo';
+    o.rdbSnapshotStartTime = 'foo';
+  }
+  buildCounterPersistenceConfig--;
+  return o;
+}
+
+void checkPersistenceConfig(api.PersistenceConfig o) {
+  buildCounterPersistenceConfig++;
+  if (buildCounterPersistenceConfig < 3) {
+    unittest.expect(
+      o.persistenceMode!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.rdbNextSnapshotTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.rdbSnapshotPeriod!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.rdbSnapshotStartTime!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterPersistenceConfig--;
+}
+
 core.int buildCounterRescheduleMaintenanceRequest = 0;
 api.RescheduleMaintenanceRequest buildRescheduleMaintenanceRequest() {
   final o = api.RescheduleMaintenanceRequest();
@@ -1270,6 +1309,16 @@ void main() {
       final od = api.OutputConfig.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkOutputConfig(od);
+    });
+  });
+
+  unittest.group('obj-schema-PersistenceConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildPersistenceConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PersistenceConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkPersistenceConfig(od);
     });
   });
 

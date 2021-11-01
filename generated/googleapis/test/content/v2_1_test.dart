@@ -12006,7 +12006,9 @@ api.Promotion buildPromotion() {
     o.productTypeExclusion = buildUnnamed160();
     o.promotionDestinationIds = buildUnnamed161();
     o.promotionDisplayDates = 'foo';
+    o.promotionDisplayTimePeriod = buildTimePeriod();
     o.promotionEffectiveDates = 'foo';
+    o.promotionEffectiveTimePeriod = buildTimePeriod();
     o.promotionId = 'foo';
     o.redemptionChannel = buildUnnamed162();
     o.shippingServiceNames = buildUnnamed163();
@@ -12093,10 +12095,12 @@ void checkPromotion(api.Promotion o) {
       o.promotionDisplayDates!,
       unittest.equals('foo'),
     );
+    checkTimePeriod(o.promotionDisplayTimePeriod!);
     unittest.expect(
       o.promotionEffectiveDates!,
       unittest.equals('foo'),
     );
+    checkTimePeriod(o.promotionEffectiveTimePeriod!);
     unittest.expect(
       o.promotionId!,
       unittest.equals('foo'),
@@ -15803,6 +15807,33 @@ void checkTestOrderPickupDetailsPickupPerson(
     );
   }
   buildCounterTestOrderPickupDetailsPickupPerson--;
+}
+
+core.int buildCounterTimePeriod = 0;
+api.TimePeriod buildTimePeriod() {
+  final o = api.TimePeriod();
+  buildCounterTimePeriod++;
+  if (buildCounterTimePeriod < 3) {
+    o.endTime = 'foo';
+    o.startTime = 'foo';
+  }
+  buildCounterTimePeriod--;
+  return o;
+}
+
+void checkTimePeriod(api.TimePeriod o) {
+  buildCounterTimePeriod++;
+  if (buildCounterTimePeriod < 3) {
+    unittest.expect(
+      o.endTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.startTime!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterTimePeriod--;
 }
 
 core.int buildCounterTimeZone = 0;
@@ -20202,6 +20233,16 @@ void main() {
       final od = api.TestOrderPickupDetailsPickupPerson.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkTestOrderPickupDetailsPickupPerson(od);
+    });
+  });
+
+  unittest.group('obj-schema-TimePeriod', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildTimePeriod();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.TimePeriod.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkTimePeriod(od);
     });
   });
 

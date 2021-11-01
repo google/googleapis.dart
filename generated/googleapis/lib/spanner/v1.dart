@@ -3431,19 +3431,20 @@ class BeginTransactionRequest {
       };
 }
 
-/// Associates `members` with a `role`.
+/// Associates `members`, or principals, with a `role`.
 class Binding {
   /// The condition that is associated with this binding.
   ///
   /// If the condition evaluates to `true`, then this binding applies to the
   /// current request. If the condition evaluates to `false`, then this binding
   /// does not apply to the current request. However, a different role binding
-  /// might grant the same role to one or more of the members in this binding.
-  /// To learn which resources support conditions in their IAM policies, see the
+  /// might grant the same role to one or more of the principals in this
+  /// binding. To learn which resources support conditions in their IAM
+  /// policies, see the
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   Expr? condition;
 
-  /// Specifies the identities requesting access for a Cloud Platform resource.
+  /// Specifies the principals requesting access for a Cloud Platform resource.
   ///
   /// `members` can have the following values: * `allUsers`: A special
   /// identifier that represents anyone who is on the internet; with or without
@@ -3475,7 +3476,7 @@ class Binding {
   /// `example.com`.
   core.List<core.String>? members;
 
-  /// Role that is assigned to `members`.
+  /// Role that is assigned to the list of `members`, or principals.
   ///
   /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
   core.String? role;
@@ -4858,7 +4859,7 @@ class InstanceConfig {
   /// The name of this instance configuration as it appears in UIs.
   core.String? displayName;
 
-  /// Allowed values of the “default_leader” schema option for databases in
+  /// Allowed values of the "default_leader" schema option for databases in
   /// instances that use this instance configuration.
   core.List<core.String>? leaderOptions;
 
@@ -6405,15 +6406,15 @@ class PlanNode {
 /// controls for Google Cloud resources.
 ///
 /// A `Policy` is a collection of `bindings`. A `binding` binds one or more
-/// `members` to a single `role`. Members can be user accounts, service
-/// accounts, Google groups, and domains (such as G Suite). A `role` is a named
-/// list of permissions; each `role` can be an IAM predefined role or a
-/// user-created custom role. For some types of Google Cloud resources, a
-/// `binding` can also specify a `condition`, which is a logical expression that
-/// allows access to a resource only if the expression evaluates to `true`. A
-/// condition can add constraints based on attributes of the request, the
-/// resource, or both. To learn which resources support conditions in their IAM
-/// policies, see the
+/// `members`, or principals, to a single `role`. Principals can be user
+/// accounts, service accounts, Google groups, and domains (such as G Suite). A
+/// `role` is a named list of permissions; each `role` can be an IAM predefined
+/// role or a user-created custom role. For some types of Google Cloud
+/// resources, a `binding` can also specify a `condition`, which is a logical
+/// expression that allows access to a resource only if the expression evaluates
+/// to `true`. A condition can add constraints based on attributes of the
+/// request, the resource, or both. To learn which resources support conditions
+/// in their IAM policies, see the
 /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 /// **JSON example:** { "bindings": \[ { "role":
 /// "roles/resourcemanager.organizationAdmin", "members": \[
@@ -6433,11 +6434,16 @@ class PlanNode {
 /// version: 3 For a description of IAM and its features, see the
 /// [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {
-  /// Associates a list of `members` to a `role`.
+  /// Associates a list of `members`, or principals, with a `role`.
   ///
   /// Optionally, may specify a `condition` that determines how and when the
   /// `bindings` are applied. Each of the `bindings` must contain at least one
-  /// member.
+  /// principal. The `bindings` in a `Policy` can refer to up to 1,500
+  /// principals; up to 250 of these principals can be Google groups. Each
+  /// occurrence of a principal counts towards these limits. For example, if the
+  /// `bindings` grant 50 different roles to `user:alice@example.com`, and not
+  /// to any other principal, then you can add another 1,450 principals to the
+  /// `bindings` in the `Policy`.
   core.List<Binding>? bindings;
 
   /// `etag` is used for optimistic concurrency control as a way to help prevent
@@ -6961,7 +6967,7 @@ class RequestOptions {
   /// Both request_tag and transaction_tag can be specified for a read or query
   /// that belongs to a transaction. The value of transaction_tag should be the
   /// same for all requests belonging to the same transaction. If this request
-  /// doesn’t belong to any transaction, transaction_tag will be ignored. Legal
+  /// doesn't belong to any transaction, transaction_tag will be ignored. Legal
   /// characters for `transaction_tag` values are all printable characters
   /// (ASCII 32 - 126) and the length of a transaction_tag is limited to 50
   /// characters. Values that exceed this limit are truncated. Any leading

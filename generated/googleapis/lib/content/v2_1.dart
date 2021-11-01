@@ -23081,10 +23081,18 @@ class Promotion {
   /// String representation of the promotion display dates.
   core.String? promotionDisplayDates;
 
+  /// TimePeriod representation of the promotion display dates.
+  TimePeriod? promotionDisplayTimePeriod;
+
   /// String representation of the promotion effective dates.
   ///
   /// Required.
   core.String? promotionEffectiveDates;
+
+  /// TimePeriod representation of the promotion effective dates.
+  ///
+  /// Required.
+  TimePeriod? promotionEffectiveTimePeriod;
 
   /// The user provided promotion id to uniquely identify the promotion.
   ///
@@ -23136,7 +23144,9 @@ class Promotion {
     this.productTypeExclusion,
     this.promotionDestinationIds,
     this.promotionDisplayDates,
+    this.promotionDisplayTimePeriod,
     this.promotionEffectiveDates,
+    this.promotionEffectiveTimePeriod,
     this.promotionId,
     this.redemptionChannel,
     this.shippingServiceNames,
@@ -23254,9 +23264,19 @@ class Promotion {
           promotionDisplayDates: _json.containsKey('promotionDisplayDates')
               ? _json['promotionDisplayDates'] as core.String
               : null,
+          promotionDisplayTimePeriod:
+              _json.containsKey('promotionDisplayTimePeriod')
+                  ? TimePeriod.fromJson(_json['promotionDisplayTimePeriod']
+                      as core.Map<core.String, core.dynamic>)
+                  : null,
           promotionEffectiveDates: _json.containsKey('promotionEffectiveDates')
               ? _json['promotionEffectiveDates'] as core.String
               : null,
+          promotionEffectiveTimePeriod:
+              _json.containsKey('promotionEffectiveTimePeriod')
+                  ? TimePeriod.fromJson(_json['promotionEffectiveTimePeriod']
+                      as core.Map<core.String, core.dynamic>)
+                  : null,
           promotionId: _json.containsKey('promotionId')
               ? _json['promotionId'] as core.String
               : null,
@@ -23315,8 +23335,12 @@ class Promotion {
           'promotionDestinationIds': promotionDestinationIds!,
         if (promotionDisplayDates != null)
           'promotionDisplayDates': promotionDisplayDates!,
+        if (promotionDisplayTimePeriod != null)
+          'promotionDisplayTimePeriod': promotionDisplayTimePeriod!,
         if (promotionEffectiveDates != null)
           'promotionEffectiveDates': promotionEffectiveDates!,
+        if (promotionEffectiveTimePeriod != null)
+          'promotionEffectiveTimePeriod': promotionEffectiveTimePeriod!,
         if (promotionId != null) 'promotionId': promotionId!,
         if (redemptionChannel != null) 'redemptionChannel': redemptionChannel!,
         if (shippingServiceNames != null)
@@ -28169,6 +28193,35 @@ class TestOrderPickupDetailsPickupPerson {
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
         if (phoneNumber != null) 'phoneNumber': phoneNumber!,
+      };
+}
+
+/// A message that represents a time period.
+class TimePeriod {
+  /// The ending timestamp.
+  core.String? endTime;
+
+  /// The starting timestamp.
+  core.String? startTime;
+
+  TimePeriod({
+    this.endTime,
+    this.startTime,
+  });
+
+  TimePeriod.fromJson(core.Map _json)
+      : this(
+          endTime: _json.containsKey('endTime')
+              ? _json['endTime'] as core.String
+              : null,
+          startTime: _json.containsKey('startTime')
+              ? _json['startTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (endTime != null) 'endTime': endTime!,
+        if (startTime != null) 'startTime': startTime!,
       };
 }
 

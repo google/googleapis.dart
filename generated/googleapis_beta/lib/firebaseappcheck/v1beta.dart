@@ -28,6 +28,7 @@
 ///     - [ProjectsAppsDebugTokensResource]
 ///     - [ProjectsAppsDeviceCheckConfigResource]
 ///     - [ProjectsAppsRecaptchaConfigResource]
+///     - [ProjectsAppsRecaptchaEnterpriseConfigResource]
 ///     - [ProjectsAppsSafetyNetConfigResource]
 ///   - [ProjectsServicesResource]
 library firebaseappcheck.v1beta;
@@ -137,6 +138,8 @@ class ProjectsAppsResource {
       ProjectsAppsDeviceCheckConfigResource(_requester);
   ProjectsAppsRecaptchaConfigResource get recaptchaConfig =>
       ProjectsAppsRecaptchaConfigResource(_requester);
+  ProjectsAppsRecaptchaEnterpriseConfigResource get recaptchaEnterpriseConfig =>
+      ProjectsAppsRecaptchaEnterpriseConfigResource(_requester);
   ProjectsAppsSafetyNetConfigResource get safetyNetConfig =>
       ProjectsAppsSafetyNetConfigResource(_requester);
 
@@ -393,6 +396,58 @@ class ProjectsAppsResource {
 
     final _url =
         'v1beta/' + core.Uri.encodeFull('$app') + ':exchangeDeviceCheckToken';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleFirebaseAppcheckV1betaAttestationTokenResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Validates a
+  /// [reCAPTCHA Enterprise response token](https://cloud.google.com/recaptcha-enterprise/docs/create-assessment#retrieve_token).
+  ///
+  /// If valid, returns an App Check token encapsulated in an
+  /// AttestationTokenResponse.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [app] - Required. The relative resource name of the web app, in the
+  /// format: ``` projects/{project_number}/apps/{app_id} ``` If necessary, the
+  /// `project_number` element can be replaced with the project ID of the
+  /// Firebase project. Learn more about using project identifiers in Google's
+  /// [AIP 2510](https://google.aip.dev/cloud/2510) standard.
+  /// Value must have pattern `^projects/\[^/\]+/apps/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleFirebaseAppcheckV1betaAttestationTokenResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleFirebaseAppcheckV1betaAttestationTokenResponse>
+      exchangeRecaptchaEnterpriseToken(
+    GoogleFirebaseAppcheckV1betaExchangeRecaptchaEnterpriseTokenRequest request,
+    core.String app, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1beta/' +
+        core.Uri.encodeFull('$app') +
+        ':exchangeRecaptchaEnterpriseToken';
 
     final _response = await _requester.request(
       _url,
@@ -1263,6 +1318,157 @@ class ProjectsAppsRecaptchaConfigResource {
   }
 }
 
+class ProjectsAppsRecaptchaEnterpriseConfigResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsAppsRecaptchaEnterpriseConfigResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets the RecaptchaEnterpriseConfigs for the specified list of apps
+  /// atomically.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent project name shared by all
+  /// RecaptchaEnterpriseConfigs being retrieved, in the format ```
+  /// projects/{project_number} ``` The parent collection in the `name` field of
+  /// any resource being retrieved must match this field, or the entire batch
+  /// fails.
+  /// Value must have pattern `^projects/\[^/\]+$`.
+  ///
+  /// [names] - Required. The relative resource names of the
+  /// RecaptchaEnterpriseConfigs to retrieve, in the format: ```
+  /// projects/{project_number}/apps/{app_id}/recaptchaEnterpriseConfig ``` A
+  /// maximum of 100 objects can be retrieved in a batch.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleFirebaseAppcheckV1betaBatchGetRecaptchaEnterpriseConfigsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<
+          GoogleFirebaseAppcheckV1betaBatchGetRecaptchaEnterpriseConfigsResponse>
+      batchGet(
+    core.String parent, {
+    core.List<core.String>? names,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (names != null) 'names': names,
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1beta/' +
+        core.Uri.encodeFull('$parent') +
+        '/apps/-/recaptchaEnterpriseConfig:batchGet';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleFirebaseAppcheckV1betaBatchGetRecaptchaEnterpriseConfigsResponse
+        .fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets the RecaptchaEnterpriseConfig for the specified app.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The relative resource name of the
+  /// RecaptchaEnterpriseConfig, in the format: ```
+  /// projects/{project_number}/apps/{app_id}/recaptchaEnterpriseConfig ```
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/apps/\[^/\]+/recaptchaEnterpriseConfig$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleFirebaseAppcheckV1betaRecaptchaEnterpriseConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleFirebaseAppcheckV1betaRecaptchaEnterpriseConfig> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1beta/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleFirebaseAppcheckV1betaRecaptchaEnterpriseConfig.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates the RecaptchaEnterpriseConfig for the specified app.
+  ///
+  /// While this configuration is incomplete or invalid, the app will be unable
+  /// to exchange reCAPTCHA Enterprise tokens for App Check tokens.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The relative resource name of the reCAPTCHA Enterprise
+  /// configuration object, in the format: ```
+  /// projects/{project_number}/apps/{app_id}/recaptchaEnterpriseConfig ```
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/apps/\[^/\]+/recaptchaEnterpriseConfig$`.
+  ///
+  /// [updateMask] - Required. A comma-separated list of names of fields in the
+  /// RecaptchaEnterpriseConfig to update. Example: `site_key`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleFirebaseAppcheckV1betaRecaptchaEnterpriseConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleFirebaseAppcheckV1betaRecaptchaEnterpriseConfig> patch(
+    GoogleFirebaseAppcheckV1betaRecaptchaEnterpriseConfig request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1beta/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleFirebaseAppcheckV1betaRecaptchaEnterpriseConfig.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class ProjectsAppsSafetyNetConfigResource {
   final commons.ApiRequester _requester;
 
@@ -1806,6 +2012,33 @@ class GoogleFirebaseAppcheckV1betaBatchGetRecaptchaConfigsResponse {
       };
 }
 
+/// Response message for the BatchGetRecaptchaEnterpriseConfigs method.
+class GoogleFirebaseAppcheckV1betaBatchGetRecaptchaEnterpriseConfigsResponse {
+  /// RecaptchaEnterpriseConfigs retrieved.
+  core.List<GoogleFirebaseAppcheckV1betaRecaptchaEnterpriseConfig>? configs;
+
+  GoogleFirebaseAppcheckV1betaBatchGetRecaptchaEnterpriseConfigsResponse({
+    this.configs,
+  });
+
+  GoogleFirebaseAppcheckV1betaBatchGetRecaptchaEnterpriseConfigsResponse.fromJson(
+      core.Map _json)
+      : this(
+          configs: _json.containsKey('configs')
+              ? (_json['configs'] as core.List)
+                  .map((value) =>
+                      GoogleFirebaseAppcheckV1betaRecaptchaEnterpriseConfig
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (configs != null) 'configs': configs!,
+      };
+}
+
 /// Response message for the BatchGetSafetyNetConfigs method.
 class GoogleFirebaseAppcheckV1betaBatchGetSafetyNetConfigsResponse {
   /// SafetyNetConfigs retrieved.
@@ -2277,6 +2510,33 @@ class GoogleFirebaseAppcheckV1betaExchangeDeviceCheckTokenRequest {
       };
 }
 
+/// Request message for the ExchangeRecaptchaEnterpriseToken method.
+class GoogleFirebaseAppcheckV1betaExchangeRecaptchaEnterpriseTokenRequest {
+  /// The reCAPTCHA token as returned by the
+  /// [reCAPTCHA Enterprise JavaScript API](https://cloud.google.com/recaptcha-enterprise/docs/instrument-web-pages).
+  ///
+  /// Required.
+  core.String? recaptchaEnterpriseToken;
+
+  GoogleFirebaseAppcheckV1betaExchangeRecaptchaEnterpriseTokenRequest({
+    this.recaptchaEnterpriseToken,
+  });
+
+  GoogleFirebaseAppcheckV1betaExchangeRecaptchaEnterpriseTokenRequest.fromJson(
+      core.Map _json)
+      : this(
+          recaptchaEnterpriseToken:
+              _json.containsKey('recaptchaEnterpriseToken')
+                  ? _json['recaptchaEnterpriseToken'] as core.String
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (recaptchaEnterpriseToken != null)
+          'recaptchaEnterpriseToken': recaptchaEnterpriseToken!,
+      };
+}
+
 /// Request message for the ExchangeRecaptchaToken method.
 class GoogleFirebaseAppcheckV1betaExchangeRecaptchaTokenRequest {
   /// The reCAPTCHA token as returned by the
@@ -2560,6 +2820,60 @@ class GoogleFirebaseAppcheckV1betaRecaptchaConfig {
         if (name != null) 'name': name!,
         if (siteSecret != null) 'siteSecret': siteSecret!,
         if (siteSecretSet != null) 'siteSecretSet': siteSecretSet!,
+        if (tokenTtl != null) 'tokenTtl': tokenTtl!,
+      };
+}
+
+/// An app's reCAPTCHA Enterprise configuration object.
+///
+/// This configuration is used by ExchangeRecaptchaEnterpriseToken to validate
+/// reCAPTCHA tokens issued to apps by reCAPTCHA Enterprise. It also controls
+/// certain properties of the returned App Check token, such as its ttl.
+class GoogleFirebaseAppcheckV1betaRecaptchaEnterpriseConfig {
+  /// The relative resource name of the reCAPTCHA Enterprise configuration
+  /// object, in the format: ```
+  /// projects/{project_number}/apps/{app_id}/recaptchaEnterpriseConfig ```
+  ///
+  /// Required.
+  core.String? name;
+
+  /// The score-based site key
+  /// [created in reCAPTCHA Enterprise](https://cloud.google.com/recaptcha-enterprise/docs/create-key#creating_a_site_key)
+  /// used to
+  /// [invoke reCAPTCHA and generate the reCAPTCHA tokens](https://cloud.google.com/recaptcha-enterprise/docs/instrument-web-pages)
+  /// for your application.
+  ///
+  /// Important: This is *not* the `site_secret` (as it is in reCAPTCHA v3), but
+  /// rather your score-based reCAPTCHA Enterprise site key.
+  core.String? siteKey;
+
+  /// Specifies the duration for which App Check tokens exchanged from reCAPTCHA
+  /// Enterprise tokens will be valid.
+  ///
+  /// If unset, a default value of 1 hour is assumed. Must be between 30 minutes
+  /// and 7 days, inclusive.
+  core.String? tokenTtl;
+
+  GoogleFirebaseAppcheckV1betaRecaptchaEnterpriseConfig({
+    this.name,
+    this.siteKey,
+    this.tokenTtl,
+  });
+
+  GoogleFirebaseAppcheckV1betaRecaptchaEnterpriseConfig.fromJson(core.Map _json)
+      : this(
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          siteKey: _json.containsKey('siteKey')
+              ? _json['siteKey'] as core.String
+              : null,
+          tokenTtl: _json.containsKey('tokenTtl')
+              ? _json['tokenTtl'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+        if (siteKey != null) 'siteKey': siteKey!,
         if (tokenTtl != null) 'tokenTtl': tokenTtl!,
       };
 }

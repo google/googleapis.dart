@@ -1311,6 +1311,33 @@ class ProjectsLocationsOperationsResource {
   }
 }
 
+/// Spec for App Dev Experience Feature.
+typedef AppDevExperienceFeatureSpec = $Empty;
+
+/// State for App Dev Exp Feature.
+class AppDevExperienceFeatureState {
+  /// Status of subcomponent that detects configured Service Mesh resources.
+  Status? networkingInstallSucceeded;
+
+  AppDevExperienceFeatureState({
+    this.networkingInstallSucceeded,
+  });
+
+  AppDevExperienceFeatureState.fromJson(core.Map _json)
+      : this(
+          networkingInstallSucceeded:
+              _json.containsKey('networkingInstallSucceeded')
+                  ? Status.fromJson(_json['networkingInstallSucceeded']
+                      as core.Map<core.String, core.dynamic>)
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (networkingInstallSucceeded != null)
+          'networkingInstallSucceeded': networkingInstallSucceeded!,
+      };
+}
+
 /// Specifies the audit configuration for a service.
 ///
 /// The configuration determines which permission types are logged, and what
@@ -1533,15 +1560,23 @@ typedef CancelOperationRequest = $Empty;
 
 /// CommonFeatureSpec contains Hub-wide configuration information
 class CommonFeatureSpec {
+  /// Appdevexperience specific spec.
+  AppDevExperienceFeatureSpec? appdevexperience;
+
   /// Multicluster Ingress-specific spec.
   MultiClusterIngressFeatureSpec? multiclusteringress;
 
   CommonFeatureSpec({
+    this.appdevexperience,
     this.multiclusteringress,
   });
 
   CommonFeatureSpec.fromJson(core.Map _json)
       : this(
+          appdevexperience: _json.containsKey('appdevexperience')
+              ? AppDevExperienceFeatureSpec.fromJson(_json['appdevexperience']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           multiclusteringress: _json.containsKey('multiclusteringress')
               ? MultiClusterIngressFeatureSpec.fromJson(
                   _json['multiclusteringress']
@@ -1550,6 +1585,7 @@ class CommonFeatureSpec {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (appdevexperience != null) 'appdevexperience': appdevexperience!,
         if (multiclusteringress != null)
           'multiclusteringress': multiclusteringress!,
       };
@@ -1557,17 +1593,25 @@ class CommonFeatureSpec {
 
 /// CommonFeatureState contains Hub-wide Feature status information.
 class CommonFeatureState {
+  /// Appdevexperience specific state.
+  AppDevExperienceFeatureState? appdevexperience;
+
   /// The "running state" of the Feature in this Hub.
   ///
   /// Output only.
   FeatureState? state;
 
   CommonFeatureState({
+    this.appdevexperience,
     this.state,
   });
 
   CommonFeatureState.fromJson(core.Map _json)
       : this(
+          appdevexperience: _json.containsKey('appdevexperience')
+              ? AppDevExperienceFeatureState.fromJson(_json['appdevexperience']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           state: _json.containsKey('state')
               ? FeatureState.fromJson(
                   _json['state'] as core.Map<core.String, core.dynamic>)
@@ -1575,6 +1619,7 @@ class CommonFeatureState {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (appdevexperience != null) 'appdevexperience': appdevexperience!,
         if (state != null) 'state': state!,
       };
 }
@@ -3499,6 +3544,9 @@ class MembershipFeatureSpec {
 /// MembershipFeatureState contains Feature status information for a single
 /// Membership.
 class MembershipFeatureState {
+  /// Appdevexperience specific state.
+  AppDevExperienceFeatureState? appdevexperience;
+
   /// Config Management-specific state.
   ConfigManagementMembershipState? configmanagement;
 
@@ -3506,12 +3554,17 @@ class MembershipFeatureState {
   FeatureState? state;
 
   MembershipFeatureState({
+    this.appdevexperience,
     this.configmanagement,
     this.state,
   });
 
   MembershipFeatureState.fromJson(core.Map _json)
       : this(
+          appdevexperience: _json.containsKey('appdevexperience')
+              ? AppDevExperienceFeatureState.fromJson(_json['appdevexperience']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           configmanagement: _json.containsKey('configmanagement')
               ? ConfigManagementMembershipState.fromJson(
                   _json['configmanagement']
@@ -3524,6 +3577,7 @@ class MembershipFeatureState {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (appdevexperience != null) 'appdevexperience': appdevexperience!,
         if (configmanagement != null) 'configmanagement': configmanagement!,
         if (state != null) 'state': state!,
       };
@@ -3900,6 +3954,42 @@ class SetIamPolicyRequest {
   core.Map<core.String, core.dynamic> toJson() => {
         if (policy != null) 'policy': policy!,
         if (updateMask != null) 'updateMask': updateMask!,
+      };
+}
+
+/// Status specifies state for the subcomponent.
+class Status {
+  /// Code specifies AppDevExperienceFeature's subcomponent ready state.
+  /// Possible string values are:
+  /// - "CODE_UNSPECIFIED" : Not set.
+  /// - "OK" : AppDevExperienceFeature's specified subcomponent is ready.
+  /// - "FAILED" : AppDevExperienceFeature's specified subcomponent ready state
+  /// is false. This means AppDevExperienceFeature has encountered an issue that
+  /// blocks all, or a portion, of its normal operation. See the `description`
+  /// for more details.
+  /// - "UNKNOWN" : AppDevExperienceFeature's specified subcomponent has a
+  /// pending or unknown state.
+  core.String? code;
+
+  /// Description is populated if Code is Failed, explaining why it has failed.
+  core.String? description;
+
+  Status({
+    this.code,
+    this.description,
+  });
+
+  Status.fromJson(core.Map _json)
+      : this(
+          code: _json.containsKey('code') ? _json['code'] as core.String : null,
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (code != null) 'code': code!,
+        if (description != null) 'description': description!,
       };
 }
 

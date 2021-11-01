@@ -9179,7 +9179,9 @@ class Seller {
   /// buyer in the product.
   core.String? accountId;
 
-  /// Optional sub-account ID for the seller.
+  /// Ad manager network code for the seller.
+  ///
+  /// Output only.
   core.String? subAccountId;
 
   Seller({

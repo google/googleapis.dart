@@ -783,9 +783,9 @@ class ConsumerInfo {
 /// points.
 ///
 /// It contains the size of the population of sample points plus additional
-/// optional information: - the arithmetic mean of the samples - the minimum and
-/// maximum of the samples - the sum-squared-deviation of the samples, used to
-/// compute variance - a histogram of the values of the sample points
+/// optional information: * the arithmetic mean of the samples * the minimum and
+/// maximum of the samples * the sum-squared-deviation of the samples, used to
+/// compute variance * a histogram of the values of the sample points
 class Distribution {
   /// The number of samples in each histogram bucket.
   ///
