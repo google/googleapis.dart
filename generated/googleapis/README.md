@@ -265,7 +265,7 @@ Enables bots to fetch information and perform actions in Google Chat. Authentica
 
 The Chrome Management API is a suite of services that allows Chrome administrators to view, manage and gain insights on their Chrome OS and Chrome Browser devices.
 
-- [Documentation](http://developers.google.com/chrome/management/)
+- [Documentation](https://developers.google.com/chrome/management/)
 - [API details](https://pub.dev/documentation/googleapis/7.0.0/chromemanagement.v1/chromemanagement.v1-library.html)
 
 #### Chrome Policy API - `chromepolicy.v1`

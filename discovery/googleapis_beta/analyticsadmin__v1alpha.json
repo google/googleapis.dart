@@ -23,7 +23,7 @@
     "canonicalName": "Google Analytics Admin",
     "description": "",
     "discoveryVersion": "v1",
-    "documentationLink": "http://code.google.com/apis/analytics/docs/mgmt/home.html",
+    "documentationLink": "https://developers.google.com/analytics/devguides/config/",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"

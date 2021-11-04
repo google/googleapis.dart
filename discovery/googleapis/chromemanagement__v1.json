@@ -17,7 +17,7 @@
     "canonicalName": "Chrome Management",
     "description": "The Chrome Management API is a suite of services that allows Chrome administrators to view, manage and gain insights on their Chrome OS and Chrome Browser devices.",
     "discoveryVersion": "v1",
-    "documentationLink": "http://developers.google.com/chrome/management/",
+    "documentationLink": "https://developers.google.com/chrome/management/",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"

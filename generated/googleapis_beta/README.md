@@ -29,7 +29,7 @@ Manages alerts on issues affecting your domain.
 
 #### Google Analytics Admin API - `analyticsadmin.v1alpha`
 
-- [Documentation](http://code.google.com/apis/analytics/docs/mgmt/home.html)
+- [Documentation](https://developers.google.com/analytics/devguides/config/)
 - [API details](https://pub.dev/documentation/googleapis_beta/7.0.0/analyticsadmin.v1alpha/analyticsadmin.v1alpha-library.html)
 
 #### Google Analytics Data API - `analyticsdata.v1beta`
