@@ -15,7 +15,7 @@
 /// Google Analytics Admin API - v1alpha
 ///
 /// For more information, see
-/// <http://code.google.com/apis/analytics/docs/mgmt/home.html>
+/// <https://developers.google.com/analytics/devguides/config/>
 ///
 /// Create an instance of [GoogleAnalyticsAdminApi] to access these resources:
 ///

@@ -18,7 +18,7 @@
 /// administrators to view, manage and gain insights on their Chrome OS and
 /// Chrome Browser devices.
 ///
-/// For more information, see <http://developers.google.com/chrome/management/>
+/// For more information, see <https://developers.google.com/chrome/management/>
 ///
 /// Create an instance of [ChromeManagementApi] to access these resources:
 ///
