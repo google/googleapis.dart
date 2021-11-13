@@ -1,5 +1,6 @@
 ## 1.3.0-dev
 
+- The `secret` param in `ClientId` constructor is now optional.
 - Use the latest supported Google OAuth 2.0 URL
 - Generate a longer, secure random state token. 
 - Implement code verifier logic for the desktop auth flows.
