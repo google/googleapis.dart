@@ -75,20 +75,7 @@ class ImplicitFlow {
 
     js.context['dartGapiLoaded'] = () {
       timeout.cancel();
-      try {
-        final gapi = _gapiAuth;
-        try {
-          gapi.callMethod('init', [completer.complete]);
-          // ignore: avoid_catching_errors
-        } on NoSuchMethodError {
-          throw StateError('gapi.auth not loaded.');
-        }
-      } catch (error, stack) {
-        _pendingInitialization = null;
-        if (!completer.isCompleted) {
-          completer.completeError(error, stack);
-        }
-      }
+      completer.complete();
     };
 
     final script = _createScript();
@@ -108,19 +95,29 @@ class ImplicitFlow {
   }
 
   Future<LoginResult> loginHybrid({
-    bool force = false,
-    bool immediate = false,
+    String? prompt,
     String? loginHint,
+    String? hostedDomain,
   }) =>
-      _login(force, immediate, true, loginHint, null);
+      _login(
+        prompt: prompt,
+        responseTypes: [ResponseType.code, ResponseType.token],
+        loginHint: loginHint,
+        hostedDomain: hostedDomain,
+      );
 
   Future<AccessCredentials> login({
-    bool force = false,
-    bool immediate = false,
+    String? prompt,
     String? loginHint,
     List<ResponseType>? responseTypes,
+    String? hostedDomain,
   }) async =>
-      (await _login(force, immediate, false, loginHint, responseTypes))
+      (await _login(
+        prompt: prompt,
+        loginHint: loginHint,
+        responseTypes: responseTypes,
+        hostedDomain: hostedDomain,
+      ))
           .credential;
 
   // Completes with either credentials or a tuple of credentials and authCode.
@@ -129,39 +126,36 @@ class ImplicitFlow {
   //
   // Alternatively, the response types can be set directly if `hybrid` is not
   // set to `true`.
-  Future<LoginResult> _login(
-    bool force,
-    bool immediate,
-    bool hybrid,
-    String? loginHint,
-    List<ResponseType>? responseTypes,
-  ) {
-    assert(hybrid == false || responseTypes?.isNotEmpty != true);
-
+  Future<LoginResult> _login({
+    required String? prompt,
+    required String? hostedDomain,
+    required String? loginHint,
+    required List<ResponseType>? responseTypes,
+  }) {
     final completer = Completer<LoginResult>();
 
+    // https://developers.google.com/identity/sign-in/web/reference#gapiauth2authorizeconfig
     final json = {
       'client_id': _clientId,
-      'immediate': immediate,
-      'approval_prompt': force ? 'force' : 'auto',
-      'response_type': responseTypes == null || responseTypes.isEmpty
-          ? hybrid
-              ? 'code token'
-              : 'token'
-          : responseTypes.map(_responseTypeToString).join(' '),
       'scope': _scopes.join(' '),
-      'access_type': hybrid ? 'offline' : 'online',
+      'response_type': responseTypes == null || responseTypes.isEmpty
+          ? 'token'
+          : responseTypes.map(_responseTypeToString).join(' '),
+      if (prompt != null) 'prompt': prompt,
+      // cookie_policy – missing
+      if (hostedDomain != null) 'hosted_domain': hostedDomain,
       if (loginHint != null) 'login_hint': loginHint,
+      // include_granted_scopes - missing
     };
 
-    _gapiAuth.callMethod('authorize', [
+    _gapiAuth2.callMethod('authorize', [
       js.JsObject.jsify(json),
       (js.JsObject jsTokenObject) {
         try {
-          final result = _processToken(jsTokenObject, hybrid, responseTypes);
+          final result = _processToken(jsTokenObject, responseTypes);
           completer.complete(result);
         } catch (e, stack) {
-          html.window.console.debug(jsTokenObject);
+          html.window.console.error(jsTokenObject);
           completer.completeError(e, stack);
         }
       }
@@ -172,7 +166,6 @@ class ImplicitFlow {
 
   LoginResult _processToken(
     js.JsObject jsTokenObject,
-    bool hybrid,
     List<ResponseType>? responseTypes,
   ) {
     final error = jsTokenObject['error'];
@@ -188,10 +181,9 @@ class ImplicitFlow {
     final tokenType = jsTokenObject['token_type'];
     final token = jsTokenObject['access_token'] as String?;
 
-    final expiresInRaw = jsTokenObject['expires_in'];
-    final expiresIn = expiresInRaw is String ? int.parse(expiresInRaw) : null;
+    final expiresIn = jsTokenObject['expires_in'] as int;
 
-    if (token == null || expiresIn == null || tokenType != 'Bearer') {
+    if (token == null || tokenType != 'Bearer') {
       throw Exception(
         'Failed to obtain user consent. Invalid server response.',
       );
@@ -209,7 +201,7 @@ class ImplicitFlow {
         AccessCredentials(accessToken, null, _scopes, idToken: idToken);
 
     String? code;
-    if (hybrid) {
+    if (responseTypes?.contains(ResponseType.code) == true) {
       code = jsTokenObject['code'] as String?;
 
       if (code == null) {
@@ -267,5 +259,5 @@ String? _getNonce({html.Window? window}) {
   return null;
 }
 
-js.JsObject get _gapiAuth =>
-    (js.context['gapi'] as js.JsObject)['auth'] as js.JsObject;
+js.JsObject get _gapiAuth2 =>
+    (js.context['gapi'] as js.JsObject)['auth2'] as js.JsObject;
