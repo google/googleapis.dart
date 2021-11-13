@@ -64,7 +64,7 @@ class ServiceAccountCredentials {
       );
     }
 
-    final clientId = ClientId(identifier, null);
+    final clientId = ClientId(identifier);
     return ServiceAccountCredentials(
       email,
       clientId,

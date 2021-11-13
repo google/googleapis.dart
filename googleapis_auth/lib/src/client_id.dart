@@ -13,7 +13,7 @@ class ClientId {
   /// The client secret used to identify this application to the server.
   final String? secret;
 
-  ClientId(this.identifier, this.secret);
+  ClientId(this.identifier, [this.secret]);
 
   ClientId.serviceAccount(this.identifier) : secret = null;
 
