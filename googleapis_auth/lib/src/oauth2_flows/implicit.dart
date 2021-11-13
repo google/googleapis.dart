@@ -43,6 +43,7 @@ class ImplicitFlow {
 
   final String _clientId;
   final List<String> _scopes;
+  final bool _enableDebugLogs;
 
   /// The pending result of an earlier call to [initialize], if any.
   ///
@@ -52,7 +53,7 @@ class ImplicitFlow {
   /// this will be returned.
   static Future<void>? _pendingInitialization;
 
-  ImplicitFlow(this._clientId, this._scopes);
+  ImplicitFlow(this._clientId, this._scopes, this._enableDebugLogs);
 
   /// Readies the flow for calls to [login] by loading the 'gapi'
   /// JavaScript library, or returning the [Future] of a pending
@@ -74,6 +75,7 @@ class ImplicitFlow {
     });
 
     js.context['dartGapiLoaded'] = () {
+      if (_enableDebugLogs) _gapiAuth2.callMethod('enableDebugLogs', [true]);
       timeout.cancel();
       completer.complete();
     };
