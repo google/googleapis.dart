@@ -101,7 +101,7 @@ Future<AutoRefreshingAuthClient> clientViaApplicationDefaultCredentials({
 ///
 /// {@macro googleapis_auth_baseClient_param}
 ///
-/// {@template googleapis_auth_hosted_domain_param}
+/// {@template googleapis_auth_hostedDomain_param}
 /// If provided, restricts sign-in to Google Apps hosted accounts at
 /// [hostedDomain]. For more details, see
 /// https://developers.google.com/identity/protocols/oauth2/openid-connect#hd-param
@@ -159,7 +159,7 @@ Future<AutoRefreshingAuthClient> clientViaUserConsent(
 ///
 /// {@macro googleapis_auth_baseClient_param}
 ///
-/// {@macro googleapis_auth_hosted_domain_param}
+/// {@macro googleapis_auth_hostedDomain_param}
 ///
 /// {@macro googleapis_auth_close_the_client}
 /// {@macro googleapis_auth_not_close_the_baseClient}
@@ -212,7 +212,7 @@ Future<AutoRefreshingAuthClient> clientViaUserConsentManual(
 ///
 /// {@macro googleapis_auth_client_for_creds}
 ///
-/// {@macro googleapis_auth_hosted_domain_param}
+/// {@macro googleapis_auth_hostedDomain_param}
 ///
 /// {@macro googleapis_auth_user_consent_return}
 Future<AccessCredentials> obtainAccessCredentialsViaUserConsent(
@@ -239,7 +239,7 @@ Future<AccessCredentials> obtainAccessCredentialsViaUserConsent(
 ///
 /// {@macro googleapis_auth_client_for_creds}
 ///
-/// {@macro googleapis_auth_hosted_domain_param}
+/// {@macro googleapis_auth_hostedDomain_param}
 ///
 /// {@macro googleapis_auth_user_consent_return}
 Future<AccessCredentials> obtainAccessCredentialsViaUserConsentManual(

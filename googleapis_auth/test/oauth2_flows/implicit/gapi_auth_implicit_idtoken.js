@@ -28,48 +28,18 @@
     doneCallback();
   };
   GapiAuth.prototype.authorize = function (json, doneCallback) {
-    /*
-      Input:
-        argument1 = {
-            'client_id'
-            'immediate'
-            'approval_prompt'
-            'response_type'
-            'scope'
-            'access_type'
-        };
-        argument2 = dartCallback(json);
-
-      Output:
-        output_1 = {
-          'token_type',
-          'access_token',
-          'expires_in',
-          'id_token',
-          'code',
-          'state',
-          'error',
-        };
-    */
-
     var client_id = json['client_id'];
-    var immediate = json['immediate'];
-    var approval_prompt = json['approval_prompt'];
     var response_type = json['response_type'];
     var scope = json['scope'];
-    var access_type = json['access_type'];
 
     if (client_id == 'foo_client' &&
-      immediate == false &&
-      approval_prompt == 'auto' &&
       response_type == 'id_token token' &&
-      scope == 'scope1 scope2' &&
-      access_type == 'online') {
+      scope == 'scope1 scope2') {
       doneCallback({
         'token_type': 'Bearer',
         'access_token': 'foo_token',
         'id_token': 'foo_id_token',
-        'expires_in': '3210'
+        'expires_in': 3210
       });
     } else {
       throw new Error('error');
@@ -78,7 +48,7 @@
 
   // Initialize the gapi.auth mock.
   window.gapi = new Object();
-  window.gapi.auth = new GapiAuth();
+  window.gapi.auth2 = new GapiAuth();
 
   // Call the dart function. This signals that gapi.auth was loaded.
   var dartFunction = findDartOnLoadCallback();

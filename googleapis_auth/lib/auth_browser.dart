@@ -79,6 +79,16 @@ class BrowserOAuth2Flow {
 
   /// Obtain oauth2 [AccessCredentials].
   ///
+  /// {@template googleapis_auth_force}
+  /// If [force] is `true` this will create a popup window and ask the user to
+  /// grant the application offline access. In case the user is not already
+  /// logged in, they will be presented with an login dialog first.
+  ///
+  /// If [force] is `false` this will only create a popup window if the user
+  /// has not already granted the application access.
+  /// {@endtemplate}
+  ///
+  /// {@template googleapis_auth_immediate}
   /// If [immediate] is `true` there will be no user involvement. If the user
   /// is either not logged in or has not already granted the application access,
   /// a `UserConsentException` will be thrown.
@@ -86,17 +96,15 @@ class BrowserOAuth2Flow {
   /// If [immediate] is `false` the user might be asked to login (if not
   /// already logged in) and might get asked to grant the application access
   /// (if the application hasn't been granted access before).
+  /// {@endtemplate}
   ///
-  /// If [force] is `true` this will create a popup window and ask the user to
-  /// grant the application offline access. In case the user is not already
-  /// logged in, they will be presented with an login dialog first.
-  ///
-  /// If [force] is `false` this will only create a popup window if the user
-  /// has not already granted the application access.
-  ///
+  /// {@template googleapis_auth_loginHint}
   /// If [loginHint] is not `null`, it will be passed to the server as a hint
   /// to which user is being signed-in.  This can e.g. be an email or a User ID
   /// which might be used as pre-selection in the sign-in flow.
+  /// {@endtemplate}
+  ///
+  /// {@macro googleapis_auth_hostedDomain_param}
   ///
   /// If [responseTypes] is not `null` or empty, it will be sent to the server
   /// to inform the server of the type of responses to reply with.
@@ -106,18 +114,21 @@ class BrowserOAuth2Flow {
   /// has given the application access to their data.
   /// Otherwise, a [UserConsentException] will be thrown.
   /// {@endtemplate}
+  ///
+  /// {@macro googleapis_auth_hostedDomain_param}
   Future<AccessCredentials> obtainAccessCredentialsViaUserConsent({
-    bool immediate = false,
     bool force = false,
+    bool immediate = false,
     String? loginHint,
     List<ResponseType>? responseTypes,
+    String? hostedDomain,
   }) {
     _ensureOpen();
     return _flow.login(
-      force: force,
-      immediate: immediate,
+      prompt: _promptFromBooleans(force, immediate),
       loginHint: loginHint,
       responseTypes: responseTypes,
+      hostedDomain: hostedDomain,
     );
   }
 
@@ -139,14 +150,22 @@ class BrowserOAuth2Flow {
   /// The returned HTTP client will forward errors from lower levels via it's
   /// `Future<Response>` or it's `Response.read()` stream.
   ///
+  /// {@macro googleapis_auth_immediate}
+  ///
   /// {@macro googleapis_auth_close_the_client}
+  ///
+  /// {@macro googleapis_auth_loginHint}
+  ///
+  /// {@macro googleapis_auth_hostedDomain_param}
   Future<AutoRefreshingAuthClient> clientViaUserConsent({
     bool immediate = false,
     String? loginHint,
+    String? hostedDomain,
   }) async {
     final credentials = await obtainAccessCredentialsViaUserConsent(
       immediate: immediate,
       loginHint: loginHint,
+      hostedDomain: hostedDomain,
     );
     return _clientFromCredentials(credentials);
   }
@@ -161,32 +180,23 @@ class BrowserOAuth2Flow {
   /// credentials to make API calls, but the server may want to have offline
   /// access to user data as well.
   ///
-  /// If [force] is `true` this will create a popup window and ask the user to
-  /// grant the application offline access. In case the user is not already
-  /// logged in, they will be presented with an login dialog first.
+  /// {@macro googleapis_auth_force}
   ///
-  /// If [force] is `false` this will only create a popup window if the user
-  /// has not already granted the application access. Please note that the
-  /// authorization code can only be exchanged for a refresh token if the user
-  /// had to grant access via the popup window. Otherwise the code exchange
-  /// will only give an access token.
+  /// {@macro googleapis_auth_immediate}
   ///
-  /// If [loginHint] is not `null`, it will be passed to the server as a hint
-  /// to which user is being signed-in.  This can e.g. be an email or a User ID
-  /// which might be used as pre-selection in the sign-in flow.
+  /// {@macro googleapis_auth_loginHint}
   ///
-  /// If [immediate] is `true` there will be no user involvement. If the user
-  /// is either not logged in or has not already granted the application access,
-  /// a `UserConsentException` will be thrown.
+  /// {@macro googleapis_auth_hostedDomain_param}
   Future<HybridFlowResult> runHybridFlow({
     bool force = true,
     bool immediate = false,
     String? loginHint,
+    String? hostedDomain,
   }) async {
     _ensureOpen();
     final result = await _flow.loginHybrid(
-      force: force,
-      immediate: immediate,
+      prompt: _promptFromBooleans(force, immediate),
+      hostedDomain: hostedDomain,
       loginHint: loginHint,
     );
     return HybridFlowResult(this, result.credential, result.code);
@@ -271,9 +281,26 @@ class _AutoRefreshingBrowserClient extends AutoRefreshDelegatingClient {
     if (!credentials.accessToken.hasExpired) {
       return _authClient.send(request);
     }
-    credentials = await _flow.login(immediate: true);
+    credentials = await _flow.login(prompt: 'none');
     notifyAboutNewCredentials(credentials);
     _authClient = authenticatedClient(baseClient, credentials);
     return _authClient.send(request);
   }
+}
+
+String? _promptFromBooleans(bool force, bool immediate) {
+  if (force) {
+    if (immediate) {
+      throw ArgumentError.value(
+        immediate,
+        'immediate',
+        'Cannot be true if `force` is also true.',
+      );
+    }
+    return 'consent';
+  }
+  if (immediate) {
+    return 'none';
+  }
+  return null;
 }
