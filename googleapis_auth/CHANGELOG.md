@@ -4,6 +4,8 @@
 - `auth_browser` library:
   - Migrated to newer `auth2` Javascript API.
   - Added support for `hostedDomain` to all applicable functions.
+  - `createImplicitBrowserFlow`: added (unsupported) `enableDebugLogs` param.
+    (Maybe helpful for debugging, but should not be used in production.)
 - Use the latest supported Google OAuth 2.0 URL
 - Generate a longer, secure random state token.
 - Implement code verifier logic for the desktop auth flows.

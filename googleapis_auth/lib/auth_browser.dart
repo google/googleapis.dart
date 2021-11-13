@@ -39,12 +39,17 @@ Future<BrowserOAuth2Flow> createImplicitBrowserFlow(
   ClientId clientId,
   List<String> scopes, {
   Client? baseClient,
+  @Deprecated(
+    'Undocumented feature. May help debugging. '
+    'Do not include in production code.',
+  )
+      bool enableDebugLogs = false,
 }) async {
   final refCountedClient = baseClient == null
       ? RefCountedClient(BrowserClient())
       : RefCountedClient(baseClient, initialRefCount: 2);
 
-  final flow = ImplicitFlow(clientId.identifier, scopes);
+  final flow = ImplicitFlow(clientId.identifier, scopes, enableDebugLogs);
 
   try {
     await flow.initialize();
