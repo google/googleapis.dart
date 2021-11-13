@@ -5,6 +5,8 @@ environment:
 
 dev_dependencies:
   _discoveryapis_commons: any
+  build_runner: ^2.0.0
+  build_web_compilers: ^3.0.0
   googleapis: any
   googleapis_auth: any
   test: ^1.16.0
