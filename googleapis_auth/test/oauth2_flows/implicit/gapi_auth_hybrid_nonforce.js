@@ -12,13 +12,13 @@
     var self = scripts[scripts.length - 1];
 
     var equalsSign = self.src.indexOf('=');
-    if (equalsSign <= 0) throw 'error';
+    if (equalsSign <= 0) throw new Error('error');
 
     var callbackName = self.src.substring(equalsSign + 1);
-    if (callbackName.length <= 0) throw 'error';
+    if (callbackName.length <= 0) throw new Error('error');
 
     var dartFunction = window[callbackName];
-    if (dartFunction == null) throw 'error';
+    if (dartFunction == null) throw new Error('error');
 
     return dartFunction;
   }
@@ -71,7 +71,7 @@
         'code' : 'mycode'
       });
     } else {
-      throw 'error';
+      throw new Error('error');
     }
   };
 
