@@ -43,6 +43,7 @@ Uri createAuthenticationUri({
 }
 
 /// https://developers.google.com/identity/protocols/oauth2/native-app#create-code-challenge
+/// https://datatracker.ietf.org/doc/html/rfc7636#section-4.1
 String createCodeVerifier() {
   final rnd = Random.secure();
 
@@ -115,11 +116,35 @@ Future<List<String>> obtainScopesFromAccessToken(
   return scope.split(' ').toList();
 }
 
-Future<AccessCredentials> obtainAccessCredentialsUsingCode(
+/// Obtain oauth2 [AccessCredentials] by exchanging an authorization code.
+///
+/// Running a hybrid oauth2 flow as described in the
+/// `googleapis_auth.auth_browser` library results in a `HybridFlowResult` which
+/// contains short-lived [AccessCredentials] for the client and an authorization
+/// code. This authorization code needs to be transferred to the server, which
+/// can exchange it against long-lived [AccessCredentials].
+///
+/// {@macro googleapis_auth_client_for_creds}
+///
+/// {@macro googleapis_auth_clientId_param}
+///
+/// If the authorization code was obtained using the mentioned hybrid flow, the
+/// [redirectUrl] must be `"postmessage"` (default).
+///
+/// If you obtained the authorization code using a different mechanism, the
+/// [redirectUrl] must be the same that was used to obtain the code.
+///
+/// NOTE: Only the server application will know the `client secret` - which is
+/// necessary to exchange an authorization code against access tokens.
+///
+/// NOTE: It is important to transmit the authorization code in a secure manner
+/// to the server. You should use "anti-request forgery state tokens" to guard
+/// against "cross site request forgery" attacks.
+Future<AccessCredentials> obtainAccessCredentialsViaCodeExchange(
+  http.Client client,
   ClientId clientId,
-  String code,
-  String redirectUrl,
-  http.Client client, {
+  String code, {
+  String redirectUrl = 'postmessage',
   List<String>? scopes,
   String? codeVerifier,
 }) async {
