@@ -43,11 +43,10 @@ Uri createAuthenticationUri({
 }
 
 /// https://developers.google.com/identity/protocols/oauth2/native-app#create-code-challenge
-/// Between 43 and 128 = 86
 String createCodeVerifier() {
   final rnd = Random.secure();
 
-  return List.generate(86, (index) => _safe[rnd.nextInt(_safe.length)]).join();
+  return List.generate(128, (index) => _safe[rnd.nextInt(_safe.length)]).join();
 }
 
 /// See https://developers.google.com/identity/protocols/oauth2/openid-connect#createxsrftoken

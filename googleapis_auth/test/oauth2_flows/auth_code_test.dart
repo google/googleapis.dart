@@ -46,6 +46,7 @@ void main() {
 
         final pairs = request.body.split('&');
         expect(pairs, hasLength(6));
+
         expect(
           pairs,
           containsAll([
@@ -55,7 +56,7 @@ void main() {
             'client_secret=secret',
             allOf(
               startsWith('code_verifier='),
-              hasLength(100), // happens to be the output length as implemented!
+              hasLength(142), // happens to be the output length as implemented!
             ),
             if (manual) 'redirect_uri=urn%3Aietf%3Awg%3Aoauth%3A2.0%3Aoob',
             if (!manual) _browserFlowRedirectMatcher
