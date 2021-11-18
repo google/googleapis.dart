@@ -10,7 +10,6 @@ import 'src/adc_utils.dart';
 import 'src/auth_http_utils.dart';
 import 'src/http_client_base.dart';
 import 'src/metadata_server_client.dart' show clientViaMetadataServer;
-import 'src/oauth2_flows/auth_code.dart';
 import 'src/oauth2_flows/authorization_code_grant_manual_flow.dart';
 import 'src/oauth2_flows/authorization_code_grant_server_flow.dart';
 import 'src/service_account_credentials.dart';
@@ -18,6 +17,8 @@ import 'src/typedefs.dart';
 
 export 'googleapis_auth.dart';
 export 'src/metadata_server_client.dart';
+export 'src/oauth2_flows/auth_code.dart'
+    show obtainAccessCredentialsViaCodeExchange;
 export 'src/service_account_client.dart';
 export 'src/typedefs.dart';
 
@@ -256,35 +257,3 @@ Future<AccessCredentials> obtainAccessCredentialsViaUserConsentManual(
       userPrompt,
       hostedDomain: hostedDomain,
     ).run();
-
-/// Obtain oauth2 [AccessCredentials] by exchanging an authorization code.
-///
-/// Running a hybrid oauth2 flow as described in the
-/// `googleapis_auth.auth_browser` library results in a `HybridFlowResult` which
-/// contains short-lived [AccessCredentials] for the client and an authorization
-/// code. This authorization code needs to be transferred to the server, which
-/// can exchange it against long-lived [AccessCredentials].
-///
-/// {@macro googleapis_auth_client_for_creds}
-///
-/// {@macro googleapis_auth_clientId_param}
-///
-/// If the authorization code was obtained using the mentioned hybrid flow, the
-/// [redirectUrl] must be `"postmessage"` (default).
-///
-/// If you obtained the authorization code using a different mechanism, the
-/// [redirectUrl] must be the same that was used to obtain the code.
-///
-/// NOTE: Only the server application will know the `client secret` - which is
-/// necessary to exchange an authorization code against access tokens.
-///
-/// NOTE: It is important to transmit the authorization code in a secure manner
-/// to the server. You should use "anti-request forgery state tokens" to guard
-/// against "cross site request forgery" attacks.
-Future<AccessCredentials> obtainAccessCredentialsViaCodeExchange(
-  Client client,
-  ClientId clientId,
-  String code, {
-  String redirectUrl = 'postmessage',
-}) =>
-    obtainAccessCredentialsUsingCode(clientId, code, redirectUrl, client);
