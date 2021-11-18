@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:html';
 
 import 'package:googleapis/oauth2/v2.dart';
@@ -27,7 +28,7 @@ Future<void> _hybridFlow() async {
 
   _log([
     'cred json',
-    creds.credentials.toJson(),
+    const JsonEncoder.withIndent(' ').convert(creds.credentials),
     '',
     'auth code',
     creds.authorizationCode,
@@ -35,11 +36,17 @@ Future<void> _hybridFlow() async {
 }
 
 Future<void> _login() async {
-  final creds = await _flow.obtainAccessCredentialsViaUserConsent();
+  final creds = await _flow.obtainAccessCredentialsViaUserConsent(
+    responseTypes: [
+      ResponseType.code,
+      ResponseType.idToken,
+      ResponseType.permission
+    ],
+  );
 
   _log([
     'cred json',
-    creds.toJson(),
+    const JsonEncoder.withIndent(' ').convert(creds),
   ].join('\n'));
 }
 
