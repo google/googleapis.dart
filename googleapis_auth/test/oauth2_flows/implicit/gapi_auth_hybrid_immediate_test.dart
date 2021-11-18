@@ -5,7 +5,6 @@
 @TestOn('browser')
 import 'package:googleapis_auth/auth_browser.dart' as auth;
 import 'package:googleapis_auth/src/oauth2_flows/implicit.dart' as impl;
-import 'package:googleapis_auth/src/utils.dart' as utils;
 import 'package:test/test.dart';
 
 import 'utils.dart';
@@ -21,12 +20,11 @@ void main() {
     final result = await flow.runHybridFlow(force: false, immediate: true);
     final credentials = result.credentials;
 
-    final date = DateTime.now().toUtc().add(
-        const Duration(seconds: 3210 - utils.maxExpectedTimeDiffInSeconds));
+    final date = DateTime.now().toUtc().add(const Duration(seconds: 3210));
     final difference = credentials.accessToken.expiry.difference(date);
     final seconds = difference.inSeconds;
 
-    expect(-3 <= seconds && seconds <= 3, isTrue);
+    expect(seconds, inInclusiveRange(-3, 3));
     expect(credentials.accessToken.data, 'foo_token');
     expect(credentials.refreshToken, isNull);
     expect(credentials.scopes, hasLength(2));
