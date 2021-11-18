@@ -114,16 +114,16 @@ jobs:
         working-directory: googleapis_auth
         run: dart analyze --fatal-infos .
   job_004:
-    name: "analyze_and_format; Dart 2.13.4; PKGS: _test, _test_package, generated/googleapis, generated/googleapis_beta, test_integration; `dart format --output=none --set-exit-if-changed .`, `dart analyze --fatal-infos .`"
+    name: "analyze_and_format; Dart 2.13.4; PKGS: _test, _test_package, generated/googleapis, generated/googleapis_beta; `dart format --output=none --set-exit-if-changed .`, `dart analyze --fatal-infos .`"
     runs-on: ubuntu-latest
     steps:
       - name: Cache Pub hosted dependencies
         uses: actions/cache@v2.1.6
         with:
           path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;dart:2.13.4;packages:_test-_test_package-generated/googleapis-generated/googleapis_beta-test_integration;commands:format-analyze"
+          key: "os:ubuntu-latest;pub-cache-hosted;dart:2.13.4;packages:_test-_test_package-generated/googleapis-generated/googleapis_beta;commands:format-analyze"
           restore-keys: |
-            os:ubuntu-latest;pub-cache-hosted;dart:2.13.4;packages:_test-_test_package-generated/googleapis-generated/googleapis_beta-test_integration
+            os:ubuntu-latest;pub-cache-hosted;dart:2.13.4;packages:_test-_test_package-generated/googleapis-generated/googleapis_beta
             os:ubuntu-latest;pub-cache-hosted;dart:2.13.4
             os:ubuntu-latest;pub-cache-hosted
             os:ubuntu-latest
@@ -184,30 +184,17 @@ jobs:
         if: "always() && steps.generated_googleapis_beta_pub_upgrade.conclusion == 'success'"
         working-directory: generated/googleapis_beta
         run: dart analyze --fatal-infos .
-      - id: test_integration_pub_upgrade
-        name: test_integration; dart pub upgrade
-        if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: test_integration
-        run: dart pub upgrade
-      - name: "test_integration; dart format --output=none --set-exit-if-changed ."
-        if: "always() && steps.test_integration_pub_upgrade.conclusion == 'success'"
-        working-directory: test_integration
-        run: "dart format --output=none --set-exit-if-changed ."
-      - name: "test_integration; dart analyze --fatal-infos ."
-        if: "always() && steps.test_integration_pub_upgrade.conclusion == 'success'"
-        working-directory: test_integration
-        run: dart analyze --fatal-infos .
   job_005:
-    name: "analyze_and_format; Dart 2.14.0; PKG: discoveryapis_generator; `dart format --output=none --set-exit-if-changed .`, `dart analyze --fatal-infos .`"
+    name: "analyze_and_format; Dart 2.14.0; PKGS: discoveryapis_generator, test_integration; `dart format --output=none --set-exit-if-changed .`, `dart analyze --fatal-infos .`"
     runs-on: ubuntu-latest
     steps:
       - name: Cache Pub hosted dependencies
         uses: actions/cache@v2.1.6
         with:
           path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;dart:2.14.0;packages:discoveryapis_generator;commands:format-analyze"
+          key: "os:ubuntu-latest;pub-cache-hosted;dart:2.14.0;packages:discoveryapis_generator-test_integration;commands:format-analyze"
           restore-keys: |
-            os:ubuntu-latest;pub-cache-hosted;dart:2.14.0;packages:discoveryapis_generator
+            os:ubuntu-latest;pub-cache-hosted;dart:2.14.0;packages:discoveryapis_generator-test_integration
             os:ubuntu-latest;pub-cache-hosted;dart:2.14.0
             os:ubuntu-latest;pub-cache-hosted
             os:ubuntu-latest
@@ -228,6 +215,19 @@ jobs:
       - name: "discoveryapis_generator; dart analyze --fatal-infos ."
         if: "always() && steps.discoveryapis_generator_pub_upgrade.conclusion == 'success'"
         working-directory: discoveryapis_generator
+        run: dart analyze --fatal-infos .
+      - id: test_integration_pub_upgrade
+        name: test_integration; dart pub upgrade
+        if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: test_integration
+        run: dart pub upgrade
+      - name: "test_integration; dart format --output=none --set-exit-if-changed ."
+        if: "always() && steps.test_integration_pub_upgrade.conclusion == 'success'"
+        working-directory: test_integration
+        run: "dart format --output=none --set-exit-if-changed ."
+      - name: "test_integration; dart analyze --fatal-infos ."
+        if: "always() && steps.test_integration_pub_upgrade.conclusion == 'success'"
+        working-directory: test_integration
         run: dart analyze --fatal-infos .
   job_006:
     name: "analyze_and_format; Dart dev; PKGS: _test, _test_package, discoveryapis_commons, discoveryapis_generator, generated/googleapis, generated/googleapis_beta, generator, googleapis_auth, test_integration; `dart format --output=none --set-exit-if-changed .`, `dart analyze --fatal-infos .`"
