@@ -10,7 +10,6 @@ import '../access_credentials.dart';
 import '../access_token.dart';
 import '../exceptions.dart';
 import '../response_type.dart';
-import '../utils.dart';
 
 // This will be overridden by tests.
 String gapiUrl = 'https://apis.google.com/js/client.js';
@@ -183,8 +182,6 @@ class ImplicitFlow {
     final tokenType = jsTokenObject['token_type'];
     final token = jsTokenObject['access_token'] as String?;
 
-    final expiresIn = jsTokenObject['expires_in'] as int;
-
     if (token == null || tokenType != 'Bearer') {
       throw Exception(
         'Failed to obtain user consent. Invalid server response.',
@@ -198,9 +195,23 @@ class ImplicitFlow {
       throw Exception('Expected to get id_token, but did not.');
     }
 
-    final accessToken = AccessToken('Bearer', token, expiryDate(expiresIn));
-    final credentials =
-        AccessCredentials(accessToken, null, _scopes, idToken: idToken);
+    List<String>? scopes;
+    final scopeString = jsTokenObject['scope'];
+    if (scopeString is String) {
+      scopes = scopeString.split(' ');
+    }
+
+    final expiresAt = jsTokenObject['expires_at'] as int;
+    final expiresAtDate =
+        DateTime.fromMillisecondsSinceEpoch(expiresAt).toUtc();
+
+    final accessToken = AccessToken('Bearer', token, expiresAtDate);
+    final credentials = AccessCredentials(
+      accessToken,
+      null,
+      scopes ?? _scopes,
+      idToken: idToken,
+    );
 
     String? code;
     if (responseTypes?.contains(ResponseType.code) == true) {

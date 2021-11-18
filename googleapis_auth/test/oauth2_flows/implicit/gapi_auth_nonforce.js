@@ -38,7 +38,7 @@
       doneCallback({
         'token_type' : 'Bearer',
         'access_token' : 'foo_token',
-        'expires_in' : 3210
+        'expires_at' : Date.now() + 1000 * 3210,
       });
     } else {
       throw new Error('error');

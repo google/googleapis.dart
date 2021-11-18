@@ -41,7 +41,7 @@ void main() {
     } catch (error) {
       final elapsed =
           (sw.elapsed - impl.ImplicitFlow.callbackTimeout).inSeconds;
-      expect(-3 <= elapsed && elapsed <= 3, isTrue);
+      expect(elapsed, inInclusiveRange(-3, 3));
     }
   });
 }
