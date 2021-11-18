@@ -11,6 +11,7 @@ import '../access_credentials.dart';
 import '../client_id.dart';
 import '../exceptions.dart';
 import '../typedefs.dart';
+import 'auth_code.dart';
 import 'authorization_code_grant_abstract_flow.dart';
 
 /// Runs an oauth2 authorization code grant flow using an HTTP server.
@@ -52,7 +53,7 @@ class AuthorizationCodeGrantServerFlow
           redirectionUri,
           state: state,
           codeVerifier: codeVerifier,
-        ),
+        ).toString(),
       );
 
       final request = await server.first;

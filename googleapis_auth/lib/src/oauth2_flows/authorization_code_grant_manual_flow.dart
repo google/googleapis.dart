@@ -9,6 +9,7 @@ import 'package:http/http.dart' as http;
 import '../access_credentials.dart';
 import '../client_id.dart';
 import '../typedefs.dart';
+import 'auth_code.dart';
 import 'authorization_code_grant_abstract_flow.dart';
 
 /// Runs an oauth2 authorization code grant flow using manual Copy&Paste.
@@ -43,7 +44,7 @@ class AuthorizationCodeGrantManualFlow
       authenticationUri(
         _redirectionUri,
         codeVerifier: codeVerifier,
-      ),
+      ).toString(),
     );
     // Use code to obtain credentials
     return obtainAccessCredentialsUsingCodeImpl(
