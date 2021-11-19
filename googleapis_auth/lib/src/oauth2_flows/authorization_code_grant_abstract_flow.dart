@@ -33,7 +33,6 @@ abstract class AuthorizationCodeGrantAbstractFlow implements BaseFlow {
         code,
         redirectUrl: redirectUri,
         codeVerifier: codeVerifier,
-        scopes: scopes,
       );
 
   Uri authenticationUri(

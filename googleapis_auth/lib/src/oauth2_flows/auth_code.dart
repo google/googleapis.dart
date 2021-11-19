@@ -9,7 +9,6 @@ import 'dart:typed_data';
 
 import 'package:crypto/crypto.dart';
 import 'package:http/http.dart' as http;
-import 'package:http/http.dart';
 
 import '../access_credentials.dart';
 import '../client_id.dart';
@@ -82,40 +81,6 @@ String _stripBase64Equals(String value) {
   return value;
 }
 
-// A successful response from the server will give an HTTP response status
-// 200 and a body of the following type:
-// {
-//   "issued_to": "XYZ.apps.googleusercontent.com",
-//   "audience": "XYZ.apps.googleusercontent.com",
-//   "scope": "https://www.googleapis.com/auth/bigquery",
-//   "expires_in": 3547,
-//   "access_type": "offline"
-// }
-//
-// Scopes are separated by spaces.
-Future<List<String>> obtainScopesFromAccessToken(
-  String accessToken,
-  http.Client client,
-) async {
-  final url = googleOauth2TokenInfoEndpoint.replace(
-    queryParameters: {'access_token': accessToken},
-  );
-
-  final json = await client.requestJson(
-    Request('POST', url),
-    'Failed to obtain scopes from access token.',
-  );
-
-  final scope = json['scope'];
-  if (scope is! String) {
-    throw ServerRequestFailedException(
-      'The response did not include a `scope` value of type `String`.',
-      responseContent: json,
-    );
-  }
-  return scope.split(' ').toList();
-}
-
 /// Obtain oauth2 [AccessCredentials] by exchanging an authorization code.
 ///
 /// Running a hybrid oauth2 flow as described in the
@@ -145,7 +110,6 @@ Future<AccessCredentials> obtainAccessCredentialsViaCodeExchange(
   ClientId clientId,
   String code, {
   String redirectUrl = 'postmessage',
-  List<String>? scopes,
   String? codeVerifier,
 }) async {
   final jsonMap = await client.oauthTokenRequest(
@@ -163,10 +127,30 @@ Future<AccessCredentials> obtainAccessCredentialsViaCodeExchange(
   final idToken = jsonMap['id_token'] as String?;
   final refreshToken = jsonMap['refresh_token'] as String?;
 
+  final scope = jsonMap['scope'];
+  if (scope is! String) {
+    throw ServerRequestFailedException(
+      'The response did not include a `scope` value of type `String`.',
+      responseContent: json,
+    );
+  }
+  final scopes = scope.split(' ').toList();
+
   return AccessCredentials(
     accessToken,
     refreshToken,
-    scopes ?? await obtainScopesFromAccessToken(accessToken.data, client),
+    scopes,
     idToken: idToken,
   );
+}
+
+List<String> parseScopes(Map<String, dynamic> json) {
+  final scope = json['scope'];
+  if (scope is! String) {
+    throw ServerRequestFailedException(
+      'The response did not include a `scope` value of type `String`.',
+      responseContent: json,
+    );
+  }
+  return scope.split(' ').toList();
 }

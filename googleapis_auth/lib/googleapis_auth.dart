@@ -25,8 +25,6 @@
 /// {@canonicalFor service_account_credentials.ServiceAccountCredentials}
 library googleapis_auth;
 
-export 'src/access_credentials.dart' show AccessCredentials;
-export 'src/access_token.dart' show AccessToken;
 export 'src/auth_client.dart';
 export 'src/auth_functions.dart';
 export 'src/client_id.dart';
