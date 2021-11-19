@@ -1,3 +1,7 @@
+## 1.3.0-beta.1
+
+- Changes in `obtainAccessCredentialsViaCodeExchange` from `beta.0`.
+
 ## 1.3.0-beta.0
 
 - The `secret` param in `ClientId` constructor is now optional.
@@ -11,8 +15,10 @@
   - Generate a longer, secure random state token.
   - Implement code verifier logic for the desktop auth flows.
     See https://developers.google.com/identity/protocols/oauth2/native-app#create-code-challenge
-  - Added optional `codeVerifier` and `scopes` parameters to
-    `obtainAccessCredentialsViaCodeExchange`.
+  - `obtainAccessCredentialsViaCodeExchange`
+    - `scopes` are now acquired from the initial API call and not via a separate
+      API call to the `tokeninfo` endpoint.
+    - Added optional `codeVerifier` parameter.
 
 ## 1.2.0
 

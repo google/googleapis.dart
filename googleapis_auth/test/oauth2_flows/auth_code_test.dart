@@ -8,7 +8,6 @@ import 'dart:io';
 
 import 'package:googleapis_auth/googleapis_auth.dart';
 import 'package:googleapis_auth/src/known_uris.dart';
-import 'package:googleapis_auth/src/oauth2_flows/auth_code.dart';
 import 'package:googleapis_auth/src/oauth2_flows/authorization_code_grant_manual_flow.dart';
 import 'package:googleapis_auth/src/oauth2_flows/authorization_code_grant_server_flow.dart';
 import 'package:http/http.dart';
@@ -69,6 +68,7 @@ void main() {
           'expires_in': 3600,
           'refresh_token': 'my-refresh-token',
           'id_token': 'my-id-token',
+          'scope': 's1 s2',
         };
         return Response(
           jsonEncode(result),
@@ -262,51 +262,5 @@ void main() {
         await expectLater(flow.run(), throwsA(isUserConsentException));
       });
     }, testOn: '!browser');
-  });
-
-  group('scopes-from-tokeninfo-endpoint', () {
-    final successfulResponseJson = jsonEncode({
-      'issued_to': 'XYZ.apps.googleusercontent.com',
-      'audience': 'XYZ.apps.googleusercontent.com',
-      'scope': 'scopeA scopeB',
-      'expires_in': 3210,
-      'access_type': 'offline'
-    });
-    const expectedUri =
-        'https://www.googleapis.com/oauth2/v2/tokeninfo?access_token=my_token';
-
-    test('successful', () async {
-      final http = mockClient(expectAsync1((BaseRequest request) async {
-        expect(request.url.toString(), expectedUri);
-        return Response(successfulResponseJson, 200, headers: jsonContentType);
-      }), expectClose: false);
-      final scopes = await obtainScopesFromAccessToken('my_token', http);
-      expect(scopes, equals(['scopeA', 'scopeB']));
-    });
-
-    test('non-200-status-code', () {
-      final http = mockClient(expectAsync1((BaseRequest request) async {
-        expect(request.url.toString(), expectedUri);
-        return Response(successfulResponseJson, 201);
-      }), expectClose: false);
-      expect(
-        obtainScopesFromAccessToken('my_token', http),
-        throwsA(isServerRequestFailedException),
-      );
-    });
-
-    test('no-scope', () {
-      final http = mockClient(
-        expectAsync1((BaseRequest request) async {
-          expect(request.url.toString(), expectedUri);
-          return Response(jsonEncode({}), 200, headers: jsonContentType);
-        }),
-        expectClose: false,
-      );
-      expect(
-        obtainScopesFromAccessToken('my_token', http),
-        throwsA(isServerRequestFailedException),
-      );
-    });
   });
 }

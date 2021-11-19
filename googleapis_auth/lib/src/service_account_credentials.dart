@@ -8,7 +8,7 @@ import 'client_id.dart';
 import 'crypto/pem.dart';
 import 'crypto/rsa.dart';
 
-export 'access_credentials.dart';
+export 'access_credentials.dart' show AccessCredentials;
 export 'access_token.dart' show AccessToken;
 export 'auth_client.dart';
 export 'client_id.dart';
