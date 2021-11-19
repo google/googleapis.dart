@@ -81,7 +81,7 @@ Future<AccessCredentials> _credentials(
 
   final credentialsFile = File('credentials.json');
 
-  AccessCredentials credentials;
+  AccessCredentials? credentials;
 
   if (credentialsFile.existsSync()) {
     final json =
@@ -89,15 +89,20 @@ Future<AccessCredentials> _credentials(
 
     credentials = AccessCredentials.fromJson(json);
 
-    credentials = await refreshCredentials(clientId, credentials, client);
-  } else {
-    credentials = await obtainAccessCredentialsViaUserConsent(
-      clientId,
-      scopes,
-      client,
-      _prompt,
-    );
+    if (credentials.scopes.toSet().containsAll(scopes)) {
+      credentials = await refreshCredentials(clientId, credentials, client);
+    } else {
+      credentials = null;
+      print('Cached credentials lack the requested scopes - doing auth!');
+    }
   }
+
+  credentials ??= await obtainAccessCredentialsViaUserConsent(
+    clientId,
+    scopes,
+    client,
+    _prompt,
+  );
 
   credentialsFile.writeAsStringSync(prettyJsonEncode(credentials));
 
