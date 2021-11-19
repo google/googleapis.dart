@@ -1,4 +1,4 @@
-## 1.3.0-dev
+## 1.3.0-beta.0
 
 - The `secret` param in `ClientId` constructor is now optional.
 - Use the latest supported Google OAuth 2.0 URL
