@@ -92,7 +92,8 @@ Future<AccessCredentials> _credentials(
       credentials = await refreshCredentials(clientId, credentials, client);
     } else {
       credentials = null;
-      print('Cached credentials lack the requested scopes - doing auth!');
+      stderr.writeln(
+          'Cached credentials lack the requested scopes - doing auth!');
     }
   }
 
@@ -105,7 +106,7 @@ Future<AccessCredentials> _credentials(
 
   credentialsFile.writeAsStringSync(prettyJsonEncode(credentials));
 
-  print(
+  stderr.writeln(
     '* Credentials expire in '
     '${credentials.accessToken.expiry.difference(DateTime.now())} *',
   );
@@ -114,9 +115,9 @@ Future<AccessCredentials> _credentials(
 }
 
 void _prompt(String url) {
-  print('Please go to the following URL and grant access:');
-  print('  => $url');
-  print('');
+  stderr.writeln('Please go to the following URL and grant access:');
+  stderr.writeln('  => $url');
+  stderr.writeln();
 }
 
 String prettyJsonEncode(Object? object) =>
