@@ -142,6 +142,8 @@ void prompt(String url) {
 }
 ```
 
+The Client Id requires a `client_secret` here, but the OAuth2 flow used in this case [assumes that the app cannot keep secrets](https://developers.google.com/identity/protocols/oauth2/native-app). You should make sure not to re-use the same `client_secret` anywhere secrecy is required.
+
 In case of misconfigured browsers/proxies or other issues, it is also possible
 to use a manual flow via `obtainAccessCredentialsViaUserConsentManual` and
 `clientViaUserConsentManual`. But in this case the `prompt` function needs to
