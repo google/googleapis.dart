@@ -38,42 +38,41 @@ for local testing).
 After the Client ID has been created, you can obtain access credentials via
 
 ```dart
-import "package:googleapis_auth/auth_browser.dart";
-
-...
+import 'package:googleapis_auth/auth_browser.dart';
 
 // Initialize the browser oauth2 flow functionality then use it to obtain credentials.
 Future<AccessCredentials> obtainCredentials() async {
-  var id = ClientId("....apps.googleusercontent.com", null);
-  var scopes = [...];
-  BrowserOAuth2Flow flow = await createImplicitBrowserFlow(id, scopes);
+  final flow = await createImplicitBrowserFlow(
+    ClientId('....apps.googleusercontent.com'),
+    ['scope1', 'scope2'],
+  );
 
-  AccessCredentials credentials =
-      await flow.obtainAccessCredentialsViaUserConsent();
-
-  flow.close();
-  return credentials;
+  try {
+    return await flow.obtainAccessCredentialsViaUserConsent();
+  } finally {
+    flow.close();
+  }
 }
 ```
 
 or obtain an authenticated HTTP client via
 
 ```dart
-import "package:googleapis_auth/auth_browser.dart";
-
-...
+import 'package:googleapis_auth/auth_browser.dart';
 
 // Initialize the browser oauth2 flow functionality then use it to
 // get an authenticated and auto refreshing client.
 Future<AuthClient> obtainAuthenticatedClient() async {
-  var id = ClientId("....apps.googleusercontent.com", null);
-  var scopes = [...];
-  BrowserOAuth2Flow flow = await createImplicitBrowserFlow(id, scopes);
+  final flow = await createImplicitBrowserFlow(
+    ClientId('....apps.googleusercontent.com'),
+    ['scope1', 'scope2'],
+  );
 
-  AuthClient client = await flow.clientViaUserConsent();
-
-  flow.close();
-  return client; // Remember to close the client when you are finished with it.
+  try {
+    return await flow.clientViaUserConsent();
+  } finally {
+    flow.close();
+  }
 }
 ```
 
@@ -97,55 +96,50 @@ automatically.
 After the Client ID has been created, you can obtain access credentials via
 
 ```dart
-import "package:googleapis_auth/auth_io.dart";
-import "package:http/http.dart" as http;
-
-...
+import 'package:googleapis_auth/auth_io.dart';
+import 'package:http/http.dart' as http;
 
 // Use the oauth2 authentication code flow functionality to obtain
 // credentials. [prompt] is used for directing the user to a URI.
 Future<AccessCredentials> obtainCredentials() async {
-  var id = ClientId("....apps.googleusercontent.com", "...");
-  var scopes = [...];
-  var client = http.Client();
+  final client = http.Client();
 
-  AccessCredentials credentials =
-      await obtainAccessCredentialsViaUserConsent(id, scopes, client, prompt);
-
-  client.close();
-  return credentials;
+  try {
+    return await obtainAccessCredentialsViaUserConsent(
+      ClientId('....apps.googleusercontent.com', '...'),
+      ['scope1', 'scope2'],
+      client,
+      _prompt,
+    );
+  } finally {
+    client.close();
+  }
 }
 
-void prompt(String url) {
-  print("Please go to the following URL and grant access:");
-  print("  => $url");
-  print("");
+void _prompt(String url) {
+  print('Please go to the following URL and grant access:');
+  print('  => $url');
+  print('');
 }
-
 ```
 
 or obtain an authenticated HTTP client via
 
 ```dart
-import "package:googleapis_auth/auth_io.dart";
-
-...
+import 'package:googleapis_auth/auth_io.dart';
 
 // Use the oauth2 code grant server flow functionality to
 // get an authenticated and auto refreshing client.
-Future<AuthClient> obtainAuthenticatedClient() async {
-  var id = ClientId("....apps.googleusercontent.com", "...");
-  var scopes = [...];
+Future<AuthClient> obtainCredentials() async => await clientViaUserConsent(
+  ClientId('....apps.googleusercontent.com', '...'),
+  ['scope1', 'scope2'],
+  _prompt,
+);
 
-  AuthClient client = await clientViaUserConsent(id, scopes, prompt);
-
-  return client; // Remember to close the client when you are finished with it.
-}
-
-void prompt(String url) {
-  print("Please go to the following URL and grant access:");
-  print("  => $url");
-  print("");
+void _prompt(String url) {
+  print('Please go to the following URL and grant access:');
+  print('  => $url');
+  print('');
 }
 ```
 
