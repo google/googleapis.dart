@@ -9,8 +9,8 @@
     (Maybe helpful for debugging, but should not be used in production.)
 - `auth_io` library:
   - Generate a longer, secure random state token.
-  - Implement code verifier logic for the desktop auth flows.
-    See https://developers.google.com/identity/protocols/oauth2/native-app#create-code-challenge
+  - Implement code verifier logic for the desktop auth flows. See
+    https://developers.google.com/identity/protocols/oauth2/native-app#create-code-challenge
   - `obtainAccessCredentialsViaCodeExchange`
     - `scopes` are now acquired from the initial API call and not via a separate
       API call to the `tokeninfo` endpoint.
@@ -19,13 +19,13 @@
 ## 1.2.0
 
 - Added an optional `hostedDomain` parameter to many functions in
-  `auth_io.dart`.
-  If provided, restricts sign-in to Google Apps hosted accounts at that domain.
+  `auth_io.dart`. If provided, restricts sign-in to Google Apps hosted accounts
+  at that domain.
 - Fix an error when doing OAUTH code exchanged with an undefined secret.
 - `clientViaApiKey` is now exported from `googleapis_auth.dart`.
 - Added `String? details` to `UserConsentException`.
-- Update the host used to access metadata on Google Cloud.
-  From `http://metadata/` to `http://metadata.google.internal`.
+- Update the host used to access metadata on Google Cloud. From
+  `http://metadata/` to `http://metadata.google.internal`.
 - Require Dart 2.13
 - Deprecated `RefreshFailedException` - `ServerRequestFailedException` is used
   instead.
@@ -34,8 +34,8 @@
 
 - Added the `googleapis_auth.dart` library. It is convention to have the default
   library within a package align with the package name. `auth.dart` is now
-  deprecated and will be removed in v2. 
-- Added `fromJson` factory and `toJson` method to `AccessToken`, 
+  deprecated and will be removed in v2.
+- Added `fromJson` factory and `toJson` method to `AccessToken`,
   `AccessCredentials`, and `ClientId`.
 - Remove dynamic function invocations.
 
@@ -46,35 +46,41 @@
 
 ## 0.2.12+1
 
- * Removed a `dart:async` import that isn't required for \>=Dart 2.1.
- * Require \>=Dart 2.1.
+- Removed a `dart:async` import that isn't required for \>=Dart 2.1.
+- Require \>=Dart 2.1.
 
 ## 0.2.12
- * Add `clientViaApplicationDefaultCredentials` for obtaining credentials using
-   [ADC](https://cloud.google.com/docs/authentication/production).
+
+- Add `clientViaApplicationDefaultCredentials` for obtaining credentials using
+  [ADC](https://cloud.google.com/docs/authentication/production).
 
 ## 0.2.11+1
- * Fix 'multiple completer completion' bug in `ImplicitFlow`.
+
+- Fix 'multiple completer completion' bug in `ImplicitFlow`.
 
 ## 0.2.11
- * Add the `force` parameter to the `obtainAccessCredentialsViaUserConsent` API.
+
+- Add the `force` parameter to the `obtainAccessCredentialsViaUserConsent` API.
 
 ## 0.2.10
- * Look for GCE metadata host in environment under `$GCE_METADATA_HOST`.
+
+- Look for GCE metadata host in environment under `$GCE_METADATA_HOST`.
 
 ## 0.2.9
- * Prepare for [Uint8List SDK breaking change](Prepare for Uint8List SDK breaking change).
+
+- Prepare for [Uint8List SDK breaking change](Prepare for Uint8List SDK breaking
+  change).
 
 ## 0.2.8
 
-* Initialize implicit browser flows statically, allowing multiple ImplicitFlow
+- Initialize implicit browser flows statically, allowing multiple ImplicitFlow
   objects to initialize without trying to load the gapi JavaScript library
   multiple times.
 
 ## 0.2.7
 
- - Support for specifying desired `ResponseType`, allowing applications to
-   obtain an `id_token` using `ImplicitBrowserFlow`.
+- Support for specifying desired `ResponseType`, allowing applications to obtain
+  an `id_token` using `ImplicitBrowserFlow`.
 
 ## 0.2.6
 
@@ -86,22 +92,22 @@
 
 ## 0.2.5+2
 
-* Support Dart 2.
+- Support Dart 2.
 
 ## 0.2.5+1
 
-* Switch all uppercase constants from `dart:convert` to lowercase.
+- Switch all uppercase constants from `dart:convert` to lowercase.
 
 ## 0.2.5
 
-* Add an optional `loginHint` parameter to browser oauth2 flow APIs which can be
+- Add an optional `loginHint` parameter to browser oauth2 flow APIs which can be
   used to specify a hint as to which user is being logged in.
 
 ## 0.2.4
 
-* Added `id_token` to `AccessCredentials`
+- Added `id_token` to `AccessCredentials`
 
-* Migrated to Dart 2 `BigInt`.
+- Migrated to Dart 2 `BigInt`.
 
 ## 0.2.3+6
 
@@ -127,8 +133,8 @@
 
 ## 0.2.3
 
-- Allow `ServiceAccountCredentials` constructors to take an optional
-  `user` argument to specify a user to impersonate.
+- Allow `ServiceAccountCredentials` constructors to take an optional `user`
+  argument to specify a user to impersonate.
 
 ## 0.2.2
 
@@ -136,15 +142,19 @@
 - Cleaned up `README.md`
 
 ## 0.2.1
+
 - Added optional `force` and `immediate` arguments to `runHybridFlow`.
 
 ## 0.2.0
+
 - Renamed `forceUserConsent` parameter to `immediate`.
 - Added `runHybridFlow` function to `auth_browser`, with corresponding
   `HybridFlowResult` class.
 
 ## 0.1.1
+
 - Add `clientViaApiKey` functions to `auth_io` ad `auth_browser`.
 
 ## 0.1.0
+
 - First release.
