@@ -142,7 +142,8 @@ void prompt(String url) {
 }
 ```
 
-The Client Id must be created with a `client_secret` here, however there is no way to properly secure a `client_secret` for installed/console applications. Fortunately the OAuth2 flow used in this case [assumes that the app cannot keep secrets](https://developers.google.com/identity/protocols/oauth2/native-app) so this particular `client_secret` does not need to be kept secret. You should however make sure not to re-use the same `client_secret` anywhere secrecy is required.
+The Client ID must be created with a `client_secret` here, however there is no way to properly secure a `client_secret` for installed/console applications. Fortunately the OAuth2 flow used in this case
+[assumes that the app cannot keep secrets](https://developers.google.com/identity/protocols/oauth2/native-app) so this particular `client_secret` does not need to be kept secret. You should however make sure not to re-use the same `client_secret` anywhere secrecy is required.
 
 In case of misconfigured browsers/proxies or other issues, it is also possible
 to use a manual flow via `obtainAccessCredentialsViaUserConsentManual` and
