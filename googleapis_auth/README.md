@@ -290,7 +290,7 @@ The authenticated HTTP client can now access APIs.
 
 It is possible to access some APIs by just using an API key without OAuth2.
 
-A API key can be obtained on the Google Developers Console by creating a Key at
+An API key can be obtained on the Google Developers Console by creating a Key at
 the "Public API access" section (under DevConsole -> Project -> APIs & auth ->
 Credentials).
 
