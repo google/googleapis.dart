@@ -39,7 +39,7 @@ import 'dart:convert' as convert;
 import 'dart:core' as core;
 
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
-import 'package:http/http.dart' as http_1;
+import 'package:http/http.dart' as http;
 
 // ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
@@ -65,7 +65,7 @@ class ServiceNetworkingApi {
   OperationsResource get operations => OperationsResource(_requester);
   ServicesResource get services => ServicesResource(_requester);
 
-  ServiceNetworkingApi(http_1.Client client,
+  ServiceNetworkingApi(http.Client client,
       {core.String rootUrl = 'https://servicenetworking.googleapis.com/',
       core.String servicePath = ''})
       : _requester =
@@ -103,8 +103,8 @@ class OperationsResource {
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
-  /// If the used [http_1.Client] completes with an error when making a REST
-  /// call, this method will complete with the same error.
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<Empty> cancel(
     CancelOperationRequest request,
     core.String name, {
@@ -145,8 +145,8 @@ class OperationsResource {
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
-  /// If the used [http_1.Client] completes with an error when making a REST
-  /// call, this method will complete with the same error.
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
     core.String? $fields,
@@ -183,8 +183,8 @@ class OperationsResource {
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
-  /// If the used [http_1.Client] completes with an error when making a REST
-  /// call, this method will complete with the same error.
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<Operation> get(
     core.String name, {
     core.String? $fields,
@@ -233,8 +233,8 @@ class OperationsResource {
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
-  /// If the used [http_1.Client] completes with an error when making a REST
-  /// call, this method will complete with the same error.
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(
     core.String name, {
     core.String? filter,
@@ -307,8 +307,8 @@ class ServicesResource {
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
-  /// If the used [http_1.Client] completes with an error when making a REST
-  /// call, this method will complete with the same error.
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<Operation> addSubnetwork(
     AddSubnetworkRequest request,
     core.String parent, {
@@ -349,8 +349,8 @@ class ServicesResource {
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
-  /// If the used [http_1.Client] completes with an error when making a REST
-  /// call, this method will complete with the same error.
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<Operation> disableVpcServiceControls(
     DisableVpcServiceControlsRequest request,
     core.String parent, {
@@ -392,8 +392,8 @@ class ServicesResource {
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
-  /// If the used [http_1.Client] completes with an error when making a REST
-  /// call, this method will complete with the same error.
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<Operation> enableVpcServiceControls(
     EnableVpcServiceControlsRequest request,
     core.String parent, {
@@ -441,8 +441,8 @@ class ServicesResource {
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
-  /// If the used [http_1.Client] completes with an error when making a REST
-  /// call, this method will complete with the same error.
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<Operation> searchRange(
     SearchRangeRequest request,
     core.String parent, {
@@ -488,8 +488,8 @@ class ServicesResource {
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
-  /// If the used [http_1.Client] completes with an error when making a REST
-  /// call, this method will complete with the same error.
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<ValidateConsumerConfigResponse> validate(
     ValidateConsumerConfigRequest request,
     core.String parent, {
@@ -545,8 +545,8 @@ class ServicesConnectionsResource {
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
-  /// If the used [http_1.Client] completes with an error when making a REST
-  /// call, this method will complete with the same error.
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<Operation> create(
     Connection request,
     core.String parent, {
@@ -590,8 +590,8 @@ class ServicesConnectionsResource {
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
-  /// If the used [http_1.Client] completes with an error when making a REST
-  /// call, this method will complete with the same error.
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<Operation> deleteConnection(
     DeleteConnectionRequest request,
     core.String name, {
@@ -640,8 +640,8 @@ class ServicesConnectionsResource {
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
-  /// If the used [http_1.Client] completes with an error when making a REST
-  /// call, this method will complete with the same error.
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<ListConnectionsResponse> list(
     core.String parent, {
     core.String? network,
@@ -691,8 +691,8 @@ class ServicesConnectionsResource {
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
-  /// If the used [http_1.Client] completes with an error when making a REST
-  /// call, this method will complete with the same error.
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<Operation> patch(
     Connection request,
     core.String name, {
@@ -745,8 +745,8 @@ class ServicesDnsRecordSetsResource {
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
-  /// If the used [http_1.Client] completes with an error when making a REST
-  /// call, this method will complete with the same error.
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<Operation> add(
     AddDnsRecordSetRequest request,
     core.String parent, {
@@ -788,8 +788,8 @@ class ServicesDnsRecordSetsResource {
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
-  /// If the used [http_1.Client] completes with an error when making a REST
-  /// call, this method will complete with the same error.
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<Operation> remove(
     RemoveDnsRecordSetRequest request,
     core.String parent, {
@@ -832,8 +832,8 @@ class ServicesDnsRecordSetsResource {
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
-  /// If the used [http_1.Client] completes with an error when making a REST
-  /// call, this method will complete with the same error.
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<Operation> update(
     UpdateDnsRecordSetRequest request,
     core.String parent, {
@@ -883,8 +883,8 @@ class ServicesDnsZonesResource {
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
-  /// If the used [http_1.Client] completes with an error when making a REST
-  /// call, this method will complete with the same error.
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<Operation> add(
     AddDnsZoneRequest request,
     core.String parent, {
@@ -927,8 +927,8 @@ class ServicesDnsZonesResource {
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
-  /// If the used [http_1.Client] completes with an error when making a REST
-  /// call, this method will complete with the same error.
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<Operation> remove(
     RemoveDnsZoneRequest request,
     core.String parent, {
@@ -1003,8 +1003,8 @@ class ServicesProjectsGlobalNetworksResource {
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
-  /// If the used [http_1.Client] completes with an error when making a REST
-  /// call, this method will complete with the same error.
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<ConsumerConfig> get(
     core.String name, {
     core.String? $fields,
@@ -1052,8 +1052,8 @@ class ServicesProjectsGlobalNetworksResource {
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
-  /// If the used [http_1.Client] completes with an error when making a REST
-  /// call, this method will complete with the same error.
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<Operation> updateConsumerConfig(
     UpdateConsumerConfigRequest request,
     core.String parent, {
@@ -1112,8 +1112,8 @@ class ServicesProjectsGlobalNetworksPeeredDnsDomainsResource {
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
-  /// If the used [http_1.Client] completes with an error when making a REST
-  /// call, this method will complete with the same error.
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<Operation> create(
     PeeredDnsDomain request,
     core.String parent, {
@@ -1159,8 +1159,8 @@ class ServicesProjectsGlobalNetworksPeeredDnsDomainsResource {
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
-  /// If the used [http_1.Client] completes with an error when making a REST
-  /// call, this method will complete with the same error.
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<Operation> delete(
     core.String name, {
     core.String? $fields,
@@ -1202,8 +1202,8 @@ class ServicesProjectsGlobalNetworksPeeredDnsDomainsResource {
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
-  /// If the used [http_1.Client] completes with an error when making a REST
-  /// call, this method will complete with the same error.
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<ListPeeredDnsDomainsResponse> list(
     core.String parent, {
     core.String? $fields,
@@ -1253,8 +1253,8 @@ class ServicesRolesResource {
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
-  /// If the used [http_1.Client] completes with an error when making a REST
-  /// call, this method will complete with the same error.
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<Operation> add(
     AddRolesRequest request,
     core.String parent, {

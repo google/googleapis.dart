@@ -423,445 +423,11 @@ class $Date {
 
 /// Used by:
 ///
-/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta1DocumentEntityRelation
-/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta2DocumentEntityRelation
-/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta3DocumentEntityRelation
-class $DocumentEntityRelation {
-  /// Object entity id.
-  core.String? objectId;
-
-  /// Relationship description.
-  core.String? relation;
-
-  /// Subject entity id.
-  core.String? subjectId;
-
-  $DocumentEntityRelation({
-    this.objectId,
-    this.relation,
-    this.subjectId,
-  });
-
-  $DocumentEntityRelation.fromJson(core.Map _json)
-      : this(
-          objectId: _json.containsKey('objectId')
-              ? _json['objectId'] as core.String
-              : null,
-          relation: _json.containsKey('relation')
-              ? _json['relation'] as core.String
-              : null,
-          subjectId: _json.containsKey('subjectId')
-              ? _json['subjectId'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (objectId != null) 'objectId': objectId!,
-        if (relation != null) 'relation': relation!,
-        if (subjectId != null) 'subjectId': subjectId!,
-      };
-}
-
-/// Used by:
-///
-/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta1DocumentPageDetectedLanguage
-/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta2DocumentPageDetectedLanguage
-/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta3DocumentPageDetectedLanguage
-class $DocumentPageDetectedLanguage {
-  /// Confidence of detected language.
-  ///
-  /// Range \[0, 1\].
-  core.double? confidence;
-
-  /// The BCP-47 language code, such as "en-US" or "sr-Latn".
-  ///
-  /// For more information, see
-  /// http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
-  core.String? languageCode;
-
-  $DocumentPageDetectedLanguage({
-    this.confidence,
-    this.languageCode,
-  });
-
-  $DocumentPageDetectedLanguage.fromJson(core.Map _json)
-      : this(
-          confidence: _json.containsKey('confidence')
-              ? (_json['confidence'] as core.num).toDouble()
-              : null,
-          languageCode: _json.containsKey('languageCode')
-              ? _json['languageCode'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (confidence != null) 'confidence': confidence!,
-        if (languageCode != null) 'languageCode': languageCode!,
-      };
-}
-
-/// Used by:
-///
-/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta1DocumentPageDimension
-/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta2DocumentPageDimension
-/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta3DocumentPageDimension
-class $DocumentPageDimension {
-  /// Page height.
-  core.double? height;
-
-  /// Dimension unit.
-  core.String? unit;
-
-  /// Page width.
-  core.double? width;
-
-  $DocumentPageDimension({
-    this.height,
-    this.unit,
-    this.width,
-  });
-
-  $DocumentPageDimension.fromJson(core.Map _json)
-      : this(
-          height: _json.containsKey('height')
-              ? (_json['height'] as core.num).toDouble()
-              : null,
-          unit: _json.containsKey('unit') ? _json['unit'] as core.String : null,
-          width: _json.containsKey('width')
-              ? (_json['width'] as core.num).toDouble()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (height != null) 'height': height!,
-        if (unit != null) 'unit': unit!,
-        if (width != null) 'width': width!,
-      };
-}
-
-/// Used by:
-///
-/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta1DocumentPageImage
-/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta2DocumentPageImage
-/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta3DocumentPageImage
-class $DocumentPageImage {
-  /// Raw byte content of the image.
-  core.String? content;
-  core.List<core.int> get contentAsBytes => convert.base64.decode(content!);
-
-  set contentAsBytes(core.List<core.int> _bytes) {
-    content =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
-  }
-
-  /// Height of the image in pixels.
-  core.int? height;
-
-  /// Encoding mime type for the image.
-  core.String? mimeType;
-
-  /// Width of the image in pixels.
-  core.int? width;
-
-  $DocumentPageImage({
-    this.content,
-    this.height,
-    this.mimeType,
-    this.width,
-  });
-
-  $DocumentPageImage.fromJson(core.Map _json)
-      : this(
-          content: _json.containsKey('content')
-              ? _json['content'] as core.String
-              : null,
-          height:
-              _json.containsKey('height') ? _json['height'] as core.int : null,
-          mimeType: _json.containsKey('mimeType')
-              ? _json['mimeType'] as core.String
-              : null,
-          width: _json.containsKey('width') ? _json['width'] as core.int : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (content != null) 'content': content!,
-        if (height != null) 'height': height!,
-        if (mimeType != null) 'mimeType': mimeType!,
-        if (width != null) 'width': width!,
-      };
-}
-
-/// Used by:
-///
-/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta1DocumentPageMatrix
-/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta2DocumentPageMatrix
-/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta3DocumentPageMatrix
-class $DocumentPageMatrix {
-  /// Number of columns in the matrix.
-  core.int? cols;
-
-  /// The matrix data.
-  core.String? data;
-  core.List<core.int> get dataAsBytes => convert.base64.decode(data!);
-
-  set dataAsBytes(core.List<core.int> _bytes) {
-    data =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
-  }
-
-  /// Number of rows in the matrix.
-  core.int? rows;
-
-  /// This encodes information about what data type the matrix uses.
-  ///
-  /// For example, 0 (CV_8U) is an unsigned 8-bit image. For the full list of
-  /// OpenCV primitive data types, please refer to
-  /// https://docs.opencv.org/4.3.0/d1/d1b/group__core__hal__interface.html
-  core.int? type;
-
-  $DocumentPageMatrix({
-    this.cols,
-    this.data,
-    this.rows,
-    this.type,
-  });
-
-  $DocumentPageMatrix.fromJson(core.Map _json)
-      : this(
-          cols: _json.containsKey('cols') ? _json['cols'] as core.int : null,
-          data: _json.containsKey('data') ? _json['data'] as core.String : null,
-          rows: _json.containsKey('rows') ? _json['rows'] as core.int : null,
-          type: _json.containsKey('type') ? _json['type'] as core.int : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (cols != null) 'cols': cols!,
-        if (data != null) 'data': data!,
-        if (rows != null) 'rows': rows!,
-        if (type != null) 'type': type!,
-      };
-}
-
-/// Used by:
-///
-/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta1DocumentPageTokenDetectedBreak
-/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta2DocumentPageTokenDetectedBreak
-/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta3DocumentPageTokenDetectedBreak
-class $DocumentPageTokenDetectedBreak {
-  /// Detected break type.
-  /// Possible string values are:
-  /// - "TYPE_UNSPECIFIED" : Unspecified break type.
-  /// - "SPACE" : A single whitespace.
-  /// - "WIDE_SPACE" : A wider whitespace.
-  /// - "HYPHEN" : A hyphen that indicates that a token has been split across
-  /// lines.
-  core.String? type;
-
-  $DocumentPageTokenDetectedBreak({
-    this.type,
-  });
-
-  $DocumentPageTokenDetectedBreak.fromJson(core.Map _json)
-      : this(
-          type: _json.containsKey('type') ? _json['type'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (type != null) 'type': type!,
-      };
-}
-
-/// Used by:
-///
-/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta1DocumentProvenanceParent
-/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta2DocumentProvenanceParent
-/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta3DocumentProvenanceParent
-class $DocumentProvenanceParent {
-  /// The id of the parent provenance.
-  core.int? id;
-
-  /// The index of the parent item in the corresponding item list (eg.
-  ///
-  /// list of entities, properties within entities, etc.) on parent revision.
-  core.int? index;
-
-  /// The index of the \[Document.revisions\] identifying the parent revision.
-  core.int? revision;
-
-  $DocumentProvenanceParent({
-    this.id,
-    this.index,
-    this.revision,
-  });
-
-  $DocumentProvenanceParent.fromJson(core.Map _json)
-      : this(
-          id: _json.containsKey('id') ? _json['id'] as core.int : null,
-          index: _json.containsKey('index') ? _json['index'] as core.int : null,
-          revision: _json.containsKey('revision')
-              ? _json['revision'] as core.int
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (id != null) 'id': id!,
-        if (index != null) 'index': index!,
-        if (revision != null) 'revision': revision!,
-      };
-}
-
-/// Used by:
-///
-/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta1DocumentRevisionHumanReview
-/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta2DocumentRevisionHumanReview
-/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta3DocumentRevisionHumanReview
-class $DocumentRevisionHumanReview {
-  /// Human review state.
-  ///
-  /// e.g. `requested`, `succeeded`, `rejected`.
-  core.String? state;
-
-  /// A message providing more details about the current state of processing.
-  ///
-  /// For example, the rejection reason when the state is `rejected`.
-  core.String? stateMessage;
-
-  $DocumentRevisionHumanReview({
-    this.state,
-    this.stateMessage,
-  });
-
-  $DocumentRevisionHumanReview.fromJson(core.Map _json)
-      : this(
-          state:
-              _json.containsKey('state') ? _json['state'] as core.String : null,
-          stateMessage: _json.containsKey('stateMessage')
-              ? _json['stateMessage'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (state != null) 'state': state!,
-        if (stateMessage != null) 'stateMessage': stateMessage!,
-      };
-}
-
-/// Used by:
-///
-/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta1DocumentShardInfo
-/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta2DocumentShardInfo
-/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta3DocumentShardInfo
-class $DocumentShardInfo {
-  /// Total number of shards.
-  core.String? shardCount;
-
-  /// The 0-based index of this shard.
-  core.String? shardIndex;
-
-  /// The index of the first character in Document.text in the overall document
-  /// global text.
-  core.String? textOffset;
-
-  $DocumentShardInfo({
-    this.shardCount,
-    this.shardIndex,
-    this.textOffset,
-  });
-
-  $DocumentShardInfo.fromJson(core.Map _json)
-      : this(
-          shardCount: _json.containsKey('shardCount')
-              ? _json['shardCount'] as core.String
-              : null,
-          shardIndex: _json.containsKey('shardIndex')
-              ? _json['shardIndex'] as core.String
-              : null,
-          textOffset: _json.containsKey('textOffset')
-              ? _json['textOffset'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (shardCount != null) 'shardCount': shardCount!,
-        if (shardIndex != null) 'shardIndex': shardIndex!,
-        if (textOffset != null) 'textOffset': textOffset!,
-      };
-}
-
-/// Used by:
-///
-/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta1DocumentStyleFontSize
-/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta2DocumentStyleFontSize
-/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta3DocumentStyleFontSize
-class $DocumentStyleFontSize {
-  /// Font size for the text.
-  core.double? size;
-
-  /// Unit for the font size.
-  ///
-  /// Follows CSS naming (in, px, pt, etc.).
-  core.String? unit;
-
-  $DocumentStyleFontSize({
-    this.size,
-    this.unit,
-  });
-
-  $DocumentStyleFontSize.fromJson(core.Map _json)
-      : this(
-          size: _json.containsKey('size')
-              ? (_json['size'] as core.num).toDouble()
-              : null,
-          unit: _json.containsKey('unit') ? _json['unit'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (size != null) 'size': size!,
-        if (unit != null) 'unit': unit!,
-      };
-}
-
-/// Used by:
-///
-/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta1DocumentTextAnchorTextSegment
-/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta2DocumentTextAnchorTextSegment
-/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta3DocumentTextAnchorTextSegment
-class $DocumentTextAnchorTextSegment {
-  /// TextSegment half open end UTF-8 char index in the Document.text.
-  core.String? endIndex;
-
-  /// TextSegment start UTF-8 char index in the Document.text.
-  core.String? startIndex;
-
-  $DocumentTextAnchorTextSegment({
-    this.endIndex,
-    this.startIndex,
-  });
-
-  $DocumentTextAnchorTextSegment.fromJson(core.Map _json)
-      : this(
-          endIndex: _json.containsKey('endIndex')
-              ? _json['endIndex'] as core.String
-              : null,
-          startIndex: _json.containsKey('startIndex')
-              ? _json['startIndex'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (endIndex != null) 'endIndex': endIndex!,
-        if (startIndex != null) 'startIndex': startIndex!,
-      };
-}
-
-/// Used by:
-///
 /// - adexchangebuyer2:v2beta1 : CancelNegotiationRequest
 /// - adexchangebuyer2:v2beta1 : CompleteSetupRequest
 /// - adexchangebuyer2:v2beta1 : Empty
 /// - adexchangebuyer2:v2beta1 : ResumeProposalRequest
 /// - adexchangebuyer2:v2beta1 : StopWatchingCreativeRequest
-/// - alertcenter:v1beta1 : ActionInfo
 /// - alertcenter:v1beta1 : Empty
 /// - analyticsadmin:v1alpha : GoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionResponse
 /// - analyticsadmin:v1alpha : GoogleAnalyticsAdminV1alphaApproveDisplayVideo360AdvertiserLinkProposalRequest
@@ -892,36 +458,15 @@ class $DocumentTextAnchorTextSegment {
 /// - datastream:v1alpha1 : FetchErrorsRequest
 /// - datastream:v1alpha1 : NoConnectivitySettings
 /// - datastream:v1alpha1 : StaticServiceIpConnectivity
-/// - documentai:v1beta3 : GoogleCloudDocumentaiUiv1beta3BatchDeleteDocumentsResponse
-/// - documentai:v1beta3 : GoogleCloudDocumentaiUiv1beta3BatchMoveDocumentsResponse
-/// - documentai:v1beta3 : GoogleCloudDocumentaiUiv1beta3DeployProcessorVersionResponse
-/// - documentai:v1beta3 : GoogleCloudDocumentaiUiv1beta3DisableProcessorResponse
-/// - documentai:v1beta3 : GoogleCloudDocumentaiUiv1beta3EnableProcessorResponse
-/// - documentai:v1beta3 : GoogleCloudDocumentaiUiv1beta3ImportDocumentsResponse
-/// - documentai:v1beta3 : GoogleCloudDocumentaiUiv1beta3SetDefaultProcessorVersionResponse
-/// - documentai:v1beta3 : GoogleCloudDocumentaiUiv1beta3UndeployProcessorVersionResponse
-/// - documentai:v1beta3 : GoogleCloudDocumentaiV1BatchProcessResponse
-/// - documentai:v1beta3 : GoogleCloudDocumentaiV1DeployProcessorVersionResponse
-/// - documentai:v1beta3 : GoogleCloudDocumentaiV1DisableProcessorResponse
-/// - documentai:v1beta3 : GoogleCloudDocumentaiV1EnableProcessorResponse
-/// - documentai:v1beta3 : GoogleCloudDocumentaiV1SetDefaultProcessorVersionResponse
-/// - documentai:v1beta3 : GoogleCloudDocumentaiV1UndeployProcessorVersionResponse
-/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta3BatchProcessResponse
 /// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta3DeployProcessorVersionRequest
-/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta3DeployProcessorVersionResponse
 /// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta3DisableProcessorRequest
-/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta3DisableProcessorResponse
 /// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta3EnableProcessorRequest
-/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta3EnableProcessorResponse
-/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta3SetDefaultProcessorVersionResponse
 /// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta3UndeployProcessorVersionRequest
-/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta3UndeployProcessorVersionResponse
 /// - documentai:v1beta3 : GoogleProtobufEmpty
 /// - domains:v1beta1 : ExportRegistrationRequest
 /// - domains:v1beta1 : ResetAuthorizationCodeRequest
 /// - factchecktools:v1alpha1 : GoogleProtobufEmpty
 /// - firebase:v1beta1 : Empty
-/// - firebase:v1beta1 : MessageSet
 /// - firebaseappcheck:v1beta : GoogleFirebaseAppcheckV1betaGenerateAppAttestChallengeRequest
 /// - firebaseappcheck:v1beta : GoogleProtobufEmpty
 /// - firebasedatabase:v1beta : DisableDatabaseInstanceRequest
@@ -931,7 +476,6 @@ class $DocumentTextAnchorTextSegment {
 /// - firebasestorage:v1beta : RemoveFirebaseRequest
 /// - lifesciences:v2beta : CancelOperationRequest
 /// - lifesciences:v2beta : Empty
-/// - lifesciences:v2beta : RunPipelineResponse
 /// - metastore:v1beta : Empty
 /// - networkconnectivity:v1alpha1 : Empty
 /// - networkconnectivity:v1alpha1 : GoogleLongrunningCancelOperationRequest
@@ -945,25 +489,14 @@ class $DocumentTextAnchorTextSegment {
 /// - prod_tt_sasportal:v1alpha1 : SasPortalEmpty
 /// - prod_tt_sasportal:v1alpha1 : SasPortalGenerateSecretRequest
 /// - prod_tt_sasportal:v1alpha1 : SasPortalValidateInstallerResponse
-/// - recommendationengine:v1beta1 : GoogleCloudRecommendationengineV1alphaRejoinCatalogMetadata
-/// - recommendationengine:v1beta1 : GoogleCloudRecommendationengineV1alphaTuningResponse
-/// - recommendationengine:v1beta1 : GoogleCloudRecommendationengineV1beta1RejoinUserEventsMetadata
 /// - recommendationengine:v1beta1 : GoogleProtobufEmpty
 /// - sasportal:v1alpha1 : SasPortalEmpty
 /// - sasportal:v1alpha1 : SasPortalGenerateSecretRequest
 /// - sasportal:v1alpha1 : SasPortalValidateInstallerResponse
 /// - toolresults:v1beta3 : AndroidTestLoop
-/// - toolresults:v1beta3 : AvailableDeepLinks
-/// - toolresults:v1beta3 : DeviceOutOfMemory
-/// - toolresults:v1beta3 : FailedToInstall
-/// - toolresults:v1beta3 : InsufficientCoverage
 /// - toolresults:v1beta3 : IosRoboTest
-/// - toolresults:v1beta3 : LauncherActivityNotFound
-/// - toolresults:v1beta3 : LogcatCollectionError
 /// - toolresults:v1beta3 : MatrixDimensionDefinition
-/// - toolresults:v1beta3 : PerformedGoogleLogin
 /// - toolresults:v1beta3 : StepSummary
-/// - toolresults:v1beta3 : UnspecifiedWarning
 /// - tpu:v2alpha1 : Empty
 /// - tpu:v2alpha1 : GenerateServiceIdentityRequest
 /// - tpu:v2alpha1 : StartNodeRequest
@@ -1153,74 +686,6 @@ class $Fingerprint {
 
 /// Used by:
 ///
-/// - datalabeling:v1beta1 : GoogleCloudDatalabelingV1alpha1GcsDestination
-/// - datalabeling:v1beta1 : GoogleCloudDatalabelingV1beta1GcsDestination
-/// - datalabeling:v1beta1 : GoogleCloudDatalabelingV1p1alpha1GcsDestination
-/// - datalabeling:v1beta1 : GoogleCloudDatalabelingV1p2alpha1GcsDestination
-class $GcsDestination {
-  /// The format of the gcs destination.
-  ///
-  /// Only "text/csv" and "application/json" are supported.
-  ///
-  /// Required.
-  core.String? mimeType;
-
-  /// The output uri of destination file.
-  ///
-  /// Required.
-  core.String? outputUri;
-
-  $GcsDestination({
-    this.mimeType,
-    this.outputUri,
-  });
-
-  $GcsDestination.fromJson(core.Map _json)
-      : this(
-          mimeType: _json.containsKey('mimeType')
-              ? _json['mimeType'] as core.String
-              : null,
-          outputUri: _json.containsKey('outputUri')
-              ? _json['outputUri'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (mimeType != null) 'mimeType': mimeType!,
-        if (outputUri != null) 'outputUri': outputUri!,
-      };
-}
-
-/// Used by:
-///
-/// - datalabeling:v1beta1 : GoogleCloudDatalabelingV1alpha1GcsFolderDestination
-/// - datalabeling:v1beta1 : GoogleCloudDatalabelingV1beta1GcsFolderDestination
-/// - datalabeling:v1beta1 : GoogleCloudDatalabelingV1p1alpha1GcsFolderDestination
-/// - datalabeling:v1beta1 : GoogleCloudDatalabelingV1p2alpha1GcsFolderDestination
-class $GcsFolderDestination {
-  /// Cloud Storage directory to export data to.
-  ///
-  /// Required.
-  core.String? outputFolderUri;
-
-  $GcsFolderDestination({
-    this.outputFolderUri,
-  });
-
-  $GcsFolderDestination.fromJson(core.Map _json)
-      : this(
-          outputFolderUri: _json.containsKey('outputFolderUri')
-              ? _json['outputFolderUri'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (outputFolderUri != null) 'outputFolderUri': outputFolderUri!,
-      };
-}
-
-/// Used by:
-///
 /// - bigqueryconnection:v1beta1 : GetPolicyOptions
 /// - containeranalysis:v1beta1 : GetPolicyOptions
 class $GetPolicyOptions {
@@ -1283,235 +748,6 @@ class $GitSourceContext {
   core.Map<core.String, core.dynamic> toJson() => {
         if (revisionId != null) 'revisionId': revisionId!,
         if (url != null) 'url': url!,
-      };
-}
-
-/// Used by:
-///
-/// - datalabeling:v1beta1 : GoogleCloudDatalabelingV1alpha1HumanAnnotationConfig
-/// - datalabeling:v1beta1 : GoogleCloudDatalabelingV1beta1HumanAnnotationConfig
-/// - datalabeling:v1beta1 : GoogleCloudDatalabelingV1p1alpha1HumanAnnotationConfig
-/// - datalabeling:v1beta1 : GoogleCloudDatalabelingV1p2alpha1HumanAnnotationConfig
-class $HumanAnnotationConfig {
-  /// A human-readable description for AnnotatedDataset.
-  ///
-  /// The description can be up to 10000 characters long.
-  ///
-  /// Optional.
-  core.String? annotatedDatasetDescription;
-
-  /// A human-readable name for AnnotatedDataset defined by users.
-  ///
-  /// Maximum of 64 characters .
-  ///
-  /// Required.
-  core.String? annotatedDatasetDisplayName;
-
-  /// If you want your own labeling contributors to manage and work on this
-  /// labeling request, you can set these contributors here.
-  ///
-  /// We will give them access to the question types in crowdcompute. Note that
-  /// these emails must be registered in crowdcompute worker UI:
-  /// https://crowd-compute.appspot.com/
-  ///
-  /// Optional.
-  core.List<core.String>? contributorEmails;
-
-  /// Instruction resource name.
-  ///
-  /// Required.
-  core.String? instruction;
-
-  /// A human-readable label used to logically group labeling tasks.
-  ///
-  /// This string must match the regular expression `[a-zA-Z\\d_-]{0,128}`.
-  ///
-  /// Optional.
-  core.String? labelGroup;
-
-  /// The Language of this question, as a
-  /// \[BCP-47\](https://www.rfc-editor.org/rfc/bcp/bcp47.txt).
-  ///
-  /// Default value is en-US. Only need to set this when task is language
-  /// related. For example, French text classification.
-  ///
-  /// Optional.
-  core.String? languageCode;
-
-  /// Maximum duration for contributors to answer a question.
-  ///
-  /// Maximum is 3600 seconds. Default is 3600 seconds.
-  ///
-  /// Optional.
-  core.String? questionDuration;
-
-  /// Replication of questions.
-  ///
-  /// Each question will be sent to up to this number of contributors to label.
-  /// Aggregated answers will be returned. Default is set to 1. For image
-  /// related labeling, valid values are 1, 3, 5.
-  ///
-  /// Optional.
-  core.int? replicaCount;
-
-  /// Email of the user who started the labeling task and should be notified by
-  /// email.
-  ///
-  /// If empty no notification will be sent.
-  core.String? userEmailAddress;
-
-  $HumanAnnotationConfig({
-    this.annotatedDatasetDescription,
-    this.annotatedDatasetDisplayName,
-    this.contributorEmails,
-    this.instruction,
-    this.labelGroup,
-    this.languageCode,
-    this.questionDuration,
-    this.replicaCount,
-    this.userEmailAddress,
-  });
-
-  $HumanAnnotationConfig.fromJson(core.Map _json)
-      : this(
-          annotatedDatasetDescription:
-              _json.containsKey('annotatedDatasetDescription')
-                  ? _json['annotatedDatasetDescription'] as core.String
-                  : null,
-          annotatedDatasetDisplayName:
-              _json.containsKey('annotatedDatasetDisplayName')
-                  ? _json['annotatedDatasetDisplayName'] as core.String
-                  : null,
-          contributorEmails: _json.containsKey('contributorEmails')
-              ? (_json['contributorEmails'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          instruction: _json.containsKey('instruction')
-              ? _json['instruction'] as core.String
-              : null,
-          labelGroup: _json.containsKey('labelGroup')
-              ? _json['labelGroup'] as core.String
-              : null,
-          languageCode: _json.containsKey('languageCode')
-              ? _json['languageCode'] as core.String
-              : null,
-          questionDuration: _json.containsKey('questionDuration')
-              ? _json['questionDuration'] as core.String
-              : null,
-          replicaCount: _json.containsKey('replicaCount')
-              ? _json['replicaCount'] as core.int
-              : null,
-          userEmailAddress: _json.containsKey('userEmailAddress')
-              ? _json['userEmailAddress'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (annotatedDatasetDescription != null)
-          'annotatedDatasetDescription': annotatedDatasetDescription!,
-        if (annotatedDatasetDisplayName != null)
-          'annotatedDatasetDisplayName': annotatedDatasetDisplayName!,
-        if (contributorEmails != null) 'contributorEmails': contributorEmails!,
-        if (instruction != null) 'instruction': instruction!,
-        if (labelGroup != null) 'labelGroup': labelGroup!,
-        if (languageCode != null) 'languageCode': languageCode!,
-        if (questionDuration != null) 'questionDuration': questionDuration!,
-        if (replicaCount != null) 'replicaCount': replicaCount!,
-        if (userEmailAddress != null) 'userEmailAddress': userEmailAddress!,
-      };
-}
-
-/// Used by:
-///
-/// - documentai:v1beta3 : GoogleCloudDocumentaiV1HumanReviewStatus
-/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta3HumanReviewStatus
-class $HumanReviewStatus {
-  /// The name of the operation triggered by the processed document.
-  ///
-  /// This field is populated only when the \[state\] is
-  /// \[HUMAN_REVIEW_IN_PROGRESS\]. It has the same response type and metadata
-  /// as the long running operation returned by \[ReviewDocument\] method.
-  core.String? humanReviewOperation;
-
-  /// The state of human review on the processing request.
-  /// Possible string values are:
-  /// - "STATE_UNSPECIFIED" : Human review state is unspecified. Most likely due
-  /// to an internal error.
-  /// - "SKIPPED" : Human review is skipped for the document. This can happen
-  /// because human review is not enabled on the processor or the processing
-  /// request has been set to skip this document.
-  /// - "VALIDATION_PASSED" : Human review validation is triggered and passed,
-  /// so no review is needed.
-  /// - "IN_PROGRESS" : Human review validation is triggered and the document is
-  /// under review.
-  /// - "ERROR" : Some error happened during triggering human review, see the
-  /// \[state_message\] for details.
-  core.String? state;
-
-  /// A message providing more details about the human review state.
-  core.String? stateMessage;
-
-  $HumanReviewStatus({
-    this.humanReviewOperation,
-    this.state,
-    this.stateMessage,
-  });
-
-  $HumanReviewStatus.fromJson(core.Map _json)
-      : this(
-          humanReviewOperation: _json.containsKey('humanReviewOperation')
-              ? _json['humanReviewOperation'] as core.String
-              : null,
-          state:
-              _json.containsKey('state') ? _json['state'] as core.String : null,
-          stateMessage: _json.containsKey('stateMessage')
-              ? _json['stateMessage'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (humanReviewOperation != null)
-          'humanReviewOperation': humanReviewOperation!,
-        if (state != null) 'state': state!,
-        if (stateMessage != null) 'stateMessage': stateMessage!,
-      };
-}
-
-/// Used by:
-///
-/// - datalabeling:v1beta1 : GoogleCloudDatalabelingV1alpha1LabelStats
-/// - datalabeling:v1beta1 : GoogleCloudDatalabelingV1beta1LabelStats
-/// - datalabeling:v1beta1 : GoogleCloudDatalabelingV1p1alpha1LabelStats
-/// - datalabeling:v1beta1 : GoogleCloudDatalabelingV1p2alpha1LabelStats
-class $LabelStats {
-  /// Map of each annotation spec's example count.
-  ///
-  /// Key is the annotation spec name and value is the number of examples for
-  /// that annotation spec. If the annotated dataset does not have annotation
-  /// spec, the map will return a pair where the key is empty string and value
-  /// is the total number of annotations.
-  core.Map<core.String, core.String>? exampleCount;
-
-  $LabelStats({
-    this.exampleCount,
-  });
-
-  $LabelStats.fromJson(core.Map _json)
-      : this(
-          exampleCount: _json.containsKey('exampleCount')
-              ? (_json['exampleCount'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.String,
-                  ),
-                )
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (exampleCount != null) 'exampleCount': exampleCount!,
       };
 }
 
@@ -1636,39 +872,6 @@ class $Money {
         if (currencyCode != null) 'currencyCode': currencyCode!,
         if (nanos != null) 'nanos': nanos!,
         if (units != null) 'units': units!,
-      };
-}
-
-/// Used by:
-///
-/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta1NormalizedVertex
-/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta2NormalizedVertex
-/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta3NormalizedVertex
-class $NormalizedVertex {
-  /// X coordinate.
-  core.double? x;
-
-  /// Y coordinate (starts from the top of the image).
-  core.double? y;
-
-  $NormalizedVertex({
-    this.x,
-    this.y,
-  });
-
-  $NormalizedVertex.fromJson(core.Map _json)
-      : this(
-          x: _json.containsKey('x')
-              ? (_json['x'] as core.num).toDouble()
-              : null,
-          y: _json.containsKey('y')
-              ? (_json['y'] as core.num).toDouble()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (x != null) 'x': x!,
-        if (y != null) 'y': y!,
       };
 }
 
@@ -2838,17 +2041,17 @@ class $SasPortalValidateInstallerRequest {
 /// - osconfig:v1alpha : OSPolicyResourcePackageResourceGooGet
 /// - osconfig:v1alpha : OSPolicyResourcePackageResourceYUM
 /// - osconfig:v1alpha : OSPolicyResourcePackageResourceZypper
-class $Shared01 {
+class $Shared00 {
   /// Package name.
   ///
   /// Required.
   core.String? name;
 
-  $Shared01({
+  $Shared00({
     this.name,
   });
 
-  $Shared01.fromJson(core.Map _json)
+  $Shared00.fromJson(core.Map _json)
       : this(
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
         );
@@ -2862,14 +2065,14 @@ class $Shared01 {
 ///
 /// - containeranalysis:v1beta1 : ByProducts
 /// - containeranalysis:v1beta1 : Environment
-class $Shared02 {
+class $Shared01 {
   core.Map<core.String, core.String>? customValues;
 
-  $Shared02({
+  $Shared01({
     this.customValues,
   });
 
-  $Shared02.fromJson(core.Map _json)
+  $Shared01.fromJson(core.Map _json)
       : this(
           customValues: _json.containsKey('customValues')
               ? (_json['customValues'] as core.Map<core.String, core.dynamic>)
@@ -2891,7 +2094,7 @@ class $Shared02 {
 ///
 /// - containeranalysis:v1beta1 : Deployment
 /// - ondemandscanning:v1beta1 : DeploymentOccurrence
-class $Shared03 {
+class $Shared02 {
   /// Address of the runtime element hosting this deployment.
   core.String? address;
 
@@ -2923,7 +2126,7 @@ class $Shared03 {
   /// Identity of the user that triggered this deployment.
   core.String? userEmail;
 
-  $Shared03({
+  $Shared02({
     this.address,
     this.config,
     this.deployTime,
@@ -2933,7 +2136,7 @@ class $Shared03 {
     this.userEmail,
   });
 
-  $Shared03.fromJson(core.Map _json)
+  $Shared02.fromJson(core.Map _json)
       : this(
           address: _json.containsKey('address')
               ? _json['address'] as core.String
@@ -2975,14 +2178,14 @@ class $Shared03 {
 ///
 /// - ondemandscanning:v1beta1 : BuilderConfig
 /// - ondemandscanning:v1beta1 : SlsaBuilder
-class $Shared06 {
+class $Shared03 {
   core.String? id;
 
-  $Shared06({
+  $Shared03({
     this.id,
   });
 
-  $Shared06.fromJson(core.Map _json)
+  $Shared03.fromJson(core.Map _json)
       : this(
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
         );
@@ -2996,7 +2199,7 @@ class $Shared06 {
 ///
 /// - osconfig:v1alpha : OSPolicyAssignmentInstanceFilterInventory
 /// - osconfig:v1alpha : OSPolicyInventoryFilter
-class $Shared07 {
+class $Shared04 {
   /// The OS short name
   ///
   /// Required.
@@ -3010,12 +2213,12 @@ class $Shared07 {
   /// versions.
   core.String? osVersion;
 
-  $Shared07({
+  $Shared04({
     this.osShortName,
     this.osVersion,
   });
 
-  $Shared07.fromJson(core.Map _json)
+  $Shared04.fromJson(core.Map _json)
       : this(
           osShortName: _json.containsKey('osShortName')
               ? _json['osShortName'] as core.String
@@ -3217,34 +2420,5 @@ class $TestIamPermissionsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (permissions != null) 'permissions': permissions!,
-      };
-}
-
-/// Used by:
-///
-/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta1Vertex
-/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta2Vertex
-/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta3Vertex
-class $Vertex {
-  /// X coordinate.
-  core.int? x;
-
-  /// Y coordinate (starts from the top of the image).
-  core.int? y;
-
-  $Vertex({
-    this.x,
-    this.y,
-  });
-
-  $Vertex.fromJson(core.Map _json)
-      : this(
-          x: _json.containsKey('x') ? _json['x'] as core.int : null,
-          y: _json.containsKey('y') ? _json['y'] as core.int : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (x != null) 'x': x!,
-        if (y != null) 'y': y!,
       };
 }

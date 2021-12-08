@@ -1266,7 +1266,42 @@ class Filter {
 /// Kinds Foo and Bar in both the default and Baz namespaces: kinds=\['Foo',
 /// 'Bar'\], namespace_ids=\['', 'Baz'\] The entire Baz namespace: kinds=\[\],
 /// namespace_ids=\['Baz'\]
-typedef GoogleDatastoreAdminV1EntityFilter = $EntityFilter;
+class GoogleDatastoreAdminV1EntityFilter {
+  /// If empty, then this represents all kinds.
+  core.List<core.String>? kinds;
+
+  /// An empty list represents all namespaces.
+  ///
+  /// This is the preferred usage for projects that don't use namespaces. An
+  /// empty string element represents the default namespace. This should be used
+  /// if the project has data in non-default namespaces, but doesn't want to
+  /// include them. Each namespace in this list must be unique.
+  core.List<core.String>? namespaceIds;
+
+  GoogleDatastoreAdminV1EntityFilter({
+    this.kinds,
+    this.namespaceIds,
+  });
+
+  GoogleDatastoreAdminV1EntityFilter.fromJson(core.Map _json)
+      : this(
+          kinds: _json.containsKey('kinds')
+              ? (_json['kinds'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          namespaceIds: _json.containsKey('namespaceIds')
+              ? (_json['namespaceIds'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (kinds != null) 'kinds': kinds!,
+        if (namespaceIds != null) 'namespaceIds': namespaceIds!,
+      };
+}
 
 /// The request for google.datastore.admin.v1.DatastoreAdmin.ExportEntities.
 class GoogleDatastoreAdminV1ExportEntitiesRequest {

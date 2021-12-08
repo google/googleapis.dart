@@ -62,6 +62,7 @@ void main() {
         'ToyMapResponse': importUri.toString(),
         'ToyRequest': importUri.toString(),
         'ToyAgeRequest': importUri.toString(),
+        'ToyAgeRequest2': importUri.toString(),
         'Empty': importUri.toString(),
       };
       final description =

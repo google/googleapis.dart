@@ -360,7 +360,99 @@ class AttributeContext {
 ///
 /// Terminology is based on the JSON Web Token (JWT) standard, but the terms
 /// also correlate to concepts in other standards.
-typedef Auth = $Auth;
+class Auth {
+  /// A list of access level resource names that allow resources to be accessed
+  /// by authenticated requester.
+  ///
+  /// It is part of Secure GCP processing for the incoming request. An access
+  /// level string has the format:
+  /// "//{api_service_name}/accessPolicies/{policy_id}/accessLevels/{short_name}"
+  /// Example:
+  /// "//accesscontextmanager.googleapis.com/accessPolicies/MY_POLICY_ID/accessLevels/MY_LEVEL"
+  core.List<core.String>? accessLevels;
+
+  /// The intended audience(s) for this authentication information.
+  ///
+  /// Reflects the audience (`aud`) claim within a JWT. The audience value(s)
+  /// depends on the `issuer`, but typically include one or more of the
+  /// following pieces of information: * The services intended to receive the
+  /// credential. For example, \["https://pubsub.googleapis.com/",
+  /// "https://storage.googleapis.com/"\]. * A set of service-based scopes. For
+  /// example, \["https://www.googleapis.com/auth/cloud-platform"\]. * The
+  /// client id of an app, such as the Firebase project id for JWTs from
+  /// Firebase Auth. Consult the documentation for the credential issuer to
+  /// determine the information provided.
+  core.List<core.String>? audiences;
+
+  /// Structured claims presented with the credential.
+  ///
+  /// JWTs include `{key: value}` pairs for standard and private claims. The
+  /// following is a subset of the standard required and optional claims that
+  /// would typically be presented for a Google-based JWT: {'iss':
+  /// 'accounts.google.com', 'sub': '113289723416554971153', 'aud':
+  /// \['123456789012', 'pubsub.googleapis.com'\], 'azp':
+  /// '123456789012.apps.googleusercontent.com', 'email': 'jsmith@example.com',
+  /// 'iat': 1353601026, 'exp': 1353604926} SAML assertions are similarly
+  /// specified, but with an identity provider dependent structure.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? claims;
+
+  /// The authorized presenter of the credential.
+  ///
+  /// Reflects the optional Authorized Presenter (`azp`) claim within a JWT or
+  /// the OAuth client id. For example, a Google Cloud Platform client id looks
+  /// as follows: "123456789012.apps.googleusercontent.com".
+  core.String? presenter;
+
+  /// The authenticated principal.
+  ///
+  /// Reflects the issuer (`iss`) and subject (`sub`) claims within a JWT. The
+  /// issuer and subject should be `/` delimited, with `/` percent-encoded
+  /// within the subject fragment. For Google accounts, the principal format is:
+  /// "https://accounts.google.com/{id}"
+  core.String? principal;
+
+  Auth({
+    this.accessLevels,
+    this.audiences,
+    this.claims,
+    this.presenter,
+    this.principal,
+  });
+
+  Auth.fromJson(core.Map _json)
+      : this(
+          accessLevels: _json.containsKey('accessLevels')
+              ? (_json['accessLevels'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          audiences: _json.containsKey('audiences')
+              ? (_json['audiences'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          claims: _json.containsKey('claims')
+              ? _json['claims'] as core.Map<core.String, core.dynamic>
+              : null,
+          presenter: _json.containsKey('presenter')
+              ? _json['presenter'] as core.String
+              : null,
+          principal: _json.containsKey('principal')
+              ? _json['principal'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (accessLevels != null) 'accessLevels': accessLevels!,
+        if (audiences != null) 'audiences': audiences!,
+        if (claims != null) 'claims': claims!,
+        if (presenter != null) 'presenter': presenter!,
+        if (principal != null) 'principal': principal!,
+      };
+}
 
 /// Request message for the Check method.
 class CheckRequest {
@@ -459,7 +551,65 @@ class CheckResponse {
 /// The node can be either a service or an application that sends, forwards, or
 /// receives the request. Service peers should fill in `principal` and `labels`
 /// as appropriate.
-typedef Peer = $Peer;
+class Peer {
+  /// The IP address of the peer.
+  core.String? ip;
+
+  /// The labels associated with the peer.
+  core.Map<core.String, core.String>? labels;
+
+  /// The network port of the peer.
+  core.String? port;
+
+  /// The identity of this peer.
+  ///
+  /// Similar to `Request.auth.principal`, but relative to the peer instead of
+  /// the request. For example, the idenity associated with a load balancer that
+  /// forwared the request.
+  core.String? principal;
+
+  /// The CLDR country/region code associated with the above IP address.
+  ///
+  /// If the IP address is private, the `region_code` should reflect the
+  /// physical location where this peer is running.
+  core.String? regionCode;
+
+  Peer({
+    this.ip,
+    this.labels,
+    this.port,
+    this.principal,
+    this.regionCode,
+  });
+
+  Peer.fromJson(core.Map _json)
+      : this(
+          ip: _json.containsKey('ip') ? _json['ip'] as core.String : null,
+          labels: _json.containsKey('labels')
+              ? (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          port: _json.containsKey('port') ? _json['port'] as core.String : null,
+          principal: _json.containsKey('principal')
+              ? _json['principal'] as core.String
+              : null,
+          regionCode: _json.containsKey('regionCode')
+              ? _json['regionCode'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (ip != null) 'ip': ip!,
+        if (labels != null) 'labels': labels!,
+        if (port != null) 'port': port!,
+        if (principal != null) 'principal': principal!,
+        if (regionCode != null) 'regionCode': regionCode!,
+      };
+}
 
 /// Request message for the Report method.
 class ReportRequest {
@@ -641,7 +791,175 @@ class Request {
 ///
 /// A resource is an addressable (named) entity provided by the destination
 /// service. For example, a file stored on a network storage service.
-typedef Resource = $Resource01;
+class Resource {
+  /// Annotations is an unstructured key-value map stored with a resource that
+  /// may be set by external tools to store and retrieve arbitrary metadata.
+  ///
+  /// They are not queryable and should be preserved when modifying objects.
+  /// More info: https://kubernetes.io/docs/user-guide/annotations
+  core.Map<core.String, core.String>? annotations;
+
+  /// The timestamp when the resource was created.
+  ///
+  /// This may be either the time creation was initiated or when it was
+  /// completed.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// The timestamp when the resource was deleted.
+  ///
+  /// If the resource is not deleted, this must be empty.
+  ///
+  /// Output only.
+  core.String? deleteTime;
+
+  /// Mutable.
+  ///
+  /// The display name set by clients. Must be \<= 63 characters.
+  core.String? displayName;
+
+  /// An opaque value that uniquely identifies a version or generation of a
+  /// resource.
+  ///
+  /// It can be used to confirm that the client and server agree on the ordering
+  /// of a resource being written.
+  ///
+  /// Output only.
+  core.String? etag;
+
+  /// The labels or tags on the resource, such as AWS resource tags and
+  /// Kubernetes resource labels.
+  core.Map<core.String, core.String>? labels;
+
+  /// The location of the resource.
+  ///
+  /// The location encoding is specific to the service provider, and new
+  /// encoding may be introduced as the service evolves. For Google Cloud
+  /// products, the encoding is what is used by Google Cloud APIs, such as
+  /// `us-east1`, `aws-us-east-1`, and `azure-eastus2`. The semantics of
+  /// `location` is identical to the `cloud.googleapis.com/location` label used
+  /// by some Google Cloud APIs.
+  ///
+  /// Immutable.
+  core.String? location;
+
+  /// The stable identifier (name) of a resource on the `service`.
+  ///
+  /// A resource can be logically identified as
+  /// "//{resource.service}/{resource.name}". The differences between a resource
+  /// name and a URI are: * Resource name is a logical identifier, independent
+  /// of network protocol and API version. For example,
+  /// `//pubsub.googleapis.com/projects/123/topics/news-feed`. * URI often
+  /// includes protocol and version information, so it can be used directly by
+  /// applications. For example,
+  /// `https://pubsub.googleapis.com/v1/projects/123/topics/news-feed`. See
+  /// https://cloud.google.com/apis/design/resource_names for details.
+  core.String? name;
+
+  /// The name of the service that this resource belongs to, such as
+  /// `pubsub.googleapis.com`.
+  ///
+  /// The service may be different from the DNS hostname that actually serves
+  /// the request.
+  core.String? service;
+
+  /// The type of the resource.
+  ///
+  /// The syntax is platform-specific because different platforms define their
+  /// resources differently. For Google APIs, the type format must be
+  /// "{service}/{kind}", such as "pubsub.googleapis.com/Topic".
+  core.String? type;
+
+  /// The unique identifier of the resource.
+  ///
+  /// UID is unique in the time and space for this resource within the scope of
+  /// the service. It is typically generated by the server on successful
+  /// creation of a resource and must not be changed. UID is used to uniquely
+  /// identify resources with resource name reuses. This should be a UUID4.
+  core.String? uid;
+
+  /// The timestamp when the resource was last updated.
+  ///
+  /// Any change to the resource made by users must refresh this value. Changes
+  /// to a resource made by the service should refresh this value.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  Resource({
+    this.annotations,
+    this.createTime,
+    this.deleteTime,
+    this.displayName,
+    this.etag,
+    this.labels,
+    this.location,
+    this.name,
+    this.service,
+    this.type,
+    this.uid,
+    this.updateTime,
+  });
+
+  Resource.fromJson(core.Map _json)
+      : this(
+          annotations: _json.containsKey('annotations')
+              ? (_json['annotations'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          deleteTime: _json.containsKey('deleteTime')
+              ? _json['deleteTime'] as core.String
+              : null,
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          labels: _json.containsKey('labels')
+              ? (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          location: _json.containsKey('location')
+              ? _json['location'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          service: _json.containsKey('service')
+              ? _json['service'] as core.String
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+          uid: _json.containsKey('uid') ? _json['uid'] as core.String : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (annotations != null) 'annotations': annotations!,
+        if (createTime != null) 'createTime': createTime!,
+        if (deleteTime != null) 'deleteTime': deleteTime!,
+        if (displayName != null) 'displayName': displayName!,
+        if (etag != null) 'etag': etag!,
+        if (labels != null) 'labels': labels!,
+        if (location != null) 'location': location!,
+        if (name != null) 'name': name!,
+        if (service != null) 'service': service!,
+        if (type != null) 'type': type!,
+        if (uid != null) 'uid': uid!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
 
 /// Describes a resource referenced in the request.
 class ResourceInfo {

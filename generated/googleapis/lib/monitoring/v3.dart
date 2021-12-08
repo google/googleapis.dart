@@ -7346,7 +7346,7 @@ class MetricDescriptor {
 }
 
 /// Additional annotations that can be used to guide the usage of a metric.
-typedef MetricDescriptorMetadata = $MetricDescriptorMetadata01;
+typedef MetricDescriptorMetadata = $MetricDescriptorMetadata;
 
 /// A MetricRange is used when each window is good when the value x of a single
 /// TimeSeries satisfies range.min \<= x \<= range.max.

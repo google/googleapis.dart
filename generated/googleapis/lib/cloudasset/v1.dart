@@ -5326,7 +5326,58 @@ class QueryContent {
 /// policy). See
 /// [Supported asset types](https://cloud.google.com/asset-inventory/docs/supported-asset-types)
 /// for more information.
-typedef RelatedAsset = $RelatedAsset;
+class RelatedAsset {
+  /// The ancestors of an asset in Google Cloud
+  /// [resource hierarchy](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy),
+  /// represented as a list of relative resource names.
+  ///
+  /// An ancestry path starts with the closest ancestor in the hierarchy and
+  /// ends at root. Example: `["projects/123456789", "folders/5432",
+  /// "organizations/1234"]`
+  core.List<core.String>? ancestors;
+
+  /// The full name of the asset.
+  ///
+  /// Example:
+  /// `//compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1`
+  /// See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names#full_resource_name)
+  /// for more information.
+  core.String? asset;
+
+  /// The type of the asset.
+  ///
+  /// Example: `compute.googleapis.com/Disk` See
+  /// [Supported asset types](https://cloud.google.com/asset-inventory/docs/supported-asset-types)
+  /// for more information.
+  core.String? assetType;
+
+  RelatedAsset({
+    this.ancestors,
+    this.asset,
+    this.assetType,
+  });
+
+  RelatedAsset.fromJson(core.Map _json)
+      : this(
+          ancestors: _json.containsKey('ancestors')
+              ? (_json['ancestors'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          asset:
+              _json.containsKey('asset') ? _json['asset'] as core.String : null,
+          assetType: _json.containsKey('assetType')
+              ? _json['assetType'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (ancestors != null) 'ancestors': ancestors!,
+        if (asset != null) 'asset': asset!,
+        if (assetType != null) 'assetType': assetType!,
+      };
+}
 
 /// The detailed related assets with the `relationship_type`.
 class RelatedAssets {
@@ -5422,10 +5473,152 @@ class RelatedResources {
 
 /// The relationship attributes which include `type`, `source_resource_type`,
 /// `target_resource_type` and `action`.
-typedef RelationshipAttributes = $RelationshipAttributes;
+class RelationshipAttributes {
+  /// The detail of the relationship, e.g. `contains`, `attaches`
+  core.String? action;
+
+  /// The source asset type.
+  ///
+  /// Example: `compute.googleapis.com/Instance`
+  core.String? sourceResourceType;
+
+  /// The target asset type.
+  ///
+  /// Example: `compute.googleapis.com/Disk`
+  core.String? targetResourceType;
+
+  /// The unique identifier of the relationship type.
+  ///
+  /// Example: `INSTANCE_TO_INSTANCEGROUP`
+  core.String? type;
+
+  RelationshipAttributes({
+    this.action,
+    this.sourceResourceType,
+    this.targetResourceType,
+    this.type,
+  });
+
+  RelationshipAttributes.fromJson(core.Map _json)
+      : this(
+          action: _json.containsKey('action')
+              ? _json['action'] as core.String
+              : null,
+          sourceResourceType: _json.containsKey('sourceResourceType')
+              ? _json['sourceResourceType'] as core.String
+              : null,
+          targetResourceType: _json.containsKey('targetResourceType')
+              ? _json['targetResourceType'] as core.String
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (action != null) 'action': action!,
+        if (sourceResourceType != null)
+          'sourceResourceType': sourceResourceType!,
+        if (targetResourceType != null)
+          'targetResourceType': targetResourceType!,
+        if (type != null) 'type': type!,
+      };
+}
 
 /// A representation of a Google Cloud resource.
-typedef Resource = $Resource00;
+class Resource {
+  /// The content of the resource, in which some sensitive fields are removed
+  /// and may not be present.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? data;
+
+  /// The URL of the discovery document containing the resource's JSON schema.
+  ///
+  /// Example: `https://www.googleapis.com/discovery/v1/apis/compute/v1/rest`
+  /// This value is unspecified for resources that do not have an API based on a
+  /// discovery document, such as Cloud Bigtable.
+  core.String? discoveryDocumentUri;
+
+  /// The JSON schema name listed in the discovery document.
+  ///
+  /// Example: `Project` This value is unspecified for resources that do not
+  /// have an API based on a discovery document, such as Cloud Bigtable.
+  core.String? discoveryName;
+
+  /// The location of the resource in Google Cloud, such as its zone and region.
+  ///
+  /// For more information, see https://cloud.google.com/about/locations/.
+  core.String? location;
+
+  /// The full name of the immediate parent of this resource.
+  ///
+  /// See
+  /// [Resource Names](https://cloud.google.com/apis/design/resource_names#full_resource_name)
+  /// for more information. For Google Cloud assets, this value is the parent
+  /// resource defined in the
+  /// [Cloud IAM policy hierarchy](https://cloud.google.com/iam/docs/overview#policy_hierarchy).
+  /// Example: `//cloudresourcemanager.googleapis.com/projects/my_project_123`
+  /// For third-party assets, this field may be set differently.
+  core.String? parent;
+
+  /// The REST URL for accessing the resource.
+  ///
+  /// An HTTP `GET` request using this URL returns the resource itself. Example:
+  /// `https://cloudresourcemanager.googleapis.com/v1/projects/my-project-123`
+  /// This value is unspecified for resources without a REST API.
+  core.String? resourceUrl;
+
+  /// The API version.
+  ///
+  /// Example: `v1`
+  core.String? version;
+
+  Resource({
+    this.data,
+    this.discoveryDocumentUri,
+    this.discoveryName,
+    this.location,
+    this.parent,
+    this.resourceUrl,
+    this.version,
+  });
+
+  Resource.fromJson(core.Map _json)
+      : this(
+          data: _json.containsKey('data')
+              ? _json['data'] as core.Map<core.String, core.dynamic>
+              : null,
+          discoveryDocumentUri: _json.containsKey('discoveryDocumentUri')
+              ? _json['discoveryDocumentUri'] as core.String
+              : null,
+          discoveryName: _json.containsKey('discoveryName')
+              ? _json['discoveryName'] as core.String
+              : null,
+          location: _json.containsKey('location')
+              ? _json['location'] as core.String
+              : null,
+          parent: _json.containsKey('parent')
+              ? _json['parent'] as core.String
+              : null,
+          resourceUrl: _json.containsKey('resourceUrl')
+              ? _json['resourceUrl'] as core.String
+              : null,
+          version: _json.containsKey('version')
+              ? _json['version'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (data != null) 'data': data!,
+        if (discoveryDocumentUri != null)
+          'discoveryDocumentUri': discoveryDocumentUri!,
+        if (discoveryName != null) 'discoveryName': discoveryName!,
+        if (location != null) 'location': location!,
+        if (parent != null) 'parent': parent!,
+        if (resourceUrl != null) 'resourceUrl': resourceUrl!,
+        if (version != null) 'version': version!,
+      };
+}
 
 /// A result of Resource Search, containing information of a cloud resource.
 class ResourceSearchResult {

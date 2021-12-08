@@ -1588,7 +1588,138 @@ class Backend {
 }
 
 /// A backend rule provides configuration for an individual API element.
-typedef BackendRule = $BackendRule;
+class BackendRule {
+  /// The address of the API backend.
+  ///
+  /// The scheme is used to determine the backend protocol and security. The
+  /// following schemes are accepted: SCHEME PROTOCOL SECURITY http:// HTTP None
+  /// https:// HTTP TLS grpc:// gRPC None grpcs:// gRPC TLS It is recommended to
+  /// explicitly include a scheme. Leaving out the scheme may cause constrasting
+  /// behaviors across platforms. If the port is unspecified, the default is: -
+  /// 80 for schemes without TLS - 443 for schemes with TLS For HTTP backends,
+  /// use protocol to specify the protocol version.
+  core.String? address;
+
+  /// The number of seconds to wait for a response from a request.
+  ///
+  /// The default varies based on the request protocol and deployment
+  /// environment.
+  core.double? deadline;
+
+  /// When disable_auth is true, a JWT ID token won't be generated and the
+  /// original "Authorization" HTTP header will be preserved.
+  ///
+  /// If the header is used to carry the original token and is expected by the
+  /// backend, this field must be set to true to preserve the header.
+  core.bool? disableAuth;
+
+  /// The JWT audience is used when generating a JWT ID token for the backend.
+  ///
+  /// This ID token will be added in the HTTP "authorization" header, and sent
+  /// to the backend.
+  core.String? jwtAudience;
+
+  /// The number of seconds to wait for the completion of a long running
+  /// operation.
+  ///
+  /// The default is no deadline.
+  core.double? operationDeadline;
+
+  ///
+  /// Possible string values are:
+  /// - "PATH_TRANSLATION_UNSPECIFIED"
+  /// - "CONSTANT_ADDRESS" : Use the backend address as-is, with no modification
+  /// to the path. If the URL pattern contains variables, the variable names and
+  /// values will be appended to the query string. If a query string parameter
+  /// and a URL pattern variable have the same name, this may result in
+  /// duplicate keys in the query string. # Examples Given the following
+  /// operation config: Method path: /api/company/{cid}/user/{uid} Backend
+  /// address: https://example.cloudfunctions.net/getUser Requests to the
+  /// following request paths will call the backend at the translated path:
+  /// Request path: /api/company/widgetworks/user/johndoe Translated:
+  /// https://example.cloudfunctions.net/getUser?cid=widgetworks&uid=johndoe
+  /// Request path: /api/company/widgetworks/user/johndoe?timezone=EST
+  /// Translated:
+  /// https://example.cloudfunctions.net/getUser?timezone=EST&cid=widgetworks&uid=johndoe
+  /// - "APPEND_PATH_TO_ADDRESS" : The request path will be appended to the
+  /// backend address. # Examples Given the following operation config: Method
+  /// path: /api/company/{cid}/user/{uid} Backend address:
+  /// https://example.appspot.com Requests to the following request paths will
+  /// call the backend at the translated path: Request path:
+  /// /api/company/widgetworks/user/johndoe Translated:
+  /// https://example.appspot.com/api/company/widgetworks/user/johndoe Request
+  /// path: /api/company/widgetworks/user/johndoe?timezone=EST Translated:
+  /// https://example.appspot.com/api/company/widgetworks/user/johndoe?timezone=EST
+  core.String? pathTranslation;
+
+  /// The protocol used for sending a request to the backend.
+  ///
+  /// The supported values are "http/1.1" and "h2". The default value is
+  /// inferred from the scheme in the address field: SCHEME PROTOCOL http://
+  /// http/1.1 https:// http/1.1 grpc:// h2 grpcs:// h2 For secure HTTP backends
+  /// (https://) that support HTTP/2, set this field to "h2" for improved
+  /// performance. Configuring this field to non-default values is only
+  /// supported for secure HTTP backends. This field will be ignored for all
+  /// other backends. See
+  /// https://www.iana.org/assignments/tls-extensiontype-values/tls-extensiontype-values.xhtml#alpn-protocol-ids
+  /// for more details on the supported values.
+  core.String? protocol;
+
+  /// Selects the methods to which this rule applies.
+  ///
+  /// Refer to selector for syntax details.
+  core.String? selector;
+
+  BackendRule({
+    this.address,
+    this.deadline,
+    this.disableAuth,
+    this.jwtAudience,
+    this.operationDeadline,
+    this.pathTranslation,
+    this.protocol,
+    this.selector,
+  });
+
+  BackendRule.fromJson(core.Map _json)
+      : this(
+          address: _json.containsKey('address')
+              ? _json['address'] as core.String
+              : null,
+          deadline: _json.containsKey('deadline')
+              ? (_json['deadline'] as core.num).toDouble()
+              : null,
+          disableAuth: _json.containsKey('disableAuth')
+              ? _json['disableAuth'] as core.bool
+              : null,
+          jwtAudience: _json.containsKey('jwtAudience')
+              ? _json['jwtAudience'] as core.String
+              : null,
+          operationDeadline: _json.containsKey('operationDeadline')
+              ? (_json['operationDeadline'] as core.num).toDouble()
+              : null,
+          pathTranslation: _json.containsKey('pathTranslation')
+              ? _json['pathTranslation'] as core.String
+              : null,
+          protocol: _json.containsKey('protocol')
+              ? _json['protocol'] as core.String
+              : null,
+          selector: _json.containsKey('selector')
+              ? _json['selector'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (address != null) 'address': address!,
+        if (deadline != null) 'deadline': deadline!,
+        if (disableAuth != null) 'disableAuth': disableAuth!,
+        if (jwtAudience != null) 'jwtAudience': jwtAudience!,
+        if (operationDeadline != null) 'operationDeadline': operationDeadline!,
+        if (pathTranslation != null) 'pathTranslation': pathTranslation!,
+        if (protocol != null) 'protocol': protocol!,
+        if (selector != null) 'selector': selector!,
+      };
+}
 
 /// Billing related configuration of the service.
 ///
@@ -1637,7 +1768,39 @@ class Billing {
 
 /// Configuration of a specific billing destination (Currently only support bill
 /// against consumer project).
-typedef BillingDestination = $BillingDestination;
+class BillingDestination {
+  /// Names of the metrics to report to this billing destination.
+  ///
+  /// Each name must be defined in Service.metrics section.
+  core.List<core.String>? metrics;
+
+  /// The monitored resource type.
+  ///
+  /// The type must be defined in Service.monitored_resources section.
+  core.String? monitoredResource;
+
+  BillingDestination({
+    this.metrics,
+    this.monitoredResource,
+  });
+
+  BillingDestination.fromJson(core.Map _json)
+      : this(
+          metrics: _json.containsKey('metrics')
+              ? (_json['metrics'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          monitoredResource: _json.containsKey('monitoredResource')
+              ? _json['monitoredResource'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (metrics != null) 'metrics': metrics!,
+        if (monitoredResource != null) 'monitoredResource': monitoredResource!,
+      };
+}
 
 /// Associates `members`, or principals, with a `role`.
 class Binding {
@@ -1970,13 +2133,100 @@ class Context {
 
 /// A context rule provides information about the context for an individual API
 /// element.
-typedef ContextRule = $ContextRule;
+class ContextRule {
+  /// A list of full type names or extension IDs of extensions allowed in grpc
+  /// side channel from client to backend.
+  core.List<core.String>? allowedRequestExtensions;
+
+  /// A list of full type names or extension IDs of extensions allowed in grpc
+  /// side channel from backend to client.
+  core.List<core.String>? allowedResponseExtensions;
+
+  /// A list of full type names of provided contexts.
+  core.List<core.String>? provided;
+
+  /// A list of full type names of requested contexts.
+  core.List<core.String>? requested;
+
+  /// Selects the methods to which this rule applies.
+  ///
+  /// Refer to selector for syntax details.
+  core.String? selector;
+
+  ContextRule({
+    this.allowedRequestExtensions,
+    this.allowedResponseExtensions,
+    this.provided,
+    this.requested,
+    this.selector,
+  });
+
+  ContextRule.fromJson(core.Map _json)
+      : this(
+          allowedRequestExtensions:
+              _json.containsKey('allowedRequestExtensions')
+                  ? (_json['allowedRequestExtensions'] as core.List)
+                      .map((value) => value as core.String)
+                      .toList()
+                  : null,
+          allowedResponseExtensions:
+              _json.containsKey('allowedResponseExtensions')
+                  ? (_json['allowedResponseExtensions'] as core.List)
+                      .map((value) => value as core.String)
+                      .toList()
+                  : null,
+          provided: _json.containsKey('provided')
+              ? (_json['provided'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          requested: _json.containsKey('requested')
+              ? (_json['requested'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          selector: _json.containsKey('selector')
+              ? _json['selector'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (allowedRequestExtensions != null)
+          'allowedRequestExtensions': allowedRequestExtensions!,
+        if (allowedResponseExtensions != null)
+          'allowedResponseExtensions': allowedResponseExtensions!,
+        if (provided != null) 'provided': provided!,
+        if (requested != null) 'requested': requested!,
+        if (selector != null) 'selector': selector!,
+      };
+}
 
 /// Selects and configures the service controller used by the service.
 ///
 /// The service controller handles features like abuse, quota, billing, logging,
 /// monitoring, etc.
-typedef Control = $Control;
+class Control {
+  /// The service control environment to use.
+  ///
+  /// If empty, no control plane feature (like quota and billing) will be
+  /// enabled.
+  core.String? environment;
+
+  Control({
+    this.environment,
+  });
+
+  Control.fromJson(core.Map _json)
+      : this(
+          environment: _json.containsKey('environment')
+              ? _json['environment'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (environment != null) 'environment': environment!,
+      };
+}
 
 /// Customize service error responses.
 ///
@@ -2019,10 +2269,63 @@ class CustomError {
 }
 
 /// A custom error rule.
-typedef CustomErrorRule = $CustomErrorRule;
+class CustomErrorRule {
+  /// Mark this message as possible payload in error response.
+  ///
+  /// Otherwise, objects of this type will be filtered when they appear in error
+  /// payload.
+  core.bool? isErrorType;
+
+  /// Selects messages to which this rule applies.
+  ///
+  /// Refer to selector for syntax details.
+  core.String? selector;
+
+  CustomErrorRule({
+    this.isErrorType,
+    this.selector,
+  });
+
+  CustomErrorRule.fromJson(core.Map _json)
+      : this(
+          isErrorType: _json.containsKey('isErrorType')
+              ? _json['isErrorType'] as core.bool
+              : null,
+          selector: _json.containsKey('selector')
+              ? _json['selector'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (isErrorType != null) 'isErrorType': isErrorType!,
+        if (selector != null) 'selector': selector!,
+      };
+}
 
 /// A custom pattern is used for defining custom HTTP verb.
-typedef CustomHttpPattern = $CustomHttpPattern;
+class CustomHttpPattern {
+  /// The name of this custom HTTP verb.
+  core.String? kind;
+
+  /// The path matched by this custom verb.
+  core.String? path;
+
+  CustomHttpPattern({
+    this.kind,
+    this.path,
+  });
+
+  CustomHttpPattern.fromJson(core.Map _json)
+      : this(
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          path: _json.containsKey('path') ? _json['path'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (path != null) 'path': path!,
+      };
+}
 
 /// Strategy used to delete a service.
 ///
@@ -3121,7 +3424,41 @@ class Logging {
 
 /// Configuration of a specific logging destination (the producer project or the
 /// consumer project).
-typedef LoggingDestination = $LoggingDestination;
+class LoggingDestination {
+  /// Names of the logs to be sent to this destination.
+  ///
+  /// Each name must be defined in the Service.logs section. If the log name is
+  /// not a domain scoped name, it will be automatically prefixed with the
+  /// service name followed by "/".
+  core.List<core.String>? logs;
+
+  /// The monitored resource type.
+  ///
+  /// The type must be defined in the Service.monitored_resources section.
+  core.String? monitoredResource;
+
+  LoggingDestination({
+    this.logs,
+    this.monitoredResource,
+  });
+
+  LoggingDestination.fromJson(core.Map _json)
+      : this(
+          logs: _json.containsKey('logs')
+              ? (_json['logs'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          monitoredResource: _json.containsKey('monitoredResource')
+              ? _json['monitoredResource'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (logs != null) 'logs': logs!,
+        if (monitoredResource != null) 'monitoredResource': monitoredResource!,
+      };
+}
 
 /// The full representation of a Service that is managed by Google Service
 /// Management.
@@ -3467,7 +3804,82 @@ class MetricDescriptor {
 }
 
 /// Additional annotations that can be used to guide the usage of a metric.
-typedef MetricDescriptorMetadata = $MetricDescriptorMetadata00;
+class MetricDescriptorMetadata {
+  /// The delay of data points caused by ingestion.
+  ///
+  /// Data points older than this age are guaranteed to be ingested and
+  /// available to be read, excluding data loss due to errors.
+  core.String? ingestDelay;
+
+  /// Must use the MetricDescriptor.launch_stage instead.
+  ///
+  /// Deprecated.
+  /// Possible string values are:
+  /// - "LAUNCH_STAGE_UNSPECIFIED" : Do not use this default value.
+  /// - "UNIMPLEMENTED" : The feature is not yet implemented. Users can not use
+  /// it.
+  /// - "PRELAUNCH" : Prelaunch features are hidden from users and are only
+  /// visible internally.
+  /// - "EARLY_ACCESS" : Early Access features are limited to a closed group of
+  /// testers. To use these features, you must sign up in advance and sign a
+  /// Trusted Tester agreement (which includes confidentiality provisions).
+  /// These features may be unstable, changed in backward-incompatible ways, and
+  /// are not guaranteed to be released.
+  /// - "ALPHA" : Alpha is a limited availability test for releases before they
+  /// are cleared for widespread use. By Alpha, all significant design issues
+  /// are resolved and we are in the process of verifying functionality. Alpha
+  /// customers need to apply for access, agree to applicable terms, and have
+  /// their projects allowlisted. Alpha releases don’t have to be feature
+  /// complete, no SLAs are provided, and there are no technical support
+  /// obligations, but they will be far enough along that customers can actually
+  /// use them in test environments or for limited-use tests -- just like they
+  /// would in normal production cases.
+  /// - "BETA" : Beta is the point at which we are ready to open a release for
+  /// any customer to use. There are no SLA or technical support obligations in
+  /// a Beta release. Products will be complete from a feature perspective, but
+  /// may have some open outstanding issues. Beta releases are suitable for
+  /// limited production use cases.
+  /// - "GA" : GA features are open to all developers and are considered stable
+  /// and fully qualified for production use.
+  /// - "DEPRECATED" : Deprecated features are scheduled to be shut down and
+  /// removed. For more information, see the “Deprecation Policy” section of our
+  /// [Terms of Service](https://cloud.google.com/terms/) and the
+  /// [Google Cloud Platform Subject to the Deprecation Policy](https://cloud.google.com/terms/deprecation)
+  /// documentation.
+  core.String? launchStage;
+
+  /// The sampling period of metric data points.
+  ///
+  /// For metrics which are written periodically, consecutive data points are
+  /// stored at this time interval, excluding data loss due to errors. Metrics
+  /// with a higher granularity have a smaller sampling period.
+  core.String? samplePeriod;
+
+  MetricDescriptorMetadata({
+    this.ingestDelay,
+    this.launchStage,
+    this.samplePeriod,
+  });
+
+  MetricDescriptorMetadata.fromJson(core.Map _json)
+      : this(
+          ingestDelay: _json.containsKey('ingestDelay')
+              ? _json['ingestDelay'] as core.String
+              : null,
+          launchStage: _json.containsKey('launchStage')
+              ? _json['launchStage'] as core.String
+              : null,
+          samplePeriod: _json.containsKey('samplePeriod')
+              ? _json['samplePeriod'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (ingestDelay != null) 'ingestDelay': ingestDelay!,
+        if (launchStage != null) 'launchStage': launchStage!,
+        if (samplePeriod != null) 'samplePeriod': samplePeriod!,
+      };
+}
 
 /// Bind API methods to metrics.
 ///
@@ -4528,7 +4940,30 @@ class SetIamPolicyRequest {
 typedef SourceContext = $SourceContext;
 
 /// Source information used to create a Service Config
-typedef SourceInfo = $SourceInfo;
+class SourceInfo {
+  /// All files used during config generation.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.List<core.Map<core.String, core.Object?>>? sourceFiles;
+
+  SourceInfo({
+    this.sourceFiles,
+  });
+
+  SourceInfo.fromJson(core.Map _json)
+      : this(
+          sourceFiles: _json.containsKey('sourceFiles')
+              ? (_json['sourceFiles'] as core.List)
+                  .map((value) => value as core.Map<core.String, core.dynamic>)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (sourceFiles != null) 'sourceFiles': sourceFiles!,
+      };
+}
 
 /// The `Status` type defines a logical error model that is suitable for
 /// different programming environments, including REST APIs and RPC APIs.
@@ -4579,7 +5014,45 @@ class SubmitConfigSourceRequest {
 ///
 /// The parameter may be passed as either an HTTP header or a URL query
 /// parameter, and if both are passed the behavior is implementation-dependent.
-typedef SystemParameter = $SystemParameter;
+class SystemParameter {
+  /// Define the HTTP header name to use for the parameter.
+  ///
+  /// It is case insensitive.
+  core.String? httpHeader;
+
+  /// Define the name of the parameter, such as "api_key" .
+  ///
+  /// It is case sensitive.
+  core.String? name;
+
+  /// Define the URL query parameter name to use for the parameter.
+  ///
+  /// It is case sensitive.
+  core.String? urlQueryParameter;
+
+  SystemParameter({
+    this.httpHeader,
+    this.name,
+    this.urlQueryParameter,
+  });
+
+  SystemParameter.fromJson(core.Map _json)
+      : this(
+          httpHeader: _json.containsKey('httpHeader')
+              ? _json['httpHeader'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          urlQueryParameter: _json.containsKey('urlQueryParameter')
+              ? _json['urlQueryParameter'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (httpHeader != null) 'httpHeader': httpHeader!,
+        if (name != null) 'name': name!,
+        if (urlQueryParameter != null) 'urlQueryParameter': urlQueryParameter!,
+      };
+}
 
 /// Define a system parameter rule mapping system parameter definitions to
 /// methods.

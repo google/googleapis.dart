@@ -2669,7 +2669,25 @@ class GoogleCloudChannelV1AdminUser {
 }
 
 /// Association links that an entitlement has to other entitlements.
-typedef GoogleCloudChannelV1AssociationInfo = $AssociationInfo;
+class GoogleCloudChannelV1AssociationInfo {
+  /// The name of the base entitlement, for which this entitlement is an add-on.
+  core.String? baseEntitlement;
+
+  GoogleCloudChannelV1AssociationInfo({
+    this.baseEntitlement,
+  });
+
+  GoogleCloudChannelV1AssociationInfo.fromJson(core.Map _json)
+      : this(
+          baseEntitlement: _json.containsKey('baseEntitlement')
+              ? _json['baseEntitlement'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (baseEntitlement != null) 'baseEntitlement': baseEntitlement!,
+      };
+}
 
 /// Request message for CloudChannelService.CancelEntitlement.
 typedef GoogleCloudChannelV1CancelEntitlementRequest = $Request01;
@@ -4660,7 +4678,38 @@ class GoogleCloudChannelV1ParameterDefinition {
 }
 
 /// Represents period in days/months/years.
-typedef GoogleCloudChannelV1Period = $Period;
+class GoogleCloudChannelV1Period {
+  /// Total duration of Period Type defined.
+  core.int? duration;
+
+  /// Period Type.
+  /// Possible string values are:
+  /// - "PERIOD_TYPE_UNSPECIFIED" : Not used.
+  /// - "DAY" : Day.
+  /// - "MONTH" : Month.
+  /// - "YEAR" : Year.
+  core.String? periodType;
+
+  GoogleCloudChannelV1Period({
+    this.duration,
+    this.periodType,
+  });
+
+  GoogleCloudChannelV1Period.fromJson(core.Map _json)
+      : this(
+          duration: _json.containsKey('duration')
+              ? _json['duration'] as core.int
+              : null,
+          periodType: _json.containsKey('periodType')
+              ? _json['periodType'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (duration != null) 'duration': duration!,
+        if (periodType != null) 'periodType': periodType!,
+      };
+}
 
 /// The payment plan for the Offer.
 ///
@@ -5030,7 +5079,49 @@ class GoogleCloudChannelV1ProvisionCloudIdentityRequest {
 }
 
 /// Service provisioned for an entitlement.
-typedef GoogleCloudChannelV1ProvisionedService = $ProvisionedService;
+class GoogleCloudChannelV1ProvisionedService {
+  /// The product pertaining to the provisioning resource as specified in the
+  /// Offer.
+  ///
+  /// Output only.
+  core.String? productId;
+
+  /// Provisioning ID of the entitlement.
+  ///
+  /// For Google Workspace, this would be the underlying Subscription ID.
+  ///
+  /// Output only.
+  core.String? provisioningId;
+
+  /// The SKU pertaining to the provisioning resource as specified in the Offer.
+  ///
+  /// Output only.
+  core.String? skuId;
+
+  GoogleCloudChannelV1ProvisionedService({
+    this.productId,
+    this.provisioningId,
+    this.skuId,
+  });
+
+  GoogleCloudChannelV1ProvisionedService.fromJson(core.Map _json)
+      : this(
+          productId: _json.containsKey('productId')
+              ? _json['productId'] as core.String
+              : null,
+          provisioningId: _json.containsKey('provisioningId')
+              ? _json['provisioningId'] as core.String
+              : null,
+          skuId:
+              _json.containsKey('skuId') ? _json['skuId'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (productId != null) 'productId': productId!,
+        if (provisioningId != null) 'provisioningId': provisioningId!,
+        if (skuId != null) 'skuId': skuId!,
+      };
+}
 
 /// Offer that you can purchase for a customer.
 ///
@@ -5445,7 +5536,38 @@ class GoogleCloudChannelV1TransferableSku {
 }
 
 /// Settings for trial offers.
-typedef GoogleCloudChannelV1TrialSettings = $TrialSettings;
+class GoogleCloudChannelV1TrialSettings {
+  /// Date when the trial ends.
+  ///
+  /// The value is in milliseconds using the UNIX Epoch format. See an example
+  /// [Epoch converter](https://www.epochconverter.com).
+  core.String? endTime;
+
+  /// Determines if the entitlement is in a trial or not: * `true` - The
+  /// entitlement is in trial.
+  ///
+  /// * `false` - The entitlement is not in trial.
+  core.bool? trial;
+
+  GoogleCloudChannelV1TrialSettings({
+    this.endTime,
+    this.trial,
+  });
+
+  GoogleCloudChannelV1TrialSettings.fromJson(core.Map _json)
+      : this(
+          endTime: _json.containsKey('endTime')
+              ? _json['endTime'] as core.String
+              : null,
+          trial:
+              _json.containsKey('trial') ? _json['trial'] as core.bool : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (endTime != null) 'endTime': endTime!,
+        if (trial != null) 'trial': trial!,
+      };
+}
 
 /// Request Message for UnregisterSubscriber.
 class GoogleCloudChannelV1UnregisterSubscriberRequest {
@@ -5532,7 +5654,60 @@ class GoogleCloudChannelV1UpdateChannelPartnerLinkRequest {
 }
 
 /// Data type and value of a parameter.
-typedef GoogleCloudChannelV1Value = $Value;
+class GoogleCloudChannelV1Value {
+  /// Represents a boolean value.
+  core.bool? boolValue;
+
+  /// Represents a double value.
+  core.double? doubleValue;
+
+  /// Represents an int64 value.
+  core.String? int64Value;
+
+  /// Represents an 'Any' proto value.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? protoValue;
+
+  /// Represents a string value.
+  core.String? stringValue;
+
+  GoogleCloudChannelV1Value({
+    this.boolValue,
+    this.doubleValue,
+    this.int64Value,
+    this.protoValue,
+    this.stringValue,
+  });
+
+  GoogleCloudChannelV1Value.fromJson(core.Map _json)
+      : this(
+          boolValue: _json.containsKey('boolValue')
+              ? _json['boolValue'] as core.bool
+              : null,
+          doubleValue: _json.containsKey('doubleValue')
+              ? (_json['doubleValue'] as core.num).toDouble()
+              : null,
+          int64Value: _json.containsKey('int64Value')
+              ? _json['int64Value'] as core.String
+              : null,
+          protoValue: _json.containsKey('protoValue')
+              ? _json['protoValue'] as core.Map<core.String, core.dynamic>
+              : null,
+          stringValue: _json.containsKey('stringValue')
+              ? _json['stringValue'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (boolValue != null) 'boolValue': boolValue!,
+        if (doubleValue != null) 'doubleValue': doubleValue!,
+        if (int64Value != null) 'int64Value': int64Value!,
+        if (protoValue != null) 'protoValue': protoValue!,
+        if (stringValue != null) 'stringValue': stringValue!,
+      };
+}
 
 /// The request message for Operations.CancelOperation.
 typedef GoogleLongrunningCancelOperationRequest = $Empty;

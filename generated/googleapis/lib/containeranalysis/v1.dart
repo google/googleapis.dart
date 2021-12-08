@@ -1551,7 +1551,7 @@ class BuildProvenance {
       };
 }
 
-typedef BuilderConfig = $Shared01;
+typedef BuilderConfig = $Shared00;
 
 /// Common Vulnerability Scoring System.
 ///
@@ -2780,7 +2780,7 @@ typedef GetPolicyOptions = $GetPolicyOptions00;
 typedef GitSourceContext = $GitSourceContext;
 
 /// Container message for hash values.
-typedef Hash = $Hash01;
+typedef Hash = $Hash;
 
 /// This submessage provides human-readable hints about the purpose of the
 /// authority.
@@ -4055,7 +4055,7 @@ class SetIamPolicyRequest {
 /// that holds this Signature, or the canonical serialization of the proto
 /// message that holds this signature).
 typedef Signature = $Signature;
-typedef SlsaBuilder = $Shared01;
+typedef SlsaBuilder = $Shared00;
 
 /// Indicates that the builder claims certain fields in this message to be
 /// complete.

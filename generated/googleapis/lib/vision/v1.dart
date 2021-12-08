@@ -2965,7 +2965,39 @@ class CropHintsParams {
 }
 
 /// Detected start or end of a structural component.
-typedef DetectedBreak = $DetectedBreak;
+class DetectedBreak {
+  /// True if break prepends the element.
+  core.bool? isPrefix;
+
+  /// Detected break type.
+  /// Possible string values are:
+  /// - "UNKNOWN" : Unknown break label type.
+  /// - "SPACE" : Regular space.
+  /// - "SURE_SPACE" : Sure space (very wide).
+  /// - "EOL_SURE_SPACE" : Line-wrapping break.
+  /// - "HYPHEN" : End-line hyphen that is not present in text; does not
+  /// co-occur with `SPACE`, `LEADER_SPACE`, or `LINE_BREAK`.
+  /// - "LINE_BREAK" : Line break that ends a paragraph.
+  core.String? type;
+
+  DetectedBreak({
+    this.isPrefix,
+    this.type,
+  });
+
+  DetectedBreak.fromJson(core.Map _json)
+      : this(
+          isPrefix: _json.containsKey('isPrefix')
+              ? _json['isPrefix'] as core.bool
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (isPrefix != null) 'isPrefix': isPrefix!,
+        if (type != null) 'type': type!,
+      };
+}
 
 /// Detected language for a structural component.
 typedef DetectedLanguage = $DetectedLanguage;
@@ -3400,10 +3432,60 @@ class Feature {
 }
 
 /// The Google Cloud Storage location where the output will be written to.
-typedef GcsDestination = $GcsDestination;
+class GcsDestination {
+  /// Google Cloud Storage URI prefix where the results will be stored.
+  ///
+  /// Results will be in JSON format and preceded by its corresponding input URI
+  /// prefix. This field can either represent a gcs file prefix or gcs
+  /// directory. In either case, the uri should be unique because in order to
+  /// get all of the output files, you will need to do a wildcard gcs search on
+  /// the uri prefix you provide. Examples: * File Prefix:
+  /// gs://bucket-name/here/filenameprefix The output files will be created in
+  /// gs://bucket-name/here/ and the names of the output files will begin with
+  /// "filenameprefix". * Directory Prefix: gs://bucket-name/some/location/ The
+  /// output files will be created in gs://bucket-name/some/location/ and the
+  /// names of the output files could be anything because there was no filename
+  /// prefix specified. If multiple outputs, each response is still
+  /// AnnotateFileResponse, each of which contains some subset of the full list
+  /// of AnnotateImageResponse. Multiple outputs can happen if, for example, the
+  /// output JSON is too large and overflows into multiple sharded files.
+  core.String? uri;
+
+  GcsDestination({
+    this.uri,
+  });
+
+  GcsDestination.fromJson(core.Map _json)
+      : this(
+          uri: _json.containsKey('uri') ? _json['uri'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (uri != null) 'uri': uri!,
+      };
+}
 
 /// The Google Cloud Storage location where the input will be read from.
-typedef GcsSource = $GcsSource00;
+class GcsSource {
+  /// Google Cloud Storage URI for the input file.
+  ///
+  /// This must only be a Google Cloud Storage object. Wildcards are not
+  /// currently supported.
+  core.String? uri;
+
+  GcsSource({
+    this.uri,
+  });
+
+  GcsSource.fromJson(core.Map _json)
+      : this(
+          uri: _json.containsKey('uri') ? _json['uri'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (uri != null) 'uri': uri!,
+      };
+}
 
 /// Information about the products similar to a single product in a query image.
 class GroupedResult {
@@ -3495,7 +3577,32 @@ class Image {
 
 /// If an image was produced from a file (e.g. a PDF), this message gives
 /// information about the source of that image.
-typedef ImageAnnotationContext = $ImageAnnotationContext;
+class ImageAnnotationContext {
+  /// If the file was a PDF or TIFF, this field gives the page number within the
+  /// file used to produce the image.
+  core.int? pageNumber;
+
+  /// The URI of the file used to produce the image.
+  core.String? uri;
+
+  ImageAnnotationContext({
+    this.pageNumber,
+    this.uri,
+  });
+
+  ImageAnnotationContext.fromJson(core.Map _json)
+      : this(
+          pageNumber: _json.containsKey('pageNumber')
+              ? _json['pageNumber'] as core.int
+              : null,
+          uri: _json.containsKey('uri') ? _json['uri'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (pageNumber != null) 'pageNumber': pageNumber!,
+        if (uri != null) 'uri': uri!,
+      };
+}
 
 /// Image context and/or feature-specific parameters.
 class ImageContext {
@@ -3800,7 +3907,34 @@ class InputConfig {
 }
 
 /// A product label represented as a key-value pair.
-typedef KeyValue = $KeyValue;
+class KeyValue {
+  /// The key of the label attached to the product.
+  ///
+  /// Cannot be empty and cannot exceed 128 bytes.
+  core.String? key;
+
+  /// The value of the label attached to the product.
+  ///
+  /// Cannot be empty and cannot exceed 128 bytes.
+  core.String? value;
+
+  KeyValue({
+    this.key,
+    this.value,
+  });
+
+  KeyValue.fromJson(core.Map _json)
+      : this(
+          key: _json.containsKey('key') ? _json['key'] as core.String : null,
+          value:
+              _json.containsKey('value') ? _json['value'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (key != null) 'key': key!,
+        if (value != null) 'value': value!,
+      };
+}
 
 /// A face-specific landmark (for example, a face feature).
 class Landmark {
@@ -4163,10 +4297,79 @@ class LocationInfo {
 ///
 /// NOTE: the normalized vertex coordinates are relative to the original image
 /// and range from 0 to 1.
-typedef NormalizedVertex = $NormalizedVertex00;
+class NormalizedVertex {
+  /// X coordinate.
+  core.double? x;
+
+  /// Y coordinate.
+  core.double? y;
+
+  NormalizedVertex({
+    this.x,
+    this.y,
+  });
+
+  NormalizedVertex.fromJson(core.Map _json)
+      : this(
+          x: _json.containsKey('x')
+              ? (_json['x'] as core.num).toDouble()
+              : null,
+          y: _json.containsKey('y')
+              ? (_json['y'] as core.num).toDouble()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (x != null) 'x': x!,
+        if (y != null) 'y': y!,
+      };
+}
 
 /// Prediction for what the object in the bounding box is.
-typedef ObjectAnnotation = $ObjectAnnotation;
+class ObjectAnnotation {
+  /// The BCP-47 language code, such as "en-US" or "sr-Latn".
+  ///
+  /// For more information, see
+  /// http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+  core.String? languageCode;
+
+  /// Object ID that should align with EntityAnnotation mid.
+  core.String? mid;
+
+  /// Object name, expressed in its `language_code` language.
+  core.String? name;
+
+  /// Score of the result.
+  ///
+  /// Range \[0, 1\].
+  core.double? score;
+
+  ObjectAnnotation({
+    this.languageCode,
+    this.mid,
+    this.name,
+    this.score,
+  });
+
+  ObjectAnnotation.fromJson(core.Map _json)
+      : this(
+          languageCode: _json.containsKey('languageCode')
+              ? _json['languageCode'] as core.String
+              : null,
+          mid: _json.containsKey('mid') ? _json['mid'] as core.String : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          score: _json.containsKey('score')
+              ? (_json['score'] as core.num).toDouble()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (languageCode != null) 'languageCode': languageCode!,
+        if (mid != null) 'mid': mid!,
+        if (name != null) 'name': name!,
+        if (score != null) 'score': score!,
+      };
+}
 
 /// This resource represents a long-running operation that is the result of a
 /// network API call.
@@ -4408,7 +4611,41 @@ class Paragraph {
 ///
 /// A valid Position must have both x and y coordinates. The position
 /// coordinates are in the same scale as the original image.
-typedef Position = $Position;
+class Position {
+  /// X coordinate.
+  core.double? x;
+
+  /// Y coordinate.
+  core.double? y;
+
+  /// Z coordinate (or depth).
+  core.double? z;
+
+  Position({
+    this.x,
+    this.y,
+    this.z,
+  });
+
+  Position.fromJson(core.Map _json)
+      : this(
+          x: _json.containsKey('x')
+              ? (_json['x'] as core.num).toDouble()
+              : null,
+          y: _json.containsKey('y')
+              ? (_json['y'] as core.num).toDouble()
+              : null,
+          z: _json.containsKey('z')
+              ? (_json['z'] as core.num).toDouble()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (x != null) 'x': x!,
+        if (y != null) 'y': y!,
+        if (z != null) 'z': z!,
+      };
+}
 
 /// A Product contains ReferenceImages.
 class Product {
@@ -4696,7 +4933,38 @@ class ProductSetPurgeConfig {
 }
 
 /// A `Property` consists of a user-supplied name/value pair.
-typedef Property = $Property;
+class Property {
+  /// Name of the property.
+  core.String? name;
+
+  /// Value of numeric properties.
+  core.String? uint64Value;
+
+  /// Value of the property.
+  core.String? value;
+
+  Property({
+    this.name,
+    this.uint64Value,
+    this.value,
+  });
+
+  Property.fromJson(core.Map _json)
+      : this(
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          uint64Value: _json.containsKey('uint64Value')
+              ? _json['uint64Value'] as core.String
+              : null,
+          value:
+              _json.containsKey('value') ? _json['value'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+        if (uint64Value != null) 'uint64Value': uint64Value!,
+        if (value != null) 'value': value!,
+      };
+}
 
 /// Request message for the `PurgeProducts` method.
 class PurgeProductsRequest {
@@ -4859,7 +5127,98 @@ class Result {
 
 /// Set of features pertaining to the image, computed by computer vision methods
 /// over safe-search verticals (for example, adult, spoof, medical, violence).
-typedef SafeSearchAnnotation = $SafeSearchAnnotation;
+class SafeSearchAnnotation {
+  /// Represents the adult content likelihood for the image.
+  ///
+  /// Adult content may contain elements such as nudity, pornographic images or
+  /// cartoons, or sexual activities.
+  /// Possible string values are:
+  /// - "UNKNOWN" : Unknown likelihood.
+  /// - "VERY_UNLIKELY" : It is very unlikely.
+  /// - "UNLIKELY" : It is unlikely.
+  /// - "POSSIBLE" : It is possible.
+  /// - "LIKELY" : It is likely.
+  /// - "VERY_LIKELY" : It is very likely.
+  core.String? adult;
+
+  /// Likelihood that this is a medical image.
+  /// Possible string values are:
+  /// - "UNKNOWN" : Unknown likelihood.
+  /// - "VERY_UNLIKELY" : It is very unlikely.
+  /// - "UNLIKELY" : It is unlikely.
+  /// - "POSSIBLE" : It is possible.
+  /// - "LIKELY" : It is likely.
+  /// - "VERY_LIKELY" : It is very likely.
+  core.String? medical;
+
+  /// Likelihood that the request image contains racy content.
+  ///
+  /// Racy content may include (but is not limited to) skimpy or sheer clothing,
+  /// strategically covered nudity, lewd or provocative poses, or close-ups of
+  /// sensitive body areas.
+  /// Possible string values are:
+  /// - "UNKNOWN" : Unknown likelihood.
+  /// - "VERY_UNLIKELY" : It is very unlikely.
+  /// - "UNLIKELY" : It is unlikely.
+  /// - "POSSIBLE" : It is possible.
+  /// - "LIKELY" : It is likely.
+  /// - "VERY_LIKELY" : It is very likely.
+  core.String? racy;
+
+  /// Spoof likelihood.
+  ///
+  /// The likelihood that an modification was made to the image's canonical
+  /// version to make it appear funny or offensive.
+  /// Possible string values are:
+  /// - "UNKNOWN" : Unknown likelihood.
+  /// - "VERY_UNLIKELY" : It is very unlikely.
+  /// - "UNLIKELY" : It is unlikely.
+  /// - "POSSIBLE" : It is possible.
+  /// - "LIKELY" : It is likely.
+  /// - "VERY_LIKELY" : It is very likely.
+  core.String? spoof;
+
+  /// Likelihood that this image contains violent content.
+  /// Possible string values are:
+  /// - "UNKNOWN" : Unknown likelihood.
+  /// - "VERY_UNLIKELY" : It is very unlikely.
+  /// - "UNLIKELY" : It is unlikely.
+  /// - "POSSIBLE" : It is possible.
+  /// - "LIKELY" : It is likely.
+  /// - "VERY_LIKELY" : It is very likely.
+  core.String? violence;
+
+  SafeSearchAnnotation({
+    this.adult,
+    this.medical,
+    this.racy,
+    this.spoof,
+    this.violence,
+  });
+
+  SafeSearchAnnotation.fromJson(core.Map _json)
+      : this(
+          adult:
+              _json.containsKey('adult') ? _json['adult'] as core.String : null,
+          medical: _json.containsKey('medical')
+              ? _json['medical'] as core.String
+              : null,
+          racy: _json.containsKey('racy') ? _json['racy'] as core.String : null,
+          spoof:
+              _json.containsKey('spoof') ? _json['spoof'] as core.String : null,
+          violence: _json.containsKey('violence')
+              ? _json['violence'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (adult != null) 'adult': adult!,
+        if (medical != null) 'medical': medical!,
+        if (racy != null) 'racy': racy!,
+        if (spoof != null) 'spoof': spoof!,
+        if (violence != null) 'violence': violence!,
+      };
+}
 
 /// The `Status` type defines a logical error model that is suitable for
 /// different programming environments, including REST APIs and RPC APIs.
@@ -5028,7 +5387,29 @@ class TextProperty {
 /// A vertex represents a 2D point in the image.
 ///
 /// NOTE: the vertex coordinates are in the same scale as the original image.
-typedef Vertex = $Vertex00;
+class Vertex {
+  /// X coordinate.
+  core.int? x;
+
+  /// Y coordinate.
+  core.int? y;
+
+  Vertex({
+    this.x,
+    this.y,
+  });
+
+  Vertex.fromJson(core.Map _json)
+      : this(
+          x: _json.containsKey('x') ? _json['x'] as core.int : null,
+          y: _json.containsKey('y') ? _json['y'] as core.int : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (x != null) 'x': x!,
+        if (y != null) 'y': y!,
+      };
+}
 
 /// Relevant information for the image from the Internet.
 class WebDetection {
@@ -5142,13 +5523,101 @@ class WebDetectionParams {
 }
 
 /// Entity deduced from similar images on the Internet.
-typedef WebEntity = $WebEntity;
+class WebEntity {
+  /// Canonical description of the entity, in English.
+  core.String? description;
+
+  /// Opaque entity ID.
+  core.String? entityId;
+
+  /// Overall relevancy score for the entity.
+  ///
+  /// Not normalized and not comparable across different image queries.
+  core.double? score;
+
+  WebEntity({
+    this.description,
+    this.entityId,
+    this.score,
+  });
+
+  WebEntity.fromJson(core.Map _json)
+      : this(
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          entityId: _json.containsKey('entityId')
+              ? _json['entityId'] as core.String
+              : null,
+          score: _json.containsKey('score')
+              ? (_json['score'] as core.num).toDouble()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (description != null) 'description': description!,
+        if (entityId != null) 'entityId': entityId!,
+        if (score != null) 'score': score!,
+      };
+}
 
 /// Metadata for online images.
-typedef WebImage = $WebImage;
+class WebImage {
+  /// (Deprecated) Overall relevancy score for the image.
+  core.double? score;
+
+  /// The result image URL.
+  core.String? url;
+
+  WebImage({
+    this.score,
+    this.url,
+  });
+
+  WebImage.fromJson(core.Map _json)
+      : this(
+          score: _json.containsKey('score')
+              ? (_json['score'] as core.num).toDouble()
+              : null,
+          url: _json.containsKey('url') ? _json['url'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (score != null) 'score': score!,
+        if (url != null) 'url': url!,
+      };
+}
 
 /// Label to provide extra metadata for the web detection.
-typedef WebLabel = $WebLabel;
+class WebLabel {
+  /// Label for extra metadata.
+  core.String? label;
+
+  /// The BCP-47 language code for `label`, such as "en-US" or "sr-Latn".
+  ///
+  /// For more information, see
+  /// http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+  core.String? languageCode;
+
+  WebLabel({
+    this.label,
+    this.languageCode,
+  });
+
+  WebLabel.fromJson(core.Map _json)
+      : this(
+          label:
+              _json.containsKey('label') ? _json['label'] as core.String : null,
+          languageCode: _json.containsKey('languageCode')
+              ? _json['languageCode'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (label != null) 'label': label!,
+        if (languageCode != null) 'languageCode': languageCode!,
+      };
+}
 
 /// Metadata for web pages.
 class WebPage {

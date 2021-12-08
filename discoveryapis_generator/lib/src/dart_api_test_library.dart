@@ -31,10 +31,7 @@ class DartApiTestLibrary extends TestHelper {
     this.packageName,
   ) {
     void handleType(DartSchemaType schema) {
-      if (schema is! ComplexDartSchemaType ||
-          apiLibrary.referencedTypes.contains(schema)) {
-        schemaTests.putIfAbsent(schema, () => testFromSchema(this, schema));
-      }
+      schemaTests.putIfAbsent(schema, () => testFromSchema(this, schema));
     }
 
     void traverseResource(

@@ -2413,7 +2413,29 @@ class GoogleCloudRetailV2ImportCompletionDataRequest {
 }
 
 /// Configuration of destination for Import related errors.
-typedef GoogleCloudRetailV2ImportErrorsConfig = $ImportErrorsConfig;
+class GoogleCloudRetailV2ImportErrorsConfig {
+  /// Google Cloud Storage path for import errors.
+  ///
+  /// This must be an empty, existing Cloud Storage bucket. Import errors will
+  /// be written to a file in this bucket, one per line, as a JSON-encoded
+  /// `google.rpc.Status` message.
+  core.String? gcsPrefix;
+
+  GoogleCloudRetailV2ImportErrorsConfig({
+    this.gcsPrefix,
+  });
+
+  GoogleCloudRetailV2ImportErrorsConfig.fromJson(core.Map _json)
+      : this(
+          gcsPrefix: _json.containsKey('gcsPrefix')
+              ? _json['gcsPrefix'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (gcsPrefix != null) 'gcsPrefix': gcsPrefix!,
+      };
+}
 
 /// Request message for Import methods.
 class GoogleCloudRetailV2ImportProductsRequest {

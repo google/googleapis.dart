@@ -745,7 +745,7 @@ class BuildProvenance {
       };
 }
 
-typedef BuilderConfig = $Shared06;
+typedef BuilderConfig = $Shared03;
 
 /// The category to which the update belongs.
 class Category {
@@ -886,7 +886,7 @@ class DSSEAttestationOccurrence {
 }
 
 /// The period during which some deployable was active in a runtime.
-typedef DeploymentOccurrence = $Shared03;
+typedef DeploymentOccurrence = $Shared02;
 
 /// Provides information about the analysis status of a discovered resource.
 class DiscoveryOccurrence {
@@ -2297,7 +2297,7 @@ class RepoId {
 /// that holds this Signature, or the canonical serialization of the proto
 /// message that holds this signature).
 typedef Signature = $Signature;
-typedef SlsaBuilder = $Shared06;
+typedef SlsaBuilder = $Shared03;
 
 /// Indicates that the builder claims certain fields in this message to be
 /// complete.

@@ -6,6 +6,7 @@ import 'package:collection/collection.dart';
 
 import 'dart_schema_types.dart';
 import 'generated_googleapis/discovery/v1.dart';
+import 'unused_logic.dart';
 
 const sharedLibraryName = 'shared.dart';
 
@@ -90,8 +91,8 @@ mixin DedupeMixin {
     final dupes = <String, Set<_Replacement>>{};
 
     for (var api in descriptions) {
-      for (var schemaEntry in api.schemas!.entries) {
-        final schema = schemaEntry.value;
+      api.pruneUnused();
+      for (var schema in api.schemas!.values) {
         if (schema.decedentSchema.any((element) => element.complex)) {
           // TODO: support deduping types that refer to other types
           continue;

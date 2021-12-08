@@ -77,6 +77,17 @@
     }
    }
   },
+  "ToyAgeRequest2": {
+   "id": "ToyAgeRequest2",
+   "type": "object",
+   "properties": {
+    "age": {
+     "type": "integer",
+     "default": "1000",
+     "format": "int32"
+    }
+   }
+  },
   "ToyMapResponse": {
    "id": "ToyMapResponse",
    "type": "object",

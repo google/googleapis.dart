@@ -32,7 +32,7 @@ import 'dart:convert' as convert;
 import 'dart:core' as core;
 
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
-import 'package:http/http.dart' as http_1;
+import 'package:http/http.dart' as http;
 
 // ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
@@ -53,7 +53,7 @@ class ServiceConsumerManagementApi {
   OperationsResource get operations => OperationsResource(_requester);
   ServicesResource get services => ServicesResource(_requester);
 
-  ServiceConsumerManagementApi(http_1.Client client,
+  ServiceConsumerManagementApi(http.Client client,
       {core.String rootUrl =
           'https://serviceconsumermanagement.googleapis.com/',
       core.String servicePath = ''})
@@ -92,8 +92,8 @@ class OperationsResource {
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
-  /// If the used [http_1.Client] completes with an error when making a REST
-  /// call, this method will complete with the same error.
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<Empty> cancel(
     CancelOperationRequest request,
     core.String name, {
@@ -134,8 +134,8 @@ class OperationsResource {
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
-  /// If the used [http_1.Client] completes with an error when making a REST
-  /// call, this method will complete with the same error.
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
     core.String? $fields,
@@ -172,8 +172,8 @@ class OperationsResource {
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
-  /// If the used [http_1.Client] completes with an error when making a REST
-  /// call, this method will complete with the same error.
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<Operation> get(
     core.String name, {
     core.String? $fields,
@@ -222,8 +222,8 @@ class OperationsResource {
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
-  /// If the used [http_1.Client] completes with an error when making a REST
-  /// call, this method will complete with the same error.
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(
     core.String name, {
     core.String? filter,
@@ -297,8 +297,8 @@ class ServicesResource {
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
-  /// If the used [http_1.Client] completes with an error when making a REST
-  /// call, this method will complete with the same error.
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<SearchTenancyUnitsResponse> search(
     core.String parent, {
     core.int? pageSize,
@@ -355,8 +355,8 @@ class ServicesTenancyUnitsResource {
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
-  /// If the used [http_1.Client] completes with an error when making a REST
-  /// call, this method will complete with the same error.
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<Operation> addProject(
     AddTenantProjectRequest request,
     core.String parent, {
@@ -412,8 +412,8 @@ class ServicesTenancyUnitsResource {
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
-  /// If the used [http_1.Client] completes with an error when making a REST
-  /// call, this method will complete with the same error.
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<Operation> applyProjectConfig(
     ApplyTenantProjectConfigRequest request,
     core.String name, {
@@ -464,8 +464,8 @@ class ServicesTenancyUnitsResource {
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
-  /// If the used [http_1.Client] completes with an error when making a REST
-  /// call, this method will complete with the same error.
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<Operation> attachProject(
     AttachTenantProjectRequest request,
     core.String name, {
@@ -514,8 +514,8 @@ class ServicesTenancyUnitsResource {
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
-  /// If the used [http_1.Client] completes with an error when making a REST
-  /// call, this method will complete with the same error.
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<TenancyUnit> create(
     CreateTenancyUnitRequest request,
     core.String parent, {
@@ -557,8 +557,8 @@ class ServicesTenancyUnitsResource {
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
-  /// If the used [http_1.Client] completes with an error when making a REST
-  /// call, this method will complete with the same error.
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<Operation> delete(
     core.String name, {
     core.String? $fields,
@@ -605,8 +605,8 @@ class ServicesTenancyUnitsResource {
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
-  /// If the used [http_1.Client] completes with an error when making a REST
-  /// call, this method will complete with the same error.
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<Operation> deleteProject(
     DeleteTenantProjectRequest request,
     core.String name, {
@@ -663,8 +663,8 @@ class ServicesTenancyUnitsResource {
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
-  /// If the used [http_1.Client] completes with an error when making a REST
-  /// call, this method will complete with the same error.
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<ListTenancyUnitsResponse> list(
     core.String parent, {
     core.String? filter,
@@ -717,8 +717,8 @@ class ServicesTenancyUnitsResource {
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
-  /// If the used [http_1.Client] completes with an error when making a REST
-  /// call, this method will complete with the same error.
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<Operation> removeProject(
     RemoveTenantProjectRequest request,
     core.String name, {
@@ -764,8 +764,8 @@ class ServicesTenancyUnitsResource {
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
-  /// If the used [http_1.Client] completes with an error when making a REST
-  /// call, this method will complete with the same error.
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<Operation> undeleteProject(
     UndeleteTenantProjectRequest request,
     core.String name, {
