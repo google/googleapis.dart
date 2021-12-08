@@ -3886,7 +3886,7 @@ class OSPolicyResourcePackageResource {
 ///
 /// - install: `apt-get update && apt-get -y install [name]` - remove: `apt-get
 /// -y remove [name]`
-typedef OSPolicyResourcePackageResourceAPT = $Shared02;
+typedef OSPolicyResourcePackageResourceAPT = $Shared03;
 
 /// A deb package file.
 ///
@@ -3929,7 +3929,7 @@ class OSPolicyResourcePackageResourceDeb {
 ///
 /// - install: `googet -noconfirm install package` - remove: `googet -noconfirm
 /// remove package`
-typedef OSPolicyResourcePackageResourceGooGet = $Shared02;
+typedef OSPolicyResourcePackageResourceGooGet = $Shared03;
 
 /// An MSI package.
 ///
@@ -4010,12 +4010,12 @@ class OSPolicyResourcePackageResourceRPM {
 /// A package managed by YUM.
 ///
 /// - install: `yum -y install package` - remove: `yum -y remove package`
-typedef OSPolicyResourcePackageResourceYUM = $Shared02;
+typedef OSPolicyResourcePackageResourceYUM = $Shared03;
 
 /// A package managed by Zypper.
 ///
 /// - install: `zypper -y install package` - remove: `zypper -y rm package`
-typedef OSPolicyResourcePackageResourceZypper = $Shared02;
+typedef OSPolicyResourcePackageResourceZypper = $Shared03;
 
 /// A resource that manages a package repository.
 class OSPolicyResourceRepositoryResource {
@@ -5223,12 +5223,12 @@ class RecurringSchedule {
   /// Required.
   /// Possible string values are:
   /// - "FREQUENCY_UNSPECIFIED" : Invalid. A frequency must be specified.
-  /// - "WEEKLY" : Indicates that the frequency should be expressed in terms of
-  /// weeks.
-  /// - "MONTHLY" : Indicates that the frequency should be expressed in terms of
-  /// months.
-  /// - "DAILY" : Indicates that the frequency should be expressed in terms of
-  /// days.
+  /// - "WEEKLY" : Indicates that the frequency of recurrence should be
+  /// expressed in terms of weeks.
+  /// - "MONTHLY" : Indicates that the frequency of recurrence should be
+  /// expressed in terms of months.
+  /// - "DAILY" : Indicates that the frequency of recurrence should be expressed
+  /// in terms of days.
   core.String? frequency;
 
   /// The time the last patch job ran successfully.
@@ -5427,6 +5427,9 @@ class VulnerabilityReportVulnerability {
   /// field may be empty.
   core.List<core.String>? installedInventoryItemIds;
 
+  /// List of items affected by the vulnerability.
+  core.List<VulnerabilityReportVulnerabilityItem>? items;
+
   /// The timestamp for when the vulnerability was last modified.
   core.String? updateTime;
 
@@ -5435,6 +5438,7 @@ class VulnerabilityReportVulnerability {
     this.createTime,
     this.details,
     this.installedInventoryItemIds,
+    this.items,
     this.updateTime,
   });
 
@@ -5459,6 +5463,12 @@ class VulnerabilityReportVulnerability {
                       .map((value) => value as core.String)
                       .toList()
                   : null,
+          items: _json.containsKey('items')
+              ? (_json['items'] as core.List)
+                  .map((value) => VulnerabilityReportVulnerabilityItem.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           updateTime: _json.containsKey('updateTime')
               ? _json['updateTime'] as core.String
               : null,
@@ -5471,6 +5481,7 @@ class VulnerabilityReportVulnerability {
         if (details != null) 'details': details!,
         if (installedInventoryItemIds != null)
           'installedInventoryItemIds': installedInventoryItemIds!,
+        if (items != null) 'items': items!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
 }
@@ -5575,6 +5586,67 @@ class VulnerabilityReportVulnerabilityDetailsReference {
       };
 }
 
+/// OS inventory item that is affected by a vulnerability or fixed as a result
+/// of a vulnerability.
+class VulnerabilityReportVulnerabilityItem {
+  /// Corresponds to the `AVAILABLE_PACKAGE` inventory item on the VM.
+  ///
+  /// If the vulnerability report was not updated after the VM inventory update,
+  /// these values might not display in VM inventory. If there is no available
+  /// fix, the field is empty. The `inventory_item` value specifies the latest
+  /// `SoftwarePackage` available to the VM that fixes the vulnerability.
+  core.String? availableInventoryItemId;
+
+  /// The recommended [CPE URI](https://cpe.mitre.org/specification/) update
+  /// that contains a fix for this vulnerability.
+  core.String? fixedCpeUri;
+
+  /// Corresponds to the `INSTALLED_PACKAGE` inventory item on the VM.
+  ///
+  /// This field displays the inventory items affected by this vulnerability. If
+  /// the vulnerability report was not updated after the VM inventory update,
+  /// these values might not display in VM inventory. For some operating
+  /// systems, this field might be empty.
+  core.String? installedInventoryItemId;
+
+  /// The upstream OS patch, packages or KB that fixes the vulnerability.
+  core.String? upstreamFix;
+
+  VulnerabilityReportVulnerabilityItem({
+    this.availableInventoryItemId,
+    this.fixedCpeUri,
+    this.installedInventoryItemId,
+    this.upstreamFix,
+  });
+
+  VulnerabilityReportVulnerabilityItem.fromJson(core.Map _json)
+      : this(
+          availableInventoryItemId:
+              _json.containsKey('availableInventoryItemId')
+                  ? _json['availableInventoryItemId'] as core.String
+                  : null,
+          fixedCpeUri: _json.containsKey('fixedCpeUri')
+              ? _json['fixedCpeUri'] as core.String
+              : null,
+          installedInventoryItemId:
+              _json.containsKey('installedInventoryItemId')
+                  ? _json['installedInventoryItemId'] as core.String
+                  : null,
+          upstreamFix: _json.containsKey('upstreamFix')
+              ? _json['upstreamFix'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (availableInventoryItemId != null)
+          'availableInventoryItemId': availableInventoryItemId!,
+        if (fixedCpeUri != null) 'fixedCpeUri': fixedCpeUri!,
+        if (installedInventoryItemId != null)
+          'installedInventoryItemId': installedInventoryItemId!,
+        if (upstreamFix != null) 'upstreamFix': upstreamFix!,
+      };
+}
+
 /// Represents one week day in a month.
 ///
 /// An example is "the 4th Sunday".
@@ -5593,6 +5665,19 @@ class WeekDayOfMonth {
   /// - "SUNDAY" : Sunday
   core.String? dayOfWeek;
 
+  /// Represents the number of days before or after the given week day of month
+  /// that the patch deployment is scheduled for.
+  ///
+  /// For example if `week_ordinal` and `day_of_week` values point to the second
+  /// day of the month and this `day_offset` value is set to `3`, the patch
+  /// deployment takes place three days after the second Tuesday of the month.
+  /// If this value is negative, for example -5, the patches are deployed five
+  /// days before before the second Tuesday of the month. Allowed values are in
+  /// range \[-30, 30\].
+  ///
+  /// Optional.
+  core.int? dayOffset;
+
   /// Week number in a month.
   ///
   /// 1-4 indicates the 1st to 4th week of the month. -1 indicates the last week
@@ -5603,6 +5688,7 @@ class WeekDayOfMonth {
 
   WeekDayOfMonth({
     this.dayOfWeek,
+    this.dayOffset,
     this.weekOrdinal,
   });
 
@@ -5611,6 +5697,9 @@ class WeekDayOfMonth {
           dayOfWeek: _json.containsKey('dayOfWeek')
               ? _json['dayOfWeek'] as core.String
               : null,
+          dayOffset: _json.containsKey('dayOffset')
+              ? _json['dayOffset'] as core.int
+              : null,
           weekOrdinal: _json.containsKey('weekOrdinal')
               ? _json['weekOrdinal'] as core.int
               : null,
@@ -5618,6 +5707,7 @@ class WeekDayOfMonth {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (dayOfWeek != null) 'dayOfWeek': dayOfWeek!,
+        if (dayOffset != null) 'dayOffset': dayOffset!,
         if (weekOrdinal != null) 'weekOrdinal': weekOrdinal!,
       };
 }

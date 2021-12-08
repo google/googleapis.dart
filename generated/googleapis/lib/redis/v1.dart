@@ -1045,8 +1045,6 @@ class InputConfig {
 }
 
 /// A Google Cloud Redis instance.
-///
-/// next id = 38
 class Instance {
   /// If specified, at least one node will be provisioned in this zone in
   /// addition to the zone specified in location_id.
@@ -1196,14 +1194,17 @@ class Instance {
 
   /// Read replica mode.
   ///
+  /// Can only be specified when trying to create the instance.
+  ///
   /// Optional.
   /// Possible string values are:
   /// - "READ_REPLICAS_MODE_UNSPECIFIED" : If not set, Memorystore Redis backend
-  /// will pick the mode based on other fields in the request.
+  /// will default to READ_REPLICAS_DISABLED.
   /// - "READ_REPLICAS_DISABLED" : If disabled, read endpoint will not be
   /// provided and the instance cannot scale up or down the number of replicas.
   /// - "READ_REPLICAS_ENABLED" : If enabled, read endpoint will be provided and
-  /// the instance can scale up and down the number of replicas.
+  /// the instance can scale up and down the number of replicas. Not valid for
+  /// basic tier.
   core.String? readReplicasMode;
 
   /// Redis configuration parameters, according to
@@ -1229,8 +1230,10 @@ class Instance {
 
   /// The number of replica nodes.
   ///
-  /// Valid range for standard tier is \[1-5\] and defaults to 2. Valid value
-  /// for basic tier is 0 and defaults to 0.
+  /// The valid range for the Standard Tier with read replicas enabled is
+  /// \[1-5\] and defaults to 2. If read replicas are not enabled for a Standard
+  /// Tier instance, the only valid value is 1 and the default is 1. The valid
+  /// value for basic tier is 0 and the default is also 0.
   ///
   /// Optional.
   core.int? replicaCount;

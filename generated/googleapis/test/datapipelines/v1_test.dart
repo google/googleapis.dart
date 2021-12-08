@@ -514,6 +514,23 @@ void checkGoogleCloudDatapipelinesV1ListPipelinesResponse(
   buildCounterGoogleCloudDatapipelinesV1ListPipelinesResponse--;
 }
 
+core.Map<core.String, core.String> buildUnnamed9() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
+
+void checkUnnamed9(core.Map<core.String, core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o['x']!,
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o['y']!,
+    unittest.equals('foo'),
+  );
+}
+
 core.int buildCounterGoogleCloudDatapipelinesV1Pipeline = 0;
 api.GoogleCloudDatapipelinesV1Pipeline
     buildGoogleCloudDatapipelinesV1Pipeline() {
@@ -525,6 +542,7 @@ api.GoogleCloudDatapipelinesV1Pipeline
     o.jobCount = 42;
     o.lastUpdateTime = 'foo';
     o.name = 'foo';
+    o.pipelineSources = buildUnnamed9();
     o.scheduleInfo = buildGoogleCloudDatapipelinesV1ScheduleSpec();
     o.schedulerServiceAccountEmail = 'foo';
     o.state = 'foo';
@@ -559,6 +577,7 @@ void checkGoogleCloudDatapipelinesV1Pipeline(
       o.name!,
       unittest.equals('foo'),
     );
+    checkUnnamed9(o.pipelineSources!);
     checkGoogleCloudDatapipelinesV1ScheduleSpec(o.scheduleInfo!);
     unittest.expect(
       o.schedulerServiceAccountEmail!,
@@ -615,12 +634,12 @@ void checkGoogleCloudDatapipelinesV1RunPipelineResponse(
   buildCounterGoogleCloudDatapipelinesV1RunPipelineResponse--;
 }
 
-core.List<core.String> buildUnnamed9() => [
+core.List<core.String> buildUnnamed10() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed9(core.List<core.String> o) {
+void checkUnnamed10(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -632,12 +651,12 @@ void checkUnnamed9(core.List<core.String> o) {
   );
 }
 
-core.Map<core.String, core.String> buildUnnamed10() => {
+core.Map<core.String, core.String> buildUnnamed11() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed10(core.Map<core.String, core.String> o) {
+void checkUnnamed11(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -655,8 +674,8 @@ api.GoogleCloudDatapipelinesV1RuntimeEnvironment
   final o = api.GoogleCloudDatapipelinesV1RuntimeEnvironment();
   buildCounterGoogleCloudDatapipelinesV1RuntimeEnvironment++;
   if (buildCounterGoogleCloudDatapipelinesV1RuntimeEnvironment < 3) {
-    o.additionalExperiments = buildUnnamed9();
-    o.additionalUserLabels = buildUnnamed10();
+    o.additionalExperiments = buildUnnamed10();
+    o.additionalUserLabels = buildUnnamed11();
     o.bypassTempDirValidation = true;
     o.enableStreamingEngine = true;
     o.ipConfiguration = 'foo';
@@ -680,8 +699,8 @@ void checkGoogleCloudDatapipelinesV1RuntimeEnvironment(
     api.GoogleCloudDatapipelinesV1RuntimeEnvironment o) {
   buildCounterGoogleCloudDatapipelinesV1RuntimeEnvironment++;
   if (buildCounterGoogleCloudDatapipelinesV1RuntimeEnvironment < 3) {
-    checkUnnamed9(o.additionalExperiments!);
-    checkUnnamed10(o.additionalUserLabels!);
+    checkUnnamed10(o.additionalExperiments!);
+    checkUnnamed11(o.additionalUserLabels!);
     unittest.expect(o.bypassTempDirValidation!, unittest.isTrue);
     unittest.expect(o.enableStreamingEngine!, unittest.isTrue);
     unittest.expect(
@@ -863,7 +882,7 @@ void checkGoogleProtobufEmpty(api.GoogleProtobufEmpty o) {
   buildCounterGoogleProtobufEmpty--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed11() => {
+core.Map<core.String, core.Object?> buildUnnamed12() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -876,7 +895,7 @@ core.Map<core.String, core.Object?> buildUnnamed11() => {
       },
     };
 
-void checkUnnamed11(core.Map<core.String, core.Object?> o) {
+void checkUnnamed12(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o['x']!) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -908,15 +927,15 @@ void checkUnnamed11(core.Map<core.String, core.Object?> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object?>> buildUnnamed12() => [
-      buildUnnamed11(),
-      buildUnnamed11(),
+core.List<core.Map<core.String, core.Object?>> buildUnnamed13() => [
+      buildUnnamed12(),
+      buildUnnamed12(),
     ];
 
-void checkUnnamed12(core.List<core.Map<core.String, core.Object?>> o) {
+void checkUnnamed13(core.List<core.Map<core.String, core.Object?>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed11(o[0]);
-  checkUnnamed11(o[1]);
+  checkUnnamed12(o[0]);
+  checkUnnamed12(o[1]);
 }
 
 core.int buildCounterGoogleRpcStatus = 0;
@@ -925,7 +944,7 @@ api.GoogleRpcStatus buildGoogleRpcStatus() {
   buildCounterGoogleRpcStatus++;
   if (buildCounterGoogleRpcStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed12();
+    o.details = buildUnnamed13();
     o.message = 'foo';
   }
   buildCounterGoogleRpcStatus--;
@@ -939,7 +958,7 @@ void checkGoogleRpcStatus(api.GoogleRpcStatus o) {
       o.code!,
       unittest.equals(42),
     );
-    checkUnnamed12(o.details!);
+    checkUnnamed13(o.details!);
     unittest.expect(
       o.message!,
       unittest.equals('foo'),

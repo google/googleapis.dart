@@ -348,7 +348,7 @@
             }
         }
     },
-    "revision": "20211021",
+    "revision": "20211126",
     "rootUrl": "https://videointelligence.googleapis.com/",
     "schemas": {
         "GoogleCloudVideointelligenceV1_AnnotateVideoProgress": {

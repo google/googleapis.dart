@@ -1238,9 +1238,9 @@ class Customer {
   /// information, see
   /// [managed teams](https://support.google.com/a/users/answer/9939479).
   /// Possible string values are:
-  /// - "CUSTOMER_TYPE_UNSPECIFIED" : Customer type not known
-  /// - "DOMAIN" : Domained or domain-owning customers
-  /// - "TEAM" : Domainless or email-verified customers
+  /// - "customerTypeUnspecified" : Customer type not known
+  /// - "domain" : Domained or domain-owning customers
+  /// - "team" : Domainless or email-verified customers
   core.String? customerType;
 
   /// Identifies the resource as a customer.

@@ -14,12 +14,7 @@
 
 /// Cloud Monitoring API - v3
 ///
-/// Manages your Cloud Monitoring data and configurations. Most projects must be
-/// associated with a Workspace, with a few exceptions as noted on the
-/// individual method pages. The table entries below are presented in
-/// alphabetical order, not in order of common use. For explanations of the
-/// concepts found in the table entries, read the Cloud Monitoring documentation
-/// (https://cloud.google.com/monitoring/docs).
+/// Manages your Cloud Monitoring data and configurations.
 ///
 /// For more information, see <https://cloud.google.com/monitoring/api/>
 ///
@@ -60,12 +55,6 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
 /// Manages your Cloud Monitoring data and configurations.
-///
-/// Most projects must be associated with a Workspace, with a few exceptions as
-/// noted on the individual method pages. The table entries below are presented
-/// in alphabetical order, not in order of common use. For explanations of the
-/// concepts found in the table entries, read the Cloud Monitoring documentation
-/// (https://cloud.google.com/monitoring/docs).
 class MonitoringApi {
   /// See, edit, configure, and delete your Google Cloud data and see the email
   /// address for your Google Account.
@@ -8819,10 +8808,14 @@ class Telemetry {
       };
 }
 
-/// A closed time interval.
+/// Describes a time interval: Reads: A half-open time interval.
 ///
-/// It extends from the start time to the end time, and includes both:
-/// \[startTime, endTime\]. Valid time intervals depend on the MetricKind
+/// It includes the end time but excludes the start time: (startTime, endTime\].
+/// The start time must be specified, must be earlier than the end time, and
+/// should be no older than the data retention period for the metric. Writes: A
+/// closed time interval. It extends from the start time to the end time, and
+/// includes both: \[startTime, endTime\]. Valid time intervals depend on the
+/// MetricKind
 /// (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors#MetricKind)
 /// of the metric value. The end time must not be earlier than the start time.
 /// When writing data points, the start time must not be more than 25 hours in

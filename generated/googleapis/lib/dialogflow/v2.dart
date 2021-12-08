@@ -11018,6 +11018,9 @@ class GoogleCloudDialogflowV2AgentAssistantRecord {
 
 /// The request message for Participants.AnalyzeContent.
 class GoogleCloudDialogflowV2AnalyzeContentRequest {
+  /// Parameters for a human assist query.
+  GoogleCloudDialogflowV2AssistQueryParameters? assistQueryParams;
+
   /// An input event to send to Dialogflow.
   GoogleCloudDialogflowV2EventInput? eventInput;
 
@@ -11042,6 +11045,7 @@ class GoogleCloudDialogflowV2AnalyzeContentRequest {
   GoogleCloudDialogflowV2TextInput? textInput;
 
   GoogleCloudDialogflowV2AnalyzeContentRequest({
+    this.assistQueryParams,
     this.eventInput,
     this.queryParams,
     this.replyAudioConfig,
@@ -11051,6 +11055,11 @@ class GoogleCloudDialogflowV2AnalyzeContentRequest {
 
   GoogleCloudDialogflowV2AnalyzeContentRequest.fromJson(core.Map _json)
       : this(
+          assistQueryParams: _json.containsKey('assistQueryParams')
+              ? GoogleCloudDialogflowV2AssistQueryParameters.fromJson(
+                  _json['assistQueryParams']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           eventInput: _json.containsKey('eventInput')
               ? GoogleCloudDialogflowV2EventInput.fromJson(
                   _json['eventInput'] as core.Map<core.String, core.dynamic>)
@@ -11074,6 +11083,7 @@ class GoogleCloudDialogflowV2AnalyzeContentRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (assistQueryParams != null) 'assistQueryParams': assistQueryParams!,
         if (eventInput != null) 'eventInput': eventInput!,
         if (queryParams != null) 'queryParams': queryParams!,
         if (replyAudioConfig != null) 'replyAudioConfig': replyAudioConfig!,
@@ -11343,17 +11353,58 @@ class GoogleCloudDialogflowV2AnswerRecord {
 typedef GoogleCloudDialogflowV2ArticleAnswer
     = $GoogleCloudDialogflowV2ArticleAnswer;
 
+/// Represents the parameters of human assist query.
+class GoogleCloudDialogflowV2AssistQueryParameters {
+  /// Key-value filters on the metadata of documents returned by article
+  /// suggestion.
+  ///
+  /// If specified, article suggestion only returns suggested documents that
+  /// match all filters in their Document.metadata. Multiple values for a
+  /// metadata key should be concatenated by comma. For example, filters to
+  /// match all documents that have 'US' or 'CA' in their market metadata values
+  /// and 'agent' in their user metadata values will be ```
+  /// documents_metadata_filters { key: "market" value: "US,CA" }
+  /// documents_metadata_filters { key: "user" value: "agent" } ```
+  core.Map<core.String, core.String>? documentsMetadataFilters;
+
+  GoogleCloudDialogflowV2AssistQueryParameters({
+    this.documentsMetadataFilters,
+  });
+
+  GoogleCloudDialogflowV2AssistQueryParameters.fromJson(core.Map _json)
+      : this(
+          documentsMetadataFilters:
+              _json.containsKey('documentsMetadataFilters')
+                  ? (_json['documentsMetadataFilters']
+                          as core.Map<core.String, core.dynamic>)
+                      .map(
+                      (key, item) => core.MapEntry(
+                        key,
+                        item as core.String,
+                      ),
+                    )
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (documentsMetadataFilters != null)
+          'documentsMetadataFilters': documentsMetadataFilters!,
+      };
+}
+
 /// Defines the Automated Agent to connect to a conversation.
 class GoogleCloudDialogflowV2AutomatedAgentConfig {
   /// ID of the Dialogflow agent environment to use.
   ///
   /// This project needs to either be the same project as the conversation or
   /// you need to grant `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` the
-  /// `Dialogflow API Service Agent` role in this project. Format:
-  /// `projects//locations//agent/environments/`. If environment is not
+  /// `Dialogflow API Service Agent` role in this project. - For ES agents, use
+  /// format: `projects//locations//agent/environments/`. If environment is not
   /// specified, the default `draft` environment is used. Refer to
   /// \[DetectIntentRequest\](/dialogflow/docs/reference/rpc/google.cloud.dialogflow.v2#google.cloud.dialogflow.v2.DetectIntentRequest)
-  /// for more details.
+  /// for more details. - For CX agents, use format
+  /// `projects//locations//agents//environments/`. If environment is not
+  /// specified, the default `draft` environment is used.
   ///
   /// Required.
   core.String? agent;
@@ -11928,10 +11979,12 @@ class GoogleCloudDialogflowV2ConversationProfile {
   /// get access.
   GoogleCloudDialogflowV2HumanAgentHandoffConfig? humanAgentHandoffConfig;
 
-  /// Language which represents the conversationProfile.
+  /// Language code for the conversation profile.
   ///
-  /// If unspecified, the default language code en-us applies. Users need to
-  /// create a ConversationProfile for each language they want to support.
+  /// If not specified, the language is en-US. Language at ConversationProfile
+  /// should be set for all non en-US languages. This should be a
+  /// \[BCP-47\](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag.
+  /// Example: "en-US".
   core.String? languageCode;
 
   /// Configuration for logging conversation lifecycle events.
@@ -11950,8 +12003,20 @@ class GoogleCloudDialogflowV2ConversationProfile {
   /// Configuration for publishing conversation lifecycle events.
   GoogleCloudDialogflowV2NotificationConfig? notificationConfig;
 
+  /// Name of the CX SecuritySettings reference for the agent.
+  ///
+  /// Format: `projects//locations//securitySettings/`.
+  core.String? securitySettings;
+
   /// Settings for speech transcription.
   GoogleCloudDialogflowV2SpeechToTextConfig? sttConfig;
+
+  /// The time zone of this conversational profile from the
+  /// [time zone database](https://www.iana.org/time-zones), e.g.,
+  /// America/New_York, Europe/Paris.
+  ///
+  /// Defaults to America/New_York.
+  core.String? timeZone;
 
   /// Update time of the conversation profile.
   ///
@@ -11969,7 +12034,9 @@ class GoogleCloudDialogflowV2ConversationProfile {
     this.name,
     this.newMessageEventNotificationConfig,
     this.notificationConfig,
+    this.securitySettings,
     this.sttConfig,
+    this.timeZone,
     this.updateTime,
   });
 
@@ -12016,9 +12083,15 @@ class GoogleCloudDialogflowV2ConversationProfile {
                   _json['notificationConfig']
                       as core.Map<core.String, core.dynamic>)
               : null,
+          securitySettings: _json.containsKey('securitySettings')
+              ? _json['securitySettings'] as core.String
+              : null,
           sttConfig: _json.containsKey('sttConfig')
               ? GoogleCloudDialogflowV2SpeechToTextConfig.fromJson(
                   _json['sttConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+          timeZone: _json.containsKey('timeZone')
+              ? _json['timeZone'] as core.String
               : null,
           updateTime: _json.containsKey('updateTime')
               ? _json['updateTime'] as core.String
@@ -12042,7 +12115,9 @@ class GoogleCloudDialogflowV2ConversationProfile {
               newMessageEventNotificationConfig!,
         if (notificationConfig != null)
           'notificationConfig': notificationConfig!,
+        if (securitySettings != null) 'securitySettings': securitySettings!,
         if (sttConfig != null) 'sttConfig': sttConfig!,
+        if (timeZone != null) 'timeZone': timeZone!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
 }
@@ -13235,7 +13310,8 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfig {
   /// custom model, there is no recommended value. Tune this value by starting
   /// from a very low value and slowly increasing until you have desired
   /// results. If this field is not set, it defaults to 0.0, which means that
-  /// all suggestions are returned. Supported features: ARTICLE_SUGGESTION.
+  /// all suggestions are returned. Supported features: ARTICLE_SUGGESTION, FAQ,
+  /// SMART_REPLY, SMART_COMPOSE.
   core.double? confidenceThreshold;
 
   /// Determines how recent conversation context is filtered when generating
@@ -15950,9 +16026,9 @@ class GoogleCloudDialogflowV2MessageAnnotation {
 class GoogleCloudDialogflowV2NotificationConfig {
   /// Format of message.
   /// Possible string values are:
-  /// - "MESSAGE_FORMAT_UNSPECIFIED" : If it is unspeified, PROTO will be used.
-  /// - "PROTO" : Pubsub message will be serialized proto.
-  /// - "JSON" : Pubsub message will be json.
+  /// - "MESSAGE_FORMAT_UNSPECIFIED" : If it is unspecified, PROTO will be used.
+  /// - "PROTO" : Pub/Sub message will be serialized proto.
+  /// - "JSON" : Pub/Sub message will be json.
   core.String? messageFormat;
 
   /// Name of the Pub/Sub topic to publish conversation events like
@@ -16088,6 +16164,20 @@ class GoogleCloudDialogflowV2OutputAudioConfig {
 /// Represents a conversation participant (human agent, virtual agent,
 /// end-user).
 class GoogleCloudDialogflowV2Participant {
+  /// Key-value filters on the metadata of documents returned by article
+  /// suggestion.
+  ///
+  /// If specified, article suggestion only returns suggested documents that
+  /// match all filters in their Document.metadata. Multiple values for a
+  /// metadata key should be concatenated by comma. For example, filters to
+  /// match all documents that have 'US' or 'CA' in their market metadata values
+  /// and 'agent' in their user metadata values will be ```
+  /// documents_metadata_filters { key: "market" value: "US,CA" }
+  /// documents_metadata_filters { key: "user" value: "agent" } ```
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? documentsMetadataFilters;
+
   /// The unique identifier of this participant.
   ///
   /// Format: `projects//locations//conversations//participants/`.
@@ -16119,6 +16209,7 @@ class GoogleCloudDialogflowV2Participant {
   core.String? sipRecordingMediaLabel;
 
   GoogleCloudDialogflowV2Participant({
+    this.documentsMetadataFilters,
     this.name,
     this.role,
     this.sipRecordingMediaLabel,
@@ -16126,6 +16217,17 @@ class GoogleCloudDialogflowV2Participant {
 
   GoogleCloudDialogflowV2Participant.fromJson(core.Map _json)
       : this(
+          documentsMetadataFilters:
+              _json.containsKey('documentsMetadataFilters')
+                  ? (_json['documentsMetadataFilters']
+                          as core.Map<core.String, core.dynamic>)
+                      .map(
+                      (key, item) => core.MapEntry(
+                        key,
+                        item as core.String,
+                      ),
+                    )
+                  : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           role: _json.containsKey('role') ? _json['role'] as core.String : null,
           sipRecordingMediaLabel: _json.containsKey('sipRecordingMediaLabel')
@@ -16134,6 +16236,8 @@ class GoogleCloudDialogflowV2Participant {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (documentsMetadataFilters != null)
+          'documentsMetadataFilters': documentsMetadataFilters!,
         if (name != null) 'name': name!,
         if (role != null) 'role': role!,
         if (sipRecordingMediaLabel != null)
@@ -16867,6 +16971,9 @@ class GoogleCloudDialogflowV2SpeechToTextConfig {
 
 /// The request message for Participants.SuggestArticles.
 class GoogleCloudDialogflowV2SuggestArticlesRequest {
+  /// Parameters for a human assist query.
+  GoogleCloudDialogflowV2AssistQueryParameters? assistQueryParams;
+
   /// Max number of messages prior to and including latest_message to use as
   /// context when compiling the suggestion.
   ///
@@ -16880,12 +16987,18 @@ class GoogleCloudDialogflowV2SuggestArticlesRequest {
   core.String? latestMessage;
 
   GoogleCloudDialogflowV2SuggestArticlesRequest({
+    this.assistQueryParams,
     this.contextSize,
     this.latestMessage,
   });
 
   GoogleCloudDialogflowV2SuggestArticlesRequest.fromJson(core.Map _json)
       : this(
+          assistQueryParams: _json.containsKey('assistQueryParams')
+              ? GoogleCloudDialogflowV2AssistQueryParameters.fromJson(
+                  _json['assistQueryParams']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           contextSize: _json.containsKey('contextSize')
               ? _json['contextSize'] as core.int
               : null,
@@ -16895,6 +17008,7 @@ class GoogleCloudDialogflowV2SuggestArticlesRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (assistQueryParams != null) 'assistQueryParams': assistQueryParams!,
         if (contextSize != null) 'contextSize': contextSize!,
         if (latestMessage != null) 'latestMessage': latestMessage!,
       };
@@ -16949,6 +17063,9 @@ class GoogleCloudDialogflowV2SuggestArticlesResponse {
 
 /// The request message for Participants.SuggestFaqAnswers.
 class GoogleCloudDialogflowV2SuggestFaqAnswersRequest {
+  /// Parameters for a human assist query.
+  GoogleCloudDialogflowV2AssistQueryParameters? assistQueryParams;
+
   /// Max number of messages prior to and including \[latest_message\] to use as
   /// context when compiling the suggestion.
   ///
@@ -16962,12 +17079,18 @@ class GoogleCloudDialogflowV2SuggestFaqAnswersRequest {
   core.String? latestMessage;
 
   GoogleCloudDialogflowV2SuggestFaqAnswersRequest({
+    this.assistQueryParams,
     this.contextSize,
     this.latestMessage,
   });
 
   GoogleCloudDialogflowV2SuggestFaqAnswersRequest.fromJson(core.Map _json)
       : this(
+          assistQueryParams: _json.containsKey('assistQueryParams')
+              ? GoogleCloudDialogflowV2AssistQueryParameters.fromJson(
+                  _json['assistQueryParams']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           contextSize: _json.containsKey('contextSize')
               ? _json['contextSize'] as core.int
               : null,
@@ -16977,6 +17100,7 @@ class GoogleCloudDialogflowV2SuggestFaqAnswersRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (assistQueryParams != null) 'assistQueryParams': assistQueryParams!,
         if (contextSize != null) 'contextSize': contextSize!,
         if (latestMessage != null) 'latestMessage': latestMessage!,
       };
@@ -17039,6 +17163,7 @@ class GoogleCloudDialogflowV2SuggestionFeature {
   /// - "TYPE_UNSPECIFIED" : Unspecified feature type.
   /// - "ARTICLE_SUGGESTION" : Run article suggestion model.
   /// - "FAQ" : Run FAQ model.
+  /// - "SMART_REPLY" : Run smart reply model.
   core.String? type;
 
   GoogleCloudDialogflowV2SuggestionFeature({

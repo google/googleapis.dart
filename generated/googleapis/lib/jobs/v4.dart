@@ -2427,7 +2427,7 @@ class Job {
   /// attributes that are not covered by the provided structured fields.
   ///
   /// The keys of the map are strings up to 64 bytes and must match the pattern:
-  /// a-zA-Z*. For example, key0LikeThis or KEY_1_LIKE_THIS. At most 100
+  /// `a-zA-Z*`. For example, key0LikeThis or KEY_1_LIKE_THIS. At most 100
   /// filterable and at most 100 unfilterable keys are supported. For filterable
   /// `string_values`, across all keys at most 200 values are allowed, with each
   /// string no more than 255 characters. For unfilterable `string_values`, the
@@ -3862,13 +3862,13 @@ class SearchJobsRequest {
   /// `count(string_histogram_facet)`: Count the number of matching entities,
   /// for each distinct attribute value. * `count(numeric_histogram_facet, list
   /// of buckets)`: Count the number of matching entities within each bucket.
-  /// Data types: * Histogram facet: facet names with format a-zA-Z+. * String:
-  /// string like "any string with backslash escape for quote(\")." * Number:
-  /// whole number and floating point number like 10, -1 and -0.01. * List: list
-  /// of elements with comma(,) separator surrounded by square brackets, for
-  /// example, \[1, 2, 3\] and \["one", "two", "three"\]. Built-in constants: *
-  /// MIN (minimum number similar to java Double.MIN_VALUE) * MAX (maximum
-  /// number similar to java Double.MAX_VALUE) Built-in functions: *
+  /// Data types: * Histogram facet: facet names with format `a-zA-Z+`. *
+  /// String: string like "any string with backslash escape for quote(\")." *
+  /// Number: whole number and floating point number like 10, -1 and -0.01. *
+  /// List: list of elements with comma(,) separator surrounded by square
+  /// brackets, for example, \[1, 2, 3\] and \["one", "two", "three"\]. Built-in
+  /// constants: * MIN (minimum number similar to java Double.MIN_VALUE) * MAX
+  /// (maximum number similar to java Double.MAX_VALUE) Built-in functions: *
   /// bucket(start, end\[, label\]): bucket built-in function creates a bucket
   /// with range of start, end). Note that the end is exclusive, for example,
   /// bucket(1, MAX, "positive number") or bucket(1, 10). Job histogram facets:

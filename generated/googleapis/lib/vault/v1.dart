@@ -3118,7 +3118,7 @@ class Query {
   /// - "ROOM" : Search messages in the Chat spaces specified in
   /// [HangoutsChatInfo](https://developers.google.com/vault/reference/rest/v1/Query#hangoutschatinfo).
   /// - "SHARED_DRIVE" : Search the files in the shared drives specified in
-  /// [SharedDriveInfo](https://developers.devsite.corp.google.com/vault/reference/rest/v1/Query#shareddriveinfo).
+  /// [SharedDriveInfo](https://developers.google.com/vault/reference/rest/v1/Query#shareddriveinfo).
   core.String? method;
 
   /// Required when **SearchMethod** is **ORG_UNIT**.
@@ -3141,7 +3141,7 @@ class Query {
   /// - "ROOM" : Search messages in the Chat spaces specified in
   /// [HangoutsChatInfo](https://developers.google.com/vault/reference/rest/v1/Query#hangoutschatinfo).
   /// - "SHARED_DRIVE" : Search the files in the shared drives specified in
-  /// [SharedDriveInfo](https://developers.devsite.corp.google.com/vault/reference/rest/v1/Query#shareddriveinfo).
+  /// [SharedDriveInfo](https://developers.google.com/vault/reference/rest/v1/Query#shareddriveinfo).
   core.String? searchMethod;
 
   /// Required when **SearchMethod** is **SHARED_DRIVE**.

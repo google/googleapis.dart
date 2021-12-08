@@ -2263,7 +2263,7 @@ class GetOrgPolicyRequest {
 }
 
 /// Encapsulates settings provided to GetIamPolicy.
-typedef GetPolicyOptions = $GetPolicyOptions;
+typedef GetPolicyOptions = $GetPolicyOptions00;
 
 /// A Lien represents an encumbrance on the actions that can be performed on a
 /// resource.

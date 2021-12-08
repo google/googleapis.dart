@@ -14,8 +14,11 @@
 
 /// Data pipelines API - v1
 ///
+/// Data Pipelines provides an interface for creating, updating, and managing
+/// recurring Data Analytics jobs.
+///
 /// For more information, see
-/// <https://developers.google.com/apis-explorer/#search/dataflow>
+/// <https://cloud.google.com/dataflow/docs/guides/data-pipelines>
 ///
 /// Create an instance of [DatapipelinesApi] to access these resources:
 ///
@@ -38,6 +41,8 @@ import '../src/user_agent.dart';
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
+/// Data Pipelines provides an interface for creating, updating, and managing
+/// recurring Data Analytics jobs.
 class DatapipelinesApi {
   /// See, edit, configure, and delete your Google Cloud data and see the email
   /// address for your Google Account.
@@ -1164,6 +1169,14 @@ class GoogleCloudDatapipelinesV1Pipeline {
   /// project and location.
   core.String? name;
 
+  /// The sources of the pipeline (for example, Dataplex).
+  ///
+  /// The keys and values are set by the corresponding sources during pipeline
+  /// creation.
+  ///
+  /// Immutable.
+  core.Map<core.String, core.String>? pipelineSources;
+
   /// Internal scheduling information for a pipeline.
   ///
   /// If this information is provided, periodic jobs will be created per the
@@ -1227,6 +1240,7 @@ class GoogleCloudDatapipelinesV1Pipeline {
     this.jobCount,
     this.lastUpdateTime,
     this.name,
+    this.pipelineSources,
     this.scheduleInfo,
     this.schedulerServiceAccountEmail,
     this.state,
@@ -1249,6 +1263,16 @@ class GoogleCloudDatapipelinesV1Pipeline {
               ? _json['lastUpdateTime'] as core.String
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          pipelineSources: _json.containsKey('pipelineSources')
+              ? (_json['pipelineSources']
+                      as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
           scheduleInfo: _json.containsKey('scheduleInfo')
               ? GoogleCloudDatapipelinesV1ScheduleSpec.fromJson(
                   _json['scheduleInfo'] as core.Map<core.String, core.dynamic>)
@@ -1272,6 +1296,7 @@ class GoogleCloudDatapipelinesV1Pipeline {
         if (jobCount != null) 'jobCount': jobCount!,
         if (lastUpdateTime != null) 'lastUpdateTime': lastUpdateTime!,
         if (name != null) 'name': name!,
+        if (pipelineSources != null) 'pipelineSources': pipelineSources!,
         if (scheduleInfo != null) 'scheduleInfo': scheduleInfo!,
         if (schedulerServiceAccountEmail != null)
           'schedulerServiceAccountEmail': schedulerServiceAccountEmail!,

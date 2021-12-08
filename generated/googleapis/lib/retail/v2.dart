@@ -130,9 +130,9 @@ class ProjectsLocationsCatalogsResource {
   ///
   /// [deviceType] - The device type context for completion suggestions. It is
   /// useful to apply different suggestions on different device types, e.g.
-  /// DESKTOP, MOBILE. If it is empty, the suggestions are across all device
-  /// types. Supported formats: * UNKNOWN_DEVICE_TYPE * DESKTOP * MOBILE * A
-  /// customized string starts with OTHER_, e.g. OTHER_IPHONE.
+  /// `DESKTOP`, `MOBILE`. If it is empty, the suggestions are across all device
+  /// types. Supported formats: * `UNKNOWN_DEVICE_TYPE` * `DESKTOP` * `MOBILE` *
+  /// A customized string starts with `OTHER_`, e.g. `OTHER_IPHONE`.
   ///
   /// [languageCodes] - The list of languages of the query. This is the BCP-47
   /// language code, such as "en-US" or "sr-Latn". For more information, see
@@ -1644,7 +1644,7 @@ class GoogleCloudRetailV2AddFulfillmentPlacesRequest {
   ///
   /// Duplicate IDs will be automatically ignored. At least 1 value is required,
   /// and a maximum of 2000 values are allowed. Each value must be a string with
-  /// a length limit of 10 characters, matching the pattern \[a-zA-Z0-9_-\]+,
+  /// a length limit of 10 characters, matching the pattern `[a-zA-Z0-9_-]+`,
   /// such as "store1" or "REGION-2". Otherwise, an INVALID_ARGUMENT error is
   /// returned. If the total number of place IDs exceeds 2000 for this type
   /// after adding, then the update will be rejected.
@@ -2205,7 +2205,7 @@ class GoogleCloudRetailV2FulfillmentInfo {
   /// FulfillmentInfo.type.same-day-delivery.
   ///
   /// A maximum of 3000 values are allowed. Each value must be a string with a
-  /// length limit of 30 characters, matching the pattern \[a-zA-Z0-9_-\]+, such
+  /// length limit of 30 characters, matching the pattern `[a-zA-Z0-9_-]+`, such
   /// as "store1" or "REGION-2". Otherwise, an INVALID_ARGUMENT error is
   /// returned.
   core.List<core.String>? placeIds;
@@ -2456,7 +2456,7 @@ class GoogleCloudRetailV2ImportProductsRequest {
   ///
   /// Ensures idempotency and used for request deduplication. Server-generated
   /// if unspecified. Up to 128 characters long and must match the pattern:
-  /// "\[a-zA-Z0-9_\]+". This is returned as Operation.name in ImportMetadata.
+  /// `[a-zA-Z0-9_]+`. This is returned as Operation.name in ImportMetadata.
   /// Only supported when ImportProductsRequest.reconciliation_mode is set to
   /// `FULL`.
   core.String? requestId;
@@ -3053,7 +3053,7 @@ class GoogleCloudRetailV2Product {
   /// field needs to pass all below criteria, otherwise an INVALID_ARGUMENT
   /// error is returned: * Max entries count: 200. * The key must be a UTF-8
   /// encoded string with a length limit of 128 characters. * For indexable
-  /// attribute, the key must match the pattern: a-zA-Z0-9*. For example,
+  /// attribute, the key must match the pattern: `a-zA-Z0-9*`. For example,
   /// key0LikeThis or KEY_1_LIKE_THIS.
   core.Map<core.String, GoogleCloudRetailV2CustomAttribute>? attributes;
 
@@ -3702,14 +3702,14 @@ class GoogleCloudRetailV2ProductInputConfig {
 class GoogleCloudRetailV2ProductLevelConfig {
   /// The type of Products allowed to be ingested into the catalog.
   ///
-  /// Acceptable values are: * `primary` (default): You can only ingest
-  /// Product.Type.PRIMARY Products. This means Product.primary_product_id can
-  /// only be empty or set to the same value as Product.id. * `variant`: You can
-  /// only ingest Product.Type.VARIANT Products. This means
-  /// Product.primary_product_id cannot be empty. If this field is set to an
-  /// invalid value other than these, an INVALID_ARGUMENT error is returned. If
-  /// this field is `variant` and merchant_center_product_id_field is
-  /// `itemGroupId`, an INVALID_ARGUMENT error is returned. See
+  /// Acceptable values are: * `primary` (default): You can ingest Products of
+  /// all types. When ingesting a Product, its type will default to
+  /// Product.Type.PRIMARY if unset. * `variant`: You can only ingest
+  /// Product.Type.VARIANT Products. This means Product.primary_product_id
+  /// cannot be empty. If this field is set to an invalid value other than
+  /// these, an INVALID_ARGUMENT error is returned. If this field is `variant`
+  /// and merchant_center_product_id_field is `itemGroupId`, an INVALID_ARGUMENT
+  /// error is returned. See
   /// [Using product levels](https://cloud.google.com/retail/recommendations-ai/docs/catalog#product-levels)
   /// for more details.
   core.String? ingestionProductType;
@@ -3758,8 +3758,8 @@ class GoogleCloudRetailV2Promotion {
   /// ID of the promotion.
   ///
   /// For example, "free gift". The value value must be a UTF-8 encoded string
-  /// with a length limit of 128 characters, and match the pattern: a-zA-Z*. For
-  /// example, id0LikeThis or ID_1_LIKE_THIS. Otherwise, an INVALID_ARGUMENT
+  /// with a length limit of 128 characters, and match the pattern: `a-zA-Z*`.
+  /// For example, id0LikeThis or ID_1_LIKE_THIS. Otherwise, an INVALID_ARGUMENT
   /// error is returned. Google Merchant Center property
   /// [promotion](https://support.google.com/merchants/answer/7050148).
   core.String? promotionId;
@@ -3987,7 +3987,7 @@ class GoogleCloudRetailV2RemoveFulfillmentPlacesRequest {
   ///
   /// At least 1 value is required, and a maximum of 2000 values are allowed.
   /// Each value must be a string with a length limit of 10 characters, matching
-  /// the pattern \[a-zA-Z0-9_-\]+, such as "store1" or "REGION-2". Otherwise,
+  /// the pattern `[a-zA-Z0-9_-]+`, such as "store1" or "REGION-2". Otherwise,
   /// an INVALID_ARGUMENT error is returned.
   ///
   /// Required.
@@ -4179,23 +4179,25 @@ class GoogleCloudRetailV2SearchRequest {
   /// "fulfillmentType.fulfillmentId". E.g., in "pickupInStore.store123",
   /// "pickupInStore" is fulfillment type and "store123" is the store ID.
   /// Supported keys are: * colorFamilies * price * originalPrice * discount *
-  /// inventory(place_id,price) * attributes.key, where key is any key in the
-  /// Product.attributes map. * pickupInStore.id, where id is any
-  /// FulfillmentInfo.place_ids for FulfillmentInfo.type "pickup-in-store". *
-  /// shipToStore.id, where id is any FulfillmentInfo.place_ids for
-  /// FulfillmentInfo.type "ship-to-store". * sameDayDelivery.id, where id is
-  /// any FulfillmentInfo.place_ids for FulfillmentInfo.type
-  /// "same-day-delivery". * nextDayDelivery.id, where id is any
-  /// FulfillmentInfo.place_ids for FulfillmentInfo.type "next-day-delivery". *
-  /// customFulfillment1.id, where id is any FulfillmentInfo.place_ids for
-  /// FulfillmentInfo.type "custom-type-1". * customFulfillment2.id, where id is
-  /// any FulfillmentInfo.place_ids for FulfillmentInfo.type "custom-type-2". *
-  /// customFulfillment3.id, where id is any FulfillmentInfo.place_ids for
-  /// FulfillmentInfo.type "custom-type-3". * customFulfillment4.id, where id is
-  /// any FulfillmentInfo.place_ids for FulfillmentInfo.type "custom-type-4". *
-  /// customFulfillment5.id, where id is any FulfillmentInfo.place_ids for
-  /// FulfillmentInfo.type "custom-type-5". If this field is set to an invalid
-  /// value other than these, an INVALID_ARGUMENT error is returned.
+  /// inventory(place_id,price) * inventory(place_id,attributes.key), where key
+  /// is any key in the Product.inventories.attributes map. * attributes.key,
+  /// where key is any key in the Product.attributes map. * pickupInStore.id,
+  /// where id is any FulfillmentInfo.place_ids for FulfillmentInfo.type
+  /// "pickup-in-store". * shipToStore.id, where id is any
+  /// FulfillmentInfo.place_ids for FulfillmentInfo.type "ship-to-store". *
+  /// sameDayDelivery.id, where id is any FulfillmentInfo.place_ids for
+  /// FulfillmentInfo.type "same-day-delivery". * nextDayDelivery.id, where id
+  /// is any FulfillmentInfo.place_ids for FulfillmentInfo.type
+  /// "next-day-delivery". * customFulfillment1.id, where id is any
+  /// FulfillmentInfo.place_ids for FulfillmentInfo.type "custom-type-1". *
+  /// customFulfillment2.id, where id is any FulfillmentInfo.place_ids for
+  /// FulfillmentInfo.type "custom-type-2". * customFulfillment3.id, where id is
+  /// any FulfillmentInfo.place_ids for FulfillmentInfo.type "custom-type-3". *
+  /// customFulfillment4.id, where id is any FulfillmentInfo.place_ids for
+  /// FulfillmentInfo.type "custom-type-4". * customFulfillment5.id, where id is
+  /// any FulfillmentInfo.place_ids for FulfillmentInfo.type "custom-type-5". If
+  /// this field is set to an invalid value other than these, an
+  /// INVALID_ARGUMENT error is returned.
   core.List<core.String>? variantRollupKeys;
 
   /// A unique identifier for tracking visitors.
@@ -4532,9 +4534,10 @@ class GoogleCloudRetailV2SearchRequestFacetSpecFacetKey {
   /// "materials" * "patterns" * "conditions" * "attributes.key" *
   /// "pickupInStore" * "shipToStore" * "sameDayDelivery" * "nextDayDelivery" *
   /// "customFulfillment1" * "customFulfillment2" * "customFulfillment3" *
-  /// "customFulfillment4" * "customFulfillment5" * numerical_field = * "price"
-  /// * "discount" * "rating" * "ratingCount" * "attributes.key" *
-  /// "inventory(place_id,price)"
+  /// "customFulfillment4" * "customFulfillment5" *
+  /// "inventory(place_id,attributes.key)" * numerical_field = * "price" *
+  /// "discount" * "rating" * "ratingCount" * "attributes.key" *
+  /// "inventory(place_id,price)" * "inventory(place_id,attributes.key)"
   ///
   /// Required.
   core.String? key;

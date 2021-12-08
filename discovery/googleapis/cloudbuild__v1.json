@@ -1297,7 +1297,7 @@
                                             "type": "boolean"
                                         },
                                         "etag": {
-                                            "description": "Optional. If this is provided, it must match the server's etag on the workerpool for the request to be processed.",
+                                            "description": "Optional. If provided, it must match the server's etag on the workerpool for the request to be processed.",
                                             "location": "query",
                                             "type": "string"
                                         },
@@ -1716,7 +1716,7 @@
             }
         }
     },
-    "revision": "20211008",
+    "revision": "20211201",
     "rootUrl": "https://cloudbuild.googleapis.com/",
     "schemas": {
         "ApprovalConfig": {
@@ -1836,6 +1836,27 @@
                 "objects": {
                     "$ref": "ArtifactObjects",
                     "description": "A list of objects to be uploaded to Cloud Storage upon successful completion of all build steps. Files in the workspace matching specified paths globs will be uploaded to the specified Cloud Storage location using the builder service account's credentials. The location and generation of the uploaded objects will be stored in the Build resource's results field. If any objects fail to be pushed, the build is marked FAILURE."
+                }
+            },
+            "type": "object"
+        },
+        "BatchCreateBitbucketServerConnectedRepositoriesResponseMetadata": {
+            "description": "Metadata for `BatchCreateBitbucketServerConnectedRepositories` operation.",
+            "id": "BatchCreateBitbucketServerConnectedRepositoriesResponseMetadata",
+            "properties": {
+                "completeTime": {
+                    "description": "Time the operation was completed.",
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "config": {
+                    "description": "The name of the `BitbucketServerConfig` that added connected repositories. Format: `projects/{project}/locations/{location}/bitbucketServerConfigs/{config}`",
+                    "type": "string"
+                },
+                "createTime": {
+                    "description": "Time the operation was created.",
+                    "format": "google-datetime",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -2122,10 +2143,10 @@
                     ],
                     "enumDescriptions": [
                         "The service determines the logging mode. The default is `LEGACY`. Do not rely on the default logging behavior as it may change in the future.",
-                        "Cloud Logging and Cloud Storage logging are enabled.",
-                        "Only Cloud Storage logging is enabled.",
+                        "Build logs are stored in Cloud Logging and Cloud Storage.",
+                        "Build logs are stored in Cloud Storage.",
                         "This option is the same as CLOUD_LOGGING_ONLY.",
-                        "Only Cloud Logging is enabled. Note that logs for both the Cloud Console UI and Cloud SDK are based on Cloud Storage logs, so neither will provide logs if this option is chosen.",
+                        "Build logs are stored in Cloud Logging. Selecting this option will not allow [logs streaming](https://cloud.google.com/sdk/gcloud/reference/builds/log).",
                         "Turn off all logging. No build logs will be captured."
                     ],
                     "type": "string"
@@ -2350,6 +2371,24 @@
                     "description": "If true, the trigger will never automatically execute a build.",
                     "type": "boolean"
                 },
+                "eventType": {
+                    "description": "Optional. EventType allows the user to explicitly set the type of event to which this BuildTrigger should respond. This field is optional but will be validated against the rest of the configuration if it is set.",
+                    "enum": [
+                        "EVENT_TYPE_UNSPECIFIED",
+                        "REPO",
+                        "WEBHOOK",
+                        "PUBSUB",
+                        "MANUAL"
+                    ],
+                    "enumDescriptions": [
+                        "EVENT_TYPE_UNSPECIFIED event_types are ignored.",
+                        "REPO corresponds to the supported VCS integrations.",
+                        "WEBHOOK corresponds to webhook triggers.",
+                        "PUBSUB corresponds to pubsub triggers.",
+                        "MANUAL corresponds to manual-only invoked triggers."
+                    ],
+                    "type": "string"
+                },
                 "filename": {
                     "description": "Path, from the source root, to the build configuration file (i.e. cloudbuild.yaml).",
                     "type": "string"
@@ -2475,6 +2514,27 @@
             "properties": {},
             "type": "object"
         },
+        "CreateBitbucketServerConfigOperationMetadata": {
+            "description": "Metadata for `CreateBitbucketServerConfig` operation.",
+            "id": "CreateBitbucketServerConfigOperationMetadata",
+            "properties": {
+                "bitbucketServerConfig": {
+                    "description": "The resource name of the BitbucketServerConfig to be created. Format: `projects/{project}/locations/{location}/bitbucketServerConfigs/{id}`.",
+                    "type": "string"
+                },
+                "completeTime": {
+                    "description": "Time the operation was completed.",
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "createTime": {
+                    "description": "Time the operation was created.",
+                    "format": "google-datetime",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "CreateGitHubEnterpriseConfigOperationMetadata": {
             "description": "Metadata for `CreateGithubEnterpriseConfig` operation.",
             "id": "CreateGitHubEnterpriseConfigOperationMetadata",
@@ -2512,6 +2572,27 @@
                 },
                 "workerPool": {
                     "description": "The resource name of the `WorkerPool` to create. Format: `projects/{project}/locations/{location}/workerPools/{worker_pool}`.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "DeleteBitbucketServerConfigOperationMetadata": {
+            "description": "Metadata for `DeleteBitbucketServerConfig` operation.",
+            "id": "DeleteBitbucketServerConfigOperationMetadata",
+            "properties": {
+                "bitbucketServerConfig": {
+                    "description": "The resource name of the BitbucketServerConfig to be deleted. Format: `projects/{project}/locations/{location}/bitbucketServerConfigs/{id}`.",
+                    "type": "string"
+                },
+                "completeTime": {
+                    "description": "Time the operation was completed.",
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "createTime": {
+                    "description": "Time the operation was created.",
+                    "format": "google-datetime",
                     "type": "string"
                 }
             },
@@ -3694,6 +3775,27 @@
             },
             "type": "object"
         },
+        "UpdateBitbucketServerConfigOperationMetadata": {
+            "description": "Metadata for `UpdateBitbucketServerConfig` operation.",
+            "id": "UpdateBitbucketServerConfigOperationMetadata",
+            "properties": {
+                "bitbucketServerConfig": {
+                    "description": "The resource name of the BitbucketServerConfig to be updated. Format: `projects/{project}/locations/{location}/bitbucketServerConfigs/{id}`.",
+                    "type": "string"
+                },
+                "completeTime": {
+                    "description": "Time the operation was completed.",
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "createTime": {
+                    "description": "Time the operation was created.",
+                    "format": "google-datetime",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "UpdateGitHubEnterpriseConfigOperationMetadata": {
             "description": "Metadata for `UpdateGitHubEnterpriseConfig` operation.",
             "id": "UpdateGitHubEnterpriseConfigOperationMetadata",
@@ -3858,7 +3960,7 @@
                 },
                 "privatePoolV1Config": {
                     "$ref": "PrivatePoolV1Config",
-                    "description": "Private Pool using a v1 configuration."
+                    "description": "Legacy Private Pool configuration."
                 },
                 "state": {
                     "description": "Output only. `WorkerPool` state.",
@@ -3867,14 +3969,16 @@
                         "CREATING",
                         "RUNNING",
                         "DELETING",
-                        "DELETED"
+                        "DELETED",
+                        "UPDATING"
                     ],
                     "enumDescriptions": [
                         "State of the `WorkerPool` is unknown.",
                         "`WorkerPool` is being created.",
                         "`WorkerPool` is running.",
                         "`WorkerPool` is being deleted: cancelling builds and draining workers.",
-                        "`WorkerPool` is deleted."
+                        "`WorkerPool` is deleted.",
+                        "`WorkerPool` is being updated; new builds cannot be run."
                     ],
                     "readOnly": true,
                     "type": "string"

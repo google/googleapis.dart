@@ -1488,7 +1488,8 @@ class ProjectsInstancesDatabasesResource {
   /// Drops (aka deletes) a Cloud Spanner database.
   ///
   /// Completed backups for the database will be retained according to their
-  /// `expire_time`.
+  /// `expire_time`. Note: Cloud Spanner might continue to accept requests for a
+  /// few seconds after the database has been deleted.
   ///
   /// Request parameters:
   ///
@@ -4649,7 +4650,7 @@ class GetIamPolicyRequest {
 }
 
 /// Encapsulates settings provided to GetIamPolicy.
-typedef GetPolicyOptions = $GetPolicyOptions;
+typedef GetPolicyOptions = $GetPolicyOptions00;
 
 /// A message representing a (sparse) collection of hot keys for specific key
 /// buckets.

@@ -23,6 +23,7 @@
 /// - [EditsResource]
 ///   - [EditsApksResource]
 ///   - [EditsBundlesResource]
+///   - [EditsCountryavailabilityResource]
 ///   - [EditsDeobfuscationfilesResource]
 ///   - [EditsDetailsResource]
 ///   - [EditsExpansionfilesResource]
@@ -30,6 +31,7 @@
 ///   - [EditsListingsResource]
 ///   - [EditsTestersResource]
 ///   - [EditsTracksResource]
+/// - [GeneratedapksResource]
 /// - [GrantsResource]
 /// - [InappproductsResource]
 /// - [InternalappsharingartifactsResource]
@@ -76,6 +78,7 @@ class AndroidPublisherApi {
   final commons.ApiRequester _requester;
 
   EditsResource get edits => EditsResource(_requester);
+  GeneratedapksResource get generatedapks => GeneratedapksResource(_requester);
   GrantsResource get grants => GrantsResource(_requester);
   InappproductsResource get inappproducts => InappproductsResource(_requester);
   InternalappsharingartifactsResource get internalappsharingartifacts =>
@@ -99,6 +102,8 @@ class EditsResource {
 
   EditsApksResource get apks => EditsApksResource(_requester);
   EditsBundlesResource get bundles => EditsBundlesResource(_requester);
+  EditsCountryavailabilityResource get countryavailability =>
+      EditsCountryavailabilityResource(_requester);
   EditsDeobfuscationfilesResource get deobfuscationfiles =>
       EditsDeobfuscationfilesResource(_requester);
   EditsDetailsResource get details => EditsDetailsResource(_requester);
@@ -610,6 +615,59 @@ class EditsBundlesResource {
       uploadOptions: uploadOptions,
     );
     return Bundle.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class EditsCountryavailabilityResource {
+  final commons.ApiRequester _requester;
+
+  EditsCountryavailabilityResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets country availability.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Package name of the app.
+  ///
+  /// [editId] - Identifier of the edit.
+  ///
+  /// [track] - The track to read from.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [TrackCountryAvailability].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TrackCountryAvailability> get(
+    core.String packageName,
+    core.String editId,
+    core.String track, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'androidpublisher/v3/applications/' +
+        commons.escapeVariable('$packageName') +
+        '/edits/' +
+        commons.escapeVariable('$editId') +
+        '/countryAvailability/' +
+        commons.escapeVariable('$track');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return TrackCountryAvailability.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2050,6 +2108,109 @@ class EditsTracksResource {
       queryParams: _queryParams,
     );
     return Track.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class GeneratedapksResource {
+  final commons.ApiRequester _requester;
+
+  GeneratedapksResource(commons.ApiRequester client) : _requester = client;
+
+  /// Downloads a single signed APK generated from an app bundle.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Package name of the app.
+  ///
+  /// [versionCode] - Version code of the app bundle.
+  ///
+  /// [downloadId] - Download ID, which uniquely identifies the APK to download.
+  /// Can be obtained from the response of `generatedapks.list` method.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// [downloadOptions] - Options for downloading. A download can be either a
+  /// Metadata (default) or Media download. Partial Media downloads are possible
+  /// as well.
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<commons.Media?> download(
+    core.String packageName,
+    core.int versionCode,
+    core.String downloadId, {
+    core.String? $fields,
+    commons.DownloadOptions downloadOptions = commons.DownloadOptions.metadata,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'androidpublisher/v3/applications/' +
+        commons.escapeVariable('$packageName') +
+        '/generatedApks/' +
+        commons.escapeVariable('$versionCode') +
+        '/downloads/' +
+        commons.escapeVariable('$downloadId') +
+        ':download';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+      downloadOptions: downloadOptions,
+    );
+    if (downloadOptions.isMetadataDownload) {
+      return null;
+    } else {
+      return _response as commons.Media;
+    }
+  }
+
+  /// Returns download metadata for all APKs that were generated from a given
+  /// app bundle.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Package name of the app.
+  ///
+  /// [versionCode] - Version code of the app bundle.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GeneratedApksListResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GeneratedApksListResponse> list(
+    core.String packageName,
+    core.int versionCode, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'androidpublisher/v3/applications/' +
+        commons.escapeVariable('$packageName') +
+        '/generatedApks/' +
+        commons.escapeVariable('$versionCode');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GeneratedApksListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -4703,6 +4864,257 @@ class ExternallyHostedApk {
       };
 }
 
+/// Response to list generated APKs.
+class GeneratedApksListResponse {
+  /// All generated APKs, grouped by the APK signing key.
+  core.List<GeneratedApksPerSigningKey>? generatedApks;
+
+  GeneratedApksListResponse({
+    this.generatedApks,
+  });
+
+  GeneratedApksListResponse.fromJson(core.Map _json)
+      : this(
+          generatedApks: _json.containsKey('generatedApks')
+              ? (_json['generatedApks'] as core.List)
+                  .map((value) => GeneratedApksPerSigningKey.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (generatedApks != null) 'generatedApks': generatedApks!,
+      };
+}
+
+/// Download metadata for split, standalone and universal APKs, as well as asset
+/// pack slices, signed with a given key.
+class GeneratedApksPerSigningKey {
+  /// SHA256 hash of the APK signing public key certificate.
+  core.String? certificateSha256Hash;
+
+  /// List of asset pack slices which will be served for this app bundle, signed
+  /// with a key corresponding to certificate_sha256_hash.
+  core.List<GeneratedAssetPackSlice>? generatedAssetPackSlices;
+
+  /// List of generated split APKs, signed with a key corresponding to
+  /// certificate_sha256_hash.
+  core.List<GeneratedSplitApk>? generatedSplitApks;
+
+  /// List of generated standalone APKs, signed with a key corresponding to
+  /// certificate_sha256_hash.
+  core.List<GeneratedStandaloneApk>? generatedStandaloneApks;
+
+  /// Generated universal APK, signed with a key corresponding to
+  /// certificate_sha256_hash.
+  ///
+  /// This field is not set if no universal APK was generated for this signing
+  /// key.
+  GeneratedUniversalApk? generatedUniversalApk;
+
+  GeneratedApksPerSigningKey({
+    this.certificateSha256Hash,
+    this.generatedAssetPackSlices,
+    this.generatedSplitApks,
+    this.generatedStandaloneApks,
+    this.generatedUniversalApk,
+  });
+
+  GeneratedApksPerSigningKey.fromJson(core.Map _json)
+      : this(
+          certificateSha256Hash: _json.containsKey('certificateSha256Hash')
+              ? _json['certificateSha256Hash'] as core.String
+              : null,
+          generatedAssetPackSlices:
+              _json.containsKey('generatedAssetPackSlices')
+                  ? (_json['generatedAssetPackSlices'] as core.List)
+                      .map((value) => GeneratedAssetPackSlice.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                      .toList()
+                  : null,
+          generatedSplitApks: _json.containsKey('generatedSplitApks')
+              ? (_json['generatedSplitApks'] as core.List)
+                  .map((value) => GeneratedSplitApk.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          generatedStandaloneApks: _json.containsKey('generatedStandaloneApks')
+              ? (_json['generatedStandaloneApks'] as core.List)
+                  .map((value) => GeneratedStandaloneApk.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          generatedUniversalApk: _json.containsKey('generatedUniversalApk')
+              ? GeneratedUniversalApk.fromJson(_json['generatedUniversalApk']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (certificateSha256Hash != null)
+          'certificateSha256Hash': certificateSha256Hash!,
+        if (generatedAssetPackSlices != null)
+          'generatedAssetPackSlices': generatedAssetPackSlices!,
+        if (generatedSplitApks != null)
+          'generatedSplitApks': generatedSplitApks!,
+        if (generatedStandaloneApks != null)
+          'generatedStandaloneApks': generatedStandaloneApks!,
+        if (generatedUniversalApk != null)
+          'generatedUniversalApk': generatedUniversalApk!,
+      };
+}
+
+/// Download metadata for an asset pack slice.
+class GeneratedAssetPackSlice {
+  /// Download ID, which uniquely identifies the APK to download.
+  ///
+  /// Should be supplied to `generatedapks.download` method.
+  core.String? downloadId;
+
+  /// Name of the module that this asset slice belongs to.
+  core.String? moduleName;
+
+  /// Asset slice ID.
+  core.String? sliceId;
+
+  /// Asset module version.
+  core.String? version;
+
+  GeneratedAssetPackSlice({
+    this.downloadId,
+    this.moduleName,
+    this.sliceId,
+    this.version,
+  });
+
+  GeneratedAssetPackSlice.fromJson(core.Map _json)
+      : this(
+          downloadId: _json.containsKey('downloadId')
+              ? _json['downloadId'] as core.String
+              : null,
+          moduleName: _json.containsKey('moduleName')
+              ? _json['moduleName'] as core.String
+              : null,
+          sliceId: _json.containsKey('sliceId')
+              ? _json['sliceId'] as core.String
+              : null,
+          version: _json.containsKey('version')
+              ? _json['version'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (downloadId != null) 'downloadId': downloadId!,
+        if (moduleName != null) 'moduleName': moduleName!,
+        if (sliceId != null) 'sliceId': sliceId!,
+        if (version != null) 'version': version!,
+      };
+}
+
+/// Download metadata for a split APK.
+class GeneratedSplitApk {
+  /// Download ID, which uniquely identifies the APK to download.
+  ///
+  /// Should be supplied to `generatedapks.download` method.
+  core.String? downloadId;
+
+  /// Name of the module that this APK belongs to.
+  core.String? moduleName;
+
+  /// Split ID.
+  ///
+  /// Empty for the main split of the base module.
+  core.String? splitId;
+
+  /// ID of the generated variant.
+  core.int? variantId;
+
+  GeneratedSplitApk({
+    this.downloadId,
+    this.moduleName,
+    this.splitId,
+    this.variantId,
+  });
+
+  GeneratedSplitApk.fromJson(core.Map _json)
+      : this(
+          downloadId: _json.containsKey('downloadId')
+              ? _json['downloadId'] as core.String
+              : null,
+          moduleName: _json.containsKey('moduleName')
+              ? _json['moduleName'] as core.String
+              : null,
+          splitId: _json.containsKey('splitId')
+              ? _json['splitId'] as core.String
+              : null,
+          variantId: _json.containsKey('variantId')
+              ? _json['variantId'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (downloadId != null) 'downloadId': downloadId!,
+        if (moduleName != null) 'moduleName': moduleName!,
+        if (splitId != null) 'splitId': splitId!,
+        if (variantId != null) 'variantId': variantId!,
+      };
+}
+
+/// Download metadata for a standalone APK.
+class GeneratedStandaloneApk {
+  /// Download ID, which uniquely identifies the APK to download.
+  ///
+  /// Should be supplied to `generatedapks.download` method.
+  core.String? downloadId;
+
+  /// ID of the generated variant.
+  core.int? variantId;
+
+  GeneratedStandaloneApk({
+    this.downloadId,
+    this.variantId,
+  });
+
+  GeneratedStandaloneApk.fromJson(core.Map _json)
+      : this(
+          downloadId: _json.containsKey('downloadId')
+              ? _json['downloadId'] as core.String
+              : null,
+          variantId: _json.containsKey('variantId')
+              ? _json['variantId'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (downloadId != null) 'downloadId': downloadId!,
+        if (variantId != null) 'variantId': variantId!,
+      };
+}
+
+/// Download metadata for a universal APK.
+class GeneratedUniversalApk {
+  /// Download ID, which uniquely identifies the APK to download.
+  ///
+  /// Should be supplied to `generatedapks.download` method.
+  core.String? downloadId;
+
+  GeneratedUniversalApk({
+    this.downloadId,
+  });
+
+  GeneratedUniversalApk.fromJson(core.Map _json)
+      : this(
+          downloadId: _json.containsKey('downloadId')
+              ? _json['downloadId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (downloadId != null) 'downloadId': downloadId!,
+      };
+}
+
 /// An access grant resource.
 class Grant {
   /// The permissions granted to the user for this app.
@@ -6519,6 +6931,58 @@ class Track {
       };
 }
 
+/// Resource for per-track country availability information.
+class TrackCountryAvailability {
+  /// A list of one or more countries where artifacts in this track are
+  /// available.
+  ///
+  /// This list includes all countries that are targeted by the track, even if
+  /// only specific carriers are targeted in that country.
+  core.List<TrackTargetedCountry>? countries;
+
+  /// Whether artifacts in this track are available to "rest of the world"
+  /// countries.
+  core.bool? restOfWorld;
+
+  /// Whether this track's availability is synced with the default production
+  /// track.
+  ///
+  /// See https://support.google.com/googleplay/android-developer/answer/7550024
+  /// for more information on syncing country availability with production. Note
+  /// that if this is true, the returned "countries" and "rest_of_world" fields
+  /// will reflect the values for the default production track.
+  core.bool? syncWithProduction;
+
+  TrackCountryAvailability({
+    this.countries,
+    this.restOfWorld,
+    this.syncWithProduction,
+  });
+
+  TrackCountryAvailability.fromJson(core.Map _json)
+      : this(
+          countries: _json.containsKey('countries')
+              ? (_json['countries'] as core.List)
+                  .map((value) => TrackTargetedCountry.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          restOfWorld: _json.containsKey('restOfWorld')
+              ? _json['restOfWorld'] as core.bool
+              : null,
+          syncWithProduction: _json.containsKey('syncWithProduction')
+              ? _json['syncWithProduction'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (countries != null) 'countries': countries!,
+        if (restOfWorld != null) 'restOfWorld': restOfWorld!,
+        if (syncWithProduction != null)
+          'syncWithProduction': syncWithProduction!,
+      };
+}
+
 /// A release within a track.
 class TrackRelease {
   /// Restricts a release to a specific set of countries.
@@ -6615,6 +7079,28 @@ class TrackRelease {
         if (status != null) 'status': status!,
         if (userFraction != null) 'userFraction': userFraction!,
         if (versionCodes != null) 'versionCodes': versionCodes!,
+      };
+}
+
+/// Representation of a single country where the contents of a track are
+/// available.
+class TrackTargetedCountry {
+  /// The country to target, as a two-letter CLDR code.
+  core.String? countryCode;
+
+  TrackTargetedCountry({
+    this.countryCode,
+  });
+
+  TrackTargetedCountry.fromJson(core.Map _json)
+      : this(
+          countryCode: _json.containsKey('countryCode')
+              ? _json['countryCode'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (countryCode != null) 'countryCode': countryCode!,
       };
 }
 

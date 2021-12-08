@@ -237,6 +237,57 @@ class ProjectsLocationsResource {
 
   ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
 
+  /// Translates a large volume of document in asynchronous batch mode.
+  ///
+  /// This function provides real-time output as the inputs are being processed.
+  /// If caller cancels a request, the partial results (for an input file, it's
+  /// all or nothing) may still be available on the specified output location.
+  /// This call returns immediately and you can use
+  /// google.longrunning.Operation.name to poll the status of the call.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Location to make a regional call. Format:
+  /// `projects/{project-number-or-id}/locations/{location-id}`. The `global`
+  /// location is not supported for batch translation. Only AutoML Translation
+  /// models or glossaries within the same region (have the same location-id)
+  /// can be used, otherwise an INVALID_ARGUMENT (400) error is returned.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> batchTranslateDocument(
+    BatchTranslateDocumentRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url =
+        'v3/' + core.Uri.encodeFull('$parent') + ':batchTranslateDocument';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
   /// Translates a large volume of text in asynchronous batch mode.
   ///
   /// This function provides real-time output as the inputs are being processed.
@@ -479,6 +530,53 @@ class ProjectsLocationsResource {
       queryParams: _queryParams,
     );
     return ListLocationsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Translates documents in synchronous mode.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Location to make a regional call. Format:
+  /// `projects/{project-number-or-id}/locations/{location-id}`. For global
+  /// calls, use `projects/{project-number-or-id}/locations/global` or
+  /// `projects/{project-number-or-id}`. Non-global location is required for
+  /// requests using AutoML models or custom glossaries. Models and glossaries
+  /// must be within the same region (have the same location-id), otherwise an
+  /// INVALID_ARGUMENT (400) error is returned.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [TranslateDocumentResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TranslateDocumentResponse> translateDocument(
+    TranslateDocumentRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v3/' + core.Uri.encodeFull('$parent') + ':translateDocument';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return TranslateDocumentResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
 
@@ -971,6 +1069,231 @@ class ProjectsLocationsOperationsResource {
   }
 }
 
+/// Input configuration for BatchTranslateDocument request.
+class BatchDocumentInputConfig {
+  /// Google Cloud Storage location for the source input.
+  ///
+  /// This can be a single file (for example,
+  /// `gs://translation-test/input.docx`) or a wildcard (for example,
+  /// `gs://translation-test / * `). File mime type is determined based on
+  /// extension. Supported mime type includes: - `pdf`, application/pdf -
+  /// `docx`,
+  /// application/vnd.openxmlformats-officedocument.wordprocessingml.document -
+  /// `pptx`,
+  /// application/vnd.openxmlformats-officedocument.presentationml.presentation
+  /// - `xlsx`,
+  /// application/vnd.openxmlformats-officedocument.spreadsheetml.sheet The max
+  /// file size to support for `.docx`, `.pptx` and `.xlsx` is 100MB. The max
+  /// file size to support for `.pdf` is 1GB and the max page limit is 1000
+  /// pages. The max file size to support for all input documents is 1GB.
+  GcsSource? gcsSource;
+
+  BatchDocumentInputConfig({
+    this.gcsSource,
+  });
+
+  BatchDocumentInputConfig.fromJson(core.Map _json)
+      : this(
+          gcsSource: _json.containsKey('gcsSource')
+              ? GcsSource.fromJson(
+                  _json['gcsSource'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (gcsSource != null) 'gcsSource': gcsSource!,
+      };
+}
+
+/// Output configuration for BatchTranslateDocument request.
+class BatchDocumentOutputConfig {
+  /// Google Cloud Storage destination for output content.
+  ///
+  /// For every single input document (for example, gs://a/b/c.\[extension\]),
+  /// we generate at most 2 * n output files. (n is the # of
+  /// target_language_codes in the BatchTranslateDocumentRequest). While the
+  /// input documents are being processed, we write/update an index file
+  /// `index.csv` under `gcs_destination.output_uri_prefix` (for example,
+  /// gs://translation_output/index.csv) The index file is generated/updated as
+  /// new files are being translated. The format is:
+  /// input_document,target_language_code,translation_output,error_output,
+  /// glossary_translation_output,glossary_error_output `input_document` is one
+  /// file we matched using gcs_source.input_uri. `target_language_code` is
+  /// provided in the request. `translation_output` contains the translations.
+  /// (details provided below) `error_output` contains the error message during
+  /// processing of the file. Both translations_file and errors_file could be
+  /// empty strings if we have no content to output.
+  /// `glossary_translation_output` and `glossary_error_output` are the
+  /// translated output/error when we apply glossaries. They could also be empty
+  /// if we have no content to output. Once a row is present in index.csv, the
+  /// input/output matching never changes. Callers should also expect all the
+  /// content in input_file are processed and ready to be consumed (that is, no
+  /// partial output file is written). Since index.csv will be keeping updated
+  /// during the process, please make sure there is no custom retention policy
+  /// applied on the output bucket that may avoid file updating.
+  /// (https://cloud.google.com/storage/docs/bucket-lock?hl=en#retention-policy)
+  /// The naming format of translation output files follows (for target language
+  /// code \[trg\]): `translation_output`:
+  /// gs://translation_output/a_b_c_\[trg\]_translation.\[extension\]
+  /// `glossary_translation_output`:
+  /// gs://translation_test/a_b_c_\[trg\]_glossary_translation.\[extension\] The
+  /// output document will maintain the same file format as the input document.
+  /// The naming format of error output files follows (for target language code
+  /// \[trg\]): `error_output`: gs://translation_test/a_b_c_\[trg\]_errors.txt
+  /// `glossary_error_output`:
+  /// gs://translation_test/a_b_c_\[trg\]_glossary_translation.txt The error
+  /// output is a txt file containing error details.
+  GcsDestination? gcsDestination;
+
+  BatchDocumentOutputConfig({
+    this.gcsDestination,
+  });
+
+  BatchDocumentOutputConfig.fromJson(core.Map _json)
+      : this(
+          gcsDestination: _json.containsKey('gcsDestination')
+              ? GcsDestination.fromJson(_json['gcsDestination']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (gcsDestination != null) 'gcsDestination': gcsDestination!,
+      };
+}
+
+/// The BatchTranslateDocument request.
+class BatchTranslateDocumentRequest {
+  /// Optional.
+  core.Map<core.String, core.String>? formatConversions;
+
+  /// Glossaries to be applied.
+  ///
+  /// It's keyed by target language code.
+  ///
+  /// Optional.
+  core.Map<core.String, TranslateTextGlossaryConfig>? glossaries;
+
+  /// Input configurations.
+  ///
+  /// The total number of files matched should be \<= 100. The total content
+  /// size to translate should be \<= 100M Unicode codepoints. The files must
+  /// use UTF-8 encoding.
+  ///
+  /// Required.
+  core.List<BatchDocumentInputConfig>? inputConfigs;
+
+  /// The models to use for translation.
+  ///
+  /// Map's key is target language code. Map's value is the model name. Value
+  /// can be a built-in general model, or an AutoML Translation model. The value
+  /// format depends on model type: - AutoML Translation models:
+  /// `projects/{project-number-or-id}/locations/{location-id}/models/{model-id}`
+  /// - General (built-in) models:
+  /// `projects/{project-number-or-id}/locations/{location-id}/models/general/nmt`,
+  /// If the map is empty or a specific model is not requested for a language
+  /// pair, then default google model (nmt) is used.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? models;
+
+  /// Output configuration.
+  ///
+  /// If 2 input configs match to the same file (that is, same input path), we
+  /// don't generate output for duplicate inputs.
+  ///
+  /// Required.
+  BatchDocumentOutputConfig? outputConfig;
+
+  /// The BCP-47 language code of the input document if known, for example,
+  /// "en-US" or "sr-Latn".
+  ///
+  /// Supported language codes are listed in Language Support
+  /// (https://cloud.google.com/translate/docs/languages).
+  ///
+  /// Required.
+  core.String? sourceLanguageCode;
+
+  /// The BCP-47 language code to use for translation of the input document.
+  ///
+  /// Specify up to 10 language codes here.
+  ///
+  /// Required.
+  core.List<core.String>? targetLanguageCodes;
+
+  BatchTranslateDocumentRequest({
+    this.formatConversions,
+    this.glossaries,
+    this.inputConfigs,
+    this.models,
+    this.outputConfig,
+    this.sourceLanguageCode,
+    this.targetLanguageCodes,
+  });
+
+  BatchTranslateDocumentRequest.fromJson(core.Map _json)
+      : this(
+          formatConversions: _json.containsKey('formatConversions')
+              ? (_json['formatConversions']
+                      as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          glossaries: _json.containsKey('glossaries')
+              ? (_json['glossaries'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    TranslateTextGlossaryConfig.fromJson(
+                        item as core.Map<core.String, core.dynamic>),
+                  ),
+                )
+              : null,
+          inputConfigs: _json.containsKey('inputConfigs')
+              ? (_json['inputConfigs'] as core.List)
+                  .map((value) => BatchDocumentInputConfig.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          models: _json.containsKey('models')
+              ? (_json['models'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          outputConfig: _json.containsKey('outputConfig')
+              ? BatchDocumentOutputConfig.fromJson(
+                  _json['outputConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+          sourceLanguageCode: _json.containsKey('sourceLanguageCode')
+              ? _json['sourceLanguageCode'] as core.String
+              : null,
+          targetLanguageCodes: _json.containsKey('targetLanguageCodes')
+              ? (_json['targetLanguageCodes'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (formatConversions != null) 'formatConversions': formatConversions!,
+        if (glossaries != null) 'glossaries': glossaries!,
+        if (inputConfigs != null) 'inputConfigs': inputConfigs!,
+        if (models != null) 'models': models!,
+        if (outputConfig != null) 'outputConfig': outputConfig!,
+        if (sourceLanguageCode != null)
+          'sourceLanguageCode': sourceLanguageCode!,
+        if (targetLanguageCodes != null)
+          'targetLanguageCodes': targetLanguageCodes!,
+      };
+}
+
 /// The batch translation request.
 class BatchTranslateTextRequest {
   /// Glossaries to be applied for translation.
@@ -1230,6 +1553,180 @@ class DetectedLanguage {
   core.Map<core.String, core.dynamic> toJson() => {
         if (confidence != null) 'confidence': confidence!,
         if (languageCode != null) 'languageCode': languageCode!,
+      };
+}
+
+/// A document translation request input config.
+class DocumentInputConfig {
+  /// Document's content represented as a stream of bytes.
+  core.String? content;
+  core.List<core.int> get contentAsBytes => convert.base64.decode(content!);
+
+  set contentAsBytes(core.List<core.int> _bytes) {
+    content =
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  /// Google Cloud Storage location.
+  ///
+  /// This must be a single file. For example:
+  /// gs://example_bucket/example_file.pdf
+  GcsSource? gcsSource;
+
+  /// Specifies the input document's mime_type.
+  ///
+  /// If not specified it will be determined using the file extension for
+  /// gcs_source provided files. For a file provided through bytes content the
+  /// mime_type must be provided. Currently supported mime types are: -
+  /// application/pdf -
+  /// application/vnd.openxmlformats-officedocument.wordprocessingml.document -
+  /// application/vnd.openxmlformats-officedocument.presentationml.presentation
+  /// - application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+  core.String? mimeType;
+
+  DocumentInputConfig({
+    this.content,
+    this.gcsSource,
+    this.mimeType,
+  });
+
+  DocumentInputConfig.fromJson(core.Map _json)
+      : this(
+          content: _json.containsKey('content')
+              ? _json['content'] as core.String
+              : null,
+          gcsSource: _json.containsKey('gcsSource')
+              ? GcsSource.fromJson(
+                  _json['gcsSource'] as core.Map<core.String, core.dynamic>)
+              : null,
+          mimeType: _json.containsKey('mimeType')
+              ? _json['mimeType'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (content != null) 'content': content!,
+        if (gcsSource != null) 'gcsSource': gcsSource!,
+        if (mimeType != null) 'mimeType': mimeType!,
+      };
+}
+
+/// A document translation request output config.
+class DocumentOutputConfig {
+  /// Google Cloud Storage destination for the translation output, e.g.,
+  /// `gs://my_bucket/my_directory/`.
+  ///
+  /// The destination directory provided does not have to be empty, but the
+  /// bucket must exist. If a file with the same name as the output file already
+  /// exists in the destination an error will be returned. For a
+  /// DocumentInputConfig.contents provided document, the output file will have
+  /// the name "output_\[trg\]_translations.\[ext\]", where - \[trg\]
+  /// corresponds to the translated file's language code, - \[ext\] corresponds
+  /// to the translated file's extension according to its mime type. For a
+  /// DocumentInputConfig.gcs_uri provided document, the output file will have a
+  /// name according to its URI. For example: an input file with URI:
+  /// "gs://a/b/c.\[extension\]" stored in a gcs_destination bucket with name
+  /// "my_bucket" will have an output URI:
+  /// "gs://my_bucket/a_b_c_\[trg\]_translations.\[ext\]", where - \[trg\]
+  /// corresponds to the translated file's language code, - \[ext\] corresponds
+  /// to the translated file's extension according to its mime type. If the
+  /// document was directly provided through the request, then the output
+  /// document will have the format:
+  /// "gs://my_bucket/translated_document_\[trg\]_translations.\[ext\], where -
+  /// \[trg\] corresponds to the translated file's language code, - \[ext\]
+  /// corresponds to the translated file's extension according to its mime type.
+  /// If a glossary was provided, then the output URI for the glossary
+  /// translation will be equal to the default output URI but have
+  /// `glossary_translations` instead of `translations`. For the previous
+  /// example, its glossary URI would be:
+  /// "gs://my_bucket/a_b_c_\[trg\]_glossary_translations.\[ext\]". Thus the max
+  /// number of output files will be 2 (Translated document, Glossary translated
+  /// document). Callers should expect no partial outputs. If there is any error
+  /// during document translation, no output will be stored in the Cloud Storage
+  /// bucket.
+  ///
+  /// Optional.
+  GcsDestination? gcsDestination;
+
+  /// Specifies the translated document's mime_type.
+  ///
+  /// If not specified, the translated file's mime type will be the same as the
+  /// input file's mime type. Currently only support the output mime type to be
+  /// the same as input mime type. - application/pdf -
+  /// application/vnd.openxmlformats-officedocument.wordprocessingml.document -
+  /// application/vnd.openxmlformats-officedocument.presentationml.presentation
+  /// - application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+  ///
+  /// Optional.
+  core.String? mimeType;
+
+  DocumentOutputConfig({
+    this.gcsDestination,
+    this.mimeType,
+  });
+
+  DocumentOutputConfig.fromJson(core.Map _json)
+      : this(
+          gcsDestination: _json.containsKey('gcsDestination')
+              ? GcsDestination.fromJson(_json['gcsDestination']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          mimeType: _json.containsKey('mimeType')
+              ? _json['mimeType'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (gcsDestination != null) 'gcsDestination': gcsDestination!,
+        if (mimeType != null) 'mimeType': mimeType!,
+      };
+}
+
+/// A translated document message.
+class DocumentTranslation {
+  /// The array of translated documents.
+  ///
+  /// It is expected to be size 1 for now. We may produce multiple translated
+  /// documents in the future for other type of file formats.
+  core.List<core.String>? byteStreamOutputs;
+
+  /// The detected language for the input document.
+  ///
+  /// If the user did not provide the source language for the input document,
+  /// this field will have the language code automatically detected. If the
+  /// source language was passed, auto-detection of the language does not occur
+  /// and this field is empty.
+  core.String? detectedLanguageCode;
+
+  /// The translated document's mime type.
+  core.String? mimeType;
+
+  DocumentTranslation({
+    this.byteStreamOutputs,
+    this.detectedLanguageCode,
+    this.mimeType,
+  });
+
+  DocumentTranslation.fromJson(core.Map _json)
+      : this(
+          byteStreamOutputs: _json.containsKey('byteStreamOutputs')
+              ? (_json['byteStreamOutputs'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          detectedLanguageCode: _json.containsKey('detectedLanguageCode')
+              ? _json['detectedLanguageCode'] as core.String
+              : null,
+          mimeType: _json.containsKey('mimeType')
+              ? _json['mimeType'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (byteStreamOutputs != null) 'byteStreamOutputs': byteStreamOutputs!,
+        if (detectedLanguageCode != null)
+          'detectedLanguageCode': detectedLanguageCode!,
+        if (mimeType != null) 'mimeType': mimeType!,
       };
 }
 
@@ -1866,6 +2363,191 @@ class SupportedLanguages {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (languages != null) 'languages': languages!,
+      };
+}
+
+/// A document translation request.
+class TranslateDocumentRequest {
+  /// Input configurations.
+  ///
+  /// Required.
+  DocumentInputConfig? documentInputConfig;
+
+  /// Output configurations.
+  ///
+  /// Defines if the output file should be stored within Cloud Storage as well
+  /// as the desired output format. If not provided the translated file will
+  /// only be returned through a byte-stream and its output mime type will be
+  /// the same as the input file's mime type.
+  ///
+  /// Optional.
+  DocumentOutputConfig? documentOutputConfig;
+
+  /// Glossary to be applied.
+  ///
+  /// The glossary must be within the same region (have the same location-id) as
+  /// the model, otherwise an INVALID_ARGUMENT (400) error is returned.
+  ///
+  /// Optional.
+  TranslateTextGlossaryConfig? glossaryConfig;
+
+  /// The labels with user-defined metadata for the request.
+  ///
+  /// Label keys and values can be no longer than 63 characters (Unicode
+  /// codepoints), can only contain lowercase letters, numeric characters,
+  /// underscores and dashes. International characters are allowed. Label values
+  /// are optional. Label keys must start with a letter. See
+  /// https://cloud.google.com/translate/docs/advanced/labels for more
+  /// information.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
+  /// The `model` type requested for this translation.
+  ///
+  /// The format depends on model type: - AutoML Translation models:
+  /// `projects/{project-number-or-id}/locations/{location-id}/models/{model-id}`
+  /// - General (built-in) models:
+  /// `projects/{project-number-or-id}/locations/{location-id}/models/general/nmt`,
+  /// If not provided, the default Google model (NMT) will be used for
+  /// translation.
+  ///
+  /// Optional.
+  core.String? model;
+
+  /// The BCP-47 language code of the input document if known, for example,
+  /// "en-US" or "sr-Latn".
+  ///
+  /// Supported language codes are listed in Language Support. If the source
+  /// language isn't specified, the API attempts to identify the source language
+  /// automatically and returns the source language within the response. Source
+  /// language must be specified if the request contains a glossary or a custom
+  /// model.
+  ///
+  /// Optional.
+  core.String? sourceLanguageCode;
+
+  /// The BCP-47 language code to use for translation of the input document, set
+  /// to one of the language codes listed in Language Support.
+  ///
+  /// Required.
+  core.String? targetLanguageCode;
+
+  TranslateDocumentRequest({
+    this.documentInputConfig,
+    this.documentOutputConfig,
+    this.glossaryConfig,
+    this.labels,
+    this.model,
+    this.sourceLanguageCode,
+    this.targetLanguageCode,
+  });
+
+  TranslateDocumentRequest.fromJson(core.Map _json)
+      : this(
+          documentInputConfig: _json.containsKey('documentInputConfig')
+              ? DocumentInputConfig.fromJson(_json['documentInputConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          documentOutputConfig: _json.containsKey('documentOutputConfig')
+              ? DocumentOutputConfig.fromJson(_json['documentOutputConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          glossaryConfig: _json.containsKey('glossaryConfig')
+              ? TranslateTextGlossaryConfig.fromJson(_json['glossaryConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          labels: _json.containsKey('labels')
+              ? (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          model:
+              _json.containsKey('model') ? _json['model'] as core.String : null,
+          sourceLanguageCode: _json.containsKey('sourceLanguageCode')
+              ? _json['sourceLanguageCode'] as core.String
+              : null,
+          targetLanguageCode: _json.containsKey('targetLanguageCode')
+              ? _json['targetLanguageCode'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (documentInputConfig != null)
+          'documentInputConfig': documentInputConfig!,
+        if (documentOutputConfig != null)
+          'documentOutputConfig': documentOutputConfig!,
+        if (glossaryConfig != null) 'glossaryConfig': glossaryConfig!,
+        if (labels != null) 'labels': labels!,
+        if (model != null) 'model': model!,
+        if (sourceLanguageCode != null)
+          'sourceLanguageCode': sourceLanguageCode!,
+        if (targetLanguageCode != null)
+          'targetLanguageCode': targetLanguageCode!,
+      };
+}
+
+/// A translated document response message.
+class TranslateDocumentResponse {
+  /// Translated document.
+  DocumentTranslation? documentTranslation;
+
+  /// The `glossary_config` used for this translation.
+  TranslateTextGlossaryConfig? glossaryConfig;
+
+  /// The document's translation output if a glossary is provided in the
+  /// request.
+  ///
+  /// This can be the same as \[TranslateDocumentResponse.document_translation\]
+  /// if no glossary terms apply.
+  DocumentTranslation? glossaryDocumentTranslation;
+
+  /// Only present when 'model' is present in the request.
+  ///
+  /// 'model' is normalized to have a project number. For example: If the
+  /// 'model' field in TranslateDocumentRequest is:
+  /// `projects/{project-id}/locations/{location-id}/models/general/nmt` then
+  /// `model` here would be normalized to
+  /// `projects/{project-number}/locations/{location-id}/models/general/nmt`.
+  core.String? model;
+
+  TranslateDocumentResponse({
+    this.documentTranslation,
+    this.glossaryConfig,
+    this.glossaryDocumentTranslation,
+    this.model,
+  });
+
+  TranslateDocumentResponse.fromJson(core.Map _json)
+      : this(
+          documentTranslation: _json.containsKey('documentTranslation')
+              ? DocumentTranslation.fromJson(_json['documentTranslation']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          glossaryConfig: _json.containsKey('glossaryConfig')
+              ? TranslateTextGlossaryConfig.fromJson(_json['glossaryConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          glossaryDocumentTranslation:
+              _json.containsKey('glossaryDocumentTranslation')
+                  ? DocumentTranslation.fromJson(
+                      _json['glossaryDocumentTranslation']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          model:
+              _json.containsKey('model') ? _json['model'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (documentTranslation != null)
+          'documentTranslation': documentTranslation!,
+        if (glossaryConfig != null) 'glossaryConfig': glossaryConfig!,
+        if (glossaryDocumentTranslation != null)
+          'glossaryDocumentTranslation': glossaryDocumentTranslation!,
+        if (model != null) 'model': model!,
       };
 }
 

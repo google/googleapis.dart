@@ -831,16 +831,44 @@ class EnvironmentConfig {
   /// The encryption options for the Cloud Composer environment and its
   /// dependencies.
   ///
-  /// Cannot be updated. This field is supported for Cloud Composer environments
-  /// in versions composer-1.*.*-airflow-*.*.*.
+  /// Cannot be updated.
   ///
   /// Optional.
   EncryptionConfig? encryptionConfig;
+
+  /// The size of the Cloud Composer environment.
+  ///
+  /// This field is supported for Cloud Composer environments in versions
+  /// composer-2.*.*-airflow-*.*.* and newer.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "ENVIRONMENT_SIZE_UNSPECIFIED" : The size of the environment is
+  /// unspecified.
+  /// - "ENVIRONMENT_SIZE_SMALL" : The environment size is small.
+  /// - "ENVIRONMENT_SIZE_MEDIUM" : The environment size is medium.
+  /// - "ENVIRONMENT_SIZE_LARGE" : The environment size is large.
+  core.String? environmentSize;
 
   /// The Kubernetes Engine cluster used to run this environment.
   ///
   /// Output only.
   core.String? gkeCluster;
+
+  /// The maintenance window is the period when Cloud Composer components may
+  /// undergo maintenance.
+  ///
+  /// It is defined so that maintenance is not executed during peak hours or
+  /// critical time periods. The system will not be under maintenance for every
+  /// occurrence of this window, but when maintenance is planned, it will be
+  /// scheduled during the window. The maintenance window period must encompass
+  /// at least 12 hours per week. This may be split into multiple chunks, each
+  /// with a size of at least 4 hours. If this value is omitted, the default
+  /// value for maintenance window will be applied. The default value is
+  /// Saturday and Sunday 00-06 GMT.
+  ///
+  /// Optional.
+  MaintenanceWindow? maintenanceWindow;
 
   /// The configuration used for the Kubernetes Engine cluster.
   NodeConfig? nodeConfig;
@@ -865,25 +893,36 @@ class EnvironmentConfig {
 
   /// The network-level access control policy for the Airflow web server.
   ///
-  /// If unspecified, no network-level access restrictions will be applied. This
-  /// field is supported for Cloud Composer environments in versions
-  /// composer-1.*.*-airflow-*.*.*.
+  /// If unspecified, no network-level access restrictions will be applied.
   ///
   /// Optional.
   WebServerNetworkAccessControl? webServerNetworkAccessControl;
+
+  /// The workloads configuration settings for the GKE cluster associated with
+  /// the Cloud Composer environment.
+  ///
+  /// The GKE cluster runs Airflow scheduler, web server and workers workloads.
+  /// This field is supported for Cloud Composer environments in versions
+  /// composer-2.*.*-airflow-*.*.* and newer.
+  ///
+  /// Optional.
+  WorkloadsConfig? workloadsConfig;
 
   EnvironmentConfig({
     this.airflowUri,
     this.dagGcsPrefix,
     this.databaseConfig,
     this.encryptionConfig,
+    this.environmentSize,
     this.gkeCluster,
+    this.maintenanceWindow,
     this.nodeConfig,
     this.nodeCount,
     this.privateEnvironmentConfig,
     this.softwareConfig,
     this.webServerConfig,
     this.webServerNetworkAccessControl,
+    this.workloadsConfig,
   });
 
   EnvironmentConfig.fromJson(core.Map _json)
@@ -902,8 +941,15 @@ class EnvironmentConfig {
               ? EncryptionConfig.fromJson(_json['encryptionConfig']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          environmentSize: _json.containsKey('environmentSize')
+              ? _json['environmentSize'] as core.String
+              : null,
           gkeCluster: _json.containsKey('gkeCluster')
               ? _json['gkeCluster'] as core.String
+              : null,
+          maintenanceWindow: _json.containsKey('maintenanceWindow')
+              ? MaintenanceWindow.fromJson(_json['maintenanceWindow']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           nodeConfig: _json.containsKey('nodeConfig')
               ? NodeConfig.fromJson(
@@ -932,6 +978,10 @@ class EnvironmentConfig {
                       _json['webServerNetworkAccessControl']
                           as core.Map<core.String, core.dynamic>)
                   : null,
+          workloadsConfig: _json.containsKey('workloadsConfig')
+              ? WorkloadsConfig.fromJson(_json['workloadsConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -939,7 +989,9 @@ class EnvironmentConfig {
         if (dagGcsPrefix != null) 'dagGcsPrefix': dagGcsPrefix!,
         if (databaseConfig != null) 'databaseConfig': databaseConfig!,
         if (encryptionConfig != null) 'encryptionConfig': encryptionConfig!,
+        if (environmentSize != null) 'environmentSize': environmentSize!,
         if (gkeCluster != null) 'gkeCluster': gkeCluster!,
+        if (maintenanceWindow != null) 'maintenanceWindow': maintenanceWindow!,
         if (nodeConfig != null) 'nodeConfig': nodeConfig!,
         if (nodeCount != null) 'nodeCount': nodeCount!,
         if (privateEnvironmentConfig != null)
@@ -948,6 +1000,7 @@ class EnvironmentConfig {
         if (webServerConfig != null) 'webServerConfig': webServerConfig!,
         if (webServerNetworkAccessControl != null)
           'webServerNetworkAccessControl': webServerNetworkAccessControl!,
+        if (workloadsConfig != null) 'workloadsConfig': workloadsConfig!,
       };
 }
 
@@ -1213,6 +1266,62 @@ class ListOperationsResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (operations != null) 'operations': operations!,
+      };
+}
+
+/// The configuration settings for Cloud Composer maintenance window.
+///
+/// The following example: ``` { "startTime":"2019-08-01T01:00:00Z"
+/// "endTime":"2019-08-01T07:00:00Z" "recurrence":"FREQ=WEEKLY;BYDAY=TU,WE" }
+/// ``` would define a maintenance window between 01 and 07 hours UTC during
+/// each Tuesday and Wednesday.
+class MaintenanceWindow {
+  /// Maintenance window end time.
+  ///
+  /// It is used only to calculate the duration of the maintenance window. The
+  /// value for end-time must be in the future, relative to `start_time`.
+  ///
+  /// Required.
+  core.String? endTime;
+
+  /// Maintenance window recurrence.
+  ///
+  /// Format is a subset of \[RFC-5545\](https://tools.ietf.org/html/rfc5545)
+  /// `RRULE`. The only allowed values for `FREQ` field are `FREQ=DAILY` and
+  /// `FREQ=WEEKLY;BYDAY=...` Example values: `FREQ=WEEKLY;BYDAY=TU,WE`,
+  /// `FREQ=DAILY`.
+  ///
+  /// Required.
+  core.String? recurrence;
+
+  /// Start time of the first recurrence of the maintenance window.
+  ///
+  /// Required.
+  core.String? startTime;
+
+  MaintenanceWindow({
+    this.endTime,
+    this.recurrence,
+    this.startTime,
+  });
+
+  MaintenanceWindow.fromJson(core.Map _json)
+      : this(
+          endTime: _json.containsKey('endTime')
+              ? _json['endTime'] as core.String
+              : null,
+          recurrence: _json.containsKey('recurrence')
+              ? _json['recurrence'] as core.String
+              : null,
+          startTime: _json.containsKey('startTime')
+              ? _json['startTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (endTime != null) 'endTime': endTime!,
+        if (recurrence != null) 'recurrence': recurrence!,
+        if (startTime != null) 'startTime': startTime!,
       };
 }
 
@@ -1527,6 +1636,24 @@ class PrivateClusterConfig {
 /// The configuration information for configuring a Private IP Cloud Composer
 /// environment.
 class PrivateEnvironmentConfig {
+  /// The CIDR block from which IP range for Cloud Composer Network in tenant
+  /// project will be reserved.
+  ///
+  /// Needs to be disjoint from private_cluster_config.master_ipv4_cidr_block
+  /// and cloud_sql_ipv4_cidr_block. This field is supported for Cloud Composer
+  /// environments in versions composer-2.*.*-airflow-*.*.* and newer.
+  ///
+  /// Optional.
+  core.String? cloudComposerNetworkIpv4CidrBlock;
+
+  /// The IP range reserved for the tenant project's Cloud Composer network.
+  ///
+  /// This field is supported for Cloud Composer environments in versions
+  /// composer-2.*.*-airflow-*.*.* and newer.
+  ///
+  /// Output only.
+  core.String? cloudComposerNetworkIpv4ReservedRange;
+
   /// The CIDR block from which IP range in tenant project will be reserved for
   /// Cloud SQL.
   ///
@@ -1568,6 +1695,8 @@ class PrivateEnvironmentConfig {
   core.String? webServerIpv4ReservedRange;
 
   PrivateEnvironmentConfig({
+    this.cloudComposerNetworkIpv4CidrBlock,
+    this.cloudComposerNetworkIpv4ReservedRange,
     this.cloudSqlIpv4CidrBlock,
     this.enablePrivateEnvironment,
     this.privateClusterConfig,
@@ -1577,6 +1706,14 @@ class PrivateEnvironmentConfig {
 
   PrivateEnvironmentConfig.fromJson(core.Map _json)
       : this(
+          cloudComposerNetworkIpv4CidrBlock:
+              _json.containsKey('cloudComposerNetworkIpv4CidrBlock')
+                  ? _json['cloudComposerNetworkIpv4CidrBlock'] as core.String
+                  : null,
+          cloudComposerNetworkIpv4ReservedRange: _json
+                  .containsKey('cloudComposerNetworkIpv4ReservedRange')
+              ? _json['cloudComposerNetworkIpv4ReservedRange'] as core.String
+              : null,
           cloudSqlIpv4CidrBlock: _json.containsKey('cloudSqlIpv4CidrBlock')
               ? _json['cloudSqlIpv4CidrBlock'] as core.String
               : null,
@@ -1598,6 +1735,12 @@ class PrivateEnvironmentConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (cloudComposerNetworkIpv4CidrBlock != null)
+          'cloudComposerNetworkIpv4CidrBlock':
+              cloudComposerNetworkIpv4CidrBlock!,
+        if (cloudComposerNetworkIpv4ReservedRange != null)
+          'cloudComposerNetworkIpv4ReservedRange':
+              cloudComposerNetworkIpv4ReservedRange!,
         if (cloudSqlIpv4CidrBlock != null)
           'cloudSqlIpv4CidrBlock': cloudSqlIpv4CidrBlock!,
         if (enablePrivateEnvironment != null)
@@ -1608,6 +1751,57 @@ class PrivateEnvironmentConfig {
           'webServerIpv4CidrBlock': webServerIpv4CidrBlock!,
         if (webServerIpv4ReservedRange != null)
           'webServerIpv4ReservedRange': webServerIpv4ReservedRange!,
+      };
+}
+
+/// Configuration for resources used by Airflow schedulers.
+class SchedulerResource {
+  /// The number of schedulers.
+  ///
+  /// Optional.
+  core.int? count;
+
+  /// CPU request and limit for a single Airflow scheduler replica.
+  ///
+  /// Optional.
+  core.double? cpu;
+
+  /// Memory (GB) request and limit for a single Airflow scheduler replica.
+  ///
+  /// Optional.
+  core.double? memoryGb;
+
+  /// Storage (GB) request and limit for a single Airflow scheduler replica.
+  ///
+  /// Optional.
+  core.double? storageGb;
+
+  SchedulerResource({
+    this.count,
+    this.cpu,
+    this.memoryGb,
+    this.storageGb,
+  });
+
+  SchedulerResource.fromJson(core.Map _json)
+      : this(
+          count: _json.containsKey('count') ? _json['count'] as core.int : null,
+          cpu: _json.containsKey('cpu')
+              ? (_json['cpu'] as core.num).toDouble()
+              : null,
+          memoryGb: _json.containsKey('memoryGb')
+              ? (_json['memoryGb'] as core.num).toDouble()
+              : null,
+          storageGb: _json.containsKey('storageGb')
+              ? (_json['storageGb'] as core.num).toDouble()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (count != null) 'count': count!,
+        if (cpu != null) 'cpu': cpu!,
+        if (memoryGb != null) 'memoryGb': memoryGb!,
+        if (storageGb != null) 'storageGb': storageGb!,
       };
 }
 
@@ -1799,9 +1993,6 @@ class WebServerConfig {
 }
 
 /// Network-level access control policy for the Airflow web server.
-///
-/// Supported for Cloud Composer environments in versions
-/// composer-1.*.*-airflow-*.*.*.
 class WebServerNetworkAccessControl {
   /// A collection of allowed IP ranges with descriptions.
   core.List<AllowedIpRange>? allowedIpRanges;
@@ -1822,5 +2013,161 @@ class WebServerNetworkAccessControl {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (allowedIpRanges != null) 'allowedIpRanges': allowedIpRanges!,
+      };
+}
+
+/// Configuration for resources used by Airflow web server.
+class WebServerResource {
+  /// CPU request and limit for Airflow web server.
+  ///
+  /// Optional.
+  core.double? cpu;
+
+  /// Memory (GB) request and limit for Airflow web server.
+  ///
+  /// Optional.
+  core.double? memoryGb;
+
+  /// Storage (GB) request and limit for Airflow web server.
+  ///
+  /// Optional.
+  core.double? storageGb;
+
+  WebServerResource({
+    this.cpu,
+    this.memoryGb,
+    this.storageGb,
+  });
+
+  WebServerResource.fromJson(core.Map _json)
+      : this(
+          cpu: _json.containsKey('cpu')
+              ? (_json['cpu'] as core.num).toDouble()
+              : null,
+          memoryGb: _json.containsKey('memoryGb')
+              ? (_json['memoryGb'] as core.num).toDouble()
+              : null,
+          storageGb: _json.containsKey('storageGb')
+              ? (_json['storageGb'] as core.num).toDouble()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (cpu != null) 'cpu': cpu!,
+        if (memoryGb != null) 'memoryGb': memoryGb!,
+        if (storageGb != null) 'storageGb': storageGb!,
+      };
+}
+
+/// Configuration for resources used by Airflow workers.
+class WorkerResource {
+  /// CPU request and limit for a single Airflow worker replica.
+  ///
+  /// Optional.
+  core.double? cpu;
+
+  /// Maximum number of workers for autoscaling.
+  ///
+  /// Optional.
+  core.int? maxCount;
+
+  /// Memory (GB) request and limit for a single Airflow worker replica.
+  ///
+  /// Optional.
+  core.double? memoryGb;
+
+  /// Minimum number of workers for autoscaling.
+  ///
+  /// Optional.
+  core.int? minCount;
+
+  /// Storage (GB) request and limit for a single Airflow worker replica.
+  ///
+  /// Optional.
+  core.double? storageGb;
+
+  WorkerResource({
+    this.cpu,
+    this.maxCount,
+    this.memoryGb,
+    this.minCount,
+    this.storageGb,
+  });
+
+  WorkerResource.fromJson(core.Map _json)
+      : this(
+          cpu: _json.containsKey('cpu')
+              ? (_json['cpu'] as core.num).toDouble()
+              : null,
+          maxCount: _json.containsKey('maxCount')
+              ? _json['maxCount'] as core.int
+              : null,
+          memoryGb: _json.containsKey('memoryGb')
+              ? (_json['memoryGb'] as core.num).toDouble()
+              : null,
+          minCount: _json.containsKey('minCount')
+              ? _json['minCount'] as core.int
+              : null,
+          storageGb: _json.containsKey('storageGb')
+              ? (_json['storageGb'] as core.num).toDouble()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (cpu != null) 'cpu': cpu!,
+        if (maxCount != null) 'maxCount': maxCount!,
+        if (memoryGb != null) 'memoryGb': memoryGb!,
+        if (minCount != null) 'minCount': minCount!,
+        if (storageGb != null) 'storageGb': storageGb!,
+      };
+}
+
+/// The Kubernetes workloads configuration for GKE cluster associated with the
+/// Cloud Composer environment.
+///
+/// Supported for Cloud Composer environments in versions
+/// composer-2.*.*-airflow-*.*.* and newer.
+class WorkloadsConfig {
+  /// Resources used by Airflow schedulers.
+  ///
+  /// Optional.
+  SchedulerResource? scheduler;
+
+  /// Resources used by Airflow web server.
+  ///
+  /// Optional.
+  WebServerResource? webServer;
+
+  /// Resources used by Airflow workers.
+  ///
+  /// Optional.
+  WorkerResource? worker;
+
+  WorkloadsConfig({
+    this.scheduler,
+    this.webServer,
+    this.worker,
+  });
+
+  WorkloadsConfig.fromJson(core.Map _json)
+      : this(
+          scheduler: _json.containsKey('scheduler')
+              ? SchedulerResource.fromJson(
+                  _json['scheduler'] as core.Map<core.String, core.dynamic>)
+              : null,
+          webServer: _json.containsKey('webServer')
+              ? WebServerResource.fromJson(
+                  _json['webServer'] as core.Map<core.String, core.dynamic>)
+              : null,
+          worker: _json.containsKey('worker')
+              ? WorkerResource.fromJson(
+                  _json['worker'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (scheduler != null) 'scheduler': scheduler!,
+        if (webServer != null) 'webServer': webServer!,
+        if (worker != null) 'worker': worker!,
       };
 }

@@ -1216,7 +1216,7 @@
             }
         }
     },
-    "revision": "20211025",
+    "revision": "20211129",
     "rootUrl": "https://firestore.googleapis.com/",
     "schemas": {
         "ArrayValue": {

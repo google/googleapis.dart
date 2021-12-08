@@ -1405,6 +1405,12 @@ typedef Location = $Location;
 
 /// Network related configurations.
 class NetworkConfig {
+  /// Allows the TPU node to send and receive packets with non-matching
+  /// destination or source IPs.
+  ///
+  /// This is required if you plan to use the TPU workers to forward routes.
+  core.bool? canIpForward;
+
   /// Indicates that external IP addresses would be associated with the TPU
   /// workers.
   ///
@@ -1425,6 +1431,7 @@ class NetworkConfig {
   core.String? subnetwork;
 
   NetworkConfig({
+    this.canIpForward,
     this.enableExternalIps,
     this.network,
     this.subnetwork,
@@ -1432,6 +1439,9 @@ class NetworkConfig {
 
   NetworkConfig.fromJson(core.Map _json)
       : this(
+          canIpForward: _json.containsKey('canIpForward')
+              ? _json['canIpForward'] as core.bool
+              : null,
           enableExternalIps: _json.containsKey('enableExternalIps')
               ? _json['enableExternalIps'] as core.bool
               : null,
@@ -1444,6 +1454,7 @@ class NetworkConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (canIpForward != null) 'canIpForward': canIpForward!,
         if (enableExternalIps != null) 'enableExternalIps': enableExternalIps!,
         if (network != null) 'network': network!,
         if (subnetwork != null) 'subnetwork': subnetwork!,

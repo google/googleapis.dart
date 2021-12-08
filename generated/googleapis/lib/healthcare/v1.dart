@@ -8729,6 +8729,14 @@ class Feature {
 
 /// Specifies how to handle de-identification of a FHIR store.
 class FhirConfig {
+  /// The behaviour for handling FHIR extensions that aren't otherwise specified
+  /// for de-identification.
+  ///
+  /// If true, all extensions are preserved during de-identification by default.
+  /// If false or unspecified, all extensions are removed during
+  /// de-identification by default.
+  core.bool? defaultKeepExtensions;
+
   /// Specifies FHIR paths to match and how to transform them.
   ///
   /// Any field that is not matched by a FieldMetadata is passed through to the
@@ -8737,11 +8745,15 @@ class FhirConfig {
   core.List<FieldMetadata>? fieldMetadataList;
 
   FhirConfig({
+    this.defaultKeepExtensions,
     this.fieldMetadataList,
   });
 
   FhirConfig.fromJson(core.Map _json)
       : this(
+          defaultKeepExtensions: _json.containsKey('defaultKeepExtensions')
+              ? _json['defaultKeepExtensions'] as core.bool
+              : null,
           fieldMetadataList: _json.containsKey('fieldMetadataList')
               ? (_json['fieldMetadataList'] as core.List)
                   .map((value) => FieldMetadata.fromJson(
@@ -8751,6 +8763,8 @@ class FhirConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (defaultKeepExtensions != null)
+          'defaultKeepExtensions': defaultKeepExtensions!,
         if (fieldMetadataList != null) 'fieldMetadataList': fieldMetadataList!,
       };
 }
@@ -8870,6 +8884,10 @@ class FhirStore {
   /// the results show up in the streaming destination.
   core.List<StreamConfig>? streamConfigs;
 
+  /// Configuration for how to validate incoming FHIR resources against
+  /// configured profiles.
+  ValidationConfig? validationConfig;
+
   /// The FHIR specification version that this FHIR store supports natively.
   ///
   /// This field is immutable after store creation. Requests are rejected if
@@ -8896,6 +8914,7 @@ class FhirStore {
     this.name,
     this.notificationConfig,
     this.streamConfigs,
+    this.validationConfig,
     this.version,
   });
 
@@ -8935,6 +8954,10 @@ class FhirStore {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          validationConfig: _json.containsKey('validationConfig')
+              ? ValidationConfig.fromJson(_json['validationConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           version: _json.containsKey('version')
               ? _json['version'] as core.String
               : null,
@@ -8954,6 +8977,7 @@ class FhirStore {
         if (notificationConfig != null)
           'notificationConfig': notificationConfig!,
         if (streamConfigs != null) 'streamConfigs': streamConfigs!,
+        if (validationConfig != null) 'validationConfig': validationConfig!,
         if (version != null) 'version': version!,
       };
 }
@@ -11963,6 +11987,67 @@ class UserDataMapping {
         if (resourceAttributes != null)
           'resourceAttributes': resourceAttributes!,
         if (userId != null) 'userId': userId!,
+      };
+}
+
+/// Contains the configuration for FHIR profiles and validation.
+class ValidationConfig {
+  /// Whether to disable FHIRPath validation for incoming resources.
+  ///
+  /// Set this to true to disable checking incoming resources for conformance
+  /// against FHIRPath requirement defined in the FHIR specification. This
+  /// property only affects resource types that do not have profiles configured
+  /// for them, any rules in enabled implementation guides will still be
+  /// enforced.
+  core.bool? disableFhirpathValidation;
+
+  /// Whether to disable reference type validation for incoming resources.
+  ///
+  /// Set this to true to disable checking incoming resources for conformance
+  /// against reference type requirement defined in the FHIR specification. This
+  /// property only affects resource types that do not have profiles configured
+  /// for them, any rules in enabled implementation guides will still be
+  /// enforced.
+  core.bool? disableReferenceTypeValidation;
+
+  /// Whether to disable required fields validation for incoming resources.
+  ///
+  /// Set this to true to disable checking incoming resources for conformance
+  /// against required fields requirement defined in the FHIR specification.
+  /// This property only affects resource types that do not have profiles
+  /// configured for them, any rules in enabled implementation guides will still
+  /// be enforced.
+  core.bool? disableRequiredFieldValidation;
+
+  ValidationConfig({
+    this.disableFhirpathValidation,
+    this.disableReferenceTypeValidation,
+    this.disableRequiredFieldValidation,
+  });
+
+  ValidationConfig.fromJson(core.Map _json)
+      : this(
+          disableFhirpathValidation:
+              _json.containsKey('disableFhirpathValidation')
+                  ? _json['disableFhirpathValidation'] as core.bool
+                  : null,
+          disableReferenceTypeValidation:
+              _json.containsKey('disableReferenceTypeValidation')
+                  ? _json['disableReferenceTypeValidation'] as core.bool
+                  : null,
+          disableRequiredFieldValidation:
+              _json.containsKey('disableRequiredFieldValidation')
+                  ? _json['disableRequiredFieldValidation'] as core.bool
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (disableFhirpathValidation != null)
+          'disableFhirpathValidation': disableFhirpathValidation!,
+        if (disableReferenceTypeValidation != null)
+          'disableReferenceTypeValidation': disableReferenceTypeValidation!,
+        if (disableRequiredFieldValidation != null)
+          'disableRequiredFieldValidation': disableRequiredFieldValidation!,
       };
 }
 

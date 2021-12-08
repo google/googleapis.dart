@@ -2678,9 +2678,11 @@ class Device {
   /// - "DEVICE_STATE_UNSPECIFIED" : This value is disallowed.
   /// - "ACTIVE" : The device is active.
   /// - "DISABLED" : The device is disabled.
-  /// - "DELETED" : The device was deleted. This state will never be returned by
-  /// an API call, but is used in the final status report published to Cloud
-  /// Pub/Sub when the device acknowledges the deletion.
+  /// - "DELETED" : The device was deleted. This state is never returned by an
+  /// API call, but is used in the final status report when the device
+  /// acknowledges the deletion. If the device is deleted via the API call, this
+  /// state is published to Pub/Sub. If the user deletes the work profile or
+  /// resets the device, the device state will remain unknown to the server.
   /// - "PROVISIONING" : The device is being provisioned. Newly enrolled devices
   /// are in this state until they have a policy applied.
   core.String? appliedState;
@@ -2824,9 +2826,11 @@ class Device {
   /// - "DEVICE_STATE_UNSPECIFIED" : This value is disallowed.
   /// - "ACTIVE" : The device is active.
   /// - "DISABLED" : The device is disabled.
-  /// - "DELETED" : The device was deleted. This state will never be returned by
-  /// an API call, but is used in the final status report published to Cloud
-  /// Pub/Sub when the device acknowledges the deletion.
+  /// - "DELETED" : The device was deleted. This state is never returned by an
+  /// API call, but is used in the final status report when the device
+  /// acknowledges the deletion. If the device is deleted via the API call, this
+  /// state is published to Pub/Sub. If the user deletes the work profile or
+  /// resets the device, the device state will remain unknown to the server.
   /// - "PROVISIONING" : The device is being provisioned. Newly enrolled devices
   /// are in this state until they have a policy applied.
   core.String? state;
@@ -3670,6 +3674,17 @@ class HardwareInfo {
   /// For example, MDM9625_104662.22.05.34p.
   core.String? deviceBasebandVersion;
 
+  /// ID that uniquely identifies a personally-owned device in a particular
+  /// organization.
+  ///
+  /// On the same physical device when enrolled with the same organization, this
+  /// ID persists across setups and even factory resets. This ID is available on
+  /// personally-owned devices with a work profile on devices running Android 12
+  /// and above.
+  ///
+  /// Output only.
+  core.String? enterpriseSpecificId;
+
   /// GPU shutdown temperature thresholds in Celsius for each GPU on the device.
   core.List<core.double>? gpuShutdownTemperatures;
 
@@ -3708,6 +3723,7 @@ class HardwareInfo {
     this.cpuShutdownTemperatures,
     this.cpuThrottlingTemperatures,
     this.deviceBasebandVersion,
+    this.enterpriseSpecificId,
     this.gpuShutdownTemperatures,
     this.gpuThrottlingTemperatures,
     this.hardware,
@@ -3747,6 +3763,9 @@ class HardwareInfo {
                   : null,
           deviceBasebandVersion: _json.containsKey('deviceBasebandVersion')
               ? _json['deviceBasebandVersion'] as core.String
+              : null,
+          enterpriseSpecificId: _json.containsKey('enterpriseSpecificId')
+              ? _json['enterpriseSpecificId'] as core.String
               : null,
           gpuShutdownTemperatures: _json.containsKey('gpuShutdownTemperatures')
               ? (_json['gpuShutdownTemperatures'] as core.List)
@@ -3796,6 +3815,8 @@ class HardwareInfo {
           'cpuThrottlingTemperatures': cpuThrottlingTemperatures!,
         if (deviceBasebandVersion != null)
           'deviceBasebandVersion': deviceBasebandVersion!,
+        if (enterpriseSpecificId != null)
+          'enterpriseSpecificId': enterpriseSpecificId!,
         if (gpuShutdownTemperatures != null)
           'gpuShutdownTemperatures': gpuShutdownTemperatures!,
         if (gpuThrottlingTemperatures != null)
@@ -5672,6 +5693,23 @@ class Policy {
   /// on device
   core.List<PolicyEnforcementRule>? policyEnforcementRules;
 
+  /// Controls whether preferential network service is enabled on the work
+  /// profile.
+  ///
+  /// For example, an organization may have an agreement with a carrier that all
+  /// of the work data from its employees' devices will be sent via a network
+  /// service dedicated for enterprise use. An example of a supported
+  /// preferential network service is the enterprise slice on 5G networks. This
+  /// has no effect on fully managed devices.
+  /// Possible string values are:
+  /// - "PREFERENTIAL_NETWORK_SERVICE_UNSPECIFIED" : Unspecified. Defaults to
+  /// PREFERENTIAL_NETWORK_SERVICES_DISABLED.
+  /// - "PREFERENTIAL_NETWORK_SERVICE_DISABLED" : Preferential network service
+  /// is disabled on the work profile.
+  /// - "PREFERENTIAL_NETWORK_SERVICE_ENABLED" : Preferential network service is
+  /// enabled on the work profile.
+  core.String? preferentialNetworkService;
+
   /// Allows showing UI on a device for a user to choose a private key alias if
   /// there are no matching rules in ChoosePrivateKeyRules.
   ///
@@ -5843,6 +5881,7 @@ class Policy {
     this.personalUsagePolicies,
     this.playStoreMode,
     this.policyEnforcementRules,
+    this.preferentialNetworkService,
     this.privateKeySelectionEnabled,
     this.recommendedGlobalProxy,
     this.removeUserDisabled,
@@ -6109,6 +6148,10 @@ class Policy {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          preferentialNetworkService:
+              _json.containsKey('preferentialNetworkService')
+                  ? _json['preferentialNetworkService'] as core.String
+                  : null,
           privateKeySelectionEnabled:
               _json.containsKey('privateKeySelectionEnabled')
                   ? _json['privateKeySelectionEnabled'] as core.bool
@@ -6303,6 +6346,8 @@ class Policy {
         if (playStoreMode != null) 'playStoreMode': playStoreMode!,
         if (policyEnforcementRules != null)
           'policyEnforcementRules': policyEnforcementRules!,
+        if (preferentialNetworkService != null)
+          'preferentialNetworkService': preferentialNetworkService!,
         if (privateKeySelectionEnabled != null)
           'privateKeySelectionEnabled': privateKeySelectionEnabled!,
         if (recommendedGlobalProxy != null)

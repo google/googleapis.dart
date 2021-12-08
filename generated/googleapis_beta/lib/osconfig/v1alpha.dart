@@ -2627,7 +2627,7 @@ class OSPolicyAssignmentInstanceFilter {
 }
 
 /// VM inventory details.
-typedef OSPolicyAssignmentInstanceFilterInventory = $Shared06;
+typedef OSPolicyAssignmentInstanceFilterInventory = $Shared07;
 
 /// Message representing label set.
 ///
@@ -3023,7 +3023,7 @@ class OSPolicyAssignmentRollout {
 }
 
 /// Filtering criteria to select VMs based on inventory details.
-typedef OSPolicyInventoryFilter = $Shared06;
+typedef OSPolicyInventoryFilter = $Shared07;
 
 /// Filtering criteria to select VMs based on OS details.
 class OSPolicyOSFilter {
@@ -4318,6 +4318,9 @@ class VulnerabilityReportVulnerability {
   /// field may be empty.
   core.List<core.String>? installedInventoryItemIds;
 
+  /// List of items affected by the vulnerability.
+  core.List<VulnerabilityReportVulnerabilityItem>? items;
+
   /// The timestamp for when the vulnerability was last modified.
   core.String? updateTime;
 
@@ -4326,6 +4329,7 @@ class VulnerabilityReportVulnerability {
     this.createTime,
     this.details,
     this.installedInventoryItemIds,
+    this.items,
     this.updateTime,
   });
 
@@ -4350,6 +4354,12 @@ class VulnerabilityReportVulnerability {
                       .map((value) => value as core.String)
                       .toList()
                   : null,
+          items: _json.containsKey('items')
+              ? (_json['items'] as core.List)
+                  .map((value) => VulnerabilityReportVulnerabilityItem.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           updateTime: _json.containsKey('updateTime')
               ? _json['updateTime'] as core.String
               : null,
@@ -4362,6 +4372,7 @@ class VulnerabilityReportVulnerability {
         if (details != null) 'details': details!,
         if (installedInventoryItemIds != null)
           'installedInventoryItemIds': installedInventoryItemIds!,
+        if (items != null) 'items': items!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
 }
@@ -4463,5 +4474,66 @@ class VulnerabilityReportVulnerabilityDetailsReference {
   core.Map<core.String, core.dynamic> toJson() => {
         if (source != null) 'source': source!,
         if (url != null) 'url': url!,
+      };
+}
+
+/// OS inventory item that is affected by a vulnerability or fixed as a result
+/// of a vulnerability.
+class VulnerabilityReportVulnerabilityItem {
+  /// Corresponds to the `AVAILABLE_PACKAGE` inventory item on the VM.
+  ///
+  /// If the vulnerability report was not updated after the VM inventory update,
+  /// these values might not display in VM inventory. If there is no available
+  /// fix, the field is empty. The `inventory_item` value specifies the latest
+  /// `SoftwarePackage` available to the VM that fixes the vulnerability.
+  core.String? availableInventoryItemId;
+
+  /// The recommended [CPE URI](https://cpe.mitre.org/specification/) update
+  /// that contains a fix for this vulnerability.
+  core.String? fixedCpeUri;
+
+  /// Corresponds to the `INSTALLED_PACKAGE` inventory item on the VM.
+  ///
+  /// This field displays the inventory items affected by this vulnerability. If
+  /// the vulnerability report was not updated after the VM inventory update,
+  /// these values might not display in VM inventory. For some operating
+  /// systems, this field might be empty.
+  core.String? installedInventoryItemId;
+
+  /// The upstream OS patch, packages or KB that fixes the vulnerability.
+  core.String? upstreamFix;
+
+  VulnerabilityReportVulnerabilityItem({
+    this.availableInventoryItemId,
+    this.fixedCpeUri,
+    this.installedInventoryItemId,
+    this.upstreamFix,
+  });
+
+  VulnerabilityReportVulnerabilityItem.fromJson(core.Map _json)
+      : this(
+          availableInventoryItemId:
+              _json.containsKey('availableInventoryItemId')
+                  ? _json['availableInventoryItemId'] as core.String
+                  : null,
+          fixedCpeUri: _json.containsKey('fixedCpeUri')
+              ? _json['fixedCpeUri'] as core.String
+              : null,
+          installedInventoryItemId:
+              _json.containsKey('installedInventoryItemId')
+                  ? _json['installedInventoryItemId'] as core.String
+                  : null,
+          upstreamFix: _json.containsKey('upstreamFix')
+              ? _json['upstreamFix'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (availableInventoryItemId != null)
+          'availableInventoryItemId': availableInventoryItemId!,
+        if (fixedCpeUri != null) 'fixedCpeUri': fixedCpeUri!,
+        if (installedInventoryItemId != null)
+          'installedInventoryItemId': installedInventoryItemId!,
+        if (upstreamFix != null) 'upstreamFix': upstreamFix!,
       };
 }

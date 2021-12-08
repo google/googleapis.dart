@@ -16,8 +16,7 @@
 ///
 /// The Certificate Authority Service API is a highly-available, scalable
 /// service that enables you to simplify and automate the management of private
-/// certificate authorities (CAs) while staying in control of your private
-/// keys."
+/// certificate authorities (CAs) while staying in control of your private keys.
 ///
 /// For more information, see <https://cloud.google.com/>
 ///
@@ -51,8 +50,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 /// The Certificate Authority Service API is a highly-available, scalable
 /// service that enables you to simplify and automate the management of private
-/// certificate authorities (CAs) while staying in control of your private
-/// keys."
+/// certificate authorities (CAs) while staying in control of your private keys.
 class CertificateAuthorityServiceApi {
   /// See, edit, configure, and delete your Google Cloud data and see the email
   /// address for your Google Account.
@@ -397,12 +395,16 @@ class ProjectsLocationsCaPoolsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/caPools/\[^/\]+$`.
   ///
-  /// [options_requestedPolicyVersion] - Optional. The policy format version to
-  /// be returned. Valid values are 0, 1, and 3. Requests specifying an invalid
-  /// value will be rejected. Requests for policies with any conditional
-  /// bindings must specify version 3. Policies without any conditional bindings
-  /// may specify any valid value or leave the field unset. To learn which
-  /// resources support conditions in their IAM policies, see the
+  /// [options_requestedPolicyVersion] - Optional. The maximum policy version
+  /// that will be used to format the policy. Valid values are 0, 1, and 3.
+  /// Requests specifying an invalid value will be rejected. Requests for
+  /// policies with any conditional role bindings must specify version 3.
+  /// Policies with no conditional role bindings may specify any valid value or
+  /// leave the field unset. The policy in the response might use the policy
+  /// version that you specified, or it might use a lower policy version. For
+  /// example, if you specify version 3, but the policy has no conditional role
+  /// bindings, the response uses version 1. To learn which resources support
+  /// conditions in their IAM policies, see the
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1225,12 +1227,16 @@ class ProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsRe
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/caPools/\[^/\]+/certificateAuthorities/\[^/\]+/certificateRevocationLists/\[^/\]+$`.
   ///
-  /// [options_requestedPolicyVersion] - Optional. The policy format version to
-  /// be returned. Valid values are 0, 1, and 3. Requests specifying an invalid
-  /// value will be rejected. Requests for policies with any conditional
-  /// bindings must specify version 3. Policies without any conditional bindings
-  /// may specify any valid value or leave the field unset. To learn which
-  /// resources support conditions in their IAM policies, see the
+  /// [options_requestedPolicyVersion] - Optional. The maximum policy version
+  /// that will be used to format the policy. Valid values are 0, 1, and 3.
+  /// Requests specifying an invalid value will be rejected. Requests for
+  /// policies with any conditional role bindings must specify version 3.
+  /// Policies with no conditional role bindings may specify any valid value or
+  /// leave the field unset. The policy in the response might use the policy
+  /// version that you specified, or it might use a lower policy version. For
+  /// example, if you specify version 3, but the policy has no conditional role
+  /// bindings, the response uses version 1. To learn which resources support
+  /// conditions in their IAM policies, see the
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1952,12 +1958,16 @@ class ProjectsLocationsCertificateTemplatesResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/certificateTemplates/\[^/\]+$`.
   ///
-  /// [options_requestedPolicyVersion] - Optional. The policy format version to
-  /// be returned. Valid values are 0, 1, and 3. Requests specifying an invalid
-  /// value will be rejected. Requests for policies with any conditional
-  /// bindings must specify version 3. Policies without any conditional bindings
-  /// may specify any valid value or leave the field unset. To learn which
-  /// resources support conditions in their IAM policies, see the
+  /// [options_requestedPolicyVersion] - Optional. The maximum policy version
+  /// that will be used to format the policy. Valid values are 0, 1, and 3.
+  /// Requests specifying an invalid value will be rejected. Requests for
+  /// policies with any conditional role bindings must specify version 3.
+  /// Policies with no conditional role bindings may specify any valid value or
+  /// leave the field unset. The policy in the response might use the policy
+  /// version that you specified, or it might use a lower policy version. For
+  /// example, if you specify version 3, but the policy has no conditional role
+  /// bindings, the response uses version 1. To learn which resources support
+  /// conditions in their IAM policies, see the
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -2714,11 +2724,6 @@ class CaOptions {
 /// CertificateAuthority resources and to rotate CA certificates in and out of
 /// the trust anchor.
 class CaPool {
-  /// The time at which this CaPool was created.
-  ///
-  /// Output only.
-  core.String? createTime;
-
   /// The IssuancePolicy to control how Certificates will be issued from this
   /// CaPool.
   ///
@@ -2751,26 +2756,16 @@ class CaPool {
   /// - "DEVOPS" : DevOps tier.
   core.String? tier;
 
-  /// The time at which this CaPool was last updated.
-  ///
-  /// Output only.
-  core.String? updateTime;
-
   CaPool({
-    this.createTime,
     this.issuancePolicy,
     this.labels,
     this.name,
     this.publishingOptions,
     this.tier,
-    this.updateTime,
   });
 
   CaPool.fromJson(core.Map _json)
       : this(
-          createTime: _json.containsKey('createTime')
-              ? _json['createTime'] as core.String
-              : null,
           issuancePolicy: _json.containsKey('issuancePolicy')
               ? IssuancePolicy.fromJson(_json['issuancePolicy']
                   as core.Map<core.String, core.dynamic>)
@@ -2789,19 +2784,14 @@ class CaPool {
                   as core.Map<core.String, core.dynamic>)
               : null,
           tier: _json.containsKey('tier') ? _json['tier'] as core.String : null,
-          updateTime: _json.containsKey('updateTime')
-              ? _json['updateTime'] as core.String
-              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
         if (issuancePolicy != null) 'issuancePolicy': issuancePolicy!,
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
         if (publishingOptions != null) 'publishingOptions': publishingOptions!,
         if (tier != null) 'tier': tier!,
-        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 

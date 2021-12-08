@@ -999,6 +999,21 @@
                                                     "pattern": "^projects/[^/]+/locations/[^/]+/sources/[^/]+/migratingVms/[^/]+$",
                                                     "required": true,
                                                     "type": "string"
+                                                },
+                                                "view": {
+                                                    "description": "Optional. The level of details of the migrating VM.",
+                                                    "enum": [
+                                                        "MIGRATING_VM_VIEW_UNSPECIFIED",
+                                                        "MIGRATING_VM_VIEW_BASIC",
+                                                        "MIGRATING_VM_VIEW_FULL"
+                                                    ],
+                                                    "enumDescriptions": [
+                                                        "View is unspecified. The API will fallback to the default value.",
+                                                        "Get the migrating VM basic details. The basic details do not include the recent clone jobs and recent cutover jobs lists.",
+                                                        "Include everything."
+                                                    ],
+                                                    "location": "query",
+                                                    "type": "string"
                                                 }
                                             },
                                             "path": "v1/{+name}",
@@ -1044,6 +1059,21 @@
                                                     "location": "path",
                                                     "pattern": "^projects/[^/]+/locations/[^/]+/sources/[^/]+$",
                                                     "required": true,
+                                                    "type": "string"
+                                                },
+                                                "view": {
+                                                    "description": "Optional. The level of details of each migrating VM.",
+                                                    "enum": [
+                                                        "MIGRATING_VM_VIEW_UNSPECIFIED",
+                                                        "MIGRATING_VM_VIEW_BASIC",
+                                                        "MIGRATING_VM_VIEW_FULL"
+                                                    ],
+                                                    "enumDescriptions": [
+                                                        "View is unspecified. The API will fallback to the default value.",
+                                                        "Get the migrating VM basic details. The basic details do not include the recent clone jobs and recent cutover jobs lists.",
+                                                        "Include everything."
+                                                    ],
+                                                    "location": "query",
                                                     "type": "string"
                                                 }
                                             },
@@ -1826,7 +1856,7 @@
             }
         }
     },
-    "revision": "20211021",
+    "revision": "20211130",
     "rootUrl": "https://vmmigration.googleapis.com/",
     "schemas": {
         "AddGroupMigrationRequest": {
@@ -1838,6 +1868,12 @@
                     "type": "string"
                 }
             },
+            "type": "object"
+        },
+        "AddGroupMigrationResponse": {
+            "description": "Response message for 'AddGroupMigration' request.",
+            "id": "AddGroupMigrationResponse",
+            "properties": {},
             "type": "object"
         },
         "AppliedLicense": {
@@ -1873,9 +1909,21 @@
             "properties": {},
             "type": "object"
         },
+        "CancelCloneJobResponse": {
+            "description": "Response message for 'CancelCloneJob' request.",
+            "id": "CancelCloneJobResponse",
+            "properties": {},
+            "type": "object"
+        },
         "CancelCutoverJobRequest": {
             "description": "Request message for 'CancelCutoverJob' request.",
             "id": "CancelCutoverJobRequest",
+            "properties": {},
+            "type": "object"
+        },
+        "CancelCutoverJobResponse": {
+            "description": "Response message for 'CancelCutoverJob' request.",
+            "id": "CancelCutoverJobResponse",
             "properties": {},
             "type": "object"
         },
@@ -2393,6 +2441,12 @@
             "properties": {},
             "type": "object"
         },
+        "FinalizeMigrationResponse": {
+            "description": "Response message for 'FinalizeMigration' request.",
+            "id": "FinalizeMigrationResponse",
+            "properties": {},
+            "type": "object"
+        },
         "Group": {
             "description": "Describes message for 'Group' resource. The Group is a collections of several MigratingVms.",
             "id": "Group",
@@ -2806,6 +2860,22 @@
                     "$ref": "SchedulePolicy",
                     "description": "The replication schedule policy."
                 },
+                "recentCloneJobs": {
+                    "description": "Output only. The recent clone jobs performed on the migrating VM. This field holds the vm's last completed clone job and the vm's running clone job, if one exists. Note: To have this field populated you need to explicitly request it via the \"view\" parameter of the Get/List request.",
+                    "items": {
+                        "$ref": "CloneJob"
+                    },
+                    "readOnly": true,
+                    "type": "array"
+                },
+                "recentCutoverJobs": {
+                    "description": "Output only. The recent cutover jobs performed on the migrating VM. This field holds the vm's last completed cutover job and the vm's running cutover job, if one exists. Note: To have this field populated you need to explicitly request it via the \"view\" parameter of the Get/List request.",
+                    "items": {
+                        "$ref": "CutoverJob"
+                    },
+                    "readOnly": true,
+                    "type": "array"
+                },
                 "sourceVmId": {
                     "description": "The unique ID of the VM in the source. The VM's name in vSphere can be changed, so this is not the VM's name but rather its moRef id. This id is of the form vm-.",
                     "type": "string"
@@ -3024,6 +3094,12 @@
             "properties": {},
             "type": "object"
         },
+        "PauseMigrationResponse": {
+            "description": "Response message for 'PauseMigration' request.",
+            "id": "PauseMigrationResponse",
+            "properties": {},
+            "type": "object"
+        },
         "RemoveGroupMigrationRequest": {
             "description": "Request message for 'RemoveMigration' request.",
             "id": "RemoveGroupMigrationRequest",
@@ -3033,6 +3109,12 @@
                     "type": "string"
                 }
             },
+            "type": "object"
+        },
+        "RemoveGroupMigrationResponse": {
+            "description": "Response message for 'RemoveMigration' request.",
+            "id": "RemoveGroupMigrationResponse",
+            "properties": {},
             "type": "object"
         },
         "ReplicationCycle": {
@@ -3067,6 +3149,12 @@
         "ResumeMigrationRequest": {
             "description": "Request message for 'ResumeMigration' request.",
             "id": "ResumeMigrationRequest",
+            "properties": {},
+            "type": "object"
+        },
+        "ResumeMigrationResponse": {
+            "description": "Response message for 'ResumeMigration' request.",
+            "id": "ResumeMigrationResponse",
             "properties": {},
             "type": "object"
         },
@@ -3160,6 +3248,12 @@
         "StartMigrationRequest": {
             "description": "Request message for 'StartMigrationRequest' request.",
             "id": "StartMigrationRequest",
+            "properties": {},
+            "type": "object"
+        },
+        "StartMigrationResponse": {
+            "description": "Response message for 'StartMigration' request.",
+            "id": "StartMigrationResponse",
             "properties": {},
             "type": "object"
         },

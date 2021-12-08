@@ -28,6 +28,8 @@
 ///     - [CustomersAppsChromeResource]
 ///     - [CustomersAppsWebResource]
 ///   - [CustomersReportsResource]
+///   - [CustomersTelemetryResource]
+///     - [CustomersTelemetryDevicesResource]
 library chromemanagement.v1;
 
 import 'dart:async' as async;
@@ -57,6 +59,11 @@ class ChromeManagementApi {
   static const chromeManagementReportsReadonlyScope =
       'https://www.googleapis.com/auth/chrome.management.reports.readonly';
 
+  /// See basic device and telemetry information collected from Chrome OS
+  /// devices or users managed within your organization
+  static const chromeManagementTelemetryReadonlyScope =
+      'https://www.googleapis.com/auth/chrome.management.telemetry.readonly';
+
   final commons.ApiRequester _requester;
 
   CustomersResource get customers => CustomersResource(_requester);
@@ -73,6 +80,8 @@ class CustomersResource {
 
   CustomersAppsResource get apps => CustomersAppsResource(_requester);
   CustomersReportsResource get reports => CustomersReportsResource(_requester);
+  CustomersTelemetryResource get telemetry =>
+      CustomersTelemetryResource(_requester);
 
   CustomersResource(commons.ApiRequester client) : _requester = client;
 }
@@ -501,6 +510,77 @@ class CustomersReportsResource {
   }
 }
 
+class CustomersTelemetryResource {
+  final commons.ApiRequester _requester;
+
+  CustomersTelemetryDevicesResource get devices =>
+      CustomersTelemetryDevicesResource(_requester);
+
+  CustomersTelemetryResource(commons.ApiRequester client) : _requester = client;
+}
+
+class CustomersTelemetryDevicesResource {
+  final commons.ApiRequester _requester;
+
+  CustomersTelemetryDevicesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// List all telemetry devices.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Customer id or "my_customer" to use the customer
+  /// associated to the account making the request.
+  /// Value must have pattern `^customers/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Only include resources that match the filter.
+  /// Supported filter fields: - org_unit_id - serial_number
+  ///
+  /// [pageSize] - Maximum number of results to return. Maximum and default are
+  /// 100.
+  ///
+  /// [pageToken] - Token to specify next page in the list.
+  ///
+  /// [readMask] - Required. Read mask to specify which fields to return.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleChromeManagementV1ListTelemetryDevicesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleChromeManagementV1ListTelemetryDevicesResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? readMask,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (readMask != null) 'readMask': [readMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/telemetry/devices';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleChromeManagementV1ListTelemetryDevicesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
 /// Android app information.
 class GoogleChromeManagementV1AndroidAppInfo {
   /// Permissions requested by an Android app.
@@ -771,6 +851,264 @@ class GoogleChromeManagementV1AppDetails {
         if (revisionId != null) 'revisionId': revisionId!,
         if (serviceError != null) 'serviceError': serviceError!,
         if (type != null) 'type': type!,
+      };
+}
+
+/// Battery info
+class GoogleChromeManagementV1BatteryInfo {
+  /// Design capacity (mAmpere-hours).
+  ///
+  /// Output only.
+  core.String? designCapacity;
+
+  /// Designed minimum output voltage (mV)
+  ///
+  /// Output only.
+  core.int? designMinVoltage;
+
+  /// The date the battery was manufactured.
+  ///
+  /// Output only.
+  GoogleTypeDate? manufactureDate;
+
+  /// Battery manufacturer.
+  ///
+  /// Output only.
+  core.String? manufacturer;
+
+  /// Battery serial number.
+  ///
+  /// Output only.
+  core.String? serialNumber;
+
+  /// Technology of the battery.
+  ///
+  /// Example: Li-ion
+  ///
+  /// Output only.
+  core.String? technology;
+
+  GoogleChromeManagementV1BatteryInfo({
+    this.designCapacity,
+    this.designMinVoltage,
+    this.manufactureDate,
+    this.manufacturer,
+    this.serialNumber,
+    this.technology,
+  });
+
+  GoogleChromeManagementV1BatteryInfo.fromJson(core.Map _json)
+      : this(
+          designCapacity: _json.containsKey('designCapacity')
+              ? _json['designCapacity'] as core.String
+              : null,
+          designMinVoltage: _json.containsKey('designMinVoltage')
+              ? _json['designMinVoltage'] as core.int
+              : null,
+          manufactureDate: _json.containsKey('manufactureDate')
+              ? GoogleTypeDate.fromJson(_json['manufactureDate']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          manufacturer: _json.containsKey('manufacturer')
+              ? _json['manufacturer'] as core.String
+              : null,
+          serialNumber: _json.containsKey('serialNumber')
+              ? _json['serialNumber'] as core.String
+              : null,
+          technology: _json.containsKey('technology')
+              ? _json['technology'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (designCapacity != null) 'designCapacity': designCapacity!,
+        if (designMinVoltage != null) 'designMinVoltage': designMinVoltage!,
+        if (manufactureDate != null) 'manufactureDate': manufactureDate!,
+        if (manufacturer != null) 'manufacturer': manufacturer!,
+        if (serialNumber != null) 'serialNumber': serialNumber!,
+        if (technology != null) 'technology': technology!,
+      };
+}
+
+/// Sampling data for battery.
+class GoogleChromeManagementV1BatterySampleReport {
+  /// Battery charge percentage.
+  ///
+  /// Output only.
+  core.int? chargeRate;
+
+  /// Battery current (mA).
+  ///
+  /// Output only.
+  core.String? current;
+
+  /// The battery discharge rate measured in mW.
+  ///
+  /// Positive if the battery is being discharged, negative if it's being
+  /// charged.
+  ///
+  /// Output only.
+  core.int? dischargeRate;
+
+  /// Battery remaining capacity (mAmpere-hours).
+  ///
+  /// Output only.
+  core.String? remainingCapacity;
+
+  /// Timestamp of when the sample was collected on device
+  ///
+  /// Output only.
+  core.String? reportTime;
+
+  /// Battery status read from sysfs.
+  ///
+  /// Example: Discharging
+  ///
+  /// Output only.
+  core.String? status;
+
+  /// Temperature in Celsius degrees.
+  ///
+  /// Output only.
+  core.int? temperature;
+
+  /// Battery voltage (millivolt).
+  ///
+  /// Output only.
+  core.String? voltage;
+
+  GoogleChromeManagementV1BatterySampleReport({
+    this.chargeRate,
+    this.current,
+    this.dischargeRate,
+    this.remainingCapacity,
+    this.reportTime,
+    this.status,
+    this.temperature,
+    this.voltage,
+  });
+
+  GoogleChromeManagementV1BatterySampleReport.fromJson(core.Map _json)
+      : this(
+          chargeRate: _json.containsKey('chargeRate')
+              ? _json['chargeRate'] as core.int
+              : null,
+          current: _json.containsKey('current')
+              ? _json['current'] as core.String
+              : null,
+          dischargeRate: _json.containsKey('dischargeRate')
+              ? _json['dischargeRate'] as core.int
+              : null,
+          remainingCapacity: _json.containsKey('remainingCapacity')
+              ? _json['remainingCapacity'] as core.String
+              : null,
+          reportTime: _json.containsKey('reportTime')
+              ? _json['reportTime'] as core.String
+              : null,
+          status: _json.containsKey('status')
+              ? _json['status'] as core.String
+              : null,
+          temperature: _json.containsKey('temperature')
+              ? _json['temperature'] as core.int
+              : null,
+          voltage: _json.containsKey('voltage')
+              ? _json['voltage'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (chargeRate != null) 'chargeRate': chargeRate!,
+        if (current != null) 'current': current!,
+        if (dischargeRate != null) 'dischargeRate': dischargeRate!,
+        if (remainingCapacity != null) 'remainingCapacity': remainingCapacity!,
+        if (reportTime != null) 'reportTime': reportTime!,
+        if (status != null) 'status': status!,
+        if (temperature != null) 'temperature': temperature!,
+        if (voltage != null) 'voltage': voltage!,
+      };
+}
+
+/// Status data for battery.
+class GoogleChromeManagementV1BatteryStatusReport {
+  /// Battery health.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "BATTERY_HEALTH_UNSPECIFIED" : Health unknown.
+  /// - "BATTERY_HEALTH_NORMAL" : Battery is healthy.
+  /// - "BATTERY_REPLACE_SOON" : Battery is moderately unhealthy and should be
+  /// replaced soon.
+  /// - "BATTERY_REPLACE_NOW" : Battery is unhealthy and should be replaced.
+  core.String? batteryHealth;
+
+  /// Cycle count.
+  ///
+  /// Output only.
+  core.int? cycleCount;
+
+  /// Full charge capacity (mAmpere-hours).
+  ///
+  /// Output only.
+  core.String? fullChargeCapacity;
+
+  /// Timestamp of when the sample was collected on device
+  ///
+  /// Output only.
+  core.String? reportTime;
+
+  /// Sampling data for the battery.
+  ///
+  /// Output only.
+  core.List<GoogleChromeManagementV1BatterySampleReport>? sample;
+
+  /// Battery serial number.
+  ///
+  /// Output only.
+  core.String? serialNumber;
+
+  GoogleChromeManagementV1BatteryStatusReport({
+    this.batteryHealth,
+    this.cycleCount,
+    this.fullChargeCapacity,
+    this.reportTime,
+    this.sample,
+    this.serialNumber,
+  });
+
+  GoogleChromeManagementV1BatteryStatusReport.fromJson(core.Map _json)
+      : this(
+          batteryHealth: _json.containsKey('batteryHealth')
+              ? _json['batteryHealth'] as core.String
+              : null,
+          cycleCount: _json.containsKey('cycleCount')
+              ? _json['cycleCount'] as core.int
+              : null,
+          fullChargeCapacity: _json.containsKey('fullChargeCapacity')
+              ? _json['fullChargeCapacity'] as core.String
+              : null,
+          reportTime: _json.containsKey('reportTime')
+              ? _json['reportTime'] as core.String
+              : null,
+          sample: _json.containsKey('sample')
+              ? (_json['sample'] as core.List)
+                  .map((value) =>
+                      GoogleChromeManagementV1BatterySampleReport.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          serialNumber: _json.containsKey('serialNumber')
+              ? _json['serialNumber'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (batteryHealth != null) 'batteryHealth': batteryHealth!,
+        if (cycleCount != null) 'cycleCount': cycleCount!,
+        if (fullChargeCapacity != null)
+          'fullChargeCapacity': fullChargeCapacity!,
+        if (reportTime != null) 'reportTime': reportTime!,
+        if (sample != null) 'sample': sample!,
+        if (serialNumber != null) 'serialNumber': serialNumber!,
       };
 }
 
@@ -1231,6 +1569,149 @@ class GoogleChromeManagementV1CountInstalledAppsResponse {
       };
 }
 
+/// CPU specs for a CPU.
+class GoogleChromeManagementV1CpuInfo {
+  /// The CPU architecture.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "ARCHITECTURE_UNSPECIFIED" : Architecture unknown.
+  /// - "X64" : x64 architecture
+  core.String? architecture;
+
+  /// The max CPU clock speed in kHz.
+  ///
+  /// Output only.
+  core.int? maxClockSpeed;
+
+  /// The CPU model name.
+  ///
+  /// Example: Intel(R) Core(TM) i5-8250U CPU @ 1.60GHz
+  ///
+  /// Output only.
+  core.String? model;
+
+  GoogleChromeManagementV1CpuInfo({
+    this.architecture,
+    this.maxClockSpeed,
+    this.model,
+  });
+
+  GoogleChromeManagementV1CpuInfo.fromJson(core.Map _json)
+      : this(
+          architecture: _json.containsKey('architecture')
+              ? _json['architecture'] as core.String
+              : null,
+          maxClockSpeed: _json.containsKey('maxClockSpeed')
+              ? _json['maxClockSpeed'] as core.int
+              : null,
+          model:
+              _json.containsKey('model') ? _json['model'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (architecture != null) 'architecture': architecture!,
+        if (maxClockSpeed != null) 'maxClockSpeed': maxClockSpeed!,
+        if (model != null) 'model': model!,
+      };
+}
+
+/// Contains samples of the cpu status reports.
+class GoogleChromeManagementV1CpuStatusReport {
+  /// CPU temperature sample info per CPU core in Celsius
+  ///
+  /// Output only.
+  core.List<GoogleChromeManagementV1CpuTemperatureInfo>? cpuTemperatureInfo;
+
+  /// Sample of CPU utilization (0-100 percent).
+  ///
+  /// Output only.
+  core.int? cpuUtilizationPct;
+
+  /// The timestamp in milliseconds representing time at which this report was
+  /// sampled.
+  ///
+  /// Output only.
+  core.String? reportTime;
+
+  /// Frequency the report is sampled.
+  ///
+  /// Output only.
+  core.String? sampleFrequency;
+
+  GoogleChromeManagementV1CpuStatusReport({
+    this.cpuTemperatureInfo,
+    this.cpuUtilizationPct,
+    this.reportTime,
+    this.sampleFrequency,
+  });
+
+  GoogleChromeManagementV1CpuStatusReport.fromJson(core.Map _json)
+      : this(
+          cpuTemperatureInfo: _json.containsKey('cpuTemperatureInfo')
+              ? (_json['cpuTemperatureInfo'] as core.List)
+                  .map((value) =>
+                      GoogleChromeManagementV1CpuTemperatureInfo.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          cpuUtilizationPct: _json.containsKey('cpuUtilizationPct')
+              ? _json['cpuUtilizationPct'] as core.int
+              : null,
+          reportTime: _json.containsKey('reportTime')
+              ? _json['reportTime'] as core.String
+              : null,
+          sampleFrequency: _json.containsKey('sampleFrequency')
+              ? _json['sampleFrequency'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (cpuTemperatureInfo != null)
+          'cpuTemperatureInfo': cpuTemperatureInfo!,
+        if (cpuUtilizationPct != null) 'cpuUtilizationPct': cpuUtilizationPct!,
+        if (reportTime != null) 'reportTime': reportTime!,
+        if (sampleFrequency != null) 'sampleFrequency': sampleFrequency!,
+      };
+}
+
+/// CPU temperature of a device.
+///
+/// Sampled per CPU core in Celsius
+class GoogleChromeManagementV1CpuTemperatureInfo {
+  /// CPU label.
+  ///
+  /// Example: Core 0
+  ///
+  /// Output only.
+  core.String? label;
+
+  /// CPU temperature in Celsius.
+  ///
+  /// Output only.
+  core.int? temperatureCelsius;
+
+  GoogleChromeManagementV1CpuTemperatureInfo({
+    this.label,
+    this.temperatureCelsius,
+  });
+
+  GoogleChromeManagementV1CpuTemperatureInfo.fromJson(core.Map _json)
+      : this(
+          label:
+              _json.containsKey('label') ? _json['label'] as core.String : null,
+          temperatureCelsius: _json.containsKey('temperatureCelsius')
+              ? _json['temperatureCelsius'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (label != null) 'label': label!,
+        if (temperatureCelsius != null)
+          'temperatureCelsius': temperatureCelsius!,
+      };
+}
+
 /// Describes a device reporting Chrome browser information.
 class GoogleChromeManagementV1Device {
   /// The ID of the device that reported this Chrome browser information.
@@ -1261,6 +1742,220 @@ class GoogleChromeManagementV1Device {
   core.Map<core.String, core.dynamic> toJson() => {
         if (deviceId != null) 'deviceId': deviceId!,
         if (machine != null) 'machine': machine!,
+      };
+}
+
+/// Status of the single storage device.
+class GoogleChromeManagementV1DiskInfo {
+  /// Number of bytes read since last boot.
+  ///
+  /// Output only.
+  core.String? bytesReadThisSession;
+
+  /// Number of bytes written since last boot.
+  ///
+  /// Output only.
+  core.String? bytesWrittenThisSession;
+
+  /// Time spent discarding since last boot.
+  ///
+  /// Discarding is writing to clear blocks which are no longer in use.
+  /// Supported on kernels 4.18+.
+  ///
+  /// Output only.
+  core.String? discardTimeThisSession;
+
+  /// Disk health.
+  ///
+  /// Output only.
+  core.String? health;
+
+  /// Counts the time the disk and queue were busy, so unlike the fields above,
+  /// parallel requests are not counted multiple times.
+  ///
+  /// Output only.
+  core.String? ioTimeThisSession;
+
+  /// Disk manufacturer.
+  ///
+  /// Output only.
+  core.String? manufacturer;
+
+  /// Disk model.
+  ///
+  /// Output only.
+  core.String? model;
+
+  /// Time spent reading from disk since last boot.
+  ///
+  /// Output only.
+  core.String? readTimeThisSession;
+
+  /// Disk serial number.
+  ///
+  /// Output only.
+  core.String? serialNumber;
+
+  /// Disk size.
+  ///
+  /// Output only.
+  core.String? sizeBytes;
+
+  /// Disk type: eMMC / NVMe / ATA / SCSI.
+  ///
+  /// Output only.
+  core.String? type;
+
+  /// Disk volumes.
+  ///
+  /// Output only.
+  core.List<core.String>? volumeIds;
+
+  /// Time spent writing to disk since last boot.
+  ///
+  /// Output only.
+  core.String? writeTimeThisSession;
+
+  GoogleChromeManagementV1DiskInfo({
+    this.bytesReadThisSession,
+    this.bytesWrittenThisSession,
+    this.discardTimeThisSession,
+    this.health,
+    this.ioTimeThisSession,
+    this.manufacturer,
+    this.model,
+    this.readTimeThisSession,
+    this.serialNumber,
+    this.sizeBytes,
+    this.type,
+    this.volumeIds,
+    this.writeTimeThisSession,
+  });
+
+  GoogleChromeManagementV1DiskInfo.fromJson(core.Map _json)
+      : this(
+          bytesReadThisSession: _json.containsKey('bytesReadThisSession')
+              ? _json['bytesReadThisSession'] as core.String
+              : null,
+          bytesWrittenThisSession: _json.containsKey('bytesWrittenThisSession')
+              ? _json['bytesWrittenThisSession'] as core.String
+              : null,
+          discardTimeThisSession: _json.containsKey('discardTimeThisSession')
+              ? _json['discardTimeThisSession'] as core.String
+              : null,
+          health: _json.containsKey('health')
+              ? _json['health'] as core.String
+              : null,
+          ioTimeThisSession: _json.containsKey('ioTimeThisSession')
+              ? _json['ioTimeThisSession'] as core.String
+              : null,
+          manufacturer: _json.containsKey('manufacturer')
+              ? _json['manufacturer'] as core.String
+              : null,
+          model:
+              _json.containsKey('model') ? _json['model'] as core.String : null,
+          readTimeThisSession: _json.containsKey('readTimeThisSession')
+              ? _json['readTimeThisSession'] as core.String
+              : null,
+          serialNumber: _json.containsKey('serialNumber')
+              ? _json['serialNumber'] as core.String
+              : null,
+          sizeBytes: _json.containsKey('sizeBytes')
+              ? _json['sizeBytes'] as core.String
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+          volumeIds: _json.containsKey('volumeIds')
+              ? (_json['volumeIds'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          writeTimeThisSession: _json.containsKey('writeTimeThisSession')
+              ? _json['writeTimeThisSession'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (bytesReadThisSession != null)
+          'bytesReadThisSession': bytesReadThisSession!,
+        if (bytesWrittenThisSession != null)
+          'bytesWrittenThisSession': bytesWrittenThisSession!,
+        if (discardTimeThisSession != null)
+          'discardTimeThisSession': discardTimeThisSession!,
+        if (health != null) 'health': health!,
+        if (ioTimeThisSession != null) 'ioTimeThisSession': ioTimeThisSession!,
+        if (manufacturer != null) 'manufacturer': manufacturer!,
+        if (model != null) 'model': model!,
+        if (readTimeThisSession != null)
+          'readTimeThisSession': readTimeThisSession!,
+        if (serialNumber != null) 'serialNumber': serialNumber!,
+        if (sizeBytes != null) 'sizeBytes': sizeBytes!,
+        if (type != null) 'type': type!,
+        if (volumeIds != null) 'volumeIds': volumeIds!,
+        if (writeTimeThisSession != null)
+          'writeTimeThisSession': writeTimeThisSession!,
+      };
+}
+
+/// Information for a display.
+class GoogleChromeManagementV1DisplayInfo {
+  /// Represents the graphics card device id.
+  ///
+  /// Output only.
+  core.String? deviceId;
+
+  /// Indicates if display is internal or not.
+  ///
+  /// Output only.
+  core.bool? isInternal;
+
+  /// Refresh rate in Hz.
+  ///
+  /// Output only.
+  core.int? refreshRate;
+
+  /// Resolution height in pixels.
+  ///
+  /// Output only.
+  core.int? resolutionHeight;
+
+  /// Resolution width in pixels.
+  ///
+  /// Output only.
+  core.int? resolutionWidth;
+
+  GoogleChromeManagementV1DisplayInfo({
+    this.deviceId,
+    this.isInternal,
+    this.refreshRate,
+    this.resolutionHeight,
+    this.resolutionWidth,
+  });
+
+  GoogleChromeManagementV1DisplayInfo.fromJson(core.Map _json)
+      : this(
+          deviceId: _json.containsKey('deviceId')
+              ? _json['deviceId'] as core.String
+              : null,
+          isInternal: _json.containsKey('isInternal')
+              ? _json['isInternal'] as core.bool
+              : null,
+          refreshRate: _json.containsKey('refreshRate')
+              ? _json['refreshRate'] as core.int
+              : null,
+          resolutionHeight: _json.containsKey('resolutionHeight')
+              ? _json['resolutionHeight'] as core.int
+              : null,
+          resolutionWidth: _json.containsKey('resolutionWidth')
+              ? _json['resolutionWidth'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (deviceId != null) 'deviceId': deviceId!,
+        if (isInternal != null) 'isInternal': isInternal!,
+        if (refreshRate != null) 'refreshRate': refreshRate!,
+        if (resolutionHeight != null) 'resolutionHeight': resolutionHeight!,
+        if (resolutionWidth != null) 'resolutionWidth': resolutionWidth!,
       };
 }
 
@@ -1304,6 +1999,111 @@ class GoogleChromeManagementV1FindInstalledAppDevicesResponse {
         if (devices != null) 'devices': devices!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (totalSize != null) 'totalSize': totalSize!,
+      };
+}
+
+/// Information of a graphics adapter (GPU).
+class GoogleChromeManagementV1GraphicsAdapterInfo {
+  /// Adapter name.
+  ///
+  /// Example: Mesa DRI Intel(R) UHD Graphics 620 (Kabylake GT2).
+  ///
+  /// Output only.
+  core.String? adapter;
+
+  /// Represents the graphics card device id.
+  ///
+  /// Output only.
+  core.String? deviceId;
+
+  /// Version of the GPU driver.
+  ///
+  /// Output only.
+  core.String? driverVersion;
+
+  GoogleChromeManagementV1GraphicsAdapterInfo({
+    this.adapter,
+    this.deviceId,
+    this.driverVersion,
+  });
+
+  GoogleChromeManagementV1GraphicsAdapterInfo.fromJson(core.Map _json)
+      : this(
+          adapter: _json.containsKey('adapter')
+              ? _json['adapter'] as core.String
+              : null,
+          deviceId: _json.containsKey('deviceId')
+              ? _json['deviceId'] as core.String
+              : null,
+          driverVersion: _json.containsKey('driverVersion')
+              ? _json['driverVersion'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (adapter != null) 'adapter': adapter!,
+        if (deviceId != null) 'deviceId': deviceId!,
+        if (driverVersion != null) 'driverVersion': driverVersion!,
+      };
+}
+
+/// Information of the graphics subsystem.
+class GoogleChromeManagementV1GraphicsInfo {
+  /// Information about the graphics adapter (GPU).
+  ///
+  /// Output only.
+  GoogleChromeManagementV1GraphicsAdapterInfo? adapterInfo;
+
+  GoogleChromeManagementV1GraphicsInfo({
+    this.adapterInfo,
+  });
+
+  GoogleChromeManagementV1GraphicsInfo.fromJson(core.Map _json)
+      : this(
+          adapterInfo: _json.containsKey('adapterInfo')
+              ? GoogleChromeManagementV1GraphicsAdapterInfo.fromJson(
+                  _json['adapterInfo'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (adapterInfo != null) 'adapterInfo': adapterInfo!,
+      };
+}
+
+/// Information of the graphics subsystem.
+class GoogleChromeManagementV1GraphicsStatusReport {
+  /// Information about the displays for the device.
+  ///
+  /// Output only.
+  core.List<GoogleChromeManagementV1DisplayInfo>? displays;
+
+  /// Time at which the graphics data was reported.
+  ///
+  /// Output only.
+  core.String? reportTime;
+
+  GoogleChromeManagementV1GraphicsStatusReport({
+    this.displays,
+    this.reportTime,
+  });
+
+  GoogleChromeManagementV1GraphicsStatusReport.fromJson(core.Map _json)
+      : this(
+          displays: _json.containsKey('displays')
+              ? (_json['displays'] as core.List)
+                  .map((value) => GoogleChromeManagementV1DisplayInfo.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          reportTime: _json.containsKey('reportTime')
+              ? _json['reportTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (displays != null) 'displays': displays!,
+        if (reportTime != null) 'reportTime': reportTime!,
       };
 }
 
@@ -1455,6 +2255,620 @@ class GoogleChromeManagementV1InstalledApp {
       };
 }
 
+class GoogleChromeManagementV1ListTelemetryDevicesResponse {
+  /// Telemetry devices returned in the response.
+  core.List<GoogleChromeManagementV1TelemetryDevice>? devices;
+
+  /// Token to specify next page in the list.
+  core.String? nextPageToken;
+
+  GoogleChromeManagementV1ListTelemetryDevicesResponse({
+    this.devices,
+    this.nextPageToken,
+  });
+
+  GoogleChromeManagementV1ListTelemetryDevicesResponse.fromJson(core.Map _json)
+      : this(
+          devices: _json.containsKey('devices')
+              ? (_json['devices'] as core.List)
+                  .map((value) =>
+                      GoogleChromeManagementV1TelemetryDevice.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (devices != null) 'devices': devices!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
+/// Memory information of a device.
+class GoogleChromeManagementV1MemoryInfo {
+  /// Amount of available RAM in bytes.
+  ///
+  /// Output only.
+  core.String? availableRamBytes;
+
+  /// Total RAM in bytes.
+  ///
+  /// Output only.
+  core.String? totalRamBytes;
+
+  GoogleChromeManagementV1MemoryInfo({
+    this.availableRamBytes,
+    this.totalRamBytes,
+  });
+
+  GoogleChromeManagementV1MemoryInfo.fromJson(core.Map _json)
+      : this(
+          availableRamBytes: _json.containsKey('availableRamBytes')
+              ? _json['availableRamBytes'] as core.String
+              : null,
+          totalRamBytes: _json.containsKey('totalRamBytes')
+              ? _json['totalRamBytes'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (availableRamBytes != null) 'availableRamBytes': availableRamBytes!,
+        if (totalRamBytes != null) 'totalRamBytes': totalRamBytes!,
+      };
+}
+
+/// Contains samples of memory status reports.
+class GoogleChromeManagementV1MemoryStatusReport {
+  /// Number of page faults during this collection
+  ///
+  /// Output only.
+  core.int? pageFaults;
+
+  /// The timestamp in milliseconds representing time at which this report was
+  /// sampled.
+  ///
+  /// Output only.
+  core.String? reportTime;
+
+  /// Frequency the report is sampled.
+  ///
+  /// Output only.
+  core.String? sampleFrequency;
+
+  /// Amount of free RAM in bytes (unreliable due to Garbage Collection).
+  ///
+  /// Output only.
+  core.String? systemRamFreeBytes;
+
+  GoogleChromeManagementV1MemoryStatusReport({
+    this.pageFaults,
+    this.reportTime,
+    this.sampleFrequency,
+    this.systemRamFreeBytes,
+  });
+
+  GoogleChromeManagementV1MemoryStatusReport.fromJson(core.Map _json)
+      : this(
+          pageFaults: _json.containsKey('pageFaults')
+              ? _json['pageFaults'] as core.int
+              : null,
+          reportTime: _json.containsKey('reportTime')
+              ? _json['reportTime'] as core.String
+              : null,
+          sampleFrequency: _json.containsKey('sampleFrequency')
+              ? _json['sampleFrequency'] as core.String
+              : null,
+          systemRamFreeBytes: _json.containsKey('systemRamFreeBytes')
+              ? _json['systemRamFreeBytes'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (pageFaults != null) 'pageFaults': pageFaults!,
+        if (reportTime != null) 'reportTime': reportTime!,
+        if (sampleFrequency != null) 'sampleFrequency': sampleFrequency!,
+        if (systemRamFreeBytes != null)
+          'systemRamFreeBytes': systemRamFreeBytes!,
+      };
+}
+
+/// State of visible/configured networks.
+class GoogleChromeManagementV1NetworkStatusReport {
+  /// Gateway IP address.
+  ///
+  /// Output only.
+  core.String? gatewayIpAddress;
+
+  /// LAN IP address.
+  ///
+  /// Output only.
+  core.String? lanIpAddress;
+
+  /// Time at which the network state was reported.
+  ///
+  /// Output only.
+  core.String? reportTime;
+
+  /// Frequency the report is sampled.
+  ///
+  /// Output only.
+  core.String? sampleFrequency;
+
+  /// Signal strength for wireless networks measured in decibels.
+  ///
+  /// Output only.
+  core.int? signalStrengthDbm;
+
+  GoogleChromeManagementV1NetworkStatusReport({
+    this.gatewayIpAddress,
+    this.lanIpAddress,
+    this.reportTime,
+    this.sampleFrequency,
+    this.signalStrengthDbm,
+  });
+
+  GoogleChromeManagementV1NetworkStatusReport.fromJson(core.Map _json)
+      : this(
+          gatewayIpAddress: _json.containsKey('gatewayIpAddress')
+              ? _json['gatewayIpAddress'] as core.String
+              : null,
+          lanIpAddress: _json.containsKey('lanIpAddress')
+              ? _json['lanIpAddress'] as core.String
+              : null,
+          reportTime: _json.containsKey('reportTime')
+              ? _json['reportTime'] as core.String
+              : null,
+          sampleFrequency: _json.containsKey('sampleFrequency')
+              ? _json['sampleFrequency'] as core.String
+              : null,
+          signalStrengthDbm: _json.containsKey('signalStrengthDbm')
+              ? _json['signalStrengthDbm'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (gatewayIpAddress != null) 'gatewayIpAddress': gatewayIpAddress!,
+        if (lanIpAddress != null) 'lanIpAddress': lanIpAddress!,
+        if (reportTime != null) 'reportTime': reportTime!,
+        if (sampleFrequency != null) 'sampleFrequency': sampleFrequency!,
+        if (signalStrengthDbm != null) 'signalStrengthDbm': signalStrengthDbm!,
+      };
+}
+
+/// Contains information regarding the current OS update status.
+class GoogleChromeManagementV1OsUpdateStatus {
+  /// Timestamp of the last reboot.
+  ///
+  /// Output only.
+  core.String? lastRebootTime;
+
+  /// Timestamp of the last update check.
+  ///
+  /// Output only.
+  core.String? lastUpdateCheckTime;
+
+  /// Timestamp of the last successful update.
+  ///
+  /// Output only.
+  core.String? lastUpdateTime;
+
+  /// New platform version of the os image being downloaded and applied.
+  ///
+  /// It is only set when update status is OS_IMAGE_DOWNLOAD_IN_PROGRESS or
+  /// OS_UPDATE_NEED_REBOOT. Note this could be a dummy "0.0.0.0" for
+  /// OS_UPDATE_NEED_REBOOT status for some edge cases, e.g. update engine is
+  /// restarted without a reboot.
+  ///
+  /// Output only.
+  core.String? newPlatformVersion;
+
+  /// New requested platform version from the pending updated kiosk app.
+  ///
+  /// Output only.
+  core.String? newRequestedPlatformVersion;
+
+  /// Current state of the os update.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "UPDATE_STATE_UNSPECIFIED" : State unspecified.
+  /// - "OS_IMAGE_DOWNLOAD_NOT_STARTED" : OS has not started downloading.
+  /// - "OS_IMAGE_DOWNLOAD_IN_PROGRESS" : OS has started download on device.
+  /// - "OS_UPDATE_NEED_REBOOT" : Device needs reboot to finish upload.
+  core.String? updateState;
+
+  GoogleChromeManagementV1OsUpdateStatus({
+    this.lastRebootTime,
+    this.lastUpdateCheckTime,
+    this.lastUpdateTime,
+    this.newPlatformVersion,
+    this.newRequestedPlatformVersion,
+    this.updateState,
+  });
+
+  GoogleChromeManagementV1OsUpdateStatus.fromJson(core.Map _json)
+      : this(
+          lastRebootTime: _json.containsKey('lastRebootTime')
+              ? _json['lastRebootTime'] as core.String
+              : null,
+          lastUpdateCheckTime: _json.containsKey('lastUpdateCheckTime')
+              ? _json['lastUpdateCheckTime'] as core.String
+              : null,
+          lastUpdateTime: _json.containsKey('lastUpdateTime')
+              ? _json['lastUpdateTime'] as core.String
+              : null,
+          newPlatformVersion: _json.containsKey('newPlatformVersion')
+              ? _json['newPlatformVersion'] as core.String
+              : null,
+          newRequestedPlatformVersion:
+              _json.containsKey('newRequestedPlatformVersion')
+                  ? _json['newRequestedPlatformVersion'] as core.String
+                  : null,
+          updateState: _json.containsKey('updateState')
+              ? _json['updateState'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (lastRebootTime != null) 'lastRebootTime': lastRebootTime!,
+        if (lastUpdateCheckTime != null)
+          'lastUpdateCheckTime': lastUpdateCheckTime!,
+        if (lastUpdateTime != null) 'lastUpdateTime': lastUpdateTime!,
+        if (newPlatformVersion != null)
+          'newPlatformVersion': newPlatformVersion!,
+        if (newRequestedPlatformVersion != null)
+          'newRequestedPlatformVersion': newRequestedPlatformVersion!,
+        if (updateState != null) 'updateState': updateState!,
+      };
+}
+
+/// Status data for storage.
+class GoogleChromeManagementV1StorageInfo {
+  /// The available space for user data storage in the device in bytes.
+  core.String? availableDiskBytes;
+
+  /// The total space for user data storage in the device in bytes.
+  core.String? totalDiskBytes;
+
+  /// Information for disk volumes
+  core.List<GoogleChromeManagementV1StorageInfoDiskVolume>? volume;
+
+  GoogleChromeManagementV1StorageInfo({
+    this.availableDiskBytes,
+    this.totalDiskBytes,
+    this.volume,
+  });
+
+  GoogleChromeManagementV1StorageInfo.fromJson(core.Map _json)
+      : this(
+          availableDiskBytes: _json.containsKey('availableDiskBytes')
+              ? _json['availableDiskBytes'] as core.String
+              : null,
+          totalDiskBytes: _json.containsKey('totalDiskBytes')
+              ? _json['totalDiskBytes'] as core.String
+              : null,
+          volume: _json.containsKey('volume')
+              ? (_json['volume'] as core.List)
+                  .map((value) =>
+                      GoogleChromeManagementV1StorageInfoDiskVolume.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (availableDiskBytes != null)
+          'availableDiskBytes': availableDiskBytes!,
+        if (totalDiskBytes != null) 'totalDiskBytes': totalDiskBytes!,
+        if (volume != null) 'volume': volume!,
+      };
+}
+
+/// Information for disk volumes
+class GoogleChromeManagementV1StorageInfoDiskVolume {
+  /// Free storage space in bytes.
+  core.String? storageFreeBytes;
+
+  /// Total storage space in bytes.
+  core.String? storageTotalBytes;
+
+  /// Disk volume id.
+  core.String? volumeId;
+
+  GoogleChromeManagementV1StorageInfoDiskVolume({
+    this.storageFreeBytes,
+    this.storageTotalBytes,
+    this.volumeId,
+  });
+
+  GoogleChromeManagementV1StorageInfoDiskVolume.fromJson(core.Map _json)
+      : this(
+          storageFreeBytes: _json.containsKey('storageFreeBytes')
+              ? _json['storageFreeBytes'] as core.String
+              : null,
+          storageTotalBytes: _json.containsKey('storageTotalBytes')
+              ? _json['storageTotalBytes'] as core.String
+              : null,
+          volumeId: _json.containsKey('volumeId')
+              ? _json['volumeId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (storageFreeBytes != null) 'storageFreeBytes': storageFreeBytes!,
+        if (storageTotalBytes != null) 'storageTotalBytes': storageTotalBytes!,
+        if (volumeId != null) 'volumeId': volumeId!,
+      };
+}
+
+/// Status data for storage.
+class GoogleChromeManagementV1StorageStatusReport {
+  /// Reports on disk
+  ///
+  /// Output only.
+  core.List<GoogleChromeManagementV1DiskInfo>? disk;
+
+  /// Timestamp of when the sample was collected on device
+  ///
+  /// Output only.
+  core.String? reportTime;
+
+  GoogleChromeManagementV1StorageStatusReport({
+    this.disk,
+    this.reportTime,
+  });
+
+  GoogleChromeManagementV1StorageStatusReport.fromJson(core.Map _json)
+      : this(
+          disk: _json.containsKey('disk')
+              ? (_json['disk'] as core.List)
+                  .map((value) => GoogleChromeManagementV1DiskInfo.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          reportTime: _json.containsKey('reportTime')
+              ? _json['reportTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (disk != null) 'disk': disk!,
+        if (reportTime != null) 'reportTime': reportTime!,
+      };
+}
+
+/// Telemetry data collected from a managed device.
+class GoogleChromeManagementV1TelemetryDevice {
+  /// Information on battery specs for the device.
+  ///
+  /// Output only.
+  core.List<GoogleChromeManagementV1BatteryInfo>? batteryInfo;
+
+  /// Battery reports collected periodically.
+  ///
+  /// Output only.
+  core.List<GoogleChromeManagementV1BatteryStatusReport>? batteryStatusReport;
+
+  /// Information regarding CPU specs for the device.
+  ///
+  /// Output only.
+  core.List<GoogleChromeManagementV1CpuInfo>? cpuInfo;
+
+  /// CPU status reports collected periodically.
+  ///
+  /// Output only.
+  core.List<GoogleChromeManagementV1CpuStatusReport>? cpuStatusReport;
+
+  /// Google Workspace Customer whose enterprise enrolled the device.
+  ///
+  /// Output only.
+  core.String? customer;
+
+  /// The unique Directory API ID of the device.
+  ///
+  /// This value is the same as the Admin Console's Directory API ID in the
+  /// Chrome OS Devices tab
+  ///
+  /// Output only.
+  core.String? deviceId;
+
+  /// Contains information regarding Graphic peripherals for the device.
+  ///
+  /// Output only.
+  GoogleChromeManagementV1GraphicsInfo? graphicsInfo;
+
+  /// Graphics reports collected periodically.
+  ///
+  /// Output only.
+  core.List<GoogleChromeManagementV1GraphicsStatusReport>? graphicsStatusReport;
+
+  /// Information regarding memory specs for the device.
+  ///
+  /// Output only.
+  GoogleChromeManagementV1MemoryInfo? memoryInfo;
+
+  /// Memory status reports collected periodically.
+  ///
+  /// Output only.
+  core.List<GoogleChromeManagementV1MemoryStatusReport>? memoryStatusReport;
+
+  /// Resource name of the device.
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// Network specs collected periodically.
+  ///
+  /// Output only.
+  core.List<GoogleChromeManagementV1NetworkStatusReport>? networkStatusReport;
+
+  /// Organization unit ID of the device.
+  ///
+  /// Output only.
+  core.String? orgUnitId;
+
+  /// Contains relevant information regarding ChromeOS update status.
+  ///
+  /// Output only.
+  core.List<GoogleChromeManagementV1OsUpdateStatus>? osUpdateStatus;
+
+  /// Device serial number.
+  ///
+  /// This value is the same as the Admin Console's Serial Number in the Chrome
+  /// OS Devices tab.
+  ///
+  /// Output only.
+  core.String? serialNumber;
+
+  /// Information of storage specs for the device.
+  ///
+  /// Output only.
+  GoogleChromeManagementV1StorageInfo? storageInfo;
+
+  /// Storage reports collected periodically.
+  ///
+  /// Output only.
+  core.List<GoogleChromeManagementV1StorageStatusReport>? storageStatusReport;
+
+  GoogleChromeManagementV1TelemetryDevice({
+    this.batteryInfo,
+    this.batteryStatusReport,
+    this.cpuInfo,
+    this.cpuStatusReport,
+    this.customer,
+    this.deviceId,
+    this.graphicsInfo,
+    this.graphicsStatusReport,
+    this.memoryInfo,
+    this.memoryStatusReport,
+    this.name,
+    this.networkStatusReport,
+    this.orgUnitId,
+    this.osUpdateStatus,
+    this.serialNumber,
+    this.storageInfo,
+    this.storageStatusReport,
+  });
+
+  GoogleChromeManagementV1TelemetryDevice.fromJson(core.Map _json)
+      : this(
+          batteryInfo: _json.containsKey('batteryInfo')
+              ? (_json['batteryInfo'] as core.List)
+                  .map((value) => GoogleChromeManagementV1BatteryInfo.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          batteryStatusReport: _json.containsKey('batteryStatusReport')
+              ? (_json['batteryStatusReport'] as core.List)
+                  .map((value) =>
+                      GoogleChromeManagementV1BatteryStatusReport.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          cpuInfo: _json.containsKey('cpuInfo')
+              ? (_json['cpuInfo'] as core.List)
+                  .map((value) => GoogleChromeManagementV1CpuInfo.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          cpuStatusReport: _json.containsKey('cpuStatusReport')
+              ? (_json['cpuStatusReport'] as core.List)
+                  .map((value) =>
+                      GoogleChromeManagementV1CpuStatusReport.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          customer: _json.containsKey('customer')
+              ? _json['customer'] as core.String
+              : null,
+          deviceId: _json.containsKey('deviceId')
+              ? _json['deviceId'] as core.String
+              : null,
+          graphicsInfo: _json.containsKey('graphicsInfo')
+              ? GoogleChromeManagementV1GraphicsInfo.fromJson(
+                  _json['graphicsInfo'] as core.Map<core.String, core.dynamic>)
+              : null,
+          graphicsStatusReport: _json.containsKey('graphicsStatusReport')
+              ? (_json['graphicsStatusReport'] as core.List)
+                  .map((value) =>
+                      GoogleChromeManagementV1GraphicsStatusReport.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          memoryInfo: _json.containsKey('memoryInfo')
+              ? GoogleChromeManagementV1MemoryInfo.fromJson(
+                  _json['memoryInfo'] as core.Map<core.String, core.dynamic>)
+              : null,
+          memoryStatusReport: _json.containsKey('memoryStatusReport')
+              ? (_json['memoryStatusReport'] as core.List)
+                  .map((value) =>
+                      GoogleChromeManagementV1MemoryStatusReport.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          networkStatusReport: _json.containsKey('networkStatusReport')
+              ? (_json['networkStatusReport'] as core.List)
+                  .map((value) =>
+                      GoogleChromeManagementV1NetworkStatusReport.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          orgUnitId: _json.containsKey('orgUnitId')
+              ? _json['orgUnitId'] as core.String
+              : null,
+          osUpdateStatus: _json.containsKey('osUpdateStatus')
+              ? (_json['osUpdateStatus'] as core.List)
+                  .map((value) =>
+                      GoogleChromeManagementV1OsUpdateStatus.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          serialNumber: _json.containsKey('serialNumber')
+              ? _json['serialNumber'] as core.String
+              : null,
+          storageInfo: _json.containsKey('storageInfo')
+              ? GoogleChromeManagementV1StorageInfo.fromJson(
+                  _json['storageInfo'] as core.Map<core.String, core.dynamic>)
+              : null,
+          storageStatusReport: _json.containsKey('storageStatusReport')
+              ? (_json['storageStatusReport'] as core.List)
+                  .map((value) =>
+                      GoogleChromeManagementV1StorageStatusReport.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (batteryInfo != null) 'batteryInfo': batteryInfo!,
+        if (batteryStatusReport != null)
+          'batteryStatusReport': batteryStatusReport!,
+        if (cpuInfo != null) 'cpuInfo': cpuInfo!,
+        if (cpuStatusReport != null) 'cpuStatusReport': cpuStatusReport!,
+        if (customer != null) 'customer': customer!,
+        if (deviceId != null) 'deviceId': deviceId!,
+        if (graphicsInfo != null) 'graphicsInfo': graphicsInfo!,
+        if (graphicsStatusReport != null)
+          'graphicsStatusReport': graphicsStatusReport!,
+        if (memoryInfo != null) 'memoryInfo': memoryInfo!,
+        if (memoryStatusReport != null)
+          'memoryStatusReport': memoryStatusReport!,
+        if (name != null) 'name': name!,
+        if (networkStatusReport != null)
+          'networkStatusReport': networkStatusReport!,
+        if (orgUnitId != null) 'orgUnitId': orgUnitId!,
+        if (osUpdateStatus != null) 'osUpdateStatus': osUpdateStatus!,
+        if (serialNumber != null) 'serialNumber': serialNumber!,
+        if (storageInfo != null) 'storageInfo': storageInfo!,
+        if (storageStatusReport != null)
+          'storageStatusReport': storageStatusReport!,
+      };
+}
+
 /// The `Status` type defines a logical error model that is suitable for
 /// different programming environments, including REST APIs and RPC APIs.
 ///
@@ -1463,3 +2877,14 @@ class GoogleChromeManagementV1InstalledApp {
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 typedef GoogleRpcStatus = $Status;
+
+/// Represents a whole or partial calendar date, such as a birthday.
+///
+/// The time of day and time zone are either specified elsewhere or are
+/// insignificant. The date is relative to the Gregorian Calendar. This can
+/// represent one of the following: * A full date, with non-zero year, month,
+/// and day values * A month and day value, with a zero year, such as an
+/// anniversary * A year on its own, with zero month and day values * A year and
+/// month value, with a zero day, such as a credit card expiration date Related
+/// types are google.type.TimeOfDay and `google.protobuf.Timestamp`.
+typedef GoogleTypeDate = $Date;

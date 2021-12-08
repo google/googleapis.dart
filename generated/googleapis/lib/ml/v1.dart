@@ -347,12 +347,16 @@ class ProjectsJobsResource {
   /// this field.
   /// Value must have pattern `^projects/\[^/\]+/jobs/\[^/\]+$`.
   ///
-  /// [options_requestedPolicyVersion] - Optional. The policy format version to
-  /// be returned. Valid values are 0, 1, and 3. Requests specifying an invalid
-  /// value will be rejected. Requests for policies with any conditional
-  /// bindings must specify version 3. Policies without any conditional bindings
-  /// may specify any valid value or leave the field unset. To learn which
-  /// resources support conditions in their IAM policies, see the
+  /// [options_requestedPolicyVersion] - Optional. The maximum policy version
+  /// that will be used to format the policy. Valid values are 0, 1, and 3.
+  /// Requests specifying an invalid value will be rejected. Requests for
+  /// policies with any conditional role bindings must specify version 3.
+  /// Policies with no conditional role bindings may specify any valid value or
+  /// leave the field unset. The policy in the response might use the policy
+  /// version that you specified, or it might use a lower policy version. For
+  /// example, if you specify version 3, but the policy has no conditional role
+  /// bindings, the response uses version 1. To learn which resources support
+  /// conditions in their IAM policies, see the
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1532,12 +1536,16 @@ class ProjectsModelsResource {
   /// this field.
   /// Value must have pattern `^projects/\[^/\]+/models/\[^/\]+$`.
   ///
-  /// [options_requestedPolicyVersion] - Optional. The policy format version to
-  /// be returned. Valid values are 0, 1, and 3. Requests specifying an invalid
-  /// value will be rejected. Requests for policies with any conditional
-  /// bindings must specify version 3. Policies without any conditional bindings
-  /// may specify any valid value or leave the field unset. To learn which
-  /// resources support conditions in their IAM policies, see the
+  /// [options_requestedPolicyVersion] - Optional. The maximum policy version
+  /// that will be used to format the policy. Valid values are 0, 1, and 3.
+  /// Requests specifying an invalid value will be rejected. Requests for
+  /// policies with any conditional role bindings must specify version 3.
+  /// Policies with no conditional role bindings may specify any valid value or
+  /// leave the field unset. The policy in the response might use the policy
+  /// version that you specified, or it might use a lower policy version. For
+  /// example, if you specify version 3, but the policy has no conditional role
+  /// bindings, the response uses version 1. To learn which resources support
+  /// conditions in their IAM policies, see the
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -3902,6 +3910,14 @@ class GoogleCloudMlV1Job {
   /// Required.
   core.String? jobId;
 
+  /// It's only effect when the job is in QUEUED state.
+  ///
+  /// If it's positive, it indicates the job's position in the job scheduler.
+  /// It's 0 when the job is already scheduled.
+  ///
+  /// Output only.
+  core.String? jobPosition;
+
   /// One or more labels that you can add, to organize your jobs.
   ///
   /// Each label is a key-value pair, where both the key and the value are
@@ -3952,6 +3968,7 @@ class GoogleCloudMlV1Job {
     this.errorMessage,
     this.etag,
     this.jobId,
+    this.jobPosition,
     this.labels,
     this.predictionInput,
     this.predictionOutput,
@@ -3975,6 +3992,9 @@ class GoogleCloudMlV1Job {
           etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
           jobId:
               _json.containsKey('jobId') ? _json['jobId'] as core.String : null,
+          jobPosition: _json.containsKey('jobPosition')
+              ? _json['jobPosition'] as core.String
+              : null,
           labels: _json.containsKey('labels')
               ? (_json['labels'] as core.Map<core.String, core.dynamic>).map(
                   (key, item) => core.MapEntry(
@@ -4013,6 +4033,7 @@ class GoogleCloudMlV1Job {
         if (errorMessage != null) 'errorMessage': errorMessage!,
         if (etag != null) 'etag': etag!,
         if (jobId != null) 'jobId': jobId!,
+        if (jobPosition != null) 'jobPosition': jobPosition!,
         if (labels != null) 'labels': labels!,
         if (predictionInput != null) 'predictionInput': predictionInput!,
         if (predictionOutput != null) 'predictionOutput': predictionOutput!,

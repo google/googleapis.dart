@@ -1079,7 +1079,7 @@ class Dimension {
   /// `name` can be any string that you would like within the allowed character
   /// set. For example if a `dimensionExpression` concatenates `country` and
   /// `city`, you could call that dimension `countryAndCity`. Dimension names
-  /// that you choose must match the regular expression "^\[a-zA-Z0-9_\]$".
+  /// that you choose must match the regular expression `^[a-zA-Z0-9_]$`.
   /// Dimensions are referenced by `name` in `dimensionFilter`, `orderBys`,
   /// `dimensionExpression`, and `pivots`.
   core.String? name;
@@ -1589,8 +1589,8 @@ class Metric {
   /// any string that you would like within the allowed character set. For
   /// example if `expression` is `screenPageViews/sessions`, you could call that
   /// metric's name = `viewsPerSession`. Metric names that you choose must match
-  /// the regular expression "^\[a-zA-Z0-9_\]$". Metrics are referenced by
-  /// `name` in `metricFilter`, `orderBys`, and metric `expression`.
+  /// the regular expression `^[a-zA-Z0-9_]$`. Metrics are referenced by `name`
+  /// in `metricFilter`, `orderBys`, and metric `expression`.
   core.String? name;
 
   Metric({
@@ -2407,6 +2407,16 @@ class ResponseMetaData {
   /// management\](https://support.google.com/analytics/answer/10851388).
   SchemaRestrictionResponse? schemaRestrictionResponse;
 
+  /// If `thresholdingApplied` is true, this report has thresholding applied and
+  /// only returns data that meets the minimum aggregation thresholds.
+  ///
+  /// This boolean only indicates if thresholding was applied. It is possible
+  /// for thresholding to be applied and no data is absent from the report, and
+  /// this happens when all data is above the thresholds. To learn more, see
+  /// [Data thresholds](https://support.google.com/analytics/answer/9383630) and
+  /// [About Demographics and Interests](https://support.google.com/analytics/answer/2799357).
+  core.bool? thresholdingApplied;
+
   /// The property's current timezone.
   ///
   /// Intended to be used to interpret time-based dimensions like `hour` and
@@ -2420,6 +2430,7 @@ class ResponseMetaData {
     this.dataLossFromOtherRow,
     this.emptyReason,
     this.schemaRestrictionResponse,
+    this.thresholdingApplied,
     this.timeZone,
   });
 
@@ -2440,6 +2451,9 @@ class ResponseMetaData {
                       _json['schemaRestrictionResponse']
                           as core.Map<core.String, core.dynamic>)
                   : null,
+          thresholdingApplied: _json.containsKey('thresholdingApplied')
+              ? _json['thresholdingApplied'] as core.bool
+              : null,
           timeZone: _json.containsKey('timeZone')
               ? _json['timeZone'] as core.String
               : null,
@@ -2452,6 +2466,8 @@ class ResponseMetaData {
         if (emptyReason != null) 'emptyReason': emptyReason!,
         if (schemaRestrictionResponse != null)
           'schemaRestrictionResponse': schemaRestrictionResponse!,
+        if (thresholdingApplied != null)
+          'thresholdingApplied': thresholdingApplied!,
         if (timeZone != null) 'timeZone': timeZone!,
       };
 }

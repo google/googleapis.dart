@@ -543,12 +543,21 @@ class AttestationOccurrence {
 
 /// Details of a build occurrence.
 class BuildOccurrence {
+  /// See InTotoStatement for the replacement.
+  ///
   /// In-toto Provenance representation as defined in spec.
+  ///
+  /// Deprecated.
   InTotoProvenance? intotoProvenance;
 
-  /// The actual provenance for the build.
+  /// In-toto Statement representation as defined in spec.
   ///
-  /// Required.
+  /// The intoto_statement can contain any type of provenance. The serialized
+  /// payload of the statement can be stored and signed in the Occurrence's
+  /// envelope.
+  InTotoStatement? intotoStatement;
+
+  /// The actual provenance for the build.
   BuildProvenance? provenance;
 
   /// Serialized JSON representation of the provenance, used in generating the
@@ -565,6 +574,7 @@ class BuildOccurrence {
 
   BuildOccurrence({
     this.intotoProvenance,
+    this.intotoStatement,
     this.provenance,
     this.provenanceBytes,
   });
@@ -573,6 +583,10 @@ class BuildOccurrence {
       : this(
           intotoProvenance: _json.containsKey('intotoProvenance')
               ? InTotoProvenance.fromJson(_json['intotoProvenance']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          intotoStatement: _json.containsKey('intotoStatement')
+              ? InTotoStatement.fromJson(_json['intotoStatement']
                   as core.Map<core.String, core.dynamic>)
               : null,
           provenance: _json.containsKey('provenance')
@@ -586,6 +600,7 @@ class BuildOccurrence {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (intotoProvenance != null) 'intotoProvenance': intotoProvenance!,
+        if (intotoStatement != null) 'intotoStatement': intotoStatement!,
         if (provenance != null) 'provenance': provenance!,
         if (provenanceBytes != null) 'provenanceBytes': provenanceBytes!,
       };
@@ -730,22 +745,7 @@ class BuildProvenance {
       };
 }
 
-class BuilderConfig {
-  core.String? id;
-
-  BuilderConfig({
-    this.id,
-  });
-
-  BuilderConfig.fromJson(core.Map _json)
-      : this(
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (id != null) 'id': id!,
-      };
-}
+typedef BuilderConfig = $Shared06;
 
 /// The category to which the update belongs.
 class Category {
@@ -819,46 +819,7 @@ typedef Command = $Command;
 
 /// Indicates that the builder claims certain fields in this message to be
 /// complete.
-class Completeness {
-  /// If true, the builder claims that recipe.arguments is complete, meaning
-  /// that all external inputs are properly captured in the recipe.
-  core.bool? arguments;
-
-  /// If true, the builder claims that recipe.environment is claimed to be
-  /// complete.
-  core.bool? environment;
-
-  /// If true, the builder claims that materials are complete, usually through
-  /// some controls to prevent network access.
-  ///
-  /// Sometimes called "hermetic".
-  core.bool? materials;
-
-  Completeness({
-    this.arguments,
-    this.environment,
-    this.materials,
-  });
-
-  Completeness.fromJson(core.Map _json)
-      : this(
-          arguments: _json.containsKey('arguments')
-              ? _json['arguments'] as core.bool
-              : null,
-          environment: _json.containsKey('environment')
-              ? _json['environment'] as core.bool
-              : null,
-          materials: _json.containsKey('materials')
-              ? _json['materials'] as core.bool
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (arguments != null) 'arguments': arguments!,
-        if (environment != null) 'environment': environment!,
-        if (materials != null) 'materials': materials!,
-      };
-}
+typedef Completeness = $Completeness;
 
 /// An indication that the compliance checks in the associated ComplianceNote
 /// were not satisfied for particular resources or a specified reason.
@@ -891,6 +852,10 @@ class ComplianceOccurrence {
       };
 }
 
+/// Prefer to use a regular Occurrence, and populate the Envelope at the top
+/// level of the Occurrence.
+///
+/// Deprecated.
 class DSSEAttestationOccurrence {
   /// If doing something security critical, make sure to verify the signatures
   /// in this metadata.
@@ -1343,23 +1308,27 @@ class InTotoProvenance {
 ///
 /// Envelope.payloadType is always "application/vnd.in-toto+json".
 class InTotoStatement {
-  /// "https://in-toto.io/Provenance/v0.1" for InTotoProvenance.
+  /// Always "https://in-toto.io/Statement/v0.1".
+  core.String? P_type;
+
+  /// "https://slsa.dev/provenance/v0.1" for SlsaProvenance.
   core.String? predicateType;
   InTotoProvenance? provenance;
+  SlsaProvenance? slsaProvenance;
   core.List<Subject>? subject;
 
-  /// Always "https://in-toto.io/Statement/v0.1".
-  core.String? type;
-
   InTotoStatement({
+    this.P_type,
     this.predicateType,
     this.provenance,
+    this.slsaProvenance,
     this.subject,
-    this.type,
   });
 
   InTotoStatement.fromJson(core.Map _json)
       : this(
+          P_type:
+              _json.containsKey('_type') ? _json['_type'] as core.String : null,
           predicateType: _json.containsKey('predicateType')
               ? _json['predicateType'] as core.String
               : null,
@@ -1367,20 +1336,24 @@ class InTotoStatement {
               ? InTotoProvenance.fromJson(
                   _json['provenance'] as core.Map<core.String, core.dynamic>)
               : null,
+          slsaProvenance: _json.containsKey('slsaProvenance')
+              ? SlsaProvenance.fromJson(_json['slsaProvenance']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           subject: _json.containsKey('subject')
               ? (_json['subject'] as core.List)
                   .map((value) => Subject.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          type: _json.containsKey('type') ? _json['type'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (P_type != null) '_type': P_type!,
         if (predicateType != null) 'predicateType': predicateType!,
         if (provenance != null) 'provenance': provenance!,
+        if (slsaProvenance != null) 'slsaProvenance': slsaProvenance!,
         if (subject != null) 'subject': subject!,
-        if (type != null) 'type': type!,
       };
 }
 
@@ -1546,6 +1519,34 @@ class Location {
         if (cpeUri != null) 'cpeUri': cpeUri!,
         if (path != null) 'path': path!,
         if (version != null) 'version': version!,
+      };
+}
+
+class Material {
+  core.Map<core.String, core.String>? digest;
+  core.String? uri;
+
+  Material({
+    this.digest,
+    this.uri,
+  });
+
+  Material.fromJson(core.Map _json)
+      : this(
+          digest: _json.containsKey('digest')
+              ? (_json['digest'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          uri: _json.containsKey('uri') ? _json['uri'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (digest != null) 'digest': digest!,
+        if (uri != null) 'uri': uri!,
       };
 }
 
@@ -2296,6 +2297,210 @@ class RepoId {
 /// that holds this Signature, or the canonical serialization of the proto
 /// message that holds this signature).
 typedef Signature = $Signature;
+typedef SlsaBuilder = $Shared06;
+
+/// Indicates that the builder claims certain fields in this message to be
+/// complete.
+typedef SlsaCompleteness = $Completeness;
+
+/// Other properties of the build.
+class SlsaMetadata {
+  /// The timestamp of when the build completed.
+  core.String? buildFinishedOn;
+
+  /// Identifies the particular build invocation, which can be useful for
+  /// finding associated logs or other ad-hoc analysis.
+  ///
+  /// The value SHOULD be globally unique, per in-toto Provenance spec.
+  core.String? buildInvocationId;
+
+  /// The timestamp of when the build started.
+  core.String? buildStartedOn;
+
+  /// Indicates that the builder claims certain fields in this message to be
+  /// complete.
+  SlsaCompleteness? completeness;
+
+  /// If true, the builder claims that running the recipe on materials will
+  /// produce bit-for-bit identical output.
+  core.bool? reproducible;
+
+  SlsaMetadata({
+    this.buildFinishedOn,
+    this.buildInvocationId,
+    this.buildStartedOn,
+    this.completeness,
+    this.reproducible,
+  });
+
+  SlsaMetadata.fromJson(core.Map _json)
+      : this(
+          buildFinishedOn: _json.containsKey('buildFinishedOn')
+              ? _json['buildFinishedOn'] as core.String
+              : null,
+          buildInvocationId: _json.containsKey('buildInvocationId')
+              ? _json['buildInvocationId'] as core.String
+              : null,
+          buildStartedOn: _json.containsKey('buildStartedOn')
+              ? _json['buildStartedOn'] as core.String
+              : null,
+          completeness: _json.containsKey('completeness')
+              ? SlsaCompleteness.fromJson(
+                  _json['completeness'] as core.Map<core.String, core.dynamic>)
+              : null,
+          reproducible: _json.containsKey('reproducible')
+              ? _json['reproducible'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (buildFinishedOn != null) 'buildFinishedOn': buildFinishedOn!,
+        if (buildInvocationId != null) 'buildInvocationId': buildInvocationId!,
+        if (buildStartedOn != null) 'buildStartedOn': buildStartedOn!,
+        if (completeness != null) 'completeness': completeness!,
+        if (reproducible != null) 'reproducible': reproducible!,
+      };
+}
+
+class SlsaProvenance {
+  /// required
+  SlsaBuilder? builder;
+
+  /// The collection of artifacts that influenced the build including sources,
+  /// dependencies, build tools, base images, and so on.
+  ///
+  /// This is considered to be incomplete unless metadata.completeness.materials
+  /// is true. Unset or null is equivalent to empty.
+  core.List<Material>? materials;
+  SlsaMetadata? metadata;
+
+  /// Identifies the configuration used for the build.
+  ///
+  /// When combined with materials, this SHOULD fully describe the build, such
+  /// that re-running this recipe results in bit-for-bit identical output (if
+  /// the build is reproducible). required
+  SlsaRecipe? recipe;
+
+  SlsaProvenance({
+    this.builder,
+    this.materials,
+    this.metadata,
+    this.recipe,
+  });
+
+  SlsaProvenance.fromJson(core.Map _json)
+      : this(
+          builder: _json.containsKey('builder')
+              ? SlsaBuilder.fromJson(
+                  _json['builder'] as core.Map<core.String, core.dynamic>)
+              : null,
+          materials: _json.containsKey('materials')
+              ? (_json['materials'] as core.List)
+                  .map((value) => Material.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          metadata: _json.containsKey('metadata')
+              ? SlsaMetadata.fromJson(
+                  _json['metadata'] as core.Map<core.String, core.dynamic>)
+              : null,
+          recipe: _json.containsKey('recipe')
+              ? SlsaRecipe.fromJson(
+                  _json['recipe'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (builder != null) 'builder': builder!,
+        if (materials != null) 'materials': materials!,
+        if (metadata != null) 'metadata': metadata!,
+        if (recipe != null) 'recipe': recipe!,
+      };
+}
+
+/// Steps taken to build the artifact.
+///
+/// For a TaskRun, typically each container corresponds to one step in the
+/// recipe.
+class SlsaRecipe {
+  /// Collection of all external inputs that influenced the build on top of
+  /// recipe.definedInMaterial and recipe.entryPoint.
+  ///
+  /// For example, if the recipe type were "make", then this might be the flags
+  /// passed to make aside from the target, which is captured in
+  /// recipe.entryPoint. Depending on the recipe Type, the structure may be
+  /// different.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? arguments;
+
+  /// Index in materials containing the recipe steps that are not implied by
+  /// recipe.type.
+  ///
+  /// For example, if the recipe type were "make", then this would point to the
+  /// source containing the Makefile, not the make program itself. Set to -1 if
+  /// the recipe doesn't come from a material, as zero is default unset value
+  /// for int64.
+  core.String? definedInMaterial;
+
+  /// String identifying the entry point into the build.
+  ///
+  /// This is often a path to a configuration file and/or a target label within
+  /// that file. The syntax and meaning are defined by recipe.type. For example,
+  /// if the recipe type were "make", then this would reference the directory in
+  /// which to run make as well as which target to use.
+  core.String? entryPoint;
+
+  /// Any other builder-controlled inputs necessary for correctly evaluating the
+  /// recipe.
+  ///
+  /// Usually only needed for reproducing the build but not evaluated as part of
+  /// policy. Depending on the recipe Type, the structure may be different.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? environment;
+
+  /// URI indicating what type of recipe was performed.
+  ///
+  /// It determines the meaning of recipe.entryPoint, recipe.arguments,
+  /// recipe.environment, and materials.
+  core.String? type;
+
+  SlsaRecipe({
+    this.arguments,
+    this.definedInMaterial,
+    this.entryPoint,
+    this.environment,
+    this.type,
+  });
+
+  SlsaRecipe.fromJson(core.Map _json)
+      : this(
+          arguments: _json.containsKey('arguments')
+              ? _json['arguments'] as core.Map<core.String, core.dynamic>
+              : null,
+          definedInMaterial: _json.containsKey('definedInMaterial')
+              ? _json['definedInMaterial'] as core.String
+              : null,
+          entryPoint: _json.containsKey('entryPoint')
+              ? _json['entryPoint'] as core.String
+              : null,
+          environment: _json.containsKey('environment')
+              ? _json['environment'] as core.Map<core.String, core.dynamic>
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (arguments != null) 'arguments': arguments!,
+        if (definedInMaterial != null) 'definedInMaterial': definedInMaterial!,
+        if (entryPoint != null) 'entryPoint': entryPoint!,
+        if (environment != null) 'environment': environment!,
+        if (type != null) 'type': type!,
+      };
+}
 
 /// Source describes the location of the source used for the build.
 class Source {
@@ -2433,7 +2638,8 @@ class SourceContext {
 typedef Status = $Status;
 
 class Subject {
-  /// "": ""
+  /// "": "" Algorithms can be e.g. sha256, sha512 See
+  /// https://github.com/in-toto/attestation/blob/main/spec/field_types.md#DigestSet
   core.Map<core.String, core.String>? digest;
   core.String? name;
 

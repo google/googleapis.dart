@@ -85,7 +85,7 @@ class AccountsResource {
   /// Request parameters:
   ///
   /// [name] - Required. Account to get information about. Format:
-  /// accounts/{account_id}
+  /// accounts/{account}
   /// Value must have pattern `^accounts/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -329,7 +329,7 @@ class AccountsAdclientsAdunitsResource {
   /// Request parameters:
   ///
   /// [name] - Required. AdUnit to get information about. Format:
-  /// accounts/{account_id}/adclient/{adclient_id}/adunit/{adunit_id}
+  /// accounts/{account}/adclients/{adclient}/adunits/{adunit}
   /// Value must have pattern
   /// `^accounts/\[^/\]+/adclients/\[^/\]+/adunits/\[^/\]+$`.
   ///
@@ -1562,7 +1562,7 @@ class Account {
 class AdClient {
   /// Resource name of the ad client.
   ///
-  /// Format: accounts/{account}/adclient/{adclient}
+  /// Format: accounts/{account}/adclients/{adclient}
   core.String? name;
 
   /// Product code of the ad client.
@@ -1664,7 +1664,7 @@ class AdUnit {
 
   /// Resource name of the ad unit.
   ///
-  /// Format: accounts/{account}/adclient/{adclient}/adunits/{adunit}
+  /// Format: accounts/{account}/adclients/{adclient}/adunits/{adunit}
   core.String? name;
 
   /// Unique ID of the ad unit as used in the `AD_UNIT_ID` reporting dimension.
@@ -2666,7 +2666,7 @@ typedef TimeZone = $TimeZone;
 class UrlChannel {
   /// Resource name of the URL channel.
   ///
-  /// Format: accounts/{account}/adclient/{adclient}/urlchannels/{urlchannel}
+  /// Format: accounts/{account}/adclients/{adclient}/urlchannels/{urlchannel}
   core.String? name;
 
   /// Unique ID of the custom channel as used in the `URL_CHANNEL_ID` reporting

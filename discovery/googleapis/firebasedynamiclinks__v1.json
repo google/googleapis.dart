@@ -223,7 +223,7 @@
             }
         }
     },
-    "revision": "20211025",
+    "revision": "20211203",
     "rootUrl": "https://firebasedynamiclinks.googleapis.com/",
     "schemas": {
         "AnalyticsInfo": {
@@ -816,7 +816,7 @@
             "id": "GooglePlayAnalytics",
             "properties": {
                 "gclid": {
-                    "description": "[AdWords autotagging parameter](https://support.google.com/analytics/answer/1033981?hl=en); used to measure Google AdWords ads. This value is generated dynamically and should never be modified.",
+                    "description": "Deprecated; FDL SDK does not process nor log it.",
                     "type": "string"
                 },
                 "utmCampaign": {

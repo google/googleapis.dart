@@ -22,6 +22,10 @@
 /// Create an instance of [SpeechApi] to access these resources:
 ///
 /// - [OperationsResource]
+/// - [ProjectsResource]
+///   - [ProjectsLocationsResource]
+///     - [ProjectsLocationsCustomClassesResource]
+///     - [ProjectsLocationsPhraseSetsResource]
 /// - [SpeechResource]
 library speech.v1;
 
@@ -49,6 +53,7 @@ class SpeechApi {
   final commons.ApiRequester _requester;
 
   OperationsResource get operations => OperationsResource(_requester);
+  ProjectsResource get projects => ProjectsResource(_requester);
   SpeechResource get speech => SpeechResource(_requester);
 
   SpeechApi(http.Client client,
@@ -159,6 +164,472 @@ class OperationsResource {
   }
 }
 
+class ProjectsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsResource get locations =>
+      ProjectsLocationsResource(_requester);
+
+  ProjectsResource(commons.ApiRequester client) : _requester = client;
+}
+
+class ProjectsLocationsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsCustomClassesResource get customClasses =>
+      ProjectsLocationsCustomClassesResource(_requester);
+  ProjectsLocationsPhraseSetsResource get phraseSets =>
+      ProjectsLocationsPhraseSetsResource(_requester);
+
+  ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
+}
+
+class ProjectsLocationsCustomClassesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsCustomClassesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Create a custom class.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource where this custom class will be
+  /// created. Format:
+  /// {api_version}/projects/{project}/locations/{location}/customClasses
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [CustomClass].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<CustomClass> create(
+    CreateCustomClassRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/customClasses';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return CustomClass.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Delete a custom class.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the custom class to delete. Format:
+  /// {api_version}/projects/{project}/locations/{location}/customClasses/{custom_class}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/customClasses/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'DELETE',
+      queryParams: _queryParams,
+    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Get a custom class.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the custom class to retrieve. Format:
+  /// {api_version}/projects/{project}/locations/{location}/customClasses/{custom_class}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/customClasses/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [CustomClass].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<CustomClass> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return CustomClass.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// List custom classes.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent, which owns this collection of custom
+  /// classes. Format:
+  /// {api_version}/projects/{project}/locations/{location}/customClasses
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [pageSize] - The maximum number of custom classes to return. The service
+  /// may return fewer than this value. If unspecified, at most 50 custom
+  /// classes will be returned. The maximum value is 1000; values above 1000
+  /// will be coerced to 1000.
+  ///
+  /// [pageToken] - A page token, received from a previous `ListCustomClass`
+  /// call. Provide this to retrieve the subsequent page. When paginating, all
+  /// other parameters provided to `ListCustomClass` must match the call that
+  /// provided the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListCustomClassesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListCustomClassesResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/customClasses';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return ListCustomClassesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Update a custom class.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The resource name of the custom class.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/customClasses/\[^/\]+$`.
+  ///
+  /// [updateMask] - The list of fields to be updated.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [CustomClass].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<CustomClass> patch(
+    CustomClass request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return CustomClass.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsPhraseSetsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsPhraseSetsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Create a set of phrase hints.
+  ///
+  /// Each item in the set can be a single word or a multi-word phrase. The
+  /// items in the PhraseSet are favored by the recognition model when you send
+  /// a call that includes the PhraseSet.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource where this phrase set will be
+  /// created. Format:
+  /// {api_version}/projects/{project}/locations/{location}/phraseSets
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [PhraseSet].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<PhraseSet> create(
+    CreatePhraseSetRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/phraseSets';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return PhraseSet.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Delete a phrase set.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the phrase set to delete. Format:
+  /// {api_version}/projects/{project}/locations/{location}/phraseSets/{phrase_set}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/phraseSets/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'DELETE',
+      queryParams: _queryParams,
+    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Get a phrase set.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the phrase set to retrieve. Format:
+  /// {api_version}/projects/{project}/locations/{location}/phraseSets/{phrase_set}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/phraseSets/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [PhraseSet].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<PhraseSet> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return PhraseSet.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// List phrase sets.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent, which owns this collection of phrase set.
+  /// Format: projects/{project}/locations/{location}
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [pageSize] - The maximum number of phrase sets to return. The service may
+  /// return fewer than this value. If unspecified, at most 50 phrase sets will
+  /// be returned. The maximum value is 1000; values above 1000 will be coerced
+  /// to 1000.
+  ///
+  /// [pageToken] - A page token, received from a previous `ListPhraseSet` call.
+  /// Provide this to retrieve the subsequent page. When paginating, all other
+  /// parameters provided to `ListPhraseSet` must match the call that provided
+  /// the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListPhraseSetResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListPhraseSetResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/phraseSets';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return ListPhraseSetResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Update a phrase set.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The resource name of the phrase set.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/phraseSets/\[^/\]+$`.
+  ///
+  /// [updateMask] - The list of fields to be updated.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [PhraseSet].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<PhraseSet> patch(
+    PhraseSet request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return PhraseSet.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class SpeechResource {
   final commons.ApiRequester _requester;
 
@@ -245,6 +716,188 @@ class SpeechResource {
   }
 }
 
+/// An item of the class.
+class ClassItem {
+  /// The class item's value.
+  core.String? value;
+
+  ClassItem({
+    this.value,
+  });
+
+  ClassItem.fromJson(core.Map _json)
+      : this(
+          value:
+              _json.containsKey('value') ? _json['value'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (value != null) 'value': value!,
+      };
+}
+
+/// Message sent by the client for the `CreateCustomClass` method.
+class CreateCustomClassRequest {
+  /// The custom class to create.
+  ///
+  /// Required.
+  CustomClass? customClass;
+
+  /// The ID to use for the custom class, which will become the final component
+  /// of the custom class' resource name.
+  ///
+  /// This value should be 4-63 characters, and valid characters are /a-z-/.
+  ///
+  /// Required.
+  core.String? customClassId;
+
+  CreateCustomClassRequest({
+    this.customClass,
+    this.customClassId,
+  });
+
+  CreateCustomClassRequest.fromJson(core.Map _json)
+      : this(
+          customClass: _json.containsKey('customClass')
+              ? CustomClass.fromJson(
+                  _json['customClass'] as core.Map<core.String, core.dynamic>)
+              : null,
+          customClassId: _json.containsKey('customClassId')
+              ? _json['customClassId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (customClass != null) 'customClass': customClass!,
+        if (customClassId != null) 'customClassId': customClassId!,
+      };
+}
+
+/// Message sent by the client for the `CreatePhraseSet` method.
+class CreatePhraseSetRequest {
+  /// The phrase set to create.
+  ///
+  /// Required.
+  PhraseSet? phraseSet;
+
+  /// The ID to use for the phrase set, which will become the final component of
+  /// the phrase set's resource name.
+  ///
+  /// This value should be 4-63 characters, and valid characters are /a-z-/.
+  ///
+  /// Required.
+  core.String? phraseSetId;
+
+  CreatePhraseSetRequest({
+    this.phraseSet,
+    this.phraseSetId,
+  });
+
+  CreatePhraseSetRequest.fromJson(core.Map _json)
+      : this(
+          phraseSet: _json.containsKey('phraseSet')
+              ? PhraseSet.fromJson(
+                  _json['phraseSet'] as core.Map<core.String, core.dynamic>)
+              : null,
+          phraseSetId: _json.containsKey('phraseSetId')
+              ? _json['phraseSetId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (phraseSet != null) 'phraseSet': phraseSet!,
+        if (phraseSetId != null) 'phraseSetId': phraseSetId!,
+      };
+}
+
+/// A set of words or phrases that represents a common concept likely to appear
+/// in your audio, for example a list of passenger ship names.
+///
+/// CustomClass items can be substituted into placeholders that you set in
+/// PhraseSet phrases.
+class CustomClass {
+  /// If this custom class is a resource, the custom_class_id is the resource id
+  /// of the CustomClass.
+  ///
+  /// Case sensitive.
+  core.String? customClassId;
+
+  /// A collection of class items.
+  core.List<ClassItem>? items;
+
+  /// The resource name of the custom class.
+  core.String? name;
+
+  CustomClass({
+    this.customClassId,
+    this.items,
+    this.name,
+  });
+
+  CustomClass.fromJson(core.Map _json)
+      : this(
+          customClassId: _json.containsKey('customClassId')
+              ? _json['customClassId'] as core.String
+              : null,
+          items: _json.containsKey('items')
+              ? (_json['items'] as core.List)
+                  .map((value) => ClassItem.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (customClassId != null) 'customClassId': customClassId!,
+        if (items != null) 'items': items!,
+        if (name != null) 'name': name!,
+      };
+}
+
+/// A generic empty message that you can re-use to avoid defining duplicated
+/// empty messages in your APIs.
+///
+/// A typical example is to use it as the request or the response type of an API
+/// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
+/// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
+/// object `{}`.
+typedef Empty = $Empty;
+
+/// Message returned to the client by the `ListCustomClasses` method.
+class ListCustomClassesResponse {
+  /// The custom classes.
+  core.List<CustomClass>? customClasses;
+
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  ListCustomClassesResponse({
+    this.customClasses,
+    this.nextPageToken,
+  });
+
+  ListCustomClassesResponse.fromJson(core.Map _json)
+      : this(
+          customClasses: _json.containsKey('customClasses')
+              ? (_json['customClasses'] as core.List)
+                  .map((value) => CustomClass.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (customClasses != null) 'customClasses': customClasses!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
 /// The response message for Operations.ListOperations.
 class ListOperationsResponse {
   /// The standard List next-page token.
@@ -274,6 +927,40 @@ class ListOperationsResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (operations != null) 'operations': operations!,
+      };
+}
+
+/// Message returned to the client by the `ListPhraseSet` method.
+class ListPhraseSetResponse {
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  /// The phrase set.
+  core.List<PhraseSet>? phraseSets;
+
+  ListPhraseSetResponse({
+    this.nextPageToken,
+    this.phraseSets,
+  });
+
+  ListPhraseSetResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          phraseSets: _json.containsKey('phraseSets')
+              ? (_json['phraseSets'] as core.List)
+                  .map((value) => PhraseSet.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (phraseSets != null) 'phraseSets': phraseSets!,
       };
 }
 
@@ -401,6 +1088,110 @@ class Operation {
       };
 }
 
+/// A phrases containing words and phrase "hints" so that the speech recognition
+/// is more likely to recognize them.
+///
+/// This can be used to improve the accuracy for specific words and phrases, for
+/// example, if specific commands are typically spoken by the user. This can
+/// also be used to add additional words to the vocabulary of the recognizer.
+/// See [usage limits](https://cloud.google.com/speech-to-text/quotas#content).
+/// List items can also include pre-built or custom classes containing groups of
+/// words that represent common concepts that occur in natural language. For
+/// example, rather than providing a phrase hint for every month of the year
+/// (e.g. "i was born in january", "i was born in febuary", ...), use the
+/// pre-built `$MONTH` class improves the likelihood of correctly transcribing
+/// audio that includes months (e.g. "i was born in $month"). To refer to
+/// pre-built classes, use the class' symbol prepended with `$` e.g. `$MONTH`.
+/// To refer to custom classes that were defined inline in the request, set the
+/// class's `custom_class_id` to a string unique to all class resources and
+/// inline classes. Then use the class' id wrapped in $`{...}` e.g.
+/// "${my-months}". To refer to custom classes resources, use the class' id
+/// wrapped in `${}` (e.g. `${my-months}`).
+class Phrase {
+  /// Hint Boost.
+  ///
+  /// Overrides the boost set at the phrase set level. Positive value will
+  /// increase the probability that a specific phrase will be recognized over
+  /// other similar sounding phrases. The higher the boost, the higher the
+  /// chance of false positive recognition as well. Negative boost will simply
+  /// be ignored. Though `boost` can accept a wide range of positive values,
+  /// most use cases are best served with values between 0 and 20. We recommend
+  /// using a binary search approach to finding the optimal value for your use
+  /// case. Speech recognition will skip PhraseSets with a boost value of 0.
+  core.double? boost;
+
+  /// The phrase itself.
+  core.String? value;
+
+  Phrase({
+    this.boost,
+    this.value,
+  });
+
+  Phrase.fromJson(core.Map _json)
+      : this(
+          boost: _json.containsKey('boost')
+              ? (_json['boost'] as core.num).toDouble()
+              : null,
+          value:
+              _json.containsKey('value') ? _json['value'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (boost != null) 'boost': boost!,
+        if (value != null) 'value': value!,
+      };
+}
+
+/// Provides "hints" to the speech recognizer to favor specific words and
+/// phrases in the results.
+class PhraseSet {
+  /// Hint Boost.
+  ///
+  /// Positive value will increase the probability that a specific phrase will
+  /// be recognized over other similar sounding phrases. The higher the boost,
+  /// the higher the chance of false positive recognition as well. Negative
+  /// boost values would correspond to anti-biasing. Anti-biasing is not
+  /// enabled, so negative boost will simply be ignored. Though `boost` can
+  /// accept a wide range of positive values, most use cases are best served
+  /// with values between 0 (exclusive) and 20. We recommend using a binary
+  /// search approach to finding the optimal value for your use case. Speech
+  /// recognition will skip PhraseSets with a boost value of 0.
+  core.double? boost;
+
+  /// The resource name of the phrase set.
+  core.String? name;
+
+  /// A list of word and phrases.
+  core.List<Phrase>? phrases;
+
+  PhraseSet({
+    this.boost,
+    this.name,
+    this.phrases,
+  });
+
+  PhraseSet.fromJson(core.Map _json)
+      : this(
+          boost: _json.containsKey('boost')
+              ? (_json['boost'] as core.num).toDouble()
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          phrases: _json.containsKey('phrases')
+              ? (_json['phrases'] as core.List)
+                  .map((value) => Phrase.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (boost != null) 'boost': boost!,
+        if (name != null) 'name': name!,
+        if (phrases != null) 'phrases': phrases!,
+      };
+}
+
 /// Contains audio data in the encoding specified in the `RecognitionConfig`.
 ///
 /// Either `content` or `uri` must be supplied. Supplying both or neither
@@ -451,6 +1242,15 @@ class RecognitionAudio {
 /// Provides information to the recognizer that specifies how to process the
 /// request.
 class RecognitionConfig {
+  /// Speech adaptation configuration improves the accuracy of speech
+  /// recognition.
+  ///
+  /// For more information, see the
+  /// [speech adaptation](https://cloud.google.com/speech-to-text/docs/adaptation)
+  /// documentation. When speech adaptation is set it supersedes the
+  /// `speech_contexts` field.
+  SpeechAdaptation? adaptation;
+
   /// A list of up to 3 additional
   /// \[BCP-47\](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tags,
   /// listing possible alternative languages of the supplied audio.
@@ -571,9 +1371,8 @@ class RecognitionConfig {
   /// replaced with a single byte containing the block length. Only Speex
   /// wideband is supported. `sample_rate_hertz` must be 16000.
   /// - "WEBM_OPUS" : Opus encoded audio frames in WebM container
-  /// ([OggOpus](https://wiki.xiph.org/OggOpus)). This is a Beta features and
-  /// only available in v1p1beta1. `sample_rate_hertz` must be one of 8000,
-  /// 12000, 16000, 24000, or 48000.
+  /// ([OggOpus](https://wiki.xiph.org/OggOpus)). `sample_rate_hertz` must be
+  /// one of 8000, 12000, 16000, 24000, or 48000.
   core.String? encoding;
 
   /// The language of the supplied audio as a
@@ -647,6 +1446,7 @@ class RecognitionConfig {
   core.bool? useEnhanced;
 
   RecognitionConfig({
+    this.adaptation,
     this.alternativeLanguageCodes,
     this.audioChannelCount,
     this.diarizationConfig,
@@ -669,6 +1469,10 @@ class RecognitionConfig {
 
   RecognitionConfig.fromJson(core.Map _json)
       : this(
+          adaptation: _json.containsKey('adaptation')
+              ? SpeechAdaptation.fromJson(
+                  _json['adaptation'] as core.Map<core.String, core.dynamic>)
+              : null,
           alternativeLanguageCodes:
               _json.containsKey('alternativeLanguageCodes')
                   ? (_json['alternativeLanguageCodes'] as core.List)
@@ -735,6 +1539,7 @@ class RecognitionConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (adaptation != null) 'adaptation': adaptation!,
         if (alternativeLanguageCodes != null)
           'alternativeLanguageCodes': alternativeLanguageCodes!,
         if (audioChannelCount != null) 'audioChannelCount': audioChannelCount!,
@@ -1030,9 +1835,74 @@ class SpeakerDiarizationConfig {
       };
 }
 
+/// Speech adaptation configuration.
+class SpeechAdaptation {
+  /// A collection of custom classes.
+  ///
+  /// To specify the classes inline, leave the class' `name` blank and fill in
+  /// the rest of its fields, giving it a unique `custom_class_id`. Refer to the
+  /// inline defined class in phrase hints by its `custom_class_id`.
+  core.List<CustomClass>? customClasses;
+
+  /// A collection of phrase set resource names to use.
+  core.List<core.String>? phraseSetReferences;
+
+  /// A collection of phrase sets.
+  ///
+  /// To specify the hints inline, leave the phrase set's `name` blank and fill
+  /// in the rest of its fields. Any phrase set can use any custom class.
+  core.List<PhraseSet>? phraseSets;
+
+  SpeechAdaptation({
+    this.customClasses,
+    this.phraseSetReferences,
+    this.phraseSets,
+  });
+
+  SpeechAdaptation.fromJson(core.Map _json)
+      : this(
+          customClasses: _json.containsKey('customClasses')
+              ? (_json['customClasses'] as core.List)
+                  .map((value) => CustomClass.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          phraseSetReferences: _json.containsKey('phraseSetReferences')
+              ? (_json['phraseSetReferences'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          phraseSets: _json.containsKey('phraseSets')
+              ? (_json['phraseSets'] as core.List)
+                  .map((value) => PhraseSet.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (customClasses != null) 'customClasses': customClasses!,
+        if (phraseSetReferences != null)
+          'phraseSetReferences': phraseSetReferences!,
+        if (phraseSets != null) 'phraseSets': phraseSets!,
+      };
+}
+
 /// Provides "hints" to the speech recognizer to favor specific words and
 /// phrases in the results.
 class SpeechContext {
+  /// Hint Boost.
+  ///
+  /// Positive value will increase the probability that a specific phrase will
+  /// be recognized over other similar sounding phrases. The higher the boost,
+  /// the higher the chance of false positive recognition as well. Negative
+  /// boost values would correspond to anti-biasing. Anti-biasing is not
+  /// enabled, so negative boost will simply be ignored. Though `boost` can
+  /// accept a wide range of positive values, most use cases are best served
+  /// with values between 0 and 20. We recommend using a binary search approach
+  /// to finding the optimal value for your use case.
+  core.double? boost;
+
   /// A list of strings containing words and phrases "hints" so that the speech
   /// recognition is more likely to recognize them.
   ///
@@ -1049,11 +1919,15 @@ class SpeechContext {
   core.List<core.String>? phrases;
 
   SpeechContext({
+    this.boost,
     this.phrases,
   });
 
   SpeechContext.fromJson(core.Map _json)
       : this(
+          boost: _json.containsKey('boost')
+              ? (_json['boost'] as core.num).toDouble()
+              : null,
           phrases: _json.containsKey('phrases')
               ? (_json['phrases'] as core.List)
                   .map((value) => value as core.String)
@@ -1062,6 +1936,7 @@ class SpeechContext {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (boost != null) 'boost': boost!,
         if (phrases != null) 'phrases': phrases!,
       };
 }
@@ -1140,10 +2015,15 @@ class SpeechRecognitionResult {
   /// Output only.
   core.String? languageCode;
 
+  /// Time offset of the end of this result relative to the beginning of the
+  /// audio.
+  core.String? resultEndTime;
+
   SpeechRecognitionResult({
     this.alternatives,
     this.channelTag,
     this.languageCode,
+    this.resultEndTime,
   });
 
   SpeechRecognitionResult.fromJson(core.Map _json)
@@ -1160,12 +2040,16 @@ class SpeechRecognitionResult {
           languageCode: _json.containsKey('languageCode')
               ? _json['languageCode'] as core.String
               : null,
+          resultEndTime: _json.containsKey('resultEndTime')
+              ? _json['resultEndTime'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (alternatives != null) 'alternatives': alternatives!,
         if (channelTag != null) 'channelTag': channelTag!,
         if (languageCode != null) 'languageCode': languageCode!,
+        if (resultEndTime != null) 'resultEndTime': resultEndTime!,
       };
 }
 

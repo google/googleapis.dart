@@ -91,7 +91,7 @@ class DmsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. Space resource name, in the form "spaces / * ".
-  /// Example: spaces/AAAAMpdlehY
+  /// Example: spaces/AAAAAAAAAAA
   /// Value must have pattern `^dms/\[^/\]+$`.
   ///
   /// [requestId] - Optional. A unique request ID for this message. If a message
@@ -152,7 +152,7 @@ class DmsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. Space resource name, in the form "spaces / * ".
-  /// Example: spaces/AAAAMpdlehY
+  /// Example: spaces/AAAAAAAAAAA
   /// Value must have pattern `^dms/\[^/\]+$`.
   ///
   /// [requestId] - Optional. A unique request ID for this message. If a message
@@ -219,7 +219,7 @@ class DmsConversationsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. Space resource name, in the form "spaces / * ".
-  /// Example: spaces/AAAAMpdlehY
+  /// Example: spaces/AAAAAAAAAAA
   /// Value must have pattern `^dms/\[^/\]+/conversations/\[^/\]+$`.
   ///
   /// [requestId] - Optional. A unique request ID for this message. If a message
@@ -347,7 +347,7 @@ class RoomsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. Space resource name, in the form "spaces / * ".
-  /// Example: spaces/AAAAMpdlehY
+  /// Example: spaces/AAAAAAAAAAA
   /// Value must have pattern `^rooms/\[^/\]+$`.
   ///
   /// [requestId] - Optional. A unique request ID for this message. If a message
@@ -408,7 +408,7 @@ class RoomsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. Space resource name, in the form "spaces / * ".
-  /// Example: spaces/AAAAMpdlehY
+  /// Example: spaces/AAAAAAAAAAA
   /// Value must have pattern `^rooms/\[^/\]+$`.
   ///
   /// [requestId] - Optional. A unique request ID for this message. If a message
@@ -475,7 +475,7 @@ class RoomsConversationsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. Space resource name, in the form "spaces / * ".
-  /// Example: spaces/AAAAMpdlehY
+  /// Example: spaces/AAAAAAAAAAA
   /// Value must have pattern `^rooms/\[^/\]+/conversations/\[^/\]+$`.
   ///
   /// [requestId] - Optional. A unique request ID for this message. If a message
@@ -624,7 +624,7 @@ class SpacesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. Space resource name, in the form "spaces / * ".
-  /// Example: spaces/AAAAMpdlehY
+  /// Example: spaces/AAAAAAAAAAA
   /// Value must have pattern `^spaces/\[^/\]+$`.
   ///
   /// [requestId] - Optional. A unique request ID for this message. If a message
@@ -688,7 +688,7 @@ class SpacesMembersResource {
   ///
   /// [name] - Required. Resource name of the membership to be retrieved, in the
   /// form "spaces / * /members / * ". Example:
-  /// spaces/AAAAMpdlehY/members/105115627578887013105
+  /// spaces/AAAAAAAAAAAA/members/111111111111111111111
   /// Value must have pattern `^spaces/\[^/\]+/members/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -726,7 +726,7 @@ class SpacesMembersResource {
   ///
   /// [parent] - Required. The resource name of the space for which membership
   /// list is to be fetched, in the form "spaces / * ". Example:
-  /// spaces/AAAAMpdlehY
+  /// spaces/AAAAAAAAAAAA
   /// Value must have pattern `^spaces/\[^/\]+$`.
   ///
   /// [pageSize] - Requested page size. The value is capped at 1000. Server may
@@ -785,7 +785,7 @@ class SpacesMessagesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. Space resource name, in the form "spaces / * ".
-  /// Example: spaces/AAAAMpdlehY
+  /// Example: spaces/AAAAAAAAAAA
   /// Value must have pattern `^spaces/\[^/\]+$`.
   ///
   /// [requestId] - Optional. A unique request ID for this message. If a message
@@ -843,7 +843,7 @@ class SpacesMessagesResource {
   ///
   /// [name] - Required. Resource name of the message to be deleted, in the form
   /// "spaces / * /messages / * " Example:
-  /// spaces/AAAAMpdlehY/messages/UMxbHmzDlr4.UMxbHmzDlr4
+  /// spaces/AAAAAAAAAAA/messages/BBBBBBBBBBB.BBBBBBBBBBB
   /// Value must have pattern `^spaces/\[^/\]+/messages/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -880,7 +880,7 @@ class SpacesMessagesResource {
   ///
   /// [name] - Required. Resource name of the message to be retrieved, in the
   /// form "spaces / * /messages / * ". Example:
-  /// spaces/AAAAMpdlehY/messages/UMxbHmzDlr4.UMxbHmzDlr4
+  /// spaces/AAAAAAAAAAA/messages/BBBBBBBBBBB.BBBBBBBBBBB
   /// Value must have pattern `^spaces/\[^/\]+/messages/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -918,7 +918,7 @@ class SpacesMessagesResource {
   /// Request parameters:
   ///
   /// [name] - Resource name in the form `spaces / * /messages / * `. Example:
-  /// `spaces/AAAAMpdlehY/messages/UMxbHmzDlr4.UMxbHmzDlr4`
+  /// `spaces/AAAAAAAAAAA/messages/BBBBBBBBBBB.BBBBBBBBBBB`
   /// Value must have pattern `^spaces/\[^/\]+/messages/\[^/\]+$`.
   ///
   /// [updateMask] - Required. The field paths to be updated, comma separated if
@@ -3573,8 +3573,10 @@ typedef Media = $Media;
 
 /// Represents a membership relation in Google Chat.
 class Membership {
-  /// The creation time of the membership a.k.a the time at which the member
+  /// The creation time of the membership a.k.a. the time at which the member
   /// joined the space, if applicable.
+  ///
+  /// Output only.
   core.String? createTime;
 
   /// A user in Google Chat.
@@ -3582,6 +3584,8 @@ class Membership {
   core.String? name;
 
   /// State of the membership.
+  ///
+  /// Required for `CreateMembership`. Read-only for other usage.
   /// Possible string values are:
   /// - "MEMBERSHIP_STATE_UNSPECIFIED" : Default, do not use.
   /// - "JOINED" : The user has joined the space.
@@ -3662,7 +3666,7 @@ class Message {
 
   /// Resource name in the form `spaces / * /messages / * `.
   ///
-  /// Example: `spaces/AAAAMpdlehY/messages/UMxbHmzDlr4.UMxbHmzDlr4`
+  /// Example: `spaces/AAAAAAAAAAA/messages/BBBBBBBBBBB.BBBBBBBBBBB`
   core.String? name;
 
   /// Text for generating preview chips.
@@ -3950,12 +3954,9 @@ class SlashCommandMetadata {
 /// Spaces are conversations between two or more users or 1:1 messages between a
 /// user and a Chat bot.
 class Space {
-  /// The display name (only if the space is of type `ROOM`).
+  /// The space's display name.
   ///
-  /// Please note that this field might not be populated in direct messages
-  /// between humans.
-  ///
-  /// Output only.
+  /// For direct messages between humans, this field might be empty.
   core.String? displayName;
 
   /// Resource name of the space, in the form "spaces / * ".
@@ -3964,16 +3965,20 @@ class Space {
   core.String? name;
 
   /// Whether the space is a DM between a bot and a single human.
+  ///
+  /// Output only.
   core.bool? singleUserBotDm;
 
   /// Whether the messages are threaded in this space.
-  core.bool? threaded;
-
-  /// The type of a space.
-  ///
-  /// This is deprecated. Use `single_user_bot_dm` instead.
   ///
   /// Output only.
+  core.bool? threaded;
+
+  /// Use `single_user_bot_dm` instead.
+  ///
+  /// Output only. The type of a space.
+  ///
+  /// Deprecated.
   /// Possible string values are:
   /// - "TYPE_UNSPECIFIED"
   /// - "ROOM" : Conversations between two or more humans.
@@ -4051,7 +4056,7 @@ typedef TextParagraph = $Shared05;
 class Thread {
   /// Resource name, in the form "spaces / * /threads / * ".
   ///
-  /// Example: spaces/AAAAMpdlehY/threads/UMxbHmzDlr4
+  /// Example: spaces/AAAAAAAAAAA/threads/TTTTTTTTTTT
   core.String? name;
 
   Thread({

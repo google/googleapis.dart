@@ -26,6 +26,37 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
+core.int buildCounterChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle = 0;
+api.ChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle
+    buildChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle() {
+  final o = api.ChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle();
+  buildCounterChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle++;
+  if (buildCounterChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle < 3) {
+    o.description = 'foo';
+    o.endSupport = buildGoogleTypeDate();
+    o.policyApiLifecycleStage = 'foo';
+  }
+  buildCounterChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle--;
+  return o;
+}
+
+void checkChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle(
+    api.ChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle o) {
+  buildCounterChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle++;
+  if (buildCounterChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle < 3) {
+    unittest.expect(
+      o.description!,
+      unittest.equals('foo'),
+    );
+    checkGoogleTypeDate(o.endSupport!);
+    unittest.expect(
+      o.policyApiLifecycleStage!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle--;
+}
+
 core.int buildCounterGoogleChromePolicyV1AdditionalTargetKeyName = 0;
 api.GoogleChromePolicyV1AdditionalTargetKeyName
     buildGoogleChromePolicyV1AdditionalTargetKeyName() {
@@ -297,6 +328,8 @@ api.GoogleChromePolicyV1PolicySchema buildGoogleChromePolicyV1PolicySchema() {
     o.fieldDescriptions = buildUnnamed5();
     o.name = 'foo';
     o.notices = buildUnnamed6();
+    o.policyApiLifeycle =
+        buildChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle();
     o.policyDescription = 'foo';
     o.schemaName = 'foo';
     o.supportUri = 'foo';
@@ -319,6 +352,8 @@ void checkGoogleChromePolicyV1PolicySchema(
       unittest.equals('foo'),
     );
     checkUnnamed6(o.notices!);
+    checkChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle(
+        o.policyApiLifeycle!);
     unittest.expect(
       o.policyDescription!,
       unittest.equals('foo'),
@@ -787,6 +822,38 @@ void checkGoogleProtobufEmpty(api.GoogleProtobufEmpty o) {
   buildCounterGoogleProtobufEmpty--;
 }
 
+core.int buildCounterGoogleTypeDate = 0;
+api.GoogleTypeDate buildGoogleTypeDate() {
+  final o = api.GoogleTypeDate();
+  buildCounterGoogleTypeDate++;
+  if (buildCounterGoogleTypeDate < 3) {
+    o.day = 42;
+    o.month = 42;
+    o.year = 42;
+  }
+  buildCounterGoogleTypeDate--;
+  return o;
+}
+
+void checkGoogleTypeDate(api.GoogleTypeDate o) {
+  buildCounterGoogleTypeDate++;
+  if (buildCounterGoogleTypeDate < 3) {
+    unittest.expect(
+      o.day!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.month!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.year!,
+      unittest.equals(42),
+    );
+  }
+  buildCounterGoogleTypeDate--;
+}
+
 core.List<api.Proto2EnumDescriptorProto> buildUnnamed14() => [
       buildProto2EnumDescriptorProto(),
       buildProto2EnumDescriptorProto(),
@@ -1063,6 +1130,18 @@ void checkProto2OneofDescriptorProto(api.Proto2OneofDescriptorProto o) {
 }
 
 void main() {
+  unittest.group(
+      'obj-schema-ChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.ChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle.fromJson(
+              oJson as core.Map<core.String, core.dynamic>);
+      checkChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle(od);
+    });
+  });
+
   unittest.group('obj-schema-GoogleChromePolicyV1AdditionalTargetKeyName', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGoogleChromePolicyV1AdditionalTargetKeyName();
@@ -1263,6 +1342,16 @@ void main() {
       final od = api.GoogleProtobufEmpty.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkGoogleProtobufEmpty(od);
+    });
+  });
+
+  unittest.group('obj-schema-GoogleTypeDate', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleTypeDate();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleTypeDate.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleTypeDate(od);
     });
   });
 

@@ -775,6 +775,7 @@ api.BuildTrigger buildBuildTrigger() {
     o.createTime = 'foo';
     o.description = 'foo';
     o.disabled = true;
+    o.eventType = 'foo';
     o.filename = 'foo';
     o.filter = 'foo';
     o.gitFileSource = buildGitFileSource();
@@ -811,6 +812,10 @@ void checkBuildTrigger(api.BuildTrigger o) {
       unittest.equals('foo'),
     );
     unittest.expect(o.disabled!, unittest.isTrue);
+    unittest.expect(
+      o.eventType!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.filename!,
       unittest.equals('foo'),

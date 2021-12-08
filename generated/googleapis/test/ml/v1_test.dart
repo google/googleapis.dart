@@ -1394,6 +1394,7 @@ api.GoogleCloudMlV1Job buildGoogleCloudMlV1Job() {
     o.errorMessage = 'foo';
     o.etag = 'foo';
     o.jobId = 'foo';
+    o.jobPosition = 'foo';
     o.labels = buildUnnamed18();
     o.predictionInput = buildGoogleCloudMlV1PredictionInput();
     o.predictionOutput = buildGoogleCloudMlV1PredictionOutput();
@@ -1427,6 +1428,10 @@ void checkGoogleCloudMlV1Job(api.GoogleCloudMlV1Job o) {
     );
     unittest.expect(
       o.jobId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.jobPosition!,
       unittest.equals('foo'),
     );
     checkUnnamed18(o.labels!);

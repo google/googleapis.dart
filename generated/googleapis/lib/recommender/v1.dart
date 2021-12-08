@@ -2470,12 +2470,13 @@ class GoogleCloudRecommenderV1Operation {
   /// tested/modified.
   ///
   /// This is intended to be an exact match per filter. To perform advanced
-  /// matching, use path_value_matchers. * Example: { "/versions / * /name" :
-  /// "it-123" "/versions / * /targetSize/percent": 20 } * Example: { "/bindings
-  /// / * /role": "roles/owner" "/bindings / * /condition" : null } * Example: {
-  /// "/bindings / * /role": "roles/owner" "/bindings / * /members / * " :
-  /// \["x@example.com", "y@example.com"\] } When both path_filters and
-  /// path_value_matchers are set, an implicit AND must be performed.
+  /// matching, use path_value_matchers. * Example: ``` { "/versions / * /name"
+  /// : "it-123" "/versions / * /targetSize/percent": 20 } ``` * Example: ``` {
+  /// "/bindings / * /role": "roles/owner" "/bindings / * /condition" : null }
+  /// ``` * Example: ``` { "/bindings / * /role": "roles/owner" "/bindings / *
+  /// /members / * " : ["x@example.com", "y@example.com"] } ``` When both
+  /// path_filters and path_value_matchers are set, an implicit AND must be
+  /// performed.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -2688,6 +2689,13 @@ class GoogleCloudRecommenderV1Recommendation {
   /// Contains state and metadata.
   GoogleCloudRecommenderV1RecommendationStateInfo? stateInfo;
 
+  /// Corresponds to a mutually exclusive group ID within a recommender.
+  ///
+  /// A non-empty ID indicates that the recommendation belongs to a mutually
+  /// exclusive group. This means that only one recommendation within the group
+  /// is suggested to be applied.
+  core.String? xorGroupId;
+
   GoogleCloudRecommenderV1Recommendation({
     this.additionalImpact,
     this.associatedInsights,
@@ -2700,6 +2708,7 @@ class GoogleCloudRecommenderV1Recommendation {
     this.priority,
     this.recommenderSubtype,
     this.stateInfo,
+    this.xorGroupId,
   });
 
   GoogleCloudRecommenderV1Recommendation.fromJson(core.Map _json)
@@ -2744,6 +2753,9 @@ class GoogleCloudRecommenderV1Recommendation {
               ? GoogleCloudRecommenderV1RecommendationStateInfo.fromJson(
                   _json['stateInfo'] as core.Map<core.String, core.dynamic>)
               : null,
+          xorGroupId: _json.containsKey('xorGroupId')
+              ? _json['xorGroupId'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2760,6 +2772,7 @@ class GoogleCloudRecommenderV1Recommendation {
         if (recommenderSubtype != null)
           'recommenderSubtype': recommenderSubtype!,
         if (stateInfo != null) 'stateInfo': stateInfo!,
+        if (xorGroupId != null) 'xorGroupId': xorGroupId!,
       };
 }
 

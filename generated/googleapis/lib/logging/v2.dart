@@ -14,10 +14,7 @@
 
 /// Cloud Logging API - v2
 ///
-/// Writes log entries and manages your Cloud Logging configuration. The table
-/// entries below are presented in alphabetical order, not in order of common
-/// use. For explanations of the concepts found in the table entries, read the
-/// documentation at https://cloud.google.com/logging/docs.
+/// Writes log entries and manages your Cloud Logging configuration.
 ///
 /// For more information, see <https://cloud.google.com/logging/docs/>
 ///
@@ -86,10 +83,6 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
 /// Writes log entries and manages your Cloud Logging configuration.
-///
-/// The table entries below are presented in alphabetical order, not in order of
-/// common use. For explanations of the concepts found in the table entries,
-/// read the documentation at https://cloud.google.com/logging/docs.
 class LoggingApi {
   /// See, edit, configure, and delete your Google Cloud data and see the email
   /// address for your Google Account.
@@ -153,6 +146,57 @@ class BillingAccountsResource {
       BillingAccountsSinksResource(_requester);
 
   BillingAccountsResource(commons.ApiRequester client) : _requester = client;
+
+  /// Gets the Logging CMEK settings for the given resource.Note: CMEK for the
+  /// Log Router can be configured for Google Cloud projects, folders,
+  /// organizations and billing accounts.
+  ///
+  /// Once configured for an organization, it applies to all projects and
+  /// folders in the Google Cloud organization.See Enabling CMEK for Logs Router
+  /// (https://cloud.google.com/logging/docs/routing/managed-encryption) for
+  /// more information.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource for which to retrieve CMEK settings.
+  /// "projects/\[PROJECT_ID\]/cmekSettings"
+  /// "organizations/\[ORGANIZATION_ID\]/cmekSettings"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/cmekSettings"
+  /// "folders/\[FOLDER_ID\]/cmekSettings" For
+  /// example:"organizations/12345/cmekSettings"Note: CMEK for the Log Router
+  /// can be configured for Google Cloud projects, folders, organizations and
+  /// billing accounts. Once configured for an organization, it applies to all
+  /// projects and folders in the Google Cloud organization.
+  /// Value must have pattern `^billingAccounts/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [CmekSettings].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<CmekSettings> getCmekSettings(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name') + '/cmekSettings';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return CmekSettings.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class BillingAccountsBucketsResource {
@@ -2119,6 +2163,57 @@ class FoldersResource {
   FoldersSinksResource get sinks => FoldersSinksResource(_requester);
 
   FoldersResource(commons.ApiRequester client) : _requester = client;
+
+  /// Gets the Logging CMEK settings for the given resource.Note: CMEK for the
+  /// Log Router can be configured for Google Cloud projects, folders,
+  /// organizations and billing accounts.
+  ///
+  /// Once configured for an organization, it applies to all projects and
+  /// folders in the Google Cloud organization.See Enabling CMEK for Logs Router
+  /// (https://cloud.google.com/logging/docs/routing/managed-encryption) for
+  /// more information.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource for which to retrieve CMEK settings.
+  /// "projects/\[PROJECT_ID\]/cmekSettings"
+  /// "organizations/\[ORGANIZATION_ID\]/cmekSettings"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/cmekSettings"
+  /// "folders/\[FOLDER_ID\]/cmekSettings" For
+  /// example:"organizations/12345/cmekSettings"Note: CMEK for the Log Router
+  /// can be configured for Google Cloud projects, folders, organizations and
+  /// billing accounts. Once configured for an organization, it applies to all
+  /// projects and folders in the Google Cloud organization.
+  /// Value must have pattern `^folders/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [CmekSettings].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<CmekSettings> getCmekSettings(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name') + '/cmekSettings';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return CmekSettings.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class FoldersExclusionsResource {
@@ -4630,12 +4725,12 @@ class OrganizationsResource {
 
   OrganizationsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Gets the Logs Router CMEK settings for the given resource.Note: CMEK for
-  /// the Logs Router can currently only be configured for Google Cloud
-  /// organizations.
+  /// Gets the Logging CMEK settings for the given resource.Note: CMEK for the
+  /// Log Router can be configured for Google Cloud projects, folders,
+  /// organizations and billing accounts.
   ///
-  /// Once configured, it applies to all projects and folders in the Google
-  /// Cloud organization.See Enabling CMEK for Logs Router
+  /// Once configured for an organization, it applies to all projects and
+  /// folders in the Google Cloud organization.See Enabling CMEK for Logs Router
   /// (https://cloud.google.com/logging/docs/routing/managed-encryption) for
   /// more information.
   ///
@@ -4646,10 +4741,10 @@ class OrganizationsResource {
   /// "organizations/\[ORGANIZATION_ID\]/cmekSettings"
   /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/cmekSettings"
   /// "folders/\[FOLDER_ID\]/cmekSettings" For
-  /// example:"organizations/12345/cmekSettings"Note: CMEK for the Logs Router
-  /// can currently only be configured for Google Cloud organizations. Once
-  /// configured, it applies to all projects and folders in the Google Cloud
-  /// organization.
+  /// example:"organizations/12345/cmekSettings"Note: CMEK for the Log Router
+  /// can be configured for Google Cloud projects, folders, organizations and
+  /// billing accounts. Once configured for an organization, it applies to all
+  /// projects and folders in the Google Cloud organization.
   /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -4681,15 +4776,15 @@ class OrganizationsResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Updates the Logs Router CMEK settings for the given resource.Note: CMEK
-  /// for the Logs Router can currently only be configured for Google Cloud
+  /// Updates the Log Router CMEK settings for the given resource.Note: CMEK for
+  /// the Log Router can currently only be configured for Google Cloud
   /// organizations.
   ///
   /// Once configured, it applies to all projects and folders in the Google
   /// Cloud organization.UpdateCmekSettings will fail if 1) kms_key_name is
   /// invalid, or 2) the associated service account does not have the required
   /// roles/cloudkms.cryptoKeyEncrypterDecrypter role assigned for the key, or
-  /// 3) access to the key is disabled.See Enabling CMEK for Logs Router
+  /// 3) access to the key is disabled.See Enabling CMEK for Log Router
   /// (https://cloud.google.com/logging/docs/routing/managed-encryption) for
   /// more information.
   ///
@@ -4702,7 +4797,7 @@ class OrganizationsResource {
   /// "organizations/\[ORGANIZATION_ID\]/cmekSettings"
   /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/cmekSettings"
   /// "folders/\[FOLDER_ID\]/cmekSettings" For
-  /// example:"organizations/12345/cmekSettings"Note: CMEK for the Logs Router
+  /// example:"organizations/12345/cmekSettings"Note: CMEK for the Log Router
   /// can currently only be configured for Google Cloud organizations. Once
   /// configured, it applies to all projects and folders in the Google Cloud
   /// organization.
@@ -6281,6 +6376,57 @@ class ProjectsResource {
   ProjectsSinksResource get sinks => ProjectsSinksResource(_requester);
 
   ProjectsResource(commons.ApiRequester client) : _requester = client;
+
+  /// Gets the Logging CMEK settings for the given resource.Note: CMEK for the
+  /// Log Router can be configured for Google Cloud projects, folders,
+  /// organizations and billing accounts.
+  ///
+  /// Once configured for an organization, it applies to all projects and
+  /// folders in the Google Cloud organization.See Enabling CMEK for Logs Router
+  /// (https://cloud.google.com/logging/docs/routing/managed-encryption) for
+  /// more information.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource for which to retrieve CMEK settings.
+  /// "projects/\[PROJECT_ID\]/cmekSettings"
+  /// "organizations/\[ORGANIZATION_ID\]/cmekSettings"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/cmekSettings"
+  /// "folders/\[FOLDER_ID\]/cmekSettings" For
+  /// example:"organizations/12345/cmekSettings"Note: CMEK for the Log Router
+  /// can be configured for Google Cloud projects, folders, organizations and
+  /// billing accounts. Once configured for an organization, it applies to all
+  /// projects and folders in the Google Cloud organization.
+  /// Value must have pattern `^projects/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [CmekSettings].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<CmekSettings> getCmekSettings(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name') + '/cmekSettings';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return CmekSettings.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class ProjectsExclusionsResource {
@@ -8297,12 +8443,12 @@ class V2Resource {
 
   V2Resource(commons.ApiRequester client) : _requester = client;
 
-  /// Gets the Logs Router CMEK settings for the given resource.Note: CMEK for
-  /// the Logs Router can currently only be configured for Google Cloud
-  /// organizations.
+  /// Gets the Logging CMEK settings for the given resource.Note: CMEK for the
+  /// Log Router can be configured for Google Cloud projects, folders,
+  /// organizations and billing accounts.
   ///
-  /// Once configured, it applies to all projects and folders in the Google
-  /// Cloud organization.See Enabling CMEK for Logs Router
+  /// Once configured for an organization, it applies to all projects and
+  /// folders in the Google Cloud organization.See Enabling CMEK for Logs Router
   /// (https://cloud.google.com/logging/docs/routing/managed-encryption) for
   /// more information.
   ///
@@ -8313,10 +8459,10 @@ class V2Resource {
   /// "organizations/\[ORGANIZATION_ID\]/cmekSettings"
   /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/cmekSettings"
   /// "folders/\[FOLDER_ID\]/cmekSettings" For
-  /// example:"organizations/12345/cmekSettings"Note: CMEK for the Logs Router
-  /// can currently only be configured for Google Cloud organizations. Once
-  /// configured, it applies to all projects and folders in the Google Cloud
-  /// organization.
+  /// example:"organizations/12345/cmekSettings"Note: CMEK for the Log Router
+  /// can be configured for Google Cloud projects, folders, organizations and
+  /// billing accounts. Once configured for an organization, it applies to all
+  /// projects and folders in the Google Cloud organization.
   /// Value must have pattern `^\[^/\]+/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -8348,15 +8494,15 @@ class V2Resource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Updates the Logs Router CMEK settings for the given resource.Note: CMEK
-  /// for the Logs Router can currently only be configured for Google Cloud
+  /// Updates the Log Router CMEK settings for the given resource.Note: CMEK for
+  /// the Log Router can currently only be configured for Google Cloud
   /// organizations.
   ///
   /// Once configured, it applies to all projects and folders in the Google
   /// Cloud organization.UpdateCmekSettings will fail if 1) kms_key_name is
   /// invalid, or 2) the associated service account does not have the required
   /// roles/cloudkms.cryptoKeyEncrypterDecrypter role assigned for the key, or
-  /// 3) access to the key is disabled.See Enabling CMEK for Logs Router
+  /// 3) access to the key is disabled.See Enabling CMEK for Log Router
   /// (https://cloud.google.com/logging/docs/routing/managed-encryption) for
   /// more information.
   ///
@@ -8369,7 +8515,7 @@ class V2Resource {
   /// "organizations/\[ORGANIZATION_ID\]/cmekSettings"
   /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/cmekSettings"
   /// "folders/\[FOLDER_ID\]/cmekSettings" For
-  /// example:"organizations/12345/cmekSettings"Note: CMEK for the Logs Router
+  /// example:"organizations/12345/cmekSettings"Note: CMEK for the Log Router
   /// can currently only be configured for Google Cloud organizations. Once
   /// configured, it applies to all projects and folders in the Google Cloud
   /// organization.
@@ -8525,11 +8671,11 @@ typedef CancelOperationRequest = $Empty;
 
 /// Describes the customer-managed encryption key (CMEK) settings associated
 /// with a project, folder, organization, billing account, or flexible
-/// resource.Note: CMEK for the Logs Router can currently only be configured for
+/// resource.Note: CMEK for the Log Router can currently only be configured for
 /// Google Cloud organizations.
 ///
 /// Once configured, it applies to all projects and folders in the Google Cloud
-/// organization.See Enabling CMEK for Logs Router
+/// organization.See Enabling CMEK for Log Router
 /// (https://cloud.google.com/logging/docs/routing/managed-encryption) for more
 /// information.
 class CmekSettings {
@@ -8537,8 +8683,8 @@ class CmekSettings {
   /// "projects/\[PROJECT_ID\]/locations/\[LOCATION\]/keyRings/\[KEYRING\]/cryptoKeys/\[KEY\]"
   /// For
   /// example:"projects/my-project/locations/us-central1/keyRings/my-ring/cryptoKeys/my-key"To
-  /// enable CMEK for the Logs Router, set this field to a valid kms_key_name
-  /// for which the associated service account has the required
+  /// enable CMEK for the Log Router, set this field to a valid kms_key_name for
+  /// which the associated service account has the required
   /// cloudkms.cryptoKeyEncrypterDecrypter roles assigned for the key.The Cloud
   /// KMS key used by the Log Router can be updated by changing the kms_key_name
   /// to a new valid key name or disabled by setting the key name to an empty
@@ -8547,8 +8693,8 @@ class CmekSettings {
   /// Encryption operations that are in progress will be completed with the key
   /// that was in use when they started. Decryption operations will be completed
   /// using the key that was used at the time of encryption unless access to
-  /// that key has been revoked.To disable CMEK for the Logs Router, set this
-  /// field to an empty string.See Enabling CMEK for Logs Router
+  /// that key has been revoked.To disable CMEK for the Log Router, set this
+  /// field to an empty string.See Enabling CMEK for Log Router
   /// (https://cloud.google.com/logging/docs/routing/managed-encryption) for
   /// more information.
   core.String? kmsKeyName;
@@ -8558,10 +8704,10 @@ class CmekSettings {
   /// Output only.
   core.String? name;
 
-  /// The service account that will be used by the Logs Router to access your
-  /// Cloud KMS key.Before enabling CMEK for Logs Router, you must first assign
+  /// The service account that will be used by the Log Router to access your
+  /// Cloud KMS key.Before enabling CMEK for Log Router, you must first assign
   /// the cloudkms.cryptoKeyEncrypterDecrypter role to the service account that
-  /// the Logs Router will use to access your Cloud KMS key.
+  /// the Log Router will use to access your Cloud KMS key.
   ///
   /// Use GetCmekSettings to obtain the service account ID.See Enabling CMEK for
   /// Logs Router
@@ -9327,6 +9473,14 @@ typedef Location = $Location01;
 
 /// Describes a repository in which log entries are stored.
 class LogBucket {
+  /// The CMEK settings of the log bucket.
+  ///
+  /// If present, new log entries written to this log bucket are encrypted using
+  /// the CMEK key provided in this configuration. If a log bucket has CMEK
+  /// settings, the CMEK settings cannot be disabled later by updating the log
+  /// bucket. Changing the KMS key is allowed.
+  CmekSettings? cmekSettings;
+
   /// The creation timestamp of the bucket.
   ///
   /// This is not set for any of the default buckets.
@@ -9386,6 +9540,7 @@ class LogBucket {
   core.String? updateTime;
 
   LogBucket({
+    this.cmekSettings,
     this.createTime,
     this.description,
     this.lifecycleState,
@@ -9398,6 +9553,10 @@ class LogBucket {
 
   LogBucket.fromJson(core.Map _json)
       : this(
+          cmekSettings: _json.containsKey('cmekSettings')
+              ? CmekSettings.fromJson(
+                  _json['cmekSettings'] as core.Map<core.String, core.dynamic>)
+              : null,
           createTime: _json.containsKey('createTime')
               ? _json['createTime'] as core.String
               : null,
@@ -9424,6 +9583,7 @@ class LogBucket {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (cmekSettings != null) 'cmekSettings': cmekSettings!,
         if (createTime != null) 'createTime': createTime!,
         if (description != null) 'description': description!,
         if (lifecycleState != null) 'lifecycleState': lifecycleState!,

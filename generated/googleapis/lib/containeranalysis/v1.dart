@@ -22,7 +22,6 @@
 ///
 /// Create an instance of [ContainerAnalysisApi] to access these resources:
 ///
-/// - [OperationsResource]
 /// - [ProjectsResource]
 ///   - [ProjectsNotesResource]
 ///     - [ProjectsNotesOccurrencesResource]
@@ -53,7 +52,6 @@ class ContainerAnalysisApi {
 
   final commons.ApiRequester _requester;
 
-  OperationsResource get operations => OperationsResource(_requester);
   ProjectsResource get projects => ProjectsResource(_requester);
 
   ContainerAnalysisApi(http.Client client,
@@ -61,195 +59,6 @@ class ContainerAnalysisApi {
       core.String servicePath = ''})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
-}
-
-class OperationsResource {
-  final commons.ApiRequester _requester;
-
-  OperationsResource(commons.ApiRequester client) : _requester = client;
-
-  /// Starts asynchronous cancellation on a long-running operation.
-  ///
-  /// The server makes a best effort to cancel the operation, but success is not
-  /// guaranteed. If the server doesn't support this method, it returns
-  /// `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation
-  /// or other methods to check whether the cancellation succeeded or whether
-  /// the operation completed despite cancellation. On successful cancellation,
-  /// the operation is not deleted; instead, it becomes an operation with an
-  /// Operation.error value with a google.rpc.Status.code of 1, corresponding to
-  /// `Code.CANCELLED`.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - The name of the operation resource to be cancelled.
-  /// Value must have pattern `^operations/.*$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Empty].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Empty> cancel(
-    CancelOperationRequest request,
-    core.String name, {
-    core.String? $fields,
-  }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':cancel';
-
-    final _response = await _requester.request(
-      _url,
-      'POST',
-      body: _body,
-      queryParams: _queryParams,
-    );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
-  }
-
-  /// Deletes a long-running operation.
-  ///
-  /// This method indicates that the client is no longer interested in the
-  /// operation result. It does not cancel the operation. If the server doesn't
-  /// support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - The name of the operation resource to be deleted.
-  /// Value must have pattern `^operations/.*$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Empty].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
-
-    final _response = await _requester.request(
-      _url,
-      'DELETE',
-      queryParams: _queryParams,
-    );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
-  }
-
-  /// Gets the latest state of a long-running operation.
-  ///
-  /// Clients can use this method to poll the operation result at intervals as
-  /// recommended by the API service.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - The name of the operation resource.
-  /// Value must have pattern `^operations/.*$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Operation].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Operation> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
-
-    final _response = await _requester.request(
-      _url,
-      'GET',
-      queryParams: _queryParams,
-    );
-    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
-  }
-
-  /// Lists operations that match the specified filter in the request.
-  ///
-  /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-  /// NOTE: the `name` binding allows API services to override the binding to
-  /// use different resource name schemes, such as `users / * /operations`. To
-  /// override the binding, API services can add a binding such as
-  /// `"/v1/{name=users / * }/operations"` to their service configuration. For
-  /// backwards compatibility, the default name includes the operations
-  /// collection id, however overriding users must ensure the name binding is
-  /// the parent resource, without the operations collection id.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - The name of the operation's parent resource.
-  /// Value must have pattern `^operations$`.
-  ///
-  /// [filter] - The standard list filter.
-  ///
-  /// [pageSize] - The standard list page size.
-  ///
-  /// [pageToken] - The standard list page token.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [ListOperationsResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<ListOperationsResponse> list(
-    core.String name, {
-    core.String? filter,
-    core.int? pageSize,
-    core.String? pageToken,
-    core.String? $fields,
-  }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
-
-    final _response = await _requester.request(
-      _url,
-      'GET',
-      queryParams: _queryParams,
-    );
-    return ListOperationsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
-  }
 }
 
 class ProjectsResource {
@@ -1540,12 +1349,21 @@ class BuildNote {
 
 /// Details of a build occurrence.
 class BuildOccurrence {
+  /// See InTotoStatement for the replacement.
+  ///
   /// In-toto Provenance representation as defined in spec.
+  ///
+  /// Deprecated.
   InTotoProvenance? intotoProvenance;
 
-  /// The actual provenance for the build.
+  /// In-toto Statement representation as defined in spec.
   ///
-  /// Required.
+  /// The intoto_statement can contain any type of provenance. The serialized
+  /// payload of the statement can be stored and signed in the Occurrence's
+  /// envelope.
+  InTotoStatement? intotoStatement;
+
+  /// The actual provenance for the build.
   BuildProvenance? provenance;
 
   /// Serialized JSON representation of the provenance, used in generating the
@@ -1562,6 +1380,7 @@ class BuildOccurrence {
 
   BuildOccurrence({
     this.intotoProvenance,
+    this.intotoStatement,
     this.provenance,
     this.provenanceBytes,
   });
@@ -1570,6 +1389,10 @@ class BuildOccurrence {
       : this(
           intotoProvenance: _json.containsKey('intotoProvenance')
               ? InTotoProvenance.fromJson(_json['intotoProvenance']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          intotoStatement: _json.containsKey('intotoStatement')
+              ? InTotoStatement.fromJson(_json['intotoStatement']
                   as core.Map<core.String, core.dynamic>)
               : null,
           provenance: _json.containsKey('provenance')
@@ -1583,6 +1406,7 @@ class BuildOccurrence {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (intotoProvenance != null) 'intotoProvenance': intotoProvenance!,
+        if (intotoStatement != null) 'intotoStatement': intotoStatement!,
         if (provenance != null) 'provenance': provenance!,
         if (provenanceBytes != null) 'provenanceBytes': provenanceBytes!,
       };
@@ -1727,7 +1551,165 @@ class BuildProvenance {
       };
 }
 
-typedef BuilderConfig = $Shared04;
+typedef BuilderConfig = $Shared01;
+
+/// Common Vulnerability Scoring System.
+///
+/// For details, see https://www.first.org/cvss/specification-document This is a
+/// message we will try to use for storing multiple versions of CVSS. The
+/// intention is that as new versions of CVSS scores get added, we will be able
+/// to modify this message rather than adding new protos for each new version of
+/// the score.
+class CVSS {
+  ///
+  /// Possible string values are:
+  /// - "ATTACK_COMPLEXITY_UNSPECIFIED"
+  /// - "ATTACK_COMPLEXITY_LOW"
+  /// - "ATTACK_COMPLEXITY_HIGH"
+  core.String? attackComplexity;
+
+  /// Base Metrics Represents the intrinsic characteristics of a vulnerability
+  /// that are constant over time and across user environments.
+  /// Possible string values are:
+  /// - "ATTACK_VECTOR_UNSPECIFIED"
+  /// - "ATTACK_VECTOR_NETWORK"
+  /// - "ATTACK_VECTOR_ADJACENT"
+  /// - "ATTACK_VECTOR_LOCAL"
+  /// - "ATTACK_VECTOR_PHYSICAL"
+  core.String? attackVector;
+
+  ///
+  /// Possible string values are:
+  /// - "AUTHENTICATION_UNSPECIFIED"
+  /// - "AUTHENTICATION_MULTIPLE"
+  /// - "AUTHENTICATION_SINGLE"
+  /// - "AUTHENTICATION_NONE"
+  core.String? authentication;
+
+  ///
+  /// Possible string values are:
+  /// - "IMPACT_UNSPECIFIED"
+  /// - "IMPACT_HIGH"
+  /// - "IMPACT_LOW"
+  /// - "IMPACT_NONE"
+  core.String? availabilityImpact;
+
+  /// The base score is a function of the base metric scores.
+  core.double? baseScore;
+
+  ///
+  /// Possible string values are:
+  /// - "IMPACT_UNSPECIFIED"
+  /// - "IMPACT_HIGH"
+  /// - "IMPACT_LOW"
+  /// - "IMPACT_NONE"
+  core.String? confidentialityImpact;
+  core.double? exploitabilityScore;
+  core.double? impactScore;
+
+  ///
+  /// Possible string values are:
+  /// - "IMPACT_UNSPECIFIED"
+  /// - "IMPACT_HIGH"
+  /// - "IMPACT_LOW"
+  /// - "IMPACT_NONE"
+  core.String? integrityImpact;
+
+  ///
+  /// Possible string values are:
+  /// - "PRIVILEGES_REQUIRED_UNSPECIFIED"
+  /// - "PRIVILEGES_REQUIRED_NONE"
+  /// - "PRIVILEGES_REQUIRED_LOW"
+  /// - "PRIVILEGES_REQUIRED_HIGH"
+  core.String? privilegesRequired;
+
+  ///
+  /// Possible string values are:
+  /// - "SCOPE_UNSPECIFIED"
+  /// - "SCOPE_UNCHANGED"
+  /// - "SCOPE_CHANGED"
+  core.String? scope;
+
+  ///
+  /// Possible string values are:
+  /// - "USER_INTERACTION_UNSPECIFIED"
+  /// - "USER_INTERACTION_NONE"
+  /// - "USER_INTERACTION_REQUIRED"
+  core.String? userInteraction;
+
+  CVSS({
+    this.attackComplexity,
+    this.attackVector,
+    this.authentication,
+    this.availabilityImpact,
+    this.baseScore,
+    this.confidentialityImpact,
+    this.exploitabilityScore,
+    this.impactScore,
+    this.integrityImpact,
+    this.privilegesRequired,
+    this.scope,
+    this.userInteraction,
+  });
+
+  CVSS.fromJson(core.Map _json)
+      : this(
+          attackComplexity: _json.containsKey('attackComplexity')
+              ? _json['attackComplexity'] as core.String
+              : null,
+          attackVector: _json.containsKey('attackVector')
+              ? _json['attackVector'] as core.String
+              : null,
+          authentication: _json.containsKey('authentication')
+              ? _json['authentication'] as core.String
+              : null,
+          availabilityImpact: _json.containsKey('availabilityImpact')
+              ? _json['availabilityImpact'] as core.String
+              : null,
+          baseScore: _json.containsKey('baseScore')
+              ? (_json['baseScore'] as core.num).toDouble()
+              : null,
+          confidentialityImpact: _json.containsKey('confidentialityImpact')
+              ? _json['confidentialityImpact'] as core.String
+              : null,
+          exploitabilityScore: _json.containsKey('exploitabilityScore')
+              ? (_json['exploitabilityScore'] as core.num).toDouble()
+              : null,
+          impactScore: _json.containsKey('impactScore')
+              ? (_json['impactScore'] as core.num).toDouble()
+              : null,
+          integrityImpact: _json.containsKey('integrityImpact')
+              ? _json['integrityImpact'] as core.String
+              : null,
+          privilegesRequired: _json.containsKey('privilegesRequired')
+              ? _json['privilegesRequired'] as core.String
+              : null,
+          scope:
+              _json.containsKey('scope') ? _json['scope'] as core.String : null,
+          userInteraction: _json.containsKey('userInteraction')
+              ? _json['userInteraction'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (attackComplexity != null) 'attackComplexity': attackComplexity!,
+        if (attackVector != null) 'attackVector': attackVector!,
+        if (authentication != null) 'authentication': authentication!,
+        if (availabilityImpact != null)
+          'availabilityImpact': availabilityImpact!,
+        if (baseScore != null) 'baseScore': baseScore!,
+        if (confidentialityImpact != null)
+          'confidentialityImpact': confidentialityImpact!,
+        if (exploitabilityScore != null)
+          'exploitabilityScore': exploitabilityScore!,
+        if (impactScore != null) 'impactScore': impactScore!,
+        if (integrityImpact != null) 'integrityImpact': integrityImpact!,
+        if (privilegesRequired != null)
+          'privilegesRequired': privilegesRequired!,
+        if (scope != null) 'scope': scope!,
+        if (userInteraction != null) 'userInteraction': userInteraction!,
+      };
+}
 
 /// Common Vulnerability Scoring System version 3.
 ///
@@ -1869,9 +1851,6 @@ class CVSSv3 {
         if (userInteraction != null) 'userInteraction': userInteraction!,
       };
 }
-
-/// The request message for Operations.CancelOperation.
-typedef CancelOperationRequest = $Empty;
 
 /// The category to which the update belongs.
 typedef Category = $Category;
@@ -2121,6 +2100,10 @@ class DSSEAttestationNote {
       };
 }
 
+/// Prefer to use a regular Occurrence, and populate the Envelope at the top
+/// level of the Occurrence.
+///
+/// Deprecated.
 class DSSEAttestationOccurrence {
   /// If doing something security critical, make sure to verify the signatures
   /// in this metadata.
@@ -2790,14 +2773,14 @@ class GetIamPolicyRequest {
 }
 
 /// Encapsulates settings provided to GetIamPolicy.
-typedef GetPolicyOptions = $GetPolicyOptions;
+typedef GetPolicyOptions = $GetPolicyOptions00;
 
 /// A GitSourceContext denotes a particular revision in a third party Git
 /// repository (e.g., GitHub).
 typedef GitSourceContext = $GitSourceContext;
 
 /// Container message for hash values.
-typedef Hash = $Hash;
+typedef Hash = $Hash01;
 
 /// This submessage provides human-readable hints about the purpose of the
 /// authority.
@@ -2992,23 +2975,27 @@ class InTotoProvenance {
 ///
 /// Envelope.payloadType is always "application/vnd.in-toto+json".
 class InTotoStatement {
-  /// "https://in-toto.io/Provenance/v0.1" for InTotoProvenance.
+  /// Always "https://in-toto.io/Statement/v0.1".
+  core.String? P_type;
+
+  /// "https://slsa.dev/provenance/v0.1" for SlsaProvenance.
   core.String? predicateType;
   InTotoProvenance? provenance;
+  SlsaProvenance? slsaProvenance;
   core.List<Subject>? subject;
 
-  /// Always "https://in-toto.io/Statement/v0.1".
-  core.String? type;
-
   InTotoStatement({
+    this.P_type,
     this.predicateType,
     this.provenance,
+    this.slsaProvenance,
     this.subject,
-    this.type,
   });
 
   InTotoStatement.fromJson(core.Map _json)
       : this(
+          P_type:
+              _json.containsKey('_type') ? _json['_type'] as core.String : null,
           predicateType: _json.containsKey('predicateType')
               ? _json['predicateType'] as core.String
               : null,
@@ -3016,20 +3003,24 @@ class InTotoStatement {
               ? InTotoProvenance.fromJson(
                   _json['provenance'] as core.Map<core.String, core.dynamic>)
               : null,
+          slsaProvenance: _json.containsKey('slsaProvenance')
+              ? SlsaProvenance.fromJson(_json['slsaProvenance']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           subject: _json.containsKey('subject')
               ? (_json['subject'] as core.List)
                   .map((value) => Subject.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          type: _json.containsKey('type') ? _json['type'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (P_type != null) '_type': P_type!,
         if (predicateType != null) 'predicateType': predicateType!,
         if (provenance != null) 'provenance': provenance!,
+        if (slsaProvenance != null) 'slsaProvenance': slsaProvenance!,
         if (subject != null) 'subject': subject!,
-        if (type != null) 'type': type!,
       };
 }
 
@@ -3165,38 +3156,6 @@ class ListOccurrencesResponse {
       };
 }
 
-/// The response message for Operations.ListOperations.
-class ListOperationsResponse {
-  /// The standard List next-page token.
-  core.String? nextPageToken;
-
-  /// A list of operations that matches the specified filter in the request.
-  core.List<Operation>? operations;
-
-  ListOperationsResponse({
-    this.nextPageToken,
-    this.operations,
-  });
-
-  ListOperationsResponse.fromJson(core.Map _json)
-      : this(
-          nextPageToken: _json.containsKey('nextPageToken')
-              ? _json['nextPageToken'] as core.String
-              : null,
-          operations: _json.containsKey('operations')
-              ? (_json['operations'] as core.List)
-                  .map((value) => Operation.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (operations != null) 'operations': operations!,
-      };
-}
-
 /// An occurrence of a particular package installation found within a system's
 /// filesystem.
 ///
@@ -3238,6 +3197,8 @@ class Location {
         if (version != null) 'version': version!,
       };
 }
+
+typedef Material = $Material;
 
 /// Other properties of the build.
 class Metadata {
@@ -3709,82 +3670,6 @@ class Occurrence {
       };
 }
 
-/// This resource represents a long-running operation that is the result of a
-/// network API call.
-class Operation {
-  /// If the value is `false`, it means the operation is still in progress.
-  ///
-  /// If `true`, the operation is completed, and either `error` or `response` is
-  /// available.
-  core.bool? done;
-
-  /// The error result of the operation in case of failure or cancellation.
-  Status? error;
-
-  /// Service-specific metadata associated with the operation.
-  ///
-  /// It typically contains progress information and common metadata such as
-  /// create time. Some services might not provide such metadata. Any method
-  /// that returns a long-running operation should document the metadata type,
-  /// if any.
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object?>? metadata;
-
-  /// The server-assigned name, which is only unique within the same service
-  /// that originally returns it.
-  ///
-  /// If you use the default HTTP mapping, the `name` should be a resource name
-  /// ending with `operations/{unique_id}`.
-  core.String? name;
-
-  /// The normal response of the operation in case of success.
-  ///
-  /// If the original method returns no data on success, such as `Delete`, the
-  /// response is `google.protobuf.Empty`. If the original method is standard
-  /// `Get`/`Create`/`Update`, the response should be the resource. For other
-  /// methods, the response should have the type `XxxResponse`, where `Xxx` is
-  /// the original method name. For example, if the original method name is
-  /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object?>? response;
-
-  Operation({
-    this.done,
-    this.error,
-    this.metadata,
-    this.name,
-    this.response,
-  });
-
-  Operation.fromJson(core.Map _json)
-      : this(
-          done: _json.containsKey('done') ? _json['done'] as core.bool : null,
-          error: _json.containsKey('error')
-              ? Status.fromJson(
-                  _json['error'] as core.Map<core.String, core.dynamic>)
-              : null,
-          metadata: _json.containsKey('metadata')
-              ? _json['metadata'] as core.Map<core.String, core.dynamic>
-              : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          response: _json.containsKey('response')
-              ? _json['response'] as core.Map<core.String, core.dynamic>
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (done != null) 'done': done!,
-        if (error != null) 'error': error!,
-        if (metadata != null) 'metadata': metadata!,
-        if (name != null) 'name': name!,
-        if (response != null) 'response': response!,
-      };
-}
-
 /// A detail for a distro and package this vulnerability occurrence was found in
 /// and its associated fix (if one is available).
 class PackageIssue {
@@ -4170,6 +4055,132 @@ class SetIamPolicyRequest {
 /// that holds this Signature, or the canonical serialization of the proto
 /// message that holds this signature).
 typedef Signature = $Signature;
+typedef SlsaBuilder = $Shared01;
+
+/// Indicates that the builder claims certain fields in this message to be
+/// complete.
+typedef SlsaCompleteness = $Completeness;
+
+/// Other properties of the build.
+class SlsaMetadata {
+  /// The timestamp of when the build completed.
+  core.String? buildFinishedOn;
+
+  /// Identifies the particular build invocation, which can be useful for
+  /// finding associated logs or other ad-hoc analysis.
+  ///
+  /// The value SHOULD be globally unique, per in-toto Provenance spec.
+  core.String? buildInvocationId;
+
+  /// The timestamp of when the build started.
+  core.String? buildStartedOn;
+
+  /// Indicates that the builder claims certain fields in this message to be
+  /// complete.
+  SlsaCompleteness? completeness;
+
+  /// If true, the builder claims that running the recipe on materials will
+  /// produce bit-for-bit identical output.
+  core.bool? reproducible;
+
+  SlsaMetadata({
+    this.buildFinishedOn,
+    this.buildInvocationId,
+    this.buildStartedOn,
+    this.completeness,
+    this.reproducible,
+  });
+
+  SlsaMetadata.fromJson(core.Map _json)
+      : this(
+          buildFinishedOn: _json.containsKey('buildFinishedOn')
+              ? _json['buildFinishedOn'] as core.String
+              : null,
+          buildInvocationId: _json.containsKey('buildInvocationId')
+              ? _json['buildInvocationId'] as core.String
+              : null,
+          buildStartedOn: _json.containsKey('buildStartedOn')
+              ? _json['buildStartedOn'] as core.String
+              : null,
+          completeness: _json.containsKey('completeness')
+              ? SlsaCompleteness.fromJson(
+                  _json['completeness'] as core.Map<core.String, core.dynamic>)
+              : null,
+          reproducible: _json.containsKey('reproducible')
+              ? _json['reproducible'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (buildFinishedOn != null) 'buildFinishedOn': buildFinishedOn!,
+        if (buildInvocationId != null) 'buildInvocationId': buildInvocationId!,
+        if (buildStartedOn != null) 'buildStartedOn': buildStartedOn!,
+        if (completeness != null) 'completeness': completeness!,
+        if (reproducible != null) 'reproducible': reproducible!,
+      };
+}
+
+class SlsaProvenance {
+  /// required
+  SlsaBuilder? builder;
+
+  /// The collection of artifacts that influenced the build including sources,
+  /// dependencies, build tools, base images, and so on.
+  ///
+  /// This is considered to be incomplete unless metadata.completeness.materials
+  /// is true. Unset or null is equivalent to empty.
+  core.List<Material>? materials;
+  SlsaMetadata? metadata;
+
+  /// Identifies the configuration used for the build.
+  ///
+  /// When combined with materials, this SHOULD fully describe the build, such
+  /// that re-running this recipe results in bit-for-bit identical output (if
+  /// the build is reproducible). required
+  SlsaRecipe? recipe;
+
+  SlsaProvenance({
+    this.builder,
+    this.materials,
+    this.metadata,
+    this.recipe,
+  });
+
+  SlsaProvenance.fromJson(core.Map _json)
+      : this(
+          builder: _json.containsKey('builder')
+              ? SlsaBuilder.fromJson(
+                  _json['builder'] as core.Map<core.String, core.dynamic>)
+              : null,
+          materials: _json.containsKey('materials')
+              ? (_json['materials'] as core.List)
+                  .map((value) => Material.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          metadata: _json.containsKey('metadata')
+              ? SlsaMetadata.fromJson(
+                  _json['metadata'] as core.Map<core.String, core.dynamic>)
+              : null,
+          recipe: _json.containsKey('recipe')
+              ? SlsaRecipe.fromJson(
+                  _json['recipe'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (builder != null) 'builder': builder!,
+        if (materials != null) 'materials': materials!,
+        if (metadata != null) 'metadata': metadata!,
+        if (recipe != null) 'recipe': recipe!,
+      };
+}
+
+/// Steps taken to build the artifact.
+///
+/// For a TaskRun, typically each container corresponds to one step in the
+/// recipe.
+typedef SlsaRecipe = $SlsaRecipe;
 
 /// Source describes the location of the source used for the build.
 class Source {
@@ -4544,6 +4555,9 @@ class VulnerabilityOccurrence {
   /// Output only.
   core.double? cvssScore;
 
+  /// The cvss v3 score for the vulnerability.
+  CVSS? cvssv3;
+
   /// The distro assigned severity for this vulnerability when it is available,
   /// otherwise this is the note provider assigned severity.
   ///
@@ -4607,6 +4621,7 @@ class VulnerabilityOccurrence {
 
   VulnerabilityOccurrence({
     this.cvssScore,
+    this.cvssv3,
     this.effectiveSeverity,
     this.fixAvailable,
     this.longDescription,
@@ -4621,6 +4636,10 @@ class VulnerabilityOccurrence {
       : this(
           cvssScore: _json.containsKey('cvssScore')
               ? (_json['cvssScore'] as core.num).toDouble()
+              : null,
+          cvssv3: _json.containsKey('cvssv3')
+              ? CVSS.fromJson(
+                  _json['cvssv3'] as core.Map<core.String, core.dynamic>)
               : null,
           effectiveSeverity: _json.containsKey('effectiveSeverity')
               ? _json['effectiveSeverity'] as core.String
@@ -4654,6 +4673,7 @@ class VulnerabilityOccurrence {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (cvssScore != null) 'cvssScore': cvssScore!,
+        if (cvssv3 != null) 'cvssv3': cvssv3!,
         if (effectiveSeverity != null) 'effectiveSeverity': effectiveSeverity!,
         if (fixAvailable != null) 'fixAvailable': fixAvailable!,
         if (longDescription != null) 'longDescription': longDescription!,

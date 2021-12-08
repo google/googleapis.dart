@@ -127,11 +127,11 @@ class ActivitiesResource {
   /// information about different types of Login activity events.
   /// - "meet" : The Meet Audit activity report returns information about
   /// different types of Meet Audit activity events.
-  /// - "mobile" : The Mobile Audit activity report return information about
-  /// different types of Mobile Audit activity events.
-  /// - "rules" : The Rules activity report return information about different
+  /// - "mobile" : The Device Audit activity report returns information about
+  /// different types of Device Audit activity events.
+  /// - "rules" : The Rules activity report returns information about different
   /// types of Rules activity events.
-  /// - "saml" : The SAML activity report return information about different
+  /// - "saml" : The SAML activity report returns information about different
   /// types of SAML activity events.
   /// - "token" : The Token application's activity reports return account
   /// information about different types of Token activity events.
@@ -355,11 +355,11 @@ class ActivitiesResource {
   /// information about different types of Login activity events.
   /// - "meet" : The Meet Audit activity report returns information about
   /// different types of Meet Audit activity events.
-  /// - "mobile" : The Mobile Audit activity report return information about
-  /// different types of Mobile Audit activity events.
-  /// - "rules" : The Rules activity report return information about different
+  /// - "mobile" : The Device Audit activity report returns information about
+  /// different types of Device Audit activity events.
+  /// - "rules" : The Rules activity report returns information about different
   /// types of Rules activity events.
-  /// - "saml" : The SAML activity report return information about different
+  /// - "saml" : The SAML activity report returns information about different
   /// types of SAML activity events.
   /// - "token" : The Token application's activity reports return account
   /// information about different types of Token activity events.
@@ -681,12 +681,11 @@ class EntityUsageReportsResource {
   /// Possible string values are:
   /// - "gplus_communities" : Returns a report on Google+ communities.
   ///
-  /// [entityKey] - Represents the key of the object to filter the data with.
-  /// Possible string values are:
-  /// - "all" : Returns activity events for all users.
-  /// - "entityKey" : Represents an app-specific identifier for the entity. For
-  /// details on how to obtain the `entityKey` for a particular `entityType`,
-  /// see the Entities Usage parameters reference guides.
+  /// [entityKey] - Represents the key of the object to filter the data with. It
+  /// is a string which can take the value `all` to get activity events for all
+  /// users, or any other value for an app-specific entity. For details on how
+  /// to obtain the `entityKey` for a particular `entityType`, see the Entities
+  /// Usage parameters reference guides.
   ///
   /// [date] - Represents the date the usage occurred. The timestamp is in the
   /// ISO 8601 format, yyyy-mm-dd. We recommend you use your account's time zone

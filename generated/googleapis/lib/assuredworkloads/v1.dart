@@ -511,6 +511,13 @@ class GoogleCloudAssuredworkloadsV1Workload {
   /// Required.
   core.String? displayName;
 
+  /// Indicates the sovereignty status of the given workload.
+  ///
+  /// Currently meant to be used by Europe/Canada customers.
+  ///
+  /// Optional.
+  core.bool? enableSovereignControls;
+
   /// ETag of the workload, it is calculated on the basis of the Workload
   /// contents.
   ///
@@ -518,6 +525,15 @@ class GoogleCloudAssuredworkloadsV1Workload {
   ///
   /// Optional.
   core.String? etag;
+
+  /// Represents the KAJ enrollment state of the given workload.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "KAJ_ENROLLMENT_STATE_UNSPECIFIED" : Default State for KAJ Enrollment.
+  /// - "KAJ_ENROLLMENT_STATE_PENDING" : Pending State for KAJ Enrollment.
+  /// - "KAJ_ENROLLMENT_STATE_COMPLETE" : Complete State for KAJ Enrollment.
+  core.String? kajEnrollmentState;
 
   /// Input only.
   ///
@@ -564,18 +580,30 @@ class GoogleCloudAssuredworkloadsV1Workload {
   /// Output only.
   core.List<GoogleCloudAssuredworkloadsV1WorkloadResourceInfo>? resources;
 
+  /// Represents the SAA enrollment response of the given workload.
+  ///
+  /// SAA enrollment response is queried during GetWorkload call. In failure
+  /// cases, user friendly error message is shown in SAA details page.
+  ///
+  /// Output only.
+  GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponse?
+      saaEnrollmentResponse;
+
   GoogleCloudAssuredworkloadsV1Workload({
     this.billingAccount,
     this.complianceRegime,
     this.createTime,
     this.displayName,
+    this.enableSovereignControls,
     this.etag,
+    this.kajEnrollmentState,
     this.kmsSettings,
     this.labels,
     this.name,
     this.provisionedResourcesParent,
     this.resourceSettings,
     this.resources,
+    this.saaEnrollmentResponse,
   });
 
   GoogleCloudAssuredworkloadsV1Workload.fromJson(core.Map _json)
@@ -592,7 +620,13 @@ class GoogleCloudAssuredworkloadsV1Workload {
           displayName: _json.containsKey('displayName')
               ? _json['displayName'] as core.String
               : null,
+          enableSovereignControls: _json.containsKey('enableSovereignControls')
+              ? _json['enableSovereignControls'] as core.bool
+              : null,
           etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          kajEnrollmentState: _json.containsKey('kajEnrollmentState')
+              ? _json['kajEnrollmentState'] as core.String
+              : null,
           kmsSettings: _json.containsKey('kmsSettings')
               ? GoogleCloudAssuredworkloadsV1WorkloadKMSSettings.fromJson(
                   _json['kmsSettings'] as core.Map<core.String, core.dynamic>)
@@ -626,6 +660,11 @@ class GoogleCloudAssuredworkloadsV1Workload {
                               value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          saaEnrollmentResponse: _json.containsKey('saaEnrollmentResponse')
+              ? GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponse
+                  .fromJson(_json['saaEnrollmentResponse']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -633,7 +672,11 @@ class GoogleCloudAssuredworkloadsV1Workload {
         if (complianceRegime != null) 'complianceRegime': complianceRegime!,
         if (createTime != null) 'createTime': createTime!,
         if (displayName != null) 'displayName': displayName!,
+        if (enableSovereignControls != null)
+          'enableSovereignControls': enableSovereignControls!,
         if (etag != null) 'etag': etag!,
+        if (kajEnrollmentState != null)
+          'kajEnrollmentState': kajEnrollmentState!,
         if (kmsSettings != null) 'kmsSettings': kmsSettings!,
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
@@ -641,6 +684,8 @@ class GoogleCloudAssuredworkloadsV1Workload {
           'provisionedResourcesParent': provisionedResourcesParent!,
         if (resourceSettings != null) 'resourceSettings': resourceSettings!,
         if (resources != null) 'resources': resources!,
+        if (saaEnrollmentResponse != null)
+          'saaEnrollmentResponse': saaEnrollmentResponse!,
       };
 }
 
@@ -657,7 +702,11 @@ class GoogleCloudAssuredworkloadsV1WorkloadResourceInfo {
   /// Indicates the type of resource.
   /// Possible string values are:
   /// - "RESOURCE_TYPE_UNSPECIFIED" : Unknown resource type.
-  /// - "CONSUMER_PROJECT" : Consumer project.
+  /// - "CONSUMER_PROJECT" : Consumer project. AssuredWorkloads Projects are no
+  /// longer supported. This field will be ignored only in CreateWorkload
+  /// requests. ListWorkloads and GetWorkload will continue to provide projects
+  /// information. Use CONSUMER_FOLDER instead.
+  /// - "CONSUMER_FOLDER" : Consumer Folder.
   /// - "ENCRYPTION_KEYS_PROJECT" : Consumer project containing encryption keys.
   /// - "KEYRING" : Keyring resource that hosts encryption keys.
   core.String? resourceType;
@@ -702,7 +751,11 @@ class GoogleCloudAssuredworkloadsV1WorkloadResourceSettings {
   /// type (CONSUMER_PROJECT or ENCRYPTION_KEYS_PROJECT)
   /// Possible string values are:
   /// - "RESOURCE_TYPE_UNSPECIFIED" : Unknown resource type.
-  /// - "CONSUMER_PROJECT" : Consumer project.
+  /// - "CONSUMER_PROJECT" : Consumer project. AssuredWorkloads Projects are no
+  /// longer supported. This field will be ignored only in CreateWorkload
+  /// requests. ListWorkloads and GetWorkload will continue to provide projects
+  /// information. Use CONSUMER_FOLDER instead.
+  /// - "CONSUMER_FOLDER" : Consumer Folder.
   /// - "ENCRYPTION_KEYS_PROJECT" : Consumer project containing encryption keys.
   /// - "KEYRING" : Keyring resource that hosts encryption keys.
   core.String? resourceType;
@@ -732,6 +785,10 @@ class GoogleCloudAssuredworkloadsV1WorkloadResourceSettings {
         if (resourceType != null) 'resourceType': resourceType!,
       };
 }
+
+/// Signed Access Approvals (SAA) enrollment response.
+typedef GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponse
+    = $WorkloadSaaEnrollmentResponse;
 
 /// The response message for Operations.ListOperations.
 class GoogleLongrunningListOperationsResponse {

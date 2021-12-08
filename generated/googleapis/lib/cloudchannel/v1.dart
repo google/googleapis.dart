@@ -2685,6 +2685,9 @@ class GoogleCloudChannelV1ChangeOfferRequest {
 
   /// Parameters needed to purchase the Offer.
   ///
+  /// To view the available Parameters refer to the Offer.parameter_definitions
+  /// from the desired offer.
+  ///
   /// Optional.
   core.List<GoogleCloudChannelV1Parameter>? parameters;
 
@@ -2743,7 +2746,9 @@ class GoogleCloudChannelV1ChangeOfferRequest {
 class GoogleCloudChannelV1ChangeParametersRequest {
   /// Entitlement parameters to update.
   ///
-  /// You can only change editable parameters.
+  /// You can only change editable parameters. To view the available Parameters
+  /// for a request, refer to the Offer.parameter_definitions from the desired
+  /// offer.
   ///
   /// Required.
   core.List<GoogleCloudChannelV1Parameter>? parameters;
@@ -3608,8 +3613,11 @@ class GoogleCloudChannelV1Entitlement {
 
   /// Extended entitlement parameters.
   ///
-  /// When creating an entitlement, valid parameters' names and values are
-  /// defined in the offer's parameter definitions.
+  /// When creating an entitlement, valid parameter names and values are defined
+  /// in the Offer.parameter_definitions. The response may include the following
+  /// output-only Parameters: - assigned_units: The number of licenses assigned
+  /// to users. - max_units: The maximum assignable units for a flexible offer.
+  /// - num_units: The total commitment for commitment-based offers.
   core.List<GoogleCloudChannelV1Parameter>? parameters;
 
   /// Service provisioning details for the entitlement.

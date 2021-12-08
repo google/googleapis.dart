@@ -3304,6 +3304,17 @@ void checkUnnamed42(core.List<core.String> o) {
   );
 }
 
+core.List<api.VulnerabilityReportVulnerabilityItem> buildUnnamed43() => [
+      buildVulnerabilityReportVulnerabilityItem(),
+      buildVulnerabilityReportVulnerabilityItem(),
+    ];
+
+void checkUnnamed43(core.List<api.VulnerabilityReportVulnerabilityItem> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkVulnerabilityReportVulnerabilityItem(o[0]);
+  checkVulnerabilityReportVulnerabilityItem(o[1]);
+}
+
 core.int buildCounterVulnerabilityReportVulnerability = 0;
 api.VulnerabilityReportVulnerability buildVulnerabilityReportVulnerability() {
   final o = api.VulnerabilityReportVulnerability();
@@ -3313,6 +3324,7 @@ api.VulnerabilityReportVulnerability buildVulnerabilityReportVulnerability() {
     o.createTime = 'foo';
     o.details = buildVulnerabilityReportVulnerabilityDetails();
     o.installedInventoryItemIds = buildUnnamed42();
+    o.items = buildUnnamed43();
     o.updateTime = 'foo';
   }
   buildCounterVulnerabilityReportVulnerability--;
@@ -3330,6 +3342,7 @@ void checkVulnerabilityReportVulnerability(
     );
     checkVulnerabilityReportVulnerabilityDetails(o.details!);
     checkUnnamed42(o.installedInventoryItemIds!);
+    checkUnnamed43(o.items!);
     unittest.expect(
       o.updateTime!,
       unittest.equals('foo'),
@@ -3339,12 +3352,12 @@ void checkVulnerabilityReportVulnerability(
 }
 
 core.List<api.VulnerabilityReportVulnerabilityDetailsReference>
-    buildUnnamed43() => [
+    buildUnnamed44() => [
           buildVulnerabilityReportVulnerabilityDetailsReference(),
           buildVulnerabilityReportVulnerabilityDetailsReference(),
         ];
 
-void checkUnnamed43(
+void checkUnnamed44(
     core.List<api.VulnerabilityReportVulnerabilityDetailsReference> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkVulnerabilityReportVulnerabilityDetailsReference(o[0]);
@@ -3361,7 +3374,7 @@ api.VulnerabilityReportVulnerabilityDetails
     o.cvssV2Score = 42.0;
     o.cvssV3 = buildCVSSv3();
     o.description = 'foo';
-    o.references = buildUnnamed43();
+    o.references = buildUnnamed44();
     o.severity = 'foo';
   }
   buildCounterVulnerabilityReportVulnerabilityDetails--;
@@ -3385,7 +3398,7 @@ void checkVulnerabilityReportVulnerabilityDetails(
       o.description!,
       unittest.equals('foo'),
     );
-    checkUnnamed43(o.references!);
+    checkUnnamed44(o.references!);
     unittest.expect(
       o.severity!,
       unittest.equals('foo'),
@@ -3423,12 +3436,52 @@ void checkVulnerabilityReportVulnerabilityDetailsReference(
   buildCounterVulnerabilityReportVulnerabilityDetailsReference--;
 }
 
+core.int buildCounterVulnerabilityReportVulnerabilityItem = 0;
+api.VulnerabilityReportVulnerabilityItem
+    buildVulnerabilityReportVulnerabilityItem() {
+  final o = api.VulnerabilityReportVulnerabilityItem();
+  buildCounterVulnerabilityReportVulnerabilityItem++;
+  if (buildCounterVulnerabilityReportVulnerabilityItem < 3) {
+    o.availableInventoryItemId = 'foo';
+    o.fixedCpeUri = 'foo';
+    o.installedInventoryItemId = 'foo';
+    o.upstreamFix = 'foo';
+  }
+  buildCounterVulnerabilityReportVulnerabilityItem--;
+  return o;
+}
+
+void checkVulnerabilityReportVulnerabilityItem(
+    api.VulnerabilityReportVulnerabilityItem o) {
+  buildCounterVulnerabilityReportVulnerabilityItem++;
+  if (buildCounterVulnerabilityReportVulnerabilityItem < 3) {
+    unittest.expect(
+      o.availableInventoryItemId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.fixedCpeUri!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.installedInventoryItemId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.upstreamFix!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterVulnerabilityReportVulnerabilityItem--;
+}
+
 core.int buildCounterWeekDayOfMonth = 0;
 api.WeekDayOfMonth buildWeekDayOfMonth() {
   final o = api.WeekDayOfMonth();
   buildCounterWeekDayOfMonth++;
   if (buildCounterWeekDayOfMonth < 3) {
     o.dayOfWeek = 'foo';
+    o.dayOffset = 42;
     o.weekOrdinal = 42;
   }
   buildCounterWeekDayOfMonth--;
@@ -3441,6 +3494,10 @@ void checkWeekDayOfMonth(api.WeekDayOfMonth o) {
     unittest.expect(
       o.dayOfWeek!,
       unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.dayOffset!,
+      unittest.equals(42),
     );
     unittest.expect(
       o.weekOrdinal!,
@@ -3470,23 +3527,6 @@ void checkWeeklySchedule(api.WeeklySchedule o) {
     );
   }
   buildCounterWeeklySchedule--;
-}
-
-core.List<core.String> buildUnnamed44() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed44(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
 }
 
 core.List<core.String> buildUnnamed45() => [
@@ -3523,29 +3563,6 @@ void checkUnnamed46(core.List<core.String> o) {
   );
 }
 
-core.int buildCounterWindowsUpdateSettings = 0;
-api.WindowsUpdateSettings buildWindowsUpdateSettings() {
-  final o = api.WindowsUpdateSettings();
-  buildCounterWindowsUpdateSettings++;
-  if (buildCounterWindowsUpdateSettings < 3) {
-    o.classifications = buildUnnamed44();
-    o.excludes = buildUnnamed45();
-    o.exclusivePatches = buildUnnamed46();
-  }
-  buildCounterWindowsUpdateSettings--;
-  return o;
-}
-
-void checkWindowsUpdateSettings(api.WindowsUpdateSettings o) {
-  buildCounterWindowsUpdateSettings++;
-  if (buildCounterWindowsUpdateSettings < 3) {
-    checkUnnamed44(o.classifications!);
-    checkUnnamed45(o.excludes!);
-    checkUnnamed46(o.exclusivePatches!);
-  }
-  buildCounterWindowsUpdateSettings--;
-}
-
 core.List<core.String> buildUnnamed47() => [
       'foo',
       'foo',
@@ -3561,6 +3578,29 @@ void checkUnnamed47(core.List<core.String> o) {
     o[1],
     unittest.equals('foo'),
   );
+}
+
+core.int buildCounterWindowsUpdateSettings = 0;
+api.WindowsUpdateSettings buildWindowsUpdateSettings() {
+  final o = api.WindowsUpdateSettings();
+  buildCounterWindowsUpdateSettings++;
+  if (buildCounterWindowsUpdateSettings < 3) {
+    o.classifications = buildUnnamed45();
+    o.excludes = buildUnnamed46();
+    o.exclusivePatches = buildUnnamed47();
+  }
+  buildCounterWindowsUpdateSettings--;
+  return o;
+}
+
+void checkWindowsUpdateSettings(api.WindowsUpdateSettings o) {
+  buildCounterWindowsUpdateSettings++;
+  if (buildCounterWindowsUpdateSettings < 3) {
+    checkUnnamed45(o.classifications!);
+    checkUnnamed46(o.excludes!);
+    checkUnnamed47(o.exclusivePatches!);
+  }
+  buildCounterWindowsUpdateSettings--;
 }
 
 core.List<core.String> buildUnnamed48() => [
@@ -3580,31 +3620,6 @@ void checkUnnamed48(core.List<core.String> o) {
   );
 }
 
-core.int buildCounterYumSettings = 0;
-api.YumSettings buildYumSettings() {
-  final o = api.YumSettings();
-  buildCounterYumSettings++;
-  if (buildCounterYumSettings < 3) {
-    o.excludes = buildUnnamed47();
-    o.exclusivePackages = buildUnnamed48();
-    o.minimal = true;
-    o.security = true;
-  }
-  buildCounterYumSettings--;
-  return o;
-}
-
-void checkYumSettings(api.YumSettings o) {
-  buildCounterYumSettings++;
-  if (buildCounterYumSettings < 3) {
-    checkUnnamed47(o.excludes!);
-    checkUnnamed48(o.exclusivePackages!);
-    unittest.expect(o.minimal!, unittest.isTrue);
-    unittest.expect(o.security!, unittest.isTrue);
-  }
-  buildCounterYumSettings--;
-}
-
 core.List<core.String> buildUnnamed49() => [
       'foo',
       'foo',
@@ -3620,6 +3635,31 @@ void checkUnnamed49(core.List<core.String> o) {
     o[1],
     unittest.equals('foo'),
   );
+}
+
+core.int buildCounterYumSettings = 0;
+api.YumSettings buildYumSettings() {
+  final o = api.YumSettings();
+  buildCounterYumSettings++;
+  if (buildCounterYumSettings < 3) {
+    o.excludes = buildUnnamed48();
+    o.exclusivePackages = buildUnnamed49();
+    o.minimal = true;
+    o.security = true;
+  }
+  buildCounterYumSettings--;
+  return o;
+}
+
+void checkYumSettings(api.YumSettings o) {
+  buildCounterYumSettings++;
+  if (buildCounterYumSettings < 3) {
+    checkUnnamed48(o.excludes!);
+    checkUnnamed49(o.exclusivePackages!);
+    unittest.expect(o.minimal!, unittest.isTrue);
+    unittest.expect(o.security!, unittest.isTrue);
+  }
+  buildCounterYumSettings--;
 }
 
 core.List<core.String> buildUnnamed50() => [
@@ -3673,15 +3713,32 @@ void checkUnnamed52(core.List<core.String> o) {
   );
 }
 
+core.List<core.String> buildUnnamed53() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed53(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
 core.int buildCounterZypperSettings = 0;
 api.ZypperSettings buildZypperSettings() {
   final o = api.ZypperSettings();
   buildCounterZypperSettings++;
   if (buildCounterZypperSettings < 3) {
-    o.categories = buildUnnamed49();
-    o.excludes = buildUnnamed50();
-    o.exclusivePatches = buildUnnamed51();
-    o.severities = buildUnnamed52();
+    o.categories = buildUnnamed50();
+    o.excludes = buildUnnamed51();
+    o.exclusivePatches = buildUnnamed52();
+    o.severities = buildUnnamed53();
     o.withOptional = true;
     o.withUpdate = true;
   }
@@ -3692,10 +3749,10 @@ api.ZypperSettings buildZypperSettings() {
 void checkZypperSettings(api.ZypperSettings o) {
   buildCounterZypperSettings++;
   if (buildCounterZypperSettings < 3) {
-    checkUnnamed49(o.categories!);
-    checkUnnamed50(o.excludes!);
-    checkUnnamed51(o.exclusivePatches!);
-    checkUnnamed52(o.severities!);
+    checkUnnamed50(o.categories!);
+    checkUnnamed51(o.excludes!);
+    checkUnnamed52(o.exclusivePatches!);
+    checkUnnamed53(o.severities!);
     unittest.expect(o.withOptional!, unittest.isTrue);
     unittest.expect(o.withUpdate!, unittest.isTrue);
   }
@@ -4543,6 +4600,16 @@ void main() {
       final od = api.VulnerabilityReportVulnerabilityDetailsReference.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkVulnerabilityReportVulnerabilityDetailsReference(od);
+    });
+  });
+
+  unittest.group('obj-schema-VulnerabilityReportVulnerabilityItem', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildVulnerabilityReportVulnerabilityItem();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.VulnerabilityReportVulnerabilityItem.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkVulnerabilityReportVulnerabilityItem(od);
     });
   });
 

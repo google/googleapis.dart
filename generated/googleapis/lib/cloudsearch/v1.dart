@@ -2656,7 +2656,7 @@ class V1Resource {
 
   V1Resource(commons.ApiRequester client) : _requester = client;
 
-  /// Initializes the customer.
+  /// Enables `third party` support in Google Cloud Search.
   ///
   /// **Note:** This API requires an admin account to execute.
   ///
@@ -2969,7 +2969,8 @@ class CustomerQueryStats {
 class CustomerSessionStats {
   /// Date for which session stats were calculated.
   ///
-  /// Stats calculated on the next day close to midnight are returned.
+  /// Stats are calculated on the following day, close to midnight PST, and then
+  /// returned.
   Date? date;
 
   /// The count of search sessions on the day
@@ -7602,7 +7603,8 @@ class SearchApplicationQueryStats {
 class SearchApplicationSessionStats {
   /// Date for which session stats were calculated.
   ///
-  /// Stats calculated on the next day close to midnight are returned.
+  /// Stats are calculated on the following day, close to midnight PST, and then
+  /// returned.
   Date? date;
 
   /// The count of search sessions on the day

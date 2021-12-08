@@ -4074,7 +4074,7 @@ class BucketIamConfiguration {
 
   /// The bucket's Public Access Prevention configuration.
   ///
-  /// Currently, 'unspecified' and 'enforced' are supported.
+  /// Currently, 'inherited' and 'enforced' are supported.
   core.String? publicAccessPrevention;
 
   /// The bucket's uniform bucket-level access configuration.

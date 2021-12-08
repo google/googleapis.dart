@@ -1498,6 +1498,7 @@ api.FhirConfig buildFhirConfig() {
   final o = api.FhirConfig();
   buildCounterFhirConfig++;
   if (buildCounterFhirConfig < 3) {
+    o.defaultKeepExtensions = true;
     o.fieldMetadataList = buildUnnamed24();
   }
   buildCounterFhirConfig--;
@@ -1507,6 +1508,7 @@ api.FhirConfig buildFhirConfig() {
 void checkFhirConfig(api.FhirConfig o) {
   buildCounterFhirConfig++;
   if (buildCounterFhirConfig < 3) {
+    unittest.expect(o.defaultKeepExtensions!, unittest.isTrue);
     checkUnnamed24(o.fieldMetadataList!);
   }
   buildCounterFhirConfig--;
@@ -1572,6 +1574,7 @@ api.FhirStore buildFhirStore() {
     o.name = 'foo';
     o.notificationConfig = buildNotificationConfig();
     o.streamConfigs = buildUnnamed26();
+    o.validationConfig = buildValidationConfig();
     o.version = 'foo';
   }
   buildCounterFhirStore--;
@@ -1592,6 +1595,7 @@ void checkFhirStore(api.FhirStore o) {
     );
     checkNotificationConfig(o.notificationConfig!);
     checkUnnamed26(o.streamConfigs!);
+    checkValidationConfig(o.validationConfig!);
     unittest.expect(
       o.version!,
       unittest.equals('foo'),
@@ -4292,6 +4296,29 @@ void checkUserDataMapping(api.UserDataMapping o) {
   buildCounterUserDataMapping--;
 }
 
+core.int buildCounterValidationConfig = 0;
+api.ValidationConfig buildValidationConfig() {
+  final o = api.ValidationConfig();
+  buildCounterValidationConfig++;
+  if (buildCounterValidationConfig < 3) {
+    o.disableFhirpathValidation = true;
+    o.disableReferenceTypeValidation = true;
+    o.disableRequiredFieldValidation = true;
+  }
+  buildCounterValidationConfig--;
+  return o;
+}
+
+void checkValidationConfig(api.ValidationConfig o) {
+  buildCounterValidationConfig++;
+  if (buildCounterValidationConfig < 3) {
+    unittest.expect(o.disableFhirpathValidation!, unittest.isTrue);
+    unittest.expect(o.disableReferenceTypeValidation!, unittest.isTrue);
+    unittest.expect(o.disableRequiredFieldValidation!, unittest.isTrue);
+  }
+  buildCounterValidationConfig--;
+}
+
 core.int buildCounterVersionSource = 0;
 api.VersionSource buildVersionSource() {
   final o = api.VersionSource();
@@ -5489,6 +5516,16 @@ void main() {
       final od = api.UserDataMapping.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkUserDataMapping(od);
+    });
+  });
+
+  unittest.group('obj-schema-ValidationConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildValidationConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ValidationConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkValidationConfig(od);
     });
   });
 

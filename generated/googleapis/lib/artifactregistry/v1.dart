@@ -227,6 +227,43 @@ class ProjectsLocationsRepositoriesDockerImagesResource {
   ProjectsLocationsRepositoriesDockerImagesResource(commons.ApiRequester client)
       : _requester = client;
 
+  /// Gets a docker image.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the docker images.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/repositories/\[^/\]+/dockerImages/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [DockerImage].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<DockerImage> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return DockerImage.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
   /// Lists docker images.
   ///
   /// Request parameters:

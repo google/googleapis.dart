@@ -267,7 +267,7 @@
             }
         }
     },
-    "revision": "20211019",
+    "revision": "20211123",
     "rootUrl": "https://workflowexecutions.googleapis.com/",
     "schemas": {
         "CancelExecutionRequest": {

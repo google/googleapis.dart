@@ -530,12 +530,16 @@ class ProjectsLocationsFunctionsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/functions/\[^/\]+$`.
   ///
-  /// [options_requestedPolicyVersion] - Optional. The policy format version to
-  /// be returned. Valid values are 0, 1, and 3. Requests specifying an invalid
-  /// value will be rejected. Requests for policies with any conditional
-  /// bindings must specify version 3. Policies without any conditional bindings
-  /// may specify any valid value or leave the field unset. To learn which
-  /// resources support conditions in their IAM policies, see the
+  /// [options_requestedPolicyVersion] - Optional. The maximum policy version
+  /// that will be used to format the policy. Valid values are 0, 1, and 3.
+  /// Requests specifying an invalid value will be rejected. Requests for
+  /// policies with any conditional role bindings must specify version 3.
+  /// Policies with no conditional role bindings may specify any valid value or
+  /// leave the field unset. The policy in the response might use the policy
+  /// version that you specified, or it might use a lower policy version. For
+  /// example, if you specify version 3, but the policy has no conditional role
+  /// bindings, the response uses version 1. To learn which resources support
+  /// conditions in their IAM policies, see the
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -632,7 +636,8 @@ class ProjectsLocationsFunctionsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/functions/\[^/\]+$`.
   ///
-  /// [updateMask] - Required list of fields to be updated in this request.
+  /// [updateMask] - Required. The list of fields in `CloudFunction` that have
+  /// to be updated.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -963,7 +968,7 @@ class CallFunctionResponse {
 /// Describes a Cloud Function that contains user computation executed in
 /// response to an event.
 ///
-/// It encapsulate function and triggers configurations. Next tag: 35
+/// It encapsulate function and triggers configurations. Next tag: 36
 class CloudFunction {
   /// The amount of memory in MB available for a function.
   ///
@@ -1002,6 +1007,19 @@ class CloudFunction {
   /// User-provided description of a function.
   core.String? description;
 
+  /// User managed repository created in Artifact Registry optionally with a
+  /// customer managed encryption key.
+  ///
+  /// If specified, deployments will use Artifact Registry. If unspecified and
+  /// the deployment is eligible to use Artifact Registry, GCF will create and
+  /// use a repository named 'gcf-artifacts' for every deployed region. This is
+  /// the repository to which the function docker image will be pushed after it
+  /// is built by Cloud Build. It must match the pattern
+  /// `projects/{project}/locations/{location}/repositories/{repository}`.
+  /// Cross-project repositories are not supported. Cross-location repositories
+  /// are not supported. Repository format must be 'DOCKER'.
+  core.String? dockerRepository;
+
   /// The name of the function (as defined in source code) that will be
   /// executed.
   ///
@@ -1030,6 +1048,31 @@ class CloudFunction {
   /// - "ALLOW_INTERNAL_AND_GCLB" : Allow HTTP traffic from private VPC sources
   /// and through GCLB.
   core.String? ingressSettings;
+
+  /// Resource name of a KMS crypto key (managed by the user) used to
+  /// encrypt/decrypt function resources.
+  ///
+  /// It must match the pattern
+  /// `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+  /// If specified, you must also provide an artifact registry repository using
+  /// the `docker_repository` field that was created with the same KMS crypto
+  /// key. The following service accounts need to be granted the role 'Cloud KMS
+  /// CryptoKey Encrypter/Decrypter
+  /// (roles/cloudkms.cryptoKeyEncrypterDecrypter)' on the
+  /// Key/KeyRing/Project/Organization (least access preferred). 1. Google Cloud
+  /// Functions service account
+  /// (service-{project_number}@gcf-admin-robot.iam.gserviceaccount.com) -
+  /// Required to protect the function's image. 2. Google Storage service
+  /// account
+  /// (service-{project_number}@gs-project-accounts.iam.gserviceaccount.com) -
+  /// Required to protect the function's source code. If this service account
+  /// does not exist, deploying a function without a KMS key or retrieving the
+  /// service agent name provisions it. For more information, see
+  /// https://cloud.google.com/storage/docs/projects#service-agents and
+  /// https://cloud.google.com/storage/docs/getting-service-agent#gsutil. Google
+  /// Cloud Functions delegates access to service agents to protect function
+  /// resources in internal projects that are not accessible by the end user.
+  core.String? kmsKeyName;
 
   /// Labels associated with this Cloud Function.
   core.Map<core.String, core.String>? labels;
@@ -1169,11 +1212,13 @@ class CloudFunction {
     this.buildName,
     this.buildWorkerPool,
     this.description,
+    this.dockerRepository,
     this.entryPoint,
     this.environmentVariables,
     this.eventTrigger,
     this.httpsTrigger,
     this.ingressSettings,
+    this.kmsKeyName,
     this.labels,
     this.maxInstances,
     this.minInstances,
@@ -1223,6 +1268,9 @@ class CloudFunction {
           description: _json.containsKey('description')
               ? _json['description'] as core.String
               : null,
+          dockerRepository: _json.containsKey('dockerRepository')
+              ? _json['dockerRepository'] as core.String
+              : null,
           entryPoint: _json.containsKey('entryPoint')
               ? _json['entryPoint'] as core.String
               : null,
@@ -1246,6 +1294,9 @@ class CloudFunction {
               : null,
           ingressSettings: _json.containsKey('ingressSettings')
               ? _json['ingressSettings'] as core.String
+              : null,
+          kmsKeyName: _json.containsKey('kmsKeyName')
+              ? _json['kmsKeyName'] as core.String
               : null,
           labels: _json.containsKey('labels')
               ? (_json['labels'] as core.Map<core.String, core.dynamic>).map(
@@ -1326,12 +1377,14 @@ class CloudFunction {
         if (buildName != null) 'buildName': buildName!,
         if (buildWorkerPool != null) 'buildWorkerPool': buildWorkerPool!,
         if (description != null) 'description': description!,
+        if (dockerRepository != null) 'dockerRepository': dockerRepository!,
         if (entryPoint != null) 'entryPoint': entryPoint!,
         if (environmentVariables != null)
           'environmentVariables': environmentVariables!,
         if (eventTrigger != null) 'eventTrigger': eventTrigger!,
         if (httpsTrigger != null) 'httpsTrigger': httpsTrigger!,
         if (ingressSettings != null) 'ingressSettings': ingressSettings!,
+        if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
         if (labels != null) 'labels': labels!,
         if (maxInstances != null) 'maxInstances': maxInstances!,
         if (minInstances != null) 'minInstances': minInstances!,

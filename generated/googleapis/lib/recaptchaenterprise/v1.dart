@@ -21,6 +21,9 @@
 /// - [ProjectsResource]
 ///   - [ProjectsAssessmentsResource]
 ///   - [ProjectsKeysResource]
+///   - [ProjectsRelatedaccountgroupmembershipsResource]
+///   - [ProjectsRelatedaccountgroupsResource]
+///     - [ProjectsRelatedaccountgroupsMembershipsResource]
 library recaptchaenterprise.v1;
 
 import 'dart:async' as async;
@@ -60,6 +63,11 @@ class ProjectsResource {
   ProjectsAssessmentsResource get assessments =>
       ProjectsAssessmentsResource(_requester);
   ProjectsKeysResource get keys => ProjectsKeysResource(_requester);
+  ProjectsRelatedaccountgroupmembershipsResource
+      get relatedaccountgroupmemberships =>
+          ProjectsRelatedaccountgroupmembershipsResource(_requester);
+  ProjectsRelatedaccountgroupsResource get relatedaccountgroups =>
+      ProjectsRelatedaccountgroupsResource(_requester);
 
   ProjectsResource(commons.ApiRequester client) : _requester = client;
 }
@@ -460,6 +468,212 @@ class ProjectsKeysResource {
   }
 }
 
+class ProjectsRelatedaccountgroupmembershipsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsRelatedaccountgroupmembershipsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Search group memberships related to a given account.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The name of the project to search related account
+  /// group memberships from, in the format "projects/{project}".
+  /// Value must have pattern `^projects/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMembershipsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<
+          GoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMembershipsResponse>
+      search(
+    GoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMembershipsRequest
+        request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' +
+        core.Uri.encodeFull('$parent') +
+        '/relatedaccountgroupmemberships:search';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMembershipsResponse
+        .fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsRelatedaccountgroupsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsRelatedaccountgroupsMembershipsResource get memberships =>
+      ProjectsRelatedaccountgroupsMembershipsResource(_requester);
+
+  ProjectsRelatedaccountgroupsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// List groups of related accounts.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The name of the project to list related account
+  /// groups from, in the format "projects/{project}".
+  /// Value must have pattern `^projects/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. The maximum number of groups to return. The service
+  /// may return fewer than this value. If unspecified, at most 50 groups will
+  /// be returned. The maximum value is 1000; values above 1000 will be coerced
+  /// to 1000.
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `ListRelatedAccountGroups` call. Provide this to retrieve the subsequent
+  /// page. When paginating, all other parameters provided to
+  /// `ListRelatedAccountGroups` must match the call that provided the page
+  /// token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleCloudRecaptchaenterpriseV1ListRelatedAccountGroupsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudRecaptchaenterpriseV1ListRelatedAccountGroupsResponse>
+      list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url =
+        'v1/' + core.Uri.encodeFull('$parent') + '/relatedaccountgroups';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleCloudRecaptchaenterpriseV1ListRelatedAccountGroupsResponse
+        .fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsRelatedaccountgroupsMembershipsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsRelatedaccountgroupsMembershipsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Get the memberships in a group of related accounts.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource name for the related account group in
+  /// the format
+  /// `projects/{project}/relatedaccountgroups/{relatedaccountgroup}`.
+  /// Value must have pattern `^projects/\[^/\]+/relatedaccountgroups/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. The maximum number of accounts to return. The
+  /// service may return fewer than this value. If unspecified, at most 50
+  /// accounts will be returned. The maximum value is 1000; values above 1000
+  /// will be coerced to 1000.
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `ListRelatedAccountGroupMemberships` call. When paginating, all other
+  /// parameters provided to `ListRelatedAccountGroupMemberships` must match the
+  /// call that provided the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleCloudRecaptchaenterpriseV1ListRelatedAccountGroupMembershipsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<
+          GoogleCloudRecaptchaenterpriseV1ListRelatedAccountGroupMembershipsResponse>
+      list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/memberships';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleCloudRecaptchaenterpriseV1ListRelatedAccountGroupMembershipsResponse
+        .fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+/// Account Defender risk assessment.
+class GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessment {
+  /// Labels for this request.
+  core.List<core.String>? labels;
+
+  GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessment({
+    this.labels,
+  });
+
+  GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessment.fromJson(
+      core.Map _json)
+      : this(
+          labels: _json.containsKey('labels')
+              ? (_json['labels'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (labels != null) 'labels': labels!,
+      };
+}
+
 /// Settings specific to keys that can be used by Android apps.
 class GoogleCloudRecaptchaenterpriseV1AndroidKeySettings {
   /// If set to true, allowed_package_names are not enforced.
@@ -518,6 +732,23 @@ class GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentRequest {
   /// instead.
   core.String? annotation;
 
+  /// Optional unique stable hashed user identifier to apply to the assessment.
+  ///
+  /// This is an alternative to setting the hashed_account_id in
+  /// CreateAssessment, for example when the account identifier is not yet known
+  /// in the initial request. It is recommended that the identifier is hashed
+  /// using hmac-sha256 with stable secret.
+  ///
+  /// Optional.
+  core.String? hashedAccountId;
+  core.List<core.int> get hashedAccountIdAsBytes =>
+      convert.base64.decode(hashedAccountId!);
+
+  set hashedAccountIdAsBytes(core.List<core.int> _bytes) {
+    hashedAccountId =
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
   /// Optional reasons for the annotation that will be assigned to the Event.
   ///
   /// Optional.
@@ -525,6 +756,7 @@ class GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentRequest {
 
   GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentRequest({
     this.annotation,
+    this.hashedAccountId,
     this.reasons,
   });
 
@@ -533,6 +765,9 @@ class GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentRequest {
       : this(
           annotation: _json.containsKey('annotation')
               ? _json['annotation'] as core.String
+              : null,
+          hashedAccountId: _json.containsKey('hashedAccountId')
+              ? _json['hashedAccountId'] as core.String
               : null,
           reasons: _json.containsKey('reasons')
               ? (_json['reasons'] as core.List)
@@ -543,6 +778,7 @@ class GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (annotation != null) 'annotation': annotation!,
+        if (hashedAccountId != null) 'hashedAccountId': hashedAccountId!,
         if (reasons != null) 'reasons': reasons!,
       };
 }
@@ -552,6 +788,11 @@ typedef GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentResponse = $Empty;
 
 /// A recaptcha assessment resource.
 class GoogleCloudRecaptchaenterpriseV1Assessment {
+  /// Assessment returned by Account Defender when a hashed_account_id is
+  /// provided.
+  GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessment?
+      accountDefenderAssessment;
+
   /// The event being assessed.
   GoogleCloudRecaptchaenterpriseV1Event? event;
 
@@ -572,6 +813,7 @@ class GoogleCloudRecaptchaenterpriseV1Assessment {
   GoogleCloudRecaptchaenterpriseV1TokenProperties? tokenProperties;
 
   GoogleCloudRecaptchaenterpriseV1Assessment({
+    this.accountDefenderAssessment,
     this.event,
     this.name,
     this.riskAnalysis,
@@ -580,6 +822,12 @@ class GoogleCloudRecaptchaenterpriseV1Assessment {
 
   GoogleCloudRecaptchaenterpriseV1Assessment.fromJson(core.Map _json)
       : this(
+          accountDefenderAssessment:
+              _json.containsKey('accountDefenderAssessment')
+                  ? GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessment
+                      .fromJson(_json['accountDefenderAssessment']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           event: _json.containsKey('event')
               ? GoogleCloudRecaptchaenterpriseV1Event.fromJson(
                   _json['event'] as core.Map<core.String, core.dynamic>)
@@ -597,6 +845,8 @@ class GoogleCloudRecaptchaenterpriseV1Assessment {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (accountDefenderAssessment != null)
+          'accountDefenderAssessment': accountDefenderAssessment!,
         if (event != null) 'event': event!,
         if (name != null) 'name': name!,
         if (riskAnalysis != null) 'riskAnalysis': riskAnalysis!,
@@ -880,6 +1130,85 @@ class GoogleCloudRecaptchaenterpriseV1ListKeysResponse {
       };
 }
 
+/// The response to a `ListRelatedAccountGroupMemberships` call.
+class GoogleCloudRecaptchaenterpriseV1ListRelatedAccountGroupMembershipsResponse {
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  /// The memberships listed by the query.
+  core.List<GoogleCloudRecaptchaenterpriseV1RelatedAccountGroupMembership>?
+      relatedAccountGroupMemberships;
+
+  GoogleCloudRecaptchaenterpriseV1ListRelatedAccountGroupMembershipsResponse({
+    this.nextPageToken,
+    this.relatedAccountGroupMemberships,
+  });
+
+  GoogleCloudRecaptchaenterpriseV1ListRelatedAccountGroupMembershipsResponse.fromJson(
+      core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          relatedAccountGroupMemberships: _json
+                  .containsKey('relatedAccountGroupMemberships')
+              ? (_json['relatedAccountGroupMemberships'] as core.List)
+                  .map((value) =>
+                      GoogleCloudRecaptchaenterpriseV1RelatedAccountGroupMembership
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (relatedAccountGroupMemberships != null)
+          'relatedAccountGroupMemberships': relatedAccountGroupMemberships!,
+      };
+}
+
+/// The response to a `ListRelatedAccountGroups` call.
+class GoogleCloudRecaptchaenterpriseV1ListRelatedAccountGroupsResponse {
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  /// The groups of related accounts listed by the query.
+  core.List<GoogleCloudRecaptchaenterpriseV1RelatedAccountGroup>?
+      relatedAccountGroups;
+
+  GoogleCloudRecaptchaenterpriseV1ListRelatedAccountGroupsResponse({
+    this.nextPageToken,
+    this.relatedAccountGroups,
+  });
+
+  GoogleCloudRecaptchaenterpriseV1ListRelatedAccountGroupsResponse.fromJson(
+      core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          relatedAccountGroups: _json.containsKey('relatedAccountGroups')
+              ? (_json['relatedAccountGroups'] as core.List)
+                  .map((value) =>
+                      GoogleCloudRecaptchaenterpriseV1RelatedAccountGroup
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (relatedAccountGroups != null)
+          'relatedAccountGroups': relatedAccountGroups!,
+      };
+}
+
 /// Metrics for a single Key.
 class GoogleCloudRecaptchaenterpriseV1Metrics {
   /// Metrics will be continuous and in order by dates, and in the granularity
@@ -943,6 +1272,69 @@ class GoogleCloudRecaptchaenterpriseV1Metrics {
 
 /// The migrate key request message.
 typedef GoogleCloudRecaptchaenterpriseV1MigrateKeyRequest = $Empty;
+
+/// A group of related accounts.
+class GoogleCloudRecaptchaenterpriseV1RelatedAccountGroup {
+  /// The resource name for the related account group in the format
+  /// `projects/{project}/relatedaccountgroups/{related_account_group}`.
+  ///
+  /// Required.
+  core.String? name;
+
+  GoogleCloudRecaptchaenterpriseV1RelatedAccountGroup({
+    this.name,
+  });
+
+  GoogleCloudRecaptchaenterpriseV1RelatedAccountGroup.fromJson(core.Map _json)
+      : this(
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+      };
+}
+
+/// A membership in a group of related accounts.
+class GoogleCloudRecaptchaenterpriseV1RelatedAccountGroupMembership {
+  /// The unique stable hashed user identifier of the member.
+  ///
+  /// The identifier corresponds to a `hashed_account_id` provided in a previous
+  /// CreateAssessment or AnnotateAssessment call.
+  core.String? hashedAccountId;
+  core.List<core.int> get hashedAccountIdAsBytes =>
+      convert.base64.decode(hashedAccountId!);
+
+  set hashedAccountIdAsBytes(core.List<core.int> _bytes) {
+    hashedAccountId =
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  /// The resource name for this membership in the format
+  /// `projects/{project}/relatedaccountgroups/{relatedaccountgroup}/memberships/{membership}`.
+  ///
+  /// Required.
+  core.String? name;
+
+  GoogleCloudRecaptchaenterpriseV1RelatedAccountGroupMembership({
+    this.hashedAccountId,
+    this.name,
+  });
+
+  GoogleCloudRecaptchaenterpriseV1RelatedAccountGroupMembership.fromJson(
+      core.Map _json)
+      : this(
+          hashedAccountId: _json.containsKey('hashedAccountId')
+              ? _json['hashedAccountId'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (hashedAccountId != null) 'hashedAccountId': hashedAccountId!,
+        if (name != null) 'name': name!,
+      };
+}
 
 /// Risk analysis result for an event.
 class GoogleCloudRecaptchaenterpriseV1RiskAnalysis {
@@ -1047,6 +1439,109 @@ class GoogleCloudRecaptchaenterpriseV1ScoreMetrics {
   core.Map<core.String, core.dynamic> toJson() => {
         if (actionMetrics != null) 'actionMetrics': actionMetrics!,
         if (overallMetrics != null) 'overallMetrics': overallMetrics!,
+      };
+}
+
+/// The request message to search related account group memberships.
+class GoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMembershipsRequest {
+  /// The unique stable hashed user identifier we should search connections to.
+  ///
+  /// The identifier should correspond to a `hashed_account_id` provided in a
+  /// previous CreateAssessment or AnnotateAssessment call.
+  ///
+  /// Optional.
+  core.String? hashedAccountId;
+  core.List<core.int> get hashedAccountIdAsBytes =>
+      convert.base64.decode(hashedAccountId!);
+
+  set hashedAccountIdAsBytes(core.List<core.int> _bytes) {
+    hashedAccountId =
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  /// The maximum number of groups to return.
+  ///
+  /// The service may return fewer than this value. If unspecified, at most 50
+  /// groups will be returned. The maximum value is 1000; values above 1000 will
+  /// be coerced to 1000.
+  ///
+  /// Optional.
+  core.int? pageSize;
+
+  /// A page token, received from a previous
+  /// `SearchRelatedAccountGroupMemberships` call.
+  ///
+  /// Provide this to retrieve the subsequent page. When paginating, all other
+  /// parameters provided to `SearchRelatedAccountGroupMemberships` must match
+  /// the call that provided the page token.
+  ///
+  /// Optional.
+  core.String? pageToken;
+
+  GoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMembershipsRequest({
+    this.hashedAccountId,
+    this.pageSize,
+    this.pageToken,
+  });
+
+  GoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMembershipsRequest.fromJson(
+      core.Map _json)
+      : this(
+          hashedAccountId: _json.containsKey('hashedAccountId')
+              ? _json['hashedAccountId'] as core.String
+              : null,
+          pageSize: _json.containsKey('pageSize')
+              ? _json['pageSize'] as core.int
+              : null,
+          pageToken: _json.containsKey('pageToken')
+              ? _json['pageToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (hashedAccountId != null) 'hashedAccountId': hashedAccountId!,
+        if (pageSize != null) 'pageSize': pageSize!,
+        if (pageToken != null) 'pageToken': pageToken!,
+      };
+}
+
+/// The response to a `SearchRelatedAccountGroupMemberships` call.
+class GoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMembershipsResponse {
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  /// The queried memberships.
+  core.List<GoogleCloudRecaptchaenterpriseV1RelatedAccountGroupMembership>?
+      relatedAccountGroupMemberships;
+
+  GoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMembershipsResponse({
+    this.nextPageToken,
+    this.relatedAccountGroupMemberships,
+  });
+
+  GoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMembershipsResponse.fromJson(
+      core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          relatedAccountGroupMemberships: _json
+                  .containsKey('relatedAccountGroupMemberships')
+              ? (_json['relatedAccountGroupMemberships'] as core.List)
+                  .map((value) =>
+                      GoogleCloudRecaptchaenterpriseV1RelatedAccountGroupMembership
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (relatedAccountGroupMemberships != null)
+          'relatedAccountGroupMemberships': relatedAccountGroupMemberships!,
       };
 }
 

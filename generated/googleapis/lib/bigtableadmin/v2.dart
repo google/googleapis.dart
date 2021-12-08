@@ -2447,6 +2447,66 @@ class AuditConfig {
 /// exempting jose@example.com from DATA_READ logging.
 typedef AuditLogConfig = $AuditLogConfig;
 
+/// Limits for the number of nodes a Cluster can autoscale up/down to.
+class AutoscalingLimits {
+  /// Maximum number of nodes to scale up to.
+  ///
+  /// Required.
+  core.int? maxServeNodes;
+
+  /// Minimum number of nodes to scale down to.
+  ///
+  /// Required.
+  core.int? minServeNodes;
+
+  AutoscalingLimits({
+    this.maxServeNodes,
+    this.minServeNodes,
+  });
+
+  AutoscalingLimits.fromJson(core.Map _json)
+      : this(
+          maxServeNodes: _json.containsKey('maxServeNodes')
+              ? _json['maxServeNodes'] as core.int
+              : null,
+          minServeNodes: _json.containsKey('minServeNodes')
+              ? _json['minServeNodes'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (maxServeNodes != null) 'maxServeNodes': maxServeNodes!,
+        if (minServeNodes != null) 'minServeNodes': minServeNodes!,
+      };
+}
+
+/// The Autoscaling targets for a Cluster.
+///
+/// These determine the recommended nodes.
+class AutoscalingTargets {
+  /// The cpu utilization that the Autoscaler should be trying to achieve.
+  ///
+  /// This number is on a scale from 0 (no utilization) to 100 (total
+  /// utilization).
+  core.int? cpuUtilizationPercent;
+
+  AutoscalingTargets({
+    this.cpuUtilizationPercent,
+  });
+
+  AutoscalingTargets.fromJson(core.Map _json)
+      : this(
+          cpuUtilizationPercent: _json.containsKey('cpuUtilizationPercent')
+              ? _json['cpuUtilizationPercent'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (cpuUtilizationPercent != null)
+          'cpuUtilizationPercent': cpuUtilizationPercent!,
+      };
+}
+
 /// A backup of a Cloud Bigtable table.
 class Backup {
   /// The encryption information for the backup.
@@ -2618,19 +2678,20 @@ class BackupInfo {
       };
 }
 
-/// Associates `members` with a `role`.
+/// Associates `members`, or principals, with a `role`.
 class Binding {
   /// The condition that is associated with this binding.
   ///
   /// If the condition evaluates to `true`, then this binding applies to the
   /// current request. If the condition evaluates to `false`, then this binding
   /// does not apply to the current request. However, a different role binding
-  /// might grant the same role to one or more of the members in this binding.
-  /// To learn which resources support conditions in their IAM policies, see the
+  /// might grant the same role to one or more of the principals in this
+  /// binding. To learn which resources support conditions in their IAM
+  /// policies, see the
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   Expr? condition;
 
-  /// Specifies the identities requesting access for a Cloud Platform resource.
+  /// Specifies the principals requesting access for a Cloud Platform resource.
   ///
   /// `members` can have the following values: * `allUsers`: A special
   /// identifier that represents anyone who is on the internet; with or without
@@ -2662,7 +2723,7 @@ class Binding {
   /// `example.com`.
   core.List<core.String>? members;
 
-  /// Role that is assigned to `members`.
+  /// Role that is assigned to the list of `members`, or principals.
   ///
   /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
   core.String? role;
@@ -2746,6 +2807,9 @@ class CheckConsistencyResponse {
 /// A resizable group of nodes in a particular cloud location, capable of
 /// serving all Tables in the parent Instance.
 class Cluster {
+  /// Configuration for this cluster.
+  ClusterConfig? clusterConfig;
+
   /// The type of storage used by this cluster to serve its parent instance's
   /// tables, unless explicitly overridden.
   ///
@@ -2803,6 +2867,7 @@ class Cluster {
   core.String? state;
 
   Cluster({
+    this.clusterConfig,
     this.defaultStorageType,
     this.encryptionConfig,
     this.location,
@@ -2813,6 +2878,10 @@ class Cluster {
 
   Cluster.fromJson(core.Map _json)
       : this(
+          clusterConfig: _json.containsKey('clusterConfig')
+              ? ClusterConfig.fromJson(
+                  _json['clusterConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
           defaultStorageType: _json.containsKey('defaultStorageType')
               ? _json['defaultStorageType'] as core.String
               : null,
@@ -2832,6 +2901,7 @@ class Cluster {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (clusterConfig != null) 'clusterConfig': clusterConfig!,
         if (defaultStorageType != null)
           'defaultStorageType': defaultStorageType!,
         if (encryptionConfig != null) 'encryptionConfig': encryptionConfig!,
@@ -2839,6 +2909,72 @@ class Cluster {
         if (name != null) 'name': name!,
         if (serveNodes != null) 'serveNodes': serveNodes!,
         if (state != null) 'state': state!,
+      };
+}
+
+/// Autoscaling config for a cluster.
+class ClusterAutoscalingConfig {
+  /// Autoscaling limits for this cluster.
+  ///
+  /// Required.
+  AutoscalingLimits? autoscalingLimits;
+
+  /// Autoscaling targets for this cluster.
+  ///
+  /// Required.
+  AutoscalingTargets? autoscalingTargets;
+
+  ClusterAutoscalingConfig({
+    this.autoscalingLimits,
+    this.autoscalingTargets,
+  });
+
+  ClusterAutoscalingConfig.fromJson(core.Map _json)
+      : this(
+          autoscalingLimits: _json.containsKey('autoscalingLimits')
+              ? AutoscalingLimits.fromJson(_json['autoscalingLimits']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          autoscalingTargets: _json.containsKey('autoscalingTargets')
+              ? AutoscalingTargets.fromJson(_json['autoscalingTargets']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (autoscalingLimits != null) 'autoscalingLimits': autoscalingLimits!,
+        if (autoscalingTargets != null)
+          'autoscalingTargets': autoscalingTargets!,
+      };
+}
+
+/// Configuration for a cluster.
+class ClusterConfig {
+  /// Autoscaling configuration for this cluster.
+  ///
+  /// Note that when creating or updating a cluster, exactly one of serve_nodes
+  /// or cluster_autoscaling_config must be set. If serve_nodes is set, then
+  /// serve_nodes is fixed and autoscaling is turned off. If
+  /// cluster_autoscaling_config is set, then serve_nodes will be autoscaled.
+  ClusterAutoscalingConfig? clusterAutoscalingConfig;
+
+  ClusterConfig({
+    this.clusterAutoscalingConfig,
+  });
+
+  ClusterConfig.fromJson(core.Map _json)
+      : this(
+          clusterAutoscalingConfig:
+              _json.containsKey('clusterAutoscalingConfig')
+                  ? ClusterAutoscalingConfig.fromJson(
+                      _json['clusterAutoscalingConfig']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (clusterAutoscalingConfig != null)
+          'clusterAutoscalingConfig': clusterAutoscalingConfig!,
       };
 }
 
@@ -3318,13 +3454,16 @@ class GetIamPolicyRequest {
 }
 
 /// Encapsulates settings provided to GetIamPolicy.
-typedef GetPolicyOptions = $GetPolicyOptions;
+typedef GetPolicyOptions = $GetPolicyOptions01;
 
 /// A collection of Bigtable Tables and the resources that serve them.
 ///
 /// All tables in an instance are served from all Clusters in the instance.
 class Instance {
   /// A server-assigned timestamp representing when this Instance was created.
+  ///
+  /// For instances created before this field was added (August 2021), this
+  /// value is `seconds: 0, nanos: 1`.
   ///
   /// Output only.
   core.String? createTime;
@@ -3914,15 +4053,15 @@ class Operation {
 /// controls for Google Cloud resources.
 ///
 /// A `Policy` is a collection of `bindings`. A `binding` binds one or more
-/// `members` to a single `role`. Members can be user accounts, service
-/// accounts, Google groups, and domains (such as G Suite). A `role` is a named
-/// list of permissions; each `role` can be an IAM predefined role or a
-/// user-created custom role. For some types of Google Cloud resources, a
-/// `binding` can also specify a `condition`, which is a logical expression that
-/// allows access to a resource only if the expression evaluates to `true`. A
-/// condition can add constraints based on attributes of the request, the
-/// resource, or both. To learn which resources support conditions in their IAM
-/// policies, see the
+/// `members`, or principals, to a single `role`. Principals can be user
+/// accounts, service accounts, Google groups, and domains (such as G Suite). A
+/// `role` is a named list of permissions; each `role` can be an IAM predefined
+/// role or a user-created custom role. For some types of Google Cloud
+/// resources, a `binding` can also specify a `condition`, which is a logical
+/// expression that allows access to a resource only if the expression evaluates
+/// to `true`. A condition can add constraints based on attributes of the
+/// request, the resource, or both. To learn which resources support conditions
+/// in their IAM policies, see the
 /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 /// **JSON example:** { "bindings": \[ { "role":
 /// "roles/resourcemanager.organizationAdmin", "members": \[
@@ -3945,11 +4084,16 @@ class Policy {
   /// Specifies cloud audit logging configuration for this policy.
   core.List<AuditConfig>? auditConfigs;
 
-  /// Associates a list of `members` to a `role`.
+  /// Associates a list of `members`, or principals, with a `role`.
   ///
   /// Optionally, may specify a `condition` that determines how and when the
   /// `bindings` are applied. Each of the `bindings` must contain at least one
-  /// member.
+  /// principal. The `bindings` in a `Policy` can refer to up to 1,500
+  /// principals; up to 250 of these principals can be Google groups. Each
+  /// occurrence of a principal counts towards these limits. For example, if the
+  /// `bindings` grant 50 different roles to `user:alice@example.com`, and not
+  /// to any other principal, then you can add another 1,450 principals to the
+  /// `bindings` in the `Policy`.
   core.List<Binding>? bindings;
 
   /// `etag` is used for optimistic concurrency control as a way to help prevent

@@ -2401,7 +2401,7 @@ class CoursesTeachersResource {
     return Teacher.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Deletes a teacher of a course.
+  /// Removes the specified teacher from the specified course.
   ///
   /// This method returns the following error codes: * `PERMISSION_DENIED` if
   /// the requesting user is not permitted to delete teachers of this course or

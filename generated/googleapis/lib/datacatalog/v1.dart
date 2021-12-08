@@ -3034,7 +3034,7 @@ class GetIamPolicyRequest {
 }
 
 /// Encapsulates settings provided to GetIamPolicy.
-typedef GetPolicyOptions = $GetPolicyOptions;
+typedef GetPolicyOptions = $GetPolicyOptions01;
 
 /// Specification for the BigQuery connection.
 class GoogleCloudDatacatalogV1BigQueryConnectionSpec {

@@ -2,7 +2,7 @@
 # should be ignored.
 packages:
 - googleapis:
-    version: 7.0.0
+    version: 8.0.0-dev
     repository: https://github.com/google/googleapis.dart/tree/master/generated/googleapis
     readme: resources/README.md
     license: resources/LICENSE
@@ -21,7 +21,6 @@ packages:
     - admin:directory_v1 # https://developers.google.com/admin-sdk/directory/
     - admin:reports_v1 # https://developers.google.com/admin-sdk/reports/
     - admob:v1
-    - adsense:v1.4 # https://developers.google.com/adsense/management/
     - adsense:v2
     - adsensehost:v4.1 # https://developers.google.com/adsense/host/
     - analytics:v3 # https://developers.google.com/analytics/
@@ -38,6 +37,7 @@ packages:
     - assuredworkloads:v1
     - authorizedbuyersmarketplace:v1
     - baremetalsolution:v1
+    - baremetalsolution:v2
     - bigquery:v2 # https://developers.google.com/bigquery/
     - bigquerydatatransfer:v1 # https://cloud.google.com/bigquery/transfer/
     - bigqueryreservation:v1
@@ -58,6 +58,7 @@ packages:
     - cloudbuild:v1 # https://cloud.google.com/container-builder/docs/
     - cloudchannel:v1
     - clouddebugger:v2 # https://cloud.google.com/tools/cloud-debugger
+    - clouddeploy:v1
     - cloudfunctions:v1 # https://cloud.google.com/functions/docs/
     - cloudidentity:v1 # https://cloud.google.com/identity/
     - cloudiot:v1 # https://cloud.google.com/iot
@@ -85,6 +86,7 @@ packages:
     - datapipelines:v1
     - dataproc:v1 # https://cloud.google.com/dataproc/
     - datastore:v1 # https://developers.google.com/datastore/
+    - datastream:v1
     - deploymentmanager:v2 # https://cloud.google.com/deployment-manager/
     - dfareporting:v3.4
     - dfareporting:v3.5
@@ -217,7 +219,6 @@ packages:
     - vision:v1 # https://cloud.google.com/vision/reference/rest/
     - vmmigration:v1
     - webfonts:v1 # https://developers.google.com/fonts/docs/developer_api
-    - webmasters:v3 # https://developers.google.com/webmaster-tools/
     - webrisk:v1
     - websecurityscanner:v1
     - workflowexecutions:v1
@@ -227,7 +228,7 @@ packages:
     - youtubereporting:v1 # https://developers.google.com/youtube/reporting/v1/reports/
 
 - googleapis_beta:
-    version: 7.0.0
+    version: 8.0.0-dev
     repository: https://github.com/google/googleapis.dart/tree/master/generated/googleapis_beta
     readme: resources/README.md
     license: resources/LICENSE
@@ -241,6 +242,7 @@ packages:
     - area120tables:v1alpha1
     - bigqueryconnection:v1beta1
     - clouderrorreporting:v1beta1 # https://cloud.google.com/error-reporting/
+    - cloudsupport:v2beta
     - containeranalysis:v1beta1 # https://cloud.google.com/container-registry/docs/reference/rest/
     - datacatalog:v1beta1
     - dataflow:v1b3 # https://cloud.google.com/dataflow/
@@ -280,6 +282,7 @@ skipped_apis:
 - appengine:v1beta
 - artifactregistry:v1beta1 #v1 included
 - artifactregistry:v1beta2 #v1 included
+- baremetalsolution:v1alpha1
 - bigqueryreservation:v1beta1 # v1 included
 - bigtableadmin:v1 # v2 included
 - billingbudgets:v1beta1 # v1 included
