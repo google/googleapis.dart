@@ -530,12 +530,16 @@ class ProjectsLocationsServicesResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/services/\[^/\]+$`.
   ///
-  /// [options_requestedPolicyVersion] - Optional. The policy format version to
-  /// be returned.Valid values are 0, 1, and 3. Requests specifying an invalid
-  /// value will be rejected.Requests for policies with any conditional bindings
-  /// must specify version 3. Policies without any conditional bindings may
-  /// specify any valid value or leave the field unset.To learn which resources
-  /// support conditions in their IAM policies, see the IAM documentation
+  /// [options_requestedPolicyVersion] - Optional. The maximum policy version
+  /// that will be used to format the policy.Valid values are 0, 1, and 3.
+  /// Requests specifying an invalid value will be rejected.Requests for
+  /// policies with any conditional role bindings must specify version 3.
+  /// Policies with no conditional role bindings may specify any valid value or
+  /// leave the field unset.The policy in the response might use the policy
+  /// version that you specified, or it might use a lower policy version. For
+  /// example, if you specify version 3, but the policy has no conditional role
+  /// bindings, the response uses version 1.To learn which resources support
+  /// conditions in their IAM policies, see the IAM documentation
   /// (https://cloud.google.com/iam/help/conditions/resource-policies).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1005,12 +1009,16 @@ class ProjectsLocationsServicesBackupsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/services/\[^/\]+/backups/\[^/\]+$`.
   ///
-  /// [options_requestedPolicyVersion] - Optional. The policy format version to
-  /// be returned.Valid values are 0, 1, and 3. Requests specifying an invalid
-  /// value will be rejected.Requests for policies with any conditional bindings
-  /// must specify version 3. Policies without any conditional bindings may
-  /// specify any valid value or leave the field unset.To learn which resources
-  /// support conditions in their IAM policies, see the IAM documentation
+  /// [options_requestedPolicyVersion] - Optional. The maximum policy version
+  /// that will be used to format the policy.Valid values are 0, 1, and 3.
+  /// Requests specifying an invalid value will be rejected.Requests for
+  /// policies with any conditional role bindings must specify version 3.
+  /// Policies with no conditional role bindings may specify any valid value or
+  /// leave the field unset.The policy in the response might use the policy
+  /// version that you specified, or it might use a lower policy version. For
+  /// example, if you specify version 3, but the policy has no conditional role
+  /// bindings, the response uses version 1.To learn which resources support
+  /// conditions in their IAM policies, see the IAM documentation
   /// (https://cloud.google.com/iam/help/conditions/resource-policies).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1670,6 +1678,44 @@ class Binding {
         if (condition != null) 'condition': condition!,
         if (members != null) 'members': members!,
         if (role != null) 'role': role!,
+      };
+}
+
+/// Contains information of the customer's network configurations.
+class Consumer {
+  /// The URI of the endpoint used to access the metastore service.
+  ///
+  /// Output only.
+  core.String? endpointUri;
+
+  /// The subnetwork of the customer project from which an IP address is
+  /// reserved and used as the Dataproc Metastore service's endpoint.
+  ///
+  /// It is accessible to hosts in the subnet and to all hosts in a subnet in
+  /// the same region and same network. There must be at least one IP address
+  /// available in the subnet's primary range. The subnet is specified in the
+  /// following
+  /// form:\`projects/{project_number}/regions/{region_id}/subnetworks/{subnetwork_id}
+  core.String? subnetwork;
+
+  Consumer({
+    this.endpointUri,
+    this.subnetwork,
+  });
+
+  Consumer.fromJson(core.Map _json)
+      : this(
+          endpointUri: _json.containsKey('endpointUri')
+              ? _json['endpointUri'] as core.String
+              : null,
+          subnetwork: _json.containsKey('subnetwork')
+              ? _json['subnetwork'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (endpointUri != null) 'endpointUri': endpointUri!,
+        if (subnetwork != null) 'subnetwork': subnetwork!,
       };
 }
 
@@ -2576,6 +2622,33 @@ class MetadataManagementActivity {
       };
 }
 
+/// Network configuration for the Dataproc Metastore service.
+class NetworkConfig {
+  /// The consumer-side network configuration for the Dataproc Metastore
+  /// instance.
+  ///
+  /// Immutable.
+  core.List<Consumer>? consumers;
+
+  NetworkConfig({
+    this.consumers,
+  });
+
+  NetworkConfig.fromJson(core.Map _json)
+      : this(
+          consumers: _json.containsKey('consumers')
+              ? (_json['consumers'] as core.List)
+                  .map((value) => Consumer.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (consumers != null) 'consumers': consumers!,
+      };
+}
+
 /// This resource represents a long-running operation that is the result of a
 /// network API call.
 class Operation {
@@ -3001,6 +3074,12 @@ class Service {
   /// Immutable.
   core.String? network;
 
+  /// The configuration specifying the network settings for the Dataproc
+  /// Metastore service.
+  ///
+  /// Immutable.
+  NetworkConfig? networkConfig;
+
   /// The TCP port at which the metastore service is reached.
   ///
   /// Default: 9083.
@@ -3078,6 +3157,7 @@ class Service {
     this.metadataManagementActivity,
     this.name,
     this.network,
+    this.networkConfig,
     this.port,
     this.releaseChannel,
     this.state,
@@ -3132,6 +3212,10 @@ class Service {
           network: _json.containsKey('network')
               ? _json['network'] as core.String
               : null,
+          networkConfig: _json.containsKey('networkConfig')
+              ? NetworkConfig.fromJson(
+                  _json['networkConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
           port: _json.containsKey('port') ? _json['port'] as core.int : null,
           releaseChannel: _json.containsKey('releaseChannel')
               ? _json['releaseChannel'] as core.String
@@ -3163,6 +3247,7 @@ class Service {
           'metadataManagementActivity': metadataManagementActivity!,
         if (name != null) 'name': name!,
         if (network != null) 'network': network!,
+        if (networkConfig != null) 'networkConfig': networkConfig!,
         if (port != null) 'port': port!,
         if (releaseChannel != null) 'releaseChannel': releaseChannel!,
         if (state != null) 'state': state!,

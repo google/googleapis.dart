@@ -1143,6 +1143,8 @@ class AdvertisersCampaignsTargetingTypesAssignedTargetingOptionsResource {
   /// native content position.
   /// - "TARGETING_TYPE_OMID" : Target ads in an Open Measurement enabled
   /// inventory.
+  /// - "TARGETING_TYPE_AUDIO_CONTENT_TYPE" : Target ads to a specific audio
+  /// content type.
   ///
   /// [assignedTargetingOptionId] - Required. An identifier unique to the
   /// targeting type in this campaign that identifies the assigned targeting
@@ -1304,6 +1306,8 @@ class AdvertisersCampaignsTargetingTypesAssignedTargetingOptionsResource {
   /// native content position.
   /// - "TARGETING_TYPE_OMID" : Target ads in an Open Measurement enabled
   /// inventory.
+  /// - "TARGETING_TYPE_AUDIO_CONTENT_TYPE" : Target ads to a specific audio
+  /// content type.
   ///
   /// [filter] - Allows filtering by assigned targeting option properties.
   /// Supported syntax: * Filter expressions are made up of one or more
@@ -2693,6 +2697,8 @@ class AdvertisersInsertionOrdersTargetingTypesAssignedTargetingOptionsResource {
   /// native content position.
   /// - "TARGETING_TYPE_OMID" : Target ads in an Open Measurement enabled
   /// inventory.
+  /// - "TARGETING_TYPE_AUDIO_CONTENT_TYPE" : Target ads to a specific audio
+  /// content type.
   ///
   /// [assignedTargetingOptionId] - Required. An identifier unique to the
   /// targeting type in this insertion order that identifies the assigned
@@ -2841,6 +2847,8 @@ class AdvertisersInsertionOrdersTargetingTypesAssignedTargetingOptionsResource {
   /// native content position.
   /// - "TARGETING_TYPE_OMID" : Target ads in an Open Measurement enabled
   /// inventory.
+  /// - "TARGETING_TYPE_AUDIO_CONTENT_TYPE" : Target ads to a specific audio
+  /// content type.
   ///
   /// [filter] - Allows filtering by assigned targeting option properties.
   /// Supported syntax: * Filter expressions are made up of one or more
@@ -3050,7 +3058,11 @@ class AdvertisersLineItemsResource {
   /// The operation will delete the assigned targeting options provided in
   /// BulkEditLineItemAssignedTargetingOptionsRequest.delete_requests and then
   /// create the assigned targeting options provided in
-  /// BulkEditLineItemAssignedTargetingOptionsRequest.create_requests .
+  /// BulkEditLineItemAssignedTargetingOptionsRequest.create_requests. Requests
+  /// to this endpoint cannot be made concurrently with the following requests
+  /// updating the same line item: * BulkEditLineItemAssignedTargetingOptions *
+  /// UpdateLineItem * CreateLineItemAssignedTargetingOption *
+  /// DeleteLineItemAssignedTargetingOption
   ///
   /// [request] - The metadata request object.
   ///
@@ -3466,7 +3478,11 @@ class AdvertisersLineItemsResource {
 
   /// Updates an existing line item.
   ///
-  /// Returns the updated line item if successful.
+  /// Returns the updated line item if successful. Requests to this endpoint
+  /// cannot be made concurrently with the following requests updating the same
+  /// line item: * BulkEditLineItemAssignedTargetingOptions * UpdateLineItem *
+  /// CreateLineItemAssignedTargetingOption *
+  /// DeleteLineItemAssignedTargetingOption
   ///
   /// [request] - The metadata request object.
   ///
@@ -3541,7 +3557,11 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource {
 
   /// Assigns a targeting option to a line item.
   ///
-  /// Returns the assigned targeting option if successful.
+  /// Returns the assigned targeting option if successful. Requests to this
+  /// endpoint cannot be made concurrently with the following requests updating
+  /// the same line item: * BulkEditLineItemAssignedTargetingOptions *
+  /// UpdateLineItem * CreateLineItemAssignedTargetingOption *
+  /// DeleteLineItemAssignedTargetingOption
   ///
   /// [request] - The metadata request object.
   ///
@@ -3646,6 +3666,8 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource {
   /// native content position.
   /// - "TARGETING_TYPE_OMID" : Target ads in an Open Measurement enabled
   /// inventory.
+  /// - "TARGETING_TYPE_AUDIO_CONTENT_TYPE" : Target ads to a specific audio
+  /// content type.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3688,6 +3710,12 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource {
   }
 
   /// Deletes an assigned targeting option from a line item.
+  ///
+  /// Requests to this endpoint cannot be made concurrently with the following
+  /// requests updating the same line item: *
+  /// BulkEditLineItemAssignedTargetingOptions * UpdateLineItem *
+  /// CreateLineItemAssignedTargetingOption *
+  /// DeleteLineItemAssignedTargetingOption
   ///
   /// Request parameters:
   ///
@@ -3790,6 +3818,8 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource {
   /// native content position.
   /// - "TARGETING_TYPE_OMID" : Target ads in an Open Measurement enabled
   /// inventory.
+  /// - "TARGETING_TYPE_AUDIO_CONTENT_TYPE" : Target ads to a specific audio
+  /// content type.
   ///
   /// [assignedTargetingOptionId] - Required. The ID of the assigned targeting
   /// option to delete.
@@ -3936,6 +3966,8 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource {
   /// native content position.
   /// - "TARGETING_TYPE_OMID" : Target ads in an Open Measurement enabled
   /// inventory.
+  /// - "TARGETING_TYPE_AUDIO_CONTENT_TYPE" : Target ads to a specific audio
+  /// content type.
   ///
   /// [assignedTargetingOptionId] - Required. An identifier unique to the
   /// targeting type in this line item that identifies the assigned targeting
@@ -4084,6 +4116,8 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource {
   /// native content position.
   /// - "TARGETING_TYPE_OMID" : Target ads in an Open Measurement enabled
   /// inventory.
+  /// - "TARGETING_TYPE_AUDIO_CONTENT_TYPE" : Target ads to a specific audio
+  /// content type.
   ///
   /// [filter] - Allows filtering by assigned targeting option properties.
   /// Supported syntax: * Filter expressions are made up of one or more
@@ -5614,6 +5648,8 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResource {
   /// native content position.
   /// - "TARGETING_TYPE_OMID" : Target ads in an Open Measurement enabled
   /// inventory.
+  /// - "TARGETING_TYPE_AUDIO_CONTENT_TYPE" : Target ads to a specific audio
+  /// content type.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5752,6 +5788,8 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResource {
   /// native content position.
   /// - "TARGETING_TYPE_OMID" : Target ads in an Open Measurement enabled
   /// inventory.
+  /// - "TARGETING_TYPE_AUDIO_CONTENT_TYPE" : Target ads to a specific audio
+  /// content type.
   ///
   /// [assignedTargetingOptionId] - Required. The ID of the assigned targeting
   /// option to delete.
@@ -5892,6 +5930,8 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResource {
   /// native content position.
   /// - "TARGETING_TYPE_OMID" : Target ads in an Open Measurement enabled
   /// inventory.
+  /// - "TARGETING_TYPE_AUDIO_CONTENT_TYPE" : Target ads to a specific audio
+  /// content type.
   ///
   /// [assignedTargetingOptionId] - Required. An identifier unique to the
   /// targeting type in this advertiser that identifies the assigned targeting
@@ -6034,6 +6074,8 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResource {
   /// native content position.
   /// - "TARGETING_TYPE_OMID" : Target ads in an Open Measurement enabled
   /// inventory.
+  /// - "TARGETING_TYPE_AUDIO_CONTENT_TYPE" : Target ads to a specific audio
+  /// content type.
   ///
   /// [filter] - Allows filtering by assigned targeting option properties.
   /// Supported syntax: * Filter expressions are made up of one or more
@@ -8776,6 +8818,8 @@ class PartnersTargetingTypesAssignedTargetingOptionsResource {
   /// native content position.
   /// - "TARGETING_TYPE_OMID" : Target ads in an Open Measurement enabled
   /// inventory.
+  /// - "TARGETING_TYPE_AUDIO_CONTENT_TYPE" : Target ads to a specific audio
+  /// content type.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -8912,6 +8956,8 @@ class PartnersTargetingTypesAssignedTargetingOptionsResource {
   /// native content position.
   /// - "TARGETING_TYPE_OMID" : Target ads in an Open Measurement enabled
   /// inventory.
+  /// - "TARGETING_TYPE_AUDIO_CONTENT_TYPE" : Target ads to a specific audio
+  /// content type.
   ///
   /// [assignedTargetingOptionId] - Required. The ID of the assigned targeting
   /// option to delete.
@@ -9050,6 +9096,8 @@ class PartnersTargetingTypesAssignedTargetingOptionsResource {
   /// native content position.
   /// - "TARGETING_TYPE_OMID" : Target ads in an Open Measurement enabled
   /// inventory.
+  /// - "TARGETING_TYPE_AUDIO_CONTENT_TYPE" : Target ads to a specific audio
+  /// content type.
   ///
   /// [assignedTargetingOptionId] - Required. An identifier unique to the
   /// targeting type in this partner that identifies the assigned targeting
@@ -9190,6 +9238,8 @@ class PartnersTargetingTypesAssignedTargetingOptionsResource {
   /// native content position.
   /// - "TARGETING_TYPE_OMID" : Target ads in an Open Measurement enabled
   /// inventory.
+  /// - "TARGETING_TYPE_AUDIO_CONTENT_TYPE" : Target ads to a specific audio
+  /// content type.
   ///
   /// [filter] - Allows filtering by assigned targeting option properties.
   /// Supported syntax: * Filter expressions are made up of one or more
@@ -9479,6 +9529,8 @@ class TargetingTypesTargetingOptionsResource {
   /// native content position.
   /// - "TARGETING_TYPE_OMID" : Target ads in an Open Measurement enabled
   /// inventory.
+  /// - "TARGETING_TYPE_AUDIO_CONTENT_TYPE" : Target ads to a specific audio
+  /// content type.
   ///
   /// [targetingOptionId] - Required. The ID of the of targeting option to
   /// retrieve.
@@ -9632,6 +9684,8 @@ class TargetingTypesTargetingOptionsResource {
   /// native content position.
   /// - "TARGETING_TYPE_OMID" : Target ads in an Open Measurement enabled
   /// inventory.
+  /// - "TARGETING_TYPE_AUDIO_CONTENT_TYPE" : Target ads to a specific audio
+  /// content type.
   ///
   /// [advertiserId] - Required. The Advertiser this request is being made in
   /// the context of.
@@ -9805,6 +9859,8 @@ class TargetingTypesTargetingOptionsResource {
   /// native content position.
   /// - "TARGETING_TYPE_OMID" : Target ads in an Open Measurement enabled
   /// inventory.
+  /// - "TARGETING_TYPE_AUDIO_CONTENT_TYPE" : Target ads to a specific audio
+  /// content type.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -11221,6 +11277,12 @@ class AssignedTargetingOption {
   /// option per resource.
   AudienceGroupAssignedTargetingOptionDetails? audienceGroupDetails;
 
+  /// Audio content type details.
+  ///
+  /// This field will be populated when the targeting_type is
+  /// 'TARGETING_TYPE_AUDIO_CONTENT_TYPE'.
+  AudioContentTypeAssignedTargetingOptionDetails? audioContentTypeDetails;
+
   /// Authorized seller status details.
   ///
   /// This field will be populated when the targeting_type is
@@ -11548,6 +11610,8 @@ class AssignedTargetingOption {
   /// native content position.
   /// - "TARGETING_TYPE_OMID" : Target ads in an Open Measurement enabled
   /// inventory.
+  /// - "TARGETING_TYPE_AUDIO_CONTENT_TYPE" : Target ads to a specific audio
+  /// content type.
   core.String? targetingType;
 
   /// Third party verification details.
@@ -11587,6 +11651,7 @@ class AssignedTargetingOption {
     this.appDetails,
     this.assignedTargetingOptionId,
     this.audienceGroupDetails,
+    this.audioContentTypeDetails,
     this.authorizedSellerStatusDetails,
     this.browserDetails,
     this.businessChainDetails,
@@ -11652,6 +11717,11 @@ class AssignedTargetingOption {
           audienceGroupDetails: _json.containsKey('audienceGroupDetails')
               ? AudienceGroupAssignedTargetingOptionDetails.fromJson(
                   _json['audienceGroupDetails']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          audioContentTypeDetails: _json.containsKey('audioContentTypeDetails')
+              ? AudioContentTypeAssignedTargetingOptionDetails.fromJson(
+                  _json['audioContentTypeDetails']
                       as core.Map<core.String, core.dynamic>)
               : null,
           authorizedSellerStatusDetails: _json
@@ -11865,6 +11935,8 @@ class AssignedTargetingOption {
           'assignedTargetingOptionId': assignedTargetingOptionId!,
         if (audienceGroupDetails != null)
           'audienceGroupDetails': audienceGroupDetails!,
+        if (audioContentTypeDetails != null)
+          'audioContentTypeDetails': audioContentTypeDetails!,
         if (authorizedSellerStatusDetails != null)
           'authorizedSellerStatusDetails': authorizedSellerStatusDetails!,
         if (browserDetails != null) 'browserDetails': browserDetails!,
@@ -12136,6 +12208,87 @@ class AudienceGroupAssignedTargetingOptionDetails {
               includedFirstAndThirdPartyAudienceGroups!,
         if (includedGoogleAudienceGroup != null)
           'includedGoogleAudienceGroup': includedGoogleAudienceGroup!,
+      };
+}
+
+/// Details for audio content type assigned targeting option.
+///
+/// This will be populated in the audio_content_type_details field when
+/// targeting_type is `TARGETING_TYPE_AUDIO_CONTENT_TYPE`. Explicitly targeting
+/// all options is not supported. Remove all audio content type targeting
+/// options to achieve this effect.
+class AudioContentTypeAssignedTargetingOptionDetails {
+  /// The audio content type.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "AUDIO_CONTENT_TYPE_UNSPECIFIED" : Audio content type is not specified
+  /// in this version. This enum is a place holder for a default value and does
+  /// not represent a real content stream type.
+  /// - "AUDIO_CONTENT_TYPE_UNKNOWN" : The audio content type is unknown.
+  /// - "AUDIO_CONTENT_TYPE_MUSIC" : The audio content type is music.
+  /// - "AUDIO_CONTENT_TYPE_BROADCAST" : The audio content type is broadcast.
+  /// - "AUDIO_CONTENT_TYPE_PODCAST" : The audio content type is podcast.
+  core.String? audioContentType;
+
+  /// The targeting_option_id field when targeting_type is
+  /// `TARGETING_TYPE_AUDIO_CONTENT_TYPE`.
+  ///
+  /// Required.
+  core.String? targetingOptionId;
+
+  AudioContentTypeAssignedTargetingOptionDetails({
+    this.audioContentType,
+    this.targetingOptionId,
+  });
+
+  AudioContentTypeAssignedTargetingOptionDetails.fromJson(core.Map _json)
+      : this(
+          audioContentType: _json.containsKey('audioContentType')
+              ? _json['audioContentType'] as core.String
+              : null,
+          targetingOptionId: _json.containsKey('targetingOptionId')
+              ? _json['targetingOptionId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (audioContentType != null) 'audioContentType': audioContentType!,
+        if (targetingOptionId != null) 'targetingOptionId': targetingOptionId!,
+      };
+}
+
+/// Represents a targetable audio content type.
+///
+/// This will be populated in the audio_content_type_details field when
+/// targeting_type is `TARGETING_TYPE_AUDIO_CONTENT_TYPE`.
+class AudioContentTypeTargetingOptionDetails {
+  /// The audio content type.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "AUDIO_CONTENT_TYPE_UNSPECIFIED" : Audio content type is not specified
+  /// in this version. This enum is a place holder for a default value and does
+  /// not represent a real content stream type.
+  /// - "AUDIO_CONTENT_TYPE_UNKNOWN" : The audio content type is unknown.
+  /// - "AUDIO_CONTENT_TYPE_MUSIC" : The audio content type is music.
+  /// - "AUDIO_CONTENT_TYPE_BROADCAST" : The audio content type is broadcast.
+  /// - "AUDIO_CONTENT_TYPE_PODCAST" : The audio content type is podcast.
+  core.String? audioContentType;
+
+  AudioContentTypeTargetingOptionDetails({
+    this.audioContentType,
+  });
+
+  AudioContentTypeTargetingOptionDetails.fromJson(core.Map _json)
+      : this(
+          audioContentType: _json.containsKey('audioContentType')
+              ? _json['audioContentType'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (audioContentType != null) 'audioContentType': audioContentType!,
       };
 }
 
@@ -14870,6 +15023,8 @@ class CreateAssignedTargetingOptionsRequest {
   /// native content position.
   /// - "TARGETING_TYPE_OMID" : Target ads in an Open Measurement enabled
   /// inventory.
+  /// - "TARGETING_TYPE_AUDIO_CONTENT_TYPE" : Target ads to a specific audio
+  /// content type.
   core.String? targetingType;
 
   CreateAssignedTargetingOptionsRequest({
@@ -16457,6 +16612,8 @@ class DeleteAssignedTargetingOptionsRequest {
   /// native content position.
   /// - "TARGETING_TYPE_OMID" : Target ads in an Open Measurement enabled
   /// inventory.
+  /// - "TARGETING_TYPE_AUDIO_CONTENT_TYPE" : Target ads to a specific audio
+  /// content type.
   core.String? targetingType;
 
   DeleteAssignedTargetingOptionsRequest({
@@ -24999,6 +25156,9 @@ class TargetingOption {
   /// App category details.
   AppCategoryTargetingOptionDetails? appCategoryDetails;
 
+  /// Audio content type details.
+  AudioContentTypeTargetingOptionDetails? audioContentTypeDetails;
+
   /// Authorized seller status resource details.
   AuthorizedSellerStatusTargetingOptionDetails? authorizedSellerStatusDetails;
 
@@ -25175,6 +25335,8 @@ class TargetingOption {
   /// native content position.
   /// - "TARGETING_TYPE_OMID" : Target ads in an Open Measurement enabled
   /// inventory.
+  /// - "TARGETING_TYPE_AUDIO_CONTENT_TYPE" : Target ads to a specific audio
+  /// content type.
   core.String? targetingType;
 
   /// User rewarded content details.
@@ -25189,6 +25351,7 @@ class TargetingOption {
   TargetingOption({
     this.ageRangeDetails,
     this.appCategoryDetails,
+    this.audioContentTypeDetails,
     this.authorizedSellerStatusDetails,
     this.browserDetails,
     this.businessChainDetails,
@@ -25230,6 +25393,11 @@ class TargetingOption {
           appCategoryDetails: _json.containsKey('appCategoryDetails')
               ? AppCategoryTargetingOptionDetails.fromJson(
                   _json['appCategoryDetails']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          audioContentTypeDetails: _json.containsKey('audioContentTypeDetails')
+              ? AudioContentTypeTargetingOptionDetails.fromJson(
+                  _json['audioContentTypeDetails']
                       as core.Map<core.String, core.dynamic>)
               : null,
           authorizedSellerStatusDetails:
@@ -25380,6 +25548,8 @@ class TargetingOption {
         if (ageRangeDetails != null) 'ageRangeDetails': ageRangeDetails!,
         if (appCategoryDetails != null)
           'appCategoryDetails': appCategoryDetails!,
+        if (audioContentTypeDetails != null)
+          'audioContentTypeDetails': audioContentTypeDetails!,
         if (authorizedSellerStatusDetails != null)
           'authorizedSellerStatusDetails': authorizedSellerStatusDetails!,
         if (browserDetails != null) 'browserDetails': browserDetails!,

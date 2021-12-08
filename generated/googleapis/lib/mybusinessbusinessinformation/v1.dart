@@ -2136,6 +2136,11 @@ class Metadata {
   /// Output only.
   core.bool? canDelete;
 
+  /// Indicates if the listing is eligible for business calls.
+  ///
+  /// Output only.
+  core.bool? canHaveBusinessCalls;
+
   /// Indicates if the listing is eligible for food menu.
   ///
   /// Output only.
@@ -2203,6 +2208,7 @@ class Metadata {
 
   Metadata({
     this.canDelete,
+    this.canHaveBusinessCalls,
     this.canHaveFoodMenus,
     this.canModifyServiceList,
     this.canOperateHealthData,
@@ -2220,6 +2226,9 @@ class Metadata {
       : this(
           canDelete: _json.containsKey('canDelete')
               ? _json['canDelete'] as core.bool
+              : null,
+          canHaveBusinessCalls: _json.containsKey('canHaveBusinessCalls')
+              ? _json['canHaveBusinessCalls'] as core.bool
               : null,
           canHaveFoodMenus: _json.containsKey('canHaveFoodMenus')
               ? _json['canHaveFoodMenus'] as core.bool
@@ -2258,6 +2267,8 @@ class Metadata {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (canDelete != null) 'canDelete': canDelete!,
+        if (canHaveBusinessCalls != null)
+          'canHaveBusinessCalls': canHaveBusinessCalls!,
         if (canHaveFoodMenus != null) 'canHaveFoodMenus': canHaveFoodMenus!,
         if (canModifyServiceList != null)
           'canModifyServiceList': canModifyServiceList!,

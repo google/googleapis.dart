@@ -286,7 +286,7 @@
             }
         }
     },
-    "revision": "20211029",
+    "revision": "20211203",
     "rootUrl": "https://ideahub.googleapis.com/",
     "schemas": {
         "GoogleSearchIdeahubV1betaAvailableLocale": {

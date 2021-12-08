@@ -1480,6 +1480,7 @@ api.ResponseMetaData buildResponseMetaData() {
     o.dataLossFromOtherRow = true;
     o.emptyReason = 'foo';
     o.schemaRestrictionResponse = buildSchemaRestrictionResponse();
+    o.thresholdingApplied = true;
     o.timeZone = 'foo';
   }
   buildCounterResponseMetaData--;
@@ -1499,6 +1500,7 @@ void checkResponseMetaData(api.ResponseMetaData o) {
       unittest.equals('foo'),
     );
     checkSchemaRestrictionResponse(o.schemaRestrictionResponse!);
+    unittest.expect(o.thresholdingApplied!, unittest.isTrue);
     unittest.expect(
       o.timeZone!,
       unittest.equals('foo'),

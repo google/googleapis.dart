@@ -364,7 +364,7 @@
             }
         }
     },
-    "revision": "20211031",
+    "revision": "20211207",
     "rootUrl": "https://paymentsresellersubscription.googleapis.com/",
     "schemas": {
         "GoogleCloudPaymentsResellerSubscriptionV1CancelSubscriptionRequest": {
@@ -610,8 +610,27 @@
                     "$ref": "GoogleCloudPaymentsResellerSubscriptionV1Duration",
                     "description": "Optional. Specifies the duration of the free trial of the subscription when promotion_type is PROMOTION_TYPE_FREE_TRIAL"
                 },
+                "introductoryPricingDetails": {
+                    "$ref": "GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetails",
+                    "description": "Optional. Specifies the introductory pricing details when the promotion_type is PROMOTION_TYPE_INTRODUCTORY_PRICING."
+                },
                 "name": {
                     "description": "Output only. Response only. Resource name of the subscription promotion. It will have the format of \"partners/{partner_id}/promotion/{promotion_id}\"",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "promotionType": {
+                    "description": "Output only. Output Only. Specifies the type of the promotion.",
+                    "enum": [
+                        "PROMOTION_TYPE_UNSPECIFIED",
+                        "PROMOTION_TYPE_FREE_TRIAL",
+                        "PROMOTION_TYPE_INTRODUCTORY_PRICING"
+                    ],
+                    "enumDescriptions": [
+                        "The promotion type is unspecified.",
+                        "The promotion is a free trial.",
+                        "The promotion is a reduced introductory pricing."
+                    ],
                     "readOnly": true,
                     "type": "string"
                 },
@@ -635,6 +654,33 @@
                     },
                     "readOnly": true,
                     "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetails": {
+            "description": "The details of a introductory pricing promotion.",
+            "id": "GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetails",
+            "properties": {
+                "introductoryPricingSpecs": {
+                    "description": "Specifies the introductory pricing periods.",
+                    "items": {
+                        "$ref": "GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetailsIntroductoryPricingSpec"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetailsIntroductoryPricingSpec": {
+            "description": "The duration of an introductory pricing promotion.",
+            "id": "GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetailsIntroductoryPricingSpec",
+            "properties": {
+                "recurrenceCount": {
+                    "description": "Output only. Output Only. The duration of an introductory offer in billing cycles.",
+                    "format": "int32",
+                    "readOnly": true,
+                    "type": "integer"
                 }
             },
             "type": "object"
@@ -711,6 +757,12 @@
                 },
                 "redirectUri": {
                     "description": "Output only. The place where partners should redirect the end-user to after creation. This field might also be populated when creation failed. However, Partners should always prepare a default URL to redirect the user in case this field is empty.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "renewalTime": {
+                    "description": "Output only. The time at which the subscription is expected to be renewed by Google - a new charge will be incurred and the service entitlement will be renewed. A non-immediate cancellation will take place at this time too, before which, the service entitlement for the end user will remain valid. UTC timezone in ISO 8061 format. For example: \"2019-08-31T17:28:54.564Z\"",
+                    "format": "google-datetime",
                     "readOnly": true,
                     "type": "string"
                 },

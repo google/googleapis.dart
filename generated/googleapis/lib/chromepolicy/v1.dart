@@ -406,6 +406,59 @@ class MediaResource {
   }
 }
 
+class ChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle {
+  /// Description about current life cycle.
+  core.String? description;
+
+  /// End supporting date for current policy.
+  GoogleTypeDate? endSupport;
+
+  /// Indicate current life cycle stage of the policy API.
+  /// Possible string values are:
+  /// - "API_UNSPECIFIED" : unspecified.
+  /// - "API_PREVIEW" : Policy is not working yet, but giving developers heads
+  /// up on format. This stage can transfer to API_DEVELOPEMNT or API_CURRENT.
+  /// - "API_DEVELOPMENT" : Policy can change format in backward incompatible
+  /// way (breaking change). This stage can transfer to API_CURRENT or
+  /// API_DEPRECATED. This could be used for policies launched only to TTs or
+  /// launched to selected customers for emergency usage.
+  /// - "API_CURRENT" : Policy in official format. Policy can change format in
+  /// backward compatible way (non-breaking change). Example: this policy can
+  /// introduce a new field, which is considered non-breaking change, when field
+  /// masks are properly utilized. This stage can transfer to API_DEPRECATED.
+  /// - "API_DEPRECATED" : Please stop using this policy. This policy is
+  /// deprecated and may/will be removed in the future. Most likely a new policy
+  /// was introduced to replace this one.
+  core.String? policyApiLifecycleStage;
+
+  ChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle({
+    this.description,
+    this.endSupport,
+    this.policyApiLifecycleStage,
+  });
+
+  ChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle.fromJson(core.Map _json)
+      : this(
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          endSupport: _json.containsKey('endSupport')
+              ? GoogleTypeDate.fromJson(
+                  _json['endSupport'] as core.Map<core.String, core.dynamic>)
+              : null,
+          policyApiLifecycleStage: _json.containsKey('policyApiLifecycleStage')
+              ? _json['policyApiLifecycleStage'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (description != null) 'description': description!,
+        if (endSupport != null) 'endSupport': endSupport!,
+        if (policyApiLifecycleStage != null)
+          'policyApiLifecycleStage': policyApiLifecycleStage!,
+      };
+}
+
 /// Additional key names that will be used to identify the target of the policy
 /// value.
 class GoogleChromePolicyV1AdditionalTargetKeyName {
@@ -626,7 +679,7 @@ class GoogleChromePolicyV1ModifyOrgUnitPolicyRequest {
 
 /// Resource representing a policy schema.
 ///
-/// Next ID: 11
+/// Next ID: 12
 class GoogleChromePolicyV1PolicySchema {
   /// Specific access restrictions related to this policy.
   ///
@@ -661,6 +714,11 @@ class GoogleChromePolicyV1PolicySchema {
   /// Output only.
   core.List<GoogleChromePolicyV1PolicySchemaNoticeDescription>? notices;
 
+  /// Current life cycle information.
+  ///
+  /// Output only.
+  ChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle? policyApiLifeycle;
+
   /// Description about the policy schema for user consumption.
   ///
   /// Output only.
@@ -691,6 +749,7 @@ class GoogleChromePolicyV1PolicySchema {
     this.fieldDescriptions,
     this.name,
     this.notices,
+    this.policyApiLifeycle,
     this.policyDescription,
     this.schemaName,
     this.supportUri,
@@ -732,6 +791,11 @@ class GoogleChromePolicyV1PolicySchema {
                               value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          policyApiLifeycle: _json.containsKey('policyApiLifeycle')
+              ? ChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle.fromJson(
+                  _json['policyApiLifeycle']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           policyDescription: _json.containsKey('policyDescription')
               ? _json['policyDescription'] as core.String
               : null,
@@ -757,6 +821,7 @@ class GoogleChromePolicyV1PolicySchema {
         if (fieldDescriptions != null) 'fieldDescriptions': fieldDescriptions!,
         if (name != null) 'name': name!,
         if (notices != null) 'notices': notices!,
+        if (policyApiLifeycle != null) 'policyApiLifeycle': policyApiLifeycle!,
         if (policyDescription != null) 'policyDescription': policyDescription!,
         if (schemaName != null) 'schemaName': schemaName!,
         if (supportUri != null) 'supportUri': supportUri!,
@@ -1263,6 +1328,17 @@ class GoogleChromePolicyV1UploadPolicyFileResponse {
 /// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
 /// object `{}`.
 typedef GoogleProtobufEmpty = $Empty;
+
+/// Represents a whole or partial calendar date, such as a birthday.
+///
+/// The time of day and time zone are either specified elsewhere or are
+/// insignificant. The date is relative to the Gregorian Calendar. This can
+/// represent one of the following: * A full date, with non-zero year, month,
+/// and day values * A month and day value, with a zero year, such as an
+/// anniversary * A year on its own, with zero month and day values * A year and
+/// month value, with a zero day, such as a credit card expiration date Related
+/// types are google.type.TimeOfDay and `google.protobuf.Timestamp`.
+typedef GoogleTypeDate = $Date;
 
 /// Describes a message type.
 class Proto2DescriptorProto {

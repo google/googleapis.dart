@@ -687,6 +687,8 @@ class FilterPair {
   /// - "FILTER_VERIFICATION_VIDEO_RESIZED"
   /// - "FILTER_VERIFICATION_AUDIBILITY_START"
   /// - "FILTER_VERIFICATION_AUDIBILITY_COMPLETE"
+  /// - "FILTER_MEDIA_TYPE"
+  /// - "FILTER_AUDIO_FEED_TYPE_NAME"
   core.String? type;
 
   /// Filter value.
@@ -1299,6 +1301,8 @@ class PathQueryOptionsFilter {
   /// - "FILTER_VERIFICATION_VIDEO_RESIZED"
   /// - "FILTER_VERIFICATION_AUDIBILITY_START"
   /// - "FILTER_VERIFICATION_AUDIBILITY_COMPLETE"
+  /// - "FILTER_MEDIA_TYPE"
+  /// - "FILTER_AUDIO_FEED_TYPE_NAME"
   core.String? filter;
 
   /// Indicates how the filter should be matched to the value.

@@ -12,7 +12,7 @@
     "baseUrl": "https://privateca.googleapis.com/",
     "batchPath": "batch",
     "canonicalName": "Certificate Authority Service",
-    "description": "The Certificate Authority Service API is a highly-available, scalable service that enables you to simplify and automate the management of private certificate authorities (CAs) while staying in control of your private keys.\" ",
+    "description": "The Certificate Authority Service API is a highly-available, scalable service that enables you to simplify and automate the management of private certificate authorities (CAs) while staying in control of your private keys. ",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/",
     "icons": {
@@ -308,7 +308,7 @@
                                     ],
                                     "parameters": {
                                         "options.requestedPolicyVersion": {
-                                            "description": "Optional. The policy format version to be returned. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional bindings must specify version 3. Policies without any conditional bindings may specify any valid value or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).",
+                                            "description": "Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).",
                                             "format": "int32",
                                             "location": "query",
                                             "type": "integer"
@@ -833,7 +833,7 @@
                                                     ],
                                                     "parameters": {
                                                         "options.requestedPolicyVersion": {
-                                                            "description": "Optional. The policy format version to be returned. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional bindings must specify version 3. Policies without any conditional bindings may specify any valid value or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).",
+                                                            "description": "Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).",
                                                             "format": "int32",
                                                             "location": "query",
                                                             "type": "integer"
@@ -1296,7 +1296,7 @@
                                     ],
                                     "parameters": {
                                         "options.requestedPolicyVersion": {
-                                            "description": "Optional. The policy format version to be returned. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional bindings must specify version 3. Policies without any conditional bindings may specify any valid value or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).",
+                                            "description": "Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).",
                                             "format": "int32",
                                             "location": "query",
                                             "type": "integer"
@@ -1588,7 +1588,7 @@
             }
         }
     },
-    "revision": "20211020",
+    "revision": "20211110",
     "rootUrl": "https://privateca.googleapis.com/",
     "schemas": {
         "AccessUrls": {
@@ -1733,12 +1733,6 @@
             "description": "A CaPool represents a group of CertificateAuthorities that form a trust anchor. A CaPool can be used to manage issuance policies for one or more CertificateAuthority resources and to rotate CA certificates in and out of the trust anchor.",
             "id": "CaPool",
             "properties": {
-                "createTime": {
-                    "description": "Output only. The time at which this CaPool was created.",
-                    "format": "google-datetime",
-                    "readOnly": true,
-                    "type": "string"
-                },
                 "issuancePolicy": {
                     "$ref": "IssuancePolicy",
                     "description": "Optional. The IssuancePolicy to control how Certificates will be issued from this CaPool."
@@ -1771,12 +1765,6 @@
                         "Enterprise tier.",
                         "DevOps tier."
                     ],
-                    "type": "string"
-                },
-                "updateTime": {
-                    "description": "Output only. The time at which this CaPool was last updated.",
-                    "format": "google-datetime",
-                    "readOnly": true,
                     "type": "string"
                 }
             },

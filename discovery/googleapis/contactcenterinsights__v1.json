@@ -210,7 +210,7 @@
                                     ],
                                     "parameters": {
                                         "conversationId": {
-                                            "description": "A unique ID for the new conversation. This ID will become the final component of the conversation's resource name. If no ID is specified, a server-generated ID will be used. This value should be 4-32 characters and must match the regular expression /^[a-z0-9-]{4,32}$/. Valid characters are /a-z-/",
+                                            "description": "A unique ID for the new conversation. This ID will become the final component of the conversation's resource name. If no ID is specified, a server-generated ID will be used. This value should be 4-64 characters and must match the regular expression `^[a-z0-9-]{4,64}$`. Valid characters are `a-z-`",
                                             "location": "query",
                                             "type": "string"
                                         },
@@ -1079,6 +1079,40 @@
                                     "scopes": [
                                         "https://www.googleapis.com/auth/cloud-platform"
                                     ]
+                                },
+                                "patch": {
+                                    "description": "Updates a phrase matcher.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/phraseMatchers/{phraseMatchersId}",
+                                    "httpMethod": "PATCH",
+                                    "id": "contactcenterinsights.projects.locations.phraseMatchers.patch",
+                                    "parameterOrder": [
+                                        "name"
+                                    ],
+                                    "parameters": {
+                                        "name": {
+                                            "description": "The resource name of the phrase matcher. Format: projects/{project}/locations/{location}/phraseMatchers/{phrase_matcher}",
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/locations/[^/]+/phraseMatchers/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        },
+                                        "updateMask": {
+                                            "description": "The list of fields to be updated.",
+                                            "format": "google-fieldmask",
+                                            "location": "query",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/{+name}",
+                                    "request": {
+                                        "$ref": "GoogleCloudContactcenterinsightsV1PhraseMatcher"
+                                    },
+                                    "response": {
+                                        "$ref": "GoogleCloudContactcenterinsightsV1PhraseMatcher"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
                                 }
                             }
                         }
@@ -1087,7 +1121,7 @@
             }
         }
     },
-    "revision": "20211027",
+    "revision": "20211203",
     "rootUrl": "https://contactcenterinsights.googleapis.com/",
     "schemas": {
         "GoogleCloudContactcenterinsightsV1Analysis": {
@@ -1311,6 +1345,13 @@
                         "type": "integer"
                     },
                     "description": "A map associating each issue resource name with its respective number of matches in the set of conversations. Key has the format: `projects//locations//issueModels//issues/` Deprecated, use `issue_matches_stats` field instead.",
+                    "type": "object"
+                },
+                "issueMatchesStats": {
+                    "additionalProperties": {
+                        "$ref": "GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStats"
+                    },
+                    "description": "A map associating each issue resource name with its respective number of matches in the set of conversations. Key has the format: `projects//locations//issueModels//issues/`",
                     "type": "object"
                 },
                 "smartHighlighterMatches": {
@@ -2039,6 +2080,20 @@
                 "parent": {
                     "description": "Required. The parent resource to export data from.",
                     "type": "string"
+                },
+                "writeDisposition": {
+                    "description": "Options for what to do if the destination table already exists.",
+                    "enum": [
+                        "WRITE_DISPOSITION_UNSPECIFIED",
+                        "WRITE_TRUNCATE",
+                        "WRITE_APPEND"
+                    ],
+                    "enumDescriptions": [
+                        "Write disposition is not specified. Defaults to WRITE_TRUNCATE.",
+                        "If the table already exists, BigQuery will overwrite the table data and use the schema from the load.",
+                        "If the table already exists, BigQuery will append data to the table."
+                    ],
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -2319,6 +2374,10 @@
             "description": "Aggregated statistics about an issue.",
             "id": "GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStats",
             "properties": {
+                "displayName": {
+                    "description": "Display name of the issue.",
+                    "type": "string"
+                },
                 "issue": {
                     "description": "Issue resource. Format: projects/{project}/locations/{location}/issueModels/{issue_model}/issues/{issue}",
                     "type": "string"
@@ -2994,6 +3053,20 @@
                 "parent": {
                     "description": "Required. The parent resource to export data from.",
                     "type": "string"
+                },
+                "writeDisposition": {
+                    "description": "Options for what to do if the destination table already exists.",
+                    "enum": [
+                        "WRITE_DISPOSITION_UNSPECIFIED",
+                        "WRITE_TRUNCATE",
+                        "WRITE_APPEND"
+                    ],
+                    "enumDescriptions": [
+                        "Write disposition is not specified. Defaults to WRITE_TRUNCATE.",
+                        "If the table already exists, BigQuery will overwrite the table data and use the schema from the load.",
+                        "If the table already exists, BigQuery will append data to the table."
+                    ],
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -3139,6 +3212,10 @@
             "description": "Aggregated statistics about an issue.",
             "id": "GoogleCloudContactcenterinsightsV1alpha1IssueModelLabelStatsIssueStats",
             "properties": {
+                "displayName": {
+                    "description": "Display name of the issue.",
+                    "type": "string"
+                },
                 "issue": {
                     "description": "Issue resource. Format: projects/{project}/locations/{location}/issueModels/{issue_model}/issues/{issue}",
                     "type": "string"

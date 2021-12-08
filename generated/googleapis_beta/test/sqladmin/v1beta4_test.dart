@@ -612,6 +612,7 @@ api.DatabaseInstance buildDatabaseInstance() {
     o.connectionName = 'foo';
     o.createTime = 'foo';
     o.currentDiskSize = 'foo';
+    o.databaseInstalledVersion = 'foo';
     o.databaseVersion = 'foo';
     o.diskEncryptionConfiguration = buildDiskEncryptionConfiguration();
     o.diskEncryptionStatus = buildDiskEncryptionStatus();
@@ -663,6 +664,10 @@ void checkDatabaseInstance(api.DatabaseInstance o) {
     );
     unittest.expect(
       o.currentDiskSize!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.databaseInstalledVersion!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -2328,6 +2333,69 @@ void checkOperationsListResponse(api.OperationsListResponse o) {
   buildCounterOperationsListResponse--;
 }
 
+core.int buildCounterPasswordStatus = 0;
+api.PasswordStatus buildPasswordStatus() {
+  final o = api.PasswordStatus();
+  buildCounterPasswordStatus++;
+  if (buildCounterPasswordStatus < 3) {
+    o.locked = true;
+    o.passwordExpirationTime = 'foo';
+  }
+  buildCounterPasswordStatus--;
+  return o;
+}
+
+void checkPasswordStatus(api.PasswordStatus o) {
+  buildCounterPasswordStatus++;
+  if (buildCounterPasswordStatus < 3) {
+    unittest.expect(o.locked!, unittest.isTrue);
+    unittest.expect(
+      o.passwordExpirationTime!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterPasswordStatus--;
+}
+
+core.int buildCounterPasswordValidationPolicy = 0;
+api.PasswordValidationPolicy buildPasswordValidationPolicy() {
+  final o = api.PasswordValidationPolicy();
+  buildCounterPasswordValidationPolicy++;
+  if (buildCounterPasswordValidationPolicy < 3) {
+    o.complexity = 'foo';
+    o.disallowUsernameSubstring = true;
+    o.minLength = 42;
+    o.passwordChangeInterval = 'foo';
+    o.reuseInterval = 42;
+  }
+  buildCounterPasswordValidationPolicy--;
+  return o;
+}
+
+void checkPasswordValidationPolicy(api.PasswordValidationPolicy o) {
+  buildCounterPasswordValidationPolicy++;
+  if (buildCounterPasswordValidationPolicy < 3) {
+    unittest.expect(
+      o.complexity!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.disallowUsernameSubstring!, unittest.isTrue);
+    unittest.expect(
+      o.minLength!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.passwordChangeInterval!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.reuseInterval!,
+      unittest.equals(42),
+    );
+  }
+  buildCounterPasswordValidationPolicy--;
+}
+
 core.int buildCounterReplicaConfiguration = 0;
 api.ReplicaConfiguration buildReplicaConfiguration() {
   final o = api.ReplicaConfiguration();
@@ -2523,6 +2591,7 @@ api.Settings buildSettings() {
     o.kind = 'foo';
     o.locationPreference = buildLocationPreference();
     o.maintenanceWindow = buildMaintenanceWindow();
+    o.passwordValidationPolicy = buildPasswordValidationPolicy();
     o.pricingPlan = 'foo';
     o.replicationType = 'foo';
     o.settingsVersion = 'foo';
@@ -2574,6 +2643,7 @@ void checkSettings(api.Settings o) {
     );
     checkLocationPreference(o.locationPreference!);
     checkMaintenanceWindow(o.maintenanceWindow!);
+    checkPasswordValidationPolicy(o.passwordValidationPolicy!);
     unittest.expect(
       o.pricingPlan!,
       unittest.equals('foo'),
@@ -3293,6 +3363,7 @@ api.User buildUser() {
     o.kind = 'foo';
     o.name = 'foo';
     o.password = 'foo';
+    o.passwordPolicy = buildUserPasswordValidationPolicy();
     o.project = 'foo';
     o.sqlserverUserDetails = buildSqlServerUserDetails();
     o.type = 'foo';
@@ -3328,6 +3399,7 @@ void checkUser(api.User o) {
       o.password!,
       unittest.equals('foo'),
     );
+    checkUserPasswordValidationPolicy(o.passwordPolicy!);
     unittest.expect(
       o.project!,
       unittest.equals('foo'),
@@ -3339,6 +3411,37 @@ void checkUser(api.User o) {
     );
   }
   buildCounterUser--;
+}
+
+core.int buildCounterUserPasswordValidationPolicy = 0;
+api.UserPasswordValidationPolicy buildUserPasswordValidationPolicy() {
+  final o = api.UserPasswordValidationPolicy();
+  buildCounterUserPasswordValidationPolicy++;
+  if (buildCounterUserPasswordValidationPolicy < 3) {
+    o.allowedFailedAttempts = 42;
+    o.enableFailedAttemptsCheck = true;
+    o.passwordExpirationDuration = 'foo';
+    o.status = buildPasswordStatus();
+  }
+  buildCounterUserPasswordValidationPolicy--;
+  return o;
+}
+
+void checkUserPasswordValidationPolicy(api.UserPasswordValidationPolicy o) {
+  buildCounterUserPasswordValidationPolicy++;
+  if (buildCounterUserPasswordValidationPolicy < 3) {
+    unittest.expect(
+      o.allowedFailedAttempts!,
+      unittest.equals(42),
+    );
+    unittest.expect(o.enableFailedAttemptsCheck!, unittest.isTrue);
+    unittest.expect(
+      o.passwordExpirationDuration!,
+      unittest.equals('foo'),
+    );
+    checkPasswordStatus(o.status!);
+  }
+  buildCounterUserPasswordValidationPolicy--;
 }
 
 core.List<api.User> buildUnnamed30() => [
@@ -3954,6 +4057,26 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-PasswordStatus', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildPasswordStatus();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PasswordStatus.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkPasswordStatus(od);
+    });
+  });
+
+  unittest.group('obj-schema-PasswordValidationPolicy', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildPasswordValidationPolicy();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PasswordValidationPolicy.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkPasswordValidationPolicy(od);
+    });
+  });
+
   unittest.group('obj-schema-ReplicaConfiguration', () {
     unittest.test('to-json--from-json', () async {
       final o = buildReplicaConfiguration();
@@ -4223,6 +4346,16 @@ void main() {
       final od =
           api.User.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkUser(od);
+    });
+  });
+
+  unittest.group('obj-schema-UserPasswordValidationPolicy', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildUserPasswordValidationPolicy();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.UserPasswordValidationPolicy.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkUserPasswordValidationPolicy(od);
     });
   });
 

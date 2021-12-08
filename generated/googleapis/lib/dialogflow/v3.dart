@@ -10431,6 +10431,11 @@ class GoogleCloudDialogflowCxV3ResponseMessage {
   /// does not try to read or process the URI in any way.
   GoogleCloudDialogflowCxV3ResponseMessagePlayAudio? playAudio;
 
+  /// A signal that the client should transfer the phone call connected to this
+  /// agent to a third-party endpoint.
+  GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCall?
+      telephonyTransferCall;
+
   /// Returns a text response.
   GoogleCloudDialogflowCxV3ResponseMessageText? text;
 
@@ -10442,6 +10447,7 @@ class GoogleCloudDialogflowCxV3ResponseMessage {
     this.outputAudioText,
     this.payload,
     this.playAudio,
+    this.telephonyTransferCall,
     this.text,
   });
 
@@ -10478,6 +10484,11 @@ class GoogleCloudDialogflowCxV3ResponseMessage {
               ? GoogleCloudDialogflowCxV3ResponseMessagePlayAudio.fromJson(
                   _json['playAudio'] as core.Map<core.String, core.dynamic>)
               : null,
+          telephonyTransferCall: _json.containsKey('telephonyTransferCall')
+              ? GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCall
+                  .fromJson(_json['telephonyTransferCall']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           text: _json.containsKey('text')
               ? GoogleCloudDialogflowCxV3ResponseMessageText.fromJson(
                   _json['text'] as core.Map<core.String, core.dynamic>)
@@ -10493,6 +10504,8 @@ class GoogleCloudDialogflowCxV3ResponseMessage {
         if (outputAudioText != null) 'outputAudioText': outputAudioText!,
         if (payload != null) 'payload': payload!,
         if (playAudio != null) 'playAudio': playAudio!,
+        if (telephonyTransferCall != null)
+          'telephonyTransferCall': telephonyTransferCall!,
         if (text != null) 'text': text!,
       };
 }
@@ -10572,6 +10585,11 @@ typedef GoogleCloudDialogflowCxV3ResponseMessageOutputAudioText
 /// Specifies an audio clip to be played by the client as part of the response.
 typedef GoogleCloudDialogflowCxV3ResponseMessagePlayAudio
     = $ResponseMessagePlayAudio;
+
+/// Represents the signal that telles the client to transfer the phone call
+/// connected to the agent to a third-party endpoint.
+typedef GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCall
+    = $ResponseMessageTelephonyTransferCall;
 
 /// The text response message.
 typedef GoogleCloudDialogflowCxV3ResponseMessageText = $ResponseMessageText;
@@ -12130,6 +12148,20 @@ class GoogleCloudDialogflowCxV3Webhook {
 
 /// Represents configuration for a generic web service.
 class GoogleCloudDialogflowCxV3WebhookGenericWebService {
+  /// Specifies a list of allowed custom CA certificates (in DER format) for
+  /// HTTPS verification.
+  ///
+  /// This overrides the default SSL trust store. If this is empty or
+  /// unspecified, Dialogflow will use Google's default trust store to verify
+  /// certificates. N.B. Make sure the HTTPS server certificates are signed with
+  /// "subject alt name". For instance a certificate can be self-signed using
+  /// the following command, openssl x509 -req -days 200 -in example.com.csr \
+  /// -signkey example.com.key \ -out example.com.crt \ -extfile \<(printf
+  /// "\nsubjectAltName='DNS:www.example.com'")
+  ///
+  /// Optional.
+  core.List<core.String>? allowedCaCerts;
+
   /// The password for HTTP Basic authentication.
   core.String? password;
 
@@ -12147,6 +12179,7 @@ class GoogleCloudDialogflowCxV3WebhookGenericWebService {
   core.String? username;
 
   GoogleCloudDialogflowCxV3WebhookGenericWebService({
+    this.allowedCaCerts,
     this.password,
     this.requestHeaders,
     this.uri,
@@ -12155,6 +12188,11 @@ class GoogleCloudDialogflowCxV3WebhookGenericWebService {
 
   GoogleCloudDialogflowCxV3WebhookGenericWebService.fromJson(core.Map _json)
       : this(
+          allowedCaCerts: _json.containsKey('allowedCaCerts')
+              ? (_json['allowedCaCerts'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
           password: _json.containsKey('password')
               ? _json['password'] as core.String
               : null,
@@ -12174,6 +12212,7 @@ class GoogleCloudDialogflowCxV3WebhookGenericWebService {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (allowedCaCerts != null) 'allowedCaCerts': allowedCaCerts!,
         if (password != null) 'password': password!,
         if (requestHeaders != null) 'requestHeaders': requestHeaders!,
         if (uri != null) 'uri': uri!,

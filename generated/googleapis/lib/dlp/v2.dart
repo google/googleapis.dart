@@ -6131,6 +6131,9 @@ class GooglePrivacyDlpV2BigQueryOptions {
   /// fields such as `person.birthdate.year` are allowed.
   core.List<GooglePrivacyDlpV2FieldId>? identifyingFields;
 
+  /// Limit scanning only to these fields.
+  core.List<GooglePrivacyDlpV2FieldId>? includedFields;
+
   /// Max number of rows to scan.
   ///
   /// If the table has more rows than this value, the rest of the rows are
@@ -6162,6 +6165,7 @@ class GooglePrivacyDlpV2BigQueryOptions {
   GooglePrivacyDlpV2BigQueryOptions({
     this.excludedFields,
     this.identifyingFields,
+    this.includedFields,
     this.rowsLimit,
     this.rowsLimitPercent,
     this.sampleMethod,
@@ -6178,6 +6182,12 @@ class GooglePrivacyDlpV2BigQueryOptions {
               : null,
           identifyingFields: _json.containsKey('identifyingFields')
               ? (_json['identifyingFields'] as core.List)
+                  .map((value) => GooglePrivacyDlpV2FieldId.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          includedFields: _json.containsKey('includedFields')
+              ? (_json['includedFields'] as core.List)
                   .map((value) => GooglePrivacyDlpV2FieldId.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -6200,6 +6210,7 @@ class GooglePrivacyDlpV2BigQueryOptions {
   core.Map<core.String, core.dynamic> toJson() => {
         if (excludedFields != null) 'excludedFields': excludedFields!,
         if (identifyingFields != null) 'identifyingFields': identifyingFields!,
+        if (includedFields != null) 'includedFields': includedFields!,
         if (rowsLimit != null) 'rowsLimit': rowsLimit!,
         if (rowsLimitPercent != null) 'rowsLimitPercent': rowsLimitPercent!,
         if (sampleMethod != null) 'sampleMethod': sampleMethod!,
@@ -11748,6 +11759,9 @@ class GooglePrivacyDlpV2PrimitiveTransformation {
   /// Replace with a specified value.
   GooglePrivacyDlpV2ReplaceValueConfig? replaceConfig;
 
+  /// Replace with a value randomly drawn (with replacement) from a dictionary.
+  GooglePrivacyDlpV2ReplaceDictionaryConfig? replaceDictionaryConfig;
+
   /// Replace with infotype
   GooglePrivacyDlpV2ReplaceWithInfoTypeConfig? replaceWithInfoTypeConfig;
 
@@ -11764,6 +11778,7 @@ class GooglePrivacyDlpV2PrimitiveTransformation {
     this.fixedSizeBucketingConfig,
     this.redactConfig,
     this.replaceConfig,
+    this.replaceDictionaryConfig,
     this.replaceWithInfoTypeConfig,
     this.timePartConfig,
   });
@@ -11816,6 +11831,11 @@ class GooglePrivacyDlpV2PrimitiveTransformation {
               ? GooglePrivacyDlpV2ReplaceValueConfig.fromJson(
                   _json['replaceConfig'] as core.Map<core.String, core.dynamic>)
               : null,
+          replaceDictionaryConfig: _json.containsKey('replaceDictionaryConfig')
+              ? GooglePrivacyDlpV2ReplaceDictionaryConfig.fromJson(
+                  _json['replaceDictionaryConfig']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           replaceWithInfoTypeConfig:
               _json.containsKey('replaceWithInfoTypeConfig')
                   ? GooglePrivacyDlpV2ReplaceWithInfoTypeConfig.fromJson(
@@ -11843,6 +11863,8 @@ class GooglePrivacyDlpV2PrimitiveTransformation {
           'fixedSizeBucketingConfig': fixedSizeBucketingConfig!,
         if (redactConfig != null) 'redactConfig': redactConfig!,
         if (replaceConfig != null) 'replaceConfig': replaceConfig!,
+        if (replaceDictionaryConfig != null)
+          'replaceDictionaryConfig': replaceDictionaryConfig!,
         if (replaceWithInfoTypeConfig != null)
           'replaceWithInfoTypeConfig': replaceWithInfoTypeConfig!,
         if (timePartConfig != null) 'timePartConfig': timePartConfig!,
@@ -12636,6 +12658,31 @@ class GooglePrivacyDlpV2ReidentifyContentResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (item != null) 'item': item!,
         if (overview != null) 'overview': overview!,
+      };
+}
+
+/// Replace each input value with a value randomly selected from the dictionary.
+class GooglePrivacyDlpV2ReplaceDictionaryConfig {
+  /// A list of words to select from for random replacement.
+  ///
+  /// The [limits](https://cloud.google.com/dlp/limits) page contains details
+  /// about the size limits of dictionaries.
+  GooglePrivacyDlpV2WordList? wordList;
+
+  GooglePrivacyDlpV2ReplaceDictionaryConfig({
+    this.wordList,
+  });
+
+  GooglePrivacyDlpV2ReplaceDictionaryConfig.fromJson(core.Map _json)
+      : this(
+          wordList: _json.containsKey('wordList')
+              ? GooglePrivacyDlpV2WordList.fromJson(
+                  _json['wordList'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (wordList != null) 'wordList': wordList!,
       };
 }
 

@@ -285,7 +285,7 @@ class PhotoResource {
   /// fields are specified. Multiple fields can be specified in a
   /// comma-delimited list. The following fields are valid: * `pose.heading` *
   /// `pose.latLngPair` * `pose.pitch` * `pose.roll` * `pose.level` *
-  /// `pose.altitude` * `connections` * `places` *Note:* When updateMask
+  /// `pose.altitude` * `connections` * `places` \> Note: When updateMask
   /// contains repeated fields, the entire set of repeated values get replaced
   /// with the new contents. For example, if updateMask contains `connections`
   /// and `UpdatePhotoRequest.photo.connections` is empty, all connections are
@@ -384,8 +384,8 @@ class PhotosResource {
   ///
   /// Request parameters:
   ///
-  /// [languageCode] - The BCP-47 language code, such as "en-US" or "sr-Latn".
-  /// For more information, see
+  /// [languageCode] - Optional. The BCP-47 language code, such as "en-US" or
+  /// "sr-Latn". For more information, see
   /// http://www.unicode.org/reports/tr35/#Unicode_locale_identifier. If
   /// language_code is unspecified, the user's language preference for Google
   /// services is used.
@@ -447,7 +447,7 @@ class PhotosResource {
   /// fields specified in updateMask field are used. If `updateMask` is not
   /// present, the update applies to all fields. The number of
   /// UpdatePhotoRequest messages in a BatchUpdatePhotosRequest must not exceed
-  /// 20. *Note:* To update Pose.altitude, Pose.latLngPair has to be filled as
+  /// 20. \> Note: To update Pose.altitude, Pose.latLngPair has to be filled as
   /// well. Otherwise, the request will fail.
   ///
   /// [request] - The metadata request object.
@@ -487,7 +487,7 @@ class PhotosResource {
 
   /// Lists all the Photos that belong to the user.
   ///
-  /// *Note:* Recently created photos that are still being indexed are not
+  /// \> Note: Recently created photos that are still being indexed are not
   /// returned in the response.
   ///
   /// Request parameters:
@@ -496,20 +496,20 @@ class PhotosResource {
   /// `placeId=ChIJj61dQgK6j4AR4GeTYWZsKWw`. The filters supported at the moment
   /// are: `placeId`.
   ///
-  /// [languageCode] - The BCP-47 language code, such as "en-US" or "sr-Latn".
-  /// For more information, see
+  /// [languageCode] - Optional. The BCP-47 language code, such as "en-US" or
+  /// "sr-Latn". For more information, see
   /// http://www.unicode.org/reports/tr35/#Unicode_locale_identifier. If
   /// language_code is unspecified, the user's language preference for Google
   /// services is used.
   ///
-  /// [pageSize] - The maximum number of photos to return. `pageSize` must be
-  /// non-negative. If `pageSize` is zero or is not provided, the default page
-  /// size of 100 is used. The number of photos returned in the response may be
-  /// less than `pageSize` if the number of photos that belong to the user is
-  /// less than `pageSize`.
+  /// [pageSize] - Optional. The maximum number of photos to return. `pageSize`
+  /// must be non-negative. If `pageSize` is zero or is not provided, the
+  /// default page size of 100 is used. The number of photos returned in the
+  /// response may be less than `pageSize` if the number of photos that belong
+  /// to the user is less than `pageSize`.
   ///
-  /// [pageToken] - The nextPageToken value returned from a previous ListPhotos
-  /// request, if any.
+  /// [pageToken] - Optional. The nextPageToken value returned from a previous
+  /// ListPhotos request, if any.
   ///
   /// [view] - Required. Specifies if a download URL for the photos bytes should
   /// be returned in the Photos response.
@@ -746,6 +746,8 @@ class Level {
   /// 0 indicates the ground level, 1 indicates the first level above ground
   /// level, -1 indicates the first level under ground level. Non-integer values
   /// are OK.
+  ///
+  /// Optional.
   core.double? number;
 
   Level({
@@ -808,11 +810,15 @@ class Photo {
   ///
   /// When the photo has no exif timestamp, this is used to set a timestamp in
   /// the photo metadata.
+  ///
+  /// Optional.
   core.String? captureTime;
 
   /// Connections to other photos.
   ///
   /// A connection represents the link from this photo to another photo.
+  ///
+  /// Optional.
   core.List<Connection>? connections;
 
   /// The download URL for the photo bytes.
@@ -825,8 +831,6 @@ class Photo {
 
   /// Status in Google Maps, whether this photo was published or rejected.
   ///
-  /// Not currently populated.
-  ///
   /// Output only.
   /// Possible string values are:
   /// - "UNSPECIFIED_MAPS_PUBLISH_STATUS" : The status of the photo is unknown.
@@ -838,12 +842,18 @@ class Photo {
   ///
   /// Output only when creating a photo. Identifier for the photo, which is
   /// unique among all photos in Google.
+  ///
+  /// Required. Output only.
   PhotoId? photoId;
 
   /// Places where this photo belongs.
+  ///
+  /// Optional.
   core.List<Place>? places;
 
   /// Pose of the photo.
+  ///
+  /// Optional.
   Pose? pose;
 
   /// The share link for the photo.
@@ -874,12 +884,15 @@ class Photo {
   /// transfer.
   core.String? transferStatus;
 
-  /// Required when creating a photo.
+  /// Input only.
   ///
-  /// Input only. The resource URL where the photo bytes are uploaded to.
+  /// Required when creating a photo. Input only. The resource URL where the
+  /// photo bytes are uploaded to.
   UploadRef? uploadReference;
 
   /// Time when the image was uploaded.
+  ///
+  /// Output only.
   core.String? uploadTime;
 
   /// View count of the photo.
@@ -1026,15 +1039,17 @@ class PhotoResponse {
 
 /// Place metadata for an entity.
 class Place {
-  /// Output-only.
+  /// The language_code that the name is localized with.
   ///
-  /// The language_code that the name is localized with. This should be the
-  /// language_code specified in the request, but may be a fallback.
+  /// This should be the language_code specified in the request, but may be a
+  /// fallback.
+  ///
+  /// Output only.
   core.String? languageCode;
 
-  /// Output-only.
-  ///
   /// The name of the place, localized to the language_code.
+  ///
+  /// Output only.
   core.String? name;
 
   /// Place identifier, as described in
@@ -1081,10 +1096,12 @@ class Pose {
   /// NaN indicates an unmeasured quantity.
   core.double? altitude;
 
-  /// Compass heading, measured at the center of the photo in degrees clockwise
-  /// from North.
+  /// The following pose parameters pertain to the center of the photo.
   ///
-  /// Value must be \>=0 and \<360. NaN indicates an unmeasured quantity.
+  /// They match https://developers.google.com/streetview/spherical-metadata.
+  /// Compass heading, measured at the center of the photo in degrees clockwise
+  /// from North. Value must be \>=0 and \<360. NaN indicates an unmeasured
+  /// quantity.
   core.double? heading;
 
   /// Latitude and longitude pair of the pose, as explained here:
@@ -1185,9 +1202,9 @@ class UpdatePhotoRequest {
   /// specified. Multiple fields can be specified in a comma-delimited list. The
   /// following fields are valid: * `pose.heading` * `pose.latLngPair` *
   /// `pose.pitch` * `pose.roll` * `pose.level` * `pose.altitude` *
-  /// `connections` * `places` *Note:* When updateMask contains repeated fields,
-  /// the entire set of repeated values get replaced with the new contents. For
-  /// example, if updateMask contains `connections` and
+  /// `connections` * `places` \> Note: When updateMask contains repeated
+  /// fields, the entire set of repeated values get replaced with the new
+  /// contents. For example, if updateMask contains `connections` and
   /// `UpdatePhotoRequest.photo.connections` is empty, all connections are
   /// removed.
   ///

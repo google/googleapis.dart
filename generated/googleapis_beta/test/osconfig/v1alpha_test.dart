@@ -2650,6 +2650,17 @@ void checkUnnamed36(core.List<core.String> o) {
   );
 }
 
+core.List<api.VulnerabilityReportVulnerabilityItem> buildUnnamed37() => [
+      buildVulnerabilityReportVulnerabilityItem(),
+      buildVulnerabilityReportVulnerabilityItem(),
+    ];
+
+void checkUnnamed37(core.List<api.VulnerabilityReportVulnerabilityItem> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkVulnerabilityReportVulnerabilityItem(o[0]);
+  checkVulnerabilityReportVulnerabilityItem(o[1]);
+}
+
 core.int buildCounterVulnerabilityReportVulnerability = 0;
 api.VulnerabilityReportVulnerability buildVulnerabilityReportVulnerability() {
   final o = api.VulnerabilityReportVulnerability();
@@ -2659,6 +2670,7 @@ api.VulnerabilityReportVulnerability buildVulnerabilityReportVulnerability() {
     o.createTime = 'foo';
     o.details = buildVulnerabilityReportVulnerabilityDetails();
     o.installedInventoryItemIds = buildUnnamed36();
+    o.items = buildUnnamed37();
     o.updateTime = 'foo';
   }
   buildCounterVulnerabilityReportVulnerability--;
@@ -2676,6 +2688,7 @@ void checkVulnerabilityReportVulnerability(
     );
     checkVulnerabilityReportVulnerabilityDetails(o.details!);
     checkUnnamed36(o.installedInventoryItemIds!);
+    checkUnnamed37(o.items!);
     unittest.expect(
       o.updateTime!,
       unittest.equals('foo'),
@@ -2685,12 +2698,12 @@ void checkVulnerabilityReportVulnerability(
 }
 
 core.List<api.VulnerabilityReportVulnerabilityDetailsReference>
-    buildUnnamed37() => [
+    buildUnnamed38() => [
           buildVulnerabilityReportVulnerabilityDetailsReference(),
           buildVulnerabilityReportVulnerabilityDetailsReference(),
         ];
 
-void checkUnnamed37(
+void checkUnnamed38(
     core.List<api.VulnerabilityReportVulnerabilityDetailsReference> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkVulnerabilityReportVulnerabilityDetailsReference(o[0]);
@@ -2707,7 +2720,7 @@ api.VulnerabilityReportVulnerabilityDetails
     o.cvssV2Score = 42.0;
     o.cvssV3 = buildCVSSv3();
     o.description = 'foo';
-    o.references = buildUnnamed37();
+    o.references = buildUnnamed38();
     o.severity = 'foo';
   }
   buildCounterVulnerabilityReportVulnerabilityDetails--;
@@ -2731,7 +2744,7 @@ void checkVulnerabilityReportVulnerabilityDetails(
       o.description!,
       unittest.equals('foo'),
     );
-    checkUnnamed37(o.references!);
+    checkUnnamed38(o.references!);
     unittest.expect(
       o.severity!,
       unittest.equals('foo'),
@@ -2767,6 +2780,45 @@ void checkVulnerabilityReportVulnerabilityDetailsReference(
     );
   }
   buildCounterVulnerabilityReportVulnerabilityDetailsReference--;
+}
+
+core.int buildCounterVulnerabilityReportVulnerabilityItem = 0;
+api.VulnerabilityReportVulnerabilityItem
+    buildVulnerabilityReportVulnerabilityItem() {
+  final o = api.VulnerabilityReportVulnerabilityItem();
+  buildCounterVulnerabilityReportVulnerabilityItem++;
+  if (buildCounterVulnerabilityReportVulnerabilityItem < 3) {
+    o.availableInventoryItemId = 'foo';
+    o.fixedCpeUri = 'foo';
+    o.installedInventoryItemId = 'foo';
+    o.upstreamFix = 'foo';
+  }
+  buildCounterVulnerabilityReportVulnerabilityItem--;
+  return o;
+}
+
+void checkVulnerabilityReportVulnerabilityItem(
+    api.VulnerabilityReportVulnerabilityItem o) {
+  buildCounterVulnerabilityReportVulnerabilityItem++;
+  if (buildCounterVulnerabilityReportVulnerabilityItem < 3) {
+    unittest.expect(
+      o.availableInventoryItemId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.fixedCpeUri!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.installedInventoryItemId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.upstreamFix!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterVulnerabilityReportVulnerabilityItem--;
 }
 
 void main() {
@@ -3451,6 +3503,16 @@ void main() {
       final od = api.VulnerabilityReportVulnerabilityDetailsReference.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkVulnerabilityReportVulnerabilityDetailsReference(od);
+    });
+  });
+
+  unittest.group('obj-schema-VulnerabilityReportVulnerabilityItem', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildVulnerabilityReportVulnerabilityItem();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.VulnerabilityReportVulnerabilityItem.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkVulnerabilityReportVulnerabilityItem(od);
     });
   });
 

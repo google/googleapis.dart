@@ -1869,6 +1869,8 @@ class DnsKeysListResponse {
 /// A ManagedZone is a resource that represents a DNS zone hosted by the Cloud
 /// DNS service.
 class ManagedZone {
+  ManagedZoneCloudLoggingConfig? cloudLoggingConfig;
+
   /// The time that this resource was created on the server.
   ///
   /// This is in RFC3339 text format. Output only.
@@ -1947,6 +1949,7 @@ class ManagedZone {
   core.String? visibility;
 
   ManagedZone({
+    this.cloudLoggingConfig,
     this.creationTime,
     this.description,
     this.dnsName,
@@ -1967,6 +1970,11 @@ class ManagedZone {
 
   ManagedZone.fromJson(core.Map _json)
       : this(
+          cloudLoggingConfig: _json.containsKey('cloudLoggingConfig')
+              ? ManagedZoneCloudLoggingConfig.fromJson(
+                  _json['cloudLoggingConfig']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           creationTime: _json.containsKey('creationTime')
               ? _json['creationTime'] as core.String
               : null,
@@ -2028,6 +2036,8 @@ class ManagedZone {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (cloudLoggingConfig != null)
+          'cloudLoggingConfig': cloudLoggingConfig!,
         if (creationTime != null) 'creationTime': creationTime!,
         if (description != null) 'description': description!,
         if (dnsName != null) 'dnsName': dnsName!,
@@ -2047,6 +2057,33 @@ class ManagedZone {
         if (serviceDirectoryConfig != null)
           'serviceDirectoryConfig': serviceDirectoryConfig!,
         if (visibility != null) 'visibility': visibility!,
+      };
+}
+
+/// Cloud Logging configurations for publicly visible zones.
+class ManagedZoneCloudLoggingConfig {
+  /// If set, enable query logging for this ManagedZone.
+  ///
+  /// False by default, making logging opt-in.
+  core.bool? enableLogging;
+  core.String? kind;
+
+  ManagedZoneCloudLoggingConfig({
+    this.enableLogging,
+    this.kind,
+  });
+
+  ManagedZoneCloudLoggingConfig.fromJson(core.Map _json)
+      : this(
+          enableLogging: _json.containsKey('enableLogging')
+              ? _json['enableLogging'] as core.bool
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enableLogging != null) 'enableLogging': enableLogging!,
+        if (kind != null) 'kind': kind!,
       };
 }
 

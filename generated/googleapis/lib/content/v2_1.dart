@@ -2826,7 +2826,7 @@ class LiasettingsResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Retrieves the list of accessible Google My Business accounts.
+  /// Retrieves the list of accessible Business Profiles.
   ///
   /// Request parameters:
   ///
@@ -2835,7 +2835,7 @@ class LiasettingsResource {
   /// and `accountId` must be the ID of a sub-account of this account.
   ///
   /// [accountId] - The ID of the account for which to retrieve accessible
-  /// Google My Business accounts.
+  /// Business Profiles.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2950,7 +2950,7 @@ class LiasettingsResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Requests access to a specified Google My Business account.
+  /// Requests access to a specified Business Profile.
   ///
   /// Request parameters:
   ///
@@ -2958,9 +2958,10 @@ class LiasettingsResource {
   /// the same as accountId, then this account must be a multi-client account
   /// and `accountId` must be the ID of a sub-account of this account.
   ///
-  /// [accountId] - The ID of the account for which GMB access is requested.
+  /// [accountId] - The ID of the account for which Business Profile access is
+  /// requested.
   ///
-  /// [gmbEmail] - The email of the Google My Business account.
+  /// [gmbEmail] - The email of the Business Profile.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3116,7 +3117,7 @@ class LiasettingsResource {
   /// and `accountId` must be the ID of a sub-account of this account.
   ///
   /// [accountId] - The ID of the account for which to retrieve accessible
-  /// Google My Business accounts.
+  /// Business Profiles.
   ///
   /// [country] - The country for which the POS data provider is selected.
   ///
@@ -7911,8 +7912,8 @@ class Account {
   /// ID of CSS the account belongs to.
   core.String? cssId;
 
-  /// The GMB account which is linked or in the process of being linked with the
-  /// Merchant Center account.
+  /// The Business Profile which is linked or in the process of being linked
+  /// with the Merchant Center account.
   AccountGoogleMyBusinessLink? googleMyBusinessLink;
 
   /// Required for update.
@@ -8295,20 +8296,21 @@ class AccountCustomerService {
 }
 
 class AccountGoogleMyBusinessLink {
-  /// The ID of the GMB account.
+  /// The ID of the Business Profile.
   ///
   /// If this is provided, then `gmbEmail` is ignored. The value of this field
-  /// should match the `accountId` used by the GMB API.
+  /// should match the `accountId` used by the Business Profile API.
   core.String? gmbAccountId;
 
-  /// The GMB email address of which a specific account within a GMB account.
+  /// The Business Profile email address of a specific account within a Business
+  /// Profile.
   ///
-  /// A sample account within a GMB account could be a business account with set
-  /// of locations, managed under the GMB account.
+  /// A sample account within a Business Profile could be a business account
+  /// with set of locations, managed under the Business Profile.
   core.String? gmbEmail;
 
-  /// Status of the link between this Merchant Center account and the GMB
-  /// account.
+  /// Status of the link between this Merchant Center account and the Business
+  /// Profile.
   ///
   /// Acceptable values are: - "`active`" - "`pending`"
   core.String? status;
@@ -12381,7 +12383,7 @@ class GmbAccounts {
   /// The ID of the Merchant Center account.
   core.String? accountId;
 
-  /// A list of GMB accounts which are available to the merchant.
+  /// A list of Business Profiles which are available to the merchant.
   core.List<GmbAccountsGmbAccount>? gmbAccounts;
 
   GmbAccounts({
@@ -12409,16 +12411,16 @@ class GmbAccounts {
 }
 
 class GmbAccountsGmbAccount {
-  /// The email which identifies the GMB account.
+  /// The email which identifies the Business Profile.
   core.String? email;
 
   /// Number of listings under this account.
   core.String? listingCount;
 
-  /// The name of the GMB account.
+  /// The name of the Business Profile.
   core.String? name;
 
-  /// The type of the GMB account (User or Business).
+  /// The type of the Business Profile (User or Business).
   core.String? type;
 
   GmbAccountsGmbAccount({
@@ -13161,7 +13163,7 @@ class LiasettingsCustomBatchRequestEntry {
   /// Required only for RequestInventoryVerification.
   core.String? country;
 
-  /// The GMB account.
+  /// The Business Profile.
   ///
   /// Required only for RequestGmbAccess.
   core.String? gmbEmail;
@@ -13295,7 +13297,7 @@ class LiasettingsCustomBatchResponseEntry {
   /// A list of errors defined if, and only if, the request failed.
   Errors? errors;
 
-  /// The list of accessible GMB accounts.
+  /// The list of accessible Business Profiles.
   GmbAccounts? gmbAccounts;
 
   /// Identifies what kind of resource this is.
@@ -13358,7 +13360,7 @@ class LiasettingsGetAccessibleGmbAccountsResponse {
   /// The ID of the Merchant Center account.
   core.String? accountId;
 
-  /// A list of GMB accounts which are available to the merchant.
+  /// A list of Business Profiles which are available to the merchant.
   core.List<GmbAccountsGmbAccount>? gmbAccounts;
 
   /// Identifies what kind of resource this is.
@@ -16903,8 +16905,6 @@ class OrderTrackingSignalLineItemDetails {
   core.String? productTitle;
 
   /// The quantity of the line item in the order.
-  ///
-  /// Required.
   core.String? quantity;
 
   /// Merchant SKU for this item (deprecated).
@@ -16976,8 +16976,6 @@ class OrderTrackingSignalShipmentLineItemMapping {
   core.String? lineItemId;
 
   /// The line item quantity in the shipment.
-  ///
-  /// Required.
   core.String? quantity;
 
   /// The shipment ID.
@@ -20161,8 +20159,8 @@ class PosInventory {
 
   /// The identifier of the merchant's store.
   ///
-  /// Either a `storeCode` inserted via the API or the code of the store in
-  /// Google My Business.
+  /// Either a `storeCode` inserted via the API or the code of the store in a
+  /// Business Profile.
   ///
   /// Required.
   core.String? storeCode;
@@ -20256,8 +20254,8 @@ class PosInventoryRequest {
 
   /// The identifier of the merchant's store.
   ///
-  /// Either a `storeCode` inserted via the API or the code of the store in
-  /// Google My Business.
+  /// Either a `storeCode` inserted via the API or the code of the store in a
+  /// Business Profile.
   ///
   /// Required.
   core.String? storeCode;
@@ -20353,8 +20351,8 @@ class PosInventoryResponse {
 
   /// The identifier of the merchant's store.
   ///
-  /// Either a `storeCode` inserted via the API or the code of the store in
-  /// Google My Business.
+  /// Either a `storeCode` inserted via the API or the code of the store in a
+  /// Business Profile.
   ///
   /// Required.
   core.String? storeCode;
@@ -20488,8 +20486,8 @@ class PosSale {
 
   /// The identifier of the merchant's store.
   ///
-  /// Either a `storeCode` inserted via the API or the code of the store in
-  /// Google My Business.
+  /// Either a `storeCode` inserted via the API or the code of the store in a
+  /// Business Profile.
   ///
   /// Required.
   core.String? storeCode;
@@ -20593,8 +20591,8 @@ class PosSaleRequest {
 
   /// The identifier of the merchant's store.
   ///
-  /// Either a `storeCode` inserted via the API or the code of the store in
-  /// Google My Business.
+  /// Either a `storeCode` inserted via the API or the code of the store in a
+  /// Business Profile.
   ///
   /// Required.
   core.String? storeCode;
@@ -20700,8 +20698,8 @@ class PosSaleResponse {
 
   /// The identifier of the merchant's store.
   ///
-  /// Either a `storeCode` inserted via the API or the code of the store in
-  /// Google My Business.
+  /// Either a `storeCode` inserted via the API or the code of the store in a
+  /// Business Profile.
   ///
   /// Required.
   core.String? storeCode;

@@ -110,12 +110,94 @@ void checkGoogleCloudOrgpolicyV2ConstraintListConstraint(
   buildCounterGoogleCloudOrgpolicyV2ConstraintListConstraint--;
 }
 
-core.List<api.GoogleCloudOrgpolicyV2Constraint> buildUnnamed0() => [
+core.List<core.String> buildUnnamed0() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed0(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.List<core.String> buildUnnamed1() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed1(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.int buildCounterGoogleCloudOrgpolicyV2CustomConstraint = 0;
+api.GoogleCloudOrgpolicyV2CustomConstraint
+    buildGoogleCloudOrgpolicyV2CustomConstraint() {
+  final o = api.GoogleCloudOrgpolicyV2CustomConstraint();
+  buildCounterGoogleCloudOrgpolicyV2CustomConstraint++;
+  if (buildCounterGoogleCloudOrgpolicyV2CustomConstraint < 3) {
+    o.actionType = 'foo';
+    o.condition = 'foo';
+    o.description = 'foo';
+    o.displayName = 'foo';
+    o.methodTypes = buildUnnamed0();
+    o.name = 'foo';
+    o.resourceTypes = buildUnnamed1();
+  }
+  buildCounterGoogleCloudOrgpolicyV2CustomConstraint--;
+  return o;
+}
+
+void checkGoogleCloudOrgpolicyV2CustomConstraint(
+    api.GoogleCloudOrgpolicyV2CustomConstraint o) {
+  buildCounterGoogleCloudOrgpolicyV2CustomConstraint++;
+  if (buildCounterGoogleCloudOrgpolicyV2CustomConstraint < 3) {
+    unittest.expect(
+      o.actionType!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.condition!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.description!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.displayName!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed0(o.methodTypes!);
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed1(o.resourceTypes!);
+  }
+  buildCounterGoogleCloudOrgpolicyV2CustomConstraint--;
+}
+
+core.List<api.GoogleCloudOrgpolicyV2Constraint> buildUnnamed2() => [
       buildGoogleCloudOrgpolicyV2Constraint(),
       buildGoogleCloudOrgpolicyV2Constraint(),
     ];
 
-void checkUnnamed0(core.List<api.GoogleCloudOrgpolicyV2Constraint> o) {
+void checkUnnamed2(core.List<api.GoogleCloudOrgpolicyV2Constraint> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudOrgpolicyV2Constraint(o[0]);
   checkGoogleCloudOrgpolicyV2Constraint(o[1]);
@@ -127,7 +209,7 @@ api.GoogleCloudOrgpolicyV2ListConstraintsResponse
   final o = api.GoogleCloudOrgpolicyV2ListConstraintsResponse();
   buildCounterGoogleCloudOrgpolicyV2ListConstraintsResponse++;
   if (buildCounterGoogleCloudOrgpolicyV2ListConstraintsResponse < 3) {
-    o.constraints = buildUnnamed0();
+    o.constraints = buildUnnamed2();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudOrgpolicyV2ListConstraintsResponse--;
@@ -138,7 +220,7 @@ void checkGoogleCloudOrgpolicyV2ListConstraintsResponse(
     api.GoogleCloudOrgpolicyV2ListConstraintsResponse o) {
   buildCounterGoogleCloudOrgpolicyV2ListConstraintsResponse++;
   if (buildCounterGoogleCloudOrgpolicyV2ListConstraintsResponse < 3) {
-    checkUnnamed0(o.constraints!);
+    checkUnnamed2(o.constraints!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -147,12 +229,12 @@ void checkGoogleCloudOrgpolicyV2ListConstraintsResponse(
   buildCounterGoogleCloudOrgpolicyV2ListConstraintsResponse--;
 }
 
-core.List<api.GoogleCloudOrgpolicyV2Policy> buildUnnamed1() => [
+core.List<api.GoogleCloudOrgpolicyV2Policy> buildUnnamed3() => [
       buildGoogleCloudOrgpolicyV2Policy(),
       buildGoogleCloudOrgpolicyV2Policy(),
     ];
 
-void checkUnnamed1(core.List<api.GoogleCloudOrgpolicyV2Policy> o) {
+void checkUnnamed3(core.List<api.GoogleCloudOrgpolicyV2Policy> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudOrgpolicyV2Policy(o[0]);
   checkGoogleCloudOrgpolicyV2Policy(o[1]);
@@ -165,7 +247,7 @@ api.GoogleCloudOrgpolicyV2ListPoliciesResponse
   buildCounterGoogleCloudOrgpolicyV2ListPoliciesResponse++;
   if (buildCounterGoogleCloudOrgpolicyV2ListPoliciesResponse < 3) {
     o.nextPageToken = 'foo';
-    o.policies = buildUnnamed1();
+    o.policies = buildUnnamed3();
   }
   buildCounterGoogleCloudOrgpolicyV2ListPoliciesResponse--;
   return o;
@@ -179,7 +261,7 @@ void checkGoogleCloudOrgpolicyV2ListPoliciesResponse(
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed1(o.policies!);
+    checkUnnamed3(o.policies!);
   }
   buildCounterGoogleCloudOrgpolicyV2ListPoliciesResponse--;
 }
@@ -208,12 +290,12 @@ void checkGoogleCloudOrgpolicyV2Policy(api.GoogleCloudOrgpolicyV2Policy o) {
   buildCounterGoogleCloudOrgpolicyV2Policy--;
 }
 
-core.List<api.GoogleCloudOrgpolicyV2PolicySpecPolicyRule> buildUnnamed2() => [
+core.List<api.GoogleCloudOrgpolicyV2PolicySpecPolicyRule> buildUnnamed4() => [
       buildGoogleCloudOrgpolicyV2PolicySpecPolicyRule(),
       buildGoogleCloudOrgpolicyV2PolicySpecPolicyRule(),
     ];
 
-void checkUnnamed2(
+void checkUnnamed4(
     core.List<api.GoogleCloudOrgpolicyV2PolicySpecPolicyRule> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudOrgpolicyV2PolicySpecPolicyRule(o[0]);
@@ -228,7 +310,7 @@ api.GoogleCloudOrgpolicyV2PolicySpec buildGoogleCloudOrgpolicyV2PolicySpec() {
     o.etag = 'foo';
     o.inheritFromParent = true;
     o.reset = true;
-    o.rules = buildUnnamed2();
+    o.rules = buildUnnamed4();
     o.updateTime = 'foo';
   }
   buildCounterGoogleCloudOrgpolicyV2PolicySpec--;
@@ -245,7 +327,7 @@ void checkGoogleCloudOrgpolicyV2PolicySpec(
     );
     unittest.expect(o.inheritFromParent!, unittest.isTrue);
     unittest.expect(o.reset!, unittest.isTrue);
-    checkUnnamed2(o.rules!);
+    checkUnnamed4(o.rules!);
     unittest.expect(
       o.updateTime!,
       unittest.equals('foo'),
@@ -283,12 +365,12 @@ void checkGoogleCloudOrgpolicyV2PolicySpecPolicyRule(
   buildCounterGoogleCloudOrgpolicyV2PolicySpecPolicyRule--;
 }
 
-core.List<core.String> buildUnnamed3() => [
+core.List<core.String> buildUnnamed5() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed3(core.List<core.String> o) {
+void checkUnnamed5(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -300,12 +382,12 @@ void checkUnnamed3(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed4() => [
+core.List<core.String> buildUnnamed6() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed4(core.List<core.String> o) {
+void checkUnnamed6(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -323,8 +405,8 @@ api.GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues
   final o = api.GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues();
   buildCounterGoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues++;
   if (buildCounterGoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues < 3) {
-    o.allowedValues = buildUnnamed3();
-    o.deniedValues = buildUnnamed4();
+    o.allowedValues = buildUnnamed5();
+    o.deniedValues = buildUnnamed6();
   }
   buildCounterGoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues--;
   return o;
@@ -334,8 +416,8 @@ void checkGoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues(
     api.GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues o) {
   buildCounterGoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues++;
   if (buildCounterGoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues < 3) {
-    checkUnnamed3(o.allowedValues!);
-    checkUnnamed4(o.deniedValues!);
+    checkUnnamed5(o.allowedValues!);
+    checkUnnamed6(o.deniedValues!);
   }
   buildCounterGoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues--;
 }
@@ -422,6 +504,16 @@ void main() {
       final od = api.GoogleCloudOrgpolicyV2ConstraintListConstraint.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudOrgpolicyV2ConstraintListConstraint(od);
+    });
+  });
+
+  unittest.group('obj-schema-GoogleCloudOrgpolicyV2CustomConstraint', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleCloudOrgpolicyV2CustomConstraint();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudOrgpolicyV2CustomConstraint.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudOrgpolicyV2CustomConstraint(od);
     });
   });
 
@@ -989,6 +1081,68 @@ void main() {
           $fields: arg_$fields);
       checkGoogleCloudOrgpolicyV2ListConstraintsResponse(
           response as api.GoogleCloudOrgpolicyV2ListConstraintsResponse);
+    });
+  });
+
+  unittest.group('resource-OrganizationsCustomConstraintsResource', () {
+    unittest.test('method--patch', () async {
+      final mock = HttpServerMock();
+      final res = api.OrgPolicyApi(mock).organizations.customConstraints;
+      final arg_request = buildGoogleCloudOrgpolicyV2CustomConstraint();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.GoogleCloudOrgpolicyV2CustomConstraint.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGoogleCloudOrgpolicyV2CustomConstraint(obj);
+
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp =
+            convert.json.encode(buildGoogleCloudOrgpolicyV2CustomConstraint());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.patch(arg_request, arg_name, $fields: arg_$fields);
+      checkGoogleCloudOrgpolicyV2CustomConstraint(
+          response as api.GoogleCloudOrgpolicyV2CustomConstraint);
     });
   });
 

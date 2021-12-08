@@ -283,11 +283,13 @@ api.CloudFunction buildCloudFunction() {
     o.buildName = 'foo';
     o.buildWorkerPool = 'foo';
     o.description = 'foo';
+    o.dockerRepository = 'foo';
     o.entryPoint = 'foo';
     o.environmentVariables = buildUnnamed4();
     o.eventTrigger = buildEventTrigger();
     o.httpsTrigger = buildHttpsTrigger();
     o.ingressSettings = 'foo';
+    o.kmsKeyName = 'foo';
     o.labels = buildUnnamed5();
     o.maxInstances = 42;
     o.minInstances = 42;
@@ -337,6 +339,10 @@ void checkCloudFunction(api.CloudFunction o) {
       unittest.equals('foo'),
     );
     unittest.expect(
+      o.dockerRepository!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
       o.entryPoint!,
       unittest.equals('foo'),
     );
@@ -345,6 +351,10 @@ void checkCloudFunction(api.CloudFunction o) {
     checkHttpsTrigger(o.httpsTrigger!);
     unittest.expect(
       o.ingressSettings!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.kmsKeyName!,
       unittest.equals('foo'),
     );
     checkUnnamed5(o.labels!);

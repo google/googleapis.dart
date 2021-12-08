@@ -967,6 +967,7 @@ api.Metadata buildMetadata() {
   buildCounterMetadata++;
   if (buildCounterMetadata < 3) {
     o.canDelete = true;
+    o.canHaveBusinessCalls = true;
     o.canHaveFoodMenus = true;
     o.canModifyServiceList = true;
     o.canOperateHealthData = true;
@@ -987,6 +988,7 @@ void checkMetadata(api.Metadata o) {
   buildCounterMetadata++;
   if (buildCounterMetadata < 3) {
     unittest.expect(o.canDelete!, unittest.isTrue);
+    unittest.expect(o.canHaveBusinessCalls!, unittest.isTrue);
     unittest.expect(o.canHaveFoodMenus!, unittest.isTrue);
     unittest.expect(o.canModifyServiceList!, unittest.isTrue);
     unittest.expect(o.canOperateHealthData!, unittest.isTrue);

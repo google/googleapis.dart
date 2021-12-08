@@ -3990,6 +3990,11 @@ class DriveList {
 ///
 /// Each capability corresponds to a fine-grained action that a user may take.
 class FileCapabilities {
+  /// Whether the current user is the pending owner of the file.
+  ///
+  /// Not populated for shared drive files.
+  core.bool? canAcceptOwnership;
+
   /// Whether the current user can add children to this folder.
   ///
   /// This is always false when the item is not a folder.
@@ -4151,6 +4156,7 @@ class FileCapabilities {
   core.bool? canUntrash;
 
   FileCapabilities({
+    this.canAcceptOwnership,
     this.canAddChildren,
     this.canAddFolderFromAnotherDrive,
     this.canAddMyDriveParent,
@@ -4190,6 +4196,9 @@ class FileCapabilities {
 
   FileCapabilities.fromJson(core.Map _json)
       : this(
+          canAcceptOwnership: _json.containsKey('canAcceptOwnership')
+              ? _json['canAcceptOwnership'] as core.bool
+              : null,
           canAddChildren: _json.containsKey('canAddChildren')
               ? _json['canAddChildren'] as core.bool
               : null,
@@ -4310,6 +4319,8 @@ class FileCapabilities {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (canAcceptOwnership != null)
+          'canAcceptOwnership': canAcceptOwnership!,
         if (canAddChildren != null) 'canAddChildren': canAddChildren!,
         if (canAddFolderFromAnotherDrive != null)
           'canAddFolderFromAnotherDrive': canAddFolderFromAnotherDrive!,
@@ -5659,6 +5670,12 @@ class Permission {
   /// Value: the fixed string "drive#permission".
   core.String? kind;
 
+  /// Whether the account associated with this permission is a pending owner.
+  ///
+  /// Only populated for user type permissions for files that are not in a
+  /// shared drive.
+  core.bool? pendingOwner;
+
   /// Details of whether the permissions on this shared drive item are inherited
   /// or directly on this item.
   ///
@@ -5710,6 +5727,7 @@ class Permission {
     this.expirationTime,
     this.id,
     this.kind,
+    this.pendingOwner,
     this.permissionDetails,
     this.photoLink,
     this.role,
@@ -5740,6 +5758,9 @@ class Permission {
               : null,
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          pendingOwner: _json.containsKey('pendingOwner')
+              ? _json['pendingOwner'] as core.bool
+              : null,
           permissionDetails: _json.containsKey('permissionDetails')
               ? (_json['permissionDetails'] as core.List)
                   .map((value) => PermissionPermissionDetails.fromJson(
@@ -5772,6 +5793,7 @@ class Permission {
           'expirationTime': expirationTime!.toUtc().toIso8601String(),
         if (id != null) 'id': id!,
         if (kind != null) 'kind': kind!,
+        if (pendingOwner != null) 'pendingOwner': pendingOwner!,
         if (permissionDetails != null) 'permissionDetails': permissionDetails!,
         if (photoLink != null) 'photoLink': photoLink!,
         if (role != null) 'role': role!,

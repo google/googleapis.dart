@@ -942,7 +942,7 @@
             }
         }
     },
-    "revision": "20211025",
+    "revision": "20211106",
     "rootUrl": "https://osconfig.googleapis.com/",
     "schemas": {
         "AptSettings": {
@@ -1295,6 +1295,61 @@
             "description": "Googet patching is performed by running `googet update`.",
             "id": "GooSettings",
             "properties": {},
+            "type": "object"
+        },
+        "GoogleCloudOsconfigV1__OSPolicyAssignmentOperationMetadata": {
+            "description": "OS policy assignment operation metadata provided by OS policy assignment API methods that return long running operations.",
+            "id": "GoogleCloudOsconfigV1__OSPolicyAssignmentOperationMetadata",
+            "properties": {
+                "apiMethod": {
+                    "description": "The OS policy assignment API method.",
+                    "enum": [
+                        "API_METHOD_UNSPECIFIED",
+                        "CREATE",
+                        "UPDATE",
+                        "DELETE"
+                    ],
+                    "enumDescriptions": [
+                        "Invalid value",
+                        "Create OS policy assignment API method",
+                        "Update OS policy assignment API method",
+                        "Delete OS policy assignment API method"
+                    ],
+                    "type": "string"
+                },
+                "osPolicyAssignment": {
+                    "description": "Reference to the `OSPolicyAssignment` API resource. Format: `projects/{project_number}/locations/{location}/osPolicyAssignments/{os_policy_assignment_id@revision_id}`",
+                    "type": "string"
+                },
+                "rolloutStartTime": {
+                    "description": "Rollout start time",
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "rolloutState": {
+                    "description": "State of the rollout",
+                    "enum": [
+                        "ROLLOUT_STATE_UNSPECIFIED",
+                        "IN_PROGRESS",
+                        "CANCELLING",
+                        "CANCELLED",
+                        "SUCCEEDED"
+                    ],
+                    "enumDescriptions": [
+                        "Invalid value",
+                        "The rollout is in progress.",
+                        "The rollout is being cancelled.",
+                        "The rollout is cancelled.",
+                        "The rollout has completed successfully."
+                    ],
+                    "type": "string"
+                },
+                "rolloutUpdateTime": {
+                    "description": "Rollout update time",
+                    "format": "google-datetime",
+                    "type": "string"
+                }
+            },
             "type": "object"
         },
         "Inventory": {
@@ -3172,9 +3227,9 @@
                     ],
                     "enumDescriptions": [
                         "Invalid. A frequency must be specified.",
-                        "Indicates that the frequency should be expressed in terms of weeks.",
-                        "Indicates that the frequency should be expressed in terms of months.",
-                        "Indicates that the frequency should be expressed in terms of days."
+                        "Indicates that the frequency of recurrence should be expressed in terms of weeks.",
+                        "Indicates that the frequency of recurrence should be expressed in terms of months.",
+                        "Indicates that the frequency of recurrence should be expressed in terms of days."
                     ],
                     "type": "string"
                 },
@@ -3336,6 +3391,13 @@
                     },
                     "type": "array"
                 },
+                "items": {
+                    "description": "List of items affected by the vulnerability.",
+                    "items": {
+                        "$ref": "VulnerabilityReportVulnerabilityItem"
+                    },
+                    "type": "array"
+                },
                 "updateTime": {
                     "description": "The timestamp for when the vulnerability was last modified.",
                     "format": "google-datetime",
@@ -3394,6 +3456,29 @@
             },
             "type": "object"
         },
+        "VulnerabilityReportVulnerabilityItem": {
+            "description": "OS inventory item that is affected by a vulnerability or fixed as a result of a vulnerability.",
+            "id": "VulnerabilityReportVulnerabilityItem",
+            "properties": {
+                "availableInventoryItemId": {
+                    "description": "Corresponds to the `AVAILABLE_PACKAGE` inventory item on the VM. If the vulnerability report was not updated after the VM inventory update, these values might not display in VM inventory. If there is no available fix, the field is empty. The `inventory_item` value specifies the latest `SoftwarePackage` available to the VM that fixes the vulnerability.",
+                    "type": "string"
+                },
+                "fixedCpeUri": {
+                    "description": "The recommended [CPE URI](https://cpe.mitre.org/specification/) update that contains a fix for this vulnerability.",
+                    "type": "string"
+                },
+                "installedInventoryItemId": {
+                    "description": "Corresponds to the `INSTALLED_PACKAGE` inventory item on the VM. This field displays the inventory items affected by this vulnerability. If the vulnerability report was not updated after the VM inventory update, these values might not display in VM inventory. For some operating systems, this field might be empty.",
+                    "type": "string"
+                },
+                "upstreamFix": {
+                    "description": "The upstream OS patch, packages or KB that fixes the vulnerability.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "WeekDayOfMonth": {
             "description": "Represents one week day in a month. An example is \"the 4th Sunday\".",
             "id": "WeekDayOfMonth",
@@ -3421,6 +3506,11 @@
                         "Sunday"
                     ],
                     "type": "string"
+                },
+                "dayOffset": {
+                    "description": "Optional. Represents the number of days before or after the given week day of month that the patch deployment is scheduled for. For example if `week_ordinal` and `day_of_week` values point to the second day of the month and this `day_offset` value is set to `3`, the patch deployment takes place three days after the second Tuesday of the month. If this value is negative, for example -5, the patches are deployed five days before before the second Tuesday of the month. Allowed values are in range [-30, 30].",
+                    "format": "int32",
+                    "type": "integer"
                 },
                 "weekOrdinal": {
                     "description": "Required. Week number in a month. 1-4 indicates the 1st to 4th week of the month. -1 indicates the last week of the month.",

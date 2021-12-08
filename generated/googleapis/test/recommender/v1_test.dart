@@ -743,6 +743,7 @@ api.GoogleCloudRecommenderV1Recommendation
     o.priority = 'foo';
     o.recommenderSubtype = 'foo';
     o.stateInfo = buildGoogleCloudRecommenderV1RecommendationStateInfo();
+    o.xorGroupId = 'foo';
   }
   buildCounterGoogleCloudRecommenderV1Recommendation--;
   return o;
@@ -781,6 +782,10 @@ void checkGoogleCloudRecommenderV1Recommendation(
       unittest.equals('foo'),
     );
     checkGoogleCloudRecommenderV1RecommendationStateInfo(o.stateInfo!);
+    unittest.expect(
+      o.xorGroupId!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleCloudRecommenderV1Recommendation--;
 }

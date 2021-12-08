@@ -827,8 +827,7 @@ class Instance {
   /// Required.
   core.int? nodeCount;
 
-  /// Optional: User defined parameters to apply to the memcached process on
-  /// each node.
+  /// User defined parameters to apply to the memcached process on each node.
   MemcacheParameters? parameters;
 
   /// The state of this Memcached instance.
@@ -1105,13 +1104,14 @@ class ListOperationsResponse {
 /// A resource that represents Google Cloud Platform location.
 typedef Location = $Location00;
 
-/// The unique ID associated with this set of parameters.
-///
-/// Users can use this id to determine if the parameters associated with the
-/// instance differ from the parameters associated with the nodes. A discrepancy
-/// between parameter ids can inform users that they may need to take action to
-/// apply parameters on nodes.
 class MemcacheParameters {
+  /// The unique ID associated with this set of parameters.
+  ///
+  /// Users can use this id to determine if the parameters associated with the
+  /// instance differ from the parameters associated with the nodes. A
+  /// discrepancy between parameter ids can inform users that they may need to
+  /// take action to apply parameters on nodes.
+  ///
   /// Output only.
   core.String? id;
 

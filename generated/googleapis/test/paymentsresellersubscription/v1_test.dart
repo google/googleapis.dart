@@ -490,7 +490,10 @@ api.GoogleCloudPaymentsResellerSubscriptionV1Promotion
     o.endTime = 'foo';
     o.freeTrialDuration =
         buildGoogleCloudPaymentsResellerSubscriptionV1Duration();
+    o.introductoryPricingDetails =
+        buildGoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetails();
     o.name = 'foo';
+    o.promotionType = 'foo';
     o.regionCodes = buildUnnamed5();
     o.startTime = 'foo';
     o.titles = buildUnnamed6();
@@ -510,8 +513,14 @@ void checkGoogleCloudPaymentsResellerSubscriptionV1Promotion(
     );
     checkGoogleCloudPaymentsResellerSubscriptionV1Duration(
         o.freeTrialDuration!);
+    checkGoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetails(
+        o.introductoryPricingDetails!);
     unittest.expect(
       o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.promotionType!,
       unittest.equals('foo'),
     );
     checkUnnamed5(o.regionCodes!);
@@ -524,12 +533,87 @@ void checkGoogleCloudPaymentsResellerSubscriptionV1Promotion(
   buildCounterGoogleCloudPaymentsResellerSubscriptionV1Promotion--;
 }
 
-core.List<core.String> buildUnnamed7() => [
+core.List<
+        api.GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetailsIntroductoryPricingSpec>
+    buildUnnamed7() => [
+          buildGoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetailsIntroductoryPricingSpec(),
+          buildGoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetailsIntroductoryPricingSpec(),
+        ];
+
+void checkUnnamed7(
+    core.List<
+            api.GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetailsIntroductoryPricingSpec>
+        o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetailsIntroductoryPricingSpec(
+      o[0]);
+  checkGoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetailsIntroductoryPricingSpec(
+      o[1]);
+}
+
+core.int
+    buildCounterGoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetails =
+    0;
+api.GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetails
+    buildGoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetails() {
+  final o = api
+      .GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetails();
+  buildCounterGoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetails++;
+  if (buildCounterGoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetails <
+      3) {
+    o.introductoryPricingSpecs = buildUnnamed7();
+  }
+  buildCounterGoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetails--;
+  return o;
+}
+
+void checkGoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetails(
+    api.GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetails
+        o) {
+  buildCounterGoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetails++;
+  if (buildCounterGoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetails <
+      3) {
+    checkUnnamed7(o.introductoryPricingSpecs!);
+  }
+  buildCounterGoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetails--;
+}
+
+core.int
+    buildCounterGoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetailsIntroductoryPricingSpec =
+    0;
+api.GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetailsIntroductoryPricingSpec
+    buildGoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetailsIntroductoryPricingSpec() {
+  final o = api
+      .GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetailsIntroductoryPricingSpec();
+  buildCounterGoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetailsIntroductoryPricingSpec++;
+  if (buildCounterGoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetailsIntroductoryPricingSpec <
+      3) {
+    o.recurrenceCount = 42;
+  }
+  buildCounterGoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetailsIntroductoryPricingSpec--;
+  return o;
+}
+
+void checkGoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetailsIntroductoryPricingSpec(
+    api.GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetailsIntroductoryPricingSpec
+        o) {
+  buildCounterGoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetailsIntroductoryPricingSpec++;
+  if (buildCounterGoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetailsIntroductoryPricingSpec <
+      3) {
+    unittest.expect(
+      o.recurrenceCount!,
+      unittest.equals(42),
+    );
+  }
+  buildCounterGoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetailsIntroductoryPricingSpec--;
+}
+
+core.List<core.String> buildUnnamed8() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed7(core.List<core.String> o) {
+void checkUnnamed8(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -541,12 +625,12 @@ void checkUnnamed7(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed8() => [
+core.List<core.String> buildUnnamed9() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed8(core.List<core.String> o) {
+void checkUnnamed9(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -573,9 +657,10 @@ api.GoogleCloudPaymentsResellerSubscriptionV1Subscription
     o.name = 'foo';
     o.partnerUserToken = 'foo';
     o.processingState = 'foo';
-    o.products = buildUnnamed7();
-    o.promotions = buildUnnamed8();
+    o.products = buildUnnamed8();
+    o.promotions = buildUnnamed9();
     o.redirectUri = 'foo';
+    o.renewalTime = 'foo';
     o.serviceLocation =
         buildGoogleCloudPaymentsResellerSubscriptionV1Location();
     o.state = 'foo';
@@ -618,10 +703,14 @@ void checkGoogleCloudPaymentsResellerSubscriptionV1Subscription(
       o.processingState!,
       unittest.equals('foo'),
     );
-    checkUnnamed7(o.products!);
-    checkUnnamed8(o.promotions!);
+    checkUnnamed8(o.products!);
+    checkUnnamed9(o.promotions!);
     unittest.expect(
       o.redirectUri!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.renewalTime!,
       unittest.equals('foo'),
     );
     checkGoogleCloudPaymentsResellerSubscriptionV1Location(o.serviceLocation!);
@@ -955,6 +1044,36 @@ void main() {
           api.GoogleCloudPaymentsResellerSubscriptionV1Promotion.fromJson(
               oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudPaymentsResellerSubscriptionV1Promotion(od);
+    });
+  });
+
+  unittest.group(
+      'obj-schema-GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetails',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o =
+          buildGoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetails();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetails
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetails(
+          od);
+    });
+  });
+
+  unittest.group(
+      'obj-schema-GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetailsIntroductoryPricingSpec',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o =
+          buildGoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetailsIntroductoryPricingSpec();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetailsIntroductoryPricingSpec
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetailsIntroductoryPricingSpec(
+          od);
     });
   });
 

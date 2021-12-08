@@ -1052,6 +1052,155 @@ void checkGoogleAnalyticsAdminV1alphaDataSharingSettings(
   buildCounterGoogleAnalyticsAdminV1alphaDataSharingSettings--;
 }
 
+core.int buildCounterGoogleAnalyticsAdminV1alphaDataStream = 0;
+api.GoogleAnalyticsAdminV1alphaDataStream
+    buildGoogleAnalyticsAdminV1alphaDataStream() {
+  final o = api.GoogleAnalyticsAdminV1alphaDataStream();
+  buildCounterGoogleAnalyticsAdminV1alphaDataStream++;
+  if (buildCounterGoogleAnalyticsAdminV1alphaDataStream < 3) {
+    o.androidAppStreamData =
+        buildGoogleAnalyticsAdminV1alphaDataStreamAndroidAppStreamData();
+    o.createTime = 'foo';
+    o.displayName = 'foo';
+    o.iosAppStreamData =
+        buildGoogleAnalyticsAdminV1alphaDataStreamIosAppStreamData();
+    o.name = 'foo';
+    o.type = 'foo';
+    o.updateTime = 'foo';
+    o.webStreamData = buildGoogleAnalyticsAdminV1alphaDataStreamWebStreamData();
+  }
+  buildCounterGoogleAnalyticsAdminV1alphaDataStream--;
+  return o;
+}
+
+void checkGoogleAnalyticsAdminV1alphaDataStream(
+    api.GoogleAnalyticsAdminV1alphaDataStream o) {
+  buildCounterGoogleAnalyticsAdminV1alphaDataStream++;
+  if (buildCounterGoogleAnalyticsAdminV1alphaDataStream < 3) {
+    checkGoogleAnalyticsAdminV1alphaDataStreamAndroidAppStreamData(
+        o.androidAppStreamData!);
+    unittest.expect(
+      o.createTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.displayName!,
+      unittest.equals('foo'),
+    );
+    checkGoogleAnalyticsAdminV1alphaDataStreamIosAppStreamData(
+        o.iosAppStreamData!);
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.type!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.updateTime!,
+      unittest.equals('foo'),
+    );
+    checkGoogleAnalyticsAdminV1alphaDataStreamWebStreamData(o.webStreamData!);
+  }
+  buildCounterGoogleAnalyticsAdminV1alphaDataStream--;
+}
+
+core.int buildCounterGoogleAnalyticsAdminV1alphaDataStreamAndroidAppStreamData =
+    0;
+api.GoogleAnalyticsAdminV1alphaDataStreamAndroidAppStreamData
+    buildGoogleAnalyticsAdminV1alphaDataStreamAndroidAppStreamData() {
+  final o = api.GoogleAnalyticsAdminV1alphaDataStreamAndroidAppStreamData();
+  buildCounterGoogleAnalyticsAdminV1alphaDataStreamAndroidAppStreamData++;
+  if (buildCounterGoogleAnalyticsAdminV1alphaDataStreamAndroidAppStreamData <
+      3) {
+    o.firebaseAppId = 'foo';
+    o.packageName = 'foo';
+  }
+  buildCounterGoogleAnalyticsAdminV1alphaDataStreamAndroidAppStreamData--;
+  return o;
+}
+
+void checkGoogleAnalyticsAdminV1alphaDataStreamAndroidAppStreamData(
+    api.GoogleAnalyticsAdminV1alphaDataStreamAndroidAppStreamData o) {
+  buildCounterGoogleAnalyticsAdminV1alphaDataStreamAndroidAppStreamData++;
+  if (buildCounterGoogleAnalyticsAdminV1alphaDataStreamAndroidAppStreamData <
+      3) {
+    unittest.expect(
+      o.firebaseAppId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.packageName!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleAnalyticsAdminV1alphaDataStreamAndroidAppStreamData--;
+}
+
+core.int buildCounterGoogleAnalyticsAdminV1alphaDataStreamIosAppStreamData = 0;
+api.GoogleAnalyticsAdminV1alphaDataStreamIosAppStreamData
+    buildGoogleAnalyticsAdminV1alphaDataStreamIosAppStreamData() {
+  final o = api.GoogleAnalyticsAdminV1alphaDataStreamIosAppStreamData();
+  buildCounterGoogleAnalyticsAdminV1alphaDataStreamIosAppStreamData++;
+  if (buildCounterGoogleAnalyticsAdminV1alphaDataStreamIosAppStreamData < 3) {
+    o.bundleId = 'foo';
+    o.firebaseAppId = 'foo';
+  }
+  buildCounterGoogleAnalyticsAdminV1alphaDataStreamIosAppStreamData--;
+  return o;
+}
+
+void checkGoogleAnalyticsAdminV1alphaDataStreamIosAppStreamData(
+    api.GoogleAnalyticsAdminV1alphaDataStreamIosAppStreamData o) {
+  buildCounterGoogleAnalyticsAdminV1alphaDataStreamIosAppStreamData++;
+  if (buildCounterGoogleAnalyticsAdminV1alphaDataStreamIosAppStreamData < 3) {
+    unittest.expect(
+      o.bundleId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.firebaseAppId!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleAnalyticsAdminV1alphaDataStreamIosAppStreamData--;
+}
+
+core.int buildCounterGoogleAnalyticsAdminV1alphaDataStreamWebStreamData = 0;
+api.GoogleAnalyticsAdminV1alphaDataStreamWebStreamData
+    buildGoogleAnalyticsAdminV1alphaDataStreamWebStreamData() {
+  final o = api.GoogleAnalyticsAdminV1alphaDataStreamWebStreamData();
+  buildCounterGoogleAnalyticsAdminV1alphaDataStreamWebStreamData++;
+  if (buildCounterGoogleAnalyticsAdminV1alphaDataStreamWebStreamData < 3) {
+    o.defaultUri = 'foo';
+    o.firebaseAppId = 'foo';
+    o.measurementId = 'foo';
+  }
+  buildCounterGoogleAnalyticsAdminV1alphaDataStreamWebStreamData--;
+  return o;
+}
+
+void checkGoogleAnalyticsAdminV1alphaDataStreamWebStreamData(
+    api.GoogleAnalyticsAdminV1alphaDataStreamWebStreamData o) {
+  buildCounterGoogleAnalyticsAdminV1alphaDataStreamWebStreamData++;
+  if (buildCounterGoogleAnalyticsAdminV1alphaDataStreamWebStreamData < 3) {
+    unittest.expect(
+      o.defaultUri!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.firebaseAppId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.measurementId!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleAnalyticsAdminV1alphaDataStreamWebStreamData--;
+}
+
 core.int buildCounterGoogleAnalyticsAdminV1alphaDeleteUserLinkRequest = 0;
 api.GoogleAnalyticsAdminV1alphaDeleteUserLinkRequest
     buildGoogleAnalyticsAdminV1alphaDeleteUserLinkRequest() {
@@ -1635,13 +1784,50 @@ void checkGoogleAnalyticsAdminV1alphaListCustomMetricsResponse(
   buildCounterGoogleAnalyticsAdminV1alphaListCustomMetricsResponse--;
 }
 
+core.List<api.GoogleAnalyticsAdminV1alphaDataStream> buildUnnamed17() => [
+      buildGoogleAnalyticsAdminV1alphaDataStream(),
+      buildGoogleAnalyticsAdminV1alphaDataStream(),
+    ];
+
+void checkUnnamed17(core.List<api.GoogleAnalyticsAdminV1alphaDataStream> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleAnalyticsAdminV1alphaDataStream(o[0]);
+  checkGoogleAnalyticsAdminV1alphaDataStream(o[1]);
+}
+
+core.int buildCounterGoogleAnalyticsAdminV1alphaListDataStreamsResponse = 0;
+api.GoogleAnalyticsAdminV1alphaListDataStreamsResponse
+    buildGoogleAnalyticsAdminV1alphaListDataStreamsResponse() {
+  final o = api.GoogleAnalyticsAdminV1alphaListDataStreamsResponse();
+  buildCounterGoogleAnalyticsAdminV1alphaListDataStreamsResponse++;
+  if (buildCounterGoogleAnalyticsAdminV1alphaListDataStreamsResponse < 3) {
+    o.dataStreams = buildUnnamed17();
+    o.nextPageToken = 'foo';
+  }
+  buildCounterGoogleAnalyticsAdminV1alphaListDataStreamsResponse--;
+  return o;
+}
+
+void checkGoogleAnalyticsAdminV1alphaListDataStreamsResponse(
+    api.GoogleAnalyticsAdminV1alphaListDataStreamsResponse o) {
+  buildCounterGoogleAnalyticsAdminV1alphaListDataStreamsResponse++;
+  if (buildCounterGoogleAnalyticsAdminV1alphaListDataStreamsResponse < 3) {
+    checkUnnamed17(o.dataStreams!);
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleAnalyticsAdminV1alphaListDataStreamsResponse--;
+}
+
 core.List<api.GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposal>
-    buildUnnamed17() => [
+    buildUnnamed18() => [
           buildGoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposal(),
           buildGoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposal(),
         ];
 
-void checkUnnamed17(
+void checkUnnamed18(
     core.List<
             api.GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposal>
         o) {
@@ -1660,7 +1846,7 @@ api.GoogleAnalyticsAdminV1alphaListDisplayVideo360AdvertiserLinkProposalsRespons
   buildCounterGoogleAnalyticsAdminV1alphaListDisplayVideo360AdvertiserLinkProposalsResponse++;
   if (buildCounterGoogleAnalyticsAdminV1alphaListDisplayVideo360AdvertiserLinkProposalsResponse <
       3) {
-    o.displayVideo360AdvertiserLinkProposals = buildUnnamed17();
+    o.displayVideo360AdvertiserLinkProposals = buildUnnamed18();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleAnalyticsAdminV1alphaListDisplayVideo360AdvertiserLinkProposalsResponse--;
@@ -1673,7 +1859,7 @@ void checkGoogleAnalyticsAdminV1alphaListDisplayVideo360AdvertiserLinkProposalsR
   buildCounterGoogleAnalyticsAdminV1alphaListDisplayVideo360AdvertiserLinkProposalsResponse++;
   if (buildCounterGoogleAnalyticsAdminV1alphaListDisplayVideo360AdvertiserLinkProposalsResponse <
       3) {
-    checkUnnamed17(o.displayVideo360AdvertiserLinkProposals!);
+    checkUnnamed18(o.displayVideo360AdvertiserLinkProposals!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -1683,12 +1869,12 @@ void checkGoogleAnalyticsAdminV1alphaListDisplayVideo360AdvertiserLinkProposalsR
 }
 
 core.List<api.GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink>
-    buildUnnamed18() => [
+    buildUnnamed19() => [
           buildGoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink(),
           buildGoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink(),
         ];
 
-void checkUnnamed18(
+void checkUnnamed19(
     core.List<api.GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink(o[0]);
@@ -1705,7 +1891,7 @@ api.GoogleAnalyticsAdminV1alphaListDisplayVideo360AdvertiserLinksResponse
   buildCounterGoogleAnalyticsAdminV1alphaListDisplayVideo360AdvertiserLinksResponse++;
   if (buildCounterGoogleAnalyticsAdminV1alphaListDisplayVideo360AdvertiserLinksResponse <
       3) {
-    o.displayVideo360AdvertiserLinks = buildUnnamed18();
+    o.displayVideo360AdvertiserLinks = buildUnnamed19();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleAnalyticsAdminV1alphaListDisplayVideo360AdvertiserLinksResponse--;
@@ -1718,7 +1904,7 @@ void checkGoogleAnalyticsAdminV1alphaListDisplayVideo360AdvertiserLinksResponse(
   buildCounterGoogleAnalyticsAdminV1alphaListDisplayVideo360AdvertiserLinksResponse++;
   if (buildCounterGoogleAnalyticsAdminV1alphaListDisplayVideo360AdvertiserLinksResponse <
       3) {
-    checkUnnamed18(o.displayVideo360AdvertiserLinks!);
+    checkUnnamed19(o.displayVideo360AdvertiserLinks!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -1727,12 +1913,12 @@ void checkGoogleAnalyticsAdminV1alphaListDisplayVideo360AdvertiserLinksResponse(
   buildCounterGoogleAnalyticsAdminV1alphaListDisplayVideo360AdvertiserLinksResponse--;
 }
 
-core.List<api.GoogleAnalyticsAdminV1alphaFirebaseLink> buildUnnamed19() => [
+core.List<api.GoogleAnalyticsAdminV1alphaFirebaseLink> buildUnnamed20() => [
       buildGoogleAnalyticsAdminV1alphaFirebaseLink(),
       buildGoogleAnalyticsAdminV1alphaFirebaseLink(),
     ];
 
-void checkUnnamed19(core.List<api.GoogleAnalyticsAdminV1alphaFirebaseLink> o) {
+void checkUnnamed20(core.List<api.GoogleAnalyticsAdminV1alphaFirebaseLink> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleAnalyticsAdminV1alphaFirebaseLink(o[0]);
   checkGoogleAnalyticsAdminV1alphaFirebaseLink(o[1]);
@@ -1744,7 +1930,7 @@ api.GoogleAnalyticsAdminV1alphaListFirebaseLinksResponse
   final o = api.GoogleAnalyticsAdminV1alphaListFirebaseLinksResponse();
   buildCounterGoogleAnalyticsAdminV1alphaListFirebaseLinksResponse++;
   if (buildCounterGoogleAnalyticsAdminV1alphaListFirebaseLinksResponse < 3) {
-    o.firebaseLinks = buildUnnamed19();
+    o.firebaseLinks = buildUnnamed20();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleAnalyticsAdminV1alphaListFirebaseLinksResponse--;
@@ -1755,7 +1941,7 @@ void checkGoogleAnalyticsAdminV1alphaListFirebaseLinksResponse(
     api.GoogleAnalyticsAdminV1alphaListFirebaseLinksResponse o) {
   buildCounterGoogleAnalyticsAdminV1alphaListFirebaseLinksResponse++;
   if (buildCounterGoogleAnalyticsAdminV1alphaListFirebaseLinksResponse < 3) {
-    checkUnnamed19(o.firebaseLinks!);
+    checkUnnamed20(o.firebaseLinks!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -1764,12 +1950,12 @@ void checkGoogleAnalyticsAdminV1alphaListFirebaseLinksResponse(
   buildCounterGoogleAnalyticsAdminV1alphaListFirebaseLinksResponse--;
 }
 
-core.List<api.GoogleAnalyticsAdminV1alphaGoogleAdsLink> buildUnnamed20() => [
+core.List<api.GoogleAnalyticsAdminV1alphaGoogleAdsLink> buildUnnamed21() => [
       buildGoogleAnalyticsAdminV1alphaGoogleAdsLink(),
       buildGoogleAnalyticsAdminV1alphaGoogleAdsLink(),
     ];
 
-void checkUnnamed20(core.List<api.GoogleAnalyticsAdminV1alphaGoogleAdsLink> o) {
+void checkUnnamed21(core.List<api.GoogleAnalyticsAdminV1alphaGoogleAdsLink> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleAnalyticsAdminV1alphaGoogleAdsLink(o[0]);
   checkGoogleAnalyticsAdminV1alphaGoogleAdsLink(o[1]);
@@ -1781,7 +1967,7 @@ api.GoogleAnalyticsAdminV1alphaListGoogleAdsLinksResponse
   final o = api.GoogleAnalyticsAdminV1alphaListGoogleAdsLinksResponse();
   buildCounterGoogleAnalyticsAdminV1alphaListGoogleAdsLinksResponse++;
   if (buildCounterGoogleAnalyticsAdminV1alphaListGoogleAdsLinksResponse < 3) {
-    o.googleAdsLinks = buildUnnamed20();
+    o.googleAdsLinks = buildUnnamed21();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleAnalyticsAdminV1alphaListGoogleAdsLinksResponse--;
@@ -1792,7 +1978,7 @@ void checkGoogleAnalyticsAdminV1alphaListGoogleAdsLinksResponse(
     api.GoogleAnalyticsAdminV1alphaListGoogleAdsLinksResponse o) {
   buildCounterGoogleAnalyticsAdminV1alphaListGoogleAdsLinksResponse++;
   if (buildCounterGoogleAnalyticsAdminV1alphaListGoogleAdsLinksResponse < 3) {
-    checkUnnamed20(o.googleAdsLinks!);
+    checkUnnamed21(o.googleAdsLinks!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -1801,12 +1987,12 @@ void checkGoogleAnalyticsAdminV1alphaListGoogleAdsLinksResponse(
   buildCounterGoogleAnalyticsAdminV1alphaListGoogleAdsLinksResponse--;
 }
 
-core.List<api.GoogleAnalyticsAdminV1alphaIosAppDataStream> buildUnnamed21() => [
+core.List<api.GoogleAnalyticsAdminV1alphaIosAppDataStream> buildUnnamed22() => [
       buildGoogleAnalyticsAdminV1alphaIosAppDataStream(),
       buildGoogleAnalyticsAdminV1alphaIosAppDataStream(),
     ];
 
-void checkUnnamed21(
+void checkUnnamed22(
     core.List<api.GoogleAnalyticsAdminV1alphaIosAppDataStream> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleAnalyticsAdminV1alphaIosAppDataStream(o[0]);
@@ -1821,7 +2007,7 @@ api.GoogleAnalyticsAdminV1alphaListIosAppDataStreamsResponse
   buildCounterGoogleAnalyticsAdminV1alphaListIosAppDataStreamsResponse++;
   if (buildCounterGoogleAnalyticsAdminV1alphaListIosAppDataStreamsResponse <
       3) {
-    o.iosAppDataStreams = buildUnnamed21();
+    o.iosAppDataStreams = buildUnnamed22();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleAnalyticsAdminV1alphaListIosAppDataStreamsResponse--;
@@ -1833,7 +2019,7 @@ void checkGoogleAnalyticsAdminV1alphaListIosAppDataStreamsResponse(
   buildCounterGoogleAnalyticsAdminV1alphaListIosAppDataStreamsResponse++;
   if (buildCounterGoogleAnalyticsAdminV1alphaListIosAppDataStreamsResponse <
       3) {
-    checkUnnamed21(o.iosAppDataStreams!);
+    checkUnnamed22(o.iosAppDataStreams!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -1843,12 +2029,12 @@ void checkGoogleAnalyticsAdminV1alphaListIosAppDataStreamsResponse(
 }
 
 core.List<api.GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret>
-    buildUnnamed22() => [
+    buildUnnamed23() => [
           buildGoogleAnalyticsAdminV1alphaMeasurementProtocolSecret(),
           buildGoogleAnalyticsAdminV1alphaMeasurementProtocolSecret(),
         ];
 
-void checkUnnamed22(
+void checkUnnamed23(
     core.List<api.GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleAnalyticsAdminV1alphaMeasurementProtocolSecret(o[0]);
@@ -1865,7 +2051,7 @@ api.GoogleAnalyticsAdminV1alphaListMeasurementProtocolSecretsResponse
   buildCounterGoogleAnalyticsAdminV1alphaListMeasurementProtocolSecretsResponse++;
   if (buildCounterGoogleAnalyticsAdminV1alphaListMeasurementProtocolSecretsResponse <
       3) {
-    o.measurementProtocolSecrets = buildUnnamed22();
+    o.measurementProtocolSecrets = buildUnnamed23();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleAnalyticsAdminV1alphaListMeasurementProtocolSecretsResponse--;
@@ -1877,7 +2063,7 @@ void checkGoogleAnalyticsAdminV1alphaListMeasurementProtocolSecretsResponse(
   buildCounterGoogleAnalyticsAdminV1alphaListMeasurementProtocolSecretsResponse++;
   if (buildCounterGoogleAnalyticsAdminV1alphaListMeasurementProtocolSecretsResponse <
       3) {
-    checkUnnamed22(o.measurementProtocolSecrets!);
+    checkUnnamed23(o.measurementProtocolSecrets!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -1886,12 +2072,12 @@ void checkGoogleAnalyticsAdminV1alphaListMeasurementProtocolSecretsResponse(
   buildCounterGoogleAnalyticsAdminV1alphaListMeasurementProtocolSecretsResponse--;
 }
 
-core.List<api.GoogleAnalyticsAdminV1alphaProperty> buildUnnamed23() => [
+core.List<api.GoogleAnalyticsAdminV1alphaProperty> buildUnnamed24() => [
       buildGoogleAnalyticsAdminV1alphaProperty(),
       buildGoogleAnalyticsAdminV1alphaProperty(),
     ];
 
-void checkUnnamed23(core.List<api.GoogleAnalyticsAdminV1alphaProperty> o) {
+void checkUnnamed24(core.List<api.GoogleAnalyticsAdminV1alphaProperty> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleAnalyticsAdminV1alphaProperty(o[0]);
   checkGoogleAnalyticsAdminV1alphaProperty(o[1]);
@@ -1904,7 +2090,7 @@ api.GoogleAnalyticsAdminV1alphaListPropertiesResponse
   buildCounterGoogleAnalyticsAdminV1alphaListPropertiesResponse++;
   if (buildCounterGoogleAnalyticsAdminV1alphaListPropertiesResponse < 3) {
     o.nextPageToken = 'foo';
-    o.properties = buildUnnamed23();
+    o.properties = buildUnnamed24();
   }
   buildCounterGoogleAnalyticsAdminV1alphaListPropertiesResponse--;
   return o;
@@ -1918,17 +2104,17 @@ void checkGoogleAnalyticsAdminV1alphaListPropertiesResponse(
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed23(o.properties!);
+    checkUnnamed24(o.properties!);
   }
   buildCounterGoogleAnalyticsAdminV1alphaListPropertiesResponse--;
 }
 
-core.List<api.GoogleAnalyticsAdminV1alphaUserLink> buildUnnamed24() => [
+core.List<api.GoogleAnalyticsAdminV1alphaUserLink> buildUnnamed25() => [
       buildGoogleAnalyticsAdminV1alphaUserLink(),
       buildGoogleAnalyticsAdminV1alphaUserLink(),
     ];
 
-void checkUnnamed24(core.List<api.GoogleAnalyticsAdminV1alphaUserLink> o) {
+void checkUnnamed25(core.List<api.GoogleAnalyticsAdminV1alphaUserLink> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleAnalyticsAdminV1alphaUserLink(o[0]);
   checkGoogleAnalyticsAdminV1alphaUserLink(o[1]);
@@ -1941,7 +2127,7 @@ api.GoogleAnalyticsAdminV1alphaListUserLinksResponse
   buildCounterGoogleAnalyticsAdminV1alphaListUserLinksResponse++;
   if (buildCounterGoogleAnalyticsAdminV1alphaListUserLinksResponse < 3) {
     o.nextPageToken = 'foo';
-    o.userLinks = buildUnnamed24();
+    o.userLinks = buildUnnamed25();
   }
   buildCounterGoogleAnalyticsAdminV1alphaListUserLinksResponse--;
   return o;
@@ -1955,17 +2141,17 @@ void checkGoogleAnalyticsAdminV1alphaListUserLinksResponse(
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed24(o.userLinks!);
+    checkUnnamed25(o.userLinks!);
   }
   buildCounterGoogleAnalyticsAdminV1alphaListUserLinksResponse--;
 }
 
-core.List<api.GoogleAnalyticsAdminV1alphaWebDataStream> buildUnnamed25() => [
+core.List<api.GoogleAnalyticsAdminV1alphaWebDataStream> buildUnnamed26() => [
       buildGoogleAnalyticsAdminV1alphaWebDataStream(),
       buildGoogleAnalyticsAdminV1alphaWebDataStream(),
     ];
 
-void checkUnnamed25(core.List<api.GoogleAnalyticsAdminV1alphaWebDataStream> o) {
+void checkUnnamed26(core.List<api.GoogleAnalyticsAdminV1alphaWebDataStream> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleAnalyticsAdminV1alphaWebDataStream(o[0]);
   checkGoogleAnalyticsAdminV1alphaWebDataStream(o[1]);
@@ -1978,7 +2164,7 @@ api.GoogleAnalyticsAdminV1alphaListWebDataStreamsResponse
   buildCounterGoogleAnalyticsAdminV1alphaListWebDataStreamsResponse++;
   if (buildCounterGoogleAnalyticsAdminV1alphaListWebDataStreamsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.webDataStreams = buildUnnamed25();
+    o.webDataStreams = buildUnnamed26();
   }
   buildCounterGoogleAnalyticsAdminV1alphaListWebDataStreamsResponse--;
   return o;
@@ -1992,7 +2178,7 @@ void checkGoogleAnalyticsAdminV1alphaListWebDataStreamsResponse(
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed25(o.webDataStreams!);
+    checkUnnamed26(o.webDataStreams!);
   }
   buildCounterGoogleAnalyticsAdminV1alphaListWebDataStreamsResponse--;
 }
@@ -2195,23 +2381,6 @@ void checkGoogleAnalyticsAdminV1alphaProvisionAccountTicketResponse(
   buildCounterGoogleAnalyticsAdminV1alphaProvisionAccountTicketResponse--;
 }
 
-core.List<core.String> buildUnnamed26() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed26(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
 core.List<core.String> buildUnnamed27() => [
       'foo',
       'foo',
@@ -2246,6 +2415,23 @@ void checkUnnamed28(core.List<core.String> o) {
   );
 }
 
+core.List<core.String> buildUnnamed29() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed29(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
 core.int
     buildCounterGoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequest = 0;
 api.GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequest
@@ -2254,14 +2440,14 @@ api.GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequest
   buildCounterGoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequest++;
   if (buildCounterGoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequest <
       3) {
-    o.action = buildUnnamed26();
-    o.actorEmail = buildUnnamed27();
+    o.action = buildUnnamed27();
+    o.actorEmail = buildUnnamed28();
     o.earliestChangeTime = 'foo';
     o.latestChangeTime = 'foo';
     o.pageSize = 42;
     o.pageToken = 'foo';
     o.property = 'foo';
-    o.resourceType = buildUnnamed28();
+    o.resourceType = buildUnnamed29();
   }
   buildCounterGoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequest--;
   return o;
@@ -2272,8 +2458,8 @@ void checkGoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequest(
   buildCounterGoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequest++;
   if (buildCounterGoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequest <
       3) {
-    checkUnnamed26(o.action!);
-    checkUnnamed27(o.actorEmail!);
+    checkUnnamed27(o.action!);
+    checkUnnamed28(o.actorEmail!);
     unittest.expect(
       o.earliestChangeTime!,
       unittest.equals('foo'),
@@ -2294,18 +2480,18 @@ void checkGoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequest(
       o.property!,
       unittest.equals('foo'),
     );
-    checkUnnamed28(o.resourceType!);
+    checkUnnamed29(o.resourceType!);
   }
   buildCounterGoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequest--;
 }
 
-core.List<api.GoogleAnalyticsAdminV1alphaChangeHistoryEvent> buildUnnamed29() =>
+core.List<api.GoogleAnalyticsAdminV1alphaChangeHistoryEvent> buildUnnamed30() =>
     [
       buildGoogleAnalyticsAdminV1alphaChangeHistoryEvent(),
       buildGoogleAnalyticsAdminV1alphaChangeHistoryEvent(),
     ];
 
-void checkUnnamed29(
+void checkUnnamed30(
     core.List<api.GoogleAnalyticsAdminV1alphaChangeHistoryEvent> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleAnalyticsAdminV1alphaChangeHistoryEvent(o[0]);
@@ -2321,7 +2507,7 @@ api.GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsResponse
   buildCounterGoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsResponse++;
   if (buildCounterGoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsResponse <
       3) {
-    o.changeHistoryEvents = buildUnnamed29();
+    o.changeHistoryEvents = buildUnnamed30();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsResponse--;
@@ -2333,7 +2519,7 @@ void checkGoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsResponse(
   buildCounterGoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsResponse++;
   if (buildCounterGoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsResponse <
       3) {
-    checkUnnamed29(o.changeHistoryEvents!);
+    checkUnnamed30(o.changeHistoryEvents!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -2363,12 +2549,12 @@ void checkGoogleAnalyticsAdminV1alphaUpdateUserLinkRequest(
   buildCounterGoogleAnalyticsAdminV1alphaUpdateUserLinkRequest--;
 }
 
-core.List<core.String> buildUnnamed30() => [
+core.List<core.String> buildUnnamed31() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed30(core.List<core.String> o) {
+void checkUnnamed31(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -2386,7 +2572,7 @@ api.GoogleAnalyticsAdminV1alphaUserLink
   final o = api.GoogleAnalyticsAdminV1alphaUserLink();
   buildCounterGoogleAnalyticsAdminV1alphaUserLink++;
   if (buildCounterGoogleAnalyticsAdminV1alphaUserLink < 3) {
-    o.directRoles = buildUnnamed30();
+    o.directRoles = buildUnnamed31();
     o.emailAddress = 'foo';
     o.name = 'foo';
   }
@@ -2398,7 +2584,7 @@ void checkGoogleAnalyticsAdminV1alphaUserLink(
     api.GoogleAnalyticsAdminV1alphaUserLink o) {
   buildCounterGoogleAnalyticsAdminV1alphaUserLink++;
   if (buildCounterGoogleAnalyticsAdminV1alphaUserLink < 3) {
-    checkUnnamed30(o.directRoles!);
+    checkUnnamed31(o.directRoles!);
     unittest.expect(
       o.emailAddress!,
       unittest.equals('foo'),
@@ -2480,12 +2666,12 @@ void checkGoogleProtobufEmpty(api.GoogleProtobufEmpty o) {
   buildCounterGoogleProtobufEmpty--;
 }
 
-core.List<core.String> buildUnnamed31() => [
+core.List<core.String> buildUnnamed32() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed31(core.List<core.String> o) {
+void checkUnnamed32(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -2497,12 +2683,12 @@ void checkUnnamed31(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed32() => [
+core.List<core.String> buildUnnamed33() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed32(core.List<core.String> o) {
+void checkUnnamed33(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -2848,6 +3034,53 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-GoogleAnalyticsAdminV1alphaDataStream', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleAnalyticsAdminV1alphaDataStream();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleAnalyticsAdminV1alphaDataStream.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleAnalyticsAdminV1alphaDataStream(od);
+    });
+  });
+
+  unittest.group(
+      'obj-schema-GoogleAnalyticsAdminV1alphaDataStreamAndroidAppStreamData',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o =
+          buildGoogleAnalyticsAdminV1alphaDataStreamAndroidAppStreamData();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleAnalyticsAdminV1alphaDataStreamAndroidAppStreamData
+          .fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleAnalyticsAdminV1alphaDataStreamAndroidAppStreamData(od);
+    });
+  });
+
+  unittest.group(
+      'obj-schema-GoogleAnalyticsAdminV1alphaDataStreamIosAppStreamData', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleAnalyticsAdminV1alphaDataStreamIosAppStreamData();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GoogleAnalyticsAdminV1alphaDataStreamIosAppStreamData.fromJson(
+              oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleAnalyticsAdminV1alphaDataStreamIosAppStreamData(od);
+    });
+  });
+
+  unittest.group(
+      'obj-schema-GoogleAnalyticsAdminV1alphaDataStreamWebStreamData', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleAnalyticsAdminV1alphaDataStreamWebStreamData();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GoogleAnalyticsAdminV1alphaDataStreamWebStreamData.fromJson(
+              oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleAnalyticsAdminV1alphaDataStreamWebStreamData(od);
+    });
+  });
+
   unittest.group('obj-schema-GoogleAnalyticsAdminV1alphaDeleteUserLinkRequest',
       () {
     unittest.test('to-json--from-json', () async {
@@ -3019,6 +3252,18 @@ void main() {
           api.GoogleAnalyticsAdminV1alphaListCustomMetricsResponse.fromJson(
               oJson as core.Map<core.String, core.dynamic>);
       checkGoogleAnalyticsAdminV1alphaListCustomMetricsResponse(od);
+    });
+  });
+
+  unittest.group(
+      'obj-schema-GoogleAnalyticsAdminV1alphaListDataStreamsResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleAnalyticsAdminV1alphaListDataStreamsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GoogleAnalyticsAdminV1alphaListDataStreamsResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleAnalyticsAdminV1alphaListDataStreamsResponse(od);
     });
   });
 
@@ -3941,7 +4186,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.GoogleAnalyticsAdminApi(mock).accounts.userLinks;
       final arg_parent = 'foo';
-      final arg_names = buildUnnamed31();
+      final arg_names = buildUnnamed32();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = (req.url).path;
@@ -6396,6 +6641,306 @@ void main() {
     });
   });
 
+  unittest.group('resource-PropertiesDataStreamsResource', () {
+    unittest.test('method--create', () async {
+      final mock = HttpServerMock();
+      final res = api.GoogleAnalyticsAdminApi(mock).properties.dataStreams;
+      final arg_request = buildGoogleAnalyticsAdminV1alphaDataStream();
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.GoogleAnalyticsAdminV1alphaDataStream.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGoogleAnalyticsAdminV1alphaDataStream(obj);
+
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals('v1alpha/'),
+        );
+        pathOffset += 8;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp =
+            convert.json.encode(buildGoogleAnalyticsAdminV1alphaDataStream());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkGoogleAnalyticsAdminV1alphaDataStream(
+          response as api.GoogleAnalyticsAdminV1alphaDataStream);
+    });
+
+    unittest.test('method--delete', () async {
+      final mock = HttpServerMock();
+      final res = api.GoogleAnalyticsAdminApi(mock).properties.dataStreams;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals('v1alpha/'),
+        );
+        pathOffset += 8;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildGoogleProtobufEmpty());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
+    });
+
+    unittest.test('method--get', () async {
+      final mock = HttpServerMock();
+      final res = api.GoogleAnalyticsAdminApi(mock).properties.dataStreams;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals('v1alpha/'),
+        );
+        pathOffset += 8;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp =
+            convert.json.encode(buildGoogleAnalyticsAdminV1alphaDataStream());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGoogleAnalyticsAdminV1alphaDataStream(
+          response as api.GoogleAnalyticsAdminV1alphaDataStream);
+    });
+
+    unittest.test('method--list', () async {
+      final mock = HttpServerMock();
+      final res = api.GoogleAnalyticsAdminApi(mock).properties.dataStreams;
+      final arg_parent = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals('v1alpha/'),
+        );
+        pathOffset += 8;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          core.int.parse(queryMap['pageSize']!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap['pageToken']!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json
+            .encode(buildGoogleAnalyticsAdminV1alphaListDataStreamsResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkGoogleAnalyticsAdminV1alphaListDataStreamsResponse(
+          response as api.GoogleAnalyticsAdminV1alphaListDataStreamsResponse);
+    });
+
+    unittest.test('method--patch', () async {
+      final mock = HttpServerMock();
+      final res = api.GoogleAnalyticsAdminApi(mock).properties.dataStreams;
+      final arg_request = buildGoogleAnalyticsAdminV1alphaDataStream();
+      final arg_name = 'foo';
+      final arg_updateMask = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.GoogleAnalyticsAdminV1alphaDataStream.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGoogleAnalyticsAdminV1alphaDataStream(obj);
+
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals('v1alpha/'),
+        );
+        pathOffset += 8;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['updateMask']!.first,
+          unittest.equals(arg_updateMask),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp =
+            convert.json.encode(buildGoogleAnalyticsAdminV1alphaDataStream());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkGoogleAnalyticsAdminV1alphaDataStream(
+          response as api.GoogleAnalyticsAdminV1alphaDataStream);
+    });
+  });
+
   unittest.group(
       'resource-PropertiesDisplayVideo360AdvertiserLinkProposalsResource', () {
     unittest.test('method--approve', () async {
@@ -8274,7 +8819,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.GoogleAnalyticsAdminApi(mock).properties.userLinks;
       final arg_parent = 'foo';
-      final arg_names = buildUnnamed32();
+      final arg_names = buildUnnamed33();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = (req.url).path;

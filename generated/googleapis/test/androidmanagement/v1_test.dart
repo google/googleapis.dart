@@ -1651,6 +1651,7 @@ api.HardwareInfo buildHardwareInfo() {
     o.cpuShutdownTemperatures = buildUnnamed30();
     o.cpuThrottlingTemperatures = buildUnnamed31();
     o.deviceBasebandVersion = 'foo';
+    o.enterpriseSpecificId = 'foo';
     o.gpuShutdownTemperatures = buildUnnamed32();
     o.gpuThrottlingTemperatures = buildUnnamed33();
     o.hardware = 'foo';
@@ -1677,6 +1678,10 @@ void checkHardwareInfo(api.HardwareInfo o) {
     checkUnnamed31(o.cpuThrottlingTemperatures!);
     unittest.expect(
       o.deviceBasebandVersion!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.enterpriseSpecificId!,
       unittest.equals('foo'),
     );
     checkUnnamed32(o.gpuShutdownTemperatures!);
@@ -3223,6 +3228,7 @@ api.Policy buildPolicy() {
     o.personalUsagePolicies = buildPersonalUsagePolicies();
     o.playStoreMode = 'foo';
     o.policyEnforcementRules = buildUnnamed71();
+    o.preferentialNetworkService = 'foo';
     o.privateKeySelectionEnabled = true;
     o.recommendedGlobalProxy = buildProxyInfo();
     o.removeUserDisabled = true;
@@ -3342,6 +3348,10 @@ void checkPolicy(api.Policy o) {
       unittest.equals('foo'),
     );
     checkUnnamed71(o.policyEnforcementRules!);
+    unittest.expect(
+      o.preferentialNetworkService!,
+      unittest.equals('foo'),
+    );
     unittest.expect(o.privateKeySelectionEnabled!, unittest.isTrue);
     checkProxyInfo(o.recommendedGlobalProxy!);
     unittest.expect(o.removeUserDisabled!, unittest.isTrue);

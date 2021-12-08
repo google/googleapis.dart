@@ -3972,6 +3972,7 @@ class Event {
   /// Read-only. Possible values are:
   /// - "default" - A regular event or not further specified.
   /// - "outOfOffice" - An out-of-office event.
+  /// - "focusTime" - A focus-time event.
   core.String? eventType;
 
   /// Extended properties of the event.

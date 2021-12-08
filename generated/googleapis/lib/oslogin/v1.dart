@@ -22,6 +22,7 @@
 ///
 /// - [UsersResource]
 ///   - [UsersProjectsResource]
+///   - [UsersSshPublicKeyResource]
 ///   - [UsersSshPublicKeysResource]
 library oslogin.v1;
 
@@ -73,6 +74,8 @@ class UsersResource {
   final commons.ApiRequester _requester;
 
   UsersProjectsResource get projects => UsersProjectsResource(_requester);
+  UsersSshPublicKeyResource get sshPublicKey =>
+      UsersSshPublicKeyResource(_requester);
   UsersSshPublicKeysResource get sshPublicKeys =>
       UsersSshPublicKeysResource(_requester);
 
@@ -213,6 +216,53 @@ class UsersProjectsResource {
       queryParams: _queryParams,
     );
     return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class UsersSshPublicKeyResource {
+  final commons.ApiRequester _requester;
+
+  UsersSshPublicKeyResource(commons.ApiRequester client) : _requester = client;
+
+  /// Create an SSH public key
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The unique ID for the user in format `users/{user}`.
+  /// Value must have pattern `^users/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SshPublicKey].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SshPublicKey> create(
+    SshPublicKey request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/sshPublicKey';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return SshPublicKey.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 

@@ -14,8 +14,10 @@
 
 /// Binary Authorization API - v1
 ///
-/// The management interface for Binary Authorization, a system providing policy
-/// control for images deployed to Kubernetes Engine clusters.
+/// The management interface for Binary Authorization, a service that provides
+/// policy-based deployment validation and control for images deployed to Google
+/// Kubernetes Engine (GKE), Anthos Service Mesh, Anthos Clusters, and Cloud
+/// Run.
 ///
 /// For more information, see <https://cloud.google.com/binary-authorization/>
 ///
@@ -41,8 +43,10 @@ import '../src/user_agent.dart';
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
-/// The management interface for Binary Authorization, a system providing policy
-/// control for images deployed to Kubernetes Engine clusters.
+/// The management interface for Binary Authorization, a service that provides
+/// policy-based deployment validation and control for images deployed to Google
+/// Kubernetes Engine (GKE), Anthos Service Mesh, Anthos Clusters, and Cloud
+/// Run.
 class BinaryAuthorizationApi {
   /// See, edit, configure, and delete your Google Cloud data and see the email
   /// address for your Google Account.
@@ -299,12 +303,16 @@ class ProjectsAttestorsResource {
   /// this field.
   /// Value must have pattern `^projects/\[^/\]+/attestors/\[^/\]+$`.
   ///
-  /// [options_requestedPolicyVersion] - Optional. The policy format version to
-  /// be returned. Valid values are 0, 1, and 3. Requests specifying an invalid
-  /// value will be rejected. Requests for policies with any conditional
-  /// bindings must specify version 3. Policies without any conditional bindings
-  /// may specify any valid value or leave the field unset. To learn which
-  /// resources support conditions in their IAM policies, see the
+  /// [options_requestedPolicyVersion] - Optional. The maximum policy version
+  /// that will be used to format the policy. Valid values are 0, 1, and 3.
+  /// Requests specifying an invalid value will be rejected. Requests for
+  /// policies with any conditional role bindings must specify version 3.
+  /// Policies with no conditional role bindings may specify any valid value or
+  /// leave the field unset. The policy in the response might use the policy
+  /// version that you specified, or it might use a lower policy version. For
+  /// example, if you specify version 3, but the policy has no conditional role
+  /// bindings, the response uses version 1. To learn which resources support
+  /// conditions in their IAM policies, see the
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -590,12 +598,16 @@ class ProjectsPolicyResource {
   /// this field.
   /// Value must have pattern `^projects/\[^/\]+/policy$`.
   ///
-  /// [options_requestedPolicyVersion] - Optional. The policy format version to
-  /// be returned. Valid values are 0, 1, and 3. Requests specifying an invalid
-  /// value will be rejected. Requests for policies with any conditional
-  /// bindings must specify version 3. Policies without any conditional bindings
-  /// may specify any valid value or leave the field unset. To learn which
-  /// resources support conditions in their IAM policies, see the
+  /// [options_requestedPolicyVersion] - Optional. The maximum policy version
+  /// that will be used to format the policy. Valid values are 0, 1, and 3.
+  /// Requests specifying an invalid value will be rejected. Requests for
+  /// policies with any conditional role bindings must specify version 3.
+  /// Policies with no conditional role bindings may specify any valid value or
+  /// leave the field unset. The policy in the response might use the policy
+  /// version that you specified, or it might use a lower policy version. For
+  /// example, if you specify version 3, but the policy has no conditional role
+  /// bindings, the response uses version 1. To learn which resources support
+  /// conditions in their IAM policies, see the
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -792,7 +804,7 @@ class AdmissionRule {
   /// - "EVALUATION_MODE_UNSPECIFIED" : Do not use.
   /// - "ALWAYS_ALLOW" : This rule allows all all pod creations.
   /// - "REQUIRE_ATTESTATION" : This rule allows a pod creation if all the
-  /// attestors listed in 'require_attestations_by' have valid attestations for
+  /// attestors listed in `require_attestations_by` have valid attestations for
   /// all of the images in the pod spec.
   /// - "ALWAYS_DENY" : This rule denies all pod creations.
   core.String? evaluationMode;
@@ -1434,15 +1446,15 @@ class Policy {
 
   /// Per-istio-service-identity admission rules.
   ///
-  /// Istio service identity spec format: spiffe:///ns//sa/ or /ns//sa/ e.g.
-  /// spiffe://example.com/ns/test-ns/sa/default
+  /// Istio service identity spec format: `spiffe:///ns//sa/` or `/ns//sa/` e.g.
+  /// `spiffe://example.com/ns/test-ns/sa/default`
   ///
   /// Optional.
   core.Map<core.String, AdmissionRule>? istioServiceIdentityAdmissionRules;
 
   /// Per-kubernetes-namespace admission rules.
   ///
-  /// K8s namespace spec format: \[a-z.-\]+, e.g. 'some-namespace'
+  /// K8s namespace spec format: `[a-z.-]+`, e.g. `some-namespace`
   ///
   /// Optional.
   core.Map<core.String, AdmissionRule>? kubernetesNamespaceAdmissionRules;
@@ -1450,7 +1462,7 @@ class Policy {
   /// Per-kubernetes-service-account admission rules.
   ///
   /// Service account spec format: `namespace:serviceaccount`. e.g.
-  /// 'test-ns:default'
+  /// `test-ns:default`
   ///
   /// Optional.
   core.Map<core.String, AdmissionRule>? kubernetesServiceAccountAdmissionRules;

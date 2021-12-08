@@ -998,6 +998,13 @@ class GoogleCloudPaymentsResellerSubscriptionV1Promotion {
   /// Optional.
   GoogleCloudPaymentsResellerSubscriptionV1Duration? freeTrialDuration;
 
+  /// Specifies the introductory pricing details when the promotion_type is
+  /// PROMOTION_TYPE_INTRODUCTORY_PRICING.
+  ///
+  /// Optional.
+  GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetails?
+      introductoryPricingDetails;
+
   /// Response only.
   ///
   /// Resource name of the subscription promotion. It will have the format of
@@ -1005,6 +1012,16 @@ class GoogleCloudPaymentsResellerSubscriptionV1Promotion {
   ///
   /// Output only.
   core.String? name;
+
+  /// Specifies the type of the promotion.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "PROMOTION_TYPE_UNSPECIFIED" : The promotion type is unspecified.
+  /// - "PROMOTION_TYPE_FREE_TRIAL" : The promotion is a free trial.
+  /// - "PROMOTION_TYPE_INTRODUCTORY_PRICING" : The promotion is a reduced
+  /// introductory pricing.
+  core.String? promotionType;
 
   /// 2-letter ISO region code where the promotion is available in.
   ///
@@ -1028,7 +1045,9 @@ class GoogleCloudPaymentsResellerSubscriptionV1Promotion {
     this.applicableProducts,
     this.endTime,
     this.freeTrialDuration,
+    this.introductoryPricingDetails,
     this.name,
+    this.promotionType,
     this.regionCodes,
     this.startTime,
     this.titles,
@@ -1049,7 +1068,16 @@ class GoogleCloudPaymentsResellerSubscriptionV1Promotion {
                   _json['freeTrialDuration']
                       as core.Map<core.String, core.dynamic>)
               : null,
+          introductoryPricingDetails: _json
+                  .containsKey('introductoryPricingDetails')
+              ? GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetails
+                  .fromJson(_json['introductoryPricingDetails']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          promotionType: _json.containsKey('promotionType')
+              ? _json['promotionType'] as core.String
+              : null,
           regionCodes: _json.containsKey('regionCodes')
               ? (_json['regionCodes'] as core.List)
                   .map((value) => value as core.String)
@@ -1071,10 +1099,68 @@ class GoogleCloudPaymentsResellerSubscriptionV1Promotion {
           'applicableProducts': applicableProducts!,
         if (endTime != null) 'endTime': endTime!,
         if (freeTrialDuration != null) 'freeTrialDuration': freeTrialDuration!,
+        if (introductoryPricingDetails != null)
+          'introductoryPricingDetails': introductoryPricingDetails!,
         if (name != null) 'name': name!,
+        if (promotionType != null) 'promotionType': promotionType!,
         if (regionCodes != null) 'regionCodes': regionCodes!,
         if (startTime != null) 'startTime': startTime!,
         if (titles != null) 'titles': titles!,
+      };
+}
+
+/// The details of a introductory pricing promotion.
+class GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetails {
+  /// Specifies the introductory pricing periods.
+  core.List<
+          GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetailsIntroductoryPricingSpec>?
+      introductoryPricingSpecs;
+
+  GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetails({
+    this.introductoryPricingSpecs,
+  });
+
+  GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetails.fromJson(
+      core.Map _json)
+      : this(
+          introductoryPricingSpecs: _json
+                  .containsKey('introductoryPricingSpecs')
+              ? (_json['introductoryPricingSpecs'] as core.List)
+                  .map((value) =>
+                      GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetailsIntroductoryPricingSpec
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (introductoryPricingSpecs != null)
+          'introductoryPricingSpecs': introductoryPricingSpecs!,
+      };
+}
+
+/// The duration of an introductory pricing promotion.
+class GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetailsIntroductoryPricingSpec {
+  /// The duration of an introductory offer in billing cycles.
+  ///
+  /// Output only.
+  core.int? recurrenceCount;
+
+  GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetailsIntroductoryPricingSpec({
+    this.recurrenceCount,
+  });
+
+  GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetailsIntroductoryPricingSpec.fromJson(
+      core.Map _json)
+      : this(
+          recurrenceCount: _json.containsKey('recurrenceCount')
+              ? _json['recurrenceCount'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (recurrenceCount != null) 'recurrenceCount': recurrenceCount!,
       };
 }
 
@@ -1168,6 +1254,16 @@ class GoogleCloudPaymentsResellerSubscriptionV1Subscription {
   /// Output only.
   core.String? redirectUri;
 
+  /// The time at which the subscription is expected to be renewed by Google - a
+  /// new charge will be incurred and the service entitlement will be renewed.
+  ///
+  /// A non-immediate cancellation will take place at this time too, before
+  /// which, the service entitlement for the end user will remain valid. UTC
+  /// timezone in ISO 8061 format. For example: "2019-08-31T17:28:54.564Z"
+  ///
+  /// Output only.
+  core.String? renewalTime;
+
   /// The location that the service is provided as indicated by the partner.
   ///
   /// Required.
@@ -1220,6 +1316,7 @@ class GoogleCloudPaymentsResellerSubscriptionV1Subscription {
     this.products,
     this.promotions,
     this.redirectUri,
+    this.renewalTime,
     this.serviceLocation,
     this.state,
     this.updateTime,
@@ -1265,6 +1362,9 @@ class GoogleCloudPaymentsResellerSubscriptionV1Subscription {
           redirectUri: _json.containsKey('redirectUri')
               ? _json['redirectUri'] as core.String
               : null,
+          renewalTime: _json.containsKey('renewalTime')
+              ? _json['renewalTime'] as core.String
+              : null,
           serviceLocation: _json.containsKey('serviceLocation')
               ? GoogleCloudPaymentsResellerSubscriptionV1Location.fromJson(
                   _json['serviceLocation']
@@ -1295,6 +1395,7 @@ class GoogleCloudPaymentsResellerSubscriptionV1Subscription {
         if (products != null) 'products': products!,
         if (promotions != null) 'promotions': promotions!,
         if (redirectUri != null) 'redirectUri': redirectUri!,
+        if (renewalTime != null) 'renewalTime': renewalTime!,
         if (serviceLocation != null) 'serviceLocation': serviceLocation!,
         if (state != null) 'state': state!,
         if (updateTime != null) 'updateTime': updateTime!,

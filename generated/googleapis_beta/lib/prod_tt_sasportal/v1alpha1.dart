@@ -85,6 +85,79 @@ class CustomersResource {
 
   CustomersResource(commons.ApiRequester client) : _requester = client;
 
+  /// Creates a new SAS customer.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SasPortalCustomer].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SasPortalCustomer> create(
+    SasPortalCustomer request, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    const _url = 'v1alpha1/customers';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return SasPortalCustomer.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a customer.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the customer.
+  /// Value must have pattern `^customers/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SasPortalEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SasPortalEmpty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1alpha1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'DELETE',
+      queryParams: _queryParams,
+    );
+    return SasPortalEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
   /// Returns a requested customer.
   ///
   /// Request parameters:

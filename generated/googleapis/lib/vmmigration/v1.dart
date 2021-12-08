@@ -1432,6 +1432,15 @@ class ProjectsLocationsSourcesMigratingVmsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/sources/\[^/\]+/migratingVms/\[^/\]+$`.
   ///
+  /// [view] - Optional. The level of details of the migrating VM.
+  /// Possible string values are:
+  /// - "MIGRATING_VM_VIEW_UNSPECIFIED" : View is unspecified. The API will
+  /// fallback to the default value.
+  /// - "MIGRATING_VM_VIEW_BASIC" : Get the migrating VM basic details. The
+  /// basic details do not include the recent clone jobs and recent cutover jobs
+  /// lists.
+  /// - "MIGRATING_VM_VIEW_FULL" : Include everything.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1444,9 +1453,11 @@ class ProjectsLocationsSourcesMigratingVmsResource {
   /// this method will complete with the same error.
   async.Future<MigratingVm> get(
     core.String name, {
+    core.String? view,
     core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
+      if (view != null) 'view': [view],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -1484,6 +1495,15 @@ class ProjectsLocationsSourcesMigratingVmsResource {
   /// When paginating, all other parameters provided to `ListMigratingVms` must
   /// match the call that provided the page token.
   ///
+  /// [view] - Optional. The level of details of each migrating VM.
+  /// Possible string values are:
+  /// - "MIGRATING_VM_VIEW_UNSPECIFIED" : View is unspecified. The API will
+  /// fallback to the default value.
+  /// - "MIGRATING_VM_VIEW_BASIC" : Get the migrating VM basic details. The
+  /// basic details do not include the recent clone jobs and recent cutover jobs
+  /// lists.
+  /// - "MIGRATING_VM_VIEW_FULL" : Include everything.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1500,6 +1520,7 @@ class ProjectsLocationsSourcesMigratingVmsResource {
     core.String? orderBy,
     core.int? pageSize,
     core.String? pageToken,
+    core.String? view,
     core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
@@ -1507,6 +1528,7 @@ class ProjectsLocationsSourcesMigratingVmsResource {
       if (orderBy != null) 'orderBy': [orderBy],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (view != null) 'view': [view],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -4115,6 +4137,24 @@ class MigratingVm {
   /// The replication schedule policy.
   SchedulePolicy? policy;
 
+  /// The recent clone jobs performed on the migrating VM.
+  ///
+  /// This field holds the vm's last completed clone job and the vm's running
+  /// clone job, if one exists. Note: To have this field populated you need to
+  /// explicitly request it via the "view" parameter of the Get/List request.
+  ///
+  /// Output only.
+  core.List<CloneJob>? recentCloneJobs;
+
+  /// The recent cutover jobs performed on the migrating VM.
+  ///
+  /// This field holds the vm's last completed cutover job and the vm's running
+  /// cutover job, if one exists. Note: To have this field populated you need to
+  /// explicitly request it via the "view" parameter of the Get/List request.
+  ///
+  /// Output only.
+  core.List<CutoverJob>? recentCutoverJobs;
+
   /// The unique ID of the VM in the source.
   ///
   /// The VM's name in vSphere can be changed, so this is not the VM's name but
@@ -4171,6 +4211,8 @@ class MigratingVm {
     this.lastSync,
     this.name,
     this.policy,
+    this.recentCloneJobs,
+    this.recentCutoverJobs,
     this.sourceVmId,
     this.state,
     this.stateTime,
@@ -4221,6 +4263,18 @@ class MigratingVm {
               ? SchedulePolicy.fromJson(
                   _json['policy'] as core.Map<core.String, core.dynamic>)
               : null,
+          recentCloneJobs: _json.containsKey('recentCloneJobs')
+              ? (_json['recentCloneJobs'] as core.List)
+                  .map((value) => CloneJob.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          recentCutoverJobs: _json.containsKey('recentCutoverJobs')
+              ? (_json['recentCutoverJobs'] as core.List)
+                  .map((value) => CutoverJob.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           sourceVmId: _json.containsKey('sourceVmId')
               ? _json['sourceVmId'] as core.String
               : null,
@@ -4247,6 +4301,8 @@ class MigratingVm {
         if (lastSync != null) 'lastSync': lastSync!,
         if (name != null) 'name': name!,
         if (policy != null) 'policy': policy!,
+        if (recentCloneJobs != null) 'recentCloneJobs': recentCloneJobs!,
+        if (recentCutoverJobs != null) 'recentCutoverJobs': recentCutoverJobs!,
         if (sourceVmId != null) 'sourceVmId': sourceVmId!,
         if (state != null) 'state': state!,
         if (stateTime != null) 'stateTime': stateTime!,

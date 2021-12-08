@@ -3021,7 +3021,12 @@ class ConnectSettings {
   /// - "POSTGRES_10" : The database version is PostgreSQL 10.
   /// - "POSTGRES_12" : The database version is PostgreSQL 12.
   /// - "MYSQL_8_0" : The database version is MySQL 8.
+  /// - "MYSQL_8_0_18" : The database major version is MySQL 8.0 and the minor
+  /// version is 18.
+  /// - "MYSQL_8_0_26" : The database major version is MySQL 8.0 and the minor
+  /// version is 26.
   /// - "POSTGRES_13" : The database version is PostgreSQL 13.
+  /// - "POSTGRES_14" : The database version is PostgreSQL 14.
   /// - "SQLSERVER_2019_STANDARD" : The database version is SQL Server 2019
   /// Standard.
   /// - "SQLSERVER_2019_ENTERPRISE" : The database version is SQL Server 2019
@@ -3281,16 +3286,16 @@ class DatabaseInstance {
   /// for details.
   core.String? currentDiskSize;
 
+  /// The databaseInstalledVersion stores the current fully resolved database
+  /// version running on the instance including minor version such as
+  /// MYSQL_5_6_50
+  ///
+  /// Output only.
+  core.String? databaseInstalledVersion;
+
   /// The database engine type and version.
   ///
-  /// The **databaseVersion** field cannot be changed after instance creation. *
-  /// **MySQL instances**: MYSQL_8_0, MYSQL_5_7 (default), or MYSQL_5_6. *
-  /// **PostgreSQL instances**: POSTGRES_9_6, POSTGRES_10, POSTGRES_11,
-  /// POSTGRES_12, POSTGRES_13 (default), POSTGRES_14. * **SQL Server
-  /// instances**: SQLSERVER_2019_STANDARD, SQLSERVER_2019_ENTERPRISE,
-  /// SQLSERVER_2019_EXPRESS, or SQLSERVER_2019_WEB, SQLSERVER_2017_STANDARD
-  /// (default), SQLSERVER_2017_ENTERPRISE, SQLSERVER_2017_EXPRESS, or
-  /// SQLSERVER_2017_WEB.
+  /// The **databaseVersion** field cannot be changed after instance creation.
   /// Possible string values are:
   /// - "SQL_DATABASE_VERSION_UNSPECIFIED" : This is an unknown database
   /// version.
@@ -3310,7 +3315,12 @@ class DatabaseInstance {
   /// - "POSTGRES_10" : The database version is PostgreSQL 10.
   /// - "POSTGRES_12" : The database version is PostgreSQL 12.
   /// - "MYSQL_8_0" : The database version is MySQL 8.
+  /// - "MYSQL_8_0_18" : The database major version is MySQL 8.0 and the minor
+  /// version is 18.
+  /// - "MYSQL_8_0_26" : The database major version is MySQL 8.0 and the minor
+  /// version is 26.
   /// - "POSTGRES_13" : The database version is PostgreSQL 13.
+  /// - "POSTGRES_14" : The database version is PostgreSQL 14.
   /// - "SQLSERVER_2019_STANDARD" : The database version is SQL Server 2019
   /// Standard.
   /// - "SQLSERVER_2019_ENTERPRISE" : The database version is SQL Server 2019
@@ -3343,16 +3353,11 @@ class DatabaseInstance {
   core.String? gceZone;
 
   /// The instance type.
-  ///
-  /// This can be one of the following: * **CLOUD_SQL_INSTANCE**: A Cloud SQL
-  /// instance that is not replicating from a primary instance. *
-  /// **ON_PREMISES_INSTANCE**: An instance running on the customer's premises.
-  /// * **READ_REPLICA_INSTANCE**: A Cloud SQL instance configured as a
-  /// read-replica.
   /// Possible string values are:
   /// - "SQL_INSTANCE_TYPE_UNSPECIFIED" : This is an unknown Cloud SQL instance
   /// type.
-  /// - "CLOUD_SQL_INSTANCE" : A regular Cloud SQL instance.
+  /// - "CLOUD_SQL_INSTANCE" : A regular Cloud SQL instance that is not
+  /// replicating from a primary instance.
   /// - "ON_PREMISES_INSTANCE" : An instance running on the customer's premises
   /// that is not managed by Cloud SQL.
   /// - "READ_REPLICA_INSTANCE" : A Cloud SQL instance acting as a read-replica.
@@ -3447,14 +3452,6 @@ class DatabaseInstance {
   Settings? settings;
 
   /// The current serving state of the Cloud SQL instance.
-  ///
-  /// This can be one of the following: * **SQL_INSTANCE_STATE_UNSPECIFIED**:
-  /// The state of the instance is unknown. * **RUNNABLE**: The instance is
-  /// running, or has been stopped by owner. * **SUSPENDED**: The instance is
-  /// not available, for example due to problems with billing. *
-  /// **PENDING_DELETE**: The instance is being deleted. * **PENDING_CREATE**:
-  /// The instance is being created. * **MAINTENANCE**: The instance is down for
-  /// maintenance. * **FAILED**: The instance creation failed.
   /// Possible string values are:
   /// - "SQL_INSTANCE_STATE_UNSPECIFIED" : The state of the instance is unknown.
   /// - "RUNNABLE" : The instance is running, or has been stopped by owner.
@@ -3465,8 +3462,7 @@ class DatabaseInstance {
   /// - "MAINTENANCE" : The instance is down for maintenance.
   /// - "FAILED" : The creation of the instance failed or a fatal error occurred
   /// during maintenance.
-  /// - "ONLINE_MAINTENANCE" : The instance is under maintenance operations and
-  /// the database is available.
+  /// - "ONLINE_MAINTENANCE" : Deprecated
   core.String? state;
 
   /// If the instance state is SUSPENDED, the reason for the suspension.
@@ -3477,6 +3473,7 @@ class DatabaseInstance {
     this.connectionName,
     this.createTime,
     this.currentDiskSize,
+    this.databaseInstalledVersion,
     this.databaseVersion,
     this.diskEncryptionConfiguration,
     this.diskEncryptionStatus,
@@ -3522,6 +3519,10 @@ class DatabaseInstance {
           currentDiskSize: _json.containsKey('currentDiskSize')
               ? _json['currentDiskSize'] as core.String
               : null,
+          databaseInstalledVersion:
+              _json.containsKey('databaseInstalledVersion')
+                  ? _json['databaseInstalledVersion'] as core.String
+                  : null,
           databaseVersion: _json.containsKey('databaseVersion')
               ? _json['databaseVersion'] as core.String
               : null,
@@ -3630,6 +3631,8 @@ class DatabaseInstance {
         if (connectionName != null) 'connectionName': connectionName!,
         if (createTime != null) 'createTime': createTime!,
         if (currentDiskSize != null) 'currentDiskSize': currentDiskSize!,
+        if (databaseInstalledVersion != null)
+          'databaseInstalledVersion': databaseInstalledVersion!,
         if (databaseVersion != null) 'databaseVersion': databaseVersion!,
         if (diskEncryptionConfiguration != null)
           'diskEncryptionConfiguration': diskEncryptionConfiguration!,
@@ -4034,11 +4037,11 @@ class ExportContextCsvExportOptions {
 class ExportContextSqlExportOptionsMysqlExportOptions {
   /// Option to include SQL statement required to set up replication.
   ///
-  /// * If set to **1**, the dump file includes a CHANGE MASTER TO statement
-  /// with the binary log coordinates, and --set-gtid-purged is set to ON. * If
-  /// set to **2**, the CHANGE MASTER TO statement is written as a SQL comment
-  /// and has no effect. * If set to any value other than **1**,
-  /// --set-gtid-purged is set to OFF.
+  /// If set to **1**, the dump file includes a CHANGE MASTER TO statement with
+  /// the binary log coordinates, and --set-gtid-purged is set to ON. If set to
+  /// **2**, the CHANGE MASTER TO statement is written as a SQL comment and has
+  /// no effect. If set to any value other than **1**, --set-gtid-purged is set
+  /// to OFF.
   core.int? masterData;
 
   ExportContextSqlExportOptionsMysqlExportOptions({
@@ -4111,23 +4114,19 @@ class ExportContext {
 
   /// Databases to be exported.
   ///
-  /// * **MySQL instances:** If **fileType** is **SQL** and no database is
+  /// **MySQL instances:** If **fileType** is **SQL** and no database is
   /// specified, all databases are exported, except for the **mysql** system
   /// database. If **fileType** is **CSV**, you can specify one database, either
   /// by using this property or by using the **csvExportOptions.selectQuery**
-  /// property, which takes precedence over this property. * **PostgreSQL
+  /// property, which takes precedence over this property. **PostgreSQL
   /// instances:** You must specify one database to be exported. If **fileType**
   /// is **CSV**, this database must match the one specified in the
-  /// **csvExportOptions.selectQuery** property. * **SQL Server instances:** You
+  /// **csvExportOptions.selectQuery** property. **SQL Server instances:** You
   /// must specify one database to be exported, and the **fileType** must be
   /// **BAK**.
   core.List<core.String>? databases;
 
   /// The file type for the specified uri.
-  ///
-  /// * **SQL**: The file contains SQL statements. * **CSV**: The file contains
-  /// CSV data. * **BAK**: The file contains backup data for a SQL Server
-  /// instance.
   /// Possible string values are:
   /// - "SQL_FILE_TYPE_UNSPECIFIED" : Unknown file type.
   /// - "SQL" : File containing SQL statements.
@@ -5058,7 +5057,7 @@ class IpConfiguration {
   /// will be created in the allocated range. The range name must comply with
   /// [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name
   /// must be 1-63 characters long and match the regular expression
-  /// `[a-z]([-a-z0-9]*[a-z0-9])?.` Reserved for future use.
+  /// `[a-z]([-a-z0-9]*[a-z0-9])?.`
   core.String? allocatedIpRange;
 
   /// The list of external networks that are allowed to connect to the instance
@@ -5602,9 +5601,6 @@ class Operation {
   core.String? startTime;
 
   /// The status of an operation.
-  ///
-  /// Valid values are: * **PENDING** * **RUNNING** * **DONE** *
-  /// **SQL_OPERATION_STATUS_UNSPECIFIED**
   /// Possible string values are:
   /// - "SQL_OPERATION_STATUS_UNSPECIFIED" : The state of the operation is
   /// unknown.
@@ -5813,6 +5809,95 @@ class OperationsListResponse {
         if (items != null) 'items': items!,
         if (kind != null) 'kind': kind!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
+/// Read-only password status.
+class PasswordStatus {
+  /// If true, user does not have login privileges.
+  core.bool? locked;
+
+  /// The expiration time of the current password.
+  core.String? passwordExpirationTime;
+
+  PasswordStatus({
+    this.locked,
+    this.passwordExpirationTime,
+  });
+
+  PasswordStatus.fromJson(core.Map _json)
+      : this(
+          locked:
+              _json.containsKey('locked') ? _json['locked'] as core.bool : null,
+          passwordExpirationTime: _json.containsKey('passwordExpirationTime')
+              ? _json['passwordExpirationTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (locked != null) 'locked': locked!,
+        if (passwordExpirationTime != null)
+          'passwordExpirationTime': passwordExpirationTime!,
+      };
+}
+
+/// Database instance local user password validation policy
+class PasswordValidationPolicy {
+  /// The complexity of the password.
+  /// Possible string values are:
+  /// - "COMPLEXITY_UNSPECIFIED" : Complexity check is not specified.
+  /// - "COMPLEXITY_DEFAULT" : A combination of lowercase, uppercase, numeric,
+  /// and non-alphanumeric characters.
+  core.String? complexity;
+
+  /// Disallow username as a part of the password.
+  core.bool? disallowUsernameSubstring;
+
+  /// Minimum number of characters allowed.
+  core.int? minLength;
+
+  /// Minimum interval after which the password can be changed.
+  core.String? passwordChangeInterval;
+
+  /// Number of previous passwords that cannot be reused.
+  core.int? reuseInterval;
+
+  PasswordValidationPolicy({
+    this.complexity,
+    this.disallowUsernameSubstring,
+    this.minLength,
+    this.passwordChangeInterval,
+    this.reuseInterval,
+  });
+
+  PasswordValidationPolicy.fromJson(core.Map _json)
+      : this(
+          complexity: _json.containsKey('complexity')
+              ? _json['complexity'] as core.String
+              : null,
+          disallowUsernameSubstring:
+              _json.containsKey('disallowUsernameSubstring')
+                  ? _json['disallowUsernameSubstring'] as core.bool
+                  : null,
+          minLength: _json.containsKey('minLength')
+              ? _json['minLength'] as core.int
+              : null,
+          passwordChangeInterval: _json.containsKey('passwordChangeInterval')
+              ? _json['passwordChangeInterval'] as core.String
+              : null,
+          reuseInterval: _json.containsKey('reuseInterval')
+              ? _json['reuseInterval'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (complexity != null) 'complexity': complexity!,
+        if (disallowUsernameSubstring != null)
+          'disallowUsernameSubstring': disallowUsernameSubstring!,
+        if (minLength != null) 'minLength': minLength!,
+        if (passwordChangeInterval != null)
+          'passwordChangeInterval': passwordChangeInterval!,
+        if (reuseInterval != null) 'reuseInterval': reuseInterval!,
       };
 }
 
@@ -6087,6 +6172,9 @@ class Settings {
   /// purposes.
   MaintenanceWindow? maintenanceWindow;
 
+  /// The local user password validation policy of the instance.
+  PasswordValidationPolicy? passwordValidationPolicy;
+
   /// The pricing plan for this instance.
   ///
   /// This can be either **PER_USE** or **PACKAGE**. Only **PER_USE** is
@@ -6159,6 +6247,7 @@ class Settings {
     this.kind,
     this.locationPreference,
     this.maintenanceWindow,
+    this.passwordValidationPolicy,
     this.pricingPlan,
     this.replicationType,
     this.settingsVersion,
@@ -6237,6 +6326,12 @@ class Settings {
               ? MaintenanceWindow.fromJson(_json['maintenanceWindow']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          passwordValidationPolicy:
+              _json.containsKey('passwordValidationPolicy')
+                  ? PasswordValidationPolicy.fromJson(
+                      _json['passwordValidationPolicy']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           pricingPlan: _json.containsKey('pricingPlan')
               ? _json['pricingPlan'] as core.String
               : null,
@@ -6293,6 +6388,8 @@ class Settings {
         if (locationPreference != null)
           'locationPreference': locationPreference!,
         if (maintenanceWindow != null) 'maintenanceWindow': maintenanceWindow!,
+        if (passwordValidationPolicy != null)
+          'passwordValidationPolicy': passwordValidationPolicy!,
         if (pricingPlan != null) 'pricingPlan': pricingPlan!,
         if (replicationType != null) 'replicationType': replicationType!,
         if (settingsVersion != null) 'settingsVersion': settingsVersion!,
@@ -7153,9 +7250,12 @@ class User {
 
   /// The host name from which the user can connect.
   ///
-  /// For *insert* operations, host defaults to an empty string. For *update*
-  /// operations, host is specified as part of the request URL. The host name
-  /// cannot be updated after insertion.
+  /// For **insert** operations, host defaults to an empty string. For
+  /// **update** operations, host is specified as part of the request URL. The
+  /// host name cannot be updated after insertion. For a MySQL instance, it's
+  /// required; for a PostgreSQL or SQL Server instance, it's optional.
+  ///
+  /// Optional.
   core.String? host;
 
   /// The name of the Cloud SQL instance.
@@ -7169,11 +7269,14 @@ class User {
 
   /// The name of the user in the Cloud SQL instance.
   ///
-  /// Can be omitted for *update* since it is already specified in the URL.
+  /// Can be omitted for **update** since it is already specified in the URL.
   core.String? name;
 
   /// The password for the user.
   core.String? password;
+
+  /// User level password validation policy.
+  UserPasswordValidationPolicy? passwordPolicy;
 
   /// The project ID of the project containing the Cloud SQL database.
   ///
@@ -7199,6 +7302,7 @@ class User {
     this.kind,
     this.name,
     this.password,
+    this.passwordPolicy,
     this.project,
     this.sqlserverUserDetails,
     this.type,
@@ -7215,6 +7319,10 @@ class User {
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           password: _json.containsKey('password')
               ? _json['password'] as core.String
+              : null,
+          passwordPolicy: _json.containsKey('passwordPolicy')
+              ? UserPasswordValidationPolicy.fromJson(_json['passwordPolicy']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           project: _json.containsKey('project')
               ? _json['project'] as core.String
@@ -7233,10 +7341,64 @@ class User {
         if (kind != null) 'kind': kind!,
         if (name != null) 'name': name!,
         if (password != null) 'password': password!,
+        if (passwordPolicy != null) 'passwordPolicy': passwordPolicy!,
         if (project != null) 'project': project!,
         if (sqlserverUserDetails != null)
           'sqlserverUserDetails': sqlserverUserDetails!,
         if (type != null) 'type': type!,
+      };
+}
+
+/// User level password validation policy.
+class UserPasswordValidationPolicy {
+  /// Number of failed login attempts allowed before user get locked.
+  core.int? allowedFailedAttempts;
+
+  /// If true, failed login attempts check will be enabled.
+  core.bool? enableFailedAttemptsCheck;
+
+  /// Expiration duration after password is updated.
+  core.String? passwordExpirationDuration;
+
+  /// Read-only password status.
+  ///
+  /// Output only.
+  PasswordStatus? status;
+
+  UserPasswordValidationPolicy({
+    this.allowedFailedAttempts,
+    this.enableFailedAttemptsCheck,
+    this.passwordExpirationDuration,
+    this.status,
+  });
+
+  UserPasswordValidationPolicy.fromJson(core.Map _json)
+      : this(
+          allowedFailedAttempts: _json.containsKey('allowedFailedAttempts')
+              ? _json['allowedFailedAttempts'] as core.int
+              : null,
+          enableFailedAttemptsCheck:
+              _json.containsKey('enableFailedAttemptsCheck')
+                  ? _json['enableFailedAttemptsCheck'] as core.bool
+                  : null,
+          passwordExpirationDuration:
+              _json.containsKey('passwordExpirationDuration')
+                  ? _json['passwordExpirationDuration'] as core.String
+                  : null,
+          status: _json.containsKey('status')
+              ? PasswordStatus.fromJson(
+                  _json['status'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (allowedFailedAttempts != null)
+          'allowedFailedAttempts': allowedFailedAttempts!,
+        if (enableFailedAttemptsCheck != null)
+          'enableFailedAttemptsCheck': enableFailedAttemptsCheck!,
+        if (passwordExpirationDuration != null)
+          'passwordExpirationDuration': passwordExpirationDuration!,
+        if (status != null) 'status': status!,
       };
 }
 

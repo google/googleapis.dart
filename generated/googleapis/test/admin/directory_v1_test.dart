@@ -1502,6 +1502,7 @@ api.ChromeOsDevice buildChromeOsDevice() {
     o.model = 'foo';
     o.notes = 'foo';
     o.orderNumber = 'foo';
+    o.orgUnitId = 'foo';
     o.orgUnitPath = 'foo';
     o.osVersion = 'foo';
     o.platformVersion = 'foo';
@@ -1606,6 +1607,10 @@ void checkChromeOsDevice(api.ChromeOsDevice o) {
     );
     unittest.expect(
       o.orderNumber!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.orgUnitId!,
       unittest.equals('foo'),
     );
     unittest.expect(

@@ -644,6 +644,7 @@ api.NetworkConfig buildNetworkConfig() {
   final o = api.NetworkConfig();
   buildCounterNetworkConfig++;
   if (buildCounterNetworkConfig < 3) {
+    o.canIpForward = true;
     o.enableExternalIps = true;
     o.network = 'foo';
     o.subnetwork = 'foo';
@@ -655,6 +656,7 @@ api.NetworkConfig buildNetworkConfig() {
 void checkNetworkConfig(api.NetworkConfig o) {
   buildCounterNetworkConfig++;
   if (buildCounterNetworkConfig < 3) {
+    unittest.expect(o.canIpForward!, unittest.isTrue);
     unittest.expect(o.enableExternalIps!, unittest.isTrue);
     unittest.expect(
       o.network!,

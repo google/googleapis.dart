@@ -297,6 +297,51 @@ class $Command {
 
 /// Used by:
 ///
+/// - ondemandscanning:v1beta1 : Completeness
+/// - ondemandscanning:v1beta1 : SlsaCompleteness
+class $Completeness {
+  /// If true, the builder claims that recipe.arguments is complete, meaning
+  /// that all external inputs are properly captured in the recipe.
+  core.bool? arguments;
+
+  /// If true, the builder claims that recipe.environment is claimed to be
+  /// complete.
+  core.bool? environment;
+
+  /// If true, the builder claims that materials are complete, usually through
+  /// some controls to prevent network access.
+  ///
+  /// Sometimes called "hermetic".
+  core.bool? materials;
+
+  $Completeness({
+    this.arguments,
+    this.environment,
+    this.materials,
+  });
+
+  $Completeness.fromJson(core.Map _json)
+      : this(
+          arguments: _json.containsKey('arguments')
+              ? _json['arguments'] as core.bool
+              : null,
+          environment: _json.containsKey('environment')
+              ? _json['environment'] as core.bool
+              : null,
+          materials: _json.containsKey('materials')
+              ? _json['materials'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (arguments != null) 'arguments': arguments!,
+        if (environment != null) 'environment': environment!,
+        if (materials != null) 'materials': materials!,
+      };
+}
+
+/// Used by:
+///
 /// - datalabeling:v1beta1 : GoogleCloudDatalabelingV1beta1BoundingPolyConfig
 /// - datalabeling:v1beta1 : GoogleCloudDatalabelingV1beta1PolylineConfig
 class $Config {
@@ -828,6 +873,7 @@ class $DocumentTextAnchorTextSegment {
 /// - bigqueryconnection:v1beta1 : Empty
 /// - clouderrorreporting:v1beta1 : DeleteEventsResponse
 /// - clouderrorreporting:v1beta1 : ReportErrorEventResponse
+/// - cloudsupport:v2beta : CloseCaseRequest
 /// - containeranalysis:v1beta1 : Empty
 /// - datacatalog:v1beta1 : Empty
 /// - dataflow:v1b3 : DeleteSnapshotResponse
@@ -1177,15 +1223,17 @@ class $GcsFolderDestination {
 ///
 /// - bigqueryconnection:v1beta1 : GetPolicyOptions
 /// - containeranalysis:v1beta1 : GetPolicyOptions
-/// - datacatalog:v1beta1 : GetPolicyOptions
 class $GetPolicyOptions {
-  /// The policy format version to be returned.
+  /// The maximum policy version that will be used to format the policy.
   ///
   /// Valid values are 0, 1, and 3. Requests specifying an invalid value will be
-  /// rejected. Requests for policies with any conditional bindings must specify
-  /// version 3. Policies without any conditional bindings may specify any valid
-  /// value or leave the field unset. To learn which resources support
-  /// conditions in their IAM policies, see the
+  /// rejected. Requests for policies with any conditional role bindings must
+  /// specify version 3. Policies with no conditional role bindings may specify
+  /// any valid value or leave the field unset. The policy in the response might
+  /// use the policy version that you specified, or it might use a lower policy
+  /// version. For example, if you specify version 3, but the policy has no
+  /// conditional role bindings, the response uses version 1. To learn which
+  /// resources support conditions in their IAM policies, see the
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   ///
   /// Optional.
@@ -2925,9 +2973,30 @@ class $Shared03 {
 
 /// Used by:
 ///
+/// - ondemandscanning:v1beta1 : BuilderConfig
+/// - ondemandscanning:v1beta1 : SlsaBuilder
+class $Shared06 {
+  core.String? id;
+
+  $Shared06({
+    this.id,
+  });
+
+  $Shared06.fromJson(core.Map _json)
+      : this(
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (id != null) 'id': id!,
+      };
+}
+
+/// Used by:
+///
 /// - osconfig:v1alpha : OSPolicyAssignmentInstanceFilterInventory
 /// - osconfig:v1alpha : OSPolicyInventoryFilter
-class $Shared06 {
+class $Shared07 {
   /// The OS short name
   ///
   /// Required.
@@ -2941,12 +3010,12 @@ class $Shared06 {
   /// versions.
   core.String? osVersion;
 
-  $Shared06({
+  $Shared07({
     this.osShortName,
     this.osVersion,
   });
 
-  $Shared06.fromJson(core.Map _json)
+  $Shared07.fromJson(core.Map _json)
       : this(
           osShortName: _json.containsKey('osShortName')
               ? _json['osShortName'] as core.String

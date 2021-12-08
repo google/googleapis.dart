@@ -236,8 +236,8 @@ class ProjectsLocationsConversationsResource {
   /// [conversationId] - A unique ID for the new conversation. This ID will
   /// become the final component of the conversation's resource name. If no ID
   /// is specified, a server-generated ID will be used. This value should be
-  /// 4-32 characters and must match the regular expression
-  /// /^\[a-z0-9-\]{4,32}$/. Valid characters are /a-z-/
+  /// 4-64 characters and must match the regular expression `^[a-z0-9-]{4,64}$`.
+  /// Valid characters are `a-z-`
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1503,6 +1503,53 @@ class ProjectsLocationsPhraseMatchersResource {
     return GoogleCloudContactcenterinsightsV1ListPhraseMatchersResponse
         .fromJson(_response as core.Map<core.String, core.dynamic>);
   }
+
+  /// Updates a phrase matcher.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The resource name of the phrase matcher. Format:
+  /// projects/{project}/locations/{location}/phraseMatchers/{phrase_matcher}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/phraseMatchers/\[^/\]+$`.
+  ///
+  /// [updateMask] - The list of fields to be updated.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudContactcenterinsightsV1PhraseMatcher].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudContactcenterinsightsV1PhraseMatcher> patch(
+    GoogleCloudContactcenterinsightsV1PhraseMatcher request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleCloudContactcenterinsightsV1PhraseMatcher.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
 }
 
 /// The analysis resource.
@@ -1896,6 +1943,14 @@ class GoogleCloudContactcenterinsightsV1CalculateStatsResponse {
   /// Deprecated, use `issue_matches_stats` field instead.
   core.Map<core.String, core.int>? issueMatches;
 
+  /// A map associating each issue resource name with its respective number of
+  /// matches in the set of conversations.
+  ///
+  /// Key has the format: `projects//locations//issueModels//issues/`
+  core.Map<core.String,
+          GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStats>?
+      issueMatchesStats;
+
   /// A map associating each smart highlighter display name with its respective
   /// number of matches in the set of conversations.
   core.Map<core.String, core.int>? smartHighlighterMatches;
@@ -1907,6 +1962,7 @@ class GoogleCloudContactcenterinsightsV1CalculateStatsResponse {
     this.conversationCountTimeSeries,
     this.customHighlighterMatches,
     this.issueMatches,
+    this.issueMatchesStats,
     this.smartHighlighterMatches,
   });
 
@@ -1948,6 +2004,17 @@ class GoogleCloudContactcenterinsightsV1CalculateStatsResponse {
                   ),
                 )
               : null,
+          issueMatchesStats: _json.containsKey('issueMatchesStats')
+              ? (_json['issueMatchesStats']
+                      as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStats
+                        .fromJson(item as core.Map<core.String, core.dynamic>),
+                  ),
+                )
+              : null,
           smartHighlighterMatches: _json.containsKey('smartHighlighterMatches')
               ? (_json['smartHighlighterMatches']
                       as core.Map<core.String, core.dynamic>)
@@ -1969,6 +2036,7 @@ class GoogleCloudContactcenterinsightsV1CalculateStatsResponse {
         if (customHighlighterMatches != null)
           'customHighlighterMatches': customHighlighterMatches!,
         if (issueMatches != null) 'issueMatches': issueMatches!,
+        if (issueMatchesStats != null) 'issueMatchesStats': issueMatchesStats!,
         if (smartHighlighterMatches != null)
           'smartHighlighterMatches': smartHighlighterMatches!,
       };
@@ -3042,11 +3110,22 @@ class GoogleCloudContactcenterinsightsV1ExportInsightsDataRequest {
   /// Required.
   core.String? parent;
 
+  /// Options for what to do if the destination table already exists.
+  /// Possible string values are:
+  /// - "WRITE_DISPOSITION_UNSPECIFIED" : Write disposition is not specified.
+  /// Defaults to WRITE_TRUNCATE.
+  /// - "WRITE_TRUNCATE" : If the table already exists, BigQuery will overwrite
+  /// the table data and use the schema from the load.
+  /// - "WRITE_APPEND" : If the table already exists, BigQuery will append data
+  /// to the table.
+  core.String? writeDisposition;
+
   GoogleCloudContactcenterinsightsV1ExportInsightsDataRequest({
     this.bigQueryDestination,
     this.filter,
     this.kmsKey,
     this.parent,
+    this.writeDisposition,
   });
 
   GoogleCloudContactcenterinsightsV1ExportInsightsDataRequest.fromJson(
@@ -3066,6 +3145,9 @@ class GoogleCloudContactcenterinsightsV1ExportInsightsDataRequest {
           parent: _json.containsKey('parent')
               ? _json['parent'] as core.String
               : null,
+          writeDisposition: _json.containsKey('writeDisposition')
+              ? _json['writeDisposition'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3074,6 +3156,7 @@ class GoogleCloudContactcenterinsightsV1ExportInsightsDataRequest {
         if (filter != null) 'filter': filter!,
         if (kmsKey != null) 'kmsKey': kmsKey!,
         if (parent != null) 'parent': parent!,
+        if (writeDisposition != null) 'writeDisposition': writeDisposition!,
       };
 }
 

@@ -51,6 +51,7 @@
 /// - [InterconnectsResource]
 /// - [LicenseCodesResource]
 /// - [LicensesResource]
+/// - [MachineImagesResource]
 /// - [MachineTypesResource]
 /// - [NetworkEndpointGroupsResource]
 /// - [NetworksResource]
@@ -199,6 +200,7 @@ class ComputeApi {
   InterconnectsResource get interconnects => InterconnectsResource(_requester);
   LicenseCodesResource get licenseCodes => LicenseCodesResource(_requester);
   LicensesResource get licenses => LicensesResource(_requester);
+  MachineImagesResource get machineImages => MachineImagesResource(_requester);
   MachineTypesResource get machineTypes => MachineTypesResource(_requester);
   NetworkEndpointGroupsResource get networkEndpointGroups =>
       NetworkEndpointGroupsResource(_requester);
@@ -303,16 +305,20 @@ class AcceleratorTypesResource {
   /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -458,16 +464,20 @@ class AcceleratorTypesResource {
   /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -557,16 +567,20 @@ class AddressesResource {
   /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -836,16 +850,20 @@ class AddressesResource {
   /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -935,16 +953,20 @@ class AutoscalersResource {
   /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -1217,16 +1239,20 @@ class AutoscalersResource {
   /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -1744,16 +1770,20 @@ class BackendBucketsResource {
   /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -1885,6 +1915,68 @@ class BackendBucketsResource {
     final _response = await _requester.request(
       _url,
       'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Sets the edge security policy for the specified backend bucket.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [backendBucket] - Name of the BackendService resource to which the
+  /// security policy should be set. The name should conform to RFC1035.
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed. For example,
+  /// consider a situation where you make an initial request and the request
+  /// times out. If you make the request again with the same request ID, the
+  /// server can check if original operation with the same request ID was
+  /// received, and if so, will ignore the second request. This prevents clients
+  /// from accidentally creating duplicate commitments. The request ID must be a
+  /// valid UUID with the exception that zero UUID is not supported (
+  /// 00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> setEdgeSecurityPolicy(
+    SecurityPolicyReference request,
+    core.String project,
+    core.String backendBucket, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'projects/' +
+        commons.escapeVariable('$project') +
+        '/global/backendBuckets/' +
+        commons.escapeVariable('$backendBucket') +
+        '/setEdgeSecurityPolicy';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
       body: _body,
       queryParams: _queryParams,
     );
@@ -2033,16 +2125,20 @@ class BackendServicesResource {
   /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -2414,16 +2510,20 @@ class BackendServicesResource {
   /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -2555,6 +2655,68 @@ class BackendServicesResource {
     final _response = await _requester.request(
       _url,
       'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Sets the edge security policy for the specified backend service.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [backendService] - Name of the BackendService resource to which the edge
+  /// security policy should be set. The name should conform to RFC1035.
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed. For example,
+  /// consider a situation where you make an initial request and the request
+  /// times out. If you make the request again with the same request ID, the
+  /// server can check if original operation with the same request ID was
+  /// received, and if so, will ignore the second request. This prevents clients
+  /// from accidentally creating duplicate commitments. The request ID must be a
+  /// valid UUID with the exception that zero UUID is not supported (
+  /// 00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> setEdgeSecurityPolicy(
+    SecurityPolicyReference request,
+    core.String project,
+    core.String backendService, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'projects/' +
+        commons.escapeVariable('$project') +
+        '/global/backendServices/' +
+        commons.escapeVariable('$backendService') +
+        '/setEdgeSecurityPolicy';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
       body: _body,
       queryParams: _queryParams,
     );
@@ -2706,16 +2868,20 @@ class DiskTypesResource {
   /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -2861,16 +3027,20 @@ class DiskTypesResource {
   /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -3032,16 +3202,20 @@ class DisksResource {
   /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -3458,16 +3632,20 @@ class DisksResource {
   /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -4043,16 +4221,20 @@ class ExternalVpnGatewaysResource {
   /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -4683,16 +4865,20 @@ class FirewallPoliciesResource {
   /// Request parameters:
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -5336,16 +5522,20 @@ class FirewallsResource {
   /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -5561,16 +5751,20 @@ class ForwardingRulesResource {
   /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -5842,16 +6036,20 @@ class ForwardingRulesResource {
   /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -6316,16 +6514,20 @@ class GlobalAddressesResource {
   /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -6574,16 +6776,20 @@ class GlobalForwardingRulesResource {
   /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -7142,16 +7348,20 @@ class GlobalNetworkEndpointGroupsResource {
   /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -7236,16 +7446,20 @@ class GlobalNetworkEndpointGroupsResource {
   /// comply with RFC1035.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -7335,16 +7549,20 @@ class GlobalOperationsResource {
   /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -7522,16 +7740,20 @@ class GlobalOperationsResource {
   /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -7754,16 +7976,20 @@ class GlobalOrganizationOperationsResource {
   /// Request parameters:
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -8015,16 +8241,20 @@ class GlobalPublicDelegatedPrefixesResource {
   /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -8180,16 +8410,20 @@ class HealthChecksResource {
   /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -8442,16 +8676,20 @@ class HealthChecksResource {
   /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -8829,16 +9067,20 @@ class HttpHealthChecksResource {
   /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -9216,16 +9458,20 @@ class HttpsHealthChecksResource {
   /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -9830,16 +10076,20 @@ class ImagesResource {
   /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -10224,16 +10474,20 @@ class InstanceGroupManagersResource {
   /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -10777,16 +11031,20 @@ class InstanceGroupManagersResource {
   /// [zone] - The name of the zone where the managed instance group is located.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -10881,16 +11139,20 @@ class InstanceGroupManagersResource {
   /// (?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?)|1-9{0,19}.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -10987,16 +11249,20 @@ class InstanceGroupManagersResource {
   /// [instanceGroupManager] - The name of the managed instance group.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -11093,16 +11359,20 @@ class InstanceGroupManagersResource {
   /// conform to RFC1035.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -11789,16 +12059,20 @@ class InstanceGroupsResource {
   /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -12073,16 +12347,20 @@ class InstanceGroupsResource {
   /// [zone] - The name of the zone where the instance group is located.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -12175,16 +12453,20 @@ class InstanceGroupsResource {
   /// generate a list of included instances.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -12641,16 +12923,20 @@ class InstanceTemplatesResource {
   /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -12990,16 +13276,20 @@ class InstancesResource {
   /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -13865,6 +14155,14 @@ class InstancesResource {
   /// projects/project/global/instanceTemplates/instanceTemplate -
   /// global/instanceTemplates/instanceTemplate
   ///
+  /// [sourceMachineImage] - Specifies the machine image to use to create the
+  /// instance. This field is optional. It can be a full or partial URL. For
+  /// example, the following are all valid URLs to a machine image: -
+  /// https://www.googleapis.com/compute/v1/projects/project/global/global
+  /// /machineImages/machineImage -
+  /// projects/project/global/global/machineImages/machineImage -
+  /// global/machineImages/machineImage
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -13881,6 +14179,7 @@ class InstancesResource {
     core.String zone, {
     core.String? requestId,
     core.String? sourceInstanceTemplate,
+    core.String? sourceMachineImage,
     core.String? $fields,
   }) async {
     final _body = convert.json.encode(request);
@@ -13888,6 +14187,8 @@ class InstancesResource {
       if (requestId != null) 'requestId': [requestId],
       if (sourceInstanceTemplate != null)
         'sourceInstanceTemplate': [sourceInstanceTemplate],
+      if (sourceMachineImage != null)
+        'sourceMachineImage': [sourceMachineImage],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -13918,16 +14219,20 @@ class InstancesResource {
   /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -14024,16 +14329,20 @@ class InstancesResource {
   /// `-|\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -15868,16 +16177,20 @@ class InterconnectAttachmentsResource {
   /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -16153,16 +16466,20 @@ class InterconnectAttachmentsResource {
   /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -16374,16 +16691,20 @@ class InterconnectLocationsResource {
   /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -16677,16 +16998,20 @@ class InterconnectsResource {
   /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -17173,16 +17498,20 @@ class LicensesResource {
   /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -17361,6 +17690,434 @@ class LicensesResource {
   }
 }
 
+class MachineImagesResource {
+  final commons.ApiRequester _requester;
+
+  MachineImagesResource(commons.ApiRequester client) : _requester = client;
+
+  /// Deletes the specified machine image.
+  ///
+  /// Deleting a machine image is permanent and cannot be undone.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [machineImage] - The name of the machine image to delete.
+  /// Value must have pattern
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed. For example,
+  /// consider a situation where you make an initial request and the request
+  /// times out. If you make the request again with the same request ID, the
+  /// server can check if original operation with the same request ID was
+  /// received, and if so, will ignore the second request. This prevents clients
+  /// from accidentally creating duplicate commitments. The request ID must be a
+  /// valid UUID with the exception that zero UUID is not supported (
+  /// 00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String project,
+    core.String machineImage, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'projects/' +
+        commons.escapeVariable('$project') +
+        '/global/machineImages/' +
+        commons.escapeVariable('$machineImage');
+
+    final _response = await _requester.request(
+      _url,
+      'DELETE',
+      queryParams: _queryParams,
+    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns the specified machine image.
+  ///
+  /// Gets a list of available machine images by making a list() request.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [machineImage] - The name of the machine image.
+  /// Value must have pattern
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [MachineImage].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<MachineImage> get(
+    core.String project,
+    core.String machineImage, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'projects/' +
+        commons.escapeVariable('$project') +
+        '/global/machineImages/' +
+        commons.escapeVariable('$machineImage');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return MachineImage.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets the access control policy for a resource.
+  ///
+  /// May be empty if no such policy or resource exists.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [resource] - Name or id of the resource for this request.
+  /// Value must have pattern
+  /// `\[a-z\](?:\[-a-z0-9_\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
+  ///
+  /// [optionsRequestedPolicyVersion] - Requested IAM Policy version.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> getIamPolicy(
+    core.String project,
+    core.String resource, {
+    core.int? optionsRequestedPolicyVersion,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (optionsRequestedPolicyVersion != null)
+        'optionsRequestedPolicyVersion': ['${optionsRequestedPolicyVersion}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'projects/' +
+        commons.escapeVariable('$project') +
+        '/global/machineImages/' +
+        commons.escapeVariable('$resource') +
+        '/getIamPolicy';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Creates a machine image in the specified project using the data that is
+  /// included in the request.
+  ///
+  /// If you are creating a new machine image to update an existing instance,
+  /// your new machine image should use the same network or, if applicable, the
+  /// same subnetwork as the original instance.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed. For example,
+  /// consider a situation where you make an initial request and the request
+  /// times out. If you make the request again with the same request ID, the
+  /// server can check if original operation with the same request ID was
+  /// received, and if so, will ignore the second request. This prevents clients
+  /// from accidentally creating duplicate commitments. The request ID must be a
+  /// valid UUID with the exception that zero UUID is not supported (
+  /// 00000000-0000-0000-0000-000000000000).
+  ///
+  /// [sourceInstance] - Required. Source instance that is used to create the
+  /// machine image from.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> insert(
+    MachineImage request,
+    core.String project, {
+    core.String? requestId,
+    core.String? sourceInstance,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if (sourceInstance != null) 'sourceInstance': [sourceInstance],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'projects/' +
+        commons.escapeVariable('$project') +
+        '/global/machineImages';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Retrieves a list of machine images that are contained within the specified
+  /// project.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
+  /// parentheses. For example: ``` (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
+  /// `AND` expression. However, you can include `AND` and `OR` expressions
+  /// explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR
+  /// (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart = true)
+  /// ```
+  ///
+  /// [maxResults] - The maximum number of results per page that should be
+  /// returned. If the number of available results is larger than `maxResults`,
+  /// Compute Engine returns a `nextPageToken` that can be used to get the next
+  /// page of results in subsequent list requests. Acceptable values are `0` to
+  /// `500`, inclusive. (Default: `500`)
+  ///
+  /// [orderBy] - Sorts list results by a certain order. By default, results are
+  /// returned in alphanumerical order based on the resource name. You can also
+  /// sort results in descending order based on the creation timestamp using
+  /// `orderBy="creationTimestamp desc"`. This sorts results based on the
+  /// `creationTimestamp` field in reverse chronological order (newest result
+  /// first). Use this to sort resources like operations so that the newest
+  /// operation is returned first. Currently, only sorting by `name` or
+  /// `creationTimestamp desc` is supported.
+  ///
+  /// [pageToken] - Specifies a page token to use. Set `pageToken` to the
+  /// `nextPageToken` returned by a previous list request to get the next page
+  /// of results.
+  ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [MachineImageList].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<MachineImageList> list(
+    core.String project, {
+    core.String? filter,
+    core.int? maxResults,
+    core.String? orderBy,
+    core.String? pageToken,
+    core.bool? returnPartialSuccess,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'projects/' +
+        commons.escapeVariable('$project') +
+        '/global/machineImages';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return MachineImageList.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Sets the access control policy on the specified resource.
+  ///
+  /// Replaces any existing policy.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [resource] - Name or id of the resource for this request.
+  /// Value must have pattern
+  /// `\[a-z\](?:\[-a-z0-9_\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> setIamPolicy(
+    GlobalSetPolicyRequest request,
+    core.String project,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'projects/' +
+        commons.escapeVariable('$project') +
+        '/global/machineImages/' +
+        commons.escapeVariable('$resource') +
+        '/setIamPolicy';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns permissions that a caller has on the specified resource.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [resource] - Name or id of the resource for this request.
+  /// Value must have pattern
+  /// `\[a-z\](?:\[-a-z0-9_\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [TestPermissionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TestPermissionsResponse> testIamPermissions(
+    TestPermissionsRequest request,
+    core.String project,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'projects/' +
+        commons.escapeVariable('$project') +
+        '/global/machineImages/' +
+        commons.escapeVariable('$resource') +
+        '/testIamPermissions';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return TestPermissionsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class MachineTypesResource {
   final commons.ApiRequester _requester;
 
@@ -17375,16 +18132,20 @@ class MachineTypesResource {
   /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -17531,16 +18292,20 @@ class MachineTypesResource {
   /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -17631,16 +18396,20 @@ class NetworkEndpointGroupsResource {
   /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -18055,16 +18824,20 @@ class NetworkEndpointGroupsResource {
   /// It should comply with RFC1035.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -18157,16 +18930,20 @@ class NetworkEndpointGroupsResource {
   /// comply with RFC1035.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -18586,16 +19363,20 @@ class NetworksResource {
   /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -18683,16 +19464,20 @@ class NetworksResource {
   /// - "OUTGOING" : For routes exported from local network.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -19118,16 +19903,20 @@ class NodeGroupsResource {
   /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -19533,16 +20322,20 @@ class NodeGroupsResource {
   /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -19633,16 +20426,20 @@ class NodeGroupsResource {
   /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -19987,16 +20784,20 @@ class NodeTemplatesResource {
   /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -20327,16 +21128,20 @@ class NodeTemplatesResource {
   /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -20541,16 +21346,20 @@ class NodeTypesResource {
   /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -20696,16 +21505,20 @@ class NodeTypesResource {
   /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -20795,16 +21608,20 @@ class PacketMirroringsResource {
   /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -21076,16 +21893,20 @@ class PacketMirroringsResource {
   /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -21511,6 +22332,14 @@ class ProjectsResource {
 
   /// Returns the specified Project resource.
   ///
+  /// To decrease latency for this method, you can optionally omit any unneeded
+  /// information from the response by using a field mask. This practice is
+  /// especially recommended for unused quota information (the `quotas` field).
+  /// To exclude one or more fields, set your request's `fields` query parameter
+  /// to only include the fields you need. For example, to only include the `id`
+  /// and `selfLink` fields, add the query parameter `?fields=id,selfLink` to
+  /// your request.
+  ///
   /// Request parameters:
   ///
   /// [project] - Project ID for this request.
@@ -21594,16 +22423,20 @@ class ProjectsResource {
   /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -21685,16 +22518,20 @@ class ProjectsResource {
   /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -21824,6 +22661,10 @@ class ProjectsResource {
 
   /// Moves an instance and its attached persistent disks from one zone to
   /// another.
+  ///
+  /// *Note*: Moving VMs or disks by using this method might cause unexpected
+  /// behavior. For more information, see the \[known
+  /// issue\](/compute/docs/troubleshooting/known-issues#moving_vms_or_disks_using_the_moveinstance_api_or_the_causes_unexpected_behavior).
   ///
   /// [request] - The metadata request object.
   ///
@@ -22233,16 +23074,20 @@ class PublicAdvertisedPrefixesResource {
   /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -22399,16 +23244,20 @@ class PublicDelegatedPrefixesResource {
   /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -22683,16 +23532,20 @@ class PublicDelegatedPrefixesResource {
   /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -23036,16 +23889,20 @@ class RegionAutoscalersResource {
   /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -23519,16 +24376,20 @@ class RegionBackendServicesResource {
   /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -23762,16 +24623,20 @@ class RegionCommitmentsResource {
   /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -23981,16 +24846,20 @@ class RegionCommitmentsResource {
   /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -24064,6 +24933,87 @@ class RegionCommitmentsResource {
     return CommitmentList.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
+
+  /// Updates the specified commitment with the data included in the request.
+  ///
+  /// Update is performed only on selected fields included as part of
+  /// update-mask. Only the following fields can be modified: auto_renew.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [region] - Name of the region for this request.
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
+  ///
+  /// [commitment] - Name of the commitment for which auto renew is being
+  /// updated.
+  /// Value must have pattern
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
+  ///
+  /// [paths] - null
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed. For example,
+  /// consider a situation where you make an initial request and the request
+  /// times out. If you make the request again with the same request ID, the
+  /// server can check if original operation with the same request ID was
+  /// received, and if so, will ignore the second request. This prevents clients
+  /// from accidentally creating duplicate commitments. The request ID must be a
+  /// valid UUID with the exception that zero UUID is not supported (
+  /// 00000000-0000-0000-0000-000000000000).
+  ///
+  /// [updateMask] - update_mask indicates fields to be updated as part of this
+  /// request.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> update(
+    Commitment request,
+    core.String project,
+    core.String region,
+    core.String commitment, {
+    core.List<core.String>? paths,
+    core.String? requestId,
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (paths != null) 'paths': paths,
+      if (requestId != null) 'requestId': [requestId],
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'projects/' +
+        commons.escapeVariable('$project') +
+        '/regions/' +
+        commons.escapeVariable('$region') +
+        '/commitments/' +
+        commons.escapeVariable('$commitment');
+
+    final _response = await _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class RegionDiskTypesResource {
@@ -24136,16 +25086,20 @@ class RegionDiskTypesResource {
   /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -24622,16 +25576,20 @@ class RegionDisksResource {
   /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -25222,16 +26180,20 @@ class RegionHealthCheckServicesResource {
   /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -25575,16 +26537,20 @@ class RegionHealthChecksResource {
   /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -26338,16 +27304,20 @@ class RegionInstanceGroupManagersResource {
   /// [region] - Name of the region scoping this request.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -26442,16 +27412,20 @@ class RegionInstanceGroupManagersResource {
   /// (?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?)|1-9{0,19}.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -26546,16 +27520,20 @@ class RegionInstanceGroupManagersResource {
   /// [instanceGroupManager] - The name of the managed instance group.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -26652,16 +27630,20 @@ class RegionInstanceGroupManagersResource {
   /// conform to RFC1035.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -27316,16 +28298,20 @@ class RegionInstanceGroupsResource {
   /// [region] - Name of the region scoping this request.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -27421,16 +28407,20 @@ class RegionInstanceGroupsResource {
   /// list the instances.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -27849,16 +28839,20 @@ class RegionNetworkEndpointGroupsResource {
   /// located. It should comply with RFC1035.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -28133,16 +29127,20 @@ class RegionNotificationEndpointsResource {
   /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -28334,16 +29332,20 @@ class RegionOperationsResource {
   /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -28682,16 +29684,20 @@ class RegionSslCertificatesResource {
   /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -28965,16 +29971,20 @@ class RegionTargetHttpProxiesResource {
   /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -29319,16 +30329,20 @@ class RegionTargetHttpsProxiesResource {
   /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -29725,16 +30739,20 @@ class RegionUrlMapsResource {
   /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -30002,7 +31020,14 @@ class RegionsResource {
 
   /// Returns the specified Region resource.
   ///
-  /// Gets a list of available regions by making a list() request.
+  /// Gets a list of available regions by making a list() request. To decrease
+  /// latency for this method, you can optionally omit any unneeded information
+  /// from the response by using a field mask. This practice is especially
+  /// recommended for unused quota information (the `quotas` field). To exclude
+  /// one or more fields, set your request's `fields` query parameter to only
+  /// include the fields you need. For example, to only include the `id` and
+  /// `selfLink` fields, add the query parameter `?fields=id,selfLink` to your
+  /// request.
   ///
   /// Request parameters:
   ///
@@ -30048,6 +31073,14 @@ class RegionsResource {
 
   /// Retrieves the list of region resources available to the specified project.
   ///
+  /// To decrease latency for this method, you can optionally omit any unneeded
+  /// information from the response by using a field mask. This practice is
+  /// especially recommended for unused quota information (the `items.quotas`
+  /// field). To exclude one or more fields, set your request's `fields` query
+  /// parameter to only include the fields you need. For example, to only
+  /// include the `id` and `selfLink` fields, add the query parameter
+  /// `?fields=id,selfLink` to your request.
+  ///
   /// Request parameters:
   ///
   /// [project] - Project ID for this request.
@@ -30055,16 +31088,20 @@ class RegionsResource {
   /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -30149,16 +31186,20 @@ class ReservationsResource {
   /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -30489,16 +31530,20 @@ class ReservationsResource {
   /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -30757,6 +31802,83 @@ class ReservationsResource {
     return TestPermissionsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
+
+  /// Update share settings of the reservation.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [zone] - Name of the zone for this request.
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
+  ///
+  /// [reservation] - Name of the reservation to update.
+  /// Value must have pattern
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
+  ///
+  /// [paths] - null
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed. For example,
+  /// consider a situation where you make an initial request and the request
+  /// times out. If you make the request again with the same request ID, the
+  /// server can check if original operation with the same request ID was
+  /// received, and if so, will ignore the second request. This prevents clients
+  /// from accidentally creating duplicate commitments. The request ID must be a
+  /// valid UUID with the exception that zero UUID is not supported (
+  /// 00000000-0000-0000-0000-000000000000).
+  ///
+  /// [updateMask] - Update_mask indicates fields to be updated as part of this
+  /// request.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> update(
+    Reservation request,
+    core.String project,
+    core.String zone,
+    core.String reservation, {
+    core.List<core.String>? paths,
+    core.String? requestId,
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (paths != null) 'paths': paths,
+      if (requestId != null) 'requestId': [requestId],
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'projects/' +
+        commons.escapeVariable('$project') +
+        '/zones/' +
+        commons.escapeVariable('$zone') +
+        '/reservations/' +
+        commons.escapeVariable('$reservation');
+
+    final _response = await _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class ResourcePoliciesResource {
@@ -30773,16 +31895,20 @@ class ResourcePoliciesResource {
   /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -31111,16 +32237,20 @@ class ResourcePoliciesResource {
   /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -31325,16 +32455,20 @@ class RoutersResource {
   /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -31548,16 +32682,20 @@ class RoutersResource {
   /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -31762,16 +32900,20 @@ class RoutersResource {
   /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -32224,16 +33366,20 @@ class RoutesResource {
   /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -32578,16 +33724,20 @@ class SecurityPoliciesResource {
   /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -32669,16 +33819,20 @@ class SecurityPoliciesResource {
   /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -32936,16 +34090,20 @@ class ServiceAttachmentsResource {
   /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -33276,16 +34434,20 @@ class ServiceAttachmentsResource {
   /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -33714,6 +34876,62 @@ class SnapshotsResource {
     return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
+  /// Creates a snapshot in the specified project using the data included in the
+  /// request.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed. For example,
+  /// consider a situation where you make an initial request and the request
+  /// times out. If you make the request again with the same request ID, the
+  /// server can check if original operation with the same request ID was
+  /// received, and if so, will ignore the second request. This prevents clients
+  /// from accidentally creating duplicate commitments. The request ID must be a
+  /// valid UUID with the exception that zero UUID is not supported (
+  /// 00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> insert(
+    Snapshot request,
+    core.String project, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url =
+        'projects/' + commons.escapeVariable('$project') + '/global/snapshots';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
   /// Retrieves the list of Snapshot resources contained within the specified
   /// project.
   ///
@@ -33724,16 +34942,20 @@ class SnapshotsResource {
   /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -33975,16 +35197,20 @@ class SslCertificatesResource {
   /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -34239,16 +35465,20 @@ class SslCertificatesResource {
   /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -34496,16 +35726,20 @@ class SslPoliciesResource {
   /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -34587,16 +35821,20 @@ class SslPoliciesResource {
   /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -34744,16 +35982,20 @@ class SubnetworksResource {
   /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -35153,16 +36395,20 @@ class SubnetworksResource {
   /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -35246,16 +36492,20 @@ class SubnetworksResource {
   /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -35772,16 +37022,20 @@ class TargetGrpcProxiesResource {
   /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -35936,16 +37190,20 @@ class TargetHttpProxiesResource {
   /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -36198,16 +37456,20 @@ class TargetHttpProxiesResource {
   /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -36425,16 +37687,20 @@ class TargetHttpsProxiesResource {
   /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -36687,16 +37953,20 @@ class TargetHttpsProxiesResource {
   /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -37108,16 +38378,20 @@ class TargetInstancesResource {
   /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -37391,16 +38665,20 @@ class TargetInstancesResource {
   /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -37628,16 +38906,20 @@ class TargetPoolsResource {
   /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -37970,16 +39252,20 @@ class TargetPoolsResource {
   /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -38442,16 +39728,20 @@ class TargetSslProxiesResource {
   /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -38958,16 +40248,20 @@ class TargetTcpProxiesResource {
   /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -39182,16 +40476,20 @@ class TargetVpnGatewaysResource {
   /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -39465,16 +40763,20 @@ class TargetVpnGatewaysResource {
   /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -39565,16 +40867,20 @@ class UrlMapsResource {
   /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -39891,16 +41197,20 @@ class UrlMapsResource {
   /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -40169,16 +41479,20 @@ class VpnGatewaysResource {
   /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -40504,16 +41818,20 @@ class VpnGatewaysResource {
   /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -40731,16 +42049,20 @@ class VpnTunnelsResource {
   /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -41013,16 +42335,20 @@ class VpnTunnelsResource {
   /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -41214,16 +42540,20 @@ class ZoneOperationsResource {
   /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -41421,16 +42751,20 @@ class ZonesResource {
   /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
-  /// Engine instances, you can exclude instances named `example-instance` by
-  /// specifying `name != example-instance`. You can also filter nested fields.
-  /// For example, you could specify `scheduling.automaticRestart = false` to
-  /// include instances only if they are not scheduled for automatic restarts.
-  /// You can use filtering on nested fields to filter based on resource labels.
-  /// To filter on multiple expressions, provide each separate expression within
+  /// response. The expression must specify the field name, an operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`,
+  /// `<=`, `>=` or `:`. For example, if you are filtering Compute Engine
+  /// instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. The `:` operator can be used with
+  /// string fields to match substrings. For non-string fields it is equivalent
+  /// to the `=` operator. The `:*` comparison can be used to test whether a key
+  /// has been defined. For example, to find all objects with `owner` label use:
+  /// ``` labels.owner:* ``` You can also filter nested fields. For example, you
+  /// could specify `scheduling.automaticRestart = false` to include instances
+  /// only if they are not scheduled for automatic restarts. You can use
+  /// filtering on nested fields to filter based on resource labels. To filter
+  /// on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
   /// `AND` expression. However, you can include `AND` and `OR` expressions
@@ -42310,19 +43644,27 @@ class AccessConfig {
   /// with a valid external IP address is specified, it must match that of the
   /// networkTier associated with the Address resource owning that IP.
   /// Possible string values are:
+  /// - "FIXED_STANDARD" : Public internet quality with fixed bandwidth.
   /// - "PREMIUM" : High quality, Google-grade network tier, support for all
   /// networking products.
   /// - "STANDARD" : Public internet quality, only limited support for other
   /// networking products.
+  /// - "STANDARD_OVERRIDES_FIXED_STANDARD" : (Output only) Temporary tier for
+  /// FIXED_STANDARD when fixed standard tier is expired or not configured.
   core.String? networkTier;
 
   /// The DNS domain name for the public PTR record.
   ///
-  /// You can set this field only if the `setPublicPtr` field is enabled.
+  /// You can set this field only if the `setPublicPtr` field is enabled in
+  /// accessConfig. If this field is unspecified in ipv6AccessConfig, a default
+  /// PTR record will be createc for first IP in associated external IPv6 range.
   core.String? publicPtrDomainName;
 
   /// Specifies whether a public DNS 'PTR' record should be created to map the
   /// external IP address of the instance to a DNS domain name.
+  ///
+  /// This field is not used in ipv6AccessConfig. A default PTR record will be
+  /// created if the VM has external IPv6 range associated.
   core.bool? setPublicPtr;
 
   /// The type of configuration.
@@ -42465,10 +43807,13 @@ class Address {
   /// either Standard or Premium Tier. If this field is not specified, it is
   /// assumed to be PREMIUM.
   /// Possible string values are:
+  /// - "FIXED_STANDARD" : Public internet quality with fixed bandwidth.
   /// - "PREMIUM" : High quality, Google-grade network tier, support for all
   /// networking products.
   /// - "STANDARD" : Public internet quality, only limited support for other
   /// networking products.
+  /// - "STANDARD_OVERRIDES_FIXED_STANDARD" : (Output only) Temporary tier for
+  /// FIXED_STANDARD when fixed standard tier is expired or not configured.
   core.String? networkTier;
 
   /// The prefix length if the resource represents an IP range.
@@ -42482,15 +43827,15 @@ class Address {
   /// inbound forwarder IP addresses (regional internal IP address in a subnet
   /// of a VPC network) - VPC_PEERING for global internal IP addresses used for
   /// private services access allocated ranges. - NAT_AUTO for the regional
-  /// external IP addresses used by Cloud NAT when allocating addresses using .
-  /// - IPSEC_INTERCONNECT for addresses created from a private IP range that
-  /// are reserved for a VLAN attachment in an *IPsec-encrypted Cloud
-  /// Interconnect* configuration. These addresses are regional resources. Not
-  /// currently available publicly. - `SHARED_LOADBALANCER_VIP` for an internal
-  /// IP address that is assigned to multiple internal forwarding rules. -
-  /// `PRIVATE_SERVICE_CONNECT` for a private network address that is used to
-  /// configure Private Service Connect. Only global internal addresses can use
-  /// this purpose.
+  /// external IP addresses used by Cloud NAT when allocating addresses using
+  /// automatic NAT IP address allocation. - IPSEC_INTERCONNECT for addresses
+  /// created from a private IP range that are reserved for a VLAN attachment in
+  /// an *IPsec-encrypted Cloud Interconnect* configuration. These addresses are
+  /// regional resources. Not currently available publicly. -
+  /// `SHARED_LOADBALANCER_VIP` for an internal IP address that is assigned to
+  /// multiple internal forwarding rules. - `PRIVATE_SERVICE_CONNECT` for a
+  /// private network address that is used to configure Private Service Connect.
+  /// Only global internal addresses can use this purpose.
   /// Possible string values are:
   /// - "DNS_RESOLVER" : DNS resolver address in the subnetwork.
   /// - "GCE_ENDPOINT" : VM internal/alias IP, Internal LB service IP, etc.
@@ -43601,8 +44946,8 @@ class AttachedDisk {
   /// initializeParams.sourceSnapshot or disks.source is required except for
   /// local SSD. If desired, you can also attach existing non-root persistent
   /// disks using this property. This field is only applicable for persistent
-  /// disks. Note that for InstanceTemplate, specify the disk name, not the URL
-  /// for the disk.
+  /// disks. Note that for InstanceTemplate, specify the disk name for zonal
+  /// disk, and the URL for regional disk.
   core.String? source;
 
   /// Specifies the type of the disk, either SCRATCH or PERSISTENT.
@@ -45604,6 +46949,12 @@ class BackendBucket {
   /// when the resource is created.
   core.String? description;
 
+  /// The resource URL for the edge security policy associated with this backend
+  /// bucket.
+  ///
+  /// Output only.
+  core.String? edgeSecurityPolicy;
+
   /// If true, enable Cloud CDN for this BackendBucket.
   core.bool? enableCdn;
 
@@ -45636,6 +46987,7 @@ class BackendBucket {
     this.creationTimestamp,
     this.customResponseHeaders,
     this.description,
+    this.edgeSecurityPolicy,
     this.enableCdn,
     this.id,
     this.kind,
@@ -45663,6 +47015,9 @@ class BackendBucket {
           description: _json.containsKey('description')
               ? _json['description'] as core.String
               : null,
+          edgeSecurityPolicy: _json.containsKey('edgeSecurityPolicy')
+              ? _json['edgeSecurityPolicy'] as core.String
+              : null,
           enableCdn: _json.containsKey('enableCdn')
               ? _json['enableCdn'] as core.bool
               : null,
@@ -45681,6 +47036,8 @@ class BackendBucket {
         if (customResponseHeaders != null)
           'customResponseHeaders': customResponseHeaders!,
         if (description != null) 'description': description!,
+        if (edgeSecurityPolicy != null)
+          'edgeSecurityPolicy': edgeSecurityPolicy!,
         if (enableCdn != null) 'enableCdn': enableCdn!,
         if (id != null) 'id': id!,
         if (kind != null) 'kind': kind!,
@@ -45698,6 +47055,9 @@ class BackendBucketCdnPolicy {
   /// cdnPolicy.cacheMode settings.
   core.List<BackendBucketCdnPolicyBypassCacheOnRequestHeader>?
       bypassCacheOnRequestHeaders;
+
+  /// The CacheKeyPolicy for this CdnPolicy.
+  BackendBucketCdnPolicyCacheKeyPolicy? cacheKeyPolicy;
 
   /// Specifies the cache setting for all responses from this backend.
   ///
@@ -45740,7 +47100,7 @@ class BackendBucketCdnPolicy {
   /// directive to the lesser of the client_ttl and default_ttl, and also
   /// ensures a "public" cache-control directive is present. If a client TTL is
   /// not specified, a default value (1 hour) will be used. The maximum allowed
-  /// value is 86400s (1 day).
+  /// value is 31,622,400s (1 year).
   core.int? clientTtl;
 
   /// Specifies the default TTL for cached content served by this origin for
@@ -45828,6 +47188,7 @@ class BackendBucketCdnPolicy {
 
   BackendBucketCdnPolicy({
     this.bypassCacheOnRequestHeaders,
+    this.cacheKeyPolicy,
     this.cacheMode,
     this.clientTtl,
     this.defaultTtl,
@@ -45849,6 +47210,11 @@ class BackendBucketCdnPolicy {
                       BackendBucketCdnPolicyBypassCacheOnRequestHeader.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
+              : null,
+          cacheKeyPolicy: _json.containsKey('cacheKeyPolicy')
+              ? BackendBucketCdnPolicyCacheKeyPolicy.fromJson(
+                  _json['cacheKeyPolicy']
+                      as core.Map<core.String, core.dynamic>)
               : null,
           cacheMode: _json.containsKey('cacheMode')
               ? _json['cacheMode'] as core.String
@@ -45890,6 +47256,7 @@ class BackendBucketCdnPolicy {
   core.Map<core.String, core.dynamic> toJson() => {
         if (bypassCacheOnRequestHeaders != null)
           'bypassCacheOnRequestHeaders': bypassCacheOnRequestHeaders!,
+        if (cacheKeyPolicy != null) 'cacheKeyPolicy': cacheKeyPolicy!,
         if (cacheMode != null) 'cacheMode': cacheMode!,
         if (clientTtl != null) 'clientTtl': clientTtl!,
         if (defaultTtl != null) 'defaultTtl': defaultTtl!,
@@ -45912,6 +47279,45 @@ class BackendBucketCdnPolicy {
 /// cache_mode setting.
 typedef BackendBucketCdnPolicyBypassCacheOnRequestHeader
     = $CdnPolicyBypassCacheOnRequestHeader;
+
+/// Message containing what to include in the cache key for a request for Cloud
+/// CDN.
+class BackendBucketCdnPolicyCacheKeyPolicy {
+  /// Allows HTTP request headers (by name) to be used in the cache key.
+  core.List<core.String>? includeHttpHeaders;
+
+  /// Names of query string parameters to include in cache keys.
+  ///
+  /// All other parameters will be excluded. '&' and '=' will be percent encoded
+  /// and not treated as delimiters.
+  core.List<core.String>? queryStringWhitelist;
+
+  BackendBucketCdnPolicyCacheKeyPolicy({
+    this.includeHttpHeaders,
+    this.queryStringWhitelist,
+  });
+
+  BackendBucketCdnPolicyCacheKeyPolicy.fromJson(core.Map _json)
+      : this(
+          includeHttpHeaders: _json.containsKey('includeHttpHeaders')
+              ? (_json['includeHttpHeaders'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          queryStringWhitelist: _json.containsKey('queryStringWhitelist')
+              ? (_json['queryStringWhitelist'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (includeHttpHeaders != null)
+          'includeHttpHeaders': includeHttpHeaders!,
+        if (queryStringWhitelist != null)
+          'queryStringWhitelist': queryStringWhitelist!,
+      };
+}
 
 /// Specify CDN TTLs for response error codes.
 typedef BackendBucketCdnPolicyNegativeCachingPolicy
@@ -46162,6 +47568,12 @@ class BackendService {
   CircuitBreakers? circuitBreakers;
   ConnectionDraining? connectionDraining;
 
+  /// Connection Tracking configuration for this BackendService.
+  ///
+  /// Connection tracking policy settings are only available for Network Load
+  /// Balancing and Internal TCP/UDP Load Balancing.
+  BackendServiceConnectionTrackingPolicy? connectionTrackingPolicy;
+
   /// Consistent Hash-based load balancing can be used to provide soft session
   /// affinity based on HTTP headers, cookies or other properties.
   ///
@@ -46173,9 +47585,7 @@ class BackendService {
   /// applicable to either: - A regional backend service with the
   /// service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme
   /// set to INTERNAL_MANAGED. - A global backend service with the
-  /// load_balancing_scheme set to INTERNAL_SELF_MANAGED. Not supported when the
-  /// backend service is referenced by a URL map that is bound to target gRPC
-  /// proxy that has validateForProxyless field set to true.
+  /// load_balancing_scheme set to INTERNAL_SELF_MANAGED.
   ConsistentHashLoadBalancerSettings? consistentHash;
 
   /// Creation timestamp in RFC3339 text format.
@@ -46200,6 +47610,12 @@ class BackendService {
   /// Provide this property when you create the resource.
   core.String? description;
 
+  /// The resource URL for the edge security policy associated with this backend
+  /// service.
+  ///
+  /// Output only.
+  core.String? edgeSecurityPolicy;
+
   /// If true, enables Cloud CDN for the backend service of an external HTTP(S)
   /// load balancer.
   core.bool? enableCDN;
@@ -46209,8 +47625,8 @@ class BackendService {
   ///
   /// For load balancers that have configurable failover:
   /// [Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-overview)
-  /// and \[external TCP/UDP Load
-  /// Balancing\](/network/networklb-failover-overview).
+  /// and
+  /// [external TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-failover-overview).
   BackendServiceFailoverPolicy? failoverPolicy;
 
   /// Fingerprint of this resource.
@@ -46300,7 +47716,7 @@ class BackendService {
   /// - A global backend service with the load_balancing_scheme set to
   /// INTERNAL_SELF_MANAGED. If sessionAffinity is not NONE, and this field is
   /// not set to MAGLEV or RING_HASH, session affinity settings will not take
-  /// effect. Only the default ROUND_ROBIN policy is supported when the backend
+  /// effect. Only ROUND_ROBIN and RING_HASH are supported when the backend
   /// service is referenced by a URL map that is bound to target gRPC proxy that
   /// has validateForProxyless field set to true.
   /// Possible string values are:
@@ -46401,6 +47817,8 @@ class BackendService {
   /// - "SSL" : TCP proxying with SSL.
   /// - "TCP" : TCP proxying or TCP pass-through.
   /// - "UDP" : UDP.
+  /// - "UNSPECIFIED" : If a Backend Service has UNSPECIFIED as its protocol, it
+  /// can be used with any L3/L4 Forwarding Rules.
   core.String? protocol;
 
   /// URL of the region where the regional backend service resides.
@@ -46434,12 +47852,11 @@ class BackendService {
 
   /// Type of session affinity to use.
   ///
-  /// The default is NONE. For a detailed description of session affinity
-  /// options, see:
-  /// [Session affinity](https://cloud.google.com/load-balancing/docs/backend-service#session_affinity).
-  /// Not supported when the backend service is referenced by a URL map that is
-  /// bound to target gRPC proxy that has validateForProxyless field set to
-  /// true.
+  /// The default is NONE. Only NONE and HEADER_FIELD are supported when the
+  /// backend service is referenced by a URL map that is bound to target gRPC
+  /// proxy that has validateForProxyless field set to true. For more details,
+  /// see:
+  /// [Session Affinity](https://cloud.google.com/load-balancing/docs/backend-service#session_affinity).
   /// Possible string values are:
   /// - "CLIENT_IP" : 2-tuple hash on packet's source and destination IP
   /// addresses. Connections from the same source IP address to the same
@@ -46482,11 +47899,13 @@ class BackendService {
     this.cdnPolicy,
     this.circuitBreakers,
     this.connectionDraining,
+    this.connectionTrackingPolicy,
     this.consistentHash,
     this.creationTimestamp,
     this.customRequestHeaders,
     this.customResponseHeaders,
     this.description,
+    this.edgeSecurityPolicy,
     this.enableCDN,
     this.failoverPolicy,
     this.fingerprint,
@@ -46536,6 +47955,12 @@ class BackendService {
               ? ConnectionDraining.fromJson(_json['connectionDraining']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          connectionTrackingPolicy:
+              _json.containsKey('connectionTrackingPolicy')
+                  ? BackendServiceConnectionTrackingPolicy.fromJson(
+                      _json['connectionTrackingPolicy']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           consistentHash: _json.containsKey('consistentHash')
               ? ConsistentHashLoadBalancerSettings.fromJson(
                   _json['consistentHash']
@@ -46556,6 +47981,9 @@ class BackendService {
               : null,
           description: _json.containsKey('description')
               ? _json['description'] as core.String
+              : null,
+          edgeSecurityPolicy: _json.containsKey('edgeSecurityPolicy')
+              ? _json['edgeSecurityPolicy'] as core.String
               : null,
           enableCDN: _json.containsKey('enableCDN')
               ? _json['enableCDN'] as core.bool
@@ -46640,6 +48068,8 @@ class BackendService {
         if (circuitBreakers != null) 'circuitBreakers': circuitBreakers!,
         if (connectionDraining != null)
           'connectionDraining': connectionDraining!,
+        if (connectionTrackingPolicy != null)
+          'connectionTrackingPolicy': connectionTrackingPolicy!,
         if (consistentHash != null) 'consistentHash': consistentHash!,
         if (creationTimestamp != null) 'creationTimestamp': creationTimestamp!,
         if (customRequestHeaders != null)
@@ -46647,6 +48077,8 @@ class BackendService {
         if (customResponseHeaders != null)
           'customResponseHeaders': customResponseHeaders!,
         if (description != null) 'description': description!,
+        if (edgeSecurityPolicy != null)
+          'edgeSecurityPolicy': edgeSecurityPolicy!,
         if (enableCDN != null) 'enableCDN': enableCDN!,
         if (failoverPolicy != null) 'failoverPolicy': failoverPolicy!,
         if (fingerprint != null) 'fingerprint': fingerprint!,
@@ -46954,7 +48386,7 @@ class BackendServiceCdnPolicy {
   /// directive to the lesser of the client_ttl and default_ttl, and also
   /// ensures a "public" cache-control directive is present. If a client TTL is
   /// not specified, a default value (1 hour) will be used. The maximum allowed
-  /// value is 86400s (1 day).
+  /// value is 31,622,400s (1 year).
   core.int? clientTtl;
 
   /// Specifies the default TTL for cached content served by this origin for
@@ -47139,10 +48571,91 @@ typedef BackendServiceCdnPolicyBypassCacheOnRequestHeader
 typedef BackendServiceCdnPolicyNegativeCachingPolicy
     = $CdnPolicyNegativeCachingPolicy;
 
+/// Connection Tracking configuration for this BackendService.
+class BackendServiceConnectionTrackingPolicy {
+  /// Specifies connection persistence when backends are unhealthy.
+  ///
+  /// The default value is DEFAULT_FOR_PROTOCOL. If set to DEFAULT_FOR_PROTOCOL,
+  /// the existing connections persist on unhealthy backends only for
+  /// connection-oriented protocols (TCP and SCTP) and only if the Tracking Mode
+  /// is PER_CONNECTION (default tracking mode) or the Session Affinity is
+  /// configured for 5-tuple. They do not persist for UDP. If set to
+  /// NEVER_PERSIST, after a backend becomes unhealthy, the existing connections
+  /// on the unhealthy backend are never persisted on the unhealthy backend.
+  /// They are always diverted to newly selected healthy backends (unless all
+  /// backends are unhealthy). If set to ALWAYS_PERSIST, existing connections
+  /// always persist on unhealthy backends regardless of protocol and session
+  /// affinity. It is generally not recommended to use this mode overriding the
+  /// default. For more details, see
+  /// [Connection Persistence for Network Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-backend-service#connection-persistence)
+  /// and
+  /// [Connection Persistence for Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal#connection-persistence).
+  /// Possible string values are:
+  /// - "ALWAYS_PERSIST"
+  /// - "DEFAULT_FOR_PROTOCOL"
+  /// - "NEVER_PERSIST"
+  core.String? connectionPersistenceOnUnhealthyBackends;
+
+  /// Specifies how long to keep a Connection Tracking entry while there is no
+  /// matching traffic (in seconds).
+  ///
+  /// For Internal TCP/UDP Load Balancing: - The minimum (default) is 10 minutes
+  /// and the maximum is 16 hours. - It can be set only if Connection Tracking
+  /// is less than 5-tuple (i.e. Session Affinity is CLIENT_IP_NO_DESTINATION,
+  /// CLIENT_IP or CLIENT_IP_PROTO, and Tracking Mode is PER_SESSION). For
+  /// Network Load Balancer the default is 60 seconds. This option is not
+  /// available publicly.
+  core.int? idleTimeoutSec;
+
+  /// Specifies the key used for connection tracking.
+  ///
+  /// There are two options: - PER_CONNECTION: This is the default mode. The
+  /// Connection Tracking is performed as per the Connection Key (default Hash
+  /// Method) for the specific protocol. - PER_SESSION: The Connection Tracking
+  /// is performed as per the configured Session Affinity. It matches the
+  /// configured Session Affinity. For more details, see
+  /// [Tracking Mode for Network Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-backend-service#tracking-mode)
+  /// and
+  /// [Tracking Mode for Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal#tracking-mode).
+  /// Possible string values are:
+  /// - "INVALID_TRACKING_MODE"
+  /// - "PER_CONNECTION"
+  /// - "PER_SESSION"
+  core.String? trackingMode;
+
+  BackendServiceConnectionTrackingPolicy({
+    this.connectionPersistenceOnUnhealthyBackends,
+    this.idleTimeoutSec,
+    this.trackingMode,
+  });
+
+  BackendServiceConnectionTrackingPolicy.fromJson(core.Map _json)
+      : this(
+          connectionPersistenceOnUnhealthyBackends: _json
+                  .containsKey('connectionPersistenceOnUnhealthyBackends')
+              ? _json['connectionPersistenceOnUnhealthyBackends'] as core.String
+              : null,
+          idleTimeoutSec: _json.containsKey('idleTimeoutSec')
+              ? _json['idleTimeoutSec'] as core.int
+              : null,
+          trackingMode: _json.containsKey('trackingMode')
+              ? _json['trackingMode'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (connectionPersistenceOnUnhealthyBackends != null)
+          'connectionPersistenceOnUnhealthyBackends':
+              connectionPersistenceOnUnhealthyBackends!,
+        if (idleTimeoutSec != null) 'idleTimeoutSec': idleTimeoutSec!,
+        if (trackingMode != null) 'trackingMode': trackingMode!,
+      };
+}
+
 /// For load balancers that have configurable failover:
 /// [Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-overview)
-/// and \[external TCP/UDP Load
-/// Balancing\](/network/networklb-failover-overview).
+/// and
+/// [external TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-failover-overview).
 ///
 /// On failover or failback, this field indicates whether connection draining
 /// will be honored. Google Cloud has a fixed connection draining timeout of 10
@@ -47164,8 +48677,9 @@ class BackendServiceFailoverPolicy {
   ///
   /// For load balancers that have configurable failover:
   /// [Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-overview)
-  /// and \[external TCP/UDP Load
-  /// Balancing\](/network/networklb-failover-overview). The default is false.
+  /// and
+  /// [external TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-failover-overview).
+  /// The default is false.
   core.bool? dropTrafficIfUnhealthy;
 
   /// The value of the field must be in the range \[0, 1\].
@@ -47176,8 +48690,8 @@ class BackendServiceFailoverPolicy {
   /// is less than this ratio. For load balancers that have configurable
   /// failover:
   /// [Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-overview)
-  /// and \[external TCP/UDP Load
-  /// Balancing\](/network/networklb-failover-overview).
+  /// and
+  /// [external TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-failover-overview).
   core.double? failoverRatio;
 
   BackendServiceFailoverPolicy({
@@ -47751,7 +49265,381 @@ class BackendServicesScopedList {
       };
 }
 
-/// Associates `members` with a `role`.
+class BfdPacket {
+  /// The Authentication Present bit of the BFD packet.
+  ///
+  /// This is specified in section 4.1 of RFC5880
+  core.bool? authenticationPresent;
+
+  /// The Control Plane Independent bit of the BFD packet.
+  ///
+  /// This is specified in section 4.1 of RFC5880
+  core.bool? controlPlaneIndependent;
+
+  /// The demand bit of the BFD packet.
+  ///
+  /// This is specified in section 4.1 of RFC5880
+  core.bool? demand;
+
+  /// The diagnostic code specifies the local system's reason for the last
+  /// change in session state.
+  ///
+  /// This allows remote systems to determine the reason that the previous
+  /// session failed, for example. These diagnostic codes are specified in
+  /// section 4.1 of RFC5880
+  /// Possible string values are:
+  /// - "ADMINISTRATIVELY_DOWN"
+  /// - "CONCATENATED_PATH_DOWN"
+  /// - "CONTROL_DETECTION_TIME_EXPIRED"
+  /// - "DIAGNOSTIC_UNSPECIFIED"
+  /// - "ECHO_FUNCTION_FAILED"
+  /// - "FORWARDING_PLANE_RESET"
+  /// - "NEIGHBOR_SIGNALED_SESSION_DOWN"
+  /// - "NO_DIAGNOSTIC"
+  /// - "PATH_DOWN"
+  /// - "REVERSE_CONCATENATED_PATH_DOWN"
+  core.String? diagnostic;
+
+  /// The Final bit of the BFD packet.
+  ///
+  /// This is specified in section 4.1 of RFC5880
+  core.bool? final_;
+
+  /// The length of the BFD Control packet in bytes.
+  ///
+  /// This is specified in section 4.1 of RFC5880
+  core.int? length;
+
+  /// The Required Min Echo RX Interval value in the BFD packet.
+  ///
+  /// This is specified in section 4.1 of RFC5880
+  core.int? minEchoRxIntervalMs;
+
+  /// The Required Min RX Interval value in the BFD packet.
+  ///
+  /// This is specified in section 4.1 of RFC5880
+  core.int? minRxIntervalMs;
+
+  /// The Desired Min TX Interval value in the BFD packet.
+  ///
+  /// This is specified in section 4.1 of RFC5880
+  core.int? minTxIntervalMs;
+
+  /// The detection time multiplier of the BFD packet.
+  ///
+  /// This is specified in section 4.1 of RFC5880
+  core.int? multiplier;
+
+  /// The multipoint bit of the BFD packet.
+  ///
+  /// This is specified in section 4.1 of RFC5880
+  core.bool? multipoint;
+
+  /// The My Discriminator value in the BFD packet.
+  ///
+  /// This is specified in section 4.1 of RFC5880
+  core.int? myDiscriminator;
+
+  /// The Poll bit of the BFD packet.
+  ///
+  /// This is specified in section 4.1 of RFC5880
+  core.bool? poll;
+
+  /// The current BFD session state as seen by the transmitting system.
+  ///
+  /// These states are specified in section 4.1 of RFC5880
+  /// Possible string values are:
+  /// - "ADMIN_DOWN"
+  /// - "DOWN"
+  /// - "INIT"
+  /// - "STATE_UNSPECIFIED"
+  /// - "UP"
+  core.String? state;
+
+  /// The version number of the BFD protocol, as specified in section 4.1 of
+  /// RFC5880.
+  core.int? version;
+
+  /// The Your Discriminator value in the BFD packet.
+  ///
+  /// This is specified in section 4.1 of RFC5880
+  core.int? yourDiscriminator;
+
+  BfdPacket({
+    this.authenticationPresent,
+    this.controlPlaneIndependent,
+    this.demand,
+    this.diagnostic,
+    this.final_,
+    this.length,
+    this.minEchoRxIntervalMs,
+    this.minRxIntervalMs,
+    this.minTxIntervalMs,
+    this.multiplier,
+    this.multipoint,
+    this.myDiscriminator,
+    this.poll,
+    this.state,
+    this.version,
+    this.yourDiscriminator,
+  });
+
+  BfdPacket.fromJson(core.Map _json)
+      : this(
+          authenticationPresent: _json.containsKey('authenticationPresent')
+              ? _json['authenticationPresent'] as core.bool
+              : null,
+          controlPlaneIndependent: _json.containsKey('controlPlaneIndependent')
+              ? _json['controlPlaneIndependent'] as core.bool
+              : null,
+          demand:
+              _json.containsKey('demand') ? _json['demand'] as core.bool : null,
+          diagnostic: _json.containsKey('diagnostic')
+              ? _json['diagnostic'] as core.String
+              : null,
+          final_:
+              _json.containsKey('final') ? _json['final'] as core.bool : null,
+          length:
+              _json.containsKey('length') ? _json['length'] as core.int : null,
+          minEchoRxIntervalMs: _json.containsKey('minEchoRxIntervalMs')
+              ? _json['minEchoRxIntervalMs'] as core.int
+              : null,
+          minRxIntervalMs: _json.containsKey('minRxIntervalMs')
+              ? _json['minRxIntervalMs'] as core.int
+              : null,
+          minTxIntervalMs: _json.containsKey('minTxIntervalMs')
+              ? _json['minTxIntervalMs'] as core.int
+              : null,
+          multiplier: _json.containsKey('multiplier')
+              ? _json['multiplier'] as core.int
+              : null,
+          multipoint: _json.containsKey('multipoint')
+              ? _json['multipoint'] as core.bool
+              : null,
+          myDiscriminator: _json.containsKey('myDiscriminator')
+              ? _json['myDiscriminator'] as core.int
+              : null,
+          poll: _json.containsKey('poll') ? _json['poll'] as core.bool : null,
+          state:
+              _json.containsKey('state') ? _json['state'] as core.String : null,
+          version: _json.containsKey('version')
+              ? _json['version'] as core.int
+              : null,
+          yourDiscriminator: _json.containsKey('yourDiscriminator')
+              ? _json['yourDiscriminator'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (authenticationPresent != null)
+          'authenticationPresent': authenticationPresent!,
+        if (controlPlaneIndependent != null)
+          'controlPlaneIndependent': controlPlaneIndependent!,
+        if (demand != null) 'demand': demand!,
+        if (diagnostic != null) 'diagnostic': diagnostic!,
+        if (final_ != null) 'final': final_!,
+        if (length != null) 'length': length!,
+        if (minEchoRxIntervalMs != null)
+          'minEchoRxIntervalMs': minEchoRxIntervalMs!,
+        if (minRxIntervalMs != null) 'minRxIntervalMs': minRxIntervalMs!,
+        if (minTxIntervalMs != null) 'minTxIntervalMs': minTxIntervalMs!,
+        if (multiplier != null) 'multiplier': multiplier!,
+        if (multipoint != null) 'multipoint': multipoint!,
+        if (myDiscriminator != null) 'myDiscriminator': myDiscriminator!,
+        if (poll != null) 'poll': poll!,
+        if (state != null) 'state': state!,
+        if (version != null) 'version': version!,
+        if (yourDiscriminator != null) 'yourDiscriminator': yourDiscriminator!,
+      };
+}
+
+/// Next free: 15
+class BfdStatus {
+  /// The BFD session initialization mode for this BGP peer.
+  ///
+  /// If set to ACTIVE, the Cloud Router will initiate the BFD session for this
+  /// BGP peer. If set to PASSIVE, the Cloud Router will wait for the peer
+  /// router to initiate the BFD session for this BGP peer. If set to DISABLED,
+  /// BFD is disabled for this BGP peer.
+  /// Possible string values are:
+  /// - "ACTIVE"
+  /// - "DISABLED"
+  /// - "PASSIVE"
+  core.String? bfdSessionInitializationMode;
+
+  /// Unix timestamp of the most recent config update.
+  core.String? configUpdateTimestampMicros;
+
+  /// Control packet counts for the current BFD session.
+  BfdStatusPacketCounts? controlPacketCounts;
+
+  /// Inter-packet time interval statistics for control packets.
+  core.List<PacketIntervals>? controlPacketIntervals;
+
+  /// The diagnostic code specifies the local system's reason for the last
+  /// change in session state.
+  ///
+  /// This allows remote systems to determine the reason that the previous
+  /// session failed, for example. These diagnostic codes are specified in
+  /// section 4.1 of RFC5880
+  /// Possible string values are:
+  /// - "ADMINISTRATIVELY_DOWN"
+  /// - "CONCATENATED_PATH_DOWN"
+  /// - "CONTROL_DETECTION_TIME_EXPIRED"
+  /// - "DIAGNOSTIC_UNSPECIFIED"
+  /// - "ECHO_FUNCTION_FAILED"
+  /// - "FORWARDING_PLANE_RESET"
+  /// - "NEIGHBOR_SIGNALED_SESSION_DOWN"
+  /// - "NO_DIAGNOSTIC"
+  /// - "PATH_DOWN"
+  /// - "REVERSE_CONCATENATED_PATH_DOWN"
+  core.String? localDiagnostic;
+
+  /// The current BFD session state as seen by the transmitting system.
+  ///
+  /// These states are specified in section 4.1 of RFC5880
+  /// Possible string values are:
+  /// - "ADMIN_DOWN"
+  /// - "DOWN"
+  /// - "INIT"
+  /// - "STATE_UNSPECIFIED"
+  /// - "UP"
+  core.String? localState;
+
+  /// Negotiated transmit interval for control packets.
+  core.int? negotiatedLocalControlTxIntervalMs;
+
+  /// The most recent Rx control packet for this BFD session.
+  BfdPacket? rxPacket;
+
+  /// The most recent Tx control packet for this BFD session.
+  BfdPacket? txPacket;
+
+  /// Session uptime in milliseconds.
+  ///
+  /// Value will be 0 if session is not up.
+  core.String? uptimeMs;
+
+  BfdStatus({
+    this.bfdSessionInitializationMode,
+    this.configUpdateTimestampMicros,
+    this.controlPacketCounts,
+    this.controlPacketIntervals,
+    this.localDiagnostic,
+    this.localState,
+    this.negotiatedLocalControlTxIntervalMs,
+    this.rxPacket,
+    this.txPacket,
+    this.uptimeMs,
+  });
+
+  BfdStatus.fromJson(core.Map _json)
+      : this(
+          bfdSessionInitializationMode:
+              _json.containsKey('bfdSessionInitializationMode')
+                  ? _json['bfdSessionInitializationMode'] as core.String
+                  : null,
+          configUpdateTimestampMicros:
+              _json.containsKey('configUpdateTimestampMicros')
+                  ? _json['configUpdateTimestampMicros'] as core.String
+                  : null,
+          controlPacketCounts: _json.containsKey('controlPacketCounts')
+              ? BfdStatusPacketCounts.fromJson(_json['controlPacketCounts']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          controlPacketIntervals: _json.containsKey('controlPacketIntervals')
+              ? (_json['controlPacketIntervals'] as core.List)
+                  .map((value) => PacketIntervals.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          localDiagnostic: _json.containsKey('localDiagnostic')
+              ? _json['localDiagnostic'] as core.String
+              : null,
+          localState: _json.containsKey('localState')
+              ? _json['localState'] as core.String
+              : null,
+          negotiatedLocalControlTxIntervalMs:
+              _json.containsKey('negotiatedLocalControlTxIntervalMs')
+                  ? _json['negotiatedLocalControlTxIntervalMs'] as core.int
+                  : null,
+          rxPacket: _json.containsKey('rxPacket')
+              ? BfdPacket.fromJson(
+                  _json['rxPacket'] as core.Map<core.String, core.dynamic>)
+              : null,
+          txPacket: _json.containsKey('txPacket')
+              ? BfdPacket.fromJson(
+                  _json['txPacket'] as core.Map<core.String, core.dynamic>)
+              : null,
+          uptimeMs: _json.containsKey('uptimeMs')
+              ? _json['uptimeMs'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (bfdSessionInitializationMode != null)
+          'bfdSessionInitializationMode': bfdSessionInitializationMode!,
+        if (configUpdateTimestampMicros != null)
+          'configUpdateTimestampMicros': configUpdateTimestampMicros!,
+        if (controlPacketCounts != null)
+          'controlPacketCounts': controlPacketCounts!,
+        if (controlPacketIntervals != null)
+          'controlPacketIntervals': controlPacketIntervals!,
+        if (localDiagnostic != null) 'localDiagnostic': localDiagnostic!,
+        if (localState != null) 'localState': localState!,
+        if (negotiatedLocalControlTxIntervalMs != null)
+          'negotiatedLocalControlTxIntervalMs':
+              negotiatedLocalControlTxIntervalMs!,
+        if (rxPacket != null) 'rxPacket': rxPacket!,
+        if (txPacket != null) 'txPacket': txPacket!,
+        if (uptimeMs != null) 'uptimeMs': uptimeMs!,
+      };
+}
+
+class BfdStatusPacketCounts {
+  /// Number of packets received since the beginning of the current BFD session.
+  core.int? numRx;
+
+  /// Number of packets received that were rejected because of errors since the
+  /// beginning of the current BFD session.
+  core.int? numRxRejected;
+
+  /// Number of packets received that were successfully processed since the
+  /// beginning of the current BFD session.
+  core.int? numRxSuccessful;
+
+  /// Number of packets transmitted since the beginning of the current BFD
+  /// session.
+  core.int? numTx;
+
+  BfdStatusPacketCounts({
+    this.numRx,
+    this.numRxRejected,
+    this.numRxSuccessful,
+    this.numTx,
+  });
+
+  BfdStatusPacketCounts.fromJson(core.Map _json)
+      : this(
+          numRx: _json.containsKey('numRx') ? _json['numRx'] as core.int : null,
+          numRxRejected: _json.containsKey('numRxRejected')
+              ? _json['numRxRejected'] as core.int
+              : null,
+          numRxSuccessful: _json.containsKey('numRxSuccessful')
+              ? _json['numRxSuccessful'] as core.int
+              : null,
+          numTx: _json.containsKey('numTx') ? _json['numTx'] as core.int : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (numRx != null) 'numRx': numRx!,
+        if (numRxRejected != null) 'numRxRejected': numRxRejected!,
+        if (numRxSuccessful != null) 'numRxSuccessful': numRxSuccessful!,
+        if (numTx != null) 'numTx': numTx!,
+      };
+}
+
+/// Associates `members`, or principals, with a `role`.
 class Binding {
   /// This is deprecated and has no effect.
   ///
@@ -47763,12 +49651,13 @@ class Binding {
   /// If the condition evaluates to `true`, then this binding applies to the
   /// current request. If the condition evaluates to `false`, then this binding
   /// does not apply to the current request. However, a different role binding
-  /// might grant the same role to one or more of the members in this binding.
-  /// To learn which resources support conditions in their IAM policies, see the
+  /// might grant the same role to one or more of the principals in this
+  /// binding. To learn which resources support conditions in their IAM
+  /// policies, see the
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   Expr? condition;
 
-  /// Specifies the identities requesting access for a Cloud Platform resource.
+  /// Specifies the principals requesting access for a Cloud Platform resource.
   ///
   /// `members` can have the following values: * `allUsers`: A special
   /// identifier that represents anyone who is on the internet; with or without
@@ -47800,7 +49689,7 @@ class Binding {
   /// `example.com`.
   core.List<core.String>? members;
 
-  /// Role that is assigned to `members`.
+  /// Role that is assigned to the list of `members`, or principals.
   ///
   /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
   core.String? role;
@@ -48004,6 +49893,14 @@ class CacheKeyPolicy {
   /// If true, requests to different hosts will be cached separately.
   core.bool? includeHost;
 
+  /// Allows HTTP request headers (by name) to be used in the cache key.
+  core.List<core.String>? includeHttpHeaders;
+
+  /// Allows HTTP cookies (by name) to be used in the cache key.
+  ///
+  /// The name=value pair will be used in the cache key Cloud CDN generates.
+  core.List<core.String>? includeNamedCookies;
+
   /// If true, http and https requests will be cached separately.
   core.bool? includeProtocol;
 
@@ -48030,6 +49927,8 @@ class CacheKeyPolicy {
 
   CacheKeyPolicy({
     this.includeHost,
+    this.includeHttpHeaders,
+    this.includeNamedCookies,
     this.includeProtocol,
     this.includeQueryString,
     this.queryStringBlacklist,
@@ -48040,6 +49939,16 @@ class CacheKeyPolicy {
       : this(
           includeHost: _json.containsKey('includeHost')
               ? _json['includeHost'] as core.bool
+              : null,
+          includeHttpHeaders: _json.containsKey('includeHttpHeaders')
+              ? (_json['includeHttpHeaders'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          includeNamedCookies: _json.containsKey('includeNamedCookies')
+              ? (_json['includeNamedCookies'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
               : null,
           includeProtocol: _json.containsKey('includeProtocol')
               ? _json['includeProtocol'] as core.bool
@@ -48061,6 +49970,10 @@ class CacheKeyPolicy {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (includeHost != null) 'includeHost': includeHost!,
+        if (includeHttpHeaders != null)
+          'includeHttpHeaders': includeHttpHeaders!,
+        if (includeNamedCookies != null)
+          'includeNamedCookies': includeNamedCookies!,
         if (includeProtocol != null) 'includeProtocol': includeProtocol!,
         if (includeQueryString != null)
           'includeQueryString': includeQueryString!,
@@ -48146,6 +50059,14 @@ class CircuitBreakers {
 /// based on vCPUs and memory usage and receive discounted rates. For full
 /// details, read Signing Up for Committed Use Discounts.
 class Commitment {
+  /// Specifies whether to enable automatic renewal for the commitment.
+  ///
+  /// The default value is false if not specified. The field can be updated
+  /// until the day of the commitment expiration at 12:00am PST. If the field is
+  /// set to true, the commitment will be automatically renewed for either one
+  /// or three years according to the terms of the existing commitment.
+  core.bool? autoRenew;
+
   /// The category of the commitment.
   ///
   /// Category MACHINE specifies commitments composed of machine resources such
@@ -48260,15 +50181,18 @@ class Commitment {
   /// Possible string values are:
   /// - "ACCELERATOR_OPTIMIZED"
   /// - "COMPUTE_OPTIMIZED"
+  /// - "COMPUTE_OPTIMIZED_C2D"
   /// - "GENERAL_PURPOSE"
   /// - "GENERAL_PURPOSE_E2"
   /// - "GENERAL_PURPOSE_N2"
   /// - "GENERAL_PURPOSE_N2D"
+  /// - "GENERAL_PURPOSE_T2D"
   /// - "MEMORY_OPTIMIZED"
   /// - "TYPE_UNSPECIFIED"
   core.String? type;
 
   Commitment({
+    this.autoRenew,
     this.category,
     this.creationTimestamp,
     this.description,
@@ -48290,6 +50214,9 @@ class Commitment {
 
   Commitment.fromJson(core.Map _json)
       : this(
+          autoRenew: _json.containsKey('autoRenew')
+              ? _json['autoRenew'] as core.bool
+              : null,
           category: _json.containsKey('category')
               ? _json['category'] as core.String
               : null,
@@ -48341,6 +50268,7 @@ class Commitment {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (autoRenew != null) 'autoRenew': autoRenew!,
         if (category != null) 'category': category!,
         if (creationTimestamp != null) 'creationTimestamp': creationTimestamp!,
         if (description != null) 'description': description!,
@@ -49112,7 +51040,9 @@ class ConsistentHashLoadBalancerSettings {
   /// This field describes a HTTP cookie that will be used as the hash key for
   /// the consistent hash load balancer. If the cookie is not present, it will
   /// be generated. This field is applicable if the sessionAffinity is set to
-  /// HTTP_COOKIE.
+  /// HTTP_COOKIE. Not supported when the backend service is referenced by a URL
+  /// map that is bound to target gRPC proxy that has validateForProxyless field
+  /// set to true.
   ConsistentHashLoadBalancerSettingsHttpCookie? httpCookie;
 
   /// The hash based on the value of the specified header field.
@@ -49189,15 +51119,16 @@ class ConsistentHashLoadBalancerSettingsHttpCookie {
       };
 }
 
-/// The specification for allowing client side cross-origin requests.
+/// The specification for allowing client-side cross-origin requests.
 ///
-/// Please see W3C Recommendation for Cross Origin Resource Sharing
+/// For more information about the W3C recommendation for cross-origin resource
+/// sharing (CORS), see Fetch API Living Standard.
 class CorsPolicy {
   /// In response to a preflight request, setting this to true indicates that
   /// the actual request can include user credentials.
   ///
-  /// This translates to the Access-Control-Allow-Credentials header. Default is
-  /// false.
+  /// This field translates to the Access-Control-Allow-Credentials header.
+  /// Default is false.
   core.bool? allowCredentials;
 
   /// Specifies the content for the Access-Control-Allow-Headers header.
@@ -49206,20 +51137,20 @@ class CorsPolicy {
   /// Specifies the content for the Access-Control-Allow-Methods header.
   core.List<core.String>? allowMethods;
 
-  /// Specifies the regualar expression patterns that match allowed origins.
+  /// Specifies a regular expression that matches allowed origins.
   ///
-  /// For regular expression grammar please see
-  /// github.com/google/re2/wiki/Syntax An origin is allowed if it matches
-  /// either an item in allowOrigins or an item in allowOriginRegexes.
+  /// For more information about the regular expression syntax, see Syntax. An
+  /// origin is allowed if it matches either an item in allowOrigins or an item
+  /// in allowOriginRegexes.
   core.List<core.String>? allowOriginRegexes;
 
-  /// Specifies the list of origins that will be allowed to do CORS requests.
+  /// Specifies the list of origins that is allowed to do CORS requests.
   ///
   /// An origin is allowed if it matches either an item in allowOrigins or an
   /// item in allowOriginRegexes.
   core.List<core.String>? allowOrigins;
 
-  /// If true, specifies the CORS policy is disabled.
+  /// If true, the setting specifies the CORS policy is disabled.
   ///
   /// The default value of false, which indicates that the CORS policy is in
   /// effect.
@@ -49231,7 +51162,7 @@ class CorsPolicy {
   /// Specifies how long results of a preflight request can be cached in
   /// seconds.
   ///
-  /// This translates to the Access-Control-Max-Age header.
+  /// This field translates to the Access-Control-Max-Age header.
   core.int? maxAge;
 
   CorsPolicy({
@@ -52562,7 +54493,7 @@ class Firewall {
   ///
   /// The name must be 1-63 characters long, and comply with RFC1035.
   /// Specifically, the name must be 1-63 characters long and match the regular
-  /// expression \[a-z\](\[-a-z0-9\]*\[a-z0-9\])?. The first character must be a
+  /// expression `[a-z]([-a-z0-9]*[a-z0-9])?`. The first character must be a
   /// lowercase letter, and all following characters (except for the last
   /// character) must be a dash, lowercase letter, or digit. The last character
   /// must be a lowercase letter or digit.
@@ -53819,6 +55750,7 @@ class ForwardingRule {
   /// - "AH"
   /// - "ESP"
   /// - "ICMP"
+  /// - "L3_DEFAULT"
   /// - "SCTP"
   /// - "TCP"
   /// - "UDP"
@@ -53990,10 +55922,13 @@ class ForwardingRule {
   /// specified, it is assumed to be PREMIUM. If IPAddress is specified, this
   /// value must be equal to the networkTier of the Address.
   /// Possible string values are:
+  /// - "FIXED_STANDARD" : Public internet quality with fixed bandwidth.
   /// - "PREMIUM" : High quality, Google-grade network tier, support for all
   /// networking products.
   /// - "STANDARD" : Public internet quality, only limited support for other
   /// networking products.
+  /// - "STANDARD_OVERRIDES_FIXED_STANDARD" : (Output only) Temporary tier for
+  /// FIXED_STANDARD when fixed standard tier is expired or not configured.
   core.String? networkTier;
 
   /// This field can be used only if: - Load balancing scheme is one of
@@ -54053,8 +55988,7 @@ class ForwardingRule {
 
   /// Service Directory resources to register this forwarding rule with.
   ///
-  /// Currently, only supports a single Service Directory resource. It is only
-  /// supported for internal load balancing.
+  /// Currently, only supports a single Service Directory resource.
   core.List<ForwardingRuleServiceDirectoryRegistration>?
       serviceDirectoryRegistrations;
 
@@ -55339,8 +57273,11 @@ class GuestAttributesValue {
 class GuestOsFeature {
   /// The ID of a supported feature.
   ///
-  /// Read Enabling guest operating system features to see a list of available
-  /// options.
+  /// To add multiple values, use commas to separate values. Set to one or more
+  /// of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS -
+  /// MULTI_IP_SUBNET - UEFI_COMPATIBLE - SECURE_BOOT - GVNIC - SEV_CAPABLE -
+  /// SUSPEND_RESUME_COMPATIBLE For more information, see Enabling guest
+  /// operating system features.
   /// Possible string values are:
   /// - "FEATURE_TYPE_UNSPECIFIED"
   /// - "GVNIC"
@@ -55749,8 +57686,8 @@ class HealthCheck {
   /// Specifies the type of the healthCheck, either TCP, SSL, HTTP, HTTPS or
   /// HTTP2.
   ///
-  /// If not specified, the default is TCP. Exactly one of the protocol-specific
-  /// health check field must be specified, which must match type field.
+  /// Exactly one of the protocol-specific health check field must be specified,
+  /// which must match type field.
   /// Possible string values are:
   /// - "GRPC"
   /// - "HTTP"
@@ -57141,8 +59078,8 @@ class HostRule {
   /// They must be valid hostnames with optional port numbers in the format
   /// host:port. * matches any string of (\[a-z0-9-.\]*). In that case, * must
   /// be the first character and must be followed in the pattern by either - or
-  /// .. * based matching is not supported when the URL map is bound to target
-  /// gRPC proxy that has validateForProxyless field set to true.
+  /// .. * based matching is not supported when the URL map is bound to a target
+  /// gRPC proxy that has the validateForProxyless field set to true.
   core.List<core.String>? hosts;
 
   /// The name of the PathMatcher to use to match the path portion of the URL if
@@ -57181,16 +59118,16 @@ class HostRule {
 class HttpFaultAbort {
   /// The HTTP status code used to abort the request.
   ///
-  /// The value must be between 200 and 599 inclusive. For gRPC protocol, the
-  /// gRPC status code is mapped to HTTP status code according to this mapping
-  /// table. HTTP status 200 is mapped to gRPC status UNKNOWN. Injecting an OK
-  /// status is currently not supported by Traffic Director.
+  /// The value must be from 200 to 599 inclusive. For gRPC protocol, the gRPC
+  /// status code is mapped to HTTP status code according to this mapping table.
+  /// HTTP status 200 is mapped to gRPC status UNKNOWN. Injecting an OK status
+  /// is currently not supported by Traffic Director.
   core.int? httpStatus;
 
-  /// The percentage of traffic (connections/operations/requests) which will be
+  /// The percentage of traffic for connections, operations, or requests that is
   /// aborted as part of fault injection.
   ///
-  /// The value must be between 0.0 and 100.0 inclusive.
+  /// The value must be from 0.0 to 100.0 inclusive.
   core.double? percentage;
 
   HttpFaultAbort({
@@ -57214,16 +59151,16 @@ class HttpFaultAbort {
       };
 }
 
-/// Specifies the delay introduced by Loadbalancer before forwarding the request
-/// to the backend service as part of fault injection.
+/// Specifies the delay introduced by the load balancer before forwarding the
+/// request to the backend service as part of fault injection.
 class HttpFaultDelay {
   /// Specifies the value of the fixed delay interval.
   Duration? fixedDelay;
 
-  /// The percentage of traffic (connections/operations/requests) on which delay
-  /// will be introduced as part of fault injection.
+  /// The percentage of traffic for connections, operations, or requests for
+  /// which a delay is introduced as part of fault injection.
   ///
-  /// The value must be between 0.0 and 100.0 inclusive.
+  /// The value must be from 0.0 to 100.0 inclusive.
   core.double? percentage;
 
   HttpFaultDelay({
@@ -57252,9 +59189,9 @@ class HttpFaultDelay {
 /// resiliency of clients to backend service failure.
 ///
 /// As part of fault injection, when clients send requests to a backend service,
-/// delays can be introduced by Loadbalancer on a percentage of requests before
-/// sending those request to the backend service. Similarly requests from
-/// clients can be aborted by the Loadbalancer for a percentage of requests.
+/// delays can be introduced by the load balancer on a percentage of requests
+/// before sending those request to the backend service. Similarly requests from
+/// clients can be aborted by the load balancer for a percentage of requests.
 class HttpFaultInjection {
   /// The specification for how client requests are aborted as part of fault
   /// injection.
@@ -57290,20 +59227,20 @@ class HttpFaultInjection {
 /// The request and response header transformations that take effect before the
 /// request is passed along to the selected backendService.
 class HttpHeaderAction {
-  /// Headers to add to a matching request prior to forwarding the request to
-  /// the backendService.
+  /// Headers to add to a matching request before forwarding the request to the
+  /// backendService.
   core.List<HttpHeaderOption>? requestHeadersToAdd;
 
   /// A list of header names for headers that need to be removed from the
-  /// request prior to forwarding the request to the backendService.
+  /// request before forwarding the request to the backendService.
   core.List<core.String>? requestHeadersToRemove;
 
-  /// Headers to add the response prior to sending the response back to the
+  /// Headers to add the response before sending the response back to the
   /// client.
   core.List<HttpHeaderOption>? responseHeadersToAdd;
 
   /// A list of header names for headers that need to be removed from the
-  /// response prior to sending the response back to the client.
+  /// response before sending the response back to the client.
   core.List<core.String>? responseHeadersToRemove;
 
   HttpHeaderAction({
@@ -57363,21 +59300,21 @@ class HttpHeaderMatch {
   ///
   /// For matching against the HTTP request's authority, use a headerMatch with
   /// the header name ":authority". For matching a request's method, use the
-  /// headerName ":method". When the URL map is bound to target gRPC proxy that
-  /// has validateForProxyless field set to true, only non-binary user-specified
-  /// custom metadata and the \`content-type\` header are supported. The
-  /// following transport-level headers cannot be used in header matching rules:
-  /// \`:authority\`, \`:method\`, \`:path\`, \`:scheme\`, \`user-agent\`,
-  /// \`accept-encoding\`, \`content-encoding\`, \`grpc-accept-encoding\`,
-  /// \`grpc-encoding\`, \`grpc-previous-rpc-attempts\`, \`grpc-tags-bin\`,
-  /// \`grpc-timeout\` and \`grpc-trace-bin.
+  /// headerName ":method". When the URL map is bound to a target gRPC proxy
+  /// that has the validateForProxyless field set to true, only non-binary
+  /// user-specified custom metadata and the `content-type` header are
+  /// supported. The following transport-level headers cannot be used in header
+  /// matching rules: `:authority`, `:method`, `:path`, `:scheme`, `user-agent`,
+  /// `accept-encoding`, `content-encoding`, `grpc-accept-encoding`,
+  /// `grpc-encoding`, `grpc-previous-rpc-attempts`, `grpc-tags-bin`,
+  /// `grpc-timeout` and `grpc-trace-bin`.
   core.String? headerName;
 
-  /// If set to false, the headerMatch is considered a match if the match
-  /// criteria above are met.
+  /// If set to false, the headerMatch is considered a match if the preceding
+  /// match criteria are met.
   ///
-  /// If set to true, the headerMatch is considered a match if the match
-  /// criteria above are NOT met. The default setting is false.
+  /// If set to true, the headerMatch is considered a match if the preceding
+  /// match criteria are NOT met. The default setting is false.
   core.bool? invertMatch;
 
   /// The value of the header must start with the contents of prefixMatch.
@@ -57400,21 +59337,20 @@ class HttpHeaderMatch {
   /// fails. For example for a range \[-5, 0\] - -3 will match. - 0 will not
   /// match. - 0.25 will not match. - -3someString will not match. Only one of
   /// exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or
-  /// rangeMatch must be set. Note that rangeMatch is not supported for
-  /// Loadbalancers that have their loadBalancingScheme set to EXTERNAL.
+  /// rangeMatch must be set. rangeMatch is not supported for load balancers
+  /// that have loadBalancingScheme set to EXTERNAL.
   Int64RangeMatch? rangeMatch;
 
   /// The value of the header must match the regular expression specified in
   /// regexMatch.
   ///
-  /// For regular expression grammar, please see:
-  /// github.com/google/re2/wiki/Syntax For matching against a port specified in
-  /// the HTTP request, use a headerMatch with headerName set to PORT and a
-  /// regular expression that satisfies the RFC2616 Host header's port
-  /// specifier. Only one of exactMatch, prefixMatch, suffixMatch, regexMatch,
-  /// presentMatch or rangeMatch must be set. Note that regexMatch only applies
-  /// to Loadbalancers that have their loadBalancingScheme set to
-  /// INTERNAL_SELF_MANAGED.
+  /// For more information about regular expression syntax, see Syntax. For
+  /// matching against a port specified in the HTTP request, use a headerMatch
+  /// with headerName set to PORT and a regular expression that satisfies the
+  /// RFC2616 Host header's port specifier. Only one of exactMatch, prefixMatch,
+  /// suffixMatch, regexMatch, presentMatch or rangeMatch must be set.
+  /// regexMatch only applies to load balancers that have loadBalancingScheme
+  /// set to INTERNAL_SELF_MANAGED.
   core.String? regexMatch;
 
   /// The value of the header must end with the contents of suffixMatch.
@@ -57883,7 +59819,7 @@ class HttpQueryParameterMatch {
   /// The queryParameterMatch matches if the value of the parameter exactly
   /// matches the contents of exactMatch.
   ///
-  /// Only one of presentMatch, exactMatch or regexMatch must be set.
+  /// Only one of presentMatch, exactMatch, or regexMatch must be set.
   core.String? exactMatch;
 
   /// The name of the query parameter to match.
@@ -57895,16 +59831,15 @@ class HttpQueryParameterMatch {
   /// Specifies that the queryParameterMatch matches if the request contains the
   /// query parameter, irrespective of whether the parameter has a value or not.
   ///
-  /// Only one of presentMatch, exactMatch or regexMatch must be set.
+  /// Only one of presentMatch, exactMatch, or regexMatch must be set.
   core.bool? presentMatch;
 
   /// The queryParameterMatch matches if the value of the parameter matches the
   /// regular expression specified by regexMatch.
   ///
-  /// For the regular expression grammar, please see
-  /// github.com/google/re2/wiki/Syntax Only one of presentMatch, exactMatch or
-  /// regexMatch must be set. Note that regexMatch only applies when the
-  /// loadBalancingScheme is set to INTERNAL_SELF_MANAGED.
+  /// For more information about regular expression syntax, see Syntax. Only one
+  /// of presentMatch, exactMatch, or regexMatch must be set. regexMatch only
+  /// applies when the loadBalancingScheme is set to INTERNAL_SELF_MANAGED.
   core.String? regexMatch;
 
   HttpQueryParameterMatch({
@@ -57938,27 +59873,26 @@ class HttpQueryParameterMatch {
 
 /// Specifies settings for an HTTP redirect.
 class HttpRedirectAction {
-  /// The host that will be used in the redirect response instead of the one
-  /// that was supplied in the request.
+  /// The host that is used in the redirect response instead of the one that was
+  /// supplied in the request.
   ///
-  /// The value must be between 1 and 255 characters.
+  /// The value must be from 1 to 255 characters.
   core.String? hostRedirect;
 
-  /// If set to true, the URL scheme in the redirected request is set to https.
+  /// If set to true, the URL scheme in the redirected request is set to HTTPS.
   ///
-  /// If set to false, the URL scheme of the redirected request will remain the
-  /// same as that of the request. This must only be set for UrlMaps used in
+  /// If set to false, the URL scheme of the redirected request remains the same
+  /// as that of the request. This must only be set for URL maps used in
   /// TargetHttpProxys. Setting this true for TargetHttpsProxy is not permitted.
   /// The default is set to false.
   core.bool? httpsRedirect;
 
-  /// The path that will be used in the redirect response instead of the one
-  /// that was supplied in the request.
+  /// The path that is used in the redirect response instead of the one that was
+  /// supplied in the request.
   ///
   /// pathRedirect cannot be supplied together with prefixRedirect. Supply one
   /// alone or neither. If neither is supplied, the path of the original request
-  /// will be used for the redirect. The value must be between 1 and 1024
-  /// characters.
+  /// is used for the redirect. The value must be from 1 to 1024 characters.
   core.String? pathRedirect;
 
   /// The prefix that replaces the prefixMatch specified in the
@@ -57967,8 +59901,7 @@ class HttpRedirectAction {
   ///
   /// prefixRedirect cannot be supplied together with pathRedirect. Supply one
   /// alone or neither. If neither is supplied, the path of the original request
-  /// will be used for the redirect. The value must be between 1 and 1024
-  /// characters.
+  /// is used for the redirect. The value must be from 1 to 1024 characters.
   core.String? prefixRedirect;
 
   /// The HTTP Status code to use for this RedirectAction.
@@ -57976,9 +59909,9 @@ class HttpRedirectAction {
   /// Supported values are: - MOVED_PERMANENTLY_DEFAULT, which is the default
   /// value and corresponds to 301. - FOUND, which corresponds to 302. -
   /// SEE_OTHER which corresponds to 303. - TEMPORARY_REDIRECT, which
-  /// corresponds to 307. In this case, the request method will be retained. -
+  /// corresponds to 307. In this case, the request method is retained. -
   /// PERMANENT_REDIRECT, which corresponds to 308. In this case, the request
-  /// method will be retained.
+  /// method is retained.
   /// Possible string values are:
   /// - "FOUND" : Http Status Code 302 - Found.
   /// - "MOVED_PERMANENTLY_DEFAULT" : Http Status Code 301 - Moved Permanently.
@@ -57990,7 +59923,7 @@ class HttpRedirectAction {
   core.String? redirectResponseCode;
 
   /// If set to true, any accompanying query portion of the original URL is
-  /// removed prior to redirecting the request.
+  /// removed before redirecting the request.
   ///
   /// If set to false, the query portion of the original URL is retained. The
   /// default is set to false.
@@ -58047,33 +59980,37 @@ class HttpRetryPolicy {
 
   /// Specifies a non-zero timeout per retry attempt.
   ///
-  /// If not specified, will use the timeout set in HttpRouteAction. If timeout
-  /// in HttpRouteAction is not set, will use the largest timeout among all
-  /// backend services associated with the route.
+  /// If not specified, will use the timeout set in the HttpRouteAction field.
+  /// If timeout in the HttpRouteAction field is not set, this field uses the
+  /// largest timeout among all backend services associated with the route. Not
+  /// supported when the URL map is bound to a target gRPC proxy that has the
+  /// validateForProxyless field set to true.
   Duration? perTryTimeout;
 
   /// Specifies one or more conditions when this retry policy applies.
   ///
-  /// Valid values are: - 5xx: Retry will be attempted if the instance or
-  /// endpoint responds with any 5xx response code, or if the instance or
-  /// endpoint does not respond at all, example: disconnects, reset, read
-  /// timeout, connection failure, and refused streams. - gateway-error: Similar
-  /// to 5xx, but only applies to response codes 502, 503 or 504. - -
-  /// connect-failure: A retry will be attempted on failures connecting to the
-  /// instance or endpoint, for example due to connection timeouts. -
-  /// retriable-4xx: A retry will be attempted if the instance or endpoint
-  /// responds with a retriable 4xx response code. Currently the only retriable
-  /// error supported is 409. - refused-stream: A retry will be attempted if the
-  /// instance or endpoint resets the stream with a REFUSED_STREAM error code.
-  /// This reset type indicates that it is safe to retry. - cancelled: A retry
-  /// will be attempted if the gRPC status code in the response header is set to
-  /// cancelled. - deadline-exceeded: A retry will be attempted if the gRPC
-  /// status code in the response header is set to deadline-exceeded. -
-  /// internal: A retry will be attempted if the gRPC status code in the
-  /// response header is set to internal. - resource-exhausted: A retry will be
+  /// Valid values are: - 5xx: retry is attempted if the instance or endpoint
+  /// responds with any 5xx response code, or if the instance or endpoint does
+  /// not respond at all. For example, disconnects, reset, read timeout,
+  /// connection failure, and refused streams. - gateway-error: Similar to 5xx,
+  /// but only applies to response codes 502, 503 or 504. - connect-failure: a
+  /// retry is attempted on failures connecting to the instance or endpoint. For
+  /// example, connection timeouts. - retriable-4xx: a retry is attempted if the
+  /// instance or endpoint responds with a 4xx response code. The only error
+  /// that you can retry is error code 409. - refused-stream: a retry is
+  /// attempted if the instance or endpoint resets the stream with a
+  /// REFUSED_STREAM error code. This reset type indicates that it is safe to
+  /// retry. - cancelled: a retry is attempted if the gRPC status code in the
+  /// response header is set to cancelled. - deadline-exceeded: a retry is
   /// attempted if the gRPC status code in the response header is set to
-  /// resource-exhausted. - unavailable: A retry will be attempted if the gRPC
-  /// status code in the response header is set to unavailable.
+  /// deadline-exceeded. - internal: a retry is attempted if the gRPC status
+  /// code in the response header is set to internal. - resource-exhausted: a
+  /// retry is attempted if the gRPC status code in the response header is set
+  /// to resource-exhausted. - unavailable: a retry is attempted if the gRPC
+  /// status code in the response header is set to unavailable. Only the
+  /// following codes are supported when the URL map is bound to target gRPC
+  /// proxy that has validateForProxyless field set to true. - cancelled -
+  /// deadline-exceeded - internal - resource-exhausted - unavailable
   core.List<core.String>? retryConditions;
 
   HttpRetryPolicy({
@@ -58106,21 +60043,22 @@ class HttpRetryPolicy {
 }
 
 class HttpRouteAction {
-  /// The specification for allowing client side cross-origin requests.
+  /// The specification for allowing client-side cross-origin requests.
   ///
-  /// Please see W3C Recommendation for Cross Origin Resource Sharing Not
-  /// supported when the URL map is bound to target gRPC proxy.
+  /// For more information about the W3C recommendation for cross-origin
+  /// resource sharing (CORS), see Fetch API Living Standard. Not supported when
+  /// the URL map is bound to a target gRPC proxy.
   CorsPolicy? corsPolicy;
 
   /// The specification for fault injection introduced into traffic to test the
   /// resiliency of clients to backend service failure.
   ///
   /// As part of fault injection, when clients send requests to a backend
-  /// service, delays can be introduced by Loadbalancer on a percentage of
-  /// requests before sending those request to the backend service. Similarly
-  /// requests from clients can be aborted by the Loadbalancer for a percentage
+  /// service, delays can be introduced by a load balancer on a percentage of
+  /// requests before sending those requests to the backend service. Similarly
+  /// requests from clients can be aborted by the load balancer for a percentage
   /// of requests. For the requests impacted by fault injection, timeout and
-  /// retry_policy will be ignored by clients that are configured with a
+  /// retry_policy is ignored by clients that are configured with a
   /// fault_injection_policy.
   HttpFaultInjection? faultInjectionPolicy;
 
@@ -58128,46 +60066,43 @@ class HttpRouteAction {
   /// route.
   ///
   /// Unlike the timeout field where the timeout duration starts from the time
-  /// the request has been fully processed (i.e. end-of-stream), the duration in
-  /// this field is computed from the beginning of the stream until the response
-  /// has been completely processed, including all retries. A stream that does
-  /// not complete in this duration is closed. If not specified, will use the
-  /// largest maxStreamDuration among all backend services associated with the
-  /// route. This field is only allowed if the Url map is used with backend
-  /// services with loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+  /// the request has been fully processed (known as *end-of-stream*), the
+  /// duration in this field is computed from the beginning of the stream until
+  /// the response has been processed, including all retries. A stream that does
+  /// not complete in this duration is closed. If not specified, this field uses
+  /// the maximum maxStreamDuration value among all backend services associated
+  /// with the route. This field is only allowed if the Url map is used with
+  /// backend services with loadBalancingScheme set to INTERNAL_SELF_MANAGED.
   Duration? maxStreamDuration;
 
   /// Specifies the policy on how requests intended for the route's backends are
   /// shadowed to a separate mirrored backend service.
   ///
-  /// Loadbalancer does not wait for responses from the shadow service. Prior to
-  /// sending traffic to the shadow service, the host / authority header is
-  /// suffixed with -shadow. Not supported when the URL map is bound to target
-  /// gRPC proxy that has validateForProxyless field set to true.
+  /// The load balancer does not wait for responses from the shadow service.
+  /// Before sending traffic to the shadow service, the host / authority header
+  /// is suffixed with -shadow. Not supported when the URL map is bound to a
+  /// target gRPC proxy that has the validateForProxyless field set to true.
   RequestMirrorPolicy? requestMirrorPolicy;
 
   /// Specifies the retry policy associated with this route.
-  ///
-  /// Not supported when the URL map is bound to target gRPC proxy that has
-  /// validateForProxyless field set to true.
   HttpRetryPolicy? retryPolicy;
 
   /// Specifies the timeout for the selected route.
   ///
   /// Timeout is computed from the time the request has been fully processed
-  /// (i.e. end-of-stream) up until the response has been completely processed.
-  /// Timeout includes all retries. If not specified, will use the largest
-  /// timeout among all backend services associated with the route. Not
-  /// supported when the URL map is bound to target gRPC proxy that has
+  /// (known as *end-of-stream*) up until the response has been processed.
+  /// Timeout includes all retries. If not specified, this field uses the
+  /// largest timeout among all backend services associated with the route. Not
+  /// supported when the URL map is bound to a target gRPC proxy that has
   /// validateForProxyless field set to true.
   Duration? timeout;
 
-  /// The spec to modify the URL of the request, prior to forwarding the request
+  /// The spec to modify the URL of the request, before forwarding the request
   /// to the matched service.
   ///
   /// urlRewrite is the only action supported in UrlMaps for external HTTP(S)
-  /// load balancers. Not supported when the URL map is bound to target gRPC
-  /// proxy that has validateForProxyless field set to true.
+  /// load balancers. Not supported when the URL map is bound to a target gRPC
+  /// proxy that has the validateForProxyless field set to true.
   UrlRewrite? urlRewrite;
 
   /// A list of weighted backend services to send traffic to when a route match
@@ -58176,7 +60111,7 @@ class HttpRouteAction {
   /// The weights determine the fraction of traffic that flows to their
   /// corresponding backend service. If all traffic needs to go to a single
   /// backend service, there must be one weightedBackendService with weight set
-  /// to a non-zero number. Once a backendService is identified and before
+  /// to a non-zero number. After a backend service is identified and before
   /// forwarding the request to the backend service, advanced routing actions
   /// such as URL rewrites and header transformations are applied depending on
   /// additional settings specified in this HttpRouteAction.
@@ -58246,8 +60181,8 @@ class HttpRouteAction {
       };
 }
 
-/// An HttpRouteRule specifies how to match an HTTP request and the
-/// corresponding routing action that load balancing proxies will perform.
+/// The HttpRouteRule setting specifies how to match an HTTP request and the
+/// corresponding routing action that load balancing proxies perform.
 class HttpRouteRule {
   /// The short description conveying the intent of this routeRule.
   ///
@@ -58257,12 +60192,12 @@ class HttpRouteRule {
   /// Specifies changes to request and response headers that need to take effect
   /// for the selected backendService.
   ///
-  /// The headerAction specified here are applied before the matching
+  /// The headerAction value specified here is applied before the matching
   /// pathMatchers\[\].headerAction and after
   /// pathMatchers\[\].routeRules\[\].routeAction.weightedBackendService.backendServiceWeightAction\[\].headerAction
-  /// Note that headerAction is not supported for Loadbalancers that have their
+  /// HeaderAction is not supported for load balancers that have their
   /// loadBalancingScheme set to EXTERNAL. Not supported when the URL map is
-  /// bound to target gRPC proxy that has validateForProxyless field set to
+  /// bound to a target gRPC proxy that has validateForProxyless field set to
   /// true.
   HttpHeaderAction? headerAction;
 
@@ -58276,13 +60211,13 @@ class HttpRouteRule {
   core.List<HttpRouteRuleMatch>? matchRules;
 
   /// For routeRules within a given pathMatcher, priority determines the order
-  /// in which load balancer will interpret routeRules.
+  /// in which a load balancer interprets routeRules.
   ///
   /// RouteRules are evaluated in order of priority, from the lowest to highest
   /// number. The priority of a rule decreases as its number increases (1, 2, 3,
   /// N+1). The first rule that matches the request is applied. You cannot
   /// configure two or more routeRules with the same priority. Priority for each
-  /// rule must be set to a number between 0 and 2147483647 inclusive. Priority
+  /// rule must be set to a number from 0 to 2147483647 inclusive. Priority
   /// numbers can have gaps, which enable you to add or remove rules in the
   /// future without affecting the rest of the rules. For example, 1, 2, 3, 4,
   /// 5, 9, 12, 16 is a valid series of priority numbers to which you could add
@@ -58291,23 +60226,24 @@ class HttpRouteRule {
   core.int? priority;
 
   /// In response to a matching matchRule, the load balancer performs advanced
-  /// routing actions like URL rewrites, header transformations, etc.
+  /// routing actions, such as URL rewrites and header transformations, before
+  /// forwarding the request to the selected backend.
   ///
-  /// prior to forwarding the request to the selected backend. If routeAction
-  /// specifies any weightedBackendServices, service must not be set. Conversely
-  /// if service is set, routeAction cannot contain any weightedBackendServices.
-  /// Only one of urlRedirect, service or routeAction.weightedBackendService
-  /// must be set. UrlMaps for external HTTP(S) load balancers support only the
-  /// urlRewrite action within a routeRule's routeAction.
+  /// If routeAction specifies any weightedBackendServices, service must not be
+  /// set. Conversely if service is set, routeAction cannot contain any
+  /// weightedBackendServices. Only one of urlRedirect, service or
+  /// routeAction.weightedBackendService must be set. UrlMaps for external
+  /// HTTP(S) load balancers support only the urlRewrite action within a route
+  /// rule's routeAction.
   HttpRouteAction? routeAction;
 
   /// The full or partial URL of the backend service resource to which traffic
   /// is directed if this rule is matched.
   ///
-  /// If routeAction is additionally specified, advanced routing actions like
-  /// URL Rewrites, etc. take effect prior to sending the request to the
-  /// backend. However, if service is specified, routeAction cannot contain any
-  /// weightedBackendService s. Conversely, if routeAction specifies any
+  /// If routeAction is also specified, advanced routing actions, such as URL
+  /// rewrites, take effect before sending the request to the backend. However,
+  /// if service is specified, routeAction cannot contain any
+  /// weightedBackendServices. Conversely, if routeAction specifies any
   /// weightedBackendServices, service must not be specified. Only one of
   /// urlRedirect, service or routeAction.weightedBackendService must be set.
   core.String? service;
@@ -58316,7 +60252,7 @@ class HttpRouteRule {
   /// urlRedirect.
   ///
   /// If urlRedirect is specified, service or routeAction must not be set. Not
-  /// supported when the URL map is bound to target gRPC proxy.
+  /// supported when the URL map is bound to a target gRPC proxy.
   HttpRedirectAction? urlRedirect;
 
   HttpRouteRule({
@@ -58380,8 +60316,8 @@ class HttpRouteRuleMatch {
   /// exactly match the value specified in fullPathMatch after removing any
   /// query parameters and anchor that may be part of the original URL.
   ///
-  /// fullPathMatch must be between 1 and 1024 characters. Only one of
-  /// prefixMatch, fullPathMatch or regexMatch must be specified.
+  /// fullPathMatch must be from 1 to 1024 characters. Only one of prefixMatch,
+  /// fullPathMatch or regexMatch must be specified.
   core.String? fullPathMatch;
 
   /// Specifies a list of header match criteria, all of which must match
@@ -58391,32 +60327,32 @@ class HttpRouteRuleMatch {
   /// Specifies that prefixMatch and fullPathMatch matches are case sensitive.
   ///
   /// The default value is false. ignoreCase must not be used with regexMatch.
-  /// Not supported when the URL map is bound to target gRPC proxy.
+  /// Not supported when the URL map is bound to a target gRPC proxy.
   core.bool? ignoreCase;
 
-  /// Opaque filter criteria used by Loadbalancer to restrict routing
+  /// Opaque filter criteria used by the load balancer to restrict routing
   /// configuration to a limited set of xDS compliant clients.
   ///
-  /// In their xDS requests to Loadbalancer, xDS clients present node metadata.
-  /// When there is a match, the relevant routing configuration is made
-  /// available to those proxies. For each metadataFilter in this list, if its
-  /// filterMatchCriteria is set to MATCH_ANY, at least one of the filterLabels
-  /// must match the corresponding label provided in the metadata. If its
-  /// filterMatchCriteria is set to MATCH_ALL, then all of its filterLabels must
-  /// match with corresponding labels provided in the metadata. If multiple
-  /// metadataFilters are specified, all of them need to be satisfied in order
-  /// to be considered a match. metadataFilters specified here will be applied
-  /// after those specified in ForwardingRule that refers to the UrlMap this
-  /// HttpRouteRuleMatch belongs to. metadataFilters only applies to
-  /// Loadbalancers that have their loadBalancingScheme set to
-  /// INTERNAL_SELF_MANAGED. Not supported when the URL map is bound to target
-  /// gRPC proxy that has validateForProxyless field set to true.
+  /// In their xDS requests to the load balancer, xDS clients present node
+  /// metadata. When there is a match, the relevant routing configuration is
+  /// made available to those proxies. For each metadataFilter in this list, if
+  /// its filterMatchCriteria is set to MATCH_ANY, at least one of the
+  /// filterLabels must match the corresponding label provided in the metadata.
+  /// If its filterMatchCriteria is set to MATCH_ALL, then all of its
+  /// filterLabels must match with corresponding labels provided in the
+  /// metadata. If multiple metadata filters are specified, all of them need to
+  /// be satisfied in order to be considered a match. metadataFilters specified
+  /// here is applied after those specified in ForwardingRule that refers to the
+  /// UrlMap this HttpRouteRuleMatch belongs to. metadataFilters only applies to
+  /// load balancers that have loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+  /// Not supported when the URL map is bound to a target gRPC proxy that has
+  /// validateForProxyless field set to true.
   core.List<MetadataFilter>? metadataFilters;
 
   /// For satisfying the matchRule condition, the request's path must begin with
   /// the specified prefixMatch.
   ///
-  /// prefixMatch must begin with a /. The value must be between 1 and 1024
+  /// prefixMatch must begin with a /. The value must be from 1 to 1024
   /// characters. Only one of prefixMatch, fullPathMatch or regexMatch must be
   /// specified.
   core.String? prefixMatch;
@@ -58424,17 +60360,16 @@ class HttpRouteRuleMatch {
   /// Specifies a list of query parameter match criteria, all of which must
   /// match corresponding query parameters in the request.
   ///
-  /// Not supported when the URL map is bound to target gRPC proxy.
+  /// Not supported when the URL map is bound to a target gRPC proxy.
   core.List<HttpQueryParameterMatch>? queryParameterMatches;
 
   /// For satisfying the matchRule condition, the path of the request must
   /// satisfy the regular expression specified in regexMatch after removing any
   /// query parameters and anchor supplied with the original URL.
   ///
-  /// For regular expression grammar please see
-  /// github.com/google/re2/wiki/Syntax Only one of prefixMatch, fullPathMatch
-  /// or regexMatch must be specified. Note that regexMatch only applies to
-  /// Loadbalancers that have their loadBalancingScheme set to
+  /// For more information about regular expression syntax, see Syntax. Only one
+  /// of prefixMatch, fullPathMatch or regexMatch must be specified. regexMatch
+  /// only applies to load balancers that have loadBalancingScheme set to
   /// INTERNAL_SELF_MANAGED.
   core.String? regexMatch;
 
@@ -58943,8 +60878,8 @@ class Image {
 
   /// A list of features to enable on the guest operating system.
   ///
-  /// Applicable only for bootable images. Read Enabling guest operating system
-  /// features to see a list of available options.
+  /// Applicable only for bootable images. To see a list of available options,
+  /// see the guestOSfeatures\[\].type parameter.
   core.List<GuestOsFeature>? guestOsFeatures;
 
   /// The unique identifier for the resource.
@@ -59765,6 +61700,7 @@ class Instance {
   /// services, such as connecting to the internet. Multiple interfaces are
   /// supported per instance.
   core.List<NetworkInterface>? networkInterfaces;
+  NetworkPerformanceConfig? networkPerformanceConfig;
 
   /// The private IPv6 google access type for the VM.
   ///
@@ -59811,6 +61747,13 @@ class Instance {
   core.List<ServiceAccount>? serviceAccounts;
   ShieldedInstanceConfig? shieldedInstanceConfig;
   ShieldedInstanceIntegrityPolicy? shieldedInstanceIntegrityPolicy;
+
+  /// Source machine image
+  core.String? sourceMachineImage;
+
+  /// Source machine image encryption key when creating an instance from a
+  /// machine image.
+  CustomerEncryptionKey? sourceMachineImageEncryptionKey;
 
   /// Whether a VM has been restricted for start because Compute Engine has
   /// detected suspicious activity.
@@ -59889,6 +61832,7 @@ class Instance {
     this.minCpuPlatform,
     this.name,
     this.networkInterfaces,
+    this.networkPerformanceConfig,
     this.privateIpv6GoogleAccess,
     this.reservationAffinity,
     this.resourcePolicies,
@@ -59898,6 +61842,8 @@ class Instance {
     this.serviceAccounts,
     this.shieldedInstanceConfig,
     this.shieldedInstanceIntegrityPolicy,
+    this.sourceMachineImage,
+    this.sourceMachineImageEncryptionKey,
     this.startRestricted,
     this.status,
     this.statusMessage,
@@ -59994,6 +61940,12 @@ class Instance {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          networkPerformanceConfig:
+              _json.containsKey('networkPerformanceConfig')
+                  ? NetworkPerformanceConfig.fromJson(
+                      _json['networkPerformanceConfig']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           privateIpv6GoogleAccess: _json.containsKey('privateIpv6GoogleAccess')
               ? _json['privateIpv6GoogleAccess'] as core.String
               : null,
@@ -60030,6 +61982,15 @@ class Instance {
               _json.containsKey('shieldedInstanceIntegrityPolicy')
                   ? ShieldedInstanceIntegrityPolicy.fromJson(
                       _json['shieldedInstanceIntegrityPolicy']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          sourceMachineImage: _json.containsKey('sourceMachineImage')
+              ? _json['sourceMachineImage'] as core.String
+              : null,
+          sourceMachineImageEncryptionKey:
+              _json.containsKey('sourceMachineImageEncryptionKey')
+                  ? CustomerEncryptionKey.fromJson(
+                      _json['sourceMachineImageEncryptionKey']
                           as core.Map<core.String, core.dynamic>)
                   : null,
           startRestricted: _json.containsKey('startRestricted')
@@ -60078,6 +62039,8 @@ class Instance {
         if (minCpuPlatform != null) 'minCpuPlatform': minCpuPlatform!,
         if (name != null) 'name': name!,
         if (networkInterfaces != null) 'networkInterfaces': networkInterfaces!,
+        if (networkPerformanceConfig != null)
+          'networkPerformanceConfig': networkPerformanceConfig!,
         if (privateIpv6GoogleAccess != null)
           'privateIpv6GoogleAccess': privateIpv6GoogleAccess!,
         if (reservationAffinity != null)
@@ -60091,6 +62054,10 @@ class Instance {
           'shieldedInstanceConfig': shieldedInstanceConfig!,
         if (shieldedInstanceIntegrityPolicy != null)
           'shieldedInstanceIntegrityPolicy': shieldedInstanceIntegrityPolicy!,
+        if (sourceMachineImage != null)
+          'sourceMachineImage': sourceMachineImage!,
+        if (sourceMachineImageEncryptionKey != null)
+          'sourceMachineImageEncryptionKey': sourceMachineImageEncryptionKey!,
         if (startRestricted != null) 'startRestricted': startRestricted!,
         if (status != null) 'status': status!,
         if (statusMessage != null) 'statusMessage': statusMessage!,
@@ -62031,6 +63998,22 @@ class InstanceGroupManagerUpdatePolicy {
   /// - "RESTART" : Every instance will be restarted.
   core.String? minimalAction;
 
+  /// Most disruptive action that is allowed to be taken on an instance.
+  ///
+  /// You can specify either NONE to forbid any actions, REFRESH to allow
+  /// actions that do not need instance restart, RESTART to allow actions that
+  /// can be applied without instance replacing or REPLACE to allow all possible
+  /// actions. If the Updater determines that the minimal update action needed
+  /// is more disruptive than most disruptive allowed action you specify it will
+  /// not perform the update at all.
+  /// Possible string values are:
+  /// - "NONE" : Do not perform any action.
+  /// - "REFRESH" : Updates applied in runtime, instances will not be disrupted.
+  /// - "REPLACE" : Old instances will be deleted. New instances will be created
+  /// from the target template.
+  /// - "RESTART" : Every instance will be restarted.
+  core.String? mostDisruptiveAllowedAction;
+
   /// What action should be used to replace instances.
   ///
   /// See minimal_action.REPLACE
@@ -62061,6 +64044,7 @@ class InstanceGroupManagerUpdatePolicy {
     this.maxSurge,
     this.maxUnavailable,
     this.minimalAction,
+    this.mostDisruptiveAllowedAction,
     this.replacementMethod,
     this.type,
   });
@@ -62082,6 +64066,10 @@ class InstanceGroupManagerUpdatePolicy {
           minimalAction: _json.containsKey('minimalAction')
               ? _json['minimalAction'] as core.String
               : null,
+          mostDisruptiveAllowedAction:
+              _json.containsKey('mostDisruptiveAllowedAction')
+                  ? _json['mostDisruptiveAllowedAction'] as core.String
+                  : null,
           replacementMethod: _json.containsKey('replacementMethod')
               ? _json['replacementMethod'] as core.String
               : null,
@@ -62094,6 +64082,8 @@ class InstanceGroupManagerUpdatePolicy {
         if (maxSurge != null) 'maxSurge': maxSurge!,
         if (maxUnavailable != null) 'maxUnavailable': maxUnavailable!,
         if (minimalAction != null) 'minimalAction': minimalAction!,
+        if (mostDisruptiveAllowedAction != null)
+          'mostDisruptiveAllowedAction': mostDisruptiveAllowedAction!,
         if (replacementMethod != null) 'replacementMethod': replacementMethod!,
         if (type != null) 'type': type!,
       };
@@ -63899,6 +65889,8 @@ class InstanceMoveRequest {
 
 class InstanceProperties {
   /// Controls for advanced machine-related behavior features.
+  ///
+  /// Note that for MachineImage, this is not supported yet.
   AdvancedMachineFeatures? advancedMachineFeatures;
 
   /// Enables instances created based on these properties to send packets with
@@ -63911,6 +65903,8 @@ class InstanceProperties {
   core.bool? canIpForward;
 
   /// Specifies the Confidential Instance options.
+  ///
+  /// Note that for MachineImage, this is not supported yet.
   ConfidentialInstanceConfig? confidentialInstanceConfig;
 
   /// An optional text description for the instances that are created from these
@@ -63950,9 +65944,13 @@ class InstanceProperties {
   /// An array of network access configurations for this interface.
   core.List<NetworkInterface>? networkInterfaces;
 
+  /// Note that for MachineImage, this is not supported yet.
+  NetworkPerformanceConfig? networkPerformanceConfig;
+
   /// The private IPv6 google access type for VMs.
   ///
-  /// If not specified, use INHERIT_FROM_SUBNETWORK as default.
+  /// If not specified, use INHERIT_FROM_SUBNETWORK as default. Note that for
+  /// MachineImage, this is not supported yet.
   /// Possible string values are:
   /// - "ENABLE_BIDIRECTIONAL_ACCESS_TO_GOOGLE" : Bidirectional private IPv6
   /// access to/from Google services. If specified, the subnetwork who is
@@ -63967,10 +65965,14 @@ class InstanceProperties {
   core.String? privateIpv6GoogleAccess;
 
   /// Specifies the reservations that instances can consume from.
+  ///
+  /// Note that for MachineImage, this is not supported yet.
   ReservationAffinity? reservationAffinity;
 
   /// Resource policies (names, not ULRs) applied to instances created from
   /// these properties.
+  ///
+  /// Note that for MachineImage, this is not supported yet.
   core.List<core.String>? resourcePolicies;
 
   /// Specifies the scheduling options for the instances that are created from
@@ -63983,6 +65985,8 @@ class InstanceProperties {
   /// that are created from these properties. Use metadata queries to obtain the
   /// access tokens for these instances.
   core.List<ServiceAccount>? serviceAccounts;
+
+  /// Note that for MachineImage, this is not supported yet.
   ShieldedInstanceConfig? shieldedInstanceConfig;
 
   /// A list of tags to apply to the instances that are created from these
@@ -64005,6 +66009,7 @@ class InstanceProperties {
     this.metadata,
     this.minCpuPlatform,
     this.networkInterfaces,
+    this.networkPerformanceConfig,
     this.privateIpv6GoogleAccess,
     this.reservationAffinity,
     this.resourcePolicies,
@@ -64069,6 +66074,12 @@ class InstanceProperties {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          networkPerformanceConfig:
+              _json.containsKey('networkPerformanceConfig')
+                  ? NetworkPerformanceConfig.fromJson(
+                      _json['networkPerformanceConfig']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           privateIpv6GoogleAccess: _json.containsKey('privateIpv6GoogleAccess')
               ? _json['privateIpv6GoogleAccess'] as core.String
               : null,
@@ -64115,6 +66126,8 @@ class InstanceProperties {
         if (metadata != null) 'metadata': metadata!,
         if (minCpuPlatform != null) 'minCpuPlatform': minCpuPlatform!,
         if (networkInterfaces != null) 'networkInterfaces': networkInterfaces!,
+        if (networkPerformanceConfig != null)
+          'networkPerformanceConfig': networkPerformanceConfig!,
         if (privateIpv6GoogleAccess != null)
           'privateIpv6GoogleAccess': privateIpv6GoogleAccess!,
         if (reservationAffinity != null)
@@ -65403,9 +67416,12 @@ class InterconnectAttachment {
   /// Output only.
   core.String? customerRouterIpAddress;
 
-  /// Dataplane version for this InterconnectAttachment.
+  /// \[Output only for types PARTNER and DEDICATED.
   ///
-  /// Output only.
+  /// Not present for PARTNER_PROVIDER.\] Dataplane version for this
+  /// InterconnectAttachment. This field is only present for Dataplane version 2
+  /// and higher. Absence of this field in the API output indicates that the
+  /// Dataplane is version 1.
   core.int? dataplaneVersion;
 
   /// An optional description of this resource.
@@ -68437,6 +70453,453 @@ class LogConfigDataAccessOptions {
       };
 }
 
+/// Represents a machine image resource.
+///
+/// A machine image is a Compute Engine resource that stores all the
+/// configuration, metadata, permissions, and data from one or more disks
+/// required to create a Virtual machine (VM) instance. For more information,
+/// see Machine images.
+class MachineImage {
+  /// The creation timestamp for this machine image in RFC3339 text format.
+  ///
+  /// Output only.
+  core.String? creationTimestamp;
+
+  /// An optional description of this resource.
+  ///
+  /// Provide this property when you create the resource.
+  core.String? description;
+
+  /// \[Input Only\] Whether to attempt an application consistent machine image
+  /// by informing the OS to prepare for the snapshot process.
+  ///
+  /// Currently only supported on Windows instances using the Volume Shadow Copy
+  /// Service (VSS).
+  core.bool? guestFlush;
+
+  /// A unique identifier for this machine image.
+  ///
+  /// The server defines this identifier.
+  ///
+  /// Output only.
+  core.String? id;
+
+  /// Properties of source instance
+  ///
+  /// Output only.
+  InstanceProperties? instanceProperties;
+
+  /// The resource type, which is always compute#machineImage for machine image.
+  ///
+  /// Output only.
+  core.String? kind;
+
+  /// Encrypts the machine image using a customer-supplied encryption key.
+  ///
+  /// After you encrypt a machine image using a customer-supplied key, you must
+  /// provide the same key if you use the machine image later. For example, you
+  /// must provide the encryption key when you create an instance from the
+  /// encrypted machine image in a future request. Customer-supplied encryption
+  /// keys do not protect access to metadata of the machine image. If you do not
+  /// provide an encryption key when creating the machine image, then the
+  /// machine image will be encrypted using an automatically generated key and
+  /// you do not need to provide a key to use the machine image later.
+  CustomerEncryptionKey? machineImageEncryptionKey;
+
+  /// Name of the resource; provided by the client when the resource is created.
+  ///
+  /// The name must be 1-63 characters long, and comply with RFC1035.
+  /// Specifically, the name must be 1-63 characters long and match the regular
+  /// expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character
+  /// must be a lowercase letter, and all following characters must be a dash,
+  /// lowercase letter, or digit, except the last character, which cannot be a
+  /// dash.
+  core.String? name;
+
+  /// Reserved for future use.
+  ///
+  /// Output only.
+  core.bool? satisfiesPzs;
+
+  /// An array of Machine Image specific properties for disks attached to the
+  /// source instance
+  core.List<SavedDisk>? savedDisks;
+
+  /// The URL for this machine image.
+  ///
+  /// The server defines this URL.
+  ///
+  /// Output only.
+  core.String? selfLink;
+
+  /// \[Input Only\] The customer-supplied encryption key of the disks attached
+  /// to the source instance.
+  ///
+  /// Required if the source disk is protected by a customer-supplied encryption
+  /// key.
+  core.List<SourceDiskEncryptionKey>? sourceDiskEncryptionKeys;
+
+  /// The source instance used to create the machine image.
+  ///
+  /// You can provide this as a partial or full URL to the resource. For
+  /// example, the following are valid values: -
+  /// https://www.googleapis.com/compute/v1/projects/project/zones/zone
+  /// /instances/instance - projects/project/zones/zone/instances/instance
+  core.String? sourceInstance;
+
+  /// DEPRECATED: Please use instance_properties instead for source instance
+  /// related properties.
+  ///
+  /// New properties will not be added to this field.
+  ///
+  /// Output only.
+  SourceInstanceProperties? sourceInstanceProperties;
+
+  /// The status of the machine image.
+  ///
+  /// One of the following values: INVALID, CREATING, READY, DELETING, and
+  /// UPLOADING.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "CREATING"
+  /// - "DELETING"
+  /// - "INVALID"
+  /// - "READY"
+  /// - "UPLOADING"
+  core.String? status;
+
+  /// The regional or multi-regional Cloud Storage bucket location where the
+  /// machine image is stored.
+  core.List<core.String>? storageLocations;
+
+  /// Total size of the storage used by the machine image.
+  ///
+  /// Output only.
+  core.String? totalStorageBytes;
+
+  MachineImage({
+    this.creationTimestamp,
+    this.description,
+    this.guestFlush,
+    this.id,
+    this.instanceProperties,
+    this.kind,
+    this.machineImageEncryptionKey,
+    this.name,
+    this.satisfiesPzs,
+    this.savedDisks,
+    this.selfLink,
+    this.sourceDiskEncryptionKeys,
+    this.sourceInstance,
+    this.sourceInstanceProperties,
+    this.status,
+    this.storageLocations,
+    this.totalStorageBytes,
+  });
+
+  MachineImage.fromJson(core.Map _json)
+      : this(
+          creationTimestamp: _json.containsKey('creationTimestamp')
+              ? _json['creationTimestamp'] as core.String
+              : null,
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          guestFlush: _json.containsKey('guestFlush')
+              ? _json['guestFlush'] as core.bool
+              : null,
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          instanceProperties: _json.containsKey('instanceProperties')
+              ? InstanceProperties.fromJson(_json['instanceProperties']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          machineImageEncryptionKey:
+              _json.containsKey('machineImageEncryptionKey')
+                  ? CustomerEncryptionKey.fromJson(
+                      _json['machineImageEncryptionKey']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          satisfiesPzs: _json.containsKey('satisfiesPzs')
+              ? _json['satisfiesPzs'] as core.bool
+              : null,
+          savedDisks: _json.containsKey('savedDisks')
+              ? (_json['savedDisks'] as core.List)
+                  .map((value) => SavedDisk.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          selfLink: _json.containsKey('selfLink')
+              ? _json['selfLink'] as core.String
+              : null,
+          sourceDiskEncryptionKeys:
+              _json.containsKey('sourceDiskEncryptionKeys')
+                  ? (_json['sourceDiskEncryptionKeys'] as core.List)
+                      .map((value) => SourceDiskEncryptionKey.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                      .toList()
+                  : null,
+          sourceInstance: _json.containsKey('sourceInstance')
+              ? _json['sourceInstance'] as core.String
+              : null,
+          sourceInstanceProperties:
+              _json.containsKey('sourceInstanceProperties')
+                  ? SourceInstanceProperties.fromJson(
+                      _json['sourceInstanceProperties']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          status: _json.containsKey('status')
+              ? _json['status'] as core.String
+              : null,
+          storageLocations: _json.containsKey('storageLocations')
+              ? (_json['storageLocations'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          totalStorageBytes: _json.containsKey('totalStorageBytes')
+              ? _json['totalStorageBytes'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (creationTimestamp != null) 'creationTimestamp': creationTimestamp!,
+        if (description != null) 'description': description!,
+        if (guestFlush != null) 'guestFlush': guestFlush!,
+        if (id != null) 'id': id!,
+        if (instanceProperties != null)
+          'instanceProperties': instanceProperties!,
+        if (kind != null) 'kind': kind!,
+        if (machineImageEncryptionKey != null)
+          'machineImageEncryptionKey': machineImageEncryptionKey!,
+        if (name != null) 'name': name!,
+        if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
+        if (savedDisks != null) 'savedDisks': savedDisks!,
+        if (selfLink != null) 'selfLink': selfLink!,
+        if (sourceDiskEncryptionKeys != null)
+          'sourceDiskEncryptionKeys': sourceDiskEncryptionKeys!,
+        if (sourceInstance != null) 'sourceInstance': sourceInstance!,
+        if (sourceInstanceProperties != null)
+          'sourceInstanceProperties': sourceInstanceProperties!,
+        if (status != null) 'status': status!,
+        if (storageLocations != null) 'storageLocations': storageLocations!,
+        if (totalStorageBytes != null) 'totalStorageBytes': totalStorageBytes!,
+      };
+}
+
+class MachineImageListWarningData {
+  /// A key that provides more detail on the warning being returned.
+  ///
+  /// For example, for warnings where there are no results in a list request for
+  /// a particular zone, this key might be scope and the key value might be the
+  /// zone name. Other examples might be a key indicating a deprecated resource
+  /// and a suggested replacement, or a warning about invalid network settings
+  /// (for example, if an instance attempts to perform IP forwarding but is not
+  /// enabled for IP forwarding).
+  ///
+  /// Output only.
+  core.String? key;
+
+  /// A warning data value corresponding to the key.
+  ///
+  /// Output only.
+  core.String? value;
+
+  MachineImageListWarningData({
+    this.key,
+    this.value,
+  });
+
+  MachineImageListWarningData.fromJson(core.Map _json)
+      : this(
+          key: _json.containsKey('key') ? _json['key'] as core.String : null,
+          value:
+              _json.containsKey('value') ? _json['value'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (key != null) 'key': key!,
+        if (value != null) 'value': value!,
+      };
+}
+
+/// Informational warning message.
+///
+/// Output only.
+class MachineImageListWarning {
+  /// A warning code, if applicable.
+  ///
+  /// For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no
+  /// results in the response.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED" : Warning about failed cleanup of transient changes
+  /// made by a failed operation.
+  /// - "DEPRECATED_RESOURCE_USED" : A link to a deprecated resource was
+  /// created.
+  /// - "DEPRECATED_TYPE_USED" : When deploying and at least one of the
+  /// resources has a type marked as deprecated
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE" : The user created a boot disk that
+  /// is larger than image size.
+  /// - "EXPERIMENTAL_TYPE_USED" : When deploying and at least one of the
+  /// resources has a type marked as experimental
+  /// - "EXTERNAL_API_WARNING" : Warning that is present in an external api call
+  /// - "FIELD_VALUE_OVERRIDEN" : Warning that value of a field has been
+  /// overridden. Deprecated unused field.
+  /// - "INJECTED_KERNELS_DEPRECATED" : The operation involved use of an
+  /// injected kernel, which is deprecated.
+  /// - "LARGE_DEPLOYMENT_WARNING" : When deploying a deployment with a
+  /// exceedingly large number of resources
+  /// - "MISSING_TYPE_DEPENDENCY" : A resource depends on a missing type
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED" : The route's nextHopIp address is not
+  /// assigned to an instance on the network.
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD" : The route's next hop instance cannot ip
+  /// forward.
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND" : The route's nextHopInstance URL refers
+  /// to an instance that does not exist.
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK" : The route's nextHopInstance URL
+  /// refers to an instance that is not on the same network as the route.
+  /// - "NEXT_HOP_NOT_RUNNING" : The route's next hop instance does not have a
+  /// status of RUNNING.
+  /// - "NOT_CRITICAL_ERROR" : Error which is not critical. We decided to
+  /// continue the process despite the mentioned error.
+  /// - "NO_RESULTS_ON_PAGE" : No results are present on a particular list page.
+  /// - "PARTIAL_SUCCESS" : Success is reported, but some results may be missing
+  /// due to errors
+  /// - "REQUIRED_TOS_AGREEMENT" : The user attempted to use a resource that
+  /// requires a TOS they have not accepted.
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING" : Warning that a resource is
+  /// in use.
+  /// - "RESOURCE_NOT_DELETED" : One or more of the resources set to auto-delete
+  /// could not be deleted because they were in use.
+  /// - "SCHEMA_VALIDATION_IGNORED" : When a resource schema validation is
+  /// ignored.
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE" : Instance template used in instance
+  /// group manager is valid as such, but its application does not make a lot of
+  /// sense, because it allows only single instance in instance group.
+  /// - "UNDECLARED_PROPERTIES" : When undeclared properties in the schema are
+  /// present
+  /// - "UNREACHABLE" : A given scope cannot be reached.
+  core.String? code;
+
+  /// Metadata about this warning in key: value format.
+  ///
+  /// For example: "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
+  ///
+  /// Output only.
+  core.List<MachineImageListWarningData>? data;
+
+  /// A human-readable description of the warning code.
+  ///
+  /// Output only.
+  core.String? message;
+
+  MachineImageListWarning({
+    this.code,
+    this.data,
+    this.message,
+  });
+
+  MachineImageListWarning.fromJson(core.Map _json)
+      : this(
+          code: _json.containsKey('code') ? _json['code'] as core.String : null,
+          data: _json.containsKey('data')
+              ? (_json['data'] as core.List)
+                  .map((value) => MachineImageListWarningData.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          message: _json.containsKey('message')
+              ? _json['message'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (code != null) 'code': code!,
+        if (data != null) 'data': data!,
+        if (message != null) 'message': message!,
+      };
+}
+
+/// A list of machine images.
+class MachineImageList {
+  /// Unique identifier for the resource; defined by the server.
+  ///
+  /// Output only.
+  core.String? id;
+
+  /// A list of MachineImage resources.
+  core.List<MachineImage>? items;
+
+  /// The resource type, which is always compute#machineImagesListResponse for
+  /// machine image lists.
+  ///
+  /// Output only.
+  core.String? kind;
+
+  /// This token allows you to get the next page of results for list requests.
+  ///
+  /// If the number of results is larger than maxResults, use the nextPageToken
+  /// as a value for the query parameter pageToken in the next list request.
+  /// Subsequent list requests will have their own nextPageToken to continue
+  /// paging through the results.
+  ///
+  /// Output only.
+  core.String? nextPageToken;
+
+  /// Server-defined URL for this resource.
+  ///
+  /// Output only.
+  core.String? selfLink;
+
+  /// Informational warning message.
+  ///
+  /// Output only.
+  MachineImageListWarning? warning;
+
+  MachineImageList({
+    this.id,
+    this.items,
+    this.kind,
+    this.nextPageToken,
+    this.selfLink,
+    this.warning,
+  });
+
+  MachineImageList.fromJson(core.Map _json)
+      : this(
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          items: _json.containsKey('items')
+              ? (_json['items'] as core.List)
+                  .map((value) => MachineImage.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          selfLink: _json.containsKey('selfLink')
+              ? _json['selfLink'] as core.String
+              : null,
+          warning: _json.containsKey('warning')
+              ? MachineImageListWarning.fromJson(
+                  _json['warning'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (id != null) 'id': id!,
+        if (items != null) 'items': items!,
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (selfLink != null) 'selfLink': selfLink!,
+        if (warning != null) 'warning': warning!,
+      };
+}
+
 class MachineTypeAccelerators {
   /// Number of accelerator cards exposed to the guest.
   core.int? guestAcceleratorCount;
@@ -69739,31 +72202,31 @@ class Metadata {
       };
 }
 
-/// Opaque filter criteria used by loadbalancers to restrict routing
-/// configuration to a limited set of loadbalancing proxies.
+/// Opaque filter criteria used by load balancers to restrict routing
+/// configuration to a limited set of load balancing proxies.
 ///
-/// Proxies and sidecars involved in loadbalancing would typically present
-/// metadata to the loadbalancers which need to match criteria specified here.
+/// Proxies and sidecars involved in load balancing would typically present
+/// metadata to the load balancers that need to match criteria specified here.
 /// If a match takes place, the relevant configuration is made available to
 /// those proxies. For each metadataFilter in this list, if its
 /// filterMatchCriteria is set to MATCH_ANY, at least one of the filterLabels
 /// must match the corresponding label provided in the metadata. If its
 /// filterMatchCriteria is set to MATCH_ALL, then all of its filterLabels must
 /// match with corresponding labels provided in the metadata. An example for
-/// using metadataFilters would be: if loadbalancing involves Envoys, they will
-/// only receive routing configuration when values in metadataFilters match
-/// values supplied in of their XDS requests to loadbalancers.
+/// using metadataFilters would be: if load balancing involves Envoys, they
+/// receive routing configuration when values in metadataFilters match values
+/// supplied in of their XDS requests to loadbalancers.
 class MetadataFilter {
   /// The list of label value pairs that must match labels in the provided
   /// metadata based on filterMatchCriteria This list must not be empty and can
   /// have at the most 64 entries.
   core.List<MetadataFilterLabelMatch>? filterLabels;
 
-  /// Specifies how individual filterLabel matches within the list of
-  /// filterLabels contribute towards the overall metadataFilter match.
+  /// Specifies how individual filter label matches within the list of
+  /// filterLabels and contributes toward the overall metadataFilter match.
   ///
-  /// Supported values are: - MATCH_ANY: At least one of the filterLabels must
-  /// have a matching label in the provided metadata. - MATCH_ALL: All
+  /// Supported values are: - MATCH_ANY: at least one of the filterLabels must
+  /// have a matching label in the provided metadata. - MATCH_ALL: all
   /// filterLabels must have matching labels in the provided metadata.
   /// Possible string values are:
   /// - "MATCH_ALL" : Specifies that all filterLabels must match for the
@@ -69800,7 +72263,7 @@ class MetadataFilter {
 }
 
 /// MetadataFilter label name value pairs that are expected to match
-/// corresponding labels presented as metadata to the loadbalancer.
+/// corresponding labels presented as metadata to the load balancer.
 class MetadataFilterLabelMatch {
   /// Name of metadata label.
   ///
@@ -71454,13 +73917,15 @@ class NetworkInterface {
   /// Output only.
   core.String? name;
 
-  /// URL of the network resource for this instance.
+  /// URL of the VPC network resource for this instance.
   ///
   /// When creating an instance, if neither the network nor the subnetwork is
-  /// specified, the default network global/networks/default is used; if the
-  /// network is not specified but the subnetwork is specified, the network is
-  /// inferred. If you specify this property, you can specify the network as a
-  /// full or partial URL. For example, the following are all valid URLs: -
+  /// specified, the default network global/networks/default is used. If the
+  /// selected project doesn't have the default network, you must specify a
+  /// network or subnet. If the network is not specified but the subnetwork is
+  /// specified, the network is inferred. If you specify this property, you can
+  /// specify the network as a full or partial URL. For example, the following
+  /// are all valid URLs: -
   /// https://www.googleapis.com/compute/v1/projects/project/global/networks/
   /// network - projects/project/global/networks/network -
   /// global/networks/default
@@ -71835,6 +74300,8 @@ class NetworkPeering {
   core.bool? exchangeSubnetRoutes;
 
   /// Whether to export the custom routes to peer network.
+  ///
+  /// The default value is false.
   core.bool? exportCustomRoutes;
 
   /// Whether subnet routes with public IP range are exported.
@@ -71845,6 +74312,8 @@ class NetworkPeering {
   core.bool? exportSubnetRoutesWithPublicIp;
 
   /// Whether to import the custom routes from peer network.
+  ///
+  /// The default value is false.
   core.bool? importCustomRoutes;
 
   /// Whether subnet routes with public IP range are imported.
@@ -71958,6 +74427,31 @@ class NetworkPeering {
         if (peerMtu != null) 'peerMtu': peerMtu!,
         if (state != null) 'state': state!,
         if (stateDetails != null) 'stateDetails': stateDetails!,
+      };
+}
+
+class NetworkPerformanceConfig {
+  ///
+  /// Possible string values are:
+  /// - "DEFAULT"
+  /// - "TIER_1"
+  core.String? totalEgressBandwidthTier;
+
+  NetworkPerformanceConfig({
+    this.totalEgressBandwidthTier,
+  });
+
+  NetworkPerformanceConfig.fromJson(core.Map _json)
+      : this(
+          totalEgressBandwidthTier:
+              _json.containsKey('totalEgressBandwidthTier')
+                  ? _json['totalEgressBandwidthTier'] as core.String
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (totalEgressBandwidthTier != null)
+          'totalEgressBandwidthTier': totalEgressBandwidthTier!,
       };
 }
 
@@ -76719,6 +79213,73 @@ class OutlierDetection {
       };
 }
 
+/// Next free: 7
+class PacketIntervals {
+  /// Average observed inter-packet interval in milliseconds.
+  core.String? avgMs;
+
+  /// From how long ago in the past these intervals were observed.
+  /// Possible string values are:
+  /// - "DURATION_UNSPECIFIED"
+  /// - "HOUR"
+  /// - "MAX" : From BfdSession object creation time.
+  /// - "MINUTE"
+  core.String? duration;
+
+  /// Maximum observed inter-packet interval in milliseconds.
+  core.String? maxMs;
+
+  /// Minimum observed inter-packet interval in milliseconds.
+  core.String? minMs;
+
+  /// Number of inter-packet intervals from which these statistics were derived.
+  core.String? numIntervals;
+
+  /// The type of packets for which inter-packet intervals were computed.
+  /// Possible string values are:
+  /// - "LOOPBACK" : Only applies to Echo packets. This shows the intervals
+  /// between sending and receiving the same packet.
+  /// - "RECEIVE" : Intervals between received packets.
+  /// - "TRANSMIT" : Intervals between transmitted packets.
+  /// - "TYPE_UNSPECIFIED"
+  core.String? type;
+
+  PacketIntervals({
+    this.avgMs,
+    this.duration,
+    this.maxMs,
+    this.minMs,
+    this.numIntervals,
+    this.type,
+  });
+
+  PacketIntervals.fromJson(core.Map _json)
+      : this(
+          avgMs:
+              _json.containsKey('avgMs') ? _json['avgMs'] as core.String : null,
+          duration: _json.containsKey('duration')
+              ? _json['duration'] as core.String
+              : null,
+          maxMs:
+              _json.containsKey('maxMs') ? _json['maxMs'] as core.String : null,
+          minMs:
+              _json.containsKey('minMs') ? _json['minMs'] as core.String : null,
+          numIntervals: _json.containsKey('numIntervals')
+              ? _json['numIntervals'] as core.String
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (avgMs != null) 'avgMs': avgMs!,
+        if (duration != null) 'duration': duration!,
+        if (maxMs != null) 'maxMs': maxMs!,
+        if (minMs != null) 'minMs': minMs!,
+        if (numIntervals != null) 'numIntervals': numIntervals!,
+        if (type != null) 'type': type!,
+      };
+}
+
 /// Represents a Packet Mirroring resource.
 ///
 /// Packet Mirroring clones the traffic of specified instances in your Virtual
@@ -77723,48 +80284,46 @@ class PacketMirroringsScopedList {
 /// A matcher for the path portion of the URL.
 ///
 /// The BackendService from the longest-matched rule will serve the URL. If no
-/// rule was matched, the default service will be used.
+/// rule was matched, the default service is used.
 class PathMatcher {
   /// defaultRouteAction takes effect when none of the pathRules or routeRules
   /// match.
   ///
-  /// The load balancer performs advanced routing actions like URL rewrites,
-  /// header transformations, etc. prior to forwarding the request to the
-  /// selected backend. If defaultRouteAction specifies any
-  /// weightedBackendServices, defaultService must not be set. Conversely if
-  /// defaultService is set, defaultRouteAction cannot contain any
-  /// weightedBackendServices. Only one of defaultRouteAction or
-  /// defaultUrlRedirect must be set. UrlMaps for external HTTP(S) load
-  /// balancers support only the urlRewrite action within a pathMatcher's
-  /// defaultRouteAction.
+  /// The load balancer performs advanced routing actions, such as URL rewrites
+  /// and header transformations, before forwarding the request to the selected
+  /// backend. If defaultRouteAction specifies any weightedBackendServices,
+  /// defaultService must not be set. Conversely if defaultService is set,
+  /// defaultRouteAction cannot contain any weightedBackendServices. Only one of
+  /// defaultRouteAction or defaultUrlRedirect must be set. UrlMaps for external
+  /// HTTP(S) load balancers support only the urlRewrite action within a path
+  /// matcher's defaultRouteAction.
   HttpRouteAction? defaultRouteAction;
 
   /// The full or partial URL to the BackendService resource.
   ///
-  /// This will be used if none of the pathRules or routeRules defined by this
+  /// This URL is used if none of the pathRules or routeRules defined by this
   /// PathMatcher are matched. For example, the following are all valid URLs to
   /// a BackendService resource: -
   /// https://www.googleapis.com/compute/v1/projects/project
   /// /global/backendServices/backendService -
   /// compute/v1/projects/project/global/backendServices/backendService -
-  /// global/backendServices/backendService If defaultRouteAction is
-  /// additionally specified, advanced routing actions like URL Rewrites, etc.
-  /// take effect prior to sending the request to the backend. However, if
-  /// defaultService is specified, defaultRouteAction cannot contain any
-  /// weightedBackendServices. Conversely, if defaultRouteAction specifies any
-  /// weightedBackendServices, defaultService must not be specified. Only one of
-  /// defaultService, defaultUrlRedirect or
-  /// defaultRouteAction.weightedBackendService must be set. Authorization
-  /// requires one or more of the following Google IAM permissions on the
-  /// specified resource default_service: - compute.backendBuckets.use -
-  /// compute.backendServices.use
+  /// global/backendServices/backendService If defaultRouteAction is also
+  /// specified, advanced routing actions, such as URL rewrites, take effect
+  /// before sending the request to the backend. However, if defaultService is
+  /// specified, defaultRouteAction cannot contain any weightedBackendServices.
+  /// Conversely, if defaultRouteAction specifies any weightedBackendServices,
+  /// defaultService must not be specified. Only one of defaultService,
+  /// defaultUrlRedirect , or defaultRouteAction.weightedBackendService must be
+  /// set. Authorization requires one or more of the following Google IAM
+  /// permissions on the specified resource default_service: -
+  /// compute.backendBuckets.use - compute.backendServices.use
   core.String? defaultService;
 
   /// When none of the specified pathRules or routeRules match, the request is
   /// redirected to a URL specified by defaultUrlRedirect.
   ///
   /// If defaultUrlRedirect is specified, defaultService or defaultRouteAction
-  /// must not be set. Not supported when the URL map is bound to target gRPC
+  /// must not be set. Not supported when the URL map is bound to a target gRPC
   /// proxy.
   HttpRedirectAction? defaultUrlRedirect;
 
@@ -77774,14 +80333,13 @@ class PathMatcher {
   core.String? description;
 
   /// Specifies changes to request and response headers that need to take effect
-  /// for the selected backendService.
+  /// for the selected backend service.
   ///
   /// HeaderAction specified here are applied after the matching HttpRouteRule
-  /// HeaderAction and before the HeaderAction in the UrlMap Note that
-  /// headerAction is not supported for Loadbalancers that have their
-  /// loadBalancingScheme set to EXTERNAL. Not supported when the URL map is
-  /// bound to target gRPC proxy that has validateForProxyless field set to
-  /// true.
+  /// HeaderAction and before the HeaderAction in the UrlMap HeaderAction is not
+  /// supported for load balancers that have their loadBalancingScheme set to
+  /// EXTERNAL. Not supported when the URL map is bound to a target gRPC proxy
+  /// that has validateForProxyless field set to true.
   HttpHeaderAction? headerAction;
 
   /// The name to which this PathMatcher is referred by the HostRule.
@@ -77879,23 +80437,23 @@ class PathRule {
   core.List<core.String>? paths;
 
   /// In response to a matching path, the load balancer performs advanced
-  /// routing actions like URL rewrites, header transformations, etc.
+  /// routing actions, such as URL rewrites and header transformations, before
+  /// forwarding the request to the selected backend.
   ///
-  /// prior to forwarding the request to the selected backend. If routeAction
-  /// specifies any weightedBackendServices, service must not be set. Conversely
-  /// if service is set, routeAction cannot contain any weightedBackendServices.
-  /// Only one of routeAction or urlRedirect must be set. UrlMaps for external
-  /// HTTP(S) load balancers support only the urlRewrite action within a
-  /// pathRule's routeAction.
+  /// If routeAction specifies any weightedBackendServices, service must not be
+  /// set. Conversely if service is set, routeAction cannot contain any
+  /// weightedBackendServices. Only one of routeAction or urlRedirect must be
+  /// set. URL maps for external HTTP(S) load balancers support only the
+  /// urlRewrite action within a path rule's routeAction.
   HttpRouteAction? routeAction;
 
   /// The full or partial URL of the backend service resource to which traffic
   /// is directed if this rule is matched.
   ///
-  /// If routeAction is additionally specified, advanced routing actions like
-  /// URL Rewrites, etc. take effect prior to sending the request to the
-  /// backend. However, if service is specified, routeAction cannot contain any
-  /// weightedBackendService s. Conversely, if routeAction specifies any
+  /// If routeAction is also specified, advanced routing actions, such as URL
+  /// rewrites, take effect before sending the request to the backend. However,
+  /// if service is specified, routeAction cannot contain any
+  /// weightedBackendServices. Conversely, if routeAction specifies any
   /// weightedBackendServices, service must not be specified. Only one of
   /// urlRedirect, service or routeAction.weightedBackendService must be set.
   core.String? service;
@@ -77904,7 +80462,7 @@ class PathRule {
   /// specified by urlRedirect.
   ///
   /// If urlRedirect is specified, service or routeAction must not be set. Not
-  /// supported when the URL map is bound to target gRPC proxy.
+  /// supported when the URL map is bound to a target gRPC proxy.
   HttpRedirectAction? urlRedirect;
 
   PathRule({
@@ -78025,15 +80583,15 @@ class PerInstanceConfig {
 /// controls for Google Cloud resources.
 ///
 /// A `Policy` is a collection of `bindings`. A `binding` binds one or more
-/// `members` to a single `role`. Members can be user accounts, service
-/// accounts, Google groups, and domains (such as G Suite). A `role` is a named
-/// list of permissions; each `role` can be an IAM predefined role or a
-/// user-created custom role. For some types of Google Cloud resources, a
-/// `binding` can also specify a `condition`, which is a logical expression that
-/// allows access to a resource only if the expression evaluates to `true`. A
-/// condition can add constraints based on attributes of the request, the
-/// resource, or both. To learn which resources support conditions in their IAM
-/// policies, see the
+/// `members`, or principals, to a single `role`. Principals can be user
+/// accounts, service accounts, Google groups, and domains (such as G Suite). A
+/// `role` is a named list of permissions; each `role` can be an IAM predefined
+/// role or a user-created custom role. For some types of Google Cloud
+/// resources, a `binding` can also specify a `condition`, which is a logical
+/// expression that allows access to a resource only if the expression evaluates
+/// to `true`. A condition can add constraints based on attributes of the
+/// request, the resource, or both. To learn which resources support conditions
+/// in their IAM policies, see the
 /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 /// **JSON example:** { "bindings": \[ { "role":
 /// "roles/resourcemanager.organizationAdmin", "members": \[
@@ -78056,11 +80614,16 @@ class Policy {
   /// Specifies cloud audit logging configuration for this policy.
   core.List<AuditConfig>? auditConfigs;
 
-  /// Associates a list of `members` to a `role`.
+  /// Associates a list of `members`, or principals, with a `role`.
   ///
   /// Optionally, may specify a `condition` that determines how and when the
   /// `bindings` are applied. Each of the `bindings` must contain at least one
-  /// member.
+  /// principal. The `bindings` in a `Policy` can refer to up to 1,500
+  /// principals; up to 250 of these principals can be Google groups. Each
+  /// occurrence of a principal counts towards these limits. For example, if the
+  /// `bindings` grant 50 different roles to `user:alice@example.com`, and not
+  /// to any other principal, then you can add another 1,450 principals to the
+  /// `bindings` in the `Policy`.
   core.List<Binding>? bindings;
 
   /// `etag` is used for optimistic concurrency control as a way to help prevent
@@ -78082,11 +80645,6 @@ class Policy {
     etag =
         convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
-
-  /// This is deprecated and has no effect.
-  ///
-  /// Do not use.
-  core.bool? iamOwned;
 
   /// This is deprecated and has no effect.
   ///
@@ -78116,7 +80674,6 @@ class Policy {
     this.auditConfigs,
     this.bindings,
     this.etag,
-    this.iamOwned,
     this.rules,
     this.version,
   });
@@ -78136,9 +80693,6 @@ class Policy {
                   .toList()
               : null,
           etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
-          iamOwned: _json.containsKey('iamOwned')
-              ? _json['iamOwned'] as core.bool
-              : null,
           rules: _json.containsKey('rules')
               ? (_json['rules'] as core.List)
                   .map((value) => Rule.fromJson(
@@ -78154,7 +80708,6 @@ class Policy {
         if (auditConfigs != null) 'auditConfigs': auditConfigs!,
         if (bindings != null) 'bindings': bindings!,
         if (etag != null) 'etag': etag!,
-        if (iamOwned != null) 'iamOwned': iamOwned!,
         if (rules != null) 'rules': rules!,
         if (version != null) 'version': version!,
       };
@@ -78296,10 +80849,13 @@ class Project {
   ///
   /// Initially the default network tier is PREMIUM.
   /// Possible string values are:
+  /// - "FIXED_STANDARD" : Public internet quality with fixed bandwidth.
   /// - "PREMIUM" : High quality, Google-grade network tier, support for all
   /// networking products.
   /// - "STANDARD" : Public internet quality, only limited support for other
   /// networking products.
+  /// - "STANDARD_OVERRIDES_FIXED_STANDARD" : (Output only) Temporary tier for
+  /// FIXED_STANDARD when fixed standard tier is expired or not configured.
   core.String? defaultNetworkTier;
 
   /// Default service account used by VMs running in this project.
@@ -78558,10 +81114,13 @@ class ProjectsListXpnHostsRequest {
 class ProjectsSetDefaultNetworkTierRequest {
   /// Default network tier to be set.
   /// Possible string values are:
+  /// - "FIXED_STANDARD" : Public internet quality with fixed bandwidth.
   /// - "PREMIUM" : High quality, Google-grade network tier, support for all
   /// networking products.
   /// - "STANDARD" : Public internet quality, only limited support for other
   /// networking products.
+  /// - "STANDARD_OVERRIDES_FIXED_STANDARD" : (Output only) Temporary tier for
+  /// FIXED_STANDARD when fixed standard tier is expired or not configured.
   core.String? networkTier;
 
   ProjectsSetDefaultNetworkTierRequest({
@@ -78662,14 +81221,21 @@ class PublicAdvertisedPrefix {
   core.String? sharedSecret;
 
   /// The status of the public advertised prefix.
+  ///
+  /// Possible values include: - `INITIAL`: RPKI validation is complete. -
+  /// `PTR_CONFIGURED`: User has configured the PTR. - `VALIDATED`: Reverse DNS
+  /// lookup is successful. - `REVERSE_DNS_LOOKUP_FAILED`: Reverse DNS lookup
+  /// failed. - `PREFIX_CONFIGURATION_IN_PROGRESS`: The prefix is being
+  /// configured. - `PREFIX_CONFIGURATION_COMPLETE`: The prefix is fully
+  /// configured. - `PREFIX_REMOVAL_IN_PROGRESS`: The prefix is being removed.
   /// Possible string values are:
-  /// - "INITIAL"
-  /// - "PREFIX_CONFIGURATION_COMPLETE"
-  /// - "PREFIX_CONFIGURATION_IN_PROGRESS"
-  /// - "PREFIX_REMOVAL_IN_PROGRESS"
-  /// - "PTR_CONFIGURED"
-  /// - "REVERSE_DNS_LOOKUP_FAILED"
-  /// - "VALIDATED"
+  /// - "INITIAL" : RPKI validation is complete.
+  /// - "PREFIX_CONFIGURATION_COMPLETE" : The prefix is fully configured.
+  /// - "PREFIX_CONFIGURATION_IN_PROGRESS" : The prefix is being configured.
+  /// - "PREFIX_REMOVAL_IN_PROGRESS" : The prefix is being removed.
+  /// - "PTR_CONFIGURED" : User has configured the PTR.
+  /// - "REVERSE_DNS_LOOKUP_FAILED" : Reverse DNS lookup failed.
+  /// - "VALIDATED" : Reverse DNS lookup is successful.
   core.String? status;
 
   PublicAdvertisedPrefix({
@@ -79102,14 +81668,22 @@ class PublicDelegatedPrefix {
   /// Output only.
   core.String? selfLink;
 
-  /// The status of the public delegated prefix.
+  /// The status of the public delegated prefix, which can be one of following
+  /// values: - `INITIALIZING` The public delegated prefix is being initialized
+  /// and addresses cannot be created yet.
+  ///
+  /// - `READY_TO_ANNOUNCE` The public delegated prefix is a live migration
+  /// prefix and is active. - `ANNOUNCED` The public delegated prefix is active.
+  /// - `DELETING` The public delegated prefix is being deprovsioned.
   ///
   /// Output only.
   /// Possible string values are:
-  /// - "ANNOUNCED"
-  /// - "DELETING"
-  /// - "INITIALIZING"
-  /// - "READY_TO_ANNOUNCE"
+  /// - "ANNOUNCED" : The public delegated prefix is active.
+  /// - "DELETING" : The public delegated prefix is being deprovsioned.
+  /// - "INITIALIZING" : The public delegated prefix is being initialized and
+  /// addresses cannot be created yet.
+  /// - "READY_TO_ANNOUNCE" : The public delegated prefix is currently withdrawn
+  /// but ready to be announced.
   core.String? status;
 
   PublicDelegatedPrefix({
@@ -79922,6 +82496,7 @@ class Quota {
   /// - "COMMITTED_NVIDIA_P4_GPUS"
   /// - "COMMITTED_NVIDIA_T4_GPUS"
   /// - "COMMITTED_NVIDIA_V100_GPUS"
+  /// - "COMMITTED_T2A_CPUS"
   /// - "COMMITTED_T2D_CPUS"
   /// - "CPUS" : Guest CPUs
   /// - "CPUS_ALL_REGIONS"
@@ -80007,6 +82582,7 @@ class Quota {
   /// - "STATIC_ADDRESSES"
   /// - "STATIC_BYOIP_ADDRESSES"
   /// - "SUBNETWORKS"
+  /// - "T2A_CPUS"
   /// - "T2D_CPUS"
   /// - "TARGET_HTTPS_PROXIES"
   /// - "TARGET_HTTP_PROXIES"
@@ -82169,8 +84745,8 @@ class RegionUrlMapsValidateRequest {
 /// A policy that specifies how requests intended for the route's backends are
 /// shadowed to a separate mirrored backend service.
 ///
-/// Loadbalancer does not wait for responses from the shadow service. Prior to
-/// sending traffic to the shadow service, the host / authority header is
+/// The load balancer doesn't wait for responses from the shadow service. Before
+/// sending traffic to the shadow service, the host or authority header is
 /// suffixed with -shadow.
 class RequestMirrorPolicy {
   /// The full or partial URL to the BackendService resource being mirrored to.
@@ -82250,6 +84826,9 @@ class Reservation {
   /// Output only.
   core.String? selfLink;
 
+  /// Share-settings for shared-reservation
+  ShareSettings? shareSettings;
+
   /// Reservation for instances with specific machine shapes.
   AllocationSpecificSKUReservation? specificReservation;
 
@@ -82285,6 +84864,7 @@ class Reservation {
     this.name,
     this.satisfiesPzs,
     this.selfLink,
+    this.shareSettings,
     this.specificReservation,
     this.specificReservationRequired,
     this.status,
@@ -82311,6 +84891,10 @@ class Reservation {
           selfLink: _json.containsKey('selfLink')
               ? _json['selfLink'] as core.String
               : null,
+          shareSettings: _json.containsKey('shareSettings')
+              ? ShareSettings.fromJson(
+                  _json['shareSettings'] as core.Map<core.String, core.dynamic>)
+              : null,
           specificReservation: _json.containsKey('specificReservation')
               ? AllocationSpecificSKUReservation.fromJson(
                   _json['specificReservation']
@@ -82335,6 +84919,7 @@ class Reservation {
         if (name != null) 'name': name!,
         if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
         if (selfLink != null) 'selfLink': selfLink!,
+        if (shareSettings != null) 'shareSettings': shareSettings!,
         if (specificReservation != null)
           'specificReservation': specificReservation!,
         if (specificReservationRequired != null)
@@ -85578,6 +88163,11 @@ class RouterBgpPeer {
   /// - "TRUE"
   core.String? enable;
 
+  /// Enable IPv6 traffic over BGP Peer.
+  ///
+  /// If not specified, it is disabled by default.
+  core.bool? enableIpv6;
+
   /// Name of the interface the BGP peer is associated with.
   core.String? interfaceName;
 
@@ -85585,6 +88175,9 @@ class RouterBgpPeer {
   ///
   /// Only IPv4 is supported.
   core.String? ipAddress;
+
+  /// IPv6 address of the interface inside Google Cloud Platform.
+  core.String? ipv6NexthopAddress;
 
   /// The resource that configures and manages this BGP peer.
   ///
@@ -85628,6 +88221,9 @@ class RouterBgpPeer {
   /// Only IPv4 is supported.
   core.String? peerIpAddress;
 
+  /// IPv6 address of the BGP interface outside Google Cloud Platform.
+  core.String? peerIpv6NexthopAddress;
+
   /// URI of the VM instance that is used as third-party router appliances such
   /// as Next Gen Firewalls, Virtual Routers, or Router Appliances.
   ///
@@ -85642,12 +88238,15 @@ class RouterBgpPeer {
     this.advertisedRoutePriority,
     this.bfd,
     this.enable,
+    this.enableIpv6,
     this.interfaceName,
     this.ipAddress,
+    this.ipv6NexthopAddress,
     this.managementType,
     this.name,
     this.peerAsn,
     this.peerIpAddress,
+    this.peerIpv6NexthopAddress,
     this.routerApplianceInstance,
   });
 
@@ -85677,11 +88276,17 @@ class RouterBgpPeer {
           enable: _json.containsKey('enable')
               ? _json['enable'] as core.String
               : null,
+          enableIpv6: _json.containsKey('enableIpv6')
+              ? _json['enableIpv6'] as core.bool
+              : null,
           interfaceName: _json.containsKey('interfaceName')
               ? _json['interfaceName'] as core.String
               : null,
           ipAddress: _json.containsKey('ipAddress')
               ? _json['ipAddress'] as core.String
+              : null,
+          ipv6NexthopAddress: _json.containsKey('ipv6NexthopAddress')
+              ? _json['ipv6NexthopAddress'] as core.String
               : null,
           managementType: _json.containsKey('managementType')
               ? _json['managementType'] as core.String
@@ -85692,6 +88297,9 @@ class RouterBgpPeer {
               : null,
           peerIpAddress: _json.containsKey('peerIpAddress')
               ? _json['peerIpAddress'] as core.String
+              : null,
+          peerIpv6NexthopAddress: _json.containsKey('peerIpv6NexthopAddress')
+              ? _json['peerIpv6NexthopAddress'] as core.String
               : null,
           routerApplianceInstance: _json.containsKey('routerApplianceInstance')
               ? _json['routerApplianceInstance'] as core.String
@@ -85707,12 +88315,17 @@ class RouterBgpPeer {
           'advertisedRoutePriority': advertisedRoutePriority!,
         if (bfd != null) 'bfd': bfd!,
         if (enable != null) 'enable': enable!,
+        if (enableIpv6 != null) 'enableIpv6': enableIpv6!,
         if (interfaceName != null) 'interfaceName': interfaceName!,
         if (ipAddress != null) 'ipAddress': ipAddress!,
+        if (ipv6NexthopAddress != null)
+          'ipv6NexthopAddress': ipv6NexthopAddress!,
         if (managementType != null) 'managementType': managementType!,
         if (name != null) 'name': name!,
         if (peerAsn != null) 'peerAsn': peerAsn!,
         if (peerIpAddress != null) 'peerIpAddress': peerIpAddress!,
+        if (peerIpv6NexthopAddress != null)
+          'peerIpv6NexthopAddress': peerIpv6NexthopAddress!,
         if (routerApplianceInstance != null)
           'routerApplianceInstance': routerApplianceInstance!,
       };
@@ -86147,6 +88760,16 @@ class RouterNat {
   /// These IPs must be valid static external IPs that have been assigned to the
   /// NAT. These IPs should be used for updating/patching a NAT only.
   core.List<core.String>? drainNatIps;
+
+  /// Enable Dynamic Port Allocation.
+  ///
+  /// If not specified, it is disabled by default. If set to true, - Dynamic
+  /// Port Allocation will be enabled on this NAT config. -
+  /// enableEndpointIndependentMapping cannot be set to true. - If minPorts is
+  /// set, minPortsPerVm must be set to a power of two greater than or equal to
+  /// 32. If minPortsPerVm is not set, a minimum of 32 ports will be allocated
+  /// to a VM from this NAT config.
+  core.bool? enableDynamicPortAllocation;
   core.bool? enableEndpointIndependentMapping;
 
   /// Timeout (in seconds) for ICMP connections.
@@ -86156,6 +88779,16 @@ class RouterNat {
 
   /// Configure logging on this NAT.
   RouterNatLogConfig? logConfig;
+
+  /// Maximum number of ports allocated to a VM from this NAT config when
+  /// Dynamic Port Allocation is enabled.
+  ///
+  /// If Dynamic Port Allocation is not enabled, this field has no effect. If
+  /// Dynamic Port Allocation is enabled, and this field is set, it must be set
+  /// to a power of two greater than minPortsPerVm, or 64 if minPortsPerVm is
+  /// not set. If Dynamic Port Allocation is enabled and this field is not set,
+  /// a maximum of 65536 ports will be allocated to a VM from this NAT config.
+  core.int? maxPortsPerVm;
 
   /// Minimum number of ports allocated to a VM from this NAT config.
   ///
@@ -86241,9 +88874,11 @@ class RouterNat {
 
   RouterNat({
     this.drainNatIps,
+    this.enableDynamicPortAllocation,
     this.enableEndpointIndependentMapping,
     this.icmpIdleTimeoutSec,
     this.logConfig,
+    this.maxPortsPerVm,
     this.minPortsPerVm,
     this.name,
     this.natIpAllocateOption,
@@ -86264,6 +88899,10 @@ class RouterNat {
                   .map((value) => value as core.String)
                   .toList()
               : null,
+          enableDynamicPortAllocation:
+              _json.containsKey('enableDynamicPortAllocation')
+                  ? _json['enableDynamicPortAllocation'] as core.bool
+                  : null,
           enableEndpointIndependentMapping:
               _json.containsKey('enableEndpointIndependentMapping')
                   ? _json['enableEndpointIndependentMapping'] as core.bool
@@ -86274,6 +88913,9 @@ class RouterNat {
           logConfig: _json.containsKey('logConfig')
               ? RouterNatLogConfig.fromJson(
                   _json['logConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+          maxPortsPerVm: _json.containsKey('maxPortsPerVm')
+              ? _json['maxPortsPerVm'] as core.int
               : null,
           minPortsPerVm: _json.containsKey('minPortsPerVm')
               ? _json['minPortsPerVm'] as core.int
@@ -86321,11 +88963,14 @@ class RouterNat {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (drainNatIps != null) 'drainNatIps': drainNatIps!,
+        if (enableDynamicPortAllocation != null)
+          'enableDynamicPortAllocation': enableDynamicPortAllocation!,
         if (enableEndpointIndependentMapping != null)
           'enableEndpointIndependentMapping': enableEndpointIndependentMapping!,
         if (icmpIdleTimeoutSec != null)
           'icmpIdleTimeoutSec': icmpIdleTimeoutSec!,
         if (logConfig != null) 'logConfig': logConfig!,
+        if (maxPortsPerVm != null) 'maxPortsPerVm': maxPortsPerVm!,
         if (minPortsPerVm != null) 'minPortsPerVm': minPortsPerVm!,
         if (name != null) 'name': name!,
         if (natIpAllocateOption != null)
@@ -86400,7 +89045,8 @@ class RouterNatRule {
   /// "inIpRange(destination.ip, '1.1.0.0/16') || inIpRange(destination.ip,
   /// '2.2.0.0/16')" "destination.ip == '1.1.0.1' || destination.ip ==
   /// '8.8.8.8'" The following example is a valid match expression for private
-  /// NAT: "nexthop.hub == '/projects/my-project/global/hub/hub-1'"
+  /// NAT: "nexthop.hub ==
+  /// 'https://networkconnectivity.googleapis.com/v1alpha1/projects/my-project/global/hub/hub-1'"
   core.String? match;
 
   /// An integer uniquely identifying a rule in the list.
@@ -86594,6 +89240,7 @@ class RouterStatus {
 class RouterStatusBgpPeerStatus {
   /// Routes that were advertised to the remote BGP peer
   core.List<Route>? advertisedRoutes;
+  BfdStatus? bfdStatus;
 
   /// IP address of the local BGP interface.
   core.String? ipAddress;
@@ -86642,6 +89289,7 @@ class RouterStatusBgpPeerStatus {
 
   RouterStatusBgpPeerStatus({
     this.advertisedRoutes,
+    this.bfdStatus,
     this.ipAddress,
     this.linkedVpnTunnel,
     this.name,
@@ -86661,6 +89309,10 @@ class RouterStatusBgpPeerStatus {
                   .map((value) => Route.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
+              : null,
+          bfdStatus: _json.containsKey('bfdStatus')
+              ? BfdStatus.fromJson(
+                  _json['bfdStatus'] as core.Map<core.String, core.dynamic>)
               : null,
           ipAddress: _json.containsKey('ipAddress')
               ? _json['ipAddress'] as core.String
@@ -86693,6 +89345,7 @@ class RouterStatusBgpPeerStatus {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (advertisedRoutes != null) 'advertisedRoutes': advertisedRoutes!,
+        if (bfdStatus != null) 'bfdStatus': bfdStatus!,
         if (ipAddress != null) 'ipAddress': ipAddress!,
         if (linkedVpnTunnel != null) 'linkedVpnTunnel': linkedVpnTunnel!,
         if (name != null) 'name': name!,
@@ -87301,6 +89954,250 @@ class SSLHealthCheck {
       };
 }
 
+/// DEPRECATED: Please use compute#savedDisk instead.
+///
+/// An instance-attached disk resource.
+class SavedAttachedDisk {
+  /// Specifies whether the disk will be auto-deleted when the instance is
+  /// deleted (but not when the disk is detached from the instance).
+  core.bool? autoDelete;
+
+  /// Indicates that this is a boot disk.
+  ///
+  /// The virtual machine will use the first partition of the disk for its root
+  /// filesystem.
+  core.bool? boot;
+
+  /// Specifies the name of the disk attached to the source instance.
+  core.String? deviceName;
+
+  /// The encryption key for the disk.
+  CustomerEncryptionKey? diskEncryptionKey;
+
+  /// The size of the disk in base-2 GB.
+  core.String? diskSizeGb;
+
+  /// URL of the disk type resource.
+  ///
+  /// For example: projects/project /zones/zone/diskTypes/pd-standard or pd-ssd
+  ///
+  /// Output only.
+  core.String? diskType;
+
+  /// A list of features to enable on the guest operating system.
+  ///
+  /// Applicable only for bootable images. Read Enabling guest operating system
+  /// features to see a list of available options.
+  core.List<GuestOsFeature>? guestOsFeatures;
+
+  /// Specifies zero-based index of the disk that is attached to the source
+  /// instance.
+  core.int? index;
+
+  /// Specifies the disk interface to use for attaching this disk, which is
+  /// either SCSI or NVME.
+  /// Possible string values are:
+  /// - "NVME"
+  /// - "SCSI"
+  core.String? interface;
+
+  /// Type of the resource.
+  ///
+  /// Always compute#attachedDisk for attached disks.
+  ///
+  /// Output only.
+  core.String? kind;
+
+  /// Any valid publicly visible licenses.
+  ///
+  /// Output only.
+  core.List<core.String>? licenses;
+
+  /// The mode in which this disk is attached to the source instance, either
+  /// READ_WRITE or READ_ONLY.
+  /// Possible string values are:
+  /// - "READ_ONLY" : Attaches this disk in read-only mode. Multiple virtual
+  /// machines can use a disk in read-only mode at a time.
+  /// - "READ_WRITE" : *\[Default\]* Attaches this disk in read-write mode. Only
+  /// one virtual machine at a time can be attached to a disk in read-write
+  /// mode.
+  core.String? mode;
+
+  /// Specifies a URL of the disk attached to the source instance.
+  core.String? source;
+
+  /// A size of the storage used by the disk's snapshot by this machine image.
+  ///
+  /// Output only.
+  core.String? storageBytes;
+
+  /// An indicator whether storageBytes is in a stable state or it is being
+  /// adjusted as a result of shared storage reallocation.
+  ///
+  /// This status can either be UPDATING, meaning the size of the snapshot is
+  /// being updated, or UP_TO_DATE, meaning the size of the snapshot is
+  /// up-to-date.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "UPDATING"
+  /// - "UP_TO_DATE"
+  core.String? storageBytesStatus;
+
+  /// Specifies the type of the attached disk, either SCRATCH or PERSISTENT.
+  /// Possible string values are:
+  /// - "PERSISTENT"
+  /// - "SCRATCH"
+  core.String? type;
+
+  SavedAttachedDisk({
+    this.autoDelete,
+    this.boot,
+    this.deviceName,
+    this.diskEncryptionKey,
+    this.diskSizeGb,
+    this.diskType,
+    this.guestOsFeatures,
+    this.index,
+    this.interface,
+    this.kind,
+    this.licenses,
+    this.mode,
+    this.source,
+    this.storageBytes,
+    this.storageBytesStatus,
+    this.type,
+  });
+
+  SavedAttachedDisk.fromJson(core.Map _json)
+      : this(
+          autoDelete: _json.containsKey('autoDelete')
+              ? _json['autoDelete'] as core.bool
+              : null,
+          boot: _json.containsKey('boot') ? _json['boot'] as core.bool : null,
+          deviceName: _json.containsKey('deviceName')
+              ? _json['deviceName'] as core.String
+              : null,
+          diskEncryptionKey: _json.containsKey('diskEncryptionKey')
+              ? CustomerEncryptionKey.fromJson(_json['diskEncryptionKey']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          diskSizeGb: _json.containsKey('diskSizeGb')
+              ? _json['diskSizeGb'] as core.String
+              : null,
+          diskType: _json.containsKey('diskType')
+              ? _json['diskType'] as core.String
+              : null,
+          guestOsFeatures: _json.containsKey('guestOsFeatures')
+              ? (_json['guestOsFeatures'] as core.List)
+                  .map((value) => GuestOsFeature.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          index: _json.containsKey('index') ? _json['index'] as core.int : null,
+          interface: _json.containsKey('interface')
+              ? _json['interface'] as core.String
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          licenses: _json.containsKey('licenses')
+              ? (_json['licenses'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          mode: _json.containsKey('mode') ? _json['mode'] as core.String : null,
+          source: _json.containsKey('source')
+              ? _json['source'] as core.String
+              : null,
+          storageBytes: _json.containsKey('storageBytes')
+              ? _json['storageBytes'] as core.String
+              : null,
+          storageBytesStatus: _json.containsKey('storageBytesStatus')
+              ? _json['storageBytesStatus'] as core.String
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (autoDelete != null) 'autoDelete': autoDelete!,
+        if (boot != null) 'boot': boot!,
+        if (deviceName != null) 'deviceName': deviceName!,
+        if (diskEncryptionKey != null) 'diskEncryptionKey': diskEncryptionKey!,
+        if (diskSizeGb != null) 'diskSizeGb': diskSizeGb!,
+        if (diskType != null) 'diskType': diskType!,
+        if (guestOsFeatures != null) 'guestOsFeatures': guestOsFeatures!,
+        if (index != null) 'index': index!,
+        if (interface != null) 'interface': interface!,
+        if (kind != null) 'kind': kind!,
+        if (licenses != null) 'licenses': licenses!,
+        if (mode != null) 'mode': mode!,
+        if (source != null) 'source': source!,
+        if (storageBytes != null) 'storageBytes': storageBytes!,
+        if (storageBytesStatus != null)
+          'storageBytesStatus': storageBytesStatus!,
+        if (type != null) 'type': type!,
+      };
+}
+
+/// An instance-attached disk resource.
+class SavedDisk {
+  /// Type of the resource.
+  ///
+  /// Always compute#savedDisk for attached disks.
+  ///
+  /// Output only.
+  core.String? kind;
+
+  /// Specifies a URL of the disk attached to the source instance.
+  core.String? sourceDisk;
+
+  /// Size of the individual disk snapshot used by this machine image.
+  ///
+  /// Output only.
+  core.String? storageBytes;
+
+  /// An indicator whether storageBytes is in a stable state or it is being
+  /// adjusted as a result of shared storage reallocation.
+  ///
+  /// This status can either be UPDATING, meaning the size of the snapshot is
+  /// being updated, or UP_TO_DATE, meaning the size of the snapshot is
+  /// up-to-date.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "UPDATING"
+  /// - "UP_TO_DATE"
+  core.String? storageBytesStatus;
+
+  SavedDisk({
+    this.kind,
+    this.sourceDisk,
+    this.storageBytes,
+    this.storageBytesStatus,
+  });
+
+  SavedDisk.fromJson(core.Map _json)
+      : this(
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          sourceDisk: _json.containsKey('sourceDisk')
+              ? _json['sourceDisk'] as core.String
+              : null,
+          storageBytes: _json.containsKey('storageBytes')
+              ? _json['storageBytes'] as core.String
+              : null,
+          storageBytesStatus: _json.containsKey('storageBytesStatus')
+              ? _json['storageBytesStatus'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (sourceDisk != null) 'sourceDisk': sourceDisk!,
+        if (storageBytes != null) 'storageBytes': storageBytes!,
+        if (storageBytesStatus != null)
+          'storageBytesStatus': storageBytesStatus!,
+      };
+}
+
 class ScalingScheduleStatus {
   /// The last time the scaling schedule became active.
   ///
@@ -87369,6 +90266,14 @@ class Scheduling {
   /// terminated by Compute Engine.
   core.bool? automaticRestart;
 
+  /// Specifies the termination action for the instance.
+  /// Possible string values are:
+  /// - "DELETE" : Delete the VM.
+  /// - "INSTANCE_TERMINATION_ACTION_UNSPECIFIED" : Default value. This value is
+  /// unused.
+  /// - "STOP" : Stop the VM without storing in-memory content. default action.
+  core.String? instanceTerminationAction;
+
   /// An opaque location hint used to place the instance close to other
   /// resources.
   ///
@@ -87407,13 +90312,22 @@ class Scheduling {
   /// for more information on the possible instance states.
   core.bool? preemptible;
 
+  /// Specifies the provisioning model of the instance.
+  /// Possible string values are:
+  /// - "SPOT" : Heavily discounted, no guaranteed runtime.
+  /// - "STANDARD" : Standard provisioning with user controlled runtime, no
+  /// discounts.
+  core.String? provisioningModel;
+
   Scheduling({
     this.automaticRestart,
+    this.instanceTerminationAction,
     this.locationHint,
     this.minNodeCpus,
     this.nodeAffinities,
     this.onHostMaintenance,
     this.preemptible,
+    this.provisioningModel,
   });
 
   Scheduling.fromJson(core.Map _json)
@@ -87421,6 +90335,10 @@ class Scheduling {
           automaticRestart: _json.containsKey('automaticRestart')
               ? _json['automaticRestart'] as core.bool
               : null,
+          instanceTerminationAction:
+              _json.containsKey('instanceTerminationAction')
+                  ? _json['instanceTerminationAction'] as core.String
+                  : null,
           locationHint: _json.containsKey('locationHint')
               ? _json['locationHint'] as core.String
               : null,
@@ -87439,15 +90357,21 @@ class Scheduling {
           preemptible: _json.containsKey('preemptible')
               ? _json['preemptible'] as core.bool
               : null,
+          provisioningModel: _json.containsKey('provisioningModel')
+              ? _json['provisioningModel'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (automaticRestart != null) 'automaticRestart': automaticRestart!,
+        if (instanceTerminationAction != null)
+          'instanceTerminationAction': instanceTerminationAction!,
         if (locationHint != null) 'locationHint': locationHint!,
         if (minNodeCpus != null) 'minNodeCpus': minNodeCpus!,
         if (nodeAffinities != null) 'nodeAffinities': nodeAffinities!,
         if (onHostMaintenance != null) 'onHostMaintenance': onHostMaintenance!,
         if (preemptible != null) 'preemptible': preemptible!,
+        if (provisioningModel != null) 'provisioningModel': provisioningModel!,
       };
 }
 
@@ -87631,6 +90555,7 @@ class SecurityPolicy {
   /// lowercase letter, and all following characters must be a dash, lowercase
   /// letter, or digit, except the last character, which cannot be a dash.
   core.String? name;
+  SecurityPolicyRecaptchaOptionsConfig? recaptchaOptionsConfig;
 
   /// A list of rules that belong to this policy.
   ///
@@ -87644,6 +90569,20 @@ class SecurityPolicy {
   /// Output only.
   core.String? selfLink;
 
+  /// The type indicates the intended use of the security policy.
+  ///
+  /// CLOUD_ARMOR - Cloud Armor backend security policies can be configured to
+  /// filter incoming HTTP requests targeting backend services. They filter
+  /// requests before they hit the origin servers. CLOUD_ARMOR_EDGE - Cloud
+  /// Armor edge security policies can be configured to filter incoming HTTP
+  /// requests targeting backend services (including Cloud CDN-enabled) as well
+  /// as backend buckets (Cloud Storage). They filter requests before the
+  /// request is served from Google's cache.
+  /// Possible string values are:
+  /// - "CLOUD_ARMOR"
+  /// - "CLOUD_ARMOR_EDGE"
+  core.String? type;
+
   SecurityPolicy({
     this.adaptiveProtectionConfig,
     this.advancedOptionsConfig,
@@ -87653,8 +90592,10 @@ class SecurityPolicy {
     this.id,
     this.kind,
     this.name,
+    this.recaptchaOptionsConfig,
     this.rules,
     this.selfLink,
+    this.type,
   });
 
   SecurityPolicy.fromJson(core.Map _json)
@@ -87682,6 +90623,11 @@ class SecurityPolicy {
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          recaptchaOptionsConfig: _json.containsKey('recaptchaOptionsConfig')
+              ? SecurityPolicyRecaptchaOptionsConfig.fromJson(
+                  _json['recaptchaOptionsConfig']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           rules: _json.containsKey('rules')
               ? (_json['rules'] as core.List)
                   .map((value) => SecurityPolicyRule.fromJson(
@@ -87691,6 +90637,7 @@ class SecurityPolicy {
           selfLink: _json.containsKey('selfLink')
               ? _json['selfLink'] as core.String
               : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -87704,8 +90651,11 @@ class SecurityPolicy {
         if (id != null) 'id': id!,
         if (kind != null) 'kind': kind!,
         if (name != null) 'name': name!,
+        if (recaptchaOptionsConfig != null)
+          'recaptchaOptionsConfig': recaptchaOptionsConfig!,
         if (rules != null) 'rules': rules!,
         if (selfLink != null) 'selfLink': selfLink!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -88004,6 +90954,32 @@ class SecurityPolicyList {
       };
 }
 
+class SecurityPolicyRecaptchaOptionsConfig {
+  /// An optional field to supply a reCAPTCHA site key to be used for all the
+  /// rules using the redirect action with the type of GOOGLE_RECAPTCHA under
+  /// the security policy.
+  ///
+  /// The specified site key needs to be created from the reCAPTCHA API. The
+  /// user is responsible for the validity of the specified site key. If not
+  /// specified, a Google-managed site key is used.
+  core.String? redirectSiteKey;
+
+  SecurityPolicyRecaptchaOptionsConfig({
+    this.redirectSiteKey,
+  });
+
+  SecurityPolicyRecaptchaOptionsConfig.fromJson(core.Map _json)
+      : this(
+          redirectSiteKey: _json.containsKey('redirectSiteKey')
+              ? _json['redirectSiteKey'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (redirectSiteKey != null) 'redirectSiteKey': redirectSiteKey!,
+      };
+}
+
 class SecurityPolicyReference {
   core.String? securityPolicy;
 
@@ -88026,16 +91002,29 @@ class SecurityPolicyReference {
 /// Represents a rule that describes one or more match conditions along with the
 /// action to be taken when traffic matches this condition (allow or deny).
 class SecurityPolicyRule {
-  /// The Action to perform when the client connection triggers the rule.
+  /// The Action to perform when the rule is matched.
   ///
-  /// Can currently be either "allow" or "deny()" where valid values for status
-  /// are 403, 404, and 502.
+  /// The following are the valid actions: - allow: allow access to target. -
+  /// deny(): deny access to target, returns the HTTP response code specified
+  /// (valid values are 403, 404, and 502). - rate_based_ban: limit client
+  /// traffic to the configured threshold and ban the client if the traffic
+  /// exceeds the threshold. Configure parameters for this action in
+  /// RateLimitOptions. Requires rate_limit_options to be set. - redirect:
+  /// redirect to a different target. This can either be an internal reCAPTCHA
+  /// redirect, or an external URL-based redirect via a 302 response. Parameters
+  /// for this action can be configured via redirectOptions. - throttle: limit
+  /// client traffic to the configured threshold. Configure parameters for this
+  /// action in rateLimitOptions. Requires rate_limit_options to be set for
+  /// this.
   core.String? action;
 
   /// An optional description of this resource.
   ///
   /// Provide this property when you create the resource.
   core.String? description;
+
+  /// Optional, additional actions that are performed on headers.
+  SecurityPolicyRuleHttpHeaderAction? headerAction;
 
   /// Type of the resource.
   ///
@@ -88059,13 +91048,26 @@ class SecurityPolicyRule {
   /// and 2147483647 is the lowest priority.
   core.int? priority;
 
+  /// Must be specified if the action is "rate_based_ban" or "throttle".
+  ///
+  /// Cannot be specified for any other actions.
+  SecurityPolicyRuleRateLimitOptions? rateLimitOptions;
+
+  /// Parameters defining the redirect action.
+  ///
+  /// Cannot be specified for any other actions.
+  SecurityPolicyRuleRedirectOptions? redirectOptions;
+
   SecurityPolicyRule({
     this.action,
     this.description,
+    this.headerAction,
     this.kind,
     this.match,
     this.preview,
     this.priority,
+    this.rateLimitOptions,
+    this.redirectOptions,
   });
 
   SecurityPolicyRule.fromJson(core.Map _json)
@@ -88075,6 +91077,10 @@ class SecurityPolicyRule {
               : null,
           description: _json.containsKey('description')
               ? _json['description'] as core.String
+              : null,
+          headerAction: _json.containsKey('headerAction')
+              ? SecurityPolicyRuleHttpHeaderAction.fromJson(
+                  _json['headerAction'] as core.Map<core.String, core.dynamic>)
               : null,
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
           match: _json.containsKey('match')
@@ -88087,15 +91093,84 @@ class SecurityPolicyRule {
           priority: _json.containsKey('priority')
               ? _json['priority'] as core.int
               : null,
+          rateLimitOptions: _json.containsKey('rateLimitOptions')
+              ? SecurityPolicyRuleRateLimitOptions.fromJson(
+                  _json['rateLimitOptions']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          redirectOptions: _json.containsKey('redirectOptions')
+              ? SecurityPolicyRuleRedirectOptions.fromJson(
+                  _json['redirectOptions']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (action != null) 'action': action!,
         if (description != null) 'description': description!,
+        if (headerAction != null) 'headerAction': headerAction!,
         if (kind != null) 'kind': kind!,
         if (match != null) 'match': match!,
         if (preview != null) 'preview': preview!,
         if (priority != null) 'priority': priority!,
+        if (rateLimitOptions != null) 'rateLimitOptions': rateLimitOptions!,
+        if (redirectOptions != null) 'redirectOptions': redirectOptions!,
+      };
+}
+
+class SecurityPolicyRuleHttpHeaderAction {
+  /// The list of request headers to add or overwrite if they're already
+  /// present.
+  core.List<SecurityPolicyRuleHttpHeaderActionHttpHeaderOption>?
+      requestHeadersToAdds;
+
+  SecurityPolicyRuleHttpHeaderAction({
+    this.requestHeadersToAdds,
+  });
+
+  SecurityPolicyRuleHttpHeaderAction.fromJson(core.Map _json)
+      : this(
+          requestHeadersToAdds: _json.containsKey('requestHeadersToAdds')
+              ? (_json['requestHeadersToAdds'] as core.List)
+                  .map((value) =>
+                      SecurityPolicyRuleHttpHeaderActionHttpHeaderOption
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (requestHeadersToAdds != null)
+          'requestHeadersToAdds': requestHeadersToAdds!,
+      };
+}
+
+class SecurityPolicyRuleHttpHeaderActionHttpHeaderOption {
+  /// The name of the header to set.
+  core.String? headerName;
+
+  /// The value to set the named header to.
+  core.String? headerValue;
+
+  SecurityPolicyRuleHttpHeaderActionHttpHeaderOption({
+    this.headerName,
+    this.headerValue,
+  });
+
+  SecurityPolicyRuleHttpHeaderActionHttpHeaderOption.fromJson(core.Map _json)
+      : this(
+          headerName: _json.containsKey('headerName')
+              ? _json['headerName'] as core.String
+              : null,
+          headerValue: _json.containsKey('headerValue')
+              ? _json['headerValue'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (headerName != null) 'headerName': headerName!,
+        if (headerValue != null) 'headerValue': headerValue!,
       };
 }
 
@@ -88174,6 +91249,191 @@ class SecurityPolicyRuleMatcherConfig {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (srcIpRanges != null) 'srcIpRanges': srcIpRanges!,
+      };
+}
+
+class SecurityPolicyRuleRateLimitOptions {
+  /// Can only be specified if the action for the rule is "rate_based_ban".
+  ///
+  /// If specified, determines the time (in seconds) the traffic will continue
+  /// to be banned by the rate limit after the rate falls below the threshold.
+  core.int? banDurationSec;
+
+  /// Can only be specified if the action for the rule is "rate_based_ban".
+  ///
+  /// If specified, the key will be banned for the configured 'ban_duration_sec'
+  /// when the number of requests that exceed the 'rate_limit_threshold' also
+  /// exceed this 'ban_threshold'.
+  SecurityPolicyRuleRateLimitOptionsThreshold? banThreshold;
+
+  /// Action to take for requests that are under the configured rate limit
+  /// threshold.
+  ///
+  /// Valid option is "allow" only.
+  core.String? conformAction;
+
+  /// Determines the key to enforce the rate_limit_threshold on.
+  ///
+  /// Possible values are: - ALL: A single rate limit threshold is applied to
+  /// all the requests matching this rule. This is the default value if this
+  /// field 'enforce_on_key' is not configured. - IP: The source IP address of
+  /// the request is the key. Each IP has this limit enforced separately. -
+  /// HTTP_HEADER: The value of the HTTP header whose name is configured under
+  /// "enforce_on_key_name". The key value is truncated to the first 128 bytes
+  /// of the header value. If no such header is present in the request, the key
+  /// type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating
+  /// client IP address) specified in the list of IPs under X-Forwarded-For HTTP
+  /// header. If no such header is present or the value is not a valid IP, the
+  /// key type defaults to ALL. - HTTP_COOKIE: The value of the HTTP cookie
+  /// whose name is configured under "enforce_on_key_name". The key value is
+  /// truncated to the first 128 bytes of the cookie value. If no such cookie is
+  /// present in the request, the key type defaults to ALL.
+  /// Possible string values are:
+  /// - "ALL"
+  /// - "HTTP_COOKIE"
+  /// - "HTTP_HEADER"
+  /// - "IP"
+  /// - "XFF_IP"
+  core.String? enforceOnKey;
+
+  /// Rate limit key name applicable only for the following key types:
+  /// HTTP_HEADER -- Name of the HTTP header whose value is taken as the key
+  /// value.
+  ///
+  /// HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key
+  /// value.
+  core.String? enforceOnKeyName;
+
+  /// Action to take for requests that are above the configured rate limit
+  /// threshold, to either deny with a specified HTTP response code, or redirect
+  /// to a different endpoint.
+  ///
+  /// Valid options are "deny()" where valid values for status are 403, 404,
+  /// 429, and 502, and "redirect" where the redirect parameters come from
+  /// exceed_redirect_options below.
+  core.String? exceedAction;
+
+  /// Parameters defining the redirect action that is used as the exceed action.
+  ///
+  /// Cannot be specified if the exceed action is not redirect.
+  SecurityPolicyRuleRedirectOptions? exceedRedirectOptions;
+
+  /// Threshold at which to begin ratelimiting.
+  SecurityPolicyRuleRateLimitOptionsThreshold? rateLimitThreshold;
+
+  SecurityPolicyRuleRateLimitOptions({
+    this.banDurationSec,
+    this.banThreshold,
+    this.conformAction,
+    this.enforceOnKey,
+    this.enforceOnKeyName,
+    this.exceedAction,
+    this.exceedRedirectOptions,
+    this.rateLimitThreshold,
+  });
+
+  SecurityPolicyRuleRateLimitOptions.fromJson(core.Map _json)
+      : this(
+          banDurationSec: _json.containsKey('banDurationSec')
+              ? _json['banDurationSec'] as core.int
+              : null,
+          banThreshold: _json.containsKey('banThreshold')
+              ? SecurityPolicyRuleRateLimitOptionsThreshold.fromJson(
+                  _json['banThreshold'] as core.Map<core.String, core.dynamic>)
+              : null,
+          conformAction: _json.containsKey('conformAction')
+              ? _json['conformAction'] as core.String
+              : null,
+          enforceOnKey: _json.containsKey('enforceOnKey')
+              ? _json['enforceOnKey'] as core.String
+              : null,
+          enforceOnKeyName: _json.containsKey('enforceOnKeyName')
+              ? _json['enforceOnKeyName'] as core.String
+              : null,
+          exceedAction: _json.containsKey('exceedAction')
+              ? _json['exceedAction'] as core.String
+              : null,
+          exceedRedirectOptions: _json.containsKey('exceedRedirectOptions')
+              ? SecurityPolicyRuleRedirectOptions.fromJson(
+                  _json['exceedRedirectOptions']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          rateLimitThreshold: _json.containsKey('rateLimitThreshold')
+              ? SecurityPolicyRuleRateLimitOptionsThreshold.fromJson(
+                  _json['rateLimitThreshold']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (banDurationSec != null) 'banDurationSec': banDurationSec!,
+        if (banThreshold != null) 'banThreshold': banThreshold!,
+        if (conformAction != null) 'conformAction': conformAction!,
+        if (enforceOnKey != null) 'enforceOnKey': enforceOnKey!,
+        if (enforceOnKeyName != null) 'enforceOnKeyName': enforceOnKeyName!,
+        if (exceedAction != null) 'exceedAction': exceedAction!,
+        if (exceedRedirectOptions != null)
+          'exceedRedirectOptions': exceedRedirectOptions!,
+        if (rateLimitThreshold != null)
+          'rateLimitThreshold': rateLimitThreshold!,
+      };
+}
+
+class SecurityPolicyRuleRateLimitOptionsThreshold {
+  /// Number of HTTP(S) requests for calculating the threshold.
+  core.int? count;
+
+  /// Interval over which the threshold is computed.
+  core.int? intervalSec;
+
+  SecurityPolicyRuleRateLimitOptionsThreshold({
+    this.count,
+    this.intervalSec,
+  });
+
+  SecurityPolicyRuleRateLimitOptionsThreshold.fromJson(core.Map _json)
+      : this(
+          count: _json.containsKey('count') ? _json['count'] as core.int : null,
+          intervalSec: _json.containsKey('intervalSec')
+              ? _json['intervalSec'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (count != null) 'count': count!,
+        if (intervalSec != null) 'intervalSec': intervalSec!,
+      };
+}
+
+class SecurityPolicyRuleRedirectOptions {
+  /// Target for the redirect action.
+  ///
+  /// This is required if the type is EXTERNAL_302 and cannot be specified for
+  /// GOOGLE_RECAPTCHA.
+  core.String? target;
+
+  /// Type of the redirect action.
+  /// Possible string values are:
+  /// - "EXTERNAL_302"
+  /// - "GOOGLE_RECAPTCHA"
+  core.String? type;
+
+  SecurityPolicyRuleRedirectOptions({
+    this.target,
+    this.type,
+  });
+
+  SecurityPolicyRuleRedirectOptions.fromJson(core.Map _json)
+      : this(
+          target: _json.containsKey('target')
+              ? _json['target'] as core.String
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (target != null) 'target': target!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -89233,6 +92493,70 @@ class ServiceAttachmentsScopedList {
       };
 }
 
+/// The share setting for reservations and sole tenancy node groups.
+class ShareSettings {
+  /// A map of project id and project config.
+  ///
+  /// This is only valid when share_type's value is SPECIFIC_PROJECTS.
+  core.Map<core.String, ShareSettingsProjectConfig>? projectMap;
+
+  /// Type of sharing for this shared-reservation
+  /// Possible string values are:
+  /// - "LOCAL" : Default value.
+  /// - "SHARE_TYPE_UNSPECIFIED" : Default value. This value is unused.
+  /// - "SPECIFIC_PROJECTS" : Shared-reservation is open to specific projects
+  core.String? shareType;
+
+  ShareSettings({
+    this.projectMap,
+    this.shareType,
+  });
+
+  ShareSettings.fromJson(core.Map _json)
+      : this(
+          projectMap: _json.containsKey('projectMap')
+              ? (_json['projectMap'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    ShareSettingsProjectConfig.fromJson(
+                        item as core.Map<core.String, core.dynamic>),
+                  ),
+                )
+              : null,
+          shareType: _json.containsKey('shareType')
+              ? _json['shareType'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (projectMap != null) 'projectMap': projectMap!,
+        if (shareType != null) 'shareType': shareType!,
+      };
+}
+
+/// Config for each project in the share settings.
+class ShareSettingsProjectConfig {
+  /// The project ID, should be same as the key of this project config in the
+  /// parent map.
+  core.String? projectId;
+
+  ShareSettingsProjectConfig({
+    this.projectId,
+  });
+
+  ShareSettingsProjectConfig.fromJson(core.Map _json)
+      : this(
+          projectId: _json.containsKey('projectId')
+              ? _json['projectId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (projectId != null) 'projectId': projectId!,
+      };
+}
+
 /// A set of Shielded Instance options.
 class ShieldedInstanceConfig {
   /// Defines whether the instance has integrity monitoring enabled.
@@ -89949,6 +93273,44 @@ class SnapshotList {
       };
 }
 
+class SourceDiskEncryptionKey {
+  /// The customer-supplied encryption key of the source disk.
+  ///
+  /// Required if the source disk is protected by a customer-supplied encryption
+  /// key.
+  CustomerEncryptionKey? diskEncryptionKey;
+
+  /// URL of the disk attached to the source instance.
+  ///
+  /// This can be a full or valid partial URL. For example, the following are
+  /// valid values: -
+  /// https://www.googleapis.com/compute/v1/projects/project/zones/zone
+  /// /disks/disk - projects/project/zones/zone/disks/disk -
+  /// zones/zone/disks/disk
+  core.String? sourceDisk;
+
+  SourceDiskEncryptionKey({
+    this.diskEncryptionKey,
+    this.sourceDisk,
+  });
+
+  SourceDiskEncryptionKey.fromJson(core.Map _json)
+      : this(
+          diskEncryptionKey: _json.containsKey('diskEncryptionKey')
+              ? CustomerEncryptionKey.fromJson(_json['diskEncryptionKey']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          sourceDisk: _json.containsKey('sourceDisk')
+              ? _json['sourceDisk'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (diskEncryptionKey != null) 'diskEncryptionKey': diskEncryptionKey!,
+        if (sourceDisk != null) 'sourceDisk': sourceDisk!,
+      };
+}
+
 /// A specification of the parameters to use when creating the instance template
 /// from a source instance.
 class SourceInstanceParams {
@@ -89976,6 +93338,177 @@ class SourceInstanceParams {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (diskConfigs != null) 'diskConfigs': diskConfigs!,
+      };
+}
+
+/// DEPRECATED: Please use compute#instanceProperties instead.
+///
+/// New properties will not be added to this field.
+class SourceInstanceProperties {
+  /// Enables instances created based on this machine image to send packets with
+  /// source IP addresses other than their own and receive packets with
+  /// destination IP addresses other than their own.
+  ///
+  /// If these instances will be used as an IP gateway or it will be set as the
+  /// next-hop in a Route resource, specify true. If unsure, leave this set to
+  /// false. See the Enable IP forwarding documentation for more information.
+  core.bool? canIpForward;
+
+  /// Whether the instance created from this machine image should be protected
+  /// against deletion.
+  core.bool? deletionProtection;
+
+  /// An optional text description for the instances that are created from this
+  /// machine image.
+  core.String? description;
+
+  /// An array of disks that are associated with the instances that are created
+  /// from this machine image.
+  core.List<SavedAttachedDisk>? disks;
+
+  /// A list of guest accelerator cards' type and count to use for instances
+  /// created from this machine image.
+  core.List<AcceleratorConfig>? guestAccelerators;
+
+  /// Labels to apply to instances that are created from this machine image.
+  core.Map<core.String, core.String>? labels;
+
+  /// The machine type to use for instances that are created from this machine
+  /// image.
+  core.String? machineType;
+
+  /// The metadata key/value pairs to assign to instances that are created from
+  /// this machine image.
+  ///
+  /// These pairs can consist of custom metadata or predefined keys. See Project
+  /// and instance metadata for more information.
+  Metadata? metadata;
+
+  /// Minimum cpu/platform to be used by instances created from this machine
+  /// image.
+  ///
+  /// The instance may be scheduled on the specified or newer cpu/platform.
+  /// Applicable values are the friendly names of CPU platforms, such as
+  /// minCpuPlatform: "Intel Haswell" or minCpuPlatform: "Intel Sandy Bridge".
+  /// For more information, read Specifying a Minimum CPU Platform.
+  core.String? minCpuPlatform;
+
+  /// An array of network access configurations for this interface.
+  core.List<NetworkInterface>? networkInterfaces;
+
+  /// Specifies the scheduling options for the instances that are created from
+  /// this machine image.
+  Scheduling? scheduling;
+
+  /// A list of service accounts with specified scopes.
+  ///
+  /// Access tokens for these service accounts are available to the instances
+  /// that are created from this machine image. Use metadata queries to obtain
+  /// the access tokens for these instances.
+  core.List<ServiceAccount>? serviceAccounts;
+
+  /// A list of tags to apply to the instances that are created from this
+  /// machine image.
+  ///
+  /// The tags identify valid sources or targets for network firewalls. The
+  /// setTags method can modify this list of tags. Each tag within the list must
+  /// comply with RFC1035.
+  Tags? tags;
+
+  SourceInstanceProperties({
+    this.canIpForward,
+    this.deletionProtection,
+    this.description,
+    this.disks,
+    this.guestAccelerators,
+    this.labels,
+    this.machineType,
+    this.metadata,
+    this.minCpuPlatform,
+    this.networkInterfaces,
+    this.scheduling,
+    this.serviceAccounts,
+    this.tags,
+  });
+
+  SourceInstanceProperties.fromJson(core.Map _json)
+      : this(
+          canIpForward: _json.containsKey('canIpForward')
+              ? _json['canIpForward'] as core.bool
+              : null,
+          deletionProtection: _json.containsKey('deletionProtection')
+              ? _json['deletionProtection'] as core.bool
+              : null,
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          disks: _json.containsKey('disks')
+              ? (_json['disks'] as core.List)
+                  .map((value) => SavedAttachedDisk.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          guestAccelerators: _json.containsKey('guestAccelerators')
+              ? (_json['guestAccelerators'] as core.List)
+                  .map((value) => AcceleratorConfig.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          labels: _json.containsKey('labels')
+              ? (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          machineType: _json.containsKey('machineType')
+              ? _json['machineType'] as core.String
+              : null,
+          metadata: _json.containsKey('metadata')
+              ? Metadata.fromJson(
+                  _json['metadata'] as core.Map<core.String, core.dynamic>)
+              : null,
+          minCpuPlatform: _json.containsKey('minCpuPlatform')
+              ? _json['minCpuPlatform'] as core.String
+              : null,
+          networkInterfaces: _json.containsKey('networkInterfaces')
+              ? (_json['networkInterfaces'] as core.List)
+                  .map((value) => NetworkInterface.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          scheduling: _json.containsKey('scheduling')
+              ? Scheduling.fromJson(
+                  _json['scheduling'] as core.Map<core.String, core.dynamic>)
+              : null,
+          serviceAccounts: _json.containsKey('serviceAccounts')
+              ? (_json['serviceAccounts'] as core.List)
+                  .map((value) => ServiceAccount.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          tags: _json.containsKey('tags')
+              ? Tags.fromJson(
+                  _json['tags'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (canIpForward != null) 'canIpForward': canIpForward!,
+        if (deletionProtection != null)
+          'deletionProtection': deletionProtection!,
+        if (description != null) 'description': description!,
+        if (disks != null) 'disks': disks!,
+        if (guestAccelerators != null) 'guestAccelerators': guestAccelerators!,
+        if (labels != null) 'labels': labels!,
+        if (machineType != null) 'machineType': machineType!,
+        if (metadata != null) 'metadata': metadata!,
+        if (minCpuPlatform != null) 'minCpuPlatform': minCpuPlatform!,
+        if (networkInterfaces != null) 'networkInterfaces': networkInterfaces!,
+        if (scheduling != null) 'scheduling': scheduling!,
+        if (serviceAccounts != null) 'serviceAccounts': serviceAccounts!,
+        if (tags != null) 'tags': tags!,
       };
 }
 
@@ -91536,7 +95069,8 @@ class Subnetwork {
   /// Whether to enable flow logging for this subnetwork.
   ///
   /// If this field is not explicitly set, it will not appear in get listings.
-  /// If not set the default behavior is to disable flow logging. This field
+  /// If not set the default behavior is determined by the org policy, if there
+  /// is no org policy specified, then it will default to disabled. This field
   /// isn't supported with the purpose field set to
   /// INTERNAL_HTTPS_LOAD_BALANCER.
   core.bool? enableFlowLogs;
@@ -91668,6 +95202,8 @@ class Subnetwork {
   /// subnet.
   /// - "PRIVATE_SERVICE_CONNECT" : Subnetworks created for Private Service
   /// Connect in the producer network.
+  /// - "REGIONAL_MANAGED_PROXY" : Subnetwork used for Regional
+  /// Internal/External HTTP(S) Load Balancing.
   core.String? purpose;
 
   /// URL of the region where the Subnetwork resides.
@@ -92312,7 +95848,8 @@ class SubnetworkLogConfig {
   /// Whether to enable flow logging for this subnetwork.
   ///
   /// If this field is not explicitly set, it will not appear in get listings.
-  /// If not set the default behavior is to disable flow logging.
+  /// If not set the default behavior is determined by the org policy, if there
+  /// is no org policy specified, then it will default to disabled.
   core.bool? enable;
 
   /// Can only be specified if VPC flow logs for this subnetwork is enabled.
@@ -92324,8 +95861,9 @@ class SubnetworkLogConfig {
   ///
   /// The value of the field must be in \[0, 1\]. Set the sampling rate of VPC
   /// flow logs within the subnetwork where 1.0 means all collected logs are
-  /// reported and 0.0 means no logs are reported. Default is 0.5, which means
-  /// half of all collected logs are reported.
+  /// reported and 0.0 means no logs are reported. Default is 0.5 unless
+  /// otherwise specified by the org policy, which means half of all collected
+  /// logs are reported.
   core.double? flowSampling;
 
   /// Can only be specified if VPC flow logs for this subnetwork is enabled.
@@ -97856,7 +101394,7 @@ class TargetVpnGatewaysScopedList {
 }
 
 class TestFailure {
-  /// The actual output URL evaluated by load balancer containing the scheme,
+  /// The actual output URL evaluated by a load balancer containing the scheme,
   /// host, path and query parameters.
   core.String? actualOutputUrl;
 
@@ -97867,8 +101405,8 @@ class TestFailure {
   /// BackendService or BackendBucket returned by load balancer.
   core.String? actualService;
 
-  /// The expected output URL evaluated by load balancer containing the scheme,
-  /// host, path and query parameters.
+  /// The expected output URL evaluated by a load balancer containing the
+  /// scheme, host, path and query parameters.
   core.String? expectedOutputUrl;
 
   /// Expected HTTP status code for rule with `urlRedirect` calculated by load
@@ -97973,17 +101511,17 @@ class Uint128 {
 
 /// Represents a URL Map resource.
 ///
-/// Google Compute Engine has two URL Map resources: *
+/// Compute Engine has two URL Map resources: *
 /// \[Global\](/compute/docs/reference/rest/v1/urlMaps) *
 /// \[Regional\](/compute/docs/reference/rest/v1/regionUrlMaps) A URL map
-/// resource is a component of certain types of GCP load balancers and Traffic
-/// Director. * urlMaps are used by external HTTP(S) load balancers and Traffic
+/// resource is a component of certain types of cloud load balancers and Traffic
+/// Director: * urlMaps are used by external HTTP(S) load balancers and Traffic
 /// Director. * regionUrlMaps are used by internal HTTP(S) load balancers. For a
-/// list of supported URL map features by load balancer type, see the Load
+/// list of supported URL map features by the load balancer type, see the Load
 /// balancing features: Routing and traffic management table. For a list of
 /// supported URL map features for Traffic Director, see the Traffic Director
 /// features: Routing and traffic management table. This resource defines
-/// mappings from host names and URL paths to either a backend service or a
+/// mappings from hostnames and URL paths to either a backend service or a
 /// backend bucket. To use the global urlMaps resource, the backend service must
 /// have a loadBalancingScheme of either EXTERNAL or INTERNAL_SELF_MANAGED. To
 /// use the regionUrlMaps resource, the backend service must have a
@@ -97997,29 +101535,29 @@ class UrlMap {
 
   /// defaultRouteAction takes effect when none of the hostRules match.
   ///
-  /// The load balancer performs advanced routing actions like URL rewrites,
-  /// header transformations, etc. prior to forwarding the request to the
-  /// selected backend. If defaultRouteAction specifies any
-  /// weightedBackendServices, defaultService must not be set. Conversely if
-  /// defaultService is set, defaultRouteAction cannot contain any
-  /// weightedBackendServices. Only one of defaultRouteAction or
-  /// defaultUrlRedirect must be set. UrlMaps for external HTTP(S) load
-  /// balancers support only the urlRewrite action within defaultRouteAction.
-  /// defaultRouteAction has no effect when the URL map is bound to target gRPC
-  /// proxy that has validateForProxyless field set to true.
+  /// The load balancer performs advanced routing actions, such as URL rewrites
+  /// and header transformations, before forwarding the request to the selected
+  /// backend. If defaultRouteAction specifies any weightedBackendServices,
+  /// defaultService must not be set. Conversely if defaultService is set,
+  /// defaultRouteAction cannot contain any weightedBackendServices. Only one of
+  /// defaultRouteAction or defaultUrlRedirect must be set. UrlMaps for external
+  /// HTTP(S) load balancers support only the urlRewrite action within
+  /// defaultRouteAction. defaultRouteAction has no effect when the URL map is
+  /// bound to a target gRPC proxy that has the validateForProxyless field set
+  /// to true.
   HttpRouteAction? defaultRouteAction;
 
   /// The full or partial URL of the defaultService resource to which traffic is
   /// directed if none of the hostRules match.
   ///
-  /// If defaultRouteAction is additionally specified, advanced routing actions
-  /// like URL Rewrites, etc. take effect prior to sending the request to the
-  /// backend. However, if defaultService is specified, defaultRouteAction
-  /// cannot contain any weightedBackendServices. Conversely, if routeAction
-  /// specifies any weightedBackendServices, service must not be specified. Only
-  /// one of defaultService, defaultUrlRedirect or
+  /// If defaultRouteAction is also specified, advanced routing actions, such as
+  /// URL rewrites, take effect before sending the request to the backend.
+  /// However, if defaultService is specified, defaultRouteAction cannot contain
+  /// any weightedBackendServices. Conversely, if routeAction specifies any
+  /// weightedBackendServices, service must not be specified. Only one of
+  /// defaultService, defaultUrlRedirect , or
   /// defaultRouteAction.weightedBackendService must be set. defaultService has
-  /// no effect when the URL map is bound to target gRPC proxy that has
+  /// no effect when the URL map is bound to a target gRPC proxy that has the
   /// validateForProxyless field set to true.
   core.String? defaultService;
 
@@ -98027,7 +101565,7 @@ class UrlMap {
   /// URL specified by defaultUrlRedirect.
   ///
   /// If defaultUrlRedirect is specified, defaultService or defaultRouteAction
-  /// must not be set. Not supported when the URL map is bound to target gRPC
+  /// must not be set. Not supported when the URL map is bound to a target gRPC
   /// proxy.
   HttpRedirectAction? defaultUrlRedirect;
 
@@ -98039,7 +101577,7 @@ class UrlMap {
   /// Fingerprint of this resource.
   ///
   /// A hash of the contents stored in this object. This field is used in
-  /// optimistic locking. This field will be ignored when inserting a UrlMap. An
+  /// optimistic locking. This field is ignored when inserting a UrlMap. An
   /// up-to-date fingerprint must be provided in order to update the UrlMap,
   /// otherwise the request will fail with error 412 conditionNotMet. To see the
   /// latest fingerprint, make a get() request to retrieve a UrlMap.
@@ -98056,13 +101594,13 @@ class UrlMap {
   /// for the selected backendService.
   ///
   /// The headerAction specified here take effect after headerAction specified
-  /// under pathMatcher. Note that headerAction is not supported for
-  /// Loadbalancers that have their loadBalancingScheme set to EXTERNAL. Not
-  /// supported when the URL map is bound to target gRPC proxy that has
-  /// validateForProxyless field set to true.
+  /// under pathMatcher. headerAction is not supported for load balancers that
+  /// have their loadBalancingScheme set to EXTERNAL. Not supported when the URL
+  /// map is bound to a target gRPC proxy that has validateForProxyless field
+  /// set to true.
   HttpHeaderAction? headerAction;
 
-  /// The list of HostRules to use against the URL.
+  /// The list of host rules to use against the URL.
   core.List<HostRule>? hostRules;
 
   /// The unique identifier for the resource.
@@ -98108,10 +101646,10 @@ class UrlMap {
 
   /// The list of expected URL mapping tests.
   ///
-  /// Request to update this UrlMap will succeed only if all of the test cases
-  /// pass. You can specify a maximum of 100 tests per UrlMap. Not supported
-  /// when the URL map is bound to target gRPC proxy that has
-  /// validateForProxyless field set to true.
+  /// Request to update the UrlMap succeeds only if all test cases pass. You can
+  /// specify a maximum of 100 tests per UrlMap. Not supported when the URL map
+  /// is bound to a target gRPC proxy that has validateForProxyless field set to
+  /// true.
   core.List<UrlMapTest>? tests;
 
   UrlMap({
@@ -98441,18 +101979,18 @@ class UrlMapTest {
   /// Description of this test case.
   core.String? description;
 
-  /// The expected output URL evaluated by load balancer containing the scheme,
-  /// host, path and query parameters.
+  /// The expected output URL evaluated by the load balancer containing the
+  /// scheme, host, path and query parameters.
   ///
   /// For rules that forward requests to backends, the test passes only when
-  /// expectedOutputUrl matches the request forwarded by load balancer to
+  /// expectedOutputUrl matches the request forwarded by the load balancer to
   /// backends. For rules with urlRewrite, the test verifies that the forwarded
   /// request matches hostRewrite and pathPrefixRewrite in the urlRewrite
   /// action. When service is specified, expectedOutputUrl\`s scheme is ignored.
   /// For rules with urlRedirect, the test passes only if expectedOutputUrl
   /// matches the URL in the load balancer's redirect response. If urlRedirect
   /// specifies https_redirect, the test passes only if the scheme in
-  /// expectedOutputUrl is also set to https. If urlRedirect specifies
+  /// expectedOutputUrl is also set to HTTPS. If urlRedirect specifies
   /// strip_query, the test passes only if expectedOutputUrl does not contain
   /// any query parameters. expectedOutputUrl is optional when service is
   /// specified.
@@ -98483,7 +102021,7 @@ class UrlMapTest {
   /// Expected BackendService or BackendBucket resource the given URL should be
   /// mapped to.
   ///
-  /// service cannot be set if expectedRedirectResponseCode is set.
+  /// The service field cannot be set if expectedRedirectResponseCode is set.
   core.String? service;
 
   UrlMapTest({
@@ -99021,16 +102559,16 @@ class UrlMapsValidateResponse {
 /// The spec for modifying the path before sending the request to the matched
 /// backend service.
 class UrlRewrite {
-  /// Prior to forwarding the request to the selected service, the request's
-  /// host header is replaced with contents of hostRewrite.
+  /// Before forwarding the request to the selected service, the request's host
+  /// header is replaced with contents of hostRewrite.
   ///
-  /// The value must be between 1 and 255 characters.
+  /// The value must be from 1 to 255 characters.
   core.String? hostRewrite;
 
-  /// Prior to forwarding the request to the selected backend service, the
+  /// Before forwarding the request to the selected backend service, the
   /// matching portion of the request's path is replaced by pathPrefixRewrite.
   ///
-  /// The value must be between 1 and 1024 characters.
+  /// The value must be from 1 to 1024 characters.
   core.String? pathPrefixRewrite;
 
   UrlRewrite({
@@ -99808,6 +103346,15 @@ class VpnGateway {
   /// Output only.
   core.String? selfLink;
 
+  /// The stack type for this VPN gateway to identify the IP protocols that are
+  /// enabled.
+  ///
+  /// If not specified, IPV4_ONLY will be used.
+  /// Possible string values are:
+  /// - "IPV4_IPV6" : Enable VPN gateway with both IPv4 and IPv6 protocols.
+  /// - "IPV4_ONLY" : Enable VPN gateway with only IPv4 protocol.
+  core.String? stackType;
+
   /// The list of VPN interfaces associated with this VPN gateway.
   core.List<VpnGatewayVpnGatewayInterface>? vpnInterfaces;
 
@@ -99822,6 +103369,7 @@ class VpnGateway {
     this.network,
     this.region,
     this.selfLink,
+    this.stackType,
     this.vpnInterfaces,
   });
 
@@ -99856,6 +103404,9 @@ class VpnGateway {
           selfLink: _json.containsKey('selfLink')
               ? _json['selfLink'] as core.String
               : null,
+          stackType: _json.containsKey('stackType')
+              ? _json['stackType'] as core.String
+              : null,
           vpnInterfaces: _json.containsKey('vpnInterfaces')
               ? (_json['vpnInterfaces'] as core.List)
                   .map((value) => VpnGatewayVpnGatewayInterface.fromJson(
@@ -99875,6 +103426,7 @@ class VpnGateway {
         if (network != null) 'network': network!,
         if (region != null) 'region': region!,
         if (selfLink != null) 'selfLink': selfLink!,
+        if (stackType != null) 'stackType': stackType!,
         if (vpnInterfaces != null) 'vpnInterfaces': vpnInterfaces!,
       };
 }
@@ -101712,14 +105264,14 @@ class WafExpressionSetExpression {
 
 /// In contrast to a single BackendService in HttpRouteAction to which all
 /// matching traffic is directed to, WeightedBackendService allows traffic to be
-/// split across multiple BackendServices.
+/// split across multiple backend services.
 ///
-/// The volume of traffic for each BackendService is proportional to the weight
+/// The volume of traffic for each backend service is proportional to the weight
 /// specified in each WeightedBackendService
 class WeightedBackendService {
   /// The full or partial URL to the default BackendService resource.
   ///
-  /// Before forwarding the request to backendService, the loadbalancer applies
+  /// Before forwarding the request to backendService, the load balancer applies
   /// any relevant headerActions specified as part of this backendServiceWeight.
   core.String? backendService;
 
@@ -101727,20 +105279,19 @@ class WeightedBackendService {
   /// for the selected backendService.
   ///
   /// headerAction specified here take effect before headerAction in the
-  /// enclosing HttpRouteRule, PathMatcher and UrlMap. Note that headerAction is
-  /// not supported for Loadbalancers that have their loadBalancingScheme set to
-  /// EXTERNAL. Not supported when the URL map is bound to target gRPC proxy
+  /// enclosing HttpRouteRule, PathMatcher and UrlMap. headerAction is not
+  /// supported for load balancers that have their loadBalancingScheme set to
+  /// EXTERNAL. Not supported when the URL map is bound to a target gRPC proxy
   /// that has validateForProxyless field set to true.
   HttpHeaderAction? headerAction;
 
-  /// Specifies the fraction of traffic sent to backendService, computed as
+  /// Specifies the fraction of traffic sent to a backend service, computed as
   /// weight / (sum of all weightedBackendService weights in routeAction) .
   ///
   /// The selection of a backend service is determined only for new traffic.
-  /// Once a user's request has been directed to a backendService, subsequent
-  /// requests will be sent to the same backendService as determined by the
-  /// BackendService's session affinity policy. The value must be between 0 and
-  /// 1000
+  /// Once a user's request has been directed to a backend service, subsequent
+  /// requests are sent to the same backend service as determined by the backend
+  /// service's session affinity policy. The value must be from 0 to 1000.
   core.int? weight;
 
   WeightedBackendService({

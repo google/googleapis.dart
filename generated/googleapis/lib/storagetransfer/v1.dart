@@ -76,16 +76,16 @@ class GoogleServiceAccountsResource {
   /// Service to access buckets in the project where transfers run or in other
   /// projects.
   ///
-  /// Each Google service account is associated with one Google Cloud Platform
-  /// Console project. Users should add this service account to the Google Cloud
-  /// Storage bucket ACLs to grant access to Storage Transfer Service. This
-  /// service account is created and owned by Storage Transfer Service and can
-  /// only be used by Storage Transfer Service.
+  /// Each Google service account is associated with one Google Cloud project.
+  /// Users should add this service account to the Google Cloud Storage bucket
+  /// ACLs to grant access to Storage Transfer Service. This service account is
+  /// created and owned by Storage Transfer Service and can only be used by
+  /// Storage Transfer Service.
   ///
   /// Request parameters:
   ///
-  /// [projectId] - Required. The ID of the Google Cloud Platform Console
-  /// project that the Google service account is associated with.
+  /// [projectId] - Required. The ID of the Google Cloud project that the Google
+  /// service account is associated with.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -138,14 +138,18 @@ class ProjectsAgentPoolsResource {
   ///
   /// Request parameters:
   ///
-  /// [projectId] - Required. The ID of the Google Cloud Platform Console
-  /// project that owns the agent pool.
+  /// [projectId] - Required. The ID of the Google Cloud project that owns the
+  /// agent pool.
   /// Value must have pattern `^\[^/\]+$`.
   ///
-  /// [agentPoolId] - Required. The id of the agent pool to create. The
-  /// agent_pool_id must be non-empty, less than or equal to 128 characters, and
-  /// satisfy the following regex: "^\[a-z\](\[a-z0-9-._~\]*\[a-z0-9\])?$".
-  /// Also, agent pool names cannot start with the string "goog".
+  /// [agentPoolId] - Required. The ID of the agent pool to create. The
+  /// `agent_pool_id` must meet the following requirements: * Length of 128
+  /// characters or less. * Not start with the string `goog`. * Start with a
+  /// lowercase ASCII character, followed by: * Zero or more: lowercase Latin
+  /// alphabet characters, numerals, hyphens (`-`), periods (`.`), underscores
+  /// (`_`), or tildes (`~`). * One or more numerals or lowercase ASCII
+  /// characters. As expressed by the regular expression:
+  /// `^(?!goog)[a-z]([a-z0-9-._~]*[a-z0-9])?$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -185,7 +189,7 @@ class ProjectsAgentPoolsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The agent pool name to delete.
+  /// [name] - Required. The name of the agent pool to delete.
   /// Value must have pattern `^projects/\[^/\]+/agentPools/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -220,7 +224,7 @@ class ProjectsAgentPoolsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The agent pool to get.
+  /// [name] - Required. The name of the agent pool to get.
   /// Value must have pattern `^projects/\[^/\]+/agentPools/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -255,18 +259,17 @@ class ProjectsAgentPoolsResource {
   ///
   /// Request parameters:
   ///
-  /// [projectId] - Required. The ID of the Google Cloud Platform Console
-  /// project that owns the job.
+  /// [projectId] - Required. The ID of the Google Cloud project that owns the
+  /// job.
   /// Value must have pattern `^\[^/\]+$`.
   ///
-  /// [filter] - A list of optional query parameters specified as JSON text in
+  /// [filter] - An optional list of query parameters specified as JSON text in
   /// the form of: `{"agentPoolNames":["agentpool1","agentpool2",...]}` Since
   /// `agentPoolNames` support multiple values, its values must be specified
-  /// with array notation. `agentPoolNames` is an optional field. The list
-  /// returns all agent pools for the project when the filter is not provided or
-  /// empty.
+  /// with array notation. When the filter is either empty or not provided, the
+  /// list returns all agent pools for the project.
   ///
-  /// [pageSize] - The list page size. The max allowed value is 256.
+  /// [pageSize] - The list page size. The max allowed value is `256`.
   ///
   /// [pageToken] - The list page token.
   ///
@@ -313,12 +316,13 @@ class ProjectsAgentPoolsResource {
   /// Request parameters:
   ///
   /// [name] - Required. Specifies a unique string that identifies the agent
-  /// pool. Format: projects/{project_id}/agentPools/{agent_pool_id}
+  /// pool. Format: `projects/{project_id}/agentPools/{agent_pool_id}`
   /// Value must have pattern `^projects/\[^/\]+/agentPools/\[^/\]+$`.
   ///
-  /// [updateMask] - The field mask of the fields in `agentPool` that are to be
-  /// updated in this request. Fields in `agentPool` that can be updated are:
-  /// display_name, bandwidth_limit,
+  /// [updateMask] - The
+  /// [field mask](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf)
+  /// of the fields in `agentPool` to update in this request. The following
+  /// `agentPool` fields can be updated: * display_name * bandwidth_limit
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -403,8 +407,8 @@ class TransferJobsResource {
   /// [jobName] - Required. The job to get.
   /// Value must have pattern `^transferJobs/.*$`.
   ///
-  /// [projectId] - Required. The ID of the Google Cloud Platform Console
-  /// project that owns the job.
+  /// [projectId] - Required. The ID of the Google Cloud project that owns the
+  /// job.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -833,7 +837,7 @@ class AgentPool {
 
   /// Specifies a unique string that identifies the agent pool.
   ///
-  /// Format: projects/{project_id}/agentPools/{agent_pool_id}
+  /// Format: `projects/{project_id}/agentPools/{agent_pool_id}`
   ///
   /// Required.
   core.String? name;
@@ -1083,11 +1087,10 @@ class AzureCredentials {
       };
 }
 
-/// Specifies the BandwidthLimit to describe the non-negative bandwidth rate in
-/// mbps for the agent pool.
+/// Specifies a bandwidth limit for an agent pool.
 class BandwidthLimit {
-  /// Specifies bandwidth rate in mbps distributed across all the agents in the
-  /// pool.
+  /// Bandwidth rate in megabytes per second, distributed across all the agents
+  /// in the pool.
   core.String? limitMbps;
 
   BandwidthLimit({
@@ -1351,8 +1354,22 @@ class LoggingConfig {
   /// default is that logs are not generated for this transfer.
   core.bool? enableOnpremGcsTransferLogs;
 
+  /// States in which `log_actions` are logged.
+  ///
+  /// If empty, no logs are generated. This is not yet supported for transfers
+  /// with PosixFilesystem data sources.
+  core.List<core.String>? logActionStates;
+
+  /// Actions to be logged.
+  ///
+  /// If empty, no logs are generated. This is not yet supported for transfers
+  /// with PosixFilesystem data sources.
+  core.List<core.String>? logActions;
+
   LoggingConfig({
     this.enableOnpremGcsTransferLogs,
+    this.logActionStates,
+    this.logActions,
   });
 
   LoggingConfig.fromJson(core.Map _json)
@@ -1361,11 +1378,23 @@ class LoggingConfig {
               _json.containsKey('enableOnpremGcsTransferLogs')
                   ? _json['enableOnpremGcsTransferLogs'] as core.bool
                   : null,
+          logActionStates: _json.containsKey('logActionStates')
+              ? (_json['logActionStates'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          logActions: _json.containsKey('logActions')
+              ? (_json['logActions'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (enableOnpremGcsTransferLogs != null)
           'enableOnpremGcsTransferLogs': enableOnpremGcsTransferLogs!,
+        if (logActionStates != null) 'logActionStates': logActionStates!,
+        if (logActions != null) 'logActions': logActions!,
       };
 }
 
@@ -1439,8 +1468,8 @@ class NotificationConfig {
 /// "last modification time" refers to the time of the last change to the
 /// object's content or metadata — specifically, this is the `updated` property
 /// of Cloud Storage objects, the `LastModified` field of S3 objects, and the
-/// `Last-Modified` header of Azure blobs. Transfers that use PosixFilesystem
-/// and have a Cloud Storage source don't support `ObjectConditions`.
+/// `Last-Modified` header of Azure blobs. Transfers with a PosixFilesystem
+/// source or destination don't support `ObjectConditions`.
 class ObjectConditions {
   /// If you specify `exclude_prefixes`, Storage Transfer Service uses the items
   /// in the `exclude_prefixes` array to determine which objects to exclude from
@@ -1502,20 +1531,25 @@ class ObjectConditions {
   /// `last_modified_before` to the end of the day
   core.String? lastModifiedSince;
 
-  /// If specified, only objects with a "last modification time" on or after
-  /// `NOW` - `max_time_elapsed_since_last_modification` and objects that don't
-  /// have a "last modification time" are transferred.
+  /// Ensures that objects are not transferred if a specific maximum time has
+  /// elapsed since the "last modification time".
   ///
-  /// For each TransferOperation started by this TransferJob, `NOW` refers to
-  /// the start_time of the `TransferOperation`.
+  /// When a TransferOperation begins, objects with a "last modification time"
+  /// are transferred only if the elapsed time between the start_time of the
+  /// \`TransferOperation\`and the "last modification time" of the object is
+  /// less than the value of max_time_elapsed_since_last_modification\`. Objects
+  /// that do not have a "last modification time" are also transferred.
   core.String? maxTimeElapsedSinceLastModification;
 
-  /// If specified, only objects with a "last modification time" before `NOW` -
-  /// `min_time_elapsed_since_last_modification` and objects that don't have a
-  /// "last modification time" are transferred.
+  /// Ensures that objects are not transferred until a specific minimum time has
+  /// elapsed after the "last modification time".
   ///
-  /// For each TransferOperation started by this TransferJob, `NOW` refers to
-  /// the start_time of the `TransferOperation`.
+  /// When a TransferOperation begins, objects with a "last modification time"
+  /// are transferred only if the elapsed time between the start_time of the
+  /// \`TransferOperation\` and the "last modification time" of the object is
+  /// equal to or greater than the value of
+  /// min_time_elapsed_since_last_modification\`. Objects that do not have a
+  /// "last modification time" are also transferred.
   core.String? minTimeElapsedSinceLastModification;
 
   ObjectConditions({
@@ -1670,8 +1704,7 @@ typedef ResumeTransferOperationRequest = $Empty;
 
 /// Request passed to RunTransferJob.
 class RunTransferJobRequest {
-  /// The ID of the Google Cloud Platform Console project that owns the transfer
-  /// job.
+  /// The ID of the Google Cloud project that owns the transfer job.
   ///
   /// Required.
   core.String? projectId;
@@ -1859,7 +1892,7 @@ class TransferJob {
   /// This is not supported for transfers involving PosixFilesystem.
   NotificationConfig? notificationConfig;
 
-  /// The ID of the Google Cloud Platform Project that owns the job.
+  /// The ID of the Google Cloud project that owns the job.
   core.String? projectId;
 
   /// Specifies schedule for the transfer job.
@@ -1965,6 +1998,31 @@ class TransferJob {
       };
 }
 
+/// Specifies where the manifest is located.
+class TransferManifest {
+  /// Specifies the path to the manifest in Cloud Storage.
+  ///
+  /// The Google-managed service account for the transfer must have
+  /// `storage.objects.get` permission for this object. An example path is
+  /// `gs://bucket_name/path/manifest.csv`.
+  core.String? location;
+
+  TransferManifest({
+    this.location,
+  });
+
+  TransferManifest.fromJson(core.Map _json)
+      : this(
+          location: _json.containsKey('location')
+              ? _json['location'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (location != null) 'location': location!,
+      };
+}
+
 /// TransferOptions define the actions to be performed on objects in a transfer.
 class TransferOptions {
   /// Whether objects should be deleted from the source after they are
@@ -2045,8 +2103,28 @@ class TransferSpec {
   /// exclude objects in a data sink.
   ObjectConditions? objectConditions;
 
+  /// A POSIX Filesystem data sink.
+  PosixFilesystem? posixDataSink;
+
   /// A POSIX Filesystem data source.
   PosixFilesystem? posixDataSource;
+
+  /// Specifies the agent pool name associated with the posix data sink.
+  ///
+  /// When unspecified, the default name is used.
+  core.String? sinkAgentPoolName;
+
+  /// Specifies the agent pool name associated with the posix data source.
+  ///
+  /// When unspecified, the default name is used.
+  core.String? sourceAgentPoolName;
+
+  /// A manifest file provides a list of objects to be transferred from the data
+  /// source.
+  ///
+  /// This field points to the location of the manifest file. Otherwise, the
+  /// entire source bucket is used. ObjectConditions still apply.
+  TransferManifest? transferManifest;
 
   /// If the option delete_objects_unique_in_sink is `true` and time-based
   /// object conditions such as 'last modification time' are specified, the
@@ -2060,7 +2138,11 @@ class TransferSpec {
     this.gcsDataSource,
     this.httpDataSource,
     this.objectConditions,
+    this.posixDataSink,
     this.posixDataSource,
+    this.sinkAgentPoolName,
+    this.sourceAgentPoolName,
+    this.transferManifest,
     this.transferOptions,
   });
 
@@ -2092,8 +2174,22 @@ class TransferSpec {
               ? ObjectConditions.fromJson(_json['objectConditions']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          posixDataSink: _json.containsKey('posixDataSink')
+              ? PosixFilesystem.fromJson(
+                  _json['posixDataSink'] as core.Map<core.String, core.dynamic>)
+              : null,
           posixDataSource: _json.containsKey('posixDataSource')
               ? PosixFilesystem.fromJson(_json['posixDataSource']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          sinkAgentPoolName: _json.containsKey('sinkAgentPoolName')
+              ? _json['sinkAgentPoolName'] as core.String
+              : null,
+          sourceAgentPoolName: _json.containsKey('sourceAgentPoolName')
+              ? _json['sourceAgentPoolName'] as core.String
+              : null,
+          transferManifest: _json.containsKey('transferManifest')
+              ? TransferManifest.fromJson(_json['transferManifest']
                   as core.Map<core.String, core.dynamic>)
               : null,
           transferOptions: _json.containsKey('transferOptions')
@@ -2110,14 +2206,19 @@ class TransferSpec {
         if (gcsDataSource != null) 'gcsDataSource': gcsDataSource!,
         if (httpDataSource != null) 'httpDataSource': httpDataSource!,
         if (objectConditions != null) 'objectConditions': objectConditions!,
+        if (posixDataSink != null) 'posixDataSink': posixDataSink!,
         if (posixDataSource != null) 'posixDataSource': posixDataSource!,
+        if (sinkAgentPoolName != null) 'sinkAgentPoolName': sinkAgentPoolName!,
+        if (sourceAgentPoolName != null)
+          'sourceAgentPoolName': sourceAgentPoolName!,
+        if (transferManifest != null) 'transferManifest': transferManifest!,
         if (transferOptions != null) 'transferOptions': transferOptions!,
       };
 }
 
 /// Request passed to UpdateTransferJob.
 class UpdateTransferJobRequest {
-  /// The ID of the Google Cloud Platform Console project that owns the job.
+  /// The ID of the Google Cloud project that owns the job.
   ///
   /// Required.
   core.String? projectId;

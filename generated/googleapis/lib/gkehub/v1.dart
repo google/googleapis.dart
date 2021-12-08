@@ -338,12 +338,16 @@ class ProjectsLocationsFeaturesResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/features/\[^/\]+$`.
   ///
-  /// [options_requestedPolicyVersion] - Optional. The policy format version to
-  /// be returned. Valid values are 0, 1, and 3. Requests specifying an invalid
-  /// value will be rejected. Requests for policies with any conditional
-  /// bindings must specify version 3. Policies without any conditional bindings
-  /// may specify any valid value or leave the field unset. To learn which
-  /// resources support conditions in their IAM policies, see the
+  /// [options_requestedPolicyVersion] - Optional. The maximum policy version
+  /// that will be used to format the policy. Valid values are 0, 1, and 3.
+  /// Requests specifying an invalid value will be rejected. Requests for
+  /// policies with any conditional role bindings must specify version 3.
+  /// Policies with no conditional role bindings may specify any valid value or
+  /// leave the field unset. The policy in the response might use the policy
+  /// version that you specified, or it might use a lower policy version. For
+  /// example, if you specify version 3, but the policy has no conditional role
+  /// bindings, the response uses version 1. To learn which resources support
+  /// conditions in their IAM policies, see the
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -857,12 +861,16 @@ class ProjectsLocationsMembershipsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/memberships/\[^/\]+$`.
   ///
-  /// [options_requestedPolicyVersion] - Optional. The policy format version to
-  /// be returned. Valid values are 0, 1, and 3. Requests specifying an invalid
-  /// value will be rejected. Requests for policies with any conditional
-  /// bindings must specify version 3. Policies without any conditional bindings
-  /// may specify any valid value or leave the field unset. To learn which
-  /// resources support conditions in their IAM policies, see the
+  /// [options_requestedPolicyVersion] - Optional. The maximum policy version
+  /// that will be used to format the policy. Valid values are 0, 1, and 3.
+  /// Requests specifying an invalid value will be rejected. Requests for
+  /// policies with any conditional role bindings must specify version 3.
+  /// Policies with no conditional role bindings may specify any valid value or
+  /// leave the field unset. The policy in the response might use the policy
+  /// version that you specified, or it might use a lower policy version. For
+  /// example, if you specify version 3, but the policy has no conditional role
+  /// bindings, the response uses version 1. To learn which resources support
+  /// conditions in their IAM policies, see the
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1638,6 +1646,12 @@ class ConfigManagementConfigSync {
   /// Git repo configuration for the cluster.
   ConfigManagementGitConfig? git;
 
+  /// Set to true to enable the Config Sync admission webhook to prevent drifts.
+  ///
+  /// If set to `false`, disables the Config Sync admission webhook and does not
+  /// prevent drifts.
+  core.bool? preventDrift;
+
   /// Specifies whether the Config Sync Repo is in “hierarchical” or
   /// “unstructured” mode.
   core.String? sourceFormat;
@@ -1645,6 +1659,7 @@ class ConfigManagementConfigSync {
   ConfigManagementConfigSync({
     this.enabled,
     this.git,
+    this.preventDrift,
     this.sourceFormat,
   });
 
@@ -1657,6 +1672,9 @@ class ConfigManagementConfigSync {
               ? ConfigManagementGitConfig.fromJson(
                   _json['git'] as core.Map<core.String, core.dynamic>)
               : null,
+          preventDrift: _json.containsKey('preventDrift')
+              ? _json['preventDrift'] as core.bool
+              : null,
           sourceFormat: _json.containsKey('sourceFormat')
               ? _json['sourceFormat'] as core.String
               : null,
@@ -1665,6 +1683,7 @@ class ConfigManagementConfigSync {
   core.Map<core.String, core.dynamic> toJson() => {
         if (enabled != null) 'enabled': enabled!,
         if (git != null) 'git': git!,
+        if (preventDrift != null) 'preventDrift': preventDrift!,
         if (sourceFormat != null) 'sourceFormat': sourceFormat!,
       };
 }
@@ -1987,6 +2006,9 @@ class ConfigManagementGitConfig {
   core.String? policyDir;
 
   /// Type of secret configured for access to the Git repo.
+  ///
+  /// Must be one of ssh, cookiefile, gcenode, token, gcpserviceaccount or none.
+  /// The validation of this is case-sensitive. Required.
   core.String? secretType;
 
   /// The branch of the repository to sync from.
@@ -3139,6 +3161,90 @@ class KubernetesMetadata {
       };
 }
 
+/// KubernetesResource contains the YAML manifests and configuration for
+/// Membership Kubernetes resources in the cluster.
+///
+/// After CreateMembership or UpdateMembership, these resources should be
+/// re-applied in the cluster.
+class KubernetesResource {
+  /// The Kubernetes resources for installing the GKE Connect agent This field
+  /// is only populated in the Membership returned from a successful
+  /// long-running operation from CreateMembership or UpdateMembership.
+  ///
+  /// It is not populated during normal GetMembership or ListMemberships
+  /// requests. To get the resource manifest after the initial registration, the
+  /// caller should make a UpdateMembership call with an empty field mask.
+  ///
+  /// Output only.
+  core.List<ResourceManifest>? connectResources;
+
+  /// Input only.
+  ///
+  /// The YAML representation of the Membership CR. This field is ignored for
+  /// GKE clusters where Hub can read the CR directly. Callers should provide
+  /// the CR that is currently present in the cluster during CreateMembership or
+  /// UpdateMembership, or leave this field empty if none exists. The CR
+  /// manifest is used to validate the cluster has not been registered with
+  /// another Membership.
+  core.String? membershipCrManifest;
+
+  /// Additional Kubernetes resources that need to be applied to the cluster
+  /// after Membership creation, and after every update.
+  ///
+  /// This field is only populated in the Membership returned from a successful
+  /// long-running operation from CreateMembership or UpdateMembership. It is
+  /// not populated during normal GetMembership or ListMemberships requests. To
+  /// get the resource manifest after the initial registration, the caller
+  /// should make a UpdateMembership call with an empty field mask.
+  ///
+  /// Output only.
+  core.List<ResourceManifest>? membershipResources;
+
+  /// Options for Kubernetes resource generation.
+  ///
+  /// Optional.
+  ResourceOptions? resourceOptions;
+
+  KubernetesResource({
+    this.connectResources,
+    this.membershipCrManifest,
+    this.membershipResources,
+    this.resourceOptions,
+  });
+
+  KubernetesResource.fromJson(core.Map _json)
+      : this(
+          connectResources: _json.containsKey('connectResources')
+              ? (_json['connectResources'] as core.List)
+                  .map((value) => ResourceManifest.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          membershipCrManifest: _json.containsKey('membershipCrManifest')
+              ? _json['membershipCrManifest'] as core.String
+              : null,
+          membershipResources: _json.containsKey('membershipResources')
+              ? (_json['membershipResources'] as core.List)
+                  .map((value) => ResourceManifest.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          resourceOptions: _json.containsKey('resourceOptions')
+              ? ResourceOptions.fromJson(_json['resourceOptions']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (connectResources != null) 'connectResources': connectResources!,
+        if (membershipCrManifest != null)
+          'membershipCrManifest': membershipCrManifest!,
+        if (membershipResources != null)
+          'membershipResources': membershipResources!,
+        if (resourceOptions != null) 'resourceOptions': resourceOptions!,
+      };
+}
+
 /// Response message for the `GkeHub.ListFeatures` method.
 class ListFeaturesResponse {
   /// A token to request the next page of resources from the `ListFeatures`
@@ -3468,6 +3574,17 @@ class MembershipEndpoint {
   /// Output only.
   KubernetesMetadata? kubernetesMetadata;
 
+  /// The in-cluster Kubernetes Resources that should be applied for a correctly
+  /// registered cluster, in the steady state.
+  ///
+  /// These resources: * Ensure that the cluster is exclusively registered to
+  /// one and only one Hub Membership. * Propagate Workload Pool Information
+  /// available in the Membership Authority field. * Ensure proper initial
+  /// configuration of default Hub Features.
+  ///
+  /// Optional.
+  KubernetesResource? kubernetesResource;
+
   /// Specific information for a GKE Multi-Cloud cluster.
   ///
   /// Optional.
@@ -3484,6 +3601,7 @@ class MembershipEndpoint {
   MembershipEndpoint({
     this.gkeCluster,
     this.kubernetesMetadata,
+    this.kubernetesResource,
     this.multiCloudCluster,
     this.onPremCluster,
   });
@@ -3496,6 +3614,10 @@ class MembershipEndpoint {
               : null,
           kubernetesMetadata: _json.containsKey('kubernetesMetadata')
               ? KubernetesMetadata.fromJson(_json['kubernetesMetadata']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          kubernetesResource: _json.containsKey('kubernetesResource')
+              ? KubernetesResource.fromJson(_json['kubernetesResource']
                   as core.Map<core.String, core.dynamic>)
               : null,
           multiCloudCluster: _json.containsKey('multiCloudCluster')
@@ -3512,6 +3634,8 @@ class MembershipEndpoint {
         if (gkeCluster != null) 'gkeCluster': gkeCluster!,
         if (kubernetesMetadata != null)
           'kubernetesMetadata': kubernetesMetadata!,
+        if (kubernetesResource != null)
+          'kubernetesResource': kubernetesResource!,
         if (multiCloudCluster != null) 'multiCloudCluster': multiCloudCluster!,
         if (onPremCluster != null) 'onPremCluster': onPremCluster!,
       };
@@ -3917,6 +4041,79 @@ class Policy {
         if (bindings != null) 'bindings': bindings!,
         if (etag != null) 'etag': etag!,
         if (version != null) 'version': version!,
+      };
+}
+
+/// ResourceManifest represents a single Kubernetes resource to be applied to
+/// the cluster.
+class ResourceManifest {
+  /// Whether the resource provided in the manifest is `cluster_scoped`.
+  ///
+  /// If unset, the manifest is assumed to be namespace scoped. This field is
+  /// used for REST mapping when applying the resource in a cluster.
+  core.bool? clusterScoped;
+
+  /// YAML manifest of the resource.
+  core.String? manifest;
+
+  ResourceManifest({
+    this.clusterScoped,
+    this.manifest,
+  });
+
+  ResourceManifest.fromJson(core.Map _json)
+      : this(
+          clusterScoped: _json.containsKey('clusterScoped')
+              ? _json['clusterScoped'] as core.bool
+              : null,
+          manifest: _json.containsKey('manifest')
+              ? _json['manifest'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (clusterScoped != null) 'clusterScoped': clusterScoped!,
+        if (manifest != null) 'manifest': manifest!,
+      };
+}
+
+/// ResourceOptions represent options for Kubernetes resource generation.
+class ResourceOptions {
+  /// The Connect agent version to use for connect_resources.
+  ///
+  /// Defaults to the latest GKE Connect version. The version must be a
+  /// currently supported version, obsolete versions will be rejected.
+  ///
+  /// Optional.
+  core.String? connectVersion;
+
+  /// Use `apiextensions/v1beta1` instead of `apiextensions/v1` for
+  /// CustomResourceDefinition resources.
+  ///
+  /// This option should be set for clusters with Kubernetes apiserver versions
+  /// \<1.16.
+  ///
+  /// Optional.
+  core.bool? v1beta1Crd;
+
+  ResourceOptions({
+    this.connectVersion,
+    this.v1beta1Crd,
+  });
+
+  ResourceOptions.fromJson(core.Map _json)
+      : this(
+          connectVersion: _json.containsKey('connectVersion')
+              ? _json['connectVersion'] as core.String
+              : null,
+          v1beta1Crd: _json.containsKey('v1beta1Crd')
+              ? _json['v1beta1Crd'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (connectVersion != null) 'connectVersion': connectVersion!,
+        if (v1beta1Crd != null) 'v1beta1Crd': v1beta1Crd!,
       };
 }
 

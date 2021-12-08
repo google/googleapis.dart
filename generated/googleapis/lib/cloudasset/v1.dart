@@ -24,6 +24,7 @@
 /// - [AssetsResource]
 /// - [FeedsResource]
 /// - [OperationsResource]
+/// - [SavedQueriesResource]
 /// - [V1Resource]
 library cloudasset.v1;
 
@@ -53,6 +54,7 @@ class CloudAssetApi {
   AssetsResource get assets => AssetsResource(_requester);
   FeedsResource get feeds => FeedsResource(_requester);
   OperationsResource get operations => OperationsResource(_requester);
+  SavedQueriesResource get savedQueries => SavedQueriesResource(_requester);
   V1Resource get v1 => V1Resource(_requester);
 
   CloudAssetApi(http.Client client,
@@ -427,6 +429,253 @@ class OperationsResource {
   }
 }
 
+class SavedQueriesResource {
+  final commons.ApiRequester _requester;
+
+  SavedQueriesResource(commons.ApiRequester client) : _requester = client;
+
+  /// Creates a saved query in a parent project/folder/organization.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The name of the project/folder/organization where
+  /// this saved_query should be created in. It can only be an organization
+  /// number (such as "organizations/123"), a folder number (such as
+  /// "folders/123"), a project ID (such as "projects/my-project-id")", or a
+  /// project number (such as "projects/12345").
+  /// Value must have pattern `^\[^/\]+/\[^/\]+$`.
+  ///
+  /// [savedQueryId] - Required. The ID to use for the saved query, which must
+  /// be unique in the specified parent. It will become the final component of
+  /// the saved query's resource name. This value should be 4-63 characters, and
+  /// valid characters are /a-z-/. Notice that this field is required in the
+  /// saved query creation, and the `name` field of the `saved_query` will be
+  /// ignored.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SavedQuery].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SavedQuery> create(
+    SavedQuery request,
+    core.String parent, {
+    core.String? savedQueryId,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (savedQueryId != null) 'savedQueryId': [savedQueryId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/savedQueries';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return SavedQuery.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a saved query.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the saved query to delete. It must be in
+  /// the format of: * projects/project_number/savedQueries/saved_query_id *
+  /// folders/folder_number/savedQueries/saved_query_id *
+  /// organizations/organization_number/savedQueries/saved_query_id
+  /// Value must have pattern `^\[^/\]+/\[^/\]+/savedQueries/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'DELETE',
+      queryParams: _queryParams,
+    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets details about a saved query.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the saved query and it must be in the
+  /// format of: * projects/project_number/savedQueries/saved_query_id *
+  /// folders/folder_number/savedQueries/saved_query_id *
+  /// organizations/organization_number/savedQueries/saved_query_id
+  /// Value must have pattern `^\[^/\]+/\[^/\]+/savedQueries/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SavedQuery].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SavedQuery> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return SavedQuery.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists all saved queries in a parent project/folder/organization.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent project/folder/organization whose
+  /// savedQueries are to be listed. It can only be using
+  /// project/folder/organization number (such as "folders/12345")", or a
+  /// project ID (such as "projects/my-project-id").
+  /// Value must have pattern `^\[^/\]+/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. The expression to filter resources. The expression is
+  /// a list of zero or more restrictions combined via logical operators `AND`
+  /// and `OR`. When `AND` and `OR` are both used in the expression, parentheses
+  /// must be appropriately used to group the combinations. The expression may
+  /// also contain regular expressions. See https://google.aip.dev/160 for more
+  /// information on the grammar.
+  ///
+  /// [pageSize] - Optional. The maximum number of saved queries to return per
+  /// page. The service may return fewer than this value. If unspecified, at
+  /// most 50 will be returned. The maximum value is 1000; values above 1000
+  /// will be coerced to 1000.
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `ListSavedQueries` call. Provide this to retrieve the subsequent page.
+  /// When paginating, all other parameters provided to `ListSavedQueries` must
+  /// match the call that provided the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListSavedQueriesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListSavedQueriesResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/savedQueries';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return ListSavedQueriesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates a saved query.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The resource name of the saved query. The format must be: *
+  /// projects/project_number/savedQueries/saved_query_id *
+  /// folders/folder_number/savedQueries/saved_query_id *
+  /// organizations/organization_number/savedQueries/saved_query_id
+  /// Value must have pattern `^\[^/\]+/\[^/\]+/savedQueries/\[^/\]+$`.
+  ///
+  /// [updateMask] - Required. The list of fields to update.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SavedQuery].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SavedQuery> patch(
+    SavedQuery request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return SavedQuery.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class V1Resource {
   final commons.ApiRequester _requester;
 
@@ -540,6 +789,19 @@ class V1Resource {
   /// finished until then, you will get a DEADLINE_EXCEEDED error. Default is
   /// empty.
   ///
+  /// [savedAnalysisQuery] - Optional. The name of a saved query, which must be
+  /// in the format of: * projects/project_number/savedQueries/saved_query_id *
+  /// folders/folder_number/savedQueries/saved_query_id *
+  /// organizations/organization_number/savedQueries/saved_query_id If both
+  /// `analysis_query` and `saved_analysis_query` are provided, they will be
+  /// merged together with the `saved_analysis_query` as base and the
+  /// `analysis_query` as overrides. For more details of the merge behavior,
+  /// please refer to the
+  /// [MergeFrom](https://developers.google.com/protocol-buffers/docs/reference/cpp/google.protobuf.message#Message.MergeFrom.details)
+  /// page. Note that you cannot override primitive fields with default value,
+  /// such as 0 or empty string, etc., because we use proto3, which doesn't
+  /// support field presence yet.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -564,6 +826,7 @@ class V1Resource {
     core.bool? analysisQuery_options_outputResourceEdges,
     core.String? analysisQuery_resourceSelector_fullResourceName,
     core.String? executionTimeout,
+    core.String? savedAnalysisQuery,
     core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
@@ -610,6 +873,8 @@ class V1Resource {
           analysisQuery_resourceSelector_fullResourceName
         ],
       if (executionTimeout != null) 'executionTimeout': [executionTimeout],
+      if (savedAnalysisQuery != null)
+        'savedAnalysisQuery': [savedAnalysisQuery],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -1211,9 +1476,27 @@ class AnalyzeIamPolicyLongrunningRequest {
   /// Required.
   IamPolicyAnalysisOutputConfig? outputConfig;
 
+  /// The name of a saved query, which must be in the format of: *
+  /// projects/project_number/savedQueries/saved_query_id *
+  /// folders/folder_number/savedQueries/saved_query_id *
+  /// organizations/organization_number/savedQueries/saved_query_id If both
+  /// `analysis_query` and `saved_analysis_query` are provided, they will be
+  /// merged together with the `saved_analysis_query` as base and the
+  /// `analysis_query` as overrides.
+  ///
+  /// For more details of the merge behavior, please refer to the
+  /// [MergeFrom](https://developers.google.com/protocol-buffers/docs/reference/cpp/google.protobuf.message#Message.MergeFrom.details)
+  /// doc. Note that you cannot override primitive fields with default value,
+  /// such as 0 or empty string, etc., because we use proto3, which doesn't
+  /// support field presence yet.
+  ///
+  /// Optional.
+  core.String? savedAnalysisQuery;
+
   AnalyzeIamPolicyLongrunningRequest({
     this.analysisQuery,
     this.outputConfig,
+    this.savedAnalysisQuery,
   });
 
   AnalyzeIamPolicyLongrunningRequest.fromJson(core.Map _json)
@@ -1226,11 +1509,16 @@ class AnalyzeIamPolicyLongrunningRequest {
               ? IamPolicyAnalysisOutputConfig.fromJson(
                   _json['outputConfig'] as core.Map<core.String, core.dynamic>)
               : null,
+          savedAnalysisQuery: _json.containsKey('savedAnalysisQuery')
+              ? _json['savedAnalysisQuery'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (analysisQuery != null) 'analysisQuery': analysisQuery!,
         if (outputConfig != null) 'outputConfig': outputConfig!,
+        if (savedAnalysisQuery != null)
+          'savedAnalysisQuery': savedAnalysisQuery!,
       };
 }
 
@@ -2834,7 +3122,85 @@ class GoogleIdentityAccesscontextmanagerV1AccessLevel {
 ///
 /// An access policy is globally visible within an organization, and the
 /// restrictions it specifies apply to all projects within an organization.
-typedef GoogleIdentityAccesscontextmanagerV1AccessPolicy = $AccessPolicy;
+class GoogleIdentityAccesscontextmanagerV1AccessPolicy {
+  /// An opaque identifier for the current version of the `AccessPolicy`.
+  ///
+  /// This will always be a strongly validated etag, meaning that two Access
+  /// Polices will be identical if and only if their etags are identical.
+  /// Clients should not expect this to be in any specific format.
+  ///
+  /// Output only.
+  core.String? etag;
+
+  /// Resource name of the `AccessPolicy`.
+  ///
+  /// Format: `accessPolicies/{access_policy}`
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// The parent of this `AccessPolicy` in the Cloud Resource Hierarchy.
+  ///
+  /// Currently immutable once created. Format:
+  /// `organizations/{organization_id}`
+  ///
+  /// Required.
+  core.String? parent;
+
+  /// The scopes of a policy define which resources an ACM policy can restrict,
+  /// and where ACM resources can be referenced.
+  ///
+  /// For example, a policy with scopes=\["folders/123"\] has the following
+  /// behavior: - vpcsc perimeters can only restrict projects within folders/123
+  /// - access levels can only be referenced by resources within folders/123. If
+  /// empty, there are no limitations on which resources can be restricted by an
+  /// ACM policy, and there are no limitations on where ACM resources can be
+  /// referenced. Only one policy can include a given scope (attempting to
+  /// create a second policy which includes "folders/123" will result in an
+  /// error). Currently, scopes cannot be modified after a policy is created.
+  /// Currently, policies can only have a single scope. Format: list of
+  /// `folders/{folder_number}` or `projects/{project_number}`
+  core.List<core.String>? scopes;
+
+  /// Human readable title.
+  ///
+  /// Does not affect behavior.
+  ///
+  /// Required.
+  core.String? title;
+
+  GoogleIdentityAccesscontextmanagerV1AccessPolicy({
+    this.etag,
+    this.name,
+    this.parent,
+    this.scopes,
+    this.title,
+  });
+
+  GoogleIdentityAccesscontextmanagerV1AccessPolicy.fromJson(core.Map _json)
+      : this(
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          parent: _json.containsKey('parent')
+              ? _json['parent'] as core.String
+              : null,
+          scopes: _json.containsKey('scopes')
+              ? (_json['scopes'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          title:
+              _json.containsKey('title') ? _json['title'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (etag != null) 'etag': etag!,
+        if (name != null) 'name': name!,
+        if (parent != null) 'parent': parent!,
+        if (scopes != null) 'scopes': scopes!,
+        if (title != null) 'title': title!,
+      };
+}
 
 /// Identification for an API Operation.
 class GoogleIdentityAccesscontextmanagerV1ApiOperation {
@@ -3725,7 +4091,7 @@ class IamPolicyAnalysisOutputConfig {
       };
 }
 
-/// ## IAM policy analysis query message.
+/// IAM policy analysis query message.
 class IamPolicyAnalysisQuery {
   /// Specifies roles or permissions for analysis.
   ///
@@ -4347,6 +4713,40 @@ class ListFeedsResponse {
       };
 }
 
+/// Response of listing saved queries.
+class ListSavedQueriesResponse {
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  /// A list of savedQueries.
+  core.List<SavedQuery>? savedQueries;
+
+  ListSavedQueriesResponse({
+    this.nextPageToken,
+    this.savedQueries,
+  });
+
+  ListSavedQueriesResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          savedQueries: _json.containsKey('savedQueries')
+              ? (_json['savedQueries'] as core.List)
+                  .map((value) => SavedQuery.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (savedQueries != null) 'savedQueries': savedQueries!,
+      };
+}
+
 /// A message to group the analysis information.
 class MoveAnalysis {
   /// Analysis result of moving the target resource.
@@ -4891,6 +5291,31 @@ class PubsubDestination {
       };
 }
 
+/// The query content.
+class QueryContent {
+  /// An IAM Policy Analysis query, which could be used in the
+  /// AssetService.AnalyzeIamPolicy rpc or the
+  /// AssetService.AnalyzeIamPolicyLongrunning rpc.
+  IamPolicyAnalysisQuery? iamPolicyAnalysisQuery;
+
+  QueryContent({
+    this.iamPolicyAnalysisQuery,
+  });
+
+  QueryContent.fromJson(core.Map _json)
+      : this(
+          iamPolicyAnalysisQuery: _json.containsKey('iamPolicyAnalysisQuery')
+              ? IamPolicyAnalysisQuery.fromJson(_json['iamPolicyAnalysisQuery']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (iamPolicyAnalysisQuery != null)
+          'iamPolicyAnalysisQuery': iamPolicyAnalysisQuery!,
+      };
+}
+
 /// An asset identifier in Google Cloud which contains its name, type and
 /// ancestors.
 ///
@@ -5363,6 +5788,105 @@ class ResourceSelector {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (fullResourceName != null) 'fullResourceName': fullResourceName!,
+      };
+}
+
+/// A saved query which can be shared with others or used later.
+class SavedQuery {
+  /// The query content.
+  QueryContent? content;
+
+  /// The create time of this saved query.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// The account's email address who has created this saved query.
+  ///
+  /// Output only.
+  core.String? creator;
+
+  /// The description of this saved query.
+  ///
+  /// This value should be fewer than 255 characters.
+  core.String? description;
+
+  /// Labels applied on the resource.
+  ///
+  /// This value should not contain more than 10 entries. The key and value of
+  /// each entry must be non-empty and fewer than 64 characters.
+  core.Map<core.String, core.String>? labels;
+
+  /// The last update time of this saved query.
+  ///
+  /// Output only.
+  core.String? lastUpdateTime;
+
+  /// The account's email address who has updated this saved query most
+  /// recently.
+  ///
+  /// Output only.
+  core.String? lastUpdater;
+
+  /// The resource name of the saved query.
+  ///
+  /// The format must be: * projects/project_number/savedQueries/saved_query_id
+  /// * folders/folder_number/savedQueries/saved_query_id *
+  /// organizations/organization_number/savedQueries/saved_query_id
+  core.String? name;
+
+  SavedQuery({
+    this.content,
+    this.createTime,
+    this.creator,
+    this.description,
+    this.labels,
+    this.lastUpdateTime,
+    this.lastUpdater,
+    this.name,
+  });
+
+  SavedQuery.fromJson(core.Map _json)
+      : this(
+          content: _json.containsKey('content')
+              ? QueryContent.fromJson(
+                  _json['content'] as core.Map<core.String, core.dynamic>)
+              : null,
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          creator: _json.containsKey('creator')
+              ? _json['creator'] as core.String
+              : null,
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          labels: _json.containsKey('labels')
+              ? (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          lastUpdateTime: _json.containsKey('lastUpdateTime')
+              ? _json['lastUpdateTime'] as core.String
+              : null,
+          lastUpdater: _json.containsKey('lastUpdater')
+              ? _json['lastUpdater'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (content != null) 'content': content!,
+        if (createTime != null) 'createTime': createTime!,
+        if (creator != null) 'creator': creator!,
+        if (description != null) 'description': description!,
+        if (labels != null) 'labels': labels!,
+        if (lastUpdateTime != null) 'lastUpdateTime': lastUpdateTime!,
+        if (lastUpdater != null) 'lastUpdater': lastUpdater!,
+        if (name != null) 'name': name!,
       };
 }
 

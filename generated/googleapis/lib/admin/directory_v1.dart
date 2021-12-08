@@ -557,7 +557,7 @@ class ChromeosdevicesResource {
   /// - "FULL" : Includes all metadata fields
   ///
   /// [query] - Search string in the format given at
-  /// http://support.google.com/chromeos/a/bin/answer.py?answer=1698333
+  /// https://developers.google.com/admin-sdk/directory/v1/list-query-operators
   ///
   /// [sortOrder] - Whether to return results in ascending or descending order.
   /// Must be used with the `orderBy` parameter.
@@ -7491,6 +7491,15 @@ class ChromeOsDevice {
   /// Only devices directly purchased from Google have an order number.
   core.String? orderNumber;
 
+  /// The unique ID of the organizational unit.
+  ///
+  /// orgUnitPath is the human readable version of orgUnitId. While orgUnitPath
+  /// may change by renaming an organizational unit within the path, orgUnitId
+  /// is unchangeable for one organizational unit. This property can be
+  /// \[updated\](/admin-sdk/directory/v1/guides/manage-chrome-devices#update_chrome_device)
+  /// using the API, and this will be supported in the future.
+  core.String? orgUnitId;
+
   /// The full parent path with the organizational unit's name associated with
   /// the device.
   ///
@@ -7571,6 +7580,7 @@ class ChromeOsDevice {
     this.model,
     this.notes,
     this.orderNumber,
+    this.orgUnitId,
     this.orgUnitPath,
     this.osVersion,
     this.platformVersion,
@@ -7675,6 +7685,9 @@ class ChromeOsDevice {
           orderNumber: _json.containsKey('orderNumber')
               ? _json['orderNumber'] as core.String
               : null,
+          orgUnitId: _json.containsKey('orgUnitId')
+              ? _json['orgUnitId'] as core.String
+              : null,
           orgUnitPath: _json.containsKey('orgUnitPath')
               ? _json['orgUnitPath'] as core.String
               : null,
@@ -7754,6 +7767,7 @@ class ChromeOsDevice {
         if (model != null) 'model': model!,
         if (notes != null) 'notes': notes!,
         if (orderNumber != null) 'orderNumber': orderNumber!,
+        if (orgUnitId != null) 'orgUnitId': orgUnitId!,
         if (orgUnitPath != null) 'orgUnitPath': orgUnitPath!,
         if (osVersion != null) 'osVersion': osVersion!,
         if (platformVersion != null) 'platformVersion': platformVersion!,

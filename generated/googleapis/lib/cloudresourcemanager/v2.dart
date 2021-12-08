@@ -921,7 +921,7 @@ class GetIamPolicyRequest {
 }
 
 /// Encapsulates settings provided to GetIamPolicy.
-typedef GetPolicyOptions = $GetPolicyOptions;
+typedef GetPolicyOptions = $GetPolicyOptions00;
 
 /// The ListFolders response message.
 class ListFoldersResponse {

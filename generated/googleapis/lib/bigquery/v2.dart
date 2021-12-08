@@ -1980,6 +1980,9 @@ class TablesResource {
   ///
   /// [tableId] - Table ID of the table to update
   ///
+  /// [autodetectSchema] - When true will autodetect schema, else will keep
+  /// original schema
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1995,10 +1998,13 @@ class TablesResource {
     core.String projectId,
     core.String datasetId,
     core.String tableId, {
+    core.bool? autodetectSchema,
     core.String? $fields,
   }) async {
     final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
+      if (autodetectSchema != null)
+        'autodetect_schema': ['${autodetectSchema}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -2129,6 +2135,9 @@ class TablesResource {
   ///
   /// [tableId] - Table ID of the table to update
   ///
+  /// [autodetectSchema] - When true will autodetect schema, else will keep
+  /// original schema
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -2144,10 +2153,13 @@ class TablesResource {
     core.String projectId,
     core.String datasetId,
     core.String tableId, {
+    core.bool? autodetectSchema,
     core.String? $fields,
   }) async {
     final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
+      if (autodetectSchema != null)
+        'autodetect_schema': ['${autodetectSchema}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -4383,18 +4395,7 @@ class DestinationTableProperties {
   /// Optional.
   core.String? description;
 
-  /// The destination table expiration time.
-  ///
-  /// If this field is set: For a new table, it will set the table's expiration
-  /// time (even if there is a dataset level default table expiration time). For
-  /// an existing table, it will update the table's expiration time. If this
-  /// field is not set: For a new table, if dataset level default table
-  /// expiration time is present, that will be applied. For an existing table,
-  /// no change is made to the table's expiration time. Additionally this field
-  /// is only applied when data is written to an empty table (WRITE_EMPTY) or
-  /// data is overwritten to a table (WRITE_TRUNCATE).
-  ///
-  /// Optional.
+  /// \[Internal\] This field is for Google internal use only.
   core.DateTime? expirationTime;
 
   /// The friendly name for the destination table.
@@ -5274,7 +5275,7 @@ class GetIamPolicyRequest {
 }
 
 /// Encapsulates settings provided to GetIamPolicy.
-typedef GetPolicyOptions = $GetPolicyOptions;
+typedef GetPolicyOptions = $GetPolicyOptions00;
 
 class GetQueryResultsResponse {
   /// Whether the query result was fetched from the query cache.

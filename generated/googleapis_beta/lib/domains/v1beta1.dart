@@ -413,16 +413,18 @@ class ProjectsLocationsRegistrationsResource {
 
   /// Deletes a `Registration` resource.
   ///
-  /// For `Registration` resources using usage billing, this method works if: *
-  /// `state` is `EXPORTED` with `expire_time` in the past * `state` is
-  /// `REGISTRATION_FAILED` * `state` is `TRANSFER_FAILED` This method works on
-  /// any `Registration` resource using subscription billing, provided that the
-  /// resource was created at least 1 day in the past. When an active domain is
-  /// successfully deleted, you can continue to use the domain in
-  /// [Google Domains](https://domains.google/) until it expires. The calling
-  /// user becomes the domain's sole owner in Google Domains, and permissions
-  /// for the domain are subsequently managed there. The domain will not renew
-  /// automatically unless the new owner sets up billing in Google Domains.
+  /// This method works on any `Registration` resource using \[Subscription or
+  /// Commitment billing\](/domains/pricing#billing-models), provided that the
+  /// resource was created at least 1 day in the past. For `Registration`
+  /// resources using \[Monthly billing\](/domains/pricing#billing-models), this
+  /// method works if: * `state` is `EXPORTED` with `expire_time` in the past *
+  /// `state` is `REGISTRATION_FAILED` * `state` is `TRANSFER_FAILED` When an
+  /// active registration is successfully deleted, you can continue to use the
+  /// domain in [Google Domains](https://domains.google/) until it expires. The
+  /// calling user becomes the domain's sole owner in Google Domains, and
+  /// permissions for the domain are subsequently managed there. The domain does
+  /// not renew automatically unless the new owner sets up billing in Google
+  /// Domains.
   ///
   /// Request parameters:
   ///
@@ -465,7 +467,7 @@ class ProjectsLocationsRegistrationsResource {
   /// When an active domain is successfully exported, you can continue to use
   /// the domain in [Google Domains](https://domains.google/) until it expires.
   /// The calling user becomes the domain's sole owner in Google Domains, and
-  /// permissions for the domain are subsequently managed there. The domain will
+  /// permissions for the domain are subsequently managed there. The domain does
   /// not renew automatically unless the new owner sets up billing in Google
   /// Domains.
   ///
@@ -560,12 +562,16 @@ class ProjectsLocationsRegistrationsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/registrations/\[^/\]+$`.
   ///
-  /// [options_requestedPolicyVersion] - Optional. The policy format version to
-  /// be returned. Valid values are 0, 1, and 3. Requests specifying an invalid
-  /// value will be rejected. Requests for policies with any conditional
-  /// bindings must specify version 3. Policies without any conditional bindings
-  /// may specify any valid value or leave the field unset. To learn which
-  /// resources support conditions in their IAM policies, see the
+  /// [options_requestedPolicyVersion] - Optional. The maximum policy version
+  /// that will be used to format the policy. Valid values are 0, 1, and 3.
+  /// Requests specifying an invalid value will be rejected. Requests for
+  /// policies with any conditional role bindings must specify version 3.
+  /// Policies with no conditional role bindings may specify any valid value or
+  /// leave the field unset. The policy in the response might use the policy
+  /// version that you specified, or it might use a lower policy version. For
+  /// example, if you specify version 3, but the policy has no conditional role
+  /// bindings, the response uses version 1. To learn which resources support
+  /// conditions in their IAM policies, see the
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -679,7 +685,7 @@ class ProjectsLocationsRegistrationsResource {
   ///
   /// [updateMask] - Required. The field mask describing which fields to update
   /// as a comma-separated list. For example, if only the labels are being
-  /// updated, the `update_mask` would be `"labels"`.
+  /// updated, the `update_mask` is `"labels"`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -912,7 +918,7 @@ class ProjectsLocationsRegistrationsResource {
   /// Cloud Domains.
   ///
   /// For domains managed by Google Domains, transferring to Cloud Domains is
-  /// not yet supported. Use the returned values to call `TransferDomain`.
+  /// not supported. Use the returned values to call `TransferDomain`.
   ///
   /// Request parameters:
   ///
@@ -1103,7 +1109,7 @@ class ProjectsLocationsRegistrationsResource {
   /// Transfers a domain name from another registrar to Cloud Domains.
   ///
   /// For domains managed by Google Domains, transferring to Cloud Domains is
-  /// not yet supported. Before calling this method, go to the domain's current
+  /// not supported. Before calling this method, go to the domain's current
   /// registrar to unlock the domain for transfer and retrieve the domain's
   /// transfer authorization code. Then call `RetrieveTransferParameters` to
   /// confirm that the domain is unlocked and to get values needed to build a
@@ -1331,7 +1337,7 @@ class ConfigureContactSettingsRequest {
   /// list.
   ///
   /// For example, if only the registrant contact is being updated, the
-  /// `update_mask` would be `"registrant_contact"`.
+  /// `update_mask` is `"registrant_contact"`.
   ///
   /// Required.
   core.String? updateMask;
@@ -1382,11 +1388,11 @@ class ConfigureDnsSettingsRequest {
   /// list.
   ///
   /// For example, if only the name servers are being updated for an existing
-  /// Custom DNS configuration, the `update_mask` would be
+  /// Custom DNS configuration, the `update_mask` is
   /// `"custom_dns.name_servers"`. When changing the DNS provider from one type
   /// to another, pass the new provider's field name as part of the field mask.
   /// For example, when changing from a Google Domains DNS configuration to a
-  /// Custom DNS configuration, the `update_mask` would be `"custom_dns"`. //
+  /// Custom DNS configuration, the `update_mask` is `"custom_dns"`. //
   ///
   /// Required.
   core.String? updateMask;
@@ -1430,7 +1436,7 @@ class ConfigureManagementSettingsRequest {
   /// list.
   ///
   /// For example, if only the transfer lock is being updated, the `update_mask`
-  /// would be `"transfer_lock_state"`.
+  /// is `"transfer_lock_state"`.
   ///
   /// Required.
   core.String? updateMask;
@@ -1549,8 +1555,8 @@ class ContactSettings {
   ///
   /// *Caution: Anyone with access to this email address, phone number, and/or
   /// postal address can take control of the domain.* *Warning: For new
-  /// `Registration`s, the registrant will receive an email confirmation that
-  /// they must complete within 15 days to avoid domain suspension.*
+  /// `Registration`s, the registrant receives an email confirmation that they
+  /// must complete within 15 days to avoid domain suspension.*
   ///
   /// Required.
   Contact? registrantContact;
@@ -2288,8 +2294,8 @@ class RegisterDomainRequest {
   /// Required.
   Registration? registration;
 
-  /// When true, only validation will be performed, without actually registering
-  /// the domain.
+  /// When true, only validation is performed, without actually registering the
+  /// domain.
   ///
   /// Follows:
   /// https://cloud.google.com/apis/design/design_patterns#request_validation
@@ -2490,7 +2496,7 @@ class Registration {
   /// Updates to the `contact_settings` field that change its
   /// `registrant_contact` or `privacy` fields require email confirmation by the
   /// `registrant_contact` before taking effect. This field is set only if there
-  /// are pending updates to the `contact_settings` that have not yet been
+  /// are pending updates to the `contact_settings` that have not been
   /// confirmed. To confirm the changes, the `registrant_contact` must follow
   /// the instructions in the email they receive.
   ///
@@ -2505,13 +2511,11 @@ class Registration {
   /// - "REGISTRATION_PENDING" : The domain is being registered.
   /// - "REGISTRATION_FAILED" : The domain registration failed. You can delete
   /// resources in this state to allow registration to be retried.
-  /// - "TRANSFER_PENDING" : Domain transfer from another registrar to Cloud
-  /// Domains is in progress. The domain's current registrar may require action
-  /// to complete the transfer. Check emails from the domain's current registrar
-  /// to the domain's current registrant for instructions.
+  /// - "TRANSFER_PENDING" : The domain is being transferred from another
+  /// registrar to Cloud Domains.
   /// - "TRANSFER_FAILED" : The attempt to transfer the domain from another
   /// registrar to Cloud Domains failed. You can delete resources in this state
-  /// to allow transfer to be retried.
+  /// and retry the transfer.
   /// - "ACTIVE" : The domain is registered and operational. The domain renews
   /// automatically as long as it remains in this state.
   /// - "SUSPENDED" : The domain is suspended and inoperative. For more details,
@@ -2520,7 +2524,7 @@ class Registration {
   /// have been transferred to another registrar or exported for management in
   /// [Google Domains](https://domains.google/). You can no longer update it
   /// with this API, and information shown about it may be stale. Domains in
-  /// this state will not be automatically renewed by Cloud Domains.
+  /// this state are not automatically renewed by Cloud Domains.
   core.String? state;
 
   /// Set of options for the `contact_settings.privacy` field that this
@@ -2755,7 +2759,7 @@ class TransferDomainRequest {
   ///
   /// You can leave `registration.dns_settings` unset to import the domain's
   /// current DNS configuration from its current registrar. Use this option only
-  /// if you are sure that the domain's current DNS service will not cease upon
+  /// if you are sure that the domain's current DNS service does not cease upon
   /// transfer, as is often the case for DNS services provided for free by the
   /// registrar.
   ///

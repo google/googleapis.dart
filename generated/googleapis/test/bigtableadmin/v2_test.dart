@@ -138,6 +138,55 @@ void checkAuditLogConfig(api.AuditLogConfig o) {
   buildCounterAuditLogConfig--;
 }
 
+core.int buildCounterAutoscalingLimits = 0;
+api.AutoscalingLimits buildAutoscalingLimits() {
+  final o = api.AutoscalingLimits();
+  buildCounterAutoscalingLimits++;
+  if (buildCounterAutoscalingLimits < 3) {
+    o.maxServeNodes = 42;
+    o.minServeNodes = 42;
+  }
+  buildCounterAutoscalingLimits--;
+  return o;
+}
+
+void checkAutoscalingLimits(api.AutoscalingLimits o) {
+  buildCounterAutoscalingLimits++;
+  if (buildCounterAutoscalingLimits < 3) {
+    unittest.expect(
+      o.maxServeNodes!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.minServeNodes!,
+      unittest.equals(42),
+    );
+  }
+  buildCounterAutoscalingLimits--;
+}
+
+core.int buildCounterAutoscalingTargets = 0;
+api.AutoscalingTargets buildAutoscalingTargets() {
+  final o = api.AutoscalingTargets();
+  buildCounterAutoscalingTargets++;
+  if (buildCounterAutoscalingTargets < 3) {
+    o.cpuUtilizationPercent = 42;
+  }
+  buildCounterAutoscalingTargets--;
+  return o;
+}
+
+void checkAutoscalingTargets(api.AutoscalingTargets o) {
+  buildCounterAutoscalingTargets++;
+  if (buildCounterAutoscalingTargets < 3) {
+    unittest.expect(
+      o.cpuUtilizationPercent!,
+      unittest.equals(42),
+    );
+  }
+  buildCounterAutoscalingTargets--;
+}
+
 core.int buildCounterBackup = 0;
 api.Backup buildBackup() {
   final o = api.Backup();
@@ -318,6 +367,7 @@ api.Cluster buildCluster() {
   final o = api.Cluster();
   buildCounterCluster++;
   if (buildCounterCluster < 3) {
+    o.clusterConfig = buildClusterConfig();
     o.defaultStorageType = 'foo';
     o.encryptionConfig = buildEncryptionConfig();
     o.location = 'foo';
@@ -332,6 +382,7 @@ api.Cluster buildCluster() {
 void checkCluster(api.Cluster o) {
   buildCounterCluster++;
   if (buildCounterCluster < 3) {
+    checkClusterConfig(o.clusterConfig!);
     unittest.expect(
       o.defaultStorageType!,
       unittest.equals('foo'),
@@ -355,6 +406,46 @@ void checkCluster(api.Cluster o) {
     );
   }
   buildCounterCluster--;
+}
+
+core.int buildCounterClusterAutoscalingConfig = 0;
+api.ClusterAutoscalingConfig buildClusterAutoscalingConfig() {
+  final o = api.ClusterAutoscalingConfig();
+  buildCounterClusterAutoscalingConfig++;
+  if (buildCounterClusterAutoscalingConfig < 3) {
+    o.autoscalingLimits = buildAutoscalingLimits();
+    o.autoscalingTargets = buildAutoscalingTargets();
+  }
+  buildCounterClusterAutoscalingConfig--;
+  return o;
+}
+
+void checkClusterAutoscalingConfig(api.ClusterAutoscalingConfig o) {
+  buildCounterClusterAutoscalingConfig++;
+  if (buildCounterClusterAutoscalingConfig < 3) {
+    checkAutoscalingLimits(o.autoscalingLimits!);
+    checkAutoscalingTargets(o.autoscalingTargets!);
+  }
+  buildCounterClusterAutoscalingConfig--;
+}
+
+core.int buildCounterClusterConfig = 0;
+api.ClusterConfig buildClusterConfig() {
+  final o = api.ClusterConfig();
+  buildCounterClusterConfig++;
+  if (buildCounterClusterConfig < 3) {
+    o.clusterAutoscalingConfig = buildClusterAutoscalingConfig();
+  }
+  buildCounterClusterConfig--;
+  return o;
+}
+
+void checkClusterConfig(api.ClusterConfig o) {
+  buildCounterClusterConfig++;
+  if (buildCounterClusterConfig < 3) {
+    checkClusterAutoscalingConfig(o.clusterAutoscalingConfig!);
+  }
+  buildCounterClusterConfig--;
 }
 
 core.List<api.EncryptionInfo> buildUnnamed3() => [
@@ -1880,6 +1971,26 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-AutoscalingLimits', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildAutoscalingLimits();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AutoscalingLimits.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkAutoscalingLimits(od);
+    });
+  });
+
+  unittest.group('obj-schema-AutoscalingTargets', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildAutoscalingTargets();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AutoscalingTargets.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkAutoscalingTargets(od);
+    });
+  });
+
   unittest.group('obj-schema-Backup', () {
     unittest.test('to-json--from-json', () async {
       final o = buildBackup();
@@ -1937,6 +2048,26 @@ void main() {
       final od =
           api.Cluster.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkCluster(od);
+    });
+  });
+
+  unittest.group('obj-schema-ClusterAutoscalingConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildClusterAutoscalingConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ClusterAutoscalingConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkClusterAutoscalingConfig(od);
+    });
+  });
+
+  unittest.group('obj-schema-ClusterConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildClusterConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ClusterConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkClusterConfig(od);
     });
   });
 

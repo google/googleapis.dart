@@ -3241,138 +3241,6 @@ class GoogleCloudDocumentaiV1DocumentTextChange {
 /// Request message for the enable processor method.
 typedef GoogleCloudDocumentaiV1EnableProcessorRequest = $Empty;
 
-/// Evaluation metrics, either in aggregate or about a specific entity.
-class GoogleCloudDocumentaiV1EvaluationMetrics {
-  /// The calculated f1 score.
-  core.double? f1Score;
-
-  /// The amount of false negatives.
-  core.int? falseNegativesCount;
-
-  /// The amount of false positives.
-  core.int? falsePositivesCount;
-
-  /// The amount of occurrences in ground truth documents.
-  core.int? groundTruthOccurrencesCount;
-
-  /// The calculated precision.
-  core.double? precision;
-
-  /// The amount of occurrences in predicted documents.
-  core.int? predictedOccurrencesCount;
-
-  /// The calculated recall.
-  core.double? recall;
-
-  /// The amount of documents that had an occurrence of this label.
-  core.int? totalDocumentsCount;
-
-  /// The amount of true positives.
-  core.int? truePositivesCount;
-
-  GoogleCloudDocumentaiV1EvaluationMetrics({
-    this.f1Score,
-    this.falseNegativesCount,
-    this.falsePositivesCount,
-    this.groundTruthOccurrencesCount,
-    this.precision,
-    this.predictedOccurrencesCount,
-    this.recall,
-    this.totalDocumentsCount,
-    this.truePositivesCount,
-  });
-
-  GoogleCloudDocumentaiV1EvaluationMetrics.fromJson(core.Map _json)
-      : this(
-          f1Score: _json.containsKey('f1Score')
-              ? (_json['f1Score'] as core.num).toDouble()
-              : null,
-          falseNegativesCount: _json.containsKey('falseNegativesCount')
-              ? _json['falseNegativesCount'] as core.int
-              : null,
-          falsePositivesCount: _json.containsKey('falsePositivesCount')
-              ? _json['falsePositivesCount'] as core.int
-              : null,
-          groundTruthOccurrencesCount:
-              _json.containsKey('groundTruthOccurrencesCount')
-                  ? _json['groundTruthOccurrencesCount'] as core.int
-                  : null,
-          precision: _json.containsKey('precision')
-              ? (_json['precision'] as core.num).toDouble()
-              : null,
-          predictedOccurrencesCount:
-              _json.containsKey('predictedOccurrencesCount')
-                  ? _json['predictedOccurrencesCount'] as core.int
-                  : null,
-          recall: _json.containsKey('recall')
-              ? (_json['recall'] as core.num).toDouble()
-              : null,
-          totalDocumentsCount: _json.containsKey('totalDocumentsCount')
-              ? _json['totalDocumentsCount'] as core.int
-              : null,
-          truePositivesCount: _json.containsKey('truePositivesCount')
-              ? _json['truePositivesCount'] as core.int
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (f1Score != null) 'f1Score': f1Score!,
-        if (falseNegativesCount != null)
-          'falseNegativesCount': falseNegativesCount!,
-        if (falsePositivesCount != null)
-          'falsePositivesCount': falsePositivesCount!,
-        if (groundTruthOccurrencesCount != null)
-          'groundTruthOccurrencesCount': groundTruthOccurrencesCount!,
-        if (precision != null) 'precision': precision!,
-        if (predictedOccurrencesCount != null)
-          'predictedOccurrencesCount': predictedOccurrencesCount!,
-        if (recall != null) 'recall': recall!,
-        if (totalDocumentsCount != null)
-          'totalDocumentsCount': totalDocumentsCount!,
-        if (truePositivesCount != null)
-          'truePositivesCount': truePositivesCount!,
-      };
-}
-
-/// Gives a short summary of an evaluation, and links to the evaluation itself.
-class GoogleCloudDocumentaiV1EvaluationReference {
-  /// An aggregate of the statistics for the evaluation.
-  GoogleCloudDocumentaiV1EvaluationMetrics? aggregateMetrics;
-
-  /// The resource name of the evaluation.
-  core.String? evaluation;
-
-  /// The resource name of the Long Running Operation for the evaluation.
-  core.String? operation;
-
-  GoogleCloudDocumentaiV1EvaluationReference({
-    this.aggregateMetrics,
-    this.evaluation,
-    this.operation,
-  });
-
-  GoogleCloudDocumentaiV1EvaluationReference.fromJson(core.Map _json)
-      : this(
-          aggregateMetrics: _json.containsKey('aggregateMetrics')
-              ? GoogleCloudDocumentaiV1EvaluationMetrics.fromJson(
-                  _json['aggregateMetrics']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          evaluation: _json.containsKey('evaluation')
-              ? _json['evaluation'] as core.String
-              : null,
-          operation: _json.containsKey('operation')
-              ? _json['operation'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (aggregateMetrics != null) 'aggregateMetrics': aggregateMetrics!,
-        if (evaluation != null) 'evaluation': evaluation!,
-        if (operation != null) 'operation': operation!,
-      };
-}
-
 /// Response message for fetch processor types.
 class GoogleCloudDocumentaiV1FetchProcessorTypesResponse {
   /// The list of processor types.
@@ -3875,19 +3743,11 @@ class GoogleCloudDocumentaiV1ProcessorVersion {
   /// The display name of the processor version.
   core.String? displayName;
 
-  /// The most recently invoked evaluation for the processor version.
-  GoogleCloudDocumentaiV1EvaluationReference? latestEvaluation;
-
   /// The resource name of the processor version.
   ///
   /// Format:
   /// projects/{project}/locations/{location}/processors/{processor}/processorVersions/{processor_version}
   core.String? name;
-
-  /// The schema of the processor version.
-  ///
-  /// Describes the output.
-  GoogleCloudDocumentaiV1Schema? schema;
 
   /// The state of the processor version.
   /// Possible string values are:
@@ -3907,9 +3767,7 @@ class GoogleCloudDocumentaiV1ProcessorVersion {
   GoogleCloudDocumentaiV1ProcessorVersion({
     this.createTime,
     this.displayName,
-    this.latestEvaluation,
     this.name,
-    this.schema,
     this.state,
   });
 
@@ -3921,16 +3779,7 @@ class GoogleCloudDocumentaiV1ProcessorVersion {
           displayName: _json.containsKey('displayName')
               ? _json['displayName'] as core.String
               : null,
-          latestEvaluation: _json.containsKey('latestEvaluation')
-              ? GoogleCloudDocumentaiV1EvaluationReference.fromJson(
-                  _json['latestEvaluation']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          schema: _json.containsKey('schema')
-              ? GoogleCloudDocumentaiV1Schema.fromJson(
-                  _json['schema'] as core.Map<core.String, core.dynamic>)
-              : null,
           state:
               _json.containsKey('state') ? _json['state'] as core.String : null,
         );
@@ -3938,9 +3787,7 @@ class GoogleCloudDocumentaiV1ProcessorVersion {
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
         if (displayName != null) 'displayName': displayName!,
-        if (latestEvaluation != null) 'latestEvaluation': latestEvaluation!,
         if (name != null) 'name': name!,
-        if (schema != null) 'schema': schema!,
         if (state != null) 'state': state!,
       };
 }
@@ -4024,166 +3871,6 @@ class GoogleCloudDocumentaiV1ReviewDocumentRequest {
           'enableSchemaValidation': enableSchemaValidation!,
         if (inlineDocument != null) 'inlineDocument': inlineDocument!,
         if (priority != null) 'priority': priority!,
-      };
-}
-
-/// The schema defines the output of the processed document by a processor.
-class GoogleCloudDocumentaiV1Schema {
-  /// Description of the schema.
-  core.String? description;
-
-  /// Display name to show to users.
-  core.String? displayName;
-
-  /// Entity types of the schema.
-  core.List<GoogleCloudDocumentaiV1SchemaEntityType>? entityTypes;
-
-  GoogleCloudDocumentaiV1Schema({
-    this.description,
-    this.displayName,
-    this.entityTypes,
-  });
-
-  GoogleCloudDocumentaiV1Schema.fromJson(core.Map _json)
-      : this(
-          description: _json.containsKey('description')
-              ? _json['description'] as core.String
-              : null,
-          displayName: _json.containsKey('displayName')
-              ? _json['displayName'] as core.String
-              : null,
-          entityTypes: _json.containsKey('entityTypes')
-              ? (_json['entityTypes'] as core.List)
-                  .map((value) =>
-                      GoogleCloudDocumentaiV1SchemaEntityType.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (description != null) 'description': description!,
-        if (displayName != null) 'displayName': displayName!,
-        if (entityTypes != null) 'entityTypes': entityTypes!,
-      };
-}
-
-/// EntityType is the wrapper of a label of the corresponding model with
-/// detailed attributes and limitations for entity-based processors.
-///
-/// Multiple types can also compose a dependency tree to represent nested types.
-class GoogleCloudDocumentaiV1SchemaEntityType {
-  /// Type of the entity.
-  ///
-  /// It must be one of the following: `document` - the entity represents a
-  /// classification of a logical document. `object` - if the entity has
-  /// properties it is likely an object (or or a document.) `datetime` - the
-  /// entity is a date or time value. `money` - the entity represents a money
-  /// value amount. `number` - the entity is a number - integer or floating
-  /// point. `string` - the entity is a string value. `boolean` - the entity is
-  /// a boolean value. `address` - the entity is a location address. `duration`
-  /// - the entity is a duration.
-  core.String? baseType;
-
-  /// Description of the entity type.
-  core.String? description;
-
-  /// If specified, lists all the possible values for this entity.
-  core.List<core.String>? enumValues;
-
-  /// Occurrence type limits the number of times an entity type appears in the
-  /// document.
-  /// Possible string values are:
-  /// - "OCCURRENCE_TYPE_UNSPECIFIED" : Unspecified occurrence type.
-  /// - "OPTIONAL_ONCE" : The entity type will appear zero times or once.
-  /// - "OPTIONAL_MULTIPLE" : The entity type will appear zero or multiple
-  /// times.
-  /// - "REQUIRED_ONCE" : The entity type will only appear exactly once.
-  /// - "REQUIRED_MULTIPLE" : The entity type will appear once or more times.
-  core.String? occurrenceType;
-
-  /// Describing the nested structure of an entity.
-  ///
-  /// An EntityType may consist of several other EntityTypes. For example, in a
-  /// document there can be an EntityType 'ID', which consists of EntityType
-  /// 'name' and 'address', with corresponding attributes, such as TEXT for both
-  /// types and ONCE for occurrence types.
-  core.List<GoogleCloudDocumentaiV1SchemaEntityType>? properties;
-
-  /// Source of this entity type.
-  /// Possible string values are:
-  /// - "SOURCE_UNSPECIFIED" : Unspecified source.
-  /// - "PREDEFINED" : The entity type is in the predefined schema of a
-  /// pretrained version of a processor.
-  /// - "USER_INPUT" : The entity type is added by the users either: - during an
-  /// uptraining of an existing processor, or - during the process of creating a
-  /// customized processor.
-  core.String? source;
-
-  /// Name of the type.
-  ///
-  /// It must satisfy the following constraints: 1. Must be unique within the
-  /// set of same level types (with case-insensitive match). 2. Maximum 50
-  /// characters. 3. Must start with a letter. 4. Allowed characters: ASCII
-  /// letters \[a-zA-Z\], ASCII digits \[0-9\], or one of the following
-  /// punctuation characters: * underscore '_' (recommended) * hyphen '-'
-  /// (allowed, not recommended) * colon ':' (allowed, not recommended) NOTE:
-  /// Whitespace characters are not allowed. 5. Cannot end with a punctuation
-  /// character. 6. Cannot contain the following restricted strings: "google",
-  /// "DocumentAI" (case-insensitive match). 7. A slash character '/' is
-  /// reserved as a separator in flattened representations of nested entity
-  /// types (e.g., "line_item/amount") in which case each part (e.g.,
-  /// "line_item", "amount") must comply with the rules defined above. We
-  /// recommend using the snake case ("snake_case") in entity type names.
-  core.String? type;
-
-  GoogleCloudDocumentaiV1SchemaEntityType({
-    this.baseType,
-    this.description,
-    this.enumValues,
-    this.occurrenceType,
-    this.properties,
-    this.source,
-    this.type,
-  });
-
-  GoogleCloudDocumentaiV1SchemaEntityType.fromJson(core.Map _json)
-      : this(
-          baseType: _json.containsKey('baseType')
-              ? _json['baseType'] as core.String
-              : null,
-          description: _json.containsKey('description')
-              ? _json['description'] as core.String
-              : null,
-          enumValues: _json.containsKey('enumValues')
-              ? (_json['enumValues'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          occurrenceType: _json.containsKey('occurrenceType')
-              ? _json['occurrenceType'] as core.String
-              : null,
-          properties: _json.containsKey('properties')
-              ? (_json['properties'] as core.List)
-                  .map((value) =>
-                      GoogleCloudDocumentaiV1SchemaEntityType.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          source: _json.containsKey('source')
-              ? _json['source'] as core.String
-              : null,
-          type: _json.containsKey('type') ? _json['type'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (baseType != null) 'baseType': baseType!,
-        if (description != null) 'description': description!,
-        if (enumValues != null) 'enumValues': enumValues!,
-        if (occurrenceType != null) 'occurrenceType': occurrenceType!,
-        if (properties != null) 'properties': properties!,
-        if (source != null) 'source': source!,
-        if (type != null) 'type': type!,
       };
 }
 

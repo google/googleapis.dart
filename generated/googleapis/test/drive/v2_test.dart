@@ -1662,6 +1662,7 @@ api.FileCapabilities buildFileCapabilities() {
   final o = api.FileCapabilities();
   buildCounterFileCapabilities++;
   if (buildCounterFileCapabilities < 3) {
+    o.canAcceptOwnership = true;
     o.canAddChildren = true;
     o.canAddFolderFromAnotherDrive = true;
     o.canAddMyDriveParent = true;
@@ -1705,6 +1706,7 @@ api.FileCapabilities buildFileCapabilities() {
 void checkFileCapabilities(api.FileCapabilities o) {
   buildCounterFileCapabilities++;
   if (buildCounterFileCapabilities < 3) {
+    unittest.expect(o.canAcceptOwnership!, unittest.isTrue);
     unittest.expect(o.canAddChildren!, unittest.isTrue);
     unittest.expect(o.canAddFolderFromAnotherDrive!, unittest.isTrue);
     unittest.expect(o.canAddMyDriveParent!, unittest.isTrue);
@@ -2813,6 +2815,7 @@ api.Permission buildPermission() {
     o.id = 'foo';
     o.kind = 'foo';
     o.name = 'foo';
+    o.pendingOwner = true;
     o.permissionDetails = buildUnnamed42();
     o.photoLink = 'foo';
     o.role = 'foo';
@@ -2864,6 +2867,7 @@ void checkPermission(api.Permission o) {
       o.name!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.pendingOwner!, unittest.isTrue);
     checkUnnamed42(o.permissionDetails!);
     unittest.expect(
       o.photoLink!,

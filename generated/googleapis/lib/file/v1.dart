@@ -25,6 +25,7 @@
 ///   - [ProjectsLocationsResource]
 ///     - [ProjectsLocationsBackupsResource]
 ///     - [ProjectsLocationsInstancesResource]
+///       - [ProjectsLocationsInstancesSnapshotsResource]
 ///     - [ProjectsLocationsOperationsResource]
 library file.v1;
 
@@ -416,6 +417,9 @@ class ProjectsLocationsBackupsResource {
 class ProjectsLocationsInstancesResource {
   final commons.ApiRequester _requester;
 
+  ProjectsLocationsInstancesSnapshotsResource get snapshots =>
+      ProjectsLocationsInstancesSnapshotsResource(_requester);
+
   ProjectsLocationsInstancesResource(commons.ApiRequester client)
       : _requester = client;
 
@@ -479,6 +483,10 @@ class ProjectsLocationsInstancesResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+$`.
   ///
+  /// [force] - If set to true, all snapshots of the instance will also be
+  /// deleted. (Otherwise, the request will only work if the instance has no
+  /// snapshots.)
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -491,9 +499,11 @@ class ProjectsLocationsInstancesResource {
   /// this method will complete with the same error.
   async.Future<Operation> delete(
     core.String name, {
+    core.bool? force,
     core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
+      if (force != null) 'force': ['${force}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -692,6 +702,242 @@ class ProjectsLocationsInstancesResource {
     final _response = await _requester.request(
       _url,
       'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsInstancesSnapshotsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsInstancesSnapshotsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a snapshot.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The Filestore Instance to create the snapshots of, in
+  /// the format
+  /// `projects/{project_id}/locations/{location}/instances/{instance_id}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+$`.
+  ///
+  /// [snapshotId] - Required. The ID to use for the snapshot. The ID must be
+  /// unique within the specified instance. This value must start with a
+  /// lowercase letter followed by up to 62 lowercase letters, numbers, or
+  /// hyphens, and cannot end with a hyphen.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    Snapshot request,
+    core.String parent, {
+    core.String? snapshotId,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (snapshotId != null) 'snapshotId': [snapshotId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/snapshots';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a snapshot.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The snapshot resource name, in the format
+  /// `projects/{project_id}/locations/{location}/instances/{instance_id}/snapshots/{snapshot_id}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+/snapshots/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'DELETE',
+      queryParams: _queryParams,
+    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets the details of a specific snapshot.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The snapshot resource name, in the format
+  /// `projects/{project_id}/locations/{location}/instances/{instance_id}/snapshots/{snapshot_id}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+/snapshots/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Snapshot].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Snapshot> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return Snapshot.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists all snapshots in a project for either a specified location or for
+  /// all locations.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The instance for which to retrieve snapshot
+  /// information, in the format
+  /// `projects/{project_id}/locations/{location}/instances/{instance_id}`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+$`.
+  ///
+  /// [filter] - List filter.
+  ///
+  /// [orderBy] - Sort results. Supported values are "name", "name desc" or ""
+  /// (unsorted).
+  ///
+  /// [pageSize] - The maximum number of items to return.
+  ///
+  /// [pageToken] - The next_page_token value to use if there are additional
+  /// results to retrieve for this list request.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListSnapshotsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListSnapshotsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/snapshots';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return ListSnapshotsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates the settings of a specific snapshot.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Output only. The resource name of the snapshot, in the format
+  /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}/snapshots/{snapshot_id}`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+/snapshots/\[^/\]+$`.
+  ///
+  /// [updateMask] - Required. Mask of fields to update. At least one path must
+  /// be supplied in this field.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    Snapshot request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'PATCH',
       body: _body,
       queryParams: _queryParams,
     );
@@ -956,6 +1202,8 @@ class Backup {
   /// backed by SSD.
   /// - "HIGH_SCALE_SSD" : HIGH_SCALE instances offer expanded capacity and
   /// performance scaling capabilities.
+  /// - "ENTERPRISE" : ENTERPRISE instances offer the features and availability
+  /// needed for mission-critical workloads.
   core.String? sourceInstanceTier;
 
   /// The backup state.
@@ -1136,6 +1384,9 @@ class Instance {
   /// For this version, only a single file share is supported.
   core.List<FileShareConfig>? fileShares;
 
+  /// KMS key name used for data encryption.
+  core.String? kmsKeyName;
+
   /// Resource labels to represent user provided metadata.
   core.Map<core.String, core.String>? labels;
 
@@ -1170,12 +1421,19 @@ class Instance {
   /// `Instance` resource.
   /// - "RESTORING" : The instance is restoring a backup to an existing file
   /// share and may be unusable during this time.
+  /// - "SUSPENDED" : The instance is suspended. You can get further details
+  /// from the `suspension_reasons` field of the `Instance` resource.
   core.String? state;
 
   /// Additional information about the instance state, if available.
   ///
   /// Output only.
   core.String? statusMessage;
+
+  /// field indicates all the reasons the instance is in "SUSPENDED" state.
+  ///
+  /// Output only.
+  core.List<core.String>? suspensionReasons;
 
   /// The service tier of the instance.
   /// Possible string values are:
@@ -1190,6 +1448,8 @@ class Instance {
   /// backed by SSD.
   /// - "HIGH_SCALE_SSD" : HIGH_SCALE instances offer expanded capacity and
   /// performance scaling capabilities.
+  /// - "ENTERPRISE" : ENTERPRISE instances offer the features and availability
+  /// needed for mission-critical workloads.
   core.String? tier;
 
   Instance({
@@ -1197,12 +1457,14 @@ class Instance {
     this.description,
     this.etag,
     this.fileShares,
+    this.kmsKeyName,
     this.labels,
     this.name,
     this.networks,
     this.satisfiesPzs,
     this.state,
     this.statusMessage,
+    this.suspensionReasons,
     this.tier,
   });
 
@@ -1220,6 +1482,9 @@ class Instance {
                   .map((value) => FileShareConfig.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
+              : null,
+          kmsKeyName: _json.containsKey('kmsKeyName')
+              ? _json['kmsKeyName'] as core.String
               : null,
           labels: _json.containsKey('labels')
               ? (_json['labels'] as core.Map<core.String, core.dynamic>).map(
@@ -1244,6 +1509,11 @@ class Instance {
           statusMessage: _json.containsKey('statusMessage')
               ? _json['statusMessage'] as core.String
               : null,
+          suspensionReasons: _json.containsKey('suspensionReasons')
+              ? (_json['suspensionReasons'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
           tier: _json.containsKey('tier') ? _json['tier'] as core.String : null,
         );
 
@@ -1252,12 +1522,14 @@ class Instance {
         if (description != null) 'description': description!,
         if (etag != null) 'etag': etag!,
         if (fileShares != null) 'fileShares': fileShares!,
+        if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
         if (networks != null) 'networks': networks!,
         if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
         if (state != null) 'state': state!,
         if (statusMessage != null) 'statusMessage': statusMessage!,
+        if (suspensionReasons != null) 'suspensionReasons': suspensionReasons!,
         if (tier != null) 'tier': tier!,
       };
 }
@@ -1426,11 +1698,56 @@ class ListOperationsResponse {
       };
 }
 
+/// ListSnapshotsResponse is the result of ListSnapshotsRequest.
+class ListSnapshotsResponse {
+  /// The token you can use to retrieve the next page of results.
+  ///
+  /// Not returned if there are no more results in the list.
+  core.String? nextPageToken;
+
+  /// A list of snapshots in the project for the specified instance.
+  core.List<Snapshot>? snapshots;
+
+  ListSnapshotsResponse({
+    this.nextPageToken,
+    this.snapshots,
+  });
+
+  ListSnapshotsResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          snapshots: _json.containsKey('snapshots')
+              ? (_json['snapshots'] as core.List)
+                  .map((value) => Snapshot.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (snapshots != null) 'snapshots': snapshots!,
+      };
+}
+
 /// A resource that represents Google Cloud Platform location.
 typedef Location = $Location00;
 
 /// Network configuration for the instance.
 class NetworkConfig {
+  /// The network connect mode of the Filestore instance.
+  ///
+  /// If not provided, the connect mode defaults to DIRECT_PEERING.
+  /// Possible string values are:
+  /// - "CONNECT_MODE_UNSPECIFIED" : Not set.
+  /// - "DIRECT_PEERING" : Connect via direct peering to the Filestore service.
+  /// - "PRIVATE_SERVICE_ACCESS" : Connect to your Filestore instance using
+  /// Private Service Access. Private services access provides an IP address
+  /// range for multiple Google Cloud services, including Filestore.
+  core.String? connectMode;
+
   /// IPv4 addresses in the format `{octet1}.{octet2}.{octet3}.{octet4}` or IPv6
   /// addresses in the format
   /// `{block1}:{block2}:{block3}:{block4}:{block5}:{block6}:{block7}:{block8}`.
@@ -1449,16 +1766,25 @@ class NetworkConfig {
   /// is connected.
   core.String? network;
 
-  /// A /29 CIDR block in one of the
-  /// [internal IP address ranges](https://www.arin.net/reference/research/statistics/address_filters/)
-  /// that identifies the range of IP addresses reserved for this instance.
+  /// Optional, reserved_ip_range can have one of the following two types of
+  /// values.
   ///
-  /// For example, 10.0.0.0/29 or 192.168.0.0/29. The range you specify can't
+  /// * CIDR range value when using DIRECT_PEERING connect mode. *
+  /// [Allocated IP address range](https://cloud.google.com/compute/docs/ip-addresses/reserve-static-internal-ip-address)
+  /// when using PRIVATE_SERVICE_ACCESS connect mode. When the name of an
+  /// allocated IP address range is specified, it must be one of the ranges
+  /// associated with the private service access connection. When specified as a
+  /// direct CIDR value, it must be a /29 CIDR block for Basic tier or a /24
+  /// CIDR block for High Scale or Enterprise tier in one of the
+  /// [internal IP address ranges](https://www.arin.net/reference/research/statistics/address_filters/)
+  /// that identifies the range of IP addresses reserved for this instance. For
+  /// example, 10.0.0.0/29 or 192.168.0.0/24. The range you specify can't
   /// overlap with either existing subnets or assigned IP address ranges for
   /// other Cloud Filestore instances in the selected VPC network.
   core.String? reservedIpRange;
 
   NetworkConfig({
+    this.connectMode,
     this.ipAddresses,
     this.modes,
     this.network,
@@ -1467,6 +1793,9 @@ class NetworkConfig {
 
   NetworkConfig.fromJson(core.Map _json)
       : this(
+          connectMode: _json.containsKey('connectMode')
+              ? _json['connectMode'] as core.String
+              : null,
           ipAddresses: _json.containsKey('ipAddresses')
               ? (_json['ipAddresses'] as core.List)
                   .map((value) => value as core.String)
@@ -1486,6 +1815,7 @@ class NetworkConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (connectMode != null) 'connectMode': connectMode!,
         if (ipAddresses != null) 'ipAddresses': ipAddresses!,
         if (modes != null) 'modes': modes!,
         if (network != null) 'network': network!,
@@ -1686,6 +2016,86 @@ class RestoreInstanceRequest {
   core.Map<core.String, core.dynamic> toJson() => {
         if (fileShare != null) 'fileShare': fileShare!,
         if (sourceBackup != null) 'sourceBackup': sourceBackup!,
+      };
+}
+
+/// A Filestore snapshot.
+class Snapshot {
+  /// The time when the snapshot was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// A description of the snapshot with 2048 characters or less.
+  ///
+  /// Requests with longer descriptions will be rejected.
+  core.String? description;
+
+  /// The amount of bytes needed to allocate a full copy of the snapshot content
+  ///
+  /// Output only.
+  core.String? filesystemUsedBytes;
+
+  /// Resource labels to represent user provided metadata.
+  core.Map<core.String, core.String>? labels;
+
+  /// The resource name of the snapshot, in the format
+  /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}/snapshots/{snapshot_id}`.
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// The snapshot state.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : State not set.
+  /// - "CREATING" : Snapshot is being created.
+  /// - "READY" : Snapshot is available for use.
+  /// - "DELETING" : Snapshot is being deleted.
+  core.String? state;
+
+  Snapshot({
+    this.createTime,
+    this.description,
+    this.filesystemUsedBytes,
+    this.labels,
+    this.name,
+    this.state,
+  });
+
+  Snapshot.fromJson(core.Map _json)
+      : this(
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          filesystemUsedBytes: _json.containsKey('filesystemUsedBytes')
+              ? _json['filesystemUsedBytes'] as core.String
+              : null,
+          labels: _json.containsKey('labels')
+              ? (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          state:
+              _json.containsKey('state') ? _json['state'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (description != null) 'description': description!,
+        if (filesystemUsedBytes != null)
+          'filesystemUsedBytes': filesystemUsedBytes!,
+        if (labels != null) 'labels': labels!,
+        if (name != null) 'name': name!,
+        if (state != null) 'state': state!,
       };
 }
 

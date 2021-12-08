@@ -216,13 +216,16 @@ api.EnvironmentConfig buildEnvironmentConfig() {
     o.dagGcsPrefix = 'foo';
     o.databaseConfig = buildDatabaseConfig();
     o.encryptionConfig = buildEncryptionConfig();
+    o.environmentSize = 'foo';
     o.gkeCluster = 'foo';
+    o.maintenanceWindow = buildMaintenanceWindow();
     o.nodeConfig = buildNodeConfig();
     o.nodeCount = 42;
     o.privateEnvironmentConfig = buildPrivateEnvironmentConfig();
     o.softwareConfig = buildSoftwareConfig();
     o.webServerConfig = buildWebServerConfig();
     o.webServerNetworkAccessControl = buildWebServerNetworkAccessControl();
+    o.workloadsConfig = buildWorkloadsConfig();
   }
   buildCounterEnvironmentConfig--;
   return o;
@@ -242,9 +245,14 @@ void checkEnvironmentConfig(api.EnvironmentConfig o) {
     checkDatabaseConfig(o.databaseConfig!);
     checkEncryptionConfig(o.encryptionConfig!);
     unittest.expect(
+      o.environmentSize!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
       o.gkeCluster!,
       unittest.equals('foo'),
     );
+    checkMaintenanceWindow(o.maintenanceWindow!);
     checkNodeConfig(o.nodeConfig!);
     unittest.expect(
       o.nodeCount!,
@@ -254,6 +262,7 @@ void checkEnvironmentConfig(api.EnvironmentConfig o) {
     checkSoftwareConfig(o.softwareConfig!);
     checkWebServerConfig(o.webServerConfig!);
     checkWebServerNetworkAccessControl(o.webServerNetworkAccessControl!);
+    checkWorkloadsConfig(o.workloadsConfig!);
   }
   buildCounterEnvironmentConfig--;
 }
@@ -449,6 +458,38 @@ void checkListOperationsResponse(api.ListOperationsResponse o) {
     checkUnnamed4(o.operations!);
   }
   buildCounterListOperationsResponse--;
+}
+
+core.int buildCounterMaintenanceWindow = 0;
+api.MaintenanceWindow buildMaintenanceWindow() {
+  final o = api.MaintenanceWindow();
+  buildCounterMaintenanceWindow++;
+  if (buildCounterMaintenanceWindow < 3) {
+    o.endTime = 'foo';
+    o.recurrence = 'foo';
+    o.startTime = 'foo';
+  }
+  buildCounterMaintenanceWindow--;
+  return o;
+}
+
+void checkMaintenanceWindow(api.MaintenanceWindow o) {
+  buildCounterMaintenanceWindow++;
+  if (buildCounterMaintenanceWindow < 3) {
+    unittest.expect(
+      o.endTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.recurrence!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.startTime!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterMaintenanceWindow--;
 }
 
 core.List<core.String> buildUnnamed5() => [
@@ -692,6 +733,8 @@ api.PrivateEnvironmentConfig buildPrivateEnvironmentConfig() {
   final o = api.PrivateEnvironmentConfig();
   buildCounterPrivateEnvironmentConfig++;
   if (buildCounterPrivateEnvironmentConfig < 3) {
+    o.cloudComposerNetworkIpv4CidrBlock = 'foo';
+    o.cloudComposerNetworkIpv4ReservedRange = 'foo';
     o.cloudSqlIpv4CidrBlock = 'foo';
     o.enablePrivateEnvironment = true;
     o.privateClusterConfig = buildPrivateClusterConfig();
@@ -705,6 +748,14 @@ api.PrivateEnvironmentConfig buildPrivateEnvironmentConfig() {
 void checkPrivateEnvironmentConfig(api.PrivateEnvironmentConfig o) {
   buildCounterPrivateEnvironmentConfig++;
   if (buildCounterPrivateEnvironmentConfig < 3) {
+    unittest.expect(
+      o.cloudComposerNetworkIpv4CidrBlock!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.cloudComposerNetworkIpv4ReservedRange!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.cloudSqlIpv4CidrBlock!,
       unittest.equals('foo'),
@@ -721,6 +772,43 @@ void checkPrivateEnvironmentConfig(api.PrivateEnvironmentConfig o) {
     );
   }
   buildCounterPrivateEnvironmentConfig--;
+}
+
+core.int buildCounterSchedulerResource = 0;
+api.SchedulerResource buildSchedulerResource() {
+  final o = api.SchedulerResource();
+  buildCounterSchedulerResource++;
+  if (buildCounterSchedulerResource < 3) {
+    o.count = 42;
+    o.cpu = 42.0;
+    o.memoryGb = 42.0;
+    o.storageGb = 42.0;
+  }
+  buildCounterSchedulerResource--;
+  return o;
+}
+
+void checkSchedulerResource(api.SchedulerResource o) {
+  buildCounterSchedulerResource++;
+  if (buildCounterSchedulerResource < 3) {
+    unittest.expect(
+      o.count!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.cpu!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.memoryGb!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.storageGb!,
+      unittest.equals(42.0),
+    );
+  }
+  buildCounterSchedulerResource--;
 }
 
 core.Map<core.String, core.String> buildUnnamed9() => {
@@ -949,6 +1037,103 @@ void checkWebServerNetworkAccessControl(api.WebServerNetworkAccessControl o) {
   buildCounterWebServerNetworkAccessControl--;
 }
 
+core.int buildCounterWebServerResource = 0;
+api.WebServerResource buildWebServerResource() {
+  final o = api.WebServerResource();
+  buildCounterWebServerResource++;
+  if (buildCounterWebServerResource < 3) {
+    o.cpu = 42.0;
+    o.memoryGb = 42.0;
+    o.storageGb = 42.0;
+  }
+  buildCounterWebServerResource--;
+  return o;
+}
+
+void checkWebServerResource(api.WebServerResource o) {
+  buildCounterWebServerResource++;
+  if (buildCounterWebServerResource < 3) {
+    unittest.expect(
+      o.cpu!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.memoryGb!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.storageGb!,
+      unittest.equals(42.0),
+    );
+  }
+  buildCounterWebServerResource--;
+}
+
+core.int buildCounterWorkerResource = 0;
+api.WorkerResource buildWorkerResource() {
+  final o = api.WorkerResource();
+  buildCounterWorkerResource++;
+  if (buildCounterWorkerResource < 3) {
+    o.cpu = 42.0;
+    o.maxCount = 42;
+    o.memoryGb = 42.0;
+    o.minCount = 42;
+    o.storageGb = 42.0;
+  }
+  buildCounterWorkerResource--;
+  return o;
+}
+
+void checkWorkerResource(api.WorkerResource o) {
+  buildCounterWorkerResource++;
+  if (buildCounterWorkerResource < 3) {
+    unittest.expect(
+      o.cpu!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.maxCount!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.memoryGb!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.minCount!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.storageGb!,
+      unittest.equals(42.0),
+    );
+  }
+  buildCounterWorkerResource--;
+}
+
+core.int buildCounterWorkloadsConfig = 0;
+api.WorkloadsConfig buildWorkloadsConfig() {
+  final o = api.WorkloadsConfig();
+  buildCounterWorkloadsConfig++;
+  if (buildCounterWorkloadsConfig < 3) {
+    o.scheduler = buildSchedulerResource();
+    o.webServer = buildWebServerResource();
+    o.worker = buildWorkerResource();
+  }
+  buildCounterWorkloadsConfig--;
+  return o;
+}
+
+void checkWorkloadsConfig(api.WorkloadsConfig o) {
+  buildCounterWorkloadsConfig++;
+  if (buildCounterWorkloadsConfig < 3) {
+    checkSchedulerResource(o.scheduler!);
+    checkWebServerResource(o.webServer!);
+    checkWorkerResource(o.worker!);
+  }
+  buildCounterWorkloadsConfig--;
+}
+
 void main() {
   unittest.group('obj-schema-AllowedIpRange', () {
     unittest.test('to-json--from-json', () async {
@@ -1070,6 +1255,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-MaintenanceWindow', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildMaintenanceWindow();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.MaintenanceWindow.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkMaintenanceWindow(od);
+    });
+  });
+
   unittest.group('obj-schema-NodeConfig', () {
     unittest.test('to-json--from-json', () async {
       final o = buildNodeConfig();
@@ -1110,6 +1305,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-SchedulerResource', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSchedulerResource();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SchedulerResource.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkSchedulerResource(od);
+    });
+  });
+
   unittest.group('obj-schema-SoftwareConfig', () {
     unittest.test('to-json--from-json', () async {
       final o = buildSoftwareConfig();
@@ -1147,6 +1352,36 @@ void main() {
       final od = api.WebServerNetworkAccessControl.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkWebServerNetworkAccessControl(od);
+    });
+  });
+
+  unittest.group('obj-schema-WebServerResource', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildWebServerResource();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.WebServerResource.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkWebServerResource(od);
+    });
+  });
+
+  unittest.group('obj-schema-WorkerResource', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildWorkerResource();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.WorkerResource.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkWorkerResource(od);
+    });
+  });
+
+  unittest.group('obj-schema-WorkloadsConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildWorkloadsConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.WorkloadsConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkWorkloadsConfig(od);
     });
   });
 

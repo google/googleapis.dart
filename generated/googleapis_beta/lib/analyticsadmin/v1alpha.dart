@@ -28,6 +28,7 @@
 ///   - [PropertiesConversionEventsResource]
 ///   - [PropertiesCustomDimensionsResource]
 ///   - [PropertiesCustomMetricsResource]
+///   - [PropertiesDataStreamsResource]
 ///   - [PropertiesDisplayVideo360AdvertiserLinkProposalsResource]
 ///   - [PropertiesDisplayVideo360AdvertiserLinksResource]
 ///   - [PropertiesFirebaseLinksResource]
@@ -924,6 +925,8 @@ class PropertiesResource {
       PropertiesCustomDimensionsResource(_requester);
   PropertiesCustomMetricsResource get customMetrics =>
       PropertiesCustomMetricsResource(_requester);
+  PropertiesDataStreamsResource get dataStreams =>
+      PropertiesDataStreamsResource(_requester);
   PropertiesDisplayVideo360AdvertiserLinkProposalsResource
       get displayVideo360AdvertiserLinkProposals =>
           PropertiesDisplayVideo360AdvertiserLinkProposalsResource(_requester);
@@ -2477,6 +2480,226 @@ class PropertiesCustomMetricsResource {
       queryParams: _queryParams,
     );
     return GoogleAnalyticsAdminV1alphaCustomMetric.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class PropertiesDataStreamsResource {
+  final commons.ApiRequester _requester;
+
+  PropertiesDataStreamsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a DataStream.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Example format: properties/1234
+  /// Value must have pattern `^properties/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleAnalyticsAdminV1alphaDataStream].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleAnalyticsAdminV1alphaDataStream> create(
+    GoogleAnalyticsAdminV1alphaDataStream request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1alpha/' + core.Uri.encodeFull('$parent') + '/dataStreams';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleAnalyticsAdminV1alphaDataStream.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a DataStream on a property.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the DataStream to delete. Example format:
+  /// properties/1234/dataStreams/5678
+  /// Value must have pattern `^properties/\[^/\]+/dataStreams/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1alpha/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'DELETE',
+      queryParams: _queryParams,
+    );
+    return GoogleProtobufEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lookup for a single DataStream.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the DataStream to get. Example format:
+  /// properties/1234/dataStreams/5678
+  /// Value must have pattern `^properties/\[^/\]+/dataStreams/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleAnalyticsAdminV1alphaDataStream].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleAnalyticsAdminV1alphaDataStream> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1alpha/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleAnalyticsAdminV1alphaDataStream.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists DataStreams on a property.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Example format: properties/1234
+  /// Value must have pattern `^properties/\[^/\]+$`.
+  ///
+  /// [pageSize] - The maximum number of resources to return. If unspecified, at
+  /// most 50 resources will be returned. The maximum value is 200 (higher
+  /// values will be coerced to the maximum).
+  ///
+  /// [pageToken] - A page token, received from a previous `ListDataStreams`
+  /// call. Provide this to retrieve the subsequent page. When paginating, all
+  /// other parameters provided to `ListDataStreams` must match the call that
+  /// provided the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleAnalyticsAdminV1alphaListDataStreamsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleAnalyticsAdminV1alphaListDataStreamsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1alpha/' + core.Uri.encodeFull('$parent') + '/dataStreams';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleAnalyticsAdminV1alphaListDataStreamsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates a DataStream on a property.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Output only. Resource name of this Data Stream. Format:
+  /// properties/{property_id}/dataStreams/{stream_id} Example:
+  /// "properties/1000/dataStreams/2000"
+  /// Value must have pattern `^properties/\[^/\]+/dataStreams/\[^/\]+$`.
+  ///
+  /// [updateMask] - Required. The list of fields to be updated. Omitted fields
+  /// will not be updated. To replace the entire entity, use one path with the
+  /// string "*" to match all fields.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleAnalyticsAdminV1alphaDataStream].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleAnalyticsAdminV1alphaDataStream> patch(
+    GoogleAnalyticsAdminV1alphaDataStream request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1alpha/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleAnalyticsAdminV1alphaDataStream.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
 }
@@ -6106,6 +6329,233 @@ class GoogleAnalyticsAdminV1alphaDataSharingSettings {
       };
 }
 
+/// A resource message representing a data stream.
+class GoogleAnalyticsAdminV1alphaDataStream {
+  /// Data specific to Android app streams.
+  ///
+  /// Must be populated if type is ANDROID_APP_DATA_STREAM.
+  GoogleAnalyticsAdminV1alphaDataStreamAndroidAppStreamData?
+      androidAppStreamData;
+
+  /// Time when this stream was originally created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// Human-readable display name for the Data Stream.
+  ///
+  /// Required for web data streams. The max allowed display name length is 255
+  /// UTF-16 code units.
+  core.String? displayName;
+
+  /// Data specific to iOS app streams.
+  ///
+  /// Must be populated if type is IOS_APP_DATA_STREAM.
+  GoogleAnalyticsAdminV1alphaDataStreamIosAppStreamData? iosAppStreamData;
+
+  /// Resource name of this Data Stream.
+  ///
+  /// Format: properties/{property_id}/dataStreams/{stream_id} Example:
+  /// "properties/1000/dataStreams/2000"
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// The type of this DataStream resource.
+  ///
+  /// Required. Immutable.
+  /// Possible string values are:
+  /// - "DATA_STREAM_TYPE_UNSPECIFIED" : Type unknown or not specified.
+  /// - "WEB_DATA_STREAM" : Web data stream.
+  /// - "ANDROID_APP_DATA_STREAM" : Android app data stream.
+  /// - "IOS_APP_DATA_STREAM" : iOS app data stream.
+  core.String? type;
+
+  /// Time when stream payload fields were last updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  /// Data specific to web streams.
+  ///
+  /// Must be populated if type is WEB_DATA_STREAM.
+  GoogleAnalyticsAdminV1alphaDataStreamWebStreamData? webStreamData;
+
+  GoogleAnalyticsAdminV1alphaDataStream({
+    this.androidAppStreamData,
+    this.createTime,
+    this.displayName,
+    this.iosAppStreamData,
+    this.name,
+    this.type,
+    this.updateTime,
+    this.webStreamData,
+  });
+
+  GoogleAnalyticsAdminV1alphaDataStream.fromJson(core.Map _json)
+      : this(
+          androidAppStreamData: _json.containsKey('androidAppStreamData')
+              ? GoogleAnalyticsAdminV1alphaDataStreamAndroidAppStreamData
+                  .fromJson(_json['androidAppStreamData']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          iosAppStreamData: _json.containsKey('iosAppStreamData')
+              ? GoogleAnalyticsAdminV1alphaDataStreamIosAppStreamData.fromJson(
+                  _json['iosAppStreamData']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
+          webStreamData: _json.containsKey('webStreamData')
+              ? GoogleAnalyticsAdminV1alphaDataStreamWebStreamData.fromJson(
+                  _json['webStreamData'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (androidAppStreamData != null)
+          'androidAppStreamData': androidAppStreamData!,
+        if (createTime != null) 'createTime': createTime!,
+        if (displayName != null) 'displayName': displayName!,
+        if (iosAppStreamData != null) 'iosAppStreamData': iosAppStreamData!,
+        if (name != null) 'name': name!,
+        if (type != null) 'type': type!,
+        if (updateTime != null) 'updateTime': updateTime!,
+        if (webStreamData != null) 'webStreamData': webStreamData!,
+      };
+}
+
+/// Data specific to Android app streams.
+class GoogleAnalyticsAdminV1alphaDataStreamAndroidAppStreamData {
+  /// ID of the corresponding Android app in Firebase, if any.
+  ///
+  /// This ID can change if the Android app is deleted and recreated.
+  ///
+  /// Output only.
+  core.String? firebaseAppId;
+
+  /// The package name for the app being measured.
+  ///
+  /// Example: "com.example.myandroidapp"
+  ///
+  /// Immutable.
+  core.String? packageName;
+
+  GoogleAnalyticsAdminV1alphaDataStreamAndroidAppStreamData({
+    this.firebaseAppId,
+    this.packageName,
+  });
+
+  GoogleAnalyticsAdminV1alphaDataStreamAndroidAppStreamData.fromJson(
+      core.Map _json)
+      : this(
+          firebaseAppId: _json.containsKey('firebaseAppId')
+              ? _json['firebaseAppId'] as core.String
+              : null,
+          packageName: _json.containsKey('packageName')
+              ? _json['packageName'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (firebaseAppId != null) 'firebaseAppId': firebaseAppId!,
+        if (packageName != null) 'packageName': packageName!,
+      };
+}
+
+/// Data specific to iOS app streams.
+class GoogleAnalyticsAdminV1alphaDataStreamIosAppStreamData {
+  /// The Apple App Store Bundle ID for the app Example: "com.example.myiosapp"
+  ///
+  /// Required. Immutable.
+  core.String? bundleId;
+
+  /// ID of the corresponding iOS app in Firebase, if any.
+  ///
+  /// This ID can change if the iOS app is deleted and recreated.
+  ///
+  /// Output only.
+  core.String? firebaseAppId;
+
+  GoogleAnalyticsAdminV1alphaDataStreamIosAppStreamData({
+    this.bundleId,
+    this.firebaseAppId,
+  });
+
+  GoogleAnalyticsAdminV1alphaDataStreamIosAppStreamData.fromJson(core.Map _json)
+      : this(
+          bundleId: _json.containsKey('bundleId')
+              ? _json['bundleId'] as core.String
+              : null,
+          firebaseAppId: _json.containsKey('firebaseAppId')
+              ? _json['firebaseAppId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (bundleId != null) 'bundleId': bundleId!,
+        if (firebaseAppId != null) 'firebaseAppId': firebaseAppId!,
+      };
+}
+
+/// Data specific to web streams.
+class GoogleAnalyticsAdminV1alphaDataStreamWebStreamData {
+  /// Domain name of the web app being measured, or empty.
+  ///
+  /// Example: "http://www.google.com", "https://www.google.com"
+  ///
+  /// Immutable.
+  core.String? defaultUri;
+
+  /// ID of the corresponding web app in Firebase, if any.
+  ///
+  /// This ID can change if the web app is deleted and recreated.
+  ///
+  /// Output only.
+  core.String? firebaseAppId;
+
+  /// Analytics "Measurement ID", without the "G-" prefix.
+  ///
+  /// Example: "G-1A2BCD345E" would just be "1A2BCD345E"
+  ///
+  /// Output only.
+  core.String? measurementId;
+
+  GoogleAnalyticsAdminV1alphaDataStreamWebStreamData({
+    this.defaultUri,
+    this.firebaseAppId,
+    this.measurementId,
+  });
+
+  GoogleAnalyticsAdminV1alphaDataStreamWebStreamData.fromJson(core.Map _json)
+      : this(
+          defaultUri: _json.containsKey('defaultUri')
+              ? _json['defaultUri'] as core.String
+              : null,
+          firebaseAppId: _json.containsKey('firebaseAppId')
+              ? _json['firebaseAppId'] as core.String
+              : null,
+          measurementId: _json.containsKey('measurementId')
+              ? _json['measurementId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (defaultUri != null) 'defaultUri': defaultUri!,
+        if (firebaseAppId != null) 'firebaseAppId': firebaseAppId!,
+        if (measurementId != null) 'measurementId': measurementId!,
+      };
+}
+
 /// Request message for DeleteUserLink RPC.
 class GoogleAnalyticsAdminV1alphaDeleteUserLinkRequest {
   /// Example format: accounts/1234/userLinks/5678
@@ -6933,6 +7383,41 @@ class GoogleAnalyticsAdminV1alphaListCustomMetricsResponse {
       };
 }
 
+/// Response message for ListDataStreams RPC.
+class GoogleAnalyticsAdminV1alphaListDataStreamsResponse {
+  /// List of DataStreams.
+  core.List<GoogleAnalyticsAdminV1alphaDataStream>? dataStreams;
+
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  GoogleAnalyticsAdminV1alphaListDataStreamsResponse({
+    this.dataStreams,
+    this.nextPageToken,
+  });
+
+  GoogleAnalyticsAdminV1alphaListDataStreamsResponse.fromJson(core.Map _json)
+      : this(
+          dataStreams: _json.containsKey('dataStreams')
+              ? (_json['dataStreams'] as core.List)
+                  .map((value) =>
+                      GoogleAnalyticsAdminV1alphaDataStream.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dataStreams != null) 'dataStreams': dataStreams!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
 /// Response message for ListDisplayVideo360AdvertiserLinkProposals RPC.
 class GoogleAnalyticsAdminV1alphaListDisplayVideo360AdvertiserLinkProposalsResponse {
   /// List of DisplayVideo360AdvertiserLinkProposals.
@@ -7503,7 +7988,7 @@ class GoogleAnalyticsAdminV1alphaProperty {
 
 /// A virtual resource representing metadata for a GA4 property.
 class GoogleAnalyticsAdminV1alphaPropertySummary {
-  /// Display name for the property referred to in this account summary.
+  /// Display name for the property referred to in this property summary.
   core.String? displayName;
 
   /// Resource name of property referred to by this property summary Format:
@@ -7824,7 +8309,7 @@ class GoogleAnalyticsAdminV1alphaWebDataStream {
 
   /// Human-readable display name for the Data Stream.
   ///
-  /// The max allowed display name length is 100 UTF-16 code units.
+  /// The max allowed display name length is 255 UTF-16 code units.
   ///
   /// Required.
   core.String? displayName;

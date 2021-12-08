@@ -516,7 +516,7 @@ class AndroidInstrumentationTest {
   /// The option of whether running each test within its own invocation of
   /// instrumentation with Android Test Orchestrator or not.
   ///
-  /// ** Orchestrator is only compatible with AndroidJUnitRunner version 1.0 or
+  /// ** Orchestrator is only compatible with AndroidJUnitRunner version 1.1 or
   /// higher! ** Orchestrator offers the following benefits: - No shared state -
   /// Crashes are isolated - Logs are scoped per test See for more information
   /// about Android Test Orchestrator. If not set, the test will be run without
@@ -528,7 +528,7 @@ class AndroidInstrumentationTest {
   /// the orchestrator. Using the orchestrator is highly encouraged because of
   /// all the benefits it offers.
   /// - "USE_ORCHESTRATOR" : Run test using orchestrator. ** Only compatible
-  /// with AndroidJUnitRunner version 1.0 or higher! ** Recommended.
+  /// with AndroidJUnitRunner version 1.1 or higher! ** Recommended.
   /// - "DO_NOT_USE_ORCHESTRATOR" : Run test without using orchestrator.
   core.String? orchestratorOption;
 
@@ -3299,7 +3299,7 @@ class TestMatrix {
   /// - "INSTRUMENTATION_ORCHESTRATOR_INCOMPATIBLE" : The test runner class
   /// specified by user or in the test APK's manifest file is not compatible
   /// with Android Test Orchestrator. Orchestrator is only compatible with
-  /// AndroidJUnitRunner version 1.0 or higher. Orchestrator can be disabled by
+  /// AndroidJUnitRunner version 1.1 or higher. Orchestrator can be disabled by
   /// using DO_NOT_USE_ORCHESTRATOR OrchestratorOption.
   /// - "NO_TEST_RUNNER_CLASS" : The test APK does not contain the test runner
   /// class specified by user or in the manifest file. This can be caused by

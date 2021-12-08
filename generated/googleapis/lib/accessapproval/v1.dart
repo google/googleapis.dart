@@ -116,7 +116,8 @@ class FoldersResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Name of the AccessApprovalSettings to retrieve.
+  /// [name] - The name of the AccessApprovalSettings to retrieve. Format:
+  /// "{projects|folders|organizations}/{id}/accessApprovalSettings"
   /// Value must have pattern `^folders/\[^/\]+/accessApprovalSettings$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -309,7 +310,8 @@ class FoldersApprovalRequestsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Name of the approval request to retrieve.
+  /// [name] - The name of the approval request to retrieve. Format:
+  /// "{projects|folders|organizations}/{id}/approvalRequests/{approval_request}"
   /// Value must have pattern `^folders/\[^/\]+/approvalRequests/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -455,7 +457,8 @@ class OrganizationsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Name of the AccessApprovalSettings to retrieve.
+  /// [name] - The name of the AccessApprovalSettings to retrieve. Format:
+  /// "{projects|folders|organizations}/{id}/accessApprovalSettings"
   /// Value must have pattern `^organizations/\[^/\]+/accessApprovalSettings$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -650,7 +653,8 @@ class OrganizationsApprovalRequestsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Name of the approval request to retrieve.
+  /// [name] - The name of the approval request to retrieve. Format:
+  /// "{projects|folders|organizations}/{id}/approvalRequests/{approval_request}"
   /// Value must have pattern
   /// `^organizations/\[^/\]+/approvalRequests/\[^/\]+$`.
   ///
@@ -797,7 +801,8 @@ class ProjectsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Name of the AccessApprovalSettings to retrieve.
+  /// [name] - The name of the AccessApprovalSettings to retrieve. Format:
+  /// "{projects|folders|organizations}/{id}/accessApprovalSettings"
   /// Value must have pattern `^projects/\[^/\]+/accessApprovalSettings$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -990,7 +995,8 @@ class ProjectsApprovalRequestsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Name of the approval request to retrieve.
+  /// [name] - The name of the approval request to retrieve. Format:
+  /// "{projects|folders|organizations}/{id}/approvalRequests/{approval_request}"
   /// Value must have pattern `^projects/\[^/\]+/approvalRequests/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1085,8 +1091,8 @@ class ProjectsApprovalRequestsResource {
 
 /// Settings on a Project/Folder/Organization related to Access Approval.
 class AccessApprovalSettings {
-  /// This field is read only (not settable via
-  /// UpdateAccessAccessApprovalSettings method).
+  /// This field is read only (not settable via UpdateAccessApprovalSettings
+  /// method).
   ///
   /// If the field is true, that indicates that at least one service is enrolled
   /// for Access Approval in one or more ancestors of the Project or Folder
@@ -1453,14 +1459,16 @@ class EnrolledService {
   /// Engine * Cloud Dataflow * Cloud DLP * Cloud EKM * Cloud HSM * Cloud
   /// Identity and Access Management * Cloud Logging * Cloud Pub/Sub * Cloud
   /// Spanner * Cloud SQL * Cloud Storage * Google Kubernetes Engine *
-  /// Persistent Disk * Speaker ID Note: These values are supported as input for
-  /// legacy purposes, but will not be returned from the API. * all * ga-only *
+  /// Organization Policy Serivice * Persistent Disk * Resource Manager *
+  /// Speaker ID Note: These values are supported as input for legacy purposes,
+  /// but will not be returned from the API. * all * ga-only *
   /// appengine.googleapis.com * bigquery.googleapis.com *
   /// bigtable.googleapis.com * container.googleapis.com *
-  /// cloudkms.googleapis.com * cloudsql.googleapis.com * compute.googleapis.com
-  /// * dataflow.googleapis.com * dlp.googleapis.com * iam.googleapis.com *
-  /// logging.googleapis.com * pubsub.googleapis.com * spanner.googleapis.com *
-  /// speakerid.googleapis.com * storage.googleapis.com Calls to
+  /// cloudkms.googleapis.com * cloudresourcemanager.googleapis.com *
+  /// cloudsql.googleapis.com * compute.googleapis.com * dataflow.googleapis.com
+  /// * dlp.googleapis.com * iam.googleapis.com * logging.googleapis.com *
+  /// orgpolicy.googleapis.com * pubsub.googleapis.com * spanner.googleapis.com
+  /// * speakerid.googleapis.com * storage.googleapis.com Calls to
   /// UpdateAccessApprovalSettings using 'all' or any of the XXX.googleapis.com
   /// will be translated to the associated product name ('all', 'App Engine',
   /// etc.). Note: 'all' will enroll the resource in all products supported at

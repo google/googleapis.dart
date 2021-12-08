@@ -278,7 +278,7 @@
             }
         }
     },
-    "revision": "20211020",
+    "revision": "20211123",
     "rootUrl": "https://doubleclickbidmanager.googleapis.com/",
     "schemas": {
         "ChannelGrouping": {
@@ -624,9 +624,13 @@
                         "FILTER_VERIFICATION_VIDEO_PLAYER_SIZE_COMPLETE",
                         "FILTER_VERIFICATION_VIDEO_RESIZED",
                         "FILTER_VERIFICATION_AUDIBILITY_START",
-                        "FILTER_VERIFICATION_AUDIBILITY_COMPLETE"
+                        "FILTER_VERIFICATION_AUDIBILITY_COMPLETE",
+                        "FILTER_MEDIA_TYPE",
+                        "FILTER_AUDIO_FEED_TYPE_NAME"
                     ],
                     "enumDescriptions": [
+                        "",
+                        "",
                         "",
                         "",
                         "",
@@ -1290,9 +1294,13 @@
                             "FILTER_VERIFICATION_VIDEO_PLAYER_SIZE_COMPLETE",
                             "FILTER_VERIFICATION_VIDEO_RESIZED",
                             "FILTER_VERIFICATION_AUDIBILITY_START",
-                            "FILTER_VERIFICATION_AUDIBILITY_COMPLETE"
+                            "FILTER_VERIFICATION_AUDIBILITY_COMPLETE",
+                            "FILTER_MEDIA_TYPE",
+                            "FILTER_AUDIO_FEED_TYPE_NAME"
                         ],
                         "enumDescriptions": [
+                            "",
+                            "",
                             "",
                             "",
                             "",
@@ -2966,9 +2974,13 @@
                         "FILTER_VERIFICATION_VIDEO_PLAYER_SIZE_COMPLETE",
                         "FILTER_VERIFICATION_VIDEO_RESIZED",
                         "FILTER_VERIFICATION_AUDIBILITY_START",
-                        "FILTER_VERIFICATION_AUDIBILITY_COMPLETE"
+                        "FILTER_VERIFICATION_AUDIBILITY_COMPLETE",
+                        "FILTER_MEDIA_TYPE",
+                        "FILTER_AUDIO_FEED_TYPE_NAME"
                     ],
                     "enumDescriptions": [
+                        "",
+                        "",
                         "",
                         "",
                         "",

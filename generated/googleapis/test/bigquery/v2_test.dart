@@ -10842,6 +10842,7 @@ void main() {
       final arg_projectId = 'foo';
       final arg_datasetId = 'foo';
       final arg_tableId = 'foo';
+      final arg_autodetectSchema = true;
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final obj =
@@ -10918,6 +10919,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['autodetect_schema']!.first,
+          unittest.equals('$arg_autodetectSchema'),
+        );
+        unittest.expect(
           queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
@@ -10930,7 +10935,7 @@ void main() {
       }), true);
       final response = await res.patch(
           arg_request, arg_projectId, arg_datasetId, arg_tableId,
-          $fields: arg_$fields);
+          autodetectSchema: arg_autodetectSchema, $fields: arg_$fields);
       checkTable(response as api.Table);
     });
 
@@ -11046,6 +11051,7 @@ void main() {
       final arg_projectId = 'foo';
       final arg_datasetId = 'foo';
       final arg_tableId = 'foo';
+      final arg_autodetectSchema = true;
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final obj =
@@ -11122,6 +11128,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['autodetect_schema']!.first,
+          unittest.equals('$arg_autodetectSchema'),
+        );
+        unittest.expect(
           queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
@@ -11134,7 +11144,7 @@ void main() {
       }), true);
       final response = await res.update(
           arg_request, arg_projectId, arg_datasetId, arg_tableId,
-          $fields: arg_$fields);
+          autodetectSchema: arg_autodetectSchema, $fields: arg_$fields);
       checkTable(response as api.Table);
     });
   });

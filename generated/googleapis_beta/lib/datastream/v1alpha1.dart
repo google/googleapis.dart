@@ -25,6 +25,7 @@
 ///     - [ProjectsLocationsPrivateConnectionsResource]
 ///       - [ProjectsLocationsPrivateConnectionsRoutesResource]
 ///     - [ProjectsLocationsStreamsResource]
+///       - [ProjectsLocationsStreamsObjectsResource]
 library datastream.v1alpha1;
 
 import 'dart:async' as async;
@@ -1184,6 +1185,9 @@ class ProjectsLocationsPrivateConnectionsRoutesResource {
 class ProjectsLocationsStreamsResource {
   final commons.ApiRequester _requester;
 
+  ProjectsLocationsStreamsObjectsResource get objects =>
+      ProjectsLocationsStreamsObjectsResource(_requester);
+
   ProjectsLocationsStreamsResource(commons.ApiRequester client)
       : _requester = client;
 
@@ -1511,6 +1515,179 @@ class ProjectsLocationsStreamsResource {
   }
 }
 
+class ProjectsLocationsStreamsObjectsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsStreamsObjectsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Use this method to get details about a stream object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the stream object resource to get.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/streams/\[^/\]+/objects/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [StreamObject].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<StreamObject> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1alpha1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return StreamObject.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Use this method to list the objects of a specific stream.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent stream that owns the collection of
+  /// objects.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/streams/\[^/\]+$`.
+  ///
+  /// [pageSize] - Maximum number of objects to return. Default is 50. The
+  /// maximum value is 1000; values above 1000 will be coerced to 1000.
+  ///
+  /// [pageToken] - Page token received from a previous
+  /// `ListStreamObjectsRequest` call. Provide this to retrieve the subsequent
+  /// page. When paginating, all other parameters provided to
+  /// `ListStreamObjectsRequest` must match the call that provided the page
+  /// token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListStreamObjectsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListStreamObjectsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1alpha1/' + core.Uri.encodeFull('$parent') + '/objects';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return ListStreamObjectsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Starts backfill job for the specified stream object.
+  ///
+  /// Request parameters:
+  ///
+  /// [object] - Required. The name of the stream object resource to start a
+  /// backfill job for.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/streams/\[^/\]+/objects/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [StartBackfillJobResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<StartBackfillJobResponse> startBackfillJob(
+    core.String object, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url =
+        'v1alpha1/' + core.Uri.encodeFull('$object') + ':startBackfillJob';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      queryParams: _queryParams,
+    );
+    return StartBackfillJobResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Stops the backfill job for the specified stream object.
+  ///
+  /// Request parameters:
+  ///
+  /// [object] - Required. The name of the stream object resource to stop the
+  /// backfill job for.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/streams/\[^/\]+/objects/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [StopBackfillJobResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<StopBackfillJobResponse> stopBackfillJob(
+    core.String object, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url =
+        'v1alpha1/' + core.Uri.encodeFull('$object') + ':stopBackfillJob';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      queryParams: _queryParams,
+    );
+    return StopBackfillJobResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
 /// AVRO file format configuration.
 typedef AvroFileFormat = $Empty;
 
@@ -1546,6 +1723,86 @@ class BackfillAllStrategy {
           'mysqlExcludedObjects': mysqlExcludedObjects!,
         if (oracleExcludedObjects != null)
           'oracleExcludedObjects': oracleExcludedObjects!,
+      };
+}
+
+/// Represents a backfill job on a specific stream object.
+class BackfillJob {
+  /// Errors which caused the backfill job to fail.
+  ///
+  /// Output only.
+  core.List<Error>? errors;
+
+  /// Backfill job's end time.
+  ///
+  /// Output only.
+  core.String? lastEndTime;
+
+  /// Backfill job's start time.
+  ///
+  /// Output only.
+  core.String? lastStartTime;
+
+  /// Backfill job state.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Default value.
+  /// - "NOT_STARTED" : Backfill job was never started for the stream object
+  /// (stream has backfill strategy defined as manual or object was explicitly
+  /// excluded from automatic backfill).
+  /// - "PENDING" : Backfill job will start pending available resources.
+  /// - "ACTIVE" : Backfill job is running.
+  /// - "STOPPED" : Backfill job stopped (next job run will start from
+  /// beginning).
+  /// - "FAILED" : Backfill job failed (due to an error).
+  /// - "COMPLETED" : Backfill completed successfully.
+  /// - "UNSUPPORTED" : Backfill job failed since the table structure is
+  /// currently unsupported for backfill.
+  core.String? state;
+
+  /// Backfill job's triggering reason.
+  /// Possible string values are:
+  /// - "TRIGGER_UNSPECIFIED" : Default value.
+  /// - "AUTOMATIC" : Object backfill job was triggered automatically according
+  /// to the stream's backfill strategy.
+  /// - "MANUAL" : Object backfill job was triggered manually using the
+  /// dedicated API.
+  core.String? trigger;
+
+  BackfillJob({
+    this.errors,
+    this.lastEndTime,
+    this.lastStartTime,
+    this.state,
+    this.trigger,
+  });
+
+  BackfillJob.fromJson(core.Map _json)
+      : this(
+          errors: _json.containsKey('errors')
+              ? (_json['errors'] as core.List)
+                  .map((value) => Error.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          lastEndTime: _json.containsKey('lastEndTime')
+              ? _json['lastEndTime'] as core.String
+              : null,
+          lastStartTime: _json.containsKey('lastStartTime')
+              ? _json['lastStartTime'] as core.String
+              : null,
+          state:
+              _json.containsKey('state') ? _json['state'] as core.String : null,
+          trigger: _json.containsKey('trigger')
+              ? _json['trigger'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (errors != null) 'errors': errors!,
+        if (lastEndTime != null) 'lastEndTime': lastEndTime!,
+        if (lastStartTime != null) 'lastStartTime': lastStartTime!,
+        if (state != null) 'state': state!,
+        if (trigger != null) 'trigger': trigger!,
       };
 }
 
@@ -2312,6 +2569,38 @@ class ListRoutesResponse {
       };
 }
 
+/// Response containing the objects for a stream.
+class ListStreamObjectsResponse {
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  core.String? nextPageToken;
+
+  /// List of stream objects.
+  core.List<StreamObject>? streamObjects;
+
+  ListStreamObjectsResponse({
+    this.nextPageToken,
+    this.streamObjects,
+  });
+
+  ListStreamObjectsResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          streamObjects: _json.containsKey('streamObjects')
+              ? (_json['streamObjects'] as core.List)
+                  .map((value) => StreamObject.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (streamObjects != null) 'streamObjects': streamObjects!,
+      };
+}
+
 class ListStreamsResponse {
   /// A token, which can be sent as `page_token` to retrieve the next page.
   ///
@@ -2458,6 +2747,34 @@ class MysqlDatabase {
   core.Map<core.String, core.dynamic> toJson() => {
         if (databaseName != null) 'databaseName': databaseName!,
         if (mysqlTables != null) 'mysqlTables': mysqlTables!,
+      };
+}
+
+/// Mysql data source object identifier.
+class MysqlObjectIdentifier {
+  /// The database name.
+  core.String? database;
+
+  /// The table name.
+  core.String? table;
+
+  MysqlObjectIdentifier({
+    this.database,
+    this.table,
+  });
+
+  MysqlObjectIdentifier.fromJson(core.Map _json)
+      : this(
+          database: _json.containsKey('database')
+              ? _json['database'] as core.String
+              : null,
+          table:
+              _json.containsKey('table') ? _json['table'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (database != null) 'database': database!,
+        if (table != null) 'table': table!,
       };
 }
 
@@ -2848,6 +3165,34 @@ class OracleColumn {
         if (precision != null) 'precision': precision!,
         if (primaryKey != null) 'primaryKey': primaryKey!,
         if (scale != null) 'scale': scale!,
+      };
+}
+
+/// Oracle data source object identifier.
+class OracleObjectIdentifier {
+  /// The schema name.
+  core.String? schema;
+
+  /// The table name.
+  core.String? table;
+
+  OracleObjectIdentifier({
+    this.schema,
+    this.table,
+  });
+
+  OracleObjectIdentifier.fromJson(core.Map _json)
+      : this(
+          schema: _json.containsKey('schema')
+              ? _json['schema'] as core.String
+              : null,
+          table:
+              _json.containsKey('table') ? _json['table'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (schema != null) 'schema': schema!,
+        if (table != null) 'table': table!,
       };
 }
 
@@ -3302,6 +3647,60 @@ class SourceConfig {
       };
 }
 
+/// Represents an identifier of an object in the data source.
+class SourceObjectIdentifier {
+  /// Mysql data source object identifier.
+  MysqlObjectIdentifier? mysqlIdentifier;
+
+  /// Oracle data source object identifier.
+  OracleObjectIdentifier? oracleIdentifier;
+
+  SourceObjectIdentifier({
+    this.mysqlIdentifier,
+    this.oracleIdentifier,
+  });
+
+  SourceObjectIdentifier.fromJson(core.Map _json)
+      : this(
+          mysqlIdentifier: _json.containsKey('mysqlIdentifier')
+              ? MysqlObjectIdentifier.fromJson(_json['mysqlIdentifier']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          oracleIdentifier: _json.containsKey('oracleIdentifier')
+              ? OracleObjectIdentifier.fromJson(_json['oracleIdentifier']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (mysqlIdentifier != null) 'mysqlIdentifier': mysqlIdentifier!,
+        if (oracleIdentifier != null) 'oracleIdentifier': oracleIdentifier!,
+      };
+}
+
+/// Response for manually initiating a backfill job for a specific stream
+/// object.
+class StartBackfillJobResponse {
+  /// The stream object resource a backfill job was started for.
+  StreamObject? object;
+
+  StartBackfillJobResponse({
+    this.object,
+  });
+
+  StartBackfillJobResponse.fromJson(core.Map _json)
+      : this(
+          object: _json.containsKey('object')
+              ? StreamObject.fromJson(
+                  _json['object'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (object != null) 'object': object!,
+      };
+}
+
 /// Static IP address connectivity.
 typedef StaticServiceIpConnectivity = $Empty;
 
@@ -3313,6 +3712,28 @@ typedef StaticServiceIpConnectivity = $Empty;
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 typedef Status = $Status;
+
+/// Response for manually stop a backfill job for a specific stream object.
+class StopBackfillJobResponse {
+  /// The stream object resource the backfill job was stopped for.
+  StreamObject? object;
+
+  StopBackfillJobResponse({
+    this.object,
+  });
+
+  StopBackfillJobResponse.fromJson(core.Map _json)
+      : this(
+          object: _json.containsKey('object')
+              ? StreamObject.fromJson(
+                  _json['object'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (object != null) 'object': object!,
+      };
+}
 
 class Stream {
   /// Automatically backfill objects included in the stream source
@@ -3328,6 +3749,15 @@ class Stream {
   ///
   /// Output only.
   core.String? createTime;
+
+  /// A reference to a KMS encryption key.
+  ///
+  /// If provided, it will be used to encrypt the data. If left blank, data will
+  /// be encrypted using an internal Stream-specific encryption key provisioned
+  /// through KMS.
+  ///
+  /// Immutable.
+  core.String? customerManagedEncryptionKey;
 
   /// Destination connection profile configuration.
   ///
@@ -3382,6 +3812,7 @@ class Stream {
     this.backfillAll,
     this.backfillNone,
     this.createTime,
+    this.customerManagedEncryptionKey,
     this.destinationConfig,
     this.displayName,
     this.errors,
@@ -3405,6 +3836,10 @@ class Stream {
           createTime: _json.containsKey('createTime')
               ? _json['createTime'] as core.String
               : null,
+          customerManagedEncryptionKey:
+              _json.containsKey('customerManagedEncryptionKey')
+                  ? _json['customerManagedEncryptionKey'] as core.String
+                  : null,
           destinationConfig: _json.containsKey('destinationConfig')
               ? DestinationConfig.fromJson(_json['destinationConfig']
                   as core.Map<core.String, core.dynamic>)
@@ -3442,6 +3877,8 @@ class Stream {
         if (backfillAll != null) 'backfillAll': backfillAll!,
         if (backfillNone != null) 'backfillNone': backfillNone!,
         if (createTime != null) 'createTime': createTime!,
+        if (customerManagedEncryptionKey != null)
+          'customerManagedEncryptionKey': customerManagedEncryptionKey!,
         if (destinationConfig != null) 'destinationConfig': destinationConfig!,
         if (displayName != null) 'displayName': displayName!,
         if (errors != null) 'errors': errors!,
@@ -3449,6 +3886,88 @@ class Stream {
         if (name != null) 'name': name!,
         if (sourceConfig != null) 'sourceConfig': sourceConfig!,
         if (state != null) 'state': state!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// A specific stream object (e.g a specific DB table).
+class StreamObject {
+  /// The latest backfill job that was initiated for the stream object.
+  BackfillJob? backfillJob;
+
+  /// The creation time of the object.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// Display name.
+  ///
+  /// Required.
+  core.String? displayName;
+
+  /// Active errors on the object.
+  ///
+  /// Output only.
+  core.List<Error>? errors;
+
+  /// The object's name.
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// The object identifier in the data source.
+  SourceObjectIdentifier? sourceObject;
+
+  /// The last update time of the object.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  StreamObject({
+    this.backfillJob,
+    this.createTime,
+    this.displayName,
+    this.errors,
+    this.name,
+    this.sourceObject,
+    this.updateTime,
+  });
+
+  StreamObject.fromJson(core.Map _json)
+      : this(
+          backfillJob: _json.containsKey('backfillJob')
+              ? BackfillJob.fromJson(
+                  _json['backfillJob'] as core.Map<core.String, core.dynamic>)
+              : null,
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          errors: _json.containsKey('errors')
+              ? (_json['errors'] as core.List)
+                  .map((value) => Error.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          sourceObject: _json.containsKey('sourceObject')
+              ? SourceObjectIdentifier.fromJson(
+                  _json['sourceObject'] as core.Map<core.String, core.dynamic>)
+              : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (backfillJob != null) 'backfillJob': backfillJob!,
+        if (createTime != null) 'createTime': createTime!,
+        if (displayName != null) 'displayName': displayName!,
+        if (errors != null) 'errors': errors!,
+        if (name != null) 'name': name!,
+        if (sourceObject != null) 'sourceObject': sourceObject!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
 }

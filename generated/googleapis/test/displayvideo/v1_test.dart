@@ -587,6 +587,8 @@ api.AssignedTargetingOption buildAssignedTargetingOption() {
     o.appDetails = buildAppAssignedTargetingOptionDetails();
     o.assignedTargetingOptionId = 'foo';
     o.audienceGroupDetails = buildAudienceGroupAssignedTargetingOptionDetails();
+    o.audioContentTypeDetails =
+        buildAudioContentTypeAssignedTargetingOptionDetails();
     o.authorizedSellerStatusDetails =
         buildAuthorizedSellerStatusAssignedTargetingOptionDetails();
     o.browserDetails = buildBrowserAssignedTargetingOptionDetails();
@@ -662,6 +664,8 @@ void checkAssignedTargetingOption(api.AssignedTargetingOption o) {
       unittest.equals('foo'),
     );
     checkAudienceGroupAssignedTargetingOptionDetails(o.audienceGroupDetails!);
+    checkAudioContentTypeAssignedTargetingOptionDetails(
+        o.audioContentTypeDetails!);
     checkAuthorizedSellerStatusAssignedTargetingOptionDetails(
         o.authorizedSellerStatusDetails!);
     checkBrowserAssignedTargetingOptionDetails(o.browserDetails!);
@@ -812,6 +816,59 @@ void checkAudienceGroupAssignedTargetingOptionDetails(
     checkGoogleAudienceGroup(o.includedGoogleAudienceGroup!);
   }
   buildCounterAudienceGroupAssignedTargetingOptionDetails--;
+}
+
+core.int buildCounterAudioContentTypeAssignedTargetingOptionDetails = 0;
+api.AudioContentTypeAssignedTargetingOptionDetails
+    buildAudioContentTypeAssignedTargetingOptionDetails() {
+  final o = api.AudioContentTypeAssignedTargetingOptionDetails();
+  buildCounterAudioContentTypeAssignedTargetingOptionDetails++;
+  if (buildCounterAudioContentTypeAssignedTargetingOptionDetails < 3) {
+    o.audioContentType = 'foo';
+    o.targetingOptionId = 'foo';
+  }
+  buildCounterAudioContentTypeAssignedTargetingOptionDetails--;
+  return o;
+}
+
+void checkAudioContentTypeAssignedTargetingOptionDetails(
+    api.AudioContentTypeAssignedTargetingOptionDetails o) {
+  buildCounterAudioContentTypeAssignedTargetingOptionDetails++;
+  if (buildCounterAudioContentTypeAssignedTargetingOptionDetails < 3) {
+    unittest.expect(
+      o.audioContentType!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.targetingOptionId!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterAudioContentTypeAssignedTargetingOptionDetails--;
+}
+
+core.int buildCounterAudioContentTypeTargetingOptionDetails = 0;
+api.AudioContentTypeTargetingOptionDetails
+    buildAudioContentTypeTargetingOptionDetails() {
+  final o = api.AudioContentTypeTargetingOptionDetails();
+  buildCounterAudioContentTypeTargetingOptionDetails++;
+  if (buildCounterAudioContentTypeTargetingOptionDetails < 3) {
+    o.audioContentType = 'foo';
+  }
+  buildCounterAudioContentTypeTargetingOptionDetails--;
+  return o;
+}
+
+void checkAudioContentTypeTargetingOptionDetails(
+    api.AudioContentTypeTargetingOptionDetails o) {
+  buildCounterAudioContentTypeTargetingOptionDetails++;
+  if (buildCounterAudioContentTypeTargetingOptionDetails < 3) {
+    unittest.expect(
+      o.audioContentType!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterAudioContentTypeTargetingOptionDetails--;
 }
 
 core.int buildCounterAudioVideoOffset = 0;
@@ -8995,6 +9052,7 @@ api.TargetingOption buildTargetingOption() {
   if (buildCounterTargetingOption < 3) {
     o.ageRangeDetails = buildAgeRangeTargetingOptionDetails();
     o.appCategoryDetails = buildAppCategoryTargetingOptionDetails();
+    o.audioContentTypeDetails = buildAudioContentTypeTargetingOptionDetails();
     o.authorizedSellerStatusDetails =
         buildAuthorizedSellerStatusTargetingOptionDetails();
     o.browserDetails = buildBrowserTargetingOptionDetails();
@@ -9041,6 +9099,7 @@ void checkTargetingOption(api.TargetingOption o) {
   if (buildCounterTargetingOption < 3) {
     checkAgeRangeTargetingOptionDetails(o.ageRangeDetails!);
     checkAppCategoryTargetingOptionDetails(o.appCategoryDetails!);
+    checkAudioContentTypeTargetingOptionDetails(o.audioContentTypeDetails!);
     checkAuthorizedSellerStatusTargetingOptionDetails(
         o.authorizedSellerStatusDetails!);
     checkBrowserTargetingOptionDetails(o.browserDetails!);
@@ -9782,6 +9841,27 @@ void main() {
       final od = api.AudienceGroupAssignedTargetingOptionDetails.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkAudienceGroupAssignedTargetingOptionDetails(od);
+    });
+  });
+
+  unittest.group('obj-schema-AudioContentTypeAssignedTargetingOptionDetails',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildAudioContentTypeAssignedTargetingOptionDetails();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AudioContentTypeAssignedTargetingOptionDetails.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkAudioContentTypeAssignedTargetingOptionDetails(od);
+    });
+  });
+
+  unittest.group('obj-schema-AudioContentTypeTargetingOptionDetails', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildAudioContentTypeTargetingOptionDetails();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AudioContentTypeTargetingOptionDetails.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkAudioContentTypeTargetingOptionDetails(od);
     });
   });
 

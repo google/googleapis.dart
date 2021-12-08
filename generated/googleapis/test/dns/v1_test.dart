@@ -355,6 +355,7 @@ api.ManagedZone buildManagedZone() {
   final o = api.ManagedZone();
   buildCounterManagedZone++;
   if (buildCounterManagedZone < 3) {
+    o.cloudLoggingConfig = buildManagedZoneCloudLoggingConfig();
     o.creationTime = 'foo';
     o.description = 'foo';
     o.dnsName = 'foo';
@@ -379,6 +380,7 @@ api.ManagedZone buildManagedZone() {
 void checkManagedZone(api.ManagedZone o) {
   buildCounterManagedZone++;
   if (buildCounterManagedZone < 3) {
+    checkManagedZoneCloudLoggingConfig(o.cloudLoggingConfig!);
     unittest.expect(
       o.creationTime!,
       unittest.equals('foo'),
@@ -421,6 +423,30 @@ void checkManagedZone(api.ManagedZone o) {
     );
   }
   buildCounterManagedZone--;
+}
+
+core.int buildCounterManagedZoneCloudLoggingConfig = 0;
+api.ManagedZoneCloudLoggingConfig buildManagedZoneCloudLoggingConfig() {
+  final o = api.ManagedZoneCloudLoggingConfig();
+  buildCounterManagedZoneCloudLoggingConfig++;
+  if (buildCounterManagedZoneCloudLoggingConfig < 3) {
+    o.enableLogging = true;
+    o.kind = 'foo';
+  }
+  buildCounterManagedZoneCloudLoggingConfig--;
+  return o;
+}
+
+void checkManagedZoneCloudLoggingConfig(api.ManagedZoneCloudLoggingConfig o) {
+  buildCounterManagedZoneCloudLoggingConfig++;
+  if (buildCounterManagedZoneCloudLoggingConfig < 3) {
+    unittest.expect(o.enableLogging!, unittest.isTrue);
+    unittest.expect(
+      o.kind!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterManagedZoneCloudLoggingConfig--;
 }
 
 core.List<api.DnsKeySpec> buildUnnamed7() => [
@@ -1518,6 +1544,16 @@ void main() {
       final od = api.ManagedZone.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkManagedZone(od);
+    });
+  });
+
+  unittest.group('obj-schema-ManagedZoneCloudLoggingConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildManagedZoneCloudLoggingConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ManagedZoneCloudLoggingConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkManagedZoneCloudLoggingConfig(od);
     });
   });
 

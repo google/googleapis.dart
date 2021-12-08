@@ -2457,7 +2457,7 @@
             }
         }
     },
-    "revision": "20211014",
+    "revision": "20211104",
     "rootUrl": "https://container.googleapis.com/",
     "schemas": {
         "AcceleratorConfig": {
