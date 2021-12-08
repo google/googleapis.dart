@@ -31,7 +31,7 @@ import 'dart:convert' as convert;
 import 'dart:core' as core;
 
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
-import 'package:http/http.dart' as http_1;
+import 'package:http/http.dart' as http;
 
 // ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
@@ -63,7 +63,7 @@ class ServiceUsageApi {
   OperationsResource get operations => OperationsResource(_requester);
   ServicesResource get services => ServicesResource(_requester);
 
-  ServiceUsageApi(http_1.Client client,
+  ServiceUsageApi(http.Client client,
       {core.String rootUrl = 'https://serviceusage.googleapis.com/',
       core.String servicePath = ''})
       : _requester =
@@ -101,8 +101,8 @@ class OperationsResource {
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
-  /// If the used [http_1.Client] completes with an error when making a REST
-  /// call, this method will complete with the same error.
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<Empty> cancel(
     CancelOperationRequest request,
     core.String name, {
@@ -143,8 +143,8 @@ class OperationsResource {
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
-  /// If the used [http_1.Client] completes with an error when making a REST
-  /// call, this method will complete with the same error.
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
     core.String? $fields,
@@ -181,8 +181,8 @@ class OperationsResource {
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
-  /// If the used [http_1.Client] completes with an error when making a REST
-  /// call, this method will complete with the same error.
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<Operation> get(
     core.String name, {
     core.String? $fields,
@@ -230,8 +230,8 @@ class OperationsResource {
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
-  /// If the used [http_1.Client] completes with an error when making a REST
-  /// call, this method will complete with the same error.
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list({
     core.String? filter,
     core.String? name,
@@ -287,8 +287,8 @@ class ServicesResource {
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
-  /// If the used [http_1.Client] completes with an error when making a REST
-  /// call, this method will complete with the same error.
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<Operation> batchEnable(
     BatchEnableServicesRequest request,
     core.String parent, {
@@ -335,8 +335,8 @@ class ServicesResource {
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
-  /// If the used [http_1.Client] completes with an error when making a REST
-  /// call, this method will complete with the same error.
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<BatchGetServicesResponse> batchGet(
     core.String parent, {
     core.List<core.String>? names,
@@ -384,8 +384,8 @@ class ServicesResource {
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
-  /// If the used [http_1.Client] completes with an error when making a REST
-  /// call, this method will complete with the same error.
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<Operation> disable(
     DisableServiceRequest request,
     core.String name, {
@@ -429,8 +429,8 @@ class ServicesResource {
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
-  /// If the used [http_1.Client] completes with an error when making a REST
-  /// call, this method will complete with the same error.
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<Operation> enable(
     EnableServiceRequest request,
     core.String name, {
@@ -470,8 +470,8 @@ class ServicesResource {
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
-  /// If the used [http_1.Client] completes with an error when making a REST
-  /// call, this method will complete with the same error.
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<GoogleApiServiceusageV1Service> get(
     core.String name, {
     core.String? $fields,
@@ -526,8 +526,8 @@ class ServicesResource {
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
-  /// If the used [http_1.Client] completes with an error when making a REST
-  /// call, this method will complete with the same error.
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<ListServicesResponse> list(
     core.String parent, {
     core.String? filter,

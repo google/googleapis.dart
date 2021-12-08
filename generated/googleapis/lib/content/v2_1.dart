@@ -20897,10 +20897,10 @@ class PostalCodeRange {
       };
 }
 
-typedef Price = $Shared07;
+typedef Price = $Shared04;
 
 /// The price represented as a number and currency.
-typedef PriceAmount = $Shared07;
+typedef PriceAmount = $Shared04;
 
 /// Required product attributes are primarily defined by the products data
 /// specification.

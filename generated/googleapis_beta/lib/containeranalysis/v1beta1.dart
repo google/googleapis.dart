@@ -1769,7 +1769,7 @@ class BuildSignature {
 /// Defines an object for the byproducts field in in-toto links.
 ///
 /// The suggested fields are "stderr", "stdout", and "return-value".
-typedef ByProducts = $Shared02;
+typedef ByProducts = $Shared01;
 
 /// Common Vulnerability Scoring System version 3.
 ///
@@ -1981,7 +1981,7 @@ class Deployable {
 }
 
 /// The period during which some deployable was active in a runtime.
-typedef Deployment = $Shared03;
+typedef Deployment = $Shared02;
 
 /// Derived describes the derived image portion (Occurrence) of the DockerImage
 /// relationship.
@@ -2521,7 +2521,7 @@ typedef Empty = $Empty;
 /// Defines an object for the environment field in in-toto links.
 ///
 /// The suggested fields are "variables", "filesystem", and "workdir".
-typedef Environment = $Shared02;
+typedef Environment = $Shared01;
 
 /// Represents a textual expression in the Common Expression Language (CEL)
 /// syntax.

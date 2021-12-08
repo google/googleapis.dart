@@ -15,6 +15,7 @@ import 'client/client_api_library.dart';
 import 'dart_api_library.dart';
 import 'generated_googleapis/discovery/v1.dart';
 import 'pubspec.dart';
+import 'unused_logic.dart';
 import 'utils.dart';
 
 class DescriptionImportPair {
@@ -68,6 +69,7 @@ class ApisFilesGenerator {
     for (var diPair in descriptions) {
       final description =
           RestDescription.fromJson(json.decode(diPair.apiDescription) as Map);
+      description.pruneUnused();
       final name = description.name!.toLowerCase();
       final version = description.version!.toLowerCase();
       final apiFile = path.join(clientFolderPath, '$name.dart');

@@ -2423,11 +2423,99 @@ class V1Resource {
 }
 
 /// ApprovalConfig describes configuration for manual approval of a build.
-typedef ApprovalConfig = $ApprovalConfig;
+class ApprovalConfig {
+  /// Whether or not approval is needed.
+  ///
+  /// If this is set on a build, it will become pending when created, and will
+  /// need to be explicitly approved to start.
+  core.bool? approvalRequired;
+
+  ApprovalConfig({
+    this.approvalRequired,
+  });
+
+  ApprovalConfig.fromJson(core.Map _json)
+      : this(
+          approvalRequired: _json.containsKey('approvalRequired')
+              ? _json['approvalRequired'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (approvalRequired != null) 'approvalRequired': approvalRequired!,
+      };
+}
 
 /// ApprovalResult describes the decision and associated metadata of a manual
 /// approval of a build.
-typedef ApprovalResult = $ApprovalResult;
+class ApprovalResult {
+  /// The time when the approval decision was made.
+  ///
+  /// Output only.
+  core.String? approvalTime;
+
+  /// Email of the user that called the ApproveBuild API to approve or reject a
+  /// build at the time that the API was called.
+  ///
+  /// Output only.
+  core.String? approverAccount;
+
+  /// An optional comment for this manual approval result.
+  ///
+  /// Optional.
+  core.String? comment;
+
+  /// The decision of this manual approval.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "DECISION_UNSPECIFIED" : Default enum type. This should not be used.
+  /// - "APPROVED" : Build is approved.
+  /// - "REJECTED" : Build is rejected.
+  core.String? decision;
+
+  /// An optional URL tied to this manual approval result.
+  ///
+  /// This field is essentially the same as comment, except that it will be
+  /// rendered by the UI differently. An example use case is a link to an
+  /// external job that approved this Build.
+  ///
+  /// Optional.
+  core.String? url;
+
+  ApprovalResult({
+    this.approvalTime,
+    this.approverAccount,
+    this.comment,
+    this.decision,
+    this.url,
+  });
+
+  ApprovalResult.fromJson(core.Map _json)
+      : this(
+          approvalTime: _json.containsKey('approvalTime')
+              ? _json['approvalTime'] as core.String
+              : null,
+          approverAccount: _json.containsKey('approverAccount')
+              ? _json['approverAccount'] as core.String
+              : null,
+          comment: _json.containsKey('comment')
+              ? _json['comment'] as core.String
+              : null,
+          decision: _json.containsKey('decision')
+              ? _json['decision'] as core.String
+              : null,
+          url: _json.containsKey('url') ? _json['url'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (approvalTime != null) 'approvalTime': approvalTime!,
+        if (approverAccount != null) 'approverAccount': approverAccount!,
+        if (comment != null) 'comment': comment!,
+        if (decision != null) 'decision': decision!,
+        if (url != null) 'url': url!,
+      };
+}
 
 /// Request to approve or reject a pending build.
 class ApproveBuildRequest {
@@ -3746,7 +3834,39 @@ typedef CancelOperationRequest = $Empty;
 typedef Empty = $Empty;
 
 /// A fatal problem encountered during the execution of the build.
-typedef FailureInfo = $FailureInfo;
+class FailureInfo {
+  /// Explains the failure issue in more detail using hard-coded text.
+  core.String? detail;
+
+  /// The name of the failure.
+  /// Possible string values are:
+  /// - "FAILURE_TYPE_UNSPECIFIED" : Type unspecified
+  /// - "PUSH_FAILED" : Unable to push the image to the repository.
+  /// - "PUSH_IMAGE_NOT_FOUND" : Final image not found.
+  /// - "PUSH_NOT_AUTHORIZED" : Unauthorized push of the final image.
+  /// - "LOGGING_FAILURE" : Backend logging failures. Should retry.
+  /// - "USER_BUILD_STEP" : A build step has failed.
+  /// - "FETCH_SOURCE_FAILED" : The source fetching has failed.
+  core.String? type;
+
+  FailureInfo({
+    this.detail,
+    this.type,
+  });
+
+  FailureInfo.fromJson(core.Map _json)
+      : this(
+          detail: _json.containsKey('detail')
+              ? _json['detail'] as core.String
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (detail != null) 'detail': detail!,
+        if (type != null) 'type': type!,
+      };
+}
 
 /// Container message for hashes of byte content of files, used in
 /// SourceProvenance messages to verify integrity of source input to the build.
@@ -4137,7 +4257,40 @@ class GitRepoSource {
 }
 
 /// Container message for hash values.
-typedef Hash = $Hash00;
+class Hash {
+  /// The type of hash that was performed.
+  /// Possible string values are:
+  /// - "NONE" : No hash requested.
+  /// - "SHA256" : Use a sha256 hash.
+  /// - "MD5" : Use a md5 hash.
+  core.String? type;
+
+  /// The hash value.
+  core.String? value;
+  core.List<core.int> get valueAsBytes => convert.base64.decode(value!);
+
+  set valueAsBytes(core.List<core.int> _bytes) {
+    value =
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  Hash({
+    this.type,
+    this.value,
+  });
+
+  Hash.fromJson(core.Map _json)
+      : this(
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+          value:
+              _json.containsKey('value') ? _json['value'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (type != null) 'type': type!,
+        if (value != null) 'value': value!,
+      };
+}
 
 /// Message that represents an arbitrary HTTP body.
 ///
@@ -4161,7 +4314,45 @@ typedef HttpBody = $HttpBody;
 
 /// Pairs a set of secret environment variables mapped to encrypted values with
 /// the Cloud KMS key to use to decrypt the value.
-typedef InlineSecret = $InlineSecret;
+class InlineSecret {
+  /// Map of environment variable name to its encrypted value.
+  ///
+  /// Secret environment variables must be unique across all of a build's
+  /// secrets, and must be used by at least one build step. Values can be at
+  /// most 64 KB in size. There can be at most 100 secret values across all of a
+  /// build's secrets.
+  core.Map<core.String, core.String>? envMap;
+
+  /// Resource name of Cloud KMS crypto key to decrypt the encrypted value.
+  ///
+  /// In format: projects / * /locations / * /keyRings / * /cryptoKeys / *
+  core.String? kmsKeyName;
+
+  InlineSecret({
+    this.envMap,
+    this.kmsKeyName,
+  });
+
+  InlineSecret.fromJson(core.Map _json)
+      : this(
+          envMap: _json.containsKey('envMap')
+              ? (_json['envMap'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          kmsKeyName: _json.containsKey('kmsKeyName')
+              ? _json['kmsKeyName'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (envMap != null) 'envMap': envMap!,
+        if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
+      };
+}
 
 /// Response containing existing `BuildTriggers`.
 class ListBuildTriggersResponse {
@@ -4414,7 +4605,27 @@ class Operation {
 /// See
 /// [running builds in a private pool](https://cloud.google.com/build/docs/private-pools/run-builds-in-private-pool)
 /// for more information.
-typedef PoolOption = $PoolOption;
+class PoolOption {
+  /// The `WorkerPool` resource to execute the build on.
+  ///
+  /// You must have `cloudbuild.workerpools.use` on the project hosting the
+  /// WorkerPool. Format
+  /// projects/{project}/locations/{location}/workerPools/{workerPoolId}
+  core.String? name;
+
+  PoolOption({
+    this.name,
+  });
+
+  PoolOption.fromJson(core.Map _json)
+      : this(
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+      };
+}
 
 /// Configuration for a V1 `PrivatePool`.
 class PrivatePoolV1Config {
@@ -4605,7 +4816,99 @@ class PushFilter {
 typedef ReceiveTriggerWebhookResponse = $Empty;
 
 /// Location of the source in a Google Cloud Source Repository.
-typedef RepoSource = $RepoSource;
+class RepoSource {
+  /// Regex matching branches to build.
+  ///
+  /// The syntax of the regular expressions accepted is the syntax accepted by
+  /// RE2 and described at https://github.com/google/re2/wiki/Syntax
+  core.String? branchName;
+
+  /// Explicit commit SHA to build.
+  core.String? commitSha;
+
+  /// Directory, relative to the source root, in which to run the build.
+  ///
+  /// This must be a relative path. If a step's `dir` is specified and is an
+  /// absolute path, this value is ignored for that step's execution.
+  core.String? dir;
+
+  /// Only trigger a build if the revision regex does NOT match the revision
+  /// regex.
+  core.bool? invertRegex;
+
+  /// ID of the project that owns the Cloud Source Repository.
+  ///
+  /// If omitted, the project ID requesting the build is assumed.
+  core.String? projectId;
+
+  /// Name of the Cloud Source Repository.
+  core.String? repoName;
+
+  /// Substitutions to use in a triggered build.
+  ///
+  /// Should only be used with RunBuildTrigger
+  core.Map<core.String, core.String>? substitutions;
+
+  /// Regex matching tags to build.
+  ///
+  /// The syntax of the regular expressions accepted is the syntax accepted by
+  /// RE2 and described at https://github.com/google/re2/wiki/Syntax
+  core.String? tagName;
+
+  RepoSource({
+    this.branchName,
+    this.commitSha,
+    this.dir,
+    this.invertRegex,
+    this.projectId,
+    this.repoName,
+    this.substitutions,
+    this.tagName,
+  });
+
+  RepoSource.fromJson(core.Map _json)
+      : this(
+          branchName: _json.containsKey('branchName')
+              ? _json['branchName'] as core.String
+              : null,
+          commitSha: _json.containsKey('commitSha')
+              ? _json['commitSha'] as core.String
+              : null,
+          dir: _json.containsKey('dir') ? _json['dir'] as core.String : null,
+          invertRegex: _json.containsKey('invertRegex')
+              ? _json['invertRegex'] as core.bool
+              : null,
+          projectId: _json.containsKey('projectId')
+              ? _json['projectId'] as core.String
+              : null,
+          repoName: _json.containsKey('repoName')
+              ? _json['repoName'] as core.String
+              : null,
+          substitutions: _json.containsKey('substitutions')
+              ? (_json['substitutions'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          tagName: _json.containsKey('tagName')
+              ? _json['tagName'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (branchName != null) 'branchName': branchName!,
+        if (commitSha != null) 'commitSha': commitSha!,
+        if (dir != null) 'dir': dir!,
+        if (invertRegex != null) 'invertRegex': invertRegex!,
+        if (projectId != null) 'projectId': projectId!,
+        if (repoName != null) 'repoName': repoName!,
+        if (substitutions != null) 'substitutions': substitutions!,
+        if (tagName != null) 'tagName': tagName!,
+      };
+}
 
 /// Artifacts created by the build pipeline.
 class Results {
@@ -4773,10 +5076,75 @@ class RunBuildTriggerRequest {
 /// Note: Use `kmsKeyName` with `available_secrets` instead of using
 /// `kmsKeyName` with `secret`. For instructions see:
 /// https://cloud.google.com/cloud-build/docs/securing-builds/use-encrypted-credentials.
-typedef Secret = $Secret;
+class Secret {
+  /// Cloud KMS key name to use to decrypt these envs.
+  core.String? kmsKeyName;
+
+  /// Map of environment variable name to its encrypted value.
+  ///
+  /// Secret environment variables must be unique across all of a build's
+  /// secrets, and must be used by at least one build step. Values can be at
+  /// most 64 KB in size. There can be at most 100 secret values across all of a
+  /// build's secrets.
+  core.Map<core.String, core.String>? secretEnv;
+
+  Secret({
+    this.kmsKeyName,
+    this.secretEnv,
+  });
+
+  Secret.fromJson(core.Map _json)
+      : this(
+          kmsKeyName: _json.containsKey('kmsKeyName')
+              ? _json['kmsKeyName'] as core.String
+              : null,
+          secretEnv: _json.containsKey('secretEnv')
+              ? (_json['secretEnv'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
+        if (secretEnv != null) 'secretEnv': secretEnv!,
+      };
+}
 
 /// Pairs a secret environment variable with a SecretVersion in Secret Manager.
-typedef SecretManagerSecret = $SecretManagerSecret;
+class SecretManagerSecret {
+  /// Environment variable name to associate with the secret.
+  ///
+  /// Secret environment variables must be unique across all of a build's
+  /// secrets, and must be used by at least one build step.
+  core.String? env;
+
+  /// Resource name of the SecretVersion.
+  ///
+  /// In format: projects / * /secrets / * /versions / *
+  core.String? versionName;
+
+  SecretManagerSecret({
+    this.env,
+    this.versionName,
+  });
+
+  SecretManagerSecret.fromJson(core.Map _json)
+      : this(
+          env: _json.containsKey('env') ? _json['env'] as core.String : null,
+          versionName: _json.containsKey('versionName')
+              ? _json['versionName'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (env != null) 'env': env!,
+        if (versionName != null) 'versionName': versionName!,
+      };
+}
 
 /// Secrets and secret environment variables.
 class Secrets {
@@ -4947,23 +5315,187 @@ class SourceProvenance {
 typedef Status = $Status;
 
 /// Location of the source in an archive file in Google Cloud Storage.
-typedef StorageSource = $StorageSource;
+class StorageSource {
+  /// Google Cloud Storage bucket containing the source (see
+  /// [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
+  core.String? bucket;
+
+  /// Google Cloud Storage generation for the object.
+  ///
+  /// If the generation is omitted, the latest generation will be used.
+  core.String? generation;
+
+  /// Google Cloud Storage object containing the source.
+  ///
+  /// This object must be a zipped (`.zip`) or gzipped archive file (`.tar.gz`)
+  /// containing source to build.
+  core.String? object;
+
+  StorageSource({
+    this.bucket,
+    this.generation,
+    this.object,
+  });
+
+  StorageSource.fromJson(core.Map _json)
+      : this(
+          bucket: _json.containsKey('bucket')
+              ? _json['bucket'] as core.String
+              : null,
+          generation: _json.containsKey('generation')
+              ? _json['generation'] as core.String
+              : null,
+          object: _json.containsKey('object')
+              ? _json['object'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (bucket != null) 'bucket': bucket!,
+        if (generation != null) 'generation': generation!,
+        if (object != null) 'object': object!,
+      };
+}
 
 /// Location of the source manifest in Google Cloud Storage.
 ///
 /// This feature is in Preview; see description
 /// [here](https://github.com/GoogleCloudPlatform/cloud-builders/tree/master/gcs-fetcher).
-typedef StorageSourceManifest = $StorageSourceManifest;
+class StorageSourceManifest {
+  /// Google Cloud Storage bucket containing the source manifest (see
+  /// [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
+  core.String? bucket;
+
+  /// Google Cloud Storage generation for the object.
+  ///
+  /// If the generation is omitted, the latest generation will be used.
+  core.String? generation;
+
+  /// Google Cloud Storage object containing the source manifest.
+  ///
+  /// This object must be a JSON file.
+  core.String? object;
+
+  StorageSourceManifest({
+    this.bucket,
+    this.generation,
+    this.object,
+  });
+
+  StorageSourceManifest.fromJson(core.Map _json)
+      : this(
+          bucket: _json.containsKey('bucket')
+              ? _json['bucket'] as core.String
+              : null,
+          generation: _json.containsKey('generation')
+              ? _json['generation'] as core.String
+              : null,
+          object: _json.containsKey('object')
+              ? _json['object'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (bucket != null) 'bucket': bucket!,
+        if (generation != null) 'generation': generation!,
+        if (object != null) 'object': object!,
+      };
+}
 
 /// Start and end times for a build execution phase.
-typedef TimeSpan = $TimeSpan;
+class TimeSpan {
+  /// End of time span.
+  core.String? endTime;
+
+  /// Start of time span.
+  core.String? startTime;
+
+  TimeSpan({
+    this.endTime,
+    this.startTime,
+  });
+
+  TimeSpan.fromJson(core.Map _json)
+      : this(
+          endTime: _json.containsKey('endTime')
+              ? _json['endTime'] as core.String
+              : null,
+          startTime: _json.containsKey('startTime')
+              ? _json['startTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (endTime != null) 'endTime': endTime!,
+        if (startTime != null) 'startTime': startTime!,
+      };
+}
 
 /// Volume describes a Docker container volume which is mounted into build steps
 /// in order to persist files across build step execution.
-typedef Volume = $Volume;
+class Volume {
+  /// Name of the volume to mount.
+  ///
+  /// Volume names must be unique per build step and must be valid names for
+  /// Docker volumes. Each named volume must be used by at least two build
+  /// steps.
+  core.String? name;
+
+  /// Path at which to mount the volume.
+  ///
+  /// Paths must be absolute and cannot conflict with other volume paths on the
+  /// same build step or with certain reserved volume paths.
+  core.String? path;
+
+  Volume({
+    this.name,
+    this.path,
+  });
+
+  Volume.fromJson(core.Map _json)
+      : this(
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          path: _json.containsKey('path') ? _json['path'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+        if (path != null) 'path': path!,
+      };
+}
 
 /// A non-fatal problem encountered during the execution of the build.
-typedef Warning = $Warning;
+class Warning {
+  /// The priority for this warning.
+  /// Possible string values are:
+  /// - "PRIORITY_UNSPECIFIED" : Should not be used.
+  /// - "INFO" : e.g. deprecation warnings and alternative feature highlights.
+  /// - "WARNING" : e.g. automated detection of possible issues with the build.
+  /// - "ALERT" : e.g. alerts that a feature used in the build is pending
+  /// removal
+  core.String? priority;
+
+  /// Explanation of the warning generated.
+  core.String? text;
+
+  Warning({
+    this.priority,
+    this.text,
+  });
+
+  Warning.fromJson(core.Map _json)
+      : this(
+          priority: _json.containsKey('priority')
+              ? _json['priority'] as core.String
+              : null,
+          text: _json.containsKey('text') ? _json['text'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (priority != null) 'priority': priority!,
+        if (text != null) 'text': text!,
+      };
+}
 
 /// WebhookConfig describes the configuration of a trigger that creates a build
 /// whenever a webhook is sent to a trigger's webhook URL.

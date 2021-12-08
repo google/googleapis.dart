@@ -66977,7 +66977,7 @@ class InstancesSetMinCpuPlatformRequest {
       };
 }
 
-typedef InstancesSetServiceAccountRequest = $Shared06;
+typedef InstancesSetServiceAccountRequest = $Shared03;
 
 class InstancesStartWithEncryptionKeyRequest {
   /// Array of disks associated with this instance that are protected with a
@@ -91583,7 +91583,7 @@ class ServerBinding {
 }
 
 /// A service account.
-typedef ServiceAccount = $Shared06;
+typedef ServiceAccount = $Shared03;
 
 /// Represents a ServiceAttachment resource.
 ///

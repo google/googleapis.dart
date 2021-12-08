@@ -1185,7 +1185,35 @@ class GoogleCloudVideointelligenceV1VideoContext {
 }
 
 /// Video segment.
-typedef GoogleCloudVideointelligenceV1VideoSegment = $VideoSegment;
+class GoogleCloudVideointelligenceV1VideoSegment {
+  /// Time-offset, relative to the beginning of the video, corresponding to the
+  /// end of the segment (inclusive).
+  core.String? endTimeOffset;
+
+  /// Time-offset, relative to the beginning of the video, corresponding to the
+  /// start of the segment (inclusive).
+  core.String? startTimeOffset;
+
+  GoogleCloudVideointelligenceV1VideoSegment({
+    this.endTimeOffset,
+    this.startTimeOffset,
+  });
+
+  GoogleCloudVideointelligenceV1VideoSegment.fromJson(core.Map _json)
+      : this(
+          endTimeOffset: _json.containsKey('endTimeOffset')
+              ? _json['endTimeOffset'] as core.String
+              : null,
+          startTimeOffset: _json.containsKey('startTimeOffset')
+              ? _json['startTimeOffset'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (endTimeOffset != null) 'endTimeOffset': endTimeOffset!,
+        if (startTimeOffset != null) 'startTimeOffset': startTimeOffset!,
+      };
+}
 
 /// The request message for Operations.CancelOperation.
 typedef GoogleLongrunningCancelOperationRequest = $Empty;

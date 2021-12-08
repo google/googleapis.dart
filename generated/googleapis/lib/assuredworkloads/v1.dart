@@ -690,7 +690,44 @@ class GoogleCloudAssuredworkloadsV1Workload {
 }
 
 /// Settings specific to the Key Management Service.
-typedef GoogleCloudAssuredworkloadsV1WorkloadKMSSettings = $WorkloadKMSSettings;
+class GoogleCloudAssuredworkloadsV1WorkloadKMSSettings {
+  /// Input only.
+  ///
+  /// Immutable. The time at which the Key Management Service will automatically
+  /// create a new version of the crypto key and mark it as the primary.
+  ///
+  /// Required.
+  core.String? nextRotationTime;
+
+  /// Input only.
+  ///
+  /// Immutable. \[next_rotation_time\] will be advanced by this period when the
+  /// Key Management Service automatically rotates a key. Must be at least 24
+  /// hours and at most 876,000 hours.
+  ///
+  /// Required.
+  core.String? rotationPeriod;
+
+  GoogleCloudAssuredworkloadsV1WorkloadKMSSettings({
+    this.nextRotationTime,
+    this.rotationPeriod,
+  });
+
+  GoogleCloudAssuredworkloadsV1WorkloadKMSSettings.fromJson(core.Map _json)
+      : this(
+          nextRotationTime: _json.containsKey('nextRotationTime')
+              ? _json['nextRotationTime'] as core.String
+              : null,
+          rotationPeriod: _json.containsKey('rotationPeriod')
+              ? _json['rotationPeriod'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextRotationTime != null) 'nextRotationTime': nextRotationTime!,
+        if (rotationPeriod != null) 'rotationPeriod': rotationPeriod!,
+      };
+}
 
 /// Represent the resources that are children of this Workload.
 class GoogleCloudAssuredworkloadsV1WorkloadResourceInfo {
@@ -787,8 +824,40 @@ class GoogleCloudAssuredworkloadsV1WorkloadResourceSettings {
 }
 
 /// Signed Access Approvals (SAA) enrollment response.
-typedef GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponse
-    = $WorkloadSaaEnrollmentResponse;
+class GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponse {
+  /// Indicates SAA enrollment setup error if any.
+  core.List<core.String>? setupErrors;
+
+  /// Indicates SAA enrollment status of a given workload.
+  /// Possible string values are:
+  /// - "SETUP_STATE_UNSPECIFIED" : Unspecified.
+  /// - "STATUS_PENDING" : SAA enrollment pending.
+  /// - "STATUS_COMPLETE" : SAA enrollment comopleted.
+  core.String? setupStatus;
+
+  GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponse({
+    this.setupErrors,
+    this.setupStatus,
+  });
+
+  GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponse.fromJson(
+      core.Map _json)
+      : this(
+          setupErrors: _json.containsKey('setupErrors')
+              ? (_json['setupErrors'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          setupStatus: _json.containsKey('setupStatus')
+              ? _json['setupStatus'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (setupErrors != null) 'setupErrors': setupErrors!,
+        if (setupStatus != null) 'setupStatus': setupStatus!,
+      };
+}
 
 /// The response message for Operations.ListOperations.
 class GoogleLongrunningListOperationsResponse {

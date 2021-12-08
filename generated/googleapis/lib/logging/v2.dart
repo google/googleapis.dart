@@ -10763,7 +10763,7 @@ class MetricDescriptor {
 }
 
 /// Additional annotations that can be used to guide the usage of a metric.
-typedef MetricDescriptorMetadata = $MetricDescriptorMetadata01;
+typedef MetricDescriptorMetadata = $MetricDescriptorMetadata;
 
 /// An object representing a resource that can be used for monitoring, logging,
 /// billing, or other purposes.

@@ -2829,8 +2829,26 @@ class GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentW
 }
 
 /// The request to deploy an issue model.
-typedef GoogleCloudContactcenterinsightsV1DeployIssueModelRequest
-    = $DeployIssueModelRequest;
+class GoogleCloudContactcenterinsightsV1DeployIssueModelRequest {
+  /// The issue model to deploy.
+  ///
+  /// Required.
+  core.String? name;
+
+  GoogleCloudContactcenterinsightsV1DeployIssueModelRequest({
+    this.name,
+  });
+
+  GoogleCloudContactcenterinsightsV1DeployIssueModelRequest.fromJson(
+      core.Map _json)
+      : this(
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+      };
+}
 
 /// The data for a Dialogflow intent.
 ///
@@ -3161,8 +3179,54 @@ class GoogleCloudContactcenterinsightsV1ExportInsightsDataRequest {
 }
 
 /// A BigQuery Table Reference.
-typedef GoogleCloudContactcenterinsightsV1ExportInsightsDataRequestBigQueryDestination
-    = $ExportInsightsDataRequestBigQueryDestination;
+class GoogleCloudContactcenterinsightsV1ExportInsightsDataRequestBigQueryDestination {
+  /// The name of the BigQuery dataset that the snapshot result should be
+  /// exported to.
+  ///
+  /// If this dataset does not exist, the export call returns an
+  /// INVALID_ARGUMENT error.
+  ///
+  /// Required.
+  core.String? dataset;
+
+  /// A project ID or number.
+  ///
+  /// If specified, then export will attempt to write data to this project
+  /// instead of the resource project. Otherwise, the resource project will be
+  /// used.
+  core.String? projectId;
+
+  /// The BigQuery table name to which the insights data should be written.
+  ///
+  /// If this table does not exist, the export call returns an INVALID_ARGUMENT
+  /// error.
+  core.String? table;
+
+  GoogleCloudContactcenterinsightsV1ExportInsightsDataRequestBigQueryDestination({
+    this.dataset,
+    this.projectId,
+    this.table,
+  });
+
+  GoogleCloudContactcenterinsightsV1ExportInsightsDataRequestBigQueryDestination.fromJson(
+      core.Map _json)
+      : this(
+          dataset: _json.containsKey('dataset')
+              ? _json['dataset'] as core.String
+              : null,
+          projectId: _json.containsKey('projectId')
+              ? _json['projectId'] as core.String
+              : null,
+          table:
+              _json.containsKey('table') ? _json['table'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dataset != null) 'dataset': dataset!,
+        if (projectId != null) 'projectId': projectId!,
+        if (table != null) 'table': table!,
+      };
+}
 
 /// Agent Assist frequently-asked-question answer data.
 class GoogleCloudContactcenterinsightsV1FaqAnswerData {
@@ -3518,8 +3582,58 @@ class GoogleCloudContactcenterinsightsV1IssueModel {
 }
 
 /// Configs for the input data used to create the issue model.
-typedef GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig
-    = $IssueModelInputDataConfig;
+class GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig {
+  /// A filter to reduce the conversations used for training the model to a
+  /// specific subset.
+  core.String? filter;
+
+  /// Medium of conversations used in training data.
+  ///
+  /// This field is being deprecated. To specify the medium to be used in
+  /// training a new issue model, set the `medium` field on `filter`.
+  /// Possible string values are:
+  /// - "MEDIUM_UNSPECIFIED" : Default value, if unspecified will default to
+  /// PHONE_CALL.
+  /// - "PHONE_CALL" : The format for conversations that took place over the
+  /// phone.
+  /// - "CHAT" : The format for conversations that took place over chat.
+  core.String? medium;
+
+  /// Number of conversations used in training.
+  ///
+  /// Output only.
+  ///
+  /// Output only.
+  core.String? trainingConversationsCount;
+
+  GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig({
+    this.filter,
+    this.medium,
+    this.trainingConversationsCount,
+  });
+
+  GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig.fromJson(
+      core.Map _json)
+      : this(
+          filter: _json.containsKey('filter')
+              ? _json['filter'] as core.String
+              : null,
+          medium: _json.containsKey('medium')
+              ? _json['medium'] as core.String
+              : null,
+          trainingConversationsCount:
+              _json.containsKey('trainingConversationsCount')
+                  ? _json['trainingConversationsCount'] as core.String
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (filter != null) 'filter': filter!,
+        if (medium != null) 'medium': medium!,
+        if (trainingConversationsCount != null)
+          'trainingConversationsCount': trainingConversationsCount!,
+      };
+}
 
 /// Aggregated statistics about an issue model.
 class GoogleCloudContactcenterinsightsV1IssueModelLabelStats {
@@ -3577,8 +3691,46 @@ class GoogleCloudContactcenterinsightsV1IssueModelLabelStats {
 }
 
 /// Aggregated statistics about an issue.
-typedef GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStats
-    = $IssueModelLabelStatsIssueStats;
+class GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStats {
+  /// Display name of the issue.
+  core.String? displayName;
+
+  /// Issue resource.
+  ///
+  /// Format:
+  /// projects/{project}/locations/{location}/issueModels/{issue_model}/issues/{issue}
+  core.String? issue;
+
+  /// Number of conversations attached to the issue at this point in time.
+  core.String? labeledConversationsCount;
+
+  GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStats({
+    this.displayName,
+    this.issue,
+    this.labeledConversationsCount,
+  });
+
+  GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStats.fromJson(
+      core.Map _json)
+      : this(
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          issue:
+              _json.containsKey('issue') ? _json['issue'] as core.String : null,
+          labeledConversationsCount:
+              _json.containsKey('labeledConversationsCount')
+                  ? _json['labeledConversationsCount'] as core.String
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (issue != null) 'issue': issue!,
+        if (labeledConversationsCount != null)
+          'labeledConversationsCount': labeledConversationsCount!,
+      };
+}
 
 /// Issue Modeling result on a conversation.
 class GoogleCloudContactcenterinsightsV1IssueModelResult {
@@ -4442,8 +4594,26 @@ class GoogleCloudContactcenterinsightsV1SmartReplyData {
 }
 
 /// The request to undeploy an issue model.
-typedef GoogleCloudContactcenterinsightsV1UndeployIssueModelRequest
-    = $UndeployIssueModelRequest;
+class GoogleCloudContactcenterinsightsV1UndeployIssueModelRequest {
+  /// The issue model to undeploy.
+  ///
+  /// Required.
+  core.String? name;
+
+  GoogleCloudContactcenterinsightsV1UndeployIssueModelRequest({
+    this.name,
+  });
+
+  GoogleCloudContactcenterinsightsV1UndeployIssueModelRequest.fromJson(
+      core.Map _json)
+      : this(
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+      };
+}
 
 /// The response message for Operations.ListOperations.
 class GoogleLongrunningListOperationsResponse {
