@@ -22,6 +22,90 @@ import 'dart:core' as core;
 
 /// Used by:
 ///
+/// - accesscontextmanager:v1 : AccessPolicy
+/// - cloudasset:v1 : GoogleIdentityAccesscontextmanagerV1AccessPolicy
+class $AccessPolicy {
+  /// An opaque identifier for the current version of the `AccessPolicy`.
+  ///
+  /// This will always be a strongly validated etag, meaning that two Access
+  /// Polices will be identical if and only if their etags are identical.
+  /// Clients should not expect this to be in any specific format.
+  ///
+  /// Output only.
+  core.String? etag;
+
+  /// Resource name of the `AccessPolicy`.
+  ///
+  /// Format: `accessPolicies/{access_policy}`
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// The parent of this `AccessPolicy` in the Cloud Resource Hierarchy.
+  ///
+  /// Currently immutable once created. Format:
+  /// `organizations/{organization_id}`
+  ///
+  /// Required.
+  core.String? parent;
+
+  /// The scopes of a policy define which resources an ACM policy can restrict,
+  /// and where ACM resources can be referenced.
+  ///
+  /// For example, a policy with scopes=\["folders/123"\] has the following
+  /// behavior: - vpcsc perimeters can only restrict projects within folders/123
+  /// - access levels can only be referenced by resources within folders/123. If
+  /// empty, there are no limitations on which resources can be restricted by an
+  /// ACM policy, and there are no limitations on where ACM resources can be
+  /// referenced. Only one policy can include a given scope (attempting to
+  /// create a second policy which includes "folders/123" will result in an
+  /// error). Currently, scopes cannot be modified after a policy is created.
+  /// Currently, policies can only have a single scope. Format: list of
+  /// `folders/{folder_number}` or `projects/{project_number}`
+  core.List<core.String>? scopes;
+
+  /// Human readable title.
+  ///
+  /// Does not affect behavior.
+  ///
+  /// Required.
+  core.String? title;
+
+  $AccessPolicy({
+    this.etag,
+    this.name,
+    this.parent,
+    this.scopes,
+    this.title,
+  });
+
+  $AccessPolicy.fromJson(core.Map _json)
+      : this(
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          parent: _json.containsKey('parent')
+              ? _json['parent'] as core.String
+              : null,
+          scopes: _json.containsKey('scopes')
+              ? (_json['scopes'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          title:
+              _json.containsKey('title') ? _json['title'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (etag != null) 'etag': etag!,
+        if (name != null) 'name': name!,
+        if (parent != null) 'parent': parent!,
+        if (scopes != null) 'scopes': scopes!,
+        if (title != null) 'title': title!,
+      };
+}
+
+/// Used by:
+///
 /// - dfareporting:v3.4 : AccountActiveAdSummary
 /// - dfareporting:v3.5 : AccountActiveAdSummary
 class $AccountActiveAdSummary {
@@ -518,6 +602,7 @@ class $AudienceSegment {
 
 /// Used by:
 ///
+/// - accesscontextmanager:v1 : AuditLogConfig
 /// - apigateway:v1 : ApigatewayAuditLogConfig
 /// - apigee:v1 : GoogleIamV1AuditLogConfig
 /// - bigquery:v2 : AuditLogConfig
@@ -764,6 +849,161 @@ class $Browser {
         if (majorVersion != null) 'majorVersion': majorVersion!,
         if (minorVersion != null) 'minorVersion': minorVersion!,
         if (name != null) 'name': name!,
+      };
+}
+
+/// Used by:
+///
+/// - containeranalysis:v1 : CVSS
+/// - ondemandscanning:v1 : CVSS
+class $CVSS {
+  ///
+  /// Possible string values are:
+  /// - "ATTACK_COMPLEXITY_UNSPECIFIED"
+  /// - "ATTACK_COMPLEXITY_LOW"
+  /// - "ATTACK_COMPLEXITY_HIGH"
+  core.String? attackComplexity;
+
+  /// Base Metrics Represents the intrinsic characteristics of a vulnerability
+  /// that are constant over time and across user environments.
+  /// Possible string values are:
+  /// - "ATTACK_VECTOR_UNSPECIFIED"
+  /// - "ATTACK_VECTOR_NETWORK"
+  /// - "ATTACK_VECTOR_ADJACENT"
+  /// - "ATTACK_VECTOR_LOCAL"
+  /// - "ATTACK_VECTOR_PHYSICAL"
+  core.String? attackVector;
+
+  ///
+  /// Possible string values are:
+  /// - "AUTHENTICATION_UNSPECIFIED"
+  /// - "AUTHENTICATION_MULTIPLE"
+  /// - "AUTHENTICATION_SINGLE"
+  /// - "AUTHENTICATION_NONE"
+  core.String? authentication;
+
+  ///
+  /// Possible string values are:
+  /// - "IMPACT_UNSPECIFIED"
+  /// - "IMPACT_HIGH"
+  /// - "IMPACT_LOW"
+  /// - "IMPACT_NONE"
+  core.String? availabilityImpact;
+
+  /// The base score is a function of the base metric scores.
+  core.double? baseScore;
+
+  ///
+  /// Possible string values are:
+  /// - "IMPACT_UNSPECIFIED"
+  /// - "IMPACT_HIGH"
+  /// - "IMPACT_LOW"
+  /// - "IMPACT_NONE"
+  core.String? confidentialityImpact;
+  core.double? exploitabilityScore;
+  core.double? impactScore;
+
+  ///
+  /// Possible string values are:
+  /// - "IMPACT_UNSPECIFIED"
+  /// - "IMPACT_HIGH"
+  /// - "IMPACT_LOW"
+  /// - "IMPACT_NONE"
+  core.String? integrityImpact;
+
+  ///
+  /// Possible string values are:
+  /// - "PRIVILEGES_REQUIRED_UNSPECIFIED"
+  /// - "PRIVILEGES_REQUIRED_NONE"
+  /// - "PRIVILEGES_REQUIRED_LOW"
+  /// - "PRIVILEGES_REQUIRED_HIGH"
+  core.String? privilegesRequired;
+
+  ///
+  /// Possible string values are:
+  /// - "SCOPE_UNSPECIFIED"
+  /// - "SCOPE_UNCHANGED"
+  /// - "SCOPE_CHANGED"
+  core.String? scope;
+
+  ///
+  /// Possible string values are:
+  /// - "USER_INTERACTION_UNSPECIFIED"
+  /// - "USER_INTERACTION_NONE"
+  /// - "USER_INTERACTION_REQUIRED"
+  core.String? userInteraction;
+
+  $CVSS({
+    this.attackComplexity,
+    this.attackVector,
+    this.authentication,
+    this.availabilityImpact,
+    this.baseScore,
+    this.confidentialityImpact,
+    this.exploitabilityScore,
+    this.impactScore,
+    this.integrityImpact,
+    this.privilegesRequired,
+    this.scope,
+    this.userInteraction,
+  });
+
+  $CVSS.fromJson(core.Map _json)
+      : this(
+          attackComplexity: _json.containsKey('attackComplexity')
+              ? _json['attackComplexity'] as core.String
+              : null,
+          attackVector: _json.containsKey('attackVector')
+              ? _json['attackVector'] as core.String
+              : null,
+          authentication: _json.containsKey('authentication')
+              ? _json['authentication'] as core.String
+              : null,
+          availabilityImpact: _json.containsKey('availabilityImpact')
+              ? _json['availabilityImpact'] as core.String
+              : null,
+          baseScore: _json.containsKey('baseScore')
+              ? (_json['baseScore'] as core.num).toDouble()
+              : null,
+          confidentialityImpact: _json.containsKey('confidentialityImpact')
+              ? _json['confidentialityImpact'] as core.String
+              : null,
+          exploitabilityScore: _json.containsKey('exploitabilityScore')
+              ? (_json['exploitabilityScore'] as core.num).toDouble()
+              : null,
+          impactScore: _json.containsKey('impactScore')
+              ? (_json['impactScore'] as core.num).toDouble()
+              : null,
+          integrityImpact: _json.containsKey('integrityImpact')
+              ? _json['integrityImpact'] as core.String
+              : null,
+          privilegesRequired: _json.containsKey('privilegesRequired')
+              ? _json['privilegesRequired'] as core.String
+              : null,
+          scope:
+              _json.containsKey('scope') ? _json['scope'] as core.String : null,
+          userInteraction: _json.containsKey('userInteraction')
+              ? _json['userInteraction'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (attackComplexity != null) 'attackComplexity': attackComplexity!,
+        if (attackVector != null) 'attackVector': attackVector!,
+        if (authentication != null) 'authentication': authentication!,
+        if (availabilityImpact != null)
+          'availabilityImpact': availabilityImpact!,
+        if (baseScore != null) 'baseScore': baseScore!,
+        if (confidentialityImpact != null)
+          'confidentialityImpact': confidentialityImpact!,
+        if (exploitabilityScore != null)
+          'exploitabilityScore': exploitabilityScore!,
+        if (impactScore != null) 'impactScore': impactScore!,
+        if (integrityImpact != null) 'integrityImpact': integrityImpact!,
+        if (privilegesRequired != null)
+          'privilegesRequired': privilegesRequired!,
+        if (scope != null) 'scope': scope!,
+        if (userInteraction != null) 'userInteraction': userInteraction!,
       };
 }
 
@@ -2901,10 +3141,6 @@ class $EgressFrom {
 /// - authorizedbuyersmarketplace:v1 : UnsubscribeAuctionPackageRequest
 /// - baremetalsolution:v1 : ResetInstanceRequest
 /// - baremetalsolution:v1 : ResetInstanceResponse
-/// - baremetalsolution:v2 : CancelOperationRequest
-/// - baremetalsolution:v2 : Empty
-/// - baremetalsolution:v2 : ResetInstanceRequest
-/// - baremetalsolution:v2 : RestoreVolumeSnapshotRequest
 /// - bigquerydatatransfer:v1 : CheckValidCredsRequest
 /// - bigquerydatatransfer:v1 : Empty
 /// - bigqueryreservation:v1 : Empty
@@ -2917,6 +3153,7 @@ class $EgressFrom {
 /// - chat:v1 : Empty
 /// - chat:v1 : GoogleAppsCardV1Divider
 /// - chromepolicy:v1 : GoogleProtobufEmpty
+/// - civicinfo:v2 : MessageSet
 /// - classroom:v1 : Empty
 /// - classroom:v1 : ReclaimStudentSubmissionRequest
 /// - classroom:v1 : ReturnStudentSubmissionRequest
@@ -2977,6 +3214,10 @@ class $EgressFrom {
 /// - content:v2.1 : PauseBuyOnGoogleProgramRequest
 /// - content:v2.1 : RequestReviewBuyOnGoogleProgramRequest
 /// - datacatalog:v1 : Empty
+/// - datacatalog:v1 : GoogleCloudDatacatalogV1StarEntryRequest
+/// - datacatalog:v1 : GoogleCloudDatacatalogV1StarEntryResponse
+/// - datacatalog:v1 : GoogleCloudDatacatalogV1UnstarEntryRequest
+/// - datacatalog:v1 : GoogleCloudDatacatalogV1UnstarEntryResponse
 /// - datafusion:v1 : CancelOperationRequest
 /// - datafusion:v1 : Empty
 /// - datafusion:v1 : RestartInstanceRequest
@@ -3151,6 +3392,8 @@ class $EgressFrom {
 /// - osconfig:v1 : CancelPatchJobRequest
 /// - osconfig:v1 : Empty
 /// - osconfig:v1 : GooSettings
+/// - osconfig:v1 : PausePatchDeploymentRequest
+/// - osconfig:v1 : ResumePatchDeploymentRequest
 /// - oslogin:v1 : Empty
 /// - paymentsresellersubscription:v1 : GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionRequest
 /// - paymentsresellersubscription:v1 : GoogleCloudPaymentsResellerSubscriptionV1UndoCancelSubscriptionRequest
@@ -3978,18 +4221,21 @@ class $GcsSource {
 
 /// Used by:
 ///
+/// - accesscontextmanager:v1 : GetPolicyOptions
 /// - bigquery:v2 : GetPolicyOptions
+/// - bigtableadmin:v2 : GetPolicyOptions
 /// - cloudiot:v1 : GetPolicyOptions
 /// - cloudresourcemanager:v1 : GetPolicyOptions
 /// - cloudresourcemanager:v2 : GetPolicyOptions
 /// - cloudresourcemanager:v3 : GetPolicyOptions
 /// - containeranalysis:v1 : GetPolicyOptions
+/// - datacatalog:v1 : GetPolicyOptions
 /// - iap:v1 : GetPolicyOptions
 /// - securitycenter:v1 : GetPolicyOptions
 /// - servicedirectory:v1 : GetPolicyOptions
 /// - servicemanagement:v1 : GetPolicyOptions
 /// - spanner:v1 : GetPolicyOptions
-class $GetPolicyOptions00 {
+class $GetPolicyOptions {
   /// The maximum policy version that will be used to format the policy.
   ///
   /// Valid values are 0, 1, and 3. Requests specifying an invalid value will be
@@ -4005,46 +4251,11 @@ class $GetPolicyOptions00 {
   /// Optional.
   core.int? requestedPolicyVersion;
 
-  $GetPolicyOptions00({
+  $GetPolicyOptions({
     this.requestedPolicyVersion,
   });
 
-  $GetPolicyOptions00.fromJson(core.Map _json)
-      : this(
-          requestedPolicyVersion: _json.containsKey('requestedPolicyVersion')
-              ? _json['requestedPolicyVersion'] as core.int
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (requestedPolicyVersion != null)
-          'requestedPolicyVersion': requestedPolicyVersion!,
-      };
-}
-
-/// Used by:
-///
-/// - bigtableadmin:v2 : GetPolicyOptions
-/// - cloudtasks:v2 : GetPolicyOptions
-/// - datacatalog:v1 : GetPolicyOptions
-class $GetPolicyOptions01 {
-  /// The policy format version to be returned.
-  ///
-  /// Valid values are 0, 1, and 3. Requests specifying an invalid value will be
-  /// rejected. Requests for policies with any conditional bindings must specify
-  /// version 3. Policies without any conditional bindings may specify any valid
-  /// value or leave the field unset. To learn which resources support
-  /// conditions in their IAM policies, see the
-  /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-  ///
-  /// Optional.
-  core.int? requestedPolicyVersion;
-
-  $GetPolicyOptions01({
-    this.requestedPolicyVersion,
-  });
-
-  $GetPolicyOptions01.fromJson(core.Map _json)
+  $GetPolicyOptions.fromJson(core.Map _json)
       : this(
           requestedPolicyVersion: _json.containsKey('requestedPolicyVersion')
               ? _json['requestedPolicyVersion'] as core.int
@@ -5259,7 +5470,6 @@ class $ListTargetingExpression {
 /// Used by:
 ///
 /// - apigateway:v1 : ApigatewayLocation
-/// - baremetalsolution:v2 : Location
 /// - bigquerydatatransfer:v1 : Location
 /// - bigtableadmin:v2 : Location
 /// - clouddeploy:v1 : Location
@@ -6863,6 +7073,7 @@ class $PathReportDimensionValue {
 
 /// Used by:
 ///
+/// - accesscontextmanager:v1 : TestIamPermissionsResponse
 /// - apigateway:v1 : ApigatewayTestIamPermissionsResponse
 /// - apigee:v1 : GoogleIamV1TestIamPermissionsResponse
 /// - bigquery:v2 : TestIamPermissionsResponse
@@ -9201,7 +9412,6 @@ class $StartPageToken {
 /// - appengine:v1 : Status
 /// - artifactregistry:v1 : Status
 /// - assuredworkloads:v1 : GoogleRpcStatus
-/// - baremetalsolution:v2 : Status
 /// - bigquerydatatransfer:v1 : Status
 /// - bigqueryreservation:v1 : Status
 /// - bigtableadmin:v2 : Status
@@ -9704,6 +9914,7 @@ class $TenantProjectRequest {
 
 /// Used by:
 ///
+/// - accesscontextmanager:v1 : TestIamPermissionsRequest
 /// - apigateway:v1 : ApigatewayTestIamPermissionsRequest
 /// - apigee:v1 : GoogleIamV1TestIamPermissionsRequest
 /// - bigquery:v2 : TestIamPermissionsRequest

@@ -1,3 +1,10 @@
+## 8.0.0-dev
+
+- `adsense` - **removed v1.4**
+- `clouddeploy` - new!
+- `datastream` - new!
+- `webmasters` - **removed!**
+
 ## 7.0.0
 
 - Removed *many* types defined in the source library JSON definition, but that

@@ -2864,7 +2864,7 @@ class GetIamPolicyRequest {
 }
 
 /// Encapsulates settings provided to GetIamPolicy.
-typedef GetPolicyOptions = $GetPolicyOptions00;
+typedef GetPolicyOptions = $GetPolicyOptions;
 
 /// Defines the HTTP configuration for an API service.
 ///

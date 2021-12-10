@@ -152,7 +152,7 @@ class BillingAccountsResource {
   /// organizations and billing accounts.
   ///
   /// Once configured for an organization, it applies to all projects and
-  /// folders in the Google Cloud organization.See Enabling CMEK for Logs Router
+  /// folders in the Google Cloud organization.See Enabling CMEK for Log Router
   /// (https://cloud.google.com/logging/docs/routing/managed-encryption) for
   /// more information.
   ///
@@ -2169,7 +2169,7 @@ class FoldersResource {
   /// organizations and billing accounts.
   ///
   /// Once configured for an organization, it applies to all projects and
-  /// folders in the Google Cloud organization.See Enabling CMEK for Logs Router
+  /// folders in the Google Cloud organization.See Enabling CMEK for Log Router
   /// (https://cloud.google.com/logging/docs/routing/managed-encryption) for
   /// more information.
   ///
@@ -4730,7 +4730,7 @@ class OrganizationsResource {
   /// organizations and billing accounts.
   ///
   /// Once configured for an organization, it applies to all projects and
-  /// folders in the Google Cloud organization.See Enabling CMEK for Logs Router
+  /// folders in the Google Cloud organization.See Enabling CMEK for Log Router
   /// (https://cloud.google.com/logging/docs/routing/managed-encryption) for
   /// more information.
   ///
@@ -6382,7 +6382,7 @@ class ProjectsResource {
   /// organizations and billing accounts.
   ///
   /// Once configured for an organization, it applies to all projects and
-  /// folders in the Google Cloud organization.See Enabling CMEK for Logs Router
+  /// folders in the Google Cloud organization.See Enabling CMEK for Log Router
   /// (https://cloud.google.com/logging/docs/routing/managed-encryption) for
   /// more information.
   ///
@@ -8448,7 +8448,7 @@ class V2Resource {
   /// organizations and billing accounts.
   ///
   /// Once configured for an organization, it applies to all projects and
-  /// folders in the Google Cloud organization.See Enabling CMEK for Logs Router
+  /// folders in the Google Cloud organization.See Enabling CMEK for Log Router
   /// (https://cloud.google.com/logging/docs/routing/managed-encryption) for
   /// more information.
   ///
@@ -8710,7 +8710,7 @@ class CmekSettings {
   /// the Log Router will use to access your Cloud KMS key.
   ///
   /// Use GetCmekSettings to obtain the service account ID.See Enabling CMEK for
-  /// Logs Router
+  /// Log Router
   /// (https://cloud.google.com/logging/docs/routing/managed-encryption) for
   /// more information.
   ///

@@ -759,6 +759,15 @@ class BuildProvenance {
 
 typedef BuilderConfig = $Shared00;
 
+/// Common Vulnerability Scoring System.
+///
+/// For details, see https://www.first.org/cvss/specification-document This is a
+/// message we will try to use for storing multiple versions of CVSS. The
+/// intention is that as new versions of CVSS scores get added, we will be able
+/// to modify this message rather than adding new protos for each new version of
+/// the score.
+typedef CVSS = $CVSS;
+
 /// The category to which the update belongs.
 typedef Category = $Category;
 
@@ -2349,6 +2358,9 @@ class VulnerabilityOccurrence {
   /// Output only.
   core.double? cvssScore;
 
+  /// The cvss v3 score for the vulnerability.
+  CVSS? cvssv3;
+
   /// The distro assigned severity for this vulnerability when it is available,
   /// otherwise this is the note provider assigned severity.
   ///
@@ -2412,6 +2424,7 @@ class VulnerabilityOccurrence {
 
   VulnerabilityOccurrence({
     this.cvssScore,
+    this.cvssv3,
     this.effectiveSeverity,
     this.fixAvailable,
     this.longDescription,
@@ -2426,6 +2439,10 @@ class VulnerabilityOccurrence {
       : this(
           cvssScore: _json.containsKey('cvssScore')
               ? (_json['cvssScore'] as core.num).toDouble()
+              : null,
+          cvssv3: _json.containsKey('cvssv3')
+              ? CVSS.fromJson(
+                  _json['cvssv3'] as core.Map<core.String, core.dynamic>)
               : null,
           effectiveSeverity: _json.containsKey('effectiveSeverity')
               ? _json['effectiveSeverity'] as core.String
@@ -2459,6 +2476,7 @@ class VulnerabilityOccurrence {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (cvssScore != null) 'cvssScore': cvssScore!,
+        if (cvssv3 != null) 'cvssv3': cvssv3!,
         if (effectiveSeverity != null) 'effectiveSeverity': effectiveSeverity!,
         if (fixAvailable != null) 'fixAvailable': fixAvailable!,
         if (longDescription != null) 'longDescription': longDescription!,

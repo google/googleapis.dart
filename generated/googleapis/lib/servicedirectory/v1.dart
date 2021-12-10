@@ -1444,7 +1444,7 @@ class GetIamPolicyRequest {
 }
 
 /// Encapsulates settings provided to GetIamPolicy.
-typedef GetPolicyOptions = $GetPolicyOptions00;
+typedef GetPolicyOptions = $GetPolicyOptions;
 
 /// The response message for RegistrationService.ListEndpoints.
 class ListEndpointsResponse {

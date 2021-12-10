@@ -3497,8 +3497,8 @@ class Subscription {
   /// If push delivery is used with this subscription, this field is used to
   /// configure it.
   ///
-  /// An empty `pushConfig` signifies that the subscriber will pull and ack
-  /// messages using API methods.
+  /// At most one of `pushConfig` and `bigQueryConfig` can be set. If both are
+  /// empty, then the subscriber will pull and ack messages using API methods.
   PushConfig? pushConfig;
 
   /// Indicates whether to retain acknowledged messages.
@@ -3519,6 +3519,18 @@ class Subscription {
   /// RetryPolicy will be triggered on NACKs or acknowledgement deadline
   /// exceeded events for a given message.
   RetryPolicy? retryPolicy;
+
+  /// An output-only field indicating whether or not the subscription can
+  /// receive messages.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Default value. This value is unused.
+  /// - "ACTIVE" : The subscription can actively receive messages
+  /// - "RESOURCE_ERROR" : The subscription cannot receive messages because of
+  /// an error with the resource to which it pushes messages. See the more
+  /// detailed error state in the corresponding configuration.
+  core.String? state;
 
   /// The name of the topic from which this subscription is receiving messages.
   ///
@@ -3553,6 +3565,7 @@ class Subscription {
     this.pushConfig,
     this.retainAckedMessages,
     this.retryPolicy,
+    this.state,
     this.topic,
     this.topicMessageRetentionDuration,
   });
@@ -3603,6 +3616,8 @@ class Subscription {
               ? RetryPolicy.fromJson(
                   _json['retryPolicy'] as core.Map<core.String, core.dynamic>)
               : null,
+          state:
+              _json.containsKey('state') ? _json['state'] as core.String : null,
           topic:
               _json.containsKey('topic') ? _json['topic'] as core.String : null,
           topicMessageRetentionDuration:
@@ -3628,6 +3643,7 @@ class Subscription {
         if (retainAckedMessages != null)
           'retainAckedMessages': retainAckedMessages!,
         if (retryPolicy != null) 'retryPolicy': retryPolicy!,
+        if (state != null) 'state': state!,
         if (topic != null) 'topic': topic!,
         if (topicMessageRetentionDuration != null)
           'topicMessageRetentionDuration': topicMessageRetentionDuration!,

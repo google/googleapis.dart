@@ -518,6 +518,7 @@ api.GoogleCloudDatacatalogV1Entry buildGoogleCloudDatacatalogV1Entry() {
     o.labels = buildUnnamed3();
     o.linkedResource = 'foo';
     o.name = 'foo';
+    o.personalDetails = buildGoogleCloudDatacatalogV1PersonalDetails();
     o.routineSpec = buildGoogleCloudDatacatalogV1RoutineSpec();
     o.schema = buildGoogleCloudDatacatalogV1Schema();
     o.sourceSystemTimestamps = buildGoogleCloudDatacatalogV1SystemTimestamps();
@@ -566,6 +567,7 @@ void checkGoogleCloudDatacatalogV1Entry(api.GoogleCloudDatacatalogV1Entry o) {
       o.name!,
       unittest.equals('foo'),
     );
+    checkGoogleCloudDatacatalogV1PersonalDetails(o.personalDetails!);
     checkGoogleCloudDatacatalogV1RoutineSpec(o.routineSpec!);
     checkGoogleCloudDatacatalogV1Schema(o.schema!);
     checkGoogleCloudDatacatalogV1SystemTimestamps(o.sourceSystemTimestamps!);
@@ -1093,6 +1095,32 @@ void checkGoogleCloudDatacatalogV1ListTaxonomiesResponse(
   buildCounterGoogleCloudDatacatalogV1ListTaxonomiesResponse--;
 }
 
+core.int buildCounterGoogleCloudDatacatalogV1PersonalDetails = 0;
+api.GoogleCloudDatacatalogV1PersonalDetails
+    buildGoogleCloudDatacatalogV1PersonalDetails() {
+  final o = api.GoogleCloudDatacatalogV1PersonalDetails();
+  buildCounterGoogleCloudDatacatalogV1PersonalDetails++;
+  if (buildCounterGoogleCloudDatacatalogV1PersonalDetails < 3) {
+    o.starTime = 'foo';
+    o.starred = true;
+  }
+  buildCounterGoogleCloudDatacatalogV1PersonalDetails--;
+  return o;
+}
+
+void checkGoogleCloudDatacatalogV1PersonalDetails(
+    api.GoogleCloudDatacatalogV1PersonalDetails o) {
+  buildCounterGoogleCloudDatacatalogV1PersonalDetails++;
+  if (buildCounterGoogleCloudDatacatalogV1PersonalDetails < 3) {
+    unittest.expect(
+      o.starTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.starred!, unittest.isTrue);
+  }
+  buildCounterGoogleCloudDatacatalogV1PersonalDetails--;
+}
+
 core.List<core.String> buildUnnamed15() => [
       'foo',
       'foo',
@@ -1446,6 +1474,7 @@ api.GoogleCloudDatacatalogV1SearchCatalogRequestScope
     o.includeProjectIds = buildUnnamed19();
     o.includePublicTagTemplates = true;
     o.restrictedLocations = buildUnnamed20();
+    o.starredOnly = true;
   }
   buildCounterGoogleCloudDatacatalogV1SearchCatalogRequestScope--;
   return o;
@@ -1460,6 +1489,7 @@ void checkGoogleCloudDatacatalogV1SearchCatalogRequestScope(
     checkUnnamed19(o.includeProjectIds!);
     unittest.expect(o.includePublicTagTemplates!, unittest.isTrue);
     checkUnnamed20(o.restrictedLocations!);
+    unittest.expect(o.starredOnly!, unittest.isTrue);
   }
   buildCounterGoogleCloudDatacatalogV1SearchCatalogRequestScope--;
 }
@@ -1698,6 +1728,40 @@ void checkGoogleCloudDatacatalogV1SerializedTaxonomy(
     checkUnnamed25(o.policyTags!);
   }
   buildCounterGoogleCloudDatacatalogV1SerializedTaxonomy--;
+}
+
+core.int buildCounterGoogleCloudDatacatalogV1StarEntryRequest = 0;
+api.GoogleCloudDatacatalogV1StarEntryRequest
+    buildGoogleCloudDatacatalogV1StarEntryRequest() {
+  final o = api.GoogleCloudDatacatalogV1StarEntryRequest();
+  buildCounterGoogleCloudDatacatalogV1StarEntryRequest++;
+  if (buildCounterGoogleCloudDatacatalogV1StarEntryRequest < 3) {}
+  buildCounterGoogleCloudDatacatalogV1StarEntryRequest--;
+  return o;
+}
+
+void checkGoogleCloudDatacatalogV1StarEntryRequest(
+    api.GoogleCloudDatacatalogV1StarEntryRequest o) {
+  buildCounterGoogleCloudDatacatalogV1StarEntryRequest++;
+  if (buildCounterGoogleCloudDatacatalogV1StarEntryRequest < 3) {}
+  buildCounterGoogleCloudDatacatalogV1StarEntryRequest--;
+}
+
+core.int buildCounterGoogleCloudDatacatalogV1StarEntryResponse = 0;
+api.GoogleCloudDatacatalogV1StarEntryResponse
+    buildGoogleCloudDatacatalogV1StarEntryResponse() {
+  final o = api.GoogleCloudDatacatalogV1StarEntryResponse();
+  buildCounterGoogleCloudDatacatalogV1StarEntryResponse++;
+  if (buildCounterGoogleCloudDatacatalogV1StarEntryResponse < 3) {}
+  buildCounterGoogleCloudDatacatalogV1StarEntryResponse--;
+  return o;
+}
+
+void checkGoogleCloudDatacatalogV1StarEntryResponse(
+    api.GoogleCloudDatacatalogV1StarEntryResponse o) {
+  buildCounterGoogleCloudDatacatalogV1StarEntryResponse++;
+  if (buildCounterGoogleCloudDatacatalogV1StarEntryResponse < 3) {}
+  buildCounterGoogleCloudDatacatalogV1StarEntryResponse--;
 }
 
 core.int buildCounterGoogleCloudDatacatalogV1SystemTimestamps = 0;
@@ -2031,6 +2095,40 @@ void checkGoogleCloudDatacatalogV1Taxonomy(
     checkGoogleCloudDatacatalogV1SystemTimestamps(o.taxonomyTimestamps!);
   }
   buildCounterGoogleCloudDatacatalogV1Taxonomy--;
+}
+
+core.int buildCounterGoogleCloudDatacatalogV1UnstarEntryRequest = 0;
+api.GoogleCloudDatacatalogV1UnstarEntryRequest
+    buildGoogleCloudDatacatalogV1UnstarEntryRequest() {
+  final o = api.GoogleCloudDatacatalogV1UnstarEntryRequest();
+  buildCounterGoogleCloudDatacatalogV1UnstarEntryRequest++;
+  if (buildCounterGoogleCloudDatacatalogV1UnstarEntryRequest < 3) {}
+  buildCounterGoogleCloudDatacatalogV1UnstarEntryRequest--;
+  return o;
+}
+
+void checkGoogleCloudDatacatalogV1UnstarEntryRequest(
+    api.GoogleCloudDatacatalogV1UnstarEntryRequest o) {
+  buildCounterGoogleCloudDatacatalogV1UnstarEntryRequest++;
+  if (buildCounterGoogleCloudDatacatalogV1UnstarEntryRequest < 3) {}
+  buildCounterGoogleCloudDatacatalogV1UnstarEntryRequest--;
+}
+
+core.int buildCounterGoogleCloudDatacatalogV1UnstarEntryResponse = 0;
+api.GoogleCloudDatacatalogV1UnstarEntryResponse
+    buildGoogleCloudDatacatalogV1UnstarEntryResponse() {
+  final o = api.GoogleCloudDatacatalogV1UnstarEntryResponse();
+  buildCounterGoogleCloudDatacatalogV1UnstarEntryResponse++;
+  if (buildCounterGoogleCloudDatacatalogV1UnstarEntryResponse < 3) {}
+  buildCounterGoogleCloudDatacatalogV1UnstarEntryResponse--;
+  return o;
+}
+
+void checkGoogleCloudDatacatalogV1UnstarEntryResponse(
+    api.GoogleCloudDatacatalogV1UnstarEntryResponse o) {
+  buildCounterGoogleCloudDatacatalogV1UnstarEntryResponse++;
+  if (buildCounterGoogleCloudDatacatalogV1UnstarEntryResponse < 3) {}
+  buildCounterGoogleCloudDatacatalogV1UnstarEntryResponse--;
 }
 
 core.Map<core.String, api.GoogleCloudDatacatalogV1UsageStats>
@@ -2606,6 +2704,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-GoogleCloudDatacatalogV1PersonalDetails', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleCloudDatacatalogV1PersonalDetails();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudDatacatalogV1PersonalDetails.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudDatacatalogV1PersonalDetails(od);
+    });
+  });
+
   unittest.group('obj-schema-GoogleCloudDatacatalogV1PolicyTag', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGoogleCloudDatacatalogV1PolicyTag();
@@ -2745,6 +2853,26 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-GoogleCloudDatacatalogV1StarEntryRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleCloudDatacatalogV1StarEntryRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudDatacatalogV1StarEntryRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudDatacatalogV1StarEntryRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-GoogleCloudDatacatalogV1StarEntryResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleCloudDatacatalogV1StarEntryResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudDatacatalogV1StarEntryResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudDatacatalogV1StarEntryResponse(od);
+    });
+  });
+
   unittest.group('obj-schema-GoogleCloudDatacatalogV1SystemTimestamps', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGoogleCloudDatacatalogV1SystemTimestamps();
@@ -2822,6 +2950,26 @@ void main() {
       final od = api.GoogleCloudDatacatalogV1Taxonomy.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatacatalogV1Taxonomy(od);
+    });
+  });
+
+  unittest.group('obj-schema-GoogleCloudDatacatalogV1UnstarEntryRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleCloudDatacatalogV1UnstarEntryRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudDatacatalogV1UnstarEntryRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudDatacatalogV1UnstarEntryRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-GoogleCloudDatacatalogV1UnstarEntryResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleCloudDatacatalogV1UnstarEntryResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudDatacatalogV1UnstarEntryResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudDatacatalogV1UnstarEntryResponse(od);
     });
   });
 
@@ -3889,6 +4037,67 @@ void main() {
           response as api.GoogleCloudDatacatalogV1Entry);
     });
 
+    unittest.test('method--star', () async {
+      final mock = HttpServerMock();
+      final res =
+          api.DataCatalogApi(mock).projects.locations.entryGroups.entries;
+      final arg_request = buildGoogleCloudDatacatalogV1StarEntryRequest();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.GoogleCloudDatacatalogV1StarEntryRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGoogleCloudDatacatalogV1StarEntryRequest(obj);
+
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json
+            .encode(buildGoogleCloudDatacatalogV1StarEntryResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.star(arg_request, arg_name, $fields: arg_$fields);
+      checkGoogleCloudDatacatalogV1StarEntryResponse(
+          response as api.GoogleCloudDatacatalogV1StarEntryResponse);
+    });
+
     unittest.test('method--testIamPermissions', () async {
       final mock = HttpServerMock();
       final res =
@@ -3947,6 +4156,67 @@ void main() {
           $fields: arg_$fields);
       checkTestIamPermissionsResponse(
           response as api.TestIamPermissionsResponse);
+    });
+
+    unittest.test('method--unstar', () async {
+      final mock = HttpServerMock();
+      final res =
+          api.DataCatalogApi(mock).projects.locations.entryGroups.entries;
+      final arg_request = buildGoogleCloudDatacatalogV1UnstarEntryRequest();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.GoogleCloudDatacatalogV1UnstarEntryRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGoogleCloudDatacatalogV1UnstarEntryRequest(obj);
+
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json
+            .encode(buildGoogleCloudDatacatalogV1UnstarEntryResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.unstar(arg_request, arg_name, $fields: arg_$fields);
+      checkGoogleCloudDatacatalogV1UnstarEntryResponse(
+          response as api.GoogleCloudDatacatalogV1UnstarEntryResponse);
     });
   });
 

@@ -5275,7 +5275,7 @@ class GetIamPolicyRequest {
 }
 
 /// Encapsulates settings provided to GetIamPolicy.
-typedef GetPolicyOptions = $GetPolicyOptions00;
+typedef GetPolicyOptions = $GetPolicyOptions;
 
 class GetQueryResultsResponse {
   /// Whether the query result was fetched from the query cache.

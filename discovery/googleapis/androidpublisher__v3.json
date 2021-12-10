@@ -3039,7 +3039,7 @@
             }
         }
     },
-    "revision": "20211207",
+    "revision": "20211209",
     "rootUrl": "https://androidpublisher.googleapis.com/",
     "schemas": {
         "Apk": {

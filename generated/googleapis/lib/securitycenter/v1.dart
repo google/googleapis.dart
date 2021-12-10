@@ -4127,6 +4127,70 @@ class ProjectsSourcesFindingsExternalSystemsResource {
   }
 }
 
+/// Represents an access event.
+class Access {
+  /// Caller's IP address, such as "1.1.1.1".
+  core.String? callerIp;
+
+  /// The caller IP's geolocation, which identifies where the call came from.
+  Geolocation? callerIpGeo;
+
+  /// The method that the service account called, e.g. "SetIamPolicy".
+  core.String? methodName;
+
+  /// Associated email, such as "foo@google.com".
+  core.String? principalEmail;
+
+  /// This is the API service that the service account made a call to, e.g.
+  /// "iam.googleapis.com"
+  core.String? serviceName;
+
+  /// What kind of user agent is associated, e.g. operating system shells,
+  /// embedded or stand-alone applications, etc.
+  core.String? userAgentFamily;
+
+  Access({
+    this.callerIp,
+    this.callerIpGeo,
+    this.methodName,
+    this.principalEmail,
+    this.serviceName,
+    this.userAgentFamily,
+  });
+
+  Access.fromJson(core.Map _json)
+      : this(
+          callerIp: _json.containsKey('callerIp')
+              ? _json['callerIp'] as core.String
+              : null,
+          callerIpGeo: _json.containsKey('callerIpGeo')
+              ? Geolocation.fromJson(
+                  _json['callerIpGeo'] as core.Map<core.String, core.dynamic>)
+              : null,
+          methodName: _json.containsKey('methodName')
+              ? _json['methodName'] as core.String
+              : null,
+          principalEmail: _json.containsKey('principalEmail')
+              ? _json['principalEmail'] as core.String
+              : null,
+          serviceName: _json.containsKey('serviceName')
+              ? _json['serviceName'] as core.String
+              : null,
+          userAgentFamily: _json.containsKey('userAgentFamily')
+              ? _json['userAgentFamily'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (callerIp != null) 'callerIp': callerIp!,
+        if (callerIpGeo != null) 'callerIpGeo': callerIpGeo!,
+        if (methodName != null) 'methodName': methodName!,
+        if (principalEmail != null) 'principalEmail': principalEmail!,
+        if (serviceName != null) 'serviceName': serviceName!,
+        if (userAgentFamily != null) 'userAgentFamily': userAgentFamily!,
+      };
+}
+
 /// Security Command Center representation of a Google Cloud resource.
 ///
 /// The Asset is a Security Command Center resource that captures information
@@ -4717,6 +4781,10 @@ typedef Expr = $Expr;
 /// cross-site scripting (XSS) vulnerability in an App Engine application is a
 /// finding.
 class Finding {
+  /// Access details associated to the Finding, such as more information on the
+  /// caller, which method was accessed, from where, etc.
+  Access? access;
+
   /// The canonical name of the finding.
   ///
   /// It's either
@@ -4780,6 +4848,11 @@ class Finding {
   /// with high confidence, indicates a computer intrusion. Reference:
   /// https://en.wikipedia.org/wiki/Indicator_of_compromise
   Indicator? indicator;
+
+  /// MITRE ATT&CK tactics and techniques related to this finding.
+  ///
+  /// See: https://attack.mitre.org
+  MitreAttack? mitreAttack;
 
   /// Indicates the mute state of a finding (either unspecified, muted, unmuted
   /// or undefined).
@@ -4904,6 +4977,7 @@ class Finding {
   Vulnerability? vulnerability;
 
   Finding({
+    this.access,
     this.canonicalName,
     this.category,
     this.createTime,
@@ -4912,6 +4986,7 @@ class Finding {
     this.externalUri,
     this.findingClass,
     this.indicator,
+    this.mitreAttack,
     this.mute,
     this.muteInitiator,
     this.muteUpdateTime,
@@ -4927,6 +5002,10 @@ class Finding {
 
   Finding.fromJson(core.Map _json)
       : this(
+          access: _json.containsKey('access')
+              ? Access.fromJson(
+                  _json['access'] as core.Map<core.String, core.dynamic>)
+              : null,
           canonicalName: _json.containsKey('canonicalName')
               ? _json['canonicalName'] as core.String
               : null,
@@ -4959,6 +5038,10 @@ class Finding {
           indicator: _json.containsKey('indicator')
               ? Indicator.fromJson(
                   _json['indicator'] as core.Map<core.String, core.dynamic>)
+              : null,
+          mitreAttack: _json.containsKey('mitreAttack')
+              ? MitreAttack.fromJson(
+                  _json['mitreAttack'] as core.Map<core.String, core.dynamic>)
               : null,
           mute: _json.containsKey('mute') ? _json['mute'] as core.String : null,
           muteInitiator: _json.containsKey('muteInitiator')
@@ -4993,6 +5076,7 @@ class Finding {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (access != null) 'access': access!,
         if (canonicalName != null) 'canonicalName': canonicalName!,
         if (category != null) 'category': category!,
         if (createTime != null) 'createTime': createTime!,
@@ -5001,6 +5085,7 @@ class Finding {
         if (externalUri != null) 'externalUri': externalUri!,
         if (findingClass != null) 'findingClass': findingClass!,
         if (indicator != null) 'indicator': indicator!,
+        if (mitreAttack != null) 'mitreAttack': mitreAttack!,
         if (mute != null) 'mute': mute!,
         if (muteInitiator != null) 'muteInitiator': muteInitiator!,
         if (muteUpdateTime != null) 'muteUpdateTime': muteUpdateTime!,
@@ -5050,6 +5135,27 @@ class Folder {
       };
 }
 
+/// Represents a geographical location for a given access.
+class Geolocation {
+  /// A CLDR.
+  core.String? regionCode;
+
+  Geolocation({
+    this.regionCode,
+  });
+
+  Geolocation.fromJson(core.Map _json)
+      : this(
+          regionCode: _json.containsKey('regionCode')
+              ? _json['regionCode'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (regionCode != null) 'regionCode': regionCode!,
+      };
+}
+
 /// Request message for `GetIamPolicy` method.
 class GetIamPolicyRequest {
   /// OPTIONAL: A `GetPolicyOptions` object for specifying options to
@@ -5074,7 +5180,7 @@ class GetIamPolicyRequest {
 }
 
 /// Encapsulates settings provided to GetIamPolicy.
-typedef GetPolicyOptions = $GetPolicyOptions00;
+typedef GetPolicyOptions = $GetPolicyOptions;
 
 /// Representation of third party SIEM/SOAR fields within SCC.
 class GoogleCloudSecuritycenterV1ExternalSystem {
@@ -6018,6 +6124,94 @@ class ListSourcesResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (sources != null) 'sources': sources!,
+      };
+}
+
+/// MITRE ATT&CK tactics and techniques related to this finding.
+///
+/// See: https://attack.mitre.org
+class MitreAttack {
+  /// Additional MITRE ATT&CK tactics related to this finding, if any.
+  core.List<core.String>? additionalTactics;
+
+  /// Additional MITRE ATT&CK techniques related to this finding, if any, along
+  /// with any of their respective parent techniques.
+  core.List<core.String>? additionalTechniques;
+
+  /// The MITRE ATT&CK tactic most closely represented by this finding, if any.
+  /// Possible string values are:
+  /// - "TACTIC_UNSPECIFIED" : Unspecified value.
+  /// - "RECONNAISSANCE" : TA0043
+  /// - "RESOURCE_DEVELOPMENT" : TA0042
+  /// - "INITIAL_ACCESS" : TA0001
+  /// - "EXECUTION" : TA0002
+  /// - "PERSISTENCE" : TA0003
+  /// - "PRIVILEGE_ESCALATION" : TA0004
+  /// - "DEFENSE_EVASION" : TA0005
+  /// - "CREDENTIAL_ACCESS" : TA0006
+  /// - "DISCOVERY" : TA0007
+  /// - "LATERAL_MOVEMENT" : TA0008
+  /// - "COLLECTION" : TA0009
+  /// - "COMMAND_AND_CONTROL" : TA0011
+  /// - "EXFILTRATION" : TA0010
+  /// - "IMPACT" : TA0040
+  core.String? primaryTactic;
+
+  /// The MITRE ATT&CK technique most closely represented by this finding, if
+  /// any.
+  ///
+  /// primary_techniques is a repeated field because there are multiple levels
+  /// of MITRE ATT&CK techniques. If the technique most closely represented by
+  /// this finding is a sub-technique (e.g. SCANNING_IP_BLOCKS), both the
+  /// sub-technique and its parent technique(s) will be listed (e.g.
+  /// SCANNING_IP_BLOCKS, ACTIVE_SCANNING).
+  core.List<core.String>? primaryTechniques;
+
+  /// The MITRE ATT&CK version referenced by the above fields.
+  ///
+  /// E.g. "8".
+  core.String? version;
+
+  MitreAttack({
+    this.additionalTactics,
+    this.additionalTechniques,
+    this.primaryTactic,
+    this.primaryTechniques,
+    this.version,
+  });
+
+  MitreAttack.fromJson(core.Map _json)
+      : this(
+          additionalTactics: _json.containsKey('additionalTactics')
+              ? (_json['additionalTactics'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          additionalTechniques: _json.containsKey('additionalTechniques')
+              ? (_json['additionalTechniques'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          primaryTactic: _json.containsKey('primaryTactic')
+              ? _json['primaryTactic'] as core.String
+              : null,
+          primaryTechniques: _json.containsKey('primaryTechniques')
+              ? (_json['primaryTechniques'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          version: _json.containsKey('version')
+              ? _json['version'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (additionalTactics != null) 'additionalTactics': additionalTactics!,
+        if (additionalTechniques != null)
+          'additionalTechniques': additionalTechniques!,
+        if (primaryTactic != null) 'primaryTactic': primaryTactic!,
+        if (primaryTechniques != null) 'primaryTechniques': primaryTechniques!,
+        if (version != null) 'version': version!,
       };
 }
 

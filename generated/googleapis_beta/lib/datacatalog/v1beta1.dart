@@ -151,7 +151,7 @@ class EntriesResource {
   /// `bigquery.table.project_id.dataset_id.table_id` *
   /// `bigquery.dataset.project_id.dataset_id` *
   /// `datacatalog.entry.project_id.location_id.entry_group_id.entry_id` `*_id`s
-  /// shoud satisfy the standard SQL rules for identifiers.
+  /// should satisfy the standard SQL rules for identifiers.
   /// https://cloud.google.com/bigquery/docs/reference/standard-sql/lexical.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -3003,35 +3003,7 @@ class GetIamPolicyRequest {
 }
 
 /// Encapsulates settings provided to GetIamPolicy.
-class GetPolicyOptions {
-  /// The policy format version to be returned.
-  ///
-  /// Valid values are 0, 1, and 3. Requests specifying an invalid value will be
-  /// rejected. Requests for policies with any conditional bindings must specify
-  /// version 3. Policies without any conditional bindings may specify any valid
-  /// value or leave the field unset. To learn which resources support
-  /// conditions in their IAM policies, see the
-  /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-  ///
-  /// Optional.
-  core.int? requestedPolicyVersion;
-
-  GetPolicyOptions({
-    this.requestedPolicyVersion,
-  });
-
-  GetPolicyOptions.fromJson(core.Map _json)
-      : this(
-          requestedPolicyVersion: _json.containsKey('requestedPolicyVersion')
-              ? _json['requestedPolicyVersion'] as core.int
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (requestedPolicyVersion != null)
-          'requestedPolicyVersion': requestedPolicyVersion!,
-      };
-}
+typedef GetPolicyOptions = $GetPolicyOptions;
 
 /// Spec for a group of BigQuery tables with name pattern `[prefix]YYYYMMDD`.
 ///
@@ -4118,7 +4090,8 @@ class GoogleCloudDatacatalogV1beta1SearchCatalogRequest {
   /// Specifies the ordering of results, currently supported case-sensitive
   /// choices are: * `relevance`, only supports descending *
   /// `last_modified_timestamp [asc|desc]`, defaults to descending if not
-  /// specified If not specified, defaults to `relevance` descending.
+  /// specified * `default` that can only be descending If not specified,
+  /// defaults to `relevance` descending.
   core.String? orderBy;
 
   /// Number of results in the search page.

@@ -17784,9 +17784,9 @@ class GoogleCloudDialogflowV2SpeechToTextConfig {
   ///
   /// `SPEECH_MODEL_VARIANT_UNSPECIFIED`, `USE_BEST_AVAILABLE` will be treated
   /// as `USE_ENHANCED`. It can be overridden in AnalyzeContentRequest and
-  /// StreamingAnalyzeContentRequest request.
-  ///
-  /// Optional.
+  /// StreamingAnalyzeContentRequest request. If enhanced model variant is
+  /// specified and an enhanced version of the specified model for the language
+  /// does not exist, then it would emit an error.
   /// Possible string values are:
   /// - "SPEECH_MODEL_VARIANT_UNSPECIFIED" : No model variant specified. In this
   /// case Dialogflow defaults to USE_BEST_AVAILABLE.

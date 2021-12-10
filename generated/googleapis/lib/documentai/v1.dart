@@ -3110,12 +3110,14 @@ class GoogleCloudDocumentaiV1DocumentProvenance {
 
   /// The type of provenance operation.
   /// Possible string values are:
-  /// - "OPERATION_TYPE_UNSPECIFIED" : Operation type unspecified.
-  /// - "ADD" : Add an element. Implicit if no `parents` are set for the
-  /// provenance.
-  /// - "REMOVE" : The element is removed. No `parents` should be set.
-  /// - "REPLACE" : Explicitly replaces the element(s) identified by `parents`.
-  /// - "EVAL_REQUESTED" : Element is requested for human review.
+  /// - "OPERATION_TYPE_UNSPECIFIED" : Operation type unspecified. If no
+  /// operation is specified a provenance entry is simply used to match against
+  /// a `parent`.
+  /// - "ADD" : Add an element.
+  /// - "REMOVE" : Remove an element identified by `parent`.
+  /// - "REPLACE" : Replace an element identified by `parent`.
+  /// - "EVAL_REQUESTED" : Request human review for the element identified by
+  /// `parent`.
   /// - "EVAL_APPROVED" : Element is reviewed and approved at human review,
   /// confidence will be set to 1.0.
   /// - "EVAL_SKIPPED" : Element is skipped in the validation process.
@@ -3152,10 +3154,9 @@ class GoogleCloudDocumentaiV1DocumentProvenance {
       };
 }
 
-/// Structure for referencing parent provenances.
+/// The parent element the current element is based on.
 ///
-/// When an element replaces one of more other elements parent references
-/// identify the elements that are replaced.
+/// Used for referencing/aligning, removal and replacement operations.
 class GoogleCloudDocumentaiV1DocumentProvenanceParent {
   /// The id of the parent provenance.
   core.int? id;
@@ -3165,7 +3166,7 @@ class GoogleCloudDocumentaiV1DocumentProvenanceParent {
   /// list of entities, properties within entities, etc.) on parent revision.
   core.int? index;
 
-  /// The index of the \[Document.revisions\] identifying the parent revision.
+  /// The index of the index into current revision's parent_ids list.
   core.int? revision;
 
   GoogleCloudDocumentaiV1DocumentProvenanceParent({
@@ -3212,6 +3213,12 @@ class GoogleCloudDocumentaiV1DocumentRevision {
   /// field represents the index into the `revisions` field.
   core.List<core.int>? parent;
 
+  /// The revisions that this revision is based on.
+  ///
+  /// Must include all the ids that have anything to do with this revision - eg.
+  /// there are `provenance.parent.revision` fields that index into this field.
+  core.List<core.String>? parentIds;
+
   /// If the annotation was made by processor identify the processor by its
   /// resource name.
   core.String? processor;
@@ -3222,6 +3229,7 @@ class GoogleCloudDocumentaiV1DocumentRevision {
     this.humanReview,
     this.id,
     this.parent,
+    this.parentIds,
     this.processor,
   });
 
@@ -3242,6 +3250,11 @@ class GoogleCloudDocumentaiV1DocumentRevision {
                   .map((value) => value as core.int)
                   .toList()
               : null,
+          parentIds: _json.containsKey('parentIds')
+              ? (_json['parentIds'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
           processor: _json.containsKey('processor')
               ? _json['processor'] as core.String
               : null,
@@ -3253,6 +3266,7 @@ class GoogleCloudDocumentaiV1DocumentRevision {
         if (humanReview != null) 'humanReview': humanReview!,
         if (id != null) 'id': id!,
         if (parent != null) 'parent': parent!,
+        if (parentIds != null) 'parentIds': parentIds!,
         if (processor != null) 'processor': processor!,
       };
 }

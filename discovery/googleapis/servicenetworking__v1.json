@@ -858,7 +858,7 @@
             }
         }
     },
-    "revision": "20211206",
+    "revision": "20211208",
     "rootUrl": "https://servicenetworking.googleapis.com/",
     "schemas": {
         "AddDnsRecordSetMetadata": {

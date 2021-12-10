@@ -957,6 +957,50 @@ class ProjectsLocationsEntryGroupsEntriesResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
+  /// Marks an Entry as starred by the current user.
+  ///
+  /// Starring information is private to each user.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the entry to mark as starred.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/entryGroups/\[^/\]+/entries/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDatacatalogV1StarEntryResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDatacatalogV1StarEntryResponse> star(
+    GoogleCloudDatacatalogV1StarEntryRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':star';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDatacatalogV1StarEntryResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
   /// Gets your permissions on a resource.
   ///
   /// Returns an empty set of permissions if the resource doesn't exist.
@@ -1008,6 +1052,50 @@ class ProjectsLocationsEntryGroupsEntriesResource {
     return TestIamPermissionsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
+
+  /// Marks an Entry as NOT starred by the current user.
+  ///
+  /// Starring information is private to each user.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the entry to mark as **not** starred.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/entryGroups/\[^/\]+/entries/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDatacatalogV1UnstarEntryResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDatacatalogV1UnstarEntryResponse> unstar(
+    GoogleCloudDatacatalogV1UnstarEntryRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':unstar';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDatacatalogV1UnstarEntryResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class ProjectsLocationsEntryGroupsEntriesTagsResource {
@@ -1017,11 +1105,11 @@ class ProjectsLocationsEntryGroupsEntriesTagsResource {
       : _requester = client;
 
   /// Creates a tag and assigns it to: * An Entry if the method name is
-  /// ``projects.locations.entryGroups.entries.tags.create``.
+  /// `projects.locations.entryGroups.entries.tags.create`.
   ///
   /// * Or EntryGroupif the method name is
-  /// ``projects.locations.entryGroups.tags.create``. Note: The project
-  /// identified by the `parent` parameter for the
+  /// `projects.locations.entryGroups.tags.create`. Note: The project identified
+  /// by the `parent` parameter for the
   /// [tag](https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.entryGroups.entries.tags/create#path-parameters)
   /// and the
   /// [tag template](https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.tagTemplates/create#path-parameters)
@@ -1215,11 +1303,11 @@ class ProjectsLocationsEntryGroupsTagsResource {
       : _requester = client;
 
   /// Creates a tag and assigns it to: * An Entry if the method name is
-  /// ``projects.locations.entryGroups.entries.tags.create``.
+  /// `projects.locations.entryGroups.entries.tags.create`.
   ///
   /// * Or EntryGroupif the method name is
-  /// ``projects.locations.entryGroups.tags.create``. Note: The project
-  /// identified by the `parent` parameter for the
+  /// `projects.locations.entryGroups.tags.create`. Note: The project identified
+  /// by the `parent` parameter for the
   /// [tag](https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.entryGroups.entries.tags/create#path-parameters)
   /// and the
   /// [tag template](https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.tagTemplates/create#path-parameters)
@@ -1625,10 +1713,9 @@ class ProjectsLocationsTagTemplatesResource {
   /// overwritten. If this parameter is absent or empty, all modifiable fields
   /// are overwritten. If such fields are non-required and omitted in the
   /// request body, their values are emptied. Note: Updating the
-  /// ``is_publicly_readable`` field may require up to 12 hours to take effect
-  /// in search results. Additionally, it also requires the
-  /// ``tagTemplates.getIamPolicy`` and ``tagTemplates.setIamPolicy``
-  /// permissions.
+  /// `is_publicly_readable` field may require up to 12 hours to take effect in
+  /// search results. Additionally, it also requires the
+  /// `tagTemplates.getIamPolicy` and `tagTemplates.setIamPolicy` permissions.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1950,7 +2037,7 @@ class ProjectsLocationsTagTemplatesFieldsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the tag template.
+  /// [name] - Required. The name of the tag template field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/tagTemplates/\[^/\]+/fields/\[^/\]+$`.
   ///
@@ -3034,7 +3121,7 @@ class GetIamPolicyRequest {
 }
 
 /// Encapsulates settings provided to GetIamPolicy.
-typedef GetPolicyOptions = $GetPolicyOptions01;
+typedef GetPolicyOptions = $GetPolicyOptions;
 
 /// Specification for the BigQuery connection.
 class GoogleCloudDatacatalogV1BigQueryConnectionSpec {
@@ -3555,6 +3642,13 @@ class GoogleCloudDatacatalogV1Entry {
   /// Output only.
   core.String? name;
 
+  /// Additional information related to the entry.
+  ///
+  /// Private to the current user.
+  ///
+  /// Output only.
+  GoogleCloudDatacatalogV1PersonalDetails? personalDetails;
+
   /// Specification that applies to a user-defined function or procedure.
   ///
   /// Valid only for entries with the `ROUTINE` type.
@@ -3635,6 +3729,7 @@ class GoogleCloudDatacatalogV1Entry {
     this.labels,
     this.linkedResource,
     this.name,
+    this.personalDetails,
     this.routineSpec,
     this.schema,
     this.sourceSystemTimestamps,
@@ -3700,6 +3795,11 @@ class GoogleCloudDatacatalogV1Entry {
               ? _json['linkedResource'] as core.String
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          personalDetails: _json.containsKey('personalDetails')
+              ? GoogleCloudDatacatalogV1PersonalDetails.fromJson(
+                  _json['personalDetails']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           routineSpec: _json.containsKey('routineSpec')
               ? GoogleCloudDatacatalogV1RoutineSpec.fromJson(
                   _json['routineSpec'] as core.Map<core.String, core.dynamic>)
@@ -3743,6 +3843,7 @@ class GoogleCloudDatacatalogV1Entry {
         if (labels != null) 'labels': labels!,
         if (linkedResource != null) 'linkedResource': linkedResource!,
         if (name != null) 'name': name!,
+        if (personalDetails != null) 'personalDetails': personalDetails!,
         if (routineSpec != null) 'routineSpec': routineSpec!,
         if (schema != null) 'schema': schema!,
         if (sourceSystemTimestamps != null)
@@ -4295,6 +4396,35 @@ class GoogleCloudDatacatalogV1ListTaxonomiesResponse {
       };
 }
 
+/// Entry metadata relevant only to the user and private to them.
+class GoogleCloudDatacatalogV1PersonalDetails {
+  /// Set if the entry is starred; unset otherwise.
+  core.String? starTime;
+
+  /// True if the entry is starred by the user; false otherwise.
+  core.bool? starred;
+
+  GoogleCloudDatacatalogV1PersonalDetails({
+    this.starTime,
+    this.starred,
+  });
+
+  GoogleCloudDatacatalogV1PersonalDetails.fromJson(core.Map _json)
+      : this(
+          starTime: _json.containsKey('starTime')
+              ? _json['starTime'] as core.String
+              : null,
+          starred: _json.containsKey('starred')
+              ? _json['starred'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (starTime != null) 'starTime': starTime!,
+        if (starred != null) 'starred': starred!,
+      };
+}
+
 /// Denotes one policy tag in a taxonomy, for example, SSN.
 ///
 /// Policy tags can be defined in a hierarchy. For example: ``` + Geolocation +
@@ -4604,8 +4734,8 @@ class GoogleCloudDatacatalogV1SearchCatalogRequest {
   ///
   /// Currently supported case-sensitive values are: * `relevance` that can only
   /// be descending * `last_modified_timestamp [asc|desc]` with descending
-  /// (`desc`) as default If this parameter is omitted, it defaults to the
-  /// descending `relevance`.
+  /// (`desc`) as default * `default` that can only be descending If this
+  /// parameter is omitted, it defaults to the descending `relevance`.
   core.String? orderBy;
 
   /// Number of results to return in a single search page.
@@ -4626,11 +4756,11 @@ class GoogleCloudDatacatalogV1SearchCatalogRequest {
 
   /// The query string with a minimum of 3 characters and specific syntax.
   ///
-  /// For more information, see \[Data Catalog search
-  /// syntax\](/data-catalog/docs/how-to/search-reference). An empty query
-  /// string returns all data assets (in the specified scope) that you have
-  /// access to. A query string can be a simple `xyz` or qualified by
-  /// predicates: * `name:x` * `column:y` * `description:z`
+  /// For more information, see
+  /// [Data Catalog search syntax](https://cloud.google.com/data-catalog/docs/how-to/search-reference).
+  /// An empty query string returns all data assets (in the specified scope)
+  /// that you have access to. A query string can be a simple `xyz` or qualified
+  /// by predicates: * `name:x` * `column:y` * `description:z`
   ///
   /// Optional.
   core.String? query;
@@ -4706,7 +4836,7 @@ class GoogleCloudDatacatalogV1SearchCatalogRequestScope {
   ///
   /// By default, they are included only if you have explicit permissions on
   /// them to view them. For example, if you are the owner. Other scope fields,
-  /// for example, ``include_org_ids``, still restrict the returned public tag
+  /// for example, `include_org_ids`, still restrict the returned public tag
   /// templates and at least one of them is required.
   ///
   /// Optional.
@@ -4725,12 +4855,20 @@ class GoogleCloudDatacatalogV1SearchCatalogRequestScope {
   /// Optional.
   core.List<core.String>? restrictedLocations;
 
+  /// If `true`, search only among starred entries.
+  ///
+  /// By default, all results are returned, starred or not.
+  ///
+  /// Optional.
+  core.bool? starredOnly;
+
   GoogleCloudDatacatalogV1SearchCatalogRequestScope({
     this.includeGcpPublicDatasets,
     this.includeOrgIds,
     this.includeProjectIds,
     this.includePublicTagTemplates,
     this.restrictedLocations,
+    this.starredOnly,
   });
 
   GoogleCloudDatacatalogV1SearchCatalogRequestScope.fromJson(core.Map _json)
@@ -4758,6 +4896,9 @@ class GoogleCloudDatacatalogV1SearchCatalogRequestScope {
                   .map((value) => value as core.String)
                   .toList()
               : null,
+          starredOnly: _json.containsKey('starredOnly')
+              ? _json['starredOnly'] as core.bool
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4769,6 +4910,7 @@ class GoogleCloudDatacatalogV1SearchCatalogRequestScope {
           'includePublicTagTemplates': includePublicTagTemplates!,
         if (restrictedLocations != null)
           'restrictedLocations': restrictedLocations!,
+        if (starredOnly != null) 'starredOnly': starredOnly!,
       };
 }
 
@@ -5076,6 +5218,14 @@ class GoogleCloudDatacatalogV1SerializedTaxonomy {
         if (policyTags != null) 'policyTags': policyTags!,
       };
 }
+
+/// Request message for StarEntry.
+typedef GoogleCloudDatacatalogV1StarEntryRequest = $Empty;
+
+/// Response message for StarEntry.
+///
+/// Empty for now
+typedef GoogleCloudDatacatalogV1StarEntryResponse = $Empty;
 
 /// Timestamps associated with this resource in a particular system.
 class GoogleCloudDatacatalogV1SystemTimestamps {
@@ -5613,6 +5763,14 @@ class GoogleCloudDatacatalogV1Taxonomy {
           'taxonomyTimestamps': taxonomyTimestamps!,
       };
 }
+
+/// Request message for UnstarEntry.
+typedef GoogleCloudDatacatalogV1UnstarEntryRequest = $Empty;
+
+/// Response message for UnstarEntry.
+///
+/// Empty for now
+typedef GoogleCloudDatacatalogV1UnstarEntryResponse = $Empty;
 
 /// The set of all usage signals that Data Catalog stores.
 ///

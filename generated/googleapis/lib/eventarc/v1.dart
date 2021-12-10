@@ -1119,9 +1119,9 @@ class CloudRun {
 
 /// Represents a target of an invocation over HTTP.
 class Destination {
-  /// Cloud Run fully-managed service that receives the events.
+  /// Cloud Run fully-managed resource that receives the events.
   ///
-  /// The service should be running in the same project of the trigger.
+  /// The resource should be in the same project as the trigger.
   CloudRun? cloudRun;
 
   /// A GKE service capable of receiving events.

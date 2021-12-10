@@ -1,3 +1,7 @@
+## 8.0.0-dev
+
+- `cloudsupport` - new!
+
 ## 7.0.0
 
 ### googleapis_beta

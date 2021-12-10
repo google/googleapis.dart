@@ -4393,6 +4393,53 @@ class OrganizationsDevelopersBalanceResource {
   OrganizationsDevelopersBalanceResource(commons.ApiRequester client)
       : _requester = client;
 
+  /// Adjust the prepaid balance for the developer.
+  ///
+  /// This API will be used in scenarios where the developer has been
+  /// under-charged or over-charged.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Account balance for the developer. Use the following
+  /// structure in your request:
+  /// `organizations/{org}/developers/{developer}/balance`
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/developers/\[^/\]+/balance$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1DeveloperBalance].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1DeveloperBalance> adjust(
+    GoogleCloudApigeeV1AdjustDeveloperBalanceRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':adjust';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleCloudApigeeV1DeveloperBalance.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
   /// Credits the account balance for the developer.
   ///
   /// [request] - The metadata request object.
@@ -11837,6 +11884,34 @@ class GoogleCloudApigeeV1AddonsConfig {
         if (integrationConfig != null) 'integrationConfig': integrationConfig!,
         if (monetizationConfig != null)
           'monetizationConfig': monetizationConfig!,
+      };
+}
+
+/// Request for AdjustDeveloperBalance.
+class GoogleCloudApigeeV1AdjustDeveloperBalanceRequest {
+  /// * A positive value of `adjustment` means that that the API provider wishes
+  /// to adjust the balance for an over-charged developer i.e. the balance of
+  /// the developer will increase.
+  ///
+  /// * A negative value of `adjustment` means that that the API provider wishes
+  /// to adjust the balance for an under-charged developer i.e. the balance of
+  /// the developer will decrease.
+  GoogleTypeMoney? adjustment;
+
+  GoogleCloudApigeeV1AdjustDeveloperBalanceRequest({
+    this.adjustment,
+  });
+
+  GoogleCloudApigeeV1AdjustDeveloperBalanceRequest.fromJson(core.Map _json)
+      : this(
+          adjustment: _json.containsKey('adjustment')
+              ? GoogleTypeMoney.fromJson(
+                  _json['adjustment'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (adjustment != null) 'adjustment': adjustment!,
       };
 }
 

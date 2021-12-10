@@ -184,13 +184,6 @@ Provides ways to manage Bare Metal Solution hardware installed in a regional ext
 - [Documentation](https://cloud.google.com/bare-metal)
 - [API details](https://pub.dev/documentation/googleapis/8.0.0-dev/baremetalsolution.v1/baremetalsolution.v1-library.html)
 
-#### Bare Metal Solution API - `baremetalsolution.v2`
-
-Provides ways to manage Bare Metal Solution hardware installed in a regional extension located near a Google Cloud data center.
-
-- [Documentation](https://cloud.google.com/bare-metal)
-- [API details](https://pub.dev/documentation/googleapis/8.0.0-dev/baremetalsolution.v2/baremetalsolution.v2-library.html)
-
 #### ![Logo](https://www.google.com/images/icons/product/search-16.gif) BigQuery API - `bigquery.v2`
 
 A data platform for customers to create, manage, share and query data.

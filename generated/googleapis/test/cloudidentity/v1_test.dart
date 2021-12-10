@@ -1219,6 +1219,30 @@ void checkMemberRelation(api.MemberRelation o) {
   buildCounterMemberRelation--;
 }
 
+core.int buildCounterMemberRestriction = 0;
+api.MemberRestriction buildMemberRestriction() {
+  final o = api.MemberRestriction();
+  buildCounterMemberRestriction++;
+  if (buildCounterMemberRestriction < 3) {
+    o.evaluation = buildRestrictionEvaluation();
+    o.query = 'foo';
+  }
+  buildCounterMemberRestriction--;
+  return o;
+}
+
+void checkMemberRestriction(api.MemberRestriction o) {
+  buildCounterMemberRestriction++;
+  if (buildCounterMemberRestriction < 3) {
+    checkRestrictionEvaluation(o.evaluation!);
+    unittest.expect(
+      o.query!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterMemberRestriction--;
+}
+
 core.List<api.MembershipRole> buildUnnamed16() => [
       buildMembershipRole(),
       buildMembershipRole(),
@@ -1278,6 +1302,7 @@ api.MembershipRole buildMembershipRole() {
   if (buildCounterMembershipRole < 3) {
     o.expiryDetail = buildExpiryDetail();
     o.name = 'foo';
+    o.restrictionEvaluations = buildRestrictionEvaluations();
   }
   buildCounterMembershipRole--;
   return o;
@@ -1291,8 +1316,33 @@ void checkMembershipRole(api.MembershipRole o) {
       o.name!,
       unittest.equals('foo'),
     );
+    checkRestrictionEvaluations(o.restrictionEvaluations!);
   }
   buildCounterMembershipRole--;
+}
+
+core.int buildCounterMembershipRoleRestrictionEvaluation = 0;
+api.MembershipRoleRestrictionEvaluation
+    buildMembershipRoleRestrictionEvaluation() {
+  final o = api.MembershipRoleRestrictionEvaluation();
+  buildCounterMembershipRoleRestrictionEvaluation++;
+  if (buildCounterMembershipRoleRestrictionEvaluation < 3) {
+    o.state = 'foo';
+  }
+  buildCounterMembershipRoleRestrictionEvaluation--;
+  return o;
+}
+
+void checkMembershipRoleRestrictionEvaluation(
+    api.MembershipRoleRestrictionEvaluation o) {
+  buildCounterMembershipRoleRestrictionEvaluation++;
+  if (buildCounterMembershipRoleRestrictionEvaluation < 3) {
+    unittest.expect(
+      o.state!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterMembershipRoleRestrictionEvaluation--;
 }
 
 core.List<api.MembershipRole> buildUnnamed17() => [
@@ -1496,6 +1546,47 @@ void checkOperation(api.Operation o) {
   buildCounterOperation--;
 }
 
+core.int buildCounterRestrictionEvaluation = 0;
+api.RestrictionEvaluation buildRestrictionEvaluation() {
+  final o = api.RestrictionEvaluation();
+  buildCounterRestrictionEvaluation++;
+  if (buildCounterRestrictionEvaluation < 3) {
+    o.state = 'foo';
+  }
+  buildCounterRestrictionEvaluation--;
+  return o;
+}
+
+void checkRestrictionEvaluation(api.RestrictionEvaluation o) {
+  buildCounterRestrictionEvaluation++;
+  if (buildCounterRestrictionEvaluation < 3) {
+    unittest.expect(
+      o.state!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterRestrictionEvaluation--;
+}
+
+core.int buildCounterRestrictionEvaluations = 0;
+api.RestrictionEvaluations buildRestrictionEvaluations() {
+  final o = api.RestrictionEvaluations();
+  buildCounterRestrictionEvaluations++;
+  if (buildCounterRestrictionEvaluations < 3) {
+    o.memberRestrictionEvaluation = buildMembershipRoleRestrictionEvaluation();
+  }
+  buildCounterRestrictionEvaluations--;
+  return o;
+}
+
+void checkRestrictionEvaluations(api.RestrictionEvaluations o) {
+  buildCounterRestrictionEvaluations++;
+  if (buildCounterRestrictionEvaluations < 3) {
+    checkMembershipRoleRestrictionEvaluation(o.memberRestrictionEvaluation!);
+  }
+  buildCounterRestrictionEvaluations--;
+}
+
 core.List<api.Group> buildUnnamed22() => [
       buildGroup(),
       buildGroup(),
@@ -1601,6 +1692,30 @@ void checkSearchTransitiveMembershipsResponse(
     );
   }
   buildCounterSearchTransitiveMembershipsResponse--;
+}
+
+core.int buildCounterSecuritySettings = 0;
+api.SecuritySettings buildSecuritySettings() {
+  final o = api.SecuritySettings();
+  buildCounterSecuritySettings++;
+  if (buildCounterSecuritySettings < 3) {
+    o.memberRestriction = buildMemberRestriction();
+    o.name = 'foo';
+  }
+  buildCounterSecuritySettings--;
+  return o;
+}
+
+void checkSecuritySettings(api.SecuritySettings o) {
+  buildCounterSecuritySettings++;
+  if (buildCounterSecuritySettings < 3) {
+    checkMemberRestriction(o.memberRestriction!);
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterSecuritySettings--;
 }
 
 core.Map<core.String, core.Object?> buildUnnamed25() => {
@@ -2042,6 +2157,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-MemberRestriction', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildMemberRestriction();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.MemberRestriction.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkMemberRestriction(od);
+    });
+  });
+
   unittest.group('obj-schema-Membership', () {
     unittest.test('to-json--from-json', () async {
       final o = buildMembership();
@@ -2059,6 +2184,16 @@ void main() {
       final od = api.MembershipRole.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkMembershipRole(od);
+    });
+  });
+
+  unittest.group('obj-schema-MembershipRoleRestrictionEvaluation', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildMembershipRoleRestrictionEvaluation();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.MembershipRoleRestrictionEvaluation.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkMembershipRoleRestrictionEvaluation(od);
     });
   });
 
@@ -2092,6 +2227,26 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-RestrictionEvaluation', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildRestrictionEvaluation();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RestrictionEvaluation.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkRestrictionEvaluation(od);
+    });
+  });
+
+  unittest.group('obj-schema-RestrictionEvaluations', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildRestrictionEvaluations();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RestrictionEvaluations.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkRestrictionEvaluations(od);
+    });
+  });
+
   unittest.group('obj-schema-SearchGroupsResponse', () {
     unittest.test('to-json--from-json', () async {
       final o = buildSearchGroupsResponse();
@@ -2119,6 +2274,16 @@ void main() {
       final od = api.SearchTransitiveMembershipsResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkSearchTransitiveMembershipsResponse(od);
+    });
+  });
+
+  unittest.group('obj-schema-SecuritySettings', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSecuritySettings();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SecuritySettings.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkSecuritySettings(od);
     });
   });
 
@@ -3448,6 +3613,64 @@ void main() {
       checkGroup(response as api.Group);
     });
 
+    unittest.test('method--getSecuritySettings', () async {
+      final mock = HttpServerMock();
+      final res = api.CloudIdentityApi(mock).groups;
+      final arg_name = 'foo';
+      final arg_readMask = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['readMask']!.first,
+          unittest.equals(arg_readMask),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildSecuritySettings());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.getSecuritySettings(arg_name,
+          readMask: arg_readMask, $fields: arg_$fields);
+      checkSecuritySettings(response as api.SecuritySettings);
+    });
+
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
       final res = api.CloudIdentityApi(mock).groups;
@@ -3722,6 +3945,69 @@ void main() {
           view: arg_view,
           $fields: arg_$fields);
       checkSearchGroupsResponse(response as api.SearchGroupsResponse);
+    });
+
+    unittest.test('method--updateSecuritySettings', () async {
+      final mock = HttpServerMock();
+      final res = api.CloudIdentityApi(mock).groups;
+      final arg_request = buildSecuritySettings();
+      final arg_name = 'foo';
+      final arg_updateMask = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.SecuritySettings.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSecuritySettings(obj);
+
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['updateMask']!.first,
+          unittest.equals(arg_updateMask),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildOperation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.updateSecuritySettings(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
   });
 

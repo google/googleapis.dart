@@ -259,7 +259,7 @@
             }
         }
     },
-    "revision": "20211206",
+    "revision": "20211209",
     "rootUrl": "https://safebrowsing.googleapis.com/",
     "schemas": {
         "GoogleProtobufEmpty": {

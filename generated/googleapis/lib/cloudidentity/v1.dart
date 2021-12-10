@@ -1192,6 +1192,49 @@ class GroupsResource {
     return Group.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
+  /// Get Security Settings
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The security settings to retrieve. Format:
+  /// `groups/{group_id}/securitySettings`
+  /// Value must have pattern `^groups/\[^/\]+/securitySettings$`.
+  ///
+  /// [readMask] - Field-level read mask of which fields to return. "*" returns
+  /// all fields. If not specified, all fields will be returned. May only
+  /// contain the following field: `member_restriction`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SecuritySettings].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SecuritySettings> getSecuritySettings(
+    core.String name, {
+    core.String? readMask,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (readMask != null) 'readMask': [readMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return SecuritySettings.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
   /// Lists the `Group` resources under a customer or namespace.
   ///
   /// Request parameters:
@@ -1416,6 +1459,52 @@ class GroupsResource {
     );
     return SearchGroupsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Update Security Settings
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Output only. The resource name of the security settings. Shall be
+  /// of the form `groups/{group_id}/securitySettings`.
+  /// Value must have pattern `^groups/\[^/\]+/securitySettings$`.
+  ///
+  /// [updateMask] - Required. The fully-qualified names of fields to update.
+  /// May only contain the following field: `member_restriction.query`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> updateSecuritySettings(
+    SecuritySettings request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3461,6 +3550,45 @@ class MemberRelation {
       };
 }
 
+/// The definition of MemberRestriction
+class MemberRestriction {
+  /// The evaluated state of this restriction on a group.
+  RestrictionEvaluation? evaluation;
+
+  /// Member Restriction as defined by CEL expression.
+  ///
+  /// Supported restrictions are: `member.customer_id` and `member.type`. Valid
+  /// values for `member.type` are `1`, `2` and `3`. They correspond to USER,
+  /// SERVICE_ACCOUNT, and GROUP respectively. The value for
+  /// `member.customer_id` only supports `groupCustomerId()` currently which
+  /// means the customer id of the group will be used for restriction. Supported
+  /// operators are `&&`, `||` and `==`, corresponding to AND, OR, and EQUAL.
+  /// Examples: Allow only service accounts of given customer to be members.
+  /// `member.type == 2 && member.customer_id == groupCustomerId()` Allow only
+  /// users or groups to be members. `member.type == 1 || member.type == 3`
+  core.String? query;
+
+  MemberRestriction({
+    this.evaluation,
+    this.query,
+  });
+
+  MemberRestriction.fromJson(core.Map _json)
+      : this(
+          evaluation: _json.containsKey('evaluation')
+              ? RestrictionEvaluation.fromJson(
+                  _json['evaluation'] as core.Map<core.String, core.dynamic>)
+              : null,
+          query:
+              _json.containsKey('query') ? _json['query'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (evaluation != null) 'evaluation': evaluation!,
+        if (query != null) 'query': query!,
+      };
+}
+
 /// A membership within the Cloud Identity Groups API.
 ///
 /// A `Membership` defines a relationship between a `Group` and an entity
@@ -3565,9 +3693,13 @@ class MembershipRole {
   /// Must be one of `OWNER`, `MANAGER`, `MEMBER`.
   core.String? name;
 
+  /// Evaluations of restrictions applied to parent group on this membership.
+  RestrictionEvaluations? restrictionEvaluations;
+
   MembershipRole({
     this.expiryDetail,
     this.name,
+    this.restrictionEvaluations,
   });
 
   MembershipRole.fromJson(core.Map _json)
@@ -3577,11 +3709,48 @@ class MembershipRole {
                   _json['expiryDetail'] as core.Map<core.String, core.dynamic>)
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          restrictionEvaluations: _json.containsKey('restrictionEvaluations')
+              ? RestrictionEvaluations.fromJson(_json['restrictionEvaluations']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (expiryDetail != null) 'expiryDetail': expiryDetail!,
         if (name != null) 'name': name!,
+        if (restrictionEvaluations != null)
+          'restrictionEvaluations': restrictionEvaluations!,
+      };
+}
+
+/// The evaluated state of this restriction.
+class MembershipRoleRestrictionEvaluation {
+  /// The current state of the restriction
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Default. Should not be used.
+  /// - "COMPLIANT" : The member adheres to the parent group’s restriction.
+  /// - "FORWARD_COMPLIANT" : The group-group membership might be currently
+  /// violating some parent group's restriction but in future, it will never
+  /// allow any new member in the child group which can violate parent group's
+  /// restriction.
+  /// - "NON_COMPLIANT" : The member violates the parent group’s restriction.
+  /// - "EVALUATING" : The state of the membership is under evaluation.
+  core.String? state;
+
+  MembershipRoleRestrictionEvaluation({
+    this.state,
+  });
+
+  MembershipRoleRestrictionEvaluation.fromJson(core.Map _json)
+      : this(
+          state:
+              _json.containsKey('state') ? _json['state'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (state != null) 'state': state!,
       };
 }
 
@@ -3740,6 +3909,64 @@ class Operation {
       };
 }
 
+/// The evaluated state of this restriction.
+class RestrictionEvaluation {
+  /// The current state of the restriction
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Default. Should not be used.
+  /// - "EVALUATING" : The restriction state is currently being evaluated.
+  /// - "COMPLIANT" : All transitive memberships are adhering to restriction.
+  /// - "FORWARD_COMPLIANT" : Some transitive memberships violate the
+  /// restriction. No new violating memberships can be added.
+  /// - "NON_COMPLIANT" : Some transitive memberships violate the restriction.
+  /// New violating direct memberships will be denied while indirect memberships
+  /// may be added.
+  core.String? state;
+
+  RestrictionEvaluation({
+    this.state,
+  });
+
+  RestrictionEvaluation.fromJson(core.Map _json)
+      : this(
+          state:
+              _json.containsKey('state') ? _json['state'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (state != null) 'state': state!,
+      };
+}
+
+/// Evaluations of restrictions applied to parent group on this membership.
+class RestrictionEvaluations {
+  /// Evaluation of the member restriction applied to this membership.
+  ///
+  /// Empty if the user lacks permission to view the restriction evaluation.
+  MembershipRoleRestrictionEvaluation? memberRestrictionEvaluation;
+
+  RestrictionEvaluations({
+    this.memberRestrictionEvaluation,
+  });
+
+  RestrictionEvaluations.fromJson(core.Map _json)
+      : this(
+          memberRestrictionEvaluation:
+              _json.containsKey('memberRestrictionEvaluation')
+                  ? MembershipRoleRestrictionEvaluation.fromJson(
+                      _json['memberRestrictionEvaluation']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (memberRestrictionEvaluation != null)
+          'memberRestrictionEvaluation': memberRestrictionEvaluation!,
+      };
+}
+
 /// The response message for GroupsService.SearchGroups.
 class SearchGroupsResponse {
   /// The `Group` resources that match the search query.
@@ -3836,6 +4063,38 @@ class SearchTransitiveMembershipsResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (memberships != null) 'memberships': memberships!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
+/// The definition of security settings.
+class SecuritySettings {
+  /// The Member Restriction value
+  MemberRestriction? memberRestriction;
+
+  /// The resource name of the security settings.
+  ///
+  /// Shall be of the form `groups/{group_id}/securitySettings`.
+  ///
+  /// Output only.
+  core.String? name;
+
+  SecuritySettings({
+    this.memberRestriction,
+    this.name,
+  });
+
+  SecuritySettings.fromJson(core.Map _json)
+      : this(
+          memberRestriction: _json.containsKey('memberRestriction')
+              ? MemberRestriction.fromJson(_json['memberRestriction']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (memberRestriction != null) 'memberRestriction': memberRestriction!,
+        if (name != null) 'name': name!,
       };
 }
 

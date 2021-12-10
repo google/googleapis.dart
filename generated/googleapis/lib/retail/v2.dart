@@ -2140,10 +2140,9 @@ class GoogleCloudRetailV2CustomAttribute {
 
   /// The numerical values of this custom attribute.
   ///
-  /// For example, `[2.3, 15.4]` when the key is "lengths_cm". At most 400
-  /// values are allowed.Otherwise, an INVALID_ARGUMENT error is returned.
-  /// Exactly one of text or numbers should be set. Otherwise, an
-  /// INVALID_ARGUMENT error is returned.
+  /// For example, `[2.3, 15.4]` when the key is "lengths_cm". Exactly one of
+  /// text or numbers should be set. Otherwise, an INVALID_ARGUMENT error is
+  /// returned.
   core.List<core.double>? numbers;
 
   /// If true, custom attribute values are searchable by text queries in
@@ -2155,11 +2154,9 @@ class GoogleCloudRetailV2CustomAttribute {
 
   /// The textual values of this custom attribute.
   ///
-  /// For example, `["yellow", "green"]` when the key is "color". At most 400
-  /// values are allowed. Empty values are not allowed. Each value must be a
-  /// UTF-8 encoded string with a length limit of 256 characters. Otherwise, an
-  /// INVALID_ARGUMENT error is returned. Exactly one of text or numbers should
-  /// be set. Otherwise, an INVALID_ARGUMENT error is returned.
+  /// For example, `["yellow", "green"]` when the key is "color". Exactly one of
+  /// text or numbers should be set. Otherwise, an INVALID_ARGUMENT error is
+  /// returned.
   core.List<core.String>? text;
 
   GoogleCloudRetailV2CustomAttribute({
@@ -3076,7 +3073,10 @@ class GoogleCloudRetailV2Product {
   /// error is returned: * Max entries count: 200. * The key must be a UTF-8
   /// encoded string with a length limit of 128 characters. * For indexable
   /// attribute, the key must match the pattern: `a-zA-Z0-9*`. For example,
-  /// key0LikeThis or KEY_1_LIKE_THIS.
+  /// `key0LikeThis` or `KEY_1_LIKE_THIS`. * For text attributes, at most 400
+  /// values are allowed. Empty values are not allowed. Each value must be a
+  /// UTF-8 encoded string with a length limit of 256 characters. * For number
+  /// attributes, at most 400 values are allowed.
   core.Map<core.String, GoogleCloudRetailV2CustomAttribute>? attributes;
 
   /// The target group associated with a given audience (e.g. male, veterans,
@@ -3085,9 +3085,10 @@ class GoogleCloudRetailV2Product {
 
   /// The online availability of the Product.
   ///
-  /// Default to Availability.IN_STOCK. Google Merchant Center Property
+  /// Default to Availability.IN_STOCK. Corresponding properties: Google
+  /// Merchant Center property
   /// [availability](https://support.google.com/merchants/answer/6324448).
-  /// Schema.org Property [Offer.availability](https://schema.org/availability).
+  /// Schema.org property [Offer.availability](https://schema.org/availability).
   /// Possible string values are:
   /// - "AVAILABILITY_UNSPECIFIED" : Default product availability. Default to
   /// Availability.IN_STOCK if unset.
@@ -3109,7 +3110,8 @@ class GoogleCloudRetailV2Product {
   ///
   /// A maximum of 30 brands are allowed. Each brand must be a UTF-8 encoded
   /// string with a length limit of 1,000 characters. Otherwise, an
-  /// INVALID_ARGUMENT error is returned. Google Merchant Center property
+  /// INVALID_ARGUMENT error is returned. Corresponding properties: Google
+  /// Merchant Center property
   /// [brand](https://support.google.com/merchants/answer/6324351). Schema.org
   /// property [Product.brand](https://schema.org/brand).
   core.List<core.String>? brands;
@@ -3128,9 +3130,9 @@ class GoogleCloudRetailV2Product {
   /// Product otherwise an INVALID_ARGUMENT error is returned. At most 250
   /// values are allowed per Product. Empty values are not allowed. Each value
   /// must be a UTF-8 encoded string with a length limit of 5,000 characters.
-  /// Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center
-  /// property google_product_category. Schema.org property
-  /// [Product.category](https://schema.org/category).
+  /// Otherwise, an INVALID_ARGUMENT error is returned. Corresponding
+  /// properties: Google Merchant Center property google_product_category.
+  /// Schema.org property [Product.category](https://schema.org/category).
   /// \[mc_google_product_category\]:
   /// https://support.google.com/merchants/answer/6324436
   core.List<core.String>? categories;
@@ -3143,7 +3145,7 @@ class GoogleCloudRetailV2Product {
 
   /// The color of the product.
   ///
-  /// Google Merchant Center property
+  /// Corresponding properties: Google Merchant Center property
   /// [color](https://support.google.com/merchants/answer/6324487). Schema.org
   /// property [Product.color](https://schema.org/color).
   GoogleCloudRetailV2ColorInfo? colorInfo;
@@ -3153,7 +3155,8 @@ class GoogleCloudRetailV2Product {
   /// Strongly encouraged to use the standard values: "new", "refurbished",
   /// "used". A maximum of 5 values are allowed per Product. Each value must be
   /// a UTF-8 encoded string with a length limit of 128 characters. Otherwise,
-  /// an INVALID_ARGUMENT error is returned. Google Merchant Center property
+  /// an INVALID_ARGUMENT error is returned. Corresponding properties: Google
+  /// Merchant Center property
   /// [condition](https://support.google.com/merchants/answer/6324469).
   /// Schema.org property
   /// [Offer.itemCondition](https://schema.org/itemCondition).
@@ -3162,10 +3165,10 @@ class GoogleCloudRetailV2Product {
   /// Product description.
   ///
   /// This field must be a UTF-8 encoded string with a length limit of 5,000
-  /// characters. Otherwise, an INVALID_ARGUMENT error is returned. Google
-  /// Merchant Center property
+  /// characters. Otherwise, an INVALID_ARGUMENT error is returned.
+  /// Corresponding properties: Google Merchant Center property
   /// [description](https://support.google.com/merchants/answer/6324468).
-  /// schema.org property [Product.description](https://schema.org/description).
+  /// Schema.org property [Product.description](https://schema.org/description).
   core.String? description;
 
   /// The timestamp when this product becomes unavailable for
@@ -3175,7 +3178,8 @@ class GoogleCloudRetailV2Product {
   /// expire_time. However, the product can still be retrieved by
   /// ProductService.GetProduct and ProductService.ListProducts. expire_time
   /// must be later than available_time and publish_time, otherwise an
-  /// INVALID_ARGUMENT error is thrown. Google Merchant Center property
+  /// INVALID_ARGUMENT error is thrown. Corresponding properties: Google
+  /// Merchant Center property
   /// [expiration_date](https://support.google.com/merchants/answer/6324499).
   core.String? expireTime;
 
@@ -3191,12 +3195,12 @@ class GoogleCloudRetailV2Product {
   /// This field must be a UTF-8 encoded string with a length limit of 128
   /// characters. Otherwise, an INVALID_ARGUMENT error is returned. This field
   /// must be a Unigram. Otherwise, an INVALID_ARGUMENT error is returned.
-  /// Google Merchant Center property
+  /// Corresponding properties: Google Merchant Center property
   /// [gtin](https://support.google.com/merchants/answer/6324461). Schema.org
-  /// property [Product.isbn](https://schema.org/isbn) or
-  /// [Product.gtin8](https://schema.org/gtin8) or
-  /// [Product.gtin12](https://schema.org/gtin12) or
-  /// [Product.gtin13](https://schema.org/gtin13) or
+  /// property [Product.isbn](https://schema.org/isbn),
+  /// [Product.gtin8](https://schema.org/gtin8),
+  /// [Product.gtin12](https://schema.org/gtin12),
+  /// [Product.gtin13](https://schema.org/gtin13), or
   /// [Product.gtin14](https://schema.org/gtin14). If the value is not a valid
   /// GTIN, an INVALID_ARGUMENT error is returned.
   core.String? gtin;
@@ -3206,10 +3210,10 @@ class GoogleCloudRetailV2Product {
   /// For example, this field is "id_1", if name is `projects / *
   /// /locations/global/catalogs/default_catalog/branches/default_branch/products/id_1`.
   /// This field must be a UTF-8 encoded string with a length limit of 128
-  /// characters. Otherwise, an INVALID_ARGUMENT error is returned. Google
-  /// Merchant Center property
+  /// characters. Otherwise, an INVALID_ARGUMENT error is returned.
+  /// Corresponding properties: Google Merchant Center property
   /// [id](https://support.google.com/merchants/answer/6324405). Schema.org
-  /// Property [Product.sku](https://schema.org/sku).
+  /// property [Product.sku](https://schema.org/sku).
   ///
   /// Immutable.
   core.String? id;
@@ -3217,27 +3221,29 @@ class GoogleCloudRetailV2Product {
   /// Product images for the product.Highly recommended to put the main image to
   /// the first.
   ///
-  /// A maximum of 300 images are allowed. Google Merchant Center property
+  /// A maximum of 300 images are allowed. Corresponding properties: Google
+  /// Merchant Center property
   /// [image_link](https://support.google.com/merchants/answer/6324350).
   /// Schema.org property [Product.image](https://schema.org/image).
   core.List<GoogleCloudRetailV2Image>? images;
 
   /// Language of the title/description and other string attributes.
   ///
-  /// Use language tags defined by BCP 47. For product prediction, this field is
-  /// ignored and the model automatically detects the text language. The Product
-  /// can include text in different languages, but duplicating Products to
-  /// provide text in multiple languages can result in degraded model
-  /// performance. For product search this field is in use. It defaults to
-  /// "en-US" if unset.
+  /// Use language tags defined by
+  /// [BCP 47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt). For product
+  /// prediction, this field is ignored and the model automatically detects the
+  /// text language. The Product can include text in different languages, but
+  /// duplicating Products to provide text in multiple languages can result in
+  /// degraded model performance. For product search this field is in use. It
+  /// defaults to "en-US" if unset.
   core.String? languageCode;
 
   /// The material of the product.
   ///
   /// For example, "leather", "wooden". A maximum of 20 values are allowed. Each
   /// value must be a UTF-8 encoded string with a length limit of 128
-  /// characters. Otherwise, an INVALID_ARGUMENT error is returned. Google
-  /// Merchant Center property
+  /// characters. Otherwise, an INVALID_ARGUMENT error is returned.
+  /// Corresponding properties: Google Merchant Center property
   /// [material](https://support.google.com/merchants/answer/6324410).
   /// Schema.org property [Product.material](https://schema.org/material).
   core.List<core.String>? materials;
@@ -3253,14 +3259,14 @@ class GoogleCloudRetailV2Product {
   /// For example, "striped", "polka dot", "paisley". A maximum of 20 values are
   /// allowed per Product. Each value must be a UTF-8 encoded string with a
   /// length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is
-  /// returned. Google Merchant Center property
+  /// returned. Corresponding properties: Google Merchant Center property
   /// [pattern](https://support.google.com/merchants/answer/6324483). Schema.org
   /// property [Product.pattern](https://schema.org/pattern).
   core.List<core.String>? patterns;
 
   /// Product price and cost information.
   ///
-  /// Google Merchant Center property
+  /// Corresponding properties: Google Merchant Center property
   /// [price](https://support.google.com/merchants/answer/6324371).
   GoogleCloudRetailV2PriceInfo? priceInfo;
 
@@ -3271,12 +3277,10 @@ class GoogleCloudRetailV2Product {
   /// empty or set to the same value as id. For VARIANT Products, this field
   /// cannot be empty. A maximum of 2,000 products are allowed to share the same
   /// Type.PRIMARY Product. Otherwise, an INVALID_ARGUMENT error is returned.
-  /// Google Merchant Center Property
+  /// Corresponding properties: Google Merchant Center property
   /// [item_group_id](https://support.google.com/merchants/answer/6324507).
-  /// Schema.org Property
+  /// Schema.org property
   /// [Product.inProductGroupWithID](https://schema.org/inProductGroupWithID).
-  /// This field must be enabled before it can be used. \[Learn
-  /// more\](/recommendations-ai/docs/catalog#item-group-id).
   core.String? primaryProductId;
 
   /// The promotions applied to the product.
@@ -3322,9 +3326,10 @@ class GoogleCloudRetailV2Product {
   /// size system and size type are empty, while size value is "32 inches". A
   /// maximum of 20 values are allowed per Product. Each value must be a UTF-8
   /// encoded string with a length limit of 128 characters. Otherwise, an
-  /// INVALID_ARGUMENT error is returned. Google Merchant Center property
+  /// INVALID_ARGUMENT error is returned. Corresponding properties: Google
+  /// Merchant Center property
   /// [size](https://support.google.com/merchants/answer/6324492),
-  /// [size_type](https://support.google.com/merchants/answer/6324497) and
+  /// [size_type](https://support.google.com/merchants/answer/6324497), and
   /// [size_system](https://support.google.com/merchants/answer/6324502).
   /// Schema.org property [Product.size](https://schema.org/size).
   core.List<core.String>? sizes;
@@ -3335,15 +3340,16 @@ class GoogleCloudRetailV2Product {
   /// encoded string with a length limit of 1,000 characters. Otherwise, an
   /// INVALID_ARGUMENT error is returned. This tag can be used for filtering
   /// recommendation results by passing the tag as part of the
-  /// PredictRequest.filter. Google Merchant Center property
+  /// PredictRequest.filter. Corresponding properties: Google Merchant Center
+  /// property
   /// \[custom_label_0–4\](https://support.google.com/merchants/answer/6324473).
   core.List<core.String>? tags;
 
   /// Product title.
   ///
   /// This field must be a UTF-8 encoded string with a length limit of 1,000
-  /// characters. Otherwise, an INVALID_ARGUMENT error is returned. Google
-  /// Merchant Center property
+  /// characters. Otherwise, an INVALID_ARGUMENT error is returned.
+  /// Corresponding properties: Google Merchant Center property
   /// [title](https://support.google.com/merchants/answer/6324415). Schema.org
   /// property [Product.name](https://schema.org/name).
   ///
@@ -3385,8 +3391,8 @@ class GoogleCloudRetailV2Product {
   /// It is strongly recommended to provide a valid uri for the product,
   /// otherwise the service performance could be significantly degraded. This
   /// field must be a UTF-8 encoded string with a length limit of 5,000
-  /// characters. Otherwise, an INVALID_ARGUMENT error is returned. Google
-  /// Merchant Center property
+  /// characters. Otherwise, an INVALID_ARGUMENT error is returned.
+  /// Corresponding properties: Google Merchant Center property
   /// [link](https://support.google.com/merchants/answer/6324416). Schema.org
   /// property [Offer.url](https://schema.org/url).
   core.String? uri;
@@ -4192,34 +4198,35 @@ class GoogleCloudRetailV2SearchRequest {
   /// User information.
   GoogleCloudRetailV2UserInfo? userInfo;
 
-  /// The keys to fetch and rollup the matching variant Products attributes.
+  /// The keys to fetch and rollup the matching variant Products attributes,
+  /// FulfillmentInfo or LocalInventorys attributes.
   ///
-  /// The attributes from all the matching variant Products are merged and
-  /// de-duplicated. Notice that rollup variant Products attributes will lead to
-  /// extra query latency. Maximum number of keys is 10. For FulfillmentInfo, a
+  /// The attributes from all the matching variant Products or LocalInventorys
+  /// are merged and de-duplicated. Notice that rollup attributes will lead to
+  /// extra query latency. Maximum number of keys is 30. For FulfillmentInfo, a
   /// fulfillment type and a fulfillment ID must be provided in the format of
   /// "fulfillmentType.fulfillmentId". E.g., in "pickupInStore.store123",
   /// "pickupInStore" is fulfillment type and "store123" is the store ID.
   /// Supported keys are: * colorFamilies * price * originalPrice * discount *
-  /// inventory(place_id,price) * inventory(place_id,attributes.key), where key
-  /// is any key in the Product.inventories.attributes map. * attributes.key,
-  /// where key is any key in the Product.attributes map. * pickupInStore.id,
-  /// where id is any FulfillmentInfo.place_ids for FulfillmentInfo.type
-  /// "pickup-in-store". * shipToStore.id, where id is any
-  /// FulfillmentInfo.place_ids for FulfillmentInfo.type "ship-to-store". *
-  /// sameDayDelivery.id, where id is any FulfillmentInfo.place_ids for
-  /// FulfillmentInfo.type "same-day-delivery". * nextDayDelivery.id, where id
-  /// is any FulfillmentInfo.place_ids for FulfillmentInfo.type
-  /// "next-day-delivery". * customFulfillment1.id, where id is any
-  /// FulfillmentInfo.place_ids for FulfillmentInfo.type "custom-type-1". *
-  /// customFulfillment2.id, where id is any FulfillmentInfo.place_ids for
-  /// FulfillmentInfo.type "custom-type-2". * customFulfillment3.id, where id is
-  /// any FulfillmentInfo.place_ids for FulfillmentInfo.type "custom-type-3". *
-  /// customFulfillment4.id, where id is any FulfillmentInfo.place_ids for
-  /// FulfillmentInfo.type "custom-type-4". * customFulfillment5.id, where id is
-  /// any FulfillmentInfo.place_ids for FulfillmentInfo.type "custom-type-5". If
-  /// this field is set to an invalid value other than these, an
-  /// INVALID_ARGUMENT error is returned.
+  /// variantId * inventory(place_id,price) * inventory(place_id,original_price)
+  /// * inventory(place_id,attributes.key), where key is any key in the
+  /// Product.inventories.attributes map. * attributes.key, where key is any key
+  /// in the Product.attributes map. * pickupInStore.id, where id is any
+  /// FulfillmentInfo.place_ids for FulfillmentInfo.type "pickup-in-store". *
+  /// shipToStore.id, where id is any FulfillmentInfo.place_ids for
+  /// FulfillmentInfo.type "ship-to-store". * sameDayDelivery.id, where id is
+  /// any FulfillmentInfo.place_ids for FulfillmentInfo.type
+  /// "same-day-delivery". * nextDayDelivery.id, where id is any
+  /// FulfillmentInfo.place_ids for FulfillmentInfo.type "next-day-delivery". *
+  /// customFulfillment1.id, where id is any FulfillmentInfo.place_ids for
+  /// FulfillmentInfo.type "custom-type-1". * customFulfillment2.id, where id is
+  /// any FulfillmentInfo.place_ids for FulfillmentInfo.type "custom-type-2". *
+  /// customFulfillment3.id, where id is any FulfillmentInfo.place_ids for
+  /// FulfillmentInfo.type "custom-type-3". * customFulfillment4.id, where id is
+  /// any FulfillmentInfo.place_ids for FulfillmentInfo.type "custom-type-4". *
+  /// customFulfillment5.id, where id is any FulfillmentInfo.place_ids for
+  /// FulfillmentInfo.type "custom-type-5". If this field is set to an invalid
+  /// value other than these, an INVALID_ARGUMENT error is returned.
   core.List<core.String>? variantRollupKeys;
 
   /// A unique identifier for tracking visitors.
@@ -4559,7 +4566,8 @@ class GoogleCloudRetailV2SearchRequestFacetSpecFacetKey {
   /// "customFulfillment4" * "customFulfillment5" *
   /// "inventory(place_id,attributes.key)" * numerical_field = * "price" *
   /// "discount" * "rating" * "ratingCount" * "attributes.key" *
-  /// "inventory(place_id,price)" * "inventory(place_id,attributes.key)"
+  /// "inventory(place_id,price)" * "inventory(place_id,original_price)" *
+  /// "inventory(place_id,attributes.key)"
   ///
   /// Required.
   core.String? key;
@@ -4705,6 +4713,10 @@ class GoogleCloudRetailV2SearchRequestQueryExpansionSpec {
 
 /// Response message for SearchService.Search method.
 class GoogleCloudRetailV2SearchResponse {
+  /// The fully qualified resource name of applied
+  /// [controls](https://cloud.google.com/retail/docs/serving-control-rules).
+  core.List<core.String>? appliedControls;
+
   /// A unique search token.
   ///
   /// This should be included in the UserEvent logs resulting from this search,
@@ -4746,6 +4758,7 @@ class GoogleCloudRetailV2SearchResponse {
   core.int? totalSize;
 
   GoogleCloudRetailV2SearchResponse({
+    this.appliedControls,
     this.attributionToken,
     this.correctedQuery,
     this.facets,
@@ -4758,6 +4771,11 @@ class GoogleCloudRetailV2SearchResponse {
 
   GoogleCloudRetailV2SearchResponse.fromJson(core.Map _json)
       : this(
+          appliedControls: _json.containsKey('appliedControls')
+              ? (_json['appliedControls'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
           attributionToken: _json.containsKey('attributionToken')
               ? _json['attributionToken'] as core.String
               : null,
@@ -4795,6 +4813,7 @@ class GoogleCloudRetailV2SearchResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (appliedControls != null) 'appliedControls': appliedControls!,
         if (attributionToken != null) 'attributionToken': attributionToken!,
         if (correctedQuery != null) 'correctedQuery': correctedQuery!,
         if (facets != null) 'facets': facets!,
@@ -5130,11 +5149,15 @@ class GoogleCloudRetailV2SetInventoryRequest {
 class GoogleCloudRetailV2UserEvent {
   /// Extra user event features to include in the recommendation model.
   ///
-  /// The key must be a UTF-8 encoded string with a length limit of 5,000
-  /// characters. Otherwise, an INVALID_ARGUMENT error is returned. For product
-  /// recommendation, an example of extra user information is traffic_channel,
-  /// i.e. how user arrives at the site. Users can arrive at the site by coming
-  /// to the site directly, or coming through Google search, and etc.
+  /// This field needs to pass all below criteria, otherwise an INVALID_ARGUMENT
+  /// error is returned: * The key must be a UTF-8 encoded string with a length
+  /// limit of 5,000 characters. * For text attributes, at most 400 values are
+  /// allowed. Empty values are not allowed. Each value must be a UTF-8 encoded
+  /// string with a length limit of 256 characters. * For number attributes, at
+  /// most 400 values are allowed. For product recommendation, an example of
+  /// extra user information is traffic_channel, i.e. how user arrives at the
+  /// site. Users can arrive at the site by coming to the site directly, or
+  /// coming through Google search, and etc.
   core.Map<core.String, GoogleCloudRetailV2CustomAttribute>? attributes;
 
   /// Highly recommended for user events that are the result of
@@ -5160,11 +5183,10 @@ class GoogleCloudRetailV2UserEvent {
   /// `purchase-complete`, or `shopping-cart-page-view` events.
   core.String? cartId;
 
-  /// The main completion details related to the event.
+  /// The main auto-completion details related to the event.
   ///
-  /// In a `completion` event, this field represents the completions returned to
-  /// the end user and the clicked completion by the end user. In a `search`
-  /// event, it represents the search event happens after clicking completion.
+  /// This field should be set for `search` event when autocomplete function is
+  /// enabled and the user clicks a suggestion for search.
   GoogleCloudRetailV2CompletionDetail? completionDetail;
 
   /// Only required for UserEventService.ImportUserEvents method.
@@ -5176,12 +5198,11 @@ class GoogleCloudRetailV2UserEvent {
   ///
   /// Allowed values are: * `add-to-cart`: Products being added to cart. *
   /// `category-page-view`: Special pages such as sale or promotion pages
-  /// viewed. * `completion`: Completion query result showed/clicked. *
-  /// `detail-page-view`: Products detail page viewed. * `home-page-view`:
-  /// Homepage viewed. * `promotion-offered`: Promotion is offered to a user. *
-  /// `promotion-not-offered`: Promotion is not offered to a user. *
-  /// `purchase-complete`: User finishing a purchase. * `search`: Product
-  /// search. * `shopping-cart-page-view`: User viewing a shopping cart.
+  /// viewed. * `detail-page-view`: Products detail page viewed. *
+  /// `home-page-view`: Homepage viewed. * `promotion-offered`: Promotion is
+  /// offered to a user. * `promotion-not-offered`: Promotion is not offered to
+  /// a user. * `purchase-complete`: User finishing a purchase. * `search`:
+  /// Product search. * `shopping-cart-page-view`: User viewing a shopping cart.
   ///
   /// Required.
   core.String? eventType;

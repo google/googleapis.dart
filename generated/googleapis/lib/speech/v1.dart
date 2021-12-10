@@ -197,8 +197,12 @@ class ProjectsLocationsCustomClassesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The parent resource where this custom class will be
-  /// created. Format:
-  /// {api_version}/projects/{project}/locations/{location}/customClasses
+  /// created. Format: `projects/{project}/locations/{location}/customClasses`
+  /// Speech-to-Text supports three locations: `global`, `us` (US North
+  /// America), and `eu` (Europe). If you are calling the
+  /// `speech.googleapis.com` endpoint, use the `global` location. To specify a
+  /// region, use a \[regional endpoint\](/speech-to-text/docs/endpoints) with
+  /// matching `us` or `eu` location value.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -238,7 +242,12 @@ class ProjectsLocationsCustomClassesResource {
   /// Request parameters:
   ///
   /// [name] - Required. The name of the custom class to delete. Format:
-  /// {api_version}/projects/{project}/locations/{location}/customClasses/{custom_class}
+  /// `projects/{project}/locations/{location}/customClasses/{custom_class}`
+  /// Speech-to-Text supports three locations: `global`, `us` (US North
+  /// America), and `eu` (Europe). If you are calling the
+  /// `speech.googleapis.com` endpoint, use the `global` location. To specify a
+  /// region, use a \[regional endpoint\](/speech-to-text/docs/endpoints) with
+  /// matching `us` or `eu` location value.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/customClasses/\[^/\]+$`.
   ///
@@ -275,7 +284,7 @@ class ProjectsLocationsCustomClassesResource {
   /// Request parameters:
   ///
   /// [name] - Required. The name of the custom class to retrieve. Format:
-  /// {api_version}/projects/{project}/locations/{location}/customClasses/{custom_class}
+  /// `projects/{project}/locations/{location}/customClasses/{custom_class}`
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/customClasses/\[^/\]+$`.
   ///
@@ -313,8 +322,12 @@ class ProjectsLocationsCustomClassesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The parent, which owns this collection of custom
-  /// classes. Format:
-  /// {api_version}/projects/{project}/locations/{location}/customClasses
+  /// classes. Format: `projects/{project}/locations/{location}/customClasses`
+  /// Speech-to-Text supports three locations: `global`, `us` (US North
+  /// America), and `eu` (Europe). If you are calling the
+  /// `speech.googleapis.com` endpoint, use the `global` location. To specify a
+  /// region, use a \[regional endpoint\](/speech-to-text/docs/endpoints) with
+  /// matching `us` or `eu` location value.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [pageSize] - The maximum number of custom classes to return. The service
@@ -424,8 +437,12 @@ class ProjectsLocationsPhraseSetsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The parent resource where this phrase set will be
-  /// created. Format:
-  /// {api_version}/projects/{project}/locations/{location}/phraseSets
+  /// created. Format: `projects/{project}/locations/{location}/phraseSets`
+  /// Speech-to-Text supports three locations: `global`, `us` (US North
+  /// America), and `eu` (Europe). If you are calling the
+  /// `speech.googleapis.com` endpoint, use the `global` location. To specify a
+  /// region, use a \[regional endpoint\](/speech-to-text/docs/endpoints) with
+  /// matching `us` or `eu` location value.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -464,7 +481,7 @@ class ProjectsLocationsPhraseSetsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The name of the phrase set to delete. Format:
-  /// {api_version}/projects/{project}/locations/{location}/phraseSets/{phrase_set}
+  /// `projects/{project}/locations/{location}/phraseSets/{phrase_set}`
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/phraseSets/\[^/\]+$`.
   ///
@@ -501,7 +518,12 @@ class ProjectsLocationsPhraseSetsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The name of the phrase set to retrieve. Format:
-  /// {api_version}/projects/{project}/locations/{location}/phraseSets/{phrase_set}
+  /// `projects/{project}/locations/{location}/phraseSets/{phrase_set}`
+  /// Speech-to-Text supports three locations: `global`, `us` (US North
+  /// America), and `eu` (Europe). If you are calling the
+  /// `speech.googleapis.com` endpoint, use the `global` location. To specify a
+  /// region, use a \[regional endpoint\](/speech-to-text/docs/endpoints) with
+  /// matching `us` or `eu` location value.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/phraseSets/\[^/\]+$`.
   ///
@@ -538,7 +560,12 @@ class ProjectsLocationsPhraseSetsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The parent, which owns this collection of phrase set.
-  /// Format: projects/{project}/locations/{location}
+  /// Format: `projects/{project}/locations/{location}` Speech-to-Text supports
+  /// three locations: `global`, `us` (US North America), and `eu` (Europe). If
+  /// you are calling the `speech.googleapis.com` endpoint, use the `global`
+  /// location. To specify a region, use a \[regional
+  /// endpoint\](/speech-to-text/docs/endpoints) with matching `us` or `eu`
+  /// location value.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [pageSize] - The maximum number of phrase sets to return. The service may
@@ -1106,7 +1133,12 @@ class Operation {
 /// class's `custom_class_id` to a string unique to all class resources and
 /// inline classes. Then use the class' id wrapped in $`{...}` e.g.
 /// "${my-months}". To refer to custom classes resources, use the class' id
-/// wrapped in `${}` (e.g. `${my-months}`).
+/// wrapped in `${}` (e.g. `${my-months}`). Speech-to-Text supports three
+/// locations: `global`, `us` (US North America), and `eu` (Europe). If you are
+/// calling the `speech.googleapis.com` endpoint, use the `global` location. To
+/// specify a region, use a \[regional
+/// endpoint\](/speech-to-text/docs/endpoints) with matching `us` or `eu`
+/// location value.
 class Phrase {
   /// Hint Boost.
   ///

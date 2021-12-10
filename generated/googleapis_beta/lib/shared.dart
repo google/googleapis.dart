@@ -688,6 +688,7 @@ class $Fingerprint {
 ///
 /// - bigqueryconnection:v1beta1 : GetPolicyOptions
 /// - containeranalysis:v1beta1 : GetPolicyOptions
+/// - datacatalog:v1beta1 : GetPolicyOptions
 class $GetPolicyOptions {
   /// The maximum policy version that will be used to format the policy.
   ///
