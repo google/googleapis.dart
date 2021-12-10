@@ -2,8 +2,6 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-import 'dart:collection';
-
 import 'package:discoveryapis_generator/discoveryapis_generator.dart';
 
 extension RestDescriptionExtension on RestDescription {
@@ -18,7 +16,7 @@ extension RestDescriptionExtension on RestDescription {
       schema.properties = _sortProperties(schema.properties);
     }
 
-    schemas = SplayTreeMap.of(schemas!);
+    schemas = _sortMap(schemas!);
 
     resources = _sortResources(resources);
     methods = _sortMethods(methods);
@@ -27,7 +25,9 @@ extension RestDescriptionExtension on RestDescription {
 
   static Map<String, T>? _sortMap<T>(Map<String, T>? map) {
     if (map == null) return null;
-    return SplayTreeMap.of(map);
+    return Map.fromEntries(
+      map.entries.toList()..sort((a, b) => a.key.compareTo(b.key)),
+    );
   }
 
   static Map<String, RestMethod>? _sortMethods(
@@ -39,7 +39,7 @@ extension RestDescriptionExtension on RestDescription {
       value.parameters = _sortMap(value.parameters);
     }
 
-    return SplayTreeMap.of(theMethods);
+    return _sortMap(theMethods);
   }
 
   static Map<String, RestResource>? _sortResources(
@@ -52,7 +52,7 @@ extension RestDescriptionExtension on RestDescription {
       value.methods = _sortMethods(value.methods);
     }
 
-    return SplayTreeMap.of(theResources);
+    return _sortMap(theResources);
   }
 
   static Map<String, JsonSchema>? _sortProperties(
@@ -64,7 +64,7 @@ extension RestDescriptionExtension on RestDescription {
       _sortSchema(value);
     }
 
-    return SplayTreeMap.of(theMethods);
+    return _sortMap(theMethods);
   }
 
   static void _sortSchema(JsonSchema schema) {

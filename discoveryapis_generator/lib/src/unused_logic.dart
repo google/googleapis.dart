@@ -1,11 +1,8 @@
-import 'dart:collection';
-
 import 'generated_googleapis/discovery/v1.dart';
 
 extension RestDescriptionExtension on RestDescription {
   int pruneUnused() {
-    final schemaReferencedByResource =
-        SplayTreeSet<String>.of(_referencedTypes());
+    final schemaReferencedByResource = Set<String>.of(_referencedTypes());
 
     final searchBacklog = Set.of(schemaReferencedByResource);
 
@@ -21,7 +18,7 @@ extension RestDescriptionExtension on RestDescription {
       }
     }
 
-    final toRemove = SplayTreeSet.of(schemas!.keys)
+    final toRemove = Set.of(schemas!.keys)
       ..removeAll(schemaReferencedByResource);
 
     schemas!.removeWhere((key, value) => toRemove.contains(key));

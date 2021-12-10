@@ -87,7 +87,7 @@ T libraryDeduplicateLogic<T>(T Function() action) {
 mixin DedupeMixin {
   List<RestDescription> get descriptions;
 
-  Set<_DuplicateItem> wrapPackageDeduplicateLogic(void Function() action) {
+  List<_DuplicateItem> wrapPackageDeduplicateLogic(void Function() action) {
     final dupes = <String, Set<_Replacement>>{};
 
     for (var api in descriptions) {
@@ -150,7 +150,7 @@ mixin DedupeMixin {
     final data = _PackageZoneData(candidates);
     runZoned(action, zoneValues: {_packageZoneKey: data});
 
-    return data.usedItems;
+    return data.usedItems.toList()..sort();
   }
 }
 
@@ -166,7 +166,7 @@ class _LibraryZoneData {
 
 class _PackageZoneData {
   final Map<String, _DuplicateItem> candidates;
-  final usedItems = SplayTreeSet<_DuplicateItem>();
+  final usedItems = <_DuplicateItem>{};
 
   _PackageZoneData(this.candidates);
 }
