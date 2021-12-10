@@ -1127,6 +1127,7 @@ api.Subscription buildSubscription() {
     o.pushConfig = buildPushConfig();
     o.retainAckedMessages = true;
     o.retryPolicy = buildRetryPolicy();
+    o.state = 'foo';
     o.topic = 'foo';
     o.topicMessageRetentionDuration = 'foo';
   }
@@ -1161,6 +1162,10 @@ void checkSubscription(api.Subscription o) {
     checkPushConfig(o.pushConfig!);
     unittest.expect(o.retainAckedMessages!, unittest.isTrue);
     checkRetryPolicy(o.retryPolicy!);
+    unittest.expect(
+      o.state!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.topic!,
       unittest.equals('foo'),

@@ -4650,7 +4650,7 @@ class GetIamPolicyRequest {
 }
 
 /// Encapsulates settings provided to GetIamPolicy.
-typedef GetPolicyOptions = $GetPolicyOptions00;
+typedef GetPolicyOptions = $GetPolicyOptions;
 
 /// A message representing a (sparse) collection of hot keys for specific key
 /// buckets.

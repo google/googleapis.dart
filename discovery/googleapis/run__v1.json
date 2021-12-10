@@ -1766,7 +1766,7 @@
             }
         }
     },
-    "revision": "20211112",
+    "revision": "20211203",
     "rootUrl": "https://run.googleapis.com/",
     "schemas": {
         "Addressable": {

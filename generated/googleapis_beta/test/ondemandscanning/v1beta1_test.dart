@@ -341,6 +341,83 @@ void checkBuilderConfig(api.BuilderConfig o) {
   buildCounterBuilderConfig--;
 }
 
+core.int buildCounterCVSS = 0;
+api.CVSS buildCVSS() {
+  final o = api.CVSS();
+  buildCounterCVSS++;
+  if (buildCounterCVSS < 3) {
+    o.attackComplexity = 'foo';
+    o.attackVector = 'foo';
+    o.authentication = 'foo';
+    o.availabilityImpact = 'foo';
+    o.baseScore = 42.0;
+    o.confidentialityImpact = 'foo';
+    o.exploitabilityScore = 42.0;
+    o.impactScore = 42.0;
+    o.integrityImpact = 'foo';
+    o.privilegesRequired = 'foo';
+    o.scope = 'foo';
+    o.userInteraction = 'foo';
+  }
+  buildCounterCVSS--;
+  return o;
+}
+
+void checkCVSS(api.CVSS o) {
+  buildCounterCVSS++;
+  if (buildCounterCVSS < 3) {
+    unittest.expect(
+      o.attackComplexity!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.attackVector!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.authentication!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.availabilityImpact!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.baseScore!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.confidentialityImpact!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.exploitabilityScore!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.impactScore!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.integrityImpact!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.privilegesRequired!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.scope!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.userInteraction!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterCVSS--;
+}
+
 core.int buildCounterCategory = 0;
 api.Category buildCategory() {
   final o = api.Category();
@@ -2524,6 +2601,7 @@ api.VulnerabilityOccurrence buildVulnerabilityOccurrence() {
   buildCounterVulnerabilityOccurrence++;
   if (buildCounterVulnerabilityOccurrence < 3) {
     o.cvssScore = 42.0;
+    o.cvssv3 = buildCVSS();
     o.effectiveSeverity = 'foo';
     o.fixAvailable = true;
     o.longDescription = 'foo';
@@ -2544,6 +2622,7 @@ void checkVulnerabilityOccurrence(api.VulnerabilityOccurrence o) {
       o.cvssScore!,
       unittest.equals(42.0),
     );
+    checkCVSS(o.cvssv3!);
     unittest.expect(
       o.effectiveSeverity!,
       unittest.equals('foo'),
@@ -2710,6 +2789,16 @@ void main() {
       final od = api.BuilderConfig.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkBuilderConfig(od);
+    });
+  });
+
+  unittest.group('obj-schema-CVSS', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildCVSS();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.CVSS.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkCVSS(od);
     });
   });
 

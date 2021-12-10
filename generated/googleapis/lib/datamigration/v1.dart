@@ -331,12 +331,16 @@ class ProjectsLocationsConnectionProfilesResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/connectionProfiles/\[^/\]+$`.
   ///
-  /// [options_requestedPolicyVersion] - Optional. The policy format version to
-  /// be returned. Valid values are 0, 1, and 3. Requests specifying an invalid
-  /// value will be rejected. Requests for policies with any conditional
-  /// bindings must specify version 3. Policies without any conditional bindings
-  /// may specify any valid value or leave the field unset. To learn which
-  /// resources support conditions in their IAM policies, see the
+  /// [options_requestedPolicyVersion] - Optional. The maximum policy version
+  /// that will be used to format the policy. Valid values are 0, 1, and 3.
+  /// Requests specifying an invalid value will be rejected. Requests for
+  /// policies with any conditional role bindings must specify version 3.
+  /// Policies with no conditional role bindings may specify any valid value or
+  /// leave the field unset. The policy in the response might use the policy
+  /// version that you specified, or it might use a lower policy version. For
+  /// example, if you specify version 3, but the policy has no conditional role
+  /// bindings, the response uses version 1. To learn which resources support
+  /// conditions in their IAM policies, see the
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -794,12 +798,16 @@ class ProjectsLocationsMigrationJobsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/migrationJobs/\[^/\]+$`.
   ///
-  /// [options_requestedPolicyVersion] - Optional. The policy format version to
-  /// be returned. Valid values are 0, 1, and 3. Requests specifying an invalid
-  /// value will be rejected. Requests for policies with any conditional
-  /// bindings must specify version 3. Policies without any conditional bindings
-  /// may specify any valid value or leave the field unset. To learn which
-  /// resources support conditions in their IAM policies, see the
+  /// [options_requestedPolicyVersion] - Optional. The maximum policy version
+  /// that will be used to format the policy. Valid values are 0, 1, and 3.
+  /// Requests specifying an invalid value will be rejected. Requests for
+  /// policies with any conditional role bindings must specify version 3.
+  /// Policies with no conditional role bindings may specify any valid value or
+  /// leave the field unset. The policy in the response might use the policy
+  /// version that you specified, or it might use a lower policy version. For
+  /// example, if you specify version 3, but the policy has no conditional role
+  /// bindings, the response uses version 1. To learn which resources support
+  /// conditions in their IAM policies, see the
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1715,6 +1723,9 @@ class CloudSqlSettings {
   /// storage until it reaches the maximum of 30 TB.
   core.bool? autoStorageIncrease;
 
+  /// The KMS key name used for the csql instance.
+  core.String? cmekKeyName;
+
   /// The Cloud SQL default instance level collation.
   core.String? collation;
 
@@ -1797,6 +1808,7 @@ class CloudSqlSettings {
   CloudSqlSettings({
     this.activationPolicy,
     this.autoStorageIncrease,
+    this.cmekKeyName,
     this.collation,
     this.dataDiskSizeGb,
     this.dataDiskType,
@@ -1819,6 +1831,9 @@ class CloudSqlSettings {
               : null,
           autoStorageIncrease: _json.containsKey('autoStorageIncrease')
               ? _json['autoStorageIncrease'] as core.bool
+              : null,
+          cmekKeyName: _json.containsKey('cmekKeyName')
+              ? _json['cmekKeyName'] as core.String
               : null,
           collation: _json.containsKey('collation')
               ? _json['collation'] as core.String
@@ -1874,6 +1889,7 @@ class CloudSqlSettings {
         if (activationPolicy != null) 'activationPolicy': activationPolicy!,
         if (autoStorageIncrease != null)
           'autoStorageIncrease': autoStorageIncrease!,
+        if (cmekKeyName != null) 'cmekKeyName': cmekKeyName!,
         if (collation != null) 'collation': collation!,
         if (dataDiskSizeGb != null) 'dataDiskSizeGb': dataDiskSizeGb!,
         if (dataDiskType != null) 'dataDiskType': dataDiskType!,

@@ -150,6 +150,7 @@ api.Finding buildFinding() {
     o.vulnerableHeaders = buildVulnerableHeaders();
     o.vulnerableParameters = buildVulnerableParameters();
     o.xss = buildXss();
+    o.xxe = buildXxe();
   }
   buildCounterFinding--;
   return o;
@@ -208,6 +209,7 @@ void checkFinding(api.Finding o) {
     checkVulnerableHeaders(o.vulnerableHeaders!);
     checkVulnerableParameters(o.vulnerableParameters!);
     checkXss(o.xss!);
+    checkXxe(o.xxe!);
   }
   buildCounterFinding--;
 }
@@ -1052,6 +1054,33 @@ void checkXss(api.Xss o) {
   buildCounterXss--;
 }
 
+core.int buildCounterXxe = 0;
+api.Xxe buildXxe() {
+  final o = api.Xxe();
+  buildCounterXxe++;
+  if (buildCounterXxe < 3) {
+    o.payloadLocation = 'foo';
+    o.payloadValue = 'foo';
+  }
+  buildCounterXxe--;
+  return o;
+}
+
+void checkXxe(api.Xxe o) {
+  buildCounterXxe++;
+  if (buildCounterXxe < 3) {
+    unittest.expect(
+      o.payloadLocation!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.payloadValue!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterXxe--;
+}
+
 void main() {
   unittest.group('obj-schema-Authentication', () {
     unittest.test('to-json--from-json', () async {
@@ -1339,6 +1368,15 @@ void main() {
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.Xss.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkXss(od);
+    });
+  });
+
+  unittest.group('obj-schema-Xxe', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildXxe();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.Xxe.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkXxe(od);
     });
   });
 

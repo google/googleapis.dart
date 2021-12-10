@@ -260,6 +260,27 @@ void checkGoogleCloudApigeeV1AddonsConfig(
   buildCounterGoogleCloudApigeeV1AddonsConfig--;
 }
 
+core.int buildCounterGoogleCloudApigeeV1AdjustDeveloperBalanceRequest = 0;
+api.GoogleCloudApigeeV1AdjustDeveloperBalanceRequest
+    buildGoogleCloudApigeeV1AdjustDeveloperBalanceRequest() {
+  final o = api.GoogleCloudApigeeV1AdjustDeveloperBalanceRequest();
+  buildCounterGoogleCloudApigeeV1AdjustDeveloperBalanceRequest++;
+  if (buildCounterGoogleCloudApigeeV1AdjustDeveloperBalanceRequest < 3) {
+    o.adjustment = buildGoogleTypeMoney();
+  }
+  buildCounterGoogleCloudApigeeV1AdjustDeveloperBalanceRequest--;
+  return o;
+}
+
+void checkGoogleCloudApigeeV1AdjustDeveloperBalanceRequest(
+    api.GoogleCloudApigeeV1AdjustDeveloperBalanceRequest o) {
+  buildCounterGoogleCloudApigeeV1AdjustDeveloperBalanceRequest++;
+  if (buildCounterGoogleCloudApigeeV1AdjustDeveloperBalanceRequest < 3) {
+    checkGoogleTypeMoney(o.adjustment!);
+  }
+  buildCounterGoogleCloudApigeeV1AdjustDeveloperBalanceRequest--;
+}
+
 core.int buildCounterGoogleCloudApigeeV1AdvancedApiOpsConfig = 0;
 api.GoogleCloudApigeeV1AdvancedApiOpsConfig
     buildGoogleCloudApigeeV1AdvancedApiOpsConfig() {
@@ -9293,6 +9314,17 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-GoogleCloudApigeeV1AdjustDeveloperBalanceRequest',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleCloudApigeeV1AdjustDeveloperBalanceRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudApigeeV1AdjustDeveloperBalanceRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudApigeeV1AdjustDeveloperBalanceRequest(od);
+    });
+  });
+
   unittest.group('obj-schema-GoogleCloudApigeeV1AdvancedApiOpsConfig', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGoogleCloudApigeeV1AdvancedApiOpsConfig();
@@ -16297,6 +16329,68 @@ void main() {
   });
 
   unittest.group('resource-OrganizationsDevelopersBalanceResource', () {
+    unittest.test('method--adjust', () async {
+      final mock = HttpServerMock();
+      final res = api.ApigeeApi(mock).organizations.developers.balance;
+      final arg_request =
+          buildGoogleCloudApigeeV1AdjustDeveloperBalanceRequest();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj =
+            api.GoogleCloudApigeeV1AdjustDeveloperBalanceRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>);
+        checkGoogleCloudApigeeV1AdjustDeveloperBalanceRequest(obj);
+
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp =
+            convert.json.encode(buildGoogleCloudApigeeV1DeveloperBalance());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.adjust(arg_request, arg_name, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1DeveloperBalance(
+          response as api.GoogleCloudApigeeV1DeveloperBalance);
+    });
+
     unittest.test('method--credit', () async {
       final mock = HttpServerMock();
       final res = api.ApigeeApi(mock).organizations.developers.balance;

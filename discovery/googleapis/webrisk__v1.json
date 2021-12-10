@@ -444,7 +444,7 @@
             }
         }
     },
-    "revision": "20211105",
+    "revision": "20211203",
     "rootUrl": "https://webrisk.googleapis.com/",
     "schemas": {
         "GoogleCloudWebriskV1ComputeThreatListDiffResponse": {

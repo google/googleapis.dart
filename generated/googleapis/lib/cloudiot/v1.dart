@@ -2118,7 +2118,7 @@ class GetIamPolicyRequest {
 }
 
 /// Encapsulates settings provided to GetIamPolicy.
-typedef GetPolicyOptions = $GetPolicyOptions00;
+typedef GetPolicyOptions = $GetPolicyOptions;
 
 /// The configuration of the HTTP bridge for a device registry.
 class HttpConfig {

@@ -235,6 +235,7 @@ api.CloudSqlSettings buildCloudSqlSettings() {
   if (buildCounterCloudSqlSettings < 3) {
     o.activationPolicy = 'foo';
     o.autoStorageIncrease = true;
+    o.cmekKeyName = 'foo';
     o.collation = 'foo';
     o.dataDiskSizeGb = 'foo';
     o.dataDiskType = 'foo';
@@ -261,6 +262,10 @@ void checkCloudSqlSettings(api.CloudSqlSettings o) {
       unittest.equals('foo'),
     );
     unittest.expect(o.autoStorageIncrease!, unittest.isTrue);
+    unittest.expect(
+      o.cmekKeyName!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.collation!,
       unittest.equals('foo'),

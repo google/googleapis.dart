@@ -299,7 +299,7 @@
                                             ],
                                             "parameters": {
                                                 "filter": {
-                                                    "description": "Optional. A filter to apply on the list results.",
+                                                    "description": "Optional. Use of this field is not supported by version v1beta1.",
                                                     "location": "query",
                                                     "type": "string"
                                                 },
@@ -840,7 +840,7 @@
             }
         }
     },
-    "revision": "20211111",
+    "revision": "20211202",
     "rootUrl": "https://recommendationengine.googleapis.com/",
     "schemas": {
         "GoogleApiHttpBody": {

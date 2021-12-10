@@ -941,6 +941,11 @@ class Finding {
   /// Output only.
   Xss? xss;
 
+  /// An addon containing information reported for an XXE, if any.
+  ///
+  /// Output only.
+  Xxe? xxe;
+
   Finding({
     this.body,
     this.description,
@@ -959,6 +964,7 @@ class Finding {
     this.vulnerableHeaders,
     this.vulnerableParameters,
     this.xss,
+    this.xxe,
   });
 
   Finding.fromJson(core.Map _json)
@@ -1016,6 +1022,10 @@ class Finding {
               ? Xss.fromJson(
                   _json['xss'] as core.Map<core.String, core.dynamic>)
               : null,
+          xxe: _json.containsKey('xxe')
+              ? Xxe.fromJson(
+                  _json['xxe'] as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1037,6 +1047,7 @@ class Finding {
         if (vulnerableParameters != null)
           'vulnerableParameters': vulnerableParameters!,
         if (xss != null) 'xss': xss!,
+        if (xxe != null) 'xxe': xxe!,
       };
 }
 
@@ -2135,5 +2146,40 @@ class Xss {
         if (stackTraces != null) 'stackTraces': stackTraces!,
         if (storedXssSeedingUrl != null)
           'storedXssSeedingUrl': storedXssSeedingUrl!,
+      };
+}
+
+/// Information reported for an XXE.
+class Xxe {
+  /// Location within the request where the payload was placed.
+  /// Possible string values are:
+  /// - "LOCATION_UNSPECIFIED" : Unknown Location.
+  /// - "COMPLETE_REQUEST_BODY" : The XML payload replaced the complete request
+  /// body.
+  core.String? payloadLocation;
+
+  /// The XML string that triggered the XXE vulnerability.
+  ///
+  /// Non-payload values might be redacted.
+  core.String? payloadValue;
+
+  Xxe({
+    this.payloadLocation,
+    this.payloadValue,
+  });
+
+  Xxe.fromJson(core.Map _json)
+      : this(
+          payloadLocation: _json.containsKey('payloadLocation')
+              ? _json['payloadLocation'] as core.String
+              : null,
+          payloadValue: _json.containsKey('payloadValue')
+              ? _json['payloadValue'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (payloadLocation != null) 'payloadLocation': payloadLocation!,
+        if (payloadValue != null) 'payloadValue': payloadValue!,
       };
 }

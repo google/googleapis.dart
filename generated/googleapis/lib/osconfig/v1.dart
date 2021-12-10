@@ -1098,6 +1098,94 @@ class ProjectsPatchDeploymentsResource {
     return PatchDeployment.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
+
+  /// Change state of patch deployment to "PAUSED".
+  ///
+  /// Patch deployment in paused state doesn't generate patch jobs.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the patch deployment in the form
+  /// `projects / * /patchDeployments / * `.
+  /// Value must have pattern `^projects/\[^/\]+/patchDeployments/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [PatchDeployment].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<PatchDeployment> pause(
+    PausePatchDeploymentRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':pause';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return PatchDeployment.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Change state of patch deployment back to "ACTIVE".
+  ///
+  /// Patch deployment in active state continues to generate patch jobs.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the patch deployment in the form
+  /// `projects / * /patchDeployments / * `.
+  /// Value must have pattern `^projects/\[^/\]+/patchDeployments/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [PatchDeployment].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<PatchDeployment> resume(
+    ResumePatchDeploymentRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':resume';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return PatchDeployment.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class ProjectsPatchJobsResource {
@@ -4558,6 +4646,18 @@ class PatchDeployment {
   /// Optional.
   PatchRollout? rollout;
 
+  /// Current state of the patch deployment.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : The default value. This value is used if the state
+  /// is omitted.
+  /// - "ACTIVE" : Active value means that patch deployment generates Patch
+  /// Jobs.
+  /// - "PAUSED" : Paused value means that patch deployment does not generate
+  /// Patch jobs. Requires user action to move in and out from this state.
+  core.String? state;
+
   /// Time the patch deployment was last updated.
   ///
   /// Timestamp is in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text
@@ -4577,6 +4677,7 @@ class PatchDeployment {
     this.patchConfig,
     this.recurringSchedule,
     this.rollout,
+    this.state,
     this.updateTime,
   });
 
@@ -4615,6 +4716,8 @@ class PatchDeployment {
               ? PatchRollout.fromJson(
                   _json['rollout'] as core.Map<core.String, core.dynamic>)
               : null,
+          state:
+              _json.containsKey('state') ? _json['state'] as core.String : null,
           updateTime: _json.containsKey('updateTime')
               ? _json['updateTime'] as core.String
               : null,
@@ -4631,6 +4734,7 @@ class PatchDeployment {
         if (patchConfig != null) 'patchConfig': patchConfig!,
         if (recurringSchedule != null) 'recurringSchedule': recurringSchedule!,
         if (rollout != null) 'rollout': rollout!,
+        if (state != null) 'state': state!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
 }
@@ -5210,6 +5314,9 @@ class PatchRollout {
       };
 }
 
+/// A request message for pausing a patch deployment.
+typedef PausePatchDeploymentRequest = $Empty;
+
 /// Sets the time for recurring patch deployments.
 class RecurringSchedule {
   /// The end time at which a recurring patch deployment schedule is no longer
@@ -5329,6 +5436,9 @@ class RecurringSchedule {
         if (weekly != null) 'weekly': weekly!,
       };
 }
+
+/// A request message for resuming a patch deployment.
+typedef ResumePatchDeploymentRequest = $Empty;
 
 /// The `Status` type defines a logical error model that is suitable for
 /// different programming environments, including REST APIs and RPC APIs.

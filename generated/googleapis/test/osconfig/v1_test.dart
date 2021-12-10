@@ -2629,6 +2629,7 @@ api.PatchDeployment buildPatchDeployment() {
     o.patchConfig = buildPatchConfig();
     o.recurringSchedule = buildRecurringSchedule();
     o.rollout = buildPatchRollout();
+    o.state = 'foo';
     o.updateTime = 'foo';
   }
   buildCounterPatchDeployment--;
@@ -2663,6 +2664,10 @@ void checkPatchDeployment(api.PatchDeployment o) {
     checkPatchConfig(o.patchConfig!);
     checkRecurringSchedule(o.recurringSchedule!);
     checkPatchRollout(o.rollout!);
+    unittest.expect(
+      o.state!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.updateTime!,
       unittest.equals('foo'),
@@ -3031,6 +3036,21 @@ void checkPatchRollout(api.PatchRollout o) {
   buildCounterPatchRollout--;
 }
 
+core.int buildCounterPausePatchDeploymentRequest = 0;
+api.PausePatchDeploymentRequest buildPausePatchDeploymentRequest() {
+  final o = api.PausePatchDeploymentRequest();
+  buildCounterPausePatchDeploymentRequest++;
+  if (buildCounterPausePatchDeploymentRequest < 3) {}
+  buildCounterPausePatchDeploymentRequest--;
+  return o;
+}
+
+void checkPausePatchDeploymentRequest(api.PausePatchDeploymentRequest o) {
+  buildCounterPausePatchDeploymentRequest++;
+  if (buildCounterPausePatchDeploymentRequest < 3) {}
+  buildCounterPausePatchDeploymentRequest--;
+}
+
 core.int buildCounterRecurringSchedule = 0;
 api.RecurringSchedule buildRecurringSchedule() {
   final o = api.RecurringSchedule();
@@ -3079,6 +3099,21 @@ void checkRecurringSchedule(api.RecurringSchedule o) {
     checkWeeklySchedule(o.weekly!);
   }
   buildCounterRecurringSchedule--;
+}
+
+core.int buildCounterResumePatchDeploymentRequest = 0;
+api.ResumePatchDeploymentRequest buildResumePatchDeploymentRequest() {
+  final o = api.ResumePatchDeploymentRequest();
+  buildCounterResumePatchDeploymentRequest++;
+  if (buildCounterResumePatchDeploymentRequest < 3) {}
+  buildCounterResumePatchDeploymentRequest--;
+  return o;
+}
+
+void checkResumePatchDeploymentRequest(api.ResumePatchDeploymentRequest o) {
+  buildCounterResumePatchDeploymentRequest++;
+  if (buildCounterResumePatchDeploymentRequest < 3) {}
+  buildCounterResumePatchDeploymentRequest--;
 }
 
 core.Map<core.String, core.Object?> buildUnnamed38() => {
@@ -4522,6 +4557,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-PausePatchDeploymentRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildPausePatchDeploymentRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PausePatchDeploymentRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkPausePatchDeploymentRequest(od);
+    });
+  });
+
   unittest.group('obj-schema-RecurringSchedule', () {
     unittest.test('to-json--from-json', () async {
       final o = buildRecurringSchedule();
@@ -4529,6 +4574,16 @@ void main() {
       final od = api.RecurringSchedule.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkRecurringSchedule(od);
+    });
+  });
+
+  unittest.group('obj-schema-ResumePatchDeploymentRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildResumePatchDeploymentRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ResumePatchDeploymentRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkResumePatchDeploymentRequest(od);
     });
   });
 
@@ -5858,6 +5913,122 @@ void main() {
       }), true);
       final response = await res.patch(arg_request, arg_name,
           updateMask: arg_updateMask, $fields: arg_$fields);
+      checkPatchDeployment(response as api.PatchDeployment);
+    });
+
+    unittest.test('method--pause', () async {
+      final mock = HttpServerMock();
+      final res = api.OSConfigApi(mock).projects.patchDeployments;
+      final arg_request = buildPausePatchDeploymentRequest();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.PausePatchDeploymentRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkPausePatchDeploymentRequest(obj);
+
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildPatchDeployment());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.pause(arg_request, arg_name, $fields: arg_$fields);
+      checkPatchDeployment(response as api.PatchDeployment);
+    });
+
+    unittest.test('method--resume', () async {
+      final mock = HttpServerMock();
+      final res = api.OSConfigApi(mock).projects.patchDeployments;
+      final arg_request = buildResumePatchDeploymentRequest();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.ResumePatchDeploymentRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkResumePatchDeploymentRequest(obj);
+
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildPatchDeployment());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.resume(arg_request, arg_name, $fields: arg_$fields);
       checkPatchDeployment(response as api.PatchDeployment);
     });
   });

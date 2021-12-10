@@ -394,7 +394,8 @@ class ProjectsLocationsCatalogsCatalogItemsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/catalogs/\[^/\]+$`.
   ///
-  /// [filter] - Optional. A filter to apply on the list results.
+  /// [filter] - Optional. Use of this field is not supported by version
+  /// v1beta1.
   ///
   /// [pageSize] - Optional. Maximum number of results to return per page. If
   /// zero, the service will choose a reasonable default.

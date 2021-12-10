@@ -37,7 +37,6 @@ packages:
     - assuredworkloads:v1
     - authorizedbuyersmarketplace:v1
     - baremetalsolution:v1
-    - baremetalsolution:v2
     - bigquery:v2 # https://developers.google.com/bigquery/
     - bigquerydatatransfer:v1 # https://cloud.google.com/bigquery/transfer/
     - bigqueryreservation:v1
@@ -282,7 +281,6 @@ skipped_apis:
 - appengine:v1beta
 - artifactregistry:v1beta1 #v1 included
 - artifactregistry:v1beta2 #v1 included
-- baremetalsolution:v1alpha1
 - bigqueryreservation:v1beta1 # v1 included
 - bigtableadmin:v1 # v2 included
 - billingbudgets:v1beta1 # v1 included
