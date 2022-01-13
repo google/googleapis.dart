@@ -166,7 +166,8 @@ class ContactGroupsResource {
   ///
   /// Created contact group names must be unique to the users contact groups.
   /// Attempting to create a group with a duplicate name will return a HTTP 409
-  /// error.
+  /// error. Mutate requests for the same user should be sent sequentially to
+  /// avoid increased latency and failures.
   ///
   /// [request] - The metadata request object.
   ///
@@ -205,6 +206,9 @@ class ContactGroupsResource {
 
   /// Delete an existing contact group owned by the authenticated user by
   /// specifying a contact group resource name.
+  ///
+  /// Mutate requests for the same user should be sent sequentially to avoid
+  /// increased latency and failures.
   ///
   /// Request parameters:
   ///
@@ -358,7 +362,8 @@ class ContactGroupsResource {
   ///
   /// Updated contact group names must be unique to the users contact groups.
   /// Attempting to create a group with a duplicate name will return a HTTP 409
-  /// error.
+  /// error. Mutate requests for the same user should be sent sequentially to
+  /// avoid increased latency and failures.
   ///
   /// [request] - The metadata request object.
   ///
@@ -462,7 +467,8 @@ class OtherContactsResource {
   OtherContactsResource(commons.ApiRequester client) : _requester = client;
 
   /// Copies an "Other contact" to a new contact in the user's "myContacts"
-  /// group
+  /// group Mutate requests for the same user should be sent sequentially to
+  /// avoid increased latency and failures.
   ///
   /// [request] - The metadata request object.
   ///
@@ -669,9 +675,8 @@ class PeopleResource {
   PeopleResource(commons.ApiRequester client) : _requester = client;
 
   /// Create a batch of new contacts and return the PersonResponses for the
-  /// newly created contacts.
-  ///
-  /// Limited to 10 parallel requests per user.
+  /// newly Mutate requests for the same user should be sent sequentially to
+  /// avoid increased latency and failures.
   ///
   /// [request] - The metadata request object.
   ///
@@ -710,8 +715,8 @@ class PeopleResource {
 
   /// Delete a batch of contacts.
   ///
-  /// Any non-contact data will not be deleted. Limited to 10 parallel requests
-  /// per user.
+  /// Any non-contact data will not be deleted. Mutate requests for the same
+  /// user should be sent sequentially to avoid increased latency and failures.
   ///
   /// [request] - The metadata request object.
   ///
@@ -750,7 +755,8 @@ class PeopleResource {
   /// Update a batch of contacts and return a map of resource names to
   /// PersonResponses for the updated contacts.
   ///
-  /// Limited to 10 parallel requests per user.
+  /// Mutate requests for the same user should be sent sequentially to avoid
+  /// increased latency and failures.
   ///
   /// [request] - The metadata request object.
   ///
@@ -791,7 +797,8 @@ class PeopleResource {
   ///
   /// The request returns a 400 error if more than one field is specified on a
   /// field that is a singleton for contact sources: * biographies * birthdays *
-  /// genders * names
+  /// genders * names Mutate requests for the same user should be sent
+  /// sequentially to avoid increased latency and failures.
   ///
   /// [request] - The metadata request object.
   ///
@@ -846,7 +853,8 @@ class PeopleResource {
 
   /// Delete a contact person.
   ///
-  /// Any non-contact data will not be deleted.
+  /// Any non-contact data will not be deleted. Mutate requests for the same
+  /// user should be sent sequentially to avoid increased latency and failures.
   ///
   /// Request parameters:
   ///
@@ -883,6 +891,9 @@ class PeopleResource {
   }
 
   /// Delete a contact's photo.
+  ///
+  /// Mutate requests for the same user should be done sequentially to avoid //
+  /// lock contention.
   ///
   /// Request parameters:
   ///
@@ -1319,7 +1330,8 @@ class PeopleResource {
   /// `memberships` are being updated and there are no contact group memberships
   /// specified on the person. The server returns a 400 error if more than one
   /// field is specified on a field that is a singleton for contact sources: *
-  /// biographies * birthdays * genders * names
+  /// biographies * birthdays * genders * names Mutate requests for the same
+  /// user should be sent sequentially to avoid increased latency and failures.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1392,6 +1404,9 @@ class PeopleResource {
   }
 
   /// Update a contact's photo.
+  ///
+  /// Mutate requests for the same user should be sent sequentially to avoid
+  /// increased latency and failures.
   ///
   /// [request] - The metadata request object.
   ///

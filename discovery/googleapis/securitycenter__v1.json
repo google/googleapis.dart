@@ -2585,7 +2585,7 @@
             }
         }
     },
-    "revision": "20211207",
+    "revision": "20220105",
     "rootUrl": "https://securitycenter.googleapis.com/",
     "schemas": {
         "Access": {
@@ -4012,7 +4012,8 @@
                             "SSH_AUTHORIZED_KEYS",
                             "CREATE_OR_MODIFY_SYSTEM_PROCESS",
                             "STEAL_WEB_SESSION_COOKIE",
-                            "MODIFY_CLOUD_COMPUTE_INFRASTRUCTURE"
+                            "MODIFY_CLOUD_COMPUTE_INFRASTRUCTURE",
+                            "EXPLOIT_PUBLIC_FACING_APPLICATION"
                         ],
                         "enumDescriptions": [
                             "Unspecified value.",
@@ -4041,7 +4042,8 @@
                             "T1098.004",
                             "T1543",
                             "T1539",
-                            "T1578"
+                            "T1578",
+                            "T1190"
                         ],
                         "type": "string"
                     },
@@ -4115,7 +4117,8 @@
                             "SSH_AUTHORIZED_KEYS",
                             "CREATE_OR_MODIFY_SYSTEM_PROCESS",
                             "STEAL_WEB_SESSION_COOKIE",
-                            "MODIFY_CLOUD_COMPUTE_INFRASTRUCTURE"
+                            "MODIFY_CLOUD_COMPUTE_INFRASTRUCTURE",
+                            "EXPLOIT_PUBLIC_FACING_APPLICATION"
                         ],
                         "enumDescriptions": [
                             "Unspecified value.",
@@ -4144,7 +4147,8 @@
                             "T1098.004",
                             "T1543",
                             "T1539",
-                            "T1578"
+                            "T1578",
+                            "T1190"
                         ],
                         "type": "string"
                     },

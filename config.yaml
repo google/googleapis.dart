@@ -150,6 +150,7 @@ packages:
     - mybusinesslodging:v1
     - mybusinessnotifications:v1
     - mybusinessplaceactions:v1
+    - mybusinessqanda:v1
     - mybusinessverifications:v1
     - networkconnectivity:v1
     - networkmanagement:v1
@@ -179,6 +180,7 @@ packages:
     - resourcesettings:v1
     - retail:v2
     - run:v1
+    - run:v2
     - runtimeconfig:v1 # https://cloud.google.com/deployment-manager/runtime-configurator/
     - safebrowsing:v4 # https://developers.google.com/safe-browsing/
     - script:v1 # https://developers.google.com/apps-script/execution/rest/v1/run
@@ -210,6 +212,7 @@ packages:
     - texttospeech:v1 # https://cloud.google.com/text-to-speech/
     - tpu:v1 # https://cloud.google.com/tpu/
     - trafficdirector:v2
+    - transcoder:v1
     - translate:v3
     - vault:v1 # https://apps.google.com/products/vault/
     - verifiedaccess:v1

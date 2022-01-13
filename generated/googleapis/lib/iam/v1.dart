@@ -2719,10 +2719,10 @@ class ProjectsServiceAccountsKeysResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/serviceAccounts/\[^/\]+/keys/\[^/\]+$`.
   ///
-  /// [publicKeyType] - The output format of the public key requested. X509_PEM
-  /// is the default output format.
+  /// [publicKeyType] - Optional. The output format of the public key. The
+  /// default is `TYPE_NONE`, which means that the public key is not returned.
   /// Possible string values are:
-  /// - "TYPE_NONE" : Unspecified. Returns nothing here.
+  /// - "TYPE_NONE" : Do not return the public key.
   /// - "TYPE_X509_PEM_FILE" : X509 PEM format.
   /// - "TYPE_RAW_PUBLIC_KEY" : Raw public key.
   ///

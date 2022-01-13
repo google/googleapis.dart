@@ -561,6 +561,7 @@ api.DiskConfig buildDiskConfig() {
   if (buildCounterDiskConfig < 3) {
     o.bootDiskSizeGb = 42;
     o.bootDiskType = 'foo';
+    o.localSsdInterface = 'foo';
     o.numLocalSsds = 42;
   }
   buildCounterDiskConfig--;
@@ -576,6 +577,10 @@ void checkDiskConfig(api.DiskConfig o) {
     );
     unittest.expect(
       o.bootDiskType!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.localSsdInterface!,
       unittest.equals('foo'),
     );
     unittest.expect(

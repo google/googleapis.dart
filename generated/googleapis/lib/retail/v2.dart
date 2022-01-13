@@ -2251,7 +2251,8 @@ class GoogleCloudRetailV2GcsSource {
   /// [Importing catalog data from Merchant Center](https://cloud.google.com/retail/recommendations-ai/docs/upload-catalog#mc).
   /// Supported values for user events imports: * `user_event` (default): One
   /// JSON UserEvent per line. * `user_event_ga360`: Using
-  /// https://support.google.com/analytics/answer/3437719.
+  /// https://support.google.com/analytics/answer/3437719. Supported values for
+  /// control imports: * 'control' (default): One JSON Control per line.
   core.String? dataSchema;
 
   /// Google Cloud Storage URIs to input files.
@@ -2941,8 +2942,7 @@ class GoogleCloudRetailV2PriceInfo {
   ///
   /// Google Merchant Center property
   /// [price](https://support.google.com/merchants/answer/6324371). Schema.org
-  /// property
-  /// [Offer.priceSpecification](https://schema.org/priceSpecification).
+  /// property [Offer.price](https://schema.org/price).
   core.double? price;
 
   /// The timestamp when the price starts to be effective.
@@ -3153,9 +3153,9 @@ class GoogleCloudRetailV2Product {
   /// The condition of the product.
   ///
   /// Strongly encouraged to use the standard values: "new", "refurbished",
-  /// "used". A maximum of 5 values are allowed per Product. Each value must be
-  /// a UTF-8 encoded string with a length limit of 128 characters. Otherwise,
-  /// an INVALID_ARGUMENT error is returned. Corresponding properties: Google
+  /// "used". A maximum of 1 value is allowed per Product. Each value must be a
+  /// UTF-8 encoded string with a length limit of 128 characters. Otherwise, an
+  /// INVALID_ARGUMENT error is returned. Corresponding properties: Google
   /// Merchant Center property
   /// [condition](https://support.google.com/merchants/answer/6324469).
   /// Schema.org property
@@ -4234,8 +4234,9 @@ class GoogleCloudRetailV2SearchRequest {
   /// For example, this could be implemented with an HTTP cookie, which should
   /// be able to uniquely identify a visitor on a single device. This unique
   /// identifier should not change if the visitor logs in or out of the website.
-  /// The field must be a UTF-8 encoded string with a length limit of 128
-  /// characters. Otherwise, an INVALID_ARGUMENT error is returned.
+  /// This should be the same identifier as UserEvent.visitor_id. The field must
+  /// be a UTF-8 encoded string with a length limit of 128 characters.
+  /// Otherwise, an INVALID_ARGUMENT error is returned.
   ///
   /// Required.
   core.String? visitorId;
@@ -5101,9 +5102,9 @@ class GoogleCloudRetailV2SetInventoryRequest {
 
   /// Indicates which inventory fields in the provided Product to update.
   ///
-  /// If not set or set with empty paths, all inventory fields will be updated.
-  /// If an unsupported or unknown field is provided, an INVALID_ARGUMENT error
-  /// is returned and the entire update will be ignored.
+  /// At least one field must be provided. If an unsupported or unknown field is
+  /// provided, an INVALID_ARGUMENT error is returned and the entire update will
+  /// be ignored.
   core.String? setMask;
 
   /// The time when the request is issued, used to prevent out-of-order updates
@@ -5266,12 +5267,13 @@ class GoogleCloudRetailV2UserEvent {
   /// The main product details related to the event.
   ///
   /// This field is required for the following event types: * `add-to-cart` *
-  /// `detail-page-view` * `purchase-complete` In a `search` event, this field
-  /// represents the products returned to the end user on the current page (the
-  /// end user may have not finished browsing the whole page yet). When a new
-  /// page is returned to the end user, after pagination/filtering/ordering even
-  /// for the same query, a new `search` event with different product_details is
-  /// desired. The end user may have not finished browsing the whole page yet.
+  /// `detail-page-view` * `purchase-complete` * `search` In a `search` event,
+  /// this field represents the products returned to the end user on the current
+  /// page (the end user may have not finished browsing the whole page yet).
+  /// When a new page is returned to the end user, after
+  /// pagination/filtering/ordering even for the same query, a new `search`
+  /// event with different product_details is desired. The end user may have not
+  /// finished browsing the whole page yet.
   core.List<GoogleCloudRetailV2ProductDetail>? productDetails;
 
   /// A transaction represents the entire purchase transaction.

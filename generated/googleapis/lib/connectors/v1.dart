@@ -14,6 +14,9 @@
 
 /// Connectors API - v1
 ///
+/// Enables users to create and manage connections to Google Cloud services and
+/// third-party business applications using the Connectors interface.
+///
 /// For more information, see
 /// <https://cloud.google.com/apigee/docs/api-platform/connectors/about-connectors>
 ///
@@ -46,6 +49,8 @@ import '../src/user_agent.dart';
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
+/// Enables users to create and manage connections to Google Cloud services and
+/// third-party business applications using the Connectors interface.
 class ConnectorsApi {
   /// See, edit, configure, and delete your Google Cloud data and see the email
   /// address for your Google Account.
@@ -2142,6 +2147,16 @@ class Connector {
   /// Output only.
   core.Map<core.String, core.String>? labels;
 
+  /// Flag to mark the version indicating the launch stage.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "LAUNCH_STAGE_UNSPECIFIED" : LAUNCH_STAGE_UNSPECIFIED.
+  /// - "PREVIEW" : PREVIEW.
+  /// - "GA" : GA.
+  /// - "DEPRECATED" : DEPRECATED.
+  core.String? launchStage;
+
   /// Resource name of the Connector.
   ///
   /// Format:
@@ -2167,6 +2182,7 @@ class Connector {
     this.documentationUri,
     this.externalUri,
     this.labels,
+    this.launchStage,
     this.name,
     this.updateTime,
     this.webAssetsLocation,
@@ -2197,6 +2213,9 @@ class Connector {
                   ),
                 )
               : null,
+          launchStage: _json.containsKey('launchStage')
+              ? _json['launchStage'] as core.String
+              : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           updateTime: _json.containsKey('updateTime')
               ? _json['updateTime'] as core.String
@@ -2213,6 +2232,7 @@ class Connector {
         if (documentationUri != null) 'documentationUri': documentationUri!,
         if (externalUri != null) 'externalUri': externalUri!,
         if (labels != null) 'labels': labels!,
+        if (launchStage != null) 'launchStage': launchStage!,
         if (name != null) 'name': name!,
         if (updateTime != null) 'updateTime': updateTime!,
         if (webAssetsLocation != null) 'webAssetsLocation': webAssetsLocation!,
@@ -3430,6 +3450,16 @@ class Provider {
   /// Output only.
   core.Map<core.String, core.String>? labels;
 
+  /// Flag to mark the version indicating the launch stage.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "LAUNCH_STAGE_UNSPECIFIED" : LAUNCH_STAGE_UNSPECIFIED.
+  /// - "PREVIEW" : PREVIEW.
+  /// - "GA" : GA.
+  /// - "DEPRECATED" : DEPRECATED.
+  core.String? launchStage;
+
   /// Resource name of the Provider.
   ///
   /// Format: projects/{project}/locations/{location}/providers/{provider}
@@ -3454,6 +3484,7 @@ class Provider {
     this.documentationUri,
     this.externalUri,
     this.labels,
+    this.launchStage,
     this.name,
     this.updateTime,
     this.webAssetsLocation,
@@ -3484,6 +3515,9 @@ class Provider {
                   ),
                 )
               : null,
+          launchStage: _json.containsKey('launchStage')
+              ? _json['launchStage'] as core.String
+              : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           updateTime: _json.containsKey('updateTime')
               ? _json['updateTime'] as core.String
@@ -3500,6 +3534,7 @@ class Provider {
         if (documentationUri != null) 'documentationUri': documentationUri!,
         if (externalUri != null) 'externalUri': externalUri!,
         if (labels != null) 'labels': labels!,
+        if (launchStage != null) 'launchStage': launchStage!,
         if (name != null) 'name': name!,
         if (updateTime != null) 'updateTime': updateTime!,
         if (webAssetsLocation != null) 'webAssetsLocation': webAssetsLocation!,

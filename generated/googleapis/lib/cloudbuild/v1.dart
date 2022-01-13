@@ -5622,7 +5622,7 @@ class WorkerPool {
   /// Output only.
   core.String? name;
 
-  /// Legacy Private Pool configuration.
+  /// Private Pool using a v1 configuration.
   PrivatePoolV1Config? privatePoolV1Config;
 
   /// `WorkerPool` state.
@@ -5635,7 +5635,6 @@ class WorkerPool {
   /// - "DELETING" : `WorkerPool` is being deleted: cancelling builds and
   /// draining workers.
   /// - "DELETED" : `WorkerPool` is deleted.
-  /// - "UPDATING" : `WorkerPool` is being updated; new builds cannot be run.
   core.String? state;
 
   /// A unique identifier for the `WorkerPool`.

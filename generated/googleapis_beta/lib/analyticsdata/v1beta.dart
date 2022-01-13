@@ -1063,7 +1063,7 @@ class DateRange {
 ///
 /// For example, the dimension city indicates the city from which an event
 /// originates. Dimension values in report responses are strings; for example,
-/// city could be "Paris" or "New York". Requests are allowed up to 9
+/// the city could be "Paris" or "New York". Requests are allowed up to 9
 /// dimensions.
 class Dimension {
   /// One dimension can be the result of an expression of multiple dimensions.
@@ -1421,8 +1421,8 @@ class FilterExpression {
 
   /// A primitive filter.
   ///
-  /// All fields in filter in same FilterExpression needs to be either all
-  /// dimensions or metrics.
+  /// In the same FilterExpression, all of the filter's field names need to be
+  /// either all dimensions or all metrics.
   Filter? filter;
 
   /// The FilterExpression is NOT of not_expression.
@@ -2407,15 +2407,15 @@ class ResponseMetaData {
   /// management\](https://support.google.com/analytics/answer/10851388).
   SchemaRestrictionResponse? schemaRestrictionResponse;
 
-  /// If `thresholdingApplied` is true, this report has thresholding applied and
-  /// only returns data that meets the minimum aggregation thresholds.
+  /// If `subjectToThresholding` is true, this report is subject to thresholding
+  /// and only returns data that meets the minimum aggregation thresholds.
   ///
-  /// This boolean only indicates if thresholding was applied. It is possible
-  /// for thresholding to be applied and no data is absent from the report, and
-  /// this happens when all data is above the thresholds. To learn more, see
+  /// It is possible for a request to be subject to thresholding thresholding
+  /// and no data is absent from the report, and this happens when all data is
+  /// above the thresholds. To learn more, see
   /// [Data thresholds](https://support.google.com/analytics/answer/9383630) and
   /// [About Demographics and Interests](https://support.google.com/analytics/answer/2799357).
-  core.bool? thresholdingApplied;
+  core.bool? subjectToThresholding;
 
   /// The property's current timezone.
   ///
@@ -2430,7 +2430,7 @@ class ResponseMetaData {
     this.dataLossFromOtherRow,
     this.emptyReason,
     this.schemaRestrictionResponse,
-    this.thresholdingApplied,
+    this.subjectToThresholding,
     this.timeZone,
   });
 
@@ -2451,8 +2451,8 @@ class ResponseMetaData {
                       _json['schemaRestrictionResponse']
                           as core.Map<core.String, core.dynamic>)
                   : null,
-          thresholdingApplied: _json.containsKey('thresholdingApplied')
-              ? _json['thresholdingApplied'] as core.bool
+          subjectToThresholding: _json.containsKey('subjectToThresholding')
+              ? _json['subjectToThresholding'] as core.bool
               : null,
           timeZone: _json.containsKey('timeZone')
               ? _json['timeZone'] as core.String
@@ -2466,8 +2466,8 @@ class ResponseMetaData {
         if (emptyReason != null) 'emptyReason': emptyReason!,
         if (schemaRestrictionResponse != null)
           'schemaRestrictionResponse': schemaRestrictionResponse!,
-        if (thresholdingApplied != null)
-          'thresholdingApplied': thresholdingApplied!,
+        if (subjectToThresholding != null)
+          'subjectToThresholding': subjectToThresholding!,
         if (timeZone != null) 'timeZone': timeZone!,
       };
 }
@@ -3095,7 +3095,7 @@ class RunReportRequest {
 
   /// The filter clause of metrics.
   ///
-  /// Applied at post aggregation phase, similar to SQL having-clause.
+  /// Applied after aggregating the report's rows, similar to SQL having-clause.
   /// Dimensions cannot be used in this filter.
   FilterExpression? metricFilter;
 
@@ -3400,9 +3400,10 @@ class StringFilter {
   /// - "BEGINS_WITH" : Begins with the string value.
   /// - "ENDS_WITH" : Ends with the string value.
   /// - "CONTAINS" : Contains the string value.
-  /// - "FULL_REGEXP" : Full regular expression match with the string value.
-  /// - "PARTIAL_REGEXP" : Partial regular expression match with the string
+  /// - "FULL_REGEXP" : Full match for the regular expression with the string
   /// value.
+  /// - "PARTIAL_REGEXP" : Partial match for the regular expression with the
+  /// string value.
   core.String? matchType;
 
   /// The string value used for the matching.

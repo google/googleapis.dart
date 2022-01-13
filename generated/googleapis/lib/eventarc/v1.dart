@@ -20,6 +20,7 @@
 ///
 /// - [ProjectsResource]
 ///   - [ProjectsLocationsResource]
+///     - [ProjectsLocationsChannelConnectionsResource]
 ///     - [ProjectsLocationsChannelsResource]
 ///     - [ProjectsLocationsOperationsResource]
 ///     - [ProjectsLocationsTriggersResource]
@@ -68,6 +69,8 @@ class ProjectsResource {
 class ProjectsLocationsResource {
   final commons.ApiRequester _requester;
 
+  ProjectsLocationsChannelConnectionsResource get channelConnections =>
+      ProjectsLocationsChannelConnectionsResource(_requester);
   ProjectsLocationsChannelsResource get channels =>
       ProjectsLocationsChannelsResource(_requester);
   ProjectsLocationsOperationsResource get operations =>
@@ -161,6 +164,165 @@ class ProjectsLocationsResource {
       queryParams: _queryParams,
     );
     return ListLocationsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsChannelConnectionsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsChannelConnectionsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets the access control policy for a resource.
+  ///
+  /// Returns an empty policy if the resource exists and does not have a policy
+  /// set.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// requested. See the operation documentation for the appropriate value for
+  /// this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/channelConnections/\[^/\]+$`.
+  ///
+  /// [options_requestedPolicyVersion] - Optional. The maximum policy version
+  /// that will be used to format the policy. Valid values are 0, 1, and 3.
+  /// Requests specifying an invalid value will be rejected. Requests for
+  /// policies with any conditional role bindings must specify version 3.
+  /// Policies with no conditional role bindings may specify any valid value or
+  /// leave the field unset. The policy in the response might use the policy
+  /// version that you specified, or it might use a lower policy version. For
+  /// example, if you specify version 3, but the policy has no conditional role
+  /// bindings, the response uses version 1. To learn which resources support
+  /// conditions in their IAM policies, see the
+  /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> getIamPolicy(
+    core.String resource, {
+    core.int? options_requestedPolicyVersion,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (options_requestedPolicyVersion != null)
+        'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Sets the access control policy on the specified resource.
+  ///
+  /// Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`,
+  /// and `PERMISSION_DENIED` errors.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// specified. See the operation documentation for the appropriate value for
+  /// this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/channelConnections/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> setIamPolicy(
+    SetIamPolicyRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns permissions that a caller has on the specified resource.
+  ///
+  /// If the resource does not exist, this will return an empty set of
+  /// permissions, not a `NOT_FOUND` error. Note: This operation is designed to
+  /// be used for building permission-aware UIs and command-line tools, not for
+  /// authorization checking. This operation may "fail open" without warning.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy detail is being
+  /// requested. See the operation documentation for the appropriate value for
+  /// this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/channelConnections/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [TestIamPermissionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TestIamPermissionsResponse> testIamPermissions(
+    TestIamPermissionsRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url =
+        'v1/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return TestIamPermissionsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
 }
@@ -781,7 +943,7 @@ class ProjectsLocationsTriggersResource {
   /// Request parameters:
   ///
   /// [name] - Required. The resource name of the trigger. Must be unique within
-  /// the location on the project and must be in
+  /// the location of the project and must be in
   /// `projects/{project}/locations/{location}/triggers/{trigger}` format.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/triggers/\[^/\]+$`.
@@ -1072,8 +1234,8 @@ class Binding {
 class CloudRun {
   /// The relative path on the Cloud Run service the events should be sent to.
   ///
-  /// The value must conform to the definition of URI path segment (section 3.3
-  /// of RFC2396). Examples: "/route", "route", "route/subroute".
+  /// The value must conform to the definition of a URI path segment (section
+  /// 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
   ///
   /// Optional.
   core.String? path;
@@ -1087,7 +1249,7 @@ class CloudRun {
   ///
   /// See
   /// https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services.
-  /// Only services located in the same project of the trigger object can be
+  /// Only services located in the same project as the trigger object can be
   /// addressed.
   ///
   /// Required.
@@ -1126,7 +1288,7 @@ class Destination {
 
   /// A GKE service capable of receiving events.
   ///
-  /// The service should be running in the same project of the trigger.
+  /// The service should be running in the same project as the trigger.
   GKE? gke;
 
   Destination({
@@ -1227,8 +1389,8 @@ class GKE {
   core.String? cluster;
 
   /// The name of the Google Compute Engine in which the cluster resides, which
-  /// can either be compute zone (e.g. us-central1-a) for the zonal clusters or
-  /// region (e.g. us-central1) for regional clusters.
+  /// can either be compute zone (for example, us-central1-a) for the zonal
+  /// clusters or region (for example, us-central1) for regional clusters.
   ///
   /// Required.
   core.String? location;
@@ -1240,8 +1402,8 @@ class GKE {
 
   /// The relative path on the GKE service the events should be sent to.
   ///
-  /// The value must conform to the definition of URI path segment (section 3.3
-  /// of RFC2396). Examples: "/route", "route", "route/subroute".
+  /// The value must conform to the definition of a URI path segment (section
+  /// 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
   ///
   /// Optional.
   core.String? path;
@@ -1607,21 +1769,21 @@ class Policy {
 
 /// Represents a Pub/Sub transport.
 class Pubsub {
-  /// The name of the Pub/Sub subscription created and managed by Eventarc
-  /// system as a transport for the event delivery.
+  /// The name of the Pub/Sub subscription created and managed by Eventarc as a
+  /// transport for the event delivery.
   ///
   /// Format: `projects/{PROJECT_ID}/subscriptions/{SUBSCRIPTION_NAME}`.
   ///
   /// Output only.
   core.String? subscription;
 
-  /// The name of the Pub/Sub topic created and managed by Eventarc system as a
+  /// The name of the Pub/Sub topic created and managed by Eventarc as a
   /// transport for the event delivery.
   ///
-  /// Format: `projects/{PROJECT_ID}/topics/{TOPIC_NAME}`. You may set an
+  /// Format: `projects/{PROJECT_ID}/topics/{TOPIC_NAME}`. You can set an
   /// existing topic for triggers of the type
-  /// `google.cloud.pubsub.topic.v1.messagePublished` only. The topic you
-  /// provide here will not be deleted by Eventarc at trigger deletion.
+  /// `google.cloud.pubsub.topic.v1.messagePublished`. The topic you provide
+  /// here is not deleted by Eventarc at trigger deletion.
   ///
   /// Optional.
   core.String? topic;
@@ -1689,10 +1851,10 @@ typedef TestIamPermissionsRequest = $TestIamPermissionsRequest;
 /// Response message for `TestIamPermissions` method.
 typedef TestIamPermissionsResponse = $PermissionsResponse;
 
-/// Represents the transport intermediaries created for the trigger in order to
-/// deliver events.
+/// Represents the transport intermediaries created for the trigger to deliver
+/// events.
 class Transport {
-  /// The Pub/Sub topic and subscription used by Eventarc as delivery
+  /// The Pub/Sub topic and subscription used by Eventarc as a transport
   /// intermediary.
   Pubsub? pubsub;
 
@@ -1726,15 +1888,15 @@ class Trigger {
   Destination? destination;
 
   /// This checksum is computed by the server based on the value of other
-  /// fields, and may be sent only on create requests to ensure the client has
-  /// an up-to-date value before proceeding.
+  /// fields, and might be sent only on create requests to ensure that the
+  /// client has an up-to-date value before proceeding.
   ///
   /// Output only.
   core.String? etag;
 
   /// null The list of filters that applies to event attributes.
   ///
-  /// Only events that match all the provided filters will be sent to the
+  /// Only events that match all the provided filters are sent to the
   /// destination.
   ///
   /// Required.
@@ -1747,7 +1909,7 @@ class Trigger {
 
   /// The resource name of the trigger.
   ///
-  /// Must be unique within the location on the project and must be in
+  /// Must be unique within the location of the project and must be in
   /// `projects/{project}/locations/{location}/triggers/{trigger}` format.
   ///
   /// Required.
@@ -1756,21 +1918,21 @@ class Trigger {
   /// The IAM service account email associated with the trigger.
   ///
   /// The service account represents the identity of the trigger. The principal
-  /// who calls this API must have `iam.serviceAccounts.actAs` permission in the
-  /// service account. See
+  /// who calls this API must have the `iam.serviceAccounts.actAs` permission in
+  /// the service account. See
   /// https://cloud.google.com/iam/docs/understanding-service-accounts?hl=en#sa_common
   /// for more information. For Cloud Run destinations, this service account is
   /// used to generate identity tokens when invoking the service. See
   /// https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account
-  /// for information on how to invoke authenticated Cloud Run services. In
-  /// order to create Audit Log triggers, the service account should also have
+  /// for information on how to invoke authenticated Cloud Run services. To
+  /// create Audit Log triggers, the service account should also have the
   /// `roles/eventarc.eventReceiver` IAM role.
   ///
   /// Optional.
   core.String? serviceAccount;
 
-  /// In order to deliver messages, Eventarc may use other GCP products as
-  /// transport intermediary.
+  /// To deliver messages, Eventarc might use other GCP products as a transport
+  /// intermediary.
   ///
   /// This field contains a reference to that transport intermediary. This
   /// information can be used for debugging purposes.
@@ -1778,7 +1940,7 @@ class Trigger {
   /// Optional.
   Transport? transport;
 
-  /// Server assigned unique identifier for the trigger.
+  /// Server-assigned unique identifier for the trigger.
   ///
   /// The value is a UUID4 string and guaranteed to remain unchanged until the
   /// resource is deleted.

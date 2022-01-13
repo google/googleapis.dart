@@ -480,7 +480,7 @@ class ProjectsRelatedaccountgroupmembershipsResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The name of the project to search related account
+  /// [project] - Required. The name of the project to search related account
   /// group memberships from, in the format "projects/{project}".
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
@@ -500,7 +500,7 @@ class ProjectsRelatedaccountgroupmembershipsResource {
       search(
     GoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMembershipsRequest
         request,
-    core.String parent, {
+    core.String project, {
     core.String? $fields,
   }) async {
     final _body = convert.json.encode(request);
@@ -509,7 +509,7 @@ class ProjectsRelatedaccountgroupmembershipsResource {
     };
 
     final _url = 'v1/' +
-        core.Uri.encodeFull('$parent') +
+        core.Uri.encodeFull('$project') +
         '/relatedaccountgroupmemberships:search';
 
     final _response = await _requester.request(
@@ -655,8 +655,17 @@ class GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessment {
   /// Labels for this request.
   core.List<core.String>? labels;
 
+  /// Recommended action after this request.
+  /// Possible string values are:
+  /// - "RECOMMENDED_ACTION_UNSPECIFIED" : Default unspecified type.
+  /// - "REQUEST_2FA" : The customer should probably request 2FA to their user.
+  /// - "SKIP_2FA" : This is likely an already seen and safe request. 2FA can be
+  /// skipped.
+  core.String? recommendedAction;
+
   GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessment({
     this.labels,
+    this.recommendedAction,
   });
 
   GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessment.fromJson(
@@ -667,10 +676,14 @@ class GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessment {
                   .map((value) => value as core.String)
                   .toList()
               : null,
+          recommendedAction: _json.containsKey('recommendedAction')
+              ? _json['recommendedAction'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (labels != null) 'labels': labels!,
+        if (recommendedAction != null) 'recommendedAction': recommendedAction!,
       };
 }
 
@@ -914,6 +927,20 @@ class GoogleCloudRecaptchaenterpriseV1Event {
   /// Optional.
   core.String? expectedAction;
 
+  /// Optional unique stable hashed user identifier for the request.
+  ///
+  /// The identifier should ideally be hashed using sha256 with stable secret.
+  ///
+  /// Optional.
+  core.String? hashedAccountId;
+  core.List<core.int> get hashedAccountIdAsBytes =>
+      convert.base64.decode(hashedAccountId!);
+
+  set hashedAccountIdAsBytes(core.List<core.int> _bytes) {
+    hashedAccountId =
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
   /// The site key that was used to invoke reCAPTCHA on your site and generate
   /// the token.
   ///
@@ -940,6 +967,7 @@ class GoogleCloudRecaptchaenterpriseV1Event {
 
   GoogleCloudRecaptchaenterpriseV1Event({
     this.expectedAction,
+    this.hashedAccountId,
     this.siteKey,
     this.token,
     this.userAgent,
@@ -950,6 +978,9 @@ class GoogleCloudRecaptchaenterpriseV1Event {
       : this(
           expectedAction: _json.containsKey('expectedAction')
               ? _json['expectedAction'] as core.String
+              : null,
+          hashedAccountId: _json.containsKey('hashedAccountId')
+              ? _json['hashedAccountId'] as core.String
               : null,
           siteKey: _json.containsKey('siteKey')
               ? _json['siteKey'] as core.String
@@ -966,6 +997,7 @@ class GoogleCloudRecaptchaenterpriseV1Event {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (expectedAction != null) 'expectedAction': expectedAction!,
+        if (hashedAccountId != null) 'hashedAccountId': hashedAccountId!,
         if (siteKey != null) 'siteKey': siteKey!,
         if (token != null) 'token': token!,
         if (userAgent != null) 'userAgent': userAgent!,
@@ -1033,6 +1065,9 @@ class GoogleCloudRecaptchaenterpriseV1Key {
   /// Options for user acceptance testing.
   GoogleCloudRecaptchaenterpriseV1TestingOptions? testingOptions;
 
+  /// Settings for WAF
+  GoogleCloudRecaptchaenterpriseV1WafSettings? wafSettings;
+
   /// Settings for keys that can be used by websites.
   GoogleCloudRecaptchaenterpriseV1WebKeySettings? webSettings;
 
@@ -1044,6 +1079,7 @@ class GoogleCloudRecaptchaenterpriseV1Key {
     this.labels,
     this.name,
     this.testingOptions,
+    this.wafSettings,
     this.webSettings,
   });
 
@@ -1078,6 +1114,10 @@ class GoogleCloudRecaptchaenterpriseV1Key {
                   _json['testingOptions']
                       as core.Map<core.String, core.dynamic>)
               : null,
+          wafSettings: _json.containsKey('wafSettings')
+              ? GoogleCloudRecaptchaenterpriseV1WafSettings.fromJson(
+                  _json['wafSettings'] as core.Map<core.String, core.dynamic>)
+              : null,
           webSettings: _json.containsKey('webSettings')
               ? GoogleCloudRecaptchaenterpriseV1WebKeySettings.fromJson(
                   _json['webSettings'] as core.Map<core.String, core.dynamic>)
@@ -1092,6 +1132,7 @@ class GoogleCloudRecaptchaenterpriseV1Key {
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
         if (testingOptions != null) 'testingOptions': testingOptions!,
+        if (wafSettings != null) 'wafSettings': wafSettings!,
         if (webSettings != null) 'webSettings': webSettings!,
       };
 }
@@ -1649,6 +1690,49 @@ class GoogleCloudRecaptchaenterpriseV1TokenProperties {
         if (hostname != null) 'hostname': hostname!,
         if (invalidReason != null) 'invalidReason': invalidReason!,
         if (valid != null) 'valid': valid!,
+      };
+}
+
+/// Settings specific to keys that can be used for WAF (Web Application
+/// Firewall).
+class GoogleCloudRecaptchaenterpriseV1WafSettings {
+  /// The WAF feature for which this key is enabled.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "WAF_FEATURE_UNSPECIFIED" : Undefined feature.
+  /// - "CHALLENGE_PAGE" : Redirects suspicious traffic to reCAPTCHA.
+  /// - "SESSION_TOKEN" : Use reCAPTCHA session-tokens to protect the whole user
+  /// session on the site's domain.
+  /// - "ACTION_TOKEN" : Use reCAPTCHA action-tokens to protect user actions.
+  core.String? wafFeature;
+
+  /// The WAF service that uses this key.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "WAF_SERVICE_UNSPECIFIED" : Undefined WAF
+  /// - "CA" : Cloud Armor
+  core.String? wafService;
+
+  GoogleCloudRecaptchaenterpriseV1WafSettings({
+    this.wafFeature,
+    this.wafService,
+  });
+
+  GoogleCloudRecaptchaenterpriseV1WafSettings.fromJson(core.Map _json)
+      : this(
+          wafFeature: _json.containsKey('wafFeature')
+              ? _json['wafFeature'] as core.String
+              : null,
+          wafService: _json.containsKey('wafService')
+              ? _json['wafService'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (wafFeature != null) 'wafFeature': wafFeature!,
+        if (wafService != null) 'wafService': wafService!,
       };
 }
 

@@ -2172,6 +2172,7 @@ api.ResourceOptions buildResourceOptions() {
   buildCounterResourceOptions++;
   if (buildCounterResourceOptions < 3) {
     o.connectVersion = 'foo';
+    o.k8sVersion = 'foo';
     o.v1beta1Crd = true;
   }
   buildCounterResourceOptions--;
@@ -2183,6 +2184,10 @@ void checkResourceOptions(api.ResourceOptions o) {
   if (buildCounterResourceOptions < 3) {
     unittest.expect(
       o.connectVersion!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.k8sVersion!,
       unittest.equals('foo'),
     );
     unittest.expect(o.v1beta1Crd!, unittest.isTrue);

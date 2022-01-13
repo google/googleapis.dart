@@ -670,12 +670,16 @@ class ProjectsLocationsInstancesResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+$`.
   ///
-  /// [options_requestedPolicyVersion] - Optional. The policy format version to
-  /// be returned. Valid values are 0, 1, and 3. Requests specifying an invalid
-  /// value will be rejected. Requests for policies with any conditional
-  /// bindings must specify version 3. Policies without any conditional bindings
-  /// may specify any valid value or leave the field unset. To learn which
-  /// resources support conditions in their IAM policies, see the
+  /// [options_requestedPolicyVersion] - Optional. The maximum policy version
+  /// that will be used to format the policy. Valid values are 0, 1, and 3.
+  /// Requests specifying an invalid value will be rejected. Requests for
+  /// policies with any conditional role bindings must specify version 3.
+  /// Policies with no conditional role bindings may specify any valid value or
+  /// leave the field unset. The policy in the response might use the policy
+  /// version that you specified, or it might use a lower policy version. For
+  /// example, if you specify version 3, but the policy has no conditional role
+  /// bindings, the response uses version 1. To learn which resources support
+  /// conditions in their IAM policies, see the
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -756,6 +760,15 @@ class ProjectsLocationsInstancesResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+$`.
   ///
+  /// [type] - Optional. The optional UpgradeType. Setting this field will
+  /// search for additional compute images to upgrade this instance.
+  /// Possible string values are:
+  /// - "UPGRADE_TYPE_UNSPECIFIED" : Upgrade type is not specified.
+  /// - "UPGRADE_FRAMEWORK" : Upgrade ML framework.
+  /// - "UPGRADE_OS" : Upgrade Operating System.
+  /// - "UPGRADE_CUDA" : Upgrade CUDA.
+  /// - "UPGRADE_ALL" : Upgrade All (OS, Framework and CUDA).
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -768,9 +781,11 @@ class ProjectsLocationsInstancesResource {
   /// this method will complete with the same error.
   async.Future<IsInstanceUpgradeableResponse> isUpgradeable(
     core.String notebookInstance, {
+    core.String? type,
     core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
+      if (type != null) 'type': [type],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -1356,6 +1371,49 @@ class ProjectsLocationsInstancesResource {
     return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
+  /// Add/update metadata items for an instance.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Format:
+  /// `projects/{project_id}/locations/{location}/instances/{instance_id}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [UpdateInstanceMetadataItemsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<UpdateInstanceMetadataItemsResponse> updateMetadataItems(
+    UpdateInstanceMetadataItemsRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':updateMetadataItems';
+
+    final _response = await _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return UpdateInstanceMetadataItemsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
   /// Updates the Shielded instance configuration of a single Instance.
   ///
   /// [request] - The metadata request object.
@@ -1819,12 +1877,16 @@ class ProjectsLocationsRuntimesResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/runtimes/\[^/\]+$`.
   ///
-  /// [options_requestedPolicyVersion] - Optional. The policy format version to
-  /// be returned. Valid values are 0, 1, and 3. Requests specifying an invalid
-  /// value will be rejected. Requests for policies with any conditional
-  /// bindings must specify version 3. Policies without any conditional bindings
-  /// may specify any valid value or leave the field unset. To learn which
-  /// resources support conditions in their IAM policies, see the
+  /// [options_requestedPolicyVersion] - Optional. The maximum policy version
+  /// that will be used to format the policy. Valid values are 0, 1, and 3.
+  /// Requests specifying an invalid value will be rejected. Requests for
+  /// policies with any conditional role bindings must specify version 3.
+  /// Policies with no conditional role bindings may specify any valid value or
+  /// leave the field unset. The policy in the response might use the policy
+  /// version that you specified, or it might use a lower policy version. For
+  /// example, if you specify version 3, but the policy has no conditional role
+  /// bindings, the response uses version 1. To learn which resources support
+  /// conditions in their IAM policies, see the
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -5534,6 +5596,58 @@ class UpdateInstanceConfigRequest {
       };
 }
 
+/// Request for adding/changing metadata items for an instance.
+class UpdateInstanceMetadataItemsRequest {
+  /// Metadata items to add/update for the instance.
+  core.Map<core.String, core.String>? items;
+
+  UpdateInstanceMetadataItemsRequest({
+    this.items,
+  });
+
+  UpdateInstanceMetadataItemsRequest.fromJson(core.Map _json)
+      : this(
+          items: _json.containsKey('items')
+              ? (_json['items'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (items != null) 'items': items!,
+      };
+}
+
+/// Response for adding/changing metadata items for an instance.
+class UpdateInstanceMetadataItemsResponse {
+  /// Map of items that were added/updated to/in the metadata.
+  core.Map<core.String, core.String>? items;
+
+  UpdateInstanceMetadataItemsResponse({
+    this.items,
+  });
+
+  UpdateInstanceMetadataItemsResponse.fromJson(core.Map _json)
+      : this(
+          items: _json.containsKey('items')
+              ? (_json['items'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (items != null) 'items': items!,
+      };
+}
+
 /// Request for updating the Shielded Instance config for a notebook instance.
 ///
 /// You can only use this method on a stopped instance
@@ -5666,6 +5780,20 @@ class UpgradeHistoryEntry {
 
 /// Request for upgrading a notebook instance from within the VM
 class UpgradeInstanceInternalRequest {
+  /// The optional UpgradeType.
+  ///
+  /// Setting this field will search for additional compute images to upgrade
+  /// this instance.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "UPGRADE_TYPE_UNSPECIFIED" : Upgrade type is not specified.
+  /// - "UPGRADE_FRAMEWORK" : Upgrade ML framework.
+  /// - "UPGRADE_OS" : Upgrade Operating System.
+  /// - "UPGRADE_CUDA" : Upgrade CUDA.
+  /// - "UPGRADE_ALL" : Upgrade All (OS, Framework and CUDA).
+  core.String? type;
+
   /// The VM hardware token for authenticating the VM.
   ///
   /// https://cloud.google.com/compute/docs/instances/verifying-instance-identity
@@ -5674,21 +5802,51 @@ class UpgradeInstanceInternalRequest {
   core.String? vmId;
 
   UpgradeInstanceInternalRequest({
+    this.type,
     this.vmId,
   });
 
   UpgradeInstanceInternalRequest.fromJson(core.Map _json)
       : this(
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
           vmId: _json.containsKey('vmId') ? _json['vmId'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (type != null) 'type': type!,
         if (vmId != null) 'vmId': vmId!,
       };
 }
 
 /// Request for upgrading a notebook instance
-typedef UpgradeInstanceRequest = $Empty;
+class UpgradeInstanceRequest {
+  /// The optional UpgradeType.
+  ///
+  /// Setting this field will search for additional compute images to upgrade
+  /// this instance.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "UPGRADE_TYPE_UNSPECIFIED" : Upgrade type is not specified.
+  /// - "UPGRADE_FRAMEWORK" : Upgrade ML framework.
+  /// - "UPGRADE_OS" : Upgrade Operating System.
+  /// - "UPGRADE_CUDA" : Upgrade CUDA.
+  /// - "UPGRADE_ALL" : Upgrade All (OS, Framework and CUDA).
+  core.String? type;
+
+  UpgradeInstanceRequest({
+    this.type,
+  });
+
+  UpgradeInstanceRequest.fromJson(core.Map _json)
+      : this(
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (type != null) 'type': type!,
+      };
+}
 
 /// Parameters used in Vertex AI JobType executions.
 class VertexAIParameters {

@@ -544,7 +544,8 @@ class ChromeosdevicesResource {
   /// - "supportEndDate" : Chrome device support end date. This is applicable
   /// only for devices purchased directly from Google.
   ///
-  /// [orgUnitPath] - The full path of the organizational unit or its unique ID.
+  /// [orgUnitPath] - The full path of the organizational unit (minus the
+  /// leading `/`) or its unique ID.
   ///
   /// [pageToken] - The `pageToken` query parameter is used to request the next
   /// page of query results. The follow-on request's `pageToken` query parameter
@@ -2645,7 +2646,13 @@ class MobiledevicesResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Retrieves a paginated list of all mobile devices for an account.
+  /// Retrieves a paginated list of all user-owned mobile devices for an
+  /// account.
+  ///
+  /// To retrieve a list that includes company-owned devices, use the Cloud
+  /// Identity
+  /// [Devices API](https://cloud.google.com/identity/docs/concepts/overview-devices)
+  /// instead.
   ///
   /// Request parameters:
   ///
@@ -2747,7 +2754,8 @@ class OrgunitsResource {
   /// as part of the \[Users
   /// resource\](/admin-sdk/directory/v1/reference/users).
   ///
-  /// [orgUnitPath] - The full path of the organizational unit or its unique ID.
+  /// [orgUnitPath] - The full path of the organizational unit (minus the
+  /// leading `/`) or its unique ID.
   /// Value must have pattern `^.*$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -2790,7 +2798,8 @@ class OrgunitsResource {
   /// as part of the \[Users
   /// resource\](/admin-sdk/directory/v1/reference/users).
   ///
-  /// [orgUnitPath] - The full path of the organizational unit or its unique ID.
+  /// [orgUnitPath] - The full path of the organizational unit (minus the
+  /// leading `/`) or its unique ID.
   /// Value must have pattern `^.*$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -2938,7 +2947,8 @@ class OrgunitsResource {
   /// as part of the \[Users
   /// resource\](/admin-sdk/directory/v1/reference/users).
   ///
-  /// [orgUnitPath] - The full path of the organizational unit or its unique ID.
+  /// [orgUnitPath] - The full path of the organizational unit (minus the
+  /// leading `/`) or its unique ID.
   /// Value must have pattern `^.*$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -2988,7 +2998,8 @@ class OrgunitsResource {
   /// as part of the \[Users
   /// resource\](/admin-sdk/directory/v1/reference/users).
   ///
-  /// [orgUnitPath] - The full path of the organizational unit or its unique ID.
+  /// [orgUnitPath] - The full path of the organizational unit (minus the
+  /// leading `/`) or its unique ID.
   /// Value must have pattern `^.*$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial

@@ -3861,6 +3861,12 @@ class Drive {
   /// The name of this shared drive.
   core.String? name;
 
+  /// The organizational unit of this shared drive.
+  ///
+  /// This field is only populated on drives.list responses when the
+  /// useDomainAdminAccess parameter is set to true.
+  core.String? orgUnitId;
+
   /// A set of restrictions that apply to this shared drive or items inside this
   /// shared drive.
   DriveRestrictions? restrictions;
@@ -3884,6 +3890,7 @@ class Drive {
     this.id,
     this.kind,
     this.name,
+    this.orgUnitId,
     this.restrictions,
     this.themeId,
   });
@@ -3912,6 +3919,9 @@ class Drive {
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          orgUnitId: _json.containsKey('orgUnitId')
+              ? _json['orgUnitId'] as core.String
+              : null,
           restrictions: _json.containsKey('restrictions')
               ? DriveRestrictions.fromJson(
                   _json['restrictions'] as core.Map<core.String, core.dynamic>)
@@ -3934,6 +3944,7 @@ class Drive {
         if (id != null) 'id': id!,
         if (kind != null) 'kind': kind!,
         if (name != null) 'name': name!,
+        if (orgUnitId != null) 'orgUnitId': orgUnitId!,
         if (restrictions != null) 'restrictions': restrictions!,
         if (themeId != null) 'themeId': themeId!,
       };
@@ -6544,6 +6555,12 @@ class TeamDrive {
   /// The name of this Team Drive.
   core.String? name;
 
+  /// The organizational unit of this shared drive.
+  ///
+  /// This field is only populated on drives.list responses when the
+  /// useDomainAdminAccess parameter is set to true.
+  core.String? orgUnitId;
+
   /// A set of restrictions that apply to this Team Drive or items inside this
   /// Team Drive.
   TeamDriveRestrictions? restrictions;
@@ -6566,6 +6583,7 @@ class TeamDrive {
     this.id,
     this.kind,
     this.name,
+    this.orgUnitId,
     this.restrictions,
     this.themeId,
   });
@@ -6593,6 +6611,9 @@ class TeamDrive {
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          orgUnitId: _json.containsKey('orgUnitId')
+              ? _json['orgUnitId'] as core.String
+              : null,
           restrictions: _json.containsKey('restrictions')
               ? TeamDriveRestrictions.fromJson(
                   _json['restrictions'] as core.Map<core.String, core.dynamic>)
@@ -6614,6 +6635,7 @@ class TeamDrive {
         if (id != null) 'id': id!,
         if (kind != null) 'kind': kind!,
         if (name != null) 'name': name!,
+        if (orgUnitId != null) 'orgUnitId': orgUnitId!,
         if (restrictions != null) 'restrictions': restrictions!,
         if (themeId != null) 'themeId': themeId!,
       };

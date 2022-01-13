@@ -633,6 +633,7 @@ class $AudienceSegment {
 /// - policytroubleshooter:v1 : GoogleIamV1AuditLogConfig
 /// - privateca:v1 : AuditLogConfig
 /// - run:v1 : AuditLogConfig
+/// - run:v2 : GoogleIamV1AuditLogConfig
 /// - secretmanager:v1 : AuditLogConfig
 /// - securitycenter:v1 : AuditLogConfig
 /// - servicemanagement:v1 : AuditLogConfig
@@ -3363,6 +3364,7 @@ class $EgressFrom {
 /// - mybusinessbusinessinformation:v1 : ClearLocationAssociationRequest
 /// - mybusinessbusinessinformation:v1 : Empty
 /// - mybusinessplaceactions:v1 : Empty
+/// - mybusinessqanda:v1 : Empty
 /// - mybusinessverifications:v1 : ComplyWithGuidelines
 /// - mybusinessverifications:v1 : ResolveOwnershipConflict
 /// - mybusinessverifications:v1 : WaitForVoiceOfMerchant
@@ -3384,7 +3386,6 @@ class $EgressFrom {
 /// - notebooks:v1 : StopInstanceRequest
 /// - notebooks:v1 : StopRuntimeRequest
 /// - notebooks:v1 : TriggerScheduleRequest
-/// - notebooks:v1 : UpgradeInstanceRequest
 /// - ondemandscanning:v1 : Empty
 /// - orgpolicy:v2 : GoogleCloudOrgpolicyV2ConstraintBooleanConstraint
 /// - orgpolicy:v2 : GoogleProtobufEmpty
@@ -3419,8 +3420,7 @@ class $EgressFrom {
 /// - recaptchaenterprise:v1 : GoogleProtobufEmpty
 /// - redis:v1 : Empty
 /// - retail:v2 : GoogleProtobufEmpty
-/// - run:v1 : Empty
-/// - run:v1 : GoogleLongrunningCancelOperationRequest
+/// - run:v2 : GoogleProtobufEmpty
 /// - runtimeconfig:v1 : CancelOperationRequest
 /// - runtimeconfig:v1 : Empty
 /// - safebrowsing:v4 : GoogleProtobufEmpty
@@ -3456,6 +3456,7 @@ class $EgressFrom {
 /// - tpu:v1 : StartNodeRequest
 /// - tpu:v1 : StopNodeRequest
 /// - trafficdirector:v2 : NullMatch
+/// - transcoder:v1 : Empty
 /// - translate:v3 : CancelOperationRequest
 /// - translate:v3 : Empty
 /// - vault:v1 : CancelOperationRequest
@@ -3819,6 +3820,7 @@ class $ExportOptions {
 /// - privateca:v1 : Expr
 /// - pubsub:v1 : Expr
 /// - run:v1 : Expr
+/// - run:v2 : GoogleTypeExpr
 /// - secretmanager:v1 : Expr
 /// - securitycenter:v1 : Expr
 /// - servicedirectory:v1 : Expr
@@ -4228,6 +4230,7 @@ class $GcsSource {
 /// - cloudresourcemanager:v1 : GetPolicyOptions
 /// - cloudresourcemanager:v2 : GetPolicyOptions
 /// - cloudresourcemanager:v3 : GetPolicyOptions
+/// - cloudtasks:v2 : GetPolicyOptions
 /// - containeranalysis:v1 : GetPolicyOptions
 /// - datacatalog:v1 : GetPolicyOptions
 /// - iap:v1 : GetPolicyOptions
@@ -6297,48 +6300,6 @@ class $MonitoringDestination {
 
 /// Used by:
 ///
-/// - containeranalysis:v1 : NonCompliantFile
-/// - ondemandscanning:v1 : NonCompliantFile
-class $NonCompliantFile {
-  /// Command to display the non-compliant files.
-  core.String? displayCommand;
-
-  /// display_command is a single command that can be used to display a list of
-  /// non compliant files.
-  ///
-  /// When there is no such command, we can also iterate a list of non compliant
-  /// file using 'path'. Empty if `display_command` is set.
-  core.String? path;
-
-  /// Explains why a file is non compliant for a CIS check.
-  core.String? reason;
-
-  $NonCompliantFile({
-    this.displayCommand,
-    this.path,
-    this.reason,
-  });
-
-  $NonCompliantFile.fromJson(core.Map _json)
-      : this(
-          displayCommand: _json.containsKey('displayCommand')
-              ? _json['displayCommand'] as core.String
-              : null,
-          path: _json.containsKey('path') ? _json['path'] as core.String : null,
-          reason: _json.containsKey('reason')
-              ? _json['reason'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (displayCommand != null) 'displayCommand': displayCommand!,
-        if (path != null) 'path': path!,
-        if (reason != null) 'reason': reason!,
-      };
-}
-
-/// Used by:
-///
 /// - servicemanagement:v1 : OAuthRequirements
 /// - serviceusage:v1 : OAuthRequirements
 class $OAuthRequirements {
@@ -7112,6 +7073,7 @@ class $PathReportDimensionValue {
 /// - privateca:v1 : TestIamPermissionsResponse
 /// - pubsub:v1 : TestIamPermissionsResponse
 /// - run:v1 : TestIamPermissionsResponse
+/// - run:v2 : GoogleIamV1TestIamPermissionsResponse
 /// - secretmanager:v1 : TestIamPermissionsResponse
 /// - securitycenter:v1 : TestIamPermissionsResponse
 /// - servicedirectory:v1 : TestIamPermissionsResponse
@@ -9476,6 +9438,7 @@ class $StartPageToken {
 /// - pubsublite:v1 : Status
 /// - redis:v1 : Status
 /// - retail:v2 : GoogleRpcStatus
+/// - run:v2 : GoogleRpcStatus
 /// - runtimeconfig:v1 : Status
 /// - securitycenter:v1 : Status
 /// - serviceconsumermanagement:v1 : Status
@@ -9489,8 +9452,8 @@ class $StartPageToken {
 /// - speech:v1 : Status
 /// - storagetransfer:v1 : Status
 /// - streetviewpublish:v1 : Status
-/// - texttospeech:v1 : Status
 /// - tpu:v1 : Status
+/// - transcoder:v1 : Status
 /// - translate:v3 : Status
 /// - vault:v1 : Status
 /// - videointelligence:v1 : GoogleRpc_Status
@@ -9606,40 +9569,6 @@ class $Subaccount {
 
 /// Used by:
 ///
-/// - containeranalysis:v1 : Subject
-/// - ondemandscanning:v1 : Subject
-class $Subject {
-  /// "": "" Algorithms can be e.g. sha256, sha512 See
-  /// https://github.com/in-toto/attestation/blob/main/spec/field_types.md#DigestSet
-  core.Map<core.String, core.String>? digest;
-  core.String? name;
-
-  $Subject({
-    this.digest,
-    this.name,
-  });
-
-  $Subject.fromJson(core.Map _json)
-      : this(
-          digest: _json.containsKey('digest')
-              ? (_json['digest'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.String,
-                  ),
-                )
-              : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (digest != null) 'digest': digest!,
-        if (name != null) 'name': name!,
-      };
-}
-
-/// Used by:
-///
 /// - dfareporting:v3.4 : TagData
 /// - dfareporting:v3.5 : TagData
 class $TagData {
@@ -9677,6 +9606,7 @@ class $TagData {
   /// - "PLACEMENT_TAG_INTERSTITIAL_IFRAME_JAVASCRIPT_LEGACY"
   /// - "PLACEMENT_TAG_INTERSTITIAL_JAVASCRIPT_LEGACY"
   /// - "PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH_VAST_4"
+  /// - "PLACEMENT_TAG_TRACKING_THIRD_PARTY_MEASUREMENT"
   core.String? format;
 
   /// Tag string for serving an ad.
@@ -9951,6 +9881,7 @@ class $TenantProjectRequest {
 /// - privateca:v1 : TestIamPermissionsRequest
 /// - pubsub:v1 : TestIamPermissionsRequest
 /// - run:v1 : TestIamPermissionsRequest
+/// - run:v2 : GoogleIamV1TestIamPermissionsRequest
 /// - secretmanager:v1 : TestIamPermissionsRequest
 /// - securitycenter:v1 : TestIamPermissionsRequest
 /// - servicedirectory:v1 : TestIamPermissionsRequest

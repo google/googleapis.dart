@@ -777,6 +777,7 @@ api.Drive buildDrive() {
     o.id = 'foo';
     o.kind = 'foo';
     o.name = 'foo';
+    o.orgUnitId = 'foo';
     o.restrictions = buildDriveRestrictions();
     o.themeId = 'foo';
   }
@@ -812,6 +813,10 @@ void checkDrive(api.Drive o) {
     );
     unittest.expect(
       o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.orgUnitId!,
       unittest.equals('foo'),
     );
     checkDriveRestrictions(o.restrictions!);
@@ -2267,6 +2272,7 @@ api.TeamDrive buildTeamDrive() {
     o.id = 'foo';
     o.kind = 'foo';
     o.name = 'foo';
+    o.orgUnitId = 'foo';
     o.restrictions = buildTeamDriveRestrictions();
     o.themeId = 'foo';
   }
@@ -2301,6 +2307,10 @@ void checkTeamDrive(api.TeamDrive o) {
     );
     unittest.expect(
       o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.orgUnitId!,
       unittest.equals('foo'),
     );
     checkTeamDriveRestrictions(o.restrictions!);

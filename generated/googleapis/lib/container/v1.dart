@@ -5036,6 +5036,10 @@ class ClusterUpdate {
   /// The desired configuration for exporting resource usage.
   ResourceUsageExportConfig? desiredResourceUsageExportConfig;
 
+  /// ServiceExternalIPsConfig specifies the config for the use of Services with
+  /// ExternalIPs field.
+  ServiceExternalIPsConfig? desiredServiceExternalIpsConfig;
+
   /// Configuration for Shielded Nodes.
   ShieldedNodes? desiredShieldedNodes;
 
@@ -5074,6 +5078,7 @@ class ClusterUpdate {
     this.desiredPrivateIpv6GoogleAccess,
     this.desiredReleaseChannel,
     this.desiredResourceUsageExportConfig,
+    this.desiredServiceExternalIpsConfig,
     this.desiredShieldedNodes,
     this.desiredVerticalPodAutoscaling,
     this.desiredWorkloadIdentityConfig,
@@ -5206,6 +5211,12 @@ class ClusterUpdate {
                       _json['desiredResourceUsageExportConfig']
                           as core.Map<core.String, core.dynamic>)
                   : null,
+          desiredServiceExternalIpsConfig:
+              _json.containsKey('desiredServiceExternalIpsConfig')
+                  ? ServiceExternalIPsConfig.fromJson(
+                      _json['desiredServiceExternalIpsConfig']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           desiredShieldedNodes: _json.containsKey('desiredShieldedNodes')
               ? ShieldedNodes.fromJson(_json['desiredShieldedNodes']
                   as core.Map<core.String, core.dynamic>)
@@ -5277,6 +5288,8 @@ class ClusterUpdate {
           'desiredReleaseChannel': desiredReleaseChannel!,
         if (desiredResourceUsageExportConfig != null)
           'desiredResourceUsageExportConfig': desiredResourceUsageExportConfig!,
+        if (desiredServiceExternalIpsConfig != null)
+          'desiredServiceExternalIpsConfig': desiredServiceExternalIpsConfig!,
         if (desiredShieldedNodes != null)
           'desiredShieldedNodes': desiredShieldedNodes!,
         if (desiredVerticalPodAutoscaling != null)
@@ -5716,6 +5729,33 @@ class DnsCacheConfig {
 /// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
 /// object `{}`.
 typedef Empty = $Empty;
+
+/// Allows filtering to one or more specific event types.
+///
+/// If event types are present, those and only those event types will be
+/// transmitted to the cluster. Other types will be skipped. If no filter is
+/// specified, or no event types are present, all event types will be sent
+class Filter {
+  /// Event types to allowlist.
+  core.List<core.String>? eventType;
+
+  Filter({
+    this.eventType,
+  });
+
+  Filter.fromJson(core.Map _json)
+      : this(
+          eventType: _json.containsKey('eventType')
+              ? (_json['eventType'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (eventType != null) 'eventType': eventType!,
+      };
+}
 
 /// Configuration for the Compute Engine PD CSI driver.
 class GcePersistentDiskCsiDriverConfig {
@@ -6548,6 +6588,36 @@ class LoggingConfig {
       };
 }
 
+/// Represents the Maintenance exclusion option.
+class MaintenanceExclusionOptions {
+  /// Scope specifies the upgrade scope which upgrades are blocked by the
+  /// exclusion.
+  /// Possible string values are:
+  /// - "NO_UPGRADES" : NO_UPGRADES excludes all upgrades, including patch
+  /// upgrades and minor upgrades across control planes and nodes. This is the
+  /// default exclusion behavior.
+  /// - "NO_MINOR_UPGRADES" : NO_MINOR_UPGRADES excludes all minor upgrades for
+  /// the cluster, only patches are allowed.
+  /// - "NO_MINOR_OR_NODE_UPGRADES" : NO_MINOR_OR_NODE_UPGRADES excludes all
+  /// minor upgrades for the cluster, and also exclude all node pool upgrades.
+  /// Only control plane patches are allowed.
+  core.String? scope;
+
+  MaintenanceExclusionOptions({
+    this.scope,
+  });
+
+  MaintenanceExclusionOptions.fromJson(core.Map _json)
+      : this(
+          scope:
+              _json.containsKey('scope') ? _json['scope'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (scope != null) 'scope': scope!,
+      };
+}
+
 /// MaintenancePolicy defines the maintenance policy to be used for the cluster.
 class MaintenancePolicy {
   /// A hash identifying the version of this policy, so that updates to fields
@@ -6966,6 +7036,10 @@ class NetworkConfig {
   /// to and from Google Services
   core.String? privateIpv6GoogleAccess;
 
+  /// ServiceExternalIPsConfig specifies if services with externalIPs field are
+  /// blocked or not.
+  ServiceExternalIPsConfig? serviceExternalIpsConfig;
+
   /// The relative name of the Google Compute Engine
   /// [subnetwork](https://cloud.google.com/compute/docs/vpc) to which the
   /// cluster is connected.
@@ -6983,6 +7057,7 @@ class NetworkConfig {
     this.enableL4ilbSubsetting,
     this.network,
     this.privateIpv6GoogleAccess,
+    this.serviceExternalIpsConfig,
     this.subnetwork,
   });
 
@@ -7012,6 +7087,12 @@ class NetworkConfig {
           privateIpv6GoogleAccess: _json.containsKey('privateIpv6GoogleAccess')
               ? _json['privateIpv6GoogleAccess'] as core.String
               : null,
+          serviceExternalIpsConfig:
+              _json.containsKey('serviceExternalIpsConfig')
+                  ? ServiceExternalIPsConfig.fromJson(
+                      _json['serviceExternalIpsConfig']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           subnetwork: _json.containsKey('subnetwork')
               ? _json['subnetwork'] as core.String
               : null,
@@ -7028,6 +7109,8 @@ class NetworkConfig {
         if (network != null) 'network': network!,
         if (privateIpv6GoogleAccess != null)
           'privateIpv6GoogleAccess': privateIpv6GoogleAccess!,
+        if (serviceExternalIpsConfig != null)
+          'serviceExternalIpsConfig': serviceExternalIpsConfig!,
         if (subnetwork != null) 'subnetwork': subnetwork!,
       };
 }
@@ -7465,8 +7548,8 @@ class NodeKubeletConfig {
   ///
   /// See
   /// https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/
-  /// The following values are allowed. - "none": the default, which represents
-  /// the existing scheduling behavior. - "static": allows pods with certain
+  /// The following values are allowed. * "none": the default, which represents
+  /// the existing scheduling behavior. * "static": allows pods with certain
   /// resource characteristics to be granted increased CPU affinity and
   /// exclusivity on the node. The default value is 'none' if unspecified.
   core.String? cpuManagerPolicy;
@@ -8317,6 +8400,12 @@ class PubSub {
   /// Enable notifications for Pub/Sub.
   core.bool? enabled;
 
+  /// Allows filtering to one or more specific event types.
+  ///
+  /// If no filter is specified, or if a filter is specified with no event
+  /// types, all event types will be sent
+  Filter? filter;
+
   /// The desired Pub/Sub topic to which notifications will be sent by GKE.
   ///
   /// Format is `projects/{project}/topics/{topic}`.
@@ -8324,6 +8413,7 @@ class PubSub {
 
   PubSub({
     this.enabled,
+    this.filter,
     this.topic,
   });
 
@@ -8332,12 +8422,17 @@ class PubSub {
           enabled: _json.containsKey('enabled')
               ? _json['enabled'] as core.bool
               : null,
+          filter: _json.containsKey('filter')
+              ? Filter.fromJson(
+                  _json['filter'] as core.Map<core.String, core.dynamic>)
+              : null,
           topic:
               _json.containsKey('topic') ? _json['topic'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (enabled != null) 'enabled': enabled!,
+        if (filter != null) 'filter': filter!,
         if (topic != null) 'topic': topic!,
       };
 }
@@ -8778,6 +8873,27 @@ class ServerConfig {
         if (validMasterVersions != null)
           'validMasterVersions': validMasterVersions!,
         if (validNodeVersions != null) 'validNodeVersions': validNodeVersions!,
+      };
+}
+
+/// Config to block services with externalIPs field.
+class ServiceExternalIPsConfig {
+  /// Whether Services with ExternalIPs field are allowed or not.
+  core.bool? enabled;
+
+  ServiceExternalIPsConfig({
+    this.enabled,
+  });
+
+  ServiceExternalIPsConfig.fromJson(core.Map _json)
+      : this(
+          enabled: _json.containsKey('enabled')
+              ? _json['enabled'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enabled != null) 'enabled': enabled!,
       };
 }
 
@@ -9989,11 +10105,16 @@ class TimeWindow {
   /// The end time should take place after the start time.
   core.String? endTime;
 
+  /// MaintenanceExclusionOptions provides maintenance exclusion related
+  /// options.
+  MaintenanceExclusionOptions? maintenanceExclusionOptions;
+
   /// The time that the window first starts.
   core.String? startTime;
 
   TimeWindow({
     this.endTime,
+    this.maintenanceExclusionOptions,
     this.startTime,
   });
 
@@ -10002,6 +10123,12 @@ class TimeWindow {
           endTime: _json.containsKey('endTime')
               ? _json['endTime'] as core.String
               : null,
+          maintenanceExclusionOptions:
+              _json.containsKey('maintenanceExclusionOptions')
+                  ? MaintenanceExclusionOptions.fromJson(
+                      _json['maintenanceExclusionOptions']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           startTime: _json.containsKey('startTime')
               ? _json['startTime'] as core.String
               : null,
@@ -10009,6 +10136,8 @@ class TimeWindow {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (endTime != null) 'endTime': endTime!,
+        if (maintenanceExclusionOptions != null)
+          'maintenanceExclusionOptions': maintenanceExclusionOptions!,
         if (startTime != null) 'startTime': startTime!,
       };
 }

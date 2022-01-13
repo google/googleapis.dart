@@ -777,7 +777,7 @@
             }
         }
     },
-    "revision": "20211115",
+    "revision": "20211210",
     "rootUrl": "https://domains.googleapis.com/",
     "schemas": {
         "AuditConfig": {

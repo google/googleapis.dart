@@ -497,9 +497,11 @@ class ProjectsResource {
 
   /// Gets the billing information for a project.
   ///
-  /// The current authenticated user must have \[permission to view the
-  /// project\](https://cloud.google.com/docs/permissions-overview#h.bgs0oxofvnoo
-  /// ).
+  /// The current authenticated user must have the
+  /// `resourcemanager.projects.get` permission for the project, which can be
+  /// granted by assigning the
+  /// [Project Viewer](https://cloud.google.com/iam/docs/understanding-roles#predefined_roles)
+  /// role.
   ///
   /// Request parameters:
   ///

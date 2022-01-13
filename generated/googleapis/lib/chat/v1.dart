@@ -1025,6 +1025,10 @@ class ActionResponse {
   /// - "NEW_MESSAGE" : Post as a new message in the topic.
   /// - "UPDATE_MESSAGE" : Update the bot's message. This is only permitted on a
   /// CARD_CLICKED event where the message sender type is BOT.
+  /// - "UPDATE_USER_MESSAGE_CARDS" : Update the cards on a user's message. This
+  /// is only permitted as a response to a MESSAGE event with a matched url, or
+  /// a CARD_CLICKED event where the message sender type is HUMAN. Text will be
+  /// ignored.
   /// - "REQUEST_CONFIG" : Update a message, with cards only. (Only after a
   /// MESSAGE event with a matched url, or a CARD_CLICKED event on a human
   /// created message).
@@ -3568,6 +3572,28 @@ class ListSpacesResponse {
       };
 }
 
+/// A matched url in a Chat message.
+///
+/// Chat bots can unfurl matched URLs. For more information, refer to \[Unfurl
+/// links\](/chat/how-tos/link-unfurling).
+class MatchedUrl {
+  /// The url that was matched.
+  core.String? url;
+
+  MatchedUrl({
+    this.url,
+  });
+
+  MatchedUrl.fromJson(core.Map _json)
+      : this(
+          url: _json.containsKey('url') ? _json['url'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (url != null) 'url': url!,
+      };
+}
+
 /// Media resource.
 typedef Media = $Media;
 
@@ -3580,6 +3606,10 @@ class Membership {
   core.String? createTime;
 
   /// A user in Google Chat.
+  ///
+  /// Represents a person in the People API. Formatted as `users/person_id`
+  /// where `person_id` is available from the
+  /// [People API](https://developers.google.com/people/api/rest/v1/people).
   User? member;
   core.String? name;
 
@@ -3664,6 +3694,12 @@ class Message {
   /// Output only.
   core.String? lastUpdateTime;
 
+  /// A URL in `spaces.messages.text` that matches a link unfurling pattern.
+  ///
+  /// For more information, refer to \[Unfurl
+  /// links\](/chat/how-tos/link-unfurling).
+  MatchedUrl? matchedUrl;
+
   /// Resource name in the form `spaces / * /messages / * `.
   ///
   /// Example: `spaces/AAAAAAAAAAA/messages/BBBBBBBBBBB.BBBBBBBBBBB`
@@ -3699,6 +3735,7 @@ class Message {
     this.createTime,
     this.fallbackText,
     this.lastUpdateTime,
+    this.matchedUrl,
     this.name,
     this.previewText,
     this.sender,
@@ -3744,6 +3781,10 @@ class Message {
           lastUpdateTime: _json.containsKey('lastUpdateTime')
               ? _json['lastUpdateTime'] as core.String
               : null,
+          matchedUrl: _json.containsKey('matchedUrl')
+              ? MatchedUrl.fromJson(
+                  _json['matchedUrl'] as core.Map<core.String, core.dynamic>)
+              : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           previewText: _json.containsKey('previewText')
               ? _json['previewText'] as core.String
@@ -3776,6 +3817,7 @@ class Message {
         if (createTime != null) 'createTime': createTime!,
         if (fallbackText != null) 'fallbackText': fallbackText!,
         if (lastUpdateTime != null) 'lastUpdateTime': lastUpdateTime!,
+        if (matchedUrl != null) 'matchedUrl': matchedUrl!,
         if (name != null) 'name': name!,
         if (previewText != null) 'previewText': previewText!,
         if (sender != null) 'sender': sender!,
@@ -4078,13 +4120,17 @@ class User {
   /// The user's display name.
   core.String? displayName;
 
-  /// Obfuscated domain information.
+  /// Unique identifier of the user's Google Workspace domain.
   core.String? domainId;
 
   /// True when the user is deleted or the user's profile is not visible.
   core.bool? isAnonymous;
 
-  /// Resource name, in the format "users / * ".
+  /// Resource name for a Google Chat user.
+  ///
+  /// Formatted as `users/AAAAAAAAAAA`. Represents a
+  /// [person](https://developers.google.com/people/api/rest/v1/people#Person)
+  /// in the People API.
   core.String? name;
 
   /// User type.

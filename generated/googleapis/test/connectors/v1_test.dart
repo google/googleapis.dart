@@ -554,6 +554,7 @@ api.Connector buildConnector() {
     o.documentationUri = 'foo';
     o.externalUri = 'foo';
     o.labels = buildUnnamed10();
+    o.launchStage = 'foo';
     o.name = 'foo';
     o.updateTime = 'foo';
     o.webAssetsLocation = 'foo';
@@ -586,6 +587,10 @@ void checkConnector(api.Connector o) {
       unittest.equals('foo'),
     );
     checkUnnamed10(o.labels!);
+    unittest.expect(
+      o.launchStage!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -1758,6 +1763,7 @@ api.Provider buildProvider() {
     o.documentationUri = 'foo';
     o.externalUri = 'foo';
     o.labels = buildUnnamed35();
+    o.launchStage = 'foo';
     o.name = 'foo';
     o.updateTime = 'foo';
     o.webAssetsLocation = 'foo';
@@ -1790,6 +1796,10 @@ void checkProvider(api.Provider o) {
       unittest.equals('foo'),
     );
     checkUnnamed35(o.labels!);
+    unittest.expect(
+      o.launchStage!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.name!,
       unittest.equals('foo'),

@@ -127,7 +127,10 @@ class SitemapsResource {
 
   SitemapsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Deletes a sitemap from this site.
+  /// Deletes a sitemap from the Sitemaps report.
+  ///
+  /// Does not stop Google from crawling this sitemap or the URLs that were
+  /// previously crawled in the deleted sitemap.
   ///
   /// Request parameters:
   ///

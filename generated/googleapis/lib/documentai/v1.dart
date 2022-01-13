@@ -141,11 +141,14 @@ class ProjectsLocationsResource {
 
   /// Fetches processor types.
   ///
+  /// Note that we do not use ListProcessorTypes here because it is not
+  /// paginated.
+  ///
   /// Request parameters:
   ///
   /// [parent] - Required. The project of processor type to list. The available
-  /// processor types may depend on the whitelisting on projects. Format:
-  /// projects/{project}/locations/{location}
+  /// processor types may depend on the allow-listing on projects. Format:
+  /// `projects/{project}/locations/{location}`
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -438,8 +441,9 @@ class ProjectsLocationsProcessorsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The resource name of Processor or ProcessorVersion.
-  /// Format: projects/{project}/locations/{location}/processors/{processor}, or
-  /// projects/{project}/locations/{location}/processors/{processor}/processorVersions/{processorVersion}
+  /// Format: `projects/{project}/locations/{location}/processors/{processor}`,
+  /// or
+  /// `projects/{project}/locations/{location}/processors/{processor}/processorVersions/{processorVersion}`
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/processors/\[^/\]+$`.
   ///
@@ -484,7 +488,7 @@ class ProjectsLocationsProcessorsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The parent (project and location) under which to
-  /// create the processor. Format: projects/{project}/locations/{location}
+  /// create the processor. Format: `projects/{project}/locations/{location}`
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -683,7 +687,8 @@ class ProjectsLocationsProcessorsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The parent (project and location) which owns this
-  /// collection of Processors. Format: projects/{project}/locations/{location}
+  /// collection of Processors. Format:
+  /// `projects/{project}/locations/{location}`
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [pageSize] - The maximum number of processors to return. If unspecified,
@@ -735,8 +740,8 @@ class ProjectsLocationsProcessorsResource {
   /// [name] - Required. The resource name of the Processor or ProcessorVersion
   /// to use for processing. If a Processor is specified, the server will use
   /// its default version. Format:
-  /// projects/{project}/locations/{location}/processors/{processor}, or
-  /// projects/{project}/locations/{location}/processors/{processor}/processorVersions/{processorVersion}
+  /// `projects/{project}/locations/{location}/processors/{processor}`, or
+  /// `projects/{project}/locations/{location}/processors/{processor}/processorVersions/{processorVersion}`
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/processors/\[^/\]+$`.
   ///
@@ -889,8 +894,9 @@ class ProjectsLocationsProcessorsProcessorVersionsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The resource name of Processor or ProcessorVersion.
-  /// Format: projects/{project}/locations/{location}/processors/{processor}, or
-  /// projects/{project}/locations/{location}/processors/{processor}/processorVersions/{processorVersion}
+  /// Format: `projects/{project}/locations/{location}/processors/{processor}`,
+  /// or
+  /// `projects/{project}/locations/{location}/processors/{processor}/processorVersions/{processorVersion}`
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/processors/\[^/\]+/processorVersions/\[^/\]+$`.
   ///
@@ -1049,7 +1055,7 @@ class ProjectsLocationsProcessorsProcessorVersionsResource {
   ///
   /// [parent] - Required. The parent (project, location and processor) to list
   /// all versions. Format:
-  /// projects/{project}/locations/{location}/processors/{processor}
+  /// `projects/{project}/locations/{location}/processors/{processor}`
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/processors/\[^/\]+$`.
   ///
@@ -1102,8 +1108,8 @@ class ProjectsLocationsProcessorsProcessorVersionsResource {
   /// [name] - Required. The resource name of the Processor or ProcessorVersion
   /// to use for processing. If a Processor is specified, the server will use
   /// its default version. Format:
-  /// projects/{project}/locations/{location}/processors/{processor}, or
-  /// projects/{project}/locations/{location}/processors/{processor}/processorVersions/{processorVersion}
+  /// `projects/{project}/locations/{location}/processors/{processor}`, or
+  /// `projects/{project}/locations/{location}/processors/{processor}/processorVersions/{processorVersion}`
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/processors/\[^/\]+/processorVersions/\[^/\]+$`.
   ///
@@ -1777,8 +1783,8 @@ class GoogleCloudDocumentaiV1Document {
       };
 }
 
-/// An entity that could be a phrase in the text or a property belongs to the
-/// document.
+/// An entity that could be a phrase in the text or a property that belongs to
+/// the document.
 ///
 /// It is a known entity type, such as a person, an organization, or location.
 class GoogleCloudDocumentaiV1DocumentEntity {
@@ -1960,8 +1966,8 @@ class GoogleCloudDocumentaiV1DocumentEntityNormalizedValue {
 
   /// An optional field to store a normalized string.
   ///
-  /// For some entity types, one of respective 'structured_value' fields may
-  /// also be populated. Also not all the types of 'structured_value' will be
+  /// For some entity types, one of respective `structured_value` fields may
+  /// also be populated. Also not all the types of `structured_value` will be
   /// normalized. For example, some processors may not generate float or int
   /// normalized text by default. Below are sample formats mapped to structured
   /// values. - Money/Currency type (`money_value`) is in the ISO 4217 text
@@ -3163,7 +3169,8 @@ class GoogleCloudDocumentaiV1DocumentProvenanceParent {
 
   /// The index of the parent item in the corresponding item list (eg.
   ///
-  /// list of entities, properties within entities, etc.) on parent revision.
+  /// list of entities, properties within entities, etc.) in the parent
+  /// revision.
   core.int? index;
 
   /// The index of the index into current revision's parent_ids list.
@@ -3898,7 +3905,7 @@ class GoogleCloudDocumentaiV1ProcessResponse {
       };
 }
 
-/// The first-class citizen for DAI.
+/// The first-class citizen for Document AI.
 ///
 /// Each processor defines how to extract structural information from a
 /// document.
@@ -3919,7 +3926,7 @@ class GoogleCloudDocumentaiV1Processor {
 
   /// The resource name of the processor.
   ///
-  /// Format: projects/{project}/locations/{location}/processors/{processor}
+  /// Format: `projects/{project}/locations/{location}/processors/{processor}`
   ///
   /// Output only. Immutable.
   core.String? name;
@@ -3934,7 +3941,7 @@ class GoogleCloudDocumentaiV1Processor {
   /// Output only.
   /// Possible string values are:
   /// - "STATE_UNSPECIFIED" : The processor is in an unspecified state.
-  /// - "ENABLED" : The processor is enabled, i.e, has an enabled version which
+  /// - "ENABLED" : The processor is enabled, i.e., has an enabled version which
   /// can currently serve processing requests and all the feature dependencies
   /// have been successfully initialized.
   /// - "DISABLED" : The processor is disabled.
@@ -4005,27 +4012,11 @@ class GoogleCloudDocumentaiV1Processor {
 
 /// A processor type is responsible for performing a certain document
 /// understanding task on a certain type of document.
-///
-/// All processor types are created by the documentai service internally. User
-/// will only list all available processor types via UI. For different users
-/// (projects), the available processor types may be different since we'll
-/// expose the access of some types via EAP whitelisting. We make the
-/// ProcessorType a resource under location so we have a unified API and keep
-/// the possibility that UI will load different available processor types from
-/// different regions. But for alpha the behavior is that the user will always
-/// get the union of all available processor types among all regions no matter
-/// which regionalized endpoint is called, and then we use the
-/// 'available_locations' field to show under which regions a processor type is
-/// available. For example, users can call either the 'US' or 'EU' endpoint to
-/// feach processor types. In the return, we will have an 'invoice parsing'
-/// processor with 'available_locations' field only containing 'US'. So the user
-/// can try to create an 'invoice parsing' processor under the location 'US'.
-/// Such attempt of creating under the location 'EU' will fail. Next ID: 9.
 class GoogleCloudDocumentaiV1ProcessorType {
   /// Whether the processor type allows creation.
   ///
-  /// If yes, user can create a processor of this processor type. Otherwise,
-  /// user needs to request access.
+  /// If true, users can create a processor of this processor type. Otherwise,
+  /// users need to request access.
   core.bool? allowCreation;
 
   /// The locations in which this processor is available.
@@ -4157,7 +4148,7 @@ class GoogleCloudDocumentaiV1ProcessorVersion {
   /// The resource name of the processor version.
   ///
   /// Format:
-  /// projects/{project}/locations/{location}/processors/{processor}/processorVersions/{processor_version}
+  /// `projects/{project}/locations/{location}/processors/{processor}/processorVersions/{processor_version}`
   core.String? name;
 
   /// The state of the processor version.
@@ -4240,8 +4231,6 @@ class GoogleCloudDocumentaiV1RawDocument {
 }
 
 /// Request message for review document method.
-///
-/// Next Id: 6.
 class GoogleCloudDocumentaiV1ReviewDocumentRequest {
   /// Whether the validation should be performed on the ad-hoc review request.
   core.bool? enableSchemaValidation;

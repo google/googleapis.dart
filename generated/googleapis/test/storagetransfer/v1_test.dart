@@ -499,6 +499,43 @@ void checkLoggingConfig(api.LoggingConfig o) {
   buildCounterLoggingConfig--;
 }
 
+core.int buildCounterMetadataOptions = 0;
+api.MetadataOptions buildMetadataOptions() {
+  final o = api.MetadataOptions();
+  buildCounterMetadataOptions++;
+  if (buildCounterMetadataOptions < 3) {
+    o.gid = 'foo';
+    o.mode = 'foo';
+    o.symlink = 'foo';
+    o.uid = 'foo';
+  }
+  buildCounterMetadataOptions--;
+  return o;
+}
+
+void checkMetadataOptions(api.MetadataOptions o) {
+  buildCounterMetadataOptions++;
+  if (buildCounterMetadataOptions < 3) {
+    unittest.expect(
+      o.gid!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.mode!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.symlink!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.uid!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterMetadataOptions--;
+}
+
 core.List<core.String> buildUnnamed5() => [
       'foo',
       'foo',
@@ -1060,6 +1097,7 @@ api.TransferOptions buildTransferOptions() {
   if (buildCounterTransferOptions < 3) {
     o.deleteObjectsFromSourceAfterTransfer = true;
     o.deleteObjectsUniqueInSink = true;
+    o.metadataOptions = buildMetadataOptions();
     o.overwriteObjectsAlreadyExistingInSink = true;
   }
   buildCounterTransferOptions--;
@@ -1071,6 +1109,7 @@ void checkTransferOptions(api.TransferOptions o) {
   if (buildCounterTransferOptions < 3) {
     unittest.expect(o.deleteObjectsFromSourceAfterTransfer!, unittest.isTrue);
     unittest.expect(o.deleteObjectsUniqueInSink!, unittest.isTrue);
+    checkMetadataOptions(o.metadataOptions!);
     unittest.expect(o.overwriteObjectsAlreadyExistingInSink!, unittest.isTrue);
   }
   buildCounterTransferOptions--;
@@ -1085,6 +1124,7 @@ api.TransferSpec buildTransferSpec() {
     o.azureBlobStorageDataSource = buildAzureBlobStorageData();
     o.gcsDataSink = buildGcsData();
     o.gcsDataSource = buildGcsData();
+    o.gcsIntermediateDataLocation = buildGcsData();
     o.httpDataSource = buildHttpData();
     o.objectConditions = buildObjectConditions();
     o.posixDataSink = buildPosixFilesystem();
@@ -1105,6 +1145,7 @@ void checkTransferSpec(api.TransferSpec o) {
     checkAzureBlobStorageData(o.azureBlobStorageDataSource!);
     checkGcsData(o.gcsDataSink!);
     checkGcsData(o.gcsDataSource!);
+    checkGcsData(o.gcsIntermediateDataLocation!);
     checkHttpData(o.httpDataSource!);
     checkObjectConditions(o.objectConditions!);
     checkPosixFilesystem(o.posixDataSink!);
@@ -1310,6 +1351,16 @@ void main() {
       final od = api.LoggingConfig.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkLoggingConfig(od);
+    });
+  });
+
+  unittest.group('obj-schema-MetadataOptions', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildMetadataOptions();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.MetadataOptions.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkMetadataOptions(od);
     });
   });
 

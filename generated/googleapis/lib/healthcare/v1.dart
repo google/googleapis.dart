@@ -391,12 +391,16 @@ class ProjectsLocationsDatasetsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+$`.
   ///
-  /// [options_requestedPolicyVersion] - Optional. The policy format version to
-  /// be returned. Valid values are 0, 1, and 3. Requests specifying an invalid
-  /// value will be rejected. Requests for policies with any conditional
-  /// bindings must specify version 3. Policies without any conditional bindings
-  /// may specify any valid value or leave the field unset. To learn which
-  /// resources support conditions in their IAM policies, see the
+  /// [options_requestedPolicyVersion] - Optional. The maximum policy version
+  /// that will be used to format the policy. Valid values are 0, 1, and 3.
+  /// Requests specifying an invalid value will be rejected. Requests for
+  /// policies with any conditional role bindings must specify version 3.
+  /// Policies with no conditional role bindings may specify any valid value or
+  /// leave the field unset. The policy in the response might use the policy
+  /// version that you specified, or it might use a lower policy version. For
+  /// example, if you specify version 3, but the policy has no conditional role
+  /// bindings, the response uses version 1. To learn which resources support
+  /// conditions in their IAM policies, see the
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -876,12 +880,16 @@ class ProjectsLocationsDatasetsConsentStoresResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/consentStores/\[^/\]+$`.
   ///
-  /// [options_requestedPolicyVersion] - Optional. The policy format version to
-  /// be returned. Valid values are 0, 1, and 3. Requests specifying an invalid
-  /// value will be rejected. Requests for policies with any conditional
-  /// bindings must specify version 3. Policies without any conditional bindings
-  /// may specify any valid value or leave the field unset. To learn which
-  /// resources support conditions in their IAM policies, see the
+  /// [options_requestedPolicyVersion] - Optional. The maximum policy version
+  /// that will be used to format the policy. Valid values are 0, 1, and 3.
+  /// Requests specifying an invalid value will be rejected. Requests for
+  /// policies with any conditional role bindings must specify version 3.
+  /// Policies with no conditional role bindings may specify any valid value or
+  /// leave the field unset. The policy in the response might use the policy
+  /// version that you specified, or it might use a lower policy version. For
+  /// example, if you specify version 3, but the policy has no conditional role
+  /// bindings, the response uses version 1. To learn which resources support
+  /// conditions in their IAM policies, see the
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -2721,12 +2729,16 @@ class ProjectsLocationsDatasetsDicomStoresResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/dicomStores/\[^/\]+$`.
   ///
-  /// [options_requestedPolicyVersion] - Optional. The policy format version to
-  /// be returned. Valid values are 0, 1, and 3. Requests specifying an invalid
-  /// value will be rejected. Requests for policies with any conditional
-  /// bindings must specify version 3. Policies without any conditional bindings
-  /// may specify any valid value or leave the field unset. To learn which
-  /// resources support conditions in their IAM policies, see the
+  /// [options_requestedPolicyVersion] - Optional. The maximum policy version
+  /// that will be used to format the policy. Valid values are 0, 1, and 3.
+  /// Requests specifying an invalid value will be rejected. Requests for
+  /// policies with any conditional role bindings must specify version 3.
+  /// Policies with no conditional role bindings may specify any valid value or
+  /// leave the field unset. The policy in the response might use the policy
+  /// version that you specified, or it might use a lower policy version. For
+  /// example, if you specify version 3, but the policy has no conditional role
+  /// bindings, the response uses version 1. To learn which resources support
+  /// conditions in their IAM policies, see the
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -4424,12 +4436,16 @@ class ProjectsLocationsDatasetsFhirStoresResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/fhirStores/\[^/\]+$`.
   ///
-  /// [options_requestedPolicyVersion] - Optional. The policy format version to
-  /// be returned. Valid values are 0, 1, and 3. Requests specifying an invalid
-  /// value will be rejected. Requests for policies with any conditional
-  /// bindings must specify version 3. Policies without any conditional bindings
-  /// may specify any valid value or leave the field unset. To learn which
-  /// resources support conditions in their IAM policies, see the
+  /// [options_requestedPolicyVersion] - Optional. The maximum policy version
+  /// that will be used to format the policy. Valid values are 0, 1, and 3.
+  /// Requests specifying an invalid value will be rejected. Requests for
+  /// policies with any conditional role bindings must specify version 3.
+  /// Policies with no conditional role bindings may specify any valid value or
+  /// leave the field unset. The policy in the response might use the policy
+  /// version that you specified, or it might use a lower policy version. For
+  /// example, if you specify version 3, but the policy has no conditional role
+  /// bindings, the response uses version 1. To learn which resources support
+  /// conditions in their IAM policies, see the
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -4922,6 +4938,81 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
       queryParams: _queryParams,
     );
     return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Validates an input FHIR resource's conformance to its profiles and the
+  /// profiles configured on the FHIR store.
+  ///
+  /// Implements the FHIR extended operation $validate
+  /// ([DSTU2](http://hl7.org/implement/standards/fhir/DSTU2/resource-operations.html#validate),
+  /// [STU3](http://hl7.org/implement/standards/fhir/STU3/resource-operations.html#validate),
+  /// or
+  /// [R4](http://hl7.org/implement/standards/fhir/R4/resource-operation-validate.html)).
+  /// The request body must contain a JSON-encoded FHIR resource, and the
+  /// request headers must contain `Content-Type: application/fhir+json`. The
+  /// `Parameters` input syntax is not supported. The `profile` query parameter
+  /// can be used to request that the resource only be validated against a
+  /// specific profile. If a profile with the given URL cannot be found in the
+  /// FHIR store then an error is returned. Errors generated by validation
+  /// contain a JSON-encoded `OperationOutcome` resource describing the reason
+  /// for the error. If the request cannot be mapped to a valid API method on a
+  /// FHIR store, a generic GCP error might be returned instead.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - The name of the FHIR store that holds the profiles being used
+  /// for validation.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/fhirStores/\[^/\]+$`.
+  ///
+  /// [type] - The FHIR resource type of the resource being validated. For a
+  /// complete list, see the FHIR Resource Index
+  /// ([DSTU2](http://hl7.org/implement/standards/fhir/DSTU2/resourcelist.html),
+  /// [STU3](http://hl7.org/implement/standards/fhir/STU3/resourcelist.html), or
+  /// [R4](http://hl7.org/implement/standards/fhir/R4/resourcelist.html)). Must
+  /// match the resource type in the provided content.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [profile] - A profile that this resource should be validated against.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [HttpBody].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<HttpBody> ResourceValidate(
+    HttpBody request,
+    core.String parent,
+    core.String type, {
+    core.String? profile,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (profile != null) 'profile': [profile],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' +
+        core.Uri.encodeFull('$parent') +
+        '/fhir/' +
+        core.Uri.encodeFull('$type') +
+        '/\$validate';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return HttpBody.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the FHIR capability statement
@@ -5845,12 +5936,16 @@ class ProjectsLocationsDatasetsHl7V2StoresResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/hl7V2Stores/\[^/\]+$`.
   ///
-  /// [options_requestedPolicyVersion] - Optional. The policy format version to
-  /// be returned. Valid values are 0, 1, and 3. Requests specifying an invalid
-  /// value will be rejected. Requests for policies with any conditional
-  /// bindings must specify version 3. Policies without any conditional bindings
-  /// may specify any valid value or leave the field unset. To learn which
-  /// resources support conditions in their IAM policies, see the
+  /// [options_requestedPolicyVersion] - Optional. The maximum policy version
+  /// that will be used to format the policy. Valid values are 0, 1, and 3.
+  /// Requests specifying an invalid value will be rejected. Requests for
+  /// policies with any conditional role bindings must specify version 3.
+  /// Policies with no conditional role bindings may specify any valid value or
+  /// leave the field unset. The policy in the response might use the policy
+  /// version that you specified, or it might use a lower policy version. For
+  /// example, if you specify version 3, but the policy has no conditional role
+  /// bindings, the response uses version 1. To learn which resources support
+  /// conditions in their IAM policies, see the
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -9057,9 +9152,9 @@ class FieldMetadata {
   /// "choice" types (those defined in the FHIR spec with the form: field\[x\])
   /// we use two separate components. For example, "deceasedAge.unit" is matched
   /// by "Deceased.Age.unit". Supported types are: AdministrativeGenderCode,
-  /// Code, Date, DateTime, Decimal, HumanName, Id, LanguageCode, Markdown, Oid,
-  /// String, Uri, Uuid, Xhtml. Base64Binary is also supported, but may only be
-  /// kept as-is or have all the content removed.
+  /// Base64Binary, Boolean, Code, Date, DateTime, Decimal, HumanName, Id,
+  /// Instant, Integer, LanguageCode, Markdown, Oid, PositiveInt, String,
+  /// UnsignedInt, Uri, Uuid, Xhtml.
   core.List<core.String>? paths;
 
   FieldMetadata({
@@ -10843,10 +10938,11 @@ class ParserConfig {
         convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  /// Determines the version of the unschematized parser to be used when
-  /// `schema` is not given.
+  /// Determines the version of both the default parser to be used when `schema`
+  /// is not given, as well as the schematized parser used when `schema` is
+  /// specified.
   ///
-  /// This field is immutable after store creation.
+  /// This field is immutable after HL7v2 store creation.
   ///
   /// Immutable.
   /// Possible string values are:
@@ -12001,6 +12097,12 @@ class ValidationConfig {
   /// enforced.
   core.bool? disableFhirpathValidation;
 
+  /// Whether to disable profile validation for this FHIR store.
+  ///
+  /// Set this to true to disable checking incoming resources for conformance
+  /// against structure definitions in this FHIR store.
+  core.bool? disableProfileValidation;
+
   /// Whether to disable reference type validation for incoming resources.
   ///
   /// Set this to true to disable checking incoming resources for conformance
@@ -12019,10 +12121,30 @@ class ValidationConfig {
   /// be enforced.
   core.bool? disableRequiredFieldValidation;
 
+  /// A list of implementation guide URLs in this FHIR store that are used to
+  /// configure the profiles to use for validation.
+  ///
+  /// For example, to use the US Core profiles for validation, set
+  /// `enabled_implementation_guides` to
+  /// `["http://hl7.org/fhir/us/core/ImplementationGuide/ig"]`. If
+  /// `enabled_implementation_guides` is empty or omitted, then incoming
+  /// resources are only required to conform to the base FHIR profiles.
+  /// Otherwise, a resource must conform to at least one profile listed in the
+  /// `global` property of one of the enabled ImplementationGuides. The Cloud
+  /// Healthcare API does not currently enforce all of the rules in a
+  /// StructureDefinition. The following rules are supported: - min/max -
+  /// minValue/maxValue - maxLength - type - fixed\[x\] - pattern\[x\] on simple
+  /// types - slicing, when using "value" as the discriminator type When a URL
+  /// cannot be resolved (for example, in a type assertion), the server does not
+  /// return an error.
+  core.List<core.String>? enabledImplementationGuides;
+
   ValidationConfig({
     this.disableFhirpathValidation,
+    this.disableProfileValidation,
     this.disableReferenceTypeValidation,
     this.disableRequiredFieldValidation,
+    this.enabledImplementationGuides,
   });
 
   ValidationConfig.fromJson(core.Map _json)
@@ -12030,6 +12152,10 @@ class ValidationConfig {
           disableFhirpathValidation:
               _json.containsKey('disableFhirpathValidation')
                   ? _json['disableFhirpathValidation'] as core.bool
+                  : null,
+          disableProfileValidation:
+              _json.containsKey('disableProfileValidation')
+                  ? _json['disableProfileValidation'] as core.bool
                   : null,
           disableReferenceTypeValidation:
               _json.containsKey('disableReferenceTypeValidation')
@@ -12039,15 +12165,25 @@ class ValidationConfig {
               _json.containsKey('disableRequiredFieldValidation')
                   ? _json['disableRequiredFieldValidation'] as core.bool
                   : null,
+          enabledImplementationGuides:
+              _json.containsKey('enabledImplementationGuides')
+                  ? (_json['enabledImplementationGuides'] as core.List)
+                      .map((value) => value as core.String)
+                      .toList()
+                  : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (disableFhirpathValidation != null)
           'disableFhirpathValidation': disableFhirpathValidation!,
+        if (disableProfileValidation != null)
+          'disableProfileValidation': disableProfileValidation!,
         if (disableReferenceTypeValidation != null)
           'disableReferenceTypeValidation': disableReferenceTypeValidation!,
         if (disableRequiredFieldValidation != null)
           'disableRequiredFieldValidation': disableRequiredFieldValidation!,
+        if (enabledImplementationGuides != null)
+          'enabledImplementationGuides': enabledImplementationGuides!,
       };
 }
 

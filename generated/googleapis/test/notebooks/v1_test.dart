@@ -2581,6 +2581,82 @@ void checkUpdateInstanceConfigRequest(api.UpdateInstanceConfigRequest o) {
   buildCounterUpdateInstanceConfigRequest--;
 }
 
+core.Map<core.String, core.String> buildUnnamed41() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
+
+void checkUnnamed41(core.Map<core.String, core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o['x']!,
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o['y']!,
+    unittest.equals('foo'),
+  );
+}
+
+core.int buildCounterUpdateInstanceMetadataItemsRequest = 0;
+api.UpdateInstanceMetadataItemsRequest
+    buildUpdateInstanceMetadataItemsRequest() {
+  final o = api.UpdateInstanceMetadataItemsRequest();
+  buildCounterUpdateInstanceMetadataItemsRequest++;
+  if (buildCounterUpdateInstanceMetadataItemsRequest < 3) {
+    o.items = buildUnnamed41();
+  }
+  buildCounterUpdateInstanceMetadataItemsRequest--;
+  return o;
+}
+
+void checkUpdateInstanceMetadataItemsRequest(
+    api.UpdateInstanceMetadataItemsRequest o) {
+  buildCounterUpdateInstanceMetadataItemsRequest++;
+  if (buildCounterUpdateInstanceMetadataItemsRequest < 3) {
+    checkUnnamed41(o.items!);
+  }
+  buildCounterUpdateInstanceMetadataItemsRequest--;
+}
+
+core.Map<core.String, core.String> buildUnnamed42() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
+
+void checkUnnamed42(core.Map<core.String, core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o['x']!,
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o['y']!,
+    unittest.equals('foo'),
+  );
+}
+
+core.int buildCounterUpdateInstanceMetadataItemsResponse = 0;
+api.UpdateInstanceMetadataItemsResponse
+    buildUpdateInstanceMetadataItemsResponse() {
+  final o = api.UpdateInstanceMetadataItemsResponse();
+  buildCounterUpdateInstanceMetadataItemsResponse++;
+  if (buildCounterUpdateInstanceMetadataItemsResponse < 3) {
+    o.items = buildUnnamed42();
+  }
+  buildCounterUpdateInstanceMetadataItemsResponse--;
+  return o;
+}
+
+void checkUpdateInstanceMetadataItemsResponse(
+    api.UpdateInstanceMetadataItemsResponse o) {
+  buildCounterUpdateInstanceMetadataItemsResponse++;
+  if (buildCounterUpdateInstanceMetadataItemsResponse < 3) {
+    checkUnnamed42(o.items!);
+  }
+  buildCounterUpdateInstanceMetadataItemsResponse--;
+}
+
 core.int buildCounterUpdateShieldedInstanceConfigRequest = 0;
 api.UpdateShieldedInstanceConfigRequest
     buildUpdateShieldedInstanceConfigRequest() {
@@ -2674,6 +2750,7 @@ api.UpgradeInstanceInternalRequest buildUpgradeInstanceInternalRequest() {
   final o = api.UpgradeInstanceInternalRequest();
   buildCounterUpgradeInstanceInternalRequest++;
   if (buildCounterUpgradeInstanceInternalRequest < 3) {
+    o.type = 'foo';
     o.vmId = 'foo';
   }
   buildCounterUpgradeInstanceInternalRequest--;
@@ -2683,6 +2760,10 @@ api.UpgradeInstanceInternalRequest buildUpgradeInstanceInternalRequest() {
 void checkUpgradeInstanceInternalRequest(api.UpgradeInstanceInternalRequest o) {
   buildCounterUpgradeInstanceInternalRequest++;
   if (buildCounterUpgradeInstanceInternalRequest < 3) {
+    unittest.expect(
+      o.type!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.vmId!,
       unittest.equals('foo'),
@@ -2695,23 +2776,30 @@ core.int buildCounterUpgradeInstanceRequest = 0;
 api.UpgradeInstanceRequest buildUpgradeInstanceRequest() {
   final o = api.UpgradeInstanceRequest();
   buildCounterUpgradeInstanceRequest++;
-  if (buildCounterUpgradeInstanceRequest < 3) {}
+  if (buildCounterUpgradeInstanceRequest < 3) {
+    o.type = 'foo';
+  }
   buildCounterUpgradeInstanceRequest--;
   return o;
 }
 
 void checkUpgradeInstanceRequest(api.UpgradeInstanceRequest o) {
   buildCounterUpgradeInstanceRequest++;
-  if (buildCounterUpgradeInstanceRequest < 3) {}
+  if (buildCounterUpgradeInstanceRequest < 3) {
+    unittest.expect(
+      o.type!,
+      unittest.equals('foo'),
+    );
+  }
   buildCounterUpgradeInstanceRequest--;
 }
 
-core.Map<core.String, core.String> buildUnnamed41() => {
+core.Map<core.String, core.String> buildUnnamed43() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed41(core.Map<core.String, core.String> o) {
+void checkUnnamed43(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -2728,7 +2816,7 @@ api.VertexAIParameters buildVertexAIParameters() {
   final o = api.VertexAIParameters();
   buildCounterVertexAIParameters++;
   if (buildCounterVertexAIParameters < 3) {
-    o.env = buildUnnamed41();
+    o.env = buildUnnamed43();
     o.network = 'foo';
   }
   buildCounterVertexAIParameters--;
@@ -2738,7 +2826,7 @@ api.VertexAIParameters buildVertexAIParameters() {
 void checkVertexAIParameters(api.VertexAIParameters o) {
   buildCounterVertexAIParameters++;
   if (buildCounterVertexAIParameters < 3) {
-    checkUnnamed41(o.env!);
+    checkUnnamed43(o.env!);
     unittest.expect(
       o.network!,
       unittest.equals('foo'),
@@ -2776,49 +2864,15 @@ void checkVirtualMachine(api.VirtualMachine o) {
   buildCounterVirtualMachine--;
 }
 
-core.List<api.ContainerImage> buildUnnamed42() => [
+core.List<api.ContainerImage> buildUnnamed44() => [
       buildContainerImage(),
       buildContainerImage(),
     ];
 
-void checkUnnamed42(core.List<api.ContainerImage> o) {
+void checkUnnamed44(core.List<api.ContainerImage> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkContainerImage(o[0]);
   checkContainerImage(o[1]);
-}
-
-core.Map<core.String, core.String> buildUnnamed43() => {
-      'x': 'foo',
-      'y': 'foo',
-    };
-
-void checkUnnamed43(core.Map<core.String, core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o['x']!,
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o['y']!,
-    unittest.equals('foo'),
-  );
-}
-
-core.Map<core.String, core.String> buildUnnamed44() => {
-      'x': 'foo',
-      'y': 'foo',
-    };
-
-void checkUnnamed44(core.Map<core.String, core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o['x']!,
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o['y']!,
-    unittest.equals('foo'),
-  );
 }
 
 core.Map<core.String, core.String> buildUnnamed45() => {
@@ -2838,12 +2892,46 @@ void checkUnnamed45(core.Map<core.String, core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed46() => [
+core.Map<core.String, core.String> buildUnnamed46() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
+
+void checkUnnamed46(core.Map<core.String, core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o['x']!,
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o['y']!,
+    unittest.equals('foo'),
+  );
+}
+
+core.Map<core.String, core.String> buildUnnamed47() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
+
+void checkUnnamed47(core.Map<core.String, core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o['x']!,
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o['y']!,
+    unittest.equals('foo'),
+  );
+}
+
+core.List<core.String> buildUnnamed48() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed46(core.List<core.String> o) {
+void checkUnnamed48(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -2861,19 +2949,19 @@ api.VirtualMachineConfig buildVirtualMachineConfig() {
   buildCounterVirtualMachineConfig++;
   if (buildCounterVirtualMachineConfig < 3) {
     o.acceleratorConfig = buildRuntimeAcceleratorConfig();
-    o.containerImages = buildUnnamed42();
+    o.containerImages = buildUnnamed44();
     o.dataDisk = buildLocalDisk();
     o.encryptionConfig = buildEncryptionConfig();
-    o.guestAttributes = buildUnnamed43();
+    o.guestAttributes = buildUnnamed45();
     o.internalIpOnly = true;
-    o.labels = buildUnnamed44();
+    o.labels = buildUnnamed46();
     o.machineType = 'foo';
-    o.metadata = buildUnnamed45();
+    o.metadata = buildUnnamed47();
     o.network = 'foo';
     o.nicType = 'foo';
     o.shieldedInstanceConfig = buildRuntimeShieldedInstanceConfig();
     o.subnet = 'foo';
-    o.tags = buildUnnamed46();
+    o.tags = buildUnnamed48();
     o.zone = 'foo';
   }
   buildCounterVirtualMachineConfig--;
@@ -2884,17 +2972,17 @@ void checkVirtualMachineConfig(api.VirtualMachineConfig o) {
   buildCounterVirtualMachineConfig++;
   if (buildCounterVirtualMachineConfig < 3) {
     checkRuntimeAcceleratorConfig(o.acceleratorConfig!);
-    checkUnnamed42(o.containerImages!);
+    checkUnnamed44(o.containerImages!);
     checkLocalDisk(o.dataDisk!);
     checkEncryptionConfig(o.encryptionConfig!);
-    checkUnnamed43(o.guestAttributes!);
+    checkUnnamed45(o.guestAttributes!);
     unittest.expect(o.internalIpOnly!, unittest.isTrue);
-    checkUnnamed44(o.labels!);
+    checkUnnamed46(o.labels!);
     unittest.expect(
       o.machineType!,
       unittest.equals('foo'),
     );
-    checkUnnamed45(o.metadata!);
+    checkUnnamed47(o.metadata!);
     unittest.expect(
       o.network!,
       unittest.equals('foo'),
@@ -2908,7 +2996,7 @@ void checkVirtualMachineConfig(api.VirtualMachineConfig o) {
       o.subnet!,
       unittest.equals('foo'),
     );
-    checkUnnamed46(o.tags!);
+    checkUnnamed48(o.tags!);
     unittest.expect(
       o.zone!,
       unittest.equals('foo'),
@@ -3557,6 +3645,26 @@ void main() {
       final od = api.UpdateInstanceConfigRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkUpdateInstanceConfigRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-UpdateInstanceMetadataItemsRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildUpdateInstanceMetadataItemsRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.UpdateInstanceMetadataItemsRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkUpdateInstanceMetadataItemsRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-UpdateInstanceMetadataItemsResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildUpdateInstanceMetadataItemsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.UpdateInstanceMetadataItemsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkUpdateInstanceMetadataItemsResponse(od);
     });
   });
 
@@ -4537,6 +4645,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.AIPlatformNotebooksApi(mock).projects.locations.instances;
       final arg_notebookInstance = 'foo';
+      final arg_type = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = (req.url).path;
@@ -4571,6 +4680,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['type']!.first,
+          unittest.equals(arg_type),
+        );
+        unittest.expect(
           queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
@@ -4581,8 +4694,8 @@ void main() {
         final resp = convert.json.encode(buildIsInstanceUpgradeableResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      final response =
-          await res.isUpgradeable(arg_notebookInstance, $fields: arg_$fields);
+      final response = await res.isUpgradeable(arg_notebookInstance,
+          type: arg_type, $fields: arg_$fields);
       checkIsInstanceUpgradeableResponse(
           response as api.IsInstanceUpgradeableResponse);
     });
@@ -5347,6 +5460,66 @@ void main() {
       final response =
           await res.updateConfig(arg_request, arg_name, $fields: arg_$fields);
       checkOperation(response as api.Operation);
+    });
+
+    unittest.test('method--updateMetadataItems', () async {
+      final mock = HttpServerMock();
+      final res = api.AIPlatformNotebooksApi(mock).projects.locations.instances;
+      final arg_request = buildUpdateInstanceMetadataItemsRequest();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.UpdateInstanceMetadataItemsRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkUpdateInstanceMetadataItemsRequest(obj);
+
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp =
+            convert.json.encode(buildUpdateInstanceMetadataItemsResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.updateMetadataItems(arg_request, arg_name,
+          $fields: arg_$fields);
+      checkUpdateInstanceMetadataItemsResponse(
+          response as api.UpdateInstanceMetadataItemsResponse);
     });
 
     unittest.test('method--updateShieldedInstanceConfig', () async {

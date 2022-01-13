@@ -2883,7 +2883,7 @@ class GoogleCloudChannelV1ChannelPartnerLink {
   ///
   /// Required.
   /// Possible string values are:
-  /// - "CHANNEL_PARTNER_LINK_STATE_UNSPECIFIED" : The state is not specified.
+  /// - "CHANNEL_PARTNER_LINK_STATE_UNSPECIFIED" : Not used.
   /// - "INVITED" : An invitation has been sent to the reseller to create a
   /// channel partner link.
   /// - "ACTIVE" : Status when the reseller is active.
@@ -3084,8 +3084,7 @@ class GoogleCloudChannelV1CloudIdentityInfo {
 
   /// CustomerType indicates verification type needed for using services.
   /// Possible string values are:
-  /// - "CUSTOMER_TYPE_UNSPECIFIED" : Default value. This state doesn't show
-  /// unless an error occurs.
+  /// - "CUSTOMER_TYPE_UNSPECIFIED" : Not used.
   /// - "DOMAIN" : Domain-owning customer which needs domain verification to use
   /// services.
   /// - "TEAM" : Team customer which needs email verification to use services.
@@ -3553,8 +3552,7 @@ class GoogleCloudChannelV1CustomerConstraints {
 class GoogleCloudChannelV1EduData {
   /// Size of the institute.
   /// Possible string values are:
-  /// - "INSTITUTE_SIZE_UNSPECIFIED" : Default value. This state doesn't show
-  /// unless an error occurs.
+  /// - "INSTITUTE_SIZE_UNSPECIFIED" : Not used.
   /// - "SIZE_1_100" : 1 - 100
   /// - "SIZE_101_500" : 101 - 500
   /// - "SIZE_501_1000" : 501 - 1,000
@@ -3566,8 +3564,7 @@ class GoogleCloudChannelV1EduData {
 
   /// Designated institute type of customer.
   /// Possible string values are:
-  /// - "INSTITUTE_TYPE_UNSPECIFIED" : Default value. This state doesn't show
-  /// unless an error occurs.
+  /// - "INSTITUTE_TYPE_UNSPECIFIED" : Not used.
   /// - "K12" : Elementary/Secondary Schools & Districts
   /// - "UNIVERSITY" : Higher Education Universities & Colleges
   core.String? instituteType;
@@ -3647,8 +3644,7 @@ class GoogleCloudChannelV1Entitlement {
   ///
   /// Output only.
   /// Possible string values are:
-  /// - "PROVISIONING_STATE_UNSPECIFIED" : Default value. This state doesn't
-  /// show unless an error occurs.
+  /// - "PROVISIONING_STATE_UNSPECIFIED" : Not used.
   /// - "ACTIVE" : The entitlement is currently active.
   /// - "SUSPENDED" : The entitlement is currently suspended.
   core.String? provisioningState;
@@ -5325,7 +5321,7 @@ class GoogleCloudChannelV1TransferEligibility {
 
   /// Specified the reason for ineligibility.
   /// Possible string values are:
-  /// - "REASON_UNSPECIFIED" : Reason is not available.
+  /// - "REASON_UNSPECIFIED" : Not used.
   /// - "PENDING_TOS_ACCEPTANCE" : Reseller needs to accept TOS before
   /// transferring the SKU.
   /// - "SKU_NOT_ELIGIBLE" : Reseller not eligible to sell the SKU.

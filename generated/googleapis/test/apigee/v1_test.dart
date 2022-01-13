@@ -6259,6 +6259,7 @@ api.GoogleCloudApigeeV1OrganizationProjectMapping
   buildCounterGoogleCloudApigeeV1OrganizationProjectMapping++;
   if (buildCounterGoogleCloudApigeeV1OrganizationProjectMapping < 3) {
     o.organization = 'foo';
+    o.projectId = 'foo';
     o.projectIds = buildUnnamed124();
   }
   buildCounterGoogleCloudApigeeV1OrganizationProjectMapping--;
@@ -6271,6 +6272,10 @@ void checkGoogleCloudApigeeV1OrganizationProjectMapping(
   if (buildCounterGoogleCloudApigeeV1OrganizationProjectMapping < 3) {
     unittest.expect(
       o.organization!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.projectId!,
       unittest.equals('foo'),
     );
     checkUnnamed124(o.projectIds!);

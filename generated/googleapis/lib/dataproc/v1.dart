@@ -489,7 +489,7 @@ class ProjectsLocationsWorkflowTemplatesResource {
   ///
   /// [parent] - Required. The resource name of the region or location, as
   /// described in https://cloud.google.com/apis/design/resource_names. For
-  /// projects.regions.workflowTemplates,create, the resource name of the region
+  /// projects.regions.workflowTemplates.create, the resource name of the region
   /// has the following format: projects/{project_id}/regions/{region} For
   /// projects.locations.workflowTemplates.create, the resource name of the
   /// location has the following format:
@@ -3060,7 +3060,7 @@ class ProjectsRegionsWorkflowTemplatesResource {
   ///
   /// [parent] - Required. The resource name of the region or location, as
   /// described in https://cloud.google.com/apis/design/resource_names. For
-  /// projects.regions.workflowTemplates,create, the resource name of the region
+  /// projects.regions.workflowTemplates.create, the resource name of the region
   /// has the following format: projects/{project_id}/regions/{region} For
   /// projects.locations.workflowTemplates.create, the resource name of the
   /// location has the following format:
@@ -4522,6 +4522,15 @@ class DiskConfig {
   /// Optional.
   core.String? bootDiskType;
 
+  /// Interface type of local SSDs (default is "scsi").
+  ///
+  /// Valid values: "scsi" (Small Computer System Interface), "nvme"
+  /// (Non-Volatile Memory Express). See SSD Interface types
+  /// (https://cloud.google.com/compute/docs/disks/local-ssd#performance).
+  ///
+  /// Optional.
+  core.String? localSsdInterface;
+
   /// Number of attached SSDs, from 0 to 4 (default is 0).
   ///
   /// If SSDs are not attached, the boot disk is used to store runtime logs and
@@ -4535,6 +4544,7 @@ class DiskConfig {
   DiskConfig({
     this.bootDiskSizeGb,
     this.bootDiskType,
+    this.localSsdInterface,
     this.numLocalSsds,
   });
 
@@ -4546,6 +4556,9 @@ class DiskConfig {
           bootDiskType: _json.containsKey('bootDiskType')
               ? _json['bootDiskType'] as core.String
               : null,
+          localSsdInterface: _json.containsKey('localSsdInterface')
+              ? _json['localSsdInterface'] as core.String
+              : null,
           numLocalSsds: _json.containsKey('numLocalSsds')
               ? _json['numLocalSsds'] as core.int
               : null,
@@ -4554,6 +4567,7 @@ class DiskConfig {
   core.Map<core.String, core.dynamic> toJson() => {
         if (bootDiskSizeGb != null) 'bootDiskSizeGb': bootDiskSizeGb!,
         if (bootDiskType != null) 'bootDiskType': bootDiskType!,
+        if (localSsdInterface != null) 'localSsdInterface': localSsdInterface!,
         if (numLocalSsds != null) 'numLocalSsds': numLocalSsds!,
       };
 }
@@ -5957,7 +5971,10 @@ class JobScheduling {
   /// Maximum number of times per hour a driver may be restarted as a result of
   /// driver exiting with non-zero code before job is reported failed.A job may
   /// be reported as thrashing if driver exits with non-zero code 4 times within
-  /// 10 minute window.Maximum value is 10.
+  /// 10 minute window.Maximum value is 10.Note: Currently, this restartable job
+  /// option is not supported in Dataproc workflow template
+  /// (https://cloud.google.com/dataproc/docs/concepts/workflows/using-workflows#adding_jobs_to_a_template)
+  /// jobs.
   ///
   /// Optional.
   core.int? maxFailuresPerHour;
@@ -5965,7 +5982,10 @@ class JobScheduling {
   /// Maximum number of times in total a driver may be restarted as a result of
   /// driver exiting with non-zero code before job is reported failed.
   ///
-  /// Maximum value is 240.
+  /// Maximum value is 240.Note: Currently, this restartable job option is not
+  /// supported in Dataproc workflow template
+  /// (https://cloud.google.com/dataproc/docs/concepts/workflows/using-workflows#adding_jobs_to_a_template)
+  /// jobs.
   ///
   /// Optional.
   core.int? maxFailuresTotal;

@@ -3183,6 +3183,7 @@ api.Policy buildPolicy() {
     o.bluetoothConfigDisabled = true;
     o.bluetoothContactSharingDisabled = true;
     o.bluetoothDisabled = true;
+    o.cameraAccess = 'foo';
     o.cameraDisabled = true;
     o.cellBroadcastsConfigDisabled = true;
     o.choosePrivateKeyRules = buildUnnamed62();
@@ -3208,6 +3209,7 @@ api.Policy buildPolicy() {
     o.locationMode = 'foo';
     o.longSupportMessage = buildUserFacingMessage();
     o.maximumTimeToLock = 'foo';
+    o.microphoneAccess = 'foo';
     o.minimumApiLevel = 42;
     o.mobileNetworksConfigDisabled = true;
     o.modifyAccountsDisabled = true;
@@ -3282,6 +3284,10 @@ void checkPolicy(api.Policy o) {
     unittest.expect(o.bluetoothConfigDisabled!, unittest.isTrue);
     unittest.expect(o.bluetoothContactSharingDisabled!, unittest.isTrue);
     unittest.expect(o.bluetoothDisabled!, unittest.isTrue);
+    unittest.expect(
+      o.cameraAccess!,
+      unittest.equals('foo'),
+    );
     unittest.expect(o.cameraDisabled!, unittest.isTrue);
     unittest.expect(o.cellBroadcastsConfigDisabled!, unittest.isTrue);
     checkUnnamed62(o.choosePrivateKeyRules!);
@@ -3317,6 +3323,10 @@ void checkPolicy(api.Policy o) {
     checkUserFacingMessage(o.longSupportMessage!);
     unittest.expect(
       o.maximumTimeToLock!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.microphoneAccess!,
       unittest.equals('foo'),
     );
     unittest.expect(

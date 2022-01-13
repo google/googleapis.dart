@@ -820,7 +820,7 @@
             }
         }
     },
-    "revision": "20211201",
+    "revision": "20220105",
     "rootUrl": "https://networkservices.googleapis.com/",
     "schemas": {
         "AuditConfig": {

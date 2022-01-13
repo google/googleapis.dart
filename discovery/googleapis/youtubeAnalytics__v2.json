@@ -419,7 +419,7 @@
             }
         }
     },
-    "revision": "20211207",
+    "revision": "20220112",
     "rootUrl": "https://youtubeanalytics.googleapis.com/",
     "schemas": {
         "EmptyResponse": {

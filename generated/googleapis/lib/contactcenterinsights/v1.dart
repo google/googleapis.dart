@@ -28,6 +28,7 @@
 ///       - [ProjectsLocationsIssueModelsIssuesResource]
 ///     - [ProjectsLocationsOperationsResource]
 ///     - [ProjectsLocationsPhraseMatchersResource]
+///     - [ProjectsLocationsViewsResource]
 library contactcenterinsights.v1;
 
 import 'dart:async' as async;
@@ -83,6 +84,8 @@ class ProjectsLocationsResource {
       ProjectsLocationsOperationsResource(_requester);
   ProjectsLocationsPhraseMatchersResource get phraseMatchers =>
       ProjectsLocationsPhraseMatchersResource(_requester);
+  ProjectsLocationsViewsResource get views =>
+      ProjectsLocationsViewsResource(_requester);
 
   ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
 
@@ -326,10 +329,12 @@ class ProjectsLocationsConversationsResource {
   ///
   /// [view] - The level of details of the conversation. Default is `FULL`.
   /// Possible string values are:
-  /// - "CONVERSATION_VIEW_UNSPECIFIED" : Not specified. Defaults to FULL on
-  /// GetConversationRequest and BASIC for ListConversationsRequest.
-  /// - "BASIC" : Transcript field is not populated in the response.
-  /// - "FULL" : All fields are populated.
+  /// - "CONVERSATION_VIEW_UNSPECIFIED" : The conversation view is not
+  /// specified. * Defaults to `FULL` in `GetConversationRequest`. * Defaults to
+  /// `BASIC` in `ListConversationsRequest`.
+  /// - "FULL" : Populates all fields in the conversation.
+  /// - "BASIC" : Populates all fields in the conversation except the
+  /// transcript.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -384,10 +389,12 @@ class ProjectsLocationsConversationsResource {
   ///
   /// [view] - The level of details of the conversation. Default is `BASIC`.
   /// Possible string values are:
-  /// - "CONVERSATION_VIEW_UNSPECIFIED" : Not specified. Defaults to FULL on
-  /// GetConversationRequest and BASIC for ListConversationsRequest.
-  /// - "BASIC" : Transcript field is not populated in the response.
-  /// - "FULL" : All fields are populated.
+  /// - "CONVERSATION_VIEW_UNSPECIFIED" : The conversation view is not
+  /// specified. * Defaults to `FULL` in `GetConversationRequest`. * Defaults to
+  /// `BASIC` in `ListConversationsRequest`.
+  /// - "FULL" : Populates all fields in the conversation.
+  /// - "BASIC" : Populates all fields in the conversation except the
+  /// transcript.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1552,6 +1559,226 @@ class ProjectsLocationsPhraseMatchersResource {
   }
 }
 
+class ProjectsLocationsViewsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsViewsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a view.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource of the view. Required. The
+  /// location to create a view for. Format: `projects//locations/` or
+  /// `projects//locations/`
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudContactcenterinsightsV1View].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudContactcenterinsightsV1View> create(
+    GoogleCloudContactcenterinsightsV1View request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/views';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleCloudContactcenterinsightsV1View.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a view.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the view to delete.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/views/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'DELETE',
+      queryParams: _queryParams,
+    );
+    return GoogleProtobufEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets a view.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the view to get.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/views/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudContactcenterinsightsV1View].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudContactcenterinsightsV1View> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleCloudContactcenterinsightsV1View.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists views.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource of the views.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [pageSize] - The maximum number of views to return in the response. If
+  /// this value is zero, the service will select a default size. A call may
+  /// return fewer objects than requested. A non-empty `next_page_token` in the
+  /// response indicates that more data is available.
+  ///
+  /// [pageToken] - The value returned by the last `ListViewsResponse`;
+  /// indicates that this is a continuation of a prior `ListViews` call and the
+  /// system should return the next page of data.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudContactcenterinsightsV1ListViewsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudContactcenterinsightsV1ListViewsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/views';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleCloudContactcenterinsightsV1ListViewsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates a view.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Immutable. The resource name of the view. Format:
+  /// projects/{project}/locations/{location}/views/{view}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/views/\[^/\]+$`.
+  ///
+  /// [updateMask] - The list of fields to be updated.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudContactcenterinsightsV1View].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudContactcenterinsightsV1View> patch(
+    GoogleCloudContactcenterinsightsV1View request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleCloudContactcenterinsightsV1View.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
 /// The analysis resource.
 class GoogleCloudContactcenterinsightsV1Analysis {
   /// The result of the analysis, which is populated when the analysis finishes.
@@ -2293,6 +2520,9 @@ class GoogleCloudContactcenterinsightsV1Conversation {
   /// Immutable.
   core.String? name;
 
+  /// Obfuscated user ID which the customer sent to us.
+  core.String? obfuscatedUserId;
+
   /// The annotations that were generated during the customer and agent
   /// interaction.
   ///
@@ -2337,6 +2567,7 @@ class GoogleCloudContactcenterinsightsV1Conversation {
     this.latestAnalysis,
     this.medium,
     this.name,
+    this.obfuscatedUserId,
     this.runtimeAnnotations,
     this.startTime,
     this.transcript,
@@ -2400,6 +2631,9 @@ class GoogleCloudContactcenterinsightsV1Conversation {
               ? _json['medium'] as core.String
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          obfuscatedUserId: _json.containsKey('obfuscatedUserId')
+              ? _json['obfuscatedUserId'] as core.String
+              : null,
           runtimeAnnotations: _json.containsKey('runtimeAnnotations')
               ? (_json['runtimeAnnotations'] as core.List)
                   .map((value) =>
@@ -2438,6 +2672,7 @@ class GoogleCloudContactcenterinsightsV1Conversation {
         if (latestAnalysis != null) 'latestAnalysis': latestAnalysis!,
         if (medium != null) 'medium': medium!,
         if (name != null) 'name': name!,
+        if (obfuscatedUserId != null) 'obfuscatedUserId': obfuscatedUserId!,
         if (runtimeAnnotations != null)
           'runtimeAnnotations': runtimeAnnotations!,
         if (startTime != null) 'startTime': startTime!,
@@ -3735,6 +3970,8 @@ class GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStats {
 /// Issue Modeling result on a conversation.
 class GoogleCloudContactcenterinsightsV1IssueModelResult {
   /// Issue model that generates the result.
+  ///
+  /// Format: projects/{project}/locations/{location}/issueModels/{issue_model}
   core.String? issueModel;
 
   /// All the matched issues.
@@ -3923,6 +4160,41 @@ class GoogleCloudContactcenterinsightsV1ListPhraseMatchersResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (phraseMatchers != null) 'phraseMatchers': phraseMatchers!,
+      };
+}
+
+/// The response of listing views.
+class GoogleCloudContactcenterinsightsV1ListViewsResponse {
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  /// The views that match the request.
+  core.List<GoogleCloudContactcenterinsightsV1View>? views;
+
+  GoogleCloudContactcenterinsightsV1ListViewsResponse({
+    this.nextPageToken,
+    this.views,
+  });
+
+  GoogleCloudContactcenterinsightsV1ListViewsResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          views: _json.containsKey('views')
+              ? (_json['views'] as core.List)
+                  .map((value) =>
+                      GoogleCloudContactcenterinsightsV1View.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (views != null) 'views': views!,
       };
 }
 
@@ -4612,6 +4884,64 @@ class GoogleCloudContactcenterinsightsV1UndeployIssueModelRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
+      };
+}
+
+/// The View resource.
+class GoogleCloudContactcenterinsightsV1View {
+  /// The time at which this view was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// The human-readable display name of the view.
+  core.String? displayName;
+
+  /// The resource name of the view.
+  ///
+  /// Format: projects/{project}/locations/{location}/views/{view}
+  ///
+  /// Immutable.
+  core.String? name;
+
+  /// The most recent time at which the view was updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  /// String with specific view properties.
+  core.String? value;
+
+  GoogleCloudContactcenterinsightsV1View({
+    this.createTime,
+    this.displayName,
+    this.name,
+    this.updateTime,
+    this.value,
+  });
+
+  GoogleCloudContactcenterinsightsV1View.fromJson(core.Map _json)
+      : this(
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
+          value:
+              _json.containsKey('value') ? _json['value'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (displayName != null) 'displayName': displayName!,
+        if (name != null) 'name': name!,
+        if (updateTime != null) 'updateTime': updateTime!,
+        if (value != null) 'value': value!,
       };
 }
 

@@ -1202,10 +1202,12 @@ class PropertiesResource {
   ///
   /// [filter] - Required. An expression for filtering the results of the
   /// request. Fields eligible for filtering are: `parent:`(The resource name of
-  /// the parent account) or `firebase_project:`(The id or number of the linked
-  /// firebase project). Some examples of filters: ``` | Filter | Description |
+  /// the parent account) or `ancestor:`(The resource name of the parent
+  /// account) or `firebase_project:`(The id or number of the linked firebase
+  /// project). Some examples of filters: ``` | Filter | Description |
   /// |-----------------------------|-------------------------------------------|
   /// | parent:accounts/123 | The account with account id: 123. | |
+  /// ancestor:accounts/123 | The account with account id: 123. | |
   /// firebase_project:project-id | The firebase project with id: project-id. |
   /// | firebase_project:123 | The firebase project with number: 123. | ```
   ///
@@ -5630,9 +5632,6 @@ class GoogleAnalyticsAdminV1alphaChangeHistoryChangeChangeHistoryResource {
   /// A snapshot of an Account resource in change history.
   GoogleAnalyticsAdminV1alphaAccount? account;
 
-  /// A snapshot of an AndroidAppDataStream resource in change history.
-  GoogleAnalyticsAdminV1alphaAndroidAppDataStream? androidAppDataStream;
-
   /// A snapshot of a ConversionEvent resource in change history.
   GoogleAnalyticsAdminV1alphaConversionEvent? conversionEvent;
 
@@ -5644,6 +5643,9 @@ class GoogleAnalyticsAdminV1alphaChangeHistoryChangeChangeHistoryResource {
 
   /// A snapshot of a data retention settings resource in change history.
   GoogleAnalyticsAdminV1alphaDataRetentionSettings? dataRetentionSettings;
+
+  /// A snapshot of a DataStream resource in change history.
+  GoogleAnalyticsAdminV1alphaDataStream? dataStream;
 
   /// A snapshot of a DisplayVideo360AdvertiserLink resource in change history.
   GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink?
@@ -5663,9 +5665,6 @@ class GoogleAnalyticsAdminV1alphaChangeHistoryChangeChangeHistoryResource {
   /// A snapshot of a GoogleSignalsSettings resource in change history.
   GoogleAnalyticsAdminV1alphaGoogleSignalsSettings? googleSignalsSettings;
 
-  /// A snapshot of an IosAppDataStream resource in change history.
-  GoogleAnalyticsAdminV1alphaIosAppDataStream? iosAppDataStream;
-
   /// A snapshot of a MeasurementProtocolSecret resource in change history.
   GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret?
       measurementProtocolSecret;
@@ -5673,25 +5672,20 @@ class GoogleAnalyticsAdminV1alphaChangeHistoryChangeChangeHistoryResource {
   /// A snapshot of a Property resource in change history.
   GoogleAnalyticsAdminV1alphaProperty? property;
 
-  /// A snapshot of a WebDataStream resource in change history.
-  GoogleAnalyticsAdminV1alphaWebDataStream? webDataStream;
-
   GoogleAnalyticsAdminV1alphaChangeHistoryChangeChangeHistoryResource({
     this.account,
-    this.androidAppDataStream,
     this.conversionEvent,
     this.customDimension,
     this.customMetric,
     this.dataRetentionSettings,
+    this.dataStream,
     this.displayVideo360AdvertiserLink,
     this.displayVideo360AdvertiserLinkProposal,
     this.firebaseLink,
     this.googleAdsLink,
     this.googleSignalsSettings,
-    this.iosAppDataStream,
     this.measurementProtocolSecret,
     this.property,
-    this.webDataStream,
   });
 
   GoogleAnalyticsAdminV1alphaChangeHistoryChangeChangeHistoryResource.fromJson(
@@ -5700,11 +5694,6 @@ class GoogleAnalyticsAdminV1alphaChangeHistoryChangeChangeHistoryResource {
           account: _json.containsKey('account')
               ? GoogleAnalyticsAdminV1alphaAccount.fromJson(
                   _json['account'] as core.Map<core.String, core.dynamic>)
-              : null,
-          androidAppDataStream: _json.containsKey('androidAppDataStream')
-              ? GoogleAnalyticsAdminV1alphaAndroidAppDataStream.fromJson(
-                  _json['androidAppDataStream']
-                      as core.Map<core.String, core.dynamic>)
               : null,
           conversionEvent: _json.containsKey('conversionEvent')
               ? GoogleAnalyticsAdminV1alphaConversionEvent.fromJson(
@@ -5724,6 +5713,10 @@ class GoogleAnalyticsAdminV1alphaChangeHistoryChangeChangeHistoryResource {
               ? GoogleAnalyticsAdminV1alphaDataRetentionSettings.fromJson(
                   _json['dataRetentionSettings']
                       as core.Map<core.String, core.dynamic>)
+              : null,
+          dataStream: _json.containsKey('dataStream')
+              ? GoogleAnalyticsAdminV1alphaDataStream.fromJson(
+                  _json['dataStream'] as core.Map<core.String, core.dynamic>)
               : null,
           displayVideo360AdvertiserLink:
               _json.containsKey('displayVideo360AdvertiserLink')
@@ -5750,11 +5743,6 @@ class GoogleAnalyticsAdminV1alphaChangeHistoryChangeChangeHistoryResource {
                   _json['googleSignalsSettings']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          iosAppDataStream: _json.containsKey('iosAppDataStream')
-              ? GoogleAnalyticsAdminV1alphaIosAppDataStream.fromJson(
-                  _json['iosAppDataStream']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
           measurementProtocolSecret: _json
                   .containsKey('measurementProtocolSecret')
               ? GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret.fromJson(
@@ -5765,21 +5753,16 @@ class GoogleAnalyticsAdminV1alphaChangeHistoryChangeChangeHistoryResource {
               ? GoogleAnalyticsAdminV1alphaProperty.fromJson(
                   _json['property'] as core.Map<core.String, core.dynamic>)
               : null,
-          webDataStream: _json.containsKey('webDataStream')
-              ? GoogleAnalyticsAdminV1alphaWebDataStream.fromJson(
-                  _json['webDataStream'] as core.Map<core.String, core.dynamic>)
-              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (account != null) 'account': account!,
-        if (androidAppDataStream != null)
-          'androidAppDataStream': androidAppDataStream!,
         if (conversionEvent != null) 'conversionEvent': conversionEvent!,
         if (customDimension != null) 'customDimension': customDimension!,
         if (customMetric != null) 'customMetric': customMetric!,
         if (dataRetentionSettings != null)
           'dataRetentionSettings': dataRetentionSettings!,
+        if (dataStream != null) 'dataStream': dataStream!,
         if (displayVideo360AdvertiserLink != null)
           'displayVideo360AdvertiserLink': displayVideo360AdvertiserLink!,
         if (displayVideo360AdvertiserLinkProposal != null)
@@ -5789,11 +5772,9 @@ class GoogleAnalyticsAdminV1alphaChangeHistoryChangeChangeHistoryResource {
         if (googleAdsLink != null) 'googleAdsLink': googleAdsLink!,
         if (googleSignalsSettings != null)
           'googleSignalsSettings': googleSignalsSettings!,
-        if (iosAppDataStream != null) 'iosAppDataStream': iosAppDataStream!,
         if (measurementProtocolSecret != null)
           'measurementProtocolSecret': measurementProtocolSecret!,
         if (property != null) 'property': property!,
-        if (webDataStream != null) 'webDataStream': webDataStream!,
       };
 }
 
@@ -6145,6 +6126,14 @@ class GoogleAnalyticsAdminV1alphaCustomMetric {
   /// Required. Immutable.
   core.String? parameterName;
 
+  /// Types of restricted data that this metric may contain.
+  ///
+  /// Required for metrics with CURRENCY measurement unit. Must be empty for
+  /// metrics with a non-CURRENCY measurement unit.
+  ///
+  /// Optional.
+  core.List<core.String>? restrictedMetricType;
+
   /// The scope of this custom metric.
   ///
   /// Required. Immutable.
@@ -6159,6 +6148,7 @@ class GoogleAnalyticsAdminV1alphaCustomMetric {
     this.measurementUnit,
     this.name,
     this.parameterName,
+    this.restrictedMetricType,
     this.scope,
   });
 
@@ -6177,6 +6167,11 @@ class GoogleAnalyticsAdminV1alphaCustomMetric {
           parameterName: _json.containsKey('parameterName')
               ? _json['parameterName'] as core.String
               : null,
+          restrictedMetricType: _json.containsKey('restrictedMetricType')
+              ? (_json['restrictedMetricType'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
           scope:
               _json.containsKey('scope') ? _json['scope'] as core.String : null,
         );
@@ -6187,6 +6182,8 @@ class GoogleAnalyticsAdminV1alphaCustomMetric {
         if (measurementUnit != null) 'measurementUnit': measurementUnit!,
         if (name != null) 'name': name!,
         if (parameterName != null) 'parameterName': parameterName!,
+        if (restrictedMetricType != null)
+          'restrictedMetricType': restrictedMetricType!,
         if (scope != null) 'scope': scope!,
       };
 }

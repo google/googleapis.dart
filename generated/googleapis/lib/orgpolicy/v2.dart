@@ -1193,6 +1193,41 @@ class ProjectsPoliciesResource {
   }
 }
 
+/// Similar to PolicySpec but with an extra 'launch' field for launch reference.
+///
+/// The PolicySpec here is specific for dry-run/darklaunch.
+class GoogleCloudOrgpolicyV2AlternatePolicySpec {
+  /// Reference to the launch that will be used while audit logging and to
+  /// control the launch.
+  ///
+  /// Should be set only in the alternate policy.
+  core.String? launch;
+
+  /// Specify `Constraint` for configurations of Cloud Platform resources.
+  GoogleCloudOrgpolicyV2PolicySpec? spec;
+
+  GoogleCloudOrgpolicyV2AlternatePolicySpec({
+    this.launch,
+    this.spec,
+  });
+
+  GoogleCloudOrgpolicyV2AlternatePolicySpec.fromJson(core.Map _json)
+      : this(
+          launch: _json.containsKey('launch')
+              ? _json['launch'] as core.String
+              : null,
+          spec: _json.containsKey('spec')
+              ? GoogleCloudOrgpolicyV2PolicySpec.fromJson(
+                  _json['spec'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (launch != null) 'launch': launch!,
+        if (spec != null) 'spec': spec!,
+      };
+}
+
 /// A `constraint` describes a way to restrict resource's configuration.
 ///
 /// For example, you could enforce a constraint that controls which cloud
@@ -1504,6 +1539,9 @@ class GoogleCloudOrgpolicyV2ListPoliciesResponse {
 /// Defines a Cloud Organization `Policy` which is used to specify `Constraints`
 /// for configurations of Cloud Platform resources.
 class GoogleCloudOrgpolicyV2Policy {
+  /// Deprecated.
+  GoogleCloudOrgpolicyV2AlternatePolicySpec? alternate;
+
   /// The resource name of the Policy.
   ///
   /// Must be one of the following forms, where constraint_name is the name of
@@ -1523,12 +1561,17 @@ class GoogleCloudOrgpolicyV2Policy {
   GoogleCloudOrgpolicyV2PolicySpec? spec;
 
   GoogleCloudOrgpolicyV2Policy({
+    this.alternate,
     this.name,
     this.spec,
   });
 
   GoogleCloudOrgpolicyV2Policy.fromJson(core.Map _json)
       : this(
+          alternate: _json.containsKey('alternate')
+              ? GoogleCloudOrgpolicyV2AlternatePolicySpec.fromJson(
+                  _json['alternate'] as core.Map<core.String, core.dynamic>)
+              : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           spec: _json.containsKey('spec')
               ? GoogleCloudOrgpolicyV2PolicySpec.fromJson(
@@ -1537,6 +1580,7 @@ class GoogleCloudOrgpolicyV2Policy {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (alternate != null) 'alternate': alternate!,
         if (name != null) 'name': name!,
         if (spec != null) 'spec': spec!,
       };

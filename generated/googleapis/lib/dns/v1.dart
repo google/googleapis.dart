@@ -25,6 +25,8 @@
 /// - [PoliciesResource]
 /// - [ProjectsResource]
 /// - [ResourceRecordSetsResource]
+/// - [ResponsePoliciesResource]
+/// - [ResponsePolicyRulesResource]
 library dns.v1;
 
 import 'dart:async' as async;
@@ -71,6 +73,10 @@ class DnsApi {
   ProjectsResource get projects => ProjectsResource(_requester);
   ResourceRecordSetsResource get resourceRecordSets =>
       ResourceRecordSetsResource(_requester);
+  ResponsePoliciesResource get responsePolicies =>
+      ResponsePoliciesResource(_requester);
+  ResponsePolicyRulesResource get responsePolicyRules =>
+      ResponsePolicyRulesResource(_requester);
 
   DnsApi(http.Client client,
       {core.String rootUrl = 'https://dns.googleapis.com/',
@@ -1440,6 +1446,645 @@ class ResourceRecordSetsResource {
       queryParams: _queryParams,
     );
     return ResourceRecordSet.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ResponsePoliciesResource {
+  final commons.ApiRequester _requester;
+
+  ResponsePoliciesResource(commons.ApiRequester client) : _requester = client;
+
+  /// Creates a new Response Policy
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Identifies the project addressed by this request.
+  ///
+  /// [clientOperationId] - For mutating operation requests only. An optional
+  /// identifier specified by the client. Must be unique for operation resources
+  /// in the Operations collection.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ResponsePolicy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ResponsePolicy> create(
+    ResponsePolicy request,
+    core.String project, {
+    core.String? clientOperationId,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (clientOperationId != null) 'clientOperationId': [clientOperationId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'dns/v1/projects/' +
+        commons.escapeVariable('$project') +
+        '/responsePolicies';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return ResponsePolicy.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a previously created Response Policy.
+  ///
+  /// Fails if the response policy is non-empty or still being referenced by a
+  /// network.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Identifies the project addressed by this request.
+  ///
+  /// [responsePolicy] - User assigned name of the Response Policy addressed by
+  /// this request.
+  ///
+  /// [clientOperationId] - For mutating operation requests only. An optional
+  /// identifier specified by the client. Must be unique for operation resources
+  /// in the Operations collection.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<void> delete(
+    core.String project,
+    core.String responsePolicy, {
+    core.String? clientOperationId,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (clientOperationId != null) 'clientOperationId': [clientOperationId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'dns/v1/projects/' +
+        commons.escapeVariable('$project') +
+        '/responsePolicies/' +
+        commons.escapeVariable('$responsePolicy');
+
+    await _requester.request(
+      _url,
+      'DELETE',
+      queryParams: _queryParams,
+      downloadOptions: null,
+    );
+  }
+
+  /// Fetches the representation of an existing Response Policy.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Identifies the project addressed by this request.
+  ///
+  /// [responsePolicy] - User assigned name of the Response Policy addressed by
+  /// this request.
+  ///
+  /// [clientOperationId] - For mutating operation requests only. An optional
+  /// identifier specified by the client. Must be unique for operation resources
+  /// in the Operations collection.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ResponsePolicy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ResponsePolicy> get(
+    core.String project,
+    core.String responsePolicy, {
+    core.String? clientOperationId,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (clientOperationId != null) 'clientOperationId': [clientOperationId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'dns/v1/projects/' +
+        commons.escapeVariable('$project') +
+        '/responsePolicies/' +
+        commons.escapeVariable('$responsePolicy');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return ResponsePolicy.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Enumerates all Response Policies associated with a project.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Identifies the project addressed by this request.
+  ///
+  /// [maxResults] - Optional. Maximum number of results to be returned. If
+  /// unspecified, the server decides how many results to return.
+  ///
+  /// [pageToken] - Optional. A tag returned by a previous list request that was
+  /// truncated. Use this parameter to continue a previous list request.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ResponsePoliciesListResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ResponsePoliciesListResponse> list(
+    core.String project, {
+    core.int? maxResults,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'dns/v1/projects/' +
+        commons.escapeVariable('$project') +
+        '/responsePolicies';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return ResponsePoliciesListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Applies a partial update to an existing Response Policy.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Identifies the project addressed by this request.
+  ///
+  /// [responsePolicy] - User assigned name of the Respones Policy addressed by
+  /// this request.
+  ///
+  /// [clientOperationId] - For mutating operation requests only. An optional
+  /// identifier specified by the client. Must be unique for operation resources
+  /// in the Operations collection.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ResponsePoliciesPatchResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ResponsePoliciesPatchResponse> patch(
+    ResponsePolicy request,
+    core.String project,
+    core.String responsePolicy, {
+    core.String? clientOperationId,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (clientOperationId != null) 'clientOperationId': [clientOperationId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'dns/v1/projects/' +
+        commons.escapeVariable('$project') +
+        '/responsePolicies/' +
+        commons.escapeVariable('$responsePolicy');
+
+    final _response = await _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return ResponsePoliciesPatchResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates an existing Response Policy.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Identifies the project addressed by this request.
+  ///
+  /// [responsePolicy] - User assigned name of the Response Policy addressed by
+  /// this request.
+  ///
+  /// [clientOperationId] - For mutating operation requests only. An optional
+  /// identifier specified by the client. Must be unique for operation resources
+  /// in the Operations collection.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ResponsePoliciesUpdateResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ResponsePoliciesUpdateResponse> update(
+    ResponsePolicy request,
+    core.String project,
+    core.String responsePolicy, {
+    core.String? clientOperationId,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (clientOperationId != null) 'clientOperationId': [clientOperationId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'dns/v1/projects/' +
+        commons.escapeVariable('$project') +
+        '/responsePolicies/' +
+        commons.escapeVariable('$responsePolicy');
+
+    final _response = await _requester.request(
+      _url,
+      'PUT',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return ResponsePoliciesUpdateResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ResponsePolicyRulesResource {
+  final commons.ApiRequester _requester;
+
+  ResponsePolicyRulesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a new Response Policy Rule.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Identifies the project addressed by this request.
+  ///
+  /// [responsePolicy] - User assigned name of the Response Policy containing
+  /// the Response Policy Rule.
+  ///
+  /// [clientOperationId] - For mutating operation requests only. An optional
+  /// identifier specified by the client. Must be unique for operation resources
+  /// in the Operations collection.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ResponsePolicyRule].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ResponsePolicyRule> create(
+    ResponsePolicyRule request,
+    core.String project,
+    core.String responsePolicy, {
+    core.String? clientOperationId,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (clientOperationId != null) 'clientOperationId': [clientOperationId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'dns/v1/projects/' +
+        commons.escapeVariable('$project') +
+        '/responsePolicies/' +
+        commons.escapeVariable('$responsePolicy') +
+        '/rules';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return ResponsePolicyRule.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a previously created Response Policy Rule.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Identifies the project addressed by this request.
+  ///
+  /// [responsePolicy] - User assigned name of the Response Policy containing
+  /// the Response Policy Rule.
+  ///
+  /// [responsePolicyRule] - User assigned name of the Response Policy Rule
+  /// addressed by this request.
+  ///
+  /// [clientOperationId] - For mutating operation requests only. An optional
+  /// identifier specified by the client. Must be unique for operation resources
+  /// in the Operations collection.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<void> delete(
+    core.String project,
+    core.String responsePolicy,
+    core.String responsePolicyRule, {
+    core.String? clientOperationId,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (clientOperationId != null) 'clientOperationId': [clientOperationId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'dns/v1/projects/' +
+        commons.escapeVariable('$project') +
+        '/responsePolicies/' +
+        commons.escapeVariable('$responsePolicy') +
+        '/rules/' +
+        commons.escapeVariable('$responsePolicyRule');
+
+    await _requester.request(
+      _url,
+      'DELETE',
+      queryParams: _queryParams,
+      downloadOptions: null,
+    );
+  }
+
+  /// Fetches the representation of an existing Response Policy Rule.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Identifies the project addressed by this request.
+  ///
+  /// [responsePolicy] - User assigned name of the Response Policy containing
+  /// the Response Policy Rule.
+  ///
+  /// [responsePolicyRule] - User assigned name of the Response Policy Rule
+  /// addressed by this request.
+  ///
+  /// [clientOperationId] - For mutating operation requests only. An optional
+  /// identifier specified by the client. Must be unique for operation resources
+  /// in the Operations collection.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ResponsePolicyRule].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ResponsePolicyRule> get(
+    core.String project,
+    core.String responsePolicy,
+    core.String responsePolicyRule, {
+    core.String? clientOperationId,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (clientOperationId != null) 'clientOperationId': [clientOperationId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'dns/v1/projects/' +
+        commons.escapeVariable('$project') +
+        '/responsePolicies/' +
+        commons.escapeVariable('$responsePolicy') +
+        '/rules/' +
+        commons.escapeVariable('$responsePolicyRule');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return ResponsePolicyRule.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Enumerates all Response Policy Rules associated with a project.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Identifies the project addressed by this request.
+  ///
+  /// [responsePolicy] - User assigned name of the Response Policy to list.
+  ///
+  /// [maxResults] - Optional. Maximum number of results to be returned. If
+  /// unspecified, the server decides how many results to return.
+  ///
+  /// [pageToken] - Optional. A tag returned by a previous list request that was
+  /// truncated. Use this parameter to continue a previous list request.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ResponsePolicyRulesListResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ResponsePolicyRulesListResponse> list(
+    core.String project,
+    core.String responsePolicy, {
+    core.int? maxResults,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'dns/v1/projects/' +
+        commons.escapeVariable('$project') +
+        '/responsePolicies/' +
+        commons.escapeVariable('$responsePolicy') +
+        '/rules';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return ResponsePolicyRulesListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Applies a partial update to an existing Response Policy Rule.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Identifies the project addressed by this request.
+  ///
+  /// [responsePolicy] - User assigned name of the Response Policy containing
+  /// the Response Policy Rule.
+  ///
+  /// [responsePolicyRule] - User assigned name of the Response Policy Rule
+  /// addressed by this request.
+  ///
+  /// [clientOperationId] - For mutating operation requests only. An optional
+  /// identifier specified by the client. Must be unique for operation resources
+  /// in the Operations collection.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ResponsePolicyRulesPatchResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ResponsePolicyRulesPatchResponse> patch(
+    ResponsePolicyRule request,
+    core.String project,
+    core.String responsePolicy,
+    core.String responsePolicyRule, {
+    core.String? clientOperationId,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (clientOperationId != null) 'clientOperationId': [clientOperationId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'dns/v1/projects/' +
+        commons.escapeVariable('$project') +
+        '/responsePolicies/' +
+        commons.escapeVariable('$responsePolicy') +
+        '/rules/' +
+        commons.escapeVariable('$responsePolicyRule');
+
+    final _response = await _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return ResponsePolicyRulesPatchResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates an existing Response Policy Rule.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Identifies the project addressed by this request.
+  ///
+  /// [responsePolicy] - User assigned name of the Response Policy containing
+  /// the Response Policy Rule.
+  ///
+  /// [responsePolicyRule] - User assigned name of the Response Policy Rule
+  /// addressed by this request.
+  ///
+  /// [clientOperationId] - For mutating operation requests only. An optional
+  /// identifier specified by the client. Must be unique for operation resources
+  /// in the Operations collection.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ResponsePolicyRulesUpdateResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ResponsePolicyRulesUpdateResponse> update(
+    ResponsePolicyRule request,
+    core.String project,
+    core.String responsePolicy,
+    core.String responsePolicyRule, {
+    core.String? clientOperationId,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (clientOperationId != null) 'clientOperationId': [clientOperationId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'dns/v1/projects/' +
+        commons.escapeVariable('$project') +
+        '/responsePolicies/' +
+        commons.escapeVariable('$responsePolicy') +
+        '/rules/' +
+        commons.escapeVariable('$responsePolicyRule');
+
+    final _response = await _requester.request(
+      _url,
+      'PUT',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return ResponsePolicyRulesUpdateResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
 }
@@ -3030,6 +3675,9 @@ class Project {
 class Quota {
   /// Maximum allowed number of DnsKeys per ManagedZone.
   core.int? dnsKeysPerManagedZone;
+
+  /// Maximum allowed number of items per routing policy.
+  core.int? itemsPerRoutingPolicy;
   core.String? kind;
 
   /// Maximum allowed number of managed zones in the project.
@@ -3078,6 +3726,7 @@ class Quota {
 
   Quota({
     this.dnsKeysPerManagedZone,
+    this.itemsPerRoutingPolicy,
     this.kind,
     this.managedZones,
     this.managedZonesPerNetwork,
@@ -3098,6 +3747,9 @@ class Quota {
       : this(
           dnsKeysPerManagedZone: _json.containsKey('dnsKeysPerManagedZone')
               ? _json['dnsKeysPerManagedZone'] as core.int
+              : null,
+          itemsPerRoutingPolicy: _json.containsKey('itemsPerRoutingPolicy')
+              ? _json['itemsPerRoutingPolicy'] as core.int
               : null,
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
           managedZones: _json.containsKey('managedZones')
@@ -3150,6 +3802,8 @@ class Quota {
   core.Map<core.String, core.dynamic> toJson() => {
         if (dnsKeysPerManagedZone != null)
           'dnsKeysPerManagedZone': dnsKeysPerManagedZone!,
+        if (itemsPerRoutingPolicy != null)
+          'itemsPerRoutingPolicy': itemsPerRoutingPolicy!,
         if (kind != null) 'kind': kind!,
         if (managedZones != null) 'managedZones': managedZones!,
         if (managedZonesPerNetwork != null)
@@ -3177,12 +3831,217 @@ class Quota {
       };
 }
 
+/// A RRSetRoutingPolicy represents ResourceRecordSet data that is returned
+/// dynamically with the response varying based on configured properties such as
+/// geolocation or by weighted random selection.
+class RRSetRoutingPolicy {
+  RRSetRoutingPolicyGeoPolicy? geo;
+  core.String? kind;
+  RRSetRoutingPolicyWrrPolicy? wrr;
+
+  RRSetRoutingPolicy({
+    this.geo,
+    this.kind,
+    this.wrr,
+  });
+
+  RRSetRoutingPolicy.fromJson(core.Map _json)
+      : this(
+          geo: _json.containsKey('geo')
+              ? RRSetRoutingPolicyGeoPolicy.fromJson(
+                  _json['geo'] as core.Map<core.String, core.dynamic>)
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          wrr: _json.containsKey('wrr')
+              ? RRSetRoutingPolicyWrrPolicy.fromJson(
+                  _json['wrr'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (geo != null) 'geo': geo!,
+        if (kind != null) 'kind': kind!,
+        if (wrr != null) 'wrr': wrr!,
+      };
+}
+
+/// Configures a RRSetRoutingPolicy that routes based on the geo location of the
+/// querying user.
+class RRSetRoutingPolicyGeoPolicy {
+  /// The primary geo routing configuration.
+  ///
+  /// If there are multiple items with the same location, an error is returned
+  /// instead.
+  core.List<RRSetRoutingPolicyGeoPolicyGeoPolicyItem>? items;
+  core.String? kind;
+
+  RRSetRoutingPolicyGeoPolicy({
+    this.items,
+    this.kind,
+  });
+
+  RRSetRoutingPolicyGeoPolicy.fromJson(core.Map _json)
+      : this(
+          items: _json.containsKey('items')
+              ? (_json['items'] as core.List)
+                  .map((value) =>
+                      RRSetRoutingPolicyGeoPolicyGeoPolicyItem.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (items != null) 'items': items!,
+        if (kind != null) 'kind': kind!,
+      };
+}
+
+/// ResourceRecordSet data for one geo location.
+class RRSetRoutingPolicyGeoPolicyGeoPolicyItem {
+  core.String? kind;
+
+  /// The geo-location granularity is a GCP region.
+  ///
+  /// This location string should correspond to a GCP region. e.g. "us-east1",
+  /// "southamerica-east1", "asia-east1", etc.
+  core.String? location;
+  core.List<core.String>? rrdatas;
+
+  /// DNSSEC generated signatures for all the rrdata within this item.
+  ///
+  /// Note that if health checked targets are provided for DNSSEC enabled zones,
+  /// there's a restriction of 1 ip per item. .
+  core.List<core.String>? signatureRrdatas;
+
+  RRSetRoutingPolicyGeoPolicyGeoPolicyItem({
+    this.kind,
+    this.location,
+    this.rrdatas,
+    this.signatureRrdatas,
+  });
+
+  RRSetRoutingPolicyGeoPolicyGeoPolicyItem.fromJson(core.Map _json)
+      : this(
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          location: _json.containsKey('location')
+              ? _json['location'] as core.String
+              : null,
+          rrdatas: _json.containsKey('rrdatas')
+              ? (_json['rrdatas'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          signatureRrdatas: _json.containsKey('signatureRrdatas')
+              ? (_json['signatureRrdatas'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (location != null) 'location': location!,
+        if (rrdatas != null) 'rrdatas': rrdatas!,
+        if (signatureRrdatas != null) 'signatureRrdatas': signatureRrdatas!,
+      };
+}
+
+/// Configures a RRSetRoutingPolicy that routes in a weighted round robin
+/// fashion.
+class RRSetRoutingPolicyWrrPolicy {
+  core.List<RRSetRoutingPolicyWrrPolicyWrrPolicyItem>? items;
+  core.String? kind;
+
+  RRSetRoutingPolicyWrrPolicy({
+    this.items,
+    this.kind,
+  });
+
+  RRSetRoutingPolicyWrrPolicy.fromJson(core.Map _json)
+      : this(
+          items: _json.containsKey('items')
+              ? (_json['items'] as core.List)
+                  .map((value) =>
+                      RRSetRoutingPolicyWrrPolicyWrrPolicyItem.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (items != null) 'items': items!,
+        if (kind != null) 'kind': kind!,
+      };
+}
+
+/// A routing block which contains the routing information for one WRR item.
+class RRSetRoutingPolicyWrrPolicyWrrPolicyItem {
+  core.String? kind;
+  core.List<core.String>? rrdatas;
+
+  /// DNSSEC generated signatures for all the rrdata within this item.
+  ///
+  /// Note that if health checked targets are provided for DNSSEC enabled zones,
+  /// there's a restriction of 1 ip per item. .
+  core.List<core.String>? signatureRrdatas;
+
+  /// The weight corresponding to this subset of rrdata.
+  ///
+  /// When multiple WeightedRoundRobinPolicyItems are configured, the
+  /// probability of returning an rrset is proportional to its weight relative
+  /// to the sum of weights configured for all items. This weight should be
+  /// non-negative.
+  core.double? weight;
+
+  RRSetRoutingPolicyWrrPolicyWrrPolicyItem({
+    this.kind,
+    this.rrdatas,
+    this.signatureRrdatas,
+    this.weight,
+  });
+
+  RRSetRoutingPolicyWrrPolicyWrrPolicyItem.fromJson(core.Map _json)
+      : this(
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          rrdatas: _json.containsKey('rrdatas')
+              ? (_json['rrdatas'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          signatureRrdatas: _json.containsKey('signatureRrdatas')
+              ? (_json['signatureRrdatas'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          weight: _json.containsKey('weight')
+              ? (_json['weight'] as core.num).toDouble()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (rrdatas != null) 'rrdatas': rrdatas!,
+        if (signatureRrdatas != null) 'signatureRrdatas': signatureRrdatas!,
+        if (weight != null) 'weight': weight!,
+      };
+}
+
 /// A unit of data that is returned by the DNS servers.
 class ResourceRecordSet {
   core.String? kind;
 
   /// For example, www.example.com.
   core.String? name;
+
+  /// Configures dynamic query responses based on geo location of querying user
+  /// or a weighted round robin based routing policy.
+  ///
+  /// A ResourceRecordSet should only have either rrdata (static) or
+  /// routing_policy (dynamic). An error is returned otherwise.
+  RRSetRoutingPolicy? routingPolicy;
 
   /// As defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1) -- see
   /// examples.
@@ -3202,6 +4061,7 @@ class ResourceRecordSet {
   ResourceRecordSet({
     this.kind,
     this.name,
+    this.routingPolicy,
     this.rrdatas,
     this.signatureRrdatas,
     this.ttl,
@@ -3212,6 +4072,10 @@ class ResourceRecordSet {
       : this(
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          routingPolicy: _json.containsKey('routingPolicy')
+              ? RRSetRoutingPolicy.fromJson(
+                  _json['routingPolicy'] as core.Map<core.String, core.dynamic>)
+              : null,
           rrdatas: _json.containsKey('rrdatas')
               ? (_json['rrdatas'] as core.List)
                   .map((value) => value as core.String)
@@ -3229,6 +4093,7 @@ class ResourceRecordSet {
   core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
         if (name != null) 'name': name!,
+        if (routingPolicy != null) 'routingPolicy': routingPolicy!,
         if (rrdatas != null) 'rrdatas': rrdatas!,
         if (signatureRrdatas != null) 'signatureRrdatas': signatureRrdatas!,
         if (ttl != null) 'ttl': ttl!,
@@ -3313,5 +4178,386 @@ class ResponseHeader {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (operationId != null) 'operationId': operationId!,
+      };
+}
+
+class ResponsePoliciesListResponse {
+  ResponseHeader? header;
+
+  /// The presence of this field indicates that there exist more results
+  /// following your last page of results in pagination order.
+  ///
+  /// To fetch them, make another list request using this value as your page
+  /// token. This lets you the complete contents of even very large collections
+  /// one page at a time. However, if the contents of the collection change
+  /// between the first and last paginated list request, the set of all elements
+  /// returned are an inconsistent view of the collection. You cannot retrieve a
+  /// consistent snapshot of a collection larger than the maximum page size.
+  core.String? nextPageToken;
+
+  /// The Response Policy resources.
+  core.List<ResponsePolicy>? responsePolicies;
+
+  ResponsePoliciesListResponse({
+    this.header,
+    this.nextPageToken,
+    this.responsePolicies,
+  });
+
+  ResponsePoliciesListResponse.fromJson(core.Map _json)
+      : this(
+          header: _json.containsKey('header')
+              ? ResponseHeader.fromJson(
+                  _json['header'] as core.Map<core.String, core.dynamic>)
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          responsePolicies: _json.containsKey('responsePolicies')
+              ? (_json['responsePolicies'] as core.List)
+                  .map((value) => ResponsePolicy.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (header != null) 'header': header!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (responsePolicies != null) 'responsePolicies': responsePolicies!,
+      };
+}
+
+class ResponsePoliciesPatchResponse {
+  ResponseHeader? header;
+  ResponsePolicy? responsePolicy;
+
+  ResponsePoliciesPatchResponse({
+    this.header,
+    this.responsePolicy,
+  });
+
+  ResponsePoliciesPatchResponse.fromJson(core.Map _json)
+      : this(
+          header: _json.containsKey('header')
+              ? ResponseHeader.fromJson(
+                  _json['header'] as core.Map<core.String, core.dynamic>)
+              : null,
+          responsePolicy: _json.containsKey('responsePolicy')
+              ? ResponsePolicy.fromJson(_json['responsePolicy']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (header != null) 'header': header!,
+        if (responsePolicy != null) 'responsePolicy': responsePolicy!,
+      };
+}
+
+class ResponsePoliciesUpdateResponse {
+  ResponseHeader? header;
+  ResponsePolicy? responsePolicy;
+
+  ResponsePoliciesUpdateResponse({
+    this.header,
+    this.responsePolicy,
+  });
+
+  ResponsePoliciesUpdateResponse.fromJson(core.Map _json)
+      : this(
+          header: _json.containsKey('header')
+              ? ResponseHeader.fromJson(
+                  _json['header'] as core.Map<core.String, core.dynamic>)
+              : null,
+          responsePolicy: _json.containsKey('responsePolicy')
+              ? ResponsePolicy.fromJson(_json['responsePolicy']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (header != null) 'header': header!,
+        if (responsePolicy != null) 'responsePolicy': responsePolicy!,
+      };
+}
+
+/// A Response Policy is a collection of selectors that apply to queries made
+/// against one or more Virtual Private Cloud networks.
+class ResponsePolicy {
+  /// User-provided description for this Response Policy.
+  core.String? description;
+
+  /// Unique identifier for the resource; defined by the server (output only).
+  core.String? id;
+  core.String? kind;
+
+  /// List of network names specifying networks to which this policy is applied.
+  core.List<ResponsePolicyNetwork>? networks;
+
+  /// User assigned name for this Response Policy.
+  core.String? responsePolicyName;
+
+  ResponsePolicy({
+    this.description,
+    this.id,
+    this.kind,
+    this.networks,
+    this.responsePolicyName,
+  });
+
+  ResponsePolicy.fromJson(core.Map _json)
+      : this(
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          networks: _json.containsKey('networks')
+              ? (_json['networks'] as core.List)
+                  .map((value) => ResponsePolicyNetwork.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          responsePolicyName: _json.containsKey('responsePolicyName')
+              ? _json['responsePolicyName'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (description != null) 'description': description!,
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (networks != null) 'networks': networks!,
+        if (responsePolicyName != null)
+          'responsePolicyName': responsePolicyName!,
+      };
+}
+
+class ResponsePolicyNetwork {
+  core.String? kind;
+
+  /// The fully qualified URL of the VPC network to bind to.
+  ///
+  /// This should be formatted like
+  /// https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}
+  core.String? networkUrl;
+
+  ResponsePolicyNetwork({
+    this.kind,
+    this.networkUrl,
+  });
+
+  ResponsePolicyNetwork.fromJson(core.Map _json)
+      : this(
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          networkUrl: _json.containsKey('networkUrl')
+              ? _json['networkUrl'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (networkUrl != null) 'networkUrl': networkUrl!,
+      };
+}
+
+/// A Response Policy Rule is a selector that applies its behavior to queries
+/// that match the selector.
+///
+/// Selectors are DNS names, which may be wildcards or exact matches. Each DNS
+/// query subject to a Response Policy matches at most one ResponsePolicyRule,
+/// as identified by the dns_name field with the longest matching suffix.
+class ResponsePolicyRule {
+  /// Answer this query with a behavior rather than DNS data.
+  /// Possible string values are:
+  /// - "behaviorUnspecified"
+  /// - "bypassResponsePolicy" : Skip a less-specific ResponsePolicyRule and
+  /// continue normal query logic. This can be used in conjunction with a
+  /// wildcard to exempt a subset of the wildcard ResponsePolicyRule from the
+  /// ResponsePolicy behavior and e.g., query the public internet instead. For
+  /// instance, if these rules exist: *.example.com -\> 1.2.3.4 foo.example.com
+  /// -\> PASSTHRU Then a query for 'foo.example.com' skips the wildcard.
+  core.String? behavior;
+
+  /// The DNS name (wildcard or exact) to apply this rule to.
+  ///
+  /// Must be unique within the Response Policy Rule.
+  core.String? dnsName;
+  core.String? kind;
+
+  /// Answer this query directly with DNS data.
+  ///
+  /// These ResourceRecordSets override any other DNS behavior for the matched
+  /// name; in particular they override private zones, the public internet, and
+  /// GCP internal DNS. No SOA nor NS types are allowed.
+  ResponsePolicyRuleLocalData? localData;
+
+  /// An identifier for this rule.
+  ///
+  /// Must be unique with the ResponsePolicy.
+  core.String? ruleName;
+
+  ResponsePolicyRule({
+    this.behavior,
+    this.dnsName,
+    this.kind,
+    this.localData,
+    this.ruleName,
+  });
+
+  ResponsePolicyRule.fromJson(core.Map _json)
+      : this(
+          behavior: _json.containsKey('behavior')
+              ? _json['behavior'] as core.String
+              : null,
+          dnsName: _json.containsKey('dnsName')
+              ? _json['dnsName'] as core.String
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          localData: _json.containsKey('localData')
+              ? ResponsePolicyRuleLocalData.fromJson(
+                  _json['localData'] as core.Map<core.String, core.dynamic>)
+              : null,
+          ruleName: _json.containsKey('ruleName')
+              ? _json['ruleName'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (behavior != null) 'behavior': behavior!,
+        if (dnsName != null) 'dnsName': dnsName!,
+        if (kind != null) 'kind': kind!,
+        if (localData != null) 'localData': localData!,
+        if (ruleName != null) 'ruleName': ruleName!,
+      };
+}
+
+class ResponsePolicyRuleLocalData {
+  /// All resource record sets for this selector, one per resource record type.
+  ///
+  /// The name must match the dns_name.
+  core.List<ResourceRecordSet>? localDatas;
+
+  ResponsePolicyRuleLocalData({
+    this.localDatas,
+  });
+
+  ResponsePolicyRuleLocalData.fromJson(core.Map _json)
+      : this(
+          localDatas: _json.containsKey('localDatas')
+              ? (_json['localDatas'] as core.List)
+                  .map((value) => ResourceRecordSet.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (localDatas != null) 'localDatas': localDatas!,
+      };
+}
+
+class ResponsePolicyRulesListResponse {
+  ResponseHeader? header;
+
+  /// The presence of this field indicates that there exist more results
+  /// following your last page of results in pagination order.
+  ///
+  /// To fetch them, make another list request using this value as your page
+  /// token. This lets you the complete contents of even very large collections
+  /// one page at a time. However, if the contents of the collection change
+  /// between the first and last paginated list request, the set of all elements
+  /// returned are an inconsistent view of the collection. You cannot retrieve a
+  /// consistent snapshot of a collection larger than the maximum page size.
+  core.String? nextPageToken;
+
+  /// The Response Policy Rule resources.
+  core.List<ResponsePolicyRule>? responsePolicyRules;
+
+  ResponsePolicyRulesListResponse({
+    this.header,
+    this.nextPageToken,
+    this.responsePolicyRules,
+  });
+
+  ResponsePolicyRulesListResponse.fromJson(core.Map _json)
+      : this(
+          header: _json.containsKey('header')
+              ? ResponseHeader.fromJson(
+                  _json['header'] as core.Map<core.String, core.dynamic>)
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          responsePolicyRules: _json.containsKey('responsePolicyRules')
+              ? (_json['responsePolicyRules'] as core.List)
+                  .map((value) => ResponsePolicyRule.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (header != null) 'header': header!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (responsePolicyRules != null)
+          'responsePolicyRules': responsePolicyRules!,
+      };
+}
+
+class ResponsePolicyRulesPatchResponse {
+  ResponseHeader? header;
+  ResponsePolicyRule? responsePolicyRule;
+
+  ResponsePolicyRulesPatchResponse({
+    this.header,
+    this.responsePolicyRule,
+  });
+
+  ResponsePolicyRulesPatchResponse.fromJson(core.Map _json)
+      : this(
+          header: _json.containsKey('header')
+              ? ResponseHeader.fromJson(
+                  _json['header'] as core.Map<core.String, core.dynamic>)
+              : null,
+          responsePolicyRule: _json.containsKey('responsePolicyRule')
+              ? ResponsePolicyRule.fromJson(_json['responsePolicyRule']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (header != null) 'header': header!,
+        if (responsePolicyRule != null)
+          'responsePolicyRule': responsePolicyRule!,
+      };
+}
+
+class ResponsePolicyRulesUpdateResponse {
+  ResponseHeader? header;
+  ResponsePolicyRule? responsePolicyRule;
+
+  ResponsePolicyRulesUpdateResponse({
+    this.header,
+    this.responsePolicyRule,
+  });
+
+  ResponsePolicyRulesUpdateResponse.fromJson(core.Map _json)
+      : this(
+          header: _json.containsKey('header')
+              ? ResponseHeader.fromJson(
+                  _json['header'] as core.Map<core.String, core.dynamic>)
+              : null,
+          responsePolicyRule: _json.containsKey('responsePolicyRule')
+              ? ResponsePolicyRule.fromJson(_json['responsePolicyRule']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (header != null) 'header': header!,
+        if (responsePolicyRule != null)
+          'responsePolicyRule': responsePolicyRule!,
       };
 }

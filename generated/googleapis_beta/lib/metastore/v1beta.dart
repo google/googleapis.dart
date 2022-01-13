@@ -1953,6 +1953,8 @@ class HiveMetastoreConfig {
   /// Hive metastore (configured in hive-site.xml).
   ///
   /// The mappings override system defaults (some keys cannot be overridden).
+  /// These overrides are also applied to auxiliary versions and can be further
+  /// customized in the auxiliary version's AuxiliaryVersionConfig.
   core.Map<core.String, core.String>? configOverrides;
 
   /// The protocol to use for the metastore service endpoint.
