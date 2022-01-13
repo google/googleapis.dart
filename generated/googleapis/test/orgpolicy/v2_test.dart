@@ -26,6 +26,32 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
+core.int buildCounterGoogleCloudOrgpolicyV2AlternatePolicySpec = 0;
+api.GoogleCloudOrgpolicyV2AlternatePolicySpec
+    buildGoogleCloudOrgpolicyV2AlternatePolicySpec() {
+  final o = api.GoogleCloudOrgpolicyV2AlternatePolicySpec();
+  buildCounterGoogleCloudOrgpolicyV2AlternatePolicySpec++;
+  if (buildCounterGoogleCloudOrgpolicyV2AlternatePolicySpec < 3) {
+    o.launch = 'foo';
+    o.spec = buildGoogleCloudOrgpolicyV2PolicySpec();
+  }
+  buildCounterGoogleCloudOrgpolicyV2AlternatePolicySpec--;
+  return o;
+}
+
+void checkGoogleCloudOrgpolicyV2AlternatePolicySpec(
+    api.GoogleCloudOrgpolicyV2AlternatePolicySpec o) {
+  buildCounterGoogleCloudOrgpolicyV2AlternatePolicySpec++;
+  if (buildCounterGoogleCloudOrgpolicyV2AlternatePolicySpec < 3) {
+    unittest.expect(
+      o.launch!,
+      unittest.equals('foo'),
+    );
+    checkGoogleCloudOrgpolicyV2PolicySpec(o.spec!);
+  }
+  buildCounterGoogleCloudOrgpolicyV2AlternatePolicySpec--;
+}
+
 core.int buildCounterGoogleCloudOrgpolicyV2Constraint = 0;
 api.GoogleCloudOrgpolicyV2Constraint buildGoogleCloudOrgpolicyV2Constraint() {
   final o = api.GoogleCloudOrgpolicyV2Constraint();
@@ -271,6 +297,7 @@ api.GoogleCloudOrgpolicyV2Policy buildGoogleCloudOrgpolicyV2Policy() {
   final o = api.GoogleCloudOrgpolicyV2Policy();
   buildCounterGoogleCloudOrgpolicyV2Policy++;
   if (buildCounterGoogleCloudOrgpolicyV2Policy < 3) {
+    o.alternate = buildGoogleCloudOrgpolicyV2AlternatePolicySpec();
     o.name = 'foo';
     o.spec = buildGoogleCloudOrgpolicyV2PolicySpec();
   }
@@ -281,6 +308,7 @@ api.GoogleCloudOrgpolicyV2Policy buildGoogleCloudOrgpolicyV2Policy() {
 void checkGoogleCloudOrgpolicyV2Policy(api.GoogleCloudOrgpolicyV2Policy o) {
   buildCounterGoogleCloudOrgpolicyV2Policy++;
   if (buildCounterGoogleCloudOrgpolicyV2Policy < 3) {
+    checkGoogleCloudOrgpolicyV2AlternatePolicySpec(o.alternate!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -475,6 +503,16 @@ void checkGoogleTypeExpr(api.GoogleTypeExpr o) {
 }
 
 void main() {
+  unittest.group('obj-schema-GoogleCloudOrgpolicyV2AlternatePolicySpec', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleCloudOrgpolicyV2AlternatePolicySpec();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudOrgpolicyV2AlternatePolicySpec.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudOrgpolicyV2AlternatePolicySpec(od);
+    });
+  });
+
   unittest.group('obj-schema-GoogleCloudOrgpolicyV2Constraint', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGoogleCloudOrgpolicyV2Constraint();

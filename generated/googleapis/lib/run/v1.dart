@@ -29,7 +29,6 @@
 ///   - [NamespacesRevisionsResource]
 ///   - [NamespacesRoutesResource]
 ///   - [NamespacesServicesResource]
-/// - [OperationsResource]
 /// - [ProjectsResource]
 ///   - [ProjectsAuthorizeddomainsResource]
 ///   - [ProjectsLocationsResource]
@@ -68,7 +67,6 @@ class CloudRunApi {
   final commons.ApiRequester _requester;
 
   NamespacesResource get namespaces => NamespacesResource(_requester);
-  OperationsResource get operations => OperationsResource(_requester);
   ProjectsResource get projects => ProjectsResource(_requester);
 
   CloudRunApi(http.Client client,
@@ -1057,61 +1055,6 @@ class NamespacesServicesResource {
       queryParams: _queryParams,
     );
     return Service.fromJson(_response as core.Map<core.String, core.dynamic>);
-  }
-}
-
-class OperationsResource {
-  final commons.ApiRequester _requester;
-
-  OperationsResource(commons.ApiRequester client) : _requester = client;
-
-  /// Starts asynchronous cancellation on a long-running operation.
-  ///
-  /// The server makes a best effort to cancel the operation, but success is not
-  /// guaranteed. If the server doesn't support this method, it returns
-  /// `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation
-  /// or other methods to check whether the cancellation succeeded or whether
-  /// the operation completed despite cancellation. On successful cancellation,
-  /// the operation is not deleted; instead, it becomes an operation with an
-  /// Operation.error value with a google.rpc.Status.code of 1, corresponding to
-  /// `Code.CANCELLED`.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - The name of the operation resource to be cancelled.
-  /// Value must have pattern `^operations/.*$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Empty].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Empty> cancel(
-    GoogleLongrunningCancelOperationRequest request,
-    core.String name, {
-    core.String? $fields,
-  }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':cancel';
-
-    final _response = await _requester.request(
-      _url,
-      'POST',
-      body: _body,
-      queryParams: _queryParams,
-    );
-    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3310,15 +3253,6 @@ class DomainMappingStatus {
       };
 }
 
-/// A generic empty message that you can re-use to avoid defining duplicated
-/// empty messages in your APIs.
-///
-/// A typical example is to use it as the request or the response type of an API
-/// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
-/// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
-/// object `{}`.
-typedef Empty = $Empty;
-
 /// Not supported by Cloud Run EnvFromSource represents the source of a set of
 /// ConfigMaps
 class EnvFromSource {
@@ -3489,7 +3423,7 @@ class ExecAction {
 /// information.
 typedef Expr = $Expr;
 
-/// Condition defines a generic condition for a Resource
+/// Condition defines a generic condition for a Resource.
 class GoogleCloudRunV1Condition {
   /// Last time the condition transitioned from one status to another.
   ///
@@ -3561,9 +3495,6 @@ class GoogleCloudRunV1Condition {
         if (type != null) 'type': type!,
       };
 }
-
-/// The request message for Operations.CancelOperation.
-typedef GoogleLongrunningCancelOperationRequest = $Empty;
 
 /// Not supported by Cloud Run HTTPGetAction describes an action based on HTTP
 /// Get requests.
@@ -4721,20 +4652,17 @@ class ResourceRecord {
 class ResourceRequirements {
   /// (Optional) Only memory and CPU are supported.
   ///
-  /// Note: The only supported values for CPU are '1', '2', and '4'. Setting 4
-  /// CPU requires at least 2Gi of memory. Limits describes the maximum amount
-  /// of compute resources allowed. The values of the map is string form of the
-  /// 'quantity' k8s type:
+  /// Limits describes the maximum amount of compute resources allowed. The
+  /// values of the map is string form of the 'quantity' k8s type:
   /// https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
   core.Map<core.String, core.String>? limits;
 
   /// (Optional) Only memory and CPU are supported.
   ///
-  /// Note: The only supported values for CPU are '1', '2', and '4'. Requests
-  /// describes the minimum amount of compute resources required. If Requests is
-  /// omitted for a container, it defaults to Limits if that is explicitly
-  /// specified, otherwise to an implementation-defined value. The values of the
-  /// map is string form of the 'quantity' k8s type:
+  /// Requests describes the minimum amount of compute resources required. If
+  /// Requests is omitted for a container, it defaults to Limits if that is
+  /// explicitly specified, otherwise to an implementation-defined value. The
+  /// values of the map is string form of the 'quantity' k8s type:
   /// https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
   core.Map<core.String, core.String>? requests;
 
@@ -4838,8 +4766,6 @@ class RevisionSpec {
   /// supported, defaults to 0, which means concurrency to the application is
   /// not limited, and the system decides the target concurrency for the
   /// autoscaler.
-  ///
-  /// Optional.
   core.int? containerConcurrency;
 
   /// Containers holds the single container that defines the unit of execution
@@ -4850,6 +4776,23 @@ class RevisionSpec {
   /// container may be provided. The runtime contract is documented here:
   /// https://github.com/knative/serving/blob/main/docs/runtime-contract.md
   core.List<Container>? containers;
+
+  /// Indicates whether information about services should be injected into pod's
+  /// environment variables, matching the syntax of Docker links.
+  ///
+  /// Cloud Run fully managed: Not supported. Cloud Run for Anthos: supported,
+  /// defaults to true.
+  core.bool? enableServiceLinks;
+
+  /// ImagePullSecrets is a list of references to secrets in the same namespace
+  /// to use for pulling any images in pods that reference this ServiceAccount.
+  ///
+  /// ImagePullSecrets are distinct from Secrets because Secrets can be mounted
+  /// in the pod, but ImagePullSecrets are only accessed by the kubelet. More
+  /// info:
+  /// https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod
+  /// Cloud Run fully managed: Not supported. Cloud Run for Anthos: supported.
+  core.List<LocalObjectReference>? imagePullSecrets;
 
   /// Email address of the IAM service account associated with the revision of
   /// the service.
@@ -4872,6 +4815,8 @@ class RevisionSpec {
   RevisionSpec({
     this.containerConcurrency,
     this.containers,
+    this.enableServiceLinks,
+    this.imagePullSecrets,
     this.serviceAccountName,
     this.timeoutSeconds,
     this.volumes,
@@ -4885,6 +4830,15 @@ class RevisionSpec {
           containers: _json.containsKey('containers')
               ? (_json['containers'] as core.List)
                   .map((value) => Container.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          enableServiceLinks: _json.containsKey('enableServiceLinks')
+              ? _json['enableServiceLinks'] as core.bool
+              : null,
+          imagePullSecrets: _json.containsKey('imagePullSecrets')
+              ? (_json['imagePullSecrets'] as core.List)
+                  .map((value) => LocalObjectReference.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -4906,6 +4860,9 @@ class RevisionSpec {
         if (containerConcurrency != null)
           'containerConcurrency': containerConcurrency!,
         if (containers != null) 'containers': containers!,
+        if (enableServiceLinks != null)
+          'enableServiceLinks': enableServiceLinks!,
+        if (imagePullSecrets != null) 'imagePullSecrets': imagePullSecrets!,
         if (serviceAccountName != null)
           'serviceAccountName': serviceAccountName!,
         if (timeoutSeconds != null) 'timeoutSeconds': timeoutSeconds!,

@@ -143,7 +143,7 @@
             }
         }
     },
-    "revision": "20211028",
+    "revision": "20211207",
     "rootUrl": "https://baremetalsolution.googleapis.com/",
     "schemas": {
         "ResetInstanceRequest": {

@@ -3316,7 +3316,7 @@
             }
         }
     },
-    "revision": "20211130",
+    "revision": "20220108",
     "rootUrl": "https://tagmanager.googleapis.com/",
     "schemas": {
         "Account": {

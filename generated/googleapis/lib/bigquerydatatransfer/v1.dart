@@ -145,11 +145,6 @@ class ProjectsDataSourcesResource {
   /// Returns true if valid credentials exist for the given data source and
   /// requesting user.
   ///
-  /// Some data sources doesn't support service account, so we need to talk to
-  /// them on behalf of the end user. This API just checks whether we have OAuth
-  /// token for the particular user, which is a pre-requisite before user can
-  /// create a transfer config.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -191,8 +186,7 @@ class ProjectsDataSourcesResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Retrieves a supported data source and returns its settings, which can be
-  /// used for UI rendering.
+  /// Retrieves a supported data source and returns its settings.
   ///
   /// Request parameters:
   ///
@@ -230,8 +224,7 @@ class ProjectsDataSourcesResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Lists supported data sources and returns their settings, which can be used
-  /// for UI rendering.
+  /// Lists supported data sources and returns their settings.
   ///
   /// Request parameters:
   ///
@@ -437,11 +430,6 @@ class ProjectsLocationsDataSourcesResource {
   /// Returns true if valid credentials exist for the given data source and
   /// requesting user.
   ///
-  /// Some data sources doesn't support service account, so we need to talk to
-  /// them on behalf of the end user. This API just checks whether we have OAuth
-  /// token for the particular user, which is a pre-requisite before user can
-  /// create a transfer config.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -484,8 +472,7 @@ class ProjectsLocationsDataSourcesResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Retrieves a supported data source and returns its settings, which can be
-  /// used for UI rendering.
+  /// Retrieves a supported data source and returns its settings.
   ///
   /// Request parameters:
   ///
@@ -524,8 +511,7 @@ class ProjectsLocationsDataSourcesResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Lists supported data sources and returns their settings, which can be used
-  /// for UI rendering.
+  /// Lists supported data sources and returns their settings.
   ///
   /// Request parameters:
   ///
@@ -1072,7 +1058,7 @@ class ProjectsLocationsTransferConfigsRunsResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Returns information about running and completed jobs.
+  /// Returns information about running and completed transfer runs.
   ///
   /// Request parameters:
   ///
@@ -1144,7 +1130,7 @@ class ProjectsLocationsTransferConfigsRunsTransferLogsResource {
       commons.ApiRequester client)
       : _requester = client;
 
-  /// Returns user facing log messages for the data transfer run.
+  /// Returns log messages for the transfer run.
   ///
   /// Request parameters:
   ///
@@ -1692,7 +1678,7 @@ class ProjectsTransferConfigsRunsResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Returns information about running and completed jobs.
+  /// Returns information about running and completed transfer runs.
   ///
   /// Request parameters:
   ///
@@ -1762,7 +1748,7 @@ class ProjectsTransferConfigsRunsTransferLogsResource {
   ProjectsTransferConfigsRunsTransferLogsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Returns user facing log messages for the data transfer run.
+  /// Returns log messages for the transfer run.
   ///
   /// Request parameters:
   ///
@@ -1849,9 +1835,7 @@ class CheckValidCredsResponse {
       };
 }
 
-/// Represents data source metadata.
-///
-/// Metadata is sufficient to render UI and request proper OAuth tokens.
+/// Defines the properties and custom parameters for a data source.
 class DataSource {
   /// Indicates the type of authorization.
   /// Possible string values are:
@@ -2064,13 +2048,7 @@ class DataSource {
       };
 }
 
-/// Represents a data source parameter with validation rules, so that parameters
-/// can be rendered in the UI.
-///
-/// These parameters are given to us by supported data sources, and include all
-/// needed information for rendering and validation. Thus, whoever uses this api
-/// can decide to generate either generic ui, or custom data source specific
-/// forms.
+/// A parameter used to define custom fields in a data source definition.
 class DataSourceParameter {
   /// All possible values for the parameter.
   core.List<core.String>? allowedValues;

@@ -1061,11 +1061,8 @@ class AzureBlobStorageData {
 class AzureCredentials {
   /// Azure shared access signature (SAS).
   ///
-  /// *Note:*Copying data from Azure Data Lake Storage (ADLS) Gen 2 is in
-  /// \[Preview\](/products/#product-launch-stages). During Preview, if you are
-  /// copying data from ADLS Gen 2, you must use an account SAS. For more
-  /// information about SAS, see \[Grant limited access to Azure Storage
-  /// resources using shared access signatures
+  /// For more information about SAS, see \[Grant limited access to Azure
+  /// Storage resources using shared access signatures
   /// (SAS)\](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview).
   ///
   /// Required.
@@ -1346,24 +1343,30 @@ class ListTransferJobsResponse {
       };
 }
 
-/// Logging configuration.
+/// Specifies the logging behavior for transfer operations.
+///
+/// For cloud-to-cloud transfers, logs are sent to Cloud Logging. See
+/// [Read transfer logs](https://cloud.google.com/storage-transfer/docs/read-transfer-logs)
+/// for details. For transfers to or from a POSIX file system, logs are stored
+/// in the Cloud Storage bucket that is the source or sink of the transfer. See
+/// \[Managing Transfer for on-premises
+/// jobs\](https://cloud.google.com/storage-transfer/docs/managing-on-prem-jobs#viewing-logs)
+/// for details.
 class LoggingConfig {
-  /// Enables the Cloud Storage transfer logs for this transfer.
-  ///
-  /// This is only supported for transfer jobs with PosixFilesystem sources. The
-  /// default is that logs are not generated for this transfer.
+  /// For transfers with a PosixFilesystem source, this option enables the Cloud
+  /// Storage transfer logs for this transfer.
   core.bool? enableOnpremGcsTransferLogs;
 
   /// States in which `log_actions` are logged.
   ///
-  /// If empty, no logs are generated. This is not yet supported for transfers
-  /// with PosixFilesystem data sources.
+  /// If empty, no logs are generated. Not supported for transfers with
+  /// PosixFilesystem data sources; use enable_onprem_gcs_transfer_logs instead.
   core.List<core.String>? logActionStates;
 
-  /// Actions to be logged.
+  /// Specifies the actions to be logged.
   ///
-  /// If empty, no logs are generated. This is not yet supported for transfers
-  /// with PosixFilesystem data sources.
+  /// If empty, no logs are generated. Not supported for transfers with
+  /// PosixFilesystem data sources; use enable_onprem_gcs_transfer_logs instead.
   core.List<core.String>? logActions;
 
   LoggingConfig({
@@ -1395,6 +1398,75 @@ class LoggingConfig {
           'enableOnpremGcsTransferLogs': enableOnpremGcsTransferLogs!,
         if (logActionStates != null) 'logActionStates': logActionStates!,
         if (logActions != null) 'logActions': logActions!,
+      };
+}
+
+/// Specifies the metadata options for running a transfer.
+class MetadataOptions {
+  /// Specifies how each file's GID attribute should be handled by the transfer.
+  ///
+  /// If unspecified, the default behavior is the same as GID_SKIP when the
+  /// source is a POSIX file system.
+  /// Possible string values are:
+  /// - "GID_UNSPECIFIED" : GID behavior is unspecified.
+  /// - "GID_SKIP" : Skip GID during a transfer job.
+  /// - "GID_NUMBER" : Preserve GID during a transfer job.
+  core.String? gid;
+
+  /// Specifies how each file's mode attribute should be handled by the
+  /// transfer.
+  ///
+  /// If unspecified, the default behavior is the same as MODE_SKIP when the
+  /// source is a POSIX file system.
+  /// Possible string values are:
+  /// - "MODE_UNSPECIFIED" : Mode behavior is unspecified.
+  /// - "MODE_SKIP" : Skip mode during a transfer job.
+  /// - "MODE_PRESERVE" : Preserve mode during a transfer job.
+  core.String? mode;
+
+  /// Specifies how symlinks should be handled by the transfer.
+  ///
+  /// If unspecified, the default behavior is the same as SYMLINK_SKIP when the
+  /// source is a POSIX file system.
+  /// Possible string values are:
+  /// - "SYMLINK_UNSPECIFIED" : Symlink behavior is unspecified. The default
+  /// behavior is to skip symlinks during a transfer job.
+  /// - "SYMLINK_SKIP" : Skip symlinks during a transfer job.
+  /// - "SYMLINK_PRESERVE" : Preserve symlinks during a transfer job.
+  core.String? symlink;
+
+  /// Specifies how each file's UID attribute should be handled by the transfer.
+  ///
+  /// If unspecified, the default behavior is the same as UID_SKIP when the
+  /// source is a POSIX file system.
+  /// Possible string values are:
+  /// - "UID_UNSPECIFIED" : UID behavior is unspecified.
+  /// - "UID_SKIP" : Skip UID during a transfer job.
+  /// - "UID_NUMBER" : Preserve UID during a transfer job.
+  core.String? uid;
+
+  MetadataOptions({
+    this.gid,
+    this.mode,
+    this.symlink,
+    this.uid,
+  });
+
+  MetadataOptions.fromJson(core.Map _json)
+      : this(
+          gid: _json.containsKey('gid') ? _json['gid'] as core.String : null,
+          mode: _json.containsKey('mode') ? _json['mode'] as core.String : null,
+          symlink: _json.containsKey('symlink')
+              ? _json['symlink'] as core.String
+              : null,
+          uid: _json.containsKey('uid') ? _json['uid'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (gid != null) 'gid': gid!,
+        if (mode != null) 'mode': mode!,
+        if (symlink != null) 'symlink': symlink!,
+        if (uid != null) 'uid': uid!,
       };
 }
 
@@ -2038,6 +2110,9 @@ class TransferOptions {
   /// mutually exclusive.
   core.bool? deleteObjectsUniqueInSink;
 
+  /// Represents the selected metadata options for a transfer job.
+  MetadataOptions? metadataOptions;
+
   /// When to overwrite objects that already exist in the sink.
   ///
   /// The default is that only objects that are different from the source are
@@ -2048,6 +2123,7 @@ class TransferOptions {
   TransferOptions({
     this.deleteObjectsFromSourceAfterTransfer,
     this.deleteObjectsUniqueInSink,
+    this.metadataOptions,
     this.overwriteObjectsAlreadyExistingInSink,
   });
 
@@ -2061,6 +2137,10 @@ class TransferOptions {
               _json.containsKey('deleteObjectsUniqueInSink')
                   ? _json['deleteObjectsUniqueInSink'] as core.bool
                   : null,
+          metadataOptions: _json.containsKey('metadataOptions')
+              ? MetadataOptions.fromJson(_json['metadataOptions']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           overwriteObjectsAlreadyExistingInSink:
               _json.containsKey('overwriteObjectsAlreadyExistingInSink')
                   ? _json['overwriteObjectsAlreadyExistingInSink'] as core.bool
@@ -2073,6 +2153,7 @@ class TransferOptions {
               deleteObjectsFromSourceAfterTransfer!,
         if (deleteObjectsUniqueInSink != null)
           'deleteObjectsUniqueInSink': deleteObjectsUniqueInSink!,
+        if (metadataOptions != null) 'metadataOptions': metadataOptions!,
         if (overwriteObjectsAlreadyExistingInSink != null)
           'overwriteObjectsAlreadyExistingInSink':
               overwriteObjectsAlreadyExistingInSink!,
@@ -2092,6 +2173,9 @@ class TransferSpec {
 
   /// A Cloud Storage data source.
   GcsData? gcsDataSource;
+
+  /// Cloud Storage intermediate data location.
+  GcsData? gcsIntermediateDataLocation;
 
   /// An HTTP URL data source.
   HttpData? httpDataSource;
@@ -2136,6 +2220,7 @@ class TransferSpec {
     this.azureBlobStorageDataSource,
     this.gcsDataSink,
     this.gcsDataSource,
+    this.gcsIntermediateDataLocation,
     this.httpDataSource,
     this.objectConditions,
     this.posixDataSink,
@@ -2166,6 +2251,11 @@ class TransferSpec {
               ? GcsData.fromJson(
                   _json['gcsDataSource'] as core.Map<core.String, core.dynamic>)
               : null,
+          gcsIntermediateDataLocation:
+              _json.containsKey('gcsIntermediateDataLocation')
+                  ? GcsData.fromJson(_json['gcsIntermediateDataLocation']
+                      as core.Map<core.String, core.dynamic>)
+                  : null,
           httpDataSource: _json.containsKey('httpDataSource')
               ? HttpData.fromJson(_json['httpDataSource']
                   as core.Map<core.String, core.dynamic>)
@@ -2204,6 +2294,8 @@ class TransferSpec {
           'azureBlobStorageDataSource': azureBlobStorageDataSource!,
         if (gcsDataSink != null) 'gcsDataSink': gcsDataSink!,
         if (gcsDataSource != null) 'gcsDataSource': gcsDataSource!,
+        if (gcsIntermediateDataLocation != null)
+          'gcsIntermediateDataLocation': gcsIntermediateDataLocation!,
         if (httpDataSource != null) 'httpDataSource': httpDataSource!,
         if (objectConditions != null) 'objectConditions': objectConditions!,
         if (posixDataSink != null) 'posixDataSink': posixDataSink!,
@@ -2225,11 +2317,11 @@ class UpdateTransferJobRequest {
 
   /// The job to update.
   ///
-  /// `transferJob` is expected to specify only four fields: description,
-  /// transfer_spec, notification_config, and status. An
-  /// `UpdateTransferJobRequest` that specifies other fields are rejected with
-  /// the error INVALID_ARGUMENT. Updating a job status to DELETED requires
-  /// `storagetransfer.jobs.delete` permissions.
+  /// `transferJob` is expected to specify one or more of five fields:
+  /// description, transfer_spec, notification_config, logging_config, and
+  /// status. An `UpdateTransferJobRequest` that specifies other fields are
+  /// rejected with the error INVALID_ARGUMENT. Updating a job status to DELETED
+  /// requires `storagetransfer.jobs.delete` permissions.
   ///
   /// Required.
   TransferJob? transferJob;
@@ -2238,8 +2330,8 @@ class UpdateTransferJobRequest {
   /// this request.
   ///
   /// Fields in `transferJob` that can be updated are: description,
-  /// transfer_spec, notification_config, and status. To update the
-  /// `transfer_spec` of the job, a complete transfer specification must be
+  /// transfer_spec, notification_config, logging_config, and status. To update
+  /// the `transfer_spec` of the job, a complete transfer specification must be
   /// provided. An incomplete specification missing any required fields is
   /// rejected with the error INVALID_ARGUMENT.
   core.String? updateTransferJobFieldMask;

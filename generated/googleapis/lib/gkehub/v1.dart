@@ -4087,6 +4087,15 @@ class ResourceOptions {
   /// Optional.
   core.String? connectVersion;
 
+  /// Major version of the Kubernetes cluster.
+  ///
+  /// This is only used to determine which version to use for the
+  /// CustomResourceDefinition resources, `apiextensions/v1beta1`
+  /// or`apiextensions/v1`.
+  ///
+  /// Optional.
+  core.String? k8sVersion;
+
   /// Use `apiextensions/v1beta1` instead of `apiextensions/v1` for
   /// CustomResourceDefinition resources.
   ///
@@ -4098,6 +4107,7 @@ class ResourceOptions {
 
   ResourceOptions({
     this.connectVersion,
+    this.k8sVersion,
     this.v1beta1Crd,
   });
 
@@ -4106,6 +4116,9 @@ class ResourceOptions {
           connectVersion: _json.containsKey('connectVersion')
               ? _json['connectVersion'] as core.String
               : null,
+          k8sVersion: _json.containsKey('k8sVersion')
+              ? _json['k8sVersion'] as core.String
+              : null,
           v1beta1Crd: _json.containsKey('v1beta1Crd')
               ? _json['v1beta1Crd'] as core.bool
               : null,
@@ -4113,6 +4126,7 @@ class ResourceOptions {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (connectVersion != null) 'connectVersion': connectVersion!,
+        if (k8sVersion != null) 'k8sVersion': k8sVersion!,
         if (v1beta1Crd != null) 'v1beta1Crd': v1beta1Crd!,
       };
 }

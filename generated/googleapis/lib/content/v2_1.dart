@@ -7902,6 +7902,12 @@ class Account {
   /// Indicates whether the merchant sells adult content.
   core.bool? adultContent;
 
+  /// The automatic improvements of the account can be used to automatically
+  /// update items, improve images and shipping.
+  ///
+  /// Each section inside AutomaticImprovements is updated separately.
+  AccountAutomaticImprovements? automaticImprovements;
+
   /// Automatically created label IDs that are assigned to the account by CSS
   /// Center.
   core.List<core.String>? automaticLabelIds;
@@ -7957,6 +7963,7 @@ class Account {
     this.accountManagement,
     this.adsLinks,
     this.adultContent,
+    this.automaticImprovements,
     this.automaticLabelIds,
     this.businessInformation,
     this.cssId,
@@ -7984,6 +7991,11 @@ class Account {
               : null,
           adultContent: _json.containsKey('adultContent')
               ? _json['adultContent'] as core.bool
+              : null,
+          automaticImprovements: _json.containsKey('automaticImprovements')
+              ? AccountAutomaticImprovements.fromJson(
+                  _json['automaticImprovements']
+                      as core.Map<core.String, core.dynamic>)
               : null,
           automaticLabelIds: _json.containsKey('automaticLabelIds')
               ? (_json['automaticLabelIds'] as core.List)
@@ -8033,6 +8045,8 @@ class Account {
         if (accountManagement != null) 'accountManagement': accountManagement!,
         if (adsLinks != null) 'adsLinks': adsLinks!,
         if (adultContent != null) 'adultContent': adultContent!,
+        if (automaticImprovements != null)
+          'automaticImprovements': automaticImprovements!,
         if (automaticLabelIds != null) 'automaticLabelIds': automaticLabelIds!,
         if (businessInformation != null)
           'businessInformation': businessInformation!,
@@ -8147,6 +8161,75 @@ class AccountAdsLink {
   core.Map<core.String, core.dynamic> toJson() => {
         if (adsId != null) 'adsId': adsId!,
         if (status != null) 'status': status!,
+      };
+}
+
+/// The automatic improvements of the account can be used to automatically
+/// update items, improve images and shipping.
+class AccountAutomaticImprovements {
+  /// This improvement will attempt to automatically correct submitted images if
+  /// they don't meet the
+  /// [image requirements](https://support.google.com/merchants/answer/6324350),
+  /// for example, removing overlays.
+  ///
+  /// If successful, the image will be replaced and approved. This improvement
+  /// is only applied to images of disapproved offers. For more information see:
+  /// [Automatic image improvements](https://support.google.com/merchants/answer/9242973)
+  /// This field is only updated (cleared) if provided.
+  AccountImageImprovements? imageImprovements;
+
+  /// Turning on
+  /// [item updates](https://support.google.com/merchants/answer/3246284) allows
+  /// Google to automatically update items for you.
+  ///
+  /// When item updates are on, Google uses the structured data markup on the
+  /// website and advanced data extractors to update the price and availability
+  /// of the items. When the item updates are off, items with mismatched data
+  /// aren't shown. This field is only updated (cleared) if provided.
+  AccountItemUpdates? itemUpdates;
+
+  /// Not available for MCAs
+  /// [accounts](https://support.google.com/merchants/answer/188487).
+  ///
+  /// By turning on
+  /// [automatic shipping improvements](https://support.google.com/merchants/answer/10027038),
+  /// you are allowing Google to improve the accuracy of your delivery times
+  /// shown to shoppers using Google. More accurate delivery times, especially
+  /// when faster, typically lead to better conversion rates. Google will
+  /// improve your estimated delivery times based on various factors: - Delivery
+  /// address of an order - Current handling time and shipping time settings -
+  /// Estimated weekdays or business days - Parcel tracking data This field is
+  /// only updated (cleared) if provided.
+  AccountShippingImprovements? shippingImprovements;
+
+  AccountAutomaticImprovements({
+    this.imageImprovements,
+    this.itemUpdates,
+    this.shippingImprovements,
+  });
+
+  AccountAutomaticImprovements.fromJson(core.Map _json)
+      : this(
+          imageImprovements: _json.containsKey('imageImprovements')
+              ? AccountImageImprovements.fromJson(_json['imageImprovements']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          itemUpdates: _json.containsKey('itemUpdates')
+              ? AccountItemUpdates.fromJson(
+                  _json['itemUpdates'] as core.Map<core.String, core.dynamic>)
+              : null,
+          shippingImprovements: _json.containsKey('shippingImprovements')
+              ? AccountShippingImprovements.fromJson(
+                  _json['shippingImprovements']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (imageImprovements != null) 'imageImprovements': imageImprovements!,
+        if (itemUpdates != null) 'itemUpdates': itemUpdates!,
+        if (shippingImprovements != null)
+          'shippingImprovements': shippingImprovements!,
       };
 }
 
@@ -8370,6 +8453,221 @@ class AccountIdentifier {
       };
 }
 
+/// This improvement will attempt to automatically correct submitted images if
+/// they don't meet the
+/// [image requirements](https://support.google.com/merchants/answer/6324350),
+/// for example, removing overlays.
+///
+/// If successful, the image will be replaced and approved. This improvement is
+/// only applied to images of disapproved offers. For more information see:
+/// [Automatic image improvements](https://support.google.com/merchants/answer/9242973)
+class AccountImageImprovements {
+  /// Determines how the images should be automatically updated.
+  ///
+  /// If this field is not present, then the settings will be deleted. If there
+  /// are no settings for subaccount, they are inherited from aggregator.
+  AccountImageImprovementsSettings? accountImageImprovementsSettings;
+
+  /// The effective value of allow_automatic_image_improvements.
+  ///
+  /// If account_image_improvements_settings is present, then this value is the
+  /// same. Otherwise, it represents the inherited value of the parent account.
+  /// Read-only.
+  ///
+  /// Output only.
+  core.bool? effectiveAllowAutomaticImageImprovements;
+
+  AccountImageImprovements({
+    this.accountImageImprovementsSettings,
+    this.effectiveAllowAutomaticImageImprovements,
+  });
+
+  AccountImageImprovements.fromJson(core.Map _json)
+      : this(
+          accountImageImprovementsSettings:
+              _json.containsKey('accountImageImprovementsSettings')
+                  ? AccountImageImprovementsSettings.fromJson(
+                      _json['accountImageImprovementsSettings']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          effectiveAllowAutomaticImageImprovements: _json
+                  .containsKey('effectiveAllowAutomaticImageImprovements')
+              ? _json['effectiveAllowAutomaticImageImprovements'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (accountImageImprovementsSettings != null)
+          'accountImageImprovementsSettings': accountImageImprovementsSettings!,
+        if (effectiveAllowAutomaticImageImprovements != null)
+          'effectiveAllowAutomaticImageImprovements':
+              effectiveAllowAutomaticImageImprovements!,
+      };
+}
+
+/// Settings for the Automatic Image Improvements.
+class AccountImageImprovementsSettings {
+  /// Enables automatic image improvements.
+  core.bool? allowAutomaticImageImprovements;
+
+  AccountImageImprovementsSettings({
+    this.allowAutomaticImageImprovements,
+  });
+
+  AccountImageImprovementsSettings.fromJson(core.Map _json)
+      : this(
+          allowAutomaticImageImprovements:
+              _json.containsKey('allowAutomaticImageImprovements')
+                  ? _json['allowAutomaticImageImprovements'] as core.bool
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (allowAutomaticImageImprovements != null)
+          'allowAutomaticImageImprovements': allowAutomaticImageImprovements!,
+      };
+}
+
+/// Turning on
+/// [item updates](https://support.google.com/merchants/answer/3246284) allows
+/// Google to automatically update items for you.
+///
+/// When item updates are on, Google uses the structured data markup on the
+/// website and advanced data extractors to update the price and availability of
+/// the items. When the item updates are off, items with mismatched data aren't
+/// shown.
+class AccountItemUpdates {
+  /// Determines which attributes of the items should be automatically updated.
+  ///
+  /// If this field is not present, then the settings will be deleted. If there
+  /// are no settings for subaccount, they are inherited from aggregator.
+  AccountItemUpdatesSettings? accountItemUpdatesSettings;
+
+  /// The effective value of allow_availability_updates.
+  ///
+  /// If account_item_updates_settings is present, then this value is the same.
+  /// Otherwise, it represents the inherited value of the parent account.
+  /// Read-only.
+  ///
+  /// Output only.
+  core.bool? effectiveAllowAvailabilityUpdates;
+
+  /// The effective value of allow_price_updates.
+  ///
+  /// If account_item_updates_settings is present, then this value is the same.
+  /// Otherwise, it represents the inherited value of the parent account.
+  /// Read-only.
+  ///
+  /// Output only.
+  core.bool? effectiveAllowPriceUpdates;
+
+  /// The effective value of allow_strict_availability_updates.
+  ///
+  /// If account_item_updates_settings is present, then this value is the same.
+  /// Otherwise, it represents the inherited value of the parent account.
+  /// Read-only.
+  ///
+  /// Output only.
+  core.bool? effectiveAllowStrictAvailabilityUpdates;
+
+  AccountItemUpdates({
+    this.accountItemUpdatesSettings,
+    this.effectiveAllowAvailabilityUpdates,
+    this.effectiveAllowPriceUpdates,
+    this.effectiveAllowStrictAvailabilityUpdates,
+  });
+
+  AccountItemUpdates.fromJson(core.Map _json)
+      : this(
+          accountItemUpdatesSettings:
+              _json.containsKey('accountItemUpdatesSettings')
+                  ? AccountItemUpdatesSettings.fromJson(
+                      _json['accountItemUpdatesSettings']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          effectiveAllowAvailabilityUpdates:
+              _json.containsKey('effectiveAllowAvailabilityUpdates')
+                  ? _json['effectiveAllowAvailabilityUpdates'] as core.bool
+                  : null,
+          effectiveAllowPriceUpdates:
+              _json.containsKey('effectiveAllowPriceUpdates')
+                  ? _json['effectiveAllowPriceUpdates'] as core.bool
+                  : null,
+          effectiveAllowStrictAvailabilityUpdates: _json
+                  .containsKey('effectiveAllowStrictAvailabilityUpdates')
+              ? _json['effectiveAllowStrictAvailabilityUpdates'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (accountItemUpdatesSettings != null)
+          'accountItemUpdatesSettings': accountItemUpdatesSettings!,
+        if (effectiveAllowAvailabilityUpdates != null)
+          'effectiveAllowAvailabilityUpdates':
+              effectiveAllowAvailabilityUpdates!,
+        if (effectiveAllowPriceUpdates != null)
+          'effectiveAllowPriceUpdates': effectiveAllowPriceUpdates!,
+        if (effectiveAllowStrictAvailabilityUpdates != null)
+          'effectiveAllowStrictAvailabilityUpdates':
+              effectiveAllowStrictAvailabilityUpdates!,
+      };
+}
+
+/// Settings for the Automatic Item Updates.
+class AccountItemUpdatesSettings {
+  /// If availability updates are enabled, any previous availability values get
+  /// overwritten if Google finds an out-of-stock annotation on the offer's
+  /// page.
+  ///
+  /// If additionally `allow_availability_updates` field is set to true, values
+  /// get overwritten if Google finds an in-stock annotation on the offer’s
+  /// page.
+  core.bool? allowAvailabilityUpdates;
+
+  /// If price updates are enabled, Google always updates the active price with
+  /// the crawled information.
+  core.bool? allowPriceUpdates;
+
+  /// If allow_availability_updates is enabled, items are automatically updated
+  /// in all your Shopping target countries.
+  ///
+  /// By default, availability updates will only be applied to items that are
+  /// 'out of stock' on your website but 'in stock' on Shopping. Set this to
+  /// true to also update items that are 'in stock' on your website, but 'out of
+  /// stock' on Google Shopping. In order for this field to have an effect, you
+  /// must also allow availability updates.
+  core.bool? allowStrictAvailabilityUpdates;
+
+  AccountItemUpdatesSettings({
+    this.allowAvailabilityUpdates,
+    this.allowPriceUpdates,
+    this.allowStrictAvailabilityUpdates,
+  });
+
+  AccountItemUpdatesSettings.fromJson(core.Map _json)
+      : this(
+          allowAvailabilityUpdates:
+              _json.containsKey('allowAvailabilityUpdates')
+                  ? _json['allowAvailabilityUpdates'] as core.bool
+                  : null,
+          allowPriceUpdates: _json.containsKey('allowPriceUpdates')
+              ? _json['allowPriceUpdates'] as core.bool
+              : null,
+          allowStrictAvailabilityUpdates:
+              _json.containsKey('allowStrictAvailabilityUpdates')
+                  ? _json['allowStrictAvailabilityUpdates'] as core.bool
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (allowAvailabilityUpdates != null)
+          'allowAvailabilityUpdates': allowAvailabilityUpdates!,
+        if (allowPriceUpdates != null) 'allowPriceUpdates': allowPriceUpdates!,
+        if (allowStrictAvailabilityUpdates != null)
+          'allowStrictAvailabilityUpdates': allowStrictAvailabilityUpdates!,
+      };
+}
+
 /// Label assigned by CSS domain or CSS group to one of its sub-accounts.
 class AccountLabel {
   /// The ID of account this label belongs to.
@@ -8487,6 +8785,39 @@ class AccountReturnCarrier {
         if (carrierAccountNumber != null)
           'carrierAccountNumber': carrierAccountNumber!,
         if (carrierCode != null) 'carrierCode': carrierCode!,
+      };
+}
+
+/// Not available for MCAs
+/// [accounts](https://support.google.com/merchants/answer/188487).
+///
+/// By turning on
+/// [automatic shipping improvements](https://support.google.com/merchants/answer/10027038),
+/// you are allowing Google to improve the accuracy of your delivery times shown
+/// to shoppers using Google. More accurate delivery times, especially when
+/// faster, typically lead to better conversion rates. Google will improve your
+/// estimated delivery times based on various factors: * Delivery address of an
+/// order * Current handling time and shipping time settings * Estimated
+/// weekdays or business days * Parcel tracking data
+class AccountShippingImprovements {
+  /// Enables automatic shipping improvements.
+  core.bool? allowShippingImprovements;
+
+  AccountShippingImprovements({
+    this.allowShippingImprovements,
+  });
+
+  AccountShippingImprovements.fromJson(core.Map _json)
+      : this(
+          allowShippingImprovements:
+              _json.containsKey('allowShippingImprovements')
+                  ? _json['allowShippingImprovements'] as core.bool
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (allowShippingImprovements != null)
+          'allowShippingImprovements': allowShippingImprovements!,
       };
 }
 
@@ -11388,9 +11719,7 @@ class DatafeedTarget {
   /// checked check boxes in Merchant Center).
   ///
   /// Default destinations are always included unless provided in
-  /// `excludedDestinations`. List of supported destinations (if available to
-  /// the account): - DisplayAds - Shopping - ShoppingActions -
-  /// SurfacesAcrossGoogle
+  /// `excludedDestinations`.
   core.List<core.String>? includedDestinations;
 
   /// The two-letter ISO 639-1 language of the items in the feed.
@@ -20774,10 +21103,19 @@ class PosSaleResponse {
 
 /// Store resource.
 class PosStore {
+  /// The business type of the store.
+  core.List<core.String>? gcidCategory;
+
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "`content#posStore`"
   core.String? kind;
+
+  /// The store phone number.
+  core.String? phoneNumber;
+
+  /// The Google Place Id of the store location.
+  core.String? placeId;
 
   /// The street address of the store.
   ///
@@ -20789,27 +21127,60 @@ class PosStore {
   /// Required.
   core.String? storeCode;
 
+  /// The merchant or store name.
+  core.String? storeName;
+
+  /// The website url for the store or merchant.
+  core.String? websiteUrl;
+
   PosStore({
+    this.gcidCategory,
     this.kind,
+    this.phoneNumber,
+    this.placeId,
     this.storeAddress,
     this.storeCode,
+    this.storeName,
+    this.websiteUrl,
   });
 
   PosStore.fromJson(core.Map _json)
       : this(
+          gcidCategory: _json.containsKey('gcidCategory')
+              ? (_json['gcidCategory'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          phoneNumber: _json.containsKey('phoneNumber')
+              ? _json['phoneNumber'] as core.String
+              : null,
+          placeId: _json.containsKey('placeId')
+              ? _json['placeId'] as core.String
+              : null,
           storeAddress: _json.containsKey('storeAddress')
               ? _json['storeAddress'] as core.String
               : null,
           storeCode: _json.containsKey('storeCode')
               ? _json['storeCode'] as core.String
               : null,
+          storeName: _json.containsKey('storeName')
+              ? _json['storeName'] as core.String
+              : null,
+          websiteUrl: _json.containsKey('websiteUrl')
+              ? _json['websiteUrl'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (gcidCategory != null) 'gcidCategory': gcidCategory!,
         if (kind != null) 'kind': kind!,
+        if (phoneNumber != null) 'phoneNumber': phoneNumber!,
+        if (placeId != null) 'placeId': placeId!,
         if (storeAddress != null) 'storeAddress': storeAddress!,
         if (storeCode != null) 'storeCode': storeCode!,
+        if (storeName != null) 'storeName': storeName!,
+        if (websiteUrl != null) 'websiteUrl': websiteUrl!,
       };
 }
 

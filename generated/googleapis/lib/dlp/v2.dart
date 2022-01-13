@@ -9177,9 +9177,9 @@ class GooglePrivacyDlpV2Finding {
       };
 }
 
-/// Configuration to control the number of findings returned.
+/// Configuration to control the number of findings returned for inspection.
 ///
-/// Cannot be set if de-identification is requested.
+/// This is not used for de-identification or data profiling.
 class GooglePrivacyDlpV2FindingLimits {
   /// Configuration of findings limit given for specified infoTypes.
   core.List<GooglePrivacyDlpV2InfoTypeLimit>? maxFindingsPerInfoType;
@@ -9923,9 +9923,7 @@ class GooglePrivacyDlpV2InfoTypeTransformations {
 /// When used with redactContent only info_types and min_likelihood are
 /// currently used.
 class GooglePrivacyDlpV2InspectConfig {
-  /// List of options defining data content to scan.
-  ///
-  /// If empty, text, images, and other content will be included.
+  /// Deprecated and unused.
   core.List<core.String>? contentOptions;
 
   /// CustomInfoTypes provided by the user.
@@ -9935,10 +9933,14 @@ class GooglePrivacyDlpV2InspectConfig {
   core.List<GooglePrivacyDlpV2CustomInfoType>? customInfoTypes;
 
   /// When true, excludes type information of the findings.
+  ///
+  /// This is not used for data profiling.
   core.bool? excludeInfoTypes;
 
   /// When true, a contextual quote from the data that triggered a finding is
   /// included in the response; see Finding.quote.
+  ///
+  /// This is not used for data profiling.
   core.bool? includeQuote;
 
   /// Restricts what info_types to look for.
@@ -9954,6 +9956,8 @@ class GooglePrivacyDlpV2InspectConfig {
   core.List<GooglePrivacyDlpV2InfoType>? infoTypes;
 
   /// Configuration to control the number of findings returned.
+  ///
+  /// This is not used for data profiling.
   GooglePrivacyDlpV2FindingLimits? limits;
 
   /// Only returns findings equal or above this threshold.

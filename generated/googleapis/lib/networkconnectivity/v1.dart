@@ -2194,19 +2194,37 @@ class RouterApplianceInstance {
 /// RoutingVPC contains information about the VPC network that is associated
 /// with a hub's spokes.
 class RoutingVPC {
+  /// If true, indicates that this VPC network is currently associated with
+  /// spokes that use the data transfer feature (spokes where the
+  /// site_to_site_data_transfer field is set to true).
+  ///
+  /// If you create new spokes that use data transfer, they must be associated
+  /// with this VPC network.
+  ///
+  /// Output only.
+  core.bool? requiredForNewSiteToSiteDataTransferSpokes;
+
   /// The URI of the VPC network.
   core.String? uri;
 
   RoutingVPC({
+    this.requiredForNewSiteToSiteDataTransferSpokes,
     this.uri,
   });
 
   RoutingVPC.fromJson(core.Map _json)
       : this(
+          requiredForNewSiteToSiteDataTransferSpokes: _json
+                  .containsKey('requiredForNewSiteToSiteDataTransferSpokes')
+              ? _json['requiredForNewSiteToSiteDataTransferSpokes'] as core.bool
+              : null,
           uri: _json.containsKey('uri') ? _json['uri'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (requiredForNewSiteToSiteDataTransferSpokes != null)
+          'requiredForNewSiteToSiteDataTransferSpokes':
+              requiredForNewSiteToSiteDataTransferSpokes!,
         if (uri != null) 'uri': uri!,
       };
 }

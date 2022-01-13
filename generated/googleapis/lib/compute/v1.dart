@@ -3298,6 +3298,10 @@ class DisksResource {
 
   /// Creates a snapshot of a specified persistent disk.
   ///
+  /// For regular snapshot creation, consider using snapshots.insert instead, as
+  /// that method supports more features, such as creating snapshots in a
+  /// project different from the source disk project.
+  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -8091,8 +8095,7 @@ class GlobalPublicDelegatedPrefixesResource {
   /// received, and if so, will ignore the second request. This prevents clients
   /// from accidentally creating duplicate commitments. The request ID must be a
   /// valid UUID with the exception that zero UUID is not supported (
-  /// 00000000-0000-0000-0000-000000000000). end_interface:
-  /// MixerMutationRequestBuilder
+  /// 00000000-0000-0000-0000-000000000000).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -8194,8 +8197,7 @@ class GlobalPublicDelegatedPrefixesResource {
   /// received, and if so, will ignore the second request. This prevents clients
   /// from accidentally creating duplicate commitments. The request ID must be a
   /// valid UUID with the exception that zero UUID is not supported (
-  /// 00000000-0000-0000-0000-000000000000). end_interface:
-  /// MixerMutationRequestBuilder
+  /// 00000000-0000-0000-0000-000000000000).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -8354,8 +8356,7 @@ class GlobalPublicDelegatedPrefixesResource {
   /// received, and if so, will ignore the second request. This prevents clients
   /// from accidentally creating duplicate commitments. The request ID must be a
   /// valid UUID with the exception that zero UUID is not supported (
-  /// 00000000-0000-0000-0000-000000000000). end_interface:
-  /// MixerMutationRequestBuilder
+  /// 00000000-0000-0000-0000-000000000000).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -22924,8 +22925,7 @@ class PublicAdvertisedPrefixesResource {
   /// received, and if so, will ignore the second request. This prevents clients
   /// from accidentally creating duplicate commitments. The request ID must be a
   /// valid UUID with the exception that zero UUID is not supported (
-  /// 00000000-0000-0000-0000-000000000000). end_interface:
-  /// MixerMutationRequestBuilder
+  /// 00000000-0000-0000-0000-000000000000).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -23027,8 +23027,7 @@ class PublicAdvertisedPrefixesResource {
   /// received, and if so, will ignore the second request. This prevents clients
   /// from accidentally creating duplicate commitments. The request ID must be a
   /// valid UUID with the exception that zero UUID is not supported (
-  /// 00000000-0000-0000-0000-000000000000). end_interface:
-  /// MixerMutationRequestBuilder
+  /// 00000000-0000-0000-0000-000000000000).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -23187,8 +23186,7 @@ class PublicAdvertisedPrefixesResource {
   /// received, and if so, will ignore the second request. This prevents clients
   /// from accidentally creating duplicate commitments. The request ID must be a
   /// valid UUID with the exception that zero UUID is not supported (
-  /// 00000000-0000-0000-0000-000000000000). end_interface:
-  /// MixerMutationRequestBuilder
+  /// 00000000-0000-0000-0000-000000000000).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -23364,8 +23362,7 @@ class PublicDelegatedPrefixesResource {
   /// received, and if so, will ignore the second request. This prevents clients
   /// from accidentally creating duplicate commitments. The request ID must be a
   /// valid UUID with the exception that zero UUID is not supported (
-  /// 00000000-0000-0000-0000-000000000000). end_interface:
-  /// MixerMutationRequestBuilder
+  /// 00000000-0000-0000-0000-000000000000).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -23479,8 +23476,7 @@ class PublicDelegatedPrefixesResource {
   /// received, and if so, will ignore the second request. This prevents clients
   /// from accidentally creating duplicate commitments. The request ID must be a
   /// valid UUID with the exception that zero UUID is not supported (
-  /// 00000000-0000-0000-0000-000000000000). end_interface:
-  /// MixerMutationRequestBuilder
+  /// 00000000-0000-0000-0000-000000000000).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -23651,8 +23647,7 @@ class PublicDelegatedPrefixesResource {
   /// received, and if so, will ignore the second request. This prevents clients
   /// from accidentally creating duplicate commitments. The request ID must be a
   /// valid UUID with the exception that zero UUID is not supported (
-  /// 00000000-0000-0000-0000-000000000000). end_interface:
-  /// MixerMutationRequestBuilder
+  /// 00000000-0000-0000-0000-000000000000).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -25252,7 +25247,11 @@ class RegionDisksResource {
     return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Creates a snapshot of this regional disk.
+  /// Creates a snapshot of a specified persistent disk.
+  ///
+  /// For regular snapshot creation, consider using snapshots.insert instead, as
+  /// that method supports more features, such as creating snapshots in a
+  /// project different from the source disk project.
   ///
   /// [request] - The metadata request object.
   ///
@@ -28959,8 +28958,7 @@ class RegionNotificationEndpointsResource {
   /// received, and if so, will ignore the second request. This prevents clients
   /// from accidentally creating duplicate commitments. The request ID must be a
   /// valid UUID with the exception that zero UUID is not supported (
-  /// 00000000-0000-0000-0000-000000000000). end_interface:
-  /// MixerMutationRequestBuilder
+  /// 00000000-0000-0000-0000-000000000000).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -29074,8 +29072,7 @@ class RegionNotificationEndpointsResource {
   /// received, and if so, will ignore the second request. This prevents clients
   /// from accidentally creating duplicate commitments. The request ID must be a
   /// valid UUID with the exception that zero UUID is not supported (
-  /// 00000000-0000-0000-0000-000000000000). end_interface:
-  /// MixerMutationRequestBuilder
+  /// 00000000-0000-0000-0000-000000000000).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -29514,8 +29511,7 @@ class RegionSslCertificatesResource {
   /// received, and if so, will ignore the second request. This prevents clients
   /// from accidentally creating duplicate commitments. The request ID must be a
   /// valid UUID with the exception that zero UUID is not supported (
-  /// 00000000-0000-0000-0000-000000000000). end_interface:
-  /// MixerMutationRequestBuilder
+  /// 00000000-0000-0000-0000-000000000000).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -29630,8 +29626,7 @@ class RegionSslCertificatesResource {
   /// received, and if so, will ignore the second request. This prevents clients
   /// from accidentally creating duplicate commitments. The request ID must be a
   /// valid UUID with the exception that zero UUID is not supported (
-  /// 00000000-0000-0000-0000-000000000000). end_interface:
-  /// MixerMutationRequestBuilder
+  /// 00000000-0000-0000-0000-000000000000).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -30159,8 +30154,7 @@ class RegionTargetHttpsProxiesResource {
   /// received, and if so, will ignore the second request. This prevents clients
   /// from accidentally creating duplicate commitments. The request ID must be a
   /// valid UUID with the exception that zero UUID is not supported (
-  /// 00000000-0000-0000-0000-000000000000). end_interface:
-  /// MixerMutationRequestBuilder
+  /// 00000000-0000-0000-0000-000000000000).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -30275,8 +30269,7 @@ class RegionTargetHttpsProxiesResource {
   /// received, and if so, will ignore the second request. This prevents clients
   /// from accidentally creating duplicate commitments. The request ID must be a
   /// valid UUID with the exception that zero UUID is not supported (
-  /// 00000000-0000-0000-0000-000000000000). end_interface:
-  /// MixerMutationRequestBuilder
+  /// 00000000-0000-0000-0000-000000000000).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -30444,8 +30437,7 @@ class RegionTargetHttpsProxiesResource {
   /// received, and if so, will ignore the second request. This prevents clients
   /// from accidentally creating duplicate commitments. The request ID must be a
   /// valid UUID with the exception that zero UUID is not supported (
-  /// 00000000-0000-0000-0000-000000000000). end_interface:
-  /// MixerMutationRequestBuilder
+  /// 00000000-0000-0000-0000-000000000000).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -30514,8 +30506,7 @@ class RegionTargetHttpsProxiesResource {
   /// received, and if so, will ignore the second request. This prevents clients
   /// from accidentally creating duplicate commitments. The request ID must be a
   /// valid UUID with the exception that zero UUID is not supported (
-  /// 00000000-0000-0000-0000-000000000000). end_interface:
-  /// MixerMutationRequestBuilder
+  /// 00000000-0000-0000-0000-000000000000).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -34209,8 +34200,7 @@ class ServiceAttachmentsResource {
   /// received, and if so, will ignore the second request. This prevents clients
   /// from accidentally creating duplicate commitments. The request ID must be a
   /// valid UUID with the exception that zero UUID is not supported (
-  /// 00000000-0000-0000-0000-000000000000). end_interface:
-  /// MixerMutationRequestBuilder
+  /// 00000000-0000-0000-0000-000000000000).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -34381,8 +34371,7 @@ class ServiceAttachmentsResource {
   /// received, and if so, will ignore the second request. This prevents clients
   /// from accidentally creating duplicate commitments. The request ID must be a
   /// valid UUID with the exception that zero UUID is not supported (
-  /// 00000000-0000-0000-0000-000000000000). end_interface:
-  /// MixerMutationRequestBuilder
+  /// 00000000-0000-0000-0000-000000000000).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -34551,8 +34540,7 @@ class ServiceAttachmentsResource {
   /// received, and if so, will ignore the second request. This prevents clients
   /// from accidentally creating duplicate commitments. The request ID must be a
   /// valid UUID with the exception that zero UUID is not supported (
-  /// 00000000-0000-0000-0000-000000000000). end_interface:
-  /// MixerMutationRequestBuilder
+  /// 00000000-0000-0000-0000-000000000000).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -34878,6 +34866,10 @@ class SnapshotsResource {
 
   /// Creates a snapshot in the specified project using the data included in the
   /// request.
+  ///
+  /// For regular snapshot creation, consider using this method instead of
+  /// disks.createSnapshot, as this method supports more features, such as
+  /// creating snapshots in a project different from the source disk project.
   ///
   /// [request] - The metadata request object.
   ///
@@ -35313,8 +35305,7 @@ class SslCertificatesResource {
   /// received, and if so, will ignore the second request. This prevents clients
   /// from accidentally creating duplicate commitments. The request ID must be a
   /// valid UUID with the exception that zero UUID is not supported (
-  /// 00000000-0000-0000-0000-000000000000). end_interface:
-  /// MixerMutationRequestBuilder
+  /// 00000000-0000-0000-0000-000000000000).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -35417,8 +35408,7 @@ class SslCertificatesResource {
   /// received, and if so, will ignore the second request. This prevents clients
   /// from accidentally creating duplicate commitments. The request ID must be a
   /// valid UUID with the exception that zero UUID is not supported (
-  /// 00000000-0000-0000-0000-000000000000). end_interface:
-  /// MixerMutationRequestBuilder
+  /// 00000000-0000-0000-0000-000000000000).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -36873,8 +36863,7 @@ class TargetGrpcProxiesResource {
   /// received, and if so, will ignore the second request. This prevents clients
   /// from accidentally creating duplicate commitments. The request ID must be a
   /// valid UUID with the exception that zero UUID is not supported (
-  /// 00000000-0000-0000-0000-000000000000). end_interface:
-  /// MixerMutationRequestBuilder
+  /// 00000000-0000-0000-0000-000000000000).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -36975,8 +36964,7 @@ class TargetGrpcProxiesResource {
   /// received, and if so, will ignore the second request. This prevents clients
   /// from accidentally creating duplicate commitments. The request ID must be a
   /// valid UUID with the exception that zero UUID is not supported (
-  /// 00000000-0000-0000-0000-000000000000). end_interface:
-  /// MixerMutationRequestBuilder
+  /// 00000000-0000-0000-0000-000000000000).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -37134,8 +37122,7 @@ class TargetGrpcProxiesResource {
   /// received, and if so, will ignore the second request. This prevents clients
   /// from accidentally creating duplicate commitments. The request ID must be a
   /// valid UUID with the exception that zero UUID is not supported (
-  /// 00000000-0000-0000-0000-000000000000). end_interface:
-  /// MixerMutationRequestBuilder
+  /// 00000000-0000-0000-0000-000000000000).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -37568,8 +37555,7 @@ class TargetHttpProxiesResource {
   /// received, and if so, will ignore the second request. This prevents clients
   /// from accidentally creating duplicate commitments. The request ID must be a
   /// valid UUID with the exception that zero UUID is not supported (
-  /// 00000000-0000-0000-0000-000000000000). end_interface:
-  /// MixerMutationRequestBuilder
+  /// 00000000-0000-0000-0000-000000000000).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -38065,8 +38051,7 @@ class TargetHttpsProxiesResource {
   /// received, and if so, will ignore the second request. This prevents clients
   /// from accidentally creating duplicate commitments. The request ID must be a
   /// valid UUID with the exception that zero UUID is not supported (
-  /// 00000000-0000-0000-0000-000000000000). end_interface:
-  /// MixerMutationRequestBuilder
+  /// 00000000-0000-0000-0000-000000000000).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -43606,13 +43591,9 @@ class AccessConfig {
   ///
   /// The field is output only, an IPv6 address from a subnetwork associated
   /// with the instance will be allocated dynamically.
-  ///
-  /// Output only.
   core.String? externalIpv6;
 
   /// The prefix length of the external IPv6 range.
-  ///
-  /// Output only.
   core.int? externalIpv6PrefixLength;
 
   /// Type of the resource.
@@ -44611,6 +44592,9 @@ class AdvancedMachineFeatures {
   /// Whether to enable nested virtualization or not (default is false).
   core.bool? enableNestedVirtualization;
 
+  /// Whether to enable UEFI networking for instance creation.
+  core.bool? enableUefiNetworking;
+
   /// The number of threads per physical core.
   ///
   /// To disable simultaneous multithreading (SMT) set this to 1. If unset, the
@@ -44620,6 +44604,7 @@ class AdvancedMachineFeatures {
 
   AdvancedMachineFeatures({
     this.enableNestedVirtualization,
+    this.enableUefiNetworking,
     this.threadsPerCore,
   });
 
@@ -44629,6 +44614,9 @@ class AdvancedMachineFeatures {
               _json.containsKey('enableNestedVirtualization')
                   ? _json['enableNestedVirtualization'] as core.bool
                   : null,
+          enableUefiNetworking: _json.containsKey('enableUefiNetworking')
+              ? _json['enableUefiNetworking'] as core.bool
+              : null,
           threadsPerCore: _json.containsKey('threadsPerCore')
               ? _json['threadsPerCore'] as core.int
               : null,
@@ -44637,6 +44625,8 @@ class AdvancedMachineFeatures {
   core.Map<core.String, core.dynamic> toJson() => {
         if (enableNestedVirtualization != null)
           'enableNestedVirtualization': enableNestedVirtualization!,
+        if (enableUefiNetworking != null)
+          'enableUefiNetworking': enableUefiNetworking!,
         if (threadsPerCore != null) 'threadsPerCore': threadsPerCore!,
       };
 }
@@ -45091,6 +45081,11 @@ class AttachedDiskInitializeParams {
   /// only applicable for persistent disks.
   core.Map<core.String, core.String>? labels;
 
+  /// A list of publicly visible licenses.
+  ///
+  /// Reserved for Google's use.
+  core.List<core.String>? licenses;
+
   /// Specifies which action to take on instance update with this disk.
   ///
   /// Default is to use the existing disk.
@@ -45159,6 +45154,7 @@ class AttachedDiskInitializeParams {
     this.diskSizeGb,
     this.diskType,
     this.labels,
+    this.licenses,
     this.onUpdateAction,
     this.provisionedIops,
     this.resourcePolicies,
@@ -45189,6 +45185,11 @@ class AttachedDiskInitializeParams {
                     item as core.String,
                   ),
                 )
+              : null,
+          licenses: _json.containsKey('licenses')
+              ? (_json['licenses'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
               : null,
           onUpdateAction: _json.containsKey('onUpdateAction')
               ? _json['onUpdateAction'] as core.String
@@ -45226,6 +45227,7 @@ class AttachedDiskInitializeParams {
         if (diskSizeGb != null) 'diskSizeGb': diskSizeGb!,
         if (diskType != null) 'diskType': diskType!,
         if (labels != null) 'labels': labels!,
+        if (licenses != null) 'licenses': licenses!,
         if (onUpdateAction != null) 'onUpdateAction': onUpdateAction!,
         if (provisionedIops != null) 'provisionedIops': provisionedIops!,
         if (resourcePolicies != null) 'resourcePolicies': resourcePolicies!,
@@ -47684,6 +47686,8 @@ class BackendService {
   /// Possible string values are:
   /// - "EXTERNAL" : Signifies that this will be used for external HTTP(S), SSL
   /// Proxy, TCP Proxy, or Network Load Balancing
+  /// - "EXTERNAL_MANAGED" : Signifies that this will be used for External
+  /// Managed HTTP(S) Load Balancing.
   /// - "INTERNAL" : Signifies that this will be used for Internal TCP/UDP Load
   /// Balancing.
   /// - "INTERNAL_MANAGED" : Signifies that this will be used for Internal
@@ -55868,6 +55872,7 @@ class ForwardingRule {
   /// concepts.
   /// Possible string values are:
   /// - "EXTERNAL"
+  /// - "EXTERNAL_MANAGED"
   /// - "INTERNAL"
   /// - "INTERNAL_MANAGED"
   /// - "INTERNAL_SELF_MANAGED"
@@ -63252,6 +63257,30 @@ class InstanceGroupManagerActionsSummary {
   /// Output only.
   core.int? restarting;
 
+  /// The number of instances in the managed instance group that are scheduled
+  /// to be resumed or are currently being resumed.
+  ///
+  /// Output only.
+  core.int? resuming;
+
+  /// The number of instances in the managed instance group that are scheduled
+  /// to be started or are currently being started.
+  ///
+  /// Output only.
+  core.int? starting;
+
+  /// The number of instances in the managed instance group that are scheduled
+  /// to be stopped or are currently being stopped.
+  ///
+  /// Output only.
+  core.int? stopping;
+
+  /// The number of instances in the managed instance group that are scheduled
+  /// to be suspended or are currently being suspended.
+  ///
+  /// Output only.
+  core.int? suspending;
+
   /// The number of instances in the managed instance group that are being
   /// verified.
   ///
@@ -63270,6 +63299,10 @@ class InstanceGroupManagerActionsSummary {
     this.recreating,
     this.refreshing,
     this.restarting,
+    this.resuming,
+    this.starting,
+    this.stopping,
+    this.suspending,
     this.verifying,
   });
 
@@ -63297,6 +63330,18 @@ class InstanceGroupManagerActionsSummary {
           restarting: _json.containsKey('restarting')
               ? _json['restarting'] as core.int
               : null,
+          resuming: _json.containsKey('resuming')
+              ? _json['resuming'] as core.int
+              : null,
+          starting: _json.containsKey('starting')
+              ? _json['starting'] as core.int
+              : null,
+          stopping: _json.containsKey('stopping')
+              ? _json['stopping'] as core.int
+              : null,
+          suspending: _json.containsKey('suspending')
+              ? _json['suspending'] as core.int
+              : null,
           verifying: _json.containsKey('verifying')
               ? _json['verifying'] as core.int
               : null,
@@ -63312,6 +63357,10 @@ class InstanceGroupManagerActionsSummary {
         if (recreating != null) 'recreating': recreating!,
         if (refreshing != null) 'refreshing': refreshing!,
         if (restarting != null) 'restarting': restarting!,
+        if (resuming != null) 'resuming': resuming!,
+        if (starting != null) 'starting': starting!,
+        if (stopping != null) 'stopping': stopping!,
+        if (suspending != null) 'suspending': suspending!,
         if (verifying != null) 'verifying': verifying!,
       };
 }
@@ -65766,6 +65815,10 @@ class InstanceManagedByIgmErrorInstanceActionDetails {
   /// update the target pool list for an instance without stopping that
   /// instance.
   /// - "RESTARTING" : The managed instance group is restarting this instance.
+  /// - "RESUMING" : The managed instance group is resuming this instance.
+  /// - "STARTING" : The managed instance group is starting this instance.
+  /// - "STOPPING" : The managed instance group is stopping this instance.
+  /// - "SUSPENDING" : The managed instance group is suspending this instance.
   /// - "VERIFYING" : The managed instance group is verifying this already
   /// created instance. Verification happens every time the instance is
   /// (re)created or restarted and consists of: 1. Waiting until health check
@@ -65969,7 +66022,15 @@ class InstanceProperties {
   /// Note that for MachineImage, this is not supported yet.
   ReservationAffinity? reservationAffinity;
 
-  /// Resource policies (names, not ULRs) applied to instances created from
+  /// Resource manager tags to be bound to the instance.
+  ///
+  /// Tag keys and values have the same definition as resource manager tags.
+  /// Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the
+  /// format `tagValues/456`. The field is ignored (both PUT & PATCH) when
+  /// empty.
+  core.Map<core.String, core.String>? resourceManagerTags;
+
+  /// Resource policies (names, not URLs) applied to instances created from
   /// these properties.
   ///
   /// Note that for MachineImage, this is not supported yet.
@@ -66012,6 +66073,7 @@ class InstanceProperties {
     this.networkPerformanceConfig,
     this.privateIpv6GoogleAccess,
     this.reservationAffinity,
+    this.resourceManagerTags,
     this.resourcePolicies,
     this.scheduling,
     this.serviceAccounts,
@@ -66087,6 +66149,16 @@ class InstanceProperties {
               ? ReservationAffinity.fromJson(_json['reservationAffinity']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          resourceManagerTags: _json.containsKey('resourceManagerTags')
+              ? (_json['resourceManagerTags']
+                      as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
           resourcePolicies: _json.containsKey('resourcePolicies')
               ? (_json['resourcePolicies'] as core.List)
                   .map((value) => value as core.String)
@@ -66132,6 +66204,8 @@ class InstanceProperties {
           'privateIpv6GoogleAccess': privateIpv6GoogleAccess!,
         if (reservationAffinity != null)
           'reservationAffinity': reservationAffinity!,
+        if (resourceManagerTags != null)
+          'resourceManagerTags': resourceManagerTags!,
         if (resourcePolicies != null) 'resourcePolicies': resourcePolicies!,
         if (scheduling != null) 'scheduling': scheduling!,
         if (serviceAccounts != null) 'serviceAccounts': serviceAccounts!,
@@ -67389,6 +67463,16 @@ class InterconnectAttachment {
   /// - "BPS_5G" : 5 Gbit/s
   core.String? bandwidth;
 
+  /// Up to 16 candidate prefixes that control the allocation of
+  /// cloudRouterIpv6Address and customerRouterIpv6Address for this attachment.
+  ///
+  /// Each prefix must be in the Global Unique Address (GUA) space. It is highly
+  /// recommended that it be in a range owned by the requestor. A GUA in a range
+  /// owned by Google will cause the request to fail. Google will select an
+  /// available prefix from the supplied candidates or fail the request. If not
+  /// supplied, a /125 from a Google-owned GUA block will be selected.
+  core.List<core.String>? candidateIpv6Subnets;
+
   /// Up to 16 candidate prefixes that can be used to restrict the allocation of
   /// cloudRouterIpAddress and customerRouterIpAddress for this attachment.
   ///
@@ -67405,6 +67489,20 @@ class InterconnectAttachment {
   /// Output only.
   core.String? cloudRouterIpAddress;
 
+  /// IPv6 address + prefix length to be configured on Cloud Router Interface
+  /// for this interconnect attachment.
+  ///
+  /// Output only.
+  core.String? cloudRouterIpv6Address;
+
+  /// If supplied, the interface id (index within the subnet) to be used for the
+  /// cloud router address.
+  ///
+  /// The id must be in the range of 1 to 6. If a subnet mask is supplied, it
+  /// must be /125, and the subnet should either be 0 or match the selected
+  /// subnet.
+  core.String? cloudRouterIpv6InterfaceId;
+
   /// Creation timestamp in RFC3339 text format.
   ///
   /// Output only.
@@ -67415,6 +67513,20 @@ class InterconnectAttachment {
   ///
   /// Output only.
   core.String? customerRouterIpAddress;
+
+  /// IPv6 address + prefix length to be configured on the customer router
+  /// subinterface for this interconnect attachment.
+  ///
+  /// Output only.
+  core.String? customerRouterIpv6Address;
+
+  /// If supplied, the interface id (index within the subnet) to be used for the
+  /// customer router address.
+  ///
+  /// The id must be in the range of 1 to 6. If a subnet mask is supplied, it
+  /// must be /125, and the subnet should either be 0 or match the selected
+  /// subnet.
+  core.String? customerRouterIpv6InterfaceId;
 
   /// \[Output only for types PARTNER and DEDICATED.
   ///
@@ -67598,6 +67710,19 @@ class InterconnectAttachment {
   /// Output only.
   core.String? selfLink;
 
+  /// The stack type for this interconnect attachment to identify whether the
+  /// IPv6 feature is enabled or not.
+  ///
+  /// If not specified, IPV4_ONLY will be used. This field can be both set at
+  /// interconnect attachments creation and update interconnect attachment
+  /// operations.
+  /// Possible string values are:
+  /// - "IPV4_IPV6" : The interconnect attachment can have both IPv4 and IPv6
+  /// addresses.
+  /// - "IPV4_ONLY" : The interconnect attachment will only be assigned IPv4
+  /// addresses.
+  core.String? stackType;
+
   /// The current state of this attachment's functionality.
   ///
   /// Enum values ACTIVE and UNPROVISIONED are shared by DEDICATED/PRIVATE,
@@ -67657,10 +67782,15 @@ class InterconnectAttachment {
   InterconnectAttachment({
     this.adminEnabled,
     this.bandwidth,
+    this.candidateIpv6Subnets,
     this.candidateSubnets,
     this.cloudRouterIpAddress,
+    this.cloudRouterIpv6Address,
+    this.cloudRouterIpv6InterfaceId,
     this.creationTimestamp,
     this.customerRouterIpAddress,
+    this.customerRouterIpv6Address,
+    this.customerRouterIpv6InterfaceId,
     this.dataplaneVersion,
     this.description,
     this.edgeAvailabilityDomain,
@@ -67681,6 +67811,7 @@ class InterconnectAttachment {
     this.router,
     this.satisfiesPzs,
     this.selfLink,
+    this.stackType,
     this.state,
     this.type,
     this.vlanTag8021q,
@@ -67694,6 +67825,11 @@ class InterconnectAttachment {
           bandwidth: _json.containsKey('bandwidth')
               ? _json['bandwidth'] as core.String
               : null,
+          candidateIpv6Subnets: _json.containsKey('candidateIpv6Subnets')
+              ? (_json['candidateIpv6Subnets'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
           candidateSubnets: _json.containsKey('candidateSubnets')
               ? (_json['candidateSubnets'] as core.List)
                   .map((value) => value as core.String)
@@ -67702,12 +67838,27 @@ class InterconnectAttachment {
           cloudRouterIpAddress: _json.containsKey('cloudRouterIpAddress')
               ? _json['cloudRouterIpAddress'] as core.String
               : null,
+          cloudRouterIpv6Address: _json.containsKey('cloudRouterIpv6Address')
+              ? _json['cloudRouterIpv6Address'] as core.String
+              : null,
+          cloudRouterIpv6InterfaceId:
+              _json.containsKey('cloudRouterIpv6InterfaceId')
+                  ? _json['cloudRouterIpv6InterfaceId'] as core.String
+                  : null,
           creationTimestamp: _json.containsKey('creationTimestamp')
               ? _json['creationTimestamp'] as core.String
               : null,
           customerRouterIpAddress: _json.containsKey('customerRouterIpAddress')
               ? _json['customerRouterIpAddress'] as core.String
               : null,
+          customerRouterIpv6Address:
+              _json.containsKey('customerRouterIpv6Address')
+                  ? _json['customerRouterIpv6Address'] as core.String
+                  : null,
+          customerRouterIpv6InterfaceId:
+              _json.containsKey('customerRouterIpv6InterfaceId')
+                  ? _json['customerRouterIpv6InterfaceId'] as core.String
+                  : null,
           dataplaneVersion: _json.containsKey('dataplaneVersion')
               ? _json['dataplaneVersion'] as core.int
               : null,
@@ -67766,6 +67917,9 @@ class InterconnectAttachment {
           selfLink: _json.containsKey('selfLink')
               ? _json['selfLink'] as core.String
               : null,
+          stackType: _json.containsKey('stackType')
+              ? _json['stackType'] as core.String
+              : null,
           state:
               _json.containsKey('state') ? _json['state'] as core.String : null,
           type: _json.containsKey('type') ? _json['type'] as core.String : null,
@@ -67777,12 +67931,22 @@ class InterconnectAttachment {
   core.Map<core.String, core.dynamic> toJson() => {
         if (adminEnabled != null) 'adminEnabled': adminEnabled!,
         if (bandwidth != null) 'bandwidth': bandwidth!,
+        if (candidateIpv6Subnets != null)
+          'candidateIpv6Subnets': candidateIpv6Subnets!,
         if (candidateSubnets != null) 'candidateSubnets': candidateSubnets!,
         if (cloudRouterIpAddress != null)
           'cloudRouterIpAddress': cloudRouterIpAddress!,
+        if (cloudRouterIpv6Address != null)
+          'cloudRouterIpv6Address': cloudRouterIpv6Address!,
+        if (cloudRouterIpv6InterfaceId != null)
+          'cloudRouterIpv6InterfaceId': cloudRouterIpv6InterfaceId!,
         if (creationTimestamp != null) 'creationTimestamp': creationTimestamp!,
         if (customerRouterIpAddress != null)
           'customerRouterIpAddress': customerRouterIpAddress!,
+        if (customerRouterIpv6Address != null)
+          'customerRouterIpv6Address': customerRouterIpv6Address!,
+        if (customerRouterIpv6InterfaceId != null)
+          'customerRouterIpv6InterfaceId': customerRouterIpv6InterfaceId!,
         if (dataplaneVersion != null) 'dataplaneVersion': dataplaneVersion!,
         if (description != null) 'description': description!,
         if (edgeAvailabilityDomain != null)
@@ -67806,6 +67970,7 @@ class InterconnectAttachment {
         if (router != null) 'router': router!,
         if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
         if (selfLink != null) 'selfLink': selfLink!,
+        if (stackType != null) 'stackType': stackType!,
         if (state != null) 'state': state!,
         if (type != null) 'type': type!,
         if (vlanTag8021q != null) 'vlanTag8021q': vlanTag8021q!,
@@ -70230,7 +70395,7 @@ class LocationPolicy {
 }
 
 class LocationPolicyLocation {
-  /// Preference for a given location: ALLOW or DENY.
+  /// Preference for a given location.
   /// Possible string values are:
   /// - "ALLOW" : Location is allowed for use.
   /// - "DENY" : Location is prohibited.
@@ -71798,6 +71963,10 @@ class ManagedInstance {
   /// update the target pool list for an instance without stopping that
   /// instance.
   /// - "RESTARTING" : The managed instance group is restarting this instance.
+  /// - "RESUMING" : The managed instance group is resuming this instance.
+  /// - "STARTING" : The managed instance group is starting this instance.
+  /// - "STOPPING" : The managed instance group is stopping this instance.
+  /// - "SUSPENDING" : The managed instance group is suspending this instance.
   /// - "VERIFYING" : The managed instance group is verifying this already
   /// created instance. Verification happens every time the instance is
   /// (re)created or restarted and consists of: 1. Waiting until health check
@@ -72643,9 +72812,18 @@ class NetworkEndpointGroup {
   /// - "NON_GCP_PRIVATE_IP_PORT" : The network endpoint is represented by an IP
   /// address and port. The endpoint belongs to a VM or pod running in a
   /// customer's on-premises.
+  /// - "PRIVATE_SERVICE_CONNECT" : The network endpoint is either public Google
+  /// APIs or services exposed by other GCP Project with a Service Attachment.
+  /// The connection is set up by private service connect
   /// - "SERVERLESS" : The network endpoint is handled by specified serverless
   /// infrastructure.
   core.String? networkEndpointType;
+
+  /// The target service url used to set up private service connection to a
+  /// Google API.
+  ///
+  /// An example value is: "asia-northeast3-cloudkms.googleapis.com"
+  core.String? pscTargetService;
 
   /// The URL of the region where the network endpoint group is located.
   ///
@@ -72684,6 +72862,7 @@ class NetworkEndpointGroup {
     this.name,
     this.network,
     this.networkEndpointType,
+    this.pscTargetService,
     this.region,
     this.selfLink,
     this.size,
@@ -72732,6 +72911,9 @@ class NetworkEndpointGroup {
           networkEndpointType: _json.containsKey('networkEndpointType')
               ? _json['networkEndpointType'] as core.String
               : null,
+          pscTargetService: _json.containsKey('pscTargetService')
+              ? _json['pscTargetService'] as core.String
+              : null,
           region: _json.containsKey('region')
               ? _json['region'] as core.String
               : null,
@@ -72759,6 +72941,7 @@ class NetworkEndpointGroup {
         if (network != null) 'network': network!,
         if (networkEndpointType != null)
           'networkEndpointType': networkEndpointType!,
+        if (pscTargetService != null) 'pscTargetService': pscTargetService!,
         if (region != null) 'region': region!,
         if (selfLink != null) 'selfLink': selfLink!,
         if (size != null) 'size': size!,
@@ -73899,8 +74082,6 @@ class NetworkInterface {
   core.String? ipv6AccessType;
 
   /// An IPv6 internal network address for this network interface.
-  ///
-  /// Output only.
   core.String? ipv6Address;
 
   /// Type of the resource.
@@ -82486,6 +82667,7 @@ class Quota {
   /// - "COMMITTED_E2_CPUS"
   /// - "COMMITTED_LICENSES"
   /// - "COMMITTED_LOCAL_SSD_TOTAL_GB"
+  /// - "COMMITTED_M3_CPUS"
   /// - "COMMITTED_MEMORY_OPTIMIZED_CPUS"
   /// - "COMMITTED_N2A_CPUS"
   /// - "COMMITTED_N2D_CPUS"
@@ -82507,6 +82689,7 @@ class Quota {
   /// - "EXTERNAL_VPN_GATEWAYS"
   /// - "FIREWALLS"
   /// - "FORWARDING_RULES"
+  /// - "GLOBAL_EXTERNAL_MANAGED_FORWARDING_RULES"
   /// - "GLOBAL_INTERNAL_ADDRESSES"
   /// - "GPUS_ALL_REGIONS"
   /// - "HEALTH_CHECKS"
@@ -82528,6 +82711,7 @@ class Quota {
   /// - "LOCAL_SSD_TOTAL_GB"
   /// - "M1_CPUS"
   /// - "M2_CPUS"
+  /// - "M3_CPUS"
   /// - "MACHINE_IMAGES"
   /// - "N2A_CPUS"
   /// - "N2D_CPUS"
@@ -91627,6 +91811,13 @@ class ServiceAttachment {
   /// Provide this property when you create the resource.
   core.String? description;
 
+  /// If specified, the domain name will be used during the integration between
+  /// the PSC connected endpoints and the Cloud DNS.
+  ///
+  /// For example, this is a valid domain name: "p.mycompany.com.". Current max
+  /// number of domain names supported is 1.
+  core.List<core.String>? domainNames;
+
   /// If true, enable the proxy protocol which is for supplying client TCP/IP
   /// address data in TCP connections that traverse proxies on their way to
   /// destination servers.
@@ -91711,6 +91902,7 @@ class ServiceAttachment {
     this.consumerRejectLists,
     this.creationTimestamp,
     this.description,
+    this.domainNames,
     this.enableProxyProtocol,
     this.fingerprint,
     this.id,
@@ -91752,6 +91944,11 @@ class ServiceAttachment {
               : null,
           description: _json.containsKey('description')
               ? _json['description'] as core.String
+              : null,
+          domainNames: _json.containsKey('domainNames')
+              ? (_json['domainNames'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
               : null,
           enableProxyProtocol: _json.containsKey('enableProxyProtocol')
               ? _json['enableProxyProtocol'] as core.bool
@@ -91796,6 +91993,7 @@ class ServiceAttachment {
           'consumerRejectLists': consumerRejectLists!,
         if (creationTimestamp != null) 'creationTimestamp': creationTimestamp!,
         if (description != null) 'description': description!,
+        if (domainNames != null) 'domainNames': domainNames!,
         if (enableProxyProtocol != null)
           'enableProxyProtocol': enableProxyProtocol!,
         if (fingerprint != null) 'fingerprint': fingerprint!,
@@ -95132,6 +95330,8 @@ class Subnetwork {
   core.String? ipv6AccessType;
 
   /// The range of internal IPv6 addresses that are owned by this subnetwork.
+  ///
+  /// Note this will be for private google access only eventually.
   ///
   /// Output only.
   core.String? ipv6CidrRange;

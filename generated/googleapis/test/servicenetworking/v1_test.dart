@@ -1236,6 +1236,7 @@ api.ValidateConsumerConfigRequest buildValidateConsumerConfigRequest() {
   final o = api.ValidateConsumerConfigRequest();
   buildCounterValidateConsumerConfigRequest++;
   if (buildCounterValidateConsumerConfigRequest < 3) {
+    o.checkServiceNetworkingUsePermission = true;
     o.consumerNetwork = 'foo';
     o.consumerProject = buildConsumerProject();
     o.rangeReservation = buildRangeReservation();
@@ -1248,6 +1249,7 @@ api.ValidateConsumerConfigRequest buildValidateConsumerConfigRequest() {
 void checkValidateConsumerConfigRequest(api.ValidateConsumerConfigRequest o) {
   buildCounterValidateConsumerConfigRequest++;
   if (buildCounterValidateConsumerConfigRequest < 3) {
+    unittest.expect(o.checkServiceNetworkingUsePermission!, unittest.isTrue);
     unittest.expect(
       o.consumerNetwork!,
       unittest.equals('foo'),

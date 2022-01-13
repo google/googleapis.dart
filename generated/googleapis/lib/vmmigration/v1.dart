@@ -2842,6 +2842,9 @@ class CloneJob {
 /// ComputeEngineTargetDefaults is a collection of details for creating a VM in
 /// a target Compute Engine project.
 class ComputeEngineTargetDefaults {
+  /// Additional licenses to assign to the VM.
+  core.List<core.String>? additionalLicenses;
+
   /// The OS license returned from the adaptation module report.
   ///
   /// Output only.
@@ -2916,6 +2919,7 @@ class ComputeEngineTargetDefaults {
   core.String? zone;
 
   ComputeEngineTargetDefaults({
+    this.additionalLicenses,
     this.appliedLicense,
     this.bootOption,
     this.computeScheduling,
@@ -2936,6 +2940,11 @@ class ComputeEngineTargetDefaults {
 
   ComputeEngineTargetDefaults.fromJson(core.Map _json)
       : this(
+          additionalLicenses: _json.containsKey('additionalLicenses')
+              ? (_json['additionalLicenses'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
           appliedLicense: _json.containsKey('appliedLicense')
               ? AppliedLicense.fromJson(_json['appliedLicense']
                   as core.Map<core.String, core.dynamic>)
@@ -3002,6 +3011,8 @@ class ComputeEngineTargetDefaults {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (additionalLicenses != null)
+          'additionalLicenses': additionalLicenses!,
         if (appliedLicense != null) 'appliedLicense': appliedLicense!,
         if (bootOption != null) 'bootOption': bootOption!,
         if (computeScheduling != null) 'computeScheduling': computeScheduling!,
@@ -3024,6 +3035,9 @@ class ComputeEngineTargetDefaults {
 /// ComputeEngineTargetDetails is a collection of details for creating a VM in a
 /// target Compute Engine project.
 class ComputeEngineTargetDetails {
+  /// Additional licenses to assign to the VM.
+  core.List<core.String>? additionalLicenses;
+
   /// The OS license returned from the adaptation module report.
   AppliedLicense? appliedLicense;
 
@@ -3093,6 +3107,7 @@ class ComputeEngineTargetDetails {
   core.String? zone;
 
   ComputeEngineTargetDetails({
+    this.additionalLicenses,
     this.appliedLicense,
     this.bootOption,
     this.computeScheduling,
@@ -3113,6 +3128,11 @@ class ComputeEngineTargetDetails {
 
   ComputeEngineTargetDetails.fromJson(core.Map _json)
       : this(
+          additionalLicenses: _json.containsKey('additionalLicenses')
+              ? (_json['additionalLicenses'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
           appliedLicense: _json.containsKey('appliedLicense')
               ? AppliedLicense.fromJson(_json['appliedLicense']
                   as core.Map<core.String, core.dynamic>)
@@ -3179,6 +3199,8 @@ class ComputeEngineTargetDetails {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (additionalLicenses != null)
+          'additionalLicenses': additionalLicenses!,
         if (appliedLicense != null) 'appliedLicense': appliedLicense!,
         if (bootOption != null) 'bootOption': bootOption!,
         if (computeScheduling != null) 'computeScheduling': computeScheduling!,

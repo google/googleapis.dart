@@ -3096,6 +3096,24 @@ class Rollout {
   /// Output only.
   core.String? deployEndTime;
 
+  /// The reason this deploy failed.
+  ///
+  /// This will always be unspecified while the deploy in progress.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "FAILURE_CAUSE_UNSPECIFIED" : No reason for failure is specified.
+  /// - "CLOUD_BUILD_UNAVAILABLE" : Cloud Build is not available, either because
+  /// it is not enabled or because Cloud Deploy has insufficient permissions.
+  /// See \[required
+  /// permission\](/deploy/docs/cloud-deploy-service-account#required_permissions).
+  /// - "EXECUTION_FAILED" : The deploy operation did not complete successfully;
+  /// check Cloud Build logs.
+  /// - "DEADLINE_EXCEEDED" : Deployment did not complete within the alloted
+  /// time.
+  /// - "RELEASE_FAILED" : Release is in a failed state.
+  core.String? deployFailureCause;
+
   /// Time at which the `Rollout` started deploying.
   ///
   /// Output only.
@@ -3183,6 +3201,7 @@ class Rollout {
     this.approveTime,
     this.createTime,
     this.deployEndTime,
+    this.deployFailureCause,
     this.deployStartTime,
     this.deployingBuild,
     this.description,
@@ -3218,6 +3237,9 @@ class Rollout {
               : null,
           deployEndTime: _json.containsKey('deployEndTime')
               ? _json['deployEndTime'] as core.String
+              : null,
+          deployFailureCause: _json.containsKey('deployFailureCause')
+              ? _json['deployFailureCause'] as core.String
               : null,
           deployStartTime: _json.containsKey('deployStartTime')
               ? _json['deployStartTime'] as core.String
@@ -3258,6 +3280,8 @@ class Rollout {
         if (approveTime != null) 'approveTime': approveTime!,
         if (createTime != null) 'createTime': createTime!,
         if (deployEndTime != null) 'deployEndTime': deployEndTime!,
+        if (deployFailureCause != null)
+          'deployFailureCause': deployFailureCause!,
         if (deployStartTime != null) 'deployStartTime': deployStartTime!,
         if (deployingBuild != null) 'deployingBuild': deployingBuild!,
         if (description != null) 'description': description!,
@@ -3629,6 +3653,21 @@ class TargetArtifact {
 
 /// Details of rendering for a single target.
 class TargetRender {
+  /// Reason this render failed.
+  ///
+  /// This will always be unspecified while the render in progress.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "FAILURE_CAUSE_UNSPECIFIED" : No reason for failure is specified.
+  /// - "CLOUD_BUILD_UNAVAILABLE" : Cloud Build is not available, either because
+  /// it is not enabled or because Cloud Deploy has insufficient permissions.
+  /// See \[required
+  /// permission\](/deploy/docs/cloud-deploy-service-account#required_permissions).
+  /// - "EXECUTION_FAILED" : The render operation did not complete successfully;
+  /// check Cloud Build logs.
+  core.String? failureCause;
+
   /// The resource name of the Cloud Build `Build` object that is used to render
   /// the manifest for this target.
   ///
@@ -3649,12 +3688,16 @@ class TargetRender {
   core.String? renderingState;
 
   TargetRender({
+    this.failureCause,
     this.renderingBuild,
     this.renderingState,
   });
 
   TargetRender.fromJson(core.Map _json)
       : this(
+          failureCause: _json.containsKey('failureCause')
+              ? _json['failureCause'] as core.String
+              : null,
           renderingBuild: _json.containsKey('renderingBuild')
               ? _json['renderingBuild'] as core.String
               : null,
@@ -3664,6 +3707,7 @@ class TargetRender {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (failureCause != null) 'failureCause': failureCause!,
         if (renderingBuild != null) 'renderingBuild': renderingBuild!,
         if (renderingState != null) 'renderingState': renderingState!,
       };

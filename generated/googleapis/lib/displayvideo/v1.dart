@@ -11280,7 +11280,7 @@ class AssignedTargetingOption {
   /// Audio content type details.
   ///
   /// This field will be populated when the targeting_type is
-  /// 'TARGETING_TYPE_AUDIO_CONTENT_TYPE'.
+  /// `TARGETING_TYPE_AUDIO_CONTENT_TYPE`.
   AudioContentTypeAssignedTargetingOptionDetails? audioContentTypeDetails;
 
   /// Authorized seller status details.

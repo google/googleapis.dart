@@ -374,7 +374,7 @@ class ProjectsLocationsConnectionProfilesResource {
     return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Retrieve a list of all connection profiles in a given project and
+  /// Retrieves a list of all connection profiles in a given project and
   /// location.
   ///
   /// Request parameters:
@@ -394,7 +394,8 @@ class ProjectsLocationsConnectionProfilesResource {
   /// list all connection profiles configured to connect with a specific
   /// username.
   ///
-  /// [orderBy] - the order by fields for the result.
+  /// [orderBy] - A comma-separated list of fields to order results according
+  /// to.
   ///
   /// [pageSize] - The maximum number of connection profiles to return. The
   /// service may return fewer than this value. If unspecified, at most 50

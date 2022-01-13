@@ -477,12 +477,49 @@ void checkGoogleCloudDatapipelinesV1LaunchTemplateRequest(
   buildCounterGoogleCloudDatapipelinesV1LaunchTemplateRequest--;
 }
 
-core.List<api.GoogleCloudDatapipelinesV1Pipeline> buildUnnamed8() => [
+core.List<api.GoogleCloudDatapipelinesV1Job> buildUnnamed8() => [
+      buildGoogleCloudDatapipelinesV1Job(),
+      buildGoogleCloudDatapipelinesV1Job(),
+    ];
+
+void checkUnnamed8(core.List<api.GoogleCloudDatapipelinesV1Job> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleCloudDatapipelinesV1Job(o[0]);
+  checkGoogleCloudDatapipelinesV1Job(o[1]);
+}
+
+core.int buildCounterGoogleCloudDatapipelinesV1ListJobsResponse = 0;
+api.GoogleCloudDatapipelinesV1ListJobsResponse
+    buildGoogleCloudDatapipelinesV1ListJobsResponse() {
+  final o = api.GoogleCloudDatapipelinesV1ListJobsResponse();
+  buildCounterGoogleCloudDatapipelinesV1ListJobsResponse++;
+  if (buildCounterGoogleCloudDatapipelinesV1ListJobsResponse < 3) {
+    o.jobs = buildUnnamed8();
+    o.nextPageToken = 'foo';
+  }
+  buildCounterGoogleCloudDatapipelinesV1ListJobsResponse--;
+  return o;
+}
+
+void checkGoogleCloudDatapipelinesV1ListJobsResponse(
+    api.GoogleCloudDatapipelinesV1ListJobsResponse o) {
+  buildCounterGoogleCloudDatapipelinesV1ListJobsResponse++;
+  if (buildCounterGoogleCloudDatapipelinesV1ListJobsResponse < 3) {
+    checkUnnamed8(o.jobs!);
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleCloudDatapipelinesV1ListJobsResponse--;
+}
+
+core.List<api.GoogleCloudDatapipelinesV1Pipeline> buildUnnamed9() => [
       buildGoogleCloudDatapipelinesV1Pipeline(),
       buildGoogleCloudDatapipelinesV1Pipeline(),
     ];
 
-void checkUnnamed8(core.List<api.GoogleCloudDatapipelinesV1Pipeline> o) {
+void checkUnnamed9(core.List<api.GoogleCloudDatapipelinesV1Pipeline> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDatapipelinesV1Pipeline(o[0]);
   checkGoogleCloudDatapipelinesV1Pipeline(o[1]);
@@ -495,7 +532,7 @@ api.GoogleCloudDatapipelinesV1ListPipelinesResponse
   buildCounterGoogleCloudDatapipelinesV1ListPipelinesResponse++;
   if (buildCounterGoogleCloudDatapipelinesV1ListPipelinesResponse < 3) {
     o.nextPageToken = 'foo';
-    o.pipelines = buildUnnamed8();
+    o.pipelines = buildUnnamed9();
   }
   buildCounterGoogleCloudDatapipelinesV1ListPipelinesResponse--;
   return o;
@@ -509,17 +546,17 @@ void checkGoogleCloudDatapipelinesV1ListPipelinesResponse(
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed8(o.pipelines!);
+    checkUnnamed9(o.pipelines!);
   }
   buildCounterGoogleCloudDatapipelinesV1ListPipelinesResponse--;
 }
 
-core.Map<core.String, core.String> buildUnnamed9() => {
+core.Map<core.String, core.String> buildUnnamed10() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed9(core.Map<core.String, core.String> o) {
+void checkUnnamed10(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -542,7 +579,7 @@ api.GoogleCloudDatapipelinesV1Pipeline
     o.jobCount = 42;
     o.lastUpdateTime = 'foo';
     o.name = 'foo';
-    o.pipelineSources = buildUnnamed9();
+    o.pipelineSources = buildUnnamed10();
     o.scheduleInfo = buildGoogleCloudDatapipelinesV1ScheduleSpec();
     o.schedulerServiceAccountEmail = 'foo';
     o.state = 'foo';
@@ -577,7 +614,7 @@ void checkGoogleCloudDatapipelinesV1Pipeline(
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed9(o.pipelineSources!);
+    checkUnnamed10(o.pipelineSources!);
     checkGoogleCloudDatapipelinesV1ScheduleSpec(o.scheduleInfo!);
     unittest.expect(
       o.schedulerServiceAccountEmail!,
@@ -634,12 +671,12 @@ void checkGoogleCloudDatapipelinesV1RunPipelineResponse(
   buildCounterGoogleCloudDatapipelinesV1RunPipelineResponse--;
 }
 
-core.List<core.String> buildUnnamed10() => [
+core.List<core.String> buildUnnamed11() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed10(core.List<core.String> o) {
+void checkUnnamed11(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -651,12 +688,12 @@ void checkUnnamed10(core.List<core.String> o) {
   );
 }
 
-core.Map<core.String, core.String> buildUnnamed11() => {
+core.Map<core.String, core.String> buildUnnamed12() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed11(core.Map<core.String, core.String> o) {
+void checkUnnamed12(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -674,8 +711,8 @@ api.GoogleCloudDatapipelinesV1RuntimeEnvironment
   final o = api.GoogleCloudDatapipelinesV1RuntimeEnvironment();
   buildCounterGoogleCloudDatapipelinesV1RuntimeEnvironment++;
   if (buildCounterGoogleCloudDatapipelinesV1RuntimeEnvironment < 3) {
-    o.additionalExperiments = buildUnnamed10();
-    o.additionalUserLabels = buildUnnamed11();
+    o.additionalExperiments = buildUnnamed11();
+    o.additionalUserLabels = buildUnnamed12();
     o.bypassTempDirValidation = true;
     o.enableStreamingEngine = true;
     o.ipConfiguration = 'foo';
@@ -699,8 +736,8 @@ void checkGoogleCloudDatapipelinesV1RuntimeEnvironment(
     api.GoogleCloudDatapipelinesV1RuntimeEnvironment o) {
   buildCounterGoogleCloudDatapipelinesV1RuntimeEnvironment++;
   if (buildCounterGoogleCloudDatapipelinesV1RuntimeEnvironment < 3) {
-    checkUnnamed10(o.additionalExperiments!);
-    checkUnnamed11(o.additionalUserLabels!);
+    checkUnnamed11(o.additionalExperiments!);
+    checkUnnamed12(o.additionalUserLabels!);
     unittest.expect(o.bypassTempDirValidation!, unittest.isTrue);
     unittest.expect(o.enableStreamingEngine!, unittest.isTrue);
     unittest.expect(
@@ -882,7 +919,7 @@ void checkGoogleProtobufEmpty(api.GoogleProtobufEmpty o) {
   buildCounterGoogleProtobufEmpty--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed12() => {
+core.Map<core.String, core.Object?> buildUnnamed13() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -895,7 +932,7 @@ core.Map<core.String, core.Object?> buildUnnamed12() => {
       },
     };
 
-void checkUnnamed12(core.Map<core.String, core.Object?> o) {
+void checkUnnamed13(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o['x']!) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -927,15 +964,15 @@ void checkUnnamed12(core.Map<core.String, core.Object?> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object?>> buildUnnamed13() => [
-      buildUnnamed12(),
-      buildUnnamed12(),
+core.List<core.Map<core.String, core.Object?>> buildUnnamed14() => [
+      buildUnnamed13(),
+      buildUnnamed13(),
     ];
 
-void checkUnnamed13(core.List<core.Map<core.String, core.Object?>> o) {
+void checkUnnamed14(core.List<core.Map<core.String, core.Object?>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed12(o[0]);
-  checkUnnamed12(o[1]);
+  checkUnnamed13(o[0]);
+  checkUnnamed13(o[1]);
 }
 
 core.int buildCounterGoogleRpcStatus = 0;
@@ -944,7 +981,7 @@ api.GoogleRpcStatus buildGoogleRpcStatus() {
   buildCounterGoogleRpcStatus++;
   if (buildCounterGoogleRpcStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed13();
+    o.details = buildUnnamed14();
     o.message = 'foo';
   }
   buildCounterGoogleRpcStatus--;
@@ -958,7 +995,7 @@ void checkGoogleRpcStatus(api.GoogleRpcStatus o) {
       o.code!,
       unittest.equals(42),
     );
-    checkUnnamed13(o.details!);
+    checkUnnamed14(o.details!);
     unittest.expect(
       o.message!,
       unittest.equals('foo'),
@@ -1045,6 +1082,16 @@ void main() {
       final od = api.GoogleCloudDatapipelinesV1LaunchTemplateRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatapipelinesV1LaunchTemplateRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-GoogleCloudDatapipelinesV1ListJobsResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleCloudDatapipelinesV1ListJobsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudDatapipelinesV1ListJobsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudDatapipelinesV1ListJobsResponse(od);
     });
   });
 
@@ -1586,6 +1633,75 @@ void main() {
           await res.stop(arg_request, arg_name, $fields: arg_$fields);
       checkGoogleCloudDatapipelinesV1Pipeline(
           response as api.GoogleCloudDatapipelinesV1Pipeline);
+    });
+  });
+
+  unittest.group('resource-ProjectsLocationsPipelinesJobsResource', () {
+    unittest.test('method--list', () async {
+      final mock = HttpServerMock();
+      final res = api.DatapipelinesApi(mock).projects.locations.pipelines.jobs;
+      final arg_parent = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          core.int.parse(queryMap['pageSize']!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap['pageToken']!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json
+            .encode(buildGoogleCloudDatapipelinesV1ListJobsResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkGoogleCloudDatapipelinesV1ListJobsResponse(
+          response as api.GoogleCloudDatapipelinesV1ListJobsResponse);
     });
   });
 }

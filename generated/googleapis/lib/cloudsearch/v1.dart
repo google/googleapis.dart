@@ -674,7 +674,9 @@ class IndexingDatasourcesItemsResource {
   /// the queued Item using lexical ordering. Cloud Search Indexing won't delete
   /// any queued item with a version value that is less than or equal to the
   /// version of the currently indexed item. The maximum length for this field
-  /// is 1024 bytes.
+  /// is 1024 bytes. See
+  /// [this guide](https://developers.devsite.corp.google.com/cloud-search/docs/guides/operations)
+  /// to understand how item version affects reindexing after delete item.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2204,6 +2206,66 @@ class StatsResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
+  /// Get search application stats for customer.
+  ///
+  /// **Note:** This API requires a standard end user account to execute.
+  ///
+  /// Request parameters:
+  ///
+  /// [endDate_day] - Day of month. Must be from 1 to 31 and valid for the year
+  /// and month.
+  ///
+  /// [endDate_month] - Month of date. Must be from 1 to 12.
+  ///
+  /// [endDate_year] - Year of date. Must be from 1 to 9999.
+  ///
+  /// [startDate_day] - Day of month. Must be from 1 to 31 and valid for the
+  /// year and month.
+  ///
+  /// [startDate_month] - Month of date. Must be from 1 to 12.
+  ///
+  /// [startDate_year] - Year of date. Must be from 1 to 9999.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GetCustomerSearchApplicationStatsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GetCustomerSearchApplicationStatsResponse> getSearchapplication({
+    core.int? endDate_day,
+    core.int? endDate_month,
+    core.int? endDate_year,
+    core.int? startDate_day,
+    core.int? startDate_month,
+    core.int? startDate_year,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (endDate_day != null) 'endDate.day': ['${endDate_day}'],
+      if (endDate_month != null) 'endDate.month': ['${endDate_month}'],
+      if (endDate_year != null) 'endDate.year': ['${endDate_year}'],
+      if (startDate_day != null) 'startDate.day': ['${startDate_day}'],
+      if (startDate_month != null) 'startDate.month': ['${startDate_month}'],
+      if (startDate_year != null) 'startDate.year': ['${startDate_year}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    const _url = 'v1/stats/searchapplication';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GetCustomerSearchApplicationStatsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
   /// Get the # of search sessions, % of successful sessions with a click query
   /// statistics for customer.
   ///
@@ -2966,6 +3028,35 @@ class CustomerQueryStats {
       };
 }
 
+/// Search application stats for a customer for the given date.
+class CustomerSearchApplicationStats {
+  /// The count of search applications for the date.
+  core.String? count;
+
+  /// Date for which search application stats were calculated.
+  Date? date;
+
+  CustomerSearchApplicationStats({
+    this.count,
+    this.date,
+  });
+
+  CustomerSearchApplicationStats.fromJson(core.Map _json)
+      : this(
+          count:
+              _json.containsKey('count') ? _json['count'] as core.String : null,
+          date: _json.containsKey('date')
+              ? Date.fromJson(
+                  _json['date'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (count != null) 'count': count!,
+        if (date != null) 'date': date!,
+      };
+}
+
 class CustomerSessionStats {
   /// Date for which session stats were calculated.
   ///
@@ -3131,6 +3222,10 @@ class DataSource {
   /// schema.
   core.List<core.String>? operationIds;
 
+  /// Can a user request to get thumbnail URI for Items indexed in this data
+  /// source.
+  core.bool? returnThumbnailUrls;
+
   /// A short name or alias for the source.
   ///
   /// This value will be used to match the 'source' operator. For example, if
@@ -3150,6 +3245,7 @@ class DataSource {
     this.itemsVisibility,
     this.name,
     this.operationIds,
+    this.returnThumbnailUrls,
     this.shortName,
   });
 
@@ -3181,6 +3277,9 @@ class DataSource {
                   .map((value) => value as core.String)
                   .toList()
               : null,
+          returnThumbnailUrls: _json.containsKey('returnThumbnailUrls')
+              ? _json['returnThumbnailUrls'] as core.bool
+              : null,
           shortName: _json.containsKey('shortName')
               ? _json['shortName'] as core.String
               : null,
@@ -3196,6 +3295,8 @@ class DataSource {
         if (itemsVisibility != null) 'itemsVisibility': itemsVisibility!,
         if (name != null) 'name': name!,
         if (operationIds != null) 'operationIds': operationIds!,
+        if (returnThumbnailUrls != null)
+          'returnThumbnailUrls': returnThumbnailUrls!,
         if (shortName != null) 'shortName': shortName!,
       };
 }
@@ -4188,15 +4289,22 @@ class GSuitePrincipal {
 }
 
 class GetCustomerIndexStatsResponse {
+  /// Average item count for the given date range for which billing is done.
+  core.String? averageIndexedItemCount;
+
   /// Summary of indexed item counts, one for each day in the requested range.
   core.List<CustomerIndexStats>? stats;
 
   GetCustomerIndexStatsResponse({
+    this.averageIndexedItemCount,
     this.stats,
   });
 
   GetCustomerIndexStatsResponse.fromJson(core.Map _json)
       : this(
+          averageIndexedItemCount: _json.containsKey('averageIndexedItemCount')
+              ? _json['averageIndexedItemCount'] as core.String
+              : null,
           stats: _json.containsKey('stats')
               ? (_json['stats'] as core.List)
                   .map((value) => CustomerIndexStats.fromJson(
@@ -4206,6 +4314,8 @@ class GetCustomerIndexStatsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (averageIndexedItemCount != null)
+          'averageIndexedItemCount': averageIndexedItemCount!,
         if (stats != null) 'stats': stats!,
       };
 }
@@ -4213,8 +4323,12 @@ class GetCustomerIndexStatsResponse {
 class GetCustomerQueryStatsResponse {
   core.List<CustomerQueryStats>? stats;
 
+  /// Total successful query count (status code 200) for the given date range.
+  core.String? totalQueryCount;
+
   GetCustomerQueryStatsResponse({
     this.stats,
+    this.totalQueryCount,
   });
 
   GetCustomerQueryStatsResponse.fromJson(core.Map _json)
@@ -4225,9 +4339,47 @@ class GetCustomerQueryStatsResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          totalQueryCount: _json.containsKey('totalQueryCount')
+              ? _json['totalQueryCount'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (stats != null) 'stats': stats!,
+        if (totalQueryCount != null) 'totalQueryCount': totalQueryCount!,
+      };
+}
+
+/// Response format for search application stats for a customer.
+class GetCustomerSearchApplicationStatsResponse {
+  /// Average search application count for the given date range.
+  core.String? averageSearchApplicationCount;
+
+  /// Search application stats by date.
+  core.List<CustomerSearchApplicationStats>? stats;
+
+  GetCustomerSearchApplicationStatsResponse({
+    this.averageSearchApplicationCount,
+    this.stats,
+  });
+
+  GetCustomerSearchApplicationStatsResponse.fromJson(core.Map _json)
+      : this(
+          averageSearchApplicationCount:
+              _json.containsKey('averageSearchApplicationCount')
+                  ? _json['averageSearchApplicationCount'] as core.String
+                  : null,
+          stats: _json.containsKey('stats')
+              ? (_json['stats'] as core.List)
+                  .map((value) => CustomerSearchApplicationStats.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (averageSearchApplicationCount != null)
+          'averageSearchApplicationCount': averageSearchApplicationCount!,
         if (stats != null) 'stats': stats!,
       };
 }
@@ -4277,15 +4429,22 @@ class GetCustomerUserStatsResponse {
 }
 
 class GetDataSourceIndexStatsResponse {
+  /// Average item count for the given date range for which billing is done.
+  core.String? averageIndexedItemCount;
+
   /// Summary of indexed item counts, one for each day in the requested range.
   core.List<DataSourceIndexStats>? stats;
 
   GetDataSourceIndexStatsResponse({
+    this.averageIndexedItemCount,
     this.stats,
   });
 
   GetDataSourceIndexStatsResponse.fromJson(core.Map _json)
       : this(
+          averageIndexedItemCount: _json.containsKey('averageIndexedItemCount')
+              ? _json['averageIndexedItemCount'] as core.String
+              : null,
           stats: _json.containsKey('stats')
               ? (_json['stats'] as core.List)
                   .map((value) => DataSourceIndexStats.fromJson(
@@ -4295,6 +4454,8 @@ class GetDataSourceIndexStatsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (averageIndexedItemCount != null)
+          'averageIndexedItemCount': averageIndexedItemCount!,
         if (stats != null) 'stats': stats!,
       };
 }
@@ -4305,8 +4466,12 @@ class GetSearchApplicationQueryStatsResponse {
   /// Query stats per date for a search application.
   core.List<SearchApplicationQueryStats>? stats;
 
+  /// Total successful query count (status code 200) for the given date range.
+  core.String? totalQueryCount;
+
   GetSearchApplicationQueryStatsResponse({
     this.stats,
+    this.totalQueryCount,
   });
 
   GetSearchApplicationQueryStatsResponse.fromJson(core.Map _json)
@@ -4317,10 +4482,14 @@ class GetSearchApplicationQueryStatsResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          totalQueryCount: _json.containsKey('totalQueryCount')
+              ? _json['totalQueryCount'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (stats != null) 'stats': stats!,
+        if (totalQueryCount != null) 'totalQueryCount': totalQueryCount!,
       };
 }
 
@@ -4807,7 +4976,9 @@ class Item {
   ///
   /// Cloud Search Indexing won't index or delete any queued item with a version
   /// value that is less than or equal to the version of the currently indexed
-  /// item. The maximum length for this field is 1024 bytes.
+  /// item. The maximum length for this field is 1024 bytes. See
+  /// [this guide](https://developers.devsite.corp.google.com/cloud-search/docs/guides/operations)
+  /// to understand how item version affects reindexing after delete item.
   ///
   /// Required.
   core.String? version;
@@ -5054,6 +5225,12 @@ class ItemCountByStatus {
   /// Number of items matching the status code.
   core.String? count;
 
+  /// Number of items matching the status code for which billing is done.
+  ///
+  /// This excludes virtual container items from the total count. This count
+  /// would not be applicable for items with ERROR or NEW_ITEM status code.
+  core.String? indexedItemsCount;
+
   /// Status of the items.
   /// Possible string values are:
   /// - "CODE_UNSPECIFIED" : Input-only value. Used with Items.list to list all
@@ -5070,6 +5247,7 @@ class ItemCountByStatus {
 
   ItemCountByStatus({
     this.count,
+    this.indexedItemsCount,
     this.statusCode,
   });
 
@@ -5077,6 +5255,9 @@ class ItemCountByStatus {
       : this(
           count:
               _json.containsKey('count') ? _json['count'] as core.String : null,
+          indexedItemsCount: _json.containsKey('indexedItemsCount')
+              ? _json['indexedItemsCount'] as core.String
+              : null,
           statusCode: _json.containsKey('statusCode')
               ? _json['statusCode'] as core.String
               : null,
@@ -5084,6 +5265,7 @@ class ItemCountByStatus {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (count != null) 'count': count!,
+        if (indexedItemsCount != null) 'indexedItemsCount': indexedItemsCount!,
         if (statusCode != null) 'statusCode': statusCode!,
       };
 }
@@ -5599,6 +5781,9 @@ class Metadata {
   /// The named source for the result, such as Gmail.
   Source? source;
 
+  /// The thumbnail URL of the result.
+  core.String? thumbnailUrl;
+
   /// The last modified date for the object in the search result.
   ///
   /// If not set in the item, the value returned here is empty. When
@@ -5614,6 +5799,7 @@ class Metadata {
     this.objectType,
     this.owner,
     this.source,
+    this.thumbnailUrl,
     this.updateTime,
   });
 
@@ -5646,6 +5832,9 @@ class Metadata {
               ? Source.fromJson(
                   _json['source'] as core.Map<core.String, core.dynamic>)
               : null,
+          thumbnailUrl: _json.containsKey('thumbnailUrl')
+              ? _json['thumbnailUrl'] as core.String
+              : null,
           updateTime: _json.containsKey('updateTime')
               ? _json['updateTime'] as core.String
               : null,
@@ -5659,6 +5848,7 @@ class Metadata {
         if (objectType != null) 'objectType': objectType!,
         if (owner != null) 'owner': owner!,
         if (source != null) 'source': source!,
+        if (thumbnailUrl != null) 'thumbnailUrl': thumbnailUrl!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
 }
@@ -7481,6 +7671,10 @@ class SearchApplication {
   /// The default options for query interpretation
   QueryInterpretationConfig? queryInterpretationConfig;
 
+  /// With each result we should return the URI for its thumbnail (when
+  /// applicable)
+  core.bool? returnResultThumbnailUrls;
+
   /// Configuration for ranking results.
   ScoringConfig? scoringConfig;
 
@@ -7496,6 +7690,7 @@ class SearchApplication {
     this.name,
     this.operationIds,
     this.queryInterpretationConfig,
+    this.returnResultThumbnailUrls,
     this.scoringConfig,
     this.sourceConfig,
   });
@@ -7536,6 +7731,10 @@ class SearchApplication {
                       _json['queryInterpretationConfig']
                           as core.Map<core.String, core.dynamic>)
                   : null,
+          returnResultThumbnailUrls:
+              _json.containsKey('returnResultThumbnailUrls')
+                  ? _json['returnResultThumbnailUrls'] as core.bool
+                  : null,
           scoringConfig: _json.containsKey('scoringConfig')
               ? ScoringConfig.fromJson(
                   _json['scoringConfig'] as core.Map<core.String, core.dynamic>)
@@ -7561,6 +7760,8 @@ class SearchApplication {
         if (operationIds != null) 'operationIds': operationIds!,
         if (queryInterpretationConfig != null)
           'queryInterpretationConfig': queryInterpretationConfig!,
+        if (returnResultThumbnailUrls != null)
+          'returnResultThumbnailUrls': returnResultThumbnailUrls!,
         if (scoringConfig != null) 'scoringConfig': scoringConfig!,
         if (sourceConfig != null) 'sourceConfig': sourceConfig!,
       };

@@ -2700,6 +2700,12 @@ class UpdateDnsRecordSetRequest {
 }
 
 class ValidateConsumerConfigRequest {
+  /// The IAM permission check determines whether the consumer project has
+  /// 'servicenetworking.services.use' permission or not.
+  ///
+  /// Optional.
+  core.bool? checkServiceNetworkingUsePermission;
+
   /// The network that the consumer is using to connect with services.
   ///
   /// Must be in the form of projects/{project}/global/networks/{network}
@@ -2727,6 +2733,7 @@ class ValidateConsumerConfigRequest {
   core.bool? validateNetwork;
 
   ValidateConsumerConfigRequest({
+    this.checkServiceNetworkingUsePermission,
     this.consumerNetwork,
     this.consumerProject,
     this.rangeReservation,
@@ -2735,6 +2742,10 @@ class ValidateConsumerConfigRequest {
 
   ValidateConsumerConfigRequest.fromJson(core.Map _json)
       : this(
+          checkServiceNetworkingUsePermission:
+              _json.containsKey('checkServiceNetworkingUsePermission')
+                  ? _json['checkServiceNetworkingUsePermission'] as core.bool
+                  : null,
           consumerNetwork: _json.containsKey('consumerNetwork')
               ? _json['consumerNetwork'] as core.String
               : null,
@@ -2752,6 +2763,9 @@ class ValidateConsumerConfigRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (checkServiceNetworkingUsePermission != null)
+          'checkServiceNetworkingUsePermission':
+              checkServiceNetworkingUsePermission!,
         if (consumerNetwork != null) 'consumerNetwork': consumerNetwork!,
         if (consumerProject != null) 'consumerProject': consumerProject!,
         if (rangeReservation != null) 'rangeReservation': rangeReservation!,
@@ -2794,6 +2808,8 @@ class ValidateConsumerConfigResponse {
   /// - "RANGES_DELETED_LATER" : The IP ranges were reserved but deleted later.
   /// - "COMPUTE_API_NOT_ENABLED" : The consumer project does not have the
   /// compute api enabled.
+  /// - "USE_PERMISSION_NOT_FOUND" : The consumer project does not have the
+  /// permission from the host project.
   core.String? validationError;
 
   ValidateConsumerConfigResponse({

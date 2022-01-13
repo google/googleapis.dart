@@ -22,7 +22,6 @@
 ///
 /// - [UsersResource]
 ///   - [UsersProjectsResource]
-///   - [UsersSshPublicKeyResource]
 ///   - [UsersSshPublicKeysResource]
 library oslogin.v1;
 
@@ -74,8 +73,6 @@ class UsersResource {
   final commons.ApiRequester _requester;
 
   UsersProjectsResource get projects => UsersProjectsResource(_requester);
-  UsersSshPublicKeyResource get sshPublicKey =>
-      UsersSshPublicKeyResource(_requester);
   UsersSshPublicKeysResource get sshPublicKeys =>
       UsersSshPublicKeysResource(_requester);
 
@@ -219,10 +216,10 @@ class UsersProjectsResource {
   }
 }
 
-class UsersSshPublicKeyResource {
+class UsersSshPublicKeysResource {
   final commons.ApiRequester _requester;
 
-  UsersSshPublicKeyResource(commons.ApiRequester client) : _requester = client;
+  UsersSshPublicKeysResource(commons.ApiRequester client) : _requester = client;
 
   /// Create an SSH public key
   ///
@@ -253,7 +250,7 @@ class UsersSshPublicKeyResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/sshPublicKey';
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/sshPublicKeys';
 
     final _response = await _requester.request(
       _url,
@@ -264,12 +261,6 @@ class UsersSshPublicKeyResource {
     return SshPublicKey.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
-}
-
-class UsersSshPublicKeysResource {
-  final commons.ApiRequester _requester;
-
-  UsersSshPublicKeysResource(commons.ApiRequester client) : _requester = client;
 
   /// Deletes an SSH public key.
   ///

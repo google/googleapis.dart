@@ -9498,8 +9498,9 @@ class LogBucket {
   /// - "LIFECYCLE_STATE_UNSPECIFIED" : Unspecified state. This is only
   /// used/useful for distinguishing unset values.
   /// - "ACTIVE" : The normal and active state.
-  /// - "DELETE_REQUESTED" : The bucket has been marked for deletion by the
-  /// user.
+  /// - "DELETE_REQUESTED" : The resource has been marked for deletion by the
+  /// user. For some resources (e.g. buckets), this can be reversed by an
+  /// un-delete operation.
   core.String? lifecycleState;
 
   /// Whether the bucket is locked.The retention period on a locked bucket
@@ -10158,11 +10159,11 @@ class LogMetric {
   /// to 100 characters and can include only the following characters: A-Z, a-z,
   /// 0-9, and the special characters _-.,+!*',()%/. The forward-slash character
   /// (/) denotes a hierarchy of name pieces, and it cannot be the first
-  /// character of the name.The metric identifier in this field must not be
-  /// URL-encoded (https://en.wikipedia.org/wiki/Percent-encoding). However,
-  /// when the metric identifier appears as the \[METRIC_ID\] part of a
-  /// metric_name API parameter, then the metric identifier must be URL-encoded.
-  /// Example: "projects/my-project/metrics/nginx%2Frequests".
+  /// character of the name.This field is the \[METRIC_ID\] part of a metric
+  /// resource name in the format "projects/PROJECT_ID/metrics/METRIC_ID".
+  /// Example: If the resource name of a metric is
+  /// "projects/my-project/metrics/nginx%2Frequests", this field's value is
+  /// "nginx/requests".
   ///
   /// Required.
   core.String? name;
@@ -10791,7 +10792,9 @@ class MonitoredResource {
   ///
   /// This field must match the type field of a MonitoredResourceDescriptor
   /// object. For example, the type of a Compute Engine VM instance is
-  /// gce_instance.
+  /// gce_instance. Some descriptors include the service name in the type; for
+  /// example, the type of a Datastream stream is
+  /// datastream.googleapis.com/Stream.
   ///
   /// Required.
   core.String? type;

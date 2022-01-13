@@ -714,6 +714,7 @@ api.DiscoveryOccurrence buildDiscoveryOccurrence() {
   if (buildCounterDiscoveryOccurrence < 3) {
     o.analysisStatus = 'foo';
     o.analysisStatusError = buildStatus();
+    o.archiveTime = 'foo';
     o.continuousAnalysis = 'foo';
     o.cpe = 'foo';
     o.lastScanTime = 'foo';
@@ -730,6 +731,10 @@ void checkDiscoveryOccurrence(api.DiscoveryOccurrence o) {
       unittest.equals('foo'),
     );
     checkStatus(o.analysisStatusError!);
+    unittest.expect(
+      o.archiveTime!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.continuousAnalysis!,
       unittest.equals('foo'),

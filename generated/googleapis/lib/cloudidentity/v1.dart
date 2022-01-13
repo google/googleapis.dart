@@ -3730,12 +3730,12 @@ class MembershipRoleRestrictionEvaluation {
   /// Output only.
   /// Possible string values are:
   /// - "STATE_UNSPECIFIED" : Default. Should not be used.
-  /// - "COMPLIANT" : The member adheres to the parent group’s restriction.
+  /// - "COMPLIANT" : The member adheres to the parent group's restriction.
   /// - "FORWARD_COMPLIANT" : The group-group membership might be currently
   /// violating some parent group's restriction but in future, it will never
   /// allow any new member in the child group which can violate parent group's
   /// restriction.
-  /// - "NON_COMPLIANT" : The member violates the parent group’s restriction.
+  /// - "NON_COMPLIANT" : The member violates the parent group's restriction.
   /// - "EVALUATING" : The state of the membership is under evaluation.
   core.String? state;
 

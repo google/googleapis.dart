@@ -1585,7 +1585,7 @@ class Application {
   core.List<ManagedProperty>? managedProperties;
 
   /// The name of the app in the form
-  /// enterprises/{enterpriseId}/applications/{package_name}.
+  /// enterprises/{enterprise}/applications/{package_name}.
   core.String? name;
 
   /// The permissions required by the app.
@@ -5458,6 +5458,34 @@ class Policy {
   /// bluetooth_config_disabled can be bypassed by the user.
   core.bool? bluetoothDisabled;
 
+  /// Controls the use of the camera and whether the user has access to the
+  /// camera access toggle.
+  /// Possible string values are:
+  /// - "CAMERA_ACCESS_UNSPECIFIED" : If camera_disabled is true, this is
+  /// equivalent to CAMERA_ACCESS_DISABLED. Otherwise, this is equivalent to
+  /// CAMERA_ACCESS_USER_CHOICE.
+  /// - "CAMERA_ACCESS_USER_CHOICE" : The field
+  /// camera_disabled(google.android.devicemanagement.v1.Policy.camera_disabled\]
+  /// is ignored. This is the default device behaviour: all cameras on the
+  /// device are available. On Android 12 and above, the user can use the camera
+  /// access toggle.
+  /// - "CAMERA_ACCESS_DISABLED" : The field
+  /// camera_disabled(google.android.devicemanagement.v1.Policy.camera_disabled\]
+  /// is ignored. All cameras on the device are disabled (for fully managed
+  /// devices, this applies device-wide and for work profiles this applies only
+  /// to the work profile).There are no explicit restrictions placed on the
+  /// camera access toggle on Android 12 and above: on fully managed devices,
+  /// the camera access toggle has no effect as all cameras are disabled. On
+  /// devices with a work profile, this toggle has no effect on apps in the work
+  /// profile, but it affects apps outside the work profile.
+  /// - "CAMERA_ACCESS_ENFORCED" : The field
+  /// camera_disabled(google.android.devicemanagement.v1.Policy.camera_disabled\]
+  /// is ignored. All cameras on the device are available. On fully managed
+  /// devices running Android 12 and above, the user is unable to use the camera
+  /// access toggle. On devices which are not fully managed or which run Android
+  /// 11 or below, this is equivalent to CAMERA_ACCESS_USER_CHOICE.
+  core.String? cameraAccess;
+
   /// Whether all cameras on the device are disabled.
   core.bool? cameraDisabled;
 
@@ -5587,6 +5615,32 @@ class Policy {
   ///
   /// A value of 0 means there is no restriction.
   core.String? maximumTimeToLock;
+
+  /// Controls the use of the microphone and whether the user has access to the
+  /// microphone access toggle.
+  ///
+  /// This applies only on fully managed devices.
+  /// Possible string values are:
+  /// - "MICROPHONE_ACCESS_UNSPECIFIED" : If unmute_microphone_disabled is true,
+  /// this is equivalent to MICROPHONE_ACCESS_DISABLED. Otherwise, this is
+  /// equivalent to MICROPHONE_ACCESS_USER_CHOICE.
+  /// - "MICROPHONE_ACCESS_USER_CHOICE" : The field
+  /// unmute_microphone_disabled(google.android.devicemanagement.v1.Policy.unmute_microphone_disabled\]
+  /// is ignored. This is the default device behaviour: the microphone on the
+  /// device is available. On Android 12 and above, the user can use the
+  /// microphone access toggle.
+  /// - "MICROPHONE_ACCESS_DISABLED" : The field
+  /// unmute_microphone_disabled(google.android.devicemanagement.v1.Policy.unmute_microphone_disabled\]
+  /// is ignored. The microphone on the device is disabled (for fully managed
+  /// devices, this applies device-wide).The microphone access toggle has no
+  /// effect as the microphone is disabled.
+  /// - "MICROPHONE_ACCESS_ENFORCED" : The field
+  /// unmute_microphone_disabled(google.android.devicemanagement.v1.Policy.unmute_microphone_disabled\]
+  /// is ignored. The microphone on the device is available. On devices running
+  /// Android 12 and above, the user is unable to use the microphone access
+  /// toggle. On devices which run Android 11 or below, this is equivalent to
+  /// MICROPHONE_ACCESS_USER_CHOICE.
+  core.String? microphoneAccess;
 
   /// The minimum allowed Android API level.
   core.int? minimumApiLevel;
@@ -5836,6 +5890,7 @@ class Policy {
     this.bluetoothConfigDisabled,
     this.bluetoothContactSharingDisabled,
     this.bluetoothDisabled,
+    this.cameraAccess,
     this.cameraDisabled,
     this.cellBroadcastsConfigDisabled,
     this.choosePrivateKeyRules,
@@ -5861,6 +5916,7 @@ class Policy {
     this.locationMode,
     this.longSupportMessage,
     this.maximumTimeToLock,
+    this.microphoneAccess,
     this.minimumApiLevel,
     this.mobileNetworksConfigDisabled,
     this.modifyAccountsDisabled,
@@ -5968,6 +6024,9 @@ class Policy {
           bluetoothDisabled: _json.containsKey('bluetoothDisabled')
               ? _json['bluetoothDisabled'] as core.bool
               : null,
+          cameraAccess: _json.containsKey('cameraAccess')
+              ? _json['cameraAccess'] as core.String
+              : null,
           cameraDisabled: _json.containsKey('cameraDisabled')
               ? _json['cameraDisabled'] as core.bool
               : null,
@@ -6063,6 +6122,9 @@ class Policy {
               : null,
           maximumTimeToLock: _json.containsKey('maximumTimeToLock')
               ? _json['maximumTimeToLock'] as core.String
+              : null,
+          microphoneAccess: _json.containsKey('microphoneAccess')
+              ? _json['microphoneAccess'] as core.String
               : null,
           minimumApiLevel: _json.containsKey('minimumApiLevel')
               ? _json['minimumApiLevel'] as core.int
@@ -6269,6 +6331,7 @@ class Policy {
         if (bluetoothContactSharingDisabled != null)
           'bluetoothContactSharingDisabled': bluetoothContactSharingDisabled!,
         if (bluetoothDisabled != null) 'bluetoothDisabled': bluetoothDisabled!,
+        if (cameraAccess != null) 'cameraAccess': cameraAccess!,
         if (cameraDisabled != null) 'cameraDisabled': cameraDisabled!,
         if (cellBroadcastsConfigDisabled != null)
           'cellBroadcastsConfigDisabled': cellBroadcastsConfigDisabled!,
@@ -6311,6 +6374,7 @@ class Policy {
         if (longSupportMessage != null)
           'longSupportMessage': longSupportMessage!,
         if (maximumTimeToLock != null) 'maximumTimeToLock': maximumTimeToLock!,
+        if (microphoneAccess != null) 'microphoneAccess': microphoneAccess!,
         if (minimumApiLevel != null) 'minimumApiLevel': minimumApiLevel!,
         if (mobileNetworksConfigDisabled != null)
           'mobileNetworksConfigDisabled': mobileNetworksConfigDisabled!,

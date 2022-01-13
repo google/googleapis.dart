@@ -52,6 +52,7 @@ api.GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessment
   if (buildCounterGoogleCloudRecaptchaenterpriseV1AccountDefenderAssessment <
       3) {
     o.labels = buildUnnamed0();
+    o.recommendedAction = 'foo';
   }
   buildCounterGoogleCloudRecaptchaenterpriseV1AccountDefenderAssessment--;
   return o;
@@ -63,6 +64,10 @@ void checkGoogleCloudRecaptchaenterpriseV1AccountDefenderAssessment(
   if (buildCounterGoogleCloudRecaptchaenterpriseV1AccountDefenderAssessment <
       3) {
     checkUnnamed0(o.labels!);
+    unittest.expect(
+      o.recommendedAction!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleCloudRecaptchaenterpriseV1AccountDefenderAssessment--;
 }
@@ -258,6 +263,7 @@ api.GoogleCloudRecaptchaenterpriseV1Event
   buildCounterGoogleCloudRecaptchaenterpriseV1Event++;
   if (buildCounterGoogleCloudRecaptchaenterpriseV1Event < 3) {
     o.expectedAction = 'foo';
+    o.hashedAccountId = 'foo';
     o.siteKey = 'foo';
     o.token = 'foo';
     o.userAgent = 'foo';
@@ -273,6 +279,10 @@ void checkGoogleCloudRecaptchaenterpriseV1Event(
   if (buildCounterGoogleCloudRecaptchaenterpriseV1Event < 3) {
     unittest.expect(
       o.expectedAction!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.hashedAccountId!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -366,6 +376,7 @@ api.GoogleCloudRecaptchaenterpriseV1Key
     o.labels = buildUnnamed4();
     o.name = 'foo';
     o.testingOptions = buildGoogleCloudRecaptchaenterpriseV1TestingOptions();
+    o.wafSettings = buildGoogleCloudRecaptchaenterpriseV1WafSettings();
     o.webSettings = buildGoogleCloudRecaptchaenterpriseV1WebKeySettings();
   }
   buildCounterGoogleCloudRecaptchaenterpriseV1Key--;
@@ -392,6 +403,7 @@ void checkGoogleCloudRecaptchaenterpriseV1Key(
       unittest.equals('foo'),
     );
     checkGoogleCloudRecaptchaenterpriseV1TestingOptions(o.testingOptions!);
+    checkGoogleCloudRecaptchaenterpriseV1WafSettings(o.wafSettings!);
     checkGoogleCloudRecaptchaenterpriseV1WebKeySettings(o.webSettings!);
   }
   buildCounterGoogleCloudRecaptchaenterpriseV1Key--;
@@ -930,6 +942,35 @@ void checkGoogleCloudRecaptchaenterpriseV1TokenProperties(
   buildCounterGoogleCloudRecaptchaenterpriseV1TokenProperties--;
 }
 
+core.int buildCounterGoogleCloudRecaptchaenterpriseV1WafSettings = 0;
+api.GoogleCloudRecaptchaenterpriseV1WafSettings
+    buildGoogleCloudRecaptchaenterpriseV1WafSettings() {
+  final o = api.GoogleCloudRecaptchaenterpriseV1WafSettings();
+  buildCounterGoogleCloudRecaptchaenterpriseV1WafSettings++;
+  if (buildCounterGoogleCloudRecaptchaenterpriseV1WafSettings < 3) {
+    o.wafFeature = 'foo';
+    o.wafService = 'foo';
+  }
+  buildCounterGoogleCloudRecaptchaenterpriseV1WafSettings--;
+  return o;
+}
+
+void checkGoogleCloudRecaptchaenterpriseV1WafSettings(
+    api.GoogleCloudRecaptchaenterpriseV1WafSettings o) {
+  buildCounterGoogleCloudRecaptchaenterpriseV1WafSettings++;
+  if (buildCounterGoogleCloudRecaptchaenterpriseV1WafSettings < 3) {
+    unittest.expect(
+      o.wafFeature!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.wafService!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleCloudRecaptchaenterpriseV1WafSettings--;
+}
+
 core.List<core.String> buildUnnamed14() => [
       'foo',
       'foo',
@@ -1268,6 +1309,16 @@ void main() {
       final od = api.GoogleCloudRecaptchaenterpriseV1TokenProperties.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudRecaptchaenterpriseV1TokenProperties(od);
+    });
+  });
+
+  unittest.group('obj-schema-GoogleCloudRecaptchaenterpriseV1WafSettings', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleCloudRecaptchaenterpriseV1WafSettings();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudRecaptchaenterpriseV1WafSettings.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudRecaptchaenterpriseV1WafSettings(od);
     });
   });
 
@@ -1840,7 +1891,7 @@ void main() {
           .relatedaccountgroupmemberships;
       final arg_request =
           buildGoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMembershipsRequest();
-      final arg_parent = 'foo';
+      final arg_project = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final obj =
@@ -1893,7 +1944,7 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
-          await res.search(arg_request, arg_parent, $fields: arg_$fields);
+          await res.search(arg_request, arg_project, $fields: arg_$fields);
       checkGoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMembershipsResponse(
           response as api
               .GoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMembershipsResponse);

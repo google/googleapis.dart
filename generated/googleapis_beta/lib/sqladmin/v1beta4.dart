@@ -3286,9 +3286,8 @@ class DatabaseInstance {
   /// for details.
   core.String? currentDiskSize;
 
-  /// The databaseInstalledVersion stores the current fully resolved database
-  /// version running on the instance including minor version such as
-  /// MYSQL_5_6_50
+  /// Stores the current database version running on the instance including
+  /// minor version such as **MYSQL_8_0_18**.
   ///
   /// Output only.
   core.String? databaseInstalledVersion;
@@ -3349,7 +3348,7 @@ class DatabaseInstance {
   ///
   /// This value could be different from the zone that was specified when the
   /// instance was created if the instance has failed over to its secondary
-  /// zone.
+  /// zone. WARNING: Changing this might restart the instance.
   core.String? gceZone;
 
   /// The instance type.
@@ -5064,7 +5063,7 @@ class IpConfiguration {
   /// using the IP.
   ///
   /// In 'CIDR' notation, also known as 'slash' notation (for example:
-  /// **192.168.100.0/24**).
+  /// **157.197.200.0/24**).
   core.List<AclEntry>? authorizedNetworks;
 
   /// Whether the instance is assigned a public IP address or not.
@@ -5184,6 +5183,8 @@ class IpMapping {
 class LocationPreference {
   /// The App Engine application to follow, it must be in the same region as the
   /// Cloud SQL instance.
+  ///
+  /// WARNING: Changing this might restart the instance.
   core.String? followGaeApplication;
 
   /// This is always **sql#locationPreference**.
@@ -5197,6 +5198,8 @@ class LocationPreference {
 
   /// The preferred Compute Engine zone (for example: us-central1-a,
   /// us-central1-b, etc.).
+  ///
+  /// WARNING: Changing this might restart the instance.
   core.String? zone;
 
   LocationPreference({
@@ -6140,7 +6143,8 @@ class Settings {
 
   /// Configuration specific to read replica instances.
   ///
-  /// Indicates whether replication is enabled or not.
+  /// Indicates whether replication is enabled or not. WARNING: Changing this
+  /// restarts the instance.
   core.bool? databaseReplicationEnabled;
 
   /// Deny maintenance periods
@@ -6223,6 +6227,8 @@ class Settings {
 
   /// The tier (or machine type) for this instance, for example
   /// **db-custom-1-3840**.
+  ///
+  /// WARNING: Changing this restarts the instance.
   core.String? tier;
 
   /// User-provided labels, represented as a dictionary where each label is a

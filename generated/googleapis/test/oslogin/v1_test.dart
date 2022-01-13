@@ -455,10 +455,10 @@ void main() {
     });
   });
 
-  unittest.group('resource-UsersSshPublicKeyResource', () {
+  unittest.group('resource-UsersSshPublicKeysResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res = api.CloudOSLoginApi(mock).users.sshPublicKey;
+      final res = api.CloudOSLoginApi(mock).users.sshPublicKeys;
       final arg_request = buildSshPublicKey();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
@@ -513,9 +513,7 @@ void main() {
           await res.create(arg_request, arg_parent, $fields: arg_$fields);
       checkSshPublicKey(response as api.SshPublicKey);
     });
-  });
 
-  unittest.group('resource-UsersSshPublicKeysResource', () {
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
       final res = api.CloudOSLoginApi(mock).users.sshPublicKeys;

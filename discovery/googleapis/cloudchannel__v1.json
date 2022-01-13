@@ -1587,7 +1587,7 @@
             }
         }
     },
-    "revision": "20211209",
+    "revision": "20220107",
     "rootUrl": "https://cloudchannel.googleapis.com/",
     "schemas": {
         "GoogleCloudChannelV1ActivateEntitlementRequest": {
@@ -1735,7 +1735,7 @@
                         "SUSPENDED"
                     ],
                     "enumDescriptions": [
-                        "The state is not specified.",
+                        "Not used.",
                         "An invitation has been sent to the reseller to create a channel partner link.",
                         "Status when the reseller is active.",
                         "Status when the reseller has been revoked by the distributor.",
@@ -1835,7 +1835,7 @@
                         "TEAM"
                     ],
                     "enumDescriptions": [
-                        "Default value. This state doesn't show unless an error occurs.",
+                        "Not used.",
                         "Domain-owning customer which needs domain verification to use services.",
                         "Team customer which needs email verification to use services."
                     ],
@@ -2022,7 +2022,7 @@
                             "TEAM"
                         ],
                         "enumDescriptions": [
-                            "Default value. This state doesn't show unless an error occurs.",
+                            "Not used.",
                             "Domain-owning customer which needs domain verification to use services.",
                             "Team customer which needs email verification to use services."
                         ],
@@ -2075,7 +2075,7 @@
                         "PRIMARY_DOMAIN_VERIFIED"
                     ],
                     "enumDescriptions": [
-                        "Default value. This state doesn't show unless an error occurs.",
+                        "Not used.",
                         "Primary domain for customer was changed.",
                         "Primary domain of the customer has been verified."
                     ],
@@ -2101,7 +2101,7 @@
                         "SIZE_10001_OR_MORE"
                     ],
                     "enumDescriptions": [
-                        "Default value. This state doesn't show unless an error occurs.",
+                        "Not used.",
                         "1 - 100",
                         "101 - 500",
                         "501 - 1,000",
@@ -2120,7 +2120,7 @@
                         "UNIVERSITY"
                     ],
                     "enumDescriptions": [
-                        "Default value. This state doesn't show unless an error occurs.",
+                        "Not used.",
                         "Elementary/Secondary Schools & Districts",
                         "Higher Education Universities & Colleges"
                     ],
@@ -2180,7 +2180,7 @@
                         "SUSPENDED"
                     ],
                     "enumDescriptions": [
-                        "Default value. This state doesn't show unless an error occurs.",
+                        "Not used.",
                         "The entitlement is currently active.",
                         "The entitlement is currently suspended."
                     ],
@@ -2203,7 +2203,7 @@
                             "OTHER"
                         ],
                         "enumDescriptions": [
-                            "Default value. This state doesn't show unless an error occurs.",
+                            "Not used.",
                             "Entitlement was manually suspended by the Reseller.",
                             "Trial ended.",
                             "Entitlement renewal was canceled.",
@@ -2255,7 +2255,7 @@
                         "LICENSE_CAP_CHANGED"
                     ],
                     "enumDescriptions": [
-                        "Default value. This state doesn't show unless an error occurs.",
+                        "Not used.",
                         "A new entitlement was created.",
                         "The offer type associated with an entitlement was changed. This is not triggered if an entitlement converts from a commit offer to a flexible offer as part of a renewal.",
                         "Annual commitment for a commit plan was changed.",
@@ -2690,7 +2690,7 @@
                         "PROVISION_CLOUD_IDENTITY"
                     ],
                     "enumDescriptions": [
-                        "Default value. This state doesn't show unless an error occurs.",
+                        "Not used.",
                         "Long Running Operation was triggered by CreateEntitlement.",
                         "Long Running Operation was triggered by ChangeRenewalSettings.",
                         "Long Running Operation was triggered by StartPaidService.",
@@ -3198,7 +3198,7 @@
                         "SKU_SUSPENDED"
                     ],
                     "enumDescriptions": [
-                        "Reason is not available.",
+                        "Not used.",
                         "Reseller needs to accept TOS before transferring the SKU.",
                         "Reseller not eligible to sell the SKU.",
                         "SKU subscription is suspended"
@@ -3433,7 +3433,7 @@
                         "PRIMARY_DOMAIN_VERIFIED"
                     ],
                     "enumDescriptions": [
-                        "Default value. This state doesn't show unless an error occurs.",
+                        "Not used.",
                         "Primary domain for customer was changed.",
                         "Primary domain of the customer has been verified."
                     ],
@@ -3511,7 +3511,7 @@
                         "SUSPENDED"
                     ],
                     "enumDescriptions": [
-                        "Default value. This state doesn't show unless an error occurs.",
+                        "Not used.",
                         "The entitlement is currently active.",
                         "The entitlement was canceled. After an entitlement is `CANCELED`, its status will not change. Deprecated: Canceled entitlements will no longer be visible.",
                         "The entitlement reached end of term and was not renewed. After an entitlement is `COMPLETE`, its status will not change. Deprecated: This is represented as ProvisioningState=SUSPENDED and suspensionReason in (TRIAL_ENDED, RENEWAL_WITH_TYPE_CANCEL)",
@@ -3537,7 +3537,7 @@
                             "OTHER"
                         ],
                         "enumDescriptions": [
-                            "Default value. This state doesn't show unless an error occurs.",
+                            "Not used.",
                             "Entitlement was manually suspended by the Reseller.",
                             "Trial ended.",
                             "Entitlement renewal was canceled.",
@@ -3589,7 +3589,7 @@
                         "LICENSE_CAP_CHANGED"
                     ],
                     "enumDescriptions": [
-                        "Default value. This state doesn't show unless an error occurs.",
+                        "Not used.",
                         "A new entitlement was created.",
                         "The offer type associated with an entitlement was changed. This is not triggered if an entitlement converts from a commit offer to a flexible offer as part of a renewal.",
                         "Annual commitment for a commit plan was changed.",
@@ -3632,7 +3632,7 @@
                         "PROVISION_CLOUD_IDENTITY"
                     ],
                     "enumDescriptions": [
-                        "Default value. This state doesn't show unless an error occurs.",
+                        "Not used.",
                         "Long Running Operation was triggered by CreateEntitlement.",
                         "Long Running Operation was triggered by ChangeQuantity.",
                         "Long Running Operation was triggered by ChangeRenewalSettings.",
@@ -3747,7 +3747,7 @@
                         "MONTHLY"
                     ],
                     "enumDescriptions": [
-                        "Default value. This state doesn't show unless an error occurs.",
+                        "Not used.",
                         "Paid in yearly installments.",
                         "Paid in monthly installments."
                     ],

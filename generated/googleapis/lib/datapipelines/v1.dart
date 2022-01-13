@@ -25,6 +25,7 @@
 /// - [ProjectsResource]
 ///   - [ProjectsLocationsResource]
 ///     - [ProjectsLocationsPipelinesResource]
+///       - [ProjectsLocationsPipelinesJobsResource]
 library datapipelines.v1;
 
 import 'dart:async' as async;
@@ -79,8 +80,8 @@ class ProjectsLocationsResource {
 
   /// Lists pipelines.
   ///
-  /// Returns a "NOT_FOUND" error if the list is empty. Returns a "FORBIDDEN"
-  /// error if the caller doesn't have permission to access it.
+  /// Returns a "FORBIDDEN" error if the caller doesn't have permission to
+  /// access it.
   ///
   /// Request parameters:
   ///
@@ -92,12 +93,10 @@ class ProjectsLocationsResource {
   /// unspecified, all pipelines will be returned. Multiple filters can be
   /// applied and must be comma separated. Fields eligible for filtering are: +
   /// `type`: The type of the pipeline (streaming or batch). Allowed values are
-  /// `ALL`, `BATCH`, and `STREAMING`. + `executor_type`: The type of pipeline
-  /// execution layer. This is always Dataflow for now, but more executors may
-  /// be added later. Allowed values are `ALL` and `DATAFLOW`. + `status`: The
-  /// activity status of the pipeline. Allowed values are `ALL`, `ACTIVE`,
-  /// `ARCHIVED`, and `PAUSED`. For example, to limit results to active batch
-  /// processing pipelines: type:BATCH,status:ACTIVE
+  /// `ALL`, `BATCH`, and `STREAMING`. + `status`: The activity status of the
+  /// pipeline. Allowed values are `ALL`, `ACTIVE`, `ARCHIVED`, and `PAUSED`.
+  /// For example, to limit results to active batch processing pipelines:
+  /// type:BATCH,status:ACTIVE
   ///
   /// [pageSize] - The maximum number of entities to return. The service may
   /// return fewer than this value, even if there are additional pages. If
@@ -147,6 +146,9 @@ class ProjectsLocationsResource {
 
 class ProjectsLocationsPipelinesResource {
   final commons.ApiRequester _requester;
+
+  ProjectsLocationsPipelinesJobsResource get jobs =>
+      ProjectsLocationsPipelinesJobsResource(_requester);
 
   ProjectsLocationsPipelinesResource(commons.ApiRequester client)
       : _requester = client;
@@ -245,7 +247,7 @@ class ProjectsLocationsPipelinesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The pipeeline name. For example:
+  /// [name] - Required. The pipeline name. For example:
   /// `projects/PROJECT_ID/locations/LOCATION_ID/pipelines/PIPELINE_ID`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/pipelines/\[^/\]+$`.
@@ -281,8 +283,8 @@ class ProjectsLocationsPipelinesResource {
 
   /// Updates a pipeline.
   ///
-  /// If successful, the updated \[Pipeline\] is returned. Returns `NOT_FOUND`
-  /// if the pipeline doesn't exist. If UpdatePipeline does not return
+  /// If successful, the updated Pipeline is returned. Returns `NOT_FOUND` if
+  /// the pipeline doesn't exist. If UpdatePipeline does not return
   /// successfully, you can retry the UpdatePipeline request until you receive a
   /// successful response.
   ///
@@ -294,11 +296,12 @@ class ProjectsLocationsPipelinesResource {
   /// `projects/PROJECT_ID/locations/LOCATION_ID/pipelines/PIPELINE_ID`. *
   /// `PROJECT_ID` can contain letters (\[A-Za-z\]), numbers (\[0-9\]), hyphens
   /// (-), colons (:), and periods (.). For more information, see
-  /// [Identifying projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects)
+  /// [Identifying projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects).
   /// * `LOCATION_ID` is the canonical ID for the pipeline's location. The list
-  /// of available locations can be obtained by calling ListLocations. Note that
-  /// the Data Pipelines service is not available in all regions. It depends on
-  /// Cloud Scheduler, an App Engine application, so it's only available in
+  /// of available locations can be obtained by calling
+  /// `google.cloud.location.Locations.ListLocations`. Note that the Data
+  /// Pipelines service is not available in all regions. It depends on Cloud
+  /// Scheduler, an App Engine application, so it's only available in
   /// [App Engine regions](https://cloud.google.com/about/locations#region). *
   /// `PIPELINE_ID` is the ID of the pipeline. Must be unique for the selected
   /// project and location.
@@ -346,7 +349,7 @@ class ProjectsLocationsPipelinesResource {
   /// You can use this method when the internal scheduler is not configured and
   /// you want to trigger the job directly or through an external system.
   /// Returns a "NOT_FOUND" error if the pipeline doesn't exist. Returns a
-  /// "FOBIDDEN" error if the user doesn't have permission to access the
+  /// "FORBIDDEN" error if the user doesn't have permission to access the
   /// pipeline or run jobs for the pipeline.
   ///
   /// [request] - The metadata request object.
@@ -394,7 +397,6 @@ class ProjectsLocationsPipelinesResource {
   ///
   /// If there's a corresponding scheduler entry, it's deleted, and the pipeline
   /// state is changed to "ARCHIVED". However, pipeline metadata is retained.
-  /// Upon success, the pipeline state is updated to ARCHIVED.
   ///
   /// [request] - The metadata request object.
   ///
@@ -434,6 +436,68 @@ class ProjectsLocationsPipelinesResource {
       queryParams: _queryParams,
     );
     return GoogleCloudDatapipelinesV1Pipeline.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsPipelinesJobsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsPipelinesJobsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Lists jobs for a given pipeline.
+  ///
+  /// Throws a "FORBIDDEN" error if the caller doesn't have permission to access
+  /// it.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The pipeline name. For example:
+  /// `projects/PROJECT_ID/locations/LOCATION_ID/pipelines/PIPELINE_ID`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/pipelines/\[^/\]+$`.
+  ///
+  /// [pageSize] - The maximum number of entities to return. The service may
+  /// return fewer than this value, even if there are additional pages. If
+  /// unspecified, the max limit will be determined by the backend
+  /// implementation.
+  ///
+  /// [pageToken] - A page token, received from a previous `ListJobs` call.
+  /// Provide this to retrieve the subsequent page. When paginating, all other
+  /// parameters provided to `ListJobs` must match the call that provided the
+  /// page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDatapipelinesV1ListJobsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDatapipelinesV1ListJobsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/jobs';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDatapipelinesV1ListJobsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
 }
@@ -1086,6 +1150,42 @@ class GoogleCloudDatapipelinesV1LaunchTemplateRequest {
       };
 }
 
+/// Response message for ListJobs
+class GoogleCloudDatapipelinesV1ListJobsResponse {
+  /// Results that were accessible to the caller.
+  ///
+  /// Results are always in descending order of job creation date.
+  core.List<GoogleCloudDatapipelinesV1Job>? jobs;
+
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  GoogleCloudDatapipelinesV1ListJobsResponse({
+    this.jobs,
+    this.nextPageToken,
+  });
+
+  GoogleCloudDatapipelinesV1ListJobsResponse.fromJson(core.Map _json)
+      : this(
+          jobs: _json.containsKey('jobs')
+              ? (_json['jobs'] as core.List)
+                  .map((value) => GoogleCloudDatapipelinesV1Job.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (jobs != null) 'jobs': jobs!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
 /// Response message for ListPipelines.
 class GoogleCloudDatapipelinesV1ListPipelinesResponse {
   /// A token, which can be sent as `page_token` to retrieve the next page.
@@ -1123,8 +1223,8 @@ class GoogleCloudDatapipelinesV1ListPipelinesResponse {
       };
 }
 
-/// The main pipeline entity and all the needed metadata to launch and manage
-/// linked jobs.
+/// The main pipeline entity and all the necessary metadata for launching and
+/// managing linked jobs.
 class GoogleCloudDatapipelinesV1Pipeline {
   /// The timestamp when the pipeline was initially created.
   ///
@@ -1159,11 +1259,12 @@ class GoogleCloudDatapipelinesV1Pipeline {
   /// `projects/PROJECT_ID/locations/LOCATION_ID/pipelines/PIPELINE_ID`. *
   /// `PROJECT_ID` can contain letters (\[A-Za-z\]), numbers (\[0-9\]), hyphens
   /// (-), colons (:), and periods (.). For more information, see
-  /// [Identifying projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects)
+  /// [Identifying projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects).
   /// * `LOCATION_ID` is the canonical ID for the pipeline's location. The list
-  /// of available locations can be obtained by calling ListLocations. Note that
-  /// the Data Pipelines service is not available in all regions. It depends on
-  /// Cloud Scheduler, an App Engine application, so it's only available in
+  /// of available locations can be obtained by calling
+  /// `google.cloud.location.Locations.ListLocations`. Note that the Data
+  /// Pipelines service is not available in all regions. It depends on Cloud
+  /// Scheduler, an App Engine application, so it's only available in
   /// [App Engine regions](https://cloud.google.com/about/locations#region). *
   /// `PIPELINE_ID` is the ID of the pipeline. Must be unique for the selected
   /// project and location.

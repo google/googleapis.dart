@@ -436,6 +436,8 @@ Creates and runs virtual machines on Google Cloud Platform.
 
 #### Connectors API - `connectors.v1`
 
+Enables users to create and manage connections to Google Cloud services and third-party business applications using the Connectors interface.
+
 - [Documentation](https://cloud.google.com/apigee/docs/api-platform/connectors/about-connectors)
 - [API details](https://pub.dev/documentation/googleapis/8.0.0-dev/connectors.v1/connectors.v1-library.html)
 
@@ -955,6 +957,13 @@ The My Business Place Actions API provides an interface for managing place actio
 - [Documentation](https://developers.google.com/my-business/)
 - [API details](https://pub.dev/documentation/googleapis/8.0.0-dev/mybusinessplaceactions.v1/mybusinessplaceactions.v1-library.html)
 
+#### My Business Q&A API - `mybusinessqanda.v1`
+
+The My Business Q&A API allows questions and answers to be posted for specific listings.
+
+- [Documentation](https://developers.google.com/my-business/)
+- [API details](https://pub.dev/documentation/googleapis/8.0.0-dev/mybusinessqanda.v1/mybusinessqanda.v1-library.html)
+
 #### My Business Verifications API - `mybusinessverifications.v1`
 
 The My Business Verifications API provides an interface for taking verifications related actions for locations.
@@ -1141,6 +1150,13 @@ Deploy and manage user provided container images that scale automatically based 
 
 - [Documentation](https://cloud.google.com/run/)
 - [API details](https://pub.dev/documentation/googleapis/8.0.0-dev/run.v1/run.v1-library.html)
+
+#### Cloud Run Admin API - `run.v2`
+
+Deploy and manage user provided container images that scale automatically based on incoming requests. The Cloud Run Admin API follows the Knative Serving API specification.
+
+- [Documentation](https://cloud.google.com/run/)
+- [API details](https://pub.dev/documentation/googleapis/8.0.0-dev/run.v2/run.v2-library.html)
 
 #### Cloud Runtime Configuration API - `runtimeconfig.v1`
 
@@ -1356,6 +1372,13 @@ TPU API provides customers with access to Google TPU technology.
 
 - [Documentation](https://cloud.google.com/traffic-director)
 - [API details](https://pub.dev/documentation/googleapis/8.0.0-dev/trafficdirector.v2/trafficdirector.v2-library.html)
+
+#### Transcoder API - `transcoder.v1`
+
+This API converts video files into formats suitable for consumer distribution. 
+
+- [Documentation](https://cloud.google.com/transcoder/docs/)
+- [API details](https://pub.dev/documentation/googleapis/8.0.0-dev/transcoder.v1/transcoder.v1-library.html)
 
 #### Cloud Translation API - `translate.v3`
 

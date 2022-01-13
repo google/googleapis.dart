@@ -1681,6 +1681,28 @@ void checkListSpacesResponse(api.ListSpacesResponse o) {
   buildCounterListSpacesResponse--;
 }
 
+core.int buildCounterMatchedUrl = 0;
+api.MatchedUrl buildMatchedUrl() {
+  final o = api.MatchedUrl();
+  buildCounterMatchedUrl++;
+  if (buildCounterMatchedUrl < 3) {
+    o.url = 'foo';
+  }
+  buildCounterMatchedUrl--;
+  return o;
+}
+
+void checkMatchedUrl(api.MatchedUrl o) {
+  buildCounterMatchedUrl++;
+  if (buildCounterMatchedUrl < 3) {
+    unittest.expect(
+      o.url!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterMatchedUrl--;
+}
+
 core.int buildCounterMedia = 0;
 api.Media buildMedia() {
   final o = api.Media();
@@ -1783,6 +1805,7 @@ api.Message buildMessage() {
     o.createTime = 'foo';
     o.fallbackText = 'foo';
     o.lastUpdateTime = 'foo';
+    o.matchedUrl = buildMatchedUrl();
     o.name = 'foo';
     o.previewText = 'foo';
     o.sender = buildUser();
@@ -1818,6 +1841,7 @@ void checkMessage(api.Message o) {
       o.lastUpdateTime!,
       unittest.equals('foo'),
     );
+    checkMatchedUrl(o.matchedUrl!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -2675,6 +2699,16 @@ void main() {
       final od = api.ListSpacesResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkListSpacesResponse(od);
+    });
+  });
+
+  unittest.group('obj-schema-MatchedUrl', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildMatchedUrl();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.MatchedUrl.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkMatchedUrl(od);
     });
   });
 

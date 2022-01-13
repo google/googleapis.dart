@@ -969,6 +969,7 @@ api.RoutingVPC buildRoutingVPC() {
   final o = api.RoutingVPC();
   buildCounterRoutingVPC++;
   if (buildCounterRoutingVPC < 3) {
+    o.requiredForNewSiteToSiteDataTransferSpokes = true;
     o.uri = 'foo';
   }
   buildCounterRoutingVPC--;
@@ -978,6 +979,8 @@ api.RoutingVPC buildRoutingVPC() {
 void checkRoutingVPC(api.RoutingVPC o) {
   buildCounterRoutingVPC++;
   if (buildCounterRoutingVPC < 3) {
+    unittest.expect(
+        o.requiredForNewSiteToSiteDataTransferSpokes!, unittest.isTrue);
     unittest.expect(
       o.uri!,
       unittest.equals('foo'),

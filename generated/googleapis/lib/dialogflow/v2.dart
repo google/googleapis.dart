@@ -2765,6 +2765,20 @@ class ProjectsAgentKnowledgeBasesResource {
   /// `projects//locations/`.
   /// Value must have pattern `^projects/\[^/\]+/agent$`.
   ///
+  /// [filter] - The filter expression used to filter knowledge bases returned
+  /// by the list method. The expression has the following syntax: \[AND \] ...
+  /// The following fields and operators are supported: * display_name with
+  /// has(:) operator * language_code with equals(=) operator Examples: *
+  /// 'language_code=en-us' matches knowledge bases with en-us language code. *
+  /// 'display_name:articles' matches knowledge bases whose display name
+  /// contains "articles". * 'display_name:"Best Articles"' matches knowledge
+  /// bases whose display name contains "Best Articles". * 'language_code=en-gb
+  /// AND display_name=articles' matches all knowledge bases whose display name
+  /// contains "articles" and whose language code is "en-gb". Note: An empty
+  /// filter string (i.e. "") is a no-op and will result in no filtering. For
+  /// more information about filtering, see
+  /// [API Filtering](https://aip.dev/160).
+  ///
   /// [pageSize] - The maximum number of items to return in a single page. By
   /// default 10 and at most 100.
   ///
@@ -2783,11 +2797,13 @@ class ProjectsAgentKnowledgeBasesResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudDialogflowV2ListKnowledgeBasesResponse> list(
     core.String parent, {
+    core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
@@ -2996,6 +3012,17 @@ class ProjectsAgentKnowledgeBasesDocumentsResource {
   /// `projects//locations//knowledgeBases/`.
   /// Value must have pattern `^projects/\[^/\]+/agent/knowledgeBases/\[^/\]+$`.
   ///
+  /// [filter] - The filter expression used to filter documents returned by the
+  /// list method. The expression has the following syntax: \[AND \] ... The
+  /// following fields and operators are supported: * knowledge_types with
+  /// has(:) operator * display_name with has(:) operator * state with equals(=)
+  /// operator Examples: * "knowledge_types:FAQ" matches documents with FAQ
+  /// knowledge type. * "display_name:customer" matches documents whose display
+  /// name contains "customer". * "state=ACTIVE" matches documents with ACTIVE
+  /// state. * "knowledge_types:FAQ AND state=ACTIVE" matches all active FAQ
+  /// documents. For more information about filtering, see
+  /// [API Filtering](https://aip.dev/160).
+  ///
   /// [pageSize] - The maximum number of items to return in a single page. By
   /// default 10 and at most 100.
   ///
@@ -3014,11 +3041,13 @@ class ProjectsAgentKnowledgeBasesDocumentsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudDialogflowV2ListDocumentsResponse> list(
     core.String parent, {
+    core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
@@ -4936,6 +4965,53 @@ class ProjectsConversationsParticipantsSuggestionsResource {
     return GoogleCloudDialogflowV2SuggestFaqAnswersResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
+
+  /// Gets smart replies for a participant based on specific historical
+  /// messages.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The name of the participant to fetch suggestion for.
+  /// Format: `projects//locations//conversations//participants/`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/conversations/\[^/\]+/participants/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2SuggestSmartRepliesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2SuggestSmartRepliesResponse>
+      suggestSmartReplies(
+    GoogleCloudDialogflowV2SuggestSmartRepliesRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' +
+        core.Uri.encodeFull('$parent') +
+        '/suggestions:suggestSmartReplies';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDialogflowV2SuggestSmartRepliesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class ProjectsKnowledgeBasesResource {
@@ -5076,6 +5152,20 @@ class ProjectsKnowledgeBasesResource {
   /// `projects//locations/`.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
+  /// [filter] - The filter expression used to filter knowledge bases returned
+  /// by the list method. The expression has the following syntax: \[AND \] ...
+  /// The following fields and operators are supported: * display_name with
+  /// has(:) operator * language_code with equals(=) operator Examples: *
+  /// 'language_code=en-us' matches knowledge bases with en-us language code. *
+  /// 'display_name:articles' matches knowledge bases whose display name
+  /// contains "articles". * 'display_name:"Best Articles"' matches knowledge
+  /// bases whose display name contains "Best Articles". * 'language_code=en-gb
+  /// AND display_name=articles' matches all knowledge bases whose display name
+  /// contains "articles" and whose language code is "en-gb". Note: An empty
+  /// filter string (i.e. "") is a no-op and will result in no filtering. For
+  /// more information about filtering, see
+  /// [API Filtering](https://aip.dev/160).
+  ///
   /// [pageSize] - The maximum number of items to return in a single page. By
   /// default 10 and at most 100.
   ///
@@ -5094,11 +5184,13 @@ class ProjectsKnowledgeBasesResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudDialogflowV2ListKnowledgeBasesResponse> list(
     core.String parent, {
+    core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
@@ -5261,6 +5353,55 @@ class ProjectsKnowledgeBasesDocumentsResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
+  /// Exports a smart messaging candidate document into the specified
+  /// destination.
+  ///
+  /// This method is a \[long-running
+  /// operation\](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation).
+  /// The returned `Operation` type has the following method-specific fields: -
+  /// `metadata`: KnowledgeOperationMetadata - `response`: Document
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the document to export. Format:
+  /// `projects//locations//knowledgeBases//documents/`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/knowledgeBases/\[^/\]+/documents/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> export(
+    GoogleCloudDialogflowV2ExportDocumentRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name') + ':export';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
   /// Retrieves the specified document.
   ///
   /// Request parameters:
@@ -5307,6 +5448,17 @@ class ProjectsKnowledgeBasesDocumentsResource {
   /// `projects//locations//knowledgeBases/`.
   /// Value must have pattern `^projects/\[^/\]+/knowledgeBases/\[^/\]+$`.
   ///
+  /// [filter] - The filter expression used to filter documents returned by the
+  /// list method. The expression has the following syntax: \[AND \] ... The
+  /// following fields and operators are supported: * knowledge_types with
+  /// has(:) operator * display_name with has(:) operator * state with equals(=)
+  /// operator Examples: * "knowledge_types:FAQ" matches documents with FAQ
+  /// knowledge type. * "display_name:customer" matches documents whose display
+  /// name contains "customer". * "state=ACTIVE" matches documents with ACTIVE
+  /// state. * "knowledge_types:FAQ AND state=ACTIVE" matches all active FAQ
+  /// documents. For more information about filtering, see
+  /// [API Filtering](https://aip.dev/160).
+  ///
   /// [pageSize] - The maximum number of items to return in a single page. By
   /// default 10 and at most 100.
   ///
@@ -5325,11 +5477,13 @@ class ProjectsKnowledgeBasesDocumentsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudDialogflowV2ListDocumentsResponse> list(
     core.String parent, {
+    core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
@@ -9893,6 +10047,53 @@ class ProjectsLocationsConversationsParticipantsSuggestionsResource {
     return GoogleCloudDialogflowV2SuggestFaqAnswersResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
+
+  /// Gets smart replies for a participant based on specific historical
+  /// messages.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The name of the participant to fetch suggestion for.
+  /// Format: `projects//locations//conversations//participants/`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/conversations/\[^/\]+/participants/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2SuggestSmartRepliesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2SuggestSmartRepliesResponse>
+      suggestSmartReplies(
+    GoogleCloudDialogflowV2SuggestSmartRepliesRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' +
+        core.Uri.encodeFull('$parent') +
+        '/suggestions:suggestSmartReplies';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDialogflowV2SuggestSmartRepliesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class ProjectsLocationsKnowledgeBasesResource {
@@ -10035,6 +10236,20 @@ class ProjectsLocationsKnowledgeBasesResource {
   /// `projects//locations/`.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
+  /// [filter] - The filter expression used to filter knowledge bases returned
+  /// by the list method. The expression has the following syntax: \[AND \] ...
+  /// The following fields and operators are supported: * display_name with
+  /// has(:) operator * language_code with equals(=) operator Examples: *
+  /// 'language_code=en-us' matches knowledge bases with en-us language code. *
+  /// 'display_name:articles' matches knowledge bases whose display name
+  /// contains "articles". * 'display_name:"Best Articles"' matches knowledge
+  /// bases whose display name contains "Best Articles". * 'language_code=en-gb
+  /// AND display_name=articles' matches all knowledge bases whose display name
+  /// contains "articles" and whose language code is "en-gb". Note: An empty
+  /// filter string (i.e. "") is a no-op and will result in no filtering. For
+  /// more information about filtering, see
+  /// [API Filtering](https://aip.dev/160).
+  ///
   /// [pageSize] - The maximum number of items to return in a single page. By
   /// default 10 and at most 100.
   ///
@@ -10053,11 +10268,13 @@ class ProjectsLocationsKnowledgeBasesResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudDialogflowV2ListKnowledgeBasesResponse> list(
     core.String parent, {
+    core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
@@ -10222,6 +10439,55 @@ class ProjectsLocationsKnowledgeBasesDocumentsResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
+  /// Exports a smart messaging candidate document into the specified
+  /// destination.
+  ///
+  /// This method is a \[long-running
+  /// operation\](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation).
+  /// The returned `Operation` type has the following method-specific fields: -
+  /// `metadata`: KnowledgeOperationMetadata - `response`: Document
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the document to export. Format:
+  /// `projects//locations//knowledgeBases//documents/`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/knowledgeBases/\[^/\]+/documents/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> export(
+    GoogleCloudDialogflowV2ExportDocumentRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name') + ':export';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
   /// Retrieves the specified document.
   ///
   /// Request parameters:
@@ -10269,6 +10535,17 @@ class ProjectsLocationsKnowledgeBasesDocumentsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/knowledgeBases/\[^/\]+$`.
   ///
+  /// [filter] - The filter expression used to filter documents returned by the
+  /// list method. The expression has the following syntax: \[AND \] ... The
+  /// following fields and operators are supported: * knowledge_types with
+  /// has(:) operator * display_name with has(:) operator * state with equals(=)
+  /// operator Examples: * "knowledge_types:FAQ" matches documents with FAQ
+  /// knowledge type. * "display_name:customer" matches documents whose display
+  /// name contains "customer". * "state=ACTIVE" matches documents with ACTIVE
+  /// state. * "knowledge_types:FAQ AND state=ACTIVE" matches all active FAQ
+  /// documents. For more information about filtering, see
+  /// [API Filtering](https://aip.dev/160).
+  ///
   /// [pageSize] - The maximum number of items to return in a single page. By
   /// default 10 and at most 100.
   ///
@@ -10287,11 +10564,13 @@ class ProjectsLocationsKnowledgeBasesDocumentsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudDialogflowV2ListDocumentsResponse> list(
     core.String parent, {
+    core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
@@ -13122,6 +13401,49 @@ class GoogleCloudDialogflowV2ExportAgentRequest {
       };
 }
 
+/// Request message for Documents.ExportDocument.
+class GoogleCloudDialogflowV2ExportDocumentRequest {
+  /// When enabled, export the full content of the document including empirical
+  /// probability.
+  core.bool? exportFullContent;
+
+  /// Cloud Storage file path to export the document.
+  GoogleCloudDialogflowV2GcsDestination? gcsDestination;
+
+  /// When enabled, export the smart messaging allowlist document for partial
+  /// update.
+  core.bool? smartMessagingPartialUpdate;
+
+  GoogleCloudDialogflowV2ExportDocumentRequest({
+    this.exportFullContent,
+    this.gcsDestination,
+    this.smartMessagingPartialUpdate,
+  });
+
+  GoogleCloudDialogflowV2ExportDocumentRequest.fromJson(core.Map _json)
+      : this(
+          exportFullContent: _json.containsKey('exportFullContent')
+              ? _json['exportFullContent'] as core.bool
+              : null,
+          gcsDestination: _json.containsKey('gcsDestination')
+              ? GoogleCloudDialogflowV2GcsDestination.fromJson(
+                  _json['gcsDestination']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          smartMessagingPartialUpdate:
+              _json.containsKey('smartMessagingPartialUpdate')
+                  ? _json['smartMessagingPartialUpdate'] as core.bool
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (exportFullContent != null) 'exportFullContent': exportFullContent!,
+        if (gcsDestination != null) 'gcsDestination': gcsDestination!,
+        if (smartMessagingPartialUpdate != null)
+          'smartMessagingPartialUpdate': smartMessagingPartialUpdate!,
+      };
+}
+
 /// Represents answer from "frequently asked questions".
 class GoogleCloudDialogflowV2FaqAnswer {
   /// The piece of text from the `source` knowledge base document.
@@ -13373,6 +13695,29 @@ class GoogleCloudDialogflowV2FulfillmentGenericWebService {
       };
 }
 
+/// Google Cloud Storage location for the output.
+class GoogleCloudDialogflowV2GcsDestination {
+  /// The Google Cloud Storage URIs for the output.
+  ///
+  /// A URI is of the form: gs://bucket/object-prefix-or-name Whether a prefix
+  /// or name is used depends on the use case. The requesting user must have
+  /// "write-permission" to the bucket.
+  core.String? uri;
+
+  GoogleCloudDialogflowV2GcsDestination({
+    this.uri,
+  });
+
+  GoogleCloudDialogflowV2GcsDestination.fromJson(core.Map _json)
+      : this(
+          uri: _json.containsKey('uri') ? _json['uri'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (uri != null) 'uri': uri!,
+      };
+}
+
 /// Defines the Human Agent Assist to connect to a conversation.
 class GoogleCloudDialogflowV2HumanAgentAssistantConfig {
   /// Configuration for agent assistance of end user participant.
@@ -13459,6 +13804,30 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfig {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (model != null) 'model': model!,
+      };
+}
+
+/// Config to process conversation.
+class GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationProcessConfig {
+  /// Number of recent non-small-talk sentences to use as context for article
+  /// and FAQ suggestion
+  core.int? recentSentencesCount;
+
+  GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationProcessConfig({
+    this.recentSentencesCount,
+  });
+
+  GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationProcessConfig.fromJson(
+      core.Map _json)
+      : this(
+          recentSentencesCount: _json.containsKey('recentSentencesCount')
+              ? _json['recentSentencesCount'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (recentSentencesCount != null)
+          'recentSentencesCount': recentSentencesCount!,
       };
 }
 
@@ -13568,6 +13937,10 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfig {
   GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfig?
       conversationModelConfig;
 
+  /// Configs for processing conversation.
+  GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationProcessConfig?
+      conversationProcessConfig;
+
   /// Automatically iterates all participants and tries to compile suggestions.
   ///
   /// Supported features: ARTICLE_SUGGESTION, FAQ, DIALOGFLOW_ASSIST.
@@ -13588,6 +13961,7 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfig {
 
   GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfig({
     this.conversationModelConfig,
+    this.conversationProcessConfig,
     this.enableEventBasedSuggestion,
     this.queryConfig,
     this.suggestionFeature,
@@ -13600,6 +13974,12 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfig {
           conversationModelConfig: _json.containsKey('conversationModelConfig')
               ? GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfig
                   .fromJson(_json['conversationModelConfig']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          conversationProcessConfig: _json
+                  .containsKey('conversationProcessConfig')
+              ? GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationProcessConfig
+                  .fromJson(_json['conversationProcessConfig']
                       as core.Map<core.String, core.dynamic>)
               : null,
           enableEventBasedSuggestion:
@@ -13627,6 +14007,8 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfig {
   core.Map<core.String, core.dynamic> toJson() => {
         if (conversationModelConfig != null)
           'conversationModelConfig': conversationModelConfig!,
+        if (conversationProcessConfig != null)
+          'conversationProcessConfig': conversationProcessConfig!,
         if (enableEventBasedSuggestion != null)
           'enableEventBasedSuggestion': enableEventBasedSuggestion!,
         if (queryConfig != null) 'queryConfig': queryConfig!,
@@ -16755,7 +17137,7 @@ class GoogleCloudDialogflowV2Message {
   /// Required.
   core.String? content;
 
-  /// The time when the message was created.
+  /// The time when the message was created in Contact Center AI.
   ///
   /// Output only.
   core.String? createTime;
@@ -16776,6 +17158,8 @@ class GoogleCloudDialogflowV2Message {
   /// The unique identifier of the message.
   ///
   /// Format: `projects//locations//conversations//messages/`.
+  ///
+  /// Optional.
   core.String? name;
 
   /// The participant that sends this message.
@@ -16795,6 +17179,16 @@ class GoogleCloudDialogflowV2Message {
   /// Dialogflow services.
   core.String? participantRole;
 
+  /// The time when the message was sent.
+  ///
+  /// Optional.
+  core.String? sendTime;
+
+  /// The sentiment analysis result for the message.
+  ///
+  /// Output only.
+  GoogleCloudDialogflowV2SentimentAnalysisResult? sentimentAnalysis;
+
   GoogleCloudDialogflowV2Message({
     this.content,
     this.createTime,
@@ -16803,6 +17197,8 @@ class GoogleCloudDialogflowV2Message {
     this.name,
     this.participant,
     this.participantRole,
+    this.sendTime,
+    this.sentimentAnalysis,
   });
 
   GoogleCloudDialogflowV2Message.fromJson(core.Map _json)
@@ -16828,6 +17224,14 @@ class GoogleCloudDialogflowV2Message {
           participantRole: _json.containsKey('participantRole')
               ? _json['participantRole'] as core.String
               : null,
+          sendTime: _json.containsKey('sendTime')
+              ? _json['sendTime'] as core.String
+              : null,
+          sentimentAnalysis: _json.containsKey('sentimentAnalysis')
+              ? GoogleCloudDialogflowV2SentimentAnalysisResult.fromJson(
+                  _json['sentimentAnalysis']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -16838,6 +17242,8 @@ class GoogleCloudDialogflowV2Message {
         if (name != null) 'name': name!,
         if (participant != null) 'participant': participant!,
         if (participantRole != null) 'participantRole': participantRole!,
+        if (sendTime != null) 'sendTime': sendTime!,
+        if (sentimentAnalysis != null) 'sentimentAnalysis': sentimentAnalysis!,
       };
 }
 
@@ -17502,8 +17908,23 @@ class GoogleCloudDialogflowV2ReloadDocumentRequest {
   /// Optional.
   core.String? contentUri;
 
+  /// Whether to import custom metadata from Google Cloud Storage.
+  ///
+  /// Only valid when the document source is Google Cloud Storage URI.
+  ///
+  /// Optional.
+  core.bool? importGcsCustomMetadata;
+
+  /// When enabled, the reload request is to apply partial update to the smart
+  /// messaging allowlist.
+  ///
+  /// Optional.
+  core.bool? smartMessagingPartialUpdate;
+
   GoogleCloudDialogflowV2ReloadDocumentRequest({
     this.contentUri,
+    this.importGcsCustomMetadata,
+    this.smartMessagingPartialUpdate,
   });
 
   GoogleCloudDialogflowV2ReloadDocumentRequest.fromJson(core.Map _json)
@@ -17511,10 +17932,21 @@ class GoogleCloudDialogflowV2ReloadDocumentRequest {
           contentUri: _json.containsKey('contentUri')
               ? _json['contentUri'] as core.String
               : null,
+          importGcsCustomMetadata: _json.containsKey('importGcsCustomMetadata')
+              ? _json['importGcsCustomMetadata'] as core.bool
+              : null,
+          smartMessagingPartialUpdate:
+              _json.containsKey('smartMessagingPartialUpdate')
+                  ? _json['smartMessagingPartialUpdate'] as core.bool
+                  : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (contentUri != null) 'contentUri': contentUri!,
+        if (importGcsCustomMetadata != null)
+          'importGcsCustomMetadata': importGcsCustomMetadata!,
+        if (smartMessagingPartialUpdate != null)
+          'smartMessagingPartialUpdate': smartMessagingPartialUpdate!,
       };
 }
 
@@ -17729,6 +18161,47 @@ class GoogleCloudDialogflowV2SessionEntityType {
       };
 }
 
+/// Represents a smart reply answer.
+class GoogleCloudDialogflowV2SmartReplyAnswer {
+  /// The name of answer record, in the format of
+  /// "projects//locations//answerRecords/"
+  core.String? answerRecord;
+
+  /// Smart reply confidence.
+  ///
+  /// The system's confidence score that this reply is a good match for this
+  /// conversation, as a value from 0.0 (completely uncertain) to 1.0
+  /// (completely certain).
+  core.double? confidence;
+
+  /// The content of the reply.
+  core.String? reply;
+
+  GoogleCloudDialogflowV2SmartReplyAnswer({
+    this.answerRecord,
+    this.confidence,
+    this.reply,
+  });
+
+  GoogleCloudDialogflowV2SmartReplyAnswer.fromJson(core.Map _json)
+      : this(
+          answerRecord: _json.containsKey('answerRecord')
+              ? _json['answerRecord'] as core.String
+              : null,
+          confidence: _json.containsKey('confidence')
+              ? (_json['confidence'] as core.num).toDouble()
+              : null,
+          reply:
+              _json.containsKey('reply') ? _json['reply'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (answerRecord != null) 'answerRecord': answerRecord!,
+        if (confidence != null) 'confidence': confidence!,
+        if (reply != null) 'reply': reply!,
+      };
+}
+
 /// Hints for the speech recognizer to help with recognition in a specific
 /// conversation state.
 class GoogleCloudDialogflowV2SpeechContext {
@@ -17834,12 +18307,16 @@ class GoogleCloudDialogflowV2SuggestArticlesRequest {
   /// context when compiling the suggestion.
   ///
   /// By default 20 and at most 50.
+  ///
+  /// Optional.
   core.int? contextSize;
 
   /// The name of the latest conversation message to compile suggestion for.
   ///
   /// If empty, it will be the latest message of the conversation. Format:
   /// `projects//locations//conversations//messages/`.
+  ///
+  /// Optional.
   core.String? latestMessage;
 
   GoogleCloudDialogflowV2SuggestArticlesRequest({
@@ -17926,12 +18403,16 @@ class GoogleCloudDialogflowV2SuggestFaqAnswersRequest {
   /// context when compiling the suggestion.
   ///
   /// By default 20 and at most 50.
+  ///
+  /// Optional.
   core.int? contextSize;
 
   /// The name of the latest conversation message to compile suggestion for.
   ///
   /// If empty, it will be the latest message of the conversation. Format:
   /// `projects//locations//conversations//messages/`.
+  ///
+  /// Optional.
   core.String? latestMessage;
 
   GoogleCloudDialogflowV2SuggestFaqAnswersRequest({
@@ -18009,6 +18490,107 @@ class GoogleCloudDialogflowV2SuggestFaqAnswersResponse {
       };
 }
 
+/// The request message for Participants.SuggestSmartReplies.
+class GoogleCloudDialogflowV2SuggestSmartRepliesRequest {
+  /// Max number of messages prior to and including \[latest_message\] to use as
+  /// context when compiling the suggestion.
+  ///
+  /// By default 20 and at most 50.
+  core.int? contextSize;
+
+  /// The current natural language text segment to compile suggestion for.
+  ///
+  /// This provides a way for user to get follow up smart reply suggestion after
+  /// a smart reply selection, without sending a text message.
+  GoogleCloudDialogflowV2TextInput? currentTextInput;
+
+  /// The name of the latest conversation message to compile suggestion for.
+  ///
+  /// If empty, it will be the latest message of the conversation. Format:
+  /// `projects//locations//conversations//messages/`.
+  core.String? latestMessage;
+
+  GoogleCloudDialogflowV2SuggestSmartRepliesRequest({
+    this.contextSize,
+    this.currentTextInput,
+    this.latestMessage,
+  });
+
+  GoogleCloudDialogflowV2SuggestSmartRepliesRequest.fromJson(core.Map _json)
+      : this(
+          contextSize: _json.containsKey('contextSize')
+              ? _json['contextSize'] as core.int
+              : null,
+          currentTextInput: _json.containsKey('currentTextInput')
+              ? GoogleCloudDialogflowV2TextInput.fromJson(
+                  _json['currentTextInput']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          latestMessage: _json.containsKey('latestMessage')
+              ? _json['latestMessage'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (contextSize != null) 'contextSize': contextSize!,
+        if (currentTextInput != null) 'currentTextInput': currentTextInput!,
+        if (latestMessage != null) 'latestMessage': latestMessage!,
+      };
+}
+
+/// The response message for Participants.SuggestSmartReplies.
+class GoogleCloudDialogflowV2SuggestSmartRepliesResponse {
+  /// Number of messages prior to and including latest_message to compile the
+  /// suggestion.
+  ///
+  /// It may be smaller than the SuggestSmartRepliesRequest.context_size field
+  /// in the request if there aren't that many messages in the conversation.
+  core.int? contextSize;
+
+  /// The name of the latest conversation message used to compile suggestion
+  /// for.
+  ///
+  /// Format: `projects//locations//conversations//messages/`.
+  core.String? latestMessage;
+
+  /// Multiple reply options provided by smart reply service.
+  ///
+  /// The order is based on the rank of the model prediction. The maximum number
+  /// of the returned replies is set in SmartReplyConfig.
+  ///
+  /// Output only.
+  core.List<GoogleCloudDialogflowV2SmartReplyAnswer>? smartReplyAnswers;
+
+  GoogleCloudDialogflowV2SuggestSmartRepliesResponse({
+    this.contextSize,
+    this.latestMessage,
+    this.smartReplyAnswers,
+  });
+
+  GoogleCloudDialogflowV2SuggestSmartRepliesResponse.fromJson(core.Map _json)
+      : this(
+          contextSize: _json.containsKey('contextSize')
+              ? _json['contextSize'] as core.int
+              : null,
+          latestMessage: _json.containsKey('latestMessage')
+              ? _json['latestMessage'] as core.String
+              : null,
+          smartReplyAnswers: _json.containsKey('smartReplyAnswers')
+              ? (_json['smartReplyAnswers'] as core.List)
+                  .map((value) =>
+                      GoogleCloudDialogflowV2SmartReplyAnswer.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (contextSize != null) 'contextSize': contextSize!,
+        if (latestMessage != null) 'latestMessage': latestMessage!,
+        if (smartReplyAnswers != null) 'smartReplyAnswers': smartReplyAnswers!,
+      };
+}
+
 /// The type of Human Agent Assistant API suggestion to perform, and the maximum
 /// number of results to return for that type.
 ///
@@ -18049,10 +18631,15 @@ class GoogleCloudDialogflowV2SuggestionResult {
   /// SuggestFaqAnswersResponse if request is for FAQ_ANSWER.
   GoogleCloudDialogflowV2SuggestFaqAnswersResponse? suggestFaqAnswersResponse;
 
+  /// SuggestSmartRepliesResponse if request is for SMART_REPLY.
+  GoogleCloudDialogflowV2SuggestSmartRepliesResponse?
+      suggestSmartRepliesResponse;
+
   GoogleCloudDialogflowV2SuggestionResult({
     this.error,
     this.suggestArticlesResponse,
     this.suggestFaqAnswersResponse,
+    this.suggestSmartRepliesResponse,
   });
 
   GoogleCloudDialogflowV2SuggestionResult.fromJson(core.Map _json)
@@ -18072,6 +18659,12 @@ class GoogleCloudDialogflowV2SuggestionResult {
                       _json['suggestFaqAnswersResponse']
                           as core.Map<core.String, core.dynamic>)
                   : null,
+          suggestSmartRepliesResponse:
+              _json.containsKey('suggestSmartRepliesResponse')
+                  ? GoogleCloudDialogflowV2SuggestSmartRepliesResponse.fromJson(
+                      _json['suggestSmartRepliesResponse']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -18080,6 +18673,8 @@ class GoogleCloudDialogflowV2SuggestionResult {
           'suggestArticlesResponse': suggestArticlesResponse!,
         if (suggestFaqAnswersResponse != null)
           'suggestFaqAnswersResponse': suggestFaqAnswersResponse!,
+        if (suggestSmartRepliesResponse != null)
+          'suggestSmartRepliesResponse': suggestSmartRepliesResponse!,
       };
 }
 

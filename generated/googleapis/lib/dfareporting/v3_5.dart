@@ -13613,6 +13613,9 @@ class Conversion {
   core.bool? childDirectedTreatment;
 
   /// Custom floodlight variables.
+  ///
+  /// This field may only be used when calling batchinsert; it is not supported
+  /// by batchupdate.
   core.List<CustomFloodlightVariable>? customVariables;
 
   /// The display click ID.
@@ -16668,6 +16671,9 @@ class CrossDimensionReachReportCompatibleFields {
 }
 
 /// A custom floodlight variable.
+///
+/// This field may only be used when calling batchinsert; it is not supported by
+/// batchupdate.
 typedef CustomFloodlightVariable = $CustomFloodlightVariable;
 
 /// Represents a Custom Rich Media Events group.
@@ -19388,6 +19394,7 @@ class MeasurementPartnerWrappingData {
   /// - "MONITORING_ONLY"
   /// - "VIDEO_PIXEL_MONITORING"
   /// - "TRACKING"
+  /// - "NON_VPAID_MONITORING"
   core.String? tagWrappingMode;
 
   /// Tag provided by the measurement partner during wrapping.

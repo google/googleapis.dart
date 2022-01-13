@@ -651,7 +651,7 @@ class LocationsResource {
   ///
   /// If this location cannot be deleted using the API and it is marked so in
   /// the `google.mybusiness.businessinformation.v1.LocationState`, use the
-  /// [Google My Business](https://business.google.com/manage/) website.
+  /// [Google Business Profile](https://business.google.com/manage/) website.
   ///
   /// Request parameters:
   ///
@@ -1882,8 +1882,8 @@ class Location {
   /// When creating a location, this field is ignored if the provided address
   /// geocodes successfully. This field is only returned on get requests if the
   /// user-provided `latlng` value was accepted during create, or the `latlng`
-  /// value was updated through the Google My Business website. This field can
-  /// only be updated by approved clients.
+  /// value was updated through the Google Business Profile website. This field
+  /// can only be updated by approved clients.
   ///
   /// Optional.
   LatLng? latlng;

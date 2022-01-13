@@ -1099,7 +1099,9 @@ class ProjectsLocationsEntryGroupsEntriesTagsResource {
     return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Lists the tags on an Entry.
+  /// Lists tags assigned to an Entry.
+  ///
+  /// The columns in the response are lowercased.
   ///
   /// Request parameters:
   ///
@@ -1299,7 +1301,9 @@ class ProjectsLocationsEntryGroupsTagsResource {
     return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Lists the tags on an Entry.
+  /// Lists tags assigned to an Entry.
+  ///
+  /// The columns in the response are lowercased.
   ///
   /// Request parameters:
   ///
@@ -5028,7 +5032,7 @@ class GoogleCloudDatacatalogV1beta1UsageSignal {
 /// Detailed counts on the entry's usage.
 ///
 /// Caveats: - Only BigQuery tables have usage stats - The usage stats only
-/// inlude BigQuery query jobs - The usage stats might be underestimated, e.g.
+/// include BigQuery query jobs - The usage stats might be underestimated, e.g.
 /// wildcard table references are not yet counted in usage computation
 /// https://cloud.google.com/bigquery/docs/querying-wildcard-tables
 class GoogleCloudDatacatalogV1beta1UsageStats {

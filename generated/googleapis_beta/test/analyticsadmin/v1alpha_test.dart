@@ -715,13 +715,12 @@ api.GoogleAnalyticsAdminV1alphaChangeHistoryChangeChangeHistoryResource
   if (buildCounterGoogleAnalyticsAdminV1alphaChangeHistoryChangeChangeHistoryResource <
       3) {
     o.account = buildGoogleAnalyticsAdminV1alphaAccount();
-    o.androidAppDataStream =
-        buildGoogleAnalyticsAdminV1alphaAndroidAppDataStream();
     o.conversionEvent = buildGoogleAnalyticsAdminV1alphaConversionEvent();
     o.customDimension = buildGoogleAnalyticsAdminV1alphaCustomDimension();
     o.customMetric = buildGoogleAnalyticsAdminV1alphaCustomMetric();
     o.dataRetentionSettings =
         buildGoogleAnalyticsAdminV1alphaDataRetentionSettings();
+    o.dataStream = buildGoogleAnalyticsAdminV1alphaDataStream();
     o.displayVideo360AdvertiserLink =
         buildGoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink();
     o.displayVideo360AdvertiserLinkProposal =
@@ -730,11 +729,9 @@ api.GoogleAnalyticsAdminV1alphaChangeHistoryChangeChangeHistoryResource
     o.googleAdsLink = buildGoogleAnalyticsAdminV1alphaGoogleAdsLink();
     o.googleSignalsSettings =
         buildGoogleAnalyticsAdminV1alphaGoogleSignalsSettings();
-    o.iosAppDataStream = buildGoogleAnalyticsAdminV1alphaIosAppDataStream();
     o.measurementProtocolSecret =
         buildGoogleAnalyticsAdminV1alphaMeasurementProtocolSecret();
     o.property = buildGoogleAnalyticsAdminV1alphaProperty();
-    o.webDataStream = buildGoogleAnalyticsAdminV1alphaWebDataStream();
   }
   buildCounterGoogleAnalyticsAdminV1alphaChangeHistoryChangeChangeHistoryResource--;
   return o;
@@ -746,13 +743,12 @@ void checkGoogleAnalyticsAdminV1alphaChangeHistoryChangeChangeHistoryResource(
   if (buildCounterGoogleAnalyticsAdminV1alphaChangeHistoryChangeChangeHistoryResource <
       3) {
     checkGoogleAnalyticsAdminV1alphaAccount(o.account!);
-    checkGoogleAnalyticsAdminV1alphaAndroidAppDataStream(
-        o.androidAppDataStream!);
     checkGoogleAnalyticsAdminV1alphaConversionEvent(o.conversionEvent!);
     checkGoogleAnalyticsAdminV1alphaCustomDimension(o.customDimension!);
     checkGoogleAnalyticsAdminV1alphaCustomMetric(o.customMetric!);
     checkGoogleAnalyticsAdminV1alphaDataRetentionSettings(
         o.dataRetentionSettings!);
+    checkGoogleAnalyticsAdminV1alphaDataStream(o.dataStream!);
     checkGoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink(
         o.displayVideo360AdvertiserLink!);
     checkGoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposal(
@@ -761,11 +757,9 @@ void checkGoogleAnalyticsAdminV1alphaChangeHistoryChangeChangeHistoryResource(
     checkGoogleAnalyticsAdminV1alphaGoogleAdsLink(o.googleAdsLink!);
     checkGoogleAnalyticsAdminV1alphaGoogleSignalsSettings(
         o.googleSignalsSettings!);
-    checkGoogleAnalyticsAdminV1alphaIosAppDataStream(o.iosAppDataStream!);
     checkGoogleAnalyticsAdminV1alphaMeasurementProtocolSecret(
         o.measurementProtocolSecret!);
     checkGoogleAnalyticsAdminV1alphaProperty(o.property!);
-    checkGoogleAnalyticsAdminV1alphaWebDataStream(o.webDataStream!);
   }
   buildCounterGoogleAnalyticsAdminV1alphaChangeHistoryChangeChangeHistoryResource--;
 }
@@ -938,6 +932,23 @@ void checkGoogleAnalyticsAdminV1alphaCustomDimension(
   buildCounterGoogleAnalyticsAdminV1alphaCustomDimension--;
 }
 
+core.List<core.String> buildUnnamed11() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed11(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
 core.int buildCounterGoogleAnalyticsAdminV1alphaCustomMetric = 0;
 api.GoogleAnalyticsAdminV1alphaCustomMetric
     buildGoogleAnalyticsAdminV1alphaCustomMetric() {
@@ -949,6 +960,7 @@ api.GoogleAnalyticsAdminV1alphaCustomMetric
     o.measurementUnit = 'foo';
     o.name = 'foo';
     o.parameterName = 'foo';
+    o.restrictedMetricType = buildUnnamed11();
     o.scope = 'foo';
   }
   buildCounterGoogleAnalyticsAdminV1alphaCustomMetric--;
@@ -979,6 +991,7 @@ void checkGoogleAnalyticsAdminV1alphaCustomMetric(
       o.parameterName!,
       unittest.equals('foo'),
     );
+    checkUnnamed11(o.restrictedMetricType!);
     unittest.expect(
       o.scope!,
       unittest.equals('foo'),
@@ -1550,12 +1563,12 @@ void checkGoogleAnalyticsAdminV1alphaLinkProposalStatusDetails(
   buildCounterGoogleAnalyticsAdminV1alphaLinkProposalStatusDetails--;
 }
 
-core.List<api.GoogleAnalyticsAdminV1alphaAccountSummary> buildUnnamed11() => [
+core.List<api.GoogleAnalyticsAdminV1alphaAccountSummary> buildUnnamed12() => [
       buildGoogleAnalyticsAdminV1alphaAccountSummary(),
       buildGoogleAnalyticsAdminV1alphaAccountSummary(),
     ];
 
-void checkUnnamed11(
+void checkUnnamed12(
     core.List<api.GoogleAnalyticsAdminV1alphaAccountSummary> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleAnalyticsAdminV1alphaAccountSummary(o[0]);
@@ -1569,7 +1582,7 @@ api.GoogleAnalyticsAdminV1alphaListAccountSummariesResponse
   final o = api.GoogleAnalyticsAdminV1alphaListAccountSummariesResponse();
   buildCounterGoogleAnalyticsAdminV1alphaListAccountSummariesResponse++;
   if (buildCounterGoogleAnalyticsAdminV1alphaListAccountSummariesResponse < 3) {
-    o.accountSummaries = buildUnnamed11();
+    o.accountSummaries = buildUnnamed12();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleAnalyticsAdminV1alphaListAccountSummariesResponse--;
@@ -1580,7 +1593,7 @@ void checkGoogleAnalyticsAdminV1alphaListAccountSummariesResponse(
     api.GoogleAnalyticsAdminV1alphaListAccountSummariesResponse o) {
   buildCounterGoogleAnalyticsAdminV1alphaListAccountSummariesResponse++;
   if (buildCounterGoogleAnalyticsAdminV1alphaListAccountSummariesResponse < 3) {
-    checkUnnamed11(o.accountSummaries!);
+    checkUnnamed12(o.accountSummaries!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -1589,12 +1602,12 @@ void checkGoogleAnalyticsAdminV1alphaListAccountSummariesResponse(
   buildCounterGoogleAnalyticsAdminV1alphaListAccountSummariesResponse--;
 }
 
-core.List<api.GoogleAnalyticsAdminV1alphaAccount> buildUnnamed12() => [
+core.List<api.GoogleAnalyticsAdminV1alphaAccount> buildUnnamed13() => [
       buildGoogleAnalyticsAdminV1alphaAccount(),
       buildGoogleAnalyticsAdminV1alphaAccount(),
     ];
 
-void checkUnnamed12(core.List<api.GoogleAnalyticsAdminV1alphaAccount> o) {
+void checkUnnamed13(core.List<api.GoogleAnalyticsAdminV1alphaAccount> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleAnalyticsAdminV1alphaAccount(o[0]);
   checkGoogleAnalyticsAdminV1alphaAccount(o[1]);
@@ -1606,7 +1619,7 @@ api.GoogleAnalyticsAdminV1alphaListAccountsResponse
   final o = api.GoogleAnalyticsAdminV1alphaListAccountsResponse();
   buildCounterGoogleAnalyticsAdminV1alphaListAccountsResponse++;
   if (buildCounterGoogleAnalyticsAdminV1alphaListAccountsResponse < 3) {
-    o.accounts = buildUnnamed12();
+    o.accounts = buildUnnamed13();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleAnalyticsAdminV1alphaListAccountsResponse--;
@@ -1617,7 +1630,7 @@ void checkGoogleAnalyticsAdminV1alphaListAccountsResponse(
     api.GoogleAnalyticsAdminV1alphaListAccountsResponse o) {
   buildCounterGoogleAnalyticsAdminV1alphaListAccountsResponse++;
   if (buildCounterGoogleAnalyticsAdminV1alphaListAccountsResponse < 3) {
-    checkUnnamed12(o.accounts!);
+    checkUnnamed13(o.accounts!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -1627,12 +1640,12 @@ void checkGoogleAnalyticsAdminV1alphaListAccountsResponse(
 }
 
 core.List<api.GoogleAnalyticsAdminV1alphaAndroidAppDataStream>
-    buildUnnamed13() => [
+    buildUnnamed14() => [
           buildGoogleAnalyticsAdminV1alphaAndroidAppDataStream(),
           buildGoogleAnalyticsAdminV1alphaAndroidAppDataStream(),
         ];
 
-void checkUnnamed13(
+void checkUnnamed14(
     core.List<api.GoogleAnalyticsAdminV1alphaAndroidAppDataStream> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleAnalyticsAdminV1alphaAndroidAppDataStream(o[0]);
@@ -1648,7 +1661,7 @@ api.GoogleAnalyticsAdminV1alphaListAndroidAppDataStreamsResponse
   buildCounterGoogleAnalyticsAdminV1alphaListAndroidAppDataStreamsResponse++;
   if (buildCounterGoogleAnalyticsAdminV1alphaListAndroidAppDataStreamsResponse <
       3) {
-    o.androidAppDataStreams = buildUnnamed13();
+    o.androidAppDataStreams = buildUnnamed14();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleAnalyticsAdminV1alphaListAndroidAppDataStreamsResponse--;
@@ -1660,7 +1673,7 @@ void checkGoogleAnalyticsAdminV1alphaListAndroidAppDataStreamsResponse(
   buildCounterGoogleAnalyticsAdminV1alphaListAndroidAppDataStreamsResponse++;
   if (buildCounterGoogleAnalyticsAdminV1alphaListAndroidAppDataStreamsResponse <
       3) {
-    checkUnnamed13(o.androidAppDataStreams!);
+    checkUnnamed14(o.androidAppDataStreams!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -1669,12 +1682,12 @@ void checkGoogleAnalyticsAdminV1alphaListAndroidAppDataStreamsResponse(
   buildCounterGoogleAnalyticsAdminV1alphaListAndroidAppDataStreamsResponse--;
 }
 
-core.List<api.GoogleAnalyticsAdminV1alphaConversionEvent> buildUnnamed14() => [
+core.List<api.GoogleAnalyticsAdminV1alphaConversionEvent> buildUnnamed15() => [
       buildGoogleAnalyticsAdminV1alphaConversionEvent(),
       buildGoogleAnalyticsAdminV1alphaConversionEvent(),
     ];
 
-void checkUnnamed14(
+void checkUnnamed15(
     core.List<api.GoogleAnalyticsAdminV1alphaConversionEvent> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleAnalyticsAdminV1alphaConversionEvent(o[0]);
@@ -1688,7 +1701,7 @@ api.GoogleAnalyticsAdminV1alphaListConversionEventsResponse
   final o = api.GoogleAnalyticsAdminV1alphaListConversionEventsResponse();
   buildCounterGoogleAnalyticsAdminV1alphaListConversionEventsResponse++;
   if (buildCounterGoogleAnalyticsAdminV1alphaListConversionEventsResponse < 3) {
-    o.conversionEvents = buildUnnamed14();
+    o.conversionEvents = buildUnnamed15();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleAnalyticsAdminV1alphaListConversionEventsResponse--;
@@ -1699,7 +1712,7 @@ void checkGoogleAnalyticsAdminV1alphaListConversionEventsResponse(
     api.GoogleAnalyticsAdminV1alphaListConversionEventsResponse o) {
   buildCounterGoogleAnalyticsAdminV1alphaListConversionEventsResponse++;
   if (buildCounterGoogleAnalyticsAdminV1alphaListConversionEventsResponse < 3) {
-    checkUnnamed14(o.conversionEvents!);
+    checkUnnamed15(o.conversionEvents!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -1708,12 +1721,12 @@ void checkGoogleAnalyticsAdminV1alphaListConversionEventsResponse(
   buildCounterGoogleAnalyticsAdminV1alphaListConversionEventsResponse--;
 }
 
-core.List<api.GoogleAnalyticsAdminV1alphaCustomDimension> buildUnnamed15() => [
+core.List<api.GoogleAnalyticsAdminV1alphaCustomDimension> buildUnnamed16() => [
       buildGoogleAnalyticsAdminV1alphaCustomDimension(),
       buildGoogleAnalyticsAdminV1alphaCustomDimension(),
     ];
 
-void checkUnnamed15(
+void checkUnnamed16(
     core.List<api.GoogleAnalyticsAdminV1alphaCustomDimension> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleAnalyticsAdminV1alphaCustomDimension(o[0]);
@@ -1727,7 +1740,7 @@ api.GoogleAnalyticsAdminV1alphaListCustomDimensionsResponse
   final o = api.GoogleAnalyticsAdminV1alphaListCustomDimensionsResponse();
   buildCounterGoogleAnalyticsAdminV1alphaListCustomDimensionsResponse++;
   if (buildCounterGoogleAnalyticsAdminV1alphaListCustomDimensionsResponse < 3) {
-    o.customDimensions = buildUnnamed15();
+    o.customDimensions = buildUnnamed16();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleAnalyticsAdminV1alphaListCustomDimensionsResponse--;
@@ -1738,7 +1751,7 @@ void checkGoogleAnalyticsAdminV1alphaListCustomDimensionsResponse(
     api.GoogleAnalyticsAdminV1alphaListCustomDimensionsResponse o) {
   buildCounterGoogleAnalyticsAdminV1alphaListCustomDimensionsResponse++;
   if (buildCounterGoogleAnalyticsAdminV1alphaListCustomDimensionsResponse < 3) {
-    checkUnnamed15(o.customDimensions!);
+    checkUnnamed16(o.customDimensions!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -1747,12 +1760,12 @@ void checkGoogleAnalyticsAdminV1alphaListCustomDimensionsResponse(
   buildCounterGoogleAnalyticsAdminV1alphaListCustomDimensionsResponse--;
 }
 
-core.List<api.GoogleAnalyticsAdminV1alphaCustomMetric> buildUnnamed16() => [
+core.List<api.GoogleAnalyticsAdminV1alphaCustomMetric> buildUnnamed17() => [
       buildGoogleAnalyticsAdminV1alphaCustomMetric(),
       buildGoogleAnalyticsAdminV1alphaCustomMetric(),
     ];
 
-void checkUnnamed16(core.List<api.GoogleAnalyticsAdminV1alphaCustomMetric> o) {
+void checkUnnamed17(core.List<api.GoogleAnalyticsAdminV1alphaCustomMetric> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleAnalyticsAdminV1alphaCustomMetric(o[0]);
   checkGoogleAnalyticsAdminV1alphaCustomMetric(o[1]);
@@ -1764,7 +1777,7 @@ api.GoogleAnalyticsAdminV1alphaListCustomMetricsResponse
   final o = api.GoogleAnalyticsAdminV1alphaListCustomMetricsResponse();
   buildCounterGoogleAnalyticsAdminV1alphaListCustomMetricsResponse++;
   if (buildCounterGoogleAnalyticsAdminV1alphaListCustomMetricsResponse < 3) {
-    o.customMetrics = buildUnnamed16();
+    o.customMetrics = buildUnnamed17();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleAnalyticsAdminV1alphaListCustomMetricsResponse--;
@@ -1775,7 +1788,7 @@ void checkGoogleAnalyticsAdminV1alphaListCustomMetricsResponse(
     api.GoogleAnalyticsAdminV1alphaListCustomMetricsResponse o) {
   buildCounterGoogleAnalyticsAdminV1alphaListCustomMetricsResponse++;
   if (buildCounterGoogleAnalyticsAdminV1alphaListCustomMetricsResponse < 3) {
-    checkUnnamed16(o.customMetrics!);
+    checkUnnamed17(o.customMetrics!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -1784,12 +1797,12 @@ void checkGoogleAnalyticsAdminV1alphaListCustomMetricsResponse(
   buildCounterGoogleAnalyticsAdminV1alphaListCustomMetricsResponse--;
 }
 
-core.List<api.GoogleAnalyticsAdminV1alphaDataStream> buildUnnamed17() => [
+core.List<api.GoogleAnalyticsAdminV1alphaDataStream> buildUnnamed18() => [
       buildGoogleAnalyticsAdminV1alphaDataStream(),
       buildGoogleAnalyticsAdminV1alphaDataStream(),
     ];
 
-void checkUnnamed17(core.List<api.GoogleAnalyticsAdminV1alphaDataStream> o) {
+void checkUnnamed18(core.List<api.GoogleAnalyticsAdminV1alphaDataStream> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleAnalyticsAdminV1alphaDataStream(o[0]);
   checkGoogleAnalyticsAdminV1alphaDataStream(o[1]);
@@ -1801,7 +1814,7 @@ api.GoogleAnalyticsAdminV1alphaListDataStreamsResponse
   final o = api.GoogleAnalyticsAdminV1alphaListDataStreamsResponse();
   buildCounterGoogleAnalyticsAdminV1alphaListDataStreamsResponse++;
   if (buildCounterGoogleAnalyticsAdminV1alphaListDataStreamsResponse < 3) {
-    o.dataStreams = buildUnnamed17();
+    o.dataStreams = buildUnnamed18();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleAnalyticsAdminV1alphaListDataStreamsResponse--;
@@ -1812,7 +1825,7 @@ void checkGoogleAnalyticsAdminV1alphaListDataStreamsResponse(
     api.GoogleAnalyticsAdminV1alphaListDataStreamsResponse o) {
   buildCounterGoogleAnalyticsAdminV1alphaListDataStreamsResponse++;
   if (buildCounterGoogleAnalyticsAdminV1alphaListDataStreamsResponse < 3) {
-    checkUnnamed17(o.dataStreams!);
+    checkUnnamed18(o.dataStreams!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -1822,12 +1835,12 @@ void checkGoogleAnalyticsAdminV1alphaListDataStreamsResponse(
 }
 
 core.List<api.GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposal>
-    buildUnnamed18() => [
+    buildUnnamed19() => [
           buildGoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposal(),
           buildGoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposal(),
         ];
 
-void checkUnnamed18(
+void checkUnnamed19(
     core.List<
             api.GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposal>
         o) {
@@ -1846,7 +1859,7 @@ api.GoogleAnalyticsAdminV1alphaListDisplayVideo360AdvertiserLinkProposalsRespons
   buildCounterGoogleAnalyticsAdminV1alphaListDisplayVideo360AdvertiserLinkProposalsResponse++;
   if (buildCounterGoogleAnalyticsAdminV1alphaListDisplayVideo360AdvertiserLinkProposalsResponse <
       3) {
-    o.displayVideo360AdvertiserLinkProposals = buildUnnamed18();
+    o.displayVideo360AdvertiserLinkProposals = buildUnnamed19();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleAnalyticsAdminV1alphaListDisplayVideo360AdvertiserLinkProposalsResponse--;
@@ -1859,7 +1872,7 @@ void checkGoogleAnalyticsAdminV1alphaListDisplayVideo360AdvertiserLinkProposalsR
   buildCounterGoogleAnalyticsAdminV1alphaListDisplayVideo360AdvertiserLinkProposalsResponse++;
   if (buildCounterGoogleAnalyticsAdminV1alphaListDisplayVideo360AdvertiserLinkProposalsResponse <
       3) {
-    checkUnnamed18(o.displayVideo360AdvertiserLinkProposals!);
+    checkUnnamed19(o.displayVideo360AdvertiserLinkProposals!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -1869,12 +1882,12 @@ void checkGoogleAnalyticsAdminV1alphaListDisplayVideo360AdvertiserLinkProposalsR
 }
 
 core.List<api.GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink>
-    buildUnnamed19() => [
+    buildUnnamed20() => [
           buildGoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink(),
           buildGoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink(),
         ];
 
-void checkUnnamed19(
+void checkUnnamed20(
     core.List<api.GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink(o[0]);
@@ -1891,7 +1904,7 @@ api.GoogleAnalyticsAdminV1alphaListDisplayVideo360AdvertiserLinksResponse
   buildCounterGoogleAnalyticsAdminV1alphaListDisplayVideo360AdvertiserLinksResponse++;
   if (buildCounterGoogleAnalyticsAdminV1alphaListDisplayVideo360AdvertiserLinksResponse <
       3) {
-    o.displayVideo360AdvertiserLinks = buildUnnamed19();
+    o.displayVideo360AdvertiserLinks = buildUnnamed20();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleAnalyticsAdminV1alphaListDisplayVideo360AdvertiserLinksResponse--;
@@ -1904,7 +1917,7 @@ void checkGoogleAnalyticsAdminV1alphaListDisplayVideo360AdvertiserLinksResponse(
   buildCounterGoogleAnalyticsAdminV1alphaListDisplayVideo360AdvertiserLinksResponse++;
   if (buildCounterGoogleAnalyticsAdminV1alphaListDisplayVideo360AdvertiserLinksResponse <
       3) {
-    checkUnnamed19(o.displayVideo360AdvertiserLinks!);
+    checkUnnamed20(o.displayVideo360AdvertiserLinks!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -1913,12 +1926,12 @@ void checkGoogleAnalyticsAdminV1alphaListDisplayVideo360AdvertiserLinksResponse(
   buildCounterGoogleAnalyticsAdminV1alphaListDisplayVideo360AdvertiserLinksResponse--;
 }
 
-core.List<api.GoogleAnalyticsAdminV1alphaFirebaseLink> buildUnnamed20() => [
+core.List<api.GoogleAnalyticsAdminV1alphaFirebaseLink> buildUnnamed21() => [
       buildGoogleAnalyticsAdminV1alphaFirebaseLink(),
       buildGoogleAnalyticsAdminV1alphaFirebaseLink(),
     ];
 
-void checkUnnamed20(core.List<api.GoogleAnalyticsAdminV1alphaFirebaseLink> o) {
+void checkUnnamed21(core.List<api.GoogleAnalyticsAdminV1alphaFirebaseLink> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleAnalyticsAdminV1alphaFirebaseLink(o[0]);
   checkGoogleAnalyticsAdminV1alphaFirebaseLink(o[1]);
@@ -1930,7 +1943,7 @@ api.GoogleAnalyticsAdminV1alphaListFirebaseLinksResponse
   final o = api.GoogleAnalyticsAdminV1alphaListFirebaseLinksResponse();
   buildCounterGoogleAnalyticsAdminV1alphaListFirebaseLinksResponse++;
   if (buildCounterGoogleAnalyticsAdminV1alphaListFirebaseLinksResponse < 3) {
-    o.firebaseLinks = buildUnnamed20();
+    o.firebaseLinks = buildUnnamed21();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleAnalyticsAdminV1alphaListFirebaseLinksResponse--;
@@ -1941,7 +1954,7 @@ void checkGoogleAnalyticsAdminV1alphaListFirebaseLinksResponse(
     api.GoogleAnalyticsAdminV1alphaListFirebaseLinksResponse o) {
   buildCounterGoogleAnalyticsAdminV1alphaListFirebaseLinksResponse++;
   if (buildCounterGoogleAnalyticsAdminV1alphaListFirebaseLinksResponse < 3) {
-    checkUnnamed20(o.firebaseLinks!);
+    checkUnnamed21(o.firebaseLinks!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -1950,12 +1963,12 @@ void checkGoogleAnalyticsAdminV1alphaListFirebaseLinksResponse(
   buildCounterGoogleAnalyticsAdminV1alphaListFirebaseLinksResponse--;
 }
 
-core.List<api.GoogleAnalyticsAdminV1alphaGoogleAdsLink> buildUnnamed21() => [
+core.List<api.GoogleAnalyticsAdminV1alphaGoogleAdsLink> buildUnnamed22() => [
       buildGoogleAnalyticsAdminV1alphaGoogleAdsLink(),
       buildGoogleAnalyticsAdminV1alphaGoogleAdsLink(),
     ];
 
-void checkUnnamed21(core.List<api.GoogleAnalyticsAdminV1alphaGoogleAdsLink> o) {
+void checkUnnamed22(core.List<api.GoogleAnalyticsAdminV1alphaGoogleAdsLink> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleAnalyticsAdminV1alphaGoogleAdsLink(o[0]);
   checkGoogleAnalyticsAdminV1alphaGoogleAdsLink(o[1]);
@@ -1967,7 +1980,7 @@ api.GoogleAnalyticsAdminV1alphaListGoogleAdsLinksResponse
   final o = api.GoogleAnalyticsAdminV1alphaListGoogleAdsLinksResponse();
   buildCounterGoogleAnalyticsAdminV1alphaListGoogleAdsLinksResponse++;
   if (buildCounterGoogleAnalyticsAdminV1alphaListGoogleAdsLinksResponse < 3) {
-    o.googleAdsLinks = buildUnnamed21();
+    o.googleAdsLinks = buildUnnamed22();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleAnalyticsAdminV1alphaListGoogleAdsLinksResponse--;
@@ -1978,7 +1991,7 @@ void checkGoogleAnalyticsAdminV1alphaListGoogleAdsLinksResponse(
     api.GoogleAnalyticsAdminV1alphaListGoogleAdsLinksResponse o) {
   buildCounterGoogleAnalyticsAdminV1alphaListGoogleAdsLinksResponse++;
   if (buildCounterGoogleAnalyticsAdminV1alphaListGoogleAdsLinksResponse < 3) {
-    checkUnnamed21(o.googleAdsLinks!);
+    checkUnnamed22(o.googleAdsLinks!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -1987,12 +2000,12 @@ void checkGoogleAnalyticsAdminV1alphaListGoogleAdsLinksResponse(
   buildCounterGoogleAnalyticsAdminV1alphaListGoogleAdsLinksResponse--;
 }
 
-core.List<api.GoogleAnalyticsAdminV1alphaIosAppDataStream> buildUnnamed22() => [
+core.List<api.GoogleAnalyticsAdminV1alphaIosAppDataStream> buildUnnamed23() => [
       buildGoogleAnalyticsAdminV1alphaIosAppDataStream(),
       buildGoogleAnalyticsAdminV1alphaIosAppDataStream(),
     ];
 
-void checkUnnamed22(
+void checkUnnamed23(
     core.List<api.GoogleAnalyticsAdminV1alphaIosAppDataStream> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleAnalyticsAdminV1alphaIosAppDataStream(o[0]);
@@ -2007,7 +2020,7 @@ api.GoogleAnalyticsAdminV1alphaListIosAppDataStreamsResponse
   buildCounterGoogleAnalyticsAdminV1alphaListIosAppDataStreamsResponse++;
   if (buildCounterGoogleAnalyticsAdminV1alphaListIosAppDataStreamsResponse <
       3) {
-    o.iosAppDataStreams = buildUnnamed22();
+    o.iosAppDataStreams = buildUnnamed23();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleAnalyticsAdminV1alphaListIosAppDataStreamsResponse--;
@@ -2019,7 +2032,7 @@ void checkGoogleAnalyticsAdminV1alphaListIosAppDataStreamsResponse(
   buildCounterGoogleAnalyticsAdminV1alphaListIosAppDataStreamsResponse++;
   if (buildCounterGoogleAnalyticsAdminV1alphaListIosAppDataStreamsResponse <
       3) {
-    checkUnnamed22(o.iosAppDataStreams!);
+    checkUnnamed23(o.iosAppDataStreams!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -2029,12 +2042,12 @@ void checkGoogleAnalyticsAdminV1alphaListIosAppDataStreamsResponse(
 }
 
 core.List<api.GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret>
-    buildUnnamed23() => [
+    buildUnnamed24() => [
           buildGoogleAnalyticsAdminV1alphaMeasurementProtocolSecret(),
           buildGoogleAnalyticsAdminV1alphaMeasurementProtocolSecret(),
         ];
 
-void checkUnnamed23(
+void checkUnnamed24(
     core.List<api.GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleAnalyticsAdminV1alphaMeasurementProtocolSecret(o[0]);
@@ -2051,7 +2064,7 @@ api.GoogleAnalyticsAdminV1alphaListMeasurementProtocolSecretsResponse
   buildCounterGoogleAnalyticsAdminV1alphaListMeasurementProtocolSecretsResponse++;
   if (buildCounterGoogleAnalyticsAdminV1alphaListMeasurementProtocolSecretsResponse <
       3) {
-    o.measurementProtocolSecrets = buildUnnamed23();
+    o.measurementProtocolSecrets = buildUnnamed24();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleAnalyticsAdminV1alphaListMeasurementProtocolSecretsResponse--;
@@ -2063,7 +2076,7 @@ void checkGoogleAnalyticsAdminV1alphaListMeasurementProtocolSecretsResponse(
   buildCounterGoogleAnalyticsAdminV1alphaListMeasurementProtocolSecretsResponse++;
   if (buildCounterGoogleAnalyticsAdminV1alphaListMeasurementProtocolSecretsResponse <
       3) {
-    checkUnnamed23(o.measurementProtocolSecrets!);
+    checkUnnamed24(o.measurementProtocolSecrets!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -2072,12 +2085,12 @@ void checkGoogleAnalyticsAdminV1alphaListMeasurementProtocolSecretsResponse(
   buildCounterGoogleAnalyticsAdminV1alphaListMeasurementProtocolSecretsResponse--;
 }
 
-core.List<api.GoogleAnalyticsAdminV1alphaProperty> buildUnnamed24() => [
+core.List<api.GoogleAnalyticsAdminV1alphaProperty> buildUnnamed25() => [
       buildGoogleAnalyticsAdminV1alphaProperty(),
       buildGoogleAnalyticsAdminV1alphaProperty(),
     ];
 
-void checkUnnamed24(core.List<api.GoogleAnalyticsAdminV1alphaProperty> o) {
+void checkUnnamed25(core.List<api.GoogleAnalyticsAdminV1alphaProperty> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleAnalyticsAdminV1alphaProperty(o[0]);
   checkGoogleAnalyticsAdminV1alphaProperty(o[1]);
@@ -2090,7 +2103,7 @@ api.GoogleAnalyticsAdminV1alphaListPropertiesResponse
   buildCounterGoogleAnalyticsAdminV1alphaListPropertiesResponse++;
   if (buildCounterGoogleAnalyticsAdminV1alphaListPropertiesResponse < 3) {
     o.nextPageToken = 'foo';
-    o.properties = buildUnnamed24();
+    o.properties = buildUnnamed25();
   }
   buildCounterGoogleAnalyticsAdminV1alphaListPropertiesResponse--;
   return o;
@@ -2104,17 +2117,17 @@ void checkGoogleAnalyticsAdminV1alphaListPropertiesResponse(
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed24(o.properties!);
+    checkUnnamed25(o.properties!);
   }
   buildCounterGoogleAnalyticsAdminV1alphaListPropertiesResponse--;
 }
 
-core.List<api.GoogleAnalyticsAdminV1alphaUserLink> buildUnnamed25() => [
+core.List<api.GoogleAnalyticsAdminV1alphaUserLink> buildUnnamed26() => [
       buildGoogleAnalyticsAdminV1alphaUserLink(),
       buildGoogleAnalyticsAdminV1alphaUserLink(),
     ];
 
-void checkUnnamed25(core.List<api.GoogleAnalyticsAdminV1alphaUserLink> o) {
+void checkUnnamed26(core.List<api.GoogleAnalyticsAdminV1alphaUserLink> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleAnalyticsAdminV1alphaUserLink(o[0]);
   checkGoogleAnalyticsAdminV1alphaUserLink(o[1]);
@@ -2127,7 +2140,7 @@ api.GoogleAnalyticsAdminV1alphaListUserLinksResponse
   buildCounterGoogleAnalyticsAdminV1alphaListUserLinksResponse++;
   if (buildCounterGoogleAnalyticsAdminV1alphaListUserLinksResponse < 3) {
     o.nextPageToken = 'foo';
-    o.userLinks = buildUnnamed25();
+    o.userLinks = buildUnnamed26();
   }
   buildCounterGoogleAnalyticsAdminV1alphaListUserLinksResponse--;
   return o;
@@ -2141,17 +2154,17 @@ void checkGoogleAnalyticsAdminV1alphaListUserLinksResponse(
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed25(o.userLinks!);
+    checkUnnamed26(o.userLinks!);
   }
   buildCounterGoogleAnalyticsAdminV1alphaListUserLinksResponse--;
 }
 
-core.List<api.GoogleAnalyticsAdminV1alphaWebDataStream> buildUnnamed26() => [
+core.List<api.GoogleAnalyticsAdminV1alphaWebDataStream> buildUnnamed27() => [
       buildGoogleAnalyticsAdminV1alphaWebDataStream(),
       buildGoogleAnalyticsAdminV1alphaWebDataStream(),
     ];
 
-void checkUnnamed26(core.List<api.GoogleAnalyticsAdminV1alphaWebDataStream> o) {
+void checkUnnamed27(core.List<api.GoogleAnalyticsAdminV1alphaWebDataStream> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleAnalyticsAdminV1alphaWebDataStream(o[0]);
   checkGoogleAnalyticsAdminV1alphaWebDataStream(o[1]);
@@ -2164,7 +2177,7 @@ api.GoogleAnalyticsAdminV1alphaListWebDataStreamsResponse
   buildCounterGoogleAnalyticsAdminV1alphaListWebDataStreamsResponse++;
   if (buildCounterGoogleAnalyticsAdminV1alphaListWebDataStreamsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.webDataStreams = buildUnnamed26();
+    o.webDataStreams = buildUnnamed27();
   }
   buildCounterGoogleAnalyticsAdminV1alphaListWebDataStreamsResponse--;
   return o;
@@ -2178,7 +2191,7 @@ void checkGoogleAnalyticsAdminV1alphaListWebDataStreamsResponse(
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed26(o.webDataStreams!);
+    checkUnnamed27(o.webDataStreams!);
   }
   buildCounterGoogleAnalyticsAdminV1alphaListWebDataStreamsResponse--;
 }
@@ -2381,23 +2394,6 @@ void checkGoogleAnalyticsAdminV1alphaProvisionAccountTicketResponse(
   buildCounterGoogleAnalyticsAdminV1alphaProvisionAccountTicketResponse--;
 }
 
-core.List<core.String> buildUnnamed27() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed27(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
 core.List<core.String> buildUnnamed28() => [
       'foo',
       'foo',
@@ -2432,6 +2428,23 @@ void checkUnnamed29(core.List<core.String> o) {
   );
 }
 
+core.List<core.String> buildUnnamed30() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed30(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
 core.int
     buildCounterGoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequest = 0;
 api.GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequest
@@ -2440,14 +2453,14 @@ api.GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequest
   buildCounterGoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequest++;
   if (buildCounterGoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequest <
       3) {
-    o.action = buildUnnamed27();
-    o.actorEmail = buildUnnamed28();
+    o.action = buildUnnamed28();
+    o.actorEmail = buildUnnamed29();
     o.earliestChangeTime = 'foo';
     o.latestChangeTime = 'foo';
     o.pageSize = 42;
     o.pageToken = 'foo';
     o.property = 'foo';
-    o.resourceType = buildUnnamed29();
+    o.resourceType = buildUnnamed30();
   }
   buildCounterGoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequest--;
   return o;
@@ -2458,8 +2471,8 @@ void checkGoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequest(
   buildCounterGoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequest++;
   if (buildCounterGoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequest <
       3) {
-    checkUnnamed27(o.action!);
-    checkUnnamed28(o.actorEmail!);
+    checkUnnamed28(o.action!);
+    checkUnnamed29(o.actorEmail!);
     unittest.expect(
       o.earliestChangeTime!,
       unittest.equals('foo'),
@@ -2480,18 +2493,18 @@ void checkGoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequest(
       o.property!,
       unittest.equals('foo'),
     );
-    checkUnnamed29(o.resourceType!);
+    checkUnnamed30(o.resourceType!);
   }
   buildCounterGoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequest--;
 }
 
-core.List<api.GoogleAnalyticsAdminV1alphaChangeHistoryEvent> buildUnnamed30() =>
+core.List<api.GoogleAnalyticsAdminV1alphaChangeHistoryEvent> buildUnnamed31() =>
     [
       buildGoogleAnalyticsAdminV1alphaChangeHistoryEvent(),
       buildGoogleAnalyticsAdminV1alphaChangeHistoryEvent(),
     ];
 
-void checkUnnamed30(
+void checkUnnamed31(
     core.List<api.GoogleAnalyticsAdminV1alphaChangeHistoryEvent> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleAnalyticsAdminV1alphaChangeHistoryEvent(o[0]);
@@ -2507,7 +2520,7 @@ api.GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsResponse
   buildCounterGoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsResponse++;
   if (buildCounterGoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsResponse <
       3) {
-    o.changeHistoryEvents = buildUnnamed30();
+    o.changeHistoryEvents = buildUnnamed31();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsResponse--;
@@ -2519,7 +2532,7 @@ void checkGoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsResponse(
   buildCounterGoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsResponse++;
   if (buildCounterGoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsResponse <
       3) {
-    checkUnnamed30(o.changeHistoryEvents!);
+    checkUnnamed31(o.changeHistoryEvents!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -2549,12 +2562,12 @@ void checkGoogleAnalyticsAdminV1alphaUpdateUserLinkRequest(
   buildCounterGoogleAnalyticsAdminV1alphaUpdateUserLinkRequest--;
 }
 
-core.List<core.String> buildUnnamed31() => [
+core.List<core.String> buildUnnamed32() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed31(core.List<core.String> o) {
+void checkUnnamed32(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -2572,7 +2585,7 @@ api.GoogleAnalyticsAdminV1alphaUserLink
   final o = api.GoogleAnalyticsAdminV1alphaUserLink();
   buildCounterGoogleAnalyticsAdminV1alphaUserLink++;
   if (buildCounterGoogleAnalyticsAdminV1alphaUserLink < 3) {
-    o.directRoles = buildUnnamed31();
+    o.directRoles = buildUnnamed32();
     o.emailAddress = 'foo';
     o.name = 'foo';
   }
@@ -2584,7 +2597,7 @@ void checkGoogleAnalyticsAdminV1alphaUserLink(
     api.GoogleAnalyticsAdminV1alphaUserLink o) {
   buildCounterGoogleAnalyticsAdminV1alphaUserLink++;
   if (buildCounterGoogleAnalyticsAdminV1alphaUserLink < 3) {
-    checkUnnamed31(o.directRoles!);
+    checkUnnamed32(o.directRoles!);
     unittest.expect(
       o.emailAddress!,
       unittest.equals('foo'),
@@ -2666,12 +2679,12 @@ void checkGoogleProtobufEmpty(api.GoogleProtobufEmpty o) {
   buildCounterGoogleProtobufEmpty--;
 }
 
-core.List<core.String> buildUnnamed32() => [
+core.List<core.String> buildUnnamed33() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed32(core.List<core.String> o) {
+void checkUnnamed33(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -2683,12 +2696,12 @@ void checkUnnamed32(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed33() => [
+core.List<core.String> buildUnnamed34() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed33(core.List<core.String> o) {
+void checkUnnamed34(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -4186,7 +4199,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.GoogleAnalyticsAdminApi(mock).accounts.userLinks;
       final arg_parent = 'foo';
-      final arg_names = buildUnnamed32();
+      final arg_names = buildUnnamed33();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = (req.url).path;
@@ -8819,7 +8832,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.GoogleAnalyticsAdminApi(mock).properties.userLinks;
       final arg_parent = 'foo';
-      final arg_names = buildUnnamed33();
+      final arg_names = buildUnnamed34();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = (req.url).path;

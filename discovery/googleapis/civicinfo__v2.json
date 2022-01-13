@@ -351,7 +351,7 @@
             }
         }
     },
-    "revision": "20211209",
+    "revision": "20211211",
     "rootUrl": "https://civicinfo.googleapis.com/",
     "schemas": {
         "AdministrationRegion": {

@@ -522,7 +522,7 @@
             }
         }
     },
-    "revision": "20211130",
+    "revision": "20220105",
     "rootUrl": "https://speech.googleapis.com/",
     "schemas": {
         "ClassItem": {

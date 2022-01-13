@@ -896,6 +896,98 @@ class ProjectsLocationsEntryGroupsEntriesResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
+  /// Modifies contacts, part of the business context of an Entry.
+  ///
+  /// To call this method, you must have the
+  /// `datacatalog.entries.updateContacts` IAM permission on the corresponding
+  /// project.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The full resource name of the entry.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/entryGroups/\[^/\]+/entries/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDatacatalogV1Contacts].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDatacatalogV1Contacts> modifyEntryContacts(
+    GoogleCloudDatacatalogV1ModifyEntryContactsRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':modifyEntryContacts';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDatacatalogV1Contacts.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Modifies entry overview, part of the business context of an Entry.
+  ///
+  /// To call this method, you must have the
+  /// `datacatalog.entries.updateOverview` IAM permission on the corresponding
+  /// project.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The full resource name of the entry.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/entryGroups/\[^/\]+/entries/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDatacatalogV1EntryOverview].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDatacatalogV1EntryOverview> modifyEntryOverview(
+    GoogleCloudDatacatalogV1ModifyEntryOverviewRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':modifyEntryOverview';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleCloudDatacatalogV1EntryOverview.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
   /// Updates an existing entry.
   ///
   /// You must enable the Data Catalog API in the project identified by the
@@ -1196,6 +1288,8 @@ class ProjectsLocationsEntryGroupsEntriesTagsResource {
 
   /// Lists tags assigned to an Entry.
   ///
+  /// The columns in the response are lowercased.
+  ///
   /// Request parameters:
   ///
   /// [parent] - Required. The name of the Data Catalog resource to list the
@@ -1393,6 +1487,8 @@ class ProjectsLocationsEntryGroupsTagsResource {
   }
 
   /// Lists tags assigned to an Entry.
+  ///
+  /// The columns in the response are lowercased.
   ///
   /// Request parameters:
   ///
@@ -3303,6 +3399,37 @@ class GoogleCloudDatacatalogV1BigQueryTableSpec {
       };
 }
 
+/// Business Context of the entry.
+class GoogleCloudDatacatalogV1BusinessContext {
+  /// Contact people for the entry.
+  GoogleCloudDatacatalogV1Contacts? contacts;
+
+  /// Entry overview fields for rich text descriptions of entries.
+  GoogleCloudDatacatalogV1EntryOverview? entryOverview;
+
+  GoogleCloudDatacatalogV1BusinessContext({
+    this.contacts,
+    this.entryOverview,
+  });
+
+  GoogleCloudDatacatalogV1BusinessContext.fromJson(core.Map _json)
+      : this(
+          contacts: _json.containsKey('contacts')
+              ? GoogleCloudDatacatalogV1Contacts.fromJson(
+                  _json['contacts'] as core.Map<core.String, core.dynamic>)
+              : null,
+          entryOverview: _json.containsKey('entryOverview')
+              ? GoogleCloudDatacatalogV1EntryOverview.fromJson(
+                  _json['entryOverview'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (contacts != null) 'contacts': contacts!,
+        if (entryOverview != null) 'entryOverview': entryOverview!,
+      };
+}
+
 /// Specification for the BigQuery connection to a Cloud SQL instance.
 class GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpec {
   /// Database name.
@@ -3417,6 +3544,59 @@ class GoogleCloudDatacatalogV1ColumnSchema {
         if (mode != null) 'mode': mode!,
         if (subcolumns != null) 'subcolumns': subcolumns!,
         if (type != null) 'type': type!,
+      };
+}
+
+/// Contact people for the entry.
+class GoogleCloudDatacatalogV1Contacts {
+  /// The list of contact people for the entry.
+  core.List<GoogleCloudDatacatalogV1ContactsPerson>? people;
+
+  GoogleCloudDatacatalogV1Contacts({
+    this.people,
+  });
+
+  GoogleCloudDatacatalogV1Contacts.fromJson(core.Map _json)
+      : this(
+          people: _json.containsKey('people')
+              ? (_json['people'] as core.List)
+                  .map((value) =>
+                      GoogleCloudDatacatalogV1ContactsPerson.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (people != null) 'people': people!,
+      };
+}
+
+/// A contact person for the entry.
+class GoogleCloudDatacatalogV1ContactsPerson {
+  /// Designation of the person, for example, Data Steward.
+  core.String? designation;
+
+  /// Email of the person in the format of `john.doe@xyz`, ``, or `John Doe`.
+  core.String? email;
+
+  GoogleCloudDatacatalogV1ContactsPerson({
+    this.designation,
+    this.email,
+  });
+
+  GoogleCloudDatacatalogV1ContactsPerson.fromJson(core.Map _json)
+      : this(
+          designation: _json.containsKey('designation')
+              ? _json['designation'] as core.String
+              : null,
+          email:
+              _json.containsKey('email') ? _json['email'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (designation != null) 'designation': designation!,
+        if (email != null) 'email': email!,
       };
 }
 
@@ -3551,6 +3731,9 @@ class GoogleCloudDatacatalogV1Entry {
   ///
   /// Valid only for entries with the `TABLE` type.
   GoogleCloudDatacatalogV1BigQueryTableSpec? bigqueryTableSpec;
+
+  /// Business Context of the entry.
+  GoogleCloudDatacatalogV1BusinessContext? businessContext;
 
   /// Physical location of the entry.
   ///
@@ -3718,6 +3901,7 @@ class GoogleCloudDatacatalogV1Entry {
   GoogleCloudDatacatalogV1Entry({
     this.bigqueryDateShardedSpec,
     this.bigqueryTableSpec,
+    this.businessContext,
     this.dataSource,
     this.dataSourceConnectionSpec,
     this.databaseTableSpec,
@@ -3749,6 +3933,11 @@ class GoogleCloudDatacatalogV1Entry {
           bigqueryTableSpec: _json.containsKey('bigqueryTableSpec')
               ? GoogleCloudDatacatalogV1BigQueryTableSpec.fromJson(
                   _json['bigqueryTableSpec']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          businessContext: _json.containsKey('businessContext')
+              ? GoogleCloudDatacatalogV1BusinessContext.fromJson(
+                  _json['businessContext']
                       as core.Map<core.String, core.dynamic>)
               : null,
           dataSource: _json.containsKey('dataSource')
@@ -3830,6 +4019,7 @@ class GoogleCloudDatacatalogV1Entry {
         if (bigqueryDateShardedSpec != null)
           'bigqueryDateShardedSpec': bigqueryDateShardedSpec!,
         if (bigqueryTableSpec != null) 'bigqueryTableSpec': bigqueryTableSpec!,
+        if (businessContext != null) 'businessContext': businessContext!,
         if (dataSource != null) 'dataSource': dataSource!,
         if (dataSourceConnectionSpec != null)
           'dataSourceConnectionSpec': dataSourceConnectionSpec!,
@@ -3915,6 +4105,32 @@ class GoogleCloudDatacatalogV1EntryGroup {
         if (description != null) 'description': description!,
         if (displayName != null) 'displayName': displayName!,
         if (name != null) 'name': name!,
+      };
+}
+
+/// Entry overview fields for rich text descriptions of entries.
+class GoogleCloudDatacatalogV1EntryOverview {
+  /// Entry overview with support for rich text.
+  ///
+  /// The overview must only contain Unicode characters, and should be formatted
+  /// using HTML. The maximum length is 10 MiB as this value holds HTML
+  /// descriptions including encoded images. The maximum length of the text
+  /// without images is 100 KiB.
+  core.String? overview;
+
+  GoogleCloudDatacatalogV1EntryOverview({
+    this.overview,
+  });
+
+  GoogleCloudDatacatalogV1EntryOverview.fromJson(core.Map _json)
+      : this(
+          overview: _json.containsKey('overview')
+              ? _json['overview'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (overview != null) 'overview': overview!,
       };
 }
 
@@ -4393,6 +4609,54 @@ class GoogleCloudDatacatalogV1ListTaxonomiesResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (taxonomies != null) 'taxonomies': taxonomies!,
+      };
+}
+
+/// Request message for ModifyEntryContacts.
+class GoogleCloudDatacatalogV1ModifyEntryContactsRequest {
+  /// The new value for the Contacts.
+  ///
+  /// Required.
+  GoogleCloudDatacatalogV1Contacts? contacts;
+
+  GoogleCloudDatacatalogV1ModifyEntryContactsRequest({
+    this.contacts,
+  });
+
+  GoogleCloudDatacatalogV1ModifyEntryContactsRequest.fromJson(core.Map _json)
+      : this(
+          contacts: _json.containsKey('contacts')
+              ? GoogleCloudDatacatalogV1Contacts.fromJson(
+                  _json['contacts'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (contacts != null) 'contacts': contacts!,
+      };
+}
+
+/// Request message for ModifyEntryOverview.
+class GoogleCloudDatacatalogV1ModifyEntryOverviewRequest {
+  /// The new value for the Entry Overview.
+  ///
+  /// Required.
+  GoogleCloudDatacatalogV1EntryOverview? entryOverview;
+
+  GoogleCloudDatacatalogV1ModifyEntryOverviewRequest({
+    this.entryOverview,
+  });
+
+  GoogleCloudDatacatalogV1ModifyEntryOverviewRequest.fromJson(core.Map _json)
+      : this(
+          entryOverview: _json.containsKey('entryOverview')
+              ? GoogleCloudDatacatalogV1EntryOverview.fromJson(
+                  _json['entryOverview'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (entryOverview != null) 'entryOverview': entryOverview!,
       };
 }
 

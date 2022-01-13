@@ -1365,6 +1365,7 @@ api.Rollout buildRollout() {
     o.approveTime = 'foo';
     o.createTime = 'foo';
     o.deployEndTime = 'foo';
+    o.deployFailureCause = 'foo';
     o.deployStartTime = 'foo';
     o.deployingBuild = 'foo';
     o.description = 'foo';
@@ -1399,6 +1400,10 @@ void checkRollout(api.Rollout o) {
     );
     unittest.expect(
       o.deployEndTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.deployFailureCause!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -1794,6 +1799,7 @@ api.TargetRender buildTargetRender() {
   final o = api.TargetRender();
   buildCounterTargetRender++;
   if (buildCounterTargetRender < 3) {
+    o.failureCause = 'foo';
     o.renderingBuild = 'foo';
     o.renderingState = 'foo';
   }
@@ -1804,6 +1810,10 @@ api.TargetRender buildTargetRender() {
 void checkTargetRender(api.TargetRender o) {
   buildCounterTargetRender++;
   if (buildCounterTargetRender < 3) {
+    unittest.expect(
+      o.failureCause!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.renderingBuild!,
       unittest.equals('foo'),

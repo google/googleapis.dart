@@ -1474,17 +1474,27 @@ class GoogleAppsScriptTypeFunction {
   /// The function name in the script project.
   core.String? name;
 
+  /// The ordered list of parameter names of the function in the script project.
+  core.List<core.String>? parameters;
+
   GoogleAppsScriptTypeFunction({
     this.name,
+    this.parameters,
   });
 
   GoogleAppsScriptTypeFunction.fromJson(core.Map _json)
       : this(
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          parameters: _json.containsKey('parameters')
+              ? (_json['parameters'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
+        if (parameters != null) 'parameters': parameters!,
       };
 }
 

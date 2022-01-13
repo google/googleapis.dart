@@ -12353,6 +12353,8 @@ class GoogleCloudApigeeV1ApiProductRef {
   core.String? apiproduct;
 
   /// Status of the API product.
+  ///
+  /// Valid values are `approved` or `revoked`.
   core.String? status;
 
   GoogleCloudApigeeV1ApiProductRef({
@@ -18567,11 +18569,17 @@ class GoogleCloudApigeeV1OrganizationProjectMapping {
   /// Name of the Apigee organization.
   core.String? organization;
 
-  /// List of GCP projects associated with the Apigee organization.
+  /// GCP project associated with the Apigee organization
+  core.String? projectId;
+
+  /// DEPRECATED: Use `project_id`.
+  ///
+  /// An Apigee Organization is mapped to a single project.
   core.List<core.String>? projectIds;
 
   GoogleCloudApigeeV1OrganizationProjectMapping({
     this.organization,
+    this.projectId,
     this.projectIds,
   });
 
@@ -18579,6 +18587,9 @@ class GoogleCloudApigeeV1OrganizationProjectMapping {
       : this(
           organization: _json.containsKey('organization')
               ? _json['organization'] as core.String
+              : null,
+          projectId: _json.containsKey('projectId')
+              ? _json['projectId'] as core.String
               : null,
           projectIds: _json.containsKey('projectIds')
               ? (_json['projectIds'] as core.List)
@@ -18589,6 +18600,7 @@ class GoogleCloudApigeeV1OrganizationProjectMapping {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (organization != null) 'organization': organization!,
+        if (projectId != null) 'projectId': projectId!,
         if (projectIds != null) 'projectIds': projectIds!,
       };
 }
@@ -21073,15 +21085,13 @@ class GoogleCloudApigeeV1TlsInfo {
 
   /// Required if `client_auth_enabled` is true.
   ///
-  /// The resource ID of the keystore. References not yet supported.
+  /// The resource ID of the keystore.
   core.String? keyStore;
 
   /// The TLS versioins to be used.
   core.List<core.String>? protocols;
 
   /// The resource ID of the truststore.
-  ///
-  /// References not yet supported.
   core.String? trustStore;
 
   GoogleCloudApigeeV1TlsInfo({
