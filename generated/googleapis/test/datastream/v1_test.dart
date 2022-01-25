@@ -2916,6 +2916,7 @@ void main() {
       final arg_connectionProfileId = 'foo';
       final arg_force = true;
       final arg_requestId = 'foo';
+      final arg_validateOnly = true;
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final obj = api.ConnectionProfile.fromJson(
@@ -2966,6 +2967,10 @@ void main() {
           unittest.equals(arg_requestId),
         );
         unittest.expect(
+          queryMap['validateOnly']!.first,
+          unittest.equals('$arg_validateOnly'),
+        );
+        unittest.expect(
           queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
@@ -2980,6 +2985,7 @@ void main() {
           connectionProfileId: arg_connectionProfileId,
           force: arg_force,
           requestId: arg_requestId,
+          validateOnly: arg_validateOnly,
           $fields: arg_$fields);
       checkOperation(response as api.Operation);
     });
@@ -3240,6 +3246,7 @@ void main() {
       final arg_force = true;
       final arg_requestId = 'foo';
       final arg_updateMask = 'foo';
+      final arg_validateOnly = true;
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final obj = api.ConnectionProfile.fromJson(
@@ -3290,6 +3297,10 @@ void main() {
           unittest.equals(arg_updateMask),
         );
         unittest.expect(
+          queryMap['validateOnly']!.first,
+          unittest.equals('$arg_validateOnly'),
+        );
+        unittest.expect(
           queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
@@ -3304,6 +3315,7 @@ void main() {
           force: arg_force,
           requestId: arg_requestId,
           updateMask: arg_updateMask,
+          validateOnly: arg_validateOnly,
           $fields: arg_$fields);
       checkOperation(response as api.Operation);
     });

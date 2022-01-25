@@ -5440,6 +5440,56 @@ class ProjectsKnowledgeBasesDocumentsResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
+  /// Creates documents by importing data from external sources.
+  ///
+  /// Dialogflow supports up to 350 documents in each request. If you try to
+  /// import more, Dialogflow will return an error. This method is a
+  /// \[long-running
+  /// operation\](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation).
+  /// The returned `Operation` type has the following method-specific fields: -
+  /// `metadata`: KnowledgeOperationMetadata - `response`:
+  /// ImportDocumentsResponse
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The knowledge base to import documents into. Format:
+  /// `projects//locations//knowledgeBases/`.
+  /// Value must have pattern `^projects/\[^/\]+/knowledgeBases/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> import(
+    GoogleCloudDialogflowV2ImportDocumentsRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/documents:import';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
   /// Returns the list of all documents of the knowledge base.
   ///
   /// Request parameters:
@@ -10526,6 +10576,57 @@ class ProjectsLocationsKnowledgeBasesDocumentsResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
+  /// Creates documents by importing data from external sources.
+  ///
+  /// Dialogflow supports up to 350 documents in each request. If you try to
+  /// import more, Dialogflow will return an error. This method is a
+  /// \[long-running
+  /// operation\](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation).
+  /// The returned `Operation` type has the following method-specific fields: -
+  /// `metadata`: KnowledgeOperationMetadata - `response`:
+  /// ImportDocumentsResponse
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The knowledge base to import documents into. Format:
+  /// `projects//locations//knowledgeBases/`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/knowledgeBases/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> import(
+    GoogleCloudDialogflowV2ImportDocumentsRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$parent') + '/documents:import';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
   /// Returns the list of all documents of the knowledge base.
   ///
   /// Request parameters:
@@ -13718,6 +13819,34 @@ class GoogleCloudDialogflowV2GcsDestination {
       };
 }
 
+/// Google Cloud Storage location for the inputs.
+class GoogleCloudDialogflowV2GcsSources {
+  /// Google Cloud Storage URIs for the inputs.
+  ///
+  /// A URI is of the form: gs://bucket/object-prefix-or-name Whether a prefix
+  /// or name is used depends on the use case.
+  ///
+  /// Required.
+  core.List<core.String>? uris;
+
+  GoogleCloudDialogflowV2GcsSources({
+    this.uris,
+  });
+
+  GoogleCloudDialogflowV2GcsSources.fromJson(core.Map _json)
+      : this(
+          uris: _json.containsKey('uris')
+              ? (_json['uris'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (uris != null) 'uris': uris!,
+      };
+}
+
 /// Defines the Human Agent Assist to connect to a conversation.
 class GoogleCloudDialogflowV2HumanAgentAssistantConfig {
   /// Configuration for agent assistance of end user participant.
@@ -14446,6 +14575,107 @@ class GoogleCloudDialogflowV2ImportAgentRequest {
   core.Map<core.String, core.dynamic> toJson() => {
         if (agentContent != null) 'agentContent': agentContent!,
         if (agentUri != null) 'agentUri': agentUri!,
+      };
+}
+
+/// The template used for importing documents.
+class GoogleCloudDialogflowV2ImportDocumentTemplate {
+  /// The knowledge type of document content.
+  ///
+  /// Required.
+  core.List<core.String>? knowledgeTypes;
+
+  /// Metadata for the document.
+  ///
+  /// The metadata supports arbitrary key-value pairs. Suggested use cases
+  /// include storing a document's title, an external URL distinct from the
+  /// document's content_uri, etc. The max size of a `key` or a `value` of the
+  /// metadata is 1024 bytes.
+  core.Map<core.String, core.String>? metadata;
+
+  /// The MIME type of the document.
+  ///
+  /// Required.
+  core.String? mimeType;
+
+  GoogleCloudDialogflowV2ImportDocumentTemplate({
+    this.knowledgeTypes,
+    this.metadata,
+    this.mimeType,
+  });
+
+  GoogleCloudDialogflowV2ImportDocumentTemplate.fromJson(core.Map _json)
+      : this(
+          knowledgeTypes: _json.containsKey('knowledgeTypes')
+              ? (_json['knowledgeTypes'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          metadata: _json.containsKey('metadata')
+              ? (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          mimeType: _json.containsKey('mimeType')
+              ? _json['mimeType'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (knowledgeTypes != null) 'knowledgeTypes': knowledgeTypes!,
+        if (metadata != null) 'metadata': metadata!,
+        if (mimeType != null) 'mimeType': mimeType!,
+      };
+}
+
+/// Request message for Documents.ImportDocuments.
+class GoogleCloudDialogflowV2ImportDocumentsRequest {
+  /// Document template used for importing all the documents.
+  ///
+  /// Required.
+  GoogleCloudDialogflowV2ImportDocumentTemplate? documentTemplate;
+
+  /// The Google Cloud Storage location for the documents.
+  ///
+  /// The path can include a wildcard. These URIs may have the forms `gs:///`.
+  /// `gs:/// / * .`.
+  GoogleCloudDialogflowV2GcsSources? gcsSource;
+
+  /// Whether to import custom metadata from Google Cloud Storage.
+  ///
+  /// Only valid when the document source is Google Cloud Storage URI.
+  core.bool? importGcsCustomMetadata;
+
+  GoogleCloudDialogflowV2ImportDocumentsRequest({
+    this.documentTemplate,
+    this.gcsSource,
+    this.importGcsCustomMetadata,
+  });
+
+  GoogleCloudDialogflowV2ImportDocumentsRequest.fromJson(core.Map _json)
+      : this(
+          documentTemplate: _json.containsKey('documentTemplate')
+              ? GoogleCloudDialogflowV2ImportDocumentTemplate.fromJson(
+                  _json['documentTemplate']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          gcsSource: _json.containsKey('gcsSource')
+              ? GoogleCloudDialogflowV2GcsSources.fromJson(
+                  _json['gcsSource'] as core.Map<core.String, core.dynamic>)
+              : null,
+          importGcsCustomMetadata: _json.containsKey('importGcsCustomMetadata')
+              ? _json['importGcsCustomMetadata'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (documentTemplate != null) 'documentTemplate': documentTemplate!,
+        if (gcsSource != null) 'gcsSource': gcsSource!,
+        if (importGcsCustomMetadata != null)
+          'importGcsCustomMetadata': importGcsCustomMetadata!,
       };
 }
 

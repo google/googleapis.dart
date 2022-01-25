@@ -3593,6 +3593,7 @@ api.UptimeCheckConfig buildUptimeCheckConfig() {
   final o = api.UptimeCheckConfig();
   buildCounterUptimeCheckConfig++;
   if (buildCounterUptimeCheckConfig < 3) {
+    o.checkerType = 'foo';
     o.contentMatchers = buildUnnamed61();
     o.displayName = 'foo';
     o.httpCheck = buildHttpCheck();
@@ -3613,6 +3614,10 @@ api.UptimeCheckConfig buildUptimeCheckConfig() {
 void checkUptimeCheckConfig(api.UptimeCheckConfig o) {
   buildCounterUptimeCheckConfig++;
   if (buildCounterUptimeCheckConfig < 3) {
+    unittest.expect(
+      o.checkerType!,
+      unittest.equals('foo'),
+    );
     checkUnnamed61(o.contentMatchers!);
     unittest.expect(
       o.displayName!,

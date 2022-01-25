@@ -819,6 +819,13 @@ Help the third party sites to implement federated login.
 - [Documentation](https://developers.google.com/identity-toolkit/v3/)
 - [API details](https://pub.dev/documentation/googleapis/8.0.0-dev/identitytoolkit.v3/identitytoolkit.v3-library.html)
 
+#### Cloud IDS API - `ids.v1`
+
+Cloud IDS (Cloud Intrusion Detection System) detects malware, spyware, command-and-control attacks, and other network-based threats. Its security efficacy is industry leading, built with Palo Alto Networks technologies. When you use this product, your organization name and consumption levels will be shared with Palo Alto Networks.
+
+- [Documentation](https://cloud.google.com/)
+- [API details](https://pub.dev/documentation/googleapis/8.0.0-dev/ids.v1/ids.v1-library.html)
+
 #### Indexing API - `indexing.v3`
 
 Notifies Google when your web pages change.

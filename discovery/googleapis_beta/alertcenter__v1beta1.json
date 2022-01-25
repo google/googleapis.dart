@@ -421,7 +421,7 @@
             }
         }
     },
-    "revision": "20220105",
+    "revision": "20220116",
     "rootUrl": "https://alertcenter.googleapis.com/",
     "schemas": {
         "AccountSuspensionDetails": {

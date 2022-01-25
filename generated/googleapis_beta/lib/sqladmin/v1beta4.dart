@@ -2185,9 +2185,9 @@ class TiersResource {
   TiersResource(commons.ApiRequester client) : _requester = client;
 
   /// Lists all available machine types (tiers) for Cloud SQL, for example,
-  /// db-custom-1-3840.
+  /// `db-custom-1-3840`.
   ///
-  /// For related information, see Pricing.
+  /// For related information, see \[Pricing\](/sql/pricing).
   ///
   /// Request parameters:
   ///
@@ -2425,10 +2425,10 @@ class UsersResource {
 class AclEntry {
   /// The time when this access control entry expires in
   /// [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example
-  /// **2012-11-15T16:19:00.094Z**.
+  /// `2012-11-15T16:19:00.094Z`.
   core.String? expirationTime;
 
-  /// This is always **sql#aclEntry**.
+  /// This is always `sql#aclEntry`.
   core.String? kind;
 
   /// A label to identify this entry.
@@ -2518,7 +2518,7 @@ class BackupConfiguration {
   /// Whether this configuration is enabled.
   core.bool? enabled;
 
-  /// This is always **sql#backupConfiguration**.
+  /// This is always `sql#backupConfiguration`.
   core.String? kind;
 
   /// Location of the backup
@@ -2531,7 +2531,7 @@ class BackupConfiguration {
   core.bool? replicationLogArchivingEnabled;
 
   /// Start time for the daily backup configuration in UTC timezone in the 24
-  /// hour format - **HH:MM**.
+  /// hour format - `HH:MM`.
   core.String? startTime;
 
   /// The number of days of transaction logs we retain for point in time
@@ -2606,7 +2606,7 @@ class BackupContext {
   /// The identifier of the backup.
   core.String? backupId;
 
-  /// This is always **sql#backupContext**.
+  /// This is always `sql#backupContext`.
   core.String? kind;
 
   BackupContext({
@@ -2686,12 +2686,12 @@ class BackupRun {
 
   /// The time the backup operation completed in UTC timezone in
   /// [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example
-  /// **2012-11-15T16:19:00.094Z**.
+  /// `2012-11-15T16:19:00.094Z`.
   core.String? endTime;
 
   /// The time the run was enqueued in UTC timezone in
   /// [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example
-  /// **2012-11-15T16:19:00.094Z**.
+  /// `2012-11-15T16:19:00.094Z`.
   core.String? enqueuedTime;
 
   /// Information about why the backup operation failed.
@@ -2707,7 +2707,7 @@ class BackupRun {
   /// Name of the database instance.
   core.String? instance;
 
-  /// This is always **sql#backupRun**.
+  /// This is always `sql#backupRun`.
   core.String? kind;
 
   /// Location of the backups.
@@ -2718,7 +2718,7 @@ class BackupRun {
 
   /// The time the backup operation actually started in UTC timezone in
   /// [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example
-  /// **2012-11-15T16:19:00.094Z**.
+  /// `2012-11-15T16:19:00.094Z`.
   core.String? startTime;
 
   /// The status of this run.
@@ -2750,7 +2750,7 @@ class BackupRun {
 
   /// The start time of the backup window during which this the backup was
   /// attempted in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for
-  /// example **2012-11-15T16:19:00.094Z**.
+  /// example `2012-11-15T16:19:00.094Z`.
   core.String? windowStartTime;
 
   BackupRun({
@@ -2850,7 +2850,7 @@ class BackupRunsListResponse {
   /// A list of backup runs in reverse chronological order of the enqueued time.
   core.List<BackupRun>? items;
 
-  /// This is always **sql#backupRunsList**.
+  /// This is always `sql#backupRunsList`.
   core.String? kind;
 
   /// The continuation token, used to page through large result sets.
@@ -2894,7 +2894,7 @@ class BinLogCoordinates {
   /// Position (offset) within the binary log file.
   core.String? binLogPosition;
 
-  /// This is always **sql#binLogCoordinates**.
+  /// This is always `sql#binLogCoordinates`.
   core.String? kind;
 
   BinLogCoordinates({
@@ -2923,6 +2923,15 @@ class BinLogCoordinates {
 
 /// Database instance clone context.
 class CloneContext {
+  /// The name of the allocated ip range for the private ip CloudSQL instance.
+  ///
+  /// For example: "google-managed-services-default". If set, the cloned
+  /// instance ip will be created in the allocated range. The range name must
+  /// comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically,
+  /// the name must be 1-63 characters long and match the regular expression
+  /// \[a-z\](\[-a-z0-9\]*\[a-z0-9\])?. Reserved for future use.
+  core.String? allocatedIpRange;
+
   /// Binary log coordinates, if specified, identify the position up to which
   /// the source instance is cloned.
   ///
@@ -2933,7 +2942,7 @@ class CloneContext {
   /// Name of the Cloud SQL instance to be created as a clone.
   core.String? destinationInstanceName;
 
-  /// This is always **sql#cloneContext**.
+  /// This is always `sql#cloneContext`.
   core.String? kind;
 
   /// Reserved for future use.
@@ -2944,6 +2953,7 @@ class CloneContext {
   core.String? pointInTime;
 
   CloneContext({
+    this.allocatedIpRange,
     this.binLogCoordinates,
     this.destinationInstanceName,
     this.kind,
@@ -2953,6 +2963,9 @@ class CloneContext {
 
   CloneContext.fromJson(core.Map _json)
       : this(
+          allocatedIpRange: _json.containsKey('allocatedIpRange')
+              ? _json['allocatedIpRange'] as core.String
+              : null,
           binLogCoordinates: _json.containsKey('binLogCoordinates')
               ? BinLogCoordinates.fromJson(_json['binLogCoordinates']
                   as core.Map<core.String, core.dynamic>)
@@ -2970,6 +2983,7 @@ class CloneContext {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (allocatedIpRange != null) 'allocatedIpRange': allocatedIpRange!,
         if (binLogCoordinates != null) 'binLogCoordinates': binLogCoordinates!,
         if (destinationInstanceName != null)
           'destinationInstanceName': destinationInstanceName!,
@@ -2981,11 +2995,11 @@ class CloneContext {
 
 /// Connect settings retrieval response.
 class ConnectSettings {
-  /// **SECOND_GEN**: Cloud SQL database instance.
+  /// `SECOND_GEN`: Cloud SQL database instance.
   ///
-  /// **EXTERNAL**: A database server that is not managed by Google. This
-  /// property is read-only; use the **tier** property in the **settings**
-  /// object to determine the database type.
+  /// `EXTERNAL`: A database server that is not managed by Google. This property
+  /// is read-only; use the `tier` property in the `settings` object to
+  /// determine the database type.
   /// Possible string values are:
   /// - "SQL_BACKEND_TYPE_UNSPECIFIED" : This is an unknown backend type for
   /// instance.
@@ -2996,12 +3010,15 @@ class ConnectSettings {
 
   /// The database engine type and version.
   ///
-  /// The **databaseVersion** field cannot be changed after instance creation.
-  /// MySQL instances: **MYSQL_8_0**, **MYSQL_5_7** (default), or **MYSQL_5_6**.
-  /// PostgreSQL instances: **POSTGRES_9_6**, **POSTGRES_10**, **POSTGRES_11**
-  /// or **POSTGRES_12** (default). SQL Server instances:
-  /// **SQLSERVER_2017_STANDARD** (default), **SQLSERVER_2017_ENTERPRISE**,
-  /// **SQLSERVER_2017_EXPRESS**, or **SQLSERVER_2017_WEB**.
+  /// The `databaseVersion` field cannot be changed after instance creation.
+  /// MySQL instances: `MYSQL_8_0`, `MYSQL_5_7` (default), or `MYSQL_5_6`.
+  /// PostgreSQL instances: `POSTGRES_9_6`, `POSTGRES_10`, `POSTGRES_11` or
+  /// `POSTGRES_12` (default), `POSTGRES_13`, or `POSTGRES_14`. SQL Server
+  /// instances: `SQLSERVER_2017_STANDARD` (default),
+  /// `SQLSERVER_2017_ENTERPRISE`, `SQLSERVER_2017_EXPRESS`,
+  /// `SQLSERVER_2017_WEB`, `SQLSERVER_2019_STANDARD`,
+  /// `SQLSERVER_2019_ENTERPRISE`, `SQLSERVER_2019_EXPRESS`, or
+  /// `SQLSERVER_2019_WEB`.
   /// Possible string values are:
   /// - "SQL_DATABASE_VERSION_UNSPECIFIED" : This is an unknown database
   /// version.
@@ -3044,7 +3061,7 @@ class ConnectSettings {
 
   /// The cloud region for the instance.
   ///
-  /// e.g. **us-central1**, **europe-west1**. The region cannot be changed after
+  /// e.g. `us-central1`, `europe-west1`. The region cannot be changed after
   /// instance creation.
   core.String? region;
 
@@ -3111,7 +3128,7 @@ class Database {
   /// This does not include the project ID.
   core.String? instance;
 
-  /// This is always **sql#database**.
+  /// This is always `sql#database`.
   core.String? kind;
 
   /// The name of the database in the Cloud SQL instance.
@@ -3195,8 +3212,8 @@ class DatabaseFlags {
 
   /// The value of the flag.
   ///
-  /// Booleans are set to **on** for true and **off** for false. This field must
-  /// be omitted if the flag doesn't take a value.
+  /// Boolean flags are set to `on` for true and `off` for false. This field
+  /// must be omitted if the flag doesn't take a value.
   core.String? value;
 
   DatabaseFlags({
@@ -3255,10 +3272,9 @@ class DatabaseInstanceFailoverReplica {
 class DatabaseInstance {
   /// The backend type.
   ///
-  /// **SECOND_GEN**: Cloud SQL database instance. **EXTERNAL**: A database
-  /// server that is not managed by Google. This property is read-only; use the
-  /// **tier** property in the **settings** object to determine the database
-  /// type.
+  /// `SECOND_GEN`: Cloud SQL database instance. `EXTERNAL`: A database server
+  /// that is not managed by Google. This property is read-only; use the `tier`
+  /// property in the `settings` object to determine the database type.
   /// Possible string values are:
   /// - "SQL_BACKEND_TYPE_UNSPECIFIED" : This is an unknown backend type for
   /// instance.
@@ -3272,7 +3288,7 @@ class DatabaseInstance {
 
   /// The time when the instance was created in
   /// [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example
-  /// **2012-11-15T16:19:00.094Z**.
+  /// `2012-11-15T16:19:00.094Z`.
   ///
   /// Output only.
   core.String? createTime;
@@ -3287,14 +3303,14 @@ class DatabaseInstance {
   core.String? currentDiskSize;
 
   /// Stores the current database version running on the instance including
-  /// minor version such as **MYSQL_8_0_18**.
+  /// minor version such as `MYSQL_8_0_18`.
   ///
   /// Output only.
   core.String? databaseInstalledVersion;
 
   /// The database engine type and version.
   ///
-  /// The **databaseVersion** field cannot be changed after instance creation.
+  /// The `databaseVersion` field cannot be changed after instance creation.
   /// Possible string values are:
   /// - "SQL_DATABASE_VERSION_UNSPECIFIED" : This is an unknown database
   /// version.
@@ -3338,7 +3354,7 @@ class DatabaseInstance {
   /// This field is deprecated and will be removed from a future version of the
   /// API.
   ///
-  /// Use the **settings.settingsVersion** field instead.
+  /// Use the `settings.settingsVersion` field instead.
   core.String? etag;
 
   /// The name and status of the failover replica.
@@ -3371,7 +3387,7 @@ class DatabaseInstance {
   /// instances.
   core.String? ipv6Address;
 
-  /// This is always **sql#instance**.
+  /// This is always `sql#instance`.
   core.String? kind;
 
   /// The name of the instance which will act as primary in the replication
@@ -3403,10 +3419,10 @@ class DatabaseInstance {
 
   /// The geographical region.
   ///
-  /// Can be: * **us-central** (**FIRST_GEN** instances only) * **us-central1**
-  /// (**SECOND_GEN** instances only) * **asia-east1** or **europe-west1**.
-  /// Defaults to **us-central** or **us-central1** depending on the instance
-  /// type. The region cannot be changed after instance creation.
+  /// Can be: * `us-central` (`FIRST_GEN` instances only) * `us-central1`
+  /// (`SECOND_GEN` instances only) * `asia-east1` or `europe-west1`. Defaults
+  /// to `us-central` or `us-central1` depending on the instance type. The
+  /// region cannot be changed after instance creation.
   core.String? region;
 
   /// Configuration specific to failover replicas and read replicas.
@@ -3444,7 +3460,7 @@ class DatabaseInstance {
 
   /// The service account email address assigned to the instance.
   ///
-  /// This property is read-only.
+  /// \This property is read-only.
   core.String? serviceAccountEmailAddress;
 
   /// The user settings.
@@ -3676,7 +3692,7 @@ class DatabasesListResponse {
   /// List of database resources in the instance.
   core.List<Database>? items;
 
-  /// This is always **sql#databasesList**.
+  /// This is always `sql#databasesList`.
   core.String? kind;
 
   DatabasesListResponse({
@@ -3704,7 +3720,7 @@ class DatabasesListResponse {
 /// Read-replica configuration for connecting to the on-premises primary
 /// instance.
 class DemoteMasterConfiguration {
-  /// This is always **sql#demoteMasterConfiguration**.
+  /// This is always `sql#demoteMasterConfiguration`.
   core.String? kind;
 
   /// MySQL specific configuration when replicating from a MySQL on-premises
@@ -3713,7 +3729,7 @@ class DemoteMasterConfiguration {
   /// Replication configuration information such as the username, password,
   /// certificates, and keys are not stored in the instance metadata. The
   /// configuration information is used only to set up the replication
-  /// connection and is stored by MySQL in a file named **master.info** in the
+  /// connection and is stored by MySQL in a file named `master.info` in the
   /// data directory.
   DemoteMasterMySqlReplicaConfiguration? mysqlReplicaConfiguration;
 
@@ -3742,7 +3758,7 @@ class DemoteMasterConfiguration {
 
 /// Database instance demote primary instance context.
 class DemoteMasterContext {
-  /// This is always **sql#demoteMasterContext**.
+  /// This is always `sql#demoteMasterContext`.
   core.String? kind;
 
   /// The name of the instance which will act as on-premises primary instance in
@@ -3756,14 +3772,14 @@ class DemoteMasterContext {
   /// Flag to skip replication setup on the instance.
   core.bool? skipReplicationSetup;
 
-  /// Verify GTID consistency for demote operation.
+  /// Verify the GTID consistency for demote operation.
   ///
-  /// Default value: **True**. Setting this flag to false enables you to bypass
-  /// GTID consistency check between on-premises primary instance and Cloud SQL
-  /// instance during the demotion operation but also exposes you to the risk of
-  /// future replication failures. Change the value only if you know the reason
-  /// for the GTID divergence and are confident that doing so will not cause any
-  /// replication issues.
+  /// Default value: `True`. Setting this flag to `false` enables you to bypass
+  /// the GTID consistency check between on-premises primary instance and Cloud
+  /// SQL instance during the demotion operation but also exposes you to the
+  /// risk of future replication failures. Change the value only if you know the
+  /// reason for the GTID divergence and are confident that doing so will not
+  /// cause any replication issues.
   core.bool? verifyGtidConsistency;
 
   DemoteMasterContext({
@@ -3819,7 +3835,7 @@ class DemoteMasterMySqlReplicaConfiguration {
   /// format of the replica's private key can be either PKCS #1 or PKCS #8.
   core.String? clientKey;
 
-  /// This is always **sql#demoteMasterMysqlReplicaConfiguration**.
+  /// This is always `sql#demoteMasterMysqlReplicaConfiguration`.
   core.String? kind;
 
   /// The password for the replication connection.
@@ -3919,7 +3935,7 @@ class DenyMaintenancePeriod {
 
 /// Disk encryption configuration for an instance.
 class DiskEncryptionConfiguration {
-  /// This is always **sql#diskEncryptionConfiguration**.
+  /// This is always `sql#diskEncryptionConfiguration`.
   core.String? kind;
 
   /// Resource name of KMS key for disk encryption
@@ -3946,7 +3962,7 @@ class DiskEncryptionConfiguration {
 
 /// Disk encryption status for an instance.
 class DiskEncryptionStatus {
-  /// This is always **sql#diskEncryptionStatus**.
+  /// This is always `sql#diskEncryptionStatus`.
   core.String? kind;
 
   /// KMS key version used to encrypt the Cloud SQL instance resource
@@ -3973,7 +3989,7 @@ class DiskEncryptionStatus {
 
 /// Options for exporting data as CSV.
 ///
-/// **MySQL** and **PostgreSQL** instances only.
+/// `MySQL` and `PostgreSQL` instances only.
 class ExportContextCsvExportOptions {
   /// Specifies the character that should appear before a data character that
   /// needs to be escaped.
@@ -4036,11 +4052,11 @@ class ExportContextCsvExportOptions {
 class ExportContextSqlExportOptionsMysqlExportOptions {
   /// Option to include SQL statement required to set up replication.
   ///
-  /// If set to **1**, the dump file includes a CHANGE MASTER TO statement with
+  /// If set to `1`, the dump file includes a CHANGE MASTER TO statement with
   /// the binary log coordinates, and --set-gtid-purged is set to ON. If set to
-  /// **2**, the CHANGE MASTER TO statement is written as a SQL comment and has
-  /// no effect. If set to any value other than **1**, --set-gtid-purged is set
-  /// to OFF.
+  /// `2`, the CHANGE MASTER TO statement is written as a SQL comment and has no
+  /// effect. If set to any value other than `1`, --set-gtid-purged is set to
+  /// OFF.
   core.int? masterData;
 
   ExportContextSqlExportOptionsMysqlExportOptions({
@@ -4108,21 +4124,20 @@ class ExportContextSqlExportOptions {
 class ExportContext {
   /// Options for exporting data as CSV.
   ///
-  /// **MySQL** and **PostgreSQL** instances only.
+  /// `MySQL` and `PostgreSQL` instances only.
   ExportContextCsvExportOptions? csvExportOptions;
 
   /// Databases to be exported.
   ///
-  /// **MySQL instances:** If **fileType** is **SQL** and no database is
-  /// specified, all databases are exported, except for the **mysql** system
-  /// database. If **fileType** is **CSV**, you can specify one database, either
-  /// by using this property or by using the **csvExportOptions.selectQuery**
-  /// property, which takes precedence over this property. **PostgreSQL
-  /// instances:** You must specify one database to be exported. If **fileType**
-  /// is **CSV**, this database must match the one specified in the
-  /// **csvExportOptions.selectQuery** property. **SQL Server instances:** You
-  /// must specify one database to be exported, and the **fileType** must be
-  /// **BAK**.
+  /// `MySQL instances:` If `fileType` is `SQL` and no database is specified,
+  /// all databases are exported, except for the `mysql` system database. If
+  /// `fileType` is `CSV`, you can specify one database, either by using this
+  /// property or by using the `csvExportOptions.selectQuery` property, which
+  /// takes precedence over this property. `PostgreSQL instances:` You must
+  /// specify one database to be exported. If `fileType` is `CSV`, this database
+  /// must match the one specified in the `csvExportOptions.selectQuery`
+  /// property. `SQL Server instances:` You must specify one database to be
+  /// exported, and the `fileType` must be `BAK`.
   core.List<core.String>? databases;
 
   /// The file type for the specified uri.
@@ -4133,7 +4148,7 @@ class ExportContext {
   /// - "BAK"
   core.String? fileType;
 
-  /// This is always **sql#exportContext**.
+  /// This is always `sql#exportContext`.
   core.String? kind;
 
   /// Option for export offload.
@@ -4145,9 +4160,9 @@ class ExportContext {
   /// The path to the file in Google Cloud Storage where the export will be
   /// stored.
   ///
-  /// The URI is in the form **gs://bucketName/fileName**. If the file already
-  /// exists, the request succeeds, but the operation fails. If **fileType** is
-  /// **SQL** and the filename ends with .gz, the contents are compressed.
+  /// The URI is in the form `gs://bucketName/fileName`. If the file already
+  /// exists, the request succeeds, but the operation fails. If `fileType` is
+  /// `SQL` and the filename ends with .gz, the contents are compressed.
   core.String? uri;
 
   ExportContext({
@@ -4198,7 +4213,7 @@ class ExportContext {
 
 /// Database instance failover context.
 class FailoverContext {
-  /// This is always **sql#failoverContext**.
+  /// This is always `sql#failoverContext`.
   core.String? kind;
 
   /// The current settings version of this instance.
@@ -4233,30 +4248,37 @@ class Flag {
   /// Can be combined with min_value and max_value to add additional values.
   core.List<core.String>? allowedIntValues;
 
-  /// For **STRING** flags, a list of strings that the value can be set to.
+  /// For `STRING` flags, a list of strings that the value can be set to.
   core.List<core.String>? allowedStringValues;
 
   /// The database version this flag applies to.
   ///
-  /// Can be **MYSQL_8_0**, **MYSQL_5_6**, or **MYSQL_5_7**.
+  /// Can be MySQL instances: `MYSQL_8_0`, `MYSQL_8_0_18`, `MYSQL_8_0_26`,
+  /// `MYSQL_5_7`, or `MYSQL_5_6`. PostgreSQL instances: `POSTGRES_9_6`,
+  /// `POSTGRES_10`, `POSTGRES_11` or `POSTGRES_12`. SQL Server instances:
+  /// `SQLSERVER_2017_STANDARD`, `SQLSERVER_2017_ENTERPRISE`,
+  /// `SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`, `SQLSERVER_2019_STANDARD`,
+  /// `SQLSERVER_2019_ENTERPRISE`, `SQLSERVER_2019_EXPRESS`, or
+  /// `SQLSERVER_2019_WEB`. See \[the complete
+  /// list\](/sql/docs/mysql/admin-api/rest/v1/SqlDatabaseVersion).
   core.List<core.String>? appliesTo;
 
   /// Whether or not the flag is considered in beta.
   core.bool? inBeta;
 
-  /// This is always **sql#flag**.
+  /// This is always `sql#flag`.
   core.String? kind;
 
-  /// For **INTEGER** flags, the maximum allowed value.
+  /// For `INTEGER` flags, the maximum allowed value.
   core.String? maxValue;
 
-  /// For **INTEGER** flags, the minimum allowed value.
+  /// For `INTEGER` flags, the minimum allowed value.
   core.String? minValue;
 
   /// This is the name of the flag.
   ///
   /// Flag names always use underscores, not hyphens, for example:
-  /// **max_allowed_packet**
+  /// `max_allowed_packet`
   core.String? name;
 
   /// Indicates whether changing this flag will trigger a database restart.
@@ -4266,9 +4288,8 @@ class Flag {
 
   /// The type of the flag.
   ///
-  /// Flags are typed to being **BOOLEAN**, **STRING**, **INTEGER** or **NONE**.
-  /// **NONE** is used for flags which do not take a value, such as
-  /// **skip_grant_tables**.
+  /// Flags are typed to being `BOOLEAN`, `STRING`, `INTEGER` or `NONE`. `NONE`
+  /// is used for flags which do not take a value, such as `skip_grant_tables`.
   /// Possible string values are:
   /// - "SQL_FLAG_TYPE_UNSPECIFIED" : This is an unknown flag type.
   /// - "BOOLEAN" : Boolean type flag.
@@ -4348,7 +4369,7 @@ class FlagsListResponse {
   /// List of flags.
   core.List<Flag>? items;
 
-  /// This is always **sql#flagsList**.
+  /// This is always `sql#flagsList`.
   core.String? kind;
 
   FlagsListResponse({
@@ -4448,7 +4469,7 @@ class GenerateEphemeralCertResponse {
 
 class ImportContextBakImportOptionsEncryptionOptions {
   /// Path to the Certificate (.cer) in Cloud Storage, in the form
-  /// **gs://bucketName/fileName**.
+  /// `gs://bucketName/fileName`.
   ///
   /// The instance must have write permissions to the bucket and read access to
   /// the file.
@@ -4458,7 +4479,7 @@ class ImportContextBakImportOptionsEncryptionOptions {
   core.String? pvkPassword;
 
   /// Path to the Certificate Private Key (.pvk) in Cloud Storage, in the form
-  /// **gs://bucketName/fileName**.
+  /// `gs://bucketName/fileName`.
   ///
   /// The instance must have write permissions to the bucket and read access to
   /// the file.
@@ -4593,17 +4614,16 @@ class ImportContext {
 
   /// The target database for the import.
   ///
-  /// If **fileType** is **SQL**, this field is required only if the import file
+  /// If `fileType` is `SQL`, this field is required only if the import file
   /// does not specify a database, and is overridden by any database
-  /// specification in the import file. If **fileType** is **CSV**, one database
+  /// specification in the import file. If `fileType` is `CSV`, one database
   /// must be specified.
   core.String? database;
 
   /// The file type for the specified uri.
   ///
-  /// * **SQL**: The file contains SQL statements. * **CSV**: The file contains
-  /// CSV data. * **BAK**: The file contains backup data for a SQL Server
-  /// instance.
+  /// * `SQL`: The file contains SQL statements. * `CSV`: The file contains CSV
+  /// data. * `BAK`: The file contains backup data for a SQL Server instance.
   /// Possible string values are:
   /// - "SQL_FILE_TYPE_UNSPECIFIED" : Unknown file type.
   /// - "SQL" : File containing SQL statements.
@@ -4616,15 +4636,15 @@ class ImportContext {
   /// PostgreSQL instances only.
   core.String? importUser;
 
-  /// This is always **sql#importContext**.
+  /// This is always `sql#importContext`.
   core.String? kind;
 
   /// Path to the import file in Cloud Storage, in the form
-  /// **gs://bucketName/fileName**.
+  /// `gs://bucketName/fileName`.
   ///
-  /// Compressed gzip files (.gz) are supported when **fileType** is **SQL**.
-  /// The instance must have write permissions to the bucket and read access to
-  /// the file.
+  /// Compressed gzip files (.gz) are supported when `fileType` is `SQL`. The
+  /// instance must have write permissions to the bucket and read access to the
+  /// file.
   core.String? uri;
 
   ImportContext({
@@ -4895,7 +4915,7 @@ class InstancesListResponse {
   /// List of database instance resources.
   core.List<DatabaseInstance>? items;
 
-  /// This is always **sql#instancesList**.
+  /// This is always `sql#instancesList`.
   core.String? kind;
 
   /// The continuation token, used to page through large result sets.
@@ -4949,7 +4969,7 @@ class InstancesListServerCasResponse {
   /// List of server CA certificates for the instance.
   core.List<SslCert>? certs;
 
-  /// This is always **sql#instancesListServerCas**.
+  /// This is always `sql#instancesListServerCas`.
   core.String? kind;
 
   InstancesListServerCasResponse({
@@ -5063,7 +5083,7 @@ class IpConfiguration {
   /// using the IP.
   ///
   /// In 'CIDR' notation, also known as 'slash' notation (for example:
-  /// **157.197.200.0/24**).
+  /// `157.197.200.0/24`).
   core.List<AclEntry>? authorizedNetworks;
 
   /// Whether the instance is assigned a public IP address or not.
@@ -5072,8 +5092,8 @@ class IpConfiguration {
   /// The resource link for the VPC network from which the Cloud SQL instance is
   /// accessible for private IP.
   ///
-  /// For example, * * / projects/myProject/global/networks/default**. This
-  /// setting can be updated, but it cannot be removed after it is set.
+  /// For example, `/projects/myProject/global/networks/default`. This setting
+  /// can be updated, but it cannot be removed after it is set.
   core.String? privateNetwork;
 
   /// Whether SSL connections over IP are enforced or not.
@@ -5126,16 +5146,16 @@ class IpMapping {
 
   /// The due time for this IP to be retired in
   /// [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example
-  /// **2012-11-15T16:19:00.094Z**.
+  /// `2012-11-15T16:19:00.094Z`.
   ///
   /// This field is only available when the IP is scheduled to be retired.
   core.String? timeToRetire;
 
   /// The type of this IP address.
   ///
-  /// A **PRIMARY** address is a public address that can accept incoming
-  /// connections. A **PRIVATE** address is a private address that can accept
-  /// incoming connections. An **OUTGOING** address is the source address of
+  /// A `PRIMARY` address is a public address that can accept incoming
+  /// connections. A `PRIVATE` address is a private address that can accept
+  /// incoming connections. An `OUTGOING` address is the source address of
   /// connections originating from the instance, if supported.
   /// Possible string values are:
   /// - "SQL_IP_ADDRESS_TYPE_UNSPECIFIED" : This is an unknown IP address type.
@@ -5187,7 +5207,7 @@ class LocationPreference {
   /// WARNING: Changing this might restart the instance.
   core.String? followGaeApplication;
 
-  /// This is always **sql#locationPreference**.
+  /// This is always `sql#locationPreference`.
   core.String? kind;
 
   /// The preferred Compute Engine zone for the secondary/failover (for example:
@@ -5241,10 +5261,10 @@ class MaintenanceWindow {
   /// hour of day - 0 to 23.
   core.int? hour;
 
-  /// This is always **sql#maintenanceWindow**.
+  /// This is always `sql#maintenanceWindow`.
   core.String? kind;
 
-  /// Maintenance timing setting: **canary** (Earlier) or **stable** (Later).
+  /// Maintenance timing setting: `canary` (Earlier) or `stable` (Later).
   ///
   /// [Learn more](https://cloud.google.com/sql/docs/mysql/instance-settings#maintenance-timing-2ndgen).
   /// Possible string values are:
@@ -5310,7 +5330,7 @@ class MySqlReplicaConfiguration {
   /// when using mysqldump.
   core.String? dumpFilePath;
 
-  /// This is always **sql#mysqlReplicaConfiguration**.
+  /// This is always `sql#mysqlReplicaConfiguration`.
   core.String? kind;
 
   /// Interval in milliseconds between replication heartbeats.
@@ -5439,7 +5459,7 @@ class OnPremisesConfiguration {
   /// The host and port of the on-premises instance in host:port format
   core.String? hostPort;
 
-  /// This is always **sql#onPremisesConfiguration**.
+  /// This is always `sql#onPremisesConfiguration`.
   core.String? kind;
 
   /// The password for connecting to on-premises instance.
@@ -5516,7 +5536,7 @@ class Operation {
 
   /// The time this operation finished in UTC timezone in
   /// [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example
-  /// **2012-11-15T16:19:00.094Z**.
+  /// `2012-11-15T16:19:00.094Z`.
   core.String? endTime;
 
   /// If errors occurred during processing of this operation, this field will be
@@ -5531,10 +5551,10 @@ class Operation {
 
   /// The time this operation was enqueued in UTC timezone in
   /// [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example
-  /// **2012-11-15T16:19:00.094Z**.
+  /// `2012-11-15T16:19:00.094Z`.
   core.String? insertTime;
 
-  /// This is always **sql#operation**.
+  /// This is always `sql#operation`.
   core.String? kind;
 
   /// An identifier that uniquely identifies the operation.
@@ -5545,10 +5565,9 @@ class Operation {
 
   /// The type of the operation.
   ///
-  /// Valid values are: * **CREATE** * **DELETE** * **UPDATE** * **RESTART** *
-  /// **IMPORT** * **EXPORT** * **BACKUP_VOLUME** * **RESTORE_VOLUME** *
-  /// **CREATE_USER** * **DELETE_USER** * **CREATE_DATABASE** *
-  /// **DELETE_DATABASE**
+  /// Valid values are: * `CREATE` * `DELETE` * `UPDATE` * `RESTART` * `IMPORT`
+  /// * `EXPORT` * `BACKUP_VOLUME` * `RESTORE_VOLUME` * `CREATE_USER` *
+  /// `DELETE_USER` * `CREATE_DATABASE` * `DELETE_DATABASE`
   /// Possible string values are:
   /// - "SQL_OPERATION_TYPE_UNSPECIFIED" : Unknown operation type.
   /// - "IMPORT" : Imports data into a Cloud SQL instance.
@@ -5600,7 +5619,7 @@ class Operation {
 
   /// The time this operation actually started in UTC timezone in
   /// [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example
-  /// **2012-11-15T16:19:00.094Z**.
+  /// `2012-11-15T16:19:00.094Z`.
   core.String? startTime;
 
   /// The status of an operation.
@@ -5716,7 +5735,7 @@ class OperationError {
   /// Identifies the specific error that occurred.
   core.String? code;
 
-  /// This is always **sql#operationError**.
+  /// This is always `sql#operationError`.
   core.String? kind;
 
   /// Additional information about the error encountered.
@@ -5749,7 +5768,7 @@ class OperationErrors {
   /// The list of errors encountered while processing this operation.
   core.List<OperationError>? errors;
 
-  /// This is always **sql#operationErrors**.
+  /// This is always `sql#operationErrors`.
   core.String? kind;
 
   OperationErrors({
@@ -5779,7 +5798,7 @@ class OperationsListResponse {
   /// List of operation resources.
   core.List<Operation>? items;
 
-  /// This is always **sql#operationsList**.
+  /// This is always `sql#operationsList`.
   core.String? kind;
 
   /// The continuation token, used to page through large result sets.
@@ -5860,6 +5879,8 @@ class PasswordValidationPolicy {
   core.int? minLength;
 
   /// Minimum interval after which the password can be changed.
+  ///
+  /// This flag is only supported for PostgresSQL.
   core.String? passwordChangeInterval;
 
   /// Number of previous passwords that cannot be reused.
@@ -5908,14 +5929,14 @@ class PasswordValidationPolicy {
 class ReplicaConfiguration {
   /// Specifies if the replica is the failover target.
   ///
-  /// If the field is set to **true** the replica will be designated as a
-  /// failover replica. In case the primary instance fails, the replica instance
-  /// will be promoted as the new primary instance. Only one replica can be
-  /// specified as failover target, and the replica has to be in different zone
-  /// with the primary instance.
+  /// If the field is set to `true` the replica will be designated as a failover
+  /// replica. In case the primary instance fails, the replica instance will be
+  /// promoted as the new primary instance. Only one replica can be specified as
+  /// failover target, and the replica has to be in different zone with the
+  /// primary instance.
   core.bool? failoverTarget;
 
-  /// This is always **sql#replicaConfiguration**.
+  /// This is always `sql#replicaConfiguration`.
   core.String? kind;
 
   /// MySQL specific configuration when replicating from a MySQL on-premises
@@ -5924,7 +5945,7 @@ class ReplicaConfiguration {
   /// Replication configuration information such as the username, password,
   /// certificates, and keys are not stored in the instance metadata. The
   /// configuration information is used only to set up the replication
-  /// connection and is stored by MySQL in a file named **master.info** in the
+  /// connection and is stored by MySQL in a file named `master.info` in the
   /// data directory.
   MySqlReplicaConfiguration? mysqlReplicaConfiguration;
 
@@ -5971,7 +5992,7 @@ class Reschedule {
   /// Timestamp when the maintenance shall be rescheduled to if
   /// reschedule_type=SPECIFIC_TIME, in
   /// [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example
-  /// **2012-11-15T16:19:00.094Z**.
+  /// `2012-11-15T16:19:00.094Z`.
   ///
   /// Optional.
   core.String? scheduleTime;
@@ -6007,7 +6028,7 @@ class RestoreBackupContext {
   /// The ID of the instance that the backup was taken from.
   core.String? instanceId;
 
-  /// This is always **sql#restoreBackupContext**.
+  /// This is always `sql#restoreBackupContext`.
   core.String? kind;
 
   /// The full project ID of the source instance.
@@ -6044,7 +6065,7 @@ class RestoreBackupContext {
 
 /// Instance rotate server CA context.
 class RotateServerCaContext {
-  /// This is always **sql#rotateServerCaContext**.
+  /// This is always `sql#rotateServerCaContext`.
   core.String? kind;
 
   /// The fingerprint of the next version to be rotated to.
@@ -6077,9 +6098,9 @@ class Settings {
   /// The activation policy specifies when the instance is activated; it is
   /// applicable only when the instance state is RUNNABLE.
   ///
-  /// Valid values: * **ALWAYS**: The instance is on, and remains so even in the
-  /// absence of connection requests. * **NEVER**: The instance is off; it is
-  /// not activated, even if a connection request arrives.
+  /// Valid values: * `ALWAYS`: The instance is on, and remains so even in the
+  /// absence of connection requests. * `NEVER`: The instance is off; it is not
+  /// activated, even if a connection request arrives.
   /// Possible string values are:
   /// - "SQL_ACTIVATION_POLICY_UNSPECIFIED" : Unknown activation plan.
   /// - "ALWAYS" : The instance is always up and running.
@@ -6098,9 +6119,9 @@ class Settings {
 
   /// Availability type.
   ///
-  /// Potential values: * **ZONAL**: The instance serves data from only one
-  /// zone. Outages in that zone affect data accessibility. * **REGIONAL**: The
-  /// instance can serve data from more than one zone in a region (it is highly
+  /// Potential values: * `ZONAL`: The instance serves data from only one zone.
+  /// Outages in that zone affect data accessibility. * `REGIONAL`: The instance
+  /// can serve data from more than one zone in a region (it is highly
   /// available)./ For more information, see
   /// [Overview of the High Availability Configuration](https://cloud.google.com/sql/docs/mysql/high-availability).
   /// Possible string values are:
@@ -6127,7 +6148,7 @@ class Settings {
   /// The data disk size minimum is 10GB.
   core.String? dataDiskSizeGb;
 
-  /// The type of data disk: **PD_SSD** (default) or **PD_HDD**.
+  /// The type of data disk: `PD_SSD` (default) or `PD_HDD`.
   ///
   /// Not used for First Generation instances.
   /// Possible string values are:
@@ -6160,7 +6181,7 @@ class Settings {
   /// for Second Generation instances.
   IpConfiguration? ipConfiguration;
 
-  /// This is always **sql#settings**.
+  /// This is always `sql#settings`.
   core.String? kind;
 
   /// The location preference settings.
@@ -6181,8 +6202,8 @@ class Settings {
 
   /// The pricing plan for this instance.
   ///
-  /// This can be either **PER_USE** or **PACKAGE**. Only **PER_USE** is
-  /// supported for Second Generation instances.
+  /// This can be either `PER_USE` or `PACKAGE`. Only `PER_USE` is supported for
+  /// Second Generation instances.
   /// Possible string values are:
   /// - "SQL_PRICING_PLAN_UNSPECIFIED" : This is an unknown pricing plan for
   /// this instance.
@@ -6192,7 +6213,7 @@ class Settings {
 
   /// The type of replication this instance uses.
   ///
-  /// This can be either **ASYNCHRONOUS** or **SYNCHRONOUS**. (Deprecated) This
+  /// This can be either `ASYNCHRONOUS` or `SYNCHRONOUS`. (Deprecated) This
   /// property was only applicable to First Generation instances.
   /// Possible string values are:
   /// - "SQL_REPLICATION_TYPE_UNSPECIFIED" : This is an unknown replication type
@@ -6226,7 +6247,7 @@ class Settings {
   core.String? storageAutoResizeLimit;
 
   /// The tier (or machine type) for this instance, for example
-  /// **db-custom-1-3840**.
+  /// `db-custom-1-3840`.
   ///
   /// WARNING: Changing this restarts the instance.
   core.String? tier;
@@ -6441,8 +6462,7 @@ class SqlExternalSyncSettingError {
   /// Additional information about the error encountered.
   core.String? detail;
 
-  /// Can be **sql#externalSyncSettingError** or
-  /// **sql#externalSyncSettingWarning**.
+  /// Can be `sql#externalSyncSettingError` or `sql#externalSyncSettingWarning`.
   core.String? kind;
 
   /// Identifies the specific error that occurred.
@@ -6646,7 +6666,7 @@ class SqlInstancesVerifyExternalSyncSettingsResponse {
   /// List of migration violations.
   core.List<SqlExternalSyncSettingError>? errors;
 
-  /// This is always **sql#migrationSettingErrorList**.
+  /// This is always `sql#migrationSettingErrorList`.
   core.String? kind;
 
   /// List of migration warnings.
@@ -6873,18 +6893,18 @@ class SslCert {
 
   /// The time when the certificate was created in
   /// [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example
-  /// **2012-11-15T16:19:00.094Z**.
+  /// `2012-11-15T16:19:00.094Z`.
   core.String? createTime;
 
   /// The time when the certificate expires in
   /// [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example
-  /// **2012-11-15T16:19:00.094Z**.
+  /// `2012-11-15T16:19:00.094Z`.
   core.String? expirationTime;
 
   /// Name of the database instance.
   core.String? instance;
 
-  /// This is always **sql#sslCert**.
+  /// This is always `sql#sslCert`.
   core.String? kind;
 
   /// The URI of this resource.
@@ -7034,7 +7054,7 @@ class SslCertsInsertResponse {
   /// The new client certificate and private key.
   SslCertDetail? clientCert;
 
-  /// This is always **sql#sslCertsInsert**.
+  /// This is always `sql#sslCertsInsert`.
   core.String? kind;
 
   /// The operation to track the ssl certs insert request.
@@ -7083,7 +7103,7 @@ class SslCertsListResponse {
   /// List of client certificates for the instance.
   core.List<SslCert>? items;
 
-  /// This is always **sql#sslCertsList**.
+  /// This is always `sql#sslCertsList`.
   core.String? kind;
 
   SslCertsListResponse({
@@ -7146,15 +7166,15 @@ class Tier {
   /// The maximum RAM usage of this tier in bytes.
   core.String? RAM;
 
-  /// This is always *sql#tier*.
+  /// This is always `sql#tier`.
   core.String? kind;
 
   /// The applicable regions for this tier.
   core.List<core.String>? region;
 
-  /// An identifier for the machine type, for example, db-custom-1-3840.
+  /// An identifier for the machine type, for example, `db-custom-1-3840`.
   ///
-  /// For related information, see Pricing.
+  /// For related information, see \[Pricing\](/sql/pricing).
   core.String? tier;
 
   Tier({
@@ -7194,7 +7214,7 @@ class TiersListResponse {
   /// List of tiers.
   core.List<Tier>? items;
 
-  /// This is always *sql#tiersList*.
+  /// This is always `sql#tiersList`.
   core.String? kind;
 
   TiersListResponse({
@@ -7221,12 +7241,12 @@ class TiersListResponse {
 
 /// Database Instance truncate log context.
 class TruncateLogContext {
-  /// This is always **sql#truncateLogContext**.
+  /// This is always `sql#truncateLogContext`.
   core.String? kind;
 
   /// The type of log to truncate.
   ///
-  /// Valid values are **MYSQL_GENERAL_TABLE** and **MYSQL_SLOW_TABLE**.
+  /// Valid values are `MYSQL_GENERAL_TABLE` and `MYSQL_SLOW_TABLE`.
   core.String? logType;
 
   TruncateLogContext({
@@ -7254,28 +7274,28 @@ class User {
   /// API.
   core.String? etag;
 
-  /// The host name from which the user can connect.
+  /// The host from which the user can connect.
   ///
-  /// For **insert** operations, host defaults to an empty string. For
-  /// **update** operations, host is specified as part of the request URL. The
-  /// host name cannot be updated after insertion. For a MySQL instance, it's
-  /// required; for a PostgreSQL or SQL Server instance, it's optional.
+  /// For `insert` operations, host defaults to an empty string. For `update`
+  /// operations, host is specified as part of the request URL. The host name
+  /// cannot be updated after insertion. For a MySQL instance, it's required;
+  /// for a PostgreSQL or SQL Server instance, it's optional.
   ///
   /// Optional.
   core.String? host;
 
   /// The name of the Cloud SQL instance.
   ///
-  /// This does not include the project ID. Can be omitted for *update* since it
-  /// is already specified on the URL.
+  /// This does not include the project ID. Can be omitted for *update* because
+  /// it is already specified on the URL.
   core.String? instance;
 
-  /// This is always *sql#user*.
+  /// This is always `sql#user`.
   core.String? kind;
 
   /// The name of the user in the Cloud SQL instance.
   ///
-  /// Can be omitted for **update** since it is already specified in the URL.
+  /// Can be omitted for `update` because it is already specified in the URL.
   core.String? name;
 
   /// The password for the user.
@@ -7287,7 +7307,7 @@ class User {
   /// The project ID of the project containing the Cloud SQL database.
   ///
   /// The Google apps domain is prefixed if applicable. Can be omitted for
-  /// *update* since it is already specified on the URL.
+  /// *update* because it is already specified on the URL.
   core.String? project;
   SqlServerUserDetails? sqlserverUserDetails;
 

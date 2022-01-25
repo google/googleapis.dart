@@ -752,7 +752,7 @@
             }
         }
     },
-    "revision": "20220103",
+    "revision": "20220119",
     "rootUrl": "https://accessapproval.googleapis.com/",
     "schemas": {
         "AccessApprovalSettings": {

@@ -1005,7 +1005,7 @@
             }
         }
     },
-    "revision": "20220106",
+    "revision": "20220120",
     "rootUrl": "https://retail.googleapis.com/",
     "schemas": {
         "GoogleApiHttpBody": {

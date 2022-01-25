@@ -1029,9 +1029,7 @@ class ActionResponse {
   /// is only permitted as a response to a MESSAGE event with a matched url, or
   /// a CARD_CLICKED event where the message sender type is HUMAN. Text will be
   /// ignored.
-  /// - "REQUEST_CONFIG" : Update a message, with cards only. (Only after a
-  /// MESSAGE event with a matched url, or a CARD_CLICKED event on a human
-  /// created message).
+  /// - "REQUEST_CONFIG" : Privately ask the user for additional auth or config.
   core.String? type;
 
   /// URL for users to auth or config.

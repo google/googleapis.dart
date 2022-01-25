@@ -193,9 +193,10 @@ class AccountsResource {
   ///
   /// [accountId] - The ID of the account whose website is claimed.
   ///
-  /// [overwrite] - Only available to selected merchants. When set to `True`,
-  /// this flag removes any existing claim on the requested website by another
-  /// account and replaces it with a claim from this account.
+  /// [overwrite] - Only available to selected merchants, for example
+  /// multi-client accounts (MCAs) and their sub-accounts. When set to `True`,
+  /// this flag removes any existing claim on the requested website and replaces
+  /// it with a claim from the account that makes the request.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.

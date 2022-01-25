@@ -109,6 +109,7 @@ api.Endpoint buildEndpoint() {
     o.address = 'foo';
     o.annotations = buildUnnamed1();
     o.name = 'foo';
+    o.network = 'foo';
     o.port = 42;
   }
   buildCounterEndpoint--;
@@ -125,6 +126,10 @@ void checkEndpoint(api.Endpoint o) {
     checkUnnamed1(o.annotations!);
     unittest.expect(
       o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.network!,
       unittest.equals('foo'),
     );
     unittest.expect(

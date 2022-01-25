@@ -82,10 +82,8 @@ class ProjectsLocationsResource {
 
   ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
 
-  /// The FetchStaticIps API call exposes the static ips used by Datastream.
-  ///
-  /// Typically, a request returns children data objects under a parent data
-  /// object that's optionally supplied in the request.
+  /// The FetchStaticIps API call exposes the static IP addresses used by
+  /// Datastream.
   ///
   /// Request parameters:
   ///
@@ -1950,6 +1948,8 @@ class DestinationConfig {
   ///
   /// Required.
   core.String? destinationConnectionProfileName;
+
+  /// GCS destination configuration.
   GcsDestinationConfig? gcsDestinationConfig;
 
   DestinationConfig({
@@ -2753,9 +2753,13 @@ class MysqlDatabase {
 /// Mysql data source object identifier.
 class MysqlObjectIdentifier {
   /// The database name.
+  ///
+  /// Required.
   core.String? database;
 
   /// The table name.
+  ///
+  /// Required.
   core.String? table;
 
   MysqlObjectIdentifier({
@@ -3171,9 +3175,13 @@ class OracleColumn {
 /// Oracle data source object identifier.
 class OracleObjectIdentifier {
   /// The schema name.
+  ///
+  /// Required.
   core.String? schema;
 
   /// The table name.
+  ///
+  /// Required.
   core.String? table;
 
   OracleObjectIdentifier({
@@ -3426,7 +3434,7 @@ class PrivateConnection {
   /// - "STATE_UNSPECIFIED"
   /// - "CREATING" : The private connection is in creation state - creating
   /// resources.
-  /// - "CREATED" : The private connection has been created with all of it's
+  /// - "CREATED" : The private connection has been created with all of its
   /// resources.
   /// - "FAILED" : The private connection creation has failed.
   /// - "DELETING" : The private connection is being deleted.

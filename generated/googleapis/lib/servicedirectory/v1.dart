@@ -1362,6 +1362,17 @@ class Endpoint {
   /// Immutable.
   core.String? name;
 
+  /// The Google Compute Engine network (VPC) of the endpoint in the format
+  /// `projects//locations/global/networks / * `.
+  ///
+  /// The project must be specified by project number (project id is rejected).
+  /// Incorrectly formatted networks are rejected, we also check to make sure
+  /// that you have the servicedirectory.networks.attach permission on the
+  /// project specified.
+  ///
+  /// Immutable.
+  core.String? network;
+
   /// Service Directory rejects values outside of `[0, 65535]`.
   ///
   /// Optional.
@@ -1371,6 +1382,7 @@ class Endpoint {
     this.address,
     this.annotations,
     this.name,
+    this.network,
     this.port,
   });
 
@@ -1389,6 +1401,9 @@ class Endpoint {
                 )
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          network: _json.containsKey('network')
+              ? _json['network'] as core.String
+              : null,
           port: _json.containsKey('port') ? _json['port'] as core.int : null,
         );
 
@@ -1396,6 +1411,7 @@ class Endpoint {
         if (address != null) 'address': address!,
         if (annotations != null) 'annotations': annotations!,
         if (name != null) 'name': name!,
+        if (network != null) 'network': network!,
         if (port != null) 'port': port!,
       };
 }

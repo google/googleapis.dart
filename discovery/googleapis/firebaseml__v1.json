@@ -202,7 +202,7 @@
             }
         }
     },
-    "revision": "20220112",
+    "revision": "20220122",
     "rootUrl": "https://firebaseml.googleapis.com/",
     "schemas": {
         "CancelOperationRequest": {

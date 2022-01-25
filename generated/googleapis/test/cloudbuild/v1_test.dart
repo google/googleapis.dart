@@ -26,6 +26,53 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
+core.int buildCounterAddBitbucketServerConnectedRepositoryRequest = 0;
+api.AddBitbucketServerConnectedRepositoryRequest
+    buildAddBitbucketServerConnectedRepositoryRequest() {
+  final o = api.AddBitbucketServerConnectedRepositoryRequest();
+  buildCounterAddBitbucketServerConnectedRepositoryRequest++;
+  if (buildCounterAddBitbucketServerConnectedRepositoryRequest < 3) {
+    o.connectedRepository = buildBitbucketServerRepositoryId();
+  }
+  buildCounterAddBitbucketServerConnectedRepositoryRequest--;
+  return o;
+}
+
+void checkAddBitbucketServerConnectedRepositoryRequest(
+    api.AddBitbucketServerConnectedRepositoryRequest o) {
+  buildCounterAddBitbucketServerConnectedRepositoryRequest++;
+  if (buildCounterAddBitbucketServerConnectedRepositoryRequest < 3) {
+    checkBitbucketServerRepositoryId(o.connectedRepository!);
+  }
+  buildCounterAddBitbucketServerConnectedRepositoryRequest--;
+}
+
+core.int buildCounterAddBitbucketServerConnectedRepositoryResponse = 0;
+api.AddBitbucketServerConnectedRepositoryResponse
+    buildAddBitbucketServerConnectedRepositoryResponse() {
+  final o = api.AddBitbucketServerConnectedRepositoryResponse();
+  buildCounterAddBitbucketServerConnectedRepositoryResponse++;
+  if (buildCounterAddBitbucketServerConnectedRepositoryResponse < 3) {
+    o.config = 'foo';
+    o.connectedRepository = buildBitbucketServerRepositoryId();
+  }
+  buildCounterAddBitbucketServerConnectedRepositoryResponse--;
+  return o;
+}
+
+void checkAddBitbucketServerConnectedRepositoryResponse(
+    api.AddBitbucketServerConnectedRepositoryResponse o) {
+  buildCounterAddBitbucketServerConnectedRepositoryResponse++;
+  if (buildCounterAddBitbucketServerConnectedRepositoryResponse < 3) {
+    unittest.expect(
+      o.config!,
+      unittest.equals('foo'),
+    );
+    checkBitbucketServerRepositoryId(o.connectedRepository!);
+  }
+  buildCounterAddBitbucketServerConnectedRepositoryResponse--;
+}
+
 core.int buildCounterApprovalConfig = 0;
 api.ApprovalConfig buildApprovalConfig() {
   final o = api.ApprovalConfig();
@@ -187,12 +234,287 @@ void checkArtifacts(api.Artifacts o) {
   buildCounterArtifacts--;
 }
 
-core.List<core.String> buildUnnamed2() => [
+core.List<api.CreateBitbucketServerConnectedRepositoryRequest>
+    buildUnnamed2() => [
+          buildCreateBitbucketServerConnectedRepositoryRequest(),
+          buildCreateBitbucketServerConnectedRepositoryRequest(),
+        ];
+
+void checkUnnamed2(
+    core.List<api.CreateBitbucketServerConnectedRepositoryRequest> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkCreateBitbucketServerConnectedRepositoryRequest(o[0]);
+  checkCreateBitbucketServerConnectedRepositoryRequest(o[1]);
+}
+
+core.int buildCounterBatchCreateBitbucketServerConnectedRepositoriesRequest = 0;
+api.BatchCreateBitbucketServerConnectedRepositoriesRequest
+    buildBatchCreateBitbucketServerConnectedRepositoriesRequest() {
+  final o = api.BatchCreateBitbucketServerConnectedRepositoriesRequest();
+  buildCounterBatchCreateBitbucketServerConnectedRepositoriesRequest++;
+  if (buildCounterBatchCreateBitbucketServerConnectedRepositoriesRequest < 3) {
+    o.requests = buildUnnamed2();
+  }
+  buildCounterBatchCreateBitbucketServerConnectedRepositoriesRequest--;
+  return o;
+}
+
+void checkBatchCreateBitbucketServerConnectedRepositoriesRequest(
+    api.BatchCreateBitbucketServerConnectedRepositoriesRequest o) {
+  buildCounterBatchCreateBitbucketServerConnectedRepositoriesRequest++;
+  if (buildCounterBatchCreateBitbucketServerConnectedRepositoriesRequest < 3) {
+    checkUnnamed2(o.requests!);
+  }
+  buildCounterBatchCreateBitbucketServerConnectedRepositoriesRequest--;
+}
+
+core.List<api.BitbucketServerRepositoryId> buildUnnamed3() => [
+      buildBitbucketServerRepositoryId(),
+      buildBitbucketServerRepositoryId(),
+    ];
+
+void checkUnnamed3(core.List<api.BitbucketServerRepositoryId> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkBitbucketServerRepositoryId(o[0]);
+  checkBitbucketServerRepositoryId(o[1]);
+}
+
+core.int buildCounterBitbucketServerConfig = 0;
+api.BitbucketServerConfig buildBitbucketServerConfig() {
+  final o = api.BitbucketServerConfig();
+  buildCounterBitbucketServerConfig++;
+  if (buildCounterBitbucketServerConfig < 3) {
+    o.apiKey = 'foo';
+    o.connectedRepositories = buildUnnamed3();
+    o.createTime = 'foo';
+    o.hostUri = 'foo';
+    o.name = 'foo';
+    o.peeredNetwork = 'foo';
+    o.secrets = buildBitbucketServerSecrets();
+    o.sslCa = 'foo';
+    o.username = 'foo';
+    o.webhookKey = 'foo';
+  }
+  buildCounterBitbucketServerConfig--;
+  return o;
+}
+
+void checkBitbucketServerConfig(api.BitbucketServerConfig o) {
+  buildCounterBitbucketServerConfig++;
+  if (buildCounterBitbucketServerConfig < 3) {
+    unittest.expect(
+      o.apiKey!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed3(o.connectedRepositories!);
+    unittest.expect(
+      o.createTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.hostUri!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.peeredNetwork!,
+      unittest.equals('foo'),
+    );
+    checkBitbucketServerSecrets(o.secrets!);
+    unittest.expect(
+      o.sslCa!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.username!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.webhookKey!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterBitbucketServerConfig--;
+}
+
+core.int buildCounterBitbucketServerConnectedRepository = 0;
+api.BitbucketServerConnectedRepository
+    buildBitbucketServerConnectedRepository() {
+  final o = api.BitbucketServerConnectedRepository();
+  buildCounterBitbucketServerConnectedRepository++;
+  if (buildCounterBitbucketServerConnectedRepository < 3) {
+    o.parent = 'foo';
+    o.repo = buildBitbucketServerRepositoryId();
+    o.status = buildStatus();
+  }
+  buildCounterBitbucketServerConnectedRepository--;
+  return o;
+}
+
+void checkBitbucketServerConnectedRepository(
+    api.BitbucketServerConnectedRepository o) {
+  buildCounterBitbucketServerConnectedRepository++;
+  if (buildCounterBitbucketServerConnectedRepository < 3) {
+    unittest.expect(
+      o.parent!,
+      unittest.equals('foo'),
+    );
+    checkBitbucketServerRepositoryId(o.repo!);
+    checkStatus(o.status!);
+  }
+  buildCounterBitbucketServerConnectedRepository--;
+}
+
+core.int buildCounterBitbucketServerRepository = 0;
+api.BitbucketServerRepository buildBitbucketServerRepository() {
+  final o = api.BitbucketServerRepository();
+  buildCounterBitbucketServerRepository++;
+  if (buildCounterBitbucketServerRepository < 3) {
+    o.browseUri = 'foo';
+    o.description = 'foo';
+    o.displayName = 'foo';
+    o.name = 'foo';
+    o.repoId = buildBitbucketServerRepositoryId();
+  }
+  buildCounterBitbucketServerRepository--;
+  return o;
+}
+
+void checkBitbucketServerRepository(api.BitbucketServerRepository o) {
+  buildCounterBitbucketServerRepository++;
+  if (buildCounterBitbucketServerRepository < 3) {
+    unittest.expect(
+      o.browseUri!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.description!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.displayName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    checkBitbucketServerRepositoryId(o.repoId!);
+  }
+  buildCounterBitbucketServerRepository--;
+}
+
+core.int buildCounterBitbucketServerRepositoryId = 0;
+api.BitbucketServerRepositoryId buildBitbucketServerRepositoryId() {
+  final o = api.BitbucketServerRepositoryId();
+  buildCounterBitbucketServerRepositoryId++;
+  if (buildCounterBitbucketServerRepositoryId < 3) {
+    o.projectKey = 'foo';
+    o.repoSlug = 'foo';
+    o.webhookId = 42;
+  }
+  buildCounterBitbucketServerRepositoryId--;
+  return o;
+}
+
+void checkBitbucketServerRepositoryId(api.BitbucketServerRepositoryId o) {
+  buildCounterBitbucketServerRepositoryId++;
+  if (buildCounterBitbucketServerRepositoryId < 3) {
+    unittest.expect(
+      o.projectKey!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.repoSlug!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.webhookId!,
+      unittest.equals(42),
+    );
+  }
+  buildCounterBitbucketServerRepositoryId--;
+}
+
+core.int buildCounterBitbucketServerSecrets = 0;
+api.BitbucketServerSecrets buildBitbucketServerSecrets() {
+  final o = api.BitbucketServerSecrets();
+  buildCounterBitbucketServerSecrets++;
+  if (buildCounterBitbucketServerSecrets < 3) {
+    o.adminAccessTokenVersionName = 'foo';
+    o.readAccessTokenVersionName = 'foo';
+    o.webhookSecretVersionName = 'foo';
+  }
+  buildCounterBitbucketServerSecrets--;
+  return o;
+}
+
+void checkBitbucketServerSecrets(api.BitbucketServerSecrets o) {
+  buildCounterBitbucketServerSecrets++;
+  if (buildCounterBitbucketServerSecrets < 3) {
+    unittest.expect(
+      o.adminAccessTokenVersionName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.readAccessTokenVersionName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.webhookSecretVersionName!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterBitbucketServerSecrets--;
+}
+
+core.int buildCounterBitbucketServerTriggerConfig = 0;
+api.BitbucketServerTriggerConfig buildBitbucketServerTriggerConfig() {
+  final o = api.BitbucketServerTriggerConfig();
+  buildCounterBitbucketServerTriggerConfig++;
+  if (buildCounterBitbucketServerTriggerConfig < 3) {
+    o.bitbucketServerConfig = buildBitbucketServerConfig();
+    o.bitbucketServerConfigResource = 'foo';
+    o.projectKey = 'foo';
+    o.pullRequest = buildPullRequestFilter();
+    o.push = buildPushFilter();
+    o.repoSlug = 'foo';
+  }
+  buildCounterBitbucketServerTriggerConfig--;
+  return o;
+}
+
+void checkBitbucketServerTriggerConfig(api.BitbucketServerTriggerConfig o) {
+  buildCounterBitbucketServerTriggerConfig++;
+  if (buildCounterBitbucketServerTriggerConfig < 3) {
+    checkBitbucketServerConfig(o.bitbucketServerConfig!);
+    unittest.expect(
+      o.bitbucketServerConfigResource!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.projectKey!,
+      unittest.equals('foo'),
+    );
+    checkPullRequestFilter(o.pullRequest!);
+    checkPushFilter(o.push!);
+    unittest.expect(
+      o.repoSlug!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterBitbucketServerTriggerConfig--;
+}
+
+core.List<core.String> buildUnnamed4() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed2(core.List<core.String> o) {
+void checkUnnamed4(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -204,34 +526,34 @@ void checkUnnamed2(core.List<core.String> o) {
   );
 }
 
-core.List<api.Secret> buildUnnamed3() => [
+core.List<api.Secret> buildUnnamed5() => [
       buildSecret(),
       buildSecret(),
     ];
 
-void checkUnnamed3(core.List<api.Secret> o) {
+void checkUnnamed5(core.List<api.Secret> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSecret(o[0]);
   checkSecret(o[1]);
 }
 
-core.List<api.BuildStep> buildUnnamed4() => [
+core.List<api.BuildStep> buildUnnamed6() => [
       buildBuildStep(),
       buildBuildStep(),
     ];
 
-void checkUnnamed4(core.List<api.BuildStep> o) {
+void checkUnnamed6(core.List<api.BuildStep> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBuildStep(o[0]);
   checkBuildStep(o[1]);
 }
 
-core.Map<core.String, core.String> buildUnnamed5() => {
+core.Map<core.String, core.String> buildUnnamed7() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed5(core.Map<core.String, core.String> o) {
+void checkUnnamed7(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -243,12 +565,12 @@ void checkUnnamed5(core.Map<core.String, core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed6() => [
+core.List<core.String> buildUnnamed8() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed6(core.List<core.String> o) {
+void checkUnnamed8(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -260,23 +582,23 @@ void checkUnnamed6(core.List<core.String> o) {
   );
 }
 
-core.Map<core.String, api.TimeSpan> buildUnnamed7() => {
+core.Map<core.String, api.TimeSpan> buildUnnamed9() => {
       'x': buildTimeSpan(),
       'y': buildTimeSpan(),
     };
 
-void checkUnnamed7(core.Map<core.String, api.TimeSpan> o) {
+void checkUnnamed9(core.Map<core.String, api.TimeSpan> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTimeSpan(o['x']!);
   checkTimeSpan(o['y']!);
 }
 
-core.List<api.Warning> buildUnnamed8() => [
+core.List<api.Warning> buildUnnamed10() => [
       buildWarning(),
       buildWarning(),
     ];
 
-void checkUnnamed8(core.List<api.Warning> o) {
+void checkUnnamed10(core.List<api.Warning> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkWarning(o[0]);
   checkWarning(o[1]);
@@ -295,7 +617,7 @@ api.Build buildBuild() {
     o.failureInfo = buildFailureInfo();
     o.finishTime = 'foo';
     o.id = 'foo';
-    o.images = buildUnnamed2();
+    o.images = buildUnnamed4();
     o.logUrl = 'foo';
     o.logsBucket = 'foo';
     o.name = 'foo';
@@ -303,19 +625,19 @@ api.Build buildBuild() {
     o.projectId = 'foo';
     o.queueTtl = 'foo';
     o.results = buildResults();
-    o.secrets = buildUnnamed3();
+    o.secrets = buildUnnamed5();
     o.serviceAccount = 'foo';
     o.source = buildSource();
     o.sourceProvenance = buildSourceProvenance();
     o.startTime = 'foo';
     o.status = 'foo';
     o.statusDetail = 'foo';
-    o.steps = buildUnnamed4();
-    o.substitutions = buildUnnamed5();
-    o.tags = buildUnnamed6();
+    o.steps = buildUnnamed6();
+    o.substitutions = buildUnnamed7();
+    o.tags = buildUnnamed8();
     o.timeout = 'foo';
-    o.timing = buildUnnamed7();
-    o.warnings = buildUnnamed8();
+    o.timing = buildUnnamed9();
+    o.warnings = buildUnnamed10();
   }
   buildCounterBuild--;
   return o;
@@ -344,7 +666,7 @@ void checkBuild(api.Build o) {
       o.id!,
       unittest.equals('foo'),
     );
-    checkUnnamed2(o.images!);
+    checkUnnamed4(o.images!);
     unittest.expect(
       o.logUrl!,
       unittest.equals('foo'),
@@ -367,7 +689,7 @@ void checkBuild(api.Build o) {
       unittest.equals('foo'),
     );
     checkResults(o.results!);
-    checkUnnamed3(o.secrets!);
+    checkUnnamed5(o.secrets!);
     unittest.expect(
       o.serviceAccount!,
       unittest.equals('foo'),
@@ -386,15 +708,15 @@ void checkBuild(api.Build o) {
       o.statusDetail!,
       unittest.equals('foo'),
     );
-    checkUnnamed4(o.steps!);
-    checkUnnamed5(o.substitutions!);
-    checkUnnamed6(o.tags!);
+    checkUnnamed6(o.steps!);
+    checkUnnamed7(o.substitutions!);
+    checkUnnamed8(o.tags!);
     unittest.expect(
       o.timeout!,
       unittest.equals('foo'),
     );
-    checkUnnamed7(o.timing!);
-    checkUnnamed8(o.warnings!);
+    checkUnnamed9(o.timing!);
+    checkUnnamed10(o.warnings!);
   }
   buildCounterBuild--;
 }
@@ -425,40 +747,6 @@ void checkBuildApproval(api.BuildApproval o) {
   buildCounterBuildApproval--;
 }
 
-core.List<core.String> buildUnnamed9() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed9(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
-core.List<core.String> buildUnnamed10() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed10(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
 core.List<core.String> buildUnnamed11() => [
       'foo',
       'foo',
@@ -476,79 +764,21 @@ void checkUnnamed11(core.List<core.String> o) {
   );
 }
 
-core.List<api.Volume> buildUnnamed12() => [
-      buildVolume(),
-      buildVolume(),
+core.List<core.String> buildUnnamed12() => [
+      'foo',
+      'foo',
     ];
 
-void checkUnnamed12(core.List<api.Volume> o) {
+void checkUnnamed12(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkVolume(o[0]);
-  checkVolume(o[1]);
-}
-
-core.int buildCounterBuildOptions = 0;
-api.BuildOptions buildBuildOptions() {
-  final o = api.BuildOptions();
-  buildCounterBuildOptions++;
-  if (buildCounterBuildOptions < 3) {
-    o.diskSizeGb = 'foo';
-    o.dynamicSubstitutions = true;
-    o.env = buildUnnamed9();
-    o.logStreamingOption = 'foo';
-    o.logging = 'foo';
-    o.machineType = 'foo';
-    o.pool = buildPoolOption();
-    o.requestedVerifyOption = 'foo';
-    o.secretEnv = buildUnnamed10();
-    o.sourceProvenanceHash = buildUnnamed11();
-    o.substitutionOption = 'foo';
-    o.volumes = buildUnnamed12();
-    o.workerPool = 'foo';
-  }
-  buildCounterBuildOptions--;
-  return o;
-}
-
-void checkBuildOptions(api.BuildOptions o) {
-  buildCounterBuildOptions++;
-  if (buildCounterBuildOptions < 3) {
-    unittest.expect(
-      o.diskSizeGb!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(o.dynamicSubstitutions!, unittest.isTrue);
-    checkUnnamed9(o.env!);
-    unittest.expect(
-      o.logStreamingOption!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.logging!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.machineType!,
-      unittest.equals('foo'),
-    );
-    checkPoolOption(o.pool!);
-    unittest.expect(
-      o.requestedVerifyOption!,
-      unittest.equals('foo'),
-    );
-    checkUnnamed10(o.secretEnv!);
-    checkUnnamed11(o.sourceProvenanceHash!);
-    unittest.expect(
-      o.substitutionOption!,
-      unittest.equals('foo'),
-    );
-    checkUnnamed12(o.volumes!);
-    unittest.expect(
-      o.workerPool!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterBuildOptions--;
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.List<core.String> buildUnnamed13() => [
@@ -568,21 +798,79 @@ void checkUnnamed13(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed14() => [
-      'foo',
-      'foo',
+core.List<api.Volume> buildUnnamed14() => [
+      buildVolume(),
+      buildVolume(),
     ];
 
-void checkUnnamed14(core.List<core.String> o) {
+void checkUnnamed14(core.List<api.Volume> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
+  checkVolume(o[0]);
+  checkVolume(o[1]);
+}
+
+core.int buildCounterBuildOptions = 0;
+api.BuildOptions buildBuildOptions() {
+  final o = api.BuildOptions();
+  buildCounterBuildOptions++;
+  if (buildCounterBuildOptions < 3) {
+    o.diskSizeGb = 'foo';
+    o.dynamicSubstitutions = true;
+    o.env = buildUnnamed11();
+    o.logStreamingOption = 'foo';
+    o.logging = 'foo';
+    o.machineType = 'foo';
+    o.pool = buildPoolOption();
+    o.requestedVerifyOption = 'foo';
+    o.secretEnv = buildUnnamed12();
+    o.sourceProvenanceHash = buildUnnamed13();
+    o.substitutionOption = 'foo';
+    o.volumes = buildUnnamed14();
+    o.workerPool = 'foo';
+  }
+  buildCounterBuildOptions--;
+  return o;
+}
+
+void checkBuildOptions(api.BuildOptions o) {
+  buildCounterBuildOptions++;
+  if (buildCounterBuildOptions < 3) {
+    unittest.expect(
+      o.diskSizeGb!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.dynamicSubstitutions!, unittest.isTrue);
+    checkUnnamed11(o.env!);
+    unittest.expect(
+      o.logStreamingOption!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.logging!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.machineType!,
+      unittest.equals('foo'),
+    );
+    checkPoolOption(o.pool!);
+    unittest.expect(
+      o.requestedVerifyOption!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed12(o.secretEnv!);
+    checkUnnamed13(o.sourceProvenanceHash!);
+    unittest.expect(
+      o.substitutionOption!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed14(o.volumes!);
+    unittest.expect(
+      o.workerPool!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterBuildOptions--;
 }
 
 core.List<core.String> buildUnnamed15() => [
@@ -602,15 +890,21 @@ void checkUnnamed15(core.List<core.String> o) {
   );
 }
 
-core.List<api.Volume> buildUnnamed16() => [
-      buildVolume(),
-      buildVolume(),
+core.List<core.String> buildUnnamed16() => [
+      'foo',
+      'foo',
     ];
 
-void checkUnnamed16(core.List<api.Volume> o) {
+void checkUnnamed16(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkVolume(o[0]);
-  checkVolume(o[1]);
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.List<core.String> buildUnnamed17() => [
@@ -630,87 +924,15 @@ void checkUnnamed17(core.List<core.String> o) {
   );
 }
 
-core.int buildCounterBuildStep = 0;
-api.BuildStep buildBuildStep() {
-  final o = api.BuildStep();
-  buildCounterBuildStep++;
-  if (buildCounterBuildStep < 3) {
-    o.args = buildUnnamed13();
-    o.dir = 'foo';
-    o.entrypoint = 'foo';
-    o.env = buildUnnamed14();
-    o.id = 'foo';
-    o.name = 'foo';
-    o.pullTiming = buildTimeSpan();
-    o.script = 'foo';
-    o.secretEnv = buildUnnamed15();
-    o.status = 'foo';
-    o.timeout = 'foo';
-    o.timing = buildTimeSpan();
-    o.volumes = buildUnnamed16();
-    o.waitFor = buildUnnamed17();
-  }
-  buildCounterBuildStep--;
-  return o;
-}
-
-void checkBuildStep(api.BuildStep o) {
-  buildCounterBuildStep++;
-  if (buildCounterBuildStep < 3) {
-    checkUnnamed13(o.args!);
-    unittest.expect(
-      o.dir!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.entrypoint!,
-      unittest.equals('foo'),
-    );
-    checkUnnamed14(o.env!);
-    unittest.expect(
-      o.id!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.name!,
-      unittest.equals('foo'),
-    );
-    checkTimeSpan(o.pullTiming!);
-    unittest.expect(
-      o.script!,
-      unittest.equals('foo'),
-    );
-    checkUnnamed15(o.secretEnv!);
-    unittest.expect(
-      o.status!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.timeout!,
-      unittest.equals('foo'),
-    );
-    checkTimeSpan(o.timing!);
-    checkUnnamed16(o.volumes!);
-    checkUnnamed17(o.waitFor!);
-  }
-  buildCounterBuildStep--;
-}
-
-core.List<core.String> buildUnnamed18() => [
-      'foo',
-      'foo',
+core.List<api.Volume> buildUnnamed18() => [
+      buildVolume(),
+      buildVolume(),
     ];
 
-void checkUnnamed18(core.List<core.String> o) {
+void checkUnnamed18(core.List<api.Volume> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
+  checkVolume(o[0]);
+  checkVolume(o[1]);
 }
 
 core.List<core.String> buildUnnamed19() => [
@@ -730,19 +952,85 @@ void checkUnnamed19(core.List<core.String> o) {
   );
 }
 
-core.Map<core.String, core.String> buildUnnamed20() => {
-      'x': 'foo',
-      'y': 'foo',
-    };
+core.int buildCounterBuildStep = 0;
+api.BuildStep buildBuildStep() {
+  final o = api.BuildStep();
+  buildCounterBuildStep++;
+  if (buildCounterBuildStep < 3) {
+    o.args = buildUnnamed15();
+    o.dir = 'foo';
+    o.entrypoint = 'foo';
+    o.env = buildUnnamed16();
+    o.id = 'foo';
+    o.name = 'foo';
+    o.pullTiming = buildTimeSpan();
+    o.script = 'foo';
+    o.secretEnv = buildUnnamed17();
+    o.status = 'foo';
+    o.timeout = 'foo';
+    o.timing = buildTimeSpan();
+    o.volumes = buildUnnamed18();
+    o.waitFor = buildUnnamed19();
+  }
+  buildCounterBuildStep--;
+  return o;
+}
 
-void checkUnnamed20(core.Map<core.String, core.String> o) {
+void checkBuildStep(api.BuildStep o) {
+  buildCounterBuildStep++;
+  if (buildCounterBuildStep < 3) {
+    checkUnnamed15(o.args!);
+    unittest.expect(
+      o.dir!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.entrypoint!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed16(o.env!);
+    unittest.expect(
+      o.id!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    checkTimeSpan(o.pullTiming!);
+    unittest.expect(
+      o.script!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed17(o.secretEnv!);
+    unittest.expect(
+      o.status!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.timeout!,
+      unittest.equals('foo'),
+    );
+    checkTimeSpan(o.timing!);
+    checkUnnamed18(o.volumes!);
+    checkUnnamed19(o.waitFor!);
+  }
+  buildCounterBuildStep--;
+}
+
+core.List<core.String> buildUnnamed20() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed20(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
-    o['x']!,
+    o[0],
     unittest.equals('foo'),
   );
   unittest.expect(
-    o['y']!,
+    o[1],
     unittest.equals('foo'),
   );
 }
@@ -764,6 +1052,40 @@ void checkUnnamed21(core.List<core.String> o) {
   );
 }
 
+core.Map<core.String, core.String> buildUnnamed22() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
+
+void checkUnnamed22(core.Map<core.String, core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o['x']!,
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o['y']!,
+    unittest.equals('foo'),
+  );
+}
+
+core.List<core.String> buildUnnamed23() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed23(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
 core.int buildCounterBuildTrigger = 0;
 api.BuildTrigger buildBuildTrigger() {
   final o = api.BuildTrigger();
@@ -771,6 +1093,7 @@ api.BuildTrigger buildBuildTrigger() {
   if (buildCounterBuildTrigger < 3) {
     o.approvalConfig = buildApprovalConfig();
     o.autodetect = true;
+    o.bitbucketServerTriggerConfig = buildBitbucketServerTriggerConfig();
     o.build = buildBuild();
     o.createTime = 'foo';
     o.description = 'foo';
@@ -781,15 +1104,15 @@ api.BuildTrigger buildBuildTrigger() {
     o.gitFileSource = buildGitFileSource();
     o.github = buildGitHubEventsConfig();
     o.id = 'foo';
-    o.ignoredFiles = buildUnnamed18();
-    o.includedFiles = buildUnnamed19();
+    o.ignoredFiles = buildUnnamed20();
+    o.includedFiles = buildUnnamed21();
     o.name = 'foo';
     o.pubsubConfig = buildPubsubConfig();
     o.resourceName = 'foo';
     o.serviceAccount = 'foo';
     o.sourceToBuild = buildGitRepoSource();
-    o.substitutions = buildUnnamed20();
-    o.tags = buildUnnamed21();
+    o.substitutions = buildUnnamed22();
+    o.tags = buildUnnamed23();
     o.triggerTemplate = buildRepoSource();
     o.webhookConfig = buildWebhookConfig();
   }
@@ -802,6 +1125,7 @@ void checkBuildTrigger(api.BuildTrigger o) {
   if (buildCounterBuildTrigger < 3) {
     checkApprovalConfig(o.approvalConfig!);
     unittest.expect(o.autodetect!, unittest.isTrue);
+    checkBitbucketServerTriggerConfig(o.bitbucketServerTriggerConfig!);
     checkBuild(o.build!);
     unittest.expect(
       o.createTime!,
@@ -830,8 +1154,8 @@ void checkBuildTrigger(api.BuildTrigger o) {
       o.id!,
       unittest.equals('foo'),
     );
-    checkUnnamed18(o.ignoredFiles!);
-    checkUnnamed19(o.includedFiles!);
+    checkUnnamed20(o.ignoredFiles!);
+    checkUnnamed21(o.includedFiles!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -846,8 +1170,8 @@ void checkBuildTrigger(api.BuildTrigger o) {
       unittest.equals('foo'),
     );
     checkGitRepoSource(o.sourceToBuild!);
-    checkUnnamed20(o.substitutions!);
-    checkUnnamed21(o.tags!);
+    checkUnnamed22(o.substitutions!);
+    checkUnnamed23(o.tags!);
     checkRepoSource(o.triggerTemplate!);
     checkWebhookConfig(o.webhookConfig!);
   }
@@ -930,6 +1254,34 @@ void checkCancelOperationRequest(api.CancelOperationRequest o) {
   buildCounterCancelOperationRequest--;
 }
 
+core.int buildCounterCreateBitbucketServerConnectedRepositoryRequest = 0;
+api.CreateBitbucketServerConnectedRepositoryRequest
+    buildCreateBitbucketServerConnectedRepositoryRequest() {
+  final o = api.CreateBitbucketServerConnectedRepositoryRequest();
+  buildCounterCreateBitbucketServerConnectedRepositoryRequest++;
+  if (buildCounterCreateBitbucketServerConnectedRepositoryRequest < 3) {
+    o.bitbucketServerConnectedRepository =
+        buildBitbucketServerConnectedRepository();
+    o.parent = 'foo';
+  }
+  buildCounterCreateBitbucketServerConnectedRepositoryRequest--;
+  return o;
+}
+
+void checkCreateBitbucketServerConnectedRepositoryRequest(
+    api.CreateBitbucketServerConnectedRepositoryRequest o) {
+  buildCounterCreateBitbucketServerConnectedRepositoryRequest++;
+  if (buildCounterCreateBitbucketServerConnectedRepositoryRequest < 3) {
+    checkBitbucketServerConnectedRepository(
+        o.bitbucketServerConnectedRepository!);
+    unittest.expect(
+      o.parent!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterCreateBitbucketServerConnectedRepositoryRequest--;
+}
+
 core.int buildCounterEmpty = 0;
 api.Empty buildEmpty() {
   final o = api.Empty();
@@ -972,12 +1324,12 @@ void checkFailureInfo(api.FailureInfo o) {
   buildCounterFailureInfo--;
 }
 
-core.List<api.Hash> buildUnnamed22() => [
+core.List<api.Hash> buildUnnamed24() => [
       buildHash(),
       buildHash(),
     ];
 
-void checkUnnamed22(core.List<api.Hash> o) {
+void checkUnnamed24(core.List<api.Hash> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkHash(o[0]);
   checkHash(o[1]);
@@ -988,7 +1340,7 @@ api.FileHashes buildFileHashes() {
   final o = api.FileHashes();
   buildCounterFileHashes++;
   if (buildCounterFileHashes < 3) {
-    o.fileHash = buildUnnamed22();
+    o.fileHash = buildUnnamed24();
   }
   buildCounterFileHashes--;
   return o;
@@ -997,7 +1349,7 @@ api.FileHashes buildFileHashes() {
 void checkFileHashes(api.FileHashes o) {
   buildCounterFileHashes++;
   if (buildCounterFileHashes < 3) {
-    checkUnnamed22(o.fileHash!);
+    checkUnnamed24(o.fileHash!);
   }
   buildCounterFileHashes--;
 }
@@ -1255,7 +1607,7 @@ void checkHash(api.Hash o) {
   buildCounterHash--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed23() => {
+core.Map<core.String, core.Object?> buildUnnamed25() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -1268,7 +1620,7 @@ core.Map<core.String, core.Object?> buildUnnamed23() => {
       },
     };
 
-void checkUnnamed23(core.Map<core.String, core.Object?> o) {
+void checkUnnamed25(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o['x']!) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -1300,15 +1652,15 @@ void checkUnnamed23(core.Map<core.String, core.Object?> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object?>> buildUnnamed24() => [
-      buildUnnamed23(),
-      buildUnnamed23(),
+core.List<core.Map<core.String, core.Object?>> buildUnnamed26() => [
+      buildUnnamed25(),
+      buildUnnamed25(),
     ];
 
-void checkUnnamed24(core.List<core.Map<core.String, core.Object?>> o) {
+void checkUnnamed26(core.List<core.Map<core.String, core.Object?>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed23(o[0]);
-  checkUnnamed23(o[1]);
+  checkUnnamed25(o[0]);
+  checkUnnamed25(o[1]);
 }
 
 core.int buildCounterHttpBody = 0;
@@ -1318,7 +1670,7 @@ api.HttpBody buildHttpBody() {
   if (buildCounterHttpBody < 3) {
     o.contentType = 'foo';
     o.data = 'foo';
-    o.extensions = buildUnnamed24();
+    o.extensions = buildUnnamed26();
   }
   buildCounterHttpBody--;
   return o;
@@ -1335,17 +1687,17 @@ void checkHttpBody(api.HttpBody o) {
       o.data!,
       unittest.equals('foo'),
     );
-    checkUnnamed24(o.extensions!);
+    checkUnnamed26(o.extensions!);
   }
   buildCounterHttpBody--;
 }
 
-core.Map<core.String, core.String> buildUnnamed25() => {
+core.Map<core.String, core.String> buildUnnamed27() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed25(core.Map<core.String, core.String> o) {
+void checkUnnamed27(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -1362,7 +1714,7 @@ api.InlineSecret buildInlineSecret() {
   final o = api.InlineSecret();
   buildCounterInlineSecret++;
   if (buildCounterInlineSecret < 3) {
-    o.envMap = buildUnnamed25();
+    o.envMap = buildUnnamed27();
     o.kmsKeyName = 'foo';
   }
   buildCounterInlineSecret--;
@@ -1372,7 +1724,7 @@ api.InlineSecret buildInlineSecret() {
 void checkInlineSecret(api.InlineSecret o) {
   buildCounterInlineSecret++;
   if (buildCounterInlineSecret < 3) {
-    checkUnnamed25(o.envMap!);
+    checkUnnamed27(o.envMap!);
     unittest.expect(
       o.kmsKeyName!,
       unittest.equals('foo'),
@@ -1381,12 +1733,86 @@ void checkInlineSecret(api.InlineSecret o) {
   buildCounterInlineSecret--;
 }
 
-core.List<api.BuildTrigger> buildUnnamed26() => [
+core.List<api.BitbucketServerConfig> buildUnnamed28() => [
+      buildBitbucketServerConfig(),
+      buildBitbucketServerConfig(),
+    ];
+
+void checkUnnamed28(core.List<api.BitbucketServerConfig> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkBitbucketServerConfig(o[0]);
+  checkBitbucketServerConfig(o[1]);
+}
+
+core.int buildCounterListBitbucketServerConfigsResponse = 0;
+api.ListBitbucketServerConfigsResponse
+    buildListBitbucketServerConfigsResponse() {
+  final o = api.ListBitbucketServerConfigsResponse();
+  buildCounterListBitbucketServerConfigsResponse++;
+  if (buildCounterListBitbucketServerConfigsResponse < 3) {
+    o.bitbucketServerConfigs = buildUnnamed28();
+    o.nextPageToken = 'foo';
+  }
+  buildCounterListBitbucketServerConfigsResponse--;
+  return o;
+}
+
+void checkListBitbucketServerConfigsResponse(
+    api.ListBitbucketServerConfigsResponse o) {
+  buildCounterListBitbucketServerConfigsResponse++;
+  if (buildCounterListBitbucketServerConfigsResponse < 3) {
+    checkUnnamed28(o.bitbucketServerConfigs!);
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterListBitbucketServerConfigsResponse--;
+}
+
+core.List<api.BitbucketServerRepository> buildUnnamed29() => [
+      buildBitbucketServerRepository(),
+      buildBitbucketServerRepository(),
+    ];
+
+void checkUnnamed29(core.List<api.BitbucketServerRepository> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkBitbucketServerRepository(o[0]);
+  checkBitbucketServerRepository(o[1]);
+}
+
+core.int buildCounterListBitbucketServerRepositoriesResponse = 0;
+api.ListBitbucketServerRepositoriesResponse
+    buildListBitbucketServerRepositoriesResponse() {
+  final o = api.ListBitbucketServerRepositoriesResponse();
+  buildCounterListBitbucketServerRepositoriesResponse++;
+  if (buildCounterListBitbucketServerRepositoriesResponse < 3) {
+    o.bitbucketServerRepositories = buildUnnamed29();
+    o.nextPageToken = 'foo';
+  }
+  buildCounterListBitbucketServerRepositoriesResponse--;
+  return o;
+}
+
+void checkListBitbucketServerRepositoriesResponse(
+    api.ListBitbucketServerRepositoriesResponse o) {
+  buildCounterListBitbucketServerRepositoriesResponse++;
+  if (buildCounterListBitbucketServerRepositoriesResponse < 3) {
+    checkUnnamed29(o.bitbucketServerRepositories!);
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterListBitbucketServerRepositoriesResponse--;
+}
+
+core.List<api.BuildTrigger> buildUnnamed30() => [
       buildBuildTrigger(),
       buildBuildTrigger(),
     ];
 
-void checkUnnamed26(core.List<api.BuildTrigger> o) {
+void checkUnnamed30(core.List<api.BuildTrigger> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBuildTrigger(o[0]);
   checkBuildTrigger(o[1]);
@@ -1398,7 +1824,7 @@ api.ListBuildTriggersResponse buildListBuildTriggersResponse() {
   buildCounterListBuildTriggersResponse++;
   if (buildCounterListBuildTriggersResponse < 3) {
     o.nextPageToken = 'foo';
-    o.triggers = buildUnnamed26();
+    o.triggers = buildUnnamed30();
   }
   buildCounterListBuildTriggersResponse--;
   return o;
@@ -1411,17 +1837,17 @@ void checkListBuildTriggersResponse(api.ListBuildTriggersResponse o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed26(o.triggers!);
+    checkUnnamed30(o.triggers!);
   }
   buildCounterListBuildTriggersResponse--;
 }
 
-core.List<api.Build> buildUnnamed27() => [
+core.List<api.Build> buildUnnamed31() => [
       buildBuild(),
       buildBuild(),
     ];
 
-void checkUnnamed27(core.List<api.Build> o) {
+void checkUnnamed31(core.List<api.Build> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBuild(o[0]);
   checkBuild(o[1]);
@@ -1432,7 +1858,7 @@ api.ListBuildsResponse buildListBuildsResponse() {
   final o = api.ListBuildsResponse();
   buildCounterListBuildsResponse++;
   if (buildCounterListBuildsResponse < 3) {
-    o.builds = buildUnnamed27();
+    o.builds = buildUnnamed31();
     o.nextPageToken = 'foo';
   }
   buildCounterListBuildsResponse--;
@@ -1442,7 +1868,7 @@ api.ListBuildsResponse buildListBuildsResponse() {
 void checkListBuildsResponse(api.ListBuildsResponse o) {
   buildCounterListBuildsResponse++;
   if (buildCounterListBuildsResponse < 3) {
-    checkUnnamed27(o.builds!);
+    checkUnnamed31(o.builds!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -1451,12 +1877,12 @@ void checkListBuildsResponse(api.ListBuildsResponse o) {
   buildCounterListBuildsResponse--;
 }
 
-core.List<api.GitHubEnterpriseConfig> buildUnnamed28() => [
+core.List<api.GitHubEnterpriseConfig> buildUnnamed32() => [
       buildGitHubEnterpriseConfig(),
       buildGitHubEnterpriseConfig(),
     ];
 
-void checkUnnamed28(core.List<api.GitHubEnterpriseConfig> o) {
+void checkUnnamed32(core.List<api.GitHubEnterpriseConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGitHubEnterpriseConfig(o[0]);
   checkGitHubEnterpriseConfig(o[1]);
@@ -1468,7 +1894,7 @@ api.ListGithubEnterpriseConfigsResponse
   final o = api.ListGithubEnterpriseConfigsResponse();
   buildCounterListGithubEnterpriseConfigsResponse++;
   if (buildCounterListGithubEnterpriseConfigsResponse < 3) {
-    o.configs = buildUnnamed28();
+    o.configs = buildUnnamed32();
   }
   buildCounterListGithubEnterpriseConfigsResponse--;
   return o;
@@ -1478,17 +1904,17 @@ void checkListGithubEnterpriseConfigsResponse(
     api.ListGithubEnterpriseConfigsResponse o) {
   buildCounterListGithubEnterpriseConfigsResponse++;
   if (buildCounterListGithubEnterpriseConfigsResponse < 3) {
-    checkUnnamed28(o.configs!);
+    checkUnnamed32(o.configs!);
   }
   buildCounterListGithubEnterpriseConfigsResponse--;
 }
 
-core.List<api.WorkerPool> buildUnnamed29() => [
+core.List<api.WorkerPool> buildUnnamed33() => [
       buildWorkerPool(),
       buildWorkerPool(),
     ];
 
-void checkUnnamed29(core.List<api.WorkerPool> o) {
+void checkUnnamed33(core.List<api.WorkerPool> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkWorkerPool(o[0]);
   checkWorkerPool(o[1]);
@@ -1500,7 +1926,7 @@ api.ListWorkerPoolsResponse buildListWorkerPoolsResponse() {
   buildCounterListWorkerPoolsResponse++;
   if (buildCounterListWorkerPoolsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.workerPools = buildUnnamed29();
+    o.workerPools = buildUnnamed33();
   }
   buildCounterListWorkerPoolsResponse--;
   return o;
@@ -1513,7 +1939,7 @@ void checkListWorkerPoolsResponse(api.ListWorkerPoolsResponse o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed29(o.workerPools!);
+    checkUnnamed33(o.workerPools!);
   }
   buildCounterListWorkerPoolsResponse--;
 }
@@ -1545,7 +1971,7 @@ void checkNetworkConfig(api.NetworkConfig o) {
   buildCounterNetworkConfig--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed30() => {
+core.Map<core.String, core.Object?> buildUnnamed34() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -1558,7 +1984,7 @@ core.Map<core.String, core.Object?> buildUnnamed30() => {
       },
     };
 
-void checkUnnamed30(core.Map<core.String, core.Object?> o) {
+void checkUnnamed34(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted3 = (o['x']!) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
@@ -1590,7 +2016,7 @@ void checkUnnamed30(core.Map<core.String, core.Object?> o) {
   );
 }
 
-core.Map<core.String, core.Object?> buildUnnamed31() => {
+core.Map<core.String, core.Object?> buildUnnamed35() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -1603,7 +2029,7 @@ core.Map<core.String, core.Object?> buildUnnamed31() => {
       },
     };
 
-void checkUnnamed31(core.Map<core.String, core.Object?> o) {
+void checkUnnamed35(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted5 = (o['x']!) as core.Map;
   unittest.expect(casted5, unittest.hasLength(3));
@@ -1642,9 +2068,9 @@ api.Operation buildOperation() {
   if (buildCounterOperation < 3) {
     o.done = true;
     o.error = buildStatus();
-    o.metadata = buildUnnamed30();
+    o.metadata = buildUnnamed34();
     o.name = 'foo';
-    o.response = buildUnnamed31();
+    o.response = buildUnnamed35();
   }
   buildCounterOperation--;
   return o;
@@ -1655,12 +2081,12 @@ void checkOperation(api.Operation o) {
   if (buildCounterOperation < 3) {
     unittest.expect(o.done!, unittest.isTrue);
     checkStatus(o.error!);
-    checkUnnamed30(o.metadata!);
+    checkUnnamed34(o.metadata!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed31(o.response!);
+    checkUnnamed35(o.response!);
   }
   buildCounterOperation--;
 }
@@ -1818,12 +2244,33 @@ void checkReceiveTriggerWebhookResponse(api.ReceiveTriggerWebhookResponse o) {
   buildCounterReceiveTriggerWebhookResponse--;
 }
 
-core.Map<core.String, core.String> buildUnnamed32() => {
+core.int buildCounterRemoveBitbucketServerConnectedRepositoryRequest = 0;
+api.RemoveBitbucketServerConnectedRepositoryRequest
+    buildRemoveBitbucketServerConnectedRepositoryRequest() {
+  final o = api.RemoveBitbucketServerConnectedRepositoryRequest();
+  buildCounterRemoveBitbucketServerConnectedRepositoryRequest++;
+  if (buildCounterRemoveBitbucketServerConnectedRepositoryRequest < 3) {
+    o.connectedRepository = buildBitbucketServerRepositoryId();
+  }
+  buildCounterRemoveBitbucketServerConnectedRepositoryRequest--;
+  return o;
+}
+
+void checkRemoveBitbucketServerConnectedRepositoryRequest(
+    api.RemoveBitbucketServerConnectedRepositoryRequest o) {
+  buildCounterRemoveBitbucketServerConnectedRepositoryRequest++;
+  if (buildCounterRemoveBitbucketServerConnectedRepositoryRequest < 3) {
+    checkBitbucketServerRepositoryId(o.connectedRepository!);
+  }
+  buildCounterRemoveBitbucketServerConnectedRepositoryRequest--;
+}
+
+core.Map<core.String, core.String> buildUnnamed36() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed32(core.Map<core.String, core.String> o) {
+void checkUnnamed36(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -1846,7 +2293,7 @@ api.RepoSource buildRepoSource() {
     o.invertRegex = true;
     o.projectId = 'foo';
     o.repoName = 'foo';
-    o.substitutions = buildUnnamed32();
+    o.substitutions = buildUnnamed36();
     o.tagName = 'foo';
   }
   buildCounterRepoSource--;
@@ -1877,7 +2324,7 @@ void checkRepoSource(api.RepoSource o) {
       o.repoName!,
       unittest.equals('foo'),
     );
-    checkUnnamed32(o.substitutions!);
+    checkUnnamed36(o.substitutions!);
     unittest.expect(
       o.tagName!,
       unittest.equals('foo'),
@@ -1886,12 +2333,12 @@ void checkRepoSource(api.RepoSource o) {
   buildCounterRepoSource--;
 }
 
-core.List<core.String> buildUnnamed33() => [
+core.List<core.String> buildUnnamed37() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed33(core.List<core.String> o) {
+void checkUnnamed37(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1903,12 +2350,12 @@ void checkUnnamed33(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed34() => [
+core.List<core.String> buildUnnamed38() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed34(core.List<core.String> o) {
+void checkUnnamed38(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1920,12 +2367,12 @@ void checkUnnamed34(core.List<core.String> o) {
   );
 }
 
-core.List<api.BuiltImage> buildUnnamed35() => [
+core.List<api.BuiltImage> buildUnnamed39() => [
       buildBuiltImage(),
       buildBuiltImage(),
     ];
 
-void checkUnnamed35(core.List<api.BuiltImage> o) {
+void checkUnnamed39(core.List<api.BuiltImage> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBuiltImage(o[0]);
   checkBuiltImage(o[1]);
@@ -1938,9 +2385,9 @@ api.Results buildResults() {
   if (buildCounterResults < 3) {
     o.artifactManifest = 'foo';
     o.artifactTiming = buildTimeSpan();
-    o.buildStepImages = buildUnnamed33();
-    o.buildStepOutputs = buildUnnamed34();
-    o.images = buildUnnamed35();
+    o.buildStepImages = buildUnnamed37();
+    o.buildStepOutputs = buildUnnamed38();
+    o.images = buildUnnamed39();
     o.numArtifacts = 'foo';
   }
   buildCounterResults--;
@@ -1955,9 +2402,9 @@ void checkResults(api.Results o) {
       unittest.equals('foo'),
     );
     checkTimeSpan(o.artifactTiming!);
-    checkUnnamed33(o.buildStepImages!);
-    checkUnnamed34(o.buildStepOutputs!);
-    checkUnnamed35(o.images!);
+    checkUnnamed37(o.buildStepImages!);
+    checkUnnamed38(o.buildStepOutputs!);
+    checkUnnamed39(o.images!);
     unittest.expect(
       o.numArtifacts!,
       unittest.equals('foo'),
@@ -2027,12 +2474,12 @@ void checkRunBuildTriggerRequest(api.RunBuildTriggerRequest o) {
   buildCounterRunBuildTriggerRequest--;
 }
 
-core.Map<core.String, core.String> buildUnnamed36() => {
+core.Map<core.String, core.String> buildUnnamed40() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed36(core.Map<core.String, core.String> o) {
+void checkUnnamed40(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -2050,7 +2497,7 @@ api.Secret buildSecret() {
   buildCounterSecret++;
   if (buildCounterSecret < 3) {
     o.kmsKeyName = 'foo';
-    o.secretEnv = buildUnnamed36();
+    o.secretEnv = buildUnnamed40();
   }
   buildCounterSecret--;
   return o;
@@ -2063,7 +2510,7 @@ void checkSecret(api.Secret o) {
       o.kmsKeyName!,
       unittest.equals('foo'),
     );
-    checkUnnamed36(o.secretEnv!);
+    checkUnnamed40(o.secretEnv!);
   }
   buildCounterSecret--;
 }
@@ -2095,23 +2542,23 @@ void checkSecretManagerSecret(api.SecretManagerSecret o) {
   buildCounterSecretManagerSecret--;
 }
 
-core.List<api.InlineSecret> buildUnnamed37() => [
+core.List<api.InlineSecret> buildUnnamed41() => [
       buildInlineSecret(),
       buildInlineSecret(),
     ];
 
-void checkUnnamed37(core.List<api.InlineSecret> o) {
+void checkUnnamed41(core.List<api.InlineSecret> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkInlineSecret(o[0]);
   checkInlineSecret(o[1]);
 }
 
-core.List<api.SecretManagerSecret> buildUnnamed38() => [
+core.List<api.SecretManagerSecret> buildUnnamed42() => [
       buildSecretManagerSecret(),
       buildSecretManagerSecret(),
     ];
 
-void checkUnnamed38(core.List<api.SecretManagerSecret> o) {
+void checkUnnamed42(core.List<api.SecretManagerSecret> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSecretManagerSecret(o[0]);
   checkSecretManagerSecret(o[1]);
@@ -2122,8 +2569,8 @@ api.Secrets buildSecrets() {
   final o = api.Secrets();
   buildCounterSecrets++;
   if (buildCounterSecrets < 3) {
-    o.inline = buildUnnamed37();
-    o.secretManager = buildUnnamed38();
+    o.inline = buildUnnamed41();
+    o.secretManager = buildUnnamed42();
   }
   buildCounterSecrets--;
   return o;
@@ -2132,8 +2579,8 @@ api.Secrets buildSecrets() {
 void checkSecrets(api.Secrets o) {
   buildCounterSecrets++;
   if (buildCounterSecrets < 3) {
-    checkUnnamed37(o.inline!);
-    checkUnnamed38(o.secretManager!);
+    checkUnnamed41(o.inline!);
+    checkUnnamed42(o.secretManager!);
   }
   buildCounterSecrets--;
 }
@@ -2161,12 +2608,12 @@ void checkSource(api.Source o) {
   buildCounterSource--;
 }
 
-core.Map<core.String, api.FileHashes> buildUnnamed39() => {
+core.Map<core.String, api.FileHashes> buildUnnamed43() => {
       'x': buildFileHashes(),
       'y': buildFileHashes(),
     };
 
-void checkUnnamed39(core.Map<core.String, api.FileHashes> o) {
+void checkUnnamed43(core.Map<core.String, api.FileHashes> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkFileHashes(o['x']!);
   checkFileHashes(o['y']!);
@@ -2177,7 +2624,7 @@ api.SourceProvenance buildSourceProvenance() {
   final o = api.SourceProvenance();
   buildCounterSourceProvenance++;
   if (buildCounterSourceProvenance < 3) {
-    o.fileHashes = buildUnnamed39();
+    o.fileHashes = buildUnnamed43();
     o.resolvedRepoSource = buildRepoSource();
     o.resolvedStorageSource = buildStorageSource();
     o.resolvedStorageSourceManifest = buildStorageSourceManifest();
@@ -2189,7 +2636,7 @@ api.SourceProvenance buildSourceProvenance() {
 void checkSourceProvenance(api.SourceProvenance o) {
   buildCounterSourceProvenance++;
   if (buildCounterSourceProvenance < 3) {
-    checkUnnamed39(o.fileHashes!);
+    checkUnnamed43(o.fileHashes!);
     checkRepoSource(o.resolvedRepoSource!);
     checkStorageSource(o.resolvedStorageSource!);
     checkStorageSourceManifest(o.resolvedStorageSourceManifest!);
@@ -2197,7 +2644,7 @@ void checkSourceProvenance(api.SourceProvenance o) {
   buildCounterSourceProvenance--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed40() => {
+core.Map<core.String, core.Object?> buildUnnamed44() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -2210,7 +2657,7 @@ core.Map<core.String, core.Object?> buildUnnamed40() => {
       },
     };
 
-void checkUnnamed40(core.Map<core.String, core.Object?> o) {
+void checkUnnamed44(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted7 = (o['x']!) as core.Map;
   unittest.expect(casted7, unittest.hasLength(3));
@@ -2242,15 +2689,15 @@ void checkUnnamed40(core.Map<core.String, core.Object?> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object?>> buildUnnamed41() => [
-      buildUnnamed40(),
-      buildUnnamed40(),
+core.List<core.Map<core.String, core.Object?>> buildUnnamed45() => [
+      buildUnnamed44(),
+      buildUnnamed44(),
     ];
 
-void checkUnnamed41(core.List<core.Map<core.String, core.Object?>> o) {
+void checkUnnamed45(core.List<core.Map<core.String, core.Object?>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed40(o[0]);
-  checkUnnamed40(o[1]);
+  checkUnnamed44(o[0]);
+  checkUnnamed44(o[1]);
 }
 
 core.int buildCounterStatus = 0;
@@ -2259,7 +2706,7 @@ api.Status buildStatus() {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed41();
+    o.details = buildUnnamed45();
     o.message = 'foo';
   }
   buildCounterStatus--;
@@ -2273,7 +2720,7 @@ void checkStatus(api.Status o) {
       o.code!,
       unittest.equals(42),
     );
-    checkUnnamed41(o.details!);
+    checkUnnamed45(o.details!);
     unittest.expect(
       o.message!,
       unittest.equals('foo'),
@@ -2481,12 +2928,12 @@ void checkWorkerConfig(api.WorkerConfig o) {
   buildCounterWorkerConfig--;
 }
 
-core.Map<core.String, core.String> buildUnnamed42() => {
+core.Map<core.String, core.String> buildUnnamed46() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed42(core.Map<core.String, core.String> o) {
+void checkUnnamed46(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -2503,7 +2950,7 @@ api.WorkerPool buildWorkerPool() {
   final o = api.WorkerPool();
   buildCounterWorkerPool++;
   if (buildCounterWorkerPool < 3) {
-    o.annotations = buildUnnamed42();
+    o.annotations = buildUnnamed46();
     o.createTime = 'foo';
     o.deleteTime = 'foo';
     o.displayName = 'foo';
@@ -2521,7 +2968,7 @@ api.WorkerPool buildWorkerPool() {
 void checkWorkerPool(api.WorkerPool o) {
   buildCounterWorkerPool++;
   if (buildCounterWorkerPool < 3) {
-    checkUnnamed42(o.annotations!);
+    checkUnnamed46(o.annotations!);
     unittest.expect(
       o.createTime!,
       unittest.equals('foo'),
@@ -2560,6 +3007,27 @@ void checkWorkerPool(api.WorkerPool o) {
 }
 
 void main() {
+  unittest.group('obj-schema-AddBitbucketServerConnectedRepositoryRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildAddBitbucketServerConnectedRepositoryRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AddBitbucketServerConnectedRepositoryRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkAddBitbucketServerConnectedRepositoryRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-AddBitbucketServerConnectedRepositoryResponse',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildAddBitbucketServerConnectedRepositoryResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AddBitbucketServerConnectedRepositoryResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkAddBitbucketServerConnectedRepositoryResponse(od);
+    });
+  });
+
   unittest.group('obj-schema-ApprovalConfig', () {
     unittest.test('to-json--from-json', () async {
       final o = buildApprovalConfig();
@@ -2607,6 +3075,78 @@ void main() {
       final od =
           api.Artifacts.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkArtifacts(od);
+    });
+  });
+
+  unittest.group(
+      'obj-schema-BatchCreateBitbucketServerConnectedRepositoriesRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildBatchCreateBitbucketServerConnectedRepositoriesRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.BatchCreateBitbucketServerConnectedRepositoriesRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>);
+      checkBatchCreateBitbucketServerConnectedRepositoriesRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-BitbucketServerConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildBitbucketServerConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.BitbucketServerConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkBitbucketServerConfig(od);
+    });
+  });
+
+  unittest.group('obj-schema-BitbucketServerConnectedRepository', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildBitbucketServerConnectedRepository();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.BitbucketServerConnectedRepository.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkBitbucketServerConnectedRepository(od);
+    });
+  });
+
+  unittest.group('obj-schema-BitbucketServerRepository', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildBitbucketServerRepository();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.BitbucketServerRepository.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkBitbucketServerRepository(od);
+    });
+  });
+
+  unittest.group('obj-schema-BitbucketServerRepositoryId', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildBitbucketServerRepositoryId();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.BitbucketServerRepositoryId.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkBitbucketServerRepositoryId(od);
+    });
+  });
+
+  unittest.group('obj-schema-BitbucketServerSecrets', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildBitbucketServerSecrets();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.BitbucketServerSecrets.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkBitbucketServerSecrets(od);
+    });
+  });
+
+  unittest.group('obj-schema-BitbucketServerTriggerConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildBitbucketServerTriggerConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.BitbucketServerTriggerConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkBitbucketServerTriggerConfig(od);
     });
   });
 
@@ -2687,6 +3227,17 @@ void main() {
       final od = api.CancelOperationRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkCancelOperationRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-CreateBitbucketServerConnectedRepositoryRequest',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildCreateBitbucketServerConnectedRepositoryRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.CreateBitbucketServerConnectedRepositoryRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkCreateBitbucketServerConnectedRepositoryRequest(od);
     });
   });
 
@@ -2797,6 +3348,26 @@ void main() {
       final od = api.InlineSecret.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkInlineSecret(od);
+    });
+  });
+
+  unittest.group('obj-schema-ListBitbucketServerConfigsResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildListBitbucketServerConfigsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ListBitbucketServerConfigsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkListBitbucketServerConfigsResponse(od);
+    });
+  });
+
+  unittest.group('obj-schema-ListBitbucketServerRepositoriesResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildListBitbucketServerRepositoriesResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ListBitbucketServerRepositoriesResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkListBitbucketServerRepositoriesResponse(od);
     });
   });
 
@@ -2917,6 +3488,17 @@ void main() {
       final od = api.ReceiveTriggerWebhookResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkReceiveTriggerWebhookResponse(od);
+    });
+  });
+
+  unittest.group('obj-schema-RemoveBitbucketServerConnectedRepositoryRequest',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildRemoveBitbucketServerConnectedRepositoryRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RemoveBitbucketServerConnectedRepositoryRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkRemoveBitbucketServerConnectedRepositoryRequest(od);
     });
   });
 
@@ -3097,6 +3679,71 @@ void main() {
       final od =
           api.WorkerPool.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkWorkerPool(od);
+    });
+  });
+
+  unittest.group('resource-LocationsResource', () {
+    unittest.test('method--regionalWebhook', () async {
+      final mock = HttpServerMock();
+      final res = api.CloudBuildApi(mock).locations;
+      final arg_request = buildHttpBody();
+      final arg_location = 'foo';
+      final arg_webhookKey = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj =
+            api.HttpBody.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkHttpBody(obj);
+
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['webhookKey']!.first,
+          unittest.equals(arg_webhookKey),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildEmpty());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.regionalWebhook(arg_request, arg_location,
+          webhookKey: arg_webhookKey, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
   });
 
@@ -4010,6 +4657,578 @@ void main() {
       final response = await res.patch(arg_request, arg_name,
           updateMask: arg_updateMask, $fields: arg_$fields);
       checkOperation(response as api.Operation);
+    });
+  });
+
+  unittest.group('resource-ProjectsLocationsBitbucketServerConfigsResource',
+      () {
+    unittest.test('method--addBitbucketServerConnectedRepository', () async {
+      final mock = HttpServerMock();
+      final res =
+          api.CloudBuildApi(mock).projects.locations.bitbucketServerConfigs;
+      final arg_request = buildAddBitbucketServerConnectedRepositoryRequest();
+      final arg_config = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.AddBitbucketServerConnectedRepositoryRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkAddBitbucketServerConnectedRepositoryRequest(obj);
+
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json
+            .encode(buildAddBitbucketServerConnectedRepositoryResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.addBitbucketServerConnectedRepository(
+          arg_request, arg_config,
+          $fields: arg_$fields);
+      checkAddBitbucketServerConnectedRepositoryResponse(
+          response as api.AddBitbucketServerConnectedRepositoryResponse);
+    });
+
+    unittest.test('method--create', () async {
+      final mock = HttpServerMock();
+      final res =
+          api.CloudBuildApi(mock).projects.locations.bitbucketServerConfigs;
+      final arg_request = buildBitbucketServerConfig();
+      final arg_parent = 'foo';
+      final arg_bitbucketServerConfigId = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.BitbucketServerConfig.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkBitbucketServerConfig(obj);
+
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['bitbucketServerConfigId']!.first,
+          unittest.equals(arg_bitbucketServerConfigId),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildOperation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.create(arg_request, arg_parent,
+          bitbucketServerConfigId: arg_bitbucketServerConfigId,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
+    });
+
+    unittest.test('method--delete', () async {
+      final mock = HttpServerMock();
+      final res =
+          api.CloudBuildApi(mock).projects.locations.bitbucketServerConfigs;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildOperation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
+    });
+
+    unittest.test('method--get', () async {
+      final mock = HttpServerMock();
+      final res =
+          api.CloudBuildApi(mock).projects.locations.bitbucketServerConfigs;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildBitbucketServerConfig());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkBitbucketServerConfig(response as api.BitbucketServerConfig);
+    });
+
+    unittest.test('method--list', () async {
+      final mock = HttpServerMock();
+      final res =
+          api.CloudBuildApi(mock).projects.locations.bitbucketServerConfigs;
+      final arg_parent = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          core.int.parse(queryMap['pageSize']!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap['pageToken']!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp =
+            convert.json.encode(buildListBitbucketServerConfigsResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListBitbucketServerConfigsResponse(
+          response as api.ListBitbucketServerConfigsResponse);
+    });
+
+    unittest.test('method--patch', () async {
+      final mock = HttpServerMock();
+      final res =
+          api.CloudBuildApi(mock).projects.locations.bitbucketServerConfigs;
+      final arg_request = buildBitbucketServerConfig();
+      final arg_name = 'foo';
+      final arg_updateMask = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.BitbucketServerConfig.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkBitbucketServerConfig(obj);
+
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['updateMask']!.first,
+          unittest.equals(arg_updateMask),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildOperation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
+    });
+
+    unittest.test('method--removeBitbucketServerConnectedRepository', () async {
+      final mock = HttpServerMock();
+      final res =
+          api.CloudBuildApi(mock).projects.locations.bitbucketServerConfigs;
+      final arg_request =
+          buildRemoveBitbucketServerConnectedRepositoryRequest();
+      final arg_config = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj =
+            api.RemoveBitbucketServerConnectedRepositoryRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>);
+        checkRemoveBitbucketServerConnectedRepositoryRequest(obj);
+
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildEmpty());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.removeBitbucketServerConnectedRepository(
+          arg_request, arg_config,
+          $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
+    });
+  });
+
+  unittest.group(
+      'resource-ProjectsLocationsBitbucketServerConfigsConnectedRepositoriesResource',
+      () {
+    unittest.test('method--batchCreate', () async {
+      final mock = HttpServerMock();
+      final res = api.CloudBuildApi(mock)
+          .projects
+          .locations
+          .bitbucketServerConfigs
+          .connectedRepositories;
+      final arg_request =
+          buildBatchCreateBitbucketServerConnectedRepositoriesRequest();
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj =
+            api.BatchCreateBitbucketServerConnectedRepositoriesRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>);
+        checkBatchCreateBitbucketServerConnectedRepositoriesRequest(obj);
+
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildOperation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.batchCreate(arg_request, arg_parent, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
+    });
+  });
+
+  unittest.group(
+      'resource-ProjectsLocationsBitbucketServerConfigsReposResource', () {
+    unittest.test('method--list', () async {
+      final mock = HttpServerMock();
+      final res = api.CloudBuildApi(mock)
+          .projects
+          .locations
+          .bitbucketServerConfigs
+          .repos;
+      final arg_parent = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          core.int.parse(queryMap['pageSize']!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap['pageToken']!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp =
+            convert.json.encode(buildListBitbucketServerRepositoriesResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListBitbucketServerRepositoriesResponse(
+          response as api.ListBitbucketServerRepositoriesResponse);
     });
   });
 

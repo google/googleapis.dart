@@ -699,7 +699,7 @@ class ProjectsLocationsTriggersResource {
   /// trigger.
   ///
   /// [validateOnly] - Required. If set, validate the request and preview the
-  /// review, but do not actually post it.
+  /// review, but do not post it.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -752,7 +752,7 @@ class ProjectsLocationsTriggersResource {
   /// the current etag on the resource.
   ///
   /// [validateOnly] - Required. If set, validate the request and preview the
-  /// review, but do not actually post it.
+  /// review, but do not post it.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -889,9 +889,9 @@ class ProjectsLocationsTriggersResource {
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [orderBy] - The sorting order of the resources returned. Value should be a
-  /// comma separated list of fields. The default sorting oder is ascending. To
-  /// specify descending order for a field, append a ` desc` suffix; for
-  /// example: `name desc, trigger_id`.
+  /// comma-separated list of fields. The default sorting order is ascending. To
+  /// specify descending order for a field, append a `desc` suffix; for example:
+  /// `name desc, trigger_id`.
   ///
   /// [pageSize] - The maximum number of triggers to return on each page. Note:
   /// The service may send fewer.
@@ -952,12 +952,11 @@ class ProjectsLocationsTriggersResource {
   /// trigger will be created. In this situation, `update_mask` is ignored.
   ///
   /// [updateMask] - The fields to be updated; only fields explicitly provided
-  /// will be updated. If no field mask is provided, all provided fields in the
-  /// request will be updated. To update all fields, provide a field mask of
-  /// "*".
+  /// are updated. If no field mask is provided, all provided fields in the
+  /// request are updated. To update all fields, provide a field mask of "*".
   ///
   /// [validateOnly] - Required. If set, validate the request and preview the
-  /// review, but do not actually post it.
+  /// review, but do not post it.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1281,6 +1280,12 @@ class CloudRun {
 
 /// Represents a target of an invocation over HTTP.
 class Destination {
+  /// The Cloud Function resource name.
+  ///
+  /// Only Cloud Functions V2 is supported. Format:
+  /// projects/{project}/locations/{location}/functions/{function}
+  core.String? cloudFunction;
+
   /// Cloud Run fully-managed resource that receives the events.
   ///
   /// The resource should be in the same project as the trigger.
@@ -1292,12 +1297,16 @@ class Destination {
   GKE? gke;
 
   Destination({
+    this.cloudFunction,
     this.cloudRun,
     this.gke,
   });
 
   Destination.fromJson(core.Map _json)
       : this(
+          cloudFunction: _json.containsKey('cloudFunction')
+              ? _json['cloudFunction'] as core.String
+              : null,
           cloudRun: _json.containsKey('cloudRun')
               ? CloudRun.fromJson(
                   _json['cloudRun'] as core.Map<core.String, core.dynamic>)
@@ -1309,6 +1318,7 @@ class Destination {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (cloudFunction != null) 'cloudFunction': cloudFunction!,
         if (cloudRun != null) 'cloudRun': cloudRun!,
         if (gke != null) 'gke': gke!,
       };
@@ -1599,7 +1609,7 @@ class ListLocationsResponse {
       };
 }
 
-/// The response message for the ListTriggers method.
+/// The response message for the `ListTriggers` method.
 class ListTriggersResponse {
   /// A page token that can be sent to ListTriggers to request the next page.
   ///

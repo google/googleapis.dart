@@ -1458,39 +1458,7 @@ class Metadata {
 /// display_command is a single command that can be used to display a list of
 /// non compliant files. When there is no such command, we can also iterate a
 /// list of non compliant file using 'path'.
-class NonCompliantFile {
-  /// Command to display the non-compliant files.
-  core.String? displayCommand;
-
-  /// Empty if `display_command` is set.
-  core.String? path;
-
-  /// Explains why a file is non compliant for a CIS check.
-  core.String? reason;
-
-  NonCompliantFile({
-    this.displayCommand,
-    this.path,
-    this.reason,
-  });
-
-  NonCompliantFile.fromJson(core.Map _json)
-      : this(
-          displayCommand: _json.containsKey('displayCommand')
-              ? _json['displayCommand'] as core.String
-              : null,
-          path: _json.containsKey('path') ? _json['path'] as core.String : null,
-          reason: _json.containsKey('reason')
-              ? _json['reason'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (displayCommand != null) 'displayCommand': displayCommand!,
-        if (path != null) 'path': path!,
-        if (reason != null) 'reason': reason!,
-      };
-}
+typedef NonCompliantFile = $NonCompliantFile;
 
 /// An instance of an analysis type that has been found on a resource.
 class Occurrence {
@@ -2318,36 +2286,7 @@ class SourceContext {
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 typedef Status = $Status;
-
-class Subject {
-  /// `"": ""` Algorithms can be e.g. sha256, sha512 See
-  /// https://github.com/in-toto/attestation/blob/main/spec/field_types.md#DigestSet
-  core.Map<core.String, core.String>? digest;
-  core.String? name;
-
-  Subject({
-    this.digest,
-    this.name,
-  });
-
-  Subject.fromJson(core.Map _json)
-      : this(
-          digest: _json.containsKey('digest')
-              ? (_json['digest'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.String,
-                  ),
-                )
-              : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (digest != null) 'digest': digest!,
-        if (name != null) 'name': name!,
-      };
-}
+typedef Subject = $Subject;
 
 /// The Upgrade Distribution represents metadata about the Upgrade for each
 /// operating system (CPE).

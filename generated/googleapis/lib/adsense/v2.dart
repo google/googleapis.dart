@@ -2400,8 +2400,11 @@ class Payment {
 
   /// Resource name of the payment.
   ///
-  /// Format: accounts/{account}/payments/unpaid for unpaid (current) earnings.
-  /// accounts/{account}/payments/yyyy-MM-dd for paid earnings.
+  /// Format: - accounts/{account}/payments/unpaid for unpaid (current) AdSense
+  /// earnings. - accounts/{account}/payments/youtube-unpaid for unpaid
+  /// (current) YouTube earnings. - accounts/{account}/payments/yyyy-MM-dd for
+  /// paid AdSense earnings. - accounts/{account}/payments/youtube-yyyy-MM-dd
+  /// for paid YouTube earnings.
   core.String? name;
 
   Payment({

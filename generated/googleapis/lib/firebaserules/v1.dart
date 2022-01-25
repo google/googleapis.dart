@@ -705,6 +705,8 @@ class ExpressionReport {
 /// `File` containing source content.
 class File {
   /// Textual Content.
+  ///
+  /// Required.
   core.String? content;
 
   /// Fingerprint (e.g. github sha) associated with the `File`.
@@ -718,6 +720,8 @@ class File {
   }
 
   /// File name.
+  ///
+  /// Required.
   core.String? name;
 
   File({
@@ -1157,6 +1161,8 @@ class Ruleset {
   core.String? name;
 
   /// `Source` for the `Ruleset`.
+  ///
+  /// Required.
   Source? source;
 
   Ruleset({
@@ -1193,6 +1199,8 @@ class Ruleset {
 /// `Source` is one or more `File` messages comprising a logical set of rules.
 class Source {
   /// `File` set constituting the `Source` bundle.
+  ///
+  /// Required.
   core.List<File>? files;
 
   Source({

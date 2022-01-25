@@ -1256,6 +1256,62 @@ class $SasPortalCustomer {
 
 /// Used by:
 ///
+/// - prod_tt_sasportal:v1alpha1 : SasPortalDeployment
+/// - sasportal:v1alpha1 : SasPortalDeployment
+class $SasPortalDeployment {
+  /// The deployment's display name.
+  core.String? displayName;
+
+  /// The FRNs copied from its direct parent.
+  ///
+  /// Output only.
+  core.List<core.String>? frns;
+
+  /// Resource name.
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// User ID used by the devices belonging to this deployment.
+  ///
+  /// Each deployment should be associated with one unique user ID.
+  core.List<core.String>? sasUserIds;
+
+  $SasPortalDeployment({
+    this.displayName,
+    this.frns,
+    this.name,
+    this.sasUserIds,
+  });
+
+  $SasPortalDeployment.fromJson(core.Map _json)
+      : this(
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          frns: _json.containsKey('frns')
+              ? (_json['frns'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          sasUserIds: _json.containsKey('sasUserIds')
+              ? (_json['sasUserIds'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (frns != null) 'frns': frns!,
+        if (name != null) 'name': name!,
+        if (sasUserIds != null) 'sasUserIds': sasUserIds!,
+      };
+}
+
+/// Used by:
+///
 /// - prod_tt_sasportal:v1alpha1 : SasPortalDeviceAirInterface
 /// - sasportal:v1alpha1 : SasPortalDeviceAirInterface
 class $SasPortalDeviceAirInterface {

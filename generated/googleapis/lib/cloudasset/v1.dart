@@ -77,8 +77,9 @@ class AssetsResource {
   /// [parent] - Required. Name of the organization or project the assets belong
   /// to. Format: "organizations/\[organization-number\]" (such as
   /// "organizations/123"), "projects/\[project-id\]" (such as
-  /// "projects/my-project-id"), or "projects/\[project-number\]" (such as
-  /// "projects/12345").
+  /// "projects/my-project-id"), "projects/\[project-number\]" (such as
+  /// "projects/12345"), or "folders/\[folder-number\]" (such as
+  /// "folders/12345").
   /// Value must have pattern `^\[^/\]+/\[^/\]+$`.
   ///
   /// [assetTypes] - A list of asset types to take a snapshot for. For example:
@@ -735,14 +736,19 @@ class V1Resource {
   /// service account SA has permission P to the GCP folder F, then user A
   /// potentially has access to the GCP folder F. And those advanced analysis
   /// results will be included in
-  /// AnalyzeIamPolicyResponse.service_account_impersonation_analysis. Default
-  /// is false.
+  /// AnalyzeIamPolicyResponse.service_account_impersonation_analysis. Only the
+  /// following permissions are considered in this analysis: *
+  /// `iam.serviceAccounts.actAs` * `iam.serviceAccounts.signBlob` *
+  /// `iam.serviceAccounts.signJwt` * `iam.serviceAccounts.getAccessToken` *
+  /// `iam.serviceAccounts.getOpenIdToken` *
+  /// `iam.serviceAccounts.implicitDelegation` Default is false.
   ///
   /// [analysisQuery_options_expandGroups] - Optional. If true, the identities
   /// section of the result will expand any Google groups appearing in an IAM
   /// policy binding. If IamPolicyAnalysisQuery.identity_selector is specified,
   /// the identity in the result will be determined by the selector, and this
-  /// flag is not allowed to set. Default is false.
+  /// flag is not allowed to set. If true, the default max expansion per group
+  /// is 1000 for AssetService.AnalyzeIamPolicy\]\[\]. Default is false.
   ///
   /// [analysisQuery_options_expandResources] - Optional. If true and
   /// IamPolicyAnalysisQuery.resource_selector is not specified, the resource
@@ -758,7 +764,9 @@ class V1Resource {
   /// with this option. For example, if the request analyzes for which users
   /// have permission P on a GCP project with this option enabled, the results
   /// will include all users who have permission P on that project or any lower
-  /// resource. Default is false.
+  /// resource. If true, the default max expansion per resource is 1000 for
+  /// AssetService.AnalyzeIamPolicy\]\[\] and 100000 for
+  /// AssetService.AnalyzeIamPolicyLongrunning\]\[\]. Default is false.
   ///
   /// [analysisQuery_options_expandRoles] - Optional. If true, the access
   /// section of result will expand any roles appearing in IAM policy bindings
@@ -4868,8 +4876,12 @@ class Options {
   /// service account SA has permission P to the GCP folder F, then user A
   /// potentially has access to the GCP folder F. And those advanced analysis
   /// results will be included in
-  /// AnalyzeIamPolicyResponse.service_account_impersonation_analysis. Default
-  /// is false.
+  /// AnalyzeIamPolicyResponse.service_account_impersonation_analysis. Only the
+  /// following permissions are considered in this analysis: *
+  /// `iam.serviceAccounts.actAs` * `iam.serviceAccounts.signBlob` *
+  /// `iam.serviceAccounts.signJwt` * `iam.serviceAccounts.getAccessToken` *
+  /// `iam.serviceAccounts.getOpenIdToken` *
+  /// `iam.serviceAccounts.implicitDelegation` Default is false.
   ///
   /// Optional.
   core.bool? analyzeServiceAccountImpersonation;
@@ -4879,7 +4891,8 @@ class Options {
   ///
   /// If IamPolicyAnalysisQuery.identity_selector is specified, the identity in
   /// the result will be determined by the selector, and this flag is not
-  /// allowed to set. Default is false.
+  /// allowed to set. If true, the default max expansion per group is 1000 for
+  /// AssetService.AnalyzeIamPolicy\]\[\]. Default is false.
   ///
   /// Optional.
   core.bool? expandGroups;
@@ -4898,7 +4911,9 @@ class Options {
   /// cannot be used together with this option. For example, if the request
   /// analyzes for which users have permission P on a GCP project with this
   /// option enabled, the results will include all users who have permission P
-  /// on that project or any lower resource. Default is false.
+  /// on that project or any lower resource. If true, the default max expansion
+  /// per resource is 1000 for AssetService.AnalyzeIamPolicy\]\[\] and 100000
+  /// for AssetService.AnalyzeIamPolicyLongrunning\]\[\]. Default is false.
   ///
   /// Optional.
   core.bool? expandResources;

@@ -24,20 +24,18 @@
 ///   - [AccountsUserLinksResource]
 /// - [PropertiesResource]
 ///   - [PropertiesAndroidAppDataStreamsResource]
-///     - [PropertiesAndroidAppDataStreamsMeasurementProtocolSecretsResource]
 ///   - [PropertiesConversionEventsResource]
 ///   - [PropertiesCustomDimensionsResource]
 ///   - [PropertiesCustomMetricsResource]
 ///   - [PropertiesDataStreamsResource]
+///     - [PropertiesDataStreamsMeasurementProtocolSecretsResource]
 ///   - [PropertiesDisplayVideo360AdvertiserLinkProposalsResource]
 ///   - [PropertiesDisplayVideo360AdvertiserLinksResource]
 ///   - [PropertiesFirebaseLinksResource]
 ///   - [PropertiesGoogleAdsLinksResource]
 ///   - [PropertiesIosAppDataStreamsResource]
-///     - [PropertiesIosAppDataStreamsMeasurementProtocolSecretsResource]
 ///   - [PropertiesUserLinksResource]
 ///   - [PropertiesWebDataStreamsResource]
-///     - [PropertiesWebDataStreamsMeasurementProtocolSecretsResource]
 library analyticsadmin.v1alpha;
 
 import 'dart:async' as async;
@@ -1415,11 +1413,6 @@ class PropertiesResource {
 class PropertiesAndroidAppDataStreamsResource {
   final commons.ApiRequester _requester;
 
-  PropertiesAndroidAppDataStreamsMeasurementProtocolSecretsResource
-      get measurementProtocolSecrets =>
-          PropertiesAndroidAppDataStreamsMeasurementProtocolSecretsResource(
-              _requester);
-
   PropertiesAndroidAppDataStreamsResource(commons.ApiRequester client)
       : _requester = client;
 
@@ -1606,251 +1599,6 @@ class PropertiesAndroidAppDataStreamsResource {
       queryParams: _queryParams,
     );
     return GoogleAnalyticsAdminV1alphaAndroidAppDataStream.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
-  }
-}
-
-class PropertiesAndroidAppDataStreamsMeasurementProtocolSecretsResource {
-  final commons.ApiRequester _requester;
-
-  PropertiesAndroidAppDataStreamsMeasurementProtocolSecretsResource(
-      commons.ApiRequester client)
-      : _requester = client;
-
-  /// Creates a measurement protocol secret.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [parent] - Required. The parent resource where this secret will be
-  /// created. Any type of stream (WebDataStream, IosAppDataStream,
-  /// AndroidAppDataStream) may be a parent. Format:
-  /// properties/{property}/webDataStreams/{webDataStream}
-  /// Value must have pattern
-  /// `^properties/\[^/\]+/androidAppDataStreams/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret> create(
-    GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret request,
-    core.String parent, {
-    core.String? $fields,
-  }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final _url = 'v1alpha/' +
-        core.Uri.encodeFull('$parent') +
-        '/measurementProtocolSecrets';
-
-    final _response = await _requester.request(
-      _url,
-      'POST',
-      body: _body,
-      queryParams: _queryParams,
-    );
-    return GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
-  }
-
-  /// Deletes target MeasurementProtocolSecret.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - Required. The name of the MeasurementProtocolSecret to delete.
-  /// Format:
-  /// properties/{property}/webDataStreams/{webDataStream}/measurementProtocolSecrets/{measurementProtocolSecret}
-  /// Note: Any type of stream (WebDataStream, IosAppDataStream,
-  /// AndroidAppDataStream) may be a parent.
-  /// Value must have pattern
-  /// `^properties/\[^/\]+/androidAppDataStreams/\[^/\]+/measurementProtocolSecrets/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [GoogleProtobufEmpty].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<GoogleProtobufEmpty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final _url = 'v1alpha/' + core.Uri.encodeFull('$name');
-
-    final _response = await _requester.request(
-      _url,
-      'DELETE',
-      queryParams: _queryParams,
-    );
-    return GoogleProtobufEmpty.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
-  }
-
-  /// Lookup for a single "GA4" MeasurementProtocolSecret.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - Required. The name of the measurement protocol secret to lookup.
-  /// Format:
-  /// properties/{property}/webDataStreams/{webDataStream}/measurementProtocolSecrets/{measurementProtocolSecret}
-  /// Note: Any type of stream (WebDataStream, IosAppDataStream,
-  /// AndroidAppDataStream) may be a parent.
-  /// Value must have pattern
-  /// `^properties/\[^/\]+/androidAppDataStreams/\[^/\]+/measurementProtocolSecrets/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final _url = 'v1alpha/' + core.Uri.encodeFull('$name');
-
-    final _response = await _requester.request(
-      _url,
-      'GET',
-      queryParams: _queryParams,
-    );
-    return GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
-  }
-
-  /// Returns child MeasurementProtocolSecrets under the specified parent
-  /// Property.
-  ///
-  /// Request parameters:
-  ///
-  /// [parent] - Required. The resource name of the parent stream. Any type of
-  /// stream (WebDataStream, IosAppDataStream, AndroidAppDataStream) may be a
-  /// parent. Format:
-  /// properties/{property}/webDataStreams/{webDataStream}/measurementProtocolSecrets
-  /// Value must have pattern
-  /// `^properties/\[^/\]+/androidAppDataStreams/\[^/\]+$`.
-  ///
-  /// [pageSize] - The maximum number of resources to return. If unspecified, at
-  /// most 10 resources will be returned. The maximum value is 10. Higher values
-  /// will be coerced to the maximum.
-  ///
-  /// [pageToken] - A page token, received from a previous
-  /// `ListMeasurementProtocolSecrets` call. Provide this to retrieve the
-  /// subsequent page. When paginating, all other parameters provided to
-  /// `ListMeasurementProtocolSecrets` must match the call that provided the
-  /// page token.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a
-  /// [GoogleAnalyticsAdminV1alphaListMeasurementProtocolSecretsResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<
-      GoogleAnalyticsAdminV1alphaListMeasurementProtocolSecretsResponse> list(
-    core.String parent, {
-    core.int? pageSize,
-    core.String? pageToken,
-    core.String? $fields,
-  }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final _url = 'v1alpha/' +
-        core.Uri.encodeFull('$parent') +
-        '/measurementProtocolSecrets';
-
-    final _response = await _requester.request(
-      _url,
-      'GET',
-      queryParams: _queryParams,
-    );
-    return GoogleAnalyticsAdminV1alphaListMeasurementProtocolSecretsResponse
-        .fromJson(_response as core.Map<core.String, core.dynamic>);
-  }
-
-  /// Updates a measurement protocol secret.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - Output only. Resource name of this secret. This secret may be a
-  /// child of any type of stream. Format:
-  /// properties/{property}/webDataStreams/{webDataStream}/measurementProtocolSecrets/{measurementProtocolSecret}
-  /// Value must have pattern
-  /// `^properties/\[^/\]+/androidAppDataStreams/\[^/\]+/measurementProtocolSecrets/\[^/\]+$`.
-  ///
-  /// [updateMask] - The list of fields to be updated. Omitted fields will not
-  /// be updated.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret> patch(
-    GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret request,
-    core.String name, {
-    core.String? updateMask,
-    core.String? $fields,
-  }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final _url = 'v1alpha/' + core.Uri.encodeFull('$name');
-
-    final _response = await _requester.request(
-      _url,
-      'PATCH',
-      body: _body,
-      queryParams: _queryParams,
-    );
-    return GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
 }
@@ -2489,6 +2237,10 @@ class PropertiesCustomMetricsResource {
 class PropertiesDataStreamsResource {
   final commons.ApiRequester _requester;
 
+  PropertiesDataStreamsMeasurementProtocolSecretsResource
+      get measurementProtocolSecrets =>
+          PropertiesDataStreamsMeasurementProtocolSecretsResource(_requester);
+
   PropertiesDataStreamsResource(commons.ApiRequester client)
       : _requester = client;
 
@@ -2702,6 +2454,241 @@ class PropertiesDataStreamsResource {
       queryParams: _queryParams,
     );
     return GoogleAnalyticsAdminV1alphaDataStream.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class PropertiesDataStreamsMeasurementProtocolSecretsResource {
+  final commons.ApiRequester _requester;
+
+  PropertiesDataStreamsMeasurementProtocolSecretsResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a measurement protocol secret.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource where this secret will be
+  /// created. Format: properties/{property}/dataStreams/{dataStream}
+  /// Value must have pattern `^properties/\[^/\]+/dataStreams/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret> create(
+    GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1alpha/' +
+        core.Uri.encodeFull('$parent') +
+        '/measurementProtocolSecrets';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes target MeasurementProtocolSecret.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the MeasurementProtocolSecret to delete.
+  /// Format:
+  /// properties/{property}/dataStreams/{dataStream}/measurementProtocolSecrets/{measurementProtocolSecret}
+  /// Value must have pattern
+  /// `^properties/\[^/\]+/dataStreams/\[^/\]+/measurementProtocolSecrets/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1alpha/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'DELETE',
+      queryParams: _queryParams,
+    );
+    return GoogleProtobufEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lookup for a single "GA4" MeasurementProtocolSecret.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the measurement protocol secret to lookup.
+  /// Format:
+  /// properties/{property}/dataStreams/{dataStream}/measurementProtocolSecrets/{measurementProtocolSecret}
+  /// Value must have pattern
+  /// `^properties/\[^/\]+/dataStreams/\[^/\]+/measurementProtocolSecrets/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1alpha/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns child MeasurementProtocolSecrets under the specified parent
+  /// Property.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource name of the parent stream. Format:
+  /// properties/{property}/dataStreams/{dataStream}/measurementProtocolSecrets
+  /// Value must have pattern `^properties/\[^/\]+/dataStreams/\[^/\]+$`.
+  ///
+  /// [pageSize] - The maximum number of resources to return. If unspecified, at
+  /// most 10 resources will be returned. The maximum value is 10. Higher values
+  /// will be coerced to the maximum.
+  ///
+  /// [pageToken] - A page token, received from a previous
+  /// `ListMeasurementProtocolSecrets` call. Provide this to retrieve the
+  /// subsequent page. When paginating, all other parameters provided to
+  /// `ListMeasurementProtocolSecrets` must match the call that provided the
+  /// page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleAnalyticsAdminV1alphaListMeasurementProtocolSecretsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<
+      GoogleAnalyticsAdminV1alphaListMeasurementProtocolSecretsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1alpha/' +
+        core.Uri.encodeFull('$parent') +
+        '/measurementProtocolSecrets';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleAnalyticsAdminV1alphaListMeasurementProtocolSecretsResponse
+        .fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates a measurement protocol secret.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Output only. Resource name of this secret. This secret may be a
+  /// child of any type of stream. Format:
+  /// properties/{property}/webDataStreams/{webDataStream}/measurementProtocolSecrets/{measurementProtocolSecret}
+  /// Value must have pattern
+  /// `^properties/\[^/\]+/dataStreams/\[^/\]+/measurementProtocolSecrets/\[^/\]+$`.
+  ///
+  /// [updateMask] - The list of fields to be updated. Omitted fields will not
+  /// be updated.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret> patch(
+    GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1alpha/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
 }
@@ -3569,11 +3556,6 @@ class PropertiesGoogleAdsLinksResource {
 class PropertiesIosAppDataStreamsResource {
   final commons.ApiRequester _requester;
 
-  PropertiesIosAppDataStreamsMeasurementProtocolSecretsResource
-      get measurementProtocolSecrets =>
-          PropertiesIosAppDataStreamsMeasurementProtocolSecretsResource(
-              _requester);
-
   PropertiesIosAppDataStreamsResource(commons.ApiRequester client)
       : _requester = client;
 
@@ -3755,249 +3737,6 @@ class PropertiesIosAppDataStreamsResource {
       queryParams: _queryParams,
     );
     return GoogleAnalyticsAdminV1alphaIosAppDataStream.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
-  }
-}
-
-class PropertiesIosAppDataStreamsMeasurementProtocolSecretsResource {
-  final commons.ApiRequester _requester;
-
-  PropertiesIosAppDataStreamsMeasurementProtocolSecretsResource(
-      commons.ApiRequester client)
-      : _requester = client;
-
-  /// Creates a measurement protocol secret.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [parent] - Required. The parent resource where this secret will be
-  /// created. Any type of stream (WebDataStream, IosAppDataStream,
-  /// AndroidAppDataStream) may be a parent. Format:
-  /// properties/{property}/webDataStreams/{webDataStream}
-  /// Value must have pattern `^properties/\[^/\]+/iosAppDataStreams/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret> create(
-    GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret request,
-    core.String parent, {
-    core.String? $fields,
-  }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final _url = 'v1alpha/' +
-        core.Uri.encodeFull('$parent') +
-        '/measurementProtocolSecrets';
-
-    final _response = await _requester.request(
-      _url,
-      'POST',
-      body: _body,
-      queryParams: _queryParams,
-    );
-    return GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
-  }
-
-  /// Deletes target MeasurementProtocolSecret.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - Required. The name of the MeasurementProtocolSecret to delete.
-  /// Format:
-  /// properties/{property}/webDataStreams/{webDataStream}/measurementProtocolSecrets/{measurementProtocolSecret}
-  /// Note: Any type of stream (WebDataStream, IosAppDataStream,
-  /// AndroidAppDataStream) may be a parent.
-  /// Value must have pattern
-  /// `^properties/\[^/\]+/iosAppDataStreams/\[^/\]+/measurementProtocolSecrets/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [GoogleProtobufEmpty].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<GoogleProtobufEmpty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final _url = 'v1alpha/' + core.Uri.encodeFull('$name');
-
-    final _response = await _requester.request(
-      _url,
-      'DELETE',
-      queryParams: _queryParams,
-    );
-    return GoogleProtobufEmpty.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
-  }
-
-  /// Lookup for a single "GA4" MeasurementProtocolSecret.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - Required. The name of the measurement protocol secret to lookup.
-  /// Format:
-  /// properties/{property}/webDataStreams/{webDataStream}/measurementProtocolSecrets/{measurementProtocolSecret}
-  /// Note: Any type of stream (WebDataStream, IosAppDataStream,
-  /// AndroidAppDataStream) may be a parent.
-  /// Value must have pattern
-  /// `^properties/\[^/\]+/iosAppDataStreams/\[^/\]+/measurementProtocolSecrets/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final _url = 'v1alpha/' + core.Uri.encodeFull('$name');
-
-    final _response = await _requester.request(
-      _url,
-      'GET',
-      queryParams: _queryParams,
-    );
-    return GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
-  }
-
-  /// Returns child MeasurementProtocolSecrets under the specified parent
-  /// Property.
-  ///
-  /// Request parameters:
-  ///
-  /// [parent] - Required. The resource name of the parent stream. Any type of
-  /// stream (WebDataStream, IosAppDataStream, AndroidAppDataStream) may be a
-  /// parent. Format:
-  /// properties/{property}/webDataStreams/{webDataStream}/measurementProtocolSecrets
-  /// Value must have pattern `^properties/\[^/\]+/iosAppDataStreams/\[^/\]+$`.
-  ///
-  /// [pageSize] - The maximum number of resources to return. If unspecified, at
-  /// most 10 resources will be returned. The maximum value is 10. Higher values
-  /// will be coerced to the maximum.
-  ///
-  /// [pageToken] - A page token, received from a previous
-  /// `ListMeasurementProtocolSecrets` call. Provide this to retrieve the
-  /// subsequent page. When paginating, all other parameters provided to
-  /// `ListMeasurementProtocolSecrets` must match the call that provided the
-  /// page token.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a
-  /// [GoogleAnalyticsAdminV1alphaListMeasurementProtocolSecretsResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<
-      GoogleAnalyticsAdminV1alphaListMeasurementProtocolSecretsResponse> list(
-    core.String parent, {
-    core.int? pageSize,
-    core.String? pageToken,
-    core.String? $fields,
-  }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final _url = 'v1alpha/' +
-        core.Uri.encodeFull('$parent') +
-        '/measurementProtocolSecrets';
-
-    final _response = await _requester.request(
-      _url,
-      'GET',
-      queryParams: _queryParams,
-    );
-    return GoogleAnalyticsAdminV1alphaListMeasurementProtocolSecretsResponse
-        .fromJson(_response as core.Map<core.String, core.dynamic>);
-  }
-
-  /// Updates a measurement protocol secret.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - Output only. Resource name of this secret. This secret may be a
-  /// child of any type of stream. Format:
-  /// properties/{property}/webDataStreams/{webDataStream}/measurementProtocolSecrets/{measurementProtocolSecret}
-  /// Value must have pattern
-  /// `^properties/\[^/\]+/iosAppDataStreams/\[^/\]+/measurementProtocolSecrets/\[^/\]+$`.
-  ///
-  /// [updateMask] - The list of fields to be updated. Omitted fields will not
-  /// be updated.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret> patch(
-    GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret request,
-    core.String name, {
-    core.String? updateMask,
-    core.String? $fields,
-  }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final _url = 'v1alpha/' + core.Uri.encodeFull('$name');
-
-    final _response = await _requester.request(
-      _url,
-      'PATCH',
-      body: _body,
-      queryParams: _queryParams,
-    );
-    return GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
 }
@@ -4460,11 +4199,6 @@ class PropertiesUserLinksResource {
 class PropertiesWebDataStreamsResource {
   final commons.ApiRequester _requester;
 
-  PropertiesWebDataStreamsMeasurementProtocolSecretsResource
-      get measurementProtocolSecrets =>
-          PropertiesWebDataStreamsMeasurementProtocolSecretsResource(
-              _requester);
-
   PropertiesWebDataStreamsResource(commons.ApiRequester client)
       : _requester = client;
 
@@ -4730,249 +4464,6 @@ class PropertiesWebDataStreamsResource {
       queryParams: _queryParams,
     );
     return GoogleAnalyticsAdminV1alphaWebDataStream.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
-  }
-}
-
-class PropertiesWebDataStreamsMeasurementProtocolSecretsResource {
-  final commons.ApiRequester _requester;
-
-  PropertiesWebDataStreamsMeasurementProtocolSecretsResource(
-      commons.ApiRequester client)
-      : _requester = client;
-
-  /// Creates a measurement protocol secret.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [parent] - Required. The parent resource where this secret will be
-  /// created. Any type of stream (WebDataStream, IosAppDataStream,
-  /// AndroidAppDataStream) may be a parent. Format:
-  /// properties/{property}/webDataStreams/{webDataStream}
-  /// Value must have pattern `^properties/\[^/\]+/webDataStreams/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret> create(
-    GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret request,
-    core.String parent, {
-    core.String? $fields,
-  }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final _url = 'v1alpha/' +
-        core.Uri.encodeFull('$parent') +
-        '/measurementProtocolSecrets';
-
-    final _response = await _requester.request(
-      _url,
-      'POST',
-      body: _body,
-      queryParams: _queryParams,
-    );
-    return GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
-  }
-
-  /// Deletes target MeasurementProtocolSecret.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - Required. The name of the MeasurementProtocolSecret to delete.
-  /// Format:
-  /// properties/{property}/webDataStreams/{webDataStream}/measurementProtocolSecrets/{measurementProtocolSecret}
-  /// Note: Any type of stream (WebDataStream, IosAppDataStream,
-  /// AndroidAppDataStream) may be a parent.
-  /// Value must have pattern
-  /// `^properties/\[^/\]+/webDataStreams/\[^/\]+/measurementProtocolSecrets/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [GoogleProtobufEmpty].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<GoogleProtobufEmpty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final _url = 'v1alpha/' + core.Uri.encodeFull('$name');
-
-    final _response = await _requester.request(
-      _url,
-      'DELETE',
-      queryParams: _queryParams,
-    );
-    return GoogleProtobufEmpty.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
-  }
-
-  /// Lookup for a single "GA4" MeasurementProtocolSecret.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - Required. The name of the measurement protocol secret to lookup.
-  /// Format:
-  /// properties/{property}/webDataStreams/{webDataStream}/measurementProtocolSecrets/{measurementProtocolSecret}
-  /// Note: Any type of stream (WebDataStream, IosAppDataStream,
-  /// AndroidAppDataStream) may be a parent.
-  /// Value must have pattern
-  /// `^properties/\[^/\]+/webDataStreams/\[^/\]+/measurementProtocolSecrets/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final _url = 'v1alpha/' + core.Uri.encodeFull('$name');
-
-    final _response = await _requester.request(
-      _url,
-      'GET',
-      queryParams: _queryParams,
-    );
-    return GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
-  }
-
-  /// Returns child MeasurementProtocolSecrets under the specified parent
-  /// Property.
-  ///
-  /// Request parameters:
-  ///
-  /// [parent] - Required. The resource name of the parent stream. Any type of
-  /// stream (WebDataStream, IosAppDataStream, AndroidAppDataStream) may be a
-  /// parent. Format:
-  /// properties/{property}/webDataStreams/{webDataStream}/measurementProtocolSecrets
-  /// Value must have pattern `^properties/\[^/\]+/webDataStreams/\[^/\]+$`.
-  ///
-  /// [pageSize] - The maximum number of resources to return. If unspecified, at
-  /// most 10 resources will be returned. The maximum value is 10. Higher values
-  /// will be coerced to the maximum.
-  ///
-  /// [pageToken] - A page token, received from a previous
-  /// `ListMeasurementProtocolSecrets` call. Provide this to retrieve the
-  /// subsequent page. When paginating, all other parameters provided to
-  /// `ListMeasurementProtocolSecrets` must match the call that provided the
-  /// page token.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a
-  /// [GoogleAnalyticsAdminV1alphaListMeasurementProtocolSecretsResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<
-      GoogleAnalyticsAdminV1alphaListMeasurementProtocolSecretsResponse> list(
-    core.String parent, {
-    core.int? pageSize,
-    core.String? pageToken,
-    core.String? $fields,
-  }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final _url = 'v1alpha/' +
-        core.Uri.encodeFull('$parent') +
-        '/measurementProtocolSecrets';
-
-    final _response = await _requester.request(
-      _url,
-      'GET',
-      queryParams: _queryParams,
-    );
-    return GoogleAnalyticsAdminV1alphaListMeasurementProtocolSecretsResponse
-        .fromJson(_response as core.Map<core.String, core.dynamic>);
-  }
-
-  /// Updates a measurement protocol secret.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - Output only. Resource name of this secret. This secret may be a
-  /// child of any type of stream. Format:
-  /// properties/{property}/webDataStreams/{webDataStream}/measurementProtocolSecrets/{measurementProtocolSecret}
-  /// Value must have pattern
-  /// `^properties/\[^/\]+/webDataStreams/\[^/\]+/measurementProtocolSecrets/\[^/\]+$`.
-  ///
-  /// [updateMask] - The list of fields to be updated. Omitted fields will not
-  /// be updated.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret> patch(
-    GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret request,
-    core.String name, {
-    core.String? updateMask,
-    core.String? $fields,
-  }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final _url = 'v1alpha/' + core.Uri.encodeFull('$name');
-
-    final _response = await _requester.request(
-      _url,
-      'PATCH',
-      body: _body,
-      queryParams: _queryParams,
-    );
-    return GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
 }

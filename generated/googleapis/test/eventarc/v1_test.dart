@@ -182,6 +182,7 @@ api.Destination buildDestination() {
   final o = api.Destination();
   buildCounterDestination++;
   if (buildCounterDestination < 3) {
+    o.cloudFunction = 'foo';
     o.cloudRun = buildCloudRun();
     o.gke = buildGKE();
   }
@@ -192,6 +193,10 @@ api.Destination buildDestination() {
 void checkDestination(api.Destination o) {
   buildCounterDestination++;
   if (buildCounterDestination < 3) {
+    unittest.expect(
+      o.cloudFunction!,
+      unittest.equals('foo'),
+    );
     checkCloudRun(o.cloudRun!);
     checkGKE(o.gke!);
   }

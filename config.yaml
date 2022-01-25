@@ -126,6 +126,7 @@ packages:
     - groupssettings:v1 # https://developers.google.com/admin-sdk/groups-settings/
     - healthcare:v1
     - homegraph:v1
+    - ids:v1
     - iam:v1 # https://cloud.google.com/iam/
     - iamcredentials:v1 # https://cloud.google.com/iam/docs/creating-short-lived-service-account-credentials
     - iap:v1 # https://cloud.google.com/iap

@@ -593,7 +593,10 @@ class AdvertisersAssetsResource {
   ///
   /// Returns the ID of the newly uploaded asset if successful. The asset file
   /// size should be no more than 10 MB for images, 200 MB for ZIP files, and 1
-  /// GB for videos.
+  /// GB for videos. Must be used within the \[multipart media upload
+  /// process\](/display-video/api/guides/how-tos/upload#multipart). Examples
+  /// using provided client libraries can be found in our \[Creating Creatives
+  /// guide\](/display-video/api/guides/creating-creatives/overview#upload_an_asset).
   ///
   /// [request] - The metadata request object.
   ///
@@ -6872,6 +6875,98 @@ class FirstAndThirdPartyAudiencesResource {
   FirstAndThirdPartyAudiencesResource(commons.ApiRequester client)
       : _requester = client;
 
+  /// Creates a FirstAndThirdPartyAudience.
+  ///
+  /// Only supported for the following audience_type: *
+  /// `CUSTOMER_MATCH_CONTACT_INFO` * `CUSTOMER_MATCH_DEVICE_ID`
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [advertiserId] - Required. The ID of the advertiser under whom the
+  /// FirstAndThirdPartyAudience will be created.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [FirstAndThirdPartyAudience].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<FirstAndThirdPartyAudience> create(
+    FirstAndThirdPartyAudience request, {
+    core.String? advertiserId,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (advertiserId != null) 'advertiserId': [advertiserId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    const _url = 'v1/firstAndThirdPartyAudiences';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return FirstAndThirdPartyAudience.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates the member list of a Customer Match audience.
+  ///
+  /// Only supported for the following audience_type: *
+  /// `CUSTOMER_MATCH_CONTACT_INFO` * `CUSTOMER_MATCH_DEVICE_ID`
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [firstAndThirdPartyAudienceId] - Required. The ID of the Customer Match
+  /// FirstAndThirdPartyAudience whose members will be edited.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [EditCustomerMatchMembersResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<EditCustomerMatchMembersResponse> editCustomerMatchMembers(
+    EditCustomerMatchMembersRequest request,
+    core.String firstAndThirdPartyAudienceId, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/firstAndThirdPartyAudiences/' +
+        core.Uri.encodeFull('$firstAndThirdPartyAudienceId') +
+        ':editCustomerMatchMembers';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return EditCustomerMatchMembersResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
   /// Gets a first and third party audience.
   ///
   /// Request parameters:
@@ -6993,6 +7088,61 @@ class FirstAndThirdPartyAudiencesResource {
       queryParams: _queryParams,
     );
     return ListFirstAndThirdPartyAudiencesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates an existing FirstAndThirdPartyAudience.
+  ///
+  /// Only supported for the following audience_type: *
+  /// `CUSTOMER_MATCH_CONTACT_INFO` * `CUSTOMER_MATCH_DEVICE_ID`
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [firstAndThirdPartyAudienceId] - Output only. The unique ID of the first
+  /// and third party audience. Assigned by the system.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [advertiserId] - Required. The ID of the owner advertiser of the updated
+  /// FirstAndThirdPartyAudience.
+  ///
+  /// [updateMask] - Required. The mask to control which fields to update.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [FirstAndThirdPartyAudience].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<FirstAndThirdPartyAudience> patch(
+    FirstAndThirdPartyAudience request,
+    core.String firstAndThirdPartyAudienceId, {
+    core.String? advertiserId,
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (advertiserId != null) 'advertiserId': [advertiserId],
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/firstAndThirdPartyAudiences/' +
+        core.Uri.encodeFull('$firstAndThirdPartyAudienceId');
+
+    final _response = await _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return FirstAndThirdPartyAudience.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
 }
@@ -14563,6 +14713,99 @@ class CombinedAudienceTargetingSetting {
       };
 }
 
+/// Contact information defining a Customer Match audience member.
+class ContactInfo {
+  /// Country code of the member.
+  core.String? countryCode;
+
+  /// A list of SHA256 hashed email of the member.
+  core.List<core.String>? hashedEmails;
+
+  /// SHA256 hashed first name of the member.
+  core.String? hashedFirstName;
+
+  /// SHA256 hashed last name of the member.
+  core.String? hashedLastName;
+
+  /// A list of SHA256 hashed phone numbers of the member.
+  core.List<core.String>? hashedPhoneNumbers;
+
+  /// A list of zip codes of the member.
+  core.List<core.String>? zipCodes;
+
+  ContactInfo({
+    this.countryCode,
+    this.hashedEmails,
+    this.hashedFirstName,
+    this.hashedLastName,
+    this.hashedPhoneNumbers,
+    this.zipCodes,
+  });
+
+  ContactInfo.fromJson(core.Map _json)
+      : this(
+          countryCode: _json.containsKey('countryCode')
+              ? _json['countryCode'] as core.String
+              : null,
+          hashedEmails: _json.containsKey('hashedEmails')
+              ? (_json['hashedEmails'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          hashedFirstName: _json.containsKey('hashedFirstName')
+              ? _json['hashedFirstName'] as core.String
+              : null,
+          hashedLastName: _json.containsKey('hashedLastName')
+              ? _json['hashedLastName'] as core.String
+              : null,
+          hashedPhoneNumbers: _json.containsKey('hashedPhoneNumbers')
+              ? (_json['hashedPhoneNumbers'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          zipCodes: _json.containsKey('zipCodes')
+              ? (_json['zipCodes'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (countryCode != null) 'countryCode': countryCode!,
+        if (hashedEmails != null) 'hashedEmails': hashedEmails!,
+        if (hashedFirstName != null) 'hashedFirstName': hashedFirstName!,
+        if (hashedLastName != null) 'hashedLastName': hashedLastName!,
+        if (hashedPhoneNumbers != null)
+          'hashedPhoneNumbers': hashedPhoneNumbers!,
+        if (zipCodes != null) 'zipCodes': zipCodes!,
+      };
+}
+
+/// Wrapper message for a list of contact information defining Customer Match
+/// audience members.
+class ContactInfoList {
+  /// A list of ContactInfo objects defining Customer Match audience members.
+  core.List<ContactInfo>? contactInfos;
+
+  ContactInfoList({
+    this.contactInfos,
+  });
+
+  ContactInfoList.fromJson(core.Map _json)
+      : this(
+          contactInfos: _json.containsKey('contactInfos')
+              ? (_json['contactInfos'] as core.List)
+                  .map((value) => ContactInfo.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (contactInfos != null) 'contactInfos': contactInfos!,
+      };
+}
+
 /// Assigned content instream position targeting option details.
 ///
 /// This will be populated in the content_instream_position_details field when
@@ -17264,6 +17507,80 @@ class DoubleVerifyVideoViewability {
       };
 }
 
+/// Request message for
+/// FirstAndThirdPartyAudienceService.EditCustomerMatchMembers.
+class EditCustomerMatchMembersRequest {
+  /// Input only.
+  ///
+  /// A list of contact information to define the members to be added.
+  ContactInfoList? addedContactInfoList;
+
+  /// Input only.
+  ///
+  /// A list of mobile device IDs to define the members to be added.
+  MobileDeviceIdList? addedMobileDeviceIdList;
+
+  /// The ID of the owner advertiser of the updated Customer Match
+  /// FirstAndThirdPartyAudience.
+  ///
+  /// Required.
+  core.String? advertiserId;
+
+  EditCustomerMatchMembersRequest({
+    this.addedContactInfoList,
+    this.addedMobileDeviceIdList,
+    this.advertiserId,
+  });
+
+  EditCustomerMatchMembersRequest.fromJson(core.Map _json)
+      : this(
+          addedContactInfoList: _json.containsKey('addedContactInfoList')
+              ? ContactInfoList.fromJson(_json['addedContactInfoList']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          addedMobileDeviceIdList: _json.containsKey('addedMobileDeviceIdList')
+              ? MobileDeviceIdList.fromJson(_json['addedMobileDeviceIdList']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          advertiserId: _json.containsKey('advertiserId')
+              ? _json['advertiserId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (addedContactInfoList != null)
+          'addedContactInfoList': addedContactInfoList!,
+        if (addedMobileDeviceIdList != null)
+          'addedMobileDeviceIdList': addedMobileDeviceIdList!,
+        if (advertiserId != null) 'advertiserId': advertiserId!,
+      };
+}
+
+/// The response of FirstAndThirdPartyAudienceService.EditCustomerMatchMembers.
+class EditCustomerMatchMembersResponse {
+  /// The ID of the updated Customer Match FirstAndThirdPartyAudience.
+  ///
+  /// Required.
+  core.String? firstAndThirdPartyAudienceId;
+
+  EditCustomerMatchMembersResponse({
+    this.firstAndThirdPartyAudienceId,
+  });
+
+  EditCustomerMatchMembersResponse.fromJson(core.Map _json)
+      : this(
+          firstAndThirdPartyAudienceId:
+              _json.containsKey('firstAndThirdPartyAudienceId')
+                  ? _json['firstAndThirdPartyAudienceId'] as core.String
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (firstAndThirdPartyAudienceId != null)
+          'firstAndThirdPartyAudienceId': firstAndThirdPartyAudienceId!,
+      };
+}
+
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs.
 ///
@@ -17833,8 +18150,6 @@ class FirstAndThirdPartyAudience {
   core.String? audienceSource;
 
   /// The type of the audience.
-  ///
-  /// Output only.
   /// Possible string values are:
   /// - "AUDIENCE_TYPE_UNSPECIFIED" : Default value when type is not specified
   /// or is unknown.
@@ -17909,8 +18224,6 @@ class FirstAndThirdPartyAudience {
   core.String? firstAndThirdPartyAudienceId;
 
   /// Whether the audience is a first or third party audience.
-  ///
-  /// Output only.
   /// Possible string values are:
   /// - "FIRST_AND_THIRD_PARTY_AUDIENCE_TYPE_UNSPECIFIED" : Default value when
   /// type is not specified or is unknown.
@@ -17933,7 +18246,11 @@ class FirstAndThirdPartyAudience {
   /// The duration in days that an entry remains in the audience after the
   /// qualifying event.
   ///
-  /// Only applicable to first party audiences.
+  /// If the audience has no expiration, the value of this field should be set
+  /// 10000. Otherwise, the set value must be greater than 0 and less than or
+  /// equal to 540. Only applicable to first party audiences. This field is
+  /// required for the following audience_type: * `CUSTOMER_MATCH_CONTACT_INFO`
+  /// * `CUSTOMER_MATCH_DEVICE_ID`
   core.String? membershipDurationDays;
 
   /// The resource name of the first and third party audience.
@@ -19135,6 +19452,20 @@ class InsertionOrder {
   /// Required.
   PerformanceGoal? performanceGoal;
 
+  /// The reservation type of the insertion order.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "RESERVATION_TYPE_UNSPECIFIED" : Reservation type value is not specified
+  /// or is unknown in this version.
+  /// - "RESERVATION_TYPE_NOT_GUARANTEED" : Not created through a guaranteed
+  /// inventory source.
+  /// - "RESERVATION_TYPE_PROGRAMMATIC_GUARANTEED" : Created through a
+  /// programmatic guaranteed inventory source.
+  /// - "RESERVATION_TYPE_TAG_GUARANTEED" : Created through a tag guaranteed
+  /// inventory source.
+  core.String? reservationType;
+
   /// The timestamp when the insertion order was last updated.
   ///
   /// Assigned by the system.
@@ -19157,6 +19488,7 @@ class InsertionOrder {
     this.pacing,
     this.partnerCosts,
     this.performanceGoal,
+    this.reservationType,
     this.updateTime,
   });
 
@@ -19211,6 +19543,9 @@ class InsertionOrder {
               ? PerformanceGoal.fromJson(_json['performanceGoal']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          reservationType: _json.containsKey('reservationType')
+              ? _json['reservationType'] as core.String
+              : null,
           updateTime: _json.containsKey('updateTime')
               ? _json['updateTime'] as core.String
               : null,
@@ -19233,6 +19568,7 @@ class InsertionOrder {
         if (pacing != null) 'pacing': pacing!,
         if (partnerCosts != null) 'partnerCosts': partnerCosts!,
         if (performanceGoal != null) 'performanceGoal': performanceGoal!,
+        if (reservationType != null) 'reservationType': reservationType!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
 }
@@ -20553,6 +20889,12 @@ class LineItem {
   /// deletion.
   core.String? entityStatus;
 
+  /// Whether to exclude new exchanges from automatically being targeted by the
+  /// line item.
+  ///
+  /// This field is false by default.
+  core.bool? excludeNewExchanges;
+
   /// The start and end time of the line item's flight.
   ///
   /// Required.
@@ -20634,6 +20976,20 @@ class LineItem {
   /// Required.
   PartnerRevenueModel? partnerRevenueModel;
 
+  /// The reservation type of the line item.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "RESERVATION_TYPE_UNSPECIFIED" : Reservation type value is not specified
+  /// or is unknown in this version.
+  /// - "RESERVATION_TYPE_NOT_GUARANTEED" : Not created through a guaranteed
+  /// inventory source.
+  /// - "RESERVATION_TYPE_PROGRAMMATIC_GUARANTEED" : Created through a
+  /// programmatic guaranteed inventory source.
+  /// - "RESERVATION_TYPE_TAG_GUARANTEED" : Created through a tag guaranteed
+  /// inventory source.
+  core.String? reservationType;
+
   /// The
   /// [targeting expansion](https://support.google.com/displayvideo/answer/10191558)
   /// settings of the line item.
@@ -20666,6 +21022,7 @@ class LineItem {
     this.creativeIds,
     this.displayName,
     this.entityStatus,
+    this.excludeNewExchanges,
     this.flight,
     this.frequencyCap,
     this.insertionOrderId,
@@ -20678,6 +21035,7 @@ class LineItem {
     this.pacing,
     this.partnerCosts,
     this.partnerRevenueModel,
+    this.reservationType,
     this.targetingExpansion,
     this.updateTime,
     this.warningMessages,
@@ -20713,6 +21071,9 @@ class LineItem {
               : null,
           entityStatus: _json.containsKey('entityStatus')
               ? _json['entityStatus'] as core.String
+              : null,
+          excludeNewExchanges: _json.containsKey('excludeNewExchanges')
+              ? _json['excludeNewExchanges'] as core.bool
               : null,
           flight: _json.containsKey('flight')
               ? LineItemFlight.fromJson(
@@ -20759,6 +21120,9 @@ class LineItem {
               ? PartnerRevenueModel.fromJson(_json['partnerRevenueModel']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          reservationType: _json.containsKey('reservationType')
+              ? _json['reservationType'] as core.String
+              : null,
           targetingExpansion: _json.containsKey('targetingExpansion')
               ? TargetingExpansionConfig.fromJson(_json['targetingExpansion']
                   as core.Map<core.String, core.dynamic>)
@@ -20783,6 +21147,8 @@ class LineItem {
         if (creativeIds != null) 'creativeIds': creativeIds!,
         if (displayName != null) 'displayName': displayName!,
         if (entityStatus != null) 'entityStatus': entityStatus!,
+        if (excludeNewExchanges != null)
+          'excludeNewExchanges': excludeNewExchanges!,
         if (flight != null) 'flight': flight!,
         if (frequencyCap != null) 'frequencyCap': frequencyCap!,
         if (insertionOrderId != null) 'insertionOrderId': insertionOrderId!,
@@ -20798,6 +21164,7 @@ class LineItem {
         if (partnerCosts != null) 'partnerCosts': partnerCosts!,
         if (partnerRevenueModel != null)
           'partnerRevenueModel': partnerRevenueModel!,
+        if (reservationType != null) 'reservationType': reservationType!,
         if (targetingExpansion != null)
           'targetingExpansion': targetingExpansion!,
         if (updateTime != null) 'updateTime': updateTime!,
@@ -22447,6 +22814,30 @@ class MobileApp {
         if (displayName != null) 'displayName': displayName!,
         if (platform != null) 'platform': platform!,
         if (publisher != null) 'publisher': publisher!,
+      };
+}
+
+/// Wrapper message for a list of mobile device IDs defining Customer Match
+/// audience members.
+class MobileDeviceIdList {
+  /// A list of mobile device IDs defining Customer Match audience members.
+  core.List<core.String>? mobileDeviceIds;
+
+  MobileDeviceIdList({
+    this.mobileDeviceIds,
+  });
+
+  MobileDeviceIdList.fromJson(core.Map _json)
+      : this(
+          mobileDeviceIds: _json.containsKey('mobileDeviceIds')
+              ? (_json['mobileDeviceIds'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (mobileDeviceIds != null) 'mobileDeviceIds': mobileDeviceIds!,
       };
 }
 

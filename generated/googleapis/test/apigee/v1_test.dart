@@ -4356,6 +4356,7 @@ api.GoogleCloudApigeeV1Instance buildGoogleCloudApigeeV1Instance() {
     o.diskEncryptionKeyName = 'foo';
     o.displayName = 'foo';
     o.host = 'foo';
+    o.ipRange = 'foo';
     o.lastModifiedAt = 'foo';
     o.location = 'foo';
     o.name = 'foo';
@@ -4389,6 +4390,10 @@ void checkGoogleCloudApigeeV1Instance(api.GoogleCloudApigeeV1Instance o) {
     );
     unittest.expect(
       o.host!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.ipRange!,
       unittest.equals('foo'),
     );
     unittest.expect(

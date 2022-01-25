@@ -5756,7 +5756,7 @@ class ListingsListResponse {
       };
 }
 
-/// Release notes specification, i.e. language and text.
+/// Localized text in given language.
 class LocalizedText {
   /// Language localization code (a BCP-47 language tag; for example, "de-AT"
   /// for Austrian German).

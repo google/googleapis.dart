@@ -293,7 +293,8 @@ class FoldersAssetsResource {
   ///
   /// [startTime] - The time at which the updated SecurityMarks take effect. If
   /// not set uses current server time. Updates will be applied to the
-  /// SecurityMarks that are active immediately preceding this time.
+  /// SecurityMarks that are active immediately preceding this time. Must be
+  /// smaller or equal to the server time.
   ///
   /// [updateMask] - The FieldMask to use when updating the security marks
   /// resource. The field mask must not contain duplicate fields. If empty or
@@ -1038,7 +1039,8 @@ class FoldersSourcesFindingsResource {
   ///
   /// [startTime] - The time at which the updated SecurityMarks take effect. If
   /// not set uses current server time. Updates will be applied to the
-  /// SecurityMarks that are active immediately preceding this time.
+  /// SecurityMarks that are active immediately preceding this time. Must be
+  /// smaller or equal to the server time.
   ///
   /// [updateMask] - The FieldMask to use when updating the security marks
   /// resource. The field mask must not contain duplicate fields. If empty or
@@ -1494,7 +1496,8 @@ class OrganizationsAssetsResource {
   ///
   /// [startTime] - The time at which the updated SecurityMarks take effect. If
   /// not set uses current server time. Updates will be applied to the
-  /// SecurityMarks that are active immediately preceding this time.
+  /// SecurityMarks that are active immediately preceding this time. Must be
+  /// smaller or equal to the server time.
   ///
   /// [updateMask] - The FieldMask to use when updating the security marks
   /// resource. The field mask must not contain duplicate fields. If empty or
@@ -2962,7 +2965,8 @@ class OrganizationsSourcesFindingsResource {
   ///
   /// [startTime] - The time at which the updated SecurityMarks take effect. If
   /// not set uses current server time. Updates will be applied to the
-  /// SecurityMarks that are active immediately preceding this time.
+  /// SecurityMarks that are active immediately preceding this time. Must be
+  /// smaller or equal to the server time.
   ///
   /// [updateMask] - The FieldMask to use when updating the security marks
   /// resource. The field mask must not contain duplicate fields. If empty or
@@ -3278,7 +3282,8 @@ class ProjectsAssetsResource {
   ///
   /// [startTime] - The time at which the updated SecurityMarks take effect. If
   /// not set uses current server time. Updates will be applied to the
-  /// SecurityMarks that are active immediately preceding this time.
+  /// SecurityMarks that are active immediately preceding this time. Must be
+  /// smaller or equal to the server time.
   ///
   /// [updateMask] - The FieldMask to use when updating the security marks
   /// resource. The field mask must not contain duplicate fields. If empty or
@@ -4024,7 +4029,8 @@ class ProjectsSourcesFindingsResource {
   ///
   /// [startTime] - The time at which the updated SecurityMarks take effect. If
   /// not set uses current server time. Updates will be applied to the
-  /// SecurityMarks that are active immediately preceding this time.
+  /// SecurityMarks that are active immediately preceding this time. Must be
+  /// smaller or equal to the server time.
   ///
   /// [updateMask] - The FieldMask to use when updating the security marks
   /// resource. The field mask must not contain duplicate fields. If empty or
@@ -4804,14 +4810,14 @@ class Finding {
   /// The time at which the finding was created in Security Command Center.
   core.String? createTime;
 
-  /// The time at which the event took place, or when an update to the finding
-  /// occurred.
+  /// The time the finding was first detected.
   ///
-  /// For example, if the finding represents an open firewall it would capture
-  /// the time the detector believes the firewall became open. The accuracy is
-  /// determined by the detector. If the finding were to be resolved afterward,
-  /// this time would reflect when the finding was resolved. Must not be set to
-  /// a value greater than the current timestamp.
+  /// If an existing finding is updated, then this is the time the update
+  /// occurred. For example, if the finding represents an open firewall, this
+  /// property captures the time the detector believes the firewall became open.
+  /// The accuracy is determined by the detector. If the finding is later
+  /// resolved, then this time reflects when the finding was resolved. This must
+  /// not be set to a value greater than the current timestamp.
   core.String? eventTime;
 
   /// Third party SIEM/SOAR fields within SCC, contains external system
