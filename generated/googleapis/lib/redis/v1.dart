@@ -1251,6 +1251,18 @@ class Instance {
   /// Optional.
   core.String? reservedIpRange;
 
+  /// Additional ip ranges for node placement, beyond those specified in
+  /// reserved_ip_range.
+  ///
+  /// At most 1 secondary IP range is supported. The mask value must not exceed
+  /// /28. Not supported for BASIC tier. Updates can only add new ranges, once
+  /// added ranges cannot be changed or deleted. Values in this list cannot
+  /// overlap with the reserved_ip_range. Not supported during instance
+  /// creation.
+  ///
+  /// Optional.
+  core.String? secondaryIpRange;
+
   /// List of server CA certificates for the instance.
   ///
   /// Output only.
@@ -1329,6 +1341,7 @@ class Instance {
     this.redisVersion,
     this.replicaCount,
     this.reservedIpRange,
+    this.secondaryIpRange,
     this.serverCaCerts,
     this.state,
     this.statusMessage,
@@ -1424,6 +1437,9 @@ class Instance {
           reservedIpRange: _json.containsKey('reservedIpRange')
               ? _json['reservedIpRange'] as core.String
               : null,
+          secondaryIpRange: _json.containsKey('secondaryIpRange')
+              ? _json['secondaryIpRange'] as core.String
+              : null,
           serverCaCerts: _json.containsKey('serverCaCerts')
               ? (_json['serverCaCerts'] as core.List)
                   .map((value) => TlsCertificate.fromJson(
@@ -1470,6 +1486,7 @@ class Instance {
         if (redisVersion != null) 'redisVersion': redisVersion!,
         if (replicaCount != null) 'replicaCount': replicaCount!,
         if (reservedIpRange != null) 'reservedIpRange': reservedIpRange!,
+        if (secondaryIpRange != null) 'secondaryIpRange': secondaryIpRange!,
         if (serverCaCerts != null) 'serverCaCerts': serverCaCerts!,
         if (state != null) 'state': state!,
         if (statusMessage != null) 'statusMessage': statusMessage!,

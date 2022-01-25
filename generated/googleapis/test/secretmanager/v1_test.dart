@@ -856,6 +856,7 @@ api.SecretPayload buildSecretPayload() {
   buildCounterSecretPayload++;
   if (buildCounterSecretPayload < 3) {
     o.data = 'foo';
+    o.dataCrc32c = 'foo';
   }
   buildCounterSecretPayload--;
   return o;
@@ -868,6 +869,10 @@ void checkSecretPayload(api.SecretPayload o) {
       o.data!,
       unittest.equals('foo'),
     );
+    unittest.expect(
+      o.dataCrc32c!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterSecretPayload--;
 }
@@ -877,6 +882,7 @@ api.SecretVersion buildSecretVersion() {
   final o = api.SecretVersion();
   buildCounterSecretVersion++;
   if (buildCounterSecretVersion < 3) {
+    o.clientSpecifiedPayloadChecksum = true;
     o.createTime = 'foo';
     o.destroyTime = 'foo';
     o.etag = 'foo';
@@ -891,6 +897,7 @@ api.SecretVersion buildSecretVersion() {
 void checkSecretVersion(api.SecretVersion o) {
   buildCounterSecretVersion++;
   if (buildCounterSecretVersion < 3) {
+    unittest.expect(o.clientSpecifiedPayloadChecksum!, unittest.isTrue);
     unittest.expect(
       o.createTime!,
       unittest.equals('foo'),

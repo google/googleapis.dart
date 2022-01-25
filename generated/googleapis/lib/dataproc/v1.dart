@@ -23,6 +23,7 @@
 /// - [ProjectsResource]
 ///   - [ProjectsLocationsResource]
 ///     - [ProjectsLocationsAutoscalingPoliciesResource]
+///     - [ProjectsLocationsBatchesResource]
 ///     - [ProjectsLocationsWorkflowTemplatesResource]
 ///   - [ProjectsRegionsResource]
 ///     - [ProjectsRegionsAutoscalingPoliciesResource]
@@ -79,6 +80,8 @@ class ProjectsLocationsResource {
 
   ProjectsLocationsAutoscalingPoliciesResource get autoscalingPolicies =>
       ProjectsLocationsAutoscalingPoliciesResource(_requester);
+  ProjectsLocationsBatchesResource get batches =>
+      ProjectsLocationsBatchesResource(_requester);
   ProjectsLocationsWorkflowTemplatesResource get workflowTemplates =>
       ProjectsLocationsWorkflowTemplatesResource(_requester);
 
@@ -471,6 +474,193 @@ class ProjectsLocationsAutoscalingPoliciesResource {
       queryParams: _queryParams,
     );
     return AutoscalingPolicy.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsBatchesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsBatchesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a batch workload that executes asynchronously.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource where this batch will be created.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [batchId] - Optional. The ID to use for the batch, which will become the
+  /// final component of the batch's resource name.This value must be 4-63
+  /// characters. Valid characters are /\[a-z\]\[0-9\]-/.
+  ///
+  /// [requestId] - Optional. A unique ID used to identify the request. If the
+  /// service receives two CreateBatchRequest
+  /// (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#google.cloud.dataproc.v1.CreateBatchRequest)s
+  /// with the same request_id, the second request is ignored and the Operation
+  /// that corresponds to the first Batch created and stored in the backend is
+  /// returned.Recommendation: Set this value to a UUID
+  /// (https://en.wikipedia.org/wiki/Universally_unique_identifier).The value
+  /// must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and
+  /// hyphens (-). The maximum length is 40 characters.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    Batch request,
+    core.String parent, {
+    core.String? batchId,
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (batchId != null) 'batchId': [batchId],
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/batches';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes the batch workload resource.
+  ///
+  /// If the batch is not in terminal state, the delete fails and the response
+  /// returns FAILED_PRECONDITION.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the batch resource to delete.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/batches/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'DELETE',
+      queryParams: _queryParams,
+    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets the batch workload resource representation.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the batch to retrieve.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/batches/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Batch].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Batch> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return Batch.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists batch workloads.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent, which owns this collection of batches.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. The maximum number of batches to return in each
+  /// response. The service may return fewer than this value. The default page
+  /// size is 20; the maximum page size is 1000.
+  ///
+  /// [pageToken] - Optional. A page token received from a previous ListBatches
+  /// call. Provide this token to retrieve the subsequent page.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListBatchesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListBatchesResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/batches';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return ListBatchesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
 }
@@ -3895,6 +4085,215 @@ class BasicYarnAutoscalingConfig {
       };
 }
 
+/// A representation of a batch workload in the service.
+class Batch {
+  /// The time when the batch was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// The email address of the user who created the batch.
+  ///
+  /// Output only.
+  core.String? creator;
+
+  /// Environment configuration for the batch execution.
+  ///
+  /// Optional.
+  EnvironmentConfig? environmentConfig;
+
+  /// The labels to associate with this batch.
+  ///
+  /// Label keys must contain 1 to 63 characters, and must conform to RFC 1035
+  /// (https://www.ietf.org/rfc/rfc1035.txt). Label values may be empty, but, if
+  /// present, must contain 1 to 63 characters, and must conform to RFC 1035
+  /// (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be
+  /// associated with a batch.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
+  /// The resource name of the batch.
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// The resource name of the operation associated with this batch.
+  ///
+  /// Output only.
+  core.String? operation;
+
+  /// PySpark batch config.
+  ///
+  /// Optional.
+  PySparkBatch? pysparkBatch;
+
+  /// Runtime configuration for the batch execution.
+  ///
+  /// Optional.
+  RuntimeConfig? runtimeConfig;
+
+  /// Runtime information about batch execution.
+  ///
+  /// Output only.
+  RuntimeInfo? runtimeInfo;
+
+  /// Spark batch config.
+  ///
+  /// Optional.
+  SparkBatch? sparkBatch;
+
+  /// SparkR batch config.
+  ///
+  /// Optional.
+  SparkRBatch? sparkRBatch;
+
+  /// SparkSql batch config.
+  ///
+  /// Optional.
+  SparkSqlBatch? sparkSqlBatch;
+
+  /// The state of the batch.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : The batch state is unknown.
+  /// - "PENDING" : The batch is created before running.
+  /// - "RUNNING" : The batch is running.
+  /// - "CANCELLING" : The batch is cancelling.
+  /// - "CANCELLED" : The batch cancellation was successful.
+  /// - "SUCCEEDED" : The batch completed successfully.
+  /// - "FAILED" : The batch is no longer running due to an error.
+  core.String? state;
+
+  /// Historical state information for the batch.
+  ///
+  /// Output only.
+  core.List<StateHistory>? stateHistory;
+
+  /// Batch state details, such as a failure description if the state is FAILED.
+  ///
+  /// Output only.
+  core.String? stateMessage;
+
+  /// The time when the batch entered a current state.
+  ///
+  /// Output only.
+  core.String? stateTime;
+
+  /// A batch UUID (Unique Universal Identifier).
+  ///
+  /// The service generates this value when it creates the batch.
+  ///
+  /// Output only.
+  core.String? uuid;
+
+  Batch({
+    this.createTime,
+    this.creator,
+    this.environmentConfig,
+    this.labels,
+    this.name,
+    this.operation,
+    this.pysparkBatch,
+    this.runtimeConfig,
+    this.runtimeInfo,
+    this.sparkBatch,
+    this.sparkRBatch,
+    this.sparkSqlBatch,
+    this.state,
+    this.stateHistory,
+    this.stateMessage,
+    this.stateTime,
+    this.uuid,
+  });
+
+  Batch.fromJson(core.Map _json)
+      : this(
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          creator: _json.containsKey('creator')
+              ? _json['creator'] as core.String
+              : null,
+          environmentConfig: _json.containsKey('environmentConfig')
+              ? EnvironmentConfig.fromJson(_json['environmentConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          labels: _json.containsKey('labels')
+              ? (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          operation: _json.containsKey('operation')
+              ? _json['operation'] as core.String
+              : null,
+          pysparkBatch: _json.containsKey('pysparkBatch')
+              ? PySparkBatch.fromJson(
+                  _json['pysparkBatch'] as core.Map<core.String, core.dynamic>)
+              : null,
+          runtimeConfig: _json.containsKey('runtimeConfig')
+              ? RuntimeConfig.fromJson(
+                  _json['runtimeConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+          runtimeInfo: _json.containsKey('runtimeInfo')
+              ? RuntimeInfo.fromJson(
+                  _json['runtimeInfo'] as core.Map<core.String, core.dynamic>)
+              : null,
+          sparkBatch: _json.containsKey('sparkBatch')
+              ? SparkBatch.fromJson(
+                  _json['sparkBatch'] as core.Map<core.String, core.dynamic>)
+              : null,
+          sparkRBatch: _json.containsKey('sparkRBatch')
+              ? SparkRBatch.fromJson(
+                  _json['sparkRBatch'] as core.Map<core.String, core.dynamic>)
+              : null,
+          sparkSqlBatch: _json.containsKey('sparkSqlBatch')
+              ? SparkSqlBatch.fromJson(
+                  _json['sparkSqlBatch'] as core.Map<core.String, core.dynamic>)
+              : null,
+          state:
+              _json.containsKey('state') ? _json['state'] as core.String : null,
+          stateHistory: _json.containsKey('stateHistory')
+              ? (_json['stateHistory'] as core.List)
+                  .map((value) => StateHistory.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          stateMessage: _json.containsKey('stateMessage')
+              ? _json['stateMessage'] as core.String
+              : null,
+          stateTime: _json.containsKey('stateTime')
+              ? _json['stateTime'] as core.String
+              : null,
+          uuid: _json.containsKey('uuid') ? _json['uuid'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (creator != null) 'creator': creator!,
+        if (environmentConfig != null) 'environmentConfig': environmentConfig!,
+        if (labels != null) 'labels': labels!,
+        if (name != null) 'name': name!,
+        if (operation != null) 'operation': operation!,
+        if (pysparkBatch != null) 'pysparkBatch': pysparkBatch!,
+        if (runtimeConfig != null) 'runtimeConfig': runtimeConfig!,
+        if (runtimeInfo != null) 'runtimeInfo': runtimeInfo!,
+        if (sparkBatch != null) 'sparkBatch': sparkBatch!,
+        if (sparkRBatch != null) 'sparkRBatch': sparkRBatch!,
+        if (sparkSqlBatch != null) 'sparkSqlBatch': sparkSqlBatch!,
+        if (state != null) 'state': state!,
+        if (stateHistory != null) 'stateHistory': stateHistory!,
+        if (stateMessage != null) 'stateMessage': stateMessage!,
+        if (stateTime != null) 'stateTime': stateTime!,
+        if (uuid != null) 'uuid': uuid!,
+      };
+}
+
 /// Associates members, or principals, with a role.
 class Binding {
   /// The condition that is associated with this binding.If the condition
@@ -4646,6 +5045,106 @@ class EndpointConfig {
         if (enableHttpPortAccess != null)
           'enableHttpPortAccess': enableHttpPortAccess!,
         if (httpPorts != null) 'httpPorts': httpPorts!,
+      };
+}
+
+/// Environment configuration for a workload.
+class EnvironmentConfig {
+  /// Execution configuration for a workload.
+  ///
+  /// Optional.
+  ExecutionConfig? executionConfig;
+
+  /// Peripherals configuration that workload has access to.
+  ///
+  /// Optional.
+  PeripheralsConfig? peripheralsConfig;
+
+  EnvironmentConfig({
+    this.executionConfig,
+    this.peripheralsConfig,
+  });
+
+  EnvironmentConfig.fromJson(core.Map _json)
+      : this(
+          executionConfig: _json.containsKey('executionConfig')
+              ? ExecutionConfig.fromJson(_json['executionConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          peripheralsConfig: _json.containsKey('peripheralsConfig')
+              ? PeripheralsConfig.fromJson(_json['peripheralsConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (executionConfig != null) 'executionConfig': executionConfig!,
+        if (peripheralsConfig != null) 'peripheralsConfig': peripheralsConfig!,
+      };
+}
+
+/// Execution configuration for a workload.
+class ExecutionConfig {
+  /// The Cloud KMS key to use for encryption.
+  ///
+  /// Optional.
+  core.String? kmsKey;
+
+  /// Tags used for network traffic control.
+  ///
+  /// Optional.
+  core.List<core.String>? networkTags;
+
+  /// Network URI to connect workload to.
+  ///
+  /// Optional.
+  core.String? networkUri;
+
+  /// Service account that used to execute workload.
+  ///
+  /// Optional.
+  core.String? serviceAccount;
+
+  /// Subnetwork URI to connect workload to.
+  ///
+  /// Optional.
+  core.String? subnetworkUri;
+
+  ExecutionConfig({
+    this.kmsKey,
+    this.networkTags,
+    this.networkUri,
+    this.serviceAccount,
+    this.subnetworkUri,
+  });
+
+  ExecutionConfig.fromJson(core.Map _json)
+      : this(
+          kmsKey: _json.containsKey('kmsKey')
+              ? _json['kmsKey'] as core.String
+              : null,
+          networkTags: _json.containsKey('networkTags')
+              ? (_json['networkTags'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          networkUri: _json.containsKey('networkUri')
+              ? _json['networkUri'] as core.String
+              : null,
+          serviceAccount: _json.containsKey('serviceAccount')
+              ? _json['serviceAccount'] as core.String
+              : null,
+          subnetworkUri: _json.containsKey('subnetworkUri')
+              ? _json['subnetworkUri'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (kmsKey != null) 'kmsKey': kmsKey!,
+        if (networkTags != null) 'networkTags': networkTags!,
+        if (networkUri != null) 'networkUri': networkUri!,
+        if (serviceAccount != null) 'serviceAccount': serviceAccount!,
+        if (subnetworkUri != null) 'subnetworkUri': subnetworkUri!,
       };
 }
 
@@ -6394,6 +6893,40 @@ class ListAutoscalingPoliciesResponse {
       };
 }
 
+/// A list of batch workloads.
+class ListBatchesResponse {
+  /// The batches from the specified collection.
+  core.List<Batch>? batches;
+
+  /// A token, which can be sent as page_token to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  ListBatchesResponse({
+    this.batches,
+    this.nextPageToken,
+  });
+
+  ListBatchesResponse.fromJson(core.Map _json)
+      : this(
+          batches: _json.containsKey('batches')
+              ? (_json['batches'] as core.List)
+                  .map((value) => Batch.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (batches != null) 'batches': batches!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
 /// The list of all clusters in a project.
 class ListClustersResponse {
   /// The clusters in the project.
@@ -7072,6 +7605,44 @@ class ParameterValidation {
       };
 }
 
+/// Auxiliary services configuration for a workload.
+class PeripheralsConfig {
+  /// Resource name of an existing Dataproc Metastore service.Example:
+  /// projects/\[project_id\]/locations/\[region\]/services/\[service_id\]
+  ///
+  /// Optional.
+  core.String? metastoreService;
+
+  /// The Spark History Server configuration for the workload.
+  ///
+  /// Optional.
+  SparkHistoryServerConfig? sparkHistoryServerConfig;
+
+  PeripheralsConfig({
+    this.metastoreService,
+    this.sparkHistoryServerConfig,
+  });
+
+  PeripheralsConfig.fromJson(core.Map _json)
+      : this(
+          metastoreService: _json.containsKey('metastoreService')
+              ? _json['metastoreService'] as core.String
+              : null,
+          sparkHistoryServerConfig:
+              _json.containsKey('sparkHistoryServerConfig')
+                  ? SparkHistoryServerConfig.fromJson(
+                      _json['sparkHistoryServerConfig']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (metastoreService != null) 'metastoreService': metastoreService!,
+        if (sparkHistoryServerConfig != null)
+          'sparkHistoryServerConfig': sparkHistoryServerConfig!,
+      };
+}
+
 /// A Dataproc job for running Apache Pig (https://pig.apache.org/) queries on
 /// YARN.
 class PigJob {
@@ -7390,6 +7961,103 @@ class PrestoJob {
       };
 }
 
+/// A configuration for running an Apache PySpark
+/// (https://spark.apache.org/docs/latest/api/python/getting_started/quickstart.html)
+/// batch workload.
+class PySparkBatch {
+  /// HCFS URIs of archives to be extracted into the working directory of each
+  /// executor.
+  ///
+  /// Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+  ///
+  /// Optional.
+  core.List<core.String>? archiveUris;
+
+  /// The arguments to pass to the driver.
+  ///
+  /// Do not include arguments that can be set as batch properties, such as
+  /// --conf, since a collision can occur that causes an incorrect batch
+  /// submission.
+  ///
+  /// Optional.
+  core.List<core.String>? args;
+
+  /// HCFS URIs of files to be placed in the working directory of each executor.
+  ///
+  /// Optional.
+  core.List<core.String>? fileUris;
+
+  /// HCFS URIs of jar files to add to the classpath of the Spark driver and
+  /// tasks.
+  ///
+  /// Optional.
+  core.List<core.String>? jarFileUris;
+
+  /// The HCFS URI of the main Python file to use as the Spark driver.
+  ///
+  /// Must be a .py file.
+  ///
+  /// Required.
+  core.String? mainPythonFileUri;
+
+  /// HCFS file URIs of Python files to pass to the PySpark framework.
+  ///
+  /// Supported file types: .py, .egg, and .zip.
+  ///
+  /// Optional.
+  core.List<core.String>? pythonFileUris;
+
+  PySparkBatch({
+    this.archiveUris,
+    this.args,
+    this.fileUris,
+    this.jarFileUris,
+    this.mainPythonFileUri,
+    this.pythonFileUris,
+  });
+
+  PySparkBatch.fromJson(core.Map _json)
+      : this(
+          archiveUris: _json.containsKey('archiveUris')
+              ? (_json['archiveUris'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          args: _json.containsKey('args')
+              ? (_json['args'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          fileUris: _json.containsKey('fileUris')
+              ? (_json['fileUris'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          jarFileUris: _json.containsKey('jarFileUris')
+              ? (_json['jarFileUris'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          mainPythonFileUri: _json.containsKey('mainPythonFileUri')
+              ? _json['mainPythonFileUri'] as core.String
+              : null,
+          pythonFileUris: _json.containsKey('pythonFileUris')
+              ? (_json['pythonFileUris'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (archiveUris != null) 'archiveUris': archiveUris!,
+        if (args != null) 'args': args!,
+        if (fileUris != null) 'fileUris': fileUris!,
+        if (jarFileUris != null) 'jarFileUris': jarFileUris!,
+        if (mainPythonFileUri != null) 'mainPythonFileUri': mainPythonFileUri!,
+        if (pythonFileUris != null) 'pythonFileUris': pythonFileUris!,
+      };
+}
+
 /// A Dataproc job for running Apache PySpark
 /// (https://spark.apache.org/docs/0.9.0/python-programming-guide.html)
 /// applications on YARN.
@@ -7671,6 +8339,108 @@ class ReservationAffinity {
       };
 }
 
+/// Runtime configuration for a workload.
+class RuntimeConfig {
+  /// Optional custom container image for the job runtime environment.
+  ///
+  /// If not specified, a default container image will be used.
+  ///
+  /// Optional.
+  core.String? containerImage;
+
+  /// A mapping of property names to values, which are used to configure
+  /// workload execution.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? properties;
+
+  /// Version of the batch runtime.
+  ///
+  /// Optional.
+  core.String? version;
+
+  RuntimeConfig({
+    this.containerImage,
+    this.properties,
+    this.version,
+  });
+
+  RuntimeConfig.fromJson(core.Map _json)
+      : this(
+          containerImage: _json.containsKey('containerImage')
+              ? _json['containerImage'] as core.String
+              : null,
+          properties: _json.containsKey('properties')
+              ? (_json['properties'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          version: _json.containsKey('version')
+              ? _json['version'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (containerImage != null) 'containerImage': containerImage!,
+        if (properties != null) 'properties': properties!,
+        if (version != null) 'version': version!,
+      };
+}
+
+/// Runtime information about workload execution.
+class RuntimeInfo {
+  /// A URI pointing to the location of the diagnostics tarball.
+  ///
+  /// Output only.
+  core.String? diagnosticOutputUri;
+
+  /// Map of remote access endpoints (such as web interfaces and APIs) to their
+  /// URIs.
+  ///
+  /// Output only.
+  core.Map<core.String, core.String>? endpoints;
+
+  /// A URI pointing to the location of the stdout and stderr of the workload.
+  ///
+  /// Output only.
+  core.String? outputUri;
+
+  RuntimeInfo({
+    this.diagnosticOutputUri,
+    this.endpoints,
+    this.outputUri,
+  });
+
+  RuntimeInfo.fromJson(core.Map _json)
+      : this(
+          diagnosticOutputUri: _json.containsKey('diagnosticOutputUri')
+              ? _json['diagnosticOutputUri'] as core.String
+              : null,
+          endpoints: _json.containsKey('endpoints')
+              ? (_json['endpoints'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          outputUri: _json.containsKey('outputUri')
+              ? _json['outputUri'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (diagnosticOutputUri != null)
+          'diagnosticOutputUri': diagnosticOutputUri!,
+        if (endpoints != null) 'endpoints': endpoints!,
+        if (outputUri != null) 'outputUri': outputUri!,
+      };
+}
+
 /// Security related configuration, including encryption, Kerberos, etc.
 class SecurityConfig {
   /// Identity related configuration, including service account based secure
@@ -7846,6 +8616,124 @@ class SoftwareConfig {
       };
 }
 
+/// A configuration for running an Apache Spark (http://spark.apache.org/) batch
+/// workload.
+class SparkBatch {
+  /// HCFS URIs of archives to be extracted into the working directory of each
+  /// executor.
+  ///
+  /// Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+  ///
+  /// Optional.
+  core.List<core.String>? archiveUris;
+
+  /// The arguments to pass to the driver.
+  ///
+  /// Do not include arguments that can be set as batch properties, such as
+  /// --conf, since a collision can occur that causes an incorrect batch
+  /// submission.
+  ///
+  /// Optional.
+  core.List<core.String>? args;
+
+  /// HCFS URIs of files to be placed in the working directory of each executor.
+  ///
+  /// Optional.
+  core.List<core.String>? fileUris;
+
+  /// HCFS URIs of jar files to add to the classpath of the Spark driver and
+  /// tasks.
+  ///
+  /// Optional.
+  core.List<core.String>? jarFileUris;
+
+  /// The name of the driver main class.
+  ///
+  /// The jar file that contains the class must be in the classpath or specified
+  /// in jar_file_uris.
+  ///
+  /// Optional.
+  core.String? mainClass;
+
+  /// The HCFS URI of the jar file that contains the main class.
+  ///
+  /// Optional.
+  core.String? mainJarFileUri;
+
+  SparkBatch({
+    this.archiveUris,
+    this.args,
+    this.fileUris,
+    this.jarFileUris,
+    this.mainClass,
+    this.mainJarFileUri,
+  });
+
+  SparkBatch.fromJson(core.Map _json)
+      : this(
+          archiveUris: _json.containsKey('archiveUris')
+              ? (_json['archiveUris'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          args: _json.containsKey('args')
+              ? (_json['args'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          fileUris: _json.containsKey('fileUris')
+              ? (_json['fileUris'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          jarFileUris: _json.containsKey('jarFileUris')
+              ? (_json['jarFileUris'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          mainClass: _json.containsKey('mainClass')
+              ? _json['mainClass'] as core.String
+              : null,
+          mainJarFileUri: _json.containsKey('mainJarFileUri')
+              ? _json['mainJarFileUri'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (archiveUris != null) 'archiveUris': archiveUris!,
+        if (args != null) 'args': args!,
+        if (fileUris != null) 'fileUris': fileUris!,
+        if (jarFileUris != null) 'jarFileUris': jarFileUris!,
+        if (mainClass != null) 'mainClass': mainClass!,
+        if (mainJarFileUri != null) 'mainJarFileUri': mainJarFileUri!,
+      };
+}
+
+/// Spark History Server configuration for the workload.
+class SparkHistoryServerConfig {
+  /// Resource name of an existing Dataproc Cluster to act as a Spark History
+  /// Server for the workload.Example:
+  /// projects/\[project_id\]/regions/\[region\]/clusters/\[cluster_name\]
+  ///
+  /// Optional.
+  core.String? dataprocCluster;
+
+  SparkHistoryServerConfig({
+    this.dataprocCluster,
+  });
+
+  SparkHistoryServerConfig.fromJson(core.Map _json)
+      : this(
+          dataprocCluster: _json.containsKey('dataprocCluster')
+              ? _json['dataprocCluster'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dataprocCluster != null) 'dataprocCluster': dataprocCluster!,
+      };
+}
+
 /// A Dataproc job for running Apache Spark (http://spark.apache.org/)
 /// applications on YARN.
 class SparkJob {
@@ -7968,6 +8856,75 @@ class SparkJob {
       };
 }
 
+/// A configuration for running an Apache SparkR
+/// (https://spark.apache.org/docs/latest/sparkr.html) batch workload.
+class SparkRBatch {
+  /// HCFS URIs of archives to be extracted into the working directory of each
+  /// executor.
+  ///
+  /// Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+  ///
+  /// Optional.
+  core.List<core.String>? archiveUris;
+
+  /// The arguments to pass to the Spark driver.
+  ///
+  /// Do not include arguments that can be set as batch properties, such as
+  /// --conf, since a collision can occur that causes an incorrect batch
+  /// submission.
+  ///
+  /// Optional.
+  core.List<core.String>? args;
+
+  /// HCFS URIs of files to be placed in the working directory of each executor.
+  ///
+  /// Optional.
+  core.List<core.String>? fileUris;
+
+  /// The HCFS URI of the main R file to use as the driver.
+  ///
+  /// Must be a .R or .r file.
+  ///
+  /// Required.
+  core.String? mainRFileUri;
+
+  SparkRBatch({
+    this.archiveUris,
+    this.args,
+    this.fileUris,
+    this.mainRFileUri,
+  });
+
+  SparkRBatch.fromJson(core.Map _json)
+      : this(
+          archiveUris: _json.containsKey('archiveUris')
+              ? (_json['archiveUris'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          args: _json.containsKey('args')
+              ? (_json['args'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          fileUris: _json.containsKey('fileUris')
+              ? (_json['fileUris'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          mainRFileUri: _json.containsKey('mainRFileUri')
+              ? _json['mainRFileUri'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (archiveUris != null) 'archiveUris': archiveUris!,
+        if (args != null) 'args': args!,
+        if (fileUris != null) 'fileUris': fileUris!,
+        if (mainRFileUri != null) 'mainRFileUri': mainRFileUri!,
+      };
+}
+
 /// A Dataproc job for running Apache SparkR
 /// (https://spark.apache.org/docs/latest/sparkr.html) applications on YARN.
 class SparkRJob {
@@ -8067,6 +9024,59 @@ class SparkRJob {
         if (loggingConfig != null) 'loggingConfig': loggingConfig!,
         if (mainRFileUri != null) 'mainRFileUri': mainRFileUri!,
         if (properties != null) 'properties': properties!,
+      };
+}
+
+/// A configuration for running Apache Spark SQL (http://spark.apache.org/sql/)
+/// queries as a batch workload.
+class SparkSqlBatch {
+  /// HCFS URIs of jar files to be added to the Spark CLASSPATH.
+  ///
+  /// Optional.
+  core.List<core.String>? jarFileUris;
+
+  /// The HCFS URI of the script that contains Spark SQL queries to execute.
+  ///
+  /// Required.
+  core.String? queryFileUri;
+
+  /// Mapping of query variable names to values (equivalent to the Spark SQL
+  /// command: SET name="value";).
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? queryVariables;
+
+  SparkSqlBatch({
+    this.jarFileUris,
+    this.queryFileUri,
+    this.queryVariables,
+  });
+
+  SparkSqlBatch.fromJson(core.Map _json)
+      : this(
+          jarFileUris: _json.containsKey('jarFileUris')
+              ? (_json['jarFileUris'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          queryFileUri: _json.containsKey('queryFileUri')
+              ? _json['queryFileUri'] as core.String
+              : null,
+          queryVariables: _json.containsKey('queryVariables')
+              ? (_json['queryVariables'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (jarFileUris != null) 'jarFileUris': jarFileUris!,
+        if (queryFileUri != null) 'queryFileUri': queryFileUri!,
+        if (queryVariables != null) 'queryVariables': queryVariables!,
       };
 }
 
@@ -8297,6 +9307,56 @@ class StartClusterRequest {
   core.Map<core.String, core.dynamic> toJson() => {
         if (clusterUuid != null) 'clusterUuid': clusterUuid!,
         if (requestId != null) 'requestId': requestId!,
+      };
+}
+
+/// Historical state information.
+class StateHistory {
+  /// The state of the batch at this point in history.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : The batch state is unknown.
+  /// - "PENDING" : The batch is created before running.
+  /// - "RUNNING" : The batch is running.
+  /// - "CANCELLING" : The batch is cancelling.
+  /// - "CANCELLED" : The batch cancellation was successful.
+  /// - "SUCCEEDED" : The batch completed successfully.
+  /// - "FAILED" : The batch is no longer running due to an error.
+  core.String? state;
+
+  /// Details about the state at this point in history.
+  ///
+  /// Output only.
+  core.String? stateMessage;
+
+  /// The time when the batch entered the historical state.
+  ///
+  /// Output only.
+  core.String? stateStartTime;
+
+  StateHistory({
+    this.state,
+    this.stateMessage,
+    this.stateStartTime,
+  });
+
+  StateHistory.fromJson(core.Map _json)
+      : this(
+          state:
+              _json.containsKey('state') ? _json['state'] as core.String : null,
+          stateMessage: _json.containsKey('stateMessage')
+              ? _json['stateMessage'] as core.String
+              : null,
+          stateStartTime: _json.containsKey('stateStartTime')
+              ? _json['stateStartTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (state != null) 'state': state!,
+        if (stateMessage != null) 'stateMessage': stateMessage!,
+        if (stateStartTime != null) 'stateStartTime': stateStartTime!,
       };
 }
 

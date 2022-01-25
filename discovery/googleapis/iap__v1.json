@@ -485,7 +485,7 @@
             }
         }
     },
-    "revision": "20220106",
+    "revision": "20220119",
     "rootUrl": "https://iap.googleapis.com/",
     "schemas": {
         "AccessDeniedPageSettings": {

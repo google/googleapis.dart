@@ -1002,7 +1002,7 @@
             }
         }
     },
-    "revision": "20220104",
+    "revision": "20220117",
     "rootUrl": "https://androidmanagement.googleapis.com/",
     "schemas": {
         "AdvancedSecurityOverrides": {

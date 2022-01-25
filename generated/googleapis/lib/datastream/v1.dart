@@ -82,15 +82,13 @@ class ProjectsLocationsResource {
 
   ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
 
-  /// The FetchStaticIps API call exposes the static ips used by Datastream.
-  ///
-  /// Typically, a request returns children data objects under a parent data
-  /// object that's optionally supplied in the request.
+  /// The FetchStaticIps API call exposes the static IP addresses used by
+  /// Datastream.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name resource of the Response type. Must be in the
-  /// format `projects / * /locations / * `.
+  /// [name] - Required. The resource name for the location for which static IPs
+  /// should be returned. Must be in the format `projects / * /locations / * `.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [pageSize] - Maximum number of Ips to return, will likely not be
@@ -252,6 +250,9 @@ class ProjectsLocationsConnectionProfilesResource {
   /// valid UUID with the exception that zero UUID is not supported
   /// (00000000-0000-0000-0000-000000000000).
   ///
+  /// [validateOnly] - Optional. Only validate the connection profile, but don't
+  /// create any resources. The default is false.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -268,6 +269,7 @@ class ProjectsLocationsConnectionProfilesResource {
     core.String? connectionProfileId,
     core.bool? force,
     core.String? requestId,
+    core.bool? validateOnly,
     core.String? $fields,
   }) async {
     final _body = convert.json.encode(request);
@@ -276,6 +278,7 @@ class ProjectsLocationsConnectionProfilesResource {
         'connectionProfileId': [connectionProfileId],
       if (force != null) 'force': ['${force}'],
       if (requestId != null) 'requestId': [requestId],
+      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -290,7 +293,7 @@ class ProjectsLocationsConnectionProfilesResource {
     return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Use this method to delete a connection profile..
+  /// Use this method to delete a connection profile.
   ///
   /// Request parameters:
   ///
@@ -343,7 +346,7 @@ class ProjectsLocationsConnectionProfilesResource {
   /// Use this method to discover a connection profile.
   ///
   /// The discover API call exposes the data objects and metadata belonging to
-  /// the profile. Typically, a request returns children data objects under a
+  /// the profile. Typically, a request returns children data objects of a
   /// parent data object that's optionally supplied in the request.
   ///
   /// [request] - The metadata request object.
@@ -493,7 +496,7 @@ class ProjectsLocationsConnectionProfilesResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/connectionProfiles/\[^/\]+$`.
   ///
-  /// [force] - Optional. Execute the update without validating it.
+  /// [force] - Optional. Update the connection profile without validating it.
   ///
   /// [requestId] - Optional. A request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -513,6 +516,9 @@ class ProjectsLocationsConnectionProfilesResource {
   /// request. A field will be overwritten if it is in the mask. If the user
   /// does not provide a mask then all fields will be overwritten.
   ///
+  /// [validateOnly] - Optional. Only validate the connection profile, but don't
+  /// update any resources. The default is false.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -529,6 +535,7 @@ class ProjectsLocationsConnectionProfilesResource {
     core.bool? force,
     core.String? requestId,
     core.String? updateMask,
+    core.bool? validateOnly,
     core.String? $fields,
   }) async {
     final _body = convert.json.encode(request);
@@ -536,6 +543,7 @@ class ProjectsLocationsConnectionProfilesResource {
       if (force != null) 'force': ['${force}'],
       if (requestId != null) 'requestId': [requestId],
       if (updateMask != null) 'updateMask': [updateMask],
+      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -974,8 +982,8 @@ class ProjectsLocationsPrivateConnectionsRoutesResource {
   ProjectsLocationsPrivateConnectionsRoutesResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Use this method to create a route for a private connectivity in a project
-  /// and location.
+  /// Use this method to create a route for a private connectivity configuration
+  /// in a project and location.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1120,8 +1128,8 @@ class ProjectsLocationsPrivateConnectionsRoutesResource {
     return Route.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Use this method to list routes created for a private connectivity in a
-  /// project and location.
+  /// Use this method to list routes created for a private connectivity
+  /// configuration in a project and location.
   ///
   /// Request parameters:
   ///
@@ -1214,7 +1222,7 @@ class ProjectsLocationsStreamsResource {
   ///
   /// [streamId] - Required. The stream identifier.
   ///
-  /// [validateOnly] - Optional. Only validate the stream, but do not create any
+  /// [validateOnly] - Optional. Only validate the stream, but don't create any
   /// resources. The default is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1409,7 +1417,7 @@ class ProjectsLocationsStreamsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/streams/\[^/\]+$`.
   ///
-  /// [force] - Optional. Create the stream without validating it.
+  /// [force] - Optional. Update the stream without validating it.
   ///
   /// [requestId] - Optional. A request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -1610,7 +1618,7 @@ class ProjectsLocationsStreamsObjectsResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Starts backfill job for the specified stream object.
+  /// Use this method to start a backfill job for the specified stream object.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1653,7 +1661,7 @@ class ProjectsLocationsStreamsObjectsResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Stops the backfill job for the specified stream object.
+  /// Use this method to stop a backfill job for the specified stream object.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2773,9 +2781,13 @@ class MysqlDatabase {
 /// Mysql data source object identifier.
 class MysqlObjectIdentifier {
   /// The database name.
+  ///
+  /// Required.
   core.String? database;
 
   /// The table name.
+  ///
+  /// Required.
   core.String? table;
 
   MysqlObjectIdentifier({
@@ -3187,9 +3199,13 @@ class OracleColumn {
 /// Oracle data source object identifier.
 class OracleObjectIdentifier {
   /// The schema name.
+  ///
+  /// Required.
   core.String? schema;
 
   /// The table name.
+  ///
+  /// Required.
   core.String? table;
 
   OracleObjectIdentifier({

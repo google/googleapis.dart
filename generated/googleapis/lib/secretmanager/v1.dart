@@ -1803,22 +1803,47 @@ class SecretPayload {
         convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
+  /// If specified, SecretManagerService will verify the integrity of the
+  /// received data on SecretManagerService.AddSecretVersion calls using the
+  /// crc32c checksum and store it to include in future
+  /// SecretManagerService.AccessSecretVersion responses.
+  ///
+  /// If a checksum is not provided in the SecretManagerService.AddSecretVersion
+  /// request, the SecretManagerService will generate and store one for you. The
+  /// CRC32C value is encoded as a Int64 for compatibility, and can be safely
+  /// downconverted to uint32 in languages that support this type.
+  /// https://cloud.google.com/apis/design/design_patterns#integer_types
+  ///
+  /// Optional.
+  core.String? dataCrc32c;
+
   SecretPayload({
     this.data,
+    this.dataCrc32c,
   });
 
   SecretPayload.fromJson(core.Map _json)
       : this(
           data: _json.containsKey('data') ? _json['data'] as core.String : null,
+          dataCrc32c: _json.containsKey('dataCrc32c')
+              ? _json['dataCrc32c'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (data != null) 'data': data!,
+        if (dataCrc32c != null) 'dataCrc32c': dataCrc32c!,
       };
 }
 
 /// A secret version resource in the Secret Manager API.
 class SecretVersion {
+  /// True if payload checksum specified in SecretPayload object has been
+  /// received by SecretManagerService on SecretManagerService.AddSecretVersion.
+  ///
+  /// Output only.
+  core.bool? clientSpecifiedPayloadChecksum;
+
   /// The time at which the SecretVersion was created.
   ///
   /// Output only.
@@ -1861,6 +1886,7 @@ class SecretVersion {
   core.String? state;
 
   SecretVersion({
+    this.clientSpecifiedPayloadChecksum,
     this.createTime,
     this.destroyTime,
     this.etag,
@@ -1871,6 +1897,10 @@ class SecretVersion {
 
   SecretVersion.fromJson(core.Map _json)
       : this(
+          clientSpecifiedPayloadChecksum:
+              _json.containsKey('clientSpecifiedPayloadChecksum')
+                  ? _json['clientSpecifiedPayloadChecksum'] as core.bool
+                  : null,
           createTime: _json.containsKey('createTime')
               ? _json['createTime'] as core.String
               : null,
@@ -1888,6 +1918,8 @@ class SecretVersion {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (clientSpecifiedPayloadChecksum != null)
+          'clientSpecifiedPayloadChecksum': clientSpecifiedPayloadChecksum!,
         if (createTime != null) 'createTime': createTime!,
         if (destroyTime != null) 'destroyTime': destroyTime!,
         if (etag != null) 'etag': etag!,

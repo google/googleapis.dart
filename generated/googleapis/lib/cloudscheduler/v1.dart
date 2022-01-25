@@ -572,17 +572,21 @@ class AppEngineHttpTarget {
   /// (+http://code.google.com/appengine)"`. This header can be modified, but
   /// Cloud Scheduler will append `"AppEngine-Google;
   /// (+http://code.google.com/appengine)"` to the modified `User-Agent`. *
-  /// `X-CloudScheduler`: This header will be set to true. If the job has an
-  /// body, Cloud Scheduler sets the following headers: * `Content-Type`: By
-  /// default, the `Content-Type` header is set to `"application/octet-stream"`.
-  /// The default can be overridden by explictly setting `Content-Type` to a
-  /// particular media type when the job is created. For example, `Content-Type`
-  /// can be set to `"application/json"`. * `Content-Length`: This is computed
-  /// by Cloud Scheduler. This value is output only. It cannot be changed. The
-  /// headers below are output only. They cannot be set or overridden: *
-  /// `X-Google-*`: For Google internal use only. * `X-AppEngine-*`: For Google
-  /// internal use only. In addition, some App Engine headers, which contain
-  /// job-specific information, are also be sent to the job handler.
+  /// `X-CloudScheduler`: This header will be set to true. *
+  /// `X-CloudScheduler-JobName`: This header will contain the job name. *
+  /// `X-CloudScheduler-ScheduleTime`: For Cloud Scheduler jobs specified in the
+  /// unix-cron format, this header will contain the job schedule time in
+  /// RFC3339 UTC "Zulu" format. If the job has an body, Cloud Scheduler sets
+  /// the following headers: * `Content-Type`: By default, the `Content-Type`
+  /// header is set to `"application/octet-stream"`. The default can be
+  /// overridden by explictly setting `Content-Type` to a particular media type
+  /// when the job is created. For example, `Content-Type` can be set to
+  /// `"application/json"`. * `Content-Length`: This is computed by Cloud
+  /// Scheduler. This value is output only. It cannot be changed. The headers
+  /// below are output only. They cannot be set or overridden: * `X-Google-*`:
+  /// For Google internal use only. * `X-AppEngine-*`: For Google internal use
+  /// only. In addition, some App Engine headers, which contain job-specific
+  /// information, are also be sent to the job handler.
   core.Map<core.String, core.String>? headers;
 
   /// The HTTP method to use for the request.
@@ -778,7 +782,12 @@ class HttpTarget {
   /// `Content-Length`: This will be computed by Cloud Scheduler. *
   /// `User-Agent`: This will be set to `"Google-Cloud-Scheduler"`. *
   /// `X-Google-*`: Google internal use only. * `X-AppEngine-*`: Google internal
-  /// use only. The total size of headers must be less than 80KB.
+  /// use only. * `X-CloudScheduler`: This header will be set to true. *
+  /// `X-CloudScheduler-JobName`: This header will contain the job name. *
+  /// `X-CloudScheduler-ScheduleTime`: For Cloud Scheduler jobs specified in the
+  /// unix-cron format, this header will contain the job schedule time in
+  /// RFC3339 UTC "Zulu" format. The total size of headers must be less than
+  /// 80KB.
   core.Map<core.String, core.String>? headers;
 
   /// Which HTTP method to use for the request.
@@ -869,7 +878,7 @@ class HttpTarget {
 
 /// Configuration for a job.
 ///
-/// The maximum allowed size for a job is 100KB.
+/// The maximum allowed size for a job is 1MB.
 class Job {
   /// App Engine HTTP target.
   AppEngineHttpTarget? appEngineHttpTarget;
@@ -881,7 +890,7 @@ class Job {
   /// The failed attempt can be viewed in execution logs. Cloud Scheduler will
   /// retry the job according to the RetryConfig. The allowed duration for this
   /// deadline is: * For HTTP targets, between 15 seconds and 30 minutes. * For
-  /// App Engine HTTP targets, between 15 seconds and 24 hours.
+  /// App Engine HTTP targets, between 15 seconds and 24 hours 15 seconds.
   core.String? attemptDeadline;
 
   /// Optionally caller-specified in CreateJob or UpdateJob.

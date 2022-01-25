@@ -191,7 +191,7 @@
             }
         }
     },
-    "revision": "20220111",
+    "revision": "20220121",
     "rootUrl": "https://pagespeedonline.googleapis.com/",
     "schemas": {
         "AuditRefs": {

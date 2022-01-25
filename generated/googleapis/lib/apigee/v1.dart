@@ -2018,15 +2018,15 @@ class OrganizationsApisKeyvaluemapsResource {
   OrganizationsApisKeyvaluemapsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Creates a key value map in an api proxy.
+  /// Creates a key value map in an API proxy.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The name of the environment in which to create the
-  /// key value map. Must be of the form
-  /// `organizations/{organization}/apis/{api}`.
+  /// [parent] - Required. Name of the environment in which to create the key
+  /// value map. Use the following structure in your request:
+  /// `organizations/{org}/apis/{api}`
   /// Value must have pattern `^organizations/\[^/\]+/apis/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -2061,12 +2061,13 @@ class OrganizationsApisKeyvaluemapsResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Delete a key value map in an api proxy.
+  /// Deletes a key value map from an API proxy.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the key value map. Must be of the form
-  /// `organizations/{organization}/apis/{api}/keyvaluemaps/{keyvaluemap}`.
+  /// [name] - Required. Name of the key value map. Use the following structure
+  /// in your request:
+  /// `organizations/{org}/apis/{api}/keyvaluemaps/{keyvaluemap}`
   /// Value must have pattern
   /// `^organizations/\[^/\]+/apis/\[^/\]+/keyvaluemaps/\[^/\]+$`.
   ///
@@ -5589,7 +5590,9 @@ class OrganizationsEnvironmentsResource {
   /// When updating properties, you must pass all existing properties to the
   /// API, even if they are not being changed. If you omit properties from the
   /// payload, the properties are removed. To get the current list of properties
-  /// for the environment, use the \[Get Environment API\](get).
+  /// for the environment, use the \[Get Environment API\](get). **Note**: Both
+  /// `PUT` and `POST` methods are supported for updating an existing
+  /// environment.
   ///
   /// [request] - The metadata request object.
   ///
@@ -5690,7 +5693,9 @@ class OrganizationsEnvironmentsResource {
   /// When updating properties, you must pass all existing properties to the
   /// API, even if they are not being changed. If you omit properties from the
   /// payload, the properties are removed. To get the current list of properties
-  /// for the environment, use the \[Get Environment API\](get).
+  /// for the environment, use the \[Get Environment API\](get). **Note**: Both
+  /// `PUT` and `POST` methods are supported for updating an existing
+  /// environment.
   ///
   /// [request] - The metadata request object.
   ///
@@ -7626,9 +7631,9 @@ class OrganizationsEnvironmentsKeyvaluemapsResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The name of the environment in which to create the
-  /// key value map. Must be of the form
-  /// `organizations/{organization}/environments/{environment}`.
+  /// [parent] - Required. Name of the environment in which to create the key
+  /// value map. Use the following structure in your request:
+  /// `organizations/{org}/environments/{env}`
   /// Value must have pattern `^organizations/\[^/\]+/environments/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -7663,12 +7668,13 @@ class OrganizationsEnvironmentsKeyvaluemapsResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Delete a key value map in an environment.
+  /// Deletes a key value map from an environment.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the key value map. Must be of the form
-  /// `organizations/{organization}/environments/{environment}/keyvaluemaps/{keyvaluemap}`.
+  /// [name] - Required. Name of the key value map. Use the following structure
+  /// in your request:
+  /// `organizations/{org}/environments/{env}/keyvaluemaps/{keyvaluemap}`
   /// Value must have pattern
   /// `^organizations/\[^/\]+/environments/\[^/\]+/keyvaluemaps/\[^/\]+$`.
   ///
@@ -10465,8 +10471,9 @@ class OrganizationsKeyvaluemapsResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The name of the organization in which to create the
-  /// key value map file. Must be of the form `organizations/{organization}`.
+  /// [parent] - Required. Name of the organization in which to create the key
+  /// value map file. Use the following structure in your request:
+  /// `organizations/{org}`
   /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -10501,12 +10508,12 @@ class OrganizationsKeyvaluemapsResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Delete a key value map in an organization.
+  /// Deletes a key value map from an organization.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the key value map. Must be of the form
-  /// `organizations/{organization}/keyvaluemaps/{keyvaluemap}`.
+  /// [name] - Required. Name of the key value map. Use the following structure
+  /// in your request: `organizations/{org}/keyvaluemaps/{keyvaluemap}`
   /// Value must have pattern `^organizations/\[^/\]+/keyvaluemaps/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -11889,13 +11896,13 @@ class GoogleCloudApigeeV1AddonsConfig {
 
 /// Request for AdjustDeveloperBalance.
 class GoogleCloudApigeeV1AdjustDeveloperBalanceRequest {
-  /// * A positive value of `adjustment` means that that the API provider wishes
-  /// to adjust the balance for an over-charged developer i.e. the balance of
-  /// the developer will increase.
-  ///
-  /// * A negative value of `adjustment` means that that the API provider wishes
+  /// * A positive value of `adjustment` means that that the API provider wants
   /// to adjust the balance for an under-charged developer i.e. the balance of
   /// the developer will decrease.
+  ///
+  /// * A negative value of `adjustment` means that that the API provider wants
+  /// to adjust the balance for an over-charged developer i.e. the balance of
+  /// the developer will increase.
   GoogleTypeMoney? adjustment;
 
   GoogleCloudApigeeV1AdjustDeveloperBalanceRequest({
@@ -16657,6 +16664,20 @@ class GoogleCloudApigeeV1Instance {
   /// Output only.
   core.String? host;
 
+  /// IP range represents the customer-provided CIDR block of length 22 that
+  /// will be used for the Apigee instance creation.
+  ///
+  /// This optional range, if provided, should be freely available as part of
+  /// larger named range the customer has allocated to the Service Networking
+  /// peering. If this is not provided, Apigee will automatically request for
+  /// any available /22 CIDR block from Service Networking. The customer should
+  /// use this CIDR block for configuring their firewall needs to allow traffic
+  /// from Apigee. Input format: "a.b.c.d/22", Output format: a.b.c.d/22,
+  /// e.f.g.h/28"
+  ///
+  /// Optional.
+  core.String? ipRange;
+
   /// Time the instance was last modified in milliseconds since epoch.
   ///
   /// Output only.
@@ -16723,6 +16744,7 @@ class GoogleCloudApigeeV1Instance {
     this.diskEncryptionKeyName,
     this.displayName,
     this.host,
+    this.ipRange,
     this.lastModifiedAt,
     this.location,
     this.name,
@@ -16747,6 +16769,9 @@ class GoogleCloudApigeeV1Instance {
               ? _json['displayName'] as core.String
               : null,
           host: _json.containsKey('host') ? _json['host'] as core.String : null,
+          ipRange: _json.containsKey('ipRange')
+              ? _json['ipRange'] as core.String
+              : null,
           lastModifiedAt: _json.containsKey('lastModifiedAt')
               ? _json['lastModifiedAt'] as core.String
               : null,
@@ -16772,6 +16797,7 @@ class GoogleCloudApigeeV1Instance {
           'diskEncryptionKeyName': diskEncryptionKeyName!,
         if (displayName != null) 'displayName': displayName!,
         if (host != null) 'host': host!,
+        if (ipRange != null) 'ipRange': ipRange!,
         if (lastModifiedAt != null) 'lastModifiedAt': lastModifiedAt!,
         if (location != null) 'location': location!,
         if (name != null) 'name': name!,
@@ -17003,14 +17029,16 @@ class GoogleCloudApigeeV1KeyAliasReference {
       };
 }
 
-/// A collection of key, value string pairs
+/// Collection of key/value string pairs.
 class GoogleCloudApigeeV1KeyValueMap {
-  /// If `true` entry values will be encrypted.
+  /// Flag that specifies whether entry values will be encrypted.
+  ///
+  /// Enable to encrypt entry values.
   ///
   /// Optional.
   core.bool? encrypted;
 
-  /// The id of the key value map.
+  /// ID of the key value map.
   ///
   /// Required.
   core.String? name;
@@ -21046,7 +21074,7 @@ class GoogleCloudApigeeV1TestDatastoreResponse {
       };
 }
 
-/// TLS configuration information for VirtualHosts and TargetServers.
+/// TLS configuration information for virtual hosts and TargetServers.
 class GoogleCloudApigeeV1TlsInfo {
   /// The SSL/TLS cipher suites to be used.
   ///

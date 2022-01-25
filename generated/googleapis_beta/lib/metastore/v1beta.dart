@@ -1515,6 +1515,62 @@ class AuditConfig {
 /// exempting jose@example.com from DATA_READ logging.
 typedef AuditLogConfig = $AuditLogConfig;
 
+/// Configuration information for the auxiliary service versions.
+class AuxiliaryVersionConfig {
+  /// A mapping of Hive metastore configuration key-value pairs to apply to the
+  /// auxiliary Hive metastore (configured in hive-site.xml) in addition to the
+  /// primary version's overrides.
+  ///
+  /// If keys are present in both the auxiliary version's overrides and the
+  /// primary version's overrides, the value from the auxiliary version's
+  /// overrides takes precedence.
+  core.Map<core.String, core.String>? configOverrides;
+
+  /// The network configuration contains the endpoint URI(s) of the auxiliary
+  /// Hive metastore service.
+  ///
+  /// Output only.
+  NetworkConfig? networkConfig;
+
+  /// The Hive metastore version of the auxiliary service.
+  ///
+  /// It must be less than the primary Hive metastore service's version.
+  core.String? version;
+
+  AuxiliaryVersionConfig({
+    this.configOverrides,
+    this.networkConfig,
+    this.version,
+  });
+
+  AuxiliaryVersionConfig.fromJson(core.Map _json)
+      : this(
+          configOverrides: _json.containsKey('configOverrides')
+              ? (_json['configOverrides']
+                      as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          networkConfig: _json.containsKey('networkConfig')
+              ? NetworkConfig.fromJson(
+                  _json['networkConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+          version: _json.containsKey('version')
+              ? _json['version'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (configOverrides != null) 'configOverrides': configOverrides!,
+        if (networkConfig != null) 'networkConfig': networkConfig!,
+        if (version != null) 'version': version!,
+      };
+}
+
 /// The details of a backup resource.
 class Backup {
   /// The time when the backup was started.
@@ -1949,6 +2005,18 @@ typedef Expr = $Expr;
 /// Specifies configuration information specific to running Hive metastore
 /// software as the metastore service.
 class HiveMetastoreConfig {
+  /// A mapping of Hive metastore version to the auxiliary version
+  /// configuration.
+  ///
+  /// When specified, a secondary Hive metastore service is created along with
+  /// the primary service. All auxiliary versions must be less than the
+  /// service's primary version. The key is the auxiliary service name and it
+  /// must match the regular expression a-z?. This means that the first
+  /// character must be a lowercase letter, and all the following characters
+  /// must be hyphens, lowercase letters, or digits, except the last character,
+  /// which cannot be a hyphen.
+  core.Map<core.String, AuxiliaryVersionConfig>? auxiliaryVersions;
+
   /// A mapping of Hive metastore configuration key-value pairs to apply to the
   /// Hive metastore (configured in hive-site.xml).
   ///
@@ -1982,6 +2050,7 @@ class HiveMetastoreConfig {
   core.String? version;
 
   HiveMetastoreConfig({
+    this.auxiliaryVersions,
     this.configOverrides,
     this.endpointProtocol,
     this.kerberosConfig,
@@ -1990,6 +2059,17 @@ class HiveMetastoreConfig {
 
   HiveMetastoreConfig.fromJson(core.Map _json)
       : this(
+          auxiliaryVersions: _json.containsKey('auxiliaryVersions')
+              ? (_json['auxiliaryVersions']
+                      as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    AuxiliaryVersionConfig.fromJson(
+                        item as core.Map<core.String, core.dynamic>),
+                  ),
+                )
+              : null,
           configOverrides: _json.containsKey('configOverrides')
               ? (_json['configOverrides']
                       as core.Map<core.String, core.dynamic>)
@@ -2013,6 +2093,7 @@ class HiveMetastoreConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (auxiliaryVersions != null) 'auxiliaryVersions': auxiliaryVersions!,
         if (configOverrides != null) 'configOverrides': configOverrides!,
         if (endpointProtocol != null) 'endpointProtocol': endpointProtocol!,
         if (kerberosConfig != null) 'kerberosConfig': kerberosConfig!,
@@ -3025,6 +3106,15 @@ class Service {
   /// Output only.
   core.String? createTime;
 
+  /// The database type that the Metastore service stores its data.
+  ///
+  /// Immutable.
+  /// Possible string values are:
+  /// - "DATABASE_TYPE_UNSPECIFIED" : The DATABASE_TYPE is not set.
+  /// - "MYSQL" : MySQL is used to persist the metastore data.
+  /// - "SPANNER" : Spanner is used to persist the metastore data.
+  core.String? databaseType;
+
   /// Information used to configure the Dataproc Metastore service to encrypt
   /// customer data at rest.
   ///
@@ -3150,6 +3240,7 @@ class Service {
   Service({
     this.artifactGcsUri,
     this.createTime,
+    this.databaseType,
     this.encryptionConfig,
     this.endpointUri,
     this.hiveMetastoreConfig,
@@ -3176,6 +3267,9 @@ class Service {
               : null,
           createTime: _json.containsKey('createTime')
               ? _json['createTime'] as core.String
+              : null,
+          databaseType: _json.containsKey('databaseType')
+              ? _json['databaseType'] as core.String
               : null,
           encryptionConfig: _json.containsKey('encryptionConfig')
               ? EncryptionConfig.fromJson(_json['encryptionConfig']
@@ -3237,6 +3331,7 @@ class Service {
   core.Map<core.String, core.dynamic> toJson() => {
         if (artifactGcsUri != null) 'artifactGcsUri': artifactGcsUri!,
         if (createTime != null) 'createTime': createTime!,
+        if (databaseType != null) 'databaseType': databaseType!,
         if (encryptionConfig != null) 'encryptionConfig': encryptionConfig!,
         if (endpointUri != null) 'endpointUri': endpointUri!,
         if (hiveMetastoreConfig != null)

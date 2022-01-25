@@ -361,6 +361,7 @@ api.CloneContext buildCloneContext() {
   final o = api.CloneContext();
   buildCounterCloneContext++;
   if (buildCounterCloneContext < 3) {
+    o.allocatedIpRange = 'foo';
     o.binLogCoordinates = buildBinLogCoordinates();
     o.destinationInstanceName = 'foo';
     o.kind = 'foo';
@@ -374,6 +375,10 @@ api.CloneContext buildCloneContext() {
 void checkCloneContext(api.CloneContext o) {
   buildCounterCloneContext++;
   if (buildCounterCloneContext < 3) {
+    unittest.expect(
+      o.allocatedIpRange!,
+      unittest.equals('foo'),
+    );
     checkBinLogCoordinates(o.binLogCoordinates!);
     unittest.expect(
       o.destinationInstanceName!,

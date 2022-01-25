@@ -4486,6 +4486,9 @@ class PatchConfig {
   /// Use this setting to override the default `goo` patch rules.
   GooSettings? goo;
 
+  /// Allows the patch job to run on Managed instance groups (MIGs).
+  core.bool? migInstancesAllowed;
+
   /// The `ExecStep` to run after the patch update.
   ExecStep? postStep;
 
@@ -4521,6 +4524,7 @@ class PatchConfig {
   PatchConfig({
     this.apt,
     this.goo,
+    this.migInstancesAllowed,
     this.postStep,
     this.preStep,
     this.rebootConfig,
@@ -4538,6 +4542,9 @@ class PatchConfig {
           goo: _json.containsKey('goo')
               ? GooSettings.fromJson(
                   _json['goo'] as core.Map<core.String, core.dynamic>)
+              : null,
+          migInstancesAllowed: _json.containsKey('migInstancesAllowed')
+              ? _json['migInstancesAllowed'] as core.bool
               : null,
           postStep: _json.containsKey('postStep')
               ? ExecStep.fromJson(
@@ -4567,6 +4574,8 @@ class PatchConfig {
   core.Map<core.String, core.dynamic> toJson() => {
         if (apt != null) 'apt': apt!,
         if (goo != null) 'goo': goo!,
+        if (migInstancesAllowed != null)
+          'migInstancesAllowed': migInstancesAllowed!,
         if (postStep != null) 'postStep': postStep!,
         if (preStep != null) 'preStep': preStep!,
         if (rebootConfig != null) 'rebootConfig': rebootConfig!,

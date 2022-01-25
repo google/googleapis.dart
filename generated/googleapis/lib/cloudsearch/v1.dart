@@ -9146,8 +9146,9 @@ class UpdateSchemaRequest {
 
 /// Represents an upload session reference.
 ///
-/// This reference is created via upload method. Updating of item content may
-/// refer to this uploaded content via contentDataRef.
+/// This reference is created via upload method. UploadItemRef may be used upto
+/// 30 days since creation. Updating of item content may refer to this uploaded
+/// content via contentDataRef.
 class UploadItemRef {
   /// Name of the content reference.
   ///

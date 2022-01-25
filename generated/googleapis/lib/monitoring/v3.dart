@@ -7549,9 +7549,9 @@ class MetricThreshold {
 /// identifies the actual resource and its attributes according to the schema.
 /// For example, a particular Compute Engine VM instance could be represented by
 /// the following object, because the MonitoredResourceDescriptor for
-/// "gce_instance" has labels "instance_id" and "zone": { "type":
-/// "gce_instance", "labels": { "instance_id": "12345678901234", "zone":
-/// "us-central1-a" }}
+/// "gce_instance" has labels "project_id", "instance_id" and "zone": { "type":
+/// "gce_instance", "labels": { "project_id": "my-project", "instance_id":
+/// "12345678901234", "zone": "us-central1-a" }}
 class MonitoredResource {
   /// Values for all of the labels listed in the associated monitored resource
   /// descriptor.
@@ -9232,6 +9232,20 @@ class TypedValue {
 /// This message configures which resources and services to monitor for
 /// availability.
 class UptimeCheckConfig {
+  /// The type of checkers to use to execute the Uptime check.
+  /// Possible string values are:
+  /// - "CHECKER_TYPE_UNSPECIFIED" : The default checker type. Currently
+  /// converted to STATIC_IP_CHECKERS on creation, the default conversion
+  /// behavior may change in the future.
+  /// - "STATIC_IP_CHECKERS" : STATIC_IP_CHECKERS are used for uptime checks
+  /// that perform egress across the public internet. STATIC_IP_CHECKERS use the
+  /// static IP addresses returned by ListUptimeCheckIps.
+  /// - "VPC_CHECKERS" : VPC_CHECKERS are used for uptime checks that perform
+  /// egress using Service Directory and private network access. When using
+  /// VPC_CHECKERS, the monitored resource type must be
+  /// servicedirectory_service.
+  core.String? checkerType;
+
   /// The content that is expected to appear in the data returned by the target
   /// server against which the check is run.
   ///
@@ -9310,6 +9324,7 @@ class UptimeCheckConfig {
   core.String? timeout;
 
   UptimeCheckConfig({
+    this.checkerType,
     this.contentMatchers,
     this.displayName,
     this.httpCheck,
@@ -9326,6 +9341,9 @@ class UptimeCheckConfig {
 
   UptimeCheckConfig.fromJson(core.Map _json)
       : this(
+          checkerType: _json.containsKey('checkerType')
+              ? _json['checkerType'] as core.String
+              : null,
           contentMatchers: _json.containsKey('contentMatchers')
               ? (_json['contentMatchers'] as core.List)
                   .map((value) => ContentMatcher.fromJson(
@@ -9375,6 +9393,7 @@ class UptimeCheckConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (checkerType != null) 'checkerType': checkerType!,
         if (contentMatchers != null) 'contentMatchers': contentMatchers!,
         if (displayName != null) 'displayName': displayName!,
         if (httpCheck != null) 'httpCheck': httpCheck!,

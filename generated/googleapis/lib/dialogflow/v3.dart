@@ -7205,7 +7205,7 @@ class GoogleCloudDialogflowCxV3Environment {
 class GoogleCloudDialogflowCxV3EnvironmentTestCasesConfig {
   /// Whether to run test cases in TestCasesConfig.test_cases periodically.
   ///
-  /// Default false. If set to ture, run once a day.
+  /// Default false. If set to true, run once a day.
   core.bool? enableContinuousRun;
 
   /// Whether to run test cases in TestCasesConfig.test_cases before deploying a
@@ -9914,7 +9914,7 @@ class GoogleCloudDialogflowCxV3Match {
 
   /// The event that matched the query.
   ///
-  /// Only filled for `EVENT` match type.
+  /// Filled for `EVENT`, `NO_MATCH` and `NO_INPUT` match types.
   core.String? event;
 
   /// The Intent that matched the query.
@@ -11623,7 +11623,7 @@ class GoogleCloudDialogflowCxV3SecuritySettings {
 }
 
 /// Settings for exporting conversations to
-/// [Insights](https://cloud.google.com/dialogflow/priv/docs/insights).
+/// [Insights](https://cloud.google.com/contact-center/insights/docs).
 class GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettings {
   /// If enabled, we will automatically exports conversations to Insights and
   /// Insights runs its analyzers.

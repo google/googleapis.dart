@@ -197,7 +197,7 @@ class ProjectsAppsResource {
   }
 
   /// Accepts an App Attest CBOR attestation and verifies it with Apple using
-  /// the developer's preconfigured team and bundle IDs.
+  /// your preconfigured team and bundle IDs.
   ///
   /// If valid, returns an attestation artifact that can later be exchanged for
   /// an AttestationTokenResponse using ExchangeAppAttestAssertion. For
@@ -619,7 +619,7 @@ class ProjectsAppsAppAttestConfigResource {
   ProjectsAppsAppAttestConfigResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Gets the AppAttestConfigs for the specified list of apps atomically.
+  /// Atomically gets the AppAttestConfigs for the specified list of apps.
   ///
   /// Request parameters:
   ///
@@ -1014,7 +1014,7 @@ class ProjectsAppsDeviceCheckConfigResource {
   ProjectsAppsDeviceCheckConfigResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Gets the DeviceCheckConfigs for the specified list of apps atomically.
+  /// Atomically gets the DeviceCheckConfigs for the specified list of apps.
   ///
   /// For security reasons, the `private_key` field is never populated in the
   /// response.
@@ -1170,7 +1170,7 @@ class ProjectsAppsRecaptchaConfigResource {
   ProjectsAppsRecaptchaConfigResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Gets the RecaptchaConfigs for the specified list of apps atomically.
+  /// Atomically gets the RecaptchaConfigs for the specified list of apps.
   ///
   /// For security reasons, the `site_secret` field is never populated in the
   /// response.
@@ -1324,8 +1324,8 @@ class ProjectsAppsRecaptchaEnterpriseConfigResource {
   ProjectsAppsRecaptchaEnterpriseConfigResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Gets the RecaptchaEnterpriseConfigs for the specified list of apps
-  /// atomically.
+  /// Atomically gets the RecaptchaEnterpriseConfigs for the specified list of
+  /// apps.
   ///
   /// Request parameters:
   ///
@@ -1475,7 +1475,7 @@ class ProjectsAppsSafetyNetConfigResource {
   ProjectsAppsSafetyNetConfigResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Gets the SafetyNetConfigs for the specified list of apps atomically.
+  /// Atomically gets the SafetyNetConfigs for the specified list of apps.
   ///
   /// Request parameters:
   ///
@@ -1621,7 +1621,7 @@ class ProjectsServicesResource {
 
   ProjectsServicesResource(commons.ApiRequester client) : _requester = client;
 
-  /// Updates the specified Service configurations atomically.
+  /// Atomically updates the specified Service configurations.
   ///
   /// [request] - The metadata request object.
   ///

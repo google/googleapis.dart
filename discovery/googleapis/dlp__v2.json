@@ -3410,7 +3410,7 @@
             }
         }
     },
-    "revision": "20220108",
+    "revision": "20220122",
     "rootUrl": "https://dlp.googleapis.com/",
     "schemas": {
         "GooglePrivacyDlpV2Action": {

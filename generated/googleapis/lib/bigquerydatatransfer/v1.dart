@@ -229,8 +229,8 @@ class ProjectsDataSourcesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The BigQuery project id for which data sources should
-  /// be returned. Must be in the form: \`projects/{project_id}\` or
-  /// \`projects/{project_id}/locations/{location_id}
+  /// be returned. Must be in the form: `projects/{project_id}` or
+  /// `projects/{project_id}/locations/{location_id}`
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [pageSize] - Page size. The default page size is the maximum value of 1000
@@ -516,8 +516,8 @@ class ProjectsLocationsDataSourcesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The BigQuery project id for which data sources should
-  /// be returned. Must be in the form: \`projects/{project_id}\` or
-  /// \`projects/{project_id}/locations/{location_id}
+  /// be returned. Must be in the form: `projects/{project_id}` or
+  /// `projects/{project_id}/locations/{location_id}`
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [pageSize] - Page size. The default page size is the maximum value of 1000
@@ -733,8 +733,8 @@ class ProjectsLocationsTransferConfigsResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The BigQuery project id for which data sources should
-  /// be returned: `projects/{project_id}` or
+  /// [parent] - Required. The BigQuery project id for which transfer configs
+  /// should be returned: `projects/{project_id}` or
   /// `projects/{project_id}/locations/{location_id}`
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
@@ -1356,8 +1356,8 @@ class ProjectsTransferConfigsResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The BigQuery project id for which data sources should
-  /// be returned: `projects/{project_id}` or
+  /// [parent] - Required. The BigQuery project id for which transfer configs
+  /// should be returned: `projects/{project_id}` or
   /// `projects/{project_id}/locations/{location_id}`
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///

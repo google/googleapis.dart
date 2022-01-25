@@ -2585,6 +2585,7 @@ api.PatchConfig buildPatchConfig() {
   if (buildCounterPatchConfig < 3) {
     o.apt = buildAptSettings();
     o.goo = buildGooSettings();
+    o.migInstancesAllowed = true;
     o.postStep = buildExecStep();
     o.preStep = buildExecStep();
     o.rebootConfig = 'foo';
@@ -2601,6 +2602,7 @@ void checkPatchConfig(api.PatchConfig o) {
   if (buildCounterPatchConfig < 3) {
     checkAptSettings(o.apt!);
     checkGooSettings(o.goo!);
+    unittest.expect(o.migInstancesAllowed!, unittest.isTrue);
     checkExecStep(o.postStep!);
     checkExecStep(o.preStep!);
     unittest.expect(

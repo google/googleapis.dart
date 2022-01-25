@@ -679,7 +679,6 @@ api.GoogleFirestoreAdminV1Database buildGoogleFirestoreAdminV1Database() {
   buildCounterGoogleFirestoreAdminV1Database++;
   if (buildCounterGoogleFirestoreAdminV1Database < 3) {
     o.concurrencyMode = 'foo';
-    o.earliestVersionTime = 'foo';
     o.etag = 'foo';
     o.locationId = 'foo';
     o.name = 'foo';
@@ -694,10 +693,6 @@ void checkGoogleFirestoreAdminV1Database(api.GoogleFirestoreAdminV1Database o) {
   if (buildCounterGoogleFirestoreAdminV1Database < 3) {
     unittest.expect(
       o.concurrencyMode!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.earliestVersionTime!,
       unittest.equals('foo'),
     );
     unittest.expect(

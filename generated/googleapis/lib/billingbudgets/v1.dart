@@ -510,7 +510,8 @@ class GoogleCloudBillingBudgetsV1Filter {
   ///
   /// Optional.
   /// Possible string values are:
-  /// - "CALENDAR_PERIOD_UNSPECIFIED"
+  /// - "CALENDAR_PERIOD_UNSPECIFIED" : Calendar period is unset. This is the
+  /// default if the budget is for a custom time period (CustomPeriod).
   /// - "MONTH" : A month. Month starts on the first day of each month, such as
   /// January 1, February 1, March 1, and so on.
   /// - "QUARTER" : A quarter. Quarters start on dates January 1, April 1, July

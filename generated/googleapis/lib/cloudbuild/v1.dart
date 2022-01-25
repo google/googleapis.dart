@@ -20,11 +20,15 @@
 ///
 /// Create an instance of [CloudBuildApi] to access these resources:
 ///
+/// - [LocationsResource]
 /// - [OperationsResource]
 /// - [ProjectsResource]
 ///   - [ProjectsBuildsResource]
 ///   - [ProjectsGithubEnterpriseConfigsResource]
 ///   - [ProjectsLocationsResource]
+///     - [ProjectsLocationsBitbucketServerConfigsResource]
+/// - [ProjectsLocationsBitbucketServerConfigsConnectedRepositoriesResource]
+///       - [ProjectsLocationsBitbucketServerConfigsReposResource]
 ///     - [ProjectsLocationsBuildsResource]
 ///     - [ProjectsLocationsGithubEnterpriseConfigsResource]
 ///     - [ProjectsLocationsOperationsResource]
@@ -57,6 +61,7 @@ class CloudBuildApi {
 
   final commons.ApiRequester _requester;
 
+  LocationsResource get locations => LocationsResource(_requester);
   OperationsResource get operations => OperationsResource(_requester);
   ProjectsResource get projects => ProjectsResource(_requester);
   V1Resource get v1 => V1Resource(_requester);
@@ -66,6 +71,59 @@ class CloudBuildApi {
       core.String servicePath = ''})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+}
+
+class LocationsResource {
+  final commons.ApiRequester _requester;
+
+  LocationsResource(commons.ApiRequester client) : _requester = client;
+
+  /// ReceiveRegionalWebhook is called when the API receives a regional GitHub
+  /// webhook.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [location] - Required. The location where the webhook should be sent.
+  /// Value must have pattern `^locations/\[^/\]+$`.
+  ///
+  /// [webhookKey] - For GitHub Enterprise webhooks, this key is used to
+  /// associate the webhook request with the GitHubEnterpriseConfig to use for
+  /// validation.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> regionalWebhook(
+    HttpBody request,
+    core.String location, {
+    core.String? webhookKey,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (webhookKey != null) 'webhookKey': [webhookKey],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$location') + '/regionalWebhook';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class OperationsResource {
@@ -740,6 +798,8 @@ class ProjectsGithubEnterpriseConfigsResource {
 class ProjectsLocationsResource {
   final commons.ApiRequester _requester;
 
+  ProjectsLocationsBitbucketServerConfigsResource get bitbucketServerConfigs =>
+      ProjectsLocationsBitbucketServerConfigsResource(_requester);
   ProjectsLocationsBuildsResource get builds =>
       ProjectsLocationsBuildsResource(_requester);
   ProjectsLocationsGithubEnterpriseConfigsResource
@@ -753,6 +813,466 @@ class ProjectsLocationsResource {
       ProjectsLocationsWorkerPoolsResource(_requester);
 
   ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
+}
+
+class ProjectsLocationsBitbucketServerConfigsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsBitbucketServerConfigsConnectedRepositoriesResource
+      get connectedRepositories =>
+          ProjectsLocationsBitbucketServerConfigsConnectedRepositoriesResource(
+              _requester);
+  ProjectsLocationsBitbucketServerConfigsReposResource get repos =>
+      ProjectsLocationsBitbucketServerConfigsReposResource(_requester);
+
+  ProjectsLocationsBitbucketServerConfigsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Add a Bitbucket Server repository to a given BitbucketServerConfig's
+  /// connected repositories.
+  ///
+  /// This API is experimental.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [config] - Required. The name of the `BitbucketServerConfig` to add a
+  /// connected repository. Format:
+  /// `projects/{project}/locations/{location}/bitbucketServerConfigs/{config}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/bitbucketServerConfigs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AddBitbucketServerConnectedRepositoryResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AddBitbucketServerConnectedRepositoryResponse>
+      addBitbucketServerConnectedRepository(
+    AddBitbucketServerConnectedRepositoryRequest request,
+    core.String config, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' +
+        core.Uri.encodeFull('$config') +
+        ':addBitbucketServerConnectedRepository';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return AddBitbucketServerConnectedRepositoryResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Creates a new `BitbucketServerConfig`.
+  ///
+  /// This API is experimental.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Name of the parent resource.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [bitbucketServerConfigId] - Optional. The ID to use for the
+  /// BitbucketServerConfig, which will become the final component of the
+  /// BitbucketServerConfig's resource name. bitbucket_server_config_id must
+  /// meet the following requirements: + They must contain only alphanumeric
+  /// characters and dashes. + They can be 1-64 characters long. + They must
+  /// begin and end with an alphanumeric character.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    BitbucketServerConfig request,
+    core.String parent, {
+    core.String? bitbucketServerConfigId,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (bitbucketServerConfigId != null)
+        'bitbucketServerConfigId': [bitbucketServerConfigId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url =
+        'v1/' + core.Uri.encodeFull('$parent') + '/bitbucketServerConfigs';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Delete a `BitbucketServerConfig`.
+  ///
+  /// This API is experimental.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The config resource name.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/bitbucketServerConfigs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'DELETE',
+      queryParams: _queryParams,
+    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Retrieve a `BitbucketServerConfig`.
+  ///
+  /// This API is experimental.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The config resource name.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/bitbucketServerConfigs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [BitbucketServerConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<BitbucketServerConfig> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return BitbucketServerConfig.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// List all `BitbucketServerConfigs` for a given project.
+  ///
+  /// This API is experimental.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Name of the parent resource.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [pageSize] - The maximum number of configs to return. The service may
+  /// return fewer than this value. If unspecified, at most 50 configs will be
+  /// returned. The maximum value is 1000; values above 1000 will be coerced to
+  /// 1000.
+  ///
+  /// [pageToken] - A page token, received from a previous
+  /// `ListBitbucketServerConfigsRequest` call. Provide this to retrieve the
+  /// subsequent page. When paginating, all other parameters provided to
+  /// `ListBitbucketServerConfigsRequest` must match the call that provided the
+  /// page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListBitbucketServerConfigsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListBitbucketServerConfigsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url =
+        'v1/' + core.Uri.encodeFull('$parent') + '/bitbucketServerConfigs';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return ListBitbucketServerConfigsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates an existing `BitbucketServerConfig`.
+  ///
+  /// This API is experimental.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The resource name for the config.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/bitbucketServerConfigs/\[^/\]+$`.
+  ///
+  /// [updateMask] - Update mask for the resource. If this is set, the server
+  /// will only update the fields specified in the field mask. Otherwise, a full
+  /// update of the mutable resource fields will be performed.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    BitbucketServerConfig request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Remove a Bitbucket Server repository from an given BitbucketServerConfig’s
+  /// connected repositories.
+  ///
+  /// This API is experimental.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [config] - Required. The name of the `BitbucketServerConfig` to remove a
+  /// connected repository. Format:
+  /// `projects/{project}/locations/{location}/bitbucketServerConfigs/{config}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/bitbucketServerConfigs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> removeBitbucketServerConnectedRepository(
+    RemoveBitbucketServerConnectedRepositoryRequest request,
+    core.String config, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' +
+        core.Uri.encodeFull('$config') +
+        ':removeBitbucketServerConnectedRepository';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsBitbucketServerConfigsConnectedRepositoriesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsBitbucketServerConfigsConnectedRepositoriesResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Batch connecting Bitbucket Server repositories to Cloud Build.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - The name of the `BitbucketServerConfig` that added connected
+  /// repository. Format:
+  /// `projects/{project}/locations/{location}/bitbucketServerConfigs/{config}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/bitbucketServerConfigs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> batchCreate(
+    BatchCreateBitbucketServerConnectedRepositoriesRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' +
+        core.Uri.encodeFull('$parent') +
+        '/connectedRepositories:batchCreate';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsBitbucketServerConfigsReposResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsBitbucketServerConfigsReposResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// List all repositories for a given `BitbucketServerConfig`.
+  ///
+  /// This API is experimental.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Name of the parent resource.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/bitbucketServerConfigs/\[^/\]+$`.
+  ///
+  /// [pageSize] - The maximum number of configs to return. The service may
+  /// return fewer than this value. If unspecified, at most 50 configs will be
+  /// returned. The maximum value is 1000; values above 1000 will be coerced to
+  /// 1000.
+  ///
+  /// [pageToken] - A page token, received from a previous
+  /// `ListBitbucketServerRepositoriesRequest` call. Provide this to retrieve
+  /// the subsequent page. When paginating, all other parameters provided to
+  /// `ListBitbucketServerConfigsRequest` must match the call that provided the
+  /// page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListBitbucketServerRepositoriesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListBitbucketServerRepositoriesResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/repos';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return ListBitbucketServerRepositoriesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class ProjectsLocationsBuildsResource {
@@ -2422,6 +2942,67 @@ class V1Resource {
   }
 }
 
+/// RPC request object accepted by the AddBitbucketServerConnectedRepository RPC
+/// method.
+class AddBitbucketServerConnectedRepositoryRequest {
+  /// The connected repository to add.
+  BitbucketServerRepositoryId? connectedRepository;
+
+  AddBitbucketServerConnectedRepositoryRequest({
+    this.connectedRepository,
+  });
+
+  AddBitbucketServerConnectedRepositoryRequest.fromJson(core.Map _json)
+      : this(
+          connectedRepository: _json.containsKey('connectedRepository')
+              ? BitbucketServerRepositoryId.fromJson(
+                  _json['connectedRepository']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (connectedRepository != null)
+          'connectedRepository': connectedRepository!,
+      };
+}
+
+/// RPC request object returned by the AddBitbucketServerConnectedRepository RPC
+/// method.
+class AddBitbucketServerConnectedRepositoryResponse {
+  /// The name of the `BitbucketServerConfig` that added connected repository.
+  ///
+  /// Format:
+  /// `projects/{project}/locations/{location}/bitbucketServerConfigs/{config}`
+  core.String? config;
+
+  /// The connected repository.
+  BitbucketServerRepositoryId? connectedRepository;
+
+  AddBitbucketServerConnectedRepositoryResponse({
+    this.config,
+    this.connectedRepository,
+  });
+
+  AddBitbucketServerConnectedRepositoryResponse.fromJson(core.Map _json)
+      : this(
+          config: _json.containsKey('config')
+              ? _json['config'] as core.String
+              : null,
+          connectedRepository: _json.containsKey('connectedRepository')
+              ? BitbucketServerRepositoryId.fromJson(
+                  _json['connectedRepository']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (config != null) 'config': config!,
+        if (connectedRepository != null)
+          'connectedRepository': connectedRepository!,
+      };
+}
+
 /// ApprovalConfig describes configuration for manual approval of a build.
 class ApprovalConfig {
   /// Whether or not approval is needed.
@@ -2631,6 +3212,447 @@ class Artifacts {
   core.Map<core.String, core.dynamic> toJson() => {
         if (images != null) 'images': images!,
         if (objects != null) 'objects': objects!,
+      };
+}
+
+/// RPC request object accepted by
+/// BatchCreateBitbucketServerConnectedRepositories RPC method.
+class BatchCreateBitbucketServerConnectedRepositoriesRequest {
+  /// Requests to connect Bitbucket Server repositories.
+  ///
+  /// Required.
+  core.List<CreateBitbucketServerConnectedRepositoryRequest>? requests;
+
+  BatchCreateBitbucketServerConnectedRepositoriesRequest({
+    this.requests,
+  });
+
+  BatchCreateBitbucketServerConnectedRepositoriesRequest.fromJson(
+      core.Map _json)
+      : this(
+          requests: _json.containsKey('requests')
+              ? (_json['requests'] as core.List)
+                  .map((value) =>
+                      CreateBitbucketServerConnectedRepositoryRequest.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (requests != null) 'requests': requests!,
+      };
+}
+
+/// BitbucketServerConfig represents the configuration for a Bitbucket Server.
+class BitbucketServerConfig {
+  /// API Key that will be attached to webhook.
+  ///
+  /// Once this field has been set, it cannot be changed. If you need to change
+  /// it, please create another BitbucketServerConfig.
+  ///
+  /// Required. Immutable.
+  core.String? apiKey;
+
+  /// Connected Bitbucket Server repositories for this config.
+  ///
+  /// Output only.
+  core.List<BitbucketServerRepositoryId>? connectedRepositories;
+
+  /// Time when the config was created.
+  core.String? createTime;
+
+  /// The URI of the Bitbucket Server host.
+  ///
+  /// Once this field has been set, it cannot be changed. If you need to change
+  /// it, please create another BitbucketServerConfig.
+  ///
+  /// Required. Immutable.
+  core.String? hostUri;
+
+  /// The resource name for the config.
+  core.String? name;
+
+  /// The network to be used when reaching out to the Bitbucket Server instance.
+  ///
+  /// The VPC network must be enabled for private service connection. This
+  /// should be set if the Bitbucket Server instance is hosted on-premises and
+  /// not reachable by public internet. If this field is left empty, no network
+  /// peering will occur and calls to the Bitbucket Server instance will be made
+  /// over the public internet. Must be in the format
+  /// `projects/{project}/global/networks/{network}`, where {project} is a
+  /// project number or id and {network} is the name of a VPC network in the
+  /// project.
+  ///
+  /// Optional.
+  core.String? peeredNetwork;
+
+  /// Secret Manager secrets needed by the config.
+  ///
+  /// Required.
+  BitbucketServerSecrets? secrets;
+
+  /// SSL certificate to use for requests to Bitbucket Server.
+  ///
+  /// The format should be PEM format but the extension can be one of .pem,
+  /// .cer, or .crt.
+  ///
+  /// Optional.
+  core.String? sslCa;
+
+  /// Username of the account Cloud Build will use on Bitbucket Server.
+  core.String? username;
+
+  /// UUID included in webhook requests.
+  ///
+  /// The UUID is used to look up the corresponding config.
+  ///
+  /// Output only.
+  core.String? webhookKey;
+
+  BitbucketServerConfig({
+    this.apiKey,
+    this.connectedRepositories,
+    this.createTime,
+    this.hostUri,
+    this.name,
+    this.peeredNetwork,
+    this.secrets,
+    this.sslCa,
+    this.username,
+    this.webhookKey,
+  });
+
+  BitbucketServerConfig.fromJson(core.Map _json)
+      : this(
+          apiKey: _json.containsKey('apiKey')
+              ? _json['apiKey'] as core.String
+              : null,
+          connectedRepositories: _json.containsKey('connectedRepositories')
+              ? (_json['connectedRepositories'] as core.List)
+                  .map((value) => BitbucketServerRepositoryId.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          hostUri: _json.containsKey('hostUri')
+              ? _json['hostUri'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          peeredNetwork: _json.containsKey('peeredNetwork')
+              ? _json['peeredNetwork'] as core.String
+              : null,
+          secrets: _json.containsKey('secrets')
+              ? BitbucketServerSecrets.fromJson(
+                  _json['secrets'] as core.Map<core.String, core.dynamic>)
+              : null,
+          sslCa:
+              _json.containsKey('sslCa') ? _json['sslCa'] as core.String : null,
+          username: _json.containsKey('username')
+              ? _json['username'] as core.String
+              : null,
+          webhookKey: _json.containsKey('webhookKey')
+              ? _json['webhookKey'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (apiKey != null) 'apiKey': apiKey!,
+        if (connectedRepositories != null)
+          'connectedRepositories': connectedRepositories!,
+        if (createTime != null) 'createTime': createTime!,
+        if (hostUri != null) 'hostUri': hostUri!,
+        if (name != null) 'name': name!,
+        if (peeredNetwork != null) 'peeredNetwork': peeredNetwork!,
+        if (secrets != null) 'secrets': secrets!,
+        if (sslCa != null) 'sslCa': sslCa!,
+        if (username != null) 'username': username!,
+        if (webhookKey != null) 'webhookKey': webhookKey!,
+      };
+}
+
+/// / BitbucketServerConnectedRepository represents a connected Bitbucket Server
+/// / repository.
+class BitbucketServerConnectedRepository {
+  /// The name of the `BitbucketServerConfig` that added connected repository.
+  ///
+  /// Format:
+  /// `projects/{project}/locations/{location}/bitbucketServerConfigs/{config}`
+  core.String? parent;
+
+  /// The Bitbucket Server repositories to connect.
+  BitbucketServerRepositoryId? repo;
+
+  /// The status of the repo connection request.
+  ///
+  /// Output only.
+  Status? status;
+
+  BitbucketServerConnectedRepository({
+    this.parent,
+    this.repo,
+    this.status,
+  });
+
+  BitbucketServerConnectedRepository.fromJson(core.Map _json)
+      : this(
+          parent: _json.containsKey('parent')
+              ? _json['parent'] as core.String
+              : null,
+          repo: _json.containsKey('repo')
+              ? BitbucketServerRepositoryId.fromJson(
+                  _json['repo'] as core.Map<core.String, core.dynamic>)
+              : null,
+          status: _json.containsKey('status')
+              ? Status.fromJson(
+                  _json['status'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (parent != null) 'parent': parent!,
+        if (repo != null) 'repo': repo!,
+        if (status != null) 'status': status!,
+      };
+}
+
+/// BitbucketServerRepository represents a repository hosted on a Bitbucket
+/// Server.
+class BitbucketServerRepository {
+  /// Link to the browse repo page on the Bitbucket Server instance.
+  core.String? browseUri;
+
+  /// Description of the repository.
+  core.String? description;
+
+  /// Display name of the repository.
+  core.String? displayName;
+
+  /// The resource name of the repository.
+  core.String? name;
+
+  /// Identifier for a repository hosted on a Bitbucket Server.
+  BitbucketServerRepositoryId? repoId;
+
+  BitbucketServerRepository({
+    this.browseUri,
+    this.description,
+    this.displayName,
+    this.name,
+    this.repoId,
+  });
+
+  BitbucketServerRepository.fromJson(core.Map _json)
+      : this(
+          browseUri: _json.containsKey('browseUri')
+              ? _json['browseUri'] as core.String
+              : null,
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          repoId: _json.containsKey('repoId')
+              ? BitbucketServerRepositoryId.fromJson(
+                  _json['repoId'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (browseUri != null) 'browseUri': browseUri!,
+        if (description != null) 'description': description!,
+        if (displayName != null) 'displayName': displayName!,
+        if (name != null) 'name': name!,
+        if (repoId != null) 'repoId': repoId!,
+      };
+}
+
+/// BitbucketServerRepositoryId identifies a specific repository hosted on a
+/// Bitbucket Server.
+class BitbucketServerRepositoryId {
+  /// Identifier for the project storing the repository.
+  ///
+  /// Required.
+  core.String? projectKey;
+
+  /// Identifier for the repository.
+  ///
+  /// Required.
+  core.String? repoSlug;
+
+  /// The ID of the webhook that was created for receiving events from this
+  /// repo.
+  ///
+  /// We only create and manage a single webhook for each repo.
+  ///
+  /// Output only.
+  core.int? webhookId;
+
+  BitbucketServerRepositoryId({
+    this.projectKey,
+    this.repoSlug,
+    this.webhookId,
+  });
+
+  BitbucketServerRepositoryId.fromJson(core.Map _json)
+      : this(
+          projectKey: _json.containsKey('projectKey')
+              ? _json['projectKey'] as core.String
+              : null,
+          repoSlug: _json.containsKey('repoSlug')
+              ? _json['repoSlug'] as core.String
+              : null,
+          webhookId: _json.containsKey('webhookId')
+              ? _json['webhookId'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (projectKey != null) 'projectKey': projectKey!,
+        if (repoSlug != null) 'repoSlug': repoSlug!,
+        if (webhookId != null) 'webhookId': webhookId!,
+      };
+}
+
+/// BitbucketServerSecrets represents the secrets in Secret Manager for a
+/// Bitbucket Server.
+class BitbucketServerSecrets {
+  /// The resource name for the admin access token's secret version.
+  ///
+  /// Required.
+  core.String? adminAccessTokenVersionName;
+
+  /// The resource name for the read access token's secret version.
+  ///
+  /// Required.
+  core.String? readAccessTokenVersionName;
+
+  /// The resource name for the webhook secret's secret version.
+  ///
+  /// Once this field has been set, it cannot be changed. If you need to change
+  /// it, please create another BitbucketServerConfig.
+  ///
+  /// Required. Immutable.
+  core.String? webhookSecretVersionName;
+
+  BitbucketServerSecrets({
+    this.adminAccessTokenVersionName,
+    this.readAccessTokenVersionName,
+    this.webhookSecretVersionName,
+  });
+
+  BitbucketServerSecrets.fromJson(core.Map _json)
+      : this(
+          adminAccessTokenVersionName:
+              _json.containsKey('adminAccessTokenVersionName')
+                  ? _json['adminAccessTokenVersionName'] as core.String
+                  : null,
+          readAccessTokenVersionName:
+              _json.containsKey('readAccessTokenVersionName')
+                  ? _json['readAccessTokenVersionName'] as core.String
+                  : null,
+          webhookSecretVersionName:
+              _json.containsKey('webhookSecretVersionName')
+                  ? _json['webhookSecretVersionName'] as core.String
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (adminAccessTokenVersionName != null)
+          'adminAccessTokenVersionName': adminAccessTokenVersionName!,
+        if (readAccessTokenVersionName != null)
+          'readAccessTokenVersionName': readAccessTokenVersionName!,
+        if (webhookSecretVersionName != null)
+          'webhookSecretVersionName': webhookSecretVersionName!,
+      };
+}
+
+/// BitbucketServerTriggerConfig describes the configuration of a trigger that
+/// creates a build whenever a Bitbucket Server event is received.
+class BitbucketServerTriggerConfig {
+  /// The BitbucketServerConfig specified in the
+  /// bitbucket_server_config_resource field.
+  ///
+  /// Output only.
+  BitbucketServerConfig? bitbucketServerConfig;
+
+  /// The Bitbucket server config resource that this trigger config maps to.
+  ///
+  /// Required.
+  core.String? bitbucketServerConfigResource;
+
+  /// Key of the project that the repo is in.
+  ///
+  /// For example: The key for
+  /// http://mybitbucket.server/projects/TEST/repos/test-repo is "TEST".
+  ///
+  /// Required.
+  core.String? projectKey;
+
+  /// Filter to match changes in pull requests.
+  PullRequestFilter? pullRequest;
+
+  /// Filter to match changes in refs like branches, tags.
+  PushFilter? push;
+
+  /// Slug of the repository.
+  ///
+  /// A repository slug is a URL-friendly version of a repository name,
+  /// automatically generated by Bitbucket for use in the URL. For example, if
+  /// the repository name is 'test repo', in the URL it would become 'test-repo'
+  /// as in http://mybitbucket.server/projects/TEST/repos/test-repo.
+  ///
+  /// Required.
+  core.String? repoSlug;
+
+  BitbucketServerTriggerConfig({
+    this.bitbucketServerConfig,
+    this.bitbucketServerConfigResource,
+    this.projectKey,
+    this.pullRequest,
+    this.push,
+    this.repoSlug,
+  });
+
+  BitbucketServerTriggerConfig.fromJson(core.Map _json)
+      : this(
+          bitbucketServerConfig: _json.containsKey('bitbucketServerConfig')
+              ? BitbucketServerConfig.fromJson(_json['bitbucketServerConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          bitbucketServerConfigResource:
+              _json.containsKey('bitbucketServerConfigResource')
+                  ? _json['bitbucketServerConfigResource'] as core.String
+                  : null,
+          projectKey: _json.containsKey('projectKey')
+              ? _json['projectKey'] as core.String
+              : null,
+          pullRequest: _json.containsKey('pullRequest')
+              ? PullRequestFilter.fromJson(
+                  _json['pullRequest'] as core.Map<core.String, core.dynamic>)
+              : null,
+          push: _json.containsKey('push')
+              ? PushFilter.fromJson(
+                  _json['push'] as core.Map<core.String, core.dynamic>)
+              : null,
+          repoSlug: _json.containsKey('repoSlug')
+              ? _json['repoSlug'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (bitbucketServerConfig != null)
+          'bitbucketServerConfig': bitbucketServerConfig!,
+        if (bitbucketServerConfigResource != null)
+          'bitbucketServerConfigResource': bitbucketServerConfigResource!,
+        if (projectKey != null) 'projectKey': projectKey!,
+        if (pullRequest != null) 'pullRequest': pullRequest!,
+        if (push != null) 'push': push!,
+        if (repoSlug != null) 'repoSlug': repoSlug!,
       };
 }
 
@@ -3477,6 +4499,10 @@ class BuildTrigger {
   /// for GitHub App Triggers.
   core.bool? autodetect;
 
+  /// BitbucketServerTriggerConfig describes the configuration of a trigger that
+  /// creates a build whenever a Bitbucket Server event is received.
+  BitbucketServerTriggerConfig? bitbucketServerTriggerConfig;
+
   /// Contents of the build template.
   Build? build;
 
@@ -3494,10 +4520,8 @@ class BuildTrigger {
   /// EventType allows the user to explicitly set the type of event to which
   /// this BuildTrigger should respond.
   ///
-  /// This field is optional but will be validated against the rest of the
-  /// configuration if it is set.
-  ///
-  /// Optional.
+  /// This field will be validated against the rest of the configuration if it
+  /// is set.
   /// Possible string values are:
   /// - "EVENT_TYPE_UNSPECIFIED" : EVENT_TYPE_UNSPECIFIED event_types are
   /// ignored.
@@ -3604,6 +4628,7 @@ class BuildTrigger {
   BuildTrigger({
     this.approvalConfig,
     this.autodetect,
+    this.bitbucketServerTriggerConfig,
     this.build,
     this.createTime,
     this.description,
@@ -3636,6 +4661,12 @@ class BuildTrigger {
           autodetect: _json.containsKey('autodetect')
               ? _json['autodetect'] as core.bool
               : null,
+          bitbucketServerTriggerConfig:
+              _json.containsKey('bitbucketServerTriggerConfig')
+                  ? BitbucketServerTriggerConfig.fromJson(
+                      _json['bitbucketServerTriggerConfig']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           build: _json.containsKey('build')
               ? Build.fromJson(
                   _json['build'] as core.Map<core.String, core.dynamic>)
@@ -3719,6 +4750,8 @@ class BuildTrigger {
   core.Map<core.String, core.dynamic> toJson() => {
         if (approvalConfig != null) 'approvalConfig': approvalConfig!,
         if (autodetect != null) 'autodetect': autodetect!,
+        if (bitbucketServerTriggerConfig != null)
+          'bitbucketServerTriggerConfig': bitbucketServerTriggerConfig!,
         if (build != null) 'build': build!,
         if (createTime != null) 'createTime': createTime!,
         if (description != null) 'description': description!,
@@ -3823,6 +4856,47 @@ class CancelBuildRequest {
 
 /// The request message for Operations.CancelOperation.
 typedef CancelOperationRequest = $Empty;
+
+/// Request to connect a repository from a connected Bitbucket Server host.
+class CreateBitbucketServerConnectedRepositoryRequest {
+  /// The Bitbucket Server repository to connect.
+  ///
+  /// Required.
+  BitbucketServerConnectedRepository? bitbucketServerConnectedRepository;
+
+  /// The name of the `BitbucketServerConfig` that added connected repository.
+  ///
+  /// Format:
+  /// `projects/{project}/locations/{location}/bitbucketServerConfigs/{config}`
+  ///
+  /// Required.
+  core.String? parent;
+
+  CreateBitbucketServerConnectedRepositoryRequest({
+    this.bitbucketServerConnectedRepository,
+    this.parent,
+  });
+
+  CreateBitbucketServerConnectedRepositoryRequest.fromJson(core.Map _json)
+      : this(
+          bitbucketServerConnectedRepository:
+              _json.containsKey('bitbucketServerConnectedRepository')
+                  ? BitbucketServerConnectedRepository.fromJson(
+                      _json['bitbucketServerConnectedRepository']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          parent: _json.containsKey('parent')
+              ? _json['parent'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (bitbucketServerConnectedRepository != null)
+          'bitbucketServerConnectedRepository':
+              bitbucketServerConnectedRepository!,
+        if (parent != null) 'parent': parent!,
+      };
+}
 
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs.
@@ -4354,6 +5428,78 @@ class InlineSecret {
       };
 }
 
+/// RPC response object returned by ListBitbucketServerConfigs RPC method.
+class ListBitbucketServerConfigsResponse {
+  /// A list of BitbucketServerConfigs
+  core.List<BitbucketServerConfig>? bitbucketServerConfigs;
+
+  /// A token that can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  ListBitbucketServerConfigsResponse({
+    this.bitbucketServerConfigs,
+    this.nextPageToken,
+  });
+
+  ListBitbucketServerConfigsResponse.fromJson(core.Map _json)
+      : this(
+          bitbucketServerConfigs: _json.containsKey('bitbucketServerConfigs')
+              ? (_json['bitbucketServerConfigs'] as core.List)
+                  .map((value) => BitbucketServerConfig.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (bitbucketServerConfigs != null)
+          'bitbucketServerConfigs': bitbucketServerConfigs!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
+/// RPC response object returned by the ListBitbucketServerRepositories RPC
+/// method.
+class ListBitbucketServerRepositoriesResponse {
+  /// List of Bitbucket Server repositories.
+  core.List<BitbucketServerRepository>? bitbucketServerRepositories;
+
+  /// A token that can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  ListBitbucketServerRepositoriesResponse({
+    this.bitbucketServerRepositories,
+    this.nextPageToken,
+  });
+
+  ListBitbucketServerRepositoriesResponse.fromJson(core.Map _json)
+      : this(
+          bitbucketServerRepositories:
+              _json.containsKey('bitbucketServerRepositories')
+                  ? (_json['bitbucketServerRepositories'] as core.List)
+                      .map((value) => BitbucketServerRepository.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                      .toList()
+                  : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (bitbucketServerRepositories != null)
+          'bitbucketServerRepositories': bitbucketServerRepositories!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
 /// Response containing existing `BuildTriggers`.
 class ListBuildTriggersResponse {
   /// Token to receive the next page of results.
@@ -4815,6 +5961,31 @@ class PushFilter {
 /// the ReceiveTriggerWebhook method.
 typedef ReceiveTriggerWebhookResponse = $Empty;
 
+/// RPC request object accepted by RemoveBitbucketServerConnectedRepository RPC
+/// method.
+class RemoveBitbucketServerConnectedRepositoryRequest {
+  /// The connected repository to remove.
+  BitbucketServerRepositoryId? connectedRepository;
+
+  RemoveBitbucketServerConnectedRepositoryRequest({
+    this.connectedRepository,
+  });
+
+  RemoveBitbucketServerConnectedRepositoryRequest.fromJson(core.Map _json)
+      : this(
+          connectedRepository: _json.containsKey('connectedRepository')
+              ? BitbucketServerRepositoryId.fromJson(
+                  _json['connectedRepository']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (connectedRepository != null)
+          'connectedRepository': connectedRepository!,
+      };
+}
+
 /// Location of the source in a Google Cloud Source Repository.
 class RepoSource {
   /// Regex matching branches to build.
@@ -5036,6 +6207,8 @@ class RunBuildTriggerRequest {
   core.String? projectId;
 
   /// Source to build against this trigger.
+  ///
+  /// Branch and tag names cannot consist of regular expressions.
   RepoSource? source;
 
   /// ID of the trigger.
@@ -5622,7 +6795,7 @@ class WorkerPool {
   /// Output only.
   core.String? name;
 
-  /// Private Pool using a v1 configuration.
+  /// Legacy Private Pool configuration.
   PrivatePoolV1Config? privatePoolV1Config;
 
   /// `WorkerPool` state.
@@ -5635,6 +6808,7 @@ class WorkerPool {
   /// - "DELETING" : `WorkerPool` is being deleted: cancelling builds and
   /// draining workers.
   /// - "DELETED" : `WorkerPool` is deleted.
+  /// - "UPDATING" : `WorkerPool` is being updated; new builds cannot be run.
   core.String? state;
 
   /// A unique identifier for the `WorkerPool`.

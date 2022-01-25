@@ -3,6 +3,7 @@
 - `adsense` - **removed v1.4**
 - `clouddeploy` - new!
 - `datastream` - new!
+- `ids` - new!
 - `mybusinessqanda` - new!
 - `run` - new v2
 - `transcoder` - new!

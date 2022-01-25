@@ -531,6 +531,40 @@ class $Artifact {
 
 /// Used by:
 ///
+/// - artifactregistry:v1 : ImportAptArtifactsGcsSource
+/// - artifactregistry:v1 : ImportYumArtifactsGcsSource
+class $ArtifactsGcsSource {
+  /// Cloud Storage paths URI (e.g., gs://my_bucket//my_object).
+  core.List<core.String>? uris;
+
+  /// Supports URI wildcards for matching multiple objects from a single URI.
+  core.bool? useWildcards;
+
+  $ArtifactsGcsSource({
+    this.uris,
+    this.useWildcards,
+  });
+
+  $ArtifactsGcsSource.fromJson(core.Map _json)
+      : this(
+          uris: _json.containsKey('uris')
+              ? (_json['uris'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          useWildcards: _json.containsKey('useWildcards')
+              ? _json['useWildcards'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (uris != null) 'uris': uris!,
+        if (useWildcards != null) 'useWildcards': useWildcards!,
+      };
+}
+
+/// Used by:
+///
 /// - ml:v1 : GoogleCloudMlV1__IntegratedGradientsAttribution
 /// - ml:v1 : GoogleCloudMlV1__XraiAttribution
 class $Attribution {
@@ -624,6 +658,7 @@ class $AudienceSegment {
 /// - gkehub:v1 : AuditLogConfig
 /// - healthcare:v1 : AuditLogConfig
 /// - iam:v1 : AuditLogConfig
+/// - ids:v1 : AuditLogConfig
 /// - ml:v1 : GoogleIamV1__AuditLogConfig
 /// - networkconnectivity:v1 : AuditLogConfig
 /// - networkmanagement:v1 : AuditLogConfig
@@ -3129,6 +3164,10 @@ class $EgressFrom {
 /// - apikeys:v2 : V2UndeleteKeyRequest
 /// - appengine:v1 : Empty
 /// - appengine:v1 : RepairApplicationRequest
+/// - artifactregistry:v1 : Empty
+/// - artifactregistry:v1 : UploadAptArtifactRequest
+/// - artifactregistry:v1 : UploadGooGetArtifactRequest
+/// - artifactregistry:v1 : UploadYumArtifactRequest
 /// - assuredworkloads:v1 : GoogleProtobufEmpty
 /// - authorizedbuyersmarketplace:v1 : ActivateClientRequest
 /// - authorizedbuyersmarketplace:v1 : ActivateClientUserRequest
@@ -3140,6 +3179,8 @@ class $EgressFrom {
 /// - authorizedbuyersmarketplace:v1 : SetReadyToServeRequest
 /// - authorizedbuyersmarketplace:v1 : SubscribeAuctionPackageRequest
 /// - authorizedbuyersmarketplace:v1 : UnsubscribeAuctionPackageRequest
+/// - baremetalsolution:v1 : CancelOperationRequest
+/// - baremetalsolution:v1 : Empty
 /// - baremetalsolution:v1 : ResetInstanceRequest
 /// - baremetalsolution:v1 : ResetInstanceResponse
 /// - bigquerydatatransfer:v1 : CheckValidCredsRequest
@@ -3333,6 +3374,8 @@ class $EgressFrom {
 /// - iam:v1 : UndeleteWorkloadIdentityPoolRequest
 /// - iap:v1 : Empty
 /// - iap:v1 : ResetIdentityAwareProxyClientSecretRequest
+/// - ids:v1 : CancelOperationRequest
+/// - ids:v1 : Empty
 /// - jobs:v3 : Empty
 /// - jobs:v4 : Empty
 /// - keep:v1 : Empty
@@ -3779,6 +3822,7 @@ class $ExportOptions {
 /// - accesscontextmanager:v1 : Expr
 /// - apigateway:v1 : ApigatewayExpr
 /// - apigee:v1 : GoogleTypeExpr
+/// - artifactregistry:v1 : Expr
 /// - bigquery:v2 : Expr
 /// - bigtableadmin:v2 : Expr
 /// - binaryauthorization:v1 : Expr
@@ -3807,6 +3851,7 @@ class $ExportOptions {
 /// - healthcare:v1 : Expr
 /// - iam:v1 : Expr
 /// - iap:v1 : Expr
+/// - ids:v1 : Expr
 /// - managedidentities:v1 : Expr
 /// - ml:v1 : GoogleType__Expr
 /// - networkconnectivity:v1 : Expr
@@ -5494,6 +5539,7 @@ class $ListTargetingExpression {
 /// - gameservices:v1 : Location
 /// - gkehub:v1 : Location
 /// - healthcare:v1 : Location
+/// - ids:v1 : Location
 /// - managedidentities:v1 : Location
 /// - memcache:v1 : Location
 /// - networkconnectivity:v1 : Location
@@ -6300,6 +6346,44 @@ class $MonitoringDestination {
 
 /// Used by:
 ///
+/// - containeranalysis:v1 : NonCompliantFile
+/// - ondemandscanning:v1 : NonCompliantFile
+class $NonCompliantFile {
+  /// Command to display the non-compliant files.
+  core.String? displayCommand;
+
+  /// Empty if `display_command` is set.
+  core.String? path;
+
+  /// Explains why a file is non compliant for a CIS check.
+  core.String? reason;
+
+  $NonCompliantFile({
+    this.displayCommand,
+    this.path,
+    this.reason,
+  });
+
+  $NonCompliantFile.fromJson(core.Map _json)
+      : this(
+          displayCommand: _json.containsKey('displayCommand')
+              ? _json['displayCommand'] as core.String
+              : null,
+          path: _json.containsKey('path') ? _json['path'] as core.String : null,
+          reason: _json.containsKey('reason')
+              ? _json['reason'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (displayCommand != null) 'displayCommand': displayCommand!,
+        if (path != null) 'path': path!,
+        if (reason != null) 'reason': reason!,
+      };
+}
+
+/// Used by:
+///
 /// - servicemanagement:v1 : OAuthRequirements
 /// - serviceusage:v1 : OAuthRequirements
 class $OAuthRequirements {
@@ -7037,6 +7121,7 @@ class $PathReportDimensionValue {
 /// - accesscontextmanager:v1 : TestIamPermissionsResponse
 /// - apigateway:v1 : ApigatewayTestIamPermissionsResponse
 /// - apigee:v1 : GoogleIamV1TestIamPermissionsResponse
+/// - artifactregistry:v1 : TestIamPermissionsResponse
 /// - bigquery:v2 : TestIamPermissionsResponse
 /// - bigtableadmin:v2 : TestIamPermissionsResponse
 /// - binaryauthorization:v1 : TestIamPermissionsResponse
@@ -7063,6 +7148,7 @@ class $PathReportDimensionValue {
 /// - healthcare:v1 : TestIamPermissionsResponse
 /// - iam:v1 : TestIamPermissionsResponse
 /// - iap:v1 : TestIamPermissionsResponse
+/// - ids:v1 : TestIamPermissionsResponse
 /// - managedidentities:v1 : TestIamPermissionsResponse
 /// - ml:v1 : GoogleIamV1__TestIamPermissionsResponse
 /// - networkconnectivity:v1 : TestIamPermissionsResponse
@@ -9374,6 +9460,7 @@ class $StartPageToken {
 /// - appengine:v1 : Status
 /// - artifactregistry:v1 : Status
 /// - assuredworkloads:v1 : GoogleRpcStatus
+/// - baremetalsolution:v1 : Status
 /// - bigquerydatatransfer:v1 : Status
 /// - bigqueryreservation:v1 : Status
 /// - bigtableadmin:v2 : Status
@@ -9419,6 +9506,7 @@ class $StartPageToken {
 /// - gkehub:v1 : GoogleRpcStatus
 /// - healthcare:v1 : Status
 /// - iam:v1 : Status
+/// - ids:v1 : Status
 /// - jobs:v4 : Status
 /// - logging:v2 : Status
 /// - managedidentities:v1 : Status
@@ -9563,6 +9651,40 @@ class $Subaccount {
           'availablePermissionIds': availablePermissionIds!,
         if (id != null) 'id': id!,
         if (kind != null) 'kind': kind!,
+        if (name != null) 'name': name!,
+      };
+}
+
+/// Used by:
+///
+/// - containeranalysis:v1 : Subject
+/// - ondemandscanning:v1 : Subject
+class $Subject {
+  /// `"": ""` Algorithms can be e.g. sha256, sha512 See
+  /// https://github.com/in-toto/attestation/blob/main/spec/field_types.md#DigestSet
+  core.Map<core.String, core.String>? digest;
+  core.String? name;
+
+  $Subject({
+    this.digest,
+    this.name,
+  });
+
+  $Subject.fromJson(core.Map _json)
+      : this(
+          digest: _json.containsKey('digest')
+              ? (_json['digest'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (digest != null) 'digest': digest!,
         if (name != null) 'name': name!,
       };
 }
@@ -9847,6 +9969,7 @@ class $TenantProjectRequest {
 /// - accesscontextmanager:v1 : TestIamPermissionsRequest
 /// - apigateway:v1 : ApigatewayTestIamPermissionsRequest
 /// - apigee:v1 : GoogleIamV1TestIamPermissionsRequest
+/// - artifactregistry:v1 : TestIamPermissionsRequest
 /// - bigquery:v2 : TestIamPermissionsRequest
 /// - bigtableadmin:v2 : TestIamPermissionsRequest
 /// - binaryauthorization:v1 : TestIamPermissionsRequest
@@ -9871,6 +9994,7 @@ class $TenantProjectRequest {
 /// - healthcare:v1 : TestIamPermissionsRequest
 /// - iam:v1 : TestIamPermissionsRequest
 /// - iap:v1 : TestIamPermissionsRequest
+/// - ids:v1 : TestIamPermissionsRequest
 /// - managedidentities:v1 : TestIamPermissionsRequest
 /// - ml:v1 : GoogleIamV1__TestIamPermissionsRequest
 /// - networkconnectivity:v1 : TestIamPermissionsRequest

@@ -690,8 +690,8 @@ class MobileFriendlyIssue {
   /// - "USES_INCOMPATIBLE_PLUGINS" : Plugins incompatible with mobile devices
   /// are being used.
   /// [Learn more](https://support.google.com/webmasters/answer/6352293#flash_usage).
-  /// - "CONFIGURE_VIEWPORT" : Viewsport is not specified using the meta
-  /// viewport tag.
+  /// - "CONFIGURE_VIEWPORT" : Viewport is not specified using the meta viewport
+  /// tag.
   /// [Learn more](https://support.google.com/webmasters/answer/6352293#viewport_not_configured).
   /// - "FIXED_WIDTH_VIEWPORT" : Viewport defined to a fixed width.
   /// [Learn more](https://support.google.com/webmasters/answer/6352293#fixed-width_viewport).

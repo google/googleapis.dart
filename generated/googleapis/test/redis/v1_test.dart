@@ -250,6 +250,7 @@ api.Instance buildInstance() {
     o.redisVersion = 'foo';
     o.replicaCount = 42;
     o.reservedIpRange = 'foo';
+    o.secondaryIpRange = 'foo';
     o.serverCaCerts = buildUnnamed3();
     o.state = 'foo';
     o.statusMessage = 'foo';
@@ -340,6 +341,10 @@ void checkInstance(api.Instance o) {
     );
     unittest.expect(
       o.reservedIpRange!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.secondaryIpRange!,
       unittest.equals('foo'),
     );
     checkUnnamed3(o.serverCaCerts!);

@@ -314,12 +314,16 @@ class ProjectsLocationsAuthorizationPoliciesResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/authorizationPolicies/\[^/\]+$`.
   ///
-  /// [options_requestedPolicyVersion] - Optional. The policy format version to
-  /// be returned. Valid values are 0, 1, and 3. Requests specifying an invalid
-  /// value will be rejected. Requests for policies with any conditional
-  /// bindings must specify version 3. Policies without any conditional bindings
-  /// may specify any valid value or leave the field unset. To learn which
-  /// resources support conditions in their IAM policies, see the
+  /// [options_requestedPolicyVersion] - Optional. The maximum policy version
+  /// that will be used to format the policy. Valid values are 0, 1, and 3.
+  /// Requests specifying an invalid value will be rejected. Requests for
+  /// policies with any conditional role bindings must specify version 3.
+  /// Policies with no conditional role bindings may specify any valid value or
+  /// leave the field unset. The policy in the response might use the policy
+  /// version that you specified, or it might use a lower policy version. For
+  /// example, if you specify version 3, but the policy has no conditional role
+  /// bindings, the response uses version 1. To learn which resources support
+  /// conditions in their IAM policies, see the
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -694,12 +698,16 @@ class ProjectsLocationsClientTlsPoliciesResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/clientTlsPolicies/\[^/\]+$`.
   ///
-  /// [options_requestedPolicyVersion] - Optional. The policy format version to
-  /// be returned. Valid values are 0, 1, and 3. Requests specifying an invalid
-  /// value will be rejected. Requests for policies with any conditional
-  /// bindings must specify version 3. Policies without any conditional bindings
-  /// may specify any valid value or leave the field unset. To learn which
-  /// resources support conditions in their IAM policies, see the
+  /// [options_requestedPolicyVersion] - Optional. The maximum policy version
+  /// that will be used to format the policy. Valid values are 0, 1, and 3.
+  /// Requests specifying an invalid value will be rejected. Requests for
+  /// policies with any conditional role bindings must specify version 3.
+  /// Policies with no conditional role bindings may specify any valid value or
+  /// leave the field unset. The policy in the response might use the policy
+  /// version that you specified, or it might use a lower policy version. For
+  /// example, if you specify version 3, but the policy has no conditional role
+  /// bindings, the response uses version 1. To learn which resources support
+  /// conditions in their IAM policies, see the
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1267,12 +1275,16 @@ class ProjectsLocationsServerTlsPoliciesResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/serverTlsPolicies/\[^/\]+$`.
   ///
-  /// [options_requestedPolicyVersion] - Optional. The policy format version to
-  /// be returned. Valid values are 0, 1, and 3. Requests specifying an invalid
-  /// value will be rejected. Requests for policies with any conditional
-  /// bindings must specify version 3. Policies without any conditional bindings
-  /// may specify any valid value or leave the field unset. To learn which
-  /// resources support conditions in their IAM policies, see the
+  /// [options_requestedPolicyVersion] - Optional. The maximum policy version
+  /// that will be used to format the policy. Valid values are 0, 1, and 3.
+  /// Requests specifying an invalid value will be rejected. Requests for
+  /// policies with any conditional role bindings must specify version 3.
+  /// Policies with no conditional role bindings may specify any valid value or
+  /// leave the field unset. The policy in the response might use the policy
+  /// version that you specified, or it might use a lower policy version. For
+  /// example, if you specify version 3, but the policy has no conditional role
+  /// bindings, the response uses version 1. To learn which resources support
+  /// conditions in their IAM policies, see the
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1519,7 +1531,8 @@ class AuthorizationPolicy {
   /// Possible string values are:
   /// - "ACTION_UNSPECIFIED" : Default value.
   /// - "ALLOW" : Grant access.
-  /// - "DENY" : Deny access.
+  /// - "DENY" : Deny access. Deny rules should be avoided unless they are used
+  /// to provide a default "deny all" fallback.
   core.String? action;
 
   /// The timestamp when the resource was created.
@@ -1767,9 +1780,9 @@ class ClientTlsPolicy {
 class Destination {
   /// List of host names to match.
   ///
-  /// Matched against HOST header in http requests. At least one host should
-  /// match. Each host can be an exact match, or a prefix match (example
-  /// "mydomain.*") or a suffix match (example // *.myorg.com") or a
+  /// Matched against the ":authority" header in http requests. At least one
+  /// host should match. Each host can be an exact match, or a prefix match
+  /// (example "mydomain.*") or a suffix match (example // *.myorg.com") or a
   /// presence(any) match "*".
   ///
   /// Required.
@@ -1778,7 +1791,9 @@ class Destination {
   /// Match against key:value pair in http header.
   ///
   /// Provides a flexible match based on HTTP headers, for potentially advanced
-  /// use cases. At least one header should match.
+  /// use cases. At least one header should match. Avoid using header matches to
+  /// make authorization decisions unless there is a strong guarantee that
+  /// requests arrive through a trusted client or proxy.
   ///
   /// Optional.
   HttpHeaderMatch? httpHeaderMatch;
@@ -1987,19 +2002,20 @@ class GoogleIamV1AuditConfig {
 /// exempting jose@example.com from DATA_READ logging.
 typedef GoogleIamV1AuditLogConfig = $AuditLogConfig;
 
-/// Associates `members` with a `role`.
+/// Associates `members`, or principals, with a `role`.
 class GoogleIamV1Binding {
   /// The condition that is associated with this binding.
   ///
   /// If the condition evaluates to `true`, then this binding applies to the
   /// current request. If the condition evaluates to `false`, then this binding
   /// does not apply to the current request. However, a different role binding
-  /// might grant the same role to one or more of the members in this binding.
-  /// To learn which resources support conditions in their IAM policies, see the
+  /// might grant the same role to one or more of the principals in this
+  /// binding. To learn which resources support conditions in their IAM
+  /// policies, see the
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   Expr? condition;
 
-  /// Specifies the identities requesting access for a Cloud Platform resource.
+  /// Specifies the principals requesting access for a Cloud Platform resource.
   ///
   /// `members` can have the following values: * `allUsers`: A special
   /// identifier that represents anyone who is on the internet; with or without
@@ -2031,7 +2047,7 @@ class GoogleIamV1Binding {
   /// `example.com`.
   core.List<core.String>? members;
 
-  /// Role that is assigned to `members`.
+  /// Role that is assigned to the list of `members`, or principals.
   ///
   /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
   core.String? role;
@@ -2067,15 +2083,15 @@ class GoogleIamV1Binding {
 /// controls for Google Cloud resources.
 ///
 /// A `Policy` is a collection of `bindings`. A `binding` binds one or more
-/// `members` to a single `role`. Members can be user accounts, service
-/// accounts, Google groups, and domains (such as G Suite). A `role` is a named
-/// list of permissions; each `role` can be an IAM predefined role or a
-/// user-created custom role. For some types of Google Cloud resources, a
-/// `binding` can also specify a `condition`, which is a logical expression that
-/// allows access to a resource only if the expression evaluates to `true`. A
-/// condition can add constraints based on attributes of the request, the
-/// resource, or both. To learn which resources support conditions in their IAM
-/// policies, see the
+/// `members`, or principals, to a single `role`. Principals can be user
+/// accounts, service accounts, Google groups, and domains (such as G Suite). A
+/// `role` is a named list of permissions; each `role` can be an IAM predefined
+/// role or a user-created custom role. For some types of Google Cloud
+/// resources, a `binding` can also specify a `condition`, which is a logical
+/// expression that allows access to a resource only if the expression evaluates
+/// to `true`. A condition can add constraints based on attributes of the
+/// request, the resource, or both. To learn which resources support conditions
+/// in their IAM policies, see the
 /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 /// **JSON example:** { "bindings": \[ { "role":
 /// "roles/resourcemanager.organizationAdmin", "members": \[
@@ -2098,11 +2114,16 @@ class GoogleIamV1Policy {
   /// Specifies cloud audit logging configuration for this policy.
   core.List<GoogleIamV1AuditConfig>? auditConfigs;
 
-  /// Associates a list of `members` to a `role`.
+  /// Associates a list of `members`, or principals, with a `role`.
   ///
   /// Optionally, may specify a `condition` that determines how and when the
   /// `bindings` are applied. Each of the `bindings` must contain at least one
-  /// member.
+  /// principal. The `bindings` in a `Policy` can refer to up to 1,500
+  /// principals; up to 250 of these principals can be Google groups. Each
+  /// occurrence of a principal counts towards these limits. For example, if the
+  /// `bindings` grant 50 different roles to `user:alice@example.com`, and not
+  /// to any other principal, then you can add another 1,450 principals to the
+  /// `bindings` in the `Policy`.
   core.List<GoogleIamV1Binding>? bindings;
 
   /// `etag` is used for optimistic concurrency control as a way to help prevent
@@ -2708,7 +2729,9 @@ class Source {
   /// List of CIDR ranges to match based on source IP address.
   ///
   /// At least one IP block should match. Single IP (e.g., "1.2.3.4") and CIDR
-  /// (e.g., "1.2.3.0/24") are supported.
+  /// (e.g., "1.2.3.0/24") are supported. Authorization based on source IP alone
+  /// should be avoided. The IP addresses of any load balancers or proxies
+  /// should be considered untrusted.
   ///
   /// Optional.
   core.List<core.String>? ipBlocks;
@@ -2717,7 +2740,9 @@ class Source {
   ///
   /// At least one principal should match. Each peer can be an exact match, or a
   /// prefix match (example, "namespace / * ") or a suffix match (example, // *
-  /// / service-account") or a presence match "*".
+  /// / service-account") or a presence match "*". Authorization based on the
+  /// principal name without certificate validation (configured by
+  /// ServerTlsPolicy resource) is considered insecure.
   ///
   /// Optional.
   core.List<core.String>? principals;
