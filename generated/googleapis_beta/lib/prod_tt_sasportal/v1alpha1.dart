@@ -3952,7 +3952,74 @@ class SasPortalDeviceGrant {
 }
 
 /// Device data overridable by both SAS Portal and registration requests.
-typedef SasPortalDeviceMetadata = $SasPortalDeviceMetadata;
+class SasPortalDeviceMetadata {
+  /// If populated, the Antenna Model Pattern to use.
+  ///
+  /// Format is: RecordCreatorId:PatternId
+  core.String? antennaModel;
+
+  /// CCG.
+  ///
+  /// A group of CBSDs in the same ICG requesting a common primary channel
+  /// assignment. See CBRSA-TS-2001 V3.0.0 for more details.
+  core.String? commonChannelGroup;
+
+  /// ICG.
+  ///
+  /// A group of CBSDs that manage their own interference with the group. See
+  /// CBRSA-TS-2001 V3.0.0 for more details.
+  core.String? interferenceCoordinationGroup;
+
+  /// Whether a CPI has validated to have coordinated with the National Quiet
+  /// Zone office.
+  ///
+  /// Output only.
+  core.bool? nrqzValidated;
+
+  /// National Radio Quiet Zone validation info.
+  ///
+  /// Output only.
+  SasPortalNrqzValidation? nrqzValidation;
+
+  SasPortalDeviceMetadata({
+    this.antennaModel,
+    this.commonChannelGroup,
+    this.interferenceCoordinationGroup,
+    this.nrqzValidated,
+    this.nrqzValidation,
+  });
+
+  SasPortalDeviceMetadata.fromJson(core.Map _json)
+      : this(
+          antennaModel: _json.containsKey('antennaModel')
+              ? _json['antennaModel'] as core.String
+              : null,
+          commonChannelGroup: _json.containsKey('commonChannelGroup')
+              ? _json['commonChannelGroup'] as core.String
+              : null,
+          interferenceCoordinationGroup:
+              _json.containsKey('interferenceCoordinationGroup')
+                  ? _json['interferenceCoordinationGroup'] as core.String
+                  : null,
+          nrqzValidated: _json.containsKey('nrqzValidated')
+              ? _json['nrqzValidated'] as core.bool
+              : null,
+          nrqzValidation: _json.containsKey('nrqzValidation')
+              ? SasPortalNrqzValidation.fromJson(_json['nrqzValidation']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (antennaModel != null) 'antennaModel': antennaModel!,
+        if (commonChannelGroup != null)
+          'commonChannelGroup': commonChannelGroup!,
+        if (interferenceCoordinationGroup != null)
+          'interferenceCoordinationGroup': interferenceCoordinationGroup!,
+        if (nrqzValidated != null) 'nrqzValidated': nrqzValidated!,
+        if (nrqzValidation != null) 'nrqzValidation': nrqzValidation!,
+      };
+}
 
 /// Information about the model of the device.
 typedef SasPortalDeviceModel = $SasPortalDeviceModel;
@@ -4161,6 +4228,52 @@ typedef SasPortalMoveNodeRequest = $SasPortalMoveNodeRequest;
 
 /// The Node.
 typedef SasPortalNode = $SasPortalNode;
+
+/// Information about National Radio Quiet Zone validation.
+///
+/// The presence of the field indicates the device has been validated.
+class SasPortalNrqzValidation {
+  /// Validation case id.
+  core.String? caseId;
+
+  /// CPI who signed the validation.
+  core.String? cpiId;
+
+  /// Device latitude associated with the validation.
+  core.double? latitude;
+
+  /// Device longitude associated with the validation.
+  core.double? longitude;
+
+  SasPortalNrqzValidation({
+    this.caseId,
+    this.cpiId,
+    this.latitude,
+    this.longitude,
+  });
+
+  SasPortalNrqzValidation.fromJson(core.Map _json)
+      : this(
+          caseId: _json.containsKey('caseId')
+              ? _json['caseId'] as core.String
+              : null,
+          cpiId:
+              _json.containsKey('cpiId') ? _json['cpiId'] as core.String : null,
+          latitude: _json.containsKey('latitude')
+              ? (_json['latitude'] as core.num).toDouble()
+              : null,
+          longitude: _json.containsKey('longitude')
+              ? (_json['longitude'] as core.num).toDouble()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (caseId != null) 'caseId': caseId!,
+        if (cpiId != null) 'cpiId': cpiId!,
+        if (latitude != null) 'latitude': latitude!,
+        if (longitude != null) 'longitude': longitude!,
+      };
+}
 
 /// This resource represents a long-running operation that is the result of a
 /// network API call.

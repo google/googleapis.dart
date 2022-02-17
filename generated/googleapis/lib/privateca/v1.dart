@@ -31,7 +31,6 @@
 /// [ProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsResource]
 ///       - [ProjectsLocationsCaPoolsCertificatesResource]
 ///     - [ProjectsLocationsCertificateTemplatesResource]
-///     - [ProjectsLocationsManagedPkisResource]
 ///     - [ProjectsLocationsOperationsResource]
 library privateca.v1;
 
@@ -85,8 +84,6 @@ class ProjectsLocationsResource {
       ProjectsLocationsCaPoolsResource(_requester);
   ProjectsLocationsCertificateTemplatesResource get certificateTemplates =>
       ProjectsLocationsCertificateTemplatesResource(_requester);
-  ProjectsLocationsManagedPkisResource get managedPkis =>
-      ProjectsLocationsManagedPkisResource(_requester);
   ProjectsLocationsOperationsResource get operations =>
       ProjectsLocationsOperationsResource(_requester);
 
@@ -2218,69 +2215,6 @@ class ProjectsLocationsCertificateTemplatesResource {
     );
     return TestIamPermissionsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
-  }
-}
-
-class ProjectsLocationsManagedPkisResource {
-  final commons.ApiRequester _requester;
-
-  ProjectsLocationsManagedPkisResource(commons.ApiRequester client)
-      : _requester = client;
-
-  /// Gets the access control policy for a resource.
-  ///
-  /// Returns an empty policy if the resource exists and does not have a policy
-  /// set.
-  ///
-  /// Request parameters:
-  ///
-  /// [resource] - REQUIRED: The resource for which the policy is being
-  /// requested. See the operation documentation for the appropriate value for
-  /// this field.
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/managedPkis/\[^/\]+$`.
-  ///
-  /// [options_requestedPolicyVersion] - Optional. The maximum policy version
-  /// that will be used to format the policy. Valid values are 0, 1, and 3.
-  /// Requests specifying an invalid value will be rejected. Requests for
-  /// policies with any conditional role bindings must specify version 3.
-  /// Policies with no conditional role bindings may specify any valid value or
-  /// leave the field unset. The policy in the response might use the policy
-  /// version that you specified, or it might use a lower policy version. For
-  /// example, if you specify version 3, but the policy has no conditional role
-  /// bindings, the response uses version 1. To learn which resources support
-  /// conditions in their IAM policies, see the
-  /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Policy].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Policy> getIamPolicy(
-    core.String resource, {
-    core.int? options_requestedPolicyVersion,
-    core.String? $fields,
-  }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
-      if (options_requestedPolicyVersion != null)
-        'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final _url = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
-
-    final _response = await _requester.request(
-      _url,
-      'GET',
-      queryParams: _queryParams,
-    );
-    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -5390,6 +5324,9 @@ class Subject {
 /// in the distinguished name).
 class SubjectAltNames {
   /// Contains additional subject alternative name values.
+  ///
+  /// For each custom_san, the `value` field must contain an ASN.1 encoded
+  /// UTF8String.
   core.List<X509Extension>? customSans;
 
   /// Contains only valid, fully-qualified host names.
@@ -5629,7 +5566,7 @@ class SubordinateConfigChain {
 }
 
 /// Request message for `TestIamPermissions` method.
-typedef TestIamPermissionsRequest = $TestIamPermissionsRequest;
+typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;
 
 /// Response message for `TestIamPermissions` method.
 typedef TestIamPermissionsResponse = $PermissionsResponse;

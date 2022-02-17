@@ -49,6 +49,7 @@
 ///     - [OrganizationsDevelopersAttributesResource]
 ///     - [OrganizationsDevelopersBalanceResource]
 ///     - [OrganizationsDevelopersSubscriptionsResource]
+///   - [OrganizationsEndpointAttachmentsResource]
 ///   - [OrganizationsEnvgroupsResource]
 ///     - [OrganizationsEnvgroupsAttachmentsResource]
 ///   - [OrganizationsEnvironmentsResource]
@@ -206,6 +207,8 @@ class OrganizationsResource {
       OrganizationsDeploymentsResource(_requester);
   OrganizationsDevelopersResource get developers =>
       OrganizationsDevelopersResource(_requester);
+  OrganizationsEndpointAttachmentsResource get endpointAttachments =>
+      OrganizationsEndpointAttachmentsResource(_requester);
   OrganizationsEnvgroupsResource get envgroups =>
       OrganizationsEnvgroupsResource(_requester);
   OrganizationsEnvironmentsResource get environments =>
@@ -4667,6 +4670,191 @@ class OrganizationsDevelopersSubscriptionsResource {
       queryParams: _queryParams,
     );
     return GoogleCloudApigeeV1ListDeveloperSubscriptionsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class OrganizationsEndpointAttachmentsResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsEndpointAttachmentsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates an EndpointAttachment.
+  ///
+  /// **Note:** Not supported for Apigee hybrid.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The Organization this EndpointAttachment will be
+  /// created in.
+  /// Value must have pattern `^organizations/\[^/\]+$`.
+  ///
+  /// [endpointAttachmentId] - The ID to use for the endpoint attachment. ID
+  /// must be a 1-20 characters string with lowercase letters and numbers and
+  /// must start with a letter.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> create(
+    GoogleCloudApigeeV1EndpointAttachment request,
+    core.String parent, {
+    core.String? endpointAttachmentId,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (endpointAttachmentId != null)
+        'endpointAttachmentId': [endpointAttachmentId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url =
+        'v1/' + core.Uri.encodeFull('$parent') + '/endpointAttachments';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes an endpoint attachment.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the Endpoint Attachment in the following
+  /// format:
+  /// `organizations/{organization}/endpointAttachments/{endpoint_attachment}`.
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/endpointAttachments/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'DELETE',
+      queryParams: _queryParams,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets the specified EndpointAttachment.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the Endpoint Attachment in the following
+  /// format:
+  /// `organizations/{organization}/endpointAttachments/{endpoint_attachment}`.
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/endpointAttachments/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1EndpointAttachment].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1EndpointAttachment> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleCloudApigeeV1EndpointAttachment.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists the EndpointAttachments in the specified Organization.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Name of the Organization for which to list Endpoint
+  /// Attachments in the format: `organizations/{organization}`.
+  /// Value must have pattern `^organizations/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. Maximum number of Endpoint Attachments to return.
+  /// If unspecified, at most 25 attachments will be returned.
+  ///
+  /// [pageToken] - Optional. Page token, returned from a previous
+  /// ListEndpointAttachments call, that you can use to retrieve the next page.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1ListEndpointAttachmentsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1ListEndpointAttachmentsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url =
+        'v1/' + core.Uri.encodeFull('$parent') + '/endpointAttachments';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleCloudApigeeV1ListEndpointAttachmentsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
 }
@@ -14376,6 +14564,11 @@ class GoogleCloudApigeeV1DebugSession {
   /// Optional.
   core.int? count;
 
+  /// The first transaction creation timestamp, recorded by UAP.
+  ///
+  /// Output only.
+  core.String? createTime;
+
   /// A conditional statement which is evaluated against the request message to
   /// determine if it should be traced.
   ///
@@ -14411,6 +14604,7 @@ class GoogleCloudApigeeV1DebugSession {
 
   GoogleCloudApigeeV1DebugSession({
     this.count,
+    this.createTime,
     this.filter,
     this.name,
     this.timeout,
@@ -14421,6 +14615,9 @@ class GoogleCloudApigeeV1DebugSession {
   GoogleCloudApigeeV1DebugSession.fromJson(core.Map _json)
       : this(
           count: _json.containsKey('count') ? _json['count'] as core.int : null,
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
           filter: _json.containsKey('filter')
               ? _json['filter'] as core.String
               : null,
@@ -14438,6 +14635,7 @@ class GoogleCloudApigeeV1DebugSession {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (count != null) 'count': count!,
+        if (createTime != null) 'createTime': createTime!,
         if (filter != null) 'filter': filter!,
         if (name != null) 'name': name!,
         if (timeout != null) 'timeout': timeout!,
@@ -15523,6 +15721,53 @@ class GoogleCloudApigeeV1DimensionMetric {
   core.Map<core.String, core.dynamic> toJson() => {
         if (metrics != null) 'metrics': metrics!,
         if (name != null) 'name': name!,
+      };
+}
+
+/// Apigee Endpoint Attachment.
+class GoogleCloudApigeeV1EndpointAttachment {
+  /// Host that can be used in either HTTP Target Endpoint directly, or as the
+  /// host in Target Server.
+  ///
+  /// Output only.
+  core.String? host;
+
+  /// Location of the endpoint attachment.
+  ///
+  /// Required.
+  core.String? location;
+
+  /// Name of the Endpoint Attachment in the following format:
+  /// `organizations/{organization}/endpointAttachments/{endpoint_attachment}`.
+  core.String? name;
+
+  /// Format: projects / * /regions / * /serviceAttachments / *
+  core.String? serviceAttachment;
+
+  GoogleCloudApigeeV1EndpointAttachment({
+    this.host,
+    this.location,
+    this.name,
+    this.serviceAttachment,
+  });
+
+  GoogleCloudApigeeV1EndpointAttachment.fromJson(core.Map _json)
+      : this(
+          host: _json.containsKey('host') ? _json['host'] as core.String : null,
+          location: _json.containsKey('location')
+              ? _json['location'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          serviceAttachment: _json.containsKey('serviceAttachment')
+              ? _json['serviceAttachment'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (host != null) 'host': host!,
+        if (location != null) 'location': location!,
+        if (name != null) 'name': name!,
+        if (serviceAttachment != null) 'serviceAttachment': serviceAttachment!,
       };
 }
 
@@ -17507,6 +17752,43 @@ class GoogleCloudApigeeV1ListDeveloperSubscriptionsResponse {
         if (developerSubscriptions != null)
           'developerSubscriptions': developerSubscriptions!,
         if (nextStartKey != null) 'nextStartKey': nextStartKey!,
+      };
+}
+
+/// Response for ListEndpointAttachments method.
+class GoogleCloudApigeeV1ListEndpointAttachmentsResponse {
+  /// Endpoint Attachments in the specified organization.
+  core.List<GoogleCloudApigeeV1EndpointAttachment>? endpointAttachments;
+
+  /// Page token that you can include in a ListEndpointAttachments request to
+  /// retrieve the next page.
+  ///
+  /// If omitted, no subsequent pages exist.
+  core.String? nextPageToken;
+
+  GoogleCloudApigeeV1ListEndpointAttachmentsResponse({
+    this.endpointAttachments,
+    this.nextPageToken,
+  });
+
+  GoogleCloudApigeeV1ListEndpointAttachmentsResponse.fromJson(core.Map _json)
+      : this(
+          endpointAttachments: _json.containsKey('endpointAttachments')
+              ? (_json['endpointAttachments'] as core.List)
+                  .map((value) =>
+                      GoogleCloudApigeeV1EndpointAttachment.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (endpointAttachments != null)
+          'endpointAttachments': endpointAttachments!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -20411,7 +20693,7 @@ class GoogleCloudApigeeV1Session {
   /// The debug session ID.
   core.String? id;
 
-  /// The first transaction creation timestamp in millisecond, recoreded by UAP.
+  /// The first transaction creation timestamp in millisecond, recorded by UAP.
   core.String? timestampMs;
 
   GoogleCloudApigeeV1Session({
@@ -21836,7 +22118,7 @@ class GoogleIamV1SetIamPolicyRequest {
 }
 
 /// Request message for `TestIamPermissions` method.
-typedef GoogleIamV1TestIamPermissionsRequest = $TestIamPermissionsRequest;
+typedef GoogleIamV1TestIamPermissionsRequest = $TestIamPermissionsRequest00;
 
 /// Response message for `TestIamPermissions` method.
 typedef GoogleIamV1TestIamPermissionsResponse = $PermissionsResponse;

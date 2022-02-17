@@ -74,8 +74,8 @@ class AssetsResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Name of the organization or project the assets belong
-  /// to. Format: "organizations/\[organization-number\]" (such as
+  /// [parent] - Required. Name of the organization, folder, or project the
+  /// assets belong to. Format: "organizations/\[organization-number\]" (such as
   /// "organizations/123"), "projects/\[project-id\]" (such as
   /// "projects/my-project-id"), "projects/\[project-number\]" (such as
   /// "projects/12345"), or "folders/\[folder-number\]" (such as
@@ -2180,10 +2180,10 @@ class CreateFeedRequest {
 /// The time of day and time zone are either specified elsewhere or are
 /// insignificant. The date is relative to the Gregorian Calendar. This can
 /// represent one of the following: * A full date, with non-zero year, month,
-/// and day values * A month and day value, with a zero year, such as an
-/// anniversary * A year on its own, with zero month and day values * A year and
-/// month value, with a zero day, such as a credit card expiration date Related
-/// types are google.type.TimeOfDay and `google.protobuf.Timestamp`.
+/// and day values * A month and day, with a zero year (e.g., an anniversary) *
+/// A year on its own, with a zero month and a zero day * A year and month, with
+/// a zero day (e.g., a credit card expiration date) Related types: *
+/// google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
 typedef Date = $Date;
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -2367,18 +2367,17 @@ class Feed {
   /// updates matching specified asset_names or asset_types are exported to the
   /// feed. Example:
   /// `//compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1`.
-  /// See
-  /// [Resource Names](https://cloud.google.com/apis/design/resource_names#full_resource_name)
-  /// for more info.
+  /// For a list of the full names for supported asset types, see \[Resource
+  /// name format\](/asset-inventory/docs/resource-name-format).
   core.List<core.String>? assetNames;
 
   /// A list of types of the assets to receive updates.
   ///
   /// You must specify either or both of asset_names and asset_types. Only asset
   /// updates matching specified asset_names or asset_types are exported to the
-  /// feed. Example: `"compute.googleapis.com/Disk"` See
-  /// [this topic](https://cloud.google.com/asset-inventory/docs/supported-asset-types)
-  /// for a list of all supported asset types.
+  /// feed. Example: `"compute.googleapis.com/Disk"` For a list of all supported
+  /// asset types, see \[Supported asset
+  /// types\](/asset-inventory/docs/supported-asset-types).
   core.List<core.String>? assetTypes;
 
   /// A condition which determines whether an asset update should be published.

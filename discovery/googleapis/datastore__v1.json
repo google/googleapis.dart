@@ -624,7 +624,7 @@
             }
         }
     },
-    "revision": "20220110",
+    "revision": "20220207",
     "rootUrl": "https://datastore.googleapis.com/",
     "schemas": {
         "AllocateIdsRequest": {
@@ -1267,12 +1267,14 @@
                     "enum": [
                         "CONCURRENCY_MODE_UNSPECIFIED",
                         "PESSIMISTIC",
-                        "OPTIMISTIC"
+                        "OPTIMISTIC",
+                        "OPTIMISTIC_WITH_ENTITY_GROUPS"
                     ],
                     "enumDescriptions": [
                         "Unspecified.",
                         "Pessimistic concurrency.",
-                        "Optimistic concurrency."
+                        "Optimistic concurrency.",
+                        "Optimistic concurrency with entity groups."
                     ],
                     "type": "string"
                 }
@@ -1305,12 +1307,14 @@
                     "enum": [
                         "CONCURRENCY_MODE_UNSPECIFIED",
                         "PESSIMISTIC",
-                        "OPTIMISTIC"
+                        "OPTIMISTIC",
+                        "OPTIMISTIC_WITH_ENTITY_GROUPS"
                     ],
                     "enumDescriptions": [
                         "Unspecified.",
                         "Pessimistic concurrency.",
-                        "Optimistic concurrency."
+                        "Optimistic concurrency.",
+                        "Optimistic concurrency with entity groups."
                     ],
                     "type": "string"
                 }

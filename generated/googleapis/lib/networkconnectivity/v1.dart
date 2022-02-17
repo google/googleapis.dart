@@ -1677,9 +1677,10 @@ typedef GoogleRpcStatus = $Status;
 
 /// A hub is a collection of spokes.
 ///
-/// A single hub can contain spokes from multiple regions. However, all of a
-/// hub's spokes must be associated with resources that reside in the same VPC
-/// network.
+/// A single hub can contain spokes from multiple regions. However, if any of a
+/// hub's spokes use the data transfer feature, the resources associated with
+/// those spokes must all reside in the same VPC network. Spokes that do not use
+/// data transfer can be associated with any VPC network in your project.
 class Hub {
   /// The time the hub was created.
   ///
@@ -1703,12 +1704,10 @@ class Hub {
   /// Immutable.
   core.String? name;
 
-  /// The VPC network associated with this hub's spokes.
+  /// The VPC networks associated with this hub's spokes.
   ///
-  /// All of the VPN tunnels, VLAN attachments, and router appliance instances
-  /// referenced by this hub's spokes must belong to this VPC network. This
-  /// field is read-only. Network Connectivity Center automatically populates it
-  /// based on the set of spokes attached to the hub.
+  /// This field is read-only. Network Connectivity Center automatically
+  /// populates it based on the set of spokes attached to the hub.
   core.List<RoutingVPC>? routingVpcs;
 
   /// The current lifecycle state of this hub.
@@ -1800,8 +1799,8 @@ class LinkedInterconnectAttachments {
   /// A value that controls whether site-to-site data transfer is enabled for
   /// these resources.
   ///
-  /// This field is set to false by default, but you must set it to true. Note
-  /// that data transfer is available only in supported locations.
+  /// Data transfer is available only in
+  /// [supported locations](https://cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/locations).
   core.bool? siteToSiteDataTransfer;
 
   /// The URIs of linked interconnect attachment resources
@@ -1833,8 +1832,9 @@ class LinkedInterconnectAttachments {
 
 /// A collection of router appliance instances.
 ///
-/// If you have multiple router appliance instances connected to the same site,
-/// they should all be attached to the same spoke.
+/// If you configure multiple router appliance instances to receive data from
+/// the same set of sites outside of Google Cloud, we recommend that you
+/// associate those instances with the same spoke.
 class LinkedRouterApplianceInstances {
   /// The list of router appliance instances.
   core.List<RouterApplianceInstance>? instances;
@@ -1842,8 +1842,8 @@ class LinkedRouterApplianceInstances {
   /// A value that controls whether site-to-site data transfer is enabled for
   /// these resources.
   ///
-  /// This field is set to false by default, but you must set it to true. Note
-  /// that data transfer is available only in supported locations.
+  /// Data transfer is available only in
+  /// [supported locations](https://cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/locations).
   core.bool? siteToSiteDataTransfer;
 
   LinkedRouterApplianceInstances({
@@ -1881,8 +1881,8 @@ class LinkedVpnTunnels {
   /// A value that controls whether site-to-site data transfer is enabled for
   /// these resources.
   ///
-  /// This field is set to false by default, but you must set it to true. Note
-  /// that data transfer is available only in supported locations.
+  /// Data transfer is available only in
+  /// [supported locations](https://cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/locations).
   core.bool? siteToSiteDataTransfer;
 
   /// The URIs of linked VPN tunnel resources.
@@ -2191,7 +2191,7 @@ class RouterApplianceInstance {
       };
 }
 
-/// RoutingVPC contains information about the VPC network that is associated
+/// RoutingVPC contains information about the VPC networks that are associated
 /// with a hub's spokes.
 class RoutingVPC {
   /// If true, indicates that this VPC network is currently associated with
@@ -2199,7 +2199,8 @@ class RoutingVPC {
   /// site_to_site_data_transfer field is set to true).
   ///
   /// If you create new spokes that use data transfer, they must be associated
-  /// with this VPC network.
+  /// with this VPC network. At most, one VPC network will have this field set
+  /// to true.
   ///
   /// Output only.
   core.bool? requiredForNewSiteToSiteDataTransferSpokes;
@@ -2409,7 +2410,7 @@ class Spoke {
 }
 
 /// Request message for `TestIamPermissions` method.
-typedef TestIamPermissionsRequest = $TestIamPermissionsRequest;
+typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;
 
 /// Response message for `TestIamPermissions` method.
 typedef TestIamPermissionsResponse = $PermissionsResponse;

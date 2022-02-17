@@ -1200,11 +1200,12 @@ class PropertiesResource {
   ///
   /// [filter] - Required. An expression for filtering the results of the
   /// request. Fields eligible for filtering are: `parent:`(The resource name of
-  /// the parent account) or `ancestor:`(The resource name of the parent
-  /// account) or `firebase_project:`(The id or number of the linked firebase
-  /// project). Some examples of filters: ``` | Filter | Description |
+  /// the parent account/property) or `ancestor:`(The resource name of the
+  /// parent account) or `firebase_project:`(The id or number of the linked
+  /// firebase project). Some examples of filters: ``` | Filter | Description |
   /// |-----------------------------|-------------------------------------------|
   /// | parent:accounts/123 | The account with account id: 123. | |
+  /// parent:properties/123 | The property with property id: 123. | |
   /// ancestor:accounts/123 | The account with account id: 123. | |
   /// firebase_project:project-id | The firebase project with id: project-id. |
   /// | firebase_project:123 | The firebase project with number: 123. | ```
@@ -2356,6 +2357,48 @@ class PropertiesDataStreamsResource {
       queryParams: _queryParams,
     );
     return GoogleAnalyticsAdminV1alphaDataStream.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns the Site Tag for the specified web stream.
+  ///
+  /// Site Tags are immutable singletons.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the site tag to lookup. Note that site tags
+  /// are singletons and do not have unique IDs. Format:
+  /// properties/{property_id}/dataStreams/{stream_id}/globalSiteTag Example:
+  /// "properties/123/dataStreams/456/globalSiteTag"
+  /// Value must have pattern
+  /// `^properties/\[^/\]+/dataStreams/\[^/\]+/globalSiteTag$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleAnalyticsAdminV1alphaGlobalSiteTag].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleAnalyticsAdminV1alphaGlobalSiteTag> getGlobalSiteTag(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1alpha/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleAnalyticsAdminV1alphaGlobalSiteTag.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
 
@@ -4318,48 +4361,6 @@ class PropertiesWebDataStreamsResource {
       queryParams: _queryParams,
     );
     return GoogleAnalyticsAdminV1alphaWebDataStream.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
-  }
-
-  /// Returns the Site Tag for the specified web stream.
-  ///
-  /// Site Tags are immutable singletons.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - Required. The name of the site tag to lookup. Note that site tags
-  /// are singletons and do not have unique IDs. Format:
-  /// properties/{property_id}/webDataStreams/{stream_id}/globalSiteTag Example:
-  /// "properties/123/webDataStreams/456/globalSiteTag"
-  /// Value must have pattern
-  /// `^properties/\[^/\]+/webDataStreams/\[^/\]+/globalSiteTag$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [GoogleAnalyticsAdminV1alphaGlobalSiteTag].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<GoogleAnalyticsAdminV1alphaGlobalSiteTag> getGlobalSiteTag(
-    core.String name, {
-    core.String? $fields,
-  }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final _url = 'v1alpha/' + core.Uri.encodeFull('$name');
-
-    final _response = await _requester.request(
-      _url,
-      'GET',
-      queryParams: _queryParams,
-    );
-    return GoogleAnalyticsAdminV1alphaGlobalSiteTag.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
 
@@ -6329,11 +6330,14 @@ class GoogleAnalyticsAdminV1alphaFirebaseLink {
 }
 
 /// Read-only resource with the tag for sending data from a website to a
-/// WebDataStream.
+/// DataStream.
+///
+/// Only present for web DataStream resources.
 class GoogleAnalyticsAdminV1alphaGlobalSiteTag {
   /// Resource name for this GlobalSiteTag resource.
   ///
-  /// Format: properties/{propertyId}/globalSiteTag
+  /// Format: properties/{property_id}/dataStreams/{stream_id}/globalSiteTag
+  /// Example: "properties/123/dataStreams/456/globalSiteTag"
   ///
   /// Output only.
   core.String? name;

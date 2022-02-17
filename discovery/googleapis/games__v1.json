@@ -1223,7 +1223,7 @@
             }
         }
     },
-    "revision": "20211213",
+    "revision": "20220210",
     "rootUrl": "https://games.googleapis.com/",
     "schemas": {
         "AchievementDefinition": {

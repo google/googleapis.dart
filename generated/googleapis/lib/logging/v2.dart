@@ -197,6 +197,58 @@ class BillingAccountsResource {
     return CmekSettings.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
+
+  /// Gets the Log Router settings for the given resource.Note: Settings for the
+  /// Log Router can be get for Google Cloud projects, folders, organizations
+  /// and billing accounts.
+  ///
+  /// Currently it can only be configured for organizations. Once configured for
+  /// an organization, it applies to all projects and folders in the Google
+  /// Cloud organization.See Enabling CMEK for Log Router
+  /// (https://cloud.google.com/logging/docs/routing/managed-encryption) for
+  /// more information.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource for which to retrieve settings.
+  /// "projects/\[PROJECT_ID\]/settings"
+  /// "organizations/\[ORGANIZATION_ID\]/settings"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/settings"
+  /// "folders/\[FOLDER_ID\]/settings" For
+  /// example:"organizations/12345/settings"Note: Settings for the Log Router
+  /// can be get for Google Cloud projects, folders, organizations and billing
+  /// accounts. Currently it can only be configured for organizations. Once
+  /// configured for an organization, it applies to all projects and folders in
+  /// the Google Cloud organization.
+  /// Value must have pattern `^billingAccounts/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Settings].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Settings> getSettings(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name') + '/settings';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return Settings.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class BillingAccountsBucketsResource {
@@ -2213,6 +2265,121 @@ class FoldersResource {
     );
     return CmekSettings.fromJson(
         _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets the Log Router settings for the given resource.Note: Settings for the
+  /// Log Router can be get for Google Cloud projects, folders, organizations
+  /// and billing accounts.
+  ///
+  /// Currently it can only be configured for organizations. Once configured for
+  /// an organization, it applies to all projects and folders in the Google
+  /// Cloud organization.See Enabling CMEK for Log Router
+  /// (https://cloud.google.com/logging/docs/routing/managed-encryption) for
+  /// more information.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource for which to retrieve settings.
+  /// "projects/\[PROJECT_ID\]/settings"
+  /// "organizations/\[ORGANIZATION_ID\]/settings"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/settings"
+  /// "folders/\[FOLDER_ID\]/settings" For
+  /// example:"organizations/12345/settings"Note: Settings for the Log Router
+  /// can be get for Google Cloud projects, folders, organizations and billing
+  /// accounts. Currently it can only be configured for organizations. Once
+  /// configured for an organization, it applies to all projects and folders in
+  /// the Google Cloud organization.
+  /// Value must have pattern `^folders/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Settings].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Settings> getSettings(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name') + '/settings';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return Settings.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates the Log Router settings for the given resource.Note: Settings for
+  /// the Log Router can currently only be configured for Google Cloud
+  /// organizations.
+  ///
+  /// Once configured, it applies to all projects and folders in the Google
+  /// Cloud organization.UpdateSettings will fail if 1) kms_key_name is invalid,
+  /// or 2) the associated service account does not have the required
+  /// roles/cloudkms.cryptoKeyEncrypterDecrypter role assigned for the key, or
+  /// 3) access to the key is disabled. 4) location_id is not supported by
+  /// Logging. 5) location_id violate OrgPolicy.See Enabling CMEK for Log Router
+  /// (https://cloud.google.com/logging/docs/routing/managed-encryption) for
+  /// more information.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name for the settings to update.
+  /// "organizations/\[ORGANIZATION_ID\]/settings" For
+  /// example:"organizations/12345/settings"Note: Settings for the Log Router
+  /// can currently only be configured for Google Cloud organizations. Once
+  /// configured, it applies to all projects and folders in the Google Cloud
+  /// organization.
+  /// Value must have pattern `^folders/\[^/\]+$`.
+  ///
+  /// [updateMask] - Optional. Field mask identifying which fields from settings
+  /// should be updated. A field will be overwritten if and only if it is in the
+  /// update mask. Output only fields cannot be updated.See FieldMask for more
+  /// information.For example: "updateMask=kmsKeyName"
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Settings].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Settings> updateSettings(
+    Settings request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name') + '/settings';
+
+    final _response = await _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Settings.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -4776,6 +4943,58 @@ class OrganizationsResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
+  /// Gets the Log Router settings for the given resource.Note: Settings for the
+  /// Log Router can be get for Google Cloud projects, folders, organizations
+  /// and billing accounts.
+  ///
+  /// Currently it can only be configured for organizations. Once configured for
+  /// an organization, it applies to all projects and folders in the Google
+  /// Cloud organization.See Enabling CMEK for Log Router
+  /// (https://cloud.google.com/logging/docs/routing/managed-encryption) for
+  /// more information.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource for which to retrieve settings.
+  /// "projects/\[PROJECT_ID\]/settings"
+  /// "organizations/\[ORGANIZATION_ID\]/settings"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/settings"
+  /// "folders/\[FOLDER_ID\]/settings" For
+  /// example:"organizations/12345/settings"Note: Settings for the Log Router
+  /// can be get for Google Cloud projects, folders, organizations and billing
+  /// accounts. Currently it can only be configured for organizations. Once
+  /// configured for an organization, it applies to all projects and folders in
+  /// the Google Cloud organization.
+  /// Value must have pattern `^organizations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Settings].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Settings> getSettings(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name') + '/settings';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return Settings.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
   /// Updates the Log Router CMEK settings for the given resource.Note: CMEK for
   /// the Log Router can currently only be configured for Google Cloud
   /// organizations.
@@ -4840,6 +5059,69 @@ class OrganizationsResource {
     );
     return CmekSettings.fromJson(
         _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates the Log Router settings for the given resource.Note: Settings for
+  /// the Log Router can currently only be configured for Google Cloud
+  /// organizations.
+  ///
+  /// Once configured, it applies to all projects and folders in the Google
+  /// Cloud organization.UpdateSettings will fail if 1) kms_key_name is invalid,
+  /// or 2) the associated service account does not have the required
+  /// roles/cloudkms.cryptoKeyEncrypterDecrypter role assigned for the key, or
+  /// 3) access to the key is disabled. 4) location_id is not supported by
+  /// Logging. 5) location_id violate OrgPolicy.See Enabling CMEK for Log Router
+  /// (https://cloud.google.com/logging/docs/routing/managed-encryption) for
+  /// more information.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name for the settings to update.
+  /// "organizations/\[ORGANIZATION_ID\]/settings" For
+  /// example:"organizations/12345/settings"Note: Settings for the Log Router
+  /// can currently only be configured for Google Cloud organizations. Once
+  /// configured, it applies to all projects and folders in the Google Cloud
+  /// organization.
+  /// Value must have pattern `^organizations/\[^/\]+$`.
+  ///
+  /// [updateMask] - Optional. Field mask identifying which fields from settings
+  /// should be updated. A field will be overwritten if and only if it is in the
+  /// update mask. Output only fields cannot be updated.See FieldMask for more
+  /// information.For example: "updateMask=kmsKeyName"
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Settings].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Settings> updateSettings(
+    Settings request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name') + '/settings';
+
+    final _response = await _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Settings.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -6426,6 +6708,58 @@ class ProjectsResource {
     );
     return CmekSettings.fromJson(
         _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets the Log Router settings for the given resource.Note: Settings for the
+  /// Log Router can be get for Google Cloud projects, folders, organizations
+  /// and billing accounts.
+  ///
+  /// Currently it can only be configured for organizations. Once configured for
+  /// an organization, it applies to all projects and folders in the Google
+  /// Cloud organization.See Enabling CMEK for Log Router
+  /// (https://cloud.google.com/logging/docs/routing/managed-encryption) for
+  /// more information.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource for which to retrieve settings.
+  /// "projects/\[PROJECT_ID\]/settings"
+  /// "organizations/\[ORGANIZATION_ID\]/settings"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/settings"
+  /// "folders/\[FOLDER_ID\]/settings" For
+  /// example:"organizations/12345/settings"Note: Settings for the Log Router
+  /// can be get for Google Cloud projects, folders, organizations and billing
+  /// accounts. Currently it can only be configured for organizations. Once
+  /// configured for an organization, it applies to all projects and folders in
+  /// the Google Cloud organization.
+  /// Value must have pattern `^projects/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Settings].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Settings> getSettings(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name') + '/settings';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return Settings.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -8494,6 +8828,58 @@ class V2Resource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
+  /// Gets the Log Router settings for the given resource.Note: Settings for the
+  /// Log Router can be get for Google Cloud projects, folders, organizations
+  /// and billing accounts.
+  ///
+  /// Currently it can only be configured for organizations. Once configured for
+  /// an organization, it applies to all projects and folders in the Google
+  /// Cloud organization.See Enabling CMEK for Log Router
+  /// (https://cloud.google.com/logging/docs/routing/managed-encryption) for
+  /// more information.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource for which to retrieve settings.
+  /// "projects/\[PROJECT_ID\]/settings"
+  /// "organizations/\[ORGANIZATION_ID\]/settings"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/settings"
+  /// "folders/\[FOLDER_ID\]/settings" For
+  /// example:"organizations/12345/settings"Note: Settings for the Log Router
+  /// can be get for Google Cloud projects, folders, organizations and billing
+  /// accounts. Currently it can only be configured for organizations. Once
+  /// configured for an organization, it applies to all projects and folders in
+  /// the Google Cloud organization.
+  /// Value must have pattern `^\[^/\]+/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Settings].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Settings> getSettings(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name') + '/settings';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return Settings.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
   /// Updates the Log Router CMEK settings for the given resource.Note: CMEK for
   /// the Log Router can currently only be configured for Google Cloud
   /// organizations.
@@ -8558,6 +8944,69 @@ class V2Resource {
     );
     return CmekSettings.fromJson(
         _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates the Log Router settings for the given resource.Note: Settings for
+  /// the Log Router can currently only be configured for Google Cloud
+  /// organizations.
+  ///
+  /// Once configured, it applies to all projects and folders in the Google
+  /// Cloud organization.UpdateSettings will fail if 1) kms_key_name is invalid,
+  /// or 2) the associated service account does not have the required
+  /// roles/cloudkms.cryptoKeyEncrypterDecrypter role assigned for the key, or
+  /// 3) access to the key is disabled. 4) location_id is not supported by
+  /// Logging. 5) location_id violate OrgPolicy.See Enabling CMEK for Log Router
+  /// (https://cloud.google.com/logging/docs/routing/managed-encryption) for
+  /// more information.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name for the settings to update.
+  /// "organizations/\[ORGANIZATION_ID\]/settings" For
+  /// example:"organizations/12345/settings"Note: Settings for the Log Router
+  /// can currently only be configured for Google Cloud organizations. Once
+  /// configured, it applies to all projects and folders in the Google Cloud
+  /// organization.
+  /// Value must have pattern `^\[^/\]+/\[^/\]+$`.
+  ///
+  /// [updateMask] - Optional. Field mask identifying which fields from settings
+  /// should be updated. A field will be overwritten if and only if it is in the
+  /// update mask. Output only fields cannot be updated.See FieldMask for more
+  /// information.For example: "updateMask=kmsKeyName"
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Settings].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Settings> updateSettings(
+    Settings request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name') + '/settings';
+
+    final _response = await _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Settings.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -9729,6 +10178,12 @@ class LogEntry {
   /// Optional.
   core.String? spanId;
 
+  /// Information indicating this LogEntry is part of a sequence of multiple log
+  /// entries split from a single LogEntry.
+  ///
+  /// Optional.
+  LogSplit? split;
+
   /// The log entry payload, represented as a Unicode string (UTF-8).
   core.String? textPayload;
 
@@ -9782,6 +10237,7 @@ class LogEntry {
     this.severity,
     this.sourceLocation,
     this.spanId,
+    this.split,
     this.textPayload,
     this.timestamp,
     this.trace,
@@ -9839,6 +10295,10 @@ class LogEntry {
           spanId: _json.containsKey('spanId')
               ? _json['spanId'] as core.String
               : null,
+          split: _json.containsKey('split')
+              ? LogSplit.fromJson(
+                  _json['split'] as core.Map<core.String, core.dynamic>)
+              : null,
           textPayload: _json.containsKey('textPayload')
               ? _json['textPayload'] as core.String
               : null,
@@ -9866,6 +10326,7 @@ class LogEntry {
         if (severity != null) 'severity': severity!,
         if (sourceLocation != null) 'sourceLocation': sourceLocation!,
         if (spanId != null) 'spanId': spanId!,
+        if (split != null) 'split': split!,
         if (textPayload != null) 'textPayload': textPayload!,
         if (timestamp != null) 'timestamp': timestamp!,
         if (trace != null) 'trace': trace!,
@@ -10470,6 +10931,49 @@ class LogSink {
       };
 }
 
+/// Additional information used to correlate multiple log entries.
+///
+/// Used when a single LogEntry would exceed the Google Cloud Logging size limit
+/// and is split across multiple log entries.
+class LogSplit {
+  /// The index of this LogEntry in the sequence of split log entries.
+  ///
+  /// Log entries are given |index| values 0, 1, ..., n-1 for a sequence of n
+  /// log entries.
+  core.int? index;
+
+  /// The total number of log entries that the original LogEntry was split into.
+  core.int? totalSplits;
+
+  /// A globally unique identifier for all log entries in a sequence of split
+  /// log entries.
+  ///
+  /// All log entries with the same |LogSplit.uid| are assumed to be part of the
+  /// same sequence of split log entries.
+  core.String? uid;
+
+  LogSplit({
+    this.index,
+    this.totalSplits,
+    this.uid,
+  });
+
+  LogSplit.fromJson(core.Map _json)
+      : this(
+          index: _json.containsKey('index') ? _json['index'] as core.int : null,
+          totalSplits: _json.containsKey('totalSplits')
+              ? _json['totalSplits'] as core.int
+              : null,
+          uid: _json.containsKey('uid') ? _json['uid'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (index != null) 'index': index!,
+        if (totalSplits != null) 'totalSplits': totalSplits!,
+        if (uid != null) 'uid': uid!,
+      };
+}
+
 /// Describes a view over log entries in a bucket.
 class LogView {
   /// The creation timestamp of the view.
@@ -10573,7 +11077,7 @@ class MetricDescriptor {
   /// are cleared for widespread use. By Alpha, all significant design issues
   /// are resolved and we are in the process of verifying functionality. Alpha
   /// customers need to apply for access, agree to applicable terms, and have
-  /// their projects allowlisted. Alpha releases don’t have to be feature
+  /// their projects allowlisted. Alpha releases don't have to be feature
   /// complete, no SLAs are provided, and there are no technical support
   /// obligations, but they will be far enough along that customers can actually
   /// use them in test environments or for limited-use tests -- just like they
@@ -10586,7 +11090,7 @@ class MetricDescriptor {
   /// - "GA" : GA features are open to all developers and are considered stable
   /// and fully qualified for production use.
   /// - "DEPRECATED" : Deprecated features are scheduled to be shut down and
-  /// removed. For more information, see the “Deprecation Policy” section of our
+  /// removed. For more information, see the "Deprecation Policy" section of our
   /// Terms of Service (https://cloud.google.com/terms/) and the Google Cloud
   /// Platform Subject to the Deprecation Policy
   /// (https://cloud.google.com/terms/deprecation) documentation.
@@ -10775,9 +11279,9 @@ typedef MetricDescriptorMetadata = $MetricDescriptorMetadata;
 /// identifies the actual resource and its attributes according to the schema.
 /// For example, a particular Compute Engine VM instance could be represented by
 /// the following object, because the MonitoredResourceDescriptor for
-/// "gce_instance" has labels "instance_id" and "zone": { "type":
-/// "gce_instance", "labels": { "instance_id": "12345678901234", "zone":
-/// "us-central1-a" }}
+/// "gce_instance" has labels "project_id", "instance_id" and "zone": { "type":
+/// "gce_instance", "labels": { "project_id": "my-project", "instance_id":
+/// "12345678901234", "zone": "us-central1-a" }}
 class MonitoredResource {
   /// Values for all of the labels listed in the associated monitored resource
   /// descriptor.
@@ -10874,7 +11378,7 @@ class MonitoredResourceDescriptor {
   /// are cleared for widespread use. By Alpha, all significant design issues
   /// are resolved and we are in the process of verifying functionality. Alpha
   /// customers need to apply for access, agree to applicable terms, and have
-  /// their projects allowlisted. Alpha releases don’t have to be feature
+  /// their projects allowlisted. Alpha releases don't have to be feature
   /// complete, no SLAs are provided, and there are no technical support
   /// obligations, but they will be far enough along that customers can actually
   /// use them in test environments or for limited-use tests -- just like they
@@ -10887,7 +11391,7 @@ class MonitoredResourceDescriptor {
   /// - "GA" : GA features are open to all developers and are considered stable
   /// and fully qualified for production use.
   /// - "DEPRECATED" : Deprecated features are scheduled to be shut down and
-  /// removed. For more information, see the “Deprecation Policy” section of our
+  /// removed. For more information, see the "Deprecation Policy" section of our
   /// Terms of Service (https://cloud.google.com/terms/) and the Google Cloud
   /// Platform Subject to the Deprecation Policy
   /// (https://cloud.google.com/terms/deprecation) documentation.
@@ -11036,6 +11540,58 @@ class Operation {
         if (metadata != null) 'metadata': metadata!,
         if (name != null) 'name': name!,
         if (response != null) 'response': response!,
+      };
+}
+
+/// Describes the settings associated with a project, folder, organization,
+/// billing account, or flexible resource.
+class Settings {
+  /// If set to true, the _Default sink in newly created projects and folders
+  /// will created in a disabled state.
+  ///
+  /// This can be used to automatically disable log ingestion if there is
+  /// already an aggregated sink configured in the hierarchy. The _Default sink
+  /// can be re-enabled manually if needed.
+  ///
+  /// Optional.
+  core.bool? disableDefaultSink;
+
+  /// The resource name of the settings.
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// The Cloud region that will be used for _Default and _Required log buckets
+  /// for newly created projects and folders.
+  ///
+  /// For example europe-west1. This setting does not affect the location of
+  /// custom log buckets.
+  ///
+  /// Optional.
+  core.String? storageLocation;
+
+  Settings({
+    this.disableDefaultSink,
+    this.name,
+    this.storageLocation,
+  });
+
+  Settings.fromJson(core.Map _json)
+      : this(
+          disableDefaultSink: _json.containsKey('disableDefaultSink')
+              ? _json['disableDefaultSink'] as core.bool
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          storageLocation: _json.containsKey('storageLocation')
+              ? _json['storageLocation'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (disableDefaultSink != null)
+          'disableDefaultSink': disableDefaultSink!,
+        if (name != null) 'name': name!,
+        if (storageLocation != null) 'storageLocation': storageLocation!,
       };
 }
 

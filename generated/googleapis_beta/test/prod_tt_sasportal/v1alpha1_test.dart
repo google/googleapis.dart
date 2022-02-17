@@ -498,6 +498,8 @@ api.SasPortalDeviceMetadata buildSasPortalDeviceMetadata() {
     o.antennaModel = 'foo';
     o.commonChannelGroup = 'foo';
     o.interferenceCoordinationGroup = 'foo';
+    o.nrqzValidated = true;
+    o.nrqzValidation = buildSasPortalNrqzValidation();
   }
   buildCounterSasPortalDeviceMetadata--;
   return o;
@@ -518,6 +520,8 @@ void checkSasPortalDeviceMetadata(api.SasPortalDeviceMetadata o) {
       o.interferenceCoordinationGroup!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.nrqzValidated!, unittest.isTrue);
+    checkSasPortalNrqzValidation(o.nrqzValidation!);
   }
   buildCounterSasPortalDeviceMetadata--;
 }
@@ -1022,6 +1026,43 @@ void checkSasPortalNode(api.SasPortalNode o) {
     checkUnnamed14(o.sasUserIds!);
   }
   buildCounterSasPortalNode--;
+}
+
+core.int buildCounterSasPortalNrqzValidation = 0;
+api.SasPortalNrqzValidation buildSasPortalNrqzValidation() {
+  final o = api.SasPortalNrqzValidation();
+  buildCounterSasPortalNrqzValidation++;
+  if (buildCounterSasPortalNrqzValidation < 3) {
+    o.caseId = 'foo';
+    o.cpiId = 'foo';
+    o.latitude = 42.0;
+    o.longitude = 42.0;
+  }
+  buildCounterSasPortalNrqzValidation--;
+  return o;
+}
+
+void checkSasPortalNrqzValidation(api.SasPortalNrqzValidation o) {
+  buildCounterSasPortalNrqzValidation++;
+  if (buildCounterSasPortalNrqzValidation < 3) {
+    unittest.expect(
+      o.caseId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.cpiId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.latitude!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.longitude!,
+      unittest.equals(42.0),
+    );
+  }
+  buildCounterSasPortalNrqzValidation--;
 }
 
 core.Map<core.String, core.Object?> buildUnnamed15() => {
@@ -1725,6 +1766,16 @@ void main() {
       final od = api.SasPortalNode.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkSasPortalNode(od);
+    });
+  });
+
+  unittest.group('obj-schema-SasPortalNrqzValidation', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSasPortalNrqzValidation();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SasPortalNrqzValidation.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkSasPortalNrqzValidation(od);
     });
   });
 

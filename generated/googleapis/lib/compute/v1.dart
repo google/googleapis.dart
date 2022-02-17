@@ -14557,6 +14557,71 @@ class InstancesResource {
     return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
+  /// Resumes an instance that was suspended using the instances().suspend
+  /// method.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [zone] - The name of the zone for this request.
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
+  ///
+  /// [instance] - Name of the instance resource to resume.
+  /// Value must have pattern
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed. For example,
+  /// consider a situation where you make an initial request and the request
+  /// times out. If you make the request again with the same request ID, the
+  /// server can check if original operation with the same request ID was
+  /// received, and if so, will ignore the second request. This prevents clients
+  /// from accidentally creating duplicate commitments. The request ID must be a
+  /// valid UUID with the exception that zero UUID is not supported (
+  /// 00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> resume(
+    core.String project,
+    core.String zone,
+    core.String instance, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'projects/' +
+        commons.escapeVariable('$project') +
+        '/zones/' +
+        commons.escapeVariable('$zone') +
+        '/instances/' +
+        commons.escapeVariable('$instance') +
+        '/resume';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      queryParams: _queryParams,
+    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
   /// Sends diagnostic interrupt to the instance.
   ///
   /// Request parameters:
@@ -15166,7 +15231,8 @@ class InstancesResource {
   ///
   /// You can only call this method on a stopped instance, that is, a VM
   /// instance that is in a `TERMINATED` state. See Instance Life Cycle for more
-  /// information on the possible instance states.
+  /// information on the possible instance states. For more information about
+  /// setting scheduling options for a VM, see Set VM availability policies.
   ///
   /// [request] - The metadata request object.
   ///
@@ -15449,7 +15515,9 @@ class InstancesResource {
     return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Simulates a maintenance event on the instance.
+  /// Simulates a host maintenance event on a VM.
+  ///
+  /// For more information, see Simulate a host maintenance event.
   ///
   /// Request parameters:
   ///
@@ -15698,6 +15766,77 @@ class InstancesResource {
         '/instances/' +
         commons.escapeVariable('$instance') +
         '/stop';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      queryParams: _queryParams,
+    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// This method suspends a running instance, saving its state to persistent
+  /// storage, and allows you to resume the instance at a later time.
+  ///
+  /// Suspended instances have no compute costs (cores or RAM), and incur only
+  /// storage charges for the saved VM memory and localSSD data. Any charged
+  /// resources the virtual machine was using, such as persistent disks and
+  /// static IP addresses, will continue to be charged while the instance is
+  /// suspended. For more information, see Suspending and resuming an instance.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [zone] - The name of the zone for this request.
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
+  ///
+  /// [instance] - Name of the instance resource to suspend.
+  /// Value must have pattern
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed. For example,
+  /// consider a situation where you make an initial request and the request
+  /// times out. If you make the request again with the same request ID, the
+  /// server can check if original operation with the same request ID was
+  /// received, and if so, will ignore the second request. This prevents clients
+  /// from accidentally creating duplicate commitments. The request ID must be a
+  /// valid UUID with the exception that zero UUID is not supported (
+  /// 00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> suspend(
+    core.String project,
+    core.String zone,
+    core.String instance, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'projects/' +
+        commons.escapeVariable('$project') +
+        '/zones/' +
+        commons.escapeVariable('$zone') +
+        '/instances/' +
+        commons.escapeVariable('$instance') +
+        '/suspend';
 
     final _response = await _requester.request(
       _url,
@@ -47840,12 +47979,10 @@ class BackendService {
   /// Output only.
   core.String? securityPolicy;
 
-  /// This field specifies the security policy that applies to this backend
+  /// This field specifies the security settings that apply to this backend
   /// service.
   ///
-  /// This field is applicable to either: - A regional backend service with the
-  /// service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme
-  /// set to INTERNAL_MANAGED. - A global backend service with the
+  /// This field is applicable to a global backend service with the
   /// load_balancing_scheme set to INTERNAL_SELF_MANAGED.
   SecuritySettings? securitySettings;
 
@@ -90478,7 +90615,7 @@ class Scheduling {
   ///
   /// For standard instances, the default behavior is MIGRATE. For preemptible
   /// instances, the default and only possible behavior is TERMINATE. For more
-  /// information, see Setting Instance Scheduling Options.
+  /// information, see Set VM availability policies.
   /// Possible string values are:
   /// - "MIGRATE" : *\[Default\]* Allows Compute Engine to automatically migrate
   /// instances out of the way of maintenance events.

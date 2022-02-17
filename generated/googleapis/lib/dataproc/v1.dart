@@ -4520,6 +4520,11 @@ class ClusterConfig {
   /// Optional.
   core.String? configBucket;
 
+  /// The configuration(s) for a dataproc metric(s).
+  ///
+  /// Optional.
+  DataprocMetricConfig? dataprocMetricConfig;
+
   /// Encryption settings for the cluster.
   ///
   /// Optional.
@@ -4613,6 +4618,7 @@ class ClusterConfig {
   ClusterConfig({
     this.autoscalingConfig,
     this.configBucket,
+    this.dataprocMetricConfig,
     this.encryptionConfig,
     this.endpointConfig,
     this.gceClusterConfig,
@@ -4636,6 +4642,10 @@ class ClusterConfig {
               : null,
           configBucket: _json.containsKey('configBucket')
               ? _json['configBucket'] as core.String
+              : null,
+          dataprocMetricConfig: _json.containsKey('dataprocMetricConfig')
+              ? DataprocMetricConfig.fromJson(_json['dataprocMetricConfig']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           encryptionConfig: _json.containsKey('encryptionConfig')
               ? EncryptionConfig.fromJson(_json['encryptionConfig']
@@ -4695,6 +4705,8 @@ class ClusterConfig {
   core.Map<core.String, core.dynamic> toJson() => {
         if (autoscalingConfig != null) 'autoscalingConfig': autoscalingConfig!,
         if (configBucket != null) 'configBucket': configBucket!,
+        if (dataprocMetricConfig != null)
+          'dataprocMetricConfig': dataprocMetricConfig!,
         if (encryptionConfig != null) 'encryptionConfig': encryptionConfig!,
         if (endpointConfig != null) 'endpointConfig': endpointConfig!,
         if (gceClusterConfig != null) 'gceClusterConfig': gceClusterConfig!,
@@ -4814,7 +4826,9 @@ class ClusterStatus {
   /// - "CREATING" : The cluster is being created and set up. It is not ready
   /// for use.
   /// - "RUNNING" : The cluster is currently running and healthy. It is ready
-  /// for use.
+  /// for use.Note: The cluster state changes from "creating" to "running"
+  /// status after the master node(s), first two primary worker nodes (and the
+  /// last primary worker node if primary workers \> 2) are running.
   /// - "ERROR" : The cluster encountered an error. It is not ready for use.
   /// - "ERROR_DUE_TO_UPDATE" : The cluster has encountered an error while being
   /// updated. Jobs can be submitted to the cluster, but the cluster cannot be
@@ -4901,6 +4915,32 @@ class ConfidentialInstanceConfig {
       };
 }
 
+/// Contains dataproc metric config.
+class DataprocMetricConfig {
+  /// Metrics to be enabled.
+  ///
+  /// Required.
+  core.List<Metric>? metrics;
+
+  DataprocMetricConfig({
+    this.metrics,
+  });
+
+  DataprocMetricConfig.fromJson(core.Map _json)
+      : this(
+          metrics: _json.containsKey('metrics')
+              ? (_json['metrics'] as core.List)
+                  .map((value) => Metric.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (metrics != null) 'metrics': metrics!,
+      };
+}
+
 /// A request to collect cluster diagnostic information.
 typedef DiagnoseClusterRequest = $Empty;
 
@@ -4924,7 +4964,7 @@ class DiskConfig {
   /// Interface type of local SSDs (default is "scsi").
   ///
   /// Valid values: "scsi" (Small Computer System Interface), "nvme"
-  /// (Non-Volatile Memory Express). See SSD Interface types
+  /// (Non-Volatile Memory Express). See local SSD performance
   /// (https://cloud.google.com/compute/docs/disks/local-ssd#performance).
   ///
   /// Optional.
@@ -7228,6 +7268,53 @@ class MetastoreConfig {
       };
 }
 
+/// Metric source to enable along with any optional metrics for this source that
+/// override the dataproc defaults
+class Metric {
+  /// Optional Metrics to override the dataproc default metrics configured for
+  /// the metric source
+  ///
+  /// Optional.
+  core.List<core.String>? metricOverrides;
+
+  /// MetricSource that should be enabled
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "METRIC_SOURCE_UNSPECIFIED" : Required unspecified metric source
+  /// - "MONITORING_AGENT_DEFAULTS" : all default monitoring agent metrics that
+  /// are published with prefix "agent.googleapis.com" when we enable a
+  /// monitoring agent in Compute Engine
+  /// - "HDFS" : Hdfs metric source
+  /// - "SPARK" : Spark metric source
+  /// - "YARN" : Yarn metric source
+  /// - "SPARK_HISTORY_SERVER" : Spark history server metric source
+  /// - "HIVESERVER2" : hiveserver2 metric source
+  core.String? metricSource;
+
+  Metric({
+    this.metricOverrides,
+    this.metricSource,
+  });
+
+  Metric.fromJson(core.Map _json)
+      : this(
+          metricOverrides: _json.containsKey('metricOverrides')
+              ? (_json['metricOverrides'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          metricSource: _json.containsKey('metricSource')
+              ? _json['metricSource'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (metricOverrides != null) 'metricOverrides': metricOverrides!,
+        if (metricSource != null) 'metricSource': metricSource!,
+      };
+}
+
 /// A full, namespace-isolated deployment target for an existing GKE cluster.
 class NamespacedGkeDeploymentTarget {
   /// A namespace within the GKE cluster to deploy into.
@@ -8616,8 +8703,8 @@ class SoftwareConfig {
       };
 }
 
-/// A configuration for running an Apache Spark (http://spark.apache.org/) batch
-/// workload.
+/// A configuration for running an Apache Spark (https://spark.apache.org/)
+/// batch workload.
 class SparkBatch {
   /// HCFS URIs of archives to be extracted into the working directory of each
   /// executor.
@@ -8734,7 +8821,7 @@ class SparkHistoryServerConfig {
       };
 }
 
-/// A Dataproc job for running Apache Spark (http://spark.apache.org/)
+/// A Dataproc job for running Apache Spark (https://spark.apache.org/)
 /// applications on YARN.
 class SparkJob {
   /// HCFS URIs of archives to be extracted into the working directory of each
@@ -9027,7 +9114,7 @@ class SparkRJob {
       };
 }
 
-/// A configuration for running Apache Spark SQL (http://spark.apache.org/sql/)
+/// A configuration for running Apache Spark SQL (https://spark.apache.org/sql/)
 /// queries as a batch workload.
 class SparkSqlBatch {
   /// HCFS URIs of jar files to be added to the Spark CLASSPATH.
@@ -9080,7 +9167,7 @@ class SparkSqlBatch {
       };
 }
 
-/// A Dataproc job for running Apache Spark SQL (http://spark.apache.org/sql/)
+/// A Dataproc job for running Apache Spark SQL (https://spark.apache.org/sql/)
 /// queries.
 class SparkSqlJob {
   /// HCFS URIs of jar files to be added to the Spark CLASSPATH.
@@ -9547,54 +9634,10 @@ class TemplateParameter {
 }
 
 /// Request message for TestIamPermissions method.
-class TestIamPermissionsRequest {
-  /// The set of permissions to check for the resource.
-  ///
-  /// Permissions with wildcards (such as '*' or 'storage.*') are not allowed.
-  /// For more information see IAM Overview
-  /// (https://cloud.google.com/iam/docs/overview#permissions).
-  core.List<core.String>? permissions;
-
-  TestIamPermissionsRequest({
-    this.permissions,
-  });
-
-  TestIamPermissionsRequest.fromJson(core.Map _json)
-      : this(
-          permissions: _json.containsKey('permissions')
-              ? (_json['permissions'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (permissions != null) 'permissions': permissions!,
-      };
-}
+typedef TestIamPermissionsRequest = $TestIamPermissionsRequest01;
 
 /// Response message for TestIamPermissions method.
-class TestIamPermissionsResponse {
-  /// A subset of TestPermissionsRequest.permissions that the caller is allowed.
-  core.List<core.String>? permissions;
-
-  TestIamPermissionsResponse({
-    this.permissions,
-  });
-
-  TestIamPermissionsResponse.fromJson(core.Map _json)
-      : this(
-          permissions: _json.containsKey('permissions')
-              ? (_json['permissions'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (permissions != null) 'permissions': permissions!,
-      };
-}
+typedef TestIamPermissionsResponse = $TestIamPermissionsResponse;
 
 /// Validation based on a list of allowed values.
 class ValueValidation {

@@ -3694,6 +3694,10 @@ class Quota {
   /// Maximum allowed number of networks per policy.
   core.int? networksPerPolicy;
 
+  /// Maximum allowed number of consumer peering zones per target network owned
+  /// by this producer project
+  core.int? peeringZonesPerTargetNetwork;
+
   /// Maximum allowed number of policies per project.
   core.int? policies;
 
@@ -3732,6 +3736,7 @@ class Quota {
     this.managedZonesPerNetwork,
     this.networksPerManagedZone,
     this.networksPerPolicy,
+    this.peeringZonesPerTargetNetwork,
     this.policies,
     this.resourceRecordsPerRrset,
     this.rrsetAdditionsPerChange,
@@ -3764,6 +3769,10 @@ class Quota {
           networksPerPolicy: _json.containsKey('networksPerPolicy')
               ? _json['networksPerPolicy'] as core.int
               : null,
+          peeringZonesPerTargetNetwork:
+              _json.containsKey('peeringZonesPerTargetNetwork')
+                  ? _json['peeringZonesPerTargetNetwork'] as core.int
+                  : null,
           policies: _json.containsKey('policies')
               ? _json['policies'] as core.int
               : null,
@@ -3811,6 +3820,8 @@ class Quota {
         if (networksPerManagedZone != null)
           'networksPerManagedZone': networksPerManagedZone!,
         if (networksPerPolicy != null) 'networksPerPolicy': networksPerPolicy!,
+        if (peeringZonesPerTargetNetwork != null)
+          'peeringZonesPerTargetNetwork': peeringZonesPerTargetNetwork!,
         if (policies != null) 'policies': policies!,
         if (resourceRecordsPerRrset != null)
           'resourceRecordsPerRrset': resourceRecordsPerRrset!,

@@ -1810,8 +1810,7 @@ class ProjectsLocationsTagTemplatesResource {
   /// are overwritten. If such fields are non-required and omitted in the
   /// request body, their values are emptied. Note: Updating the
   /// `is_publicly_readable` field may require up to 12 hours to take effect in
-  /// search results. Additionally, it also requires the
-  /// `tagTemplates.getIamPolicy` and `tagTemplates.setIamPolicy` permissions.
+  /// search results.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3639,9 +3638,19 @@ class GoogleCloudDatacatalogV1DataSource {
   /// - "BIGQUERY" : BigQuery service.
   core.String? service;
 
+  /// Data Catalog entry name, if applicable.
+  ///
+  /// Output only.
+  core.String? sourceEntry;
+
+  /// Detailed properties of the underlying storage.
+  GoogleCloudDatacatalogV1StorageProperties? storageProperties;
+
   GoogleCloudDatacatalogV1DataSource({
     this.resource,
     this.service,
+    this.sourceEntry,
+    this.storageProperties,
   });
 
   GoogleCloudDatacatalogV1DataSource.fromJson(core.Map _json)
@@ -3652,11 +3661,21 @@ class GoogleCloudDatacatalogV1DataSource {
           service: _json.containsKey('service')
               ? _json['service'] as core.String
               : null,
+          sourceEntry: _json.containsKey('sourceEntry')
+              ? _json['sourceEntry'] as core.String
+              : null,
+          storageProperties: _json.containsKey('storageProperties')
+              ? GoogleCloudDatacatalogV1StorageProperties.fromJson(
+                  _json['storageProperties']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (resource != null) 'resource': resource!,
         if (service != null) 'service': service!,
+        if (sourceEntry != null) 'sourceEntry': sourceEntry!,
+        if (storageProperties != null) 'storageProperties': storageProperties!,
       };
 }
 
@@ -3690,6 +3709,10 @@ class GoogleCloudDatacatalogV1DataSourceConnectionSpec {
 ///
 /// Valid only for entries with the `TABLE` type.
 class GoogleCloudDatacatalogV1DatabaseTableSpec {
+  /// Fields specific to a Dataplex table and present only in the Dataplex table
+  /// entries.
+  GoogleCloudDatacatalogV1DataplexTableSpec? dataplexTable;
+
   /// Type of this table.
   /// Possible string values are:
   /// - "TABLE_TYPE_UNSPECIFIED" : Default unknown table type.
@@ -3698,16 +3721,198 @@ class GoogleCloudDatacatalogV1DatabaseTableSpec {
   core.String? type;
 
   GoogleCloudDatacatalogV1DatabaseTableSpec({
+    this.dataplexTable,
     this.type,
   });
 
   GoogleCloudDatacatalogV1DatabaseTableSpec.fromJson(core.Map _json)
       : this(
+          dataplexTable: _json.containsKey('dataplexTable')
+              ? GoogleCloudDatacatalogV1DataplexTableSpec.fromJson(
+                  _json['dataplexTable'] as core.Map<core.String, core.dynamic>)
+              : null,
           type: _json.containsKey('type') ? _json['type'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (dataplexTable != null) 'dataplexTable': dataplexTable!,
         if (type != null) 'type': type!,
+      };
+}
+
+/// External table registered by Dataplex.
+///
+/// Dataplex publishes data discovered from an asset into multiple other systems
+/// (BigQuery, DPMS) in form of tables. We call them "external tables". External
+/// tables are also synced into the Data Catalog. This message contains pointers
+/// to those external tables (fully qualified name, resource name et cetera)
+/// within the Data Catalog.
+class GoogleCloudDatacatalogV1DataplexExternalTable {
+  /// Name of the Data Catalog entry representing the external table.
+  core.String? dataCatalogEntry;
+
+  /// Fully qualified name (FQN) of the external table.
+  core.String? fullyQualifiedName;
+
+  /// Google Cloud resource name of the external table.
+  core.String? googleCloudResource;
+
+  /// Service in which the external table is registered.
+  /// Possible string values are:
+  /// - "INTEGRATED_SYSTEM_UNSPECIFIED" : Default unknown system.
+  /// - "BIGQUERY" : BigQuery.
+  /// - "CLOUD_PUBSUB" : Cloud Pub/Sub.
+  /// - "DATAPROC_METASTORE" : Dataproc Metastore.
+  /// - "DATAPLEX" : Dataplex.
+  core.String? system;
+
+  GoogleCloudDatacatalogV1DataplexExternalTable({
+    this.dataCatalogEntry,
+    this.fullyQualifiedName,
+    this.googleCloudResource,
+    this.system,
+  });
+
+  GoogleCloudDatacatalogV1DataplexExternalTable.fromJson(core.Map _json)
+      : this(
+          dataCatalogEntry: _json.containsKey('dataCatalogEntry')
+              ? _json['dataCatalogEntry'] as core.String
+              : null,
+          fullyQualifiedName: _json.containsKey('fullyQualifiedName')
+              ? _json['fullyQualifiedName'] as core.String
+              : null,
+          googleCloudResource: _json.containsKey('googleCloudResource')
+              ? _json['googleCloudResource'] as core.String
+              : null,
+          system: _json.containsKey('system')
+              ? _json['system'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dataCatalogEntry != null) 'dataCatalogEntry': dataCatalogEntry!,
+        if (fullyQualifiedName != null)
+          'fullyQualifiedName': fullyQualifiedName!,
+        if (googleCloudResource != null)
+          'googleCloudResource': googleCloudResource!,
+        if (system != null) 'system': system!,
+      };
+}
+
+/// Entry specyfication for a Dataplex fileset.
+class GoogleCloudDatacatalogV1DataplexFilesetSpec {
+  /// Common Dataplex fields.
+  GoogleCloudDatacatalogV1DataplexSpec? dataplexSpec;
+
+  GoogleCloudDatacatalogV1DataplexFilesetSpec({
+    this.dataplexSpec,
+  });
+
+  GoogleCloudDatacatalogV1DataplexFilesetSpec.fromJson(core.Map _json)
+      : this(
+          dataplexSpec: _json.containsKey('dataplexSpec')
+              ? GoogleCloudDatacatalogV1DataplexSpec.fromJson(
+                  _json['dataplexSpec'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dataplexSpec != null) 'dataplexSpec': dataplexSpec!,
+      };
+}
+
+/// Common Dataplex fields.
+class GoogleCloudDatacatalogV1DataplexSpec {
+  /// Fully qualified resource name of an asset in Dataplex, to which the
+  /// underlying data source (Cloud Storage bucket or BigQuery dataset) of the
+  /// entity is attached.
+  core.String? asset;
+
+  /// Compression format of the data, e.g., zip, gzip etc.
+  core.String? compressionFormat;
+
+  /// Format of the data.
+  GoogleCloudDatacatalogV1PhysicalSchema? dataFormat;
+
+  /// Project ID of the underlying Cloud Storage or BigQuery data.
+  ///
+  /// Note that this may not be the same project as the correspondingly Dataplex
+  /// lake / zone / asset.
+  core.String? projectId;
+
+  GoogleCloudDatacatalogV1DataplexSpec({
+    this.asset,
+    this.compressionFormat,
+    this.dataFormat,
+    this.projectId,
+  });
+
+  GoogleCloudDatacatalogV1DataplexSpec.fromJson(core.Map _json)
+      : this(
+          asset:
+              _json.containsKey('asset') ? _json['asset'] as core.String : null,
+          compressionFormat: _json.containsKey('compressionFormat')
+              ? _json['compressionFormat'] as core.String
+              : null,
+          dataFormat: _json.containsKey('dataFormat')
+              ? GoogleCloudDatacatalogV1PhysicalSchema.fromJson(
+                  _json['dataFormat'] as core.Map<core.String, core.dynamic>)
+              : null,
+          projectId: _json.containsKey('projectId')
+              ? _json['projectId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (asset != null) 'asset': asset!,
+        if (compressionFormat != null) 'compressionFormat': compressionFormat!,
+        if (dataFormat != null) 'dataFormat': dataFormat!,
+        if (projectId != null) 'projectId': projectId!,
+      };
+}
+
+/// Entry specification for a Dataplex table.
+class GoogleCloudDatacatalogV1DataplexTableSpec {
+  /// Common Dataplex fields.
+  GoogleCloudDatacatalogV1DataplexSpec? dataplexSpec;
+
+  /// List of external tables registered by Dataplex in other systems based on
+  /// the same underlying data.
+  ///
+  /// External tables allow to query this data in those systems.
+  core.List<GoogleCloudDatacatalogV1DataplexExternalTable>? externalTables;
+
+  /// Indicates if the table schema is managed by the user or not.
+  core.bool? userManaged;
+
+  GoogleCloudDatacatalogV1DataplexTableSpec({
+    this.dataplexSpec,
+    this.externalTables,
+    this.userManaged,
+  });
+
+  GoogleCloudDatacatalogV1DataplexTableSpec.fromJson(core.Map _json)
+      : this(
+          dataplexSpec: _json.containsKey('dataplexSpec')
+              ? GoogleCloudDatacatalogV1DataplexSpec.fromJson(
+                  _json['dataplexSpec'] as core.Map<core.String, core.dynamic>)
+              : null,
+          externalTables: _json.containsKey('externalTables')
+              ? (_json['externalTables'] as core.List)
+                  .map((value) =>
+                      GoogleCloudDatacatalogV1DataplexExternalTable.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          userManaged: _json.containsKey('userManaged')
+              ? _json['userManaged'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dataplexSpec != null) 'dataplexSpec': dataplexSpec!,
+        if (externalTables != null) 'externalTables': externalTables!,
+        if (userManaged != null) 'userManaged': userManaged!,
       };
 }
 
@@ -3733,6 +3938,8 @@ class GoogleCloudDatacatalogV1Entry {
   GoogleCloudDatacatalogV1BigQueryTableSpec? bigqueryTableSpec;
 
   /// Business Context of the entry.
+  ///
+  /// Not supported for BigQuery datasets
   GoogleCloudDatacatalogV1BusinessContext? businessContext;
 
   /// Physical location of the entry.
@@ -3767,6 +3974,11 @@ class GoogleCloudDatacatalogV1Entry {
   /// string.
   core.String? displayName;
 
+  /// Specification that applies to a fileset resource.
+  ///
+  /// Valid only for entries with the `FILESET` type.
+  GoogleCloudDatacatalogV1FilesetSpec? filesetSpec;
+
   /// Fully qualified name (FQN) of the resource.
   ///
   /// Set automatically for entries representing resources from synced systems.
@@ -3794,6 +4006,7 @@ class GoogleCloudDatacatalogV1Entry {
   /// - "BIGQUERY" : BigQuery.
   /// - "CLOUD_PUBSUB" : Cloud Pub/Sub.
   /// - "DATAPROC_METASTORE" : Dataproc Metastore.
+  /// - "DATAPLEX" : Dataplex.
   core.String? integratedSystem;
 
   /// Cloud labels attached to the entry.
@@ -3870,6 +4083,8 @@ class GoogleCloudDatacatalogV1Entry {
   /// - "DATA_SOURCE_CONNECTION" : Output only. Connection to a data source. For
   /// example, a BigQuery connection.
   /// - "ROUTINE" : Output only. Routine, for example, a BigQuery routine.
+  /// - "LAKE" : A Dataproc Metastore lake.
+  /// - "ZONE" : A Dataproc Metastore zone.
   /// - "SERVICE" : A service, for example, a Dataproc Metastore service.
   core.String? type;
 
@@ -3907,6 +4122,7 @@ class GoogleCloudDatacatalogV1Entry {
     this.databaseTableSpec,
     this.description,
     this.displayName,
+    this.filesetSpec,
     this.fullyQualifiedName,
     this.gcsFilesetSpec,
     this.integratedSystem,
@@ -3960,6 +4176,10 @@ class GoogleCloudDatacatalogV1Entry {
               : null,
           displayName: _json.containsKey('displayName')
               ? _json['displayName'] as core.String
+              : null,
+          filesetSpec: _json.containsKey('filesetSpec')
+              ? GoogleCloudDatacatalogV1FilesetSpec.fromJson(
+                  _json['filesetSpec'] as core.Map<core.String, core.dynamic>)
               : null,
           fullyQualifiedName: _json.containsKey('fullyQualifiedName')
               ? _json['fullyQualifiedName'] as core.String
@@ -4026,6 +4246,7 @@ class GoogleCloudDatacatalogV1Entry {
         if (databaseTableSpec != null) 'databaseTableSpec': databaseTableSpec!,
         if (description != null) 'description': description!,
         if (displayName != null) 'displayName': displayName!,
+        if (filesetSpec != null) 'filesetSpec': filesetSpec!,
         if (fullyQualifiedName != null)
           'fullyQualifiedName': fullyQualifiedName!,
         if (gcsFilesetSpec != null) 'gcsFilesetSpec': gcsFilesetSpec!,
@@ -4250,6 +4471,32 @@ class GoogleCloudDatacatalogV1FieldTypeEnumTypeEnumValue {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
+      };
+}
+
+/// Specification that applies to a fileset.
+///
+/// Valid only for entries with the 'FILESET' type.
+class GoogleCloudDatacatalogV1FilesetSpec {
+  /// Fields specific to a Dataplex fileset and present only in the Dataplex
+  /// fileset entries.
+  GoogleCloudDatacatalogV1DataplexFilesetSpec? dataplexFileset;
+
+  GoogleCloudDatacatalogV1FilesetSpec({
+    this.dataplexFileset,
+  });
+
+  GoogleCloudDatacatalogV1FilesetSpec.fromJson(core.Map _json)
+      : this(
+          dataplexFileset: _json.containsKey('dataplexFileset')
+              ? GoogleCloudDatacatalogV1DataplexFilesetSpec.fromJson(
+                  _json['dataplexFileset']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dataplexFileset != null) 'dataplexFileset': dataplexFileset!,
       };
 }
 
@@ -4689,6 +4936,141 @@ class GoogleCloudDatacatalogV1PersonalDetails {
       };
 }
 
+/// Native schema used by a resource represented as an entry.
+///
+/// Used by query engines for deserializing and parsing source data.
+class GoogleCloudDatacatalogV1PhysicalSchema {
+  /// Schema in Avro JSON format.
+  GoogleCloudDatacatalogV1PhysicalSchemaAvroSchema? avro;
+
+  /// Marks a CSV-encoded data source.
+  GoogleCloudDatacatalogV1PhysicalSchemaCsvSchema? csv;
+
+  /// Marks an ORC-encoded data source.
+  GoogleCloudDatacatalogV1PhysicalSchemaOrcSchema? orc;
+
+  /// Marks a Parquet-encoded data source.
+  GoogleCloudDatacatalogV1PhysicalSchemaParquetSchema? parquet;
+
+  /// Schema in protocol buffer format.
+  GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchema? protobuf;
+
+  /// Schema in Thrift format.
+  GoogleCloudDatacatalogV1PhysicalSchemaThriftSchema? thrift;
+
+  GoogleCloudDatacatalogV1PhysicalSchema({
+    this.avro,
+    this.csv,
+    this.orc,
+    this.parquet,
+    this.protobuf,
+    this.thrift,
+  });
+
+  GoogleCloudDatacatalogV1PhysicalSchema.fromJson(core.Map _json)
+      : this(
+          avro: _json.containsKey('avro')
+              ? GoogleCloudDatacatalogV1PhysicalSchemaAvroSchema.fromJson(
+                  _json['avro'] as core.Map<core.String, core.dynamic>)
+              : null,
+          csv: _json.containsKey('csv')
+              ? GoogleCloudDatacatalogV1PhysicalSchemaCsvSchema.fromJson(
+                  _json['csv'] as core.Map<core.String, core.dynamic>)
+              : null,
+          orc: _json.containsKey('orc')
+              ? GoogleCloudDatacatalogV1PhysicalSchemaOrcSchema.fromJson(
+                  _json['orc'] as core.Map<core.String, core.dynamic>)
+              : null,
+          parquet: _json.containsKey('parquet')
+              ? GoogleCloudDatacatalogV1PhysicalSchemaParquetSchema.fromJson(
+                  _json['parquet'] as core.Map<core.String, core.dynamic>)
+              : null,
+          protobuf: _json.containsKey('protobuf')
+              ? GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchema.fromJson(
+                  _json['protobuf'] as core.Map<core.String, core.dynamic>)
+              : null,
+          thrift: _json.containsKey('thrift')
+              ? GoogleCloudDatacatalogV1PhysicalSchemaThriftSchema.fromJson(
+                  _json['thrift'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (avro != null) 'avro': avro!,
+        if (csv != null) 'csv': csv!,
+        if (orc != null) 'orc': orc!,
+        if (parquet != null) 'parquet': parquet!,
+        if (protobuf != null) 'protobuf': protobuf!,
+        if (thrift != null) 'thrift': thrift!,
+      };
+}
+
+/// Schema in Avro JSON format.
+class GoogleCloudDatacatalogV1PhysicalSchemaAvroSchema {
+  /// JSON source of the Avro schema.
+  core.String? text;
+
+  GoogleCloudDatacatalogV1PhysicalSchemaAvroSchema({
+    this.text,
+  });
+
+  GoogleCloudDatacatalogV1PhysicalSchemaAvroSchema.fromJson(core.Map _json)
+      : this(
+          text: _json.containsKey('text') ? _json['text'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (text != null) 'text': text!,
+      };
+}
+
+/// Marks a CSV-encoded data source.
+typedef GoogleCloudDatacatalogV1PhysicalSchemaCsvSchema = $Empty;
+
+/// Marks an ORC-encoded data source.
+typedef GoogleCloudDatacatalogV1PhysicalSchemaOrcSchema = $Empty;
+
+/// Marks a Parquet-encoded data source.
+typedef GoogleCloudDatacatalogV1PhysicalSchemaParquetSchema = $Empty;
+
+/// Schema in protocol buffer format.
+class GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchema {
+  /// Protocol buffer source of the schema.
+  core.String? text;
+
+  GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchema({
+    this.text,
+  });
+
+  GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchema.fromJson(core.Map _json)
+      : this(
+          text: _json.containsKey('text') ? _json['text'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (text != null) 'text': text!,
+      };
+}
+
+/// Schema in Thrift format.
+class GoogleCloudDatacatalogV1PhysicalSchemaThriftSchema {
+  /// Thrift IDL source of the schema.
+  core.String? text;
+
+  GoogleCloudDatacatalogV1PhysicalSchemaThriftSchema({
+    this.text,
+  });
+
+  GoogleCloudDatacatalogV1PhysicalSchemaThriftSchema.fromJson(core.Map _json)
+      : this(
+          text: _json.containsKey('text') ? _json['text'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (text != null) 'text': text!,
+      };
+}
+
 /// Denotes one policy tag in a taxonomy, for example, SSN.
 ///
 /// Policy tags can be defined in a hierarchy. For example: ``` + Geolocation +
@@ -5096,12 +5478,9 @@ class GoogleCloudDatacatalogV1SearchCatalogRequestScope {
   /// numbers, see \[Projects\](/docs/overview/#projects).
   core.List<core.String>? includeProjectIds;
 
-  /// If `true`, include public tag templates in the search results.
+  /// This field is deprecated.
   ///
-  /// By default, they are included only if you have explicit permissions on
-  /// them to view them. For example, if you are the owner. Other scope fields,
-  /// for example, `include_org_ids`, still restrict the returned public tag
-  /// templates and at least one of them is required.
+  /// The search mechanism for public and private tag templates is the same.
   ///
   /// Optional.
   core.bool? includePublicTagTemplates;
@@ -5257,6 +5636,7 @@ class GoogleCloudDatacatalogV1SearchCatalogResult {
   /// - "BIGQUERY" : BigQuery.
   /// - "CLOUD_PUBSUB" : Cloud Pub/Sub.
   /// - "DATAPROC_METASTORE" : Dataproc Metastore.
+  /// - "DATAPLEX" : Dataplex.
   core.String? integratedSystem;
 
   /// The full name of the Google Cloud resource the entry belongs to.
@@ -5490,6 +5870,51 @@ typedef GoogleCloudDatacatalogV1StarEntryRequest = $Empty;
 ///
 /// Empty for now
 typedef GoogleCloudDatacatalogV1StarEntryResponse = $Empty;
+
+/// Details the properties of the underlying storage.
+class GoogleCloudDatacatalogV1StorageProperties {
+  /// Patterns to identify a set of files for this fileset.
+  ///
+  /// Examples of a valid `file_pattern`: * `gs://bucket_name/dir / * `: matches
+  /// all files in the `bucket_name/dir` directory * `gs://bucket_name/dir / *
+  /// *`: matches all files in the `bucket_name/dir` and all subdirectories
+  /// recursively * `gs://bucket_name/file*`: matches files prefixed by `file`
+  /// in `bucket_name` * `gs://bucket_name/??.txt`: matches files with two
+  /// characters followed by `.txt` in `bucket_name` *
+  /// `gs://bucket_name/[aeiou].txt`: matches files that contain a single vowel
+  /// character followed by `.txt` in `bucket_name` *
+  /// `gs://bucket_name/[a-m].txt`: matches files that contain `a`, `b`, ... or
+  /// `m` followed by `.txt` in `bucket_name` * `gs://bucket_name/a / * /b`:
+  /// matches all files in `bucket_name` that match the `a / * /b` pattern, such
+  /// as `a/c/b`, `a/d/b` * `gs://another_bucket/a.txt`: matches
+  /// `gs://another_bucket/a.txt`
+  core.List<core.String>? filePattern;
+
+  /// File type in MIME format, for example, `text/plain`.
+  core.String? fileType;
+
+  GoogleCloudDatacatalogV1StorageProperties({
+    this.filePattern,
+    this.fileType,
+  });
+
+  GoogleCloudDatacatalogV1StorageProperties.fromJson(core.Map _json)
+      : this(
+          filePattern: _json.containsKey('filePattern')
+              ? (_json['filePattern'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          fileType: _json.containsKey('fileType')
+              ? _json['fileType'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (filePattern != null) 'filePattern': filePattern!,
+        if (fileType != null) 'fileType': fileType!,
+      };
+}
 
 /// Timestamps associated with this resource in a particular system.
 class GoogleCloudDatacatalogV1SystemTimestamps {
@@ -5791,23 +6216,11 @@ class GoogleCloudDatacatalogV1TagTemplate {
   /// Required.
   core.Map<core.String, GoogleCloudDatacatalogV1TagTemplateField>? fields;
 
-  /// Indicates whether this is a public tag template.
+  /// Indicates whether tags created with this template are public.
   ///
-  /// Every user has view access to a *public* tag template by default. This
-  /// means that: * Every user can use this tag template to tag an entry. * If
-  /// an entry is tagged using the tag template, the tag is always shown in the
-  /// response to ``ListTags`` called on the entry. * To get the template using
-  /// the GetTagTemplate method, you need view access either on the project or
-  /// the organization the tag template resides in but no other permission is
-  /// needed. * Operations on the tag template other than viewing (for example,
-  /// editing IAM policies) follow standard IAM structures. Tags created with a
-  /// public tag template are referred to as public tags. You can search for a
-  /// public tag by value with a simple search query instead of using a ``tag:``
-  /// predicate. Public tag templates may not appear in search results depending
-  /// on scope, see: include_public_tag_templates Note: If an
-  /// [IAM domain restriction](https://cloud.google.com/resource-manager/docs/organization-policy/restricting-domains)
-  /// is configured in the tag template's location, the public access will not
-  /// be enabled but the simple search for tag values will still work.
+  /// Public tags do not require tag template access to appear in ListTags API
+  /// response. Additionally, you can search for a public tag by value with a
+  /// simple search query instead of using a ``tag:`` predicate.
   core.bool? isPubliclyReadable;
 
   /// The resource name of the tag template in URL format.
@@ -6296,7 +6709,7 @@ class SetIamPolicyRequest {
 }
 
 /// Request message for `TestIamPermissions` method.
-typedef TestIamPermissionsRequest = $TestIamPermissionsRequest;
+typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;
 
 /// Response message for `TestIamPermissions` method.
 typedef TestIamPermissionsResponse = $PermissionsResponse;

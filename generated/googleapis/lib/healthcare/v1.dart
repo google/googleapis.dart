@@ -8010,7 +8010,7 @@ class DeidentifyDatasetRequest {
 
 /// Creates a new DICOM store with sensitive information de-identified.
 class DeidentifyDicomStoreRequest {
-  /// De-identify configuration.
+  /// Deidentify configuration.
   DeidentifyConfig? config;
 
   /// The name of the DICOM store to create and write the redacted data to.
@@ -11901,7 +11901,7 @@ class TagFilterList {
 }
 
 /// Request message for `TestIamPermissions` method.
-typedef TestIamPermissionsRequest = $TestIamPermissionsRequest;
+typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;
 
 /// Response message for `TestIamPermissions` method.
 typedef TestIamPermissionsResponse = $PermissionsResponse;

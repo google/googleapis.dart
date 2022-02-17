@@ -2238,7 +2238,7 @@ class GoogleIamV1SetIamPolicyRequest {
 }
 
 /// Request message for `TestIamPermissions` method.
-typedef GoogleIamV1TestIamPermissionsRequest = $TestIamPermissionsRequest;
+typedef GoogleIamV1TestIamPermissionsRequest = $TestIamPermissionsRequest00;
 
 /// Response message for `TestIamPermissions` method.
 typedef GoogleIamV1TestIamPermissionsResponse = $PermissionsResponse;

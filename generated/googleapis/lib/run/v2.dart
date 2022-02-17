@@ -15,8 +15,9 @@
 /// Cloud Run Admin API - v2
 ///
 /// Deploy and manage user provided container images that scale automatically
-/// based on incoming requests. The Cloud Run Admin API follows the Knative
-/// Serving API specification.
+/// based on incoming requests. The Cloud Run Admin API v1 follows the Knative
+/// Serving API specification, while v2 is aligned with Google Cloud AIP-based
+/// API standards, as described in https://google.aip.dev/.
 ///
 /// For more information, see <https://cloud.google.com/run/>
 ///
@@ -46,7 +47,9 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// Deploy and manage user provided container images that scale automatically
 /// based on incoming requests.
 ///
-/// The Cloud Run Admin API follows the Knative Serving API specification.
+/// The Cloud Run Admin API v1 follows the Knative Serving API specification,
+/// while v2 is aligned with Google Cloud AIP-based API standards, as described
+/// in https://google.aip.dev/.
 class CloudRunApi {
   /// See, edit, configure, and delete your Google Cloud data and see the email
   /// address for your Google Account.
@@ -184,14 +187,21 @@ class ProjectsLocationsOperationsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - The name of the operation's parent resource.
+  /// [name] - Required. To query for all of the operations for a project.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [filter] - The standard list filter.
+  /// [filter] - Optional. A filter for matching the completed or in-progress
+  /// operations. The supported formats of *filter* are: To query for only
+  /// completed operations: done:true To query for only ongoing operations:
+  /// done:false Must be empty to query for all of the latest operations for the
+  /// given parent project.
   ///
-  /// [pageSize] - The standard list page size.
+  /// [pageSize] - The maximum number of records that should be returned.
+  /// Requested page size cannot exceed 100. If not set or set to less than or
+  /// equal to 0, the default page size is 100. .
   ///
-  /// [pageToken] - The standard list page token.
+  /// [pageToken] - Token identifying which result to start with, which is
+  /// returned by a previous list call.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -872,6 +882,9 @@ class GoogleCloudRunOpV2Condition {
   /// - "EXECUTION_REASON_UNDEFINED" : Default value.
   /// - "JOB_STATUS_SERVICE_POLLING_ERROR" : Internal system error getting
   /// execution status. System will retry.
+  /// - "NON_ZERO_EXIT_CODE" : A task reached its retry limit and the last
+  /// attempt failed due to the user container exiting with a non-zero exit
+  /// code.
   core.String? executionReason;
 
   /// A reason for the internal condition.
@@ -944,6 +957,8 @@ class GoogleCloudRunOpV2Condition {
   /// - "NO_DEPLOYMENT" : There was no deployment defined. This value is no
   /// longer used, but Services created in older versions of the API might
   /// contain this value.
+  /// - "HEALTH_CHECK_SKIPPED" : A revision's container has no port specified
+  /// since the revision is of a manually scaled service with 0 instance count
   core.String? revisionReason;
 
   /// How to interpret failures of this condition, one of Error, Warning, Info
@@ -1450,7 +1465,7 @@ class GoogleCloudRunOpV2Revision {
   ///
   /// On read, describes whether the resource uses preview features. Launch
   /// Stages are defined at
-  /// [Google Cloud Platform Launch Stages](http://cloud.google.com/terms/launch-stages).
+  /// [Google Cloud Platform Launch Stages](https://cloud.google.com/terms/launch-stages).
   /// Possible string values are:
   /// - "LAUNCH_STAGE_UNSPECIFIED" : Do not use this default value.
   /// - "UNIMPLEMENTED" : The feature is not yet implemented. Users can not use
@@ -1466,7 +1481,7 @@ class GoogleCloudRunOpV2Revision {
   /// are cleared for widespread use. By Alpha, all significant design issues
   /// are resolved and we are in the process of verifying functionality. Alpha
   /// customers need to apply for access, agree to applicable terms, and have
-  /// their projects allowlisted. Alpha releases don’t have to be feature
+  /// their projects allowlisted. Alpha releases don't have to be feature
   /// complete, no SLAs are provided, and there are no technical support
   /// obligations, but they will be far enough along that customers can actually
   /// use them in test environments or for limited-use tests -- just like they
@@ -1479,7 +1494,7 @@ class GoogleCloudRunOpV2Revision {
   /// - "GA" : GA features are open to all developers and are considered stable
   /// and fully qualified for production use.
   /// - "DEPRECATED" : Deprecated features are scheduled to be shut down and
-  /// removed. For more information, see the “Deprecation Policy” section of our
+  /// removed. For more information, see the "Deprecation Policy" section of our
   /// [Terms of Service](https://cloud.google.com/terms/) and the
   /// [Google Cloud Platform Subject to the Deprecation Policy](https://cloud.google.com/terms/deprecation)
   /// documentation.
@@ -2018,7 +2033,7 @@ class GoogleCloudRunOpV2Service {
   /// Cloud Run will populate some annotations using 'run.googleapis.com' or
   /// 'serving.knative.dev' namespaces. This field follows Kubernetes
   /// annotations' namespacing, limits, and rules. More info:
-  /// http://kubernetes.io/docs/user-guide/annotations
+  /// https://kubernetes.io/docs/user-guide/annotations
   core.Map<core.String, core.String>? annotations;
 
   /// Settings for the Binary Authorization feature.
@@ -2055,6 +2070,8 @@ class GoogleCloudRunOpV2Service {
   core.String? deleteTime;
 
   /// User-provided description of the Service.
+  ///
+  /// This field currently has a 512-character limit.
   core.String? description;
 
   /// A system-generated fingerprint for this version of the resource.
@@ -2123,7 +2140,7 @@ class GoogleCloudRunOpV2Service {
   core.String? latestReadyRevision;
 
   /// The launch stage as defined by
-  /// [Google Cloud Platform Launch Stages](http://cloud.google.com/terms/launch-stages).
+  /// [Google Cloud Platform Launch Stages](https://cloud.google.com/terms/launch-stages).
   ///
   /// Cloud Run supports `ALPHA`, `BETA`, and `GA`. If no value is specified, GA
   /// is assumed.
@@ -2142,7 +2159,7 @@ class GoogleCloudRunOpV2Service {
   /// are cleared for widespread use. By Alpha, all significant design issues
   /// are resolved and we are in the process of verifying functionality. Alpha
   /// customers need to apply for access, agree to applicable terms, and have
-  /// their projects allowlisted. Alpha releases don’t have to be feature
+  /// their projects allowlisted. Alpha releases don't have to be feature
   /// complete, no SLAs are provided, and there are no technical support
   /// obligations, but they will be far enough along that customers can actually
   /// use them in test environments or for limited-use tests -- just like they
@@ -2155,7 +2172,7 @@ class GoogleCloudRunOpV2Service {
   /// - "GA" : GA features are open to all developers and are considered stable
   /// and fully qualified for production use.
   /// - "DEPRECATED" : Deprecated features are scheduled to be shut down and
-  /// removed. For more information, see the “Deprecation Policy” section of our
+  /// removed. For more information, see the "Deprecation Policy" section of our
   /// [Terms of Service](https://cloud.google.com/terms/) and the
   /// [Google Cloud Platform Subject to the Deprecation Policy](https://cloud.google.com/terms/deprecation)
   /// documentation.
@@ -2425,8 +2442,7 @@ class GoogleCloudRunOpV2Service {
 class GoogleCloudRunOpV2TrafficTarget {
   /// Specifies percent of the traffic to this Revision.
   ///
-  /// This defaults to zero if unspecified. Cloud Run currently requires 100
-  /// percent for a single TrafficTarget entry.
+  /// This defaults to zero if unspecified.
   core.int? percent;
 
   /// Revision to which to send this portion of traffic, if traffic allocation
@@ -2996,7 +3012,7 @@ class GoogleIamV1SetIamPolicyRequest {
 }
 
 /// Request message for `TestIamPermissions` method.
-typedef GoogleIamV1TestIamPermissionsRequest = $TestIamPermissionsRequest;
+typedef GoogleIamV1TestIamPermissionsRequest = $TestIamPermissionsRequest00;
 
 /// Response message for `TestIamPermissions` method.
 typedef GoogleIamV1TestIamPermissionsResponse = $PermissionsResponse;

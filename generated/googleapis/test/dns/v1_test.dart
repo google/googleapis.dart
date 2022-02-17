@@ -1244,6 +1244,7 @@ api.Quota buildQuota() {
     o.managedZonesPerNetwork = 42;
     o.networksPerManagedZone = 42;
     o.networksPerPolicy = 42;
+    o.peeringZonesPerTargetNetwork = 42;
     o.policies = 42;
     o.resourceRecordsPerRrset = 42;
     o.rrsetAdditionsPerChange = 42;
@@ -1287,6 +1288,10 @@ void checkQuota(api.Quota o) {
     );
     unittest.expect(
       o.networksPerPolicy!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.peeringZonesPerTargetNetwork!,
       unittest.equals(42),
     );
     unittest.expect(

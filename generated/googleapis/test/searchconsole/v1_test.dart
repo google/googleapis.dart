@@ -26,12 +26,104 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
-core.List<core.String> buildUnnamed0() => [
+core.List<api.AmpIssue> buildUnnamed0() => [
+      buildAmpIssue(),
+      buildAmpIssue(),
+    ];
+
+void checkUnnamed0(core.List<api.AmpIssue> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkAmpIssue(o[0]);
+  checkAmpIssue(o[1]);
+}
+
+core.int buildCounterAmpInspectionResult = 0;
+api.AmpInspectionResult buildAmpInspectionResult() {
+  final o = api.AmpInspectionResult();
+  buildCounterAmpInspectionResult++;
+  if (buildCounterAmpInspectionResult < 3) {
+    o.ampIndexStatusVerdict = 'foo';
+    o.ampUrl = 'foo';
+    o.indexingState = 'foo';
+    o.issues = buildUnnamed0();
+    o.lastCrawlTime = 'foo';
+    o.pageFetchState = 'foo';
+    o.robotsTxtState = 'foo';
+    o.verdict = 'foo';
+  }
+  buildCounterAmpInspectionResult--;
+  return o;
+}
+
+void checkAmpInspectionResult(api.AmpInspectionResult o) {
+  buildCounterAmpInspectionResult++;
+  if (buildCounterAmpInspectionResult < 3) {
+    unittest.expect(
+      o.ampIndexStatusVerdict!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.ampUrl!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.indexingState!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed0(o.issues!);
+    unittest.expect(
+      o.lastCrawlTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.pageFetchState!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.robotsTxtState!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.verdict!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterAmpInspectionResult--;
+}
+
+core.int buildCounterAmpIssue = 0;
+api.AmpIssue buildAmpIssue() {
+  final o = api.AmpIssue();
+  buildCounterAmpIssue++;
+  if (buildCounterAmpIssue < 3) {
+    o.issueMessage = 'foo';
+    o.severity = 'foo';
+  }
+  buildCounterAmpIssue--;
+  return o;
+}
+
+void checkAmpIssue(api.AmpIssue o) {
+  buildCounterAmpIssue++;
+  if (buildCounterAmpIssue < 3) {
+    unittest.expect(
+      o.issueMessage!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.severity!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterAmpIssue--;
+}
+
+core.List<core.String> buildUnnamed1() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed0(core.List<core.String> o) {
+void checkUnnamed1(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -51,7 +143,7 @@ api.ApiDataRow buildApiDataRow() {
     o.clicks = 42.0;
     o.ctr = 42.0;
     o.impressions = 42.0;
-    o.keys = buildUnnamed0();
+    o.keys = buildUnnamed1();
     o.position = 42.0;
   }
   buildCounterApiDataRow--;
@@ -73,7 +165,7 @@ void checkApiDataRow(api.ApiDataRow o) {
       o.impressions!,
       unittest.equals(42.0),
     );
-    checkUnnamed0(o.keys!);
+    checkUnnamed1(o.keys!);
     unittest.expect(
       o.position!,
       unittest.equals(42.0),
@@ -114,12 +206,12 @@ void checkApiDimensionFilter(api.ApiDimensionFilter o) {
   buildCounterApiDimensionFilter--;
 }
 
-core.List<api.ApiDimensionFilter> buildUnnamed1() => [
+core.List<api.ApiDimensionFilter> buildUnnamed2() => [
       buildApiDimensionFilter(),
       buildApiDimensionFilter(),
     ];
 
-void checkUnnamed1(core.List<api.ApiDimensionFilter> o) {
+void checkUnnamed2(core.List<api.ApiDimensionFilter> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkApiDimensionFilter(o[0]);
   checkApiDimensionFilter(o[1]);
@@ -130,7 +222,7 @@ api.ApiDimensionFilterGroup buildApiDimensionFilterGroup() {
   final o = api.ApiDimensionFilterGroup();
   buildCounterApiDimensionFilterGroup++;
   if (buildCounterApiDimensionFilterGroup < 3) {
-    o.filters = buildUnnamed1();
+    o.filters = buildUnnamed2();
     o.groupType = 'foo';
   }
   buildCounterApiDimensionFilterGroup--;
@@ -140,7 +232,7 @@ api.ApiDimensionFilterGroup buildApiDimensionFilterGroup() {
 void checkApiDimensionFilterGroup(api.ApiDimensionFilterGroup o) {
   buildCounterApiDimensionFilterGroup++;
   if (buildCounterApiDimensionFilterGroup < 3) {
-    checkUnnamed1(o.filters!);
+    checkUnnamed2(o.filters!);
     unittest.expect(
       o.groupType!,
       unittest.equals('foo'),
@@ -171,6 +263,41 @@ void checkBlockedResource(api.BlockedResource o) {
   buildCounterBlockedResource--;
 }
 
+core.List<api.Item> buildUnnamed3() => [
+      buildItem(),
+      buildItem(),
+    ];
+
+void checkUnnamed3(core.List<api.Item> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkItem(o[0]);
+  checkItem(o[1]);
+}
+
+core.int buildCounterDetectedItems = 0;
+api.DetectedItems buildDetectedItems() {
+  final o = api.DetectedItems();
+  buildCounterDetectedItems++;
+  if (buildCounterDetectedItems < 3) {
+    o.items = buildUnnamed3();
+    o.richResultType = 'foo';
+  }
+  buildCounterDetectedItems--;
+  return o;
+}
+
+void checkDetectedItems(api.DetectedItems o) {
+  buildCounterDetectedItems++;
+  if (buildCounterDetectedItems < 3) {
+    checkUnnamed3(o.items!);
+    unittest.expect(
+      o.richResultType!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterDetectedItems--;
+}
+
 core.int buildCounterImage = 0;
 api.Image buildImage() {
   final o = api.Image();
@@ -198,6 +325,192 @@ void checkImage(api.Image o) {
   buildCounterImage--;
 }
 
+core.List<core.String> buildUnnamed4() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed4(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.List<core.String> buildUnnamed5() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed5(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.int buildCounterIndexStatusInspectionResult = 0;
+api.IndexStatusInspectionResult buildIndexStatusInspectionResult() {
+  final o = api.IndexStatusInspectionResult();
+  buildCounterIndexStatusInspectionResult++;
+  if (buildCounterIndexStatusInspectionResult < 3) {
+    o.coverageState = 'foo';
+    o.crawledAs = 'foo';
+    o.googleCanonical = 'foo';
+    o.indexingState = 'foo';
+    o.lastCrawlTime = 'foo';
+    o.pageFetchState = 'foo';
+    o.referringUrls = buildUnnamed4();
+    o.robotsTxtState = 'foo';
+    o.sitemap = buildUnnamed5();
+    o.userCanonical = 'foo';
+    o.verdict = 'foo';
+  }
+  buildCounterIndexStatusInspectionResult--;
+  return o;
+}
+
+void checkIndexStatusInspectionResult(api.IndexStatusInspectionResult o) {
+  buildCounterIndexStatusInspectionResult++;
+  if (buildCounterIndexStatusInspectionResult < 3) {
+    unittest.expect(
+      o.coverageState!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.crawledAs!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.googleCanonical!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.indexingState!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.lastCrawlTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.pageFetchState!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed4(o.referringUrls!);
+    unittest.expect(
+      o.robotsTxtState!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed5(o.sitemap!);
+    unittest.expect(
+      o.userCanonical!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.verdict!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterIndexStatusInspectionResult--;
+}
+
+core.int buildCounterInspectUrlIndexRequest = 0;
+api.InspectUrlIndexRequest buildInspectUrlIndexRequest() {
+  final o = api.InspectUrlIndexRequest();
+  buildCounterInspectUrlIndexRequest++;
+  if (buildCounterInspectUrlIndexRequest < 3) {
+    o.inspectionUrl = 'foo';
+    o.languageCode = 'foo';
+    o.siteUrl = 'foo';
+  }
+  buildCounterInspectUrlIndexRequest--;
+  return o;
+}
+
+void checkInspectUrlIndexRequest(api.InspectUrlIndexRequest o) {
+  buildCounterInspectUrlIndexRequest++;
+  if (buildCounterInspectUrlIndexRequest < 3) {
+    unittest.expect(
+      o.inspectionUrl!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.languageCode!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.siteUrl!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterInspectUrlIndexRequest--;
+}
+
+core.int buildCounterInspectUrlIndexResponse = 0;
+api.InspectUrlIndexResponse buildInspectUrlIndexResponse() {
+  final o = api.InspectUrlIndexResponse();
+  buildCounterInspectUrlIndexResponse++;
+  if (buildCounterInspectUrlIndexResponse < 3) {
+    o.inspectionResult = buildUrlInspectionResult();
+  }
+  buildCounterInspectUrlIndexResponse--;
+  return o;
+}
+
+void checkInspectUrlIndexResponse(api.InspectUrlIndexResponse o) {
+  buildCounterInspectUrlIndexResponse++;
+  if (buildCounterInspectUrlIndexResponse < 3) {
+    checkUrlInspectionResult(o.inspectionResult!);
+  }
+  buildCounterInspectUrlIndexResponse--;
+}
+
+core.List<api.RichResultsIssue> buildUnnamed6() => [
+      buildRichResultsIssue(),
+      buildRichResultsIssue(),
+    ];
+
+void checkUnnamed6(core.List<api.RichResultsIssue> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkRichResultsIssue(o[0]);
+  checkRichResultsIssue(o[1]);
+}
+
+core.int buildCounterItem = 0;
+api.Item buildItem() {
+  final o = api.Item();
+  buildCounterItem++;
+  if (buildCounterItem < 3) {
+    o.issues = buildUnnamed6();
+    o.name = 'foo';
+  }
+  buildCounterItem--;
+  return o;
+}
+
+void checkItem(api.Item o) {
+  buildCounterItem++;
+  if (buildCounterItem < 3) {
+    checkUnnamed6(o.issues!);
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterItem--;
+}
+
 core.int buildCounterMobileFriendlyIssue = 0;
 api.MobileFriendlyIssue buildMobileFriendlyIssue() {
   final o = api.MobileFriendlyIssue();
@@ -220,6 +533,74 @@ void checkMobileFriendlyIssue(api.MobileFriendlyIssue o) {
   buildCounterMobileFriendlyIssue--;
 }
 
+core.List<api.MobileUsabilityIssue> buildUnnamed7() => [
+      buildMobileUsabilityIssue(),
+      buildMobileUsabilityIssue(),
+    ];
+
+void checkUnnamed7(core.List<api.MobileUsabilityIssue> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkMobileUsabilityIssue(o[0]);
+  checkMobileUsabilityIssue(o[1]);
+}
+
+core.int buildCounterMobileUsabilityInspectionResult = 0;
+api.MobileUsabilityInspectionResult buildMobileUsabilityInspectionResult() {
+  final o = api.MobileUsabilityInspectionResult();
+  buildCounterMobileUsabilityInspectionResult++;
+  if (buildCounterMobileUsabilityInspectionResult < 3) {
+    o.issues = buildUnnamed7();
+    o.verdict = 'foo';
+  }
+  buildCounterMobileUsabilityInspectionResult--;
+  return o;
+}
+
+void checkMobileUsabilityInspectionResult(
+    api.MobileUsabilityInspectionResult o) {
+  buildCounterMobileUsabilityInspectionResult++;
+  if (buildCounterMobileUsabilityInspectionResult < 3) {
+    checkUnnamed7(o.issues!);
+    unittest.expect(
+      o.verdict!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterMobileUsabilityInspectionResult--;
+}
+
+core.int buildCounterMobileUsabilityIssue = 0;
+api.MobileUsabilityIssue buildMobileUsabilityIssue() {
+  final o = api.MobileUsabilityIssue();
+  buildCounterMobileUsabilityIssue++;
+  if (buildCounterMobileUsabilityIssue < 3) {
+    o.issueType = 'foo';
+    o.message = 'foo';
+    o.severity = 'foo';
+  }
+  buildCounterMobileUsabilityIssue--;
+  return o;
+}
+
+void checkMobileUsabilityIssue(api.MobileUsabilityIssue o) {
+  buildCounterMobileUsabilityIssue++;
+  if (buildCounterMobileUsabilityIssue < 3) {
+    unittest.expect(
+      o.issueType!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.message!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.severity!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterMobileUsabilityIssue--;
+}
+
 core.int buildCounterResourceIssue = 0;
 api.ResourceIssue buildResourceIssue() {
   final o = api.ResourceIssue();
@@ -237,6 +618,68 @@ void checkResourceIssue(api.ResourceIssue o) {
     checkBlockedResource(o.blockedResource!);
   }
   buildCounterResourceIssue--;
+}
+
+core.List<api.DetectedItems> buildUnnamed8() => [
+      buildDetectedItems(),
+      buildDetectedItems(),
+    ];
+
+void checkUnnamed8(core.List<api.DetectedItems> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkDetectedItems(o[0]);
+  checkDetectedItems(o[1]);
+}
+
+core.int buildCounterRichResultsInspectionResult = 0;
+api.RichResultsInspectionResult buildRichResultsInspectionResult() {
+  final o = api.RichResultsInspectionResult();
+  buildCounterRichResultsInspectionResult++;
+  if (buildCounterRichResultsInspectionResult < 3) {
+    o.detectedItems = buildUnnamed8();
+    o.verdict = 'foo';
+  }
+  buildCounterRichResultsInspectionResult--;
+  return o;
+}
+
+void checkRichResultsInspectionResult(api.RichResultsInspectionResult o) {
+  buildCounterRichResultsInspectionResult++;
+  if (buildCounterRichResultsInspectionResult < 3) {
+    checkUnnamed8(o.detectedItems!);
+    unittest.expect(
+      o.verdict!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterRichResultsInspectionResult--;
+}
+
+core.int buildCounterRichResultsIssue = 0;
+api.RichResultsIssue buildRichResultsIssue() {
+  final o = api.RichResultsIssue();
+  buildCounterRichResultsIssue++;
+  if (buildCounterRichResultsIssue < 3) {
+    o.issueMessage = 'foo';
+    o.severity = 'foo';
+  }
+  buildCounterRichResultsIssue--;
+  return o;
+}
+
+void checkRichResultsIssue(api.RichResultsIssue o) {
+  buildCounterRichResultsIssue++;
+  if (buildCounterRichResultsIssue < 3) {
+    unittest.expect(
+      o.issueMessage!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.severity!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterRichResultsIssue--;
 }
 
 core.int buildCounterRunMobileFriendlyTestRequest = 0;
@@ -263,23 +706,23 @@ void checkRunMobileFriendlyTestRequest(api.RunMobileFriendlyTestRequest o) {
   buildCounterRunMobileFriendlyTestRequest--;
 }
 
-core.List<api.MobileFriendlyIssue> buildUnnamed2() => [
+core.List<api.MobileFriendlyIssue> buildUnnamed9() => [
       buildMobileFriendlyIssue(),
       buildMobileFriendlyIssue(),
     ];
 
-void checkUnnamed2(core.List<api.MobileFriendlyIssue> o) {
+void checkUnnamed9(core.List<api.MobileFriendlyIssue> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMobileFriendlyIssue(o[0]);
   checkMobileFriendlyIssue(o[1]);
 }
 
-core.List<api.ResourceIssue> buildUnnamed3() => [
+core.List<api.ResourceIssue> buildUnnamed10() => [
       buildResourceIssue(),
       buildResourceIssue(),
     ];
 
-void checkUnnamed3(core.List<api.ResourceIssue> o) {
+void checkUnnamed10(core.List<api.ResourceIssue> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkResourceIssue(o[0]);
   checkResourceIssue(o[1]);
@@ -291,8 +734,8 @@ api.RunMobileFriendlyTestResponse buildRunMobileFriendlyTestResponse() {
   buildCounterRunMobileFriendlyTestResponse++;
   if (buildCounterRunMobileFriendlyTestResponse < 3) {
     o.mobileFriendliness = 'foo';
-    o.mobileFriendlyIssues = buildUnnamed2();
-    o.resourceIssues = buildUnnamed3();
+    o.mobileFriendlyIssues = buildUnnamed9();
+    o.resourceIssues = buildUnnamed10();
     o.screenshot = buildImage();
     o.testStatus = buildTestStatus();
   }
@@ -307,31 +750,31 @@ void checkRunMobileFriendlyTestResponse(api.RunMobileFriendlyTestResponse o) {
       o.mobileFriendliness!,
       unittest.equals('foo'),
     );
-    checkUnnamed2(o.mobileFriendlyIssues!);
-    checkUnnamed3(o.resourceIssues!);
+    checkUnnamed9(o.mobileFriendlyIssues!);
+    checkUnnamed10(o.resourceIssues!);
     checkImage(o.screenshot!);
     checkTestStatus(o.testStatus!);
   }
   buildCounterRunMobileFriendlyTestResponse--;
 }
 
-core.List<api.ApiDimensionFilterGroup> buildUnnamed4() => [
+core.List<api.ApiDimensionFilterGroup> buildUnnamed11() => [
       buildApiDimensionFilterGroup(),
       buildApiDimensionFilterGroup(),
     ];
 
-void checkUnnamed4(core.List<api.ApiDimensionFilterGroup> o) {
+void checkUnnamed11(core.List<api.ApiDimensionFilterGroup> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkApiDimensionFilterGroup(o[0]);
   checkApiDimensionFilterGroup(o[1]);
 }
 
-core.List<core.String> buildUnnamed5() => [
+core.List<core.String> buildUnnamed12() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed5(core.List<core.String> o) {
+void checkUnnamed12(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -350,8 +793,8 @@ api.SearchAnalyticsQueryRequest buildSearchAnalyticsQueryRequest() {
   if (buildCounterSearchAnalyticsQueryRequest < 3) {
     o.aggregationType = 'foo';
     o.dataState = 'foo';
-    o.dimensionFilterGroups = buildUnnamed4();
-    o.dimensions = buildUnnamed5();
+    o.dimensionFilterGroups = buildUnnamed11();
+    o.dimensions = buildUnnamed12();
     o.endDate = 'foo';
     o.rowLimit = 42;
     o.searchType = 'foo';
@@ -374,8 +817,8 @@ void checkSearchAnalyticsQueryRequest(api.SearchAnalyticsQueryRequest o) {
       o.dataState!,
       unittest.equals('foo'),
     );
-    checkUnnamed4(o.dimensionFilterGroups!);
-    checkUnnamed5(o.dimensions!);
+    checkUnnamed11(o.dimensionFilterGroups!);
+    checkUnnamed12(o.dimensions!);
     unittest.expect(
       o.endDate!,
       unittest.equals('foo'),
@@ -404,12 +847,12 @@ void checkSearchAnalyticsQueryRequest(api.SearchAnalyticsQueryRequest o) {
   buildCounterSearchAnalyticsQueryRequest--;
 }
 
-core.List<api.ApiDataRow> buildUnnamed6() => [
+core.List<api.ApiDataRow> buildUnnamed13() => [
       buildApiDataRow(),
       buildApiDataRow(),
     ];
 
-void checkUnnamed6(core.List<api.ApiDataRow> o) {
+void checkUnnamed13(core.List<api.ApiDataRow> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkApiDataRow(o[0]);
   checkApiDataRow(o[1]);
@@ -421,7 +864,7 @@ api.SearchAnalyticsQueryResponse buildSearchAnalyticsQueryResponse() {
   buildCounterSearchAnalyticsQueryResponse++;
   if (buildCounterSearchAnalyticsQueryResponse < 3) {
     o.responseAggregationType = 'foo';
-    o.rows = buildUnnamed6();
+    o.rows = buildUnnamed13();
   }
   buildCounterSearchAnalyticsQueryResponse--;
   return o;
@@ -434,17 +877,17 @@ void checkSearchAnalyticsQueryResponse(api.SearchAnalyticsQueryResponse o) {
       o.responseAggregationType!,
       unittest.equals('foo'),
     );
-    checkUnnamed6(o.rows!);
+    checkUnnamed13(o.rows!);
   }
   buildCounterSearchAnalyticsQueryResponse--;
 }
 
-core.List<api.WmxSitemap> buildUnnamed7() => [
+core.List<api.WmxSitemap> buildUnnamed14() => [
       buildWmxSitemap(),
       buildWmxSitemap(),
     ];
 
-void checkUnnamed7(core.List<api.WmxSitemap> o) {
+void checkUnnamed14(core.List<api.WmxSitemap> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkWmxSitemap(o[0]);
   checkWmxSitemap(o[1]);
@@ -455,7 +898,7 @@ api.SitemapsListResponse buildSitemapsListResponse() {
   final o = api.SitemapsListResponse();
   buildCounterSitemapsListResponse++;
   if (buildCounterSitemapsListResponse < 3) {
-    o.sitemap = buildUnnamed7();
+    o.sitemap = buildUnnamed14();
   }
   buildCounterSitemapsListResponse--;
   return o;
@@ -464,17 +907,17 @@ api.SitemapsListResponse buildSitemapsListResponse() {
 void checkSitemapsListResponse(api.SitemapsListResponse o) {
   buildCounterSitemapsListResponse++;
   if (buildCounterSitemapsListResponse < 3) {
-    checkUnnamed7(o.sitemap!);
+    checkUnnamed14(o.sitemap!);
   }
   buildCounterSitemapsListResponse--;
 }
 
-core.List<api.WmxSite> buildUnnamed8() => [
+core.List<api.WmxSite> buildUnnamed15() => [
       buildWmxSite(),
       buildWmxSite(),
     ];
 
-void checkUnnamed8(core.List<api.WmxSite> o) {
+void checkUnnamed15(core.List<api.WmxSite> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkWmxSite(o[0]);
   checkWmxSite(o[1]);
@@ -485,7 +928,7 @@ api.SitesListResponse buildSitesListResponse() {
   final o = api.SitesListResponse();
   buildCounterSitesListResponse++;
   if (buildCounterSitesListResponse < 3) {
-    o.siteEntry = buildUnnamed8();
+    o.siteEntry = buildUnnamed15();
   }
   buildCounterSitesListResponse--;
   return o;
@@ -494,7 +937,7 @@ api.SitesListResponse buildSitesListResponse() {
 void checkSitesListResponse(api.SitesListResponse o) {
   buildCounterSitesListResponse++;
   if (buildCounterSitesListResponse < 3) {
-    checkUnnamed8(o.siteEntry!);
+    checkUnnamed15(o.siteEntry!);
   }
   buildCounterSitesListResponse--;
 }
@@ -526,6 +969,36 @@ void checkTestStatus(api.TestStatus o) {
   buildCounterTestStatus--;
 }
 
+core.int buildCounterUrlInspectionResult = 0;
+api.UrlInspectionResult buildUrlInspectionResult() {
+  final o = api.UrlInspectionResult();
+  buildCounterUrlInspectionResult++;
+  if (buildCounterUrlInspectionResult < 3) {
+    o.ampResult = buildAmpInspectionResult();
+    o.indexStatusResult = buildIndexStatusInspectionResult();
+    o.inspectionResultLink = 'foo';
+    o.mobileUsabilityResult = buildMobileUsabilityInspectionResult();
+    o.richResultsResult = buildRichResultsInspectionResult();
+  }
+  buildCounterUrlInspectionResult--;
+  return o;
+}
+
+void checkUrlInspectionResult(api.UrlInspectionResult o) {
+  buildCounterUrlInspectionResult++;
+  if (buildCounterUrlInspectionResult < 3) {
+    checkAmpInspectionResult(o.ampResult!);
+    checkIndexStatusInspectionResult(o.indexStatusResult!);
+    unittest.expect(
+      o.inspectionResultLink!,
+      unittest.equals('foo'),
+    );
+    checkMobileUsabilityInspectionResult(o.mobileUsabilityResult!);
+    checkRichResultsInspectionResult(o.richResultsResult!);
+  }
+  buildCounterUrlInspectionResult--;
+}
+
 core.int buildCounterWmxSite = 0;
 api.WmxSite buildWmxSite() {
   final o = api.WmxSite();
@@ -553,12 +1026,12 @@ void checkWmxSite(api.WmxSite o) {
   buildCounterWmxSite--;
 }
 
-core.List<api.WmxSitemapContent> buildUnnamed9() => [
+core.List<api.WmxSitemapContent> buildUnnamed16() => [
       buildWmxSitemapContent(),
       buildWmxSitemapContent(),
     ];
 
-void checkUnnamed9(core.List<api.WmxSitemapContent> o) {
+void checkUnnamed16(core.List<api.WmxSitemapContent> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkWmxSitemapContent(o[0]);
   checkWmxSitemapContent(o[1]);
@@ -569,7 +1042,7 @@ api.WmxSitemap buildWmxSitemap() {
   final o = api.WmxSitemap();
   buildCounterWmxSitemap++;
   if (buildCounterWmxSitemap < 3) {
-    o.contents = buildUnnamed9();
+    o.contents = buildUnnamed16();
     o.errors = 'foo';
     o.isPending = true;
     o.isSitemapsIndex = true;
@@ -586,7 +1059,7 @@ api.WmxSitemap buildWmxSitemap() {
 void checkWmxSitemap(api.WmxSitemap o) {
   buildCounterWmxSitemap++;
   if (buildCounterWmxSitemap < 3) {
-    checkUnnamed9(o.contents!);
+    checkUnnamed16(o.contents!);
     unittest.expect(
       o.errors!,
       unittest.equals('foo'),
@@ -650,6 +1123,26 @@ void checkWmxSitemapContent(api.WmxSitemapContent o) {
 }
 
 void main() {
+  unittest.group('obj-schema-AmpInspectionResult', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildAmpInspectionResult();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AmpInspectionResult.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkAmpInspectionResult(od);
+    });
+  });
+
+  unittest.group('obj-schema-AmpIssue', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildAmpIssue();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.AmpIssue.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkAmpIssue(od);
+    });
+  });
+
   unittest.group('obj-schema-ApiDataRow', () {
     unittest.test('to-json--from-json', () async {
       final o = buildApiDataRow();
@@ -690,6 +1183,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-DetectedItems', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildDetectedItems();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DetectedItems.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkDetectedItems(od);
+    });
+  });
+
   unittest.group('obj-schema-Image', () {
     unittest.test('to-json--from-json', () async {
       final o = buildImage();
@@ -697,6 +1200,46 @@ void main() {
       final od =
           api.Image.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkImage(od);
+    });
+  });
+
+  unittest.group('obj-schema-IndexStatusInspectionResult', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildIndexStatusInspectionResult();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.IndexStatusInspectionResult.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkIndexStatusInspectionResult(od);
+    });
+  });
+
+  unittest.group('obj-schema-InspectUrlIndexRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildInspectUrlIndexRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.InspectUrlIndexRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkInspectUrlIndexRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-InspectUrlIndexResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildInspectUrlIndexResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.InspectUrlIndexResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkInspectUrlIndexResponse(od);
+    });
+  });
+
+  unittest.group('obj-schema-Item', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildItem();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.Item.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkItem(od);
     });
   });
 
@@ -710,6 +1253,26 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-MobileUsabilityInspectionResult', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildMobileUsabilityInspectionResult();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.MobileUsabilityInspectionResult.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkMobileUsabilityInspectionResult(od);
+    });
+  });
+
+  unittest.group('obj-schema-MobileUsabilityIssue', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildMobileUsabilityIssue();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.MobileUsabilityIssue.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkMobileUsabilityIssue(od);
+    });
+  });
+
   unittest.group('obj-schema-ResourceIssue', () {
     unittest.test('to-json--from-json', () async {
       final o = buildResourceIssue();
@@ -717,6 +1280,26 @@ void main() {
       final od = api.ResourceIssue.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkResourceIssue(od);
+    });
+  });
+
+  unittest.group('obj-schema-RichResultsInspectionResult', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildRichResultsInspectionResult();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RichResultsInspectionResult.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkRichResultsInspectionResult(od);
+    });
+  });
+
+  unittest.group('obj-schema-RichResultsIssue', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildRichResultsIssue();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RichResultsIssue.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkRichResultsIssue(od);
     });
   });
 
@@ -787,6 +1370,16 @@ void main() {
       final od =
           api.TestStatus.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkTestStatus(od);
+    });
+  });
+
+  unittest.group('obj-schema-UrlInspectionResult', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildUrlInspectionResult();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.UrlInspectionResult.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkUrlInspectionResult(od);
     });
   });
 
@@ -1400,6 +1993,63 @@ void main() {
       }), true);
       final response = await res.list($fields: arg_$fields);
       checkSitesListResponse(response as api.SitesListResponse);
+    });
+  });
+
+  unittest.group('resource-UrlInspectionIndexResource', () {
+    unittest.test('method--inspect', () async {
+      final mock = HttpServerMock();
+      final res = api.SearchConsoleApi(mock).urlInspection.index;
+      final arg_request = buildInspectUrlIndexRequest();
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.InspectUrlIndexRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkInspectUrlIndexRequest(obj);
+
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 30),
+          unittest.equals('v1/urlInspection/index:inspect'),
+        );
+        pathOffset += 30;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildInspectUrlIndexResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.inspect(arg_request, $fields: arg_$fields);
+      checkInspectUrlIndexResponse(response as api.InspectUrlIndexResponse);
     });
   });
 

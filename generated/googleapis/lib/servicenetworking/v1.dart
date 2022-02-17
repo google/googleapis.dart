@@ -1418,6 +1418,12 @@ class AddRolesRequest {
 
 /// Request to create a subnetwork in a previously peered service network.
 class AddSubnetworkRequest {
+  /// The IAM permission check determines whether the consumer project has
+  /// 'servicenetworking.services.use' permission or not.
+  ///
+  /// Optional.
+  core.bool? checkServiceNetworkingUsePermission;
+
   /// A resource that represents the service consumer, such as
   /// `projects/123456`.
   ///
@@ -1526,6 +1532,7 @@ class AddSubnetworkRequest {
   core.List<core.String>? subnetworkUsers;
 
   AddSubnetworkRequest({
+    this.checkServiceNetworkingUsePermission,
     this.consumer,
     this.consumerNetwork,
     this.description,
@@ -1543,6 +1550,10 @@ class AddSubnetworkRequest {
 
   AddSubnetworkRequest.fromJson(core.Map _json)
       : this(
+          checkServiceNetworkingUsePermission:
+              _json.containsKey('checkServiceNetworkingUsePermission')
+                  ? _json['checkServiceNetworkingUsePermission'] as core.bool
+                  : null,
           consumer: _json.containsKey('consumer')
               ? _json['consumer'] as core.String
               : null,
@@ -1593,6 +1604,9 @@ class AddSubnetworkRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (checkServiceNetworkingUsePermission != null)
+          'checkServiceNetworkingUsePermission':
+              checkServiceNetworkingUsePermission!,
         if (consumer != null) 'consumer': consumer!,
         if (consumerNetwork != null) 'consumerNetwork': consumerNetwork!,
         if (description != null) 'description': description!,

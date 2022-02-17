@@ -82,7 +82,8 @@ class CustomersResource {
   /// [pageSize] - The maximum number of customers to show in a page of results.
   /// A number between 1 and 100 (inclusive).
   ///
-  /// [pageToken] - A token specifying which result page to return.
+  /// [pageToken] - A token specifying which result page to return. This field
+  /// has custom validations in ListCustomersRequestValidator
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -132,7 +133,8 @@ class CustomersConfigurationsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The customer that manages the configuration. An API
-  /// resource name in the format `customers/[CUSTOMER_ID]`.
+  /// resource name in the format `customers/[CUSTOMER_ID]`. This field has
+  /// custom validation in CreateConfigurationRequestValidator
   /// Value must have pattern `^customers/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1710,6 +1712,8 @@ class CustomerApplyConfigurationRequest {
 
   /// The device the configuration is applied to.
   ///
+  /// There are custom validations in ApplyConfigurationRequestValidator
+  ///
   /// Required.
   DeviceReference? device;
 
@@ -1856,6 +1860,8 @@ class CustomerListDpcsResponse {
 class CustomerRemoveConfigurationRequest {
   /// The device to remove the configuration from.
   ///
+  /// There are custom validations in RemoveConfigurationRequestValidator
+  ///
   /// Required.
   DeviceReference? device;
 
@@ -1879,6 +1885,8 @@ class CustomerRemoveConfigurationRequest {
 /// Request message for customer to unclaim a device.
 class CustomerUnclaimDeviceRequest {
   /// The device to unclaim.
+  ///
+  /// There are custom validations in UnclaimDeviceRequestValidator.
   ///
   /// Required.
   DeviceReference? device;

@@ -26,6 +26,28 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
+core.int buildCounterAnthosCluster = 0;
+api.AnthosCluster buildAnthosCluster() {
+  final o = api.AnthosCluster();
+  buildCounterAnthosCluster++;
+  if (buildCounterAnthosCluster < 3) {
+    o.membership = 'foo';
+  }
+  buildCounterAnthosCluster--;
+  return o;
+}
+
+void checkAnthosCluster(api.AnthosCluster o) {
+  buildCounterAnthosCluster++;
+  if (buildCounterAnthosCluster < 3) {
+    unittest.expect(
+      o.membership!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterAnthosCluster--;
+}
+
 core.int buildCounterApproveRolloutRequest = 0;
 api.ApproveRolloutRequest buildApproveRolloutRequest() {
   final o = api.ApproveRolloutRequest();
@@ -446,9 +468,12 @@ api.ExecutionConfig buildExecutionConfig() {
   final o = api.ExecutionConfig();
   buildCounterExecutionConfig++;
   if (buildCounterExecutionConfig < 3) {
+    o.artifactStorage = 'foo';
     o.defaultPool = buildDefaultPool();
     o.privatePool = buildPrivatePool();
+    o.serviceAccount = 'foo';
     o.usages = buildUnnamed6();
+    o.workerPool = 'foo';
   }
   buildCounterExecutionConfig--;
   return o;
@@ -457,9 +482,21 @@ api.ExecutionConfig buildExecutionConfig() {
 void checkExecutionConfig(api.ExecutionConfig o) {
   buildCounterExecutionConfig++;
   if (buildCounterExecutionConfig < 3) {
+    unittest.expect(
+      o.artifactStorage!,
+      unittest.equals('foo'),
+    );
     checkDefaultPool(o.defaultPool!);
     checkPrivatePool(o.privatePool!);
+    unittest.expect(
+      o.serviceAccount!,
+      unittest.equals('foo'),
+    );
     checkUnnamed6(o.usages!);
+    unittest.expect(
+      o.workerPool!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterExecutionConfig--;
 }
@@ -507,6 +544,7 @@ api.GkeCluster buildGkeCluster() {
   buildCounterGkeCluster++;
   if (buildCounterGkeCluster < 3) {
     o.cluster = 'foo';
+    o.internalIp = true;
   }
   buildCounterGkeCluster--;
   return o;
@@ -519,6 +557,7 @@ void checkGkeCluster(api.GkeCluster o) {
       o.cluster!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.internalIp!, unittest.isTrue);
   }
   buildCounterGkeCluster--;
 }
@@ -1706,6 +1745,7 @@ api.Target buildTarget() {
   buildCounterTarget++;
   if (buildCounterTarget < 3) {
     o.annotations = buildUnnamed35();
+    o.anthosCluster = buildAnthosCluster();
     o.createTime = 'foo';
     o.description = 'foo';
     o.etag = 'foo';
@@ -1726,6 +1766,7 @@ void checkTarget(api.Target o) {
   buildCounterTarget++;
   if (buildCounterTarget < 3) {
     checkUnnamed35(o.annotations!);
+    checkAnthosCluster(o.anthosCluster!);
     unittest.expect(
       o.createTime!,
       unittest.equals('foo'),
@@ -1942,6 +1983,16 @@ void checkTestIamPermissionsResponse(api.TestIamPermissionsResponse o) {
 }
 
 void main() {
+  unittest.group('obj-schema-AnthosCluster', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildAnthosCluster();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AnthosCluster.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkAnthosCluster(od);
+    });
+  });
+
   unittest.group('obj-schema-ApproveRolloutRequest', () {
     unittest.test('to-json--from-json', () async {
       final o = buildApproveRolloutRequest();

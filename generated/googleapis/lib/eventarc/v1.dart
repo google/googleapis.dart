@@ -23,6 +23,7 @@
 ///     - [ProjectsLocationsChannelConnectionsResource]
 ///     - [ProjectsLocationsChannelsResource]
 ///     - [ProjectsLocationsOperationsResource]
+///     - [ProjectsLocationsProvidersResource]
 ///     - [ProjectsLocationsTriggersResource]
 library eventarc.v1;
 
@@ -75,6 +76,8 @@ class ProjectsLocationsResource {
       ProjectsLocationsChannelsResource(_requester);
   ProjectsLocationsOperationsResource get operations =>
       ProjectsLocationsOperationsResource(_requester);
+  ProjectsLocationsProvidersResource get providers =>
+      ProjectsLocationsProvidersResource(_requester);
   ProjectsLocationsTriggersResource get triggers =>
       ProjectsLocationsTriggersResource(_requester);
 
@@ -676,6 +679,107 @@ class ProjectsLocationsOperationsResource {
       queryParams: _queryParams,
     );
     return GoogleLongrunningListOperationsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsProvidersResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsProvidersResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Get a single Provider.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the provider to get.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/providers/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Provider].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Provider> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return Provider.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// List providers.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent of the provider to get.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - The filter field that the list request will filter on.
+  ///
+  /// [orderBy] - The sorting order of the resources returned. Value should be a
+  /// comma-separated list of fields. The default sorting oder is ascending. To
+  /// specify descending order for a field, append a `desc` suffix; for example:
+  /// `name desc, _id`.
+  ///
+  /// [pageSize] - The maximum number of providers to return on each page.
+  ///
+  /// [pageToken] - The page token; provide the value from the `next_page_token`
+  /// field in a previous `ListProviders` call to retrieve the subsequent page.
+  /// When paginating, all other parameters provided to `ListProviders` must
+  /// match the call that provided the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListProvidersResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListProvidersResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/providers';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return ListProvidersResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
 }
@@ -1283,7 +1387,7 @@ class Destination {
   /// The Cloud Function resource name.
   ///
   /// Only Cloud Functions V2 is supported. Format:
-  /// projects/{project}/locations/{location}/functions/{function}
+  /// `projects/{project}/locations/{location}/functions/{function}`
   core.String? cloudFunction;
 
   /// Cloud Run fully-managed resource that receives the events.
@@ -1343,6 +1447,14 @@ class EventFilter {
   /// Required.
   core.String? attribute;
 
+  /// The operator used for matching the events with the value of the filter.
+  ///
+  /// If not specified, only events that have an exact key-value pair specified
+  /// in the filter are matched. The only allowed value is `match-path-pattern`.
+  ///
+  /// Optional.
+  core.String? operator;
+
   /// The value for the attribute.
   ///
   /// Required.
@@ -1350,6 +1462,7 @@ class EventFilter {
 
   EventFilter({
     this.attribute,
+    this.operator,
     this.value,
   });
 
@@ -1358,13 +1471,83 @@ class EventFilter {
           attribute: _json.containsKey('attribute')
               ? _json['attribute'] as core.String
               : null,
+          operator: _json.containsKey('operator')
+              ? _json['operator'] as core.String
+              : null,
           value:
               _json.containsKey('value') ? _json['value'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (attribute != null) 'attribute': attribute!,
+        if (operator != null) 'operator': operator!,
         if (value != null) 'value': value!,
+      };
+}
+
+/// A representation of the event type resource.
+class EventType {
+  /// Human friendly description of what the event type is about.
+  ///
+  /// For example "Bucket created in Cloud Storage".
+  ///
+  /// Output only.
+  core.String? description;
+
+  /// URI for the event schema.
+  ///
+  /// For example
+  /// "https://github.com/googleapis/google-cloudevents/blob/master/proto/google/events/cloud/storage/v1/events.proto"
+  ///
+  /// Output only.
+  core.String? eventSchemaUri;
+
+  /// Filtering attributes for the event type.
+  ///
+  /// Output only.
+  core.List<FilteringAttribute>? filteringAttributes;
+
+  /// The full name of the event type (for example,
+  /// "google.cloud.storage.object.v1.finalized").
+  ///
+  /// In the form of {provider-specific-prefix}.{resource}.{version}.{verb}.
+  /// Types MUST be versioned and event schemas are guaranteed to remain
+  /// backward compatible within one version. Note that event type versions and
+  /// API versions do not need to match.
+  ///
+  /// Output only.
+  core.String? type;
+
+  EventType({
+    this.description,
+    this.eventSchemaUri,
+    this.filteringAttributes,
+    this.type,
+  });
+
+  EventType.fromJson(core.Map _json)
+      : this(
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          eventSchemaUri: _json.containsKey('eventSchemaUri')
+              ? _json['eventSchemaUri'] as core.String
+              : null,
+          filteringAttributes: _json.containsKey('filteringAttributes')
+              ? (_json['filteringAttributes'] as core.List)
+                  .map((value) => FilteringAttribute.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          type: _json.containsKey('type') ? _json['type'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (description != null) 'description': description!,
+        if (eventSchemaUri != null) 'eventSchemaUri': eventSchemaUri!,
+        if (filteringAttributes != null)
+          'filteringAttributes': filteringAttributes!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -1387,6 +1570,66 @@ class EventFilter {
 /// service that evaluates it. See the service documentation for additional
 /// information.
 typedef Expr = $Expr;
+
+/// A representation of the FilteringAttribute resource.
+///
+/// Filtering attributes are per event type.
+class FilteringAttribute {
+  /// Attribute used for filtering the event type.
+  ///
+  /// Output only.
+  core.String? attribute;
+
+  /// Description of the purpose of the attribute.
+  ///
+  /// Output only.
+  core.String? description;
+
+  /// If true, the attribute accepts matching expressions in the Eventarc
+  /// PathPattern format.
+  ///
+  /// Output only.
+  core.bool? pathPatternSupported;
+
+  /// If true, the triggers for this provider should always specify a filter on
+  /// these attributes.
+  ///
+  /// Trigger creation will fail otherwise.
+  ///
+  /// Output only.
+  core.bool? required;
+
+  FilteringAttribute({
+    this.attribute,
+    this.description,
+    this.pathPatternSupported,
+    this.required,
+  });
+
+  FilteringAttribute.fromJson(core.Map _json)
+      : this(
+          attribute: _json.containsKey('attribute')
+              ? _json['attribute'] as core.String
+              : null,
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          pathPatternSupported: _json.containsKey('pathPatternSupported')
+              ? _json['pathPatternSupported'] as core.bool
+              : null,
+          required: _json.containsKey('required')
+              ? _json['required'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (attribute != null) 'attribute': attribute!,
+        if (description != null) 'description': description!,
+        if (pathPatternSupported != null)
+          'pathPatternSupported': pathPatternSupported!,
+        if (required != null) 'required': required!,
+      };
+}
 
 /// Represents a GKE destination.
 class GKE {
@@ -1609,6 +1852,50 @@ class ListLocationsResponse {
       };
 }
 
+/// The response message for the `ListProviders` method.
+class ListProvidersResponse {
+  /// A page token that can be sent to ListProviders to request the next page.
+  ///
+  /// If this is empty, then there are no more pages.
+  core.String? nextPageToken;
+
+  /// The requested providers, up to the number specified in `page_size`.
+  core.List<Provider>? providers;
+
+  /// Unreachable resources, if any.
+  core.List<core.String>? unreachable;
+
+  ListProvidersResponse({
+    this.nextPageToken,
+    this.providers,
+    this.unreachable,
+  });
+
+  ListProvidersResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          providers: _json.containsKey('providers')
+              ? (_json['providers'] as core.List)
+                  .map((value) => Provider.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          unreachable: _json.containsKey('unreachable')
+              ? (_json['unreachable'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (providers != null) 'providers': providers!,
+        if (unreachable != null) 'unreachable': unreachable!,
+      };
+}
+
 /// The response message for the `ListTriggers` method.
 class ListTriggersResponse {
   /// A page token that can be sent to ListTriggers to request the next page.
@@ -1777,6 +2064,53 @@ class Policy {
       };
 }
 
+/// A representation of the Provider resource.
+class Provider {
+  /// Human friendly name for the Provider.
+  ///
+  /// For example "Cloud Storage".
+  ///
+  /// Output only.
+  core.String? displayName;
+
+  /// Event types for this provider.
+  ///
+  /// Output only.
+  core.List<EventType>? eventTypes;
+
+  /// In `projects/{project}/locations/{location}/providers/{provider_id}`
+  /// format.
+  ///
+  /// Output only.
+  core.String? name;
+
+  Provider({
+    this.displayName,
+    this.eventTypes,
+    this.name,
+  });
+
+  Provider.fromJson(core.Map _json)
+      : this(
+          displayName: _json.containsKey('displayName')
+              ? _json['displayName'] as core.String
+              : null,
+          eventTypes: _json.containsKey('eventTypes')
+              ? (_json['eventTypes'] as core.List)
+                  .map((value) => EventType.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (eventTypes != null) 'eventTypes': eventTypes!,
+        if (name != null) 'name': name!,
+      };
+}
+
 /// Represents a Pub/Sub transport.
 class Pubsub {
   /// The name of the Pub/Sub subscription created and managed by Eventarc as a
@@ -1856,7 +2190,7 @@ class SetIamPolicyRequest {
 }
 
 /// Request message for `TestIamPermissions` method.
-typedef TestIamPermissionsRequest = $TestIamPermissionsRequest;
+typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;
 
 /// Response message for `TestIamPermissions` method.
 typedef TestIamPermissionsResponse = $PermissionsResponse;

@@ -412,7 +412,7 @@
                     ]
                 },
                 "run": {
-                    "description": "Attempts to start a new TransferOperation for the current TransferJob. A TransferJob has a maximum of one active TransferOperation. If this method is called while a TransferOperation is active, an error wil be returned.",
+                    "description": "Attempts to start a new TransferOperation for the current TransferJob. A TransferJob has a maximum of one active TransferOperation. If this method is called while a TransferOperation is active, an error will be returned.",
                     "flatPath": "v1/transferJobs/{transferJobsId}:run",
                     "httpMethod": "POST",
                     "id": "storagetransfer.transferJobs.run",
@@ -598,7 +598,7 @@
             }
         }
     },
-    "revision": "20220119",
+    "revision": "20220203",
     "rootUrl": "https://storagetransfer.googleapis.com/",
     "schemas": {
         "AgentPool": {
@@ -728,7 +728,7 @@
             "type": "object"
         },
         "Date": {
-            "description": "Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values * A month and day value, with a zero year, such as an anniversary * A year on its own, with zero month and day values * A year and month value, with a zero day, such as a credit card expiration date Related types are google.type.TimeOfDay and `google.protobuf.Timestamp`.",
+            "description": "Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values * A month and day, with a zero year (e.g., an anniversary) * A year on its own, with a zero month and a zero day * A year and month, with a zero day (e.g., a credit card expiration date) Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp",
             "id": "Date",
             "properties": {
                 "day": {
@@ -977,11 +977,25 @@
             "type": "object"
         },
         "MetadataOptions": {
-            "description": "Specifies the metadata options for running a transfer.",
+            "description": "Specifies the metadata options for running a transfer. These options only apply to transfers involving a POSIX filesystem and are ignored for other transfers.",
             "id": "MetadataOptions",
             "properties": {
+                "acl": {
+                    "description": "Specifies how each object's ACLs should be preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as ACL_DESTINATION_BUCKET_DEFAULT.",
+                    "enum": [
+                        "ACL_UNSPECIFIED",
+                        "ACL_DESTINATION_BUCKET_DEFAULT",
+                        "ACL_PRESERVE"
+                    ],
+                    "enumDescriptions": [
+                        "ACL behavior is unspecified.",
+                        "Use the destination bucket's default object ACLS, if applicable.",
+                        "Preserve the object's original ACLs. This requires the service account to have `storage.objects.getIamPolicy` permission for the source object. [Uniform bucket-level access](https://cloud.google.com/storage/docs/uniform-bucket-level-access) must not be enabled on either the source or destination buckets."
+                    ],
+                    "type": "string"
+                },
                 "gid": {
-                    "description": "Specifies how each file's GID attribute should be handled by the transfer. If unspecified, the default behavior is the same as GID_SKIP when the source is a POSIX file system.",
+                    "description": "Specifies how each file's POSIX group ID (GID) attribute should be handled by the transfer. By default, GID is not preserved.",
                     "enum": [
                         "GID_UNSPECIFIED",
                         "GID_SKIP",
@@ -989,13 +1003,27 @@
                     ],
                     "enumDescriptions": [
                         "GID behavior is unspecified.",
-                        "Skip GID during a transfer job.",
+                        "Do not preserve GID during a transfer job.",
                         "Preserve GID during a transfer job."
                     ],
                     "type": "string"
                 },
+                "kmsKey": {
+                    "description": "Specifies how each object's Cloud KMS customer-managed encryption key (CMEK) is preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as KMS_KEY_DESTINATION_BUCKET_DEFAULT.",
+                    "enum": [
+                        "KMS_KEY_UNSPECIFIED",
+                        "KMS_KEY_DESTINATION_BUCKET_DEFAULT",
+                        "KMS_KEY_PRESERVE"
+                    ],
+                    "enumDescriptions": [
+                        "KmsKey behavior is unspecified.",
+                        "Use the destination bucket's default encryption settings.",
+                        "Preserve the object's original Cloud KMS customer-managed encryption key (CMEK) if present. Objects that do not use a Cloud KMS encryption key will be encrypted using the destination bucket's encryption settings."
+                    ],
+                    "type": "string"
+                },
                 "mode": {
-                    "description": "Specifies how each file's mode attribute should be handled by the transfer. If unspecified, the default behavior is the same as MODE_SKIP when the source is a POSIX file system.",
+                    "description": "Specifies how each file's mode attribute should be handled by the transfer. By default, mode is not preserved.",
                     "enum": [
                         "MODE_UNSPECIFIED",
                         "MODE_SKIP",
@@ -1003,27 +1031,63 @@
                     ],
                     "enumDescriptions": [
                         "Mode behavior is unspecified.",
-                        "Skip mode during a transfer job.",
+                        "Do not preserve mode during a transfer job.",
                         "Preserve mode during a transfer job."
                     ],
                     "type": "string"
                 },
+                "storageClass": {
+                    "description": "Specifies the storage class to set on objects being transferred to Google Cloud Storage buckets. If unspecified, the default behavior is the same as STORAGE_CLASS_DESTINATION_BUCKET_DEFAULT.",
+                    "enum": [
+                        "STORAGE_CLASS_UNSPECIFIED",
+                        "STORAGE_CLASS_DESTINATION_BUCKET_DEFAULT",
+                        "STORAGE_CLASS_PRESERVE",
+                        "STORAGE_CLASS_STANDARD",
+                        "STORAGE_CLASS_NEARLINE",
+                        "STORAGE_CLASS_COLDLINE",
+                        "STORAGE_CLASS_ARCHIVE"
+                    ],
+                    "enumDescriptions": [
+                        "Storage class behavior is unspecified.",
+                        "Use the destination bucket's default storage class.",
+                        "Preserve the object's original storage class. This is only supported for transfers from Google Cloud Storage buckets.",
+                        "Set the storage class to STANDARD.",
+                        "Set the storage class to NEARLINE.",
+                        "Set the storage class to COLDLINE.",
+                        "Set the storage class to ARCHIVE."
+                    ],
+                    "type": "string"
+                },
                 "symlink": {
-                    "description": "Specifies how symlinks should be handled by the transfer. If unspecified, the default behavior is the same as SYMLINK_SKIP when the source is a POSIX file system.",
+                    "description": "Specifies how symlinks should be handled by the transfer. By default, symlinks are not preserved.",
                     "enum": [
                         "SYMLINK_UNSPECIFIED",
                         "SYMLINK_SKIP",
                         "SYMLINK_PRESERVE"
                     ],
                     "enumDescriptions": [
-                        "Symlink behavior is unspecified. The default behavior is to skip symlinks during a transfer job.",
-                        "Skip symlinks during a transfer job.",
+                        "Symlink behavior is unspecified.",
+                        "Do not preserve symlinks during a transfer job.",
                         "Preserve symlinks during a transfer job."
                     ],
                     "type": "string"
                 },
+                "temporaryHold": {
+                    "description": "Specifies how each object's temporary hold status should be preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as TEMPORARY_HOLD_PRESERVE.",
+                    "enum": [
+                        "TEMPORARY_HOLD_UNSPECIFIED",
+                        "TEMPORARY_HOLD_SKIP",
+                        "TEMPORARY_HOLD_PRESERVE"
+                    ],
+                    "enumDescriptions": [
+                        "Temporary hold behavior is unspecified.",
+                        "Do not set a temporary hold on the destination object.",
+                        "Preserve the object's original temporary hold status."
+                    ],
+                    "type": "string"
+                },
                 "uid": {
-                    "description": "Specifies how each file's UID attribute should be handled by the transfer. If unspecified, the default behavior is the same as UID_SKIP when the source is a POSIX file system.",
+                    "description": "Specifies how each file's POSIX user ID (UID) attribute should be handled by the transfer. By default, UID is not preserved.",
                     "enum": [
                         "UID_UNSPECIFIED",
                         "UID_SKIP",
@@ -1031,7 +1095,7 @@
                     ],
                     "enumDescriptions": [
                         "UID behavior is unspecified.",
-                        "Skip UID during a transfer job.",
+                        "Do not preserve UID during a transfer job.",
                         "Preserve UID during a transfer job."
                     ],
                     "type": "string"
@@ -1555,7 +1619,7 @@
                 },
                 "metadataOptions": {
                     "$ref": "MetadataOptions",
-                    "description": "Represents the selected metadata options for a transfer job."
+                    "description": "Represents the selected metadata options for a transfer job. This feature is in Preview."
                 },
                 "overwriteObjectsAlreadyExistingInSink": {
                     "description": "When to overwrite objects that already exist in the sink. The default is that only objects that are different from the source are ovewritten. If true, all objects in the sink whose name matches an object in the source are overwritten with the source object.",

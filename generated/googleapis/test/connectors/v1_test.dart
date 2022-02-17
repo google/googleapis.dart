@@ -376,13 +376,13 @@ api.Connection buildConnection() {
     o.egressBackends = buildUnnamed6();
     o.envoyImageLocation = 'foo';
     o.imageLocation = 'foo';
-    o.inactive = true;
     o.labels = buildUnnamed7();
     o.lockConfig = buildLockConfig();
     o.name = 'foo';
     o.serviceAccount = 'foo';
     o.serviceDirectory = 'foo';
     o.status = buildConnectionStatus();
+    o.suspended = true;
     o.updateTime = 'foo';
   }
   buildCounterConnection--;
@@ -415,7 +415,6 @@ void checkConnection(api.Connection o) {
       o.imageLocation!,
       unittest.equals('foo'),
     );
-    unittest.expect(o.inactive!, unittest.isTrue);
     checkUnnamed7(o.labels!);
     checkLockConfig(o.lockConfig!);
     unittest.expect(
@@ -431,6 +430,7 @@ void checkConnection(api.Connection o) {
       unittest.equals('foo'),
     );
     checkConnectionStatus(o.status!);
+    unittest.expect(o.suspended!, unittest.isTrue);
     unittest.expect(
       o.updateTime!,
       unittest.equals('foo'),

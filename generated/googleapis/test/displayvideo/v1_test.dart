@@ -4401,8 +4401,10 @@ api.FirstAndThirdPartyAudience buildFirstAndThirdPartyAudience() {
   buildCounterFirstAndThirdPartyAudience++;
   if (buildCounterFirstAndThirdPartyAudience < 3) {
     o.activeDisplayAudienceSize = 'foo';
+    o.appId = 'foo';
     o.audienceSource = 'foo';
     o.audienceType = 'foo';
+    o.contactInfoList = buildContactInfoList();
     o.description = 'foo';
     o.displayAudienceSize = 'foo';
     o.displayDesktopAudienceSize = 'foo';
@@ -4413,6 +4415,7 @@ api.FirstAndThirdPartyAudience buildFirstAndThirdPartyAudience() {
     o.firstAndThirdPartyAudienceType = 'foo';
     o.gmailAudienceSize = 'foo';
     o.membershipDurationDays = 'foo';
+    o.mobileDeviceIdList = buildMobileDeviceIdList();
     o.name = 'foo';
     o.youtubeAudienceSize = 'foo';
   }
@@ -4428,6 +4431,10 @@ void checkFirstAndThirdPartyAudience(api.FirstAndThirdPartyAudience o) {
       unittest.equals('foo'),
     );
     unittest.expect(
+      o.appId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
       o.audienceSource!,
       unittest.equals('foo'),
     );
@@ -4435,6 +4442,7 @@ void checkFirstAndThirdPartyAudience(api.FirstAndThirdPartyAudience o) {
       o.audienceType!,
       unittest.equals('foo'),
     );
+    checkContactInfoList(o.contactInfoList!);
     unittest.expect(
       o.description!,
       unittest.equals('foo'),
@@ -4475,6 +4483,7 @@ void checkFirstAndThirdPartyAudience(api.FirstAndThirdPartyAudience o) {
       o.membershipDurationDays!,
       unittest.equals('foo'),
     );
+    checkMobileDeviceIdList(o.mobileDeviceIdList!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),

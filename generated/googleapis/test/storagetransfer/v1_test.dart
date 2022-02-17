@@ -504,9 +504,13 @@ api.MetadataOptions buildMetadataOptions() {
   final o = api.MetadataOptions();
   buildCounterMetadataOptions++;
   if (buildCounterMetadataOptions < 3) {
+    o.acl = 'foo';
     o.gid = 'foo';
+    o.kmsKey = 'foo';
     o.mode = 'foo';
+    o.storageClass = 'foo';
     o.symlink = 'foo';
+    o.temporaryHold = 'foo';
     o.uid = 'foo';
   }
   buildCounterMetadataOptions--;
@@ -517,7 +521,15 @@ void checkMetadataOptions(api.MetadataOptions o) {
   buildCounterMetadataOptions++;
   if (buildCounterMetadataOptions < 3) {
     unittest.expect(
+      o.acl!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
       o.gid!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.kmsKey!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -525,7 +537,15 @@ void checkMetadataOptions(api.MetadataOptions o) {
       unittest.equals('foo'),
     );
     unittest.expect(
+      o.storageClass!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
       o.symlink!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.temporaryHold!,
       unittest.equals('foo'),
     );
     unittest.expect(

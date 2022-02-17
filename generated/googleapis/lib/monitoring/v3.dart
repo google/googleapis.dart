@@ -7154,7 +7154,7 @@ class MetricDescriptor {
   /// are cleared for widespread use. By Alpha, all significant design issues
   /// are resolved and we are in the process of verifying functionality. Alpha
   /// customers need to apply for access, agree to applicable terms, and have
-  /// their projects allowlisted. Alpha releases don’t have to be feature
+  /// their projects allowlisted. Alpha releases don't have to be feature
   /// complete, no SLAs are provided, and there are no technical support
   /// obligations, but they will be far enough along that customers can actually
   /// use them in test environments or for limited-use tests -- just like they
@@ -7167,7 +7167,7 @@ class MetricDescriptor {
   /// - "GA" : GA features are open to all developers and are considered stable
   /// and fully qualified for production use.
   /// - "DEPRECATED" : Deprecated features are scheduled to be shut down and
-  /// removed. For more information, see the “Deprecation Policy” section of our
+  /// removed. For more information, see the "Deprecation Policy" section of our
   /// Terms of Service (https://cloud.google.com/terms/) and the Google Cloud
   /// Platform Subject to the Deprecation Policy
   /// (https://cloud.google.com/terms/deprecation) documentation.
@@ -7454,6 +7454,21 @@ class MetricThreshold {
   /// quickly.
   core.String? duration;
 
+  /// A condition control that determines how metric-threshold conditions are
+  /// evaluated when data stops arriving.
+  /// Possible string values are:
+  /// - "EVALUATION_MISSING_DATA_UNSPECIFIED" : An unspecified evaluation
+  /// missing data option, if used, it will default to
+  /// EVALUATION_MISSING_DATA_ACTIVE.
+  /// - "EVALUATION_MISSING_DATA_INACTIVE" : If there is no data to evaluate the
+  /// condition, then evaluate the condition as false.
+  /// - "EVALUATION_MISSING_DATA_ACTIVE" : If there is no data to evaluate the
+  /// condition, then evaluate the condition as true. The default for conditions
+  /// with a duration value.
+  /// - "EVALUATION_MISSING_DATA_NO_OP" : Do not evaluate the condition to any
+  /// value if there is no data.
+  core.String? evaluationMissingData;
+
   /// A filter (https://cloud.google.com/monitoring/api/v3/filters) that
   /// identifies which time series should be compared with the threshold.The
   /// filter is similar to the one that is specified in the ListTimeSeries
@@ -7487,6 +7502,7 @@ class MetricThreshold {
     this.denominatorAggregations,
     this.denominatorFilter,
     this.duration,
+    this.evaluationMissingData,
     this.filter,
     this.thresholdValue,
     this.trigger,
@@ -7515,6 +7531,9 @@ class MetricThreshold {
           duration: _json.containsKey('duration')
               ? _json['duration'] as core.String
               : null,
+          evaluationMissingData: _json.containsKey('evaluationMissingData')
+              ? _json['evaluationMissingData'] as core.String
+              : null,
           filter: _json.containsKey('filter')
               ? _json['filter'] as core.String
               : null,
@@ -7534,6 +7553,8 @@ class MetricThreshold {
           'denominatorAggregations': denominatorAggregations!,
         if (denominatorFilter != null) 'denominatorFilter': denominatorFilter!,
         if (duration != null) 'duration': duration!,
+        if (evaluationMissingData != null)
+          'evaluationMissingData': evaluationMissingData!,
         if (filter != null) 'filter': filter!,
         if (thresholdValue != null) 'thresholdValue': thresholdValue!,
         if (trigger != null) 'trigger': trigger!,
@@ -7648,7 +7669,7 @@ class MonitoredResourceDescriptor {
   /// are cleared for widespread use. By Alpha, all significant design issues
   /// are resolved and we are in the process of verifying functionality. Alpha
   /// customers need to apply for access, agree to applicable terms, and have
-  /// their projects allowlisted. Alpha releases don’t have to be feature
+  /// their projects allowlisted. Alpha releases don't have to be feature
   /// complete, no SLAs are provided, and there are no technical support
   /// obligations, but they will be far enough along that customers can actually
   /// use them in test environments or for limited-use tests -- just like they
@@ -7661,7 +7682,7 @@ class MonitoredResourceDescriptor {
   /// - "GA" : GA features are open to all developers and are considered stable
   /// and fully qualified for production use.
   /// - "DEPRECATED" : Deprecated features are scheduled to be shut down and
-  /// removed. For more information, see the “Deprecation Policy” section of our
+  /// removed. For more information, see the "Deprecation Policy" section of our
   /// Terms of Service (https://cloud.google.com/terms/) and the Google Cloud
   /// Platform Subject to the Deprecation Policy
   /// (https://cloud.google.com/terms/deprecation) documentation.
@@ -7753,6 +7774,21 @@ class MonitoringQueryLanguageCondition {
   /// quickly.
   core.String? duration;
 
+  /// A condition control that determines how metric-threshold conditions are
+  /// evaluated when data stops arriving.
+  /// Possible string values are:
+  /// - "EVALUATION_MISSING_DATA_UNSPECIFIED" : An unspecified evaluation
+  /// missing data option, if used, it will default to
+  /// EVALUATION_MISSING_DATA_ACTIVE.
+  /// - "EVALUATION_MISSING_DATA_INACTIVE" : If there is no data to evaluate the
+  /// condition, then evaluate the condition as false.
+  /// - "EVALUATION_MISSING_DATA_ACTIVE" : If there is no data to evaluate the
+  /// condition, then evaluate the condition as true. The default for conditions
+  /// with a duration value.
+  /// - "EVALUATION_MISSING_DATA_NO_OP" : Do not evaluate the condition to any
+  /// value if there is no data.
+  core.String? evaluationMissingData;
+
   /// Monitoring Query Language (https://cloud.google.com/monitoring/mql) query
   /// that outputs a boolean stream.
   core.String? query;
@@ -7768,6 +7804,7 @@ class MonitoringQueryLanguageCondition {
 
   MonitoringQueryLanguageCondition({
     this.duration,
+    this.evaluationMissingData,
     this.query,
     this.trigger,
   });
@@ -7776,6 +7813,9 @@ class MonitoringQueryLanguageCondition {
       : this(
           duration: _json.containsKey('duration')
               ? _json['duration'] as core.String
+              : null,
+          evaluationMissingData: _json.containsKey('evaluationMissingData')
+              ? _json['evaluationMissingData'] as core.String
               : null,
           query:
               _json.containsKey('query') ? _json['query'] as core.String : null,
@@ -7787,6 +7827,8 @@ class MonitoringQueryLanguageCondition {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (duration != null) 'duration': duration!,
+        if (evaluationMissingData != null)
+          'evaluationMissingData': evaluationMissingData!,
         if (query != null) 'query': query!,
         if (trigger != null) 'trigger': trigger!,
       };
@@ -8026,7 +8068,7 @@ class NotificationChannelDescriptor {
   /// are cleared for widespread use. By Alpha, all significant design issues
   /// are resolved and we are in the process of verifying functionality. Alpha
   /// customers need to apply for access, agree to applicable terms, and have
-  /// their projects allowlisted. Alpha releases don’t have to be feature
+  /// their projects allowlisted. Alpha releases don't have to be feature
   /// complete, no SLAs are provided, and there are no technical support
   /// obligations, but they will be far enough along that customers can actually
   /// use them in test environments or for limited-use tests -- just like they
@@ -8039,7 +8081,7 @@ class NotificationChannelDescriptor {
   /// - "GA" : GA features are open to all developers and are considered stable
   /// and fully qualified for production use.
   /// - "DEPRECATED" : Deprecated features are scheduled to be shut down and
-  /// removed. For more information, see the “Deprecation Policy” section of our
+  /// removed. For more information, see the "Deprecation Policy" section of our
   /// Terms of Service (https://cloud.google.com/terms/) and the Google Cloud
   /// Platform Subject to the Deprecation Policy
   /// (https://cloud.google.com/terms/deprecation) documentation.
@@ -9284,7 +9326,7 @@ class UptimeCheckConfig {
   ///
   /// The following monitored resource types are valid for this field:
   /// uptime_url, gce_instance, gae_app, aws_ec2_instance, aws_elb_load_balancer
-  /// k8s_service
+  /// k8s_service servicedirectory_service
   MonitoredResource? monitoredResource;
 
   /// A unique resource name for this Uptime check configuration.

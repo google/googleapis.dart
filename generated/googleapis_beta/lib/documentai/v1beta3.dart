@@ -3842,7 +3842,7 @@ class GoogleCloudDocumentaiV1beta3ProcessorType {
   /// are cleared for widespread use. By Alpha, all significant design issues
   /// are resolved and we are in the process of verifying functionality. Alpha
   /// customers need to apply for access, agree to applicable terms, and have
-  /// their projects allowlisted. Alpha releases don’t have to be feature
+  /// their projects allowlisted. Alpha releases don't have to be feature
   /// complete, no SLAs are provided, and there are no technical support
   /// obligations, but they will be far enough along that customers can actually
   /// use them in test environments or for limited-use tests -- just like they
@@ -3855,7 +3855,7 @@ class GoogleCloudDocumentaiV1beta3ProcessorType {
   /// - "GA" : GA features are open to all developers and are considered stable
   /// and fully qualified for production use.
   /// - "DEPRECATED" : Deprecated features are scheduled to be shut down and
-  /// removed. For more information, see the “Deprecation Policy” section of our
+  /// removed. For more information, see the "Deprecation Policy" section of our
   /// [Terms of Service](https://cloud.google.com/terms/) and the
   /// [Google Cloud Platform Subject to the Deprecation Policy](https://cloud.google.com/terms/deprecation)
   /// documentation.
@@ -4408,10 +4408,10 @@ class GoogleTypeColor {
 /// The time of day and time zone are either specified elsewhere or are
 /// insignificant. The date is relative to the Gregorian Calendar. This can
 /// represent one of the following: * A full date, with non-zero year, month,
-/// and day values * A month and day value, with a zero year, such as an
-/// anniversary * A year on its own, with zero month and day values * A year and
-/// month value, with a zero day, such as a credit card expiration date Related
-/// types are google.type.TimeOfDay and `google.protobuf.Timestamp`.
+/// and day values * A month and day, with a zero year (e.g., an anniversary) *
+/// A year on its own, with a zero month and a zero day * A year and month, with
+/// a zero day (e.g., a credit card expiration date) Related types: *
+/// google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
 typedef GoogleTypeDate = $Date;
 
 /// Represents civil time (or occasionally physical time).

@@ -2,7 +2,7 @@
 # should be ignored.
 packages:
 - googleapis:
-    version: 8.0.0-dev
+    version: 8.0.0
     repository: https://github.com/google/googleapis.dart/tree/master/generated/googleapis
     readme: resources/README.md
     license: resources/LICENSE
@@ -37,6 +37,7 @@ packages:
     - assuredworkloads:v1
     - authorizedbuyersmarketplace:v1
     - baremetalsolution:v1
+    - baremetalsolution:v2
     - bigquery:v2 # https://developers.google.com/bigquery/
     - bigquerydatatransfer:v1 # https://cloud.google.com/bigquery/transfer/
     - bigqueryreservation:v1
@@ -46,6 +47,7 @@ packages:
     - blogger:v3 # https://developers.google.com/blogger/
     - books:v1 # https://developers.google.com/books/
     - calendar:v3 # https://developers.google.com/google-apps/calendar/
+    - certificatemanager:v1
     - chat:v1 # https://developers.google.com/hangouts/chat
     - chromemanagement:v1
     - chromepolicy:v1
@@ -83,6 +85,7 @@ packages:
     - datafusion:v1
     - datamigration:v1
     - datapipelines:v1
+    - dataplex:v1
     - dataproc:v1 # https://cloud.google.com/dataproc/
     - datastore:v1 # https://developers.google.com/datastore/
     - datastream:v1
@@ -126,11 +129,11 @@ packages:
     - groupssettings:v1 # https://developers.google.com/admin-sdk/groups-settings/
     - healthcare:v1
     - homegraph:v1
-    - ids:v1
     - iam:v1 # https://cloud.google.com/iam/
     - iamcredentials:v1 # https://cloud.google.com/iam/docs/creating-short-lived-service-account-credentials
     - iap:v1 # https://cloud.google.com/iap
     - identitytoolkit:v3 # https://developers.google.com/identity-toolkit/
+    - ids:v1
     - indexing:v3 # https://developers.google.com/search/apis/indexing-api/
     - jobs:v3 # https://cloud.google.com/job-discovery/docs
     - jobs:v4
@@ -147,6 +150,7 @@ packages:
     - ml:v1 # https://cloud.google.com/ml-engine/
     - monitoring:v3 # https://cloud.google.com/monitoring/api/
     - mybusinessaccountmanagement:v1
+    - mybusinessbusinesscalls:v1
     - mybusinessbusinessinformation:v1
     - mybusinesslodging:v1
     - mybusinessnotifications:v1
@@ -167,6 +171,7 @@ packages:
     - paymentsresellersubscription:v1
     - people:v1 # https://developers.google.com/people/
     - playcustomapp:v1 # https://developers.google.com/android/work/play/custom-app-api
+    - playintegrity:v1
     - policyanalyzer:v1
     - policysimulator:v1
     - policytroubleshooter:v1
@@ -231,7 +236,7 @@ packages:
     - youtubereporting:v1 # https://developers.google.com/youtube/reporting/v1/reports/
 
 - googleapis_beta:
-    version: 8.0.0-dev
+    version: 8.0.0
     repository: https://github.com/google/googleapis.dart/tree/master/generated/googleapis_beta
     readme: resources/README.md
     license: resources/LICENSE
@@ -245,6 +250,7 @@ packages:
     - area120tables:v1alpha1
     - bigqueryconnection:v1beta1
     - clouderrorreporting:v1beta1 # https://cloud.google.com/error-reporting/
+    - cloudfunctions:v2beta
     - cloudsupport:v2beta
     - containeranalysis:v1beta1 # https://cloud.google.com/container-registry/docs/reference/rest/
     - datacatalog:v1beta1
@@ -259,6 +265,7 @@ packages:
     - firebaseappcheck:v1beta
     - firebasedatabase:v1beta
     - firebasestorage:v1beta
+    - gkehub:v2alpha
     - ideahub:v1beta
     - lifesciences:v2beta
     - metastore:v1beta
@@ -274,7 +281,6 @@ packages:
     - sqladmin:v1beta4
     - toolresults:v1beta3 # https://developers.google.com/cloud-test-lab/
     - tpu:v2alpha1
-    - transcoder:v1beta1
 
 # APIs that we do not wish to include in this package
 skipped_apis:
@@ -286,7 +292,6 @@ skipped_apis:
 - artifactregistry:v1beta1 #v1 included
 - artifactregistry:v1beta2 #v1 included
 - bigqueryreservation:v1beta1 # v1 included
-- bigtableadmin:v1 # v2 included
 - billingbudgets:v1beta1 # v1 included
 - binaryauthorization:v1beta1 # v1 included
 - blogger:v2 # v3 included
@@ -298,6 +303,7 @@ skipped_apis:
 - cloudbuild:v1alpha1 # v1 included
 - cloudbuild:v1alpha2 # v1 included
 - cloudbuild:v1beta1
+- cloudfunctions:v2alpha # v2beta included
 - cloudidentity:v1beta1 # v1 included
 - cloudresourcemanager:v1beta1 # v1 included
 - cloudresourcemanager:v2beta1 # v2 included

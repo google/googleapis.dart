@@ -71,6 +71,84 @@ void checkAsset(api.Asset o) {
   buildCounterAsset--;
 }
 
+core.List<api.StatementTemplate> buildUnnamed0() => [
+      buildStatementTemplate(),
+      buildStatementTemplate(),
+    ];
+
+void checkUnnamed0(core.List<api.StatementTemplate> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkStatementTemplate(o[0]);
+  checkStatementTemplate(o[1]);
+}
+
+core.int buildCounterBulkCheckRequest = 0;
+api.BulkCheckRequest buildBulkCheckRequest() {
+  final o = api.BulkCheckRequest();
+  buildCounterBulkCheckRequest++;
+  if (buildCounterBulkCheckRequest < 3) {
+    o.allowGoogleInternalDataSources = true;
+    o.defaultRelation = 'foo';
+    o.defaultSource = buildAsset();
+    o.defaultTarget = buildAsset();
+    o.skipCacheLookup = true;
+    o.statements = buildUnnamed0();
+  }
+  buildCounterBulkCheckRequest--;
+  return o;
+}
+
+void checkBulkCheckRequest(api.BulkCheckRequest o) {
+  buildCounterBulkCheckRequest++;
+  if (buildCounterBulkCheckRequest < 3) {
+    unittest.expect(o.allowGoogleInternalDataSources!, unittest.isTrue);
+    unittest.expect(
+      o.defaultRelation!,
+      unittest.equals('foo'),
+    );
+    checkAsset(o.defaultSource!);
+    checkAsset(o.defaultTarget!);
+    unittest.expect(o.skipCacheLookup!, unittest.isTrue);
+    checkUnnamed0(o.statements!);
+  }
+  buildCounterBulkCheckRequest--;
+}
+
+core.List<api.CheckResponse> buildUnnamed1() => [
+      buildCheckResponse(),
+      buildCheckResponse(),
+    ];
+
+void checkUnnamed1(core.List<api.CheckResponse> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkCheckResponse(o[0]);
+  checkCheckResponse(o[1]);
+}
+
+core.int buildCounterBulkCheckResponse = 0;
+api.BulkCheckResponse buildBulkCheckResponse() {
+  final o = api.BulkCheckResponse();
+  buildCounterBulkCheckResponse++;
+  if (buildCounterBulkCheckResponse < 3) {
+    o.bulkErrorCode = 'foo';
+    o.checkResults = buildUnnamed1();
+  }
+  buildCounterBulkCheckResponse--;
+  return o;
+}
+
+void checkBulkCheckResponse(api.BulkCheckResponse o) {
+  buildCounterBulkCheckResponse++;
+  if (buildCounterBulkCheckResponse < 3) {
+    unittest.expect(
+      o.bulkErrorCode!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed1(o.checkResults!);
+  }
+  buildCounterBulkCheckResponse--;
+}
+
 core.int buildCounterCertificateInfo = 0;
 api.CertificateInfo buildCertificateInfo() {
   final o = api.CertificateInfo();
@@ -93,12 +171,12 @@ void checkCertificateInfo(api.CertificateInfo o) {
   buildCounterCertificateInfo--;
 }
 
-core.List<core.String> buildUnnamed0() => [
+core.List<core.String> buildUnnamed2() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed0(core.List<core.String> o) {
+void checkUnnamed2(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -116,7 +194,7 @@ api.CheckResponse buildCheckResponse() {
   buildCounterCheckResponse++;
   if (buildCounterCheckResponse < 3) {
     o.debugString = 'foo';
-    o.errorCode = buildUnnamed0();
+    o.errorCode = buildUnnamed2();
     o.linked = true;
     o.maxAge = 'foo';
   }
@@ -131,7 +209,7 @@ void checkCheckResponse(api.CheckResponse o) {
       o.debugString!,
       unittest.equals('foo'),
     );
-    checkUnnamed0(o.errorCode!);
+    checkUnnamed2(o.errorCode!);
     unittest.expect(o.linked!, unittest.isTrue);
     unittest.expect(
       o.maxAge!,
@@ -141,12 +219,12 @@ void checkCheckResponse(api.CheckResponse o) {
   buildCounterCheckResponse--;
 }
 
-core.List<core.String> buildUnnamed1() => [
+core.List<core.String> buildUnnamed3() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed1(core.List<core.String> o) {
+void checkUnnamed3(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -158,12 +236,12 @@ void checkUnnamed1(core.List<core.String> o) {
   );
 }
 
-core.List<api.Statement> buildUnnamed2() => [
+core.List<api.Statement> buildUnnamed4() => [
       buildStatement(),
       buildStatement(),
     ];
 
-void checkUnnamed2(core.List<api.Statement> o) {
+void checkUnnamed4(core.List<api.Statement> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkStatement(o[0]);
   checkStatement(o[1]);
@@ -175,9 +253,9 @@ api.ListResponse buildListResponse() {
   buildCounterListResponse++;
   if (buildCounterListResponse < 3) {
     o.debugString = 'foo';
-    o.errorCode = buildUnnamed1();
+    o.errorCode = buildUnnamed3();
     o.maxAge = 'foo';
-    o.statements = buildUnnamed2();
+    o.statements = buildUnnamed4();
   }
   buildCounterListResponse--;
   return o;
@@ -190,12 +268,12 @@ void checkListResponse(api.ListResponse o) {
       o.debugString!,
       unittest.equals('foo'),
     );
-    checkUnnamed1(o.errorCode!);
+    checkUnnamed3(o.errorCode!);
     unittest.expect(
       o.maxAge!,
       unittest.equals('foo'),
     );
-    checkUnnamed2(o.statements!);
+    checkUnnamed4(o.statements!);
   }
   buildCounterListResponse--;
 }
@@ -224,6 +302,32 @@ void checkStatement(api.Statement o) {
     checkAsset(o.target!);
   }
   buildCounterStatement--;
+}
+
+core.int buildCounterStatementTemplate = 0;
+api.StatementTemplate buildStatementTemplate() {
+  final o = api.StatementTemplate();
+  buildCounterStatementTemplate++;
+  if (buildCounterStatementTemplate < 3) {
+    o.relation = 'foo';
+    o.source = buildAsset();
+    o.target = buildAsset();
+  }
+  buildCounterStatementTemplate--;
+  return o;
+}
+
+void checkStatementTemplate(api.StatementTemplate o) {
+  buildCounterStatementTemplate++;
+  if (buildCounterStatementTemplate < 3) {
+    unittest.expect(
+      o.relation!,
+      unittest.equals('foo'),
+    );
+    checkAsset(o.source!);
+    checkAsset(o.target!);
+  }
+  buildCounterStatementTemplate--;
 }
 
 core.int buildCounterWebAsset = 0;
@@ -269,6 +373,26 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-BulkCheckRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildBulkCheckRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.BulkCheckRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkBulkCheckRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-BulkCheckResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildBulkCheckResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.BulkCheckResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkBulkCheckResponse(od);
+    });
+  });
+
   unittest.group('obj-schema-CertificateInfo', () {
     unittest.test('to-json--from-json', () async {
       final o = buildCertificateInfo();
@@ -309,6 +433,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-StatementTemplate', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildStatementTemplate();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.StatementTemplate.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkStatementTemplate(od);
+    });
+  });
+
   unittest.group('obj-schema-WebAsset', () {
     unittest.test('to-json--from-json', () async {
       final o = buildWebAsset();
@@ -320,6 +454,61 @@ void main() {
   });
 
   unittest.group('resource-AssetlinksResource', () {
+    unittest.test('method--bulkCheck', () async {
+      final mock = HttpServerMock();
+      final res = api.DigitalassetlinksApi(mock).assetlinks;
+      final arg_request = buildBulkCheckRequest();
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.BulkCheckRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkBulkCheckRequest(obj);
+
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 23),
+          unittest.equals('v1/assetlinks:bulkCheck'),
+        );
+        pathOffset += 23;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildBulkCheckResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.bulkCheck(arg_request, $fields: arg_$fields);
+      checkBulkCheckResponse(response as api.BulkCheckResponse);
+    });
+
     unittest.test('method--check', () async {
       final mock = HttpServerMock();
       final res = api.DigitalassetlinksApi(mock).assetlinks;

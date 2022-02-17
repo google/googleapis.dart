@@ -27,7 +27,6 @@
 ///   - [FoldersPoliciesResource]
 /// - [OrganizationsResource]
 ///   - [OrganizationsConstraintsResource]
-///   - [OrganizationsCustomConstraintsResource]
 ///   - [OrganizationsPoliciesResource]
 /// - [ProjectsResource]
 ///   - [ProjectsConstraintsResource]
@@ -428,8 +427,6 @@ class OrganizationsResource {
 
   OrganizationsConstraintsResource get constraints =>
       OrganizationsConstraintsResource(_requester);
-  OrganizationsCustomConstraintsResource get customConstraints =>
-      OrganizationsCustomConstraintsResource(_requester);
   OrganizationsPoliciesResource get policies =>
       OrganizationsPoliciesResource(_requester);
 
@@ -490,62 +487,6 @@ class OrganizationsConstraintsResource {
       queryParams: _queryParams,
     );
     return GoogleCloudOrgpolicyV2ListConstraintsResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
-  }
-}
-
-class OrganizationsCustomConstraintsResource {
-  final commons.ApiRequester _requester;
-
-  OrganizationsCustomConstraintsResource(commons.ApiRequester client)
-      : _requester = client;
-
-  /// Updates a Custom Constraint.
-  ///
-  /// Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the
-  /// constraint does not exist. Note: the supplied policy will perform a full
-  /// overwrite of all fields.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - Immutable. Name of the constraint. This is unique within the
-  /// organization. Format of the name should be *
-  /// `organizations/{organization_id}/customConstraints/{custom_constraint_id}`
-  /// Example : "organizations/123/customConstraints/custom.createOnlyE2TypeVms"
-  /// Value must have pattern
-  /// `^organizations/\[^/\]+/customConstraints/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [GoogleCloudOrgpolicyV2CustomConstraint].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<GoogleCloudOrgpolicyV2CustomConstraint> patch(
-    GoogleCloudOrgpolicyV2CustomConstraint request,
-    core.String name, {
-    core.String? $fields,
-  }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final _url = 'v2/' + core.Uri.encodeFull('$name');
-
-    final _response = await _requester.request(
-      _url,
-      'PATCH',
-      body: _body,
-      queryParams: _queryParams,
-    );
-    return GoogleCloudOrgpolicyV2CustomConstraint.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
 }
@@ -1365,101 +1306,6 @@ class GoogleCloudOrgpolicyV2ConstraintListConstraint {
   core.Map<core.String, core.dynamic> toJson() => {
         if (supportsIn != null) 'supportsIn': supportsIn!,
         if (supportsUnder != null) 'supportsUnder': supportsUnder!,
-      };
-}
-
-/// A custom constraint defined by customers which can *only* be applied to the
-/// given resource types and organization.
-///
-/// By creating a custom constraint, customers can applied policies of this
-/// custom constraint. *Creating a custom constraint itself does NOT apply any
-/// policy enforcement*.
-class GoogleCloudOrgpolicyV2CustomConstraint {
-  /// Allow or deny type.
-  /// Possible string values are:
-  /// - "ACTION_TYPE_UNSPECIFIED" : Unspecified. Will results in user error.
-  /// - "ALLOW" : Allowed action type.
-  /// - "DENY" : Deny action type.
-  core.String? actionType;
-
-  /// Org policy condition/expression.
-  ///
-  /// For example:
-  /// `resource.instanceName.matches("[production|test]_.*_(\d)+")'` or,
-  /// `resource.management.auto_upgrade == true`
-  core.String? condition;
-
-  /// Detailed information about this custom policy constraint.
-  core.String? description;
-
-  /// One line display name for the UI.
-  core.String? displayName;
-
-  /// All the operations being applied for this constraint.
-  core.List<core.String>? methodTypes;
-
-  /// Name of the constraint.
-  ///
-  /// This is unique within the organization. Format of the name should be *
-  /// `organizations/{organization_id}/customConstraints/{custom_constraint_id}`
-  /// Example : "organizations/123/customConstraints/custom.createOnlyE2TypeVms"
-  ///
-  /// Immutable.
-  core.String? name;
-
-  /// The Resource Instance type on which this policy applies to.
-  ///
-  /// Format will be of the form : "/" Example: *
-  /// `compute.googleapis.com/Instance`.
-  ///
-  /// Immutable.
-  core.List<core.String>? resourceTypes;
-
-  GoogleCloudOrgpolicyV2CustomConstraint({
-    this.actionType,
-    this.condition,
-    this.description,
-    this.displayName,
-    this.methodTypes,
-    this.name,
-    this.resourceTypes,
-  });
-
-  GoogleCloudOrgpolicyV2CustomConstraint.fromJson(core.Map _json)
-      : this(
-          actionType: _json.containsKey('actionType')
-              ? _json['actionType'] as core.String
-              : null,
-          condition: _json.containsKey('condition')
-              ? _json['condition'] as core.String
-              : null,
-          description: _json.containsKey('description')
-              ? _json['description'] as core.String
-              : null,
-          displayName: _json.containsKey('displayName')
-              ? _json['displayName'] as core.String
-              : null,
-          methodTypes: _json.containsKey('methodTypes')
-              ? (_json['methodTypes'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          resourceTypes: _json.containsKey('resourceTypes')
-              ? (_json['resourceTypes'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (actionType != null) 'actionType': actionType!,
-        if (condition != null) 'condition': condition!,
-        if (description != null) 'description': description!,
-        if (displayName != null) 'displayName': displayName!,
-        if (methodTypes != null) 'methodTypes': methodTypes!,
-        if (name != null) 'name': name!,
-        if (resourceTypes != null) 'resourceTypes': resourceTypes!,
       };
 }
 

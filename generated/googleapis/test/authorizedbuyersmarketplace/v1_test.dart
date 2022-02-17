@@ -400,9 +400,12 @@ api.CreativeRequirements buildCreativeRequirements() {
   final o = api.CreativeRequirements();
   buildCounterCreativeRequirements++;
   if (buildCounterCreativeRequirements < 3) {
+    o.creativeFormat = 'foo';
     o.creativePreApprovalPolicy = 'foo';
     o.creativeSafeFrameCompatibility = 'foo';
+    o.maxAdDurationMs = 'foo';
     o.programmaticCreativeSource = 'foo';
+    o.skippableAdType = 'foo';
   }
   buildCounterCreativeRequirements--;
   return o;
@@ -412,6 +415,10 @@ void checkCreativeRequirements(api.CreativeRequirements o) {
   buildCounterCreativeRequirements++;
   if (buildCounterCreativeRequirements < 3) {
     unittest.expect(
+      o.creativeFormat!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
       o.creativePreApprovalPolicy!,
       unittest.equals('foo'),
     );
@@ -420,7 +427,15 @@ void checkCreativeRequirements(api.CreativeRequirements o) {
       unittest.equals('foo'),
     );
     unittest.expect(
+      o.maxAdDurationMs!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
       o.programmaticCreativeSource!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.skippableAdType!,
       unittest.equals('foo'),
     );
   }

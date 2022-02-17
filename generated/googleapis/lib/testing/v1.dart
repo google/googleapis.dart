@@ -1434,10 +1434,10 @@ class ClientInfoDetail {
 /// The time of day and time zone are either specified elsewhere or are
 /// insignificant. The date is relative to the Gregorian Calendar. This can
 /// represent one of the following: * A full date, with non-zero year, month,
-/// and day values * A month and day value, with a zero year, such as an
-/// anniversary * A year on its own, with zero month and day values * A year and
-/// month value, with a zero day, such as a credit card expiration date Related
-/// types are google.type.TimeOfDay and `google.protobuf.Timestamp`.
+/// and day values * A month and day, with a zero year (e.g., an anniversary) *
+/// A year on its own, with a zero month and a zero day * A year and month, with
+/// a zero day (e.g., a credit card expiration date) Related types: *
+/// google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
 typedef Date = $Date;
 
 /// A single device file description.
@@ -3939,7 +3939,9 @@ class TrafficRule {
 /// Uniformly shards test cases given a total number of shards.
 ///
 /// For Instrumentation test, it will be translated to "-e numShard" "-e
-/// shardIndex" AndroidJUnitRunner arguments. With uniform sharding enabled,
+/// shardIndex" AndroidJUnitRunner arguments. Based on the sharding mechanism
+/// AndroidJUnitRunner uses, there is no guarantee that test cases will be
+/// distributed uniformly across all shards. With uniform sharding enabled,
 /// specifying these sharding arguments via environment_variables is invalid.
 class UniformSharding {
   /// Total number of shards.

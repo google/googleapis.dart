@@ -36,6 +36,8 @@
 ///     - [ProjectsLocationsWorkloadIdentityPoolsResource]
 ///       - [ProjectsLocationsWorkloadIdentityPoolsOperationsResource]
 ///       - [ProjectsLocationsWorkloadIdentityPoolsProvidersResource]
+///         - [ProjectsLocationsWorkloadIdentityPoolsProvidersKeysResource]
+/// - [ProjectsLocationsWorkloadIdentityPoolsProvidersKeysOperationsResource]
 /// - [ProjectsLocationsWorkloadIdentityPoolsProvidersOperationsResource]
 ///   - [ProjectsRolesResource]
 ///   - [ProjectsServiceAccountsResource]
@@ -1106,6 +1108,8 @@ class ProjectsLocationsWorkloadIdentityPoolsOperationsResource {
 class ProjectsLocationsWorkloadIdentityPoolsProvidersResource {
   final commons.ApiRequester _requester;
 
+  ProjectsLocationsWorkloadIdentityPoolsProvidersKeysResource get keys =>
+      ProjectsLocationsWorkloadIdentityPoolsProvidersKeysResource(_requester);
   ProjectsLocationsWorkloadIdentityPoolsProvidersOperationsResource
       get operations =>
           ProjectsLocationsWorkloadIdentityPoolsProvidersOperationsResource(
@@ -1384,6 +1388,66 @@ class ProjectsLocationsWorkloadIdentityPoolsProvidersResource {
       _url,
       'POST',
       body: _body,
+      queryParams: _queryParams,
+    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsWorkloadIdentityPoolsProvidersKeysResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsWorkloadIdentityPoolsProvidersKeysOperationsResource
+      get operations =>
+          ProjectsLocationsWorkloadIdentityPoolsProvidersKeysOperationsResource(
+              _requester);
+
+  ProjectsLocationsWorkloadIdentityPoolsProvidersKeysResource(
+      commons.ApiRequester client)
+      : _requester = client;
+}
+
+class ProjectsLocationsWorkloadIdentityPoolsProvidersKeysOperationsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsWorkloadIdentityPoolsProvidersKeysOperationsResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets the latest state of a long-running operation.
+  ///
+  /// Clients can use this method to poll the operation result at intervals as
+  /// recommended by the API service.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/workloadIdentityPools/\[^/\]+/providers/\[^/\]+/keys/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
       queryParams: _queryParams,
     );
     return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
@@ -4920,7 +4984,7 @@ class SignJwtResponse {
 typedef Status = $Status;
 
 /// Request message for `TestIamPermissions` method.
-typedef TestIamPermissionsRequest = $TestIamPermissionsRequest;
+typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;
 
 /// Response message for `TestIamPermissions` method.
 typedef TestIamPermissionsResponse = $PermissionsResponse;
@@ -5113,10 +5177,10 @@ class WorkloadIdentityPoolProvider {
   /// to. The following keys are supported: * `google.subject`: The principal
   /// IAM is authenticating. You can reference this value in IAM bindings. This
   /// is also the subject that appears in Cloud Logging logs. Cannot exceed 127
-  /// characters. * `google.groups`: Groups the external identity belongs to.
-  /// You can grant groups access to resources using an IAM `principalSet`
-  /// binding; access applies to all members of the group. You can also provide
-  /// custom attributes by specifying `attribute.{custom_attribute}`, where
+  /// bytes. * `google.groups`: Groups the external identity belongs to. You can
+  /// grant groups access to resources using an IAM `principalSet` binding;
+  /// access applies to all members of the group. You can also provide custom
+  /// attributes by specifying `attribute.{custom_attribute}`, where
   /// `{custom_attribute}` is the name of the custom attribute to be mapped. You
   /// can define a maximum of 50 custom attributes. The maximum length of a
   /// mapped attribute key is 100 characters, and the key may only contain the

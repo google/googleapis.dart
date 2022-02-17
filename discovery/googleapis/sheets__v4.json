@@ -868,7 +868,7 @@
             }
         }
     },
-    "revision": "20220118",
+    "revision": "20220208",
     "rootUrl": "https://sheets.googleapis.com/",
     "schemas": {
         "AddBandingRequest": {

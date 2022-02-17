@@ -21,21 +21,19 @@
 ///
 /// Create an instance of [ArtifactRegistryApi] to access these resources:
 ///
-/// - [OperationsResource]
 /// - [ProjectsResource]
 ///   - [ProjectsLocationsResource]
+///     - [ProjectsLocationsOperationsResource]
 ///     - [ProjectsLocationsRepositoriesResource]
 ///       - [ProjectsLocationsRepositoriesAptArtifactsResource]
-///       - [ProjectsLocationsRepositoriesAptartifactsResource]
 ///       - [ProjectsLocationsRepositoriesDockerImagesResource]
 ///       - [ProjectsLocationsRepositoriesFilesResource]
 ///       - [ProjectsLocationsRepositoriesGooGetArtifactsResource]
-///       - [ProjectsLocationsRepositoriesGoogetartifactsResource]
+///       - [ProjectsLocationsRepositoriesGoogetArtifactsResource]
 ///       - [ProjectsLocationsRepositoriesPackagesResource]
 ///         - [ProjectsLocationsRepositoriesPackagesTagsResource]
 ///         - [ProjectsLocationsRepositoriesPackagesVersionsResource]
 ///       - [ProjectsLocationsRepositoriesYumArtifactsResource]
-///       - [ProjectsLocationsRepositoriesYumartifactsResource]
 library artifactregistry.v1;
 
 import 'dart:async' as async;
@@ -75,7 +73,6 @@ class ArtifactRegistryApi {
 
   final commons.ApiRequester _requester;
 
-  OperationsResource get operations => OperationsResource(_requester);
   ProjectsResource get projects => ProjectsResource(_requester);
 
   ArtifactRegistryApi(http.Client client,
@@ -83,50 +80,6 @@ class ArtifactRegistryApi {
       core.String servicePath = ''})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
-}
-
-class OperationsResource {
-  final commons.ApiRequester _requester;
-
-  OperationsResource(commons.ApiRequester client) : _requester = client;
-
-  /// Gets the latest state of a long-running operation.
-  ///
-  /// Clients can use this method to poll the operation result at intervals as
-  /// recommended by the API service.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - The name of the operation resource.
-  /// Value must have pattern `^operations/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Operation].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Operation> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final _url = 'v1/' + core.Uri.encodeFull('$name');
-
-    final _response = await _requester.request(
-      _url,
-      'GET',
-      queryParams: _queryParams,
-    );
-    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
-  }
 }
 
 class ProjectsResource {
@@ -224,10 +177,58 @@ class ProjectsResource {
 class ProjectsLocationsResource {
   final commons.ApiRequester _requester;
 
+  ProjectsLocationsOperationsResource get operations =>
+      ProjectsLocationsOperationsResource(_requester);
   ProjectsLocationsRepositoriesResource get repositories =>
       ProjectsLocationsRepositoriesResource(_requester);
 
   ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
+}
+
+class ProjectsLocationsOperationsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsOperationsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets the latest state of a long-running operation.
+  ///
+  /// Clients can use this method to poll the operation result at intervals as
+  /// recommended by the API service.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class ProjectsLocationsRepositoriesResource {
@@ -235,22 +236,18 @@ class ProjectsLocationsRepositoriesResource {
 
   ProjectsLocationsRepositoriesAptArtifactsResource get aptArtifacts =>
       ProjectsLocationsRepositoriesAptArtifactsResource(_requester);
-  ProjectsLocationsRepositoriesAptartifactsResource get aptartifacts =>
-      ProjectsLocationsRepositoriesAptartifactsResource(_requester);
   ProjectsLocationsRepositoriesDockerImagesResource get dockerImages =>
       ProjectsLocationsRepositoriesDockerImagesResource(_requester);
   ProjectsLocationsRepositoriesFilesResource get files =>
       ProjectsLocationsRepositoriesFilesResource(_requester);
   ProjectsLocationsRepositoriesGooGetArtifactsResource get gooGetArtifacts =>
       ProjectsLocationsRepositoriesGooGetArtifactsResource(_requester);
-  ProjectsLocationsRepositoriesGoogetartifactsResource get googetartifacts =>
-      ProjectsLocationsRepositoriesGoogetartifactsResource(_requester);
+  ProjectsLocationsRepositoriesGoogetArtifactsResource get googetArtifacts =>
+      ProjectsLocationsRepositoriesGoogetArtifactsResource(_requester);
   ProjectsLocationsRepositoriesPackagesResource get packages =>
       ProjectsLocationsRepositoriesPackagesResource(_requester);
   ProjectsLocationsRepositoriesYumArtifactsResource get yumArtifacts =>
       ProjectsLocationsRepositoriesYumArtifactsResource(_requester);
-  ProjectsLocationsRepositoriesYumartifactsResource get yumartifacts =>
-      ProjectsLocationsRepositoriesYumartifactsResource(_requester);
 
   ProjectsLocationsRepositoriesResource(commons.ApiRequester client)
       : _requester = client;
@@ -671,13 +668,6 @@ class ProjectsLocationsRepositoriesAptArtifactsResource {
     );
     return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
-}
-
-class ProjectsLocationsRepositoriesAptartifactsResource {
-  final commons.ApiRequester _requester;
-
-  ProjectsLocationsRepositoriesAptartifactsResource(commons.ApiRequester client)
-      : _requester = client;
 
   /// Directly uploads an Apt artifact.
   ///
@@ -890,6 +880,8 @@ class ProjectsLocationsRepositoriesFilesResource {
   /// `owner="projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/versions/1.0"`
   /// --\> Files owned by the version `1.0` in package `pkg1`.
   ///
+  /// [orderBy] - The field to order the results by.
+  ///
   /// [pageSize] - The maximum number of files to return.
   ///
   /// [pageToken] - The next_page_token value returned from a previous list
@@ -908,12 +900,14 @@ class ProjectsLocationsRepositoriesFilesResource {
   async.Future<ListFilesResponse> list(
     core.String parent, {
     core.String? filter,
+    core.String? orderBy,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
@@ -987,10 +981,10 @@ class ProjectsLocationsRepositoriesGooGetArtifactsResource {
   }
 }
 
-class ProjectsLocationsRepositoriesGoogetartifactsResource {
+class ProjectsLocationsRepositoriesGoogetArtifactsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsRepositoriesGoogetartifactsResource(
+  ProjectsLocationsRepositoriesGoogetArtifactsResource(
       commons.ApiRequester client)
       : _requester = client;
 
@@ -1523,7 +1517,7 @@ class ProjectsLocationsRepositoriesPackagesVersionsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/repositories/\[^/\]+/packages/\[^/\]+$`.
   ///
-  /// [orderBy] - Optional. Sorting field and order
+  /// [orderBy] - Optional. The field to order the results by.
   ///
   /// [pageSize] - The maximum number of versions to return. Maximum page size
   /// is 1,000.
@@ -1630,13 +1624,6 @@ class ProjectsLocationsRepositoriesYumArtifactsResource {
     );
     return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
-}
-
-class ProjectsLocationsRepositoriesYumartifactsResource {
-  final commons.ApiRequester _requester;
-
-  ProjectsLocationsRepositoriesYumartifactsResource(commons.ApiRequester client)
-      : _requester = client;
 
   /// Directly uploads a Yum artifact.
   ///
@@ -2635,7 +2622,7 @@ class Repository {
   /// - "PYTHON" : Python package format.
   core.String? format;
 
-  /// The Cloud KMS resource name of the customer managed encryption key that’s
+  /// The Cloud KMS resource name of the customer managed encryption key that's
   /// used to encrypt the contents of the Repository.
   ///
   /// Has the form:
@@ -2789,7 +2776,7 @@ class Tag {
 }
 
 /// Request message for `TestIamPermissions` method.
-typedef TestIamPermissionsRequest = $TestIamPermissionsRequest;
+typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;
 
 /// Response message for `TestIamPermissions` method.
 typedef TestIamPermissionsResponse = $PermissionsResponse;

@@ -674,9 +674,9 @@ class IndexingDatasourcesItemsResource {
   /// the queued Item using lexical ordering. Cloud Search Indexing won't delete
   /// any queued item with a version value that is less than or equal to the
   /// version of the currently indexed item. The maximum length for this field
-  /// is 1024 bytes. See
-  /// [this guide](https://developers.devsite.corp.google.com/cloud-search/docs/guides/operations)
-  /// to understand how item version affects reindexing after delete item.
+  /// is 1024 bytes. For information on how item version affects the deletion
+  /// process, refer to
+  /// [Handle revisions after manual deletes](https://developers.google.com/cloud-search/docs/guides/operations).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4976,9 +4976,9 @@ class Item {
   ///
   /// Cloud Search Indexing won't index or delete any queued item with a version
   /// value that is less than or equal to the version of the currently indexed
-  /// item. The maximum length for this field is 1024 bytes. See
-  /// [this guide](https://developers.devsite.corp.google.com/cloud-search/docs/guides/operations)
-  /// to understand how item version affects reindexing after delete item.
+  /// item. The maximum length for this field is 1024 bytes. For information on
+  /// how item version affects the deletion process, refer to
+  /// [Handle revisions after manual deletes](https://developers.google.com/cloud-search/docs/guides/operations).
   ///
   /// Required.
   core.String? version;
@@ -5333,8 +5333,8 @@ class ItemMetadata {
 
   /// Link to the source repository serving the data.
   ///
-  /// Search results apply this link to the title. Whitespace or special
-  /// characters may cause Cloud Search result links to trigger a redirect
+  /// Seach results apply this link to the title. Whitespace or special
+  /// characters may cause Cloud Seach result links to trigger a redirect
   /// notice; to avoid this, encode the URL. The maximum length is 2048
   /// characters.
   core.String? sourceRepositoryUrl;
@@ -8005,7 +8005,7 @@ class SearchRequest {
   /// The raw query string.
   ///
   /// See supported search operators in the
-  /// [Cloud search Cheat Sheet](https://support.google.com/a/users/answer/9299929)
+  /// [Narrow your search with operators](https://support.google.com/cloudsearch/answer/6172299)
   core.String? query;
 
   /// Options to interpret the user query.
@@ -9146,8 +9146,8 @@ class UpdateSchemaRequest {
 
 /// Represents an upload session reference.
 ///
-/// This reference is created via upload method. UploadItemRef may be used upto
-/// 30 days since creation. Updating of item content may refer to this uploaded
+/// This reference is created via upload method. This reference is valid for 30
+/// days after its creation. Updating of item content may refer to this uploaded
 /// content via contentDataRef.
 class UploadItemRef {
   /// Name of the content reference.

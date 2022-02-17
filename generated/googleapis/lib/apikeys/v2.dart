@@ -181,9 +181,12 @@ class ProjectsLocationsKeysResource {
   ProjectsLocationsKeysResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Clones the existing key's restriction and display name to a new API key.
+  /// DEPRECATED: API customers can call `GetKey` and then `CreateKey` methods
+  /// to create a copy of an existing key.
   ///
-  /// The service account must have the `apikeys.keys.get` and
+  /// Retire `CloneKey` method to eliminate the unnessary method from API Keys
+  /// API. Clones the existing key's restriction and display name to a new API
+  /// key. The service account must have the `apikeys.keys.get` and
   /// `apikeys.keys.create` permissions in the project. NOTE: Key is a global
   /// resource; hence the only supported value for location is `global`.
   ///
@@ -415,14 +418,18 @@ class ProjectsLocationsKeysResource {
   /// [parent] - Required. Lists all API keys associated with this project.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [filter] - Optional. Only list keys that conform to the specified filter.
-  /// The allowed filter strings are `state:ACTIVE` and `state:DELETED`. By
-  /// default, ListKeys returns only active keys.
+  /// [filter] - Optional. Deprecated: Use `show_deleted` instead. Only list
+  /// keys that conform to the specified filter. The allowed filter strings are
+  /// `state:ACTIVE` and `state:DELETED`. By default, ListKeys returns only
+  /// active keys.
   ///
   /// [pageSize] - Optional. Specifies the maximum number of results to be
   /// returned at a time.
   ///
   /// [pageToken] - Optional. Requests a specific page of results.
+  ///
+  /// [showDeleted] - Optional. Indicate that keys are marked as deleted within
+  /// 30 days should also be returned. Normally only active keys are returned.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -439,12 +446,14 @@ class ProjectsLocationsKeysResource {
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? showDeleted,
     core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (showDeleted != null) 'showDeleted': ['${showDeleted}'],
       if ($fields != null) 'fields': [$fields],
     };
 

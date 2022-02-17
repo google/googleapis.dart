@@ -1266,6 +1266,12 @@ class CustomersChromePrintersResource {
   /// [filter] - Search query. Search syntax is shared between this api and
   /// Admin Console printers pages.
   ///
+  /// [orderBy] - The order to sort results by. Must be one of display_name,
+  /// description, make_and_model, or create_time. Default order is ascending,
+  /// but descending order can be returned by appending "desc" to the order_by
+  /// field. For instance, "description desc" will return the printers sorted by
+  /// description in descending order.
+  ///
   /// [orgUnitId] - Organization Unit that we want to list the printers for.
   /// When org_unit is not present in the request then all printers of the
   /// customer are returned (or filtered). When org_unit is present in the
@@ -1291,6 +1297,7 @@ class CustomersChromePrintersResource {
   async.Future<ListPrintersResponse> list(
     core.String parent, {
     core.String? filter,
+    core.String? orderBy,
     core.String? orgUnitId,
     core.int? pageSize,
     core.String? pageToken,
@@ -1298,6 +1305,7 @@ class CustomersChromePrintersResource {
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
       if (orgUnitId != null) 'orgUnitId': [orgUnitId],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -1880,7 +1888,7 @@ class GroupsResource {
   /// `customerId` is also returned as part of the
   /// \[Users\](/admin-sdk/directory/v1/reference/users)
   ///
-  /// [domain] - The domain name. Use this field to get fields from only one
+  /// [domain] - The domain name. Use this field to get groups from only one
   /// domain. To return all domains for a customer account, use the `customer`
   /// query parameter instead.
   ///
@@ -5042,7 +5050,7 @@ class UsersResource {
   /// resource\](/admin-sdk/directory/v1/reference/users). Either the `customer`
   /// or the `domain` parameter must be provided.
   ///
-  /// [domain] - The domain name. Use this field to get fields from only one
+  /// [domain] - The domain name. Use this field to get groups from only one
   /// domain. To return all domains for a customer account, use the `customer`
   /// query parameter instead. Either the `customer` or the `domain` parameter
   /// must be provided.
@@ -5080,7 +5088,8 @@ class UsersResource {
   /// [showDeleted] - If set to `true`, retrieves the list of deleted users.
   /// (Default: `false`)
   ///
-  /// [sortOrder] - Whether to return results in ascending or descending order.
+  /// [sortOrder] - Whether to return results in ascending or descending order,
+  /// ignoring case.
   /// Possible string values are:
   /// - "ASCENDING" : Ascending order.
   /// - "DESCENDING" : Descending order.
@@ -7507,8 +7516,10 @@ class ChromeOsDevice {
   /// orgUnitPath is the human readable version of orgUnitId. While orgUnitPath
   /// may change by renaming an organizational unit within the path, orgUnitId
   /// is unchangeable for one organizational unit. This property can be
-  /// \[updated\](/admin-sdk/directory/v1/guides/manage-chrome-devices#update_chrome_device)
-  /// using the API, and this will be supported in the future.
+  /// \[updated\](/admin-sdk/directory/v1/guides/manage-chrome-devices#move_chrome_devices_to_ou)
+  /// using the API. For more information about how to create an organizational
+  /// structure for your device, see the
+  /// [administration help center](https://support.google.com/a/answer/182433).
   core.String? orgUnitId;
 
   /// The full parent path with the organizational unit's name associated with
@@ -7517,7 +7528,7 @@ class ChromeOsDevice {
   /// Path names are case insensitive. If the parent organizational unit is the
   /// top-level organization, it is represented as a forward slash, `/`. This
   /// property can be
-  /// \[updated\](/admin-sdk/directory/v1/guides/manage-chrome-devices#update_chrome_device)
+  /// \[updated\](/admin-sdk/directory/v1/guides/manage-chrome-devices#move_chrome_devices_to_ou)
   /// using the API. For more information about how to create an organizational
   /// structure for your device, see the
   /// [administration help center](https://support.google.com/a/answer/182433).
@@ -8989,8 +9000,8 @@ class ListPrintersResponse {
   /// List of printers.
   ///
   /// If `org_unit_id` was given in the request, then only printers visible for
-  /// this OU will be returned. If `org_unit_id` was given in the request, then
-  /// all printers will be returned.
+  /// this OU will be returned. If `org_unit_id` was not given in the request,
+  /// then all printers will be returned.
   core.List<Printer>? printers;
 
   ListPrintersResponse({
@@ -10832,10 +10843,10 @@ class User {
   /// Stores the hash format of the password property.
   ///
   /// We recommend sending the `password` property value as a base 16 bit
-  /// hexadecimal-encoded hash value. Set the `hashFunction` values as either
-  /// the \[SHA-1\](https://wikipedia.org/wiki/SHA-1),
-  /// [MD5](https://wikipedia.org/wiki/MD5), or
-  /// [crypt](https://en.wikipedia.org/wiki/Crypt_\(C\)) hash format.
+  /// hexadecimal-encoded hash value. The following `hashFunction` values are
+  /// allowed: * `DES` * `MD5` - hash prefix is `$1$` * `SHA2-256` - hash prefix
+  /// is `$5$` * `SHA2-512` - hash prefix is `$6$` If rounds are specified as
+  /// part of the prefix, they must be 10,000 or fewer.
   core.String? hashFunction;
 
   /// The unique ID for the user.

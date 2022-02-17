@@ -1355,7 +1355,7 @@
             }
         }
     },
-    "revision": "20220107",
+    "revision": "20220202",
     "rootUrl": "https://gameservices.googleapis.com/",
     "schemas": {
         "AuditConfig": {
@@ -1366,12 +1366,6 @@
                     "description": "The configuration for logging of each type of permission.",
                     "items": {
                         "$ref": "AuditLogConfig"
-                    },
-                    "type": "array"
-                },
-                "exemptedMembers": {
-                    "items": {
-                        "type": "string"
                     },
                     "type": "array"
                 },

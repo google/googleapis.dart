@@ -2418,6 +2418,17 @@ class Contact {
 
 /// Message captures data about the creatives in the deal.
 class CreativeRequirements {
+  /// The format of the creative, only applicable for programmatic guaranteed
+  /// and preferred deals.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "CREATIVE_FORMAT_UNSPECIFIED" : A placeholder for an unspecified
+  /// creative format.
+  /// - "DISPLAY" : Banner creatives such as image or HTML5 assets.
+  /// - "VIDEO" : Video creatives that can be played in a video player.
+  core.String? creativeFormat;
+
   /// Specifies the creative pre-approval policy.
   ///
   /// Output only.
@@ -2442,6 +2453,13 @@ class CreativeRequirements {
   /// option.
   core.String? creativeSafeFrameCompatibility;
 
+  /// The max duration of the video creative in milliseconds.
+  ///
+  /// only applicable for deals with video creatives.
+  ///
+  /// Output only.
+  core.String? maxAdDurationMs;
+
   /// Specifies the creative source for programmatic deals.
   ///
   /// PUBLISHER means creative is provided by seller and ADVERTISER means
@@ -2455,14 +2473,43 @@ class CreativeRequirements {
   /// - "PUBLISHER" : The publisher provides the creatives to be served.
   core.String? programmaticCreativeSource;
 
+  /// Skippable video ads allow viewers to skip ads after 5 seconds.
+  ///
+  /// Only applicable for deals with video creatives.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "SKIPPABLE_AD_TYPE_UNSPECIFIED" : A placeholder for an unspecified
+  /// skippable ad type.
+  /// - "SKIPPABLE" : Video ad that can be skipped after 5 seconds. This value
+  /// will appear in RTB bid requests as
+  /// SkippableBidRequestType::REQUIRE_SKIPPABLE.
+  /// - "INSTREAM_SELECT" : Video ad that can be skipped after 5 seconds, and is
+  /// counted as engaged view after 30 seconds. The creative is hosted on
+  /// YouTube only, and viewcount of the YouTube video increments after the
+  /// engaged view. This value will appear in RTB bid requests as
+  /// SkippableBidRequestType::REQUIRE_SKIPPABLE.
+  /// - "NOT_SKIPPABLE" : This video ad is not skippable. This value will appear
+  /// in RTB bid requests as SkippableBidRequestType::BLOCK_SKIPPABLE.
+  /// - "ANY" : This video ad can be skipped after 5 seconds or not-skippable.
+  /// This value will appear in RTB bid requests as
+  /// SkippableBidRequestType::ALLOW_SKIPPABLE.
+  core.String? skippableAdType;
+
   CreativeRequirements({
+    this.creativeFormat,
     this.creativePreApprovalPolicy,
     this.creativeSafeFrameCompatibility,
+    this.maxAdDurationMs,
     this.programmaticCreativeSource,
+    this.skippableAdType,
   });
 
   CreativeRequirements.fromJson(core.Map _json)
       : this(
+          creativeFormat: _json.containsKey('creativeFormat')
+              ? _json['creativeFormat'] as core.String
+              : null,
           creativePreApprovalPolicy:
               _json.containsKey('creativePreApprovalPolicy')
                   ? _json['creativePreApprovalPolicy'] as core.String
@@ -2471,19 +2518,28 @@ class CreativeRequirements {
               _json.containsKey('creativeSafeFrameCompatibility')
                   ? _json['creativeSafeFrameCompatibility'] as core.String
                   : null,
+          maxAdDurationMs: _json.containsKey('maxAdDurationMs')
+              ? _json['maxAdDurationMs'] as core.String
+              : null,
           programmaticCreativeSource:
               _json.containsKey('programmaticCreativeSource')
                   ? _json['programmaticCreativeSource'] as core.String
                   : null,
+          skippableAdType: _json.containsKey('skippableAdType')
+              ? _json['skippableAdType'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (creativeFormat != null) 'creativeFormat': creativeFormat!,
         if (creativePreApprovalPolicy != null)
           'creativePreApprovalPolicy': creativePreApprovalPolicy!,
         if (creativeSafeFrameCompatibility != null)
           'creativeSafeFrameCompatibility': creativeSafeFrameCompatibility!,
+        if (maxAdDurationMs != null) 'maxAdDurationMs': maxAdDurationMs!,
         if (programmaticCreativeSource != null)
           'programmaticCreativeSource': programmaticCreativeSource!,
+        if (skippableAdType != null) 'skippableAdType': skippableAdType!,
       };
 }
 

@@ -205,7 +205,7 @@
                                     ],
                                     "parameters": {
                                         "name": {
-                                            "description": "The name (project, location, cluster id) of the cluster to complete IP rotation. Specified in the format `projects/*/locations/*/clusters/*`.",
+                                            "description": "The name (project, location, cluster name) of the cluster to complete IP rotation. Specified in the format `projects/*/locations/*/clusters/*`.",
                                             "location": "path",
                                             "pattern": "^projects/[^/]+/locations/[^/]+/clusters/[^/]+$",
                                             "required": true,
@@ -341,7 +341,7 @@
                                     ],
                                     "parameters": {
                                         "parent": {
-                                            "description": "The cluster (project, location, cluster id) to get keys for. Specified in the format `projects/*/locations/*/clusters/*`.",
+                                            "description": "The cluster (project, location, cluster name) to get keys for. Specified in the format `projects/*/locations/*/clusters/*`.",
                                             "location": "path",
                                             "pattern": "^projects/[^/]+/locations/[^/]+/clusters/[^/]+$",
                                             "required": true,
@@ -426,7 +426,7 @@
                                     ],
                                     "parameters": {
                                         "name": {
-                                            "description": "The name (project, location, cluster id) of the cluster to set legacy abac. Specified in the format `projects/*/locations/*/clusters/*`.",
+                                            "description": "The name (project, location, cluster name) of the cluster to set legacy abac. Specified in the format `projects/*/locations/*/clusters/*`.",
                                             "location": "path",
                                             "pattern": "^projects/[^/]+/locations/[^/]+/clusters/[^/]+$",
                                             "required": true,
@@ -510,7 +510,7 @@
                                     ],
                                     "parameters": {
                                         "name": {
-                                            "description": "The name (project, location, cluster id) of the cluster to set maintenance policy. Specified in the format `projects/*/locations/*/clusters/*`.",
+                                            "description": "The name (project, location, cluster name) of the cluster to set maintenance policy. Specified in the format `projects/*/locations/*/clusters/*`.",
                                             "location": "path",
                                             "pattern": "^projects/[^/]+/locations/[^/]+/clusters/[^/]+$",
                                             "required": true,
@@ -594,7 +594,7 @@
                                     ],
                                     "parameters": {
                                         "name": {
-                                            "description": "The name (project, location, cluster id) of the cluster to set networking policy. Specified in the format `projects/*/locations/*/clusters/*`.",
+                                            "description": "The name (project, location, cluster name) of the cluster to set networking policy. Specified in the format `projects/*/locations/*/clusters/*`.",
                                             "location": "path",
                                             "pattern": "^projects/[^/]+/locations/[^/]+/clusters/[^/]+$",
                                             "required": true,
@@ -622,7 +622,7 @@
                                     ],
                                     "parameters": {
                                         "name": {
-                                            "description": "The name (project, location, cluster id) of the cluster to set labels. Specified in the format `projects/*/locations/*/clusters/*`.",
+                                            "description": "The name (project, location, cluster name) of the cluster to set labels. Specified in the format `projects/*/locations/*/clusters/*`.",
                                             "location": "path",
                                             "pattern": "^projects/[^/]+/locations/[^/]+/clusters/[^/]+$",
                                             "required": true,
@@ -650,7 +650,7 @@
                                     ],
                                     "parameters": {
                                         "name": {
-                                            "description": "The name (project, location, cluster id) of the cluster to start IP rotation. Specified in the format `projects/*/locations/*/clusters/*`.",
+                                            "description": "The name (project, location, cluster name) of the cluster to start IP rotation. Specified in the format `projects/*/locations/*/clusters/*`.",
                                             "location": "path",
                                             "pattern": "^projects/[^/]+/locations/[^/]+/clusters/[^/]+$",
                                             "required": true,
@@ -738,7 +738,7 @@
                                             ],
                                             "parameters": {
                                                 "parent": {
-                                                    "description": "The parent (project, location, cluster id) where the node pool will be created. Specified in the format `projects/*/locations/*/clusters/*`.",
+                                                    "description": "The parent (project, location, cluster name) where the node pool will be created. Specified in the format `projects/*/locations/*/clusters/*`.",
                                                     "location": "path",
                                                     "pattern": "^projects/[^/]+/locations/[^/]+/clusters/[^/]+$",
                                                     "required": true,
@@ -861,7 +861,7 @@
                                                     "type": "string"
                                                 },
                                                 "parent": {
-                                                    "description": "The parent (project, location, cluster id) where the node pools will be listed. Specified in the format `projects/*/locations/*/clusters/*`.",
+                                                    "description": "The parent (project, location, cluster name) where the node pools will be listed. Specified in the format `projects/*/locations/*/clusters/*`.",
                                                     "location": "path",
                                                     "pattern": "^projects/[^/]+/locations/[^/]+/clusters/[^/]+$",
                                                     "required": true,
@@ -1040,7 +1040,7 @@
                                             ],
                                             "parameters": {
                                                 "parent": {
-                                                    "description": "The cluster (project, location, cluster id) to get the discovery document for. Specified in the format `projects/*/locations/*/clusters/*`.",
+                                                    "description": "The cluster (project, location, cluster name) to get the discovery document for. Specified in the format `projects/*/locations/*/clusters/*`.",
                                                     "location": "path",
                                                     "pattern": "^projects/[^/]+/locations/[^/]+/clusters/[^/]+$",
                                                     "required": true,
@@ -2107,7 +2107,7 @@
                                                     "type": "string"
                                                 },
                                                 "parent": {
-                                                    "description": "The parent (project, location, cluster id) where the node pools will be listed. Specified in the format `projects/*/locations/*/clusters/*`.",
+                                                    "description": "The parent (project, location, cluster name) where the node pools will be listed. Specified in the format `projects/*/locations/*/clusters/*`.",
                                                     "location": "query",
                                                     "type": "string"
                                                 },
@@ -2457,7 +2457,7 @@
             }
         }
     },
-    "revision": "20220110",
+    "revision": "20220116",
     "rootUrl": "https://container.googleapis.com/",
     "schemas": {
         "AcceleratorConfig": {
@@ -2760,7 +2760,7 @@
                 },
                 "confidentialNodes": {
                     "$ref": "ConfidentialNodes",
-                    "description": "Configuration of Confidential Nodes"
+                    "description": "Configuration of Confidential Nodes. All the nodes in the cluster will be Confidential VM once enabled."
                 },
                 "createTime": {
                     "description": "[Output only] The time the cluster was created, in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.",
@@ -2811,6 +2811,10 @@
                     "description": "Output only. Unique id for the cluster.",
                     "readOnly": true,
                     "type": "string"
+                },
+                "identityServiceConfig": {
+                    "$ref": "IdentityServiceConfig",
+                    "description": "Configuration for Identity Service component."
                 },
                 "initialClusterVersion": {
                     "description": "The initial Kubernetes version for this cluster. Valid versions are those found in validMasterVersions returned by getServerConfig. The version can be upgraded over time; such upgrades are reflected in currentMasterVersion and currentNodeVersion. Users may specify either explicit versions offered by Kubernetes Engine or version aliases, which have the following behavior: - \"latest\": picks the highest valid Kubernetes version - \"1.X\": picks the highest valid patch+gke.N patch in the 1.X version - \"1.X.Y\": picks the highest valid gke.N patch in the 1.X.Y version - \"1.X.Y-gke.N\": picks an explicit Kubernetes version - \"\",\"-\": picks the default Kubernetes version",
@@ -3096,6 +3100,10 @@
                     "$ref": "GcfsConfig",
                     "description": "The desired GCFS config for the cluster"
                 },
+                "desiredIdentityServiceConfig": {
+                    "$ref": "IdentityServiceConfig",
+                    "description": "The desired Identity Service component configuration."
+                },
                 "desiredImageType": {
                     "description": "The desired image type for the node pool. NOTE: Set the \"desired_node_pool\" field as well.",
                     "type": "string"
@@ -3215,7 +3223,7 @@
                     "type": "string"
                 },
                 "name": {
-                    "description": "The name (project, location, cluster id) of the cluster to complete IP rotation. Specified in the format `projects/*/locations/*/clusters/*`.",
+                    "description": "The name (project, location, cluster name) of the cluster to complete IP rotation. Specified in the format `projects/*/locations/*/clusters/*`.",
                     "type": "string"
                 },
                 "projectId": {
@@ -3234,7 +3242,7 @@
             "id": "ConfidentialNodes",
             "properties": {
                 "enabled": {
-                    "description": "Whether Confidential Nodes feature is enabled for all nodes in this cluster.",
+                    "description": "Whether Confidential Nodes feature is enabled.",
                     "type": "boolean"
                 }
             },
@@ -3298,7 +3306,7 @@
                     "description": "Required. The node pool to create."
                 },
                 "parent": {
-                    "description": "The parent (project, location, cluster id) where the node pool will be created. Specified in the format `projects/*/locations/*/clusters/*`.",
+                    "description": "The parent (project, location, cluster name) where the node pool will be created. Specified in the format `projects/*/locations/*/clusters/*`.",
                     "type": "string"
                 },
                 "projectId": {
@@ -3655,6 +3663,17 @@
                 },
                 "useRoutes": {
                     "description": "Whether routes will be used for pod IPs in the cluster. This is used in conjunction with use_ip_aliases. It cannot be true if use_ip_aliases is true. If both use_ip_aliases and use_routes are false, then the server picks the default IP allocation mode",
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
+        "IdentityServiceConfig": {
+            "description": "IdentityServiceConfig is configuration for Identity Service which allows customers to use external identity providers with the K8S API",
+            "id": "IdentityServiceConfig",
+            "properties": {
+                "enabled": {
+                    "description": "Whether to enable the Identity Service component",
                     "type": "boolean"
                 }
             },
@@ -5096,7 +5115,7 @@
                     "type": "string"
                 },
                 "name": {
-                    "description": "The name (project, location, cluster id) of the cluster to set labels. Specified in the format `projects/*/locations/*/clusters/*`.",
+                    "description": "The name (project, location, cluster name) of the cluster to set labels. Specified in the format `projects/*/locations/*/clusters/*`.",
                     "type": "string"
                 },
                 "projectId": {
@@ -5130,7 +5149,7 @@
                     "type": "boolean"
                 },
                 "name": {
-                    "description": "The name (project, location, cluster id) of the cluster to set legacy abac. Specified in the format `projects/*/locations/*/clusters/*`.",
+                    "description": "The name (project, location, cluster name) of the cluster to set legacy abac. Specified in the format `projects/*/locations/*/clusters/*`.",
                     "type": "string"
                 },
                 "projectId": {
@@ -5214,7 +5233,7 @@
                     "description": "Required. The maintenance policy to be set for the cluster. An empty field clears the existing maintenance policy."
                 },
                 "name": {
-                    "description": "The name (project, location, cluster id) of the cluster to set maintenance policy. Specified in the format `projects/*/locations/*/clusters/*`.",
+                    "description": "The name (project, location, cluster name) of the cluster to set maintenance policy. Specified in the format `projects/*/locations/*/clusters/*`.",
                     "type": "string"
                 },
                 "projectId": {
@@ -5307,7 +5326,7 @@
                     "type": "string"
                 },
                 "name": {
-                    "description": "The name (project, location, cluster id) of the cluster to set networking policy. Specified in the format `projects/*/locations/*/clusters/*`.",
+                    "description": "The name (project, location, cluster name) of the cluster to set networking policy. Specified in the format `projects/*/locations/*/clusters/*`.",
                     "type": "string"
                 },
                 "networkPolicy": {
@@ -5454,7 +5473,7 @@
                     "type": "string"
                 },
                 "name": {
-                    "description": "The name (project, location, cluster id) of the cluster to start IP rotation. Specified in the format `projects/*/locations/*/clusters/*`.",
+                    "description": "The name (project, location, cluster name) of the cluster to start IP rotation. Specified in the format `projects/*/locations/*/clusters/*`.",
                     "type": "string"
                 },
                 "projectId": {

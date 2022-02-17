@@ -27,6 +27,7 @@
 library digitalassetlinks.v1;
 
 import 'dart:async' as async;
+import 'dart:convert' as convert;
 import 'dart:core' as core;
 
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
@@ -56,6 +57,48 @@ class AssetlinksResource {
   final commons.ApiRequester _requester;
 
   AssetlinksResource(commons.ApiRequester client) : _requester = client;
+
+  /// Send a bundle of statement checks in a single RPC to minimize latency and
+  /// service load.
+  ///
+  /// Statements need not be all for the same source and/or target. We recommend
+  /// using this method when you need to check more than one statement in a
+  /// short period of time.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [BulkCheckResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<BulkCheckResponse> bulkCheck(
+    BulkCheckRequest request, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    const _url = 'v1/assetlinks:bulkCheck';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return BulkCheckResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
 
   /// Determines whether the specified (directional) relationship exists between
   /// the specified source and target assets.
@@ -400,6 +443,141 @@ class Asset {
       };
 }
 
+/// Message used to check for the existence of multiple digital asset links
+/// within a single RPC.
+class BulkCheckRequest {
+  /// Same configuration as in Check request, all statements checks will use
+  /// same configurations.
+  core.bool? allowGoogleInternalDataSources;
+
+  /// If specified, will be used in any given template statement that doesn’t
+  /// specify a relation.
+  core.String? defaultRelation;
+
+  /// If specified, will be used in any given template statement that doesn’t
+  /// specify a source.
+  Asset? defaultSource;
+
+  /// If specified, will be used in any given template statement that doesn’t
+  /// specify a target.
+  Asset? defaultTarget;
+
+  /// Same configuration as in Check request, all statements checks will use
+  /// same configurations.
+  core.bool? skipCacheLookup;
+
+  /// List of statements to check.
+  ///
+  /// For each statement, you can omit a field if the corresponding default_*
+  /// field below was supplied. Minimum 1 statement; maximum 1,000 statements.
+  /// Any additional statements will be ignored.
+  core.List<StatementTemplate>? statements;
+
+  BulkCheckRequest({
+    this.allowGoogleInternalDataSources,
+    this.defaultRelation,
+    this.defaultSource,
+    this.defaultTarget,
+    this.skipCacheLookup,
+    this.statements,
+  });
+
+  BulkCheckRequest.fromJson(core.Map _json)
+      : this(
+          allowGoogleInternalDataSources:
+              _json.containsKey('allowGoogleInternalDataSources')
+                  ? _json['allowGoogleInternalDataSources'] as core.bool
+                  : null,
+          defaultRelation: _json.containsKey('defaultRelation')
+              ? _json['defaultRelation'] as core.String
+              : null,
+          defaultSource: _json.containsKey('defaultSource')
+              ? Asset.fromJson(
+                  _json['defaultSource'] as core.Map<core.String, core.dynamic>)
+              : null,
+          defaultTarget: _json.containsKey('defaultTarget')
+              ? Asset.fromJson(
+                  _json['defaultTarget'] as core.Map<core.String, core.dynamic>)
+              : null,
+          skipCacheLookup: _json.containsKey('skipCacheLookup')
+              ? _json['skipCacheLookup'] as core.bool
+              : null,
+          statements: _json.containsKey('statements')
+              ? (_json['statements'] as core.List)
+                  .map((value) => StatementTemplate.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (allowGoogleInternalDataSources != null)
+          'allowGoogleInternalDataSources': allowGoogleInternalDataSources!,
+        if (defaultRelation != null) 'defaultRelation': defaultRelation!,
+        if (defaultSource != null) 'defaultSource': defaultSource!,
+        if (defaultTarget != null) 'defaultTarget': defaultTarget!,
+        if (skipCacheLookup != null) 'skipCacheLookup': skipCacheLookup!,
+        if (statements != null) 'statements': statements!,
+      };
+}
+
+/// Response for BulkCheck call.
+///
+/// Results are sent in a list in the same order in which they were sent.
+/// Individual check errors are described in the appropriate check_results
+/// entry. If the entire call fails, the response will include a bulk_error_code
+/// field describing the error.
+class BulkCheckResponse {
+  /// Error code for the entire request.
+  ///
+  /// Present only if the entire request failed. Individual check errors will
+  /// not trigger the presence of this field.
+  /// Possible string values are:
+  /// - "ERROR_CODE_UNSPECIFIED"
+  /// - "ERROR_CODE_INVALID_QUERY" : Unable to parse query.
+  /// - "ERROR_CODE_FETCH_ERROR" : Unable to fetch the asset links data.
+  /// - "ERROR_CODE_FAILED_SSL_VALIDATION" : Invalid HTTPS certificate .
+  /// - "ERROR_CODE_REDIRECT" : HTTP redirects (e.g, 301) are not allowed.
+  /// - "ERROR_CODE_TOO_LARGE" : Asset links data exceeds maximum size.
+  /// - "ERROR_CODE_MALFORMED_HTTP_RESPONSE" : Can't parse HTTP response.
+  /// - "ERROR_CODE_WRONG_CONTENT_TYPE" : HTTP Content-type should be
+  /// application/json.
+  /// - "ERROR_CODE_MALFORMED_CONTENT" : JSON content is malformed.
+  /// - "ERROR_CODE_SECURE_ASSET_INCLUDES_INSECURE" : A secure asset includes an
+  /// insecure asset (security downgrade).
+  /// - "ERROR_CODE_FETCH_BUDGET_EXHAUSTED" : Too many includes (maybe a loop).
+  core.String? bulkErrorCode;
+
+  /// List of results for each check request.
+  ///
+  /// Results are returned in the same order in which they were sent in the
+  /// request.
+  core.List<CheckResponse>? checkResults;
+
+  BulkCheckResponse({
+    this.bulkErrorCode,
+    this.checkResults,
+  });
+
+  BulkCheckResponse.fromJson(core.Map _json)
+      : this(
+          bulkErrorCode: _json.containsKey('bulkErrorCode')
+              ? _json['bulkErrorCode'] as core.String
+              : null,
+          checkResults: _json.containsKey('checkResults')
+              ? (_json['checkResults'] as core.List)
+                  .map((value) => CheckResponse.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (bulkErrorCode != null) 'bulkErrorCode': bulkErrorCode!,
+        if (checkResults != null) 'checkResults': checkResults!,
+      };
+}
+
 /// Describes an X509 certificate.
 class CertificateInfo {
   /// The uppercase SHA-265 fingerprint of the certificate.
@@ -589,6 +767,56 @@ class Statement {
   });
 
   Statement.fromJson(core.Map _json)
+      : this(
+          relation: _json.containsKey('relation')
+              ? _json['relation'] as core.String
+              : null,
+          source: _json.containsKey('source')
+              ? Asset.fromJson(
+                  _json['source'] as core.Map<core.String, core.dynamic>)
+              : null,
+          target: _json.containsKey('target')
+              ? Asset.fromJson(
+                  _json['target'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (relation != null) 'relation': relation!,
+        if (source != null) 'source': source!,
+        if (target != null) 'target': target!,
+      };
+}
+
+/// A single statement to check in a bulk call using BulkCheck.
+///
+/// See CheckRequest for details about each field.
+class StatementTemplate {
+  /// The relationship being asserted between the source and target.
+  ///
+  /// If omitted, you must specify a BulkCheckRequest.default_relation value to
+  /// use here.
+  core.String? relation;
+
+  /// The source asset that is asserting the statement.
+  ///
+  /// If omitted, you must specify a BulkCheckRequest.default_source value to
+  /// use here.
+  Asset? source;
+
+  /// The target that the source is declaring the relationship with.
+  ///
+  /// If omitted, you must specify a BulkCheckRequest.default_target to use
+  /// here.
+  Asset? target;
+
+  StatementTemplate({
+    this.relation,
+    this.source,
+    this.target,
+  });
+
+  StatementTemplate.fromJson(core.Map _json)
       : this(
           relation: _json.containsKey('relation')
               ? _json['relation'] as core.String

@@ -1065,11 +1065,15 @@ class Release {
   core.String? createTime;
 
   /// Format: `projects/{project_id}/releases/{release_id}`
+  ///
+  /// Required.
   core.String? name;
 
   /// Name of the `Ruleset` referred to by this `Release`.
   ///
   /// The `Ruleset` must exist the `Release` to be created.
+  ///
+  /// Required.
   core.String? rulesetName;
 
   /// Time the release was updated.
@@ -1594,6 +1598,8 @@ class TestSuite {
 /// The request for FirebaseRulesService.UpdateRelease.
 class UpdateReleaseRequest {
   /// `Release` to update.
+  ///
+  /// Required.
   Release? release;
 
   /// Specifies which fields to update.

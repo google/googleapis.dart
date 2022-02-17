@@ -1,6 +1,9 @@
-## 8.0.0-dev
+## 8.0.0
 
+- `cloudfunctions` new!
+- `gkehub` - new!
 - `cloudsupport` - new!
+- `transcoder` - **REMOVED** now in `package:googleapis`
 
 ## 7.0.0
 

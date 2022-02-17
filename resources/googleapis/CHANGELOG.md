@@ -1,10 +1,15 @@
-## 8.0.0-dev
+## 8.0.0
 
 - `adsense` - **removed v1.4**
+- `baremetalsolution` - new v2
+- `certificatemanager` - new!
 - `clouddeploy` - new!
+- `dataplex` - new!
 - `datastream` - new!
 - `ids` - new!
+- `mybusinessbusinesscalls` - new!
 - `mybusinessqanda` - new!
+- `playintegrity`
 - `run` - new v2
 - `transcoder` - new!
 - `webmasters` - **removed!**

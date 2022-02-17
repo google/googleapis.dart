@@ -12182,10 +12182,10 @@ class DatafeedstatusesListResponse {
 /// The time of day and time zone are either specified elsewhere or are
 /// insignificant. The date is relative to the Gregorian Calendar. This can
 /// represent one of the following: * A full date, with non-zero year, month,
-/// and day values * A month and day value, with a zero year, such as an
-/// anniversary * A year on its own, with zero month and day values * A year and
-/// month value, with a zero day, such as a credit card expiration date Related
-/// types are google.type.TimeOfDay and `google.protobuf.Timestamp`.
+/// and day values * A month and day, with a zero year (e.g., an anniversary) *
+/// A year on its own, with a zero month and a zero day * A year and month, with
+/// a zero day (e.g., a credit card expiration date) Related types: *
+/// google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
 typedef Date = $Date;
 
 /// Represents civil time (or occasionally physical time).
@@ -12560,8 +12560,8 @@ class FreeListingsProgramStatus {
   /// If program is successfully onboarded for at least one region.
   /// Possible string values are:
   /// - "PROGRAM_STATE_UNSPECIFIED" : State is not known.
-  /// - "ONBOARDED" : Program is onboarded for at least one country.
-  /// - "NOT_ONBOARDED" : Program is not onboarded for any country.
+  /// - "ENABLED" : Program is enabled for at least one country.
+  /// - "NOT_ENABLED" : Program is not enabled for any country.
   core.String? state;
 
   FreeListingsProgramStatus({
@@ -27888,8 +27888,8 @@ class ShoppingAdsProgramStatus {
   /// If program is successfully onboarded for at least one region.
   /// Possible string values are:
   /// - "PROGRAM_STATE_UNSPECIFIED" : State is not known.
-  /// - "ONBOARDED" : Program is onboarded for at least one country.
-  /// - "NOT_ONBOARDED" : Program is not onboarded for any country.
+  /// - "ENABLED" : Program is enabled for at least one country.
+  /// - "NOT_ENABLED" : Program is not enabled for any country.
   core.String? state;
 
   ShoppingAdsProgramStatus({

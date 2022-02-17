@@ -2295,6 +2295,7 @@ api.MetricThreshold buildMetricThreshold() {
     o.denominatorAggregations = buildUnnamed39();
     o.denominatorFilter = 'foo';
     o.duration = 'foo';
+    o.evaluationMissingData = 'foo';
     o.filter = 'foo';
     o.thresholdValue = 42.0;
     o.trigger = buildTrigger();
@@ -2318,6 +2319,10 @@ void checkMetricThreshold(api.MetricThreshold o) {
     );
     unittest.expect(
       o.duration!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.evaluationMissingData!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -2518,6 +2523,7 @@ api.MonitoringQueryLanguageCondition buildMonitoringQueryLanguageCondition() {
   buildCounterMonitoringQueryLanguageCondition++;
   if (buildCounterMonitoringQueryLanguageCondition < 3) {
     o.duration = 'foo';
+    o.evaluationMissingData = 'foo';
     o.query = 'foo';
     o.trigger = buildTrigger();
   }
@@ -2531,6 +2537,10 @@ void checkMonitoringQueryLanguageCondition(
   if (buildCounterMonitoringQueryLanguageCondition < 3) {
     unittest.expect(
       o.duration!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.evaluationMissingData!,
       unittest.equals('foo'),
     );
     unittest.expect(

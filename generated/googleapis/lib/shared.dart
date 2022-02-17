@@ -652,6 +652,7 @@ class $AudienceSegment {
 /// - connectors:v1 : AuditLogConfig
 /// - datafusion:v1 : AuditLogConfig
 /// - datamigration:v1 : AuditLogConfig
+/// - dataplex:v1 : GoogleIamV1AuditLogConfig
 /// - deploymentmanager:v2 : AuditLogConfig
 /// - domains:v1 : AuditLogConfig
 /// - eventarc:v1 : AuditLogConfig
@@ -2411,6 +2412,7 @@ class $CustomViewabilityMetricConfiguration {
 /// - displayvideo:v1 : Date
 /// - dlp:v2 : GoogleTypeDate
 /// - documentai:v1 : GoogleTypeDate
+/// - mybusinessbusinesscalls:v1 : Date
 /// - mybusinessbusinessinformation:v1 : Date
 /// - osconfig:v1 : Date
 /// - people:v1 : Date
@@ -2956,6 +2958,112 @@ class $DimensionValue {
 
 /// Used by:
 ///
+/// - dataplex:v1 : GoogleCloudDataplexV1AssetDiscoverySpecCsvOptions
+/// - dataplex:v1 : GoogleCloudDataplexV1ZoneDiscoverySpecCsvOptions
+class $DiscoverySpecCsvOptions {
+  /// The delimiter being used to separate values.
+  ///
+  /// This defaults to ','.
+  ///
+  /// Optional.
+  core.String? delimiter;
+
+  /// Whether to disable the inference of data type for CSV data.
+  ///
+  /// If true, all columns will be registered as strings.
+  ///
+  /// Optional.
+  core.bool? disableTypeInference;
+
+  /// The character encoding of the data.
+  ///
+  /// The default is UTF-8.
+  ///
+  /// Optional.
+  core.String? encoding;
+
+  /// The number of rows to interpret as header rows that should be skipped when
+  /// reading data rows.
+  ///
+  /// Optional.
+  core.int? headerRows;
+
+  $DiscoverySpecCsvOptions({
+    this.delimiter,
+    this.disableTypeInference,
+    this.encoding,
+    this.headerRows,
+  });
+
+  $DiscoverySpecCsvOptions.fromJson(core.Map _json)
+      : this(
+          delimiter: _json.containsKey('delimiter')
+              ? _json['delimiter'] as core.String
+              : null,
+          disableTypeInference: _json.containsKey('disableTypeInference')
+              ? _json['disableTypeInference'] as core.bool
+              : null,
+          encoding: _json.containsKey('encoding')
+              ? _json['encoding'] as core.String
+              : null,
+          headerRows: _json.containsKey('headerRows')
+              ? _json['headerRows'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (delimiter != null) 'delimiter': delimiter!,
+        if (disableTypeInference != null)
+          'disableTypeInference': disableTypeInference!,
+        if (encoding != null) 'encoding': encoding!,
+        if (headerRows != null) 'headerRows': headerRows!,
+      };
+}
+
+/// Used by:
+///
+/// - dataplex:v1 : GoogleCloudDataplexV1AssetDiscoverySpecJsonOptions
+/// - dataplex:v1 : GoogleCloudDataplexV1ZoneDiscoverySpecJsonOptions
+class $DiscoverySpecJsonOptions {
+  /// Whether to disable the inference of data type for Json data.
+  ///
+  /// If true, all columns will be registered as their primitive types (strings,
+  /// number or boolean).
+  ///
+  /// Optional.
+  core.bool? disableTypeInference;
+
+  /// The character encoding of the data.
+  ///
+  /// The default is UTF-8.
+  ///
+  /// Optional.
+  core.String? encoding;
+
+  $DiscoverySpecJsonOptions({
+    this.disableTypeInference,
+    this.encoding,
+  });
+
+  $DiscoverySpecJsonOptions.fromJson(core.Map _json)
+      : this(
+          disableTypeInference: _json.containsKey('disableTypeInference')
+              ? _json['disableTypeInference'] as core.bool
+              : null,
+          encoding: _json.containsKey('encoding')
+              ? _json['encoding'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (disableTypeInference != null)
+          'disableTypeInference': disableTypeInference!,
+        if (encoding != null) 'encoding': encoding!,
+      };
+}
+
+/// Used by:
+///
 /// - compute:v1 : DisksRemoveResourcePoliciesRequest
 /// - compute:v1 : RegionDisksRemoveResourcePoliciesRequest
 class $DisksRemoveResourcePoliciesRequest {
@@ -3183,6 +3291,10 @@ class $EgressFrom {
 /// - baremetalsolution:v1 : Empty
 /// - baremetalsolution:v1 : ResetInstanceRequest
 /// - baremetalsolution:v1 : ResetInstanceResponse
+/// - baremetalsolution:v2 : Empty
+/// - baremetalsolution:v2 : ResetInstanceRequest
+/// - baremetalsolution:v2 : RestoreVolumeSnapshotRequest
+/// - baremetalsolution:v2 : StartInstanceRequest
 /// - bigquerydatatransfer:v1 : CheckValidCredsRequest
 /// - bigquerydatatransfer:v1 : Empty
 /// - bigqueryreservation:v1 : Empty
@@ -3192,6 +3304,8 @@ class $EgressFrom {
 /// - billingbudgets:v1 : GoogleProtobufEmpty
 /// - binaryauthorization:v1 : Empty
 /// - books:v1 : Empty
+/// - certificatemanager:v1 : CancelOperationRequest
+/// - certificatemanager:v1 : Empty
 /// - chat:v1 : Empty
 /// - chat:v1 : GoogleAppsCardV1Divider
 /// - chromepolicy:v1 : GoogleProtobufEmpty
@@ -3256,6 +3370,9 @@ class $EgressFrom {
 /// - content:v2.1 : PauseBuyOnGoogleProgramRequest
 /// - content:v2.1 : RequestReviewBuyOnGoogleProgramRequest
 /// - datacatalog:v1 : Empty
+/// - datacatalog:v1 : GoogleCloudDatacatalogV1PhysicalSchemaCsvSchema
+/// - datacatalog:v1 : GoogleCloudDatacatalogV1PhysicalSchemaOrcSchema
+/// - datacatalog:v1 : GoogleCloudDatacatalogV1PhysicalSchemaParquetSchema
 /// - datacatalog:v1 : GoogleCloudDatacatalogV1StarEntryRequest
 /// - datacatalog:v1 : GoogleCloudDatacatalogV1StarEntryResponse
 /// - datacatalog:v1 : GoogleCloudDatacatalogV1UnstarEntryRequest
@@ -3275,6 +3392,13 @@ class $EgressFrom {
 /// - datapipelines:v1 : GoogleCloudDatapipelinesV1RunPipelineRequest
 /// - datapipelines:v1 : GoogleCloudDatapipelinesV1StopPipelineRequest
 /// - datapipelines:v1 : GoogleProtobufEmpty
+/// - dataplex:v1 : Empty
+/// - dataplex:v1 : GoogleCloudDataplexV1ActionInvalidDataOrganization
+/// - dataplex:v1 : GoogleCloudDataplexV1ActionMissingData
+/// - dataplex:v1 : GoogleCloudDataplexV1ActionMissingResource
+/// - dataplex:v1 : GoogleCloudDataplexV1ActionUnauthorizedResource
+/// - dataplex:v1 : GoogleCloudDataplexV1CancelJobRequest
+/// - dataplex:v1 : GoogleLongrunningCancelOperationRequest
 /// - dataproc:v1 : CancelJobRequest
 /// - dataproc:v1 : DiagnoseClusterRequest
 /// - dataproc:v1 : Empty
@@ -3463,6 +3587,7 @@ class $EgressFrom {
 /// - recaptchaenterprise:v1 : GoogleProtobufEmpty
 /// - redis:v1 : Empty
 /// - retail:v2 : GoogleProtobufEmpty
+/// - run:v1 : RunJobRequest
 /// - run:v2 : GoogleProtobufEmpty
 /// - runtimeconfig:v1 : CancelOperationRequest
 /// - runtimeconfig:v1 : Empty
@@ -3842,6 +3967,7 @@ class $ExportOptions {
 /// - datacatalog:v1 : Expr
 /// - datafusion:v1 : Expr
 /// - datamigration:v1 : Expr
+/// - dataplex:v1 : GoogleTypeExpr
 /// - dataproc:v1 : Expr
 /// - deploymentmanager:v2 : Expr
 /// - domains:v1 : Expr
@@ -5518,8 +5644,10 @@ class $ListTargetingExpression {
 /// Used by:
 ///
 /// - apigateway:v1 : ApigatewayLocation
+/// - baremetalsolution:v2 : Location
 /// - bigquerydatatransfer:v1 : Location
 /// - bigtableadmin:v2 : Location
+/// - certificatemanager:v1 : Location
 /// - clouddeploy:v1 : Location
 /// - cloudfunctions:v1 : Location
 /// - cloudkms:v1 : Location
@@ -5626,6 +5754,7 @@ class $Location00 {
 /// Used by:
 ///
 /// - appengine:v1 : Location
+/// - dataplex:v1 : GoogleCloudLocationLocation
 /// - logging:v2 : Location
 class $Location01 {
   /// The friendly name for this location, typically a nearby city name.
@@ -5890,7 +6019,7 @@ class $MetricDescriptorMetadata {
   /// are cleared for widespread use. By Alpha, all significant design issues
   /// are resolved and we are in the process of verifying functionality. Alpha
   /// customers need to apply for access, agree to applicable terms, and have
-  /// their projects allowlisted. Alpha releases don’t have to be feature
+  /// their projects allowlisted. Alpha releases don't have to be feature
   /// complete, no SLAs are provided, and there are no technical support
   /// obligations, but they will be far enough along that customers can actually
   /// use them in test environments or for limited-use tests -- just like they
@@ -5903,7 +6032,7 @@ class $MetricDescriptorMetadata {
   /// - "GA" : GA features are open to all developers and are considered stable
   /// and fully qualified for production use.
   /// - "DEPRECATED" : Deprecated features are scheduled to be shut down and
-  /// removed. For more information, see the “Deprecation Policy” section of our
+  /// removed. For more information, see the "Deprecation Policy" section of our
   /// Terms of Service (https://cloud.google.com/terms/) and the Google Cloud
   /// Platform Subject to the Deprecation Policy
   /// (https://cloud.google.com/terms/deprecation) documentation.
@@ -7282,10 +7411,7 @@ class $PlatformType {
 /// - domains:v1 : PostalAddress
 /// - jobs:v3 : PostalAddress
 /// - jobs:v4 : PostalAddress
-/// - mybusinessaccountmanagement:v1 : PostalAddress
-/// - mybusinessbusinessinformation:v1 : PostalAddress
-/// - mybusinessverifications:v1 : PostalAddress
-class $PostalAddress {
+class $PostalAddress00 {
   /// Unstructured address lines describing the lower levels of an address.
   ///
   /// Because values in address_lines do not have type information and may
@@ -7395,7 +7521,7 @@ class $PostalAddress {
   /// Optional.
   core.String? sublocality;
 
-  $PostalAddress({
+  $PostalAddress00({
     this.addressLines,
     this.administrativeArea,
     this.languageCode,
@@ -7409,7 +7535,193 @@ class $PostalAddress {
     this.sublocality,
   });
 
-  $PostalAddress.fromJson(core.Map _json)
+  $PostalAddress00.fromJson(core.Map _json)
+      : this(
+          addressLines: _json.containsKey('addressLines')
+              ? (_json['addressLines'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          administrativeArea: _json.containsKey('administrativeArea')
+              ? _json['administrativeArea'] as core.String
+              : null,
+          languageCode: _json.containsKey('languageCode')
+              ? _json['languageCode'] as core.String
+              : null,
+          locality: _json.containsKey('locality')
+              ? _json['locality'] as core.String
+              : null,
+          organization: _json.containsKey('organization')
+              ? _json['organization'] as core.String
+              : null,
+          postalCode: _json.containsKey('postalCode')
+              ? _json['postalCode'] as core.String
+              : null,
+          recipients: _json.containsKey('recipients')
+              ? (_json['recipients'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          regionCode: _json.containsKey('regionCode')
+              ? _json['regionCode'] as core.String
+              : null,
+          revision: _json.containsKey('revision')
+              ? _json['revision'] as core.int
+              : null,
+          sortingCode: _json.containsKey('sortingCode')
+              ? _json['sortingCode'] as core.String
+              : null,
+          sublocality: _json.containsKey('sublocality')
+              ? _json['sublocality'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (addressLines != null) 'addressLines': addressLines!,
+        if (administrativeArea != null)
+          'administrativeArea': administrativeArea!,
+        if (languageCode != null) 'languageCode': languageCode!,
+        if (locality != null) 'locality': locality!,
+        if (organization != null) 'organization': organization!,
+        if (postalCode != null) 'postalCode': postalCode!,
+        if (recipients != null) 'recipients': recipients!,
+        if (regionCode != null) 'regionCode': regionCode!,
+        if (revision != null) 'revision': revision!,
+        if (sortingCode != null) 'sortingCode': sortingCode!,
+        if (sublocality != null) 'sublocality': sublocality!,
+      };
+}
+
+/// Used by:
+///
+/// - mybusinessaccountmanagement:v1 : PostalAddress
+/// - mybusinessbusinessinformation:v1 : PostalAddress
+/// - mybusinessverifications:v1 : PostalAddress
+class $PostalAddress01 {
+  /// Unstructured address lines describing the lower levels of an address.
+  ///
+  /// Because values in address_lines do not have type information and may
+  /// sometimes contain multiple values in a single field (e.g. "Austin, TX"),
+  /// it is important that the line order is clear. The order of address lines
+  /// should be "envelope order" for the country/region of the address. In
+  /// places where this can vary (e.g. Japan), address_language is used to make
+  /// it explicit (e.g. "ja" for large-to-small ordering and "ja-Latn" or "en"
+  /// for small-to-large). This way, the most specific line of an address can be
+  /// selected based on the language. The minimum permitted structural
+  /// representation of an address consists of a region_code with all remaining
+  /// information placed in the address_lines. It would be possible to format
+  /// such an address very approximately without geocoding, but no semantic
+  /// reasoning could be made about any of the address components until it was
+  /// at least partially resolved. Creating an address only containing a
+  /// region_code and address_lines, and then geocoding is the recommended way
+  /// to handle completely unstructured addresses (as opposed to guessing which
+  /// parts of the address should be localities or administrative areas).
+  core.List<core.String>? addressLines;
+
+  /// Highest administrative subdivision which is used for postal addresses of a
+  /// country or region.
+  ///
+  /// For example, this can be a state, a province, an oblast, or a prefecture.
+  /// Specifically, for Spain this is the province and not the autonomous
+  /// community (e.g. "Barcelona" and not "Catalonia"). Many countries don't use
+  /// an administrative area in postal addresses. E.g. in Switzerland this
+  /// should be left unpopulated.
+  ///
+  /// Optional.
+  core.String? administrativeArea;
+
+  /// BCP-47 language code of the contents of this address (if known).
+  ///
+  /// This is often the UI language of the input form or is expected to match
+  /// one of the languages used in the address' country/region, or their
+  /// transliterated equivalents. This can affect formatting in certain
+  /// countries, but is not critical to the correctness of the data and will
+  /// never affect any validation or other non-formatting related operations. If
+  /// this value is not known, it should be omitted (rather than specifying a
+  /// possibly incorrect default). Examples: "zh-Hant", "ja", "ja-Latn", "en".
+  ///
+  /// Optional.
+  core.String? languageCode;
+
+  /// Generally refers to the city/town portion of the address.
+  ///
+  /// Examples: US city, IT comune, UK post town. In regions of the world where
+  /// localities are not well defined or do not fit into this structure well,
+  /// leave locality empty and use address_lines.
+  ///
+  /// Optional.
+  core.String? locality;
+
+  /// The name of the organization at the address.
+  ///
+  /// Optional.
+  core.String? organization;
+
+  /// Postal code of the address.
+  ///
+  /// Not all countries use or require postal codes to be present, but where
+  /// they are used, they may trigger additional validation with other parts of
+  /// the address (e.g. state/zip validation in the U.S.A.).
+  ///
+  /// Optional.
+  core.String? postalCode;
+
+  /// The recipient at the address.
+  ///
+  /// This field may, under certain circumstances, contain multiline
+  /// information. For example, it might contain "care of" information.
+  ///
+  /// Optional.
+  core.List<core.String>? recipients;
+
+  /// CLDR region code of the country/region of the address.
+  ///
+  /// This is never inferred and it is up to the user to ensure the value is
+  /// correct. See https://cldr.unicode.org/ and
+  /// https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html
+  /// for details. Example: "CH" for Switzerland.
+  ///
+  /// Required.
+  core.String? regionCode;
+
+  /// The schema revision of the `PostalAddress`.
+  ///
+  /// This must be set to 0, which is the latest revision. All new revisions
+  /// **must** be backward compatible with old revisions.
+  core.int? revision;
+
+  /// Additional, country-specific, sorting code.
+  ///
+  /// This is not used in most regions. Where it is used, the value is either a
+  /// string like "CEDEX", optionally followed by a number (e.g. "CEDEX 7"), or
+  /// just a number alone, representing the "sector code" (Jamaica), "delivery
+  /// area indicator" (Malawi) or "post office indicator" (e.g. Côte d'Ivoire).
+  ///
+  /// Optional.
+  core.String? sortingCode;
+
+  /// Sublocality of the address.
+  ///
+  /// For example, this can be neighborhoods, boroughs, districts.
+  ///
+  /// Optional.
+  core.String? sublocality;
+
+  $PostalAddress01({
+    this.addressLines,
+    this.administrativeArea,
+    this.languageCode,
+    this.locality,
+    this.organization,
+    this.postalCode,
+    this.recipients,
+    this.regionCode,
+    this.revision,
+    this.sortingCode,
+    this.sublocality,
+  });
+
+  $PostalAddress01.fromJson(core.Map _json)
       : this(
           addressLines: _json.containsKey('addressLines')
               ? (_json['addressLines'] as core.List)
@@ -9461,9 +9773,11 @@ class $StartPageToken {
 /// - artifactregistry:v1 : Status
 /// - assuredworkloads:v1 : GoogleRpcStatus
 /// - baremetalsolution:v1 : Status
+/// - baremetalsolution:v2 : Status
 /// - bigquerydatatransfer:v1 : Status
 /// - bigqueryreservation:v1 : Status
 /// - bigtableadmin:v2 : Status
+/// - certificatemanager:v1 : Status
 /// - chromemanagement:v1 : GoogleRpcStatus
 /// - cloudasset:v1 : Status
 /// - cloudbuild:v1 : Status
@@ -9488,6 +9802,7 @@ class $StartPageToken {
 /// - datafusion:v1 : Status
 /// - datamigration:v1 : Status
 /// - datapipelines:v1 : GoogleRpcStatus
+/// - dataplex:v1 : GoogleRpcStatus
 /// - dataproc:v1 : Status
 /// - datastore:v1 : Status
 /// - datastream:v1 : Status
@@ -9526,6 +9841,7 @@ class $StartPageToken {
 /// - pubsublite:v1 : Status
 /// - redis:v1 : Status
 /// - retail:v2 : GoogleRpcStatus
+/// - run:v1 : GoogleRpcStatus
 /// - run:v2 : GoogleRpcStatus
 /// - runtimeconfig:v1 : Status
 /// - securitycenter:v1 : Status
@@ -10011,7 +10327,7 @@ class $TenantProjectRequest {
 /// - servicedirectory:v1 : TestIamPermissionsRequest
 /// - servicemanagement:v1 : TestIamPermissionsRequest
 /// - sourcerepo:v1 : TestIamPermissionsRequest
-class $TestIamPermissionsRequest {
+class $TestIamPermissionsRequest00 {
   /// The set of permissions to check for the `resource`.
   ///
   /// Permissions with wildcards (such as '*' or 'storage.*') are not allowed.
@@ -10019,11 +10335,67 @@ class $TestIamPermissionsRequest {
   /// [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).
   core.List<core.String>? permissions;
 
-  $TestIamPermissionsRequest({
+  $TestIamPermissionsRequest00({
     this.permissions,
   });
 
-  $TestIamPermissionsRequest.fromJson(core.Map _json)
+  $TestIamPermissionsRequest00.fromJson(core.Map _json)
+      : this(
+          permissions: _json.containsKey('permissions')
+              ? (_json['permissions'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (permissions != null) 'permissions': permissions!,
+      };
+}
+
+/// Used by:
+///
+/// - dataplex:v1 : GoogleIamV1TestIamPermissionsRequest
+/// - dataproc:v1 : TestIamPermissionsRequest
+class $TestIamPermissionsRequest01 {
+  /// The set of permissions to check for the resource.
+  ///
+  /// Permissions with wildcards (such as '*' or 'storage.*') are not allowed.
+  /// For more information see IAM Overview
+  /// (https://cloud.google.com/iam/docs/overview#permissions).
+  core.List<core.String>? permissions;
+
+  $TestIamPermissionsRequest01({
+    this.permissions,
+  });
+
+  $TestIamPermissionsRequest01.fromJson(core.Map _json)
+      : this(
+          permissions: _json.containsKey('permissions')
+              ? (_json['permissions'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (permissions != null) 'permissions': permissions!,
+      };
+}
+
+/// Used by:
+///
+/// - dataplex:v1 : GoogleIamV1TestIamPermissionsResponse
+/// - dataproc:v1 : TestIamPermissionsResponse
+class $TestIamPermissionsResponse {
+  /// A subset of TestPermissionsRequest.permissions that the caller is allowed.
+  core.List<core.String>? permissions;
+
+  $TestIamPermissionsResponse({
+    this.permissions,
+  });
+
+  $TestIamPermissionsResponse.fromJson(core.Map _json)
       : this(
           permissions: _json.containsKey('permissions')
               ? (_json['permissions'] as core.List)

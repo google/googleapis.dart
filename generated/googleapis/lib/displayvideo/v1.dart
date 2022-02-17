@@ -10919,8 +10919,7 @@ class AgeRangeAssignedTargetingOptionDetails {
   /// age range represented in this field can be 1) targeted solely, or, 2) part
   /// of a larger continuous age range. The reach of a continuous age range
   /// targeting can be expanded by also targeting an audience of an unknown age.
-  ///
-  /// Output only.
+  /// Output only in v1. Required in v2.
   /// Possible string values are:
   /// - "AGE_RANGE_UNSPECIFIED" : Default value when age range is not specified
   /// in this version. This enum is a placeholder for default value and does not
@@ -12253,21 +12252,23 @@ class AssignedUserRole {
 /// when targeting_type is `TARGETING_TYPE_AUDIENCE_GROUP`. The relation between
 /// each group is UNION, except for
 /// excluded_first_and_third_party_audience_group and
-/// excluded_google_audience_group, of which COMPLEMENT is UNION'ed with other
-/// groups.
+/// excluded_google_audience_group, of which COMPLEMENT is used as an
+/// INTERSECTION with other groups.
 class AudienceGroupAssignedTargetingOptionDetails {
   /// The first and third party audience ids and recencies of the excluded first
   /// and third party audience group.
   ///
-  /// Used for negative targeting. Its COMPLEMENT is used to UNION other
-  /// audience groups.
+  /// Used for negative targeting. The COMPLEMENT of the UNION of this group and
+  /// other excluded audience groups is used as an INTERSECTION to any positive
+  /// audience targeting. All items are logically ‘OR’ of each other.
   FirstAndThirdPartyAudienceGroup? excludedFirstAndThirdPartyAudienceGroup;
 
   /// The Google audience ids of the excluded Google audience group.
   ///
-  /// Used for negative targeting. It's COMPLEMENT is used to UNION other
-  /// audience groups. Only contains Affinity, In-market and Installed-apps type
-  /// Google audiences. All items are logically ‘OR’ of each other.
+  /// Used for negative targeting. The COMPLEMENT of the UNION of this group and
+  /// other excluded audience groups is used as an INTERSECTION to any positive
+  /// audience targeting. Only contains Affinity, In-market and Installed-apps
+  /// type Google audiences. All items are logically ‘OR’ of each other.
   GoogleAudienceGroup? excludedGoogleAudienceGroup;
 
   /// The combined audience ids of the included combined audience group.
@@ -12370,7 +12371,7 @@ class AudienceGroupAssignedTargetingOptionDetails {
 class AudioContentTypeAssignedTargetingOptionDetails {
   /// The audio content type.
   ///
-  /// Output only.
+  /// Output only in v1. Required in v2.
   /// Possible string values are:
   /// - "AUDIO_CONTENT_TYPE_UNSPECIFIED" : Audio content type is not specified
   /// in this version. This enum is a place holder for a default value and does
@@ -14716,21 +14717,42 @@ class CombinedAudienceTargetingSetting {
 /// Contact information defining a Customer Match audience member.
 class ContactInfo {
   /// Country code of the member.
+  ///
+  /// Must also be set with the following fields: * hashed_first_name *
+  /// hashed_last_name * zip_codes
   core.String? countryCode;
 
   /// A list of SHA256 hashed email of the member.
+  ///
+  /// Before hashing, remove all whitespace and make sure the string is all
+  /// lowercase.
   core.List<core.String>? hashedEmails;
 
   /// SHA256 hashed first name of the member.
+  ///
+  /// Before hashing, remove all whitespace and make sure the string is all
+  /// lowercase. Must also be set with the following fields: * country_code *
+  /// hashed_last_name * zip_codes
   core.String? hashedFirstName;
 
   /// SHA256 hashed last name of the member.
+  ///
+  /// Before hashing, remove all whitespace and make sure the string is all
+  /// lowercase. Must also be set with the following fields: * country_code *
+  /// hashed_first_name * zip_codes
   core.String? hashedLastName;
 
   /// A list of SHA256 hashed phone numbers of the member.
+  ///
+  /// Before hashing, all phone numbers must be formatted using the \[E.164
+  /// format\](//en.wikipedia.org/wiki/E.164) and include the country calling
+  /// code.
   core.List<core.String>? hashedPhoneNumbers;
 
   /// A list of zip codes of the member.
+  ///
+  /// Must also be set with the following fields: * country_code *
+  /// hashed_first_name * hashed_last_name
   core.List<core.String>? zipCodes;
 
   ContactInfo({
@@ -14833,7 +14855,7 @@ class ContentInstreamPositionAssignedTargetingOptionDetails {
 
   /// The content instream position for video or audio ads.
   ///
-  /// Output only.
+  /// Output only in v1. Required in v2.
   /// Possible string values are:
   /// - "CONTENT_INSTREAM_POSITION_UNSPECIFIED" : Content instream position is
   /// not specified in this version. This enum is a place holder for a default
@@ -14946,7 +14968,7 @@ class ContentOutstreamPositionAssignedTargetingOptionDetails {
 
   /// The content outstream position.
   ///
-  /// Output only.
+  /// Output only in v1. Required in v2.
   /// Possible string values are:
   /// - "CONTENT_OUTSTREAM_POSITION_UNSPECIFIED" : Content outstream position is
   /// not specified in this version. This enum is a place holder for a default
@@ -16633,10 +16655,10 @@ class CustomListTargetingSetting {
 /// The time of day and time zone are either specified elsewhere or are
 /// insignificant. The date is relative to the Gregorian Calendar. This can
 /// represent one of the following: * A full date, with non-zero year, month,
-/// and day values * A month and day value, with a zero year, such as an
-/// anniversary * A year on its own, with zero month and day values * A year and
-/// month value, with a zero day, such as a credit card expiration date Related
-/// types are google.type.TimeOfDay and `google.protobuf.Timestamp`.
+/// and day values * A month and day, with a zero year (e.g., an anniversary) *
+/// A year on its own, with a zero month and a zero day * A year and month, with
+/// a zero day (e.g., a credit card expiration date) Related types: *
+/// google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
 typedef Date = $Date;
 
 /// A date range.
@@ -16962,7 +16984,7 @@ class DeviceMakeModelTargetingOptionDetails {
 class DeviceTypeAssignedTargetingOptionDetails {
   /// The display name of the device type.
   ///
-  /// Output only.
+  /// Output only in v1. Required in v2.
   /// Possible string values are:
   /// - "DEVICE_TYPE_UNSPECIFIED" : Default value when device type is not
   /// specified in this version. This enum is a placeholder for default value
@@ -17597,7 +17619,7 @@ typedef Empty = $Empty;
 class EnvironmentAssignedTargetingOptionDetails {
   /// The serving environment.
   ///
-  /// Output only.
+  /// Output only in v1. Required in v2.
   /// Possible string values are:
   /// - "ENVIRONMENT_UNSPECIFIED" : Default value when environment is not
   /// specified in this version. This enum is a placeholder for default value
@@ -18135,6 +18157,11 @@ class FirstAndThirdPartyAudience {
   /// Output only.
   core.String? activeDisplayAudienceSize;
 
+  /// The app_id matches with the type of the mobile_device_ids being uploaded.
+  ///
+  /// Only applicable to audience_type `CUSTOMER_MATCH_DEVICE_ID`
+  core.String? appId;
+
   /// The source of the audience.
   ///
   /// Output only.
@@ -18168,6 +18195,12 @@ class FirstAndThirdPartyAudience {
   /// videos, YouTube ads, or YouTube channel.
   /// - "LICENSED" : Subtype of third party audience type.
   core.String? audienceType;
+
+  /// Input only.
+  ///
+  /// A list of contact information to define the initial audience members. Only
+  /// applicable to audience_type `CUSTOMER_MATCH_CONTACT_INFO`
+  ContactInfoList? contactInfoList;
 
   /// The user-provided description of the audience.
   ///
@@ -18246,12 +18279,18 @@ class FirstAndThirdPartyAudience {
   /// The duration in days that an entry remains in the audience after the
   /// qualifying event.
   ///
-  /// If the audience has no expiration, the value of this field should be set
-  /// 10000. Otherwise, the set value must be greater than 0 and less than or
-  /// equal to 540. Only applicable to first party audiences. This field is
-  /// required for the following audience_type: * `CUSTOMER_MATCH_CONTACT_INFO`
-  /// * `CUSTOMER_MATCH_DEVICE_ID`
+  /// If the audience has no expiration, set the value of this field to 10000.
+  /// Otherwise, the set value must be greater than 0 and less than or equal to
+  /// 540. Only applicable to first party audiences. This field is required if
+  /// one of the following audience_type is used: *
+  /// `CUSTOMER_MATCH_CONTACT_INFO` * `CUSTOMER_MATCH_DEVICE_ID`
   core.String? membershipDurationDays;
+
+  /// Input only.
+  ///
+  /// A list of mobile device IDs to define the initial audience members. Only
+  /// applicable to audience_type `CUSTOMER_MATCH_DEVICE_ID`
+  MobileDeviceIdList? mobileDeviceIdList;
 
   /// The resource name of the first and third party audience.
   ///
@@ -18270,8 +18309,10 @@ class FirstAndThirdPartyAudience {
 
   FirstAndThirdPartyAudience({
     this.activeDisplayAudienceSize,
+    this.appId,
     this.audienceSource,
     this.audienceType,
+    this.contactInfoList,
     this.description,
     this.displayAudienceSize,
     this.displayDesktopAudienceSize,
@@ -18282,6 +18323,7 @@ class FirstAndThirdPartyAudience {
     this.firstAndThirdPartyAudienceType,
     this.gmailAudienceSize,
     this.membershipDurationDays,
+    this.mobileDeviceIdList,
     this.name,
     this.youtubeAudienceSize,
   });
@@ -18292,11 +18334,17 @@ class FirstAndThirdPartyAudience {
               _json.containsKey('activeDisplayAudienceSize')
                   ? _json['activeDisplayAudienceSize'] as core.String
                   : null,
+          appId:
+              _json.containsKey('appId') ? _json['appId'] as core.String : null,
           audienceSource: _json.containsKey('audienceSource')
               ? _json['audienceSource'] as core.String
               : null,
           audienceType: _json.containsKey('audienceType')
               ? _json['audienceType'] as core.String
+              : null,
+          contactInfoList: _json.containsKey('contactInfoList')
+              ? ContactInfoList.fromJson(_json['contactInfoList']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           description: _json.containsKey('description')
               ? _json['description'] as core.String
@@ -18333,6 +18381,10 @@ class FirstAndThirdPartyAudience {
           membershipDurationDays: _json.containsKey('membershipDurationDays')
               ? _json['membershipDurationDays'] as core.String
               : null,
+          mobileDeviceIdList: _json.containsKey('mobileDeviceIdList')
+              ? MobileDeviceIdList.fromJson(_json['mobileDeviceIdList']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           youtubeAudienceSize: _json.containsKey('youtubeAudienceSize')
               ? _json['youtubeAudienceSize'] as core.String
@@ -18342,8 +18394,10 @@ class FirstAndThirdPartyAudience {
   core.Map<core.String, core.dynamic> toJson() => {
         if (activeDisplayAudienceSize != null)
           'activeDisplayAudienceSize': activeDisplayAudienceSize!,
+        if (appId != null) 'appId': appId!,
         if (audienceSource != null) 'audienceSource': audienceSource!,
         if (audienceType != null) 'audienceType': audienceType!,
+        if (contactInfoList != null) 'contactInfoList': contactInfoList!,
         if (description != null) 'description': description!,
         if (displayAudienceSize != null)
           'displayAudienceSize': displayAudienceSize!,
@@ -18361,6 +18415,8 @@ class FirstAndThirdPartyAudience {
         if (gmailAudienceSize != null) 'gmailAudienceSize': gmailAudienceSize!,
         if (membershipDurationDays != null)
           'membershipDurationDays': membershipDurationDays!,
+        if (mobileDeviceIdList != null)
+          'mobileDeviceIdList': mobileDeviceIdList!,
         if (name != null) 'name': name!,
         if (youtubeAudienceSize != null)
           'youtubeAudienceSize': youtubeAudienceSize!,
@@ -18691,7 +18747,7 @@ class FrequencyCap {
 class GenderAssignedTargetingOptionDetails {
   /// The gender of the audience.
   ///
-  /// Output only.
+  /// Output only in v1. Required in v2.
   /// Possible string values are:
   /// - "GENDER_UNSPECIFIED" : Default value when gender is not specified in
   /// this version. This enum is a place holder for default value and does not
@@ -22853,7 +22909,7 @@ typedef Money = $Money;
 class NativeContentPositionAssignedTargetingOptionDetails {
   /// The content position.
   ///
-  /// Output only.
+  /// Output only in v1. Required in v2.
   /// Possible string values are:
   /// - "NATIVE_CONTENT_POSITION_UNSPECIFIED" : Native content position is not
   /// specified in this version. This enum is a place holder for a default value
@@ -23189,7 +23245,7 @@ class ObaIcon {
 class OmidAssignedTargetingOptionDetails {
   /// The type of Open Measurement enabled inventory.
   ///
-  /// Output only.
+  /// Output only in v1. Required in v2.
   /// Possible string values are:
   /// - "OMID_UNSPECIFIED" : Default value when omid targeting is not specified
   /// in this version.
@@ -25231,7 +25287,7 @@ class SensitiveCategoryAssignedTargetingOptionDetails {
 
   /// An enum for the DV360 Sensitive category content classifier.
   ///
-  /// Output only.
+  /// Output only in v1. Required in v2.
   /// Possible string values are:
   /// - "SENSITIVE_CATEGORY_UNSPECIFIED" : This enum is only a placeholder and
   /// doesn't specify a DV360 sensitive category.
@@ -26569,7 +26625,7 @@ class VideoPlayerSizeAssignedTargetingOptionDetails {
 
   /// The video player size.
   ///
-  /// Output only.
+  /// Output only in v1. Required in v2.
   /// Possible string values are:
   /// - "VIDEO_PLAYER_SIZE_UNSPECIFIED" : Video player size is not specified in
   /// this version. This enum is a place holder for a default value and does not
@@ -26659,7 +26715,7 @@ class ViewabilityAssignedTargetingOptionDetails {
 
   /// The predicted viewability percentage.
   ///
-  /// Output only.
+  /// Output only in v1. Required in v2.
   /// Possible string values are:
   /// - "VIEWABILITY_UNSPECIFIED" : Default value when viewability is not
   /// specified in this version. This enum is a placeholder for default value

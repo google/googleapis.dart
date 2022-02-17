@@ -421,7 +421,7 @@
             }
         }
     },
-    "revision": "20220116",
+    "revision": "20220131",
     "rootUrl": "https://alertcenter.googleapis.com/",
     "schemas": {
         "AccountSuspensionDetails": {
@@ -802,7 +802,8 @@
                         "RESOLVED",
                         "FALSE_POSITIVE",
                         "PARTIALLY_RESOLVED",
-                        "MERGED"
+                        "MERGED",
+                        "DOWNGRADED"
                     ],
                     "enumDescriptions": [
                         "Status is unspecified.",
@@ -811,7 +812,8 @@
                         "The incident has been resolved.",
                         "Further assessment indicated no customer impact.",
                         "The incident has been partially resolved.",
-                        "The incident was merged into a parent."
+                        "The incident was merged into a parent.",
+                        "The incident has lower impact than initially anticipated."
                     ],
                     "type": "string"
                 }
@@ -1287,7 +1289,7 @@
             "id": "MergeInfo",
             "properties": {
                 "newAlertId": {
-                    "description": "New alert ID. Reference the [google.apps.alertcenter.Alert] with this ID for the current state.",
+                    "description": "Optional. New alert ID. Reference the [google.apps.alertcenter.Alert] with this ID for the current state.",
                     "type": "string"
                 },
                 "newIncidentTrackingId": {

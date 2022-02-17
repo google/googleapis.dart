@@ -15,8 +15,9 @@
 /// Cloud Run Admin API - v1
 ///
 /// Deploy and manage user provided container images that scale automatically
-/// based on incoming requests. The Cloud Run Admin API follows the Knative
-/// Serving API specification.
+/// based on incoming requests. The Cloud Run Admin API v1 follows the Knative
+/// Serving API specification, while v2 is aligned with Google Cloud AIP-based
+/// API standards, as described in https://google.aip.dev/.
 ///
 /// For more information, see <https://cloud.google.com/run/>
 ///
@@ -26,15 +27,19 @@
 ///   - [NamespacesAuthorizeddomainsResource]
 ///   - [NamespacesConfigurationsResource]
 ///   - [NamespacesDomainmappingsResource]
+///   - [NamespacesExecutionsResource]
+///   - [NamespacesJobsResource]
 ///   - [NamespacesRevisionsResource]
 ///   - [NamespacesRoutesResource]
 ///   - [NamespacesServicesResource]
+///   - [NamespacesTasksResource]
 /// - [ProjectsResource]
 ///   - [ProjectsAuthorizeddomainsResource]
 ///   - [ProjectsLocationsResource]
 ///     - [ProjectsLocationsAuthorizeddomainsResource]
 ///     - [ProjectsLocationsConfigurationsResource]
 ///     - [ProjectsLocationsDomainmappingsResource]
+///     - [ProjectsLocationsJobsResource]
 ///     - [ProjectsLocationsRevisionsResource]
 ///     - [ProjectsLocationsRoutesResource]
 ///     - [ProjectsLocationsServicesResource]
@@ -57,7 +62,9 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// Deploy and manage user provided container images that scale automatically
 /// based on incoming requests.
 ///
-/// The Cloud Run Admin API follows the Knative Serving API specification.
+/// The Cloud Run Admin API v1 follows the Knative Serving API specification,
+/// while v2 is aligned with Google Cloud AIP-based API standards, as described
+/// in https://google.aip.dev/.
 class CloudRunApi {
   /// See, edit, configure, and delete your Google Cloud data and see the email
   /// address for your Google Account.
@@ -85,11 +92,15 @@ class NamespacesResource {
       NamespacesConfigurationsResource(_requester);
   NamespacesDomainmappingsResource get domainmappings =>
       NamespacesDomainmappingsResource(_requester);
+  NamespacesExecutionsResource get executions =>
+      NamespacesExecutionsResource(_requester);
+  NamespacesJobsResource get jobs => NamespacesJobsResource(_requester);
   NamespacesRevisionsResource get revisions =>
       NamespacesRevisionsResource(_requester);
   NamespacesRoutesResource get routes => NamespacesRoutesResource(_requester);
   NamespacesServicesResource get services =>
       NamespacesServicesResource(_requester);
+  NamespacesTasksResource get tasks => NamespacesTasksResource(_requester);
 
   NamespacesResource(commons.ApiRequester client) : _requester = client;
 }
@@ -489,6 +500,472 @@ class NamespacesDomainmappingsResource {
     );
     return ListDomainMappingsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class NamespacesExecutionsResource {
+  final commons.ApiRequester _requester;
+
+  NamespacesExecutionsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Delete an execution.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the execution to delete. Replace
+  /// {namespace_id} with the project ID or number.
+  /// Value must have pattern `^namespaces/\[^/\]+/executions/\[^/\]+$`.
+  ///
+  /// [apiVersion] - Optional. Cloud Run currently ignores this parameter.
+  ///
+  /// [kind] - Optional. Cloud Run currently ignores this parameter.
+  ///
+  /// [propagationPolicy] - Optional. Specifies the propagation policy of
+  /// delete. Cloud Run currently ignores this setting, and deletes in the
+  /// background. Please see
+  /// kubernetes.io/docs/concepts/workloads/controllers/garbage-collection/ for
+  /// more information.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Status].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Status> delete(
+    core.String name, {
+    core.String? apiVersion,
+    core.String? kind,
+    core.String? propagationPolicy,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (apiVersion != null) 'apiVersion': [apiVersion],
+      if (kind != null) 'kind': [kind],
+      if (propagationPolicy != null) 'propagationPolicy': [propagationPolicy],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'apis/run.googleapis.com/v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'DELETE',
+      queryParams: _queryParams,
+    );
+    return Status.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Get information about an execution.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the execution to retrieve. Replace
+  /// {namespace_id} with the project ID or number.
+  /// Value must have pattern `^namespaces/\[^/\]+/executions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Execution].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Execution> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'apis/run.googleapis.com/v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return Execution.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// List executions.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The namespace from which the executions should be
+  /// listed. Replace {namespace_id} with the project ID or number.
+  /// Value must have pattern `^namespaces/\[^/\]+$`.
+  ///
+  /// [continue_] - Optional. Optional encoded string to continue paging.
+  ///
+  /// [fieldSelector] - Optional. Allows to filter resources based on a specific
+  /// value for a field name. Send this in a query string format. i.e.
+  /// 'metadata.name%3Dlorem'. Not currently used by Cloud Run.
+  ///
+  /// [includeUninitialized] - Optional. Not currently used by Cloud Run.
+  ///
+  /// [labelSelector] - Optional. Allows to filter resources based on a label.
+  /// Supported operations are =, !=, exists, in, and notIn.
+  ///
+  /// [limit] - Optional. The maximum number of records that should be returned.
+  ///
+  /// [resourceVersion] - Optional. The baseline resource version from which the
+  /// list or watch operation should start. Not currently used by Cloud Run.
+  ///
+  /// [watch] - Optional. Flag that indicates that the client expects to watch
+  /// this resource as well. Not currently used by Cloud Run.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListExecutionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListExecutionsResponse> list(
+    core.String parent, {
+    core.String? continue_,
+    core.String? fieldSelector,
+    core.bool? includeUninitialized,
+    core.String? labelSelector,
+    core.int? limit,
+    core.String? resourceVersion,
+    core.bool? watch,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (continue_ != null) 'continue': [continue_],
+      if (fieldSelector != null) 'fieldSelector': [fieldSelector],
+      if (includeUninitialized != null)
+        'includeUninitialized': ['${includeUninitialized}'],
+      if (labelSelector != null) 'labelSelector': [labelSelector],
+      if (limit != null) 'limit': ['${limit}'],
+      if (resourceVersion != null) 'resourceVersion': [resourceVersion],
+      if (watch != null) 'watch': ['${watch}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'apis/run.googleapis.com/v1/' +
+        core.Uri.encodeFull('$parent') +
+        '/executions';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return ListExecutionsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class NamespacesJobsResource {
+  final commons.ApiRequester _requester;
+
+  NamespacesJobsResource(commons.ApiRequester client) : _requester = client;
+
+  /// Create a job.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The namespace in which the job should be created.
+  /// Replace {namespace_id} with the project ID or number.
+  /// Value must have pattern `^namespaces/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Job].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Job> create(
+    Job request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'apis/run.googleapis.com/v1/' +
+        core.Uri.encodeFull('$parent') +
+        '/jobs';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Job.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Delete a job.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the job to delete. Replace {namespace_id}
+  /// with the project ID or number.
+  /// Value must have pattern `^namespaces/\[^/\]+/jobs/\[^/\]+$`.
+  ///
+  /// [apiVersion] - Optional. Cloud Run currently ignores this parameter.
+  ///
+  /// [kind] - Optional. Cloud Run currently ignores this parameter.
+  ///
+  /// [propagationPolicy] - Optional. Specifies the propagation policy of
+  /// delete. Cloud Run currently ignores this setting, and deletes in the
+  /// background. Please see
+  /// kubernetes.io/docs/concepts/workloads/controllers/garbage-collection/ for
+  /// more information.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Status].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Status> delete(
+    core.String name, {
+    core.String? apiVersion,
+    core.String? kind,
+    core.String? propagationPolicy,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (apiVersion != null) 'apiVersion': [apiVersion],
+      if (kind != null) 'kind': [kind],
+      if (propagationPolicy != null) 'propagationPolicy': [propagationPolicy],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'apis/run.googleapis.com/v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'DELETE',
+      queryParams: _queryParams,
+    );
+    return Status.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Get information about a job.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the job to retrieve. Replace {namespace_id}
+  /// with the project ID or number.
+  /// Value must have pattern `^namespaces/\[^/\]+/jobs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Job].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Job> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'apis/run.googleapis.com/v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return Job.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// List jobs.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The namespace from which the jobs should be listed.
+  /// Replace {namespace_id} with the project ID or number.
+  /// Value must have pattern `^namespaces/\[^/\]+$`.
+  ///
+  /// [continue_] - Optional. Optional encoded string to continue paging.
+  ///
+  /// [fieldSelector] - Optional. Allows to filter resources based on a specific
+  /// value for a field name. Send this in a query string format. i.e.
+  /// 'metadata.name%3Dlorem'. Not currently used by Cloud Run.
+  ///
+  /// [includeUninitialized] - Optional. Not currently used by Cloud Run.
+  ///
+  /// [labelSelector] - Optional. Allows to filter resources based on a label.
+  /// Supported operations are =, !=, exists, in, and notIn.
+  ///
+  /// [limit] - Optional. The maximum number of records that should be returned.
+  ///
+  /// [resourceVersion] - Optional. The baseline resource version from which the
+  /// list or watch operation should start. Not currently used by Cloud Run.
+  ///
+  /// [watch] - Optional. Flag that indicates that the client expects to watch
+  /// this resource as well. Not currently used by Cloud Run.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListJobsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListJobsResponse> list(
+    core.String parent, {
+    core.String? continue_,
+    core.String? fieldSelector,
+    core.bool? includeUninitialized,
+    core.String? labelSelector,
+    core.int? limit,
+    core.String? resourceVersion,
+    core.bool? watch,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (continue_ != null) 'continue': [continue_],
+      if (fieldSelector != null) 'fieldSelector': [fieldSelector],
+      if (includeUninitialized != null)
+        'includeUninitialized': ['${includeUninitialized}'],
+      if (labelSelector != null) 'labelSelector': [labelSelector],
+      if (limit != null) 'limit': ['${limit}'],
+      if (resourceVersion != null) 'resourceVersion': [resourceVersion],
+      if (watch != null) 'watch': ['${watch}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'apis/run.googleapis.com/v1/' +
+        core.Uri.encodeFull('$parent') +
+        '/jobs';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return ListJobsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Replace a job.
+  ///
+  /// Only the spec and metadata labels and annotations are modifiable. After
+  /// the Replace request, Cloud Run will work to make the 'status' match the
+  /// requested 'spec'. May provide metadata.resourceVersion to enforce update
+  /// from last read for optimistic concurrency control.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the service being replaced. Replace
+  /// {namespace_id} with the project ID or number.
+  /// Value must have pattern `^namespaces/\[^/\]+/jobs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Job].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Job> replaceJob(
+    Job request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'apis/run.googleapis.com/v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'PUT',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Job.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Trigger creation of a new execution of this job.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the job to run. Replace {namespace_id} with
+  /// the project ID or number.
+  /// Value must have pattern `^namespaces/\[^/\]+/jobs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Execution].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Execution> run(
+    RunJobRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url =
+        'apis/run.googleapis.com/v1/' + core.Uri.encodeFull('$name') + ':run';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Execution.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1058,6 +1535,121 @@ class NamespacesServicesResource {
   }
 }
 
+class NamespacesTasksResource {
+  final commons.ApiRequester _requester;
+
+  NamespacesTasksResource(commons.ApiRequester client) : _requester = client;
+
+  /// Get information about a task.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the task to retrieve. Replace
+  /// {namespace_id} with the project ID or number.
+  /// Value must have pattern `^namespaces/\[^/\]+/tasks/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Task].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Task> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'apis/run.googleapis.com/v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return Task.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// List tasks.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The namespace from which the tasks should be listed.
+  /// Replace {namespace_id} with the project ID or number.
+  /// Value must have pattern `^namespaces/\[^/\]+$`.
+  ///
+  /// [continue_] - Optional. Optional encoded string to continue paging.
+  ///
+  /// [fieldSelector] - Optional. Allows to filter resources based on a specific
+  /// value for a field name. Send this in a query string format. i.e.
+  /// 'metadata.name%3Dlorem'. Not currently used by Cloud Run.
+  ///
+  /// [includeUninitialized] - Optional. Not currently used by Cloud Run.
+  ///
+  /// [labelSelector] - Optional. Allows to filter resources based on a label.
+  /// Supported operations are =, !=, exists, in, and notIn.
+  ///
+  /// [limit] - Optional. The maximum number of records that should be returned.
+  ///
+  /// [resourceVersion] - Optional. The baseline resource version from which the
+  /// list or watch operation should start. Not currently used by Cloud Run.
+  ///
+  /// [watch] - Optional. Flag that indicates that the client expects to watch
+  /// this resource as well. Not currently used by Cloud Run.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListTasksResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListTasksResponse> list(
+    core.String parent, {
+    core.String? continue_,
+    core.String? fieldSelector,
+    core.bool? includeUninitialized,
+    core.String? labelSelector,
+    core.int? limit,
+    core.String? resourceVersion,
+    core.bool? watch,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (continue_ != null) 'continue': [continue_],
+      if (fieldSelector != null) 'fieldSelector': [fieldSelector],
+      if (includeUninitialized != null)
+        'includeUninitialized': ['${includeUninitialized}'],
+      if (labelSelector != null) 'labelSelector': [labelSelector],
+      if (limit != null) 'limit': ['${limit}'],
+      if (resourceVersion != null) 'resourceVersion': [resourceVersion],
+      if (watch != null) 'watch': ['${watch}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'apis/run.googleapis.com/v1/' +
+        core.Uri.encodeFull('$parent') +
+        '/tasks';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return ListTasksResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class ProjectsResource {
   final commons.ApiRequester _requester;
 
@@ -1130,6 +1722,8 @@ class ProjectsLocationsResource {
       ProjectsLocationsConfigurationsResource(_requester);
   ProjectsLocationsDomainmappingsResource get domainmappings =>
       ProjectsLocationsDomainmappingsResource(_requester);
+  ProjectsLocationsJobsResource get jobs =>
+      ProjectsLocationsJobsResource(_requester);
   ProjectsLocationsRevisionsResource get revisions =>
       ProjectsLocationsRevisionsResource(_requester);
   ProjectsLocationsRoutesResource get routes =>
@@ -1581,6 +2175,160 @@ class ProjectsLocationsDomainmappingsResource {
       queryParams: _queryParams,
     );
     return ListDomainMappingsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsJobsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsJobsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Get the IAM Access Control policy currently in effect for the given job.
+  ///
+  /// This result does not include any inherited policies.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// requested. See the operation documentation for the appropriate value for
+  /// this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/jobs/\[^/\]+$`.
+  ///
+  /// [options_requestedPolicyVersion] - Optional. The maximum policy version
+  /// that will be used to format the policy. Valid values are 0, 1, and 3.
+  /// Requests specifying an invalid value will be rejected. Requests for
+  /// policies with any conditional role bindings must specify version 3.
+  /// Policies with no conditional role bindings may specify any valid value or
+  /// leave the field unset. The policy in the response might use the policy
+  /// version that you specified, or it might use a lower policy version. For
+  /// example, if you specify version 3, but the policy has no conditional role
+  /// bindings, the response uses version 1. To learn which resources support
+  /// conditions in their IAM policies, see the
+  /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> getIamPolicy(
+    core.String resource, {
+    core.int? options_requestedPolicyVersion,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (options_requestedPolicyVersion != null)
+        'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Sets the IAM Access control policy for the specified job.
+  ///
+  /// Overwrites any existing policy.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// specified. See the operation documentation for the appropriate value for
+  /// this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/jobs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> setIamPolicy(
+    SetIamPolicyRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns permissions that a caller has on the specified job.
+  ///
+  /// There are no permissions required for making this API call.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy detail is being
+  /// requested. See the operation documentation for the appropriate value for
+  /// this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/jobs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [TestIamPermissionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TestIamPermissionsResponse> testIamPermissions(
+    TestIamPermissionsRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url =
+        'v1/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return TestIamPermissionsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
 }
@@ -3078,6 +3826,36 @@ class ContainerPort {
       };
 }
 
+/// ContainerStatus holds the information of container name and image digest
+/// value.
+class ContainerStatus {
+  /// ImageDigest holds the resolved digest for the image specified, regardless
+  /// of whether a tag or digest was originally specified in the Container
+  /// object.
+  core.String? imageDigest;
+
+  /// The name of the container, if specified.
+  core.String? name;
+
+  ContainerStatus({
+    this.imageDigest,
+    this.name,
+  });
+
+  ContainerStatus.fromJson(core.Map _json)
+      : this(
+          imageDigest: _json.containsKey('imageDigest')
+              ? _json['imageDigest'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (imageDigest != null) 'imageDigest': imageDigest!,
+        if (name != null) 'name': name!,
+      };
+}
+
 /// Resource to hold the state and status of a user's domain mapping.
 ///
 /// NOTE: This resource is currently in Beta.
@@ -3403,6 +4181,351 @@ class ExecAction {
       };
 }
 
+/// Execution represents the configuration of a single execution.
+///
+/// A execution an immutable resource that references a container image which is
+/// run to completion.
+class Execution {
+  /// APIVersion defines the versioned schema of this representation of an
+  /// object.
+  ///
+  /// Servers should convert recognized schemas to the latest internal value,
+  /// and may reject unrecognized values. More info:
+  /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+  /// +optional
+  ///
+  /// Optional.
+  core.String? apiVersion;
+
+  /// Kind is a string value representing the REST resource this object
+  /// represents.
+  ///
+  /// Servers may infer this from the endpoint the client submits requests to.
+  /// Cannot be updated. In CamelCase. More info:
+  /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+  /// +optional
+  ///
+  /// Optional.
+  core.String? kind;
+
+  /// Standard object's metadata.
+  ///
+  /// More info:
+  /// https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+  /// +optional
+  ///
+  /// Optional.
+  ObjectMeta? metadata;
+
+  /// Specification of the desired behavior of an execution.
+  ///
+  /// More info:
+  /// https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status
+  /// +optional
+  ///
+  /// Optional.
+  ExecutionSpec? spec;
+
+  /// Current status of an execution.
+  ///
+  /// More info:
+  /// https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status
+  /// +optional
+  ///
+  /// Output only.
+  ExecutionStatus? status;
+
+  Execution({
+    this.apiVersion,
+    this.kind,
+    this.metadata,
+    this.spec,
+    this.status,
+  });
+
+  Execution.fromJson(core.Map _json)
+      : this(
+          apiVersion: _json.containsKey('apiVersion')
+              ? _json['apiVersion'] as core.String
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          metadata: _json.containsKey('metadata')
+              ? ObjectMeta.fromJson(
+                  _json['metadata'] as core.Map<core.String, core.dynamic>)
+              : null,
+          spec: _json.containsKey('spec')
+              ? ExecutionSpec.fromJson(
+                  _json['spec'] as core.Map<core.String, core.dynamic>)
+              : null,
+          status: _json.containsKey('status')
+              ? ExecutionStatus.fromJson(
+                  _json['status'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (apiVersion != null) 'apiVersion': apiVersion!,
+        if (kind != null) 'kind': kind!,
+        if (metadata != null) 'metadata': metadata!,
+        if (spec != null) 'spec': spec!,
+        if (status != null) 'status': status!,
+      };
+}
+
+/// Reference to an Execution.
+///
+/// Use /Executions.GetExecution with the given name to get full execution
+/// including the latest status.
+class ExecutionReference {
+  /// Creation timestamp of the execution.
+  ///
+  /// Optional.
+  core.String? creationTimestamp;
+
+  /// Name of the execution.
+  ///
+  /// Optional.
+  core.String? name;
+
+  ExecutionReference({
+    this.creationTimestamp,
+    this.name,
+  });
+
+  ExecutionReference.fromJson(core.Map _json)
+      : this(
+          creationTimestamp: _json.containsKey('creationTimestamp')
+              ? _json['creationTimestamp'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (creationTimestamp != null) 'creationTimestamp': creationTimestamp!,
+        if (name != null) 'name': name!,
+      };
+}
+
+/// ExecutionSpec describes how the execution will look.
+class ExecutionSpec {
+  /// Specifies the maximum desired number of tasks the execution should run at
+  /// any given time.
+  ///
+  /// Must be \<= task_count. The actual number of tasks running in steady state
+  /// will be less than this number when ((.spec.task_count -
+  /// .status.successful) \< .spec.parallelism), i.e. when the work left to do
+  /// is less than max parallelism. More info:
+  /// https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
+  /// +optional
+  ///
+  /// Optional.
+  core.int? parallelism;
+
+  /// Specifies the desired number of tasks the execution should run.
+  ///
+  /// Setting to 1 means that parallelism is limited to 1 and the success of
+  /// that task signals the success of the execution. More info:
+  /// https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
+  /// +optional
+  ///
+  /// Optional.
+  core.int? taskCount;
+
+  /// Describes the task(s) that will be created when executing an execution.
+  ///
+  /// Optional.
+  TaskTemplateSpec? template;
+
+  ExecutionSpec({
+    this.parallelism,
+    this.taskCount,
+    this.template,
+  });
+
+  ExecutionSpec.fromJson(core.Map _json)
+      : this(
+          parallelism: _json.containsKey('parallelism')
+              ? _json['parallelism'] as core.int
+              : null,
+          taskCount: _json.containsKey('taskCount')
+              ? _json['taskCount'] as core.int
+              : null,
+          template: _json.containsKey('template')
+              ? TaskTemplateSpec.fromJson(
+                  _json['template'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (parallelism != null) 'parallelism': parallelism!,
+        if (taskCount != null) 'taskCount': taskCount!,
+        if (template != null) 'template': template!,
+      };
+}
+
+/// ExecutionStatus represents the current state of a Execution.
+class ExecutionStatus {
+  /// Represents time when the execution was completed.
+  ///
+  /// It is not guaranteed to be set in happens-before order across separate
+  /// operations. It is represented in RFC3339 form and is in UTC. +optional
+  ///
+  /// Optional.
+  core.String? completionTime;
+
+  /// The latest available observations of an execution's current state.
+  ///
+  /// More info:
+  /// https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
+  /// +optional
+  ///
+  /// Optional.
+  core.List<GoogleCloudRunV1Condition>? conditions;
+
+  /// The number of tasks which reached phase Failed.
+  ///
+  /// +optional
+  ///
+  /// Optional.
+  core.int? failedCount;
+
+  /// URI where logs for this execution can be found in Cloud Console.
+  ///
+  /// Optional.
+  core.String? logUri;
+
+  /// The 'generation' of the execution that was last processed by the
+  /// controller.
+  ///
+  /// Optional.
+  core.int? observedGeneration;
+
+  /// The number of actively running tasks.
+  ///
+  /// +optional
+  ///
+  /// Optional.
+  core.int? runningCount;
+
+  /// Represents time when the execution started to run.
+  ///
+  /// It is not guaranteed to be set in happens-before order across separate
+  /// operations. It is represented in RFC3339 form and is in UTC. +optional
+  ///
+  /// Optional.
+  core.String? startTime;
+
+  /// The number of tasks which reached phase Succeeded.
+  ///
+  /// +optional
+  ///
+  /// Optional.
+  core.int? succeededCount;
+
+  ExecutionStatus({
+    this.completionTime,
+    this.conditions,
+    this.failedCount,
+    this.logUri,
+    this.observedGeneration,
+    this.runningCount,
+    this.startTime,
+    this.succeededCount,
+  });
+
+  ExecutionStatus.fromJson(core.Map _json)
+      : this(
+          completionTime: _json.containsKey('completionTime')
+              ? _json['completionTime'] as core.String
+              : null,
+          conditions: _json.containsKey('conditions')
+              ? (_json['conditions'] as core.List)
+                  .map((value) => GoogleCloudRunV1Condition.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          failedCount: _json.containsKey('failedCount')
+              ? _json['failedCount'] as core.int
+              : null,
+          logUri: _json.containsKey('logUri')
+              ? _json['logUri'] as core.String
+              : null,
+          observedGeneration: _json.containsKey('observedGeneration')
+              ? _json['observedGeneration'] as core.int
+              : null,
+          runningCount: _json.containsKey('runningCount')
+              ? _json['runningCount'] as core.int
+              : null,
+          startTime: _json.containsKey('startTime')
+              ? _json['startTime'] as core.String
+              : null,
+          succeededCount: _json.containsKey('succeededCount')
+              ? _json['succeededCount'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (completionTime != null) 'completionTime': completionTime!,
+        if (conditions != null) 'conditions': conditions!,
+        if (failedCount != null) 'failedCount': failedCount!,
+        if (logUri != null) 'logUri': logUri!,
+        if (observedGeneration != null)
+          'observedGeneration': observedGeneration!,
+        if (runningCount != null) 'runningCount': runningCount!,
+        if (startTime != null) 'startTime': startTime!,
+        if (succeededCount != null) 'succeededCount': succeededCount!,
+      };
+}
+
+/// ExecutionTemplateSpec describes the metadata and spec an Execution should
+/// have when created from a job.
+///
+/// Based on:
+/// https://github.com/kubernetes/api/blob/e771f807/core/v1/types.go#L3179-L3190
+class ExecutionTemplateSpec {
+  /// Optional metadata for this Execution, including labels and annotations.
+  ///
+  /// The following annotation keys set properties of the created execution: *
+  /// `run.googleapis.com/cloudsql-instances` sets Cloud SQL connections.
+  /// Multiple values should be comma separated. *
+  /// `run.googleapis.com/vpc-access-connector` sets a Serverless VPC Access
+  /// connector. * `run.googleapis.com/vpc-access-egress` sets VPC egress.
+  /// Supported values are `all-traffic`, `all` (deprecated), and
+  /// `private-ranges-only`. `all-traffic` and `all` provide the same
+  /// functionality. `all` is deprecated but will continue to be supported.
+  /// Prefer `all-traffic`.
+  ///
+  /// Optional.
+  ObjectMeta? metadata;
+
+  /// ExecutionSpec holds the desired configuration for executions of this job.
+  ///
+  /// Required.
+  ExecutionSpec? spec;
+
+  ExecutionTemplateSpec({
+    this.metadata,
+    this.spec,
+  });
+
+  ExecutionTemplateSpec.fromJson(core.Map _json)
+      : this(
+          metadata: _json.containsKey('metadata')
+              ? ObjectMeta.fromJson(
+                  _json['metadata'] as core.Map<core.String, core.dynamic>)
+              : null,
+          spec: _json.containsKey('spec')
+              ? ExecutionSpec.fromJson(
+                  _json['spec'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (metadata != null) 'metadata': metadata!,
+        if (spec != null) 'spec': spec!,
+      };
+}
+
 /// Represents a textual expression in the Common Expression Language (CEL)
 /// syntax.
 ///
@@ -3496,6 +4619,15 @@ class GoogleCloudRunV1Condition {
       };
 }
 
+/// The `Status` type defines a logical error model that is suitable for
+/// different programming environments, including REST APIs and RPC APIs.
+///
+/// It is used by [gRPC](https://github.com/grpc). Each `Status` message
+/// contains three pieces of data: error code, error message, and error details.
+/// You can find out more about this error model and how to work with it in the
+/// [API Design Guide](https://cloud.google.com/apis/design/errors).
+typedef GoogleRpcStatus = $Status;
+
 /// Not supported by Cloud Run HTTPGetAction describes an action based on HTTP
 /// Get requests.
 class HTTPGetAction {
@@ -3571,6 +4703,191 @@ class HTTPHeader {
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
         if (value != null) 'value': value!,
+      };
+}
+
+/// Job represents the configuration of a single job.
+///
+/// A job an immutable resource that references a container image which is run
+/// to completion.
+class Job {
+  /// APIVersion defines the versioned schema of this representation of an
+  /// object.
+  ///
+  /// Servers should convert recognized schemas to the latest internal value,
+  /// and may reject unrecognized values. More info:
+  /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+  /// +optional
+  ///
+  /// Optional.
+  core.String? apiVersion;
+
+  /// Kind is a string value representing the REST resource this object
+  /// represents.
+  ///
+  /// Servers may infer this from the endpoint the client submits requests to.
+  /// Cannot be updated. In CamelCase. More info:
+  /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+  /// +optional
+  ///
+  /// Optional.
+  core.String? kind;
+
+  /// Standard object's metadata.
+  ///
+  /// More info:
+  /// https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+  /// +optional
+  ///
+  /// Optional.
+  ObjectMeta? metadata;
+
+  /// Specification of the desired behavior of a job.
+  ///
+  /// More info:
+  /// https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status
+  /// +optional
+  ///
+  /// Optional.
+  JobSpec? spec;
+
+  /// Current status of a job.
+  ///
+  /// More info:
+  /// https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status
+  /// +optional
+  ///
+  /// Output only.
+  JobStatus? status;
+
+  Job({
+    this.apiVersion,
+    this.kind,
+    this.metadata,
+    this.spec,
+    this.status,
+  });
+
+  Job.fromJson(core.Map _json)
+      : this(
+          apiVersion: _json.containsKey('apiVersion')
+              ? _json['apiVersion'] as core.String
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          metadata: _json.containsKey('metadata')
+              ? ObjectMeta.fromJson(
+                  _json['metadata'] as core.Map<core.String, core.dynamic>)
+              : null,
+          spec: _json.containsKey('spec')
+              ? JobSpec.fromJson(
+                  _json['spec'] as core.Map<core.String, core.dynamic>)
+              : null,
+          status: _json.containsKey('status')
+              ? JobStatus.fromJson(
+                  _json['status'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (apiVersion != null) 'apiVersion': apiVersion!,
+        if (kind != null) 'kind': kind!,
+        if (metadata != null) 'metadata': metadata!,
+        if (spec != null) 'spec': spec!,
+        if (status != null) 'status': status!,
+      };
+}
+
+/// JobSpec describes how the job will look.
+class JobSpec {
+  /// Describes the execution that will be created when running a job.
+  ///
+  /// Optional.
+  ExecutionTemplateSpec? template;
+
+  JobSpec({
+    this.template,
+  });
+
+  JobSpec.fromJson(core.Map _json)
+      : this(
+          template: _json.containsKey('template')
+              ? ExecutionTemplateSpec.fromJson(
+                  _json['template'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (template != null) 'template': template!,
+      };
+}
+
+/// JobStatus represents the current state of a Job.
+class JobStatus {
+  /// The latest available observations of a job's current state.
+  ///
+  /// More info:
+  /// https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
+  core.List<GoogleCloudRunV1Condition>? conditions;
+
+  /// Status information for each of the specified containers.
+  ///
+  /// The status includes the resolved digest for specified images, which occurs
+  /// during creation of the job.
+  core.List<ContainerStatus>? containerStatuses;
+
+  /// Number of executions created for this job.
+  core.int? executionCount;
+
+  /// A pointer to the most recently created execution for this job.
+  ///
+  /// This is set regardless of the eventual state of the execution.
+  ExecutionReference? latestCreatedExecution;
+
+  /// The 'generation' of the job that was last processed by the controller.
+  core.int? observedGeneration;
+
+  JobStatus({
+    this.conditions,
+    this.containerStatuses,
+    this.executionCount,
+    this.latestCreatedExecution,
+    this.observedGeneration,
+  });
+
+  JobStatus.fromJson(core.Map _json)
+      : this(
+          conditions: _json.containsKey('conditions')
+              ? (_json['conditions'] as core.List)
+                  .map((value) => GoogleCloudRunV1Condition.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          containerStatuses: _json.containsKey('containerStatuses')
+              ? (_json['containerStatuses'] as core.List)
+                  .map((value) => ContainerStatus.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          executionCount: _json.containsKey('executionCount')
+              ? _json['executionCount'] as core.int
+              : null,
+          latestCreatedExecution: _json.containsKey('latestCreatedExecution')
+              ? ExecutionReference.fromJson(_json['latestCreatedExecution']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          observedGeneration: _json.containsKey('observedGeneration')
+              ? _json['observedGeneration'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (conditions != null) 'conditions': conditions!,
+        if (containerStatuses != null) 'containerStatuses': containerStatuses!,
+        if (executionCount != null) 'executionCount': executionCount!,
+        if (latestCreatedExecution != null)
+          'latestCreatedExecution': latestCreatedExecution!,
+        if (observedGeneration != null)
+          'observedGeneration': observedGeneration!,
       };
 }
 
@@ -3744,6 +5061,120 @@ class ListDomainMappingsResponse {
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
                   .map((value) => DomainMapping.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          metadata: _json.containsKey('metadata')
+              ? ListMeta.fromJson(
+                  _json['metadata'] as core.Map<core.String, core.dynamic>)
+              : null,
+          unreachable: _json.containsKey('unreachable')
+              ? (_json['unreachable'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (apiVersion != null) 'apiVersion': apiVersion!,
+        if (items != null) 'items': items!,
+        if (kind != null) 'kind': kind!,
+        if (metadata != null) 'metadata': metadata!,
+        if (unreachable != null) 'unreachable': unreachable!,
+      };
+}
+
+/// ListExecutionsResponse is a list of Executions resources.
+class ListExecutionsResponse {
+  /// The API version for this call such as "run.googleapis.com/v1".
+  core.String? apiVersion;
+
+  /// List of Executions.
+  core.List<Execution>? items;
+
+  /// The kind of this resource, in this case "ExecutionsList".
+  core.String? kind;
+
+  /// Metadata associated with this executions list.
+  ListMeta? metadata;
+
+  /// Locations that could not be reached.
+  core.List<core.String>? unreachable;
+
+  ListExecutionsResponse({
+    this.apiVersion,
+    this.items,
+    this.kind,
+    this.metadata,
+    this.unreachable,
+  });
+
+  ListExecutionsResponse.fromJson(core.Map _json)
+      : this(
+          apiVersion: _json.containsKey('apiVersion')
+              ? _json['apiVersion'] as core.String
+              : null,
+          items: _json.containsKey('items')
+              ? (_json['items'] as core.List)
+                  .map((value) => Execution.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          metadata: _json.containsKey('metadata')
+              ? ListMeta.fromJson(
+                  _json['metadata'] as core.Map<core.String, core.dynamic>)
+              : null,
+          unreachable: _json.containsKey('unreachable')
+              ? (_json['unreachable'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (apiVersion != null) 'apiVersion': apiVersion!,
+        if (items != null) 'items': items!,
+        if (kind != null) 'kind': kind!,
+        if (metadata != null) 'metadata': metadata!,
+        if (unreachable != null) 'unreachable': unreachable!,
+      };
+}
+
+/// ListJobsResponse is a list of Jobs resources.
+class ListJobsResponse {
+  /// The API version for this call such as "run.googleapis.com/v1".
+  core.String? apiVersion;
+
+  /// List of Jobs.
+  core.List<Job>? items;
+
+  /// The kind of this resource, in this case "JobsList".
+  core.String? kind;
+
+  /// Metadata associated with this jobs list.
+  ListMeta? metadata;
+
+  /// Locations that could not be reached.
+  core.List<core.String>? unreachable;
+
+  ListJobsResponse({
+    this.apiVersion,
+    this.items,
+    this.kind,
+    this.metadata,
+    this.unreachable,
+  });
+
+  ListJobsResponse.fromJson(core.Map _json)
+      : this(
+          apiVersion: _json.containsKey('apiVersion')
+              ? _json['apiVersion'] as core.String
+              : null,
+          items: _json.containsKey('items')
+              ? (_json['items'] as core.List)
+                  .map((value) => Job.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -4027,6 +5458,63 @@ class ListServicesResponse {
       };
 }
 
+/// ListTasksResponse is a list of Tasks resources.
+class ListTasksResponse {
+  /// The API version for this call such as "run.googleapis.com/v1".
+  core.String? apiVersion;
+
+  /// List of Tasks.
+  core.List<Task>? items;
+
+  /// The kind of this resource, in this case "TasksList".
+  core.String? kind;
+
+  /// Metadata associated with this tasks list.
+  ListMeta? metadata;
+
+  /// Locations that could not be reached.
+  core.List<core.String>? unreachable;
+
+  ListTasksResponse({
+    this.apiVersion,
+    this.items,
+    this.kind,
+    this.metadata,
+    this.unreachable,
+  });
+
+  ListTasksResponse.fromJson(core.Map _json)
+      : this(
+          apiVersion: _json.containsKey('apiVersion')
+              ? _json['apiVersion'] as core.String
+              : null,
+          items: _json.containsKey('items')
+              ? (_json['items'] as core.List)
+                  .map((value) => Task.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          metadata: _json.containsKey('metadata')
+              ? ListMeta.fromJson(
+                  _json['metadata'] as core.Map<core.String, core.dynamic>)
+              : null,
+          unreachable: _json.containsKey('unreachable')
+              ? (_json['unreachable'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (apiVersion != null) 'apiVersion': apiVersion!,
+        if (items != null) 'items': items!,
+        if (kind != null) 'kind': kind!,
+        if (metadata != null) 'metadata': metadata!,
+        if (unreachable != null) 'unreachable': unreachable!,
+      };
+}
+
 /// Not supported by Cloud Run LocalObjectReference contains enough information
 /// to let you locate the referenced object inside the same namespace.
 class LocalObjectReference {
@@ -4061,7 +5549,7 @@ class ObjectMeta {
   /// metadata.
   ///
   /// They are not queryable and should be preserved when modifying objects.
-  /// More info: http://kubernetes.io/docs/user-guide/annotations
+  /// More info: https://kubernetes.io/docs/user-guide/annotations
   core.Map<core.String, core.String>? annotations;
 
   /// (Optional) Not supported by Cloud Run The name of the cluster which the
@@ -4148,7 +5636,7 @@ class ObjectMeta {
   /// categorize (scope and select) objects.
   ///
   /// May match selectors of replication controllers and routes. More info:
-  /// http://kubernetes.io/docs/user-guide/labels
+  /// https://kubernetes.io/docs/user-guide/labels
   core.Map<core.String, core.String>? labels;
 
   /// Name must be unique within a namespace, within a Cloud Run region.
@@ -4157,7 +5645,7 @@ class ObjectMeta {
   /// client to request the generation of an appropriate name automatically.
   /// Name is primarily intended for creation idempotence and configuration
   /// definition. Cannot be updated. More info:
-  /// http://kubernetes.io/docs/user-guide/identifiers#names +optional
+  /// https://kubernetes.io/docs/user-guide/identifiers#names +optional
   core.String? name;
 
   /// Namespace defines the space within each name must be unique, within a
@@ -4199,7 +5687,7 @@ class ObjectMeta {
   /// It is typically generated by the server on successful creation of a
   /// resource and is not allowed to change on PUT operations. Populated by the
   /// system. Read-only. More info:
-  /// http://kubernetes.io/docs/user-guide/identifiers#uids
+  /// https://kubernetes.io/docs/user-guide/identifiers#uids
   core.String? uid;
 
   ObjectMeta({
@@ -4333,12 +5821,12 @@ class OwnerReference {
 
   /// Name of the referent.
   ///
-  /// More info: http://kubernetes.io/docs/user-guide/identifiers#names
+  /// More info: https://kubernetes.io/docs/user-guide/identifiers#names
   core.String? name;
 
   /// UID of the referent.
   ///
-  /// More info: http://kubernetes.io/docs/user-guide/identifiers#uids
+  /// More info: https://kubernetes.io/docs/user-guide/identifiers#uids
   core.String? uid;
 
   OwnerReference({
@@ -5167,6 +6655,9 @@ class RouteStatus {
       };
 }
 
+/// Request message for creating a new execution of a job.
+typedef RunJobRequest = $Empty;
+
 /// Not supported by Cloud Run SecretEnvSource selects a Secret to populate the
 /// environment variables with.
 ///
@@ -5815,7 +7306,7 @@ class StatusDetails {
   /// UID of the resource.
   ///
   /// (when there is a single resource which can be described). More info:
-  /// http://kubernetes.io/docs/user-guide/identifiers#uids +optional
+  /// https://kubernetes.io/docs/user-guide/identifiers#uids +optional
   core.String? uid;
 
   StatusDetails({
@@ -5885,8 +7376,359 @@ class TCPSocketAction {
       };
 }
 
+/// Task represents a single run of a container to completion.
+class Task {
+  /// APIVersion defines the versioned schema of this representation of an
+  /// object.
+  ///
+  /// Servers should convert recognized schemas to the latest internal value,
+  /// and may reject unrecognized values. More info:
+  /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+  /// +optional
+  ///
+  /// Optional.
+  core.String? apiVersion;
+
+  /// Kind is a string value representing the REST resource this object
+  /// represents.
+  ///
+  /// Servers may infer this from the endpoint the client submits requests to.
+  /// Cannot be updated. In CamelCase. More info:
+  /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+  /// +optional
+  ///
+  /// Optional.
+  core.String? kind;
+
+  /// Standard object's metadata.
+  ///
+  /// More info:
+  /// https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+  /// +optional
+  ///
+  /// Optional.
+  ObjectMeta? metadata;
+
+  /// Specification of the desired behavior of an execution.
+  ///
+  /// More info:
+  /// https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status
+  /// +optional
+  ///
+  /// Optional.
+  TaskSpec? spec;
+
+  /// Current status of an execution.
+  ///
+  /// More info:
+  /// https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status
+  /// +optional
+  ///
+  /// Output only.
+  TaskStatus? status;
+
+  Task({
+    this.apiVersion,
+    this.kind,
+    this.metadata,
+    this.spec,
+    this.status,
+  });
+
+  Task.fromJson(core.Map _json)
+      : this(
+          apiVersion: _json.containsKey('apiVersion')
+              ? _json['apiVersion'] as core.String
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          metadata: _json.containsKey('metadata')
+              ? ObjectMeta.fromJson(
+                  _json['metadata'] as core.Map<core.String, core.dynamic>)
+              : null,
+          spec: _json.containsKey('spec')
+              ? TaskSpec.fromJson(
+                  _json['spec'] as core.Map<core.String, core.dynamic>)
+              : null,
+          status: _json.containsKey('status')
+              ? TaskStatus.fromJson(
+                  _json['status'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (apiVersion != null) 'apiVersion': apiVersion!,
+        if (kind != null) 'kind': kind!,
+        if (metadata != null) 'metadata': metadata!,
+        if (spec != null) 'spec': spec!,
+        if (status != null) 'status': status!,
+      };
+}
+
+/// Result of a task attempt.
+class TaskAttemptResult {
+  /// The exit code of this attempt.
+  ///
+  /// This may be unset if the container was unable to exit cleanly with a code
+  /// due to some other failure. See status field for possible failure details.
+  ///
+  /// Optional.
+  core.int? exitCode;
+
+  /// The status of this attempt.
+  ///
+  /// If the status code is OK, then the attempt succeeded.
+  ///
+  /// Optional.
+  GoogleRpcStatus? status;
+
+  TaskAttemptResult({
+    this.exitCode,
+    this.status,
+  });
+
+  TaskAttemptResult.fromJson(core.Map _json)
+      : this(
+          exitCode: _json.containsKey('exitCode')
+              ? _json['exitCode'] as core.int
+              : null,
+          status: _json.containsKey('status')
+              ? GoogleRpcStatus.fromJson(
+                  _json['status'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (exitCode != null) 'exitCode': exitCode!,
+        if (status != null) 'status': status!,
+      };
+}
+
+/// TaskSpec is a description of a task.
+class TaskSpec {
+  /// List of containers belonging to the task.
+  ///
+  /// We disallow a number of fields on this Container. Only a single container
+  /// may be provided.
+  ///
+  /// Optional.
+  core.List<Container>? containers;
+
+  /// Number of retries allowed per task, before marking this job failed.
+  ///
+  /// Optional.
+  core.int? maxRetries;
+
+  /// Email address of the IAM service account associated with the task of a job
+  /// execution.
+  ///
+  /// The service account represents the identity of the running task, and
+  /// determines what permissions the task has. If not provided, the task will
+  /// use the project's default service account. +optional
+  ///
+  /// Optional.
+  core.String? serviceAccountName;
+
+  /// Optional duration in seconds the task may be active before the system will
+  /// actively try to mark it failed and kill associated containers.
+  ///
+  /// This applies per attempt of a task, meaning each retry can run for the
+  /// full timeout. +optional
+  ///
+  /// Optional.
+  core.String? timeoutSeconds;
+
+  /// List of volumes that can be mounted by containers belonging to the task.
+  ///
+  /// More info: https://kubernetes.io/docs/concepts/storage/volumes +optional
+  ///
+  /// Optional.
+  core.List<Volume>? volumes;
+
+  TaskSpec({
+    this.containers,
+    this.maxRetries,
+    this.serviceAccountName,
+    this.timeoutSeconds,
+    this.volumes,
+  });
+
+  TaskSpec.fromJson(core.Map _json)
+      : this(
+          containers: _json.containsKey('containers')
+              ? (_json['containers'] as core.List)
+                  .map((value) => Container.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          maxRetries: _json.containsKey('maxRetries')
+              ? _json['maxRetries'] as core.int
+              : null,
+          serviceAccountName: _json.containsKey('serviceAccountName')
+              ? _json['serviceAccountName'] as core.String
+              : null,
+          timeoutSeconds: _json.containsKey('timeoutSeconds')
+              ? _json['timeoutSeconds'] as core.String
+              : null,
+          volumes: _json.containsKey('volumes')
+              ? (_json['volumes'] as core.List)
+                  .map((value) => Volume.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (containers != null) 'containers': containers!,
+        if (maxRetries != null) 'maxRetries': maxRetries!,
+        if (serviceAccountName != null)
+          'serviceAccountName': serviceAccountName!,
+        if (timeoutSeconds != null) 'timeoutSeconds': timeoutSeconds!,
+        if (volumes != null) 'volumes': volumes!,
+      };
+}
+
+/// TaskStatus represents the status of a task of a job execution.
+class TaskStatus {
+  /// Represents time when the task was completed.
+  ///
+  /// It is not guaranteed to be set in happens-before order across separate
+  /// operations. It is represented in RFC3339 form and is in UTC. +optional
+  ///
+  /// Optional.
+  core.String? completionTime;
+
+  /// The latest available observations of a task's current state.
+  ///
+  /// More info:
+  /// https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
+  /// +optional
+  ///
+  /// Optional.
+  core.List<GoogleCloudRunV1Condition>? conditions;
+
+  /// Index of the task, unique per execution, and beginning at 0.
+  ///
+  /// Required.
+  core.int? index;
+
+  /// Result of the last attempt of this task.
+  ///
+  /// +optional
+  ///
+  /// Optional.
+  TaskAttemptResult? lastAttemptResult;
+
+  /// URI where logs for this task can be found in Cloud Console.
+  ///
+  /// Optional.
+  core.String? logUri;
+
+  /// The 'generation' of the execution that was last processed by the
+  /// controller.
+  ///
+  /// Optional.
+  core.int? observedGeneration;
+
+  /// The number of times this task was retried.
+  ///
+  /// Instances are retried when they fail up to the maxRetries limit. +optional
+  ///
+  /// Optional.
+  core.int? retried;
+
+  /// Represents time when the task started to run.
+  ///
+  /// It is not guaranteed to be set in happens-before order across separate
+  /// operations. It is represented in RFC3339 form and is in UTC. +optional
+  ///
+  /// Optional.
+  core.String? startTime;
+
+  TaskStatus({
+    this.completionTime,
+    this.conditions,
+    this.index,
+    this.lastAttemptResult,
+    this.logUri,
+    this.observedGeneration,
+    this.retried,
+    this.startTime,
+  });
+
+  TaskStatus.fromJson(core.Map _json)
+      : this(
+          completionTime: _json.containsKey('completionTime')
+              ? _json['completionTime'] as core.String
+              : null,
+          conditions: _json.containsKey('conditions')
+              ? (_json['conditions'] as core.List)
+                  .map((value) => GoogleCloudRunV1Condition.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          index: _json.containsKey('index') ? _json['index'] as core.int : null,
+          lastAttemptResult: _json.containsKey('lastAttemptResult')
+              ? TaskAttemptResult.fromJson(_json['lastAttemptResult']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          logUri: _json.containsKey('logUri')
+              ? _json['logUri'] as core.String
+              : null,
+          observedGeneration: _json.containsKey('observedGeneration')
+              ? _json['observedGeneration'] as core.int
+              : null,
+          retried: _json.containsKey('retried')
+              ? _json['retried'] as core.int
+              : null,
+          startTime: _json.containsKey('startTime')
+              ? _json['startTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (completionTime != null) 'completionTime': completionTime!,
+        if (conditions != null) 'conditions': conditions!,
+        if (index != null) 'index': index!,
+        if (lastAttemptResult != null) 'lastAttemptResult': lastAttemptResult!,
+        if (logUri != null) 'logUri': logUri!,
+        if (observedGeneration != null)
+          'observedGeneration': observedGeneration!,
+        if (retried != null) 'retried': retried!,
+        if (startTime != null) 'startTime': startTime!,
+      };
+}
+
+/// TaskTemplateSpec describes the data a task should have when created from a
+/// template.
+class TaskTemplateSpec {
+  /// Specification of the desired behavior of the task.
+  ///
+  /// More info:
+  /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
+  /// +optional
+  ///
+  /// Optional.
+  TaskSpec? spec;
+
+  TaskTemplateSpec({
+    this.spec,
+  });
+
+  TaskTemplateSpec.fromJson(core.Map _json)
+      : this(
+          spec: _json.containsKey('spec')
+              ? TaskSpec.fromJson(
+                  _json['spec'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (spec != null) 'spec': spec!,
+      };
+}
+
 /// Request message for `TestIamPermissions` method.
-typedef TestIamPermissionsRequest = $TestIamPermissionsRequest;
+typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;
 
 /// Response message for `TestIamPermissions` method.
 typedef TestIamPermissionsResponse = $PermissionsResponse;
@@ -5915,15 +7757,13 @@ class TrafficTarget {
   /// Percent specifies percent of the traffic to this Revision or
   /// Configuration.
   ///
-  /// This defaults to zero if unspecified. Cloud Run currently requires 100
-  /// percent for a single ConfigurationName TrafficTarget entry.
+  /// This defaults to zero if unspecified.
   core.int? percent;
 
   /// RevisionName of a specific revision to which to send this portion of
   /// traffic.
   ///
-  /// This is mutually exclusive with ConfigurationName. Providing RevisionName
-  /// in spec is not currently supported by Cloud Run.
+  /// This is mutually exclusive with ConfigurationName.
   core.String? revisionName;
 
   /// Tag is used to expose a dedicated url for referencing this target
@@ -5935,7 +7775,7 @@ class TrafficTarget {
   /// URL displays the URL for accessing tagged traffic targets.
   ///
   /// URL is displayed in status, and is disallowed on spec. URL must contain a
-  /// scheme (e.g. http://) and a hostname, but may not contain anything else
+  /// scheme (e.g. https://) and a hostname, but may not contain anything else
   /// (e.g. basic auth, url path, etc.)
   ///
   /// Output only.

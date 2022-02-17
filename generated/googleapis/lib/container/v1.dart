@@ -233,7 +233,7 @@ class ProjectsLocationsClustersResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - The name (project, location, cluster id) of the cluster to
+  /// [name] - The name (project, location, cluster name) of the cluster to
   /// complete IP rotation. Specified in the format `projects / * /locations / *
   /// /clusters / * `.
   /// Value must have pattern
@@ -444,7 +444,7 @@ class ProjectsLocationsClustersResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - The cluster (project, location, cluster id) to get keys for.
+  /// [parent] - The cluster (project, location, cluster name) to get keys for.
   /// Specified in the format `projects / * /locations / * /clusters / * `.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/clusters/\[^/\]+$`.
@@ -579,7 +579,7 @@ class ProjectsLocationsClustersResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - The name (project, location, cluster id) of the cluster to set
+  /// [name] - The name (project, location, cluster name) of the cluster to set
   /// legacy abac. Specified in the format `projects / * /locations / *
   /// /clusters / * `.
   /// Value must have pattern
@@ -712,7 +712,7 @@ class ProjectsLocationsClustersResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - The name (project, location, cluster id) of the cluster to set
+  /// [name] - The name (project, location, cluster name) of the cluster to set
   /// maintenance policy. Specified in the format `projects / * /locations / *
   /// /clusters / * `.
   /// Value must have pattern
@@ -843,7 +843,7 @@ class ProjectsLocationsClustersResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - The name (project, location, cluster id) of the cluster to set
+  /// [name] - The name (project, location, cluster name) of the cluster to set
   /// networking policy. Specified in the format `projects / * /locations / *
   /// /clusters / * `.
   /// Value must have pattern
@@ -886,7 +886,7 @@ class ProjectsLocationsClustersResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - The name (project, location, cluster id) of the cluster to set
+  /// [name] - The name (project, location, cluster name) of the cluster to set
   /// labels. Specified in the format `projects / * /locations / * /clusters / *
   /// `.
   /// Value must have pattern
@@ -929,8 +929,8 @@ class ProjectsLocationsClustersResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - The name (project, location, cluster id) of the cluster to start
-  /// IP rotation. Specified in the format `projects / * /locations / *
+  /// [name] - The name (project, location, cluster name) of the cluster to
+  /// start IP rotation. Specified in the format `projects / * /locations / *
   /// /clusters / * `.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/clusters/\[^/\]+$`.
@@ -1063,8 +1063,8 @@ class ProjectsLocationsClustersNodePoolsResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - The parent (project, location, cluster id) where the node pool
-  /// will be created. Specified in the format `projects / * /locations / *
+  /// [parent] - The parent (project, location, cluster name) where the node
+  /// pool will be created. Specified in the format `projects / * /locations / *
   /// /clusters / * `.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/clusters/\[^/\]+$`.
@@ -1226,8 +1226,8 @@ class ProjectsLocationsClustersNodePoolsResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - The parent (project, location, cluster id) where the node pools
-  /// will be listed. Specified in the format `projects / * /locations / *
+  /// [parent] - The parent (project, location, cluster name) where the node
+  /// pools will be listed. Specified in the format `projects / * /locations / *
   /// /clusters / * `.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/clusters/\[^/\]+$`.
@@ -1515,7 +1515,7 @@ class ProjectsLocationsClustersWellKnownResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - The cluster (project, location, cluster id) to get the
+  /// [parent] - The cluster (project, location, cluster name) to get the
   /// discovery document for. Specified in the format `projects / * /locations /
   /// * /clusters / * `.
   /// Value must have pattern
@@ -3027,8 +3027,8 @@ class ProjectsZonesClustersNodePoolsResource {
   /// [clusterId] - Deprecated. The name of the cluster. This field has been
   /// deprecated and replaced by the parent field.
   ///
-  /// [parent] - The parent (project, location, cluster id) where the node pools
-  /// will be listed. Specified in the format `projects / * /locations / *
+  /// [parent] - The parent (project, location, cluster name) where the node
+  /// pools will be listed. Specified in the format `projects / * /locations / *
   /// /clusters / * `.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -4117,7 +4117,9 @@ class Cluster {
   /// Which conditions caused the current cluster state.
   core.List<StatusCondition>? conditions;
 
-  /// Configuration of Confidential Nodes
+  /// Configuration of Confidential Nodes.
+  ///
+  /// All the nodes in the cluster will be Confidential VM once enabled.
   ConfidentialNodes? confidentialNodes;
 
   /// The time the cluster was created, in
@@ -4191,6 +4193,9 @@ class Cluster {
   ///
   /// Output only.
   core.String? id;
+
+  /// Configuration for Identity Service component.
+  IdentityServiceConfig? identityServiceConfig;
 
   /// The initial Kubernetes version for this cluster.
   ///
@@ -4463,6 +4468,7 @@ class Cluster {
     this.endpoint,
     this.expireTime,
     this.id,
+    this.identityServiceConfig,
     this.initialClusterVersion,
     this.initialNodeCount,
     this.instanceGroupUrls,
@@ -4578,6 +4584,10 @@ class Cluster {
               ? _json['expireTime'] as core.String
               : null,
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          identityServiceConfig: _json.containsKey('identityServiceConfig')
+              ? IdentityServiceConfig.fromJson(_json['identityServiceConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           initialClusterVersion: _json.containsKey('initialClusterVersion')
               ? _json['initialClusterVersion'] as core.String
               : null,
@@ -4757,6 +4767,8 @@ class Cluster {
         if (endpoint != null) 'endpoint': endpoint!,
         if (expireTime != null) 'expireTime': expireTime!,
         if (id != null) 'id': id!,
+        if (identityServiceConfig != null)
+          'identityServiceConfig': identityServiceConfig!,
         if (initialClusterVersion != null)
           'initialClusterVersion': initialClusterVersion!,
         if (initialNodeCount != null) 'initialNodeCount': initialNodeCount!,
@@ -4923,6 +4935,9 @@ class ClusterUpdate {
   /// The desired GCFS config for the cluster
   GcfsConfig? desiredGcfsConfig;
 
+  /// The desired Identity Service component configuration.
+  IdentityServiceConfig? desiredIdentityServiceConfig;
+
   /// The desired image type for the node pool.
   ///
   /// NOTE: Set the "desired_node_pool" field as well.
@@ -5059,6 +5074,7 @@ class ClusterUpdate {
     this.desiredDefaultSnatStatus,
     this.desiredDnsConfig,
     this.desiredGcfsConfig,
+    this.desiredIdentityServiceConfig,
     this.desiredImageType,
     this.desiredIntraNodeVisibilityConfig,
     this.desiredL4ilbSubsettingConfig,
@@ -5127,6 +5143,12 @@ class ClusterUpdate {
               ? GcfsConfig.fromJson(_json['desiredGcfsConfig']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          desiredIdentityServiceConfig:
+              _json.containsKey('desiredIdentityServiceConfig')
+                  ? IdentityServiceConfig.fromJson(
+                      _json['desiredIdentityServiceConfig']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           desiredImageType: _json.containsKey('desiredImageType')
               ? _json['desiredImageType'] as core.String
               : null,
@@ -5252,6 +5274,8 @@ class ClusterUpdate {
           'desiredDefaultSnatStatus': desiredDefaultSnatStatus!,
         if (desiredDnsConfig != null) 'desiredDnsConfig': desiredDnsConfig!,
         if (desiredGcfsConfig != null) 'desiredGcfsConfig': desiredGcfsConfig!,
+        if (desiredIdentityServiceConfig != null)
+          'desiredIdentityServiceConfig': desiredIdentityServiceConfig!,
         if (desiredImageType != null) 'desiredImageType': desiredImageType!,
         if (desiredIntraNodeVisibilityConfig != null)
           'desiredIntraNodeVisibilityConfig': desiredIntraNodeVisibilityConfig!,
@@ -5308,7 +5332,7 @@ class CompleteIPRotationRequest {
   /// Deprecated.
   core.String? clusterId;
 
-  /// The name (project, location, cluster id) of the cluster to complete IP
+  /// The name (project, location, cluster name) of the cluster to complete IP
   /// rotation.
   ///
   /// Specified in the format `projects / * /locations / * /clusters / * `.
@@ -5361,8 +5385,7 @@ class CompleteIPRotationRequest {
 /// ConfidentialNodes is configuration for the confidential nodes feature, which
 /// makes nodes run on confidential VMs.
 class ConfidentialNodes {
-  /// Whether Confidential Nodes feature is enabled for all nodes in this
-  /// cluster.
+  /// Whether Confidential Nodes feature is enabled.
   core.bool? enabled;
 
   ConfidentialNodes({
@@ -5500,7 +5523,7 @@ class CreateNodePoolRequest {
   /// Required.
   NodePool? nodePool;
 
-  /// The parent (project, location, cluster id) where the node pool will be
+  /// The parent (project, location, cluster name) where the node pool will be
   /// created.
   ///
   /// Specified in the format `projects / * /locations / * /clusters / * `.
@@ -6238,6 +6261,28 @@ class IPAllocationPolicy {
         if (tpuIpv4CidrBlock != null) 'tpuIpv4CidrBlock': tpuIpv4CidrBlock!,
         if (useIpAliases != null) 'useIpAliases': useIpAliases!,
         if (useRoutes != null) 'useRoutes': useRoutes!,
+      };
+}
+
+/// IdentityServiceConfig is configuration for Identity Service which allows
+/// customers to use external identity providers with the K8S API
+class IdentityServiceConfig {
+  /// Whether to enable the Identity Service component
+  core.bool? enabled;
+
+  IdentityServiceConfig({
+    this.enabled,
+  });
+
+  IdentityServiceConfig.fromJson(core.Map _json)
+      : this(
+          enabled: _json.containsKey('enabled')
+              ? _json['enabled'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enabled != null) 'enabled': enabled!,
       };
 }
 
@@ -8989,7 +9034,7 @@ class SetLabelsRequest {
   /// Required.
   core.String? labelFingerprint;
 
-  /// The name (project, location, cluster id) of the cluster to set labels.
+  /// The name (project, location, cluster name) of the cluster to set labels.
   ///
   /// Specified in the format `projects / * /locations / * /clusters / * `.
   core.String? name;
@@ -9074,7 +9119,7 @@ class SetLegacyAbacRequest {
   /// Required.
   core.bool? enabled;
 
-  /// The name (project, location, cluster id) of the cluster to set legacy
+  /// The name (project, location, cluster name) of the cluster to set legacy
   /// abac.
   ///
   /// Specified in the format `projects / * /locations / * /clusters / * `.
@@ -9296,8 +9341,8 @@ class SetMaintenancePolicyRequest {
   /// Required.
   MaintenancePolicy? maintenancePolicy;
 
-  /// The name (project, location, cluster id) of the cluster to set maintenance
-  /// policy.
+  /// The name (project, location, cluster name) of the cluster to set
+  /// maintenance policy.
   ///
   /// Specified in the format `projects / * /locations / * /clusters / * `.
   core.String? name;
@@ -9520,8 +9565,8 @@ class SetNetworkPolicyRequest {
   /// Deprecated.
   core.String? clusterId;
 
-  /// The name (project, location, cluster id) of the cluster to set networking
-  /// policy.
+  /// The name (project, location, cluster name) of the cluster to set
+  /// networking policy.
   ///
   /// Specified in the format `projects / * /locations / * /clusters / * `.
   core.String? name;
@@ -9901,7 +9946,7 @@ class StartIPRotationRequest {
   /// Deprecated.
   core.String? clusterId;
 
-  /// The name (project, location, cluster id) of the cluster to start IP
+  /// The name (project, location, cluster name) of the cluster to start IP
   /// rotation.
   ///
   /// Specified in the format `projects / * /locations / * /clusters / * `.

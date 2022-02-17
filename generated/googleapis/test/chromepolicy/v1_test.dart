@@ -740,6 +740,7 @@ api.GoogleChromePolicyV1ResolvedPolicy
   final o = api.GoogleChromePolicyV1ResolvedPolicy();
   buildCounterGoogleChromePolicyV1ResolvedPolicy++;
   if (buildCounterGoogleChromePolicyV1ResolvedPolicy < 3) {
+    o.addedSourceKey = buildGoogleChromePolicyV1PolicyTargetKey();
     o.sourceKey = buildGoogleChromePolicyV1PolicyTargetKey();
     o.targetKey = buildGoogleChromePolicyV1PolicyTargetKey();
     o.value = buildGoogleChromePolicyV1PolicyValue();
@@ -752,6 +753,7 @@ void checkGoogleChromePolicyV1ResolvedPolicy(
     api.GoogleChromePolicyV1ResolvedPolicy o) {
   buildCounterGoogleChromePolicyV1ResolvedPolicy++;
   if (buildCounterGoogleChromePolicyV1ResolvedPolicy < 3) {
+    checkGoogleChromePolicyV1PolicyTargetKey(o.addedSourceKey!);
     checkGoogleChromePolicyV1PolicyTargetKey(o.sourceKey!);
     checkGoogleChromePolicyV1PolicyTargetKey(o.targetKey!);
     checkGoogleChromePolicyV1PolicyValue(o.value!);

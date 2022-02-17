@@ -1184,8 +1184,8 @@ class EnterprisesWebAppsResource {
   /// enterprises/{enterpriseId}.
   /// Value must have pattern `^enterprises/\[^/\]+$`.
   ///
-  /// [pageSize] - The requested page size. The actual page size may be fixed to
-  /// a min or max value.
+  /// [pageSize] - The requested page size. This is a hint and the actual page
+  /// size in the response may be different.
   ///
   /// [pageToken] - A token identifying a page of results returned by the
   /// server.
@@ -2640,10 +2640,10 @@ class CrossProfilePolicies {
 /// The time of day and time zone are either specified elsewhere or are
 /// insignificant. The date is relative to the Gregorian Calendar. This can
 /// represent one of the following: A full date, with non-zero year, month, and
-/// day values A month and day value, with a zero year, such as an anniversary A
-/// year on its own, with zero month and day values A year and month value, with
-/// a zero day, such as a credit card expiration dateRelated types are
-/// google.type.TimeOfDay and google.protobuf.Timestamp.
+/// day values A month and day, with a zero year (e.g., an anniversary) A year
+/// on its own, with a zero month and a zero day A year and month, with a zero
+/// day (e.g., a credit card expiration date)Related types: *
+/// google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
 typedef Date = $Date;
 
 /// A device owned by an enterprise.

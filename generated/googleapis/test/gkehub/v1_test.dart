@@ -1036,6 +1036,28 @@ void checkConnectAgentResource(api.ConnectAgentResource o) {
   buildCounterConnectAgentResource--;
 }
 
+core.int buildCounterEdgeCluster = 0;
+api.EdgeCluster buildEdgeCluster() {
+  final o = api.EdgeCluster();
+  buildCounterEdgeCluster++;
+  if (buildCounterEdgeCluster < 3) {
+    o.resourceLink = 'foo';
+  }
+  buildCounterEdgeCluster--;
+  return o;
+}
+
+void checkEdgeCluster(api.EdgeCluster o) {
+  buildCounterEdgeCluster++;
+  if (buildCounterEdgeCluster < 3) {
+    unittest.expect(
+      o.resourceLink!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterEdgeCluster--;
+}
+
 core.int buildCounterEmpty = 0;
 api.Empty buildEmpty() {
   final o = api.Empty();
@@ -1811,6 +1833,7 @@ api.MembershipEndpoint buildMembershipEndpoint() {
   final o = api.MembershipEndpoint();
   buildCounterMembershipEndpoint++;
   if (buildCounterMembershipEndpoint < 3) {
+    o.edgeCluster = buildEdgeCluster();
     o.gkeCluster = buildGkeCluster();
     o.kubernetesMetadata = buildKubernetesMetadata();
     o.kubernetesResource = buildKubernetesResource();
@@ -1824,6 +1847,7 @@ api.MembershipEndpoint buildMembershipEndpoint() {
 void checkMembershipEndpoint(api.MembershipEndpoint o) {
   buildCounterMembershipEndpoint++;
   if (buildCounterMembershipEndpoint < 3) {
+    checkEdgeCluster(o.edgeCluster!);
     checkGkeCluster(o.gkeCluster!);
     checkKubernetesMetadata(o.kubernetesMetadata!);
     checkKubernetesResource(o.kubernetesResource!);
@@ -2655,6 +2679,16 @@ void main() {
       final od = api.ConnectAgentResource.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkConnectAgentResource(od);
+    });
+  });
+
+  unittest.group('obj-schema-EdgeCluster', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildEdgeCluster();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.EdgeCluster.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkEdgeCluster(od);
     });
   });
 

@@ -1102,7 +1102,7 @@
                                             "type": "boolean"
                                         },
                                         "name": {
-                                            "description": "Optional. Name of the `Target`. Format is projects/{project}/locations/{location}/ deliveryPipelines/{deliveryPipeline}/targets/a-z{0,62}.",
+                                            "description": "Optional. Name of the `Target`. Format is projects/{project}/locations/{location}/targets/a-z{0,62}.",
                                             "location": "path",
                                             "pattern": "^projects/[^/]+/locations/[^/]+/targets/[^/]+$",
                                             "required": true,
@@ -1199,9 +1199,20 @@
             }
         }
     },
-    "revision": "20220108",
+    "revision": "20220202",
     "rootUrl": "https://clouddeploy.googleapis.com/",
     "schemas": {
+        "AnthosCluster": {
+            "description": "Information specifying an Anthos Cluster.",
+            "id": "AnthosCluster",
+            "properties": {
+                "membership": {
+                    "description": "Membership of the GKE Hub-registered cluster to which to apply the Skaffold configuration. Format is `projects/{project}/locations/{location}/memberships/{membership_name}`.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "ApproveRolloutRequest": {
             "description": "The request object used by `ApproveRollout`.",
             "id": "ApproveRolloutRequest",
@@ -1335,7 +1346,7 @@
             "type": "object"
         },
         "Date": {
-            "description": "Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values * A month and day value, with a zero year, such as an anniversary * A year on its own, with zero month and day values * A year and month value, with a zero day, such as a credit card expiration date Related types are google.type.TimeOfDay and `google.protobuf.Timestamp`.",
+            "description": "Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values * A month and day, with a zero year (e.g., an anniversary) * A year on its own, with a zero month and a zero day * A year and month, with a zero day (e.g., a credit card expiration date) Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp",
             "id": "Date",
             "properties": {
                 "day": {
@@ -1440,6 +1451,10 @@
             "description": "Configuration of the environment to use when calling Skaffold.",
             "id": "ExecutionConfig",
             "properties": {
+                "artifactStorage": {
+                    "description": "Optional. Cloud Storage location in which to store execution outputs. This can either be a bucket (\"gs://my-bucket\") or a path within a bucket (\"gs://my-bucket/my-dir\"). If unspecified, a default bucket located in the same region will be used.",
+                    "type": "string"
+                },
                 "defaultPool": {
                     "$ref": "DefaultPool",
                     "description": "Optional. Use default Cloud Build pool."
@@ -1447,6 +1462,10 @@
                 "privatePool": {
                     "$ref": "PrivatePool",
                     "description": "Optional. Use private Cloud Build pool."
+                },
+                "serviceAccount": {
+                    "description": "Optional. Google service account to use for execution. If unspecified, the project execution service account (-compute@developer.gserviceaccount.com) is used.",
+                    "type": "string"
                 },
                 "usages": {
                     "description": "Required. Usages when this configuration should be applied.",
@@ -1464,6 +1483,10 @@
                         "type": "string"
                     },
                     "type": "array"
+                },
+                "workerPool": {
+                    "description": "Optional. The resource name of the `WorkerPool`, with the format `projects/{project}/locations/{location}/workerPools/{worker_pool}`. If this optional field is unspecified, the default Cloud Build pool will be used.",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -1498,6 +1521,10 @@
                 "cluster": {
                     "description": "Information specifying a GKE Cluster. Format is `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}.",
                     "type": "string"
+                },
+                "internalIp": {
+                    "description": "Optional. If true, `cluster` is accessed using the private IP address of the control plane endpoint. Otherwise, the default IP address of the control plane endpoint is used. The default IP address is the private IP address for clusters with private control-plane endpoints and the public IP address otherwise. Only specify this option when `cluster` is a [private GKE cluster](https://cloud.google.com/kubernetes-engine/docs/concepts/private-cluster-concept).",
+                    "type": "boolean"
                 }
             },
             "type": "object"
@@ -1938,7 +1965,7 @@
                     "type": "object"
                 },
                 "targetSnapshots": {
-                    "description": "Output only. Snapshot of the parent pipeline's targets taken at release creation time.",
+                    "description": "Output only. Snapshot of the targets taken at release creation time.",
                     "items": {
                         "$ref": "Target"
                     },
@@ -2155,7 +2182,7 @@
                     "type": "array"
                 },
                 "targetId": {
-                    "description": "The target_id to which this stage points. This field refers exclusively to the last segment of a target name. For example, this field would just be `my-target` (rather than `projects/project/deliveryPipelines/pipeline/targets/my-target`). The parent `DeliveryPipeline` of the `Target` is inferred to be the parent `DeliveryPipeline` of the `Release` in which this `Stage` lives.",
+                    "description": "The target_id to which this stage points. This field refers exclusively to the last segment of a target name. For example, this field would just be `my-target` (rather than `projects/project/locations/location/targets/my-target`). The location of the `Target` is inferred to be the same as the location of the `DeliveryPipeline` that contains this `Stage`.",
                     "type": "string"
                 }
             },
@@ -2199,6 +2226,10 @@
                     "description": "Optional. User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.",
                     "type": "object"
                 },
+                "anthosCluster": {
+                    "$ref": "AnthosCluster",
+                    "description": "Information specifying an Anthos Cluster."
+                },
                 "createTime": {
                     "description": "Output only. Time at which the `Target` was created.",
                     "format": "google-datetime",
@@ -2232,7 +2263,7 @@
                     "type": "object"
                 },
                 "name": {
-                    "description": "Optional. Name of the `Target`. Format is projects/{project}/locations/{location}/ deliveryPipelines/{deliveryPipeline}/targets/a-z{0,62}.",
+                    "description": "Optional. Name of the `Target`. Format is projects/{project}/locations/{location}/targets/a-z{0,62}.",
                     "type": "string"
                 },
                 "requireApproval": {

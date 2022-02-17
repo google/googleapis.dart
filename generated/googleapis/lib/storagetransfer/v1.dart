@@ -541,7 +541,7 @@ class TransferJobsResource {
   /// Attempts to start a new TransferOperation for the current TransferJob.
   ///
   /// A TransferJob has a maximum of one active TransferOperation. If this
-  /// method is called while a TransferOperation is active, an error wil be
+  /// method is called while a TransferOperation is active, an error will be
   /// returned.
   ///
   /// [request] - The metadata request object.
@@ -1114,10 +1114,10 @@ typedef CancelOperationRequest = $Empty;
 /// The time of day and time zone are either specified elsewhere or are
 /// insignificant. The date is relative to the Gregorian Calendar. This can
 /// represent one of the following: * A full date, with non-zero year, month,
-/// and day values * A month and day value, with a zero year, such as an
-/// anniversary * A year on its own, with zero month and day values * A year and
-/// month value, with a zero day, such as a credit card expiration date Related
-/// types are google.type.TimeOfDay and `google.protobuf.Timestamp`.
+/// and day values * A month and day, with a zero year (e.g., an anniversary) *
+/// A year on its own, with a zero month and a zero day * A year and month, with
+/// a zero day (e.g., a credit card expiration date) Related types: *
+/// google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
 typedef Date = $Date;
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -1402,70 +1402,149 @@ class LoggingConfig {
 }
 
 /// Specifies the metadata options for running a transfer.
+///
+/// These options only apply to transfers involving a POSIX filesystem and are
+/// ignored for other transfers.
 class MetadataOptions {
-  /// Specifies how each file's GID attribute should be handled by the transfer.
+  /// Specifies how each object's ACLs should be preserved for transfers between
+  /// Google Cloud Storage buckets.
   ///
-  /// If unspecified, the default behavior is the same as GID_SKIP when the
-  /// source is a POSIX file system.
+  /// If unspecified, the default behavior is the same as
+  /// ACL_DESTINATION_BUCKET_DEFAULT.
+  /// Possible string values are:
+  /// - "ACL_UNSPECIFIED" : ACL behavior is unspecified.
+  /// - "ACL_DESTINATION_BUCKET_DEFAULT" : Use the destination bucket's default
+  /// object ACLS, if applicable.
+  /// - "ACL_PRESERVE" : Preserve the object's original ACLs. This requires the
+  /// service account to have `storage.objects.getIamPolicy` permission for the
+  /// source object. \[Uniform bucket-level
+  /// access\](https://cloud.google.com/storage/docs/uniform-bucket-level-access)
+  /// must not be enabled on either the source or destination buckets.
+  core.String? acl;
+
+  /// Specifies how each file's POSIX group ID (GID) attribute should be handled
+  /// by the transfer.
+  ///
+  /// By default, GID is not preserved.
   /// Possible string values are:
   /// - "GID_UNSPECIFIED" : GID behavior is unspecified.
-  /// - "GID_SKIP" : Skip GID during a transfer job.
+  /// - "GID_SKIP" : Do not preserve GID during a transfer job.
   /// - "GID_NUMBER" : Preserve GID during a transfer job.
   core.String? gid;
+
+  /// Specifies how each object's Cloud KMS customer-managed encryption key
+  /// (CMEK) is preserved for transfers between Google Cloud Storage buckets.
+  ///
+  /// If unspecified, the default behavior is the same as
+  /// KMS_KEY_DESTINATION_BUCKET_DEFAULT.
+  /// Possible string values are:
+  /// - "KMS_KEY_UNSPECIFIED" : KmsKey behavior is unspecified.
+  /// - "KMS_KEY_DESTINATION_BUCKET_DEFAULT" : Use the destination bucket's
+  /// default encryption settings.
+  /// - "KMS_KEY_PRESERVE" : Preserve the object's original Cloud KMS
+  /// customer-managed encryption key (CMEK) if present. Objects that do not use
+  /// a Cloud KMS encryption key will be encrypted using the destination
+  /// bucket's encryption settings.
+  core.String? kmsKey;
 
   /// Specifies how each file's mode attribute should be handled by the
   /// transfer.
   ///
-  /// If unspecified, the default behavior is the same as MODE_SKIP when the
-  /// source is a POSIX file system.
+  /// By default, mode is not preserved.
   /// Possible string values are:
   /// - "MODE_UNSPECIFIED" : Mode behavior is unspecified.
-  /// - "MODE_SKIP" : Skip mode during a transfer job.
+  /// - "MODE_SKIP" : Do not preserve mode during a transfer job.
   /// - "MODE_PRESERVE" : Preserve mode during a transfer job.
   core.String? mode;
 
+  /// Specifies the storage class to set on objects being transferred to Google
+  /// Cloud Storage buckets.
+  ///
+  /// If unspecified, the default behavior is the same as
+  /// STORAGE_CLASS_DESTINATION_BUCKET_DEFAULT.
+  /// Possible string values are:
+  /// - "STORAGE_CLASS_UNSPECIFIED" : Storage class behavior is unspecified.
+  /// - "STORAGE_CLASS_DESTINATION_BUCKET_DEFAULT" : Use the destination
+  /// bucket's default storage class.
+  /// - "STORAGE_CLASS_PRESERVE" : Preserve the object's original storage class.
+  /// This is only supported for transfers from Google Cloud Storage buckets.
+  /// - "STORAGE_CLASS_STANDARD" : Set the storage class to STANDARD.
+  /// - "STORAGE_CLASS_NEARLINE" : Set the storage class to NEARLINE.
+  /// - "STORAGE_CLASS_COLDLINE" : Set the storage class to COLDLINE.
+  /// - "STORAGE_CLASS_ARCHIVE" : Set the storage class to ARCHIVE.
+  core.String? storageClass;
+
   /// Specifies how symlinks should be handled by the transfer.
   ///
-  /// If unspecified, the default behavior is the same as SYMLINK_SKIP when the
-  /// source is a POSIX file system.
+  /// By default, symlinks are not preserved.
   /// Possible string values are:
-  /// - "SYMLINK_UNSPECIFIED" : Symlink behavior is unspecified. The default
-  /// behavior is to skip symlinks during a transfer job.
-  /// - "SYMLINK_SKIP" : Skip symlinks during a transfer job.
+  /// - "SYMLINK_UNSPECIFIED" : Symlink behavior is unspecified.
+  /// - "SYMLINK_SKIP" : Do not preserve symlinks during a transfer job.
   /// - "SYMLINK_PRESERVE" : Preserve symlinks during a transfer job.
   core.String? symlink;
 
-  /// Specifies how each file's UID attribute should be handled by the transfer.
+  /// Specifies how each object's temporary hold status should be preserved for
+  /// transfers between Google Cloud Storage buckets.
   ///
-  /// If unspecified, the default behavior is the same as UID_SKIP when the
-  /// source is a POSIX file system.
+  /// If unspecified, the default behavior is the same as
+  /// TEMPORARY_HOLD_PRESERVE.
+  /// Possible string values are:
+  /// - "TEMPORARY_HOLD_UNSPECIFIED" : Temporary hold behavior is unspecified.
+  /// - "TEMPORARY_HOLD_SKIP" : Do not set a temporary hold on the destination
+  /// object.
+  /// - "TEMPORARY_HOLD_PRESERVE" : Preserve the object's original temporary
+  /// hold status.
+  core.String? temporaryHold;
+
+  /// Specifies how each file's POSIX user ID (UID) attribute should be handled
+  /// by the transfer.
+  ///
+  /// By default, UID is not preserved.
   /// Possible string values are:
   /// - "UID_UNSPECIFIED" : UID behavior is unspecified.
-  /// - "UID_SKIP" : Skip UID during a transfer job.
+  /// - "UID_SKIP" : Do not preserve UID during a transfer job.
   /// - "UID_NUMBER" : Preserve UID during a transfer job.
   core.String? uid;
 
   MetadataOptions({
+    this.acl,
     this.gid,
+    this.kmsKey,
     this.mode,
+    this.storageClass,
     this.symlink,
+    this.temporaryHold,
     this.uid,
   });
 
   MetadataOptions.fromJson(core.Map _json)
       : this(
+          acl: _json.containsKey('acl') ? _json['acl'] as core.String : null,
           gid: _json.containsKey('gid') ? _json['gid'] as core.String : null,
+          kmsKey: _json.containsKey('kmsKey')
+              ? _json['kmsKey'] as core.String
+              : null,
           mode: _json.containsKey('mode') ? _json['mode'] as core.String : null,
+          storageClass: _json.containsKey('storageClass')
+              ? _json['storageClass'] as core.String
+              : null,
           symlink: _json.containsKey('symlink')
               ? _json['symlink'] as core.String
+              : null,
+          temporaryHold: _json.containsKey('temporaryHold')
+              ? _json['temporaryHold'] as core.String
               : null,
           uid: _json.containsKey('uid') ? _json['uid'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (acl != null) 'acl': acl!,
         if (gid != null) 'gid': gid!,
+        if (kmsKey != null) 'kmsKey': kmsKey!,
         if (mode != null) 'mode': mode!,
+        if (storageClass != null) 'storageClass': storageClass!,
         if (symlink != null) 'symlink': symlink!,
+        if (temporaryHold != null) 'temporaryHold': temporaryHold!,
         if (uid != null) 'uid': uid!,
       };
 }
@@ -2111,6 +2190,8 @@ class TransferOptions {
   core.bool? deleteObjectsUniqueInSink;
 
   /// Represents the selected metadata options for a transfer job.
+  ///
+  /// This feature is in Preview.
   MetadataOptions? metadataOptions;
 
   /// When to overwrite objects that already exist in the sink.

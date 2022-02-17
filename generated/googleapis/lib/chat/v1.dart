@@ -923,7 +923,7 @@ class SpacesMessagesResource {
   ///
   /// [updateMask] - Required. The field paths to be updated, comma separated if
   /// there are multiple. Currently supported field paths: * text * cards *
-  /// gsuite_message_integration_render_data * attachment
+  /// attachment
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3605,15 +3605,15 @@ class Membership {
 
   /// A user in Google Chat.
   ///
-  /// Represents a person in the People API. Formatted as `users/person_id`
-  /// where `person_id` is available from the
-  /// [People API](https://developers.google.com/people/api/rest/v1/people).
+  /// Represents a
+  /// [person](https://developers.google.com/people/api/rest/v1/people) in the
+  /// People API. Format: `users/{person}`
   User? member;
   core.String? name;
 
   /// State of the membership.
   ///
-  /// Required for `CreateMembership`. Read-only for other usage.
+  /// Output only.
   /// Possible string values are:
   /// - "MEMBERSHIP_STATE_UNSPECIFIED" : Default, do not use.
   /// - "JOINED" : The user has joined the space.
