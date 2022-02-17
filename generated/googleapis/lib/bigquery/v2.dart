@@ -3943,6 +3943,39 @@ class DatasetAccess {
       };
 }
 
+class DatasetTags {
+  /// The namespaced friendly name of the tag key, e.g. "12345/environment"
+  /// where 12345 is org id.
+  ///
+  /// Required.
+  core.String? tagKey;
+
+  /// Friendly short name of the tag value, e.g. "production".
+  ///
+  /// Required.
+  core.String? tagValue;
+
+  DatasetTags({
+    this.tagKey,
+    this.tagValue,
+  });
+
+  DatasetTags.fromJson(core.Map _json)
+      : this(
+          tagKey: _json.containsKey('tagKey')
+              ? _json['tagKey'] as core.String
+              : null,
+          tagValue: _json.containsKey('tagValue')
+              ? _json['tagValue'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (tagKey != null) 'tagKey': tagKey!,
+        if (tagValue != null) 'tagValue': tagValue!,
+      };
+}
+
 class Dataset {
   /// An array of objects that define dataset access for one or more entities.
   ///
@@ -4057,6 +4090,11 @@ class Dataset {
   /// You can use this URL in Get or Update requests to the resource.
   core.String? selfLink;
 
+  /// \[Optional\]The tags associated with this dataset.
+  ///
+  /// Tag keys are globally unique.
+  core.List<DatasetTags>? tags;
+
   Dataset({
     this.access,
     this.creationTime,
@@ -4076,6 +4114,7 @@ class Dataset {
     this.location,
     this.satisfiesPZS,
     this.selfLink,
+    this.tags,
   });
 
   Dataset.fromJson(core.Map _json)
@@ -4142,6 +4181,12 @@ class Dataset {
           selfLink: _json.containsKey('selfLink')
               ? _json['selfLink'] as core.String
               : null,
+          tags: _json.containsKey('tags')
+              ? (_json['tags'] as core.List)
+                  .map((value) => DatasetTags.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4166,32 +4211,7 @@ class Dataset {
         if (location != null) 'location': location!,
         if (satisfiesPZS != null) 'satisfiesPZS': satisfiesPZS!,
         if (selfLink != null) 'selfLink': selfLink!,
-      };
-}
-
-class DatasetAccessEntryTargetTypes {
-  /// Which resources in the dataset this entry applies to.
-  ///
-  /// Currently, only views are supported, but additional target types may be
-  /// added in the future. Possible values: VIEWS: This entry applies to all
-  /// views in the dataset.
-  ///
-  /// Required.
-  core.String? targetType;
-
-  DatasetAccessEntryTargetTypes({
-    this.targetType,
-  });
-
-  DatasetAccessEntryTargetTypes.fromJson(core.Map _json)
-      : this(
-          targetType: _json.containsKey('targetType')
-              ? _json['targetType'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (targetType != null) 'targetType': targetType!,
+        if (tags != null) 'tags': tags!,
       };
 }
 
@@ -4200,7 +4220,7 @@ class DatasetAccessEntry {
   ///
   /// Required.
   DatasetReference? dataset;
-  core.List<DatasetAccessEntryTargetTypes>? targetTypes;
+  core.List<core.String>? targetTypes;
 
   DatasetAccessEntry({
     this.dataset,
@@ -4215,8 +4235,7 @@ class DatasetAccessEntry {
               : null,
           targetTypes: _json.containsKey('target_types')
               ? (_json['target_types'] as core.List)
-                  .map((value) => DatasetAccessEntryTargetTypes.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
+                  .map((value) => value as core.String)
                   .toList()
               : null,
         );
@@ -10106,12 +10125,13 @@ class SnapshotDefinition {
       };
 }
 
-/// The type of a variable, e.g., a function argument.
+/// The data type of a variable such as a function argument.
 ///
-/// Examples: INT64: {type_kind="INT64"} ARRAY: {type_kind="ARRAY",
-/// array_element_type="STRING"} STRUCT\>: {type_kind="STRUCT",
-/// struct_type={fields=\[ {name="x", type={type_kind="STRING"}}, {name="y",
-/// type={type_kind="ARRAY", array_element_type="DATE"}} \]}}
+/// Examples include: * INT64: `{"typeKind": "INT64"}` * ARRAY: { "typeKind":
+/// "ARRAY", "arrayElementType": {"typeKind": "STRING"} } * STRUCT\>: {
+/// "typeKind": "STRUCT", "structType": { "fields": \[ { "name": "x", "type":
+/// {"typeKind: "STRING"} }, { "name": "y", "type": { "typeKind": "ARRAY",
+/// "arrayElementType": {"typekind": "DATE"} } } \] } }
 class StandardSqlDataType {
   /// The type of the array's elements, if type_kind = "ARRAY".
   StandardSqlDataType? arrayElementType;
@@ -11376,7 +11396,7 @@ class TableSchema {
 }
 
 /// Request message for `TestIamPermissions` method.
-typedef TestIamPermissionsRequest = $TestIamPermissionsRequest;
+typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;
 
 /// Response message for `TestIamPermissions` method.
 typedef TestIamPermissionsResponse = $PermissionsResponse;

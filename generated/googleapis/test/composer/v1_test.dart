@@ -733,6 +733,7 @@ api.PrivateEnvironmentConfig buildPrivateEnvironmentConfig() {
   final o = api.PrivateEnvironmentConfig();
   buildCounterPrivateEnvironmentConfig++;
   if (buildCounterPrivateEnvironmentConfig < 3) {
+    o.cloudComposerConnectionSubnetwork = 'foo';
     o.cloudComposerNetworkIpv4CidrBlock = 'foo';
     o.cloudComposerNetworkIpv4ReservedRange = 'foo';
     o.cloudSqlIpv4CidrBlock = 'foo';
@@ -748,6 +749,10 @@ api.PrivateEnvironmentConfig buildPrivateEnvironmentConfig() {
 void checkPrivateEnvironmentConfig(api.PrivateEnvironmentConfig o) {
   buildCounterPrivateEnvironmentConfig++;
   if (buildCounterPrivateEnvironmentConfig < 3) {
+    unittest.expect(
+      o.cloudComposerConnectionSubnetwork!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.cloudComposerNetworkIpv4CidrBlock!,
       unittest.equals('foo'),

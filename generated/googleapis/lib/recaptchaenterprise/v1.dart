@@ -655,17 +655,8 @@ class GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessment {
   /// Labels for this request.
   core.List<core.String>? labels;
 
-  /// Recommended action after this request.
-  /// Possible string values are:
-  /// - "RECOMMENDED_ACTION_UNSPECIFIED" : Default unspecified type.
-  /// - "REQUEST_2FA" : The customer should probably request 2FA to their user.
-  /// - "SKIP_2FA" : This is likely an already seen and safe request. 2FA can be
-  /// skipped.
-  core.String? recommendedAction;
-
   GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessment({
     this.labels,
-    this.recommendedAction,
   });
 
   GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessment.fromJson(
@@ -676,14 +667,10 @@ class GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessment {
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          recommendedAction: _json.containsKey('recommendedAction')
-              ? _json['recommendedAction'] as core.String
-              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (labels != null) 'labels': labels!,
-        if (recommendedAction != null) 'recommendedAction': recommendedAction!,
       };
 }
 

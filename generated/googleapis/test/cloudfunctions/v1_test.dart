@@ -283,6 +283,7 @@ api.CloudFunction buildCloudFunction() {
     o.buildName = 'foo';
     o.buildWorkerPool = 'foo';
     o.description = 'foo';
+    o.dockerRegistry = 'foo';
     o.dockerRepository = 'foo';
     o.entryPoint = 'foo';
     o.environmentVariables = buildUnnamed4();
@@ -336,6 +337,10 @@ void checkCloudFunction(api.CloudFunction o) {
     );
     unittest.expect(
       o.description!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.dockerRegistry!,
       unittest.equals('foo'),
     );
     unittest.expect(

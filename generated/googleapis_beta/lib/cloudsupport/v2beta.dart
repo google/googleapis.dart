@@ -370,11 +370,6 @@ class CasesResource {
   /// operator) can be used to search across displayName, description, and
   /// comments (e.g. "my search").
   ///
-  /// [orderBy] - A comma separated list of fields to order by, followed by
-  /// `asc` or `desc` postfix. This list is case-insensitive, default sorting
-  /// order is ascending, redundant space characters are insignificant. Example:
-  /// `name asc,update_time, create_time desc`
-  ///
   /// [pageSize] - The maximum number of cases fetched with each request.
   /// Defaults to 10.
   ///
@@ -394,14 +389,12 @@ class CasesResource {
   async.Future<ListCasesResponse> list(
     core.String parent, {
     core.String? filter,
-    core.String? orderBy,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
-      if (orderBy != null) 'orderBy': [orderBy],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
@@ -421,8 +414,8 @@ class CasesResource {
   /// Update the specified case.
   ///
   /// Only a subset of fields (display_name, description, time_zone,
-  /// subscriber_email_addresses, related_resources, severity, primary_contact,
-  /// and labels) can be updated.
+  /// subscriber_email_addresses, related_resources, severity, priority,
+  /// primary_contact, and labels) can be updated.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1020,7 +1013,25 @@ class Case {
   /// The resource name for the case.
   core.String? name;
 
+  /// The priority of this case.
+  ///
+  /// If this is set, do not set severity.
+  /// Possible string values are:
+  /// - "PRIORITY_UNSPECIFIED" : Severity is undefined or has not been set yet.
+  /// - "P0" : Extreme impact on a production service. Service is hard down.
+  /// - "P1" : Critical impact on a production service. Service is currently
+  /// unusable.
+  /// - "P2" : Severe impact on a production service. Service is usable but
+  /// greatly impaired.
+  /// - "P3" : Medium impact on a production service. Service is available, but
+  /// moderately impaired.
+  /// - "P4" : General questions or minor issues. Production service is fully
+  /// available.
+  core.String? priority;
+
   /// The severity of this case.
+  ///
+  /// Deprecated. Use priority instead.
   /// Possible string values are:
   /// - "SEVERITY_UNSPECIFIED" : Severity is undefined or has not been set yet.
   /// - "S0" : Extreme impact on a production service. Service is hard down.
@@ -1075,6 +1086,7 @@ class Case {
     this.displayName,
     this.escalated,
     this.name,
+    this.priority,
     this.severity,
     this.state,
     this.subscriberEmailAddresses,
@@ -1106,6 +1118,9 @@ class Case {
               ? _json['escalated'] as core.bool
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          priority: _json.containsKey('priority')
+              ? _json['priority'] as core.String
+              : null,
           severity: _json.containsKey('severity')
               ? _json['severity'] as core.String
               : null,
@@ -1136,6 +1151,7 @@ class Case {
         if (displayName != null) 'displayName': displayName!,
         if (escalated != null) 'escalated': escalated!,
         if (name != null) 'name': name!,
+        if (priority != null) 'priority': priority!,
         if (severity != null) 'severity': severity!,
         if (state != null) 'state': state!,
         if (subscriberEmailAddresses != null)

@@ -645,13 +645,17 @@ class ProjectsInstancesBackupOperationsResource {
   /// the type of metadata. For example, the type string for
   /// CreateBackupMetadata is
   /// `type.googleapis.com/google.spanner.admin.database.v1.CreateBackupMetadata`.
-  /// * `metadata.` - any field in metadata.value. * `error` - Error associated
+  /// * `metadata.` - any field in metadata.value. `metadata.type_url` must be
+  /// specified if filtering on metadata fields. * `error` - Error associated
   /// with the long-running operation. * `response.@type` - the type of
   /// response. * `response.` - any field in response.value. You can combine
   /// multiple expressions by enclosing each expression in parentheses. By
   /// default, expressions are combined with AND logic, but you can specify AND,
   /// OR, and NOT logic explicitly. Here are a few examples: * `done:true` - The
-  /// operation is complete. * `metadata.database:prod` - The database the
+  /// operation is complete. *
+  /// `(metadata.@type=type.googleapis.com/google.spanner.admin.database.v1.CreateBackupMetadata)
+  /// AND` \ `metadata.database:prod` - Returns operations where: * The
+  /// operation's metadata type is CreateBackupMetadata. * The database the
   /// backup was taken from has a name containing the string "prod". *
   /// `(metadata.@type=type.googleapis.com/google.spanner.admin.database.v1.CreateBackupMetadata)
   /// AND` \ `(metadata.name:howl) AND` \ `(metadata.progress.start_time <
@@ -3170,6 +3174,16 @@ class Backup {
   /// `projects//instances//databases/`.
   core.String? database;
 
+  /// The database dialect information for the backup.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "DATABASE_DIALECT_UNSPECIFIED" : Default value. This value will create a
+  /// database with the GOOGLE_STANDARD_SQL dialect.
+  /// - "GOOGLE_STANDARD_SQL" : Google standard SQL.
+  /// - "POSTGRESQL" : PostgreSQL supported SQL.
+  core.String? databaseDialect;
+
   /// The encryption information for the backup.
   ///
   /// Output only.
@@ -3231,6 +3245,7 @@ class Backup {
   Backup({
     this.createTime,
     this.database,
+    this.databaseDialect,
     this.encryptionInfo,
     this.expireTime,
     this.name,
@@ -3247,6 +3262,9 @@ class Backup {
               : null,
           database: _json.containsKey('database')
               ? _json['database'] as core.String
+              : null,
+          databaseDialect: _json.containsKey('databaseDialect')
+              ? _json['databaseDialect'] as core.String
               : null,
           encryptionInfo: _json.containsKey('encryptionInfo')
               ? EncryptionInfo.fromJson(_json['encryptionInfo']
@@ -3274,6 +3292,7 @@ class Backup {
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
         if (database != null) 'database': database!,
+        if (databaseDialect != null) 'databaseDialect': databaseDialect!,
         if (encryptionInfo != null) 'encryptionInfo': encryptionInfo!,
         if (expireTime != null) 'expireTime': expireTime!,
         if (name != null) 'name': name!,
@@ -3763,6 +3782,16 @@ class CreateDatabaseRequest {
   /// Required.
   core.String? createStatement;
 
+  /// The dialect of the Cloud Spanner Database.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "DATABASE_DIALECT_UNSPECIFIED" : Default value. This value will create a
+  /// database with the GOOGLE_STANDARD_SQL dialect.
+  /// - "GOOGLE_STANDARD_SQL" : Google standard SQL.
+  /// - "POSTGRESQL" : PostgreSQL supported SQL.
+  core.String? databaseDialect;
+
   /// The encryption configuration for the database.
   ///
   /// If this field is not specified, Cloud Spanner will encrypt/decrypt all
@@ -3782,6 +3811,7 @@ class CreateDatabaseRequest {
 
   CreateDatabaseRequest({
     this.createStatement,
+    this.databaseDialect,
     this.encryptionConfig,
     this.extraStatements,
   });
@@ -3790,6 +3820,9 @@ class CreateDatabaseRequest {
       : this(
           createStatement: _json.containsKey('createStatement')
               ? _json['createStatement'] as core.String
+              : null,
+          databaseDialect: _json.containsKey('databaseDialect')
+              ? _json['databaseDialect'] as core.String
               : null,
           encryptionConfig: _json.containsKey('encryptionConfig')
               ? EncryptionConfig.fromJson(_json['encryptionConfig']
@@ -3804,6 +3837,7 @@ class CreateDatabaseRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (createStatement != null) 'createStatement': createStatement!,
+        if (databaseDialect != null) 'databaseDialect': databaseDialect!,
         if (encryptionConfig != null) 'encryptionConfig': encryptionConfig!,
         if (extraStatements != null) 'extraStatements': extraStatements!,
       };
@@ -3878,6 +3912,16 @@ class Database {
   ///
   /// Output only.
   core.String? createTime;
+
+  /// The dialect of the Cloud Spanner Database.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "DATABASE_DIALECT_UNSPECIFIED" : Default value. This value will create a
+  /// database with the GOOGLE_STANDARD_SQL dialect.
+  /// - "GOOGLE_STANDARD_SQL" : Google standard SQL.
+  /// - "POSTGRESQL" : PostgreSQL supported SQL.
+  core.String? databaseDialect;
 
   /// The read-write region which contains the database's leader replicas.
   ///
@@ -3962,6 +4006,7 @@ class Database {
 
   Database({
     this.createTime,
+    this.databaseDialect,
     this.defaultLeader,
     this.earliestVersionTime,
     this.encryptionConfig,
@@ -3976,6 +4021,9 @@ class Database {
       : this(
           createTime: _json.containsKey('createTime')
               ? _json['createTime'] as core.String
+              : null,
+          databaseDialect: _json.containsKey('databaseDialect')
+              ? _json['databaseDialect'] as core.String
               : null,
           defaultLeader: _json.containsKey('defaultLeader')
               ? _json['defaultLeader'] as core.String
@@ -4007,6 +4055,7 @@ class Database {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
+        if (databaseDialect != null) 'databaseDialect': databaseDialect!,
         if (defaultLeader != null) 'defaultLeader': defaultLeader!,
         if (earliestVersionTime != null)
           'earliestVersionTime': earliestVersionTime!,
@@ -5202,12 +5251,12 @@ class ListBackupOperationsResponse {
 
   /// The list of matching backup long-running operations.
   ///
-  /// Each operation's name will be prefixed by the backup's name and the
-  /// operation's metadata will be of type CreateBackupMetadata. Operations
-  /// returned include those that are pending or have completed/failed/canceled
-  /// within the last 7 days. Operations returned are ordered by
-  /// `operation.metadata.value.progress.start_time` in descending order
-  /// starting from the most recently started operation.
+  /// Each operation's name will be prefixed by the backup's name. The
+  /// operation's metadata field type `metadata.type_url` describes the type of
+  /// the metadata. Operations returned include those that are pending or have
+  /// completed/failed/canceled within the last 7 days. Operations returned are
+  /// ordered by `operation.metadata.value.progress.start_time` in descending
+  /// order starting from the most recently started operation.
   core.List<Operation>? operations;
 
   ListBackupOperationsResponse({
@@ -8040,10 +8089,28 @@ class Type {
   /// struct's fields.
   StructType? structType;
 
+  /// The TypeAnnotationCode that disambiguates SQL type that Spanner will use
+  /// to represent values of this type during query processing.
+  ///
+  /// This is necessary for some type codes because a single TypeCode can be
+  /// mapped to different SQL types depending on the SQL dialect.
+  /// type_annotation typically is not needed to process the content of a value
+  /// (it doesn't affect serialization) and clients can ignore it on the read
+  /// path.
+  /// Possible string values are:
+  /// - "TYPE_ANNOTATION_CODE_UNSPECIFIED" : Not specified.
+  /// - "PG_NUMERIC" : PostgreSQL compatible NUMERIC type. This annotation needs
+  /// to be applied to Type instances having NUMERIC type code to specify that
+  /// values of this type should be treated as PostgreSQL NUMERIC values.
+  /// Currently this annotation is always needed for NUMERIC when a client
+  /// interacts with PostgreSQL-enabled Spanner databases.
+  core.String? typeAnnotation;
+
   Type({
     this.arrayElementType,
     this.code,
     this.structType,
+    this.typeAnnotation,
   });
 
   Type.fromJson(core.Map _json)
@@ -8057,12 +8124,16 @@ class Type {
               ? StructType.fromJson(
                   _json['structType'] as core.Map<core.String, core.dynamic>)
               : null,
+          typeAnnotation: _json.containsKey('typeAnnotation')
+              ? _json['typeAnnotation'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (arrayElementType != null) 'arrayElementType': arrayElementType!,
         if (code != null) 'code': code!,
         if (structType != null) 'structType': structType!,
+        if (typeAnnotation != null) 'typeAnnotation': typeAnnotation!,
       };
 }
 

@@ -48,6 +48,40 @@ void checkAddGroupMigrationRequest(api.AddGroupMigrationRequest o) {
   buildCounterAddGroupMigrationRequest--;
 }
 
+core.int buildCounterApplianceVersion = 0;
+api.ApplianceVersion buildApplianceVersion() {
+  final o = api.ApplianceVersion();
+  buildCounterApplianceVersion++;
+  if (buildCounterApplianceVersion < 3) {
+    o.critical = true;
+    o.releaseNotesUri = 'foo';
+    o.uri = 'foo';
+    o.version = 'foo';
+  }
+  buildCounterApplianceVersion--;
+  return o;
+}
+
+void checkApplianceVersion(api.ApplianceVersion o) {
+  buildCounterApplianceVersion++;
+  if (buildCounterApplianceVersion < 3) {
+    unittest.expect(o.critical!, unittest.isTrue);
+    unittest.expect(
+      o.releaseNotesUri!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.uri!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.version!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterApplianceVersion--;
+}
+
 core.int buildCounterAppliedLicense = 0;
 api.AppliedLicense buildAppliedLicense() {
   final o = api.AppliedLicense();
@@ -73,6 +107,27 @@ void checkAppliedLicense(api.AppliedLicense o) {
     );
   }
   buildCounterAppliedLicense--;
+}
+
+core.int buildCounterAvailableUpdates = 0;
+api.AvailableUpdates buildAvailableUpdates() {
+  final o = api.AvailableUpdates();
+  buildCounterAvailableUpdates++;
+  if (buildCounterAvailableUpdates < 3) {
+    o.inPlaceUpdate = buildApplianceVersion();
+    o.newDeployableAppliance = buildApplianceVersion();
+  }
+  buildCounterAvailableUpdates--;
+  return o;
+}
+
+void checkAvailableUpdates(api.AvailableUpdates o) {
+  buildCounterAvailableUpdates++;
+  if (buildCounterAvailableUpdates < 3) {
+    checkApplianceVersion(o.inPlaceUpdate!);
+    checkApplianceVersion(o.newDeployableAppliance!);
+  }
+  buildCounterAvailableUpdates--;
 }
 
 core.int buildCounterCancelCloneJobRequest = 0;
@@ -576,6 +631,9 @@ api.DatacenterConnector buildDatacenterConnector() {
   final o = api.DatacenterConnector();
   buildCounterDatacenterConnector++;
   if (buildCounterDatacenterConnector < 3) {
+    o.applianceInfrastructureVersion = 'foo';
+    o.applianceSoftwareVersion = 'foo';
+    o.availableVersions = buildAvailableUpdates();
     o.bucket = 'foo';
     o.createTime = 'foo';
     o.error = buildStatus();
@@ -585,6 +643,7 @@ api.DatacenterConnector buildDatacenterConnector() {
     o.state = 'foo';
     o.stateTime = 'foo';
     o.updateTime = 'foo';
+    o.upgradeStatus = buildUpgradeStatus();
     o.version = 'foo';
   }
   buildCounterDatacenterConnector--;
@@ -594,6 +653,15 @@ api.DatacenterConnector buildDatacenterConnector() {
 void checkDatacenterConnector(api.DatacenterConnector o) {
   buildCounterDatacenterConnector++;
   if (buildCounterDatacenterConnector < 3) {
+    unittest.expect(
+      o.applianceInfrastructureVersion!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.applianceSoftwareVersion!,
+      unittest.equals('foo'),
+    );
+    checkAvailableUpdates(o.availableVersions!);
     unittest.expect(
       o.bucket!,
       unittest.equals('foo'),
@@ -627,6 +695,7 @@ void checkDatacenterConnector(api.DatacenterConnector o) {
       o.updateTime!,
       unittest.equals('foo'),
     );
+    checkUpgradeStatus(o.upgradeStatus!);
     unittest.expect(
       o.version!,
       unittest.equals('foo'),
@@ -1977,6 +2046,67 @@ void checkTargetProject(api.TargetProject o) {
   buildCounterTargetProject--;
 }
 
+core.int buildCounterUpgradeApplianceRequest = 0;
+api.UpgradeApplianceRequest buildUpgradeApplianceRequest() {
+  final o = api.UpgradeApplianceRequest();
+  buildCounterUpgradeApplianceRequest++;
+  if (buildCounterUpgradeApplianceRequest < 3) {
+    o.requestId = 'foo';
+  }
+  buildCounterUpgradeApplianceRequest--;
+  return o;
+}
+
+void checkUpgradeApplianceRequest(api.UpgradeApplianceRequest o) {
+  buildCounterUpgradeApplianceRequest++;
+  if (buildCounterUpgradeApplianceRequest < 3) {
+    unittest.expect(
+      o.requestId!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterUpgradeApplianceRequest--;
+}
+
+core.int buildCounterUpgradeStatus = 0;
+api.UpgradeStatus buildUpgradeStatus() {
+  final o = api.UpgradeStatus();
+  buildCounterUpgradeStatus++;
+  if (buildCounterUpgradeStatus < 3) {
+    o.error = buildStatus();
+    o.previousVersion = 'foo';
+    o.startTime = 'foo';
+    o.state = 'foo';
+    o.version = 'foo';
+  }
+  buildCounterUpgradeStatus--;
+  return o;
+}
+
+void checkUpgradeStatus(api.UpgradeStatus o) {
+  buildCounterUpgradeStatus++;
+  if (buildCounterUpgradeStatus < 3) {
+    checkStatus(o.error!);
+    unittest.expect(
+      o.previousVersion!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.startTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.state!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.version!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterUpgradeStatus--;
+}
+
 core.List<api.VmUtilizationInfo> buildUnnamed40() => [
       buildVmUtilizationInfo(),
       buildVmUtilizationInfo(),
@@ -2287,6 +2417,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-ApplianceVersion', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildApplianceVersion();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ApplianceVersion.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkApplianceVersion(od);
+    });
+  });
+
   unittest.group('obj-schema-AppliedLicense', () {
     unittest.test('to-json--from-json', () async {
       final o = buildAppliedLicense();
@@ -2294,6 +2434,16 @@ void main() {
       final od = api.AppliedLicense.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkAppliedLicense(od);
+    });
+  });
+
+  unittest.group('obj-schema-AvailableUpdates', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildAvailableUpdates();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AvailableUpdates.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkAvailableUpdates(od);
     });
   });
 
@@ -2674,6 +2824,26 @@ void main() {
       final od = api.TargetProject.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkTargetProject(od);
+    });
+  });
+
+  unittest.group('obj-schema-UpgradeApplianceRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildUpgradeApplianceRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.UpgradeApplianceRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkUpgradeApplianceRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-UpgradeStatus', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildUpgradeStatus();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.UpgradeStatus.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkUpgradeStatus(od);
     });
   });
 
@@ -4202,6 +4372,69 @@ void main() {
           $fields: arg_$fields);
       checkListDatacenterConnectorsResponse(
           response as api.ListDatacenterConnectorsResponse);
+    });
+
+    unittest.test('method--upgradeAppliance', () async {
+      final mock = HttpServerMock();
+      final res = api.VMMigrationServiceApi(mock)
+          .projects
+          .locations
+          .sources
+          .datacenterConnectors;
+      final arg_request = buildUpgradeApplianceRequest();
+      final arg_datacenterConnector = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.UpgradeApplianceRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkUpgradeApplianceRequest(obj);
+
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildOperation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.upgradeAppliance(
+          arg_request, arg_datacenterConnector,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
   });
 

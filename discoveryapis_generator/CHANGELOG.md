@@ -1,6 +1,7 @@
 ## 1.1.0-dev
 
 - Add positional parameters to all schema types.
+- Added `Function` to the set of reserved names.
 
 ## 1.0.0
 

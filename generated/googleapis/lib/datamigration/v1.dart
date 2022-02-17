@@ -1951,6 +1951,7 @@ class ConnectionProfile {
   /// - "DATABASE_PROVIDER_UNSPECIFIED" : The database provider is unknown.
   /// - "CLOUDSQL" : CloudSQL runs the database.
   /// - "RDS" : RDS runs the database.
+  /// - "AURORA" : Amazon Aurora.
   core.String? provider;
 
   /// The current connection profile state (e.g. DRAFT, READY, or FAILED).
@@ -2060,6 +2061,7 @@ class DatabaseType {
   /// - "DATABASE_PROVIDER_UNSPECIFIED" : The database provider is unknown.
   /// - "CLOUDSQL" : CloudSQL runs the database.
   /// - "RDS" : RDS runs the database.
+  /// - "AURORA" : Amazon Aurora.
   core.String? provider;
 
   DatabaseType({
@@ -3227,7 +3229,7 @@ typedef Status = $Status;
 typedef StopMigrationJobRequest = $Empty;
 
 /// Request message for `TestIamPermissions` method.
-typedef TestIamPermissionsRequest = $TestIamPermissionsRequest;
+typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;
 
 /// Response message for `TestIamPermissions` method.
 typedef TestIamPermissionsResponse = $PermissionsResponse;

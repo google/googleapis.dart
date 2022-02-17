@@ -1387,8 +1387,10 @@ class EventsResource {
   /// - "all" : Notifications are sent to all guests.
   /// - "externalOnly" : Notifications are sent to non-Google Calendar guests
   /// only.
-  /// - "none" : No notifications are sent. For calendar migration tasks,
-  /// consider using the Events.import method instead.
+  /// - "none" : No notifications are sent. Warning: Using the value none can
+  /// have significant adverse effects, including events not syncing to external
+  /// calendars or events being lost altogether for some users. For calendar
+  /// migration tasks, consider using the events.import method instead.
   ///
   /// [supportsAttachments] - Whether API client performing operation supports
   /// event attachments. Optional. The default is False.

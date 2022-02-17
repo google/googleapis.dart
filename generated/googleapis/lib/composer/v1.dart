@@ -659,10 +659,10 @@ class DatabaseConfig {
 /// The time of day and time zone are either specified elsewhere or are
 /// insignificant. The date is relative to the Gregorian Calendar. This can
 /// represent one of the following: * A full date, with non-zero year, month,
-/// and day values * A month and day value, with a zero year, such as an
-/// anniversary * A year on its own, with zero month and day values * A year and
-/// month value, with a zero day, such as a credit card expiration date Related
-/// types are google.type.TimeOfDay and `google.protobuf.Timestamp`.
+/// and day values * A month and day, with a zero year (e.g., an anniversary) *
+/// A year on its own, with a zero month and a zero day * A year and month, with
+/// a zero day (e.g., a credit card expiration date) Related types: *
+/// google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
 typedef Date = $Date;
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -1636,6 +1636,14 @@ class PrivateClusterConfig {
 /// The configuration information for configuring a Private IP Cloud Composer
 /// environment.
 class PrivateEnvironmentConfig {
+  /// When specified, the environment will use Private Service Connect instead
+  /// of VPC peerings to connect to Cloud SQL in the Tenant Project, and the PSC
+  /// endpoint in the Customer Project will use an IP address from this
+  /// subnetwork.
+  ///
+  /// Optional.
+  core.String? cloudComposerConnectionSubnetwork;
+
   /// The CIDR block from which IP range for Cloud Composer Network in tenant
   /// project will be reserved.
   ///
@@ -1695,6 +1703,7 @@ class PrivateEnvironmentConfig {
   core.String? webServerIpv4ReservedRange;
 
   PrivateEnvironmentConfig({
+    this.cloudComposerConnectionSubnetwork,
     this.cloudComposerNetworkIpv4CidrBlock,
     this.cloudComposerNetworkIpv4ReservedRange,
     this.cloudSqlIpv4CidrBlock,
@@ -1706,6 +1715,10 @@ class PrivateEnvironmentConfig {
 
   PrivateEnvironmentConfig.fromJson(core.Map _json)
       : this(
+          cloudComposerConnectionSubnetwork:
+              _json.containsKey('cloudComposerConnectionSubnetwork')
+                  ? _json['cloudComposerConnectionSubnetwork'] as core.String
+                  : null,
           cloudComposerNetworkIpv4CidrBlock:
               _json.containsKey('cloudComposerNetworkIpv4CidrBlock')
                   ? _json['cloudComposerNetworkIpv4CidrBlock'] as core.String
@@ -1735,6 +1748,9 @@ class PrivateEnvironmentConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (cloudComposerConnectionSubnetwork != null)
+          'cloudComposerConnectionSubnetwork':
+              cloudComposerConnectionSubnetwork!,
         if (cloudComposerNetworkIpv4CidrBlock != null)
           'cloudComposerNetworkIpv4CidrBlock':
               cloudComposerNetworkIpv4CidrBlock!,

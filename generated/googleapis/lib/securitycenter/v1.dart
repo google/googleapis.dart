@@ -4558,10 +4558,14 @@ class Cve {
   /// e.g. https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-34527
   core.List<Reference>? references;
 
+  /// Whether upstream fix is available for the CVE.
+  core.bool? upstreamFixAvailable;
+
   Cve({
     this.cvssv3,
     this.id,
     this.references,
+    this.upstreamFixAvailable,
   });
 
   Cve.fromJson(core.Map _json)
@@ -4577,12 +4581,17 @@ class Cve {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          upstreamFixAvailable: _json.containsKey('upstreamFixAvailable')
+              ? _json['upstreamFixAvailable'] as core.bool
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (cvssv3 != null) 'cvssv3': cvssv3!,
         if (id != null) 'id': id!,
         if (references != null) 'references': references!,
+        if (upstreamFixAvailable != null)
+          'upstreamFixAvailable': upstreamFixAvailable!,
       };
 }
 
@@ -4862,6 +4871,9 @@ class Finding {
 
   /// Indicates the mute state of a finding (either unspecified, muted, unmuted
   /// or undefined).
+  ///
+  /// Unlike other attributes of a finding, a finding provider shouldn't set the
+  /// value of mute.
   /// Possible string values are:
   /// - "MUTE_UNSPECIFIED" : Unspecified.
   /// - "MUTED" : Finding has been muted.
@@ -4872,7 +4884,9 @@ class Finding {
   /// First known as mute_annotation.
   ///
   /// Records additional information about the mute operation e.g. mute config
-  /// that muted the finding, user who muted the finding, etc.
+  /// that muted the finding, user who muted the finding, etc. Unlike other
+  /// attributes of a finding, a finding provider shouldn't set the value of
+  /// mute.
   core.String? muteInitiator;
 
   /// The most recent time this finding was muted or unmuted.
@@ -7035,7 +7049,7 @@ class StreamingConfig {
 }
 
 /// Request message for `TestIamPermissions` method.
-typedef TestIamPermissionsRequest = $TestIamPermissionsRequest;
+typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;
 
 /// Response message for `TestIamPermissions` method.
 typedef TestIamPermissionsResponse = $PermissionsResponse;

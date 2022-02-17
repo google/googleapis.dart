@@ -3191,7 +3191,7 @@ class Group {
 
   /// The `EntityKey` of the `Group`.
   ///
-  /// Required. Immutable.
+  /// Required.
   EntityKey? groupKey;
 
   /// One or more label entries that apply to the Group.

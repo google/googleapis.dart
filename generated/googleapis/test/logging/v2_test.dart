@@ -1105,6 +1105,7 @@ api.LogEntry buildLogEntry() {
     o.severity = 'foo';
     o.sourceLocation = buildLogEntrySourceLocation();
     o.spanId = 'foo';
+    o.split = buildLogSplit();
     o.textPayload = 'foo';
     o.timestamp = 'foo';
     o.trace = 'foo';
@@ -1145,6 +1146,7 @@ void checkLogEntry(api.LogEntry o) {
       o.spanId!,
       unittest.equals('foo'),
     );
+    checkLogSplit(o.split!);
     unittest.expect(
       o.textPayload!,
       unittest.equals('foo'),
@@ -1420,6 +1422,38 @@ void checkLogSink(api.LogSink o) {
     );
   }
   buildCounterLogSink--;
+}
+
+core.int buildCounterLogSplit = 0;
+api.LogSplit buildLogSplit() {
+  final o = api.LogSplit();
+  buildCounterLogSplit++;
+  if (buildCounterLogSplit < 3) {
+    o.index = 42;
+    o.totalSplits = 42;
+    o.uid = 'foo';
+  }
+  buildCounterLogSplit--;
+  return o;
+}
+
+void checkLogSplit(api.LogSplit o) {
+  buildCounterLogSplit++;
+  if (buildCounterLogSplit < 3) {
+    unittest.expect(
+      o.index!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.totalSplits!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.uid!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterLogSplit--;
 }
 
 core.int buildCounterLogView = 0;
@@ -1884,6 +1918,35 @@ void checkOperation(api.Operation o) {
     checkUnnamed28(o.response!);
   }
   buildCounterOperation--;
+}
+
+core.int buildCounterSettings = 0;
+api.Settings buildSettings() {
+  final o = api.Settings();
+  buildCounterSettings++;
+  if (buildCounterSettings < 3) {
+    o.disableDefaultSink = true;
+    o.name = 'foo';
+    o.storageLocation = 'foo';
+  }
+  buildCounterSettings--;
+  return o;
+}
+
+void checkSettings(api.Settings o) {
+  buildCounterSettings++;
+  if (buildCounterSettings < 3) {
+    unittest.expect(o.disableDefaultSink!, unittest.isTrue);
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.storageLocation!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterSettings--;
 }
 
 core.Map<core.String, core.Object?> buildUnnamed29() => {
@@ -2563,6 +2626,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-LogSplit', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildLogSplit();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.LogSplit.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkLogSplit(od);
+    });
+  });
+
   unittest.group('obj-schema-LogView', () {
     unittest.test('to-json--from-json', () async {
       final o = buildLogView();
@@ -2630,6 +2703,16 @@ void main() {
       final od =
           api.Operation.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkOperation(od);
+    });
+  });
+
+  unittest.group('obj-schema-Settings', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSettings();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.Settings.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkSettings(od);
     });
   });
 
@@ -2755,6 +2838,58 @@ void main() {
       final response =
           await res.getCmekSettings(arg_name, $fields: arg_$fields);
       checkCmekSettings(response as api.CmekSettings);
+    });
+
+    unittest.test('method--getSettings', () async {
+      final mock = HttpServerMock();
+      final res = api.LoggingApi(mock).billingAccounts;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildSettings());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.getSettings(arg_name, $fields: arg_$fields);
+      checkSettings(response as api.Settings);
     });
   });
 
@@ -5081,6 +5216,121 @@ void main() {
       final response =
           await res.getCmekSettings(arg_name, $fields: arg_$fields);
       checkCmekSettings(response as api.CmekSettings);
+    });
+
+    unittest.test('method--getSettings', () async {
+      final mock = HttpServerMock();
+      final res = api.LoggingApi(mock).folders;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildSettings());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.getSettings(arg_name, $fields: arg_$fields);
+      checkSettings(response as api.Settings);
+    });
+
+    unittest.test('method--updateSettings', () async {
+      final mock = HttpServerMock();
+      final res = api.LoggingApi(mock).folders;
+      final arg_request = buildSettings();
+      final arg_name = 'foo';
+      final arg_updateMask = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj =
+            api.Settings.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkSettings(obj);
+
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['updateMask']!.first,
+          unittest.equals(arg_updateMask),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildSettings());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.updateSettings(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkSettings(response as api.Settings);
     });
   });
 
@@ -8041,6 +8291,58 @@ void main() {
       checkCmekSettings(response as api.CmekSettings);
     });
 
+    unittest.test('method--getSettings', () async {
+      final mock = HttpServerMock();
+      final res = api.LoggingApi(mock).organizations;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildSettings());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.getSettings(arg_name, $fields: arg_$fields);
+      checkSettings(response as api.Settings);
+    });
+
     unittest.test('method--updateCmekSettings', () async {
       final mock = HttpServerMock();
       final res = api.LoggingApi(mock).organizations;
@@ -8102,6 +8404,69 @@ void main() {
       final response = await res.updateCmekSettings(arg_request, arg_name,
           updateMask: arg_updateMask, $fields: arg_$fields);
       checkCmekSettings(response as api.CmekSettings);
+    });
+
+    unittest.test('method--updateSettings', () async {
+      final mock = HttpServerMock();
+      final res = api.LoggingApi(mock).organizations;
+      final arg_request = buildSettings();
+      final arg_name = 'foo';
+      final arg_updateMask = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj =
+            api.Settings.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkSettings(obj);
+
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['updateMask']!.first,
+          unittest.equals(arg_updateMask),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildSettings());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.updateSettings(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkSettings(response as api.Settings);
     });
   });
 
@@ -9908,6 +10273,58 @@ void main() {
       final response =
           await res.getCmekSettings(arg_name, $fields: arg_$fields);
       checkCmekSettings(response as api.CmekSettings);
+    });
+
+    unittest.test('method--getSettings', () async {
+      final mock = HttpServerMock();
+      final res = api.LoggingApi(mock).projects;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildSettings());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.getSettings(arg_name, $fields: arg_$fields);
+      checkSettings(response as api.Settings);
     });
   });
 
@@ -12307,6 +12724,58 @@ void main() {
       checkCmekSettings(response as api.CmekSettings);
     });
 
+    unittest.test('method--getSettings', () async {
+      final mock = HttpServerMock();
+      final res = api.LoggingApi(mock).v2;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildSettings());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.getSettings(arg_name, $fields: arg_$fields);
+      checkSettings(response as api.Settings);
+    });
+
     unittest.test('method--updateCmekSettings', () async {
       final mock = HttpServerMock();
       final res = api.LoggingApi(mock).v2;
@@ -12368,6 +12837,69 @@ void main() {
       final response = await res.updateCmekSettings(arg_request, arg_name,
           updateMask: arg_updateMask, $fields: arg_$fields);
       checkCmekSettings(response as api.CmekSettings);
+    });
+
+    unittest.test('method--updateSettings', () async {
+      final mock = HttpServerMock();
+      final res = api.LoggingApi(mock).v2;
+      final arg_request = buildSettings();
+      final arg_name = 'foo';
+      final arg_updateMask = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj =
+            api.Settings.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkSettings(obj);
+
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['updateMask']!.first,
+          unittest.equals(arg_updateMask),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildSettings());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.updateSettings(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkSettings(response as api.Settings);
     });
   });
 }

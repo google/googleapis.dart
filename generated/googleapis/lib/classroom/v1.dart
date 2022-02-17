@@ -177,11 +177,13 @@ class CoursesResource {
   /// Creates a course.
   ///
   /// The user specified in `ownerId` is the owner of the created course and
-  /// added as a teacher. This method returns the following error codes: *
-  /// `PERMISSION_DENIED` if the requesting user is not permitted to create
-  /// courses or for access errors. * `NOT_FOUND` if the primary teacher is not
-  /// a valid user. * `FAILED_PRECONDITION` if the course owner's account is
-  /// disabled or for the following request errors: *
+  /// added as a teacher. A non-admin requesting user can only create a course
+  /// with themselves as the owner. Domain admins can create courses owned by
+  /// any user within their domain. This method returns the following error
+  /// codes: * `PERMISSION_DENIED` if the requesting user is not permitted to
+  /// create courses or for access errors. * `NOT_FOUND` if the primary teacher
+  /// is not a valid user. * `FAILED_PRECONDITION` if the course owner's account
+  /// is disabled or for the following request errors: *
   /// UserGroupsMembershipLimitReached * `ALREADY_EXISTS` if an alias was
   /// specified in the `id` and already exists.
   ///
@@ -2139,9 +2141,13 @@ class CoursesStudentsResource {
 
   /// Adds a user as a student of a course.
   ///
-  /// This method returns the following error codes: * `PERMISSION_DENIED` if
-  /// the requesting user is not permitted to create students in this course or
-  /// for access errors. * `NOT_FOUND` if the requested course ID does not
+  /// Domain administrators are permitted to
+  /// [directly add](https://developers.google.com/classroom/guides/manage-users)
+  /// users within their domain as students to courses within their domain.
+  /// Students are permitted to add themselves to a course using an enrollment
+  /// code. This method returns the following error codes: * `PERMISSION_DENIED`
+  /// if the requesting user is not permitted to create students in this course
+  /// or for access errors. * `NOT_FOUND` if the requested course ID does not
   /// exist. * `FAILED_PRECONDITION` if the requested user's account is
   /// disabled, for the following request errors: * CourseMemberLimitReached *
   /// CourseNotModifiable * UserGroupsMembershipLimitReached * `ALREADY_EXISTS`
@@ -2353,14 +2359,18 @@ class CoursesTeachersResource {
 
   /// Creates a teacher of a course.
   ///
-  /// This method returns the following error codes: * `PERMISSION_DENIED` if
-  /// the requesting user is not permitted to create teachers in this course or
-  /// for access errors. * `NOT_FOUND` if the requested course ID does not
-  /// exist. * `FAILED_PRECONDITION` if the requested user's account is
-  /// disabled, for the following request errors: * CourseMemberLimitReached *
-  /// CourseNotModifiable * CourseTeacherLimitReached *
-  /// UserGroupsMembershipLimitReached * `ALREADY_EXISTS` if the user is already
-  /// a teacher or student in the course.
+  /// Domain administrators are permitted to
+  /// [directly add](https://developers.google.com/classroom/guides/manage-users)
+  /// users within their domain as teachers to courses within their domain.
+  /// Non-admin users should send an Invitation instead. This method returns the
+  /// following error codes: * `PERMISSION_DENIED` if the requesting user is not
+  /// permitted to create teachers in this course or for access errors. *
+  /// `NOT_FOUND` if the requested course ID does not exist. *
+  /// `FAILED_PRECONDITION` if the requested user's account is disabled, for the
+  /// following request errors: * CourseMemberLimitReached * CourseNotModifiable
+  /// * CourseTeacherLimitReached * UserGroupsMembershipLimitReached *
+  /// `ALREADY_EXISTS` if the user is already a teacher or student in the
+  /// course.
   ///
   /// [request] - The metadata request object.
   ///
@@ -4037,6 +4047,12 @@ class Course {
   /// Read-only.
   core.String? enrollmentCode;
 
+  /// The gradebook settings that specify how a student's overall grade for the
+  /// course will be calculated and who it will be displayed to.
+  ///
+  /// Read-only
+  GradebookSettings? gradebookSettings;
+
   /// Whether or not guardian notifications are enabled for this course.
   ///
   /// Read-only.
@@ -4107,6 +4123,7 @@ class Course {
     this.description,
     this.descriptionHeading,
     this.enrollmentCode,
+    this.gradebookSettings,
     this.guardiansEnabled,
     this.id,
     this.name,
@@ -4150,6 +4167,10 @@ class Course {
           enrollmentCode: _json.containsKey('enrollmentCode')
               ? _json['enrollmentCode'] as core.String
               : null,
+          gradebookSettings: _json.containsKey('gradebookSettings')
+              ? GradebookSettings.fromJson(_json['gradebookSettings']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           guardiansEnabled: _json.containsKey('guardiansEnabled')
               ? _json['guardiansEnabled'] as core.bool
               : null,
@@ -4186,6 +4207,7 @@ class Course {
         if (descriptionHeading != null)
           'descriptionHeading': descriptionHeading!,
         if (enrollmentCode != null) 'enrollmentCode': enrollmentCode!,
+        if (gradebookSettings != null) 'gradebookSettings': gradebookSettings!,
         if (guardiansEnabled != null) 'guardiansEnabled': guardiansEnabled!,
         if (id != null) 'id': id!,
         if (name != null) 'name': name!,
@@ -4399,6 +4421,12 @@ class CourseWork {
   /// This must be specified if `due_date` is specified.
   TimeOfDay? dueTime;
 
+  /// The category that this coursework's grade contributes to.
+  ///
+  /// Present only when a category has been chosen for the coursework. May be
+  /// used in calculating the overall grade. Read-only.
+  GradeCategory? gradeCategory;
+
   /// Classroom-assigned identifier of this course work, unique per course.
   ///
   /// Read-only.
@@ -4497,6 +4525,7 @@ class CourseWork {
     this.description,
     this.dueDate,
     this.dueTime,
+    this.gradeCategory,
     this.id,
     this.individualStudentsOptions,
     this.materials,
@@ -4545,6 +4574,10 @@ class CourseWork {
           dueTime: _json.containsKey('dueTime')
               ? TimeOfDay.fromJson(
                   _json['dueTime'] as core.Map<core.String, core.dynamic>)
+              : null,
+          gradeCategory: _json.containsKey('gradeCategory')
+              ? GradeCategory.fromJson(
+                  _json['gradeCategory'] as core.Map<core.String, core.dynamic>)
               : null,
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
           individualStudentsOptions:
@@ -4600,6 +4633,7 @@ class CourseWork {
         if (description != null) 'description': description!,
         if (dueDate != null) 'dueDate': dueDate!,
         if (dueTime != null) 'dueTime': dueTime!,
+        if (gradeCategory != null) 'gradeCategory': gradeCategory!,
         if (id != null) 'id': id!,
         if (individualStudentsOptions != null)
           'individualStudentsOptions': individualStudentsOptions!,
@@ -4822,10 +4856,10 @@ class CourseWorkMaterial {
 /// The time of day and time zone are either specified elsewhere or are
 /// insignificant. The date is relative to the Gregorian Calendar. This can
 /// represent one of the following: * A full date, with non-zero year, month,
-/// and day values * A month and day value, with a zero year, such as an
-/// anniversary * A year on its own, with zero month and day values * A year and
-/// month value, with a zero day, such as a credit card expiration date Related
-/// types are google.type.TimeOfDay and `google.protobuf.Timestamp`.
+/// and day values * A month and day, with a zero year (e.g., an anniversary) *
+/// A year on its own, with a zero month and a zero day * A year and month, with
+/// a zero day (e.g., a credit card expiration date) Related types: *
+/// google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
 typedef Date = $Date;
 
 /// Representation of a Google Drive file.
@@ -5066,6 +5100,58 @@ class GlobalPermission {
       };
 }
 
+/// Details for a grade category in a course.
+///
+/// Coursework may have zero or one grade category, and the category may be used
+/// in computing the overall grade. See the
+/// [help center article](https://support.google.com/edu/classroom/answer/9184995)
+/// for details.
+class GradeCategory {
+  /// Default value of denominator.
+  ///
+  /// Only applicable when grade calculation type is TOTAL_POINTS.
+  core.int? defaultGradeDenominator;
+
+  /// ID of the grade category.
+  core.String? id;
+
+  /// Name of the grade category.
+  core.String? name;
+
+  /// The weight of the category average as part of overall average.
+  ///
+  /// A weight of 12.34% is represented as 123400 (100% is 1,000,000). The last
+  /// two digits should always be zero since we use two decimal precision. Only
+  /// applicable when grade calculation type is WEIGHTED_CATEGORIES.
+  core.int? weight;
+
+  GradeCategory({
+    this.defaultGradeDenominator,
+    this.id,
+    this.name,
+    this.weight,
+  });
+
+  GradeCategory.fromJson(core.Map _json)
+      : this(
+          defaultGradeDenominator: _json.containsKey('defaultGradeDenominator')
+              ? _json['defaultGradeDenominator'] as core.int
+              : null,
+          id: _json.containsKey('id') ? _json['id'] as core.String : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          weight:
+              _json.containsKey('weight') ? _json['weight'] as core.int : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (defaultGradeDenominator != null)
+          'defaultGradeDenominator': defaultGradeDenominator!,
+        if (id != null) 'id': id!,
+        if (name != null) 'name': name!,
+        if (weight != null) 'weight': weight!,
+      };
+}
+
 /// The history of each grade on this submission.
 class GradeHistory {
   /// The teacher who made the grade change.
@@ -5124,6 +5210,67 @@ class GradeHistory {
         if (gradeTimestamp != null) 'gradeTimestamp': gradeTimestamp!,
         if (maxPoints != null) 'maxPoints': maxPoints!,
         if (pointsEarned != null) 'pointsEarned': pointsEarned!,
+      };
+}
+
+/// The gradebook settings for a course.
+///
+/// See the
+/// [help center article](https://support.google.com/edu/classroom/answer/9184995)
+/// for details.
+class GradebookSettings {
+  /// Indicates how the overall grade is calculated.
+  /// Possible string values are:
+  /// - "CALCULATION_TYPE_UNSPECIFIED" : No method specified. This is never
+  /// returned.
+  /// - "TOTAL_POINTS" : Overall grade is the sum of grades divided by the sum
+  /// of total points regardless of category.
+  /// - "WEIGHTED_CATEGORIES" : Overall grade is the weighted average by
+  /// category.
+  core.String? calculationType;
+
+  /// Indicates who can see the overall grade..
+  /// Possible string values are:
+  /// - "DISPLAY_SETTING_UNSPECIFIED" : No setting specified. This is never
+  /// returned.
+  /// - "SHOW_OVERALL_GRADE" : Shows overall grade in the gradebook and student
+  /// profile to both teachers and students.
+  /// - "HIDE_OVERALL_GRADE" : Does not show overall grade in the gradebook or
+  /// student profile.
+  /// - "SHOW_TEACHERS_ONLY" : Shows the overall grade to teachers in the
+  /// gradebook and student profile. Hides from students in their student
+  /// profile.
+  core.String? displaySetting;
+
+  /// Grade categories that are available for coursework in the course.
+  core.List<GradeCategory>? gradeCategories;
+
+  GradebookSettings({
+    this.calculationType,
+    this.displaySetting,
+    this.gradeCategories,
+  });
+
+  GradebookSettings.fromJson(core.Map _json)
+      : this(
+          calculationType: _json.containsKey('calculationType')
+              ? _json['calculationType'] as core.String
+              : null,
+          displaySetting: _json.containsKey('displaySetting')
+              ? _json['displaySetting'] as core.String
+              : null,
+          gradeCategories: _json.containsKey('gradeCategories')
+              ? (_json['gradeCategories'] as core.List)
+                  .map((value) => GradeCategory.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (calculationType != null) 'calculationType': calculationType!,
+        if (displaySetting != null) 'displaySetting': displaySetting!,
+        if (gradeCategories != null) 'gradeCategories': gradeCategories!,
       };
 }
 

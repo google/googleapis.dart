@@ -1220,6 +1220,19 @@ class GoogleChromePolicyV1ResolveResponse {
 
 /// The resolved value of a policy for a given target.
 class GoogleChromePolicyV1ResolvedPolicy {
+  /// The added source key establishes at which level an entity was explicitly
+  /// added for management.
+  ///
+  /// This is useful for certain type of policies that are only applied if they
+  /// are explicitly added for management. For example: apps and networks. An
+  /// entity can only be deleted from management in an Organizational Unit that
+  /// it was explicitly added to. If this is not present it means that the
+  /// policy is managed without the need to explicitly add an entity, for
+  /// example: standard user or device policies.
+  ///
+  /// Output only.
+  GoogleChromePolicyV1PolicyTargetKey? addedSourceKey;
+
   /// The source resource from which this policy value is obtained.
   ///
   /// May be the same as `targetKey` if the policy is directly modified on the
@@ -1241,6 +1254,7 @@ class GoogleChromePolicyV1ResolvedPolicy {
   GoogleChromePolicyV1PolicyValue? value;
 
   GoogleChromePolicyV1ResolvedPolicy({
+    this.addedSourceKey,
     this.sourceKey,
     this.targetKey,
     this.value,
@@ -1248,6 +1262,11 @@ class GoogleChromePolicyV1ResolvedPolicy {
 
   GoogleChromePolicyV1ResolvedPolicy.fromJson(core.Map _json)
       : this(
+          addedSourceKey: _json.containsKey('addedSourceKey')
+              ? GoogleChromePolicyV1PolicyTargetKey.fromJson(
+                  _json['addedSourceKey']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           sourceKey: _json.containsKey('sourceKey')
               ? GoogleChromePolicyV1PolicyTargetKey.fromJson(
                   _json['sourceKey'] as core.Map<core.String, core.dynamic>)
@@ -1263,6 +1282,7 @@ class GoogleChromePolicyV1ResolvedPolicy {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (addedSourceKey != null) 'addedSourceKey': addedSourceKey!,
         if (sourceKey != null) 'sourceKey': sourceKey!,
         if (targetKey != null) 'targetKey': targetKey!,
         if (value != null) 'value': value!,
@@ -1334,10 +1354,10 @@ typedef GoogleProtobufEmpty = $Empty;
 /// The time of day and time zone are either specified elsewhere or are
 /// insignificant. The date is relative to the Gregorian Calendar. This can
 /// represent one of the following: * A full date, with non-zero year, month,
-/// and day values * A month and day value, with a zero year, such as an
-/// anniversary * A year on its own, with zero month and day values * A year and
-/// month value, with a zero day, such as a credit card expiration date Related
-/// types are google.type.TimeOfDay and `google.protobuf.Timestamp`.
+/// and day values * A month and day, with a zero year (e.g., an anniversary) *
+/// A year on its own, with a zero month and a zero day * A year and month, with
+/// a zero day (e.g., a credit card expiration date) Related types: *
+/// google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
 typedef GoogleTypeDate = $Date;
 
 /// Describes a message type.

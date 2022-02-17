@@ -224,6 +224,90 @@ class ProjectsLocationsEkmConnectionsResource {
   ProjectsLocationsEkmConnectionsResource(commons.ApiRequester client)
       : _requester = client;
 
+  /// Creates a new EkmConnection in a given Project and Location.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource name of the location associated with the
+  /// EkmConnection, in the format `projects / * /locations / * `.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [ekmConnectionId] - Required. It must be unique within a location and
+  /// match the regular expression `[a-zA-Z0-9_-]{1,63}`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [EkmConnection].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<EkmConnection> create(
+    EkmConnection request,
+    core.String parent, {
+    core.String? ekmConnectionId,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (ekmConnectionId != null) 'ekmConnectionId': [ekmConnectionId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/ekmConnections';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return EkmConnection.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns metadata for a given EkmConnection.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the EkmConnection to get.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/ekmConnections/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [EkmConnection].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<EkmConnection> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return EkmConnection.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
   /// Gets the access control policy for a resource.
   ///
   /// Returns an empty policy if the resource exists and does not have a policy
@@ -278,6 +362,116 @@ class ProjectsLocationsEkmConnectionsResource {
       queryParams: _queryParams,
     );
     return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists EkmConnections.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource name of the location associated with the
+  /// EkmConnections to list, in the format `projects / * /locations / * `.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Only include resources that match the filter in the
+  /// response. For more information, see
+  /// [Sorting and filtering list results](https://cloud.google.com/kms/docs/sorting-and-filtering).
+  ///
+  /// [orderBy] - Optional. Specify how the results should be sorted. If not
+  /// specified, the results will be sorted in the default order. For more
+  /// information, see
+  /// [Sorting and filtering list results](https://cloud.google.com/kms/docs/sorting-and-filtering).
+  ///
+  /// [pageSize] - Optional. Optional limit on the number of EkmConnections to
+  /// include in the response. Further EkmConnections can subsequently be
+  /// obtained by including the ListEkmConnectionsResponse.next_page_token in a
+  /// subsequent request. If unspecified, the server will pick an appropriate
+  /// default.
+  ///
+  /// [pageToken] - Optional. Optional pagination token, returned earlier via
+  /// ListEkmConnectionsResponse.next_page_token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListEkmConnectionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListEkmConnectionsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/ekmConnections';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return ListEkmConnectionsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates an EkmConnection's metadata.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Output only. The resource name for the EkmConnection in the
+  /// format `projects / * /locations / * /ekmConnections / * `.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/ekmConnections/\[^/\]+$`.
+  ///
+  /// [updateMask] - Required. List of fields to be updated in this request.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [EkmConnection].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<EkmConnection> patch(
+    EkmConnection request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return EkmConnection.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the access control policy on the specified resource.
@@ -2164,6 +2358,8 @@ class AsymmetricDecryptResponse {
   /// - "SOFTWARE" : Crypto operations are performed in software.
   /// - "HSM" : Crypto operations are performed in a Hardware Security Module.
   /// - "EXTERNAL" : Crypto operations are performed by an external key manager.
+  /// - "EXTERNAL_VPC" : Crypto operations are performed in an EKM-over-VPC
+  /// backend.
   core.String? protectionLevel;
 
   /// Integrity verification field.
@@ -2312,6 +2508,8 @@ class AsymmetricSignResponse {
   /// - "SOFTWARE" : Crypto operations are performed in software.
   /// - "HSM" : Crypto operations are performed in a Hardware Security Module.
   /// - "EXTERNAL" : Crypto operations are performed by an external key manager.
+  /// - "EXTERNAL_VPC" : Crypto operations are performed in an EKM-over-VPC
+  /// backend.
   core.String? protectionLevel;
 
   /// The created signature.
@@ -2536,6 +2734,133 @@ class Binding {
       };
 }
 
+/// A Certificate represents an X.509 certificate used to authenticate HTTPS
+/// connections to EKM replicas.
+class Certificate {
+  /// The issuer distinguished name in RFC 2253 format.
+  ///
+  /// Only present if parsed is true.
+  ///
+  /// Output only.
+  core.String? issuer;
+
+  /// The certificate is not valid after this time.
+  ///
+  /// Only present if parsed is true.
+  ///
+  /// Output only.
+  core.String? notAfterTime;
+
+  /// The certificate is not valid before this time.
+  ///
+  /// Only present if parsed is true.
+  ///
+  /// Output only.
+  core.String? notBeforeTime;
+
+  /// True if the certificate was parsed successfully.
+  ///
+  /// Output only.
+  core.bool? parsed;
+
+  /// The raw certificate bytes in DER format.
+  ///
+  /// Required.
+  core.String? rawDer;
+  core.List<core.int> get rawDerAsBytes => convert.base64.decode(rawDer!);
+
+  set rawDerAsBytes(core.List<core.int> _bytes) {
+    rawDer =
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  /// The certificate serial number as a hex string.
+  ///
+  /// Only present if parsed is true.
+  ///
+  /// Output only.
+  core.String? serialNumber;
+
+  /// The SHA-256 certificate fingerprint as a hex string.
+  ///
+  /// Only present if parsed is true.
+  ///
+  /// Output only.
+  core.String? sha256Fingerprint;
+
+  /// The subject distinguished name in RFC 2253 format.
+  ///
+  /// Only present if parsed is true.
+  ///
+  /// Output only.
+  core.String? subject;
+
+  /// The subject Alternative DNS names.
+  ///
+  /// Only present if parsed is true.
+  ///
+  /// Output only.
+  core.List<core.String>? subjectAlternativeDnsNames;
+
+  Certificate({
+    this.issuer,
+    this.notAfterTime,
+    this.notBeforeTime,
+    this.parsed,
+    this.rawDer,
+    this.serialNumber,
+    this.sha256Fingerprint,
+    this.subject,
+    this.subjectAlternativeDnsNames,
+  });
+
+  Certificate.fromJson(core.Map _json)
+      : this(
+          issuer: _json.containsKey('issuer')
+              ? _json['issuer'] as core.String
+              : null,
+          notAfterTime: _json.containsKey('notAfterTime')
+              ? _json['notAfterTime'] as core.String
+              : null,
+          notBeforeTime: _json.containsKey('notBeforeTime')
+              ? _json['notBeforeTime'] as core.String
+              : null,
+          parsed:
+              _json.containsKey('parsed') ? _json['parsed'] as core.bool : null,
+          rawDer: _json.containsKey('rawDer')
+              ? _json['rawDer'] as core.String
+              : null,
+          serialNumber: _json.containsKey('serialNumber')
+              ? _json['serialNumber'] as core.String
+              : null,
+          sha256Fingerprint: _json.containsKey('sha256Fingerprint')
+              ? _json['sha256Fingerprint'] as core.String
+              : null,
+          subject: _json.containsKey('subject')
+              ? _json['subject'] as core.String
+              : null,
+          subjectAlternativeDnsNames:
+              _json.containsKey('subjectAlternativeDnsNames')
+                  ? (_json['subjectAlternativeDnsNames'] as core.List)
+                      .map((value) => value as core.String)
+                      .toList()
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (issuer != null) 'issuer': issuer!,
+        if (notAfterTime != null) 'notAfterTime': notAfterTime!,
+        if (notBeforeTime != null) 'notBeforeTime': notBeforeTime!,
+        if (parsed != null) 'parsed': parsed!,
+        if (rawDer != null) 'rawDer': rawDer!,
+        if (serialNumber != null) 'serialNumber': serialNumber!,
+        if (sha256Fingerprint != null) 'sha256Fingerprint': sha256Fingerprint!,
+        if (subject != null) 'subject': subject!,
+        if (subjectAlternativeDnsNames != null)
+          'subjectAlternativeDnsNames': subjectAlternativeDnsNames!,
+      };
+}
+
 /// Certificate chains needed to verify the attestation.
 ///
 /// Certificates in chains are PEM-encoded and are ordered based on
@@ -2593,6 +2918,18 @@ class CryptoKey {
   ///
   /// Output only.
   core.String? createTime;
+
+  /// The resource name of the backend environment where the key material for
+  /// all CryptoKeyVersions associated with this CryptoKey reside and where all
+  /// related cryptographic operations are performed.
+  ///
+  /// Only applicable if CryptoKeyVersions have a ProtectionLevel of
+  /// EXTERNAL_VPC, with the resource name in the format `projects / *
+  /// /locations / * /ekmConnections / * `. Note, this list is non-exhaustive
+  /// and may apply to additional ProtectionLevels in the future.
+  ///
+  /// Immutable.
+  core.String? cryptoKeyBackend;
 
   /// The period of time that versions of this key spend in the
   /// DESTROY_SCHEDULED state before transitioning to DESTROYED.
@@ -2669,6 +3006,7 @@ class CryptoKey {
 
   CryptoKey({
     this.createTime,
+    this.cryptoKeyBackend,
     this.destroyScheduledDuration,
     this.importOnly,
     this.labels,
@@ -2684,6 +3022,9 @@ class CryptoKey {
       : this(
           createTime: _json.containsKey('createTime')
               ? _json['createTime'] as core.String
+              : null,
+          cryptoKeyBackend: _json.containsKey('cryptoKeyBackend')
+              ? _json['cryptoKeyBackend'] as core.String
               : null,
           destroyScheduledDuration:
               _json.containsKey('destroyScheduledDuration')
@@ -2722,6 +3063,7 @@ class CryptoKey {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
+        if (cryptoKeyBackend != null) 'cryptoKeyBackend': cryptoKeyBackend!,
         if (destroyScheduledDuration != null)
           'destroyScheduledDuration': destroyScheduledDuration!,
         if (importOnly != null) 'importOnly': importOnly!,
@@ -2828,7 +3170,7 @@ class CryptoKeyVersion {
 
   /// ExternalProtectionLevelOptions stores a group of additional fields for
   /// configuring a CryptoKeyVersion that are specific to the EXTERNAL
-  /// protection level.
+  /// protection level and EXTERNAL_VPC protection levels.
   ExternalProtectionLevelOptions? externalProtectionLevelOptions;
 
   /// The time this CryptoKeyVersion's key material was generated.
@@ -2872,6 +3214,8 @@ class CryptoKeyVersion {
   /// - "SOFTWARE" : Crypto operations are performed in software.
   /// - "HSM" : Crypto operations are performed in a Hardware Security Module.
   /// - "EXTERNAL" : Crypto operations are performed by an external key manager.
+  /// - "EXTERNAL_VPC" : Crypto operations are performed in an EKM-over-VPC
+  /// backend.
   core.String? protectionLevel;
 
   /// Whether or not this key version is eligible for reimport, by being
@@ -3058,6 +3402,8 @@ class CryptoKeyVersionTemplate {
   /// - "SOFTWARE" : Crypto operations are performed in software.
   /// - "HSM" : Crypto operations are performed in a Hardware Security Module.
   /// - "EXTERNAL" : Crypto operations are performed by an external key manager.
+  /// - "EXTERNAL_VPC" : Crypto operations are performed in an EKM-over-VPC
+  /// backend.
   core.String? protectionLevel;
 
   CryptoKeyVersionTemplate({
@@ -3211,6 +3557,8 @@ class DecryptResponse {
   /// - "SOFTWARE" : Crypto operations are performed in software.
   /// - "HSM" : Crypto operations are performed in a Hardware Security Module.
   /// - "EXTERNAL" : Crypto operations are performed by an external key manager.
+  /// - "EXTERNAL_VPC" : Crypto operations are performed in an EKM-over-VPC
+  /// backend.
   core.String? protectionLevel;
 
   /// Whether the Decryption was performed using the primary key version.
@@ -3302,6 +3650,64 @@ class Digest {
         if (sha256 != null) 'sha256': sha256!,
         if (sha384 != null) 'sha384': sha384!,
         if (sha512 != null) 'sha512': sha512!,
+      };
+}
+
+/// An EkmConnection represents an individual EKM connection.
+///
+/// It can be used for creating CryptoKeys and CryptoKeyVersions with a
+/// ProtectionLevel of EXTERNAL_VPC, as well as performing cryptographic
+/// operations using keys created within the EkmConnection.
+class EkmConnection {
+  /// The time at which the EkmConnection was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// This checksum is computed by the server based on the value of other
+  /// fields, and may be sent on update requests to ensure the client has an
+  /// up-to-date value before proceeding.
+  core.String? etag;
+
+  /// The resource name for the EkmConnection in the format `projects / *
+  /// /locations / * /ekmConnections / * `.
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// A list of ServiceResolvers where the EKM can be reached.
+  ///
+  /// There should be one ServiceResolver per EKM replica. Currently, only a
+  /// single ServiceResolver is supported.
+  core.List<ServiceResolver>? serviceResolvers;
+
+  EkmConnection({
+    this.createTime,
+    this.etag,
+    this.name,
+    this.serviceResolvers,
+  });
+
+  EkmConnection.fromJson(core.Map _json)
+      : this(
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          serviceResolvers: _json.containsKey('serviceResolvers')
+              ? (_json['serviceResolvers'] as core.List)
+                  .map((value) => ServiceResolver.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (etag != null) 'etag': etag!,
+        if (name != null) 'name': name!,
+        if (serviceResolvers != null) 'serviceResolvers': serviceResolvers!,
       };
 }
 
@@ -3450,6 +3856,8 @@ class EncryptResponse {
   /// - "SOFTWARE" : Crypto operations are performed in software.
   /// - "HSM" : Crypto operations are performed in a Hardware Security Module.
   /// - "EXTERNAL" : Crypto operations are performed by an external key manager.
+  /// - "EXTERNAL_VPC" : Crypto operations are performed in an EKM-over-VPC
+  /// backend.
   core.String? protectionLevel;
 
   /// Integrity verification field.
@@ -3540,23 +3948,35 @@ typedef Expr = $Expr;
 
 /// ExternalProtectionLevelOptions stores a group of additional fields for
 /// configuring a CryptoKeyVersion that are specific to the EXTERNAL protection
-/// level.
+/// level and EXTERNAL_VPC protection levels.
 class ExternalProtectionLevelOptions {
+  /// The path to the external key material on the EKM when using EkmConnection
+  /// e.g., "v0/my/key".
+  ///
+  /// Set this field instead of external_key_uri when using an EkmConnection.
+  core.String? ekmConnectionKeyPath;
+
   /// The URI for an external resource that this CryptoKeyVersion represents.
   core.String? externalKeyUri;
 
   ExternalProtectionLevelOptions({
+    this.ekmConnectionKeyPath,
     this.externalKeyUri,
   });
 
   ExternalProtectionLevelOptions.fromJson(core.Map _json)
       : this(
+          ekmConnectionKeyPath: _json.containsKey('ekmConnectionKeyPath')
+              ? _json['ekmConnectionKeyPath'] as core.String
+              : null,
           externalKeyUri: _json.containsKey('externalKeyUri')
               ? _json['externalKeyUri'] as core.String
               : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (ekmConnectionKeyPath != null)
+          'ekmConnectionKeyPath': ekmConnectionKeyPath!,
         if (externalKeyUri != null) 'externalKeyUri': externalKeyUri!,
       };
 }
@@ -3576,6 +3996,8 @@ class GenerateRandomBytesRequest {
   /// - "SOFTWARE" : Crypto operations are performed in software.
   /// - "HSM" : Crypto operations are performed in a Hardware Security Module.
   /// - "EXTERNAL" : Crypto operations are performed by an external key manager.
+  /// - "EXTERNAL_VPC" : Crypto operations are performed in an EKM-over-VPC
+  /// backend.
   core.String? protectionLevel;
 
   GenerateRandomBytesRequest({
@@ -3862,6 +4284,8 @@ class ImportJob {
   /// - "SOFTWARE" : Crypto operations are performed in software.
   /// - "HSM" : Crypto operations are performed in a Hardware Security Module.
   /// - "EXTERNAL" : Crypto operations are performed by an external key manager.
+  /// - "EXTERNAL_VPC" : Crypto operations are performed in an EKM-over-VPC
+  /// backend.
   core.String? protectionLevel;
 
   /// The public key with which to wrap key material prior to import.
@@ -4124,6 +4548,49 @@ class ListCryptoKeysResponse {
       };
 }
 
+/// Response message for KeyManagementService.ListEkmConnections.
+class ListEkmConnectionsResponse {
+  /// The list of EkmConnections.
+  core.List<EkmConnection>? ekmConnections;
+
+  /// A token to retrieve next page of results.
+  ///
+  /// Pass this value in ListEkmConnectionsRequest.page_token to retrieve the
+  /// next page of results.
+  core.String? nextPageToken;
+
+  /// The total number of EkmConnections that matched the query.
+  core.int? totalSize;
+
+  ListEkmConnectionsResponse({
+    this.ekmConnections,
+    this.nextPageToken,
+    this.totalSize,
+  });
+
+  ListEkmConnectionsResponse.fromJson(core.Map _json)
+      : this(
+          ekmConnections: _json.containsKey('ekmConnections')
+              ? (_json['ekmConnections'] as core.List)
+                  .map((value) => EkmConnection.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          totalSize: _json.containsKey('totalSize')
+              ? _json['totalSize'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (ekmConnections != null) 'ekmConnections': ekmConnections!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (totalSize != null) 'totalSize': totalSize!,
+      };
+}
+
 /// Response message for KeyManagementService.ListImportJobs.
 class ListImportJobsResponse {
   /// The list of ImportJobs.
@@ -4332,6 +4799,8 @@ class MacSignResponse {
   /// - "SOFTWARE" : Crypto operations are performed in software.
   /// - "HSM" : Crypto operations are performed in a Hardware Security Module.
   /// - "EXTERNAL" : Crypto operations are performed by an external key manager.
+  /// - "EXTERNAL_VPC" : Crypto operations are performed in an EKM-over-VPC
+  /// backend.
   core.String? protectionLevel;
 
   /// Integrity verification field.
@@ -4477,6 +4946,8 @@ class MacVerifyResponse {
   /// - "SOFTWARE" : Crypto operations are performed in software.
   /// - "HSM" : Crypto operations are performed in a Hardware Security Module.
   /// - "EXTERNAL" : Crypto operations are performed by an external key manager.
+  /// - "EXTERNAL_VPC" : Crypto operations are performed in an EKM-over-VPC
+  /// backend.
   core.String? protectionLevel;
 
   /// This field indicates whether or not the verification operation for
@@ -4765,6 +5236,8 @@ class PublicKey {
   /// - "SOFTWARE" : Crypto operations are performed in software.
   /// - "HSM" : Crypto operations are performed in a Hardware Security Module.
   /// - "EXTERNAL" : Crypto operations are performed by an external key manager.
+  /// - "EXTERNAL_VPC" : Crypto operations are performed in an EKM-over-VPC
+  /// backend.
   core.String? protectionLevel;
 
   PublicKey({
@@ -4801,6 +5274,75 @@ class PublicKey {
 
 /// Request message for KeyManagementService.RestoreCryptoKeyVersion.
 typedef RestoreCryptoKeyVersionRequest = $Empty;
+
+/// A ServiceResolver represents an EKM replica that can be reached within an
+/// EkmConnection.
+class ServiceResolver {
+  /// The filter applied to the endpoints of the resolved service.
+  ///
+  /// If no filter is specified, all endpoints will be considered. An endpoint
+  /// will be chosen arbitrarily from the filtered list for each request. For
+  /// endpoint filter syntax and examples, see
+  /// https://cloud.google.com/service-directory/docs/reference/rpc/google.cloud.servicedirectory.v1#resolveservicerequest.
+  ///
+  /// Optional.
+  core.String? endpointFilter;
+
+  /// The hostname of the EKM replica used at TLS and HTTP layers.
+  ///
+  /// Required.
+  core.String? hostname;
+
+  /// A list of leaf server certificates used to authenticate HTTPS connections
+  /// to the EKM replica.
+  ///
+  /// Currently, a maximum of 10 Certificate is supported.
+  ///
+  /// Required.
+  core.List<Certificate>? serverCertificates;
+
+  /// The resource name of the Service Directory service pointing to an EKM
+  /// replica, in the format `projects / * /locations / * /namespaces / *
+  /// /services / * `.
+  ///
+  /// Required.
+  core.String? serviceDirectoryService;
+
+  ServiceResolver({
+    this.endpointFilter,
+    this.hostname,
+    this.serverCertificates,
+    this.serviceDirectoryService,
+  });
+
+  ServiceResolver.fromJson(core.Map _json)
+      : this(
+          endpointFilter: _json.containsKey('endpointFilter')
+              ? _json['endpointFilter'] as core.String
+              : null,
+          hostname: _json.containsKey('hostname')
+              ? _json['hostname'] as core.String
+              : null,
+          serverCertificates: _json.containsKey('serverCertificates')
+              ? (_json['serverCertificates'] as core.List)
+                  .map((value) => Certificate.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          serviceDirectoryService: _json.containsKey('serviceDirectoryService')
+              ? _json['serviceDirectoryService'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (endpointFilter != null) 'endpointFilter': endpointFilter!,
+        if (hostname != null) 'hostname': hostname!,
+        if (serverCertificates != null)
+          'serverCertificates': serverCertificates!,
+        if (serviceDirectoryService != null)
+          'serviceDirectoryService': serviceDirectoryService!,
+      };
+}
 
 /// Request message for `SetIamPolicy` method.
 class SetIamPolicyRequest {
@@ -4840,7 +5382,7 @@ class SetIamPolicyRequest {
 }
 
 /// Request message for `TestIamPermissions` method.
-typedef TestIamPermissionsRequest = $TestIamPermissionsRequest;
+typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;
 
 /// Response message for `TestIamPermissions` method.
 typedef TestIamPermissionsResponse = $PermissionsResponse;

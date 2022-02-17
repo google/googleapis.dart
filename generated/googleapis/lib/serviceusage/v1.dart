@@ -1531,7 +1531,7 @@ class MonitoredResourceDescriptor {
   /// are cleared for widespread use. By Alpha, all significant design issues
   /// are resolved and we are in the process of verifying functionality. Alpha
   /// customers need to apply for access, agree to applicable terms, and have
-  /// their projects allowlisted. Alpha releases don’t have to be feature
+  /// their projects allowlisted. Alpha releases don't have to be feature
   /// complete, no SLAs are provided, and there are no technical support
   /// obligations, but they will be far enough along that customers can actually
   /// use them in test environments or for limited-use tests -- just like they
@@ -1544,7 +1544,7 @@ class MonitoredResourceDescriptor {
   /// - "GA" : GA features are open to all developers and are considered stable
   /// and fully qualified for production use.
   /// - "DEPRECATED" : Deprecated features are scheduled to be shut down and
-  /// removed. For more information, see the “Deprecation Policy” section of our
+  /// removed. For more information, see the "Deprecation Policy" section of our
   /// [Terms of Service](https://cloud.google.com/terms/) and the
   /// [Google Cloud Platform Subject to the Deprecation Policy](https://cloud.google.com/terms/deprecation)
   /// documentation.

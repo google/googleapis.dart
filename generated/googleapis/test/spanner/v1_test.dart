@@ -50,6 +50,7 @@ api.Backup buildBackup() {
   if (buildCounterBackup < 3) {
     o.createTime = 'foo';
     o.database = 'foo';
+    o.databaseDialect = 'foo';
     o.encryptionInfo = buildEncryptionInfo();
     o.expireTime = 'foo';
     o.name = 'foo';
@@ -71,6 +72,10 @@ void checkBackup(api.Backup o) {
     );
     unittest.expect(
       o.database!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.databaseDialect!,
       unittest.equals('foo'),
     );
     checkEncryptionInfo(o.encryptionInfo!);
@@ -430,6 +435,7 @@ api.CreateDatabaseRequest buildCreateDatabaseRequest() {
   buildCounterCreateDatabaseRequest++;
   if (buildCounterCreateDatabaseRequest < 3) {
     o.createStatement = 'foo';
+    o.databaseDialect = 'foo';
     o.encryptionConfig = buildEncryptionConfig();
     o.extraStatements = buildUnnamed4();
   }
@@ -442,6 +448,10 @@ void checkCreateDatabaseRequest(api.CreateDatabaseRequest o) {
   if (buildCounterCreateDatabaseRequest < 3) {
     unittest.expect(
       o.createStatement!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.databaseDialect!,
       unittest.equals('foo'),
     );
     checkEncryptionConfig(o.encryptionConfig!);
@@ -510,6 +520,7 @@ api.Database buildDatabase() {
   buildCounterDatabase++;
   if (buildCounterDatabase < 3) {
     o.createTime = 'foo';
+    o.databaseDialect = 'foo';
     o.defaultLeader = 'foo';
     o.earliestVersionTime = 'foo';
     o.encryptionConfig = buildEncryptionConfig();
@@ -528,6 +539,10 @@ void checkDatabase(api.Database o) {
   if (buildCounterDatabase < 3) {
     unittest.expect(
       o.createTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.databaseDialect!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -3901,6 +3916,7 @@ api.Type buildType() {
     o.arrayElementType = buildType();
     o.code = 'foo';
     o.structType = buildStructType();
+    o.typeAnnotation = 'foo';
   }
   buildCounterType--;
   return o;
@@ -3915,6 +3931,10 @@ void checkType(api.Type o) {
       unittest.equals('foo'),
     );
     checkStructType(o.structType!);
+    unittest.expect(
+      o.typeAnnotation!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterType--;
 }

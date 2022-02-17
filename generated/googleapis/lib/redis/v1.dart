@@ -1044,7 +1044,7 @@ class InputConfig {
       };
 }
 
-/// A Google Cloud Redis instance.
+/// A Memorystore for Redis instance.
 class Instance {
   /// If specified, at least one node will be provisioned in this zone in
   /// addition to the zone specified in location_id.

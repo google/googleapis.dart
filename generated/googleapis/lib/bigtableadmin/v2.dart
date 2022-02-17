@@ -2509,7 +2509,7 @@ class AutoscalingTargets {
   /// The cpu utilization that the Autoscaler should be trying to achieve.
   ///
   /// This number is on a scale from 0 (no utilization) to 100 (total
-  /// utilization).
+  /// utilization), and is limited between 10 and 80.
   core.int? cpuUtilizationPercent;
 
   AutoscalingTargets({
@@ -4462,7 +4462,7 @@ class Table {
 }
 
 /// Request message for `TestIamPermissions` method.
-typedef TestIamPermissionsRequest = $TestIamPermissionsRequest;
+typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;
 
 /// Response message for `TestIamPermissions` method.
 typedef TestIamPermissionsResponse = $PermissionsResponse;

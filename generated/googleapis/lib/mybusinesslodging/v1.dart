@@ -7518,7 +7518,7 @@ class SustainableSourcing {
   /// Vegetarian meals.
   ///
   /// The property provides vegetarian menu options for guests. Vegetarian food
-  /// does not contain animal products.
+  /// does not contain meat, poultry, fish, or seafood.
   core.bool? vegetarianMeals;
 
   /// Vegetarian meals exception.

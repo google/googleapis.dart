@@ -2609,7 +2609,7 @@
             }
         }
     },
-    "revision": "20220122",
+    "revision": "20220214",
     "rootUrl": "https://androidenterprise.googleapis.com/",
     "schemas": {
         "Administrator": {

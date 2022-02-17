@@ -52,7 +52,6 @@ api.GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessment
   if (buildCounterGoogleCloudRecaptchaenterpriseV1AccountDefenderAssessment <
       3) {
     o.labels = buildUnnamed0();
-    o.recommendedAction = 'foo';
   }
   buildCounterGoogleCloudRecaptchaenterpriseV1AccountDefenderAssessment--;
   return o;
@@ -64,10 +63,6 @@ void checkGoogleCloudRecaptchaenterpriseV1AccountDefenderAssessment(
   if (buildCounterGoogleCloudRecaptchaenterpriseV1AccountDefenderAssessment <
       3) {
     checkUnnamed0(o.labels!);
-    unittest.expect(
-      o.recommendedAction!,
-      unittest.equals('foo'),
-    );
   }
   buildCounterGoogleCloudRecaptchaenterpriseV1AccountDefenderAssessment--;
 }

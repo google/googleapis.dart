@@ -385,6 +385,7 @@ api.Cve buildCve() {
     o.cvssv3 = buildCvssv3();
     o.id = 'foo';
     o.references = buildUnnamed6();
+    o.upstreamFixAvailable = true;
   }
   buildCounterCve--;
   return o;
@@ -399,6 +400,7 @@ void checkCve(api.Cve o) {
       unittest.equals('foo'),
     );
     checkUnnamed6(o.references!);
+    unittest.expect(o.upstreamFixAvailable!, unittest.isTrue);
   }
   buildCounterCve--;
 }

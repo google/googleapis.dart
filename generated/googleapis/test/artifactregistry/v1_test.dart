@@ -1731,60 +1731,6 @@ void main() {
     });
   });
 
-  unittest.group('resource-OperationsResource', () {
-    unittest.test('method--get', () async {
-      final mock = HttpServerMock();
-      final res = api.ArtifactRegistryApi(mock).operations;
-      final arg_name = 'foo';
-      final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v1/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
-
-        final query = (req.url).query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
-
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
-          }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
-
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildOperation());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.get(arg_name, $fields: arg_$fields);
-      checkOperation(response as api.Operation);
-    });
-  });
-
   unittest.group('resource-ProjectsResource', () {
     unittest.test('method--getProjectSettings', () async {
       final mock = HttpServerMock();
@@ -1900,6 +1846,60 @@ void main() {
       final response = await res.updateProjectSettings(arg_request, arg_name,
           updateMask: arg_updateMask, $fields: arg_$fields);
       checkProjectSettings(response as api.ProjectSettings);
+    });
+  });
+
+  unittest.group('resource-ProjectsLocationsOperationsResource', () {
+    unittest.test('method--get', () async {
+      final mock = HttpServerMock();
+      final res = api.ArtifactRegistryApi(mock).projects.locations.operations;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildOperation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
   });
 
@@ -2439,10 +2439,7 @@ void main() {
           await res.import(arg_request, arg_parent, $fields: arg_$fields);
       checkOperation(response as api.Operation);
     });
-  });
 
-  unittest.group('resource-ProjectsLocationsRepositoriesAptartifactsResource',
-      () {
     unittest.test('method--upload', () async {
       // TODO: Implement tests for media upload;
       // TODO: Implement tests for media download;
@@ -2452,7 +2449,7 @@ void main() {
           .projects
           .locations
           .repositories
-          .aptartifacts;
+          .aptArtifacts;
       final arg_request = buildUploadAptArtifactRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
@@ -2700,6 +2697,7 @@ void main() {
           api.ArtifactRegistryApi(mock).projects.locations.repositories.files;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
+      final arg_orderBy = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
@@ -2740,6 +2738,10 @@ void main() {
           unittest.equals(arg_filter),
         );
         unittest.expect(
+          queryMap['orderBy']!.first,
+          unittest.equals(arg_orderBy),
+        );
+        unittest.expect(
           core.int.parse(queryMap['pageSize']!.first),
           unittest.equals(arg_pageSize),
         );
@@ -2760,6 +2762,7 @@ void main() {
       }), true);
       final response = await res.list(arg_parent,
           filter: arg_filter,
+          orderBy: arg_orderBy,
           pageSize: arg_pageSize,
           pageToken: arg_pageToken,
           $fields: arg_$fields);
@@ -2833,7 +2836,7 @@ void main() {
   });
 
   unittest.group(
-      'resource-ProjectsLocationsRepositoriesGoogetartifactsResource', () {
+      'resource-ProjectsLocationsRepositoriesGoogetArtifactsResource', () {
     unittest.test('method--upload', () async {
       // TODO: Implement tests for media upload;
       // TODO: Implement tests for media download;
@@ -2843,7 +2846,7 @@ void main() {
           .projects
           .locations
           .repositories
-          .googetartifacts;
+          .googetArtifacts;
       final arg_request = buildUploadGooGetArtifactRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
@@ -3688,10 +3691,7 @@ void main() {
           await res.import(arg_request, arg_parent, $fields: arg_$fields);
       checkOperation(response as api.Operation);
     });
-  });
 
-  unittest.group('resource-ProjectsLocationsRepositoriesYumartifactsResource',
-      () {
     unittest.test('method--upload', () async {
       // TODO: Implement tests for media upload;
       // TODO: Implement tests for media download;
@@ -3701,7 +3701,7 @@ void main() {
           .projects
           .locations
           .repositories
-          .yumartifacts;
+          .yumArtifacts;
       final arg_request = buildUploadYumArtifactRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';

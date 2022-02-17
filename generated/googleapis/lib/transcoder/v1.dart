@@ -2763,7 +2763,8 @@ class Vp9CodecSettings {
   /// Target CRF level.
   ///
   /// Must be between 10 and 36, where 10 is the highest quality and 36 is the
-  /// most efficient compression. The default is 21.
+  /// most efficient compression. The default is 21. *Note*: This field is not
+  /// supported.
   core.int? crfLevel;
 
   /// The target video frame rate in frames per second (FPS).
@@ -2819,7 +2820,7 @@ class Vp9CodecSettings {
   /// Specify the `rate_control_mode`.
   ///
   /// The default is `vbr`. Supported rate control modes: - `vbr` - variable
-  /// bitrate - `crf` - constant rate factor
+  /// bitrate
   core.String? rateControlMode;
 
   /// The width of the video in pixels.

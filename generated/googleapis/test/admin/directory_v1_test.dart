@@ -6960,6 +6960,7 @@ void main() {
       final res = api.DirectoryApi(mock).customers.chrome.printers;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
+      final arg_orderBy = 'foo';
       final arg_orgUnitId = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -7001,6 +7002,10 @@ void main() {
           unittest.equals(arg_filter),
         );
         unittest.expect(
+          queryMap['orderBy']!.first,
+          unittest.equals(arg_orderBy),
+        );
+        unittest.expect(
           queryMap['orgUnitId']!.first,
           unittest.equals(arg_orgUnitId),
         );
@@ -7025,6 +7030,7 @@ void main() {
       }), true);
       final response = await res.list(arg_parent,
           filter: arg_filter,
+          orderBy: arg_orderBy,
           orgUnitId: arg_orgUnitId,
           pageSize: arg_pageSize,
           pageToken: arg_pageToken,

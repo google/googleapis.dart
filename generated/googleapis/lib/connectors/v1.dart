@@ -1880,11 +1880,6 @@ class Connection {
   /// Output only.
   core.String? imageLocation;
 
-  /// Inactive indicates the connection is active to use or not.
-  ///
-  /// Optional.
-  core.bool? inactive;
-
   /// Resource labels to represent user-provided metadata.
   ///
   /// Refer to cloud documentation on labels for more details.
@@ -1923,6 +1918,11 @@ class Connection {
   /// Output only.
   ConnectionStatus? status;
 
+  /// Suspended indicates if a user has suspended a connection or not.
+  ///
+  /// Optional.
+  core.bool? suspended;
+
   /// Updated time.
   ///
   /// Output only.
@@ -1937,13 +1937,13 @@ class Connection {
     this.egressBackends,
     this.envoyImageLocation,
     this.imageLocation,
-    this.inactive,
     this.labels,
     this.lockConfig,
     this.name,
     this.serviceAccount,
     this.serviceDirectory,
     this.status,
+    this.suspended,
     this.updateTime,
   });
 
@@ -1979,9 +1979,6 @@ class Connection {
           imageLocation: _json.containsKey('imageLocation')
               ? _json['imageLocation'] as core.String
               : null,
-          inactive: _json.containsKey('inactive')
-              ? _json['inactive'] as core.bool
-              : null,
           labels: _json.containsKey('labels')
               ? (_json['labels'] as core.Map<core.String, core.dynamic>).map(
                   (key, item) => core.MapEntry(
@@ -2005,6 +2002,9 @@ class Connection {
               ? ConnectionStatus.fromJson(
                   _json['status'] as core.Map<core.String, core.dynamic>)
               : null,
+          suspended: _json.containsKey('suspended')
+              ? _json['suspended'] as core.bool
+              : null,
           updateTime: _json.containsKey('updateTime')
               ? _json['updateTime'] as core.String
               : null,
@@ -2020,13 +2020,13 @@ class Connection {
         if (envoyImageLocation != null)
           'envoyImageLocation': envoyImageLocation!,
         if (imageLocation != null) 'imageLocation': imageLocation!,
-        if (inactive != null) 'inactive': inactive!,
         if (labels != null) 'labels': labels!,
         if (lockConfig != null) 'lockConfig': lockConfig!,
         if (name != null) 'name': name!,
         if (serviceAccount != null) 'serviceAccount': serviceAccount!,
         if (serviceDirectory != null) 'serviceDirectory': serviceDirectory!,
         if (status != null) 'status': status!,
+        if (suspended != null) 'suspended': suspended!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
 }
@@ -4079,7 +4079,7 @@ class SupportedRuntimeFeatures {
 }
 
 /// Request message for `TestIamPermissions` method.
-typedef TestIamPermissionsRequest = $TestIamPermissionsRequest;
+typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;
 
 /// Response message for `TestIamPermissions` method.
 typedef TestIamPermissionsResponse = $PermissionsResponse;

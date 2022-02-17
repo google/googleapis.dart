@@ -865,6 +865,11 @@ class AccountsChannelPartnerLinksCustomersResource {
   /// customers from. Parent uses the format: accounts/{account_id}.
   /// Value must have pattern `^accounts/\[^/\]+/channelPartnerLinks/\[^/\]+$`.
   ///
+  /// [filter] - Optional. Filters applied to the
+  /// \[CloudChannelService.ListCustomers\] results. See
+  /// https://cloud.google.com/channel/docs/concepts/google-cloud/filter-customers
+  /// for more information.
+  ///
   /// [pageSize] - Optional. The maximum number of customers to return. The
   /// service may return fewer than this value. If unspecified, returns at most
   /// 10 customers. The maximum value is 50.
@@ -885,11 +890,13 @@ class AccountsChannelPartnerLinksCustomersResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudChannelV1ListCustomersResponse> list(
     core.String parent, {
+    core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
@@ -1168,6 +1175,11 @@ class AccountsCustomersResource {
   /// customers from. Parent uses the format: accounts/{account_id}.
   /// Value must have pattern `^accounts/\[^/\]+$`.
   ///
+  /// [filter] - Optional. Filters applied to the
+  /// \[CloudChannelService.ListCustomers\] results. See
+  /// https://cloud.google.com/channel/docs/concepts/google-cloud/filter-customers
+  /// for more information.
+  ///
   /// [pageSize] - Optional. The maximum number of customers to return. The
   /// service may return fewer than this value. If unspecified, returns at most
   /// 10 customers. The maximum value is 50.
@@ -1188,11 +1200,13 @@ class AccountsCustomersResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudChannelV1ListCustomersResponse> list(
     core.String parent, {
+    core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
@@ -5084,7 +5098,8 @@ class GoogleCloudChannelV1ProvisionedService {
 
   /// Provisioning ID of the entitlement.
   ///
-  /// For Google Workspace, this would be the underlying Subscription ID.
+  /// For Google Workspace, this is the underlying Subscription ID. For Google
+  /// Cloud Platform, this is the Billing Account ID of the billing subaccount."
   ///
   /// Output only.
   core.String? provisioningId;
@@ -5848,4 +5863,4 @@ typedef GoogleTypeMoney = $Money;
 /// be presented with UI elements for input or editing of fields outside
 /// countries where that field is used. For more guidance on how to use this
 /// schema, please see: https://support.google.com/business/answer/6397478
-typedef GoogleTypePostalAddress = $PostalAddress;
+typedef GoogleTypePostalAddress = $PostalAddress00;

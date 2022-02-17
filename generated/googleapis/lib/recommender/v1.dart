@@ -2036,6 +2036,8 @@ class GoogleCloudRecommenderV1CostProjection {
   ///
   /// Negative cost units indicate cost savings and positive cost units indicate
   /// increase. See google.type.Money documentation for positive/negative units.
+  /// A user's permissions may affect whether the cost is computed using list
+  /// prices or custom contract prices.
   GoogleTypeMoney? cost;
 
   /// Duration for which this cost applies.

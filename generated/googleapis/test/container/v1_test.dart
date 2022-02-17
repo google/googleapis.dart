@@ -505,6 +505,7 @@ api.Cluster buildCluster() {
     o.endpoint = 'foo';
     o.expireTime = 'foo';
     o.id = 'foo';
+    o.identityServiceConfig = buildIdentityServiceConfig();
     o.initialClusterVersion = 'foo';
     o.initialNodeCount = 42;
     o.instanceGroupUrls = buildUnnamed2();
@@ -599,6 +600,7 @@ void checkCluster(api.Cluster o) {
       o.id!,
       unittest.equals('foo'),
     );
+    checkIdentityServiceConfig(o.identityServiceConfig!);
     unittest.expect(
       o.initialClusterVersion!,
       unittest.equals('foo'),
@@ -780,6 +782,7 @@ api.ClusterUpdate buildClusterUpdate() {
     o.desiredDefaultSnatStatus = buildDefaultSnatStatus();
     o.desiredDnsConfig = buildDNSConfig();
     o.desiredGcfsConfig = buildGcfsConfig();
+    o.desiredIdentityServiceConfig = buildIdentityServiceConfig();
     o.desiredImageType = 'foo';
     o.desiredIntraNodeVisibilityConfig = buildIntraNodeVisibilityConfig();
     o.desiredL4ilbSubsettingConfig = buildILBSubsettingConfig();
@@ -824,6 +827,7 @@ void checkClusterUpdate(api.ClusterUpdate o) {
     checkDefaultSnatStatus(o.desiredDefaultSnatStatus!);
     checkDNSConfig(o.desiredDnsConfig!);
     checkGcfsConfig(o.desiredGcfsConfig!);
+    checkIdentityServiceConfig(o.desiredIdentityServiceConfig!);
     unittest.expect(
       o.desiredImageType!,
       unittest.equals('foo'),
@@ -1589,6 +1593,25 @@ void checkIPAllocationPolicy(api.IPAllocationPolicy o) {
     unittest.expect(o.useRoutes!, unittest.isTrue);
   }
   buildCounterIPAllocationPolicy--;
+}
+
+core.int buildCounterIdentityServiceConfig = 0;
+api.IdentityServiceConfig buildIdentityServiceConfig() {
+  final o = api.IdentityServiceConfig();
+  buildCounterIdentityServiceConfig++;
+  if (buildCounterIdentityServiceConfig < 3) {
+    o.enabled = true;
+  }
+  buildCounterIdentityServiceConfig--;
+  return o;
+}
+
+void checkIdentityServiceConfig(api.IdentityServiceConfig o) {
+  buildCounterIdentityServiceConfig++;
+  if (buildCounterIdentityServiceConfig < 3) {
+    unittest.expect(o.enabled!, unittest.isTrue);
+  }
+  buildCounterIdentityServiceConfig--;
 }
 
 core.int buildCounterIntraNodeVisibilityConfig = 0;
@@ -4965,6 +4988,16 @@ void main() {
       final od = api.IPAllocationPolicy.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkIPAllocationPolicy(od);
+    });
+  });
+
+  unittest.group('obj-schema-IdentityServiceConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildIdentityServiceConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.IdentityServiceConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkIdentityServiceConfig(od);
     });
   });
 

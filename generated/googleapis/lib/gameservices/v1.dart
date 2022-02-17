@@ -1925,7 +1925,6 @@ class ProjectsLocationsRealmsGameServerClustersResource {
 class AuditConfig {
   /// The configuration for logging of each type of permission.
   core.List<AuditLogConfig>? auditLogConfigs;
-  core.List<core.String>? exemptedMembers;
 
   /// Specifies a service that will be enabled for audit logging.
   ///
@@ -1935,7 +1934,6 @@ class AuditConfig {
 
   AuditConfig({
     this.auditLogConfigs,
-    this.exemptedMembers,
     this.service,
   });
 
@@ -1947,11 +1945,6 @@ class AuditConfig {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          exemptedMembers: _json.containsKey('exemptedMembers')
-              ? (_json['exemptedMembers'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
           service: _json.containsKey('service')
               ? _json['service'] as core.String
               : null,
@@ -1959,7 +1952,6 @@ class AuditConfig {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (auditLogConfigs != null) 'auditLogConfigs': auditLogConfigs!,
-        if (exemptedMembers != null) 'exemptedMembers': exemptedMembers!,
         if (service != null) 'service': service!,
       };
 }
@@ -4485,7 +4477,7 @@ class TargetState {
 }
 
 /// Request message for `TestIamPermissions` method.
-typedef TestIamPermissionsRequest = $TestIamPermissionsRequest;
+typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;
 
 /// Response message for `TestIamPermissions` method.
 typedef TestIamPermissionsResponse = $PermissionsResponse;

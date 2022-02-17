@@ -498,6 +498,7 @@ api.SasPortalDeviceMetadata buildSasPortalDeviceMetadata() {
     o.antennaModel = 'foo';
     o.commonChannelGroup = 'foo';
     o.interferenceCoordinationGroup = 'foo';
+    o.nrqzValidated = true;
   }
   buildCounterSasPortalDeviceMetadata--;
   return o;
@@ -518,6 +519,7 @@ void checkSasPortalDeviceMetadata(api.SasPortalDeviceMetadata o) {
       o.interferenceCoordinationGroup!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.nrqzValidated!, unittest.isTrue);
   }
   buildCounterSasPortalDeviceMetadata--;
 }

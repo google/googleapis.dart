@@ -172,6 +172,7 @@ api.AddSubnetworkRequest buildAddSubnetworkRequest() {
   final o = api.AddSubnetworkRequest();
   buildCounterAddSubnetworkRequest++;
   if (buildCounterAddSubnetworkRequest < 3) {
+    o.checkServiceNetworkingUsePermission = true;
     o.consumer = 'foo';
     o.consumerNetwork = 'foo';
     o.description = 'foo';
@@ -193,6 +194,7 @@ api.AddSubnetworkRequest buildAddSubnetworkRequest() {
 void checkAddSubnetworkRequest(api.AddSubnetworkRequest o) {
   buildCounterAddSubnetworkRequest++;
   if (buildCounterAddSubnetworkRequest < 3) {
+    unittest.expect(o.checkServiceNetworkingUsePermission!, unittest.isTrue);
     unittest.expect(
       o.consumer!,
       unittest.equals('foo'),

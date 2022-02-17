@@ -2628,7 +2628,7 @@ class ApigatewaySetIamPolicyRequest {
 typedef ApigatewayStatus = $Status;
 
 /// Request message for `TestIamPermissions` method.
-typedef ApigatewayTestIamPermissionsRequest = $TestIamPermissionsRequest;
+typedef ApigatewayTestIamPermissionsRequest = $TestIamPermissionsRequest00;
 
 /// Response message for `TestIamPermissions` method.
 typedef ApigatewayTestIamPermissionsResponse = $PermissionsResponse;

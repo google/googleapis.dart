@@ -2023,14 +2023,18 @@ class Biography {
 ///
 /// At least one of the `date` and `text` fields are specified. The `date` and
 /// `text` fields typically represent the same date, but are not guaranteed to.
+/// Clients should always set the `date` field when mutating birthdays.
 class Birthday {
-  /// The date of the birthday.
+  /// The structured date of the birthday.
   Date? date;
 
   /// Metadata about the birthday.
   FieldMetadata? metadata;
 
-  /// A free-form string representing the user's birthday.
+  /// Prefer to use the `date` field if set.
+  ///
+  /// A free-form string representing the user's birthday. This value is not
+  /// validated.
   core.String? text;
 
   Birthday({
@@ -2575,10 +2579,10 @@ class CreateContactGroupRequest {
 /// The time of day and time zone are either specified elsewhere or are
 /// insignificant. The date is relative to the Gregorian Calendar. This can
 /// represent one of the following: * A full date, with non-zero year, month,
-/// and day values * A month and day value, with a zero year, such as an
-/// anniversary * A year on its own, with zero month and day values * A year and
-/// month value, with a zero day, such as a credit card expiration date Related
-/// types are google.type.TimeOfDay and `google.protobuf.Timestamp`.
+/// and day values * A month and day, with a zero year (e.g., an anniversary) *
+/// A year on its own, with a zero month and a zero day * A year and month, with
+/// a zero day (e.g., a credit card expiration date) Related types: *
+/// google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
 typedef Date = $Date;
 
 /// The response for deleting a contact's photo.

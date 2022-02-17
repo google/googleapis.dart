@@ -110,7 +110,7 @@
                             "type": "integer"
                         },
                         "pageToken": {
-                            "description": "A token specifying which result page to return.",
+                            "description": "A token specifying which result page to return. This field has custom validations in ListCustomersRequestValidator",
                             "location": "query",
                             "type": "string"
                         }
@@ -134,7 +134,7 @@
                             ],
                             "parameters": {
                                 "parent": {
-                                    "description": "Required. The customer that manages the configuration. An API resource name in the format `customers/[CUSTOMER_ID]`.",
+                                    "description": "Required. The customer that manages the configuration. An API resource name in the format `customers/[CUSTOMER_ID]`. This field has custom validation in CreateConfigurationRequestValidator",
                                     "location": "path",
                                     "pattern": "^customers/[^/]+$",
                                     "required": true,
@@ -823,7 +823,7 @@
             }
         }
     },
-    "revision": "20220122",
+    "revision": "20220212",
     "rootUrl": "https://androiddeviceprovisioning.googleapis.com/",
     "schemas": {
         "ClaimDeviceRequest": {
@@ -1022,7 +1022,7 @@
                 },
                 "device": {
                     "$ref": "DeviceReference",
-                    "description": "Required. The device the configuration is applied to."
+                    "description": "Required. The device the configuration is applied to. There are custom validations in ApplyConfigurationRequestValidator"
                 }
             },
             "type": "object"
@@ -1097,7 +1097,7 @@
             "properties": {
                 "device": {
                     "$ref": "DeviceReference",
-                    "description": "Required. The device to remove the configuration from."
+                    "description": "Required. The device to remove the configuration from. There are custom validations in RemoveConfigurationRequestValidator"
                 }
             },
             "type": "object"
@@ -1108,7 +1108,7 @@
             "properties": {
                 "device": {
                     "$ref": "DeviceReference",
-                    "description": "Required. The device to unclaim."
+                    "description": "Required. The device to unclaim. There are custom validations in UnclaimDeviceRequestValidator."
                 }
             },
             "type": "object"

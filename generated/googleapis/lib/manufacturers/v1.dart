@@ -349,7 +349,11 @@ class Attributes {
   /// https://support.google.com/manufacturers/answer/6124116#disclosure.
   core.String? disclosureDate;
 
-  /// A list of excluded destinations.
+  /// A list of excluded destinations such as "ClientExport",
+  /// "ClientShoppingCatalog" or "PartnerShoppingCatalog".
+  ///
+  /// For more information, see
+  /// https://support.google.com/manufacturers/answer/7443550
   core.List<core.String>? excludedDestination;
 
   /// The rich format description of the product.
@@ -388,7 +392,11 @@ class Attributes {
   /// https://support.google.com/manufacturers/answer/6124116#image.
   Image? imageLink;
 
-  /// A list of included destinations.
+  /// A list of included destinations such as "ClientExport",
+  /// "ClientShoppingCatalog" or "PartnerShoppingCatalog".
+  ///
+  /// For more information, see
+  /// https://support.google.com/manufacturers/answer/7443550
   core.List<core.String>? includedDestination;
 
   /// The item group id of the product.
@@ -495,7 +503,8 @@ class Attributes {
 
   /// The target client id.
   ///
-  /// Should only be used in the accounts of the data partners.
+  /// Should only be used in the accounts of the data partners. For more
+  /// information, see https://support.google.com/manufacturers/answer/10857344
   core.String? targetClientId;
 
   /// The theme of the product.

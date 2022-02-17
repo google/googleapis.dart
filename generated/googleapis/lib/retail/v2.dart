@@ -33,6 +33,7 @@
 ///       - [ProjectsLocationsCatalogsPlacementsResource]
 ///       - [ProjectsLocationsCatalogsUserEventsResource]
 ///     - [ProjectsLocationsOperationsResource]
+///   - [ProjectsOperationsResource]
 library retail.v2;
 
 import 'dart:async' as async;
@@ -74,6 +75,8 @@ class ProjectsResource {
 
   ProjectsLocationsResource get locations =>
       ProjectsLocationsResource(_requester);
+  ProjectsOperationsResource get operations =>
+      ProjectsOperationsResource(_requester);
 
   ProjectsResource(commons.ApiRequester client) : _requester = client;
 }
@@ -198,10 +201,6 @@ class ProjectsLocationsCatalogsResource {
 
   /// Get which branch is currently default branch set by
   /// CatalogService.SetDefaultBranch method under a specified parent catalog.
-  ///
-  /// This feature is only available for users who have Retail Search enabled.
-  /// Please submit a form [here](https://cloud.google.com/contact) to contact
-  /// cloud sales if you are interested in using Retail Search.
   ///
   /// Request parameters:
   ///
@@ -362,10 +361,7 @@ class ProjectsLocationsCatalogsResource {
   /// only return product IDs from branch {newBranch}. * SearchService will only
   /// return product IDs from branch {newBranch} (if branch is not explicitly
   /// set). * UserEventService will only join events with products from branch
-  /// {newBranch}. This feature is only available for users who have Retail
-  /// Search enabled. Please submit a form
-  /// [here](https://cloud.google.com/contact) to contact cloud sales if you are
-  /// interested in using Retail Search.
+  /// {newBranch}.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1603,6 +1599,108 @@ class ProjectsLocationsOperationsResource {
   }
 }
 
+class ProjectsOperationsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsOperationsResource(commons.ApiRequester client) : _requester = client;
+
+  /// Gets the latest state of a long-running operation.
+  ///
+  /// Clients can use this method to poll the operation result at intervals as
+  /// recommended by the API service.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource.
+  /// Value must have pattern `^projects/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists operations that match the specified filter in the request.
+  ///
+  /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
+  /// NOTE: the `name` binding allows API services to override the binding to
+  /// use different resource name schemes, such as `users / * /operations`. To
+  /// override the binding, API services can add a binding such as
+  /// `"/v1/{name=users / * }/operations"` to their service configuration. For
+  /// backwards compatibility, the default name includes the operations
+  /// collection id, however overriding users must ensure the name binding is
+  /// the parent resource, without the operations collection id.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation's parent resource.
+  /// Value must have pattern `^projects/\[^/\]+$`.
+  ///
+  /// [filter] - The standard list filter.
+  ///
+  /// [pageSize] - The standard list page size.
+  ///
+  /// [pageToken] - The standard list page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningListOperationsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningListOperationsResponse> list(
+    core.String name, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name') + '/operations';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleLongrunningListOperationsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
 /// Message that represents an arbitrary HTTP body.
 ///
 /// It should only be used for payload formats that can't be represented as
@@ -1757,8 +1855,11 @@ class GoogleCloudRetailV2BigQuerySource {
   /// `product_merchant_center`: See
   /// [Importing catalog data from Merchant Center](https://cloud.google.com/retail/recommendations-ai/docs/upload-catalog#mc).
   /// Supported values for user events imports: * `user_event` (default): One
-  /// JSON UserEvent per line. * `user_event_ga360`: Using
-  /// https://support.google.com/analytics/answer/3437719.
+  /// JSON UserEvent per line. * `user_event_ga360`: The schema is available
+  /// here: https://support.google.com/analytics/answer/3437719. *
+  /// `user_event_ga4`: This feature is in private preview. Please contact the
+  /// support team for importing Google Analytics 4 events. The schema is
+  /// available here: https://support.google.com/analytics/answer/7029846.
   core.String? dataSchema;
 
   /// The BigQuery data set to copy the data from with a length limit of 1,024
@@ -2131,8 +2232,10 @@ class GoogleCloudRetailV2CompletionDetail {
 
 /// A custom attribute that is not explicitly modeled in Product.
 class GoogleCloudRetailV2CustomAttribute {
-  /// If true, custom attribute values are indexed, so that it can be filtered,
-  /// faceted or boosted in SearchService.Search.
+  /// This field will only be used when AttributesConfig.attribute_config_level
+  /// of the Catalog is 'PRODUCT_LEVEL_ATTRIBUTE_CONFIG', if true, custom
+  /// attribute values are indexed, so that it can be filtered, faceted or
+  /// boosted in SearchService.Search.
   ///
   /// This field is ignored in a UserEvent. See SearchRequest.filter,
   /// SearchRequest.facet_specs and SearchRequest.boost_spec for more details.
@@ -2145,8 +2248,9 @@ class GoogleCloudRetailV2CustomAttribute {
   /// returned.
   core.List<core.double>? numbers;
 
-  /// If true, custom attribute values are searchable by text queries in
-  /// SearchService.Search.
+  /// This field will only be used when AttributesConfig.attribute_config_level
+  /// of the Catalog is 'PRODUCT_LEVEL_ATTRIBUTE_CONFIG', if true, custom
+  /// attribute values are searchable by text queries in SearchService.Search.
   ///
   /// This field is ignored in a UserEvent. Only set if type text is set.
   /// Otherwise, a INVALID_ARGUMENT error is returned.
@@ -2253,6 +2357,8 @@ class GoogleCloudRetailV2GcsSource {
   /// JSON UserEvent per line. * `user_event_ga360`: Using
   /// https://support.google.com/analytics/answer/3437719. Supported values for
   /// control imports: * 'control' (default): One JSON Control per line.
+  /// Supported values for catalog attribute imports: * 'catalog_attribute'
+  /// (default): One CSV CatalogAttribute per line.
   core.String? dataSchema;
 
   /// Google Cloud Storage URIs to input files.
@@ -2463,8 +2569,10 @@ class GoogleCloudRetailV2ImportProductsRequest {
   /// - "INCREMENTAL" : Inserts new products or updates existing products.
   /// - "FULL" : Calculates diff and replaces the entire product dataset.
   /// Existing products may be deleted if they are not present in the source
-  /// location. Can only be while using BigQuerySource. Add the IAM permission
-  /// "BigQuery Data Viewer" for
+  /// location. Can only be set while using BigQuerySource. And the BigQuery
+  /// dataset must be created in the data location "us (multiple regions in
+  /// United States)", otherwise a PERMISSION_DENIED error is thrown. Add the
+  /// IAM permission "BigQuery Data Viewer" for
   /// cloud-retail-customer-data-access@system.gserviceaccount.com before using
   /// this feature otherwise an error is thrown. This feature is only available
   /// for users who have Retail Search enabled. Please submit a form
@@ -3139,8 +3247,10 @@ class GoogleCloudRetailV2Product {
 
   /// The id of the collection members when type is Type.COLLECTION.
   ///
-  /// Should not set it for other types. A maximum of 1000 values are allowed.
-  /// Otherwise, an INVALID_ARGUMENT error is return.
+  /// Non-existent product ids are allowed. The type of the members must be
+  /// either Type.PRIMARY or Type.VARIANT otherwise and INVALID_ARGUMENT error
+  /// is thrown. Should not set it for other types. A maximum of 1000 values are
+  /// allowed. Otherwise, an INVALID_ARGUMENT error is return.
   core.List<core.String>? collectionMemberIds;
 
   /// The color of the product.
@@ -3241,7 +3351,7 @@ class GoogleCloudRetailV2Product {
   /// The material of the product.
   ///
   /// For example, "leather", "wooden". A maximum of 20 values are allowed. Each
-  /// value must be a UTF-8 encoded string with a length limit of 128
+  /// value must be a UTF-8 encoded string with a length limit of 200
   /// characters. Otherwise, an INVALID_ARGUMENT error is returned.
   /// Corresponding properties: Google Merchant Center property
   /// [material](https://support.google.com/merchants/answer/6324410).
@@ -3285,7 +3395,8 @@ class GoogleCloudRetailV2Product {
 
   /// The promotions applied to the product.
   ///
-  /// A maximum of 10 values are allowed per Product.
+  /// A maximum of 10 values are allowed per Product. Only
+  /// Promotion.promotion_id will be used, other fields will be ignored if set.
   core.List<GoogleCloudRetailV2Promotion>? promotions;
 
   /// The timestamp when the product is published by the retailer for the first
@@ -3785,9 +3896,9 @@ class GoogleCloudRetailV2ProductLevelConfig {
 class GoogleCloudRetailV2Promotion {
   /// ID of the promotion.
   ///
-  /// For example, "free gift". The value value must be a UTF-8 encoded string
-  /// with a length limit of 128 characters, and match the pattern: `a-zA-Z*`.
-  /// For example, id0LikeThis or ID_1_LIKE_THIS. Otherwise, an INVALID_ARGUMENT
+  /// For example, "free gift". The value must be a UTF-8 encoded string with a
+  /// length limit of 128 characters, and match the pattern: `a-zA-Z*`. For
+  /// example, id0LikeThis or ID_1_LIKE_THIS. Otherwise, an INVALID_ARGUMENT
   /// error is returned. Google Merchant Center property
   /// [promotion](https://support.google.com/merchants/answer/7050148).
   core.String? promotionId;
@@ -4164,6 +4275,9 @@ class GoogleCloudRetailV2SearchRequest {
   /// provided the page token. Otherwise, an INVALID_ARGUMENT error is returned.
   core.String? pageToken;
 
+  /// The specification for personalization.
+  GoogleCloudRetailV2SearchRequestPersonalizationSpec? personalizationSpec;
+
   /// Raw search query.
   core.String? query;
 
@@ -4253,6 +4367,7 @@ class GoogleCloudRetailV2SearchRequest {
     this.pageCategories,
     this.pageSize,
     this.pageToken,
+    this.personalizationSpec,
     this.query,
     this.queryExpansionSpec,
     this.searchMode,
@@ -4304,6 +4419,11 @@ class GoogleCloudRetailV2SearchRequest {
           pageToken: _json.containsKey('pageToken')
               ? _json['pageToken'] as core.String
               : null,
+          personalizationSpec: _json.containsKey('personalizationSpec')
+              ? GoogleCloudRetailV2SearchRequestPersonalizationSpec.fromJson(
+                  _json['personalizationSpec']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           query:
               _json.containsKey('query') ? _json['query'] as core.String : null,
           queryExpansionSpec: _json.containsKey('queryExpansionSpec')
@@ -4340,6 +4460,8 @@ class GoogleCloudRetailV2SearchRequest {
         if (pageCategories != null) 'pageCategories': pageCategories!,
         if (pageSize != null) 'pageSize': pageSize!,
         if (pageToken != null) 'pageToken': pageToken!,
+        if (personalizationSpec != null)
+          'personalizationSpec': personalizationSpec!,
         if (query != null) 'query': query!,
         if (queryExpansionSpec != null)
           'queryExpansionSpec': queryExpansionSpec!,
@@ -4360,8 +4482,16 @@ class GoogleCloudRetailV2SearchRequestBoostSpec {
   core.List<GoogleCloudRetailV2SearchRequestBoostSpecConditionBoostSpec>?
       conditionBoostSpecs;
 
+  /// Whether to skip boostspec validation.
+  ///
+  /// If this field is set to true, invalid BoostSpec.condition_boost_specs will
+  /// be ignored and valid BoostSpec.condition_boost_specs will still be
+  /// applied.
+  core.bool? skipBoostSpecValidation;
+
   GoogleCloudRetailV2SearchRequestBoostSpec({
     this.conditionBoostSpecs,
+    this.skipBoostSpecValidation,
   });
 
   GoogleCloudRetailV2SearchRequestBoostSpec.fromJson(core.Map _json)
@@ -4374,11 +4504,16 @@ class GoogleCloudRetailV2SearchRequestBoostSpec {
                               value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          skipBoostSpecValidation: _json.containsKey('skipBoostSpecValidation')
+              ? _json['skipBoostSpecValidation'] as core.bool
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (conditionBoostSpecs != null)
           'conditionBoostSpecs': conditionBoostSpecs!,
+        if (skipBoostSpecValidation != null)
+          'skipBoostSpecValidation': skipBoostSpecValidation!,
       };
 }
 
@@ -4670,6 +4805,29 @@ class GoogleCloudRetailV2SearchRequestFacetSpecFacetKey {
       };
 }
 
+/// The specification for personalization.
+class GoogleCloudRetailV2SearchRequestPersonalizationSpec {
+  /// Defaults to Mode.AUTO.
+  /// Possible string values are:
+  /// - "MODE_UNSPECIFIED" : Default value. Defaults to Mode.AUTO.
+  /// - "AUTO" : Let CRS decide whether to use personalization.
+  /// - "DISABLED" : Disable personalization.
+  core.String? mode;
+
+  GoogleCloudRetailV2SearchRequestPersonalizationSpec({
+    this.mode,
+  });
+
+  GoogleCloudRetailV2SearchRequestPersonalizationSpec.fromJson(core.Map _json)
+      : this(
+          mode: _json.containsKey('mode') ? _json['mode'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (mode != null) 'mode': mode!,
+      };
+}
+
 /// Specification to determine under which conditions query expansion should
 /// occur.
 class GoogleCloudRetailV2SearchRequestQueryExpansionSpec {
@@ -4732,6 +4890,11 @@ class GoogleCloudRetailV2SearchResponse {
   /// Results of facets requested by user.
   core.List<GoogleCloudRetailV2SearchResponseFacet>? facets;
 
+  /// The invalid SearchRequest.BoostSpec.condition_boost_specs that are not
+  /// applied during serving.
+  core.List<GoogleCloudRetailV2SearchRequestBoostSpecConditionBoostSpec>?
+      invalidConditionBoostSpecs;
+
   /// A token that can be sent as SearchRequest.page_token to retrieve the next
   /// page.
   ///
@@ -4763,6 +4926,7 @@ class GoogleCloudRetailV2SearchResponse {
     this.attributionToken,
     this.correctedQuery,
     this.facets,
+    this.invalidConditionBoostSpecs,
     this.nextPageToken,
     this.queryExpansionInfo,
     this.redirectUri,
@@ -4788,6 +4952,15 @@ class GoogleCloudRetailV2SearchResponse {
                   .map((value) =>
                       GoogleCloudRetailV2SearchResponseFacet.fromJson(
                           value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          invalidConditionBoostSpecs: _json
+                  .containsKey('invalidConditionBoostSpecs')
+              ? (_json['invalidConditionBoostSpecs'] as core.List)
+                  .map((value) =>
+                      GoogleCloudRetailV2SearchRequestBoostSpecConditionBoostSpec
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           nextPageToken: _json.containsKey('nextPageToken')
@@ -4818,6 +4991,8 @@ class GoogleCloudRetailV2SearchResponse {
         if (attributionToken != null) 'attributionToken': attributionToken!,
         if (correctedQuery != null) 'correctedQuery': correctedQuery!,
         if (facets != null) 'facets': facets!,
+        if (invalidConditionBoostSpecs != null)
+          'invalidConditionBoostSpecs': invalidConditionBoostSpecs!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (queryExpansionInfo != null)
           'queryExpansionInfo': queryExpansionInfo!,
@@ -5734,8 +5909,8 @@ typedef GoogleRpcStatus = $Status;
 /// The time of day and time zone are either specified elsewhere or are
 /// insignificant. The date is relative to the Gregorian Calendar. This can
 /// represent one of the following: * A full date, with non-zero year, month,
-/// and day values * A month and day value, with a zero year, such as an
-/// anniversary * A year on its own, with zero month and day values * A year and
-/// month value, with a zero day, such as a credit card expiration date Related
-/// types are google.type.TimeOfDay and `google.protobuf.Timestamp`.
+/// and day values * A month and day, with a zero year (e.g., an anniversary) *
+/// A year on its own, with a zero month and a zero day * A year and month, with
+/// a zero day (e.g., a credit card expiration date) Related types: *
+/// google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
 typedef GoogleTypeDate = $Date;

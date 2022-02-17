@@ -2734,6 +2734,32 @@ class ConnectAgentResource {
       };
 }
 
+/// EdgeCluster contains information specific to Google Edge Clusters.
+class EdgeCluster {
+  /// Self-link of the GCP resource for the Edge Cluster.
+  ///
+  /// For example:
+  /// //edgecontainer.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster
+  ///
+  /// Immutable.
+  core.String? resourceLink;
+
+  EdgeCluster({
+    this.resourceLink,
+  });
+
+  EdgeCluster.fromJson(core.Map _json)
+      : this(
+          resourceLink: _json.containsKey('resourceLink')
+              ? _json['resourceLink'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (resourceLink != null) 'resourceLink': resourceLink!,
+      };
+}
+
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs.
 ///
@@ -3564,6 +3590,11 @@ class Membership {
 /// MembershipEndpoint contains information needed to contact a Kubernetes API,
 /// endpoint and any additional Kubernetes metadata.
 class MembershipEndpoint {
+  /// Specific information for a Google Edge cluster.
+  ///
+  /// Optional.
+  EdgeCluster? edgeCluster;
+
   /// Specific information for a GKE-on-GCP cluster.
   ///
   /// Optional.
@@ -3599,6 +3630,7 @@ class MembershipEndpoint {
   OnPremCluster? onPremCluster;
 
   MembershipEndpoint({
+    this.edgeCluster,
     this.gkeCluster,
     this.kubernetesMetadata,
     this.kubernetesResource,
@@ -3608,6 +3640,10 @@ class MembershipEndpoint {
 
   MembershipEndpoint.fromJson(core.Map _json)
       : this(
+          edgeCluster: _json.containsKey('edgeCluster')
+              ? EdgeCluster.fromJson(
+                  _json['edgeCluster'] as core.Map<core.String, core.dynamic>)
+              : null,
           gkeCluster: _json.containsKey('gkeCluster')
               ? GkeCluster.fromJson(
                   _json['gkeCluster'] as core.Map<core.String, core.dynamic>)
@@ -3631,6 +3667,7 @@ class MembershipEndpoint {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (edgeCluster != null) 'edgeCluster': edgeCluster!,
         if (gkeCluster != null) 'gkeCluster': gkeCluster!,
         if (kubernetesMetadata != null)
           'kubernetesMetadata': kubernetesMetadata!,
@@ -4205,7 +4242,7 @@ class Status {
 }
 
 /// Request message for `TestIamPermissions` method.
-typedef TestIamPermissionsRequest = $TestIamPermissionsRequest;
+typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;
 
 /// Response message for `TestIamPermissions` method.
 typedef TestIamPermissionsResponse = $PermissionsResponse;

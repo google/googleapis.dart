@@ -2948,6 +2948,13 @@ class Environment {
 
 /// The definition of an Event for a managed / semi-managed notebook instance.
 class Event {
+  /// Event details.
+  ///
+  /// This field is used to pass event information.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? details;
+
   /// Event report time.
   core.String? reportTime;
 
@@ -2955,15 +2962,28 @@ class Event {
   /// Possible string values are:
   /// - "EVENT_TYPE_UNSPECIFIED" : Event is not specified.
   /// - "IDLE" : The instance / runtime is idle
+  /// - "HEARTBEAT" : The instance / runtime is available. This event indicates
+  /// that instance / runtime underlying compute is operational.
+  /// - "HEALTH" : The instance / runtime health is available. This event
+  /// indicates that instance / runtime health information.
   core.String? type;
 
   Event({
+    this.details,
     this.reportTime,
     this.type,
   });
 
   Event.fromJson(core.Map _json)
       : this(
+          details: _json.containsKey('details')
+              ? (_json['details'] as core.Map<core.String, core.dynamic>).map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
           reportTime: _json.containsKey('reportTime')
               ? _json['reportTime'] as core.String
               : null,
@@ -2971,6 +2991,7 @@ class Event {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (details != null) 'details': details!,
         if (reportTime != null) 'reportTime': reportTime!,
         if (type != null) 'type': type!,
       };
@@ -3428,6 +3449,11 @@ class Instance {
   /// Output only.
   core.String? createTime;
 
+  /// Email address of entity that sent original CreateInstance request.
+  ///
+  /// Output only.
+  core.String? creator;
+
   /// Specify a custom Cloud Storage path where the GPU driver is stored.
   ///
   /// If not specified, we'll automatically choose from official GPU drivers.
@@ -3635,6 +3661,7 @@ class Instance {
     this.bootDiskType,
     this.containerImage,
     this.createTime,
+    this.creator,
     this.customGpuDriverPath,
     this.dataDiskSizeGb,
     this.dataDiskType,
@@ -3684,6 +3711,9 @@ class Instance {
               : null,
           createTime: _json.containsKey('createTime')
               ? _json['createTime'] as core.String
+              : null,
+          creator: _json.containsKey('creator')
+              ? _json['creator'] as core.String
               : null,
           customGpuDriverPath: _json.containsKey('customGpuDriverPath')
               ? _json['customGpuDriverPath'] as core.String
@@ -3802,6 +3832,7 @@ class Instance {
         if (bootDiskType != null) 'bootDiskType': bootDiskType!,
         if (containerImage != null) 'containerImage': containerImage!,
         if (createTime != null) 'createTime': createTime!,
+        if (creator != null) 'creator': creator!,
         if (customGpuDriverPath != null)
           'customGpuDriverPath': customGpuDriverPath!,
         if (dataDiskSizeGb != null) 'dataDiskSizeGb': dataDiskSizeGb!,
@@ -4802,10 +4833,10 @@ class ReservationAffinity {
       };
 }
 
-/// Request for reseting a notebook instance
+/// Request for resetting a notebook instance
 typedef ResetInstanceRequest = $Empty;
 
-/// Request for reseting a Managed Notebook Runtime.
+/// Request for resetting a Managed Notebook Runtime.
 typedef ResetRuntimeRequest = $Empty;
 
 /// Request for rollbacking a notebook instance
@@ -4852,6 +4883,10 @@ class Runtime {
   /// critical daemons are running) Applies to ACTIVE state.
   /// - "UNHEALTHY" : The runtime is known to be in an unhealthy state (for
   /// example, critical daemons are not running) Applies to ACTIVE state.
+  /// - "AGENT_NOT_INSTALLED" : The runtime has not installed health monitoring
+  /// agent. Applies to ACTIVE state.
+  /// - "AGENT_NOT_RUNNING" : The runtime health monitoring agent is not
+  /// running. Applies to ACTIVE state.
   core.String? healthState;
 
   /// Contains Runtime daemon metrics such as Service status and JupyterLab
@@ -5008,6 +5043,10 @@ class RuntimeAccessConfig {
   /// Possible string values are:
   /// - "RUNTIME_ACCESS_TYPE_UNSPECIFIED" : Unspecified access.
   /// - "SINGLE_USER" : Single user login.
+  /// - "SERVICE_ACCOUNT" : Service Account mode. In Service Account mode,
+  /// Runtime creator will specify a SA that exists in the consumer project.
+  /// Using Runtime Service Account field. Users accessing the Runtime need
+  /// ActAs (Service Account User) permission.
   core.String? accessType;
 
   /// The proxy endpoint that is used to access the runtime.
@@ -5117,7 +5156,7 @@ typedef RuntimeShieldedInstanceConfig = $ShieldedInstanceConfig;
 ///
 /// The properties to set on runtime. Properties keys are specified in
 /// `key:value` format, for example: * `idle_shutdown: true` *
-/// `idle_shutdown_timeout: 180` * `report-system-health: true`
+/// `idle_shutdown_timeout: 180` * `enable_health_monitoring: true`
 class RuntimeSoftwareConfig {
   /// Specify a custom Cloud Storage path where the GPU driver is stored.
   ///
@@ -5142,6 +5181,11 @@ class RuntimeSoftwareConfig {
   /// Install Nvidia Driver automatically.
   core.bool? installGpuDriver;
 
+  /// Use a list of container images to use as Kernels in the notebook instance.
+  ///
+  /// Optional.
+  core.List<ContainerImage>? kernels;
+
   /// Cron expression in UTC timezone, used to schedule instance auto upgrade.
   ///
   /// Please follow the [cron format](https://en.wikipedia.org/wiki/Cron).
@@ -5154,14 +5198,21 @@ class RuntimeSoftwareConfig {
   /// (`gs://path-to-file/file-name`).
   core.String? postStartupScript;
 
+  /// Bool indicating whether an newer image is available in an image family.
+  ///
+  /// Output only.
+  core.bool? upgradeable;
+
   RuntimeSoftwareConfig({
     this.customGpuDriverPath,
     this.enableHealthMonitoring,
     this.idleShutdown,
     this.idleShutdownTimeout,
     this.installGpuDriver,
+    this.kernels,
     this.notebookUpgradeSchedule,
     this.postStartupScript,
+    this.upgradeable,
   });
 
   RuntimeSoftwareConfig.fromJson(core.Map _json)
@@ -5181,11 +5232,20 @@ class RuntimeSoftwareConfig {
           installGpuDriver: _json.containsKey('installGpuDriver')
               ? _json['installGpuDriver'] as core.bool
               : null,
+          kernels: _json.containsKey('kernels')
+              ? (_json['kernels'] as core.List)
+                  .map((value) => ContainerImage.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           notebookUpgradeSchedule: _json.containsKey('notebookUpgradeSchedule')
               ? _json['notebookUpgradeSchedule'] as core.String
               : null,
           postStartupScript: _json.containsKey('postStartupScript')
               ? _json['postStartupScript'] as core.String
+              : null,
+          upgradeable: _json.containsKey('upgradeable')
+              ? _json['upgradeable'] as core.bool
               : null,
         );
 
@@ -5198,9 +5258,11 @@ class RuntimeSoftwareConfig {
         if (idleShutdownTimeout != null)
           'idleShutdownTimeout': idleShutdownTimeout!,
         if (installGpuDriver != null) 'installGpuDriver': installGpuDriver!,
+        if (kernels != null) 'kernels': kernels!,
         if (notebookUpgradeSchedule != null)
           'notebookUpgradeSchedule': notebookUpgradeSchedule!,
         if (postStartupScript != null) 'postStartupScript': postStartupScript!,
+        if (upgradeable != null) 'upgradeable': upgradeable!,
       };
 }
 
@@ -5566,7 +5628,7 @@ class SwitchRuntimeRequest {
 }
 
 /// Request message for `TestIamPermissions` method.
-typedef TestIamPermissionsRequest = $TestIamPermissionsRequest;
+typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;
 
 /// Response message for `TestIamPermissions` method.
 typedef TestIamPermissionsResponse = $PermissionsResponse;
@@ -5944,7 +6006,7 @@ class VirtualMachineConfig {
   /// Optional.
   RuntimeAcceleratorConfig? acceleratorConfig;
 
-  /// Use a list of container images to start the notebook instance.
+  /// Use a list of container images to use as Kernels in the notebook instance.
   ///
   /// Optional.
   core.List<ContainerImage>? containerImages;
@@ -6031,6 +6093,19 @@ class VirtualMachineConfig {
   /// - "GVNIC" : GVNIC
   core.String? nicType;
 
+  /// Reserved IP Range name is used for VPC Peering.
+  ///
+  /// The subnetwork allocation will use the range *name* if it's assigned.
+  /// Example: managed-notebooks-range-c
+  /// PEERING_RANGE_NAME_3=managed-notebooks-range-c gcloud compute addresses
+  /// create $PEERING_RANGE_NAME_3 \ --global \ --prefix-length=24 \
+  /// --description="Google Cloud Managed Notebooks Range 24 c" \
+  /// --network=$NETWORK \ --addresses=192.168.0.0 \ --purpose=VPC_PEERING Field
+  /// value will be: `managed-notebooks-range-c`
+  ///
+  /// Optional.
+  core.String? reservedIpRange;
+
   /// Shielded VM Instance configuration settings.
   ///
   /// Optional.
@@ -6073,6 +6148,7 @@ class VirtualMachineConfig {
     this.metadata,
     this.network,
     this.nicType,
+    this.reservedIpRange,
     this.shieldedInstanceConfig,
     this.subnet,
     this.tags,
@@ -6137,6 +6213,9 @@ class VirtualMachineConfig {
           nicType: _json.containsKey('nicType')
               ? _json['nicType'] as core.String
               : null,
+          reservedIpRange: _json.containsKey('reservedIpRange')
+              ? _json['reservedIpRange'] as core.String
+              : null,
           shieldedInstanceConfig: _json.containsKey('shieldedInstanceConfig')
               ? RuntimeShieldedInstanceConfig.fromJson(
                   _json['shieldedInstanceConfig']
@@ -6165,6 +6244,7 @@ class VirtualMachineConfig {
         if (metadata != null) 'metadata': metadata!,
         if (network != null) 'network': network!,
         if (nicType != null) 'nicType': nicType!,
+        if (reservedIpRange != null) 'reservedIpRange': reservedIpRange!,
         if (shieldedInstanceConfig != null)
           'shieldedInstanceConfig': shieldedInstanceConfig!,
         if (subnet != null) 'subnet': subnet!,

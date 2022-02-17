@@ -3270,6 +3270,9 @@ class DatabaseInstanceFailoverReplica {
 
 /// A Cloud SQL instance resource.
 class DatabaseInstance {
+  /// List all maintenance versions applicable on the instance
+  core.List<core.String>? availableMaintenanceVersions;
+
   /// The backend type.
   ///
   /// `SECOND_GEN`: Cloud SQL database instance. `EXTERNAL`: A database server
@@ -3390,6 +3393,9 @@ class DatabaseInstance {
   /// This is always `sql#instance`.
   core.String? kind;
 
+  /// The current software version on the instance.
+  core.String? maintenanceVersion;
+
   /// The name of the instance which will act as primary in the replication
   /// setup.
   core.String? masterInstanceName;
@@ -3484,6 +3490,7 @@ class DatabaseInstance {
   core.List<core.String>? suspensionReason;
 
   DatabaseInstance({
+    this.availableMaintenanceVersions,
     this.backendType,
     this.connectionName,
     this.createTime,
@@ -3499,6 +3506,7 @@ class DatabaseInstance {
     this.ipAddresses,
     this.ipv6Address,
     this.kind,
+    this.maintenanceVersion,
     this.masterInstanceName,
     this.maxDiskSize,
     this.name,
@@ -3522,6 +3530,12 @@ class DatabaseInstance {
 
   DatabaseInstance.fromJson(core.Map _json)
       : this(
+          availableMaintenanceVersions:
+              _json.containsKey('availableMaintenanceVersions')
+                  ? (_json['availableMaintenanceVersions'] as core.List)
+                      .map((value) => value as core.String)
+                      .toList()
+                  : null,
           backendType: _json.containsKey('backendType')
               ? _json['backendType'] as core.String
               : null,
@@ -3573,6 +3587,9 @@ class DatabaseInstance {
               ? _json['ipv6Address'] as core.String
               : null,
           kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          maintenanceVersion: _json.containsKey('maintenanceVersion')
+              ? _json['maintenanceVersion'] as core.String
+              : null,
           masterInstanceName: _json.containsKey('masterInstanceName')
               ? _json['masterInstanceName'] as core.String
               : null,
@@ -3642,6 +3659,8 @@ class DatabaseInstance {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (availableMaintenanceVersions != null)
+          'availableMaintenanceVersions': availableMaintenanceVersions!,
         if (backendType != null) 'backendType': backendType!,
         if (connectionName != null) 'connectionName': connectionName!,
         if (createTime != null) 'createTime': createTime!,
@@ -3660,6 +3679,8 @@ class DatabaseInstance {
         if (ipAddresses != null) 'ipAddresses': ipAddresses!,
         if (ipv6Address != null) 'ipv6Address': ipv6Address!,
         if (kind != null) 'kind': kind!,
+        if (maintenanceVersion != null)
+          'maintenanceVersion': maintenanceVersion!,
         if (masterInstanceName != null)
           'masterInstanceName': masterInstanceName!,
         if (maxDiskSize != null) 'maxDiskSize': maxDiskSize!,

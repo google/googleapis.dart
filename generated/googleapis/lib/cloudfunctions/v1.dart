@@ -1007,6 +1007,23 @@ class CloudFunction {
   /// User-provided description of a function.
   core.String? description;
 
+  /// Docker Registry to use for this deployment.
+  ///
+  /// If `docker_repository` field is specified, this field will be
+  /// automatically set as `ARTIFACT_REGISTRY`. If unspecified, it currently
+  /// defaults to `CONTAINER_REGISTRY`. This field may be overridden by the
+  /// backend for eligible deployments.
+  /// Possible string values are:
+  /// - "DOCKER_REGISTRY_UNSPECIFIED" : Unspecified.
+  /// - "CONTAINER_REGISTRY" : Docker images will be stored in multi-regional
+  /// Container Registry repositories named `gcf`.
+  /// - "ARTIFACT_REGISTRY" : Docker images will be stored in regional Artifact
+  /// Registry repositories. By default, GCF will create and use repositories
+  /// named `gcf-artifacts` in every region in which a function is deployed. But
+  /// the repository to use can also be specified by the user using the
+  /// `docker_repository` field.
+  core.String? dockerRegistry;
+
   /// User managed repository created in Artifact Registry optionally with a
   /// customer managed encryption key.
   ///
@@ -1212,6 +1229,7 @@ class CloudFunction {
     this.buildName,
     this.buildWorkerPool,
     this.description,
+    this.dockerRegistry,
     this.dockerRepository,
     this.entryPoint,
     this.environmentVariables,
@@ -1267,6 +1285,9 @@ class CloudFunction {
               : null,
           description: _json.containsKey('description')
               ? _json['description'] as core.String
+              : null,
+          dockerRegistry: _json.containsKey('dockerRegistry')
+              ? _json['dockerRegistry'] as core.String
               : null,
           dockerRepository: _json.containsKey('dockerRepository')
               ? _json['dockerRepository'] as core.String
@@ -1377,6 +1398,7 @@ class CloudFunction {
         if (buildName != null) 'buildName': buildName!,
         if (buildWorkerPool != null) 'buildWorkerPool': buildWorkerPool!,
         if (description != null) 'description': description!,
+        if (dockerRegistry != null) 'dockerRegistry': dockerRegistry!,
         if (dockerRepository != null) 'dockerRepository': dockerRepository!,
         if (entryPoint != null) 'entryPoint': entryPoint!,
         if (environmentVariables != null)
@@ -2204,7 +2226,7 @@ class SourceRepository {
 typedef Status = $Status;
 
 /// Request message for `TestIamPermissions` method.
-typedef TestIamPermissionsRequest = $TestIamPermissionsRequest;
+typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;
 
 /// Response message for `TestIamPermissions` method.
 typedef TestIamPermissionsResponse = $PermissionsResponse;

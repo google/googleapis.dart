@@ -433,7 +433,7 @@ class ProjectsLocationsGroupsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - The Group name.
+  /// [name] - Output only. The Group name.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/groups/\[^/\]+$`.
   ///
@@ -1270,6 +1270,50 @@ class ProjectsLocationsSourcesDatacenterConnectorsResource {
     );
     return ListDatacenterConnectorsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Upgrades the appliance relate to this DatacenterConnector to the in-place
+  /// updateable version.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [datacenterConnector] - Required. The DatacenterConnector name.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/sources/\[^/\]+/datacenterConnectors/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> upgradeAppliance(
+    UpgradeApplianceRequest request,
+    core.String datacenterConnector, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' +
+        core.Uri.encodeFull('$datacenterConnector') +
+        ':upgradeAppliance';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2625,7 +2669,7 @@ class ProjectsLocationsTargetProjectsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - The name of the target project.
+  /// [name] - Output only. The name of the target project.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/targetProjects/\[^/\]+$`.
   ///
@@ -2704,6 +2748,49 @@ class AddGroupMigrationRequest {
       };
 }
 
+/// Describes an appliance version.
+class ApplianceVersion {
+  /// Determine whether it's critical to upgrade the appliance to this version.
+  core.bool? critical;
+
+  /// Link to a page that contains the version release notes.
+  core.String? releaseNotesUri;
+
+  /// A link for downloading the version.
+  core.String? uri;
+
+  /// The appliance version.
+  core.String? version;
+
+  ApplianceVersion({
+    this.critical,
+    this.releaseNotesUri,
+    this.uri,
+    this.version,
+  });
+
+  ApplianceVersion.fromJson(core.Map _json)
+      : this(
+          critical: _json.containsKey('critical')
+              ? _json['critical'] as core.bool
+              : null,
+          releaseNotesUri: _json.containsKey('releaseNotesUri')
+              ? _json['releaseNotesUri'] as core.String
+              : null,
+          uri: _json.containsKey('uri') ? _json['uri'] as core.String : null,
+          version: _json.containsKey('version')
+              ? _json['version'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (critical != null) 'critical': critical!,
+        if (releaseNotesUri != null) 'releaseNotesUri': releaseNotesUri!,
+        if (uri != null) 'uri': uri!,
+        if (version != null) 'version': version!,
+      };
+}
+
 /// AppliedLicense holds the license data returned by adaptation module report.
 class AppliedLicense {
   /// The OS license returned from the adaptation module's report.
@@ -2733,6 +2820,44 @@ class AppliedLicense {
   core.Map<core.String, core.dynamic> toJson() => {
         if (osLicense != null) 'osLicense': osLicense!,
         if (type != null) 'type': type!,
+      };
+}
+
+/// Holds informatiom about the available versions for upgrade.
+class AvailableUpdates {
+  /// The latest version for in place update.
+  ///
+  /// The current appliance can be updated to this version using the API or m4c
+  /// CLI.
+  ApplianceVersion? inPlaceUpdate;
+
+  /// The newest deployable version of the appliance.
+  ///
+  /// The current appliance can't be updated into this version, and the owner
+  /// must manually deploy this OVA to a new appliance.
+  ApplianceVersion? newDeployableAppliance;
+
+  AvailableUpdates({
+    this.inPlaceUpdate,
+    this.newDeployableAppliance,
+  });
+
+  AvailableUpdates.fromJson(core.Map _json)
+      : this(
+          inPlaceUpdate: _json.containsKey('inPlaceUpdate')
+              ? ApplianceVersion.fromJson(
+                  _json['inPlaceUpdate'] as core.Map<core.String, core.dynamic>)
+              : null,
+          newDeployableAppliance: _json.containsKey('newDeployableAppliance')
+              ? ApplianceVersion.fromJson(_json['newDeployableAppliance']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (inPlaceUpdate != null) 'inPlaceUpdate': inPlaceUpdate!,
+        if (newDeployableAppliance != null)
+          'newDeployableAppliance': newDeployableAppliance!,
       };
 }
 
@@ -2773,6 +2898,8 @@ class CloneJob {
   Status? error;
 
   /// The name of the clone.
+  ///
+  /// Output only.
   core.String? name;
 
   /// State of the clone job.
@@ -3408,6 +3535,28 @@ class CutoverJob {
 /// user) to connect the Datacenter to GCP and support vm migration data
 /// transfer.
 class DatacenterConnector {
+  /// Appliance OVA version.
+  ///
+  /// This is the OVA which is manually installed by the user and contains the
+  /// infrastructure for the automatically updatable components on the
+  /// appliance.
+  ///
+  /// Output only.
+  core.String? applianceInfrastructureVersion;
+
+  /// Appliance last installed update bundle version.
+  ///
+  /// This is the version of the automatically updatable components on the
+  /// appliance.
+  ///
+  /// Output only.
+  core.String? applianceSoftwareVersion;
+
+  /// The available versions for updating this appliance.
+  ///
+  /// Output only.
+  AvailableUpdates? availableVersions;
+
   /// The communication channel between the datacenter connector and GCP.
   ///
   /// Output only.
@@ -3467,6 +3616,11 @@ class DatacenterConnector {
   /// Output only.
   core.String? updateTime;
 
+  /// The status of the current / last upgradeAppliance operation.
+  ///
+  /// Output only.
+  UpgradeStatus? upgradeStatus;
+
   /// The version running in the DatacenterConnector.
   ///
   /// This is supplied by the OVA connector during the registration process and
@@ -3474,6 +3628,9 @@ class DatacenterConnector {
   core.String? version;
 
   DatacenterConnector({
+    this.applianceInfrastructureVersion,
+    this.applianceSoftwareVersion,
+    this.availableVersions,
     this.bucket,
     this.createTime,
     this.error,
@@ -3483,11 +3640,24 @@ class DatacenterConnector {
     this.state,
     this.stateTime,
     this.updateTime,
+    this.upgradeStatus,
     this.version,
   });
 
   DatacenterConnector.fromJson(core.Map _json)
       : this(
+          applianceInfrastructureVersion:
+              _json.containsKey('applianceInfrastructureVersion')
+                  ? _json['applianceInfrastructureVersion'] as core.String
+                  : null,
+          applianceSoftwareVersion:
+              _json.containsKey('applianceSoftwareVersion')
+                  ? _json['applianceSoftwareVersion'] as core.String
+                  : null,
+          availableVersions: _json.containsKey('availableVersions')
+              ? AvailableUpdates.fromJson(_json['availableVersions']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           bucket: _json.containsKey('bucket')
               ? _json['bucket'] as core.String
               : null,
@@ -3513,12 +3683,21 @@ class DatacenterConnector {
           updateTime: _json.containsKey('updateTime')
               ? _json['updateTime'] as core.String
               : null,
+          upgradeStatus: _json.containsKey('upgradeStatus')
+              ? UpgradeStatus.fromJson(
+                  _json['upgradeStatus'] as core.Map<core.String, core.dynamic>)
+              : null,
           version: _json.containsKey('version')
               ? _json['version'] as core.String
               : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (applianceInfrastructureVersion != null)
+          'applianceInfrastructureVersion': applianceInfrastructureVersion!,
+        if (applianceSoftwareVersion != null)
+          'applianceSoftwareVersion': applianceSoftwareVersion!,
+        if (availableVersions != null) 'availableVersions': availableVersions!,
         if (bucket != null) 'bucket': bucket!,
         if (createTime != null) 'createTime': createTime!,
         if (error != null) 'error': error!,
@@ -3528,6 +3707,7 @@ class DatacenterConnector {
         if (state != null) 'state': state!,
         if (stateTime != null) 'stateTime': stateTime!,
         if (updateTime != null) 'updateTime': updateTime!,
+        if (upgradeStatus != null) 'upgradeStatus': upgradeStatus!,
         if (version != null) 'version': version!,
       };
 }
@@ -3550,8 +3730,6 @@ class FetchInventoryResponse {
   core.String? updateTime;
 
   /// The description of the VMs in a Source of type Vmware.
-  ///
-  /// Output only.
   VmwareVmsDetails? vmwareVms;
 
   FetchInventoryResponse({
@@ -3595,6 +3773,8 @@ class Group {
   core.String? displayName;
 
   /// The Group name.
+  ///
+  /// Output only.
   core.String? name;
 
   /// The update time timestamp.
@@ -4714,6 +4894,8 @@ class TargetProject {
   core.String? description;
 
   /// The name of the target project.
+  ///
+  /// Output only.
   core.String? name;
 
   /// The target project ID (number) or project name.
@@ -4755,6 +4937,98 @@ class TargetProject {
         if (name != null) 'name': name!,
         if (project != null) 'project': project!,
         if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// Request message for 'UpgradeAppliance' request.
+class UpgradeApplianceRequest {
+  /// A request ID to identify requests.
+  ///
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know to ignore the request if it has already been completed.
+  /// The server will guarantee that for at least 60 minutes after the first
+  /// request. For example, consider a situation where you make an initial
+  /// request and t he request times out. If you make the request again with the
+  /// same request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments. The
+  /// request ID must be a valid UUID with the exception that zero UUID is not
+  /// supported (00000000-0000-0000-0000-000000000000).
+  core.String? requestId;
+
+  UpgradeApplianceRequest({
+    this.requestId,
+  });
+
+  UpgradeApplianceRequest.fromJson(core.Map _json)
+      : this(
+          requestId: _json.containsKey('requestId')
+              ? _json['requestId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (requestId != null) 'requestId': requestId!,
+      };
+}
+
+/// UpgradeStatus contains information about upgradeAppliance operation.
+class UpgradeStatus {
+  /// Provides details on the state of the upgrade operation in case of an
+  /// error.
+  Status? error;
+
+  /// The version from which we upgraded.
+  core.String? previousVersion;
+
+  /// The time the operation was started.
+  core.String? startTime;
+
+  /// The state of the upgradeAppliance operation.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : The state was not sampled by the health checks
+  /// yet.
+  /// - "RUNNING" : The upgrade has started.
+  /// - "FAILED" : The upgrade failed.
+  /// - "SUCCEEDED" : The upgrade finished successfully.
+  core.String? state;
+
+  /// The version to upgrade to.
+  core.String? version;
+
+  UpgradeStatus({
+    this.error,
+    this.previousVersion,
+    this.startTime,
+    this.state,
+    this.version,
+  });
+
+  UpgradeStatus.fromJson(core.Map _json)
+      : this(
+          error: _json.containsKey('error')
+              ? Status.fromJson(
+                  _json['error'] as core.Map<core.String, core.dynamic>)
+              : null,
+          previousVersion: _json.containsKey('previousVersion')
+              ? _json['previousVersion'] as core.String
+              : null,
+          startTime: _json.containsKey('startTime')
+              ? _json['startTime'] as core.String
+              : null,
+          state:
+              _json.containsKey('state') ? _json['state'] as core.String : null,
+          version: _json.containsKey('version')
+              ? _json['version'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (error != null) 'error': error!,
+        if (previousVersion != null) 'previousVersion': previousVersion!,
+        if (startTime != null) 'startTime': startTime!,
+        if (state != null) 'state': state!,
+        if (version != null) 'version': version!,
       };
 }
 
@@ -5092,7 +5366,7 @@ class VmwareVmDetails {
   /// The VM's OS.
   ///
   /// See for example
-  /// https://pubs.vmware.com/vi-sdk/visdk250/ReferenceGuide/vim.vm.GuestOsDescriptor.GuestOsIdentifier.html
+  /// https://vdc-repo.vmware.com/vmwb-repository/dcr-public/da47f910-60ac-438b-8b9b-6122f4d14524/16b7274a-bf8b-4b4c-a05e-746f2aa93c8c/doc/vim.vm.GuestOsDescriptor.GuestOsIdentifier.html
   /// for types of strings this might hold.
   core.String? guestDescription;
 

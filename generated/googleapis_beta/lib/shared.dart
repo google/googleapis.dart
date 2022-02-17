@@ -144,6 +144,7 @@ class $Artifact {
 /// Used by:
 ///
 /// - bigqueryconnection:v1beta1 : AuditLogConfig
+/// - cloudfunctions:v2beta : AuditLogConfig
 /// - domains:v1beta1 : AuditLogConfig
 /// - metastore:v1beta : AuditLogConfig
 /// - networkconnectivity:v1alpha1 : AuditLogConfig
@@ -439,6 +440,8 @@ class $Date {
 /// - bigqueryconnection:v1beta1 : Empty
 /// - clouderrorreporting:v1beta1 : DeleteEventsResponse
 /// - clouderrorreporting:v1beta1 : ReportErrorEventResponse
+/// - cloudfunctions:v2beta : GenerateDownloadUrlRequest
+/// - cloudfunctions:v2beta : GenerateUploadUrlRequest
 /// - cloudsupport:v2beta : CloseCaseRequest
 /// - containeranalysis:v1beta1 : Empty
 /// - datacatalog:v1beta1 : Empty
@@ -474,9 +477,13 @@ class $Date {
 /// - firebasestorage:v1beta : AddFirebaseRequest
 /// - firebasestorage:v1beta : Empty
 /// - firebasestorage:v1beta : RemoveFirebaseRequest
+/// - gkehub:v2alpha : CancelOperationRequest
+/// - gkehub:v2alpha : Empty
+/// - gkehub:v2alpha : FeatureSpec
 /// - lifesciences:v2beta : CancelOperationRequest
 /// - lifesciences:v2beta : Empty
 /// - metastore:v1beta : Empty
+/// - metastore:v1beta : RemoveIamPolicyRequest
 /// - networkconnectivity:v1alpha1 : Empty
 /// - networkconnectivity:v1alpha1 : GoogleLongrunningCancelOperationRequest
 /// - networksecurity:v1beta1 : CancelOperationRequest
@@ -501,7 +508,6 @@ class $Date {
 /// - tpu:v2alpha1 : GenerateServiceIdentityRequest
 /// - tpu:v2alpha1 : StartNodeRequest
 /// - tpu:v2alpha1 : StopNodeRequest
-/// - transcoder:v1beta1 : Empty
 class $Empty {
   $Empty();
 
@@ -510,34 +516,6 @@ class $Empty {
       core.Map _json);
 
   core.Map<core.String, core.dynamic> toJson() => {};
-}
-
-/// Used by:
-///
-/// - transcoder:v1beta1 : Aes128Encryption
-/// - transcoder:v1beta1 : SampleAesEncryption
-class $Encryption {
-  /// URI of the key delivery service.
-  ///
-  /// This URI is inserted into the M3U8 header.
-  ///
-  /// Required.
-  core.String? keyUri;
-
-  $Encryption({
-    this.keyUri,
-  });
-
-  $Encryption.fromJson(core.Map _json)
-      : this(
-          keyUri: _json.containsKey('keyUri')
-              ? _json['keyUri'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (keyUri != null) 'keyUri': keyUri!,
-      };
 }
 
 /// Used by:
@@ -570,6 +548,7 @@ class $Entry {
 /// Used by:
 ///
 /// - bigqueryconnection:v1beta1 : Expr
+/// - cloudfunctions:v2beta : Expr
 /// - containeranalysis:v1beta1 : Expr
 /// - datacatalog:v1beta1 : Expr
 /// - domains:v1beta1 : Expr
@@ -754,9 +733,11 @@ class $GitSourceContext {
 
 /// Used by:
 ///
+/// - cloudfunctions:v2beta : Location
 /// - datastream:v1alpha1 : Location
 /// - documentai:v1beta3 : GoogleCloudLocationLocation
 /// - domains:v1beta1 : Location
+/// - gkehub:v2alpha : Location
 /// - lifesciences:v2beta : Location
 /// - networkconnectivity:v1alpha1 : Location
 /// - networksecurity:v1beta1 : Location
@@ -1356,57 +1337,6 @@ class $SasPortalDeviceAirInterface {
   core.Map<core.String, core.dynamic> toJson() => {
         if (radioTechnology != null) 'radioTechnology': radioTechnology!,
         if (supportedSpec != null) 'supportedSpec': supportedSpec!,
-      };
-}
-
-/// Used by:
-///
-/// - prod_tt_sasportal:v1alpha1 : SasPortalDeviceMetadata
-/// - sasportal:v1alpha1 : SasPortalDeviceMetadata
-class $SasPortalDeviceMetadata {
-  /// If populated, the Antenna Model Pattern to use.
-  ///
-  /// Format is: RecordCreatorId:PatternId
-  core.String? antennaModel;
-
-  /// CCG.
-  ///
-  /// A group of CBSDs in the same ICG requesting a common primary channel
-  /// assignment. See CBRSA-TS-2001 V3.0.0 for more details.
-  core.String? commonChannelGroup;
-
-  /// ICG.
-  ///
-  /// A group of CBSDs that manage their own interference with the group. See
-  /// CBRSA-TS-2001 V3.0.0 for more details.
-  core.String? interferenceCoordinationGroup;
-
-  $SasPortalDeviceMetadata({
-    this.antennaModel,
-    this.commonChannelGroup,
-    this.interferenceCoordinationGroup,
-  });
-
-  $SasPortalDeviceMetadata.fromJson(core.Map _json)
-      : this(
-          antennaModel: _json.containsKey('antennaModel')
-              ? _json['antennaModel'] as core.String
-              : null,
-          commonChannelGroup: _json.containsKey('commonChannelGroup')
-              ? _json['commonChannelGroup'] as core.String
-              : null,
-          interferenceCoordinationGroup:
-              _json.containsKey('interferenceCoordinationGroup')
-                  ? _json['interferenceCoordinationGroup'] as core.String
-                  : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (antennaModel != null) 'antennaModel': antennaModel!,
-        if (commonChannelGroup != null)
-          'commonChannelGroup': commonChannelGroup!,
-        if (interferenceCoordinationGroup != null)
-          'interferenceCoordinationGroup': interferenceCoordinationGroup!,
       };
 }
 
@@ -2268,6 +2198,7 @@ class $Signature {
 /// Used by:
 ///
 /// - alertcenter:v1beta1 : Status
+/// - cloudfunctions:v2beta : Status
 /// - containeranalysis:v1beta1 : Status
 /// - dataflow:v1b3 : Status
 /// - datalabeling:v1beta1 : GoogleRpcStatus
@@ -2275,6 +2206,7 @@ class $Signature {
 /// - documentai:v1beta3 : GoogleRpcStatus
 /// - domains:v1beta1 : Status
 /// - firebase:v1beta1 : Status
+/// - gkehub:v2alpha : GoogleRpcStatus
 /// - lifesciences:v2beta : Status
 /// - metastore:v1beta : Status
 /// - networkconnectivity:v1alpha1 : GoogleRpcStatus
@@ -2335,6 +2267,7 @@ class $Status {
 /// Used by:
 ///
 /// - bigqueryconnection:v1beta1 : TestIamPermissionsRequest
+/// - cloudfunctions:v2beta : TestIamPermissionsRequest
 /// - containeranalysis:v1beta1 : TestIamPermissionsRequest
 /// - datacatalog:v1beta1 : TestIamPermissionsRequest
 /// - domains:v1beta1 : TestIamPermissionsRequest
@@ -2370,6 +2303,7 @@ class $TestIamPermissionsRequest {
 /// Used by:
 ///
 /// - bigqueryconnection:v1beta1 : TestIamPermissionsResponse
+/// - cloudfunctions:v2beta : TestIamPermissionsResponse
 /// - containeranalysis:v1beta1 : TestIamPermissionsResponse
 /// - datacatalog:v1beta1 : TestIamPermissionsResponse
 /// - domains:v1beta1 : TestIamPermissionsResponse
