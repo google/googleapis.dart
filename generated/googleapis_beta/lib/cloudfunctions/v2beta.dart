@@ -167,7 +167,7 @@ class ProjectsLocationsFunctionsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> create(
-    Function request,
+    Function_ request,
     core.String parent, {
     core.String? functionId,
     core.String? $fields,
@@ -347,14 +347,14 @@ class ProjectsLocationsFunctionsResource {
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
-  /// Completes with a [Function].
+  /// Completes with a [Function_].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Function> get(
+  async.Future<Function_> get(
     core.String name, {
     core.String? $fields,
   }) async {
@@ -369,7 +369,7 @@ class ProjectsLocationsFunctionsResource {
       'GET',
       queryParams: _queryParams,
     );
-    return Function.fromJson(_response as core.Map<core.String, core.dynamic>);
+    return Function_.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the access control policy for a resource.
@@ -516,7 +516,7 @@ class ProjectsLocationsFunctionsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> patch(
-    Function request,
+    Function_ request,
     core.String name, {
     core.String? updateMask,
     core.String? $fields,
@@ -1221,7 +1221,7 @@ typedef Expr = $Expr;
 /// response to an event.
 ///
 /// It encapsulate function and triggers configurations.
-class Function {
+class Function_ {
   /// Describes the Build step of the function that builds a container from the
   /// given source.
   BuildConfig? buildConfig;
@@ -1278,7 +1278,7 @@ class Function {
   /// Output only.
   core.String? updateTime;
 
-  Function({
+  Function_({
     this.buildConfig,
     this.description,
     this.environment,
@@ -1291,7 +1291,7 @@ class Function {
     this.updateTime,
   });
 
-  Function.fromJson(core.Map _json)
+  Function_.fromJson(core.Map _json)
       : this(
           buildConfig: _json.containsKey('buildConfig')
               ? BuildConfig.fromJson(
@@ -1457,7 +1457,7 @@ class GoogleCloudFunctionsV2betaStateMessage {
 /// Response for the `ListFunctions` method.
 class ListFunctionsResponse {
   /// The functions that match the request.
-  core.List<Function>? functions;
+  core.List<Function_>? functions;
 
   /// A token, which can be sent as `page_token` to retrieve the next page.
   ///
@@ -1479,7 +1479,7 @@ class ListFunctionsResponse {
       : this(
           functions: _json.containsKey('functions')
               ? (_json['functions'] as core.List)
-                  .map((value) => Function.fromJson(
+                  .map((value) => Function_.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,

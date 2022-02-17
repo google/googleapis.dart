@@ -362,11 +362,11 @@ void checkUnnamed6(core.List<api.GoogleCloudFunctionsV2betaStateMessage> o) {
   checkGoogleCloudFunctionsV2betaStateMessage(o[1]);
 }
 
-core.int buildCounterFunction = 0;
-api.Function buildFunction() {
-  final o = api.Function();
-  buildCounterFunction++;
-  if (buildCounterFunction < 3) {
+core.int buildCounterFunction_ = 0;
+api.Function_ buildFunction_() {
+  final o = api.Function_();
+  buildCounterFunction_++;
+  if (buildCounterFunction_ < 3) {
     o.buildConfig = buildBuildConfig();
     o.description = 'foo';
     o.environment = 'foo';
@@ -378,13 +378,13 @@ api.Function buildFunction() {
     o.stateMessages = buildUnnamed6();
     o.updateTime = 'foo';
   }
-  buildCounterFunction--;
+  buildCounterFunction_--;
   return o;
 }
 
-void checkFunction(api.Function o) {
-  buildCounterFunction++;
-  if (buildCounterFunction < 3) {
+void checkFunction_(api.Function_ o) {
+  buildCounterFunction_++;
+  if (buildCounterFunction_ < 3) {
     checkBuildConfig(o.buildConfig!);
     unittest.expect(
       o.description!,
@@ -411,7 +411,7 @@ void checkFunction(api.Function o) {
       unittest.equals('foo'),
     );
   }
-  buildCounterFunction--;
+  buildCounterFunction_--;
 }
 
 core.int buildCounterGenerateDownloadUrlRequest = 0;
@@ -524,15 +524,15 @@ void checkGoogleCloudFunctionsV2betaStateMessage(
   buildCounterGoogleCloudFunctionsV2betaStateMessage--;
 }
 
-core.List<api.Function> buildUnnamed7() => [
-      buildFunction(),
-      buildFunction(),
+core.List<api.Function_> buildUnnamed7() => [
+      buildFunction_(),
+      buildFunction_(),
     ];
 
-void checkUnnamed7(core.List<api.Function> o) {
+void checkUnnamed7(core.List<api.Function_> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkFunction(o[0]);
-  checkFunction(o[1]);
+  checkFunction_(o[0]);
+  checkFunction_(o[1]);
 }
 
 core.List<core.String> buildUnnamed8() => [
@@ -1468,13 +1468,13 @@ void main() {
     });
   });
 
-  unittest.group('obj-schema-Function', () {
+  unittest.group('obj-schema-Function_', () {
     unittest.test('to-json--from-json', () async {
-      final o = buildFunction();
+      final o = buildFunction_();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od =
-          api.Function.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkFunction(od);
+          api.Function_.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkFunction_(od);
     });
   });
 
@@ -1775,14 +1775,14 @@ void main() {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
       final res = api.CloudFunctionsApi(mock).projects.locations.functions;
-      final arg_request = buildFunction();
+      final arg_request = buildFunction_();
       final arg_parent = 'foo';
       final arg_functionId = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final obj =
-            api.Function.fromJson(json as core.Map<core.String, core.dynamic>);
-        checkFunction(obj);
+            api.Function_.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkFunction_(obj);
 
         final path = (req.url).path;
         var pathOffset = 0;
@@ -2049,11 +2049,11 @@ void main() {
         final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        final resp = convert.json.encode(buildFunction());
+        final resp = convert.json.encode(buildFunction_());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.get(arg_name, $fields: arg_$fields);
-      checkFunction(response as api.Function);
+      checkFunction_(response as api.Function_);
     });
 
     unittest.test('method--getIamPolicy', () async {
@@ -2195,14 +2195,14 @@ void main() {
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
       final res = api.CloudFunctionsApi(mock).projects.locations.functions;
-      final arg_request = buildFunction();
+      final arg_request = buildFunction_();
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final obj =
-            api.Function.fromJson(json as core.Map<core.String, core.dynamic>);
-        checkFunction(obj);
+            api.Function_.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkFunction_(obj);
 
         final path = (req.url).path;
         var pathOffset = 0;

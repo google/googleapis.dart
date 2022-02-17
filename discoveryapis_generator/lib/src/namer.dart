@@ -372,4 +372,7 @@ const _keywords = {
 
   // Can't override "runtimeType" from [Object.runtimeType]
   'runtimeType',
+
+  // deprecated_function_class_declaration
+  'Function',
 };
