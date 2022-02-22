@@ -8,13 +8,13 @@ import 'dart:io';
 import 'package:args/args.dart';
 import 'package:googleapis_generator_dependency/googleapis_generator.dart';
 
-ArgParser downloadCommandArgParser() => ArgParser()
+ArgParser _downloadCommandArgParser() => ArgParser()
   ..addOption('output-dir',
       abbr: 'o',
       help: 'Output directory of discovery documents.',
       defaultsTo: 'googleapis-discovery-documents');
 
-ArgParser runConfigCommandArgParser() => ArgParser()
+ArgParser _runConfigCommandArgParser() => ArgParser()
   ..addCommand('download')
   ..addCommand('generate')
   ..addOption(
@@ -24,20 +24,20 @@ ArgParser runConfigCommandArgParser() => ArgParser()
   )
   ..addFlag('delete-existing', defaultsTo: true);
 
-ArgParser globalArgParser() => ArgParser()
-  ..addCommand('download', downloadCommandArgParser())
-  ..addCommand('run_config', runConfigCommandArgParser())
+ArgParser _globalArgParser() => ArgParser()
+  ..addCommand('download', _downloadCommandArgParser())
+  ..addCommand('run_config', _runConfigCommandArgParser())
   ..addFlag('help', abbr: 'h', help: 'Displays usage information.');
 
-ArgResults parseArguments(ArgParser parser, List<String> arguments) {
+ArgResults _parseArguments(ArgParser parser, List<String> arguments) {
   try {
     return parser.parse(arguments);
   } on FormatException catch (e) {
-    dieWithUsage('Error parsing arguments:\n${e.message}\n');
+    _dieWithUsage('Error parsing arguments:\n${e.message}\n');
   }
 }
 
-Never dieWithUsage([String? message]) {
+Never _dieWithUsage([String? message]) {
   if (message != null) {
     print(message);
   }
@@ -50,26 +50,26 @@ Never dieWithUsage([String? message]) {
   print("The 'download' subcommand downloads all discovery documents. "
       'It takes the following options:');
   print('');
-  print(downloadCommandArgParser().usage);
+  print(_downloadCommandArgParser().usage);
   print('');
   print("The 'run_config' subcommand downloads discovery documents and "
       'generates one or more API packages based on a configuration file. '
       'It takes the following options:');
   print('');
-  print(runConfigCommandArgParser().usage);
+  print(_runConfigCommandArgParser().usage);
   exit(1);
 }
 
 Future<void> main(List<String> arguments) async {
-  final parser = globalArgParser();
-  final options = parseArguments(parser, arguments);
+  final parser = _globalArgParser();
+  final options = _parseArguments(parser, arguments);
   final commandOptions = options.command!;
   final subCommands = ['download', 'generate', 'run_config'];
 
   if (options['help'] as bool) {
-    dieWithUsage();
+    _dieWithUsage();
   } else if (!subCommands.contains(commandOptions.name)) {
-    dieWithUsage('Invalid command');
+    _dieWithUsage('Invalid command');
   }
 
   switch (commandOptions.name) {
@@ -79,7 +79,7 @@ Future<void> main(List<String> arguments) async {
     case 'run_config':
       if (commandOptions.command == null ||
           !['download', 'generate'].contains(commandOptions.command!.name)) {
-        dieWithUsage('The `run_config` command has only the two subcommands: '
+        _dieWithUsage('The `run_config` command has only the two subcommands: '
             '`download` and `generate`.');
       }
 
