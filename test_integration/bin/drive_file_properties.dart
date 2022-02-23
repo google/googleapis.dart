@@ -8,6 +8,7 @@
 import 'dart:async';
 
 import 'package:googleapis/drive/v3.dart';
+import 'package:test_integration/shared.dart';
 import 'package:test_integration/test_integration.dart';
 
 Future<void> main() async {

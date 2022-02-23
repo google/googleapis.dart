@@ -3,9 +3,9 @@
 // BSD-style license that can be found in the LICENSE file.
 
 import 'dart:async';
-import 'dart:convert';
 
 import 'package:googleapis/oauth2/v2.dart';
+import 'package:test_integration/shared.dart';
 import 'package:test_integration/test_integration.dart';
 
 Future<void> main() async {
@@ -21,7 +21,7 @@ Future<void> main() async {
 
       final result = await api.v2.me.get();
 
-      print(const JsonEncoder.withIndent(' ').convert(result));
+      print(prettyJsonEncode(result));
     },
   );
 }

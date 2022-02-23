@@ -5,6 +5,7 @@
 import 'dart:async';
 
 import 'package:googleapis/admob/v1.dart';
+import 'package:test_integration/shared.dart';
 import 'package:test_integration/test_integration.dart';
 
 // Allow reproduction of https://github.com/google/googleapis.dart/issues/183

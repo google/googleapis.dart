@@ -1,8 +1,8 @@
-import 'dart:convert';
 import 'dart:html';
 
 import 'package:googleapis/oauth2/v2.dart';
 import 'package:googleapis_auth/auth_browser.dart';
+import 'package:test_integration/shared.dart';
 
 const _clientId = String.fromEnvironment('clientId');
 
@@ -28,7 +28,7 @@ Future<void> _hybridFlow() async {
 
   _log([
     'cred json',
-    const JsonEncoder.withIndent(' ').convert(creds.credentials),
+    prettyJsonEncode(creds.credentials),
     '',
     'auth code',
     creds.authorizationCode,
@@ -46,7 +46,7 @@ Future<void> _login() async {
 
   _log([
     'cred json',
-    const JsonEncoder.withIndent(' ').convert(creds),
+    prettyJsonEncode(creds),
   ].join('\n'));
 }
 

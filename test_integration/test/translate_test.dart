@@ -4,6 +4,7 @@
 
 import 'package:googleapis/translate/v3.dart';
 import 'package:test/test.dart';
+import 'package:test_integration/shared.dart';
 import 'package:test_integration/test_integration.dart';
 
 void main() {
