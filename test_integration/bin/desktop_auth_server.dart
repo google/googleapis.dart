@@ -6,6 +6,7 @@ import 'package:googleapis_auth/src/oauth2_flows/auth_code.dart';
 import 'package:http/http.dart' as http;
 import 'package:shelf/shelf.dart';
 import 'package:shelf/shelf_io.dart' as shelf_io;
+import 'package:test_integration/shared.dart';
 import 'package:test_integration/test_integration.dart';
 
 Future<void> main() async {

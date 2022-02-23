@@ -7,6 +7,7 @@
 
 import 'package:googleapis/firestore/v1.dart';
 import 'package:test/test.dart';
+import 'package:test_integration/shared.dart';
 import 'package:test_integration/test_integration.dart';
 
 void main() {

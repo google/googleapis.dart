@@ -11,6 +11,8 @@ import 'package:googleapis_auth/auth_io.dart';
 import 'package:http/io_client.dart';
 import 'package:yaml/yaml.dart';
 
+import 'shared.dart';
+
 const _configFile = 'config.yaml';
 
 Object? readConfig(String key) {
@@ -119,6 +121,3 @@ void _prompt(String url) {
   stderr.writeln('  => $url');
   stderr.writeln();
 }
-
-String prettyJsonEncode(Object? object) =>
-    const JsonEncoder.withIndent(' ').convert(object);
