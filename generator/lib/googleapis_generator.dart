@@ -16,16 +16,6 @@ import 'package:pool/pool.dart';
 import 'src/package_configuration.dart';
 import 'src/utils.dart';
 
-Future<List<DirectoryListItems>?> _listAllApis() async {
-  final client = IOClient();
-  try {
-    final result = await DiscoveryApi(client).apis.list();
-    return result.items;
-  } finally {
-    client.close();
-  }
-}
-
 Future<List<RestDescription>> downloadDiscoveryDocuments(
   String outputDir,
 ) async {
@@ -164,15 +154,12 @@ List<RestDescription> loadDiscoveryDocuments(String directory) =>
         .toList();
 
 Future downloadFromConfiguration(String configFile) async {
-  final items = await _listAllApis();
-
   final configuration = DiscoveryPackagesConfiguration(configFile);
 
   // Generate the packages.
   final configFileUri = Uri.file(configFile);
   await configuration.download(
     discoveryPathFromConfigFileUri(configFileUri),
-    items,
   );
 
   // Print warnings for APIs not mentioned.

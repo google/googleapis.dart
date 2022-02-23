@@ -90,10 +90,7 @@ class DiscoveryPackagesConfiguration {
   ///
   /// [discoveryDocsDir] is the directory where all the downloaded discovery
   /// documents are stored.
-  Future<void> download(
-    String discoveryDocsDir,
-    List<DirectoryListItems>? items,
-  ) async {
+  Future<void> download(String discoveryDocsDir) async {
     // Delete all downloaded discovery documents.
     final dir = Directory(discoveryDocsDir);
     if (dir.existsSync()) {
