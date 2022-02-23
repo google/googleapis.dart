@@ -1,6 +1,7 @@
 ## 8.1.0
 
 - `firebaseremoteconfig` - new!
+- `photoslibrary` - new!
 
 ## 8.0.0
 

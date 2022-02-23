@@ -1096,6 +1096,13 @@ Provides access to information about profiles and contacts.
 - [Documentation](https://developers.google.com/people/)
 - [API details](https://pub.dev/documentation/googleapis/8.1.0/people.v1/people.v1-library.html)
 
+#### Photos Library API - `photoslibrary.v1`
+
+Manage photos, videos, and albums in Google Photos 
+
+- [Documentation](https://developers.google.com/photos/)
+- [API details](https://pub.dev/documentation/googleapis/8.1.0/photoslibrary.v1/photoslibrary.v1-library.html)
+
 #### Google Play Custom App Publishing API - `playcustomapp.v1`
 
 API to create and publish custom Android apps

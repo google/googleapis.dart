@@ -171,6 +171,7 @@ packages:
     - pagespeedonline:v5 # https://developers.google.com/speed/docs/insights/about
     - paymentsresellersubscription:v1
     - people:v1 # https://developers.google.com/people/
+    - photoslibrary:v1
     - playcustomapp:v1 # https://developers.google.com/android/work/play/custom-app-api
     - playintegrity:v1
     - policyanalyzer:v1
@@ -285,6 +286,7 @@ packages:
 
 additional_apis:
   "firebaseremoteconfig:v1": https://firebaseremoteconfig.googleapis.com/$discovery/rest?version=v1
+  "photoslibrary:v1": https://photoslibrary.googleapis.com/$discovery/rest?version=v1
 
 # APIs that we do not wish to include in this package
 skipped_apis:

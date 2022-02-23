@@ -3566,6 +3566,11 @@ class $EgressFrom {
 /// - paymentsresellersubscription:v1 : GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionRequest
 /// - paymentsresellersubscription:v1 : GoogleCloudPaymentsResellerSubscriptionV1UndoCancelSubscriptionRequest
 /// - people:v1 : Empty
+/// - photoslibrary:v1 : BatchAddMediaItemsToAlbumResponse
+/// - photoslibrary:v1 : BatchRemoveMediaItemsFromAlbumResponse
+/// - photoslibrary:v1 : LeaveSharedAlbumResponse
+/// - photoslibrary:v1 : UnshareAlbumRequest
+/// - photoslibrary:v1 : UnshareAlbumResponse
 /// - privateca:v1 : CancelOperationRequest
 /// - privateca:v1 : Empty
 /// - pubsub:v1 : DetachSubscriptionResponse
@@ -5173,6 +5178,7 @@ class $LastModifiedInfo {
 /// - jobs:v3 : LatLng
 /// - jobs:v4 : LatLng
 /// - mybusinessbusinessinformation:v1 : LatLng
+/// - photoslibrary:v1 : LatLng
 /// - streetviewpublish:v1 : LatLng
 /// - vision:v1 : LatLng
 class $LatLng {
@@ -9836,6 +9842,7 @@ class $StartPageToken {
 /// - ondemandscanning:v1 : Status
 /// - osconfig:v1 : Status
 /// - people:v1 : Status
+/// - photoslibrary:v1 : Status
 /// - policysimulator:v1 : GoogleRpcStatus
 /// - privateca:v1 : Status
 /// - pubsublite:v1 : Status
