@@ -46,6 +46,7 @@ void writeDiscoveryDocuments(
 
 Future<List<RestDescription>> fetchDiscoveryDocuments({
   Map<String, String>? existingRevisions,
+  Map<String, String>? additionalEntries,
 }) async {
   final client = IOClient();
 
@@ -88,6 +89,15 @@ $stack
   try {
     final directoryList = await DiscoveryApi(client).apis.list();
     final list = directoryList.items!;
+
+    if (additionalEntries != null) {
+      for (var entry in additionalEntries.entries) {
+        list.add(DirectoryListItems(
+          id: entry.key,
+          discoveryRestUrl: entry.value,
+        ));
+      }
+    }
 
     final pool = Pool(10);
     try {

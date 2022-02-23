@@ -1,3 +1,7 @@
+## 8.1.0
+
+- `firebaseremoteconfig` - new!
+
 ## 8.0.0
 
 - `adsense` - **removed v1.4**

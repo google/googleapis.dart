@@ -109,9 +109,19 @@ class DiscoveryPackagesConfiguration {
       dir.deleteSync(recursive: true);
     }
 
+    Map<String, String>? additionalEntries;
+    if (yaml.containsKey('additional_apis')) {
+      final source = yaml['additional_apis'] as Map?;
+      if (source != null) {
+        additionalEntries = source
+            .map((key, value) => MapEntry(key as String, value as String));
+      }
+    }
+
     // Get all rest discovery documents & initialize this object.
     final allApis = await fetchDiscoveryDocuments(
       existingRevisions: existingApiRevisions,
+      additionalEntries: additionalEntries,
     );
     _initialize(allApis);
 
