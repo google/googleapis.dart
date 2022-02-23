@@ -86,15 +86,16 @@ $stack
   }
 
   try {
-    final list = await DiscoveryApi(client).apis.list();
+    final directoryList = await DiscoveryApi(client).apis.list();
+    final list = directoryList.items!;
 
     final pool = Pool(10);
     try {
       var count = 0;
       return await pool
-          .forEach(list.items!, (DirectoryListItems item) async {
+          .forEach(list, (DirectoryListItems item) async {
             print(ansi.darkGray.wrap(
-              'Requesting ${++count} of ${list.items!.length} - ${item.id}',
+              'Requesting ${++count} of ${list.length} - ${item.id}',
             ));
 
             RestDescription? description;
