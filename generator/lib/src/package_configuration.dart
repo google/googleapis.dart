@@ -41,11 +41,11 @@ class Package {
 /// a Discovery Service.
 class DiscoveryPackagesConfiguration {
   String configFile;
-  Map? yaml;
+  late final Map yaml;
   late Map<String, Package> packages;
 
-  late Set<String> excessApis;
-  late List<String?> missingApis;
+  late final Set<String> excessApis;
+  late final List<String> missingApis;
   final existingApiRevisions = <String, String>{};
   Map<String?, String>? newRevisions;
   Map<String?, String>? oldRevisions;
@@ -83,7 +83,7 @@ class DiscoveryPackagesConfiguration {
   /// The file names for the content of readme and license files are resolved
   /// relative to the configuration file.
   DiscoveryPackagesConfiguration(this.configFile) {
-    yaml = loadYaml(File(configFile).readAsStringSync()) as Map?;
+    yaml = loadYaml(File(configFile).readAsStringSync()) as Map;
   }
 
   /// Downloads discovery documents from the configuration.
@@ -161,7 +161,7 @@ class DiscoveryPackagesConfiguration {
 
     // Load discovery documents from disc & initialize this object.
     final allApis = <RestDescription>[];
-    for (var package in yaml!['packages'] as List) {
+    for (var package in yaml['packages'] as List) {
       (package as Map).forEach((name, _) {
         allApis.addAll(loadDiscoveryDocuments('$discoveryDocsDir/$name'));
       });
@@ -202,19 +202,19 @@ class DiscoveryPackagesConfiguration {
 
   /// Initializes the missingApis/excessApis/packages properties from a list
   /// of [RestDescription]s.
-  void _initialize(List<RestDescription?> allApis) {
+  void _initialize(List<RestDescription> allApis) {
     packages =
-        _packagesFromYaml(yaml!['packages'] as YamlList, configFile, allApis);
+        _packagesFromYaml(yaml['packages'] as YamlList, configFile, allApis);
     final knownApis = _calculateKnownApis(
       packages,
-      _listFromYaml(yaml!['skipped_apis'] as YamlList?),
+      _listFromYaml(yaml['skipped_apis'] as YamlList?),
     );
     missingApis = _calculateMissingApis(knownApis, allApis);
     excessApis = _calculateExcessApis(knownApis, allApis);
 
     if (existingApiRevisions.isNotEmpty) {
       for (var api in allApis) {
-        final existingRevision = existingApiRevisions[api!.id!];
+        final existingRevision = existingApiRevisions[api.id!];
         if (existingRevision != null) {
           final compare = api.revision!.compareTo(existingRevision);
           if (compare == 0) {
@@ -407,20 +407,20 @@ package.
 
   /// The missing APIs are the APIs returned from the Discovery Service
   /// but not mentioned in the configuration.
-  static List<String?> _calculateMissingApis(
+  static List<String> _calculateMissingApis(
     Iterable<String> knownApis,
-    List<RestDescription?> allApis,
+    List<RestDescription> allApis,
   ) =>
       allApis
-          .where((item) => !knownApis.contains(item!.id))
-          .map((item) => item!.id)
+          .where((item) => !knownApis.contains(item.id))
+          .map((item) => item.id!)
           .toList();
 
   /// The excess APIs are the APIs mentioned in the configuration but not
   /// returned from the Discovery Service.
   static Set<String> _calculateExcessApis(
     Iterable<String> knownApis,
-    List<RestDescription?> allApis,
+    List<RestDescription> allApis,
   ) =>
-      Set<String>.from(knownApis)..removeAll(allApis.map((e) => e!.id));
+      Set<String>.from(knownApis)..removeAll(allApis.map((e) => e.id));
 }
