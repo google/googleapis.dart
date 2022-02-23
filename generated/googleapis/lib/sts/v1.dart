@@ -18,7 +18,7 @@
 /// short-lived access token to Google Cloud resources.
 ///
 /// For more information, see
-/// <http://cloud.google.com/iam/docs/workload-identity-federation>
+/// <https://cloud.google.com/iam/docs/workload-identity-federation>
 ///
 /// Create an instance of [CloudSecurityTokenApi] to access these resources:
 ///

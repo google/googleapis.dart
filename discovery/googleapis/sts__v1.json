@@ -5,7 +5,7 @@
     "canonicalName": "Cloud Security Token",
     "description": "The Security Token Service exchanges Google or third-party credentials for a short-lived access token to Google Cloud resources.",
     "discoveryVersion": "v1",
-    "documentationLink": "http://cloud.google.com/iam/docs/workload-identity-federation",
+    "documentationLink": "https://cloud.google.com/iam/docs/workload-identity-federation",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
