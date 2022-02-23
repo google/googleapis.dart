@@ -18,7 +18,7 @@
 /// administrators to control the policies applied to their managed Chrome OS
 /// devices and Chrome browsers.
 ///
-/// For more information, see <http://developers.google.com/chrome/policy>
+/// For more information, see <https://developers.google.com/chrome/policy>
 ///
 /// Create an instance of [ChromePolicyApi] to access these resources:
 ///

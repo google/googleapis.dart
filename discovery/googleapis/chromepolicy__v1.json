@@ -17,7 +17,7 @@
     "canonicalName": "Chrome Policy",
     "description": "The Chrome Policy API is a suite of services that allows Chrome administrators to control the policies applied to their managed Chrome OS devices and Chrome browsers.",
     "discoveryVersion": "v1",
-    "documentationLink": "http://developers.google.com/chrome/policy",
+    "documentationLink": "https://developers.google.com/chrome/policy",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"

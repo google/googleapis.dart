@@ -277,7 +277,7 @@ The Chrome Management API is a suite of services that allows Chrome administrato
 
 The Chrome Policy API is a suite of services that allows Chrome administrators to control the policies applied to their managed Chrome OS devices and Chrome browsers.
 
-- [Documentation](http://developers.google.com/chrome/policy)
+- [Documentation](https://developers.google.com/chrome/policy)
 - [API details](https://pub.dev/documentation/googleapis/8.1.0/chromepolicy.v1/chromepolicy.v1-library.html)
 
 #### Chrome UX Report API - `chromeuxreport.v1`
@@ -1377,7 +1377,7 @@ Publishes 360 photos to Google Maps, along with position, orientation, and conne
 
 The Security Token Service exchanges Google or third-party credentials for a short-lived access token to Google Cloud resources.
 
-- [Documentation](http://cloud.google.com/iam/docs/workload-identity-federation)
+- [Documentation](https://cloud.google.com/iam/docs/workload-identity-federation)
 - [API details](https://pub.dev/documentation/googleapis/8.1.0/sts.v1/sts.v1-library.html)
 
 #### Tag Manager API - `tagmanager.v1`
