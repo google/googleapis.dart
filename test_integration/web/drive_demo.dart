@@ -8,7 +8,7 @@ import 'dart:typed_data';
 import 'package:googleapis/drive/v3.dart' as drive;
 import 'package:googleapis_auth/auth_browser.dart';
 
-const _clientId = String.fromEnvironment('clientId');
+import 'web_shared.dart';
 
 late final BrowserOAuth2Flow _flow;
 
@@ -21,7 +21,7 @@ AutoRefreshingAuthClient? _client;
 
 Future<void> main() async {
   _flow = await createImplicitBrowserFlow(
-    ClientId(_clientId),
+    clientId(),
     [drive.DriveApi.driveFileScope],
   );
 
