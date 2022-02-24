@@ -8,6 +8,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:meta/meta.dart';
 
+import 'api_requester.dart';
 import 'multipart_media_uploader.dart';
 import 'request_impl.dart';
 import 'requests.dart' as client_requests;
@@ -148,6 +149,8 @@ class ResumableMediaUploader {
     });
 
     final response = await _httpClient.send(request);
+
+    await validateResponse(response);
 
     await response.stream.drain();
 

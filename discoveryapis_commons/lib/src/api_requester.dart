@@ -69,7 +69,7 @@ class ApiRequester {
     var response = await _request(requestUrl, method, body, queryParams,
         uploadMedia, uploadOptions, downloadOptions, downloadRange);
 
-    response = await _validateResponse(response);
+    response = await validateResponse(response);
 
     if (downloadOptions == null) {
       // If no download options are given, the response is of no interest
@@ -264,7 +264,7 @@ class ApiRequester {
   }
 }
 
-Future<http.StreamedResponse> _validateResponse(
+Future<http.StreamedResponse> validateResponse(
   http.StreamedResponse response,
 ) async {
   final statusCode = response.statusCode;

@@ -1,3 +1,7 @@
+## 1.0.3-dev
+
+- Throw a more helpful error message when a resumable upload fails.
+
 ## 1.0.2
 
 - Handle the case where the content of error JSON is a `List` of `Map`
