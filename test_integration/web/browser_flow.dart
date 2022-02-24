@@ -4,7 +4,7 @@ import 'package:googleapis/oauth2/v2.dart';
 import 'package:googleapis_auth/auth_browser.dart';
 import 'package:test_integration/shared.dart';
 
-const _clientId = String.fromEnvironment('clientId');
+import 'web_shared.dart';
 
 late final BrowserOAuth2Flow _flow;
 
@@ -12,7 +12,7 @@ final _textArea = querySelector('textarea') as TextAreaElement;
 
 Future<void> main() async {
   _flow = await createImplicitBrowserFlow(
-    ClientId(_clientId),
+    clientId(),
     [Oauth2Api.userinfoProfileScope],
   );
 
