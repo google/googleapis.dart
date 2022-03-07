@@ -427,7 +427,7 @@ Manages the execution of large numbers of distributed requests.
 
 #### Cloud Trace API - `cloudtrace.v2`
 
-Sends application trace data to Cloud Trace for viewing. Trace data is collected for all App Engine applications by default. Trace data from other applications can be provided using this API. This library is used to interact with the Cloud Trace API directly. If you are looking to instrument your application for Cloud Trace, we recommend using OpenCensus. 
+Sends application trace data to Cloud Trace for viewing. Trace data is collected for all App Engine applications by default. Trace data from other applications can be provided using this API. This library is used to interact with the Cloud Trace API directly. If you are looking to instrument your application for Cloud Trace, we recommend using OpenTelemetry. 
 
 - [Documentation](https://cloud.google.com/trace)
 - [API details](https://pub.dev/documentation/googleapis/8.1.0/cloudtrace.v2/cloudtrace.v2-library.html)
@@ -607,6 +607,11 @@ Provides methods for detection, risk analysis, and de-identification of privacy-
 
 - [Documentation](https://cloud.google.com/dns/docs)
 - [API details](https://pub.dev/documentation/googleapis/8.1.0/dns.v1/dns.v1-library.html)
+
+#### Cloud DNS API - `dns.v2`
+
+- [Documentation](https://cloud.google.com/dns/docs)
+- [API details](https://pub.dev/documentation/googleapis/8.1.0/dns.v2/dns.v2-library.html)
 
 #### Google Docs API - `docs.v1`
 
@@ -1459,7 +1464,7 @@ API for Verified Access chrome extension to provide credential verification for 
 
 Version History API - Prod
 
-- [Documentation](https://developers.chrome.com/versionhistory)
+- [Documentation](https://developer.chrome.com/docs/versionhistory/)
 - [API details](https://pub.dev/documentation/googleapis/8.1.0/versionhistory.v1/versionhistory.v1-library.html)
 
 #### Cloud Video Intelligence API - `videointelligence.v1`

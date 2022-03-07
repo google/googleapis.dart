@@ -976,6 +976,7 @@ api.Metadata buildMetadata() {
     o.duplicateLocation = 'foo';
     o.hasGoogleUpdated = true;
     o.hasPendingEdits = true;
+    o.hasVoiceOfMerchant = true;
     o.mapsUri = 'foo';
     o.newReviewUri = 'foo';
     o.placeId = 'foo';
@@ -1000,6 +1001,7 @@ void checkMetadata(api.Metadata o) {
     );
     unittest.expect(o.hasGoogleUpdated!, unittest.isTrue);
     unittest.expect(o.hasPendingEdits!, unittest.isTrue);
+    unittest.expect(o.hasVoiceOfMerchant!, unittest.isTrue);
     unittest.expect(
       o.mapsUri!,
       unittest.equals('foo'),

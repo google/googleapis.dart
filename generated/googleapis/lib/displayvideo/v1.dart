@@ -7108,6 +7108,8 @@ class FirstAndThirdPartyAudiencesResource {
   /// FirstAndThirdPartyAudience.
   ///
   /// [updateMask] - Required. The mask to control which fields to update.
+  /// Updates are only supported for the following fields: * `displayName` *
+  /// `description` * `membershipDurationDays`
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -16184,6 +16186,9 @@ class Creative {
 /// Creative requirements configuration for the inventory source.
 class CreativeConfig {
   /// The type of creative that can be assigned to the inventory source.
+  ///
+  /// Only the following types are supported: * `CREATIVE_TYPE_STANDARD` *
+  /// `CREATIVE_TYPE_VIDEO`
   /// Possible string values are:
   /// - "CREATIVE_TYPE_UNSPECIFIED" : Type value is not specified or is unknown
   /// in this version.
@@ -16655,10 +16660,11 @@ class CustomListTargetingSetting {
 /// The time of day and time zone are either specified elsewhere or are
 /// insignificant. The date is relative to the Gregorian Calendar. This can
 /// represent one of the following: * A full date, with non-zero year, month,
-/// and day values * A month and day, with a zero year (e.g., an anniversary) *
-/// A year on its own, with a zero month and a zero day * A year and month, with
-/// a zero day (e.g., a credit card expiration date) Related types: *
-/// google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
+/// and day values. * A month and day, with a zero year (for example, an
+/// anniversary). * A year on its own, with a zero month and a zero day. * A
+/// year and month, with a zero day (for example, a credit card expiration
+/// date). Related types: * google.type.TimeOfDay * google.type.DateTime *
+/// google.protobuf.Timestamp
 typedef Date = $Date;
 
 /// A date range.
@@ -18667,10 +18673,11 @@ class FloodlightGroup {
 /// Settings that control the number of times a user may be shown with the same
 /// ad during a given time period.
 class FrequencyCap {
-  /// The maximum number of times a user may be shown with the same ad during
-  /// this period.
+  /// The maximum number of times a user may be shown the same ad during this
+  /// period.
   ///
-  /// Must be greater than 0. Required when unlimited is `false`.
+  /// Must be greater than 0. Required when unlimited is `false` and max_views
+  /// is not set.
   core.int? maxImpressions;
 
   /// The time unit in which the frequency cap will be applied.
@@ -20956,7 +20963,10 @@ class LineItem {
   /// Required.
   LineItemFlight? flight;
 
-  /// The frequency capping setting of the line item.
+  /// The impression frequency cap settings of the line item.
+  ///
+  /// The max_impressions field in this settings object must be used if
+  /// assigning a limited cap.
   ///
   /// Required.
   FrequencyCap? frequencyCap;
@@ -22749,10 +22759,14 @@ class MaximizeSpendBidStrategy {
   /// impressions.
   core.String? performanceGoalType;
 
+  /// Controls whether the strategy takes deal floor prices into account.
+  core.bool? raiseBidForDeals;
+
   MaximizeSpendBidStrategy({
     this.customBiddingAlgorithmId,
     this.maxAverageCpmBidAmountMicros,
     this.performanceGoalType,
+    this.raiseBidForDeals,
   });
 
   MaximizeSpendBidStrategy.fromJson(core.Map _json)
@@ -22768,6 +22782,9 @@ class MaximizeSpendBidStrategy {
           performanceGoalType: _json.containsKey('performanceGoalType')
               ? _json['performanceGoalType'] as core.String
               : null,
+          raiseBidForDeals: _json.containsKey('raiseBidForDeals')
+              ? _json['raiseBidForDeals'] as core.bool
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -22777,6 +22794,7 @@ class MaximizeSpendBidStrategy {
           'maxAverageCpmBidAmountMicros': maxAverageCpmBidAmountMicros!,
         if (performanceGoalType != null)
           'performanceGoalType': performanceGoalType!,
+        if (raiseBidForDeals != null) 'raiseBidForDeals': raiseBidForDeals!,
       };
 }
 

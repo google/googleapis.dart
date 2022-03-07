@@ -5313,7 +5313,7 @@
                             "type": "string"
                         },
                         "updateMask": {
-                            "description": "Required. The mask to control which fields to update.",
+                            "description": "Required. The mask to control which fields to update. Updates are only supported for the following fields: * `displayName` * `description` * `membershipDurationDays`",
                             "format": "google-fieldmask",
                             "location": "query",
                             "type": "string"
@@ -7728,7 +7728,7 @@
             }
         }
     },
-    "revision": "20220216",
+    "revision": "20220303",
     "rootUrl": "https://displayvideo.googleapis.com/",
     "schemas": {
         "ActivateManualTriggerRequest": {
@@ -10678,7 +10678,7 @@
             "id": "CreativeConfig",
             "properties": {
                 "creativeType": {
-                    "description": "The type of creative that can be assigned to the inventory source.",
+                    "description": "The type of creative that can be assigned to the inventory source. Only the following types are supported: * `CREATIVE_TYPE_STANDARD` * `CREATIVE_TYPE_VIDEO`",
                     "enum": [
                         "CREATIVE_TYPE_UNSPECIFIED",
                         "CREATIVE_TYPE_STANDARD",
@@ -10944,7 +10944,7 @@
             "type": "object"
         },
         "Date": {
-            "description": "Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values * A month and day, with a zero year (e.g., an anniversary) * A year on its own, with a zero month and a zero day * A year and month, with a zero day (e.g., a credit card expiration date) Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp",
+            "description": "Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp",
             "id": "Date",
             "properties": {
                 "day": {
@@ -12592,7 +12592,7 @@
             "id": "FrequencyCap",
             "properties": {
                 "maxImpressions": {
-                    "description": "The maximum number of times a user may be shown with the same ad during this period. Must be greater than 0. Required when unlimited is `false`.",
+                    "description": "The maximum number of times a user may be shown the same ad during this period. Must be greater than 0. Required when unlimited is `false` and max_views is not set.",
                     "format": "int32",
                     "type": "integer"
                 },
@@ -14137,7 +14137,7 @@
                 },
                 "frequencyCap": {
                     "$ref": "FrequencyCap",
-                    "description": "Required. The frequency capping setting of the line item."
+                    "description": "Required. The impression frequency cap settings of the line item. The max_impressions field in this settings object must be used if assigning a limited cap."
                 },
                 "insertionOrderId": {
                     "description": "Required. Immutable. The unique ID of the insertion order that the line item belongs to.",
@@ -15044,6 +15044,10 @@
                         "Viewable impressions."
                     ],
                     "type": "string"
+                },
+                "raiseBidForDeals": {
+                    "description": "Controls whether the strategy takes deal floor prices into account.",
+                    "type": "boolean"
                 }
             },
             "type": "object"

@@ -444,7 +444,7 @@ class ProjectsBuildsResource {
   /// results. See https://google.aip.dev/158 for more.
   ///
   /// [parent] - The parent of the collection of `Builds`. Format:
-  /// `projects/{project}/locations/location`
+  /// `projects/{project}/locations/{location}`
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1473,7 +1473,7 @@ class ProjectsLocationsBuildsResource {
   /// Request parameters:
   ///
   /// [parent] - The parent of the collection of `Builds`. Format:
-  /// `projects/{project}/locations/location`
+  /// `projects/{project}/locations/{location}`
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [filter] - The raw filter text to constrain the results.
@@ -4969,6 +4969,19 @@ class FileHashes {
 
 /// GitFileSource describes a file within a (possibly remote) code repository.
 class GitFileSource {
+  /// The full resource name of the bitbucket server config.
+  ///
+  /// Format:
+  /// `projects/{project}/locations/{location}/bitbucketServerConfigs/{id}`.
+  core.String? bitbucketServerConfig;
+
+  /// The full resource name of the github enterprise config.
+  ///
+  /// Format:
+  /// `projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}`.
+  /// `projects/{project}/githubEnterpriseConfigs/{id}`.
+  core.String? githubEnterpriseConfig;
+
   /// The path of the file, with the repo root as the root of the path.
   core.String? path;
 
@@ -4979,6 +4992,7 @@ class GitFileSource {
   /// repo.
   /// - "GITHUB" : A GitHub-hosted repo not necessarily on "github.com" (i.e.
   /// GitHub Enterprise).
+  /// - "BITBUCKET_SERVER" : A Bitbucket Server-hosted repo.
   core.String? repoType;
 
   /// The branch, tag, arbitrary ref, or SHA version of the repo to use when
@@ -4997,6 +5011,8 @@ class GitFileSource {
   core.String? uri;
 
   GitFileSource({
+    this.bitbucketServerConfig,
+    this.githubEnterpriseConfig,
     this.path,
     this.repoType,
     this.revision,
@@ -5005,6 +5021,12 @@ class GitFileSource {
 
   GitFileSource.fromJson(core.Map _json)
       : this(
+          bitbucketServerConfig: _json.containsKey('bitbucketServerConfig')
+              ? _json['bitbucketServerConfig'] as core.String
+              : null,
+          githubEnterpriseConfig: _json.containsKey('githubEnterpriseConfig')
+              ? _json['githubEnterpriseConfig'] as core.String
+              : null,
           path: _json.containsKey('path') ? _json['path'] as core.String : null,
           repoType: _json.containsKey('repoType')
               ? _json['repoType'] as core.String
@@ -5016,6 +5038,10 @@ class GitFileSource {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (bitbucketServerConfig != null)
+          'bitbucketServerConfig': bitbucketServerConfig!,
+        if (githubEnterpriseConfig != null)
+          'githubEnterpriseConfig': githubEnterpriseConfig!,
         if (path != null) 'path': path!,
         if (repoType != null) 'repoType': repoType!,
         if (revision != null) 'revision': revision!,
@@ -5291,6 +5317,19 @@ class GitHubEventsConfig {
 
 /// GitRepoSource describes a repo and ref of a code repository.
 class GitRepoSource {
+  /// The full resource name of the bitbucket server config.
+  ///
+  /// Format:
+  /// `projects/{project}/locations/{location}/bitbucketServerConfigs/{id}`.
+  core.String? bitbucketServerConfig;
+
+  /// The full resource name of the github enterprise config.
+  ///
+  /// Format:
+  /// `projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}`.
+  /// `projects/{project}/githubEnterpriseConfigs/{id}`.
+  core.String? githubEnterpriseConfig;
+
   /// The branch or tag to use.
   ///
   /// Must start with "refs/" (required).
@@ -5303,12 +5342,15 @@ class GitRepoSource {
   /// repo.
   /// - "GITHUB" : A GitHub-hosted repo not necessarily on "github.com" (i.e.
   /// GitHub Enterprise).
+  /// - "BITBUCKET_SERVER" : A Bitbucket Server-hosted repo.
   core.String? repoType;
 
   /// The URI of the repo (required).
   core.String? uri;
 
   GitRepoSource({
+    this.bitbucketServerConfig,
+    this.githubEnterpriseConfig,
     this.ref,
     this.repoType,
     this.uri,
@@ -5316,6 +5358,12 @@ class GitRepoSource {
 
   GitRepoSource.fromJson(core.Map _json)
       : this(
+          bitbucketServerConfig: _json.containsKey('bitbucketServerConfig')
+              ? _json['bitbucketServerConfig'] as core.String
+              : null,
+          githubEnterpriseConfig: _json.containsKey('githubEnterpriseConfig')
+              ? _json['githubEnterpriseConfig'] as core.String
+              : null,
           ref: _json.containsKey('ref') ? _json['ref'] as core.String : null,
           repoType: _json.containsKey('repoType')
               ? _json['repoType'] as core.String
@@ -5324,6 +5372,10 @@ class GitRepoSource {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (bitbucketServerConfig != null)
+          'bitbucketServerConfig': bitbucketServerConfig!,
+        if (githubEnterpriseConfig != null)
+          'githubEnterpriseConfig': githubEnterpriseConfig!,
         if (ref != null) 'ref': ref!,
         if (repoType != null) 'repoType': repoType!,
         if (uri != null) 'uri': uri!,

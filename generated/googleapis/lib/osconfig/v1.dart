@@ -427,8 +427,18 @@ class ProjectsLocationsInstancesVulnerabilityReportsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+$`.
   ///
-  /// [filter] - If provided, this field specifies the criteria that must be met
-  /// by a `vulnerabilityReport` API resource to be included in the response.
+  /// [filter] - This field supports filtering by the severity level for the
+  /// vulnerability. For a list of severity levels, see
+  /// [Severity levels for vulnerabilities](https://cloud.google.com/container-analysis/docs/container-scanning-overview#severity_levels_for_vulnerabilities).
+  /// The filter field follows the rules described in the
+  /// \[AIP-160\](https://google.aip.dev/160) guidelines as follows: + **Filter
+  /// for a specific severity type**: you can list reports that contain
+  /// vulnerabilities that are classified as medium by specifying
+  /// `vulnerabilities.details.severity:MEDIUM`. + **Filter for a range of
+  /// severities** : you can list reports that have vulnerabilities that are
+  /// classified as critical or high by specifying
+  /// `vulnerabilities.details.severity:HIGH OR
+  /// vulnerabilities.details.severity:CRITICAL`
   ///
   /// [pageSize] - The maximum number of results to return.
   ///
@@ -1679,10 +1689,11 @@ typedef CancelPatchJobRequest = $Empty;
 /// The time of day and time zone are either specified elsewhere or are
 /// insignificant. The date is relative to the Gregorian Calendar. This can
 /// represent one of the following: * A full date, with non-zero year, month,
-/// and day values * A month and day, with a zero year (e.g., an anniversary) *
-/// A year on its own, with a zero month and a zero day * A year and month, with
-/// a zero day (e.g., a credit card expiration date) Related types: *
-/// google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
+/// and day values. * A month and day, with a zero year (for example, an
+/// anniversary). * A year on its own, with a zero month and a zero day. * A
+/// year and month, with a zero day (for example, a credit card expiration
+/// date). Related types: * google.type.TimeOfDay * google.type.DateTime *
+/// google.protobuf.Timestamp
 typedef Date = $Date;
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -1744,13 +1755,16 @@ class ExecStepConfig {
   /// will likely only succeed for scripts with
   /// [shebang lines](https://en.wikipedia.org/wiki/Shebang_\(Unix\)).
   /// Possible string values are:
-  /// - "INTERPRETER_UNSPECIFIED" : Invalid for a Windows ExecStepConfig. For a
-  /// Linux ExecStepConfig, the interpreter will be parsed from the shebang line
-  /// of the script if unspecified.
-  /// - "SHELL" : Indicates that the script is run with `/bin/sh` on Linux and
+  /// - "INTERPRETER_UNSPECIFIED" : If the interpreter is not specified, the
+  /// value defaults to `NONE`.
+  /// - "NONE" : Indicates that the file is run as follows on each operating
+  /// system: + For Linux VMs, the file is ran as an executable and the
+  /// interpreter might be parsed from the
+  /// [shebang line](https://wikipedia.org/wiki/Shebang_(Unix)) of the file. +
+  /// For Windows VM, this value is not supported.
+  /// - "SHELL" : Indicates that the file is run with `/bin/sh` on Linux and
   /// `cmd` on Windows.
-  /// - "POWERSHELL" : Indicates that the file is run with PowerShell flags
-  /// `-NonInteractive`, `-NoProfile`, and `-ExecutionPolicy Bypass`.
+  /// - "POWERSHELL" : Indicates that the file is run with PowerShell.
   core.String? interpreter;
 
   /// An absolute path to the executable on the VM.
@@ -3036,7 +3050,7 @@ class OSPolicyAssignmentInstanceFilter {
 }
 
 /// VM inventory details.
-typedef OSPolicyAssignmentInstanceFilterInventory = $Shared06;
+typedef OSPolicyAssignmentInstanceFilterInventory = $Shared05;
 
 /// Message representing label set.
 ///
@@ -3432,7 +3446,7 @@ class OSPolicyAssignmentRollout {
 }
 
 /// Filtering criteria to select VMs based on inventory details.
-typedef OSPolicyInventoryFilter = $Shared06;
+typedef OSPolicyInventoryFilter = $Shared05;
 
 /// An OS policy resource is used to define the desired state configuration and
 /// provides a specific functionality like installing/removing packages,
@@ -3571,7 +3585,8 @@ class OSPolicyResourceExecResourceExec {
   ///
   /// Required.
   /// Possible string values are:
-  /// - "INTERPRETER_UNSPECIFIED" : Defaults to NONE.
+  /// - "INTERPRETER_UNSPECIFIED" : Invalid value, the request will return
+  /// validation error.
   /// - "NONE" : If an interpreter is not specified, the source is executed
   /// directly. This execution, without an interpreter, only succeeds for
   /// executables and scripts that have shebang lines.

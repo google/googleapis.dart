@@ -3903,11 +3903,17 @@ class SasPortalDeviceMetadata {
   /// Output only.
   core.bool? nrqzValidated;
 
+  /// National Radio Quiet Zone validation info.
+  ///
+  /// Output only.
+  SasPortalNrqzValidation? nrqzValidation;
+
   SasPortalDeviceMetadata({
     this.antennaModel,
     this.commonChannelGroup,
     this.interferenceCoordinationGroup,
     this.nrqzValidated,
+    this.nrqzValidation,
   });
 
   SasPortalDeviceMetadata.fromJson(core.Map _json)
@@ -3925,6 +3931,10 @@ class SasPortalDeviceMetadata {
           nrqzValidated: _json.containsKey('nrqzValidated')
               ? _json['nrqzValidated'] as core.bool
               : null,
+          nrqzValidation: _json.containsKey('nrqzValidation')
+              ? SasPortalNrqzValidation.fromJson(_json['nrqzValidation']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3934,6 +3944,7 @@ class SasPortalDeviceMetadata {
         if (interferenceCoordinationGroup != null)
           'interferenceCoordinationGroup': interferenceCoordinationGroup!,
         if (nrqzValidated != null) 'nrqzValidated': nrqzValidated!,
+        if (nrqzValidation != null) 'nrqzValidation': nrqzValidation!,
       };
 }
 
@@ -4144,6 +4155,11 @@ typedef SasPortalMoveNodeRequest = $SasPortalMoveNodeRequest;
 
 /// The Node.
 typedef SasPortalNode = $SasPortalNode;
+
+/// Information about National Radio Quiet Zone validation.
+///
+/// The presence of the field indicates the device has been validated.
+typedef SasPortalNrqzValidation = $SasPortalNrqzValidation;
 
 /// This resource represents a long-running operation that is the result of a
 /// network API call.

@@ -4488,9 +4488,9 @@ class Rollout {
   /// Readonly.
   core.String? createTime;
 
-  /// This field is deprecated and will be deleted.
+  /// The user who created the Rollout.
   ///
-  /// Please remove usage of this field.
+  /// Readonly.
   core.String? createdBy;
 
   /// The strategy associated with a rollout to delete a `ManagedService`.

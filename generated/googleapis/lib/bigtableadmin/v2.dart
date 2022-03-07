@@ -2017,7 +2017,8 @@ class ProjectsInstancesTablesResource {
   /// [pageToken] - The value of `next_page_token` returned by a previous call.
   ///
   /// [view] - The view to be applied to the returned tables' fields. Only
-  /// NAME_ONLY view (default) and REPLICATION_VIEW are supported.
+  /// NAME_ONLY view (default), REPLICATION_VIEW and ENCRYPTION_VIEW are
+  /// supported.
   /// Possible string values are:
   /// - "VIEW_UNSPECIFIED" : Uses the default view for each method as documented
   /// in its request.

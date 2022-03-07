@@ -992,6 +992,11 @@ class ProjectsLocationsTriggersResource {
   /// [parent] - Required. The parent collection to list triggers on.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
+  /// [filter] - Filter field. Used to filter the Triggers to be listed.
+  /// Possible filters are described in https://google.aip.dev/160. For example,
+  /// using "?filter=destination:gke" would list only Triggers with a gke
+  /// destination.
+  ///
   /// [orderBy] - The sorting order of the resources returned. Value should be a
   /// comma-separated list of fields. The default sorting order is ascending. To
   /// specify descending order for a field, append a `desc` suffix; for example:
@@ -1017,12 +1022,14 @@ class ProjectsLocationsTriggersResource {
   /// this method will complete with the same error.
   async.Future<ListTriggersResponse> list(
     core.String parent, {
+    core.String? filter,
     core.String? orderBy,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
       if (orderBy != null) 'orderBy': [orderBy],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],

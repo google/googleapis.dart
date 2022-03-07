@@ -1904,10 +1904,11 @@ class CustomChannel {
 /// The time of day and time zone are either specified elsewhere or are
 /// insignificant. The date is relative to the Gregorian Calendar. This can
 /// represent one of the following: * A full date, with non-zero year, month,
-/// and day values * A month and day, with a zero year (e.g., an anniversary) *
-/// A year on its own, with a zero month and a zero day * A year and month, with
-/// a zero day (e.g., a credit card expiration date) Related types: *
-/// google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
+/// and day values. * A month and day, with a zero year (for example, an
+/// anniversary). * A year on its own, with a zero month and a zero day. * A
+/// year and month, with a zero day (for example, a credit card expiration
+/// date). Related types: * google.type.TimeOfDay * google.type.DateTime *
+/// google.protobuf.Timestamp
 typedef Date = $Date;
 
 /// The header information of the columns requested in the report.
@@ -2380,7 +2381,9 @@ class ListUrlChannelsResponse {
 ///
 /// See
 /// [Payment timelines for AdSense](https://support.google.com/adsense/answer/7164703)
-/// for more information about payments.
+/// for more information about payments and the
+/// [YouTube homepage and payments account](https://support.google.com/adsense/answer/11622510)
+/// article for information about dedicated payments accounts for YouTube.
 class Payment {
   /// The amount of unpaid or paid earnings, as a formatted string, including
   /// the currency.

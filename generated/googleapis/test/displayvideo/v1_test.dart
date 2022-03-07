@@ -7391,6 +7391,7 @@ api.MaximizeSpendBidStrategy buildMaximizeSpendBidStrategy() {
     o.customBiddingAlgorithmId = 'foo';
     o.maxAverageCpmBidAmountMicros = 'foo';
     o.performanceGoalType = 'foo';
+    o.raiseBidForDeals = true;
   }
   buildCounterMaximizeSpendBidStrategy--;
   return o;
@@ -7411,6 +7412,7 @@ void checkMaximizeSpendBidStrategy(api.MaximizeSpendBidStrategy o) {
       o.performanceGoalType!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.raiseBidForDeals!, unittest.isTrue);
   }
   buildCounterMaximizeSpendBidStrategy--;
 }

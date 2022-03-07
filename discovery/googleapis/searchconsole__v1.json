@@ -398,7 +398,7 @@
             }
         }
     },
-    "revision": "20220215",
+    "revision": "20220305",
     "rootUrl": "https://searchconsole.googleapis.com/",
     "schemas": {
         "AmpInspectionResult": {
@@ -728,7 +728,7 @@
                         "Indexing allowed.",
                         "Indexing not allowed, 'noindex' detected in 'robots' meta tag.",
                         "Indexing not allowed, 'noindex' detected in 'X-Robots-Tag' http header.",
-                        "Indexing not allowed, No: 'noindex' detected in robots.txt."
+                        "Reserved, no longer in use."
                     ],
                     "type": "string"
                 },

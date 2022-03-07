@@ -1872,6 +1872,7 @@ void main() {
       final arg_request = buildNode();
       final arg_parent = 'foo';
       final arg_nodeId = 'foo';
+      final arg_requestId = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final obj =
@@ -1914,6 +1915,10 @@ void main() {
           unittest.equals(arg_nodeId),
         );
         unittest.expect(
+          queryMap['requestId']!.first,
+          unittest.equals(arg_requestId),
+        );
+        unittest.expect(
           queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
@@ -1925,7 +1930,7 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.create(arg_request, arg_parent,
-          nodeId: arg_nodeId, $fields: arg_$fields);
+          nodeId: arg_nodeId, requestId: arg_requestId, $fields: arg_$fields);
       checkOperation(response as api.Operation);
     });
 
@@ -1933,6 +1938,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.TPUApi(mock).projects.locations.nodes;
       final arg_name = 'foo';
+      final arg_requestId = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = (req.url).path;
@@ -1967,6 +1973,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['requestId']!.first,
+          unittest.equals(arg_requestId),
+        );
+        unittest.expect(
           queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
@@ -1977,7 +1987,8 @@ void main() {
         final resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      final response = await res.delete(arg_name, $fields: arg_$fields);
+      final response = await res.delete(arg_name,
+          requestId: arg_requestId, $fields: arg_$fields);
       checkOperation(response as api.Operation);
     });
 

@@ -28,6 +28,8 @@
 ///     - [LocationsWorkforcePoolsOperationsResource]
 ///     - [LocationsWorkforcePoolsProvidersResource]
 ///       - [LocationsWorkforcePoolsProvidersOperationsResource]
+///     - [LocationsWorkforcePoolsSubjectsResource]
+///       - [LocationsWorkforcePoolsSubjectsOperationsResource]
 /// - [OrganizationsResource]
 ///   - [OrganizationsRolesResource]
 /// - [PermissionsResource]
@@ -189,6 +191,8 @@ class LocationsWorkforcePoolsResource {
       LocationsWorkforcePoolsOperationsResource(_requester);
   LocationsWorkforcePoolsProvidersResource get providers =>
       LocationsWorkforcePoolsProvidersResource(_requester);
+  LocationsWorkforcePoolsSubjectsResource get subjects =>
+      LocationsWorkforcePoolsSubjectsResource(_requester);
 
   LocationsWorkforcePoolsResource(commons.ApiRequester client)
       : _requester = client;
@@ -267,6 +271,62 @@ class LocationsWorkforcePoolsProvidersOperationsResource {
   /// [name] - The name of the operation resource.
   /// Value must have pattern
   /// `^locations/\[^/\]+/workforcePools/\[^/\]+/providers/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class LocationsWorkforcePoolsSubjectsResource {
+  final commons.ApiRequester _requester;
+
+  LocationsWorkforcePoolsSubjectsOperationsResource get operations =>
+      LocationsWorkforcePoolsSubjectsOperationsResource(_requester);
+
+  LocationsWorkforcePoolsSubjectsResource(commons.ApiRequester client)
+      : _requester = client;
+}
+
+class LocationsWorkforcePoolsSubjectsOperationsResource {
+  final commons.ApiRequester _requester;
+
+  LocationsWorkforcePoolsSubjectsOperationsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets the latest state of a long-running operation.
+  ///
+  /// Clients can use this method to poll the operation result at intervals as
+  /// recommended by the API service.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource.
+  /// Value must have pattern
+  /// `^locations/\[^/\]+/workforcePools/\[^/\]+/subjects/\[^/\]+/operations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.

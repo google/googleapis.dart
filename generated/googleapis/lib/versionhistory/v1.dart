@@ -16,7 +16,8 @@
 ///
 /// Version History API - Prod
 ///
-/// For more information, see <https://developers.chrome.com/versionhistory>
+/// For more information, see
+/// <https://developer.chrome.com/docs/versionhistory/>
 ///
 /// Create an instance of [VersionHistoryApi] to access these resources:
 ///

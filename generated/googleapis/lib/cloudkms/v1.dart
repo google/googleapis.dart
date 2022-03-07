@@ -4398,7 +4398,8 @@ class KeyOperationAttestation {
   /// - "ATTESTATION_FORMAT_UNSPECIFIED" : Not specified.
   /// - "CAVIUM_V1_COMPRESSED" : Cavium HSM attestation compressed with gzip.
   /// Note that this format is defined by Cavium and subject to change at any
-  /// time.
+  /// time. See
+  /// https://www.marvell.com/products/security-solutions/nitrox-hs-adapters/software-key-attestation.html.
   /// - "CAVIUM_V2_COMPRESSED" : Cavium HSM attestation V2 compressed with gzip.
   /// This is a new format introduced in Cavium's version 3.2-08.
   core.String? format;

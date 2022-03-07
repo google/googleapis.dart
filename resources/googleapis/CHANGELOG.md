@@ -1,3 +1,7 @@
+## 8.2.0-dev
+
+- `dns` - new v2
+
 ## 8.1.0
 
 - `firebaseremoteconfig` - new!

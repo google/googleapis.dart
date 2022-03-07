@@ -1989,6 +1989,10 @@ class SpeechRecognitionAlternative {
   core.double? confidence;
 
   /// Transcript text representing the words that the user spoke.
+  ///
+  /// In languages that use spaces to separate words, the transcript might have
+  /// a leading space if it isn't the first result. You can concatenate each
+  /// result to obtain the full transcript without using a separator.
   core.String? transcript;
 
   /// A list of word-specific information for each recognized word.

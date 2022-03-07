@@ -464,6 +464,7 @@ api.AccountItemUpdates buildAccountItemUpdates() {
   if (buildCounterAccountItemUpdates < 3) {
     o.accountItemUpdatesSettings = buildAccountItemUpdatesSettings();
     o.effectiveAllowAvailabilityUpdates = true;
+    o.effectiveAllowConditionUpdates = true;
     o.effectiveAllowPriceUpdates = true;
     o.effectiveAllowStrictAvailabilityUpdates = true;
   }
@@ -476,6 +477,7 @@ void checkAccountItemUpdates(api.AccountItemUpdates o) {
   if (buildCounterAccountItemUpdates < 3) {
     checkAccountItemUpdatesSettings(o.accountItemUpdatesSettings!);
     unittest.expect(o.effectiveAllowAvailabilityUpdates!, unittest.isTrue);
+    unittest.expect(o.effectiveAllowConditionUpdates!, unittest.isTrue);
     unittest.expect(o.effectiveAllowPriceUpdates!, unittest.isTrue);
     unittest.expect(
         o.effectiveAllowStrictAvailabilityUpdates!, unittest.isTrue);
@@ -489,6 +491,7 @@ api.AccountItemUpdatesSettings buildAccountItemUpdatesSettings() {
   buildCounterAccountItemUpdatesSettings++;
   if (buildCounterAccountItemUpdatesSettings < 3) {
     o.allowAvailabilityUpdates = true;
+    o.allowConditionUpdates = true;
     o.allowPriceUpdates = true;
     o.allowStrictAvailabilityUpdates = true;
   }
@@ -500,6 +503,7 @@ void checkAccountItemUpdatesSettings(api.AccountItemUpdatesSettings o) {
   buildCounterAccountItemUpdatesSettings++;
   if (buildCounterAccountItemUpdatesSettings < 3) {
     unittest.expect(o.allowAvailabilityUpdates!, unittest.isTrue);
+    unittest.expect(o.allowConditionUpdates!, unittest.isTrue);
     unittest.expect(o.allowPriceUpdates!, unittest.isTrue);
     unittest.expect(o.allowStrictAvailabilityUpdates!, unittest.isTrue);
   }

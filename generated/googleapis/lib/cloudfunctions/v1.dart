@@ -968,7 +968,7 @@ class CallFunctionResponse {
 /// Describes a Cloud Function that contains user computation executed in
 /// response to an event.
 ///
-/// It encapsulate function and triggers configurations. Next tag: 36
+/// It encapsulate function and triggers configurations.
 class CloudFunction {
   /// The amount of memory in MB available for a function.
   ///
@@ -1980,9 +1980,7 @@ typedef Retry = $Empty;
 /// Configuration for a secret environment variable.
 ///
 /// It has the information necessary to fetch the secret value from secret
-/// manager and expose it as an environment variable. Secret value is not a part
-/// of the configuration. Secret values are only fetched when a new clone
-/// starts.
+/// manager and expose it as an environment variable.
 class SecretEnvVar {
   /// Name of the environment variable.
   core.String? key;
@@ -2001,7 +1999,7 @@ class SecretEnvVar {
   ///
   /// It is recommended to use a numeric version for secret environment
   /// variables as any updates to the secret value is not reflected until new
-  /// clones start.
+  /// instances start.
   core.String? version;
 
   SecretEnvVar({

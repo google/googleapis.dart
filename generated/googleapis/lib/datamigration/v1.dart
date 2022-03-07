@@ -1759,6 +1759,7 @@ class CloudSqlSettings {
   /// - "MYSQL_8_0" : MySQL 8.0.
   /// - "POSTGRES_12" : PostgreSQL 12.
   /// - "POSTGRES_13" : PostgreSQL 13.
+  /// - "POSTGRES_14" : PostgreSQL 14.
   core.String? databaseVersion;
 
   /// The settings for IP Management.
@@ -2085,6 +2086,56 @@ class DatabaseType {
       };
 }
 
+/// Dump flag definition.
+class DumpFlag {
+  /// The name of the flag
+  core.String? name;
+
+  /// The value of the flag.
+  core.String? value;
+
+  DumpFlag({
+    this.name,
+    this.value,
+  });
+
+  DumpFlag.fromJson(core.Map _json)
+      : this(
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          value:
+              _json.containsKey('value') ? _json['value'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+        if (value != null) 'value': value!,
+      };
+}
+
+/// Dump flags definition.
+class DumpFlags {
+  /// The flags for the initial dump.
+  core.List<DumpFlag>? dumpFlags;
+
+  DumpFlags({
+    this.dumpFlags,
+  });
+
+  DumpFlags.fromJson(core.Map _json)
+      : this(
+          dumpFlags: _json.containsKey('dumpFlags')
+              ? (_json['dumpFlags'] as core.List)
+                  .map((value) => DumpFlag.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dumpFlags != null) 'dumpFlags': dumpFlags!,
+      };
+}
+
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs.
 ///
@@ -2337,8 +2388,15 @@ class MigrationJob {
   /// The migration job display name.
   core.String? displayName;
 
+  /// The initial dump flags.
+  ///
+  /// This field and the "dump_path" field are mutually exclusive.
+  DumpFlags? dumpFlags;
+
   /// The path to the dump file in Google Cloud Storage, in the format:
   /// (gs://\[BUCKET_NAME\]/\[OBJECT_NAME\]).
+  ///
+  /// This field and the "dump_flags" field are mutually exclusive.
   core.String? dumpPath;
 
   /// The duration of the migration job (in seconds).
@@ -2445,6 +2503,7 @@ class MigrationJob {
     this.destination,
     this.destinationDatabase,
     this.displayName,
+    this.dumpFlags,
     this.dumpPath,
     this.duration,
     this.endTime,
@@ -2476,6 +2535,10 @@ class MigrationJob {
               : null,
           displayName: _json.containsKey('displayName')
               ? _json['displayName'] as core.String
+              : null,
+          dumpFlags: _json.containsKey('dumpFlags')
+              ? DumpFlags.fromJson(
+                  _json['dumpFlags'] as core.Map<core.String, core.dynamic>)
               : null,
           dumpPath: _json.containsKey('dumpPath')
               ? _json['dumpPath'] as core.String
@@ -2534,6 +2597,7 @@ class MigrationJob {
         if (destinationDatabase != null)
           'destinationDatabase': destinationDatabase!,
         if (displayName != null) 'displayName': displayName!,
+        if (dumpFlags != null) 'dumpFlags': dumpFlags!,
         if (dumpPath != null) 'dumpPath': dumpPath!,
         if (duration != null) 'duration': duration!,
         if (endTime != null) 'endTime': endTime!,

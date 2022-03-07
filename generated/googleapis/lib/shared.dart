@@ -2728,43 +2728,6 @@ class $DeploymentOccurrence {
 
 /// Used by:
 ///
-/// - documentai:v1 : GoogleCloudDocumentaiV1DocumentPageDetectedLanguage
-/// - vision:v1 : DetectedLanguage
-class $DetectedLanguage {
-  /// Confidence of detected language.
-  ///
-  /// Range \[0, 1\].
-  core.double? confidence;
-
-  /// The BCP-47 language code, such as "en-US" or "sr-Latn".
-  ///
-  /// For more information, see
-  /// http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
-  core.String? languageCode;
-
-  $DetectedLanguage({
-    this.confidence,
-    this.languageCode,
-  });
-
-  $DetectedLanguage.fromJson(core.Map _json)
-      : this(
-          confidence: _json.containsKey('confidence')
-              ? (_json['confidence'] as core.num).toDouble()
-              : null,
-          languageCode: _json.containsKey('languageCode')
-              ? _json['languageCode'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (confidence != null) 'confidence': confidence!,
-        if (languageCode != null) 'languageCode': languageCode!,
-      };
-}
-
-/// Used by:
-///
 /// - dfareporting:v3.4 : DfpSettings
 /// - dfareporting:v3.5 : DfpSettings
 class $DfpSettings {
@@ -3414,7 +3377,9 @@ class $EgressFrom {
 /// - datastream:v1 : StaticServiceIpConnectivity
 /// - datastream:v1 : StopBackfillJobRequest
 /// - dialogflow:v2 : GoogleCloudDialogflowV2CompleteConversationRequest
+/// - dialogflow:v2 : GoogleCloudDialogflowV2DeployConversationModelRequest
 /// - dialogflow:v2 : GoogleCloudDialogflowV2TrainAgentRequest
+/// - dialogflow:v2 : GoogleCloudDialogflowV2UndeployConversationModelRequest
 /// - dialogflow:v2 : GoogleProtobufEmpty
 /// - dialogflow:v3 : GoogleCloudDialogflowCxV3ResponseMessageEndInteraction
 /// - dialogflow:v3 : GoogleCloudDialogflowCxV3RunContinuousTestRequest
@@ -3544,6 +3509,7 @@ class $EgressFrom {
 /// - networksecurity:v1 : Empty
 /// - networkservices:v1 : CancelOperationRequest
 /// - networkservices:v1 : Empty
+/// - notebooks:v1 : BootImage
 /// - notebooks:v1 : CancelOperationRequest
 /// - notebooks:v1 : Empty
 /// - notebooks:v1 : ResetInstanceRequest
@@ -5876,6 +5842,175 @@ class $LookbackConfiguration {
 
 /// Used by:
 ///
+/// - dns:v1 : ManagedZoneCloudLoggingConfig
+/// - dns:v2 : ManagedZoneCloudLoggingConfig
+class $ManagedZoneCloudLoggingConfig {
+  /// If set, enable query logging for this ManagedZone.
+  ///
+  /// False by default, making logging opt-in.
+  core.bool? enableLogging;
+  core.String? kind;
+
+  $ManagedZoneCloudLoggingConfig({
+    this.enableLogging,
+    this.kind,
+  });
+
+  $ManagedZoneCloudLoggingConfig.fromJson(core.Map _json)
+      : this(
+          enableLogging: _json.containsKey('enableLogging')
+              ? _json['enableLogging'] as core.bool
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enableLogging != null) 'enableLogging': enableLogging!,
+        if (kind != null) 'kind': kind!,
+      };
+}
+
+/// Used by:
+///
+/// - dns:v1 : ManagedZonePeeringConfigTargetNetwork
+/// - dns:v2 : ManagedZonePeeringConfigTargetNetwork
+class $ManagedZonePeeringConfigTargetNetwork {
+  /// The time at which the zone was deactivated, in RFC 3339 date-time format.
+  ///
+  /// An empty string indicates that the peering connection is active. The
+  /// producer network can deactivate a zone. The zone is automatically
+  /// deactivated if the producer network that the zone targeted is deleted.
+  /// Output only.
+  core.String? deactivateTime;
+  core.String? kind;
+
+  /// The fully qualified URL of the VPC network to forward queries to.
+  ///
+  /// This should be formatted like
+  /// https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}
+  core.String? networkUrl;
+
+  $ManagedZonePeeringConfigTargetNetwork({
+    this.deactivateTime,
+    this.kind,
+    this.networkUrl,
+  });
+
+  $ManagedZonePeeringConfigTargetNetwork.fromJson(core.Map _json)
+      : this(
+          deactivateTime: _json.containsKey('deactivateTime')
+              ? _json['deactivateTime'] as core.String
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          networkUrl: _json.containsKey('networkUrl')
+              ? _json['networkUrl'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (deactivateTime != null) 'deactivateTime': deactivateTime!,
+        if (kind != null) 'kind': kind!,
+        if (networkUrl != null) 'networkUrl': networkUrl!,
+      };
+}
+
+/// Used by:
+///
+/// - dns:v1 : ManagedZonePrivateVisibilityConfigNetwork
+/// - dns:v2 : ManagedZonePrivateVisibilityConfigNetwork
+class $ManagedZonePrivateVisibilityConfigNetwork {
+  core.String? kind;
+
+  /// The fully qualified URL of the VPC network to bind to.
+  ///
+  /// Format this URL like
+  /// https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}
+  core.String? networkUrl;
+
+  $ManagedZonePrivateVisibilityConfigNetwork({
+    this.kind,
+    this.networkUrl,
+  });
+
+  $ManagedZonePrivateVisibilityConfigNetwork.fromJson(core.Map _json)
+      : this(
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          networkUrl: _json.containsKey('networkUrl')
+              ? _json['networkUrl'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (networkUrl != null) 'networkUrl': networkUrl!,
+      };
+}
+
+/// Used by:
+///
+/// - dns:v1 : ManagedZoneReverseLookupConfig
+/// - dns:v2 : ManagedZoneReverseLookupConfig
+class $ManagedZoneReverseLookupConfig {
+  core.String? kind;
+
+  $ManagedZoneReverseLookupConfig({
+    this.kind,
+  });
+
+  $ManagedZoneReverseLookupConfig.fromJson(core.Map _json)
+      : this(
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (kind != null) 'kind': kind!,
+      };
+}
+
+/// Used by:
+///
+/// - dns:v1 : ManagedZoneServiceDirectoryConfigNamespace
+/// - dns:v2 : ManagedZoneServiceDirectoryConfigNamespace
+class $ManagedZoneServiceDirectoryConfigNamespace {
+  /// The time that the namespace backing this zone was deleted; an empty string
+  /// if it still exists.
+  ///
+  /// This is in RFC3339 text format. Output only.
+  core.String? deletionTime;
+  core.String? kind;
+
+  /// The fully qualified URL of the namespace associated with the zone.
+  ///
+  /// Format must be
+  /// https://servicedirectory.googleapis.com/v1/projects/{project}/locations/{location}/namespaces/{namespace}
+  core.String? namespaceUrl;
+
+  $ManagedZoneServiceDirectoryConfigNamespace({
+    this.deletionTime,
+    this.kind,
+    this.namespaceUrl,
+  });
+
+  $ManagedZoneServiceDirectoryConfigNamespace.fromJson(core.Map _json)
+      : this(
+          deletionTime: _json.containsKey('deletionTime')
+              ? _json['deletionTime'] as core.String
+              : null,
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          namespaceUrl: _json.containsKey('namespaceUrl')
+              ? _json['namespaceUrl'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (deletionTime != null) 'deletionTime': deletionTime!,
+        if (kind != null) 'kind': kind!,
+        if (namespaceUrl != null) 'namespaceUrl': namespaceUrl!,
+      };
+}
+
+/// Used by:
+///
 /// - containeranalysis:v1 : Material
 /// - ondemandscanning:v1 : Material
 class $Material {
@@ -6767,7 +6902,7 @@ class $Option {
 /// - content:v2.1 : OrderAddress
 /// - content:v2.1 : TestOrderAddress
 class $OrderAddress {
-  /// CLDR country code (e.g. "US").
+  /// CLDR country code (for example, "US").
   core.String? country;
 
   /// Strings representing the lines of the printed label for mailing the order,
@@ -6780,11 +6915,11 @@ class $OrderAddress {
 
   /// City, town or commune.
   ///
-  /// May also include dependent localities or sublocalities (e.g. neighborhoods
-  /// or suburbs).
+  /// May also include dependent localities or sublocalities (for example,
+  /// neighborhoods or suburbs).
   core.String? locality;
 
-  /// Postal Code or ZIP (e.g. "94043").
+  /// Postal Code or ZIP (for example, "94043").
   core.String? postalCode;
 
   /// Name of the recipient.
@@ -7412,11 +7547,43 @@ class $PlatformType {
 
 /// Used by:
 ///
+/// - dns:v1 : PolicyNetwork
+/// - dns:v2 : PolicyNetwork
+class $PolicyNetwork {
+  core.String? kind;
+
+  /// The fully qualified URL of the VPC network to bind to.
+  ///
+  /// This should be formatted like
+  /// https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}
+  core.String? networkUrl;
+
+  $PolicyNetwork({
+    this.kind,
+    this.networkUrl,
+  });
+
+  $PolicyNetwork.fromJson(core.Map _json)
+      : this(
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          networkUrl: _json.containsKey('networkUrl')
+              ? _json['networkUrl'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (networkUrl != null) 'networkUrl': networkUrl!,
+      };
+}
+
+/// Used by:
+///
 /// - cloudchannel:v1 : GoogleTypePostalAddress
 /// - documentai:v1 : GoogleTypePostalAddress
-/// - domains:v1 : PostalAddress
-/// - jobs:v3 : PostalAddress
-/// - jobs:v4 : PostalAddress
+/// - mybusinessaccountmanagement:v1 : PostalAddress
+/// - mybusinessbusinessinformation:v1 : PostalAddress
+/// - mybusinessverifications:v1 : PostalAddress
 class $PostalAddress00 {
   /// Unstructured address lines describing the lower levels of an address.
   ///
@@ -7497,8 +7664,8 @@ class $PostalAddress00 {
   /// CLDR region code of the country/region of the address.
   ///
   /// This is never inferred and it is up to the user to ensure the value is
-  /// correct. See http://cldr.unicode.org/ and
-  /// http://www.unicode.org/cldr/charts/30/supplemental/territory_information.html
+  /// correct. See https://cldr.unicode.org/ and
+  /// https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html
   /// for details. Example: "CH" for Switzerland.
   ///
   /// Required.
@@ -7600,9 +7767,9 @@ class $PostalAddress00 {
 
 /// Used by:
 ///
-/// - mybusinessaccountmanagement:v1 : PostalAddress
-/// - mybusinessbusinessinformation:v1 : PostalAddress
-/// - mybusinessverifications:v1 : PostalAddress
+/// - domains:v1 : PostalAddress
+/// - jobs:v3 : PostalAddress
+/// - jobs:v4 : PostalAddress
 class $PostalAddress01 {
   /// Unstructured address lines describing the lower levels of an address.
   ///
@@ -7683,8 +7850,8 @@ class $PostalAddress01 {
   /// CLDR region code of the country/region of the address.
   ///
   /// This is never inferred and it is up to the user to ensure the value is
-  /// correct. See https://cldr.unicode.org/ and
-  /// https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html
+  /// correct. See http://cldr.unicode.org/ and
+  /// http://www.unicode.org/cldr/charts/30/supplemental/territory_information.html
   /// for details. Example: "CH" for Switzerland.
   ///
   /// Required.
@@ -8179,6 +8346,114 @@ class $QuotaLimit {
 
 /// Used by:
 ///
+/// - dns:v1 : RRSetRoutingPolicyGeoPolicyGeoPolicyItem
+/// - dns:v2 : RRSetRoutingPolicyGeoPolicyGeoPolicyItem
+class $RRSetRoutingPolicyGeoPolicyGeoPolicyItem {
+  core.String? kind;
+
+  /// The geo-location granularity is a GCP region.
+  ///
+  /// This location string should correspond to a GCP region. e.g. "us-east1",
+  /// "southamerica-east1", "asia-east1", etc.
+  core.String? location;
+  core.List<core.String>? rrdatas;
+
+  /// DNSSEC generated signatures for all the rrdata within this item.
+  ///
+  /// Note that if health checked targets are provided for DNSSEC enabled zones,
+  /// there's a restriction of 1 ip per item. .
+  core.List<core.String>? signatureRrdatas;
+
+  $RRSetRoutingPolicyGeoPolicyGeoPolicyItem({
+    this.kind,
+    this.location,
+    this.rrdatas,
+    this.signatureRrdatas,
+  });
+
+  $RRSetRoutingPolicyGeoPolicyGeoPolicyItem.fromJson(core.Map _json)
+      : this(
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          location: _json.containsKey('location')
+              ? _json['location'] as core.String
+              : null,
+          rrdatas: _json.containsKey('rrdatas')
+              ? (_json['rrdatas'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          signatureRrdatas: _json.containsKey('signatureRrdatas')
+              ? (_json['signatureRrdatas'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (location != null) 'location': location!,
+        if (rrdatas != null) 'rrdatas': rrdatas!,
+        if (signatureRrdatas != null) 'signatureRrdatas': signatureRrdatas!,
+      };
+}
+
+/// Used by:
+///
+/// - dns:v1 : RRSetRoutingPolicyWrrPolicyWrrPolicyItem
+/// - dns:v2 : RRSetRoutingPolicyWrrPolicyWrrPolicyItem
+class $RRSetRoutingPolicyWrrPolicyWrrPolicyItem {
+  core.String? kind;
+  core.List<core.String>? rrdatas;
+
+  /// DNSSEC generated signatures for all the rrdata within this item.
+  ///
+  /// Note that if health checked targets are provided for DNSSEC enabled zones,
+  /// there's a restriction of 1 ip per item. .
+  core.List<core.String>? signatureRrdatas;
+
+  /// The weight corresponding to this subset of rrdata.
+  ///
+  /// When multiple WeightedRoundRobinPolicyItems are configured, the
+  /// probability of returning an rrset is proportional to its weight relative
+  /// to the sum of weights configured for all items. This weight should be
+  /// non-negative.
+  core.double? weight;
+
+  $RRSetRoutingPolicyWrrPolicyWrrPolicyItem({
+    this.kind,
+    this.rrdatas,
+    this.signatureRrdatas,
+    this.weight,
+  });
+
+  $RRSetRoutingPolicyWrrPolicyWrrPolicyItem.fromJson(core.Map _json)
+      : this(
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          rrdatas: _json.containsKey('rrdatas')
+              ? (_json['rrdatas'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          signatureRrdatas: _json.containsKey('signatureRrdatas')
+              ? (_json['signatureRrdatas'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          weight: _json.containsKey('weight')
+              ? (_json['weight'] as core.num).toDouble()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (rrdatas != null) 'rrdatas': rrdatas!,
+        if (signatureRrdatas != null) 'signatureRrdatas': signatureRrdatas!,
+        if (weight != null) 'weight': weight!,
+      };
+}
+
+/// Used by:
+///
 /// - safebrowsing:v4 : GoogleSecuritySafebrowsingV4RawIndices
 /// - webrisk:v1 : GoogleCloudWebriskV1RawIndices
 class $RawIndices {
@@ -8537,7 +8812,6 @@ class $Req {
 /// - cloudidentity:v1 : GoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest
 /// - cloudidentity:v1 : GoogleAppsCloudidentityDevicesV1CancelWipeDeviceRequest
 /// - cloudidentity:v1 : GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserRequest
-/// - cloudidentity:v1 : GoogleAppsCloudidentityDevicesV1WipeDeviceRequest
 /// - cloudidentity:v1 : GoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest
 class $Request00 {
   /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
@@ -8844,6 +9118,33 @@ class $Response {
 
 /// Used by:
 ///
+/// - dns:v1 : ResponseHeader
+/// - dns:v2 : ResponseHeader
+class $ResponseHeader {
+  /// For mutating operation requests that completed successfully.
+  ///
+  /// This is the client_operation_id if the client specified it, otherwise it
+  /// is generated by the server (output only).
+  core.String? operationId;
+
+  $ResponseHeader({
+    this.operationId,
+  });
+
+  $ResponseHeader.fromJson(core.Map _json)
+      : this(
+          operationId: _json.containsKey('operationId')
+              ? _json['operationId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (operationId != null) 'operationId': operationId!,
+      };
+}
+
+/// Used by:
+///
 /// - jobs:v3 : ResponseMetadata
 /// - jobs:v4 : ResponseMetadata
 class $ResponseMetadata {
@@ -8865,6 +9166,38 @@ class $ResponseMetadata {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (requestId != null) 'requestId': requestId!,
+      };
+}
+
+/// Used by:
+///
+/// - dns:v1 : ResponsePolicyNetwork
+/// - dns:v2 : ResponsePolicyNetwork
+class $ResponsePolicyNetwork {
+  core.String? kind;
+
+  /// The fully qualified URL of the VPC network to bind to.
+  ///
+  /// This should be formatted like
+  /// https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}
+  core.String? networkUrl;
+
+  $ResponsePolicyNetwork({
+    this.kind,
+    this.networkUrl,
+  });
+
+  $ResponsePolicyNetwork.fromJson(core.Map _json)
+      : this(
+          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
+          networkUrl: _json.containsKey('networkUrl')
+              ? _json['networkUrl'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (networkUrl != null) 'networkUrl': networkUrl!,
       };
 }
 
@@ -9121,42 +9454,21 @@ class $Shared01 {
 
 /// Used by:
 ///
-/// - chat:v1 : GoogleAppsCardV1SuggestionItem
-/// - chat:v1 : TextParagraph
-class $Shared02 {
-  core.String? text;
-
-  $Shared02({
-    this.text,
-  });
-
-  $Shared02.fromJson(core.Map _json)
-      : this(
-          text: _json.containsKey('text') ? _json['text'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (text != null) 'text': text!,
-      };
-}
-
-/// Used by:
-///
 /// - compute:v1 : InstancesSetServiceAccountRequest
 /// - compute:v1 : ServiceAccount
-class $Shared03 {
+class $Shared02 {
   /// Email address of the service account.
   core.String? email;
 
   /// The list of scopes to be made available for this service account.
   core.List<core.String>? scopes;
 
-  $Shared03({
+  $Shared02({
     this.email,
     this.scopes,
   });
 
-  $Shared03.fromJson(core.Map _json)
+  $Shared02.fromJson(core.Map _json)
       : this(
           email:
               _json.containsKey('email') ? _json['email'] as core.String : null,
@@ -9177,19 +9489,19 @@ class $Shared03 {
 ///
 /// - content:v2.1 : Price
 /// - content:v2.1 : PriceAmount
-class $Shared04 {
+class $Shared03 {
   /// The currency of the price.
   core.String? currency;
 
   /// The price represented as a number.
   core.String? value;
 
-  $Shared04({
+  $Shared03({
     this.currency,
     this.value,
   });
 
-  $Shared04.fromJson(core.Map _json)
+  $Shared03.fromJson(core.Map _json)
       : this(
           currency: _json.containsKey('currency')
               ? _json['currency'] as core.String
@@ -9208,7 +9520,7 @@ class $Shared04 {
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowV2Sentiment
 /// - dialogflow:v3 : GoogleCloudDialogflowCxV3SentimentAnalysisResult
-class $Shared05 {
+class $Shared04 {
   /// A non-negative number in the \[0, +inf) range, which represents the
   /// absolute magnitude of sentiment, regardless of score (positive or
   /// negative).
@@ -9218,12 +9530,12 @@ class $Shared05 {
   /// sentiment).
   core.double? score;
 
-  $Shared05({
+  $Shared04({
     this.magnitude,
     this.score,
   });
 
-  $Shared05.fromJson(core.Map _json)
+  $Shared04.fromJson(core.Map _json)
       : this(
           magnitude: _json.containsKey('magnitude')
               ? (_json['magnitude'] as core.num).toDouble()
@@ -9243,7 +9555,7 @@ class $Shared05 {
 ///
 /// - osconfig:v1 : OSPolicyAssignmentInstanceFilterInventory
 /// - osconfig:v1 : OSPolicyInventoryFilter
-class $Shared06 {
+class $Shared05 {
   /// The OS short name
   ///
   /// Required.
@@ -9257,12 +9569,12 @@ class $Shared06 {
   /// versions.
   core.String? osVersion;
 
-  $Shared06({
+  $Shared05({
     this.osShortName,
     this.osVersion,
   });
 
-  $Shared06.fromJson(core.Map _json)
+  $Shared05.fromJson(core.Map _json)
       : this(
           osShortName: _json.containsKey('osShortName')
               ? _json['osShortName'] as core.String
@@ -9282,14 +9594,14 @@ class $Shared06 {
 ///
 /// - youtube:v3 : CommentSnippetAuthorChannelId
 /// - youtube:v3 : LanguageTag
-class $Shared07 {
+class $Shared06 {
   core.String? value;
 
-  $Shared07({
+  $Shared06({
     this.value,
   });
 
-  $Shared07.fromJson(core.Map _json)
+  $Shared06.fromJson(core.Map _json)
       : this(
           value:
               _json.containsKey('value') ? _json['value'] as core.String : null,

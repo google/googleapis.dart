@@ -195,8 +195,8 @@ class AccountsResource {
   ///
   /// [overwrite] - Only available to selected merchants, for example
   /// multi-client accounts (MCAs) and their sub-accounts. When set to `True`,
-  /// this flag removes any existing claim on the requested website and replaces
-  /// it with a claim from the account that makes the request.
+  /// this option removes any existing claim on the requested website and
+  /// replaces it with a claim from the account that makes the request.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -280,8 +280,8 @@ class AccountsResource {
   ///
   /// [accountId] - The ID of the account.
   ///
-  /// [force] - Flag to delete sub-accounts with products. The default value is
-  /// false.
+  /// [force] - Option to delete sub-accounts with products. The default value
+  /// is false.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4394,7 +4394,7 @@ class OrdersResource {
   /// - "TEMPLATE3" : Get `template3`.
   /// - "TEMPLATE4" : Get `template4`.
   ///
-  /// [country] - The country of the template to retrieve. Defaults to `US`.
+  /// [country] - The country of the template to retrieve. Defaults to "`US`".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4431,14 +4431,15 @@ class OrdersResource {
   }
 
   /// Notifies that item return and refund was handled directly by merchant
-  /// outside of Google payments processing (e.g. cash refund done in store).
+  /// outside of Google payments processing (for example, cash refund done in
+  /// store).
   ///
   /// Note: We recommend calling the returnrefundlineitem method to refund
   /// in-store returns. We will issue the refund directly to the customer. This
   /// helps to prevent possible differences arising between merchant and Google
   /// transaction records. We also recommend having the point of sale system
   /// communicate with Google to ensure that customers do not receive a double
-  /// refund by first refunding via Google then via an in-store return.
+  /// refund by first refunding through Google then through an in-store return.
   ///
   /// Deprecated.
   ///
@@ -4515,11 +4516,10 @@ class OrdersResource {
   /// [placedDateStart] - Obtains orders placed after this date (inclusively),
   /// in ISO 8601 format.
   ///
-  /// [statuses] - Obtains orders that match any of the specified statuses.
-  /// Please note that `active` is a shortcut for `pendingShipment` and
-  /// `partiallyShipped`, and `completed` is a shortcut for `shipped`,
-  /// `partiallyDelivered`, `delivered`, `partiallyReturned`, `returned`, and
-  /// `canceled`.
+  /// [statuses] - Obtains orders that match any of the specified statuses. Note
+  /// that `active` is a shortcut for `pendingShipment` and `partiallyShipped`,
+  /// and `completed` is a shortcut for `shipped`, `partiallyDelivered`,
+  /// `delivered`, `partiallyReturned`, `returned`, and `canceled`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4707,10 +4707,10 @@ class OrdersResource {
 
   /// Returns and refunds a line item.
   ///
-  /// Note that this method can only be called on fully shipped orders. Please
-  /// also note that the Orderreturns API is the preferred way to handle returns
-  /// after you receive a return from a customer. You can use Orderreturns.list
-  /// or Orderreturns.get to search for the return, and then use
+  /// Note that this method can only be called on fully shipped orders. The
+  /// Orderreturns API is the preferred way to handle returns after you receive
+  /// a return from a customer. You can use Orderreturns.list or
+  /// Orderreturns.get to search for the return, and then use
   /// Orderreturns.processreturn to issue the refund. If the return cannot be
   /// found, then we recommend using this API to issue a refund.
   ///
@@ -4763,8 +4763,9 @@ class OrdersResource {
   /// the form of key-value pairs.
   ///
   /// A common use case would be to supply us with additional structured
-  /// information about a line item that cannot be provided via other methods.
-  /// Submitted key-value pairs can be retrieved as part of the orders resource.
+  /// information about a line item that cannot be provided through other
+  /// methods. Submitted key-value pairs can be retrieved as part of the orders
+  /// resource.
   ///
   /// [request] - The metadata request object.
   ///
@@ -5994,7 +5995,7 @@ class PubsubnotificationsettingsResource {
 
   /// Register a Merchant Center account for pubsub notifications.
   ///
-  /// Note that cloud topic name should not be provided as part of the request.
+  /// Note that cloud topic name shouldn't be provided as part of the request.
   ///
   /// [request] - The metadata request object.
   ///
@@ -7881,7 +7882,7 @@ class ShoppingadsprogramResource {
 
 /// Account data.
 ///
-/// After the creation of a new account it may take a few minutes before it is
+/// After the creation of a new account it may take a few minutes before it's
 /// fully operational. The methods delete, insert, and update require the admin
 /// role.
 class Account {
@@ -8067,7 +8068,7 @@ class Account {
 }
 
 class AccountAddress {
-  /// CLDR country code (e.g. "US").
+  /// CLDR country code (for example, "US").
   ///
   /// All MCA sub-accounts inherit the country of their parent MCA by default,
   /// however the country can be updated for individual sub-accounts.
@@ -8075,11 +8076,11 @@ class AccountAddress {
 
   /// City, town or commune.
   ///
-  /// May also include dependent localities or sublocalities (e.g. neighborhoods
-  /// or suburbs).
+  /// May also include dependent localities or sublocalities (for example,
+  /// neighborhoods or suburbs).
   core.String? locality;
 
-  /// Postal code or ZIP (e.g. "94043").
+  /// Postal code or ZIP (for example, "94043").
   core.String? postalCode;
 
   /// Top-level administrative subdivision of the country.
@@ -8553,6 +8554,15 @@ class AccountItemUpdates {
   /// Output only.
   core.bool? effectiveAllowAvailabilityUpdates;
 
+  /// The effective value of allow_condition_updates.
+  ///
+  /// If account_item_updates_settings is present, then this value is the same.
+  /// Otherwise, it represents the inherited value of the parent account.
+  /// Read-only.
+  ///
+  /// Output only.
+  core.bool? effectiveAllowConditionUpdates;
+
   /// The effective value of allow_price_updates.
   ///
   /// If account_item_updates_settings is present, then this value is the same.
@@ -8574,6 +8584,7 @@ class AccountItemUpdates {
   AccountItemUpdates({
     this.accountItemUpdatesSettings,
     this.effectiveAllowAvailabilityUpdates,
+    this.effectiveAllowConditionUpdates,
     this.effectiveAllowPriceUpdates,
     this.effectiveAllowStrictAvailabilityUpdates,
   });
@@ -8589,6 +8600,10 @@ class AccountItemUpdates {
           effectiveAllowAvailabilityUpdates:
               _json.containsKey('effectiveAllowAvailabilityUpdates')
                   ? _json['effectiveAllowAvailabilityUpdates'] as core.bool
+                  : null,
+          effectiveAllowConditionUpdates:
+              _json.containsKey('effectiveAllowConditionUpdates')
+                  ? _json['effectiveAllowConditionUpdates'] as core.bool
                   : null,
           effectiveAllowPriceUpdates:
               _json.containsKey('effectiveAllowPriceUpdates')
@@ -8606,6 +8621,8 @@ class AccountItemUpdates {
         if (effectiveAllowAvailabilityUpdates != null)
           'effectiveAllowAvailabilityUpdates':
               effectiveAllowAvailabilityUpdates!,
+        if (effectiveAllowConditionUpdates != null)
+          'effectiveAllowConditionUpdates': effectiveAllowConditionUpdates!,
         if (effectiveAllowPriceUpdates != null)
           'effectiveAllowPriceUpdates': effectiveAllowPriceUpdates!,
         if (effectiveAllowStrictAvailabilityUpdates != null)
@@ -8625,6 +8642,10 @@ class AccountItemUpdatesSettings {
   /// page.
   core.bool? allowAvailabilityUpdates;
 
+  /// If condition updates are enabled, Google always updates item condition
+  /// with the condition detected from the details of your product.
+  core.bool? allowConditionUpdates;
+
   /// If price updates are enabled, Google always updates the active price with
   /// the crawled information.
   core.bool? allowPriceUpdates;
@@ -8641,6 +8662,7 @@ class AccountItemUpdatesSettings {
 
   AccountItemUpdatesSettings({
     this.allowAvailabilityUpdates,
+    this.allowConditionUpdates,
     this.allowPriceUpdates,
     this.allowStrictAvailabilityUpdates,
   });
@@ -8651,6 +8673,9 @@ class AccountItemUpdatesSettings {
               _json.containsKey('allowAvailabilityUpdates')
                   ? _json['allowAvailabilityUpdates'] as core.bool
                   : null,
+          allowConditionUpdates: _json.containsKey('allowConditionUpdates')
+              ? _json['allowConditionUpdates'] as core.bool
+              : null,
           allowPriceUpdates: _json.containsKey('allowPriceUpdates')
               ? _json['allowPriceUpdates'] as core.bool
               : null,
@@ -8663,6 +8688,8 @@ class AccountItemUpdatesSettings {
   core.Map<core.String, core.dynamic> toJson() => {
         if (allowAvailabilityUpdates != null)
           'allowAvailabilityUpdates': allowAvailabilityUpdates!,
+        if (allowConditionUpdates != null)
+          'allowConditionUpdates': allowConditionUpdates!,
         if (allowPriceUpdates != null) 'allowPriceUpdates': allowPriceUpdates!,
         if (allowStrictAvailabilityUpdates != null)
           'allowStrictAvailabilityUpdates': allowStrictAvailabilityUpdates!,
@@ -8822,7 +8849,7 @@ class AccountShippingImprovements {
       };
 }
 
-/// The status of an account, i.e., information about its products, which is
+/// The status of an account, that is, information about its products, which is
 /// computed offline and not returned immediately at insertion time.
 class AccountStatus {
   /// The ID of the account for which the status is reported.
@@ -9157,8 +9184,8 @@ class AccountTax {
 
   /// Tax rules.
   ///
-  /// Updating the tax rules will enable US taxes (not reversible). Defining no
-  /// rules is equivalent to not charging tax at all.
+  /// Updating the tax rules will enable "US" taxes (not reversible). Defining
+  /// no rules is equivalent to not charging tax at all.
   core.List<AccountTaxTaxRule>? rules;
 
   AccountTax({
@@ -9188,7 +9215,7 @@ class AccountTax {
       };
 }
 
-/// Tax calculation rule to apply in a state or province (USA only).
+/// Tax calculation rule to apply in a state or province (US only).
 class AccountTaxTaxRule {
   /// Country code in which tax is applicable.
   core.String? country;
@@ -10279,19 +10306,19 @@ class Address {
 
   /// City, town or commune.
   ///
-  /// May also include dependent localities or sublocalities (e.g. neighborhoods
-  /// or suburbs).
+  /// May also include dependent localities or sublocalities (for example,
+  /// neighborhoods or suburbs).
   ///
   /// Required.
   core.String? city;
 
-  /// [CLDR country code](http://www.unicode.org/repos/cldr/tags/latest/common/main/en.xml)
-  /// (e.g. "US").
+  /// [CLDR country code](https://github.com/unicode-org/cldr/blob/latest/common/main/en.xml)
+  /// (for example, "US").
   ///
   /// Required.
   core.String? country;
 
-  /// Postal code or ZIP (e.g. "94043").
+  /// Postal code or ZIP (for example, "94043").
   ///
   /// Required.
   core.String? postalCode;
@@ -10584,13 +10611,13 @@ class CaptureOrderResponse {
 class CarrierRate {
   /// Carrier service, such as `"UPS"` or `"Fedex"`.
   ///
-  /// The list of supported carriers can be retrieved via the
+  /// The list of supported carriers can be retrieved through the
   /// `getSupportedCarriers` method. Required.
   core.String? carrierName;
 
   /// Carrier service, such as `"ground"` or `"2 days"`.
   ///
-  /// The list of supported services for a carrier can be retrieved via the
+  /// The list of supported services for a carrier can be retrieved through the
   /// `getSupportedCarriers` method. Required.
   core.String? carrierService;
 
@@ -10659,7 +10686,7 @@ class CarrierRate {
 }
 
 class CarriersCarrier {
-  /// The CLDR country code of the carrier (e.g., "US").
+  /// The CLDR country code of the carrier (for example, "US").
   ///
   /// Always present.
   core.String? country;
@@ -10671,12 +10698,12 @@ class CarriersCarrier {
   /// WarehouseBasedDeliveryTime.carrierService.
   core.List<core.String>? eddServices;
 
-  /// The name of the carrier (e.g., `"UPS"`).
+  /// The name of the carrier (for example, `"UPS"`).
   ///
   /// Always present.
   core.String? name;
 
-  /// A list of supported services (e.g., `"ground"`) for that carrier.
+  /// A list of supported services (for example, `"ground"`) for that carrier.
   ///
   /// Contains at least one service. This is the list of valid values for
   /// CarrierRate.carrierService.
@@ -11244,10 +11271,9 @@ class CutoffTime {
   /// Required.
   core.int? minute;
 
-  /// Timezone identifier for the cutoff time.
+  /// Timezone identifier for the cutoff time (for example, "Europe/Zurich").
   ///
-  /// A list of identifiers can be found in the AdWords API documentation. E.g.
-  /// "Europe/Zurich". Required.
+  /// List of identifiers. Required.
   core.String? timezone;
 
   CutoffTime({
@@ -11406,7 +11432,7 @@ class DatafeedFetchSchedule {
 
   /// Time zone used for schedule.
   ///
-  /// UTC by default. E.g., "America/Los_Angeles".
+  /// UTC by default. For example, "America/Los_Angeles".
   core.String? timeZone;
 
   /// An optional user name for fetch_url.
@@ -11518,7 +11544,7 @@ class DatafeedFormat {
       };
 }
 
-/// The status of a datafeed, i.e., the result of the last retrieval of the
+/// The status of a datafeed, that is, the result of the last retrieval of the
 /// datafeed computed asynchronously when the feed processing is finished.
 class DatafeedStatus {
   /// The country for which the status is reported, represented as a CLDR
@@ -11628,7 +11654,7 @@ class DatafeedStatus {
 
 /// An error occurring in the feed, like "invalid price".
 class DatafeedStatusError {
-  /// The code of the error, e.g., "validation/invalid_value".
+  /// The code of the error, for example, "validation/invalid_value".
   core.String? code;
 
   /// The number of occurrences of the error in the feed.
@@ -11637,7 +11663,7 @@ class DatafeedStatusError {
   /// A list of example occurrences of the error, grouped by product.
   core.List<DatafeedStatusExample>? examples;
 
-  /// The error message, e.g., "Invalid price".
+  /// The error message, for example, "Invalid price".
   core.String? message;
 
   DatafeedStatusError({
@@ -11713,7 +11739,7 @@ class DatafeedTarget {
   core.String? country;
 
   /// The list of destinations to exclude for this target (corresponds to
-  /// unchecked check boxes in Merchant Center).
+  /// cleared check boxes in Merchant Center).
   core.List<core.String>? excludedDestinations;
 
   /// The list of destinations to include for this target (corresponds to
@@ -12335,7 +12361,7 @@ class DeliveryTime {
   /// or equal to `minHandlingTimeInDays`.
   core.int? maxHandlingTimeInDays;
 
-  /// Maximum number of business days that is spent in transit.
+  /// Maximum number of business days that are spent in transit.
   ///
   /// 0 means same day delivery, 1 means next day delivery. Must be greater than
   /// or equal to `minTransitTimeInDays`.
@@ -12346,7 +12372,7 @@ class DeliveryTime {
   /// 0 means same day shipped, 1 means next day shipped.
   core.int? minHandlingTimeInDays;
 
-  /// Minimum number of business days that is spent in transit.
+  /// Minimum number of business days that are spent in transit.
   ///
   /// 0 means same day delivery, 1 means next day delivery. Either
   /// `{min,max}TransitTimeInDays` or `transitTimeTable` must be set, but not
@@ -12876,7 +12902,7 @@ class Headers {
 class HolidayCutoff {
   /// Date of the order deadline, in ISO 8601 format.
   ///
-  /// E.g. "2016-11-29" for 29th November 2016. Required.
+  /// For example, "2016-11-29" for 29th November 2016. Required.
   core.String? deadlineDate;
 
   /// Hour of the day on the deadline date until which the order has to be
@@ -12886,10 +12912,9 @@ class HolidayCutoff {
   /// Required.
   core.int? deadlineHour;
 
-  /// Timezone identifier for the deadline hour.
+  /// Timezone identifier for the deadline hour (for example, "Europe/Zurich").
   ///
-  /// A list of identifiers can be found in the AdWords API documentation. E.g.
-  /// "Europe/Zurich". Required.
+  /// List of identifiers. Required.
   core.String? deadlineTimezone;
 
   /// Unique identifier for the holiday.
@@ -12900,7 +12925,7 @@ class HolidayCutoff {
   /// Date on which the deadline will become visible to consumers in ISO 8601
   /// format.
   ///
-  /// E.g. "2016-10-31" for 31st October 2016. Required.
+  /// For example, "2016-10-31" for 31st October 2016. Required.
   core.String? visibleFromDate;
 
   HolidayCutoff({
@@ -12942,19 +12967,20 @@ class HolidayCutoff {
 class HolidaysHoliday {
   /// The CLDR territory code of the country in which the holiday is available.
   ///
-  /// E.g. "US", "DE", "GB". A holiday cutoff can only be configured in a
-  /// shipping settings service with matching delivery country. Always present.
+  /// For example, "US", "DE", "GB". A holiday cutoff can only be configured in
+  /// a shipping settings service with matching delivery country. Always
+  /// present.
   core.String? countryCode;
 
   /// Date of the holiday, in ISO 8601 format.
   ///
-  /// E.g. "2016-12-25" for Christmas 2016. Always present.
+  /// For example, "2016-12-25" for Christmas 2016. Always present.
   core.String? date;
 
   /// Date on which the order has to arrive at the customer's, in ISO 8601
   /// format.
   ///
-  /// E.g. "2016-12-24" for 24th December 2016. Always present.
+  /// For example, "2016-12-24" for 24th December 2016. Always present.
   core.String? deliveryGuaranteeDate;
 
   /// Hour of the day in the delivery location's timezone on the guaranteed
@@ -13216,7 +13242,7 @@ class LiaCountrySettings {
   /// The settings for the About page.
   LiaAboutPageSettings? about;
 
-  /// CLDR country code (e.g. "US").
+  /// CLDR country code (for example, "US").
   ///
   /// Required.
   core.String? country;
@@ -14537,7 +14563,7 @@ class LocalinventoryCustomBatchResponseEntry {
 class LocationIdSet {
   /// A non-empty list of location IDs.
   ///
-  /// They must all be of the same location type (e.g., state).
+  /// They must all be of the same location type (for example, state).
   core.List<core.String>? locationIds;
 
   LocationIdSet({
@@ -15131,13 +15157,14 @@ class MinimumOrderValueTableStoreCodeSetWithMov {
 class MonetaryAmount {
   /// The pre-tax or post-tax price depends on the location of the order.
   ///
-  /// - For countries (e.g. US) where price attribute excludes tax, this field
-  /// corresponds to the pre-tax value. - For coutries (e.g. France) where price
-  /// attribute includes tax, this field corresponds to the post-tax value .
+  /// - For countries (for example, "US". where price attribute excludes tax,
+  /// this field corresponds to the pre-tax value. - For coutries (for example,
+  /// "France") where price attribute includes tax, this field corresponds to
+  /// the post-tax value .
   Price? priceAmount;
 
   /// Tax value, present only for countries where price attribute excludes tax
-  /// (e.g. US).
+  /// (for example, "US".
   ///
   /// No tax is referenced as 0 value with the corresponding `currency`.
   Price? taxAmount;
@@ -15454,7 +15481,7 @@ class OrderCancellation {
   ///
   /// Orders that are canceled with a noInventory reason will lead to the
   /// removal of the product from Buy on Google until you make an update to that
-  /// product. This will not affect your Shopping ads. Acceptable values are: -
+  /// product. This won't affect your Shopping ads. Acceptable values are: -
   /// "`autoPostInternal`" - "`autoPostInvalidBillingAddress`" -
   /// "`autoPostNoInventory`" - "`autoPostPriceError`" -
   /// "`autoPostUndeliverableShippingAddress`" - "`couponAbuse`" -
@@ -15694,8 +15721,8 @@ class OrderLineItem {
 
   /// Product data as seen by customer from the time of the order placement.
   ///
-  /// Note that certain attributes values (e.g. title or gtin) might be
-  /// reformatted and no longer match values submitted via product feed.
+  /// Note that certain attributes values (for example, title or gtin) might be
+  /// reformatted and no longer match values submitted through product feed.
   OrderLineItemProduct? product;
 
   /// Number of items canceled.
@@ -15932,7 +15959,7 @@ class OrderLineItemProduct {
   /// URL to the cached image shown to the user when order was placed.
   core.String? shownImage;
 
-  /// The CLDR territory // code of the target country of the product.
+  /// The CLDR territory code of the target country of the product.
   core.String? targetCountry;
 
   /// The title of the product.
@@ -16389,8 +16416,8 @@ class OrderPromotion {
 
   /// Promotion end time in ISO 8601 format.
   ///
-  /// Date, time, and offset required, e.g., "2020-01-02T09:00:00+01:00" or
-  /// "2020-01-02T09:00:00Z".
+  /// Date, time, and offset required, for example, "2020-01-02T09:00:00+01:00"
+  /// or "2020-01-02T09:00:00Z".
   core.String? endTime;
 
   /// The party funding the promotion.
@@ -16418,8 +16445,8 @@ class OrderPromotion {
 
   /// Promotion start time in ISO 8601 format.
   ///
-  /// Date, time, and offset required, e.g., "2020-01-02T09:00:00+01:00" or
-  /// "2020-01-02T09:00:00Z".
+  /// Date, time, and offset required, for example, "2020-01-02T09:00:00+01:00"
+  /// or "2020-01-02T09:00:00Z".
   core.String? startTime;
 
   /// The category of the promotion.
@@ -16874,8 +16901,8 @@ class OrderShipment {
   /// in emails to customers. For select supported carriers, Google also
   /// automatically updates the shipment status based on the provided shipment
   /// ID. *Note:* You can also use unsupported carriers, but emails to customers
-  /// will not include the carrier name or tracking URL, and there will be no
-  /// automatic order status updates. Supported carriers for US are: - "`ups`"
+  /// won't include the carrier name or tracking URL, and there will be no
+  /// automatic order status updates. Supported carriers for "US" are: - "`ups`"
   /// (United Parcel Service) *automatic status updates* - "`usps`" (United
   /// States Postal Service) *automatic status updates* - "`fedex`" (FedEx)
   /// *automatic status updates * - "`dhl`" (DHL eCommerce) *automatic status
@@ -17039,7 +17066,7 @@ class OrderShipmentScheduledDeliveryDetails {
   /// The phone number of the carrier fulfilling the delivery.
   ///
   /// The phone number is formatted as the international notation in ITU-T
-  /// Recommendation E.123 (e.g., "+41 44 668 1800").
+  /// Recommendation E.123 (for example, "+41 44 668 1800").
   core.String? carrierPhoneNumber;
 
   /// The date a shipment is scheduled for delivery, in ISO 8601 format.
@@ -18200,7 +18227,7 @@ class OrderreturnsRefundOperation {
   ///
   /// Allowed only when payment_type is FOP. Merchant can choose this refund
   /// option to indicate the full remaining amount of corresponding object to be
-  /// refunded to the customer via FOP.
+  /// refunded to the customer through FOP.
   core.bool? fullRefund;
 
   /// If this is set, the item will be partially refunded.
@@ -18622,9 +18649,9 @@ class OrdersCancelTestOrderByCustomerResponse {
 class OrdersCreateTestOrderRequest {
   /// The CLDR territory code of the country of the test order to create.
   ///
-  /// Affects the currency and addresses of orders created via `template_name`,
-  /// or the addresses of orders created via `test_order`. Acceptable values
-  /// are: - "`US`" - "`FR`" Defaults to `US`.
+  /// Affects the currency and addresses of orders created through
+  /// `template_name`, or the addresses of orders created through `test_order`.
+  /// Acceptable values are: - "`US`" - "`FR`" Defaults to "`US`".
   core.String? country;
 
   /// The test order template to use.
@@ -18778,14 +18805,14 @@ class OrdersCustomBatchRequestEntryCreateTestReturnReturnItem {
 class OrdersCustomBatchRequestEntryRefundItemItem {
   /// The total amount that is refunded.
   ///
-  /// (e.g. refunding $5 each for 2 products should be done by setting quantity
-  /// to 2 and amount to 10$) In case of multiple refunds, this should be the
-  /// amount you currently want to refund to the customer.
+  /// (for example, refunding $5 each for 2 products should be done by setting
+  /// quantity to 2 and amount to 10$) In case of multiple refunds, this should
+  /// be the amount you currently want to refund to the customer.
   MonetaryAmount? amount;
 
   /// If true, the full item will be refunded.
   ///
-  /// If this is true, amount should not be provided and will be ignored.
+  /// If this is true, amount shouldn't be provided and will be ignored.
   core.bool? fullRefund;
 
   /// The ID of the line item.
@@ -18848,7 +18875,7 @@ class OrdersCustomBatchRequestEntryRefundItemShipping {
 
   /// If set to true, all shipping costs for the order will be refunded.
   ///
-  /// If this is true, amount should not be provided and will be ignored. If set
+  /// If this is true, amount shouldn't be provided and will be ignored. If set
   /// to false, submit the amount of the partial shipping refund, excluding the
   /// shipping tax. The shipping tax is calculated and handled on Google's side.
   core.bool? fullRefund;
@@ -19283,7 +19310,7 @@ class OrdersRefundOrderRequest {
 
   /// If true, the full order will be refunded, including shipping.
   ///
-  /// If this is true, amount should not be provided and will be ignored.
+  /// If this is true, amount shouldn't be provided and will be ignored.
   core.bool? fullRefund;
 
   /// The ID of the operation.
@@ -19773,7 +19800,7 @@ class OrdersUpdateLineItemShippingDetailsRequest {
   /// Updated delivery by date, in ISO 8601 format.
   ///
   /// If not specified only ship by date is updated. Provided date should be
-  /// within 1 year timeframe and can not be a date in the past.
+  /// within 1 year timeframe and can't be a date in the past.
   core.String? deliverByDate;
 
   /// The ID of the line item to set metadata.
@@ -19795,7 +19822,7 @@ class OrdersUpdateLineItemShippingDetailsRequest {
   /// Updated ship by date, in ISO 8601 format.
   ///
   /// If not specified only deliver by date is updated. Provided date should be
-  /// within 1 year timeframe and can not be a date in the past.
+  /// within 1 year timeframe and can't be a date in the past.
   core.String? shipByDate;
 
   OrdersUpdateLineItemShippingDetailsRequest({
@@ -20109,12 +20136,12 @@ class PaymentServiceProviderLinkInfo {
 }
 
 class PickupCarrierService {
-  /// The name of the pickup carrier (e.g., `"UPS"`).
+  /// The name of the pickup carrier (for example, `"UPS"`).
   ///
   /// Required.
   core.String? carrierName;
 
-  /// The name of the pickup service (e.g., `"Access point"`).
+  /// The name of the pickup service (for example, `"Access point"`).
   ///
   /// Required.
   core.String? serviceName;
@@ -20141,17 +20168,17 @@ class PickupCarrierService {
 }
 
 class PickupServicesPickupService {
-  /// The name of the carrier (e.g., `"UPS"`).
+  /// The name of the carrier (for example, `"UPS"`).
   ///
   /// Always present.
   core.String? carrierName;
 
-  /// The CLDR country code of the carrier (e.g., "US").
+  /// The CLDR country code of the carrier (for example, "US").
   ///
   /// Always present.
   core.String? country;
 
-  /// The name of the pickup service (e.g., `"Access point"`).
+  /// The name of the pickup service (for example, `"Access point"`).
   ///
   /// Always present.
   core.String? serviceName;
@@ -20489,8 +20516,8 @@ class PosInventory {
 
   /// The identifier of the merchant's store.
   ///
-  /// Either a `storeCode` inserted via the API or the code of the store in a
-  /// Business Profile.
+  /// Either a `storeCode` inserted through the API or the code of the store in
+  /// a Business Profile.
   ///
   /// Required.
   core.String? storeCode;
@@ -20584,8 +20611,8 @@ class PosInventoryRequest {
 
   /// The identifier of the merchant's store.
   ///
-  /// Either a `storeCode` inserted via the API or the code of the store in a
-  /// Business Profile.
+  /// Either a `storeCode` inserted through the API or the code of the store in
+  /// a Business Profile.
   ///
   /// Required.
   core.String? storeCode;
@@ -20681,8 +20708,8 @@ class PosInventoryResponse {
 
   /// The identifier of the merchant's store.
   ///
-  /// Either a `storeCode` inserted via the API or the code of the store in a
-  /// Business Profile.
+  /// Either a `storeCode` inserted through the API or the code of the store in
+  /// a Business Profile.
   ///
   /// Required.
   core.String? storeCode;
@@ -20816,8 +20843,8 @@ class PosSale {
 
   /// The identifier of the merchant's store.
   ///
-  /// Either a `storeCode` inserted via the API or the code of the store in a
-  /// Business Profile.
+  /// Either a `storeCode` inserted through the API or the code of the store in
+  /// a Business Profile.
   ///
   /// Required.
   core.String? storeCode;
@@ -20921,8 +20948,8 @@ class PosSaleRequest {
 
   /// The identifier of the merchant's store.
   ///
-  /// Either a `storeCode` inserted via the API or the code of the store in a
-  /// Business Profile.
+  /// Either a `storeCode` inserted through the API or the code of the store in
+  /// a Business Profile.
   ///
   /// Required.
   core.String? storeCode;
@@ -21028,8 +21055,8 @@ class PosSaleResponse {
 
   /// The identifier of the merchant's store.
   ///
-  /// Either a `storeCode` inserted via the API or the code of the store in a
-  /// Business Profile.
+  /// Either a `storeCode` inserted through the API or the code of the store in
+  /// a Business Profile.
   ///
   /// Required.
   core.String? storeCode;
@@ -21269,10 +21296,10 @@ class PostalCodeRange {
       };
 }
 
-typedef Price = $Shared04;
+typedef Price = $Shared03;
 
 /// The price represented as a number and currency.
-typedef PriceAmount = $Shared04;
+typedef PriceAmount = $Shared03;
 
 /// Required product attributes are primarily defined by the products data
 /// specification.
@@ -21347,10 +21374,10 @@ class Product {
   /// A list of custom (merchant-provided) attributes.
   ///
   /// It can also be used for submitting any attribute of the feed specification
-  /// in its generic form (e.g., `{ "name": "size type", "value": "regular" }`).
-  /// This is useful for submitting attributes not explicitly exposed by the
-  /// API, such as additional attributes used for Buy on Google (formerly known
-  /// as Shopping Actions).
+  /// in its generic form (for example, `{ "name": "size type", "value":
+  /// "regular" }`). This is useful for submitting attributes not explicitly
+  /// exposed by the API, such as additional attributes used for Buy on Google
+  /// (formerly known as Shopping Actions).
   core.List<CustomAttribute>? customAttributes;
 
   /// Custom label 0 for custom grouping of items in a Shopping campaign.
@@ -21391,7 +21418,7 @@ class Product {
   core.String? energyEfficiencyClass;
 
   /// The list of destinations to exclude for this target (corresponds to
-  /// unchecked check boxes in Merchant Center).
+  /// cleared check boxes in Merchant Center).
   core.List<core.String>? excludedDestinations;
 
   /// Date on which the item should expire, as specified upon insertion, in ISO
@@ -21507,7 +21534,7 @@ class Product {
   /// Required.
   core.String? offerId;
 
-  /// The item's pattern (e.g. polka dots).
+  /// The item's pattern (for example, polka dots).
   core.String? pattern;
 
   /// The pick up option for the item.
@@ -21612,7 +21639,7 @@ class Product {
   /// definition).
   core.List<core.String>? sizes;
 
-  /// The source of the offer, i.e., how the offer was created.
+  /// The source of the offer, that is, how the offer was created.
   ///
   /// Acceptable values are: - "`api`" - "`crawl`" - "`feed`"
   core.String? source;
@@ -22279,13 +22306,13 @@ class ProductShipping {
   /// Maximum handling time (inclusive) between when the order is received and
   /// shipped in business days.
   ///
-  /// 0 means that the order is shipped on the same day as it is received if it
+  /// 0 means that the order is shipped on the same day as it's received if it
   /// happens before the cut-off time. Both maxHandlingTime and maxTransitTime
   /// are required if providing shipping speeds.
   core.String? maxHandlingTime;
 
   /// Maximum transit time (inclusive) between when the order has shipped and
-  /// when it is delivered in business days.
+  /// when it's delivered in business days.
   ///
   /// 0 means that the order is delivered on the same day as it ships. Both
   /// maxHandlingTime and maxTransitTime are required if providing shipping
@@ -22295,17 +22322,17 @@ class ProductShipping {
   /// Minimum handling time (inclusive) between when the order is received and
   /// shipped in business days.
   ///
-  /// 0 means that the order is shipped on the same day as it is received if it
+  /// 0 means that the order is shipped on the same day as it's received if it
   /// happens before the cut-off time. minHandlingTime can only be present
-  /// together with maxHandlingTime; but it is not required if maxHandlingTime
-  /// is present.
+  /// together with maxHandlingTime; but it's not required if maxHandlingTime is
+  /// present.
   core.String? minHandlingTime;
 
   /// Minimum transit time (inclusive) between when the order has shipped and
-  /// when it is delivered in business days.
+  /// when it's delivered in business days.
   ///
   /// 0 means that the order is delivered on the same day as it ships.
-  /// minTransitTime can only be present together with maxTransitTime; but it is
+  /// minTransitTime can only be present together with maxTransitTime; but it's
   /// not required if maxTransitTime is present.
   core.String? minTransitTime;
 
@@ -22443,7 +22470,7 @@ class ProductShippingWeight {
       };
 }
 
-/// The status of a product, i.e., information about a product computed
+/// The status of a product, that is, information about a product computed
 /// asynchronously.
 class ProductStatus {
   /// Date on which the item has been created, in ISO 8601 format.
@@ -23785,7 +23812,7 @@ class RateGroup {
   /// Optional. If set has to be unique within shipping service.
   core.String? name;
 
-  /// The value of the rate group (e.g. flat rate $10).
+  /// The value of the rate group (for example, flat rate $10).
   ///
   /// Can only be set if `mainTable` and `subtables` are not set.
   Value? singleValue;
@@ -25333,16 +25360,16 @@ class ReturnAddress {
 }
 
 class ReturnAddressAddress {
-  /// CLDR country code (e.g. "US").
+  /// CLDR country code (for example, "US").
   core.String? country;
 
   /// City, town or commune.
   ///
-  /// May also include dependent localities or sublocalities (e.g. neighborhoods
-  /// or suburbs).
+  /// May also include dependent localities or sublocalities (for example,
+  /// neighborhoods or suburbs).
   core.String? locality;
 
-  /// Postal code or ZIP (e.g. "94043").
+  /// Postal code or ZIP (for example, "94043").
   core.String? postalCode;
 
   /// Name of the recipient to address returns to.
@@ -26853,7 +26880,7 @@ class Service {
 
   /// The carrier-service pair delivering items to collection points.
   ///
-  /// The list of supported pickup services can be retrieved via the
+  /// The list of supported pickup services can be retrieved through the
   /// `getSupportedPickupServices` method. Required if and only if the service
   /// delivery type is `pickup`.
   PickupCarrierService? pickupService;
@@ -26975,8 +27002,8 @@ class SettlementReport {
 
   /// The list of bank identifiers used for the transfer.
   ///
-  /// e.g. Trace ID for Federal Automated Clearing House (ACH). This may also be
-  /// known as the Wire ID.
+  /// For example, Trace ID for Federal Automated Clearing House (ACH). This may
+  /// also be known as the Wire ID.
   core.List<core.String>? transferIds;
 
   SettlementReport({
@@ -27198,7 +27225,7 @@ class SettlementTransactionAmountCommission {
 }
 
 class SettlementTransactionIdentifiers {
-  /// The identifier of the adjustments, if it is available.
+  /// The identifier of the adjustments, if it's available.
   core.String? adjustmentId;
 
   /// The merchant provided order ID.
@@ -28386,7 +28413,7 @@ class TestOrderLineItemProduct {
   /// Required.
   Price? price;
 
-  /// The CLDR territory // code of the target country of the product.
+  /// The CLDR territory code of the target country of the product.
   ///
   /// Required.
   core.String? targetCountry;
@@ -28704,7 +28731,7 @@ class TransitTableTransitTimeRowTransitTimeValue {
 }
 
 class UnitInvoice {
-  /// Additional charges for a unit, e.g. shipping costs.
+  /// Additional charges for a unit, for example, shipping costs.
   core.List<UnitInvoiceAdditionalCharge>? additionalCharges;
 
   /// Pre-tax or post-tax price of one unit depending on the locality of the
@@ -28857,16 +28884,16 @@ class Value {
   /// Must be true when set, can only be set if all other fields are not set.
   core.bool? noShipping;
 
-  /// A percentage of the price represented as a number in decimal notation
-  /// (e.g., `"5.4"`).
+  /// A percentage of the price represented as a number in decimal notation (for
+  /// example, `"5.4"`).
   ///
   /// Can only be set if all other fields are not set.
   core.String? pricePercentage;
 
   /// The name of a subtable.
   ///
-  /// Can only be set in table cells (i.e., not for single values), and only if
-  /// all other fields are not set.
+  /// Can only be set in table cells (not for single values), and only if all
+  /// other fields are not set.
   core.String? subtableName;
 
   Value({
@@ -29048,7 +29075,7 @@ class Warehouse {
 class WarehouseBasedDeliveryTime {
   /// Carrier, such as `"UPS"` or `"Fedex"`.
   ///
-  /// The list of supported carriers can be retrieved via the
+  /// The list of supported carriers can be retrieved through the
   /// `listSupportedCarriers` method.
   ///
   /// Required.
@@ -29056,7 +29083,7 @@ class WarehouseBasedDeliveryTime {
 
   /// Carrier service, such as `"ground"` or `"2 days"`.
   ///
-  /// The list of supported services for a carrier can be retrieved via the
+  /// The list of supported services for a carrier can be retrieved through the
   /// `listSupportedCarriers` method. The name of the service must be in the
   /// eddSupportedServices list.
   ///
@@ -29070,7 +29097,7 @@ class WarehouseBasedDeliveryTime {
   core.String? originCity;
 
   /// Shipping origin's country represented as a
-  /// [CLDR territory code](http://www.unicode.org/repos/cldr/tags/latest/common/main/en.xml).
+  /// [CLDR territory code](https://github.com/unicode-org/cldr/blob/latest/common/main/en.xml).
   core.String? originCountry;
 
   /// Shipping origin.

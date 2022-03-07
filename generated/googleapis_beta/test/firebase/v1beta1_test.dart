@@ -181,6 +181,7 @@ api.AndroidApp buildAndroidApp() {
   final o = api.AndroidApp();
   buildCounterAndroidApp++;
   if (buildCounterAndroidApp < 3) {
+    o.apiKeyId = 'foo';
     o.appId = 'foo';
     o.displayName = 'foo';
     o.name = 'foo';
@@ -194,6 +195,10 @@ api.AndroidApp buildAndroidApp() {
 void checkAndroidApp(api.AndroidApp o) {
   buildCounterAndroidApp++;
   if (buildCounterAndroidApp < 3) {
+    unittest.expect(
+      o.apiKeyId!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.appId!,
       unittest.equals('foo'),
@@ -410,6 +415,7 @@ api.IosApp buildIosApp() {
   final o = api.IosApp();
   buildCounterIosApp++;
   if (buildCounterIosApp < 3) {
+    o.apiKeyId = 'foo';
     o.appId = 'foo';
     o.appStoreId = 'foo';
     o.bundleId = 'foo';
@@ -425,6 +431,10 @@ api.IosApp buildIosApp() {
 void checkIosApp(api.IosApp o) {
   buildCounterIosApp++;
   if (buildCounterIosApp < 3) {
+    unittest.expect(
+      o.apiKeyId!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.appId!,
       unittest.equals('foo'),
@@ -1150,6 +1160,7 @@ api.WebApp buildWebApp() {
   final o = api.WebApp();
   buildCounterWebApp++;
   if (buildCounterWebApp < 3) {
+    o.apiKeyId = 'foo';
     o.appId = 'foo';
     o.appUrls = buildUnnamed14();
     o.displayName = 'foo';
@@ -1164,6 +1175,10 @@ api.WebApp buildWebApp() {
 void checkWebApp(api.WebApp o) {
   buildCounterWebApp++;
   if (buildCounterWebApp < 3) {
+    unittest.expect(
+      o.apiKeyId!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.appId!,
       unittest.equals('foo'),

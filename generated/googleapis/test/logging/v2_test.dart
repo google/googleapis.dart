@@ -1926,6 +1926,8 @@ api.Settings buildSettings() {
   buildCounterSettings++;
   if (buildCounterSettings < 3) {
     o.disableDefaultSink = true;
+    o.kmsKeyName = 'foo';
+    o.kmsServiceAccountId = 'foo';
     o.name = 'foo';
     o.storageLocation = 'foo';
   }
@@ -1937,6 +1939,14 @@ void checkSettings(api.Settings o) {
   buildCounterSettings++;
   if (buildCounterSettings < 3) {
     unittest.expect(o.disableDefaultSink!, unittest.isTrue);
+    unittest.expect(
+      o.kmsKeyName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.kmsServiceAccountId!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.name!,
       unittest.equals('foo'),

@@ -2627,6 +2627,11 @@ class Binding {
       };
 }
 
+/// Definition of the boot image used by the Runtime.
+///
+/// Used to facilitate runtime upgradeability.
+typedef BootImage = $Empty;
+
 /// The request message for Operations.CancelOperation.
 typedef CancelOperationRequest = $Empty;
 
@@ -2966,6 +2971,9 @@ class Event {
   /// that instance / runtime underlying compute is operational.
   /// - "HEALTH" : The instance / runtime health is available. This event
   /// indicates that instance / runtime health information.
+  /// - "MAINTENANCE" : The instance / runtime is available. This event allows
+  /// instance / runtime to send Host maintenance information to Control Plane.
+  /// https://cloud.google.com/compute/docs/gpus/gpu-host-maintenance
   core.String? type;
 
   Event({
@@ -3223,6 +3231,13 @@ class ExecutionTemplate {
   /// service account.
   core.String? serviceAccount;
 
+  /// The name of a Vertex AI \[Tensorboard\] resource to which this execution
+  /// will upload Tensorboard logs.
+  ///
+  /// Format:
+  /// `projects/{project}/locations/{location}/tensorboards/{tensorboard}`
+  core.String? tensorboard;
+
   /// Parameters used in Vertex AI JobType executions.
   VertexAIParameters? vertexAiParameters;
 
@@ -3240,6 +3255,7 @@ class ExecutionTemplate {
     this.paramsYamlFile,
     this.scaleTier,
     this.serviceAccount,
+    this.tensorboard,
     this.vertexAiParameters,
   });
 
@@ -3291,6 +3307,9 @@ class ExecutionTemplate {
           serviceAccount: _json.containsKey('serviceAccount')
               ? _json['serviceAccount'] as core.String
               : null,
+          tensorboard: _json.containsKey('tensorboard')
+              ? _json['tensorboard'] as core.String
+              : null,
           vertexAiParameters: _json.containsKey('vertexAiParameters')
               ? VertexAIParameters.fromJson(_json['vertexAiParameters']
                   as core.Map<core.String, core.dynamic>)
@@ -3313,6 +3332,7 @@ class ExecutionTemplate {
         if (paramsYamlFile != null) 'paramsYamlFile': paramsYamlFile!,
         if (scaleTier != null) 'scaleTier': scaleTier!,
         if (serviceAccount != null) 'serviceAccount': serviceAccount!,
+        if (tensorboard != null) 'tensorboard': tensorboard!,
         if (vertexAiParameters != null)
           'vertexAiParameters': vertexAiParameters!,
       };
@@ -3440,6 +3460,13 @@ class Instance {
   /// - "PD_SSD" : SSD persistent disk type.
   /// - "PD_BALANCED" : Balanced persistent disk type.
   core.String? bootDiskType;
+
+  /// Flag to enable ip forwarding or not, default false/off.
+  ///
+  /// https://cloud.google.com/vpc/docs/using-routes#canipforward
+  ///
+  /// Optional.
+  core.bool? canIpForward;
 
   /// Use a container image to start the notebook instance.
   ContainerImage? containerImage;
@@ -3659,6 +3686,7 @@ class Instance {
     this.acceleratorConfig,
     this.bootDiskSizeGb,
     this.bootDiskType,
+    this.canIpForward,
     this.containerImage,
     this.createTime,
     this.creator,
@@ -3704,6 +3732,9 @@ class Instance {
               : null,
           bootDiskType: _json.containsKey('bootDiskType')
               ? _json['bootDiskType'] as core.String
+              : null,
+          canIpForward: _json.containsKey('canIpForward')
+              ? _json['canIpForward'] as core.bool
               : null,
           containerImage: _json.containsKey('containerImage')
               ? ContainerImage.fromJson(_json['containerImage']
@@ -3830,6 +3861,7 @@ class Instance {
         if (acceleratorConfig != null) 'acceleratorConfig': acceleratorConfig!,
         if (bootDiskSizeGb != null) 'bootDiskSizeGb': bootDiskSizeGb!,
         if (bootDiskType != null) 'bootDiskType': bootDiskType!,
+        if (canIpForward != null) 'canIpForward': canIpForward!,
         if (containerImage != null) 'containerImage': containerImage!,
         if (createTime != null) 'createTime': createTime!,
         if (creator != null) 'creator': creator!,
@@ -5179,6 +5211,8 @@ class RuntimeSoftwareConfig {
   core.int? idleShutdownTimeout;
 
   /// Install Nvidia Driver automatically.
+  ///
+  /// Default: True
   core.bool? installGpuDriver;
 
   /// Use a list of container images to use as Kernels in the notebook instance.
@@ -6006,6 +6040,11 @@ class VirtualMachineConfig {
   /// Optional.
   RuntimeAcceleratorConfig? acceleratorConfig;
 
+  /// Boot image metadata used for runtime upgradeability.
+  ///
+  /// Optional.
+  BootImage? bootImage;
+
   /// Use a list of container images to use as Kernels in the notebook instance.
   ///
   /// Optional.
@@ -6138,6 +6177,7 @@ class VirtualMachineConfig {
 
   VirtualMachineConfig({
     this.acceleratorConfig,
+    this.bootImage,
     this.containerImages,
     this.dataDisk,
     this.encryptionConfig,
@@ -6160,6 +6200,10 @@ class VirtualMachineConfig {
           acceleratorConfig: _json.containsKey('acceleratorConfig')
               ? RuntimeAcceleratorConfig.fromJson(_json['acceleratorConfig']
                   as core.Map<core.String, core.dynamic>)
+              : null,
+          bootImage: _json.containsKey('bootImage')
+              ? BootImage.fromJson(
+                  _json['bootImage'] as core.Map<core.String, core.dynamic>)
               : null,
           containerImages: _json.containsKey('containerImages')
               ? (_json['containerImages'] as core.List)
@@ -6234,6 +6278,7 @@ class VirtualMachineConfig {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (acceleratorConfig != null) 'acceleratorConfig': acceleratorConfig!,
+        if (bootImage != null) 'bootImage': bootImage!,
         if (containerImages != null) 'containerImages': containerImages!,
         if (dataDisk != null) 'dataDisk': dataDisk!,
         if (encryptionConfig != null) 'encryptionConfig': encryptionConfig!,

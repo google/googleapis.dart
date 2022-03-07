@@ -1118,6 +1118,7 @@ api.Subscription buildSubscription() {
     o.ackDeadlineSeconds = 42;
     o.deadLetterPolicy = buildDeadLetterPolicy();
     o.detached = true;
+    o.enableExactlyOnceDelivery = true;
     o.enableMessageOrdering = true;
     o.expirationPolicy = buildExpirationPolicy();
     o.filter = 'foo';
@@ -1144,6 +1145,7 @@ void checkSubscription(api.Subscription o) {
     );
     checkDeadLetterPolicy(o.deadLetterPolicy!);
     unittest.expect(o.detached!, unittest.isTrue);
+    unittest.expect(o.enableExactlyOnceDelivery!, unittest.isTrue);
     unittest.expect(o.enableMessageOrdering!, unittest.isTrue);
     checkExpirationPolicy(o.expirationPolicy!);
     unittest.expect(

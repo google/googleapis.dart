@@ -5444,8 +5444,6 @@ class IntegerMean {
 }
 
 /// Defines a job to be run by the Cloud Dataflow service.
-///
-/// nextID: 26
 class Job {
   /// The client's unique identifier of the job, re-used across retried
   /// attempts.
@@ -6814,6 +6812,10 @@ class MemInfo {
   /// Instantenous memory limit in bytes.
   core.String? currentLimitBytes;
 
+  /// Number of Out of Memory (OOM) events recorded since the previous
+  /// measurement.
+  core.String? currentOoms;
+
   /// Instantenous memory (RSS) size in bytes.
   core.String? currentRssBytes;
 
@@ -6825,6 +6827,7 @@ class MemInfo {
 
   MemInfo({
     this.currentLimitBytes,
+    this.currentOoms,
     this.currentRssBytes,
     this.timestamp,
     this.totalGbMs,
@@ -6834,6 +6837,9 @@ class MemInfo {
       : this(
           currentLimitBytes: _json.containsKey('currentLimitBytes')
               ? _json['currentLimitBytes'] as core.String
+              : null,
+          currentOoms: _json.containsKey('currentOoms')
+              ? _json['currentOoms'] as core.String
               : null,
           currentRssBytes: _json.containsKey('currentRssBytes')
               ? _json['currentRssBytes'] as core.String
@@ -6848,6 +6854,7 @@ class MemInfo {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (currentLimitBytes != null) 'currentLimitBytes': currentLimitBytes!,
+        if (currentOoms != null) 'currentOoms': currentOoms!,
         if (currentRssBytes != null) 'currentRssBytes': currentRssBytes!,
         if (timestamp != null) 'timestamp': timestamp!,
         if (totalGbMs != null) 'totalGbMs': totalGbMs!,

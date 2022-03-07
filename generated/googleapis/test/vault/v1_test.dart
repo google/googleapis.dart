@@ -1108,6 +1108,7 @@ api.MailExportOptions buildMailExportOptions() {
   if (buildCounterMailExportOptions < 3) {
     o.exportFormat = 'foo';
     o.showConfidentialModeContent = true;
+    o.useNewExport = true;
   }
   buildCounterMailExportOptions--;
   return o;
@@ -1121,6 +1122,7 @@ void checkMailExportOptions(api.MailExportOptions o) {
       unittest.equals('foo'),
     );
     unittest.expect(o.showConfidentialModeContent!, unittest.isTrue);
+    unittest.expect(o.useNewExport!, unittest.isTrue);
   }
   buildCounterMailExportOptions--;
 }

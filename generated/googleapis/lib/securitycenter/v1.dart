@@ -23,6 +23,7 @@
 ///
 /// - [FoldersResource]
 ///   - [FoldersAssetsResource]
+///   - [FoldersBigQueryExportsResource]
 ///   - [FoldersFindingsResource]
 ///   - [FoldersMuteConfigsResource]
 ///   - [FoldersSourcesResource]
@@ -30,6 +31,7 @@
 ///       - [FoldersSourcesFindingsExternalSystemsResource]
 /// - [OrganizationsResource]
 ///   - [OrganizationsAssetsResource]
+///   - [OrganizationsBigQueryExportsResource]
 ///   - [OrganizationsFindingsResource]
 ///   - [OrganizationsMuteConfigsResource]
 ///   - [OrganizationsNotificationConfigsResource]
@@ -39,6 +41,7 @@
 ///       - [OrganizationsSourcesFindingsExternalSystemsResource]
 /// - [ProjectsResource]
 ///   - [ProjectsAssetsResource]
+///   - [ProjectsBigQueryExportsResource]
 ///   - [ProjectsFindingsResource]
 ///   - [ProjectsMuteConfigsResource]
 ///   - [ProjectsSourcesResource]
@@ -85,6 +88,8 @@ class FoldersResource {
   final commons.ApiRequester _requester;
 
   FoldersAssetsResource get assets => FoldersAssetsResource(_requester);
+  FoldersBigQueryExportsResource get bigQueryExports =>
+      FoldersBigQueryExportsResource(_requester);
   FoldersFindingsResource get findings => FoldersFindingsResource(_requester);
   FoldersMuteConfigsResource get muteConfigs =>
       FoldersMuteConfigsResource(_requester);
@@ -334,6 +339,249 @@ class FoldersAssetsResource {
       queryParams: _queryParams,
     );
     return SecurityMarks.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class FoldersBigQueryExportsResource {
+  final commons.ApiRequester _requester;
+
+  FoldersBigQueryExportsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a big query export.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Resource name of the new big query export's parent.
+  /// Its format is "organizations/\[organization_id\]",
+  /// "folders/\[folder_id\]", or "projects/\[project_id\]".
+  /// Value must have pattern `^folders/\[^/\]+$`.
+  ///
+  /// [bigQueryExportId] - Required. Unique identifier provided by the client
+  /// within the parent scope. It must consist of lower case letters, numbers,
+  /// and hyphen, with the first character a letter, the last a letter or a
+  /// number, and a 63 character maximum.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudSecuritycenterV1BigQueryExport].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudSecuritycenterV1BigQueryExport> create(
+    GoogleCloudSecuritycenterV1BigQueryExport request,
+    core.String parent, {
+    core.String? bigQueryExportId,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (bigQueryExportId != null) 'bigQueryExportId': [bigQueryExportId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/bigQueryExports';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleCloudSecuritycenterV1BigQueryExport.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes an existing big query export.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the big query export to delete. Its format is
+  /// organizations/{organization}/bigQueryExports/{export_id},
+  /// folders/{folder}/bigQueryExports/{export_id}, or
+  /// projects/{project}/bigQueryExports/{export_id}
+  /// Value must have pattern `^folders/\[^/\]+/bigQueryExports/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'DELETE',
+      queryParams: _queryParams,
+    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets a big query export.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the big query export to retrieve. Its format is
+  /// organizations/{organization}/bigQueryExports/{export_id},
+  /// folders/{folder}/bigQueryExports/{export_id}, or
+  /// projects/{project}/bigQueryExports/{export_id}
+  /// Value must have pattern `^folders/\[^/\]+/bigQueryExports/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudSecuritycenterV1BigQueryExport].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudSecuritycenterV1BigQueryExport> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleCloudSecuritycenterV1BigQueryExport.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists BigQuery exports.
+  ///
+  /// Note that when requesting BigQuery exports at a given level all exports
+  /// under that level are also returned e.g. if requesting BigQuery exports
+  /// under a folder, then all BigQuery exports immediately under the folder
+  /// plus the ones created under the projects within the folder are returned.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent, which owns the collection of BigQuery
+  /// exports. Its format is "organizations/\[organization_id\]",
+  /// "folders/\[folder_id\]", "projects/\[project_id\]".
+  /// Value must have pattern `^folders/\[^/\]+$`.
+  ///
+  /// [pageSize] - The maximum number of configs to return. The service may
+  /// return fewer than this value. If unspecified, at most 10 configs will be
+  /// returned. The maximum value is 1000; values above 1000 will be coerced to
+  /// 1000.
+  ///
+  /// [pageToken] - A page token, received from a previous `ListBigQueryExports`
+  /// call. Provide this to retrieve the subsequent page. When paginating, all
+  /// other parameters provided to `ListBigQueryExports` must match the call
+  /// that provided the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListBigQueryExportsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListBigQueryExportsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/bigQueryExports';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return ListBigQueryExportsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates a BigQuery export.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The relative resource name of this export. See:
+  /// https://cloud.google.com/apis/design/resource_names#relative_resource_name.
+  /// Example format:
+  /// "organizations/{organization_id}/bigQueryExports/{export_id}" Example
+  /// format: "folders/{folder_id}/bigQueryExports/{export_id}" Example format:
+  /// "projects/{project_id}/bigQueryExports/{export_id}" This field is provided
+  /// in responses, and is ignored when provided in create requests.
+  /// Value must have pattern `^folders/\[^/\]+/bigQueryExports/\[^/\]+$`.
+  ///
+  /// [updateMask] - The list of fields to be updated. If empty all mutable
+  /// fields will be updated.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudSecuritycenterV1BigQueryExport].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudSecuritycenterV1BigQueryExport> patch(
+    GoogleCloudSecuritycenterV1BigQueryExport request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleCloudSecuritycenterV1BigQueryExport.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
 }
@@ -1148,6 +1396,8 @@ class OrganizationsResource {
 
   OrganizationsAssetsResource get assets =>
       OrganizationsAssetsResource(_requester);
+  OrganizationsBigQueryExportsResource get bigQueryExports =>
+      OrganizationsBigQueryExportsResource(_requester);
   OrganizationsFindingsResource get findings =>
       OrganizationsFindingsResource(_requester);
   OrganizationsMuteConfigsResource get muteConfigs =>
@@ -1537,6 +1787,249 @@ class OrganizationsAssetsResource {
       queryParams: _queryParams,
     );
     return SecurityMarks.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class OrganizationsBigQueryExportsResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsBigQueryExportsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a big query export.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Resource name of the new big query export's parent.
+  /// Its format is "organizations/\[organization_id\]",
+  /// "folders/\[folder_id\]", or "projects/\[project_id\]".
+  /// Value must have pattern `^organizations/\[^/\]+$`.
+  ///
+  /// [bigQueryExportId] - Required. Unique identifier provided by the client
+  /// within the parent scope. It must consist of lower case letters, numbers,
+  /// and hyphen, with the first character a letter, the last a letter or a
+  /// number, and a 63 character maximum.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudSecuritycenterV1BigQueryExport].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudSecuritycenterV1BigQueryExport> create(
+    GoogleCloudSecuritycenterV1BigQueryExport request,
+    core.String parent, {
+    core.String? bigQueryExportId,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (bigQueryExportId != null) 'bigQueryExportId': [bigQueryExportId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/bigQueryExports';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleCloudSecuritycenterV1BigQueryExport.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes an existing big query export.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the big query export to delete. Its format is
+  /// organizations/{organization}/bigQueryExports/{export_id},
+  /// folders/{folder}/bigQueryExports/{export_id}, or
+  /// projects/{project}/bigQueryExports/{export_id}
+  /// Value must have pattern `^organizations/\[^/\]+/bigQueryExports/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'DELETE',
+      queryParams: _queryParams,
+    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets a big query export.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the big query export to retrieve. Its format is
+  /// organizations/{organization}/bigQueryExports/{export_id},
+  /// folders/{folder}/bigQueryExports/{export_id}, or
+  /// projects/{project}/bigQueryExports/{export_id}
+  /// Value must have pattern `^organizations/\[^/\]+/bigQueryExports/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudSecuritycenterV1BigQueryExport].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudSecuritycenterV1BigQueryExport> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleCloudSecuritycenterV1BigQueryExport.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists BigQuery exports.
+  ///
+  /// Note that when requesting BigQuery exports at a given level all exports
+  /// under that level are also returned e.g. if requesting BigQuery exports
+  /// under a folder, then all BigQuery exports immediately under the folder
+  /// plus the ones created under the projects within the folder are returned.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent, which owns the collection of BigQuery
+  /// exports. Its format is "organizations/\[organization_id\]",
+  /// "folders/\[folder_id\]", "projects/\[project_id\]".
+  /// Value must have pattern `^organizations/\[^/\]+$`.
+  ///
+  /// [pageSize] - The maximum number of configs to return. The service may
+  /// return fewer than this value. If unspecified, at most 10 configs will be
+  /// returned. The maximum value is 1000; values above 1000 will be coerced to
+  /// 1000.
+  ///
+  /// [pageToken] - A page token, received from a previous `ListBigQueryExports`
+  /// call. Provide this to retrieve the subsequent page. When paginating, all
+  /// other parameters provided to `ListBigQueryExports` must match the call
+  /// that provided the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListBigQueryExportsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListBigQueryExportsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/bigQueryExports';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return ListBigQueryExportsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates a BigQuery export.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The relative resource name of this export. See:
+  /// https://cloud.google.com/apis/design/resource_names#relative_resource_name.
+  /// Example format:
+  /// "organizations/{organization_id}/bigQueryExports/{export_id}" Example
+  /// format: "folders/{folder_id}/bigQueryExports/{export_id}" Example format:
+  /// "projects/{project_id}/bigQueryExports/{export_id}" This field is provided
+  /// in responses, and is ignored when provided in create requests.
+  /// Value must have pattern `^organizations/\[^/\]+/bigQueryExports/\[^/\]+$`.
+  ///
+  /// [updateMask] - The list of fields to be updated. If empty all mutable
+  /// fields will be updated.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudSecuritycenterV1BigQueryExport].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudSecuritycenterV1BigQueryExport> patch(
+    GoogleCloudSecuritycenterV1BigQueryExport request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleCloudSecuritycenterV1BigQueryExport.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
 }
@@ -3074,6 +3567,8 @@ class ProjectsResource {
   final commons.ApiRequester _requester;
 
   ProjectsAssetsResource get assets => ProjectsAssetsResource(_requester);
+  ProjectsBigQueryExportsResource get bigQueryExports =>
+      ProjectsBigQueryExportsResource(_requester);
   ProjectsFindingsResource get findings => ProjectsFindingsResource(_requester);
   ProjectsMuteConfigsResource get muteConfigs =>
       ProjectsMuteConfigsResource(_requester);
@@ -3323,6 +3818,249 @@ class ProjectsAssetsResource {
       queryParams: _queryParams,
     );
     return SecurityMarks.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsBigQueryExportsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsBigQueryExportsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a big query export.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Resource name of the new big query export's parent.
+  /// Its format is "organizations/\[organization_id\]",
+  /// "folders/\[folder_id\]", or "projects/\[project_id\]".
+  /// Value must have pattern `^projects/\[^/\]+$`.
+  ///
+  /// [bigQueryExportId] - Required. Unique identifier provided by the client
+  /// within the parent scope. It must consist of lower case letters, numbers,
+  /// and hyphen, with the first character a letter, the last a letter or a
+  /// number, and a 63 character maximum.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudSecuritycenterV1BigQueryExport].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudSecuritycenterV1BigQueryExport> create(
+    GoogleCloudSecuritycenterV1BigQueryExport request,
+    core.String parent, {
+    core.String? bigQueryExportId,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (bigQueryExportId != null) 'bigQueryExportId': [bigQueryExportId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/bigQueryExports';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleCloudSecuritycenterV1BigQueryExport.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes an existing big query export.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the big query export to delete. Its format is
+  /// organizations/{organization}/bigQueryExports/{export_id},
+  /// folders/{folder}/bigQueryExports/{export_id}, or
+  /// projects/{project}/bigQueryExports/{export_id}
+  /// Value must have pattern `^projects/\[^/\]+/bigQueryExports/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'DELETE',
+      queryParams: _queryParams,
+    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets a big query export.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the big query export to retrieve. Its format is
+  /// organizations/{organization}/bigQueryExports/{export_id},
+  /// folders/{folder}/bigQueryExports/{export_id}, or
+  /// projects/{project}/bigQueryExports/{export_id}
+  /// Value must have pattern `^projects/\[^/\]+/bigQueryExports/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudSecuritycenterV1BigQueryExport].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudSecuritycenterV1BigQueryExport> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return GoogleCloudSecuritycenterV1BigQueryExport.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists BigQuery exports.
+  ///
+  /// Note that when requesting BigQuery exports at a given level all exports
+  /// under that level are also returned e.g. if requesting BigQuery exports
+  /// under a folder, then all BigQuery exports immediately under the folder
+  /// plus the ones created under the projects within the folder are returned.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent, which owns the collection of BigQuery
+  /// exports. Its format is "organizations/\[organization_id\]",
+  /// "folders/\[folder_id\]", "projects/\[project_id\]".
+  /// Value must have pattern `^projects/\[^/\]+$`.
+  ///
+  /// [pageSize] - The maximum number of configs to return. The service may
+  /// return fewer than this value. If unspecified, at most 10 configs will be
+  /// returned. The maximum value is 1000; values above 1000 will be coerced to
+  /// 1000.
+  ///
+  /// [pageToken] - A page token, received from a previous `ListBigQueryExports`
+  /// call. Provide this to retrieve the subsequent page. When paginating, all
+  /// other parameters provided to `ListBigQueryExports` must match the call
+  /// that provided the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListBigQueryExportsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListBigQueryExportsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/bigQueryExports';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return ListBigQueryExportsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates a BigQuery export.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The relative resource name of this export. See:
+  /// https://cloud.google.com/apis/design/resource_names#relative_resource_name.
+  /// Example format:
+  /// "organizations/{organization_id}/bigQueryExports/{export_id}" Example
+  /// format: "folders/{folder_id}/bigQueryExports/{export_id}" Example format:
+  /// "projects/{project_id}/bigQueryExports/{export_id}" This field is provided
+  /// in responses, and is ignored when provided in create requests.
+  /// Value must have pattern `^projects/\[^/\]+/bigQueryExports/\[^/\]+$`.
+  ///
+  /// [updateMask] - The list of fields to be updated. If empty all mutable
+  /// fields will be updated.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudSecuritycenterV1BigQueryExport].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudSecuritycenterV1BigQueryExport> patch(
+    GoogleCloudSecuritycenterV1BigQueryExport request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleCloudSecuritycenterV1BigQueryExport.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
 }
@@ -5202,6 +5940,126 @@ class GetIamPolicyRequest {
 /// Encapsulates settings provided to GetIamPolicy.
 typedef GetPolicyOptions = $GetPolicyOptions;
 
+/// Configures how to deliver Findings to BigQuery Instance.
+class GoogleCloudSecuritycenterV1BigQueryExport {
+  /// The time at which the big query export was created.
+  ///
+  /// This field is set by the server and will be ignored if provided on export
+  /// on creation.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// The dataset to write findings' updates to.
+  ///
+  /// Its format is "projects/\[project_id\]/datasets/\[bigquery_dataset_id\]".
+  /// BigQuery Dataset unique ID must contain only letters (a-z, A-Z), numbers
+  /// (0-9), or underscores (_).
+  core.String? dataset;
+
+  /// The description of the export (max of 1024 characters).
+  core.String? description;
+
+  /// Expression that defines the filter to apply across create/update events of
+  /// findings.
+  ///
+  /// The expression is a list of zero or more restrictions combined via logical
+  /// operators `AND` and `OR`. Parentheses are supported, and `OR` has higher
+  /// precedence than `AND`. Restrictions have the form ` ` and may have a `-`
+  /// character in front of them to indicate negation. The fields map to those
+  /// defined in the corresponding resource. The supported operators are: * `=`
+  /// for all value types. * `>`, `<`, `>=`, `<=` for integer values. * `:`,
+  /// meaning substring matching, for strings. The supported value types are: *
+  /// string literals in quotes. * integer literals without quotes. * boolean
+  /// literals `true` and `false` without quotes. Please see the proto
+  /// documentation in the finding
+  /// (https://source.corp.google.com/piper///depot/google3/google/cloud/securitycenter/v1/finding.proto)
+  /// and in the ListFindingsRequest for valid filter syntax.
+  /// (https://source.corp.google.com/piper///depot/google3/google/cloud/securitycenter/v1/securitycenter_service.proto).
+  core.String? filter;
+
+  /// Email address of the user who last edited the big query export.
+  ///
+  /// This field is set by the server and will be ignored if provided on export
+  /// creation or update.
+  ///
+  /// Output only.
+  core.String? mostRecentEditor;
+
+  /// The relative resource name of this export.
+  ///
+  /// See:
+  /// https://cloud.google.com/apis/design/resource_names#relative_resource_name.
+  /// Example format:
+  /// "organizations/{organization_id}/bigQueryExports/{export_id}" Example
+  /// format: "folders/{folder_id}/bigQueryExports/{export_id}" Example format:
+  /// "projects/{project_id}/bigQueryExports/{export_id}" This field is provided
+  /// in responses, and is ignored when provided in create requests.
+  core.String? name;
+
+  /// The service account that needs permission to create table, upload data to
+  /// the big query dataset.
+  ///
+  /// Output only.
+  core.String? principal;
+
+  /// The most recent time at which the big export was updated.
+  ///
+  /// This field is set by the server and will be ignored if provided on export
+  /// creation or update.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  GoogleCloudSecuritycenterV1BigQueryExport({
+    this.createTime,
+    this.dataset,
+    this.description,
+    this.filter,
+    this.mostRecentEditor,
+    this.name,
+    this.principal,
+    this.updateTime,
+  });
+
+  GoogleCloudSecuritycenterV1BigQueryExport.fromJson(core.Map _json)
+      : this(
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
+              : null,
+          dataset: _json.containsKey('dataset')
+              ? _json['dataset'] as core.String
+              : null,
+          description: _json.containsKey('description')
+              ? _json['description'] as core.String
+              : null,
+          filter: _json.containsKey('filter')
+              ? _json['filter'] as core.String
+              : null,
+          mostRecentEditor: _json.containsKey('mostRecentEditor')
+              ? _json['mostRecentEditor'] as core.String
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          principal: _json.containsKey('principal')
+              ? _json['principal'] as core.String
+              : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (dataset != null) 'dataset': dataset!,
+        if (description != null) 'description': description!,
+        if (filter != null) 'filter': filter!,
+        if (mostRecentEditor != null) 'mostRecentEditor': mostRecentEditor!,
+        if (name != null) 'name': name!,
+        if (principal != null) 'principal': principal!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
 /// Representation of third party SIEM/SOAR fields within SCC.
 class GoogleCloudSecuritycenterV1ExternalSystem {
   /// References primary/secondary etc assignees in the external system.
@@ -5912,6 +6770,41 @@ class ListAssetsResult {
       };
 }
 
+/// Response message for listing BigQuery exports.
+class ListBigQueryExportsResponse {
+  /// The BigQuery exports from the specified parent.
+  core.List<GoogleCloudSecuritycenterV1BigQueryExport>? bigQueryExports;
+
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  ListBigQueryExportsResponse({
+    this.bigQueryExports,
+    this.nextPageToken,
+  });
+
+  ListBigQueryExportsResponse.fromJson(core.Map _json)
+      : this(
+          bigQueryExports: _json.containsKey('bigQueryExports')
+              ? (_json['bigQueryExports'] as core.List)
+                  .map((value) =>
+                      GoogleCloudSecuritycenterV1BigQueryExport.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (bigQueryExports != null) 'bigQueryExports': bigQueryExports!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
 /// Response message for listing findings.
 class ListFindingsResponse {
   /// Findings matching the list request.
@@ -6597,7 +7490,7 @@ class Resource {
   /// The full resource name of resource's parent.
   core.String? parentName;
 
-  /// The human readable name of project that the resource belongs to.
+  /// The project id that the resource belongs to.
   core.String? projectDisplayName;
 
   /// The full resource name of project that the resource belongs to.

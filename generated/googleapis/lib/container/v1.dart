@@ -3817,7 +3817,11 @@ class AutoprovisioningNodePoolDefaults {
   /// minCpuPlatform: Intel Haswell or minCpuPlatform: Intel Sandy Bridge. For
   /// more information, read
   /// [how to specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
-  /// To unset the min cpu platform field pass "automatic" as field value.
+  /// This field is deprecated, min_cpu_platform should be specified using
+  /// cloud.google.com/requested-min-cpu-platform label selector on the pod. To
+  /// unset the min cpu platform field pass "automatic" as field value.
+  ///
+  /// Deprecated.
   core.String? minCpuPlatform;
 
   /// Scopes that are used by NAP when creating node pools.
@@ -4343,6 +4347,10 @@ class Cluster {
   /// Output only.
   core.int? nodeIpv4CidrSize;
 
+  /// Node pool configs that apply to all auto-provisioned node pools in
+  /// autopilot clusters and node auto-provisioning enabled clusters.
+  NodePoolAutoConfig? nodePoolAutoConfig;
+
   /// Default NodePool settings for the entire cluster.
   ///
   /// These settings are overridden if specified on the specific NodePool
@@ -4491,6 +4499,7 @@ class Cluster {
     this.networkPolicy,
     this.nodeConfig,
     this.nodeIpv4CidrSize,
+    this.nodePoolAutoConfig,
     this.nodePoolDefaults,
     this.nodePools,
     this.notificationConfig,
@@ -4669,6 +4678,10 @@ class Cluster {
           nodeIpv4CidrSize: _json.containsKey('nodeIpv4CidrSize')
               ? _json['nodeIpv4CidrSize'] as core.int
               : null,
+          nodePoolAutoConfig: _json.containsKey('nodePoolAutoConfig')
+              ? NodePoolAutoConfig.fromJson(_json['nodePoolAutoConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           nodePoolDefaults: _json.containsKey('nodePoolDefaults')
               ? NodePoolDefaults.fromJson(_json['nodePoolDefaults']
                   as core.Map<core.String, core.dynamic>)
@@ -4794,6 +4807,8 @@ class Cluster {
         if (networkPolicy != null) 'networkPolicy': networkPolicy!,
         if (nodeConfig != null) 'nodeConfig': nodeConfig!,
         if (nodeIpv4CidrSize != null) 'nodeIpv4CidrSize': nodeIpv4CidrSize!,
+        if (nodePoolAutoConfig != null)
+          'nodePoolAutoConfig': nodePoolAutoConfig!,
         if (nodePoolDefaults != null) 'nodePoolDefaults': nodePoolDefaults!,
         if (nodePools != null) 'nodePools': nodePools!,
         if (notificationConfig != null)
@@ -5003,6 +5018,10 @@ class ClusterUpdate {
   /// or `monitoring.googleapis.com` for earlier versions.
   core.String? desiredMonitoringService;
 
+  /// The desired network tags that apply to all auto-provisioned node pools in
+  /// autopilot clusters and node auto-provisioning enabled clusters.
+  NetworkTags? desiredNodePoolAutoConfigNetworkTags;
+
   /// Autoscaler configuration for the node pool specified in
   /// desired_node_pool_id.
   ///
@@ -5086,6 +5105,7 @@ class ClusterUpdate {
     this.desiredMeshCertificates,
     this.desiredMonitoringConfig,
     this.desiredMonitoringService,
+    this.desiredNodePoolAutoConfigNetworkTags,
     this.desiredNodePoolAutoscaling,
     this.desiredNodePoolId,
     this.desiredNodeVersion,
@@ -5197,6 +5217,12 @@ class ClusterUpdate {
               _json.containsKey('desiredMonitoringService')
                   ? _json['desiredMonitoringService'] as core.String
                   : null,
+          desiredNodePoolAutoConfigNetworkTags:
+              _json.containsKey('desiredNodePoolAutoConfigNetworkTags')
+                  ? NetworkTags.fromJson(
+                      _json['desiredNodePoolAutoConfigNetworkTags']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           desiredNodePoolAutoscaling: _json
                   .containsKey('desiredNodePoolAutoscaling')
               ? NodePoolAutoscaling.fromJson(_json['desiredNodePoolAutoscaling']
@@ -5297,6 +5323,9 @@ class ClusterUpdate {
           'desiredMonitoringConfig': desiredMonitoringConfig!,
         if (desiredMonitoringService != null)
           'desiredMonitoringService': desiredMonitoringService!,
+        if (desiredNodePoolAutoConfigNetworkTags != null)
+          'desiredNodePoolAutoConfigNetworkTags':
+              desiredNodePoolAutoConfigNetworkTags!,
         if (desiredNodePoolAutoscaling != null)
           'desiredNodePoolAutoscaling': desiredNodePoolAutoscaling!,
         if (desiredNodePoolId != null) 'desiredNodePoolId': desiredNodePoolId!,
@@ -7218,6 +7247,30 @@ class NetworkPolicyConfig {
       };
 }
 
+/// Collection of Compute Engine network tags that can be applied to a node's
+/// underlying VM instance.
+class NetworkTags {
+  /// List of network tags.
+  core.List<core.String>? tags;
+
+  NetworkTags({
+    this.tags,
+  });
+
+  NetworkTags.fromJson(core.Map _json)
+      : this(
+          tags: _json.containsKey('tags')
+              ? (_json['tags'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (tags != null) 'tags': tags!,
+      };
+}
+
 /// Parameters that describe the nodes in a cluster.
 class NodeConfig {
   /// A list of hardware accelerators to be attached to each node.
@@ -7361,6 +7414,10 @@ class NodeConfig {
   /// Shielded Instance options.
   ShieldedInstanceConfig? shieldedInstanceConfig;
 
+  /// Spot flag for enabling Spot VM, which is a rebrand of the existing
+  /// preemptible flag.
+  core.bool? spot;
+
   /// The list of instance tags applied to all nodes.
   ///
   /// Tags are used to identify valid sources or targets for network firewalls
@@ -7400,6 +7457,7 @@ class NodeConfig {
     this.sandboxConfig,
     this.serviceAccount,
     this.shieldedInstanceConfig,
+    this.spot,
     this.tags,
     this.taints,
     this.workloadMetadataConfig,
@@ -7497,6 +7555,7 @@ class NodeConfig {
               ? ShieldedInstanceConfig.fromJson(_json['shieldedInstanceConfig']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          spot: _json.containsKey('spot') ? _json['spot'] as core.bool : null,
           tags: _json.containsKey('tags')
               ? (_json['tags'] as core.List)
                   .map((value) => value as core.String)
@@ -7540,6 +7599,7 @@ class NodeConfig {
         if (serviceAccount != null) 'serviceAccount': serviceAccount!,
         if (shieldedInstanceConfig != null)
           'shieldedInstanceConfig': shieldedInstanceConfig!,
+        if (spot != null) 'spot': spot!,
         if (tags != null) 'tags': tags!,
         if (taints != null) 'taints': taints!,
         if (workloadMetadataConfig != null)
@@ -7934,6 +7994,33 @@ class NodePool {
         if (statusMessage != null) 'statusMessage': statusMessage!,
         if (upgradeSettings != null) 'upgradeSettings': upgradeSettings!,
         if (version != null) 'version': version!,
+      };
+}
+
+/// Node pool configs that apply to all auto-provisioned node pools in autopilot
+/// clusters and node auto-provisioning enabled clusters.
+class NodePoolAutoConfig {
+  /// The list of instance tags applied to all nodes.
+  ///
+  /// Tags are used to identify valid sources or targets for network firewalls
+  /// and are specified by the client during cluster creation. Each tag within
+  /// the list must comply with RFC1035.
+  NetworkTags? networkTags;
+
+  NodePoolAutoConfig({
+    this.networkTags,
+  });
+
+  NodePoolAutoConfig.fromJson(core.Map _json)
+      : this(
+          networkTags: _json.containsKey('networkTags')
+              ? NetworkTags.fromJson(
+                  _json['networkTags'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (networkTags != null) 'networkTags': networkTags!,
       };
 }
 

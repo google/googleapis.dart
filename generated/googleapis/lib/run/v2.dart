@@ -452,6 +452,7 @@ class ProjectsLocationsServicesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The location and project to list resources on.
+  /// Location must be a valid GCP region, and may not be the "-" wildcard.
   /// Format: projects/{projectnumber}/locations/{location}
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///

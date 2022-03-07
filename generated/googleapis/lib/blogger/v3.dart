@@ -2584,6 +2584,7 @@ class Page {
   /// Possible string values are:
   /// - "LIVE"
   /// - "DRAFT"
+  /// - "SOFT_TRASHED"
   core.String? status;
 
   /// The title of this entity.
@@ -3014,6 +3015,7 @@ class Post {
   /// - "LIVE"
   /// - "DRAFT"
   /// - "SCHEDULED"
+  /// - "SOFT_TRASHED"
   core.String? status;
 
   /// The title of the Post.

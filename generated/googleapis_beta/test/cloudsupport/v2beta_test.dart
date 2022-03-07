@@ -34,7 +34,6 @@ api.Actor buildActor() {
     o.displayName = 'foo';
     o.email = 'foo';
     o.googleSupport = true;
-    o.principalId = 'foo';
   }
   buildCounterActor--;
   return o;
@@ -52,10 +51,6 @@ void checkActor(api.Actor o) {
       unittest.equals('foo'),
     );
     unittest.expect(o.googleSupport!, unittest.isTrue);
-    unittest.expect(
-      o.principalId!,
-      unittest.equals('foo'),
-    );
   }
   buildCounterActor--;
 }
@@ -620,10 +615,7 @@ api.Escalation buildEscalation() {
   final o = api.Escalation();
   buildCounterEscalation++;
   if (buildCounterEscalation < 3) {
-    o.actor = buildActor();
-    o.createTime = 'foo';
     o.justification = 'foo';
-    o.name = 'foo';
     o.reason = 'foo';
   }
   buildCounterEscalation--;
@@ -633,17 +625,8 @@ api.Escalation buildEscalation() {
 void checkEscalation(api.Escalation o) {
   buildCounterEscalation++;
   if (buildCounterEscalation < 3) {
-    checkActor(o.actor!);
-    unittest.expect(
-      o.createTime!,
-      unittest.equals('foo'),
-    );
     unittest.expect(
       o.justification!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.name!,
       unittest.equals('foo'),
     );
     unittest.expect(

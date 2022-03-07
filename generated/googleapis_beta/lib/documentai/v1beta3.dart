@@ -1362,6 +1362,8 @@ class GoogleCloudDocumentaiV1beta3Document {
   /// For document shards, entities in this list may cross shard boundaries.
   core.List<GoogleCloudDocumentaiV1beta3DocumentEntity>? entities;
 
+  /// Placeholder.
+  ///
   /// Relationship among Document.entities.
   core.List<GoogleCloudDocumentaiV1beta3DocumentEntityRelation>?
       entityRelations;
@@ -1378,6 +1380,8 @@ class GoogleCloudDocumentaiV1beta3Document {
   /// Visual page layout for the Document.
   core.List<GoogleCloudDocumentaiV1beta3DocumentPage>? pages;
 
+  /// Placeholder.
+  ///
   /// Revision history of this document.
   core.List<GoogleCloudDocumentaiV1beta3DocumentRevision>? revisions;
 
@@ -1392,12 +1396,15 @@ class GoogleCloudDocumentaiV1beta3Document {
   /// Optional.
   core.String? text;
 
-  /// A list of text corrections made to \[Document.text\].
+  /// Placeholder.
   ///
-  /// This is usually used for annotating corrections to OCR mistakes. Text
-  /// changes for a given revision may not overlap with each other.
+  /// A list of text corrections made to \[Document.text\]. This is usually used
+  /// for annotating corrections to OCR mistakes. Text changes for a given
+  /// revision may not overlap with each other.
   core.List<GoogleCloudDocumentaiV1beta3DocumentTextChange>? textChanges;
 
+  /// Placeholder.
+  ///
   /// Styles for the Document.text.
   core.List<GoogleCloudDocumentaiV1beta3DocumentStyle>? textStyles;
 
@@ -1883,6 +1890,9 @@ class GoogleCloudDocumentaiV1beta3DocumentPage {
   /// The history of this page.
   GoogleCloudDocumentaiV1beta3DocumentProvenance? provenance;
 
+  /// A list of visually detected symbols on the page.
+  core.List<GoogleCloudDocumentaiV1beta3DocumentPageSymbol>? symbols;
+
   /// A list of visually detected tables on the page.
   core.List<GoogleCloudDocumentaiV1beta3DocumentPageTable>? tables;
 
@@ -1910,6 +1920,7 @@ class GoogleCloudDocumentaiV1beta3DocumentPage {
     this.pageNumber,
     this.paragraphs,
     this.provenance,
+    this.symbols,
     this.tables,
     this.tokens,
     this.transforms,
@@ -1975,6 +1986,13 @@ class GoogleCloudDocumentaiV1beta3DocumentPage {
               ? GoogleCloudDocumentaiV1beta3DocumentProvenance.fromJson(
                   _json['provenance'] as core.Map<core.String, core.dynamic>)
               : null,
+          symbols: _json.containsKey('symbols')
+              ? (_json['symbols'] as core.List)
+                  .map((value) =>
+                      GoogleCloudDocumentaiV1beta3DocumentPageSymbol.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           tables: _json.containsKey('tables')
               ? (_json['tables'] as core.List)
                   .map((value) =>
@@ -2017,6 +2035,7 @@ class GoogleCloudDocumentaiV1beta3DocumentPage {
         if (pageNumber != null) 'pageNumber': pageNumber!,
         if (paragraphs != null) 'paragraphs': paragraphs!,
         if (provenance != null) 'provenance': provenance!,
+        if (symbols != null) 'symbols': symbols!,
         if (tables != null) 'tables': tables!,
         if (tokens != null) 'tokens': tokens!,
         if (transforms != null) 'transforms': transforms!,
@@ -2186,7 +2205,7 @@ class GoogleCloudDocumentaiV1beta3DocumentPageDetectedLanguage {
   /// The BCP-47 language code, such as "en-US" or "sr-Latn".
   ///
   /// For more information, see
-  /// http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+  /// https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
   core.String? languageCode;
 
   GoogleCloudDocumentaiV1beta3DocumentPageDetectedLanguage({
@@ -2597,6 +2616,42 @@ class GoogleCloudDocumentaiV1beta3DocumentPageParagraph {
         if (detectedLanguages != null) 'detectedLanguages': detectedLanguages!,
         if (layout != null) 'layout': layout!,
         if (provenance != null) 'provenance': provenance!,
+      };
+}
+
+/// A detected symbol.
+class GoogleCloudDocumentaiV1beta3DocumentPageSymbol {
+  /// A list of detected languages together with confidence.
+  core.List<GoogleCloudDocumentaiV1beta3DocumentPageDetectedLanguage>?
+      detectedLanguages;
+
+  /// Layout for Symbol.
+  GoogleCloudDocumentaiV1beta3DocumentPageLayout? layout;
+
+  GoogleCloudDocumentaiV1beta3DocumentPageSymbol({
+    this.detectedLanguages,
+    this.layout,
+  });
+
+  GoogleCloudDocumentaiV1beta3DocumentPageSymbol.fromJson(core.Map _json)
+      : this(
+          detectedLanguages: _json.containsKey('detectedLanguages')
+              ? (_json['detectedLanguages'] as core.List)
+                  .map((value) =>
+                      GoogleCloudDocumentaiV1beta3DocumentPageDetectedLanguage
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          layout: _json.containsKey('layout')
+              ? GoogleCloudDocumentaiV1beta3DocumentPageLayout.fromJson(
+                  _json['layout'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (detectedLanguages != null) 'detectedLanguages': detectedLanguages!,
+        if (layout != null) 'layout': layout!,
       };
 }
 
@@ -3237,6 +3292,8 @@ class GoogleCloudDocumentaiV1beta3DocumentStyleFontSize {
 class GoogleCloudDocumentaiV1beta3DocumentTextAnchor {
   /// Contains the content of the text span so that users do not have to look it
   /// up in the text_segments.
+  ///
+  /// It is always populated for formFields.
   core.String? content;
 
   /// The text segments from the Document.text.
@@ -3760,7 +3817,9 @@ class GoogleCloudDocumentaiV1beta3Processor {
   /// successful.
   core.String? state;
 
-  /// The processor type, e.g., INVOICE_PARSING, W2_PARSING, etc.
+  /// The processor type, e.g., OCR_PROCESSOR, INVOICE_PROCESSOR, etc.
+  ///
+  /// To get a list of processors types, see FetchProcessorTypes.
   core.String? type;
 
   GoogleCloudDocumentaiV1beta3Processor({
@@ -3946,6 +4005,12 @@ class GoogleCloudDocumentaiV1beta3ProcessorVersion {
   /// The display name of the processor version.
   core.String? displayName;
 
+  /// The KMS key name used for encryption.
+  core.String? kmsKeyName;
+
+  /// The KMS key version with which data is encrypted.
+  core.String? kmsKeyVersionName;
+
   /// The resource name of the processor version.
   ///
   /// Format:
@@ -3970,6 +4035,8 @@ class GoogleCloudDocumentaiV1beta3ProcessorVersion {
   GoogleCloudDocumentaiV1beta3ProcessorVersion({
     this.createTime,
     this.displayName,
+    this.kmsKeyName,
+    this.kmsKeyVersionName,
     this.name,
     this.state,
   });
@@ -3982,6 +4049,12 @@ class GoogleCloudDocumentaiV1beta3ProcessorVersion {
           displayName: _json.containsKey('displayName')
               ? _json['displayName'] as core.String
               : null,
+          kmsKeyName: _json.containsKey('kmsKeyName')
+              ? _json['kmsKeyName'] as core.String
+              : null,
+          kmsKeyVersionName: _json.containsKey('kmsKeyVersionName')
+              ? _json['kmsKeyVersionName'] as core.String
+              : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           state:
               _json.containsKey('state') ? _json['state'] as core.String : null,
@@ -3990,6 +4063,8 @@ class GoogleCloudDocumentaiV1beta3ProcessorVersion {
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
         if (displayName != null) 'displayName': displayName!,
+        if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
+        if (kmsKeyVersionName != null) 'kmsKeyVersionName': kmsKeyVersionName!,
         if (name != null) 'name': name!,
         if (state != null) 'state': state!,
       };
@@ -4552,7 +4627,186 @@ typedef GoogleTypeMoney = $Money;
 /// be presented with UI elements for input or editing of fields outside
 /// countries where that field is used. For more guidance on how to use this
 /// schema, please see: https://support.google.com/business/answer/6397478
-typedef GoogleTypePostalAddress = $PostalAddress;
+class GoogleTypePostalAddress {
+  /// Unstructured address lines describing the lower levels of an address.
+  ///
+  /// Because values in address_lines do not have type information and may
+  /// sometimes contain multiple values in a single field (e.g. "Austin, TX"),
+  /// it is important that the line order is clear. The order of address lines
+  /// should be "envelope order" for the country/region of the address. In
+  /// places where this can vary (e.g. Japan), address_language is used to make
+  /// it explicit (e.g. "ja" for large-to-small ordering and "ja-Latn" or "en"
+  /// for small-to-large). This way, the most specific line of an address can be
+  /// selected based on the language. The minimum permitted structural
+  /// representation of an address consists of a region_code with all remaining
+  /// information placed in the address_lines. It would be possible to format
+  /// such an address very approximately without geocoding, but no semantic
+  /// reasoning could be made about any of the address components until it was
+  /// at least partially resolved. Creating an address only containing a
+  /// region_code and address_lines, and then geocoding is the recommended way
+  /// to handle completely unstructured addresses (as opposed to guessing which
+  /// parts of the address should be localities or administrative areas).
+  core.List<core.String>? addressLines;
+
+  /// Highest administrative subdivision which is used for postal addresses of a
+  /// country or region.
+  ///
+  /// For example, this can be a state, a province, an oblast, or a prefecture.
+  /// Specifically, for Spain this is the province and not the autonomous
+  /// community (e.g. "Barcelona" and not "Catalonia"). Many countries don't use
+  /// an administrative area in postal addresses. E.g. in Switzerland this
+  /// should be left unpopulated.
+  ///
+  /// Optional.
+  core.String? administrativeArea;
+
+  /// BCP-47 language code of the contents of this address (if known).
+  ///
+  /// This is often the UI language of the input form or is expected to match
+  /// one of the languages used in the address' country/region, or their
+  /// transliterated equivalents. This can affect formatting in certain
+  /// countries, but is not critical to the correctness of the data and will
+  /// never affect any validation or other non-formatting related operations. If
+  /// this value is not known, it should be omitted (rather than specifying a
+  /// possibly incorrect default). Examples: "zh-Hant", "ja", "ja-Latn", "en".
+  ///
+  /// Optional.
+  core.String? languageCode;
+
+  /// Generally refers to the city/town portion of the address.
+  ///
+  /// Examples: US city, IT comune, UK post town. In regions of the world where
+  /// localities are not well defined or do not fit into this structure well,
+  /// leave locality empty and use address_lines.
+  ///
+  /// Optional.
+  core.String? locality;
+
+  /// The name of the organization at the address.
+  ///
+  /// Optional.
+  core.String? organization;
+
+  /// Postal code of the address.
+  ///
+  /// Not all countries use or require postal codes to be present, but where
+  /// they are used, they may trigger additional validation with other parts of
+  /// the address (e.g. state/zip validation in the U.S.A.).
+  ///
+  /// Optional.
+  core.String? postalCode;
+
+  /// The recipient at the address.
+  ///
+  /// This field may, under certain circumstances, contain multiline
+  /// information. For example, it might contain "care of" information.
+  ///
+  /// Optional.
+  core.List<core.String>? recipients;
+
+  /// CLDR region code of the country/region of the address.
+  ///
+  /// This is never inferred and it is up to the user to ensure the value is
+  /// correct. See https://cldr.unicode.org/ and
+  /// https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html
+  /// for details. Example: "CH" for Switzerland.
+  ///
+  /// Required.
+  core.String? regionCode;
+
+  /// The schema revision of the `PostalAddress`.
+  ///
+  /// This must be set to 0, which is the latest revision. All new revisions
+  /// **must** be backward compatible with old revisions.
+  core.int? revision;
+
+  /// Additional, country-specific, sorting code.
+  ///
+  /// This is not used in most regions. Where it is used, the value is either a
+  /// string like "CEDEX", optionally followed by a number (e.g. "CEDEX 7"), or
+  /// just a number alone, representing the "sector code" (Jamaica), "delivery
+  /// area indicator" (Malawi) or "post office indicator" (e.g. Côte d'Ivoire).
+  ///
+  /// Optional.
+  core.String? sortingCode;
+
+  /// Sublocality of the address.
+  ///
+  /// For example, this can be neighborhoods, boroughs, districts.
+  ///
+  /// Optional.
+  core.String? sublocality;
+
+  GoogleTypePostalAddress({
+    this.addressLines,
+    this.administrativeArea,
+    this.languageCode,
+    this.locality,
+    this.organization,
+    this.postalCode,
+    this.recipients,
+    this.regionCode,
+    this.revision,
+    this.sortingCode,
+    this.sublocality,
+  });
+
+  GoogleTypePostalAddress.fromJson(core.Map _json)
+      : this(
+          addressLines: _json.containsKey('addressLines')
+              ? (_json['addressLines'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          administrativeArea: _json.containsKey('administrativeArea')
+              ? _json['administrativeArea'] as core.String
+              : null,
+          languageCode: _json.containsKey('languageCode')
+              ? _json['languageCode'] as core.String
+              : null,
+          locality: _json.containsKey('locality')
+              ? _json['locality'] as core.String
+              : null,
+          organization: _json.containsKey('organization')
+              ? _json['organization'] as core.String
+              : null,
+          postalCode: _json.containsKey('postalCode')
+              ? _json['postalCode'] as core.String
+              : null,
+          recipients: _json.containsKey('recipients')
+              ? (_json['recipients'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          regionCode: _json.containsKey('regionCode')
+              ? _json['regionCode'] as core.String
+              : null,
+          revision: _json.containsKey('revision')
+              ? _json['revision'] as core.int
+              : null,
+          sortingCode: _json.containsKey('sortingCode')
+              ? _json['sortingCode'] as core.String
+              : null,
+          sublocality: _json.containsKey('sublocality')
+              ? _json['sublocality'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (addressLines != null) 'addressLines': addressLines!,
+        if (administrativeArea != null)
+          'administrativeArea': administrativeArea!,
+        if (languageCode != null) 'languageCode': languageCode!,
+        if (locality != null) 'locality': locality!,
+        if (organization != null) 'organization': organization!,
+        if (postalCode != null) 'postalCode': postalCode!,
+        if (recipients != null) 'recipients': recipients!,
+        if (regionCode != null) 'regionCode': regionCode!,
+        if (revision != null) 'revision': revision!,
+        if (sortingCode != null) 'sortingCode': sortingCode!,
+        if (sublocality != null) 'sublocality': sublocality!,
+      };
+}
 
 /// Represents a time zone from the
 /// [IANA Time Zone Database](https://www.iana.org/time-zones).

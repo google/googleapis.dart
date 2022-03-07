@@ -94,10 +94,9 @@ class DmsResource {
   /// Example: spaces/AAAAAAAAAAA
   /// Value must have pattern `^dms/\[^/\]+$`.
   ///
-  /// [requestId] - Optional. A unique request ID for this message. If a message
-  /// has already been created in the space with this request ID, the subsequent
-  /// request will return the existing message and no new message will be
-  /// created.
+  /// [requestId] - Optional. A unique request ID for this message. Specifying
+  /// an existing request ID returns the message created with that ID instead of
+  /// creating a new message.
   ///
   /// [threadKey] - Optional. Opaque thread identifier string that can be
   /// specified to group messages into a single thread. If this is the first
@@ -155,10 +154,9 @@ class DmsResource {
   /// Example: spaces/AAAAAAAAAAA
   /// Value must have pattern `^dms/\[^/\]+$`.
   ///
-  /// [requestId] - Optional. A unique request ID for this message. If a message
-  /// has already been created in the space with this request ID, the subsequent
-  /// request will return the existing message and no new message will be
-  /// created.
+  /// [requestId] - Optional. A unique request ID for this message. Specifying
+  /// an existing request ID returns the message created with that ID instead of
+  /// creating a new message.
   ///
   /// [threadKey] - Optional. Opaque thread identifier string that can be
   /// specified to group messages into a single thread. If this is the first
@@ -222,10 +220,9 @@ class DmsConversationsResource {
   /// Example: spaces/AAAAAAAAAAA
   /// Value must have pattern `^dms/\[^/\]+/conversations/\[^/\]+$`.
   ///
-  /// [requestId] - Optional. A unique request ID for this message. If a message
-  /// has already been created in the space with this request ID, the subsequent
-  /// request will return the existing message and no new message will be
-  /// created.
+  /// [requestId] - Optional. A unique request ID for this message. Specifying
+  /// an existing request ID returns the message created with that ID instead of
+  /// creating a new message.
   ///
   /// [threadKey] - Optional. Opaque thread identifier string that can be
   /// specified to group messages into a single thread. If this is the first
@@ -350,10 +347,9 @@ class RoomsResource {
   /// Example: spaces/AAAAAAAAAAA
   /// Value must have pattern `^rooms/\[^/\]+$`.
   ///
-  /// [requestId] - Optional. A unique request ID for this message. If a message
-  /// has already been created in the space with this request ID, the subsequent
-  /// request will return the existing message and no new message will be
-  /// created.
+  /// [requestId] - Optional. A unique request ID for this message. Specifying
+  /// an existing request ID returns the message created with that ID instead of
+  /// creating a new message.
   ///
   /// [threadKey] - Optional. Opaque thread identifier string that can be
   /// specified to group messages into a single thread. If this is the first
@@ -411,10 +407,9 @@ class RoomsResource {
   /// Example: spaces/AAAAAAAAAAA
   /// Value must have pattern `^rooms/\[^/\]+$`.
   ///
-  /// [requestId] - Optional. A unique request ID for this message. If a message
-  /// has already been created in the space with this request ID, the subsequent
-  /// request will return the existing message and no new message will be
-  /// created.
+  /// [requestId] - Optional. A unique request ID for this message. Specifying
+  /// an existing request ID returns the message created with that ID instead of
+  /// creating a new message.
   ///
   /// [threadKey] - Optional. Opaque thread identifier string that can be
   /// specified to group messages into a single thread. If this is the first
@@ -478,10 +473,9 @@ class RoomsConversationsResource {
   /// Example: spaces/AAAAAAAAAAA
   /// Value must have pattern `^rooms/\[^/\]+/conversations/\[^/\]+$`.
   ///
-  /// [requestId] - Optional. A unique request ID for this message. If a message
-  /// has already been created in the space with this request ID, the subsequent
-  /// request will return the existing message and no new message will be
-  /// created.
+  /// [requestId] - Optional. A unique request ID for this message. Specifying
+  /// an existing request ID returns the message created with that ID instead of
+  /// creating a new message.
   ///
   /// [threadKey] - Optional. Opaque thread identifier string that can be
   /// specified to group messages into a single thread. If this is the first
@@ -627,10 +621,9 @@ class SpacesResource {
   /// Example: spaces/AAAAAAAAAAA
   /// Value must have pattern `^spaces/\[^/\]+$`.
   ///
-  /// [requestId] - Optional. A unique request ID for this message. If a message
-  /// has already been created in the space with this request ID, the subsequent
-  /// request will return the existing message and no new message will be
-  /// created.
+  /// [requestId] - Optional. A unique request ID for this message. Specifying
+  /// an existing request ID returns the message created with that ID instead of
+  /// creating a new message.
   ///
   /// [threadKey] - Optional. Opaque thread identifier string that can be
   /// specified to group messages into a single thread. If this is the first
@@ -788,10 +781,9 @@ class SpacesMessagesResource {
   /// Example: spaces/AAAAAAAAAAA
   /// Value must have pattern `^spaces/\[^/\]+$`.
   ///
-  /// [requestId] - Optional. A unique request ID for this message. If a message
-  /// has already been created in the space with this request ID, the subsequent
-  /// request will return the existing message and no new message will be
-  /// created.
+  /// [requestId] - Optional. A unique request ID for this message. Specifying
+  /// an existing request ID returns the message created with that ID instead of
+  /// creating a new message.
   ///
   /// [threadKey] - Optional. Opaque thread identifier string that can be
   /// specified to group messages into a single thread. If this is the first
@@ -1015,8 +1007,10 @@ typedef ActionParameter = $ActionParameter;
 
 /// Parameters that a bot can use to configure how it's response is posted.
 class ActionResponse {
-  /// This response is for Dialog related events and must be accompanied by
-  /// ResponseType.Dialog
+  /// A response to an event related to a
+  /// [dialog](https://developers.google.com/chat/how-tos/bot-dialogs).
+  ///
+  /// Must be accompanied by `ResponseType.Dialog`.
   DialogAction? dialogAction;
 
   /// The type of bot response.
@@ -1030,6 +1024,8 @@ class ActionResponse {
   /// a CARD_CLICKED event where the message sender type is HUMAN. Text will be
   /// ignored.
   /// - "REQUEST_CONFIG" : Privately ask the user for additional auth or config.
+  /// - "DIALOG" : Presents a
+  /// [dialog](https://developers.google.com/chat/how-tos/bot-dialogs).
   core.String? type;
 
   /// URL for users to auth or config.
@@ -1060,11 +1056,7 @@ class ActionResponse {
       };
 }
 
-/// ActionStatus represents status of a request from the bot developer's side.
-///
-/// In specific, for each request a bot gets, the bot developer will set both
-/// fields below in relation to what the response status and message related to
-/// status should be.
+/// Represents the status of a request.
 class ActionStatus {
   /// The status code.
   /// Possible string values are:
@@ -1149,11 +1141,9 @@ class ActionStatus {
   /// Internal Server Error
   core.String? statusCode;
 
-  /// This message will be the corresponding string to the above status_code.
+  /// The message to send users about the status of their request.
   ///
-  /// If unset, an appropriate generic message based on the status_code will be
-  /// shown to the user. If this field is set then the message will be surfaced
-  /// to the user for both successes and errors.
+  /// If unset, a generic message based on the `status_code` is sent.
   core.String? userFacingMessage;
 
   ActionStatus({
@@ -1583,15 +1573,10 @@ typedef Color = $Color;
 
 /// Wrapper around the card body of the dialog.
 class Dialog {
-  /// Body of the dialog, which will be rendered in a modal.
+  /// Body of the dialog, which is rendered in a modal.
   ///
-  /// NOTE: The following fields within the objects are not supported:
-  /// google.apps.card.v1.Widget.date_time_picker
-  /// google.apps.card.v1.DecoratedText.SwitchControl.on_change_action
-  /// google.apps.card.v1.TextInput.on_change_action
-  /// google.apps.card.v1.SelectionInput.on_change_action
-  /// google.apps.card.v1.DateTimePicker.on_change_action Setting the fields
-  /// above will have no effect on the dialog.
+  /// Google Chat apps do not support the following card entities:
+  /// `DateTimePicker`, `OnChangeAction`.
   GoogleAppsCardV1Card? body;
 
   Dialog({
@@ -1611,16 +1596,18 @@ class Dialog {
       };
 }
 
-/// Contains dialog if present as well as the ActionStatus for the request sent
-/// from user.
+/// Contains a [dialog](https://developers.google.com/chat/how-tos/bot-dialogs)
+/// and request status code.
 class DialogAction {
-  /// Status for either invoke dialog or submit dialog requests.
+  /// Status for a request to either invoke or submit a
+  /// [dialog](https://developers.google.com/chat/how-tos/bot-dialogs).
   ///
-  /// This will be used to display a status and message to user if needed. For
-  /// example in case of an error or success.
+  /// Displays a status and message to users, if necessary. For example, in case
+  /// of an error or success.
   ActionStatus? actionStatus;
 
-  /// Dialog for the request.
+  /// [Dialog](https://developers.google.com/chat/how-tos/bot-dialogs) for the
+  /// request.
   Dialog? dialog;
 
   DialogAction({
@@ -1723,7 +1710,8 @@ class GoogleAppsCardV1Action {
   /// clicked/activated.
   core.String? function;
 
-  ///
+  /// Specifies the loading indicator that the action displays while making the
+  /// call to the action.
   /// Possible string values are:
   /// - "SPINNER" : Displays a spinner to indicate that content is loading.
   /// - "NONE" : Nothing is displayed.
@@ -1840,7 +1828,7 @@ class GoogleAppsCardV1Button {
   /// If set, the button is filled with a solid background.
   Color? color;
 
-  /// If true, the button is displayed in a disabled state and doesn't respond
+  /// If `true`, the button is displayed in a disabled state and doesn't respond
   /// to user actions.
   core.bool? disabled;
 
@@ -1897,6 +1885,7 @@ class GoogleAppsCardV1Button {
 
 /// A list of buttons layed out horizontally.
 class GoogleAppsCardV1ButtonList {
+  /// An array of buttons.
   core.List<GoogleAppsCardV1Button>? buttons;
 
   GoogleAppsCardV1ButtonList({
@@ -1923,28 +1912,27 @@ class GoogleAppsCardV1ButtonList {
 /// For more information, see Cards . For example, the following JSON creates a
 /// card that has a header with the name, position, icons, and link for a
 /// contact, followed by a section with contact information like email and phone
-/// number. ``` { "header": { "title": "Heba Salam", "subtitle": "Software
-/// Engineer", "imageStyle": "ImageStyle.AVATAR", "imageUrl":
-/// "https://example.com/heba_salam.png", "imageAltText": "Avatar for Heba
-/// Salam" }, "sections" : [ { "header": "Contact Info", "widgets": [ {
-/// "decorated_text": { "icon": { "knownIcon": "EMAIL" }, "content":
-/// "heba.salam@example.com" } }, { "decoratedText": { "icon": { "knownIcon":
-/// "PERSON" }, "content": "Online" } }, { "decoratedText": { "icon": {
-/// "knownIcon": "PHONE" }, "content": "+1 (555) 555-1234" } }, { "buttons": [ {
-/// "textButton": { "text": "Share", }, "onClick": { "openLink": { "url":
-/// "https://example.com/share" } } }, { "textButton": { "text": "Edit", },
-/// "onClick": { "action": { "function": "goToView", "parameters": [ { "key":
-/// "viewType", "value": "EDIT" } ], "loadIndicator": "LoadIndicator.SPINNER" }
-/// } } ] } ], "collapsible": true, "uncollapsibleWidgetsCount": 3 } ],
-/// "cardActions": [ { "actionLabel": "Send Feedback", "onClick": { "openLink":
-/// { "url": "https://example.com/feedback" } } } ], "name":
-/// "contact-card-K3wB6arF2H9L" } ```
+/// number. ``` { "header": { "title": "Sasha", "subtitle": "Software Engineer",
+/// "imageStyle": "ImageStyle.AVATAR", "imageUrl":
+/// "https://example.com/sasha.png", "imageAltText": "Avatar for Sasha" },
+/// "sections" : [ { "header": "Contact Info", "widgets": [ { "decorated_text":
+/// { "icon": { "knownIcon": "EMAIL" }, "content": "sasha@example.com" } }, {
+/// "decoratedText": { "icon": { "knownIcon": "PERSON" }, "content": "Online" }
+/// }, { "decoratedText": { "icon": { "knownIcon": "PHONE" }, "content": "+1
+/// (555) 555-1234" } }, { "buttons": [ { "textButton": { "text": "Share", },
+/// "onClick": { "openLink": { "url": "https://example.com/share" } } }, {
+/// "textButton": { "text": "Edit", }, "onClick": { "action": { "function":
+/// "goToView", "parameters": [ { "key": "viewType", "value": "EDIT" } ],
+/// "loadIndicator": "LoadIndicator.SPINNER" } } } ] } ], "collapsible": true,
+/// "uncollapsibleWidgetsCount": 3 } ], "cardActions": [ { "actionLabel": "Send
+/// Feedback", "onClick": { "openLink": { "url": "https://example.com/feedback"
+/// } } } ], "name": "contact-card-K3wB6arF2H9L" } ```
 class GoogleAppsCardV1Card {
-  /// The actions of this card.
+  /// The card's actions.
   ///
-  /// They are added to a card's generated toolbar menu. For example, the
+  /// Actions are added to the card's generated toolbar menu. For example, the
   /// following JSON constructs a card action menu with Settings and Send
-  /// Feedback options: ``` "card_actions": [ { "actionLabel": "Setting",
+  /// Feedback options: ``` "card_actions": [ { "actionLabel": "Settings",
   /// "onClick": { "action": { "functionName": "goToView", "parameters": [ {
   /// "key": "viewType", "value": "SETTING" } ], "loadIndicator":
   /// "LoadIndicator.SPINNER" } } }, { "actionLabel": "Send Feedback",
@@ -1952,9 +1940,9 @@ class GoogleAppsCardV1Card {
   /// ```
   core.List<GoogleAppsCardV1CardAction>? cardActions;
 
-  /// The display style for peekCardHeader.
+  /// The display style for `peekCardHeader`.
   /// Possible string values are:
-  /// - "DISPLAY_STYLE_UNSPECIFIED"
+  /// - "DISPLAY_STYLE_UNSPECIFIED" : Default value. Do not use.
   /// - "PEEK" : The header of the card appears at the bottom of the sidebar,
   /// partially covering the current top card of the stack. Clicking the header
   /// pops the card into the card stack. If the card has no header, a generated
@@ -1971,8 +1959,9 @@ class GoogleAppsCardV1Card {
   /// A header usually contains a title and an image.
   GoogleAppsCardV1CardHeader? header;
 
-  /// Name of the card, which is used as a identifier for the card in card
-  /// navigation.
+  /// Name of the card.
+  ///
+  /// Used as a card identifier in card navigation.
   core.String? name;
 
   /// When displaying contextual content, the peek card header acts as a
@@ -2044,7 +2033,7 @@ class GoogleAppsCardV1CardAction {
   /// The label that displays as the action menu item.
   core.String? actionLabel;
 
-  /// The onclick action for this action item.
+  /// The `onClick` action for this action item.
   GoogleAppsCardV1OnClick? onClick;
 
   GoogleAppsCardV1CardAction({
@@ -2105,6 +2094,7 @@ class GoogleAppsCardV1CardFixedFooter {
       };
 }
 
+/// Represents a card header.
 class GoogleAppsCardV1CardHeader {
   /// The alternative text of this image which is used for accessibility.
   core.String? imageAltText;
@@ -2123,9 +2113,11 @@ class GoogleAppsCardV1CardHeader {
 
   /// The title of the card header.
   ///
-  /// The title must be specified. The header has a fixed height: if both a
-  /// title and subtitle are specified, each takes up one line. If only the
-  /// title is specified, it takes up both lines.
+  /// The header has a fixed height: if both a title and subtitle are specified,
+  /// each takes up one line. If only the title is specified, it takes up both
+  /// lines.
+  ///
+  /// Required.
   core.String? title;
 
   GoogleAppsCardV1CardHeader({
@@ -2164,11 +2156,13 @@ class GoogleAppsCardV1CardHeader {
 }
 
 /// The widget that lets users to specify a date and time.
+///
+/// Not supported by Google Chat apps.
 class GoogleAppsCardV1DateTimePicker {
   /// The label for the field that displays to the user.
   core.String? label;
 
-  /// The name of the text input that's used in formInput, and uniquely
+  /// The name of the text input that's used in `formInput`, and uniquely
   /// identifies this input.
   core.String? name;
 
@@ -2502,7 +2496,7 @@ class GoogleAppsCardV1Icon {
   /// - "CIRCLE" : Applies a circular mask to the image.
   core.String? imageType;
 
-  /// The icon specified by the string name of a list of known icons
+  /// The icon specified by the string name of a list of known icons.
   core.String? knownIcon;
 
   GoogleAppsCardV1Icon({
@@ -2536,13 +2530,15 @@ class GoogleAppsCardV1Icon {
       };
 }
 
-/// An image that is specified by a URL and can have an onClick action.
+/// An image that is specified by a URL and can have an `onClick` action.
 class GoogleAppsCardV1Image {
   /// The alternative text of this image, used for accessibility.
   core.String? altText;
 
   /// An image URL.
   core.String? imageUrl;
+
+  /// The action triggered by an `onClick` event.
   GoogleAppsCardV1OnClick? onClick;
 
   GoogleAppsCardV1Image({
@@ -2572,6 +2568,7 @@ class GoogleAppsCardV1Image {
       };
 }
 
+/// Represents an image.
 class GoogleAppsCardV1ImageComponent {
   /// The accessibility label for the image.
   core.String? altText;
@@ -2652,8 +2649,9 @@ class GoogleAppsCardV1ImageCropStyle {
       };
 }
 
+/// Represents the response to an `onClick` event.
 class GoogleAppsCardV1OnClick {
-  /// If specified, an action is triggered by this onClick.
+  /// If specified, an action is triggered by this `onClick`.
   GoogleAppsCardV1Action? action;
 
   /// A new card is pushed to the card stack after clicking if specified.
@@ -2661,12 +2659,12 @@ class GoogleAppsCardV1OnClick {
 
   /// An add-on triggers this action when the action needs to open a link.
   ///
-  /// This differs from the open_link above in that this needs to talk to server
-  /// to get the link. Thus some preparation work is required for web client to
-  /// do before the open link action response comes back.
+  /// This differs from the `open_link` above in that this needs to talk to
+  /// server to get the link. Thus some preparation work is required for web
+  /// client to do before the open link action response comes back.
   GoogleAppsCardV1Action? openDynamicLinkAction;
 
-  /// If specified, this onClick triggers an open link action.
+  /// If specified, this `onClick` triggers an open link action.
   GoogleAppsCardV1OpenLink? openLink;
 
   GoogleAppsCardV1OnClick({
@@ -2705,19 +2703,24 @@ class GoogleAppsCardV1OnClick {
       };
 }
 
+/// Represents an `onClick` event that opens a hyperlink.
 class GoogleAppsCardV1OpenLink {
+  /// Whether the client forgets about a link after opening it, or observes it
+  /// until the window closes.
   ///
+  /// Not supported by Chat apps.
   /// Possible string values are:
   /// - "NOTHING" : Doesn’t reload the card after the child window closes.
-  /// Reloads the card after the child window closes. If used in conjunction
-  /// with
+  /// - "RELOAD" : Reloads the card after the child window closes. If used in
+  /// conjunction with
   /// \[OpenAs.OVERLAY\](/workspace/add-ons/reference/rpc/google.apps.card.v1#openas),
   /// the child window acts as a modal dialog and the main card is blocked until
   /// the child window closes.
-  /// - "RELOAD"
   core.String? onClose;
 
+  /// How to open a link.
   ///
+  /// Not supported by Chat apps.
   /// Possible string values are:
   /// - "FULL_SIZE" : The link opens as a full size window (if that's the frame
   /// used by the client.
@@ -2770,10 +2773,10 @@ class GoogleAppsCardV1Section {
   /// The number of uncollapsible widgets.
   ///
   /// For example, when a section contains five widgets and the
-  /// `numUncollapsibleWidget` is set to `2`, the first two widgets are always
-  /// shown and the last three are collapsed as default. The
-  /// `numUncollapsibleWidget` is taken into account only when collapsible is
-  /// set to `true`.
+  /// `uncollapsibleWidgetsCount` is set to `2`, the first two widgets are
+  /// always shown and the last three are collapsed as default. The
+  /// `uncollapsibleWidgetsCount` is taken into account only when `collapsible`
+  /// is `true`.
   core.int? uncollapsibleWidgetsCount;
 
   /// A section must contain at least 1 widget.
@@ -2815,15 +2818,17 @@ class GoogleAppsCardV1Section {
       };
 }
 
-/// A widget that creates a UI item (for example, a drop-down list) with options
-/// for users to select.
+/// A widget that creates a UI item with options for users to select.
+///
+/// For example, a dropdown menu.
 class GoogleAppsCardV1SelectionInput {
+  /// An array of the selected items.
   core.List<GoogleAppsCardV1SelectionItem>? items;
 
   /// The label displayed ahead of the switch control.
   core.String? label;
 
-  /// The name of the text input which is used in formInput.
+  /// The name of the text input which is used in `formInput`.
   core.String? name;
 
   /// If specified, the form is submitted when the selection changes.
@@ -2831,12 +2836,12 @@ class GoogleAppsCardV1SelectionInput {
   /// If not specified, you must specify a separate button.
   GoogleAppsCardV1Action? onChangeAction;
 
-  ///
+  /// The type of the selection.
   /// Possible string values are:
-  /// - "CHECK_BOX" : The selection type is a checkbox.
-  /// - "RADIO_BUTTON" : The selection type is a radio button.
-  /// - "SWITCH" : The selection type is a switch.
-  /// - "DROPDOWN" : The selection type is a dropdown.
+  /// - "CHECK_BOX" : A checkbox.
+  /// - "RADIO_BUTTON" : A radio button.
+  /// - "SWITCH" : A switch.
+  /// - "DROPDOWN" : A dropdown menu.
   core.String? type;
 
   GoogleAppsCardV1SelectionInput({
@@ -2874,9 +2879,7 @@ class GoogleAppsCardV1SelectionInput {
       };
 }
 
-/// The item in the switch control.
-///
-/// A radio button, at most one of the items is selected.
+/// A selectable item in the switch control.
 class GoogleAppsCardV1SelectionItem {
   /// If more than one item is selected for `RADIO_BUTTON` and `DROPDOWN`, the
   /// first selected item is treated as selected and the ones after are ignored.
@@ -2914,15 +2917,28 @@ class GoogleAppsCardV1SelectionItem {
 }
 
 /// A suggestion item.
-///
-/// Only supports text for now.
-typedef GoogleAppsCardV1SuggestionItem = $Shared02;
+class GoogleAppsCardV1SuggestionItem {
+  /// The suggested autocomplete result.
+  core.String? text;
+
+  GoogleAppsCardV1SuggestionItem({
+    this.text,
+  });
+
+  GoogleAppsCardV1SuggestionItem.fromJson(core.Map _json)
+      : this(
+          text: _json.containsKey('text') ? _json['text'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (text != null) 'text': text!,
+      };
+}
 
 /// A container wrapping elements necessary for showing suggestion items used in
 /// text input autocomplete.
 class GoogleAppsCardV1Suggestions {
-  /// A list of suggestions items which will be used in are used in
-  /// autocomplete.
+  /// A list of suggestions used for autocomplete recommendations.
   core.List<GoogleAppsCardV1SuggestionItem>? items;
 
   GoogleAppsCardV1Suggestions({
@@ -2944,15 +2960,16 @@ class GoogleAppsCardV1Suggestions {
       };
 }
 
+/// Either a toggle-style switch or a checkbox.
 class GoogleAppsCardV1SwitchControl {
   /// The control type, either switch or checkbox.
   /// Possible string values are:
-  /// - "SWITCH"
+  /// - "SWITCH" : A toggle-style switch.
   /// - "CHECKBOX" : Deprecated in favor of `CHECK_BOX`.
-  /// - "CHECK_BOX"
+  /// - "CHECK_BOX" : A checkbox.
   core.String? controlType;
 
-  /// The name of the switch widget that's used in formInput.
+  /// The name of the switch widget that's used in `formInput`.
   core.String? name;
 
   /// The action when the switch state is changed.
@@ -3018,7 +3035,7 @@ class GoogleAppsCardV1TextInput {
   /// At least one of label and hintText must be specified.
   core.String? label;
 
-  /// The name of the text input which is used in formInput.
+  /// The name of the text input which is used in `formInput`.
   core.String? name;
 
   /// The onChange action, for example, invoke a function.
@@ -3129,9 +3146,9 @@ class GoogleAppsCardV1Widget {
   ///
   /// For example, the following JSON creates a decorated text widget showing
   /// email address: ``` "decoratedText": { "icon": { "knownIcon": "EMAIL" },
-  /// "topLabel": "Email Address", "content": "heba.salam@example.com",
+  /// "topLabel": "Email Address", "content": "sasha@example.com",
   /// "bottomLabel": "This is a new Email address!", "switchWidget": { "name":
-  /// "has_send_welcome_email_to_heba_salam", "selected": false, "controlType":
+  /// "has_send_welcome_email_to_sasha", "selected": false, "controlType":
   /// "ControlType.CHECKBOX" } } ```
   GoogleAppsCardV1DecoratedText? decoratedText;
 
@@ -3162,8 +3179,8 @@ class GoogleAppsCardV1Widget {
   /// Displays an image in this widget.
   ///
   /// For example, the following JSON creates an image with alternative text:
-  /// ``` "image": { "imageUrl": "https://example.com/heba_salam.png" "altText":
-  /// "Avatar for Heba Salam" } ```
+  /// ``` "image": { "imageUrl": "https://example.com/sasha.png" "altText":
+  /// "Avatar for Sasha" } ```
   GoogleAppsCardV1Image? image;
 
   /// Displays a switch control in this widget.
@@ -3607,7 +3624,9 @@ class Membership {
   ///
   /// Represents a
   /// [person](https://developers.google.com/people/api/rest/v1/people) in the
-  /// People API. Format: `users/{person}`
+  /// People API or a
+  /// [user](https://developers.google.com/admin-sdk/directory/reference/rest/v1/users)
+  /// in the Admin SDK Directory API. Format: `users/{user}`
   User? member;
   core.String? name;
 
@@ -3912,7 +3931,8 @@ class Section {
       };
 }
 
-/// A Slash Command in Chat.
+/// A [slash command](https://developers.google.com/chat/how-tos/slash-commands)
+/// in Google Chat.
 class SlashCommand {
   /// The id of the slash command invoked.
   core.String? commandId;
@@ -4090,7 +4110,22 @@ class TextButton {
 /// A paragraph of text.
 ///
 /// Formatted text supported.
-typedef TextParagraph = $Shared02;
+class TextParagraph {
+  core.String? text;
+
+  TextParagraph({
+    this.text,
+  });
+
+  TextParagraph.fromJson(core.Map _json)
+      : this(
+          text: _json.containsKey('text') ? _json['text'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (text != null) 'text': text!,
+      };
+}
 
 /// A thread in Google Chat.
 class Thread {
@@ -4126,9 +4161,11 @@ class User {
 
   /// Resource name for a Google Chat user.
   ///
-  /// Formatted as `users/AAAAAAAAAAA`. Represents a
+  /// Represents a
   /// [person](https://developers.google.com/people/api/rest/v1/people#Person)
-  /// in the People API.
+  /// in the People API or a
+  /// [user](https://developers.google.com/admin-sdk/directory/reference/rest/v1/users)
+  /// in the Admin SDK Directory API. Formatted as: `users/{user}`
   core.String? name;
 
   /// User type.

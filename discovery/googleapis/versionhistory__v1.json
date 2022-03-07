@@ -5,7 +5,7 @@
     "canonicalName": "Version History",
     "description": "Version History API - Prod",
     "discoveryVersion": "v1",
-    "documentationLink": "https://developers.chrome.com/versionhistory",
+    "documentationLink": "https://developer.chrome.com/docs/versionhistory/",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -269,7 +269,7 @@
             }
         }
     },
-    "revision": "20220214",
+    "revision": "20220301",
     "rootUrl": "https://versionhistory.googleapis.com/",
     "schemas": {
         "Channel": {

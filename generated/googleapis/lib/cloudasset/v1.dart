@@ -22,6 +22,7 @@
 /// Create an instance of [CloudAssetApi] to access these resources:
 ///
 /// - [AssetsResource]
+/// - [EffectiveIamPoliciesResource]
 /// - [FeedsResource]
 /// - [OperationsResource]
 /// - [SavedQueriesResource]
@@ -52,6 +53,8 @@ class CloudAssetApi {
   final commons.ApiRequester _requester;
 
   AssetsResource get assets => AssetsResource(_requester);
+  EffectiveIamPoliciesResource get effectiveIamPolicies =>
+      EffectiveIamPoliciesResource(_requester);
   FeedsResource get feeds => FeedsResource(_requester);
   OperationsResource get operations => OperationsResource(_requester);
   SavedQueriesResource get savedQueries => SavedQueriesResource(_requester);
@@ -173,6 +176,66 @@ class AssetsResource {
       queryParams: _queryParams,
     );
     return ListAssetsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class EffectiveIamPoliciesResource {
+  final commons.ApiRequester _requester;
+
+  EffectiveIamPoliciesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets effective IAM policies for a batch of resources.
+  ///
+  /// Request parameters:
+  ///
+  /// [scope] - Required. Only IAM policies on or below the scope will be
+  /// returned. This can only be an organization number (such as
+  /// "organizations/123"), a folder number (such as "folders/123"), a project
+  /// ID (such as "projects/my-project-id"), or a project number (such as
+  /// "projects/12345"). To know how to get organization id, visit
+  /// [here ](https://cloud.google.com/resource-manager/docs/creating-managing-organization#retrieving_your_organization_id).
+  /// To know how to get folder or project id, visit
+  /// [here ](https://cloud.google.com/resource-manager/docs/creating-managing-folders#viewing_or_listing_folders_and_projects).
+  /// Value must have pattern `^\[^/\]+/\[^/\]+$`.
+  ///
+  /// [names] - Required. The names refer to the
+  /// [full_resource_names](https://cloud.google.com/asset-inventory/docs/resource-name-format)
+  /// of
+  /// [searchable asset types](https://cloud.google.com/asset-inventory/docs/supported-asset-types#searchable_asset_types).
+  /// A maximum of 20 resources' effective policies can be retrieved in a batch.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [BatchGetEffectiveIamPoliciesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<BatchGetEffectiveIamPoliciesResponse> batchGet(
+    core.String scope, {
+    core.List<core.String>? names,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (names != null) 'names': names,
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' +
+        core.Uri.encodeFull('$scope') +
+        '/effectiveIamPolicies:batchGet';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return BatchGetEffectiveIamPoliciesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
 }
@@ -1900,13 +1963,46 @@ class BatchGetAssetsHistoryResponse {
       };
 }
 
+/// A response message for AssetService.BatchGetEffectiveIamPolicies.
+class BatchGetEffectiveIamPoliciesResponse {
+  /// The effective policies for a batch of resources.
+  ///
+  /// Note that the results order is the same as the order of
+  /// BatchGetEffectiveIamPoliciesRequest.names. When a resource does not have
+  /// any effective IAM policies, its corresponding policy_result will contain
+  /// empty EffectiveIamPolicy.policies.
+  core.List<EffectiveIamPolicy>? policyResults;
+
+  BatchGetEffectiveIamPoliciesResponse({
+    this.policyResults,
+  });
+
+  BatchGetEffectiveIamPoliciesResponse.fromJson(core.Map _json)
+      : this(
+          policyResults: _json.containsKey('policyResults')
+              ? (_json['policyResults'] as core.List)
+                  .map((value) => EffectiveIamPolicy.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (policyResults != null) 'policyResults': policyResults!,
+      };
+}
+
 /// A BigQuery destination for exporting assets to.
 class BigQueryDestination {
   /// The BigQuery dataset in format "projects/projectId/datasets/datasetId", to
   /// which the snapshot result should be exported.
   ///
   /// If this dataset does not exist, the export call returns an
-  /// INVALID_ARGUMENT error.
+  /// INVALID_ARGUMENT error. Setting the `contentType` for `exportAssets`
+  /// determines the
+  /// \[schema\](/asset-inventory/docs/exporting-to-bigquery#bigquery-schema) of
+  /// the BigQuery table. Setting `separateTablesPerAssetType` to `TRUE` also
+  /// influences the schema.
   ///
   /// Required.
   core.String? dataset;
@@ -2185,6 +2281,52 @@ class CreateFeedRequest {
 /// a zero day (e.g., a credit card expiration date) Related types: *
 /// google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
 typedef Date = $Date;
+
+/// The effective IAM policies on one resource.
+class EffectiveIamPolicy {
+  /// The
+  /// [full_resource_name](https://cloud.google.com/asset-inventory/docs/resource-name-format)
+  /// for which the policies are computed.
+  ///
+  /// This is one of the BatchGetEffectiveIamPoliciesRequest.names the caller
+  /// provides in the request.
+  core.String? fullResourceName;
+
+  /// The effective policies for the full_resource_name.
+  ///
+  /// These policies include the policy set on the full_resource_name and those
+  /// set on its parents and ancestors up to the
+  /// BatchGetEffectiveIamPoliciesRequest.scope. Note that these policies are
+  /// not filtered according to the resource type of the full_resource_name.
+  /// These policies are hierarchically ordered by PolicyInfo.attached_resource
+  /// starting from full_resource_name itself to its parents and ancestors, such
+  /// that policies\[i\]'s PolicyInfo.attached_resource is the child of
+  /// policies\[i+1\]'s PolicyInfo.attached_resource, if policies\[i+1\] exists.
+  core.List<PolicyInfo>? policies;
+
+  EffectiveIamPolicy({
+    this.fullResourceName,
+    this.policies,
+  });
+
+  EffectiveIamPolicy.fromJson(core.Map _json)
+      : this(
+          fullResourceName: _json.containsKey('fullResourceName')
+              ? _json['fullResourceName'] as core.String
+              : null,
+          policies: _json.containsKey('policies')
+              ? (_json['policies'] as core.List)
+                  .map((value) => PolicyInfo.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (fullResourceName != null) 'fullResourceName': fullResourceName!,
+        if (policies != null) 'policies': policies!,
+      };
+}
 
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs.
@@ -5202,6 +5344,36 @@ class Policy {
         if (bindings != null) 'bindings': bindings!,
         if (etag != null) 'etag': etag!,
         if (version != null) 'version': version!,
+      };
+}
+
+/// The IAM policy and its attached resource.
+class PolicyInfo {
+  /// The full resource name the policy is directly attached to.
+  core.String? attachedResource;
+
+  /// The IAM policy that's directly attached to the attached_resource.
+  Policy? policy;
+
+  PolicyInfo({
+    this.attachedResource,
+    this.policy,
+  });
+
+  PolicyInfo.fromJson(core.Map _json)
+      : this(
+          attachedResource: _json.containsKey('attachedResource')
+              ? _json['attachedResource'] as core.String
+              : null,
+          policy: _json.containsKey('policy')
+              ? Policy.fromJson(
+                  _json['policy'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (attachedResource != null) 'attachedResource': attachedResource!,
+        if (policy != null) 'policy': policy!,
       };
 }
 

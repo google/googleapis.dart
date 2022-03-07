@@ -4083,8 +4083,8 @@ class GoogleCloudDatacatalogV1Entry {
   /// - "DATA_SOURCE_CONNECTION" : Output only. Connection to a data source. For
   /// example, a BigQuery connection.
   /// - "ROUTINE" : Output only. Routine, for example, a BigQuery routine.
-  /// - "LAKE" : A Dataproc Metastore lake.
-  /// - "ZONE" : A Dataproc Metastore zone.
+  /// - "LAKE" : A Dataplex lake.
+  /// - "ZONE" : A Dataplex zone.
   /// - "SERVICE" : A service, for example, a Dataproc Metastore service.
   core.String? type;
 
@@ -6220,7 +6220,7 @@ class GoogleCloudDatacatalogV1TagTemplate {
   ///
   /// Public tags do not require tag template access to appear in ListTags API
   /// response. Additionally, you can search for a public tag by value with a
-  /// simple search query instead of using a ``tag:`` predicate.
+  /// simple search query in addition to using a ``tag:`` predicate.
   core.bool? isPubliclyReadable;
 
   /// The resource name of the tag template in URL format.

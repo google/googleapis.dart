@@ -533,34 +533,46 @@ void checkUnnamed13(
   checkGoogleCloudDocumentaiV1DocumentPageParagraph(o[1]);
 }
 
-core.List<api.GoogleCloudDocumentaiV1DocumentPageTable> buildUnnamed14() => [
+core.List<api.GoogleCloudDocumentaiV1DocumentPageSymbol> buildUnnamed14() => [
+      buildGoogleCloudDocumentaiV1DocumentPageSymbol(),
+      buildGoogleCloudDocumentaiV1DocumentPageSymbol(),
+    ];
+
+void checkUnnamed14(
+    core.List<api.GoogleCloudDocumentaiV1DocumentPageSymbol> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleCloudDocumentaiV1DocumentPageSymbol(o[0]);
+  checkGoogleCloudDocumentaiV1DocumentPageSymbol(o[1]);
+}
+
+core.List<api.GoogleCloudDocumentaiV1DocumentPageTable> buildUnnamed15() => [
       buildGoogleCloudDocumentaiV1DocumentPageTable(),
       buildGoogleCloudDocumentaiV1DocumentPageTable(),
     ];
 
-void checkUnnamed14(core.List<api.GoogleCloudDocumentaiV1DocumentPageTable> o) {
+void checkUnnamed15(core.List<api.GoogleCloudDocumentaiV1DocumentPageTable> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDocumentaiV1DocumentPageTable(o[0]);
   checkGoogleCloudDocumentaiV1DocumentPageTable(o[1]);
 }
 
-core.List<api.GoogleCloudDocumentaiV1DocumentPageToken> buildUnnamed15() => [
+core.List<api.GoogleCloudDocumentaiV1DocumentPageToken> buildUnnamed16() => [
       buildGoogleCloudDocumentaiV1DocumentPageToken(),
       buildGoogleCloudDocumentaiV1DocumentPageToken(),
     ];
 
-void checkUnnamed15(core.List<api.GoogleCloudDocumentaiV1DocumentPageToken> o) {
+void checkUnnamed16(core.List<api.GoogleCloudDocumentaiV1DocumentPageToken> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDocumentaiV1DocumentPageToken(o[0]);
   checkGoogleCloudDocumentaiV1DocumentPageToken(o[1]);
 }
 
-core.List<api.GoogleCloudDocumentaiV1DocumentPageMatrix> buildUnnamed16() => [
+core.List<api.GoogleCloudDocumentaiV1DocumentPageMatrix> buildUnnamed17() => [
       buildGoogleCloudDocumentaiV1DocumentPageMatrix(),
       buildGoogleCloudDocumentaiV1DocumentPageMatrix(),
     ];
 
-void checkUnnamed16(
+void checkUnnamed17(
     core.List<api.GoogleCloudDocumentaiV1DocumentPageMatrix> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDocumentaiV1DocumentPageMatrix(o[0]);
@@ -568,12 +580,12 @@ void checkUnnamed16(
 }
 
 core.List<api.GoogleCloudDocumentaiV1DocumentPageVisualElement>
-    buildUnnamed17() => [
+    buildUnnamed18() => [
           buildGoogleCloudDocumentaiV1DocumentPageVisualElement(),
           buildGoogleCloudDocumentaiV1DocumentPageVisualElement(),
         ];
 
-void checkUnnamed17(
+void checkUnnamed18(
     core.List<api.GoogleCloudDocumentaiV1DocumentPageVisualElement> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDocumentaiV1DocumentPageVisualElement(o[0]);
@@ -596,10 +608,11 @@ api.GoogleCloudDocumentaiV1DocumentPage
     o.pageNumber = 42;
     o.paragraphs = buildUnnamed13();
     o.provenance = buildGoogleCloudDocumentaiV1DocumentProvenance();
-    o.tables = buildUnnamed14();
-    o.tokens = buildUnnamed15();
-    o.transforms = buildUnnamed16();
-    o.visualElements = buildUnnamed17();
+    o.symbols = buildUnnamed14();
+    o.tables = buildUnnamed15();
+    o.tokens = buildUnnamed16();
+    o.transforms = buildUnnamed17();
+    o.visualElements = buildUnnamed18();
   }
   buildCounterGoogleCloudDocumentaiV1DocumentPage--;
   return o;
@@ -622,21 +635,22 @@ void checkGoogleCloudDocumentaiV1DocumentPage(
     );
     checkUnnamed13(o.paragraphs!);
     checkGoogleCloudDocumentaiV1DocumentProvenance(o.provenance!);
-    checkUnnamed14(o.tables!);
-    checkUnnamed15(o.tokens!);
-    checkUnnamed16(o.transforms!);
-    checkUnnamed17(o.visualElements!);
+    checkUnnamed14(o.symbols!);
+    checkUnnamed15(o.tables!);
+    checkUnnamed16(o.tokens!);
+    checkUnnamed17(o.transforms!);
+    checkUnnamed18(o.visualElements!);
   }
   buildCounterGoogleCloudDocumentaiV1DocumentPage--;
 }
 
 core.List<api.GoogleCloudDocumentaiV1DocumentPageAnchorPageRef>
-    buildUnnamed18() => [
+    buildUnnamed19() => [
           buildGoogleCloudDocumentaiV1DocumentPageAnchorPageRef(),
           buildGoogleCloudDocumentaiV1DocumentPageAnchorPageRef(),
         ];
 
-void checkUnnamed18(
+void checkUnnamed19(
     core.List<api.GoogleCloudDocumentaiV1DocumentPageAnchorPageRef> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDocumentaiV1DocumentPageAnchorPageRef(o[0]);
@@ -649,7 +663,7 @@ api.GoogleCloudDocumentaiV1DocumentPageAnchor
   final o = api.GoogleCloudDocumentaiV1DocumentPageAnchor();
   buildCounterGoogleCloudDocumentaiV1DocumentPageAnchor++;
   if (buildCounterGoogleCloudDocumentaiV1DocumentPageAnchor < 3) {
-    o.pageRefs = buildUnnamed18();
+    o.pageRefs = buildUnnamed19();
   }
   buildCounterGoogleCloudDocumentaiV1DocumentPageAnchor--;
   return o;
@@ -659,7 +673,7 @@ void checkGoogleCloudDocumentaiV1DocumentPageAnchor(
     api.GoogleCloudDocumentaiV1DocumentPageAnchor o) {
   buildCounterGoogleCloudDocumentaiV1DocumentPageAnchor++;
   if (buildCounterGoogleCloudDocumentaiV1DocumentPageAnchor < 3) {
-    checkUnnamed18(o.pageRefs!);
+    checkUnnamed19(o.pageRefs!);
   }
   buildCounterGoogleCloudDocumentaiV1DocumentPageAnchor--;
 }
@@ -706,12 +720,12 @@ void checkGoogleCloudDocumentaiV1DocumentPageAnchorPageRef(
 }
 
 core.List<api.GoogleCloudDocumentaiV1DocumentPageDetectedLanguage>
-    buildUnnamed19() => [
+    buildUnnamed20() => [
           buildGoogleCloudDocumentaiV1DocumentPageDetectedLanguage(),
           buildGoogleCloudDocumentaiV1DocumentPageDetectedLanguage(),
         ];
 
-void checkUnnamed19(
+void checkUnnamed20(
     core.List<api.GoogleCloudDocumentaiV1DocumentPageDetectedLanguage> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDocumentaiV1DocumentPageDetectedLanguage(o[0]);
@@ -724,7 +738,7 @@ api.GoogleCloudDocumentaiV1DocumentPageBlock
   final o = api.GoogleCloudDocumentaiV1DocumentPageBlock();
   buildCounterGoogleCloudDocumentaiV1DocumentPageBlock++;
   if (buildCounterGoogleCloudDocumentaiV1DocumentPageBlock < 3) {
-    o.detectedLanguages = buildUnnamed19();
+    o.detectedLanguages = buildUnnamed20();
     o.layout = buildGoogleCloudDocumentaiV1DocumentPageLayout();
     o.provenance = buildGoogleCloudDocumentaiV1DocumentProvenance();
   }
@@ -736,7 +750,7 @@ void checkGoogleCloudDocumentaiV1DocumentPageBlock(
     api.GoogleCloudDocumentaiV1DocumentPageBlock o) {
   buildCounterGoogleCloudDocumentaiV1DocumentPageBlock++;
   if (buildCounterGoogleCloudDocumentaiV1DocumentPageBlock < 3) {
-    checkUnnamed19(o.detectedLanguages!);
+    checkUnnamed20(o.detectedLanguages!);
     checkGoogleCloudDocumentaiV1DocumentPageLayout(o.layout!);
     checkGoogleCloudDocumentaiV1DocumentProvenance(o.provenance!);
   }
@@ -807,12 +821,12 @@ void checkGoogleCloudDocumentaiV1DocumentPageDimension(
 }
 
 core.List<api.GoogleCloudDocumentaiV1DocumentPageDetectedLanguage>
-    buildUnnamed20() => [
+    buildUnnamed21() => [
           buildGoogleCloudDocumentaiV1DocumentPageDetectedLanguage(),
           buildGoogleCloudDocumentaiV1DocumentPageDetectedLanguage(),
         ];
 
-void checkUnnamed20(
+void checkUnnamed21(
     core.List<api.GoogleCloudDocumentaiV1DocumentPageDetectedLanguage> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDocumentaiV1DocumentPageDetectedLanguage(o[0]);
@@ -820,12 +834,12 @@ void checkUnnamed20(
 }
 
 core.List<api.GoogleCloudDocumentaiV1DocumentPageDetectedLanguage>
-    buildUnnamed21() => [
+    buildUnnamed22() => [
           buildGoogleCloudDocumentaiV1DocumentPageDetectedLanguage(),
           buildGoogleCloudDocumentaiV1DocumentPageDetectedLanguage(),
         ];
 
-void checkUnnamed21(
+void checkUnnamed22(
     core.List<api.GoogleCloudDocumentaiV1DocumentPageDetectedLanguage> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDocumentaiV1DocumentPageDetectedLanguage(o[0]);
@@ -842,9 +856,9 @@ api.GoogleCloudDocumentaiV1DocumentPageFormField
     o.correctedValueText = 'foo';
     o.fieldName = buildGoogleCloudDocumentaiV1DocumentPageLayout();
     o.fieldValue = buildGoogleCloudDocumentaiV1DocumentPageLayout();
-    o.nameDetectedLanguages = buildUnnamed20();
+    o.nameDetectedLanguages = buildUnnamed21();
     o.provenance = buildGoogleCloudDocumentaiV1DocumentProvenance();
-    o.valueDetectedLanguages = buildUnnamed21();
+    o.valueDetectedLanguages = buildUnnamed22();
     o.valueType = 'foo';
   }
   buildCounterGoogleCloudDocumentaiV1DocumentPageFormField--;
@@ -865,9 +879,9 @@ void checkGoogleCloudDocumentaiV1DocumentPageFormField(
     );
     checkGoogleCloudDocumentaiV1DocumentPageLayout(o.fieldName!);
     checkGoogleCloudDocumentaiV1DocumentPageLayout(o.fieldValue!);
-    checkUnnamed20(o.nameDetectedLanguages!);
+    checkUnnamed21(o.nameDetectedLanguages!);
     checkGoogleCloudDocumentaiV1DocumentProvenance(o.provenance!);
-    checkUnnamed21(o.valueDetectedLanguages!);
+    checkUnnamed22(o.valueDetectedLanguages!);
     unittest.expect(
       o.valueType!,
       unittest.equals('foo'),
@@ -949,12 +963,12 @@ void checkGoogleCloudDocumentaiV1DocumentPageLayout(
 }
 
 core.List<api.GoogleCloudDocumentaiV1DocumentPageDetectedLanguage>
-    buildUnnamed22() => [
+    buildUnnamed23() => [
           buildGoogleCloudDocumentaiV1DocumentPageDetectedLanguage(),
           buildGoogleCloudDocumentaiV1DocumentPageDetectedLanguage(),
         ];
 
-void checkUnnamed22(
+void checkUnnamed23(
     core.List<api.GoogleCloudDocumentaiV1DocumentPageDetectedLanguage> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDocumentaiV1DocumentPageDetectedLanguage(o[0]);
@@ -967,7 +981,7 @@ api.GoogleCloudDocumentaiV1DocumentPageLine
   final o = api.GoogleCloudDocumentaiV1DocumentPageLine();
   buildCounterGoogleCloudDocumentaiV1DocumentPageLine++;
   if (buildCounterGoogleCloudDocumentaiV1DocumentPageLine < 3) {
-    o.detectedLanguages = buildUnnamed22();
+    o.detectedLanguages = buildUnnamed23();
     o.layout = buildGoogleCloudDocumentaiV1DocumentPageLayout();
     o.provenance = buildGoogleCloudDocumentaiV1DocumentProvenance();
   }
@@ -979,7 +993,7 @@ void checkGoogleCloudDocumentaiV1DocumentPageLine(
     api.GoogleCloudDocumentaiV1DocumentPageLine o) {
   buildCounterGoogleCloudDocumentaiV1DocumentPageLine++;
   if (buildCounterGoogleCloudDocumentaiV1DocumentPageLine < 3) {
-    checkUnnamed22(o.detectedLanguages!);
+    checkUnnamed23(o.detectedLanguages!);
     checkGoogleCloudDocumentaiV1DocumentPageLayout(o.layout!);
     checkGoogleCloudDocumentaiV1DocumentProvenance(o.provenance!);
   }
@@ -1026,12 +1040,12 @@ void checkGoogleCloudDocumentaiV1DocumentPageMatrix(
 }
 
 core.List<api.GoogleCloudDocumentaiV1DocumentPageDetectedLanguage>
-    buildUnnamed23() => [
+    buildUnnamed24() => [
           buildGoogleCloudDocumentaiV1DocumentPageDetectedLanguage(),
           buildGoogleCloudDocumentaiV1DocumentPageDetectedLanguage(),
         ];
 
-void checkUnnamed23(
+void checkUnnamed24(
     core.List<api.GoogleCloudDocumentaiV1DocumentPageDetectedLanguage> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDocumentaiV1DocumentPageDetectedLanguage(o[0]);
@@ -1044,7 +1058,7 @@ api.GoogleCloudDocumentaiV1DocumentPageParagraph
   final o = api.GoogleCloudDocumentaiV1DocumentPageParagraph();
   buildCounterGoogleCloudDocumentaiV1DocumentPageParagraph++;
   if (buildCounterGoogleCloudDocumentaiV1DocumentPageParagraph < 3) {
-    o.detectedLanguages = buildUnnamed23();
+    o.detectedLanguages = buildUnnamed24();
     o.layout = buildGoogleCloudDocumentaiV1DocumentPageLayout();
     o.provenance = buildGoogleCloudDocumentaiV1DocumentProvenance();
   }
@@ -1056,24 +1070,11 @@ void checkGoogleCloudDocumentaiV1DocumentPageParagraph(
     api.GoogleCloudDocumentaiV1DocumentPageParagraph o) {
   buildCounterGoogleCloudDocumentaiV1DocumentPageParagraph++;
   if (buildCounterGoogleCloudDocumentaiV1DocumentPageParagraph < 3) {
-    checkUnnamed23(o.detectedLanguages!);
+    checkUnnamed24(o.detectedLanguages!);
     checkGoogleCloudDocumentaiV1DocumentPageLayout(o.layout!);
     checkGoogleCloudDocumentaiV1DocumentProvenance(o.provenance!);
   }
   buildCounterGoogleCloudDocumentaiV1DocumentPageParagraph--;
-}
-
-core.List<api.GoogleCloudDocumentaiV1DocumentPageTableTableRow>
-    buildUnnamed24() => [
-          buildGoogleCloudDocumentaiV1DocumentPageTableTableRow(),
-          buildGoogleCloudDocumentaiV1DocumentPageTableTableRow(),
-        ];
-
-void checkUnnamed24(
-    core.List<api.GoogleCloudDocumentaiV1DocumentPageTableTableRow> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudDocumentaiV1DocumentPageTableTableRow(o[0]);
-  checkGoogleCloudDocumentaiV1DocumentPageTableTableRow(o[1]);
 }
 
 core.List<api.GoogleCloudDocumentaiV1DocumentPageDetectedLanguage>
@@ -1089,6 +1090,29 @@ void checkUnnamed25(
   checkGoogleCloudDocumentaiV1DocumentPageDetectedLanguage(o[1]);
 }
 
+core.int buildCounterGoogleCloudDocumentaiV1DocumentPageSymbol = 0;
+api.GoogleCloudDocumentaiV1DocumentPageSymbol
+    buildGoogleCloudDocumentaiV1DocumentPageSymbol() {
+  final o = api.GoogleCloudDocumentaiV1DocumentPageSymbol();
+  buildCounterGoogleCloudDocumentaiV1DocumentPageSymbol++;
+  if (buildCounterGoogleCloudDocumentaiV1DocumentPageSymbol < 3) {
+    o.detectedLanguages = buildUnnamed25();
+    o.layout = buildGoogleCloudDocumentaiV1DocumentPageLayout();
+  }
+  buildCounterGoogleCloudDocumentaiV1DocumentPageSymbol--;
+  return o;
+}
+
+void checkGoogleCloudDocumentaiV1DocumentPageSymbol(
+    api.GoogleCloudDocumentaiV1DocumentPageSymbol o) {
+  buildCounterGoogleCloudDocumentaiV1DocumentPageSymbol++;
+  if (buildCounterGoogleCloudDocumentaiV1DocumentPageSymbol < 3) {
+    checkUnnamed25(o.detectedLanguages!);
+    checkGoogleCloudDocumentaiV1DocumentPageLayout(o.layout!);
+  }
+  buildCounterGoogleCloudDocumentaiV1DocumentPageSymbol--;
+}
+
 core.List<api.GoogleCloudDocumentaiV1DocumentPageTableTableRow>
     buildUnnamed26() => [
           buildGoogleCloudDocumentaiV1DocumentPageTableTableRow(),
@@ -1100,33 +1124,6 @@ void checkUnnamed26(
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDocumentaiV1DocumentPageTableTableRow(o[0]);
   checkGoogleCloudDocumentaiV1DocumentPageTableTableRow(o[1]);
-}
-
-core.int buildCounterGoogleCloudDocumentaiV1DocumentPageTable = 0;
-api.GoogleCloudDocumentaiV1DocumentPageTable
-    buildGoogleCloudDocumentaiV1DocumentPageTable() {
-  final o = api.GoogleCloudDocumentaiV1DocumentPageTable();
-  buildCounterGoogleCloudDocumentaiV1DocumentPageTable++;
-  if (buildCounterGoogleCloudDocumentaiV1DocumentPageTable < 3) {
-    o.bodyRows = buildUnnamed24();
-    o.detectedLanguages = buildUnnamed25();
-    o.headerRows = buildUnnamed26();
-    o.layout = buildGoogleCloudDocumentaiV1DocumentPageLayout();
-  }
-  buildCounterGoogleCloudDocumentaiV1DocumentPageTable--;
-  return o;
-}
-
-void checkGoogleCloudDocumentaiV1DocumentPageTable(
-    api.GoogleCloudDocumentaiV1DocumentPageTable o) {
-  buildCounterGoogleCloudDocumentaiV1DocumentPageTable++;
-  if (buildCounterGoogleCloudDocumentaiV1DocumentPageTable < 3) {
-    checkUnnamed24(o.bodyRows!);
-    checkUnnamed25(o.detectedLanguages!);
-    checkUnnamed26(o.headerRows!);
-    checkGoogleCloudDocumentaiV1DocumentPageLayout(o.layout!);
-  }
-  buildCounterGoogleCloudDocumentaiV1DocumentPageTable--;
 }
 
 core.List<api.GoogleCloudDocumentaiV1DocumentPageDetectedLanguage>
@@ -1142,71 +1139,44 @@ void checkUnnamed27(
   checkGoogleCloudDocumentaiV1DocumentPageDetectedLanguage(o[1]);
 }
 
-core.int buildCounterGoogleCloudDocumentaiV1DocumentPageTableTableCell = 0;
-api.GoogleCloudDocumentaiV1DocumentPageTableTableCell
-    buildGoogleCloudDocumentaiV1DocumentPageTableTableCell() {
-  final o = api.GoogleCloudDocumentaiV1DocumentPageTableTableCell();
-  buildCounterGoogleCloudDocumentaiV1DocumentPageTableTableCell++;
-  if (buildCounterGoogleCloudDocumentaiV1DocumentPageTableTableCell < 3) {
-    o.colSpan = 42;
-    o.detectedLanguages = buildUnnamed27();
-    o.layout = buildGoogleCloudDocumentaiV1DocumentPageLayout();
-    o.rowSpan = 42;
-  }
-  buildCounterGoogleCloudDocumentaiV1DocumentPageTableTableCell--;
-  return o;
-}
-
-void checkGoogleCloudDocumentaiV1DocumentPageTableTableCell(
-    api.GoogleCloudDocumentaiV1DocumentPageTableTableCell o) {
-  buildCounterGoogleCloudDocumentaiV1DocumentPageTableTableCell++;
-  if (buildCounterGoogleCloudDocumentaiV1DocumentPageTableTableCell < 3) {
-    unittest.expect(
-      o.colSpan!,
-      unittest.equals(42),
-    );
-    checkUnnamed27(o.detectedLanguages!);
-    checkGoogleCloudDocumentaiV1DocumentPageLayout(o.layout!);
-    unittest.expect(
-      o.rowSpan!,
-      unittest.equals(42),
-    );
-  }
-  buildCounterGoogleCloudDocumentaiV1DocumentPageTableTableCell--;
-}
-
-core.List<api.GoogleCloudDocumentaiV1DocumentPageTableTableCell>
+core.List<api.GoogleCloudDocumentaiV1DocumentPageTableTableRow>
     buildUnnamed28() => [
-          buildGoogleCloudDocumentaiV1DocumentPageTableTableCell(),
-          buildGoogleCloudDocumentaiV1DocumentPageTableTableCell(),
+          buildGoogleCloudDocumentaiV1DocumentPageTableTableRow(),
+          buildGoogleCloudDocumentaiV1DocumentPageTableTableRow(),
         ];
 
 void checkUnnamed28(
-    core.List<api.GoogleCloudDocumentaiV1DocumentPageTableTableCell> o) {
+    core.List<api.GoogleCloudDocumentaiV1DocumentPageTableTableRow> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudDocumentaiV1DocumentPageTableTableCell(o[0]);
-  checkGoogleCloudDocumentaiV1DocumentPageTableTableCell(o[1]);
+  checkGoogleCloudDocumentaiV1DocumentPageTableTableRow(o[0]);
+  checkGoogleCloudDocumentaiV1DocumentPageTableTableRow(o[1]);
 }
 
-core.int buildCounterGoogleCloudDocumentaiV1DocumentPageTableTableRow = 0;
-api.GoogleCloudDocumentaiV1DocumentPageTableTableRow
-    buildGoogleCloudDocumentaiV1DocumentPageTableTableRow() {
-  final o = api.GoogleCloudDocumentaiV1DocumentPageTableTableRow();
-  buildCounterGoogleCloudDocumentaiV1DocumentPageTableTableRow++;
-  if (buildCounterGoogleCloudDocumentaiV1DocumentPageTableTableRow < 3) {
-    o.cells = buildUnnamed28();
+core.int buildCounterGoogleCloudDocumentaiV1DocumentPageTable = 0;
+api.GoogleCloudDocumentaiV1DocumentPageTable
+    buildGoogleCloudDocumentaiV1DocumentPageTable() {
+  final o = api.GoogleCloudDocumentaiV1DocumentPageTable();
+  buildCounterGoogleCloudDocumentaiV1DocumentPageTable++;
+  if (buildCounterGoogleCloudDocumentaiV1DocumentPageTable < 3) {
+    o.bodyRows = buildUnnamed26();
+    o.detectedLanguages = buildUnnamed27();
+    o.headerRows = buildUnnamed28();
+    o.layout = buildGoogleCloudDocumentaiV1DocumentPageLayout();
   }
-  buildCounterGoogleCloudDocumentaiV1DocumentPageTableTableRow--;
+  buildCounterGoogleCloudDocumentaiV1DocumentPageTable--;
   return o;
 }
 
-void checkGoogleCloudDocumentaiV1DocumentPageTableTableRow(
-    api.GoogleCloudDocumentaiV1DocumentPageTableTableRow o) {
-  buildCounterGoogleCloudDocumentaiV1DocumentPageTableTableRow++;
-  if (buildCounterGoogleCloudDocumentaiV1DocumentPageTableTableRow < 3) {
-    checkUnnamed28(o.cells!);
+void checkGoogleCloudDocumentaiV1DocumentPageTable(
+    api.GoogleCloudDocumentaiV1DocumentPageTable o) {
+  buildCounterGoogleCloudDocumentaiV1DocumentPageTable++;
+  if (buildCounterGoogleCloudDocumentaiV1DocumentPageTable < 3) {
+    checkUnnamed26(o.bodyRows!);
+    checkUnnamed27(o.detectedLanguages!);
+    checkUnnamed28(o.headerRows!);
+    checkGoogleCloudDocumentaiV1DocumentPageLayout(o.layout!);
   }
-  buildCounterGoogleCloudDocumentaiV1DocumentPageTableTableRow--;
+  buildCounterGoogleCloudDocumentaiV1DocumentPageTable--;
 }
 
 core.List<api.GoogleCloudDocumentaiV1DocumentPageDetectedLanguage>
@@ -1222,6 +1192,86 @@ void checkUnnamed29(
   checkGoogleCloudDocumentaiV1DocumentPageDetectedLanguage(o[1]);
 }
 
+core.int buildCounterGoogleCloudDocumentaiV1DocumentPageTableTableCell = 0;
+api.GoogleCloudDocumentaiV1DocumentPageTableTableCell
+    buildGoogleCloudDocumentaiV1DocumentPageTableTableCell() {
+  final o = api.GoogleCloudDocumentaiV1DocumentPageTableTableCell();
+  buildCounterGoogleCloudDocumentaiV1DocumentPageTableTableCell++;
+  if (buildCounterGoogleCloudDocumentaiV1DocumentPageTableTableCell < 3) {
+    o.colSpan = 42;
+    o.detectedLanguages = buildUnnamed29();
+    o.layout = buildGoogleCloudDocumentaiV1DocumentPageLayout();
+    o.rowSpan = 42;
+  }
+  buildCounterGoogleCloudDocumentaiV1DocumentPageTableTableCell--;
+  return o;
+}
+
+void checkGoogleCloudDocumentaiV1DocumentPageTableTableCell(
+    api.GoogleCloudDocumentaiV1DocumentPageTableTableCell o) {
+  buildCounterGoogleCloudDocumentaiV1DocumentPageTableTableCell++;
+  if (buildCounterGoogleCloudDocumentaiV1DocumentPageTableTableCell < 3) {
+    unittest.expect(
+      o.colSpan!,
+      unittest.equals(42),
+    );
+    checkUnnamed29(o.detectedLanguages!);
+    checkGoogleCloudDocumentaiV1DocumentPageLayout(o.layout!);
+    unittest.expect(
+      o.rowSpan!,
+      unittest.equals(42),
+    );
+  }
+  buildCounterGoogleCloudDocumentaiV1DocumentPageTableTableCell--;
+}
+
+core.List<api.GoogleCloudDocumentaiV1DocumentPageTableTableCell>
+    buildUnnamed30() => [
+          buildGoogleCloudDocumentaiV1DocumentPageTableTableCell(),
+          buildGoogleCloudDocumentaiV1DocumentPageTableTableCell(),
+        ];
+
+void checkUnnamed30(
+    core.List<api.GoogleCloudDocumentaiV1DocumentPageTableTableCell> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleCloudDocumentaiV1DocumentPageTableTableCell(o[0]);
+  checkGoogleCloudDocumentaiV1DocumentPageTableTableCell(o[1]);
+}
+
+core.int buildCounterGoogleCloudDocumentaiV1DocumentPageTableTableRow = 0;
+api.GoogleCloudDocumentaiV1DocumentPageTableTableRow
+    buildGoogleCloudDocumentaiV1DocumentPageTableTableRow() {
+  final o = api.GoogleCloudDocumentaiV1DocumentPageTableTableRow();
+  buildCounterGoogleCloudDocumentaiV1DocumentPageTableTableRow++;
+  if (buildCounterGoogleCloudDocumentaiV1DocumentPageTableTableRow < 3) {
+    o.cells = buildUnnamed30();
+  }
+  buildCounterGoogleCloudDocumentaiV1DocumentPageTableTableRow--;
+  return o;
+}
+
+void checkGoogleCloudDocumentaiV1DocumentPageTableTableRow(
+    api.GoogleCloudDocumentaiV1DocumentPageTableTableRow o) {
+  buildCounterGoogleCloudDocumentaiV1DocumentPageTableTableRow++;
+  if (buildCounterGoogleCloudDocumentaiV1DocumentPageTableTableRow < 3) {
+    checkUnnamed30(o.cells!);
+  }
+  buildCounterGoogleCloudDocumentaiV1DocumentPageTableTableRow--;
+}
+
+core.List<api.GoogleCloudDocumentaiV1DocumentPageDetectedLanguage>
+    buildUnnamed31() => [
+          buildGoogleCloudDocumentaiV1DocumentPageDetectedLanguage(),
+          buildGoogleCloudDocumentaiV1DocumentPageDetectedLanguage(),
+        ];
+
+void checkUnnamed31(
+    core.List<api.GoogleCloudDocumentaiV1DocumentPageDetectedLanguage> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleCloudDocumentaiV1DocumentPageDetectedLanguage(o[0]);
+  checkGoogleCloudDocumentaiV1DocumentPageDetectedLanguage(o[1]);
+}
+
 core.int buildCounterGoogleCloudDocumentaiV1DocumentPageToken = 0;
 api.GoogleCloudDocumentaiV1DocumentPageToken
     buildGoogleCloudDocumentaiV1DocumentPageToken() {
@@ -1230,7 +1280,7 @@ api.GoogleCloudDocumentaiV1DocumentPageToken
   if (buildCounterGoogleCloudDocumentaiV1DocumentPageToken < 3) {
     o.detectedBreak =
         buildGoogleCloudDocumentaiV1DocumentPageTokenDetectedBreak();
-    o.detectedLanguages = buildUnnamed29();
+    o.detectedLanguages = buildUnnamed31();
     o.layout = buildGoogleCloudDocumentaiV1DocumentPageLayout();
     o.provenance = buildGoogleCloudDocumentaiV1DocumentProvenance();
   }
@@ -1244,7 +1294,7 @@ void checkGoogleCloudDocumentaiV1DocumentPageToken(
   if (buildCounterGoogleCloudDocumentaiV1DocumentPageToken < 3) {
     checkGoogleCloudDocumentaiV1DocumentPageTokenDetectedBreak(
         o.detectedBreak!);
-    checkUnnamed29(o.detectedLanguages!);
+    checkUnnamed31(o.detectedLanguages!);
     checkGoogleCloudDocumentaiV1DocumentPageLayout(o.layout!);
     checkGoogleCloudDocumentaiV1DocumentProvenance(o.provenance!);
   }
@@ -1276,12 +1326,12 @@ void checkGoogleCloudDocumentaiV1DocumentPageTokenDetectedBreak(
 }
 
 core.List<api.GoogleCloudDocumentaiV1DocumentPageDetectedLanguage>
-    buildUnnamed30() => [
+    buildUnnamed32() => [
           buildGoogleCloudDocumentaiV1DocumentPageDetectedLanguage(),
           buildGoogleCloudDocumentaiV1DocumentPageDetectedLanguage(),
         ];
 
-void checkUnnamed30(
+void checkUnnamed32(
     core.List<api.GoogleCloudDocumentaiV1DocumentPageDetectedLanguage> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDocumentaiV1DocumentPageDetectedLanguage(o[0]);
@@ -1294,7 +1344,7 @@ api.GoogleCloudDocumentaiV1DocumentPageVisualElement
   final o = api.GoogleCloudDocumentaiV1DocumentPageVisualElement();
   buildCounterGoogleCloudDocumentaiV1DocumentPageVisualElement++;
   if (buildCounterGoogleCloudDocumentaiV1DocumentPageVisualElement < 3) {
-    o.detectedLanguages = buildUnnamed30();
+    o.detectedLanguages = buildUnnamed32();
     o.layout = buildGoogleCloudDocumentaiV1DocumentPageLayout();
     o.type = 'foo';
   }
@@ -1306,7 +1356,7 @@ void checkGoogleCloudDocumentaiV1DocumentPageVisualElement(
     api.GoogleCloudDocumentaiV1DocumentPageVisualElement o) {
   buildCounterGoogleCloudDocumentaiV1DocumentPageVisualElement++;
   if (buildCounterGoogleCloudDocumentaiV1DocumentPageVisualElement < 3) {
-    checkUnnamed30(o.detectedLanguages!);
+    checkUnnamed32(o.detectedLanguages!);
     checkGoogleCloudDocumentaiV1DocumentPageLayout(o.layout!);
     unittest.expect(
       o.type!,
@@ -1317,12 +1367,12 @@ void checkGoogleCloudDocumentaiV1DocumentPageVisualElement(
 }
 
 core.List<api.GoogleCloudDocumentaiV1DocumentProvenanceParent>
-    buildUnnamed31() => [
+    buildUnnamed33() => [
           buildGoogleCloudDocumentaiV1DocumentProvenanceParent(),
           buildGoogleCloudDocumentaiV1DocumentProvenanceParent(),
         ];
 
-void checkUnnamed31(
+void checkUnnamed33(
     core.List<api.GoogleCloudDocumentaiV1DocumentProvenanceParent> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDocumentaiV1DocumentProvenanceParent(o[0]);
@@ -1336,7 +1386,7 @@ api.GoogleCloudDocumentaiV1DocumentProvenance
   buildCounterGoogleCloudDocumentaiV1DocumentProvenance++;
   if (buildCounterGoogleCloudDocumentaiV1DocumentProvenance < 3) {
     o.id = 42;
-    o.parents = buildUnnamed31();
+    o.parents = buildUnnamed33();
     o.revision = 42;
     o.type = 'foo';
   }
@@ -1352,7 +1402,7 @@ void checkGoogleCloudDocumentaiV1DocumentProvenance(
       o.id!,
       unittest.equals(42),
     );
-    checkUnnamed31(o.parents!);
+    checkUnnamed33(o.parents!);
     unittest.expect(
       o.revision!,
       unittest.equals(42),
@@ -1399,12 +1449,12 @@ void checkGoogleCloudDocumentaiV1DocumentProvenanceParent(
   buildCounterGoogleCloudDocumentaiV1DocumentProvenanceParent--;
 }
 
-core.List<core.int> buildUnnamed32() => [
+core.List<core.int> buildUnnamed34() => [
       42,
       42,
     ];
 
-void checkUnnamed32(core.List<core.int> o) {
+void checkUnnamed34(core.List<core.int> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1416,12 +1466,12 @@ void checkUnnamed32(core.List<core.int> o) {
   );
 }
 
-core.List<core.String> buildUnnamed33() => [
+core.List<core.String> buildUnnamed35() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed33(core.List<core.String> o) {
+void checkUnnamed35(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1443,8 +1493,8 @@ api.GoogleCloudDocumentaiV1DocumentRevision
     o.createTime = 'foo';
     o.humanReview = buildGoogleCloudDocumentaiV1DocumentRevisionHumanReview();
     o.id = 'foo';
-    o.parent = buildUnnamed32();
-    o.parentIds = buildUnnamed33();
+    o.parent = buildUnnamed34();
+    o.parentIds = buildUnnamed35();
     o.processor = 'foo';
   }
   buildCounterGoogleCloudDocumentaiV1DocumentRevision--;
@@ -1468,8 +1518,8 @@ void checkGoogleCloudDocumentaiV1DocumentRevision(
       o.id!,
       unittest.equals('foo'),
     );
-    checkUnnamed32(o.parent!);
-    checkUnnamed33(o.parentIds!);
+    checkUnnamed34(o.parent!);
+    checkUnnamed35(o.parentIds!);
     unittest.expect(
       o.processor!,
       unittest.equals('foo'),
@@ -1613,12 +1663,12 @@ void checkGoogleCloudDocumentaiV1DocumentStyleFontSize(
 }
 
 core.List<api.GoogleCloudDocumentaiV1DocumentTextAnchorTextSegment>
-    buildUnnamed34() => [
+    buildUnnamed36() => [
           buildGoogleCloudDocumentaiV1DocumentTextAnchorTextSegment(),
           buildGoogleCloudDocumentaiV1DocumentTextAnchorTextSegment(),
         ];
 
-void checkUnnamed34(
+void checkUnnamed36(
     core.List<api.GoogleCloudDocumentaiV1DocumentTextAnchorTextSegment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDocumentaiV1DocumentTextAnchorTextSegment(o[0]);
@@ -1632,7 +1682,7 @@ api.GoogleCloudDocumentaiV1DocumentTextAnchor
   buildCounterGoogleCloudDocumentaiV1DocumentTextAnchor++;
   if (buildCounterGoogleCloudDocumentaiV1DocumentTextAnchor < 3) {
     o.content = 'foo';
-    o.textSegments = buildUnnamed34();
+    o.textSegments = buildUnnamed36();
   }
   buildCounterGoogleCloudDocumentaiV1DocumentTextAnchor--;
   return o;
@@ -1646,7 +1696,7 @@ void checkGoogleCloudDocumentaiV1DocumentTextAnchor(
       o.content!,
       unittest.equals('foo'),
     );
-    checkUnnamed34(o.textSegments!);
+    checkUnnamed36(o.textSegments!);
   }
   buildCounterGoogleCloudDocumentaiV1DocumentTextAnchor--;
 }
@@ -1680,12 +1730,12 @@ void checkGoogleCloudDocumentaiV1DocumentTextAnchorTextSegment(
   buildCounterGoogleCloudDocumentaiV1DocumentTextAnchorTextSegment--;
 }
 
-core.List<api.GoogleCloudDocumentaiV1DocumentProvenance> buildUnnamed35() => [
+core.List<api.GoogleCloudDocumentaiV1DocumentProvenance> buildUnnamed37() => [
       buildGoogleCloudDocumentaiV1DocumentProvenance(),
       buildGoogleCloudDocumentaiV1DocumentProvenance(),
     ];
 
-void checkUnnamed35(
+void checkUnnamed37(
     core.List<api.GoogleCloudDocumentaiV1DocumentProvenance> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDocumentaiV1DocumentProvenance(o[0]);
@@ -1699,7 +1749,7 @@ api.GoogleCloudDocumentaiV1DocumentTextChange
   buildCounterGoogleCloudDocumentaiV1DocumentTextChange++;
   if (buildCounterGoogleCloudDocumentaiV1DocumentTextChange < 3) {
     o.changedText = 'foo';
-    o.provenance = buildUnnamed35();
+    o.provenance = buildUnnamed37();
     o.textAnchor = buildGoogleCloudDocumentaiV1DocumentTextAnchor();
   }
   buildCounterGoogleCloudDocumentaiV1DocumentTextChange--;
@@ -1714,7 +1764,7 @@ void checkGoogleCloudDocumentaiV1DocumentTextChange(
       o.changedText!,
       unittest.equals('foo'),
     );
-    checkUnnamed35(o.provenance!);
+    checkUnnamed37(o.provenance!);
     checkGoogleCloudDocumentaiV1DocumentTextAnchor(o.textAnchor!);
   }
   buildCounterGoogleCloudDocumentaiV1DocumentTextChange--;
@@ -1737,12 +1787,12 @@ void checkGoogleCloudDocumentaiV1EnableProcessorRequest(
   buildCounterGoogleCloudDocumentaiV1EnableProcessorRequest--;
 }
 
-core.List<api.GoogleCloudDocumentaiV1ProcessorType> buildUnnamed36() => [
+core.List<api.GoogleCloudDocumentaiV1ProcessorType> buildUnnamed38() => [
       buildGoogleCloudDocumentaiV1ProcessorType(),
       buildGoogleCloudDocumentaiV1ProcessorType(),
     ];
 
-void checkUnnamed36(core.List<api.GoogleCloudDocumentaiV1ProcessorType> o) {
+void checkUnnamed38(core.List<api.GoogleCloudDocumentaiV1ProcessorType> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDocumentaiV1ProcessorType(o[0]);
   checkGoogleCloudDocumentaiV1ProcessorType(o[1]);
@@ -1754,7 +1804,7 @@ api.GoogleCloudDocumentaiV1FetchProcessorTypesResponse
   final o = api.GoogleCloudDocumentaiV1FetchProcessorTypesResponse();
   buildCounterGoogleCloudDocumentaiV1FetchProcessorTypesResponse++;
   if (buildCounterGoogleCloudDocumentaiV1FetchProcessorTypesResponse < 3) {
-    o.processorTypes = buildUnnamed36();
+    o.processorTypes = buildUnnamed38();
   }
   buildCounterGoogleCloudDocumentaiV1FetchProcessorTypesResponse--;
   return o;
@@ -1764,7 +1814,7 @@ void checkGoogleCloudDocumentaiV1FetchProcessorTypesResponse(
     api.GoogleCloudDocumentaiV1FetchProcessorTypesResponse o) {
   buildCounterGoogleCloudDocumentaiV1FetchProcessorTypesResponse++;
   if (buildCounterGoogleCloudDocumentaiV1FetchProcessorTypesResponse < 3) {
-    checkUnnamed36(o.processorTypes!);
+    checkUnnamed38(o.processorTypes!);
   }
   buildCounterGoogleCloudDocumentaiV1FetchProcessorTypesResponse--;
 }
@@ -1798,12 +1848,12 @@ void checkGoogleCloudDocumentaiV1GcsDocument(
   buildCounterGoogleCloudDocumentaiV1GcsDocument--;
 }
 
-core.List<api.GoogleCloudDocumentaiV1GcsDocument> buildUnnamed37() => [
+core.List<api.GoogleCloudDocumentaiV1GcsDocument> buildUnnamed39() => [
       buildGoogleCloudDocumentaiV1GcsDocument(),
       buildGoogleCloudDocumentaiV1GcsDocument(),
     ];
 
-void checkUnnamed37(core.List<api.GoogleCloudDocumentaiV1GcsDocument> o) {
+void checkUnnamed39(core.List<api.GoogleCloudDocumentaiV1GcsDocument> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDocumentaiV1GcsDocument(o[0]);
   checkGoogleCloudDocumentaiV1GcsDocument(o[1]);
@@ -1815,7 +1865,7 @@ api.GoogleCloudDocumentaiV1GcsDocuments
   final o = api.GoogleCloudDocumentaiV1GcsDocuments();
   buildCounterGoogleCloudDocumentaiV1GcsDocuments++;
   if (buildCounterGoogleCloudDocumentaiV1GcsDocuments < 3) {
-    o.documents = buildUnnamed37();
+    o.documents = buildUnnamed39();
   }
   buildCounterGoogleCloudDocumentaiV1GcsDocuments--;
   return o;
@@ -1825,7 +1875,7 @@ void checkGoogleCloudDocumentaiV1GcsDocuments(
     api.GoogleCloudDocumentaiV1GcsDocuments o) {
   buildCounterGoogleCloudDocumentaiV1GcsDocuments++;
   if (buildCounterGoogleCloudDocumentaiV1GcsDocuments < 3) {
-    checkUnnamed37(o.documents!);
+    checkUnnamed39(o.documents!);
   }
   buildCounterGoogleCloudDocumentaiV1GcsDocuments--;
 }
@@ -1887,12 +1937,12 @@ void checkGoogleCloudDocumentaiV1HumanReviewStatus(
   buildCounterGoogleCloudDocumentaiV1HumanReviewStatus--;
 }
 
-core.List<api.GoogleCloudDocumentaiV1ProcessorVersion> buildUnnamed38() => [
+core.List<api.GoogleCloudDocumentaiV1ProcessorVersion> buildUnnamed40() => [
       buildGoogleCloudDocumentaiV1ProcessorVersion(),
       buildGoogleCloudDocumentaiV1ProcessorVersion(),
     ];
 
-void checkUnnamed38(core.List<api.GoogleCloudDocumentaiV1ProcessorVersion> o) {
+void checkUnnamed40(core.List<api.GoogleCloudDocumentaiV1ProcessorVersion> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDocumentaiV1ProcessorVersion(o[0]);
   checkGoogleCloudDocumentaiV1ProcessorVersion(o[1]);
@@ -1905,7 +1955,7 @@ api.GoogleCloudDocumentaiV1ListProcessorVersionsResponse
   buildCounterGoogleCloudDocumentaiV1ListProcessorVersionsResponse++;
   if (buildCounterGoogleCloudDocumentaiV1ListProcessorVersionsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.processorVersions = buildUnnamed38();
+    o.processorVersions = buildUnnamed40();
   }
   buildCounterGoogleCloudDocumentaiV1ListProcessorVersionsResponse--;
   return o;
@@ -1919,17 +1969,17 @@ void checkGoogleCloudDocumentaiV1ListProcessorVersionsResponse(
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed38(o.processorVersions!);
+    checkUnnamed40(o.processorVersions!);
   }
   buildCounterGoogleCloudDocumentaiV1ListProcessorVersionsResponse--;
 }
 
-core.List<api.GoogleCloudDocumentaiV1Processor> buildUnnamed39() => [
+core.List<api.GoogleCloudDocumentaiV1Processor> buildUnnamed41() => [
       buildGoogleCloudDocumentaiV1Processor(),
       buildGoogleCloudDocumentaiV1Processor(),
     ];
 
-void checkUnnamed39(core.List<api.GoogleCloudDocumentaiV1Processor> o) {
+void checkUnnamed41(core.List<api.GoogleCloudDocumentaiV1Processor> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDocumentaiV1Processor(o[0]);
   checkGoogleCloudDocumentaiV1Processor(o[1]);
@@ -1942,7 +1992,7 @@ api.GoogleCloudDocumentaiV1ListProcessorsResponse
   buildCounterGoogleCloudDocumentaiV1ListProcessorsResponse++;
   if (buildCounterGoogleCloudDocumentaiV1ListProcessorsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.processors = buildUnnamed39();
+    o.processors = buildUnnamed41();
   }
   buildCounterGoogleCloudDocumentaiV1ListProcessorsResponse--;
   return o;
@@ -1956,7 +2006,7 @@ void checkGoogleCloudDocumentaiV1ListProcessorsResponse(
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed39(o.processors!);
+    checkUnnamed41(o.processors!);
   }
   buildCounterGoogleCloudDocumentaiV1ListProcessorsResponse--;
 }
@@ -2097,12 +2147,12 @@ void checkGoogleCloudDocumentaiV1Processor(
 }
 
 core.List<api.GoogleCloudDocumentaiV1ProcessorTypeLocationInfo>
-    buildUnnamed40() => [
+    buildUnnamed42() => [
           buildGoogleCloudDocumentaiV1ProcessorTypeLocationInfo(),
           buildGoogleCloudDocumentaiV1ProcessorTypeLocationInfo(),
         ];
 
-void checkUnnamed40(
+void checkUnnamed42(
     core.List<api.GoogleCloudDocumentaiV1ProcessorTypeLocationInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDocumentaiV1ProcessorTypeLocationInfo(o[0]);
@@ -2116,7 +2166,7 @@ api.GoogleCloudDocumentaiV1ProcessorType
   buildCounterGoogleCloudDocumentaiV1ProcessorType++;
   if (buildCounterGoogleCloudDocumentaiV1ProcessorType < 3) {
     o.allowCreation = true;
-    o.availableLocations = buildUnnamed40();
+    o.availableLocations = buildUnnamed42();
     o.category = 'foo';
     o.launchStage = 'foo';
     o.name = 'foo';
@@ -2131,7 +2181,7 @@ void checkGoogleCloudDocumentaiV1ProcessorType(
   buildCounterGoogleCloudDocumentaiV1ProcessorType++;
   if (buildCounterGoogleCloudDocumentaiV1ProcessorType < 3) {
     unittest.expect(o.allowCreation!, unittest.isTrue);
-    checkUnnamed40(o.availableLocations!);
+    checkUnnamed42(o.availableLocations!);
     unittest.expect(
       o.category!,
       unittest.equals('foo'),
@@ -2184,6 +2234,8 @@ api.GoogleCloudDocumentaiV1ProcessorVersion
   if (buildCounterGoogleCloudDocumentaiV1ProcessorVersion < 3) {
     o.createTime = 'foo';
     o.displayName = 'foo';
+    o.kmsKeyName = 'foo';
+    o.kmsKeyVersionName = 'foo';
     o.name = 'foo';
     o.state = 'foo';
   }
@@ -2201,6 +2253,14 @@ void checkGoogleCloudDocumentaiV1ProcessorVersion(
     );
     unittest.expect(
       o.displayName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.kmsKeyName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.kmsKeyVersionName!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -2343,12 +2403,12 @@ void checkGoogleCloudDocumentaiV1Vertex(api.GoogleCloudDocumentaiV1Vertex o) {
   buildCounterGoogleCloudDocumentaiV1Vertex--;
 }
 
-core.List<api.GoogleCloudLocationLocation> buildUnnamed41() => [
+core.List<api.GoogleCloudLocationLocation> buildUnnamed43() => [
       buildGoogleCloudLocationLocation(),
       buildGoogleCloudLocationLocation(),
     ];
 
-void checkUnnamed41(core.List<api.GoogleCloudLocationLocation> o) {
+void checkUnnamed43(core.List<api.GoogleCloudLocationLocation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudLocationLocation(o[0]);
   checkGoogleCloudLocationLocation(o[1]);
@@ -2360,7 +2420,7 @@ api.GoogleCloudLocationListLocationsResponse
   final o = api.GoogleCloudLocationListLocationsResponse();
   buildCounterGoogleCloudLocationListLocationsResponse++;
   if (buildCounterGoogleCloudLocationListLocationsResponse < 3) {
-    o.locations = buildUnnamed41();
+    o.locations = buildUnnamed43();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudLocationListLocationsResponse--;
@@ -2371,7 +2431,7 @@ void checkGoogleCloudLocationListLocationsResponse(
     api.GoogleCloudLocationListLocationsResponse o) {
   buildCounterGoogleCloudLocationListLocationsResponse++;
   if (buildCounterGoogleCloudLocationListLocationsResponse < 3) {
-    checkUnnamed41(o.locations!);
+    checkUnnamed43(o.locations!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -2380,12 +2440,12 @@ void checkGoogleCloudLocationListLocationsResponse(
   buildCounterGoogleCloudLocationListLocationsResponse--;
 }
 
-core.Map<core.String, core.String> buildUnnamed42() => {
+core.Map<core.String, core.String> buildUnnamed44() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed42(core.Map<core.String, core.String> o) {
+void checkUnnamed44(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -2397,7 +2457,7 @@ void checkUnnamed42(core.Map<core.String, core.String> o) {
   );
 }
 
-core.Map<core.String, core.Object?> buildUnnamed43() => {
+core.Map<core.String, core.Object?> buildUnnamed45() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -2410,7 +2470,7 @@ core.Map<core.String, core.Object?> buildUnnamed43() => {
       },
     };
 
-void checkUnnamed43(core.Map<core.String, core.Object?> o) {
+void checkUnnamed45(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o['x']!) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -2448,9 +2508,9 @@ api.GoogleCloudLocationLocation buildGoogleCloudLocationLocation() {
   buildCounterGoogleCloudLocationLocation++;
   if (buildCounterGoogleCloudLocationLocation < 3) {
     o.displayName = 'foo';
-    o.labels = buildUnnamed42();
+    o.labels = buildUnnamed44();
     o.locationId = 'foo';
-    o.metadata = buildUnnamed43();
+    o.metadata = buildUnnamed45();
     o.name = 'foo';
   }
   buildCounterGoogleCloudLocationLocation--;
@@ -2464,12 +2524,12 @@ void checkGoogleCloudLocationLocation(api.GoogleCloudLocationLocation o) {
       o.displayName!,
       unittest.equals('foo'),
     );
-    checkUnnamed42(o.labels!);
+    checkUnnamed44(o.labels!);
     unittest.expect(
       o.locationId!,
       unittest.equals('foo'),
     );
-    checkUnnamed43(o.metadata!);
+    checkUnnamed45(o.metadata!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -2478,12 +2538,12 @@ void checkGoogleCloudLocationLocation(api.GoogleCloudLocationLocation o) {
   buildCounterGoogleCloudLocationLocation--;
 }
 
-core.List<api.GoogleLongrunningOperation> buildUnnamed44() => [
+core.List<api.GoogleLongrunningOperation> buildUnnamed46() => [
       buildGoogleLongrunningOperation(),
       buildGoogleLongrunningOperation(),
     ];
 
-void checkUnnamed44(core.List<api.GoogleLongrunningOperation> o) {
+void checkUnnamed46(core.List<api.GoogleLongrunningOperation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleLongrunningOperation(o[0]);
   checkGoogleLongrunningOperation(o[1]);
@@ -2496,7 +2556,7 @@ api.GoogleLongrunningListOperationsResponse
   buildCounterGoogleLongrunningListOperationsResponse++;
   if (buildCounterGoogleLongrunningListOperationsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.operations = buildUnnamed44();
+    o.operations = buildUnnamed46();
   }
   buildCounterGoogleLongrunningListOperationsResponse--;
   return o;
@@ -2510,12 +2570,12 @@ void checkGoogleLongrunningListOperationsResponse(
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed44(o.operations!);
+    checkUnnamed46(o.operations!);
   }
   buildCounterGoogleLongrunningListOperationsResponse--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed45() => {
+core.Map<core.String, core.Object?> buildUnnamed47() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -2528,7 +2588,7 @@ core.Map<core.String, core.Object?> buildUnnamed45() => {
       },
     };
 
-void checkUnnamed45(core.Map<core.String, core.Object?> o) {
+void checkUnnamed47(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted3 = (o['x']!) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
@@ -2560,7 +2620,7 @@ void checkUnnamed45(core.Map<core.String, core.Object?> o) {
   );
 }
 
-core.Map<core.String, core.Object?> buildUnnamed46() => {
+core.Map<core.String, core.Object?> buildUnnamed48() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -2573,7 +2633,7 @@ core.Map<core.String, core.Object?> buildUnnamed46() => {
       },
     };
 
-void checkUnnamed46(core.Map<core.String, core.Object?> o) {
+void checkUnnamed48(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted5 = (o['x']!) as core.Map;
   unittest.expect(casted5, unittest.hasLength(3));
@@ -2612,9 +2672,9 @@ api.GoogleLongrunningOperation buildGoogleLongrunningOperation() {
   if (buildCounterGoogleLongrunningOperation < 3) {
     o.done = true;
     o.error = buildGoogleRpcStatus();
-    o.metadata = buildUnnamed45();
+    o.metadata = buildUnnamed47();
     o.name = 'foo';
-    o.response = buildUnnamed46();
+    o.response = buildUnnamed48();
   }
   buildCounterGoogleLongrunningOperation--;
   return o;
@@ -2625,12 +2685,12 @@ void checkGoogleLongrunningOperation(api.GoogleLongrunningOperation o) {
   if (buildCounterGoogleLongrunningOperation < 3) {
     unittest.expect(o.done!, unittest.isTrue);
     checkGoogleRpcStatus(o.error!);
-    checkUnnamed45(o.metadata!);
+    checkUnnamed47(o.metadata!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed46(o.response!);
+    checkUnnamed48(o.response!);
   }
   buildCounterGoogleLongrunningOperation--;
 }
@@ -2650,7 +2710,7 @@ void checkGoogleProtobufEmpty(api.GoogleProtobufEmpty o) {
   buildCounterGoogleProtobufEmpty--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed47() => {
+core.Map<core.String, core.Object?> buildUnnamed49() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -2663,7 +2723,7 @@ core.Map<core.String, core.Object?> buildUnnamed47() => {
       },
     };
 
-void checkUnnamed47(core.Map<core.String, core.Object?> o) {
+void checkUnnamed49(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted7 = (o['x']!) as core.Map;
   unittest.expect(casted7, unittest.hasLength(3));
@@ -2695,15 +2755,15 @@ void checkUnnamed47(core.Map<core.String, core.Object?> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object?>> buildUnnamed48() => [
-      buildUnnamed47(),
-      buildUnnamed47(),
+core.List<core.Map<core.String, core.Object?>> buildUnnamed50() => [
+      buildUnnamed49(),
+      buildUnnamed49(),
     ];
 
-void checkUnnamed48(core.List<core.Map<core.String, core.Object?>> o) {
+void checkUnnamed50(core.List<core.Map<core.String, core.Object?>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed47(o[0]);
-  checkUnnamed47(o[1]);
+  checkUnnamed49(o[0]);
+  checkUnnamed49(o[1]);
 }
 
 core.int buildCounterGoogleRpcStatus = 0;
@@ -2712,7 +2772,7 @@ api.GoogleRpcStatus buildGoogleRpcStatus() {
   buildCounterGoogleRpcStatus++;
   if (buildCounterGoogleRpcStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed48();
+    o.details = buildUnnamed50();
     o.message = 'foo';
   }
   buildCounterGoogleRpcStatus--;
@@ -2726,7 +2786,7 @@ void checkGoogleRpcStatus(api.GoogleRpcStatus o) {
       o.code!,
       unittest.equals(42),
     );
-    checkUnnamed48(o.details!);
+    checkUnnamed50(o.details!);
     unittest.expect(
       o.message!,
       unittest.equals('foo'),
@@ -2895,12 +2955,12 @@ void checkGoogleTypeMoney(api.GoogleTypeMoney o) {
   buildCounterGoogleTypeMoney--;
 }
 
-core.List<core.String> buildUnnamed49() => [
+core.List<core.String> buildUnnamed51() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed49(core.List<core.String> o) {
+void checkUnnamed51(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -2912,12 +2972,12 @@ void checkUnnamed49(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed50() => [
+core.List<core.String> buildUnnamed52() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed50(core.List<core.String> o) {
+void checkUnnamed52(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -2934,13 +2994,13 @@ api.GoogleTypePostalAddress buildGoogleTypePostalAddress() {
   final o = api.GoogleTypePostalAddress();
   buildCounterGoogleTypePostalAddress++;
   if (buildCounterGoogleTypePostalAddress < 3) {
-    o.addressLines = buildUnnamed49();
+    o.addressLines = buildUnnamed51();
     o.administrativeArea = 'foo';
     o.languageCode = 'foo';
     o.locality = 'foo';
     o.organization = 'foo';
     o.postalCode = 'foo';
-    o.recipients = buildUnnamed50();
+    o.recipients = buildUnnamed52();
     o.regionCode = 'foo';
     o.revision = 42;
     o.sortingCode = 'foo';
@@ -2953,7 +3013,7 @@ api.GoogleTypePostalAddress buildGoogleTypePostalAddress() {
 void checkGoogleTypePostalAddress(api.GoogleTypePostalAddress o) {
   buildCounterGoogleTypePostalAddress++;
   if (buildCounterGoogleTypePostalAddress < 3) {
-    checkUnnamed49(o.addressLines!);
+    checkUnnamed51(o.addressLines!);
     unittest.expect(
       o.administrativeArea!,
       unittest.equals('foo'),
@@ -2974,7 +3034,7 @@ void checkGoogleTypePostalAddress(api.GoogleTypePostalAddress o) {
       o.postalCode!,
       unittest.equals('foo'),
     );
-    checkUnnamed50(o.recipients!);
+    checkUnnamed52(o.recipients!);
     unittest.expect(
       o.regionCode!,
       unittest.equals('foo'),
@@ -3263,6 +3323,16 @@ void main() {
       final od = api.GoogleCloudDocumentaiV1DocumentPageParagraph.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDocumentaiV1DocumentPageParagraph(od);
+    });
+  });
+
+  unittest.group('obj-schema-GoogleCloudDocumentaiV1DocumentPageSymbol', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleCloudDocumentaiV1DocumentPageSymbol();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudDocumentaiV1DocumentPageSymbol.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudDocumentaiV1DocumentPageSymbol(od);
     });
   });
 
