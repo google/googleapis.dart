@@ -96,6 +96,21 @@ void checkBinding(api.Binding o) {
   buildCounterBinding--;
 }
 
+core.int buildCounterBootImage = 0;
+api.BootImage buildBootImage() {
+  final o = api.BootImage();
+  buildCounterBootImage++;
+  if (buildCounterBootImage < 3) {}
+  buildCounterBootImage--;
+  return o;
+}
+
+void checkBootImage(api.BootImage o) {
+  buildCounterBootImage++;
+  if (buildCounterBootImage < 3) {}
+  buildCounterBootImage--;
+}
+
 core.int buildCounterCancelOperationRequest = 0;
 api.CancelOperationRequest buildCancelOperationRequest() {
   final o = api.CancelOperationRequest();
@@ -476,6 +491,7 @@ api.ExecutionTemplate buildExecutionTemplate() {
     o.paramsYamlFile = 'foo';
     o.scaleTier = 'foo';
     o.serviceAccount = 'foo';
+    o.tensorboard = 'foo';
     o.vertexAiParameters = buildVertexAIParameters();
   }
   buildCounterExecutionTemplate--;
@@ -526,6 +542,10 @@ void checkExecutionTemplate(api.ExecutionTemplate o) {
     );
     unittest.expect(
       o.serviceAccount!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.tensorboard!,
       unittest.equals('foo'),
     );
     checkVertexAIParameters(o.vertexAiParameters!);
@@ -748,6 +768,7 @@ api.Instance buildInstance() {
     o.acceleratorConfig = buildAcceleratorConfig();
     o.bootDiskSizeGb = 'foo';
     o.bootDiskType = 'foo';
+    o.canIpForward = true;
     o.containerImage = buildContainerImage();
     o.createTime = 'foo';
     o.creator = 'foo';
@@ -797,6 +818,7 @@ void checkInstance(api.Instance o) {
       o.bootDiskType!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.canIpForward!, unittest.isTrue);
     checkContainerImage(o.containerImage!);
     unittest.expect(
       o.createTime!,
@@ -2988,6 +3010,7 @@ api.VirtualMachineConfig buildVirtualMachineConfig() {
   buildCounterVirtualMachineConfig++;
   if (buildCounterVirtualMachineConfig < 3) {
     o.acceleratorConfig = buildRuntimeAcceleratorConfig();
+    o.bootImage = buildBootImage();
     o.containerImages = buildUnnamed46();
     o.dataDisk = buildLocalDisk();
     o.encryptionConfig = buildEncryptionConfig();
@@ -3012,6 +3035,7 @@ void checkVirtualMachineConfig(api.VirtualMachineConfig o) {
   buildCounterVirtualMachineConfig++;
   if (buildCounterVirtualMachineConfig < 3) {
     checkRuntimeAcceleratorConfig(o.acceleratorConfig!);
+    checkBootImage(o.bootImage!);
     checkUnnamed46(o.containerImages!);
     checkLocalDisk(o.dataDisk!);
     checkEncryptionConfig(o.encryptionConfig!);
@@ -3099,6 +3123,16 @@ void main() {
       final od =
           api.Binding.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkBinding(od);
+    });
+  });
+
+  unittest.group('obj-schema-BootImage', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildBootImage();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.BootImage.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkBootImage(od);
     });
   });
 

@@ -6689,6 +6689,10 @@ class SetupAction {
   UserFacingMessage? description;
 
   /// An action to launch an app.
+  ///
+  /// The app will be launched with an intent containing an extra with key
+  /// com.google.android.apps.work.clouddpc.EXTRA_LAUNCHED_AS_SETUP_ACTION set
+  /// to the boolean value true to indicate that this is a setup action flow.
   LaunchAppAction? launchApp;
 
   /// Title of this action.

@@ -103,6 +103,7 @@ api.CapacityCommitment buildCapacityCommitment() {
     o.commitmentEndTime = 'foo';
     o.commitmentStartTime = 'foo';
     o.failureStatus = buildStatus();
+    o.multiRegionAuxiliary = true;
     o.name = 'foo';
     o.plan = 'foo';
     o.renewalPlan = 'foo';
@@ -125,6 +126,7 @@ void checkCapacityCommitment(api.CapacityCommitment o) {
       unittest.equals('foo'),
     );
     checkStatus(o.failureStatus!);
+    unittest.expect(o.multiRegionAuxiliary!, unittest.isTrue);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -334,8 +336,10 @@ api.Reservation buildReservation() {
   final o = api.Reservation();
   buildCounterReservation++;
   if (buildCounterReservation < 3) {
+    o.concurrency = 'foo';
     o.creationTime = 'foo';
     o.ignoreIdleSlots = true;
+    o.multiRegionAuxiliary = true;
     o.name = 'foo';
     o.slotCapacity = 'foo';
     o.updateTime = 'foo';
@@ -348,10 +352,15 @@ void checkReservation(api.Reservation o) {
   buildCounterReservation++;
   if (buildCounterReservation < 3) {
     unittest.expect(
+      o.concurrency!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
       o.creationTime!,
       unittest.equals('foo'),
     );
     unittest.expect(o.ignoreIdleSlots!, unittest.isTrue);
+    unittest.expect(o.multiRegionAuxiliary!, unittest.isTrue);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),

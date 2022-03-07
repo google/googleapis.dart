@@ -3455,7 +3455,7 @@ class DatabaseInstance {
   ///
   /// This value could be different from the zone that was specified when the
   /// instance was created if the instance has failed over to its
-  /// secondary/failover zone. Reserved for future use.
+  /// secondary/failover zone.
   core.String? secondaryGceZone;
 
   /// The URI of this resource.
@@ -5233,8 +5233,6 @@ class LocationPreference {
 
   /// The preferred Compute Engine zone for the secondary/failover (for example:
   /// us-central1-a, us-central1-b, etc.).
-  ///
-  /// Reserved for future use.
   core.String? secondaryZone;
 
   /// The preferred Compute Engine zone (for example: us-central1-a,

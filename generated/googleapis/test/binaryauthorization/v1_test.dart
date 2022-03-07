@@ -148,6 +148,7 @@ api.Attestor buildAttestor() {
   buildCounterAttestor++;
   if (buildCounterAttestor < 3) {
     o.description = 'foo';
+    o.etag = 'foo';
     o.name = 'foo';
     o.updateTime = 'foo';
     o.userOwnedGrafeasNote = buildUserOwnedGrafeasNote();
@@ -161,6 +162,10 @@ void checkAttestor(api.Attestor o) {
   if (buildCounterAttestor < 3) {
     unittest.expect(
       o.description!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.etag!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -493,6 +498,7 @@ api.Policy buildPolicy() {
     o.clusterAdmissionRules = buildUnnamed7();
     o.defaultAdmissionRule = buildAdmissionRule();
     o.description = 'foo';
+    o.etag = 'foo';
     o.globalPolicyEvaluationMode = 'foo';
     o.istioServiceIdentityAdmissionRules = buildUnnamed8();
     o.kubernetesNamespaceAdmissionRules = buildUnnamed9();
@@ -512,6 +518,10 @@ void checkPolicy(api.Policy o) {
     checkAdmissionRule(o.defaultAdmissionRule!);
     unittest.expect(
       o.description!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.etag!,
       unittest.equals('foo'),
     );
     unittest.expect(

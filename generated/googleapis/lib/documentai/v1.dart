@@ -1644,6 +1644,8 @@ class GoogleCloudDocumentaiV1Document {
   /// For document shards, entities in this list may cross shard boundaries.
   core.List<GoogleCloudDocumentaiV1DocumentEntity>? entities;
 
+  /// Placeholder.
+  ///
   /// Relationship among Document.entities.
   core.List<GoogleCloudDocumentaiV1DocumentEntityRelation>? entityRelations;
 
@@ -1659,6 +1661,8 @@ class GoogleCloudDocumentaiV1Document {
   /// Visual page layout for the Document.
   core.List<GoogleCloudDocumentaiV1DocumentPage>? pages;
 
+  /// Placeholder.
+  ///
   /// Revision history of this document.
   core.List<GoogleCloudDocumentaiV1DocumentRevision>? revisions;
 
@@ -1673,12 +1677,15 @@ class GoogleCloudDocumentaiV1Document {
   /// Optional.
   core.String? text;
 
-  /// A list of text corrections made to \[Document.text\].
+  /// Placeholder.
   ///
-  /// This is usually used for annotating corrections to OCR mistakes. Text
-  /// changes for a given revision may not overlap with each other.
+  /// A list of text corrections made to \[Document.text\]. This is usually used
+  /// for annotating corrections to OCR mistakes. Text changes for a given
+  /// revision may not overlap with each other.
   core.List<GoogleCloudDocumentaiV1DocumentTextChange>? textChanges;
 
+  /// Placeholder.
+  ///
   /// Styles for the Document.text.
   core.List<GoogleCloudDocumentaiV1DocumentStyle>? textStyles;
 
@@ -2159,6 +2166,9 @@ class GoogleCloudDocumentaiV1DocumentPage {
   /// The history of this page.
   GoogleCloudDocumentaiV1DocumentProvenance? provenance;
 
+  /// A list of visually detected symbols on the page.
+  core.List<GoogleCloudDocumentaiV1DocumentPageSymbol>? symbols;
+
   /// A list of visually detected tables on the page.
   core.List<GoogleCloudDocumentaiV1DocumentPageTable>? tables;
 
@@ -2185,6 +2195,7 @@ class GoogleCloudDocumentaiV1DocumentPage {
     this.pageNumber,
     this.paragraphs,
     this.provenance,
+    this.symbols,
     this.tables,
     this.tokens,
     this.transforms,
@@ -2248,6 +2259,13 @@ class GoogleCloudDocumentaiV1DocumentPage {
               ? GoogleCloudDocumentaiV1DocumentProvenance.fromJson(
                   _json['provenance'] as core.Map<core.String, core.dynamic>)
               : null,
+          symbols: _json.containsKey('symbols')
+              ? (_json['symbols'] as core.List)
+                  .map((value) =>
+                      GoogleCloudDocumentaiV1DocumentPageSymbol.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           tables: _json.containsKey('tables')
               ? (_json['tables'] as core.List)
                   .map((value) =>
@@ -2289,6 +2307,7 @@ class GoogleCloudDocumentaiV1DocumentPage {
         if (pageNumber != null) 'pageNumber': pageNumber!,
         if (paragraphs != null) 'paragraphs': paragraphs!,
         if (provenance != null) 'provenance': provenance!,
+        if (symbols != null) 'symbols': symbols!,
         if (tables != null) 'tables': tables!,
         if (tokens != null) 'tokens': tokens!,
         if (transforms != null) 'transforms': transforms!,
@@ -2448,7 +2467,38 @@ class GoogleCloudDocumentaiV1DocumentPageBlock {
 }
 
 /// Detected language for a structural component.
-typedef GoogleCloudDocumentaiV1DocumentPageDetectedLanguage = $DetectedLanguage;
+class GoogleCloudDocumentaiV1DocumentPageDetectedLanguage {
+  /// Confidence of detected language.
+  ///
+  /// Range \[0, 1\].
+  core.double? confidence;
+
+  /// The BCP-47 language code, such as "en-US" or "sr-Latn".
+  ///
+  /// For more information, see
+  /// https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+  core.String? languageCode;
+
+  GoogleCloudDocumentaiV1DocumentPageDetectedLanguage({
+    this.confidence,
+    this.languageCode,
+  });
+
+  GoogleCloudDocumentaiV1DocumentPageDetectedLanguage.fromJson(core.Map _json)
+      : this(
+          confidence: _json.containsKey('confidence')
+              ? (_json['confidence'] as core.num).toDouble()
+              : null,
+          languageCode: _json.containsKey('languageCode')
+              ? _json['languageCode'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (confidence != null) 'confidence': confidence!,
+        if (languageCode != null) 'languageCode': languageCode!,
+      };
+}
 
 /// Dimension for the page.
 class GoogleCloudDocumentaiV1DocumentPageDimension {
@@ -2836,6 +2886,42 @@ class GoogleCloudDocumentaiV1DocumentPageParagraph {
         if (detectedLanguages != null) 'detectedLanguages': detectedLanguages!,
         if (layout != null) 'layout': layout!,
         if (provenance != null) 'provenance': provenance!,
+      };
+}
+
+/// A detected symbol.
+class GoogleCloudDocumentaiV1DocumentPageSymbol {
+  /// A list of detected languages together with confidence.
+  core.List<GoogleCloudDocumentaiV1DocumentPageDetectedLanguage>?
+      detectedLanguages;
+
+  /// Layout for Symbol.
+  GoogleCloudDocumentaiV1DocumentPageLayout? layout;
+
+  GoogleCloudDocumentaiV1DocumentPageSymbol({
+    this.detectedLanguages,
+    this.layout,
+  });
+
+  GoogleCloudDocumentaiV1DocumentPageSymbol.fromJson(core.Map _json)
+      : this(
+          detectedLanguages: _json.containsKey('detectedLanguages')
+              ? (_json['detectedLanguages'] as core.List)
+                  .map((value) =>
+                      GoogleCloudDocumentaiV1DocumentPageDetectedLanguage
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          layout: _json.containsKey('layout')
+              ? GoogleCloudDocumentaiV1DocumentPageLayout.fromJson(
+                  _json['layout'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (detectedLanguages != null) 'detectedLanguages': detectedLanguages!,
+        if (layout != null) 'layout': layout!,
       };
 }
 
@@ -3468,6 +3554,8 @@ class GoogleCloudDocumentaiV1DocumentStyleFontSize {
 class GoogleCloudDocumentaiV1DocumentTextAnchor {
   /// Contains the content of the text span so that users do not have to look it
   /// up in the text_segments.
+  ///
+  /// It is always populated for formFields.
   core.String? content;
 
   /// The text segments from the Document.text.
@@ -3960,7 +4048,9 @@ class GoogleCloudDocumentaiV1Processor {
   /// successful.
   core.String? state;
 
-  /// The processor type, e.g., INVOICE_PARSING, W2_PARSING, etc.
+  /// The processor type, e.g., OCR_PROCESSOR, INVOICE_PROCESSOR, etc.
+  ///
+  /// To get a list of processors types, see FetchProcessorTypes.
   core.String? type;
 
   GoogleCloudDocumentaiV1Processor({
@@ -4145,6 +4235,12 @@ class GoogleCloudDocumentaiV1ProcessorVersion {
   /// The display name of the processor version.
   core.String? displayName;
 
+  /// The KMS key name used for encryption.
+  core.String? kmsKeyName;
+
+  /// The KMS key version with which data is encrypted.
+  core.String? kmsKeyVersionName;
+
   /// The resource name of the processor version.
   ///
   /// Format:
@@ -4169,6 +4265,8 @@ class GoogleCloudDocumentaiV1ProcessorVersion {
   GoogleCloudDocumentaiV1ProcessorVersion({
     this.createTime,
     this.displayName,
+    this.kmsKeyName,
+    this.kmsKeyVersionName,
     this.name,
     this.state,
   });
@@ -4181,6 +4279,12 @@ class GoogleCloudDocumentaiV1ProcessorVersion {
           displayName: _json.containsKey('displayName')
               ? _json['displayName'] as core.String
               : null,
+          kmsKeyName: _json.containsKey('kmsKeyName')
+              ? _json['kmsKeyName'] as core.String
+              : null,
+          kmsKeyVersionName: _json.containsKey('kmsKeyVersionName')
+              ? _json['kmsKeyVersionName'] as core.String
+              : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           state:
               _json.containsKey('state') ? _json['state'] as core.String : null,
@@ -4189,6 +4293,8 @@ class GoogleCloudDocumentaiV1ProcessorVersion {
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
         if (displayName != null) 'displayName': displayName!,
+        if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
+        if (kmsKeyVersionName != null) 'kmsKeyVersionName': kmsKeyVersionName!,
         if (name != null) 'name': name!,
         if (state != null) 'state': state!,
       };

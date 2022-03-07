@@ -3787,7 +3787,7 @@
             }
         }
     },
-    "revision": "20220215",
+    "revision": "20220302",
     "rootUrl": "https://youtube.googleapis.com/",
     "schemas": {
         "AbuseReport": {
@@ -4479,9 +4479,11 @@
                         "rtmp",
                         "dash",
                         "webrtc",
-                        "hls"
+                        "hls",
+                        "srt"
                     ],
                     "enumDescriptions": [
+                        "",
                         "",
                         "",
                         "",
@@ -7532,7 +7534,7 @@
             "type": "object"
         },
         "IngestionInfo": {
-            "description": "Describes information necessary for ingesting an RTMP or an HTTP stream.",
+            "description": "Describes information necessary for ingesting an RTMP, HTTP, or SRT stream.",
             "id": "IngestionInfo",
             "properties": {
                 "backupIngestionAddress": {
@@ -7552,7 +7554,7 @@
                     "type": "string"
                 },
                 "streamName": {
-                    "description": "The HTTP or RTMP stream name that YouTube assigns to the video stream.",
+                    "description": "The stream name that YouTube assigns to the video stream.",
                     "type": "string"
                 }
             },

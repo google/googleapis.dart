@@ -364,7 +364,7 @@ class CasesResource {
   /// [filter] - An expression written in the Cloud filter language. If
   /// non-empty, then only cases whose fields match the filter are returned. If
   /// empty, then no messages are filtered out. Filter strings can use the
-  /// following fields: - status (Accepted values: OPEN or CLOSED) - severity
+  /// following fields: - state (Accepted values: OPEN or CLOSED) - severity
   /// (Accepted values: S0, S1, S2, S3, or S4) - creator.email with the
   /// operators equals (=) and AND. Additionally, a global restriction (with no
   /// operator) can be used to search across displayName, description, and
@@ -803,21 +803,10 @@ class Actor {
   /// Output only.
   core.bool? googleSupport;
 
-  /// An ID representing the user that was authenticated when the corresponding
-  /// action was taken.
-  ///
-  /// This will be an email address, if one is available, or some other unique
-  /// ID. See https://cloud.google.com/docs/authentication for more information
-  /// on types of authentication.
-  ///
-  /// Output only.
-  core.String? principalId;
-
   Actor({
     this.displayName,
     this.email,
     this.googleSupport,
-    this.principalId,
   });
 
   Actor.fromJson(core.Map _json)
@@ -830,16 +819,12 @@ class Actor {
           googleSupport: _json.containsKey('googleSupport')
               ? _json['googleSupport'] as core.bool
               : null,
-          principalId: _json.containsKey('principalId')
-              ? _json['principalId'] as core.String
-              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
         if (email != null) 'email': email!,
         if (googleSupport != null) 'googleSupport': googleSupport!,
-        if (principalId != null) 'principalId': principalId!,
       };
 }
 
@@ -1701,27 +1686,12 @@ class EscalateCaseRequest {
 
 /// An escalation of a support case.
 class Escalation {
-  /// The user or Google Support agent initiated this escalation.
-  ///
-  /// Output only.
-  Actor? actor;
-
-  /// The time when this escalation event was created.
-  ///
-  /// Output only.
-  core.String? createTime;
-
   /// A free text description to accompany the `reason` field above.
   ///
   /// Provides additional context on why the case is being escalated.
   ///
   /// Required.
   core.String? justification;
-
-  /// The resource name for the escalation event.
-  ///
-  /// Output only.
-  core.String? name;
 
   /// The reason why the Case is being escalated.
   ///
@@ -1736,36 +1706,22 @@ class Escalation {
   core.String? reason;
 
   Escalation({
-    this.actor,
-    this.createTime,
     this.justification,
-    this.name,
     this.reason,
   });
 
   Escalation.fromJson(core.Map _json)
       : this(
-          actor: _json.containsKey('actor')
-              ? Actor.fromJson(
-                  _json['actor'] as core.Map<core.String, core.dynamic>)
-              : null,
-          createTime: _json.containsKey('createTime')
-              ? _json['createTime'] as core.String
-              : null,
           justification: _json.containsKey('justification')
               ? _json['justification'] as core.String
               : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
           reason: _json.containsKey('reason')
               ? _json['reason'] as core.String
               : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (actor != null) 'actor': actor!,
-        if (createTime != null) 'createTime': createTime!,
         if (justification != null) 'justification': justification!,
-        if (name != null) 'name': name!,
         if (reason != null) 'reason': reason!,
       };
 }

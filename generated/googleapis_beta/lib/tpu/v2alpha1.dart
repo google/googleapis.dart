@@ -329,6 +329,8 @@ class ProjectsLocationsNodesResource {
   ///
   /// [nodeId] - The unqualified resource name.
   ///
+  /// [requestId] - Idempotent request UUID.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -343,11 +345,13 @@ class ProjectsLocationsNodesResource {
     Node request,
     core.String parent, {
     core.String? nodeId,
+    core.String? requestId,
     core.String? $fields,
   }) async {
     final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
       if (nodeId != null) 'nodeId': [nodeId],
+      if (requestId != null) 'requestId': [requestId],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -370,6 +374,8 @@ class ProjectsLocationsNodesResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/nodes/\[^/\]+$`.
   ///
+  /// [requestId] - Idempotent request UUID.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -382,9 +388,11 @@ class ProjectsLocationsNodesResource {
   /// this method will complete with the same error.
   async.Future<Operation> delete(
     core.String name, {
+    core.String? requestId,
     core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
       if ($fields != null) 'fields': [$fields],
     };
 

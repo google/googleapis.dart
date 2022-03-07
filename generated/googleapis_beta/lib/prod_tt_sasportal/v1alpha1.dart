@@ -85,79 +85,6 @@ class CustomersResource {
 
   CustomersResource(commons.ApiRequester client) : _requester = client;
 
-  /// Creates a new SAS customer.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [SasPortalCustomer].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<SasPortalCustomer> create(
-    SasPortalCustomer request, {
-    core.String? $fields,
-  }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    const _url = 'v1alpha1/customers';
-
-    final _response = await _requester.request(
-      _url,
-      'POST',
-      body: _body,
-      queryParams: _queryParams,
-    );
-    return SasPortalCustomer.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
-  }
-
-  /// Deletes a customer.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - Required. The name of the customer.
-  /// Value must have pattern `^customers/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [SasPortalEmpty].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<SasPortalEmpty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
-    final _queryParams = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final _url = 'v1alpha1/' + core.Uri.encodeFull('$name');
-
-    final _response = await _requester.request(
-      _url,
-      'DELETE',
-      queryParams: _queryParams,
-    );
-    return SasPortalEmpty.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
-  }
-
   /// Returns a requested customer.
   ///
   /// Request parameters:
@@ -4232,48 +4159,7 @@ typedef SasPortalNode = $SasPortalNode;
 /// Information about National Radio Quiet Zone validation.
 ///
 /// The presence of the field indicates the device has been validated.
-class SasPortalNrqzValidation {
-  /// Validation case id.
-  core.String? caseId;
-
-  /// CPI who signed the validation.
-  core.String? cpiId;
-
-  /// Device latitude associated with the validation.
-  core.double? latitude;
-
-  /// Device longitude associated with the validation.
-  core.double? longitude;
-
-  SasPortalNrqzValidation({
-    this.caseId,
-    this.cpiId,
-    this.latitude,
-    this.longitude,
-  });
-
-  SasPortalNrqzValidation.fromJson(core.Map _json)
-      : this(
-          caseId: _json.containsKey('caseId')
-              ? _json['caseId'] as core.String
-              : null,
-          cpiId:
-              _json.containsKey('cpiId') ? _json['cpiId'] as core.String : null,
-          latitude: _json.containsKey('latitude')
-              ? (_json['latitude'] as core.num).toDouble()
-              : null,
-          longitude: _json.containsKey('longitude')
-              ? (_json['longitude'] as core.num).toDouble()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (caseId != null) 'caseId': caseId!,
-        if (cpiId != null) 'cpiId': cpiId!,
-        if (latitude != null) 'latitude': latitude!,
-        if (longitude != null) 'longitude': longitude!,
-      };
-}
+typedef SasPortalNrqzValidation = $SasPortalNrqzValidation;
 
 /// This resource represents a long-running operation that is the result of a
 /// network API call.

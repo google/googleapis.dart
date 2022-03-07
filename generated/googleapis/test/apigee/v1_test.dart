@@ -665,10 +665,12 @@ api.GoogleCloudApigeeV1ApiProxy buildGoogleCloudApigeeV1ApiProxy() {
   final o = api.GoogleCloudApigeeV1ApiProxy();
   buildCounterGoogleCloudApigeeV1ApiProxy++;
   if (buildCounterGoogleCloudApigeeV1ApiProxy < 3) {
+    o.apiProxyType = 'foo';
     o.labels = buildUnnamed7();
     o.latestRevisionId = 'foo';
     o.metaData = buildGoogleCloudApigeeV1EntityMetadata();
     o.name = 'foo';
+    o.readOnly = true;
     o.revision = buildUnnamed8();
   }
   buildCounterGoogleCloudApigeeV1ApiProxy--;
@@ -678,6 +680,10 @@ api.GoogleCloudApigeeV1ApiProxy buildGoogleCloudApigeeV1ApiProxy() {
 void checkGoogleCloudApigeeV1ApiProxy(api.GoogleCloudApigeeV1ApiProxy o) {
   buildCounterGoogleCloudApigeeV1ApiProxy++;
   if (buildCounterGoogleCloudApigeeV1ApiProxy < 3) {
+    unittest.expect(
+      o.apiProxyType!,
+      unittest.equals('foo'),
+    );
     checkUnnamed7(o.labels!);
     unittest.expect(
       o.latestRevisionId!,
@@ -688,6 +694,7 @@ void checkGoogleCloudApigeeV1ApiProxy(api.GoogleCloudApigeeV1ApiProxy o) {
       o.name!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.readOnly!, unittest.isTrue);
     checkUnnamed8(o.revision!);
   }
   buildCounterGoogleCloudApigeeV1ApiProxy--;
@@ -903,6 +910,7 @@ api.GoogleCloudApigeeV1ApiProxyRevision
   final o = api.GoogleCloudApigeeV1ApiProxyRevision();
   buildCounterGoogleCloudApigeeV1ApiProxyRevision++;
   if (buildCounterGoogleCloudApigeeV1ApiProxyRevision < 3) {
+    o.archive = 'foo';
     o.basepaths = buildUnnamed9();
     o.configurationVersion = buildGoogleCloudApigeeV1ConfigVersion();
     o.contextInfo = 'foo';
@@ -935,6 +943,10 @@ void checkGoogleCloudApigeeV1ApiProxyRevision(
     api.GoogleCloudApigeeV1ApiProxyRevision o) {
   buildCounterGoogleCloudApigeeV1ApiProxyRevision++;
   if (buildCounterGoogleCloudApigeeV1ApiProxyRevision < 3) {
+    unittest.expect(
+      o.archive!,
+      unittest.equals('foo'),
+    );
     checkUnnamed9(o.basepaths!);
     checkGoogleCloudApigeeV1ConfigVersion(o.configurationVersion!);
     unittest.expect(

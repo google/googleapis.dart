@@ -1,3 +1,7 @@
+## 8.2.0-dev
+
+- `dns` - new v2
+
 ## 8.1.0
 
 - `firebaseremoteconfig` - new!
@@ -67,7 +71,7 @@
 
 ### API changes
 
-- `adexchangebuyer` - **removed**  
+- `adexchangebuyer` - **removed**
 - `contactcenterinsights` - new!
 - `mybusinessbusinessinformation` - new!
 - `mybusinessnotifications` - new!

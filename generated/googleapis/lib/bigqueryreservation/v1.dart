@@ -323,9 +323,10 @@ class ProjectsLocationsCapacityCommitmentsResource {
   ///
   /// [capacityCommitmentId] - The optional capacity commitment ID. Capacity
   /// commitment name will be generated automatically if this field is empty.
-  /// This field must only contain lower case alphanumeric characters or dash.
-  /// Max length is 64 characters. NOTE: this ID won't be kept if the capacity
-  /// commitment is split or merged.
+  /// This field must only contain lower case alphanumeric characters or dashes.
+  /// The first and last character cannot be a dash. Max length is 64
+  /// characters. NOTE: this ID won't be kept if the capacity commitment is
+  /// split or merged.
   ///
   /// [enforceSingleAdminProjectPerOrg] - If true, fail the request if another
   /// project in the organization has a capacity commitment.
@@ -562,7 +563,10 @@ class ProjectsLocationsCapacityCommitmentsResource {
   /// Request parameters:
   ///
   /// [name] - Output only. The resource name of the capacity commitment, e.g.,
-  /// `projects/myproject/locations/US/capacityCommitments/123`
+  /// `projects/myproject/locations/US/capacityCommitments/123` For the
+  /// commitment id, it must only contain lower case alphanumeric characters or
+  /// dashes.It must start with a letter and must not end with a dash. Its
+  /// maximum length is 64 characters.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/capacityCommitments/\[^/\]+$`.
   ///
@@ -671,8 +675,9 @@ class ProjectsLocationsReservationsResource {
   /// `projects/myproject/locations/US`
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [reservationId] - The reservation ID. This field must only contain lower
-  /// case alphanumeric characters or dash. Max length is 64 characters.
+  /// [reservationId] - The reservation ID. It must only contain lower case
+  /// alphanumeric characters or dashes.It must start with a letter and must not
+  /// end with a dash. Its maximum length is 64 characters.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -839,7 +844,10 @@ class ProjectsLocationsReservationsResource {
   /// Request parameters:
   ///
   /// [name] - The resource name of the reservation, e.g., `projects / *
-  /// /locations / * /reservations/team1-prod`.
+  /// /locations / * /reservations/team1-prod`. For the reservation id, it must
+  /// only contain lower case alphanumeric characters or dashes.It must start
+  /// with a letter and must not end with a dash. Its maximum length is 64
+  /// characters.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/reservations/\[^/\]+$`.
   ///
@@ -920,7 +928,7 @@ class ProjectsLocationsReservationsAssignmentsResource {
   ///
   /// [assignmentId] - The optional assignment ID. Assignment name will be
   /// generated automatically if this field is empty. This field must only
-  /// contain lower case alphanumeric characters or dash. Max length is 64
+  /// contain lower case alphanumeric characters or dashes. Max length is 64
   /// characters.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1133,6 +1141,8 @@ class Assignment {
   ///
   /// E.g.:
   /// `projects/myproject/locations/US/reservations/team1-prod/assignments/123`.
+  /// For the assignment id, it must only contain lower case alphanumeric
+  /// characters or dashes and the max length is 64 characters.
   ///
   /// Output only.
   core.String? name;
@@ -1240,8 +1250,20 @@ class CapacityCommitment {
   /// Output only.
   Status? failureStatus;
 
+  /// Applicable only for commitments located within one of the BigQuery
+  /// multi-regions (US or EU).
+  ///
+  /// If set to true, this commitment is placed in the organization's secondary
+  /// region which is designated for disaster recovery purposes. If false, this
+  /// commitment is placed in the organization's default region.
+  core.bool? multiRegionAuxiliary;
+
   /// The resource name of the capacity commitment, e.g.,
-  /// `projects/myproject/locations/US/capacityCommitments/123`
+  /// `projects/myproject/locations/US/capacityCommitments/123` For the
+  /// commitment id, it must only contain lower case alphanumeric characters or
+  /// dashes.It must start with a letter and must not end with a dash.
+  ///
+  /// Its maximum length is 64 characters.
   ///
   /// Output only.
   core.String? name;
@@ -1307,6 +1329,7 @@ class CapacityCommitment {
     this.commitmentEndTime,
     this.commitmentStartTime,
     this.failureStatus,
+    this.multiRegionAuxiliary,
     this.name,
     this.plan,
     this.renewalPlan,
@@ -1326,6 +1349,9 @@ class CapacityCommitment {
               ? Status.fromJson(
                   _json['failureStatus'] as core.Map<core.String, core.dynamic>)
               : null,
+          multiRegionAuxiliary: _json.containsKey('multiRegionAuxiliary')
+              ? _json['multiRegionAuxiliary'] as core.bool
+              : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           plan: _json.containsKey('plan') ? _json['plan'] as core.String : null,
           renewalPlan: _json.containsKey('renewalPlan')
@@ -1343,6 +1369,8 @@ class CapacityCommitment {
         if (commitmentStartTime != null)
           'commitmentStartTime': commitmentStartTime!,
         if (failureStatus != null) 'failureStatus': failureStatus!,
+        if (multiRegionAuxiliary != null)
+          'multiRegionAuxiliary': multiRegionAuxiliary!,
         if (name != null) 'name': name!,
         if (plan != null) 'plan': plan!,
         if (renewalPlan != null) 'renewalPlan': renewalPlan!,
@@ -1518,6 +1546,14 @@ class MoveAssignmentRequest {
 
 /// A reservation is a mechanism used to guarantee slots to users.
 class Reservation {
+  /// Maximum number of queries that are allowed to run concurrently in this
+  /// reservation.
+  ///
+  /// This is a soft limit due to asynchronous nature of the system and various
+  /// optimizations for small queries. Default value is 0 which means that
+  /// concurrency will be automatically set based on the reservation size.
+  core.String? concurrency;
+
   /// Creation time of the reservation.
   ///
   /// Output only.
@@ -1530,8 +1566,20 @@ class Reservation {
   /// the slot capacity specified in the slot_capacity field at most.
   core.bool? ignoreIdleSlots;
 
+  /// Applicable only for reservations located within one of the BigQuery
+  /// multi-regions (US or EU).
+  ///
+  /// If set to true, this reservation is placed in the organization's secondary
+  /// region which is designated for disaster recovery purposes. If false, this
+  /// reservation is placed in the organization's default region.
+  core.bool? multiRegionAuxiliary;
+
   /// The resource name of the reservation, e.g., `projects / * /locations / *
   /// /reservations/team1-prod`.
+  ///
+  /// For the reservation id, it must only contain lower case alphanumeric
+  /// characters or dashes.It must start with a letter and must not end with a
+  /// dash. Its maximum length is 64 characters.
   core.String? name;
 
   /// Minimum slots available to this reservation.
@@ -1553,8 +1601,10 @@ class Reservation {
   core.String? updateTime;
 
   Reservation({
+    this.concurrency,
     this.creationTime,
     this.ignoreIdleSlots,
+    this.multiRegionAuxiliary,
     this.name,
     this.slotCapacity,
     this.updateTime,
@@ -1562,11 +1612,17 @@ class Reservation {
 
   Reservation.fromJson(core.Map _json)
       : this(
+          concurrency: _json.containsKey('concurrency')
+              ? _json['concurrency'] as core.String
+              : null,
           creationTime: _json.containsKey('creationTime')
               ? _json['creationTime'] as core.String
               : null,
           ignoreIdleSlots: _json.containsKey('ignoreIdleSlots')
               ? _json['ignoreIdleSlots'] as core.bool
+              : null,
+          multiRegionAuxiliary: _json.containsKey('multiRegionAuxiliary')
+              ? _json['multiRegionAuxiliary'] as core.bool
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           slotCapacity: _json.containsKey('slotCapacity')
@@ -1578,8 +1634,11 @@ class Reservation {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (concurrency != null) 'concurrency': concurrency!,
         if (creationTime != null) 'creationTime': creationTime!,
         if (ignoreIdleSlots != null) 'ignoreIdleSlots': ignoreIdleSlots!,
+        if (multiRegionAuxiliary != null)
+          'multiRegionAuxiliary': multiRegionAuxiliary!,
         if (name != null) 'name': name!,
         if (slotCapacity != null) 'slotCapacity': slotCapacity!,
         if (updateTime != null) 'updateTime': updateTime!,

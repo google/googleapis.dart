@@ -105,8 +105,6 @@ class FoldersTimeSeriesResource {
 
   /// Lists time series that match a filter.
   ///
-  /// This method does not require a Workspace.
-  ///
   /// Request parameters:
   ///
   /// [name] - Required. The project
@@ -649,8 +647,6 @@ class OrganizationsTimeSeriesResource {
       : _requester = client;
 
   /// Lists time series that match a filter.
-  ///
-  /// This method does not require a Workspace.
   ///
   /// Request parameters:
   ///
@@ -1959,8 +1955,6 @@ class ProjectsMetricDescriptorsResource {
 
   /// Gets a single metric descriptor.
   ///
-  /// This method does not require a Workspace.
-  ///
   /// Request parameters:
   ///
   /// [name] - Required. The metric descriptor on which to execute the request.
@@ -2000,8 +1994,6 @@ class ProjectsMetricDescriptorsResource {
   }
 
   /// Lists metric descriptors that match a filter.
-  ///
-  /// This method does not require a Workspace.
   ///
   /// Request parameters:
   ///
@@ -2070,8 +2062,6 @@ class ProjectsMonitoredResourceDescriptorsResource {
 
   /// Gets a single monitored resource descriptor.
   ///
-  /// This method does not require a Workspace.
-  ///
   /// Request parameters:
   ///
   /// [name] - Required. The monitored resource descriptor to get. The format
@@ -2111,8 +2101,6 @@ class ProjectsMonitoredResourceDescriptorsResource {
   }
 
   /// Lists monitored resource descriptors that match a filter.
-  ///
-  /// This method does not require a Workspace.
   ///
   /// Request parameters:
   ///
@@ -2795,8 +2783,6 @@ class ProjectsTimeSeriesResource {
 
   /// Lists time series that match a filter.
   ///
-  /// This method does not require a Workspace.
-  ///
   /// Request parameters:
   ///
   /// [name] - Required. The project
@@ -3323,8 +3309,6 @@ class ProjectsTimeSeriesResource {
   }
 
   /// Queries time series using Monitoring Query Language.
-  ///
-  /// This method does not require a Workspace.
   ///
   /// [request] - The metadata request object.
   ///
@@ -5273,7 +5257,7 @@ class Condition {
 ///
 /// Optional.
 class ContentMatcher {
-  /// String or regex content to match.
+  /// String, regex or JSON content to match.
   ///
   /// Maximum 1024 bytes. An empty content string indicates no content matching
   /// is to be performed.
@@ -5292,7 +5276,7 @@ class ContentMatcher {
   /// - "NOT_CONTAINS_STRING" : Selects negation of substring matching. The
   /// match succeeds if the output does NOT contain the content string.
   /// - "MATCHES_REGEX" : Selects regular-expression matching. The match
-  /// succeeds of the output matches the regular expression specified in the
+  /// succeeds if the output matches the regular expression specified in the
   /// content string. Regex matching is only supported for HTTP/HTTPS checks.
   /// - "NOT_MATCHES_REGEX" : Selects negation of regular-expression matching.
   /// The match succeeds if the output does NOT match the regular expression
@@ -5649,6 +5633,8 @@ class Documentation {
   ///
   /// The content may not exceed 8,192 Unicode characters and may not exceed
   /// more than 10,240 bytes when encoded in UTF-8 format, whichever is smaller.
+  /// This text can be templatized by using variables
+  /// (https://cloud.google.com/monitoring/alerts/doc-variables).
   core.String? content;
 
   /// The format of the content field.
@@ -7458,8 +7444,7 @@ class MetricThreshold {
   /// evaluated when data stops arriving.
   /// Possible string values are:
   /// - "EVALUATION_MISSING_DATA_UNSPECIFIED" : An unspecified evaluation
-  /// missing data option, if used, it will default to
-  /// EVALUATION_MISSING_DATA_ACTIVE.
+  /// missing data option. Equivalent to EVALUATION_MISSING_DATA_NO_OP.
   /// - "EVALUATION_MISSING_DATA_INACTIVE" : If there is no data to evaluate the
   /// condition, then evaluate the condition as false.
   /// - "EVALUATION_MISSING_DATA_ACTIVE" : If there is no data to evaluate the
@@ -7778,8 +7763,7 @@ class MonitoringQueryLanguageCondition {
   /// evaluated when data stops arriving.
   /// Possible string values are:
   /// - "EVALUATION_MISSING_DATA_UNSPECIFIED" : An unspecified evaluation
-  /// missing data option, if used, it will default to
-  /// EVALUATION_MISSING_DATA_ACTIVE.
+  /// missing data option. Equivalent to EVALUATION_MISSING_DATA_NO_OP.
   /// - "EVALUATION_MISSING_DATA_INACTIVE" : If there is no data to evaluate the
   /// condition, then evaluate the condition as false.
   /// - "EVALUATION_MISSING_DATA_ACTIVE" : If there is no data to evaluate the

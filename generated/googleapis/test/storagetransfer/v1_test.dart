@@ -511,6 +511,7 @@ api.MetadataOptions buildMetadataOptions() {
     o.storageClass = 'foo';
     o.symlink = 'foo';
     o.temporaryHold = 'foo';
+    o.timeCreated = 'foo';
     o.uid = 'foo';
   }
   buildCounterMetadataOptions--;
@@ -546,6 +547,10 @@ void checkMetadataOptions(api.MetadataOptions o) {
     );
     unittest.expect(
       o.temporaryHold!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.timeCreated!,
       unittest.equals('foo'),
     );
     unittest.expect(

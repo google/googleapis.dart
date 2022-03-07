@@ -691,7 +691,8 @@ class TransferOperationsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Not used.
+  /// [name] - Required. The name of the type being listed; must be
+  /// `transferOperations`.
   /// Value must have pattern `^transferOperations$`.
   ///
   /// [filter] - Required. A list of query parameters specified as JSON text in
@@ -1496,6 +1497,20 @@ class MetadataOptions {
   /// hold status.
   core.String? temporaryHold;
 
+  /// Specifies how each object's `timeCreated` metadata is preserved for
+  /// transfers between Google Cloud Storage buckets.
+  ///
+  /// If unspecified, the default behavior is the same as TIME_CREATED_SKIP.
+  /// Possible string values are:
+  /// - "TIME_CREATED_UNSPECIFIED" : TimeCreated behavior is unspecified.
+  /// - "TIME_CREATED_SKIP" : Do not preserve the `timeCreated` metadata from
+  /// the source object.
+  /// - "TIME_CREATED_PRESERVE_AS_CUSTOM_TIME" : Preserves the source object's
+  /// `timeCreated` metadata in the `customTime` field in the destination
+  /// object. Note that any value stored in the source object's `customTime`
+  /// field will not be propagated to the destination object.
+  core.String? timeCreated;
+
   /// Specifies how each file's POSIX user ID (UID) attribute should be handled
   /// by the transfer.
   ///
@@ -1514,6 +1529,7 @@ class MetadataOptions {
     this.storageClass,
     this.symlink,
     this.temporaryHold,
+    this.timeCreated,
     this.uid,
   });
 
@@ -1534,6 +1550,9 @@ class MetadataOptions {
           temporaryHold: _json.containsKey('temporaryHold')
               ? _json['temporaryHold'] as core.String
               : null,
+          timeCreated: _json.containsKey('timeCreated')
+              ? _json['timeCreated'] as core.String
+              : null,
           uid: _json.containsKey('uid') ? _json['uid'] as core.String : null,
         );
 
@@ -1545,6 +1564,7 @@ class MetadataOptions {
         if (storageClass != null) 'storageClass': storageClass!,
         if (symlink != null) 'symlink': symlink!,
         if (temporaryHold != null) 'temporaryHold': temporaryHold!,
+        if (timeCreated != null) 'timeCreated': timeCreated!,
         if (uid != null) 'uid': uid!,
       };
 }

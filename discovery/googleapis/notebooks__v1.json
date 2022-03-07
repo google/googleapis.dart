@@ -1741,7 +1741,7 @@
             }
         }
     },
-    "revision": "20220205",
+    "revision": "20220224",
     "rootUrl": "https://notebooks.googleapis.com/",
     "schemas": {
         "AcceleratorConfig": {
@@ -1808,6 +1808,12 @@
                     "type": "string"
                 }
             },
+            "type": "object"
+        },
+        "BootImage": {
+            "description": "Definition of the boot image used by the Runtime. Used to facilitate runtime upgradeability.",
+            "id": "BootImage",
+            "properties": {},
             "type": "object"
         },
         "CancelOperationRequest": {
@@ -1982,13 +1988,15 @@
                         "EVENT_TYPE_UNSPECIFIED",
                         "IDLE",
                         "HEARTBEAT",
-                        "HEALTH"
+                        "HEALTH",
+                        "MAINTENANCE"
                     ],
                     "enumDescriptions": [
                         "Event is not specified.",
                         "The instance / runtime is idle",
                         "The instance / runtime is available. This event indicates that instance / runtime underlying compute is operational.",
-                        "The instance / runtime health is available. This event indicates that instance / runtime health information."
+                        "The instance / runtime health is available. This event indicates that instance / runtime health information.",
+                        "The instance / runtime is available. This event allows instance / runtime to send Host maintenance information to Control Plane. https://cloud.google.com/compute/docs/gpus/gpu-host-maintenance"
                     ],
                     "type": "string"
                 }
@@ -2157,6 +2165,10 @@
                     "description": "The email address of a service account to use when running the execution. You must have the `iam.serviceAccounts.actAs` permission for the specified service account.",
                     "type": "string"
                 },
+                "tensorboard": {
+                    "description": "The name of a Vertex AI [Tensorboard] resource to which this execution will upload Tensorboard logs. Format: `projects/{project}/locations/{location}/tensorboards/{tensorboard}`",
+                    "type": "string"
+                },
                 "vertexAiParameters": {
                     "$ref": "VertexAIParameters",
                     "description": "Parameters used in Vertex AI JobType executions."
@@ -2260,6 +2272,10 @@
                         "Balanced persistent disk type."
                     ],
                     "type": "string"
+                },
+                "canIpForward": {
+                    "description": "Optional. Flag to enable ip forwarding or not, default false/off. https://cloud.google.com/vpc/docs/using-routes#canipforward",
+                    "type": "boolean"
                 },
                 "containerImage": {
                     "$ref": "ContainerImage",
@@ -3257,7 +3273,7 @@
                     "type": "integer"
                 },
                 "installGpuDriver": {
-                    "description": "Install Nvidia Driver automatically.",
+                    "description": "Install Nvidia Driver automatically. Default: True",
                     "type": "boolean"
                 },
                 "kernels": {
@@ -3814,6 +3830,10 @@
                 "acceleratorConfig": {
                     "$ref": "RuntimeAcceleratorConfig",
                     "description": "Optional. The Compute Engine accelerator configuration for this runtime."
+                },
+                "bootImage": {
+                    "$ref": "BootImage",
+                    "description": "Optional. Boot image metadata used for runtime upgradeability."
                 },
                 "containerImages": {
                     "description": "Optional. Use a list of container images to use as Kernels in the notebook instance.",

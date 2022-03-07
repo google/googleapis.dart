@@ -43,9 +43,18 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 /// API for provisioning and managing identity resources.
 class CloudIdentityApi {
+  /// Private Service: https://www.googleapis.com/auth/cloud-identity.devices
+  static const cloudIdentityDevicesScope =
+      'https://www.googleapis.com/auth/cloud-identity.devices';
+
   /// See your device details
   static const cloudIdentityDevicesLookupScope =
       'https://www.googleapis.com/auth/cloud-identity.devices.lookup';
+
+  /// Private Service:
+  /// https://www.googleapis.com/auth/cloud-identity.devices.readonly
+  static const cloudIdentityDevicesReadonlyScope =
+      'https://www.googleapis.com/auth/cloud-identity.devices.readonly';
 
   /// See, change, create, and delete any of the Cloud Identity Groups that you
   /// can access, including the members of each group
@@ -3161,7 +3170,48 @@ class GoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse {
 }
 
 /// Request message for wiping all data on the device.
-typedef GoogleAppsCloudidentityDevicesV1WipeDeviceRequest = $Request00;
+class GoogleAppsCloudidentityDevicesV1WipeDeviceRequest {
+  /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
+  /// the customer.
+  ///
+  /// If you're using this API for your own organization, use
+  /// `customers/my_customer` If you're using this API to manage another
+  /// organization, use `customers/{customer}`, where customer is the customer
+  /// to whom the device belongs.
+  ///
+  /// Optional.
+  core.String? customer;
+
+  /// Specifies if a user is able to factory reset a device after a Device Wipe.
+  ///
+  /// On iOS, this is called "Activation Lock", while on Android, this is known
+  /// as "Factory Reset Protection". If true, this protection will be removed
+  /// from the device, so that a user can successfully factory reset. If false,
+  /// the setting is untouched on the device.
+  ///
+  /// Optional.
+  core.bool? removeResetLock;
+
+  GoogleAppsCloudidentityDevicesV1WipeDeviceRequest({
+    this.customer,
+    this.removeResetLock,
+  });
+
+  GoogleAppsCloudidentityDevicesV1WipeDeviceRequest.fromJson(core.Map _json)
+      : this(
+          customer: _json.containsKey('customer')
+              ? _json['customer'] as core.String
+              : null,
+          removeResetLock: _json.containsKey('removeResetLock')
+              ? _json['removeResetLock'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (customer != null) 'customer': customer!,
+        if (removeResetLock != null) 'removeResetLock': removeResetLock!,
+      };
+}
 
 /// Request message for starting an account wipe on device.
 typedef GoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest = $Request00;

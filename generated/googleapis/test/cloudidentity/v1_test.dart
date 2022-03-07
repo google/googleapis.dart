@@ -875,6 +875,7 @@ api.GoogleAppsCloudidentityDevicesV1WipeDeviceRequest
   buildCounterGoogleAppsCloudidentityDevicesV1WipeDeviceRequest++;
   if (buildCounterGoogleAppsCloudidentityDevicesV1WipeDeviceRequest < 3) {
     o.customer = 'foo';
+    o.removeResetLock = true;
   }
   buildCounterGoogleAppsCloudidentityDevicesV1WipeDeviceRequest--;
   return o;
@@ -888,6 +889,7 @@ void checkGoogleAppsCloudidentityDevicesV1WipeDeviceRequest(
       o.customer!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.removeResetLock!, unittest.isTrue);
   }
   buildCounterGoogleAppsCloudidentityDevicesV1WipeDeviceRequest--;
 }

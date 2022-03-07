@@ -2751,6 +2751,7 @@ api.JobConfigurationLoad buildJobConfigurationLoad() {
     o.maxBadRecords = 42;
     o.nullMarker = 'foo';
     o.parquetOptions = buildParquetOptions();
+    o.preserveAsciiControlCharacters = true;
     o.projectionFields = buildUnnamed38();
     o.quote = 'foo';
     o.rangePartitioning = buildRangePartitioning();
@@ -2807,6 +2808,7 @@ void checkJobConfigurationLoad(api.JobConfigurationLoad o) {
       unittest.equals('foo'),
     );
     checkParquetOptions(o.parquetOptions!);
+    unittest.expect(o.preserveAsciiControlCharacters!, unittest.isTrue);
     checkUnnamed38(o.projectionFields!);
     unittest.expect(
       o.quote!,

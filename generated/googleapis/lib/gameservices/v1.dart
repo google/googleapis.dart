@@ -192,11 +192,11 @@ class ProjectsLocationsGameServerDeploymentsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The parent resource name, in the following form:
-  /// `projects/{project}/locations/{location}`.
+  /// `projects/{project}/locations/{locationId}`.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [deploymentId] - Required. The ID of the game server delpoyment resource
-  /// to be created.
+  /// [deploymentId] - Required. The ID of the game server deployment resource
+  /// to create.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -236,9 +236,9 @@ class ProjectsLocationsGameServerDeploymentsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the game server delpoyment to delete, in
+  /// [name] - Required. The name of the game server deployment to delete, in
   /// the following form:
-  /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}`.
+  /// `projects/{project}/locations/{locationId}/gameServerDeployments/{deploymentId}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/gameServerDeployments/\[^/\]+$`.
   ///
@@ -280,9 +280,9 @@ class ProjectsLocationsGameServerDeploymentsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the game server delpoyment, in the
+  /// [name] - Required. The name of the game server deployment, in the
   /// following form:
-  /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}`.
+  /// `projects/{project}/locations/{locationId}/gameServerDeployments/{deploymentId}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/gameServerDeployments/\[^/\]+$`.
   ///
@@ -322,9 +322,9 @@ class ProjectsLocationsGameServerDeploymentsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the game server delpoyment to retrieve, in
+  /// [name] - Required. The name of the game server deployment to retrieve, in
   /// the following form:
-  /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}`.
+  /// `projects/{project}/locations/{locationId}/gameServerDeployments/{deploymentId}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/gameServerDeployments/\[^/\]+$`.
   ///
@@ -413,13 +413,13 @@ class ProjectsLocationsGameServerDeploymentsResource {
     return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Gets details a single game server deployment rollout.
+  /// Gets details of a single game server deployment rollout.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the game server delpoyment to retrieve, in
-  /// the following form:
-  /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}/rollout`.
+  /// [name] - Required. The name of the game server deployment rollout to
+  /// retrieve, in the following form:
+  /// `projects/{project}/locations/{locationId}/gameServerDeployments/{deploymentId}/rollout`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/gameServerDeployments/\[^/\]+$`.
   ///
@@ -457,22 +457,23 @@ class ProjectsLocationsGameServerDeploymentsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The parent resource name, in the following form:
-  /// `projects/{project}/locations/{location}`.
+  /// `projects/{project}/locations/{locationId}`.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [filter] - Optional. The filter to apply to list results.
+  /// [filter] - Optional. The filter to apply to list results (see
+  /// [Filtering](https://google.aip.dev/160)).
   ///
-  /// [orderBy] - Optional. Specifies the ordering of results following syntax
-  /// at https://cloud.google.com/apis/design/design_patterns#sorting_order.
+  /// [orderBy] - Optional. Specifies the ordering of results following
+  /// [Cloud API syntax](https://cloud.google.com/apis/design/design_patterns#sorting_order).
   ///
   /// [pageSize] - Optional. The maximum number of items to return. If
-  /// unspecified, the server will pick an appropriate default. The server may
-  /// return fewer items than requested. A caller should only rely on response's
-  /// next_page_token to determine if there are more GameServerDeployments left
-  /// to be queried.
+  /// unspecified, the server picks an appropriate default. The server may
+  /// return fewer items than requested. A caller should only rely on the
+  /// response's next_page_token to determine if there are more
+  /// GameServerDeployments left to be queried.
   ///
   /// [pageToken] - Optional. The next_page_token value returned from a previous
-  /// List request, if any.
+  /// list request, if any.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -520,15 +521,16 @@ class ProjectsLocationsGameServerDeploymentsResource {
   ///
   /// [name] - The resource name of the game server deployment, in the following
   /// form:
-  /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}`.
+  /// `projects/{project}/locations/{locationId}/gameServerDeployments/{deploymentId}`.
   /// For example,
   /// `projects/my-project/locations/global/gameServerDeployments/my-deployment`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/gameServerDeployments/\[^/\]+$`.
   ///
-  /// [updateMask] - Required. Mask of fields to update. At least one path must
-  /// be supplied in this field. For the `FieldMask` definition, see
-  /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask
+  /// [updateMask] - Required. The update mask to apply to the resource. At
+  /// least one path must be supplied in this field. For more information, see
+  /// the \[`FieldMask`
+  /// definition\](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -573,7 +575,7 @@ class ProjectsLocationsGameServerDeploymentsResource {
   ///
   /// [name] - The resource name of the game server deployment rollout, in the
   /// following form:
-  /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}/rollout`.
+  /// `projects/{project}/locations/{locationId}/gameServerDeployments/{deploymentId}/rollout`.
   /// For example,
   /// `projects/my-project/locations/global/gameServerDeployments/my-deployment/rollout`.
   /// Value must have pattern
@@ -582,9 +584,10 @@ class ProjectsLocationsGameServerDeploymentsResource {
   /// [previewTime] - Optional. The target timestamp to compute the preview.
   /// Defaults to the immediately after the proposed rollout completes.
   ///
-  /// [updateMask] - Optional. Mask of fields to update. At least one path must
-  /// be supplied in this field. For the `FieldMask` definition, see
-  /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask
+  /// [updateMask] - Optional. The update mask to apply to the resource. At
+  /// least one path must be supplied in this field. For more information, see
+  /// the \[`FieldMask`
+  /// definition\](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -721,10 +724,10 @@ class ProjectsLocationsGameServerDeploymentsResource {
   /// Patches a single game server deployment rollout.
   ///
   /// The method will not return an error if the update does not affect any
-  /// existing realms. For example - if the default_game_server_config is
-  /// changed but all existing realms use the override, that is valid.
-  /// Similarly, if a non existing realm is explicitly called out in
-  /// game_server_config_overrides field, that will also not result in an error.
+  /// existing realms. For example, the following cases will not return an
+  /// error: * The default_game_server_config is changed but all existing realms
+  /// use the override. * A non-existing realm is explicitly called out in the
+  /// game_server_config_overrides field.
   ///
   /// [request] - The metadata request object.
   ///
@@ -732,15 +735,16 @@ class ProjectsLocationsGameServerDeploymentsResource {
   ///
   /// [name] - The resource name of the game server deployment rollout, in the
   /// following form:
-  /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}/rollout`.
+  /// `projects/{project}/locations/{locationId}/gameServerDeployments/{deploymentId}/rollout`.
   /// For example,
   /// `projects/my-project/locations/global/gameServerDeployments/my-deployment/rollout`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/gameServerDeployments/\[^/\]+$`.
   ///
-  /// [updateMask] - Required. Mask of fields to update. At least one path must
-  /// be supplied in this field. For the `FieldMask` definition, see
-  /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask
+  /// [updateMask] - Required. The update mask to apply to the resource. At
+  /// least one path must be supplied in this field. For more information, see
+  /// the \[`FieldMask`
+  /// definition\](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -794,12 +798,12 @@ class ProjectsLocationsGameServerDeploymentsConfigsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The parent resource name, in the following form:
-  /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}/`.
+  /// `projects/{project}/locations/{locationId}/gameServerDeployments/{deploymentId}/`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/gameServerDeployments/\[^/\]+$`.
   ///
-  /// [configId] - Required. The ID of the game server config resource to be
-  /// created.
+  /// [configId] - Required. The ID of the game server config resource to
+  /// create.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -836,14 +840,14 @@ class ProjectsLocationsGameServerDeploymentsConfigsResource {
 
   /// Deletes a single game server config.
   ///
-  /// The deletion will fail if the game server config is referenced in a game
+  /// The deletion fails if the game server config is referenced in a game
   /// server deployment rollout.
   ///
   /// Request parameters:
   ///
   /// [name] - Required. The name of the game server config to delete, in the
   /// following form:
-  /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}/configs/{config}`.
+  /// `projects/{project}/locations/{locationId}/gameServerDeployments/{deploymentId}/configs/{configId}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/gameServerDeployments/\[^/\]+/configs/\[^/\]+$`.
   ///
@@ -881,7 +885,7 @@ class ProjectsLocationsGameServerDeploymentsConfigsResource {
   ///
   /// [name] - Required. The name of the game server config to retrieve, in the
   /// following form:
-  /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}/configs/{config}`.
+  /// `projects/{project}/locations/{locationId}/gameServerDeployments/{deploymentId}/configs/{configId}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/gameServerDeployments/\[^/\]+/configs/\[^/\]+$`.
   ///
@@ -920,19 +924,20 @@ class ProjectsLocationsGameServerDeploymentsConfigsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The parent resource name, in the following form:
-  /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}/configs
+  /// `projects/{project}/locations/{locationId}/gameServerDeployments/{deploymentId}/configs
   /// / * `.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/gameServerDeployments/\[^/\]+$`.
   ///
-  /// [filter] - Optional. The filter to apply to list results.
+  /// [filter] - Optional. The filter to apply to list results (see
+  /// [Filtering](https://google.aip.dev/160)).
   ///
-  /// [orderBy] - Optional. Specifies the ordering of results following syntax
-  /// at https://cloud.google.com/apis/design/design_patterns#sorting_order.
+  /// [orderBy] - Optional. Specifies the ordering of results following
+  /// [Cloud API syntax](https://cloud.google.com/apis/design/design_patterns#sorting_order).
   ///
   /// [pageSize] - Optional. The maximum number of items to return. If
-  /// unspecified, server will pick an appropriate default. Server may return
-  /// fewer items than requested. A caller should only rely on response's
+  /// unspecified, the server picks an appropriate default. The server may
+  /// return fewer items than requested. A caller should only rely on response's
   /// next_page_token to determine if there are more GameServerConfigs left to
   /// be queried.
   ///
@@ -1186,10 +1191,10 @@ class ProjectsLocationsRealmsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The parent resource name, in the following form:
-  /// `projects/{project}/locations/{location}`.
+  /// `projects/{project}/locations/{locationId}`.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [realmId] - Required. The ID of the realm resource to be created.
+  /// [realmId] - Required. The ID of the realm resource to create.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1229,7 +1234,7 @@ class ProjectsLocationsRealmsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The name of the realm to delete, in the following form:
-  /// `projects/{project}/locations/{location}/realms/{realm}`.
+  /// `projects/{project}/locations/{locationId}/realms/{realmId}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/realms/\[^/\]+$`.
   ///
@@ -1266,7 +1271,7 @@ class ProjectsLocationsRealmsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The name of the realm to retrieve, in the following
-  /// form: `projects/{project}/locations/{location}/realms/{realm}`.
+  /// form: `projects/{project}/locations/{locationId}/realms/{realmId}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/realms/\[^/\]+$`.
   ///
@@ -1303,21 +1308,23 @@ class ProjectsLocationsRealmsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The parent resource name, in the following form:
-  /// `projects/{project}/locations/{location}`.
+  /// `projects/{project}/locations/{locationId}`.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [filter] - Optional. The filter to apply to list results.
+  /// [filter] - Optional. The filter to apply to list results (see
+  /// [Filtering](https://google.aip.dev/160)).
   ///
-  /// [orderBy] - Optional. Specifies the ordering of results following syntax
-  /// at https://cloud.google.com/apis/design/design_patterns#sorting_order.
+  /// [orderBy] - Optional. Specifies the ordering of results following
+  /// [Cloud API syntax](https://cloud.google.com/apis/design/design_patterns#sorting_order).
   ///
   /// [pageSize] - Optional. The maximum number of items to return. If
-  /// unspecified, server will pick an appropriate default. Server may return
-  /// fewer items than requested. A caller should only rely on response's
-  /// next_page_token to determine if there are more realms left to be queried.
+  /// unspecified, the server picks an appropriate default. The server may
+  /// return fewer items than requested. A caller should only rely on the
+  /// response's next_page_token to determine if there are more realms left to
+  /// be queried.
   ///
   /// [pageToken] - Optional. The next_page_token value returned from a previous
-  /// List request, if any.
+  /// list request, if any.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1363,14 +1370,14 @@ class ProjectsLocationsRealmsResource {
   /// Request parameters:
   ///
   /// [name] - The resource name of the realm, in the following form:
-  /// `projects/{project}/locations/{location}/realms/{realm}`. For example,
-  /// `projects/my-project/locations/{location}/realms/my-realm`.
+  /// `projects/{project}/locations/{locationId}/realms/{realmId}`. For example,
+  /// `projects/my-project/locations/global/realms/my-realm`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/realms/\[^/\]+$`.
   ///
-  /// [updateMask] - Required. The update mask applies to the resource. For the
-  /// `FieldMask` definition, see
-  /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask
+  /// [updateMask] - Required. The update mask to apply to the resource. For
+  /// more information, see the \[`FieldMask`
+  /// definition\](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1412,16 +1419,16 @@ class ProjectsLocationsRealmsResource {
   /// Request parameters:
   ///
   /// [name] - The resource name of the realm, in the following form:
-  /// `projects/{project}/locations/{location}/realms/{realm}`. For example,
-  /// `projects/my-project/locations/{location}/realms/my-realm`.
+  /// `projects/{project}/locations/{locationId}/realms/{realmId}`. For example,
+  /// `projects/my-project/locations/global/realms/my-realm`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/realms/\[^/\]+$`.
   ///
   /// [previewTime] - Optional. The target timestamp to compute the preview.
   ///
-  /// [updateMask] - Required. The update mask applies to the resource. For the
-  /// `FieldMask` definition, see
-  /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask
+  /// [updateMask] - Required. The update mask to apply to the resource. For
+  /// more information, see the \[`FieldMask`
+  /// definition\](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1473,12 +1480,12 @@ class ProjectsLocationsRealmsGameServerClustersResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The parent resource name, in the following form:
-  /// `projects/{project}/locations/{location}/realms/{realm-id}`.
+  /// `projects/{project}/locations/{locationId}/realms/{realmId}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/realms/\[^/\]+$`.
   ///
   /// [gameServerClusterId] - Required. The ID of the game server cluster
-  /// resource to be created.
+  /// resource to create.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1520,7 +1527,7 @@ class ProjectsLocationsRealmsGameServerClustersResource {
   ///
   /// [name] - Required. The name of the game server cluster to delete, in the
   /// following form:
-  /// `projects/{project}/locations/{location}/gameServerClusters/{cluster}`.
+  /// `projects/{project}/locations/{locationId}/gameServerClusters/{gameServerClusterId}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/realms/\[^/\]+/gameServerClusters/\[^/\]+$`.
   ///
@@ -1558,7 +1565,7 @@ class ProjectsLocationsRealmsGameServerClustersResource {
   ///
   /// [name] - Required. The name of the game server cluster to retrieve, in the
   /// following form:
-  /// `projects/{project}/locations/{location}/realms/{realm-id}/gameServerClusters/{cluster}`.
+  /// `projects/{project}/locations/{locationId}/realms/{realmId}/gameServerClusters/{gameServerClusterId}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/realms/\[^/\]+/gameServerClusters/\[^/\]+$`.
   ///
@@ -1566,16 +1573,17 @@ class ProjectsLocationsRealmsGameServerClustersResource {
   /// `FULL` is specified, the `cluster_state` field is also returned in the
   /// GameServerCluster object, which includes the state of the referenced
   /// Kubernetes cluster such as versions and provider info. The default/unset
-  /// value is GAME_SERVER_CLUSTER_VIEW_UNSPECIFIED, same as BASIC, which does
-  /// not return the `cluster_state` field.
+  /// value is `GAME_SERVER_CLUSTER_VIEW_UNSPECIFIED`, the same as `BASIC`,
+  /// which does not return the `cluster_state` field.
   /// Possible string values are:
-  /// - "GAME_SERVER_CLUSTER_VIEW_UNSPECIFIED" : The default / unset value. The
-  /// API will default to the BASIC view.
-  /// - "BASIC" : Include basic information of a GameServerCluster resource and
-  /// omit `cluster_state`. This is the default value (for
-  /// ListGameServerClusters, GetGameServerCluster and
+  /// - "GAME_SERVER_CLUSTER_VIEW_UNSPECIFIED" : If the value is not set, Google
+  /// Cloud Game Servers defaults to the `BASIC` view.
+  /// - "BASIC" : Includes basic information of a GameServerCluster resource and
+  /// omits `cluster_state`. This is the default value (for methods
+  /// ListGameServerClusters, GetGameServerCluster, and
   /// PreviewCreateGameServerCluster).
-  /// - "FULL" : Include everything.
+  /// - "FULL" : Include basic information of a GameServerCluster resource as
+  /// well as `cluster_state`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1613,38 +1621,40 @@ class ProjectsLocationsRealmsGameServerClustersResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The parent resource name, in the following form:
-  /// "projects/{project}/locations/{location}/realms/{realm}".
+  /// `projects/{project}/locations/{locationId}/realms/{realmId}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/realms/\[^/\]+$`.
   ///
-  /// [filter] - Optional. The filter to apply to list results.
+  /// [filter] - Optional. The filter to apply to list results (see
+  /// [Filtering](https://google.aip.dev/160)).
   ///
-  /// [orderBy] - Optional. Specifies the ordering of results following syntax
-  /// at https://cloud.google.com/apis/design/design_patterns#sorting_order.
+  /// [orderBy] - Optional. Specifies the ordering of results following
+  /// [Cloud API syntax](https://cloud.google.com/apis/design/design_patterns#sorting_order).
   ///
   /// [pageSize] - Optional. The maximum number of items to return. If
-  /// unspecified, the server will pick an appropriate default. The server may
+  /// unspecified, the server picks an appropriate default. The server may
   /// return fewer items than requested. A caller should only rely on response's
   /// next_page_token to determine if there are more GameServerClusters left to
   /// be queried.
   ///
   /// [pageToken] - Optional. The next_page_token value returned from a previous
-  /// List request, if any.
+  /// list request, if any.
   ///
   /// [view] - Optional. View for the returned GameServerCluster objects. When
   /// `FULL` is specified, the `cluster_state` field is also returned in the
   /// GameServerCluster object, which includes the state of the referenced
   /// Kubernetes cluster such as versions and provider info. The default/unset
-  /// value is GAME_SERVER_CLUSTER_VIEW_UNSPECIFIED, same as BASIC, which does
-  /// not return the `cluster_state` field.
+  /// value is `GAME_SERVER_CLUSTER_VIEW_UNSPECIFIED`, the same as `BASIC`,
+  /// which does not return the `cluster_state` field.
   /// Possible string values are:
-  /// - "GAME_SERVER_CLUSTER_VIEW_UNSPECIFIED" : The default / unset value. The
-  /// API will default to the BASIC view.
-  /// - "BASIC" : Include basic information of a GameServerCluster resource and
-  /// omit `cluster_state`. This is the default value (for
-  /// ListGameServerClusters, GetGameServerCluster and
+  /// - "GAME_SERVER_CLUSTER_VIEW_UNSPECIFIED" : If the value is not set, Google
+  /// Cloud Game Servers defaults to the `BASIC` view.
+  /// - "BASIC" : Includes basic information of a GameServerCluster resource and
+  /// omits `cluster_state`. This is the default value (for methods
+  /// ListGameServerClusters, GetGameServerCluster, and
   /// PreviewCreateGameServerCluster).
-  /// - "FULL" : Include everything.
+  /// - "FULL" : Include basic information of a GameServerCluster resource as
+  /// well as `cluster_state`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1693,15 +1703,16 @@ class ProjectsLocationsRealmsGameServerClustersResource {
   ///
   /// [name] - Required. The resource name of the game server cluster, in the
   /// following form:
-  /// `projects/{project}/locations/{location}/realms/{realm}/gameServerClusters/{cluster}`.
+  /// `projects/{project}/locations/{locationId}/realms/{realmId}/gameServerClusters/{gameServerClusterId}`.
   /// For example,
-  /// `projects/my-project/locations/{location}/realms/zanzibar/gameServerClusters/my-onprem-cluster`.
+  /// `projects/my-project/locations/global/realms/zanzibar/gameServerClusters/my-gke-cluster`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/realms/\[^/\]+/gameServerClusters/\[^/\]+$`.
   ///
-  /// [updateMask] - Required. Mask of fields to update. At least one path must
-  /// be supplied in this field. For the `FieldMask` definition, see
-  /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask
+  /// [updateMask] - Required. The update mask to apply to the resource. At
+  /// least one path must be supplied in this field. For more information, see
+  /// the \[`FieldMask`
+  /// definition\](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1744,25 +1755,26 @@ class ProjectsLocationsRealmsGameServerClustersResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The parent resource name, in the following form:
-  /// `projects/{project}/locations/{location}/realms/{realm}`.
+  /// `projects/{project}/locations/{locationId}/realms/{realmId}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/realms/\[^/\]+$`.
   ///
   /// [gameServerClusterId] - Required. The ID of the game server cluster
-  /// resource to be created.
+  /// resource to create.
   ///
   /// [previewTime] - Optional. The target timestamp to compute the preview.
   ///
-  /// [view] - Optional. This field is deprecated, preview will always return
+  /// [view] - Optional. This field is deprecated. Preview will always return
   /// KubernetesClusterState.
   /// Possible string values are:
-  /// - "GAME_SERVER_CLUSTER_VIEW_UNSPECIFIED" : The default / unset value. The
-  /// API will default to the BASIC view.
-  /// - "BASIC" : Include basic information of a GameServerCluster resource and
-  /// omit `cluster_state`. This is the default value (for
-  /// ListGameServerClusters, GetGameServerCluster and
+  /// - "GAME_SERVER_CLUSTER_VIEW_UNSPECIFIED" : If the value is not set, Google
+  /// Cloud Game Servers defaults to the `BASIC` view.
+  /// - "BASIC" : Includes basic information of a GameServerCluster resource and
+  /// omits `cluster_state`. This is the default value (for methods
+  /// ListGameServerClusters, GetGameServerCluster, and
   /// PreviewCreateGameServerCluster).
-  /// - "FULL" : Include everything.
+  /// - "FULL" : Include basic information of a GameServerCluster resource as
+  /// well as `cluster_state`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1811,7 +1823,7 @@ class ProjectsLocationsRealmsGameServerClustersResource {
   ///
   /// [name] - Required. The name of the game server cluster to delete, in the
   /// following form:
-  /// `projects/{project}/locations/{location}/gameServerClusters/{cluster}`.
+  /// `projects/{project}/locations/{locationId}/gameServerClusters/{gameServerClusterId}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/realms/\[^/\]+/gameServerClusters/\[^/\]+$`.
   ///
@@ -1856,17 +1868,17 @@ class ProjectsLocationsRealmsGameServerClustersResource {
   ///
   /// [name] - Required. The resource name of the game server cluster, in the
   /// following form:
-  /// `projects/{project}/locations/{location}/realms/{realm}/gameServerClusters/{cluster}`.
+  /// `projects/{project}/locations/{locationId}/realms/{realmId}/gameServerClusters/{gameServerClusterId}`.
   /// For example,
-  /// `projects/my-project/locations/{location}/realms/zanzibar/gameServerClusters/my-onprem-cluster`.
+  /// `projects/my-project/locations/global/realms/zanzibar/gameServerClusters/my-gke-cluster`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/realms/\[^/\]+/gameServerClusters/\[^/\]+$`.
   ///
   /// [previewTime] - Optional. The target timestamp to compute the preview.
   ///
   /// [updateMask] - Required. Mask of fields to update. At least one path must
-  /// be supplied in this field. For the `FieldMask` definition, see
-  /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask
+  /// be supplied in this field. For more information, see the \[`FieldMask`
+  /// definition\](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2540,8 +2552,8 @@ class DeployedFleetDetails {
       };
 }
 
-/// DeployedFleetStatus has details about the Agones fleets such as how many are
-/// running, how many allocated, and so on.
+/// DeployedFleetStatus has details about the Agones fleets, such as how many
+/// are running, how many are allocated, and so on.
 class DeployedFleetStatus {
   /// The number of GameServer replicas in the ALLOCATED state in this fleet.
   core.String? allocatedReplicas;
@@ -2657,9 +2669,8 @@ class FetchDeploymentStateResponse {
 
 /// Fleet configs for Agones.
 class FleetConfig {
-  /// Agones fleet spec.
-  ///
-  /// Example spec: `https://agones.dev/site/docs/reference/fleet/`.
+  /// Agones fleet spec (see
+  /// [example spec](https://agones.dev/site/docs/reference/fleet/)).
   core.String? fleetSpec;
 
   /// The name of the FleetConfig.
@@ -2686,8 +2697,10 @@ class FleetConfig {
 
 /// A game server cluster resource.
 class GameServerCluster {
-  /// The state of the Kubernetes cluster, this will be available if 'view' is
-  /// set to `FULL` in the relevant List/Get/Preview request.
+  /// The state of the Kubernetes cluster in preview.
+  ///
+  /// This will be available if view is set to FULL in the relevant
+  /// list/get/preview request.
   ///
   /// Output only.
   KubernetesClusterState? clusterState;
@@ -2705,7 +2718,9 @@ class GameServerCluster {
   /// Human readable description of the cluster.
   core.String? description;
 
-  /// ETag of the resource.
+  /// Used to perform consistent read-modify-write updates.
+  ///
+  /// If not set, a blind "overwrite" update happens.
   core.String? etag;
 
   /// The labels associated with this game server cluster.
@@ -2714,10 +2729,10 @@ class GameServerCluster {
   core.Map<core.String, core.String>? labels;
 
   /// The resource name of the game server cluster, in the following form:
-  /// `projects/{project}/locations/{location}/realms/{realm}/gameServerClusters/{cluster}`.
+  /// `projects/{project}/locations/{locationId}/realms/{realmId}/gameServerClusters/{gameServerClusterId}`.
   ///
   /// For example,
-  /// `projects/my-project/locations/{location}/realms/zanzibar/gameServerClusters/my-onprem-cluster`.
+  /// `projects/my-project/locations/global/realms/zanzibar/gameServerClusters/my-gke-cluster`.
   ///
   /// Required.
   core.String? name;
@@ -2836,7 +2851,7 @@ class GameServerConfig {
   core.Map<core.String, core.String>? labels;
 
   /// The resource name of the game server config, in the following form:
-  /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}/configs/{config}`.
+  /// `projects/{project}/locations/{locationId}/gameServerDeployments/{deploymentId}/configs/{configId}`.
   ///
   /// For example,
   /// `projects/my-project/locations/global/gameServerDeployments/my-game/configs/my-config`.
@@ -2942,10 +2957,12 @@ class GameServerDeployment {
   /// Output only.
   core.String? createTime;
 
-  /// Human readable description of the game server delpoyment.
+  /// Human readable description of the game server deployment.
   core.String? description;
 
-  /// ETag of the resource.
+  /// Used to perform consistent read-modify-write updates.
+  ///
+  /// If not set, a blind "overwrite" update happens.
   core.String? etag;
 
   /// The labels associated with this game server deployment.
@@ -2954,7 +2971,7 @@ class GameServerDeployment {
   core.Map<core.String, core.String>? labels;
 
   /// The resource name of the game server deployment, in the following form:
-  /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}`.
+  /// `projects/{project}/locations/{locationId}/gameServerDeployments/{deploymentId}`.
   ///
   /// For example,
   /// `projects/my-project/locations/global/gameServerDeployments/my-deployment`.
@@ -3033,7 +3050,7 @@ class GameServerDeploymentRollout {
 
   /// The resource name of the game server deployment rollout, in the following
   /// form:
-  /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}/rollout`.
+  /// `projects/{project}/locations/{locationId}/gameServerDeployments/{deploymentId}/rollout`.
   ///
   /// For example,
   /// `projects/my-project/locations/global/gameServerDeployments/my-deployment/rollout`.
@@ -3090,8 +3107,8 @@ class GameServerDeploymentRollout {
 /// A reference to a GKE cluster.
 class GkeClusterReference {
   /// The full or partial name of a GKE cluster, using one of the following
-  /// forms: * `projects/{project}/locations/{location}/clusters/{cluster}` *
-  /// `locations/{location}/clusters/{cluster}` * `{cluster}` If project and
+  /// forms: * `projects/{project}/locations/{locationId}/clusters/{cluster}` *
+  /// `locations/{locationId}/clusters/{cluster}` * `{cluster}` If project and
   /// location are not specified, the project and location of the
   /// GameServerCluster resource are used to generate the full name of the GKE
   /// cluster.
@@ -3130,10 +3147,11 @@ class KubernetesClusterState {
   ///
   /// Output only.
   /// Possible string values are:
-  /// - "INSTALLATION_STATE_UNSPECIFIED" : The default value. This value is used
-  /// if the state is omitted.
-  /// - "AGONES_KUBERNETES_VERSION_SUPPORTED" : The combination of Agones and
-  /// Kubernetes versions is supported by Google Cloud Game Servers.
+  /// - "INSTALLATION_STATE_UNSPECIFIED" : The default installation state. This
+  /// value is used if the state is omitted.
+  /// - "AGONES_KUBERNETES_VERSION_SUPPORTED" : Both the Agones and Kubernetes
+  /// versions are supported by Google Cloud Game Servers and Agones and
+  /// Kubernetes versions are compatible.
   /// - "AGONES_VERSION_UNSUPPORTED" : The installed version of Agones is not
   /// supported by Google Cloud Game Servers.
   /// - "AGONES_KUBERNETES_VERSION_UNSUPPORTED" : The installed version of
@@ -3147,7 +3165,7 @@ class KubernetesClusterState {
   /// cluster is not recognized because the API server didn't return parsable
   /// version info on path/version.
   /// - "VERSION_VERIFICATION_FAILED" : Failed to read or verify the version of
-  /// Agones or Kubernetes. See version_installed_error_message for details.
+  /// Agones or Kubernetes. See `version_installed_error_message` for details.
   /// - "AGONES_NOT_INSTALLED" : Agones is not installed.
   core.String? installationState;
 
@@ -3157,7 +3175,7 @@ class KubernetesClusterState {
   /// Output only.
   core.String? kubernetesVersionInstalled;
 
-  /// The cloud provider type reported by the first node's providerID in the
+  /// The cloud provider type reported by the first node's `providerID` in the
   /// list of nodes on the Kubernetes endpoint.
   ///
   /// On Kubernetes platforms that support zero-node clusters (like GKE-on-GCP),
@@ -3744,8 +3762,10 @@ class Policy {
 /// Response message for
 /// GameServerClustersService.PreviewCreateGameServerCluster.
 class PreviewCreateGameServerClusterResponse {
-  /// The state of the Kubernetes cluster in preview, this will be available if
-  /// 'view' is set to `FULL` in the relevant List/Get/Preview request.
+  /// The state of the Kubernetes cluster in preview.
+  ///
+  /// This will be available if view is set to FULL in the relevant
+  /// list/get/preview request.
   ///
   /// Output only.
   KubernetesClusterState? clusterState;
@@ -3918,7 +3938,9 @@ class Realm {
   /// Human readable description of the realm.
   core.String? description;
 
-  /// ETag of the resource.
+  /// Used to perform consistent read-modify-write updates.
+  ///
+  /// If not set, a blind "overwrite" update happens.
   core.String? etag;
 
   /// The labels associated with this realm.
@@ -3927,15 +3949,15 @@ class Realm {
   core.Map<core.String, core.String>? labels;
 
   /// The resource name of the realm, in the following form:
-  /// `projects/{project}/locations/{location}/realms/{realm}`.
+  /// `projects/{project}/locations/{locationId}/realms/{realmId}`.
   ///
-  /// For example, `projects/my-project/locations/{location}/realms/my-realm`.
+  /// For example, `projects/my-project/locations/global/realms/my-realm`.
   core.String? name;
 
   /// Time zone where all policies targeting this realm are evaluated.
   ///
-  /// The value of this field must be from the IANA time zone database:
-  /// https://www.iana.org/time-zones.
+  /// The value of this field must be from the
+  /// [IANA time zone database](https://www.iana.org/time-zones).
   ///
   /// Required.
   core.String? timeZone;
@@ -4118,19 +4140,18 @@ class Rule {
 
 /// Autoscaling config for an Agones fleet.
 class ScalingConfig {
-  /// Agones fleet autoscaler spec.
-  ///
-  /// Example spec: https://agones.dev/site/docs/reference/fleetautoscaler/
+  /// Agones fleet autoscaler spec (see
+  /// [example spec](https://agones.dev/site/docs/reference/fleetautoscaler/)).
   ///
   /// Required.
   core.String? fleetAutoscalerSpec;
 
-  /// The name of the Scaling Config
+  /// The name of the scaling config.
   ///
   /// Required.
   core.String? name;
 
-  /// The schedules to which this Scaling Config applies.
+  /// The schedules to which this scaling config applies.
   core.List<Schedule>? schedules;
 
   /// Labels used to identify the game server clusters to which this Agones
@@ -4179,12 +4200,12 @@ class ScalingConfig {
 /// The schedule of a recurring or one time event.
 ///
 /// The event's time span is specified by start_time and end_time. If the
-/// scheduled event's timespan is larger than the cron_spec + cron_job_duration,
-/// the event will be recurring. If only cron_spec + cron_job_duration are
-/// specified, the event is effective starting at the local time specified by
-/// cron_spec, and is recurring. ``` start_time|-------[cron job]-------[cron
-/// job]-------[cron job]---|end_time cron job: cron spec start time + duration
-/// ```
+/// scheduled event's timespan is larger than cron_spec added with
+/// cron_job_duration, the event is recurring. If only cron_spec and
+/// cron_job_duration are specified, the event starts at the local time
+/// specified by cron_spec, and is recurring. ``` start_time|-------[cron
+/// job]-------[cron job]-------[cron job]---|end_time cron job: cron spec start
+/// time + duration ```
 class Schedule {
   /// The duration for the cron job event.
   ///
@@ -4193,8 +4214,8 @@ class Schedule {
 
   /// The cron definition of the scheduled event.
   ///
-  /// See https://en.wikipedia.org/wiki/Cron. Cron spec specifies the local time
-  /// as defined by the realm.
+  /// See https://en.wikipedia.org/wiki/Cron. The cron spec specifies the local
+  /// time as defined by the realm.
   core.String? cronSpec;
 
   /// The end time of the event.
@@ -4276,11 +4297,11 @@ class SpecSource {
   /// The game server config resource.
   ///
   /// Uses the form:
-  /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment_id}/configs/{config_id}`.
+  /// `projects/{project}/locations/{locationId}/gameServerDeployments/{deploymentId}/configs/{configId}`.
   core.String? gameServerConfigName;
 
-  /// The name of the Agones leet config or Agones scaling config used to derive
-  /// the Agones fleet or Agones autoscaler spec.
+  /// The name of the Agones fleet config or Agones scaling config used to
+  /// derive the Agones fleet or Agones autoscaler spec.
   core.String? name;
 
   SpecSource({
@@ -4320,13 +4341,13 @@ class TargetDetails {
   /// The game server cluster name.
   ///
   /// Uses the form:
-  /// `projects/{project}/locations/{location}/realms/{realm}/gameServerClusters/{cluster}`.
+  /// `projects/{project}/locations/{locationId}/realms/{realmId}/gameServerClusters/{gameServerClusterId}`.
   core.String? gameServerClusterName;
 
   /// The game server deployment name.
   ///
   /// Uses the form:
-  /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment_id}`.
+  /// `projects/{project}/locations/{locationId}/gameServerDeployments/{deploymentId}`.
   core.String? gameServerDeploymentName;
 
   TargetDetails({

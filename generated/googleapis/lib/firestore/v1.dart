@@ -3676,7 +3676,9 @@ class RunQueryRequest {
   /// A structured query.
   StructuredQuery? structuredQuery;
 
-  /// Reads documents in a transaction.
+  /// Run the query within an already active transaction.
+  ///
+  /// The value here is the opaque transaction ID to execute the query in.
   core.String? transaction;
   core.List<core.int> get transactionAsBytes =>
       convert.base64.decode(transaction!);
@@ -3720,9 +3722,7 @@ class RunQueryRequest {
 }
 
 class RunQueryResponseElement {
-  /// A query result.
-  ///
-  /// Not set when reporting partial progress.
+  /// A query result, not set when reporting partial progress.
   Document? document;
 
   /// The time at which the document was read.

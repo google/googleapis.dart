@@ -537,9 +537,10 @@ class GoogleCloudAssuredworkloadsV1Workload {
 
   /// Input only.
   ///
-  /// Settings used to create a CMEK crypto key. When set a project with a KMS
-  /// CMEK key is provisioned. This field is mandatory for a subset of
-  /// Compliance Regimes.
+  /// Settings used to create a CMEK crypto key. When set, a project with a KMS
+  /// CMEK key is provisioned. This field is deprecated as of Feb 28, 2022. In
+  /// order to create a Keyring, callers should specify, ENCRYPTION_KEYS_PROJECT
+  /// or KEYRING in ResourceSettings.resource_type field.
   GoogleCloudAssuredworkloadsV1WorkloadKMSSettings? kmsSettings;
 
   /// Labels applied to the workload.
@@ -779,7 +780,9 @@ class GoogleCloudAssuredworkloadsV1WorkloadResourceSettings {
   /// Resource identifier.
   ///
   /// For a project this represents project_id. If the project is already taken,
-  /// the workload creation will fail.
+  /// the workload creation will fail. For KeyRing, this represents the
+  /// keyring_id. For a folder, don't set this value as folder_id is assigned by
+  /// Google.
   core.String? resourceId;
 
   /// Indicates the type of resource.

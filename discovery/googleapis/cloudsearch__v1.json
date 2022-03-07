@@ -1170,7 +1170,7 @@
                                     "type": "boolean"
                                 },
                                 "pageSize": {
-                                    "description": "Maximum number of datasources to fetch in a request. The max value is 100. The default value is 10",
+                                    "description": "Maximum number of datasources to fetch in a request. The max value is 1000. The default value is 1000.",
                                     "format": "int32",
                                     "location": "query",
                                     "type": "integer"
@@ -1992,7 +1992,7 @@
             }
         }
     },
-    "revision": "20220207",
+    "revision": "20220221",
     "rootUrl": "https://cloudsearch.googleapis.com/",
     "schemas": {
         "AclInfo": {
@@ -5423,6 +5423,9 @@
             "properties": {
                 "avatarInfo": {
                     "$ref": "AvatarInfo"
+                },
+                "avatarUrl": {
+                    "type": "string"
                 },
                 "description": {
                     "type": "string"

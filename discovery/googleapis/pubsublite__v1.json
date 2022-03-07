@@ -1038,7 +1038,7 @@
             }
         }
     },
-    "revision": "20220204",
+    "revision": "20220301",
     "rootUrl": "https://pubsublite.googleapis.com/",
     "schemas": {
         "CancelOperationRequest": {

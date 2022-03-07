@@ -4233,8 +4233,8 @@ class DatasetAccessEntry {
               ? DatasetReference.fromJson(
                   _json['dataset'] as core.Map<core.String, core.dynamic>)
               : null,
-          targetTypes: _json.containsKey('target_types')
-              ? (_json['target_types'] as core.List)
+          targetTypes: _json.containsKey('targetTypes')
+              ? (_json['targetTypes'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
@@ -4242,7 +4242,7 @@ class DatasetAccessEntry {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (dataset != null) 'dataset': dataset!,
-        if (targetTypes != null) 'target_types': targetTypes!,
+        if (targetTypes != null) 'targetTypes': targetTypes!,
       };
 }
 
@@ -6113,6 +6113,14 @@ class JobConfigurationLoad {
   /// Optional.
   ParquetOptions? parquetOptions;
 
+  /// Preserves the embedded ASCII control characters (the first 32 characters
+  /// in the ASCII-table, from '\x00' to '\x1F') when loading from CSV.
+  ///
+  /// Only applicable to CSV, ignored for other formats.
+  ///
+  /// Optional.
+  core.bool? preserveAsciiControlCharacters;
+
   /// If sourceFormat is set to "DATASTORE_BACKUP", indicates which entity
   /// properties to load into BigQuery from a Cloud Datastore backup.
   ///
@@ -6249,6 +6257,7 @@ class JobConfigurationLoad {
     this.maxBadRecords,
     this.nullMarker,
     this.parquetOptions,
+    this.preserveAsciiControlCharacters,
     this.projectionFields,
     this.quote,
     this.rangePartitioning,
@@ -6330,6 +6339,10 @@ class JobConfigurationLoad {
               ? ParquetOptions.fromJson(_json['parquetOptions']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          preserveAsciiControlCharacters:
+              _json.containsKey('preserveAsciiControlCharacters')
+                  ? _json['preserveAsciiControlCharacters'] as core.bool
+                  : null,
           projectionFields: _json.containsKey('projectionFields')
               ? (_json['projectionFields'] as core.List)
                   .map((value) => value as core.String)
@@ -6404,6 +6417,8 @@ class JobConfigurationLoad {
         if (maxBadRecords != null) 'maxBadRecords': maxBadRecords!,
         if (nullMarker != null) 'nullMarker': nullMarker!,
         if (parquetOptions != null) 'parquetOptions': parquetOptions!,
+        if (preserveAsciiControlCharacters != null)
+          'preserveAsciiControlCharacters': preserveAsciiControlCharacters!,
         if (projectionFields != null) 'projectionFields': projectionFields!,
         if (quote != null) 'quote': quote!,
         if (rangePartitioning != null) 'rangePartitioning': rangePartitioning!,

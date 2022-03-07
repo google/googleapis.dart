@@ -1359,6 +1359,8 @@ api.GitFileSource buildGitFileSource() {
   final o = api.GitFileSource();
   buildCounterGitFileSource++;
   if (buildCounterGitFileSource < 3) {
+    o.bitbucketServerConfig = 'foo';
+    o.githubEnterpriseConfig = 'foo';
     o.path = 'foo';
     o.repoType = 'foo';
     o.revision = 'foo';
@@ -1371,6 +1373,14 @@ api.GitFileSource buildGitFileSource() {
 void checkGitFileSource(api.GitFileSource o) {
   buildCounterGitFileSource++;
   if (buildCounterGitFileSource < 3) {
+    unittest.expect(
+      o.bitbucketServerConfig!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.githubEnterpriseConfig!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.path!,
       unittest.equals('foo'),
@@ -1553,6 +1563,8 @@ api.GitRepoSource buildGitRepoSource() {
   final o = api.GitRepoSource();
   buildCounterGitRepoSource++;
   if (buildCounterGitRepoSource < 3) {
+    o.bitbucketServerConfig = 'foo';
+    o.githubEnterpriseConfig = 'foo';
     o.ref = 'foo';
     o.repoType = 'foo';
     o.uri = 'foo';
@@ -1564,6 +1576,14 @@ api.GitRepoSource buildGitRepoSource() {
 void checkGitRepoSource(api.GitRepoSource o) {
   buildCounterGitRepoSource++;
   if (buildCounterGitRepoSource < 3) {
+    unittest.expect(
+      o.bitbucketServerConfig!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.githubEnterpriseConfig!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.ref!,
       unittest.equals('foo'),

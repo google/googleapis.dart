@@ -1415,9 +1415,9 @@ class DismissDecision {
   /// The time at which the approval request was dismissed.
   core.String? dismissTime;
 
-  /// This field will be true if the ApprovalRequest was implcitly dismissed due
-  /// to inaction by the access approval approvers (the request is not acted on
-  /// by the approvers before the exiration time).
+  /// This field will be true if the ApprovalRequest was implicitly dismissed
+  /// due to inaction by the access approval approvers (the request is not acted
+  /// on by the approvers before the exiration time).
   core.bool? implicit;
 
   DismissDecision({

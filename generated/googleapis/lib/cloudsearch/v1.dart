@@ -1721,7 +1721,7 @@ class SettingsDatasourcesResource {
   /// debugging, set this field. Otherwise, ignore this field.
   ///
   /// [pageSize] - Maximum number of datasources to fetch in a request. The max
-  /// value is 100. The default value is 10
+  /// value is 1000. The default value is 1000.
   ///
   /// [pageToken] - Starting index of the results.
   ///

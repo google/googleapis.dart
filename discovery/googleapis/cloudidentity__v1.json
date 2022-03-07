@@ -2,8 +2,14 @@
     "auth": {
         "oauth2": {
             "scopes": {
+                "https://www.googleapis.com/auth/cloud-identity.devices": {
+                    "description": "Private Service: https://www.googleapis.com/auth/cloud-identity.devices"
+                },
                 "https://www.googleapis.com/auth/cloud-identity.devices.lookup": {
                     "description": "See your device details"
+                },
+                "https://www.googleapis.com/auth/cloud-identity.devices.readonly": {
+                    "description": "Private Service: https://www.googleapis.com/auth/cloud-identity.devices.readonly"
                 },
                 "https://www.googleapis.com/auth/cloud-identity.groups": {
                     "description": "See, change, create, and delete any of the Cloud Identity Groups that you can access, including the members of each group"
@@ -137,7 +143,10 @@
                     },
                     "response": {
                         "$ref": "Operation"
-                    }
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-identity.devices"
+                    ]
                 },
                 "create": {
                     "description": "Creates a device. Only company-owned device may be created. **Note**: This method is available only to customers who have one of the following SKUs: Enterprise Standard, Enterprise Plus, Enterprise for Education, and Cloud Identity Premium",
@@ -158,7 +167,10 @@
                     },
                     "response": {
                         "$ref": "Operation"
-                    }
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-identity.devices"
+                    ]
                 },
                 "delete": {
                     "description": "Deletes the specified device.",
@@ -185,7 +197,10 @@
                     "path": "v1/{+name}",
                     "response": {
                         "$ref": "Operation"
-                    }
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-identity.devices"
+                    ]
                 },
                 "get": {
                     "description": "Retrieves the specified device.",
@@ -212,7 +227,11 @@
                     "path": "v1/{+name}",
                     "response": {
                         "$ref": "GoogleAppsCloudidentityDevicesV1Device"
-                    }
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-identity.devices",
+                        "https://www.googleapis.com/auth/cloud-identity.devices.readonly"
+                    ]
                 },
                 "list": {
                     "description": "Lists/Searches devices.",
@@ -266,7 +285,11 @@
                     "path": "v1/devices",
                     "response": {
                         "$ref": "GoogleAppsCloudidentityDevicesV1ListDevicesResponse"
-                    }
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-identity.devices",
+                        "https://www.googleapis.com/auth/cloud-identity.devices.readonly"
+                    ]
                 },
                 "wipe": {
                     "description": "Wipes all data on the specified device.",
@@ -291,7 +314,10 @@
                     },
                     "response": {
                         "$ref": "Operation"
-                    }
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-identity.devices"
+                    ]
                 }
             },
             "resources": {
@@ -320,7 +346,10 @@
                             },
                             "response": {
                                 "$ref": "Operation"
-                            }
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/cloud-identity.devices"
+                            ]
                         },
                         "block": {
                             "description": "Blocks device from accessing user data",
@@ -345,7 +374,10 @@
                             },
                             "response": {
                                 "$ref": "Operation"
-                            }
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/cloud-identity.devices"
+                            ]
                         },
                         "cancelWipe": {
                             "description": "Cancels an unfinished user account wipe. This operation can be used to cancel device wipe in the gap between the wipe operation returning success and the device being wiped.",
@@ -370,7 +402,10 @@
                             },
                             "response": {
                                 "$ref": "Operation"
-                            }
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/cloud-identity.devices"
+                            ]
                         },
                         "delete": {
                             "description": "Deletes the specified DeviceUser. This also revokes the user's access to device data.",
@@ -397,7 +432,10 @@
                             "path": "v1/{+name}",
                             "response": {
                                 "$ref": "Operation"
-                            }
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/cloud-identity.devices"
+                            ]
                         },
                         "get": {
                             "description": "Retrieves the specified DeviceUser",
@@ -424,7 +462,11 @@
                             "path": "v1/{+name}",
                             "response": {
                                 "$ref": "GoogleAppsCloudidentityDevicesV1DeviceUser"
-                            }
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/cloud-identity.devices",
+                                "https://www.googleapis.com/auth/cloud-identity.devices.readonly"
+                            ]
                         },
                         "list": {
                             "description": "Lists/Searches DeviceUsers.",
@@ -472,7 +514,11 @@
                             "path": "v1/{+parent}/deviceUsers",
                             "response": {
                                 "$ref": "GoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse"
-                            }
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/cloud-identity.devices",
+                                "https://www.googleapis.com/auth/cloud-identity.devices.readonly"
+                            ]
                         },
                         "lookup": {
                             "description": "Looks up resource names of the DeviceUsers associated with the caller's credentials, as well as the properties provided in the request. This method must be called with end-user credentials with the scope: https://www.googleapis.com/auth/cloud-identity.devices.lookup If multiple properties are provided, only DeviceUsers having all of these properties are considered as matches - i.e. the query behaves like an AND. Different platforms require different amounts of information from the caller to ensure that the DeviceUser is uniquely identified. - iOS: No properties need to be passed, the caller's credentials are sufficient to identify the corresponding DeviceUser. - Android: Specifying the 'android_id' field is required. - Desktop: Specifying the 'raw_resource_id' field is required.",
@@ -548,7 +594,10 @@
                             },
                             "response": {
                                 "$ref": "Operation"
-                            }
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/cloud-identity.devices"
+                            ]
                         }
                     },
                     "resources": {
@@ -579,7 +628,11 @@
                                     "path": "v1/{+name}",
                                     "response": {
                                         "$ref": "GoogleAppsCloudidentityDevicesV1ClientState"
-                                    }
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-identity.devices",
+                                        "https://www.googleapis.com/auth/cloud-identity.devices.readonly"
+                                    ]
                                 },
                                 "list": {
                                     "description": "Lists the client states for the given search query.",
@@ -621,7 +674,11 @@
                                     "path": "v1/{+parent}/clientStates",
                                     "response": {
                                         "$ref": "GoogleAppsCloudidentityDevicesV1ListClientStatesResponse"
-                                    }
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-identity.devices",
+                                        "https://www.googleapis.com/auth/cloud-identity.devices.readonly"
+                                    ]
                                 },
                                 "patch": {
                                     "description": "Updates the client state for the device user **Note**: This method is available only to customers who have one of the following SKUs: Enterprise Standard, Enterprise Plus, Enterprise for Education, and Cloud Identity Premium",
@@ -657,7 +714,10 @@
                                     },
                                     "response": {
                                         "$ref": "Operation"
-                                    }
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-identity.devices"
+                                    ]
                                 }
                             }
                         }
@@ -1339,7 +1399,7 @@
             }
         }
     },
-    "revision": "20220215",
+    "revision": "20220301",
     "rootUrl": "https://cloudidentity.googleapis.com/",
     "schemas": {
         "CheckTransitiveMembershipResponse": {
@@ -2228,6 +2288,10 @@
                 "customer": {
                     "description": "Optional. [Resource name](https://cloud.google.com/apis/design/resource_names) of the customer. If you're using this API for your own organization, use `customers/my_customer` If you're using this API to manage another organization, use `customers/{customer}`, where customer is the customer to whom the device belongs.",
                     "type": "string"
+                },
+                "removeResetLock": {
+                    "description": "Optional. Specifies if a user is able to factory reset a device after a Device Wipe. On iOS, this is called \"Activation Lock\", while on Android, this is known as \"Factory Reset Protection\". If true, this protection will be removed from the device, so that a user can successfully factory reset. If false, the setting is untouched on the device.",
+                    "type": "boolean"
                 }
             },
             "type": "object"

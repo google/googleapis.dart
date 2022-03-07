@@ -2804,9 +2804,13 @@ class MailExportOptions {
   /// To export confidential mode content, set to **true**.
   core.bool? showConfidentialModeContent;
 
+  /// To use the new export system, set to **true**.
+  core.bool? useNewExport;
+
   MailExportOptions({
     this.exportFormat,
     this.showConfidentialModeContent,
+    this.useNewExport,
   });
 
   MailExportOptions.fromJson(core.Map _json)
@@ -2818,12 +2822,16 @@ class MailExportOptions {
               _json.containsKey('showConfidentialModeContent')
                   ? _json['showConfidentialModeContent'] as core.bool
                   : null,
+          useNewExport: _json.containsKey('useNewExport')
+              ? _json['useNewExport'] as core.bool
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (exportFormat != null) 'exportFormat': exportFormat!,
         if (showConfidentialModeContent != null)
           'showConfidentialModeContent': showConfidentialModeContent!,
+        if (useNewExport != null) 'useNewExport': useNewExport!,
       };
 }
 

@@ -6051,6 +6051,8 @@ class RegionalTaxRateInfo {
   /// - "TAX_TIER_BOOKS_1"
   /// - "TAX_TIER_NEWS_1"
   /// - "TAX_TIER_NEWS_2"
+  /// - "TAX_TIER_MUSIC_OR_AUDIO_1"
+  /// - "TAX_TIER_LIVE_OR_BROADCAST_1"
   core.String? taxTier;
 
   RegionalTaxRateInfo({

@@ -99,6 +99,7 @@ packages:
     - displayvideo:v1
     - dlp:v2 # https://cloud.google.com/dlp/
     - dns:v1 # https://cloud.google.com/dns/api/v1/
+    - dns:v2
     - docs:v1
     - documentai:v1
     - domains:v1

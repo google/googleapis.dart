@@ -6571,6 +6571,7 @@ class CdnSettings {
   /// - "dash"
   /// - "webrtc"
   /// - "hls"
+  /// - "srt"
   core.String? ingestionType;
 
   /// The resolution of the inbound video data.
@@ -8241,7 +8242,7 @@ class CommentSnippet {
 }
 
 /// The id of the author's YouTube channel, if any.
-typedef CommentSnippetAuthorChannelId = $Shared07;
+typedef CommentSnippetAuthorChannelId = $Shared06;
 
 /// A *comment thread* represents information that applies to a top level
 /// comment and all its replies.
@@ -10323,7 +10324,7 @@ class ImageSettings {
       };
 }
 
-/// Describes information necessary for ingesting an RTMP or an HTTP stream.
+/// Describes information necessary for ingesting an RTMP, HTTP, or SRT stream.
 class IngestionInfo {
   /// The backup ingestion URL that you should use to stream video to YouTube.
   ///
@@ -10351,7 +10352,7 @@ class IngestionInfo {
   /// Not applicable to non-RTMP streams.
   core.String? rtmpsIngestionAddress;
 
-  /// The HTTP or RTMP stream name that YouTube assigns to the video stream.
+  /// The stream name that YouTube assigns to the video stream.
   core.String? streamName;
 
   IngestionInfo({
@@ -10548,7 +10549,7 @@ class InvideoTiming {
       };
 }
 
-typedef LanguageTag = $Shared07;
+typedef LanguageTag = $Shared06;
 
 class LevelDetails {
   /// The name that should be used when referring to this level.

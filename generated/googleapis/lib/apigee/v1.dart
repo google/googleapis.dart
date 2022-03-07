@@ -4017,7 +4017,8 @@ class OrganizationsDevelopersAppsKeysResource {
   /// `^organizations/\[^/\]+/developers/\[^/\]+/apps/\[^/\]+/keys/\[^/\]+$`.
   ///
   /// [action] - Approve or revoke the consumer key by setting this value to
-  /// `approve` or `revoke`, respectively.
+  /// `approve` or `revoke`, respectively. The `Content-Type` header must be set
+  /// to `application/octet-stream`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4680,7 +4681,7 @@ class OrganizationsEndpointAttachmentsResource {
   OrganizationsEndpointAttachmentsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Creates an EndpointAttachment.
+  /// Creates an endpoint attachment.
   ///
   /// **Note:** Not supported for Apigee hybrid.
   ///
@@ -4688,13 +4689,13 @@ class OrganizationsEndpointAttachmentsResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The Organization this EndpointAttachment will be
-  /// created in.
+  /// [parent] - Required. Organization the endpoint attachment will be created
+  /// in.
   /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
-  /// [endpointAttachmentId] - The ID to use for the endpoint attachment. ID
-  /// must be a 1-20 characters string with lowercase letters and numbers and
-  /// must start with a letter.
+  /// [endpointAttachmentId] - ID to use for the endpoint attachment. The ID can
+  /// contain lowercase letters and numbers, must start with a letter, and must
+  /// be 1-20 characters in length.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4736,9 +4737,9 @@ class OrganizationsEndpointAttachmentsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. Name of the Endpoint Attachment in the following
-  /// format:
-  /// `organizations/{organization}/endpointAttachments/{endpoint_attachment}`.
+  /// [name] - Required. Name of the endpoint attachment. Use the following
+  /// structure in your request:
+  /// `organizations/{org}/endpointAttachments/{endpoint_attachment}`
   /// Value must have pattern
   /// `^organizations/\[^/\]+/endpointAttachments/\[^/\]+$`.
   ///
@@ -4771,13 +4772,13 @@ class OrganizationsEndpointAttachmentsResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Gets the specified EndpointAttachment.
+  /// Gets the endpoint attachment.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. Name of the Endpoint Attachment in the following
-  /// format:
-  /// `organizations/{organization}/endpointAttachments/{endpoint_attachment}`.
+  /// [name] - Required. Name of the endpoint attachment. Use the following
+  /// structure in your request:
+  /// `organizations/{org}/endpointAttachments/{endpoint_attachment}`
   /// Value must have pattern
   /// `^organizations/\[^/\]+/endpointAttachments/\[^/\]+$`.
   ///
@@ -4810,19 +4811,21 @@ class OrganizationsEndpointAttachmentsResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Lists the EndpointAttachments in the specified Organization.
+  /// Lists the endpoint attachments in an organization.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Name of the Organization for which to list Endpoint
-  /// Attachments in the format: `organizations/{organization}`.
+  /// [parent] - Required. Name of the organization for which to list endpoint
+  /// attachments. Use the following structure in your request:
+  /// `organizations/{org}`
   /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
-  /// [pageSize] - Optional. Maximum number of Endpoint Attachments to return.
+  /// [pageSize] - Optional. Maximum number of endpoint attachments to return.
   /// If unspecified, at most 25 attachments will be returned.
   ///
   /// [pageToken] - Optional. Page token, returned from a previous
-  /// ListEndpointAttachments call, that you can use to retrieve the next page.
+  /// `ListEndpointAttachments` call, that you can use to retrieve the next
+  /// page.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6282,18 +6285,18 @@ class OrganizationsEnvironmentsApisRevisionsResource {
   /// are deployed in the environment.
   ///
   /// [sequencedRollout] - Flag that specifies whether to enable sequenced
-  /// rollout. If set to `true`, a best-effort attempt will be made to roll out
-  /// the routing rules corresponding to this deployment and the environment
-  /// changes to add this deployment in a safe order. This reduces the risk of
-  /// downtime that could be caused by changing the environment group's routing
-  /// before the new destination for the affected traffic is ready to receive
-  /// it. This should only be necessary if the new deployment will be capturing
-  /// traffic from another environment under a shared environment group or if
-  /// traffic will be rerouted to a different environment due to a base path
-  /// removal. The \[GenerateDeployChangeReport
-  /// API\](GenerateDeployChangeReport) may be used to examine routing changes
-  /// before issuing the deployment request, and its response will indicate if a
-  /// sequenced rollout is recommended for the deployment.
+  /// rollout. If set to `true`, the routing rules for this deployment and the
+  /// environment changes to add the deployment will be rolled out in a safe
+  /// order. This reduces the risk of downtime that could be caused by changing
+  /// the environment group's routing before the new destination for the
+  /// affected traffic is ready to receive it. This should only be necessary if
+  /// the new deployment will be capturing traffic from another environment
+  /// under a shared environment group or if traffic will be rerouted to a
+  /// different environment due to a base path removal. The
+  /// \[GenerateDeployChangeReport API\](GenerateDeployChangeReport) may be used
+  /// to examine routing changes before issuing the deployment request, and its
+  /// response will indicate if a sequenced rollout is recommended for the
+  /// deployment.
   ///
   /// [serviceAccount] - Google Cloud IAM service account. The service account
   /// represents the identity of the deployed proxy, and determines what
@@ -6393,16 +6396,15 @@ class OrganizationsEnvironmentsApisRevisionsResource {
   /// `^organizations/\[^/\]+/environments/\[^/\]+/apis/\[^/\]+/revisions/\[^/\]+$`.
   ///
   /// [sequencedRollout] - Flag that specifies whether to enable sequenced
-  /// rollout. If set to `true`, a best-effort attempt will be made to remove
-  /// the environment group routing rules corresponding to this deployment
-  /// before removing the deployment from the runtime. This is likely to be a
-  /// rare use case; it is only needed when the intended effect of undeploying
-  /// this proxy is to cause the traffic it currently handles to be rerouted to
-  /// some other existing proxy in the environment group. The
-  /// \[GenerateUndeployChangeReport API\](GenerateUndeployChangeReport) may be
-  /// used to examine routing changes before issuing the undeployment request,
-  /// and its response will indicate if a sequenced rollout is recommended for
-  /// the undeployment.
+  /// rollout. If set to `true`, the environment group routing rules
+  /// corresponding to this deployment will be removed before removing the
+  /// deployment from the runtime. This is likely to be a rare use case; it is
+  /// only needed when the intended effect of undeploying this proxy is to cause
+  /// the traffic it currently handles to be rerouted to some other existing
+  /// proxy in the environment group. The \[GenerateUndeployChangeReport
+  /// API\](GenerateUndeployChangeReport) may be used to examine routing changes
+  /// before issuing the undeployment request, and its response will indicate if
+  /// a sequenced rollout is recommended for the undeployment.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -12575,6 +12577,21 @@ class GoogleCloudApigeeV1ApiProductRef {
 
 /// Metadata describing the API proxy
 class GoogleCloudApigeeV1ApiProxy {
+  /// The type of the API proxy.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "API_PROXY_TYPE_UNSPECIFIED" : API proxy type not specified.
+  /// - "PROGRAMMABLE" : Programmable API Proxies enable you to develop APIs
+  /// with highly flexible behavior using bundled policy configuration and one
+  /// or more programming languages to describe complex sequential and/or
+  /// conditional flows of logic.
+  /// - "CONFIGURABLE" : Configurable API Proxies enable you to develop
+  /// efficient APIs using simple configuration while complex execution control
+  /// flow logic is handled by Apigee. This type only works with the ARCHIVE
+  /// deployment type and cannot be combined with the PROXY deployment type.
+  core.String? apiProxyType;
+
   /// User labels applied to this API Proxy.
   core.Map<core.String, core.String>? labels;
 
@@ -12593,21 +12610,35 @@ class GoogleCloudApigeeV1ApiProxy {
   /// Output only.
   core.String? name;
 
+  /// Whether this proxy is read-only.
+  ///
+  /// A read-only proxy cannot have new revisions created through calls to
+  /// CreateApiProxyRevision. A proxy is read-only if it was generated by an
+  /// archive.
+  ///
+  /// Output only.
+  core.bool? readOnly;
+
   /// List of revisons defined for the API proxy.
   ///
   /// Output only.
   core.List<core.String>? revision;
 
   GoogleCloudApigeeV1ApiProxy({
+    this.apiProxyType,
     this.labels,
     this.latestRevisionId,
     this.metaData,
     this.name,
+    this.readOnly,
     this.revision,
   });
 
   GoogleCloudApigeeV1ApiProxy.fromJson(core.Map _json)
       : this(
+          apiProxyType: _json.containsKey('apiProxyType')
+              ? _json['apiProxyType'] as core.String
+              : null,
           labels: _json.containsKey('labels')
               ? (_json['labels'] as core.Map<core.String, core.dynamic>).map(
                   (key, item) => core.MapEntry(
@@ -12624,6 +12655,9 @@ class GoogleCloudApigeeV1ApiProxy {
                   _json['metaData'] as core.Map<core.String, core.dynamic>)
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          readOnly: _json.containsKey('readOnly')
+              ? _json['readOnly'] as core.bool
+              : null,
           revision: _json.containsKey('revision')
               ? (_json['revision'] as core.List)
                   .map((value) => value as core.String)
@@ -12632,16 +12666,28 @@ class GoogleCloudApigeeV1ApiProxy {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (apiProxyType != null) 'apiProxyType': apiProxyType!,
         if (labels != null) 'labels': labels!,
         if (latestRevisionId != null) 'latestRevisionId': latestRevisionId!,
         if (metaData != null) 'metaData': metaData!,
         if (name != null) 'name': name!,
+        if (readOnly != null) 'readOnly': readOnly!,
         if (revision != null) 'revision': revision!,
       };
 }
 
 /// API proxy revision.
 class GoogleCloudApigeeV1ApiProxyRevision {
+  /// The archive that generated this proxy revision.
+  ///
+  /// This field is only present on proxy revisions that were generated by an
+  /// archive. Proxies generated by archives cannot be updated, deleted, or
+  /// deployed to other environments. Format: `organizations / * /environments /
+  /// * /archiveDeployments / * `
+  ///
+  /// Output only.
+  core.String? archive;
+
   /// Base URL of the API proxy.
   core.List<core.String>? basepaths;
 
@@ -12740,6 +12786,7 @@ class GoogleCloudApigeeV1ApiProxyRevision {
   core.String? type;
 
   GoogleCloudApigeeV1ApiProxyRevision({
+    this.archive,
     this.basepaths,
     this.configurationVersion,
     this.contextInfo,
@@ -12767,6 +12814,9 @@ class GoogleCloudApigeeV1ApiProxyRevision {
 
   GoogleCloudApigeeV1ApiProxyRevision.fromJson(core.Map _json)
       : this(
+          archive: _json.containsKey('archive')
+              ? _json['archive'] as core.String
+              : null,
           basepaths: _json.containsKey('basepaths')
               ? (_json['basepaths'] as core.List)
                   .map((value) => value as core.String)
@@ -12866,6 +12916,7 @@ class GoogleCloudApigeeV1ApiProxyRevision {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (archive != null) 'archive': archive!,
         if (basepaths != null) 'basepaths': basepaths!,
         if (configurationVersion != null)
           'configurationVersion': configurationVersion!,
@@ -15724,10 +15775,12 @@ class GoogleCloudApigeeV1DimensionMetric {
       };
 }
 
-/// Apigee Endpoint Attachment.
+/// Apigee endpoint attachment.
+///
+/// For more information, see Southbound networking patterns.
 class GoogleCloudApigeeV1EndpointAttachment {
-  /// Host that can be used in either HTTP Target Endpoint directly, or as the
-  /// host in Target Server.
+  /// Host that can be used in either the HTTP target endpoint directly or as
+  /// the host in target server.
   ///
   /// Output only.
   core.String? host;
@@ -15737,8 +15790,10 @@ class GoogleCloudApigeeV1EndpointAttachment {
   /// Required.
   core.String? location;
 
-  /// Name of the Endpoint Attachment in the following format:
-  /// `organizations/{organization}/endpointAttachments/{endpoint_attachment}`.
+  /// Name of the endpoint attachment.
+  ///
+  /// Use the following structure in your request:
+  /// `organizations/{org}/endpointAttachments/{endpoint_attachment}`
   core.String? name;
 
   /// Format: projects / * /regions / * /serviceAttachments / *
@@ -17757,10 +17812,10 @@ class GoogleCloudApigeeV1ListDeveloperSubscriptionsResponse {
 
 /// Response for ListEndpointAttachments method.
 class GoogleCloudApigeeV1ListEndpointAttachmentsResponse {
-  /// Endpoint Attachments in the specified organization.
+  /// Endpoint attachments in the specified organization.
   core.List<GoogleCloudApigeeV1EndpointAttachment>? endpointAttachments;
 
-  /// Page token that you can include in a ListEndpointAttachments request to
+  /// Page token that you can include in an `ListEndpointAttachments` request to
   /// retrieve the next page.
   ///
   /// If omitted, no subsequent pages exist.

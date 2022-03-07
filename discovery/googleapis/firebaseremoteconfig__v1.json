@@ -295,7 +295,7 @@
             }
         }
     },
-    "revision": "20220222",
+    "revision": "20220303",
     "rootUrl": "https://firebaseremoteconfig.googleapis.com/",
     "schemas": {
         "ExperimentDescription": {

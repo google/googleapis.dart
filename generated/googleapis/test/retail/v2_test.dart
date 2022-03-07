@@ -2656,6 +2656,7 @@ api.GoogleCloudRetailV2SetDefaultBranchRequest
   buildCounterGoogleCloudRetailV2SetDefaultBranchRequest++;
   if (buildCounterGoogleCloudRetailV2SetDefaultBranchRequest < 3) {
     o.branchId = 'foo';
+    o.force = true;
     o.note = 'foo';
   }
   buildCounterGoogleCloudRetailV2SetDefaultBranchRequest--;
@@ -2670,6 +2671,7 @@ void checkGoogleCloudRetailV2SetDefaultBranchRequest(
       o.branchId!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.force!, unittest.isTrue);
     unittest.expect(
       o.note!,
       unittest.equals('foo'),

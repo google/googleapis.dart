@@ -3110,8 +3110,8 @@ class ProjectsLocationsLakesZonesEntitiesResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/lakes/\[^/\]+/zones/\[^/\]+/entities/\[^/\]+$`.
   ///
-  /// [etag] - Required. The etag associated with the partition if it was
-  /// previously retrieved.
+  /// [etag] - Required. The etag associated with the entity, which can be
+  /// retrieved with a GetEntity request.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3205,8 +3205,8 @@ class ProjectsLocationsLakesZonesEntitiesResource {
   /// URL to limit the entities returned by the API: Entity ID:
   /// ?filter="id=entityID" Asset ID: ?filter="asset=assetID" Data path
   /// ?filter="data_path=gs://my-bucket" Is HIVE compatible:
-  /// ?filter=”hive_compatible=true” Is BigQuery compatible:
-  /// ?filter=”bigquery_compatible=true”
+  /// ?filter="hive_compatible=true" Is BigQuery compatible:
+  /// ?filter="bigquery_compatible=true"
   ///
   /// [pageSize] - Optional. Maximum number of entities to return. The service
   /// may return fewer than this value. If unspecified, 100 entities will be
@@ -3220,8 +3220,8 @@ class ProjectsLocationsLakesZonesEntitiesResource {
   ///
   /// [view] - Required. Specify the entity view to make a partial list request.
   /// Possible string values are:
-  /// - "ENTITY_VIEW_UNSPECIFIED" : The default unset value. The API will
-  /// default to the FULL view.
+  /// - "ENTITY_VIEW_UNSPECIFIED" : The default unset value. Return both table
+  /// and fileset entities if unspecified.
   /// - "TABLES" : Only list table entities.
   /// - "FILESETS" : Only list fileset entities.
   ///
@@ -3379,8 +3379,7 @@ class ProjectsLocationsLakesZonesEntitiesPartitionsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/lakes/\[^/\]+/zones/\[^/\]+/entities/\[^/\]+/partitions/.*$`.
   ///
-  /// [etag] - Optional. The etag associated with the partition if it was
-  /// previously retrieved.
+  /// [etag] - Optional. The etag associated with the partition.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3462,9 +3461,9 @@ class ProjectsLocationsLakesZonesEntitiesPartitionsResource {
   /// `^projects/\[^/\]+/locations/\[^/\]+/lakes/\[^/\]+/zones/\[^/\]+/entities/\[^/\]+$`.
   ///
   /// [filter] - Optional. Filter the partitions returned to the caller using a
-  /// key vslue pair expression. The filter expression supports: logical
+  /// key value pair expression. Supported operators and syntax: logic
   /// operators: AND, OR comparison operators: \<, \>, \>=, \<= ,=, != LIKE
-  /// operators: The right hand of a LIKE operator supports “.” and “*” for
+  /// operators: The right hand of a LIKE operator supports "." and "*" for
   /// wildcard searches, for example "value1 LIKE ".*oo.*" parenthetical
   /// grouping: ( )Sample filter expression: \`?filter="key1 \< value1 OR key2
   /// \> value2"Notes: Keys to the left of operators are case insensitive.
@@ -4850,14 +4849,15 @@ class GoogleCloudDataplexV1Entity {
   /// Optional.
   core.String? description;
 
-  /// Display name must be shorter than or equal to 63 characters.
+  /// Display name must be shorter than or equal to 256 characters.
   ///
   /// Optional.
   core.String? displayName;
 
-  /// The etag for this entity.
+  /// The etag associated with the entity, which can be retrieved with a
+  /// GetEntity request.
   ///
-  /// Required for update and delete requests. Must match the server's etag.
+  /// Required for update and delete requests.
   ///
   /// Optional.
   core.String? etag;
@@ -4874,7 +4874,7 @@ class GoogleCloudDataplexV1Entity {
   /// It is mutable, and will be used as the published table name. Specifying a
   /// new ID in an update entity request will override the existing value. The
   /// ID must contain only letters (a-z, A-Z), numbers (0-9), and underscores.
-  /// Must begin with a letter.
+  /// Must begin with a letter and consist of 256 or fewer characters.
   ///
   /// Required.
   core.String? id;
@@ -6223,15 +6223,12 @@ class GoogleCloudDataplexV1Partition {
   /// Required. Immutable.
   core.String? location;
 
-  /// The values must be HTML URL encoded two times before constructing the
-  /// path.
+  /// Partition values used in the HTTP URL must be double encoded.
   ///
-  /// For example, if you have a value of "US:CA", encoded it two times and you
-  /// get "US%253ACA". Then if you have the 2nd value is "CA#Sunnyvale", encoded
-  /// two times and you get "CA%2523Sunnyvale". The partition values path is
-  /// "US%253ACA/CA%2523Sunnyvale". The final URL will be
-  /// "https://.../partitions/US%253ACA/CA%2523Sunnyvale". The name field in the
-  /// responses will always have the encoded format.
+  /// For example, url_encode(url_encode(value)) can be used to encode
+  /// "US:CA/CA#Sunnyvale so that the request URL ends with
+  /// "/partitions/US%253ACA/CA%2523Sunnyvale". The name field in the response
+  /// retains the encoded format.
   ///
   /// Output only.
   core.String? name;
@@ -6275,6 +6272,8 @@ class GoogleCloudDataplexV1Partition {
 class GoogleCloudDataplexV1Schema {
   /// The sequence of fields describing data in table entities.
   ///
+  /// Note: BigQuery SchemaFields are immutable.
+  ///
   /// Optional.
   core.List<GoogleCloudDataplexV1SchemaSchemaField>? fields;
 
@@ -6295,24 +6294,16 @@ class GoogleCloudDataplexV1Schema {
   /// gs://bucket/path/to/table/dt=2019-10-31/lang=en/late.
   core.String? partitionStyle;
 
-  /// Whether the schema is user-managed or managed by the service.
+  /// Set to true if user-managed or false if managed by Dataplex.
   ///
-  /// - Set user_manage to false if you would like Dataplex to help you manage
-  /// the schema. You will get the full service provided by Dataplex discovery,
-  /// including new data discovery, schema inference and schema evolution. You
-  /// can still provide input the schema of the entities, for example renaming a
-  /// schema field, changing CSV or Json options if you think the discovered
-  /// values are not as accurate. Dataplex will consider your input as the
-  /// initial schema (as if they were produced by the previous discovery run),
-  /// and will evolve schema or flag actions based on that. - Set user_manage to
-  /// true if you would like to fully manage the entity schema by yourself. This
-  /// is useful when you would like to manually specify the schema for a table.
-  /// In this case, the schema defined by the user is guaranteed to be kept
-  /// unchanged and would not be overwritten. But this also means Dataplex will
-  /// not provide schema evolution management for you. Dataplex will still be
-  /// able to manage partition registration (i.e., keeping the list of
-  /// partitions up to date) when Dataplex discovery is turned on and
-  /// user_managed is set to true.
+  /// The default is false (managed by Dataplex). Set to falseto enable Dataplex
+  /// discovery to update the schema. including new data discovery, schema
+  /// inference, and schema evolution. Users retain the ability to input and
+  /// edit the schema. Dataplex treats schema input by the user as though
+  /// produced by a previous Dataplex discovery operation, and it will evolve
+  /// the schema and take action based on that treatment. Set to true to fully
+  /// manage the entity schema. This setting guarantees that Dataplex will not
+  /// change schema fields.
   ///
   /// Required.
   core.bool? userManaged;
@@ -6359,12 +6350,12 @@ class GoogleCloudDataplexV1Schema {
 /// Represents a key field within the entity's partition structure.
 ///
 /// You could have up to 20 partition fields, but only the first 10 partitions
-/// have the filtering ability due to performance consideration.
+/// have the filtering ability due to performance consideration. Note: Partition
+/// fields are immutable.
 class GoogleCloudDataplexV1SchemaPartitionField {
-  /// Partition name is editable if only the partition style is not HIVE
-  /// compatible.
-  ///
-  /// The maximum length allowed is 767 characters.
+  /// Partition field name must consist of letters, numbers, and underscores
+  /// only, with a maximum of length of 256 characters, and must begin with a
+  /// letter or underscore..
   ///
   /// Required.
   core.String? name;
@@ -6436,8 +6427,8 @@ class GoogleCloudDataplexV1SchemaSchemaField {
 
   /// The name of the field.
   ///
-  /// The maximum length is 767 characters. The name must begins with a letter
-  /// and not contains : and ..
+  /// Must contain only letters, numbers and underscores, with a maximum length
+  /// of 767 characters, and must begin with a letter or underscore.
   ///
   /// Required.
   core.String? name;
@@ -6602,11 +6593,10 @@ class GoogleCloudDataplexV1StorageFormat {
 
   /// The mime type descriptor for the data.
   ///
-  /// Must match the pattern {type}/{subtype}. Supported values: -
-  /// application/x-parquet - application/x-avro - application/x-orc -
-  /// application/x-tfrecord - application/json - application/{subtypes} -
-  /// text/csv - text/ - image/{image subtype} - video/{video subtype} -
-  /// audio/{audio subtype}
+  /// Must match the pattern {type}/{subtype}. Supported values:
+  /// application/x-parquet application/x-avro application/x-orc
+  /// application/x-tfrecord application/json application/{subtypes} text/csv
+  /// text/ image/{image subtype} video/{video subtype} audio/{audio subtype}
   ///
   /// Required.
   core.String? mimeType;
@@ -6676,7 +6666,8 @@ class GoogleCloudDataplexV1StorageFormatCsvOptions {
 
   /// The character used to quote column values.
   ///
-  /// Accepts '"' and '''. Defaults to '"' if unspecified.
+  /// Accepts '"' (double quotation mark) or ''' (single quotation mark).
+  /// Defaults to '"' (double quotation mark) if unspecified.
   ///
   /// Optional.
   core.String? quote;

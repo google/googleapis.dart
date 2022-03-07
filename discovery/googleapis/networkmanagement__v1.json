@@ -589,7 +589,7 @@
             }
         }
     },
-    "revision": "20220105",
+    "revision": "20220223",
     "rootUrl": "https://networkmanagement.googleapis.com/",
     "schemas": {
         "AbortInfo": {

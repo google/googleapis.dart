@@ -1951,7 +1951,7 @@
             }
         }
     },
-    "revision": "20220209",
+    "revision": "20220224",
     "rootUrl": "https://datacatalog.googleapis.com/",
     "schemas": {
         "Binding": {
@@ -2533,8 +2533,8 @@
                         "A database.",
                         "Output only. Connection to a data source. For example, a BigQuery connection.",
                         "Output only. Routine, for example, a BigQuery routine.",
-                        "A Dataproc Metastore lake.",
-                        "A Dataproc Metastore zone.",
+                        "A Dataplex lake.",
+                        "A Dataplex zone.",
                         "A service, for example, a Dataproc Metastore service."
                     ],
                     "type": "string"
@@ -3517,7 +3517,7 @@
                     "type": "object"
                 },
                 "isPubliclyReadable": {
-                    "description": "Indicates whether tags created with this template are public. Public tags do not require tag template access to appear in ListTags API response. Additionally, you can search for a public tag by value with a simple search query instead of using a ``tag:`` predicate.",
+                    "description": "Indicates whether tags created with this template are public. Public tags do not require tag template access to appear in ListTags API response. Additionally, you can search for a public tag by value with a simple search query in addition to using a ``tag:`` predicate.",
                     "type": "boolean"
                 },
                 "name": {

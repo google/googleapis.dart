@@ -959,6 +959,12 @@ class Attestor {
   /// Optional.
   core.String? description;
 
+  /// Used to prevent updating the attestor when another request has updated it
+  /// since it was retrieved.
+  ///
+  /// Optional.
+  core.String? etag;
+
   /// The resource name, in the format: `projects / * /attestors / * `.
   ///
   /// This field may not be updated.
@@ -977,6 +983,7 @@ class Attestor {
 
   Attestor({
     this.description,
+    this.etag,
     this.name,
     this.updateTime,
     this.userOwnedGrafeasNote,
@@ -987,6 +994,7 @@ class Attestor {
           description: _json.containsKey('description')
               ? _json['description'] as core.String
               : null,
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           updateTime: _json.containsKey('updateTime')
               ? _json['updateTime'] as core.String
@@ -999,6 +1007,7 @@ class Attestor {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
+        if (etag != null) 'etag': etag!,
         if (name != null) 'name': name!,
         if (updateTime != null) 'updateTime': updateTime!,
         if (userOwnedGrafeasNote != null)
@@ -1349,9 +1358,17 @@ class PkixPublicKey {
   /// Possible string values are:
   /// - "SIGNATURE_ALGORITHM_UNSPECIFIED" : Not specified.
   /// - "RSA_PSS_2048_SHA256" : RSASSA-PSS 2048 bit key with a SHA256 digest.
+  /// - "RSA_SIGN_PSS_2048_SHA256" : RSASSA-PSS 2048 bit key with a SHA256
+  /// digest.
   /// - "RSA_PSS_3072_SHA256" : RSASSA-PSS 3072 bit key with a SHA256 digest.
+  /// - "RSA_SIGN_PSS_3072_SHA256" : RSASSA-PSS 3072 bit key with a SHA256
+  /// digest.
   /// - "RSA_PSS_4096_SHA256" : RSASSA-PSS 4096 bit key with a SHA256 digest.
+  /// - "RSA_SIGN_PSS_4096_SHA256" : RSASSA-PSS 4096 bit key with a SHA256
+  /// digest.
   /// - "RSA_PSS_4096_SHA512" : RSASSA-PSS 4096 bit key with a SHA512 digest.
+  /// - "RSA_SIGN_PSS_4096_SHA512" : RSASSA-PSS 4096 bit key with a SHA512
+  /// digest.
   /// - "RSA_SIGN_PKCS1_2048_SHA256" : RSASSA-PKCS1-v1_5 with a 2048 bit key and
   /// a SHA256 digest.
   /// - "RSA_SIGN_PKCS1_3072_SHA256" : RSASSA-PKCS1-v1_5 with a 3072 bit key and
@@ -1429,6 +1446,12 @@ class Policy {
   /// Optional.
   core.String? description;
 
+  /// Used to prevent updating the policy when another request has updated it
+  /// since it was retrieved.
+  ///
+  /// Optional.
+  core.String? etag;
+
   /// Controls the evaluation of a Google-maintained global admission policy for
   /// common system-level images.
   ///
@@ -1484,6 +1507,7 @@ class Policy {
     this.clusterAdmissionRules,
     this.defaultAdmissionRule,
     this.description,
+    this.etag,
     this.globalPolicyEvaluationMode,
     this.istioServiceIdentityAdmissionRules,
     this.kubernetesNamespaceAdmissionRules,
@@ -1519,6 +1543,7 @@ class Policy {
           description: _json.containsKey('description')
               ? _json['description'] as core.String
               : null,
+          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
           globalPolicyEvaluationMode:
               _json.containsKey('globalPolicyEvaluationMode')
                   ? _json['globalPolicyEvaluationMode'] as core.String
@@ -1573,6 +1598,7 @@ class Policy {
         if (defaultAdmissionRule != null)
           'defaultAdmissionRule': defaultAdmissionRule!,
         if (description != null) 'description': description!,
+        if (etag != null) 'etag': etag!,
         if (globalPolicyEvaluationMode != null)
           'globalPolicyEvaluationMode': globalPolicyEvaluationMode!,
         if (istioServiceIdentityAdmissionRules != null)

@@ -3216,6 +3216,7 @@ api.MemInfo buildMemInfo() {
   buildCounterMemInfo++;
   if (buildCounterMemInfo < 3) {
     o.currentLimitBytes = 'foo';
+    o.currentOoms = 'foo';
     o.currentRssBytes = 'foo';
     o.timestamp = 'foo';
     o.totalGbMs = 'foo';
@@ -3229,6 +3230,10 @@ void checkMemInfo(api.MemInfo o) {
   if (buildCounterMemInfo < 3) {
     unittest.expect(
       o.currentLimitBytes!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.currentOoms!,
       unittest.equals('foo'),
     );
     unittest.expect(

@@ -1529,10 +1529,11 @@ typedef ClearLocationAssociationRequest = $Empty;
 /// The time of day and time zone are either specified elsewhere or are
 /// insignificant. The date is relative to the Gregorian Calendar. This can
 /// represent one of the following: * A full date, with non-zero year, month,
-/// and day values * A month and day, with a zero year (e.g., an anniversary) *
-/// A year on its own, with a zero month and a zero day * A year and month, with
-/// a zero day (e.g., a credit card expiration date) Related types: *
-/// google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
+/// and day values. * A month and day, with a zero year (for example, an
+/// anniversary). * A year on its own, with a zero month and a zero day. * A
+/// year and month, with a zero day (for example, a credit card expiration
+/// date). Related types: * google.type.TimeOfDay * google.type.DateTime *
+/// google.protobuf.Timestamp
 typedef Date = $Date;
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -1916,7 +1917,10 @@ class Location {
   /// Describes your business in your own voice and shares with users the unique
   /// story of your business and offerings.
   ///
-  /// Required.
+  /// This field is required for all categories except lodging categories (e.g.
+  /// hotels, motels, inns).
+  ///
+  /// Optional.
   Profile? profile;
 
   /// Operating hours for the business.
@@ -1926,7 +1930,7 @@ class Location {
 
   /// All locations and chain related to this one.
   ///
-  /// Output only.
+  /// Optional.
   RelationshipData? relationshipData;
 
   /// Service area businesses provide their service at the customer's location.
@@ -2186,6 +2190,15 @@ class Metadata {
   /// Output only.
   core.bool? hasPendingEdits;
 
+  /// Indicates if the listing has Voice of Merchant.
+  ///
+  /// If this boolean is false, you should call the
+  /// locations.getVoiceOfMerchantState API to get details as to why they do not
+  /// have Voice of Merchant.
+  ///
+  /// Output only.
+  core.bool? hasVoiceOfMerchant;
+
   /// A link to the location on Maps.
   ///
   /// Output only.
@@ -2217,6 +2230,7 @@ class Metadata {
     this.duplicateLocation,
     this.hasGoogleUpdated,
     this.hasPendingEdits,
+    this.hasVoiceOfMerchant,
     this.mapsUri,
     this.newReviewUri,
     this.placeId,
@@ -2254,6 +2268,9 @@ class Metadata {
           hasPendingEdits: _json.containsKey('hasPendingEdits')
               ? _json['hasPendingEdits'] as core.bool
               : null,
+          hasVoiceOfMerchant: _json.containsKey('hasVoiceOfMerchant')
+              ? _json['hasVoiceOfMerchant'] as core.bool
+              : null,
           mapsUri: _json.containsKey('mapsUri')
               ? _json['mapsUri'] as core.String
               : null,
@@ -2281,6 +2298,8 @@ class Metadata {
         if (duplicateLocation != null) 'duplicateLocation': duplicateLocation!,
         if (hasGoogleUpdated != null) 'hasGoogleUpdated': hasGoogleUpdated!,
         if (hasPendingEdits != null) 'hasPendingEdits': hasPendingEdits!,
+        if (hasVoiceOfMerchant != null)
+          'hasVoiceOfMerchant': hasVoiceOfMerchant!,
         if (mapsUri != null) 'mapsUri': mapsUri!,
         if (newReviewUri != null) 'newReviewUri': newReviewUri!,
         if (placeId != null) 'placeId': placeId!,
@@ -2554,7 +2573,7 @@ class Places {
 /// be presented with UI elements for input or editing of fields outside
 /// countries where that field is used. For more guidance on how to use this
 /// schema, please see: https://support.google.com/business/answer/6397478
-typedef PostalAddress = $PostalAddress01;
+typedef PostalAddress = $PostalAddress00;
 
 /// All information pertaining to the location's profile.
 class Profile {

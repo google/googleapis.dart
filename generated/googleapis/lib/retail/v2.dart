@@ -921,9 +921,9 @@ class ProjectsLocationsCatalogsBranchesProductsResource {
   /// CreateProduct or UpdateProduct request. If no inventory fields are set in
   /// CreateProductRequest.product, then any pre-existing inventory information
   /// for this product will be used. If no inventory fields are set in
-  /// UpdateProductRequest.set_mask, then any existing inventory information
-  /// will be preserved. Pre-existing inventory information can only be updated
-  /// with SetInventory, AddFulfillmentPlaces, and RemoveFulfillmentPlaces. This
+  /// SetInventoryRequest.set_mask, then any existing inventory information will
+  /// be preserved. Pre-existing inventory information can only be updated with
+  /// SetInventory, AddFulfillmentPlaces, and RemoveFulfillmentPlaces. This
   /// feature is only available for users who have Retail Search enabled. Please
   /// submit a form [here](https://cloud.google.com/contact) to contact cloud
   /// sales if you are interested in using Retail Search.
@@ -2258,9 +2258,10 @@ class GoogleCloudRetailV2CustomAttribute {
 
   /// The textual values of this custom attribute.
   ///
-  /// For example, `["yellow", "green"]` when the key is "color". Exactly one of
-  /// text or numbers should be set. Otherwise, an INVALID_ARGUMENT error is
-  /// returned.
+  /// For example, `["yellow", "green"]` when the key is "color". Empty string
+  /// is not allowed. Otherwise, an INVALID_ARGUMENT error is returned. Exactly
+  /// one of text or numbers should be set. Otherwise, an INVALID_ARGUMENT error
+  /// is returned.
   core.List<core.String>? text;
 
   GoogleCloudRetailV2CustomAttribute({
@@ -2518,11 +2519,11 @@ class GoogleCloudRetailV2ImportCompletionDataRequest {
 
 /// Configuration of destination for Import related errors.
 class GoogleCloudRetailV2ImportErrorsConfig {
-  /// Google Cloud Storage path for import errors.
+  /// Google Cloud Storage prefix for import errors.
   ///
-  /// This must be an empty, existing Cloud Storage bucket. Import errors will
-  /// be written to a file in this bucket, one per line, as a JSON-encoded
-  /// `google.rpc.Status` message.
+  /// This must be an empty, existing Cloud Storage directory. Import errors
+  /// will be written to sharded files in this directory, one per line, as a
+  /// JSON-encoded `google.rpc.Status` message.
   core.String? gcsPrefix;
 
   GoogleCloudRetailV2ImportErrorsConfig({
@@ -3183,8 +3184,8 @@ class GoogleCloudRetailV2Product {
   /// attribute, the key must match the pattern: `a-zA-Z0-9*`. For example,
   /// `key0LikeThis` or `KEY_1_LIKE_THIS`. * For text attributes, at most 400
   /// values are allowed. Empty values are not allowed. Each value must be a
-  /// UTF-8 encoded string with a length limit of 256 characters. * For number
-  /// attributes, at most 400 values are allowed.
+  /// non-empty UTF-8 encoded string with a length limit of 256 characters. *
+  /// For number attributes, at most 400 values are allowed.
   core.Map<core.String, GoogleCloudRetailV2CustomAttribute>? attributes;
 
   /// The target group associated with a given audience (e.g. male, veterans,
@@ -5212,8 +5213,14 @@ class GoogleCloudRetailV2SetDefaultBranchRequest {
   /// The final component of the resource name of a branch.
   ///
   /// This field must be one of "0", "1" or "2". Otherwise, an INVALID_ARGUMENT
-  /// error is returned.
+  /// error is returned. If there are no sufficient active products in the
+  /// targeted branch and force is not set, a FAILED_PRECONDITION error is
+  /// returned.
   core.String? branchId;
+
+  /// If set to true, it permits switching to a branch with branch_id even if it
+  /// has no sufficient active products.
+  core.bool? force;
 
   /// Some note on this request, this can be retrieved by
   /// CatalogService.GetDefaultBranch before next valid default branch set
@@ -5225,6 +5232,7 @@ class GoogleCloudRetailV2SetDefaultBranchRequest {
 
   GoogleCloudRetailV2SetDefaultBranchRequest({
     this.branchId,
+    this.force,
     this.note,
   });
 
@@ -5233,11 +5241,14 @@ class GoogleCloudRetailV2SetDefaultBranchRequest {
           branchId: _json.containsKey('branchId')
               ? _json['branchId'] as core.String
               : null,
+          force:
+              _json.containsKey('force') ? _json['force'] as core.bool : null,
           note: _json.containsKey('note') ? _json['note'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (branchId != null) 'branchId': branchId!,
+        if (force != null) 'force': force!,
         if (note != null) 'note': note!,
       };
 }
@@ -5266,11 +5277,22 @@ class GoogleCloudRetailV2SetInventoryRequest {
   /// Product to update has existing inventory information, the provided
   /// inventory information will be merged while respecting the last update time
   /// for each inventory field, using the provided or default value for
-  /// SetInventoryRequest.set_time. The last update time is recorded for the
-  /// following inventory fields: * Product.price_info * Product.availability *
-  /// Product.available_quantity * Product.fulfillment_info If a full overwrite
-  /// of inventory information while ignoring timestamps is needed,
-  /// UpdateProduct should be invoked instead.
+  /// SetInventoryRequest.set_time. The caller can replace place IDs for a
+  /// subset of fulfillment types in the following ways: * Adds
+  /// "fulfillment_info" in SetInventoryRequest.set_mask * Specifies only the
+  /// desired fulfillment types and corresponding place IDs to update in
+  /// SetInventoryRequest.inventory.fulfillment_info The caller can clear all
+  /// place IDs from a subset of fulfillment types in the following ways: * Adds
+  /// "fulfillment_info" in SetInventoryRequest.set_mask * Specifies only the
+  /// desired fulfillment types to clear in
+  /// SetInventoryRequest.inventory.fulfillment_info * Checks that only the
+  /// desired fulfillment info types have empty
+  /// SetInventoryRequest.inventory.fulfillment_info.place_ids The last update
+  /// time is recorded for the following inventory fields: * Product.price_info
+  /// * Product.availability * Product.available_quantity *
+  /// Product.fulfillment_info If a full overwrite of inventory information
+  /// while ignoring timestamps is needed, UpdateProduct should be invoked
+  /// instead.
   ///
   /// Required.
   GoogleCloudRetailV2Product? inventory;

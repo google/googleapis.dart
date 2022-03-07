@@ -2706,31 +2706,7 @@ class ManagedZone {
 }
 
 /// Cloud Logging configurations for publicly visible zones.
-class ManagedZoneCloudLoggingConfig {
-  /// If set, enable query logging for this ManagedZone.
-  ///
-  /// False by default, making logging opt-in.
-  core.bool? enableLogging;
-  core.String? kind;
-
-  ManagedZoneCloudLoggingConfig({
-    this.enableLogging,
-    this.kind,
-  });
-
-  ManagedZoneCloudLoggingConfig.fromJson(core.Map _json)
-      : this(
-          enableLogging: _json.containsKey('enableLogging')
-              ? _json['enableLogging'] as core.bool
-              : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (enableLogging != null) 'enableLogging': enableLogging!,
-        if (kind != null) 'kind': kind!,
-      };
-}
+typedef ManagedZoneCloudLoggingConfig = $ManagedZoneCloudLoggingConfig;
 
 class ManagedZoneDnsSecConfig {
   /// Specifies parameters for generating initial DnsKeys for this ManagedZone.
@@ -2939,45 +2915,8 @@ class ManagedZonePeeringConfig {
       };
 }
 
-class ManagedZonePeeringConfigTargetNetwork {
-  /// The time at which the zone was deactivated, in RFC 3339 date-time format.
-  ///
-  /// An empty string indicates that the peering connection is active. The
-  /// producer network can deactivate a zone. The zone is automatically
-  /// deactivated if the producer network that the zone targeted is deleted.
-  /// Output only.
-  core.String? deactivateTime;
-  core.String? kind;
-
-  /// The fully qualified URL of the VPC network to forward queries to.
-  ///
-  /// This should be formatted like
-  /// https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}
-  core.String? networkUrl;
-
-  ManagedZonePeeringConfigTargetNetwork({
-    this.deactivateTime,
-    this.kind,
-    this.networkUrl,
-  });
-
-  ManagedZonePeeringConfigTargetNetwork.fromJson(core.Map _json)
-      : this(
-          deactivateTime: _json.containsKey('deactivateTime')
-              ? _json['deactivateTime'] as core.String
-              : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          networkUrl: _json.containsKey('networkUrl')
-              ? _json['networkUrl'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (deactivateTime != null) 'deactivateTime': deactivateTime!,
-        if (kind != null) 'kind': kind!,
-        if (networkUrl != null) 'networkUrl': networkUrl!,
-      };
-}
+typedef ManagedZonePeeringConfigTargetNetwork
+    = $ManagedZonePeeringConfigTargetNetwork;
 
 class ManagedZonePrivateVisibilityConfig {
   core.String? kind;
@@ -3008,50 +2947,9 @@ class ManagedZonePrivateVisibilityConfig {
       };
 }
 
-class ManagedZonePrivateVisibilityConfigNetwork {
-  core.String? kind;
-
-  /// The fully qualified URL of the VPC network to bind to.
-  ///
-  /// Format this URL like
-  /// https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}
-  core.String? networkUrl;
-
-  ManagedZonePrivateVisibilityConfigNetwork({
-    this.kind,
-    this.networkUrl,
-  });
-
-  ManagedZonePrivateVisibilityConfigNetwork.fromJson(core.Map _json)
-      : this(
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          networkUrl: _json.containsKey('networkUrl')
-              ? _json['networkUrl'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (kind != null) 'kind': kind!,
-        if (networkUrl != null) 'networkUrl': networkUrl!,
-      };
-}
-
-class ManagedZoneReverseLookupConfig {
-  core.String? kind;
-
-  ManagedZoneReverseLookupConfig({
-    this.kind,
-  });
-
-  ManagedZoneReverseLookupConfig.fromJson(core.Map _json)
-      : this(
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (kind != null) 'kind': kind!,
-      };
-}
+typedef ManagedZonePrivateVisibilityConfigNetwork
+    = $ManagedZonePrivateVisibilityConfigNetwork;
+typedef ManagedZoneReverseLookupConfig = $ManagedZoneReverseLookupConfig;
 
 /// Contains information about Service Directory-backed zones.
 class ManagedZoneServiceDirectoryConfig {
@@ -3080,43 +2978,8 @@ class ManagedZoneServiceDirectoryConfig {
       };
 }
 
-class ManagedZoneServiceDirectoryConfigNamespace {
-  /// The time that the namespace backing this zone was deleted; an empty string
-  /// if it still exists.
-  ///
-  /// This is in RFC3339 text format. Output only.
-  core.String? deletionTime;
-  core.String? kind;
-
-  /// The fully qualified URL of the namespace associated with the zone.
-  ///
-  /// Format must be
-  /// https://servicedirectory.googleapis.com/v1/projects/{project}/locations/{location}/namespaces/{namespace}
-  core.String? namespaceUrl;
-
-  ManagedZoneServiceDirectoryConfigNamespace({
-    this.deletionTime,
-    this.kind,
-    this.namespaceUrl,
-  });
-
-  ManagedZoneServiceDirectoryConfigNamespace.fromJson(core.Map _json)
-      : this(
-          deletionTime: _json.containsKey('deletionTime')
-              ? _json['deletionTime'] as core.String
-              : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          namespaceUrl: _json.containsKey('namespaceUrl')
-              ? _json['namespaceUrl'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (deletionTime != null) 'deletionTime': deletionTime!,
-        if (kind != null) 'kind': kind!,
-        if (namespaceUrl != null) 'namespaceUrl': namespaceUrl!,
-      };
-}
+typedef ManagedZoneServiceDirectoryConfigNamespace
+    = $ManagedZoneServiceDirectoryConfigNamespace;
 
 class ManagedZonesListResponse {
   ResponseHeader? header;
@@ -3599,33 +3462,7 @@ class PolicyAlternativeNameServerConfigTargetNameServer {
       };
 }
 
-class PolicyNetwork {
-  core.String? kind;
-
-  /// The fully qualified URL of the VPC network to bind to.
-  ///
-  /// This should be formatted like
-  /// https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}
-  core.String? networkUrl;
-
-  PolicyNetwork({
-    this.kind,
-    this.networkUrl,
-  });
-
-  PolicyNetwork.fromJson(core.Map _json)
-      : this(
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          networkUrl: _json.containsKey('networkUrl')
-              ? _json['networkUrl'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (kind != null) 'kind': kind!,
-        if (networkUrl != null) 'networkUrl': networkUrl!,
-      };
-}
+typedef PolicyNetwork = $PolicyNetwork;
 
 /// A project resource.
 ///
@@ -3910,54 +3747,8 @@ class RRSetRoutingPolicyGeoPolicy {
 }
 
 /// ResourceRecordSet data for one geo location.
-class RRSetRoutingPolicyGeoPolicyGeoPolicyItem {
-  core.String? kind;
-
-  /// The geo-location granularity is a GCP region.
-  ///
-  /// This location string should correspond to a GCP region. e.g. "us-east1",
-  /// "southamerica-east1", "asia-east1", etc.
-  core.String? location;
-  core.List<core.String>? rrdatas;
-
-  /// DNSSEC generated signatures for all the rrdata within this item.
-  ///
-  /// Note that if health checked targets are provided for DNSSEC enabled zones,
-  /// there's a restriction of 1 ip per item. .
-  core.List<core.String>? signatureRrdatas;
-
-  RRSetRoutingPolicyGeoPolicyGeoPolicyItem({
-    this.kind,
-    this.location,
-    this.rrdatas,
-    this.signatureRrdatas,
-  });
-
-  RRSetRoutingPolicyGeoPolicyGeoPolicyItem.fromJson(core.Map _json)
-      : this(
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          location: _json.containsKey('location')
-              ? _json['location'] as core.String
-              : null,
-          rrdatas: _json.containsKey('rrdatas')
-              ? (_json['rrdatas'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          signatureRrdatas: _json.containsKey('signatureRrdatas')
-              ? (_json['signatureRrdatas'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (kind != null) 'kind': kind!,
-        if (location != null) 'location': location!,
-        if (rrdatas != null) 'rrdatas': rrdatas!,
-        if (signatureRrdatas != null) 'signatureRrdatas': signatureRrdatas!,
-      };
-}
+typedef RRSetRoutingPolicyGeoPolicyGeoPolicyItem
+    = $RRSetRoutingPolicyGeoPolicyGeoPolicyItem;
 
 /// Configures a RRSetRoutingPolicy that routes in a weighted round robin
 /// fashion.
@@ -3989,56 +3780,8 @@ class RRSetRoutingPolicyWrrPolicy {
 }
 
 /// A routing block which contains the routing information for one WRR item.
-class RRSetRoutingPolicyWrrPolicyWrrPolicyItem {
-  core.String? kind;
-  core.List<core.String>? rrdatas;
-
-  /// DNSSEC generated signatures for all the rrdata within this item.
-  ///
-  /// Note that if health checked targets are provided for DNSSEC enabled zones,
-  /// there's a restriction of 1 ip per item. .
-  core.List<core.String>? signatureRrdatas;
-
-  /// The weight corresponding to this subset of rrdata.
-  ///
-  /// When multiple WeightedRoundRobinPolicyItems are configured, the
-  /// probability of returning an rrset is proportional to its weight relative
-  /// to the sum of weights configured for all items. This weight should be
-  /// non-negative.
-  core.double? weight;
-
-  RRSetRoutingPolicyWrrPolicyWrrPolicyItem({
-    this.kind,
-    this.rrdatas,
-    this.signatureRrdatas,
-    this.weight,
-  });
-
-  RRSetRoutingPolicyWrrPolicyWrrPolicyItem.fromJson(core.Map _json)
-      : this(
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          rrdatas: _json.containsKey('rrdatas')
-              ? (_json['rrdatas'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          signatureRrdatas: _json.containsKey('signatureRrdatas')
-              ? (_json['signatureRrdatas'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          weight: _json.containsKey('weight')
-              ? (_json['weight'] as core.num).toDouble()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (kind != null) 'kind': kind!,
-        if (rrdatas != null) 'rrdatas': rrdatas!,
-        if (signatureRrdatas != null) 'signatureRrdatas': signatureRrdatas!,
-        if (weight != null) 'weight': weight!,
-      };
-}
+typedef RRSetRoutingPolicyWrrPolicyWrrPolicyItem
+    = $RRSetRoutingPolicyWrrPolicyWrrPolicyItem;
 
 /// A unit of data that is returned by the DNS servers.
 class ResourceRecordSet {
@@ -4169,28 +3912,7 @@ class ResourceRecordSetsListResponse {
 }
 
 /// Elements common to every response.
-class ResponseHeader {
-  /// For mutating operation requests that completed successfully.
-  ///
-  /// This is the client_operation_id if the client specified it, otherwise it
-  /// is generated by the server (output only).
-  core.String? operationId;
-
-  ResponseHeader({
-    this.operationId,
-  });
-
-  ResponseHeader.fromJson(core.Map _json)
-      : this(
-          operationId: _json.containsKey('operationId')
-              ? _json['operationId'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (operationId != null) 'operationId': operationId!,
-      };
-}
+typedef ResponseHeader = $ResponseHeader;
 
 class ResponsePoliciesListResponse {
   ResponseHeader? header;
@@ -4345,33 +4067,7 @@ class ResponsePolicy {
       };
 }
 
-class ResponsePolicyNetwork {
-  core.String? kind;
-
-  /// The fully qualified URL of the VPC network to bind to.
-  ///
-  /// This should be formatted like
-  /// https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}
-  core.String? networkUrl;
-
-  ResponsePolicyNetwork({
-    this.kind,
-    this.networkUrl,
-  });
-
-  ResponsePolicyNetwork.fromJson(core.Map _json)
-      : this(
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          networkUrl: _json.containsKey('networkUrl')
-              ? _json['networkUrl'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (kind != null) 'kind': kind!,
-        if (networkUrl != null) 'networkUrl': networkUrl!,
-      };
-}
+typedef ResponsePolicyNetwork = $ResponsePolicyNetwork;
 
 /// A Response Policy Rule is a selector that applies its behavior to queries
 /// that match the selector.

@@ -50,3 +50,16 @@ index 4817ca793..dd48d71a9 100644
      "icons": {
          "x16": "http://www.google.com/images/icons/product/search-16.gif",
          "x32": "http://www.google.com/images/icons/product/search-32.gif"
+diff --git a/discovery/googleapis/versionhistory__v1.json b/discovery/googleapis/versionhistory__v1.json
+index 9c8e53aa0..60fdc75ba 100644
+--- a/discovery/googleapis/versionhistory__v1.json
++++ b/discovery/googleapis/versionhistory__v1.json
+@@ -5,7 +5,7 @@
+     "canonicalName": "Version History",
+     "description": "Version History API - Prod",
+     "discoveryVersion": "v1",
+-    "documentationLink": "https://developers.chrome.com/versionhistory",
++    "documentationLink": "https://developer.chrome.com/docs/versionhistory/",
+     "icons": {
+         "x16": "http://www.google.com/images/icons/product/search-16.gif",
+         "x32": "http://www.google.com/images/icons/product/search-32.gif"

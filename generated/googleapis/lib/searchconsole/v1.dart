@@ -966,8 +966,7 @@ class IndexStatusInspectionResult {
   /// 'robots' meta tag.
   /// - "BLOCKED_BY_HTTP_HEADER" : Indexing not allowed, 'noindex' detected in
   /// 'X-Robots-Tag' http header.
-  /// - "BLOCKED_BY_ROBOTS_TXT" : Indexing not allowed, No: 'noindex' detected
-  /// in robots.txt.
+  /// - "BLOCKED_BY_ROBOTS_TXT" : Reserved, no longer in use.
   core.String? indexingState;
 
   /// Last time this URL was crawled by Google using the

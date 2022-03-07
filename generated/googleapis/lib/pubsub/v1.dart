@@ -3445,6 +3445,18 @@ class Subscription {
   /// the endpoint will not be made.
   core.bool? detached;
 
+  /// If true, Pub/Sub provides the following guarantees for the delivery of a
+  /// message with a given value of `message_id` on this subscription: * The
+  /// message sent to a subscriber is guaranteed not to be resent before the
+  /// message's acknowledgement deadline expires.
+  ///
+  /// * An acknowledged message will not be resent to a subscriber. Note that
+  /// subscribers may still receive multiple copies of a message when
+  /// `enable_exactly_once_delivery` is true if the message was published
+  /// multiple times by a publisher client. These copies are considered distinct
+  /// by Pub/Sub and have distinct `message_id` values.
+  core.bool? enableExactlyOnceDelivery;
+
   /// If true, messages published with the same `ordering_key` in
   /// `PubsubMessage` will be delivered to the subscribers in the order in which
   /// they are received by the Pub/Sub system.
@@ -3556,6 +3568,7 @@ class Subscription {
     this.ackDeadlineSeconds,
     this.deadLetterPolicy,
     this.detached,
+    this.enableExactlyOnceDelivery,
     this.enableMessageOrdering,
     this.expirationPolicy,
     this.filter,
@@ -3582,6 +3595,10 @@ class Subscription {
           detached: _json.containsKey('detached')
               ? _json['detached'] as core.bool
               : null,
+          enableExactlyOnceDelivery:
+              _json.containsKey('enableExactlyOnceDelivery')
+                  ? _json['enableExactlyOnceDelivery'] as core.bool
+                  : null,
           enableMessageOrdering: _json.containsKey('enableMessageOrdering')
               ? _json['enableMessageOrdering'] as core.bool
               : null,
@@ -3631,6 +3648,8 @@ class Subscription {
           'ackDeadlineSeconds': ackDeadlineSeconds!,
         if (deadLetterPolicy != null) 'deadLetterPolicy': deadLetterPolicy!,
         if (detached != null) 'detached': detached!,
+        if (enableExactlyOnceDelivery != null)
+          'enableExactlyOnceDelivery': enableExactlyOnceDelivery!,
         if (enableMessageOrdering != null)
           'enableMessageOrdering': enableMessageOrdering!,
         if (expirationPolicy != null) 'expirationPolicy': expirationPolicy!,
