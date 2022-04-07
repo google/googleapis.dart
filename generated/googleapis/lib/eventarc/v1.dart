@@ -1407,10 +1407,19 @@ class Destination {
   /// The service should be running in the same project as the trigger.
   GKE? gke;
 
+  /// The resource name of the Workflow whose Executions are triggered by the
+  /// events.
+  ///
+  /// The Workflow resource should be deployed in the same project as the
+  /// trigger. Format:
+  /// `projects/{project}/locations/{location}/workflows/{workflow}`
+  core.String? workflow;
+
   Destination({
     this.cloudFunction,
     this.cloudRun,
     this.gke,
+    this.workflow,
   });
 
   Destination.fromJson(core.Map _json)
@@ -1426,12 +1435,16 @@ class Destination {
               ? GKE
                   .fromJson(_json['gke'] as core.Map<core.String, core.dynamic>)
               : null,
+          workflow: _json.containsKey('workflow')
+              ? _json['workflow'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (cloudFunction != null) 'cloudFunction': cloudFunction!,
         if (cloudRun != null) 'cloudRun': cloudRun!,
         if (gke != null) 'gke': gke!,
+        if (workflow != null) 'workflow': workflow!,
       };
 }
 
@@ -1440,8 +1453,7 @@ class Destination {
 ///
 /// A typical example is to use it as the request or the response type of an API
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
-/// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
-/// object `{}`.
+/// (google.protobuf.Empty); }
 typedef Empty = $Empty;
 
 /// Filters events based on exact matches on the CloudEvents attributes.

@@ -25,7 +25,9 @@
 ///   - [AccountsCredentialsResource]
 ///   - [AccountsLabelsResource]
 ///   - [AccountsReturncarrierResource]
+/// - [AccountsbyexternalselleridResource]
 /// - [AccountstatusesResource]
+/// - [AccountstatusesbyexternalselleridResource]
 /// - [AccounttaxResource]
 /// - [BuyongoogleprogramsResource]
 /// - [CollectionsResource]
@@ -84,8 +86,13 @@ class ShoppingContentApi {
   final commons.ApiRequester _requester;
 
   AccountsResource get accounts => AccountsResource(_requester);
+  AccountsbyexternalselleridResource get accountsbyexternalsellerid =>
+      AccountsbyexternalselleridResource(_requester);
   AccountstatusesResource get accountstatuses =>
       AccountstatusesResource(_requester);
+  AccountstatusesbyexternalselleridResource
+      get accountstatusesbyexternalsellerid =>
+          AccountstatusesbyexternalselleridResource(_requester);
   AccounttaxResource get accounttax => AccounttaxResource(_requester);
   BuyongoogleprogramsResource get buyongoogleprograms =>
       BuyongoogleprogramsResource(_requester);
@@ -1169,6 +1176,54 @@ class AccountsReturncarrierResource {
   }
 }
 
+class AccountsbyexternalselleridResource {
+  final commons.ApiRequester _requester;
+
+  AccountsbyexternalselleridResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets data of the account with the specified external_seller_id belonging
+  /// to the MCA with the specified merchant_id.
+  ///
+  /// Request parameters:
+  ///
+  /// [merchantId] - Required. The ID of the MCA containing the seller.
+  ///
+  /// [externalSellerId] - Required. The External Seller ID of the seller
+  /// account to be retrieved.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Account].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Account> get(
+    core.String merchantId,
+    core.String externalSellerId, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = commons.escapeVariable('$merchantId') +
+        '/accountsbyexternalsellerid/' +
+        commons.escapeVariable('$externalSellerId');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return Account.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class AccountstatusesResource {
   final commons.ApiRequester _requester;
 
@@ -1312,6 +1367,60 @@ class AccountstatusesResource {
       queryParams: _queryParams,
     );
     return AccountstatusesListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class AccountstatusesbyexternalselleridResource {
+  final commons.ApiRequester _requester;
+
+  AccountstatusesbyexternalselleridResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets status of the account with the specified external_seller_id belonging
+  /// to the MCA with the specified merchant_id.
+  ///
+  /// Request parameters:
+  ///
+  /// [merchantId] - Required. The ID of the MCA containing the seller.
+  ///
+  /// [externalSellerId] - Required. The External Seller ID of the seller
+  /// account to be retrieved.
+  ///
+  /// [destinations] - If set, only issues for the specified destinations are
+  /// returned, otherwise only issues for the Shopping destination.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AccountStatus].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AccountStatus> get(
+    core.String merchantId,
+    core.String externalSellerId, {
+    core.List<core.String>? destinations,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (destinations != null) 'destinations': destinations,
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = commons.escapeVariable('$merchantId') +
+        '/accountstatusesbyexternalsellerid/' +
+        commons.escapeVariable('$externalSellerId');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return AccountStatus.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
 }
@@ -1507,8 +1616,8 @@ class BuyongoogleprogramsResource {
 
   /// Reactivates the BoG program in your Merchant Center account.
   ///
-  /// Moves the program to the active state when allowed, e.g. when paused.
-  /// Important: This method is only whitelisted for selected merchants.
+  /// Moves the program to the active state when allowed, for example, when
+  /// paused. This method is only available to selected merchants.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1702,7 +1811,7 @@ class BuyongoogleprogramsResource {
 
   /// Pauses the BoG program in your Merchant Center account.
   ///
-  /// Important: This method is only whitelisted for selected merchants.
+  /// This method is only available to selected merchants.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1750,8 +1859,8 @@ class BuyongoogleprogramsResource {
   /// Requests review and then activates the BoG program in your Merchant Center
   /// account for the first time.
   ///
-  /// Moves the program to the REVIEW_PENDING state. Important: This method is
-  /// only whitelisted for selected merchants.
+  /// Moves the program to the REVIEW_PENDING state. This method is only
+  /// available to selected merchants.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2700,9 +2809,9 @@ class FreelistingsprogramResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Requests a review for Free Listings program in the provided region.
+  /// Requests a review of free listings in a specific region.
   ///
-  /// Important: This method is only whitelisted for selected merchants.
+  /// This method is only available to selected merchants.
   ///
   /// [request] - The metadata request object.
   ///
@@ -7841,7 +7950,9 @@ class ShoppingadsprogramResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Requests a review for Shopping Ads program in the provided country.
+  /// Requests a review of Shopping ads in a specific region.
+  ///
+  /// This method is only available to selected merchants.
   ///
   /// [request] - The metadata request object.
   ///
@@ -12208,10 +12319,11 @@ class DatafeedstatusesListResponse {
 /// The time of day and time zone are either specified elsewhere or are
 /// insignificant. The date is relative to the Gregorian Calendar. This can
 /// represent one of the following: * A full date, with non-zero year, month,
-/// and day values * A month and day, with a zero year (e.g., an anniversary) *
-/// A year on its own, with a zero month and a zero day * A year and month, with
-/// a zero day (e.g., a credit card expiration date) Related types: *
-/// google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
+/// and day values. * A month and day, with a zero year (for example, an
+/// anniversary). * A year on its own, with a zero month and a zero day. * A
+/// year and month, with a zero day (for example, a credit card expiration
+/// date). Related types: * google.type.TimeOfDay * google.type.DateTime *
+/// google.protobuf.Timestamp
 typedef Date = $Date;
 
 /// Represents civil time (or occasionally physical time).
@@ -12577,26 +12689,34 @@ class Errors {
 
 /// Response message for GetFreeListingsProgramStatus.
 class FreeListingsProgramStatus {
+  /// State of the program.
+  ///
+  /// `ENABLED` if there are offers for at least one region.
+  /// Possible string values are:
+  /// - "PROGRAM_STATE_UNSPECIFIED" : State is unknown.
+  /// - "NOT_ENABLED" : Program is not enabled for any country.
+  /// - "NO_OFFERS_UPLOADED" : No products have been uploaded for any region.
+  /// Upload products to Merchant Center.
+  /// - "ENABLED" : Program is enabled and offers are uploaded for at least one
+  /// country.
+  core.String? globalState;
+
   /// Status of the program in each region.
   ///
   /// Regions with the same status and review eligibility are grouped together
   /// in `regionCodes`.
   core.List<FreeListingsProgramStatusRegionStatus>? regionStatuses;
 
-  /// If program is successfully onboarded for at least one region.
-  /// Possible string values are:
-  /// - "PROGRAM_STATE_UNSPECIFIED" : State is not known.
-  /// - "ENABLED" : Program is enabled for at least one country.
-  /// - "NOT_ENABLED" : Program is not enabled for any country.
-  core.String? state;
-
   FreeListingsProgramStatus({
+    this.globalState,
     this.regionStatuses,
-    this.state,
   });
 
   FreeListingsProgramStatus.fromJson(core.Map _json)
       : this(
+          globalState: _json.containsKey('globalState')
+              ? _json['globalState'] as core.String
+              : null,
           regionStatuses: _json.containsKey('regionStatuses')
               ? (_json['regionStatuses'] as core.List)
                   .map((value) =>
@@ -12604,23 +12724,20 @@ class FreeListingsProgramStatus {
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          state:
-              _json.containsKey('state') ? _json['state'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (globalState != null) 'globalState': globalState!,
         if (regionStatuses != null) 'regionStatuses': regionStatuses!,
-        if (state != null) 'state': state!,
       };
 }
 
 /// Status of program and region.
 class FreeListingsProgramStatusRegionStatus {
-  /// Date by which `eligibility_status` will go from `WARNING` to
-  /// `DISAPPROVED`.
+  /// Date by which eligibilityStatus will go from `WARNING` to `DISAPPROVED`.
   ///
-  /// It will be present when `eligibility_status` is `WARNING`. Date will be
-  /// provided in ISO 8601 format i.e. YYYY-MM-DD
+  /// Only visible when your eligibilityStatus is WARNING. In
+  /// [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DD`.
   core.String? disapprovalDate;
 
   /// Eligibility status of the standard free listing program.
@@ -12637,57 +12754,70 @@ class FreeListingsProgramStatusRegionStatus {
   /// issue can make account DISAPPROVED after a certain deadline.
   /// - "UNDER_REVIEW" : Account is under review.
   /// - "PENDING_REVIEW" : Account is waiting for review to start.
-  /// - "ONBOARDING" : Program is currently onboarding.
+  /// - "ONBOARDING" : Program is currently onboarding. Upload valid offers to
+  /// complete onboarding.
   core.String? eligibilityStatus;
 
-  /// Eligibility status of the enhanced free listing program.
-  /// Possible string values are:
-  /// - "STATE_UNSPECIFIED" : State is not known.
-  /// - "APPROVED" : If the account has no issues and review is completed
-  /// successfully.
-  /// - "DISAPPROVED" : There are one or more issues that needs to be resolved
-  /// for account to be active for the program. Detailed list of account issues
-  /// are available in
-  /// [accountstatuses](https://developers.google.com/shopping-content/reference/rest/v2.1/accountstatuses)
-  /// API.
-  /// - "WARNING" : If account has issues but offers are servable. Some of the
-  /// issue can make account DISAPPROVED after a certain deadline.
-  /// - "UNDER_REVIEW" : Account is under review.
-  /// - "PENDING_REVIEW" : Account is waiting for review to start.
-  /// - "ONBOARDING" : Program is currently onboarding.
-  core.String? enhancedEligibilityStatus;
-
-  /// Reason if a program in a given country is not eligible for review.
-  ///
-  /// Populated only if `review_eligibility_status` is `INELIGIBLE`.
-  core.String? ineligibilityReason;
+  /// Issues that must be fixed to be eligible for review.
+  core.List<core.String>? onboardingIssues;
 
   /// The two-letter \[ISO 3166-1
   /// alpha-2\](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) codes for all
   /// the regions with the same `eligibilityStatus` and `reviewEligibility`.
   core.List<core.String>? regionCodes;
 
-  /// If a program in a given country is eligible for review.
+  /// If a program is eligible for review in a specific region.
   ///
-  /// It will be present only if eligibility status is `DISAPPROVED`.
+  /// Only visible if `eligibilityStatus` is `DISAPPROVED`.
   /// Possible string values are:
   /// - "REVIEW_ELIGIBILITY_UNSPECIFIED" : Review eligibility state is unknown.
-  /// - "ELIGIBLE" : Account for a region code is eligible for review.
-  /// - "INELIGIBLE" : Account for a region code is not eligible for review.
+  /// - "ELIGIBLE" : Account is eligible for review for a specified region code.
+  /// - "INELIGIBLE" : Account is not eligible for review for a specified region
+  /// code.
   core.String? reviewEligibilityStatus;
 
-  /// These issues will be evaluated in review process.
+  /// Review ineligibility reason if account is not eligible for review.
+  /// Possible string values are:
+  /// - "REVIEW_INELIGIBILITY_REASON_UNSPECIFIED" : Requesting a review from
+  /// Google is not possible.
+  /// - "ONBOARDING_ISSUES" : All onboarding issues needs to be fixed.
+  /// - "NOT_ENOUGH_OFFERS" : Not enough offers uploaded for this country.
+  /// - "IN_COOLDOWN_PERIOD" : Cooldown period applies. Wait until cooldown
+  /// period ends.
+  /// - "ALREADY_UNDER_REVIEW" : Account is already under review.
+  /// - "NO_REVIEW_REQUIRED" : No issues available to review.
+  /// - "WILL_BE_REVIEWED_AUTOMATICALLY" : Account will be automatically
+  /// reviewed at the end of the grace period.
+  /// - "IS_RETIRED" : Account is retired. Should not appear in MC.
+  /// - "ALREADY_REVIEWED" : Account was already reviewd.
+  core.String? reviewIneligibilityReason;
+
+  /// Reason a program in a specific region isn’t eligible for review.
   ///
-  /// Fix all the issues before requesting the review.
+  /// Only visible if `reviewEligibilityStatus` is `INELIGIBLE`.
+  core.String? reviewIneligibilityReasonDescription;
+
+  /// Additional information for ineligibility.
+  ///
+  /// If `reviewIneligibilityReason` is `IN_COOLDOWN_PERIOD`, a timestamp for
+  /// the end of the cooldown period is provided.
+  FreeListingsProgramStatusReviewIneligibilityReasonDetails?
+      reviewIneligibilityReasonDetails;
+
+  /// Issues evaluated in the review process.
+  ///
+  /// Fix all issues before requesting a review.
   core.List<core.String>? reviewIssues;
 
   FreeListingsProgramStatusRegionStatus({
     this.disapprovalDate,
     this.eligibilityStatus,
-    this.enhancedEligibilityStatus,
-    this.ineligibilityReason,
+    this.onboardingIssues,
     this.regionCodes,
     this.reviewEligibilityStatus,
+    this.reviewIneligibilityReason,
+    this.reviewIneligibilityReasonDescription,
+    this.reviewIneligibilityReasonDetails,
     this.reviewIssues,
   });
 
@@ -12699,12 +12829,10 @@ class FreeListingsProgramStatusRegionStatus {
           eligibilityStatus: _json.containsKey('eligibilityStatus')
               ? _json['eligibilityStatus'] as core.String
               : null,
-          enhancedEligibilityStatus:
-              _json.containsKey('enhancedEligibilityStatus')
-                  ? _json['enhancedEligibilityStatus'] as core.String
-                  : null,
-          ineligibilityReason: _json.containsKey('ineligibilityReason')
-              ? _json['ineligibilityReason'] as core.String
+          onboardingIssues: _json.containsKey('onboardingIssues')
+              ? (_json['onboardingIssues'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
               : null,
           regionCodes: _json.containsKey('regionCodes')
               ? (_json['regionCodes'] as core.List)
@@ -12714,6 +12842,20 @@ class FreeListingsProgramStatusRegionStatus {
           reviewEligibilityStatus: _json.containsKey('reviewEligibilityStatus')
               ? _json['reviewEligibilityStatus'] as core.String
               : null,
+          reviewIneligibilityReason:
+              _json.containsKey('reviewIneligibilityReason')
+                  ? _json['reviewIneligibilityReason'] as core.String
+                  : null,
+          reviewIneligibilityReasonDescription:
+              _json.containsKey('reviewIneligibilityReasonDescription')
+                  ? _json['reviewIneligibilityReasonDescription'] as core.String
+                  : null,
+          reviewIneligibilityReasonDetails:
+              _json.containsKey('reviewIneligibilityReasonDetails')
+                  ? FreeListingsProgramStatusReviewIneligibilityReasonDetails
+                      .fromJson(_json['reviewIneligibilityReasonDetails']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           reviewIssues: _json.containsKey('reviewIssues')
               ? (_json['reviewIssues'] as core.List)
                   .map((value) => value as core.String)
@@ -12724,16 +12866,24 @@ class FreeListingsProgramStatusRegionStatus {
   core.Map<core.String, core.dynamic> toJson() => {
         if (disapprovalDate != null) 'disapprovalDate': disapprovalDate!,
         if (eligibilityStatus != null) 'eligibilityStatus': eligibilityStatus!,
-        if (enhancedEligibilityStatus != null)
-          'enhancedEligibilityStatus': enhancedEligibilityStatus!,
-        if (ineligibilityReason != null)
-          'ineligibilityReason': ineligibilityReason!,
+        if (onboardingIssues != null) 'onboardingIssues': onboardingIssues!,
         if (regionCodes != null) 'regionCodes': regionCodes!,
         if (reviewEligibilityStatus != null)
           'reviewEligibilityStatus': reviewEligibilityStatus!,
+        if (reviewIneligibilityReason != null)
+          'reviewIneligibilityReason': reviewIneligibilityReason!,
+        if (reviewIneligibilityReasonDescription != null)
+          'reviewIneligibilityReasonDescription':
+              reviewIneligibilityReasonDescription!,
+        if (reviewIneligibilityReasonDetails != null)
+          'reviewIneligibilityReasonDetails': reviewIneligibilityReasonDetails!,
         if (reviewIssues != null) 'reviewIssues': reviewIssues!,
       };
 }
+
+/// Additional details for review ineligibility reasons.
+typedef FreeListingsProgramStatusReviewIneligibilityReasonDetails
+    = $ProgramStatusReviewIneligibilityReasonDetails;
 
 class GmbAccounts {
   /// The ID of the Merchant Center account.
@@ -21429,6 +21579,12 @@ class Product {
   /// `expirationDate` is too far in the future.
   core.String? expirationDate;
 
+  /// Required for multi-seller accounts.
+  ///
+  /// Use this attribute if you're a marketplace uploading products for various
+  /// sellers to your multi-seller account.
+  core.String? externalSellerId;
+
   /// Target gender of the item.
   core.String? gender;
 
@@ -21705,6 +21861,7 @@ class Product {
     this.energyEfficiencyClass,
     this.excludedDestinations,
     this.expirationDate,
+    this.externalSellerId,
     this.gender,
     this.googleProductCategory,
     this.gtin,
@@ -21868,6 +22025,9 @@ class Product {
               : null,
           expirationDate: _json.containsKey('expirationDate')
               ? _json['expirationDate'] as core.String
+              : null,
+          externalSellerId: _json.containsKey('externalSellerId')
+              ? _json['externalSellerId'] as core.String
               : null,
           gender: _json.containsKey('gender')
               ? _json['gender'] as core.String
@@ -22111,6 +22271,7 @@ class Product {
         if (excludedDestinations != null)
           'excludedDestinations': excludedDestinations!,
         if (expirationDate != null) 'expirationDate': expirationDate!,
+        if (externalSellerId != null) 'externalSellerId': externalSellerId!,
         if (gender != null) 'gender': gender!,
         if (googleProductCategory != null)
           'googleProductCategory': googleProductCategory!,
@@ -23156,6 +23317,9 @@ class ProductstatusesCustomBatchRequestEntry {
   /// If set, only issues for the specified destinations are returned, otherwise
   /// only issues for the Shopping destination.
   core.List<core.String>? destinations;
+
+  /// Deprecated: Setting this field has no effect and attributes are never
+  /// included.
   core.bool? includeAttributes;
 
   /// The ID of the managing account.
@@ -23332,7 +23496,7 @@ class ProductstatusesListResponse {
 }
 
 /// The Promotions feature is currently in alpha and is not yet publicly
-/// available via Content API for Shopping.
+/// available in Content API for Shopping.
 ///
 /// This documentation is provided for reference only may be subject to change.
 /// Represents a promotion. See the following articles for more details. *
@@ -23349,6 +23513,8 @@ class Promotion {
   core.List<core.String>? brandExclusion;
 
   /// The content language used as part of the unique identifier.
+  ///
+  /// Currently only en value is supported.
   ///
   /// Required.
   core.String? contentLanguage;
@@ -23475,15 +23641,15 @@ class Promotion {
   /// Destination ID for the promotion.
   core.List<core.String>? promotionDestinationIds;
 
-  /// String representation of the promotion display dates.
+  /// String representation of the promotion display dates (deprecated: Use
+  /// promotion_display_time_period instead).
   core.String? promotionDisplayDates;
 
   /// TimePeriod representation of the promotion display dates.
   TimePeriod? promotionDisplayTimePeriod;
 
-  /// String representation of the promotion effective dates.
-  ///
-  /// Required.
+  /// String representation of the promotion effective dates (deprecated: Use
+  /// promotion_effective_time_period instead).
   core.String? promotionEffectiveDates;
 
   /// TimePeriod representation of the promotion effective dates.
@@ -23507,6 +23673,8 @@ class Promotion {
   core.List<core.String>? shippingServiceNames;
 
   /// The target country used as part of the unique identifier.
+  ///
+  /// Currently only US and CA are supported.
   ///
   /// Required.
   core.String? targetCountry;
@@ -27906,50 +28074,54 @@ class ShippingsettingsListResponse {
 
 /// Response message for GetShoppingAdsProgramStatus.
 class ShoppingAdsProgramStatus {
+  /// State of the program.
+  ///
+  /// `ENABLED` if there are offers for at least one region.
+  /// Possible string values are:
+  /// - "PROGRAM_STATE_UNSPECIFIED" : State is unknown.
+  /// - "NOT_ENABLED" : Program is not enabled for any country.
+  /// - "NO_OFFERS_UPLOADED" : No products have been uploaded for any region.
+  /// Upload products to Merchant Center.
+  /// - "ENABLED" : Program is enabled and offers are uploaded for at least one
+  /// country.
+  core.String? globalState;
+
   /// Status of the program in each region.
   ///
   /// Regions with the same status and review eligibility are grouped together
   /// in `regionCodes`.
   core.List<ShoppingAdsProgramStatusRegionStatus>? regionStatuses;
 
-  /// If program is successfully onboarded for at least one region.
-  /// Possible string values are:
-  /// - "PROGRAM_STATE_UNSPECIFIED" : State is not known.
-  /// - "ENABLED" : Program is enabled for at least one country.
-  /// - "NOT_ENABLED" : Program is not enabled for any country.
-  core.String? state;
-
   ShoppingAdsProgramStatus({
+    this.globalState,
     this.regionStatuses,
-    this.state,
   });
 
   ShoppingAdsProgramStatus.fromJson(core.Map _json)
       : this(
+          globalState: _json.containsKey('globalState')
+              ? _json['globalState'] as core.String
+              : null,
           regionStatuses: _json.containsKey('regionStatuses')
               ? (_json['regionStatuses'] as core.List)
                   .map((value) => ShoppingAdsProgramStatusRegionStatus.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          state:
-              _json.containsKey('state') ? _json['state'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (globalState != null) 'globalState': globalState!,
         if (regionStatuses != null) 'regionStatuses': regionStatuses!,
-        if (state != null) 'state': state!,
       };
 }
 
 /// Status of program and region.
 class ShoppingAdsProgramStatusRegionStatus {
-  /// Date by which `eligibility_status` will go from `WARNING` to
-  /// `DISAPPROVED`.
+  /// Date by which eligibilityStatus will go from `WARNING` to `DISAPPROVED`.
   ///
-  /// It will be present when `eligibility_status` is `WARNING`. Date will be
-  /// provided in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format i.e.
-  /// YYYY-MM-DD
+  /// Only visible when your eligibilityStatus is WARNING. In
+  /// [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DD`.
   core.String? disapprovalDate;
 
   /// Eligibility status of the Shopping Ads program.
@@ -27966,39 +28138,70 @@ class ShoppingAdsProgramStatusRegionStatus {
   /// issue can make account DISAPPROVED after a certain deadline.
   /// - "UNDER_REVIEW" : Account is under review.
   /// - "PENDING_REVIEW" : Account is waiting for review to start.
-  /// - "ONBOARDING" : Program is currently onboarding.
+  /// - "ONBOARDING" : Program is currently onboarding. Upload valid offers to
+  /// complete onboarding.
   core.String? eligibilityStatus;
 
-  /// Reason if a program in a given country is not eligible for review.
-  ///
-  /// Populated only if `review_eligibility_status` is `INELIGIBLE`.
-  core.String? ineligibilityReason;
+  /// Issues that must be fixed to be eligible for review.
+  core.List<core.String>? onboardingIssues;
 
   /// The two-letter \[ISO 3166-1
   /// alpha-2\](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) codes for all
   /// the regions with the same `eligibilityStatus` and `reviewEligibility`.
   core.List<core.String>? regionCodes;
 
-  /// If a program in a given country is eligible for review.
+  /// If a program is eligible for review in a specific region.
   ///
-  /// It will be present only if eligibility status is `DISAPPROVED`.
+  /// Only visible if `eligibilityStatus` is `DISAPPROVED`.
   /// Possible string values are:
   /// - "REVIEW_ELIGIBILITY_UNSPECIFIED" : Review eligibility state is unknown.
-  /// - "ELIGIBLE" : Account for a region code is eligible for review.
-  /// - "INELIGIBLE" : Account for a region code is not eligible for review.
+  /// - "ELIGIBLE" : Account is eligible for review for a specified region code.
+  /// - "INELIGIBLE" : Account is not eligible for review for a specified region
+  /// code.
   core.String? reviewEligibilityStatus;
 
-  /// These issues will be evaluated in review process.
+  /// Review ineligibility reason if account is not eligible for review.
+  /// Possible string values are:
+  /// - "REVIEW_INELIGIBILITY_REASON_UNSPECIFIED" : Requesting a review from
+  /// Google is not possible.
+  /// - "ONBOARDING_ISSUES" : All onboarding issues needs to be fixed.
+  /// - "NOT_ENOUGH_OFFERS" : Not enough offers uploaded for this country.
+  /// - "IN_COOLDOWN_PERIOD" : Cooldown period applies. Wait until cooldown
+  /// period ends.
+  /// - "ALREADY_UNDER_REVIEW" : Account is already under review.
+  /// - "NO_REVIEW_REQUIRED" : No issues available to review.
+  /// - "WILL_BE_REVIEWED_AUTOMATICALLY" : Account will be automatically
+  /// reviewed at the end of the grace period.
+  /// - "IS_RETIRED" : Account is retired. Should not appear in MC.
+  /// - "ALREADY_REVIEWED" : Account was already reviewd.
+  core.String? reviewIneligibilityReason;
+
+  /// Reason a program in a specific region isn’t eligible for review.
   ///
-  /// Fix all the issues before requesting the review.
+  /// Only visible if `reviewEligibilityStatus` is `INELIGIBLE`.
+  core.String? reviewIneligibilityReasonDescription;
+
+  /// Additional information for ineligibility.
+  ///
+  /// If `reviewIneligibilityReason` is `IN_COOLDOWN_PERIOD`, a timestamp for
+  /// the end of the cooldown period is provided.
+  ShoppingAdsProgramStatusReviewIneligibilityReasonDetails?
+      reviewIneligibilityReasonDetails;
+
+  /// Issues evaluated in the review process.
+  ///
+  /// Fix all issues before requesting a review.
   core.List<core.String>? reviewIssues;
 
   ShoppingAdsProgramStatusRegionStatus({
     this.disapprovalDate,
     this.eligibilityStatus,
-    this.ineligibilityReason,
+    this.onboardingIssues,
     this.regionCodes,
     this.reviewEligibilityStatus,
+    this.reviewIneligibilityReason,
+    this.reviewIneligibilityReasonDescription,
+    this.reviewIneligibilityReasonDetails,
     this.reviewIssues,
   });
 
@@ -28010,8 +28213,10 @@ class ShoppingAdsProgramStatusRegionStatus {
           eligibilityStatus: _json.containsKey('eligibilityStatus')
               ? _json['eligibilityStatus'] as core.String
               : null,
-          ineligibilityReason: _json.containsKey('ineligibilityReason')
-              ? _json['ineligibilityReason'] as core.String
+          onboardingIssues: _json.containsKey('onboardingIssues')
+              ? (_json['onboardingIssues'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
               : null,
           regionCodes: _json.containsKey('regionCodes')
               ? (_json['regionCodes'] as core.List)
@@ -28021,6 +28226,20 @@ class ShoppingAdsProgramStatusRegionStatus {
           reviewEligibilityStatus: _json.containsKey('reviewEligibilityStatus')
               ? _json['reviewEligibilityStatus'] as core.String
               : null,
+          reviewIneligibilityReason:
+              _json.containsKey('reviewIneligibilityReason')
+                  ? _json['reviewIneligibilityReason'] as core.String
+                  : null,
+          reviewIneligibilityReasonDescription:
+              _json.containsKey('reviewIneligibilityReasonDescription')
+                  ? _json['reviewIneligibilityReasonDescription'] as core.String
+                  : null,
+          reviewIneligibilityReasonDetails:
+              _json.containsKey('reviewIneligibilityReasonDetails')
+                  ? ShoppingAdsProgramStatusReviewIneligibilityReasonDetails
+                      .fromJson(_json['reviewIneligibilityReasonDetails']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           reviewIssues: _json.containsKey('reviewIssues')
               ? (_json['reviewIssues'] as core.List)
                   .map((value) => value as core.String)
@@ -28031,14 +28250,24 @@ class ShoppingAdsProgramStatusRegionStatus {
   core.Map<core.String, core.dynamic> toJson() => {
         if (disapprovalDate != null) 'disapprovalDate': disapprovalDate!,
         if (eligibilityStatus != null) 'eligibilityStatus': eligibilityStatus!,
-        if (ineligibilityReason != null)
-          'ineligibilityReason': ineligibilityReason!,
+        if (onboardingIssues != null) 'onboardingIssues': onboardingIssues!,
         if (regionCodes != null) 'regionCodes': regionCodes!,
         if (reviewEligibilityStatus != null)
           'reviewEligibilityStatus': reviewEligibilityStatus!,
+        if (reviewIneligibilityReason != null)
+          'reviewIneligibilityReason': reviewIneligibilityReason!,
+        if (reviewIneligibilityReasonDescription != null)
+          'reviewIneligibilityReasonDescription':
+              reviewIneligibilityReasonDescription!,
+        if (reviewIneligibilityReasonDetails != null)
+          'reviewIneligibilityReasonDetails': reviewIneligibilityReasonDetails!,
         if (reviewIssues != null) 'reviewIssues': reviewIssues!,
       };
 }
+
+/// Additional details for review ineligibility reasons.
+typedef ShoppingAdsProgramStatusReviewIneligibilityReasonDetails
+    = $ProgramStatusReviewIneligibilityReasonDetails;
 
 class Table {
   /// Headers of the table's columns.

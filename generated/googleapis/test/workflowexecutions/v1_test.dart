@@ -196,12 +196,68 @@ void checkPosition(api.Position o) {
   buildCounterPosition--;
 }
 
-core.List<api.StackTraceElement> buildUnnamed1() => [
+core.Map<core.String, core.String> buildUnnamed1() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
+
+void checkUnnamed1(core.Map<core.String, core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o['x']!,
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o['y']!,
+    unittest.equals('foo'),
+  );
+}
+
+core.int buildCounterPubsubMessage = 0;
+api.PubsubMessage buildPubsubMessage() {
+  final o = api.PubsubMessage();
+  buildCounterPubsubMessage++;
+  if (buildCounterPubsubMessage < 3) {
+    o.attributes = buildUnnamed1();
+    o.data = 'foo';
+    o.messageId = 'foo';
+    o.orderingKey = 'foo';
+    o.publishTime = 'foo';
+  }
+  buildCounterPubsubMessage--;
+  return o;
+}
+
+void checkPubsubMessage(api.PubsubMessage o) {
+  buildCounterPubsubMessage++;
+  if (buildCounterPubsubMessage < 3) {
+    checkUnnamed1(o.attributes!);
+    unittest.expect(
+      o.data!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.messageId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.orderingKey!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.publishTime!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterPubsubMessage--;
+}
+
+core.List<api.StackTraceElement> buildUnnamed2() => [
       buildStackTraceElement(),
       buildStackTraceElement(),
     ];
 
-void checkUnnamed1(core.List<api.StackTraceElement> o) {
+void checkUnnamed2(core.List<api.StackTraceElement> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkStackTraceElement(o[0]);
   checkStackTraceElement(o[1]);
@@ -212,7 +268,7 @@ api.StackTrace buildStackTrace() {
   final o = api.StackTrace();
   buildCounterStackTrace++;
   if (buildCounterStackTrace < 3) {
-    o.elements = buildUnnamed1();
+    o.elements = buildUnnamed2();
   }
   buildCounterStackTrace--;
   return o;
@@ -221,7 +277,7 @@ api.StackTrace buildStackTrace() {
 void checkStackTrace(api.StackTrace o) {
   buildCounterStackTrace++;
   if (buildCounterStackTrace < 3) {
-    checkUnnamed1(o.elements!);
+    checkUnnamed2(o.elements!);
   }
   buildCounterStackTrace--;
 }
@@ -253,6 +309,35 @@ void checkStackTraceElement(api.StackTraceElement o) {
     );
   }
   buildCounterStackTraceElement--;
+}
+
+core.int buildCounterTriggerPubsubExecutionRequest = 0;
+api.TriggerPubsubExecutionRequest buildTriggerPubsubExecutionRequest() {
+  final o = api.TriggerPubsubExecutionRequest();
+  buildCounterTriggerPubsubExecutionRequest++;
+  if (buildCounterTriggerPubsubExecutionRequest < 3) {
+    o.GCPCloudEventsMode = 'foo';
+    o.message = buildPubsubMessage();
+    o.subscription = 'foo';
+  }
+  buildCounterTriggerPubsubExecutionRequest--;
+  return o;
+}
+
+void checkTriggerPubsubExecutionRequest(api.TriggerPubsubExecutionRequest o) {
+  buildCounterTriggerPubsubExecutionRequest++;
+  if (buildCounterTriggerPubsubExecutionRequest < 3) {
+    unittest.expect(
+      o.GCPCloudEventsMode!,
+      unittest.equals('foo'),
+    );
+    checkPubsubMessage(o.message!);
+    unittest.expect(
+      o.subscription!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterTriggerPubsubExecutionRequest--;
 }
 
 void main() {
@@ -306,6 +391,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-PubsubMessage', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildPubsubMessage();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PubsubMessage.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkPubsubMessage(od);
+    });
+  });
+
   unittest.group('obj-schema-StackTrace', () {
     unittest.test('to-json--from-json', () async {
       final o = buildStackTrace();
@@ -323,6 +418,77 @@ void main() {
       final od = api.StackTraceElement.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkStackTraceElement(od);
+    });
+  });
+
+  unittest.group('obj-schema-TriggerPubsubExecutionRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildTriggerPubsubExecutionRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.TriggerPubsubExecutionRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkTriggerPubsubExecutionRequest(od);
+    });
+  });
+
+  unittest.group('resource-ProjectsLocationsWorkflowsResource', () {
+    unittest.test('method--triggerPubsubExecution', () async {
+      final mock = HttpServerMock();
+      final res = api.WorkflowExecutionsApi(mock).projects.locations.workflows;
+      final arg_request = buildTriggerPubsubExecutionRequest();
+      final arg_workflow = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.TriggerPubsubExecutionRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkTriggerPubsubExecutionRequest(obj);
+
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildExecution());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.triggerPubsubExecution(
+          arg_request, arg_workflow,
+          $fields: arg_$fields);
+      checkExecution(response as api.Execution);
     });
   });
 

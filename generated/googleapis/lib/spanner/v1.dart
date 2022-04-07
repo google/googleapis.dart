@@ -23,6 +23,7 @@
 ///
 /// - [ProjectsResource]
 ///   - [ProjectsInstanceConfigsResource]
+///     - [ProjectsInstanceConfigsOperationsResource]
 ///   - [ProjectsInstancesResource]
 ///     - [ProjectsInstancesBackupOperationsResource]
 ///     - [ProjectsInstancesBackupsResource]
@@ -90,6 +91,9 @@ class ProjectsResource {
 
 class ProjectsInstanceConfigsResource {
   final commons.ApiRequester _requester;
+
+  ProjectsInstanceConfigsOperationsResource get operations =>
+      ProjectsInstanceConfigsOperationsResource(_requester);
 
   ProjectsInstanceConfigsResource(commons.ApiRequester client)
       : _requester = client;
@@ -176,6 +180,195 @@ class ProjectsInstanceConfigsResource {
       queryParams: _queryParams,
     );
     return ListInstanceConfigsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsInstanceConfigsOperationsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsInstanceConfigsOperationsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Starts asynchronous cancellation on a long-running operation.
+  ///
+  /// The server makes a best effort to cancel the operation, but success is not
+  /// guaranteed. If the server doesn't support this method, it returns
+  /// `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation
+  /// or other methods to check whether the cancellation succeeded or whether
+  /// the operation completed despite cancellation. On successful cancellation,
+  /// the operation is not deleted; instead, it becomes an operation with an
+  /// Operation.error value with a google.rpc.Status.code of 1, corresponding to
+  /// `Code.CANCELLED`.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource to be cancelled.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/instanceConfigs/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> cancel(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name') + ':cancel';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      queryParams: _queryParams,
+    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a long-running operation.
+  ///
+  /// This method indicates that the client is no longer interested in the
+  /// operation result. It does not cancel the operation. If the server doesn't
+  /// support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource to be deleted.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/instanceConfigs/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'DELETE',
+      queryParams: _queryParams,
+    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets the latest state of a long-running operation.
+  ///
+  /// Clients can use this method to poll the operation result at intervals as
+  /// recommended by the API service.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/instanceConfigs/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists operations that match the specified filter in the request.
+  ///
+  /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
+  /// NOTE: the `name` binding allows API services to override the binding to
+  /// use different resource name schemes, such as `users / * /operations`. To
+  /// override the binding, API services can add a binding such as
+  /// `"/v1/{name=users / * }/operations"` to their service configuration. For
+  /// backwards compatibility, the default name includes the operations
+  /// collection id, however overriding users must ensure the name binding is
+  /// the parent resource, without the operations collection id.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation's parent resource.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/instanceConfigs/\[^/\]+/operations$`.
+  ///
+  /// [filter] - The standard list filter.
+  ///
+  /// [pageSize] - The standard list page size.
+  ///
+  /// [pageToken] - The standard list page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListOperationsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListOperationsResponse> list(
+    core.String name, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return ListOperationsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
 }
@@ -655,14 +848,30 @@ class ProjectsInstancesBackupOperationsResource {
   /// operation is complete. *
   /// `(metadata.@type=type.googleapis.com/google.spanner.admin.database.v1.CreateBackupMetadata)
   /// AND` \ `metadata.database:prod` - Returns operations where: * The
-  /// operation's metadata type is CreateBackupMetadata. * The database the
-  /// backup was taken from has a name containing the string "prod". *
+  /// operation's metadata type is CreateBackupMetadata. * The source database
+  /// name of backup contains the string "prod". *
   /// `(metadata.@type=type.googleapis.com/google.spanner.admin.database.v1.CreateBackupMetadata)
   /// AND` \ `(metadata.name:howl) AND` \ `(metadata.progress.start_time <
   /// \"2018-03-28T14:50:00Z\") AND` \ `(error:*)` - Returns operations where: *
   /// The operation's metadata type is CreateBackupMetadata. * The backup name
   /// contains the string "howl". * The operation started before
-  /// 2018-03-28T14:50:00Z. * The operation resulted in an error.
+  /// 2018-03-28T14:50:00Z. * The operation resulted in an error. *
+  /// `(metadata.@type=type.googleapis.com/google.spanner.admin.database.v1.CopyBackupMetadata)
+  /// AND` \ `(metadata.source_backup:test) AND` \
+  /// `(metadata.progress.start_time < \"2022-01-18T14:50:00Z\") AND` \
+  /// `(error:*)` - Returns operations where: * The operation's metadata type is
+  /// CopyBackupMetadata. * The source backup name contains the string "test". *
+  /// The operation started before 2022-01-18T14:50:00Z. * The operation
+  /// resulted in an error. *
+  /// `((metadata.@type=type.googleapis.com/google.spanner.admin.database.v1.CreateBackupMetadata)
+  /// AND` \ `(metadata.database:test_db)) OR` \
+  /// `((metadata.@type=type.googleapis.com/google.spanner.admin.database.v1.CopyBackupMetadata)
+  /// AND` \ `(metadata.source_backup:test_bkp)) AND` \ `(error:*)` - Returns
+  /// operations where: * The operation's metadata matches either of criteria: *
+  /// The operation's metadata type is CreateBackupMetadata AND the source
+  /// database name of the backup contains the string "test_db" * The
+  /// operation's metadata type is CopyBackupMetadata AND the source backup name
+  /// contains the string "test_bkp" * The operation resulted in an error.
   ///
   /// [pageSize] - Number of operations to be returned in the response. If 0 or
   /// less, defaults to the server's maximum allowed page size.
@@ -715,6 +924,55 @@ class ProjectsInstancesBackupsResource {
 
   ProjectsInstancesBackupsResource(commons.ApiRequester client)
       : _requester = client;
+
+  /// Starts copying a Cloud Spanner Backup.
+  ///
+  /// The returned backup long-running operation will have a name of the format
+  /// `projects//instances//backups//operations/` and can be used to track
+  /// copying of the backup. The operation is associated with the destination
+  /// backup. The metadata field type is CopyBackupMetadata. The response field
+  /// type is Backup, if successful. Cancelling the returned operation will stop
+  /// the copying and delete the backup. Concurrent CopyBackup requests can run
+  /// on the same source backup.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The name of the destination instance that will
+  /// contain the backup copy. Values are of the form: `projects//instances/`.
+  /// Value must have pattern `^projects/\[^/\]+/instances/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> copy(
+    CopyBackupRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/backups:copy';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
 
   /// Starts creating a new Cloud Spanner Backup.
   ///
@@ -3199,6 +3457,17 @@ class Backup {
   /// resources used by the backup.
   core.String? expireTime;
 
+  /// The max allowed expiration time of the backup, with microseconds
+  /// granularity.
+  ///
+  /// A backup's expiration time can be configured in multiple APIs:
+  /// CreateBackup, UpdateBackup, CopyBackup. When updating or copying an
+  /// existing backup, the expiration time specified must be less than
+  /// `Backup.max_expire_time`.
+  ///
+  /// Output only.
+  core.String? maxExpireTime;
+
   /// Output only for the CreateBackup operation.
   ///
   /// Required for the UpdateBackup operation. A globally unique identifier for
@@ -3209,6 +3478,18 @@ class Backup {
   /// containing the backup, identified by the prefix of the backup name of the
   /// form `projects//instances/`.
   core.String? name;
+
+  /// The names of the destination backups being created by copying this source
+  /// backup.
+  ///
+  /// The backup names are of the form `projects//instances//backups/`.
+  /// Referencing backups may exist in different instances. The existence of any
+  /// referencing backup prevents the backup from being deleted. When the copy
+  /// operation is done (either successfully completed or cancelled or the
+  /// destination backup is deleted), the reference to the backup is removed.
+  ///
+  /// Output only.
+  core.List<core.String>? referencingBackups;
 
   /// The names of the restored databases that reference the backup.
   ///
@@ -3249,7 +3530,9 @@ class Backup {
     this.databaseDialect,
     this.encryptionInfo,
     this.expireTime,
+    this.maxExpireTime,
     this.name,
+    this.referencingBackups,
     this.referencingDatabases,
     this.sizeBytes,
     this.state,
@@ -3274,7 +3557,15 @@ class Backup {
           expireTime: _json.containsKey('expireTime')
               ? _json['expireTime'] as core.String
               : null,
+          maxExpireTime: _json.containsKey('maxExpireTime')
+              ? _json['maxExpireTime'] as core.String
+              : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          referencingBackups: _json.containsKey('referencingBackups')
+              ? (_json['referencingBackups'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
           referencingDatabases: _json.containsKey('referencingDatabases')
               ? (_json['referencingDatabases'] as core.List)
                   .map((value) => value as core.String)
@@ -3296,7 +3587,10 @@ class Backup {
         if (databaseDialect != null) 'databaseDialect': databaseDialect!,
         if (encryptionInfo != null) 'encryptionInfo': encryptionInfo!,
         if (expireTime != null) 'expireTime': expireTime!,
+        if (maxExpireTime != null) 'maxExpireTime': maxExpireTime!,
         if (name != null) 'name': name!,
+        if (referencingBackups != null)
+          'referencingBackups': referencingBackups!,
         if (referencingDatabases != null)
           'referencingDatabases': referencingDatabases!,
         if (sizeBytes != null) 'sizeBytes': sizeBytes!,
@@ -3770,6 +4064,123 @@ class ContextValue {
       };
 }
 
+/// Encryption configuration for the copied backup.
+class CopyBackupEncryptionConfig {
+  /// The encryption type of the backup.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "ENCRYPTION_TYPE_UNSPECIFIED" : Unspecified. Do not use.
+  /// - "USE_CONFIG_DEFAULT_OR_BACKUP_ENCRYPTION" : This is the default option
+  /// for CopyBackup when encryption_config is not specified. For example, if
+  /// the source backup is using `Customer_Managed_Encryption`, the backup will
+  /// be using the same Cloud KMS key as the source backup.
+  /// - "GOOGLE_DEFAULT_ENCRYPTION" : Use Google default encryption.
+  /// - "CUSTOMER_MANAGED_ENCRYPTION" : Use customer managed encryption. If
+  /// specified, `kms_key_name` must contain a valid Cloud KMS key.
+  core.String? encryptionType;
+
+  /// The Cloud KMS key that will be used to protect the backup.
+  ///
+  /// This field should be set only when encryption_type is
+  /// `CUSTOMER_MANAGED_ENCRYPTION`. Values are of the form
+  /// `projects//locations//keyRings//cryptoKeys/`.
+  ///
+  /// Optional.
+  core.String? kmsKeyName;
+
+  CopyBackupEncryptionConfig({
+    this.encryptionType,
+    this.kmsKeyName,
+  });
+
+  CopyBackupEncryptionConfig.fromJson(core.Map _json)
+      : this(
+          encryptionType: _json.containsKey('encryptionType')
+              ? _json['encryptionType'] as core.String
+              : null,
+          kmsKeyName: _json.containsKey('kmsKeyName')
+              ? _json['kmsKeyName'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (encryptionType != null) 'encryptionType': encryptionType!,
+        if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
+      };
+}
+
+/// The request for CopyBackup.
+class CopyBackupRequest {
+  /// The id of the backup copy.
+  ///
+  /// The `backup_id` appended to `parent` forms the full backup_uri of the form
+  /// `projects//instances//backups/`.
+  ///
+  /// Required.
+  core.String? backupId;
+
+  /// The encryption configuration used to encrypt the backup.
+  ///
+  /// If this field is not specified, the backup will use the same encryption
+  /// configuration as the source backup by default, namely encryption_type =
+  /// `USE_CONFIG_DEFAULT_OR_BACKUP_ENCRYPTION`.
+  ///
+  /// Optional.
+  CopyBackupEncryptionConfig? encryptionConfig;
+
+  /// The expiration time of the backup in microsecond granularity.
+  ///
+  /// The expiration time must be at least 6 hours and at most 366 days from the
+  /// `create_time` of the source backup. Once the `expire_time` has passed, the
+  /// backup is eligible to be automatically deleted by Cloud Spanner to free
+  /// the resources used by the backup.
+  ///
+  /// Required.
+  core.String? expireTime;
+
+  /// The source backup to be copied.
+  ///
+  /// The source backup needs to be in READY state for it to be copied. Once
+  /// CopyBackup is in progress, the source backup cannot be deleted or cleaned
+  /// up on expiration until CopyBackup is finished. Values are of the form:
+  /// `projects//instances//backups/`.
+  ///
+  /// Required.
+  core.String? sourceBackup;
+
+  CopyBackupRequest({
+    this.backupId,
+    this.encryptionConfig,
+    this.expireTime,
+    this.sourceBackup,
+  });
+
+  CopyBackupRequest.fromJson(core.Map _json)
+      : this(
+          backupId: _json.containsKey('backupId')
+              ? _json['backupId'] as core.String
+              : null,
+          encryptionConfig: _json.containsKey('encryptionConfig')
+              ? CopyBackupEncryptionConfig.fromJson(_json['encryptionConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          expireTime: _json.containsKey('expireTime')
+              ? _json['expireTime'] as core.String
+              : null,
+          sourceBackup: _json.containsKey('sourceBackup')
+              ? _json['sourceBackup'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (backupId != null) 'backupId': backupId!,
+        if (encryptionConfig != null) 'encryptionConfig': encryptionConfig!,
+        if (expireTime != null) 'expireTime': expireTime!,
+        if (sourceBackup != null) 'sourceBackup': sourceBackup!,
+      };
+}
+
 /// The request for CreateDatabase.
 class CreateDatabaseRequest {
   /// A \`CREATE DATABASE\` statement, which specifies the ID of the new
@@ -4216,8 +4627,7 @@ class DiagnosticMessage {
 ///
 /// A typical example is to use it as the request or the response type of an API
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
-/// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
-/// object `{}`.
+/// (google.protobuf.Empty); }
 typedef Empty = $Empty;
 
 /// Encryption configuration for a Cloud Spanner database.
@@ -4774,6 +5184,11 @@ class Instance {
   /// Required.
   core.String? config;
 
+  /// The time at which the instance was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
   /// The descriptive name for this instance as it appears in UIs.
   ///
   /// Must be unique per project and between 4 and 30 characters in length.
@@ -4847,8 +5262,14 @@ class Instance {
   /// creating databases.
   core.String? state;
 
+  /// The time at which the instance was most recently updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
   Instance({
     this.config,
+    this.createTime,
     this.displayName,
     this.endpointUris,
     this.labels,
@@ -4856,12 +5277,16 @@ class Instance {
     this.nodeCount,
     this.processingUnits,
     this.state,
+    this.updateTime,
   });
 
   Instance.fromJson(core.Map _json)
       : this(
           config: _json.containsKey('config')
               ? _json['config'] as core.String
+              : null,
+          createTime: _json.containsKey('createTime')
+              ? _json['createTime'] as core.String
               : null,
           displayName: _json.containsKey('displayName')
               ? _json['displayName'] as core.String
@@ -4888,10 +5313,14 @@ class Instance {
               : null,
           state:
               _json.containsKey('state') ? _json['state'] as core.String : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (config != null) 'config': config!,
+        if (createTime != null) 'createTime': createTime!,
         if (displayName != null) 'displayName': displayName!,
         if (endpointUris != null) 'endpointUris': endpointUris!,
         if (labels != null) 'labels': labels!,
@@ -4899,6 +5328,7 @@ class Instance {
         if (nodeCount != null) 'nodeCount': nodeCount!,
         if (processingUnits != null) 'processingUnits': processingUnits!,
         if (state != null) 'state': state!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
@@ -7779,7 +8209,7 @@ class Transaction {
 ///
 /// After the active transaction is completed, the session can immediately be
 /// re-used for the next transaction. It is not necessary to create a new
-/// session for each transaction. Transaction Modes: Cloud Spanner supports
+/// session for each transaction. Transaction modes: Cloud Spanner supports
 /// three transaction modes: 1. Locking read-write. This type of transaction is
 /// the only way to write data into Cloud Spanner. These transactions rely on
 /// pessimistic locking and, if necessary, two-phase commit. Locking read-write
@@ -7796,9 +8226,9 @@ class Transaction {
 /// semantics and are almost always faster. In particular, read-only
 /// transactions do not take locks, so they do not conflict with read-write
 /// transactions. As a consequence of not taking locks, they also do not abort,
-/// so retry loops are not needed. Transactions may only read/write data in a
-/// single database. They may, however, read/write data in different tables
-/// within that database. Locking Read-Write Transactions: Locking transactions
+/// so retry loops are not needed. Transactions may only read-write data in a
+/// single database. They may, however, read-write data in different tables
+/// within that database. Locking read-write transactions: Locking transactions
 /// may be used to atomically read-modify-write data anywhere in a database.
 /// This type of transaction is externally consistent. Clients should attempt to
 /// minimize the amount of time a transaction is active. Faster transactions
@@ -7817,7 +8247,7 @@ class Transaction {
 /// transaction commits, Cloud Spanner makes no guarantees about how long the
 /// transaction's locks were held for. It is an error to use Cloud Spanner locks
 /// for any sort of mutual exclusion other than between Cloud Spanner
-/// transactions themselves. Retrying Aborted Transactions: When a transaction
+/// transactions themselves. Retrying aborted transactions: When a transaction
 /// aborts, the application can choose to retry the whole transaction again. To
 /// maximize the chances of successfully committing the retry, the client should
 /// execute the retry in the same session as the original attempt. The original
@@ -7827,15 +8257,15 @@ class Transaction {
 /// modify the same row(s)), a transaction can abort many times in a short
 /// period before successfully committing. Thus, it is not a good idea to cap
 /// the number of retries a transaction can attempt; instead, it is better to
-/// limit the total amount of time spent retrying. Idle Transactions: A
+/// limit the total amount of time spent retrying. Idle transactions: A
 /// transaction is considered idle if it has no outstanding reads or SQL queries
 /// and has not started a read or SQL query within the last 10 seconds. Idle
 /// transactions can be aborted by Cloud Spanner so that they don't hold on to
 /// locks indefinitely. If an idle transaction is aborted, the commit will fail
 /// with error `ABORTED`. If this behavior is undesirable, periodically
 /// executing a simple SQL query in the transaction (for example, `SELECT 1`)
-/// prevents the transaction from becoming idle. Snapshot Read-Only
-/// Transactions: Snapshot read-only transactions provides a simpler method than
+/// prevents the transaction from becoming idle. Snapshot read-only
+/// transactions: Snapshot read-only transactions provides a simpler method than
 /// locking read-write transactions for doing several consistent reads. However,
 /// this type of transaction does not support writes. Snapshot transactions do
 /// not take locks. Instead, they work by choosing a Cloud Spanner timestamp,
@@ -7851,7 +8281,7 @@ class Transaction {
 /// of timestamp bound are: - Strong (the default). - Bounded staleness. - Exact
 /// staleness. If the Cloud Spanner database to be read is geographically
 /// distributed, stale read-only transactions can execute more quickly than
-/// strong or read-write transaction, because they are able to execute far from
+/// strong or read-write transactions, because they are able to execute far from
 /// the leader replica. Each type of timestamp bound is discussed in detail
 /// below. Strong: Strong reads are guaranteed to see the effects of all
 /// transactions that have committed before the start of the read. Furthermore,
@@ -7861,7 +8291,7 @@ class Transaction {
 /// read-only transactions might return inconsistent results if there are
 /// concurrent writes. If consistency across reads is required, the reads should
 /// be executed within a transaction or at an exact read timestamp. See
-/// TransactionOptions.ReadOnly.strong. Exact Staleness: These timestamp bounds
+/// TransactionOptions.ReadOnly.strong. Exact staleness: These timestamp bounds
 /// execute reads at a user-specified timestamp. Reads at a timestamp are
 /// guaranteed to see a consistent prefix of the global transaction history:
 /// they observe modifications done by all transactions with a commit timestamp
@@ -7875,7 +8305,7 @@ class Transaction {
 /// the equivalent boundedly stale concurrency modes. On the other hand,
 /// boundedly stale reads usually return fresher results. See
 /// TransactionOptions.ReadOnly.read_timestamp and
-/// TransactionOptions.ReadOnly.exact_staleness. Bounded Staleness: Bounded
+/// TransactionOptions.ReadOnly.exact_staleness. Bounded staleness: Bounded
 /// staleness modes allow Cloud Spanner to pick the read timestamp, subject to a
 /// user-provided staleness bound. Cloud Spanner chooses the newest timestamp
 /// within the staleness bound that allows execution of the reads at the closest
@@ -7893,53 +8323,55 @@ class Transaction {
 /// Because the timestamp negotiation requires up-front knowledge of which rows
 /// will be read, it can only be used with single-use read-only transactions.
 /// See TransactionOptions.ReadOnly.max_staleness and
-/// TransactionOptions.ReadOnly.min_read_timestamp. Old Read Timestamps and
-/// Garbage Collection: Cloud Spanner continuously garbage collects deleted and
+/// TransactionOptions.ReadOnly.min_read_timestamp. Old read timestamps and
+/// garbage collection: Cloud Spanner continuously garbage collects deleted and
 /// overwritten data in the background to reclaim storage space. This process is
 /// known as "version GC". By default, version GC reclaims versions after they
 /// are one hour old. Because of this, Cloud Spanner cannot perform reads at
 /// read timestamps more than one hour in the past. This restriction also
 /// applies to in-progress reads and/or SQL queries whose timestamp become too
 /// old while executing. Reads and SQL queries with too-old read timestamps fail
-/// with the error `FAILED_PRECONDITION`. Partitioned DML Transactions:
-/// Partitioned DML transactions are used to execute DML statements with a
-/// different execution strategy that provides different, and often better,
-/// scalability properties for large, table-wide operations than DML in a
-/// ReadWrite transaction. Smaller scoped statements, such as an OLTP workload,
-/// should prefer using ReadWrite transactions. Partitioned DML partitions the
-/// keyspace and runs the DML statement on each partition in separate, internal
-/// transactions. These transactions commit automatically when complete, and run
-/// independently from one another. To reduce lock contention, this execution
-/// strategy only acquires read locks on rows that match the WHERE clause of the
-/// statement. Additionally, the smaller per-partition transactions hold locks
-/// for less time. That said, Partitioned DML is not a drop-in replacement for
-/// standard DML used in ReadWrite transactions. - The DML statement must be
-/// fully-partitionable. Specifically, the statement must be expressible as the
-/// union of many statements which each access only a single row of the table. -
-/// The statement is not applied atomically to all rows of the table. Rather,
-/// the statement is applied atomically to partitions of the table, in
-/// independent transactions. Secondary index rows are updated atomically with
-/// the base table rows. - Partitioned DML does not guarantee exactly-once
-/// execution semantics against a partition. The statement will be applied at
-/// least once to each partition. It is strongly recommended that the DML
-/// statement should be idempotent to avoid unexpected results. For instance, it
-/// is potentially dangerous to run a statement such as `UPDATE table SET column
-/// = column + 1` as it could be run multiple times against some rows. - The
-/// partitions are committed automatically - there is no support for Commit or
-/// Rollback. If the call returns an error, or if the client issuing the
-/// ExecuteSql call dies, it is possible that some rows had the statement
-/// executed on them successfully. It is also possible that statement was never
-/// executed against other rows. - Partitioned DML transactions may only contain
-/// the execution of a single DML statement via ExecuteSql or
-/// ExecuteStreamingSql. - If any error is encountered during the execution of
-/// the partitioned DML operation (for instance, a UNIQUE INDEX violation,
-/// division by zero, or a value that cannot be stored due to schema
-/// constraints), then the operation is stopped at that point and an error is
-/// returned. It is possible that at this point, some partitions have been
-/// committed (or even committed multiple times), and other partitions have not
-/// been run at all. Given the above, Partitioned DML is good fit for large,
-/// database-wide, operations that are idempotent, such as deleting old rows
-/// from a very large table.
+/// with the error `FAILED_PRECONDITION`. You can configure and extend the
+/// `VERSION_RETENTION_PERIOD` of a database up to a period as long as one week,
+/// which allows Cloud Spanner to perform reads up to one week in the past.
+/// Partitioned DML transactions: Partitioned DML transactions are used to
+/// execute DML statements with a different execution strategy that provides
+/// different, and often better, scalability properties for large, table-wide
+/// operations than DML in a ReadWrite transaction. Smaller scoped statements,
+/// such as an OLTP workload, should prefer using ReadWrite transactions.
+/// Partitioned DML partitions the keyspace and runs the DML statement on each
+/// partition in separate, internal transactions. These transactions commit
+/// automatically when complete, and run independently from one another. To
+/// reduce lock contention, this execution strategy only acquires read locks on
+/// rows that match the WHERE clause of the statement. Additionally, the smaller
+/// per-partition transactions hold locks for less time. That said, Partitioned
+/// DML is not a drop-in replacement for standard DML used in ReadWrite
+/// transactions. - The DML statement must be fully-partitionable. Specifically,
+/// the statement must be expressible as the union of many statements which each
+/// access only a single row of the table. - The statement is not applied
+/// atomically to all rows of the table. Rather, the statement is applied
+/// atomically to partitions of the table, in independent transactions.
+/// Secondary index rows are updated atomically with the base table rows. -
+/// Partitioned DML does not guarantee exactly-once execution semantics against
+/// a partition. The statement will be applied at least once to each partition.
+/// It is strongly recommended that the DML statement should be idempotent to
+/// avoid unexpected results. For instance, it is potentially dangerous to run a
+/// statement such as `UPDATE table SET column = column + 1` as it could be run
+/// multiple times against some rows. - The partitions are committed
+/// automatically - there is no support for Commit or Rollback. If the call
+/// returns an error, or if the client issuing the ExecuteSql call dies, it is
+/// possible that some rows had the statement executed on them successfully. It
+/// is also possible that statement was never executed against other rows. -
+/// Partitioned DML transactions may only contain the execution of a single DML
+/// statement via ExecuteSql or ExecuteStreamingSql. - If any error is
+/// encountered during the execution of the partitioned DML operation (for
+/// instance, a UNIQUE INDEX violation, division by zero, or a value that cannot
+/// be stored due to schema constraints), then the operation is stopped at that
+/// point and an error is returned. It is possible that at this point, some
+/// partitions have been committed (or even committed multiple times), and other
+/// partitions have not been run at all. Given the above, Partitioned DML is
+/// good fit for large, database-wide, operations that are idempotent, such as
+/// deleting old rows from a very large table.
 class TransactionOptions {
   /// Partitioned DML transaction.
   ///

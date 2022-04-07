@@ -259,11 +259,11 @@
             }
         }
     },
-    "revision": "20220303",
+    "revision": "20220405",
     "rootUrl": "https://safebrowsing.googleapis.com/",
     "schemas": {
         "GoogleProtobufEmpty": {
-            "description": "A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON object `{}`.",
+            "description": "A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }",
             "id": "GoogleProtobufEmpty",
             "properties": {},
             "type": "object"
@@ -394,7 +394,8 @@
                         "SUSPICIOUS",
                         "TRICK_TO_BILL",
                         "HIGH_CONFIDENCE_ALLOWLIST",
-                        "ACCURACY_TIPS"
+                        "ACCURACY_TIPS",
+                        "SOCIAL_ENGINEERING_LOWER_PRECISION"
                     ],
                     "enumDescriptions": [
                         "Unknown.",
@@ -414,7 +415,8 @@
                         "Entities that are suspected to present a threat.",
                         "Trick-to-bill threat list.",
                         "Safe list to ship hashes of known safe URL expressions.",
-                        "List from the Jigsaw team to show accuracy tips in Chrome. See go/sb-accuracytips."
+                        "List from the Jigsaw team to show accuracy tips in Chrome. See go/sb-accuracytips.",
+                        "Lower precision phishing list for WebRisk. See go/lower-precision-blocklists-enterprise."
                     ],
                     "type": "string"
                 }
@@ -594,7 +596,8 @@
                         "SUSPICIOUS",
                         "TRICK_TO_BILL",
                         "HIGH_CONFIDENCE_ALLOWLIST",
-                        "ACCURACY_TIPS"
+                        "ACCURACY_TIPS",
+                        "SOCIAL_ENGINEERING_LOWER_PRECISION"
                     ],
                     "enumDescriptions": [
                         "Unknown.",
@@ -614,7 +617,8 @@
                         "Entities that are suspected to present a threat.",
                         "Trick-to-bill threat list.",
                         "Safe list to ship hashes of known safe URL expressions.",
-                        "List from the Jigsaw team to show accuracy tips in Chrome. See go/sb-accuracytips."
+                        "List from the Jigsaw team to show accuracy tips in Chrome. See go/sb-accuracytips.",
+                        "Lower precision phishing list for WebRisk. See go/lower-precision-blocklists-enterprise."
                     ],
                     "type": "string"
                 }
@@ -924,7 +928,8 @@
                         "SUSPICIOUS",
                         "TRICK_TO_BILL",
                         "HIGH_CONFIDENCE_ALLOWLIST",
-                        "ACCURACY_TIPS"
+                        "ACCURACY_TIPS",
+                        "SOCIAL_ENGINEERING_LOWER_PRECISION"
                     ],
                     "enumDescriptions": [
                         "Unknown.",
@@ -944,7 +949,8 @@
                         "Entities that are suspected to present a threat.",
                         "Trick-to-bill threat list.",
                         "Safe list to ship hashes of known safe URL expressions.",
-                        "List from the Jigsaw team to show accuracy tips in Chrome. See go/sb-accuracytips."
+                        "List from the Jigsaw team to show accuracy tips in Chrome. See go/sb-accuracytips.",
+                        "Lower precision phishing list for WebRisk. See go/lower-precision-blocklists-enterprise."
                     ],
                     "type": "string"
                 },
@@ -1094,7 +1100,8 @@
                             "SUSPICIOUS",
                             "TRICK_TO_BILL",
                             "HIGH_CONFIDENCE_ALLOWLIST",
-                            "ACCURACY_TIPS"
+                            "ACCURACY_TIPS",
+                            "SOCIAL_ENGINEERING_LOWER_PRECISION"
                         ],
                         "enumDescriptions": [
                             "Unknown.",
@@ -1114,7 +1121,8 @@
                             "Entities that are suspected to present a threat.",
                             "Trick-to-bill threat list.",
                             "Safe list to ship hashes of known safe URL expressions.",
-                            "List from the Jigsaw team to show accuracy tips in Chrome. See go/sb-accuracytips."
+                            "List from the Jigsaw team to show accuracy tips in Chrome. See go/sb-accuracytips.",
+                            "Lower precision phishing list for WebRisk. See go/lower-precision-blocklists-enterprise."
                         ],
                         "type": "string"
                     },
@@ -1195,7 +1203,8 @@
                         "SUSPICIOUS",
                         "TRICK_TO_BILL",
                         "HIGH_CONFIDENCE_ALLOWLIST",
-                        "ACCURACY_TIPS"
+                        "ACCURACY_TIPS",
+                        "SOCIAL_ENGINEERING_LOWER_PRECISION"
                     ],
                     "enumDescriptions": [
                         "Unknown.",
@@ -1215,7 +1224,8 @@
                         "Entities that are suspected to present a threat.",
                         "Trick-to-bill threat list.",
                         "Safe list to ship hashes of known safe URL expressions.",
-                        "List from the Jigsaw team to show accuracy tips in Chrome. See go/sb-accuracytips."
+                        "List from the Jigsaw team to show accuracy tips in Chrome. See go/sb-accuracytips.",
+                        "Lower precision phishing list for WebRisk. See go/lower-precision-blocklists-enterprise."
                     ],
                     "type": "string"
                 }
@@ -1307,7 +1317,8 @@
                         "SUSPICIOUS",
                         "TRICK_TO_BILL",
                         "HIGH_CONFIDENCE_ALLOWLIST",
-                        "ACCURACY_TIPS"
+                        "ACCURACY_TIPS",
+                        "SOCIAL_ENGINEERING_LOWER_PRECISION"
                     ],
                     "enumDescriptions": [
                         "Unknown.",
@@ -1327,7 +1338,8 @@
                         "Entities that are suspected to present a threat.",
                         "Trick-to-bill threat list.",
                         "Safe list to ship hashes of known safe URL expressions.",
-                        "List from the Jigsaw team to show accuracy tips in Chrome. See go/sb-accuracytips."
+                        "List from the Jigsaw team to show accuracy tips in Chrome. See go/sb-accuracytips.",
+                        "Lower precision phishing list for WebRisk. See go/lower-precision-blocklists-enterprise."
                     ],
                     "type": "string"
                 }

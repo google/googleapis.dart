@@ -2393,6 +2393,7 @@ api.PasswordValidationPolicy buildPasswordValidationPolicy() {
   if (buildCounterPasswordValidationPolicy < 3) {
     o.complexity = 'foo';
     o.disallowUsernameSubstring = true;
+    o.enablePasswordPolicy = true;
     o.minLength = 42;
     o.passwordChangeInterval = 'foo';
     o.reuseInterval = 42;
@@ -2409,6 +2410,7 @@ void checkPasswordValidationPolicy(api.PasswordValidationPolicy o) {
       unittest.equals('foo'),
     );
     unittest.expect(o.disallowUsernameSubstring!, unittest.isTrue);
+    unittest.expect(o.enablePasswordPolicy!, unittest.isTrue);
     unittest.expect(
       o.minLength!,
       unittest.equals(42),
@@ -2953,6 +2955,8 @@ api.SqlServerAuditConfig buildSqlServerAuditConfig() {
   if (buildCounterSqlServerAuditConfig < 3) {
     o.bucket = 'foo';
     o.kind = 'foo';
+    o.retentionInterval = 'foo';
+    o.uploadInterval = 'foo';
   }
   buildCounterSqlServerAuditConfig--;
   return o;
@@ -2967,6 +2971,14 @@ void checkSqlServerAuditConfig(api.SqlServerAuditConfig o) {
     );
     unittest.expect(
       o.kind!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.retentionInterval!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.uploadInterval!,
       unittest.equals('foo'),
     );
   }

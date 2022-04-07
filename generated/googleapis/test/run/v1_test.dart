@@ -933,11 +933,13 @@ api.ExecutionStatus buildExecutionStatus() {
   final o = api.ExecutionStatus();
   buildCounterExecutionStatus++;
   if (buildCounterExecutionStatus < 3) {
+    o.cancelledCount = 42;
     o.completionTime = 'foo';
     o.conditions = buildUnnamed14();
     o.failedCount = 42;
     o.logUri = 'foo';
     o.observedGeneration = 42;
+    o.retriedCount = 42;
     o.runningCount = 42;
     o.startTime = 'foo';
     o.succeededCount = 42;
@@ -949,6 +951,10 @@ api.ExecutionStatus buildExecutionStatus() {
 void checkExecutionStatus(api.ExecutionStatus o) {
   buildCounterExecutionStatus++;
   if (buildCounterExecutionStatus < 3) {
+    unittest.expect(
+      o.cancelledCount!,
+      unittest.equals(42),
+    );
     unittest.expect(
       o.completionTime!,
       unittest.equals('foo'),
@@ -964,6 +970,10 @@ void checkExecutionStatus(api.ExecutionStatus o) {
     );
     unittest.expect(
       o.observedGeneration!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.retriedCount!,
       unittest.equals(42),
     );
     unittest.expect(

@@ -87,6 +87,33 @@ void checkAudioConfig(api.AudioConfig o) {
   buildCounterAudioConfig--;
 }
 
+core.int buildCounterCustomVoiceParams = 0;
+api.CustomVoiceParams buildCustomVoiceParams() {
+  final o = api.CustomVoiceParams();
+  buildCounterCustomVoiceParams++;
+  if (buildCounterCustomVoiceParams < 3) {
+    o.model = 'foo';
+    o.reportedUsage = 'foo';
+  }
+  buildCounterCustomVoiceParams--;
+  return o;
+}
+
+void checkCustomVoiceParams(api.CustomVoiceParams o) {
+  buildCounterCustomVoiceParams++;
+  if (buildCounterCustomVoiceParams < 3) {
+    unittest.expect(
+      o.model!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.reportedUsage!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterCustomVoiceParams--;
+}
+
 core.List<api.Voice> buildUnnamed1() => [
       buildVoice(),
       buildVoice(),
@@ -245,6 +272,7 @@ api.VoiceSelectionParams buildVoiceSelectionParams() {
   final o = api.VoiceSelectionParams();
   buildCounterVoiceSelectionParams++;
   if (buildCounterVoiceSelectionParams < 3) {
+    o.customVoice = buildCustomVoiceParams();
     o.languageCode = 'foo';
     o.name = 'foo';
     o.ssmlGender = 'foo';
@@ -256,6 +284,7 @@ api.VoiceSelectionParams buildVoiceSelectionParams() {
 void checkVoiceSelectionParams(api.VoiceSelectionParams o) {
   buildCounterVoiceSelectionParams++;
   if (buildCounterVoiceSelectionParams < 3) {
+    checkCustomVoiceParams(o.customVoice!);
     unittest.expect(
       o.languageCode!,
       unittest.equals('foo'),
@@ -280,6 +309,16 @@ void main() {
       final od = api.AudioConfig.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkAudioConfig(od);
+    });
+  });
+
+  unittest.group('obj-schema-CustomVoiceParams', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildCustomVoiceParams();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.CustomVoiceParams.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkCustomVoiceParams(od);
     });
   });
 

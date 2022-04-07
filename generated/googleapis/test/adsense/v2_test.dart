@@ -53,6 +53,7 @@ api.Account buildAccount() {
     o.name = 'foo';
     o.pendingTasks = buildUnnamed0();
     o.premium = true;
+    o.state = 'foo';
     o.timeZone = buildTimeZone();
   }
   buildCounterAccount--;
@@ -76,6 +77,10 @@ void checkAccount(api.Account o) {
     );
     checkUnnamed0(o.pendingTasks!);
     unittest.expect(o.premium!, unittest.isTrue);
+    unittest.expect(
+      o.state!,
+      unittest.equals('foo'),
+    );
     checkTimeZone(o.timeZone!);
   }
   buildCounterAccount--;
@@ -89,6 +94,7 @@ api.AdClient buildAdClient() {
     o.name = 'foo';
     o.productCode = 'foo';
     o.reportingDimensionId = 'foo';
+    o.state = 'foo';
   }
   buildCounterAdClient--;
   return o;
@@ -107,6 +113,10 @@ void checkAdClient(api.AdClient o) {
     );
     unittest.expect(
       o.reportingDimensionId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.state!,
       unittest.equals('foo'),
     );
   }

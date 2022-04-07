@@ -1708,6 +1708,59 @@ void checkPolicy(api.Policy o) {
   buildCounterPolicy--;
 }
 
+core.int buildCounterRefreshRuntimeTokenInternalRequest = 0;
+api.RefreshRuntimeTokenInternalRequest
+    buildRefreshRuntimeTokenInternalRequest() {
+  final o = api.RefreshRuntimeTokenInternalRequest();
+  buildCounterRefreshRuntimeTokenInternalRequest++;
+  if (buildCounterRefreshRuntimeTokenInternalRequest < 3) {
+    o.vmId = 'foo';
+  }
+  buildCounterRefreshRuntimeTokenInternalRequest--;
+  return o;
+}
+
+void checkRefreshRuntimeTokenInternalRequest(
+    api.RefreshRuntimeTokenInternalRequest o) {
+  buildCounterRefreshRuntimeTokenInternalRequest++;
+  if (buildCounterRefreshRuntimeTokenInternalRequest < 3) {
+    unittest.expect(
+      o.vmId!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterRefreshRuntimeTokenInternalRequest--;
+}
+
+core.int buildCounterRefreshRuntimeTokenInternalResponse = 0;
+api.RefreshRuntimeTokenInternalResponse
+    buildRefreshRuntimeTokenInternalResponse() {
+  final o = api.RefreshRuntimeTokenInternalResponse();
+  buildCounterRefreshRuntimeTokenInternalResponse++;
+  if (buildCounterRefreshRuntimeTokenInternalResponse < 3) {
+    o.accessToken = 'foo';
+    o.expireTime = 'foo';
+  }
+  buildCounterRefreshRuntimeTokenInternalResponse--;
+  return o;
+}
+
+void checkRefreshRuntimeTokenInternalResponse(
+    api.RefreshRuntimeTokenInternalResponse o) {
+  buildCounterRefreshRuntimeTokenInternalResponse++;
+  if (buildCounterRefreshRuntimeTokenInternalResponse < 3) {
+    unittest.expect(
+      o.accessToken!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.expireTime!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterRefreshRuntimeTokenInternalResponse--;
+}
+
 core.int buildCounterRegisterInstanceRequest = 0;
 api.RegisterInstanceRequest buildRegisterInstanceRequest() {
   final o = api.RegisterInstanceRequest();
@@ -1860,14 +1913,21 @@ core.int buildCounterResetRuntimeRequest = 0;
 api.ResetRuntimeRequest buildResetRuntimeRequest() {
   final o = api.ResetRuntimeRequest();
   buildCounterResetRuntimeRequest++;
-  if (buildCounterResetRuntimeRequest < 3) {}
+  if (buildCounterResetRuntimeRequest < 3) {
+    o.requestId = 'foo';
+  }
   buildCounterResetRuntimeRequest--;
   return o;
 }
 
 void checkResetRuntimeRequest(api.ResetRuntimeRequest o) {
   buildCounterResetRuntimeRequest++;
-  if (buildCounterResetRuntimeRequest < 3) {}
+  if (buildCounterResetRuntimeRequest < 3) {
+    unittest.expect(
+      o.requestId!,
+      unittest.equals('foo'),
+    );
+  }
   buildCounterResetRuntimeRequest--;
 }
 
@@ -2386,14 +2446,21 @@ core.int buildCounterStartRuntimeRequest = 0;
 api.StartRuntimeRequest buildStartRuntimeRequest() {
   final o = api.StartRuntimeRequest();
   buildCounterStartRuntimeRequest++;
-  if (buildCounterStartRuntimeRequest < 3) {}
+  if (buildCounterStartRuntimeRequest < 3) {
+    o.requestId = 'foo';
+  }
   buildCounterStartRuntimeRequest--;
   return o;
 }
 
 void checkStartRuntimeRequest(api.StartRuntimeRequest o) {
   buildCounterStartRuntimeRequest++;
-  if (buildCounterStartRuntimeRequest < 3) {}
+  if (buildCounterStartRuntimeRequest < 3) {
+    unittest.expect(
+      o.requestId!,
+      unittest.equals('foo'),
+    );
+  }
   buildCounterStartRuntimeRequest--;
 }
 
@@ -2501,14 +2568,21 @@ core.int buildCounterStopRuntimeRequest = 0;
 api.StopRuntimeRequest buildStopRuntimeRequest() {
   final o = api.StopRuntimeRequest();
   buildCounterStopRuntimeRequest++;
-  if (buildCounterStopRuntimeRequest < 3) {}
+  if (buildCounterStopRuntimeRequest < 3) {
+    o.requestId = 'foo';
+  }
   buildCounterStopRuntimeRequest--;
   return o;
 }
 
 void checkStopRuntimeRequest(api.StopRuntimeRequest o) {
   buildCounterStopRuntimeRequest++;
-  if (buildCounterStopRuntimeRequest < 3) {}
+  if (buildCounterStopRuntimeRequest < 3) {
+    unittest.expect(
+      o.requestId!,
+      unittest.equals('foo'),
+    );
+  }
   buildCounterStopRuntimeRequest--;
 }
 
@@ -2519,6 +2593,7 @@ api.SwitchRuntimeRequest buildSwitchRuntimeRequest() {
   if (buildCounterSwitchRuntimeRequest < 3) {
     o.acceleratorConfig = buildRuntimeAcceleratorConfig();
     o.machineType = 'foo';
+    o.requestId = 'foo';
   }
   buildCounterSwitchRuntimeRequest--;
   return o;
@@ -2530,6 +2605,10 @@ void checkSwitchRuntimeRequest(api.SwitchRuntimeRequest o) {
     checkRuntimeAcceleratorConfig(o.acceleratorConfig!);
     unittest.expect(
       o.machineType!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.requestId!,
       unittest.equals('foo'),
     );
   }
@@ -3413,6 +3492,26 @@ void main() {
       final od =
           api.Policy.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkPolicy(od);
+    });
+  });
+
+  unittest.group('obj-schema-RefreshRuntimeTokenInternalRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildRefreshRuntimeTokenInternalRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RefreshRuntimeTokenInternalRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkRefreshRuntimeTokenInternalRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-RefreshRuntimeTokenInternalResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildRefreshRuntimeTokenInternalResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RefreshRuntimeTokenInternalResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkRefreshRuntimeTokenInternalResponse(od);
     });
   });
 
@@ -6021,6 +6120,7 @@ void main() {
       final res = api.AIPlatformNotebooksApi(mock).projects.locations.runtimes;
       final arg_request = buildRuntime();
       final arg_parent = 'foo';
+      final arg_requestId = 'foo';
       final arg_runtimeId = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -6060,6 +6160,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['requestId']!.first,
+          unittest.equals(arg_requestId),
+        );
+        unittest.expect(
           queryMap['runtimeId']!.first,
           unittest.equals(arg_runtimeId),
         );
@@ -6075,7 +6179,9 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.create(arg_request, arg_parent,
-          runtimeId: arg_runtimeId, $fields: arg_$fields);
+          requestId: arg_requestId,
+          runtimeId: arg_runtimeId,
+          $fields: arg_$fields);
       checkOperation(response as api.Operation);
     });
 
@@ -6083,6 +6189,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.AIPlatformNotebooksApi(mock).projects.locations.runtimes;
       final arg_name = 'foo';
+      final arg_requestId = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = (req.url).path;
@@ -6117,6 +6224,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['requestId']!.first,
+          unittest.equals(arg_requestId),
+        );
+        unittest.expect(
           queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
@@ -6127,7 +6238,8 @@ void main() {
         final resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      final response = await res.delete(arg_name, $fields: arg_$fields);
+      final response = await res.delete(arg_name,
+          requestId: arg_requestId, $fields: arg_$fields);
       checkOperation(response as api.Operation);
     });
 
@@ -6305,6 +6417,67 @@ void main() {
           pageToken: arg_pageToken,
           $fields: arg_$fields);
       checkListRuntimesResponse(response as api.ListRuntimesResponse);
+    });
+
+    unittest.test('method--refreshRuntimeTokenInternal', () async {
+      final mock = HttpServerMock();
+      final res = api.AIPlatformNotebooksApi(mock).projects.locations.runtimes;
+      final arg_request = buildRefreshRuntimeTokenInternalRequest();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.RefreshRuntimeTokenInternalRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkRefreshRuntimeTokenInternalRequest(obj);
+
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp =
+            convert.json.encode(buildRefreshRuntimeTokenInternalResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.refreshRuntimeTokenInternal(
+          arg_request, arg_name,
+          $fields: arg_$fields);
+      checkRefreshRuntimeTokenInternalResponse(
+          response as api.RefreshRuntimeTokenInternalResponse);
     });
 
     unittest.test('method--reportEvent', () async {

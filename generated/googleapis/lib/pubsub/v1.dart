@@ -2318,8 +2318,7 @@ typedef DetachSubscriptionResponse = $Empty;
 ///
 /// A typical example is to use it as the request or the response type of an API
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
-/// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
-/// object `{}`.
+/// (google.protobuf.Empty); }
 typedef Empty = $Empty;
 
 /// A policy that specifies the conditions for resource expiration (i.e.,
@@ -2688,9 +2687,9 @@ class OidcToken {
   /// [Service account email](https://cloud.google.com/iam/docs/service-accounts)
   /// to be used for generating the OIDC token.
   ///
-  /// The caller (for CreateSubscription, UpdateSubscription, and
-  /// ModifyPushConfig RPCs) must have the iam.serviceAccounts.actAs permission
-  /// for the service account.
+  /// See \[Setting up push
+  /// authentication\](/pubsub/docs/push#setting_up_for_push_authentication) for
+  /// more details.
   core.String? serviceAccountEmail;
 
   OidcToken({
@@ -2886,86 +2885,7 @@ class PublishResponse {
 /// for more information. See
 /// [quotas and limits](https://cloud.google.com/pubsub/quotas) for more
 /// information about message limits.
-class PubsubMessage {
-  /// Attributes for this message.
-  ///
-  /// If this field is empty, the message must contain non-empty data. This can
-  /// be used to filter messages on the subscription.
-  core.Map<core.String, core.String>? attributes;
-
-  /// The message data field.
-  ///
-  /// If this field is empty, the message must contain at least one attribute.
-  core.String? data;
-  core.List<core.int> get dataAsBytes => convert.base64.decode(data!);
-
-  set dataAsBytes(core.List<core.int> _bytes) {
-    data =
-        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
-  }
-
-  /// ID of this message, assigned by the server when the message is published.
-  ///
-  /// Guaranteed to be unique within the topic. This value may be read by a
-  /// subscriber that receives a `PubsubMessage` via a `Pull` call or a push
-  /// delivery. It must not be populated by the publisher in a `Publish` call.
-  core.String? messageId;
-
-  /// If non-empty, identifies related messages for which publish order should
-  /// be respected.
-  ///
-  /// If a `Subscription` has `enable_message_ordering` set to `true`, messages
-  /// published with the same non-empty `ordering_key` value will be delivered
-  /// to subscribers in the order in which they are received by the Pub/Sub
-  /// system. All `PubsubMessage`s published in a given `PublishRequest` must
-  /// specify the same `ordering_key` value.
-  core.String? orderingKey;
-
-  /// The time at which the message was published, populated by the server when
-  /// it receives the `Publish` call.
-  ///
-  /// It must not be populated by the publisher in a `Publish` call.
-  core.String? publishTime;
-
-  PubsubMessage({
-    this.attributes,
-    this.data,
-    this.messageId,
-    this.orderingKey,
-    this.publishTime,
-  });
-
-  PubsubMessage.fromJson(core.Map _json)
-      : this(
-          attributes: _json.containsKey('attributes')
-              ? (_json['attributes'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.String,
-                  ),
-                )
-              : null,
-          data: _json.containsKey('data') ? _json['data'] as core.String : null,
-          messageId: _json.containsKey('messageId')
-              ? _json['messageId'] as core.String
-              : null,
-          orderingKey: _json.containsKey('orderingKey')
-              ? _json['orderingKey'] as core.String
-              : null,
-          publishTime: _json.containsKey('publishTime')
-              ? _json['publishTime'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (attributes != null) 'attributes': attributes!,
-        if (data != null) 'data': data!,
-        if (messageId != null) 'messageId': messageId!,
-        if (orderingKey != null) 'orderingKey': orderingKey!,
-        if (publishTime != null) 'publishTime': publishTime!,
-      };
-}
+typedef PubsubMessage = $PubsubMessage;
 
 /// Request for the `Pull` method.
 class PullRequest {
@@ -3204,6 +3124,16 @@ class Schema {
   /// Required.
   core.String? name;
 
+  /// The timestamp that the revision was created.
+  ///
+  /// Output only.
+  core.String? revisionCreateTime;
+
+  /// The revision ID of the schema.
+  ///
+  /// Output only. Immutable.
+  core.String? revisionId;
+
   /// The type of the schema definition.
   /// Possible string values are:
   /// - "TYPE_UNSPECIFIED" : Default value. This value is unused.
@@ -3214,6 +3144,8 @@ class Schema {
   Schema({
     this.definition,
     this.name,
+    this.revisionCreateTime,
+    this.revisionId,
     this.type,
   });
 
@@ -3223,12 +3155,21 @@ class Schema {
               ? _json['definition'] as core.String
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          revisionCreateTime: _json.containsKey('revisionCreateTime')
+              ? _json['revisionCreateTime'] as core.String
+              : null,
+          revisionId: _json.containsKey('revisionId')
+              ? _json['revisionId'] as core.String
+              : null,
           type: _json.containsKey('type') ? _json['type'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (definition != null) 'definition': definition!,
         if (name != null) 'name': name!,
+        if (revisionCreateTime != null)
+          'revisionCreateTime': revisionCreateTime!,
+        if (revisionId != null) 'revisionId': revisionId!,
         if (type != null) 'type': type!,
       };
 }

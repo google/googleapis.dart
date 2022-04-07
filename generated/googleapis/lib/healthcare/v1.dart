@@ -8726,6 +8726,19 @@ class ExportMessagesRequest {
 
 /// Request to export resources.
 class ExportResourcesRequest {
+  /// If provided, only resources updated after this time are exported.
+  ///
+  /// The time uses the format YYYY-MM-DDThh:mm:ss.sss+zz:zz. For example,
+  /// `2015-02-07T13:28:17.239+02:00` or `2017-01-01T00:00:00Z`. The time must
+  /// be specified to the second and include a time zone.
+  core.String? P_since;
+
+  /// String of comma-delimited FHIR resource types.
+  ///
+  /// If provided, only resources of the specified resource type(s) are
+  /// exported.
+  core.String? P_type;
+
   /// The BigQuery output destination.
   ///
   /// The Cloud Healthcare Service Agent requires two IAM roles on the BigQuery
@@ -8745,12 +8758,19 @@ class ExportResourcesRequest {
   GoogleCloudHealthcareV1FhirGcsDestination? gcsDestination;
 
   ExportResourcesRequest({
+    this.P_since,
+    this.P_type,
     this.bigqueryDestination,
     this.gcsDestination,
   });
 
   ExportResourcesRequest.fromJson(core.Map _json)
       : this(
+          P_since: _json.containsKey('_since')
+              ? _json['_since'] as core.String
+              : null,
+          P_type:
+              _json.containsKey('_type') ? _json['_type'] as core.String : null,
           bigqueryDestination: _json.containsKey('bigqueryDestination')
               ? GoogleCloudHealthcareV1FhirBigQueryDestination.fromJson(
                   _json['bigqueryDestination']
@@ -8764,6 +8784,8 @@ class ExportResourcesRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (P_since != null) '_since': P_since!,
+        if (P_type != null) '_type': P_type!,
         if (bigqueryDestination != null)
           'bigqueryDestination': bigqueryDestination!,
         if (gcsDestination != null) 'gcsDestination': gcsDestination!,

@@ -90,7 +90,6 @@ packages:
     - datastore:v1 # https://developers.google.com/datastore/
     - datastream:v1
     - deploymentmanager:v2 # https://cloud.google.com/deployment-manager/
-    - dfareporting:v3.4
     - dfareporting:v3.5
     - dialogflow:v2 # https://cloud.google.com/dialogflow-enterprise/
     - dialogflow:v3 # https://cloud.google.com/dialogflow-enterprise/
@@ -120,6 +119,7 @@ packages:
     - firebaserules:v1 # https://firebase.google.com/docs/storage/security/start
     - firestore:v1 # https://cloud.google.com/firestore
     - fitness:v1 # https://developers.google.com/fitness/
+    - forms:v1
     - games:v1 # https://developers.google.com/games/services/
     - gamesConfiguration:v1configuration # https://developers.google.com/games/services/publishing/api/
     - gamesManagement:v1management # https://developers.google.com/games/services/management/api/
@@ -331,7 +331,6 @@ skipped_apis:
 - datastore:v1beta3 # v1 included
 - deploymentmanager:alpha # v2beta # v1 included
 - deploymentmanager:v2beta # v1 included
-- dfareporting:v3.3 # v3.4 included
 - dialogflow:v2beta1 # v2 included
 - dialogflow:v3beta1 # v3 included
 - dns:v1beta2 # v1 included
@@ -366,6 +365,8 @@ skipped_apis:
 - osconfig:v1beta # v1 included
 - oslogin:v1alpha # v1 available
 - oslogin:v1beta # v1 available
+- playdeveloperreporting:v1alpha1
+- playdeveloperreporting:v1beta1
 - policyanalyzer:v1beta1
 - policytroubleshooter:v1beta # v1 included
 - poly:v1 # https://support.google.com/poly/answer/10192635 poly.google.com is shut down!

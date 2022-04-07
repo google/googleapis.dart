@@ -4184,7 +4184,7 @@
                             ],
                             "parameters": {
                                 "filter": {
-                                    "description": "A filter to narrow down results to a preferred subset. The filtering language accepts strings like \"displayName=tokyo\", and is documented in more detail in [AIP-160](https://google.aip.dev/160).",
+                                    "description": "A filter to narrow down results to a preferred subset. The filtering language accepts strings like `\"displayName=tokyo\"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160).",
                                     "location": "query",
                                     "type": "string"
                                 },
@@ -8075,7 +8075,7 @@
             }
         }
     },
-    "revision": "20220228",
+    "revision": "20220404",
     "rootUrl": "https://dialogflow.googleapis.com/",
     "schemas": {
         "GoogleCloudDialogflowCxV3AudioInput": {
@@ -9451,7 +9451,11 @@
             "id": "GoogleCloudDialogflowCxV3TestConfig",
             "properties": {
                 "flow": {
-                    "description": "Flow name. If not set, default start flow is assumed. Format: `projects//locations//agents//flows/`.",
+                    "description": "Flow name to start the test case with. Format: `projects//locations//agents//flows/`. Only one of `flow` and `page` should be set to indicate the starting point of the test case. If both are set, `page` takes precedence over `flow`. If neither is set, the test case will start with start page on the default start flow.",
+                    "type": "string"
+                },
+                "page": {
+                    "description": "The page to start the test case with. Format: `projects//locations//agents//flows//pages/`. Only one of `flow` and `page` should be set to indicate the starting point of the test case. If both are set, `page` takes precedence over `flow`. If neither is set, the test case will start with start page on the default start flow.",
                     "type": "string"
                 },
                 "trackingParameters": {
@@ -11139,7 +11143,11 @@
             "id": "GoogleCloudDialogflowCxV3beta1TestConfig",
             "properties": {
                 "flow": {
-                    "description": "Flow name. If not set, default start flow is assumed. Format: `projects//locations//agents//flows/`.",
+                    "description": "Flow name to start the test case with. Format: `projects//locations//agents//flows/`. Only one of `flow` and `page` should be set to indicate the starting point of the test case. If both are set, `page` takes precedence over `flow`. If neither is set, the test case will start with start page on the default start flow.",
+                    "type": "string"
+                },
+                "page": {
+                    "description": "The page to start the test case with. Format: `projects//locations//agents//flows//pages/`. Only one of `flow` and `page` should be set to indicate the starting point of the test case. If both are set, `page` takes precedence over `flow`. If neither is set, the test case will start with start page on the default start flow.",
                     "type": "string"
                 },
                 "trackingParameters": {
@@ -11657,14 +11665,14 @@
                     "description": "Indicates the parameters of DTMF."
                 },
                 "endUserSuggestionResults": {
-                    "description": "The suggestions for end user. The order is the same as HumanAgentAssistantConfig.SuggestionConfig.feature_configs of HumanAgentAssistantConfig.end_user_suggestion_config.",
+                    "description": "The suggestions for end user. The order is the same as HumanAgentAssistantConfig.SuggestionConfig.feature_configs of HumanAgentAssistantConfig.end_user_suggestion_config. Same as human_agent_suggestion_results, any failure of Agent Assist features will not lead to the overall failure of an AnalyzeContent API call. Instead, the features will fail silently with the error field set in the corresponding SuggestionResult.",
                     "items": {
                         "$ref": "GoogleCloudDialogflowV2SuggestionResult"
                     },
                     "type": "array"
                 },
                 "humanAgentSuggestionResults": {
-                    "description": "The suggestions for most recent human agent. The order is the same as HumanAgentAssistantConfig.SuggestionConfig.feature_configs of HumanAgentAssistantConfig.human_agent_suggestion_config.",
+                    "description": "The suggestions for most recent human agent. The order is the same as HumanAgentAssistantConfig.SuggestionConfig.feature_configs of HumanAgentAssistantConfig.human_agent_suggestion_config. Note that any failure of Agent Assist features will not lead to the overall failure of an AnalyzeContent API call. Instead, the features will fail silently with the error field set in the corresponding SuggestionResult.",
                     "items": {
                         "$ref": "GoogleCloudDialogflowV2SuggestionResult"
                     },
@@ -13053,7 +13061,7 @@
             "id": "GoogleCloudDialogflowV2EventInput",
             "properties": {
                 "languageCode": {
-                    "description": "Required. The language of this query. See [Language Support](https://cloud.google.com/dialogflow/docs/reference/language) for a list of the currently supported language codes. Note that queries in the same session do not necessarily need to specify the same language.",
+                    "description": "Required. The language of this query. See [Language Support](https://cloud.google.com/dialogflow/docs/reference/language) for a list of the currently supported language codes. Note that queries in the same session do not necessarily need to specify the same language. This field is ignored when used in the context of a WebhookResponse.followup_event_input field, because the language was already defined in the originating detect intent request.",
                     "type": "string"
                 },
                 "name": {
@@ -13076,7 +13084,7 @@
             "id": "GoogleCloudDialogflowV2ExportAgentRequest",
             "properties": {
                 "agentUri": {
-                    "description": "Required. The [Google Cloud Storage](https://cloud.google.com/storage/docs/) URI to export the agent to. The format of this URI must be `gs:///`. If left unspecified, the serialized agent is returned inline.",
+                    "description": "Required. The [Google Cloud Storage](https://cloud.google.com/storage/docs/) URI to export the agent to. The format of this URI must be `gs:///`. If left unspecified, the serialized agent is returned inline. Dialogflow performs a write operation for the Cloud Storage object on the caller's behalf, so your request authentication must have write permissions for the object. For more information, see [Dialogflow access control](https://cloud.google.com/dialogflow/cx/docs/concept/access-control#storage).",
                     "type": "string"
                 }
             },
@@ -13564,7 +13572,7 @@
                     "type": "string"
                 },
                 "agentUri": {
-                    "description": "The URI to a Google Cloud Storage file containing the agent to import. Note: The URI must start with \"gs://\".",
+                    "description": "The URI to a Google Cloud Storage file containing the agent to import. Note: The URI must start with \"gs://\". Dialogflow performs a read operation for the Cloud Storage object on the caller's behalf, so your request authentication must have read permissions for the object. For more information, see [Dialogflow access control](https://cloud.google.com/dialogflow/cx/docs/concept/access-control#storage).",
                     "type": "string"
                 }
             },
@@ -15483,7 +15491,7 @@
                     "type": "string"
                 },
                 "agentUri": {
-                    "description": "The URI to a Google Cloud Storage file containing the agent to restore. Note: The URI must start with \"gs://\".",
+                    "description": "The URI to a Google Cloud Storage file containing the agent to restore. Note: The URI must start with \"gs://\". Dialogflow performs a read operation for the Cloud Storage object on the caller's behalf, so your request authentication must have read permissions for the object. For more information, see [Dialogflow access control](https://cloud.google.com/dialogflow/cx/docs/concept/access-control#storage).",
                     "type": "string"
                 }
             },
@@ -16439,6 +16447,7 @@
                         "TYPE_UNSPECIFIED",
                         "CONVERSATION_STARTED",
                         "CONVERSATION_FINISHED",
+                        "HUMAN_INTERVENTION_NEEDED",
                         "NEW_MESSAGE",
                         "UNRECOVERABLE_ERROR"
                     ],
@@ -16446,6 +16455,7 @@
                         "Type not set.",
                         "A new conversation has been opened. This is fired when a telephone call is answered, or a conversation is created via the API.",
                         "An existing conversation has closed. This is fired when a telephone call is terminated, or a conversation is closed via the API.",
+                        "An existing conversation has received notification from Dialogflow that human intervention is required.",
                         "An existing conversation has received a new message, either from API or telephony. It is configured in ConversationProfile.new_message_event_notification_config",
                         "Unrecoverable error during a telephone call. In general non-recoverable errors only occur if something was misconfigured in the ConversationProfile corresponding to the call. After a non-recoverable error, Dialogflow may stop responding. We don't fire this event: * in an API call because we can directly return the error, or, * when we can recover from an error."
                     ],
@@ -16531,7 +16541,7 @@
             "id": "GoogleCloudDialogflowV2beta1EventInput",
             "properties": {
                 "languageCode": {
-                    "description": "Required. The language of this query. See [Language Support](https://cloud.google.com/dialogflow/docs/reference/language) for a list of the currently supported language codes. Note that queries in the same session do not necessarily need to specify the same language.",
+                    "description": "Required. The language of this query. See [Language Support](https://cloud.google.com/dialogflow/docs/reference/language) for a list of the currently supported language codes. Note that queries in the same session do not necessarily need to specify the same language. This field is ignored when used in the context of a WebhookResponse.followup_event_input field, because the language was already defined in the originating detect intent request.",
                     "type": "string"
                 },
                 "name": {
@@ -17834,7 +17844,7 @@
                     "enumDescriptions": [
                         "Not specified. This value should never be used.",
                         "Examples do not contain @-prefixed entity type names, but example parts can be annotated with entity types.",
-                        "Templates are not annotated with entity types, but they can contain @-prefixed entity type names as substrings. Template mode has been deprecated. Example mode is the only supported way to create new training phrases. If you have existing training phrases that you've created in template mode, those will continue to work."
+                        "Templates are not annotated with entity types, but they can contain @-prefixed entity type names as substrings. Note: Template mode has been deprecated. Example mode is the only supported way to create new training phrases. If you have existing training phrases in template mode, they will be removed during training and it can cause a drop in agent performance."
                     ],
                     "type": "string"
                 }
@@ -18653,7 +18663,7 @@
             "type": "object"
         },
         "GoogleProtobufEmpty": {
-            "description": "A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON object `{}`.",
+            "description": "A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }",
             "id": "GoogleProtobufEmpty",
             "properties": {},
             "type": "object"

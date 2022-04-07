@@ -828,56 +828,6 @@ class ProjectsLocationsBitbucketServerConfigsResource {
   ProjectsLocationsBitbucketServerConfigsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Add a Bitbucket Server repository to a given BitbucketServerConfig's
-  /// connected repositories.
-  ///
-  /// This API is experimental.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [config] - Required. The name of the `BitbucketServerConfig` to add a
-  /// connected repository. Format:
-  /// `projects/{project}/locations/{location}/bitbucketServerConfigs/{config}`
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/bitbucketServerConfigs/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [AddBitbucketServerConnectedRepositoryResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<AddBitbucketServerConnectedRepositoryResponse>
-      addBitbucketServerConnectedRepository(
-    AddBitbucketServerConnectedRepositoryRequest request,
-    core.String config, {
-    core.String? $fields,
-  }) async {
-    final _body = convert.json.encode(request);
-    final _queryParams = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final _url = 'v1/' +
-        core.Uri.encodeFull('$config') +
-        ':addBitbucketServerConnectedRepository';
-
-    final _response = await _requester.request(
-      _url,
-      'POST',
-      body: _body,
-      queryParams: _queryParams,
-    );
-    return AddBitbucketServerConnectedRepositoryResponse.fromJson(
-        _response as core.Map<core.String, core.dynamic>);
-  }
-
   /// Creates a new `BitbucketServerConfig`.
   ///
   /// This API is experimental.
@@ -2347,7 +2297,7 @@ class ProjectsLocationsWorkerPoolsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The name of the `WorkerPool` to delete. Format:
-  /// `projects/{project}/locations/{workerPool}/workerPools/{workerPool}`.
+  /// `projects/{project}/locations/{location}/workerPools/{workerPool}`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/workerPools/\[^/\]+$`.
   ///
@@ -2940,67 +2890,6 @@ class V1Resource {
     );
     return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
-}
-
-/// RPC request object accepted by the AddBitbucketServerConnectedRepository RPC
-/// method.
-class AddBitbucketServerConnectedRepositoryRequest {
-  /// The connected repository to add.
-  BitbucketServerRepositoryId? connectedRepository;
-
-  AddBitbucketServerConnectedRepositoryRequest({
-    this.connectedRepository,
-  });
-
-  AddBitbucketServerConnectedRepositoryRequest.fromJson(core.Map _json)
-      : this(
-          connectedRepository: _json.containsKey('connectedRepository')
-              ? BitbucketServerRepositoryId.fromJson(
-                  _json['connectedRepository']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (connectedRepository != null)
-          'connectedRepository': connectedRepository!,
-      };
-}
-
-/// RPC request object returned by the AddBitbucketServerConnectedRepository RPC
-/// method.
-class AddBitbucketServerConnectedRepositoryResponse {
-  /// The name of the `BitbucketServerConfig` that added connected repository.
-  ///
-  /// Format:
-  /// `projects/{project}/locations/{location}/bitbucketServerConfigs/{config}`
-  core.String? config;
-
-  /// The connected repository.
-  BitbucketServerRepositoryId? connectedRepository;
-
-  AddBitbucketServerConnectedRepositoryResponse({
-    this.config,
-    this.connectedRepository,
-  });
-
-  AddBitbucketServerConnectedRepositoryResponse.fromJson(core.Map _json)
-      : this(
-          config: _json.containsKey('config')
-              ? _json['config'] as core.String
-              : null,
-          connectedRepository: _json.containsKey('connectedRepository')
-              ? BitbucketServerRepositoryId.fromJson(
-                  _json['connectedRepository']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (config != null) 'config': config!,
-        if (connectedRepository != null)
-          'connectedRepository': connectedRepository!,
-      };
 }
 
 /// ApprovalConfig describes configuration for manual approval of a build.
@@ -4903,8 +4792,7 @@ class CreateBitbucketServerConnectedRepositoryRequest {
 ///
 /// A typical example is to use it as the request or the response type of an API
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
-/// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
-/// object `{}`.
+/// (google.protobuf.Empty); }
 typedef Empty = $Empty;
 
 /// A fatal problem encountered during the execution of the build.
@@ -5004,10 +4892,11 @@ class GitFileSource {
   /// which to read the specified path.
   core.String? revision;
 
-  /// The URI of the repo (optional).
+  /// The URI of the repo.
   ///
-  /// If unspecified, the repo from which the trigger invocation originated is
-  /// assumed to be the repo from which to read the specified path.
+  /// Either uri or repository can be specified. If unspecified, the repo from
+  /// which the trigger invocation originated is assumed to be the repo from
+  /// which to read the specified path.
   core.String? uri;
 
   GitFileSource({
@@ -5345,7 +5234,9 @@ class GitRepoSource {
   /// - "BITBUCKET_SERVER" : A Bitbucket Server-hosted repo.
   core.String? repoType;
 
-  /// The URI of the repo (required).
+  /// The URI of the repo.
+  ///
+  /// Either uri or repository can be specified and is required.
   core.String? uri;
 
   GitRepoSource({

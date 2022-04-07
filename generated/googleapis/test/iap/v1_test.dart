@@ -480,6 +480,41 @@ void checkListIdentityAwareProxyClientsResponse(
   buildCounterListIdentityAwareProxyClientsResponse--;
 }
 
+core.List<api.TunnelDestGroup> buildUnnamed4() => [
+      buildTunnelDestGroup(),
+      buildTunnelDestGroup(),
+    ];
+
+void checkUnnamed4(core.List<api.TunnelDestGroup> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkTunnelDestGroup(o[0]);
+  checkTunnelDestGroup(o[1]);
+}
+
+core.int buildCounterListTunnelDestGroupsResponse = 0;
+api.ListTunnelDestGroupsResponse buildListTunnelDestGroupsResponse() {
+  final o = api.ListTunnelDestGroupsResponse();
+  buildCounterListTunnelDestGroupsResponse++;
+  if (buildCounterListTunnelDestGroupsResponse < 3) {
+    o.nextPageToken = 'foo';
+    o.tunnelDestGroups = buildUnnamed4();
+  }
+  buildCounterListTunnelDestGroupsResponse--;
+  return o;
+}
+
+void checkListTunnelDestGroupsResponse(api.ListTunnelDestGroupsResponse o) {
+  buildCounterListTunnelDestGroupsResponse++;
+  if (buildCounterListTunnelDestGroupsResponse < 3) {
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed4(o.tunnelDestGroups!);
+  }
+  buildCounterListTunnelDestGroupsResponse--;
+}
+
 core.int buildCounterOAuthSettings = 0;
 api.OAuthSettings buildOAuthSettings() {
   final o = api.OAuthSettings();
@@ -502,12 +537,12 @@ void checkOAuthSettings(api.OAuthSettings o) {
   buildCounterOAuthSettings--;
 }
 
-core.List<api.Binding> buildUnnamed4() => [
+core.List<api.Binding> buildUnnamed5() => [
       buildBinding(),
       buildBinding(),
     ];
 
-void checkUnnamed4(core.List<api.Binding> o) {
+void checkUnnamed5(core.List<api.Binding> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBinding(o[0]);
   checkBinding(o[1]);
@@ -518,7 +553,7 @@ api.Policy buildPolicy() {
   final o = api.Policy();
   buildCounterPolicy++;
   if (buildCounterPolicy < 3) {
-    o.bindings = buildUnnamed4();
+    o.bindings = buildUnnamed5();
     o.etag = 'foo';
     o.version = 42;
   }
@@ -529,7 +564,7 @@ api.Policy buildPolicy() {
 void checkPolicy(api.Policy o) {
   buildCounterPolicy++;
   if (buildCounterPolicy < 3) {
-    checkUnnamed4(o.bindings!);
+    checkUnnamed5(o.bindings!);
     unittest.expect(
       o.etag!,
       unittest.equals('foo'),
@@ -654,12 +689,12 @@ void checkResetIdentityAwareProxyClientSecretRequest(
   buildCounterResetIdentityAwareProxyClientSecretRequest--;
 }
 
-core.Map<core.String, core.String> buildUnnamed5() => {
+core.Map<core.String, core.String> buildUnnamed6() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed5(core.Map<core.String, core.String> o) {
+void checkUnnamed6(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -676,7 +711,7 @@ api.Resource buildResource() {
   final o = api.Resource();
   buildCounterResource++;
   if (buildCounterResource < 3) {
-    o.labels = buildUnnamed5();
+    o.labels = buildUnnamed6();
     o.name = 'foo';
     o.service = 'foo';
     o.type = 'foo';
@@ -688,7 +723,7 @@ api.Resource buildResource() {
 void checkResource(api.Resource o) {
   buildCounterResource++;
   if (buildCounterResource < 3) {
-    checkUnnamed5(o.labels!);
+    checkUnnamed6(o.labels!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -724,42 +759,6 @@ void checkSetIamPolicyRequest(api.SetIamPolicyRequest o) {
   buildCounterSetIamPolicyRequest--;
 }
 
-core.List<core.String> buildUnnamed6() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed6(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
-core.int buildCounterTestIamPermissionsRequest = 0;
-api.TestIamPermissionsRequest buildTestIamPermissionsRequest() {
-  final o = api.TestIamPermissionsRequest();
-  buildCounterTestIamPermissionsRequest++;
-  if (buildCounterTestIamPermissionsRequest < 3) {
-    o.permissions = buildUnnamed6();
-  }
-  buildCounterTestIamPermissionsRequest--;
-  return o;
-}
-
-void checkTestIamPermissionsRequest(api.TestIamPermissionsRequest o) {
-  buildCounterTestIamPermissionsRequest++;
-  if (buildCounterTestIamPermissionsRequest < 3) {
-    checkUnnamed6(o.permissions!);
-  }
-  buildCounterTestIamPermissionsRequest--;
-}
-
 core.List<core.String> buildUnnamed7() => [
       'foo',
       'foo',
@@ -777,12 +776,48 @@ void checkUnnamed7(core.List<core.String> o) {
   );
 }
 
+core.int buildCounterTestIamPermissionsRequest = 0;
+api.TestIamPermissionsRequest buildTestIamPermissionsRequest() {
+  final o = api.TestIamPermissionsRequest();
+  buildCounterTestIamPermissionsRequest++;
+  if (buildCounterTestIamPermissionsRequest < 3) {
+    o.permissions = buildUnnamed7();
+  }
+  buildCounterTestIamPermissionsRequest--;
+  return o;
+}
+
+void checkTestIamPermissionsRequest(api.TestIamPermissionsRequest o) {
+  buildCounterTestIamPermissionsRequest++;
+  if (buildCounterTestIamPermissionsRequest < 3) {
+    checkUnnamed7(o.permissions!);
+  }
+  buildCounterTestIamPermissionsRequest--;
+}
+
+core.List<core.String> buildUnnamed8() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed8(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
 core.int buildCounterTestIamPermissionsResponse = 0;
 api.TestIamPermissionsResponse buildTestIamPermissionsResponse() {
   final o = api.TestIamPermissionsResponse();
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
-    o.permissions = buildUnnamed7();
+    o.permissions = buildUnnamed8();
   }
   buildCounterTestIamPermissionsResponse--;
   return o;
@@ -791,9 +826,69 @@ api.TestIamPermissionsResponse buildTestIamPermissionsResponse() {
 void checkTestIamPermissionsResponse(api.TestIamPermissionsResponse o) {
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
-    checkUnnamed7(o.permissions!);
+    checkUnnamed8(o.permissions!);
   }
   buildCounterTestIamPermissionsResponse--;
+}
+
+core.List<core.String> buildUnnamed9() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed9(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.List<core.String> buildUnnamed10() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed10(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.int buildCounterTunnelDestGroup = 0;
+api.TunnelDestGroup buildTunnelDestGroup() {
+  final o = api.TunnelDestGroup();
+  buildCounterTunnelDestGroup++;
+  if (buildCounterTunnelDestGroup < 3) {
+    o.cidrs = buildUnnamed9();
+    o.fqdns = buildUnnamed10();
+    o.name = 'foo';
+  }
+  buildCounterTunnelDestGroup--;
+  return o;
+}
+
+void checkTunnelDestGroup(api.TunnelDestGroup o) {
+  buildCounterTunnelDestGroup++;
+  if (buildCounterTunnelDestGroup < 3) {
+    checkUnnamed9(o.cidrs!);
+    checkUnnamed10(o.fqdns!);
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterTunnelDestGroup--;
 }
 
 void main() {
@@ -957,6 +1052,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-ListTunnelDestGroupsResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildListTunnelDestGroupsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ListTunnelDestGroupsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkListTunnelDestGroupsResponse(od);
+    });
+  });
+
   unittest.group('obj-schema-OAuthSettings', () {
     unittest.test('to-json--from-json', () async {
       final o = buildOAuthSettings();
@@ -1054,6 +1159,16 @@ void main() {
       final od = api.TestIamPermissionsResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkTestIamPermissionsResponse(od);
+    });
+  });
+
+  unittest.group('obj-schema-TunnelDestGroup', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildTunnelDestGroup();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.TunnelDestGroup.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkTunnelDestGroup(od);
     });
   });
 
@@ -1513,6 +1628,304 @@ void main() {
       final response =
           await res.resetSecret(arg_request, arg_name, $fields: arg_$fields);
       checkIdentityAwareProxyClient(response as api.IdentityAwareProxyClient);
+    });
+  });
+
+  unittest.group('resource-ProjectsIapTunnelLocationsDestGroupsResource', () {
+    unittest.test('method--create', () async {
+      final mock = HttpServerMock();
+      final res = api.CloudIAPApi(mock).projects.iapTunnel.locations.destGroups;
+      final arg_request = buildTunnelDestGroup();
+      final arg_parent = 'foo';
+      final arg_tunnelDestGroupId = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.TunnelDestGroup.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkTunnelDestGroup(obj);
+
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['tunnelDestGroupId']!.first,
+          unittest.equals(arg_tunnelDestGroupId),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildTunnelDestGroup());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.create(arg_request, arg_parent,
+          tunnelDestGroupId: arg_tunnelDestGroupId, $fields: arg_$fields);
+      checkTunnelDestGroup(response as api.TunnelDestGroup);
+    });
+
+    unittest.test('method--delete', () async {
+      final mock = HttpServerMock();
+      final res = api.CloudIAPApi(mock).projects.iapTunnel.locations.destGroups;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildEmpty());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
+    });
+
+    unittest.test('method--get', () async {
+      final mock = HttpServerMock();
+      final res = api.CloudIAPApi(mock).projects.iapTunnel.locations.destGroups;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildTunnelDestGroup());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkTunnelDestGroup(response as api.TunnelDestGroup);
+    });
+
+    unittest.test('method--list', () async {
+      final mock = HttpServerMock();
+      final res = api.CloudIAPApi(mock).projects.iapTunnel.locations.destGroups;
+      final arg_parent = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          core.int.parse(queryMap['pageSize']!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap['pageToken']!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildListTunnelDestGroupsResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListTunnelDestGroupsResponse(
+          response as api.ListTunnelDestGroupsResponse);
+    });
+
+    unittest.test('method--patch', () async {
+      final mock = HttpServerMock();
+      final res = api.CloudIAPApi(mock).projects.iapTunnel.locations.destGroups;
+      final arg_request = buildTunnelDestGroup();
+      final arg_name = 'foo';
+      final arg_updateMask = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.TunnelDestGroup.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkTunnelDestGroup(obj);
+
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['updateMask']!.first,
+          unittest.equals(arg_updateMask),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildTunnelDestGroup());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkTunnelDestGroup(response as api.TunnelDestGroup);
     });
   });
 

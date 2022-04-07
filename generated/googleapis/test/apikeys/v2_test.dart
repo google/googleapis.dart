@@ -365,28 +365,6 @@ void checkV2BrowserKeyRestrictions(api.V2BrowserKeyRestrictions o) {
   buildCounterV2BrowserKeyRestrictions--;
 }
 
-core.int buildCounterV2CloneKeyRequest = 0;
-api.V2CloneKeyRequest buildV2CloneKeyRequest() {
-  final o = api.V2CloneKeyRequest();
-  buildCounterV2CloneKeyRequest++;
-  if (buildCounterV2CloneKeyRequest < 3) {
-    o.keyId = 'foo';
-  }
-  buildCounterV2CloneKeyRequest--;
-  return o;
-}
-
-void checkV2CloneKeyRequest(api.V2CloneKeyRequest o) {
-  buildCounterV2CloneKeyRequest++;
-  if (buildCounterV2CloneKeyRequest < 3) {
-    unittest.expect(
-      o.keyId!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterV2CloneKeyRequest--;
-}
-
 core.int buildCounterV2GetKeyStringResponse = 0;
 api.V2GetKeyStringResponse buildV2GetKeyStringResponse() {
   final o = api.V2GetKeyStringResponse();
@@ -445,11 +423,29 @@ void checkV2IosKeyRestrictions(api.V2IosKeyRestrictions o) {
   buildCounterV2IosKeyRestrictions--;
 }
 
+core.Map<core.String, core.String> buildUnnamed8() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
+
+void checkUnnamed8(core.Map<core.String, core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o['x']!,
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o['y']!,
+    unittest.equals('foo'),
+  );
+}
+
 core.int buildCounterV2Key = 0;
 api.V2Key buildV2Key() {
   final o = api.V2Key();
   buildCounterV2Key++;
   if (buildCounterV2Key < 3) {
+    o.annotations = buildUnnamed8();
     o.createTime = 'foo';
     o.deleteTime = 'foo';
     o.displayName = 'foo';
@@ -467,6 +463,7 @@ api.V2Key buildV2Key() {
 void checkV2Key(api.V2Key o) {
   buildCounterV2Key++;
   if (buildCounterV2Key < 3) {
+    checkUnnamed8(o.annotations!);
     unittest.expect(
       o.createTime!,
       unittest.equals('foo'),
@@ -504,12 +501,12 @@ void checkV2Key(api.V2Key o) {
   buildCounterV2Key--;
 }
 
-core.List<api.V2Key> buildUnnamed8() => [
+core.List<api.V2Key> buildUnnamed9() => [
       buildV2Key(),
       buildV2Key(),
     ];
 
-void checkUnnamed8(core.List<api.V2Key> o) {
+void checkUnnamed9(core.List<api.V2Key> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkV2Key(o[0]);
   checkV2Key(o[1]);
@@ -520,7 +517,7 @@ api.V2ListKeysResponse buildV2ListKeysResponse() {
   final o = api.V2ListKeysResponse();
   buildCounterV2ListKeysResponse++;
   if (buildCounterV2ListKeysResponse < 3) {
-    o.keys = buildUnnamed8();
+    o.keys = buildUnnamed9();
     o.nextPageToken = 'foo';
   }
   buildCounterV2ListKeysResponse--;
@@ -530,7 +527,7 @@ api.V2ListKeysResponse buildV2ListKeysResponse() {
 void checkV2ListKeysResponse(api.V2ListKeysResponse o) {
   buildCounterV2ListKeysResponse++;
   if (buildCounterV2ListKeysResponse < 3) {
-    checkUnnamed8(o.keys!);
+    checkUnnamed9(o.keys!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -566,12 +563,12 @@ void checkV2LookupKeyResponse(api.V2LookupKeyResponse o) {
   buildCounterV2LookupKeyResponse--;
 }
 
-core.List<api.V2ApiTarget> buildUnnamed9() => [
+core.List<api.V2ApiTarget> buildUnnamed10() => [
       buildV2ApiTarget(),
       buildV2ApiTarget(),
     ];
 
-void checkUnnamed9(core.List<api.V2ApiTarget> o) {
+void checkUnnamed10(core.List<api.V2ApiTarget> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkV2ApiTarget(o[0]);
   checkV2ApiTarget(o[1]);
@@ -583,7 +580,7 @@ api.V2Restrictions buildV2Restrictions() {
   buildCounterV2Restrictions++;
   if (buildCounterV2Restrictions < 3) {
     o.androidKeyRestrictions = buildV2AndroidKeyRestrictions();
-    o.apiTargets = buildUnnamed9();
+    o.apiTargets = buildUnnamed10();
     o.browserKeyRestrictions = buildV2BrowserKeyRestrictions();
     o.iosKeyRestrictions = buildV2IosKeyRestrictions();
     o.serverKeyRestrictions = buildV2ServerKeyRestrictions();
@@ -596,7 +593,7 @@ void checkV2Restrictions(api.V2Restrictions o) {
   buildCounterV2Restrictions++;
   if (buildCounterV2Restrictions < 3) {
     checkV2AndroidKeyRestrictions(o.androidKeyRestrictions!);
-    checkUnnamed9(o.apiTargets!);
+    checkUnnamed10(o.apiTargets!);
     checkV2BrowserKeyRestrictions(o.browserKeyRestrictions!);
     checkV2IosKeyRestrictions(o.iosKeyRestrictions!);
     checkV2ServerKeyRestrictions(o.serverKeyRestrictions!);
@@ -604,12 +601,12 @@ void checkV2Restrictions(api.V2Restrictions o) {
   buildCounterV2Restrictions--;
 }
 
-core.List<core.String> buildUnnamed10() => [
+core.List<core.String> buildUnnamed11() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed10(core.List<core.String> o) {
+void checkUnnamed11(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -626,7 +623,7 @@ api.V2ServerKeyRestrictions buildV2ServerKeyRestrictions() {
   final o = api.V2ServerKeyRestrictions();
   buildCounterV2ServerKeyRestrictions++;
   if (buildCounterV2ServerKeyRestrictions < 3) {
-    o.allowedIps = buildUnnamed10();
+    o.allowedIps = buildUnnamed11();
   }
   buildCounterV2ServerKeyRestrictions--;
   return o;
@@ -635,7 +632,7 @@ api.V2ServerKeyRestrictions buildV2ServerKeyRestrictions() {
 void checkV2ServerKeyRestrictions(api.V2ServerKeyRestrictions o) {
   buildCounterV2ServerKeyRestrictions++;
   if (buildCounterV2ServerKeyRestrictions < 3) {
-    checkUnnamed10(o.allowedIps!);
+    checkUnnamed11(o.allowedIps!);
   }
   buildCounterV2ServerKeyRestrictions--;
 }
@@ -713,16 +710,6 @@ void main() {
       final od = api.V2BrowserKeyRestrictions.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkV2BrowserKeyRestrictions(od);
-    });
-  });
-
-  unittest.group('obj-schema-V2CloneKeyRequest', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildV2CloneKeyRequest();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.V2CloneKeyRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkV2CloneKeyRequest(od);
     });
   });
 
@@ -919,64 +906,6 @@ void main() {
   });
 
   unittest.group('resource-ProjectsLocationsKeysResource', () {
-    unittest.test('method--clone', () async {
-      final mock = HttpServerMock();
-      final res = api.ApiKeysServiceApi(mock).projects.locations.keys;
-      final arg_request = buildV2CloneKeyRequest();
-      final arg_name = 'foo';
-      final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.V2CloneKeyRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>);
-        checkV2CloneKeyRequest(obj);
-
-        final path = (req.url).path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v2/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
-
-        final query = (req.url).query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
-
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
-          }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
-
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildOperation());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response =
-          await res.clone(arg_request, arg_name, $fields: arg_$fields);
-      checkOperation(response as api.Operation);
-    });
-
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
       final res = api.ApiKeysServiceApi(mock).projects.locations.keys;
@@ -1206,7 +1135,6 @@ void main() {
       final mock = HttpServerMock();
       final res = api.ApiKeysServiceApi(mock).projects.locations.keys;
       final arg_parent = 'foo';
-      final arg_filter = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
       final arg_showDeleted = true;
@@ -1244,10 +1172,6 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap['filter']!.first,
-          unittest.equals(arg_filter),
-        );
-        unittest.expect(
           core.int.parse(queryMap['pageSize']!.first),
           unittest.equals(arg_pageSize),
         );
@@ -1271,7 +1195,6 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(arg_parent,
-          filter: arg_filter,
           pageSize: arg_pageSize,
           pageToken: arg_pageToken,
           showDeleted: arg_showDeleted,

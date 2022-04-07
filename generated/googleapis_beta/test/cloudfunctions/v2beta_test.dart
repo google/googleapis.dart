@@ -216,6 +216,7 @@ api.EventFilter buildEventFilter() {
   buildCounterEventFilter++;
   if (buildCounterEventFilter < 3) {
     o.attribute = 'foo';
+    o.operator = 'foo';
     o.value = 'foo';
   }
   buildCounterEventFilter--;
@@ -227,6 +228,10 @@ void checkEventFilter(api.EventFilter o) {
   if (buildCounterEventFilter < 3) {
     unittest.expect(
       o.attribute!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.operator!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -1082,6 +1087,7 @@ api.ServiceConfig buildServiceConfig() {
     o.ingressSettings = 'foo';
     o.maxInstanceCount = 42;
     o.minInstanceCount = 42;
+    o.revision = 'foo';
     o.service = 'foo';
     o.serviceAccountEmail = 'foo';
     o.timeoutSeconds = 42;
@@ -1113,6 +1119,10 @@ void checkServiceConfig(api.ServiceConfig o) {
     unittest.expect(
       o.minInstanceCount!,
       unittest.equals(42),
+    );
+    unittest.expect(
+      o.revision!,
+      unittest.equals('foo'),
     );
     unittest.expect(
       o.service!,

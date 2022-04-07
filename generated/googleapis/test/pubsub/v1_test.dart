@@ -929,6 +929,8 @@ api.Schema buildSchema() {
   if (buildCounterSchema < 3) {
     o.definition = 'foo';
     o.name = 'foo';
+    o.revisionCreateTime = 'foo';
+    o.revisionId = 'foo';
     o.type = 'foo';
   }
   buildCounterSchema--;
@@ -944,6 +946,14 @@ void checkSchema(api.Schema o) {
     );
     unittest.expect(
       o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.revisionCreateTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.revisionId!,
       unittest.equals('foo'),
     );
     unittest.expect(

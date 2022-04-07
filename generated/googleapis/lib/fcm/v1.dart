@@ -268,6 +268,10 @@ class AndroidNotification {
   /// See [String Resources](https://goo.gl/NdFZGI) for more information.
   core.String? bodyLocKey;
 
+  /// If set, display notifications delivered to the device will be handled by
+  /// the app instead of the proxy.
+  core.bool? bypassProxyNotification;
+
   /// The
   /// [notification's channel id](https://developer.android.com/guide/topics/ui/notifiers/notifications#ManageChannels)
   /// (new in Android O).
@@ -465,6 +469,7 @@ class AndroidNotification {
     this.body,
     this.bodyLocArgs,
     this.bodyLocKey,
+    this.bypassProxyNotification,
     this.channelId,
     this.clickAction,
     this.color,
@@ -499,6 +504,9 @@ class AndroidNotification {
               : null,
           bodyLocKey: _json.containsKey('bodyLocKey')
               ? _json['bodyLocKey'] as core.String
+              : null,
+          bypassProxyNotification: _json.containsKey('bypassProxyNotification')
+              ? _json['bypassProxyNotification'] as core.bool
               : null,
           channelId: _json.containsKey('channelId')
               ? _json['channelId'] as core.String
@@ -568,6 +576,8 @@ class AndroidNotification {
         if (body != null) 'body': body!,
         if (bodyLocArgs != null) 'bodyLocArgs': bodyLocArgs!,
         if (bodyLocKey != null) 'bodyLocKey': bodyLocKey!,
+        if (bypassProxyNotification != null)
+          'bypassProxyNotification': bypassProxyNotification!,
         if (channelId != null) 'channelId': channelId!,
         if (clickAction != null) 'clickAction': clickAction!,
         if (color != null) 'color': color!,

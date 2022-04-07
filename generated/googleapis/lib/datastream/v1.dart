@@ -2094,8 +2094,7 @@ class DiscoverConnectionProfileResponse {
 ///
 /// A typical example is to use it as the request or the response type of an API
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
-/// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
-/// object `{}`.
+/// (google.protobuf.Empty); }
 typedef Empty = $Empty;
 
 /// Represent a user-facing Error.
@@ -3008,7 +3007,7 @@ class MysqlSslConfig {
 class MysqlTable {
   /// MySQL columns in the database.
   ///
-  /// When unspecified as part of include/exclude lists, includes/excludes
+  /// When unspecified as part of include/exclude objects, includes/excludes
   /// everything.
   core.List<MysqlColumn>? mysqlColumns;
 
@@ -3196,6 +3195,9 @@ class OracleColumn {
       };
 }
 
+/// Configuration to drop large object values.
+typedef OracleDropLargeObjects = $Empty;
+
 /// Oracle data source object identifier.
 class OracleObjectIdentifier {
   /// The schema name.
@@ -3361,6 +3363,9 @@ class OracleSchema {
 
 /// Oracle data source configuration
 class OracleSourceConfig {
+  /// Drop large object values.
+  OracleDropLargeObjects? dropLargeObjects;
+
   /// Oracle objects to exclude from the stream.
   OracleRdbms? excludeObjects;
 
@@ -3368,12 +3373,17 @@ class OracleSourceConfig {
   OracleRdbms? includeObjects;
 
   OracleSourceConfig({
+    this.dropLargeObjects,
     this.excludeObjects,
     this.includeObjects,
   });
 
   OracleSourceConfig.fromJson(core.Map _json)
       : this(
+          dropLargeObjects: _json.containsKey('dropLargeObjects')
+              ? OracleDropLargeObjects.fromJson(_json['dropLargeObjects']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           excludeObjects: _json.containsKey('excludeObjects')
               ? OracleRdbms.fromJson(_json['excludeObjects']
                   as core.Map<core.String, core.dynamic>)
@@ -3385,6 +3395,7 @@ class OracleSourceConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (dropLargeObjects != null) 'dropLargeObjects': dropLargeObjects!,
         if (excludeObjects != null) 'excludeObjects': excludeObjects!,
         if (includeObjects != null) 'includeObjects': includeObjects!,
       };
@@ -3394,7 +3405,7 @@ class OracleSourceConfig {
 class OracleTable {
   /// Oracle columns in the schema.
   ///
-  /// When unspecified as part of inclue/exclude lists, includes/excludes
+  /// When unspecified as part of include/exclude objects, includes/excludes
   /// everything.
   core.List<OracleColumn>? oracleColumns;
 
@@ -3640,10 +3651,10 @@ class Route {
 
 /// The configuration of the stream source.
 class SourceConfig {
-  /// MySQL data source configuration
+  /// MySQL data source configuration.
   MysqlSourceConfig? mysqlSourceConfig;
 
-  /// Oracle data source configuration
+  /// Oracle data source configuration.
   OracleSourceConfig? oracleSourceConfig;
 
   /// Source connection profile resoource.

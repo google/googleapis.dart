@@ -310,15 +310,7 @@ class ProjectsLocationsEnvironmentsResource {
   /// to 3 must be provided in the `config.nodeCount` field. Supported for Cloud
   /// Composer environments in versions composer-1.*.*-airflow-*.*.*. *
   /// `config.webServerNetworkAccessControl` * Replace the environment's current
-  /// `WebServerNetworkAccessControl`. * `config.databaseConfig.machineType` *
-  /// Cloud SQL machine type used by Airflow database. It has to be one of:
-  /// db-n1-standard-2, db-n1-standard-4, db-n1-standard-8 or db-n1-standard-16.
-  /// Supported for Cloud Composer environments in versions
-  /// composer-1.*.*-airflow-*.*.*. * `config.webServerConfig.machineType` *
-  /// Machine type on which Airflow web server is running. It has to be one of:
-  /// composer-n1-webserver-2, composer-n1-webserver-4 or
-  /// composer-n1-webserver-8. Supported for Cloud Composer environments in
-  /// versions composer-1.*.*-airflow-*.*.*. *
+  /// `WebServerNetworkAccessControl`. *
   /// `config.softwareConfig.airflowConfigOverrides` * Replace all Apache
   /// Airflow config overrides. If a replacement config overrides map is not
   /// included in `environment`, all config overrides are cleared. It is an
@@ -626,14 +618,13 @@ class AllowedIpRange {
 
 /// The configuration of Cloud SQL instance that is used by the Apache Airflow
 /// software.
-///
-/// Supported for Cloud Composer environments in versions
-/// composer-1.*.*-airflow-*.*.*.
 class DatabaseConfig {
   /// Cloud SQL machine type used by Airflow database.
   ///
   /// It has to be one of: db-n1-standard-2, db-n1-standard-4, db-n1-standard-8
   /// or db-n1-standard-16. If not specified, db-n1-standard-2 will be used.
+  /// Supported for Cloud Composer environments in versions
+  /// composer-1.*.*-airflow-*.*.*.
   ///
   /// Optional.
   core.String? machineType;
@@ -659,10 +650,11 @@ class DatabaseConfig {
 /// The time of day and time zone are either specified elsewhere or are
 /// insignificant. The date is relative to the Gregorian Calendar. This can
 /// represent one of the following: * A full date, with non-zero year, month,
-/// and day values * A month and day, with a zero year (e.g., an anniversary) *
-/// A year on its own, with a zero month and a zero day * A year and month, with
-/// a zero day (e.g., a credit card expiration date) Related types: *
-/// google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
+/// and day values. * A month and day, with a zero year (for example, an
+/// anniversary). * A year on its own, with a zero month and a zero day. * A
+/// year and month, with a zero day (for example, a credit card expiration
+/// date). Related types: * google.type.TimeOfDay * google.type.DateTime *
+/// google.protobuf.Timestamp
 typedef Date = $Date;
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -670,8 +662,7 @@ typedef Date = $Date;
 ///
 /// A typical example is to use it as the request or the response type of an API
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
-/// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
-/// object `{}`.
+/// (google.protobuf.Empty); }
 typedef Empty = $Empty;
 
 /// The encryption options for the Cloud Composer environment and its
@@ -821,9 +812,6 @@ class EnvironmentConfig {
 
   /// The configuration settings for Cloud SQL instance used internally by
   /// Apache Airflow software.
-  ///
-  /// This field is supported for Cloud Composer environments in versions
-  /// composer-1.*.*-airflow-*.*.*.
   ///
   /// Optional.
   DatabaseConfig? databaseConfig;
@@ -1111,7 +1099,7 @@ class ImageVersion {
   core.bool? creationDisabled;
 
   /// The string identifier of the ImageVersion, in the form:
-  /// "composer-x.y.z-airflow-a.b(.c)"
+  /// "composer-x.y.z-airflow-a.b.c"
   core.String? imageVersionId;
 
   /// Whether this is the default ImageVersion used by Composer during
@@ -1330,7 +1318,7 @@ class MaintenanceWindow {
 class NodeConfig {
   /// The disk size in GB used for node VMs.
   ///
-  /// Minimum size is 20GB. If unspecified, defaults to 100GB. Cannot be
+  /// Minimum size is 30GB. If unspecified, defaults to 100GB. Cannot be
   /// updated. This field is supported for Cloud Composer environments in
   /// versions composer-1.*.*-airflow-*.*.*.
   ///
@@ -1861,19 +1849,23 @@ class SoftwareConfig {
   ///
   /// This encapsulates both the version of Cloud Composer functionality and the
   /// version of Apache Airflow. It must match the regular expression
-  /// `composer-([0-9]+\.[0-9]+\.[0-9]+|latest)-airflow-[0-9]+\.[0-9]+(\.[0-9]+.*)?`.
+  /// `composer-([0-9]+(\.[0-9]+\.[0-9]+(-preview\.[0-9]+)?)?|latest)-airflow-([0-9]+(\.[0-9]+(\.[0-9]+)?)?)`.
   /// When used as input, the server also checks if the provided version is
   /// supported and denies the request for an unsupported version. The Cloud
-  /// Composer portion of the version is a
-  /// [semantic version](https://semver.org) or `latest`. When the patch version
-  /// is omitted, the current Cloud Composer patch version is selected. When
-  /// `latest` is provided instead of an explicit version number, the server
-  /// replaces `latest` with the current Cloud Composer version and stores that
-  /// version number in the same field. The portion of the image version that
-  /// follows *airflow-* is an official Apache Airflow repository
-  /// [release name](https://github.com/apache/incubator-airflow/releases). See
-  /// also \[Version
-  /// List\](/composer/docs/concepts/versioning/composer-versions).
+  /// Composer portion of the image version is a full
+  /// [semantic version](https://semver.org), or an alias in the form of major
+  /// version number or `latest`. When an alias is provided, the server replaces
+  /// it with the current Cloud Composer version that satisfies the alias. The
+  /// Apache Airflow portion of the image version is a full semantic version
+  /// that points to one of the supported Apache Airflow versions, or an alias
+  /// in the form of only major or major.minor versions specified. When an alias
+  /// is provided, the server replaces it with the latest Apache Airflow version
+  /// that satisfies the alias and is supported in the given Cloud Composer
+  /// version. In all cases, the resolved image version is stored in the same
+  /// field. See also \[version
+  /// list\](/composer/docs/concepts/versioning/composer-versions) and
+  /// \[versioning
+  /// overview\](/composer/docs/concepts/versioning/composer-versioning-overview).
   core.String? imageVersion;
 
   /// Custom Python Package Index (PyPI) packages to be installed in the

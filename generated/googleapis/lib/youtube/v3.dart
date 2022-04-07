@@ -7897,6 +7897,9 @@ class ChannelStatus {
 /// Information specific to a store on a merchandising platform linked to a
 /// YouTube channel.
 class ChannelToStoreLinkDetails {
+  /// Google Merchant Center id of the store.
+  core.String? merchantId;
+
   /// Name of the store.
   core.String? storeName;
 
@@ -7904,12 +7907,16 @@ class ChannelToStoreLinkDetails {
   core.String? storeUrl;
 
   ChannelToStoreLinkDetails({
+    this.merchantId,
     this.storeName,
     this.storeUrl,
   });
 
   ChannelToStoreLinkDetails.fromJson(core.Map _json)
       : this(
+          merchantId: _json.containsKey('merchantId')
+              ? _json['merchantId'] as core.String
+              : null,
           storeName: _json.containsKey('storeName')
               ? _json['storeName'] as core.String
               : null,
@@ -7919,6 +7926,7 @@ class ChannelToStoreLinkDetails {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (merchantId != null) 'merchantId': merchantId!,
         if (storeName != null) 'storeName': storeName!,
         if (storeUrl != null) 'storeUrl': storeUrl!,
       };
@@ -9103,6 +9111,7 @@ class ContentRating {
   /// - "mibacVap"
   /// - "mibacVm12"
   /// - "mibacVm14"
+  /// - "mibacVm16"
   /// - "mibacVm18"
   /// - "mibacUnrated"
   core.String? mibacRating;
@@ -11364,6 +11373,58 @@ class LiveChatFanFundingEventDetails {
       };
 }
 
+class LiveChatGiftMembershipReceivedDetails {
+  /// The ID of the membership gifting message that is related to this gift
+  /// membership.
+  ///
+  /// This ID will always refer to a message whose type is
+  /// 'membershipGiftingEvent'.
+  core.String? associatedMembershipGiftingMessageId;
+
+  /// The ID of the user that made the membership gifting purchase.
+  ///
+  /// This matches the `snippet.authorChannelId` of the associated membership
+  /// gifting message.
+  core.String? gifterChannelId;
+
+  /// The name of the Level at which the viewer is a member.
+  ///
+  /// This matches the
+  /// `snippet.membershipGiftingDetails.giftMembershipsLevelName` of the
+  /// associated membership gifting message. The Level names are defined by the
+  /// YouTube channel offering the Membership. In some situations this field
+  /// isn't filled.
+  core.String? memberLevelName;
+
+  LiveChatGiftMembershipReceivedDetails({
+    this.associatedMembershipGiftingMessageId,
+    this.gifterChannelId,
+    this.memberLevelName,
+  });
+
+  LiveChatGiftMembershipReceivedDetails.fromJson(core.Map _json)
+      : this(
+          associatedMembershipGiftingMessageId:
+              _json.containsKey('associatedMembershipGiftingMessageId')
+                  ? _json['associatedMembershipGiftingMessageId'] as core.String
+                  : null,
+          gifterChannelId: _json.containsKey('gifterChannelId')
+              ? _json['gifterChannelId'] as core.String
+              : null,
+          memberLevelName: _json.containsKey('memberLevelName')
+              ? _json['memberLevelName'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (associatedMembershipGiftingMessageId != null)
+          'associatedMembershipGiftingMessageId':
+              associatedMembershipGiftingMessageId!,
+        if (gifterChannelId != null) 'gifterChannelId': gifterChannelId!,
+        if (memberLevelName != null) 'memberLevelName': memberLevelName!,
+      };
+}
+
 class LiveChatMemberMilestoneChatDetails {
   /// The name of the Level at which the viever is a member.
   ///
@@ -11405,6 +11466,40 @@ class LiveChatMemberMilestoneChatDetails {
         if (memberLevelName != null) 'memberLevelName': memberLevelName!,
         if (memberMonth != null) 'memberMonth': memberMonth!,
         if (userComment != null) 'userComment': userComment!,
+      };
+}
+
+class LiveChatMembershipGiftingDetails {
+  /// The number of gift memberships purchased by the user.
+  core.int? giftMembershipsCount;
+
+  /// The name of the level of the gift memberships purchased by the user.
+  ///
+  /// The Level names are defined by the YouTube channel offering the
+  /// Membership. In some situations this field isn't filled.
+  core.String? giftMembershipsLevelName;
+
+  LiveChatMembershipGiftingDetails({
+    this.giftMembershipsCount,
+    this.giftMembershipsLevelName,
+  });
+
+  LiveChatMembershipGiftingDetails.fromJson(core.Map _json)
+      : this(
+          giftMembershipsCount: _json.containsKey('giftMembershipsCount')
+              ? _json['giftMembershipsCount'] as core.int
+              : null,
+          giftMembershipsLevelName:
+              _json.containsKey('giftMembershipsLevelName')
+                  ? _json['giftMembershipsLevelName'] as core.String
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (giftMembershipsCount != null)
+          'giftMembershipsCount': giftMembershipsCount!,
+        if (giftMembershipsLevelName != null)
+          'giftMembershipsLevelName': giftMembershipsLevelName!,
       };
 }
 
@@ -11667,7 +11762,7 @@ class LiveChatMessageRetractedDetails {
       };
 }
 
-/// Next ID: 31
+/// Next ID: 33
 class LiveChatMessageSnippet {
   /// The ID of the user that authored this message, this field is not always
   /// filled.
@@ -11675,6 +11770,8 @@ class LiveChatMessageSnippet {
   /// textMessageEvent - the user that wrote the message fanFundingEvent - the
   /// user that funded the broadcast newSponsorEvent - the user that just became
   /// a sponsor memberMilestoneChatEvent - the member that sent the message
+  /// membershipGiftingEvent - the user that made the purchase
+  /// giftMembershipReceivedEvent - the user that received the gift membership
   /// messageDeletedEvent - the moderator that took the action
   /// messageRetractedEvent - the author that retracted their message
   /// userBannedEvent - the moderator that took the action superChatEvent - the
@@ -11692,6 +11789,10 @@ class LiveChatMessageSnippet {
   /// 'fanFundingEvent'.
   LiveChatFanFundingEventDetails? fanFundingEventDetails;
 
+  /// Details about the Gift Membership Received event, this is only set if the
+  /// type is 'giftMembershipReceivedEvent'.
+  LiveChatGiftMembershipReceivedDetails? giftMembershipReceivedDetails;
+
   /// Whether the message has display content that should be displayed to users.
   core.bool? hasDisplayContent;
   core.String? liveChatId;
@@ -11699,6 +11800,10 @@ class LiveChatMessageSnippet {
   /// Details about the Member Milestone Chat event, this is only set if the
   /// type is 'memberMilestoneChatEvent'.
   LiveChatMemberMilestoneChatDetails? memberMilestoneChatDetails;
+
+  /// Details about the Membership Gifting event, this is only set if the type
+  /// is 'membershipGiftingEvent'.
+  LiveChatMembershipGiftingDetails? membershipGiftingDetails;
   LiveChatMessageDeletedDetails? messageDeletedDetails;
   LiveChatMessageRetractedDetails? messageRetractedDetails;
 
@@ -11735,6 +11840,8 @@ class LiveChatMessageSnippet {
   /// - "sponsorOnlyModeEndedEvent"
   /// - "newSponsorEvent"
   /// - "memberMilestoneChatEvent"
+  /// - "membershipGiftingEvent"
+  /// - "giftMembershipReceivedEvent"
   /// - "messageDeletedEvent"
   /// - "messageRetractedEvent"
   /// - "userBannedEvent"
@@ -11747,9 +11854,11 @@ class LiveChatMessageSnippet {
     this.authorChannelId,
     this.displayMessage,
     this.fanFundingEventDetails,
+    this.giftMembershipReceivedDetails,
     this.hasDisplayContent,
     this.liveChatId,
     this.memberMilestoneChatDetails,
+    this.membershipGiftingDetails,
     this.messageDeletedDetails,
     this.messageRetractedDetails,
     this.newSponsorDetails,
@@ -11774,6 +11883,12 @@ class LiveChatMessageSnippet {
                   _json['fanFundingEventDetails']
                       as core.Map<core.String, core.dynamic>)
               : null,
+          giftMembershipReceivedDetails:
+              _json.containsKey('giftMembershipReceivedDetails')
+                  ? LiveChatGiftMembershipReceivedDetails.fromJson(
+                      _json['giftMembershipReceivedDetails']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           hasDisplayContent: _json.containsKey('hasDisplayContent')
               ? _json['hasDisplayContent'] as core.bool
               : null,
@@ -11784,6 +11899,12 @@ class LiveChatMessageSnippet {
               _json.containsKey('memberMilestoneChatDetails')
                   ? LiveChatMemberMilestoneChatDetails.fromJson(
                       _json['memberMilestoneChatDetails']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          membershipGiftingDetails:
+              _json.containsKey('membershipGiftingDetails')
+                  ? LiveChatMembershipGiftingDetails.fromJson(
+                      _json['membershipGiftingDetails']
                           as core.Map<core.String, core.dynamic>)
                   : null,
           messageDeletedDetails: _json.containsKey('messageDeletedDetails')
@@ -11829,10 +11950,14 @@ class LiveChatMessageSnippet {
         if (displayMessage != null) 'displayMessage': displayMessage!,
         if (fanFundingEventDetails != null)
           'fanFundingEventDetails': fanFundingEventDetails!,
+        if (giftMembershipReceivedDetails != null)
+          'giftMembershipReceivedDetails': giftMembershipReceivedDetails!,
         if (hasDisplayContent != null) 'hasDisplayContent': hasDisplayContent!,
         if (liveChatId != null) 'liveChatId': liveChatId!,
         if (memberMilestoneChatDetails != null)
           'memberMilestoneChatDetails': memberMilestoneChatDetails!,
+        if (membershipGiftingDetails != null)
+          'membershipGiftingDetails': membershipGiftingDetails!,
         if (messageDeletedDetails != null)
           'messageDeletedDetails': messageDeletedDetails!,
         if (messageRetractedDetails != null)

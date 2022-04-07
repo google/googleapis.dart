@@ -14,8 +14,8 @@
 
 /// Google Keep API - v1
 ///
-/// This API is an enterprise-only API used to create and manage the Keep notes
-/// within your domain, including resolving issues identified by CASB software.
+/// The Google Keep API is used in an enterprise environment to manage Google
+/// Keep content and resolve issues identified by cloud security software.
 ///
 /// For more information, see <https://developers.google.com/keep/api>
 ///
@@ -48,8 +48,8 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
         PartialDownloadOptions,
         ByteRange;
 
-/// This API is an enterprise-only API used to create and manage the Keep notes
-/// within your domain, including resolving issues identified by CASB software.
+/// The Google Keep API is used in an enterprise environment to manage Google
+/// Keep content and resolve issues identified by cloud security software.
 class KeepApi {
   /// See, edit, create and permanently delete all your Google Keep data
   static const keepScope = 'https://www.googleapis.com/auth/keep';
@@ -569,8 +569,7 @@ class CreatePermissionRequest {
 ///
 /// A typical example is to use it as the request or the response type of an API
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
-/// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
-/// object `{}`.
+/// (google.protobuf.Empty); }
 typedef Empty = $Empty;
 
 /// Describes a single Google Family.

@@ -299,7 +299,7 @@ class FoldersAssetsResource {
   /// [startTime] - The time at which the updated SecurityMarks take effect. If
   /// not set uses current server time. Updates will be applied to the
   /// SecurityMarks that are active immediately preceding this time. Must be
-  /// smaller or equal to the server time.
+  /// earlier or equal to the server time.
   ///
   /// [updateMask] - The FieldMask to use when updating the security marks
   /// resource. The field mask must not contain duplicate fields. If empty or
@@ -1288,7 +1288,7 @@ class FoldersSourcesFindingsResource {
   /// [startTime] - The time at which the updated SecurityMarks take effect. If
   /// not set uses current server time. Updates will be applied to the
   /// SecurityMarks that are active immediately preceding this time. Must be
-  /// smaller or equal to the server time.
+  /// earlier or equal to the server time.
   ///
   /// [updateMask] - The FieldMask to use when updating the security marks
   /// resource. The field mask must not contain duplicate fields. If empty or
@@ -1347,9 +1347,9 @@ class FoldersSourcesFindingsExternalSystemsResource {
   /// Request parameters:
   ///
   /// [name] - External System Name e.g. jira, demisto, etc. e.g.:
-  /// organizations/1234/sources/5678/findings/123456/externalSystems/jira
-  /// folders/1234/sources/5678/findings/123456/externalSystems/jira
-  /// projects/1234/sources/5678/findings/123456/externalSystems/jira
+  /// `organizations/1234/sources/5678/findings/123456/externalSystems/jira`
+  /// `folders/1234/sources/5678/findings/123456/externalSystems/jira`
+  /// `projects/1234/sources/5678/findings/123456/externalSystems/jira`
   /// Value must have pattern
   /// `^folders/\[^/\]+/sources/\[^/\]+/findings/\[^/\]+/externalSystems/\[^/\]+$`.
   ///
@@ -1747,7 +1747,7 @@ class OrganizationsAssetsResource {
   /// [startTime] - The time at which the updated SecurityMarks take effect. If
   /// not set uses current server time. Updates will be applied to the
   /// SecurityMarks that are active immediately preceding this time. Must be
-  /// smaller or equal to the server time.
+  /// earlier or equal to the server time.
   ///
   /// [updateMask] - The FieldMask to use when updating the security marks
   /// resource. The field mask must not contain duplicate fields. If empty or
@@ -3459,7 +3459,7 @@ class OrganizationsSourcesFindingsResource {
   /// [startTime] - The time at which the updated SecurityMarks take effect. If
   /// not set uses current server time. Updates will be applied to the
   /// SecurityMarks that are active immediately preceding this time. Must be
-  /// smaller or equal to the server time.
+  /// earlier or equal to the server time.
   ///
   /// [updateMask] - The FieldMask to use when updating the security marks
   /// resource. The field mask must not contain duplicate fields. If empty or
@@ -3519,9 +3519,9 @@ class OrganizationsSourcesFindingsExternalSystemsResource {
   /// Request parameters:
   ///
   /// [name] - External System Name e.g. jira, demisto, etc. e.g.:
-  /// organizations/1234/sources/5678/findings/123456/externalSystems/jira
-  /// folders/1234/sources/5678/findings/123456/externalSystems/jira
-  /// projects/1234/sources/5678/findings/123456/externalSystems/jira
+  /// `organizations/1234/sources/5678/findings/123456/externalSystems/jira`
+  /// `folders/1234/sources/5678/findings/123456/externalSystems/jira`
+  /// `projects/1234/sources/5678/findings/123456/externalSystems/jira`
   /// Value must have pattern
   /// `^organizations/\[^/\]+/sources/\[^/\]+/findings/\[^/\]+/externalSystems/\[^/\]+$`.
   ///
@@ -3778,7 +3778,7 @@ class ProjectsAssetsResource {
   /// [startTime] - The time at which the updated SecurityMarks take effect. If
   /// not set uses current server time. Updates will be applied to the
   /// SecurityMarks that are active immediately preceding this time. Must be
-  /// smaller or equal to the server time.
+  /// earlier or equal to the server time.
   ///
   /// [updateMask] - The FieldMask to use when updating the security marks
   /// resource. The field mask must not contain duplicate fields. If empty or
@@ -4768,7 +4768,7 @@ class ProjectsSourcesFindingsResource {
   /// [startTime] - The time at which the updated SecurityMarks take effect. If
   /// not set uses current server time. Updates will be applied to the
   /// SecurityMarks that are active immediately preceding this time. Must be
-  /// smaller or equal to the server time.
+  /// earlier or equal to the server time.
   ///
   /// [updateMask] - The FieldMask to use when updating the security marks
   /// resource. The field mask must not contain duplicate fields. If empty or
@@ -4827,9 +4827,9 @@ class ProjectsSourcesFindingsExternalSystemsResource {
   /// Request parameters:
   ///
   /// [name] - External System Name e.g. jira, demisto, etc. e.g.:
-  /// organizations/1234/sources/5678/findings/123456/externalSystems/jira
-  /// folders/1234/sources/5678/findings/123456/externalSystems/jira
-  /// projects/1234/sources/5678/findings/123456/externalSystems/jira
+  /// `organizations/1234/sources/5678/findings/123456/externalSystems/jira`
+  /// `folders/1234/sources/5678/findings/123456/externalSystems/jira`
+  /// `projects/1234/sources/5678/findings/123456/externalSystems/jira`
   /// Value must have pattern
   /// `^projects/\[^/\]+/sources/\[^/\]+/findings/\[^/\]+/externalSystems/\[^/\]+$`.
   ///
@@ -5502,8 +5502,7 @@ class Cvssv3 {
 ///
 /// A typical example is to use it as the request or the response type of an API
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
-/// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
-/// object `{}`.
+/// (google.protobuf.Empty); }
 typedef Empty = $Empty;
 
 /// Represents a textual expression in the Common Expression Language (CEL)
@@ -5594,6 +5593,9 @@ class Finding {
   /// - "SCC_ERROR" : Describes an error that prevents some SCC functionality.
   core.String? findingClass;
 
+  /// Represents IAM bindings associated with the Finding.
+  core.List<IamBinding>? iamBindings;
+
   /// Represents what's commonly known as an Indicator of compromise (IoC) in
   /// computer forensics.
   ///
@@ -5607,8 +5609,8 @@ class Finding {
   /// See: https://attack.mitre.org
   MitreAttack? mitreAttack;
 
-  /// Indicates the mute state of a finding (either unspecified, muted, unmuted
-  /// or undefined).
+  /// Indicates the mute state of a finding (either muted, unmuted or
+  /// undefined).
   ///
   /// Unlike other attributes of a finding, a finding provider shouldn't set the
   /// value of mute.
@@ -5639,6 +5641,9 @@ class Finding {
   /// Example:
   /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}"
   core.String? name;
+
+  /// Next steps associate to the finding.
+  core.String? nextSteps;
 
   /// The relative resource name of the source the finding belongs to.
   ///
@@ -5700,7 +5705,7 @@ class Finding {
   /// Threat: Indicates a threat that is able to cause operational impact but
   /// may not access data or execute unauthorized code.
   /// - "LOW" : Vulnerability: A low risk vulnerability hampers a security
-  /// organization’s ability to detect vulnerabilities or active threats in
+  /// organization's ability to detect vulnerabilities or active threats in
   /// their deployment, or prevents the root cause investigation of security
   /// issues. An example is monitoring and logs being disabled for resource
   /// configurations and access. Threat: Indicates a threat that has obtained
@@ -5743,12 +5748,14 @@ class Finding {
     this.externalSystems,
     this.externalUri,
     this.findingClass,
+    this.iamBindings,
     this.indicator,
     this.mitreAttack,
     this.mute,
     this.muteInitiator,
     this.muteUpdateTime,
     this.name,
+    this.nextSteps,
     this.parent,
     this.resourceName,
     this.securityMarks,
@@ -5793,6 +5800,12 @@ class Finding {
           findingClass: _json.containsKey('findingClass')
               ? _json['findingClass'] as core.String
               : null,
+          iamBindings: _json.containsKey('iamBindings')
+              ? (_json['iamBindings'] as core.List)
+                  .map((value) => IamBinding.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           indicator: _json.containsKey('indicator')
               ? Indicator.fromJson(
                   _json['indicator'] as core.Map<core.String, core.dynamic>)
@@ -5809,6 +5822,9 @@ class Finding {
               ? _json['muteUpdateTime'] as core.String
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          nextSteps: _json.containsKey('nextSteps')
+              ? _json['nextSteps'] as core.String
+              : null,
           parent: _json.containsKey('parent')
               ? _json['parent'] as core.String
               : null,
@@ -5842,12 +5858,14 @@ class Finding {
         if (externalSystems != null) 'externalSystems': externalSystems!,
         if (externalUri != null) 'externalUri': externalUri!,
         if (findingClass != null) 'findingClass': findingClass!,
+        if (iamBindings != null) 'iamBindings': iamBindings!,
         if (indicator != null) 'indicator': indicator!,
         if (mitreAttack != null) 'mitreAttack': mitreAttack!,
         if (mute != null) 'mute': mute!,
         if (muteInitiator != null) 'muteInitiator': muteInitiator!,
         if (muteUpdateTime != null) 'muteUpdateTime': muteUpdateTime!,
         if (name != null) 'name': name!,
+        if (nextSteps != null) 'nextSteps': nextSteps!,
         if (parent != null) 'parent': parent!,
         if (resourceName != null) 'resourceName': resourceName!,
         if (securityMarks != null) 'securityMarks': securityMarks!,
@@ -5971,11 +5989,7 @@ class GoogleCloudSecuritycenterV1BigQueryExport {
   /// for all value types. * `>`, `<`, `>=`, `<=` for integer values. * `:`,
   /// meaning substring matching, for strings. The supported value types are: *
   /// string literals in quotes. * integer literals without quotes. * boolean
-  /// literals `true` and `false` without quotes. Please see the proto
-  /// documentation in the finding
-  /// (https://source.corp.google.com/piper///depot/google3/google/cloud/securitycenter/v1/finding.proto)
-  /// and in the ListFindingsRequest for valid filter syntax.
-  /// (https://source.corp.google.com/piper///depot/google3/google/cloud/securitycenter/v1/securitycenter_service.proto).
+  /// literals `true` and `false` without quotes.
   core.String? filter;
 
   /// Email address of the user who last edited the big query export.
@@ -6074,9 +6088,10 @@ class GoogleCloudSecuritycenterV1ExternalSystem {
 
   /// External System Name e.g. jira, demisto, etc.
   ///
-  /// e.g.: organizations/1234/sources/5678/findings/123456/externalSystems/jira
-  /// folders/1234/sources/5678/findings/123456/externalSystems/jira
-  /// projects/1234/sources/5678/findings/123456/externalSystems/jira
+  /// e.g.:
+  /// `organizations/1234/sources/5678/findings/123456/externalSystems/jira`
+  /// `folders/1234/sources/5678/findings/123456/externalSystems/jira`
+  /// `projects/1234/sources/5678/findings/123456/externalSystems/jira`
   core.String? name;
 
   /// Most recent status of the corresponding finding's ticket/tracker in the
@@ -6619,6 +6634,49 @@ class GroupResult {
       };
 }
 
+/// Represents a particular IAM binding, which captures a member's role
+/// addition, removal, or state.
+class IamBinding {
+  /// The action that was performed on a Binding.
+  /// Possible string values are:
+  /// - "ACTION_UNSPECIFIED" : Unspecified.
+  /// - "ADD" : Addition of a Binding.
+  /// - "REMOVE" : Removal of a Binding.
+  core.String? action;
+
+  /// A single identity requesting access for a Cloud Platform resource, e.g.
+  /// "foo@google.com".
+  core.String? member;
+
+  /// Role that is assigned to "members".
+  ///
+  /// For example, "roles/viewer", "roles/editor", or "roles/owner".
+  core.String? role;
+
+  IamBinding({
+    this.action,
+    this.member,
+    this.role,
+  });
+
+  IamBinding.fromJson(core.Map _json)
+      : this(
+          action: _json.containsKey('action')
+              ? _json['action'] as core.String
+              : null,
+          member: _json.containsKey('member')
+              ? _json['member'] as core.String
+              : null,
+          role: _json.containsKey('role') ? _json['role'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (action != null) 'action': action!,
+        if (member != null) 'member': member!,
+        if (role != null) 'role': role!,
+      };
+}
+
 /// Cloud IAM Policy information associated with the Google Cloud resource
 /// described by the Security Command Center asset.
 ///
@@ -7075,9 +7133,9 @@ class MitreAttack {
   ///
   /// primary_techniques is a repeated field because there are multiple levels
   /// of MITRE ATT&CK techniques. If the technique most closely represented by
-  /// this finding is a sub-technique (e.g. SCANNING_IP_BLOCKS), both the
+  /// this finding is a sub-technique (e.g. `SCANNING_IP_BLOCKS`), both the
   /// sub-technique and its parent technique(s) will be listed (e.g.
-  /// SCANNING_IP_BLOCKS, ACTIVE_SCANNING).
+  /// `SCANNING_IP_BLOCKS`, `ACTIVE_SCANNING`).
   core.List<core.String>? primaryTechniques;
 
   /// The MITRE ATT&CK version referenced by the above fields.
@@ -7490,7 +7548,7 @@ class Resource {
   /// The full resource name of resource's parent.
   core.String? parentName;
 
-  /// The project id that the resource belongs to.
+  /// The project ID that the resource belongs to.
   core.String? projectDisplayName;
 
   /// The full resource name of project that the resource belongs to.

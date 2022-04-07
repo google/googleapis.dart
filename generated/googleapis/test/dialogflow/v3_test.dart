@@ -104,6 +104,7 @@ api.GoogleCloudDialogflowCxV3Agent buildGoogleCloudDialogflowCxV3Agent() {
     o.displayName = 'foo';
     o.enableSpellCorrection = true;
     o.enableStackdriverLogging = true;
+    o.locked = true;
     o.name = 'foo';
     o.securitySettings = 'foo';
     o.speechToTextSettings =
@@ -138,6 +139,7 @@ void checkGoogleCloudDialogflowCxV3Agent(api.GoogleCloudDialogflowCxV3Agent o) {
     );
     unittest.expect(o.enableSpellCorrection!, unittest.isTrue);
     unittest.expect(o.enableStackdriverLogging!, unittest.isTrue);
+    unittest.expect(o.locked!, unittest.isTrue);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -1582,6 +1584,7 @@ api.GoogleCloudDialogflowCxV3ExportAgentRequest
   buildCounterGoogleCloudDialogflowCxV3ExportAgentRequest++;
   if (buildCounterGoogleCloudDialogflowCxV3ExportAgentRequest < 3) {
     o.agentUri = 'foo';
+    o.dataFormat = 'foo';
     o.environment = 'foo';
   }
   buildCounterGoogleCloudDialogflowCxV3ExportAgentRequest--;
@@ -1594,6 +1597,10 @@ void checkGoogleCloudDialogflowCxV3ExportAgentRequest(
   if (buildCounterGoogleCloudDialogflowCxV3ExportAgentRequest < 3) {
     unittest.expect(
       o.agentUri!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.dataFormat!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -5157,6 +5164,7 @@ api.GoogleCloudDialogflowCxV3TestConfig
   buildCounterGoogleCloudDialogflowCxV3TestConfig++;
   if (buildCounterGoogleCloudDialogflowCxV3TestConfig < 3) {
     o.flow = 'foo';
+    o.page = 'foo';
     o.trackingParameters = buildUnnamed82();
   }
   buildCounterGoogleCloudDialogflowCxV3TestConfig--;
@@ -5169,6 +5177,10 @@ void checkGoogleCloudDialogflowCxV3TestConfig(
   if (buildCounterGoogleCloudDialogflowCxV3TestConfig < 3) {
     unittest.expect(
       o.flow!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.page!,
       unittest.equals('foo'),
     );
     checkUnnamed82(o.trackingParameters!);

@@ -568,14 +568,21 @@ core.int buildCounterGenerateUploadUrlRequest = 0;
 api.GenerateUploadUrlRequest buildGenerateUploadUrlRequest() {
   final o = api.GenerateUploadUrlRequest();
   buildCounterGenerateUploadUrlRequest++;
-  if (buildCounterGenerateUploadUrlRequest < 3) {}
+  if (buildCounterGenerateUploadUrlRequest < 3) {
+    o.kmsKeyName = 'foo';
+  }
   buildCounterGenerateUploadUrlRequest--;
   return o;
 }
 
 void checkGenerateUploadUrlRequest(api.GenerateUploadUrlRequest o) {
   buildCounterGenerateUploadUrlRequest++;
-  if (buildCounterGenerateUploadUrlRequest < 3) {}
+  if (buildCounterGenerateUploadUrlRequest < 3) {
+    unittest.expect(
+      o.kmsKeyName!,
+      unittest.equals('foo'),
+    );
+  }
   buildCounterGenerateUploadUrlRequest--;
 }
 

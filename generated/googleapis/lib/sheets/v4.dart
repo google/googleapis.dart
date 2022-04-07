@@ -464,8 +464,9 @@ class SpreadsheetsValuesResource {
   ///
   /// [spreadsheetId] - The ID of the spreadsheet to update.
   ///
-  /// [range] - The A1 notation of a range to search for a logical table of
-  /// data. Values are appended after the last row of the table.
+  /// [range] - The \[A1 notation\](/sheets/api/guides/concepts#cell) of a range
+  /// to search for a logical table of data. Values are appended after the last
+  /// row of the table.
   ///
   /// [includeValuesInResponse] - Determines if the update response should
   /// include the values of the cells that were appended. By default, responses
@@ -574,8 +575,8 @@ class SpreadsheetsValuesResource {
   /// Clears one or more ranges of values from a spreadsheet.
   ///
   /// The caller must specify the spreadsheet ID and one or more ranges. Only
-  /// values are cleared -- all other properties of the cell (such as
-  /// formatting, data validation, etc..) are kept.
+  /// values are cleared -- all other properties of the cell (such as formatting
+  /// and data validation) are kept.
   ///
   /// [request] - The metadata request object.
   ///
@@ -690,15 +691,16 @@ class SpreadsheetsValuesResource {
   ///
   /// [majorDimension] - The major dimension that results should use. For
   /// example, if the spreadsheet data is: `A1=1,B1=2,A2=3,B2=4`, then
-  /// requesting `range=A1:B2,majorDimension=ROWS` returns `[[1,2],[3,4]]`,
-  /// whereas requesting `range=A1:B2,majorDimension=COLUMNS` returns
+  /// requesting `ranges=["A1:B2"],majorDimension=ROWS` returns `[[1,2],[3,4]]`,
+  /// whereas requesting `ranges=["A1:B2"],majorDimension=COLUMNS` returns
   /// `[[1,3],[2,4]]`.
   /// Possible string values are:
   /// - "DIMENSION_UNSPECIFIED" : The default value, do not use.
   /// - "ROWS" : Operates on the rows of a sheet.
   /// - "COLUMNS" : Operates on the columns of a sheet.
   ///
-  /// [ranges] - The A1 notation or R1C1 notation of the range to retrieve
+  /// [ranges] - The \[A1 notation or R1C1
+  /// notation\](/sheets/api/guides/concepts#cell) of the range to retrieve
   /// values from.
   ///
   /// [valueRenderOption] - How values should be represented in the output. The
@@ -904,7 +906,8 @@ class SpreadsheetsValuesResource {
   ///
   /// [spreadsheetId] - The ID of the spreadsheet to update.
   ///
-  /// [range] - The A1 notation or R1C1 notation of the values to clear.
+  /// [range] - The \[A1 notation or R1C1
+  /// notation\](/sheets/api/guides/concepts#cell) of the values to clear.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -951,8 +954,9 @@ class SpreadsheetsValuesResource {
   ///
   /// [spreadsheetId] - The ID of the spreadsheet to retrieve data from.
   ///
-  /// [range] - The A1 notation or R1C1 notation of the range to retrieve values
-  /// from.
+  /// [range] - The \[A1 notation or R1C1
+  /// notation\](/sheets/api/guides/concepts#cell) of the range to retrieve
+  /// values from.
   ///
   /// [dateTimeRenderOption] - How dates, times, and durations should be
   /// represented in the output. This is ignored if value_render_option is
@@ -1045,7 +1049,8 @@ class SpreadsheetsValuesResource {
   ///
   /// [spreadsheetId] - The ID of the spreadsheet to update.
   ///
-  /// [range] - The A1 notation of the values to update.
+  /// [range] - The \[A1 notation\](/sheets/api/guides/concepts#cell) of the
+  /// values to update.
   ///
   /// [includeValuesInResponse] - Determines if the update response should
   /// include the values of the cells that were updated. By default, responses
@@ -2711,11 +2716,45 @@ class BatchClearValuesByDataFilterRequest {
 
 /// The response when clearing a range of values selected with DataFilters in a
 /// spreadsheet.
-typedef BatchClearValuesByDataFilterResponse = $Response;
+class BatchClearValuesByDataFilterResponse {
+  /// The ranges that were cleared, in \[A1
+  /// notation\](/sheets/api/guides/concepts#cell).
+  ///
+  /// If the requests are for an unbounded range or a ranger larger than the
+  /// bounds of the sheet, this is the actual ranges that were cleared, bounded
+  /// to the sheet's limits.
+  core.List<core.String>? clearedRanges;
+
+  /// The spreadsheet the updates were applied to.
+  core.String? spreadsheetId;
+
+  BatchClearValuesByDataFilterResponse({
+    this.clearedRanges,
+    this.spreadsheetId,
+  });
+
+  BatchClearValuesByDataFilterResponse.fromJson(core.Map _json)
+      : this(
+          clearedRanges: _json.containsKey('clearedRanges')
+              ? (_json['clearedRanges'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          spreadsheetId: _json.containsKey('spreadsheetId')
+              ? _json['spreadsheetId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (clearedRanges != null) 'clearedRanges': clearedRanges!,
+        if (spreadsheetId != null) 'spreadsheetId': spreadsheetId!,
+      };
+}
 
 /// The request for clearing more than one range of values in a spreadsheet.
 class BatchClearValuesRequest {
-  /// The ranges to clear, in A1 or R1C1 notation.
+  /// The ranges to clear, in \[A1 notation or R1C1
+  /// notation\](/sheets/api/guides/concepts#cell).
   core.List<core.String>? ranges;
 
   BatchClearValuesRequest({
@@ -2737,7 +2776,39 @@ class BatchClearValuesRequest {
 }
 
 /// The response when clearing a range of values in a spreadsheet.
-typedef BatchClearValuesResponse = $Response;
+class BatchClearValuesResponse {
+  /// The ranges that were cleared, in A1 notation.
+  ///
+  /// If the requests are for an unbounded range or a ranger larger than the
+  /// bounds of the sheet, this is the actual ranges that were cleared, bounded
+  /// to the sheet's limits.
+  core.List<core.String>? clearedRanges;
+
+  /// The spreadsheet the updates were applied to.
+  core.String? spreadsheetId;
+
+  BatchClearValuesResponse({
+    this.clearedRanges,
+    this.spreadsheetId,
+  });
+
+  BatchClearValuesResponse.fromJson(core.Map _json)
+      : this(
+          clearedRanges: _json.containsKey('clearedRanges')
+              ? (_json['clearedRanges'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          spreadsheetId: _json.containsKey('spreadsheetId')
+              ? _json['spreadsheetId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (clearedRanges != null) 'clearedRanges': clearedRanges!,
+        if (spreadsheetId != null) 'spreadsheetId': spreadsheetId!,
+      };
+}
 
 /// The request for retrieving a range of values in a spreadsheet selected by a
 /// set of DataFilters.
@@ -5409,6 +5480,8 @@ class DataExecutionStatus {
   /// - "DATA_EXECUTION_ERROR_CODE_UNSPECIFIED" : Default value, do not use.
   /// - "TIMED_OUT" : The data execution timed out.
   /// - "TOO_MANY_ROWS" : The data execution returns more rows than the limit.
+  /// - "TOO_MANY_COLUMNS" : The data execution returns more columns than the
+  /// limit.
   /// - "TOO_MANY_CELLS" : The data execution returns more cells than the limit.
   /// - "ENGINE" : Error is received from the backend data execution engine
   /// (e.g. BigQuery). Check error_message for details.
@@ -8358,16 +8431,16 @@ class GridProperties {
 /// All indexes are zero-based. Indexes are half open, i.e. the start index is
 /// inclusive and the end index is exclusive -- \[start_index, end_index).
 /// Missing indexes indicate the range is unbounded on that side. For example,
-/// if `"Sheet1"` is sheet ID 0, then: `Sheet1!A1:A1 == sheet_id: 0,
+/// if `"Sheet1"` is sheet ID 123456, then: `Sheet1!A1:A1 == sheet_id: 123456,
 /// start_row_index: 0, end_row_index: 1, start_column_index: 0,
-/// end_column_index: 1` `Sheet1!A3:B4 == sheet_id: 0, start_row_index: 2,
+/// end_column_index: 1` `Sheet1!A3:B4 == sheet_id: 123456, start_row_index: 2,
 /// end_row_index: 4, start_column_index: 0, end_column_index: 2` `Sheet1!A:B ==
-/// sheet_id: 0, start_column_index: 0, end_column_index: 2` `Sheet1!A5:B ==
-/// sheet_id: 0, start_row_index: 4, start_column_index: 0, end_column_index: 2`
-/// `Sheet1 == sheet_id:0` The start index must always be less than or equal to
-/// the end index. If the start index equals the end index, then the range is
-/// empty. Empty ranges are typically not meaningful and are usually rendered in
-/// the UI as `#REF!`.
+/// sheet_id: 123456, start_column_index: 0, end_column_index: 2` `Sheet1!A5:B
+/// == sheet_id: 123456, start_row_index: 4, start_column_index: 0,
+/// end_column_index: 2` `Sheet1 == sheet_id: 123456` The start index must
+/// always be less than or equal to the end index. If the start index equals the
+/// end index, then the range is empty. Empty ranges are typically not
+/// meaningful and are usually rendered in the UI as `#REF!`.
 class GridRange {
   /// The end column (exclusive) of the range, or not set if unbounded.
   core.int? endColumnIndex;
@@ -14008,7 +14081,8 @@ class UpdateValuesByDataFilterResponse {
   /// `true`.
   ValueRange? updatedData;
 
-  /// The range (in A1 notation) that updates were applied to.
+  /// The range (in \[A1 notation\](/sheets/api/guides/concepts#cell)) that
+  /// updates were applied to.
   core.String? updatedRange;
 
   /// The number of rows where at least one cell in the row was updated.
@@ -14140,7 +14214,8 @@ class ValueRange {
   /// - "COLUMNS" : Operates on the columns of a sheet.
   core.String? majorDimension;
 
-  /// The range the values cover, in A1 notation.
+  /// The range the values cover, in \[A1
+  /// notation\](/sheets/api/guides/concepts#cell).
   ///
   /// For output, this range indicates the entire requested range, even though
   /// the values will exclude trailing rows and columns. When appending values,

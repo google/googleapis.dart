@@ -1753,6 +1753,8 @@ class ProjectsLocationsRuntimesResource {
   /// `parent=projects/{project_id}/locations/{location}`
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
+  /// [requestId] - Idempotent request UUID.
+  ///
   /// [runtimeId] - Required. User-defined unique ID of this Runtime.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1768,11 +1770,13 @@ class ProjectsLocationsRuntimesResource {
   async.Future<Operation> create(
     Runtime request,
     core.String parent, {
+    core.String? requestId,
     core.String? runtimeId,
     core.String? $fields,
   }) async {
     final _body = convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
       if (runtimeId != null) 'runtimeId': [runtimeId],
       if ($fields != null) 'fields': [$fields],
     };
@@ -1797,6 +1801,8 @@ class ProjectsLocationsRuntimesResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/runtimes/\[^/\]+$`.
   ///
+  /// [requestId] - Idempotent request UUID.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1809,9 +1815,11 @@ class ProjectsLocationsRuntimesResource {
   /// this method will complete with the same error.
   async.Future<Operation> delete(
     core.String name, {
+    core.String? requestId,
     core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -1963,6 +1971,53 @@ class ProjectsLocationsRuntimesResource {
       queryParams: _queryParams,
     );
     return ListRuntimesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets an access token for the consumer service account that the customer
+  /// attached to the runtime.
+  ///
+  /// Only accessible from the tenant instance.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Format:
+  /// `projects/{project_id}/locations/{location}/runtimes/{runtime_id}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/runtimes/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [RefreshRuntimeTokenInternalResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<RefreshRuntimeTokenInternalResponse> refreshRuntimeTokenInternal(
+    RefreshRuntimeTokenInternalRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url =
+        'v1/' + core.Uri.encodeFull('$name') + ':refreshRuntimeTokenInternal';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return RefreshRuntimeTokenInternalResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
 
@@ -2838,8 +2893,7 @@ class Disk {
 ///
 /// A typical example is to use it as the request or the response type of an API
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
-/// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
-/// object `{}`.
+/// (google.protobuf.Empty); }
 typedef Empty = $Empty;
 
 /// Represents a custom encryption key configuration that can be applied to a
@@ -4716,6 +4770,60 @@ class Policy {
       };
 }
 
+/// Request for getting a new access token.
+class RefreshRuntimeTokenInternalRequest {
+  /// The VM hardware token for authenticating the VM.
+  ///
+  /// https://cloud.google.com/compute/docs/instances/verifying-instance-identity
+  ///
+  /// Required.
+  core.String? vmId;
+
+  RefreshRuntimeTokenInternalRequest({
+    this.vmId,
+  });
+
+  RefreshRuntimeTokenInternalRequest.fromJson(core.Map _json)
+      : this(
+          vmId: _json.containsKey('vmId') ? _json['vmId'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (vmId != null) 'vmId': vmId!,
+      };
+}
+
+/// Response with a new access token.
+class RefreshRuntimeTokenInternalResponse {
+  /// The OAuth 2.0 access token.
+  core.String? accessToken;
+
+  /// Token expiration time.
+  ///
+  /// Output only.
+  core.String? expireTime;
+
+  RefreshRuntimeTokenInternalResponse({
+    this.accessToken,
+    this.expireTime,
+  });
+
+  RefreshRuntimeTokenInternalResponse.fromJson(core.Map _json)
+      : this(
+          accessToken: _json.containsKey('accessToken')
+              ? _json['accessToken'] as core.String
+              : null,
+          expireTime: _json.containsKey('expireTime')
+              ? _json['expireTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (accessToken != null) 'accessToken': accessToken!,
+        if (expireTime != null) 'expireTime': expireTime!,
+      };
+}
+
 /// Request for registering a notebook instance.
 class RegisterInstanceRequest {
   /// User defined unique ID of this instance.
@@ -4869,7 +4977,7 @@ class ReservationAffinity {
 typedef ResetInstanceRequest = $Empty;
 
 /// Request for resetting a Managed Notebook Runtime.
-typedef ResetRuntimeRequest = $Empty;
+typedef ResetRuntimeRequest = $RuntimeRequest;
 
 /// Request for rollbacking a notebook instance
 class RollbackInstanceRequest {
@@ -5614,7 +5722,7 @@ typedef ShieldedInstanceConfig = $ShieldedInstanceConfig;
 typedef StartInstanceRequest = $Empty;
 
 /// Request for starting a Managed Notebook Runtime.
-typedef StartRuntimeRequest = $Empty;
+typedef StartRuntimeRequest = $RuntimeRequest;
 
 /// The `Status` type defines a logical error model that is suitable for
 /// different programming environments, including REST APIs and RPC APIs.
@@ -5629,7 +5737,7 @@ typedef Status = $Status;
 typedef StopInstanceRequest = $Empty;
 
 /// Request for stopping a Managed Notebook Runtime.
-typedef StopRuntimeRequest = $Empty;
+typedef StopRuntimeRequest = $RuntimeRequest;
 
 /// Request for switching a Managed Notebook Runtime.
 class SwitchRuntimeRequest {
@@ -5639,9 +5747,13 @@ class SwitchRuntimeRequest {
   /// machine type.
   core.String? machineType;
 
+  /// Idempotent request UUID.
+  core.String? requestId;
+
   SwitchRuntimeRequest({
     this.acceleratorConfig,
     this.machineType,
+    this.requestId,
   });
 
   SwitchRuntimeRequest.fromJson(core.Map _json)
@@ -5653,11 +5765,15 @@ class SwitchRuntimeRequest {
           machineType: _json.containsKey('machineType')
               ? _json['machineType'] as core.String
               : null,
+          requestId: _json.containsKey('requestId')
+              ? _json['requestId'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (acceleratorConfig != null) 'acceleratorConfig': acceleratorConfig!,
         if (machineType != null) 'machineType': machineType!,
+        if (requestId != null) 'requestId': requestId!,
       };
 }
 

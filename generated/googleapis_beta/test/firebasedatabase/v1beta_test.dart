@@ -134,6 +134,22 @@ void checkReenableDatabaseInstanceRequest(
   buildCounterReenableDatabaseInstanceRequest--;
 }
 
+core.int buildCounterUndeleteDatabaseInstanceRequest = 0;
+api.UndeleteDatabaseInstanceRequest buildUndeleteDatabaseInstanceRequest() {
+  final o = api.UndeleteDatabaseInstanceRequest();
+  buildCounterUndeleteDatabaseInstanceRequest++;
+  if (buildCounterUndeleteDatabaseInstanceRequest < 3) {}
+  buildCounterUndeleteDatabaseInstanceRequest--;
+  return o;
+}
+
+void checkUndeleteDatabaseInstanceRequest(
+    api.UndeleteDatabaseInstanceRequest o) {
+  buildCounterUndeleteDatabaseInstanceRequest++;
+  if (buildCounterUndeleteDatabaseInstanceRequest < 3) {}
+  buildCounterUndeleteDatabaseInstanceRequest--;
+}
+
 void main() {
   unittest.group('obj-schema-DatabaseInstance', () {
     unittest.test('to-json--from-json', () async {
@@ -172,6 +188,16 @@ void main() {
       final od = api.ReenableDatabaseInstanceRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkReenableDatabaseInstanceRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-UndeleteDatabaseInstanceRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildUndeleteDatabaseInstanceRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.UndeleteDatabaseInstanceRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkUndeleteDatabaseInstanceRequest(od);
     });
   });
 
@@ -419,6 +445,7 @@ void main() {
       final arg_parent = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
+      final arg_showDeleted = true;
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = (req.url).path;
@@ -461,6 +488,10 @@ void main() {
           unittest.equals(arg_pageToken),
         );
         unittest.expect(
+          queryMap['showDeleted']!.first,
+          unittest.equals('$arg_showDeleted'),
+        );
+        unittest.expect(
           queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
@@ -474,6 +505,7 @@ void main() {
       final response = await res.list(arg_parent,
           pageSize: arg_pageSize,
           pageToken: arg_pageToken,
+          showDeleted: arg_showDeleted,
           $fields: arg_$fields);
       checkListDatabaseInstancesResponse(
           response as api.ListDatabaseInstancesResponse);
@@ -535,6 +567,65 @@ void main() {
       }), true);
       final response =
           await res.reenable(arg_request, arg_name, $fields: arg_$fields);
+      checkDatabaseInstance(response as api.DatabaseInstance);
+    });
+
+    unittest.test('method--undelete', () async {
+      final mock = HttpServerMock();
+      final res =
+          api.FirebaseRealtimeDatabaseApi(mock).projects.locations.instances;
+      final arg_request = buildUndeleteDatabaseInstanceRequest();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.UndeleteDatabaseInstanceRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkUndeleteDatabaseInstanceRequest(obj);
+
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 7),
+          unittest.equals('v1beta/'),
+        );
+        pathOffset += 7;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildDatabaseInstance());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.undelete(arg_request, arg_name, $fields: arg_$fields);
       checkDatabaseInstance(response as api.DatabaseInstance);
     });
   });

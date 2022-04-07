@@ -394,8 +394,7 @@ class ThreatMatchesResource {
 ///
 /// A typical example is to use it as the request or the response type of an API
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
-/// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
-/// object `{}`.
+/// (google.protobuf.Empty); }
 typedef GoogleProtobufEmpty = $Empty;
 
 /// The expected state of a client's local database.
@@ -543,6 +542,8 @@ class GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequest
   /// expressions.
   /// - "ACCURACY_TIPS" : List from the Jigsaw team to show accuracy tips in
   /// Chrome. See go/sb-accuracytips.
+  /// - "SOCIAL_ENGINEERING_LOWER_PRECISION" : Lower precision phishing list for
+  /// WebRisk. See go/lower-precision-blocklists-enterprise.
   core.String? threatType;
 
   GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequest({
@@ -805,6 +806,8 @@ class GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateRespon
   /// expressions.
   /// - "ACCURACY_TIPS" : List from the Jigsaw team to show accuracy tips in
   /// Chrome. See go/sb-accuracytips.
+  /// - "SOCIAL_ENGINEERING_LOWER_PRECISION" : Lower precision phishing list for
+  /// WebRisk. See go/lower-precision-blocklists-enterprise.
   core.String? threatType;
 
   GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponse({
@@ -1411,6 +1414,8 @@ class GoogleSecuritySafebrowsingV4ThreatHit {
   /// expressions.
   /// - "ACCURACY_TIPS" : List from the Jigsaw team to show accuracy tips in
   /// Chrome. See go/sb-accuracytips.
+  /// - "SOCIAL_ENGINEERING_LOWER_PRECISION" : Lower precision phishing list for
+  /// WebRisk. See go/lower-precision-blocklists-enterprise.
   core.String? threatType;
 
   /// Details about the user that encountered the threat.
@@ -1668,6 +1673,8 @@ class GoogleSecuritySafebrowsingV4ThreatListDescriptor {
   /// expressions.
   /// - "ACCURACY_TIPS" : List from the Jigsaw team to show accuracy tips in
   /// Chrome. See go/sb-accuracytips.
+  /// - "SOCIAL_ENGINEERING_LOWER_PRECISION" : Lower precision phishing list for
+  /// WebRisk. See go/lower-precision-blocklists-enterprise.
   core.String? threatType;
 
   GoogleSecuritySafebrowsingV4ThreatListDescriptor({
@@ -1763,6 +1770,8 @@ class GoogleSecuritySafebrowsingV4ThreatMatch {
   /// expressions.
   /// - "ACCURACY_TIPS" : List from the Jigsaw team to show accuracy tips in
   /// Chrome. See go/sb-accuracytips.
+  /// - "SOCIAL_ENGINEERING_LOWER_PRECISION" : Lower precision phishing list for
+  /// WebRisk. See go/lower-precision-blocklists-enterprise.
   core.String? threatType;
 
   GoogleSecuritySafebrowsingV4ThreatMatch({

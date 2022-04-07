@@ -2026,6 +2026,7 @@ api.GoogleAnalyticsAdminV1alphaProperty
     o.industryCategory = 'foo';
     o.name = 'foo';
     o.parent = 'foo';
+    o.propertyType = 'foo';
     o.serviceLevel = 'foo';
     o.timeZone = 'foo';
     o.updateTime = 'foo';
@@ -2075,6 +2076,10 @@ void checkGoogleAnalyticsAdminV1alphaProperty(
       unittest.equals('foo'),
     );
     unittest.expect(
+      o.propertyType!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
       o.serviceLevel!,
       unittest.equals('foo'),
     );
@@ -2097,7 +2102,9 @@ api.GoogleAnalyticsAdminV1alphaPropertySummary
   buildCounterGoogleAnalyticsAdminV1alphaPropertySummary++;
   if (buildCounterGoogleAnalyticsAdminV1alphaPropertySummary < 3) {
     o.displayName = 'foo';
+    o.parent = 'foo';
     o.property = 'foo';
+    o.propertyType = 'foo';
   }
   buildCounterGoogleAnalyticsAdminV1alphaPropertySummary--;
   return o;
@@ -2112,7 +2119,15 @@ void checkGoogleAnalyticsAdminV1alphaPropertySummary(
       unittest.equals('foo'),
     );
     unittest.expect(
+      o.parent!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
       o.property!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.propertyType!,
       unittest.equals('foo'),
     );
   }

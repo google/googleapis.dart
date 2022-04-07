@@ -376,8 +376,10 @@ class GoogleFirebaseFcmDataV1beta1ListAndroidDeliveryDataResponse {
 /// denominator.
 class GoogleFirebaseFcmDataV1beta1MessageInsightPercents {
   /// The percentage of accepted messages that had their priority lowered from
-  /// high to normal due to
-  /// [app standby buckets](https://firebase.google.com/docs/cloud-messaging/concept-options#setting-the-priority-of-a-message).
+  /// high to normal.
+  ///
+  /// See
+  /// [documentation for setting message priority](https://firebase.google.com/docs/cloud-messaging/android/message-priority).
   core.double? priorityLowered;
 
   GoogleFirebaseFcmDataV1beta1MessageInsightPercents({

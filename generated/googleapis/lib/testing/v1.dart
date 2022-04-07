@@ -881,6 +881,17 @@ class AndroidRoboTest {
   /// The default value is determined by examining the application's manifest.
   core.String? appPackageId;
 
+  /// The max depth of the traversal stack Robo can explore.
+  ///
+  /// Needs to be at least 2 to make Robo explore the app beyond the first
+  /// activity. Default is 50.
+  core.int? maxDepth;
+
+  /// The max number of steps Robo can execute.
+  ///
+  /// Default is no limit.
+  core.int? maxSteps;
+
   /// A set of directives Robo should apply during the crawl.
   ///
   /// This allows users to customize the crawl. For example, the username and
@@ -915,6 +926,8 @@ class AndroidRoboTest {
     this.appBundle,
     this.appInitialActivity,
     this.appPackageId,
+    this.maxDepth,
+    this.maxSteps,
     this.roboDirectives,
     this.roboMode,
     this.roboScript,
@@ -936,6 +949,12 @@ class AndroidRoboTest {
               : null,
           appPackageId: _json.containsKey('appPackageId')
               ? _json['appPackageId'] as core.String
+              : null,
+          maxDepth: _json.containsKey('maxDepth')
+              ? _json['maxDepth'] as core.int
+              : null,
+          maxSteps: _json.containsKey('maxSteps')
+              ? _json['maxSteps'] as core.int
               : null,
           roboDirectives: _json.containsKey('roboDirectives')
               ? (_json['roboDirectives'] as core.List)
@@ -964,6 +983,8 @@ class AndroidRoboTest {
         if (appInitialActivity != null)
           'appInitialActivity': appInitialActivity!,
         if (appPackageId != null) 'appPackageId': appPackageId!,
+        if (maxDepth != null) 'maxDepth': maxDepth!,
+        if (maxSteps != null) 'maxSteps': maxSteps!,
         if (roboDirectives != null) 'roboDirectives': roboDirectives!,
         if (roboMode != null) 'roboMode': roboMode!,
         if (roboScript != null) 'roboScript': roboScript!,
@@ -1434,10 +1455,11 @@ class ClientInfoDetail {
 /// The time of day and time zone are either specified elsewhere or are
 /// insignificant. The date is relative to the Gregorian Calendar. This can
 /// represent one of the following: * A full date, with non-zero year, month,
-/// and day values * A month and day, with a zero year (e.g., an anniversary) *
-/// A year on its own, with a zero month and a zero day * A year and month, with
-/// a zero day (e.g., a credit card expiration date) Related types: *
-/// google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
+/// and day values. * A month and day, with a zero year (for example, an
+/// anniversary). * A year on its own, with a zero month and a zero day. * A
+/// year and month, with a zero day (for example, a credit card expiration
+/// date). Related types: * google.type.TimeOfDay * google.type.DateTime *
+/// google.protobuf.Timestamp
 typedef Date = $Date;
 
 /// A single device file description.
@@ -3729,7 +3751,7 @@ class TestTargetsForShard {
   ///
   /// The targets need to be specified in AndroidJUnitRunner argument format.
   /// For example, "package com.my.packages" "class com.my.package.MyClass". The
-  /// number of shard_test_targets must be greater than 0.
+  /// number of test_targets must be greater than 0.
   core.List<core.String>? testTargets;
 
   TestTargetsForShard({

@@ -1243,6 +1243,11 @@
                                             "required": true,
                                             "type": "string"
                                         },
+                                        "requestId": {
+                                            "description": "Idempotent request UUID.",
+                                            "location": "query",
+                                            "type": "string"
+                                        },
                                         "runtimeId": {
                                             "description": "Required. User-defined unique ID of this Runtime.",
                                             "location": "query",
@@ -1274,6 +1279,11 @@
                                             "location": "path",
                                             "pattern": "^projects/[^/]+/locations/[^/]+/runtimes/[^/]+$",
                                             "required": true,
+                                            "type": "string"
+                                        },
+                                        "requestId": {
+                                            "description": "Idempotent request UUID.",
+                                            "location": "query",
                                             "type": "string"
                                         }
                                     },
@@ -1372,6 +1382,34 @@
                                     "path": "v1/{+parent}/runtimes",
                                     "response": {
                                         "$ref": "ListRuntimesResponse"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                },
+                                "refreshRuntimeTokenInternal": {
+                                    "description": "Gets an access token for the consumer service account that the customer attached to the runtime. Only accessible from the tenant instance.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/runtimes/{runtimesId}:refreshRuntimeTokenInternal",
+                                    "httpMethod": "POST",
+                                    "id": "notebooks.projects.locations.runtimes.refreshRuntimeTokenInternal",
+                                    "parameterOrder": [
+                                        "name"
+                                    ],
+                                    "parameters": {
+                                        "name": {
+                                            "description": "Required. Format: `projects/{project_id}/locations/{location}/runtimes/{runtime_id}`",
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/locations/[^/]+/runtimes/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/{+name}:refreshRuntimeTokenInternal",
+                                    "request": {
+                                        "$ref": "RefreshRuntimeTokenInternalRequest"
+                                    },
+                                    "response": {
+                                        "$ref": "RefreshRuntimeTokenInternalResponse"
                                     },
                                     "scopes": [
                                         "https://www.googleapis.com/auth/cloud-platform"
@@ -1741,7 +1779,7 @@
             }
         }
     },
-    "revision": "20220224",
+    "revision": "20220319",
     "rootUrl": "https://notebooks.googleapis.com/",
     "schemas": {
         "AcceleratorConfig": {
@@ -1912,7 +1950,7 @@
             "type": "object"
         },
         "Empty": {
-            "description": "A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON object `{}`.",
+            "description": "A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }",
             "id": "Empty",
             "properties": {},
             "type": "object"
@@ -2944,6 +2982,34 @@
             },
             "type": "object"
         },
+        "RefreshRuntimeTokenInternalRequest": {
+            "description": "Request for getting a new access token.",
+            "id": "RefreshRuntimeTokenInternalRequest",
+            "properties": {
+                "vmId": {
+                    "description": "Required. The VM hardware token for authenticating the VM. https://cloud.google.com/compute/docs/instances/verifying-instance-identity",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "RefreshRuntimeTokenInternalResponse": {
+            "description": "Response with a new access token.",
+            "id": "RefreshRuntimeTokenInternalResponse",
+            "properties": {
+                "accessToken": {
+                    "description": "The OAuth 2.0 access token.",
+                    "type": "string"
+                },
+                "expireTime": {
+                    "description": "Output only. Token expiration time.",
+                    "format": "google-datetime",
+                    "readOnly": true,
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "RegisterInstanceRequest": {
             "description": "Request for registering a notebook instance.",
             "id": "RegisterInstanceRequest",
@@ -3031,7 +3097,12 @@
         "ResetRuntimeRequest": {
             "description": "Request for resetting a Managed Notebook Runtime.",
             "id": "ResetRuntimeRequest",
-            "properties": {},
+            "properties": {
+                "requestId": {
+                    "description": "Idempotent request UUID.",
+                    "type": "string"
+                }
+            },
             "type": "object"
         },
         "RollbackInstanceRequest": {
@@ -3519,7 +3590,12 @@
         "StartRuntimeRequest": {
             "description": "Request for starting a Managed Notebook Runtime.",
             "id": "StartRuntimeRequest",
-            "properties": {},
+            "properties": {
+                "requestId": {
+                    "description": "Idempotent request UUID.",
+                    "type": "string"
+                }
+            },
             "type": "object"
         },
         "Status": {
@@ -3558,7 +3634,12 @@
         "StopRuntimeRequest": {
             "description": "Request for stopping a Managed Notebook Runtime.",
             "id": "StopRuntimeRequest",
-            "properties": {},
+            "properties": {
+                "requestId": {
+                    "description": "Idempotent request UUID.",
+                    "type": "string"
+                }
+            },
             "type": "object"
         },
         "SwitchRuntimeRequest": {
@@ -3571,6 +3652,10 @@
                 },
                 "machineType": {
                     "description": "machine type.",
+                    "type": "string"
+                },
+                "requestId": {
+                    "description": "Idempotent request UUID.",
                     "type": "string"
                 }
             },

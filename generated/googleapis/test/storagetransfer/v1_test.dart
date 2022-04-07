@@ -1124,6 +1124,7 @@ api.TransferOptions buildTransferOptions() {
     o.deleteObjectsUniqueInSink = true;
     o.metadataOptions = buildMetadataOptions();
     o.overwriteObjectsAlreadyExistingInSink = true;
+    o.overwriteWhen = 'foo';
   }
   buildCounterTransferOptions--;
   return o;
@@ -1136,6 +1137,10 @@ void checkTransferOptions(api.TransferOptions o) {
     unittest.expect(o.deleteObjectsUniqueInSink!, unittest.isTrue);
     checkMetadataOptions(o.metadataOptions!);
     unittest.expect(o.overwriteObjectsAlreadyExistingInSink!, unittest.isTrue);
+    unittest.expect(
+      o.overwriteWhen!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterTransferOptions--;
 }

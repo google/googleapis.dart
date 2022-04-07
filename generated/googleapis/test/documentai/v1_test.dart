@@ -296,6 +296,7 @@ api.GoogleCloudDocumentaiV1DocumentEntity
     o.id = 'foo';
     o.mentionId = 'foo';
     o.mentionText = 'foo';
+    o.nonPresent = true;
     o.normalizedValue =
         buildGoogleCloudDocumentaiV1DocumentEntityNormalizedValue();
     o.pageAnchor = buildGoogleCloudDocumentaiV1DocumentPageAnchor();
@@ -329,6 +330,7 @@ void checkGoogleCloudDocumentaiV1DocumentEntity(
       o.mentionText!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.nonPresent!, unittest.isTrue);
     checkGoogleCloudDocumentaiV1DocumentEntityNormalizedValue(
         o.normalizedValue!);
     checkGoogleCloudDocumentaiV1DocumentPageAnchor(o.pageAnchor!);
@@ -2234,6 +2236,7 @@ api.GoogleCloudDocumentaiV1ProcessorVersion
   if (buildCounterGoogleCloudDocumentaiV1ProcessorVersion < 3) {
     o.createTime = 'foo';
     o.displayName = 'foo';
+    o.googleManaged = true;
     o.kmsKeyName = 'foo';
     o.kmsKeyVersionName = 'foo';
     o.name = 'foo';
@@ -2255,6 +2258,7 @@ void checkGoogleCloudDocumentaiV1ProcessorVersion(
       o.displayName!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.googleManaged!, unittest.isTrue);
     unittest.expect(
       o.kmsKeyName!,
       unittest.equals('foo'),

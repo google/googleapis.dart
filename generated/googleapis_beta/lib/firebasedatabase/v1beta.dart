@@ -316,6 +316,9 @@ class ProjectsLocationsInstancesResource {
   /// `ListDatabaseInstances` indicating where in the set of database instances
   /// to resume listing.
   ///
+  /// [showDeleted] - Indicate that DatabaseInstances in the `DELETED` state
+  /// should also be returned.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -330,11 +333,13 @@ class ProjectsLocationsInstancesResource {
     core.String parent, {
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? showDeleted,
     core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (showDeleted != null) 'showDeleted': ['${showDeleted}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -386,6 +391,53 @@ class ProjectsLocationsInstancesResource {
     };
 
     final _url = 'v1beta/' + core.Uri.encodeFull('$name') + ':reenable';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return DatabaseInstance.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Restores a DatabaseInstance that was previously marked to be deleted.
+  ///
+  /// This may only be used on a DatabaseInstance in the DELETED state. Purged
+  /// DatabaseInstance's may not be recovered.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The fully qualified resource name of the database instance, in
+  /// the form:
+  /// `projects/{project-number}/locations/{location-id}/instances/{database-id}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [DatabaseInstance].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<DatabaseInstance> undelete(
+    UndeleteDatabaseInstanceRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1beta/' + core.Uri.encodeFull('$name') + ':undelete';
 
     final _response = await _requester.request(
       _url,
@@ -517,3 +569,6 @@ class ListDatabaseInstancesResponse {
 
 /// The request sent to the ReenableDatabaseInstance method.
 typedef ReenableDatabaseInstanceRequest = $Empty;
+
+/// The request sent to UndeleteDatabaseInstance method.
+typedef UndeleteDatabaseInstanceRequest = $Empty;

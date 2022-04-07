@@ -569,6 +569,103 @@
                         },
                         "provisioningConfigs": {
                             "methods": {
+                                "create": {
+                                    "description": "Create new ProvisioningConfig.",
+                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/provisioningConfigs",
+                                    "httpMethod": "POST",
+                                    "id": "baremetalsolution.projects.locations.provisioningConfigs.create",
+                                    "parameterOrder": [
+                                        "parent"
+                                    ],
+                                    "parameters": {
+                                        "email": {
+                                            "description": "Optional. Email provided to send a confirmation with provisioning config to.",
+                                            "location": "query",
+                                            "type": "string"
+                                        },
+                                        "parent": {
+                                            "description": "Required. The parent project and location containing the ProvisioningConfig.",
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/locations/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v2/{+parent}/provisioningConfigs",
+                                    "request": {
+                                        "$ref": "ProvisioningConfig"
+                                    },
+                                    "response": {
+                                        "$ref": "ProvisioningConfig"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                },
+                                "get": {
+                                    "description": "Get ProvisioningConfig by name.",
+                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/provisioningConfigs/{provisioningConfigsId}",
+                                    "httpMethod": "GET",
+                                    "id": "baremetalsolution.projects.locations.provisioningConfigs.get",
+                                    "parameterOrder": [
+                                        "name"
+                                    ],
+                                    "parameters": {
+                                        "name": {
+                                            "description": "Required. Name of the ProvisioningConfig.",
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/locations/[^/]+/provisioningConfigs/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v2/{+name}",
+                                    "response": {
+                                        "$ref": "ProvisioningConfig"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                },
+                                "patch": {
+                                    "description": "Update existing ProvisioningConfig.",
+                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/provisioningConfigs/{provisioningConfigsId}",
+                                    "httpMethod": "PATCH",
+                                    "id": "baremetalsolution.projects.locations.provisioningConfigs.patch",
+                                    "parameterOrder": [
+                                        "name"
+                                    ],
+                                    "parameters": {
+                                        "email": {
+                                            "description": "Optional. Email provided to send a confirmation with provisioning config to.",
+                                            "location": "query",
+                                            "type": "string"
+                                        },
+                                        "name": {
+                                            "description": "Output only. The name of the provisioning config.",
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/locations/[^/]+/provisioningConfigs/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        },
+                                        "updateMask": {
+                                            "description": "Required. The list of fields to update.",
+                                            "format": "google-fieldmask",
+                                            "location": "query",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v2/{+name}",
+                                    "request": {
+                                        "$ref": "ProvisioningConfig"
+                                    },
+                                    "response": {
+                                        "$ref": "ProvisioningConfig"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                },
                                 "submit": {
                                     "description": "Submit a provisiong configuration for a given project.",
                                     "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/provisioningConfigs:submit",
@@ -886,7 +983,7 @@
                                             "type": "string"
                                         },
                                         "updateMask": {
-                                            "description": "The list of fields to update. The only currently supported fields are: `snapshot_auto_delete_behavior` `snapshot_schedule_policy_name` 'labels' 'requested_size_gib'",
+                                            "description": "The list of fields to update. The only currently supported fields are: `snapshot_auto_delete_behavior` `snapshot_schedule_policy_name` 'labels' 'requested_size_gib' 'snapshot_enabled' 'snapshot_reservation_detail.reserved_space_percent'",
                                             "format": "google-fieldmask",
                                             "location": "query",
                                             "type": "string"
@@ -1123,7 +1220,7 @@
             }
         }
     },
-    "revision": "20220209",
+    "revision": "20220322",
     "rootUrl": "https://baremetalsolution.googleapis.com/",
     "schemas": {
         "AllowedClient": {
@@ -1172,7 +1269,7 @@
             "type": "object"
         },
         "Empty": {
-            "description": "A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON object `{}`.",
+            "description": "A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }",
             "id": "Empty",
             "properties": {},
             "type": "object"
@@ -1258,6 +1355,10 @@
             "description": "Configuration parameters for a new instance.",
             "id": "InstanceConfig",
             "properties": {
+                "accountNetworksEnabled": {
+                    "description": "If true networks can be from different projects of the same vendor account.",
+                    "type": "boolean"
+                },
                 "clientNetwork": {
                     "$ref": "NetworkAddress",
                     "description": "Client network address."
@@ -1807,6 +1908,10 @@
                     "description": "CIDR range of the network.",
                     "type": "string"
                 },
+                "gcpService": {
+                    "description": "The GCP service of the network. Available gcp_service are in https://cloud.google.com/bare-metal/docs/bms-planning.",
+                    "type": "string"
+                },
                 "id": {
                     "description": "A transient unique identifier to identify a volume within an ProvisioningConfig request.",
                     "type": "string"
@@ -1858,6 +1963,10 @@
                         "$ref": "IntakeVlanAttachment"
                     },
                     "type": "array"
+                },
+                "vlanSameProject": {
+                    "description": "Whether the VLAN attachment pair is located in the same project.",
+                    "type": "boolean"
                 }
             },
             "type": "object"
@@ -2011,6 +2120,15 @@
             "description": "A provisioning configuration.",
             "id": "ProvisioningConfig",
             "properties": {
+                "cloudConsoleUri": {
+                    "description": "Output only. URI to Cloud Console UI view of this provisioning config.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "email": {
+                    "description": "Email provided to send a confirmation with provisioning config to. Deprecated in favour of email field in request messages.",
+                    "type": "string"
+                },
                 "handoverServiceAccount": {
                     "description": "A service account to enable customers to access instance credentials upon handover.",
                     "type": "string"
@@ -2021,6 +2139,10 @@
                         "$ref": "InstanceConfig"
                     },
                     "type": "array"
+                },
+                "location": {
+                    "description": "Optional. Location name of this ProvisioningConfig. It is optional only for Intake UI transition period.",
+                    "type": "string"
                 },
                 "name": {
                     "description": "Output only. The name of the provisioning config.",
@@ -2034,8 +2156,29 @@
                     },
                     "type": "array"
                 },
+                "state": {
+                    "description": "Output only. State of ProvisioningConfig.",
+                    "enum": [
+                        "STATE_UNSPECIFIED",
+                        "DRAFT",
+                        "SUBMITTED"
+                    ],
+                    "enumDescriptions": [
+                        "State wasn't specified.",
+                        "ProvisioningConfig is a draft and can be freely modified.",
+                        "ProvisioningConfig was already submitted and cannot be modified."
+                    ],
+                    "readOnly": true,
+                    "type": "string"
+                },
                 "ticketId": {
                     "description": "A generated buganizer id to track provisioning request.",
+                    "type": "string"
+                },
+                "updateTime": {
+                    "description": "Output only. Last update timestamp.",
+                    "format": "google-datetime",
+                    "readOnly": true,
                     "type": "string"
                 },
                 "volumes": {
@@ -2088,6 +2231,21 @@
                 "name": {
                     "description": "Output only. The name of the provisioning quota.",
                     "readOnly": true,
+                    "type": "string"
+                },
+                "networkBandwidth": {
+                    "description": "Network bandwidth, Gbps",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "serverCount": {
+                    "description": "Server count.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "storageGib": {
+                    "description": "Storage size (GB).",
+                    "format": "int64",
                     "type": "string"
                 }
             },
@@ -2145,6 +2303,11 @@
                     "description": "The space on this storage volume reserved for snapshots, shown in GiB.",
                     "format": "int64",
                     "type": "string"
+                },
+                "reservedSpacePercent": {
+                    "description": "Percent of the total Volume size reserved for snapshot copies. Enabling snapshots requires reserving 20% or more of the storage volume space for snapshots. Maximum reserved space for snapshots is 40%. Setting this field will effectively set snapshot_enabled to true.",
+                    "format": "int32",
+                    "type": "integer"
                 },
                 "reservedSpaceRemainingGib": {
                     "description": "The amount, in GiB, of available space in this storage volume's reserved snapshot space.",
@@ -2376,6 +2539,10 @@
                     ],
                     "type": "string"
                 },
+                "snapshotEnabled": {
+                    "description": "Whether snapshots are enabled.",
+                    "type": "boolean"
+                },
                 "snapshotReservationDetail": {
                     "$ref": "SnapshotReservationDetail",
                     "description": "Details about snapshot space reservation and usage on the storage volume."
@@ -2421,6 +2588,10 @@
             "description": "Configuration parameters for a new volume.",
             "id": "VolumeConfig",
             "properties": {
+                "gcpService": {
+                    "description": "The GCP service of the storage volume. Available gcp_service are in https://cloud.google.com/bare-metal/docs/bms-planning.",
+                    "type": "string"
+                },
                 "id": {
                     "description": "A transient unique identifier to identify a volume within an ProvisioningConfig request.",
                     "type": "string"

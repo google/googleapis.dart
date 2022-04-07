@@ -171,7 +171,7 @@ class ProjectsLocationsResource {
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
-  /// filtering language accepts strings like "displayName=tokyo", and is
+  /// filtering language accepts strings like `"displayName=tokyo"`, and is
   /// documented in more detail in \[AIP-160\](https://google.aip.dev/160).
   ///
   /// [pageSize] - The maximum number of results to return. If not set, the
@@ -1336,12 +1336,11 @@ typedef GoogleCloudDocumentaiV1beta3DeployProcessorVersionRequest = $Empty;
 /// Request message for the disable processor method.
 typedef GoogleCloudDocumentaiV1beta3DisableProcessorRequest = $Empty;
 
-/// Document represents the canonical document resource in Document
-/// Understanding AI.
+/// Document represents the canonical document resource in Document AI.
 ///
 /// It is an interchange format that provides insights into documents and allows
-/// for collaboration between users and Document Understanding AI to iterate and
-/// optimize for quality.
+/// for collaboration between users and Document AI to iterate and optimize for
+/// quality.
 class GoogleCloudDocumentaiV1beta3Document {
   /// Inline document content, represented as a stream of bytes.
   ///
@@ -1543,6 +1542,15 @@ class GoogleCloudDocumentaiV1beta3DocumentEntity {
   /// Optional.
   core.String? mentionText;
 
+  /// This attribute indicates that the processing didn't actually identify this
+  /// entity, but a confidence score was assigned that represent the potential
+  /// that this could be a false negative.
+  ///
+  /// A non-present entity should have an empty mention_text and text_anchor.
+  ///
+  /// Optional.
+  core.bool? nonPresent;
+
   /// Normalized entity value.
   ///
   /// Absent if the extracted value could not be converted or the type (e.g.
@@ -1583,6 +1591,8 @@ class GoogleCloudDocumentaiV1beta3DocumentEntity {
   GoogleCloudDocumentaiV1beta3DocumentTextAnchor? textAnchor;
 
   /// Entity type from a schema e.g. `Address`.
+  ///
+  /// Required.
   core.String? type;
 
   GoogleCloudDocumentaiV1beta3DocumentEntity({
@@ -1590,6 +1600,7 @@ class GoogleCloudDocumentaiV1beta3DocumentEntity {
     this.id,
     this.mentionId,
     this.mentionText,
+    this.nonPresent,
     this.normalizedValue,
     this.pageAnchor,
     this.properties,
@@ -1610,6 +1621,9 @@ class GoogleCloudDocumentaiV1beta3DocumentEntity {
               : null,
           mentionText: _json.containsKey('mentionText')
               ? _json['mentionText'] as core.String
+              : null,
+          nonPresent: _json.containsKey('nonPresent')
+              ? _json['nonPresent'] as core.bool
               : null,
           normalizedValue: _json.containsKey('normalizedValue')
               ? GoogleCloudDocumentaiV1beta3DocumentEntityNormalizedValue
@@ -1646,6 +1660,7 @@ class GoogleCloudDocumentaiV1beta3DocumentEntity {
         if (id != null) 'id': id!,
         if (mentionId != null) 'mentionId': mentionId!,
         if (mentionText != null) 'mentionText': mentionText!,
+        if (nonPresent != null) 'nonPresent': nonPresent!,
         if (normalizedValue != null) 'normalizedValue': normalizedValue!,
         if (pageAnchor != null) 'pageAnchor': pageAnchor!,
         if (properties != null) 'properties': properties!,
@@ -3997,13 +4012,16 @@ class GoogleCloudDocumentaiV1beta3ProcessorTypeLocationInfo {
 /// Each processor can have multiple versions, pre-trained by Google internally
 /// or up-trained by the customer. At a time, a processor can only have one
 /// default version version. So the processor's behavior (when processing
-/// documents) is defined by a default version.
+/// documents) is defined by a default version
 class GoogleCloudDocumentaiV1beta3ProcessorVersion {
   /// The time the processor version was created.
   core.String? createTime;
 
   /// The display name of the processor version.
   core.String? displayName;
+
+  /// Denotes that this ProcessorVersion is managed by google.
+  core.bool? googleManaged;
 
   /// The KMS key name used for encryption.
   core.String? kmsKeyName;
@@ -4035,6 +4053,7 @@ class GoogleCloudDocumentaiV1beta3ProcessorVersion {
   GoogleCloudDocumentaiV1beta3ProcessorVersion({
     this.createTime,
     this.displayName,
+    this.googleManaged,
     this.kmsKeyName,
     this.kmsKeyVersionName,
     this.name,
@@ -4048,6 +4067,9 @@ class GoogleCloudDocumentaiV1beta3ProcessorVersion {
               : null,
           displayName: _json.containsKey('displayName')
               ? _json['displayName'] as core.String
+              : null,
+          googleManaged: _json.containsKey('googleManaged')
+              ? _json['googleManaged'] as core.bool
               : null,
           kmsKeyName: _json.containsKey('kmsKeyName')
               ? _json['kmsKeyName'] as core.String
@@ -4063,6 +4085,7 @@ class GoogleCloudDocumentaiV1beta3ProcessorVersion {
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
         if (displayName != null) 'displayName': displayName!,
+        if (googleManaged != null) 'googleManaged': googleManaged!,
         if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
         if (kmsKeyVersionName != null) 'kmsKeyVersionName': kmsKeyVersionName!,
         if (name != null) 'name': name!,
@@ -4363,8 +4386,7 @@ class GoogleLongrunningOperation {
 ///
 /// A typical example is to use it as the request or the response type of an API
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
-/// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
-/// object `{}`.
+/// (google.protobuf.Empty); }
 typedef GoogleProtobufEmpty = $Empty;
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -4483,10 +4505,11 @@ class GoogleTypeColor {
 /// The time of day and time zone are either specified elsewhere or are
 /// insignificant. The date is relative to the Gregorian Calendar. This can
 /// represent one of the following: * A full date, with non-zero year, month,
-/// and day values * A month and day, with a zero year (e.g., an anniversary) *
-/// A year on its own, with a zero month and a zero day * A year and month, with
-/// a zero day (e.g., a credit card expiration date) Related types: *
-/// google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
+/// and day values. * A month and day, with a zero year (for example, an
+/// anniversary). * A year on its own, with a zero month and a zero day. * A
+/// year and month, with a zero day (for example, a credit card expiration
+/// date). Related types: * google.type.TimeOfDay * google.type.DateTime *
+/// google.protobuf.Timestamp
 typedef GoogleTypeDate = $Date;
 
 /// Represents civil time (or occasionally physical time).
@@ -4627,186 +4650,7 @@ typedef GoogleTypeMoney = $Money;
 /// be presented with UI elements for input or editing of fields outside
 /// countries where that field is used. For more guidance on how to use this
 /// schema, please see: https://support.google.com/business/answer/6397478
-class GoogleTypePostalAddress {
-  /// Unstructured address lines describing the lower levels of an address.
-  ///
-  /// Because values in address_lines do not have type information and may
-  /// sometimes contain multiple values in a single field (e.g. "Austin, TX"),
-  /// it is important that the line order is clear. The order of address lines
-  /// should be "envelope order" for the country/region of the address. In
-  /// places where this can vary (e.g. Japan), address_language is used to make
-  /// it explicit (e.g. "ja" for large-to-small ordering and "ja-Latn" or "en"
-  /// for small-to-large). This way, the most specific line of an address can be
-  /// selected based on the language. The minimum permitted structural
-  /// representation of an address consists of a region_code with all remaining
-  /// information placed in the address_lines. It would be possible to format
-  /// such an address very approximately without geocoding, but no semantic
-  /// reasoning could be made about any of the address components until it was
-  /// at least partially resolved. Creating an address only containing a
-  /// region_code and address_lines, and then geocoding is the recommended way
-  /// to handle completely unstructured addresses (as opposed to guessing which
-  /// parts of the address should be localities or administrative areas).
-  core.List<core.String>? addressLines;
-
-  /// Highest administrative subdivision which is used for postal addresses of a
-  /// country or region.
-  ///
-  /// For example, this can be a state, a province, an oblast, or a prefecture.
-  /// Specifically, for Spain this is the province and not the autonomous
-  /// community (e.g. "Barcelona" and not "Catalonia"). Many countries don't use
-  /// an administrative area in postal addresses. E.g. in Switzerland this
-  /// should be left unpopulated.
-  ///
-  /// Optional.
-  core.String? administrativeArea;
-
-  /// BCP-47 language code of the contents of this address (if known).
-  ///
-  /// This is often the UI language of the input form or is expected to match
-  /// one of the languages used in the address' country/region, or their
-  /// transliterated equivalents. This can affect formatting in certain
-  /// countries, but is not critical to the correctness of the data and will
-  /// never affect any validation or other non-formatting related operations. If
-  /// this value is not known, it should be omitted (rather than specifying a
-  /// possibly incorrect default). Examples: "zh-Hant", "ja", "ja-Latn", "en".
-  ///
-  /// Optional.
-  core.String? languageCode;
-
-  /// Generally refers to the city/town portion of the address.
-  ///
-  /// Examples: US city, IT comune, UK post town. In regions of the world where
-  /// localities are not well defined or do not fit into this structure well,
-  /// leave locality empty and use address_lines.
-  ///
-  /// Optional.
-  core.String? locality;
-
-  /// The name of the organization at the address.
-  ///
-  /// Optional.
-  core.String? organization;
-
-  /// Postal code of the address.
-  ///
-  /// Not all countries use or require postal codes to be present, but where
-  /// they are used, they may trigger additional validation with other parts of
-  /// the address (e.g. state/zip validation in the U.S.A.).
-  ///
-  /// Optional.
-  core.String? postalCode;
-
-  /// The recipient at the address.
-  ///
-  /// This field may, under certain circumstances, contain multiline
-  /// information. For example, it might contain "care of" information.
-  ///
-  /// Optional.
-  core.List<core.String>? recipients;
-
-  /// CLDR region code of the country/region of the address.
-  ///
-  /// This is never inferred and it is up to the user to ensure the value is
-  /// correct. See https://cldr.unicode.org/ and
-  /// https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html
-  /// for details. Example: "CH" for Switzerland.
-  ///
-  /// Required.
-  core.String? regionCode;
-
-  /// The schema revision of the `PostalAddress`.
-  ///
-  /// This must be set to 0, which is the latest revision. All new revisions
-  /// **must** be backward compatible with old revisions.
-  core.int? revision;
-
-  /// Additional, country-specific, sorting code.
-  ///
-  /// This is not used in most regions. Where it is used, the value is either a
-  /// string like "CEDEX", optionally followed by a number (e.g. "CEDEX 7"), or
-  /// just a number alone, representing the "sector code" (Jamaica), "delivery
-  /// area indicator" (Malawi) or "post office indicator" (e.g. Côte d'Ivoire).
-  ///
-  /// Optional.
-  core.String? sortingCode;
-
-  /// Sublocality of the address.
-  ///
-  /// For example, this can be neighborhoods, boroughs, districts.
-  ///
-  /// Optional.
-  core.String? sublocality;
-
-  GoogleTypePostalAddress({
-    this.addressLines,
-    this.administrativeArea,
-    this.languageCode,
-    this.locality,
-    this.organization,
-    this.postalCode,
-    this.recipients,
-    this.regionCode,
-    this.revision,
-    this.sortingCode,
-    this.sublocality,
-  });
-
-  GoogleTypePostalAddress.fromJson(core.Map _json)
-      : this(
-          addressLines: _json.containsKey('addressLines')
-              ? (_json['addressLines'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          administrativeArea: _json.containsKey('administrativeArea')
-              ? _json['administrativeArea'] as core.String
-              : null,
-          languageCode: _json.containsKey('languageCode')
-              ? _json['languageCode'] as core.String
-              : null,
-          locality: _json.containsKey('locality')
-              ? _json['locality'] as core.String
-              : null,
-          organization: _json.containsKey('organization')
-              ? _json['organization'] as core.String
-              : null,
-          postalCode: _json.containsKey('postalCode')
-              ? _json['postalCode'] as core.String
-              : null,
-          recipients: _json.containsKey('recipients')
-              ? (_json['recipients'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          regionCode: _json.containsKey('regionCode')
-              ? _json['regionCode'] as core.String
-              : null,
-          revision: _json.containsKey('revision')
-              ? _json['revision'] as core.int
-              : null,
-          sortingCode: _json.containsKey('sortingCode')
-              ? _json['sortingCode'] as core.String
-              : null,
-          sublocality: _json.containsKey('sublocality')
-              ? _json['sublocality'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (addressLines != null) 'addressLines': addressLines!,
-        if (administrativeArea != null)
-          'administrativeArea': administrativeArea!,
-        if (languageCode != null) 'languageCode': languageCode!,
-        if (locality != null) 'locality': locality!,
-        if (organization != null) 'organization': organization!,
-        if (postalCode != null) 'postalCode': postalCode!,
-        if (recipients != null) 'recipients': recipients!,
-        if (regionCode != null) 'regionCode': regionCode!,
-        if (revision != null) 'revision': revision!,
-        if (sortingCode != null) 'sortingCode': sortingCode!,
-        if (sublocality != null) 'sublocality': sublocality!,
-      };
-}
+typedef GoogleTypePostalAddress = $PostalAddress;
 
 /// Represents a time zone from the
 /// [IANA Time Zone Database](https://www.iana.org/time-zones).

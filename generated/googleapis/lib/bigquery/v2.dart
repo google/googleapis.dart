@@ -3494,6 +3494,43 @@ class CategoryCount {
       };
 }
 
+class CloneDefinition {
+  /// Reference describing the ID of the table that was cloned.
+  ///
+  /// Required.
+  TableReference? baseTableReference;
+
+  /// The time at which the base table was cloned.
+  ///
+  /// This value is reported in the JSON response using RFC3339 format.
+  ///
+  /// Required.
+  core.DateTime? cloneTime;
+
+  CloneDefinition({
+    this.baseTableReference,
+    this.cloneTime,
+  });
+
+  CloneDefinition.fromJson(core.Map _json)
+      : this(
+          baseTableReference: _json.containsKey('baseTableReference')
+              ? TableReference.fromJson(_json['baseTableReference']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          cloneTime: _json.containsKey('cloneTime')
+              ? core.DateTime.parse(_json['cloneTime'] as core.String)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (baseTableReference != null)
+          'baseTableReference': baseTableReference!,
+        if (cloneTime != null)
+          'cloneTime': cloneTime!.toUtc().toIso8601String(),
+      };
+}
+
 /// Message containing the information about one cluster.
 class Cluster {
   /// Centroid id.
@@ -3792,11 +3829,15 @@ class DataSplitResult {
   /// Table reference of the evaluation data after split.
   TableReference? evaluationTable;
 
+  /// Table reference of the test data after split.
+  TableReference? testTable;
+
   /// Table reference of the training data after split.
   TableReference? trainingTable;
 
   DataSplitResult({
     this.evaluationTable,
+    this.testTable,
     this.trainingTable,
   });
 
@@ -3806,6 +3847,10 @@ class DataSplitResult {
               ? TableReference.fromJson(_json['evaluationTable']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          testTable: _json.containsKey('testTable')
+              ? TableReference.fromJson(
+                  _json['testTable'] as core.Map<core.String, core.dynamic>)
+              : null,
           trainingTable: _json.containsKey('trainingTable')
               ? TableReference.fromJson(
                   _json['trainingTable'] as core.Map<core.String, core.dynamic>)
@@ -3814,6 +3859,7 @@ class DataSplitResult {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (evaluationTable != null) 'evaluationTable': evaluationTable!,
+        if (testTable != null) 'testTable': testTable!,
         if (trainingTable != null) 'trainingTable': trainingTable!,
       };
 }
@@ -4082,6 +4128,11 @@ class Dataset {
   /// https://cloud.google.com/bigquery/docs/locations.
   core.String? location;
 
+  /// Number of hours for the max time travel for all tables in the dataset.
+  ///
+  /// Optional.
+  core.String? maxTimeTravelHours;
+
   /// \[Output-only\] Reserved for future use.
   core.bool? satisfiesPZS;
 
@@ -4112,6 +4163,7 @@ class Dataset {
     this.labels,
     this.lastModifiedTime,
     this.location,
+    this.maxTimeTravelHours,
     this.satisfiesPZS,
     this.selfLink,
     this.tags,
@@ -4175,6 +4227,9 @@ class Dataset {
           location: _json.containsKey('location')
               ? _json['location'] as core.String
               : null,
+          maxTimeTravelHours: _json.containsKey('maxTimeTravelHours')
+              ? _json['maxTimeTravelHours'] as core.String
+              : null,
           satisfiesPZS: _json.containsKey('satisfiesPZS')
               ? _json['satisfiesPZS'] as core.bool
               : null,
@@ -4209,6 +4264,8 @@ class Dataset {
         if (labels != null) 'labels': labels!,
         if (lastModifiedTime != null) 'lastModifiedTime': lastModifiedTime!,
         if (location != null) 'location': location!,
+        if (maxTimeTravelHours != null)
+          'maxTimeTravelHours': maxTimeTravelHours!,
         if (satisfiesPZS != null) 'satisfiesPZS': satisfiesPZS!,
         if (selfLink != null) 'selfLink': selfLink!,
         if (tags != null) 'tags': tags!,
@@ -4473,6 +4530,30 @@ class DestinationTableProperties {
       };
 }
 
+/// Model evaluation metrics for dimensionality reduction models.
+class DimensionalityReductionMetrics {
+  /// Total percentage of variance explained by the selected principal
+  /// components.
+  core.double? totalExplainedVarianceRatio;
+
+  DimensionalityReductionMetrics({
+    this.totalExplainedVarianceRatio,
+  });
+
+  DimensionalityReductionMetrics.fromJson(core.Map _json)
+      : this(
+          totalExplainedVarianceRatio: _json
+                  .containsKey('totalExplainedVarianceRatio')
+              ? (_json['totalExplainedVarianceRatio'] as core.num).toDouble()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (totalExplainedVarianceRatio != null)
+          'totalExplainedVarianceRatio': totalExplainedVarianceRatio!,
+      };
+}
+
 class DmlStatistics {
   /// Number of deleted Rows.
   ///
@@ -4512,6 +4593,89 @@ class DmlStatistics {
         if (deletedRowCount != null) 'deletedRowCount': deletedRowCount!,
         if (insertedRowCount != null) 'insertedRowCount': insertedRowCount!,
         if (updatedRowCount != null) 'updatedRowCount': updatedRowCount!,
+      };
+}
+
+/// Discrete candidates of a double hyperparameter.
+class DoubleCandidates {
+  /// Candidates for the double parameter in increasing order.
+  core.List<core.double>? candidates;
+
+  DoubleCandidates({
+    this.candidates,
+  });
+
+  DoubleCandidates.fromJson(core.Map _json)
+      : this(
+          candidates: _json.containsKey('candidates')
+              ? (_json['candidates'] as core.List)
+                  .map((value) => (value as core.num).toDouble())
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (candidates != null) 'candidates': candidates!,
+      };
+}
+
+/// Search space for a double hyperparameter.
+class DoubleHparamSearchSpace {
+  /// Candidates of the double hyperparameter.
+  DoubleCandidates? candidates;
+
+  /// Range of the double hyperparameter.
+  DoubleRange? range;
+
+  DoubleHparamSearchSpace({
+    this.candidates,
+    this.range,
+  });
+
+  DoubleHparamSearchSpace.fromJson(core.Map _json)
+      : this(
+          candidates: _json.containsKey('candidates')
+              ? DoubleCandidates.fromJson(
+                  _json['candidates'] as core.Map<core.String, core.dynamic>)
+              : null,
+          range: _json.containsKey('range')
+              ? DoubleRange.fromJson(
+                  _json['range'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (candidates != null) 'candidates': candidates!,
+        if (range != null) 'range': range!,
+      };
+}
+
+/// Range of a double hyperparameter.
+class DoubleRange {
+  /// Max value of the double parameter.
+  core.double? max;
+
+  /// Min value of the double parameter.
+  core.double? min;
+
+  DoubleRange({
+    this.max,
+    this.min,
+  });
+
+  DoubleRange.fromJson(core.Map _json)
+      : this(
+          max: _json.containsKey('max')
+              ? (_json['max'] as core.num).toDouble()
+              : null,
+          min: _json.containsKey('min')
+              ? (_json['min'] as core.num).toDouble()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (max != null) 'max': max!,
+        if (min != null) 'min': min!,
       };
 }
 
@@ -4634,6 +4798,10 @@ class EvaluationMetrics {
   /// Populated for clustering models.
   ClusteringMetrics? clusteringMetrics;
 
+  /// Evaluation metrics when the model is a dimensionality reduction model,
+  /// which currently includes PCA.
+  DimensionalityReductionMetrics? dimensionalityReductionMetrics;
+
   /// Populated for multi-class classification/classifier models.
   MultiClassClassificationMetrics? multiClassClassificationMetrics;
 
@@ -4648,6 +4816,7 @@ class EvaluationMetrics {
     this.arimaForecastingMetrics,
     this.binaryClassificationMetrics,
     this.clusteringMetrics,
+    this.dimensionalityReductionMetrics,
     this.multiClassClassificationMetrics,
     this.rankingMetrics,
     this.regressionMetrics,
@@ -4670,6 +4839,12 @@ class EvaluationMetrics {
               ? ClusteringMetrics.fromJson(_json['clusteringMetrics']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          dimensionalityReductionMetrics:
+              _json.containsKey('dimensionalityReductionMetrics')
+                  ? DimensionalityReductionMetrics.fromJson(
+                      _json['dimensionalityReductionMetrics']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           multiClassClassificationMetrics:
               _json.containsKey('multiClassClassificationMetrics')
                   ? MultiClassClassificationMetrics.fromJson(
@@ -4692,6 +4867,8 @@ class EvaluationMetrics {
         if (binaryClassificationMetrics != null)
           'binaryClassificationMetrics': binaryClassificationMetrics!,
         if (clusteringMetrics != null) 'clusteringMetrics': clusteringMetrics!,
+        if (dimensionalityReductionMetrics != null)
+          'dimensionalityReductionMetrics': dimensionalityReductionMetrics!,
         if (multiClassClassificationMetrics != null)
           'multiClassClassificationMetrics': multiClassClassificationMetrics!,
         if (rankingMetrics != null) 'rankingMetrics': rankingMetrics!,
@@ -4981,6 +5158,38 @@ class ExplainQueryStep {
   core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
         if (substeps != null) 'substeps': substeps!,
+      };
+}
+
+/// Explanation for a single feature.
+class Explanation {
+  /// Attribution of feature.
+  core.double? attribution;
+
+  /// Full name of the feature.
+  ///
+  /// For non-numerical features, will be formatted like .. Overall size of
+  /// feature name will always be truncated to first 120 characters.
+  core.String? featureName;
+
+  Explanation({
+    this.attribution,
+    this.featureName,
+  });
+
+  Explanation.fromJson(core.Map _json)
+      : this(
+          attribution: _json.containsKey('attribution')
+              ? (_json['attribution'] as core.num).toDouble()
+              : null,
+          featureName: _json.containsKey('featureName')
+              ? _json['featureName'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (attribution != null) 'attribution': attribution!,
+        if (featureName != null) 'featureName': featureName!,
       };
 }
 
@@ -5460,6 +5669,44 @@ class GetServiceAccountResponse {
       };
 }
 
+/// Global explanations containing the top most important features after
+/// training.
+class GlobalExplanation {
+  /// Class label for this set of global explanations.
+  ///
+  /// Will be empty/null for binary logistic and linear regression models.
+  /// Sorted alphabetically in descending order.
+  core.String? classLabel;
+
+  /// A list of the top global explanations.
+  ///
+  /// Sorted by absolute value of attribution in descending order.
+  core.List<Explanation>? explanations;
+
+  GlobalExplanation({
+    this.classLabel,
+    this.explanations,
+  });
+
+  GlobalExplanation.fromJson(core.Map _json)
+      : this(
+          classLabel: _json.containsKey('classLabel')
+              ? _json['classLabel'] as core.String
+              : null,
+          explanations: _json.containsKey('explanations')
+              ? (_json['explanations'] as core.List)
+                  .map((value) => Explanation.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (classLabel != null) 'classLabel': classLabel!,
+        if (explanations != null) 'explanations': explanations!,
+      };
+}
+
 class GoogleSheetsOptions {
   /// Range of a sheet to query from.
   ///
@@ -5567,6 +5814,463 @@ class HivePartitioningOptions {
         if (requirePartitionFilter != null)
           'requirePartitionFilter': requirePartitionFilter!,
         if (sourceUriPrefix != null) 'sourceUriPrefix': sourceUriPrefix!,
+      };
+}
+
+/// Hyperparameter search spaces.
+///
+/// These should be a subset of training_options.
+class HparamSearchSpaces {
+  /// Activation functions of neural network models.
+  StringHparamSearchSpace? activationFn;
+
+  /// Mini batch sample size.
+  IntHparamSearchSpace? batchSize;
+
+  /// Booster type for boosted tree models.
+  StringHparamSearchSpace? boosterType;
+
+  /// Subsample ratio of columns for each level for boosted tree models.
+  DoubleHparamSearchSpace? colsampleBylevel;
+
+  /// Subsample ratio of columns for each node(split) for boosted tree models.
+  DoubleHparamSearchSpace? colsampleBynode;
+
+  /// Subsample ratio of columns when constructing each tree for boosted tree
+  /// models.
+  DoubleHparamSearchSpace? colsampleBytree;
+
+  /// Dart normalization type for boosted tree models.
+  StringHparamSearchSpace? dartNormalizeType;
+
+  /// Dropout probability for dnn model training and boosted tree models using
+  /// dart booster.
+  DoubleHparamSearchSpace? dropout;
+
+  /// Hidden units for neural network models.
+  IntArrayHparamSearchSpace? hiddenUnits;
+
+  /// L1 regularization coefficient.
+  DoubleHparamSearchSpace? l1Reg;
+
+  /// L2 regularization coefficient.
+  DoubleHparamSearchSpace? l2Reg;
+
+  /// Learning rate of training jobs.
+  DoubleHparamSearchSpace? learnRate;
+
+  /// Maximum depth of a tree for boosted tree models.
+  IntHparamSearchSpace? maxTreeDepth;
+
+  /// Minimum split loss for boosted tree models.
+  DoubleHparamSearchSpace? minSplitLoss;
+
+  /// Minimum sum of instance weight needed in a child for boosted tree models.
+  IntHparamSearchSpace? minTreeChildWeight;
+
+  /// Number of clusters for k-means.
+  IntHparamSearchSpace? numClusters;
+
+  /// Number of latent factors to train on.
+  IntHparamSearchSpace? numFactors;
+
+  /// Number of parallel trees for boosted tree models.
+  IntHparamSearchSpace? numParallelTree;
+
+  /// Optimizer of TF models.
+  StringHparamSearchSpace? optimizer;
+
+  /// Subsample the training data to grow tree to prevent overfitting for
+  /// boosted tree models.
+  DoubleHparamSearchSpace? subsample;
+
+  /// Tree construction algorithm for boosted tree models.
+  StringHparamSearchSpace? treeMethod;
+
+  /// Hyperparameter for matrix factoration when implicit feedback type is
+  /// specified.
+  DoubleHparamSearchSpace? walsAlpha;
+
+  HparamSearchSpaces({
+    this.activationFn,
+    this.batchSize,
+    this.boosterType,
+    this.colsampleBylevel,
+    this.colsampleBynode,
+    this.colsampleBytree,
+    this.dartNormalizeType,
+    this.dropout,
+    this.hiddenUnits,
+    this.l1Reg,
+    this.l2Reg,
+    this.learnRate,
+    this.maxTreeDepth,
+    this.minSplitLoss,
+    this.minTreeChildWeight,
+    this.numClusters,
+    this.numFactors,
+    this.numParallelTree,
+    this.optimizer,
+    this.subsample,
+    this.treeMethod,
+    this.walsAlpha,
+  });
+
+  HparamSearchSpaces.fromJson(core.Map _json)
+      : this(
+          activationFn: _json.containsKey('activationFn')
+              ? StringHparamSearchSpace.fromJson(
+                  _json['activationFn'] as core.Map<core.String, core.dynamic>)
+              : null,
+          batchSize: _json.containsKey('batchSize')
+              ? IntHparamSearchSpace.fromJson(
+                  _json['batchSize'] as core.Map<core.String, core.dynamic>)
+              : null,
+          boosterType: _json.containsKey('boosterType')
+              ? StringHparamSearchSpace.fromJson(
+                  _json['boosterType'] as core.Map<core.String, core.dynamic>)
+              : null,
+          colsampleBylevel: _json.containsKey('colsampleBylevel')
+              ? DoubleHparamSearchSpace.fromJson(_json['colsampleBylevel']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          colsampleBynode: _json.containsKey('colsampleBynode')
+              ? DoubleHparamSearchSpace.fromJson(_json['colsampleBynode']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          colsampleBytree: _json.containsKey('colsampleBytree')
+              ? DoubleHparamSearchSpace.fromJson(_json['colsampleBytree']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          dartNormalizeType: _json.containsKey('dartNormalizeType')
+              ? StringHparamSearchSpace.fromJson(_json['dartNormalizeType']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          dropout: _json.containsKey('dropout')
+              ? DoubleHparamSearchSpace.fromJson(
+                  _json['dropout'] as core.Map<core.String, core.dynamic>)
+              : null,
+          hiddenUnits: _json.containsKey('hiddenUnits')
+              ? IntArrayHparamSearchSpace.fromJson(
+                  _json['hiddenUnits'] as core.Map<core.String, core.dynamic>)
+              : null,
+          l1Reg: _json.containsKey('l1Reg')
+              ? DoubleHparamSearchSpace.fromJson(
+                  _json['l1Reg'] as core.Map<core.String, core.dynamic>)
+              : null,
+          l2Reg: _json.containsKey('l2Reg')
+              ? DoubleHparamSearchSpace.fromJson(
+                  _json['l2Reg'] as core.Map<core.String, core.dynamic>)
+              : null,
+          learnRate: _json.containsKey('learnRate')
+              ? DoubleHparamSearchSpace.fromJson(
+                  _json['learnRate'] as core.Map<core.String, core.dynamic>)
+              : null,
+          maxTreeDepth: _json.containsKey('maxTreeDepth')
+              ? IntHparamSearchSpace.fromJson(
+                  _json['maxTreeDepth'] as core.Map<core.String, core.dynamic>)
+              : null,
+          minSplitLoss: _json.containsKey('minSplitLoss')
+              ? DoubleHparamSearchSpace.fromJson(
+                  _json['minSplitLoss'] as core.Map<core.String, core.dynamic>)
+              : null,
+          minTreeChildWeight: _json.containsKey('minTreeChildWeight')
+              ? IntHparamSearchSpace.fromJson(_json['minTreeChildWeight']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          numClusters: _json.containsKey('numClusters')
+              ? IntHparamSearchSpace.fromJson(
+                  _json['numClusters'] as core.Map<core.String, core.dynamic>)
+              : null,
+          numFactors: _json.containsKey('numFactors')
+              ? IntHparamSearchSpace.fromJson(
+                  _json['numFactors'] as core.Map<core.String, core.dynamic>)
+              : null,
+          numParallelTree: _json.containsKey('numParallelTree')
+              ? IntHparamSearchSpace.fromJson(_json['numParallelTree']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          optimizer: _json.containsKey('optimizer')
+              ? StringHparamSearchSpace.fromJson(
+                  _json['optimizer'] as core.Map<core.String, core.dynamic>)
+              : null,
+          subsample: _json.containsKey('subsample')
+              ? DoubleHparamSearchSpace.fromJson(
+                  _json['subsample'] as core.Map<core.String, core.dynamic>)
+              : null,
+          treeMethod: _json.containsKey('treeMethod')
+              ? StringHparamSearchSpace.fromJson(
+                  _json['treeMethod'] as core.Map<core.String, core.dynamic>)
+              : null,
+          walsAlpha: _json.containsKey('walsAlpha')
+              ? DoubleHparamSearchSpace.fromJson(
+                  _json['walsAlpha'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (activationFn != null) 'activationFn': activationFn!,
+        if (batchSize != null) 'batchSize': batchSize!,
+        if (boosterType != null) 'boosterType': boosterType!,
+        if (colsampleBylevel != null) 'colsampleBylevel': colsampleBylevel!,
+        if (colsampleBynode != null) 'colsampleBynode': colsampleBynode!,
+        if (colsampleBytree != null) 'colsampleBytree': colsampleBytree!,
+        if (dartNormalizeType != null) 'dartNormalizeType': dartNormalizeType!,
+        if (dropout != null) 'dropout': dropout!,
+        if (hiddenUnits != null) 'hiddenUnits': hiddenUnits!,
+        if (l1Reg != null) 'l1Reg': l1Reg!,
+        if (l2Reg != null) 'l2Reg': l2Reg!,
+        if (learnRate != null) 'learnRate': learnRate!,
+        if (maxTreeDepth != null) 'maxTreeDepth': maxTreeDepth!,
+        if (minSplitLoss != null) 'minSplitLoss': minSplitLoss!,
+        if (minTreeChildWeight != null)
+          'minTreeChildWeight': minTreeChildWeight!,
+        if (numClusters != null) 'numClusters': numClusters!,
+        if (numFactors != null) 'numFactors': numFactors!,
+        if (numParallelTree != null) 'numParallelTree': numParallelTree!,
+        if (optimizer != null) 'optimizer': optimizer!,
+        if (subsample != null) 'subsample': subsample!,
+        if (treeMethod != null) 'treeMethod': treeMethod!,
+        if (walsAlpha != null) 'walsAlpha': walsAlpha!,
+      };
+}
+
+/// Training info of a trial in hyperparameter tuning.
+class HparamTuningTrial {
+  /// Ending time of the trial.
+  core.String? endTimeMs;
+
+  /// Error message for FAILED and INFEASIBLE trial.
+  core.String? errorMessage;
+
+  /// Loss computed on the eval data at the end of trial.
+  core.double? evalLoss;
+
+  /// Evaluation metrics of this trial calculated on the test data.
+  ///
+  /// Empty in Job API.
+  EvaluationMetrics? evaluationMetrics;
+
+  /// Hyperparameter tuning evaluation metrics of this trial calculated on the
+  /// eval data.
+  ///
+  /// Unlike evaluation_metrics, only the fields corresponding to the
+  /// hparam_tuning_objectives are set.
+  EvaluationMetrics? hparamTuningEvaluationMetrics;
+
+  /// The hyperprameters selected for this trial.
+  TrainingOptions? hparams;
+
+  /// Starting time of the trial.
+  core.String? startTimeMs;
+
+  /// The status of the trial.
+  /// Possible string values are:
+  /// - "TRIAL_STATUS_UNSPECIFIED"
+  /// - "NOT_STARTED" : Scheduled but not started.
+  /// - "RUNNING" : Running state.
+  /// - "SUCCEEDED" : The trial succeeded.
+  /// - "FAILED" : The trial failed.
+  /// - "INFEASIBLE" : The trial is infeasible due to the invalid params.
+  /// - "STOPPED_EARLY" : Trial stopped early because it's not promising.
+  core.String? status;
+
+  /// Loss computed on the training data at the end of trial.
+  core.double? trainingLoss;
+
+  /// 1-based index of the trial.
+  core.String? trialId;
+
+  HparamTuningTrial({
+    this.endTimeMs,
+    this.errorMessage,
+    this.evalLoss,
+    this.evaluationMetrics,
+    this.hparamTuningEvaluationMetrics,
+    this.hparams,
+    this.startTimeMs,
+    this.status,
+    this.trainingLoss,
+    this.trialId,
+  });
+
+  HparamTuningTrial.fromJson(core.Map _json)
+      : this(
+          endTimeMs: _json.containsKey('endTimeMs')
+              ? _json['endTimeMs'] as core.String
+              : null,
+          errorMessage: _json.containsKey('errorMessage')
+              ? _json['errorMessage'] as core.String
+              : null,
+          evalLoss: _json.containsKey('evalLoss')
+              ? (_json['evalLoss'] as core.num).toDouble()
+              : null,
+          evaluationMetrics: _json.containsKey('evaluationMetrics')
+              ? EvaluationMetrics.fromJson(_json['evaluationMetrics']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          hparamTuningEvaluationMetrics:
+              _json.containsKey('hparamTuningEvaluationMetrics')
+                  ? EvaluationMetrics.fromJson(
+                      _json['hparamTuningEvaluationMetrics']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          hparams: _json.containsKey('hparams')
+              ? TrainingOptions.fromJson(
+                  _json['hparams'] as core.Map<core.String, core.dynamic>)
+              : null,
+          startTimeMs: _json.containsKey('startTimeMs')
+              ? _json['startTimeMs'] as core.String
+              : null,
+          status: _json.containsKey('status')
+              ? _json['status'] as core.String
+              : null,
+          trainingLoss: _json.containsKey('trainingLoss')
+              ? (_json['trainingLoss'] as core.num).toDouble()
+              : null,
+          trialId: _json.containsKey('trialId')
+              ? _json['trialId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (endTimeMs != null) 'endTimeMs': endTimeMs!,
+        if (errorMessage != null) 'errorMessage': errorMessage!,
+        if (evalLoss != null) 'evalLoss': evalLoss!,
+        if (evaluationMetrics != null) 'evaluationMetrics': evaluationMetrics!,
+        if (hparamTuningEvaluationMetrics != null)
+          'hparamTuningEvaluationMetrics': hparamTuningEvaluationMetrics!,
+        if (hparams != null) 'hparams': hparams!,
+        if (startTimeMs != null) 'startTimeMs': startTimeMs!,
+        if (status != null) 'status': status!,
+        if (trainingLoss != null) 'trainingLoss': trainingLoss!,
+        if (trialId != null) 'trialId': trialId!,
+      };
+}
+
+/// An array of int.
+class IntArray {
+  /// Elements in the int array.
+  core.List<core.String>? elements;
+
+  IntArray({
+    this.elements,
+  });
+
+  IntArray.fromJson(core.Map _json)
+      : this(
+          elements: _json.containsKey('elements')
+              ? (_json['elements'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (elements != null) 'elements': elements!,
+      };
+}
+
+/// Search space for int array.
+class IntArrayHparamSearchSpace {
+  /// Candidates for the int array parameter.
+  core.List<IntArray>? candidates;
+
+  IntArrayHparamSearchSpace({
+    this.candidates,
+  });
+
+  IntArrayHparamSearchSpace.fromJson(core.Map _json)
+      : this(
+          candidates: _json.containsKey('candidates')
+              ? (_json['candidates'] as core.List)
+                  .map((value) => IntArray.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (candidates != null) 'candidates': candidates!,
+      };
+}
+
+/// Discrete candidates of an int hyperparameter.
+class IntCandidates {
+  /// Candidates for the int parameter in increasing order.
+  core.List<core.String>? candidates;
+
+  IntCandidates({
+    this.candidates,
+  });
+
+  IntCandidates.fromJson(core.Map _json)
+      : this(
+          candidates: _json.containsKey('candidates')
+              ? (_json['candidates'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (candidates != null) 'candidates': candidates!,
+      };
+}
+
+/// Search space for an int hyperparameter.
+class IntHparamSearchSpace {
+  /// Candidates of the int hyperparameter.
+  IntCandidates? candidates;
+
+  /// Range of the int hyperparameter.
+  IntRange? range;
+
+  IntHparamSearchSpace({
+    this.candidates,
+    this.range,
+  });
+
+  IntHparamSearchSpace.fromJson(core.Map _json)
+      : this(
+          candidates: _json.containsKey('candidates')
+              ? IntCandidates.fromJson(
+                  _json['candidates'] as core.Map<core.String, core.dynamic>)
+              : null,
+          range: _json.containsKey('range')
+              ? IntRange.fromJson(
+                  _json['range'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (candidates != null) 'candidates': candidates!,
+        if (range != null) 'range': range!,
+      };
+}
+
+/// Range of an int hyperparameter.
+class IntRange {
+  /// Max value of the int parameter.
+  core.String? max;
+
+  /// Min value of the int parameter.
+  core.String? min;
+
+  IntRange({
+    this.max,
+    this.min,
+  });
+
+  IntRange.fromJson(core.Map _json)
+      : this(
+          max: _json.containsKey('max') ? _json['max'] as core.String : null,
+          min: _json.containsKey('min') ? _json['min'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (max != null) 'max': max!,
+        if (min != null) 'min': min!,
       };
 }
 
@@ -7111,6 +7815,9 @@ class JobStatistics {
   /// EXTRACT jobs.
   core.double? completionRatio;
 
+  /// \[Output-only\] Statistics for a copy job.
+  JobStatistics5? copy;
+
   /// \[Output-only\] Creation time of this job, in milliseconds since the
   /// epoch.
   ///
@@ -7181,6 +7888,7 @@ class JobStatistics {
 
   JobStatistics({
     this.completionRatio,
+    this.copy,
     this.creationTime,
     this.endTime,
     this.extract,
@@ -7204,6 +7912,10 @@ class JobStatistics {
       : this(
           completionRatio: _json.containsKey('completionRatio')
               ? (_json['completionRatio'] as core.num).toDouble()
+              : null,
+          copy: _json.containsKey('copy')
+              ? JobStatistics5.fromJson(
+                  _json['copy'] as core.Map<core.String, core.dynamic>)
               : null,
           creationTime: _json.containsKey('creationTime')
               ? _json['creationTime'] as core.String
@@ -7274,6 +7986,7 @@ class JobStatistics {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (completionRatio != null) 'completionRatio': completionRatio!,
+        if (copy != null) 'copy': copy!,
         if (creationTime != null) 'creationTime': creationTime!,
         if (endTime != null) 'endTime': endTime!,
         if (extract != null) 'extract': extract!,
@@ -7787,6 +8500,35 @@ class JobStatistics4 {
       };
 }
 
+class JobStatistics5 {
+  /// \[Output-only\] Number of logical bytes copied to the destination table.
+  core.String? copiedLogicalBytes;
+
+  /// \[Output-only\] Number of rows copied to the destination table.
+  core.String? copiedRows;
+
+  JobStatistics5({
+    this.copiedLogicalBytes,
+    this.copiedRows,
+  });
+
+  JobStatistics5.fromJson(core.Map _json)
+      : this(
+          copiedLogicalBytes: _json.containsKey('copied_logical_bytes')
+              ? _json['copied_logical_bytes'] as core.String
+              : null,
+          copiedRows: _json.containsKey('copied_rows')
+              ? _json['copied_rows'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (copiedLogicalBytes != null)
+          'copied_logical_bytes': copiedLogicalBytes!,
+        if (copiedRows != null) 'copied_rows': copiedRows!,
+      };
+}
+
 class JobStatus {
   /// \[Output-only\] Final error result of the job.
   ///
@@ -8066,6 +8808,15 @@ class Model {
   /// Output only.
   core.String? creationTime;
 
+  /// The default trial_id to use in TVFs when the trial_id is not passed in.
+  ///
+  /// For single-objective hyperparameter tuning, this is the best trial id. For
+  /// multi-objective hyperparameter tuning, this is the smallest trial id among
+  /// all Pareto optimal trials.
+  ///
+  /// Output only.
+  core.String? defaultTrialId;
+
   /// A user-friendly description of this model.
   ///
   /// Optional.
@@ -8102,6 +8853,16 @@ class Model {
   ///
   /// Optional.
   core.String? friendlyName;
+
+  /// All hyperparameter search spaces in this model.
+  ///
+  /// Output only.
+  HparamSearchSpaces? hparamSearchSpaces;
+
+  /// Trials of a hyperparameter tuning model sorted by trial_id.
+  ///
+  /// Output only.
+  core.List<HparamTuningTrial>? hparamTrials;
 
   /// Label columns that were used to train this model.
   ///
@@ -8153,8 +8914,19 @@ class Model {
   /// - "ARIMA" : ARIMA model.
   /// - "AUTOML_REGRESSOR" : AutoML Tables regression model.
   /// - "AUTOML_CLASSIFIER" : AutoML Tables classification model.
+  /// - "PCA" : Prinpical Component Analysis model.
+  /// - "AUTOENCODER" : Autoencoder model.
   /// - "ARIMA_PLUS" : New name for the ARIMA model.
   core.String? modelType;
+
+  /// For single-objective hyperparameter tuning, it only contains the best
+  /// trial.
+  ///
+  /// For multi-objective hyperparameter tuning, it contains all Pareto optimal
+  /// trials sorted by trial_id.
+  ///
+  /// Output only.
+  core.List<core.String>? optimalTrialIds;
 
   /// Information for all training runs in increasing order of start_time.
   ///
@@ -8164,18 +8936,22 @@ class Model {
   Model({
     this.bestTrialId,
     this.creationTime,
+    this.defaultTrialId,
     this.description,
     this.encryptionConfiguration,
     this.etag,
     this.expirationTime,
     this.featureColumns,
     this.friendlyName,
+    this.hparamSearchSpaces,
+    this.hparamTrials,
     this.labelColumns,
     this.labels,
     this.lastModifiedTime,
     this.location,
     this.modelReference,
     this.modelType,
+    this.optimalTrialIds,
     this.trainingRuns,
   });
 
@@ -8186,6 +8962,9 @@ class Model {
               : null,
           creationTime: _json.containsKey('creationTime')
               ? _json['creationTime'] as core.String
+              : null,
+          defaultTrialId: _json.containsKey('defaultTrialId')
+              ? _json['defaultTrialId'] as core.String
               : null,
           description: _json.containsKey('description')
               ? _json['description'] as core.String
@@ -8207,6 +8986,16 @@ class Model {
               : null,
           friendlyName: _json.containsKey('friendlyName')
               ? _json['friendlyName'] as core.String
+              : null,
+          hparamSearchSpaces: _json.containsKey('hparamSearchSpaces')
+              ? HparamSearchSpaces.fromJson(_json['hparamSearchSpaces']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          hparamTrials: _json.containsKey('hparamTrials')
+              ? (_json['hparamTrials'] as core.List)
+                  .map((value) => HparamTuningTrial.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
               : null,
           labelColumns: _json.containsKey('labelColumns')
               ? (_json['labelColumns'] as core.List)
@@ -8235,6 +9024,11 @@ class Model {
           modelType: _json.containsKey('modelType')
               ? _json['modelType'] as core.String
               : null,
+          optimalTrialIds: _json.containsKey('optimalTrialIds')
+              ? (_json['optimalTrialIds'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
           trainingRuns: _json.containsKey('trainingRuns')
               ? (_json['trainingRuns'] as core.List)
                   .map((value) => TrainingRun.fromJson(
@@ -8246,6 +9040,7 @@ class Model {
   core.Map<core.String, core.dynamic> toJson() => {
         if (bestTrialId != null) 'bestTrialId': bestTrialId!,
         if (creationTime != null) 'creationTime': creationTime!,
+        if (defaultTrialId != null) 'defaultTrialId': defaultTrialId!,
         if (description != null) 'description': description!,
         if (encryptionConfiguration != null)
           'encryptionConfiguration': encryptionConfiguration!,
@@ -8253,12 +9048,16 @@ class Model {
         if (expirationTime != null) 'expirationTime': expirationTime!,
         if (featureColumns != null) 'featureColumns': featureColumns!,
         if (friendlyName != null) 'friendlyName': friendlyName!,
+        if (hparamSearchSpaces != null)
+          'hparamSearchSpaces': hparamSearchSpaces!,
+        if (hparamTrials != null) 'hparamTrials': hparamTrials!,
         if (labelColumns != null) 'labelColumns': labelColumns!,
         if (labels != null) 'labels': labels!,
         if (lastModifiedTime != null) 'lastModifiedTime': lastModifiedTime!,
         if (location != null) 'location': location!,
         if (modelReference != null) 'modelReference': modelReference!,
         if (modelType != null) 'modelType': modelType!,
+        if (optimalTrialIds != null) 'optimalTrialIds': optimalTrialIds!,
         if (trainingRuns != null) 'trainingRuns': trainingRuns!,
       };
 }
@@ -10335,7 +11134,33 @@ class Streamingbuffer {
       };
 }
 
+/// Search space for string and enum.
+class StringHparamSearchSpace {
+  /// Canididates for the string or enum parameter in lower case.
+  core.List<core.String>? candidates;
+
+  StringHparamSearchSpace({
+    this.candidates,
+  });
+
+  StringHparamSearchSpace.fromJson(core.Map _json)
+      : this(
+          candidates: _json.containsKey('candidates')
+              ? (_json['candidates'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (candidates != null) 'candidates': candidates!,
+      };
+}
+
 class Table {
+  /// \[Output-only\] Clone definition.
+  CloneDefinition? cloneDefinition;
+
   /// \[Beta\] Clustering specification for the table.
   ///
   /// Must be specified with partitioning, data in the table will be first
@@ -10496,6 +11321,7 @@ class Table {
   ViewDefinition? view;
 
   Table({
+    this.cloneDefinition,
     this.clustering,
     this.creationTime,
     this.defaultCollation,
@@ -10530,6 +11356,10 @@ class Table {
 
   Table.fromJson(core.Map _json)
       : this(
+          cloneDefinition: _json.containsKey('cloneDefinition')
+              ? CloneDefinition.fromJson(_json['cloneDefinition']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           clustering: _json.containsKey('clustering')
               ? Clustering.fromJson(
                   _json['clustering'] as core.Map<core.String, core.dynamic>)
@@ -10635,6 +11465,7 @@ class Table {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (cloneDefinition != null) 'cloneDefinition': cloneDefinition!,
         if (clustering != null) 'clustering': clustering!,
         if (creationTime != null) 'creationTime': creationTime!,
         if (defaultCollation != null) 'defaultCollation': defaultCollation!,
@@ -11495,6 +12326,11 @@ class TrainingOptions {
   /// - "DART" : Dart booster.
   core.String? boosterType;
 
+  /// Whether or not p-value test should be computed for this model.
+  ///
+  /// Only available for linear and logistic regression models.
+  core.bool? calculatePValues;
+
   /// If true, clean spikes and dips in the input time series.
   core.bool? cleanSpikesAndDips;
 
@@ -11576,6 +12412,9 @@ class TrainingOptions {
   ///
   /// Used only for iterative training algorithms.
   core.bool? earlyStop;
+
+  /// If true, enable global explanation during training.
+  core.bool? enableGlobalExplain;
 
   /// Feedback type that specifies which algorithm to run for matrix
   /// factorization.
@@ -11668,6 +12507,9 @@ class TrainingOptions {
   /// The number of periods ahead that need to be forecasted.
   core.String? horizon;
 
+  /// The target evaluation metrics to optimize the hyperparameters for.
+  core.List<core.String>? hparamTuningObjectives;
+
   /// Include drift when fitting an ARIMA model.
   core.bool? includeDrift;
 
@@ -11677,6 +12519,9 @@ class TrainingOptions {
 
   /// Name of input label columns in training data.
   core.List<core.String>? inputLabelColumns;
+
+  /// Number of integral steps for the integrated gradients explain method.
+  core.String? integratedGradientsNumSteps;
 
   /// Item column specified for matrix factorization models.
   core.String? itemColumn;
@@ -11731,6 +12576,9 @@ class TrainingOptions {
   /// Used only for iterative training algorithms.
   core.String? maxIterations;
 
+  /// Maximum number of trials to run in parallel.
+  core.String? maxParallelTrials;
+
   /// Maximum depth of a tree for boosted tree models.
   core.String? maxTreeDepth;
 
@@ -11766,6 +12614,9 @@ class TrainingOptions {
   /// tree models.
   core.String? numParallelTree;
 
+  /// Number of trials to run this hyperparameter tuning job.
+  core.String? numTrials;
+
   /// Optimization strategy for training linear regression models.
   /// Possible string values are:
   /// - "OPTIMIZATION_STRATEGY_UNSPECIFIED"
@@ -11780,6 +12631,9 @@ class TrainingOptions {
   /// Suppose there is a struct A with field b. When false (default), the output
   /// feature name is A_b. When true, the output feature name is A.b.
   core.bool? preserveInputStructs;
+
+  /// Number of paths for the sampled shapley explain method.
+  core.String? sampledShapleyNumPaths;
 
   /// Subsample fraction of the training data to grow tree to prevent
   /// overfitting for boosted tree models.
@@ -11823,6 +12677,7 @@ class TrainingOptions {
     this.autoArimaMaxOrder,
     this.batchSize,
     this.boosterType,
+    this.calculatePValues,
     this.cleanSpikesAndDips,
     this.colsampleBylevel,
     this.colsampleBynode,
@@ -11836,13 +12691,16 @@ class TrainingOptions {
     this.distanceType,
     this.dropout,
     this.earlyStop,
+    this.enableGlobalExplain,
     this.feedbackType,
     this.hiddenUnits,
     this.holidayRegion,
     this.horizon,
+    this.hparamTuningObjectives,
     this.includeDrift,
     this.initialLearnRate,
     this.inputLabelColumns,
+    this.integratedGradientsNumSteps,
     this.itemColumn,
     this.kmeansInitializationColumn,
     this.kmeansInitializationMethod,
@@ -11853,6 +12711,7 @@ class TrainingOptions {
     this.learnRateStrategy,
     this.lossType,
     this.maxIterations,
+    this.maxParallelTrials,
     this.maxTreeDepth,
     this.minRelativeProgress,
     this.minSplitLoss,
@@ -11862,8 +12721,10 @@ class TrainingOptions {
     this.numClusters,
     this.numFactors,
     this.numParallelTree,
+    this.numTrials,
     this.optimizationStrategy,
     this.preserveInputStructs,
+    this.sampledShapleyNumPaths,
     this.subsample,
     this.timeSeriesDataColumn,
     this.timeSeriesIdColumn,
@@ -11891,6 +12752,9 @@ class TrainingOptions {
               : null,
           boosterType: _json.containsKey('boosterType')
               ? _json['boosterType'] as core.String
+              : null,
+          calculatePValues: _json.containsKey('calculatePValues')
+              ? _json['calculatePValues'] as core.bool
               : null,
           cleanSpikesAndDips: _json.containsKey('cleanSpikesAndDips')
               ? _json['cleanSpikesAndDips'] as core.bool
@@ -11931,6 +12795,9 @@ class TrainingOptions {
           earlyStop: _json.containsKey('earlyStop')
               ? _json['earlyStop'] as core.bool
               : null,
+          enableGlobalExplain: _json.containsKey('enableGlobalExplain')
+              ? _json['enableGlobalExplain'] as core.bool
+              : null,
           feedbackType: _json.containsKey('feedbackType')
               ? _json['feedbackType'] as core.String
               : null,
@@ -11945,6 +12812,11 @@ class TrainingOptions {
           horizon: _json.containsKey('horizon')
               ? _json['horizon'] as core.String
               : null,
+          hparamTuningObjectives: _json.containsKey('hparamTuningObjectives')
+              ? (_json['hparamTuningObjectives'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
           includeDrift: _json.containsKey('includeDrift')
               ? _json['includeDrift'] as core.bool
               : null,
@@ -11956,6 +12828,10 @@ class TrainingOptions {
                   .map((value) => value as core.String)
                   .toList()
               : null,
+          integratedGradientsNumSteps:
+              _json.containsKey('integratedGradientsNumSteps')
+                  ? _json['integratedGradientsNumSteps'] as core.String
+                  : null,
           itemColumn: _json.containsKey('itemColumn')
               ? _json['itemColumn'] as core.String
               : null,
@@ -11995,6 +12871,9 @@ class TrainingOptions {
           maxIterations: _json.containsKey('maxIterations')
               ? _json['maxIterations'] as core.String
               : null,
+          maxParallelTrials: _json.containsKey('maxParallelTrials')
+              ? _json['maxParallelTrials'] as core.String
+              : null,
           maxTreeDepth: _json.containsKey('maxTreeDepth')
               ? _json['maxTreeDepth'] as core.String
               : null,
@@ -12023,11 +12902,17 @@ class TrainingOptions {
           numParallelTree: _json.containsKey('numParallelTree')
               ? _json['numParallelTree'] as core.String
               : null,
+          numTrials: _json.containsKey('numTrials')
+              ? _json['numTrials'] as core.String
+              : null,
           optimizationStrategy: _json.containsKey('optimizationStrategy')
               ? _json['optimizationStrategy'] as core.String
               : null,
           preserveInputStructs: _json.containsKey('preserveInputStructs')
               ? _json['preserveInputStructs'] as core.bool
+              : null,
+          sampledShapleyNumPaths: _json.containsKey('sampledShapleyNumPaths')
+              ? _json['sampledShapleyNumPaths'] as core.String
               : null,
           subsample: _json.containsKey('subsample')
               ? (_json['subsample'] as core.num).toDouble()
@@ -12067,6 +12952,7 @@ class TrainingOptions {
         if (autoArimaMaxOrder != null) 'autoArimaMaxOrder': autoArimaMaxOrder!,
         if (batchSize != null) 'batchSize': batchSize!,
         if (boosterType != null) 'boosterType': boosterType!,
+        if (calculatePValues != null) 'calculatePValues': calculatePValues!,
         if (cleanSpikesAndDips != null)
           'cleanSpikesAndDips': cleanSpikesAndDips!,
         if (colsampleBylevel != null) 'colsampleBylevel': colsampleBylevel!,
@@ -12083,13 +12969,19 @@ class TrainingOptions {
         if (distanceType != null) 'distanceType': distanceType!,
         if (dropout != null) 'dropout': dropout!,
         if (earlyStop != null) 'earlyStop': earlyStop!,
+        if (enableGlobalExplain != null)
+          'enableGlobalExplain': enableGlobalExplain!,
         if (feedbackType != null) 'feedbackType': feedbackType!,
         if (hiddenUnits != null) 'hiddenUnits': hiddenUnits!,
         if (holidayRegion != null) 'holidayRegion': holidayRegion!,
         if (horizon != null) 'horizon': horizon!,
+        if (hparamTuningObjectives != null)
+          'hparamTuningObjectives': hparamTuningObjectives!,
         if (includeDrift != null) 'includeDrift': includeDrift!,
         if (initialLearnRate != null) 'initialLearnRate': initialLearnRate!,
         if (inputLabelColumns != null) 'inputLabelColumns': inputLabelColumns!,
+        if (integratedGradientsNumSteps != null)
+          'integratedGradientsNumSteps': integratedGradientsNumSteps!,
         if (itemColumn != null) 'itemColumn': itemColumn!,
         if (kmeansInitializationColumn != null)
           'kmeansInitializationColumn': kmeansInitializationColumn!,
@@ -12102,6 +12994,7 @@ class TrainingOptions {
         if (learnRateStrategy != null) 'learnRateStrategy': learnRateStrategy!,
         if (lossType != null) 'lossType': lossType!,
         if (maxIterations != null) 'maxIterations': maxIterations!,
+        if (maxParallelTrials != null) 'maxParallelTrials': maxParallelTrials!,
         if (maxTreeDepth != null) 'maxTreeDepth': maxTreeDepth!,
         if (minRelativeProgress != null)
           'minRelativeProgress': minRelativeProgress!,
@@ -12113,10 +13006,13 @@ class TrainingOptions {
         if (numClusters != null) 'numClusters': numClusters!,
         if (numFactors != null) 'numFactors': numFactors!,
         if (numParallelTree != null) 'numParallelTree': numParallelTree!,
+        if (numTrials != null) 'numTrials': numTrials!,
         if (optimizationStrategy != null)
           'optimizationStrategy': optimizationStrategy!,
         if (preserveInputStructs != null)
           'preserveInputStructs': preserveInputStructs!,
+        if (sampledShapleyNumPaths != null)
+          'sampledShapleyNumPaths': sampledShapleyNumPaths!,
         if (subsample != null) 'subsample': subsample!,
         if (timeSeriesDataColumn != null)
           'timeSeriesDataColumn': timeSeriesDataColumn!,
@@ -12135,6 +13031,12 @@ class TrainingOptions {
 
 /// Information about a single training query run for the model.
 class TrainingRun {
+  /// Global explanation contains the explanation of top features on the class
+  /// level.
+  ///
+  /// Applies to classification models only.
+  core.List<GlobalExplanation>? classLevelGlobalExplanations;
+
   /// Data split result of the training run.
   ///
   /// Only set when the input data is actually split.
@@ -12143,6 +13045,12 @@ class TrainingRun {
   /// The evaluation metrics over training/eval data that were computed at the
   /// end of training.
   EvaluationMetrics? evaluationMetrics;
+
+  /// Global explanation contains the explanation of top features on the model
+  /// level.
+  ///
+  /// Applies to both regression and classification models.
+  GlobalExplanation? modelLevelGlobalExplanation;
 
   /// Output of each iteration run, results.size() \<= max_iterations.
   core.List<IterationResult>? results;
@@ -12154,22 +13062,44 @@ class TrainingRun {
   /// default options that were used.
   TrainingOptions? trainingOptions;
 
+  /// The model id in Vertex AI Model Registry for this training run
+  core.String? vertexAiModelId;
+
+  /// The model version in Vertex AI Model Registry for this training run
+  core.String? vertexAiModelVersion;
+
   TrainingRun({
+    this.classLevelGlobalExplanations,
     this.dataSplitResult,
     this.evaluationMetrics,
+    this.modelLevelGlobalExplanation,
     this.results,
     this.startTime,
     this.trainingOptions,
+    this.vertexAiModelId,
+    this.vertexAiModelVersion,
   });
 
   TrainingRun.fromJson(core.Map _json)
       : this(
+          classLevelGlobalExplanations:
+              _json.containsKey('classLevelGlobalExplanations')
+                  ? (_json['classLevelGlobalExplanations'] as core.List)
+                      .map((value) => GlobalExplanation.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                      .toList()
+                  : null,
           dataSplitResult: _json.containsKey('dataSplitResult')
               ? DataSplitResult.fromJson(_json['dataSplitResult']
                   as core.Map<core.String, core.dynamic>)
               : null,
           evaluationMetrics: _json.containsKey('evaluationMetrics')
               ? EvaluationMetrics.fromJson(_json['evaluationMetrics']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          modelLevelGlobalExplanation: _json
+                  .containsKey('modelLevelGlobalExplanation')
+              ? GlobalExplanation.fromJson(_json['modelLevelGlobalExplanation']
                   as core.Map<core.String, core.dynamic>)
               : null,
           results: _json.containsKey('results')
@@ -12185,14 +13115,27 @@ class TrainingRun {
               ? TrainingOptions.fromJson(_json['trainingOptions']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          vertexAiModelId: _json.containsKey('vertexAiModelId')
+              ? _json['vertexAiModelId'] as core.String
+              : null,
+          vertexAiModelVersion: _json.containsKey('vertexAiModelVersion')
+              ? _json['vertexAiModelVersion'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (classLevelGlobalExplanations != null)
+          'classLevelGlobalExplanations': classLevelGlobalExplanations!,
         if (dataSplitResult != null) 'dataSplitResult': dataSplitResult!,
         if (evaluationMetrics != null) 'evaluationMetrics': evaluationMetrics!,
+        if (modelLevelGlobalExplanation != null)
+          'modelLevelGlobalExplanation': modelLevelGlobalExplanation!,
         if (results != null) 'results': results!,
         if (startTime != null) 'startTime': startTime!,
         if (trainingOptions != null) 'trainingOptions': trainingOptions!,
+        if (vertexAiModelId != null) 'vertexAiModelId': vertexAiModelId!,
+        if (vertexAiModelVersion != null)
+          'vertexAiModelVersion': vertexAiModelVersion!,
       };
 }
 

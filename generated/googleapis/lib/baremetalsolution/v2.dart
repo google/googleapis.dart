@@ -733,6 +733,142 @@ class ProjectsLocationsProvisioningConfigsResource {
   ProjectsLocationsProvisioningConfigsResource(commons.ApiRequester client)
       : _requester = client;
 
+  /// Create new ProvisioningConfig.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent project and location containing the
+  /// ProvisioningConfig.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [email] - Optional. Email provided to send a confirmation with
+  /// provisioning config to.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ProvisioningConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ProvisioningConfig> create(
+    ProvisioningConfig request,
+    core.String parent, {
+    core.String? email,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (email != null) 'email': [email],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url =
+        'v2/' + core.Uri.encodeFull('$parent') + '/provisioningConfigs';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return ProvisioningConfig.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Get ProvisioningConfig by name.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the ProvisioningConfig.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/provisioningConfigs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ProvisioningConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ProvisioningConfig> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return ProvisioningConfig.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Update existing ProvisioningConfig.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Output only. The name of the provisioning config.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/provisioningConfigs/\[^/\]+$`.
+  ///
+  /// [email] - Optional. Email provided to send a confirmation with
+  /// provisioning config to.
+  ///
+  /// [updateMask] - Required. The list of fields to update.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ProvisioningConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ProvisioningConfig> patch(
+    ProvisioningConfig request,
+    core.String name, {
+    core.String? email,
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (email != null) 'email': [email],
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return ProvisioningConfig.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
   /// Submit a provisiong configuration for a given project.
   ///
   /// [request] - The metadata request object.
@@ -1168,6 +1304,7 @@ class ProjectsLocationsVolumesResource {
   /// [updateMask] - The list of fields to update. The only currently supported
   /// fields are: `snapshot_auto_delete_behavior`
   /// `snapshot_schedule_policy_name` 'labels' 'requested_size_gib'
+  /// 'snapshot_enabled' 'snapshot_reservation_detail.reserved_space_percent'
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1587,8 +1724,7 @@ class AllowedClient {
 ///
 /// A typical example is to use it as the request or the response type of an API
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
-/// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
-/// object `{}`.
+/// (google.protobuf.Empty); }
 typedef Empty = $Empty;
 
 /// A server.
@@ -1725,6 +1861,10 @@ class Instance {
 
 /// Configuration parameters for a new instance.
 class InstanceConfig {
+  /// If true networks can be from different projects of the same vendor
+  /// account.
+  core.bool? accountNetworksEnabled;
+
   /// Client network address.
   NetworkAddress? clientNetwork;
 
@@ -1758,6 +1898,7 @@ class InstanceConfig {
   core.String? userNote;
 
   InstanceConfig({
+    this.accountNetworksEnabled,
     this.clientNetwork,
     this.hyperthreading,
     this.id,
@@ -1770,6 +1911,9 @@ class InstanceConfig {
 
   InstanceConfig.fromJson(core.Map _json)
       : this(
+          accountNetworksEnabled: _json.containsKey('accountNetworksEnabled')
+              ? _json['accountNetworksEnabled'] as core.bool
+              : null,
           clientNetwork: _json.containsKey('clientNetwork')
               ? NetworkAddress.fromJson(
                   _json['clientNetwork'] as core.Map<core.String, core.dynamic>)
@@ -1795,6 +1939,8 @@ class InstanceConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (accountNetworksEnabled != null)
+          'accountNetworksEnabled': accountNetworksEnabled!,
         if (clientNetwork != null) 'clientNetwork': clientNetwork!,
         if (hyperthreading != null) 'hyperthreading': hyperthreading!,
         if (id != null) 'id': id!,
@@ -2558,6 +2704,12 @@ class NetworkConfig {
   /// CIDR range of the network.
   core.String? cidr;
 
+  /// The GCP service of the network.
+  ///
+  /// Available gcp_service are in
+  /// https://cloud.google.com/bare-metal/docs/bms-planning.
+  core.String? gcpService;
+
   /// A transient unique identifier to identify a volume within an
   /// ProvisioningConfig request.
   core.String? id;
@@ -2593,15 +2745,20 @@ class NetworkConfig {
   /// future (multi vlan).
   core.List<IntakeVlanAttachment>? vlanAttachments;
 
+  /// Whether the VLAN attachment pair is located in the same project.
+  core.bool? vlanSameProject;
+
   NetworkConfig({
     this.bandwidth,
     this.cidr,
+    this.gcpService,
     this.id,
     this.name,
     this.serviceCidr,
     this.type,
     this.userNote,
     this.vlanAttachments,
+    this.vlanSameProject,
   });
 
   NetworkConfig.fromJson(core.Map _json)
@@ -2610,6 +2767,9 @@ class NetworkConfig {
               ? _json['bandwidth'] as core.String
               : null,
           cidr: _json.containsKey('cidr') ? _json['cidr'] as core.String : null,
+          gcpService: _json.containsKey('gcpService')
+              ? _json['gcpService'] as core.String
+              : null,
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           serviceCidr: _json.containsKey('serviceCidr')
@@ -2625,17 +2785,22 @@ class NetworkConfig {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          vlanSameProject: _json.containsKey('vlanSameProject')
+              ? _json['vlanSameProject'] as core.bool
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (bandwidth != null) 'bandwidth': bandwidth!,
         if (cidr != null) 'cidr': cidr!,
+        if (gcpService != null) 'gcpService': gcpService!,
         if (id != null) 'id': id!,
         if (name != null) 'name': name!,
         if (serviceCidr != null) 'serviceCidr': serviceCidr!,
         if (type != null) 'type': type!,
         if (userNote != null) 'userNote': userNote!,
         if (vlanAttachments != null) 'vlanAttachments': vlanAttachments!,
+        if (vlanSameProject != null) 'vlanSameProject': vlanSameProject!,
       };
 }
 
@@ -2897,12 +3062,29 @@ class Operation {
 
 /// A provisioning configuration.
 class ProvisioningConfig {
+  /// URI to Cloud Console UI view of this provisioning config.
+  ///
+  /// Output only.
+  core.String? cloudConsoleUri;
+
+  /// Email provided to send a confirmation with provisioning config to.
+  ///
+  /// Deprecated in favour of email field in request messages.
+  core.String? email;
+
   /// A service account to enable customers to access instance credentials upon
   /// handover.
   core.String? handoverServiceAccount;
 
   /// Instances to be created.
   core.List<InstanceConfig>? instances;
+
+  /// Location name of this ProvisioningConfig.
+  ///
+  /// It is optional only for Intake UI transition period.
+  ///
+  /// Optional.
+  core.String? location;
 
   /// The name of the provisioning config.
   ///
@@ -2912,23 +3094,48 @@ class ProvisioningConfig {
   /// Networks to be created.
   core.List<NetworkConfig>? networks;
 
+  /// State of ProvisioningConfig.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : State wasn't specified.
+  /// - "DRAFT" : ProvisioningConfig is a draft and can be freely modified.
+  /// - "SUBMITTED" : ProvisioningConfig was already submitted and cannot be
+  /// modified.
+  core.String? state;
+
   /// A generated buganizer id to track provisioning request.
   core.String? ticketId;
+
+  /// Last update timestamp.
+  ///
+  /// Output only.
+  core.String? updateTime;
 
   /// Volumes to be created.
   core.List<VolumeConfig>? volumes;
 
   ProvisioningConfig({
+    this.cloudConsoleUri,
+    this.email,
     this.handoverServiceAccount,
     this.instances,
+    this.location,
     this.name,
     this.networks,
+    this.state,
     this.ticketId,
+    this.updateTime,
     this.volumes,
   });
 
   ProvisioningConfig.fromJson(core.Map _json)
       : this(
+          cloudConsoleUri: _json.containsKey('cloudConsoleUri')
+              ? _json['cloudConsoleUri'] as core.String
+              : null,
+          email:
+              _json.containsKey('email') ? _json['email'] as core.String : null,
           handoverServiceAccount: _json.containsKey('handoverServiceAccount')
               ? _json['handoverServiceAccount'] as core.String
               : null,
@@ -2938,6 +3145,9 @@ class ProvisioningConfig {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          location: _json.containsKey('location')
+              ? _json['location'] as core.String
+              : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           networks: _json.containsKey('networks')
               ? (_json['networks'] as core.List)
@@ -2945,8 +3155,13 @@ class ProvisioningConfig {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          state:
+              _json.containsKey('state') ? _json['state'] as core.String : null,
           ticketId: _json.containsKey('ticketId')
               ? _json['ticketId'] as core.String
+              : null,
+          updateTime: _json.containsKey('updateTime')
+              ? _json['updateTime'] as core.String
               : null,
           volumes: _json.containsKey('volumes')
               ? (_json['volumes'] as core.List)
@@ -2957,12 +3172,17 @@ class ProvisioningConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (cloudConsoleUri != null) 'cloudConsoleUri': cloudConsoleUri!,
+        if (email != null) 'email': email!,
         if (handoverServiceAccount != null)
           'handoverServiceAccount': handoverServiceAccount!,
         if (instances != null) 'instances': instances!,
+        if (location != null) 'location': location!,
         if (name != null) 'name': name!,
         if (networks != null) 'networks': networks!,
+        if (state != null) 'state': state!,
         if (ticketId != null) 'ticketId': ticketId!,
+        if (updateTime != null) 'updateTime': updateTime!,
         if (volumes != null) 'volumes': volumes!,
       };
 }
@@ -2994,6 +3214,15 @@ class ProvisioningQuota {
   /// Output only.
   core.String? name;
 
+  /// Network bandwidth, Gbps
+  core.String? networkBandwidth;
+
+  /// Server count.
+  core.String? serverCount;
+
+  /// Storage size (GB).
+  core.String? storageGib;
+
   ProvisioningQuota({
     this.assetType,
     this.availableCount,
@@ -3001,6 +3230,9 @@ class ProvisioningQuota {
     this.instanceQuota,
     this.location,
     this.name,
+    this.networkBandwidth,
+    this.serverCount,
+    this.storageGib,
   });
 
   ProvisioningQuota.fromJson(core.Map _json)
@@ -3022,6 +3254,15 @@ class ProvisioningQuota {
               ? _json['location'] as core.String
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
+          networkBandwidth: _json.containsKey('networkBandwidth')
+              ? _json['networkBandwidth'] as core.String
+              : null,
+          serverCount: _json.containsKey('serverCount')
+              ? _json['serverCount'] as core.String
+              : null,
+          storageGib: _json.containsKey('storageGib')
+              ? _json['storageGib'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3031,6 +3272,9 @@ class ProvisioningQuota {
         if (instanceQuota != null) 'instanceQuota': instanceQuota!,
         if (location != null) 'location': location!,
         if (name != null) 'name': name!,
+        if (networkBandwidth != null) 'networkBandwidth': networkBandwidth!,
+        if (serverCount != null) 'serverCount': serverCount!,
+        if (storageGib != null) 'storageGib': storageGib!,
       };
 }
 
@@ -3103,6 +3347,13 @@ class SnapshotReservationDetail {
   /// The space on this storage volume reserved for snapshots, shown in GiB.
   core.String? reservedSpaceGib;
 
+  /// Percent of the total Volume size reserved for snapshot copies.
+  ///
+  /// Enabling snapshots requires reserving 20% or more of the storage volume
+  /// space for snapshots. Maximum reserved space for snapshots is 40%. Setting
+  /// this field will effectively set snapshot_enabled to true.
+  core.int? reservedSpacePercent;
+
   /// The amount, in GiB, of available space in this storage volume's reserved
   /// snapshot space.
   core.String? reservedSpaceRemainingGib;
@@ -3116,6 +3367,7 @@ class SnapshotReservationDetail {
 
   SnapshotReservationDetail({
     this.reservedSpaceGib,
+    this.reservedSpacePercent,
     this.reservedSpaceRemainingGib,
     this.reservedSpaceUsedPercent,
   });
@@ -3124,6 +3376,9 @@ class SnapshotReservationDetail {
       : this(
           reservedSpaceGib: _json.containsKey('reservedSpaceGib')
               ? _json['reservedSpaceGib'] as core.String
+              : null,
+          reservedSpacePercent: _json.containsKey('reservedSpacePercent')
+              ? _json['reservedSpacePercent'] as core.int
               : null,
           reservedSpaceRemainingGib:
               _json.containsKey('reservedSpaceRemainingGib')
@@ -3137,6 +3392,8 @@ class SnapshotReservationDetail {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (reservedSpaceGib != null) 'reservedSpaceGib': reservedSpaceGib!,
+        if (reservedSpacePercent != null)
+          'reservedSpacePercent': reservedSpacePercent!,
         if (reservedSpaceRemainingGib != null)
           'reservedSpaceRemainingGib': reservedSpaceRemainingGib!,
         if (reservedSpaceUsedPercent != null)
@@ -3417,6 +3674,9 @@ class Volume {
   /// - "NEWEST_FIRST" : Delete the newest snapshots first.
   core.String? snapshotAutoDeleteBehavior;
 
+  /// Whether snapshots are enabled.
+  core.bool? snapshotEnabled;
+
   /// Details about snapshot space reservation and usage on the storage volume.
   SnapshotReservationDetail? snapshotReservationDetail;
 
@@ -3448,6 +3708,7 @@ class Volume {
     this.remainingSpaceGib,
     this.requestedSizeGib,
     this.snapshotAutoDeleteBehavior,
+    this.snapshotEnabled,
     this.snapshotReservationDetail,
     this.snapshotSchedulePolicy,
     this.state,
@@ -3482,6 +3743,9 @@ class Volume {
               _json.containsKey('snapshotAutoDeleteBehavior')
                   ? _json['snapshotAutoDeleteBehavior'] as core.String
                   : null,
+          snapshotEnabled: _json.containsKey('snapshotEnabled')
+              ? _json['snapshotEnabled'] as core.bool
+              : null,
           snapshotReservationDetail:
               _json.containsKey('snapshotReservationDetail')
                   ? SnapshotReservationDetail.fromJson(
@@ -3508,6 +3772,7 @@ class Volume {
         if (requestedSizeGib != null) 'requestedSizeGib': requestedSizeGib!,
         if (snapshotAutoDeleteBehavior != null)
           'snapshotAutoDeleteBehavior': snapshotAutoDeleteBehavior!,
+        if (snapshotEnabled != null) 'snapshotEnabled': snapshotEnabled!,
         if (snapshotReservationDetail != null)
           'snapshotReservationDetail': snapshotReservationDetail!,
         if (snapshotSchedulePolicy != null)
@@ -3519,6 +3784,12 @@ class Volume {
 
 /// Configuration parameters for a new volume.
 class VolumeConfig {
+  /// The GCP service of the storage volume.
+  ///
+  /// Available gcp_service are in
+  /// https://cloud.google.com/bare-metal/docs/bms-planning.
+  core.String? gcpService;
+
   /// A transient unique identifier to identify a volume within an
   /// ProvisioningConfig request.
   core.String? id;
@@ -3568,6 +3839,7 @@ class VolumeConfig {
   core.String? userNote;
 
   VolumeConfig({
+    this.gcpService,
     this.id,
     this.lunRanges,
     this.machineIds,
@@ -3582,6 +3854,9 @@ class VolumeConfig {
 
   VolumeConfig.fromJson(core.Map _json)
       : this(
+          gcpService: _json.containsKey('gcpService')
+              ? _json['gcpService'] as core.String
+              : null,
           id: _json.containsKey('id') ? _json['id'] as core.String : null,
           lunRanges: _json.containsKey('lunRanges')
               ? (_json['lunRanges'] as core.List)
@@ -3616,6 +3891,7 @@ class VolumeConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (gcpService != null) 'gcpService': gcpService!,
         if (id != null) 'id': id!,
         if (lunRanges != null) 'lunRanges': lunRanges!,
         if (machineIds != null) 'machineIds': machineIds!,

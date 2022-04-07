@@ -863,7 +863,7 @@
                                         "Revenue per thousand individual ad impressions. This is calculated by dividing estimated revenue by the number of individual ad impressions multiplied by 1000.",
                                         "Amount the publisher earns each time a user clicks on an ad. CPC is calculated by dividing the estimated revenue by the number of clicks received.",
                                         "Number of ad views per impression.",
-                                        "Total earnings.",
+                                        "Total earnings are the gross estimated earnings from revenue shared traffic before any parent and child account revenue share is applied.",
                                         "Number of results pages."
                                     ],
                                     "location": "query",
@@ -1171,7 +1171,7 @@
                                         "Revenue per thousand individual ad impressions. This is calculated by dividing estimated revenue by the number of individual ad impressions multiplied by 1000.",
                                         "Amount the publisher earns each time a user clicks on an ad. CPC is calculated by dividing the estimated revenue by the number of clicks received.",
                                         "Number of ad views per impression.",
-                                        "Total earnings.",
+                                        "Total earnings are the gross estimated earnings from revenue shared traffic before any parent and child account revenue share is applied.",
                                         "Number of results pages."
                                     ],
                                     "location": "query",
@@ -1566,7 +1566,7 @@
             }
         }
     },
-    "revision": "20220303",
+    "revision": "20220405",
     "rootUrl": "https://adsense.googleapis.com/",
     "schemas": {
         "Account": {
@@ -1601,6 +1601,23 @@
                     "readOnly": true,
                     "type": "boolean"
                 },
+                "state": {
+                    "description": "Output only. State of the account.",
+                    "enum": [
+                        "STATE_UNSPECIFIED",
+                        "READY",
+                        "NEEDS_ATTENTION",
+                        "CLOSED"
+                    ],
+                    "enumDescriptions": [
+                        "State unspecified.",
+                        "The account is open and ready to serve ads.",
+                        "There are some issues with this account. Publishers should visit AdSense in order to fix the account.",
+                        "The account is closed and can't serve ads."
+                    ],
+                    "readOnly": true,
+                    "type": "string"
+                },
                 "timeZone": {
                     "$ref": "TimeZone",
                     "description": "The account time zone, as used by reporting. For more information, see [changing the time zone of your reports](https://support.google.com/adsense/answer/9830725)."
@@ -1623,6 +1640,23 @@
                 },
                 "reportingDimensionId": {
                     "description": "Output only. Unique ID of the ad client as used in the `AD_CLIENT_ID` reporting dimension. Present only if the ad client supports reporting.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "state": {
+                    "description": "Output only. State of the ad client.",
+                    "enum": [
+                        "STATE_UNSPECIFIED",
+                        "READY",
+                        "GETTING_READY",
+                        "REQUIRES_REVIEW"
+                    ],
+                    "enumDescriptions": [
+                        "State unspecified.",
+                        "The ad client is ready to show ads.",
+                        "Running some checks on the ad client before it is ready to serve ads.",
+                        "The ad client hasn't been checked yet. There are tasks pending before AdSense will start the review."
+                    ],
                     "readOnly": true,
                     "type": "string"
                 }
@@ -1660,11 +1694,11 @@
                     "description": "Settings specific to content ads (AFC)."
                 },
                 "displayName": {
-                    "description": "Display name of the ad unit, as provided when the ad unit was created.",
+                    "description": "Required. Display name of the ad unit, as provided when the ad unit was created.",
                     "type": "string"
                 },
                 "name": {
-                    "description": "Resource name of the ad unit. Format: accounts/{account}/adclients/{adclient}/adunits/{adunit}",
+                    "description": "Required. Resource name of the ad unit. Format: accounts/{account}/adclients/{adclient}/adunits/{adunit}",
                     "type": "string"
                 },
                 "reportingDimensionId": {

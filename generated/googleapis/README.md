@@ -172,7 +172,7 @@ Store and manage build artifacts in a scalable and integrated service built on G
 
 #### Authorized Buyers Marketplace API - `authorizedbuyersmarketplace.v1`
 
-The Authorized Buyers Marketplace API allows buyers programmatically discover inventory; propose, retrieve and negotiate deals with publishers.
+The Authorized Buyers Marketplace API lets buyers programmatically discover inventory; propose, retrieve and negotiate deals with publishers.
 
 - [Documentation](https://developers.google.com/authorized-buyers/apis/marketplace/reference/rest/)
 - [API details](https://pub.dev/documentation/googleapis/8.1.0/authorizedbuyersmarketplace.v1/authorizedbuyersmarketplace.v1-library.html)
@@ -261,7 +261,7 @@ Manipulates events and other calendar data.
 
 #### Google Chat API - `chat.v1`
 
-Enables bots to fetch information and perform actions in Google Chat. Authentication using a service account is a prerequisite for using the Google Chat REST API.
+Enables apps to fetch information and perform actions in Google Chat. Authentication using a service account is a prerequisite for using the Google Chat REST API.
 
 - [Documentation](https://developers.google.com/hangouts/chat)
 - [API details](https://pub.dev/documentation/googleapis/8.1.0/chat.v1/chat.v1-library.html)
@@ -547,13 +547,6 @@ The Google Cloud Deployment Manager v2 API provides services for configuring, de
 - [Documentation](https://cloud.google.com/deployment-manager)
 - [API details](https://pub.dev/documentation/googleapis/8.1.0/deploymentmanager.v2/deploymentmanager.v2-library.html)
 
-#### Campaign Manager 360 API - `dfareporting.v3_4`
-
-Build applications to efficiently manage large or complex trafficking, reporting, and attribution workflows for Campaign Manager 360.
-
-- [Documentation](https://developers.google.com/doubleclick-advertisers/)
-- [API details](https://pub.dev/documentation/googleapis/8.1.0/dfareporting.v3_4/dfareporting.v3_4-library.html)
-
 #### Campaign Manager 360 API - `dfareporting.v3_5`
 
 Build applications to efficiently manage large or complex trafficking, reporting, and attribution workflows for Campaign Manager 360.
@@ -749,6 +742,13 @@ The Fitness API for managing users' fitness tracking data.
 - [Documentation](https://developers.google.com/fit/rest/v1/get-started)
 - [API details](https://pub.dev/documentation/googleapis/8.1.0/fitness.v1/fitness.v1-library.html)
 
+#### Google Forms API - `forms.v1`
+
+Reads and writes Google Forms and responses.
+
+- [Documentation](https://developers.google.com/forms/api)
+- [API details](https://pub.dev/documentation/googleapis/8.1.0/forms.v1/forms.v1-library.html)
+
 #### Google Play Game Services - `games.v1`
 
 The Google Play games service allows developers to enhance games with social leaderboards, achievements, game state, sign-in with Google, and more.
@@ -880,7 +880,7 @@ Cloud Talent Solution provides the capability to create, read, update, and delet
 
 #### Google Keep API - `keep.v1`
 
-This API is an enterprise-only API used to create and manage the Keep notes within your domain, including resolving issues identified by CASB software.
+The Google Keep API is used in an enterprise environment to manage Google Keep content and resolve issues identified by cloud security software.
 
 - [Documentation](https://developers.google.com/keep/api)
 - [API details](https://pub.dev/documentation/googleapis/8.1.0/keep.v1/keep.v1-library.html)
@@ -1366,7 +1366,7 @@ Stores and retrieves potentially large, immutable data objects.
 
 #### Storage Transfer API - `storagetransfer.v1`
 
-Transfers data from external data sources to a Google Cloud Storage bucket or between Google Cloud Storage buckets.
+Transfers data from external data sources to a Google Cloud Storage bucket or between Google Cloud Storage buckets. 
 
 - [Documentation](https://cloud.google.com/storage-transfer/docs)
 - [API details](https://pub.dev/documentation/googleapis/8.1.0/storagetransfer.v1/storagetransfer.v1-library.html)

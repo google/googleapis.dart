@@ -2492,7 +2492,7 @@ class PropertiesDataStreamsMeasurementProtocolSecretsResource {
   ///
   /// [name] - Output only. Resource name of this secret. This secret may be a
   /// child of any type of stream. Format:
-  /// properties/{property}/webDataStreams/{webDataStream}/measurementProtocolSecrets/{measurementProtocolSecret}
+  /// properties/{property}/dataStreams/{dataStream}/measurementProtocolSecrets/{measurementProtocolSecret}
   /// Value must have pattern
   /// `^properties/\[^/\]+/dataStreams/\[^/\]+/measurementProtocolSecrets/\[^/\]+$`.
   ///
@@ -6373,7 +6373,7 @@ class GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret {
   /// Resource name of this secret.
   ///
   /// This secret may be a child of any type of stream. Format:
-  /// properties/{property}/webDataStreams/{webDataStream}/measurementProtocolSecrets/{measurementProtocolSecret}
+  /// properties/{property}/dataStreams/{dataStream}/measurementProtocolSecrets/{measurementProtocolSecret}
   ///
   /// Output only.
   core.String? name;
@@ -6493,10 +6493,25 @@ class GoogleAnalyticsAdminV1alphaProperty {
   /// Resource name of this property's logical parent.
   ///
   /// Note: The Property-Moving UI can be used to change the parent. Format:
-  /// accounts/{account} Example: "accounts/100"
+  /// accounts/{account}, properties/{property} Example: "accounts/100",
+  /// "properties/101"
   ///
   /// Immutable.
   core.String? parent;
+
+  /// The property type for this Property resource.
+  ///
+  /// When creating a property, if the type is "PROPERTY_TYPE_UNSPECIFIED", then
+  /// "ORDINARY_PROPERTY" will be implied. "SUBPROPERTY" and "ROLLUP_PROPERTY"
+  /// types cannot yet be created via Google Analytics Admin API.
+  ///
+  /// Immutable.
+  /// Possible string values are:
+  /// - "PROPERTY_TYPE_UNSPECIFIED" : Unknown or unspecified property type
+  /// - "PROPERTY_TYPE_ORDINARY" : Ordinary GA4 property
+  /// - "PROPERTY_TYPE_SUBPROPERTY" : GA4 subproperty
+  /// - "PROPERTY_TYPE_ROLLUP" : GA4 rollup property
+  core.String? propertyType;
 
   /// The Google Analytics service level that applies to this property.
   ///
@@ -6533,6 +6548,7 @@ class GoogleAnalyticsAdminV1alphaProperty {
     this.industryCategory,
     this.name,
     this.parent,
+    this.propertyType,
     this.serviceLevel,
     this.timeZone,
     this.updateTime,
@@ -6565,6 +6581,9 @@ class GoogleAnalyticsAdminV1alphaProperty {
           parent: _json.containsKey('parent')
               ? _json['parent'] as core.String
               : null,
+          propertyType: _json.containsKey('propertyType')
+              ? _json['propertyType'] as core.String
+              : null,
           serviceLevel: _json.containsKey('serviceLevel')
               ? _json['serviceLevel'] as core.String
               : null,
@@ -6586,6 +6605,7 @@ class GoogleAnalyticsAdminV1alphaProperty {
         if (industryCategory != null) 'industryCategory': industryCategory!,
         if (name != null) 'name': name!,
         if (parent != null) 'parent': parent!,
+        if (propertyType != null) 'propertyType': propertyType!,
         if (serviceLevel != null) 'serviceLevel': serviceLevel!,
         if (timeZone != null) 'timeZone': timeZone!,
         if (updateTime != null) 'updateTime': updateTime!,
@@ -6597,13 +6617,30 @@ class GoogleAnalyticsAdminV1alphaPropertySummary {
   /// Display name for the property referred to in this property summary.
   core.String? displayName;
 
+  /// Resource name of this property's logical parent.
+  ///
+  /// Note: The Property-Moving UI can be used to change the parent. Format:
+  /// accounts/{account}, properties/{property} Example: "accounts/100",
+  /// "properties/200"
+  core.String? parent;
+
   /// Resource name of property referred to by this property summary Format:
   /// properties/{property_id} Example: "properties/1000"
   core.String? property;
 
+  /// The property's property type.
+  /// Possible string values are:
+  /// - "PROPERTY_TYPE_UNSPECIFIED" : Unknown or unspecified property type
+  /// - "PROPERTY_TYPE_ORDINARY" : Ordinary GA4 property
+  /// - "PROPERTY_TYPE_SUBPROPERTY" : GA4 subproperty
+  /// - "PROPERTY_TYPE_ROLLUP" : GA4 rollup property
+  core.String? propertyType;
+
   GoogleAnalyticsAdminV1alphaPropertySummary({
     this.displayName,
+    this.parent,
     this.property,
+    this.propertyType,
   });
 
   GoogleAnalyticsAdminV1alphaPropertySummary.fromJson(core.Map _json)
@@ -6611,14 +6648,22 @@ class GoogleAnalyticsAdminV1alphaPropertySummary {
           displayName: _json.containsKey('displayName')
               ? _json['displayName'] as core.String
               : null,
+          parent: _json.containsKey('parent')
+              ? _json['parent'] as core.String
+              : null,
           property: _json.containsKey('property')
               ? _json['property'] as core.String
+              : null,
+          propertyType: _json.containsKey('propertyType')
+              ? _json['propertyType'] as core.String
               : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
+        if (parent != null) 'parent': parent!,
         if (property != null) 'property': property!,
+        if (propertyType != null) 'propertyType': propertyType!,
       };
 }
 
@@ -6904,6 +6949,5 @@ class GoogleAnalyticsAdminV1alphaUserLink {
 ///
 /// A typical example is to use it as the request or the response type of an API
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
-/// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
-/// object `{}`.
+/// (google.protobuf.Empty); }
 typedef GoogleProtobufEmpty = $Empty;

@@ -170,48 +170,12 @@ void checkUnnamed4(core.List<api.BucketCors> o) {
   checkBucketCors(o[1]);
 }
 
-core.List<core.String> buildUnnamed5() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed5(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
-core.int buildCounterBucketCustomPlacementConfig = 0;
-api.BucketCustomPlacementConfig buildBucketCustomPlacementConfig() {
-  final o = api.BucketCustomPlacementConfig();
-  buildCounterBucketCustomPlacementConfig++;
-  if (buildCounterBucketCustomPlacementConfig < 3) {
-    o.dataLocations = buildUnnamed5();
-  }
-  buildCounterBucketCustomPlacementConfig--;
-  return o;
-}
-
-void checkBucketCustomPlacementConfig(api.BucketCustomPlacementConfig o) {
-  buildCounterBucketCustomPlacementConfig++;
-  if (buildCounterBucketCustomPlacementConfig < 3) {
-    checkUnnamed5(o.dataLocations!);
-  }
-  buildCounterBucketCustomPlacementConfig--;
-}
-
-core.List<api.ObjectAccessControl> buildUnnamed6() => [
+core.List<api.ObjectAccessControl> buildUnnamed5() => [
       buildObjectAccessControl(),
       buildObjectAccessControl(),
     ];
 
-void checkUnnamed6(core.List<api.ObjectAccessControl> o) {
+void checkUnnamed5(core.List<api.ObjectAccessControl> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkObjectAccessControl(o[0]);
   checkObjectAccessControl(o[1]);
@@ -319,12 +283,12 @@ void checkBucketIamConfiguration(api.BucketIamConfiguration o) {
   buildCounterBucketIamConfiguration--;
 }
 
-core.Map<core.String, core.String> buildUnnamed7() => {
+core.Map<core.String, core.String> buildUnnamed6() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed7(core.Map<core.String, core.String> o) {
+void checkUnnamed6(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -363,12 +327,12 @@ void checkBucketLifecycleRuleAction(api.BucketLifecycleRuleAction o) {
   buildCounterBucketLifecycleRuleAction--;
 }
 
-core.List<core.String> buildUnnamed8() => [
+core.List<core.String> buildUnnamed7() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed8(core.List<core.String> o) {
+void checkUnnamed7(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -392,7 +356,7 @@ api.BucketLifecycleRuleCondition buildBucketLifecycleRuleCondition() {
     o.daysSinceNoncurrentTime = 42;
     o.isLive = true;
     o.matchesPattern = 'foo';
-    o.matchesStorageClass = buildUnnamed8();
+    o.matchesStorageClass = buildUnnamed7();
     o.noncurrentTimeBefore = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.numNewerVersions = 42;
   }
@@ -428,7 +392,7 @@ void checkBucketLifecycleRuleCondition(api.BucketLifecycleRuleCondition o) {
       o.matchesPattern!,
       unittest.equals('foo'),
     );
-    checkUnnamed8(o.matchesStorageClass!);
+    checkUnnamed7(o.matchesStorageClass!);
     unittest.expect(
       o.noncurrentTimeBefore!,
       unittest.equals(core.DateTime.parse('2002-02-27T00:00:00')),
@@ -462,12 +426,12 @@ void checkBucketLifecycleRule(api.BucketLifecycleRule o) {
   buildCounterBucketLifecycleRule--;
 }
 
-core.List<api.BucketLifecycleRule> buildUnnamed9() => [
+core.List<api.BucketLifecycleRule> buildUnnamed8() => [
       buildBucketLifecycleRule(),
       buildBucketLifecycleRule(),
     ];
 
-void checkUnnamed9(core.List<api.BucketLifecycleRule> o) {
+void checkUnnamed8(core.List<api.BucketLifecycleRule> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBucketLifecycleRule(o[0]);
   checkBucketLifecycleRule(o[1]);
@@ -478,7 +442,7 @@ api.BucketLifecycle buildBucketLifecycle() {
   final o = api.BucketLifecycle();
   buildCounterBucketLifecycle++;
   if (buildCounterBucketLifecycle < 3) {
-    o.rule = buildUnnamed9();
+    o.rule = buildUnnamed8();
   }
   buildCounterBucketLifecycle--;
   return o;
@@ -487,7 +451,7 @@ api.BucketLifecycle buildBucketLifecycle() {
 void checkBucketLifecycle(api.BucketLifecycle o) {
   buildCounterBucketLifecycle++;
   if (buildCounterBucketLifecycle < 3) {
-    checkUnnamed9(o.rule!);
+    checkUnnamed8(o.rule!);
   }
   buildCounterBucketLifecycle--;
 }
@@ -630,15 +594,14 @@ api.Bucket buildBucket() {
     o.autoclass = buildBucketAutoclass();
     o.billing = buildBucketBilling();
     o.cors = buildUnnamed4();
-    o.customPlacementConfig = buildBucketCustomPlacementConfig();
     o.defaultEventBasedHold = true;
-    o.defaultObjectAcl = buildUnnamed6();
+    o.defaultObjectAcl = buildUnnamed5();
     o.encryption = buildBucketEncryption();
     o.etag = 'foo';
     o.iamConfiguration = buildBucketIamConfiguration();
     o.id = 'foo';
     o.kind = 'foo';
-    o.labels = buildUnnamed7();
+    o.labels = buildUnnamed6();
     o.lifecycle = buildBucketLifecycle();
     o.location = 'foo';
     o.locationType = 'foo';
@@ -668,9 +631,8 @@ void checkBucket(api.Bucket o) {
     checkBucketAutoclass(o.autoclass!);
     checkBucketBilling(o.billing!);
     checkUnnamed4(o.cors!);
-    checkBucketCustomPlacementConfig(o.customPlacementConfig!);
     unittest.expect(o.defaultEventBasedHold!, unittest.isTrue);
-    checkUnnamed6(o.defaultObjectAcl!);
+    checkUnnamed5(o.defaultObjectAcl!);
     checkBucketEncryption(o.encryption!);
     unittest.expect(
       o.etag!,
@@ -685,7 +647,7 @@ void checkBucket(api.Bucket o) {
       o.kind!,
       unittest.equals('foo'),
     );
-    checkUnnamed7(o.labels!);
+    checkUnnamed6(o.labels!);
     checkBucketLifecycle(o.lifecycle!);
     unittest.expect(
       o.location!,
@@ -833,12 +795,12 @@ void checkBucketAccessControl(api.BucketAccessControl o) {
   buildCounterBucketAccessControl--;
 }
 
-core.List<api.BucketAccessControl> buildUnnamed10() => [
+core.List<api.BucketAccessControl> buildUnnamed9() => [
       buildBucketAccessControl(),
       buildBucketAccessControl(),
     ];
 
-void checkUnnamed10(core.List<api.BucketAccessControl> o) {
+void checkUnnamed9(core.List<api.BucketAccessControl> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBucketAccessControl(o[0]);
   checkBucketAccessControl(o[1]);
@@ -849,7 +811,7 @@ api.BucketAccessControls buildBucketAccessControls() {
   final o = api.BucketAccessControls();
   buildCounterBucketAccessControls++;
   if (buildCounterBucketAccessControls < 3) {
-    o.items = buildUnnamed10();
+    o.items = buildUnnamed9();
     o.kind = 'foo';
   }
   buildCounterBucketAccessControls--;
@@ -859,7 +821,7 @@ api.BucketAccessControls buildBucketAccessControls() {
 void checkBucketAccessControls(api.BucketAccessControls o) {
   buildCounterBucketAccessControls++;
   if (buildCounterBucketAccessControls < 3) {
-    checkUnnamed10(o.items!);
+    checkUnnamed9(o.items!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -868,12 +830,12 @@ void checkBucketAccessControls(api.BucketAccessControls o) {
   buildCounterBucketAccessControls--;
 }
 
-core.List<api.Bucket> buildUnnamed11() => [
+core.List<api.Bucket> buildUnnamed10() => [
       buildBucket(),
       buildBucket(),
     ];
 
-void checkUnnamed11(core.List<api.Bucket> o) {
+void checkUnnamed10(core.List<api.Bucket> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBucket(o[0]);
   checkBucket(o[1]);
@@ -884,7 +846,7 @@ api.Buckets buildBuckets() {
   final o = api.Buckets();
   buildCounterBuckets++;
   if (buildCounterBuckets < 3) {
-    o.items = buildUnnamed11();
+    o.items = buildUnnamed10();
     o.kind = 'foo';
     o.nextPageToken = 'foo';
   }
@@ -895,7 +857,7 @@ api.Buckets buildBuckets() {
 void checkBuckets(api.Buckets o) {
   buildCounterBuckets++;
   if (buildCounterBuckets < 3) {
-    checkUnnamed11(o.items!);
+    checkUnnamed10(o.items!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -908,12 +870,12 @@ void checkBuckets(api.Buckets o) {
   buildCounterBuckets--;
 }
 
-core.Map<core.String, core.String> buildUnnamed12() => {
+core.Map<core.String, core.String> buildUnnamed11() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed12(core.Map<core.String, core.String> o) {
+void checkUnnamed11(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -934,7 +896,7 @@ api.Channel buildChannel() {
     o.expiration = 'foo';
     o.id = 'foo';
     o.kind = 'foo';
-    o.params = buildUnnamed12();
+    o.params = buildUnnamed11();
     o.payload = true;
     o.resourceId = 'foo';
     o.resourceUri = 'foo';
@@ -964,7 +926,7 @@ void checkChannel(api.Channel o) {
       o.kind!,
       unittest.equals('foo'),
     );
-    checkUnnamed12(o.params!);
+    checkUnnamed11(o.params!);
     unittest.expect(o.payload!, unittest.isTrue);
     unittest.expect(
       o.resourceId!,
@@ -1040,12 +1002,12 @@ void checkComposeRequestSourceObjects(api.ComposeRequestSourceObjects o) {
   buildCounterComposeRequestSourceObjects--;
 }
 
-core.List<api.ComposeRequestSourceObjects> buildUnnamed13() => [
+core.List<api.ComposeRequestSourceObjects> buildUnnamed12() => [
       buildComposeRequestSourceObjects(),
       buildComposeRequestSourceObjects(),
     ];
 
-void checkUnnamed13(core.List<api.ComposeRequestSourceObjects> o) {
+void checkUnnamed12(core.List<api.ComposeRequestSourceObjects> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkComposeRequestSourceObjects(o[0]);
   checkComposeRequestSourceObjects(o[1]);
@@ -1058,7 +1020,7 @@ api.ComposeRequest buildComposeRequest() {
   if (buildCounterComposeRequest < 3) {
     o.destination = buildObject();
     o.kind = 'foo';
-    o.sourceObjects = buildUnnamed13();
+    o.sourceObjects = buildUnnamed12();
   }
   buildCounterComposeRequest--;
   return o;
@@ -1072,7 +1034,7 @@ void checkComposeRequest(api.ComposeRequest o) {
       o.kind!,
       unittest.equals('foo'),
     );
-    checkUnnamed13(o.sourceObjects!);
+    checkUnnamed12(o.sourceObjects!);
   }
   buildCounterComposeRequest--;
 }
@@ -1210,12 +1172,12 @@ void checkHmacKeyMetadata(api.HmacKeyMetadata o) {
   buildCounterHmacKeyMetadata--;
 }
 
-core.List<api.HmacKeyMetadata> buildUnnamed14() => [
+core.List<api.HmacKeyMetadata> buildUnnamed13() => [
       buildHmacKeyMetadata(),
       buildHmacKeyMetadata(),
     ];
 
-void checkUnnamed14(core.List<api.HmacKeyMetadata> o) {
+void checkUnnamed13(core.List<api.HmacKeyMetadata> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkHmacKeyMetadata(o[0]);
   checkHmacKeyMetadata(o[1]);
@@ -1226,7 +1188,7 @@ api.HmacKeysMetadata buildHmacKeysMetadata() {
   final o = api.HmacKeysMetadata();
   buildCounterHmacKeysMetadata++;
   if (buildCounterHmacKeysMetadata < 3) {
-    o.items = buildUnnamed14();
+    o.items = buildUnnamed13();
     o.kind = 'foo';
     o.nextPageToken = 'foo';
   }
@@ -1237,7 +1199,7 @@ api.HmacKeysMetadata buildHmacKeysMetadata() {
 void checkHmacKeysMetadata(api.HmacKeysMetadata o) {
   buildCounterHmacKeysMetadata++;
   if (buildCounterHmacKeysMetadata < 3) {
-    checkUnnamed14(o.items!);
+    checkUnnamed13(o.items!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -1250,12 +1212,12 @@ void checkHmacKeysMetadata(api.HmacKeysMetadata o) {
   buildCounterHmacKeysMetadata--;
 }
 
-core.Map<core.String, core.String> buildUnnamed15() => {
+core.Map<core.String, core.String> buildUnnamed14() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed15(core.Map<core.String, core.String> o) {
+void checkUnnamed14(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -1267,12 +1229,12 @@ void checkUnnamed15(core.Map<core.String, core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed16() => [
+core.List<core.String> buildUnnamed15() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed16(core.List<core.String> o) {
+void checkUnnamed15(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1289,9 +1251,9 @@ api.Notification buildNotification() {
   final o = api.Notification();
   buildCounterNotification++;
   if (buildCounterNotification < 3) {
-    o.customAttributes = buildUnnamed15();
+    o.customAttributes = buildUnnamed14();
     o.etag = 'foo';
-    o.eventTypes = buildUnnamed16();
+    o.eventTypes = buildUnnamed15();
     o.id = 'foo';
     o.kind = 'foo';
     o.objectNamePrefix = 'foo';
@@ -1306,12 +1268,12 @@ api.Notification buildNotification() {
 void checkNotification(api.Notification o) {
   buildCounterNotification++;
   if (buildCounterNotification < 3) {
-    checkUnnamed15(o.customAttributes!);
+    checkUnnamed14(o.customAttributes!);
     unittest.expect(
       o.etag!,
       unittest.equals('foo'),
     );
-    checkUnnamed16(o.eventTypes!);
+    checkUnnamed15(o.eventTypes!);
     unittest.expect(
       o.id!,
       unittest.equals('foo'),
@@ -1340,12 +1302,12 @@ void checkNotification(api.Notification o) {
   buildCounterNotification--;
 }
 
-core.List<api.Notification> buildUnnamed17() => [
+core.List<api.Notification> buildUnnamed16() => [
       buildNotification(),
       buildNotification(),
     ];
 
-void checkUnnamed17(core.List<api.Notification> o) {
+void checkUnnamed16(core.List<api.Notification> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkNotification(o[0]);
   checkNotification(o[1]);
@@ -1356,7 +1318,7 @@ api.Notifications buildNotifications() {
   final o = api.Notifications();
   buildCounterNotifications++;
   if (buildCounterNotifications < 3) {
-    o.items = buildUnnamed17();
+    o.items = buildUnnamed16();
     o.kind = 'foo';
   }
   buildCounterNotifications--;
@@ -1366,7 +1328,7 @@ api.Notifications buildNotifications() {
 void checkNotifications(api.Notifications o) {
   buildCounterNotifications++;
   if (buildCounterNotifications < 3) {
-    checkUnnamed17(o.items!);
+    checkUnnamed16(o.items!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -1375,12 +1337,12 @@ void checkNotifications(api.Notifications o) {
   buildCounterNotifications--;
 }
 
-core.List<api.ObjectAccessControl> buildUnnamed18() => [
+core.List<api.ObjectAccessControl> buildUnnamed17() => [
       buildObjectAccessControl(),
       buildObjectAccessControl(),
     ];
 
-void checkUnnamed18(core.List<api.ObjectAccessControl> o) {
+void checkUnnamed17(core.List<api.ObjectAccessControl> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkObjectAccessControl(o[0]);
   checkObjectAccessControl(o[1]);
@@ -1413,12 +1375,12 @@ void checkObjectCustomerEncryption(api.ObjectCustomerEncryption o) {
   buildCounterObjectCustomerEncryption--;
 }
 
-core.Map<core.String, core.String> buildUnnamed19() => {
+core.Map<core.String, core.String> buildUnnamed18() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed19(core.Map<core.String, core.String> o) {
+void checkUnnamed18(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -1462,7 +1424,7 @@ api.Object buildObject() {
   final o = api.Object();
   buildCounterObject++;
   if (buildCounterObject < 3) {
-    o.acl = buildUnnamed18();
+    o.acl = buildUnnamed17();
     o.bucket = 'foo';
     o.cacheControl = 'foo';
     o.componentCount = 42;
@@ -1481,7 +1443,7 @@ api.Object buildObject() {
     o.kmsKeyName = 'foo';
     o.md5Hash = 'foo';
     o.mediaLink = 'foo';
-    o.metadata = buildUnnamed19();
+    o.metadata = buildUnnamed18();
     o.metageneration = 'foo';
     o.name = 'foo';
     o.owner = buildObjectOwner();
@@ -1502,7 +1464,7 @@ api.Object buildObject() {
 void checkObject(api.Object o) {
   buildCounterObject++;
   if (buildCounterObject < 3) {
-    checkUnnamed18(o.acl!);
+    checkUnnamed17(o.acl!);
     unittest.expect(
       o.bucket!,
       unittest.equals('foo'),
@@ -1569,7 +1531,7 @@ void checkObject(api.Object o) {
       o.mediaLink!,
       unittest.equals('foo'),
     );
-    checkUnnamed19(o.metadata!);
+    checkUnnamed18(o.metadata!);
     unittest.expect(
       o.metageneration!,
       unittest.equals('foo'),
@@ -1722,12 +1684,12 @@ void checkObjectAccessControl(api.ObjectAccessControl o) {
   buildCounterObjectAccessControl--;
 }
 
-core.List<api.ObjectAccessControl> buildUnnamed20() => [
+core.List<api.ObjectAccessControl> buildUnnamed19() => [
       buildObjectAccessControl(),
       buildObjectAccessControl(),
     ];
 
-void checkUnnamed20(core.List<api.ObjectAccessControl> o) {
+void checkUnnamed19(core.List<api.ObjectAccessControl> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkObjectAccessControl(o[0]);
   checkObjectAccessControl(o[1]);
@@ -1738,7 +1700,7 @@ api.ObjectAccessControls buildObjectAccessControls() {
   final o = api.ObjectAccessControls();
   buildCounterObjectAccessControls++;
   if (buildCounterObjectAccessControls < 3) {
-    o.items = buildUnnamed20();
+    o.items = buildUnnamed19();
     o.kind = 'foo';
   }
   buildCounterObjectAccessControls--;
@@ -1748,7 +1710,7 @@ api.ObjectAccessControls buildObjectAccessControls() {
 void checkObjectAccessControls(api.ObjectAccessControls o) {
   buildCounterObjectAccessControls++;
   if (buildCounterObjectAccessControls < 3) {
-    checkUnnamed20(o.items!);
+    checkUnnamed19(o.items!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -1757,15 +1719,63 @@ void checkObjectAccessControls(api.ObjectAccessControls o) {
   buildCounterObjectAccessControls--;
 }
 
-core.List<api.Object> buildUnnamed21() => [
+core.List<api.Object> buildUnnamed20() => [
       buildObject(),
       buildObject(),
     ];
 
-void checkUnnamed21(core.List<api.Object> o) {
+void checkUnnamed20(core.List<api.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkObject(o[0]);
   checkObject(o[1]);
+}
+
+core.List<core.String> buildUnnamed21() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed21(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.int buildCounterObjects = 0;
+api.Objects buildObjects() {
+  final o = api.Objects();
+  buildCounterObjects++;
+  if (buildCounterObjects < 3) {
+    o.items = buildUnnamed20();
+    o.kind = 'foo';
+    o.nextPageToken = 'foo';
+    o.prefixes = buildUnnamed21();
+  }
+  buildCounterObjects--;
+  return o;
+}
+
+void checkObjects(api.Objects o) {
+  buildCounterObjects++;
+  if (buildCounterObjects < 3) {
+    checkUnnamed20(o.items!);
+    unittest.expect(
+      o.kind!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed21(o.prefixes!);
+  }
+  buildCounterObjects--;
 }
 
 core.List<core.String> buildUnnamed22() => [
@@ -1785,61 +1795,13 @@ void checkUnnamed22(core.List<core.String> o) {
   );
 }
 
-core.int buildCounterObjects = 0;
-api.Objects buildObjects() {
-  final o = api.Objects();
-  buildCounterObjects++;
-  if (buildCounterObjects < 3) {
-    o.items = buildUnnamed21();
-    o.kind = 'foo';
-    o.nextPageToken = 'foo';
-    o.prefixes = buildUnnamed22();
-  }
-  buildCounterObjects--;
-  return o;
-}
-
-void checkObjects(api.Objects o) {
-  buildCounterObjects++;
-  if (buildCounterObjects < 3) {
-    checkUnnamed21(o.items!);
-    unittest.expect(
-      o.kind!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.nextPageToken!,
-      unittest.equals('foo'),
-    );
-    checkUnnamed22(o.prefixes!);
-  }
-  buildCounterObjects--;
-}
-
-core.List<core.String> buildUnnamed23() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed23(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
 core.int buildCounterPolicyBindings = 0;
 api.PolicyBindings buildPolicyBindings() {
   final o = api.PolicyBindings();
   buildCounterPolicyBindings++;
   if (buildCounterPolicyBindings < 3) {
     o.condition = buildExpr();
-    o.members = buildUnnamed23();
+    o.members = buildUnnamed22();
     o.role = 'foo';
   }
   buildCounterPolicyBindings--;
@@ -1850,7 +1812,7 @@ void checkPolicyBindings(api.PolicyBindings o) {
   buildCounterPolicyBindings++;
   if (buildCounterPolicyBindings < 3) {
     checkExpr(o.condition!);
-    checkUnnamed23(o.members!);
+    checkUnnamed22(o.members!);
     unittest.expect(
       o.role!,
       unittest.equals('foo'),
@@ -1859,12 +1821,12 @@ void checkPolicyBindings(api.PolicyBindings o) {
   buildCounterPolicyBindings--;
 }
 
-core.List<api.PolicyBindings> buildUnnamed24() => [
+core.List<api.PolicyBindings> buildUnnamed23() => [
       buildPolicyBindings(),
       buildPolicyBindings(),
     ];
 
-void checkUnnamed24(core.List<api.PolicyBindings> o) {
+void checkUnnamed23(core.List<api.PolicyBindings> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPolicyBindings(o[0]);
   checkPolicyBindings(o[1]);
@@ -1875,7 +1837,7 @@ api.Policy buildPolicy() {
   final o = api.Policy();
   buildCounterPolicy++;
   if (buildCounterPolicy < 3) {
-    o.bindings = buildUnnamed24();
+    o.bindings = buildUnnamed23();
     o.etag = 'foo';
     o.kind = 'foo';
     o.resourceId = 'foo';
@@ -1888,7 +1850,7 @@ api.Policy buildPolicy() {
 void checkPolicy(api.Policy o) {
   buildCounterPolicy++;
   if (buildCounterPolicy < 3) {
-    checkUnnamed24(o.bindings!);
+    checkUnnamed23(o.bindings!);
     unittest.expect(
       o.etag!,
       unittest.equals('foo'),
@@ -1977,12 +1939,12 @@ void checkServiceAccount(api.ServiceAccount o) {
   buildCounterServiceAccount--;
 }
 
-core.List<core.String> buildUnnamed25() => [
+core.List<core.String> buildUnnamed24() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed25(core.List<core.String> o) {
+void checkUnnamed24(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -2000,7 +1962,7 @@ api.TestIamPermissionsResponse buildTestIamPermissionsResponse() {
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
     o.kind = 'foo';
-    o.permissions = buildUnnamed25();
+    o.permissions = buildUnnamed24();
   }
   buildCounterTestIamPermissionsResponse--;
   return o;
@@ -2013,17 +1975,17 @@ void checkTestIamPermissionsResponse(api.TestIamPermissionsResponse o) {
       o.kind!,
       unittest.equals('foo'),
     );
-    checkUnnamed25(o.permissions!);
+    checkUnnamed24(o.permissions!);
   }
   buildCounterTestIamPermissionsResponse--;
 }
 
-core.List<core.String> buildUnnamed26() => [
+core.List<core.String> buildUnnamed25() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed26(core.List<core.String> o) {
+void checkUnnamed25(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -2035,12 +1997,12 @@ void checkUnnamed26(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed27() => [
+core.List<core.String> buildUnnamed26() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed27(core.List<core.String> o) {
+void checkUnnamed26(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -2080,16 +2042,6 @@ void main() {
       final od =
           api.BucketCors.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkBucketCors(od);
-    });
-  });
-
-  unittest.group('obj-schema-BucketCustomPlacementConfig', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildBucketCustomPlacementConfig();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.BucketCustomPlacementConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkBucketCustomPlacementConfig(od);
     });
   });
 
@@ -2501,7 +2453,6 @@ void main() {
       final res = api.StorageApi(mock).bucketAccessControls;
       final arg_bucket = 'foo';
       final arg_entity = 'foo';
-      final arg_provisionalUserProject = 'foo';
       final arg_userProject = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2560,10 +2511,6 @@ void main() {
             );
           }
         }
-        unittest.expect(
-          queryMap['provisionalUserProject']!.first,
-          unittest.equals(arg_provisionalUserProject),
-        );
         unittest.expect(
           queryMap['userProject']!.first,
           unittest.equals(arg_userProject),
@@ -2580,9 +2527,7 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       await res.delete(arg_bucket, arg_entity,
-          provisionalUserProject: arg_provisionalUserProject,
-          userProject: arg_userProject,
-          $fields: arg_$fields);
+          userProject: arg_userProject, $fields: arg_$fields);
     });
 
     unittest.test('method--get', () async {
@@ -2590,7 +2535,6 @@ void main() {
       final res = api.StorageApi(mock).bucketAccessControls;
       final arg_bucket = 'foo';
       final arg_entity = 'foo';
-      final arg_provisionalUserProject = 'foo';
       final arg_userProject = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2649,10 +2593,6 @@ void main() {
             );
           }
         }
-        unittest.expect(
-          queryMap['provisionalUserProject']!.first,
-          unittest.equals(arg_provisionalUserProject),
-        );
         unittest.expect(
           queryMap['userProject']!.first,
           unittest.equals(arg_userProject),
@@ -2669,9 +2609,7 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.get(arg_bucket, arg_entity,
-          provisionalUserProject: arg_provisionalUserProject,
-          userProject: arg_userProject,
-          $fields: arg_$fields);
+          userProject: arg_userProject, $fields: arg_$fields);
       checkBucketAccessControl(response as api.BucketAccessControl);
     });
 
@@ -2680,7 +2618,6 @@ void main() {
       final res = api.StorageApi(mock).bucketAccessControls;
       final arg_request = buildBucketAccessControl();
       final arg_bucket = 'foo';
-      final arg_provisionalUserProject = 'foo';
       final arg_userProject = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2737,10 +2674,6 @@ void main() {
             );
           }
         }
-        unittest.expect(
-          queryMap['provisionalUserProject']!.first,
-          unittest.equals(arg_provisionalUserProject),
-        );
         unittest.expect(
           queryMap['userProject']!.first,
           unittest.equals(arg_userProject),
@@ -2757,9 +2690,7 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.insert(arg_request, arg_bucket,
-          provisionalUserProject: arg_provisionalUserProject,
-          userProject: arg_userProject,
-          $fields: arg_$fields);
+          userProject: arg_userProject, $fields: arg_$fields);
       checkBucketAccessControl(response as api.BucketAccessControl);
     });
 
@@ -2767,7 +2698,6 @@ void main() {
       final mock = HttpServerMock();
       final res = api.StorageApi(mock).bucketAccessControls;
       final arg_bucket = 'foo';
-      final arg_provisionalUserProject = 'foo';
       final arg_userProject = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2821,10 +2751,6 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap['provisionalUserProject']!.first,
-          unittest.equals(arg_provisionalUserProject),
-        );
-        unittest.expect(
           queryMap['userProject']!.first,
           unittest.equals(arg_userProject),
         );
@@ -2840,9 +2766,7 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(arg_bucket,
-          provisionalUserProject: arg_provisionalUserProject,
-          userProject: arg_userProject,
-          $fields: arg_$fields);
+          userProject: arg_userProject, $fields: arg_$fields);
       checkBucketAccessControls(response as api.BucketAccessControls);
     });
 
@@ -2852,7 +2776,6 @@ void main() {
       final arg_request = buildBucketAccessControl();
       final arg_bucket = 'foo';
       final arg_entity = 'foo';
-      final arg_provisionalUserProject = 'foo';
       final arg_userProject = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2915,10 +2838,6 @@ void main() {
             );
           }
         }
-        unittest.expect(
-          queryMap['provisionalUserProject']!.first,
-          unittest.equals(arg_provisionalUserProject),
-        );
         unittest.expect(
           queryMap['userProject']!.first,
           unittest.equals(arg_userProject),
@@ -2935,9 +2854,7 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.patch(arg_request, arg_bucket, arg_entity,
-          provisionalUserProject: arg_provisionalUserProject,
-          userProject: arg_userProject,
-          $fields: arg_$fields);
+          userProject: arg_userProject, $fields: arg_$fields);
       checkBucketAccessControl(response as api.BucketAccessControl);
     });
 
@@ -2947,7 +2864,6 @@ void main() {
       final arg_request = buildBucketAccessControl();
       final arg_bucket = 'foo';
       final arg_entity = 'foo';
-      final arg_provisionalUserProject = 'foo';
       final arg_userProject = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3011,10 +2927,6 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap['provisionalUserProject']!.first,
-          unittest.equals(arg_provisionalUserProject),
-        );
-        unittest.expect(
           queryMap['userProject']!.first,
           unittest.equals(arg_userProject),
         );
@@ -3030,9 +2942,7 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.update(arg_request, arg_bucket, arg_entity,
-          provisionalUserProject: arg_provisionalUserProject,
-          userProject: arg_userProject,
-          $fields: arg_$fields);
+          userProject: arg_userProject, $fields: arg_$fields);
       checkBucketAccessControl(response as api.BucketAccessControl);
     });
   });
@@ -3044,7 +2954,6 @@ void main() {
       final arg_bucket = 'foo';
       final arg_ifMetagenerationMatch = 'foo';
       final arg_ifMetagenerationNotMatch = 'foo';
-      final arg_provisionalUserProject = 'foo';
       final arg_userProject = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3098,10 +3007,6 @@ void main() {
           unittest.equals(arg_ifMetagenerationNotMatch),
         );
         unittest.expect(
-          queryMap['provisionalUserProject']!.first,
-          unittest.equals(arg_provisionalUserProject),
-        );
-        unittest.expect(
           queryMap['userProject']!.first,
           unittest.equals(arg_userProject),
         );
@@ -3119,7 +3024,6 @@ void main() {
       await res.delete(arg_bucket,
           ifMetagenerationMatch: arg_ifMetagenerationMatch,
           ifMetagenerationNotMatch: arg_ifMetagenerationNotMatch,
-          provisionalUserProject: arg_provisionalUserProject,
           userProject: arg_userProject,
           $fields: arg_$fields);
     });
@@ -3131,7 +3035,6 @@ void main() {
       final arg_ifMetagenerationMatch = 'foo';
       final arg_ifMetagenerationNotMatch = 'foo';
       final arg_projection = 'foo';
-      final arg_provisionalUserProject = 'foo';
       final arg_userProject = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3189,10 +3092,6 @@ void main() {
           unittest.equals(arg_projection),
         );
         unittest.expect(
-          queryMap['provisionalUserProject']!.first,
-          unittest.equals(arg_provisionalUserProject),
-        );
-        unittest.expect(
           queryMap['userProject']!.first,
           unittest.equals(arg_userProject),
         );
@@ -3211,7 +3110,6 @@ void main() {
           ifMetagenerationMatch: arg_ifMetagenerationMatch,
           ifMetagenerationNotMatch: arg_ifMetagenerationNotMatch,
           projection: arg_projection,
-          provisionalUserProject: arg_provisionalUserProject,
           userProject: arg_userProject,
           $fields: arg_$fields);
       checkBucket(response as api.Bucket);
@@ -3222,7 +3120,6 @@ void main() {
       final res = api.StorageApi(mock).buckets;
       final arg_bucket = 'foo';
       final arg_optionsRequestedPolicyVersion = 42;
-      final arg_provisionalUserProject = 'foo';
       final arg_userProject = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3280,10 +3177,6 @@ void main() {
           unittest.equals(arg_optionsRequestedPolicyVersion),
         );
         unittest.expect(
-          queryMap['provisionalUserProject']!.first,
-          unittest.equals(arg_provisionalUserProject),
-        );
-        unittest.expect(
           queryMap['userProject']!.first,
           unittest.equals(arg_userProject),
         );
@@ -3300,7 +3193,6 @@ void main() {
       }), true);
       final response = await res.getIamPolicy(arg_bucket,
           optionsRequestedPolicyVersion: arg_optionsRequestedPolicyVersion,
-          provisionalUserProject: arg_provisionalUserProject,
           userProject: arg_userProject,
           $fields: arg_$fields);
       checkPolicy(response as api.Policy);
@@ -3314,7 +3206,6 @@ void main() {
       final arg_predefinedAcl = 'foo';
       final arg_predefinedDefaultObjectAcl = 'foo';
       final arg_projection = 'foo';
-      final arg_provisionalUserProject = 'foo';
       final arg_userProject = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3374,10 +3265,6 @@ void main() {
           unittest.equals(arg_projection),
         );
         unittest.expect(
-          queryMap['provisionalUserProject']!.first,
-          unittest.equals(arg_provisionalUserProject),
-        );
-        unittest.expect(
           queryMap['userProject']!.first,
           unittest.equals(arg_userProject),
         );
@@ -3396,7 +3283,6 @@ void main() {
           predefinedAcl: arg_predefinedAcl,
           predefinedDefaultObjectAcl: arg_predefinedDefaultObjectAcl,
           projection: arg_projection,
-          provisionalUserProject: arg_provisionalUserProject,
           userProject: arg_userProject,
           $fields: arg_$fields);
       checkBucket(response as api.Bucket);
@@ -3410,7 +3296,6 @@ void main() {
       final arg_pageToken = 'foo';
       final arg_prefix = 'foo';
       final arg_projection = 'foo';
-      final arg_provisionalUserProject = 'foo';
       final arg_userProject = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3470,10 +3355,6 @@ void main() {
           unittest.equals(arg_projection),
         );
         unittest.expect(
-          queryMap['provisionalUserProject']!.first,
-          unittest.equals(arg_provisionalUserProject),
-        );
-        unittest.expect(
           queryMap['userProject']!.first,
           unittest.equals(arg_userProject),
         );
@@ -3493,7 +3374,6 @@ void main() {
           pageToken: arg_pageToken,
           prefix: arg_prefix,
           projection: arg_projection,
-          provisionalUserProject: arg_provisionalUserProject,
           userProject: arg_userProject,
           $fields: arg_$fields);
       checkBuckets(response as api.Buckets);
@@ -3504,7 +3384,6 @@ void main() {
       final res = api.StorageApi(mock).buckets;
       final arg_bucket = 'foo';
       final arg_ifMetagenerationMatch = 'foo';
-      final arg_provisionalUserProject = 'foo';
       final arg_userProject = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3562,10 +3441,6 @@ void main() {
           unittest.equals(arg_ifMetagenerationMatch),
         );
         unittest.expect(
-          queryMap['provisionalUserProject']!.first,
-          unittest.equals(arg_provisionalUserProject),
-        );
-        unittest.expect(
           queryMap['userProject']!.first,
           unittest.equals(arg_userProject),
         );
@@ -3582,9 +3457,7 @@ void main() {
       }), true);
       final response = await res.lockRetentionPolicy(
           arg_bucket, arg_ifMetagenerationMatch,
-          provisionalUserProject: arg_provisionalUserProject,
-          userProject: arg_userProject,
-          $fields: arg_$fields);
+          userProject: arg_userProject, $fields: arg_$fields);
       checkBucket(response as api.Bucket);
     });
 
@@ -3598,7 +3471,6 @@ void main() {
       final arg_predefinedAcl = 'foo';
       final arg_predefinedDefaultObjectAcl = 'foo';
       final arg_projection = 'foo';
-      final arg_provisionalUserProject = 'foo';
       final arg_userProject = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3668,10 +3540,6 @@ void main() {
           unittest.equals(arg_projection),
         );
         unittest.expect(
-          queryMap['provisionalUserProject']!.first,
-          unittest.equals(arg_provisionalUserProject),
-        );
-        unittest.expect(
           queryMap['userProject']!.first,
           unittest.equals(arg_userProject),
         );
@@ -3692,7 +3560,6 @@ void main() {
           predefinedAcl: arg_predefinedAcl,
           predefinedDefaultObjectAcl: arg_predefinedDefaultObjectAcl,
           projection: arg_projection,
-          provisionalUserProject: arg_provisionalUserProject,
           userProject: arg_userProject,
           $fields: arg_$fields);
       checkBucket(response as api.Bucket);
@@ -3703,7 +3570,6 @@ void main() {
       final res = api.StorageApi(mock).buckets;
       final arg_request = buildPolicy();
       final arg_bucket = 'foo';
-      final arg_provisionalUserProject = 'foo';
       final arg_userProject = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3761,10 +3627,6 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap['provisionalUserProject']!.first,
-          unittest.equals(arg_provisionalUserProject),
-        );
-        unittest.expect(
           queryMap['userProject']!.first,
           unittest.equals(arg_userProject),
         );
@@ -3780,9 +3642,7 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.setIamPolicy(arg_request, arg_bucket,
-          provisionalUserProject: arg_provisionalUserProject,
-          userProject: arg_userProject,
-          $fields: arg_$fields);
+          userProject: arg_userProject, $fields: arg_$fields);
       checkPolicy(response as api.Policy);
     });
 
@@ -3790,8 +3650,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.StorageApi(mock).buckets;
       final arg_bucket = 'foo';
-      final arg_permissions = buildUnnamed26();
-      final arg_provisionalUserProject = 'foo';
+      final arg_permissions = buildUnnamed25();
       final arg_userProject = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3849,10 +3708,6 @@ void main() {
           unittest.equals(arg_permissions),
         );
         unittest.expect(
-          queryMap['provisionalUserProject']!.first,
-          unittest.equals(arg_provisionalUserProject),
-        );
-        unittest.expect(
           queryMap['userProject']!.first,
           unittest.equals(arg_userProject),
         );
@@ -3868,9 +3723,7 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.testIamPermissions(arg_bucket, arg_permissions,
-          provisionalUserProject: arg_provisionalUserProject,
-          userProject: arg_userProject,
-          $fields: arg_$fields);
+          userProject: arg_userProject, $fields: arg_$fields);
       checkTestIamPermissionsResponse(
           response as api.TestIamPermissionsResponse);
     });
@@ -3885,7 +3738,6 @@ void main() {
       final arg_predefinedAcl = 'foo';
       final arg_predefinedDefaultObjectAcl = 'foo';
       final arg_projection = 'foo';
-      final arg_provisionalUserProject = 'foo';
       final arg_userProject = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3955,10 +3807,6 @@ void main() {
           unittest.equals(arg_projection),
         );
         unittest.expect(
-          queryMap['provisionalUserProject']!.first,
-          unittest.equals(arg_provisionalUserProject),
-        );
-        unittest.expect(
           queryMap['userProject']!.first,
           unittest.equals(arg_userProject),
         );
@@ -3979,7 +3827,6 @@ void main() {
           predefinedAcl: arg_predefinedAcl,
           predefinedDefaultObjectAcl: arg_predefinedDefaultObjectAcl,
           projection: arg_projection,
-          provisionalUserProject: arg_provisionalUserProject,
           userProject: arg_userProject,
           $fields: arg_$fields);
       checkBucket(response as api.Bucket);
@@ -4053,7 +3900,6 @@ void main() {
       final res = api.StorageApi(mock).defaultObjectAccessControls;
       final arg_bucket = 'foo';
       final arg_entity = 'foo';
-      final arg_provisionalUserProject = 'foo';
       final arg_userProject = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4112,10 +3958,6 @@ void main() {
             );
           }
         }
-        unittest.expect(
-          queryMap['provisionalUserProject']!.first,
-          unittest.equals(arg_provisionalUserProject),
-        );
         unittest.expect(
           queryMap['userProject']!.first,
           unittest.equals(arg_userProject),
@@ -4132,9 +3974,7 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       await res.delete(arg_bucket, arg_entity,
-          provisionalUserProject: arg_provisionalUserProject,
-          userProject: arg_userProject,
-          $fields: arg_$fields);
+          userProject: arg_userProject, $fields: arg_$fields);
     });
 
     unittest.test('method--get', () async {
@@ -4142,7 +3982,6 @@ void main() {
       final res = api.StorageApi(mock).defaultObjectAccessControls;
       final arg_bucket = 'foo';
       final arg_entity = 'foo';
-      final arg_provisionalUserProject = 'foo';
       final arg_userProject = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4202,10 +4041,6 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap['provisionalUserProject']!.first,
-          unittest.equals(arg_provisionalUserProject),
-        );
-        unittest.expect(
           queryMap['userProject']!.first,
           unittest.equals(arg_userProject),
         );
@@ -4221,9 +4056,7 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.get(arg_bucket, arg_entity,
-          provisionalUserProject: arg_provisionalUserProject,
-          userProject: arg_userProject,
-          $fields: arg_$fields);
+          userProject: arg_userProject, $fields: arg_$fields);
       checkObjectAccessControl(response as api.ObjectAccessControl);
     });
 
@@ -4232,7 +4065,6 @@ void main() {
       final res = api.StorageApi(mock).defaultObjectAccessControls;
       final arg_request = buildObjectAccessControl();
       final arg_bucket = 'foo';
-      final arg_provisionalUserProject = 'foo';
       final arg_userProject = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4290,10 +4122,6 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap['provisionalUserProject']!.first,
-          unittest.equals(arg_provisionalUserProject),
-        );
-        unittest.expect(
           queryMap['userProject']!.first,
           unittest.equals(arg_userProject),
         );
@@ -4309,9 +4137,7 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.insert(arg_request, arg_bucket,
-          provisionalUserProject: arg_provisionalUserProject,
-          userProject: arg_userProject,
-          $fields: arg_$fields);
+          userProject: arg_userProject, $fields: arg_$fields);
       checkObjectAccessControl(response as api.ObjectAccessControl);
     });
 
@@ -4321,7 +4147,6 @@ void main() {
       final arg_bucket = 'foo';
       final arg_ifMetagenerationMatch = 'foo';
       final arg_ifMetagenerationNotMatch = 'foo';
-      final arg_provisionalUserProject = 'foo';
       final arg_userProject = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4383,10 +4208,6 @@ void main() {
           unittest.equals(arg_ifMetagenerationNotMatch),
         );
         unittest.expect(
-          queryMap['provisionalUserProject']!.first,
-          unittest.equals(arg_provisionalUserProject),
-        );
-        unittest.expect(
           queryMap['userProject']!.first,
           unittest.equals(arg_userProject),
         );
@@ -4404,7 +4225,6 @@ void main() {
       final response = await res.list(arg_bucket,
           ifMetagenerationMatch: arg_ifMetagenerationMatch,
           ifMetagenerationNotMatch: arg_ifMetagenerationNotMatch,
-          provisionalUserProject: arg_provisionalUserProject,
           userProject: arg_userProject,
           $fields: arg_$fields);
       checkObjectAccessControls(response as api.ObjectAccessControls);
@@ -4416,7 +4236,6 @@ void main() {
       final arg_request = buildObjectAccessControl();
       final arg_bucket = 'foo';
       final arg_entity = 'foo';
-      final arg_provisionalUserProject = 'foo';
       final arg_userProject = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4479,10 +4298,6 @@ void main() {
             );
           }
         }
-        unittest.expect(
-          queryMap['provisionalUserProject']!.first,
-          unittest.equals(arg_provisionalUserProject),
-        );
         unittest.expect(
           queryMap['userProject']!.first,
           unittest.equals(arg_userProject),
@@ -4499,9 +4314,7 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.patch(arg_request, arg_bucket, arg_entity,
-          provisionalUserProject: arg_provisionalUserProject,
-          userProject: arg_userProject,
-          $fields: arg_$fields);
+          userProject: arg_userProject, $fields: arg_$fields);
       checkObjectAccessControl(response as api.ObjectAccessControl);
     });
 
@@ -4511,7 +4324,6 @@ void main() {
       final arg_request = buildObjectAccessControl();
       final arg_bucket = 'foo';
       final arg_entity = 'foo';
-      final arg_provisionalUserProject = 'foo';
       final arg_userProject = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4575,10 +4387,6 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap['provisionalUserProject']!.first,
-          unittest.equals(arg_provisionalUserProject),
-        );
-        unittest.expect(
           queryMap['userProject']!.first,
           unittest.equals(arg_userProject),
         );
@@ -4594,9 +4402,7 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.update(arg_request, arg_bucket, arg_entity,
-          provisionalUserProject: arg_provisionalUserProject,
-          userProject: arg_userProject,
-          $fields: arg_$fields);
+          userProject: arg_userProject, $fields: arg_$fields);
       checkObjectAccessControl(response as api.ObjectAccessControl);
     });
   });
@@ -4607,7 +4413,6 @@ void main() {
       final res = api.StorageApi(mock).notifications;
       final arg_bucket = 'foo';
       final arg_notification = 'foo';
-      final arg_provisionalUserProject = 'foo';
       final arg_userProject = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4666,10 +4471,6 @@ void main() {
             );
           }
         }
-        unittest.expect(
-          queryMap['provisionalUserProject']!.first,
-          unittest.equals(arg_provisionalUserProject),
-        );
         unittest.expect(
           queryMap['userProject']!.first,
           unittest.equals(arg_userProject),
@@ -4686,9 +4487,7 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       await res.delete(arg_bucket, arg_notification,
-          provisionalUserProject: arg_provisionalUserProject,
-          userProject: arg_userProject,
-          $fields: arg_$fields);
+          userProject: arg_userProject, $fields: arg_$fields);
     });
 
     unittest.test('method--get', () async {
@@ -4696,7 +4495,6 @@ void main() {
       final res = api.StorageApi(mock).notifications;
       final arg_bucket = 'foo';
       final arg_notification = 'foo';
-      final arg_provisionalUserProject = 'foo';
       final arg_userProject = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4756,10 +4554,6 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap['provisionalUserProject']!.first,
-          unittest.equals(arg_provisionalUserProject),
-        );
-        unittest.expect(
           queryMap['userProject']!.first,
           unittest.equals(arg_userProject),
         );
@@ -4775,9 +4569,7 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.get(arg_bucket, arg_notification,
-          provisionalUserProject: arg_provisionalUserProject,
-          userProject: arg_userProject,
-          $fields: arg_$fields);
+          userProject: arg_userProject, $fields: arg_$fields);
       checkNotification(response as api.Notification);
     });
 
@@ -4786,7 +4578,6 @@ void main() {
       final res = api.StorageApi(mock).notifications;
       final arg_request = buildNotification();
       final arg_bucket = 'foo';
-      final arg_provisionalUserProject = 'foo';
       final arg_userProject = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4844,10 +4635,6 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap['provisionalUserProject']!.first,
-          unittest.equals(arg_provisionalUserProject),
-        );
-        unittest.expect(
           queryMap['userProject']!.first,
           unittest.equals(arg_userProject),
         );
@@ -4863,9 +4650,7 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.insert(arg_request, arg_bucket,
-          provisionalUserProject: arg_provisionalUserProject,
-          userProject: arg_userProject,
-          $fields: arg_$fields);
+          userProject: arg_userProject, $fields: arg_$fields);
       checkNotification(response as api.Notification);
     });
 
@@ -4873,7 +4658,6 @@ void main() {
       final mock = HttpServerMock();
       final res = api.StorageApi(mock).notifications;
       final arg_bucket = 'foo';
-      final arg_provisionalUserProject = 'foo';
       final arg_userProject = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4927,10 +4711,6 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap['provisionalUserProject']!.first,
-          unittest.equals(arg_provisionalUserProject),
-        );
-        unittest.expect(
           queryMap['userProject']!.first,
           unittest.equals(arg_userProject),
         );
@@ -4946,9 +4726,7 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(arg_bucket,
-          provisionalUserProject: arg_provisionalUserProject,
-          userProject: arg_userProject,
-          $fields: arg_$fields);
+          userProject: arg_userProject, $fields: arg_$fields);
       checkNotifications(response as api.Notifications);
     });
   });
@@ -4961,7 +4739,6 @@ void main() {
       final arg_object = 'foo';
       final arg_entity = 'foo';
       final arg_generation = 'foo';
-      final arg_provisionalUserProject = 'foo';
       final arg_userProject = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -5037,10 +4814,6 @@ void main() {
         unittest.expect(
           queryMap['generation']!.first,
           unittest.equals(arg_generation),
-        );
-        unittest.expect(
-          queryMap['provisionalUserProject']!.first,
-          unittest.equals(arg_provisionalUserProject),
         );
         unittest.expect(
           queryMap['userProject']!.first,
@@ -5059,7 +4832,6 @@ void main() {
       }), true);
       await res.delete(arg_bucket, arg_object, arg_entity,
           generation: arg_generation,
-          provisionalUserProject: arg_provisionalUserProject,
           userProject: arg_userProject,
           $fields: arg_$fields);
     });
@@ -5071,7 +4843,6 @@ void main() {
       final arg_object = 'foo';
       final arg_entity = 'foo';
       final arg_generation = 'foo';
-      final arg_provisionalUserProject = 'foo';
       final arg_userProject = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -5147,10 +4918,6 @@ void main() {
         unittest.expect(
           queryMap['generation']!.first,
           unittest.equals(arg_generation),
-        );
-        unittest.expect(
-          queryMap['provisionalUserProject']!.first,
-          unittest.equals(arg_provisionalUserProject),
         );
         unittest.expect(
           queryMap['userProject']!.first,
@@ -5169,7 +4936,6 @@ void main() {
       }), true);
       final response = await res.get(arg_bucket, arg_object, arg_entity,
           generation: arg_generation,
-          provisionalUserProject: arg_provisionalUserProject,
           userProject: arg_userProject,
           $fields: arg_$fields);
       checkObjectAccessControl(response as api.ObjectAccessControl);
@@ -5182,7 +4948,6 @@ void main() {
       final arg_bucket = 'foo';
       final arg_object = 'foo';
       final arg_generation = 'foo';
-      final arg_provisionalUserProject = 'foo';
       final arg_userProject = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -5258,10 +5023,6 @@ void main() {
           unittest.equals(arg_generation),
         );
         unittest.expect(
-          queryMap['provisionalUserProject']!.first,
-          unittest.equals(arg_provisionalUserProject),
-        );
-        unittest.expect(
           queryMap['userProject']!.first,
           unittest.equals(arg_userProject),
         );
@@ -5278,7 +5039,6 @@ void main() {
       }), true);
       final response = await res.insert(arg_request, arg_bucket, arg_object,
           generation: arg_generation,
-          provisionalUserProject: arg_provisionalUserProject,
           userProject: arg_userProject,
           $fields: arg_$fields);
       checkObjectAccessControl(response as api.ObjectAccessControl);
@@ -5290,7 +5050,6 @@ void main() {
       final arg_bucket = 'foo';
       final arg_object = 'foo';
       final arg_generation = 'foo';
-      final arg_provisionalUserProject = 'foo';
       final arg_userProject = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -5362,10 +5121,6 @@ void main() {
           unittest.equals(arg_generation),
         );
         unittest.expect(
-          queryMap['provisionalUserProject']!.first,
-          unittest.equals(arg_provisionalUserProject),
-        );
-        unittest.expect(
           queryMap['userProject']!.first,
           unittest.equals(arg_userProject),
         );
@@ -5382,7 +5137,6 @@ void main() {
       }), true);
       final response = await res.list(arg_bucket, arg_object,
           generation: arg_generation,
-          provisionalUserProject: arg_provisionalUserProject,
           userProject: arg_userProject,
           $fields: arg_$fields);
       checkObjectAccessControls(response as api.ObjectAccessControls);
@@ -5396,7 +5150,6 @@ void main() {
       final arg_object = 'foo';
       final arg_entity = 'foo';
       final arg_generation = 'foo';
-      final arg_provisionalUserProject = 'foo';
       final arg_userProject = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -5476,10 +5229,6 @@ void main() {
         unittest.expect(
           queryMap['generation']!.first,
           unittest.equals(arg_generation),
-        );
-        unittest.expect(
-          queryMap['provisionalUserProject']!.first,
-          unittest.equals(arg_provisionalUserProject),
         );
         unittest.expect(
           queryMap['userProject']!.first,
@@ -5499,7 +5248,6 @@ void main() {
       final response = await res.patch(
           arg_request, arg_bucket, arg_object, arg_entity,
           generation: arg_generation,
-          provisionalUserProject: arg_provisionalUserProject,
           userProject: arg_userProject,
           $fields: arg_$fields);
       checkObjectAccessControl(response as api.ObjectAccessControl);
@@ -5513,7 +5261,6 @@ void main() {
       final arg_object = 'foo';
       final arg_entity = 'foo';
       final arg_generation = 'foo';
-      final arg_provisionalUserProject = 'foo';
       final arg_userProject = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -5595,10 +5342,6 @@ void main() {
           unittest.equals(arg_generation),
         );
         unittest.expect(
-          queryMap['provisionalUserProject']!.first,
-          unittest.equals(arg_provisionalUserProject),
-        );
-        unittest.expect(
           queryMap['userProject']!.first,
           unittest.equals(arg_userProject),
         );
@@ -5616,7 +5359,6 @@ void main() {
       final response = await res.update(
           arg_request, arg_bucket, arg_object, arg_entity,
           generation: arg_generation,
-          provisionalUserProject: arg_provisionalUserProject,
           userProject: arg_userProject,
           $fields: arg_$fields);
       checkObjectAccessControl(response as api.ObjectAccessControl);
@@ -5634,7 +5376,6 @@ void main() {
       final arg_ifGenerationMatch = 'foo';
       final arg_ifMetagenerationMatch = 'foo';
       final arg_kmsKeyName = 'foo';
-      final arg_provisionalUserProject = 'foo';
       final arg_userProject = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -5722,10 +5463,6 @@ void main() {
           unittest.equals(arg_kmsKeyName),
         );
         unittest.expect(
-          queryMap['provisionalUserProject']!.first,
-          unittest.equals(arg_provisionalUserProject),
-        );
-        unittest.expect(
           queryMap['userProject']!.first,
           unittest.equals(arg_userProject),
         );
@@ -5746,7 +5483,6 @@ void main() {
           ifGenerationMatch: arg_ifGenerationMatch,
           ifMetagenerationMatch: arg_ifMetagenerationMatch,
           kmsKeyName: arg_kmsKeyName,
-          provisionalUserProject: arg_provisionalUserProject,
           userProject: arg_userProject,
           $fields: arg_$fields);
       checkObject(response as api.Object);
@@ -5771,7 +5507,6 @@ void main() {
       final arg_ifSourceMetagenerationMatch = 'foo';
       final arg_ifSourceMetagenerationNotMatch = 'foo';
       final arg_projection = 'foo';
-      final arg_provisionalUserProject = 'foo';
       final arg_sourceGeneration = 'foo';
       final arg_userProject = 'foo';
       final arg_$fields = 'foo';
@@ -5908,10 +5643,6 @@ void main() {
           unittest.equals(arg_projection),
         );
         unittest.expect(
-          queryMap['provisionalUserProject']!.first,
-          unittest.equals(arg_provisionalUserProject),
-        );
-        unittest.expect(
           queryMap['sourceGeneration']!.first,
           unittest.equals(arg_sourceGeneration),
         );
@@ -5943,7 +5674,6 @@ void main() {
           ifSourceMetagenerationMatch: arg_ifSourceMetagenerationMatch,
           ifSourceMetagenerationNotMatch: arg_ifSourceMetagenerationNotMatch,
           projection: arg_projection,
-          provisionalUserProject: arg_provisionalUserProject,
           sourceGeneration: arg_sourceGeneration,
           userProject: arg_userProject,
           $fields: arg_$fields);
@@ -5960,7 +5690,6 @@ void main() {
       final arg_ifGenerationNotMatch = 'foo';
       final arg_ifMetagenerationMatch = 'foo';
       final arg_ifMetagenerationNotMatch = 'foo';
-      final arg_provisionalUserProject = 'foo';
       final arg_userProject = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -6040,10 +5769,6 @@ void main() {
           unittest.equals(arg_ifMetagenerationNotMatch),
         );
         unittest.expect(
-          queryMap['provisionalUserProject']!.first,
-          unittest.equals(arg_provisionalUserProject),
-        );
-        unittest.expect(
           queryMap['userProject']!.first,
           unittest.equals(arg_userProject),
         );
@@ -6064,7 +5789,6 @@ void main() {
           ifGenerationNotMatch: arg_ifGenerationNotMatch,
           ifMetagenerationMatch: arg_ifMetagenerationMatch,
           ifMetagenerationNotMatch: arg_ifMetagenerationNotMatch,
-          provisionalUserProject: arg_provisionalUserProject,
           userProject: arg_userProject,
           $fields: arg_$fields);
     });
@@ -6083,7 +5807,6 @@ void main() {
       final arg_ifMetagenerationMatch = 'foo';
       final arg_ifMetagenerationNotMatch = 'foo';
       final arg_projection = 'foo';
-      final arg_provisionalUserProject = 'foo';
       final arg_userProject = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -6167,10 +5890,6 @@ void main() {
           unittest.equals(arg_projection),
         );
         unittest.expect(
-          queryMap['provisionalUserProject']!.first,
-          unittest.equals(arg_provisionalUserProject),
-        );
-        unittest.expect(
           queryMap['userProject']!.first,
           unittest.equals(arg_userProject),
         );
@@ -6192,7 +5911,6 @@ void main() {
           ifMetagenerationMatch: arg_ifMetagenerationMatch,
           ifMetagenerationNotMatch: arg_ifMetagenerationNotMatch,
           projection: arg_projection,
-          provisionalUserProject: arg_provisionalUserProject,
           userProject: arg_userProject,
           $fields: arg_$fields);
       checkObject(response as api.Object);
@@ -6204,7 +5922,6 @@ void main() {
       final arg_bucket = 'foo';
       final arg_object = 'foo';
       final arg_generation = 'foo';
-      final arg_provisionalUserProject = 'foo';
       final arg_userProject = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -6276,10 +5993,6 @@ void main() {
           unittest.equals(arg_generation),
         );
         unittest.expect(
-          queryMap['provisionalUserProject']!.first,
-          unittest.equals(arg_provisionalUserProject),
-        );
-        unittest.expect(
           queryMap['userProject']!.first,
           unittest.equals(arg_userProject),
         );
@@ -6296,7 +6009,6 @@ void main() {
       }), true);
       final response = await res.getIamPolicy(arg_bucket, arg_object,
           generation: arg_generation,
-          provisionalUserProject: arg_provisionalUserProject,
           userProject: arg_userProject,
           $fields: arg_$fields);
       checkPolicy(response as api.Policy);
@@ -6319,7 +6031,6 @@ void main() {
       final arg_name = 'foo';
       final arg_predefinedAcl = 'foo';
       final arg_projection = 'foo';
-      final arg_provisionalUserProject = 'foo';
       final arg_userProject = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -6413,10 +6124,6 @@ void main() {
           unittest.equals(arg_projection),
         );
         unittest.expect(
-          queryMap['provisionalUserProject']!.first,
-          unittest.equals(arg_provisionalUserProject),
-        );
-        unittest.expect(
           queryMap['userProject']!.first,
           unittest.equals(arg_userProject),
         );
@@ -6441,7 +6148,6 @@ void main() {
           name: arg_name,
           predefinedAcl: arg_predefinedAcl,
           projection: arg_projection,
-          provisionalUserProject: arg_provisionalUserProject,
           userProject: arg_userProject,
           $fields: arg_$fields);
       checkObject(response as api.Object);
@@ -6458,7 +6164,6 @@ void main() {
       final arg_pageToken = 'foo';
       final arg_prefix = 'foo';
       final arg_projection = 'foo';
-      final arg_provisionalUserProject = 'foo';
       final arg_startOffset = 'foo';
       final arg_userProject = 'foo';
       final arg_versions = true;
@@ -6542,10 +6247,6 @@ void main() {
           unittest.equals(arg_projection),
         );
         unittest.expect(
-          queryMap['provisionalUserProject']!.first,
-          unittest.equals(arg_provisionalUserProject),
-        );
-        unittest.expect(
           queryMap['startOffset']!.first,
           unittest.equals(arg_startOffset),
         );
@@ -6576,7 +6277,6 @@ void main() {
           pageToken: arg_pageToken,
           prefix: arg_prefix,
           projection: arg_projection,
-          provisionalUserProject: arg_provisionalUserProject,
           startOffset: arg_startOffset,
           userProject: arg_userProject,
           versions: arg_versions,
@@ -6597,7 +6297,6 @@ void main() {
       final arg_ifMetagenerationNotMatch = 'foo';
       final arg_predefinedAcl = 'foo';
       final arg_projection = 'foo';
-      final arg_provisionalUserProject = 'foo';
       final arg_userProject = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -6689,10 +6388,6 @@ void main() {
           unittest.equals(arg_projection),
         );
         unittest.expect(
-          queryMap['provisionalUserProject']!.first,
-          unittest.equals(arg_provisionalUserProject),
-        );
-        unittest.expect(
           queryMap['userProject']!.first,
           unittest.equals(arg_userProject),
         );
@@ -6715,7 +6410,6 @@ void main() {
           ifMetagenerationNotMatch: arg_ifMetagenerationNotMatch,
           predefinedAcl: arg_predefinedAcl,
           projection: arg_projection,
-          provisionalUserProject: arg_provisionalUserProject,
           userProject: arg_userProject,
           $fields: arg_$fields);
       checkObject(response as api.Object);
@@ -6741,7 +6435,6 @@ void main() {
       final arg_ifSourceMetagenerationNotMatch = 'foo';
       final arg_maxBytesRewrittenPerCall = 'foo';
       final arg_projection = 'foo';
-      final arg_provisionalUserProject = 'foo';
       final arg_rewriteToken = 'foo';
       final arg_sourceGeneration = 'foo';
       final arg_userProject = 'foo';
@@ -6883,10 +6576,6 @@ void main() {
           unittest.equals(arg_projection),
         );
         unittest.expect(
-          queryMap['provisionalUserProject']!.first,
-          unittest.equals(arg_provisionalUserProject),
-        );
-        unittest.expect(
           queryMap['rewriteToken']!.first,
           unittest.equals(arg_rewriteToken),
         );
@@ -6923,7 +6612,6 @@ void main() {
           ifSourceMetagenerationNotMatch: arg_ifSourceMetagenerationNotMatch,
           maxBytesRewrittenPerCall: arg_maxBytesRewrittenPerCall,
           projection: arg_projection,
-          provisionalUserProject: arg_provisionalUserProject,
           rewriteToken: arg_rewriteToken,
           sourceGeneration: arg_sourceGeneration,
           userProject: arg_userProject,
@@ -6938,7 +6626,6 @@ void main() {
       final arg_bucket = 'foo';
       final arg_object = 'foo';
       final arg_generation = 'foo';
-      final arg_provisionalUserProject = 'foo';
       final arg_userProject = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -7014,10 +6701,6 @@ void main() {
           unittest.equals(arg_generation),
         );
         unittest.expect(
-          queryMap['provisionalUserProject']!.first,
-          unittest.equals(arg_provisionalUserProject),
-        );
-        unittest.expect(
           queryMap['userProject']!.first,
           unittest.equals(arg_userProject),
         );
@@ -7035,7 +6718,6 @@ void main() {
       final response = await res.setIamPolicy(
           arg_request, arg_bucket, arg_object,
           generation: arg_generation,
-          provisionalUserProject: arg_provisionalUserProject,
           userProject: arg_userProject,
           $fields: arg_$fields);
       checkPolicy(response as api.Policy);
@@ -7046,9 +6728,8 @@ void main() {
       final res = api.StorageApi(mock).objects;
       final arg_bucket = 'foo';
       final arg_object = 'foo';
-      final arg_permissions = buildUnnamed27();
+      final arg_permissions = buildUnnamed26();
       final arg_generation = 'foo';
-      final arg_provisionalUserProject = 'foo';
       final arg_userProject = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -7124,10 +6805,6 @@ void main() {
           unittest.equals(arg_generation),
         );
         unittest.expect(
-          queryMap['provisionalUserProject']!.first,
-          unittest.equals(arg_provisionalUserProject),
-        );
-        unittest.expect(
           queryMap['userProject']!.first,
           unittest.equals(arg_userProject),
         );
@@ -7145,7 +6822,6 @@ void main() {
       final response = await res.testIamPermissions(
           arg_bucket, arg_object, arg_permissions,
           generation: arg_generation,
-          provisionalUserProject: arg_provisionalUserProject,
           userProject: arg_userProject,
           $fields: arg_$fields);
       checkTestIamPermissionsResponse(
@@ -7165,7 +6841,6 @@ void main() {
       final arg_ifMetagenerationNotMatch = 'foo';
       final arg_predefinedAcl = 'foo';
       final arg_projection = 'foo';
-      final arg_provisionalUserProject = 'foo';
       final arg_userProject = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -7257,10 +6932,6 @@ void main() {
           unittest.equals(arg_projection),
         );
         unittest.expect(
-          queryMap['provisionalUserProject']!.first,
-          unittest.equals(arg_provisionalUserProject),
-        );
-        unittest.expect(
           queryMap['userProject']!.first,
           unittest.equals(arg_userProject),
         );
@@ -7283,7 +6954,6 @@ void main() {
           ifMetagenerationNotMatch: arg_ifMetagenerationNotMatch,
           predefinedAcl: arg_predefinedAcl,
           projection: arg_projection,
-          provisionalUserProject: arg_provisionalUserProject,
           userProject: arg_userProject,
           $fields: arg_$fields);
       checkObject(response as api.Object);
@@ -7301,7 +6971,6 @@ void main() {
       final arg_pageToken = 'foo';
       final arg_prefix = 'foo';
       final arg_projection = 'foo';
-      final arg_provisionalUserProject = 'foo';
       final arg_startOffset = 'foo';
       final arg_userProject = 'foo';
       final arg_versions = true;
@@ -7389,10 +7058,6 @@ void main() {
           unittest.equals(arg_projection),
         );
         unittest.expect(
-          queryMap['provisionalUserProject']!.first,
-          unittest.equals(arg_provisionalUserProject),
-        );
-        unittest.expect(
           queryMap['startOffset']!.first,
           unittest.equals(arg_startOffset),
         );
@@ -7423,7 +7088,6 @@ void main() {
           pageToken: arg_pageToken,
           prefix: arg_prefix,
           projection: arg_projection,
-          provisionalUserProject: arg_provisionalUserProject,
           startOffset: arg_startOffset,
           userProject: arg_userProject,
           versions: arg_versions,
@@ -7875,7 +7539,6 @@ void main() {
       final mock = HttpServerMock();
       final res = api.StorageApi(mock).projects.serviceAccount;
       final arg_projectId = 'foo';
-      final arg_provisionalUserProject = 'foo';
       final arg_userProject = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -7929,10 +7592,6 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap['provisionalUserProject']!.first,
-          unittest.equals(arg_provisionalUserProject),
-        );
-        unittest.expect(
           queryMap['userProject']!.first,
           unittest.equals(arg_userProject),
         );
@@ -7948,9 +7607,7 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.get(arg_projectId,
-          provisionalUserProject: arg_provisionalUserProject,
-          userProject: arg_userProject,
-          $fields: arg_$fields);
+          userProject: arg_userProject, $fields: arg_$fields);
       checkServiceAccount(response as api.ServiceAccount);
     });
   });

@@ -31,6 +31,7 @@
 ///       - [ProjectsLocationsCatalogsCompletionDataResource]
 ///       - [ProjectsLocationsCatalogsOperationsResource]
 ///       - [ProjectsLocationsCatalogsPlacementsResource]
+///       - [ProjectsLocationsCatalogsServingConfigsResource]
 ///       - [ProjectsLocationsCatalogsUserEventsResource]
 ///     - [ProjectsLocationsOperationsResource]
 ///   - [ProjectsOperationsResource]
@@ -103,6 +104,8 @@ class ProjectsLocationsCatalogsResource {
       ProjectsLocationsCatalogsOperationsResource(_requester);
   ProjectsLocationsCatalogsPlacementsResource get placements =>
       ProjectsLocationsCatalogsPlacementsResource(_requester);
+  ProjectsLocationsCatalogsServingConfigsResource get servingConfigs =>
+      ProjectsLocationsCatalogsServingConfigsResource(_requester);
   ProjectsLocationsCatalogsUserEventsResource get userEvents =>
       ProjectsLocationsCatalogsUserEventsResource(_requester);
 
@@ -112,8 +115,7 @@ class ProjectsLocationsCatalogsResource {
   /// Completes the specified prefix with keyword suggestions.
   ///
   /// This feature is only available for users who have Retail Search enabled.
-  /// Please submit a form [here](https://cloud.google.com/contact) to contact
-  /// cloud sales if you are interested in using Retail Search.
+  /// Please enable Retail Search on Cloud Console before using this feature.
   ///
   /// Request parameters:
   ///
@@ -137,11 +139,13 @@ class ProjectsLocationsCatalogsResource {
   /// types. Supported formats: * `UNKNOWN_DEVICE_TYPE` * `DESKTOP` * `MOBILE` *
   /// A customized string starts with `OTHER_`, e.g. `OTHER_IPHONE`.
   ///
-  /// [languageCodes] - The list of languages of the query. This is the BCP-47
-  /// language code, such as "en-US" or "sr-Latn". For more information, see
+  /// [languageCodes] - The language filters applied to the output suggestions.
+  /// If set, it should contain the language of the query. If not set,
+  /// suggestions are returned without considering language restrictions. This
+  /// is the BCP-47 language code, such as "en-US" or "sr-Latn". For more
+  /// information, see
   /// [Tags for Identifying Languages](https://tools.ietf.org/html/bcp47). The
-  /// maximum number of allowed characters is 255. Only "en-US" is currently
-  /// supported.
+  /// maximum number of language codes is 3.
   ///
   /// [maxSuggestions] - Completion max suggestions. If left unset or set to 0,
   /// then will fallback to the configured value
@@ -151,12 +155,12 @@ class ProjectsLocationsCatalogsResource {
   /// [query] - Required. The query used to generate suggestions. The maximum
   /// number of allowed characters is 255.
   ///
-  /// [visitorId] - A unique identifier for tracking visitors. For example, this
-  /// could be implemented with an HTTP cookie, which should be able to uniquely
-  /// identify a visitor on a single device. This unique identifier should not
-  /// change if the visitor logs in or out of the website. The field must be a
-  /// UTF-8 encoded string with a length limit of 128 characters. Otherwise, an
-  /// INVALID_ARGUMENT error is returned.
+  /// [visitorId] - Required field. A unique identifier for tracking visitors.
+  /// For example, this could be implemented with an HTTP cookie, which should
+  /// be able to uniquely identify a visitor on a single device. This unique
+  /// identifier should not change if the visitor logs in or out of the website.
+  /// The field must be a UTF-8 encoded string with a length limit of 128
+  /// characters. Otherwise, an INVALID_ARGUMENT error is returned.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -478,9 +482,8 @@ class ProjectsLocationsCatalogsBranchesProductsResource {
   /// update will be enqueued and processed downstream. As a consequence, when a
   /// response is returned, the added place IDs are not immediately manifested
   /// in the Product queried by GetProduct or ListProducts. This feature is only
-  /// available for users who have Retail Search enabled. Please submit a form
-  /// [here](https://cloud.google.com/contact) to contact cloud sales if you are
-  /// interested in using Retail Search.
+  /// available for users who have Retail Search enabled. Please enable Retail
+  /// Search on Cloud Console before using this feature.
   ///
   /// [request] - The metadata request object.
   ///
@@ -515,6 +518,63 @@ class ProjectsLocationsCatalogsBranchesProductsResource {
 
     final _url =
         'v2/' + core.Uri.encodeFull('$product') + ':addFulfillmentPlaces';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates local inventory information for a Product at a list of places,
+  /// while respecting the last update timestamps of each inventory field.
+  ///
+  /// This process is asynchronous and does not require the Product to exist
+  /// before updating inventory information. If the request is valid, the update
+  /// will be enqueued and processed downstream. As a consequence, when a
+  /// response is returned, updates are not immediately manifested in the
+  /// Product queried by GetProduct or ListProducts. Local inventory information
+  /// can only be modified using this method. CreateProduct and UpdateProduct
+  /// has no effect on local inventories. This feature is only available for
+  /// users who have Retail Search enabled. Please enable Retail Search on Cloud
+  /// Console before using this feature.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [product] - Required. Full resource name of Product, such as `projects / *
+  /// /locations/global/catalogs/default_catalog/branches/default_branch/products/some_product_id`.
+  /// If the caller does not have permission to access the Product, regardless
+  /// of whether or not it exists, a PERMISSION_DENIED error is returned.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/catalogs/\[^/\]+/branches/\[^/\]+/products/.*$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> addLocalInventories(
+    GoogleCloudRetailV2AddLocalInventoriesRequest request,
+    core.String product, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url =
+        'v2/' + core.Uri.encodeFull('$product') + ':addLocalInventories';
 
     final _response = await _requester.request(
       _url,
@@ -858,9 +918,8 @@ class ProjectsLocationsCatalogsBranchesProductsResource {
   /// update will be enqueued and processed downstream. As a consequence, when a
   /// response is returned, the removed place IDs are not immediately manifested
   /// in the Product queried by GetProduct or ListProducts. This feature is only
-  /// available for users who have Retail Search enabled. Please submit a form
-  /// [here](https://cloud.google.com/contact) to contact cloud sales if you are
-  /// interested in using Retail Search.
+  /// available for users who have Retail Search enabled. Please enable Retail
+  /// Search on Cloud Console before using this feature.
   ///
   /// [request] - The metadata request object.
   ///
@@ -906,6 +965,62 @@ class ProjectsLocationsCatalogsBranchesProductsResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
+  /// Remove local inventory information for a Product at a list of places at a
+  /// removal timestamp.
+  ///
+  /// This process is asynchronous. If the request is valid, the removal will be
+  /// enqueued and processed downstream. As a consequence, when a response is
+  /// returned, removals are not immediately manifested in the Product queried
+  /// by GetProduct or ListProducts. Local inventory information can only be
+  /// removed using this method. CreateProduct and UpdateProduct has no effect
+  /// on local inventories. This feature is only available for users who have
+  /// Retail Search enabled. Please enable Retail Search on Cloud Console before
+  /// using this feature.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [product] - Required. Full resource name of Product, such as `projects / *
+  /// /locations/global/catalogs/default_catalog/branches/default_branch/products/some_product_id`.
+  /// If the caller does not have permission to access the Product, regardless
+  /// of whether or not it exists, a PERMISSION_DENIED error is returned.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/catalogs/\[^/\]+/branches/\[^/\]+/products/.*$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> removeLocalInventories(
+    GoogleCloudRetailV2RemoveLocalInventoriesRequest request,
+    core.String product, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url =
+        'v2/' + core.Uri.encodeFull('$product') + ':removeLocalInventories';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
   /// Updates inventory information for a Product while respecting the last
   /// update timestamps of each inventory field.
   ///
@@ -925,8 +1040,7 @@ class ProjectsLocationsCatalogsBranchesProductsResource {
   /// be preserved. Pre-existing inventory information can only be updated with
   /// SetInventory, AddFulfillmentPlaces, and RemoveFulfillmentPlaces. This
   /// feature is only available for users who have Retail Search enabled. Please
-  /// submit a form [here](https://cloud.google.com/contact) to contact cloud
-  /// sales if you are interested in using Retail Search.
+  /// enable Retail Search on Cloud Console before using this feature.
   ///
   /// [request] - The metadata request object.
   ///
@@ -979,10 +1093,11 @@ class ProjectsLocationsCatalogsCompletionDataResource {
 
   /// Bulk import of processed completion dataset.
   ///
-  /// Request processing may be synchronous. Partial updating is not supported.
-  /// This feature is only available for users who have Retail Search enabled.
-  /// Please submit a form [here](https://cloud.google.com/contact) to contact
-  /// cloud sales if you are interested in using Retail Search.
+  /// Request processing is asynchronous. Partial updating is not supported. The
+  /// operation is successfully finished only after the imported suggestions are
+  /// indexed successfully and ready for serving. The process takes hours. This
+  /// feature is only available for users who have Retail Search enabled. Please
+  /// enable Retail Search on Cloud Console before using this feature.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1145,7 +1260,9 @@ class ProjectsLocationsCatalogsPlacementsResource {
   /// Request parameters:
   ///
   /// [placement] - Required. Full resource name of the format: {name=projects /
-  /// * /locations/global/catalogs/default_catalog/placements / * } The ID of
+  /// * /locations/global/catalogs/default_catalog/placements / * } or
+  /// {name=projects / *
+  /// /locations/global/catalogs/default_catalog/servingConfigs / * } The ID of
   /// the Recommendations AI placement. Before you can request predictions from
   /// your model, you must create at least one placement for it. For more
   /// information, see
@@ -1190,8 +1307,7 @@ class ProjectsLocationsCatalogsPlacementsResource {
   /// Performs a search.
   ///
   /// This feature is only available for users who have Retail Search enabled.
-  /// Please submit a form [here](https://cloud.google.com/contact) to contact
-  /// cloud sales if you are interested in using Retail Search.
+  /// Please enable Retail Search on Cloud Console before using this feature.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1199,11 +1315,122 @@ class ProjectsLocationsCatalogsPlacementsResource {
   ///
   /// [placement] - Required. The resource name of the search engine placement,
   /// such as `projects / *
-  /// /locations/global/catalogs/default_catalog/placements/default_search`.
+  /// /locations/global/catalogs/default_catalog/placements/default_search` or
+  /// `projects / *
+  /// /locations/global/catalogs/default_catalog/servingConfigs/default_serving_config`
   /// This field is used to identify the serving configuration name and the set
   /// of models that will be used to make the search.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/catalogs/\[^/\]+/placements/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudRetailV2SearchResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudRetailV2SearchResponse> search(
+    GoogleCloudRetailV2SearchRequest request,
+    core.String placement, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$placement') + ':search';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleCloudRetailV2SearchResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsCatalogsServingConfigsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsCatalogsServingConfigsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Makes a recommendation prediction.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [placement] - Required. Full resource name of the format: {name=projects /
+  /// * /locations/global/catalogs/default_catalog/placements / * } or
+  /// {name=projects / *
+  /// /locations/global/catalogs/default_catalog/servingConfigs / * } The ID of
+  /// the Recommendations AI placement. Before you can request predictions from
+  /// your model, you must create at least one placement for it. For more
+  /// information, see
+  /// [Managing placements](https://cloud.google.com/retail/recommendations-ai/docs/manage-placements).
+  /// The full list of available placements can be seen at
+  /// https://console.cloud.google.com/recommendation/catalogs/default_catalog/placements
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/catalogs/\[^/\]+/servingConfigs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudRetailV2PredictResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudRetailV2PredictResponse> predict(
+    GoogleCloudRetailV2PredictRequest request,
+    core.String placement, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v2/' + core.Uri.encodeFull('$placement') + ':predict';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return GoogleCloudRetailV2PredictResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Performs a search.
+  ///
+  /// This feature is only available for users who have Retail Search enabled.
+  /// Please enable Retail Search on Cloud Console before using this feature.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [placement] - Required. The resource name of the search engine placement,
+  /// such as `projects / *
+  /// /locations/global/catalogs/default_catalog/placements/default_search` or
+  /// `projects / *
+  /// /locations/global/catalogs/default_catalog/servingConfigs/default_serving_config`
+  /// This field is used to identify the serving configuration name and the set
+  /// of models that will be used to make the search.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/catalogs/\[^/\]+/servingConfigs/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1401,14 +1628,15 @@ class ProjectsLocationsCatalogsUserEventsResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Triggers a user event rejoin operation with latest product catalog.
+  /// Starts a user event rejoin operation with latest product catalog.
   ///
   /// Events will not be annotated with detailed product information if product
   /// is missing from the catalog at the time the user event is ingested, and
   /// these events are stored as unjoined events with a limited usage on
-  /// training and serving. This API can be used to trigger a 'join' operation
-  /// on specified events with latest version of product catalog. It can also be
-  /// used to correct events joined with wrong product catalog.
+  /// training and serving. This method can be used to start a join operation on
+  /// specified events with latest version of product catalog. It can also be
+  /// used to correct events joined with the wrong product catalog. A rejoin
+  /// operation can take hours or days to complete.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1794,6 +2022,76 @@ class GoogleCloudRetailV2AddFulfillmentPlacesRequest {
       };
 }
 
+/// Request message for AddLocalInventories method.
+class GoogleCloudRetailV2AddLocalInventoriesRequest {
+  /// Indicates which inventory fields in the provided list of LocalInventory to
+  /// update.
+  ///
+  /// The field is updated to the provided value. If a field is set while the
+  /// place does not have a previous local inventory, the local inventory at
+  /// that store is created. If a field is set while the value of that field is
+  /// not provided, the original field value, if it exists, is deleted. If the
+  /// mask is not set or set with empty paths, all inventory fields will be
+  /// updated. If an unsupported or unknown field is provided, an
+  /// INVALID_ARGUMENT error is returned and the entire update will be ignored.
+  core.String? addMask;
+
+  /// The time when the inventory updates are issued.
+  ///
+  /// Used to prevent out-of-order updates on local inventory fields. If not
+  /// provided, the internal system time will be used.
+  core.String? addTime;
+
+  /// If set to true, and the Product is not found, the local inventory will
+  /// still be processed and retained for at most 1 day and processed once the
+  /// Product is created.
+  ///
+  /// If set to false, a NOT_FOUND error is returned if the Product is not
+  /// found.
+  core.bool? allowMissing;
+
+  /// A list of inventory information at difference places.
+  ///
+  /// Each place is identified by its place ID. At most 3000 inventories are
+  /// allowed per request.
+  ///
+  /// Required.
+  core.List<GoogleCloudRetailV2LocalInventory>? localInventories;
+
+  GoogleCloudRetailV2AddLocalInventoriesRequest({
+    this.addMask,
+    this.addTime,
+    this.allowMissing,
+    this.localInventories,
+  });
+
+  GoogleCloudRetailV2AddLocalInventoriesRequest.fromJson(core.Map _json)
+      : this(
+          addMask: _json.containsKey('addMask')
+              ? _json['addMask'] as core.String
+              : null,
+          addTime: _json.containsKey('addTime')
+              ? _json['addTime'] as core.String
+              : null,
+          allowMissing: _json.containsKey('allowMissing')
+              ? _json['allowMissing'] as core.bool
+              : null,
+          localInventories: _json.containsKey('localInventories')
+              ? (_json['localInventories'] as core.List)
+                  .map((value) => GoogleCloudRetailV2LocalInventory.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (addMask != null) 'addMask': addMask!,
+        if (addTime != null) 'addTime': addTime!,
+        if (allowMissing != null) 'allowMissing': allowMissing!,
+        if (localInventories != null) 'localInventories': localInventories!,
+      };
+}
+
 /// An intended audience of the Product for whom it's sold.
 class GoogleCloudRetailV2Audience {
   /// The age groups of the audience.
@@ -1860,6 +2158,9 @@ class GoogleCloudRetailV2BigQuerySource {
   /// `user_event_ga4`: This feature is in private preview. Please contact the
   /// support team for importing Google Analytics 4 events. The schema is
   /// available here: https://support.google.com/analytics/answer/7029846.
+  /// Supported values for auto-completion imports: * `suggestions` (default):
+  /// One JSON completion suggestion per line. * `denylist`: One JSON deny
+  /// suggestion per line. * `allowlist`: One JSON allow suggestion per line.
   core.String? dataSchema;
 
   /// The BigQuery data set to copy the data from with a length limit of 1,024
@@ -2038,9 +2339,9 @@ class GoogleCloudRetailV2ColorInfo {
 class GoogleCloudRetailV2CompleteQueryResponse {
   /// A unique complete token.
   ///
-  /// This should be included in the SearchRequest resulting from this
-  /// completion, which enables accurate attribution of complete model
-  /// performance.
+  /// This should be included in the UserEvent.completion_detail for search
+  /// events resulting from this completion, which enables accurate attribution
+  /// of complete model performance.
   core.String? attributionToken;
 
   /// Results of the matching suggestions.
@@ -2102,7 +2403,11 @@ class GoogleCloudRetailV2CompleteQueryResponse {
 
 /// Resource that represents completion results.
 class GoogleCloudRetailV2CompleteQueryResponseCompletionResult {
-  /// Additional custom attributes ingested through BigQuery.
+  /// Custom attributes for the suggestion term.
+  ///
+  /// * For "user-data", the attributes are additional custom attributes
+  /// ingested through BigQuery. * For "cloud-retail", the attributes are
+  /// product attributes generated by Cloud Retail.
   core.Map<core.String, GoogleCloudRetailV2CustomAttribute>? attributes;
 
   /// The suggestion for the query.
@@ -2433,7 +2738,11 @@ class GoogleCloudRetailV2GetDefaultBranchResponse {
       };
 }
 
-/// Product thumbnail/detail image.
+/// Product image.
+///
+/// Recommendations AI and Retail Search do not use product images to improve
+/// prediction and search results. However, product images can be returned in
+/// results, and are shown in prediction or search previews in the console.
 class GoogleCloudRetailV2Image {
   /// Height of the image in number of pixels.
   ///
@@ -2575,19 +2884,12 @@ class GoogleCloudRetailV2ImportProductsRequest {
   /// United States)", otherwise a PERMISSION_DENIED error is thrown. Add the
   /// IAM permission "BigQuery Data Viewer" for
   /// cloud-retail-customer-data-access@system.gserviceaccount.com before using
-  /// this feature otherwise an error is thrown. This feature is only available
-  /// for users who have Retail Search enabled. Please submit a form
-  /// [here](https://cloud.google.com/contact) to contact cloud sales if you are
-  /// interested in using Retail Search.
+  /// this feature otherwise an error is thrown.
   core.String? reconciliationMode;
 
-  /// Unique identifier provided by client, within the ancestor dataset scope.
+  /// This field has no effect.
   ///
-  /// Ensures idempotency and used for request deduplication. Server-generated
-  /// if unspecified. Up to 128 characters long and must match the pattern:
-  /// `[a-zA-Z0-9_]+`. This is returned as Operation.name in ImportMetadata.
-  /// Only supported when ImportProductsRequest.reconciliation_mode is set to
-  /// `FULL`.
+  /// Deprecated.
   core.String? requestId;
 
   /// Indicates which fields in the provided imported 'products' to update.
@@ -2790,6 +3092,87 @@ class GoogleCloudRetailV2ListProductsResponse {
       };
 }
 
+/// The inventory information at a place (e.g. a store) identified by a place
+/// ID.
+class GoogleCloudRetailV2LocalInventory {
+  /// Additional local inventory attributes, for example, store name, promotion
+  /// tags, etc.
+  ///
+  /// This field needs to pass all below criteria, otherwise an INVALID_ARGUMENT
+  /// error is returned: * At most 30 attributes are allowed. * The key must be
+  /// a UTF-8 encoded string with a length limit of 32 characters. * The key
+  /// must match the pattern: `a-zA-Z0-9*`. For example, key0LikeThis or
+  /// KEY_1_LIKE_THIS. * The attribute values must be of the same type (text or
+  /// number). * Only 1 value is allowed for each attribute. * For text values,
+  /// the length limit is 256 UTF-8 characters. * The attribute does not support
+  /// search. The `searchable` field should be unset or set to false. * The max
+  /// summed total bytes of custom attribute keys and values per product is
+  /// 5MiB.
+  core.Map<core.String, GoogleCloudRetailV2CustomAttribute>? attributes;
+
+  /// Input only.
+  ///
+  /// Supported fulfillment types. Valid fulfillment type values include
+  /// commonly used types (such as pickup in store and same day delivery), and
+  /// custom types. Customers have to map custom types to their display names
+  /// before rendering UI. Supported values: * "pickup-in-store" *
+  /// "ship-to-store" * "same-day-delivery" * "next-day-delivery" *
+  /// "custom-type-1" * "custom-type-2" * "custom-type-3" * "custom-type-4" *
+  /// "custom-type-5" If this field is set to an invalid value other than these,
+  /// an INVALID_ARGUMENT error is returned. All the elements must be distinct.
+  /// Otherwise, an INVALID_ARGUMENT error is returned.
+  core.List<core.String>? fulfillmentTypes;
+
+  /// The place ID for the current set of inventory information.
+  core.String? placeId;
+
+  /// Product price and cost information.
+  ///
+  /// Google Merchant Center property
+  /// [price](https://support.google.com/merchants/answer/6324371).
+  GoogleCloudRetailV2PriceInfo? priceInfo;
+
+  GoogleCloudRetailV2LocalInventory({
+    this.attributes,
+    this.fulfillmentTypes,
+    this.placeId,
+    this.priceInfo,
+  });
+
+  GoogleCloudRetailV2LocalInventory.fromJson(core.Map _json)
+      : this(
+          attributes: _json.containsKey('attributes')
+              ? (_json['attributes'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    GoogleCloudRetailV2CustomAttribute.fromJson(
+                        item as core.Map<core.String, core.dynamic>),
+                  ),
+                )
+              : null,
+          fulfillmentTypes: _json.containsKey('fulfillmentTypes')
+              ? (_json['fulfillmentTypes'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          placeId: _json.containsKey('placeId')
+              ? _json['placeId'] as core.String
+              : null,
+          priceInfo: _json.containsKey('priceInfo')
+              ? GoogleCloudRetailV2PriceInfo.fromJson(
+                  _json['priceInfo'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (attributes != null) 'attributes': attributes!,
+        if (fulfillmentTypes != null) 'fulfillmentTypes': fulfillmentTypes!,
+        if (placeId != null) 'placeId': placeId!,
+        if (priceInfo != null) 'priceInfo': priceInfo!,
+      };
+}
+
 /// Request message for Predict method.
 class GoogleCloudRetailV2PredictRequest {
   /// Filter for restricting prediction results with a length limit of 5,000
@@ -2806,10 +3189,12 @@ class GoogleCloudRetailV2PredictRequest {
   /// predictions to products that do not have a stockState value of
   /// OUT_OF_STOCK. Examples: * tag=("Red" OR "Blue") tag="New-Arrival" tag=(NOT
   /// "promotional") * filterOutOfStockItems tag=(-"promotional") *
-  /// filterOutOfStockItems If your filter blocks all prediction results,
-  /// nothing will be returned. If you want generic (unfiltered) popular
-  /// products to be returned instead, set `strictFiltering` to false in
-  /// `PredictRequest.params`.
+  /// filterOutOfStockItems If your filter blocks all prediction results, the
+  /// API will return generic (unfiltered) popular products. If you only want
+  /// results strictly matching the filters, set `strictFiltering` to True in
+  /// `PredictRequest.params` to receive empty results instead. Note that the
+  /// API will never return items with storageStatus of "EXPIRED" or "DELETED"
+  /// regardless of filter choices.
   core.String? filter;
 
   /// The labels applied to a resource must meet the following requirements: *
@@ -3329,11 +3714,10 @@ class GoogleCloudRetailV2Product {
   /// Immutable.
   core.String? id;
 
-  /// Product images for the product.Highly recommended to put the main image to
-  /// the first.
+  /// Product images for the product.
   ///
-  /// A maximum of 300 images are allowed. Corresponding properties: Google
-  /// Merchant Center property
+  /// We highly recommend putting the main image first. A maximum of 300 images
+  /// are allowed. Corresponding properties: Google Merchant Center property
   /// [image_link](https://support.google.com/merchants/answer/6324350).
   /// Schema.org property [Product.image](https://schema.org/image).
   core.List<GoogleCloudRetailV2Image>? images;
@@ -4183,6 +4567,57 @@ class GoogleCloudRetailV2RemoveFulfillmentPlacesRequest {
       };
 }
 
+/// Request message for RemoveLocalInventories method.
+class GoogleCloudRetailV2RemoveLocalInventoriesRequest {
+  /// If set to true, and the Product is not found, the local inventory removal
+  /// request will still be processed and retained for at most 1 day and
+  /// processed once the Product is created.
+  ///
+  /// If set to false, a NOT_FOUND error is returned if the Product is not
+  /// found.
+  core.bool? allowMissing;
+
+  /// A list of place IDs to have their inventory deleted.
+  ///
+  /// At most 3000 place IDs are allowed per request.
+  ///
+  /// Required.
+  core.List<core.String>? placeIds;
+
+  /// The time when the inventory deletions are issued.
+  ///
+  /// Used to prevent out-of-order updates and deletions on local inventory
+  /// fields. If not provided, the internal system time will be used.
+  core.String? removeTime;
+
+  GoogleCloudRetailV2RemoveLocalInventoriesRequest({
+    this.allowMissing,
+    this.placeIds,
+    this.removeTime,
+  });
+
+  GoogleCloudRetailV2RemoveLocalInventoriesRequest.fromJson(core.Map _json)
+      : this(
+          allowMissing: _json.containsKey('allowMissing')
+              ? _json['allowMissing'] as core.bool
+              : null,
+          placeIds: _json.containsKey('placeIds')
+              ? (_json['placeIds'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          removeTime: _json.containsKey('removeTime')
+              ? _json['removeTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (allowMissing != null) 'allowMissing': allowMissing!,
+        if (placeIds != null) 'placeIds': placeIds!,
+        if (removeTime != null) 'removeTime': removeTime!,
+      };
+}
+
 /// Request message for SearchService.Search method.
 class GoogleCloudRetailV2SearchRequest {
   /// Boost specification to boost certain products.
@@ -4202,21 +4637,24 @@ class GoogleCloudRetailV2SearchRequest {
   /// products under the default branch.
   core.String? branch;
 
-  /// The filter applied to every search request when quality improvement such
-  /// as query expansion is needed.
+  /// The default filter that is applied when a user performs a search without
+  /// checking any filters on the search page.
   ///
-  /// For example, if a query does not have enough results, an expanded query
-  /// with SearchRequest.canonical_filter will be returned as a supplement of
-  /// the original query. This field is strongly recommended to achieve high
-  /// search quality. See SearchRequest.filter for more details about filter
-  /// syntax.
+  /// The filter applied to every search request when quality improvement such
+  /// as query expansion is needed. For example, if a query does not have enough
+  /// results, an expanded query with SearchRequest.canonical_filter will be
+  /// returned as a supplement of the original query. This field is strongly
+  /// recommended to achieve high search quality. See SearchRequest.filter for
+  /// more details about filter syntax.
   core.String? canonicalFilter;
 
-  /// The specification for dynamically generated facets.
+  /// Refer to https://cloud.google.com/retail/docs/configs#dynamic to enable
+  /// dynamic facets.
   ///
-  /// Notice that only textual facets can be dynamically generated. This feature
-  /// requires additional allowlisting. Contact Retail Search support team if
-  /// you are interested in using dynamic facet feature.
+  /// Do not set this field. The specification for dynamically generated facets.
+  /// Notice that only textual facets can be dynamically generated.
+  ///
+  /// Deprecated.
   GoogleCloudRetailV2SearchRequestDynamicFacetSpec? dynamicFacetSpec;
 
   /// Facet specifications for faceted search.
@@ -5347,15 +5785,21 @@ class GoogleCloudRetailV2SetInventoryRequest {
 class GoogleCloudRetailV2UserEvent {
   /// Extra user event features to include in the recommendation model.
   ///
-  /// This field needs to pass all below criteria, otherwise an INVALID_ARGUMENT
-  /// error is returned: * The key must be a UTF-8 encoded string with a length
-  /// limit of 5,000 characters. * For text attributes, at most 400 values are
-  /// allowed. Empty values are not allowed. Each value must be a UTF-8 encoded
-  /// string with a length limit of 256 characters. * For number attributes, at
-  /// most 400 values are allowed. For product recommendation, an example of
-  /// extra user information is traffic_channel, i.e. how user arrives at the
-  /// site. Users can arrive at the site by coming to the site directly, or
-  /// coming through Google search, and etc.
+  /// If you provide custom attributes for ingested user events, also include
+  /// them in the user events that you associate with prediction requests.
+  /// Custom attribute formatting must be consistent between imported events and
+  /// events provided with prediction requests. This lets the Retail API use
+  /// those custom attributes when training models and serving predictions,
+  /// which helps improve recommendation quality. This field needs to pass all
+  /// below criteria, otherwise an INVALID_ARGUMENT error is returned: * The key
+  /// must be a UTF-8 encoded string with a length limit of 5,000 characters. *
+  /// For text attributes, at most 400 values are allowed. Empty values are not
+  /// allowed. Each value must be a UTF-8 encoded string with a length limit of
+  /// 256 characters. * For number attributes, at most 400 values are allowed.
+  /// For product recommendations, an example of extra user information is
+  /// traffic_channel, which is how a user arrives at the site. Users can arrive
+  /// at the site by coming to the site directly, coming through Google search,
+  /// or in other ways.
   core.Map<core.String, GoogleCloudRetailV2CustomAttribute>? attributes;
 
   /// Highly recommended for user events that are the result of
@@ -5745,11 +6189,11 @@ class GoogleCloudRetailV2UserInfo {
 
   /// The end user's IP address.
   ///
-  /// Required for getting SearchResponse.sponsored_results. This field is used
-  /// to extract location information for personalization. This field must be
-  /// either an IPv4 address (e.g. "104.133.9.80") or an IPv6 address (e.g.
-  /// "2001:0db8:85a3:0000:0000:8a2e:0370:7334"). Otherwise, an INVALID_ARGUMENT
-  /// error is returned. This should not be set when using the JavaScript tag in
+  /// This field is used to extract location information for personalization.
+  /// This field must be either an IPv4 address (e.g. "104.133.9.80") or an IPv6
+  /// address (e.g. "2001:0db8:85a3:0000:0000:8a2e:0370:7334"). Otherwise, an
+  /// INVALID_ARGUMENT error is returned. This should not be set when: * setting
+  /// SearchRequest.user_info. * using the JavaScript tag in
   /// UserEventService.CollectUserEvent or if direct_user_request is set.
   core.String? ipAddress;
 
@@ -5764,9 +6208,10 @@ class GoogleCloudRetailV2UserInfo {
 
   /// Highly recommended for logged-in users.
   ///
-  /// Unique identifier for logged-in user, such as a user name. The field must
-  /// be a UTF-8 encoded string with a length limit of 128 characters.
-  /// Otherwise, an INVALID_ARGUMENT error is returned.
+  /// Unique identifier for logged-in user, such as a user name. Always use a
+  /// hashed value for this ID. The field must be a UTF-8 encoded string with a
+  /// length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is
+  /// returned.
   core.String? userId;
 
   GoogleCloudRetailV2UserInfo({
@@ -5913,8 +6358,7 @@ class GoogleLongrunningOperation {
 ///
 /// A typical example is to use it as the request or the response type of an API
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
-/// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
-/// object `{}`.
+/// (google.protobuf.Empty); }
 typedef GoogleProtobufEmpty = $Empty;
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -5931,8 +6375,9 @@ typedef GoogleRpcStatus = $Status;
 /// The time of day and time zone are either specified elsewhere or are
 /// insignificant. The date is relative to the Gregorian Calendar. This can
 /// represent one of the following: * A full date, with non-zero year, month,
-/// and day values * A month and day, with a zero year (e.g., an anniversary) *
-/// A year on its own, with a zero month and a zero day * A year and month, with
-/// a zero day (e.g., a credit card expiration date) Related types: *
-/// google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
+/// and day values. * A month and day, with a zero year (for example, an
+/// anniversary). * A year on its own, with a zero month and a zero day. * A
+/// year and month, with a zero day (for example, a credit card expiration
+/// date). Related types: * google.type.TimeOfDay * google.type.DateTime *
+/// google.protobuf.Timestamp
 typedef GoogleTypeDate = $Date;

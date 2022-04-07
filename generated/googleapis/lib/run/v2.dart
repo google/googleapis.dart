@@ -276,7 +276,7 @@ class ProjectsLocationsServicesResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleLongrunningOperation> create(
-    GoogleCloudRunOpV2Service request,
+    GoogleCloudRunV2Service request,
     core.String parent, {
     core.String? serviceId,
     core.bool? validateOnly,
@@ -364,14 +364,14 @@ class ProjectsLocationsServicesResource {
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
-  /// Completes with a [GoogleCloudRunOpV2Service].
+  /// Completes with a [GoogleCloudRunV2Service].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleCloudRunOpV2Service> get(
+  async.Future<GoogleCloudRunV2Service> get(
     core.String name, {
     core.String? $fields,
   }) async {
@@ -386,7 +386,7 @@ class ProjectsLocationsServicesResource {
       'GET',
       queryParams: _queryParams,
     );
-    return GoogleCloudRunOpV2Service.fromJson(
+    return GoogleCloudRunV2Service.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
 
@@ -467,14 +467,14 @@ class ProjectsLocationsServicesResource {
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
-  /// Completes with a [GoogleCloudRunOpV2ListServicesResponse].
+  /// Completes with a [GoogleCloudRunV2ListServicesResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleCloudRunOpV2ListServicesResponse> list(
+  async.Future<GoogleCloudRunV2ListServicesResponse> list(
     core.String parent, {
     core.int? pageSize,
     core.String? pageToken,
@@ -495,7 +495,7 @@ class ProjectsLocationsServicesResource {
       'GET',
       queryParams: _queryParams,
     );
-    return GoogleCloudRunOpV2ListServicesResponse.fromJson(
+    return GoogleCloudRunV2ListServicesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
 
@@ -533,7 +533,7 @@ class ProjectsLocationsServicesResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleLongrunningOperation> patch(
-    GoogleCloudRunOpV2Service request,
+    GoogleCloudRunV2Service request,
     core.String name, {
     core.bool? allowMissing,
     core.String? updateMask,
@@ -720,14 +720,14 @@ class ProjectsLocationsServicesRevisionsResource {
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
-  /// Completes with a [GoogleCloudRunOpV2Revision].
+  /// Completes with a [GoogleCloudRunV2Revision].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleCloudRunOpV2Revision> get(
+  async.Future<GoogleCloudRunV2Revision> get(
     core.String name, {
     core.String? $fields,
   }) async {
@@ -742,7 +742,7 @@ class ProjectsLocationsServicesRevisionsResource {
       'GET',
       queryParams: _queryParams,
     );
-    return GoogleCloudRunOpV2Revision.fromJson(
+    return GoogleCloudRunV2Revision.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
 
@@ -767,14 +767,14 @@ class ProjectsLocationsServicesRevisionsResource {
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
-  /// Completes with a [GoogleCloudRunOpV2ListRevisionsResponse].
+  /// Completes with a [GoogleCloudRunV2ListRevisionsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleCloudRunOpV2ListRevisionsResponse> list(
+  async.Future<GoogleCloudRunV2ListRevisionsResponse> list(
     core.String parent, {
     core.int? pageSize,
     core.String? pageToken,
@@ -795,13 +795,13 @@ class ProjectsLocationsServicesRevisionsResource {
       'GET',
       queryParams: _queryParams,
     );
-    return GoogleCloudRunOpV2ListRevisionsResponse.fromJson(
+    return GoogleCloudRunV2ListRevisionsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
 }
 
 /// Settings for Binary Authorization feature.
-class GoogleCloudRunOpV2BinaryAuthorization {
+class GoogleCloudRunV2BinaryAuthorization {
   /// If present, indicates to use Breakglass using this justification.
   ///
   /// If use_default is False, then it must be empty. For more information on
@@ -809,21 +809,30 @@ class GoogleCloudRunOpV2BinaryAuthorization {
   /// https://cloud.google.com/binary-authorization/docs/using-breakglass
   core.String? breakglassJustification;
 
+  /// The path to a binary authorization policy.
+  ///
+  /// Format: projects/{project}/platforms/cloudRun/{policy-name}
+  core.String? policy;
+
   /// If True, indicates to use the default project's binary authorization
   /// policy.
   ///
   /// If False, binary authorization will be disabled.
   core.bool? useDefault;
 
-  GoogleCloudRunOpV2BinaryAuthorization({
+  GoogleCloudRunV2BinaryAuthorization({
     this.breakglassJustification,
+    this.policy,
     this.useDefault,
   });
 
-  GoogleCloudRunOpV2BinaryAuthorization.fromJson(core.Map _json)
+  GoogleCloudRunV2BinaryAuthorization.fromJson(core.Map _json)
       : this(
           breakglassJustification: _json.containsKey('breakglassJustification')
               ? _json['breakglassJustification'] as core.String
+              : null,
+          policy: _json.containsKey('policy')
+              ? _json['policy'] as core.String
               : null,
           useDefault: _json.containsKey('useDefault')
               ? _json['useDefault'] as core.bool
@@ -833,12 +842,13 @@ class GoogleCloudRunOpV2BinaryAuthorization {
   core.Map<core.String, core.dynamic> toJson() => {
         if (breakglassJustification != null)
           'breakglassJustification': breakglassJustification!,
+        if (policy != null) 'policy': policy!,
         if (useDefault != null) 'useDefault': useDefault!,
       };
 }
 
 /// Represents a specific Cloud SQL instance.
-class GoogleCloudRunOpV2CloudSqlInstance {
+class GoogleCloudRunV2CloudSqlInstance {
   /// The Cloud SQL instance connection names, as can be found in
   /// https://console.cloud.google.com/sql/instances.
   ///
@@ -847,11 +857,11 @@ class GoogleCloudRunOpV2CloudSqlInstance {
   /// {project}:{location}:{instance}
   core.List<core.String>? connections;
 
-  GoogleCloudRunOpV2CloudSqlInstance({
+  GoogleCloudRunV2CloudSqlInstance({
     this.connections,
   });
 
-  GoogleCloudRunOpV2CloudSqlInstance.fromJson(core.Map _json)
+  GoogleCloudRunV2CloudSqlInstance.fromJson(core.Map _json)
       : this(
           connections: _json.containsKey('connections')
               ? (_json['connections'] as core.List)
@@ -866,7 +876,7 @@ class GoogleCloudRunOpV2CloudSqlInstance {
 }
 
 /// Defines a status condition for a resource.
-class GoogleCloudRunOpV2Condition {
+class GoogleCloudRunV2Condition {
   /// A reason for the domain mapping condition.
   /// Possible string values are:
   /// - "DOMAIN_MAPPING_REASON_UNDEFINED" : Default value.
@@ -991,7 +1001,7 @@ class GoogleCloudRunOpV2Condition {
   /// is ready.
   core.String? type;
 
-  GoogleCloudRunOpV2Condition({
+  GoogleCloudRunV2Condition({
     this.domainMappingReason,
     this.executionReason,
     this.internalReason,
@@ -1004,7 +1014,7 @@ class GoogleCloudRunOpV2Condition {
     this.type,
   });
 
-  GoogleCloudRunOpV2Condition.fromJson(core.Map _json)
+  GoogleCloudRunV2Condition.fromJson(core.Map _json)
       : this(
           domainMappingReason: _json.containsKey('domainMappingReason')
               ? _json['domainMappingReason'] as core.String
@@ -1056,7 +1066,7 @@ class GoogleCloudRunOpV2Condition {
 /// This specifies both the container to run, the command to run in the
 /// container and the arguments to supply to it. Note that additional arguments
 /// may be supplied by the system to the container at runtime.
-class GoogleCloudRunOpV2Container {
+class GoogleCloudRunV2Container {
   /// Arguments to the entrypoint.
   ///
   /// The docker image's CMD is used if this is not provided. Variable
@@ -1080,7 +1090,7 @@ class GoogleCloudRunOpV2Container {
   core.List<core.String>? command;
 
   /// List of environment variables to set in the container.
-  core.List<GoogleCloudRunOpV2EnvVar>? env;
+  core.List<GoogleCloudRunV2EnvVar>? env;
 
   /// URL of the Container image in Google Container Registry or Docker More
   /// info: https://kubernetes.io/docs/concepts/containers/images
@@ -1097,18 +1107,18 @@ class GoogleCloudRunOpV2Container {
   /// on all interfaces (0.0.0.0) within the container to be accessible. If
   /// omitted, a port number will be chosen and passed to the container through
   /// the PORT environment variable for the container to listen on.
-  core.List<GoogleCloudRunOpV2ContainerPort>? ports;
+  core.List<GoogleCloudRunV2ContainerPort>? ports;
 
   /// Compute Resource requirements by this container.
   ///
   /// More info:
   /// https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
-  GoogleCloudRunOpV2ResourceRequirements? resources;
+  GoogleCloudRunV2ResourceRequirements? resources;
 
   /// Volume to mount into the container's filesystem.
-  core.List<GoogleCloudRunOpV2VolumeMount>? volumeMounts;
+  core.List<GoogleCloudRunV2VolumeMount>? volumeMounts;
 
-  GoogleCloudRunOpV2Container({
+  GoogleCloudRunV2Container({
     this.args,
     this.command,
     this.env,
@@ -1119,7 +1129,7 @@ class GoogleCloudRunOpV2Container {
     this.volumeMounts,
   });
 
-  GoogleCloudRunOpV2Container.fromJson(core.Map _json)
+  GoogleCloudRunV2Container.fromJson(core.Map _json)
       : this(
           args: _json.containsKey('args')
               ? (_json['args'] as core.List)
@@ -1133,7 +1143,7 @@ class GoogleCloudRunOpV2Container {
               : null,
           env: _json.containsKey('env')
               ? (_json['env'] as core.List)
-                  .map((value) => GoogleCloudRunOpV2EnvVar.fromJson(
+                  .map((value) => GoogleCloudRunV2EnvVar.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1142,17 +1152,17 @@ class GoogleCloudRunOpV2Container {
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           ports: _json.containsKey('ports')
               ? (_json['ports'] as core.List)
-                  .map((value) => GoogleCloudRunOpV2ContainerPort.fromJson(
+                  .map((value) => GoogleCloudRunV2ContainerPort.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           resources: _json.containsKey('resources')
-              ? GoogleCloudRunOpV2ResourceRequirements.fromJson(
+              ? GoogleCloudRunV2ResourceRequirements.fromJson(
                   _json['resources'] as core.Map<core.String, core.dynamic>)
               : null,
           volumeMounts: _json.containsKey('volumeMounts')
               ? (_json['volumeMounts'] as core.List)
-                  .map((value) => GoogleCloudRunOpV2VolumeMount.fromJson(
+                  .map((value) => GoogleCloudRunV2VolumeMount.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1171,7 +1181,7 @@ class GoogleCloudRunOpV2Container {
 }
 
 /// ContainerPort represents a network port in a single container.
-class GoogleCloudRunOpV2ContainerPort {
+class GoogleCloudRunV2ContainerPort {
   /// Port number the container listens on.
   ///
   /// This must be a valid TCP port number, 0 \< container_port \< 65536.
@@ -1182,12 +1192,12 @@ class GoogleCloudRunOpV2ContainerPort {
   /// Allowed values are "http1" and "h2c".
   core.String? name;
 
-  GoogleCloudRunOpV2ContainerPort({
+  GoogleCloudRunV2ContainerPort({
     this.containerPort,
     this.name,
   });
 
-  GoogleCloudRunOpV2ContainerPort.fromJson(core.Map _json)
+  GoogleCloudRunV2ContainerPort.fromJson(core.Map _json)
       : this(
           containerPort: _json.containsKey('containerPort')
               ? _json['containerPort'] as core.int
@@ -1202,7 +1212,7 @@ class GoogleCloudRunOpV2ContainerPort {
 }
 
 /// EnvVar represents an environment variable present in a Container.
-class GoogleCloudRunOpV2EnvVar {
+class GoogleCloudRunV2EnvVar {
   /// Name of the environment variable.
   ///
   /// Must be a C_IDENTIFIER, and mnay not exceed 32768 characters.
@@ -1222,21 +1232,21 @@ class GoogleCloudRunOpV2EnvVar {
   core.String? value;
 
   /// Source for the environment variable's value.
-  GoogleCloudRunOpV2EnvVarSource? valueSource;
+  GoogleCloudRunV2EnvVarSource? valueSource;
 
-  GoogleCloudRunOpV2EnvVar({
+  GoogleCloudRunV2EnvVar({
     this.name,
     this.value,
     this.valueSource,
   });
 
-  GoogleCloudRunOpV2EnvVar.fromJson(core.Map _json)
+  GoogleCloudRunV2EnvVar.fromJson(core.Map _json)
       : this(
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           value:
               _json.containsKey('value') ? _json['value'] as core.String : null,
           valueSource: _json.containsKey('valueSource')
-              ? GoogleCloudRunOpV2EnvVarSource.fromJson(
+              ? GoogleCloudRunV2EnvVarSource.fromJson(
                   _json['valueSource'] as core.Map<core.String, core.dynamic>)
               : null,
         );
@@ -1249,18 +1259,18 @@ class GoogleCloudRunOpV2EnvVar {
 }
 
 /// EnvVarSource represents a source for the value of an EnvVar.
-class GoogleCloudRunOpV2EnvVarSource {
+class GoogleCloudRunV2EnvVarSource {
   /// Selects a secret and a specific version from Cloud Secret Manager.
-  GoogleCloudRunOpV2SecretKeySelector? secretKeyRef;
+  GoogleCloudRunV2SecretKeySelector? secretKeyRef;
 
-  GoogleCloudRunOpV2EnvVarSource({
+  GoogleCloudRunV2EnvVarSource({
     this.secretKeyRef,
   });
 
-  GoogleCloudRunOpV2EnvVarSource.fromJson(core.Map _json)
+  GoogleCloudRunV2EnvVarSource.fromJson(core.Map _json)
       : this(
           secretKeyRef: _json.containsKey('secretKeyRef')
-              ? GoogleCloudRunOpV2SecretKeySelector.fromJson(
+              ? GoogleCloudRunV2SecretKeySelector.fromJson(
                   _json['secretKeyRef'] as core.Map<core.String, core.dynamic>)
               : null,
         );
@@ -1271,28 +1281,28 @@ class GoogleCloudRunOpV2EnvVarSource {
 }
 
 /// Response message containing a list of Revisions.
-class GoogleCloudRunOpV2ListRevisionsResponse {
+class GoogleCloudRunV2ListRevisionsResponse {
   /// A token indicating there are more items than page_size.
   ///
   /// Use it in the next ListRevisions request to continue.
   core.String? nextPageToken;
 
   /// The resulting list of Revisions.
-  core.List<GoogleCloudRunOpV2Revision>? revisions;
+  core.List<GoogleCloudRunV2Revision>? revisions;
 
-  GoogleCloudRunOpV2ListRevisionsResponse({
+  GoogleCloudRunV2ListRevisionsResponse({
     this.nextPageToken,
     this.revisions,
   });
 
-  GoogleCloudRunOpV2ListRevisionsResponse.fromJson(core.Map _json)
+  GoogleCloudRunV2ListRevisionsResponse.fromJson(core.Map _json)
       : this(
           nextPageToken: _json.containsKey('nextPageToken')
               ? _json['nextPageToken'] as core.String
               : null,
           revisions: _json.containsKey('revisions')
               ? (_json['revisions'] as core.List)
-                  .map((value) => GoogleCloudRunOpV2Revision.fromJson(
+                  .map((value) => GoogleCloudRunV2Revision.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1305,28 +1315,28 @@ class GoogleCloudRunOpV2ListRevisionsResponse {
 }
 
 /// Response message containing a list of Services.
-class GoogleCloudRunOpV2ListServicesResponse {
+class GoogleCloudRunV2ListServicesResponse {
   /// A token indicating there are more items than page_size.
   ///
   /// Use it in the next ListServices request to continue.
   core.String? nextPageToken;
 
   /// The resulting list of Services.
-  core.List<GoogleCloudRunOpV2Service>? services;
+  core.List<GoogleCloudRunV2Service>? services;
 
-  GoogleCloudRunOpV2ListServicesResponse({
+  GoogleCloudRunV2ListServicesResponse({
     this.nextPageToken,
     this.services,
   });
 
-  GoogleCloudRunOpV2ListServicesResponse.fromJson(core.Map _json)
+  GoogleCloudRunV2ListServicesResponse.fromJson(core.Map _json)
       : this(
           nextPageToken: _json.containsKey('nextPageToken')
               ? _json['nextPageToken'] as core.String
               : null,
           services: _json.containsKey('services')
               ? (_json['services'] as core.List)
-                  .map((value) => GoogleCloudRunOpV2Service.fromJson(
+                  .map((value) => GoogleCloudRunV2Service.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1339,7 +1349,7 @@ class GoogleCloudRunOpV2ListServicesResponse {
 }
 
 /// ResourceRequirements describes the compute resource requirements.
-class GoogleCloudRunOpV2ResourceRequirements {
+class GoogleCloudRunV2ResourceRequirements {
   /// Determines whether CPU should be throttled or not outside of requests.
   core.bool? cpuIdle;
 
@@ -1351,12 +1361,12 @@ class GoogleCloudRunOpV2ResourceRequirements {
   /// https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
   core.Map<core.String, core.String>? limits;
 
-  GoogleCloudRunOpV2ResourceRequirements({
+  GoogleCloudRunV2ResourceRequirements({
     this.cpuIdle,
     this.limits,
   });
 
-  GoogleCloudRunOpV2ResourceRequirements.fromJson(core.Map _json)
+  GoogleCloudRunV2ResourceRequirements.fromJson(core.Map _json)
       : this(
           cpuIdle: _json.containsKey('cpuIdle')
               ? _json['cpuIdle'] as core.bool
@@ -1381,7 +1391,7 @@ class GoogleCloudRunOpV2ResourceRequirements {
 ///
 /// A Revision references a container image. Revisions are only created by
 /// updates to its parent Service.
-class GoogleCloudRunOpV2Revision {
+class GoogleCloudRunV2Revision {
   /// KRM-style annotations for the resource.
   core.Map<core.String, core.String>? annotations;
 
@@ -1389,7 +1399,7 @@ class GoogleCloudRunOpV2Revision {
   /// detailed error information in case it did not reach a serving state.
   ///
   /// Output only.
-  core.List<GoogleCloudRunOpV2Condition>? conditions;
+  core.List<GoogleCloudRunV2Condition>? conditions;
 
   /// Indicates whether Confidential Cloud Run is enabled in this Revision.
   core.bool? confidential;
@@ -1400,7 +1410,7 @@ class GoogleCloudRunOpV2Revision {
 
   /// Holds the single container that defines the unit of execution for this
   /// Revision.
-  core.List<GoogleCloudRunOpV2Container>? containers;
+  core.List<GoogleCloudRunV2Container>? containers;
 
   /// The creation time.
   ///
@@ -1431,7 +1441,7 @@ class GoogleCloudRunOpV2Revision {
   /// The execution environment being used to host this Revision.
   /// Possible string values are:
   /// - "EXECUTION_ENVIRONMENT_UNSPECIFIED" : Unspecified
-  /// - "EXECUTION_ENVIRONMENT_DEFAULT" : Uses the Google-default environment.
+  /// - "EXECUTION_ENVIRONMENT_GEN1" : Uses the First Generation environment.
   /// - "EXECUTION_ENVIRONMENT_GEN2" : Uses Second Generation environment.
   core.String? executionEnvironment;
 
@@ -1528,7 +1538,7 @@ class GoogleCloudRunOpV2Revision {
   core.bool? reconciling;
 
   /// Scaling settings for this revision.
-  GoogleCloudRunOpV2RevisionScaling? scaling;
+  GoogleCloudRunV2RevisionScaling? scaling;
 
   /// The name of the parent service.
   ///
@@ -1559,15 +1569,15 @@ class GoogleCloudRunOpV2Revision {
   core.String? updateTime;
 
   /// A list of Volumes to make available to containers.
-  core.List<GoogleCloudRunOpV2Volume>? volumes;
+  core.List<GoogleCloudRunV2Volume>? volumes;
 
   /// VPC Access configuration for this Revision.
   ///
   /// For more information, visit
   /// https://cloud.google.com/run/docs/configuring/connecting-vpc.
-  GoogleCloudRunOpV2VpcAccess? vpcAccess;
+  GoogleCloudRunV2VpcAccess? vpcAccess;
 
-  GoogleCloudRunOpV2Revision({
+  GoogleCloudRunV2Revision({
     this.annotations,
     this.conditions,
     this.confidential,
@@ -1596,7 +1606,7 @@ class GoogleCloudRunOpV2Revision {
     this.vpcAccess,
   });
 
-  GoogleCloudRunOpV2Revision.fromJson(core.Map _json)
+  GoogleCloudRunV2Revision.fromJson(core.Map _json)
       : this(
           annotations: _json.containsKey('annotations')
               ? (_json['annotations'] as core.Map<core.String, core.dynamic>)
@@ -1609,7 +1619,7 @@ class GoogleCloudRunOpV2Revision {
               : null,
           conditions: _json.containsKey('conditions')
               ? (_json['conditions'] as core.List)
-                  .map((value) => GoogleCloudRunOpV2Condition.fromJson(
+                  .map((value) => GoogleCloudRunV2Condition.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1621,7 +1631,7 @@ class GoogleCloudRunOpV2Revision {
               : null,
           containers: _json.containsKey('containers')
               ? (_json['containers'] as core.List)
-                  .map((value) => GoogleCloudRunOpV2Container.fromJson(
+                  .map((value) => GoogleCloudRunV2Container.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1666,7 +1676,7 @@ class GoogleCloudRunOpV2Revision {
               ? _json['reconciling'] as core.bool
               : null,
           scaling: _json.containsKey('scaling')
-              ? GoogleCloudRunOpV2RevisionScaling.fromJson(
+              ? GoogleCloudRunV2RevisionScaling.fromJson(
                   _json['scaling'] as core.Map<core.String, core.dynamic>)
               : null,
           service: _json.containsKey('service')
@@ -1684,12 +1694,12 @@ class GoogleCloudRunOpV2Revision {
               : null,
           volumes: _json.containsKey('volumes')
               ? (_json['volumes'] as core.List)
-                  .map((value) => GoogleCloudRunOpV2Volume.fromJson(
+                  .map((value) => GoogleCloudRunV2Volume.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           vpcAccess: _json.containsKey('vpcAccess')
-              ? GoogleCloudRunOpV2VpcAccess.fromJson(
+              ? GoogleCloudRunV2VpcAccess.fromJson(
                   _json['vpcAccess'] as core.Map<core.String, core.dynamic>)
               : null,
         );
@@ -1728,19 +1738,19 @@ class GoogleCloudRunOpV2Revision {
 }
 
 /// Settings for revision-level scaling settings.
-class GoogleCloudRunOpV2RevisionScaling {
+class GoogleCloudRunV2RevisionScaling {
   /// Maximum number of serving instances that this resource should have.
   core.int? maxInstanceCount;
 
   /// Minimum number of serving instances that this resource should have.
   core.int? minInstanceCount;
 
-  GoogleCloudRunOpV2RevisionScaling({
+  GoogleCloudRunV2RevisionScaling({
     this.maxInstanceCount,
     this.minInstanceCount,
   });
 
-  GoogleCloudRunOpV2RevisionScaling.fromJson(core.Map _json)
+  GoogleCloudRunV2RevisionScaling.fromJson(core.Map _json)
       : this(
           maxInstanceCount: _json.containsKey('maxInstanceCount')
               ? _json['maxInstanceCount'] as core.int
@@ -1758,7 +1768,7 @@ class GoogleCloudRunOpV2RevisionScaling {
 
 /// RevisionTemplate describes the data a revision should have when created from
 /// a template.
-class GoogleCloudRunOpV2RevisionTemplate {
+class GoogleCloudRunV2RevisionTemplate {
   /// KRM-style annotations for the resource.
   core.Map<core.String, core.String>? annotations;
 
@@ -1771,7 +1781,7 @@ class GoogleCloudRunOpV2RevisionTemplate {
 
   /// Holds the single container that defines the unit of execution for this
   /// Revision.
-  core.List<GoogleCloudRunOpV2Container>? containers;
+  core.List<GoogleCloudRunV2Container>? containers;
 
   /// A reference to a customer managed encryption key (CMEK) to use to encrypt
   /// this container image.
@@ -1783,7 +1793,7 @@ class GoogleCloudRunOpV2RevisionTemplate {
   /// The sandbox environment to host this Revision.
   /// Possible string values are:
   /// - "EXECUTION_ENVIRONMENT_UNSPECIFIED" : Unspecified
-  /// - "EXECUTION_ENVIRONMENT_DEFAULT" : Uses the Google-default environment.
+  /// - "EXECUTION_ENVIRONMENT_GEN1" : Uses the First Generation environment.
   /// - "EXECUTION_ENVIRONMENT_GEN2" : Uses Second Generation environment.
   core.String? executionEnvironment;
 
@@ -1797,7 +1807,7 @@ class GoogleCloudRunOpV2RevisionTemplate {
   core.String? revision;
 
   /// Scaling settings for this Revision.
-  GoogleCloudRunOpV2RevisionScaling? scaling;
+  GoogleCloudRunV2RevisionScaling? scaling;
 
   /// Email address of the IAM service account associated with the revision of
   /// the service.
@@ -1811,15 +1821,15 @@ class GoogleCloudRunOpV2RevisionTemplate {
   core.String? timeout;
 
   /// A list of Volumes to make available to containers.
-  core.List<GoogleCloudRunOpV2Volume>? volumes;
+  core.List<GoogleCloudRunV2Volume>? volumes;
 
   /// VPC Access configuration to use for this Revision.
   ///
   /// For more information, visit
   /// https://cloud.google.com/run/docs/configuring/connecting-vpc.
-  GoogleCloudRunOpV2VpcAccess? vpcAccess;
+  GoogleCloudRunV2VpcAccess? vpcAccess;
 
-  GoogleCloudRunOpV2RevisionTemplate({
+  GoogleCloudRunV2RevisionTemplate({
     this.annotations,
     this.confidential,
     this.containerConcurrency,
@@ -1835,7 +1845,7 @@ class GoogleCloudRunOpV2RevisionTemplate {
     this.vpcAccess,
   });
 
-  GoogleCloudRunOpV2RevisionTemplate.fromJson(core.Map _json)
+  GoogleCloudRunV2RevisionTemplate.fromJson(core.Map _json)
       : this(
           annotations: _json.containsKey('annotations')
               ? (_json['annotations'] as core.Map<core.String, core.dynamic>)
@@ -1854,7 +1864,7 @@ class GoogleCloudRunOpV2RevisionTemplate {
               : null,
           containers: _json.containsKey('containers')
               ? (_json['containers'] as core.List)
-                  .map((value) => GoogleCloudRunOpV2Container.fromJson(
+                  .map((value) => GoogleCloudRunV2Container.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -1876,7 +1886,7 @@ class GoogleCloudRunOpV2RevisionTemplate {
               ? _json['revision'] as core.String
               : null,
           scaling: _json.containsKey('scaling')
-              ? GoogleCloudRunOpV2RevisionScaling.fromJson(
+              ? GoogleCloudRunV2RevisionScaling.fromJson(
                   _json['scaling'] as core.Map<core.String, core.dynamic>)
               : null,
           serviceAccount: _json.containsKey('serviceAccount')
@@ -1887,12 +1897,12 @@ class GoogleCloudRunOpV2RevisionTemplate {
               : null,
           volumes: _json.containsKey('volumes')
               ? (_json['volumes'] as core.List)
-                  .map((value) => GoogleCloudRunOpV2Volume.fromJson(
+                  .map((value) => GoogleCloudRunV2Volume.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           vpcAccess: _json.containsKey('vpcAccess')
-              ? GoogleCloudRunOpV2VpcAccess.fromJson(
+              ? GoogleCloudRunV2VpcAccess.fromJson(
                   _json['vpcAccess'] as core.Map<core.String, core.dynamic>)
               : null,
         );
@@ -1917,7 +1927,7 @@ class GoogleCloudRunOpV2RevisionTemplate {
 }
 
 /// SecretEnvVarSource represents a source for the value of an EnvVar.
-class GoogleCloudRunOpV2SecretKeySelector {
+class GoogleCloudRunV2SecretKeySelector {
   /// The name of the secret in Cloud Secret Manager.
   ///
   /// Format: {secret_name} if the secret is in the same project.
@@ -1932,12 +1942,12 @@ class GoogleCloudRunOpV2SecretKeySelector {
   /// Can be 'latest' for the latest value or an integer for a specific version.
   core.String? version;
 
-  GoogleCloudRunOpV2SecretKeySelector({
+  GoogleCloudRunV2SecretKeySelector({
     this.secret,
     this.version,
   });
 
-  GoogleCloudRunOpV2SecretKeySelector.fromJson(core.Map _json)
+  GoogleCloudRunV2SecretKeySelector.fromJson(core.Map _json)
       : this(
           secret: _json.containsKey('secret')
               ? _json['secret'] as core.String
@@ -1957,7 +1967,7 @@ class GoogleCloudRunOpV2SecretKeySelector {
 /// defined in the item path.
 ///
 /// If no items are defined, the name of the file is the secret.
-class GoogleCloudRunOpV2SecretVolumeSource {
+class GoogleCloudRunV2SecretVolumeSource {
   /// Integer representation of mode bits to use on created files by default.
   ///
   /// Must be a value between 0000 and 0777 (octal), defaulting to 0644.
@@ -1980,7 +1990,7 @@ class GoogleCloudRunOpV2SecretVolumeSource {
   /// If specified, the key will be used as the version to fetch from Cloud
   /// Secret Manager and the path will be the name of the file exposed in the
   /// volume. When items are defined, they must specify a path and a version.
-  core.List<GoogleCloudRunOpV2VersionToPath>? items;
+  core.List<GoogleCloudRunV2VersionToPath>? items;
 
   /// The name of the secret in Cloud Secret Manager.
   ///
@@ -1991,20 +2001,20 @@ class GoogleCloudRunOpV2SecretVolumeSource {
   /// Required.
   core.String? secret;
 
-  GoogleCloudRunOpV2SecretVolumeSource({
+  GoogleCloudRunV2SecretVolumeSource({
     this.defaultMode,
     this.items,
     this.secret,
   });
 
-  GoogleCloudRunOpV2SecretVolumeSource.fromJson(core.Map _json)
+  GoogleCloudRunV2SecretVolumeSource.fromJson(core.Map _json)
       : this(
           defaultMode: _json.containsKey('defaultMode')
               ? _json['defaultMode'] as core.int
               : null,
           items: _json.containsKey('items')
               ? (_json['items'] as core.List)
-                  .map((value) => GoogleCloudRunOpV2VersionToPath.fromJson(
+                  .map((value) => GoogleCloudRunV2VersionToPath.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2026,7 +2036,7 @@ class GoogleCloudRunOpV2SecretVolumeSource {
 /// Service exists to provide a singular abstraction which can be access
 /// controlled, reasoned about, and which encapsulates software lifecycle
 /// decisions such as rollout policy and team resource ownership.
-class GoogleCloudRunOpV2Service {
+class GoogleCloudRunV2Service {
   /// Unstructured key value map that may be set by external tools to store and
   /// arbitrary metadata.
   ///
@@ -2038,7 +2048,7 @@ class GoogleCloudRunOpV2Service {
   core.Map<core.String, core.String>? annotations;
 
   /// Settings for the Binary Authorization feature.
-  GoogleCloudRunOpV2BinaryAuthorization? binaryAuthorization;
+  GoogleCloudRunV2BinaryAuthorization? binaryAuthorization;
 
   /// Arbitrary identifier for the API client.
   core.String? client;
@@ -2053,7 +2063,7 @@ class GoogleCloudRunOpV2Service {
   /// information on reconciliation process in Cloud Run.
   ///
   /// Output only.
-  core.List<GoogleCloudRunOpV2Condition>? conditions;
+  core.List<GoogleCloudRunV2Condition>? conditions;
 
   /// The creation time.
   ///
@@ -2220,7 +2230,7 @@ class GoogleCloudRunOpV2Service {
   /// The template used to create revisions for this Service.
   ///
   /// Required.
-  GoogleCloudRunOpV2RevisionTemplate? template;
+  GoogleCloudRunV2RevisionTemplate? template;
 
   /// The Condition of this Service, containing its readiness status, and
   /// detailed error information in case it did not reach a serving state.
@@ -2229,14 +2239,14 @@ class GoogleCloudRunOpV2Service {
   /// process in Cloud Run.
   ///
   /// Output only.
-  GoogleCloudRunOpV2Condition? terminalCondition;
+  GoogleCloudRunV2Condition? terminalCondition;
 
   /// Specifies how to distribute traffic over a collection of Revisions
   /// belonging to the Service.
   ///
   /// If traffic is empty or not provided, defaults to 100% traffic to the
   /// latest `Ready` Revision.
-  core.List<GoogleCloudRunOpV2TrafficTarget>? traffic;
+  core.List<GoogleCloudRunV2TrafficTarget>? traffic;
 
   /// Detailed status information for corresponding traffic targets.
   ///
@@ -2244,7 +2254,7 @@ class GoogleCloudRunOpV2Service {
   /// process in Cloud Run.
   ///
   /// Output only.
-  core.List<GoogleCloudRunOpV2TrafficTargetStatus>? trafficStatuses;
+  core.List<GoogleCloudRunV2TrafficTargetStatus>? trafficStatuses;
 
   /// Server assigned unique identifier for the trigger.
   ///
@@ -2264,7 +2274,7 @@ class GoogleCloudRunOpV2Service {
   /// Output only.
   core.String? uri;
 
-  GoogleCloudRunOpV2Service({
+  GoogleCloudRunV2Service({
     this.annotations,
     this.binaryAuthorization,
     this.client,
@@ -2295,7 +2305,7 @@ class GoogleCloudRunOpV2Service {
     this.uri,
   });
 
-  GoogleCloudRunOpV2Service.fromJson(core.Map _json)
+  GoogleCloudRunV2Service.fromJson(core.Map _json)
       : this(
           annotations: _json.containsKey('annotations')
               ? (_json['annotations'] as core.Map<core.String, core.dynamic>)
@@ -2307,7 +2317,7 @@ class GoogleCloudRunOpV2Service {
                 )
               : null,
           binaryAuthorization: _json.containsKey('binaryAuthorization')
-              ? GoogleCloudRunOpV2BinaryAuthorization.fromJson(
+              ? GoogleCloudRunV2BinaryAuthorization.fromJson(
                   _json['binaryAuthorization']
                       as core.Map<core.String, core.dynamic>)
               : null,
@@ -2319,7 +2329,7 @@ class GoogleCloudRunOpV2Service {
               : null,
           conditions: _json.containsKey('conditions')
               ? (_json['conditions'] as core.List)
-                  .map((value) => GoogleCloudRunOpV2Condition.fromJson(
+                  .map((value) => GoogleCloudRunV2Condition.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2373,24 +2383,23 @@ class GoogleCloudRunOpV2Service {
               ? _json['reconciling'] as core.bool
               : null,
           template: _json.containsKey('template')
-              ? GoogleCloudRunOpV2RevisionTemplate.fromJson(
+              ? GoogleCloudRunV2RevisionTemplate.fromJson(
                   _json['template'] as core.Map<core.String, core.dynamic>)
               : null,
           terminalCondition: _json.containsKey('terminalCondition')
-              ? GoogleCloudRunOpV2Condition.fromJson(_json['terminalCondition']
+              ? GoogleCloudRunV2Condition.fromJson(_json['terminalCondition']
                   as core.Map<core.String, core.dynamic>)
               : null,
           traffic: _json.containsKey('traffic')
               ? (_json['traffic'] as core.List)
-                  .map((value) => GoogleCloudRunOpV2TrafficTarget.fromJson(
+                  .map((value) => GoogleCloudRunV2TrafficTarget.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           trafficStatuses: _json.containsKey('trafficStatuses')
               ? (_json['trafficStatuses'] as core.List)
-                  .map((value) =>
-                      GoogleCloudRunOpV2TrafficTargetStatus.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                  .map((value) => GoogleCloudRunV2TrafficTargetStatus.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           uid: _json.containsKey('uid') ? _json['uid'] as core.String : null,
@@ -2440,7 +2449,7 @@ class GoogleCloudRunOpV2Service {
 ///
 /// Allocations can be done to a specific Revision name, or pointing to the
 /// latest Ready Revision.
-class GoogleCloudRunOpV2TrafficTarget {
+class GoogleCloudRunV2TrafficTarget {
   /// Specifies percent of the traffic to this Revision.
   ///
   /// This defaults to zero if unspecified.
@@ -2464,14 +2473,14 @@ class GoogleCloudRunOpV2TrafficTarget {
   /// Revision by name.
   core.String? type;
 
-  GoogleCloudRunOpV2TrafficTarget({
+  GoogleCloudRunV2TrafficTarget({
     this.percent,
     this.revision,
     this.tag,
     this.type,
   });
 
-  GoogleCloudRunOpV2TrafficTarget.fromJson(core.Map _json)
+  GoogleCloudRunV2TrafficTarget.fromJson(core.Map _json)
       : this(
           percent: _json.containsKey('percent')
               ? _json['percent'] as core.int
@@ -2492,7 +2501,7 @@ class GoogleCloudRunOpV2TrafficTarget {
 }
 
 /// Represents the observed state of a single `TrafficTarget` entry.
-class GoogleCloudRunOpV2TrafficTargetStatus {
+class GoogleCloudRunV2TrafficTargetStatus {
   /// Specifies percent of the traffic to this Revision.
   core.int? percent;
 
@@ -2515,7 +2524,7 @@ class GoogleCloudRunOpV2TrafficTargetStatus {
   /// Displays the target URI.
   core.String? uri;
 
-  GoogleCloudRunOpV2TrafficTargetStatus({
+  GoogleCloudRunV2TrafficTargetStatus({
     this.percent,
     this.revision,
     this.tag,
@@ -2523,7 +2532,7 @@ class GoogleCloudRunOpV2TrafficTargetStatus {
     this.uri,
   });
 
-  GoogleCloudRunOpV2TrafficTargetStatus.fromJson(core.Map _json)
+  GoogleCloudRunV2TrafficTargetStatus.fromJson(core.Map _json)
       : this(
           percent: _json.containsKey('percent')
               ? _json['percent'] as core.int
@@ -2547,7 +2556,7 @@ class GoogleCloudRunOpV2TrafficTargetStatus {
 
 /// VersionToPath maps a specific version of a secret to a relative file to
 /// mount to, relative to VolumeMount's mount_path.
-class GoogleCloudRunOpV2VersionToPath {
+class GoogleCloudRunV2VersionToPath {
   /// Integer octal mode bits to use on this file, must be a value between 01
   /// and 0777 (octal).
   ///
@@ -2572,13 +2581,13 @@ class GoogleCloudRunOpV2VersionToPath {
   /// Can be 'latest' for the latest value or an integer for a specific version.
   core.String? version;
 
-  GoogleCloudRunOpV2VersionToPath({
+  GoogleCloudRunV2VersionToPath({
     this.mode,
     this.path,
     this.version,
   });
 
-  GoogleCloudRunOpV2VersionToPath.fromJson(core.Map _json)
+  GoogleCloudRunV2VersionToPath.fromJson(core.Map _json)
       : this(
           mode: _json.containsKey('mode') ? _json['mode'] as core.int : null,
           path: _json.containsKey('path') ? _json['path'] as core.String : null,
@@ -2595,13 +2604,13 @@ class GoogleCloudRunOpV2VersionToPath {
 }
 
 /// Volume represents a named volume in a container.
-class GoogleCloudRunOpV2Volume {
+class GoogleCloudRunV2Volume {
   /// For Cloud SQL volumes, contains the specific instances that should be
   /// mounted.
   ///
   /// Visit https://cloud.google.com/sql/docs/mysql/connect-run for more
   /// information on how to connect Cloud SQL and Cloud Run.
-  GoogleCloudRunOpV2CloudSqlInstance? cloudSqlInstance;
+  GoogleCloudRunV2CloudSqlInstance? cloudSqlInstance;
 
   /// Volume's name.
   ///
@@ -2611,24 +2620,24 @@ class GoogleCloudRunOpV2Volume {
   /// Secret represents a secret that should populate this volume.
   ///
   /// More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
-  GoogleCloudRunOpV2SecretVolumeSource? secret;
+  GoogleCloudRunV2SecretVolumeSource? secret;
 
-  GoogleCloudRunOpV2Volume({
+  GoogleCloudRunV2Volume({
     this.cloudSqlInstance,
     this.name,
     this.secret,
   });
 
-  GoogleCloudRunOpV2Volume.fromJson(core.Map _json)
+  GoogleCloudRunV2Volume.fromJson(core.Map _json)
       : this(
           cloudSqlInstance: _json.containsKey('cloudSqlInstance')
-              ? GoogleCloudRunOpV2CloudSqlInstance.fromJson(
+              ? GoogleCloudRunV2CloudSqlInstance.fromJson(
                   _json['cloudSqlInstance']
                       as core.Map<core.String, core.dynamic>)
               : null,
           name: _json.containsKey('name') ? _json['name'] as core.String : null,
           secret: _json.containsKey('secret')
-              ? GoogleCloudRunOpV2SecretVolumeSource.fromJson(
+              ? GoogleCloudRunV2SecretVolumeSource.fromJson(
                   _json['secret'] as core.Map<core.String, core.dynamic>)
               : null,
         );
@@ -2641,7 +2650,7 @@ class GoogleCloudRunOpV2Volume {
 }
 
 /// VolumeMount describes a mounting of a Volume within a container.
-class GoogleCloudRunOpV2VolumeMount {
+class GoogleCloudRunV2VolumeMount {
   /// Path within the container at which the volume should be mounted.
   ///
   /// Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must
@@ -2657,12 +2666,12 @@ class GoogleCloudRunOpV2VolumeMount {
   /// Required.
   core.String? name;
 
-  GoogleCloudRunOpV2VolumeMount({
+  GoogleCloudRunV2VolumeMount({
     this.mountPath,
     this.name,
   });
 
-  GoogleCloudRunOpV2VolumeMount.fromJson(core.Map _json)
+  GoogleCloudRunV2VolumeMount.fromJson(core.Map _json)
       : this(
           mountPath: _json.containsKey('mountPath')
               ? _json['mountPath'] as core.String
@@ -2682,7 +2691,7 @@ class GoogleCloudRunOpV2VolumeMount {
 /// https://cloud.google.com/vpc/docs/configure-serverless-vpc-access For
 /// information on how to configure Cloud Run with an existing VPC Connector,
 /// visit https://cloud.google.com/run/docs/configuring/connecting-vpc
-class GoogleCloudRunOpV2VpcAccess {
+class GoogleCloudRunV2VpcAccess {
   /// VPC Access connector name.
   ///
   /// Format: projects/{project}/locations/{location}/connectors/{connector}
@@ -2697,12 +2706,12 @@ class GoogleCloudRunOpV2VpcAccess {
   /// VPC connector.
   core.String? egress;
 
-  GoogleCloudRunOpV2VpcAccess({
+  GoogleCloudRunV2VpcAccess({
     this.connector,
     this.egress,
   });
 
-  GoogleCloudRunOpV2VpcAccess.fromJson(core.Map _json)
+  GoogleCloudRunV2VpcAccess.fromJson(core.Map _json)
       : this(
           connector: _json.containsKey('connector')
               ? _json['connector'] as core.String
@@ -3131,8 +3140,7 @@ class GoogleLongrunningOperation {
 ///
 /// A typical example is to use it as the request or the response type of an API
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
-/// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
-/// object `{}`.
+/// (google.protobuf.Empty); }
 typedef GoogleProtobufEmpty = $Empty;
 
 /// The `Status` type defines a logical error model that is suitable for

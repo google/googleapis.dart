@@ -803,6 +803,11 @@ class ProjectsLocationsCaPoolsCertificateAuthoritiesResource {
   /// valid UUID with the exception that zero UUID is not supported
   /// (00000000-0000-0000-0000-000000000000).
   ///
+  /// [skipGracePeriod] - Optional. If this flag is set, the Certificate
+  /// Authority will be deleted as soon as possible without a 30-day grace
+  /// period where undeletion would have been allowed. If you proceed, there
+  /// will be no way to recover this CA.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -817,12 +822,14 @@ class ProjectsLocationsCaPoolsCertificateAuthoritiesResource {
     core.String name, {
     core.bool? ignoreActiveCertificates,
     core.String? requestId,
+    core.bool? skipGracePeriod,
     core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (ignoreActiveCertificates != null)
         'ignoreActiveCertificates': ['${ignoreActiveCertificates}'],
       if (requestId != null) 'requestId': [requestId],
+      if (skipGracePeriod != null) 'skipGracePeriod': ['${skipGracePeriod}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -3843,8 +3850,7 @@ class EcKeyType {
 ///
 /// A typical example is to use it as the request or the response type of an API
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
-/// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
-/// object `{}`.
+/// (google.protobuf.Empty); }
 typedef Empty = $Empty;
 
 /// Request message for CertificateAuthorityService.EnableCertificateAuthority.

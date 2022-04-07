@@ -1541,7 +1541,7 @@ class GoogleIamV1Binding {
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   GoogleTypeExpr? condition;
 
-  /// Specifies the principals requesting access for a Cloud Platform resource.
+  /// Specifies the principals requesting access for a Google Cloud resource.
   ///
   /// `members` can have the following values: * `allUsers`: A special
   /// identifier that represents anyone who is on the internet; with or without
@@ -1848,10 +1848,11 @@ typedef GoogleRpcStatus = $Status;
 /// The time of day and time zone are either specified elsewhere or are
 /// insignificant. The date is relative to the Gregorian Calendar. This can
 /// represent one of the following: * A full date, with non-zero year, month,
-/// and day values * A month and day, with a zero year (e.g., an anniversary) *
-/// A year on its own, with a zero month and a zero day * A year and month, with
-/// a zero day (e.g., a credit card expiration date) Related types: *
-/// google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
+/// and day values. * A month and day, with a zero year (for example, an
+/// anniversary). * A year on its own, with a zero month and a zero day. * A
+/// year and month, with a zero day (for example, a credit card expiration
+/// date). Related types: * google.type.TimeOfDay * google.type.DateTime *
+/// google.protobuf.Timestamp
 typedef GoogleTypeDate = $Date;
 
 /// Represents a textual expression in the Common Expression Language (CEL)

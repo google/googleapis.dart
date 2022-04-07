@@ -84,6 +84,51 @@ class ProjectsLocationsWorkflowsResource {
 
   ProjectsLocationsWorkflowsResource(commons.ApiRequester client)
       : _requester = client;
+
+  /// Triggers a new execution using the latest revision of the given workflow
+  /// by a Pub/Sub push notification.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [workflow] - Required. Name of the workflow for which an execution should
+  /// be created. Format:
+  /// projects/{project}/locations/{location}/workflows/{workflow}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/workflows/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Execution].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Execution> triggerPubsubExecution(
+    TriggerPubsubExecutionRequest request,
+    core.String workflow, {
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url =
+        'v1/' + core.Uri.encodeFull('$workflow') + ':triggerPubsubExecution';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Execution.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class ProjectsLocationsWorkflowsExecutionsResource {
@@ -532,6 +577,17 @@ class Position {
       };
 }
 
+/// A message that is published by publishers and consumed by subscribers.
+///
+/// The message must contain either a non-empty data field or at least one
+/// attribute. Note that client libraries represent this object differently
+/// depending on the language. See the corresponding
+/// [client library documentation](https://cloud.google.com/pubsub/docs/reference/libraries)
+/// for more information. See
+/// [quotas and limits](https://cloud.google.com/pubsub/quotas) for more
+/// information about message limits.
+typedef PubsubMessage = $PubsubMessage;
+
 /// A collection of stack elements (frames) where an error occurred.
 class StackTrace {
   /// An array of stack elements.
@@ -589,5 +645,53 @@ class StackTraceElement {
         if (position != null) 'position': position!,
         if (routine != null) 'routine': routine!,
         if (step != null) 'step': step!,
+      };
+}
+
+/// Request for the TriggerPubsubExecution method.
+class TriggerPubsubExecutionRequest {
+  /// LINT: LEGACY_NAMES The query parameter value for __GCP_CloudEventsMode,
+  /// set by the Eventarc service when configuring triggers.
+  ///
+  /// Required.
+  core.String? GCPCloudEventsMode;
+
+  /// The message of the Pub/Sub push notification.
+  ///
+  /// Required.
+  PubsubMessage? message;
+
+  /// The subscription of the Pub/Sub push notification.
+  ///
+  /// Format: projects/{project}/subscriptions/{sub}
+  ///
+  /// Required.
+  core.String? subscription;
+
+  TriggerPubsubExecutionRequest({
+    this.GCPCloudEventsMode,
+    this.message,
+    this.subscription,
+  });
+
+  TriggerPubsubExecutionRequest.fromJson(core.Map _json)
+      : this(
+          GCPCloudEventsMode: _json.containsKey('GCPCloudEventsMode')
+              ? _json['GCPCloudEventsMode'] as core.String
+              : null,
+          message: _json.containsKey('message')
+              ? PubsubMessage.fromJson(
+                  _json['message'] as core.Map<core.String, core.dynamic>)
+              : null,
+          subscription: _json.containsKey('subscription')
+              ? _json['subscription'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (GCPCloudEventsMode != null)
+          'GCPCloudEventsMode': GCPCloudEventsMode!,
+        if (message != null) 'message': message!,
+        if (subscription != null) 'subscription': subscription!,
       };
 }

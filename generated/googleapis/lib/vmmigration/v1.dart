@@ -2892,6 +2892,11 @@ class CloneJob {
   /// Output only.
   core.String? createTime;
 
+  /// The time the clone job was ended.
+  ///
+  /// Output only.
+  core.String? endTime;
+
   /// Provides details for the errors that led to the Clone Job's state.
   ///
   /// Output only.
@@ -2926,6 +2931,7 @@ class CloneJob {
   CloneJob({
     this.computeEngineTargetDetails,
     this.createTime,
+    this.endTime,
     this.error,
     this.name,
     this.state,
@@ -2943,6 +2949,9 @@ class CloneJob {
           createTime: _json.containsKey('createTime')
               ? _json['createTime'] as core.String
               : null,
+          endTime: _json.containsKey('endTime')
+              ? _json['endTime'] as core.String
+              : null,
           error: _json.containsKey('error')
               ? Status.fromJson(
                   _json['error'] as core.Map<core.String, core.dynamic>)
@@ -2959,6 +2968,7 @@ class CloneJob {
         if (computeEngineTargetDetails != null)
           'computeEngineTargetDetails': computeEngineTargetDetails!,
         if (createTime != null) 'createTime': createTime!,
+        if (endTime != null) 'endTime': endTime!,
         if (error != null) 'error': error!,
         if (name != null) 'name': name!,
         if (state != null) 'state': state!,
@@ -3436,6 +3446,11 @@ class CutoverJob {
   /// Output only.
   core.String? createTime;
 
+  /// The time the cutover job had finished.
+  ///
+  /// Output only.
+  core.String? endTime;
+
   /// Provides details for the errors that led to the Cutover Job's state.
   ///
   /// Output only.
@@ -3480,6 +3495,7 @@ class CutoverJob {
   CutoverJob({
     this.computeEngineTargetDetails,
     this.createTime,
+    this.endTime,
     this.error,
     this.name,
     this.progressPercent,
@@ -3498,6 +3514,9 @@ class CutoverJob {
                   : null,
           createTime: _json.containsKey('createTime')
               ? _json['createTime'] as core.String
+              : null,
+          endTime: _json.containsKey('endTime')
+              ? _json['endTime'] as core.String
               : null,
           error: _json.containsKey('error')
               ? Status.fromJson(
@@ -3521,6 +3540,7 @@ class CutoverJob {
         if (computeEngineTargetDetails != null)
           'computeEngineTargetDetails': computeEngineTargetDetails!,
         if (createTime != null) 'createTime': createTime!,
+        if (endTime != null) 'endTime': endTime!,
         if (error != null) 'error': error!,
         if (name != null) 'name': name!,
         if (progressPercent != null) 'progressPercent': progressPercent!,
@@ -3717,8 +3737,7 @@ class DatacenterConnector {
 ///
 /// A typical example is to use it as the request or the response type of an API
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
-/// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
-/// object `{}`.
+/// (google.protobuf.Empty); }
 typedef Empty = $Empty;
 
 /// Response message for fetchInventory.

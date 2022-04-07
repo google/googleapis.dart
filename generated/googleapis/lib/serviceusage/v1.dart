@@ -712,9 +712,11 @@ class AuthProvider {
 
   /// Defines the locations to extract the JWT.
   ///
-  /// JWT locations can be either from HTTP headers or URL query parameters. The
-  /// rule is that the first match wins. The checking order is: checking all
-  /// headers first, then URL query parameters. If not specified, default to use
+  /// For now it is only used by the Cloud Endpoints to store the OpenAPI
+  /// extension
+  /// \[x-google-jwt-locations\](https://cloud.google.com/endpoints/docs/openapi/openapi-extensions#x-google-jwt-locations)
+  /// JWT locations can be one of HTTP headers, URL query parameters or cookies.
+  /// The rule is that the first match wins. If not specified, default to use
   /// following 3 locations: 1) Authorization: Bearer 2)
   /// x-goog-iap-jwt-assertion 3) access_token query parameter Default locations
   /// can be specified as followings: jwt_locations: - header: Authorization
@@ -1093,8 +1095,7 @@ typedef DocumentationRule = $DocumentationRule;
 ///
 /// A typical example is to use it as the request or the response type of an API
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
-/// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
-/// object `{}`.
+/// (google.protobuf.Empty); }
 typedef Empty = $Empty;
 
 /// Request message for the `EnableService` method.
@@ -1297,7 +1298,55 @@ class GoogleApiServiceusageV1ServiceConfig {
 }
 
 /// Specifies a location to extract JWT from an API request.
-typedef JwtLocation = $JwtLocation;
+class JwtLocation {
+  /// Specifies cookie name to extract JWT token.
+  core.String? cookie;
+
+  /// Specifies HTTP header name to extract JWT token.
+  core.String? header;
+
+  /// Specifies URL query parameter name to extract JWT token.
+  core.String? query;
+
+  /// The value prefix.
+  ///
+  /// The value format is "value_prefix{token}" Only applies to "in" header
+  /// type. Must be empty for "in" query type. If not empty, the header value
+  /// has to match (case sensitive) this prefix. If not matched, JWT will not be
+  /// extracted. If matched, JWT will be extracted after the prefix is removed.
+  /// For example, for "Authorization: Bearer {JWT}", value_prefix="Bearer "
+  /// with a space at the end.
+  core.String? valuePrefix;
+
+  JwtLocation({
+    this.cookie,
+    this.header,
+    this.query,
+    this.valuePrefix,
+  });
+
+  JwtLocation.fromJson(core.Map _json)
+      : this(
+          cookie: _json.containsKey('cookie')
+              ? _json['cookie'] as core.String
+              : null,
+          header: _json.containsKey('header')
+              ? _json['header'] as core.String
+              : null,
+          query:
+              _json.containsKey('query') ? _json['query'] as core.String : null,
+          valuePrefix: _json.containsKey('valuePrefix')
+              ? _json['valuePrefix'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (cookie != null) 'cookie': cookie!,
+        if (header != null) 'header': header!,
+        if (query != null) 'query': query!,
+        if (valuePrefix != null) 'valuePrefix': valuePrefix!,
+      };
+}
 
 /// A description of a label.
 typedef LabelDescriptor = $LabelDescriptor;

@@ -639,6 +639,7 @@ api.JwtLocation buildJwtLocation() {
   final o = api.JwtLocation();
   buildCounterJwtLocation++;
   if (buildCounterJwtLocation < 3) {
+    o.cookie = 'foo';
     o.header = 'foo';
     o.query = 'foo';
     o.valuePrefix = 'foo';
@@ -650,6 +651,10 @@ api.JwtLocation buildJwtLocation() {
 void checkJwtLocation(api.JwtLocation o) {
   buildCounterJwtLocation++;
   if (buildCounterJwtLocation < 3) {
+    unittest.expect(
+      o.cookie!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.header!,
       unittest.equals('foo'),

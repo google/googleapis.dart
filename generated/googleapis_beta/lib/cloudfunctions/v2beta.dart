@@ -1062,6 +1062,14 @@ class EventFilter {
   /// Required.
   core.String? attribute;
 
+  /// The operator used for matching the events with the value of the filter.
+  ///
+  /// If not specified, only events that have an exact key-value pair specified
+  /// in the filter are matched. The only allowed value is `match-path-pattern`.
+  ///
+  /// Optional.
+  core.String? operator;
+
   /// The value for the attribute.
   ///
   /// Required.
@@ -1069,6 +1077,7 @@ class EventFilter {
 
   EventFilter({
     this.attribute,
+    this.operator,
     this.value,
   });
 
@@ -1077,12 +1086,16 @@ class EventFilter {
           attribute: _json.containsKey('attribute')
               ? _json['attribute'] as core.String
               : null,
+          operator: _json.containsKey('operator')
+              ? _json['operator'] as core.String
+              : null,
           value:
               _json.containsKey('value') ? _json['value'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (attribute != null) 'attribute': attribute!,
+        if (operator != null) 'operator': operator!,
         if (value != null) 'value': value!,
       };
 }
@@ -1990,6 +2003,11 @@ class ServiceConfig {
   /// idle instance would have been stopped in the default case.
   core.int? minInstanceCount;
 
+  /// The name of service revision.
+  ///
+  /// Output only.
+  core.String? revision;
+
   /// Name of the service associated with a Function.
   ///
   /// The format of this field is
@@ -2039,6 +2057,7 @@ class ServiceConfig {
     this.ingressSettings,
     this.maxInstanceCount,
     this.minInstanceCount,
+    this.revision,
     this.service,
     this.serviceAccountEmail,
     this.timeoutSeconds,
@@ -2075,6 +2094,9 @@ class ServiceConfig {
           minInstanceCount: _json.containsKey('minInstanceCount')
               ? _json['minInstanceCount'] as core.int
               : null,
+          revision: _json.containsKey('revision')
+              ? _json['revision'] as core.String
+              : null,
           service: _json.containsKey('service')
               ? _json['service'] as core.String
               : null,
@@ -2103,6 +2125,7 @@ class ServiceConfig {
         if (ingressSettings != null) 'ingressSettings': ingressSettings!,
         if (maxInstanceCount != null) 'maxInstanceCount': maxInstanceCount!,
         if (minInstanceCount != null) 'minInstanceCount': minInstanceCount!,
+        if (revision != null) 'revision': revision!,
         if (service != null) 'service': service!,
         if (serviceAccountEmail != null)
           'serviceAccountEmail': serviceAccountEmail!,

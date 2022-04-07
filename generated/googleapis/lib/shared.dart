@@ -106,175 +106,6 @@ class $AccessPolicy {
 
 /// Used by:
 ///
-/// - dfareporting:v3.4 : AccountActiveAdSummary
-/// - dfareporting:v3.5 : AccountActiveAdSummary
-class $AccountActiveAdSummary {
-  /// ID of the account.
-  core.String? accountId;
-
-  /// Ads that have been activated for the account
-  core.String? activeAds;
-
-  /// Maximum number of active ads allowed for the account.
-  /// Possible string values are:
-  /// - "ACTIVE_ADS_TIER_40K"
-  /// - "ACTIVE_ADS_TIER_75K"
-  /// - "ACTIVE_ADS_TIER_100K"
-  /// - "ACTIVE_ADS_TIER_200K"
-  /// - "ACTIVE_ADS_TIER_300K"
-  /// - "ACTIVE_ADS_TIER_500K"
-  /// - "ACTIVE_ADS_TIER_750K"
-  /// - "ACTIVE_ADS_TIER_1M"
-  core.String? activeAdsLimitTier;
-
-  /// Ads that can be activated for the account.
-  core.String? availableAds;
-
-  /// Identifies what kind of resource this is.
-  ///
-  /// Value: the fixed string "dfareporting#accountActiveAdSummary".
-  core.String? kind;
-
-  $AccountActiveAdSummary({
-    this.accountId,
-    this.activeAds,
-    this.activeAdsLimitTier,
-    this.availableAds,
-    this.kind,
-  });
-
-  $AccountActiveAdSummary.fromJson(core.Map _json)
-      : this(
-          accountId: _json.containsKey('accountId')
-              ? _json['accountId'] as core.String
-              : null,
-          activeAds: _json.containsKey('activeAds')
-              ? _json['activeAds'] as core.String
-              : null,
-          activeAdsLimitTier: _json.containsKey('activeAdsLimitTier')
-              ? _json['activeAdsLimitTier'] as core.String
-              : null,
-          availableAds: _json.containsKey('availableAds')
-              ? _json['availableAds'] as core.String
-              : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (accountId != null) 'accountId': accountId!,
-        if (activeAds != null) 'activeAds': activeAds!,
-        if (activeAdsLimitTier != null)
-          'activeAdsLimitTier': activeAdsLimitTier!,
-        if (availableAds != null) 'availableAds': availableAds!,
-        if (kind != null) 'kind': kind!,
-      };
-}
-
-/// Used by:
-///
-/// - dfareporting:v3.4 : AccountPermission
-/// - dfareporting:v3.5 : AccountPermission
-class $AccountPermission {
-  /// Account profiles associated with this account permission.
-  ///
-  /// Possible values are: - "ACCOUNT_PROFILE_BASIC" -
-  /// "ACCOUNT_PROFILE_STANDARD"
-  core.List<core.String>? accountProfiles;
-
-  /// ID of this account permission.
-  core.String? id;
-
-  /// Identifies what kind of resource this is.
-  ///
-  /// Value: the fixed string "dfareporting#accountPermission".
-  core.String? kind;
-
-  /// Administrative level required to enable this account permission.
-  /// Possible string values are:
-  /// - "USER"
-  /// - "ADMINISTRATOR"
-  core.String? level;
-
-  /// Name of this account permission.
-  core.String? name;
-
-  /// Permission group of this account permission.
-  core.String? permissionGroupId;
-
-  $AccountPermission({
-    this.accountProfiles,
-    this.id,
-    this.kind,
-    this.level,
-    this.name,
-    this.permissionGroupId,
-  });
-
-  $AccountPermission.fromJson(core.Map _json)
-      : this(
-          accountProfiles: _json.containsKey('accountProfiles')
-              ? (_json['accountProfiles'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          level:
-              _json.containsKey('level') ? _json['level'] as core.String : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          permissionGroupId: _json.containsKey('permissionGroupId')
-              ? _json['permissionGroupId'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (accountProfiles != null) 'accountProfiles': accountProfiles!,
-        if (id != null) 'id': id!,
-        if (kind != null) 'kind': kind!,
-        if (level != null) 'level': level!,
-        if (name != null) 'name': name!,
-        if (permissionGroupId != null) 'permissionGroupId': permissionGroupId!,
-      };
-}
-
-/// Used by:
-///
-/// - dfareporting:v3.4 : AccountPermissionGroup
-/// - dfareporting:v3.5 : AccountPermissionGroup
-class $AccountPermissionGroup {
-  /// ID of this account permission group.
-  core.String? id;
-
-  /// Identifies what kind of resource this is.
-  ///
-  /// Value: the fixed string "dfareporting#accountPermissionGroup".
-  core.String? kind;
-
-  /// Name of this account permission group.
-  core.String? name;
-
-  $AccountPermissionGroup({
-    this.id,
-    this.kind,
-    this.name,
-  });
-
-  $AccountPermissionGroup.fromJson(core.Map _json)
-      : this(
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (id != null) 'id': id!,
-        if (kind != null) 'kind': kind!,
-        if (name != null) 'name': name!,
-      };
-}
-
-/// Used by:
-///
 /// - chat:v1 : ActionParameter
 /// - chat:v1 : GoogleAppsCardV1ActionParameter
 class $ActionParameter {
@@ -299,151 +130,6 @@ class $ActionParameter {
   core.Map<core.String, core.dynamic> toJson() => {
         if (key != null) 'key': key!,
         if (value != null) 'value': value!,
-      };
-}
-
-/// Used by:
-///
-/// - dfareporting:v3.4 : AdSlot
-/// - dfareporting:v3.5 : AdSlot
-class $AdSlot {
-  /// Comment for this ad slot.
-  core.String? comment;
-
-  /// Ad slot compatibility.
-  ///
-  /// DISPLAY and DISPLAY_INTERSTITIAL refer to rendering either on desktop,
-  /// mobile devices or in mobile apps for regular or interstitial ads
-  /// respectively. APP and APP_INTERSTITIAL are for rendering in mobile apps.
-  /// IN_STREAM_VIDEO refers to rendering in in-stream video ads developed with
-  /// the VAST standard.
-  /// Possible string values are:
-  /// - "DISPLAY"
-  /// - "DISPLAY_INTERSTITIAL"
-  /// - "APP"
-  /// - "APP_INTERSTITIAL"
-  /// - "IN_STREAM_VIDEO"
-  /// - "IN_STREAM_AUDIO"
-  core.String? compatibility;
-
-  /// Height of this ad slot.
-  core.String? height;
-
-  /// ID of the placement from an external platform that is linked to this ad
-  /// slot.
-  core.String? linkedPlacementId;
-
-  /// Name of this ad slot.
-  core.String? name;
-
-  /// Payment source type of this ad slot.
-  /// Possible string values are:
-  /// - "PLANNING_PAYMENT_SOURCE_TYPE_AGENCY_PAID"
-  /// - "PLANNING_PAYMENT_SOURCE_TYPE_PUBLISHER_PAID"
-  core.String? paymentSourceType;
-
-  /// Primary ad slot of a roadblock inventory item.
-  core.bool? primary;
-
-  /// Width of this ad slot.
-  core.String? width;
-
-  $AdSlot({
-    this.comment,
-    this.compatibility,
-    this.height,
-    this.linkedPlacementId,
-    this.name,
-    this.paymentSourceType,
-    this.primary,
-    this.width,
-  });
-
-  $AdSlot.fromJson(core.Map _json)
-      : this(
-          comment: _json.containsKey('comment')
-              ? _json['comment'] as core.String
-              : null,
-          compatibility: _json.containsKey('compatibility')
-              ? _json['compatibility'] as core.String
-              : null,
-          height: _json.containsKey('height')
-              ? _json['height'] as core.String
-              : null,
-          linkedPlacementId: _json.containsKey('linkedPlacementId')
-              ? _json['linkedPlacementId'] as core.String
-              : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          paymentSourceType: _json.containsKey('paymentSourceType')
-              ? _json['paymentSourceType'] as core.String
-              : null,
-          primary: _json.containsKey('primary')
-              ? _json['primary'] as core.bool
-              : null,
-          width:
-              _json.containsKey('width') ? _json['width'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (comment != null) 'comment': comment!,
-        if (compatibility != null) 'compatibility': compatibility!,
-        if (height != null) 'height': height!,
-        if (linkedPlacementId != null) 'linkedPlacementId': linkedPlacementId!,
-        if (name != null) 'name': name!,
-        if (paymentSourceType != null) 'paymentSourceType': paymentSourceType!,
-        if (primary != null) 'primary': primary!,
-        if (width != null) 'width': width!,
-      };
-}
-
-/// Used by:
-///
-/// - dfareporting:v3.4 : AdvertiserGroup
-/// - dfareporting:v3.5 : AdvertiserGroup
-class $AdvertiserGroup {
-  /// Account ID of this advertiser group.
-  ///
-  /// This is a read-only field that can be left blank.
-  core.String? accountId;
-
-  /// ID of this advertiser group.
-  ///
-  /// This is a read-only, auto-generated field.
-  core.String? id;
-
-  /// Identifies what kind of resource this is.
-  ///
-  /// Value: the fixed string "dfareporting#advertiserGroup".
-  core.String? kind;
-
-  /// Name of this advertiser group.
-  ///
-  /// This is a required field and must be less than 256 characters long and
-  /// unique among advertiser groups of the same account.
-  core.String? name;
-
-  $AdvertiserGroup({
-    this.accountId,
-    this.id,
-    this.kind,
-    this.name,
-  });
-
-  $AdvertiserGroup.fromJson(core.Map _json)
-      : this(
-          accountId: _json.containsKey('accountId')
-              ? _json['accountId'] as core.String
-              : null,
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (accountId != null) 'accountId': accountId!,
-        if (id != null) 'id': id!,
-        if (kind != null) 'kind': kind!,
-        if (name != null) 'name': name!,
       };
 }
 
@@ -587,50 +273,6 @@ class $Attribution {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (numIntegralSteps != null) 'numIntegralSteps': numIntegralSteps!,
-      };
-}
-
-/// Used by:
-///
-/// - dfareporting:v3.4 : AudienceSegment
-/// - dfareporting:v3.5 : AudienceSegment
-class $AudienceSegment {
-  /// Weight allocated to this segment.
-  ///
-  /// The weight assigned will be understood in proportion to the weights
-  /// assigned to other segments in the same segment group. Acceptable values
-  /// are 1 to 1000, inclusive.
-  core.int? allocation;
-
-  /// ID of this audience segment.
-  ///
-  /// This is a read-only, auto-generated field.
-  core.String? id;
-
-  /// Name of this audience segment.
-  ///
-  /// This is a required field and must be less than 65 characters long.
-  core.String? name;
-
-  $AudienceSegment({
-    this.allocation,
-    this.id,
-    this.name,
-  });
-
-  $AudienceSegment.fromJson(core.Map _json)
-      : this(
-          allocation: _json.containsKey('allocation')
-              ? _json['allocation'] as core.int
-              : null,
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (allocation != null) 'allocation': allocation!,
-        if (id != null) 'id': id!,
-        if (name != null) 'name': name!,
       };
 }
 
@@ -809,88 +451,6 @@ class $BooleanPolicy {
 
 /// Used by:
 ///
-/// - dfareporting:v3.4 : Browser
-/// - dfareporting:v3.5 : Browser
-class $Browser {
-  /// ID referring to this grouping of browser and version numbers.
-  ///
-  /// This is the ID used for targeting.
-  core.String? browserVersionId;
-
-  /// DART ID of this browser.
-  ///
-  /// This is the ID used when generating reports.
-  core.String? dartId;
-
-  /// Identifies what kind of resource this is.
-  ///
-  /// Value: the fixed string "dfareporting#browser".
-  core.String? kind;
-
-  /// Major version number (leftmost number) of this browser.
-  ///
-  /// For example, for Chrome 5.0.376.86 beta, this field should be set to 5. An
-  /// asterisk (*) may be used to target any version number, and a question mark
-  /// (?) may be used to target cases where the version number cannot be
-  /// identified. For example, Chrome *.* targets any version of Chrome: 1.2,
-  /// 2.5, 3.5, and so on. Chrome 3.* targets Chrome 3.1, 3.5, but not 4.0.
-  /// Firefox ?.? targets cases where the ad server knows the browser is Firefox
-  /// but can't tell which version it is.
-  core.String? majorVersion;
-
-  /// Minor version number (number after first dot on left) of this browser.
-  ///
-  /// For example, for Chrome 5.0.375.86 beta, this field should be set to 0. An
-  /// asterisk (*) may be used to target any version number, and a question mark
-  /// (?) may be used to target cases where the version number cannot be
-  /// identified. For example, Chrome *.* targets any version of Chrome: 1.2,
-  /// 2.5, 3.5, and so on. Chrome 3.* targets Chrome 3.1, 3.5, but not 4.0.
-  /// Firefox ?.? targets cases where the ad server knows the browser is Firefox
-  /// but can't tell which version it is.
-  core.String? minorVersion;
-
-  /// Name of this browser.
-  core.String? name;
-
-  $Browser({
-    this.browserVersionId,
-    this.dartId,
-    this.kind,
-    this.majorVersion,
-    this.minorVersion,
-    this.name,
-  });
-
-  $Browser.fromJson(core.Map _json)
-      : this(
-          browserVersionId: _json.containsKey('browserVersionId')
-              ? _json['browserVersionId'] as core.String
-              : null,
-          dartId: _json.containsKey('dartId')
-              ? _json['dartId'] as core.String
-              : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          majorVersion: _json.containsKey('majorVersion')
-              ? _json['majorVersion'] as core.String
-              : null,
-          minorVersion: _json.containsKey('minorVersion')
-              ? _json['minorVersion'] as core.String
-              : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (browserVersionId != null) 'browserVersionId': browserVersionId!,
-        if (dartId != null) 'dartId': dartId!,
-        if (kind != null) 'kind': kind!,
-        if (majorVersion != null) 'majorVersion': majorVersion!,
-        if (minorVersion != null) 'minorVersion': minorVersion!,
-        if (name != null) 'name': name!,
-      };
-}
-
-/// Used by:
-///
 /// - containeranalysis:v1 : CVSS
 /// - ondemandscanning:v1 : CVSS
 class $CVSS {
@@ -1046,40 +606,6 @@ class $CVSS {
 
 /// Used by:
 ///
-/// - dfareporting:v3.4 : CampaignCreativeAssociation
-/// - dfareporting:v3.5 : CampaignCreativeAssociation
-class $CampaignCreativeAssociation {
-  /// ID of the creative associated with the campaign.
-  ///
-  /// This is a required field.
-  core.String? creativeId;
-
-  /// Identifies what kind of resource this is.
-  ///
-  /// Value: the fixed string "dfareporting#campaignCreativeAssociation".
-  core.String? kind;
-
-  $CampaignCreativeAssociation({
-    this.creativeId,
-    this.kind,
-  });
-
-  $CampaignCreativeAssociation.fromJson(core.Map _json)
-      : this(
-          creativeId: _json.containsKey('creativeId')
-              ? _json['creativeId'] as core.String
-              : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (creativeId != null) 'creativeId': creativeId!,
-        if (kind != null) 'kind': kind!,
-      };
-}
-
-/// Used by:
-///
 /// - containeranalysis:v1 : Category
 /// - ondemandscanning:v1 : Category
 class $Category {
@@ -1167,136 +693,6 @@ class $CdnPolicyNegativeCachingPolicy {
   core.Map<core.String, core.dynamic> toJson() => {
         if (code != null) 'code': code!,
         if (ttl != null) 'ttl': ttl!,
-      };
-}
-
-/// Used by:
-///
-/// - dfareporting:v3.4 : ChangeLog
-/// - dfareporting:v3.5 : ChangeLog
-class $ChangeLog {
-  /// Account ID of the modified object.
-  core.String? accountId;
-
-  /// Action which caused the change.
-  core.String? action;
-  core.DateTime? changeTime;
-
-  /// Field name of the object which changed.
-  core.String? fieldName;
-
-  /// ID of this change log.
-  core.String? id;
-
-  /// Identifies what kind of resource this is.
-  ///
-  /// Value: the fixed string "dfareporting#changeLog".
-  core.String? kind;
-
-  /// New value of the object field.
-  core.String? newValue;
-
-  /// ID of the object of this change log.
-  ///
-  /// The object could be a campaign, placement, ad, or other type.
-  core.String? objectId;
-
-  /// Object type of the change log.
-  core.String? objectType;
-
-  /// Old value of the object field.
-  core.String? oldValue;
-
-  /// Subaccount ID of the modified object.
-  core.String? subaccountId;
-
-  /// Transaction ID of this change log.
-  ///
-  /// When a single API call results in many changes, each change will have a
-  /// separate ID in the change log but will share the same transactionId.
-  core.String? transactionId;
-
-  /// ID of the user who modified the object.
-  core.String? userProfileId;
-
-  /// User profile name of the user who modified the object.
-  core.String? userProfileName;
-
-  $ChangeLog({
-    this.accountId,
-    this.action,
-    this.changeTime,
-    this.fieldName,
-    this.id,
-    this.kind,
-    this.newValue,
-    this.objectId,
-    this.objectType,
-    this.oldValue,
-    this.subaccountId,
-    this.transactionId,
-    this.userProfileId,
-    this.userProfileName,
-  });
-
-  $ChangeLog.fromJson(core.Map _json)
-      : this(
-          accountId: _json.containsKey('accountId')
-              ? _json['accountId'] as core.String
-              : null,
-          action: _json.containsKey('action')
-              ? _json['action'] as core.String
-              : null,
-          changeTime: _json.containsKey('changeTime')
-              ? core.DateTime.parse(_json['changeTime'] as core.String)
-              : null,
-          fieldName: _json.containsKey('fieldName')
-              ? _json['fieldName'] as core.String
-              : null,
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          newValue: _json.containsKey('newValue')
-              ? _json['newValue'] as core.String
-              : null,
-          objectId: _json.containsKey('objectId')
-              ? _json['objectId'] as core.String
-              : null,
-          objectType: _json.containsKey('objectType')
-              ? _json['objectType'] as core.String
-              : null,
-          oldValue: _json.containsKey('oldValue')
-              ? _json['oldValue'] as core.String
-              : null,
-          subaccountId: _json.containsKey('subaccountId')
-              ? _json['subaccountId'] as core.String
-              : null,
-          transactionId: _json.containsKey('transactionId')
-              ? _json['transactionId'] as core.String
-              : null,
-          userProfileId: _json.containsKey('userProfileId')
-              ? _json['userProfileId'] as core.String
-              : null,
-          userProfileName: _json.containsKey('userProfileName')
-              ? _json['userProfileName'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (accountId != null) 'accountId': accountId!,
-        if (action != null) 'action': action!,
-        if (changeTime != null)
-          'changeTime': changeTime!.toUtc().toIso8601String(),
-        if (fieldName != null) 'fieldName': fieldName!,
-        if (id != null) 'id': id!,
-        if (kind != null) 'kind': kind!,
-        if (newValue != null) 'newValue': newValue!,
-        if (objectId != null) 'objectId': objectId!,
-        if (objectType != null) 'objectType': objectType!,
-        if (oldValue != null) 'oldValue': oldValue!,
-        if (subaccountId != null) 'subaccountId': subaccountId!,
-        if (transactionId != null) 'transactionId': transactionId!,
-        if (userProfileId != null) 'userProfileId': userProfileId!,
-        if (userProfileName != null) 'userProfileName': userProfileName!,
       };
 }
 
@@ -1439,195 +835,6 @@ class $Checksum {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (sha256 != null) 'sha256': sha256!,
-      };
-}
-
-/// Used by:
-///
-/// - dfareporting:v3.4 : City
-/// - dfareporting:v3.5 : City
-class $City {
-  /// Country code of the country to which this city belongs.
-  core.String? countryCode;
-
-  /// DART ID of the country to which this city belongs.
-  core.String? countryDartId;
-
-  /// DART ID of this city.
-  ///
-  /// This is the ID used for targeting and generating reports.
-  core.String? dartId;
-
-  /// Identifies what kind of resource this is.
-  ///
-  /// Value: the fixed string "dfareporting#city".
-  core.String? kind;
-
-  /// Metro region code of the metro region (DMA) to which this city belongs.
-  core.String? metroCode;
-
-  /// ID of the metro region (DMA) to which this city belongs.
-  core.String? metroDmaId;
-
-  /// Name of this city.
-  core.String? name;
-
-  /// Region code of the region to which this city belongs.
-  core.String? regionCode;
-
-  /// DART ID of the region to which this city belongs.
-  core.String? regionDartId;
-
-  $City({
-    this.countryCode,
-    this.countryDartId,
-    this.dartId,
-    this.kind,
-    this.metroCode,
-    this.metroDmaId,
-    this.name,
-    this.regionCode,
-    this.regionDartId,
-  });
-
-  $City.fromJson(core.Map _json)
-      : this(
-          countryCode: _json.containsKey('countryCode')
-              ? _json['countryCode'] as core.String
-              : null,
-          countryDartId: _json.containsKey('countryDartId')
-              ? _json['countryDartId'] as core.String
-              : null,
-          dartId: _json.containsKey('dartId')
-              ? _json['dartId'] as core.String
-              : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          metroCode: _json.containsKey('metroCode')
-              ? _json['metroCode'] as core.String
-              : null,
-          metroDmaId: _json.containsKey('metroDmaId')
-              ? _json['metroDmaId'] as core.String
-              : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          regionCode: _json.containsKey('regionCode')
-              ? _json['regionCode'] as core.String
-              : null,
-          regionDartId: _json.containsKey('regionDartId')
-              ? _json['regionDartId'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (countryCode != null) 'countryCode': countryCode!,
-        if (countryDartId != null) 'countryDartId': countryDartId!,
-        if (dartId != null) 'dartId': dartId!,
-        if (kind != null) 'kind': kind!,
-        if (metroCode != null) 'metroCode': metroCode!,
-        if (metroDmaId != null) 'metroDmaId': metroDmaId!,
-        if (name != null) 'name': name!,
-        if (regionCode != null) 'regionCode': regionCode!,
-        if (regionDartId != null) 'regionDartId': regionDartId!,
-      };
-}
-
-/// Used by:
-///
-/// - dfareporting:v3.4 : ClickThroughUrl
-/// - dfareporting:v3.5 : ClickThroughUrl
-class $ClickThroughUrl {
-  /// Read-only convenience field representing the actual URL that will be used
-  /// for this click-through.
-  ///
-  /// The URL is computed as follows: - If defaultLandingPage is enabled then
-  /// the campaign's default landing page URL is assigned to this field. - If
-  /// defaultLandingPage is not enabled and a landingPageId is specified then
-  /// that landing page's URL is assigned to this field. - If neither of the
-  /// above cases apply, then the customClickThroughUrl is assigned to this
-  /// field.
-  core.String? computedClickThroughUrl;
-
-  /// Custom click-through URL.
-  ///
-  /// Applicable if the defaultLandingPage field is set to false and the
-  /// landingPageId field is left unset.
-  core.String? customClickThroughUrl;
-
-  /// Whether the campaign default landing page is used.
-  core.bool? defaultLandingPage;
-
-  /// ID of the landing page for the click-through URL.
-  ///
-  /// Applicable if the defaultLandingPage field is set to false.
-  core.String? landingPageId;
-
-  $ClickThroughUrl({
-    this.computedClickThroughUrl,
-    this.customClickThroughUrl,
-    this.defaultLandingPage,
-    this.landingPageId,
-  });
-
-  $ClickThroughUrl.fromJson(core.Map _json)
-      : this(
-          computedClickThroughUrl: _json.containsKey('computedClickThroughUrl')
-              ? _json['computedClickThroughUrl'] as core.String
-              : null,
-          customClickThroughUrl: _json.containsKey('customClickThroughUrl')
-              ? _json['customClickThroughUrl'] as core.String
-              : null,
-          defaultLandingPage: _json.containsKey('defaultLandingPage')
-              ? _json['defaultLandingPage'] as core.bool
-              : null,
-          landingPageId: _json.containsKey('landingPageId')
-              ? _json['landingPageId'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (computedClickThroughUrl != null)
-          'computedClickThroughUrl': computedClickThroughUrl!,
-        if (customClickThroughUrl != null)
-          'customClickThroughUrl': customClickThroughUrl!,
-        if (defaultLandingPage != null)
-          'defaultLandingPage': defaultLandingPage!,
-        if (landingPageId != null) 'landingPageId': landingPageId!,
-      };
-}
-
-/// Used by:
-///
-/// - dfareporting:v3.4 : ClickThroughUrlSuffixProperties
-/// - dfareporting:v3.5 : ClickThroughUrlSuffixProperties
-class $ClickThroughUrlSuffixProperties {
-  /// Click-through URL suffix to apply to all ads in this entity's scope.
-  ///
-  /// Must be less than 128 characters long.
-  core.String? clickThroughUrlSuffix;
-
-  /// Whether this entity should override the inherited click-through URL suffix
-  /// with its own defined value.
-  core.bool? overrideInheritedSuffix;
-
-  $ClickThroughUrlSuffixProperties({
-    this.clickThroughUrlSuffix,
-    this.overrideInheritedSuffix,
-  });
-
-  $ClickThroughUrlSuffixProperties.fromJson(core.Map _json)
-      : this(
-          clickThroughUrlSuffix: _json.containsKey('clickThroughUrlSuffix')
-              ? _json['clickThroughUrlSuffix'] as core.String
-              : null,
-          overrideInheritedSuffix: _json.containsKey('overrideInheritedSuffix')
-              ? _json['overrideInheritedSuffix'] as core.bool
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (clickThroughUrlSuffix != null)
-          'clickThroughUrlSuffix': clickThroughUrlSuffix!,
-        if (overrideInheritedSuffix != null)
-          'overrideInheritedSuffix': overrideInheritedSuffix!,
       };
 }
 
@@ -1809,595 +1016,6 @@ class $Completeness {
 
 /// Used by:
 ///
-/// - dfareporting:v3.4 : ConnectionType
-/// - dfareporting:v3.5 : ConnectionType
-class $ConnectionType {
-  /// ID of this connection type.
-  core.String? id;
-
-  /// Identifies what kind of resource this is.
-  ///
-  /// Value: the fixed string "dfareporting#connectionType".
-  core.String? kind;
-
-  /// Name of this connection type.
-  core.String? name;
-
-  $ConnectionType({
-    this.id,
-    this.kind,
-    this.name,
-  });
-
-  $ConnectionType.fromJson(core.Map _json)
-      : this(
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (id != null) 'id': id!,
-        if (kind != null) 'kind': kind!,
-        if (name != null) 'name': name!,
-      };
-}
-
-/// Used by:
-///
-/// - dfareporting:v3.4 : ContentCategory
-/// - dfareporting:v3.5 : ContentCategory
-class $ContentCategory {
-  /// Account ID of this content category.
-  ///
-  /// This is a read-only field that can be left blank.
-  core.String? accountId;
-
-  /// ID of this content category.
-  ///
-  /// This is a read-only, auto-generated field.
-  core.String? id;
-
-  /// Identifies what kind of resource this is.
-  ///
-  /// Value: the fixed string "dfareporting#contentCategory".
-  core.String? kind;
-
-  /// Name of this content category.
-  ///
-  /// This is a required field and must be less than 256 characters long and
-  /// unique among content categories of the same account.
-  core.String? name;
-
-  $ContentCategory({
-    this.accountId,
-    this.id,
-    this.kind,
-    this.name,
-  });
-
-  $ContentCategory.fromJson(core.Map _json)
-      : this(
-          accountId: _json.containsKey('accountId')
-              ? _json['accountId'] as core.String
-              : null,
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (accountId != null) 'accountId': accountId!,
-        if (id != null) 'id': id!,
-        if (kind != null) 'kind': kind!,
-        if (name != null) 'name': name!,
-      };
-}
-
-/// Used by:
-///
-/// - dfareporting:v3.4 : ConversionError
-/// - dfareporting:v3.5 : ConversionError
-class $ConversionError {
-  /// The error code.
-  /// Possible string values are:
-  /// - "INVALID_ARGUMENT"
-  /// - "INTERNAL"
-  /// - "PERMISSION_DENIED"
-  /// - "NOT_FOUND"
-  core.String? code;
-
-  /// Identifies what kind of resource this is.
-  ///
-  /// Value: the fixed string "dfareporting#conversionError".
-  core.String? kind;
-
-  /// A description of the error.
-  core.String? message;
-
-  $ConversionError({
-    this.code,
-    this.kind,
-    this.message,
-  });
-
-  $ConversionError.fromJson(core.Map _json)
-      : this(
-          code: _json.containsKey('code') ? _json['code'] as core.String : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          message: _json.containsKey('message')
-              ? _json['message'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (code != null) 'code': code!,
-        if (kind != null) 'kind': kind!,
-        if (message != null) 'message': message!,
-      };
-}
-
-/// Used by:
-///
-/// - dfareporting:v3.4 : Country
-/// - dfareporting:v3.5 : Country
-class $Country {
-  /// Country code.
-  core.String? countryCode;
-
-  /// DART ID of this country.
-  ///
-  /// This is the ID used for targeting and generating reports.
-  core.String? dartId;
-
-  /// Identifies what kind of resource this is.
-  ///
-  /// Value: the fixed string "dfareporting#country".
-  core.String? kind;
-
-  /// Name of this country.
-  core.String? name;
-
-  /// Whether ad serving supports secure servers in this country.
-  core.bool? sslEnabled;
-
-  $Country({
-    this.countryCode,
-    this.dartId,
-    this.kind,
-    this.name,
-    this.sslEnabled,
-  });
-
-  $Country.fromJson(core.Map _json)
-      : this(
-          countryCode: _json.containsKey('countryCode')
-              ? _json['countryCode'] as core.String
-              : null,
-          dartId: _json.containsKey('dartId')
-              ? _json['dartId'] as core.String
-              : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          sslEnabled: _json.containsKey('sslEnabled')
-              ? _json['sslEnabled'] as core.bool
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (countryCode != null) 'countryCode': countryCode!,
-        if (dartId != null) 'dartId': dartId!,
-        if (kind != null) 'kind': kind!,
-        if (name != null) 'name': name!,
-        if (sslEnabled != null) 'sslEnabled': sslEnabled!,
-      };
-}
-
-/// Used by:
-///
-/// - dfareporting:v3.4 : CreativeAssetId
-/// - dfareporting:v3.5 : CreativeAssetId
-class $CreativeAssetId {
-  /// Name of the creative asset.
-  ///
-  /// This is a required field while inserting an asset. After insertion, this
-  /// assetIdentifier is used to identify the uploaded asset. Characters in the
-  /// name must be alphanumeric or one of the following: ".-_ ". Spaces are
-  /// allowed.
-  core.String? name;
-
-  /// Type of asset to upload.
-  ///
-  /// This is a required field. FLASH and IMAGE are no longer supported for new
-  /// uploads. All image assets should use HTML_IMAGE.
-  /// Possible string values are:
-  /// - "IMAGE"
-  /// - "FLASH"
-  /// - "VIDEO"
-  /// - "HTML"
-  /// - "HTML_IMAGE"
-  /// - "AUDIO"
-  core.String? type;
-
-  $CreativeAssetId({
-    this.name,
-    this.type,
-  });
-
-  $CreativeAssetId.fromJson(core.Map _json)
-      : this(
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          type: _json.containsKey('type') ? _json['type'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-        if (type != null) 'type': type!,
-      };
-}
-
-/// Used by:
-///
-/// - dfareporting:v3.4 : CreativeClickThroughUrl
-/// - dfareporting:v3.5 : CreativeClickThroughUrl
-class $CreativeClickThroughUrl {
-  /// Read-only convenience field representing the actual URL that will be used
-  /// for this click-through.
-  ///
-  /// The URL is computed as follows: - If landingPageId is specified then that
-  /// landing page's URL is assigned to this field. - Otherwise, the
-  /// customClickThroughUrl is assigned to this field.
-  core.String? computedClickThroughUrl;
-
-  /// Custom click-through URL.
-  ///
-  /// Applicable if the landingPageId field is left unset.
-  core.String? customClickThroughUrl;
-
-  /// ID of the landing page for the click-through URL.
-  core.String? landingPageId;
-
-  $CreativeClickThroughUrl({
-    this.computedClickThroughUrl,
-    this.customClickThroughUrl,
-    this.landingPageId,
-  });
-
-  $CreativeClickThroughUrl.fromJson(core.Map _json)
-      : this(
-          computedClickThroughUrl: _json.containsKey('computedClickThroughUrl')
-              ? _json['computedClickThroughUrl'] as core.String
-              : null,
-          customClickThroughUrl: _json.containsKey('customClickThroughUrl')
-              ? _json['customClickThroughUrl'] as core.String
-              : null,
-          landingPageId: _json.containsKey('landingPageId')
-              ? _json['landingPageId'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (computedClickThroughUrl != null)
-          'computedClickThroughUrl': computedClickThroughUrl!,
-        if (customClickThroughUrl != null)
-          'customClickThroughUrl': customClickThroughUrl!,
-        if (landingPageId != null) 'landingPageId': landingPageId!,
-      };
-}
-
-/// Used by:
-///
-/// - dfareporting:v3.4 : CreativeFieldAssignment
-/// - dfareporting:v3.5 : CreativeFieldAssignment
-class $CreativeFieldAssignment {
-  /// ID of the creative field.
-  core.String? creativeFieldId;
-
-  /// ID of the creative field value.
-  core.String? creativeFieldValueId;
-
-  $CreativeFieldAssignment({
-    this.creativeFieldId,
-    this.creativeFieldValueId,
-  });
-
-  $CreativeFieldAssignment.fromJson(core.Map _json)
-      : this(
-          creativeFieldId: _json.containsKey('creativeFieldId')
-              ? _json['creativeFieldId'] as core.String
-              : null,
-          creativeFieldValueId: _json.containsKey('creativeFieldValueId')
-              ? _json['creativeFieldValueId'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (creativeFieldId != null) 'creativeFieldId': creativeFieldId!,
-        if (creativeFieldValueId != null)
-          'creativeFieldValueId': creativeFieldValueId!,
-      };
-}
-
-/// Used by:
-///
-/// - dfareporting:v3.4 : CreativeFieldValue
-/// - dfareporting:v3.5 : CreativeFieldValue
-class $CreativeFieldValue {
-  /// ID of this creative field value.
-  ///
-  /// This is a read-only, auto-generated field.
-  core.String? id;
-
-  /// Identifies what kind of resource this is.
-  ///
-  /// Value: the fixed string "dfareporting#creativeFieldValue".
-  core.String? kind;
-
-  /// Value of this creative field value.
-  ///
-  /// It needs to be less than 256 characters in length and unique per creative
-  /// field.
-  core.String? value;
-
-  $CreativeFieldValue({
-    this.id,
-    this.kind,
-    this.value,
-  });
-
-  $CreativeFieldValue.fromJson(core.Map _json)
-      : this(
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          value:
-              _json.containsKey('value') ? _json['value'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (id != null) 'id': id!,
-        if (kind != null) 'kind': kind!,
-        if (value != null) 'value': value!,
-      };
-}
-
-/// Used by:
-///
-/// - dfareporting:v3.4 : CreativeGroupAssignment
-/// - dfareporting:v3.5 : CreativeGroupAssignment
-class $CreativeGroupAssignment {
-  /// ID of the creative group to be assigned.
-  core.String? creativeGroupId;
-
-  /// Creative group number of the creative group assignment.
-  /// Possible string values are:
-  /// - "CREATIVE_GROUP_ONE"
-  /// - "CREATIVE_GROUP_TWO"
-  core.String? creativeGroupNumber;
-
-  $CreativeGroupAssignment({
-    this.creativeGroupId,
-    this.creativeGroupNumber,
-  });
-
-  $CreativeGroupAssignment.fromJson(core.Map _json)
-      : this(
-          creativeGroupId: _json.containsKey('creativeGroupId')
-              ? _json['creativeGroupId'] as core.String
-              : null,
-          creativeGroupNumber: _json.containsKey('creativeGroupNumber')
-              ? _json['creativeGroupNumber'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (creativeGroupId != null) 'creativeGroupId': creativeGroupId!,
-        if (creativeGroupNumber != null)
-          'creativeGroupNumber': creativeGroupNumber!,
-      };
-}
-
-/// Used by:
-///
-/// - dfareporting:v3.4 : CustomFloodlightVariable
-/// - dfareporting:v3.5 : CustomFloodlightVariable
-class $CustomFloodlightVariable {
-  /// Identifies what kind of resource this is.
-  ///
-  /// Value: the fixed string "dfareporting#customFloodlightVariable".
-  core.String? kind;
-
-  /// The type of custom floodlight variable to supply a value for.
-  ///
-  /// These map to the "u\[1-20\]=" in the tags.
-  /// Possible string values are:
-  /// - "U1"
-  /// - "U2"
-  /// - "U3"
-  /// - "U4"
-  /// - "U5"
-  /// - "U6"
-  /// - "U7"
-  /// - "U8"
-  /// - "U9"
-  /// - "U10"
-  /// - "U11"
-  /// - "U12"
-  /// - "U13"
-  /// - "U14"
-  /// - "U15"
-  /// - "U16"
-  /// - "U17"
-  /// - "U18"
-  /// - "U19"
-  /// - "U20"
-  /// - "U21"
-  /// - "U22"
-  /// - "U23"
-  /// - "U24"
-  /// - "U25"
-  /// - "U26"
-  /// - "U27"
-  /// - "U28"
-  /// - "U29"
-  /// - "U30"
-  /// - "U31"
-  /// - "U32"
-  /// - "U33"
-  /// - "U34"
-  /// - "U35"
-  /// - "U36"
-  /// - "U37"
-  /// - "U38"
-  /// - "U39"
-  /// - "U40"
-  /// - "U41"
-  /// - "U42"
-  /// - "U43"
-  /// - "U44"
-  /// - "U45"
-  /// - "U46"
-  /// - "U47"
-  /// - "U48"
-  /// - "U49"
-  /// - "U50"
-  /// - "U51"
-  /// - "U52"
-  /// - "U53"
-  /// - "U54"
-  /// - "U55"
-  /// - "U56"
-  /// - "U57"
-  /// - "U58"
-  /// - "U59"
-  /// - "U60"
-  /// - "U61"
-  /// - "U62"
-  /// - "U63"
-  /// - "U64"
-  /// - "U65"
-  /// - "U66"
-  /// - "U67"
-  /// - "U68"
-  /// - "U69"
-  /// - "U70"
-  /// - "U71"
-  /// - "U72"
-  /// - "U73"
-  /// - "U74"
-  /// - "U75"
-  /// - "U76"
-  /// - "U77"
-  /// - "U78"
-  /// - "U79"
-  /// - "U80"
-  /// - "U81"
-  /// - "U82"
-  /// - "U83"
-  /// - "U84"
-  /// - "U85"
-  /// - "U86"
-  /// - "U87"
-  /// - "U88"
-  /// - "U89"
-  /// - "U90"
-  /// - "U91"
-  /// - "U92"
-  /// - "U93"
-  /// - "U94"
-  /// - "U95"
-  /// - "U96"
-  /// - "U97"
-  /// - "U98"
-  /// - "U99"
-  /// - "U100"
-  core.String? type;
-
-  /// The value of the custom floodlight variable.
-  ///
-  /// The length of string must not exceed 100 characters.
-  core.String? value;
-
-  $CustomFloodlightVariable({
-    this.kind,
-    this.type,
-    this.value,
-  });
-
-  $CustomFloodlightVariable.fromJson(core.Map _json)
-      : this(
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          type: _json.containsKey('type') ? _json['type'] as core.String : null,
-          value:
-              _json.containsKey('value') ? _json['value'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (kind != null) 'kind': kind!,
-        if (type != null) 'type': type!,
-        if (value != null) 'value': value!,
-      };
-}
-
-/// Used by:
-///
-/// - dfareporting:v3.4 : CustomViewabilityMetricConfiguration
-/// - dfareporting:v3.5 : CustomViewabilityMetricConfiguration
-class $CustomViewabilityMetricConfiguration {
-  /// Whether the video must be audible to count an impression.
-  core.bool? audible;
-
-  /// The time in milliseconds the video must play for the Custom Viewability
-  /// Metric to count an impression.
-  ///
-  /// If both this and timePercent are specified, the earlier of the two will be
-  /// used.
-  core.int? timeMillis;
-
-  /// The percentage of video that must play for the Custom Viewability Metric
-  /// to count an impression.
-  ///
-  /// If both this and timeMillis are specified, the earlier of the two will be
-  /// used.
-  core.int? timePercent;
-
-  /// The percentage of video that must be on screen for the Custom Viewability
-  /// Metric to count an impression.
-  core.int? viewabilityPercent;
-
-  $CustomViewabilityMetricConfiguration({
-    this.audible,
-    this.timeMillis,
-    this.timePercent,
-    this.viewabilityPercent,
-  });
-
-  $CustomViewabilityMetricConfiguration.fromJson(core.Map _json)
-      : this(
-          audible: _json.containsKey('audible')
-              ? _json['audible'] as core.bool
-              : null,
-          timeMillis: _json.containsKey('timeMillis')
-              ? _json['timeMillis'] as core.int
-              : null,
-          timePercent: _json.containsKey('timePercent')
-              ? _json['timePercent'] as core.int
-              : null,
-          viewabilityPercent: _json.containsKey('viewabilityPercent')
-              ? _json['viewabilityPercent'] as core.int
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (audible != null) 'audible': audible!,
-        if (timeMillis != null) 'timeMillis': timeMillis!,
-        if (timePercent != null) 'timePercent': timePercent!,
-        if (viewabilityPercent != null)
-          'viewabilityPercent': viewabilityPercent!,
-      };
-}
-
-/// Used by:
-///
 /// - admob:v1 : Date
 /// - adsense:v2 : Date
 /// - androidmanagement:v1 : Date
@@ -2460,127 +1078,6 @@ class $Date {
 
 /// Used by:
 ///
-/// - dfareporting:v3.4 : DateRange
-/// - dfareporting:v3.5 : DateRange
-class $DateRange {
-  core.DateTime? endDate;
-
-  /// The kind of resource this is, in this case dfareporting#dateRange.
-  core.String? kind;
-
-  /// The date range relative to the date of when the report is run.
-  /// Possible string values are:
-  /// - "TODAY"
-  /// - "YESTERDAY"
-  /// - "WEEK_TO_DATE"
-  /// - "MONTH_TO_DATE"
-  /// - "QUARTER_TO_DATE"
-  /// - "YEAR_TO_DATE"
-  /// - "PREVIOUS_WEEK"
-  /// - "PREVIOUS_MONTH"
-  /// - "PREVIOUS_QUARTER"
-  /// - "PREVIOUS_YEAR"
-  /// - "LAST_7_DAYS"
-  /// - "LAST_30_DAYS"
-  /// - "LAST_90_DAYS"
-  /// - "LAST_365_DAYS"
-  /// - "LAST_24_MONTHS"
-  /// - "LAST_14_DAYS"
-  /// - "LAST_60_DAYS"
-  core.String? relativeDateRange;
-  core.DateTime? startDate;
-
-  $DateRange({
-    this.endDate,
-    this.kind,
-    this.relativeDateRange,
-    this.startDate,
-  });
-
-  $DateRange.fromJson(core.Map _json)
-      : this(
-          endDate: _json.containsKey('endDate')
-              ? core.DateTime.parse(_json['endDate'] as core.String)
-              : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          relativeDateRange: _json.containsKey('relativeDateRange')
-              ? _json['relativeDateRange'] as core.String
-              : null,
-          startDate: _json.containsKey('startDate')
-              ? core.DateTime.parse(_json['startDate'] as core.String)
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (endDate != null)
-          'endDate':
-              "${(endDate!).year.toString().padLeft(4, '0')}-${(endDate!).month.toString().padLeft(2, '0')}-${(endDate!).day.toString().padLeft(2, '0')}",
-        if (kind != null) 'kind': kind!,
-        if (relativeDateRange != null) 'relativeDateRange': relativeDateRange!,
-        if (startDate != null)
-          'startDate':
-              "${(startDate!).year.toString().padLeft(4, '0')}-${(startDate!).month.toString().padLeft(2, '0')}-${(startDate!).day.toString().padLeft(2, '0')}",
-      };
-}
-
-/// Used by:
-///
-/// - dfareporting:v3.4 : DayPartTargeting
-/// - dfareporting:v3.5 : DayPartTargeting
-class $DayPartTargeting {
-  /// Days of the week when the ad will serve.
-  ///
-  /// Acceptable values are: - "SUNDAY" - "MONDAY" - "TUESDAY" - "WEDNESDAY" -
-  /// "THURSDAY" - "FRIDAY" - "SATURDAY"
-  core.List<core.String>? daysOfWeek;
-
-  /// Hours of the day when the ad will serve, where 0 is midnight to 1 AM and
-  /// 23 is 11 PM to midnight.
-  ///
-  /// Can be specified with days of week, in which case the ad would serve
-  /// during these hours on the specified days. For example if Monday,
-  /// Wednesday, Friday are the days of week specified and 9-10am, 3-5pm (hours
-  /// 9, 15, and 16) is specified, the ad would serve Monday, Wednesdays, and
-  /// Fridays at 9-10am and 3-5pm. Acceptable values are 0 to 23, inclusive.
-  core.List<core.int>? hoursOfDay;
-
-  /// Whether or not to use the user's local time.
-  ///
-  /// If false, the America/New York time zone applies.
-  core.bool? userLocalTime;
-
-  $DayPartTargeting({
-    this.daysOfWeek,
-    this.hoursOfDay,
-    this.userLocalTime,
-  });
-
-  $DayPartTargeting.fromJson(core.Map _json)
-      : this(
-          daysOfWeek: _json.containsKey('daysOfWeek')
-              ? (_json['daysOfWeek'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          hoursOfDay: _json.containsKey('hoursOfDay')
-              ? (_json['hoursOfDay'] as core.List)
-                  .map((value) => value as core.int)
-                  .toList()
-              : null,
-          userLocalTime: _json.containsKey('userLocalTime')
-              ? _json['userLocalTime'] as core.bool
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (daysOfWeek != null) 'daysOfWeek': daysOfWeek!,
-        if (hoursOfDay != null) 'hoursOfDay': hoursOfDay!,
-        if (userLocalTime != null) 'userLocalTime': userLocalTime!,
-      };
-}
-
-/// Used by:
-///
 /// - cloudsearch:v1 : ResponseDebugInfo
 /// - cloudsearch:v1 : ResultDebugInfo
 class $DebugInfo {
@@ -2601,44 +1098,6 @@ class $DebugInfo {
   core.Map<core.String, core.dynamic> toJson() => {
         if (formattedDebugInfo != null)
           'formattedDebugInfo': formattedDebugInfo!,
-      };
-}
-
-/// Used by:
-///
-/// - dfareporting:v3.4 : DefaultClickThroughEventTagProperties
-/// - dfareporting:v3.5 : DefaultClickThroughEventTagProperties
-class $DefaultClickThroughEventTagProperties {
-  /// ID of the click-through event tag to apply to all ads in this entity's
-  /// scope.
-  core.String? defaultClickThroughEventTagId;
-
-  /// Whether this entity should override the inherited default click-through
-  /// event tag with its own defined value.
-  core.bool? overrideInheritedEventTag;
-
-  $DefaultClickThroughEventTagProperties({
-    this.defaultClickThroughEventTagId,
-    this.overrideInheritedEventTag,
-  });
-
-  $DefaultClickThroughEventTagProperties.fromJson(core.Map _json)
-      : this(
-          defaultClickThroughEventTagId:
-              _json.containsKey('defaultClickThroughEventTagId')
-                  ? _json['defaultClickThroughEventTagId'] as core.String
-                  : null,
-          overrideInheritedEventTag:
-              _json.containsKey('overrideInheritedEventTag')
-                  ? _json['overrideInheritedEventTag'] as core.bool
-                  : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (defaultClickThroughEventTagId != null)
-          'defaultClickThroughEventTagId': defaultClickThroughEventTagId!,
-        if (overrideInheritedEventTag != null)
-          'overrideInheritedEventTag': overrideInheritedEventTag!,
       };
 }
 
@@ -2723,199 +1182,6 @@ class $DeploymentOccurrence {
         if (resourceUri != null) 'resourceUri': resourceUri!,
         if (undeployTime != null) 'undeployTime': undeployTime!,
         if (userEmail != null) 'userEmail': userEmail!,
-      };
-}
-
-/// Used by:
-///
-/// - dfareporting:v3.4 : DfpSettings
-/// - dfareporting:v3.5 : DfpSettings
-class $DfpSettings {
-  /// Ad Manager network code for this directory site.
-  core.String? dfpNetworkCode;
-
-  /// Ad Manager network name for this directory site.
-  core.String? dfpNetworkName;
-
-  /// Whether this directory site accepts programmatic placements.
-  core.bool? programmaticPlacementAccepted;
-
-  /// Whether this directory site accepts publisher-paid tags.
-  core.bool? pubPaidPlacementAccepted;
-
-  /// Whether this directory site is available only via Publisher Portal.
-  core.bool? publisherPortalOnly;
-
-  $DfpSettings({
-    this.dfpNetworkCode,
-    this.dfpNetworkName,
-    this.programmaticPlacementAccepted,
-    this.pubPaidPlacementAccepted,
-    this.publisherPortalOnly,
-  });
-
-  $DfpSettings.fromJson(core.Map _json)
-      : this(
-          dfpNetworkCode: _json.containsKey('dfpNetworkCode')
-              ? _json['dfpNetworkCode'] as core.String
-              : null,
-          dfpNetworkName: _json.containsKey('dfpNetworkName')
-              ? _json['dfpNetworkName'] as core.String
-              : null,
-          programmaticPlacementAccepted:
-              _json.containsKey('programmaticPlacementAccepted')
-                  ? _json['programmaticPlacementAccepted'] as core.bool
-                  : null,
-          pubPaidPlacementAccepted:
-              _json.containsKey('pubPaidPlacementAccepted')
-                  ? _json['pubPaidPlacementAccepted'] as core.bool
-                  : null,
-          publisherPortalOnly: _json.containsKey('publisherPortalOnly')
-              ? _json['publisherPortalOnly'] as core.bool
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (dfpNetworkCode != null) 'dfpNetworkCode': dfpNetworkCode!,
-        if (dfpNetworkName != null) 'dfpNetworkName': dfpNetworkName!,
-        if (programmaticPlacementAccepted != null)
-          'programmaticPlacementAccepted': programmaticPlacementAccepted!,
-        if (pubPaidPlacementAccepted != null)
-          'pubPaidPlacementAccepted': pubPaidPlacementAccepted!,
-        if (publisherPortalOnly != null)
-          'publisherPortalOnly': publisherPortalOnly!,
-      };
-}
-
-/// Used by:
-///
-/// - dfareporting:v3.4 : Dimension
-/// - dfareporting:v3.5 : Dimension
-class $Dimension {
-  /// The kind of resource this is, in this case dfareporting#dimension.
-  core.String? kind;
-
-  /// The dimension name, e.g. dfa:advertiser
-  core.String? name;
-
-  $Dimension({
-    this.kind,
-    this.name,
-  });
-
-  $Dimension.fromJson(core.Map _json)
-      : this(
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (kind != null) 'kind': kind!,
-        if (name != null) 'name': name!,
-      };
-}
-
-/// Used by:
-///
-/// - dfareporting:v3.4 : DimensionFilter
-/// - dfareporting:v3.5 : DimensionFilter
-class $DimensionFilter {
-  /// The name of the dimension to filter.
-  core.String? dimensionName;
-
-  /// The kind of resource this is, in this case dfareporting#dimensionFilter.
-  core.String? kind;
-
-  /// The value of the dimension to filter.
-  core.String? value;
-
-  $DimensionFilter({
-    this.dimensionName,
-    this.kind,
-    this.value,
-  });
-
-  $DimensionFilter.fromJson(core.Map _json)
-      : this(
-          dimensionName: _json.containsKey('dimensionName')
-              ? _json['dimensionName'] as core.String
-              : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          value:
-              _json.containsKey('value') ? _json['value'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (dimensionName != null) 'dimensionName': dimensionName!,
-        if (kind != null) 'kind': kind!,
-        if (value != null) 'value': value!,
-      };
-}
-
-/// Used by:
-///
-/// - dfareporting:v3.4 : DimensionValue
-/// - dfareporting:v3.5 : DimensionValue
-class $DimensionValue {
-  /// The name of the dimension.
-  core.String? dimensionName;
-
-  /// The eTag of this response for caching purposes.
-  core.String? etag;
-
-  /// The ID associated with the value if available.
-  core.String? id;
-
-  /// The kind of resource this is, in this case dfareporting#dimensionValue.
-  core.String? kind;
-
-  /// Determines how the 'value' field is matched when filtering.
-  ///
-  /// If not specified, defaults to EXACT. If set to WILDCARD_EXPRESSION, '*' is
-  /// allowed as a placeholder for variable length character sequences, and it
-  /// can be escaped with a backslash. Note, only paid search dimensions
-  /// ('dfa:paidSearch*') allow a matchType other than EXACT.
-  /// Possible string values are:
-  /// - "EXACT"
-  /// - "BEGINS_WITH"
-  /// - "CONTAINS"
-  /// - "WILDCARD_EXPRESSION"
-  core.String? matchType;
-
-  /// The value of the dimension.
-  core.String? value;
-
-  $DimensionValue({
-    this.dimensionName,
-    this.etag,
-    this.id,
-    this.kind,
-    this.matchType,
-    this.value,
-  });
-
-  $DimensionValue.fromJson(core.Map _json)
-      : this(
-          dimensionName: _json.containsKey('dimensionName')
-              ? _json['dimensionName'] as core.String
-              : null,
-          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          matchType: _json.containsKey('matchType')
-              ? _json['matchType'] as core.String
-              : null,
-          value:
-              _json.containsKey('value') ? _json['value'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (dimensionName != null) 'dimensionName': dimensionName!,
-        if (etag != null) 'etag': etag!,
-        if (id != null) 'id': id!,
-        if (kind != null) 'kind': kind!,
-        if (matchType != null) 'matchType': matchType!,
-        if (value != null) 'value': value!,
       };
 }
 
@@ -3108,64 +1374,6 @@ class $DocumentationRule {
 
 /// Used by:
 ///
-/// - dfareporting:v3.4 : DynamicTargetingKey
-/// - dfareporting:v3.5 : DynamicTargetingKey
-class $DynamicTargetingKey {
-  /// Identifies what kind of resource this is.
-  ///
-  /// Value: the fixed string "dfareporting#dynamicTargetingKey".
-  core.String? kind;
-
-  /// Name of this dynamic targeting key.
-  ///
-  /// This is a required field. Must be less than 256 characters long and cannot
-  /// contain commas. All characters are converted to lowercase.
-  core.String? name;
-
-  /// ID of the object of this dynamic targeting key.
-  ///
-  /// This is a required field.
-  core.String? objectId;
-
-  /// Type of the object of this dynamic targeting key.
-  ///
-  /// This is a required field.
-  /// Possible string values are:
-  /// - "OBJECT_ADVERTISER"
-  /// - "OBJECT_AD"
-  /// - "OBJECT_CREATIVE"
-  /// - "OBJECT_PLACEMENT"
-  core.String? objectType;
-
-  $DynamicTargetingKey({
-    this.kind,
-    this.name,
-    this.objectId,
-    this.objectType,
-  });
-
-  $DynamicTargetingKey.fromJson(core.Map _json)
-      : this(
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          objectId: _json.containsKey('objectId')
-              ? _json['objectId'] as core.String
-              : null,
-          objectType: _json.containsKey('objectType')
-              ? _json['objectType'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (kind != null) 'kind': kind!,
-        if (name != null) 'name': name!,
-        if (objectId != null) 'objectId': objectId!,
-        if (objectType != null) 'objectType': objectType!,
-      };
-}
-
-/// Used by:
-///
 /// - accesscontextmanager:v1 : EgressFrom
 /// - cloudasset:v1 : GoogleIdentityAccesscontextmanagerV1EgressFrom
 class $EgressFrom {
@@ -3237,7 +1445,6 @@ class $EgressFrom {
 /// - appengine:v1 : RepairApplicationRequest
 /// - artifactregistry:v1 : Empty
 /// - artifactregistry:v1 : UploadAptArtifactRequest
-/// - artifactregistry:v1 : UploadGooGetArtifactRequest
 /// - artifactregistry:v1 : UploadYumArtifactRequest
 /// - assuredworkloads:v1 : GoogleProtobufEmpty
 /// - authorizedbuyersmarketplace:v1 : ActivateClientRequest
@@ -3289,7 +1496,6 @@ class $EgressFrom {
 /// - clouddeploy:v1 : ApproveRolloutResponse
 /// - clouddeploy:v1 : CancelOperationRequest
 /// - clouddeploy:v1 : Empty
-/// - cloudfunctions:v1 : GenerateUploadUrlRequest
 /// - cloudfunctions:v1 : Retry
 /// - cloudiot:v1 : BindDeviceToGatewayResponse
 /// - cloudiot:v1 : Empty
@@ -3366,13 +1572,13 @@ class $EgressFrom {
 /// - dataproc:v1 : DiagnoseClusterRequest
 /// - dataproc:v1 : Empty
 /// - datastore:v1 : Empty
-/// - datastore:v1 : ReadOnly
 /// - datastore:v1 : ReserveIdsResponse
 /// - datastore:v1 : RollbackResponse
 /// - datastream:v1 : AvroFileFormat
 /// - datastream:v1 : BackfillNoneStrategy
 /// - datastream:v1 : CancelOperationRequest
 /// - datastream:v1 : Empty
+/// - datastream:v1 : OracleDropLargeObjects
 /// - datastream:v1 : StartBackfillJobRequest
 /// - datastream:v1 : StaticServiceIpConnectivity
 /// - datastream:v1 : StopBackfillJobRequest
@@ -3439,6 +1645,10 @@ class $EgressFrom {
 /// - firebaserules:v1 : Empty
 /// - firestore:v1 : Empty
 /// - firestore:v1 : GoogleLongrunningCancelOperationRequest
+/// - forms:v1 : Empty
+/// - forms:v1 : PageBreakItem
+/// - forms:v1 : RenewWatchRequest
+/// - forms:v1 : TextItem
 /// - gameservices:v1 : CancelOperationRequest
 /// - gameservices:v1 : Empty
 /// - gameservices:v1 : FetchDeploymentStateRequest
@@ -3497,7 +1707,6 @@ class $EgressFrom {
 /// - mybusinessbusinessinformation:v1 : Empty
 /// - mybusinessplaceactions:v1 : Empty
 /// - mybusinessqanda:v1 : Empty
-/// - mybusinessverifications:v1 : ComplyWithGuidelines
 /// - mybusinessverifications:v1 : ResolveOwnershipConflict
 /// - mybusinessverifications:v1 : WaitForVoiceOfMerchant
 /// - networkconnectivity:v1 : Empty
@@ -3513,11 +1722,8 @@ class $EgressFrom {
 /// - notebooks:v1 : CancelOperationRequest
 /// - notebooks:v1 : Empty
 /// - notebooks:v1 : ResetInstanceRequest
-/// - notebooks:v1 : ResetRuntimeRequest
 /// - notebooks:v1 : StartInstanceRequest
-/// - notebooks:v1 : StartRuntimeRequest
 /// - notebooks:v1 : StopInstanceRequest
-/// - notebooks:v1 : StopRuntimeRequest
 /// - notebooks:v1 : TriggerScheduleRequest
 /// - ondemandscanning:v1 : Empty
 /// - orgpolicy:v2 : GoogleCloudOrgpolicyV2ConstraintBooleanConstraint
@@ -3639,75 +1845,6 @@ class $Empty {
 
 /// Used by:
 ///
-/// - dfareporting:v3.4 : EncryptionInfo
-/// - dfareporting:v3.5 : EncryptionInfo
-class $EncryptionInfo {
-  /// The encryption entity ID.
-  ///
-  /// This should match the encryption configuration for ad serving or Data
-  /// Transfer.
-  core.String? encryptionEntityId;
-
-  /// The encryption entity type.
-  ///
-  /// This should match the encryption configuration for ad serving or Data
-  /// Transfer.
-  /// Possible string values are:
-  /// - "ENCRYPTION_ENTITY_TYPE_UNKNOWN"
-  /// - "DCM_ACCOUNT"
-  /// - "DCM_ADVERTISER"
-  /// - "DBM_PARTNER"
-  /// - "DBM_ADVERTISER"
-  /// - "ADWORDS_CUSTOMER"
-  /// - "DFP_NETWORK_CODE"
-  core.String? encryptionEntityType;
-
-  /// Describes whether the encrypted cookie was received from ad serving (the
-  /// %m macro) or from Data Transfer.
-  /// Possible string values are:
-  /// - "ENCRYPTION_SCOPE_UNKNOWN"
-  /// - "AD_SERVING"
-  /// - "DATA_TRANSFER"
-  core.String? encryptionSource;
-
-  /// Identifies what kind of resource this is.
-  ///
-  /// Value: the fixed string "dfareporting#encryptionInfo".
-  core.String? kind;
-
-  $EncryptionInfo({
-    this.encryptionEntityId,
-    this.encryptionEntityType,
-    this.encryptionSource,
-    this.kind,
-  });
-
-  $EncryptionInfo.fromJson(core.Map _json)
-      : this(
-          encryptionEntityId: _json.containsKey('encryptionEntityId')
-              ? _json['encryptionEntityId'] as core.String
-              : null,
-          encryptionEntityType: _json.containsKey('encryptionEntityType')
-              ? _json['encryptionEntityType'] as core.String
-              : null,
-          encryptionSource: _json.containsKey('encryptionSource')
-              ? _json['encryptionSource'] as core.String
-              : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (encryptionEntityId != null)
-          'encryptionEntityId': encryptionEntityId!,
-        if (encryptionEntityType != null)
-          'encryptionEntityType': encryptionEntityType!,
-        if (encryptionSource != null) 'encryptionSource': encryptionSource!,
-        if (kind != null) 'kind': kind!,
-      };
-}
-
-/// Used by:
-///
 /// - servicemanagement:v1 : Endpoint
 /// - serviceusage:v1 : Endpoint
 class $Endpoint {
@@ -3789,38 +1926,6 @@ class $EnvelopeSignature {
 
 /// Used by:
 ///
-/// - dfareporting:v3.4 : EventTagOverride
-/// - dfareporting:v3.5 : EventTagOverride
-class $EventTagOverride {
-  /// Whether this override is enabled.
-  core.bool? enabled;
-
-  /// ID of this event tag override.
-  ///
-  /// This is a read-only, auto-generated field.
-  core.String? id;
-
-  $EventTagOverride({
-    this.enabled,
-    this.id,
-  });
-
-  $EventTagOverride.fromJson(core.Map _json)
-      : this(
-          enabled: _json.containsKey('enabled')
-              ? _json['enabled'] as core.bool
-              : null,
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (enabled != null) 'enabled': enabled!,
-        if (id != null) 'id': id!,
-      };
-}
-
-/// Used by:
-///
 /// - logging:v2 : Explicit
 /// - monitoring:v3 : Explicit
 class $Explicit {
@@ -3893,8 +1998,10 @@ class $ExportOptions {
   /// The file format for exported messages.
   /// Possible string values are:
   /// - "EXPORT_FORMAT_UNSPECIFIED" : No export format specified.
-  /// - "MBOX" : Export as MBOX.
-  /// - "PST" : Export as PST.
+  /// - "MBOX" : Export as MBOX. Only available for Gmail, Groups, Hangouts and
+  /// Voice.
+  /// - "PST" : Export as PST. Only available for Gmail, Groups, Hangouts, Voice
+  /// and Calendar.
   core.String? exportFormat;
 
   $ExportOptions({
@@ -4096,236 +2203,6 @@ class $Fingerprint {
         if (v1Name != null) 'v1Name': v1Name!,
         if (v2Blob != null) 'v2Blob': v2Blob!,
         if (v2Name != null) 'v2Name': v2Name!,
-      };
-}
-
-/// Used by:
-///
-/// - dfareporting:v3.4 : Flight
-/// - dfareporting:v3.5 : Flight
-class $Flight {
-  core.DateTime? endDate;
-
-  /// Rate or cost of this flight.
-  core.String? rateOrCost;
-  core.DateTime? startDate;
-
-  /// Units of this flight.
-  core.String? units;
-
-  $Flight({
-    this.endDate,
-    this.rateOrCost,
-    this.startDate,
-    this.units,
-  });
-
-  $Flight.fromJson(core.Map _json)
-      : this(
-          endDate: _json.containsKey('endDate')
-              ? core.DateTime.parse(_json['endDate'] as core.String)
-              : null,
-          rateOrCost: _json.containsKey('rateOrCost')
-              ? _json['rateOrCost'] as core.String
-              : null,
-          startDate: _json.containsKey('startDate')
-              ? core.DateTime.parse(_json['startDate'] as core.String)
-              : null,
-          units:
-              _json.containsKey('units') ? _json['units'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (endDate != null)
-          'endDate':
-              "${(endDate!).year.toString().padLeft(4, '0')}-${(endDate!).month.toString().padLeft(2, '0')}-${(endDate!).day.toString().padLeft(2, '0')}",
-        if (rateOrCost != null) 'rateOrCost': rateOrCost!,
-        if (startDate != null)
-          'startDate':
-              "${(startDate!).year.toString().padLeft(4, '0')}-${(startDate!).month.toString().padLeft(2, '0')}-${(startDate!).day.toString().padLeft(2, '0')}",
-        if (units != null) 'units': units!,
-      };
-}
-
-/// Used by:
-///
-/// - dfareporting:v3.4 : FloodlightActivitiesGenerateTagResponse
-/// - dfareporting:v3.5 : FloodlightActivitiesGenerateTagResponse
-class $FloodlightActivitiesGenerateTagResponse {
-  /// Generated tag for this Floodlight activity.
-  ///
-  /// For global site tags, this is the event snippet.
-  core.String? floodlightActivityTag;
-
-  /// The global snippet section of a global site tag.
-  ///
-  /// The global site tag sets new cookies on your domain, which will store a
-  /// unique identifier for a user or the ad click that brought the user to your
-  /// site. Learn more.
-  core.String? globalSiteTagGlobalSnippet;
-
-  /// Identifies what kind of resource this is.
-  ///
-  /// Value: the fixed string
-  /// "dfareporting#floodlightActivitiesGenerateTagResponse".
-  core.String? kind;
-
-  $FloodlightActivitiesGenerateTagResponse({
-    this.floodlightActivityTag,
-    this.globalSiteTagGlobalSnippet,
-    this.kind,
-  });
-
-  $FloodlightActivitiesGenerateTagResponse.fromJson(core.Map _json)
-      : this(
-          floodlightActivityTag: _json.containsKey('floodlightActivityTag')
-              ? _json['floodlightActivityTag'] as core.String
-              : null,
-          globalSiteTagGlobalSnippet:
-              _json.containsKey('globalSiteTagGlobalSnippet')
-                  ? _json['globalSiteTagGlobalSnippet'] as core.String
-                  : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (floodlightActivityTag != null)
-          'floodlightActivityTag': floodlightActivityTag!,
-        if (globalSiteTagGlobalSnippet != null)
-          'globalSiteTagGlobalSnippet': globalSiteTagGlobalSnippet!,
-        if (kind != null) 'kind': kind!,
-      };
-}
-
-/// Used by:
-///
-/// - dfareporting:v3.4 : FloodlightActivityDynamicTag
-/// - dfareporting:v3.5 : FloodlightActivityDynamicTag
-class $FloodlightActivityDynamicTag {
-  /// ID of this dynamic tag.
-  ///
-  /// This is a read-only, auto-generated field.
-  core.String? id;
-
-  /// Name of this tag.
-  core.String? name;
-
-  /// Tag code.
-  core.String? tag;
-
-  $FloodlightActivityDynamicTag({
-    this.id,
-    this.name,
-    this.tag,
-  });
-
-  $FloodlightActivityDynamicTag.fromJson(core.Map _json)
-      : this(
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          tag: _json.containsKey('tag') ? _json['tag'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (id != null) 'id': id!,
-        if (name != null) 'name': name!,
-        if (tag != null) 'tag': tag!,
-      };
-}
-
-/// Used by:
-///
-/// - dfareporting:v3.4 : FrequencyCap
-/// - dfareporting:v3.5 : FrequencyCap
-class $FrequencyCap {
-  /// Duration of time, in seconds, for this frequency cap.
-  ///
-  /// The maximum duration is 90 days. Acceptable values are 1 to 7776000,
-  /// inclusive.
-  core.String? duration;
-
-  /// Number of times an individual user can be served the ad within the
-  /// specified duration.
-  ///
-  /// Acceptable values are 1 to 15, inclusive.
-  core.String? impressions;
-
-  $FrequencyCap({
-    this.duration,
-    this.impressions,
-  });
-
-  $FrequencyCap.fromJson(core.Map _json)
-      : this(
-          duration: _json.containsKey('duration')
-              ? _json['duration'] as core.String
-              : null,
-          impressions: _json.containsKey('impressions')
-              ? _json['impressions'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (duration != null) 'duration': duration!,
-        if (impressions != null) 'impressions': impressions!,
-      };
-}
-
-/// Used by:
-///
-/// - dfareporting:v3.4 : FsCommand
-/// - dfareporting:v3.5 : FsCommand
-class $FsCommand {
-  /// Distance from the left of the browser.Applicable when positionOption is
-  /// DISTANCE_FROM_TOP_LEFT_CORNER.
-  core.int? left;
-
-  /// Position in the browser where the window will open.
-  /// Possible string values are:
-  /// - "CENTERED"
-  /// - "DISTANCE_FROM_TOP_LEFT_CORNER"
-  core.String? positionOption;
-
-  /// Distance from the top of the browser.
-  ///
-  /// Applicable when positionOption is DISTANCE_FROM_TOP_LEFT_CORNER.
-  core.int? top;
-
-  /// Height of the window.
-  core.int? windowHeight;
-
-  /// Width of the window.
-  core.int? windowWidth;
-
-  $FsCommand({
-    this.left,
-    this.positionOption,
-    this.top,
-    this.windowHeight,
-    this.windowWidth,
-  });
-
-  $FsCommand.fromJson(core.Map _json)
-      : this(
-          left: _json.containsKey('left') ? _json['left'] as core.int : null,
-          positionOption: _json.containsKey('positionOption')
-              ? _json['positionOption'] as core.String
-              : null,
-          top: _json.containsKey('top') ? _json['top'] as core.int : null,
-          windowHeight: _json.containsKey('windowHeight')
-              ? _json['windowHeight'] as core.int
-              : null,
-          windowWidth: _json.containsKey('windowWidth')
-              ? _json['windowWidth'] as core.int
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (left != null) 'left': left!,
-        if (positionOption != null) 'positionOption': positionOption!,
-        if (top != null) 'top': top!,
-        if (windowHeight != null) 'windowHeight': windowHeight!,
-        if (windowWidth != null) 'windowWidth': windowWidth!,
       };
 }
 
@@ -4902,76 +2779,6 @@ class $Jwt {
 
 /// Used by:
 ///
-/// - servicemanagement:v1 : JwtLocation
-/// - serviceusage:v1 : JwtLocation
-class $JwtLocation {
-  /// Specifies HTTP header name to extract JWT token.
-  core.String? header;
-
-  /// Specifies URL query parameter name to extract JWT token.
-  core.String? query;
-
-  /// The value prefix.
-  ///
-  /// The value format is "value_prefix{token}" Only applies to "in" header
-  /// type. Must be empty for "in" query type. If not empty, the header value
-  /// has to match (case sensitive) this prefix. If not matched, JWT will not be
-  /// extracted. If matched, JWT will be extracted after the prefix is removed.
-  /// For example, for "Authorization: Bearer {JWT}", value_prefix="Bearer "
-  /// with a space at the end.
-  core.String? valuePrefix;
-
-  $JwtLocation({
-    this.header,
-    this.query,
-    this.valuePrefix,
-  });
-
-  $JwtLocation.fromJson(core.Map _json)
-      : this(
-          header: _json.containsKey('header')
-              ? _json['header'] as core.String
-              : null,
-          query:
-              _json.containsKey('query') ? _json['query'] as core.String : null,
-          valuePrefix: _json.containsKey('valuePrefix')
-              ? _json['valuePrefix'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (header != null) 'header': header!,
-        if (query != null) 'query': query!,
-        if (valuePrefix != null) 'valuePrefix': valuePrefix!,
-      };
-}
-
-/// Used by:
-///
-/// - dfareporting:v3.4 : KeyValueTargetingExpression
-/// - dfareporting:v3.5 : KeyValueTargetingExpression
-class $KeyValueTargetingExpression {
-  /// Keyword expression being targeted by the ad.
-  core.String? expression;
-
-  $KeyValueTargetingExpression({
-    this.expression,
-  });
-
-  $KeyValueTargetingExpression.fromJson(core.Map _json)
-      : this(
-          expression: _json.containsKey('expression')
-              ? _json['expression'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (expression != null) 'expression': expression!,
-      };
-}
-
-/// Used by:
-///
 /// - datastore:v1 : KindExpression
 /// - dlp:v2 : GooglePrivacyDlpV2KindExpression
 class $KindExpression {
@@ -5061,77 +2868,6 @@ class $LabelEntry {
   core.Map<core.String, core.dynamic> toJson() => {
         if (key != null) 'key': key!,
         if (value != null) 'value': value!,
-      };
-}
-
-/// Used by:
-///
-/// - dfareporting:v3.4 : Language
-/// - dfareporting:v3.5 : Language
-class $Language {
-  /// Language ID of this language.
-  ///
-  /// This is the ID used for targeting and generating reports.
-  core.String? id;
-
-  /// Identifies what kind of resource this is.
-  ///
-  /// Value: the fixed string "dfareporting#language".
-  core.String? kind;
-
-  /// Format of language code is an ISO 639 two-letter language code optionally
-  /// followed by an underscore followed by an ISO 3166 code.
-  ///
-  /// Examples are "en" for English or "zh_CN" for Simplified Chinese.
-  core.String? languageCode;
-
-  /// Name of this language.
-  core.String? name;
-
-  $Language({
-    this.id,
-    this.kind,
-    this.languageCode,
-    this.name,
-  });
-
-  $Language.fromJson(core.Map _json)
-      : this(
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          languageCode: _json.containsKey('languageCode')
-              ? _json['languageCode'] as core.String
-              : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (id != null) 'id': id!,
-        if (kind != null) 'kind': kind!,
-        if (languageCode != null) 'languageCode': languageCode!,
-        if (name != null) 'name': name!,
-      };
-}
-
-/// Used by:
-///
-/// - dfareporting:v3.4 : LastModifiedInfo
-/// - dfareporting:v3.5 : LastModifiedInfo
-class $LastModifiedInfo {
-  /// Timestamp of the last change in milliseconds since epoch.
-  core.String? time;
-
-  $LastModifiedInfo({
-    this.time,
-  });
-
-  $LastModifiedInfo.fromJson(core.Map _json)
-      : this(
-          time: _json.containsKey('time') ? _json['time'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (time != null) 'time': time!,
       };
 }
 
@@ -5473,149 +3209,8 @@ class $ListPolicy {
 
 /// Used by:
 ///
-/// - dfareporting:v3.4 : ListPopulationTerm
-/// - dfareporting:v3.5 : ListPopulationTerm
-class $ListPopulationTerm {
-  /// Will be true if the term should check if the user is in the list and false
-  /// if the term should check if the user is not in the list.
-  ///
-  /// This field is only relevant when type is set to LIST_MEMBERSHIP_TERM.
-  /// False by default.
-  core.bool? contains;
-
-  /// Whether to negate the comparison result of this term during rule
-  /// evaluation.
-  ///
-  /// This field is only relevant when type is left unset or set to
-  /// CUSTOM_VARIABLE_TERM or REFERRER_TERM.
-  core.bool? negation;
-
-  /// Comparison operator of this term.
-  ///
-  /// This field is only relevant when type is left unset or set to
-  /// CUSTOM_VARIABLE_TERM or REFERRER_TERM.
-  /// Possible string values are:
-  /// - "NUM_EQUALS"
-  /// - "NUM_LESS_THAN"
-  /// - "NUM_LESS_THAN_EQUAL"
-  /// - "NUM_GREATER_THAN"
-  /// - "NUM_GREATER_THAN_EQUAL"
-  /// - "STRING_EQUALS"
-  /// - "STRING_CONTAINS"
-  core.String? operator;
-
-  /// ID of the list in question.
-  ///
-  /// This field is only relevant when type is set to LIST_MEMBERSHIP_TERM.
-  core.String? remarketingListId;
-
-  /// List population term type determines the applicable fields in this object.
-  ///
-  /// If left unset or set to CUSTOM_VARIABLE_TERM, then variableName,
-  /// variableFriendlyName, operator, value, and negation are applicable. If set
-  /// to LIST_MEMBERSHIP_TERM then remarketingListId and contains are
-  /// applicable. If set to REFERRER_TERM then operator, value, and negation are
-  /// applicable.
-  /// Possible string values are:
-  /// - "CUSTOM_VARIABLE_TERM"
-  /// - "LIST_MEMBERSHIP_TERM"
-  /// - "REFERRER_TERM"
-  core.String? type;
-
-  /// Literal to compare the variable to.
-  ///
-  /// This field is only relevant when type is left unset or set to
-  /// CUSTOM_VARIABLE_TERM or REFERRER_TERM.
-  core.String? value;
-
-  /// Friendly name of this term's variable.
-  ///
-  /// This is a read-only, auto-generated field. This field is only relevant
-  /// when type is left unset or set to CUSTOM_VARIABLE_TERM.
-  core.String? variableFriendlyName;
-
-  /// Name of the variable (U1, U2, etc.) being compared in this term.
-  ///
-  /// This field is only relevant when type is set to null, CUSTOM_VARIABLE_TERM
-  /// or REFERRER_TERM.
-  core.String? variableName;
-
-  $ListPopulationTerm({
-    this.contains,
-    this.negation,
-    this.operator,
-    this.remarketingListId,
-    this.type,
-    this.value,
-    this.variableFriendlyName,
-    this.variableName,
-  });
-
-  $ListPopulationTerm.fromJson(core.Map _json)
-      : this(
-          contains: _json.containsKey('contains')
-              ? _json['contains'] as core.bool
-              : null,
-          negation: _json.containsKey('negation')
-              ? _json['negation'] as core.bool
-              : null,
-          operator: _json.containsKey('operator')
-              ? _json['operator'] as core.String
-              : null,
-          remarketingListId: _json.containsKey('remarketingListId')
-              ? _json['remarketingListId'] as core.String
-              : null,
-          type: _json.containsKey('type') ? _json['type'] as core.String : null,
-          value:
-              _json.containsKey('value') ? _json['value'] as core.String : null,
-          variableFriendlyName: _json.containsKey('variableFriendlyName')
-              ? _json['variableFriendlyName'] as core.String
-              : null,
-          variableName: _json.containsKey('variableName')
-              ? _json['variableName'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (contains != null) 'contains': contains!,
-        if (negation != null) 'negation': negation!,
-        if (operator != null) 'operator': operator!,
-        if (remarketingListId != null) 'remarketingListId': remarketingListId!,
-        if (type != null) 'type': type!,
-        if (value != null) 'value': value!,
-        if (variableFriendlyName != null)
-          'variableFriendlyName': variableFriendlyName!,
-        if (variableName != null) 'variableName': variableName!,
-      };
-}
-
-/// Used by:
-///
-/// - dfareporting:v3.4 : ListTargetingExpression
-/// - dfareporting:v3.5 : ListTargetingExpression
-class $ListTargetingExpression {
-  /// Expression describing which lists are being targeted by the ad.
-  core.String? expression;
-
-  $ListTargetingExpression({
-    this.expression,
-  });
-
-  $ListTargetingExpression.fromJson(core.Map _json)
-      : this(
-          expression: _json.containsKey('expression')
-              ? _json['expression'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (expression != null) 'expression': expression!,
-      };
-}
-
-/// Used by:
-///
 /// - apigateway:v1 : ApigatewayLocation
+/// - artifactregistry:v1 : Location
 /// - baremetalsolution:v2 : Location
 /// - bigquerydatatransfer:v1 : Location
 /// - bigtableadmin:v2 : Location
@@ -5793,50 +3388,6 @@ class $Location01 {
         if (locationId != null) 'locationId': locationId!,
         if (metadata != null) 'metadata': metadata!,
         if (name != null) 'name': name!,
-      };
-}
-
-/// Used by:
-///
-/// - dfareporting:v3.4 : LookbackConfiguration
-/// - dfareporting:v3.5 : LookbackConfiguration
-class $LookbackConfiguration {
-  /// Lookback window, in days, from the last time a given user clicked on one
-  /// of your ads.
-  ///
-  /// If you enter 0, clicks will not be considered as triggering events for
-  /// floodlight tracking. If you leave this field blank, the default value for
-  /// your account will be used. Acceptable values are 0 to 90, inclusive.
-  core.int? clickDuration;
-
-  /// Lookback window, in days, from the last time a given user viewed one of
-  /// your ads.
-  ///
-  /// If you enter 0, impressions will not be considered as triggering events
-  /// for floodlight tracking. If you leave this field blank, the default value
-  /// for your account will be used. Acceptable values are 0 to 90, inclusive.
-  core.int? postImpressionActivitiesDuration;
-
-  $LookbackConfiguration({
-    this.clickDuration,
-    this.postImpressionActivitiesDuration,
-  });
-
-  $LookbackConfiguration.fromJson(core.Map _json)
-      : this(
-          clickDuration: _json.containsKey('clickDuration')
-              ? _json['clickDuration'] as core.int
-              : null,
-          postImpressionActivitiesDuration:
-              _json.containsKey('postImpressionActivitiesDuration')
-                  ? _json['postImpressionActivitiesDuration'] as core.int
-                  : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (clickDuration != null) 'clickDuration': clickDuration!,
-        if (postImpressionActivitiesDuration != null)
-          'postImpressionActivitiesDuration': postImpressionActivitiesDuration!,
       };
 }
 
@@ -6105,34 +3656,6 @@ class $MethodSelector {
 
 /// Used by:
 ///
-/// - dfareporting:v3.4 : Metric
-/// - dfareporting:v3.5 : Metric
-class $Metric {
-  /// The kind of resource this is, in this case dfareporting#metric.
-  core.String? kind;
-
-  /// The metric name, e.g. dfa:impressions
-  core.String? name;
-
-  $Metric({
-    this.kind,
-    this.name,
-  });
-
-  $Metric.fromJson(core.Map _json)
-      : this(
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (kind != null) 'kind': kind!,
-        if (name != null) 'name': name!,
-      };
-}
-
-/// Used by:
-///
 /// - logging:v2 : MetricDescriptorMetadata
 /// - monitoring:v3 : MetricDescriptorMetadata
 class $MetricDescriptorMetadata {
@@ -6259,80 +3782,6 @@ class $MetricRule {
 
 /// Used by:
 ///
-/// - dfareporting:v3.4 : Metro
-/// - dfareporting:v3.5 : Metro
-class $Metro {
-  /// Country code of the country to which this metro region belongs.
-  core.String? countryCode;
-
-  /// DART ID of the country to which this metro region belongs.
-  core.String? countryDartId;
-
-  /// DART ID of this metro region.
-  core.String? dartId;
-
-  /// DMA ID of this metro region.
-  ///
-  /// This is the ID used for targeting and generating reports, and is
-  /// equivalent to metro_code.
-  core.String? dmaId;
-
-  /// Identifies what kind of resource this is.
-  ///
-  /// Value: the fixed string "dfareporting#metro".
-  core.String? kind;
-
-  /// Metro code of this metro region.
-  ///
-  /// This is equivalent to dma_id.
-  core.String? metroCode;
-
-  /// Name of this metro region.
-  core.String? name;
-
-  $Metro({
-    this.countryCode,
-    this.countryDartId,
-    this.dartId,
-    this.dmaId,
-    this.kind,
-    this.metroCode,
-    this.name,
-  });
-
-  $Metro.fromJson(core.Map _json)
-      : this(
-          countryCode: _json.containsKey('countryCode')
-              ? _json['countryCode'] as core.String
-              : null,
-          countryDartId: _json.containsKey('countryDartId')
-              ? _json['countryDartId'] as core.String
-              : null,
-          dartId: _json.containsKey('dartId')
-              ? _json['dartId'] as core.String
-              : null,
-          dmaId:
-              _json.containsKey('dmaId') ? _json['dmaId'] as core.String : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          metroCode: _json.containsKey('metroCode')
-              ? _json['metroCode'] as core.String
-              : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (countryCode != null) 'countryCode': countryCode!,
-        if (countryDartId != null) 'countryDartId': countryDartId!,
-        if (dartId != null) 'dartId': dartId!,
-        if (dmaId != null) 'dmaId': dmaId!,
-        if (kind != null) 'kind': kind!,
-        if (metroCode != null) 'metroCode': metroCode!,
-        if (name != null) 'name': name!,
-      };
-}
-
-/// Used by:
-///
 /// - servicemanagement:v1 : Mixin
 /// - serviceusage:v1 : Mixin
 class $Mixin {
@@ -6356,115 +3805,6 @@ class $Mixin {
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
         if (root != null) 'root': root!,
-      };
-}
-
-/// Used by:
-///
-/// - dfareporting:v3.4 : MobileApp
-/// - dfareporting:v3.5 : MobileApp
-class $MobileApp {
-  /// Mobile app directory.
-  /// Possible string values are:
-  /// - "UNKNOWN"
-  /// - "APPLE_APP_STORE"
-  /// - "GOOGLE_PLAY_STORE"
-  core.String? directory;
-
-  /// ID of this mobile app.
-  core.String? id;
-
-  /// Identifies what kind of resource this is.
-  ///
-  /// Value: the fixed string "dfareporting#mobileApp".
-  core.String? kind;
-
-  /// Publisher name.
-  core.String? publisherName;
-
-  /// Title of this mobile app.
-  core.String? title;
-
-  $MobileApp({
-    this.directory,
-    this.id,
-    this.kind,
-    this.publisherName,
-    this.title,
-  });
-
-  $MobileApp.fromJson(core.Map _json)
-      : this(
-          directory: _json.containsKey('directory')
-              ? _json['directory'] as core.String
-              : null,
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          publisherName: _json.containsKey('publisherName')
-              ? _json['publisherName'] as core.String
-              : null,
-          title:
-              _json.containsKey('title') ? _json['title'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (directory != null) 'directory': directory!,
-        if (id != null) 'id': id!,
-        if (kind != null) 'kind': kind!,
-        if (publisherName != null) 'publisherName': publisherName!,
-        if (title != null) 'title': title!,
-      };
-}
-
-/// Used by:
-///
-/// - dfareporting:v3.4 : MobileCarrier
-/// - dfareporting:v3.5 : MobileCarrier
-class $MobileCarrier {
-  /// Country code of the country to which this mobile carrier belongs.
-  core.String? countryCode;
-
-  /// DART ID of the country to which this mobile carrier belongs.
-  core.String? countryDartId;
-
-  /// ID of this mobile carrier.
-  core.String? id;
-
-  /// Identifies what kind of resource this is.
-  ///
-  /// Value: the fixed string "dfareporting#mobileCarrier".
-  core.String? kind;
-
-  /// Name of this mobile carrier.
-  core.String? name;
-
-  $MobileCarrier({
-    this.countryCode,
-    this.countryDartId,
-    this.id,
-    this.kind,
-    this.name,
-  });
-
-  $MobileCarrier.fromJson(core.Map _json)
-      : this(
-          countryCode: _json.containsKey('countryCode')
-              ? _json['countryCode'] as core.String
-              : null,
-          countryDartId: _json.containsKey('countryDartId')
-              ? _json['countryDartId'] as core.String
-              : null,
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (countryCode != null) 'countryCode': countryCode!,
-        if (countryDartId != null) 'countryDartId': countryDartId!,
-        if (id != null) 'id': id!,
-        if (kind != null) 'kind': kind!,
-        if (name != null) 'name': name!,
       };
 }
 
@@ -6682,181 +4022,6 @@ class $OAuthRequirements {
 
 /// Used by:
 ///
-/// - dfareporting:v3.4 : ObjectFilter
-/// - dfareporting:v3.5 : ObjectFilter
-class $ObjectFilter {
-  /// Identifies what kind of resource this is.
-  ///
-  /// Value: the fixed string "dfareporting#objectFilter".
-  core.String? kind;
-
-  /// Applicable when status is ASSIGNED.
-  ///
-  /// The user has access to objects with these object IDs.
-  core.List<core.String>? objectIds;
-
-  /// Status of the filter.
-  ///
-  /// NONE means the user has access to none of the objects. ALL means the user
-  /// has access to all objects. ASSIGNED means the user has access to the
-  /// objects with IDs in the objectIds list.
-  /// Possible string values are:
-  /// - "NONE"
-  /// - "ASSIGNED"
-  /// - "ALL"
-  core.String? status;
-
-  $ObjectFilter({
-    this.kind,
-    this.objectIds,
-    this.status,
-  });
-
-  $ObjectFilter.fromJson(core.Map _json)
-      : this(
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          objectIds: _json.containsKey('objectIds')
-              ? (_json['objectIds'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          status: _json.containsKey('status')
-              ? _json['status'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (kind != null) 'kind': kind!,
-        if (objectIds != null) 'objectIds': objectIds!,
-        if (status != null) 'status': status!,
-      };
-}
-
-/// Used by:
-///
-/// - dfareporting:v3.4 : OffsetPosition
-/// - dfareporting:v3.5 : OffsetPosition
-class $OffsetPosition {
-  /// Offset distance from left side of an asset or a window.
-  core.int? left;
-
-  /// Offset distance from top side of an asset or a window.
-  core.int? top;
-
-  $OffsetPosition({
-    this.left,
-    this.top,
-  });
-
-  $OffsetPosition.fromJson(core.Map _json)
-      : this(
-          left: _json.containsKey('left') ? _json['left'] as core.int : null,
-          top: _json.containsKey('top') ? _json['top'] as core.int : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (left != null) 'left': left!,
-        if (top != null) 'top': top!,
-      };
-}
-
-/// Used by:
-///
-/// - dfareporting:v3.4 : OmnitureSettings
-/// - dfareporting:v3.5 : OmnitureSettings
-class $OmnitureSettings {
-  /// Whether placement cost data will be sent to Omniture.
-  ///
-  /// This property can be enabled only if omnitureIntegrationEnabled is true.
-  core.bool? omnitureCostDataEnabled;
-
-  /// Whether Omniture integration is enabled.
-  ///
-  /// This property can be enabled only when the "Advanced Ad Serving" account
-  /// setting is enabled.
-  core.bool? omnitureIntegrationEnabled;
-
-  $OmnitureSettings({
-    this.omnitureCostDataEnabled,
-    this.omnitureIntegrationEnabled,
-  });
-
-  $OmnitureSettings.fromJson(core.Map _json)
-      : this(
-          omnitureCostDataEnabled: _json.containsKey('omnitureCostDataEnabled')
-              ? _json['omnitureCostDataEnabled'] as core.bool
-              : null,
-          omnitureIntegrationEnabled:
-              _json.containsKey('omnitureIntegrationEnabled')
-                  ? _json['omnitureIntegrationEnabled'] as core.bool
-                  : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (omnitureCostDataEnabled != null)
-          'omnitureCostDataEnabled': omnitureCostDataEnabled!,
-        if (omnitureIntegrationEnabled != null)
-          'omnitureIntegrationEnabled': omnitureIntegrationEnabled!,
-      };
-}
-
-/// Used by:
-///
-/// - dfareporting:v3.4 : OperatingSystem
-/// - dfareporting:v3.5 : OperatingSystem
-class $OperatingSystem {
-  /// DART ID of this operating system.
-  ///
-  /// This is the ID used for targeting.
-  core.String? dartId;
-
-  /// Whether this operating system is for desktop.
-  core.bool? desktop;
-
-  /// Identifies what kind of resource this is.
-  ///
-  /// Value: the fixed string "dfareporting#operatingSystem".
-  core.String? kind;
-
-  /// Whether this operating system is for mobile.
-  core.bool? mobile;
-
-  /// Name of this operating system.
-  core.String? name;
-
-  $OperatingSystem({
-    this.dartId,
-    this.desktop,
-    this.kind,
-    this.mobile,
-    this.name,
-  });
-
-  $OperatingSystem.fromJson(core.Map _json)
-      : this(
-          dartId: _json.containsKey('dartId')
-              ? _json['dartId'] as core.String
-              : null,
-          desktop: _json.containsKey('desktop')
-              ? _json['desktop'] as core.bool
-              : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          mobile:
-              _json.containsKey('mobile') ? _json['mobile'] as core.bool : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (dartId != null) 'dartId': dartId!,
-        if (desktop != null) 'desktop': desktop!,
-        if (kind != null) 'kind': kind!,
-        if (mobile != null) 'mobile': mobile!,
-        if (name != null) 'name': name!,
-      };
-}
-
-/// Used by:
-///
 /// - servicemanagement:v1 : Option
 /// - serviceusage:v1 : Option
 class $Option {
@@ -6986,71 +4151,6 @@ class $OrderAddress {
         if (recipientName != null) 'recipientName': recipientName!,
         if (region != null) 'region': region!,
         if (streetAddress != null) 'streetAddress': streetAddress!,
-      };
-}
-
-/// Used by:
-///
-/// - dfareporting:v3.4 : OrderContact
-/// - dfareporting:v3.5 : OrderContact
-class $OrderContact {
-  /// Free-form information about this contact.
-  ///
-  /// It could be any information related to this contact in addition to type,
-  /// title, name, and signature user profile ID.
-  core.String? contactInfo;
-
-  /// Name of this contact.
-  core.String? contactName;
-
-  /// Title of this contact.
-  core.String? contactTitle;
-
-  /// Type of this contact.
-  /// Possible string values are:
-  /// - "PLANNING_ORDER_CONTACT_BUYER_CONTACT"
-  /// - "PLANNING_ORDER_CONTACT_BUYER_BILLING_CONTACT"
-  /// - "PLANNING_ORDER_CONTACT_SELLER_CONTACT"
-  core.String? contactType;
-
-  /// ID of the user profile containing the signature that will be embedded into
-  /// order documents.
-  core.String? signatureUserProfileId;
-
-  $OrderContact({
-    this.contactInfo,
-    this.contactName,
-    this.contactTitle,
-    this.contactType,
-    this.signatureUserProfileId,
-  });
-
-  $OrderContact.fromJson(core.Map _json)
-      : this(
-          contactInfo: _json.containsKey('contactInfo')
-              ? _json['contactInfo'] as core.String
-              : null,
-          contactName: _json.containsKey('contactName')
-              ? _json['contactName'] as core.String
-              : null,
-          contactTitle: _json.containsKey('contactTitle')
-              ? _json['contactTitle'] as core.String
-              : null,
-          contactType: _json.containsKey('contactType')
-              ? _json['contactType'] as core.String
-              : null,
-          signatureUserProfileId: _json.containsKey('signatureUserProfileId')
-              ? _json['signatureUserProfileId'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (contactInfo != null) 'contactInfo': contactInfo!,
-        if (contactName != null) 'contactName': contactName!,
-        if (contactTitle != null) 'contactTitle': contactTitle!,
-        if (contactType != null) 'contactType': contactType!,
-        if (signatureUserProfileId != null)
-          'signatureUserProfileId': signatureUserProfileId!,
       };
 }
 
@@ -7319,75 +4419,6 @@ class $PathElement {
 
 /// Used by:
 ///
-/// - dfareporting:v3.4 : PathReportDimensionValue
-/// - dfareporting:v3.5 : PathReportDimensionValue
-class $PathReportDimensionValue {
-  /// The name of the dimension.
-  core.String? dimensionName;
-
-  /// The possible ID's associated with the value if available.
-  core.List<core.String>? ids;
-
-  /// The kind of resource this is, in this case
-  /// dfareporting#pathReportDimensionValue.
-  core.String? kind;
-
-  /// Determines how the 'value' field is matched when filtering.
-  ///
-  /// If not specified, defaults to EXACT. If set to WILDCARD_EXPRESSION, '*' is
-  /// allowed as a placeholder for variable length character sequences, and it
-  /// can be escaped with a backslash. Note, only paid search dimensions
-  /// ('dfa:paidSearch*') allow a matchType other than EXACT.
-  /// Possible string values are:
-  /// - "EXACT"
-  /// - "BEGINS_WITH"
-  /// - "CONTAINS"
-  /// - "WILDCARD_EXPRESSION"
-  core.String? matchType;
-
-  /// The possible values of the dimension.
-  core.List<core.String>? values;
-
-  $PathReportDimensionValue({
-    this.dimensionName,
-    this.ids,
-    this.kind,
-    this.matchType,
-    this.values,
-  });
-
-  $PathReportDimensionValue.fromJson(core.Map _json)
-      : this(
-          dimensionName: _json.containsKey('dimensionName')
-              ? _json['dimensionName'] as core.String
-              : null,
-          ids: _json.containsKey('ids')
-              ? (_json['ids'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          matchType: _json.containsKey('matchType')
-              ? _json['matchType'] as core.String
-              : null,
-          values: _json.containsKey('values')
-              ? (_json['values'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (dimensionName != null) 'dimensionName': dimensionName!,
-        if (ids != null) 'ids': ids!,
-        if (kind != null) 'kind': kind!,
-        if (matchType != null) 'matchType': matchType!,
-        if (values != null) 'values': values!,
-      };
-}
-
-/// Used by:
-///
 /// - accesscontextmanager:v1 : TestIamPermissionsResponse
 /// - apigateway:v1 : ApigatewayTestIamPermissionsResponse
 /// - apigee:v1 : GoogleIamV1TestIamPermissionsResponse
@@ -7461,92 +4492,6 @@ class $PermissionsResponse {
 
 /// Used by:
 ///
-/// - dfareporting:v3.4 : PlacementStrategy
-/// - dfareporting:v3.5 : PlacementStrategy
-class $PlacementStrategy {
-  /// Account ID of this placement strategy.This is a read-only field that can
-  /// be left blank.
-  core.String? accountId;
-
-  /// ID of this placement strategy.
-  ///
-  /// This is a read-only, auto-generated field.
-  core.String? id;
-
-  /// Identifies what kind of resource this is.
-  ///
-  /// Value: the fixed string "dfareporting#placementStrategy".
-  core.String? kind;
-
-  /// Name of this placement strategy.
-  ///
-  /// This is a required field. It must be less than 256 characters long and
-  /// unique among placement strategies of the same account.
-  core.String? name;
-
-  $PlacementStrategy({
-    this.accountId,
-    this.id,
-    this.kind,
-    this.name,
-  });
-
-  $PlacementStrategy.fromJson(core.Map _json)
-      : this(
-          accountId: _json.containsKey('accountId')
-              ? _json['accountId'] as core.String
-              : null,
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (accountId != null) 'accountId': accountId!,
-        if (id != null) 'id': id!,
-        if (kind != null) 'kind': kind!,
-        if (name != null) 'name': name!,
-      };
-}
-
-/// Used by:
-///
-/// - dfareporting:v3.4 : PlatformType
-/// - dfareporting:v3.5 : PlatformType
-class $PlatformType {
-  /// ID of this platform type.
-  core.String? id;
-
-  /// Identifies what kind of resource this is.
-  ///
-  /// Value: the fixed string "dfareporting#platformType".
-  core.String? kind;
-
-  /// Name of this platform type.
-  core.String? name;
-
-  $PlatformType({
-    this.id,
-    this.kind,
-    this.name,
-  });
-
-  $PlatformType.fromJson(core.Map _json)
-      : this(
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (id != null) 'id': id!,
-        if (kind != null) 'kind': kind!,
-        if (name != null) 'name': name!,
-      };
-}
-
-/// Used by:
-///
 /// - dns:v1 : PolicyNetwork
 /// - dns:v2 : PolicyNetwork
 class $PolicyNetwork {
@@ -7581,10 +4526,13 @@ class $PolicyNetwork {
 ///
 /// - cloudchannel:v1 : GoogleTypePostalAddress
 /// - documentai:v1 : GoogleTypePostalAddress
+/// - domains:v1 : PostalAddress
+/// - jobs:v3 : PostalAddress
+/// - jobs:v4 : PostalAddress
 /// - mybusinessaccountmanagement:v1 : PostalAddress
 /// - mybusinessbusinessinformation:v1 : PostalAddress
 /// - mybusinessverifications:v1 : PostalAddress
-class $PostalAddress00 {
+class $PostalAddress {
   /// Unstructured address lines describing the lower levels of an address.
   ///
   /// Because values in address_lines do not have type information and may
@@ -7694,7 +4642,7 @@ class $PostalAddress00 {
   /// Optional.
   core.String? sublocality;
 
-  $PostalAddress00({
+  $PostalAddress({
     this.addressLines,
     this.administrativeArea,
     this.languageCode,
@@ -7708,7 +4656,7 @@ class $PostalAddress00 {
     this.sublocality,
   });
 
-  $PostalAddress00.fromJson(core.Map _json)
+  $PostalAddress.fromJson(core.Map _json)
       : this(
           addressLines: _json.containsKey('addressLines')
               ? (_json['addressLines'] as core.List)
@@ -7767,302 +4715,26 @@ class $PostalAddress00 {
 
 /// Used by:
 ///
-/// - domains:v1 : PostalAddress
-/// - jobs:v3 : PostalAddress
-/// - jobs:v4 : PostalAddress
-class $PostalAddress01 {
-  /// Unstructured address lines describing the lower levels of an address.
-  ///
-  /// Because values in address_lines do not have type information and may
-  /// sometimes contain multiple values in a single field (e.g. "Austin, TX"),
-  /// it is important that the line order is clear. The order of address lines
-  /// should be "envelope order" for the country/region of the address. In
-  /// places where this can vary (e.g. Japan), address_language is used to make
-  /// it explicit (e.g. "ja" for large-to-small ordering and "ja-Latn" or "en"
-  /// for small-to-large). This way, the most specific line of an address can be
-  /// selected based on the language. The minimum permitted structural
-  /// representation of an address consists of a region_code with all remaining
-  /// information placed in the address_lines. It would be possible to format
-  /// such an address very approximately without geocoding, but no semantic
-  /// reasoning could be made about any of the address components until it was
-  /// at least partially resolved. Creating an address only containing a
-  /// region_code and address_lines, and then geocoding is the recommended way
-  /// to handle completely unstructured addresses (as opposed to guessing which
-  /// parts of the address should be localities or administrative areas).
-  core.List<core.String>? addressLines;
+/// - content:v2.1 : FreeListingsProgramStatusReviewIneligibilityReasonDetails
+/// - content:v2.1 : ShoppingAdsProgramStatusReviewIneligibilityReasonDetails
+class $ProgramStatusReviewIneligibilityReasonDetails {
+  /// This timestamp represents end of cooldown period for review ineligbility
+  /// reason `IN_COOLDOWN_PERIOD`.
+  core.String? cooldownTime;
 
-  /// Highest administrative subdivision which is used for postal addresses of a
-  /// country or region.
-  ///
-  /// For example, this can be a state, a province, an oblast, or a prefecture.
-  /// Specifically, for Spain this is the province and not the autonomous
-  /// community (e.g. "Barcelona" and not "Catalonia"). Many countries don't use
-  /// an administrative area in postal addresses. E.g. in Switzerland this
-  /// should be left unpopulated.
-  ///
-  /// Optional.
-  core.String? administrativeArea;
-
-  /// BCP-47 language code of the contents of this address (if known).
-  ///
-  /// This is often the UI language of the input form or is expected to match
-  /// one of the languages used in the address' country/region, or their
-  /// transliterated equivalents. This can affect formatting in certain
-  /// countries, but is not critical to the correctness of the data and will
-  /// never affect any validation or other non-formatting related operations. If
-  /// this value is not known, it should be omitted (rather than specifying a
-  /// possibly incorrect default). Examples: "zh-Hant", "ja", "ja-Latn", "en".
-  ///
-  /// Optional.
-  core.String? languageCode;
-
-  /// Generally refers to the city/town portion of the address.
-  ///
-  /// Examples: US city, IT comune, UK post town. In regions of the world where
-  /// localities are not well defined or do not fit into this structure well,
-  /// leave locality empty and use address_lines.
-  ///
-  /// Optional.
-  core.String? locality;
-
-  /// The name of the organization at the address.
-  ///
-  /// Optional.
-  core.String? organization;
-
-  /// Postal code of the address.
-  ///
-  /// Not all countries use or require postal codes to be present, but where
-  /// they are used, they may trigger additional validation with other parts of
-  /// the address (e.g. state/zip validation in the U.S.A.).
-  ///
-  /// Optional.
-  core.String? postalCode;
-
-  /// The recipient at the address.
-  ///
-  /// This field may, under certain circumstances, contain multiline
-  /// information. For example, it might contain "care of" information.
-  ///
-  /// Optional.
-  core.List<core.String>? recipients;
-
-  /// CLDR region code of the country/region of the address.
-  ///
-  /// This is never inferred and it is up to the user to ensure the value is
-  /// correct. See http://cldr.unicode.org/ and
-  /// http://www.unicode.org/cldr/charts/30/supplemental/territory_information.html
-  /// for details. Example: "CH" for Switzerland.
-  ///
-  /// Required.
-  core.String? regionCode;
-
-  /// The schema revision of the `PostalAddress`.
-  ///
-  /// This must be set to 0, which is the latest revision. All new revisions
-  /// **must** be backward compatible with old revisions.
-  core.int? revision;
-
-  /// Additional, country-specific, sorting code.
-  ///
-  /// This is not used in most regions. Where it is used, the value is either a
-  /// string like "CEDEX", optionally followed by a number (e.g. "CEDEX 7"), or
-  /// just a number alone, representing the "sector code" (Jamaica), "delivery
-  /// area indicator" (Malawi) or "post office indicator" (e.g. Côte d'Ivoire).
-  ///
-  /// Optional.
-  core.String? sortingCode;
-
-  /// Sublocality of the address.
-  ///
-  /// For example, this can be neighborhoods, boroughs, districts.
-  ///
-  /// Optional.
-  core.String? sublocality;
-
-  $PostalAddress01({
-    this.addressLines,
-    this.administrativeArea,
-    this.languageCode,
-    this.locality,
-    this.organization,
-    this.postalCode,
-    this.recipients,
-    this.regionCode,
-    this.revision,
-    this.sortingCode,
-    this.sublocality,
+  $ProgramStatusReviewIneligibilityReasonDetails({
+    this.cooldownTime,
   });
 
-  $PostalAddress01.fromJson(core.Map _json)
+  $ProgramStatusReviewIneligibilityReasonDetails.fromJson(core.Map _json)
       : this(
-          addressLines: _json.containsKey('addressLines')
-              ? (_json['addressLines'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          administrativeArea: _json.containsKey('administrativeArea')
-              ? _json['administrativeArea'] as core.String
-              : null,
-          languageCode: _json.containsKey('languageCode')
-              ? _json['languageCode'] as core.String
-              : null,
-          locality: _json.containsKey('locality')
-              ? _json['locality'] as core.String
-              : null,
-          organization: _json.containsKey('organization')
-              ? _json['organization'] as core.String
-              : null,
-          postalCode: _json.containsKey('postalCode')
-              ? _json['postalCode'] as core.String
-              : null,
-          recipients: _json.containsKey('recipients')
-              ? (_json['recipients'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          regionCode: _json.containsKey('regionCode')
-              ? _json['regionCode'] as core.String
-              : null,
-          revision: _json.containsKey('revision')
-              ? _json['revision'] as core.int
-              : null,
-          sortingCode: _json.containsKey('sortingCode')
-              ? _json['sortingCode'] as core.String
-              : null,
-          sublocality: _json.containsKey('sublocality')
-              ? _json['sublocality'] as core.String
+          cooldownTime: _json.containsKey('cooldownTime')
+              ? _json['cooldownTime'] as core.String
               : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (addressLines != null) 'addressLines': addressLines!,
-        if (administrativeArea != null)
-          'administrativeArea': administrativeArea!,
-        if (languageCode != null) 'languageCode': languageCode!,
-        if (locality != null) 'locality': locality!,
-        if (organization != null) 'organization': organization!,
-        if (postalCode != null) 'postalCode': postalCode!,
-        if (recipients != null) 'recipients': recipients!,
-        if (regionCode != null) 'regionCode': regionCode!,
-        if (revision != null) 'revision': revision!,
-        if (sortingCode != null) 'sortingCode': sortingCode!,
-        if (sublocality != null) 'sublocality': sublocality!,
-      };
-}
-
-/// Used by:
-///
-/// - dfareporting:v3.4 : PostalCode
-/// - dfareporting:v3.5 : PostalCode
-class $PostalCode {
-  /// Postal code.
-  ///
-  /// This is equivalent to the id field.
-  core.String? code;
-
-  /// Country code of the country to which this postal code belongs.
-  core.String? countryCode;
-
-  /// DART ID of the country to which this postal code belongs.
-  core.String? countryDartId;
-
-  /// ID of this postal code.
-  core.String? id;
-
-  /// Identifies what kind of resource this is.
-  ///
-  /// Value: the fixed string "dfareporting#postalCode".
-  core.String? kind;
-
-  $PostalCode({
-    this.code,
-    this.countryCode,
-    this.countryDartId,
-    this.id,
-    this.kind,
-  });
-
-  $PostalCode.fromJson(core.Map _json)
-      : this(
-          code: _json.containsKey('code') ? _json['code'] as core.String : null,
-          countryCode: _json.containsKey('countryCode')
-              ? _json['countryCode'] as core.String
-              : null,
-          countryDartId: _json.containsKey('countryDartId')
-              ? _json['countryDartId'] as core.String
-              : null,
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (code != null) 'code': code!,
-        if (countryCode != null) 'countryCode': countryCode!,
-        if (countryDartId != null) 'countryDartId': countryDartId!,
-        if (id != null) 'id': id!,
-        if (kind != null) 'kind': kind!,
-      };
-}
-
-/// Used by:
-///
-/// - dfareporting:v3.4 : PricingSchedulePricingPeriod
-/// - dfareporting:v3.5 : PricingSchedulePricingPeriod
-class $PricingSchedulePricingPeriod {
-  core.DateTime? endDate;
-
-  /// Comments for this pricing period.
-  core.String? pricingComment;
-
-  /// Rate or cost of this pricing period in nanos (i.e., multipled by
-  /// 1000000000).
-  ///
-  /// Acceptable values are 0 to 1000000000000000000, inclusive.
-  core.String? rateOrCostNanos;
-  core.DateTime? startDate;
-
-  /// Units of this pricing period.
-  ///
-  /// Acceptable values are 0 to 10000000000, inclusive.
-  core.String? units;
-
-  $PricingSchedulePricingPeriod({
-    this.endDate,
-    this.pricingComment,
-    this.rateOrCostNanos,
-    this.startDate,
-    this.units,
-  });
-
-  $PricingSchedulePricingPeriod.fromJson(core.Map _json)
-      : this(
-          endDate: _json.containsKey('endDate')
-              ? core.DateTime.parse(_json['endDate'] as core.String)
-              : null,
-          pricingComment: _json.containsKey('pricingComment')
-              ? _json['pricingComment'] as core.String
-              : null,
-          rateOrCostNanos: _json.containsKey('rateOrCostNanos')
-              ? _json['rateOrCostNanos'] as core.String
-              : null,
-          startDate: _json.containsKey('startDate')
-              ? core.DateTime.parse(_json['startDate'] as core.String)
-              : null,
-          units:
-              _json.containsKey('units') ? _json['units'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (endDate != null)
-          'endDate':
-              "${(endDate!).year.toString().padLeft(4, '0')}-${(endDate!).month.toString().padLeft(2, '0')}-${(endDate!).day.toString().padLeft(2, '0')}",
-        if (pricingComment != null) 'pricingComment': pricingComment!,
-        if (rateOrCostNanos != null) 'rateOrCostNanos': rateOrCostNanos!,
-        if (startDate != null)
-          'startDate':
-              "${(startDate!).year.toString().padLeft(4, '0')}-${(startDate!).month.toString().padLeft(2, '0')}-${(startDate!).day.toString().padLeft(2, '0')}",
-        if (units != null) 'units': units!,
+        if (cooldownTime != null) 'cooldownTime': cooldownTime!,
       };
 }
 
@@ -8127,6 +4799,91 @@ class $ProxiesSetProxyHeaderRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (proxyHeader != null) 'proxyHeader': proxyHeader!,
+      };
+}
+
+/// Used by:
+///
+/// - pubsub:v1 : PubsubMessage
+/// - workflowexecutions:v1 : PubsubMessage
+class $PubsubMessage {
+  /// Attributes for this message.
+  ///
+  /// If this field is empty, the message must contain non-empty data. This can
+  /// be used to filter messages on the subscription.
+  core.Map<core.String, core.String>? attributes;
+
+  /// The message data field.
+  ///
+  /// If this field is empty, the message must contain at least one attribute.
+  core.String? data;
+  core.List<core.int> get dataAsBytes => convert.base64.decode(data!);
+
+  set dataAsBytes(core.List<core.int> _bytes) {
+    data =
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  /// ID of this message, assigned by the server when the message is published.
+  ///
+  /// Guaranteed to be unique within the topic. This value may be read by a
+  /// subscriber that receives a `PubsubMessage` via a `Pull` call or a push
+  /// delivery. It must not be populated by the publisher in a `Publish` call.
+  core.String? messageId;
+
+  /// If non-empty, identifies related messages for which publish order should
+  /// be respected.
+  ///
+  /// If a `Subscription` has `enable_message_ordering` set to `true`, messages
+  /// published with the same non-empty `ordering_key` value will be delivered
+  /// to subscribers in the order in which they are received by the Pub/Sub
+  /// system. All `PubsubMessage`s published in a given `PublishRequest` must
+  /// specify the same `ordering_key` value.
+  core.String? orderingKey;
+
+  /// The time at which the message was published, populated by the server when
+  /// it receives the `Publish` call.
+  ///
+  /// It must not be populated by the publisher in a `Publish` call.
+  core.String? publishTime;
+
+  $PubsubMessage({
+    this.attributes,
+    this.data,
+    this.messageId,
+    this.orderingKey,
+    this.publishTime,
+  });
+
+  $PubsubMessage.fromJson(core.Map _json)
+      : this(
+          attributes: _json.containsKey('attributes')
+              ? (_json['attributes'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.String,
+                  ),
+                )
+              : null,
+          data: _json.containsKey('data') ? _json['data'] as core.String : null,
+          messageId: _json.containsKey('messageId')
+              ? _json['messageId'] as core.String
+              : null,
+          orderingKey: _json.containsKey('orderingKey')
+              ? _json['orderingKey'] as core.String
+              : null,
+          publishTime: _json.containsKey('publishTime')
+              ? _json['publishTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (attributes != null) 'attributes': attributes!,
+        if (data != null) 'data': data!,
+        if (messageId != null) 'messageId': messageId!,
+        if (orderingKey != null) 'orderingKey': orderingKey!,
+        if (publishTime != null) 'publishTime': publishTime!,
       };
 }
 
@@ -8570,108 +5327,6 @@ class $Recipe {
 
 /// Used by:
 ///
-/// - dfareporting:v3.4 : Recipient
-/// - dfareporting:v3.5 : Recipient
-class $Recipient {
-  /// The delivery type for the recipient.
-  /// Possible string values are:
-  /// - "LINK"
-  /// - "ATTACHMENT"
-  core.String? deliveryType;
-
-  /// The email address of the recipient.
-  core.String? email;
-
-  /// The kind of resource this is, in this case dfareporting#recipient.
-  core.String? kind;
-
-  $Recipient({
-    this.deliveryType,
-    this.email,
-    this.kind,
-  });
-
-  $Recipient.fromJson(core.Map _json)
-      : this(
-          deliveryType: _json.containsKey('deliveryType')
-              ? _json['deliveryType'] as core.String
-              : null,
-          email:
-              _json.containsKey('email') ? _json['email'] as core.String : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (deliveryType != null) 'deliveryType': deliveryType!,
-        if (email != null) 'email': email!,
-        if (kind != null) 'kind': kind!,
-      };
-}
-
-/// Used by:
-///
-/// - dfareporting:v3.4 : Region
-/// - dfareporting:v3.5 : Region
-class $Region {
-  /// Country code of the country to which this region belongs.
-  core.String? countryCode;
-
-  /// DART ID of the country to which this region belongs.
-  core.String? countryDartId;
-
-  /// DART ID of this region.
-  core.String? dartId;
-
-  /// Identifies what kind of resource this is.
-  ///
-  /// Value: the fixed string "dfareporting#region".
-  core.String? kind;
-
-  /// Name of this region.
-  core.String? name;
-
-  /// Region code.
-  core.String? regionCode;
-
-  $Region({
-    this.countryCode,
-    this.countryDartId,
-    this.dartId,
-    this.kind,
-    this.name,
-    this.regionCode,
-  });
-
-  $Region.fromJson(core.Map _json)
-      : this(
-          countryCode: _json.containsKey('countryCode')
-              ? _json['countryCode'] as core.String
-              : null,
-          countryDartId: _json.containsKey('countryDartId')
-              ? _json['countryDartId'] as core.String
-              : null,
-          dartId: _json.containsKey('dartId')
-              ? _json['dartId'] as core.String
-              : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          regionCode: _json.containsKey('regionCode')
-              ? _json['regionCode'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (countryCode != null) 'countryCode': countryCode!,
-        if (countryDartId != null) 'countryDartId': countryDartId!,
-        if (dartId != null) 'dartId': dartId!,
-        if (kind != null) 'kind': kind!,
-        if (name != null) 'name': name!,
-        if (regionCode != null) 'regionCode': regionCode!,
-      };
-}
-
-/// Used by:
-///
 /// - containeranalysis:v1 : RelatedUrl
 /// - ondemandscanning:v1 : RelatedUrl
 class $RelatedUrl {
@@ -8696,61 +5351,6 @@ class $RelatedUrl {
   core.Map<core.String, core.dynamic> toJson() => {
         if (label != null) 'label': label!,
         if (url != null) 'url': url!,
-      };
-}
-
-/// Used by:
-///
-/// - dfareporting:v3.4 : RemarketingListShare
-/// - dfareporting:v3.5 : RemarketingListShare
-class $RemarketingListShare {
-  /// Identifies what kind of resource this is.
-  ///
-  /// Value: the fixed string "dfareporting#remarketingListShare".
-  core.String? kind;
-
-  /// Remarketing list ID.
-  ///
-  /// This is a read-only, auto-generated field.
-  core.String? remarketingListId;
-
-  /// Accounts that the remarketing list is shared with.
-  core.List<core.String>? sharedAccountIds;
-
-  /// Advertisers that the remarketing list is shared with.
-  core.List<core.String>? sharedAdvertiserIds;
-
-  $RemarketingListShare({
-    this.kind,
-    this.remarketingListId,
-    this.sharedAccountIds,
-    this.sharedAdvertiserIds,
-  });
-
-  $RemarketingListShare.fromJson(core.Map _json)
-      : this(
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          remarketingListId: _json.containsKey('remarketingListId')
-              ? _json['remarketingListId'] as core.String
-              : null,
-          sharedAccountIds: _json.containsKey('sharedAccountIds')
-              ? (_json['sharedAccountIds'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          sharedAdvertiserIds: _json.containsKey('sharedAdvertiserIds')
-              ? (_json['sharedAdvertiserIds'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (kind != null) 'kind': kind!,
-        if (remarketingListId != null) 'remarketingListId': remarketingListId!,
-        if (sharedAccountIds != null) 'sharedAccountIds': sharedAccountIds!,
-        if (sharedAdvertiserIds != null)
-          'sharedAdvertiserIds': sharedAdvertiserIds!,
       };
 }
 
@@ -9080,44 +5680,6 @@ class $Request07 {
 
 /// Used by:
 ///
-/// - sheets:v4 : BatchClearValuesByDataFilterResponse
-/// - sheets:v4 : BatchClearValuesResponse
-class $Response {
-  /// The ranges that were cleared, in A1 notation.
-  ///
-  /// If the requests are for an unbounded range or a ranger larger than the
-  /// bounds of the sheet, this is the actual ranges that were cleared, bounded
-  /// to the sheet's limits.
-  core.List<core.String>? clearedRanges;
-
-  /// The spreadsheet the updates were applied to.
-  core.String? spreadsheetId;
-
-  $Response({
-    this.clearedRanges,
-    this.spreadsheetId,
-  });
-
-  $Response.fromJson(core.Map _json)
-      : this(
-          clearedRanges: _json.containsKey('clearedRanges')
-              ? (_json['clearedRanges'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          spreadsheetId: _json.containsKey('spreadsheetId')
-              ? _json['spreadsheetId'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (clearedRanges != null) 'clearedRanges': clearedRanges!,
-        if (spreadsheetId != null) 'spreadsheetId': spreadsheetId!,
-      };
-}
-
-/// Used by:
-///
 /// - dns:v1 : ResponseHeader
 /// - dns:v2 : ResponseHeader
 class $ResponseHeader {
@@ -9243,48 +5805,26 @@ class $RgbColor {
 
 /// Used by:
 ///
-/// - dfareporting:v3.4 : Rule
-/// - dfareporting:v3.5 : Rule
-class $Rule {
-  /// A creativeAssets\[\].id.
-  ///
-  /// This should refer to one of the parent assets in this creative. This is a
-  /// required field.
-  core.String? assetId;
+/// - notebooks:v1 : ResetRuntimeRequest
+/// - notebooks:v1 : StartRuntimeRequest
+/// - notebooks:v1 : StopRuntimeRequest
+class $RuntimeRequest {
+  /// Idempotent request UUID.
+  core.String? requestId;
 
-  /// A user-friendly name for this rule.
-  ///
-  /// This is a required field.
-  core.String? name;
-
-  /// A targeting template ID.
-  ///
-  /// The targeting from the targeting template will be used to determine
-  /// whether this asset should be served. This is a required field.
-  core.String? targetingTemplateId;
-
-  $Rule({
-    this.assetId,
-    this.name,
-    this.targetingTemplateId,
+  $RuntimeRequest({
+    this.requestId,
   });
 
-  $Rule.fromJson(core.Map _json)
+  $RuntimeRequest.fromJson(core.Map _json)
       : this(
-          assetId: _json.containsKey('assetId')
-              ? _json['assetId'] as core.String
-              : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          targetingTemplateId: _json.containsKey('targetingTemplateId')
-              ? _json['targetingTemplateId'] as core.String
+          requestId: _json.containsKey('requestId')
+              ? _json['requestId'] as core.String
               : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (assetId != null) 'assetId': assetId!,
-        if (name != null) 'name': name!,
-        if (targetingTemplateId != null)
-          'targetingTemplateId': targetingTemplateId!,
+        if (requestId != null) 'requestId': requestId!,
       };
 }
 
@@ -9723,182 +6263,6 @@ class $Signature {
 
 /// Used by:
 ///
-/// - dfareporting:v3.4 : SiteContact
-/// - dfareporting:v3.5 : SiteContact
-class $SiteContact {
-  /// Address of this site contact.
-  core.String? address;
-
-  /// Site contact type.
-  /// Possible string values are:
-  /// - "SALES_PERSON"
-  /// - "TRAFFICKER"
-  core.String? contactType;
-
-  /// Email address of this site contact.
-  ///
-  /// This is a required field.
-  core.String? email;
-
-  /// First name of this site contact.
-  core.String? firstName;
-
-  /// ID of this site contact.
-  ///
-  /// This is a read-only, auto-generated field.
-  core.String? id;
-
-  /// Last name of this site contact.
-  core.String? lastName;
-
-  /// Primary phone number of this site contact.
-  core.String? phone;
-
-  /// Title or designation of this site contact.
-  core.String? title;
-
-  $SiteContact({
-    this.address,
-    this.contactType,
-    this.email,
-    this.firstName,
-    this.id,
-    this.lastName,
-    this.phone,
-    this.title,
-  });
-
-  $SiteContact.fromJson(core.Map _json)
-      : this(
-          address: _json.containsKey('address')
-              ? _json['address'] as core.String
-              : null,
-          contactType: _json.containsKey('contactType')
-              ? _json['contactType'] as core.String
-              : null,
-          email:
-              _json.containsKey('email') ? _json['email'] as core.String : null,
-          firstName: _json.containsKey('firstName')
-              ? _json['firstName'] as core.String
-              : null,
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          lastName: _json.containsKey('lastName')
-              ? _json['lastName'] as core.String
-              : null,
-          phone:
-              _json.containsKey('phone') ? _json['phone'] as core.String : null,
-          title:
-              _json.containsKey('title') ? _json['title'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (address != null) 'address': address!,
-        if (contactType != null) 'contactType': contactType!,
-        if (email != null) 'email': email!,
-        if (firstName != null) 'firstName': firstName!,
-        if (id != null) 'id': id!,
-        if (lastName != null) 'lastName': lastName!,
-        if (phone != null) 'phone': phone!,
-        if (title != null) 'title': title!,
-      };
-}
-
-/// Used by:
-///
-/// - dfareporting:v3.4 : SiteTranscodeSetting
-/// - dfareporting:v3.5 : SiteTranscodeSetting
-class $SiteTranscodeSetting {
-  /// Allowlist of video formats to be served to this site template.
-  ///
-  /// Set this list to null or empty to serve all video formats.
-  core.List<core.int>? enabledVideoFormats;
-
-  /// Identifies what kind of resource this is.
-  ///
-  /// Value: the fixed string "dfareporting#siteTranscodeSetting".
-  core.String? kind;
-
-  $SiteTranscodeSetting({
-    this.enabledVideoFormats,
-    this.kind,
-  });
-
-  $SiteTranscodeSetting.fromJson(core.Map _json)
-      : this(
-          enabledVideoFormats: _json.containsKey('enabledVideoFormats')
-              ? (_json['enabledVideoFormats'] as core.List)
-                  .map((value) => value as core.int)
-                  .toList()
-              : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (enabledVideoFormats != null)
-          'enabledVideoFormats': enabledVideoFormats!,
-        if (kind != null) 'kind': kind!,
-      };
-}
-
-/// Used by:
-///
-/// - dfareporting:v3.4 : Size
-/// - dfareporting:v3.5 : Size
-class $Size {
-  /// Height of this size.
-  ///
-  /// Acceptable values are 0 to 32767, inclusive.
-  core.int? height;
-
-  /// IAB standard size.
-  ///
-  /// This is a read-only, auto-generated field.
-  core.bool? iab;
-
-  /// ID of this size.
-  ///
-  /// This is a read-only, auto-generated field.
-  core.String? id;
-
-  /// Identifies what kind of resource this is.
-  ///
-  /// Value: the fixed string "dfareporting#size".
-  core.String? kind;
-
-  /// Width of this size.
-  ///
-  /// Acceptable values are 0 to 32767, inclusive.
-  core.int? width;
-
-  $Size({
-    this.height,
-    this.iab,
-    this.id,
-    this.kind,
-    this.width,
-  });
-
-  $Size.fromJson(core.Map _json)
-      : this(
-          height:
-              _json.containsKey('height') ? _json['height'] as core.int : null,
-          iab: _json.containsKey('iab') ? _json['iab'] as core.bool : null,
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          width: _json.containsKey('width') ? _json['width'] as core.int : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (height != null) 'height': height!,
-        if (iab != null) 'iab': iab!,
-        if (id != null) 'id': id!,
-        if (kind != null) 'kind': kind!,
-        if (width != null) 'width': width!,
-      };
-}
-
-/// Used by:
-///
 /// - containeranalysis:v1 : SlsaRecipe
 /// - ondemandscanning:v1 : SlsaRecipe
 class $SlsaRecipe {
@@ -9978,45 +6342,6 @@ class $SlsaRecipe {
         if (entryPoint != null) 'entryPoint': entryPoint!,
         if (environment != null) 'environment': environment!,
         if (type != null) 'type': type!,
-      };
-}
-
-/// Used by:
-///
-/// - dfareporting:v3.4 : SortedDimension
-/// - dfareporting:v3.5 : SortedDimension
-class $SortedDimension {
-  /// The kind of resource this is, in this case dfareporting#sortedDimension.
-  core.String? kind;
-
-  /// The name of the dimension.
-  core.String? name;
-
-  /// An optional sort order for the dimension column.
-  /// Possible string values are:
-  /// - "ASCENDING"
-  /// - "DESCENDING"
-  core.String? sortOrder;
-
-  $SortedDimension({
-    this.kind,
-    this.name,
-    this.sortOrder,
-  });
-
-  $SortedDimension.fromJson(core.Map _json)
-      : this(
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          sortOrder: _json.containsKey('sortOrder')
-              ? _json['sortOrder'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (kind != null) 'kind': kind!,
-        if (name != null) 'name': name!,
-        if (sortOrder != null) 'sortOrder': sortOrder!,
       };
 }
 
@@ -10230,68 +6555,6 @@ class $Status {
 
 /// Used by:
 ///
-/// - dfareporting:v3.4 : Subaccount
-/// - dfareporting:v3.5 : Subaccount
-class $Subaccount {
-  /// ID of the account that contains this subaccount.
-  ///
-  /// This is a read-only field that can be left blank.
-  core.String? accountId;
-
-  /// IDs of the available user role permissions for this subaccount.
-  core.List<core.String>? availablePermissionIds;
-
-  /// ID of this subaccount.
-  ///
-  /// This is a read-only, auto-generated field.
-  core.String? id;
-
-  /// Identifies what kind of resource this is.
-  ///
-  /// Value: the fixed string "dfareporting#subaccount".
-  core.String? kind;
-
-  /// Name of this subaccount.
-  ///
-  /// This is a required field. Must be less than 128 characters long and be
-  /// unique among subaccounts of the same account.
-  core.String? name;
-
-  $Subaccount({
-    this.accountId,
-    this.availablePermissionIds,
-    this.id,
-    this.kind,
-    this.name,
-  });
-
-  $Subaccount.fromJson(core.Map _json)
-      : this(
-          accountId: _json.containsKey('accountId')
-              ? _json['accountId'] as core.String
-              : null,
-          availablePermissionIds: _json.containsKey('availablePermissionIds')
-              ? (_json['availablePermissionIds'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (accountId != null) 'accountId': accountId!,
-        if (availablePermissionIds != null)
-          'availablePermissionIds': availablePermissionIds!,
-        if (id != null) 'id': id!,
-        if (kind != null) 'kind': kind!,
-        if (name != null) 'name': name!,
-      };
-}
-
-/// Used by:
-///
 /// - containeranalysis:v1 : Subject
 /// - ondemandscanning:v1 : Subject
 class $Subject {
@@ -10321,220 +6584,6 @@ class $Subject {
   core.Map<core.String, core.dynamic> toJson() => {
         if (digest != null) 'digest': digest!,
         if (name != null) 'name': name!,
-      };
-}
-
-/// Used by:
-///
-/// - dfareporting:v3.4 : TagData
-/// - dfareporting:v3.5 : TagData
-class $TagData {
-  /// Ad associated with this placement tag.
-  ///
-  /// Applicable only when format is PLACEMENT_TAG_TRACKING.
-  core.String? adId;
-
-  /// Tag string to record a click.
-  core.String? clickTag;
-
-  /// Creative associated with this placement tag.
-  ///
-  /// Applicable only when format is PLACEMENT_TAG_TRACKING.
-  core.String? creativeId;
-
-  /// TagData tag format of this tag.
-  /// Possible string values are:
-  /// - "PLACEMENT_TAG_STANDARD"
-  /// - "PLACEMENT_TAG_IFRAME_JAVASCRIPT"
-  /// - "PLACEMENT_TAG_IFRAME_ILAYER"
-  /// - "PLACEMENT_TAG_INTERNAL_REDIRECT"
-  /// - "PLACEMENT_TAG_JAVASCRIPT"
-  /// - "PLACEMENT_TAG_INTERSTITIAL_IFRAME_JAVASCRIPT"
-  /// - "PLACEMENT_TAG_INTERSTITIAL_INTERNAL_REDIRECT"
-  /// - "PLACEMENT_TAG_INTERSTITIAL_JAVASCRIPT"
-  /// - "PLACEMENT_TAG_CLICK_COMMANDS"
-  /// - "PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH"
-  /// - "PLACEMENT_TAG_TRACKING"
-  /// - "PLACEMENT_TAG_TRACKING_IFRAME"
-  /// - "PLACEMENT_TAG_TRACKING_JAVASCRIPT"
-  /// - "PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH_VAST_3"
-  /// - "PLACEMENT_TAG_IFRAME_JAVASCRIPT_LEGACY"
-  /// - "PLACEMENT_TAG_JAVASCRIPT_LEGACY"
-  /// - "PLACEMENT_TAG_INTERSTITIAL_IFRAME_JAVASCRIPT_LEGACY"
-  /// - "PLACEMENT_TAG_INTERSTITIAL_JAVASCRIPT_LEGACY"
-  /// - "PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH_VAST_4"
-  /// - "PLACEMENT_TAG_TRACKING_THIRD_PARTY_MEASUREMENT"
-  core.String? format;
-
-  /// Tag string for serving an ad.
-  core.String? impressionTag;
-
-  $TagData({
-    this.adId,
-    this.clickTag,
-    this.creativeId,
-    this.format,
-    this.impressionTag,
-  });
-
-  $TagData.fromJson(core.Map _json)
-      : this(
-          adId: _json.containsKey('adId') ? _json['adId'] as core.String : null,
-          clickTag: _json.containsKey('clickTag')
-              ? _json['clickTag'] as core.String
-              : null,
-          creativeId: _json.containsKey('creativeId')
-              ? _json['creativeId'] as core.String
-              : null,
-          format: _json.containsKey('format')
-              ? _json['format'] as core.String
-              : null,
-          impressionTag: _json.containsKey('impressionTag')
-              ? _json['impressionTag'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (adId != null) 'adId': adId!,
-        if (clickTag != null) 'clickTag': clickTag!,
-        if (creativeId != null) 'creativeId': creativeId!,
-        if (format != null) 'format': format!,
-        if (impressionTag != null) 'impressionTag': impressionTag!,
-      };
-}
-
-/// Used by:
-///
-/// - dfareporting:v3.4 : TagSetting
-/// - dfareporting:v3.5 : TagSetting
-class $TagSetting {
-  /// Additional key-values to be included in tags.
-  ///
-  /// Each key-value pair must be of the form key=value, and pairs must be
-  /// separated by a semicolon (;). Keys and values must not contain commas. For
-  /// example, id=2;color=red is a valid value for this field.
-  core.String? additionalKeyValues;
-
-  /// Whether static landing page URLs should be included in the tags.
-  ///
-  /// This setting applies only to placements.
-  core.bool? includeClickThroughUrls;
-
-  /// Whether click-tracking string should be included in the tags.
-  core.bool? includeClickTracking;
-
-  /// Option specifying how keywords are embedded in ad tags.
-  ///
-  /// This setting can be used to specify whether keyword placeholders are
-  /// inserted in placement tags for this site. Publishers can then add keywords
-  /// to those placeholders.
-  /// Possible string values are:
-  /// - "PLACEHOLDER_WITH_LIST_OF_KEYWORDS"
-  /// - "IGNORE"
-  /// - "GENERATE_SEPARATE_TAG_FOR_EACH_KEYWORD"
-  core.String? keywordOption;
-
-  $TagSetting({
-    this.additionalKeyValues,
-    this.includeClickThroughUrls,
-    this.includeClickTracking,
-    this.keywordOption,
-  });
-
-  $TagSetting.fromJson(core.Map _json)
-      : this(
-          additionalKeyValues: _json.containsKey('additionalKeyValues')
-              ? _json['additionalKeyValues'] as core.String
-              : null,
-          includeClickThroughUrls: _json.containsKey('includeClickThroughUrls')
-              ? _json['includeClickThroughUrls'] as core.bool
-              : null,
-          includeClickTracking: _json.containsKey('includeClickTracking')
-              ? _json['includeClickTracking'] as core.bool
-              : null,
-          keywordOption: _json.containsKey('keywordOption')
-              ? _json['keywordOption'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (additionalKeyValues != null)
-          'additionalKeyValues': additionalKeyValues!,
-        if (includeClickThroughUrls != null)
-          'includeClickThroughUrls': includeClickThroughUrls!,
-        if (includeClickTracking != null)
-          'includeClickTracking': includeClickTracking!,
-        if (keywordOption != null) 'keywordOption': keywordOption!,
-      };
-}
-
-/// Used by:
-///
-/// - dfareporting:v3.4 : TagSettings
-/// - dfareporting:v3.5 : TagSettings
-class $TagSettings {
-  /// Whether dynamic floodlight tags are enabled.
-  core.bool? dynamicTagEnabled;
-
-  /// Whether image tags are enabled.
-  core.bool? imageTagEnabled;
-
-  $TagSettings({
-    this.dynamicTagEnabled,
-    this.imageTagEnabled,
-  });
-
-  $TagSettings.fromJson(core.Map _json)
-      : this(
-          dynamicTagEnabled: _json.containsKey('dynamicTagEnabled')
-              ? _json['dynamicTagEnabled'] as core.bool
-              : null,
-          imageTagEnabled: _json.containsKey('imageTagEnabled')
-              ? _json['imageTagEnabled'] as core.bool
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (dynamicTagEnabled != null) 'dynamicTagEnabled': dynamicTagEnabled!,
-        if (imageTagEnabled != null) 'imageTagEnabled': imageTagEnabled!,
-      };
-}
-
-/// Used by:
-///
-/// - dfareporting:v3.4 : TargetWindow
-/// - dfareporting:v3.5 : TargetWindow
-class $TargetWindow {
-  /// User-entered value.
-  core.String? customHtml;
-
-  /// Type of browser window for which the backup image of the flash creative
-  /// can be displayed.
-  /// Possible string values are:
-  /// - "NEW_WINDOW"
-  /// - "CURRENT_WINDOW"
-  /// - "CUSTOM"
-  core.String? targetWindowOption;
-
-  $TargetWindow({
-    this.customHtml,
-    this.targetWindowOption,
-  });
-
-  $TargetWindow.fromJson(core.Map _json)
-      : this(
-          customHtml: _json.containsKey('customHtml')
-              ? _json['customHtml'] as core.String
-              : null,
-          targetWindowOption: _json.containsKey('targetWindowOption')
-              ? _json['targetWindowOption'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (customHtml != null) 'customHtml': customHtml!,
-        if (targetWindowOption != null)
-          'targetWindowOption': targetWindowOption!,
       };
 }
 
@@ -10601,21 +6650,16 @@ class $TenantProjectRequest {
 
 /// Used by:
 ///
-/// - accesscontextmanager:v1 : TestIamPermissionsRequest
 /// - apigateway:v1 : ApigatewayTestIamPermissionsRequest
 /// - apigee:v1 : GoogleIamV1TestIamPermissionsRequest
 /// - artifactregistry:v1 : TestIamPermissionsRequest
 /// - bigquery:v2 : TestIamPermissionsRequest
 /// - bigtableadmin:v2 : TestIamPermissionsRequest
 /// - binaryauthorization:v1 : TestIamPermissionsRequest
-/// - cloudbilling:v1 : TestIamPermissionsRequest
 /// - clouddeploy:v1 : TestIamPermissionsRequest
 /// - cloudfunctions:v1 : TestIamPermissionsRequest
 /// - cloudiot:v1 : TestIamPermissionsRequest
 /// - cloudkms:v1 : TestIamPermissionsRequest
-/// - cloudresourcemanager:v1 : TestIamPermissionsRequest
-/// - cloudresourcemanager:v2 : TestIamPermissionsRequest
-/// - cloudresourcemanager:v3 : TestIamPermissionsRequest
 /// - cloudtasks:v2 : TestIamPermissionsRequest
 /// - connectors:v1 : TestIamPermissionsRequest
 /// - containeranalysis:v1 : TestIamPermissionsRequest
@@ -10674,14 +6718,17 @@ class $TestIamPermissionsRequest00 {
 
 /// Used by:
 ///
-/// - dataplex:v1 : GoogleIamV1TestIamPermissionsRequest
-/// - dataproc:v1 : TestIamPermissionsRequest
+/// - accesscontextmanager:v1 : TestIamPermissionsRequest
+/// - cloudbilling:v1 : TestIamPermissionsRequest
+/// - cloudresourcemanager:v1 : TestIamPermissionsRequest
+/// - cloudresourcemanager:v2 : TestIamPermissionsRequest
+/// - cloudresourcemanager:v3 : TestIamPermissionsRequest
 class $TestIamPermissionsRequest01 {
-  /// The set of permissions to check for the resource.
+  /// The set of permissions to check for the `resource`.
   ///
-  /// Permissions with wildcards (such as '*' or 'storage.*') are not allowed.
-  /// For more information see IAM Overview
-  /// (https://cloud.google.com/iam/docs/overview#permissions).
+  /// Permissions with wildcards (such as `*` or `storage.*`) are not allowed.
+  /// For more information see
+  /// [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).
   core.List<core.String>? permissions;
 
   $TestIamPermissionsRequest01({
@@ -10689,6 +6736,36 @@ class $TestIamPermissionsRequest01 {
   });
 
   $TestIamPermissionsRequest01.fromJson(core.Map _json)
+      : this(
+          permissions: _json.containsKey('permissions')
+              ? (_json['permissions'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (permissions != null) 'permissions': permissions!,
+      };
+}
+
+/// Used by:
+///
+/// - dataplex:v1 : GoogleIamV1TestIamPermissionsRequest
+/// - dataproc:v1 : TestIamPermissionsRequest
+class $TestIamPermissionsRequest02 {
+  /// The set of permissions to check for the resource.
+  ///
+  /// Permissions with wildcards (such as '*' or 'storage.*') are not allowed.
+  /// For more information see IAM Overview
+  /// (https://cloud.google.com/iam/docs/overview#permissions).
+  core.List<core.String>? permissions;
+
+  $TestIamPermissionsRequest02({
+    this.permissions,
+  });
+
+  $TestIamPermissionsRequest02.fromJson(core.Map _json)
       : this(
           permissions: _json.containsKey('permissions')
               ? (_json['permissions'] as core.List)
@@ -10758,92 +6835,12 @@ class $TestPermissionsRequest {
 
 /// Used by:
 ///
-/// - dfareporting:v3.4 : ThirdPartyAuthenticationToken
-/// - dfareporting:v3.5 : ThirdPartyAuthenticationToken
-class $ThirdPartyAuthenticationToken {
-  /// Name of the third-party authentication token.
-  core.String? name;
-
-  /// Value of the third-party authentication token.
-  ///
-  /// This is a read-only, auto-generated field.
-  core.String? value;
-
-  $ThirdPartyAuthenticationToken({
-    this.name,
-    this.value,
-  });
-
-  $ThirdPartyAuthenticationToken.fromJson(core.Map _json)
-      : this(
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          value:
-              _json.containsKey('value') ? _json['value'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-        if (value != null) 'value': value!,
-      };
-}
-
-/// Used by:
-///
-/// - dfareporting:v3.4 : ThirdPartyTrackingUrl
-/// - dfareporting:v3.5 : ThirdPartyTrackingUrl
-class $ThirdPartyTrackingUrl {
-  /// Third-party URL type for in-stream video and in-stream audio creatives.
-  /// Possible string values are:
-  /// - "IMPRESSION"
-  /// - "CLICK_TRACKING"
-  /// - "VIDEO_START"
-  /// - "VIDEO_FIRST_QUARTILE"
-  /// - "VIDEO_MIDPOINT"
-  /// - "VIDEO_THIRD_QUARTILE"
-  /// - "VIDEO_COMPLETE"
-  /// - "VIDEO_MUTE"
-  /// - "VIDEO_PAUSE"
-  /// - "VIDEO_REWIND"
-  /// - "VIDEO_FULLSCREEN"
-  /// - "VIDEO_STOP"
-  /// - "VIDEO_CUSTOM"
-  /// - "SURVEY"
-  /// - "RICH_MEDIA_IMPRESSION"
-  /// - "RICH_MEDIA_RM_IMPRESSION"
-  /// - "RICH_MEDIA_BACKUP_IMPRESSION"
-  /// - "VIDEO_SKIP"
-  /// - "VIDEO_PROGRESS"
-  core.String? thirdPartyUrlType;
-
-  /// URL for the specified third-party URL type.
-  core.String? url;
-
-  $ThirdPartyTrackingUrl({
-    this.thirdPartyUrlType,
-    this.url,
-  });
-
-  $ThirdPartyTrackingUrl.fromJson(core.Map _json)
-      : this(
-          thirdPartyUrlType: _json.containsKey('thirdPartyUrlType')
-              ? _json['thirdPartyUrlType'] as core.String
-              : null,
-          url: _json.containsKey('url') ? _json['url'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (thirdPartyUrlType != null) 'thirdPartyUrlType': thirdPartyUrlType!,
-        if (url != null) 'url': url!,
-      };
-}
-
-/// Used by:
-///
 /// - authorizedbuyersmarketplace:v1 : TimeOfDay
 /// - classroom:v1 : TimeOfDay
 /// - dlp:v2 : GoogleTypeTimeOfDay
 /// - jobs:v3 : TimeOfDay
 /// - jobs:v4 : TimeOfDay
+/// - memcache:v1 : TimeOfDay
 /// - mybusinessbusinessinformation:v1 : TimeOfDay
 /// - mybusinesslodging:v1 : TimeOfDay
 /// - osconfig:v1 : TimeOfDay
@@ -11014,43 +7011,6 @@ class $TraceSamplingConfig {
 
 /// Used by:
 ///
-/// - dfareporting:v3.4 : TranscodeSetting
-/// - dfareporting:v3.5 : TranscodeSetting
-class $TranscodeSetting {
-  /// Allowlist of video formats to be served to this placement.
-  ///
-  /// Set this list to null or empty to serve all video formats.
-  core.List<core.int>? enabledVideoFormats;
-
-  /// Identifies what kind of resource this is.
-  ///
-  /// Value: the fixed string "dfareporting#transcodeSetting".
-  core.String? kind;
-
-  $TranscodeSetting({
-    this.enabledVideoFormats,
-    this.kind,
-  });
-
-  $TranscodeSetting.fromJson(core.Map _json)
-      : this(
-          enabledVideoFormats: _json.containsKey('enabledVideoFormats')
-              ? (_json['enabledVideoFormats'] as core.List)
-                  .map((value) => value as core.int)
-                  .toList()
-              : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (enabledVideoFormats != null)
-          'enabledVideoFormats': enabledVideoFormats!,
-        if (kind != null) 'kind': kind!,
-      };
-}
-
-/// Used by:
-///
 /// - cloudtrace:v2 : TruncatableString
 /// - servicecontrol:v1 : TruncatableString
 class $TruncatableString {
@@ -11085,45 +7045,6 @@ class $TruncatableString {
   core.Map<core.String, core.dynamic> toJson() => {
         if (truncatedByteCount != null)
           'truncatedByteCount': truncatedByteCount!,
-        if (value != null) 'value': value!,
-      };
-}
-
-/// Used by:
-///
-/// - dfareporting:v3.4 : UniversalAdId
-/// - dfareporting:v3.5 : UniversalAdId
-class $UniversalAdId {
-  /// Registry used for the Ad ID value.
-  /// Possible string values are:
-  /// - "OTHER"
-  /// - "AD_ID_OFFICIAL"
-  /// - "CLEARCAST"
-  /// - "DCM"
-  core.String? registry;
-
-  /// ID value for this creative.
-  ///
-  /// Only alphanumeric characters and the following symbols are valid: "_/\-".
-  /// Maximum length is 64 characters. Read only when registry is DCM.
-  core.String? value;
-
-  $UniversalAdId({
-    this.registry,
-    this.value,
-  });
-
-  $UniversalAdId.fromJson(core.Map _json)
-      : this(
-          registry: _json.containsKey('registry')
-              ? _json['registry'] as core.String
-              : null,
-          value:
-              _json.containsKey('value') ? _json['value'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (registry != null) 'registry': registry!,
         if (value != null) 'value': value!,
       };
 }
@@ -11231,330 +7152,6 @@ class $UsageRule {
         if (selector != null) 'selector': selector!,
         if (skipServiceControl != null)
           'skipServiceControl': skipServiceControl!,
-      };
-}
-
-/// Used by:
-///
-/// - dfareporting:v3.4 : UserDefinedVariableConfiguration
-/// - dfareporting:v3.5 : UserDefinedVariableConfiguration
-class $UserDefinedVariableConfiguration {
-  /// Data type for the variable.
-  ///
-  /// This is a required field.
-  /// Possible string values are:
-  /// - "STRING"
-  /// - "NUMBER"
-  core.String? dataType;
-
-  /// User-friendly name for the variable which will appear in reports.
-  ///
-  /// This is a required field, must be less than 64 characters long, and cannot
-  /// contain the following characters: ""\<\>".
-  core.String? reportName;
-
-  /// Variable name in the tag.
-  ///
-  /// This is a required field.
-  /// Possible string values are:
-  /// - "U1"
-  /// - "U2"
-  /// - "U3"
-  /// - "U4"
-  /// - "U5"
-  /// - "U6"
-  /// - "U7"
-  /// - "U8"
-  /// - "U9"
-  /// - "U10"
-  /// - "U11"
-  /// - "U12"
-  /// - "U13"
-  /// - "U14"
-  /// - "U15"
-  /// - "U16"
-  /// - "U17"
-  /// - "U18"
-  /// - "U19"
-  /// - "U20"
-  /// - "U21"
-  /// - "U22"
-  /// - "U23"
-  /// - "U24"
-  /// - "U25"
-  /// - "U26"
-  /// - "U27"
-  /// - "U28"
-  /// - "U29"
-  /// - "U30"
-  /// - "U31"
-  /// - "U32"
-  /// - "U33"
-  /// - "U34"
-  /// - "U35"
-  /// - "U36"
-  /// - "U37"
-  /// - "U38"
-  /// - "U39"
-  /// - "U40"
-  /// - "U41"
-  /// - "U42"
-  /// - "U43"
-  /// - "U44"
-  /// - "U45"
-  /// - "U46"
-  /// - "U47"
-  /// - "U48"
-  /// - "U49"
-  /// - "U50"
-  /// - "U51"
-  /// - "U52"
-  /// - "U53"
-  /// - "U54"
-  /// - "U55"
-  /// - "U56"
-  /// - "U57"
-  /// - "U58"
-  /// - "U59"
-  /// - "U60"
-  /// - "U61"
-  /// - "U62"
-  /// - "U63"
-  /// - "U64"
-  /// - "U65"
-  /// - "U66"
-  /// - "U67"
-  /// - "U68"
-  /// - "U69"
-  /// - "U70"
-  /// - "U71"
-  /// - "U72"
-  /// - "U73"
-  /// - "U74"
-  /// - "U75"
-  /// - "U76"
-  /// - "U77"
-  /// - "U78"
-  /// - "U79"
-  /// - "U80"
-  /// - "U81"
-  /// - "U82"
-  /// - "U83"
-  /// - "U84"
-  /// - "U85"
-  /// - "U86"
-  /// - "U87"
-  /// - "U88"
-  /// - "U89"
-  /// - "U90"
-  /// - "U91"
-  /// - "U92"
-  /// - "U93"
-  /// - "U94"
-  /// - "U95"
-  /// - "U96"
-  /// - "U97"
-  /// - "U98"
-  /// - "U99"
-  /// - "U100"
-  core.String? variableType;
-
-  $UserDefinedVariableConfiguration({
-    this.dataType,
-    this.reportName,
-    this.variableType,
-  });
-
-  $UserDefinedVariableConfiguration.fromJson(core.Map _json)
-      : this(
-          dataType: _json.containsKey('dataType')
-              ? _json['dataType'] as core.String
-              : null,
-          reportName: _json.containsKey('reportName')
-              ? _json['reportName'] as core.String
-              : null,
-          variableType: _json.containsKey('variableType')
-              ? _json['variableType'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (dataType != null) 'dataType': dataType!,
-        if (reportName != null) 'reportName': reportName!,
-        if (variableType != null) 'variableType': variableType!,
-      };
-}
-
-/// Used by:
-///
-/// - dfareporting:v3.4 : UserProfile
-/// - dfareporting:v3.5 : UserProfile
-class $UserProfile {
-  /// The account ID to which this profile belongs.
-  core.String? accountId;
-
-  /// The account name this profile belongs to.
-  core.String? accountName;
-
-  /// Etag of this resource.
-  core.String? etag;
-
-  /// Identifies what kind of resource this is.
-  ///
-  /// Value: the fixed string "dfareporting#userProfile".
-  core.String? kind;
-
-  /// The unique ID of the user profile.
-  core.String? profileId;
-
-  /// The sub account ID this profile belongs to if applicable.
-  core.String? subAccountId;
-
-  /// The sub account name this profile belongs to if applicable.
-  core.String? subAccountName;
-
-  /// The user name.
-  core.String? userName;
-
-  $UserProfile({
-    this.accountId,
-    this.accountName,
-    this.etag,
-    this.kind,
-    this.profileId,
-    this.subAccountId,
-    this.subAccountName,
-    this.userName,
-  });
-
-  $UserProfile.fromJson(core.Map _json)
-      : this(
-          accountId: _json.containsKey('accountId')
-              ? _json['accountId'] as core.String
-              : null,
-          accountName: _json.containsKey('accountName')
-              ? _json['accountName'] as core.String
-              : null,
-          etag: _json.containsKey('etag') ? _json['etag'] as core.String : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          profileId: _json.containsKey('profileId')
-              ? _json['profileId'] as core.String
-              : null,
-          subAccountId: _json.containsKey('subAccountId')
-              ? _json['subAccountId'] as core.String
-              : null,
-          subAccountName: _json.containsKey('subAccountName')
-              ? _json['subAccountName'] as core.String
-              : null,
-          userName: _json.containsKey('userName')
-              ? _json['userName'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (accountId != null) 'accountId': accountId!,
-        if (accountName != null) 'accountName': accountName!,
-        if (etag != null) 'etag': etag!,
-        if (kind != null) 'kind': kind!,
-        if (profileId != null) 'profileId': profileId!,
-        if (subAccountId != null) 'subAccountId': subAccountId!,
-        if (subAccountName != null) 'subAccountName': subAccountName!,
-        if (userName != null) 'userName': userName!,
-      };
-}
-
-/// Used by:
-///
-/// - dfareporting:v3.4 : UserRolePermission
-/// - dfareporting:v3.5 : UserRolePermission
-class $UserRolePermission {
-  /// Levels of availability for a user role permission.
-  /// Possible string values are:
-  /// - "NOT_AVAILABLE_BY_DEFAULT"
-  /// - "ACCOUNT_BY_DEFAULT"
-  /// - "SUBACCOUNT_AND_ACCOUNT_BY_DEFAULT"
-  /// - "ACCOUNT_ALWAYS"
-  /// - "SUBACCOUNT_AND_ACCOUNT_ALWAYS"
-  /// - "USER_PROFILE_ONLY"
-  core.String? availability;
-
-  /// ID of this user role permission.
-  core.String? id;
-
-  /// Identifies what kind of resource this is.
-  ///
-  /// Value: the fixed string "dfareporting#userRolePermission".
-  core.String? kind;
-
-  /// Name of this user role permission.
-  core.String? name;
-
-  /// ID of the permission group that this user role permission belongs to.
-  core.String? permissionGroupId;
-
-  $UserRolePermission({
-    this.availability,
-    this.id,
-    this.kind,
-    this.name,
-    this.permissionGroupId,
-  });
-
-  $UserRolePermission.fromJson(core.Map _json)
-      : this(
-          availability: _json.containsKey('availability')
-              ? _json['availability'] as core.String
-              : null,
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-          permissionGroupId: _json.containsKey('permissionGroupId')
-              ? _json['permissionGroupId'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (availability != null) 'availability': availability!,
-        if (id != null) 'id': id!,
-        if (kind != null) 'kind': kind!,
-        if (name != null) 'name': name!,
-        if (permissionGroupId != null) 'permissionGroupId': permissionGroupId!,
-      };
-}
-
-/// Used by:
-///
-/// - dfareporting:v3.4 : UserRolePermissionGroup
-/// - dfareporting:v3.5 : UserRolePermissionGroup
-class $UserRolePermissionGroup {
-  /// ID of this user role permission.
-  core.String? id;
-
-  /// Identifies what kind of resource this is.
-  ///
-  /// Value: the fixed string "dfareporting#userRolePermissionGroup".
-  core.String? kind;
-
-  /// Name of this user role permission group.
-  core.String? name;
-
-  $UserRolePermissionGroup({
-    this.id,
-    this.kind,
-    this.name,
-  });
-
-  $UserRolePermissionGroup.fromJson(core.Map _json)
-      : this(
-          id: _json.containsKey('id') ? _json['id'] as core.String : null,
-          kind: _json.containsKey('kind') ? _json['kind'] as core.String : null,
-          name: _json.containsKey('name') ? _json['name'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (id != null) 'id': id!,
-        if (kind != null) 'kind': kind!,
-        if (name != null) 'name': name!,
       };
 }
 
@@ -11732,44 +7329,6 @@ class $VersionedPackage {
         if (architecture != null) 'architecture': architecture!,
         if (packageName != null) 'packageName': packageName!,
         if (version != null) 'version': version!,
-      };
-}
-
-/// Used by:
-///
-/// - dfareporting:v3.4 : VideoOffset
-/// - dfareporting:v3.5 : VideoOffset
-class $VideoOffset {
-  /// Duration, as a percentage of video duration.
-  ///
-  /// Do not set when offsetSeconds is set. Acceptable values are 0 to 100,
-  /// inclusive.
-  core.int? offsetPercentage;
-
-  /// Duration, in seconds.
-  ///
-  /// Do not set when offsetPercentage is set. Acceptable values are 0 to 86399,
-  /// inclusive.
-  core.int? offsetSeconds;
-
-  $VideoOffset({
-    this.offsetPercentage,
-    this.offsetSeconds,
-  });
-
-  $VideoOffset.fromJson(core.Map _json)
-      : this(
-          offsetPercentage: _json.containsKey('offsetPercentage')
-              ? _json['offsetPercentage'] as core.int
-              : null,
-          offsetSeconds: _json.containsKey('offsetSeconds')
-              ? _json['offsetSeconds'] as core.int
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (offsetPercentage != null) 'offsetPercentage': offsetPercentage!,
-        if (offsetSeconds != null) 'offsetSeconds': offsetSeconds!,
       };
 }
 

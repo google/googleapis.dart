@@ -476,6 +476,8 @@ api.AndroidRoboTest buildAndroidRoboTest() {
     o.appBundle = buildAppBundle();
     o.appInitialActivity = 'foo';
     o.appPackageId = 'foo';
+    o.maxDepth = 42;
+    o.maxSteps = 42;
     o.roboDirectives = buildUnnamed11();
     o.roboMode = 'foo';
     o.roboScript = buildFileReference();
@@ -497,6 +499,14 @@ void checkAndroidRoboTest(api.AndroidRoboTest o) {
     unittest.expect(
       o.appPackageId!,
       unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.maxDepth!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.maxSteps!,
+      unittest.equals(42),
     );
     checkUnnamed11(o.roboDirectives!);
     unittest.expect(

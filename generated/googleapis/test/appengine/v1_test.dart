@@ -2547,6 +2547,7 @@ api.Version buildVersion() {
   buildCounterVersion++;
   if (buildCounterVersion < 3) {
     o.apiConfig = buildApiConfigHandler();
+    o.appEngineApis = true;
     o.automaticScaling = buildAutomaticScaling();
     o.basicScaling = buildBasicScaling();
     o.betaSettings = buildUnnamed27();
@@ -2594,6 +2595,7 @@ void checkVersion(api.Version o) {
   buildCounterVersion++;
   if (buildCounterVersion < 3) {
     checkApiConfigHandler(o.apiConfig!);
+    unittest.expect(o.appEngineApis!, unittest.isTrue);
     checkAutomaticScaling(o.automaticScaling!);
     checkBasicScaling(o.basicScaling!);
     checkUnnamed27(o.betaSettings!);

@@ -4220,6 +4220,7 @@ void main() {
       final arg_name = 'foo';
       final arg_ignoreActiveCertificates = true;
       final arg_requestId = 'foo';
+      final arg_skipGracePeriod = true;
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = (req.url).path;
@@ -4262,6 +4263,10 @@ void main() {
           unittest.equals(arg_requestId),
         );
         unittest.expect(
+          queryMap['skipGracePeriod']!.first,
+          unittest.equals('$arg_skipGracePeriod'),
+        );
+        unittest.expect(
           queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
@@ -4275,6 +4280,7 @@ void main() {
       final response = await res.delete(arg_name,
           ignoreActiveCertificates: arg_ignoreActiveCertificates,
           requestId: arg_requestId,
+          skipGracePeriod: arg_skipGracePeriod,
           $fields: arg_$fields);
       checkOperation(response as api.Operation);
     });

@@ -71,7 +71,7 @@
 
 ### API changes
 
-- `adexchangebuyer` - **removed**
+- `adexchangebuyer` - **removed**  
 - `contactcenterinsights` - new!
 - `mybusinessbusinessinformation` - new!
 - `mybusinessnotifications` - new!

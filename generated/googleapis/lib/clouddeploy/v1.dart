@@ -454,7 +454,7 @@ class ProjectsLocationsDeliveryPipelinesResource {
   /// Format must be projects/{project_id}/locations/{location_name}.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [filter] - Filter builds to be returned. See https://google.aip.dev/160
+  /// [filter] - Filter pipelines to be returned. See https://google.aip.dev/160
   /// for more details.
   ///
   /// [orderBy] - Field to sort by. See https://google.aip.dev/132#ordering for
@@ -803,7 +803,7 @@ class ProjectsLocationsDeliveryPipelinesReleasesResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/deliveryPipelines/\[^/\]+$`.
   ///
-  /// [filter] - Optional. Filter builds to be returned. See
+  /// [filter] - Optional. Filter releases to be returned. See
   /// https://google.aip.dev/160 for more details.
   ///
   /// [orderBy] - Optional. Field to sort by. See
@@ -1021,7 +1021,7 @@ class ProjectsLocationsDeliveryPipelinesReleasesRolloutsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/deliveryPipelines/\[^/\]+/releases/\[^/\]+$`.
   ///
-  /// [filter] - Optional. Filter builds to be returned. See
+  /// [filter] - Optional. Filter rollouts to be returned. See
   /// https://google.aip.dev/160 for more details.
   ///
   /// [orderBy] - Optional. Field to sort by. See
@@ -1507,7 +1507,7 @@ class ProjectsLocationsTargetsResource {
   /// Format must be projects/{project_id}/locations/{location_name}.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [filter] - Optional. Filter builds to be returned. See
+  /// [filter] - Optional. Filter targets to be returned. See
   /// https://google.aip.dev/160 for more details.
   ///
   /// [orderBy] - Optional. Field to sort by. See
@@ -2001,10 +2001,11 @@ class Config {
 /// The time of day and time zone are either specified elsewhere or are
 /// insignificant. The date is relative to the Gregorian Calendar. This can
 /// represent one of the following: * A full date, with non-zero year, month,
-/// and day values * A month and day, with a zero year (e.g., an anniversary) *
-/// A year on its own, with a zero month and a zero day * A year and month, with
-/// a zero day (e.g., a credit card expiration date) Related types: *
-/// google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
+/// and day values. * A month and day, with a zero year (for example, an
+/// anniversary). * A year on its own, with a zero month and a zero day. * A
+/// year and month, with a zero day (for example, a credit card expiration
+/// date). Related types: * google.type.TimeOfDay * google.type.DateTime *
+/// google.protobuf.Timestamp
 typedef Date = $Date;
 
 /// Execution using the default Cloud Build pool.

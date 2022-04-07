@@ -1801,7 +1801,7 @@
             }
         }
     },
-    "revision": "20220222",
+    "revision": "20220329",
     "rootUrl": "https://bigtableadmin.googleapis.com/",
     "schemas": {
         "AppProfile": {
@@ -1901,7 +1901,7 @@
             "id": "AutoscalingTargets",
             "properties": {
                 "cpuUtilizationPercent": {
-                    "description": "The cpu utilization that the Autoscaler should be trying to achieve. This number is on a scale from 0 (no utilization) to 100 (total utilization), and is limited between 10 and 80.",
+                    "description": "The cpu utilization that the Autoscaler should be trying to achieve. This number is on a scale from 0 (no utilization) to 100 (total utilization), and is limited between 10 and 80, otherwise it will return INVALID_ARGUMENT error.",
                     "format": "int32",
                     "type": "integer"
                 }
@@ -2331,7 +2331,7 @@
             "type": "object"
         },
         "Empty": {
-            "description": "A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON object `{}`.",
+            "description": "A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }",
             "id": "Empty",
             "properties": {},
             "type": "object"

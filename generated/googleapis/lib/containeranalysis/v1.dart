@@ -1899,6 +1899,10 @@ class ComplianceOccurrence {
 /// Describes the CIS benchmark version that is applicable to a given OS and os
 /// version.
 class ComplianceVersion {
+  /// The name of the document that defines this benchmark, e.g. "CIS
+  /// Container-Optimized OS".
+  core.String? benchmarkDocument;
+
   /// The CPE URI (https://cpe.mitre.org/specification/) this benchmark is
   /// applicable to.
   core.String? cpeUri;
@@ -1910,12 +1914,16 @@ class ComplianceVersion {
   core.String? version;
 
   ComplianceVersion({
+    this.benchmarkDocument,
     this.cpeUri,
     this.version,
   });
 
   ComplianceVersion.fromJson(core.Map _json)
       : this(
+          benchmarkDocument: _json.containsKey('benchmarkDocument')
+              ? _json['benchmarkDocument'] as core.String
+              : null,
           cpeUri: _json.containsKey('cpeUri')
               ? _json['cpeUri'] as core.String
               : null,
@@ -1925,6 +1933,7 @@ class ComplianceVersion {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (benchmarkDocument != null) 'benchmarkDocument': benchmarkDocument!,
         if (cpeUri != null) 'cpeUri': cpeUri!,
         if (version != null) 'version': version!,
       };
@@ -2406,8 +2415,7 @@ class Distribution {
 ///
 /// A typical example is to use it as the request or the response type of an API
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
-/// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
-/// object `{}`.
+/// (google.protobuf.Empty); }
 typedef Empty = $Empty;
 
 /// MUST match

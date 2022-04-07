@@ -23,6 +23,9 @@
 /// - [ProjectsResource]
 ///   - [ProjectsBrandsResource]
 ///     - [ProjectsBrandsIdentityAwareProxyClientsResource]
+///   - [ProjectsIapTunnelResource]
+///     - [ProjectsIapTunnelLocationsResource]
+///       - [ProjectsIapTunnelLocationsDestGroupsResource]
 /// - [V1Resource]
 library iap.v1;
 
@@ -63,6 +66,8 @@ class ProjectsResource {
   final commons.ApiRequester _requester;
 
   ProjectsBrandsResource get brands => ProjectsBrandsResource(_requester);
+  ProjectsIapTunnelResource get iapTunnel =>
+      ProjectsIapTunnelResource(_requester);
 
   ProjectsResource(commons.ApiRequester client) : _requester = client;
 }
@@ -432,6 +437,261 @@ class ProjectsBrandsIdentityAwareProxyClientsResource {
       queryParams: _queryParams,
     );
     return IdentityAwareProxyClient.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsIapTunnelResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsIapTunnelLocationsResource get locations =>
+      ProjectsIapTunnelLocationsResource(_requester);
+
+  ProjectsIapTunnelResource(commons.ApiRequester client) : _requester = client;
+}
+
+class ProjectsIapTunnelLocationsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsIapTunnelLocationsDestGroupsResource get destGroups =>
+      ProjectsIapTunnelLocationsDestGroupsResource(_requester);
+
+  ProjectsIapTunnelLocationsResource(commons.ApiRequester client)
+      : _requester = client;
+}
+
+class ProjectsIapTunnelLocationsDestGroupsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsIapTunnelLocationsDestGroupsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a new TunnelDestGroup.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. GCP Project number/id and location. In the following
+  /// format: projects/{project_number/id}/iap_tunnel/locations/{location}.
+  /// Value must have pattern `^projects/\[^/\]+/iap_tunnel/locations/\[^/\]+$`.
+  ///
+  /// [tunnelDestGroupId] - Required. The ID to use for the TunnelDestGroup,
+  /// which will become the final component of the resource name. This value
+  /// should be 4-63 characters, and valid characters are /a-z-/.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [TunnelDestGroup].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TunnelDestGroup> create(
+    TunnelDestGroup request,
+    core.String parent, {
+    core.String? tunnelDestGroupId,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (tunnelDestGroupId != null) 'tunnelDestGroupId': [tunnelDestGroupId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/destGroups';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return TunnelDestGroup.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a TunnelDestGroup.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the TunnelDestGroup to be deleted. In the
+  /// following format:
+  /// projects/{project_number/id}/iap_tunnel/locations/{location}/destGroups/{dest_group}.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/iap_tunnel/locations/\[^/\]+/destGroups/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'DELETE',
+      queryParams: _queryParams,
+    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Retrieves an existing TunnelDestGroup.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the TunnelDestGroup to be fetched. In the
+  /// following format:
+  /// projects/{project_number/id}/iap_tunnel/locations/{location}/destGroups/{dest_group}.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/iap_tunnel/locations/\[^/\]+/destGroups/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [TunnelDestGroup].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TunnelDestGroup> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return TunnelDestGroup.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists the existing TunnelDestGroups.
+  ///
+  /// To group across all locations, use a `-` as the location ID. For example:
+  /// /v1/projects/123/iap_tunnel/locations/-/destGroups
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. GCP Project number/id and location. In the following
+  /// format: projects/{project_number/id}/iap_tunnel/locations/{location}. A
+  /// `-` can be used for the location to group across all locations.
+  /// Value must have pattern `^projects/\[^/\]+/iap_tunnel/locations/\[^/\]+$`.
+  ///
+  /// [pageSize] - The maximum number of groups to return. The service may
+  /// return fewer than this value. If unspecified, at most 100 groups will be
+  /// returned. The maximum value is 1000; values above 1000 will be coerced to
+  /// 1000.
+  ///
+  /// [pageToken] - A page token, received from a previous
+  /// `ListTunnelDestGroups` call. Provide this to retrieve the subsequent page.
+  /// When paginating, all other parameters provided to `ListTunnelDestGroups`
+  /// must match the call that provided the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListTunnelDestGroupsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListTunnelDestGroupsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$parent') + '/destGroups';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return ListTunnelDestGroupsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates a TunnelDestGroup.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Immutable. Identifier for the TunnelDestGroup. Must be
+  /// unique within the project.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/iap_tunnel/locations/\[^/\]+/destGroups/\[^/\]+$`.
+  ///
+  /// [updateMask] - The field mask specifying which IAP settings should be
+  /// updated. If omitted, then all of the settings are updated. See
+  /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [TunnelDestGroup].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TunnelDestGroup> patch(
+    TunnelDestGroup request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final _body = convert.json.encode(request);
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final _url = 'v1/' + core.Uri.encodeFull('$name');
+
+    final _response = await _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return TunnelDestGroup.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
 }
@@ -1002,8 +1262,7 @@ class CsmSettings {
 ///
 /// A typical example is to use it as the request or the response type of an API
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
-/// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
-/// object `{}`.
+/// (google.protobuf.Empty); }
 typedef Empty = $Empty;
 
 /// Represents a textual expression in the Common Expression Language (CEL)
@@ -1228,6 +1487,40 @@ class ListIdentityAwareProxyClientsResponse {
         if (identityAwareProxyClients != null)
           'identityAwareProxyClients': identityAwareProxyClients!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
+/// The response from ListTunnelDestGroups.
+class ListTunnelDestGroupsResponse {
+  /// A token, which can be send as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  /// TunnelDestGroup existing in the project.
+  core.List<TunnelDestGroup>? tunnelDestGroups;
+
+  ListTunnelDestGroupsResponse({
+    this.nextPageToken,
+    this.tunnelDestGroups,
+  });
+
+  ListTunnelDestGroupsResponse.fromJson(core.Map _json)
+      : this(
+          nextPageToken: _json.containsKey('nextPageToken')
+              ? _json['nextPageToken'] as core.String
+              : null,
+          tunnelDestGroups: _json.containsKey('tunnelDestGroups')
+              ? (_json['tunnelDestGroups'] as core.List)
+                  .map((value) => TunnelDestGroup.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (tunnelDestGroups != null) 'tunnelDestGroups': tunnelDestGroups!,
       };
 }
 
@@ -1644,3 +1937,46 @@ typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;
 
 /// Response message for `TestIamPermissions` method.
 typedef TestIamPermissionsResponse = $PermissionsResponse;
+
+/// A TunnelDestGroup.
+class TunnelDestGroup {
+  /// null List of CIDRs that this group applies to.
+  core.List<core.String>? cidrs;
+
+  /// null List of FQDNs that this group applies to.
+  core.List<core.String>? fqdns;
+
+  /// Identifier for the TunnelDestGroup.
+  ///
+  /// Must be unique within the project.
+  ///
+  /// Required. Immutable.
+  core.String? name;
+
+  TunnelDestGroup({
+    this.cidrs,
+    this.fqdns,
+    this.name,
+  });
+
+  TunnelDestGroup.fromJson(core.Map _json)
+      : this(
+          cidrs: _json.containsKey('cidrs')
+              ? (_json['cidrs'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          fqdns: _json.containsKey('fqdns')
+              ? (_json['fqdns'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          name: _json.containsKey('name') ? _json['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (cidrs != null) 'cidrs': cidrs!,
+        if (fqdns != null) 'fqdns': fqdns!,
+        if (name != null) 'name': name!,
+      };
+}

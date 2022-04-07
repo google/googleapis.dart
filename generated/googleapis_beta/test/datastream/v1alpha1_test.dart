@@ -1439,6 +1439,21 @@ void checkOracleColumn(api.OracleColumn o) {
   buildCounterOracleColumn--;
 }
 
+core.int buildCounterOracleDropLargeObjects = 0;
+api.OracleDropLargeObjects buildOracleDropLargeObjects() {
+  final o = api.OracleDropLargeObjects();
+  buildCounterOracleDropLargeObjects++;
+  if (buildCounterOracleDropLargeObjects < 3) {}
+  buildCounterOracleDropLargeObjects--;
+  return o;
+}
+
+void checkOracleDropLargeObjects(api.OracleDropLargeObjects o) {
+  buildCounterOracleDropLargeObjects++;
+  if (buildCounterOracleDropLargeObjects < 3) {}
+  buildCounterOracleDropLargeObjects--;
+}
+
 core.int buildCounterOracleObjectIdentifier = 0;
 api.OracleObjectIdentifier buildOracleObjectIdentifier() {
   final o = api.OracleObjectIdentifier();
@@ -1598,6 +1613,7 @@ api.OracleSourceConfig buildOracleSourceConfig() {
   buildCounterOracleSourceConfig++;
   if (buildCounterOracleSourceConfig < 3) {
     o.allowlist = buildOracleRdbms();
+    o.dropLargeObjects = buildOracleDropLargeObjects();
     o.rejectlist = buildOracleRdbms();
   }
   buildCounterOracleSourceConfig--;
@@ -1608,6 +1624,7 @@ void checkOracleSourceConfig(api.OracleSourceConfig o) {
   buildCounterOracleSourceConfig++;
   if (buildCounterOracleSourceConfig < 3) {
     checkOracleRdbms(o.allowlist!);
+    checkOracleDropLargeObjects(o.dropLargeObjects!);
     checkOracleRdbms(o.rejectlist!);
   }
   buildCounterOracleSourceConfig--;
@@ -2512,6 +2529,16 @@ void main() {
       final od = api.OracleColumn.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkOracleColumn(od);
+    });
+  });
+
+  unittest.group('obj-schema-OracleDropLargeObjects', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildOracleDropLargeObjects();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.OracleDropLargeObjects.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkOracleDropLargeObjects(od);
     });
   });
 

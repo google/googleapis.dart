@@ -1215,7 +1215,7 @@
             }
         }
     },
-    "revision": "20220207",
+    "revision": "20220322",
     "rootUrl": "https://datastream.googleapis.com/",
     "schemas": {
         "AvroFileFormat": {
@@ -1438,7 +1438,7 @@
             "type": "object"
         },
         "Empty": {
-            "description": "A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON object `{}`.",
+            "description": "A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }",
             "id": "Empty",
             "properties": {},
             "type": "object"
@@ -1964,7 +1964,7 @@
             "id": "MysqlTable",
             "properties": {
                 "mysqlColumns": {
-                    "description": "MySQL columns in the database. When unspecified as part of include/exclude lists, includes/excludes everything.",
+                    "description": "MySQL columns in the database. When unspecified as part of include/exclude objects, includes/excludes everything.",
                     "items": {
                         "$ref": "MysqlColumn"
                     },
@@ -2108,6 +2108,12 @@
             },
             "type": "object"
         },
+        "OracleDropLargeObjects": {
+            "description": "Configuration to drop large object values.",
+            "id": "OracleDropLargeObjects",
+            "properties": {},
+            "type": "object"
+        },
         "OracleObjectIdentifier": {
             "description": "Oracle data source object identifier.",
             "id": "OracleObjectIdentifier",
@@ -2194,6 +2200,10 @@
             "description": "Oracle data source configuration",
             "id": "OracleSourceConfig",
             "properties": {
+                "dropLargeObjects": {
+                    "$ref": "OracleDropLargeObjects",
+                    "description": "Drop large object values."
+                },
                 "excludeObjects": {
                     "$ref": "OracleRdbms",
                     "description": "Oracle objects to exclude from the stream."
@@ -2210,7 +2220,7 @@
             "id": "OracleTable",
             "properties": {
                 "oracleColumns": {
-                    "description": "Oracle columns in the schema. When unspecified as part of inclue/exclude lists, includes/excludes everything.",
+                    "description": "Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.",
                     "items": {
                         "$ref": "OracleColumn"
                     },
@@ -2349,11 +2359,11 @@
             "properties": {
                 "mysqlSourceConfig": {
                     "$ref": "MysqlSourceConfig",
-                    "description": "MySQL data source configuration"
+                    "description": "MySQL data source configuration."
                 },
                 "oracleSourceConfig": {
                     "$ref": "OracleSourceConfig",
-                    "description": "Oracle data source configuration"
+                    "description": "Oracle data source configuration."
                 },
                 "sourceConnectionProfile": {
                     "description": "Required. Source connection profile resoource. Format: `projects/{project}/locations/{location}/connectionProfiles/{name}`",

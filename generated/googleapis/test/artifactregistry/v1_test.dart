@@ -345,69 +345,12 @@ void checkUnnamed4(core.List<core.String> o) {
   );
 }
 
-core.int buildCounterImportGooGetArtifactsGcsSource = 0;
-api.ImportGooGetArtifactsGcsSource buildImportGooGetArtifactsGcsSource() {
-  final o = api.ImportGooGetArtifactsGcsSource();
-  buildCounterImportGooGetArtifactsGcsSource++;
-  if (buildCounterImportGooGetArtifactsGcsSource < 3) {
-    o.uris = buildUnnamed4();
-    o.useWildcards = true;
-  }
-  buildCounterImportGooGetArtifactsGcsSource--;
-  return o;
-}
-
-void checkImportGooGetArtifactsGcsSource(api.ImportGooGetArtifactsGcsSource o) {
-  buildCounterImportGooGetArtifactsGcsSource++;
-  if (buildCounterImportGooGetArtifactsGcsSource < 3) {
-    checkUnnamed4(o.uris!);
-    unittest.expect(o.useWildcards!, unittest.isTrue);
-  }
-  buildCounterImportGooGetArtifactsGcsSource--;
-}
-
-core.int buildCounterImportGooGetArtifactsRequest = 0;
-api.ImportGooGetArtifactsRequest buildImportGooGetArtifactsRequest() {
-  final o = api.ImportGooGetArtifactsRequest();
-  buildCounterImportGooGetArtifactsRequest++;
-  if (buildCounterImportGooGetArtifactsRequest < 3) {
-    o.gcsSource = buildImportGooGetArtifactsGcsSource();
-  }
-  buildCounterImportGooGetArtifactsRequest--;
-  return o;
-}
-
-void checkImportGooGetArtifactsRequest(api.ImportGooGetArtifactsRequest o) {
-  buildCounterImportGooGetArtifactsRequest++;
-  if (buildCounterImportGooGetArtifactsRequest < 3) {
-    checkImportGooGetArtifactsGcsSource(o.gcsSource!);
-  }
-  buildCounterImportGooGetArtifactsRequest--;
-}
-
-core.List<core.String> buildUnnamed5() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed5(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
 core.int buildCounterImportYumArtifactsGcsSource = 0;
 api.ImportYumArtifactsGcsSource buildImportYumArtifactsGcsSource() {
   final o = api.ImportYumArtifactsGcsSource();
   buildCounterImportYumArtifactsGcsSource++;
   if (buildCounterImportYumArtifactsGcsSource < 3) {
-    o.uris = buildUnnamed5();
+    o.uris = buildUnnamed4();
     o.useWildcards = true;
   }
   buildCounterImportYumArtifactsGcsSource--;
@@ -417,7 +360,7 @@ api.ImportYumArtifactsGcsSource buildImportYumArtifactsGcsSource() {
 void checkImportYumArtifactsGcsSource(api.ImportYumArtifactsGcsSource o) {
   buildCounterImportYumArtifactsGcsSource++;
   if (buildCounterImportYumArtifactsGcsSource < 3) {
-    checkUnnamed5(o.uris!);
+    checkUnnamed4(o.uris!);
     unittest.expect(o.useWildcards!, unittest.isTrue);
   }
   buildCounterImportYumArtifactsGcsSource--;
@@ -442,12 +385,12 @@ void checkImportYumArtifactsRequest(api.ImportYumArtifactsRequest o) {
   buildCounterImportYumArtifactsRequest--;
 }
 
-core.List<api.DockerImage> buildUnnamed6() => [
+core.List<api.DockerImage> buildUnnamed5() => [
       buildDockerImage(),
       buildDockerImage(),
     ];
 
-void checkUnnamed6(core.List<api.DockerImage> o) {
+void checkUnnamed5(core.List<api.DockerImage> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDockerImage(o[0]);
   checkDockerImage(o[1]);
@@ -458,7 +401,7 @@ api.ListDockerImagesResponse buildListDockerImagesResponse() {
   final o = api.ListDockerImagesResponse();
   buildCounterListDockerImagesResponse++;
   if (buildCounterListDockerImagesResponse < 3) {
-    o.dockerImages = buildUnnamed6();
+    o.dockerImages = buildUnnamed5();
     o.nextPageToken = 'foo';
   }
   buildCounterListDockerImagesResponse--;
@@ -468,7 +411,7 @@ api.ListDockerImagesResponse buildListDockerImagesResponse() {
 void checkListDockerImagesResponse(api.ListDockerImagesResponse o) {
   buildCounterListDockerImagesResponse++;
   if (buildCounterListDockerImagesResponse < 3) {
-    checkUnnamed6(o.dockerImages!);
+    checkUnnamed5(o.dockerImages!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -477,12 +420,12 @@ void checkListDockerImagesResponse(api.ListDockerImagesResponse o) {
   buildCounterListDockerImagesResponse--;
 }
 
-core.List<api.GoogleDevtoolsArtifactregistryV1File> buildUnnamed7() => [
+core.List<api.GoogleDevtoolsArtifactregistryV1File> buildUnnamed6() => [
       buildGoogleDevtoolsArtifactregistryV1File(),
       buildGoogleDevtoolsArtifactregistryV1File(),
     ];
 
-void checkUnnamed7(core.List<api.GoogleDevtoolsArtifactregistryV1File> o) {
+void checkUnnamed6(core.List<api.GoogleDevtoolsArtifactregistryV1File> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleDevtoolsArtifactregistryV1File(o[0]);
   checkGoogleDevtoolsArtifactregistryV1File(o[1]);
@@ -493,7 +436,7 @@ api.ListFilesResponse buildListFilesResponse() {
   final o = api.ListFilesResponse();
   buildCounterListFilesResponse++;
   if (buildCounterListFilesResponse < 3) {
-    o.files = buildUnnamed7();
+    o.files = buildUnnamed6();
     o.nextPageToken = 'foo';
   }
   buildCounterListFilesResponse--;
@@ -503,13 +446,48 @@ api.ListFilesResponse buildListFilesResponse() {
 void checkListFilesResponse(api.ListFilesResponse o) {
   buildCounterListFilesResponse++;
   if (buildCounterListFilesResponse < 3) {
-    checkUnnamed7(o.files!);
+    checkUnnamed6(o.files!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
     );
   }
   buildCounterListFilesResponse--;
+}
+
+core.List<api.Location> buildUnnamed7() => [
+      buildLocation(),
+      buildLocation(),
+    ];
+
+void checkUnnamed7(core.List<api.Location> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkLocation(o[0]);
+  checkLocation(o[1]);
+}
+
+core.int buildCounterListLocationsResponse = 0;
+api.ListLocationsResponse buildListLocationsResponse() {
+  final o = api.ListLocationsResponse();
+  buildCounterListLocationsResponse++;
+  if (buildCounterListLocationsResponse < 3) {
+    o.locations = buildUnnamed7();
+    o.nextPageToken = 'foo';
+  }
+  buildCounterListLocationsResponse--;
+  return o;
+}
+
+void checkListLocationsResponse(api.ListLocationsResponse o) {
+  buildCounterListLocationsResponse++;
+  if (buildCounterListLocationsResponse < 3) {
+    checkUnnamed7(o.locations!);
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterListLocationsResponse--;
 }
 
 core.List<api.Package> buildUnnamed8() => [
@@ -652,31 +630,24 @@ void checkListVersionsResponse(api.ListVersionsResponse o) {
   buildCounterListVersionsResponse--;
 }
 
-core.int buildCounterMavenRepositoryConfig = 0;
-api.MavenRepositoryConfig buildMavenRepositoryConfig() {
-  final o = api.MavenRepositoryConfig();
-  buildCounterMavenRepositoryConfig++;
-  if (buildCounterMavenRepositoryConfig < 3) {
-    o.allowSnapshotOverwrites = true;
-    o.versionPolicy = 'foo';
-  }
-  buildCounterMavenRepositoryConfig--;
-  return o;
+core.Map<core.String, core.String> buildUnnamed12() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
+
+void checkUnnamed12(core.Map<core.String, core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o['x']!,
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o['y']!,
+    unittest.equals('foo'),
+  );
 }
 
-void checkMavenRepositoryConfig(api.MavenRepositoryConfig o) {
-  buildCounterMavenRepositoryConfig++;
-  if (buildCounterMavenRepositoryConfig < 3) {
-    unittest.expect(o.allowSnapshotOverwrites!, unittest.isTrue);
-    unittest.expect(
-      o.versionPolicy!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterMavenRepositoryConfig--;
-}
-
-core.Map<core.String, core.Object?> buildUnnamed12() => {
+core.Map<core.String, core.Object?> buildUnnamed13() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -689,7 +660,7 @@ core.Map<core.String, core.Object?> buildUnnamed12() => {
       },
     };
 
-void checkUnnamed12(core.Map<core.String, core.Object?> o) {
+void checkUnnamed13(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o['x']!) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -721,7 +692,67 @@ void checkUnnamed12(core.Map<core.String, core.Object?> o) {
   );
 }
 
-core.Map<core.String, core.Object?> buildUnnamed13() => {
+core.int buildCounterLocation = 0;
+api.Location buildLocation() {
+  final o = api.Location();
+  buildCounterLocation++;
+  if (buildCounterLocation < 3) {
+    o.displayName = 'foo';
+    o.labels = buildUnnamed12();
+    o.locationId = 'foo';
+    o.metadata = buildUnnamed13();
+    o.name = 'foo';
+  }
+  buildCounterLocation--;
+  return o;
+}
+
+void checkLocation(api.Location o) {
+  buildCounterLocation++;
+  if (buildCounterLocation < 3) {
+    unittest.expect(
+      o.displayName!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed12(o.labels!);
+    unittest.expect(
+      o.locationId!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed13(o.metadata!);
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterLocation--;
+}
+
+core.int buildCounterMavenRepositoryConfig = 0;
+api.MavenRepositoryConfig buildMavenRepositoryConfig() {
+  final o = api.MavenRepositoryConfig();
+  buildCounterMavenRepositoryConfig++;
+  if (buildCounterMavenRepositoryConfig < 3) {
+    o.allowSnapshotOverwrites = true;
+    o.versionPolicy = 'foo';
+  }
+  buildCounterMavenRepositoryConfig--;
+  return o;
+}
+
+void checkMavenRepositoryConfig(api.MavenRepositoryConfig o) {
+  buildCounterMavenRepositoryConfig++;
+  if (buildCounterMavenRepositoryConfig < 3) {
+    unittest.expect(o.allowSnapshotOverwrites!, unittest.isTrue);
+    unittest.expect(
+      o.versionPolicy!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterMavenRepositoryConfig--;
+}
+
+core.Map<core.String, core.Object?> buildUnnamed14() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -734,7 +765,7 @@ core.Map<core.String, core.Object?> buildUnnamed13() => {
       },
     };
 
-void checkUnnamed13(core.Map<core.String, core.Object?> o) {
+void checkUnnamed14(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted3 = (o['x']!) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
@@ -766,6 +797,51 @@ void checkUnnamed13(core.Map<core.String, core.Object?> o) {
   );
 }
 
+core.Map<core.String, core.Object?> buildUnnamed15() => {
+      'x': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+      'y': {
+        'list': [1, 2, 3],
+        'bool': true,
+        'string': 'foo'
+      },
+    };
+
+void checkUnnamed15(core.Map<core.String, core.Object?> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  var casted5 = (o['x']!) as core.Map;
+  unittest.expect(casted5, unittest.hasLength(3));
+  unittest.expect(
+    casted5['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted5['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted5['string'],
+    unittest.equals('foo'),
+  );
+  var casted6 = (o['y']!) as core.Map;
+  unittest.expect(casted6, unittest.hasLength(3));
+  unittest.expect(
+    casted6['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted6['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted6['string'],
+    unittest.equals('foo'),
+  );
+}
+
 core.int buildCounterOperation = 0;
 api.Operation buildOperation() {
   final o = api.Operation();
@@ -773,9 +849,9 @@ api.Operation buildOperation() {
   if (buildCounterOperation < 3) {
     o.done = true;
     o.error = buildStatus();
-    o.metadata = buildUnnamed12();
+    o.metadata = buildUnnamed14();
     o.name = 'foo';
-    o.response = buildUnnamed13();
+    o.response = buildUnnamed15();
   }
   buildCounterOperation--;
   return o;
@@ -786,12 +862,12 @@ void checkOperation(api.Operation o) {
   if (buildCounterOperation < 3) {
     unittest.expect(o.done!, unittest.isTrue);
     checkStatus(o.error!);
-    checkUnnamed12(o.metadata!);
+    checkUnnamed14(o.metadata!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed13(o.response!);
+    checkUnnamed15(o.response!);
   }
   buildCounterOperation--;
 }
@@ -833,12 +909,12 @@ void checkPackage(api.Package o) {
   buildCounterPackage--;
 }
 
-core.List<api.Binding> buildUnnamed14() => [
+core.List<api.Binding> buildUnnamed16() => [
       buildBinding(),
       buildBinding(),
     ];
 
-void checkUnnamed14(core.List<api.Binding> o) {
+void checkUnnamed16(core.List<api.Binding> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBinding(o[0]);
   checkBinding(o[1]);
@@ -849,7 +925,7 @@ api.Policy buildPolicy() {
   final o = api.Policy();
   buildCounterPolicy++;
   if (buildCounterPolicy < 3) {
-    o.bindings = buildUnnamed14();
+    o.bindings = buildUnnamed16();
     o.etag = 'foo';
     o.version = 42;
   }
@@ -860,7 +936,7 @@ api.Policy buildPolicy() {
 void checkPolicy(api.Policy o) {
   buildCounterPolicy++;
   if (buildCounterPolicy < 3) {
-    checkUnnamed14(o.bindings!);
+    checkUnnamed16(o.bindings!);
     unittest.expect(
       o.etag!,
       unittest.equals('foo'),
@@ -900,12 +976,12 @@ void checkProjectSettings(api.ProjectSettings o) {
   buildCounterProjectSettings--;
 }
 
-core.Map<core.String, core.String> buildUnnamed15() => {
+core.Map<core.String, core.String> buildUnnamed17() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed15(core.Map<core.String, core.String> o) {
+void checkUnnamed17(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -926,9 +1002,10 @@ api.Repository buildRepository() {
     o.description = 'foo';
     o.format = 'foo';
     o.kmsKeyName = 'foo';
-    o.labels = buildUnnamed15();
+    o.labels = buildUnnamed17();
     o.mavenConfig = buildMavenRepositoryConfig();
     o.name = 'foo';
+    o.sizeBytes = 'foo';
     o.updateTime = 'foo';
   }
   buildCounterRepository--;
@@ -954,10 +1031,14 @@ void checkRepository(api.Repository o) {
       o.kmsKeyName!,
       unittest.equals('foo'),
     );
-    checkUnnamed15(o.labels!);
+    checkUnnamed17(o.labels!);
     checkMavenRepositoryConfig(o.mavenConfig!);
     unittest.expect(
       o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.sizeBytes!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -987,7 +1068,7 @@ void checkSetIamPolicyRequest(api.SetIamPolicyRequest o) {
   buildCounterSetIamPolicyRequest--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed16() => {
+core.Map<core.String, core.Object?> buildUnnamed18() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -1000,47 +1081,47 @@ core.Map<core.String, core.Object?> buildUnnamed16() => {
       },
     };
 
-void checkUnnamed16(core.Map<core.String, core.Object?> o) {
+void checkUnnamed18(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted5 = (o['x']!) as core.Map;
-  unittest.expect(casted5, unittest.hasLength(3));
+  var casted7 = (o['x']!) as core.Map;
+  unittest.expect(casted7, unittest.hasLength(3));
   unittest.expect(
-    casted5['list'],
+    casted7['list'],
     unittest.equals([1, 2, 3]),
   );
   unittest.expect(
-    casted5['bool'],
+    casted7['bool'],
     unittest.equals(true),
   );
   unittest.expect(
-    casted5['string'],
+    casted7['string'],
     unittest.equals('foo'),
   );
-  var casted6 = (o['y']!) as core.Map;
-  unittest.expect(casted6, unittest.hasLength(3));
+  var casted8 = (o['y']!) as core.Map;
+  unittest.expect(casted8, unittest.hasLength(3));
   unittest.expect(
-    casted6['list'],
+    casted8['list'],
     unittest.equals([1, 2, 3]),
   );
   unittest.expect(
-    casted6['bool'],
+    casted8['bool'],
     unittest.equals(true),
   );
   unittest.expect(
-    casted6['string'],
+    casted8['string'],
     unittest.equals('foo'),
   );
 }
 
-core.List<core.Map<core.String, core.Object?>> buildUnnamed17() => [
-      buildUnnamed16(),
-      buildUnnamed16(),
+core.List<core.Map<core.String, core.Object?>> buildUnnamed19() => [
+      buildUnnamed18(),
+      buildUnnamed18(),
     ];
 
-void checkUnnamed17(core.List<core.Map<core.String, core.Object?>> o) {
+void checkUnnamed19(core.List<core.Map<core.String, core.Object?>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed16(o[0]);
-  checkUnnamed16(o[1]);
+  checkUnnamed18(o[0]);
+  checkUnnamed18(o[1]);
 }
 
 core.int buildCounterStatus = 0;
@@ -1049,7 +1130,7 @@ api.Status buildStatus() {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed17();
+    o.details = buildUnnamed19();
     o.message = 'foo';
   }
   buildCounterStatus--;
@@ -1063,7 +1144,7 @@ void checkStatus(api.Status o) {
       o.code!,
       unittest.equals(42),
     );
-    checkUnnamed17(o.details!);
+    checkUnnamed19(o.details!);
     unittest.expect(
       o.message!,
       unittest.equals('foo'),
@@ -1099,12 +1180,12 @@ void checkTag(api.Tag o) {
   buildCounterTag--;
 }
 
-core.List<core.String> buildUnnamed18() => [
+core.List<core.String> buildUnnamed20() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed18(core.List<core.String> o) {
+void checkUnnamed20(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1121,7 +1202,7 @@ api.TestIamPermissionsRequest buildTestIamPermissionsRequest() {
   final o = api.TestIamPermissionsRequest();
   buildCounterTestIamPermissionsRequest++;
   if (buildCounterTestIamPermissionsRequest < 3) {
-    o.permissions = buildUnnamed18();
+    o.permissions = buildUnnamed20();
   }
   buildCounterTestIamPermissionsRequest--;
   return o;
@@ -1130,17 +1211,17 @@ api.TestIamPermissionsRequest buildTestIamPermissionsRequest() {
 void checkTestIamPermissionsRequest(api.TestIamPermissionsRequest o) {
   buildCounterTestIamPermissionsRequest++;
   if (buildCounterTestIamPermissionsRequest < 3) {
-    checkUnnamed18(o.permissions!);
+    checkUnnamed20(o.permissions!);
   }
   buildCounterTestIamPermissionsRequest--;
 }
 
-core.List<core.String> buildUnnamed19() => [
+core.List<core.String> buildUnnamed21() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed19(core.List<core.String> o) {
+void checkUnnamed21(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1157,7 +1238,7 @@ api.TestIamPermissionsResponse buildTestIamPermissionsResponse() {
   final o = api.TestIamPermissionsResponse();
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
-    o.permissions = buildUnnamed19();
+    o.permissions = buildUnnamed21();
   }
   buildCounterTestIamPermissionsResponse--;
   return o;
@@ -1166,7 +1247,7 @@ api.TestIamPermissionsResponse buildTestIamPermissionsResponse() {
 void checkTestIamPermissionsResponse(api.TestIamPermissionsResponse o) {
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
-    checkUnnamed19(o.permissions!);
+    checkUnnamed21(o.permissions!);
   }
   buildCounterTestIamPermissionsResponse--;
 }
@@ -1205,41 +1286,6 @@ void checkUploadAptArtifactRequest(api.UploadAptArtifactRequest o) {
   buildCounterUploadAptArtifactRequest--;
 }
 
-core.int buildCounterUploadGooGetArtifactMediaResponse = 0;
-api.UploadGooGetArtifactMediaResponse buildUploadGooGetArtifactMediaResponse() {
-  final o = api.UploadGooGetArtifactMediaResponse();
-  buildCounterUploadGooGetArtifactMediaResponse++;
-  if (buildCounterUploadGooGetArtifactMediaResponse < 3) {
-    o.operation = buildOperation();
-  }
-  buildCounterUploadGooGetArtifactMediaResponse--;
-  return o;
-}
-
-void checkUploadGooGetArtifactMediaResponse(
-    api.UploadGooGetArtifactMediaResponse o) {
-  buildCounterUploadGooGetArtifactMediaResponse++;
-  if (buildCounterUploadGooGetArtifactMediaResponse < 3) {
-    checkOperation(o.operation!);
-  }
-  buildCounterUploadGooGetArtifactMediaResponse--;
-}
-
-core.int buildCounterUploadGooGetArtifactRequest = 0;
-api.UploadGooGetArtifactRequest buildUploadGooGetArtifactRequest() {
-  final o = api.UploadGooGetArtifactRequest();
-  buildCounterUploadGooGetArtifactRequest++;
-  if (buildCounterUploadGooGetArtifactRequest < 3) {}
-  buildCounterUploadGooGetArtifactRequest--;
-  return o;
-}
-
-void checkUploadGooGetArtifactRequest(api.UploadGooGetArtifactRequest o) {
-  buildCounterUploadGooGetArtifactRequest++;
-  if (buildCounterUploadGooGetArtifactRequest < 3) {}
-  buildCounterUploadGooGetArtifactRequest--;
-}
-
 core.int buildCounterUploadYumArtifactMediaResponse = 0;
 api.UploadYumArtifactMediaResponse buildUploadYumArtifactMediaResponse() {
   final o = api.UploadYumArtifactMediaResponse();
@@ -1274,7 +1320,7 @@ void checkUploadYumArtifactRequest(api.UploadYumArtifactRequest o) {
   buildCounterUploadYumArtifactRequest--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed20() => {
+core.Map<core.String, core.Object?> buildUnnamed22() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -1287,44 +1333,44 @@ core.Map<core.String, core.Object?> buildUnnamed20() => {
       },
     };
 
-void checkUnnamed20(core.Map<core.String, core.Object?> o) {
+void checkUnnamed22(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted7 = (o['x']!) as core.Map;
-  unittest.expect(casted7, unittest.hasLength(3));
+  var casted9 = (o['x']!) as core.Map;
+  unittest.expect(casted9, unittest.hasLength(3));
   unittest.expect(
-    casted7['list'],
+    casted9['list'],
     unittest.equals([1, 2, 3]),
   );
   unittest.expect(
-    casted7['bool'],
+    casted9['bool'],
     unittest.equals(true),
   );
   unittest.expect(
-    casted7['string'],
+    casted9['string'],
     unittest.equals('foo'),
   );
-  var casted8 = (o['y']!) as core.Map;
-  unittest.expect(casted8, unittest.hasLength(3));
+  var casted10 = (o['y']!) as core.Map;
+  unittest.expect(casted10, unittest.hasLength(3));
   unittest.expect(
-    casted8['list'],
+    casted10['list'],
     unittest.equals([1, 2, 3]),
   );
   unittest.expect(
-    casted8['bool'],
+    casted10['bool'],
     unittest.equals(true),
   );
   unittest.expect(
-    casted8['string'],
+    casted10['string'],
     unittest.equals('foo'),
   );
 }
 
-core.List<api.Tag> buildUnnamed21() => [
+core.List<api.Tag> buildUnnamed23() => [
       buildTag(),
       buildTag(),
     ];
 
-void checkUnnamed21(core.List<api.Tag> o) {
+void checkUnnamed23(core.List<api.Tag> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTag(o[0]);
   checkTag(o[1]);
@@ -1337,9 +1383,9 @@ api.Version buildVersion() {
   if (buildCounterVersion < 3) {
     o.createTime = 'foo';
     o.description = 'foo';
-    o.metadata = buildUnnamed20();
+    o.metadata = buildUnnamed22();
     o.name = 'foo';
-    o.relatedTags = buildUnnamed21();
+    o.relatedTags = buildUnnamed23();
     o.updateTime = 'foo';
   }
   buildCounterVersion--;
@@ -1357,12 +1403,12 @@ void checkVersion(api.Version o) {
       o.description!,
       unittest.equals('foo'),
     );
-    checkUnnamed20(o.metadata!);
+    checkUnnamed22(o.metadata!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed21(o.relatedTags!);
+    checkUnnamed23(o.relatedTags!);
     unittest.expect(
       o.updateTime!,
       unittest.equals('foo'),
@@ -1452,26 +1498,6 @@ void main() {
     });
   });
 
-  unittest.group('obj-schema-ImportGooGetArtifactsGcsSource', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildImportGooGetArtifactsGcsSource();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.ImportGooGetArtifactsGcsSource.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkImportGooGetArtifactsGcsSource(od);
-    });
-  });
-
-  unittest.group('obj-schema-ImportGooGetArtifactsRequest', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildImportGooGetArtifactsRequest();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.ImportGooGetArtifactsRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkImportGooGetArtifactsRequest(od);
-    });
-  });
-
   unittest.group('obj-schema-ImportYumArtifactsGcsSource', () {
     unittest.test('to-json--from-json', () async {
       final o = buildImportYumArtifactsGcsSource();
@@ -1512,6 +1538,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-ListLocationsResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildListLocationsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ListLocationsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkListLocationsResponse(od);
+    });
+  });
+
   unittest.group('obj-schema-ListPackagesResponse', () {
     unittest.test('to-json--from-json', () async {
       final o = buildListPackagesResponse();
@@ -1549,6 +1585,16 @@ void main() {
       final od = api.ListVersionsResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkListVersionsResponse(od);
+    });
+  });
+
+  unittest.group('obj-schema-Location', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildLocation();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.Location.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkLocation(od);
     });
   });
 
@@ -1678,26 +1724,6 @@ void main() {
       final od = api.UploadAptArtifactRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkUploadAptArtifactRequest(od);
-    });
-  });
-
-  unittest.group('obj-schema-UploadGooGetArtifactMediaResponse', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildUploadGooGetArtifactMediaResponse();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.UploadGooGetArtifactMediaResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkUploadGooGetArtifactMediaResponse(od);
-    });
-  });
-
-  unittest.group('obj-schema-UploadGooGetArtifactRequest', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildUploadGooGetArtifactRequest();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.UploadGooGetArtifactRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkUploadGooGetArtifactRequest(od);
     });
   });
 
@@ -1846,6 +1872,131 @@ void main() {
       final response = await res.updateProjectSettings(arg_request, arg_name,
           updateMask: arg_updateMask, $fields: arg_$fields);
       checkProjectSettings(response as api.ProjectSettings);
+    });
+  });
+
+  unittest.group('resource-ProjectsLocationsResource', () {
+    unittest.test('method--get', () async {
+      final mock = HttpServerMock();
+      final res = api.ArtifactRegistryApi(mock).projects.locations;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildLocation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkLocation(response as api.Location);
+    });
+
+    unittest.test('method--list', () async {
+      final mock = HttpServerMock();
+      final res = api.ArtifactRegistryApi(mock).projects.locations;
+      final arg_name = 'foo';
+      final arg_filter = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['filter']!.first,
+          unittest.equals(arg_filter),
+        );
+        unittest.expect(
+          core.int.parse(queryMap['pageSize']!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap['pageToken']!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildListLocationsResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.list(arg_name,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListLocationsResponse(response as api.ListLocationsResponse);
     });
   });
 
@@ -2767,141 +2918,6 @@ void main() {
           pageToken: arg_pageToken,
           $fields: arg_$fields);
       checkListFilesResponse(response as api.ListFilesResponse);
-    });
-  });
-
-  unittest.group(
-      'resource-ProjectsLocationsRepositoriesGooGetArtifactsResource', () {
-    unittest.test('method--import', () async {
-      final mock = HttpServerMock();
-      final res = api.ArtifactRegistryApi(mock)
-          .projects
-          .locations
-          .repositories
-          .gooGetArtifacts;
-      final arg_request = buildImportGooGetArtifactsRequest();
-      final arg_parent = 'foo';
-      final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.ImportGooGetArtifactsRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>);
-        checkImportGooGetArtifactsRequest(obj);
-
-        final path = (req.url).path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v1/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
-
-        final query = (req.url).query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
-
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
-          }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
-
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildOperation());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response =
-          await res.import(arg_request, arg_parent, $fields: arg_$fields);
-      checkOperation(response as api.Operation);
-    });
-  });
-
-  unittest.group(
-      'resource-ProjectsLocationsRepositoriesGoogetArtifactsResource', () {
-    unittest.test('method--upload', () async {
-      // TODO: Implement tests for media upload;
-      // TODO: Implement tests for media download;
-
-      final mock = HttpServerMock();
-      final res = api.ArtifactRegistryApi(mock)
-          .projects
-          .locations
-          .repositories
-          .googetArtifacts;
-      final arg_request = buildUploadGooGetArtifactRequest();
-      final arg_parent = 'foo';
-      final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.UploadGooGetArtifactRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>);
-        checkUploadGooGetArtifactRequest(obj);
-
-        final path = (req.url).path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v1/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
-
-        final query = (req.url).query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
-
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
-          }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
-
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp =
-            convert.json.encode(buildUploadGooGetArtifactMediaResponse());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response =
-          await res.upload(arg_request, arg_parent, $fields: arg_$fields);
-      checkUploadGooGetArtifactMediaResponse(
-          response as api.UploadGooGetArtifactMediaResponse);
     });
   });
 

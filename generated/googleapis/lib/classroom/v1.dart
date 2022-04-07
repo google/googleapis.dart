@@ -378,7 +378,7 @@ class CoursesResource {
   /// access errors. * `NOT_FOUND` if no course exists with the requested ID. *
   /// `INVALID_ARGUMENT` if invalid fields are specified in the update mask or
   /// if no update mask is supplied. * `FAILED_PRECONDITION` for the following
-  /// request errors: * CourseNotModifiable
+  /// request errors: * CourseNotModifiable * InactiveCourseOwner
   ///
   /// [request] - The metadata request object.
   ///
@@ -2150,8 +2150,9 @@ class CoursesStudentsResource {
   /// or for access errors. * `NOT_FOUND` if the requested course ID does not
   /// exist. * `FAILED_PRECONDITION` if the requested user's account is
   /// disabled, for the following request errors: * CourseMemberLimitReached *
-  /// CourseNotModifiable * UserGroupsMembershipLimitReached * `ALREADY_EXISTS`
-  /// if the user is already a student or teacher in the course.
+  /// CourseNotModifiable * UserGroupsMembershipLimitReached *
+  /// InactiveCourseOwner * `ALREADY_EXISTS` if the user is already a student or
+  /// teacher in the course.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2369,8 +2370,8 @@ class CoursesTeachersResource {
   /// `FAILED_PRECONDITION` if the requested user's account is disabled, for the
   /// following request errors: * CourseMemberLimitReached * CourseNotModifiable
   /// * CourseTeacherLimitReached * UserGroupsMembershipLimitReached *
-  /// `ALREADY_EXISTS` if the user is already a teacher or student in the
-  /// course.
+  /// InactiveCourseOwner * `ALREADY_EXISTS` if the user is already a teacher or
+  /// student in the course.
   ///
   /// [request] - The metadata request object.
   ///
@@ -4856,10 +4857,11 @@ class CourseWorkMaterial {
 /// The time of day and time zone are either specified elsewhere or are
 /// insignificant. The date is relative to the Gregorian Calendar. This can
 /// represent one of the following: * A full date, with non-zero year, month,
-/// and day values * A month and day, with a zero year (e.g., an anniversary) *
-/// A year on its own, with a zero month and a zero day * A year and month, with
-/// a zero day (e.g., a credit card expiration date) Related types: *
-/// google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
+/// and day values. * A month and day, with a zero year (for example, an
+/// anniversary). * A year on its own, with a zero month and a zero day. * A
+/// year and month, with a zero day (for example, a credit card expiration
+/// date). Related types: * google.type.TimeOfDay * google.type.DateTime *
+/// google.protobuf.Timestamp
 typedef Date = $Date;
 
 /// Representation of a Google Drive file.
@@ -4953,8 +4955,7 @@ class DriveFolder {
 ///
 /// A typical example is to use it as the request or the response type of an API
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
-/// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
-/// object `{}`.
+/// (google.protobuf.Empty); }
 typedef Empty = $Empty;
 
 /// A class of notifications that an application can register to receive.

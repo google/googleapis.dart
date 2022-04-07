@@ -3797,6 +3797,9 @@ class SasPortalDeviceGrant {
   /// Grant Id.
   core.String? grantId;
 
+  /// The transmit expiration time of the last heartbeat.
+  core.String? lastHeartbeatTransmitExpireTime;
+
   /// Maximum Equivalent Isotropically Radiated Power (EIRP) permitted by the
   /// grant.
   ///
@@ -3827,6 +3830,7 @@ class SasPortalDeviceGrant {
     this.expireTime,
     this.frequencyRange,
     this.grantId,
+    this.lastHeartbeatTransmitExpireTime,
     this.maxEirp,
     this.moveList,
     this.state,
@@ -3848,6 +3852,10 @@ class SasPortalDeviceGrant {
           grantId: _json.containsKey('grantId')
               ? _json['grantId'] as core.String
               : null,
+          lastHeartbeatTransmitExpireTime:
+              _json.containsKey('lastHeartbeatTransmitExpireTime')
+                  ? _json['lastHeartbeatTransmitExpireTime'] as core.String
+                  : null,
           maxEirp: _json.containsKey('maxEirp')
               ? (_json['maxEirp'] as core.num).toDouble()
               : null,
@@ -3871,6 +3879,8 @@ class SasPortalDeviceGrant {
         if (expireTime != null) 'expireTime': expireTime!,
         if (frequencyRange != null) 'frequencyRange': frequencyRange!,
         if (grantId != null) 'grantId': grantId!,
+        if (lastHeartbeatTransmitExpireTime != null)
+          'lastHeartbeatTransmitExpireTime': lastHeartbeatTransmitExpireTime!,
         if (maxEirp != null) 'maxEirp': maxEirp!,
         if (moveList != null) 'moveList': moveList!,
         if (state != null) 'state': state!,
@@ -3985,8 +3995,7 @@ class SasPortalDpaMoveList {
 ///
 /// A typical example is to use it as the request or the response type of an API
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
-/// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
-/// object `{}`.
+/// (google.protobuf.Empty); }
 typedef SasPortalEmpty = $Empty;
 
 /// Frequency range from `low_frequency` to `high_frequency`.
@@ -4157,8 +4166,6 @@ typedef SasPortalMoveNodeRequest = $SasPortalMoveNodeRequest;
 typedef SasPortalNode = $SasPortalNode;
 
 /// Information about National Radio Quiet Zone validation.
-///
-/// The presence of the field indicates the device has been validated.
 typedef SasPortalNrqzValidation = $SasPortalNrqzValidation;
 
 /// This resource represents a long-running operation that is the result of a

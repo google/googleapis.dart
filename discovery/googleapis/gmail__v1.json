@@ -1787,7 +1787,7 @@
                                     ]
                                 },
                                 "delete": {
-                                    "description": "Deletes a filter.",
+                                    "description": "Immediately and permanently deletes the specified filter.",
                                     "flatPath": "gmail/v1/users/{userId}/settings/filters/{id}",
                                     "httpMethod": "DELETE",
                                     "id": "gmail.users.settings.filters.delete",
@@ -2429,7 +2429,7 @@
                 "threads": {
                     "methods": {
                         "delete": {
-                            "description": "Immediately and permanently deletes the specified thread. This operation cannot be undone. Prefer `threads.trash` instead.",
+                            "description": "Immediately and permanently deletes the specified thread. Any messages that belong to the thread are also deleted. This operation cannot be undone. Prefer `threads.trash` instead.",
                             "flatPath": "gmail/v1/users/{userId}/threads/{id}",
                             "httpMethod": "DELETE",
                             "id": "gmail.users.threads.delete",
@@ -2611,7 +2611,7 @@
                             ]
                         },
                         "trash": {
-                            "description": "Moves the specified thread to the trash.",
+                            "description": "Moves the specified thread to the trash. Any messages that belong to the thread are also moved to the trash.",
                             "flatPath": "gmail/v1/users/{userId}/threads/{id}/trash",
                             "httpMethod": "POST",
                             "id": "gmail.users.threads.trash",
@@ -2644,7 +2644,7 @@
                             ]
                         },
                         "untrash": {
-                            "description": "Removes the specified thread from the trash.",
+                            "description": "Removes the specified thread from the trash. Any messages that belong to the thread are also removed from the trash.",
                             "flatPath": "gmail/v1/users/{userId}/threads/{id}/untrash",
                             "httpMethod": "POST",
                             "id": "gmail.users.threads.untrash",
@@ -2681,7 +2681,7 @@
             }
         }
     },
-    "revision": "20220228",
+    "revision": "20220404",
     "rootUrl": "https://gmail.googleapis.com/",
     "schemas": {
         "AutoForwarding": {
@@ -3491,14 +3491,14 @@
             "id": "ModifyMessageRequest",
             "properties": {
                 "addLabelIds": {
-                    "description": "A list of IDs of labels to add to this message.",
+                    "description": "A list of IDs of labels to add to this message. You can add up to 100 labels with each update.",
                     "items": {
                         "type": "string"
                     },
                     "type": "array"
                 },
                 "removeLabelIds": {
-                    "description": "A list IDs of labels to remove from this message.",
+                    "description": "A list IDs of labels to remove from this message. You can remove up to 100 labels with each update.",
                     "items": {
                         "type": "string"
                     },
@@ -3511,14 +3511,14 @@
             "id": "ModifyThreadRequest",
             "properties": {
                 "addLabelIds": {
-                    "description": "A list of IDs of labels to add to this thread.",
+                    "description": "A list of IDs of labels to add to this thread. You can add up to 100 labels with each update.",
                     "items": {
                         "type": "string"
                     },
                     "type": "array"
                 },
                 "removeLabelIds": {
-                    "description": "A list of IDs of labels to remove from this thread.",
+                    "description": "A list of IDs of labels to remove from this thread. You can remove up to 100 labels with each update.",
                     "items": {
                         "type": "string"
                     },

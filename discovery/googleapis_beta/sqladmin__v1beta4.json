@@ -1875,7 +1875,7 @@
             }
         }
     },
-    "revision": "20220224",
+    "revision": "20220331",
     "rootUrl": "https://sqladmin.googleapis.com/",
     "schemas": {
         "AclEntry": {
@@ -2247,6 +2247,8 @@
                         "MYSQL_8_0",
                         "MYSQL_8_0_18",
                         "MYSQL_8_0_26",
+                        "MYSQL_8_0_27",
+                        "MYSQL_8_0_28",
                         "POSTGRES_13",
                         "POSTGRES_14",
                         "SQLSERVER_2019_STANDARD",
@@ -2271,6 +2273,8 @@
                         "The database version is MySQL 8.",
                         "The database major version is MySQL 8.0 and the minor version is 18.",
                         "The database major version is MySQL 8.0 and the minor version is 26.",
+                        "The database major version is MySQL 8.0 and the minor version is 27.",
+                        "The database major version is MySQL 8.0 and the minor version is 28.",
                         "The database version is PostgreSQL 13.",
                         "The database version is PostgreSQL 14.",
                         "The database version is SQL Server 2019 Standard.",
@@ -2425,6 +2429,8 @@
                         "MYSQL_8_0",
                         "MYSQL_8_0_18",
                         "MYSQL_8_0_26",
+                        "MYSQL_8_0_27",
+                        "MYSQL_8_0_28",
                         "POSTGRES_13",
                         "POSTGRES_14",
                         "SQLSERVER_2019_STANDARD",
@@ -2449,6 +2455,8 @@
                         "The database version is MySQL 8.",
                         "The database major version is MySQL 8.0 and the minor version is 18.",
                         "The database major version is MySQL 8.0 and the minor version is 26.",
+                        "The database major version is MySQL 8.0 and the minor version is 27.",
+                        "The database major version is MySQL 8.0 and the minor version is 28.",
                         "The database version is PostgreSQL 13.",
                         "The database version is PostgreSQL 14.",
                         "The database version is SQL Server 2019 Standard.",
@@ -2934,6 +2942,8 @@
                             "MYSQL_8_0",
                             "MYSQL_8_0_18",
                             "MYSQL_8_0_26",
+                            "MYSQL_8_0_27",
+                            "MYSQL_8_0_28",
                             "POSTGRES_13",
                             "POSTGRES_14",
                             "SQLSERVER_2019_STANDARD",
@@ -2958,6 +2968,8 @@
                             "The database version is MySQL 8.",
                             "The database major version is MySQL 8.0 and the minor version is 18.",
                             "The database major version is MySQL 8.0 and the minor version is 26.",
+                            "The database major version is MySQL 8.0 and the minor version is 27.",
+                            "The database major version is MySQL 8.0 and the minor version is 28.",
                             "The database version is PostgreSQL 13.",
                             "The database version is PostgreSQL 14.",
                             "The database version is SQL Server 2019 Standard.",
@@ -3843,6 +3855,10 @@
                     "description": "Disallow username as a part of the password.",
                     "type": "boolean"
                 },
+                "enablePasswordPolicy": {
+                    "description": "Whether the password policy is enabled or not.",
+                    "type": "boolean"
+                },
                 "minLength": {
                     "description": "Minimum number of characters allowed.",
                     "format": "int32",
@@ -4181,7 +4197,8 @@
                         "SQLSERVER_SERVERNAME_MISMATCH",
                         "PRIMARY_ALREADY_SETUP",
                         "UNSUPPORTED_BINLOG_FORMAT",
-                        "BINLOG_RETENTION_SETTING"
+                        "BINLOG_RETENTION_SETTING",
+                        "UNSUPPORTED_STORAGE_ENGINE"
                     ],
                     "enumDescriptions": [
                         "",
@@ -4209,7 +4226,8 @@
                         "SQL Server @@SERVERNAME does not match actual host name",
                         "The primary instance has been setup and will fail the setup.",
                         "The primary instance has unsupported binary log format.",
-                        "The primary instance's binary log retention setting."
+                        "The primary instance's binary log retention setting.",
+                        "The primary instance has tables with unsupported storage engine."
                     ],
                     "type": "string"
                 }
@@ -4372,6 +4390,16 @@
                 },
                 "kind": {
                     "description": "This is always sql#sqlServerAuditConfig",
+                    "type": "string"
+                },
+                "retentionInterval": {
+                    "description": "How long to keep generated audit files.",
+                    "format": "google-duration",
+                    "type": "string"
+                },
+                "uploadInterval": {
+                    "description": "How often to upload generated audit files.",
+                    "format": "google-duration",
                     "type": "string"
                 }
             },
